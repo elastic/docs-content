@@ -1,9 +1,19 @@
 ---
+navigation_title: Data corruption
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/corruption-troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Troubleshooting corruption [corruption-troubleshooting]
+# Troubleshoot data corruption [corruption-troubleshooting]
 
 {{es}} expects that the data it reads from disk is exactly the data it previously wrote. If it detects that the data on disk is different from what it wrote then it will report some kind of exception such as:
 

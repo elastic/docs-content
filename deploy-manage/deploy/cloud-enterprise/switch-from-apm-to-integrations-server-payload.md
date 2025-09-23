@@ -1,18 +1,24 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-integrations-server-apm-switch.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
+navigation_title: Switch from APM to Integrations Server
 ---
 
-# Switch from APM to Integrations Server payload [ece-integrations-server-apm-switch]
+# Switch from APM to Integrations Server payload on {{ece}} [ece-integrations-server-apm-switch]
 
-This example shows how to use the Elastic Cloud Enterprise RESTful API to switch from using [APM & Fleet Server](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-and-fleet.html) to [Integrations Server](manage-integrations-server.md).
+This example shows how to use the {{ece}} RESTful API to switch from using the legacy [APM & Fleet Server](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-manage-apm-and-fleet.html) to [Integrations Server](manage-integrations-server.md).
 
 
 ## Requirements [ece_requirements_5]
 
-Given a deployment that is using an APM & Fleet Server with Elastic Stack version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
+Given a deployment that is using an APM & Fleet Server with {{stack}} version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
 
-In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](https://www.elastic.co/guide/en/apm/guide/current/apm-integration-upgrade-steps-ess.html).
+In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apm/switch-an-elastic-cloud-cluster-to-apm-integration.md).
 
 
 ## API request example [ece_api_request_example_3]

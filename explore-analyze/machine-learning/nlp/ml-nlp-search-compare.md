@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-search-compare.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Search and compare text [ml-nlp-search-compare]
@@ -10,12 +15,11 @@ The {{stack-ml-features}} can generate embeddings, which you can use to search i
 * [Text embedding](#ml-nlp-text-embedding)
 * [Text similarity](#ml-nlp-text-similarity)
 
-
-## Text embedding [ml-nlp-text-embedding] 
+## Text embedding [ml-nlp-text-embedding]
 
 Text embedding is a task which produces a mathematical representation of text called an embedding. The {{ml}} model turns the text into an array of numerical values (also known as a *vector*). Pieces of content with similar meaning have similar representations. This means it is possible to determine whether different pieces of text are either semantically similar, different, or even opposite by using a mathematical similarity function.
 
-This task is responsible for producing only the embedding. When the embedding is created, it can be stored in a [dense_vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) field and used at search time. For example, you can use these vectors in a [k-nearest neighbor (kNN) search](../../../solutions/search/vector/knn.md) to achieve semantic search capabilities.
+This task is responsible for producing only the embedding. When the embedding is created, it can be stored in a [dense_vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) field and used at search time. For example, you can use these vectors in a [k-nearest neighbor (kNN) search](../../../solutions/search/vector/knn.md) to achieve semantic search capabilities.
 
 The following is an example of producing a text embedding:
 
@@ -37,8 +41,7 @@ The task returns the following result:
 ...
 ```
 
-
-## Text similarity [ml-nlp-text-similarity] 
+## Text similarity [ml-nlp-text-similarity]
 
 The text similarity task estimates how similar two pieces of text are to each other and expresses the similarity in a numeric value. This is commonly referred to as cross-encoding. This task is useful for ranking document text when comparing it to another provided text input.
 
@@ -67,4 +70,3 @@ In the example above, every string in the `docs` array is compared individually 
 }
 ...
 ```
-

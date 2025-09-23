@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-search-limitations.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Rollup search limitations [rollup-search-limitations]
@@ -8,7 +13,7 @@ mapped_pages:
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. Please [migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 
@@ -19,7 +24,7 @@ This page highlights the major limitations so that you are aware of them.
 
 ## Only one {{rollup}} index per search [_only_one_rollup_index_per_search] 
 
-When using the [Rollup search](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-search.html) endpoint, the `index` parameter accepts one or more indices. These can be a mix of regular, non-rollup indices and rollup indices. However, only one rollup index can be specified. The exact list of rules for the `index` parameter are as follows:
+When using the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search) endpoint, the `index` parameter accepts one or more indices. These can be a mix of regular, non-rollup indices and rollup indices. However, only one rollup index can be specified. The exact list of rules for the `index` parameter are as follows:
 
 * At least one index/index-pattern must be specified. This can be either a rollup or non-rollup index. Omitting the index parameter, or using `_all`, is not permitted
 * Multiple non-rollup indices may be specified
@@ -35,7 +40,7 @@ To help simplify the problem, we have limited search to just one rollup index at
 
 A perhaps obvious limitation, but rollups can only aggregate on data that has been stored in the rollups. If you don’t configure the rollup job to store metrics about the `price` field, you won’t be able to use the `price` field in any query or aggregation.
 
-For example, the `temperature` field in the following query has been stored in a rollup job…​ but not with an `avg` metric. Which means the usage of `avg` here is not allowed:
+For example, the `temperature` field in the following query has been stored in a rollup job… but not with an `avg` metric. Which means the usage of `avg` here is not allowed:
 
 ```console
 GET sensor_rollup/_rollup_search
@@ -76,7 +81,7 @@ The response will tell you that the field and aggregation were not possible, bec
 
 Rollups are stored at a certain granularity, as defined by the `date_histogram` group in the configuration. This means you can only search/aggregate the rollup data with an interval that is greater-than or equal to the configured rollup interval.
 
-For example, if data is rolled up at hourly intervals, the [Rollup search](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-search.html) API can aggregate on any time interval hourly or greater. Intervals that are less than an hour will throw an exception, since the data simply doesn’t exist for finer granularities.
+For example, if data is rolled up at hourly intervals, the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search) API can aggregate on any time interval hourly or greater. Intervals that are less than an hour will throw an exception, since the data simply doesn’t exist for finer granularities.
 
 ::::{admonition} Requests must be multiples of the config
 :name: rollup-search-limitations-intervals

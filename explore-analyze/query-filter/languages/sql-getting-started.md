@@ -1,6 +1,12 @@
 ---
+navigation_title: Getting started
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-getting-started.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Getting Started with SQL [sql-getting-started]
@@ -17,7 +23,7 @@ PUT /library/_bulk?refresh
 {"name": "Dune", "author": "Frank Herbert", "release_date": "1965-06-01", "page_count": 604}
 ```
 
-And now you can execute SQL using the [SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html):
+And now you can execute SQL using the [SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query):
 
 ```console
 POST /_sql?format=txt
@@ -43,7 +49,7 @@ $ ./bin/elasticsearch-sql-cli
 
 From there you can run the same query:
 
-```sqlcli
+```sql
 sql> SELECT * FROM library WHERE release_date < '2000-01-01';
     author     |     name      |  page_count   | release_date
 ---------------+---------------+---------------+------------------------

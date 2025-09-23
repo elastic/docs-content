@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-tableau-desktop.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Tableau Desktop [sql-client-apps-tableau-desktop]
@@ -8,7 +13,7 @@ mapped_pages:
 Use the {{es}} JDBC driver and dedicated {{es}} Tableau Connector to access {{es}} data from Tableau Desktop.
 
 ::::{important}
-Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, please reach out to its vendor.
+Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, reach out to its vendor.
 ::::
 
 
@@ -31,22 +36,22 @@ Move the {{es}} Connector for Tableau to the Tableau Desktop connectors director
 * Windows: `C:\Users\[Windows User]\Documents\My Tableau Repository\Connectors`
 * Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
 
-Launch Tableau Desktop. In the menu, click **More…​** and select **Elasticsearch by Elastic** as the data source.
+Launch Tableau Desktop. In the menu, click **More…** and select **Elasticsearch by Elastic** as the data source.
 
 $$$apps_tableau_desktop_from_connector$$$
-![Select Elasticsearch by Elastic as the data source](../../../images/elasticsearch-reference-apps_tableau_desktop_from_connector.png "")
+![Select Elasticsearch by Elastic as the data source](/explore-analyze/images/elasticsearch-reference-apps_tableau_desktop_from_connector.png "")
 
 In the **New connection** modal, enter the information for your {{es}} instance, and click **Sign In**.
 
 $$$apps_tableau_connect$$$
-![Sign in](../../../images/elasticsearch-reference-apps_tableau_desktop_connect.png "")
+![Sign in](/explore-analyze/images/elasticsearch-reference-apps_tableau_desktop_connect.png "")
 
 In the main window, select your {{es}} instance as the **Database**. Then select a table to load.
 
 $$$apps_tableau_prepare$$$
-![Select a table to load](../../../images/elasticsearch-reference-apps_tableau_desktop_prepare.png "")
+![Select a table to load](/explore-analyze/images/elasticsearch-reference-apps_tableau_desktop_prepare.png "")
 
 Finally, generate a report.
 
 $$$apps_tableau_report$$$
-![Generate a report](../../../images/elasticsearch-reference-apps_tableau_desktop_report.png "")
+![Generate a report](/explore-analyze/images/elasticsearch-reference-apps_tableau_desktop_report.png "")

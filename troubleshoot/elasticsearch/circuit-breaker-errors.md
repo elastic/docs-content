@@ -1,19 +1,27 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker-errors.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Circuit breaker errors [circuit-breaker-errors]
 
-{{es}} uses [circuit breakers](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html) to prevent nodes from running out of JVM heap memory. If Elasticsearch estimates an operation would exceed a circuit breaker, it stops the operation and returns an error.
+{{es}} uses [circuit breakers](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) to prevent nodes from running out of JVM heap memory. If Elasticsearch estimates an operation would exceed a circuit breaker, it stops the operation and returns an error.
 
-By default, the [parent circuit breaker](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#parent-circuit-breaker) triggers at 95% JVM memory usage. To prevent errors, we recommend taking steps to reduce memory pressure if usage consistently exceeds 85%.
+By default, the [parent circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker) triggers at 95% JVM memory usage. To prevent errors, we recommend taking steps to reduce memory pressure if usage consistently exceeds 85%.
 
 See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough of diagnosing circuit breaker errors.
 
-::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
-
+::::{tip}
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
@@ -45,15 +53,15 @@ Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] D
 
 **Check JVM memory usage**
 
-If you’ve enabled Stack Monitoring, you can view JVM memory usage in {{kib}}. In the main menu, click **Stack Monitoring**. On the Stack Monitoring **Overview*** page, click ***Nodes**. The **JVM Heap** column lists the current memory usage for each node.
+If you’ve enabled Stack Monitoring, you can view JVM memory usage in {{kib}}. In the main menu, click **Stack Monitoring**. On the Stack Monitoring **Overview** page, click **Nodes**. The **JVM Heap** column lists the current memory usage for each node.
 
-You can also use the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html) to get the current `heap.percent` for each node.
+You can also use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to get the current `heap.percent` for each node.
 
 ```console
 GET _cat/nodes?v=true&h=name,node*,heap*
 ```
 
-To get the JVM memory usage for each circuit breaker, use the [node stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html).
+To get the JVM memory usage for each circuit breaker, use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats/breaker
@@ -68,11 +76,11 @@ High JVM memory pressure often causes circuit breaker errors. See [High JVM memo
 
 **Avoid using fielddata on `text` fields**
 
-For high-cardinality `text` fields, fielddata can use a large amount of JVM memory. To avoid this, {{es}} disables fielddata on `text` fields by default. If you’ve enabled fielddata and triggered the [fielddata circuit breaker](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#fielddata-circuit-breaker), consider disabling it and using a `keyword` field instead. See [`fielddata` mapping parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#fielddata-mapping-param).
+For high-cardinality `text` fields, fielddata can use a large amount of JVM memory. To avoid this, {{es}} disables fielddata on `text` fields by default. If you’ve enabled fielddata and triggered the [fielddata circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker), consider disabling it and using a `keyword` field instead. See [`fielddata` mapping parameter](elasticsearch://reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param).
 
 **Clear the fielddata cache**
 
-If you’ve triggered the fielddata circuit breaker and can’t disable fielddata, use the [clear cache API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-clearcache.html) to clear the fielddata cache. This may disrupt any in-flight searches that use fielddata.
+If you’ve triggered the fielddata circuit breaker and can’t disable fielddata, use the [clear cache API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) to clear the fielddata cache. This may disrupt any in-flight searches that use fielddata.
 
 ```console
 POST _cache/clear?fielddata=true

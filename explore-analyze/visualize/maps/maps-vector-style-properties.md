@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-vector-style-properties.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Vector style properties [maps-vector-style-properties]
@@ -19,8 +24,8 @@ You can add text labels to your Point features by configuring label style proper
 | **Label visibility** | Specifies the zoom range for which labels are displayed. |
 | **Label color** | The text color. |
 | **Label size** | The size of the text, in pixels. |
-| **Label border color** | The color of the label border. |
-| **Label border width** | The width of the label border. |
+| **Label border color** | The color of the label border. |
+| **Label border width** | The width of the label border. |
 
 You can symbolize Point features as **Circle markers** or **Icons**.
 
@@ -43,18 +48,18 @@ Use **Icon** to symbolize Points as icons.
 | **Symbol orientation** | The symbol orientation rotating the icon clockwise. |
 | **Symbol size** | The radius of the symbol size, in pixels. |
 
-Available icons
+### Available icons
 
-:::{image} ../../../images/kibana-maki-icons.png
+:::{image} /explore-analyze/images/kibana-maki-icons.png
 :alt: maki icons
-:class: screenshot
+:screenshot:
 :::
 
-Custom Icons
+### Custom Icons
 
-You can also use your own SVG icon to style Point features in your map. In **Layer settings*** open the **icon** dropdown, and click the ***Add custom icon** button. For best results, your SVG icon should be monochrome and have limited details.
+You can also use your own SVG icon to style Point features in your map. In **Layer settings** open the **icon** dropdown, and click the **Add custom icon** button. For best results, your SVG icon should be monochrome and have limited details.
 
-Dynamic styling in **Elastic Maps*** requires rendering SVG icons as PNGs using a [signed distance function](https://en.wikipedia.org/wiki/Signed_distance_function). As a result, sharp corners and intricate details may not render correctly. Modifying the settings under ***Advanced Options*** in the ***Add custom icon** modal may improve rendering.
+Dynamic styling in **Elastic Maps** requires rendering SVG icons as PNGs using a [signed distance function](https://en.wikipedia.org/wiki/Signed_distance_function). As a result, sharp corners and intricate details may not render correctly. Modifying the settings under **Advanced Options** in the **Add custom icon** modal may improve rendering.
 
 Manage your custom icons in [settings](maps-settings.md).
 
@@ -70,8 +75,8 @@ Manage your custom icons in [settings](maps-settings.md).
 | **Label visibility** | Specifies the zoom range for which labels are displayed. |
 | **Label color** | The text color. |
 | **Label size** | The size of the text, in pixels. |
-| **Label border color** | The color of the label border. |
-| **Label border width** | The width of the label border. |
+| **Label border color** | The color of the label border. |
+| **Label border width** | The width of the label border. |
 
 
 ## Line style properties [line-style-properties]
@@ -84,5 +89,5 @@ Manage your custom icons in [settings](maps-settings.md).
 | **Label visibility** | Specifies the zoom range for which labels are displayed. |
 | **Label color** | The text color. |
 | **Label size** | The size of the text, in pixels. |
-| **Label border color** | The color of the label border. |
-| **Label border width** | The width of the label border. |
+| **Label border color** | The color of the label border. |
+| **Label border width** | The width of the label border. |

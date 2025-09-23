@@ -1,47 +1,31 @@
 ---
+navigation_title: On self-managed {{stack}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html
+applies_to:
+  deployment:
+    self: ga
+products:
+  - id: elasticsearch
 ---
 
-# Remote clusters (self-managed) [remote-clusters]
+# Remote clusters on self-managed installations [remote-clusters]
 
-You can connect a local cluster to other {{es}} clusters, known as *remote clusters*. Remote clusters can be located in different datacenters or geographic regions, and contain indices or data streams that can be replicated with {{ccr}} or searched by a local cluster using {{ccs}}.
-
-
-## {{ccr-cap}} [remote-clusters-ccr]
-
-With [{{ccr}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html), you ingest data to an index on a remote cluster. This *leader* index is replicated to one or more read-only *follower* indices on your local cluster. Creating a multi-cluster architecture with {{ccr}} enables you to configure disaster recovery, bring data closer to your users, or establish a centralized reporting cluster to process reports locally.
-
-
-## {{ccs-cap}} [remote-clusters-ccs]
-
-[{{ccs-cap}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html) enables you to run a search request against one or more remote clusters. This capability provides each region with a global view of all clusters, allowing you to send a search request from a local cluster and return results from all connected remote clusters. For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
+The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ech}} deployment](/deploy-manage/remote-clusters/ec-enable-ccs.md) or from an [{{ece}} deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md).
 
 
 ## Add remote clusters [add-remote-clusters]
-
-::::{note}
-The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ess}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.md) or from an [{{ece}} deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.md).
-::::
-
 
 To add remote clusters, you can choose between [two security models](#remote-clusters-security-models) and [two connection modes](#sniff-proxy-modes). Both security models are compatible with either of the connection modes.
 
 
 ### Security models [remote-clusters-security-models]
 
-API key based security model
-:   For clusters on version 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote cluster fine-grained access controls. [Add remote clusters using API key authentication](remote-clusters-api-key.md).
+API key
+:   For clusters on {{stack}} 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote cluster fine-grained access controls. [Add remote clusters using API key authentication](remote-clusters-api-key.md).
 
-Certificate based security model
+TLS certificate (deprecated in {{stack}} 9.0.0)
 :   Uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. In this model, a superuser on the local cluster gains total read access to the remote cluster, so it is only suitable for clusters that are in the same security domain. [Add remote clusters using TLS certificate authentication](remote-clusters-cert.md).
-
-    ::::{admonition} Deprecated in 9.0.0.
-    :class: warning
-
-    Use [API key based security model](remote-clusters-api-key.md) instead.
-    ::::
-
 
 
 ### Connection modes [sniff-proxy-modes]
@@ -57,7 +41,7 @@ Sniff mode
     The *gateway nodes* selection depends on the following criteria:
 
     * **version**: Remote nodes must be compatible with the cluster they are registered to.
-    * **role**: By default, any non-[master-eligible](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html#master-node-role) node can act as a gateway node. Dedicated master nodes are never selected as gateway nodes.
+    * **role**: By default, any non-[master-eligible](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) node can act as a gateway node. Dedicated master nodes are never selected as gateway nodes.
     * **attributes**: You can define the gateway nodes for a cluster by setting [`cluster.remote.node.attr.gateway`](remote-clusters-settings.md#cluster-remote-node-attr) to `true`. However, such nodes still have to satisfy the two above requirements.
 
 

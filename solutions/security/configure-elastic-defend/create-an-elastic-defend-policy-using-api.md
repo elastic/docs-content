@@ -1,11 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/create-defend-policy-api.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
 ---
 
 # Create an Elastic Defend policy using API [create-defend-policy-api]
 
-In addition to [configuring an {{elastic-defend}} policy](configure-an-integration-policy-for-elastic-defend.md) through the {{elastic-sec}} UI, you can create and customize an {{elastic-defend}} policy through the API. This is a three-step process involving the [{{fleet}} API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html). You can repeat steps 2 and 3 to make more modifications to the {{elastic-defend}} policy.
+In addition to [configuring an {{elastic-defend}} policy](configure-an-integration-policy-for-elastic-defend.md) through the {{elastic-sec}} UI, you can create and customize an {{elastic-defend}} policy through the API. This is a three-step process involving the [{{fleet}} API](/reference/fleet/fleet-api-docs.md). You can repeat steps 2 and 3 to make more modifications to the {{elastic-defend}} policy.
 
 ::::{admonition} Requirements
 You must have the **{{elastic-defend}} Policy Management: All** [privilege](elastic-defend-feature-privileges.md) to configure an integration policy.
@@ -79,7 +85,7 @@ Replace these values:
 
 1. `<KIBANA-VERSION>` with your version of {{kib}}.
 2. `<POLICY-ID>` with the agent policy ID you received in step 1.
-3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, navigate to **Integrations** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), and select **{{elastic-defend}}**.
+3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, navigate to **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **{{elastic-defend}}**.
 
 This adds the {{elastic-defend}} integration to your agent policy with the default settings.
 
@@ -488,7 +494,7 @@ Include the resulting JSON object in the following call to save your customized 
 
 1. `<PACKAGE-POLICY-ID>` with the {{elastic-defend}} policy ID you received in step 2.
 2. `<KIBANA-VERSION>` with your version of {{kib}}.
-3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, navigate to **Integrations** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), and select **{{elastic-defend}}**.
+3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, navigate to **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **{{elastic-defend}}**.
 
 ```console
 curl --user <username>:<password> --request PUT \

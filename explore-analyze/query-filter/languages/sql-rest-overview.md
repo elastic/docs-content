@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-overview.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Overview [sql-rest-overview]
 
-The [SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html) accepts SQL in a JSON document, executes it, and returns the results. For example:
+The [SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query) accepts SQL in a JSON document, executes it, and returns the results. For example:
 
 ```console
 POST /_sql?format=txt
@@ -33,7 +38,7 @@ James S.A. Corey |Leviathan Wakes     |561            |2011-06-02T00:00:00.000Z
 
 If you are using [Kibana Console](../tools/console.md) (which is highly recommended), take advantage of the triple quotes `"""` when creating the query. This not only automatically escapes double quotes (`"`) inside the query string but also support multi-line as shown below:
 
-![console triple quotes](../../../images/elasticsearch-reference-console-triple-quotes.png "")
+![console triple quotes](/explore-analyze/images/elasticsearch-reference-console-triple-quotes.png "")
 
 ::::
 

@@ -1,13 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-envs.html
+applies_to:
+  stack: ga
+products:
+  - id: observability
 ---
 
 # Environment variables to configure the Universal Profiling Agent [profiling-envs]
 
 The Universal Profiling Agent can be configured with environment variables.
 
-::::{warning} 
+::::{warning}
 Command line arguments to the Universal Profiling Agent take precedence over environment variables, and environment variables take precedence over the configuration file.
 ::::
 

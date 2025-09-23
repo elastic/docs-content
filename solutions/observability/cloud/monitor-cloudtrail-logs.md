@@ -1,7 +1,12 @@
 ---
-navigation_title: "CloudTrail logs"
+navigation_title: CloudTrail logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-cloudtrail-firehose.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 
@@ -11,11 +16,11 @@ mapped_pages:
 
 In this section, you’ll learn how to monitor and analyze the CloudTrail logs you send to Elastic with Amazon Data Firehose. You will go through the following steps:
 
-* Install AWS integration in {kib}
+* Install AWS integration in {{kib}}
 * Export Cloudtrail events to CloudWatch
 * Set up a Firehose delivery stream
 * Set up a subscription filter to route Cloudtrail events to a delivery stream
-* Visualize your CloudTrail logs in {kib}
+* Visualize your CloudTrail logs in {{kib}}
 
 
 ## Before you begin [firehose-cloudtrail-prerequisites]
@@ -23,7 +28,7 @@ In this section, you’ll learn how to monitor and analyze the CloudTrail logs y
 We assume that you already have:
 
 * An AWS account with permissions to pull the necessary data from AWS.
-* A deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
 
 ::::{important}
 Make sure the deployment is on AWS, because the Amazon Data Firehose delivery stream connects specifically to an endpoint that needs to be on AWS.
@@ -33,14 +38,14 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-cloudtrail-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Browse the catalog to find the Amazon Data Firehose integration.
 3. Navigate to the **Settings** tab and click **Install Amazon Data Firehose assets**.
 
 
 ## Step 2: Export Cloudtrail events to CloudWatch [firehose-cloudtrail-step-two]
 
-:::{image} ../../../images/observability-firehose-cloudtrail-cloudwatch.png
+:::{image} /solutions/images/observability-firehose-cloudtrail-cloudwatch.png
 :alt: Cloudtrail to CloudWatch
 :::
 
@@ -70,7 +75,7 @@ To export CloudTrail logs to CloudWatch, you must set up a **trail** through the
 
     Open the log group you just created on CloudWatch and make sure there are events from the CloudTrail you have just created.
 
-    :::{image} ../../../images/observability-firehose-verify-events-cloudwatch.png
+    :::{image} /solutions/images/observability-firehose-verify-events-cloudwatch.png
     :alt: Verify events in CloudWatch
     :::
 
@@ -78,7 +83,7 @@ To export CloudTrail logs to CloudWatch, you must set up a **trail** through the
 
 ## Step 3: Set up a Firehose delivery stream [firehose-cloudtrail-step-three]
 
-:::{image} ../../../images/observability-firehose-delivery-stream.png
+:::{image} /solutions/images/observability-firehose-delivery-stream.png
 :alt: Firehose delivery stream
 :::
 
@@ -91,6 +96,7 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
         3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
 
@@ -102,14 +108,9 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
 
     * Elastic endpoint URL: The URL that you copied in the previous step.
     * API key: The API key that you created in the previous step.
-    * Content encoding: gzip
-    * Retry duration: 60 (default)
-    * Backup settings: failed data only to s3 bucket
-
-
-::::{important}
-Verify that your **Elasticsearch endpoint URL** includes `.es.` between the **deployment name** and **region**. Example: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`
-::::
+    * Content encoding: To reduce the data transfer costs, use GZIP encoding.
+    * Retry duration: A duration between 60 and 300 seconds should be suitable for most use cases.
+    * Backup settings: It is recommended to configure S3 backup for failed records. These backups can then be used to restore failed data ingestion caused by unforeseen service outages.
 
 
 You now have an Amazon Data Firehose delivery specified with:
@@ -121,7 +122,7 @@ You now have an Amazon Data Firehose delivery specified with:
 
 ## Step 4: Set up a subscription filter to route CloudTrail events to a delivery stream [firehose-cloudtrail-step-four]
 
-:::{image} ../../../images/observability-firehose-subscription-filter.png
+:::{image} /solutions/images/observability-firehose-subscription-filter.png
 :alt: Firehose subscription filter
 :::
 
@@ -129,7 +130,7 @@ The Amazon Data Firehose delivery stream is ready to send logs to your Elastic C
 
 1. Visit the log group with the CloudTrail events.
 
-    Open the log group where the CloudTrail service is sending the events. You must forward these events to an Elastic stack using the Amazon Data Firehose delivery stream. CloudWatch log group offers a [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.md) that allows you to choose log events from the log group and forward them to other services like Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
+    Open the log group where the CloudTrail service is sending the events. You must forward these events to an Elastic stack using the Amazon Data Firehose delivery stream. CloudWatch log group offers a [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html) that allows you to choose log events from the log group and forward them to other services like Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
 
 2. Create a subscription filter for Amazon Data Firehose by following these steps.
 
@@ -188,7 +189,7 @@ To check if there are destination error logs, go to the AWS console, visit your 
 
 If everything is correct, this list should be empty. If there’s an error, you can check the details. The following example shows a delivery stream that fails to send records to the Elastic stack due to bad authentication settings:
 
-:::{image} ../../../images/observability-firehose-failed-delivery-stream.png
+:::{image} /solutions/images/observability-firehose-failed-delivery-stream.png
 :alt: Firehose failed delivery stream
 :::
 
@@ -199,7 +200,7 @@ The Amazon Data Firehose delivery stream reports the number of failed deliveries
 
 With the new subscription filter running, CloudWatch starts routing new CloudTrail log events to the Firehose delivery stream.
 
-:::{image} ../../../images/observability-firehose-monitor-cloudtrail-logs.png
+:::{image} /solutions/images/observability-firehose-monitor-cloudtrail-logs.png
 :alt: Firehose monitor CloudTrail logs
 :::
 
@@ -207,18 +208,13 @@ Navigate to {{kib}} and choose among the following monitoring options:
 
 * **Visualize your logs with Discover**
 
-    :::{image} ../../../images/observability-firehose-cloudtrail-discover.png
+    :::{image} /solutions/images/observability-firehose-cloudtrail-discover.png
     :alt: Visualize CloudTrail logs with Disocver
     :::
 
-* **Visualize your logs with Logs explorer**
-
-    :::{image} ../../../images/observability-firehose-cloudtrail-logsexplorer.png
-    :alt: Visualize CloudTrail logs with Logs explorer
-    :::
 
 * **Visualize your logs with the CloudTrail Dashboard**
 
-    :::{image} ../../../images/observability-firehose-cloudtrail-dashboard.png
+    :::{image} /solutions/images/observability-firehose-cloudtrail-dashboard.png
     :alt: Visualize CloudTrail logs with CloudTrail Dashboard
     :::

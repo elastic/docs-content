@@ -1,12 +1,19 @@
 ---
-navigation_title: "Capture diagnostics"
+navigation_title: Diagnostics
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnostic.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-
-
-# Capture diagnostics [diagnostic]
+# Capture {{es}} diagnostics [diagnostic]
 
 
 The {{es}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of cluster statistics and most settings. It works against all {{es}} versions.
@@ -17,9 +24,8 @@ You can generate diagnostic information using this tool before you contact [Elas
 
 See this [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
-::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
-
+::::{tip}
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
@@ -33,8 +39,8 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 The Support Diagnostic tool is included as a sub-library in some Elastic deployments:
 
-* {{ece}}: Located under **{{ece}}** > **Deployment*** > ***Operations*** > ***Prepare Bundle** > **{{es}}**.
-* {{eck}}: Run as [`eck-diagnostics`](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-take-eck-dump.html).
+* {{ece}}: Located under **{{ece}}** > **Deployment** > **Operations** > **Prepare Bundle** > **{{es}}**.
+* {{eck}}: Run as [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also directly download the `diagnostics-X.X.X-dist.zip` file for the latest Support Diagnostic release from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).
 
@@ -43,7 +49,7 @@ You can also directly download the `diagnostics-X.X.X-dist.zip` file for the lat
 
 To capture an {{es}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html).
+1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
 
     For example, with the parameters `host:localhost`, `port:9200`, and `username:elastic`, you’d use the following curl request:
 
@@ -68,17 +74,16 @@ To capture an {{es}} diagnostic:
     **Windows**
 
     ```sh
-    sudo .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
+    .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
-    ::::{admonition} Script execution modes
-    :class: tip
+    ::::{tip}
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `local` (default, recommended): Polls the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html), gathers operating system info, and captures cluster and GC logs.
+    * `local` (default, recommended): Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.
-    * `api`: Polls the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html). All other data must be collected manually.
+    * `api`: Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
 
     ::::
 

@@ -1,7 +1,12 @@
 ---
-navigation_title: "EC2"
+navigation_title: EC2
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-ec2.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 
@@ -15,7 +20,7 @@ Amazon EC2 instances can be run in various locations. The location is composed o
 
 Like most AWS services, Amazon EC2 sends its metrics to Amazon CloudWatch. The Elastic [Amazon EC2 integration](https://docs.elastic.co/en/integrations/aws/ec2) collects metrics from Amazon CloudWatch using {{agent}}.
 
-CloudWatch, by default, uses basic monitoring that publishes metrics at five-minute intervals. You can enable detailed monitoring to increase that resolution to one-minute, at an additional cost. To learn how to enable detailed monitoring, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.md).
+CloudWatch, by default, uses basic monitoring that publishes metrics at five-minute intervals. You can enable detailed monitoring to increase that resolution to one-minute, at an additional cost. To learn how to enable detailed monitoring, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html).
 
 CloudWatch does not expose metrics related to EC2 instance memory. You can install {{agent}} on the EC2 instances to collect detailed system metrics.
 
@@ -26,9 +31,8 @@ To collect EC2 metrics, you typically need to install the Elastic [Amazon EC2 in
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
-:::::{dropdown} **Quick guide: Add data**
-::::{admonition}
-1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+:::::{dropdown} Quick guide: Add data
+1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for and select the **Amazon EC2** integration.
 3. Read the overview to make sure you understand integration requirements and other considerations.
 4. Click **Add Amazon EC2**.
@@ -46,12 +50,12 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 7. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an integration policy for the configuration you just specified. If an {{agent}} is already assigned to the policy, you’re done. Otherwise, you need to deploy an {{agent}}.
 8. To deploy an {{agent}}:
 
-    1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent*** flyout. If you accidentally close the popup or the flyout doesn’t open, go to ***{{fleet}} → Agents**, then click **Add agent** to access the flyout.
+    1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout. If you accidentally close the popup or the flyout doesn’t open, go to **{{fleet}} → Agents**, then click **Add agent** to access the flyout.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}.
 
-9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
+9. When incoming data is confirmed—after a minute or two—click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](https://www.elastic.co/guide/en/fleet/current/index.html).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/fleet/index.md).
 
 ::::
 
@@ -59,16 +63,16 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 :::::
 
 
-{{agent}} is currently the preferred way to add EC2 metrics. For other ways, refer to [Adding data to {{es}}](../../../manage-data/ingest.md).
+{{agent}} is currently the preferred way to add EC2 metrics. For other ways, refer to [Adding data to {{es}}](/manage-data/ingest.md).
 
 
 ## Dashboards [dashboard-ec2]
 
 {{kib}} provides a full data analytics platform with out-of-the-box dashboards that you can clone and enhance to satisfy your custom visualization use cases. For example, to see an overview of your EC2 instance metrics in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] EC2 Overview** dashboard.
 
-:::{image} ../../../images/observability-ec2-overview-dashboard.png
+:::{image} /solutions/images/observability-ec2-overview-dashboard.png
 :alt: Screenshot showing the EC2 overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -160,7 +164,7 @@ Here are the key status check metrics you should monitor and what to look for:
 
 
 `aws.ec2.metrics.StatusCheckFailed_Instance.avg`
-:   This check monitors the software and network configuration of the instance. Problems that can cause instance status checks to fail may include: incorrect networking or startup configuration, exhausted memory, corrupted file system, incompatible kernel, and so on. When an instance status check fails, you typically must address the problem yourself. You may need to reboot the instance or make instance configuration changes. To troubleshoot instances with failed status checks, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.md).
+:   This check monitors the software and network configuration of the instance. Problems that can cause instance status checks to fail may include: incorrect networking or startup configuration, exhausted memory, corrupted file system, incompatible kernel, and so on. When an instance status check fails, you typically must address the problem yourself. You may need to reboot the instance or make instance configuration changes. To troubleshoot instances with failed status checks, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html).
 
     This check returns 0 (passed) if an instance passes the system status check or 1 (failed) if it fails.
 

@@ -1,9 +1,14 @@
 ---
+navigation_title: Uptime
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/troubleshoot-uptime-mapping-issues.html
+applies_to:
+  stack: deprecated 8.15.0
+products:
+  - id: observability
 ---
 
-# Troubleshoot mapping issues [troubleshoot-uptime-mapping-issues]
+# Troubleshoot Uptime mapping issues [troubleshoot-uptime-mapping-issues]
 
 
 ## Mapping issues [_mapping_issues] 
@@ -13,16 +18,16 @@ There are situations in which {{heartbeat}} data can be indexed without the corr
 To fix this problem, you typically need to remove your {{heartbeat}} indices and data streams. Then you must create new ones with the appropriate mappings installed. To achieve this, follow the steps below.
 
 
-### Stop your {{heartbeat}}/{elastic-agent} instances [_stop_your_heartbeatelastic_agent_instances] 
+### Stop your {{heartbeat}}/{{elastic-agent}} instances [_stop_your_heartbeatelastic_agent_instances] 
 
-It is necessary to stop all {{heartbeat}}/{elastic-agent} instances that are targeting the cluster, so they will not write to or re-create indices prematurely.
+It is necessary to stop all {{heartbeat}}/{{elastic-agent}} instances that are targeting the cluster, so they will not write to or re-create indices prematurely.
 
 
 ### Delete your {{heartbeat}} indices / {{elastic-agent}} data streams [_delete_your_heartbeat_indices_elastic_agent_data_streams] 
 
 To ensure the mapping is applied to all {{heartbeat}} data going forward, delete all the {{heartbeat}} indices that match the pattern the {{uptime-app}} will use.
 
-There are multiple ways to achieve this. You can read about performing this using the [Index Management UI](../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) or with the [Delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+There are multiple ways to achieve this. You can read about performing this using the [Index Management UI](/manage-data/data-store/index-basics.md#index-management) or with the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 
 If using {{elastic-agent}} you will want to fix any issues with custom data stream mappings. We encourage the use of {{fleet}} to eliminate this issue.
 
@@ -35,12 +40,12 @@ The below command will cause {{heartbeat}} to perform its setup processes and re
 ./heartbeat setup -e
 ```
 
-For more information on how to use this command, or if you’re using DEB, RPM, or Windows, see the [{{heartbeat}} quickstart guide](https://www.elastic.co/guide/en/beats/heartbeat/current/heartbeat-installation-configuration.html).
+For more information on how to use this command, or if you’re using DEB, RPM, or Windows, see the [{{heartbeat}} quickstart guide](beats://reference/heartbeat/heartbeat-installation-configuration.md).
 
 This command performs the necessary startup tasks and ensures that your indices have the appropriate mapping going forward.
 
 
-### Run {{heartbeat}}/{elastic-agent} again [_run_heartbeatelastic_agent_again] 
+### Run {{heartbeat}}/{{elastic-agent}} again [_run_heartbeatelastic_agent_again] 
 
-Now, when you run {{heartbeat}}/{elastic-agent}, your data will be indexed with the appropriate mappings. When the {{uptime-app}} attempts to fetch your data, it should be able to render without issues.
+Now, when you run {{heartbeat}}/{{elastic-agent}}, your data will be indexed with the appropriate mappings. When the {{uptime-app}} attempts to fetch your data, it should be able to render without issues.
 

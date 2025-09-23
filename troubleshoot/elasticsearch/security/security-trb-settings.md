@@ -1,13 +1,23 @@
 ---
+navigation_title: Nodes info API response
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-trb-settings.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Some settings are not returned via the nodes settings API [security-trb-settings]
+# Troubleshoot a nodes info API response [security-trb-settings]
 
 **Symptoms:**
 
-* When you use the [nodes info API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-info.html) to retrieve settings for a node, some information is missing.
+* When you use the [nodes info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-info) to retrieve settings for a node, some information is missing.
 
 **Resolution:**
 

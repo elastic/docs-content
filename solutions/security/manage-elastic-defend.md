@@ -1,14 +1,16 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/sec-manage-intro.html
   - https://www.elastic.co/guide/en/serverless/current/security-manage-endpoint-protection.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
-# Manage Elastic Defend
+# Manage {{elastic-defend}} [sec-manage-intro]
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/security-docs/security/sec-manage-intro.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-manage-endpoint-protection.md
+The following section provides an overview of the management tools admins can use to manage endpoints, integration policies, trusted applications, event filters, host isolation exceptions, and blocked applications.

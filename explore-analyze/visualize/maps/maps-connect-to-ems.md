@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Connect to Elastic Maps Service [maps-connect-to-ems]
@@ -38,8 +43,8 @@ Headers for the Tile Service JSON manifest describing the basemaps available.
 
 ::::::{tab-item} Curl Example
 ::::{dropdown}
-```bash
-curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -47,7 +52,7 @@ curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=ag
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 server: BaseHTTP/0.6 Python/3.11.4
 date: Mon, 20 Nov 2023 15:08:46 GMT
@@ -71,7 +76,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: tiles.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -90,7 +95,7 @@ TE: trailers
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 server: BaseHTTP/0.6 Python/3.11.4
 date: Mon, 20 Nov 2023 17:53:10 GMT
 content-type: application/json; charset=utf-8
@@ -118,8 +123,8 @@ Headers for a vector tile asset in *protobuffer* format from the Tile Service.
 
 ::::::{tab-item} Curl Example
 ::::{dropdown}
-```bash
-$ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+$ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -127,7 +132,7 @@ $ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 content-encoding: gzip
 content-length: 144075
@@ -153,7 +158,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: tiles.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -170,7 +175,7 @@ TE: trailers
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 content-encoding: gzip
 content-length: 101691
 access-control-allow-origin: *
@@ -208,7 +213,7 @@ curl -I 'https://tiles.maps.elastic.co/styles/osm-bright-desaturated/sprite.png'
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 content-length: 17181
 access-control-allow-origin: *
@@ -231,7 +236,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: tiles.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: image/avif,image/webp,*/*
@@ -250,7 +255,7 @@ TE: trailers
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 content-length: 17181
 access-control-allow-origin: *
 access-control-allow-methods: GET, OPTIONS, HEAD
@@ -281,8 +286,8 @@ Headers for the File Service JSON manifest that declares all the datasets availa
 
 ::::::{tab-item} Curl example
 ::::{dropdown}
-```bash
-curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -290,7 +295,7 @@ curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=a
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 x-guploader-uploadid: ABPtcPp_BvMdBDO5jVlutETVHmvpOachwjilw4AkIKwMrOQJ4exR9Eln4g0LkW3V_LLSEpvjYLtUtFmO0Uwr61XXUhoP_A
 x-goog-generation: 1689593295246576
@@ -320,7 +325,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: vector.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -338,7 +343,7 @@ Cache-Control: no-cache
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 x-guploader-uploadid: ABPtcPoUFrCmjBeebnfRxSZp44ZHsZ-_iQg7794RU1Z7Lb2cNNxXsMRkIDa5s7VBEfyehvo-_9rcm1A3HfYW8geguUxKrw
 x-goog-generation: 1689593295246576
 x-goog-metageneration: 1
@@ -372,8 +377,8 @@ Headers for a sample Dataset from the File Service in TopoJSON format.
 
 ::::::{tab-item} Curl example
 ::::{dropdown}
-```bash
-curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version.stack}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -381,7 +386,7 @@ curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elast
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 x-guploader-uploadid: ABPtcPpmMffchVgfHIr-SSC00WORo145oV-1q0asjqRvjLV_7cIgyfLRfofXV-BG7huMYABFypblcgdgXRBARhpo2c88ow
 x-goog-generation: 1689593325442971
@@ -411,7 +416,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: vector.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -429,7 +434,7 @@ Cache-Control: no-cache
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 x-guploader-uploadid: ABPtcPqIDSg5tyavvwwtJQa8a8iycoXOCkHBp_2YJbJJnQgb5XMD7nFwRUogg00Ou27VFIs95v7L99OMnvXR1bcb9RW-xQ
 x-goog-generation: 1689593325442971
 x-goog-metageneration: 1
@@ -462,7 +467,7 @@ X-Firefox-Spdy: h2
 
 You might experience EMS connection issues if your Kibana server or browser are on a private network or behind a firewall. If this happens, you can disable the EMS connection to avoid unnecessary EMS requests.
 
-To disable EMS, change your [kibana.yml](../../../deploy-manage/deploy/self-managed/configure.md) file.
+To disable EMS, change your [kibana.yml](kibana://reference/configuration-reference/general-settings.md) file.
 
 1. Set `map.includeElasticMapsService` to `false` to turn off the EMS connection.
 2. Set `map.tilemap.url` to the URL of your tile server. This configures the default tile layer of Maps.
@@ -481,26 +486,21 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 1. Pull the {{hosted-ems}} Docker image.
 
-    ::::{warning}
-    Version 9.0.0-beta1 of {{hosted-ems}} has not yet been released. No Docker image is currently available for this version.
-    ::::
-
-
-    ```bash
-    docker pull docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    ```bash subs=true
+    docker pull docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     ```
 
 2. Optional: Install [Cosign](https://docs.sigstore.dev/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
-    ```sh
+    ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    cosign verify --key cosign.pub docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
-    ```sh
-    Verification for docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1 --
+    ```sh subs=true
+    Verification for docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}} --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -509,17 +509,17 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 3. Start {{hosted-ems}} and expose the default port `8080`:
 
-    ```bash
+    ```bash subs=true
     docker run --rm --init --publish 8080:8080 \
-      docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+      docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     ```
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
 
-    :::{image} ../../../images/kibana-elastic-maps-server-instructions.png
-    :alt: Set-up instructions
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-elastic-maps-server-instructions.png
+   :alt: Set-up instructions
+   :screenshot:
+   :::
 
 
 
@@ -531,9 +531,9 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 |     |     |
 | --- | --- |
-| $$$ems-host$$$`host` | Specifies the host of the backend server. To allow remote users to connect, set the value to the IP address or DNS name of the {{hosted-ems}} container. **Default: *your-hostname***. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-host). |
-| `port` | Specifies the port used by the backend server. Default: **`8080`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-port). |
-| `basePath` | Specify a path at which to mount the server if you are running behind a proxy. This setting cannot end in a slash (`/`). [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-basePath). |
+| $$$ems-host$$$`host` | Specifies the host of the backend server. To allow remote users to connect, set the value to the IP address or DNS name of the {{hosted-ems}} container. **Default: _your-hostname_**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-host). |
+| `port` | Specifies the port used by the backend server. Default: **`8080`**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-port). |
+| `basePath` | Specify a path at which to mount the server if you are running behind a proxy. This setting cannot end in a slash (`/`). [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-basepath). |
 | `ui` | Controls the display of the status page and the layer preview. **Default: `true`** |
 | `logging.level` | Verbosity of {{hosted-ems}} logs. Valid values are `trace`, `debug`, `info`, `warn`, `error`, `fatal`, and `silent`. **Default: `info`** |
 | `path.planet` | Path of the basemaps database. **Default: `/usr/src/app/data/planet.mbtiles`** |
@@ -544,29 +544,29 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 | --- | --- |
 | `elasticsearch.host` | URL of the {{es}} instance to use for license validation. |
 | `elasticsearch.username` and `elasticsearch.password` | Credentials of a user with at least the `monitor` role. |
-| `elasticsearch.ssl.certificateAuthorities` | Paths to one or more PEM-encoded X.509 certificate authority (CA) certificates that make up a trusted certificate chain for {{hosted-ems}}. This chain is used by {{hosted-ems}} to establish trust when connecting to your {{es}} cluster. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#elasticsearch-ssl-certificateAuthorities). |
-| `elasticsearch.ssl.certificate` and `elasticsearch.ssl.key`, and `elasticsearch.ssl.keyPassphrase` | Optional settings that provide the paths to the PEM-format SSL certificate and key files and the key password. These files are used to verify the identity of {{hosted-ems}} to {{es}} and are required when `xpack.security.http.ssl.client_authentication` in {{es}} is set to `required`. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#elasticsearch-ssl-cert-key). |
-| `elasticsearch.ssl.verificationMode` | Controls the verification of the server certificate that {{hosted-ems}} receives when making an outbound SSL/TLS connection to {{es}}. Valid values are "`full`", "`certificate`", and "`none`". Using "`full`" performs hostname verification, using "`certificate`" skips hostname verification, and using "`none`" skips verification entirely. **Default: `full`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#elasticsearch-ssl-verificationMode). |
+| `elasticsearch.ssl.certificateAuthorities` | Paths to one or more PEM-encoded X.509 certificate authority (CA) certificates that make up a trusted certificate chain for {{hosted-ems}}. This chain is used by {{hosted-ems}} to establish trust when connecting to your {{es}} cluster. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#elasticsearch-ssl-certificateauthorities). |
+| `elasticsearch.ssl.certificate` and `elasticsearch.ssl.key`, and `elasticsearch.ssl.keyPassphrase` | Optional settings that provide the paths to the PEM-format SSL certificate and key files and the key password. These files are used to verify the identity of {{hosted-ems}} to {{es}} and are required when `xpack.security.http.ssl.client_authentication` in {{es}} is set to `required`. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#elasticsearch-ssl-cert-key). |
+| `elasticsearch.ssl.verificationMode` | Controls the verification of the server certificate that {{hosted-ems}} receives when making an outbound SSL/TLS connection to {{es}}. Valid values are "`full`", "`certificate`", and "`none`". Using "`full`" performs hostname verification, using "`certificate`" skips hostname verification, and using "`none`" skips verification entirely. **Default: `full`**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#elasticsearch-ssl-verificationmode). |
 
 **Server security settings**
 
 |     |     |
 | --- | --- |
-| `ssl.enabled` | Enables SSL/TLS for inbound connections to {{hosted-ems}}. When set to `true`, a certificate and its corresponding private key must be provided. **Default: `false`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-enabled). |
-| `ssl.certificateAuthorities` | Paths to one or more PEM-encoded X.509 certificate authority (CA) certificates that make up a trusted certificate chain for {{hosted-ems}}. This chain is used by the {{hosted-ems}} to establish trust when receiving inbound SSL/TLS connections from end users. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-certificateAuthorities). |
-| `ssl.key`, `ssl.certificate`, and `ssl.keyPassphrase` | Location of yor SSL key and certificate files and the password that decrypts the private key that is specified via `ssl.key`. This password is optional, as the key may not be encrypted. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cert-key). |
-| `ssl.supportedProtocols` | An array of supported protocols with versions.Valid protocols: `TLSv1`, `TLSv1.1`, `TLSv1.2`. **Default: `TLSv1.1`, `TLSv1.2`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-supportedProtocols). |
-| `ssl.cipherSuites` | Details on the format, and the valid options, are available via the[OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.md#CIPHER-LIST-FORMAT).**Default: `TLS_AES_256_GCM_SHA384 TLS_CHACHA20_POLY1305_SHA256 TLS_AES_128_GCM_SHA256 ECDHE-RSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES256-GCM-SHA384, DHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES128-SHA256, DHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, DHE-RSA-AES256-SHA384, ECDHE-RSA-AES256-SHA256, DHE-RSA-AES256-SHA256, HIGH,!aNULL, !eNULL, !EXPORT, !DES, !RC4, !MD5, !PSK, !SRP, !CAMELLIA`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cipherSuites). |
+| `ssl.enabled` | Enables SSL/TLS for inbound connections to {{hosted-ems}}. When set to `true`, a certificate and its corresponding private key must be provided. **Default: `false`**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-ssl-enabled). |
+| `ssl.certificateAuthorities` | Paths to one or more PEM-encoded X.509 certificate authority (CA) certificates that make up a trusted certificate chain for {{hosted-ems}}. This chain is used by the {{hosted-ems}} to establish trust when receiving inbound SSL/TLS connections from end users. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-ssl-certificateauthorities). |
+| `ssl.key`, `ssl.certificate`, and `ssl.keyPassphrase` | Location of yor SSL key and certificate files and the password that decrypts the private key that is specified via `ssl.key`. This password is optional, as the key may not be encrypted. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-ssl-cert-key). |
+| `ssl.supportedProtocols` | An array of supported protocols with versions.Valid protocols: `TLSv1`, `TLSv1.1`, `TLSv1.2`. **Default: `TLSv1.1`, `TLSv1.2`**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-ssl-supportedprotocols). |
+| `ssl.cipherSuites` | Details on the format, and the valid options, are available via the[OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html#CIPHER-LIST-FORMAT).**Default: `TLS_AES_256_GCM_SHA384 TLS_CHACHA20_POLY1305_SHA256 TLS_AES_128_GCM_SHA256 ECDHE-RSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES256-GCM-SHA384, DHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES128-SHA256, DHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, DHE-RSA-AES256-SHA384, ECDHE-RSA-AES256-SHA256, DHE-RSA-AES256-SHA256, HIGH,!aNULL, !eNULL, !EXPORT, !DES, !RC4, !MD5, !PSK, !SRP, !CAMELLIA`**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-ssl-ciphersuites). |
 
 
 #### Bind-mounted configuration [elastic-maps-server-bind-mount-config]
 
 One way to configure {{hosted-ems}} is to provide `elastic-maps-server.yml` via bind-mounting. With `docker-compose`, the bind-mount can be specified like this:
 
-```yaml
+```yaml subs=true
 services:
   ems-server:
-    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     volumes:
       - ./elastic-maps-server.yml:/usr/src/app/server/config/elastic-maps-server.yml
 ```
@@ -583,10 +583,10 @@ All information that you include in environment variables is visible through the
 
 These variables can be set with `docker-compose` like this:
 
-```yaml
+```yaml subs=true
 services:
   ems-server:
-    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version.stack}}
     environment:
       ELASTICSEARCH_HOST: http://elasticsearch.example.org
       ELASTICSEARCH_USERNAME: 'ems'
@@ -598,9 +598,9 @@ services:
 
 {{hosted-ems}} hosts vector layer boundaries and vector tile basemaps for the entire planet. Boundaries include world countries, global administrative regions, and specific country regions. Basemaps up to zoom level 8 are bundled in the Docker image. These basemaps are sufficient for maps and dashboards at the country level. To present maps with higher detail, follow the instructions of the front page to download and configure the appropriate basemaps database. The most detailed basemaps at zoom level 14 are good for street level maps, but require ~90GB of disk space.
 
-:::{image} ../../../images/kibana-elastic-maps-server-basemaps.png
+:::{image} /explore-analyze/images/kibana-elastic-maps-server-basemaps.png
 :alt: Basemaps download options
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -611,7 +611,7 @@ The available basemaps and boundaries can be explored from the `/maps` endpoint 
 
 ### Kibana configuration [elastic-maps-server-kibana]
 
-With {{hosted-ems}} running, add the `map.emsUrl` configuration key in your [kibana.yml](../../../deploy-manage/deploy/self-managed/configure.md) file pointing to the root of the service. This setting will point {{kib}} to request EMS basemaps and boundaries from {{hosted-ems}}. Typically this will be the URL to the [host and port](#ems-host) of {{hosted-ems}}. For example, `map.emsUrl: https://my-ems-server:8080`.
+With {{hosted-ems}} running, add the `map.emsUrl` configuration key in your [kibana.yml](kibana://reference/configuration-reference/general-settings.md) file pointing to the root of the service. This setting will point {{kib}} to request EMS basemaps and boundaries from {{hosted-ems}}. Typically this will be the URL to the [host and port](#ems-host) of {{hosted-ems}}. For example, `map.emsUrl: https://my-ems-server:8080`.
 
 
 ### Status check [elastic-maps-server-check]
@@ -630,5 +630,4 @@ With {{hosted-ems}} running, add the `map.emsUrl` configuration key in your [kib
 
 ### Logging [elastic-maps-server-logging]
 
-Logs are generated in [ECS JSON format](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) and emitted to the standard output and to `/var/log/elastic-maps-server/elastic-maps-server.log`. The server won’t rotate the logs automatically but the `logrotate` tool is installed in the image. Mount `/dev/null` to the default log path if you want to disable the output to that file.
-
+Logs are generated in [ECS JSON format](ecs://reference/index.md) and emitted to the standard output and to `/var/log/elastic-maps-server/elastic-maps-server.log`. The server won’t rotate the logs automatically but the `logrotate` tool is installed in the image. Mount `/dev/null` to the default log path if you want to disable the output to that file.

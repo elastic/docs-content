@@ -1,22 +1,32 @@
 ---
+navigation_title: Advanced configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-advanced-configuration.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
-# Advanced configuration [k8s-apm-advanced-configuration]
+# Advanced configuration for {{apm-server}} on {{eck}} [k8s-apm-advanced-configuration]
 
 This section covers the following topics:
 
 * [Use APM Agent central configuration](#k8s-apm-agent-central-configuration)
 * [Customize the APM Server configuration](#k8s-apm-customize-configuration)
 * [Specify secure settings for your APM Server](#k8s-apm-secure-settings)
-* [Reference an existing Elasticsearch cluster](#k8s-apm-existing-es)
+* [Reference an existing {{es}} cluster](#k8s-apm-existing-es)
 
 ## Use APM Agent central configuration [k8s-apm-agent-central-configuration]
 
-[APM Agent configuration management](https://www.elastic.co/guide/en/kibana/current/agent-configuration.html) [7.5.1] allows you to configure your APM Agents centrally from the Kibana APM app. To use this feature, the APM Server needs to be configured with connection details of the Kibana instance. If Kibana is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
+:::{admonition} Added in 7.5.1
+APM Agent central configuration was added in 7.5.1.
+:::
 
-```yaml
+[APM Agent configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
+
+```yaml subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: apm.k8s.elastic.co/v1
 kind: ApmServer
@@ -24,7 +34,7 @@ metadata:
   name: apm-server-quickstart
   namespace: default
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: quickstart
@@ -33,7 +43,7 @@ spec:
 EOF
 ```
 
-Starting with version 8.0.0 you will also need to ensure that your Kibana instance has the following configuration:
+Starting with version 8.0.0 you will also need to ensure that your {{kib}} instance has the following configuration:
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -49,14 +59,14 @@ config:
 
 To customize the configuration of the APM Server, use the `config` element in the specification:
 
-```yaml
+```yaml subs=true
 apiVersion: apm.k8s.elastic.co/v1
 kind: ApmServer
 metadata:
   name: apm-server-quickstart
   namespace: default
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   config:
     output:
@@ -85,14 +95,14 @@ The APM Server keystore can be used to store sensitive settings in the APM Serve
 
 2. In the `spec.secureSettings` section, add a reference to the secret you previously created.
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: apm.k8s.elastic.co/v1
     kind: ApmServer
     metadata:
       name: apm-server-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       secureSettings:
       - secretName: apm-secret-settings
@@ -102,37 +112,37 @@ The APM Server keystore can be used to store sensitive settings in the APM Serve
             password: "${ES_PASSWORD}"
     ```
 
-3. Reference the key in the APM Server configuration, as described in the [Secrets keystore for secure settings](https://www.elastic.co/guide/en/apm/server/current/keystore.html).
+3. Reference the key in the APM Server configuration, as described in the [Secrets keystore for secure settings](/solutions/observability/apm/secrets-keystore-for-secure-settings.md).
 
 
-## Reference an existing Elasticsearch cluster [k8s-apm-existing-es]
+## Reference an existing {{es}} cluster [k8s-apm-existing-es]
 
-Now that you know how to use the APM keystore and customize the server configuration, you can manually configure a secured connection to an existing Elasticsearch cluster.
+Now that you know how to use the APM keystore and customize the server configuration, you can manually configure a secured connection to an existing {{es}} cluster.
 
-1. Create a secret with the Elasticsearch CA.
+1. Create a secret with the {{es}} CA.
 
-    You need to store the certificate authority of the Elasticsearch cluster in a secret:
+    You need to store the certificate authority of the {{es}} cluster in a secret:
 
     ```yaml
     kubectl create secret generic es-ca --from-file=tls.crt=elasticsearch-ca.crt
     ```
 
     ::::{note}
-    The `elasticsearch-ca.crt` file must contain the CA certificate of the Elasticsearch cluster you want to use with the APM Server.
+    The `elasticsearch-ca.crt` file must contain the CA certificate of the {{es}} cluster you want to use with the APM Server.
     ::::
 
 2. Mount this secret using the Pod template, and reference the file in the `config` of the APM Server.
 
     Here is a complete example with a password stored in the Keystore, as described in the previous section:
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: apm.k8s.elastic.co/v1
     kind: ApmServer
     metadata:
       name: apm-server-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       secureSettings:
       - secretName: apm-secret-settings
@@ -166,8 +176,6 @@ Now that you know how to use the APM keystore and customize the server configura
 
 By default the operator manages a private CA and generates a self-signed certificate used to secure the communication between APM agents and the server.
 
-This behavior and the relevant configuration is identical to what is done for Elasticsearch and Kibana. Check [Setting up your own certificate](accessing-services.md#k8s-setting-up-your-own-certificate) for more information on how to use your own certificate to configure the TLS endpoint of the APM Server.
+This behavior and the relevant configuration is identical to what is done for {{es}} and {{kib}}. Check [Setting up your own certificate](/deploy-manage/security/secure-cluster-communications.md) for more information on how to use your own certificate to configure the TLS endpoint of the APM Server.
 
-For more details on how to configure the APM agents to work with custom certificates, check the [APM agents documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
-
-
+For more details on how to configure the APM agents to work with custom certificates, check the [APM agents documentation](/reference/apm-agents/index.md).

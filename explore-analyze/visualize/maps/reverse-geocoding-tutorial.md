@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reverse-geocoding-tutorial.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Map custom regions with reverse geocoding [reverse-geocoding-tutorial]
@@ -14,14 +19,14 @@ In this tutorial, you’ll use reverse geocoding to visualize United States Cens
 You’ll learn to:
 
 * Upload custom regions.
-* Reverse geocode with the {{es}} [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html).
+* Reverse geocode with the {{es}} [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md).
 * Create a map and visualize CSA regions by web traffic.
 
 When you complete this tutorial, you’ll have a map that looks like this:
 
-:::{image} ../../../images/kibana-csa_regions_by_web_traffic.png
+:::{image} /explore-analyze/images/kibana-csa_regions_by_web_traffic.png
 :alt: Map showing custom regions
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -29,9 +34,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 GeoIP is a common way of transforming an IP address to a longitude and latitude. GeoIP is roughly accurate on the city level globally and neighborhood level in selected countries. It’s not as good as an actual GPS location from your phone, but it’s much more precise than just a country, state, or province.
 
-You’ll use the [web logs sample data set](../../overview/kibana-quickstart.md) that comes with Kibana for this tutorial. Web logs sample data set has longitude and latitude. If your web log data does not contain longitude and latitude, use [GeoIP processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) to transform an IP address into a [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) field.
-
-To install the web logs sample data set, refer to [Add sample data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+You’ll use the [web logs sample data set](../../index.md#gs-get-data-into-kibana) that comes with Kibana for this tutorial. Web logs sample data set has longitude and latitude. If your web log data does not contain longitude and latitude, use [GeoIP processor](elasticsearch://reference/enrich-processor/geoip-processor.md) to transform an IP address into a [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field.
 
 
 ## Step 2: Index Combined Statistical Area (CSA) regions [_step_2_index_combined_statistical_area_csa_regions]
@@ -44,7 +47,7 @@ CSAs generally share the same telecom providers and ad networks. New fast food f
 
 To get the CSA boundary data:
 
-1. Go to the [Census Bureau’s website](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.md) and download the `cb_2018_us_csa_500k.zip` file.
+1. Go to the [Census Bureau’s website](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html) and download the `cb_2018_us_csa_500k.zip` file.
 2. Uncompress the zip file.
 3. In Kibana, go to **Maps**.
 4. Click **Create map**.
@@ -66,17 +69,17 @@ To get the CSA boundary data:
 
 Looking at the map, you get a sense of what constitutes a metro area in the eyes of the Census Bureau.
 
-:::{image} ../../../images/kibana-csa_regions.png
+:::{image} /explore-analyze/images/kibana-csa_regions.png
 :alt: Map showing metro area
-:class: screenshot
+:screenshot:
 :::
 
 
 ## Step 3: Reverse geocoding [_step_3_reverse_geocoding]
 
-To visualize CSA regions by web log traffic, the web log traffic must contain a CSA region identifier. You’ll use {{es}} [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) to add CSA region identifiers to the web logs sample data set. You can skip this step if your source data already contains region identifiers.
+To visualize CSA regions by web log traffic, the web log traffic must contain a CSA region identifier. You’ll use {{es}} [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) to add CSA region identifiers to the web logs sample data set. You can skip this step if your source data already contains region identifiers.
 
-1. Go to **Developer tools** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to **Developer tools** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Console**, create a [geo_match enrichment policy](../../../manage-data/ingest/transform-enrich/example-enrich-data-based-on-geolocation.md):
 
     ```js
@@ -146,14 +149,14 @@ To visualize CSA regions by web log traffic, the web log traffic must contain a 
 8. Set the data view to **Kibana Sample Data Logs**.
 9. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 30 days.
 10. Scan through the list of **Available fields** until you find the `csa.GEOID` field. You can also search for the field by name.
-11. Click ![Add icon](../../../images/kibana-add-icon.png "") to toggle the field into the document table.
+11. Click ![Add icon](/explore-analyze/images/kibana-add-icon.png "") to toggle the field into the document table.
 12. Find the *csa.NAME* field and add it to your document table.
 
 Your web log data now contains `csa.GEOID` and `csa.NAME` fields from the matching **csa** region. Web log traffic not contained in a CSA region does not have values for `csa.GEOID` and `csa.NAME` fields.
 
-:::{image} ../../../images/kibana-discover_enriched_web_log.png
+:::{image} /explore-analyze/images/kibana-discover_enriched_web_log.png
 :alt: View of data in Discover
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -186,9 +189,9 @@ Now that our web traffic contains CSA region identifiers, you’ll visualize CSA
     3. Click **Save and add to library**.
 
 
-:::{image} ../../../images/kibana-csa_regions_by_web_traffic.png
+:::{image} /explore-analyze/images/kibana-csa_regions_by_web_traffic.png
 :alt: Final map showing custom regions
-:class: screenshot
+:screenshot:
 :::
 
 Congratulations! You have completed the tutorial and have the recipe for visualizing custom regions. You can now try replicating this same analysis with your own data.

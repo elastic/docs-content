@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-retrieving-fields.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Retrieve a runtime field [runtime-retrieving-fields]
 
-Use the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API to retrieve the values of runtime fields. Runtime fields won’t display in `_source`, but the `fields` API works for all fields, even those that were not sent as part of the original `_source`.
+Use the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the values of runtime fields. Runtime fields won’t display in `_source`, but the `fields` API works for all fields, even those that were not sent as part of the original `_source`.
 
 ## Define a runtime field to calculate the day of week [runtime-define-field-dayofweek]
 
@@ -43,7 +48,7 @@ POST /my-index-000001/_bulk?refresh
 { "index": {}}
 { "@timestamp": "2020-06-21T15:00:01-05:00", "message" : "211.11.9.0 - - [2020-06-21T15:00:01-05:00] \"GET /english/index.html HTTP/1.0\" 304 0"}
 { "index": {}}
-{ "@timestamp": "2020-04-30T14:30:17-05:00", "message" : "40.135.0.0 - - [2020-04-30T14:30:17-05:00] \"GET /images/elasticsearch-reference-hm_bg.jpg HTTP/1.0\" 200 24736"}
+{ "@timestamp": "2020-04-30T14:30:17-05:00", "message" : "40.135.0.0 - - [2020-04-30T14:30:17-05:00] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 { "index": {}}
 { "@timestamp": "2020-04-30T14:30:53-05:00", "message" : "232.0.0.0 - - [2020-04-30T14:30:53-05:00] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 { "index": {}}
@@ -53,13 +58,13 @@ POST /my-index-000001/_bulk?refresh
 { "index": {}}
 { "@timestamp": "2020-04-30T14:31:27-05:00", "message" : "252.0.0.0 - - [2020-04-30T14:31:27-05:00] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 { "index": {}}
-{ "@timestamp": "2020-04-30T14:31:29-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:29-05:00] \"GET /images/elasticsearch-reference-hm_brdl.gif HTTP/1.0\" 304 0"}
+{ "@timestamp": "2020-04-30T14:31:29-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:29-05:00] \"GET /images/hm_brdl.gif HTTP/1.0\" 304 0"}
 { "index": {}}
-{ "@timestamp": "2020-04-30T14:31:29-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:29-05:00] \"GET /images/elasticsearch-reference-hm_arw.gif HTTP/1.0\" 304 0"}
+{ "@timestamp": "2020-04-30T14:31:29-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:29-05:00] \"GET /images/hm_arw.gif HTTP/1.0\" 304 0"}
 { "index": {}}
-{ "@timestamp": "2020-04-30T14:31:32-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:32-05:00] \"GET /images/elasticsearch-reference-nav_bg_top.gif HTTP/1.0\" 200 929"}
+{ "@timestamp": "2020-04-30T14:31:32-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:32-05:00] \"GET /images/nav_bg_top.gif HTTP/1.0\" 200 929"}
 { "index": {}}
-{ "@timestamp": "2020-04-30T14:31:43-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:43-05:00] \"GET /french/images/elasticsearch-reference-nav_venue_off.gif HTTP/1.0\" 304 0"}
+{ "@timestamp": "2020-04-30T14:31:43-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:43-05:00] \"GET /french/images/nav_venue_off.gif HTTP/1.0\" 304 0"}
 ```
 
 
@@ -152,9 +157,9 @@ This time, the response includes only two hits. The value for `day_of_week` (`Su
 
 ## Retrieve fields from related indices [lookup-runtime-fields]
 
-The [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API can also be used to retrieve fields from the related indices via runtime fields with a type of `lookup`.
+The [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API can also be used to retrieve fields from the related indices via runtime fields with a type of `lookup`.
 
-::::{note} 
+::::{note}
 Fields that are retrieved by runtime fields of type `lookup` can be used to enrich the hits in a search response. It’s not possible to query or aggregate on these fields.
 ::::
 
@@ -199,11 +204,11 @@ POST logs/_search
 }
 ```
 
-1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html) queries.
+1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) queries.
 2. The target index where the lookup query executes against
 3. A field on the main index whose values are used as the input values of the lookup term query
 4. A field on the lookup index which the lookup query searches against
-5. A list of fields to retrieve from the lookup index. See the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter of a search request.
+5. A list of fields to retrieve from the lookup index. See the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter of a search request.
 
 
 The above search returns the country and city from the `ip_location` index for each ip address of the returned search hits.

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/dfa-regression-lossfunction.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Loss functions for regression analyses [dfa-regression-lossfunction]
@@ -19,8 +24,6 @@ You can specify the loss function to be used during {{reganalysis}} when you cre
 
 Consult [the Jupyter notebook on regression loss functions](https://github.com/elastic/examples/tree/master/Machine%20Learning/Regression%20Loss%20Functions) to learn more.
 
-::::{tip} 
+::::{tip}
 The default loss function parameter values work fine for most of the cases. It is highly recommended to use the default values, unless you fully understand the impact of the different loss function parameters.
 ::::
-
-

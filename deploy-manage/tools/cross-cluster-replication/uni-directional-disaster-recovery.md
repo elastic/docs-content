@@ -1,7 +1,15 @@
 ---
-navigation_title: "Uni-directional disaster recovery"
+navigation_title: Uni-directional disaster recovery
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-disaster-recovery-uni-directional-tutorial.html
+applies_to:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 
@@ -15,7 +23,7 @@ Learn how to failover and failback between two clusters based on uni-directional
 * Failover - If `clusterA` goes offline, `clusterB` needs to "promote" follower indices to regular indices to allow write operations. All ingestion will need to be redirected to `clusterB`, this is controlled by the clients ({{ls}}, {{beats}}, {{agents}}, etc).
 * Failback - When `clusterA` is back online, it assumes the role of a follower and replicates the leader indices from `clusterB`.
 
-:::{image} ../../../images/elasticsearch-reference-ccr-uni-directional-disaster-recovery.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-uni-directional-disaster-recovery.png
 :alt: Uni-directional cross cluster replication failover and failback
 :::
 

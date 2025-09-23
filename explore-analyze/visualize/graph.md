@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Graph [xpack-graph]
@@ -9,7 +14,7 @@ The {{graph-features}} enable you to discover how items in an {{es}} index are r
 
 For example, graph exploration could help you uncover website vulnerabilities that hackers are targeting so you can harden your website. Or, you might provide graph-based personalized recommendations to your e-commerce customers.
 
-The {{graph-features}} provide a simple, yet powerful [graph exploration API](https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html), and an interactive graph visualization app for {{kib}}. Both work out of the box with existing {{es}} indices—you don’t need to store any additional data to use these features.
+The {{graph-features}} provide a simple, yet powerful [graph exploration API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-graph), and an interactive graph visualization app for {{kib}}. Both work out of the box with existing {{es}} indices—you don’t need to store any additional data to use these features.
 
 
 ## How Graph works [how-graph-works]
@@ -18,9 +23,9 @@ The graph API provides an alternative way to extract and summarize information a
 
 The terms you want to include in the graph are called *vertices*. The relationship between any two vertices is a *connection*. The connection summarizes the documents that contain both vertices' terms.
 
-:::{image} ../../images/kibana-graph-vertices-connections.jpg
+:::{image} /explore-analyze/images/kibana-graph-vertices-connections.jpg
 :alt: Graph components
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -49,19 +54,20 @@ Use **Graph** to reveal the relationships in your data.
 
 2. Select the data source that you want to explore.
 
-    {{kib}} graphs the relationships between the top fields.
+   {{kib}} graphs the relationships between the top fields.
 
-    :::{image} ../../images/kibana-graph-url-connections.png
-    :alt: URL connections
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-graph-url-connections.png
+   :alt: URL connections
+   :screenshot:
+   :::
 
 3. Add more fields, or click an existing field to edit, disable or deselect it.
 
-    :::{image} ../../images/kibana-graph-menu.png
-    :alt: menu for editing, disabling, or removing a field from the graph
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-graph-menu.png
+   :alt: menu for editing, disabling, or removing a field from the graph
+   :screenshot:
+   :width: 50%
+   :::
 
 4. Enter a query to discover relationships between terms in the selected fields.
 
@@ -69,17 +75,18 @@ Use **Graph** to reveal the relationships in your data.
 
 5. To view more information about a relationship, click any connection or vertex.
 
-    :::{image} ../../images/kibana-graph-control-bar.png
-    :alt: Graph toolbar
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-graph-control-bar.png
+   :alt: Graph toolbar
+   :screenshot:
+   :width: 50%
+   :::
 
 6. Use the graph toolbar to display additional connections:
 
-    * To display additional vertices that connect to your graph, click the expand icon ![Expand Selection](../../images/kibana-graph-expand-button.png "").
-    * To display additional connections between the displayed vertices, click the link icon ![Add links to existing terms](../../images/kibana-graph-link-button.png "").
+    * To display additional vertices that connect to your graph, click the expand icon ![Expand Selection](/explore-analyze/images/kibana-graph-expand-button.png "").
+    * To display additional connections between the displayed vertices, click the link icon ![Add links to existing terms](/explore-analyze/images/kibana-graph-link-button.png "").
     * To explore a particular area of the graph, select the vertices you are interested in, and then click expand or link.
-    * To step back through your changes to the graph, click undo ![Undo](../../images/kibana-graph-undo-button.png "") and redo ![Redo](../../images/kibana-graph-redo-button.png "").
+    * To step back through your changes to the graph, click undo ![Undo](/explore-analyze/images/kibana-graph-undo-button.png "") and redo ![Redo](/explore-analyze/images/kibana-graph-redo-button.png "").
 
 7. To view more relationships in your data, submit additional queries.
 8. **Save** your graph.
@@ -94,7 +101,7 @@ Apply custom colors and icons to vertices, configure the number of vertices that
 
 Each vertex has a color, icon, and label. To change the color or icon of all vertices of a certain field, click it’s field, and then select **Edit settings**.
 
-To change the color and label of selected vertices, click the style icon ![Style](../../images/kibana-graph-style-button.png "") in the control bar.
+To change the color and label of selected vertices, click the style icon ![Style](/explore-analyze/images/kibana-graph-style-button.png "") in the control bar.
 
 
 #### Tune the noise level [edit-graph-settings]
@@ -106,17 +113,17 @@ You can configure the number of vertices that a search or expand operation adds 
 
 #### Block terms from the graph [graph-block-terms]
 
-Documents that match a blocked term are not allowed in the graph. To block a term, select its vertex and click the block icon ![Block selection](../../images/kibana-graph-block-button.png "") in the graph toolbar. For a list of blocked terms, open **Settings > Blocked terms**.
+Documents that match a blocked term are not allowed in the graph. To block a term, select its vertex and click the block icon ![Block selection](/explore-analyze/images/kibana-graph-block-button.png "") in the graph toolbar. For a list of blocked terms, open **Settings > Blocked terms**.
 
 
 #### Drill down into raw documents [graph-drill-down]
 
 With drilldowns, you can display additional information about a selected vertex in a new browser window. For example, you might configure a drilldown URL to perform a web search for the selected vertex term.
 
-Use the drilldown icon ![Drilldown selection](../../images/kibana-graph-info-icon.png "") in the graph toolbar to show the drilldown buttons for the selected vertices. To configure drilldowns, go to **Settings > Drilldowns**. See also [Disabling drilldown configuration](graph/graph-configuration.md#disable-drill-down).
+Use the drilldown icon ![Drilldown selection](/explore-analyze/images/kibana-graph-info-icon.png "") in the graph toolbar to show the drilldown buttons for the selected vertices. To configure drilldowns, go to **Settings > Drilldowns**. See also [Disabling drilldown configuration](graph/graph-configuration.md#disable-drill-down).
 
 
 #### Run and pause the layout [graph-run-layout]
 
-Graph uses a "force layout", where vertices behave like magnets, pushing off of one another. By default, when you add a new vertex to the graph, all vertices begin moving. In some cases, the movement might go on for some time. To freeze the current vertex position, click the pause icon ![Block selection](../../images/kibana-graph-pause-button.png "") in the graph toolbar.
+Graph uses a "force layout", where vertices behave like magnets, pushing off of one another. By default, when you add a new vertex to the graph, all vertices begin moving. In some cases, the movement might go on for some time. To freeze the current vertex position, click the pause icon ![Block selection](/explore-analyze/images/kibana-graph-pause-button.png "") in the graph toolbar.
 

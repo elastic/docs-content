@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-connect-to-unmanaged-resources.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Connect to external Elastic resources [k8s-connect-to-unmanaged-resources]
 
-Fields like `elasticsearchRef` or `kibanaRef` are useful to automatically establish connections between applications managed by the same ECK operator instance. It is however also possible to connect to applications managed by a different ECK operator instance, or to applications not managed by ECK, for example an Elastic Cloud deployment. This can be done by providing connection details and credentials in a `Secret` through the `secretName` attribute:
+Fields like `elasticsearchRef` or `kibanaRef` are useful to automatically establish connections between applications managed by the same ECK operator instance. It is however also possible to connect to applications managed by a different ECK operator instance, or to applications not managed by ECK, for example an {{ecloud}} deployment. This can be done by providing connection details and credentials in a `Secret` through the `secretName` attribute:
 
 ```yaml
 apiVersion: v1
@@ -13,7 +18,7 @@ kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://sample.gcp.elastic-cloud.com
+  url: <ELASTIC_CLOUD_URL>
   username: "elastic"
   password: REDACTED
 ---
@@ -30,13 +35,13 @@ spec:
 
 In the case of Elastic Agent you can also specify several named references:
 
-```yaml
+```yaml subs=true
 apiVersion: v1
 kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://abcd-42.xyz.elastic-cloud.com:443
+  url: <ELASTIC-CLOUD-URL>:443
   username: ""
   password: ""
   api-key: REDACTED
@@ -47,7 +52,7 @@ kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - outputName: default
     secretName: external-es-ref
@@ -62,7 +67,7 @@ The following fields are expected to be set in the referenced `Secret`:
 * `password` (required): The password for the provided user.
 * `ca.crt` (optional): The certificate authority to be used to connect to the external resource.
 
-In the case of Agent and Beats resources the following field can also be used to connect to Elasticsearch:
+In the case of Agent and Beats resources the following field can also be used to connect to {{es}}:
 
 * `api-key`: An API key to authenticate against the Elastic resource.
 

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/token-graphs.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Token graphs [token-graphs]
@@ -12,7 +17,7 @@ When a [tokenizer](anatomy-of-an-analyzer.md#analyzer-anatomy-tokenizer) convert
 
 Using these, you can create a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph), called a *token graph*, for a stream. In a token graph, each position represents a node. Each token represents an edge or arc, pointing to the next position.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-qbf-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-qbf-ex.svg
 :alt: token graph qbf ex
 :::
 
@@ -22,7 +27,7 @@ Some [token filters](anatomy-of-an-analyzer.md#analyzer-anatomy-token-filters) c
 
 In the following graph, `quick` and its synonym `fast` both have a position of `0`. They span the same positions.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-qbf-synonym-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-qbf-synonym-ex.svg
 :alt: token graph qbf synonym ex
 :::
 
@@ -33,14 +38,14 @@ Some token filters can add tokens that span multiple positions. These can includ
 
 However, only some token filters, known as *graph token filters*, accurately record the `positionLength` for multi-position tokens. These filters include:
 
-* [`synonym_graph`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html)
-* [`word_delimiter_graph`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-word-delimiter-graph-tokenfilter.html)
+* [`synonym_graph`](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md)
+* [`word_delimiter_graph`](elasticsearch://reference/text-analysis/analysis-word-delimiter-graph-tokenfilter.md)
 
-Some tokenizers, such as the [`nori_tokenizer`](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori-tokenizer.html), also accurately decompose compound tokens into multi-position tokens.
+Some tokenizers, such as the [`nori_tokenizer`](elasticsearch://reference/elasticsearch-plugins/analysis-nori-tokenizer.md), also accurately decompose compound tokens into multi-position tokens.
 
 In the following graph, `domain name system` and its synonym, `dns`, both have a position of `0`. However, `dns` has a `positionLength` of `3`. Other tokens in the graph have a default `positionLength` of `1`.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
 :alt: token graph dns synonym ex
 :::
 
@@ -48,16 +53,16 @@ In the following graph, `domain name system` and its synonym, `dns`, both have a
 
 [Indexing](index-search-analysis.md) ignores the `positionLength` attribute and does not support token graphs containing multi-position tokens.
 
-However, queries, such as the [`match`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) or [`match_phrase`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html) query, can use these graphs to generate multiple sub-queries from a single query string.
+However, queries, such as the [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) or [`match_phrase`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) query, can use these graphs to generate multiple sub-queries from a single query string.
 
-:::::{dropdown} **Example**
+:::::{dropdown} Example
 A user runs a search for the following phrase using the `match_phrase` query:
 
 `domain name system is fragile`
 
 During [search analysis](index-search-analysis.md), `dns`, a synonym for `domain name system`, is added to the query string’s token stream. The `dns` token has a `positionLength` of `3`.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
 :alt: token graph dns synonym ex
 :::
 
@@ -78,14 +83,14 @@ This means the query matches documents containing either `dns is fragile` *or* `
 
 The following token filters can add tokens that span multiple positions but only record a default `positionLength` of `1`:
 
-* [`synonym`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html)
-* [`word_delimiter`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-word-delimiter-tokenfilter.html)
+* [`synonym`](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md)
+* [`word_delimiter`](elasticsearch://reference/text-analysis/analysis-word-delimiter-tokenfilter.md)
 
 This means these filters will produce invalid token graphs for streams containing such tokens.
 
 In the following graph, `dns` is a multi-position synonym for `domain name system`. However, `dns` has the default `positionLength` value of `1`, resulting in an invalid graph.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-dns-invalid-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-dns-invalid-ex.svg
 :alt: token graph dns invalid ex
 :::
 

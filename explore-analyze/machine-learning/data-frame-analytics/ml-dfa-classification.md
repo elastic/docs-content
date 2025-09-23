@@ -1,35 +1,36 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-classification.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Predicting classes with classification [ml-dfa-classification]
 
 {{classification-cap}} is a {{ml}} process that predicts the class or category of a data point in a data set. For a simple example, consider how the shapes in the following graph can be differentiated and classified as "circles" and "triangles":
 
-:::{image} ../../../images/machine-learning-classification-vis.png
+:::{image} /explore-analyze/images/machine-learning-classification-vis.png
 :alt: Classification process
 :::
 
 In reality, {{classification}} problems are more complex, such as classifying malicious and benign domains to detect DGA activities for security reasons or predicting customer churn based on customer calling data. {{classification-cap}} is for predicting discrete, categorical values.
 
-When you create a {{classification}} job, you must specify which field contains the classes that you want to predict. This field is known as the *{{depvar}}*. It can contain maximum 100 classes. By default, all other [supported fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html#dfa-supported-fields) are included in the analysis and are known as *{{feature-vars}}*. You can optionally include or exclude fields. For more information about field selection, refer to the [explain data frame analytics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html).
-
+When you create a {{classification}} job, you must specify which field contains the classes that you want to predict. This field is known as the *{{depvar}}*. It can contain maximum 100 classes. By default, all other [supported fields](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) are included in the analysis and are known as *{{feature-vars}}*. You can optionally include or exclude fields. For more information about field selection, refer to the [explain data frame analytics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-explain-data-frame-analytics).
 
 ## {{classification-cap}} algorithms [dfa-classification-algorithm]
 
 {{classanalysis-cap}} uses an ensemble algorithm that is similar to extreme gradient boosting (XGBoost) which combines multiple weak models into a composite one. It uses decision trees to learn to predict the probability that a data point belongs to a certain class. XGBoost trains a sequence of decision trees and every decision tree learns from the mistakes of the forest so far. In each iteration, the trees added to the forest improve the decision quality of the combined decision forest. The classification algorithm optimizes for a loss function called cross-entropy loss.
 
-
 ## 1. Define the problem [dfa-classification-problem]
 
 {{classification-cap}} can be useful in cases where discrete, categorical values needs to be predicted. If your use case requires predicting such values, then {{classification}} might be the suitable choice for you.
 
-
 ## 2. Set up the environment [dfa-classification-environment]
 
 Before you can use the {{stack-ml-features}}, there are some configuration requirements (such as security privileges) that must be addressed. Refer to [Setup and security](../setting-up-machine-learning.md).
-
 
 ## 3. Prepare and transform data [dfa-classification-prepare-data]
 
@@ -41,10 +42,9 @@ You might also need to [{{transform}}](../../transforms.md) your data to create 
 
 To learn more about how to prepare your data, refer to [the relevant section](ml-dfa-overview.md#prepare-transform-data) of the supervised learning overview.
 
-
 ## 4. Create a job [dfa-classification-create-job]
 
-{{dfanalytics-jobs-cap}} contain the configuration information and metadata necessary to perform an analytics task. You can create {{dfanalytics-jobs}} via {{kib}} or using the [create {{dfanalytics-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html).
+{{dfanalytics-jobs-cap}} contain the configuration information and metadata necessary to perform an analytics task. You can create {{dfanalytics-jobs}} via {{kib}} or using the [create {{dfanalytics-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics).
 
 Select {{classification}} as the analytics type, then select the field that you want to predict (the {{depvar}}). You can also include and exclude fields.
 
@@ -52,13 +52,11 @@ Select {{classification}} as the analytics type, then select the field that you 
 You can view the statistics of the selectable fields in the {{dfanalytics}} wizard. The field statistics displayed in a flyout provide more meaningful context to help you select relevant fields.
 ::::
 
-
 To improve performance, consider using a small `training_percent` value to train the model more quickly. It is a good strategy to make progress iteratively: run the analysis with a small training percentage, then evaluate the performance. Based on the results, you can decide if it is necessary to increase the `training_percent` value.
-
 
 ## 5. Start the job [dfa-classification-start]
 
-You can start the job via {{kib}} or using the [start {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) API. A {{classification}} job has the following phases:
+You can start the job via {{kib}} or using the [start {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-data-frame-analytics) API. A {{classification}} job has the following phases:
 
 * `reindexing`: Documents are copied from the source index to the destination index.
 * `loading_data`: The job fetches the necessary data from the destination index.
@@ -75,25 +73,22 @@ After the last phase is finished, the job stops and the results are ready for ev
 When you create a {{dfanalytics-job}}, the inference step of the process might fail if the model is too large to fit into JVM. For a workaround, refer to [this GitHub issue](https://github.com/elastic/elasticsearch/issues/76093).
 ::::
 
-
-
 ## 6. Evaluate and interpret the result [ml-dfanalytics-classification-evaluation]
 
-Using the {{dfanalytics}} features to gain insights from a data set is an iterative process. After you defined the problem you want to solve, and chose the analytics type that can help you to do so, you need to produce a high-quality data set and create the appropriate {{dfanalytics-job}}. You might need to experiment with different configurations, parameters, and ways to transform data before you arrive at a result that satisfies your use case. A valuable companion to this process is the [{{evaluatedf-api}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html), which enables you to evaluate the {{dfanalytics}} performance. It helps you understand error distributions and identifies the points where the {{dfanalytics}} model performs well or less trustworthily.
+Using the {{dfanalytics}} features to gain insights from a data set is an iterative process. After you defined the problem you want to solve, and chose the analytics type that can help you to do so, you need to produce a high-quality data set and create the appropriate {{dfanalytics-job}}. You might need to experiment with different configurations, parameters, and ways to transform data before you arrive at a result that satisfies your use case. A valuable companion to this process is the [{{evaluatedf-api}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame), which enables you to evaluate the {{dfanalytics}} performance. It helps you understand error distributions and identifies the points where the {{dfanalytics}} model performs well or less trustworthily.
 
 To evaluate the analysis with this API, you need to annotate your index that contains the results of the analysis with a field that marks each document with the ground truth. The {{evaluatedf-api}} evaluates the performance of the {{dfanalytics}} against this manually provided ground truth.
 
-You can measure how well the model has performed on your training data set by using the `classification` evaluation type of the [evaluate {{dfanalytics}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html) or by viewing the job results in {{kib}}. The {{classification}} evaluation offers the following metrics to evaluate the model performance:
+You can measure how well the model has performed on your training data set by using the `classification` evaluation type of the [evaluate {{dfanalytics}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame) or by viewing the job results in {{kib}}. The {{classification}} evaluation offers the following metrics to evaluate the model performance:
 
 * Multiclass confusion matrix
 * Area under the curve of receiver operating characteristic (AUC ROC)
 
 The following metrics helps you interpret the analysis results:
 
-* {feat-imp}
+* {{feat-imp}}
 * `class_probability`
 * `class_score`
-
 
 ### Multiclass confusion matrix [ml-dfanalytics-mccm]
 
@@ -101,7 +96,7 @@ The multiclass confusion matrix provides a summary of the performance of the {{c
 
 This is an example of a confusion matrix for a binary problem:
 
-:::{image} ../../../images/machine-learning-confusion-matrix-binary.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-binary.jpg
 :alt: Confusion matrix of a binary problem
 :::
 
@@ -109,12 +104,11 @@ It is a two by two matrix because there are only two classes (`true` and `false`
 
 As the number of classes increases, the confusion matrix becomes more complex:
 
-:::{image} ../../../images/machine-learning-confusion-matrix-multiclass.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-multiclass.jpg
 :alt: Confusion matrix of a multiclass problem
 :::
 
 This matrix contains the actual labels on the left side while the predicted labels are on the top. The proportion of correct and incorrect predictions is broken down for each class. This enables you to examine how the {{classanalysis}} confused the different classes while it made its predictions.
-
 
 ### Area under the curve of receiver operating characteristic (AUC ROC) [ml-dfanalytics-class-aucroc]
 
@@ -128,17 +122,13 @@ From this plot, you can compute the area under the curve (AUC) value, which is a
 To use this evaluation method, you must set `num_top_classes` to `-1` or a value greater than or equal to the total number of classes when you create the {{dfanalytics-job}}.
 ::::
 
-
-
 ### {{feat-imp-cap}} [dfa-classification-feature-importance]
 
 {{feat-imp-cap}} provides further information about the results of an analysis and helps to interpret the results in a more subtle way. If you want to learn more about {{feat-imp}}, refer to [{{feat-imp-cap}}](ml-feature-importance.md).
 
-
 ### `class_probability` [dfa-classification-class-probability]
 
 The `class_probability` is a value between 0 and 1, which indicates how likely it is that a given data point belongs to a certain class. The higher the number, the higher the probability that the data point belongs to the named class. This information is stored in the `top_classes` array for each document in the destination index.
-
 
 ### `class_score` [dfa-classification-class-score]
 
@@ -146,53 +136,48 @@ The `class_score` is a function of the `class_probability` and has a value that 
 
 If your objective is to maximize accuracy, the scores are weighted to maximize the proportion of correct predictions in the training data set.
 
-:::{image} ../../../images/machine-learning-confusion-matrix-binary-accuracy.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-binary-accuracy.jpg
 :alt: A confusion matrix with the correct predictions highlighted
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
 If there is an imbalanced class distribution in your training data, focusing on accuracy can decrease your model’s sensitivity to incorrect predictions in the under-represented classes.
 ::::
 
-
 By default, {{classanalysis}} jobs accept a slight degradation of the overall accuracy in return for greater sensitivity to classes that are predicted incorrectly. That is to say, their objective is to maximize the minimum recall. For example, in the context of a multi-class confusion matrix, the predictions of interest are in each row:
 
-:::{image} ../../../images/machine-learning-confusion-matrix-multiclass-recall.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-multiclass-recall.jpg
 :alt: A confusion matrix with a row highlighted
-:class: screenshot
+:screenshot:
 :::
 
 For each class, the recall is calculated as the number of correct predictions divided by the sum of all the other predicted labels in that row. This value is represented as a percentage in each cell of the confusion matrix. The class scores are then weighted to favor predictions that result in the highest recall values across the training data. This objective typically performs better than accuracy when you have highly imbalanced data.
 
 To learn more about choosing the class assignment objective that fits your goal, refer to this [Jupyter notebook](https://github.com/elastic/examples/blob/master/Machine%20Learning/Class%20Assigment%20Objectives/classification-class-assignment-objective.ipynb).
 
-
 ## 7. Deploy the model [dfa-classification-deploy]
 
 The model that you created is stored as {{es}} documents in internal indices. In other words, the characteristics of your trained model are saved and ready to be deployed and used as functions.
 
-1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}.
+1. To deploy {{dfanalytics}} model in a pipeline, navigate to the **Trained models** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
-
-    :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
-    :alt: The trained models UI in {kib}
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/machine-learning-ml-dfa-trained-models-ui.png
+   :alt: The trained models UI in {{kib}}
+   :screenshot:
+   :::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
-
-    :::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
-    :alt: Creating an inference pipeline
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-pipeline.png
+   :alt: Creating an inference pipeline
+   :screenshot:
+   :::
 
 4. Configure the pipeline processors or use the default settings.
-
-    :::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
-    :alt: Configuring an inference processor
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-processor.png
+   :alt: Configuring an inference processor
+   :screenshot:
+   :::
 
 5. Configure to handle ingest failures or use the default settings.
 6. (Optional) Test your pipeline by running a simulation of the pipeline to confirm it produces the anticipated results.
@@ -200,42 +185,35 @@ The model that you created is stored as {{es}} documents in internal indices. In
 
 The model is deployed and ready to use through the {{infer}} pipeline.
 
-
 ### {{infer-cap}} [ml-inference-class]
 
 {{infer-cap}} enables you to use [trained {{ml}} models](ml-trained-models.md) against incoming data in a continuous fashion.
 
 For instance, suppose you have an online service and you would like to predict whether a customer is likely to churn. You have an index with historical data – information on the customer behavior throughout the years in your business – and a {{classification}} model that is trained on this data. The new information comes into a destination index of a {{ctransform}}. With {{infer}}, you can perform the {{classanalysis}} against the new data with the same input fields that you’ve trained the model on, and get a prediction.
 
-
 #### {{infer-cap}} processor [ml-inference-processor-class]
 
 {{infer-cap}} can be used as a processor specified in an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md). It uses a trained model to infer against the data that is being ingested in the pipeline. The model is used on the ingest node. {{infer-cap}} pre-processes the data by using the model and provides a prediction. After the process, the pipeline continues executing (if there is any other processor in the pipeline), finally the new data together with the results are indexed into the destination index.
 
-Check the [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) and [the {{ml}} {dfanalytics} API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-analytics-apis.html) to learn more.
-
+Check the [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 #### {{infer-cap}} aggregation [ml-inference-aggregation-class]
 
 {{infer-cap}} can also be used as a pipeline aggregation. You can reference a trained model in the aggregation to infer on the result field of the parent bucket aggregation. The {{infer}} aggregation uses the model on the results to provide a prediction. This aggregation enables you to run {{classification}} or {{reganalysis}} at search time. If you want to perform the analysis on a small set of data, this aggregation enables you to generate predictions without the need to set up a processor in the ingest pipeline.
 
-Check the [{{infer}} bucket aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-inference-bucket-aggregation.html) and [the {{ml}} {dfanalytics} API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-analytics-apis.html) to learn more.
+Check the [{{infer}} bucket aggregation](elasticsearch://reference/aggregations/search-aggregations-pipeline-inference-bucket-aggregation.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 ::::{note}
-If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
+If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-alias). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
 ::::
-
-
 
 ## Performing {{classanalysis}} in the sample flight data set [performing-classification]
 
-Let’s try to predict whether a flight will be delayed or not by using the [sample flight data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana). The data set contains information such as weather conditions, carrier, flight distance, origin, destination, and whether or not the flight was delayed. The {{classification}} model learns the relationships between the fields in your data to predict the value of the *dependent variable*, which in this case is the boolean `FlightDelay` field.
+Let’s try to predict whether a flight will be delayed or not by using the [sample flight data](../../index.md#gs-get-data-into-kibana). The data set contains information such as weather conditions, carrier, flight distance, origin, destination, and whether or not the flight was delayed. The {{classification}} model learns the relationships between the fields in your data to predict the value of the *dependent variable*, which in this case is the boolean `FlightDelay` field.
 
 ::::{tip}
 If you want to view this example in a Jupyter notebook, [click here](https://github.com/elastic/examples/tree/master/Machine%20Learning/Analytics%20Jupyter%20Notebooks).
 ::::
-
-
 
 ### Preparing your data [flightdata-classification-data]
 
@@ -244,7 +222,8 @@ Each document in the sample flight data set contains details for a single flight
 In order to be analyzed, a document must contain at least one field with a supported data type (`numeric`, `boolean`, `text`, `keyword` or `ip`) and must not contain arrays with more than one item. If your source data consists of some documents that contain the dependent variable and some that do not, the model is trained on the subset of documents that contain it.
 
 ::::{dropdown} Example source document
-```
+
+```json
 {
   "_index": "kibana_sample_data_flights",
   "_type": "_doc",
@@ -293,50 +272,42 @@ In order to be analyzed, a document must contain at least one field with a suppo
 
 ::::
 
-
 ::::{tip}
 The sample flight data set is used in this example because it is easily accessible. However, the data has been manually created and contains some inconsistencies. For example, a flight can be both delayed and canceled. This is a good reminder that the quality of your input data affects the quality of your results.
 ::::
-
-
 
 ### Creating a {{classification}} model [flightdata-classification-model]
 
 To predict whether a specific flight is delayed:
 
 1. Create a {{dfanalytics-job}}.
+   You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) API.
+   :::{image} /explore-analyze/images/machine-learning-flights-classification-job-1.jpg
+   :alt: Creating a {{dfanalytics-job}} in {{kib}}
+   :screenshot:
+   :::
 
-    You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html) API.
-
-    :::{image} ../../../images/machine-learning-flights-classification-job-1.jpg
-    :alt: Creating a {{dfanalytics-job}} in {kib}
-    :class: screenshot
-    :::
-
-    1. Choose `kibana_sample_data_flights` as the source index.
-    2. Choose `classification` as the job type.
-    3. Choose `FlightDelay` as the dependent variable, which is the field that we want to predict with the {{classanalysis}}.
-    4. Add `Cancelled`, `FlightDelayMin`, and `FlightDelayType` to the list of excluded fields. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
-
+      1. Choose `kibana_sample_data_flights` as the source index.
+      2. Choose `classification` as the job type.
+      3. Choose `FlightDelay` as the dependent variable, which is the field that we want to predict with the {{classanalysis}}.
+      4. Add `Cancelled`, `FlightDelayMin`, and `FlightDelayType` to the list of excluded fields. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
         The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the charts. You can use this matrix to help you decide which fields to include or exclude.
+   :::{image} /explore-analyze/images/machine-learning-flights-classification-scatterplot.png
+   :alt: A scatterplot matrix for three fields in {{kib}}
+   :screenshot:
+   :::
+       If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
+      5. Choose a training percent of `10` which means it randomly selects 10% of the source data for training. While that value is low for this example, for many large data sets using a small training sample greatly reduces runtime without impacting accuracy.
+      6. If you want to experiment with [{{feat-imp}}](ml-feature-importance.md), specify a value in the advanced configuration options. In this example, a maximum of 10 {{feat-imp}} values per document will return. This option affects the speed of the analysis, so by default it is disabled.
+      7. Use the default memory limit for the job. If the job requires more than this amount of memory, it fails to start. If the available memory on the node is limited, this setting makes it possible to prevent job execution.
+      8. Add a job ID (such as `model-flight-delays-classification`) and optionally a job description.
+      9. Add the name of the destination index that will contain the results. In {{kib}}, the index name matches the job ID by default. It will contain a copy of the source index data where each document is annotated with the results. If the index does not exist, it will be created automatically.
+      10. Use default values for all other options.
 
-        :::{image} ../../../images/machine-learning-flights-classification-scatterplot.png
-        :alt: A scatterplot matrix for three fields in {kib}
-        :class: screenshot
-        :::
+::::{dropdown} API example
 
-        If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
-
-    5. Choose a training percent of `10` which means it randomly selects 10% of the source data for training. While that value is low for this example, for many large data sets using a small training sample greatly reduces runtime without impacting accuracy.
-    6. If you want to experiment with [{{feat-imp}}](ml-feature-importance.md), specify a value in the advanced configuration options. In this example, a maximum of 10 {{feat-imp}} values per document will return. This option affects the speed of the analysis, so by default it is disabled.
-    7. Use the default memory limit for the job. If the job requires more than this amount of memory, it fails to start. If the available memory on the node is limited, this setting makes it possible to prevent job execution.
-    8. Add a job ID (such as `model-flight-delays-classification`) and optionally a job description.
-    9. Add the name of the destination index that will contain the results. In {{kib}}, the index name matches the job ID by default. It will contain a copy of the source index data where each document is annotated with the results. If the index does not exist, it will be created automatically.
-    10. Use default values for all other options.
-
-        ::::{dropdown} API example
-        ```console
-        PUT _ml/data_frame/analytics/model-flight-delays-classification
+```console
+PUT _ml/data_frame/analytics/model-flight-delays-classification
         {
           "source": {
             "index": [
@@ -363,45 +334,45 @@ To predict whether a specific flight is delayed:
             ]
           }
         }
-        ```
+```
 
-        1. The field name in the `dest` index that contains the analysis results.
-        2. To disable {{feat-imp}} calculations, omit this option.
+1. The field name in the `dest` index that contains the analysis results.
+2. To disable {{feat-imp}} calculations, omit this option.
 
+::::
 
-        ::::
+After you configured your job, the configuration details are automatically validated. If the checks are successful, you can start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
 
-
-        After you configured your job, the configuration details are automatically validated. If the checks are successful, you can start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
-
-2. Start the job in {{kib}} or use the [start {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) API.
+2. Start the job in {{kib}} or use the [start {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-data-frame-analytics) API.
 
     The job takes a few minutes to run. Runtime depends on the local hardware and also on the number of documents and fields that are analyzed. The more fields and documents, the longer the job runs. It stops automatically when the analysis is complete.
 
-    ::::{dropdown} API example
-    ```console
-    POST _ml/data_frame/analytics/model-flight-delays-classification/_start
-    ```
+::::{dropdown} API example
 
-    ::::
+```console
+POST _ml/data_frame/analytics/model-flight-delays-classification/_start
+```
 
-3. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html).
+::::
 
-    :::{image} ../../../images/machine-learning-flights-classification-details.jpg
-    :alt: Statistics for a {{dfanalytics-job}} in {kib}
-    :class: screenshot
-    :::
+3. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-data-frame-analytics-stats).
 
-    When the job stops, the results are ready to view and evaluate. To learn more about the job phases, see [How {{dfanalytics-jobs}} work](ml-dfa-phases.md).
+:::{image} /explore-analyze/images/machine-learning-flights-classification-details.jpg
+:alt: Statistics for a {{dfanalytics-job}} in {{kib}}
+:screenshot:
+:::
 
-    ::::{dropdown} API example
-    ```console
-    GET _ml/data_frame/analytics/model-flight-delays-classification/_stats
-    ```
+   When the job stops, the results are ready to view and evaluate. To learn more about the job phases, see [How {{dfanalytics-jobs}} work](ml-dfa-phases.md).
 
-    The API call returns the following response:
+::::{dropdown} API example
 
-    ```console-result
+```console
+GET _ml/data_frame/analytics/model-flight-delays-classification/_stats
+```
+
+The API call returns the following response:
+
+```console-result
     {
       "count" : 1,
       "data_frame_analytics" : [
@@ -481,15 +452,13 @@ To predict whether a specific flight is delayed:
                   "loss_type" : "binomial_logistic"
                 }
               }
-          }
+           }
         }
       ]
     }
-    ```
+```
 
-    ::::
-
-
+::::
 
 ### Viewing {{classification}} results [flightdata-classification-results]
 
@@ -497,9 +466,9 @@ Now you have a new index that contains a copy of your source data with predictio
 
 When you view the {{classification}} results in {{kib}}, it shows the contents of the destination index in a tabular format. It also provides information about the analysis details, model evaluation metrics, total {{feat-imp}} values, and a scatterplot matrix.
 
-:::{image} ../../../images/machine-learning-flights-classification-results.jpg
-:alt: Destination index table for a classification job in {kib}
-:class: screenshot
+:::{image} /explore-analyze/images/machine-learning-flights-classification-results.jpg
+:alt: Destination index table for a classification job in {{kib}}
+:screenshot:
 :::
 
 The table shows a column for the {{depvar}} (`FlightDelay`), which contains the ground truth values that you are trying to predict. It also shows a column for the predicted values (`ml.FlightDelay_prediction`), which were generated by the {{classanalysis}}. The `ml.is_training` column indicates whether the document was used in the training or testing data set. You can use the **Training** and **Testing** filter options to refine the contents of the results table. You can also enable histogram charts to get a better understanding of the distribution of values.
@@ -510,8 +479,8 @@ If you want to understand how certain the model is about each prediction, you ca
 If you have a large number of classes, your destination index contains a large number of predicted probabilities for each document. When you create the {{classification}} job, you can use the `num_top_classes` option to modify this behavior.
 ::::
 
-
 ::::{dropdown} API example
+
 ```console
 GET model-flight-delays-classification/_search
 ```
@@ -543,31 +512,30 @@ The snippet below shows the probability and score details for a document in the 
 
 1. An array of values specifying the probability of the prediction and the score for each class.
 
-
 The class with the highest score is the prediction. In this example, `false` has a `class_score` of 0.35 while `true` has only 0.06, so the prediction will be `false`. For more details about these values, see [`class_score`](#dfa-classification-class-score).
 
 ::::
 
-
 If you chose to calculate {{feat-imp}}, the destination index also contains `ml.feature_importance` objects. Every field that is included in the analysis (known as a *feature* of the data point) is assigned a {{feat-imp}} value. It has both a magnitude and a direction (positive or negative), which indicates how each field affects a particular prediction. Only the most significant values (in this case, the top 10) are stored in the index. However, the trained model metadata also contains the average magnitude of the {{feat-imp}} values for each field across all the training data. You can view this summarized information in {{kib}}:
 
-:::{image} ../../../images/machine-learning-flights-classification-total-importance.jpg
-:alt: Total {{feat-imp}} values in {kib}
-:class: screenshot
+:::{image} /explore-analyze/images/machine-learning-flights-classification-total-importance.jpg
+:alt: Total {{feat-imp}} values in {{kib}}
+:screenshot:
 :::
 
 You can also see the {{feat-imp}} values for each individual prediction in the form of a decision plot:
 
-:::{image} ../../../images/machine-learning-flights-classification-importance.png
-:alt: A decision plot for {{feat-imp}} values in {kib}
-:class: screenshot
+:::{image} /explore-analyze/images/machine-learning-flights-classification-importance.png
+:alt: A decision plot for {{feat-imp}} values in {{kib}}
+:screenshot:
 :::
 
 In {{kib}}, the decision path shows the relative impact of each feature on the probability of the prediction. The features with the most significant positive or negative impact appear at the top of the decision plot. Thus in this example, the features related to flight time and distance had the most significant influence on the probability value for this prediction. This type of information can help you to understand how models arrive at their predictions. It can also indicate which aspects of your data set are most influential or least useful when you are training and tuning your model.
 
-If you do not use {{kib}}, you can see the summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference.html) and the individual values by searching the destination index.
+If you do not use {{kib}}, you can see the summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) and the individual values by searching the destination index.
 
 ::::{dropdown} API example
+
 ```console
 GET _ml/trained_models/model-flight-delays-classification*?include=total_feature_importance
 ```
@@ -646,7 +614,6 @@ The snippet below shows an example of the total {{feat-imp}} and the correspondi
 3. This value is the minimum {{feat-imp}} value across all the training data for this field when the predicted class is `false`.
 4. This value is the maximum {{feat-imp}} value across all the training data for this field when the predicted class is `false`.
 
-
 To see the top {{feat-imp}} values for each prediction, search the destination index. For example:
 
 ```console
@@ -698,9 +665,7 @@ The sum of the {{feat-imp}} values for each class in this data point approximate
 
 ::::
 
-
 Lastly, {{kib}} provides a scatterplot matrix in the results. It has the same functionality as the matrix that you saw in the job wizard. Its purpose is to help you visualize and explore the relationships between the numeric fields and the {{depvar}}.
-
 
 ### Evaluating {{classification}} results [flightdata-classification-evaluate]
 
@@ -708,15 +673,14 @@ Though you can look at individual results and compare the predicted value (`ml.F
 
 {{kib}} provides a *normalized confusion matrix* that contains the percentage of occurrences where the analysis classified data points correctly with their actual class and the percentage of occurrences where it misclassified them.
 
-:::{image} ../../../images/machine-learning-flights-classification-evaluation.png
-:alt: Evaluation of a classification job in {kib}
-:class: screenshot
+:::{image} /explore-analyze/images/machine-learning-flights-classification-evaluation.png
+:alt: Evaluation of a classification job in {{kib}}
+:screenshot:
 :::
 
 ::::{note}
 As the sample data may change when it is loaded into {{kib}}, the results of the analysis can vary even if you use the same configuration as the example. Therefore, use this information as a guideline for interpreting your own results.
 ::::
-
 
 If you want to see the exact number of occurrences, select a quadrant in the matrix. You can also use the **Training** and **Testing** filter options to refine the contents of the matrix. Thus you can see how well the model performs on previously unseen data. You can check how many documents are `true` in the testing data, how many of them are identified correctly (*true positives*) and how many of them are identified incorrectly as `false` (*false negatives*).
 
@@ -724,12 +688,12 @@ Likewise if you select other quadrants in the matrix, it shows the number of doc
 
 {{kib}} also provides the *receiver operating characteristic (ROC) curve* as part of the model evaluation. The plot compares the true positive rate (y-axis) to the false positive rate (x-axis) for each class; in this example, `true` and `false`. From this plot, the area under the curve (AUC) value is computed. It is a number between 0 and 1. The higher the AUC, the better the model is at predicting the classes correctly.
 
-:::{image} ../../../images/machine-learning-flights-classification-roc-curve.jpg
+:::{image} /explore-analyze/images/machine-learning-flights-classification-roc-curve.jpg
 :alt: Evaluation of a classification job in {{kib}} – ROC curve
-:class: screenshot
+:screenshot:
 :::
 
-You can also generate these metrics with the [{{dfanalytics}} evaluate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html). For more information about interpreting the evaluation metrics, see [6. Evaluate and interpret the result](#ml-dfanalytics-classification-evaluation).
+You can also generate these metrics with the [{{dfanalytics}} evaluate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame). For more information about interpreting the evaluation metrics, see [6. Evaluate and interpret the result](#ml-dfanalytics-classification-evaluation).
 
 ::::{dropdown} API example
 First, we want to know the training error that represents how well the model performed on the training data set.
@@ -759,7 +723,6 @@ POST _ml/data_frame/_evaluate
 
 1. We calculate the training error by evaluating only the training data.
 
-
 Next, we calculate the generalization error that represents how well the model performed on previously unseen data:
 
 ```console
@@ -786,7 +749,6 @@ POST _ml/data_frame/_evaluate
 ```
 
 1. We evaluate only the documents that are not part of the training data.
-
 
 The returned confusion matrix shows us how many data points were classified correctly (where the `actual_class` matches the `predicted_class`) and how many were misclassified (`actual_class` does not match `predicted_class`):
 
@@ -837,12 +799,9 @@ The returned confusion matrix shows us how many data points were classified corr
 3. The name of the predicted class.
 4. The number of documents that belong to the actual class and are labeled as the predicted class.
 
-
 ::::
 
-
-If you don’t want to keep the {{dfanalytics-job}}, you can delete it in {{kib}} or by using the [delete {{dfanalytics-job}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html). When you delete {{dfanalytics-jobs}} in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
-
+If you don’t want to keep the {{dfanalytics-job}}, you can delete it in {{kib}} or by using the [delete {{dfanalytics-job}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-delete-data-frame-analytics). When you delete {{dfanalytics-jobs}} in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
 
 ### Further readings [dfa-classification-readings]
 

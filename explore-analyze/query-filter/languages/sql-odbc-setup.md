@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-odbc-setup.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Configuration [sql-odbc-setup]
@@ -13,7 +18,7 @@ Once the driver has been installed, in order for an application to be able to co
 
 DSN (*data source name*) is a generic name given to the set of parameters an ODBC driver needs to connect to a database.
 
-We will refer to these parameters as *connection parameters* or *DSN* (despite some of these parameters configuring some other aspects of a driver’s functions; e.g. logging, buffer sizes…​).
+We will refer to these parameters as *connection parameters* or *DSN* (despite some of these parameters configuring some other aspects of a driver’s functions; e.g. logging, buffer sizes…).
 
 Using a DSN is the most widely used, simplest and safest way of performing the driver configuration. Constructing a connection string, on the other hand, is the most crude way and consequently the least common method.
 
@@ -29,14 +34,14 @@ For DSN management, ODBC provides the *ODBC Data Source Administrator* applicati
 To launch it, open the search menu - *Win + S* - and type "ODBC Data Sources (64-bit)" or "ODBC Data Sources (32-bit)" and press *Enter*:
 
 $$$launch_administrator$$$
-![launch administrator](../../../images/elasticsearch-reference-launch_administrator.png "")
+![launch administrator](/explore-analyze/images/elasticsearch-reference-launch_administrator.png "")
 
 Once launched, you can verify that the driver was installed correctly by clicking on the *Drivers* tab of the ODBC Data Source Administrator and checking that *Elasticsearch Driver* is present in the list of installed drivers.
 
 You should also see the version number of the installed driver.
 
 $$$administrator_drivers$$$
-![administrator drivers](../../../images/elasticsearch-reference-administrator_drivers.png "")
+![administrator drivers](/explore-analyze/images/elasticsearch-reference-administrator_drivers.png "")
 
 
 ## 2. Configure a DSN [dsn-configuration]
@@ -65,20 +70,20 @@ The configuration steps are similar for all the above points. Following is an ex
 
 #### 2.1 Launch Elasticsearch SQL ODBC Driver DSN Editor [_2_1_launch_elasticsearch_sql_odbc_driver_dsn_editor]
 
-Click on the *System DSN* tab, then on the *Add…​* button:
+Click on the *System DSN* tab, then on the *Add…* button:
 
 $$$system_add$$$
-![administrator system add](../../../images/elasticsearch-reference-administrator_system_add.png "")
+![administrator system add](/explore-analyze/images/elasticsearch-reference-administrator_system_add.png "")
 
 A new window will open, listing all available installed drivers. Click on *{{es}} Driver*, to highlight it, then on the *Finish* button:
 
 $$$launch_editor$$$
-![administrator launch editor](../../../images/elasticsearch-reference-administrator_launch_editor.png "")
+![administrator launch editor](/explore-analyze/images/elasticsearch-reference-administrator_launch_editor.png "")
 
 This action closes the previously opened second window and open a new one instead, Elasticsearch SQL ODBC Driver’s DSN Editor:
 
 $$$dsn_editor$$$
-![dsn editor basic](../../../images/elasticsearch-reference-dsn_editor_basic.png "")
+![dsn editor basic](/explore-analyze/images/elasticsearch-reference-dsn_editor_basic.png "")
 
 This new window has three tabs, each responsible for a set of configuration parameters, as follows.
 
@@ -88,12 +93,11 @@ This new window has three tabs, each responsible for a set of configuration para
 This tab allows configuration for the following items:
 
 * Name
+  This is the name the DSN will be referred by.
 
-    This is the name the DSN will be referred by.
-
-    ::::{note}
-    The characters available for this field are limited to the set permitted for a Registry key.
-    ::::
+  ::::{note}
+  The characters available for this field are limited to the set permitted for a Registry key.
+  ::::
 
 
     Example: *localhost*
@@ -106,11 +110,11 @@ This tab allows configuration for the following items:
 
 * Cloud ID
 
-    The *Cloud ID* is a string that simplifies the configuration when connecting to Elastic’s Cloud {{ess}}; it is obtained from within the Cloud console of each {{es}} cluster and encodes the connection parameters to that cluster.
+  The *Cloud ID* is a string that simplifies the configuration when connecting to {{ecloud}}. It encodes the connection parameters to that cluster. You can obtain it from from your deployment's details in the {{ecloud}} Console.
 
-    ::::{note}
-    When this field is provisioned, the *Hostname*, *Port* and the security settings are provisioned as well and their respective inputs disabled.
-    ::::
+  ::::{note}
+  When this field is provisioned, the *Hostname*, *Port* and the security settings are provisioned as well and their respective inputs disabled.
+  ::::
 
 * Hostname
 
@@ -120,11 +124,11 @@ This tab allows configuration for the following items:
 
 * Port
 
-    The port on which the {{es}} listens on.
+  The port on which the {{es}} listens on.
 
-    ::::{note}
-    If left empty, the default **9200** port number will be used.
-    ::::
+  ::::{note}
+  If left empty, the default **9200** port number will be used.
+  ::::
 
 * Username, Password
 
@@ -145,29 +149,29 @@ One of the following SSL options can be chosen:
 
 * Disabled. All communications unencrypted.
 
-    The communication between the driver and the {{es}} instance is performed over a clear-text connection.
+  The communication between the driver and the {{es}} instance is performed over a clear-text connection.
 
-    ::::{warning}
-    This setting can expose the access credentials to a 3rd party intercepting the network traffic and is not recommended.
-    ::::
+  ::::{warning}
+  This setting can expose the access credentials to a 3rd party intercepting the network traffic and is not recommended.
+  ::::
 
 * Enabled. Certificate not validated.
 
-    The connection encryption is enabled, but the certificate of the server is not validated.
+  The connection encryption is enabled, but the certificate of the server is not validated.
 
-    This is currently the default setting.
+  This is currently the default setting.
 
-    ::::{note}
-    This setting allows a 3rd party to act with ease as a man-in-the-middle and thus intercept all communications.
-    ::::
+  ::::{note}
+  This setting allows a 3rd party to act with ease as a man-in-the-middle and thus intercept all communications.
+  ::::
 
 * Enabled. Certificate is validated; hostname not validated.
 
-    The connection encryption is enabled and the driver verifies that server’s certificate is valid, but it does **not** verify if the certificate is running on the server it was meant for.
+  The connection encryption is enabled and the driver verifies that server’s certificate is valid, but it does **not** verify if the certificate is running on the server it was meant for.
 
-    ::::{note}
-    This setting allows a 3rd party that had access to server’s certificate to act as a man-in-the-middle and thus intercept all the communications.
-    ::::
+  ::::{note}
+  This setting allows a 3rd party that had access to server’s certificate to act as a man-in-the-middle and thus intercept all the communications.
+  ::::
 
 * Enabled. Certificate is validated; hostname validated.
 
@@ -179,19 +183,19 @@ One of the following SSL options can be chosen:
 
 * Certificate File
 
-    In case the server uses a certificate that is not part of the PKI, for example using a self-signed certificate, you can configure the path to a X.509 certificate file that will be used by the driver to validate server’s offered certificate.
+  In case the server uses a certificate that is not part of the PKI, for example using a self-signed certificate, you can configure the path to a X.509 certificate file that will be used by the driver to validate server’s offered certificate.
 
-    The driver will only read the contents of the file just before a connection is attempted. See [2.7 Testing the connection](#connection_testing) section further on how to check the validity of the provided parameters.
+  The driver will only read the contents of the file just before a connection is attempted. See [2.7 Testing the connection](#connection_testing) section further on how to check the validity of the provided parameters.
 
-    ::::{note}
-    The certificate file can not be bundled or password protected since the driver will not prompt for a password.
-    ::::
+  ::::{note}
+  The certificate file can not be bundled or password protected since the driver will not prompt for a password.
+  ::::
 
 
-    If using the file browser to locate the certificate - by pressing the *Browse…​* button - only files with *.pem* and *.der* extensions will be considered by default. Choose *All Files (*.*)* from the drop down, if your file ends with a different extension:
+  If using the file browser to locate the certificate - by pressing the *Browse…* button - only files with *.pem* and *.der* extensions will be considered by default. Choose *All Files (*.*)* from the drop down, if your file ends with a different extension:
 
-    $$$dsn_editor_cert$$$
-    ![dsn editor security cert](../../../images/elasticsearch-reference-dsn_editor_security_cert.png "")
+  $$$dsn_editor_cert$$$
+  ![dsn editor security cert](/explore-analyze/images/elasticsearch-reference-dsn_editor_security_cert.png "")
 
 
 
@@ -220,7 +224,7 @@ If connecting to the {{es}} node needs to go through a proxy, the following para
 
 
 $$$dsn_editor_proxy$$$
-![dsn editor proxy](../../../images/elasticsearch-reference-dsn_editor_proxy.png "")
+![dsn editor proxy](/explore-analyze/images/elasticsearch-reference-dsn_editor_proxy.png "")
 
 
 #### 2.5 Connection parameters [_2_5_connection_parameters]
@@ -233,7 +237,7 @@ The connection configuration can further be tweaked by the following parameters.
 
 * Max page size (rows)
 
-    The maximum number of rows that Elasticsearch SQL server should send the driver for one page. This corresponds to the SQL search API’s [`fetch_size`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html#sql-search-api-fetch-size) parameter. A `0` value indicates a server default.
+    The maximum number of rows that Elasticsearch SQL server should send the driver for one page. This corresponds to the SQL search API’s [`fetch_size`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query) parameter. A `0` value indicates a server default.
 
 * Max page length (MB)
 
@@ -285,7 +289,7 @@ The connection configuration can further be tweaked by the following parameters.
 
 * Multi value field lenient
 
-    This setting controls the behavior of the server in case a multi-value field is queried. In case this is set and the server encounters such a field, it will pick a value in the set - without any guarantees of what that will be, but typically the first in natural ascending order - and return it as the value for the column. If not set, the server will return an error. This corresponds to the SQL search API’s [`field_multi_value_leniency`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html#sql-search-api-field-multi-value-leniency) parameter.
+    This setting controls the behavior of the server in case a multi-value field is queried. In case this is set and the server encounters such a field, it will pick a value in the set - without any guarantees of what that will be, but typically the first in natural ascending order - and return it as the value for the column. If not set, the server will return an error. This corresponds to the SQL search API’s [`field_multi_value_leniency`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query) parameter.
 
 * Include frozen indices
 
@@ -297,7 +301,7 @@ The connection configuration can further be tweaked by the following parameters.
 
 
 $$$dsn_editor_misc$$$
-![dsn editor misc](../../../images/elasticsearch-reference-dsn_editor_misc.png "")
+![dsn editor misc](/explore-analyze/images/elasticsearch-reference-dsn_editor_misc.png "")
 
 
 #### 2.6 Logging parameters [_2_6_logging_parameters]
@@ -305,7 +309,7 @@ $$$dsn_editor_misc$$$
 For troubleshooting purposes, the Elasticsearch SQL ODBC Driver offers functionality to log the API calls that an application makes; this is enabled in the Administrator application:
 
 $$$administrator_tracing$$$
-![administrator tracing](../../../images/elasticsearch-reference-administrator_tracing.png "")
+![administrator tracing](/explore-analyze/images/elasticsearch-reference-administrator_tracing.png "")
 
 However, this only logs the ODBC API calls made by the application into the *Driver Manager* and not those made by the *Driver Manager* into the driver itself. To enable logging of the calls that the driver receives, as well as internal driver processing events, you can enable driver’s logging on Editor’s *Logging* tab:
 
@@ -315,18 +319,18 @@ However, this only logs the ODBC API calls made by the application into the *Dri
 
 * Log Directory
 
-    Here is to specify which directory to write the log files in.
+  Here is to specify which directory to write the log files in.
 
-    ::::{note}
-    The driver will create **one log file per connection**, for those connections that generate logging messages.
-    ::::
+  ::::{note}
+  The driver will create **one log file per connection**, for those connections that generate logging messages.
+  ::::
 
 * Log Level
 
     Configure the verbosity of the logs.
 
     $$$administrator_logging$$$
-    ![dsn editor logging](../../../images/elasticsearch-reference-dsn_editor_logging.png "")
+    ![dsn editor logging](/explore-analyze/images/elasticsearch-reference-dsn_editor_logging.png "")
 
     When authentication is enabled, the password will be redacted from the logs.
 
@@ -342,7 +346,7 @@ Debug-logging can quickly lead to the creation of many very large files and gene
 Once the *Hostname*, the *Port* (if different from implicit default) and the SSL options are configured, you can test if the provided parameters are correct by pressing the *Test Connection* button. This will instruct the driver to connect to the {{es}} instance and perform a simple SQL test query. (This will thus require a running {{es}} instance with the SQL plugin enabled.)
 
 $$$dsn_editor_conntest$$$
-![dsn editor conntest](../../../images/elasticsearch-reference-dsn_editor_conntest.png "")
+![dsn editor conntest](/explore-analyze/images/elasticsearch-reference-dsn_editor_conntest.png "")
 
 ::::{note}
 When connection testing, all the configured parameters are taken into account, including the logging configuration. This will allow early detection of potential file/directory access rights conflicts.
@@ -361,7 +365,7 @@ Before saving a DSN configuration the provided file/directory paths are verified
 If everything is correct, the name of the newly created DSN will be listed as available to use:
 
 $$$system_added$$$
-![administrator system added](../../../images/elasticsearch-reference-administrator_system_added.png "")
+![administrator system added](/explore-analyze/images/elasticsearch-reference-administrator_system_added.png "")
 
 
 ## Alternative logging configuration [alternative_logging]
@@ -381,7 +385,7 @@ The definition of the environment variable needs to be done as follows:
 
 
 $$$env_var_logging$$$
-![env var log](../../../images/elasticsearch-reference-env_var_log.png "")
+![env var log](/explore-analyze/images/elasticsearch-reference-env_var_log.png "")
 
 ::::{note}
 When enabling the logging through the environment variable, the driver will create **one log file per process**.

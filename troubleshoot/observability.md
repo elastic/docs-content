@@ -1,9 +1,16 @@
 ---
+navigation_title: Observability
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
+products:
+  - id: observability
 ---
 
-# Observability [troubleshooting]
+# Troubleshoot Observability [troubleshooting]
 
 Learn how to troubleshoot common issues on your own or ask for help.
 

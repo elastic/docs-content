@@ -1,11 +1,21 @@
 ---
+navigation_title: Password setup failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-setup.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Setup-passwords command fails due to connection failure [trb-security-setup]
+# Diagnose password setup connection failures [trb-security-setup]
 
-The [elasticsearch-setup-passwords command](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-passwords.html) sets passwords for the built-in users by sending user management API requests. If your cluster uses SSL/TLS for the HTTP (REST) interface, the command attempts to establish a connection with the HTTPS protocol. If the connection attempt fails, the command fails.
+The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsearch/command-line-tools/setup-passwords.md) sets passwords for the built-in users by sending user management API requests. If your cluster uses SSL/TLS for the HTTP (REST) interface, the command attempts to establish a connection with the HTTPS protocol. If the connection attempt fails, the command fails.
 
 **Symptoms:**
 
@@ -29,7 +39,7 @@ The [elasticsearch-setup-passwords command](https://www.elastic.co/guide/en/elas
     PKIX path building failed:
     sun.security.provider.certpath.SunCertPathBuilderException:
     unable to find valid certification path to requested target
-    Please check the elasticsearch SSL settings under
+    Check the elasticsearch SSL settings under
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at
@@ -44,11 +54,11 @@ The [elasticsearch-setup-passwords command](https://www.elastic.co/guide/en/elas
     failed: java.security.cert.CertificateException:
     No subject alternative DNS name matching
     elasticsearch.example.com found.
-    Please check the elasticsearch SSL settings under
+    Check the elasticsearch SSL settings under
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at
-    https://elasticsearch.example.com:9200/_security/_authenticate?pretty.
+    <ELASTICSEARCH_HOST_URL>:9200/_security/_authenticate?pretty.
     ```
 
 
@@ -58,5 +68,5 @@ The [elasticsearch-setup-passwords command](https://www.elastic.co/guide/en/elas
 2. If the command does not trust the {{es}} server, verify that you configured the `xpack.security.http.ssl.certificate_authorities` setting or the `xpack.security.http.ssl.truststore.path` setting.
 3. If hostname verification fails, you can disable this verification by setting `xpack.security.http.ssl.verification_mode` to `certificate`.
 
-For more information about these settings, see [Security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html).
+For more information about these settings, see [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
 

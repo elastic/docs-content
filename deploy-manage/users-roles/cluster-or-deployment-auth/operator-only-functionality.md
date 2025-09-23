@@ -1,12 +1,19 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/operator-only-functionality.html
+applies_to:
+  deployment:
+    ess:
+    ece:
+    eck:
+products:
+  - id: elasticsearch
 ---
 
 # Operator-only functionality [operator-only-functionality]
 
-::::{note} 
-{cloud-only}
+::::{admonition} Indirect use only
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
 
 
@@ -14,22 +21,22 @@ Operator privileges provide protection for APIs and dynamic cluster settings. An
 
 ## Operator-only APIs [operator-only-apis]
 
-* [Voting configuration exclusions](https://www.elastic.co/guide/en/elasticsearch/reference/current/voting-config-exclusions.html)
-* [Delete license](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-license.html)
-* [Update license](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-license.html)
-* [Create or update autoscaling policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-put-autoscaling-policy.html)
-* [Delete autoscaling policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-delete-autoscaling-policy.html)
-* [Create or update desired nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-desired-nodes.html)
-* [Get desired nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-desired-nodes.html)
-* [Delete desired nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-desired-nodes.html)
-* [Get desired balance](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-desired-balance.html)
-* [Reset desired balance](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-desired-balance.html)
+* [Voting configuration exclusions](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions)
+* [Delete license](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-delete)
+* [Update license](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post)
+* [Create or update autoscaling policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-put-autoscaling-policy)
+* [Delete autoscaling policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-delete-autoscaling-policy)
+* [Create or update desired nodes](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Get desired nodes](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Delete desired nodes](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Get desired balance](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Reset desired balance](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
 
 
 ## Operator-only dynamic cluster settings [operator-only-dynamic-cluster-settings]
 
-* All [IP filtering](../../security/ip-traffic-filtering.md) settings
-* The following dynamic [machine learning settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html):
+* All [IP filtering](../../security/ip-filtering.md) settings
+* The following dynamic [machine learning settings](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md):
 
     * `xpack.ml.node_concurrent_job_allocations`
     * `xpack.ml.max_machine_memory_percent`
@@ -41,8 +48,8 @@ Operator privileges provide protection for APIs and dynamic cluster settings. An
     * `xpack.ml.enable_config_migration`
     * `xpack.ml.persist_results_max_retries`
 
-* The [`cluster.routing.allocation.disk.threshold_enabled` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-disk-threshold)
-* The following [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services):
+* The [`cluster.routing.allocation.disk.threshold_enabled` setting](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-disk-threshold)
+* The following [recovery settings for managed services](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services):
 
     * `node.bandwidth.recovery.operator.factor`
     * `node.bandwidth.recovery.operator.factor.read`

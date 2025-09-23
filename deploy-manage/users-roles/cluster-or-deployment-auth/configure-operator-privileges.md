@@ -1,20 +1,26 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configure-operator-privileges.html
+applies_to:
+  deployment:
+    ess:
+    ece:
+    eck:
+products:
+  - id: elasticsearch
 ---
 
 # Configure operator privileges [configure-operator-privileges]
 
-::::{note} 
-{cloud-only}
+::::{admonition} Indirect use only
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
-
 
 Before you can use operator privileges, you must [enable the feature](#enable-operator-privileges) on all nodes in the cluster and [designate operator users](#designate-operator-users).
 
 ## Enable operator privileges [enable-operator-privileges]
 
-In order to use the operator privileges feature, it must be enabled explicitly on each node in the cluster. Add the following setting in each `elasticsearch.yml` file:
+In order to use the operator privileges feature, it must be enabled explicitly on each node in the cluster. Add the following setting in each [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
 ```yaml
 xpack.security.operator_privileges.enabled: true
@@ -23,7 +29,7 @@ xpack.security.operator_privileges.enabled: true
 If the node is already running before you make this change, you must restart the node for the feature to take effect.
 
 ::::{warning} 
-The feature needs to be either enabled or disabled consistently across all nodes in a cluster. Otherwise, you can get inconsistent behaviour depending on which node first receives a request and which node executes it.
+The feature needs to be either enabled or disabled consistently across all nodes in a cluster. Otherwise, you can get inconsistent behavior depending on which node first receives a request and which node executes it.
 ::::
 
 

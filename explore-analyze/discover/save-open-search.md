@@ -1,20 +1,26 @@
 ---
+navigation_title: Save a search for reuse
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/save-open-search.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
-# Save a search for reuse [save-open-search]
+# Discover sessions: Save a search for reuse [save-open-search]
 
 A saved Discover session is a convenient way to reuse a search that you’ve created in **Discover**. Discover sessions are good for saving a configured view of Discover to use later or adding search results to a dashboard, and can also serve as a foundation for building visualizations.
 
 
 ## Read-only access [discover-read-only-access]
 
-If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
-:::{image} ../../images/kibana-read-only-badge.png
+:::{image} /explore-analyze/images/kibana-read-only-badge.png
 :alt: Example of Discover's read only access indicator in Kibana's header
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -28,7 +34,7 @@ By default, a Discover session stores the query text, filters, and current view 
 4. Click **Save**.
 5. To reload your search results in **Discover**, click **Open** in the toolbar, and select the saved Discover session.
 
-    If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
+If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
 
 

@@ -1,7 +1,16 @@
 ---
-navigation_title: "Watermark errors"
+navigation_title: Watermark errors
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-watermark-errors.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 
@@ -9,21 +18,20 @@ mapped_pages:
 # Watermark errors [fix-watermark-errors]
 
 
-When a data node is critically low on disk space and has reached the [flood-stage disk usage watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-flood-stage), the following error is logged: `Error: disk usage exceeded flood-stage watermark, index has read-only-allow-delete block`.
+When a data node is critically low on disk space and has reached the [flood-stage disk usage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage), the following error is logged: `Error: disk usage exceeded flood-stage watermark, index has read-only-allow-delete block`.
 
-To prevent a full disk, when a node reaches this watermark, {{es}} [blocks writes](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html#index-block-settings) to any index with a shard on the node. If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, this could induce {{kib}}'s `Kibana Server is not Ready yet` [error message](../../deploy-manage/deploy/self-managed/access.md#not-ready).
+To prevent a full disk, when a node reaches this watermark, {{es}} [blocks writes](elasticsearch://reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the node. If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, this could induce {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
 
-{{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
+{{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
 
-::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
-
+::::{tip}
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
 ## Monitor rebalancing [fix-watermark-errors-rebalance]
 
-To verify that shards are moving off the affected node until it falls below high watermark., use the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html) and [cat recovery API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-recovery.html):
+To verify that shards are moving off the affected node until it falls below high watermark., use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) and [cat recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery):
 
 ```console
 GET _cat/shards?v=true
@@ -31,7 +39,7 @@ GET _cat/shards?v=true
 GET _cat/recovery?v=true&active_only=true
 ```
 
-If shards remain on the node keeping it about high watermark, use the [cluster allocation explanation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html) to get an explanation for their allocation status.
+If shards remain on the node keeping it about high watermark, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) to get an explanation for their allocation status.
 
 ```console
 GET _cluster/allocation/explain
@@ -45,7 +53,7 @@ GET _cluster/allocation/explain
 
 ## Temporary Relief [fix-watermark-errors-temporary]
 
-To immediately restore write operations, you can temporarily increase [disk watermarks](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation) and remove the [write block](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html#index-block-settings).
+To immediately restore write operations, you can temporarily increase [disk watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) and remove the [write block](elasticsearch://reference/elasticsearch/index-settings/index-block.md).
 
 ```console
 PUT _cluster/settings
@@ -93,11 +101,11 @@ To resolve watermark errors permanently, perform one of the following actions:
 
 * Horizontally scale nodes of the affected [data tiers](../../manage-data/lifecycle/data-tiers.md).
 * Vertically scale existing nodes to increase disk space.
-* Delete indices using the [delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html), either permanently if the index isn’t needed, or temporarily to later [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
+* Delete indices using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
 * update related [ILM policy](../../manage-data/lifecycle/index-lifecycle-management.md) to push indices through to later [data tiers](../../manage-data/lifecycle/data-tiers.md)
 
 ::::{tip}
-On {{ess}} and {{ece}}, indices may need to be temporarily deleted via its [Elasticsearch API Console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow on {{ess}}, kindly reach out to [Elastic Support](https://support.elastic.co) for assistance.
+On {{ech}} and {{ece}}, indices may need to be temporarily deleted via its [Elasticsearch API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow on {{ech}}, kindly reach out to [Elastic Support](https://support.elastic.co) for assistance.
 ::::
 
 

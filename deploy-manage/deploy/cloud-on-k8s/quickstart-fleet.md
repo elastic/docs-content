@@ -1,9 +1,15 @@
 ---
+navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-quickstart.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
-# Quickstart [k8s-elastic-agent-fleet-quickstart]
+# Quickstart: Running {{fleet}} on {{eck}} [k8s-elastic-agent-fleet-quickstart]
 
 1. To deploy {{fleet-server}}, {{agents}}, {{es}}, and {{kib}}, apply the following specification:
 
@@ -15,7 +21,7 @@ mapped_pages:
       name: fleet-server-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       kibanaRef:
         name: kibana-quickstart
       elasticsearchRefs:
@@ -38,7 +44,7 @@ mapped_pages:
       name: elastic-agent-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       kibanaRef:
         name: kibana-quickstart
       fleetServerRef:
@@ -62,13 +68,13 @@ mapped_pages:
       name: kibana-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       elasticsearchRef:
         name: elasticsearch-quickstart
       config:
-        xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-quickstart-es-http.default.svc:9200"]
-        xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-quickstart-agent-http.default.svc:8220"]
+        xpack.fleet.agents.elasticsearch.hosts: ["<ELASTICSEARCH_HOST_URL>.default.svc:9200"]
+        xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>.default.svc:8220"]
         xpack.fleet.packages:
           - name: system
             version: latest
@@ -110,7 +116,7 @@ mapped_pages:
       name: elasticsearch-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       nodeSets:
       - name: default
         count: 3
@@ -186,10 +192,10 @@ ECK automatically configures secure connections between all components. {{fleet}
     kubectl get agent
     ```
 
-    ```sh
+    ```sh subs=true
     NAME                       HEALTH   AVAILABLE   EXPECTED   VERSION      AGE
-    elastic-agent-quickstart   green    3           3          8.16.1    14s
-    fleet-server-quickstart    green    1           1          8.16.1    19s
+    elastic-agent-quickstart   green    3           3          {{version.stack}}    14s
+    fleet-server-quickstart    green    1           1          {{version.stack}}    19s
     ```
 
 2. List all the Pods belonging to a given {{agent}} specification.
@@ -211,5 +217,5 @@ ECK automatically configures secure connections between all components. {{fleet}
     kubectl logs -f elastic-agent-quickstart-agent-xbcxr
     ```
 
-4. Configure the policy used by {{agents}}. Check [{{agent}} policies](https://www.elastic.co/guide/en/fleet/current/agent-policy.html) for more details.
+4. Configure the policy used by {{agents}}. Check [{{agent}} policies](/reference/fleet/agent-policy.md) for more details.
 

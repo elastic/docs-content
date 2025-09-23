@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-syntax-show-tables.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # SHOW TABLES [sql-syntax-show-tables]
@@ -35,7 +40,7 @@ javaRestTest      |employees      |VIEW      |ALIAS
 javaRestTest      |library        |TABLE     |INDEX
 ```
 
-Match multiple indices by using {{es}} [multi-target syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) notation:
+Match multiple indices by using {{es}} [multi-target syntax](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) notation:
 
 ```sql
 SHOW TABLES "*,-l*";

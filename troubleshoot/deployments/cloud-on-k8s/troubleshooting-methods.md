@@ -1,9 +1,15 @@
 ---
+navigation_title: Resources and logs
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting-methods.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
-# Troubleshooting methods [k8s-troubleshooting-methods]
+# Troubleshoot ECK resources and logs  [k8s-troubleshooting-methods]
 
 Most common issues can be identified and resolved by following these instructions:
 
@@ -228,13 +234,13 @@ To increase or decrease the size of a disk, you cannot change the size of the vo
 
 For a concrete example, imagine you started with this:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -254,13 +260,13 @@ spec:
 
 and want to increase it to 10Gi of storage. You can change the nodeSet name and the volume size like so:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default-10gi
     count: 3
@@ -294,7 +300,7 @@ This can also be done for Kibana and APM Server.
 
 ## Suspend Elasticsearch [k8s-suspend-elasticsearch]
 
-In exceptional cases, you might need to suspend the Elasticsearch process while using `kubectl exec` (as in the [previous section](#k8s-exec-into-containers)) to troubleshoot. One such example where Elasticsearch has to be stopped are the unsafe operations on Elasticsearch nodes that can be executed with the [elasticsearch-node](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-tool.html) tool.
+In exceptional cases, you might need to suspend the Elasticsearch process while using `kubectl exec` (as in the [previous section](#k8s-exec-into-containers)) to troubleshoot. One such example where Elasticsearch has to be stopped are the unsafe operations on Elasticsearch nodes that can be executed with the [elasticsearch-node](elasticsearch://reference/elasticsearch/command-line-tools/node-tool.md) tool.
 
 To suspend an Elasticearch node, while keeping the corresponding Pod running, you can annotate the Elasticsearch resource with the `eck.k8s.elastic.co/suspend` annotation. The value should be a comma-separated list of the names of the Pods whose Elasticsearch process you want to suspend.
 
@@ -319,5 +325,5 @@ kubectl annotate es quickstart eck.k8s.elastic.co/suspend-
 
 ## Capture JVM heap dumps [k8s-capture-jvm-heap-dumps]
 
-Elasticsearch and Enterprise Search are applications that run on the JVM. It can be useful to capture a heap dump to troubleshoot garbage collection issues or suspected memory leaks or to share it with Elastic. Follow the application specific instructions for [Elasticsearch](jvm-heap-dumps.md) and [Enterprise Search](../../../deploy-manage/deploy/cloud-on-k8s/troubleshooting-enterprise-search.md#k8s-enterprise-search-jvm-heap-dump).
+Elasticsearch runs on the JVM. It can be useful to capture a heap dump to troubleshoot garbage collection issues or suspected memory leaks or to share it with Elastic. Follow the specific instructions for [Elasticsearch](jvm-heap-dumps.md).
 

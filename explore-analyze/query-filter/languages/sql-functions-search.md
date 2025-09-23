@@ -1,13 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-functions-search.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Full-Text Search Functions [sql-functions-search]
 
 Search functions should be used when performing full-text search, namely when the `MATCH` or `QUERY` predicates are being used. Outside a, so-called, search context, these functions will return default values such as `0` or `NULL`.
 
-Elasticsearch SQL optimizes all queries executed against {{es}} depending on the scoring needs. Using [`track_scores`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html#_track_scores) on the search request or [`_doc` sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html) that disables scores calculation, Elasticsearch SQL instructs {{es}} not to compute scores when these are not needed. For example, every time a `SCORE()` function is encountered in the SQL query, the scores are computed.
+Elasticsearch SQL optimizes all queries executed against {{es}} depending on the scoring needs. Using [`track_scores`](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md#_track_scores) on the search request or [`_doc` sorting](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md) that disables scores calculation, Elasticsearch SQL instructs {{es}} not to compute scores when these are not needed. For example, every time a `SCORE()` function is encountered in the SQL query, the scores are computed.
 
 ## `MATCH` [sql-functions-search-match]
 
@@ -25,7 +30,7 @@ MATCH(
 3. additional parameters; optional
 
 
-**Description**: A full-text search option, in the form of a predicate, available in Elasticsearch SQL that gives the user control over powerful [match](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) and [multi_match](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) {{es}} queries.
+**Description**: A full-text search option, in the form of a predicate, available in Elasticsearch SQL that gives the user control over powerful [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) and [multi_match](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md) {{es}} queries.
 
 The first parameter is the field or fields to match against. In case it receives one value only, Elasticsearch SQL will use a `match` query to perform the search:
 
@@ -53,8 +58,8 @@ Frank Herbert  |Children of Dune   |8.043278
 Frank Herbert  |God Emperor of Dune|7.0029488
 ```
 
-::::{note} 
-The `multi_match` query in {{es}} has the option of [per-field boosting](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) that gives preferential weight (in terms of scoring) to fields being searched in, using the `^` character. In the example above, the `name` field has a greater weight in the final score than the `author` field when searching for `frank dune` text in both of them.
+::::{note}
+The `multi_match` query in {{es}} has the option of [per-field boosting](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md) that gives preferential weight (in terms of scoring) to fields being searched in, using the `^` character. In the example above, the `name` field has a greater weight in the final score than the `author` field when searching for `frank dune` text in both of them.
 ::::
 
 
@@ -70,12 +75,12 @@ Douglas Adams    |The Hitchhiker's Guide to the Galaxy|3.1756816
 Peter F. Hamilton|Pandora's Star                      |3.0997515
 ```
 
-::::{note} 
+::::{note}
 The allowed optional parameters for a single-field `MATCH()` variant (for the `match` {{es}} query) are: `analyzer`, `auto_generate_synonyms_phrase_query`, `lenient`, `fuzziness`, `fuzzy_transpositions`, `fuzzy_rewrite`, `minimum_should_match`, `operator`, `max_expansions`, `prefix_length`.
 ::::
 
 
-::::{note} 
+::::{note}
 The allowed optional parameters for a multi-field `MATCH()` variant (for the `multi_match` {{es}} query) are: `analyzer`, `auto_generate_synonyms_phrase_query`, `lenient`, `fuzziness`, `fuzzy_transpositions`, `fuzzy_rewrite`, `minimum_should_match`, `operator`, `max_expansions`, `prefix_length`, `slop`, `tie_breaker`, `type`.
 ::::
 
@@ -95,7 +100,7 @@ QUERY(
 2. additional parameters; optional
 
 
-**Description**: Just like `MATCH`, `QUERY` is a full-text search predicate that gives the user control over the [query_string](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html) query in {{es}}.
+**Description**: Just like `MATCH`, `QUERY` is a full-text search predicate that gives the user control over the [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md) query in {{es}}.
 
 The first parameter is basically the input that will be passed as is to the `query_string` query, which means that anything that `query_string` accepts in its `query` field can be used here as well:
 
@@ -137,7 +142,7 @@ SELECT author, name, SCORE() FROM library WHERE QUERY('dune god', 'default_opera
 Frank Herbert  |God Emperor of Dune|3.6984892
 ```
 
-::::{note} 
+::::{note}
 The allowed optional parameters for `QUERY()` are: `allow_leading_wildcard`, `analyze_wildcard`, `analyzer`, `auto_generate_synonyms_phrase_query`, `default_field`, `default_operator`, `enable_position_increments`, `escape`, `fuzziness`, `fuzzy_max_expansions`, `fuzzy_prefix_length`, `fuzzy_rewrite`, `fuzzy_transpositions`, `lenient`, `max_determinized_states`, `minimum_should_match`, `phrase_slop`, `rewrite`, `quote_analyzer`, `quote_field_suffix`, `tie_breaker`, `time_zone`, `type`.
 ::::
 
@@ -155,8 +160,8 @@ SCORE()
 
 **Description**: Returns the [relevance](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/relevance-intro.html) of a given input to the executed query. The higher score, the more relevant the data.
 
-::::{note} 
-When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html).
+::::{note}
+When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md).
 ::::
 
 

@@ -1,9 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-configuration.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-logstash-configuration]
+# Configuration for Logstash on {{eck}} [k8s-logstash-configuration]
 
 ## Upgrade the Logstash specification [k8s-logstash-upgrade-specification]
 
@@ -14,13 +20,13 @@ You can upgrade the Logstash version or change settings by editing the YAML spec
 
 Define the Logstash configuration (the ECK equivalent to `logstash.yml`) in the `spec.config` section:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
   - name: quickstart
@@ -35,13 +41,13 @@ spec:
 
 Alternatively, you can provide the configuration through a Secret specified in the `spec.configRef` section. The Secret must have a `logstash.yml` entry with your settings:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
   - name: quickstart
@@ -64,13 +70,13 @@ stringData:
 
 Define Logstash pipelines in the `spec.pipelines` section (the ECK equivalent to `pipelines.yml`):
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: qs
@@ -95,13 +101,13 @@ spec:
 
 Alternatively, you can provide the pipelines configuration through a Secret specified in the `spec.pipelinesRef` field. The Secret must have a `pipelines.yml` entry with your configuration:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: qs
@@ -134,13 +140,13 @@ stringData:
 
 Logstash on ECK supports all options present in `pipelines.yml`, including settings to update the number of workers, and the size of the batch that the pipeline will process. This also includes using `path.config` to point to volumes mounted on the Logstash container:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: qs
@@ -171,13 +177,13 @@ Logstash persistent queues (PQs) and dead letter queues (DLQs) are not currently
 
 ## Defining data volumes for Logstash [k8s-logstash-volumes]
 
-[2.9.0]
+:::{admonition} Added in 2.9.0
+This was added in 2.9.0.
+:::
 
 ::::{warning}
 Volume support for Logstash is a breaking change to earlier versions of ECK and requires you to recreate your Logstash resources.
 ::::
-
-
 
 ## Specifying the volume claim settings [k8s-volume-claim-settings]
 
@@ -336,7 +342,7 @@ If the volume driver supports `ExpandInUsePersistentVolumes`, the filesystem is 
 
 If the volume driver does not support `ExpandInUsePersistentVolumes`, you must manually delete Pods after the resize so that they can be recreated automatically with the expanded filesystem.
 
-Any other changes in the volumeClaimTemplates—​such as changing the storage class or decreasing the volume size—​are not allowed. To make changes such as these, you must fully delete the {{ls}} resource, delete and recreate or resize the volume, and create a new {{ls}} resource.
+Any other changes in the volumeClaimTemplates—such as changing the storage class or decreasing the volume size—are not allowed. To make changes such as these, you must fully delete the {{ls}} resource, delete and recreate or resize the volume, and create a new {{ls}} resource.
 
 Before you delete a persistent queue (PQ) volume, ensure that the queue is empty. We recommend setting `queue.drain: true` on the {{ls}} Pods to ensure that the queue is drained when Pods are shutdown. Note that you should also increase the `terminationGracePeriodSeconds` to a large enough value to allow the queue to drain.
 
@@ -390,13 +396,13 @@ spec:
 ```
 
 
-## Using Elasticsearch in Logstash pipelines [k8s-logstash-pipelines-es]
+## Using {{es}} in Logstash pipelines [k8s-logstash-pipelines-es]
 
 ### `elasticsearchRefs` for establishing a secured connection [k8s-logstash-esref]
 
-The `spec.elasticsearchRefs` section provides a mechanism to help configure Logstash to establish a secured connection to one or more ECK managed Elasticsearch clusters. By default, each `elasticsearchRef` will target all nodes in its referenced Elasticsearch cluster. If you want to direct traffic to specific nodes of your Elasticsearch cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
+The `spec.elasticsearchRefs` section provides a mechanism to help configure Logstash to establish a secured connection to one or more ECK managed {{es}} clusters. By default, each `elasticsearchRef` will target all nodes in its referenced {{es}} cluster. If you want to direct traffic to specific nodes of your {{es}} cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
 
-When you use `elasticsearchRefs` in a Logstash pipeline, the Logstash operator creates the necessary resources from the associated Elasticsearch cluster, and provides environment variables to allow these resources to be accessed from the pipeline configuration. Environment variables are replaced at runtime with the appropriate values. The environment variables have a fixed naming convention:
+When you use `elasticsearchRefs` in a Logstash pipeline, the Logstash operator creates the necessary resources from the associated {{es}} cluster, and provides environment variables to allow these resources to be accessed from the pipeline configuration. Environment variables are replaced at runtime with the appropriate values. The environment variables have a fixed naming convention:
 
 * `NORMALIZED_CLUSTERNAME_ES_HOSTS`
 * `NORMALIZED_CLUSTERNAME_ES_USER`
@@ -419,21 +425,21 @@ where NORMALIZED_CLUSTERNAME is the value taken from the `clusterName` field of 
     ]
     ```
 
-    You can [update user permissions](../../users-roles/cluster-or-deployment-auth/native.md) to include more indices if the Elasticsearch plugin is expected to use indices other than the default. Check out [Logstash configuration with a custom index](configuration-examples-logstash.md#k8s-logstash-configuration-custom-index) sample configuration that creates a user that writes to a custom index.
+    You can [update user permissions](../../users-roles/cluster-or-deployment-auth/native.md) to include more indices if the {{es}} plugin is expected to use indices other than the default. Check out [Logstash configuration with a custom index](configuration-examples-logstash.md#k8s-logstash-configuration-custom-index) sample configuration that creates a user that writes to a custom index.
 
 
 ::::
 
 
-This example demonstrates how to create a Logstash deployment that connects to different Elasticsearch instances, one of which is in a separate namespace:
+This example demonstrates how to create a Logstash deployment that connects to different {{es}} instances, one of which is in a separate namespace:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:        <1>
     - clusterName: prod-es  <2>
@@ -465,24 +471,24 @@ spec:
         }
 ```
 
-1. Define Elasticsearch references in the CRD. This will create the appropriate Secrets to store certificate details and the rest of the connection information, and create environment variables to allow them to be referred to in Logstash pipeline configurations.
-2. This refers to an Elasticsearch cluster residing in the same namespace as the Logstash instances.
-3. This refers to an Elasticsearch cluster residing in a different namespace to the Logstash instances.
-4. Elasticsearch output definitions - use the environment variables created by the Logstash operator when specifying an `ElasticsearchRef`. Note the use of "normalized" versions of the `clusterName` in the environment variables used to populate the relevant fields.
+1. Define {{es}} references in the CRD. This will create the appropriate Secrets to store certificate details and the rest of the connection information, and create environment variables to allow them to be referred to in Logstash pipeline configurations.
+2. This refers to an {{es}} cluster residing in the same namespace as the Logstash instances.
+3. This refers to an {{es}} cluster residing in a different namespace to the Logstash instances.
+4. {{es}} output definitions - use the environment variables created by the Logstash operator when specifying an `ElasticsearchRef`. Note the use of "normalized" versions of the `clusterName` in the environment variables used to populate the relevant fields.
 
 
 
-### Connect to an external Elasticsearch cluster [k8s-logstash-external-es]
+### Connect to an external {{es}} cluster [k8s-logstash-external-es]
 
-Logstash can connect to external Elasticsearch cluster that is not managed by ECK. You can reference a Secret instead of an Elasticsearch cluster in the `elasticsearchRefs` section through the `secretName` attribute:
+Logstash can connect to external {{es}} cluster that is not managed by ECK. You can reference a Secret instead of an {{es}} cluster in the `elasticsearchRefs` section through the `secretName` attribute:
 
-```yaml
+```yaml subs=true
 apiVersion: v1
 kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://abcd-42.xyz.elastic-cloud.com:443 <1>
+  url: https://<example-url>.elastic-cloud.com:443 <1>
   username: logstash_user <2>
   password: REDACTED <3>
   ca.crt: REDACTED <4>
@@ -492,7 +498,7 @@ kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - clusterName: prod-es
@@ -556,13 +562,13 @@ You can [customize the {{ls}} Pod](customize-pods.md) using a Pod template, defi
 
 This example demonstrates how to create a {{ls}} deployment with increased heap size and resource limits.
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: logstash-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRefs:
     - name: "elasticsearch-sample"

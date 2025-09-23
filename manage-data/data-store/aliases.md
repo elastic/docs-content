@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Aliases [aliases]
@@ -11,7 +16,7 @@ Aliases enable you to:
 
 * Query multiple indices/data streams together with a single name
 * Change which indices/data streams your application uses in real time
-* [Reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) data without downtime
+* [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) data without downtime
 
 
 ## Alias types [alias-types]
@@ -26,7 +31,7 @@ An alias cannot point to both data streams and indices. You also cannot add a da
 
 ## Add an alias [add-alias]
 
-To add an existing data stream or index to an alias, use the [aliases API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html)'s `add` action. If the alias doesn’t exist, the request creates it.
+To add an existing data stream or index to an alias, use the [aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases)'s `add` action. If the alias doesn’t exist, the request creates it.
 
 ```console
 POST _aliases
@@ -169,7 +174,7 @@ Allowing the action list to succeed partially may not provide the desired result
 
 ## Add an alias at index creation [add-alias-at-creation]
 
-You can also use a [component](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html) or [index template](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html) to add index or data stream aliases when they are created.
+You can also use a [component](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) or [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to add index or data stream aliases when they are created.
 
 ```console
 # Component template with index aliases
@@ -201,7 +206,7 @@ PUT _index_template/my-index-template
 }
 ```
 
-You can also specify index aliases in [create index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html) requests.
+You can also specify index aliases in [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) requests.
 
 ```console
 # PUT <my-index-{now/d}-000001>
@@ -216,7 +221,7 @@ PUT %3Cmy-index-%7Bnow%2Fd%7D-000001%3E
 
 ## View aliases [view-aliases]
 
-To get a list of your cluster’s aliases, use the [get alias API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-alias.html) with no argument.
+To get a list of your cluster’s aliases, use the [get alias API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-alias) with no argument.
 
 ```console
 GET _alias
@@ -263,7 +268,7 @@ POST _aliases
 If an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn’t set, the index automatically acts as the write index. Data stream aliases don’t automatically set a write data stream, even if the alias points to one data stream.
 
 ::::{tip}
-We recommend using data streams to store append-only time series data. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. See [Manage time series data without data streams](../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams).
+We recommend using data streams to store append-only time series data. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. See the tutorial [](../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md).
 ::::
 
 
@@ -306,14 +311,14 @@ POST _aliases
 ```
 
 ::::{note}
-Filters are only applied when using the [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md), and are not applied when [retrieving a document by ID](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html).
+Filters are only applied when using the [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md), and are not applied when [retrieving a document by ID](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get).
 ::::
 
 
 
 ## Routing [alias-routing]
 
-Use the `routing` option to [route](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-routing-field.html) requests for an alias to a specific shard. This lets you take advantage of [shard caches](https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache.html) to speed up searches. Data stream aliases do not support routing options.
+Use the `routing` option to [route](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md) requests for an alias to a specific shard. This lets you take advantage of [shard caches](/deploy-manage/distributed-architecture/shard-request-cache.md) to speed up searches. Data stream aliases do not support routing options.
 
 ```console
 POST _aliases

@@ -1,14 +1,20 @@
 ---
+navigation_title: "{{eck}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-licensing.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
-# Manage your license in ECK [k8s-licensing]
+# Manage your license in {{eck}} [k8s-licensing]
 
-When you install the default distribution of ECK, you receive a Basic license. Any Elastic stack application you manage through ECK will also be Basic licensed. Go to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) to check which features are included in the Basic license for free.
+When you install the default distribution of ECK, you receive a Basic license. Any {{stack}} application you manage through ECK will also be Basic licensed. Go to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) to check which features are included in the Basic license for free.
 
 ::::{important}
-ECK is only offered in two licensing tiers: Basic and Enterprise. Similar to the Elastic Stack, customers can download and use ECK with a Basic license for free. Basic license users can obtain support from GitHub or through our [community](https://discuss.elastic.co). A paid Enterprise subscription is required to engage the Elastic support team. For more details, check the [Elastic subscriptions](https://www.elastic.co/subscriptions).
+ECK is only offered in two licensing tiers: Basic and Enterprise. Similar to the {{stack}}, customers can download and use ECK with a Basic license for free. Basic license users can obtain support from GitHub or through our [community](https://discuss.elastic.co). A paid Enterprise subscription is required to engage the Elastic support team. For more details, check the [Elastic subscriptions](https://www.elastic.co/subscriptions).
 ::::
 
 
@@ -58,7 +64,7 @@ When downloading the license choose the "Orchestration license" option.
 ::::
 
 
-The downloaded JSON file contains the Enterprise orchestration license which enables ECK Enterprise features. Embedded in the orchestration license are also Enterprise stack licenses for recent Elasticsearch versions and Platinum licenses for older Elasticsearch versions that do not support Enterprise licenses.
+The downloaded JSON file contains the Enterprise orchestration license which enables ECK Enterprise features. Embedded in the orchestration license are also Enterprise stack licenses for recent {{es}} versions and Platinum licenses for older {{es}} versions that do not support Enterprise licenses.
 
 To add the license to your ECK installation, create a Kubernetes secret of the following form:
 
@@ -80,15 +86,15 @@ data:
 
 You can easily create this secret using `kubectl` built-in support for secrets. Note that it must be in the same namespace as the operator:
 
-```shell script
+```shell
 kubectl create secret generic eck-license --from-file=my-license-file.json -n elastic-system
 kubectl label secret eck-license "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
 
-After you install a license into ECK, the Enterprise features of the operator are available, like Elasticsearch autoscaling and support for Elastic Maps Server. All the Elastic Stack applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-license.html) API reports that individual Elasticsearch clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
+After you install a license into ECK, the Enterprise features of the operator are available, like {{es}} autoscaling and support for Elastic Maps Server. All the {{stack}} applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API reports that individual {{es}} clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
 
 ::::{note}
-The Elasticsearch `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.
+The {{es}} `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.
 ::::
 
 
@@ -98,13 +104,23 @@ The Elasticsearch `_license` API for versions before 8.0.0 reports a Platinum li
 Before your current Enterprise license expires, you will receive a new Enterprise license from Elastic (provided that your subscription is valid).
 
 ::::{note}
-You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual Elasticsearch clusters with shorter expiry. Therefore, you get a different expiry in Kibana or through the Elasticsearch [`_license`](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-license.html) API. ECK automatically updates the Elasticsearch cluster licenses until the expiry date of the ECK Enterprise license is reached.
+You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual {{es}} clusters with shorter expiry. Therefore, you get a different expiry in {{kib}} or through the {{es}} [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API. ECK automatically updates the {{es}} cluster licenses until the expiry date of the ECK Enterprise license is reached.
 ::::
 
+::::{important}
+To avoid any unintended downgrade of individual {{es}} clusters to a Basic license while installing the new license, we recommend installing the new Enterprise license as a new Kubernetes secret next to your existing Enterprise license.
+::::
 
-To avoid any unintended downgrade of individual Elasticsearch clusters to a Basic license while installing the new license, we recommend installing the new Enterprise license as a new Kubernetes secret next to your existing Enterprise license. Just replace `eck-license` with a different name in the [Kubernetes secret example](#k8s-add-license). ECK will use the correct license automatically.
+To update your license, please refer to the [Add a license](#k8s-add-license) documentation and utilize a different Kubernetes secret name for your new license. For instance:
 
-Once you have created the new license secret you can safely delete the old license secret.
+```shell
+kubectl create secret generic eck-license-new --from-file=<path/to/your/new/license.json> -n elastic-system
+kubectl label secret eck-license-new "license.k8s.elastic.co/scope"=operator -n elastic-system
+```
+
+After creating the new license, verify its status as described in [Get usage data](#k8s-get-usage-data). For example, ensure that the `eck_license_expiry_date` reflects the expiration date of your new license.
+
+Once the new license is confirmed, you may safely delete the old license secret.
 
 
 ## Get usage data [k8s-get-usage-data]
@@ -150,9 +166,6 @@ elastic_licensing_memory_gibibytes_apm{license_level="enterprise"} 0.5
 # HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by Elasticsearch in GiB
 # TYPE elastic_licensing_memory_gibibytes_elasticsearch gauge
 elastic_licensing_memory_gibibytes_elasticsearch{license_level="enterprise"} 18
-# HELP elastic_licensing_memory_gibibytes_enterprise_search Memory used by Enterprise Search in GiB
-# TYPE elastic_licensing_memory_gibibytes_enterprise_search gauge
-elastic_licensing_memory_gibibytes_enterprise_search{license_level="enterprise"} 4
 # HELP elastic_licensing_memory_gibibytes_kibana Memory used by Kibana in GiB
 # TYPE elastic_licensing_memory_gibibytes_kibana gauge
 elastic_licensing_memory_gibibytes_kibana{license_level="enterprise"} 1

@@ -1,17 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-reranking.html
+applies_to:
+  stack: ga 9.0
+  serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Semantic reranking [semantic-reranking]
 
-::::{warning} 
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
 
-
-::::{tip} 
-This overview focuses more on the high-level concepts and use cases for semantic re-ranking. For full implementation details on how to set up and use semantic re-ranking in {{es}}, see the [reference documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#text-similarity-reranker-retriever) in the Search API docs.
+::::{tip}
+This overview focuses more on the high-level concepts and use cases for semantic re-ranking. For full implementation details on how to set up and use semantic re-ranking in {{es}}, see the [reference documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) in the Search API docs.
 
 ::::
 
@@ -23,7 +24,7 @@ Semantic re-ranking requires relatively large and complex machine learning model
 The next sections provide more details on the benefits, use cases, and model types used for semantic re-ranking. The final sections include a practical, high-level overview of how to implement [semantic re-ranking in {{es}}](#semantic-reranking-in-es) and links to the full reference documentation.
 
 
-## Use cases [semantic-reranking-use-cases] 
+## Use cases [semantic-reranking-use-cases]
 
 Semantic re-ranking enables a variety of use cases:
 
@@ -36,7 +37,7 @@ Semantic re-ranking enables a variety of use cases:
 * **Semantic retrieval results re-ranking**
 
     * Improves results from semantic retrievers using ELSER sparse vector embeddings or dense vector embeddings by using more powerful models.
-    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html).
+    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md).
 
 * **General applications**
 
@@ -47,11 +48,11 @@ Semantic re-ranking enables a variety of use cases:
 Now that we’ve outlined the value of semantic re-ranking, we’ll explore the specific models that power this process and how they differ.
 
 
-## Cross-encoder and bi-encoder models [semantic-reranking-models] 
+## Cross-encoder and bi-encoder models [semantic-reranking-models]
 
 At a high level, two model types are used for semantic re-ranking: cross-encoders and bi-encoders.
 
-::::{note} 
+::::{note}
 In this version, {{es}} **only supports cross-encoders** for semantic re-ranking.
 ::::
 
@@ -81,25 +82,25 @@ The following is a non-exhaustive list of considerations when choosing between c
 
 
 
-## Semantic re-ranking in {{es}} [semantic-reranking-in-es] 
+## Semantic re-ranking in {{es}} [semantic-reranking-in-es]
 
-In {{es}}, semantic re-rankers are implemented using the {{es}} [Inference API](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html) and a [retriever](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html).
+In {{es}}, semantic re-rankers are implemented using the {{es}} [Inference API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and a [retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever).
 
 To use semantic re-ranking in {{es}}, you need to:
 
 1. **Select and configure a re-ranking model**. You have the following options:
 
-    1. Use the [Elastic Rerank](../inference-api/elasticsearch-inference-integration.md#inference-example-elastic-reranker) cross-encoder model via the inference API’s {{es}} service.
-    2. Use the [Cohere Rerank inference endpoint](../inference-api/cohere-inference-integration.md) to create a `rerank` endpoint.
-    3. Use the [Google Vertex AI inference endpoint](../inference-api/google-vertex-ai-inference-integration.md) to create a `rerank` endpoint.
-    4. Upload a model to {{es}} from Hugging Face with [Eland](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](../inference-api/elasticsearch-inference-integration.md#inference-example-eland) with the `rerank` endpoint type.
+    1. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [inference API's {{es}} service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch).
+    2. Use the [Cohere Rerank inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-cohere) to create a `rerank` endpoint.
+    3. Use the [Google Vertex AI inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googlevertexai) to create a `rerank` endpoint.
+    4. Upload a model to {{es}} from Hugging Face with [Eland](eland://reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) with the `rerank` endpoint type.
 
         Refer to [the Elastic NLP model reference](../../../explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md#ml-nlp-model-ref-text-similarity) for a list of third party text similarity models supported by {{es}} for semantic re-ranking.
 
-2. **Create a `rerank` endpoint using the [{{es}} Inference API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html)**. The Inference API creates an inference endpoint and configures your chosen machine learning model to perform the re-ranking task.
+2. **Create a `rerank` endpoint using the [{{es}} Inference API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put)**. The Inference API creates an inference endpoint and configures your chosen machine learning model to perform the re-ranking task.
 3. **Define a `text_similarity_reranker` retriever in your search request**. The retriever syntax makes it simple to configure both the retrieval and re-ranking of search results in a single API call.
 
-::::{dropdown} **Example search request** with semantic reranker
+::::{dropdown} Example search request with semantic reranker
 The following example shows a search request that uses a semantic reranker to reorder the top-k documents based on their semantic similarity to the query.
 
 ```console
@@ -130,10 +131,10 @@ POST _search
 
 
 
-## Learn more [semantic-reranking-learn-more] 
+## Learn more [semantic-reranking-learn-more]
 
-* Read the [retriever reference documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html) for syntax and implementation details
+* Read the [retriever reference documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for syntax and implementation details
 * Learn more about the [retrievers](../querying-for-search.md) abstraction
-* Learn more about the Elastic [Inference APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html)
-* Check out our [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb) for using Cohere with {es}
+* Learn more about the Elastic [Inference APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference)
+* Check out our [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb) for using Cohere with {{es}}
 

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-pagination.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Paginating through a large response [sql-pagination]
@@ -31,9 +36,9 @@ Which looks like:
 
 Note that the `columns` object is only part of the first page.
 
-You’ve reached the last page when there is no `cursor` returned in the results. Like Elasticsearch’s [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results), SQL may keep state in Elasticsearch to support the cursor. Unlike scroll, receiving the last page is enough to guarantee that the Elasticsearch state is cleared.
+You’ve reached the last page when there is no `cursor` returned in the results. Like Elasticsearch’s [scroll](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results), SQL may keep state in Elasticsearch to support the cursor. Unlike scroll, receiving the last page is enough to guarantee that the Elasticsearch state is cleared.
 
-To clear the state earlier, use the [clear cursor API](https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-sql-cursor-api.html):
+To clear the state earlier, use the [clear cursor API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-clear-cursor):
 
 ```console
 POST /_sql/close

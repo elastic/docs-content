@@ -1,14 +1,23 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-entity-analytics-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-entity-analytics.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
-# Advanced Entity Analytics
+# Advanced Entity Analytics [advanced-entity-analytics-overview]
 
-% What needs to be done: Lift-and-shift
+Advanced Entity Analytics generates a set of threat detection and risk analytics that allows you to expedite alert triage and hunt for new threats from within an entity’s environment. This feature combines the power of the SIEM detection engine and Elastic’s {{ml}} capabilities to identify unusual user behaviors and generate comprehensive risk analytics for hosts, users, and services.
 
-% Use migrated content from existing pages that map to this page:
+Advanced Entity Analytics provides the following key capabilities:
 
-% - [ ] ./raw-migrated-files/security-docs/security/advanced-entity-analytics-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-advanced-entity-analytics.md
+* [](advanced-entity-analytics/entity-risk-scoring.md)
+* [](advanced-entity-analytics/advanced-behavioral-detections.md)
+* {applies_to}`stack: preview 9.1` {applies_to}`serverless: unavailable`	
+ [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md)

@@ -1,6 +1,12 @@
 ---
+navigation_title: Diagnostics
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-run-ece-diagnostics.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Run ECE diagnostics tool [ece-run-ece-diagnostics]

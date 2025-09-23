@@ -1,7 +1,12 @@
 ---
-navigation_title: "With the same CA"
+navigation_title: With the same CA
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs-same.html
+applies_to:
+  deployment:
+    self: ga
+products:
+  - id: elasticsearch
 ---
 
 
@@ -17,14 +22,14 @@ You don’t have to restart each node, but doing so forces new TLS connections a
 
 The following steps provide instructions for generating new node certificates and keys for both the transport layer and the HTTP layer. You might only need to replace one of these layer’s certificates depending on which of your certificates are expiring.
 
-::::{important} 
+::::{important}
 :name: cert-password-updates
 
 If your keystore is password protected, the password is stored in the {{es}} secure settings, *and* the password needs to change, then you must perform a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) on your cluster. You must also use a different file name for the keystore so that {{es}} doesn’t reload the file before the node is restarted.
 ::::
 
 
-::::{tip} 
+::::{tip}
 If your CA has changed, complete the steps in [update security certificates with a different CA](different-ca.md).
 ::::
 
@@ -37,7 +42,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
 
     In this example, the keystore and truststore are pointing to different files. Your configuration might use the same file that contains the certificate and CA. In this case, include the path to that file for both the keystore and truststore.
 
-    ::::{note} 
+    ::::{note}
     These instructions assume that the provided certificate is signed by a trusted CA and the verification mode is set to `certificate`. This setting ensures that nodes to not attempt to perform hostname verification.
 
     ::::
@@ -79,7 +84,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
 
 5. $$$replace-keystores$$$Replace your existing keystore with the new keystore, ensuring that the file names match. For example, `elastic-certificates.p12`.
 
-    ::::{important} 
+    ::::{important}
     If your [keystore password is changing](#cert-password-updates), then save the keystore with a new filename so that {{es}} doesn’t attempt to reload the file before you update the password.
     ::::
 
@@ -93,7 +98,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
     ```
 
 7. Start the node where you updated the keystore.
-8. $$$verify-keystore$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html) to verify that {{es}} loaded the new keystore.
+8. $$$verify-keystore$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
@@ -105,7 +110,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
 
 
 
-### What’s next? [transport-layer-sameca-whatsnext] 
+### What’s next? [transport-layer-sameca-whatsnext]
 
 Well done! You’ve updated the keystore for the transport layer. You can also [update the keystore for the HTTP layer](#node-certs-same-http) if necessary. If you’re not updating the keystore for the HTTP layer, then you’re all set.
 
@@ -114,8 +119,8 @@ Well done! You’ve updated the keystore for the transport layer. You can also [
 
 Other components such as {{kib}} or any of the Elastic language clients verify this certificate when they connect to {{es}}.
 
-::::{note} 
-If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html#certutil-csr). CSRs contain information that your CA uses to generate and sign a certificate.
+::::{note}
+If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a certificate.
 ::::
 
 
@@ -136,7 +141,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
         Each certificate will have its own private key, and will be issued for a specific hostname or IP address.
 
-    7. When prompted, enter the name of the first node in your cluster. It’s helpful to use the same node name as the value for the `node.name` parameter in the `elasticsearch.yml` file.
+    7. When prompted, enter the name of the first node in your cluster. It’s helpful to use the same node name as the value for the `node.name` parameter in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
     8. Enter all hostnames used to connect to your first node. These hostnames will be added as DNS names in the Subject Alternative Name (SAN) field in your certificate.
 
         List every hostname and variant used to connect to your cluster over HTTPS.
@@ -175,7 +180,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
 6. Replace your existing keystore with the new keystore, ensuring that the file names match. For example, `node1-http.p12`.
 
-    ::::{important} 
+    ::::{important}
     If your [keystore password is changing](#cert-password-updates), then save the keystore with a new filename so that {{es}} doesn’t attempt to reload the file before you update the password.
     ::::
 
@@ -194,13 +199,13 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
 9. Start the node where you updated the keystore.
 
-    Use the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html) to confirm that the node joined the cluster:
+    Use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to confirm that the node joined the cluster:
 
     ```console
     GET _cat/nodes
     ```
 
-10. $$$verify-keystore-http$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html) to verify that {{es}} loaded the new keystore.
+10. $$$verify-keystore-http$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates

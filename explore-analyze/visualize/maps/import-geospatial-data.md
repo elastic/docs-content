@@ -1,16 +1,21 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/import-geospatial-data.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Import geospatial data [import-geospatial-data]
 
-To import geospatical data into the Elastic Stack, the data must be indexed as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html). Geospatial data comes in many formats. Choose an import tool based on the format of your geospatial data.
+To import geospatical data into the Elastic Stack, the data must be indexed as [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md). Geospatial data comes in many formats. Choose an import tool based on the format of your geospatial data.
 
 
 ## Security privileges [import-geospatial-privileges]
 
-The {{stack-security-features}} provide roles and privileges that control which users can upload files. You can manage your roles, privileges, and spaces in **{{stack-manage-app}}** in {{kib}}. For more information, see [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md), [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), and [{{kib}} role management](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+The {{stack-security-features}} provide roles and privileges that control which users can upload files. You can manage your roles, privileges, and spaces in **{{stack-manage-app}}** in {{kib}}. For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md), [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), and [{{kib}} role management](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 To upload GeoJSON files, shapefiles, and draw features in {{kib}} with **Maps**, you must have:
 
@@ -93,9 +98,9 @@ To open an existing index for drawing:
 
 When feature editing is open, a feature editing toolbox is displayed on the left side of the map.
 
-:::{image} ../../../images/kibana-drawing_layer.png
+:::{image} /explore-analyze/images/kibana-drawing_layer.png
 :alt: drawing layer
-:class: screenshot
+:screenshot:
 :::
 
 To draw features:
@@ -111,7 +116,7 @@ To draw features:
 
 ## Upload data with IP addresses [_upload_data_with_ip_addresses]
 
-The GeoIP processor adds information about the geographical location of IP addresses. See [GeoIP processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) for details. For private IP addresses, see [Enriching data with GeoIPs from internal, private IP addresses](https://www.elastic.co/blog/enriching-elasticsearch-data-geo-ips-internal-private-ip-addresses).
+The GeoIP processor adds information about the geographical location of IP addresses. See [GeoIP processor](elasticsearch://reference/enrich-processor/geoip-processor.md) for details. For private IP addresses, see [Enriching data with GeoIPs from internal, private IP addresses](https://www.elastic.co/blog/enriching-elasticsearch-data-geo-ips-internal-private-ip-addresses).
 
 
 ## Upload data with GDAL [_upload_data_with_gdal]

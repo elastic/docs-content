@@ -1,22 +1,28 @@
 ---
-navigation_title: "APM"
+navigation_title: APM
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-troubleshoot-apm.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
+products:
+  - id: observability
 ---
 
 
 
-# Troubleshooting APM [apm-troubleshoot-apm]
+# Troubleshoot APM [apm-troubleshoot-apm]
 
 
 This section provides solutions to common questions and problems, and processing and performance guidance.
 
-* [Common problems](../../solutions/observability/apps/common-problems.md)
-* [What happens when APM Server or {{es}} is down?](../../solutions/observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md)
-* [APM Server response codes](../../solutions/observability/apps/apm-server-response-codes.md)
-* [Processing and performance](../../solutions/observability/apps/processing-performance.md)
-* [APM Server binary debugging](../../solutions/observability/apps/enable-apm-server-binary-debugging.md)
-* [APM Server performance diagnostic](../../solutions/observability/apps/apm-server-performance-diagnostic.md)
+* [](/troubleshoot/observability/apm/common-problems.md)
+* [What happens when APM Server or {{es}} is down?](/troubleshoot/observability/apm/what-happens-when-apm-server-elasticsearch-is-down.md)
+* [APM Server response codes](/troubleshoot/observability/apm/apm-server-response-codes.md)
+* [Processing and performance](/troubleshoot/observability/apm/processing-performance.md)
+* [APM Server binary debugging](/troubleshoot/observability/apm/enable-apm-server-binary-debugging.md)
+* [APM Server performance diagnostic](/troubleshoot/observability/apm/apm-server-performance-diagnostic.md)
 
 For additional help with other APM components, see the links below.
 
@@ -25,17 +31,15 @@ For additional help with other APM components, see the links below.
 
 {{agent}}, the Applications UI, and each {{apm-agent}} has its own troubleshooting guide:
 
-* [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
-* [**Android agent** FAQ](https://www.elastic.co/guide/en/apm/agent/android/current/faq.html)
-* [**.NET agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/troubleshooting.html)
-* [**Go agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/troubleshooting.html)
-* [**iOS agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/swift/{{apm-ios-branch}}/troubleshooting.html)
-* [**Java agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/trouble-shooting.html)
-* [**Node.js agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/troubleshooting.html)
-* [**PHP agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/troubleshooting.html)
-* [**Python agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/troubleshooting.html)
-* [**Ruby agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/debugging.html)
-* [**RUM agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/troubleshooting.html)
+* [](/troubleshoot/ingest/fleet/fleet-elastic-agent.md)
+* [](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
+* [](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
+* [](/troubleshoot/observability/apm-agent-java/apm-java-agent.md)
+* [](/troubleshoot/observability/apm-agent-nodejs/apm-nodejs-agent.md)
+* [](/troubleshoot/observability/apm-agent-php/apm-php-agent.md)
+* [](/troubleshoot/observability/apm-agent-python/apm-python-agent.md)
+* [](/troubleshoot/observability/apm-agent-ruby/apm-ruby-agent.md)
+* [](/troubleshoot/observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md)
 
 
 ## Elastic Support [apm-elastic-support]

@@ -1,11 +1,29 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/http-clients.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
+    ess: all
+    ece: all
+products:
+  - id: elasticsearch
 ---
 
-# HTTP/REST clients and security [http-clients]
+# Securing HTTP client applications
 
-The {{es}} {security-features} work with standard HTTP [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) headers to authenticate users. Since Elasticsearch is stateless, this header must be sent with every request:
+When connecting client applications to {{es}}, use these best practices:
+
+- Always use HTTPS for all connections
+- Validate server certificates to prevent man-in-the-middle attacks
+- Use API keys or token-based authentication rather than basic auth where possible
+- Implement appropriate connection pooling and retry mechanisms
+- Consider mutual TLS for high-security environments
+
+## HTTP/REST clients and security [http-clients]
+
+The {{es}} {{security-features}} work with standard HTTP [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) headers to authenticate users. Since {{es}} is stateless, this header must be sent with every request:
 
 ```shell
 Authorization: Basic <TOKEN> <1>
@@ -17,7 +35,7 @@ Authorization: Basic <TOKEN> <1>
 Alternatively, you can use [token-based authentication services](../users-roles/cluster-or-deployment-auth/token-based-authentication-services.md).
 
 
-## Client examples [http-clients-examples] 
+### Client examples [http-clients-examples]
 
 This example uses `curl` without basic auth to create an index:
 
@@ -44,8 +62,7 @@ curl --user rdeniro:taxidriver -XPUT 'localhost:9200/idx'
 }
 ```
 
-
-## Secondary authorization [http-clients-secondary-authorization] 
+### Secondary authorization [http-clients-secondary-authorization]
 
 Some APIs support secondary authorization headers for situations where you want tasks to run with a different set of credentials. For example, you can send the following header in addition to the basic authentication header:
 
@@ -64,17 +81,15 @@ es-secondary-authorization: ApiKey <TOKEN> <1>
 
 1. The `<TOKEN>` is computed as `base64(API key ID:API key)`
 
-
-
-## Client libraries over HTTP [http-clients-libraries] 
+### Client libraries over HTTP [http-clients-libraries]
 
 For more information about using {{security-features}} with the language specific clients, refer to:
 
-* [Java](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/_basic_authentication.html)
-* [JavaScript](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/auth-reference.html)
-* [.NET](https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/configuration.html)
-* [Perl](https://metacpan.org/pod/Search::Elasticsearch::Cxn::HTTPTiny#CONFIGURATION)
-* [PHP](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/connecting.html)
+* [Java](elasticsearch-java://reference/setup/connecting.md)
+* [JavaScript](elasticsearch-js://reference/connecting.md)
+* [.NET](elasticsearch-net://reference/configuration.md)
+* [Perl](https://metacpan.org/pod/Search::{{es}}::Cxn::HTTPTiny#CONFIGURATION)
+* [PHP](elasticsearch-php://reference/connecting.md)
 * [Python](https://elasticsearch-py.readthedocs.io/en/master/#ssl-and-authentication)
 * [Ruby](https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-transport#authentication)
 

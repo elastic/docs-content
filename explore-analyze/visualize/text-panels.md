@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-text.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Text panels [add-text]
@@ -13,30 +18,33 @@ To provide context to your dashboard panels, add **Text** panels that display im
 
 For example, when you enter:
 
-:::{image} ../../images/kibana-markdown_example_1.png
+:::{image} /explore-analyze/images/kibana-markdown_example_1.png
 :alt: Markdown text with links
-:class: screenshot
+:screenshot:
+:width: 75%
 :::
 
 The following instructions are displayed:
 
-:::{image} ../../images/kibana-markdown_example_2.png
+:::{image} /explore-analyze/images/kibana-markdown_example_2.png
 :alt: Panel with markdown link text
-:class: screenshot
+:screenshot:
+:width: 75%
 :::
 
 Or when you enter:
 
-:::{image} ../../images/kibana-markdown_example_3.png
+:::{image} /explore-analyze/images/kibana-markdown_example_3.png
 :alt: Markdown text with image file
-:class: screenshot
+:screenshot:
+:width: 75%
 :::
 
 The following image is displayed:
 
-:::{image} ../../images/kibana-markdown_example_4.png
+:::{image} /explore-analyze/images/kibana-markdown_example_4.png
 :alt: Panel with markdown image
-:class: screenshot
+:screenshot:
 :::
 
 For detailed information about writing on GitHub, click **Help** on the top-right of the Markdown editor.

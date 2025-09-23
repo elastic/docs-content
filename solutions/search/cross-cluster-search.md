@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html
+applies_to:
+  stack:
+  serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # Cross-cluster search [modules-cross-cluster-search]
@@ -12,35 +17,35 @@ mapped_pages:
 
 The following APIs support {{ccs}}:
 
-* [Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)
-* [Async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html)
-* [Multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html)
+* [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
+* [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
 * [Search template](search-templates.md)
-* [Multi search template](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-search-template.html)
-* [Field capabilities](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-field-caps.html)
-* [Painless execute API](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html)
-* [Resolve Index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-resolve-index-api.html)
-* [preview] [EQL search](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html)
-* [preview] [SQL search](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html)
-* [preview] [Vector tile search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html)
-* [preview] [ES|QL](../../explore-analyze/query-filter/languages/esql-cross-clusters.md)
+* [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
+* [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
+* [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md)
+* [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
+* [Vector tile search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt)
+* {applies_to}`stack: preview 9.0, ga 9.1` [ES|QL](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md)
+* [preview] [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
+* [preview] [SQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)
 
 
 ## Prerequisites [_prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters on {{ess}}, see [configure remote clusters on {{ess}}](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html). If you run {{es}} on your own hardware, see [*Remote clusters*](../../deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](../../deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](#ccs-supported-configurations).
 
-* For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
+* To use cross-cluster search with ES|QL, both the local and remote clusters must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
 * The local coordinating node must have the [`remote_cluster_client`](../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#remote-node) node role.
 
-* If you use [sniff mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#sniff-mode), the local coordinating node must be able to connect to seed and gateway nodes on the remote cluster.
+* If you use [sniff mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode), the local coordinating node must be able to connect to seed and gateway nodes on the remote cluster.
 
     We recommend using gateway nodes capable of serving as coordinating nodes. The seed nodes can be a subset of these gateway nodes.
 
 
-* If you use [proxy mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
+* If you use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
 * {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](../../deploy-manage/remote-clusters.md).
 
 
@@ -49,7 +54,7 @@ The following APIs support {{ccs}}:
 
 ### Remote cluster setup [ccs-remote-cluster-setup]
 
-The following [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
+The following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
 
 ```console
 PUT _cluster/settings
@@ -88,7 +93,7 @@ PUT _cluster/settings
 
 In the search request, you specify data streams and indices on a remote cluster as `<remote_cluster_name>:<target>`.
 
-The following [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) API request searches the `my-index-000001` index on a single remote cluster, `cluster_one`.
+The following [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) API request searches the `my-index-000001` index on a single remote cluster, `cluster_one`.
 
 ```console
 GET /cluster_one:my-index-000001/_search
@@ -177,7 +182,7 @@ The API returns the following response. Note that when you search one or more re
 
 ### Search multiple remote clusters [ccs-search-multi-remote-cluster]
 
-The following [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html) API request searches the `my-index-000001` index on three clusters:
+The following [search](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) API request searches the `my-index-000001` index on three clusters:
 
 * The local ("querying") cluster, with 10 shards
 * Two remote clusters, `cluster_one`, with 12 shards and `cluster_two` with 6 shards.
@@ -325,7 +330,7 @@ The API returns the following response:
 
 ## Using async search for {{ccs}} with ccs_minimize_roundtrips=true [ccs-async-search-minimize-roundtrips-true]
 
-Remote clusters can be queried asynchronously using the [async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#ccs-minimize-roundtrips) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
+Remote clusters can be queried asynchronously using the [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-ccs_minimize_roundtrips) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
 
 The following request does an asynchronous search of the `my-index-000001` index using `ccs_minimize_roundtrips=true` against three clusters (same ones as the previous example).
 
@@ -402,7 +407,7 @@ The API returns the following response:
 3. The `_clusters` section indicates that 3 clusters are in scope for the search and all are currently in the "running" state.
 
 
-If you query the [get async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#get-async-search) endpoint while the query is still running, you will see an update in the `_clusters` and `_shards` section of the response as each cluster finishes its search.
+If you query the [get async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoint while the query is still running, you will see an update in the `_clusters` and `_shards` section of the response as each cluster finishes its search.
 
 If you set `ccs_minimize_roundtrips=false`, then you will also see partial aggregation results from shards (from any cluster) that have finished, but no results are shown in "hits" section until the search has completed.
 
@@ -487,7 +492,7 @@ Response:
 3. Number of hits from the completed searches so far. Final hits are not shown until searches on all clusters have been completed and merged. Thus, the "hits" section can change as you call this endpoint until the search is completely done.
 
 
-After searches on all the clusters have completed, querying the [get async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#get-async-search) endpoint will show the final status of the `_clusters` and `_shards` section as well as the hits and any aggregation results.
+After searches on all the clusters have completed, querying the [get async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoint will show the final status of the `_clusters` and `_shards` section as well as the hits and any aggregation results.
 
 ```console
 GET /_async_search/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=
@@ -885,7 +890,7 @@ POST /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_a
 }
 ```
 
-The API returns the following response if the query takes longer than the `wait_for_completion_timeout` duration (see [Async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html)).
+The API returns the following response if the query takes longer than the `wait_for_completion_timeout` duration (see [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)).
 
 ```console-result
 {
@@ -976,12 +981,12 @@ In Elasticsearch 8.15, the default value for `skip_unavailable` was changed from
 If `skip_unavailable` is `true`, a {{ccs}}:
 
 * Skips the remote cluster if its nodes are unavailable during the search. The response’s `_clusters.skipped` value contains a count of any skipped clusters and the `_clusters.details` section of the response will show a `skipped` status.
-* Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) and [`ignore_unavailable`](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index).
-* Ignores the [`allow_partial_search_results`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-partial-responses) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
+* Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [`ignore_unavailable`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index).
+* Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
 
-You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the elasticsearch.yml config file. For example:
+You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file. For example:
 
-```
+```yml
 cluster:
     remote:
         cluster_one:
@@ -992,7 +997,7 @@ cluster:
             skip_unavailable: true
 ```
 
-Or you can set the cluster.remote settings via the [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) API as shown [here](#ccs-remote-cluster-setup).
+Or you can set the `cluster.remote` settings via the [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
 
 When a remote cluster configured with `skip_unavailable: true` (such as `cluster_two` above) is disconnected or unavailable during a {{ccs}}, {{es}} won’t include matching documents from that cluster in the final results and the search will be considered successful (HTTP status 200 OK).
 
@@ -1004,19 +1009,19 @@ If at least one shard from a cluster provides search results, those results will
 Because {{ccs}} involves sending requests to remote clusters, any network delays can impact search speed. To avoid slow searches, {{ccs}} offers two options for handling network delays:
 
 [Minimize network roundtrips](#ccs-min-roundtrips)
-:   By default, {{es}} reduces the number of network roundtrips between remote clusters. This reduces the impact of network delays on search speed. However, {{es}} can’t reduce network roundtrips for large search requests, such as those including a [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results) or [inner hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/inner-hits.html).
+:   By default, {{es}} reduces the number of network roundtrips between remote clusters. This reduces the impact of network delays on search speed. However, {{es}} can’t reduce network roundtrips for large search requests, such as those including a [scroll](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) or [inner hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md).
 
     See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn how this option works.
 
 
 [Don’t minimize network roundtrips](#ccs-unmin-roundtrips)
-:   For search requests that include a scroll or inner hits, {{es}} sends multiple outgoing and ingoing requests to each remote cluster. You can also choose this option by setting the [`ccs_minimize_roundtrips`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#ccs-minimize-roundtrips) parameter to `false`. While typically slower, this approach may work well for networks with low latency.
+:   For search requests that include a scroll or inner hits, {{es}} sends multiple outgoing and ingoing requests to each remote cluster. You can also choose this option by setting the [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) parameter to `false`. While typically slower, this approach may work well for networks with low latency.
 
     See [Don’t minimize network roundtrips](#ccs-unmin-roundtrips) to learn how this option works.
 
 
 ::::{note}
-The [vector tile search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html) always minimizes network roundtrips and doesn’t include the `ccs_minimize_roundtrips` parameter.
+The [vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) always minimizes network roundtrips and doesn’t include the `ccs_minimize_roundtrips` parameter.
 ::::
 
 
@@ -1044,19 +1049,19 @@ Here’s how {{ccs}} works when you minimize network roundtrips.
 
 1. You send a {{ccs}} request to your local cluster. A coordinating node in that cluster receives and parses the request.
 
-    ![ccs min roundtrip client request](../../images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
+    ![ccs min roundtrip client request](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
 
 2. The coordinating node sends a single search request to each cluster, including the local cluster. Each cluster performs the search request independently, applying its own cluster-level settings to the request.
 
-    ![ccs min roundtrip cluster search](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
+    ![ccs min roundtrip cluster search](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
 
 3. Each remote cluster sends its search results back to the coordinating node.
 
-    ![ccs min roundtrip cluster results](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
+    ![ccs min roundtrip cluster results](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
 
 4. After collecting results from each cluster, the coordinating node returns the final results in the {{ccs}} response.
 
-    ![ccs min roundtrip client response](../../images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
+    ![ccs min roundtrip client response](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
 
 
 
@@ -1066,15 +1071,15 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
 
 1. You send a {{ccs}} request to your local cluster. A coordinating node in that cluster receives and parses the request.
 
-    ![ccs min roundtrip client request](../../images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
+    ![ccs min roundtrip client request](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
 
 2. The coordinating node sends a "search shards" transport layer request to each remote cluster to have them to perform a "can match" search to determine which shards on each cluster should be searched.
 
-    ![ccs min roundtrip cluster search](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
+    ![ccs min roundtrip cluster search](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
 
 3. Each remote cluster sends its response back to the coordinating node. This response contains information about the indices and shards the {{ccs}} request will be executed on.
 
-    ![ccs min roundtrip cluster results](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
+    ![ccs min roundtrip cluster results](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
 
 4. The coordinating node sends a search request to each shard, including those in its own cluster. Each shard performs the search request independently.
 
@@ -1084,62 +1089,38 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
     ::::
 
 
-    ![ccs dont min roundtrip shard search](../../images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-search.svg "")
+    ![ccs dont min roundtrip shard search](/solutions/images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-search.svg "")
 
 5. Each shard sends its search results back to the coordinating node.
 
-    ![ccs dont min roundtrip shard results](../../images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-results.svg "")
+    ![ccs dont min roundtrip shard results](/solutions/images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-results.svg "")
 
 6. After collecting results from each cluster, the coordinating node returns the final results in the {{ccs}} response.
 
-    ![ccs min roundtrip client response](../../images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
-
+    ![ccs min roundtrip client response](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
 
 
 ## Supported {{ccs}} configurations [ccs-supported-configurations]
-
-In 8.0+, Elastic supports searches from a local cluster to a remote cluster running:
+Elastic supports searches from a local cluster to a remote cluster running:
 
 * The previous minor version.
 * The same version.
 * A newer minor version in the same major version.
 
-Elastic also supports searches from a local cluster running the last minor version of a major version to a remote cluster running any minor version in the following major version. For example, a local 7.17 cluster can search any remote 8.x cluster.
+Elastic also supports searches from a local cluster running the last minor version of a major version to a remote cluster running any minor version in the following major version. For example, a local 8.19 cluster can search any remote 9.x cluster. However, a search from a local 9.0 cluster to a remote 8.17 or 7.17 cluster is not supported.
+
+::::{note}
+Version 8.19 is the final minor release in the 8.x series. Unlike past releases, 8.18 was launched simultaneously with 9.0, allowing cross-version compatibility between them. Hence, as shown in the compatibility table, 8.18 can only search 9.0 clusters in the 9.x series, while 8.19 supports searching 9.0 clusters and later.
+::::
 
 $$$ccs-version-compatibility$$$
 
-|     |     |
-| --- | --- |
-|  | Remote cluster version |
-| Local cluster version | 6.8 | 7.1–7.16 | 7.17 | 8.0 | 8.1 | 8.2 | 8.3 | 8.4 | 8.5 | 8.6 | 8.7 | 8.8 | 8.9 | 8.10 | 8.11 | 8.12 | 8.13 | 8.14 | 8.15 | 8.16 | 8.17 |
-| 6.8 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
-| 7.1–7.16 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
-| 7.17 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.1 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.2 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.3 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.4 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.5 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.6 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.7 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.8 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.9 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.10 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.11 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.12 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.13 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.14 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.15 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.16 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.17 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
+:::{include} ../../deploy-manage/remote-clusters/_snippets/ccs-compatibility-table.md
+:::
 
 ::::{important}
-For the [EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html), the local and remote clusters must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
+For the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search), the local and remote clusters must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
 ::::
-
-
-For example, a local 8.0 cluster can search a remote 7.17 or any remote 8.x cluster. However, a search from a local 8.0 cluster to a remote 7.16 or 6.8 cluster is not supported.
 
 Only features that exist across all searched clusters are supported. Using a feature with a remote cluster where the feature is not supported will result in undefined behavior.
 
@@ -1150,7 +1131,7 @@ A {{ccs}} using an unsupported configuration may still work. However, such searc
 
 The simplest way to ensure your clusters support {{ccs}} is to keep each cluster on the same version of {{es}}. If you need to maintain clusters with different versions, you can:
 
-* Maintain a dedicated cluster for {{ccs}}. Keep this cluster on the earliest version needed to search the other clusters. For example, if you have 7.17 and 8.x clusters, you can maintain a dedicated 7.17 cluster to use as the local cluster for {{ccs}}.
+* Maintain a dedicated cluster for {{ccs}}. Keep this cluster on the earliest version needed to search the other clusters. For example, if you have 8.19 and 9.x clusters, you can maintain a dedicated 8.19 cluster to use as the local cluster for {{ccs}}.
 * Keep each cluster no more than one minor version apart. This lets you use any cluster as the local cluster when running a {{ccs}}.
 
 

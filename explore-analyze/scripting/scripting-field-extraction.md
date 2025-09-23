@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripting-field-extraction.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Field extraction [scripting-field-extraction]
@@ -31,12 +36,12 @@ PUT /my-index/
 }
 ```
 
-After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index raw log data into `my-index`. Instead of indexing all of your log data, you can use a small sample to experiment with runtime fields.
+After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index raw log data into `my-index`. Instead of indexing all of your log data, you can use a small sample to experiment with runtime fields.
 
 ```console
 POST /my-index/_bulk?refresh
 {"index":{}}
-{"timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - - [30/Apr/2020:14:30:17 -0500] \"GET /images/elasticsearch-reference-hm_bg.jpg HTTP/1.0\" 200 24736"}
+{"timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - - [30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
 {"timestamp":"2020-04-30T14:30:53-05:00","message":"232.0.0.0 - - [30/Apr/2020:14:30:53 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
@@ -44,7 +49,7 @@ POST /my-index/_bulk?refresh
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:19-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:19 -0500] \"GET /french/splash_inet.html HTTP/1.0\" 200 3781"}
 {"index":{}}
-{"timestamp":"2020-04-30T14:31:22-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/elasticsearch-reference-hm_nbg.jpg HTTP/1.0\" 304 0"}
+{"timestamp":"2020-04-30T14:31:22-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/hm_nbg.jpg HTTP/1.0\" 304 0"}
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:27-05:00","message":"252.0.0.0 - - [30/Apr/2020:14:31:27 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
@@ -52,7 +57,7 @@ POST /my-index/_bulk?refresh
 ```
 
 
-## Extract an IP address from a log message (Grok) [field-extraction-ip] 
+## Extract an IP address from a log message (Grok) [field-extraction-ip]
 
 If you want to retrieve results that include `clientip`, you can add that field as a runtime field in the mapping. The following runtime script defines a grok pattern that extracts structured fields out of the `message` field.
 
@@ -121,7 +126,7 @@ The response includes documents where the value for `http.clientip` matches `40.
 ```
 
 
-## Parse a string to extract part of a field (Dissect) [field-extraction-parse] 
+## Parse a string to extract part of a field (Dissect) [field-extraction-parse]
 
 Instead of matching on a log pattern like in the [previous example](#field-extraction-ip), you can just define a dissect pattern to include the parts of the string that you want to discard.
 
@@ -193,7 +198,7 @@ The response includes a single document where the HTTP response is `304`:
 ```
 
 
-## Split values in a field by a separator (Dissect) [field-extraction-split] 
+## Split values in a field by a separator (Dissect) [field-extraction-split]
 
 Let’s say you want to extract part of a field like in the previous example, but you want to split on specific values. You can use a dissect pattern to extract only the information that you want, and also return that data in a specific format.
 
@@ -243,7 +248,7 @@ The following pattern tells dissect to return the term `used`, a blank space, th
 emit("used" + ' ' + gc.usize + ', ' + "capacity" + ' ' + gc.csize + ', ' + "committed" + ' ' + gc.comsize)
 ```
 
-Putting it all together, you can create a runtime field named `gc_size` in a search request. Using the [`fields` option](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-param), you can retrieve all values for the `gc_size` runtime field. This query also includes a bucket aggregation to group your data.
+Putting it all together, you can create a runtime field named `gc_size` in a search request. Using the [`fields` option](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param), you can retrieve all values for the `gc_size` runtime field. This query also includes a bucket aggregation to group your data.
 
 ```console
 GET my-index/_search

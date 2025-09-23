@@ -1,20 +1,26 @@
 ---
+navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-quickstart.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
-# Quickstart [k8s-elastic-agent-quickstart]
+# Quickstart: Running standalone {{agent}} on {{eck}} [k8s-elastic-agent-quickstart]
 
-1. Apply the following specification to deploy Elastic Agent with the System metrics integration to harvest CPU metrics from the Agent Pods. ECK automatically configures the secured connection to an Elasticsearch cluster named `quickstart`, created in the [Elasticsearch quickstart](deploy-an-orchestrator.md).
+1. Apply the following specification to deploy Elastic Agent with the System metrics integration to harvest CPU metrics from the Agent Pods. ECK automatically configures the secured connection to an {{es}} cluster named `quickstart`, created in [](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md).
 
-    ```yaml
+    ```yaml subs=true
     cat <<EOF | kubectl apply -f -
     apiVersion: agent.k8s.elastic.co/v1alpha1
     kind: Agent
     metadata:
       name: quickstart
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       elasticsearchRefs:
       - name: quickstart
       daemonSet:
@@ -59,9 +65,9 @@ mapped_pages:
     kubectl get agent
     ```
 
-    ```sh
+    ```sh subs=true
     NAME            HEALTH   AVAILABLE   EXPECTED   VERSION   AGE
-    quickstart      green    3           3          8.16.1    15s
+    quickstart      green    3           3          {{version.stack}}    15s
     ```
 
 3. List all the Pods that belong to a given Elastic Agent specification.
@@ -87,12 +93,12 @@ mapped_pages:
 
     You have two options:
 
-    * Follow the Elasticsearch deployment [guide](elasticsearch-deployment-quickstart.md) and run:
+    * Follow the {{es}} deployment [guide](elasticsearch-deployment-quickstart.md) and run:
 
         ```sh
         curl -u "elastic:$PASSWORD" -k "https://localhost:9200/metrics-system.cpu-*/_search"
         ```
 
-    * Follow the Kibana deployment [guide](kibana-instance-quickstart.md), log in and go to **Kibana** > **Discover**.
+    * Follow the {{kib}} deployment [guide](kibana-instance-quickstart.md), log in and go to **Kibana** > **Discover**.
 
 

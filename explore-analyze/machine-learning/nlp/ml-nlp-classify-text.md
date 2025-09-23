@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-classify-text.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Classify text [ml-nlp-classify-text]
@@ -11,13 +16,11 @@ These NLP tasks enable you to identify the language of text and classify or labe
 * [Text classification](#ml-nlp-text-classification)
 * [Zero-shot text classification](#ml-nlp-zero-shot)
 
-
-## {{lang-ident-cap}} [_lang_ident_cap] 
+## {{lang-ident-cap}} [_lang_ident_cap]
 
 The {{lang-ident}} model is provided out-of-the box in your {{es}} cluster. You can find the documentation of the model on the [{{lang-ident-cap}}](ml-nlp-lang-ident.md) page under the Built-in models section.
 
-
-## Text classification [ml-nlp-text-classification] 
+## Text classification [ml-nlp-text-classification]
 
 Text classification assigns the input text to one of multiple classes that best describe the text. The classes used depend on the model and the data set that was used to train it. Based on the number of classes, two main types of classification exist: binary classification, where the number of classes is exactly two, and multi-class classification, where the number of classes is more than two.
 
@@ -39,8 +42,7 @@ Likewise, you might use a trained model to perform multi-class classification an
 ...
 ```
 
-
-## Zero-shot text classification [ml-nlp-zero-shot] 
+## Zero-shot text classification [ml-nlp-zero-shot]
 
 The zero-shot classification task offers the ability to classify text without training a model on a specific set of classes. Instead, you provide the classes when you deploy the model or at {{infer}} time. It uses a model trained on a large data set that has gained a general language understanding and asks the model how well the labels you provided fit with your text.
 
@@ -95,4 +97,3 @@ The task returns the following result:
 ```
 
 Since you can adjust the labels while you perform {{infer}}, this type of task is exceptionally flexible. If you are consistently using the same labels, however, it might be better to use a fine-tuned text classification model.
-

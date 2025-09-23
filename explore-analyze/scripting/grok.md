@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/grok.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Grokking grok [grok]
@@ -41,18 +46,18 @@ The first value is a number, followed by what appears to be an IP address. You c
 
 ## Migrating to Elastic Common Schema (ECS) [grok-ecs]
 
-To ease migration to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}), a new set of ECS-compliant patterns is available in addition to the existing patterns. The new ECS pattern definitions capture event field names that are compliant with the schema.
+To ease migration to the [Elastic Common Schema (ECS)](ecs://reference/index.md), a new set of ECS-compliant patterns is available in addition to the existing patterns. The new ECS pattern definitions capture event field names that are compliant with the schema.
 
-The ECS pattern set has all of the pattern definitions from the legacy set, and is a drop-in replacement. Use the [`ecs-compatability`](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html#plugins-filters-grok-ecs_compatibility) setting to switch modes.
+The ECS pattern set has all of the pattern definitions from the legacy set, and is a drop-in replacement. Use the [`ecs-compatibility`](logstash-docs-md://lsr/plugins-filters-grok.md#plugins-filters-grok-ecs_compatibility) setting to switch modes.
 
 New features and enhancements will be added to the ECS-compliant files. The legacy patterns may still receive bug fixes which are backwards compatible.
 
 
 ## Use grok patterns in Painless scripts [grok-patterns]
 
-You can incorporate predefined grok patterns into Painless scripts to extract data. To test your script, use either the [field contexts](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
+You can incorporate predefined grok patterns into Painless scripts to extract data. To test your script, use either the [field contexts](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
 
-::::{tip} 
+::::{tip}
 If you need help building grok patterns to match your data, use the [Grok Debugger](../query-filter/tools/grok-debugger.md) tool in {{kib}}.
 ::::
 
@@ -61,10 +66,10 @@ For example, if you’re working with Apache log data, you can use the `%{{COMMO
 
 ```js
 "timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - -
-[30/Apr/2020:14:30:17 -0500] \"GET /images/elasticsearch-reference-hm_bg.jpg HTTP/1.0\" 200 24736"
+[30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"
 ```
 
-To extract the IP address from the `message` field, you can write a Painless script that incorporates the `%{{COMMONAPACHELOG}}` syntax. You can test this script using the [`ip` field context](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html#painless-runtime-ip) of the Painless execute API, but let’s use a runtime field instead.
+To extract the IP address from the `message` field, you can write a Painless script that incorporates the `%{{COMMONAPACHELOG}}` syntax. You can test this script using the [`ip` field context](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md#painless-runtime-ip) of the Painless execute API, but let’s use a runtime field instead.
 
 Based on the sample document, index the `@timestamp` and `message` fields. To remain flexible, use `wildcard` as the field type for `message`:
 
@@ -85,7 +90,7 @@ PUT /my-index/
 }
 ```
 
-Next, use the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index some log data into `my-index`.
+Next, use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index some log data into `my-index`.
 
 ```console
 POST /my-index/_bulk?refresh
@@ -98,7 +103,7 @@ POST /my-index/_bulk?refresh
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:19-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:19 -0500] \"GET /french/splash_inet.html HTTP/1.0\" 200 3781"}
 {"index":{}}
-{"timestamp":"2020-04-30T14:31:22-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/elasticsearch-reference-hm_nbg.jpg HTTP/1.0\" 304 0"}
+{"timestamp":"2020-04-30T14:31:22-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/hm_nbg.jpg HTTP/1.0\" 304 0"}
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:27-05:00","message":"252.0.0.0 - - [30/Apr/2020:14:31:27 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
@@ -151,7 +156,7 @@ GET my-index/_search
 
 ## Return calculated results [grok-pattern-results]
 
-Using the `http.clientip` runtime field, you can define a simple query to run a search for a specific IP address and return all related fields. The [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API works for all fields, even those that weren’t sent as part of the original `_source`:
+Using the `http.clientip` runtime field, you can define a simple query to run a search for a specific IP address and return all related fields. The [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API works for all fields, even those that weren’t sent as part of the original `_source`:
 
 ```console
 GET my-index/_search

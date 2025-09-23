@@ -1,25 +1,28 @@
 ---
-navigation_title: "Set up minimal security"
+navigation_title: Minimal security setup
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-minimal-setup.html
+applies_to:
+  deployment:
+    self: ga
+products:
+  - id: elasticsearch
 ---
 
+% Scope: enable security, reset passwords and configure kibana to use authentication. Alternative approach to the automatic security configuration.
+% Original title: Set up minimal security
+# Minimal security setup [security-minimal-setup]
 
-
-# Set up minimal security [security-minimal-setup]
-
-
-::::{important} 
-You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {security-features}.
+::::{important}
+You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {{security-features}}.
 ::::
 
+In {{es}} 8.0 and later, security is [enabled automatically](./self-auto-setup.md) when you start {{es}} for the first time.
 
-In {{es}} 8.0 and later, security is [enabled automatically](../deploy/self-managed/installing-elasticsearch.md) when you start {{es}} for the first time.
+If you’re running an existing {{es}} cluster where security is disabled, you can manually enable the {{es}} {{security-features}} and then create passwords for [built-in users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). You can add more users later, but using the built-in users simplifies the process of enabling security for your cluster.
 
-If you’re running an existing {{es}} cluster where security is disabled, you can manually enable the {{es}} {security-features} and then create passwords for built-in users. You can add more users later, but using the built-in users simplifies the process of enabling security for your cluster.
-
-::::{important} 
-The minimal security scenario is not sufficient for [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters. If your cluster has multiple nodes, you must enable minimal security and then [configure Transport Layer Security (TLS)](secure-cluster-communications.md) between nodes.
+::::{important}
+The minimal security scenario described in this document is not sufficient for [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters. If your cluster has multiple nodes, you must follow this guide, together with [configure Transport Layer Security (TLS)](./set-up-basic-security.md) between nodes.
 ::::
 
 
@@ -34,7 +37,7 @@ Enabling the {{es}} security features provides basic authentication so that you 
     xpack.security.enabled: true
     ```
 
-    ::::{note} 
+    ::::{note}
     The `$ES_PATH_CONF` variable is the path for the {{es}} configuration files. If you installed {{es}} using archive distributions (`zip` or `tar.gz`), the variable defaults to `$ES_HOME/config`. If you used package distributions (Debian or RPM), the variable defaults to `/etc/elasticsearch`.
     ::::
 
@@ -44,16 +47,9 @@ Enabling the {{es}} security features provides basic authentication so that you 
     discovery.type: single-node
     ```
 
-
-
 ## Set passwords for built-in users [security-create-builtin-users]
 
-To communicate with your cluster, you must configure a password for the `elastic` and `kibana_system` built-in users. Unless you enable anonymous access (not recommended), all requests that don’t include credentials are rejected.
-
-::::{note} 
-You only need to set passwords for the `elastic` and `kibana_system` users when enabling minimal or basic security.
-::::
-
+To communicate with your cluster, you must configure a password for the `elastic` and `kibana_system` [built-in users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). Unless you enable anonymous access (not recommended), all requests that don’t include credentials are rejected.
 
 1. On **every** node in your cluster, start {{es}}. For example, if you installed {{es}} with a `.tar.gz` package, run the following command from the `ES_HOME` directory:
 
@@ -61,7 +57,11 @@ You only need to set passwords for the `elastic` and `kibana_system` users when 
     ./bin/elasticsearch
     ```
 
-2. On any node in your cluster, open another terminal window and set the password for the `elastic` built-in user by running the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) utility. This command resets the password to an auto-generated value.
+    ::::{note}
+    If you are following this procedure for a multi-node cluster, you will have to set up [transport TLS certificates](./set-up-basic-security.md) in your nodes before being able to start the nodes.
+    ::::
+
+2. On any node in your cluster, open another terminal window and set the password for the `elastic` built-in user by running the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) utility. This command resets the password to an auto-generated value.
 
     ```shell
     ./bin/elasticsearch-reset-password -u elastic
@@ -86,6 +86,8 @@ You only need to set passwords for the `elastic` and `kibana_system` users when 
 
 ## Configure {{kib}} to connect to {{es}} with a password [add-built-in-users]
 
+% Consider including a note here or updating the procedure to use newer auth methods like service tokens
+
 When the {{es}} security features are enabled, users must log in to {{kib}} with a valid username and password.
 
 You’ll configure {{kib}} to use the built-in `kibana_system` user and the password that you created earlier. {{kib}} performs some background tasks that require use of the `kibana_system` user.
@@ -98,11 +100,11 @@ This account is not meant for individual users and does not have permission to l
     elasticsearch.username: "kibana_system"
     ```
 
-    ::::{note} 
+    ::::{note}
     The `KBN_PATH_CONF` variable is the path for the {{kib}} configuration files. If you installed {{kib}} using archive distributions (`zip` or `tar.gz`), the variable defaults to `KIB_HOME/config`. If you used package distributions (Debian or RPM), the variable defaults to `/etc/kibana`.
     ::::
 
-2. From the directory where you installed {{kib}}, run the following commands to create the {{kib}} keystore and add the secure settings:
+2. From the directory where you installed {{kib}}, run the following commands to create the {{kib}} keystore and add the [secure settings](/deploy-manage/security/secure-settings.md):
 
     1. Create the {{kib}} keystore:
 
@@ -129,10 +131,8 @@ This account is not meant for individual users and does not have permission to l
 
 ## What’s next? [minimal-security-whatsnext]
 
-Congratulations! You enabled password protection for your local cluster to prevent unauthorized access. You can log in to {{kib}} securely as the `elastic` user and create additional users and roles. If you’re running a [single-node cluster](../deploy/self-managed/bootstrap-checks.md#single-node-discovery), then you can stop here.
+Congratulations! You enabled password protection for your local cluster to prevent unauthorized access. You can log in to {{kib}} as the `elastic` user and create additional users and roles, but take in mind that your browser connections and the traffic between {{kib}} and {{es}} will still be unencrypted with plain HTTP.
 
-If your cluster has multiple nodes, then you must configure Transport Layer Security (TLS) between nodes. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
+If your cluster has multiple nodes, then you must [configure Transport Layer Security (TLS) between nodes](./set-up-basic-security.md). [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
 
-[Set up basic security for the {{stack}}](secure-cluster-communications.md) to secure all internal communication between nodes in your cluster.
-
-
+Regardless of your cluster being a [single-node](../deploy/self-managed/bootstrap-checks.md#single-node-discovery) or a multi-node cluster, it's highly recommended to [secure the HTTP layer](./set-up-basic-security-plus-https.md) with TLS certificates.

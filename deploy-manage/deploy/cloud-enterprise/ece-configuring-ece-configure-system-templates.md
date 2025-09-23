@@ -1,16 +1,23 @@
 ---
+navigation_title: Configure default templates
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-configure-system-templates.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
-# Configure system deployment templates [ece-configuring-ece-configure-system-templates]
+# Configure default system deployment templates [ece-configuring-ece-configure-system-templates]
 
-While you can create new deployment templates for some use cases, if the system templates generally suit your needs but just require minor changes, you may choose to configure or modify the system templates.
+While you can create new deployment templates for some use cases, if the default system templates meet your needs but require minor adjustments, you may choose to configure or modify them.
 
-For example, you want to use autoscaling with the system templates, but want to modify some of the default values for autoscaling in those templates. You might want to enable autoscaling by default for new deployments, or adjust the default value of the autoscaling maximum for the hot tier.
+For example, you want to use [Autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) with the system templates, but want to modify some of the default values for autoscaling in those templates. You might want to enable autoscaling by default for new deployments, or adjust the default value of the autoscaling maximum for the hot tier.
 
-Note that you cannot edit system templates through the UI; they may only be configured through the API.
-
+::::{note}
+You cannot edit system templates through the UI; they can only be configured through the API.
+::::
 
 ## Configure system deployment templates through the RESTful API [ece_configure_system_deployment_templates_through_the_restful_api] 
 
@@ -18,15 +25,14 @@ Note that you cannot edit system templates through the UI; they may only be conf
 The API user must have the `Platform admin` role in order to configure system templates.
 ::::
 
-
 1. Obtain the existing system deployment template you wish to modify. Note the `id` of the system deployment template as you will include this value in the API call to edit the template.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Edit the JSON of the system deployment template you wish to modify.
-3. Make the API call to modify the deployment template. Note that the last path segment in the URL is the `id` of the system template you wish to modify. Check [set deployment template API](https://www.elastic.co/guide/en/cloud-enterprise/current/set-deployment-template-v2.html) for more detail.
+3. Make the API call to modify the deployment template. Note that the last path segment in the URL is the `id` of the system template you wish to modify. Check [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more detail.
 
     The following example modifies the Default system deployment template (that, is the system template with `id` value of `default`), setting the default value of `autoscaling_enabled` to `true` and the default autoscaling maximum size of the hot tier to 4,194,304MB (64GB * 64 nodes).
 

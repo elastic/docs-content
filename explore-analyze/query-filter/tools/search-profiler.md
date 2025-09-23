@@ -1,26 +1,33 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-profiler.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-profile-queries-and-aggregations.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Search profiler [xpack-profiler]
 
-{{es}} has a powerful [Profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) that you can use to inspect and analyze your search queries. The response returns a large JSON blob, which can be difficult to analyze manually.
+{{es}} has a powerful [Profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) that you can use to inspect and analyze your search queries. The response returns a large JSON blob, which can be difficult to analyze manually.
 
 The **{{searchprofiler}}** tool can transform this JSON output into a visualization that is easy to navigate, allowing you to diagnose and debug poorly performing queries much faster.
 
 
 ## Get started [search-profiler-getting-started]
 
-1. Find the **{{searchprofiler}}** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Find the **{{searchprofiler}}** by navigating to the **Developer tools** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 **{{searchprofiler}}** displays the names of the indices searched, the shards in each index, and how long it took for the query to complete. To try it out, replace the default `match_all` query with the query you want to profile, and then click **Profile**.
 
 The following example shows the results of profiling the `match_all` query. If you take a closer look at the information for the `.security_7` sample index, the **Cumulative time** field shows you that the query took 0.028ms to execute.
 
-:::{image} ../../../images/kibana-overview.png
+:::{image} /explore-analyze/images/kibana-overview.png
 :alt: {{searchprofiler}} visualization
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -31,7 +38,7 @@ While the cumulative time metric is useful for comparing the performance of your
 ::::
 
 
-To see more profiling information, click **View details**. You’ll see details about the query components that ran on the shard and the timing breakdown of low-level methods. For more information, refer to [Profiling queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html#profiling-queries).
+To see more profiling information, click **View details**. You’ll see details about the query components that ran on the shard and the timing breakdown of low-level methods. For more information, refer to [Profiling queries](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md#profiling-queries).
 
 
 ## Filter for an index or type [_filter_for_an_index_or_type]
@@ -42,9 +49,9 @@ To query a specific index or type, you can use the **Index** filter.
 
 In the following example, the query is executed against the indices `.security-7` and `kibana_sample_data_ecommerce`. This is equivalent making a request to `GET /test,kibana_1/_search`.
 
-:::{image} ../../../images/kibana-filter.png
+:::{image} /explore-analyze/images/kibana-filter.png
 :alt: Filtering by index and type
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -104,9 +111,9 @@ To understand how the query trees are displayed inside the **{{searchprofiler}}*
 
 4. Click **Profile** to profile the query and visualize the results.
 
-    :::{image} ../../../images/kibana-gs8.png
+    :::{image} /explore-analyze/images/kibana-gs8.png
     :alt: Profiling the more complicated query
-    :class: screenshot
+    :screenshot:
     :::
 
     * The top `BooleanQuery` component corresponds to the bool in the query.
@@ -121,12 +128,12 @@ To understand how the query trees are displayed inside the **{{searchprofiler}}*
 
 6. Click **View details** to view the timing breakdown.
 
-    :::{image} ../../../images/kibana-gs10.png
+    :::{image} /explore-analyze/images/kibana-gs10.png
     :alt: Drilling into the first shard's details
-    :class: screenshot
+    :screenshot:
     :::
 
-    For more information about how the **{{searchprofiler}}** works, how timings are calculated, and how to interpret various results, see [Profiling queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html#profiling-queries).
+    For more information about how the **{{searchprofiler}}** works, how timings are calculated, and how to interpret various results, see [Profiling queries](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md#profiling-queries).
 
 
 
@@ -280,8 +287,8 @@ To see how this works, copy and paste the following profile response into the qu
 
 Your output should look similar to this:
 
-:::{image} ../../../images/kibana-search-profiler-json.png
+:::{image} /explore-analyze/images/kibana-search-profiler-json.png
 :alt: Rendering pre-captured profiler JSON
-:class: screenshot
+:screenshot:
 :::
 

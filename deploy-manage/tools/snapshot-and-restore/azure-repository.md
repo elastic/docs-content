@@ -1,25 +1,32 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html
+applies_to:
+  deployment:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Azure repository [repository-azure]
 
 You can use [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) as a repository for [Snapshot and restore](../snapshot-and-restore.md).
 
+{{es}} uses an internal client module to connect to Azure Blob storage, referred to in this document as the *Azure client* or the *Azure repository client*. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) defined in the `elasticsearch.yml` configuration file.
+
 ## Setup [repository-azure-usage]
 
 To enable Azure repositories, first configure an Azure repository client by specifying one or more settings of the form `azure.client.CLIENT_NAME.SETTING_NAME`. By default, `azure` repositories use a client named `default`, but you may specify a different client name when registering each repository.
 
-The only mandatory Azure repository client setting is `account`, which is a [secure setting](../../security/secure-settings.md) defined in the [{{es}} keystore](../../security/secure-settings.md). To provide this setting, use the `elasticsearch-keystore` tool on each node:
+The only mandatory setting for an Azure repository client is `account`, which is a [secure setting](../../security/secure-settings.md) defined in the {{es}} keystore. To provide this setting, use the `elasticsearch-keystore` tool on each node:
 
 ```sh
 bin/elasticsearch-keystore add azure.client.default.account
 ```
 
-If you adjust this setting after a node has started, call the [Nodes reload secure settings API](../../security/secure-settings.md) to reload the new value.
+If you adjust this setting after a node has started, call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to reload the new value.
 
-You may define more than one client by setting their `account` values. For instance, to set the `default` client and another client called `secondary`, run the following commands on each node:
+You may define more than one client by setting their `account` values. For example, to set the `default` client and another client called `secondary`, run the following commands on each node:
 
 ```sh
 bin/elasticsearch-keystore add azure.client.default.account
@@ -33,7 +40,7 @@ bin/elasticsearch-keystore add azure.client.default.key
 bin/elasticsearch-keystore add azure.client.secondary.sas_token
 ```
 
-Other Azure repository client settings must be set in `elasticsearch.yml` before the node starts. For example:
+Other Azure repository client settings must be set in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) before the node starts. For example:
 
 ```yaml
 azure.client.default.timeout: 10s
@@ -73,15 +80,15 @@ In progress snapshot or restore jobs will not be preempted by a **reload** of th
 
 ## Client settings [repository-azure-client-settings]
 
-The following list describes the available client settings. Those that must be stored in the keystore are marked as ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the `elasticsearch.yml` file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
+The following list describes the available client settings. Those that must be stored in the keystore are marked as ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
 
-`azure.client.CLIENT_NAME.account` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.account` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The Azure account name, which is used by the repository’s internal Azure client. This setting is required for all clients.
 
 `azure.client.CLIENT_NAME.endpoint_suffix`
 :   The Azure endpoint suffix to connect to. The default value is `core.windows.net`.
 
-`azure.client.CLIENT_NAME.key` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.key` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The Azure secret key, which is used by the repository’s internal Azure client. Alternatively, use `sas_token`.
 
 `azure.client.CLIENT_NAME.max_retries`
@@ -96,11 +103,11 @@ The following list describes the available client settings. Those that must be s
 `azure.client.CLIENT_NAME.proxy.type`
 :   Register a proxy type for the client. Supported values are `direct`, `http`, and `socks`. For example: `azure.client.default.proxy.type: http`. When `proxy.type` is set to `http` or `socks`, `proxy.host` and `proxy.port` must also be provided. The default value is `direct`.
 
-`azure.client.CLIENT_NAME.sas_token` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.sas_token` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   A shared access signatures (SAS) token, which the repository’s internal Azure client uses for authentication. The SAS token must have read (r), write (w), list (l), and delete (d) permissions for the repository base path and all its contents. These permissions must be granted for the blob service (b) and apply to resource types service (s), container (c), and object (o). Alternatively, use `key`.
 
 `azure.client.CLIENT_NAME.timeout`
-:   The client side timeout for any single request to Azure, as a [time unit](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). For example, a value of `5s` specifies a 5 second timeout. There is no default value, which means that {{es}} uses the [default value](https://azure.github.io/azure-storage-java/com/microsoft/azure/storage/RequestOptions.md#setTimeoutIntervalInMs(java.lang.Integer)) set by the Azure client.
+:   The client side timeout for any single request to Azure, as a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units). For example, a value of `5s` specifies a 5 second timeout. There is no default value, which means that {{es}} uses the [default value](https://azure.github.io/azure-storage-java/com/microsoft/azure/storage/RequestOptions.html#setTimeoutIntervalInMs(java.lang.Integer)) set by the Azure client.
 
 `azure.client.CLIENT_NAME.endpoint`
 :   The Azure endpoint to connect to. It must include the protocol used to connect to Azure.
@@ -117,7 +124,7 @@ If you specify neither the `key` nor the `sas_token` settings for a client then 
 
 When running {{es}} on an [Azure Virtual Machine](https://azure.microsoft.com/en-gb/products/virtual-machines), you should use [Azure Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) to provide credentials to {{es}}. To use Azure Managed Identity, assign a suitably authorized identity to the Azure Virtual Machine on which {{es}} is running.
 
-When running {{es}} in [Azure Kubernetes Service](https://azure.microsoft.com/en-gb/products/kubernetes-service), for instance using [{{eck}}](cloud-on-k8s.md#k8s-azure-workload-identity), you should use [Azure Workload Identity](https://azure.github.io/azure-workload-identity/docs/introduction.md) to provide credentials to {{es}}. To use Azure Workload Identity, mount the `azure-identity-token` volume as a subdirectory of the [{{es}} config directory](../../deploy/self-managed/configure-elasticsearch.md#config-files-location) and set the `AZURE_FEDERATED_TOKEN_FILE` environment variable to point to a file called `azure-identity-token` within the mounted volume.
+When running {{es}} in [Azure Kubernetes Service](https://azure.microsoft.com/en-gb/products/kubernetes-service), for instance using [{{eck}}](cloud-on-k8s.md#k8s-azure-workload-identity), you should use [Azure Workload Identity](https://azure.github.io/azure-workload-identity/docs/introduction.html) to provide credentials to {{es}}. To use Azure Workload Identity, mount the `azure-identity-token` volume as a subdirectory of the [{{es}} config directory](../../deploy/self-managed/configure-elasticsearch.md#config-files-location) and set the `AZURE_FEDERATED_TOKEN_FILE` environment variable to point to a file called `azure-identity-token` within the mounted volume.
 
 The Azure SDK has several other mechanisms to automatically obtain credentials from its environment, but the two methods described above are the only ones that are tested and supported for use in {{es}}.
 
@@ -156,16 +163,16 @@ PUT _snapshot/my_backup
 
 
 `chunk_size`
-:   Big files can be broken down into multiple smaller blobs in the blob store during snapshotting. It is not recommended to change this value from its default unless there is an explicit reason for limiting the size of blobs in the repository. Setting a value lower than the default can result in an increased number of API calls to the Azure blob store during snapshot create as well as restore operations compared to using the default value and thus make both operations slower as well as more costly. Specify the chunk size as a [byte unit](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units), for example: `10MB`, `5KB`, `500B`. Defaults to the maximum size of a blob in the Azure blob store which is `5TB`.
+:   Big files can be broken down into multiple smaller blobs in the blob store during snapshotting. It is not recommended to change this value from its default unless there is an explicit reason for limiting the size of blobs in the repository. Setting a value lower than the default can result in an increased number of API calls to the Azure blob store during snapshot create as well as restore operations compared to using the default value and thus make both operations slower as well as more costly. Specify the chunk size as a [byte unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units), for example: `10MB`, `5KB`, `500B`. Defaults to the maximum size of a blob in the Azure blob store which is `5TB`.
 
 `compress`
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
@@ -192,7 +199,7 @@ PUT _snapshot/my_backup
 
 ## Repository validation rules [repository-azure-validation]
 
-According to the [containers naming guide](https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers—​Blobs—​and-Metadata), a container name must be a valid DNS name, conforming to the following naming rules:
+According to the [containers naming guide](https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers—Blobs—and-Metadata), a container name must be a valid DNS name, conforming to the following naming rules:
 
 * Container names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character.
 * Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not permitted in container names.

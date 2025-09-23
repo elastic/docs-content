@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/numeral.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Numeral formatting [numeral]
@@ -9,9 +14,9 @@ Numeral formatting in {{kib}} is done through a pattern-based syntax. These patt
 
 Numeral formatting patterns are used in multiple places in {{kib}}, including:
 
-* [Advanced settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html)
+* [Advanced settings](kibana://reference/advanced-settings.md)
 * [Data view formatters](find-and-organize/data-views.md#field-formatters-numeric)
-* [**TSVB**](visualize/legacy-editors.md#tsvb-panel)
+* [**TSVB**](visualize/legacy-editors/tsvb.md)
 * [**Canvas**](visualize/canvas.md)
 
 The simplest pattern format is `0`, and the default {{kib}} pattern is `0,0.[000]`. The numeral pattern syntax expresses:
@@ -25,13 +30,12 @@ Thousands separator
 Accounting notation
 :   Putting parentheses around your format like `(0.00)` will use accounting notation to show negative numbers.
 
-The display of these patterns is affected by the [advanced setting](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings) `format:number:defaultLocale`. The default locale is `en`, but some examples will specify that they are using an alternate locale.
+The display of these patterns is affected by the [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) `format:number:defaultLocale`. The default locale is `en`, but some examples will specify that they are using an alternate locale.
 
 Most basic examples:
 
-|     |     |     |     |
+| Input | Pattern | Locale | Output |
 | --- | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Locale*** | ***Output** |
 | 10000.23 | 0,0 | en (English) | 10,000 |
 | 10000.23 | 0.0 | en (English) | 10000.2 |
 | 10000.23 | 0,0.0 | fr (French) | 10 000,2 |
@@ -47,18 +51,17 @@ By adding the `%` symbol to any of the previous patterns, the value is multiplie
 
 The default percentage formatter in {{kib}} is `0,0.[000]%`, which shows up to three decimal places.
 
-|     |     |     |     |
+| Input | Pattern | Locale | Output |
 | --- | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Locale*** | ***Output** |
 | 0.43 | 0,0.[000]% | en (English) | 43.00% |
 | 0.43 | 0,0.[000]% | fr (French) | 43,00% |
 | 1 | 0% | en (English) | 100% |
 | -0.43 | 0 % | en (English) | -43 % |
 
 
-## Bytes and bits [_bytes_and_bits]
+## Bytes and Bits [_bytes_and_bits]
 
-The bytes and bits formatters will shorten the input by adding a suffix like `GB` or `TB`. Bytes and bits formatters include the following suffixes:
+The Bytes and Bits formatters will shorten the input by adding a suffix like `GB` or `TB`. Bytes and Bits formatters include the following suffixes:
 
 `b`
 :   Bytes with binary values and suffixes. 1024 = `1KB`
@@ -77,9 +80,8 @@ The bytes and bits formatters will shorten the input by adding a suffix like `GB
 
 Suffixes are not localized with this formatter.
 
-|     |     |     |     |
+| Input | Pattern | Locale | Output |
 | --- | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Locale*** | ***Output** |
 | 2000 | 0.00b | en (English) | 1.95KB |
 | 2000 | 0.00bb | en (English) | 1.95KiB |
 | 2000 | 0.00bd | en (English) | 2.00kB |
@@ -92,9 +94,8 @@ Suffixes are not localized with this formatter.
 
 Currency formatting is limited in {{kib}} due to the limitations of the pattern syntax. To enable currency formatting, use the symbol `$` in the pattern syntax. The number formatting locale will affect the result.
 
-|     |     |     |     |
+| Input | Pattern | Locale | Output |
 | --- | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Locale*** | ***Output** |
 | 1000.234 | $0,0.00 | en (English) | $1,000.23 |
 | 1000.234 | $0,0.00 | fr (French) | €1 000,23 |
 | 1000.234 | $0,0.00 | chs (Simplified Chinese) | ¥1,000.23 |
@@ -104,9 +105,8 @@ Currency formatting is limited in {{kib}} due to the limitations of the pattern 
 
 Converts a value in seconds to display hours, minutes, and seconds.
 
-|     |     |     |
+| Input | Pattern | Output |
 | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Output** |
 | 25 | 00:00:00 | 0:00:25 |
 | 25 | 00:00 | 0:00:25 |
 | 238 | 00:00:00 | 0:03:58 |
@@ -118,9 +118,8 @@ Converts a value in seconds to display hours, minutes, and seconds.
 
 The `a` pattern will look for the shortest abbreviation for your number, and use a locale-specific display for it. The abbreviations `aK`, `aM`, `aB`, and `aT` can indicate that the number should be abbreviated to a specific order of magnitude.
 
-|     |     |     |     |
+| Input | Pattern | Locale | Output |
 | --- | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Locale*** | ***Output** |
 | 2000000000 | 0.00a | en (English) | 2.00b |
 | 2000000000 | 0.00a | ja (Japanese) | 2.00十億 |
 | -5444333222111 | 0,0 aK | en (English) | -5,444,333,222 k |
@@ -133,9 +132,8 @@ The `a` pattern will look for the shortest abbreviation for your number, and use
 
 The `o` pattern will display a locale-specific positional value like `1st` or `2nd`. This pattern has limited support for localization, especially in languages with multiple forms, such as German.
 
-|     |     |     |     |
+| Input | Pattern | Locale | Output |
 | --- | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Locale*** | ***Output** |
 | 3 | 0o | en (English) | 3rd |
 | 34 | 0o | en (English) | 34th |
 | 3 | 0o | es (Spanish) | 2er |
@@ -146,9 +144,8 @@ The `o` pattern will display a locale-specific positional value like `1st` or `2
 
 These number formats, combined with the previously described patterns, produce the complete set of options for numeral formatting. The output here is all for the `en` locale.
 
-|     |     |     |
+| Input | Pattern | Output |
 | --- | --- | --- |
-| **Input*** | ***Pattern*** | ***Output** |
 | 10000 | 0,0.0000 | 10,000.0000 |
 | 10000.23 | 0,0 | 10,000 |
 | -10000 | 0,0.0 | -10,000.0 |

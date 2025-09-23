@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-syntax-reserved.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Reserved keywords [sql-syntax-reserved]
@@ -13,9 +18,8 @@ The following table lists all of the keywords that are reserved in Elasticsearch
 SELECT "AS" FROM index
 ```
 
-|     |     |     |
+| Keyword | SQL:2016 | SQL-92 |
 | --- | --- | --- |
-| **Keyword** | **SQL:2016** | **SQL-92** |
 | `ALL` | reserved | reserved |
 | `AND` | reserved | reserved |
 | `ANY` | reserved | reserved |

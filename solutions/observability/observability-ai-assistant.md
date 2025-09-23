@@ -1,124 +1,123 @@
 ---
+navigation_title: AI Assistant
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
-# Observability AI Assistant [obs-ai-assistant]
+# {{obs-ai-assistant}} [obs-ai-assistant]
 
-::::{important}
-To run the Observability AI Assistant on self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
-::::
+The AI Assistant is an integration with a large language model (LLM) that helps you understand, analyze, and interact with your Elastic data.
 
+You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 
-The AI Assistant uses generative AI to provide:
-
-* **Contextual insights** — open prompts throughout {{observability}} that explain errors and messages and suggest remediation.
-* **Chat** —  have conversations with the AI Assistant. Chat uses function calling to request, analyze, and visualize your data.
-
-:::{image} ../../images/observability-obs-assistant2.gif
-:alt: Observability AI assistant preview
-:class: screenshot
-:::
+* **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
+* **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
 
-* [OpenAI connector](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html) for OpenAI or Azure OpenAI Service.
-* [Amazon Bedrock connector](https://www.elastic.co/guide/en/kibana/current/bedrock-action-type.html) for Amazon Bedrock, specifically for the Claude models.
-* [Google Gemini connector](https://www.elastic.co/guide/en/kibana/current/gemini-action-type.html) for Google Gemini.
+## Use cases
 
-::::{important}
-The AI Assistant is powered by an integration with your large language model (LLM) provider. LLMs are known to sometimes present incorrect information as if it’s correct. Elastic supports configuration and connection to the LLM provider and your knowledge base, but is not responsible for the LLM’s responses.
+The {{obs-ai-assistant}} helps you:
 
-::::
-
-
-::::{important}
-Also, the data you provide to the Observability AI assistant is *not* anonymized, and is stored and processed by the third-party AI provider. This includes any data used in conversations for analysis or context, such as alert or event data, detection rule configurations, and queries. Therefore, be careful about sharing any confidential or sensitive details while using this feature.
-
-::::
-
-
+* **Decode error messages**: Interpret stack traces and error logs to pinpoint root causes
+* **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in Elasticsearch
+* **Generate reports**: Create alert summaries and incident timelines with key metrics
+* **Build and execute queries**: Build Elasticsearch queries from natural language, convert Query DSL to ES|QL syntax, and execute queries directly from the chat interface
+* **Visualize data**: Create time-series charts and distribution graphs from your Elasticsearch data
 
 ## Requirements [obs-ai-requirements]
 
 The AI assistant requires the following:
 
-* {{stack}} version 8.9 and later.
-* An [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/server.html) server if Elastic managed [search connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-native-connectors.html) are used to populate external data into the knowledge base.
-* An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+- An **Elastic deployment**:
 
-    Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
+  - For **Observability**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
+
+  - For **Search**: {{stack}}  version **8.16.0** or later, or **{{serverless-short}} {{es}} project**.
+
+    - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
+
+- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+
+  - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
+
+    Refer to the [documentation](/deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
 
 * The knowledge base requires a 4 GB {{ml}} node.
+  - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
 
-::::{important}
-The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
-
-The Observability AI assistant doesn’t support connecting to a private LLM. Elastic doesn’t recommend using private LLMs with the Observability AI assistant.
-
-::::
-
-
-::::{important}
-In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
-
-::::
-
-
+* A self-deployed connector service if [content connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
 
 ## Your data and the AI Assistant [data-information]
 
-Elastic does not use customer data for model training. This includes anything you send the model, such as alert or event data, detection rule configurations, queries, and prompts. However, any data you provide to the AI Assistant will be processed by the third-party provider you chose when setting up the OpenAI connector as part of the assistant setup.
+It's important to understand how your data is handled when using the AI Assistant. Here are some key points:
 
-Elastic does not control third-party tools, and assumes no responsibility or liability for their content, operation, or use, nor for any loss or damage that may arise from your using such tools. Please exercise caution when using AI tools with personal, sensitive, or confidential information. Any data you submit may be used by the provider for AI training or other purposes. There is no guarantee that the provider will keep any information you provide secure or confidential. You should familiarize yourself with the privacy practices and terms of use of any generative AI tools prior to use.
+**Data usage by Elastic**
+:   Elastic does not use customer data for model training, but all data is processed by third-party AI providers.
 
+**Anonymization**
+:   Data sent to the AI Assistant is *not* anonymized, including alert data, configurations, queries, logs, and chat interactions. If you need to anonymize data, use the [anonymization pipeline](#obs-ai-anonymization).
+
+**Permission context**
+:   When the AI Assistant performs searches, it uses the same permissions as the current user.
+
+**Third-party processing**
+:   Any data submitted may be used by the provider for AI training or other purposes with no guarantee of security or confidentiality.
+
+**Telemetry collection**: Your AI provider may collect telemetry during usage. Contact them for details on what data is collected.
 
 ## Set up the AI Assistant [obs-ai-set-up]
 
-To set up the AI Assistant:
+The AI Assistant connects to one of these supported LLM providers:
 
-1. Create an authentication key with your AI provider to authenticate requests from the AI Assistant. You’ll use this in the next step. Refer to your provider’s documentation for information about creating authentication keys:
+| Provider | Configuration | Authentication |
+|----------|---------------------|---------------------|
+| Preconfigured LLM (default) | No configuration needed | N/A |
+| OpenAI | [Configure connector](kibana://reference/connectors-kibana/openai-action-type.md) | [Get API key](https://platform.openai.com/docs/api-reference) |
+| Azure OpenAI | [Configure connector](kibana://reference/connectors-kibana/openai-action-type.md) | [Get API key](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference) |
+| Amazon Bedrock | [Configure connector](kibana://reference/connectors-kibana/bedrock-action-type.md) | [Get auth keys](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html) |
+| Google Gemini | [Configure connector](kibana://reference/connectors-kibana/gemini-action-type.md) | [Get service account key](https://cloud.google.com/iam/docs/keys-list-get) |
 
-    * [OpenAI API keys](https://platform.openai.com/docs/api-reference)
-    * [Azure OpenAI Service API keys](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference)
-    * [Amazon Bedrock authentication keys and secrets](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.md)
-    * [Google Gemini service account keys](https://cloud.google.com/iam/docs/keys-list-get)
+**Setup steps**:
 
-2. Create a connector for your AI provider. Refer to the connector documentation to learn how:
+1. **Create authentication credentials** with your chosen provider using the links above
+2. **Create an LLM connector** by navigating to **Stack Management → Connectors** to create an LLM connector for your chosen provider.
+3. **Authenticate the connection** by entering:
+   - The provider's API endpoint URL
+   - Your authentication key or secret
 
-    * [OpenAI](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html)
-    * [Amazon Bedrock](https://www.elastic.co/guide/en/kibana/current/bedrock-action-type.html)
-    * [Google Gemini](https://www.elastic.co/guide/en/kibana/current/gemini-action-type.html)
+::::{admonition} Recommended models
+While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/llm-performance-matrix.md) to select models that perform well with your desired use cases.
 
-3. Authenticate communication between {{observability}} and the AI provider by providing the following information:
+::::
 
-    1. In the **URL** field, enter the AI provider’s API endpoint URL.
-    2. Under **Authentication**, enter the key or secret you created in the previous step.
+### Elastic Managed LLM [elastic-managed-llm-obs-ai-assistant]
 
+:::{include} ../_snippets/elastic-managed-llm.md
+:::
 
+### Connect to a custom local LLM
+
+[Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
-::::{important}
-**If you started using the AI Assistant in technical preview**, any knowledge base articles you created before 8.12 will have to be reindexed or upgraded before they can be used. Knowledge base articles created before 8.12 use ELSER v1. In 8.12, knowledge base articles must use ELSER v2. Options include:
+The AI Assistant uses one of the following text embedding models to run  semantic search against the internal knowledge base index. The top results are passed to the LLM as context (retrieval‑augmented generation), producing more accurate and grounded responses:
 
-* Clear all old knowledge base articles manually and reindex them.
-* Upgrade all knowledge base articles indexed with ELSER v1 to ELSER v2 using a [Python script](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/model-upgrades/upgrading-index-to-use-elser.ipynb).
+* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Recommended for English-only use cases.
+* [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): {applies_to}`stack: ga 9.1` Recommended for non-English use cases.
 
-::::
-
-
-The AI Assistant uses [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
-
-::::{note}
-Your AI provider may collect telemetry when using the AI Assistant. Contact your AI provider for information on how data is collected.
-::::
-
+Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
 Add data to the knowledge base with one or more of the following methods:
 
 * [Use the knowledge base UI](#obs-ai-kb-ui) available at [AI Assistant Settings](#obs-ai-settings) page.
-* [Use search connectors](#obs-ai-search-connectors)
+* [Use content connectors](#obs-ai-search-connectors)
 
 You can also add information to the knowledge base by asking the AI Assistant to remember something while chatting (for example, "remember this for next time"). The assistant will create a summary of the information and add it to the knowledge base.
 
@@ -127,8 +126,8 @@ You can also add information to the knowledge base by asking the AI Assistant to
 
 To add external data to the knowledge base in {{kib}}:
 
-1. To open AI Assistant settings, find `AI Assistants` in the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
-2. Under **Elastic AI Assistant for Observability**, click **Manage settings**.
+1. To open AI Assistant settings, find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Under **{{obs-ai-assistant}}**, click **Manage settings**.
 3. Switch to the **Knowledge base** tab.
 4. Click the **New entry** button, and choose either:
 
@@ -142,51 +141,66 @@ To add external data to the knowledge base in {{kib}}:
         }
         ```
 
+### Use content connectors [obs-ai-search-connectors]
 
+[Content connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
 
-### Use search connectors [obs-ai-search-connectors]
+#### Requirements and limitations
 
-::::{tip}
-The [search connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html) described in this section differ from the [Stack management → Connectors](../../deploy-manage/manage-connectors.md) configured during the [AI Assistant setup](#obs-ai-set-up). Search connectors are only needed when importing external data into the Knowledge base of the AI Assistant, while the stack connector to the LLM is required for the AI Assistant to work.
+- For {{stack}} 9.0.0+ or {{serverless-short}}, connectors must be [self-managed](elasticsearch://reference/search-connectors/self-managed-connectors.md).
+- Manage connectors through the Search Solution in {{kib}} (pre-9.0.0) or with the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector).
 
-::::
+#### Knowledge base data sources
+By default, the AI Assistant queries all search connector indices. To customize which indices are used in the knowledge base, set the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
 
+:::{note}
+You're not limited to search connector indices in the **Search connector index pattern setting**. You can specify any index pattern.
+:::
 
-[Connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
+##### Space awareness
+The **Search connector index pattern** setting is [space](../../deploy-manage/manage-spaces.md) aware. This means you can assign different values for different spaces. For example, a "Developers" space may include an index pattern like `github-*,jira*`, while an "HR" space may include an index pattern like `employees-*`.
 
-UI affordances for creating and managing search connectors are available in the Search Solution in {{kib}}. You can also use the {{es}} [Connector APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/connector-apis.html) to create and manage search connectors.
+##### Custom index field name requirements
+Field names in custom indices have no specific requirements. Any `semantic_text` field is automatically queried. Documents matching the index pattern are sent to the LLM in full, including all fields. It's not currently possible to include or exclude specific fields.
 
-The infrastructure for deploying connectors can be managed by Elastic or self-managed. Managed connectors require an [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/server.html) server connected to the Elastic Stack. Self-managed connectors are run on your own infrastructure and don’t require the Enterprise Search service.
+#### Setup process:
 
-By default, the AI Assistant queries all search connector indices. To override this behavior and customize which indices are queried, adjust the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page. This allows precise control over which data sources are included in AI Assistant knowledge base.
+1. **Create a connector**
 
-To create a connector in the {{kib}} UI and make its content available to the AI Assistant knowledge base, follow these steps:
+   **Use the UI**:
 
-1. Open **Connectors** by finding `Content / Connectors` in the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+   - Navigate to `Content / Connectors` in the global search field
+   - Create a connector for your data source (example: [GitHub connector](elasticsearch://reference/search-connectors/es-connectors-github.md))
+   - If your Space lacks the Search solution, either create the connector from a different space or change your space **Solution view** to `Classic`
 
-    ::::{note}
-    If your {{kib}} Space doesn’t include the Search solution you will have to create the connector from a different space or change your space **Solution view** setting to `Classic`.
+   **Use the API**:
+    - Create a connector using the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector)
 
-    ::::
+2. **Create embeddings** (choose one method):
+   - [`semantic_text` field](#obs-ai-search-connectors-semantic-text): Recommended workflow which handles model setup automatically. Allows the use of any available ML model (Elser, e5, or custom models).
+   - [ML pipeline](#obs-ai-search-connectors-ml-embeddings): Requires manual setup of the ELSER model and inference pipeline.
 
-2. Follow the instructions to create a new connector.
+#### Option 1: Use a `semantic_text` field type to create embeddings (recommended) [obs-ai-search-connectors-semantic-text]
 
-    For example, if you create a [GitHub connector](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors-github.html) you have to set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
+To create the embeddings needed by the AI Assistant using a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type:
 
-    Learn more about configuring and [using connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors-usage.html) in the Elasticsearch documentation.
+1. Open the previously created connector, and select the **Mappings** tab.
+2. Select **Add field**.
+3. Under **Field type**, select **Semantic text**.
+4. Under **Reference field**, select the field you want to use for model inference.
+5. Under **Select an inference endpoint**, select the model you want to use to add the embeddings to the data.
+6. Add the field to your mapping by selecting **Add field**.
+7. Sync the data by selecting **Full Content** from the **Sync** menu.
 
+The AI Assistant will now query the connector you’ve set up using the model you’ve selected. Check that the AI Assistant is using the index by asking it something related to the indexed data.
 
-After creating your connector, create the embeddings needed by the AI Assistant. You can do this using either:
+#### Option 2: Use machine learning pipelines to create embeddings [obs-ai-search-connectors-ml-embeddings]
 
-* [a machine learning (ML) pipeline](#obs-ai-search-connectors-ml-embeddings): requires the ELSER ML model.
-* [a `semantic_text` field type](#obs-ai-search-connectors-semantic-text): can use any available ML model (ELSER, E5, or a custom model).
-
-
-#### Use machine learning pipelines to create AI Assistant embeddings [obs-ai-search-connectors-ml-embeddings]
+This is a more complex method that requires you to set up the ELSER model and inference pipeline manually.
 
 To create the embeddings needed by the AI Assistant (weights and tokens into a sparse vector field) using an **ML Inference Pipeline**:
 
-1. Open the previously created connector, and select the **Pipelines** tab.
+1. Open the previously created content connector in **Content / Connectors**, and select the **Pipelines** tab.
 2. Select **Copy and customize** under `Unlock your custom pipelines`.
 3. Select **Add Inference Pipeline** under `Machine Learning Inference Pipelines`.
 4. Select the **ELSER (Elastic Learned Sparse EncodeR)** ML model to add the necessary embeddings to the data.
@@ -199,66 +213,88 @@ After creating the pipeline, complete the following steps:
 
     Once the pipeline is set up, perform a **Full Content Sync** of the connector. The inference pipeline will process the data as follows:
 
-    * As data comes in, ELSER is applied to the data, and embeddings (weights and tokens into a [sparse vector field](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html)) are added to capture semantic meaning and context of the data.
+    * As data comes in, ELSER is applied to the data, and embeddings (weights and tokens into a [sparse vector field](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md)) are added to capture semantic meaning and context of the data.
     * When you look at the ingested documents, you can see the embeddings are added to the `predicted_value` field in the documents.
 
 2. Check if AI Assistant can use the index (optional).
 
     Ask something to the AI Assistant related with the indexed data.
 
+### Add user-specific system prompts [obs-ai-assistant-user-prompt]
 
+User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
 
-#### Use a `semantic_text` field type to create AI Assistant embeddings [obs-ai-search-connectors-semantic-text]
+A user-specific prompt only applies to the user that sets it.
 
-To create the embeddings needed by the AI Assistant using a [`semantic_text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html) field type:
+To edit the **User-specific System Prompt**:
 
-1. Open the previously created connector, and select the **Mappings** tab.
-2. Select **Add field**.
-3. Under **Field type**, select **Semantic text**.
-4. Under **Reference field**, select the field you want to use for model inference.
-5. Under **Select an inference endpoint**, select the model you want to use to add the embeddings to the data.
-6. Add the field to your mapping by selecting **Add field**.
-7. Sync the data by selecting **Full Content** from the **Sync** menu.
+1. Go to the **{{obs-ai-assistant}}** management page. You can find it in the **Management** menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. Switch to the **Knowledge base** tab.
+4. Select **Edit User-specific Prompt**.
 
-The AI Assistant will now query the connector you’ve set up using the model you’ve selected. Check that the AI Assistant is using the index by asking it something related to the indexed data.
+#### User-specific prompt example
+User-specific prompts are useful when configuring specific workflows. For example, if you want the assistant to respond in a consistent, readable format when asked about Kubernetes metadata, you might add the following **user-specific system prompt**:
 
+```
+<kubernetes_info>
+If asked about a Kubernetes pod, namespace, cluster, location, or owner, return the info in this format.  Use the field names to find the relevant information requested.  Don't mention the field names, just the results.
+- Pod: agent.name
+- Namespace: data_stream.namespace
+- Cluster Name: orchestrator.cluster.name
+- Owner: cloud.account.id
+</kubernetes_info>
+```
+
+### Choose the Knowledge Base language model
+```{applies_to}
+stack: ga 9.1
+```
+Choose the default language model for the AI Assistant in the AI Assistant settings under **Set text embeddings model**.
+
+* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): recommended for English-only use cases.
+* [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): supports multilingual use cases.
+
+Select the language model and click **Update**.
+
+When switching models, all existing Knowledge Base entries must be reindexed. Entries will be unavailable until reindexing is complete.
+
+To have the AI Assistant respond in a language other than English, set a [user specific prompt](#obs-ai-assistant-user-prompt).
 
 ## Interact with the AI Assistant [obs-ai-interact]
 
-Chat with the AI Assistant or interact with contextual insights located throughout {{observability}}. Check the following sections for more on interacting with the AI Assistant.
+::::{important}
+The AI Assistant uses large language models (LLMs) which are probabilistic and liable to provide incomplete or incorrect information. Elastic supports LLM configuration and connectivity but is not responsible for response accuracy. Always verify important information before implementing suggested changes.
+::::
+
+Chat with the AI Assistant or interact with contextual insights located throughout the UI. Check the following sections for more on interacting with the AI Assistant.
 
 ::::{tip}
 After every answer the LLM provides, let us know if the answer was helpful. Your feedback helps us improve the AI Assistant!
 ::::
 
-
-
 ### Chat with the assistant [obs-ai-chat]
 
-Select the **AI Assistant** icon (![AI Assistant icon](../../images/observability-ai-assistant-icon.png "")) at the upper-right corner of any {{observability}} application to start the chat.
+Select the **AI Assistant** icon (![AI Assistant icon](/solutions/images/observability-ai-assistant-icon.png "")) at the upper-right corner of the Serverless or {{kib}} UI to start the chat.
 
 This opens the AI Assistant flyout, where you can ask the assistant questions about your instance:
 
-:::{image} ../../images/observability-obs-ai-chat.png
+:::{image} /solutions/images/observability-obs-ai-chat.png
 :alt: Observability AI assistant chat
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
 Asking questions about your data requires `function calling`, which enables LLMs to reliably interact with third-party generative AI providers to perform searches or run advanced functions using customer data.
 
-When the {{observability}} AI Assistant performs searches in the cluster, the queries are run with the same level of permissions as the user.
-
+When the {{obs-ai-assistant}} performs searches in the cluster, the queries are run with the same level of permissions as the user.
 ::::
 
+#### Suggest functions [obs-ai-functions]
 
-
-### Suggest functions [obs-ai-functions]
-
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
 The AI Assistant uses functions to include relevant context in the chat conversation through text, data, and visual components. Both you and the AI Assistant can suggest functions. You can also edit the AI Assistant’s function suggestions and inspect function responses.
 
@@ -267,80 +303,86 @@ Main functions:
 `alerts`
 :   Get alerts for {{observability}}.
 
+`changes`
+:   Get change points like spikes and dips for logs and metrics data.
+
 `elasticsearch`
 :   Call {{es}} APIs on your behalf.
+
+`execute_connector`
+:   Call a {{kib}} connector on your behalf.
+
+`get_alerts_dataset_info`
+:   Get information about alerts data within a specified time range.
+
+`get_data_on_screen`
+:   Get the structured data of content currently visible on the user's screen. Use this function to provide more accurate and context-aware responses to your questions.
+
+`get_dataset_info`
+:    Get information about available indices and datasets and their fields.
 
 `kibana`
 :   Call {{kib}} APIs on your behalf.
 
-`summarize`
-:   Summarize parts of the conversation.
+`query`
+:   Generate, execute, and visualize queries based on your request.
 
-`visualize_query`
-:   Visualize charts for ES|QL queries.
+`retrieve_elastic_doc`
+:   Get relevant Elastic documentation. This function is only available if the product documentation is installed.
+
+`summarize`
+:   Store information and facts in the knowledge base for future use. This function is only available if the [knowledge base](#obs-ai-add-data) has already been installed.
 
 Additional functions are available when your cluster has APM data:
 
-`get_apm_correlations`
-:   Get field values that are more prominent in the foreground set than the background set. This can be useful in determining which attributes (such as `error.message`, `service.node.name`, or `transaction.name`) are contributing to, for instance, a higher latency. Another option is a time-based comparison, where you compare before and after a change point.
+`get_apm_dataset_info`
+:   Get information about APM data.
 
 `get_apm_downstream_dependencies`
 :   Get the downstream dependencies (services or uninstrumented backends) for a service. Map the downstream dependency name to a service by returning both `span.destination.service.resource` and `service.name`. Use this to drill down further if needed.
 
-`get_apm_error_document`
-:   Get a sample error document based on the grouping name. This also includes the stacktrace of the error, which might hint to the cause.
-
-`get_apm_service_summary`
-:   Get a summary of a single service, including the language, service version, deployments, the environments, and the infrastructure that it is running in. For example, the number of pods and a list of their downstream dependencies. It also returns active alerts and anomalies.
-
 `get_apm_services_list`
 :   Get the list of monitored services, their health statuses, and alerts.
-
-`get_apm_timeseries`
-:   Display different APM metrics (such as throughput, failure rate, or latency) for any service or all services and any or all of their dependencies. Displayed both as a time series and as a single statistic. Additionally, the function  returns any changes, such as spikes, step and trend changes, or dips. You can also use it to compare data by requesting two different time ranges, or, for example, two different service versions.
-
 
 ### Use contextual prompts [obs-ai-prompts]
 
 AI Assistant contextual prompts throughout {{observability}} provide the following information:
 
-* **Universal Profiling** — explains the most expensive libraries and functions in your fleet and provides optimization suggestions.
-* **Application performance monitoring (APM)** — explains APM errors and provides remediation suggestions.
-* **Infrastructure Observability** — explains the processes running on a host.
-* **Logs** — explains log messages and generates search patterns to find similar issues.
-* **Alerting** — provides possible causes and remediation suggestions for log rate changes.
+* **Universal Profiling**: explains the most expensive libraries and functions in your fleet and provides optimization suggestions.
+* **Application performance monitoring (APM)**: explains APM errors and provides remediation suggestions.
+* **Infrastructure Observability**: explains the processes running on a host.
+* **Logs**: explains log messages and generates search patterns to find similar issues.
+* **Alerting**: provides possible causes and remediation suggestions for log rate changes.
 
 For example, in the log details, you’ll see prompts for **What’s this message?** and **How do I find similar log messages?**:
 
-:::{image} ../../images/observability-obs-ai-logs-prompts.png
+:::{image} /solutions/images/observability-obs-ai-logs-prompts.png
 :alt: Observability AI assistant logs prompts
-:class: screenshot
+:screenshot:
 :::
 
 Clicking a prompt generates a message specific to that log entry:
 
-:::{image} ../../images/observability-obs-ai-logs.gif
+:::{image} /solutions/images/observability-obs-ai-logs.gif
 :alt: Observability AI assistant example
-:class: screenshot
+:screenshot:
 :::
 
 Continue a conversation from a contextual prompt by clicking **Start chat** to open the AI Assistant chat.
 
-
 ### Add the AI Assistant connector to alerting workflows [obs-ai-connector]
 
-Use the [Observability AI Assistant connector](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html) to add AI-generated insights and custom actions to your alerting workflows as follows:
+Use the [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows as follows:
 
-1. [Create (or edit) an alerting rule](incident-management/create-manage-rules.md) and specify the conditions that must be met for the alert to fire.
+1. Navigate to **Observability / Alerts** to [create (or edit) an alerting rule](incident-management/create-manage-rules.md) that uses the AI Assistant connector. Specify the conditions that must be met for the alert to fire.
 2. Under **Actions**, select the **Observability AI Assistant** connector type.
 3. In the **Connector** list, select the AI connector you created when you set up the assistant.
 4. In the **Message** field, specify the message to send to the assistant:
 
-    :::{image} ../../images/observability-obs-ai-assistant-action-high-cpu.png
+    :::{image} /solutions/images/observability-obs-ai-assistant-action-high-cpu.png
     :alt: Add an Observability AI assistant action while creating a rule in the Observability UI
-    :class: screenshot
+    :screenshot:
     :::
-
 
 You can ask the assistant to generate a report of the alert that fired, recall any information or potential resolutions of past occurrences stored in the knowledge base, provide troubleshooting guidance and resolution steps, and also include other active alerts that may be related. As a last step, you can ask the assistant to trigger an action, such as sending the report (or any other message) to a Slack webhook.
 
@@ -348,18 +390,16 @@ You can ask the assistant to generate a report of the alert that fired, recall a
 Currently only Slack, email, Jira, PagerDuty, or webhook actions are supported. Additional actions will be added in the future.
 ::::
 
-
 When the alert fires, contextual details about the event—such as when the alert fired, the service or host impacted, and the threshold breached—are sent to the AI Assistant, along with the message provided during configuration. The AI Assistant runs the tasks requested in the message and creates a conversation you can use to chat with the assistant:
 
-:::{image} ../../images/observability-obs-ai-assistant-output.png
+:::{image} /solutions/images/observability-obs-ai-assistant-output.png
 :alt: AI Assistant conversation created in response to an alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
 Conversations created by the AI Assistant are public and accessible to every user with permissions to use the assistant.
 ::::
-
 
 It might take a minute or two for the AI Assistant to process the message and create the conversation.
 
@@ -371,46 +411,132 @@ When asked to send a message to another connector, such as Slack, the AI Assista
 The `server.publicBaseUrl` setting must be correctly specified under {{kib}} settings, or the AI Assistant is unable to generate this link.
 ::::
 
-
-:::{image} ../../images/observability-obs-ai-assistant-slack-message.png
+:::{image} /solutions/images/observability-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
-:class: screenshot
+:screenshot:
 :::
 
-The Observability AI Assistant connector is called when the alert fires and when it recovers.
+{{obs-ai-assistant}} connector is called when the alert fires and when it recovers.
 
 To learn more about alerting, actions, and connectors, refer to [Alerting](incident-management/alerting.md).
-
 
 ## AI Assistant Settings [obs-ai-settings]
 
 To access the AI Assistant Settings page, you can:
 
-* Find `AI Assistants` in the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+* Find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * Use the **More actions** menu inside the AI Assistant window.
 
 The AI Assistant Settings page contains the following tabs:
 
 * **Settings**: Configures the main AI Assistant settings, which are explained directly within the interface.
 * **Knowledge base**: Manages [knowledge base entries](#obs-ai-kb-ui).
-* **Search Connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
+* **Content connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
 
+### Add Elastic documentation [obs-ai-product-documentation]
 
-## Elastic documentation for the AI Assistant [obs-ai-product-documentation]
+You can make the official Elastic documentation available to the AI Assistant, which significantly improves its ability to accurately answer questions about the Elastic Stack and Elastic products.
 
-It is possible to make the Elastic official documentation available to the AI Assistant, which significantly increases its efficiency and accuracy in answering questions related to the Elastic stack and Elastic products.
-
-Enabling that feature can be done from the **Settings** tab of the AI Assistant Settings page, using the "Install Elastic Documentation" action.
+Enable this feature from the **Settings** tab in AI Assistant Settings by using the "Install Elastic Documentation" action.
 
 ::::{important}
-Installing the product documentation in air gapped environments requires specific installation and configuration instructions, which are available in the [{{kib}} Kibana AI Assistants settings documentation](https://www.elastic.co/guide/en/kibana/current/ai-assistant-settings-kb.html).
+For air-gapped environments, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
 ::::
 
+## Anonymization [obs-ai-anonymization]
+```{applies_to}
+serverless: preview
+stack: preview 9.1
+```
+
+Anonymization masks personally identifiable or otherwise sensitive information before chat messages leave Kibana for a third-party LLM.
+Enabled rules substitute deterministic tokens (for example `EMAIL_ee4587…`) so the model can keep context without ever seeing the real value.
+When all rules are disabled (the default), data is forwarded unchanged.
+
+### How it works [obs-ai-anonymization-how]
+
+When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-settings), every message in the request (system prompt, message content, function call arguments/responses) is run through an *anonymization pipeline* before it leaves Kibana:
+
+1. Each enabled **rule** scans the text and replaces any match with a deterministic token such as
+   `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.
+   The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a deterministic hash of the original value.
+2. The fully masked conversation is sent to the LLM.
+3. After the LLM responds, the original values are restored so the user sees deanonymized text and any persisted conversation history stores the original content. Deanonymization information is stored with the conversation messages to enable the UI to highlight anonymized content.
+
+### Rule types [obs-ai-anonymization-rules]
+
+
+**RegExp**: Runs a JavaScript‑style regular expression. Use for fixed patterns such as email addresses, host names, etc.
+
+```jsonc
+{
+  "type": "RegExp",
+  "pattern": "([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})",
+  "entityClass": "EMAIL",
+  "enabled": true
+}
+```
+
+**NER**: Runs a named entity recognition (NER) model on free text.
+
+```jsonc
+{
+  "type": "NER",
+  "modelId": "elastic__distilbert-base-uncased-finetuned-conll03-english",
+  "allowedEntityClasses": ["PER", "ORG", "LOC"],
+  "enabled": true
+}
+```
+
+Rules are evaluated top-to-bottom with `RegExp` rules processed first, then `NER` rules; the first rule that captures a given entity wins. Rules can be configured in the [AI Assistant Settings](#obs-ai-settings) page.
+
+### Example
+
+The following example shows the anonymized content highlighted in the chat window using a `RegExp` rule to mask GKE hostnames:
+
+```jsonc
+{
+  "entityClass": "GKE_HOST",
+  "type": "RegExp",
+  "pattern": "(gke-[a-zA-Z0-9-]+-[a-f0-9]{8}-[a-zA-Z0-9]+)",
+  "enabled": true
+}
+```
+
+:::{image} /solutions/images/observability-obs-ai-assistant-anonymization.png
+:alt: AI Assistant chat showing hostname anonymization in action
+:screenshot:
+:::
+
+### Requirements [obs-ai-anonymization-requirements]
+Anonymization requires the following:
+
+* **Advanced Settings privilege**: Necessary to edit the configuration and enable rules.
+  Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../deploy-manage/manage-spaces.md)).
+* **ML privilege and resources**: If you enable a rule of type NER, you must first [deploy and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md#ex-ner-deploy) and have sufficient ML capacity.
+
+::::{important}
+The anonymization pipeline has only been validated with Elastic’s English model
+[elastic/distilbert-base-uncased-finetuned-conll03-english](https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english).
+Results for other languages or models may vary.
+::::
+
+### Limitations [obs-ai-anonymization-limitations]
+Anonymization has the following limitations:
+
+* **Performance (NER)**: Running an NER model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
+* **Structured JSON**: The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax.
+* **False negatives / positives**: No model or pattern is perfect. Model accuracy may vary depending on model and input.
+* **JSON malformation risk** {applies_to}`{stack: "removed 9.1.3", serverless: "removed"}`: Both NER inference and regex rules can potentially create malformed JSON when anonymizing JSON data such as function responses. This can occur by replacing text across character boundaries, which may break JSON structure causing the whole request to fail. If this occurs, you may need to adjust your regex pattern or disable the NER rule.
 
 
 ## Known issues [obs-ai-known-issues]
 
-
 ### Token limits [obs-ai-token-limits]
 
-Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html#openai-connector-token-dashboard).
+Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
+
+
+## AI Assistant for Security
+
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in {{elastic-sec}}, refer to [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).

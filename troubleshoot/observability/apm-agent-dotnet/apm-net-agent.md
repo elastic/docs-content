@@ -1,16 +1,23 @@
 ---
+navigation_title: APM .NET agent
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/dotnet/current/troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
+products:
+  - id: apm-agent
 ---
 
-# APM .NET agent
+# Troubleshoot APM .NET agent
 
-Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. As a first step, ensure your stack is compatible with the Agent’s [supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/current/supported-technologies.html).
+Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. As a first step, ensure your stack is compatible with the Agent’s [supported technologies](apm-agent-dotnet://reference/supported-technologies.md).
 
-Don’t worry if you can’t figure out what the problem is; we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If not, post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
+Don’t worry if you can’t figure out what the problem is; we’re here to help. If you are an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If not, post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
 
 ::::{important}
-**Please attach your debug logs** so that we can analyze the problem. Upload the **complete** logs to a service like [https://gist.github.com](https://gist.github.com). The logs should include everything from the application startup up until the first request has been executed.
+**Attach your debug logs** so that we can analyze the problem. Upload the **complete** logs to a service like [https://gist.github.com](https://gist.github.com). The logs should include everything from the application startup up until the first request has been executed.
 ::::
 
 
@@ -74,7 +81,7 @@ The default value is `file` if `OTEL_DOTNET_AUTO_LOG_DIRECTORY` is set or `OTEL_
 
 ### ASP.NET Core [collect-logs-core]
 
-If you added the agent to your application as per the [ASP.NET Core](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup-asp-net-core.html) document with the `AddAllElasticApm` or `AddElasticApm` method, it will integrate with the [ASP.NET Core logging infrastructure](https://learn.microsoft.com/aspnet/core/fundamentals/logging). This means the Agent will pick up the configured logging provider and log as any other component logs.
+If you added the agent to your application as per the [ASP.NET Core](apm-agent-dotnet://reference/setup-asp-net-core.md) document with the `AddAllElasticApm` or `AddElasticApm` method, it will integrate with the [ASP.NET Core logging infrastructure](https://learn.microsoft.com/aspnet/core/fundamentals/logging). This means the Agent will pick up the configured logging provider and log as any other component logs.
 
 ::::{important}
 In this scenario, the `LogLevel` APM agent configuration (e.g. setting the `ELASTIC_APM_LOG_LEVEL` environment variable) DOES NOT control the verbosity of the agent logs. The agent logs are controlled by the ASP.NET Core logging configuration from `IConfiguration`, typically configured via `appsettings.json`.
@@ -142,7 +149,7 @@ namespace MyApp
 }
 ```
 
-During initialization, the agent checks if an additional logger was configured-- the agent only does this once, so it’s important to set it as early in the process as possible, typically in the `Application_Start` method.
+During initialization, the agent checks if an additional logger was configured—the agent only does this once, so it’s important to set it as early in the process as possible, typically in the `Application_Start` method.
 
 
 ### General .NET applications [collect-logs-general]
@@ -156,6 +163,34 @@ Agent.Setup(new AgentComponents(logger: new ApmLoggerAdapter()));
 ```
 
 
+## Missing transactions
+
+If you receive trace data for some but not all transactions, you should check the two main variables which control
+sampling of transactions.
+
+The first variable is the [transaction sample rate](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate). To reduce volume, this configuration option may specify a reduced sampling rate. To sample all transactions, ensure that this is either set to `1`, or not set at all. By default, the agent samples every transaction (every request to your service). ```
+
+The second variable is context propagation. To facilitate distributed tracing, the W3C specification
+defines a [trace context](https://www.w3.org/TR/trace-context/), used to transfer a trace across service boundaries.
+For web applications, this occurs through the `traceparent` header. Of specific importance for this issue is
+a flag defined on that context, the [sampled flag](https://www.w3.org/TR/trace-context/#sampled-flag).
+
+This flag allows a sampling decision made earlier in a distributed trace to continue onto downstream services,
+and the .NET APM agent honours this automatically. When a request comes in with the sampling flag
+unset (not sampled), the agent will not record a trace in the instrumented service either. This is
+by design to avoid collecting incomplete traces.
+
+When all services within a distributed system are managed and instrumented using Elastic APM agents and communication
+is internal, the default behaviour is usually correct. If some requests to instrumented applications may come from
+external users, then the `traceparent` header cannot be controlled. In these cases, it's often incorrect to allow
+an outside party to control what transactions are recorded through the sampled flag.
+
+To control the context propagation behaviour, we have a [trace continuation strategy](apm-agent-dotnet://reference/config-http.md#config-trace-continuation-strategy) option. Choose either `restart` or `restart_external`. `restart` will ignore
+the sampling flag on all requests and always include a transaction for the trace. `restart_external` is similar,
+however it uses an extra header to detect if the calling service was instrumented by an Elastic APM agent. If so,
+it honors the sampling flag; if not (such as for an external request), it forces the trace to be sampled.
+
+
 ## Following error appears in logs: `The singleton APM agent has already been instantiated and can no longer be configured.` [double-agent-initialization-log]
 
 See "[An `InstanceAlreadyCreatedException` exception is thrown](#double-agent-initialization)".
@@ -166,7 +201,7 @@ See "[An `InstanceAlreadyCreatedException` exception is thrown](#double-agent-in
 In the early stage of a monitored process, the Agent might throw an `InstanceAlreadyCreatedException` exception with the following message: "The singleton APM agent has already been instantiated and can no longer be configured.", or an error log appears with the same message. This happens when you attempt to initialize the Agent multiple times, which is prohibited. Allowing multiple Agent instances per process would open up problems, like capturing events and metrics multiple times for each instance, or having multiple background threads for event serialization and transfer to the APM Server.
 
 ::::{tip}
-Take a look at the initialization section of the [Public Agent API](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html) for more information on how agent initialization works.
+Take a look at the initialization section of the [Public Agent API](apm-agent-dotnet://reference/public-api.md) for more information on how agent initialization works.
 ::::
 
 
@@ -211,17 +246,17 @@ The agent is only supported on IIS7 and higher where the `Integrated Pipeline Mo
 
 ## Startup hooks failure [startup-hook-failure]
 
-If the [startup hook](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup-dotnet-net-core.html#zero-code-change-setup) integration throws an exception, additional detail can be obtained through [enabling the global log collection](#collect-logs-globally).
+If the [startup hook](apm-agent-dotnet://reference/setup-dotnet-net-core.md#zero-code-change-setup) integration throws an exception, additional detail can be obtained through [enabling the global log collection](#collect-logs-globally).
 
 
 ## The agent causes too much overhead [agent-overhead]
 
-A good place to start is [All options summary](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-all-options-summary.html). There are multiple settings with the `Performance` keyword which can help you tweak the agent for your needs.
+A good place to start is [All options summary](apm-agent-dotnet://reference/config-all-options-summary.md). There are multiple settings with the `Performance` keyword which can help you tweak the agent for your needs.
 
 The most expensive operation in the agent is typically stack trace capturing. The agent, by default, only captures stack traces for spans with a duration of 5ms or more, and with a limit of 50 stack frames. If this is too much in your environment, consider disabling stack trace capturing either partially or entirely:
 
-* To disable stack trace capturing for spans, but continue to capture stack traces for errors, set the [`SpanStackTraceMinDuration` (performance)](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-stacktrace.html#config-span-stack-trace-min-duration) to `-1` and leave the [`StackTraceLimit` (performance)](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-stacktrace.html#config-stack-trace-limit) on its default.
-* To disable stack trace capturing entirely –which in most applications reduces the agent overhead dramatically– set [`StackTraceLimit` (performance)](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-stacktrace.html#config-stack-trace-limit) to `0`.
+* To disable stack trace capturing for spans, but continue to capture stack traces for errors, set the [`SpanStackTraceMinDuration` (performance)](apm-agent-dotnet://reference/config-stacktrace.md#config-span-stack-trace-min-duration) to `-1` and leave the [`StackTraceLimit` (performance)](apm-agent-dotnet://reference/config-stacktrace.md#config-stack-trace-limit) on its default.
+* To disable stack trace capturing entirely –which in most applications reduces the agent overhead dramatically– set [`StackTraceLimit` (performance)](apm-agent-dotnet://reference/config-stacktrace.md#config-stack-trace-limit) to `0`.
 
 
 ## The ElasticApmModule does not load or capture transactions and there are no agent logs generated on IISExpress [iisexpress-classic-pipeline]
@@ -230,13 +265,13 @@ When debugging applications using Visual Studio and IISExpress, the same require
 
 For example:
 
-:::{image} /images/apm-agent-dotnet-classic-pipeline.png
+:::{image} /troubleshoot/images/apm-agent-dotnet-classic-pipeline.png
 :alt: Classic Managed Pipeline Mode in Properties
 :::
 
 Should be changed to:
 
-:::{image} /images/apm-agent-dotnet-integrated-pipeline.png
+:::{image} /troubleshoot/images/apm-agent-dotnet-integrated-pipeline.png
 :alt: Integrated Managed Pipeline Mode in Properties
 :::
 

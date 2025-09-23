@@ -1,19 +1,26 @@
 ---
-navigation_title: "{{es}} Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-metrics.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
+products:
+  - id: kibana
 ---
 
 
 
-# Elasticsearch Metrics [elasticsearch-metrics]
+# {{es}} metrics [elasticsearch-metrics]
 
 
 You can drill down into the status of your {{es}} cluster in {{kib}} by clicking the [Overview](#cluster-overview-page), [Nodes](#nodes-page), [Indices](#indices-overview-page) and [Logs](#logs-monitor-page) links on the **Stack Monitoring** page.
 
-:::{image} ../../../images/kibana-monitoring-elasticsearch.png
+:::{image} /deploy-manage/images/kibana-monitoring-elasticsearch.png
 :alt: Monitoring clusters
-:class: screenshot
+:screenshot:
 :::
 
 For more information, refer to [Monitor a cluster](../../monitor.md).
@@ -24,15 +31,15 @@ For more information, refer to [Monitor a cluster](../../monitor.md).
 To view the key metrics that indicate the overall health of an {{es}} cluster, click **Overview** in the {{es}} section. Anything that needs your attention is highlighted in yellow or red.
 
 ::::{tip}
-Conditions that require your attention are listed at the top of the Clusters page. You can also set up watches to alert you when the status of your cluster changes. To learn how, see [Watching the status of an {{es}} cluster](../../../explore-analyze/alerts/watcher/watch-cluster-status.md).
+Conditions that require your attention are listed at the top of the Clusters page. You can also set up watches to alert you when the status of your cluster changes. To learn how, see [Watching the status of an {{es}} cluster](../../../explore-analyze/alerts-cases/watcher/watch-cluster-status.md).
 ::::
 
 
 The panel at the top shows the current cluster statistics, the charts show the search and indexing performance over time, and the table at the bottom shows information about any shards that are being recovered. If you use {{filebeat}} to collect log data from this cluster, you can also see its recent logs.
 
-:::{image} ../../../images/kibana-monitoring-overview.png
-:alt: Elasticsearch Cluster Overview
-:class: screenshot
+:::{image} /deploy-manage/images/kibana-monitoring-overview.png
+:alt: {{es}} Cluster Overview
+:screenshot:
 :::
 
 ::::{tip}
@@ -100,9 +107,9 @@ To view {{ccr}} metrics, click **CCR**. For each follower index on the cluster, 
 
 * **Error**: Any exceptions returned for the most recent document in the selected time period.
 
-If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html) documentation.
+If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats) documentation.
 
-If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html).
+If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats).
 
 Learn more about [{{ccr-cap}}](../../tools/cross-cluster-replication.md).
 
@@ -114,5 +121,5 @@ If you use {{filebeat}} to collect log data from your cluster, you can see its r
 If you click **Logs**, you can see the most recent logs for the cluster.
 
 ::::{tip}
-By default, up to 10 log entries are shown. You can show up to 50 log entries by changing the [`monitoring.ui.elasticsearch.logFetchCount` setting](https://www.elastic.co/guide/en/kibana/current/monitoring-settings-kb.html#monitoring-ui-settings). If you changed the default name of filebeat indices, you also need to update `monitoring.ui.logs.index` accordingly.
+By default, up to 10 log entries are shown. You can show up to 50 log entries by changing the [`monitoring.ui.elasticsearch.logFetchCount` setting](kibana://reference/configuration-reference/monitoring-settings.md#monitoring-ui-settings). If you changed the default name of filebeat indices, you also need to update `monitoring.ui.logs.index` accordingly.
 ::::

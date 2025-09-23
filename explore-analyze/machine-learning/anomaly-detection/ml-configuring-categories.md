@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-categories.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Detecting anomalous categories of data [ml-configuring-categories]
 
-Categorization is a {{ml}} process that tokenizes a text field, clusters similar data together, and classifies it into categories. It works best on machine-written messages and application output that typically consist of repeated elements. [Categorization jobs](ml-anomaly-detection-job-types.md#categorization-jobs) enable you to find anomalous behavior in your categorized data. Categorization is not natural language processing (NLP). When you create a categorization {{anomaly-job}}, the {{ml}} model learns what volume and pattern is normal for each category over time. You can then detect anomalies and surface rare events or unusual types of messages by using [count](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html) or [rare](https://www.elastic.co/guide/en/machine-learning/current/ml-rare-functions.html) functions. Categorization works well on finite set of possible messages, for example:
+Categorization is a {{ml}} process that tokenizes a text field, clusters similar data together, and classifies it into categories. It works best on machine-written messages and application output that typically consist of repeated elements. [Categorization jobs](ml-anomaly-detection-job-types.md#categorization-jobs) enable you to find anomalous behavior in your categorized data. Categorization is not natural language processing (NLP). When you create a categorization {{anomaly-job}}, the {{ml}} model learns what volume and pattern is normal for each category over time. You can then detect anomalies and surface rare events or unusual types of messages by using [count](/reference/data-analysis/machine-learning/ml-count-functions.md) or [rare](/reference/data-analysis/machine-learning/ml-rare-functions.md) functions. Categorization works well on finite set of possible messages, for example:
 
 ```js
 {"@timestamp":1549596476000,
@@ -13,23 +18,21 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 "type":"logs"}
 ```
 
-
 ## Recommendations [categ-recommendations]
 
 * Categorization is tuned to work best on data like log messages by taking token order into account, including stop words, and not considering synonyms in its analysis. Use machine-written messages for categorization analysis.
 * Complete sentences in human communication or literary text (for example email, wiki pages, prose, or other human-generated content) can be extremely diverse in structure. Since categorization is tuned for machine data, it gives poor results for human-generated data. It would create so many categories that they couldn’t be handled effectively. Avoid using human-generated data for categorization analysis.
 
-
 ## Creating categorization jobs [creating-categorization-jobs]
 
-1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
-2. Click **Create job**, select the data view you want to analyze.
+1. To create an {{anomaly-job}}, navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). 
+2. Click **Create anomaly detection job**, select the data view you want to analyze.
 3. Select the **Categorization** wizard from the list.
 4. Choose a categorization detector - it’s the `count` function in this example - and the field you want to categorize - the `message` field in this example.
 
-    :::{image} ../../../images/machine-learning-categorization-wizard.png
+    :::{image} /explore-analyze/images/machine-learning-categorization-wizard.png
     :alt: Creating a categorization job in Kibana
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Next**.
@@ -40,6 +43,7 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 This example job generates categories from the contents of the `message` field and uses the `count` function to determine when certain categories are occurring at anomalous rates.
 
 ::::{dropdown} API example
+
 ```console
 PUT _ml/anomaly_detectors/it_ops_app_logs
 {
@@ -61,38 +65,32 @@ PUT _ml/anomaly_detectors/it_ops_app_logs
 1. This field is used to derive categories.
 2. The categories are used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`. If you do not specify this keyword in one of those properties, the API request fails.
 
-
 ::::
-
-
 
 ### Viewing the job results [categorization-job-results]
 
 Use the **Anomaly Explorer** in {{kib}} to view the analysis results:
 
-:::{image} ../../../images/machine-learning-ml-category-anomalies.png
+:::{image} /explore-analyze/images/machine-learning-ml-category-anomalies.png
 :alt: Categorization results in the Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 For this type of job, the results contain extra information for each anomaly: the name of the category (for example, `mlcategory 2`) and examples of the messages in that category. You can use these details to investigate occurrences of unusually high message counts.
 
-
 ### Advanced configuration options [advanced-categorization-options]
 
-If you use the advanced {{anomaly-job}} wizard in {{kib}} or the [create {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html), there are additional configuration options. For example, the optional `categorization_examples_limit` property specifies the maximum number of examples that are stored in memory and in the results data store for each category. The default value is `4`. Note that this setting does not affect the categorization; it just affects the list of visible examples. If you increase this value, more examples are available, but you must have more storage available. If you set this value to `0`, no examples are stored.
+If you use the advanced {{anomaly-job}} wizard in {{kib}} or the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job), there are additional configuration options. For example, the optional `categorization_examples_limit` property specifies the maximum number of examples that are stored in memory and in the results data store for each category. The default value is `4`. Note that this setting does not affect the categorization; it just affects the list of visible examples. If you increase this value, more examples are available, but you must have more storage available. If you set this value to `0`, no examples are stored.
 
 Another advanced option is the `categorization_filters` property, which can contain an array of regular expressions. If a categorization field value matches the regular expression, the portion of the field that is matched is not taken into consideration when defining categories. The categorization filters are applied in the order they are listed in the job configuration, which enables you to disregard multiple sections of the categorization field value. In this example, you might create a filter like `[ "\\[statement:.*\\]"]` to remove the SQL statement from the categorization algorithm.
 
-
 ## Per-partition categorization [ml-per-partition-categorization]
 
-If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-event.html) as the `partition_field_name` and categorize the messages for each type of log separately.
+If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](ecs://reference/ecs-event.md) as the `partition_field_name` and categorize the messages for each type of log separately.
 
 If your job has multiple detectors, every detector that uses the `mlcategory` keyword must also define a `partition_field_name`. You must use the same `partition_field_name` value in all of these detectors. Otherwise, when you create or update a job and enable per-partition categorization, it fails.
 
 When per-partition categorization is enabled, you can also take advantage of a `stop_on_warn` configuration option. If the categorization status for a partition changes to `warn`, it doesn’t categorize well and can cause unnecessary resource usage. When you set `stop_on_warn` to `true`, the job stops analyzing these problematic partitions. You can thus avoid an ongoing performance cost for partitions that are unsuitable for categorization.
-
 
 ## Customizing the categorization analyzer [ml-configuring-analyzer]
 
@@ -100,12 +98,12 @@ Categorization uses English dictionary words to identify log message categories.
 
 If you use the categorization wizard in {{kib}}, you can see which categorization analyzer it uses and highlighted examples of the tokens that it identifies. You can also change the tokenization rules by customizing the way the categorization field values are interpreted:
 
-:::{image} ../../../images/machine-learning-ml-category-analyzer.png
+:::{image} /explore-analyze/images/machine-learning-ml-category-analyzer.png
 :alt: Editing the categorization analyzer in Kibana
-:class: screenshot
+:screenshot:
 :::
 
-The categorization analyzer can refer to a built-in {{es}} analyzer or a combination of zero or more character filters, a tokenizer, and zero or more token filters. In this example, adding a [`pattern_replace` character filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-replace-charfilter.html) achieves the same behavior as the `categorization_filters` job configuration option described earlier. For more details about these properties, refer to the [`categorization_analyzer` API object](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html#ml-put-job-request-body).
+The categorization analyzer can refer to a built-in {{es}} analyzer or a combination of zero or more character filters, a tokenizer, and zero or more token filters. In this example, adding a [`pattern_replace` character filter](elasticsearch://reference/text-analysis/analysis-pattern-replace-charfilter.md) achieves the same behavior as the `categorization_filters` job configuration option described earlier. For more details about these properties, refer to the [`categorization_analyzer` API object](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job#ml-put-job-request-body).
 
 If you use the default categorization analyzer in {{kib}} or omit the `categorization_analyzer` property from the API, the following default values are used:
 
@@ -141,7 +139,7 @@ POST _ml/anomaly_detectors/_validate
 
 If you specify any part of the `categorization_analyzer`, however, any omitted sub-properties are *not* set to default values.
 
-The `ml_standard` tokenizer and the day and month stopword filter are almost equivalent to the following analyzer, which is defined using only built-in {{es}} [tokenizers](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html) and [token filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html):
+The `ml_standard` tokenizer and the day and month stopword filter are almost equivalent to the following analyzer, which is defined using only built-in {{es}} [tokenizers](elasticsearch://reference/text-analysis/tokenizer-reference.md) and [token filters](elasticsearch://reference/text-analysis/token-filter-reference.md):
 
 ```console
 PUT _ml/anomaly_detectors/it_ops_new_logs
@@ -195,7 +193,6 @@ PUT _ml/anomaly_detectors/it_ops_new_logs
 4. By default, categorization ignores tokens that are hexadecimal numbers.
 5. Underscores, hyphens, and dots are removed from the beginning of tokens.
 6. Underscores, hyphens, and dots are also removed from the end of tokens.
-
 
 The key difference between the default `categorization_analyzer` and this example analyzer is that using the `ml_standard` tokenizer is several times faster. The `ml_standard` tokenizer also tries to preserve URLs, Windows paths and email addresses as single tokens. Another difference in behavior is that the custom analyzer does not include accented letters in tokens whereas the `ml_standard` tokenizer does. This could be fixed by using more complex regular expressions.
 

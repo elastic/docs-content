@@ -1,23 +1,35 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-change-hardware-profile.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
-# Change hardware profiles [ec-change-hardware-profile]
+# Manage hardware profiles [ec-change-hardware-profile]
 
-Deployment [hardware profiles](ec-configure-deployment-settings.md#ec-hardware-profiles) deploy the Elastic Stack on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
+## Hardware profile [ec-hardware-profile]
 
-Elastic Cloud regularly introduces new hardware profiles to provide:
+Deployment hardware profiles deploy the {{stack}} on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
 
-* More optimal hardware for applications in the Elastic Stack.
+{{ecloud}} regularly introduces new hardware profiles to provide:
+
+* More optimal hardware for applications in the {{stack}}.
 * Cost efficiencies when new hardware from Cloud providers becomes available.
 
 ::::{tip}
-The Elastic Cloud console indicates when a new version of a hardware profile is available in the overview page for your deployment, under the Hardware profile section.
+The {{ecloud}} console indicates when a new version of a hardware profile is available in the overview page for your deployment, under the Hardware profile section.
 ::::
 
 
-## Change the hardware profile using the Elastic Cloud console [ec_change_the_hardware_profile_using_the_elastic_cloud_console]
+## Change the hardware profile using the {{ecloud}} console [ec_change_the_hardware_profile_using_the_elastic_cloud_console]
+
+::::{note}
+Deployments using {{stack}} versions prior to 7.10 do not support changing the hardware profile through the {{ecloud}} console or API. To change the hardware profile, first upgrade to version 7.10 or later.
+::::
+
 
 ### Upgrade to the newest version of your current hardware profile [ec_upgrade_to_the_newest_version_of_your_current_hardware_profile]
 
@@ -25,19 +37,20 @@ Note that if there’s no indication that a newer version is available, that mea
 
 1. On the deployment overview page, next to your current hardware profile where there is indication of a newer available version, select **Edit**.
 
-    :::{image} ../../../images/cloud-ec-new-hardware-profile-version.png
+    :::{image} /deploy-manage/images/cloud-ec-new-hardware-profile-version.png
     :alt: Badge indicating new hardware profile version
+    :width: 50%
     :::
 
 2. Preview the changes for the new hardware profile version.
 
-    :::{image} ../../../images/cloud-ec-preview-hardware-profile.png
+    :::{image} /deploy-manage/images/cloud-ec-preview-hardware-profile.png
     :alt: Notification showing that a new profile version is there
     :::
 
     The configuration screen summarizes hardware changes for each component of your deployment.
 
-    :::{image} ../../../images/cloud-ec-preview-profile-changes.png
+    :::{image} /deploy-manage/images/cloud-ec-preview-profile-changes.png
     :alt: Preview of the changes between the 2 versions of the hardware profile
     :::
 
@@ -51,7 +64,7 @@ When the current hardware profile of your deployment isn’t the most optimal on
 1. On the deployment overview page, next to your current hardware profile, select **Edit**.
 2. Select the hardware profile you wish to change to. The configuration screen summarizes hardware changes for each component of your deployment.
 
-    :::{image} ../../../images/cloud-ec-preview-different-profile-changes.png
+    :::{image} /deploy-manage/images/cloud-ec-preview-different-profile-changes.png
     :alt: Preview of the changes between the 2 hardware profiles
     :::
 
@@ -66,9 +79,14 @@ If your deployment is configured for high availability, the hardware profile cha
 
 ## Change the hardware profile using the API [ec_change_the_hardware_profile_using_the_api]
 
+::::{note}
+Deployments using {{stack}} versions prior to 7.10 do not support changing the hardware profile through the {{ecloud}} console or API. To change the hardware profile, first upgrade to version 7.10 or later.
+::::
+
+
 Prerequisites:
 
-* A valid Elastic Cloud [API key](../../api-keys/elastic-cloud-api-keys.md) (`$EC_API_KEY`)
+* A valid {{ecloud}} [API key](../../api-keys/elastic-cloud-api-keys.md) (`$EC_API_KEY`)
 * The deployment ID of the deployment you wish to modify (`{{deployment_id}}`)
 
 Replace those values with your actual API key and deployment ID in the following instructions.
@@ -115,7 +133,7 @@ Replace those values with your actual API key and deployment ID in the following
                     "region":"gcp-us-central1",
         ```
 
-3. Check the [hardware profiles available](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) for the region that your deployment is in and find the template ID of the deployment hardware profile you’d like to use.
+3. Check the [hardware profiles available](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) for the region that your deployment is in and find the template ID of the deployment hardware profile you’d like to use.
 
     ::::{tip}
     If you wish to update your hardware profile to the latest version available for that same profile, locate the template ID corresponding to the `deployment_template` you retrieved at step 2, but without the version information. For example, if your deployment’s current hardware profile is `gcp-cpu-optimized-v5`, use `gcp-cpu-optimized` as a template ID to update your deployment.
@@ -143,7 +161,7 @@ Replace those values with your actual API key and deployment ID in the following
 
 ### Storage optimized [ec-profiles-storage]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. Use this profile if you are new to Elasticsearch or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+Your {{es}} data nodes are optimized for high I/O throughput. Use this profile if you are new to {{es}} or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -152,7 +170,7 @@ Good for most ingestion use cases with 7-10 days of data available for fast acce
 
 ### Storage optimized (dense) [ec-profiles-storage-dense]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+Your {{es}} data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -161,7 +179,7 @@ Ideal for ingestion use cases with more than 10 days of data available for fast 
 
 ### CPU optimized [ec-profiles-compute-optimized]
 
-This profile runs CPU-intensive workloads faster. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile runs CPU-intensive workloads faster. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -170,16 +188,23 @@ Consider this configuration for ingestion use cases with 1-4 days of data availa
 
 ### CPU optimized (ARM) [ec-profiles-compute-optimized-arm]
 
-This profile is similar to CPU optimized profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile is similar to CPU optimized profile but powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
 Consider this configuration for ingestion use cases with 1-4 days of data available for fast access and for search use cases with indexing and querying workloads. Provides the most CPU resources per unit of RAM.
 
+### Vector search optimized [ec-profiles-vector-search]
 
-### Vector search optimized (ARM) [ec-profiles-vector-search]
+This profile is suited for Vector search, Generative AI and Semantic search optimized workloads. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
-This profile is suited for Vector search, Generative AI and Semantic search optimized workloads. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+**Ideal use case**
+
+Optimized for applications that leverage Vector Search and/or Generative AI. Also the optimal choice for utilizing ELSER for semantic search applications. Broadly suitable for all semantic search, text embedding, image search, and other Vector Search use cases.
+
+### Vector search optimized (ARM) [ec-profiles-vector-search-arm]
+
+This profile is suited for Vector search, Generative AI and Semantic search optimized workloads powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -188,7 +213,7 @@ Optimized for applications that leverage Vector Search and/or Generative AI. Als
 
 ### General purpose [ec-profiles-general-purpose]
 
-This profile runs CPU-intensive workloads faster . You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile runs CPU-intensive workloads faster . You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -197,7 +222,7 @@ Suitable for ingestion use cases with 5-7 days of data available for fast access
 
 ### General purpose (ARM) [ec-profiles-general-purpose-arm]
 
-This profile is similar to the General purpose profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile is similar to General purpose profile but powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 

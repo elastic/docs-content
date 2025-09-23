@@ -1,16 +1,19 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/lspq.html
+products:
+  - id: elastic-agent
+  - id: logstash
 ---
 
 # Elastic Agent to Logstash to Elasticsearch: Logstash Persistent Queue (PQ) for buffering [lspq]
 
-:::{image} ../../../images/ingest-ea-lspq-es.png
+:::{image} /manage-data/images/ingest-ea-lspq-es.png
 :alt: Image showing {{agent}} collecting data
 :::
 
 Ingest model
-:   {{agent}} to {{ls}} persistent queue to {es}
+:   {{agent}} to {{ls}} persistent queue to {{es}}
 
 Use when
 :   Your data flow may encounter network issues, bursts of events, and/or downstream unavailability and you need the ability to buffer the data before ingestion.
@@ -20,19 +23,19 @@ Use when
 
 Info on configuring {{agent}}:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-output-configuration.html)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 For info on {{ls}} plugins:
 
-* [{{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
-* [{{es}} output plugin](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html)
+* [{{agent}} input](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
-For info on using {{ls}} for buffering and data resiliency, check out this section in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
+For info on using {{ls}} for buffering and data resiliency, check out this section in the [Logstash Reference](logstash://reference/index.md):
 
-* [{{ls}} Persistent Queues (PQ)](https://www.elastic.co/guide/en/logstash/current/persistent-queues.html)
+* [{{ls}} Persistent Queues (PQ)](logstash://reference/persistent-queues.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-podman.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Migrate ECE to Podman hosts [ece-migrate-to-podman]
@@ -18,31 +23,20 @@ Using Docker or Podman as container runtime is a configuration local to the host
 ::::
 
 
-:::{image} ../../../images/cloud-enterprise-podman-migration-overview-1.png
+:::{image} /deploy-manage/images/cloud-enterprise-podman-migration-overview-1.png
 :alt: Migration Overview
 :::
 
 ::::{note}
-When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* Steps that run commands starting with `sudo` can be run as any sudoers user. Otherwise, the corresponding user is mentioned as part of the step description.
+* Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
 ::::
-
-
-::::{note}
-Steps that run commands starting with `sudo` can be run as any sudoers user.
-::::
-
-
-::::{note}
-Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
-::::
-
-
-Otherwise, when the file content changes, the corresponding user is mentioned as part of the step description.
 
 1. Make sure you are running a healthy x-node ECE environment ready to be upgraded. All nodes use the Docker container runtime.
 2. Upgrade to ECE 3.3.0+ following the [Upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) guideline. Skip this step if your existing ECE installation already runs ECE >= 3.3.0.
 3. Follow your internal guidelines to add an additional vanilla RHEL (Note that the version must be >= 8.5, but <9), or Rocky Linux 8 or 9 VM to your environment.
-4. Verify that required traffic from the host added in step 3 is allowed to the primary ECE VM(s). Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp.html) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
+4. Verify that required traffic from the host added in step 3 is allowed to the primary ECE VM(s). Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
 
     **Example** For AWS, allowing traffic between hosts is implemented using security groups.
 
@@ -50,13 +44,13 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
     **Example 1** You want to migrate the Docker host `192.168.44.74` with the role `Allocator` to a podman host. Copy the role `allocator`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-1.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-1.png
     :alt: Migrate Allocator
     :::
 
     **Example 2** You want to migrate the Docker host `192.168.44.10` with the roles `Allocator`, `Controller`, `Director`, and `Proxy` to a podman host. Copy the roles `allocator`, `coordinator`, `director`, `proxy`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-2.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-2.png
     :alt: Migrate Allocator
     :::
 
@@ -109,19 +103,55 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         SELINUX=enforcing
         ```
 
-4. Install podman:
+4. Install Podman:
 
-    * For RHEL 8 and Rocky Linux, install version `4.*`.
+    * For Podman 4
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+        * Install the latest available version `4.*` using dnf.
 
-    * For RHEL 9, install the latest available version `4.*` using dnf.
+            ```sh
+            sudo dnf install podman-4.* podman-remote-4.*
+            ```
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `4.*` while still allowing minor and patch updates.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-4.*'
+            sudo dnf versionlock add --raw 'podman-remote-4.*'
+
+            ## Verify that podman-4.* and podman-remote-4.* appear in the output
+            sudo dnf versionlock list
+            ```
+
+    * For Podman 5
+
+        * Install the latest available version of Podman `5.2.2` using dnf.
+
+            :::{note}
+            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later build of `5.2.2`, such as `5.2.2-16` or newer. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
+            :::
+
+            ```sh
+            sudo dnf install podman-5.2.2 podman-remote-5.2.2
+            ```
+
+        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2`.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-5.2.2'
+            sudo dnf versionlock add --raw 'podman-remote-5.2.2'
+
+            ## Verify that podman-5.2.2 and podman-remote-5.2.2 appear in the output
+            sudo dnf versionlock list
+            ```
 
 5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
 
@@ -138,13 +168,13 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Please note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
     ```text
     [engine]
-    env = ["HTTP_PROXY=http://{proxy-ip}:{proxy-port}", "HTTPS_PROXY=http://{proxy-ip}:{proxy-port}"]
+    env = ["HTTP_PROXY=http://<PROXY_IP>:<PROXY_PORT>", "HTTPS_PROXY=http://<PROXY_IP>:<PROXY_PORT>"]
     ```
 
 7. Reload systemd configuration
@@ -267,7 +297,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
     ```
 
-21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ::::{note}
     Replace `/dev/nvme1n1` in the following example with the corresponding device on your host, and add this example configuration as a single line to `/etc/fstab`.
@@ -303,7 +333,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
     sudo install -o elastic -g elastic -d -m 700 /mnt/data/docker
     ```
 
-25. If you want to use FirewallD, please ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
+25. If you want to use FirewallD, ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
 
     ```sh
     sudo systemctl disable firewalld
@@ -322,7 +352,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
+    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early
     vm.swappiness=1
@@ -385,7 +415,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
     1. Use the ECE installer script together with the `--podman` flag to add the additional host as a podman-based host.
 
-        Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](install-ece-onprem.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+        Refer to the official [Install {{ece}} on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
         [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
@@ -423,19 +453,19 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
         The following screenshot shows the state where the correct roles have been applied. Both hosts in ece-zone-1 have the same color.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-correct-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-correct-role-1.png
         :alt: Correct role
         :::
 
         The following screenshot shows the state where incorrect roles have been applied. The hosts in ece-zone-1 do not have the same coloring.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-wrong-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-wrong-role-1.png
         :alt: Wrong role
         :::
 
     3. Put the docker-based allocator you want to replace with a podman allocator in maintenance mode by following the [Enable Maintenance Mode](../../maintenance/ece/enable-maintenance-mode.md) documentation.
 
-        As an alternative, use the [Start maintenance mode](https://www.elastic.co/guide/en/cloud-enterprise/current/start-allocator-maintenance-mode.html) API.
+        As an alternative, use the [Start maintenance mode](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-start-allocator-maintenance-mode) API.
 
     4. Move all instances from the Docker allocator to the podman allocator by following the [Move Nodes From Allocators](../../maintenance/ece/move-nodes-instances-from-allocators.md) documentation.
 
@@ -449,16 +479,16 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         ::::
 
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-move-instances-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-move-instances-1.png
         :alt: Move instances
         :::
 
-        As an alternative, use the [*Move clusters*](https://www.elastic.co/guide/en/cloud-enterprise/current/move-clusters.html) API.
+        As an alternative, use the [*Move clusters*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-move-clusters) API.
 
         To identifying the correct target allocator, the following APIs might be helpful:
 
-        * [*Get allocators*](https://www.elastic.co/guide/en/cloud-enterprise/current/get-allocators.html)
-        * [*Get allocator metadata*](https://www.elastic.co/guide/en/cloud-enterprise/current/get-allocator-metadata.html)
+        * [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)
+        * [*Get allocator metadata*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocator-metadata)
 
             ```json
             {
@@ -483,11 +513,15 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
             }
             ```
 
-            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*](https://www.elastic.co/guide/en/cloud-enterprise/current/get-allocators.html)  API should contain the tag.
+            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)  API should contain the tag.
 
 
             This information allows you to determine what allocators are running on top of podman (automated way)
 
     5. Remove the Docker allocator by following the [Delete Hosts](../../maintenance/ece/delete-ece-hosts.md) guidelines.
 
-    As an alternative, use the [Delete Runner](https://www.elastic.co/guide/en/cloud-enterprise/current/delete-runner.html) API.
+    As an alternative, use the [Delete Runner](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-delete-runner) API.
+
+::::{note}
+When using Podman, removing an image with the `--force` (`-f`) option not only deletes the image reference but also removes any containers that depend on that image. This behavior differs from Docker, where forced image removal does not automatically remove running or stopped containers. Therefore, avoid using the `--force` (`-f`) option with the `docker rmi` command.
+::::

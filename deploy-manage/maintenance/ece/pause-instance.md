@@ -1,13 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-maintenance-mode-pausing.html
+applies_to:
+  deployment:
+    ece:
+products:
+  - id: cloud-enterprise
 ---
 
 # Pause instance [ece-maintenance-mode-pausing]
 
 If an individual instance is experiencing issues, then you can stop it by selecting **Pause instance** from its menu.
 
-Pausing an instance immediately suspends the container without completing existing requests by running either [Docker `stop`](https://docs.docker.com/reference/cli/docker/container/stop/) or [Podman `stop`](https://docs.podman.io/en/stable/markdown/podman-stop.1.md), as applicable. The instance will then be marked as **Paused**.
+Pausing an instance immediately suspends the container without completing existing requests by running either [Docker `stop`](https://docs.docker.com/reference/cli/docker/container/stop/) or [Podman `stop`](https://docs.podman.io/en/stable/markdown/podman-stop.1.html), as applicable. The instance will then be marked as **Paused**.
 
 You can start an instance by selecting **Resume instance** from the menu.
 

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrieval_augmented_generation.html
+applies_to:
+  stack:
+  serverless:
+products:
+  - id: elasticsearch
 ---
 
 # RAG [_retrieval_augmented_generation]
@@ -15,8 +20,9 @@ Retrieval Augmented Generation (RAG) is a technique for improving language model
 
 RAG is a form of [in-context learning](https://arxiv.org/abs/2301.00234), where the model learns from information provided at inference time. Compared to fine-tuning or continuous pre-training, RAG can be implemented more quickly and cheaply, and offers several advantages.
 
-:::{image} ../../images/elasticsearch-reference-rag-venn-diagram.svg
+:::{image} /solutions/images/elasticsearch-reference-rag-venn-diagram.svg
 :alt: RAG sits at the intersection of information retrieval and generative AI
+:width: 600px
 :::
 
 RAG sits at the intersection of [information retrieval](https://www.elastic.co/what-is/information-retrieval) and generative AI. {{es}} is an excellent tool for implementing RAG, because it offers various retrieval capabilities, such as full-text search, vector search, and hybrid search, as well as other tools like filtering, aggregations, and security features.
@@ -38,9 +44,8 @@ Implementing RAG with {{es}} has several advantages:
 
 The following diagram illustrates a simple RAG system using {{es}}.
 
-:::{image} ../../images/elasticsearch-reference-rag-schema.svg
+:::{image} /solutions/images/elasticsearch-reference-rag-schema.svg
 :alt: Components of a simple RAG system using Elasticsearch
-:class: stretch
 :::
 
 The workflow is as follows:
@@ -70,7 +75,7 @@ Learn more in the [Playground documentation](rag/playground.md) and try the [int
 
 Learn more about building RAG systems using {{es}} in these blog posts:
 
-* [Beyond RAG Basics: Advanced strategies for AI applications](https://www.elastic.co/blog/beyond-rag-basics-semantic-search-with-elasticsearch)
+* [Beyond RAG Basics: Advanced strategies for AI applications](https://www.elastic.co/blog/beyond-rag-basics)
 * [Building a RAG system with Gemma, Hugging Face, and Elasticsearch](https://www.elastic.co/search-labs/blog/building-a-rag-system-with-gemma-hugging-face-elasticsearch)
 * [Building an agentic RAG tool with Elasticsearch and Langchain](https://www.elastic.co/search-labs/blog/rag-agent-tool-elasticsearch-langchain)
 

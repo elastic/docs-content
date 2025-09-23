@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
-# Kibana configuration [k8s-kibana]
+# {{kib}} configuration [k8s-kibana]
 
-The [quickstart](kibana-instance-quickstart.md) is a good starting point to quickly setup a {{kib}} instance with ECK. The following sections describe how to customize a {{kib}} deployment to suit your requirements.
+The following sections describe how to customize a {{kib}} deployment to suit your requirements.
 
 * [Connect to an {{es}} cluster](k8s-kibana-es.md)
 
@@ -18,17 +23,14 @@ The [quickstart](kibana-instance-quickstart.md) is a good starting point to quic
     * [{{kib}} Configuration](k8s-kibana-advanced-configuration.md#k8s-kibana-configuration)
     * [Scaling out a {{kib}} deployment](k8s-kibana-advanced-configuration.md#k8s-kibana-scaling)
 
-* [Secure settings](k8s-kibana-secure-settings.md)
-* [HTTP Configuration](k8s-kibana-http-configuration.md)
+* [Secure settings](../../security/k8s-secure-settings.md#k8s-kibana-secure-settings)
+* [HTTP Configuration](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-configuration)
 
-    * [Load balancer settings and TLS SANs](k8s-kibana-http-configuration.md#k8s-kibana-http-publish)
-    * [Provide your own certificate](k8s-kibana-http-configuration.md#k8s-kibana-http-custom-tls)
-    * [Disable TLS](k8s-kibana-http-configuration.md#k8s-kibana-http-disable-tls)
+    * [Load balancer settings and TLS SANs](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-publish)
+    * [Provide your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-custom-tls)
+    * [Disable TLS](/deploy-manage/security/k8s-https-settings.md#k8s-disable-tls)
     * [Install {{kib}} plugins](k8s-kibana-plugins.md)
 
-
-
-
-
+* [Autoscaling stateless applications](../../autoscaling/autoscaling-in-eck.md#k8s-stateless-autoscaling): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.
 
 

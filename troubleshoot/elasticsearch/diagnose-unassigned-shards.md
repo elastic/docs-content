@@ -1,7 +1,19 @@
 ---
+navigation_title: Unassigned shards
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnose-unassigned-shards.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
+
+% marciw move to a new Unassigned shards subsection
 
 # Diagnose unassigned shards [diagnose-unassigned-shards]
 
@@ -11,29 +23,29 @@ In order to diagnose the unassigned shards in your deployment use the following 
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 In order to diagnose the unassigned shards, follow the next steps:
 
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the name of your deployment.
+2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
-4. View the unassigned shards using the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html).
+4. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
     ```console
-    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
+    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state&format=json
     ```
 
     The response will look like this:
@@ -55,7 +67,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 
     The index in the example has a primary shard unassigned.
 
-5. To understand why an unassigned shard is not being assigned and what action you must take to allow {{es}} to assign it, use the [cluster allocation explanation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html).
+5. To understand why an unassigned shard is not being assigned and what action you must take to allow {{es}} to assign it, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain).
 
     ```console
     GET _cluster/allocation/explain
@@ -114,7 +126,7 @@ In order to diagnose the unassigned shards, follow the next steps:
     5. The decider which led to the `no` decision for the node.
     6. An explanation as to why the decider returned a `no` decision, with a helpful hint pointing to the setting that led to the decision.
 
-6. The explanation in our case indicates the index allocation configurations are not correct. To review your allocation settings, use the [get index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) and [cluster get settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html) APIs.
+6. The explanation in our case indicates the index allocation configurations are not correct. To review your allocation settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and [cluster get settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) APIs.
 
     ```console
     GET my-index-000001/_settings?flat_settings=true&include_defaults=true
@@ -122,15 +134,15 @@ In order to diagnose the unassigned shards, follow the next steps:
     GET _cluster/settings?flat_settings=true&include_defaults=true
     ```
 
-7. Change the settings using the [update index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) and [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) APIs to the correct values in order to allow the index to be allocated.
+7. Change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs to the correct values in order to allow the index to be allocated.
 
-For more guidance on fixing the most common causes for unassinged shards please follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status) or contact [Elastic Support](https://support.elastic.co).
+For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status), see [these examples](https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples), or contact [Elastic Support](https://support.elastic.co).
 ::::::
 
 ::::::{tab-item} Self-managed
 In order to diagnose the unassigned shards follow the next steps:
 
-1. View the unassigned shards using the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html).
+1. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
     ```console
     GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
@@ -155,7 +167,7 @@ In order to diagnose the unassigned shards follow the next steps:
 
     The index in the example has a primary shard unassigned.
 
-2. To understand why an unassigned shard is not being assigned and what action you must take to allow {{es}} to assign it, use the [cluster allocation explanation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html).
+2. To understand why an unassigned shard is not being assigned and what action you must take to allow {{es}} to assign it, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain).
 
     ```console
     GET _cluster/allocation/explain
@@ -214,7 +226,7 @@ In order to diagnose the unassigned shards follow the next steps:
     5. The decider which led to the `no` decision for the node.
     6. An explanation as to why the decider returned a `no` decision, with a helpful hint pointing to the setting that led to the decision.
 
-3. The explanation in our case indicates the index allocation configurations are not correct. To review your allocation settings, use the [get index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) and [cluster get settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html) APIs.
+3. The explanation in our case indicates the index allocation configurations are not correct. To review your allocation settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and [cluster get settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) APIs.
 
     ```console
     GET my-index-000001/_settings?flat_settings=true&include_defaults=true
@@ -222,15 +234,35 @@ In order to diagnose the unassigned shards follow the next steps:
     GET _cluster/settings?flat_settings=true&include_defaults=true
     ```
 
-4. Change the settings using the [update index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) and [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) APIs to the correct values in order to allow the index to be allocated.
+4. Change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs to the correct values in order to allow the index to be allocated.
 
-For more guidance on fixing the most common causes for unassinged shards please follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status).
+For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status), see [these examples](https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples), or contact [Elastic Support](https://support.elastic.co).
 ::::::
 
 :::::::
 See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
 
-::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
-
+::::{tip}
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
+
+## Common issues
+
+The following sections provide advice for resolving some of the common causes for unassigned shards.
+
+### Conflicting settings
+
+A primary shard might be unassigned due to conflicting settings.
+View [this video](https://www.youtube.com/watch?v=5z3n2VgusLE) for a walkthrough of troubleshooting a node and index setting mismatch.
+
+### Maximum number of retries exceeded [maximum-retries-exceeded]
+
+When Elasticsearch is unable to allocate a shard, it will attempt to retry allocation up to the maximum number of retries allowed.
+After this, Elasticsearch will stop attempting to allocate the shard in order to prevent infinite retries which may impact cluster performance.
+You can use an API to [reroute the cluster](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-cluster-reroute), which will allocate the shard if the issue preventing allocation has been resolved.
+
+### No valid shard copy [no-shard-copy]
+
+If a shard is unassigned with an allocation status of `no_valid_shard_copy`, you should make sure that all nodes are in the cluster. If all the nodes containing in-sync copies of a shard are lost, then you can recover the data for the shard.
+
+View [this video](https://www.youtube.com/watch?v=6OAg9IyXFO4) for a walkthrough of troubleshooting `no_valid_shard_copy`.

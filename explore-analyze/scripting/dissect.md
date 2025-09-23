@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Dissecting data [dissect]
@@ -16,7 +21,7 @@ Dissect patterns are comprised of *variables* and *separators*. Anything defined
 For example, let’s say you have log data with a `message` field that looks like this:
 
 ```js
-"message" : "247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/elasticsearch-reference-hm_nbg.jpg HTTP/1.0\" 304 0"
+"message" : "247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/hm_nbg.jpg HTTP/1.0\" 304 0"
 ```
 
 You assign variables to each part of the data to construct a successful dissect pattern. Remember, tell dissect *exactly* what you want you want to match on.
@@ -52,7 +57,7 @@ Now that you have a dissect pattern, how do you test and use it?
 
 ## Test dissect patterns with Painless [dissect-patterns-test]
 
-You can incorporate dissect patterns into Painless scripts to extract data. To test your script, use either the [field contexts](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
+You can incorporate dissect patterns into Painless scripts to extract data. To test your script, use either the [field contexts](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
 
 For example, test your dissect pattern with the Painless execute API by including your Painless script and a single document that matches your data. Start by indexing the `message` field as a `wildcard` data type:
 
@@ -152,12 +157,12 @@ PUT my-index/_mappings
 }
 ```
 
-After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index raw log data into `my-index`:
+After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index raw log data into `my-index`:
 
 ```console
 POST /my-index/_bulk?refresh=true
 {"index":{}}
-{"timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - - [30/Apr/2020:14:30:17 -0500] \"GET /images/elasticsearch-reference-hm_bg.jpg HTTP/1.0\" 200 24736"}
+{"timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - - [30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
 {"timestamp":"2020-04-30T14:30:53-05:00","message":"232.0.0.0 - - [30/Apr/2020:14:30:53 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}

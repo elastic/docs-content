@@ -1,16 +1,12 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/agentless-integrations.html
-  - https://www.elastic.co/guide/en/serverless/current/agentless-integration-troubleshooting.html
+navigation_title: Troubleshoot agentless integrations
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# Agentless integrations
+# Troubleshoot agentless integrations [agentless-integration-troubleshoot]
 
-% What needs to be done: Refine
-
-% Scope notes: Pull out the Agentless integrations FAQ section into its own troubleshooting topic, and leave the introductory section in its current place
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/security-docs/security/agentless-integrations.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/agentless-integration-troubleshooting.md
+:::{include} /solutions/security/get-started/_snippets/agentless-integrations-faq.md
+:::

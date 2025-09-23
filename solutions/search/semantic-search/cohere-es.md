@@ -1,7 +1,12 @@
 ---
-navigation_title: "Using Cohere with {{es}}"
+navigation_title: Using Cohere with {{es}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/cohere-es.html
+applies_to:
+  stack:
+  serverless:
+products:
+  - id: elasticsearch
 ---
 
 
@@ -30,7 +35,7 @@ You can also review the [Colab notebook version of this tutorial](https://colab.
 ## Requirements [cohere-es-req]
 
 * A paid [Cohere account](https://cohere.com/) is required to use the {{infer-cap}} API with the Cohere service as the Cohere free trial API usage is limited,
-* an [Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html) account,
+* an [Elastic Cloud](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) account,
 * Python 3.7 or higher.
 
 
@@ -76,7 +81,7 @@ print(client.info())
 
 ## Create the {{infer}} endpoint [cohere-es-infer-endpoint]
 
-[Create the {{infer}} endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html) first. In this example, the {{infer}} endpoint uses Cohere’s `embed-english-v3.0` model and the `embedding_type` is set to `byte`.
+[Create the {{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) first. In this example, the {{infer}} endpoint uses Cohere’s `embed-english-v3.0` model and the `embedding_type` is set to `byte`.
 
 ```py
 COHERE_API_KEY = "cohere_api_key"
@@ -124,7 +129,7 @@ client.indices.create(
 
 ## Create the {{infer}} pipeline [cohere-es-infer-pipeline]
 
-Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
+Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
 
 ```py
 client.ingest.put_pipeline(
@@ -255,7 +260,7 @@ Rerank the results using the new {{infer}} endpoint.
 
 ```py
 # Pass the query and the search results to the service
-response = client.inference.inference(
+response = client.inference.rerank(
     inference_id="cohere_rerank",
     body={
         "query": query,
@@ -309,10 +314,9 @@ for document in response.documents:
 
 The response will look similar to this:
 
-```consol-result
+```console-result
 Query: What is biosimilarity?
 Response: Biosimilarity is based on the comparability concept, which has been used successfully for several decades to ensure close similarity of a biological product before and after a manufacturing change. Over the last 10 years, experience with biosimilars has shown that even complex biotechnology-derived proteins can be copied successfully.
 Sources:
 Interchangeability of Biosimilars: A European Perspective: (...)
 ```
-

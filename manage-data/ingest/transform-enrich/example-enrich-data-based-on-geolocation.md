@@ -1,15 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-match-enrich-policy-type.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Example: Enrich your data based on geolocation [geo-match-enrich-policy-type]
 
-`geo_match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on a geographic location, using a [`geo_shape` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-shape-query.html).
+`geo_match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on a geographic location, using a [`geo_shape` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-geo-shape-query.md).
 
 The following example creates a `geo_match` enrich policy that adds postal codes to incoming documents based on a set of coordinates. It then adds the `geo_match` enrich policy to a processor in an ingest pipeline.
 
-Use the [create index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html) to create a source index containing at least one `geo_shape` field.
+Use the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) to create a source index containing at least one `geo_shape` field.
 
 ```console
 PUT /postal_codes
@@ -27,7 +32,7 @@ PUT /postal_codes
 }
 ```
 
-Use the [index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html) to index enrich data to this source index.
+Use the [index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) to index enrich data to this source index.
 
 ```console
 PUT /postal_codes/_doc/1?refresh=wait_for
@@ -40,7 +45,7 @@ PUT /postal_codes/_doc/1?refresh=wait_for
 }
 ```
 
-Use the [create enrich policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-enrich-policy-api.html) to create an enrich policy with the `geo_match` policy type. This policy must include:
+Use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) to create an enrich policy with the `geo_match` policy type. This policy must include:
 
 * One or more source indices
 * A `match_field`, the `geo_shape` field from the source indices used to match incoming documents
@@ -57,18 +62,18 @@ PUT /_enrich/policy/postal_policy
 }
 ```
 
-Use the [execute enrich policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html) to create an enrich index for the policy.
+Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) to create an enrich index for the policy.
 
 ```console
 POST /_enrich/policy/postal_policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html) to create an ingest pipeline. In the pipeline, add an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) that includes:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match the geoshape of documents from the enrich index.
 * The `target_field` used to store appended enrich data for incoming documents. This field contains the `match_field` and `enrich_fields` specified in your enrich policy.
-* The `shape_relation`, which indicates how the processor matches geoshapes in incoming documents to geoshapes in documents from the enrich index. See [Spatial Relations](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-shape-query.html#_spatial_relations) for valid options and more information.
+* The `shape_relation`, which indicates how the processor matches geoshapes in incoming documents to geoshapes in documents from the enrich index. See [Spatial Relations](elasticsearch://reference/query-languages/query-dsl/query-dsl-shape-query.md#_spatial_relations) for valid options and more information.
 
 ```console
 PUT /_ingest/pipeline/postal_lookup
@@ -98,7 +103,7 @@ PUT /users/_doc/0?pipeline=postal_lookup
 }
 ```
 
-To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html) to view the indexed document.
+To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) to view the indexed document.
 
 ```console
 GET /users/_doc/0

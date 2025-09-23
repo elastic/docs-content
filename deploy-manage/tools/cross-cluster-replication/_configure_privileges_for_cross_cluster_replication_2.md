@@ -1,6 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_configure_privileges_for_cross_cluster_replication_2.html
+applies_to:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Configure privileges for cross-cluster replication [_configure_privileges_for_ccr_2]
@@ -13,7 +21,7 @@ The {{ccr}} user requires different cluster and index privileges on the remote c
 On the remote cluster that contains the leader index, the {{ccr}} role requires the `read_ccr` cluster privilege, and `monitor` and `read` privileges on the leader index.
 
 ::::{note}
-If requests are authenticated with an [API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html), the API key requires the above privileges on the **local** cluster, instead of the remote.
+If requests are authenticated with an [API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), the API key requires the above privileges on the **local** cluster, instead of the remote.
 ::::
 
 
@@ -73,7 +81,7 @@ POST /_security/role/remote-replication
 }
 ```
 
-After creating the `remote-replication` role on each cluster, use the [create or update users API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html) to create a user on the local cluster cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
+After creating the `remote-replication` role on each cluster, use the [create or update users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) to create a user on the local cluster cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
 
 ```console
 POST /_security/user/cross-cluster-user

@@ -1,9 +1,15 @@
 ---
+navigation_title: Container engines
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-containers.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
-# Troubleshooting container engines [ece-troubleshooting-containers]
+# Troubleshoot container engines [ece-troubleshooting-containers]
 
 This article describes how to troubleshoot container engine services in Elastic Cloud Enterprise. We refer to [Docker](https://www.docker.com/) by default, as it’s the most common container engine, but these steps are also valid for [Podman](https://podman.io/). You can simply replace `docker` in the commands  with `podman` as needed.
 
@@ -15,7 +21,7 @@ Do not restart the Docker daemon unless directly prescribed by Elastic Support u
 
 ## Use supported configuration [ece-troubleshooting-containers-supported]
 
-Make sure to use a combination of [Linux operating systems](../../../deploy-manage/deploy/cloud-enterprise/configure-operating-system-cloud.md) and container engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause a plethora of either intermediate or potentially permanent issues with you {{ece}} environment, such as failures to create [system deployments](../../../deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md), to upgrade workload deployments, proxy timeouts, data loss, and more.
+Make sure to use a combination of [Linux operating systems](../../../deploy-manage/deploy/cloud-enterprise/configure-operating-system.md) and container engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause a plethora of either intermediate or potentially permanent issues with you {{ece}} environment, such as failures to create [system deployments](../../../deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md), to upgrade workload deployments, proxy timeouts, data loss, and more.
 
 
 ## Troubleshoot unhealthy containers [ece-troubleshooting-containers-unhealthy]
@@ -38,7 +44,7 @@ This should indicate an issue with the {{es}} configuration rather than any Dock
 
 While troubleshooting `unhealthy` {{ece}} system containers (name prefix `frc-`), *some* may be restarted while others should not.
 
-{{ece}}'s [runners](https://www.elastic.co/guide/en/cloud-enterprise/current/get-runners.html) will automatically create or restart missing system containers. If you’re attempting to permanently remove a system container by removing its role from the host, you’d instead [update runner roles](https://www.elastic.co/guide/en/cloud-enterprise/current/set-runner-roles.html). If eligible system containers return to an `unhealthy` status after restart, we recommend reviewing their start-up Docker [`logs`](https://docs.docker.com/reference/cli/docker/container/logs/).
+{{ece}}'s [runners](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-runners) will automatically create or restart missing system containers. If you’re attempting to permanently remove a system container by removing its role from the host, you’d instead [update runner roles](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-runner-roles). If eligible system containers return to an `unhealthy` status after restart, we recommend reviewing their start-up Docker [`logs`](https://docs.docker.com/reference/cli/docker/container/logs/).
 
 It is safe to restart the following via Docker [`stop`](https://docs.docker.com/reference/cli/docker/container/stop/) followed by Docker [`rm`](https://docs.docker.com/reference/cli/docker/container/rm/) on:
 
@@ -47,6 +53,7 @@ It is safe to restart the following via Docker [`stop`](https://docs.docker.com/
 * `frc-beats-runners-beats-runner`
 * `frc-constructors-constructor`
 * `frc-proxies-proxyv2`
+* `frc-proxies-route-server`
 
 It is safe to restart the following via Docker [`restart`](https://docs.docker.com/reference/cli/docker/container/restart/):
 
@@ -62,4 +69,4 @@ It is **not** safe to restart the following without explicit steps from Elastic 
 
 For unhealthy Zookeeper, instead see [verify Zookeeper sync status](verify-zookeeper-sync-status.md) and [resolving Zookeeper quorum](rebuilding-broken-zookeeper-quorum.md).
 
-For any {{ece}} system container not listed, kindly reach out to [Elastic Support](ask-for-help.md) for advisement.
+For any {{ece}} system container not listed, reach out to [Elastic Support](/troubleshoot/index.md#contact-us).

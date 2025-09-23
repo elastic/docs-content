@@ -1,6 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-terminate-replication.html
+applies_to:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Terminate replication [ccr-terminate-replication]
@@ -16,7 +24,7 @@ The follower index will be converted to a standard index and will no longer disp
 You can then choose **Index Management**, select the follower index from the previous steps, and close the follower index.
 
 ::::{dropdown} Use the API
-You can terminate replication with the [unfollow API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-unfollow.html). This API converts a follower index to a standard (non-follower) index.
+You can terminate replication with the [unfollow API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-unfollow). This API converts a follower index to a standard (non-follower) index.
 
 ::::
 

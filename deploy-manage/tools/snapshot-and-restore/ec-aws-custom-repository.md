@@ -1,9 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-aws-custom-repository.html
+applies_to:
+  deployment:
+    ess:
+products:
+  - id: cloud-hosted
+navigation_title: AWS S3
 ---
 
-# Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]
+# Configure an AWS S3 snapshot repository in {{ech}} [ec-aws-custom-repository]
 
 Configure a custom snapshot repository using an S3 storage bucket in your AWS account.
 
@@ -32,10 +40,10 @@ Next, create an IAM user, copy the access key ID and secret, and configure the f
 }
 ```
 
-1. The version of the policy language syntax rules. For more information, refer to the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.md#access-analyzer-reference-policy-checks-error-invalid-version).
+1. The version of the policy language syntax rules. For more information, refer to the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-version).
 
 
-For more information on S3 and IAM, refer to AWS' [S3-documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.md) and [IAM-documentation](http://aws.amazon.com/documentation/iam/).
+For more information on S3 and IAM, refer to AWS' [S3-documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html) and [IAM-documentation](http://aws.amazon.com/documentation/iam/).
 
 ::::{note}
 For a full list of settings that are supported for your S3 bucket, refer to [S3 repository](s3-repository.md) in the {{es}} Guide.
@@ -45,22 +53,22 @@ For a full list of settings that are supported for your S3 bucket, refer to [S3 
 
 ## Store your secrets in the keystore [ec-snapshot-secrets-keystore]
 
-You can use the Elasticsearch Service Keystore to store the credentials to access your AWS account.
+You can use the {{es}} keystore to store the credentials to access your AWS account.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Navigate to the **Security** page of the deployment you wish to configure.
-3. Locate **Elasticsearch keystore** and select **Add settings**.
+3. Locate **{{es}} keystore** and select **Add settings**.
 4. With **Type** set to **Single string**, add the following keys and their values:
 
     * `s3.client.secondary.access_key`
     * `s3.client.secondary.secret_key`
 
-5. Perform a cluster restart to [reload the secure settings](https://www.elastic.co/guide/en/cloud/current/ec-configuring-keystore.html#ec-add-secret-values).
+5. Perform a cluster restart to [reload the secure settings](/deploy-manage/security/secure-settings.md#ec-add-secret-values).
 
 
 ## Create the repository [ec-create-aws-repository]
 
-1. Open Kibana and go to **Management** > **Snapshot and Restore**.
+1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.
 3. Provide a name for your repository and select type **AWS S3**.
 4. Provide the following settings:
@@ -72,5 +80,5 @@ You can use the Elasticsearch Service Keystore to store the credentials to acces
 6. Select **Register**.
 7. Select **Verify** to confirm that your settings are correct and the deployment can connect to your repository.
 
-Your snapshot repository is now set up using S3! You can use Kibana to manage your snapshots and begin sending Elasticsearch snapshots to your own bucket. For details refer to the [Snapshot and Restore](create-snapshots.md) documentation.
+Your snapshot repository is now set up using S3! You can use {{kib}} to manage your snapshots and begin sending {{es}} snapshots to your own bucket. For details refer to the [Snapshot and Restore](create-snapshots.md) documentation.
 

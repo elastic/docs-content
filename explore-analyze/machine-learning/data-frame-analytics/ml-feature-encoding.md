@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-feature-encoding.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Feature encoding [ml-feature-encoding]
@@ -16,4 +21,3 @@ mapped_pages:
 When the model makes predictions on new data, the data needs to be processed in the same way it was trained. {{ml-cap}} model inference in the {{stack}} does this automatically, so the automatically applied encodings are used in each call for inference. Refer to {{infer}} for [{{classification}}](ml-dfa-classification.md#ml-inference-class) and [{{regression}}](ml-dfa-regression.md#ml-inference-reg).
 
 [{{feat-imp-cap}}](ml-feature-importance.md) is calculated for the original categorical fields, not the automatically encoded features.
-

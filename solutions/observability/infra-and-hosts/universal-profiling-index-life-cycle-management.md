@@ -1,7 +1,11 @@
 ---
-navigation_title: "Index lifecycle management"
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-index-lifecycle-management.html
+applies_to:
+  stack: ga
+products:
+  - id: observability
 ---
 
 
@@ -26,7 +30,7 @@ The following table lists the default thresholds for rollover and delete:
 | after 30 days or 50 GB | after 30 days | after 60 days |
 
 ::::{note}
-The [rollover condition blocks phase transitions](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
+The [rollover condition blocks phase transitions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
 ::::
 
 
@@ -45,14 +49,14 @@ Complete the following steps to configure a custom index lifecycle policy.
 
 ### Step 1: Create an index lifecycle policy [profiling-ilm-custom-policy-create-policy]
 
-1. To open **Index Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Index Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 3. Name your new policy, for example `custom-profiling-policy`.
 4. Customize the policy to your liking.
 5. Click **Save policy**.
 
 ::::{tip}
-See [Manage the index lifecycle](../../../manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
+See [Manage the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
 ::::
 
 
@@ -82,9 +86,9 @@ To apply a custom {{ilm-init}} policy, you must name the component template `pro
 
     If it does, click **Create component template**.
 
-    :::{image} ../../../images/observability-profiling-create-component-template.png
+    :::{image} /solutions/images/observability-profiling-create-component-template.png
     :alt: Create component template
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -93,7 +97,7 @@ To apply a custom {{ilm-init}} policy, you must name the component template `pro
 
 Confirm that Universal Profiling is now using the new index template and {{ilm-init}} policy:
 
-1. Open **Console** by finding `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Open **Console** by finding `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Run the following:
 
     ```bash
@@ -129,7 +133,7 @@ If the custom policy is already applied, the result should include the following
 }
 ```
 
-If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html):
+If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
 
 ```bash
 POST /profiling-events-5pow01/_rollover/

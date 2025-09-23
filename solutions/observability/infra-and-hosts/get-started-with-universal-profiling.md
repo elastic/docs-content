@@ -1,7 +1,11 @@
 ---
-navigation_title: "Get started"
+navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
+applies_to:
+  stack: ga
+products:
+  - id: observability
 ---
 
 
@@ -16,7 +20,7 @@ On this page, you’ll learn how to configure and use Universal Profiling. This 
 * Installing the Universal Profiling Agent
 * Installing the Universal Profiling Agent integration
 
-We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
+We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
 
 
 ## Prerequisites [profiling-prereqs]
@@ -49,9 +53,8 @@ The minimum supported versions of each interpreter are:
 
 The following deployment configuration example was tested to support profiling data from a fleet of up to 500 hosts, each with 8 or 16 CPU cores, for a total of roughly 6000 cores:
 
-|     |     |     |
-| --- | --- | --- |
 | Component | Size per zone (memory) | Zones |
+| --- | --- | --- |
 | {{es}} | 64 GB | 2 |
 | Kibana | 8 GB | 1 |
 | Integrations Server | 8 GB | 1 |
@@ -68,9 +71,9 @@ To set up Universal Profiling on your {{ecloud}} deployment, you need to [config
 
 After enabling Universal Profiling on your deployment for the first time, select any subheading under **Universal Profiling** in the navigation menu to open the following page:
 
-:::{image} ../../../images/observability-profiling-setup-popup.png
+:::{image} /solutions/images/observability-profiling-setup-popup.png
 :alt: profiling setup popup
-:class: screenshot
+:screenshot:
 :::
 
 Click **Set up Universal Profiling** to configure data ingestion.
@@ -84,6 +87,9 @@ If you’re upgrading from a previous version with Universal Profiling enabled, 
 
 
 ### Programmatic configuration [profiling-configure-data-ingestion-programmatic]
+```{applies_to}
+stack: ga 9.2
+```
 
 If you prefer to configure data ingestion programmatically, you can use a Kibana API call. This call can be made either through the "Dev Tools" console in Kibana or with any standalone HTTP client (such as `curl` or `wget`). In both cases, the API call must be executed using the `elastic` user credentials to ensure the necessary permissions.
 
@@ -92,7 +98,7 @@ A successful API call will return a `202 Accepted` response with an empty body.
 To configure data ingestion from the console, go to **Dev Tools** in the navigation menu and run the following command:
 
 ```console
-POST kbn:/internal/profiling/setup/es_resources
+POST kbn:/api/profiling/setup/es_resources
 {}
 ```
 
@@ -100,7 +106,7 @@ To configure data ingestion programmatically using a standalone HTTP client (e.g
 
 ```console
 curl -u elastic:<PASSWORD> -H "kbn-xsrf: true" -H "Content-Type: application/json" \
-    --data "{}" "https://<kibana-host>:<kibana-port>/internal/profiling/setup/es_resources"
+    --data "{}" "https://<kibana-host>:<kibana-port>/api/profiling/setup/es_resources"
 ```
 
 
@@ -118,9 +124,9 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
 1. Copy the `secret token` and `Universal Profiling Collector url` from the Elastic Agent Integration
 
-    :::{image} ../../../images/observability-profiling-elastic-agent.png
+    :::{image} /solutions/images/observability-profiling-elastic-agent.png
     :alt: profiling elastic agent
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click `Manage Universal Profiling Agent in Fleet` to complete the integration.
@@ -130,9 +136,9 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
     1. Add the Universal Profiling collector URL to the **Universal Profiling collector endpoint** field.
     2. Add the secret token to the **Authorization** field.
 
-        :::{image} ../../../images/observability-profililing-elastic-agent-creds.png
+        :::{image} /solutions/images/observability-profililing-elastic-agent-creds.png
         :alt: profililing elastic agent creds
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Save and continue**.
@@ -146,9 +152,9 @@ After clicking **Set up Universal Profiling** in the previous step, you’ll see
 
 The following is an example of the provided instructions for {{k8s}}:
 
-:::{image} ../../../images/observability-profiling-k8s-hostagent.png
+:::{image} /solutions/images/observability-profiling-k8s-hostagent.png
 :alt: profiling k8s hostagent
-:class: screenshot
+:screenshot:
 :::
 
 

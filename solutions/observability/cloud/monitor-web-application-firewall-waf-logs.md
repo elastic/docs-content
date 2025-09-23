@@ -1,7 +1,12 @@
 ---
-navigation_title: "WAF logs"
+navigation_title: WAF logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-waf-firehose.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 
@@ -17,7 +22,7 @@ You will go through the following steps:
 * Create a delivery stream in Amazon Data Firehose
 * Create a web Access Control List (ACL) to generate WAF logs
 * Set up logging to forward the logs to the {{stack}} using a Firehose stream
-* Visualize your WAF logs in {kib}
+* Visualize your WAF logs in {{kib}}
 
 
 ## Before you begin [firehose-waf-prerequisites]
@@ -25,7 +30,7 @@ You will go through the following steps:
 We assume that you already have:
 
 * An AWS account with permissions to pull the necessary data from AWS.
-* A deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
 
 ::::{important}
 Make sure the deployment is on AWS, because the Amazon Data Firehose delivery stream connects specifically to an endpoint that needs to be on AWS.
@@ -35,7 +40,7 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 
 ## Step 1: Install the AWS integration in {{kib}} [firehose-waf-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Browse the catalog to find the AWS integration.
 3. Navigate to the **Settings** tab and click **Install AWS assets**.
 
@@ -129,7 +134,7 @@ watch -n 5 curl -i https://<your cloudfront distribution>.cloudfront.net
 
 Navigate to Kibana and visualize the first WAF logs in your {{stack}}.
 
-:::{image} ../../../images/observability-firehose-waf-logs.png
+:::{image} /solutions/images/observability-firehose-waf-logs.png
 :alt: Firehose WAF logs in Kibana
-:class: screenshot
+:screenshot:
 :::

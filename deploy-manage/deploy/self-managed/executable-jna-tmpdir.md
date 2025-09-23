@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/executable-jna-tmpdir.html
+applies_to:
+  deployment:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Ensure JNA temporary directory permits executables [executable-jna-tmpdir]
 
-::::{note} 
+::::{note}
 This is only relevant for Linux.
 ::::
 
@@ -14,7 +19,7 @@ This is only relevant for Linux.
 
 By default, {{es}} will create its temporary directory within `/tmp`. However, some hardened Linux installations mount `/tmp` with the `noexec` option by default. This prevents JNA and `libffi` from working correctly. For instance, at startup JNA may fail to load with an `java.lang.UnsatisfiedLinkerError` exception or with a message that says something similar to `failed to map segment from shared object`, or `libffi` may report a message such as `failed to allocate closure`. Note that the exception messages can differ between JVM versions. Additionally, the components of {{es}} that rely on execution of native code via JNA may fail with messages indicating that it is `because JNA is not available`.
 
-To resolve these problems, either remove the `noexec` option from your `/tmp` filesystem, or configure {{es}} to use a different location for its temporary directory by setting the [`$ES_TMPDIR`](important-settings-configuration.md#es-tmpdir) environment variable. For instance:
+To resolve these problems, either remove the `noexec` option from your `/tmp` filesystem, or configure {{es}} to use a different location for its temporary directory by setting the [`$ES_TMPDIR`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#es-tmpdir) environment variable. For instance:
 
 * If you are running {{es}} directly from a shell, set `$ES_TMPDIR` as follows:
 
@@ -30,10 +35,10 @@ To resolve these problems, either remove the `noexec` option from your `/tmp` fi
     ```
 
 
-If you need finer control over the location of these temporary files, you can also configure the path that JNA uses with the [JVM flag](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options) `-Djna.tmpdir=<path>` and you can configure the path that `libffi` uses for its temporary files by setting the `LIBFFI_TMPDIR` environment variable. Future versions of {{es}} may need additional configuration, so you should prefer to set `ES_TMPDIR` wherever possible.
+If you need finer control over the location of these temporary files, you can also configure the path that JNA uses with the [JVM flag](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options) `-Djna.tmpdir=<path>` and you can configure the path that `libffi` uses for its temporary files by setting the `LIBFFI_TMPDIR` environment variable. Future versions of {{es}} may need additional configuration, so you should prefer to set `ES_TMPDIR` wherever possible.
 
-::::{note} 
-{{es}} does not remove its temporary directory. You should remove leftover temporary directories while {{es}} is not running. It is best to do this automatically, for instance on each reboot. If you are running on Linux, you can achieve this by using the [tmpfs](https://www.kernel.org/doc/html/latest/filesystems/tmpfs.md) file system.
+::::{note}
+{{es}} does not remove its temporary directory. You should remove leftover temporary directories while {{es}} is not running. It is best to do this automatically, for instance on each reboot. If you are running on Linux, you can achieve this by using the [tmpfs](https://www.kernel.org/doc/html/latest/filesystems/tmpfs.html) file system.
 ::::
 
 

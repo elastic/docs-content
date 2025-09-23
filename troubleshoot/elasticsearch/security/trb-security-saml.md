@@ -1,6 +1,16 @@
 ---
+navigation_title: SAML
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-saml.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Common SAML issues [trb-security-saml]
@@ -34,7 +44,7 @@ Some of the common SAML problems are shown below with tips on how to resolve the
     ```
     **Resolution:**
 
-    We received a SAML response that is addressed to another SAML Service Provider. This usually means that the configured SAML Service Provider Entity ID in `elasticsearch.yml` (`sp.entity_id`) does not match what has been configured as the SAML Service Provider Entity ID in the SAML Identity Provider documentation.
+    We received a SAML response that is addressed to another SAML Service Provider. This usually means that the configured SAML Service Provider Entity ID in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) (`sp.entity_id`) does not match what has been configured as the SAML Service Provider Entity ID in the SAML Identity Provider documentation.
 
     To resolve this issue, ensure that both the saml realm in {{es}} and the IdP are configured with the same string for the SAML Entity ID of the Service Provider.
 
@@ -65,7 +75,7 @@ Some of the common SAML problems are shown below with tips on how to resolve the
     We could not find the metadata for the SAML Entity ID `your:entity.id` in the configured metadata file (`metadata.xml`).
 
     1. Ensure that the `metadata.xml` file you are using is indeed the one provided by your SAML Identity Provider.
-    2. Ensure that the `metadata.xml` file contains one <EntityDescriptor> element as follows: `<EntityDescriptor ID="0597c9aa-e69b-46e7-a1c6-636c7b8a8070" entityID="https://saml.example.com/f174199a-a96e-4201-88f1-0d57a610c522/" ...` where the value of the `entityID` attribute is the same as the value of the `idp.entity_id` that you have set in your SAML realm configuration in `elasticsearch.yml`.
+    2. Ensure that the `metadata.xml` file contains one <EntityDescriptor> element as follows: `<EntityDescriptor ID="0597c9aa-e69b-46e7-a1c6-636c7b8a8070" entityID="https://saml.example.com/f174199a-a96e-4201-88f1-0d57a610c522/" ...` where the value of the `entityID` attribute is the same as the value of the `idp.entity_id` that you have set in your SAML realm configuration in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
     3. Note that these are also compared as case-sensitive strings and not as canonicalized URLs even when the values are URL-like.
 
 4. **Symptoms:**
@@ -131,7 +141,7 @@ Some of the common SAML problems are shown below with tips on how to resolve the
     This means that the SAML Identity Provider failed to authenticate the user and sent a SAML Response to the Service Provider ({{stack}}) indicating this failure. The message will convey whether the SAML Identity Provider thinks that the problem is with the Service Provider ({{stack}}) or with the Identity Provider itself and the specific status code that follows is extremely useful as it usually indicates the underlying issue. The list of specific error codes is defined in the [SAML 2.0 Core specification - Section 3.2.2.2](https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf) and the most commonly encountered ones are:
 
     1. `urn:oasis:names:tc:SAML:2.0:status:AuthnFailed`: The SAML Identity Provider failed to authenticate the user. There is not much to troubleshoot on the {{stack}} side for this status, the logs of the SAML Identity Provider will hopefully offer much more information.
-    2. `urn:oasis:names:tc:SAML:2.0:status:InvalidNameIDPolicy`: The SAML Identity Provider cannot support releasing a NameID with the requested format. When creating SAML Authentication Requests, {{es}} sets the NameIDPolicy element of the Authentication request with the appropriate value. This is controlled by the [`nameid_format`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-settings) configuration parameter in `elasticsearch.yml`, which if not set defaults to `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`. This instructs the Identity Provider to return a NameID with that specific format in the SAML Response. If the SAML Identity Provider cannot grant that request, for example because it is configured to release a NameID format with `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` format instead, it returns this error indicating an invalid NameID policy. This issue can be resolved by adjusting `nameid_format` to match the format the SAML Identity Provider can return or by setting it to `urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified` so that the Identity Provider is allowed to return any format it wants.
+    2. `urn:oasis:names:tc:SAML:2.0:status:InvalidNameIDPolicy`: The SAML Identity Provider cannot support releasing a NameID with the requested format. When creating SAML Authentication Requests, {{es}} sets the NameIDPolicy element of the Authentication request with the appropriate value. This is controlled by the [`nameid_format`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings) configuration parameter in [`elasticsearch.yml`](/deploy-manage/stack-settings.md), which if not set defaults to `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`. This instructs the Identity Provider to return a NameID with that specific format in the SAML Response. If the SAML Identity Provider cannot grant that request, for example because it is configured to release a NameID format with `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` format instead, it returns this error indicating an invalid NameID policy. This issue can be resolved by adjusting `nameid_format` to match the format the SAML Identity Provider can return or by setting it to `urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified` so that the Identity Provider is allowed to return any format it wants.
 
 8. **Symptoms:**
 
@@ -172,9 +182,9 @@ Some of the common SAML problems are shown below with tips on how to resolve the
 
     To resolve this issue, ensure that in your {{kib}} configuration `xpack.security.sameSiteCookies` is not set to `Strict`. Depending on your configuration, you may be able to rely on the default value or explicitly set the value to `None`.
 
-    For further information, please read [MDN SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
+    For further information, read [MDN SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
 
-    If you serve multiple {{kib}} installations behind a load balancer make sure to use the [same security configuration](https://www.elastic.co/guide/en/kibana/current/production.html#load-balancing-kibana) for all installations.
+    If you serve multiple {{kib}} installations behind a load balancer make sure to use the [same security configuration](/deploy-manage/production-guidance/kibana-load-balance-traffic.md#load-balancing-kibana) for all installations.
 
 
 **Logging:**
@@ -197,5 +207,5 @@ logger.saml.name = org.elasticsearch.xpack.security.authc.saml
 logger.saml.level = DEBUG
 ```
 
-Refer to [configuring logging levels](../../../deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md#configuring-logging-levels) for more information.
+Refer to [configuring logging levels](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) for more information.
 

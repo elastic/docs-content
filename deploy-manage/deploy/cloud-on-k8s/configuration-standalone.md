@@ -1,9 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-configuration.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-elastic-agent-configuration]
+# Configuration for standalone Elastic Agents on {{eck}} [k8s-elastic-agent-configuration]
 
 ## Upgrade the Elastic Agent specification [k8s-elastic-agent-upgrade-specification]
 
@@ -14,13 +20,13 @@ You can upgrade the Elastic Agent version or change settings by editing the YAML
 
 The Elastic Agent configuration is defined in the `config` element:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: quickstart
   daemonSet:
@@ -58,13 +64,13 @@ spec:
 
 Alternatively, it can be provided through a Secret specified in the `configRef` element. The Secret must have an `agent.yml` entry with this configuration:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: quickstart
   daemonSet:
@@ -105,22 +111,22 @@ stringData:
             period: 10s
 ```
 
-You can use the Fleet application in Kibana to generate the configuration for Elastic Agent, even when running in standalone mode. Check the [Elastic Agent standalone](https://www.elastic.co/guide/en/fleet/current/install-standalone-elastic-agent.html) documentation. Adding the corresponding integration package to Kibana also adds the related dashboards and visualizations.
+You can use the Fleet application in {{kib}} to generate the configuration for Elastic Agent, even when running in standalone mode. Check the [Elastic Agent standalone](/reference/fleet/install-standalone-elastic-agent.md) documentation. Adding the corresponding integration package to {{kib}} also adds the related dashboards and visualizations.
 
 
 ## Use multiple Elastic Agent outputs [k8s-elastic-agent-multi-output]
 
-Elastic Agent supports the use of multiple outputs. Therefore, the `elasticsearchRefs` element accepts multiple references to Elasticsearch clusters. ECK populates the outputs section of the Elastic Agent configuration based on those references. If you configure more than one output, you also have to specify a unique `outputName` attribute.
+Elastic Agent supports the use of multiple outputs. Therefore, the `elasticsearchRefs` element accepts multiple references to {{es}} clusters. ECK populates the outputs section of the Elastic Agent configuration based on those references. If you configure more than one output, you also have to specify a unique `outputName` attribute.
 
-To send Elastic Agent’s internal monitoring and log data to a different Elasticsearch cluster called `agent-monitoring` in the `elastic-monitoring` namespace, and the harvested metrics to our `quickstart` cluster, you have to define two `elasticsearchRefs` as shown in the following example:
+To send Elastic Agent’s internal monitoring and log data to a different {{es}} cluster called `agent-monitoring` in the `elastic-monitoring` namespace, and the harvested metrics to our `quickstart` cluster, you have to define two `elasticsearchRefs` as shown in the following example:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     podTemplate:
       spec:
@@ -148,24 +154,24 @@ spec:
 ```
 
 
-## Customize the connection to an Elasticsearch cluster [k8s-elastic-agent-connect-es]
+## Customize the connection to an {{es}} cluster [k8s-elastic-agent-connect-es]
 
-The `elasticsearchRefs` element allows ECK to automatically configure Elastic Agent to establish a secured connection to one or more managed Elasticsearch clusters. By default, it targets all nodes in your cluster. If you want to direct traffic to specific nodes of your Elasticsearch cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
+The `elasticsearchRefs` element allows ECK to automatically configure Elastic Agent to establish a secured connection to one or more managed {{es}} clusters. By default, it targets all nodes in your cluster. If you want to direct traffic to specific nodes of your {{es}} cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
 
 
 ## Set manually Elastic Agent outputs [k8s-elastic-agent-set-output]
 
-If the `elasticsearchRefs` element is specified, ECK populates the outputs section of the Elastic Agent configuration. ECK creates a user with appropriate roles and permissions and uses its credentials. If required, it also mounts the CA certificate in all Agent Pods, and recreates Pods when this certificate changes. Moreover, `elasticsearchRef` element can refer to an ECK-managed Elasticsearch cluster by filling the `name`, `namespace`, `serviceName` fields accordingly, as well as to a Kubernetes secret that contains the connection information to an Elasticsearch cluster not managed by it. In the latter case, for authenticating against the Elasticsearch cluster the secret must contain the fields of `url` and either the `username` with `password` or the `api-key`. Refer to [*Connect to external Elastic resources*](connect-to-external-elastic-resources.md) for additional details.
+If the `elasticsearchRefs` element is specified, ECK populates the outputs section of the Elastic Agent configuration. ECK creates a user with appropriate roles and permissions and uses its credentials. If required, it also mounts the CA certificate in all Agent Pods, and recreates Pods when this certificate changes. Moreover, `elasticsearchRef` element can refer to an ECK-managed {{es}} cluster by filling the `name`, `namespace`, `serviceName` fields accordingly, as well as to a Kubernetes secret that contains the connection information to an {{es}} cluster not managed by it. In the latter case, for authenticating against the {{es}} cluster the secret must contain the fields of `url` and either the `username` with `password` or the `api-key`. Refer to [*Connect to external Elastic resources*](connect-to-external-elastic-resources.md) for additional details.
 
 The outputs can also be set manually. To do that, remove the `elasticsearchRefs` element from the specification and include an appropriate output configuration in the `config`, or indirectly through the `configRef` mechanism.
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     podTemplate:
       spec:
@@ -189,13 +195,13 @@ Depending on the use case, Elastic Agent may need to be deployed as a [Deploymen
 
 Similarly, you can set the [update strategy](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/) when deploying as a DaemonSet. This allows you to control the rollout speed for new configuration by modifying the `maxUnavailable` setting:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     podTemplate:
       spec:
@@ -215,13 +221,13 @@ Check [Set compute resources for Beats and Elastic Agent](manage-compute-resourc
 
 Some Elastic Agent features, such as the [Kubernetes integration](https://epr.elastic.co/package/kubernetes/0.2.8/), require that Agent Pods interact with Kubernetes APIs. This functionality requires specific permissions. The standard Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow API interactions:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: elasticsearch
   daemonSet:
@@ -393,20 +399,20 @@ metadata:
 spec:
   config:
     # xpack.fleet.agents.elasticsearch.hosts: <1>
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-sample-agent-http.default.svc:8220"]
+    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>-sample-agent-http.default.svc:8220"]
     xpack.fleet.outputs:
     - id: eck-fleet-agent-output-elasticsearch
       is_default: true
       name: eck-elasticsearch
       type: elasticsearch
       hosts:
-      - "https://elasticsearch-sample-es-http.default.svc:9200" <2>
+      - "<ELASTICSEARCH_HOST>-es-http.default.svc:9200" <2>
       ssl:
         certificate_authorities: ["/mnt/elastic-internal/elasticsearch-association/default/elasticsearch-sample/certs/ca.crt"] <3>
 ```
 
 1. This entry must not exist when running agent in fleet mode as a non-root user.
-2. Note that the correct URL for {{es}} is `https://ELASTICSEARCH_NAME-es-http.YOUR-NAMESPACE.svc:9200`
+2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.<YOUR-NAMESPACE>.svc:9200`
 3. Note that the correct path for {{es}} `certificate_authorities` is `/mnt/elastic-internal/elasticsearch-association/YOUR-NAMESPACE/ELASTICSEARCH-NAME/certs/ca.crt`
 
 

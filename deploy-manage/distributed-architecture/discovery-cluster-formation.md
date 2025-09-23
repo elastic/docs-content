@@ -1,7 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery.html
+applies_to:
+  stack:
+products:
+  - id: elasticsearch
 ---
+
+::::{important}
+The information provided in this section is applicable to all deployment types. However, the configuration settings detailed here are only valid for self-managed {{es}} deployments. For {{ecloud}} and {{serverless-full}} deployments this seciton should only be used for general information.
+::::
 
 # Discovery and cluster formation [modules-discovery]
 
@@ -30,12 +38,5 @@ The following processes and settings are part of discovery and cluster formation
 [Cluster fault detection](discovery-cluster-formation/cluster-fault-detection.md)
 :   {{es}} performs health checks to detect and remove faulty nodes.
 
-[Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
+[Settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md)
 :   There are settings that enable users to influence the discovery, cluster formation, master election and fault detection processes.
-
-
-
-
-
-
-

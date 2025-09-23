@@ -1,11 +1,18 @@
 ---
+navigation_title: Common problems
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-troubleshooting.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
-# Common problems [fleet-troubleshooting]
+# Common problems with {{fleet}} and {{elastic-agent}} [fleet-troubleshooting]
 
-We have collected the most common known problems and listed them here. If your problem is not described here, please review the open issues in the following GitHub repositories:
+We have collected the most common known problems and listed them here. If your problem is not described here, review the open issues in the following GitHub repositories:
 
 | Repository | To review or report issues about |
 | --- | --- |
@@ -14,11 +21,11 @@ We have collected the most common known problems and listed them here. If your p
 | [elastic/beats](https://github.com/elastic/beats/issues) | {{beats}} shippers |
 | [elastic/fleet-server](https://github.com/elastic/fleet-server/issues) | {{fleet-server}} |
 | [elastic/package-registry](https://github.com/elastic/package-registry/issues) | {{package-registry}} |
-| [elastic/observability-docs](https://github.com/elastic/observability-docs/issues) | Documentation issues |
+| [elastic/docs-content](https://github.com/elastic/docs-content/issues) | Documentation issues |
 
 Have a question? Read our [FAQ](frequently-asked-questions.md), or contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is valuable to us.
 
-Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](https://www.elastic.co/guide/en/fleet/current/debug-standalone-agents.html).
+Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/reference/fleet/debug-standalone-agents.md).
 
 
 ## Troubleshooting contents [troubleshooting-contents]
@@ -53,6 +60,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 * [Hosted {{agent}} is offline](#hosted-agent-offline)
 * [APM & {{fleet}} fails to upgrade to 8.x on {{ecloud}}](#hosted-agent-8-x-upgrade-fail)
 * [Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key](#pgp-key-download-fail)
+* [{{agent}} upgrade fails on Windows with exit status `0xc0000142`](#agent-upgrade-fail-windows)
 * [{{agents}} are unable to connect after removing the {{fleet-server}} integration](#fleet-server-integration-removed)
 * [{{agent}} Out of Memory errors on Kubernetes](#agent-oom-k8s)
 * [Error when running {{agent}} commands with `sudo`](#agent-sudo-error)
@@ -64,7 +72,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 
 In {{fleet}}, if you delete an {{agent}} policy that is associated with one or more inactive enrolled agents, when the agent returns back to a `Healthy` or `Offline` state, it cannot be unenrolled. Attempting to unenroll the agent results in an `Error unenrolling agent` message, and the unenrollment fails.
 
-To resolve this problem, you can use the [{{kib}} {fleet} APIs](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html) to force unenroll the agent.
+To resolve this problem, you can use the [{{kib}} {{fleet}} APIs](/reference/fleet/fleet-api-docs.md) to force unenroll the agent.
 
 To uninstall a single {{agent}}:
 
@@ -100,7 +108,7 @@ For details about the error and how to resolve it, refer to the section `Runtime
 
 ## {{agent}}s hosted on {{ecloud}} are stuck in `Updating` or `Offline` [agents-in-cloud-stuck-at-updating]
 
-In {{ecloud}}, after [upgrading](https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy may experience issues updating. To resolve this problem:
+In {{ecloud}}, after [upgrading](/reference/fleet/upgrade-integration.md) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy may experience issues updating. To resolve this problem:
 
 1. In a terminal window, run the following `cURL` request, providing your {{kib}} superuser credentials to reset the {{ecloud}} agent policy.
 
@@ -152,18 +160,18 @@ If you are unable to see {{fleet-server}} in {{kib}}, make sure it’s set up.
 To set up {{fleet-server}} on {{ecloud}}:
 
 1. Go to your deployment on {{ecloud}}.
-2. Follow the {{ecloud}} prompts to set up **{{integrations-server}}**. Once complete, the {{fleet-server}} {agent} will show up in {{fleet}}.
+2. Follow the {{ecloud}} prompts to set up **{{integrations-server}}**. Once complete, the {{fleet-server}} {{agent}} will show up in {{fleet}}.
 
 To enable {{fleet}} and set up {{fleet-server}} on a self-managed cluster:
 
-1. In the {{es}} configuration file, `config/elasticsearch.yml`, set the following security settings to enable security and API keys:
+1. In the {{es}} configuration file, [`config/elasticsearch.yml`](/deploy-manage/stack-settings.md), set the following security settings to enable security and API keys:
 
     ```yaml
     xpack.security.enabled: true
     xpack.security.authc.api_key.enabled: true
     ```
 
-2. In the {{kib}} configuration file, `config/kibana.yml`, enable {{fleet}} and specify your user credentials:
+2. In the {{kib}} configuration file, [`config/kibana.yml`](/deploy-manage/stack-settings.md), enable {{fleet}} and specify your user credentials:
 
     ```yaml
     xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
@@ -180,7 +188,7 @@ To enable {{fleet}} and set up {{fleet-server}} on a self-managed cluster:
 
     1. Copy the Elastic user name to the {{kib}} configuration file.
     2. Restart {{kib}}.
-    3. Follow the documented steps for setting up a self-managed {{fleet-server}}. For more information, refer to [What is {{fleet-server}}?](https://www.elastic.co/guide/en/fleet/current/fleet-server.html).
+    3. Follow the documented steps for setting up a self-managed {{fleet-server}}. For more information, refer to [What is {{fleet-server}}?](/reference/fleet/fleet-server.md).
 
 
 
@@ -199,7 +207,7 @@ In air-gapped environments, you may encounter the following error if you’re us
 {"type":"log","@timestamp":"2022-03-02T09:58:36-05:00","tags":["error","plugins","fleet"],"pid":58716,"message":"Error connecting to package registry: request to https://customer.server.name:8443/categories?experimental=true&include_policy_templates=true&kibana.version=7.17.0 failed, reason: self signed certificate in certificate chain"}
 ```
 
-To fix this problem, add your CA certificate file path to the {{kib}} startup file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information about this in [TLS configuration of the {{package-registry}}](https://www.elastic.co/guide/en/fleet/current/air-gapped.html#air-gapped-tls) section.
+To fix this problem, add your CA certificate file path to the {{kib}} startup file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information about this in [TLS configuration of the {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-tls) section.
 
 
 ## {{fleet}} in {{kib}} crashes [fleet-app-crashes]
@@ -207,7 +215,7 @@ To fix this problem, add your CA certificate file path to the {{kib}} startup fi
 1. To investigate the error, open your browser’s development console.
 2. Select the **Network** tab, and refresh the page.
 
-    One of the requests to the {{fleet}} API will most likely have returned an error. If the error message doesn’t give you enough information to fix the problem, please contact us in the [discuss forum](https://discuss.elastic.co/).
+    One of the requests to the {{fleet}} API will most likely have returned an error. If the error message doesn’t give you enough information to fix the problem, contact us in the [discuss forum](https://discuss.elastic.co/).
 
 
 
@@ -232,7 +240,7 @@ Traffic between {{agent}}s and {{fleet-server}} over HTTPS will be encrypted; yo
 
 Allowing {{fleet-server}} to generate self-signed certificates is useful to get things running for development, but not recommended in a production environment.
 
-For more information, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](https://www.elastic.co/guide/en/fleet/current/secure-connections.html).
+For more information, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
 
 
 ## {{agent}} enrollment fails on the host with `x509: cannot validate certificate for x.x.x.x because it doesn't contain any IP SANs` message [es-enrollment-certs]
@@ -248,8 +256,8 @@ You will also need to set `ssl.verification_mode: none` in the Output settings i
 
 To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent is unable to connect, you see the following failure:
 
-```output
-fail to enroll: fail to execute request to {fleet-server}:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+```txt
+fail to enroll: fail to execute request to Fleet Server:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
 
 Here are several steps to help you troubleshoot the problem.
@@ -261,7 +269,7 @@ Here are several steps to help you troubleshoot the problem.
     curl -f http://<fleet-server-url>:8220/api/status
     ```
 
-3. Verify that you have specified the correct {{kib}} {fleet} settings URL and port for your environment.
+3. Verify that you have specified the correct {{kib}} {{fleet}} settings URL and port for your environment.
 
     By default, HTTPS protocol and port 8220 is expected by {{fleet-server}} to communicate with {{es}} unless you have explicitly set it otherwise.
 
@@ -298,7 +306,7 @@ When creating an issue or sending a support forum communication, this section ca
     ```
 
     ::::{note}
-    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, please refer to [*Install {{agent}}s*](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html) for examples of how to adjust them.
+    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, refer to [*Install {{agent}}s*](/reference/fleet/install-elastic-agents.md) for examples of how to adjust them.
     ::::
 
 
@@ -344,18 +352,18 @@ The {{agent}} diagnostics bundle collects the following information:
 Note that the diagnostics bundle is intended for debugging purposes only, its structure may change between releases.
 
 ::::{important}
-{{agent}} attempts to automatically redact credentials and API keys when creating diagnostics. Please review the contents of the archive before sharing to ensure that there are no credentials in plain text.
+{{agent}} attempts to automatically redact credentials and API keys when creating diagnostics. Review the contents of the archive before sharing to ensure that there are no credentials in plain text.
 ::::
 
 
 ::::{important}
-The ZIP archive containing diagnostics information will include the raw events of documents sent to the {{agent}} output. By default, it will log only the failing events as `warn`. When the `debug` logging level is enabled, all events are logged. Please review the contents of the archive before sharing to ensure that no sensitive information is included.
+The ZIP archive containing diagnostics information will include the raw events of documents sent to the {{agent}} output. By default, it will log only the failing events as `warn`. When the `debug` logging level is enabled, all events are logged. Review the contents of the archive before sharing to ensure that no sensitive information is included.
 ::::
 
 
 **Get the diagnostics bundle using the CLI**
 
-Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
+Run the [`diagnostics` command](/reference/fleet/agent-command-reference.md#elastic-agent-diagnostics-command) to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases:
 
 ```shell
 elastic-agent diagnostics
@@ -371,16 +379,16 @@ If you want to omit the raw events from the diagnostic, add the flag `--exclude-
 2. In the **Host** column, click the agent’s name.
 3. Select the **Diagnostics** tab and click the **Request diagnostics .zip** button.
 
-    :::{image} ../../../images/fleet-collect-agent-diagnostics1.png
+    :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics1.png
     :alt: Collect agent diagnostics under agent details
-    :class: screenshot
+    :screenshot:
     :::
 
 4. In the **Request Diagnostics** pop-up, select **Collect additional CPU metrics** if you’d like detailed CPU data.
 
-    :::{image} ../../../images/fleet-collect-agent-diagnostics2.png
+    :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics2.png
     :alt: Collect agent diagnostics confirmation pop-up
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click the **Request diagnostics** button.
@@ -431,7 +439,7 @@ For information on where to find agent logs, refer to our [FAQ](frequently-asked
 
 ## {{agent}} is stuck in status `Updating` [fleet-agent-stuck-on-updating]
 
-Beginning in {{stack}} version 8.11, a stuck {{agent}} upgrade should be detected automatically, and you can [restart the upgrade](https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html#restart-upgrade-single) from {{fleet}}.
+Beginning in {{stack}} version 8.11, a stuck {{agent}} upgrade should be detected automatically, and you can [restart the upgrade](/reference/fleet/upgrade-elastic-agent.md#restart-upgrade-single) from {{fleet}}.
 
 
 ## {{fleet-server}} is running and healthy with data, but other Agents cannot use it to connect to {{es}} [secondary-agent-not-connecting]
@@ -453,7 +461,7 @@ One common problem is that the default {{fleet-server}} port of `8220` isn’t o
 
 To save API keys and encrypt them in {{es}}, {{fleet}} requires an encryption key.
 
-To provide an API key, in the `kibana.yml` configuration file, set the `xpack.encryptedSavedObjects.encryptionKey` property.
+To provide an API key, in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, set the `xpack.encryptedSavedObjects.encryptionKey` property.
 
 ```yaml
 xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
@@ -469,7 +477,7 @@ If you’re running {{agent}} in the foreground (and not as a service) on Linux 
 If you’re using the {{elastic-defend}} integration, make sure you’re running {{agent}} under the SYSTEM account.
 
 ::::{tip}
-If you install {{agent}} as a service as described in [*Install {{agent}}s*](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html), {{agent}} runs under the SYSTEM account by default.
+If you install {{agent}} as a service as described in [*Install {{agent}}s*](/reference/fleet/install-elastic-agents.md), {{agent}} runs under the SYSTEM account by default.
 ::::
 
 
@@ -489,11 +497,11 @@ To run {{agent}} under the SYSTEM account, you can do the following:
 
 If you try to upgrade an integration policy that is several versions old, there may be substantial conflicts or configuration issues. Rather than trying to fix these problems, it might be faster to create a new policy, test it, and roll out the integration upgrade to additional hosts.
 
-After [upgrading the integration](https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html):
+After [upgrading the integration](/reference/fleet/upgrade-integration.md):
 
-1. [Create a new policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#create-a-policy).
-2. [Add the integration to the policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#add-integration). The newer version is automatically used.
-3. [Apply the policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#apply-a-policy) to an {{agent}}.
+1. [Create a new policy](/reference/fleet/agent-policy.md#create-a-policy).
+2. [Add the integration to the policy](/reference/fleet/agent-policy.md#add-integration). The newer version is automatically used.
+3. [Apply the policy](/reference/fleet/agent-policy.md#apply-a-policy) to an {{agent}}.
 
     ::::{tip}
     In larger deployments, you should test integration upgrades on a sample {{agent}} before rolling out a larger upgrade initiative. Only after a small trial is deemed successful should the updated policy be rolled out all hosts.
@@ -507,7 +515,7 @@ After [upgrading the integration](https://www.elastic.co/guide/en/fleet/current/
     4. Repeat this process for each policy with the out-of-date integration.
 
         ::::{note}
-        In some instances, for example, when there are hundreds or thousands of different {{agent}}s and policies that need to be updated, this upgrade path is not feasible. In this case, update one policy and use the [Copy a policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#copy-policy) action to apply the updated policy versions to additional policies. This method’s downside is losing the granularity of assessing the individual Integration version changes individually across policies.
+        In some instances, for example, when there are hundreds or thousands of different {{agent}}s and policies that need to be updated, this upgrade path is not feasible. In this case, update one policy and use the [Copy a policy](/reference/fleet/agent-policy.md#copy-policy) action to apply the updated policy versions to additional policies. This method’s downside is losing the granularity of assessing the individual Integration version changes individually across policies.
         ::::
 
 
@@ -539,7 +547,7 @@ Error: fail to enroll: fail to execute request to fleet-server: x509: certificat
 Error: enroll command failed with exit code: 1
 ```
 
-To install or enroll against a self-signed cert {{fleet-server}} {agent}, add in the `--insecure` option to the command:
+To install or enroll against a self-signed cert {{fleet-server}} {{agent}}, add in the `--insecure` option to the command:
 
 ```sh
 sudo ./elastic-agent install --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
@@ -646,6 +654,50 @@ curl -u elastic:<password> --request POST \
 In versions 8.9 and above, an {{agent}} upgrade may fail when the upgrader can’t access a PGP key required to verify the binary signature. For details and a workaround, refer to the [PGP key download fails in an air-gapped environment](https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375) known issue in the version 8.9.0 Release Notes or to the [workaround documentation](https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md) in the elastic-agent GitHub repository.
 
 
+## {{agent}} upgrade fails on Windows with exit status `0xc0000142` [agent-upgrade-fail-windows]
+
+During an {{agent}} upgrade on Windows, {{agent}} spawns a "watcher" process that monitors the upgrade process. Windows attempts to create a temporary console for this process. If Windows can't create this console, the watcher process initialization fails with error code `0xc0000142` (`STATUS_DLL_INIT_FAILED`), resulting in an upgrade failure. {{agent}} logs this error at the `info` level.
+
+The error is caused by Windows [desktop heap exhaustion](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory). When {{agent}} runs as a [Windows service application](https://learn.microsoft.com/en-us/dotnet/framework/windows-services/introduction-to-windows-service-applications), it uses the service desktop, and shares the desktop heap with other running services. If a service process is using windowing resources, but is failing to release them, this may exhaust the desktop heap and affect {{agent}}.
+
+:::{note}
+Interactively-run instances of `elastic-agent.exe` are not subject to this limitation. Only instances running as a service are potentially affected.
+:::
+
+To resolve the issue, you can try the following:
+
+- **Update {{agent}} immediately after a system reboot**
+
+    A system reboot destroys and recreates the desktop heap, resolving any prior exhaustion.
+    Because many memory leaks are gradual, updating {{agent}} immediately after a system reboot may allow {{agent}} to upgrade before the memory leaking application exhausts the desktop heap.
+
+    :::{tip}
+    A [cold startup](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/distinguishing-fast-startup-from-wake-from-hibernation) resets kernel memory, but a fast startup or a wake from hibernation does not.
+    A regular reboot (for example, `shutdown /r /t 0`) results in a cold startup, and resets the desktop heap.
+    :::
+
+- **Update third-party service applications**
+
+    As standard Windows tools such as Task Manager and Process Explorer do not attribute desktop heap usage by application, you have to consider updating all third-party processes that are running as a service. To list these applications, use the following PowerShell command:
+
+    ```powershell
+    PS C:\> Get-Process | Where {$_.SI -eq 0} | Where {$_.MainModule.FileVersionInfo.ProductName -and (-not (($_.MainModule.FileVersionInfo.CompanyName -eq "Microsoft Corporation") -and ($_.MainModule.FileVersionInfo.ProductName -like "*Windows*"))) } | ForEach-Object { $_.MainModule.FileVersionInfo.ProductName + ' - ' + $_.Path }
+    ```
+
+    You can then install any updates from the listed applications' manufacturers.
+
+- **Terminate or uninstall third-party service applications**
+
+    You can try terminating or uninstalling non-critical third-party service applications before updating {{agent}}.
+    Terminating a process releases its desktop heap resources.
+
+    Note that the {{agent}} update process does not require a significant amount of desktop heap resources, so a successful {{agent}} update following the termination or uninstallation of a service application does not necessarily mean that the application was exhausting the desktop heap.
+
+- **Resize the desktop heap**
+
+    As a short-term solution, follow the steps described in the [Microsoft guide](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory) to increase the size of the desktop heap. Note that if a service application is causing a memory leak, increasing the size of the desktop heap may only postpone the desktop heap exhaustion.
+
+
 ## {{agents}} are unable to connect after removing the {{fleet-server}} integration [fleet-server-integration-removed]
 
 When you use {{fleet}}-managed {{agent}}, at least one {{agent}} needs to be running the [{{fleet-server}} integration](https://docs.elastic.co/integrations/fleet_server). In case the policy containing this integration is accidentally removed from {{agent}}, all other agents will not be able to be managed. However, the {{agents}} will continue to send data to their configured output.
@@ -657,9 +709,9 @@ To recover the {{agent}}:
 1. In {{fleet}}, open the **Agents** tab and click **Add agent**.
 2. In the **Add agent** flyout, select an agent policy that contains the **Fleet Server** integration. On Elastic Cloud you can use the **Elastic Cloud agent policy** which includes the integration.
 3. Follow the instructions in the flyout, and stop before running the CLI commands.
-4. Depending on the state of the original {{fleet-server}} {agent}, do one of the following:
+4. Depending on the state of the original {{fleet-server}} {{agent}}, do one of the following:
 
-    * **The original {{fleet-server}} {agent} is still running and healthy**
+    * **The original {{fleet-server}} {{agent}} is still running and healthy**
 
         In this case, you only need to re-enroll the agent with {{fleet}}:
 
@@ -679,7 +731,7 @@ To recover the {{agent}}:
             sudo ./elastic-agent enroll --url=https://fleet-server:8220 --enrollment-token=bXktc3VwZXItc2VjcmV0LWVucm9sbWVudC10b2tlbg==
             ```
 
-    * **The original {{fleet-server}} {agent} is no longer installed**
+    * **The original {{fleet-server}} {{agent}} is no longer installed**
 
         In this case, you need to install the agent again:
 
@@ -713,7 +765,7 @@ To resolve the problem, allocate additional memory to the agent and then restart
 
 ## Error when running {{agent}} commands with `sudo` [agent-sudo-error]
 
-On Linux systems, when you install {{agent}} [without administrative privileges](https://www.elastic.co/guide/en/fleet/current/elastic-agent-unprivileged.html), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
+On Linux systems, when you install {{agent}} [without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
 
 For example, when you run {{agent}} with the `--unprivileged` flag, running the `elastic-agent inspect` command will result in an error like the following:
 
@@ -749,7 +801,7 @@ The previous command generates a local file named `elastic_agent_installation_co
 * {{agent}} Standalone deployed as a `DaemonSet`
 * [Kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) deployed as a `Deployment`
 
-The content of this file is equivalent to what you’d obtain by following the [Run {{agent}} Standalone on Kubernetes](https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html) steps, with the exception that `kube-state-metrics` is not included in the standalone method.
+The content of this file is equivalent to what you’d obtain by following the [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md) steps, with the exception that `kube-state-metrics` is not included in the standalone method.
 
 **Possible issues**
 
@@ -803,9 +855,9 @@ If the installation is correct and all resources are deployed, but data is not f
 
 * Missing cluster-level metrics (provided by `kube-state-metrics`):
 
-    As described in [Run {{agent}} Standalone on Kubernetes](https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/index-types/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
+    As described in [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
 
-    1. Determine which Pod owns the [leadership](https://www.elastic.co/guide/en/fleet/current/kubernetes_leaderelection-provider.html) `lease` in the cluster, with:
+    1. Determine which Pod owns the [leadership](/reference/fleet/kubernetes_leaderelection-provider.md) `lease` in the cluster, with:
 
         ```sh
         kubectl get lease -n kube-system elastic-agent-cluster-leader
@@ -831,7 +883,7 @@ If the installation is correct and all resources are deployed, but data is not f
 
 * Performance problems:
 
-    Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to [Scaling {{agent}} on {{k8s}}](https://www.elastic.co/guide/en/fleet/current/scaling-on-kubernetes.html) for more details about the needed resources.
+    Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to [Scaling {{agent}} on {{k8s}}](/reference/fleet/scaling-on-kubernetes.md) for more details about the needed resources.
 
 
 Extra resources for {{agent}} on Kubernetes troubleshooting and information:

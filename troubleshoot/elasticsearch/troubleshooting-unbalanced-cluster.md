@@ -1,9 +1,21 @@
 ---
+navigation_title: Unbalanced clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unbalanced-cluster.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Troubleshooting an unbalanced cluster [troubleshooting-unbalanced-cluster]
+% marciw move so this is with other cluster topics
+
+# Troubleshoot an unbalanced cluster [troubleshooting-unbalanced-cluster]
 
 Elasticsearch balances shards across data tiers to achieve a good compromise between:
 
@@ -11,9 +23,8 @@ Elasticsearch balances shards across data tiers to achieve a good compromise bet
 * disk usage
 * write load (for indices in data streams)
 
-::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
-
+::::{tip}
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
@@ -21,7 +32,7 @@ Elasticsearch does not take into account the amount or complexity of search quer
 
 There is no guarantee that individual components will be evenly spread across the nodes. This could happen if some nodes have fewer shards, or are using less disk space, but are assigned shards with higher write loads.
 
-Use the [cat allocation command](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-allocation.html) to list workloads per node:
+Use the [cat allocation command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation) to list workloads per node:
 
 ```console
 GET /_cat/allocation?v
@@ -59,7 +70,7 @@ This is not concerning as long as the number of such shards is decreasing and th
 
 If the cluster has this warning repeatedly for an extended period of time (multiple hours), it is possible that the desired balance is diverging too far from the current state.
 
-If so, increase the [`cluster.routing.allocation.balance.threshold`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#shards-rebalancing-heuristics) to reduce the sensitivity of the algorithm that tries to level up the shard count and disk usage within the cluster.
+If so, increase the [`cluster.routing.allocation.balance.threshold`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-heuristics) to reduce the sensitivity of the algorithm that tries to level up the shard count and disk usage within the cluster.
 
 And reset the desired balance using the following API call:
 
@@ -69,3 +80,6 @@ $$$delete-desired-balance-request-example$$$
 DELETE /_internal/desired_balance
 ```
 
+::::{note}
+If your deployment runs on an orchestrating platform such as {{ech}}, {{ece}}, or {{eck}}, the desired balance can only be reset by a user with operator privileges. Refer to [operator privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) for more information.
+::::

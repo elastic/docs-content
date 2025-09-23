@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-ex-threat-detection.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Example: Detect threats with EQL [eql-ex-threat-detection]
@@ -16,13 +21,13 @@ One common variant of regsvr32 misuse is a [Squiblydoo attack](https://attack.mi
 ```
 
 
-## Setup [eql-ex-threat-detection-setup] 
+## Setup [eql-ex-threat-detection-setup]
 
-This tutorial uses a test dataset from [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team) that includes events imitating a Squiblydoo attack. The data has been mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) fields.
+This tutorial uses a test dataset from [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team) that includes events imitating a Squiblydoo attack. The data has been mapped to [Elastic Common Schema (ECS)](ecs://reference/index.md) fields.
 
 To get started:
 
-1. Create an [index template](../../../manage-data/data-store/templates.md) with [data stream enabled](../../../manage-data/data-store/index-types/set-up-data-stream.md#create-index-template):
+1. Create an [index template](../../../manage-data/data-store/templates.md) with [data stream enabled](../../../manage-data/data-store/data-streams/set-up-data-stream.md#create-index-template):
 
     ```console
     PUT /_index_template/my-data-stream-template
@@ -34,13 +39,13 @@ To get started:
     ```
 
 2. Download [`normalized-T1117-AtomicRed-regsvr32.json`](https://raw.githubusercontent.com/elastic/elasticsearch/master/docs/src/yamlRestTest/resources/normalized-T1117-AtomicRed-regsvr32.json).
-3. Use the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index the data to a matching stream:
+3. Use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index the data to a matching stream:
 
     ```sh
     curl -H "Content-Type: application/json" -XPOST "localhost:9200/my-data-stream/_bulk?pretty&refresh" --data-binary "@normalized-T1117-AtomicRed-regsvr32.json"
     ```
 
-4. Use the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html) to verify the data was indexed:
+4. Use the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) to verify the data was indexed:
 
     ```console
     GET /_cat/indices/my-data-stream?v=true&h=health,status,index,docs.count
@@ -55,7 +60,7 @@ To get started:
 
 
 
-## Get a count of regsvr32 events [eql-ex-get-a-count-of-regsvr32-events] 
+## Get a count of regsvr32 events [eql-ex-get-a-count-of-regsvr32-events]
 
 First, get a count of events associated with a `regsvr32.exe` process:
 
@@ -92,7 +97,7 @@ The response returns 143 related events.
 ```
 
 
-## Check for command line artifacts [eql-ex-check-for-command-line-artifacts] 
+## Check for command line artifacts [eql-ex-check-for-command-line-artifacts]
 
 `regsvr32.exe` processes were associated with 143 events. But how was `regsvr32.exe` first called? And who called it? `regsvr32.exe` is a command-line utility. Narrow your results to processes where the command line was used:
 
@@ -152,7 +157,7 @@ The query matches one event with an `event.type` of `creation`, indicating the s
 ```
 
 
-## Check for malicious script loads [eql-ex-check-for-malicious-script-loads] 
+## Check for malicious script loads [eql-ex-check-for-malicious-script-loads]
 
 Check if `regsvr32.exe` later loads the `scrobj.dll` library:
 
@@ -202,9 +207,9 @@ The query matches an event, confirming `scrobj.dll` was loaded.
 ```
 
 
-## Determine the likelihood of success [eql-ex-detemine-likelihood-of-success] 
+## Determine the likelihood of success [eql-ex-detemine-likelihood-of-success]
 
-In many cases, attackers use malicious scripts to connect to remote servers or download other files. Use an [EQL sequence query](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences) to check for the following series of events:
+In many cases, attackers use malicious scripts to connect to remote servers or download other files. Use an [EQL sequence query](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-sequences) to check for the following series of events:
 
 1. A `regsvr32.exe` process
 2. A load of the `scrobj.dll` library by the same process

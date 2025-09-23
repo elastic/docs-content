@@ -1,9 +1,18 @@
 ---
+navigation_title: Migration and upgrades
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/resolve-migrations-failures.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    self: all
+    eck: all
+products:
+  - id: kibana
 ---
 
-# Migration failures [resolve-migrations-failures]
+# Troubleshoot {{kib}} migration and upgrades [resolve-migrations-failures]
 
 Migrating {{kib}} primarily involves migrating saved object documents to be compatible with the new version.
 
@@ -12,7 +21,7 @@ Migrating {{kib}} primarily involves migrating saved object documents to be comp
 
 If {{kib}} unexpectedly terminates while migrating a saved object index, {{kib}} automatically attempts to perform the migration again when the process restarts. Do not delete any saved objects indices to fix a failed migration. Unlike previous versions, {{kib}} 7.12.0 and later does not require deleting indices to release a failed migration lock.
 
-If upgrade migrations fail repeatedly, refer to [preparing for migration](../../deploy-manage/upgrade/deployment-or-cluster.md#preventing-migration-failures). When you address the root cause for the migration failure, {{kib}} automatically retries the migration. If you’re unable to resolve a failed migration, contact Support.
+If upgrade migrations fail repeatedly, refer to [preparing for migration](../../deploy-manage/upgrade/prepare-to-upgrade.md). When you address the root cause for the migration failure, {{kib}} automatically retries the migration. If you’re unable to resolve a failed migration, contact Support.
 
 
 ## Corrupt saved objects [_corrupt_saved_objects]
@@ -86,8 +95,9 @@ You can configure {{kib}} to automatically discard all corrupt objects and trans
 migrations.discardCorruptObjects: "8.4.0"
 ```
 
-**WARNING:** Enabling the flag above will cause the system to discard all corrupt objects, as well as those causing transform errors. Thus, it is HIGHLY recommended that you carefully review the list of conflicting objects in the logs.
-
+:::{warning}
+Enabling the flag above will cause the system to discard all corrupt objects, as well as those causing transform errors. Thus, it is HIGHLY recommended that you carefully review the list of conflicting objects in the logs.
+:::
 
 ## Documents for unknown saved objects [unknown-saved-object-types]
 
@@ -156,7 +166,7 @@ If the cluster exceeded the low watermark for disk usage, the output should cont
 "The node is above the low watermark cluster setting [cluster.routing.allocation.disk.watermark.low=85%], using more disk space than the maximum allowed [85.0%], actual free: [11.692661332965082%]"
 ```
 
-Refer to the {{es}} guide for how to [fix common cluster issues](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-usage-exceeded.html).
+Refer to the {{es}} guide for how to [fix common cluster issues](/troubleshoot/elasticsearch/fix-watermark-errors.md).
 
 If routing allocation is the issue, the `_cluster/allocation/explain` API will return an entry similar to this:
 
@@ -192,4 +202,4 @@ PUT /_cluster/settings
 
 When upgrading, {{kib}} creates new indices requiring a small number of new shards. If the amount of open {{es}} shards approaches or exceeds the {{es}} `cluster.max_shards_per_node` setting, {{kib}} is unable to complete the upgrade. Ensure that {{kib}} is able to add at least 10 more shards by removing indices to clear up resources, or by increasing the `cluster.max_shards_per_node` setting.
 
-For more information, refer to the documentation on [total shards per node](https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-total-shards.html).
+For more information, refer to the documentation on [total shards per node](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md).

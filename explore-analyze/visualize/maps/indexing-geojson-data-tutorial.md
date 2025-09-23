@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/indexing-geojson-data-tutorial.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Tutorial: Index GeoJSON data [indexing-geojson-data-tutorial]
@@ -8,7 +13,7 @@ mapped_pages:
 In this tutorial, you’ll build a customized map that shows the flight path between two airports, and the lightning hot spots on that route. You’ll learn to:
 
 * Import GeoJSON files into Kibana
-* Index the files in {es}
+* Index the files in {{es}}
 * Display the data in a multi-layer map
 
 
@@ -30,12 +35,12 @@ The data represents two real airports, two fictitious flight routes, and fictiti
 1. [Create a new map](maps-getting-started.md#maps-create).
 2. Zoom in on the New England area in the northeast United States.
 
-    You’re adding flight paths to this area, and this sets up the map for a good view of the data.
+   You’re adding flight paths to this area, and this sets up the map for a good view of the data.
 
-    :::{image} ../../../images/kibana-fu_gs_new_england_map.png
-    :alt: fu gs new england map
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-fu_gs_new_england_map.png
+   :alt: fu gs new england map
+   :screenshot:
+   :::
 
 
 
@@ -47,7 +52,7 @@ For each GeoJSON file you downloaded, complete the following steps:
 2. From the list of layer types, click **Upload file**.
 3. Using the File Picker, upload the GeoJSON file.
 
-    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html) and **Index name** with `<file name>`.
+    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md) and **Index name** with `<file name>`.
 
 4. Click **Import file**.
 
@@ -58,23 +63,23 @@ For each GeoJSON file you downloaded, complete the following steps:
 7. Click **Keep changes**.
 8. Once you’ve added all of the sample files, [save your map](maps-getting-started.md#maps-save).
 
-    At this point, you could consider the map complete, but there are a few additions and tweaks that you can make to tell a better story with your data.
+   At this point, you could consider the map complete, but there are a few additions and tweaks that you can make to tell a better story with your data.
 
-    :::{image} ../../../images/kibana-fu_gs_flight_paths.png
-    :alt: fu gs flight paths
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-fu_gs_flight_paths.png
+   :alt: fu gs flight paths
+   :screenshot:
+   :::
 
 
 
 ## Add a heatmap aggregation layer [_add_a_heatmap_aggregation_layer]
 
-Looking at the `Lightning detected` layer, it’s clear where lightning has struck. What’s less clear, is if there have been more lightning strikes in some areas than others, in other words, where the lightning hot spots are. An advantage of having indexed [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) data for the lightning strikes is that you can perform aggregations on the data.
+Looking at the `Lightning detected` layer, it’s clear where lightning has struck. What’s less clear, is if there have been more lightning strikes in some areas than others, in other words, where the lightning hot spots are. An advantage of having indexed [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) data for the lightning strikes is that you can perform aggregations on the data.
 
 1. Click **Add layer**.
 2. From the list of layer types, click **Heat map**.
 
-    Because you indexed `lightning_detected.geojson` using the index name and pattern `lightning_detected`, that data is available as a [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) aggregation.
+    Because you indexed `lightning_detected.geojson` using the index name and pattern `lightning_detected`, that data is available as a [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) aggregation.
 
 3. Select `lightning_detected`.
 4. Click **Add layer** to add the heat map layer "Lightning intensity".
@@ -87,12 +92,12 @@ Looking at the `Lightning detected` layer, it’s clear where lightning has stru
 
 6. When you’re finished modifying settings, click **Keep changes**.
 
-    With your new lightning heat map layer, your map should look like this:
+   With your new lightning heat map layer, your map should look like this:
 
-    :::{image} ../../../images/kibana-fu_gs_lightning_intensity.png
-    :alt: fu gs lightning intensity
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-fu_gs_lightning_intensity.png
+   :alt: fu gs lightning intensity
+   :screenshot:
+   :::
 
 
 
@@ -109,8 +114,8 @@ When you’ve finished, again be sure to [save your work ](maps-getting-started.
 
 Your final map might look like this:
 
-:::{image} ../../../images/kibana-fu_gs_final_map.png
+:::{image} /explore-analyze/images/kibana-fu_gs_final_map.png
 :alt: fu gs final map
-:class: screenshot
+:screenshot:
 :::
 

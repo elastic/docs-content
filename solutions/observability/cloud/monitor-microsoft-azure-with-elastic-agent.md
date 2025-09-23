@@ -1,12 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-azure-elastic-agent.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 # Monitor Microsoft Azure with Elastic Agent [monitor-azure-elastic-agent]
 
-::::{admonition}
-**New to Elastic?** Follow the steps in our [getting started guide](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
+::::{note}
+**New to Elastic?** Follow the steps in our [getting started guide](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
 
 **Using the native Azure integration from the marketplace?** Refer to [Monitor Microsoft Azure with the Azure Native ISV Service](monitor-microsoft-azure-with-azure-native-isv-service.md).
 
@@ -39,18 +44,18 @@ The [Azure REST API](https://learn.microsoft.com/en-us/rest/api/azure/) allows y
 2. In the navigation pane, select **App registrations** and then click **New registration**.
 3. Type the name of your application (this tutorial uses `ingest-tutorial-monitor-azure`) and click **Register** (accept the default values for other settings).
 
-    :::{image} ../../../images/observability-agent-tut-azure-register-app.png
+    :::{image} /solutions/images/observability-agent-tut-azure-register-app.png
     :alt: Screenshot of the application registration
-    :class: screenshot
+    :screenshot:
     :::
 
     Copy the **Application (client) ID** and save it for later. This ID is required to configure {{agent}} to connect to your Azure account.
 
 4. In the navigation pane, select **Certificates & secrets**, and then click **New client secret** to create a new security key.
 
-    :::{image} ../../../images/observability-agent-tut-azure-click-client-secret.png
+    :::{image} /solutions/images/observability-agent-tut-azure-click-client-secret.png
     :alt: Screenshot of adding a new client secret
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Type a description of the secret and select an expiration. Click **Add** to create the client secret. Under **Value**, copy the secret value and save it (along with your client ID) for later.
@@ -76,9 +81,9 @@ After creating the Azure service principal, you need to grant it the correct per
 8. For the description, enter the name of your service principal.
 9. Click **Next** to review the role assignment:
 
-    :::{image} ../../../images/observability-agent-tut-azure-add-role-assignment.png
+    :::{image} /solutions/images/observability-agent-tut-azure-add-role-assignment.png
     :alt: Screen capture of adding a role assignment
-    :class: screenshot
+    :screenshot:
     :::
 
 10. Click **Review + assign** to grant the service principal access to your subscription.
@@ -90,7 +95,7 @@ In this step, you install the Azure Billing Metrics integration in {{kib}}. This
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **Azure Billing** and select the Azure Billing Metrics integration to see more details about it.
 3. Click **Add Azure Billing Metrics**.
 4. Under Integration settings, configure the integration name and optionally add a description.
@@ -113,10 +118,10 @@ To add the integration:
     **Subscription ID**
     :   The subscription ID listed on the main Subscriptions page.
 
-    :::{image} ../../../images/observability-agent-tut-azure-integration-settings.png
-    :alt: Screenshot of integration settings for Azure
-    :class: screenshot
-    :::
+        :::{image} /solutions/images/observability-agent-tut-azure-integration-settings.png
+        :alt: Screenshot of integration settings for Azure
+        :screenshot:
+        :::
 
 6. Make sure the **Collect Azure Billing metrics** selector is turned on.
 7. Accept the defaults to create a new agent policy.
@@ -157,11 +162,11 @@ It takes a few minutes for {{agent}} to enroll in {{fleet}}, download the config
 
 ## Step 4: Visualize Azure billing metrics [azure-elastic-agent-visualize-metrics]
 
-Now that the metrics are streaming to {{es}}, you can visualize them in {{kib}}. Find **Dashboards** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Search for Azure Billing and select the dashboard called **[Azure Billing] Billing Overview**.
+Now that the metrics are streaming to {{es}}, you can visualize them in {{kib}}. Find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for Azure Billing and select the dashboard called **[Azure Billing] Billing Overview**.
 
-:::{image} ../../../images/observability-agent-tut-azure-billing-dashboard.png
+:::{image} /solutions/images/observability-agent-tut-azure-billing-dashboard.png
 :alt: Screenshot of Azure billing overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Keep in mind {{agent}} collects data every 24 hours.
@@ -185,9 +190,9 @@ To create an Azure event hub:
 3. Click **Create** and create a new Event Hubs namespace. You’ll need to create a new resource group, or choose an existing one.
 4. Enter the required settings for the namespace and click **Review + create**.
 
-    :::{image} ../../../images/observability-agent-tut-azure-create-eventhub.png
+    :::{image} /solutions/images/observability-agent-tut-azure-create-eventhub.png
     :alt: Screenshot of window for creating an event hub namespace
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Create** to deploy the resource.
@@ -195,12 +200,12 @@ To create an Azure event hub:
 7. Click **Review + create**, and then click **Create** to deploy the resource.
 8. Make a note of the namespace and event hub name because you will need them later.
 
-:::::{admonition}
+:::::{note}
 **When do I need more than one event hub?**
 
 Typically you create an event hub for each service you want to monitor. For example, imagine that you want to collect activity logs from the Azure Monitor service plus signin and audit logs from the Active Directory service. Rather than sending all logs to a single event hub, you create an event hub for each service:
 
-:::{image} ../../../images/observability-agent-tut-azure-event-hub-diagram.png
+:::{image} /solutions/images/observability-agent-tut-azure-event-hub-diagram.png
 :alt: Diagram that shows an event hub for Active Directory logs and an event hub for activity logs
 :::
 
@@ -229,9 +234,9 @@ To configure diagnostic settings for the Azure Monitor service:
 5. In the list of log categories, select the logs you want to export.
 6. Under Destination details, select **Stream to an event hub** and select the namespace and event hub you created earlier. For example:
 
-    :::{image} ../../../images/observability-agent-tut-azure-log-categories.png
+    :::{image} /solutions/images/observability-agent-tut-azure-log-categories.png
     :alt: Screenshot of Azure diagnostic settings showing Administrative
-    :class: screenshot
+    :screenshot:
     :::
 
 7. Save the diagnostic settings.
@@ -243,7 +248,7 @@ Now that activity logs are streaming into the event hub, you can configure the A
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **Azure activity logs** and select the Azure activity logs integration to see more details about it.
 3. Click **Add Azure activity logs**.
 4. Under Integration settings, configure the integration name and optionally add a description.
@@ -266,10 +271,10 @@ To add the integration:
     **Storage account key**
     :   A valid access key defined for the storage account.
 
-    :::{image} ../../../images/observability-agent-tut-azure-activity-log-settings.png
-    :alt: Screenshot of integration settings for Azure activity logs
-    :class: screenshot
-    :::
+        :::{image} /solutions/images/observability-agent-tut-azure-activity-log-settings.png
+        :alt: Screenshot of integration settings for Azure activity logs
+        :screenshot:
+        :::
 
 6. Make sure the **Collect Azure activity logs from Event Hub** selector is turned on.
 7. Under **Existing hosts**, select the agent policy that created earlier.
@@ -281,13 +286,13 @@ To add the integration:
 
 ## Step 5: Visualize Azure activity logs [azure-elastic-agent-visualize-azure-logs]
 
-Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Notice that you can filter on a specific data stream. For example, you can use `data_stream.dataset : "azure.activitylogs"` to show Azure activity logs.
+Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Notice that you can filter on a specific data stream. For example, you can use `data_stream.dataset : "azure.activitylogs"` to show Azure activity logs.
 
 The Azure activity logs integration also comes with pre-built dashboards that you can use to visualize the data. In {{kib}}, open the main menu and click **Dashboard**. Search for Azure activity and select the dashboard called **[Logs Azure] User Activity**:
 
-:::{image} ../../../images/observability-agent-tut-azure-activity-logs-dashboard.png
+:::{image} /solutions/images/observability-agent-tut-azure-activity-logs-dashboard.png
 :alt: Screenshot of Azure activity logs dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Congratulations! You have completed the tutorial.

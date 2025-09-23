@@ -1,36 +1,31 @@
 ---
-navigation_title: "Semantic search with `semantic_text`"
+navigation_title: Semantic search with `semantic_text`
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html
+applies_to:
+  stack:
+  serverless:
+products:
+  - id: elasticsearch
 ---
 
-
-
 # Semantic search with `semantic_text` [semantic-search-semantic-text]
-
-
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
 
 This tutorial shows you how to use the semantic text feature to perform semantic search on your data.
 
 Semantic text simplifies the {{infer}} workflow by providing {{infer}} at ingestion time and sensible default values automatically. You don’t need to define model related settings and parameters, or create {{infer}} ingest pipelines.
 
-The recommended way to use [semantic search](../semantic-search.md) in the {{stack}} is following the `semantic_text` workflow. When you need more control over indexing and query settings, you can still use the complete {{infer}} workflow (refer to  [this tutorial](../inference-api.md) to review the process).
+The recommended way to use [semantic search](../semantic-search.md) in the {{stack}} is following the `semantic_text` workflow. When you need more control over indexing and query settings, you can still use the complete {{infer}} workflow (refer to  [this tutorial](../../../explore-analyze/elastic-inference/inference-api.md) to review the process).
 
-This tutorial uses the [`elasticsearch` service](../inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
-
+This tutorial uses the [`elasticsearch` service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
 
 ## Requirements [semantic-text-requirements]
 
-This tutorial uses the [`elasticsearch` service](../inference-api/elasticsearch-inference-integration.md) for demonstration, which is created automatically as needed. To use the `semantic_text` field type with an {{infer}} service other than `elasticsearch` service, you must create an inference endpoint using the [Create {{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html).
-
+This tutorial uses the `elasticsearch` service for demonstration, which is created automatically as needed. To use the `semantic_text` field type with an {{infer}} service other than `elasticsearch` service, you must create an inference endpoint using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 
 ## Create the index mapping [semantic-text-index-mapping]
 
-The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html) field type to index the output of the used inference endpoint.
+The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
 
 ```console
 PUT semantic-embeddings
@@ -46,11 +41,10 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elasticsearch` for the [`elasticsearch` service](../inference-api/elasticsearch-inference-integration.md) is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
-
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elasticsearch` for the `elasticsearch` service is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
 
 ::::{note}
-If you’re using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
+If you’re using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
 
 ::::
 
@@ -62,7 +56,7 @@ In this step, you load the data that you later use to create embeddings from it.
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names**, assign `id` to the first column and `content` to the second. Click **Apply**, then **Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Reindex the data [semantic-text-reindex-data]
@@ -106,15 +100,23 @@ POST _tasks/<task_id>/_cancel
 
 ## Semantic search [semantic-text-semantic-search]
 
-After the data set has been enriched with the embeddings, you can query the data using semantic search. Provide the `semantic_text` field name and the query text in a `semantic` query type. The {{infer}} endpoint used to generate the embeddings for the `semantic_text` field will be used to process the query text.
+After the data has been indexed with the embeddings, you can query the data using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax to execute the query.
 
-```console
+::::{tab-set}
+:group: query-type
+
+:::{tab-item} Query DSL
+:sync: dsl
+
+The Query DSL approach uses the `semantic` query type with the `semantic_text` field:
+
+```esql
 GET semantic-embeddings/_search
 {
   "query": {
     "semantic": {
       "field": "content", <1>
-      "query": "How to avoid muscle soreness while running?" <2>
+      "query": "What causes muscle soreness after running?" <2>
     }
   }
 }
@@ -122,13 +124,36 @@ GET semantic-embeddings/_search
 
 1. The `semantic_text` field on which you want to perform the search.
 2. The query text.
+:::
+
+:::{tab-item} ES|QL
+:sync: esql
+
+The ES|QL approach uses the [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator), which automatically detects the `semantic_text` field and performs the search on it. The query uses `METADATA _score` to sort by `_score` in descending order.
 
 
-As a result, you receive the top 10 documents that are closest in meaning to the query from the `semantic-embedding` index.
+```console
+POST /_query?format=txt
+{
+  "query": """
+    FROM semantic-embeddings METADATA _score <1>
+    | WHERE content: "How to avoid muscle soreness while running?" <2>
+    | SORT _score DESC <3>
+    | LIMIT 1000 <4>
+  """
+}
+```
+1. The `METADATA _score` clause is used to return the score of each document
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) is used on the `content` field for standard keyword matching
+3. Sorts by descending score to display the most relevant results first
+4. Limits the results to 1000 documents
+
+:::
+::::
 
 
 ## Further examples and reading [semantic-text-further-examples]
 
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
-* For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
-* To learn more about model autoscaling, refer to the [trained model autoscaling](../../../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md) page.
+* For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
+* To learn more about model autoscaling, refer to the [trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) page.

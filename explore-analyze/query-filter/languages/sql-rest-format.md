@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Response Data Formats [sql-rest-format]
@@ -14,9 +19,8 @@ The URL parameter takes precedence over the `Accept` HTTP header. If neither is 
 ::::
 
 
-|     |     |     |
+| format | `Accept` HTTP header | Description |
 | --- | --- | --- |
-| **format** | **`Accept` HTTP header** | **Description** |
 | Human Readable |
 | `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
 | `json` | `application/json` | [JSON](https://www.json.org/) (JavaScript Object Notation) human-readable format |

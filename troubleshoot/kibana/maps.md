@@ -1,29 +1,34 @@
 ---
-navigation_title: "Troubleshoot"
+navigation_title: Maps
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-troubleshooting.html
+applies_to:
+  stack: all
+  serverless: all
+products:
+  - id: kibana
 ---
 
 
 
-# Maps [maps-troubleshooting]
+# Troubleshoot {{kib}} Maps [maps-troubleshooting]
 
 
-Use the information in this section to inspect Elasticsearch requests and find solutions to common problems.
+Use the information in this section to inspect Elasticsearch requests and find solutions to common problems with {{kib}} Maps.
 
 
 ## Inspect Elasticsearch requests [_inspect_elasticsearch_requests]
 
-Maps uses the [{{es}} vector tile search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html) and the [{{es}} search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to get documents and aggregation results from {{es}}. Use **Vector tiles** inspector to view {{es}} vector tile search API requests. Use **Requests** inspector to view {{es}} search API requests.
+Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) and the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. Use **Vector tiles** inspector to view {{es}} vector tile search API requests. Use **Requests** inspector to view {{es}} search API requests.
 
-:::{image} ../../images/kibana-vector_tile_inspector.png
+:::{image} /troubleshoot/images/kibana-vector_tile_inspector.png
 :alt: vector tile inspector
-:class: screenshot
+:screenshot:
 :::
 
-:::{image} ../../images/kibana-requests_inspector.png
+:::{image} /troubleshoot/images/kibana-requests_inspector.png
 :alt: requests inspector
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -32,7 +37,7 @@ Maps uses the [{{es}} vector tile search API](https://www.elastic.co/guide/en/el
 
 ### Data view not listed when adding layer [_data_view_not_listed_when_adding_layer]
 
-* Verify your geospatial data is correctly mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html).
+* Verify your geospatial data is correctly mapped as [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md).
 
     * Run `GET myIndexName/_field_caps?fields=myGeoFieldName` in [Console](../../explore-analyze/query-filter/tools/console.md), replacing `myIndexName` and `myGeoFieldName` with your index and geospatial field name.
     * Ensure response specifies `type` as `geo_point` or `geo_shape`.
@@ -44,7 +49,7 @@ Maps uses the [{{es}} vector tile search API](https://www.elastic.co/guide/en/el
     * Ensure your geospatial field is searchable and aggregatable.
     * If your geospatial field type does not match your Elasticsearch mapping, click the **Refresh** button to refresh the field list from Elasticsearch.
 
-* Data views with thousands of fields can exceed the default maximum payload size. Increase [`server.maxPayload`](../../deploy-manage/deploy/self-managed/configure.md) for large data views.
+* Data views with thousands of fields can exceed the default maximum payload size. Increase [`server.maxPayload`](kibana://reference/configuration-reference/general-settings.md) for large data views.
 
 
 ### Features are not displayed [_features_are_not_displayed]

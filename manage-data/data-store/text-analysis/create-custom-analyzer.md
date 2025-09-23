@@ -1,52 +1,57 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-custom-analyzer.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Create a custom analyzer [analysis-custom-analyzer]
 
 When the built-in analyzers do not fulfill your needs, you can create a `custom` analyzer which uses the appropriate combination of:
 
-* zero or more [character filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html)
-* a [tokenizer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html)
-* zero or more [token filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html).
+* zero or more [character filters](elasticsearch://reference/text-analysis/character-filter-reference.md)
+* a [tokenizer](elasticsearch://reference/text-analysis/tokenizer-reference.md)
+* zero or more [token filters](elasticsearch://reference/text-analysis/token-filter-reference.md).
 
 
-## Configuration [_configuration] 
+## Configuration [_configuration]
 
 The `custom` analyzer accepts the following parameters:
 
 `type`
-:   Analyzer type. Accepts [built-in analyzer types](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html). For custom analyzers, use `custom` or omit this parameter.
+:   Analyzer type. Accepts [built-in analyzer types](elasticsearch://reference/text-analysis/analyzer-reference.md). For custom analyzers, use `custom` or omit this parameter.
 
 `tokenizer`
-:   A built-in or customised [tokenizer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html). (Required)
+:   A built-in or customised [tokenizer](elasticsearch://reference/text-analysis/tokenizer-reference.md). (Required)
 
 `char_filter`
-:   An optional array of built-in or customised [character filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html).
+:   An optional array of built-in or customised [character filters](elasticsearch://reference/text-analysis/character-filter-reference.md).
 
 `filter`
-:   An optional array of built-in or customised [token filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html).
+:   An optional array of built-in or customised [token filters](elasticsearch://reference/text-analysis/token-filter-reference.md).
 
 `position_increment_gap`
-:   When indexing an array of text values, Elasticsearch inserts a fake "gap" between the last term of one value and the first term of the next value to ensure that a phrase query doesn’t match two terms from different array elements. Defaults to `100`. See [`position_increment_gap`](https://www.elastic.co/guide/en/elasticsearch/reference/current/position-increment-gap.html) for more.
+:   When indexing an array of text values, Elasticsearch inserts a fake "gap" between the last term of one value and the first term of the next value to ensure that a phrase query doesn’t match two terms from different array elements. Defaults to `100`. See [`position_increment_gap`](elasticsearch://reference/elasticsearch/mapping-reference/position-increment-gap.md) for more.
 
 
-## Example configuration [_example_configuration] 
+## Example configuration [_example_configuration]
 
 Here is an example that combines the following:
 
 Character Filter
-:   * [HTML Strip Character Filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-htmlstrip-charfilter.html)
+:   * [HTML Strip Character Filter](elasticsearch://reference/text-analysis/analysis-htmlstrip-charfilter.md)
 
 
 Tokenizer
-:   * [Standard Tokenizer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-tokenizer.html)
+:   * [Standard Tokenizer](elasticsearch://reference/text-analysis/analysis-standard-tokenizer.md)
 
 
 Token Filters
-:   * [Lowercase Token Filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lowercase-tokenfilter.html)
-* [ASCII-Folding Token Filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-asciifolding-tokenfilter.html)
+:   * [Lowercase Token Filter](elasticsearch://reference/text-analysis/analysis-lowercase-tokenfilter.md)
+* [ASCII-Folding Token Filter](elasticsearch://reference/text-analysis/analysis-asciifolding-tokenfilter.md)
 
 
 ```console
@@ -92,16 +97,16 @@ The previous example used tokenizer, token filters, and character filters with t
 Here is a more complicated example that combines the following:
 
 Character Filter
-:   * [Mapping Character Filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-mapping-charfilter.html), configured to replace `:)` with `_happy_` and `:(` with `_sad_`
+:   * [Mapping Character Filter](elasticsearch://reference/text-analysis/analysis-mapping-charfilter.md), configured to replace `:)` with `_happy_` and `:(` with `_sad_`
 
 
 Tokenizer
-:   * [Pattern Tokenizer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-tokenizer.html), configured to split on punctuation characters
+:   * [Pattern Tokenizer](elasticsearch://reference/text-analysis/analysis-pattern-tokenizer.md), configured to split on punctuation characters
 
 
 Token Filters
-:   * [Lowercase Token Filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lowercase-tokenfilter.html)
-* [Stop Token Filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stop-tokenfilter.html), configured to use the pre-defined list of English stop words
+:   * [Lowercase Token Filter](elasticsearch://reference/text-analysis/analysis-lowercase-tokenfilter.md)
+* [Stop Token Filter](elasticsearch://reference/text-analysis/analysis-stop-tokenfilter.md), configured to use the pre-defined list of English stop words
 
 
 Here is an example:

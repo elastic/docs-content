@@ -1,23 +1,23 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/api-keys.html
+applies_to:
+  stack: ga
+products:
+  - id: kibana
 ---
 
-# Elasticsearch API keys [api-keys]
+# {{es}} API keys [api-keys]
 
-API keys are security mechanisms used to authenticate and authorize access to {{es}} resources. They ensure that only authorized users or applications interact with {{es}}.
+Several types of {{es}} API keys exist:
 
-For example, if you extract data from an {{es}} cluster on a daily basis, you might create an API key tied to your credentials, configure it with minimum access, and then put the API credentials into a cron job. Or you might create API keys to automate ingestion of new data from remote sources, without a live user interaction.
+* **Personal/User** API key: allows external services to access the {{stack}} on behalf of a user.
+* **Cross-cluster** API key: allows other clusters to connect to this cluster.
+* **Managed** API key: created and managed by {{kib}} to run background tasks.
 
-You can use {{kib}} to manage your different API keys:
+To manage API keys in {{kib}}, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-* User API key: allows external services to access the Elastic Stack on behalf of a user.
-* Cross-cluster API key: allows other clusters to connect to this cluster.
-* Managed API key: created and managed by Kibana to run background tasks.
-
-To manage API keys, go to the **API Keys** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
-
-![API Keys UI](../../images/kibana-api-keys.png "")
+![API Keys UI](/deploy-manage/images/kibana-api-keys.png "")
 
 
 ## Security privileges [api-keys-security-privileges]
@@ -28,28 +28,46 @@ To manage API keys, go to the **API Keys** management page using the navigation 
 * To create or update a **cross-cluster API key**, you must have the `manage_security` privilege and an Enterprise license.
 * To have a read-only view on the API keys, you must have access to the page and the `read_security` cluster privilege.
 
-To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search), or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles).
+To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles).
 
 
 ## Create an API key [create-api-key]
 
-To create an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search), and select **Create API key**.
+Two methods are available to create an API key:
 
-![Create API Key UI](../../images/kibana-create-ccr-api-key.png "")
+* As a quick option to create a personal API key from anywhere in {{kib}}:
+  1. From the **Help menu** (![help icon](/deploy-manage/images/help-icon.svg)), select **Connection details > API key**.  
+  1. Give the key a name.
+  1. Select **Create API key**.
+  
+  Your personal API key is created with a default expiration of 90 days from the time of creation. You can manage the key from the **API Keys** page.
 
-Refer to the [create API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) documentation to learn more about creating user API keys.
+* To create a personal or cross-cluster API key with configurable options, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create API key**.
 
-Refer to the [create cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) documentation to learn more about creating cross-cluster API keys.
+  ![Create API Key UI](/deploy-manage/images/kibana-create-user-api-key.png "")
 
+  1. Choose to create either a user or a cross-cluster API key.
+  2. Optionally, set an expiry date. By default the API key will not expire, but it's a good security practice to give the key a limited lifespan.
+  3. Configure access:
+      * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation to learn more.
+      * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to the [Create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
+  4. Add any additional metadata about the API as one or more key-value pairs. Refer to the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation for examples.
 
-## Update an API key [udpate-api-key]
+## Update an API key [update-api-key]
 
-To update an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search), and then click on the name of the key. You cannot update the name or the type of API key.
+To update an API key, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and then click on the name of the key. You cannot update the name or the type of an API key.
 
-Refer to the [update API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html) documentation to learn more about updating user API keys.
+* For a user API key, you can update:
+  * The API key's access to {{es}} APIs and resources.
+  * The metadata associated with the key.
+ 
+  Refer to the [Update API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-api-key) API documentation to learn more.
 
-Refer to the [update cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-cross-cluster-api-key.html) documentation to learn more about updating cross-cluster API keys.
-
+* For a cross-cluster API key, you can update:
+  * The indices that other clusters have access to.
+  * The metadata associated with the key.
+ 
+  Refer to the [Update cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-cross-cluster-api-key) API documentation to learn more.
 
 ## View and delete API keys [view-api-keys]
 

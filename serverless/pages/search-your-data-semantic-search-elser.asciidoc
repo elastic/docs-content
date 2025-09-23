@@ -1,0 +1,9 @@
+[[elasticsearch-reference-semantic-search-elser]]
+= Tutorial: Semantic search with ELSER
+
+// :description: Perform semantic search using ELSER, an NLP model trained by Elastic.
+// :keywords: elasticsearch, elser, semantic search
+
+// This page is not included in the index file, so it is not visible in the navigation menu anymore. HTTP redirects will be set up.
+
+ℹ️ Refer to <<elasticsearch-reference-semantic-search>> for an overview of semantic search in {es-serverless}.

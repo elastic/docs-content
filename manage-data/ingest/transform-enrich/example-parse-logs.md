@@ -1,7 +1,12 @@
 ---
-navigation_title: "Example"
+navigation_title: Example
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/common-log-format-example.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 
@@ -13,7 +18,7 @@ In this example tutorial, you’ll use an [ingest pipeline](ingest-pipelines.md)
 
 The logs you want to parse look similar to this:
 
-```log
+```txt
 212.87.37.154 - - [05/May/2099:16:21:15 +0000] "GET /favicon.ico HTTP/1.1" 200 3638 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
 ```
 
@@ -21,19 +26,19 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
 1. In {{kib}}, open the main menu and click **Stack Management** > **Ingest Pipelines**.
 
-    :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-list.png
+    :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-list.png
     :alt: Kibana's Ingest Pipelines list view
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click **Create pipeline > New pipeline**.
 3. Set **Name** to `my-pipeline` and optionally add a description for the pipeline.
-4. Add a [grok processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html) to parse the log message:
+4. Add a [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) to parse the log message:
 
     1. Click **Add a processor** and select the **Grok** processor type.
     2. Set **Field** to `message` and **Patterns** to the following [grok pattern](../../../explore-analyze/scripting/grok.md):
 
-        ```grok
+        ```text
         %{IPORHOST:source.ip} %{USER:user.id} %{USER:user.name} \[%{HTTPDATE:@timestamp}\] "%{WORD:http.request.method} %{DATA:url.original} HTTP/%{NUMBER:http.version}" %{NUMBER:http.response.status_code:int} (?:-|%{NUMBER:http.response.body.bytes:int}) %{QS:http.request.referrer} %{QS:user_agent}
         ```
 
@@ -44,15 +49,15 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
     | Processor type | Field | Additional options | Description |
     | --- | --- | --- | --- |
-    | [**Date**](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-processor.html) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
-    | [**GeoIP**](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
-    | [**User agent**](https://www.elastic.co/guide/en/elasticsearch/reference/current/user-agent-processor.html) | `user_agent` |  | `Extract fields from 'user_agent'` |
+    | [**Date**](elasticsearch://reference/enrich-processor/date-processor.md) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
+    | [**GeoIP**](elasticsearch://reference/enrich-processor/geoip-processor.md) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
+    | [**User agent**](elasticsearch://reference/enrich-processor/user-agent-processor.md) | `user_agent` |  | `Extract fields from 'user_agent'` |
 
     Your form should look similar to this:
 
-    :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-processor.png
+    :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-processor.png
     :alt: Processors for Ingest Pipelines
-    :class: screenshot
+    :screenshot:
     :::
 
     The four processors will run sequentially:<br> Grok > Date > GeoIP > User agent<br> You can reorder processors using the arrow icons.
@@ -110,9 +115,9 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 8. Click **Run the pipeline** and verify the pipeline worked as expected.
 9. If everything looks correct, close the panel, and then click **Create pipeline**.
 
-    You’re now ready to index the logs data to a [data stream](../../data-store/index-types/data-streams.md).
+    You’re now ready to index the logs data to a [data stream](../../data-store/data-streams.md).
 
-10. Create an [index template](../../data-store/templates.md) with [data stream enabled](../../data-store/index-types/set-up-data-stream.md#create-index-template).
+10. Create an [index template](../../data-store/templates.md) with [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template).
 
     ```console
     PUT _index_template/my-data-stream-template
@@ -132,7 +137,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
     }
     ```
 
-12. To verify, search the data stream to retrieve the document. The following search uses [`filter_path`](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#common-options-response-filtering) to return only the [document source](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html).
+12. To verify, search the data stream to retrieve the document. The following search uses [`filter_path`](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) to return only the [document source](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md).
 
     ```console
     GET my-data-stream/_search?filter_path=hits.hits._source

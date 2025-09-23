@@ -1,9 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_manage_dashboards.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
-# Managing [_manage_dashboards]
+# Managing dashboards [_manage_dashboards]
 
 
 ## Browse dashboards [find-dashboards]
@@ -31,7 +36,7 @@ The creator information is only available for dashboards created on or after ver
 ::::
 
 
-:::{image} ../../images/kibana-dashboard-filter-by-creator.png
+:::{image} /explore-analyze/images/kibana-dashboard-filter-by-creator.png
 :alt: Option to filter the list of dashboards by creator
 :::
 
@@ -42,21 +47,21 @@ By default, your most recently viewed dashboards are displayed first. You can in
 
 ## Keep track of your favorite dashboards [_keep_track_of_your_favorite_dashboards]
 
-You can mark any dashboards as favorite, using the ✩ **star icon**.
+You can mark any dashboards as favorite, using the ✩ **star icon** from the **Dashboards** page or from the dashboard itself.
 
 All dashboards marked as favorite are gathered in the **Starred** tab so you can find them quickly.
 
 The list of starred dashboards is personal. Dashboards marked as favorite by other users only appear for those users.
 
-![List of starred dashboards](../../images/kibana-dashboard-starred-list.png "")
+![List of starred dashboards](/explore-analyze/images/kibana-dashboard-starred-list.png "")
 
 
 ## View dashboard usage [_view_dashboard_usage]
 
 You can check how much a dashboard is being used by clicking its **View details** icon in your list of dashboards.
 
-![View details icon in the list of dashboards](../../images/kibana-view-details-dashboards-8.16.0.png "")
+![View details icon in the list of dashboards](/explore-analyze/images/kibana-view-details-dashboards-8.16.0.png "")
 
 These details include a graph showing the total number of views during the last 90 days.
 
-![Graph showing the number of views during the last 90 days](../../images/kibana-dashboard-usage-count.png "")
+![Graph showing the number of views during the last 90 days](/explore-analyze/images/kibana-dashboard-usage-count.png "")

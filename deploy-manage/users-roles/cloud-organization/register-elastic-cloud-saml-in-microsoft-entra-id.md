@@ -1,9 +1,16 @@
 ---
+navigation_title: Microsoft Entra ID
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso-entra.html
+applies_to:
+  deployment:
+    ess: all
+  serverless: all
+products:
+  - id: cloud-hosted
 ---
 
-# Register Elastic Cloud SAML in Microsoft Entra ID [ec-saml-sso-entra]
+# Register {{ecloud}} SAML in Microsoft Entra ID [ec-saml-sso-entra]
 
 To [configure {{ecloud}} SAML SSO](configure-saml-authentication.md) with Microsoft Entra ID (formerly Azure AD) as the identity provider (IdP), perform the following steps.
 

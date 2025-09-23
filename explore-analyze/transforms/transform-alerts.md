@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-alerts.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Generating alerts for transforms [transform-alerts]
 
-{{kib}} {alert-features} include support for {{transform}} health rules, which check the health of {{ctransforms}} with certain conditions. If the conditions of the rule are met, an alert is created and the associated actions run. For example, you can create a rule to check if a {{ctransform}} is started and to notify you in an email if it is not. To learn more about {{kib}} {alert-features}, refer to [Alerting](../alerts/kibana.md#alerting-getting-started).
+{{kib}} {{alert-features}} include support for {{transform}} health rules, which check the health of {{ctransforms}} with certain conditions. If the conditions of the rule are met, an alert is created and the associated actions run. For example, you can create a rule to check if a {{ctransform}} is started and to notify you in an email if it is not. To learn more about {{kib}} {{alert-features}}, refer to [Alerting](../alerts-cases/alerts/alerting-getting-started.md).
 
 ## Creating a rule [creating-transform-rules]
 
@@ -14,11 +19,10 @@ You can create {{transform}} rules under **{{stack-manage-app}} > {{rules-ui}}**
 1. Click **Create rule** and select the {{transform}} health rule type.
 2. Give a name to the rule and optionally provide tags.
 3. Select the {{transform}} or {{transforms}} to include. You can also use a special character (`*`) to apply the rule to all your {{transforms}}. {{transforms-cap}} created after the rule are automatically included.
-
-    :::{image} ../../images/elasticsearch-reference-transform-check-config.png
-    :alt: Selecting health check
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/elasticsearch-reference-transform-check-config.png
+   :alt: Selecting health check
+   :screenshot:
+   :::
 
 4. The following health checks are available and enabled by default:
 
@@ -33,7 +37,6 @@ You can create {{transform}} rules under **{{stack-manage-app}} > {{rules-ui}}**
 
 As the last step in the rule creation process, define its actions.
 
-
 ## Defining actions [defining-actions]
 
 You can add one or more actions to your rule to generate notifications when its conditions are met and when they are no longer met. In particular, this rule type supports:
@@ -46,15 +49,14 @@ For each action, you must choose a connector, which provides connection informat
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send notifications that summarize the new, ongoing, and recovered alerts:
 
-:::{image} ../../images/elasticsearch-reference-transform-alert-summary-actions.png
+:::{image} /explore-analyze/images/elasticsearch-reference-transform-alert-summary-actions.png
 :alt: Setting action frequency to summary of alerts
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
 If you choose a custom action interval, it cannot be shorter than the rule’s check interval.
 ::::
-
 
 Alternatively, you can set the action frequency such that actions run for each alert. Choose how often the action runs (at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which indicates whether the action runs when the issue is detected or when it is recovered.
 
@@ -62,19 +64,18 @@ You can further refine the conditions under which actions run by specifying that
 
 There is a set of variables that you can use to customize the notification messages for each action. Click the icon above the message text box to get the list of variables or refer to [Action variables](#transform-action-variables).
 
-:::{image} ../../images/elasticsearch-reference-transform-alert-actions.png
+:::{image} /explore-analyze/images/elasticsearch-reference-transform-alert-actions.png
 :alt: Selecting action variables
-:class: screenshot
+:screenshot:
 :::
 
 After you save the configurations, the rule appears in the **{{rules-ui}}** list where you can check its status and see the overview of its configuration information.
 
 The name of an alert is always the same as the {{transform}} ID of the associated {{transform}} that triggered it. You can mute the notifications for a particular {{transform}} on the page of the rule that lists the individual alerts. You can open it via **{{rules-ui}}** by selecting the rule name.
 
-
 ## Action variables [transform-action-variables]
 
-The following variables are specific to the {{transform}} health rule type. You can also specify [variables common to all rules](../alerts/kibana/rule-action-variables.md).
+The following variables are specific to the {{transform}} health rule type. You can also specify [variables common to all rules](../alerts-cases/alerts/rule-action-variables.md).
 
 `context.message`
 :   A preconstructed message for the rule. For example: `Transform test-1 is not started.`
@@ -103,5 +104,4 @@ The following variables are specific to the {{transform}} health rule type. You 
     {{/context.results}}
     ```
 
-
-For more examples, refer to [Rule action variables](../alerts/kibana/rule-action-variables.md).
+For more examples, refer to [Rule action variables](../alerts-cases/alerts/rule-action-variables.md).

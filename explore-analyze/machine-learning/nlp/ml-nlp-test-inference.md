@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-test-inference.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Try it out [ml-nlp-test-inference]
@@ -9,12 +14,12 @@ When the model is deployed on at least one node in the cluster, you can begin to
 
 The simplest method to test your model against new data is to use the **Test model** action in {{kib}}. You can either provide some input text or use a field of an existing index in your cluster to test the model:
 
-:::{image} ../../../images/machine-learning-ml-nlp-test-ner.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-test-ner.png
 :alt: Testing a sentence with two named entities against a NER trained model in the *{{ml}}* app
-:class: screenshot
+:screenshot:
 :::
 
-Alternatively, you can use the [infer trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model.html). For example, to try a named entity recognition task, provide some sample text:
+Alternatively, you can use the [infer trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). For example, to try a named entity recognition task, provide some sample text:
 
 ```console
 POST /_ml/trained_models/elastic__distilbert-base-cased-finetuned-conll03-english/_infer
@@ -52,4 +57,3 @@ In this example, the response contains the annotated text output and the recogni
 ```
 
 If you are satisfied with the results, you can add these NLP tasks in your [ingestion pipelines](ml-nlp-inference.md).
-

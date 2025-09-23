@@ -1,11 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/visualize-library.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: cloud-serverless
 ---
 
 # Visualize Library [visualize-library]
-
-This content applies to: [![Elasticsearch](../../images/serverless-es-badge.svg "")](../../solutions/search.md) [![Observability](../../images/serverless-obs-badge.svg "")](../../solutions/observability.md) [![Security](../../images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md)
 
 The **Visualize Library** is a space where you can save visualization panels that you may want to use across multiple dashboards. The **Visualize Library** consists of two pages:
 
@@ -15,7 +18,7 @@ The **Visualize Library** is a space where you can save visualization panels tha
 
 ## Visualizations [visualize-library-visualizations]
 
-By default the **Visualizations** page opens first. Here you can create new visualizations, or select from a list of previously created visualizations. To learn more, refer to [save to the Visualize Library](../../explore-analyze/index.md#elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library).
+By default the **Visualizations** page opens first. Here you can create new visualizations, or select from a list of previously created visualizations. To learn more, refer to [Save to the Visualize Library](../../explore-analyze/visualize/manage-panels.md).
 
 
 ## Annotation groups [visualize-library-annotation-groups]

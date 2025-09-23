@@ -1,14 +1,22 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cloud-posture-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-cspm.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-kspm.html
+  - https://www.elastic.co/guide/en/security/current/cspm-posture-dashboard.html
+  - https://www.elastic.co/guide/en/security/current/cloud-nat-sec-posture-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Cloud Security Posture dashboard
 
-% What needs to be done: Align serverless/stateful
 
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/security-docs/security/cloud-posture-dashboard.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cloud-posture-dashboard-dash.md
+:::{include} ../cloud/_snippets/cspm-dashboard.md
+:::

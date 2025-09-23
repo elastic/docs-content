@@ -1,9 +1,19 @@
 ---
+navigation_title: "Error: Extra arguments provided"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-trb-extraargs.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Users command fails due to extra arguments [security-trb-extraargs]
+# Error: Extra arguments were provided [security-trb-extraargs]
 
 **Symptoms:**
 
@@ -13,5 +23,5 @@ mapped_pages:
 
 This error occurs when the `elasticsearch-users` tool is parsing the input and finds unexpected arguments. This can happen when there are special characters used in some of the arguments. For example, on Windows systems the `,` character is considered a parameter separator; in other words `-r role1,role2` is translated to `-r role1 role2` and the `elasticsearch-users` tool only recognizes `role1` as an expected parameter. The solution here is to quote the parameter: `-r "role1,role2"`.
 
-For more information about this command, see [`elasticsearch-users` command](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html).
+For more information about this command, see [`elasticsearch-users` command](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md).
 

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-deploy-models.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Deploy trained models [ml-nlp-deploy-models]
@@ -11,8 +16,3 @@ If you want to perform {{nlp}} tasks in your cluster, you must deploy an appropr
 2. [Import the trained model and vocabulary](ml-nlp-import-model.md).
 3. [Deploy the model in your cluster](ml-nlp-deploy-model.md).
 4. [Try it out](ml-nlp-test-inference.md).
-
-
-
-
-

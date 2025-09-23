@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tutorial-manage-new-data-stream.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Create a data stream with a lifecycle [tutorial-manage-new-data-stream]
@@ -12,7 +17,7 @@ To create a data stream with a built-in lifecycle, follow these steps:
 3. [Retrieve lifecycle information](#retrieve-lifecycle-information)
 
 
-## Create an index template [create-index-template-with-lifecycle] 
+## Create an index template [create-index-template-with-lifecycle]
 
 A data stream requires a matching [index template](../../data-store/templates.md). You can configure the data stream lifecycle by setting the `lifecycle` field in the index template the same as you do for mappings and index settings. You can define an index template that sets a lifecycle as follows:
 
@@ -20,12 +25,12 @@ A data stream requires a matching [index template](../../data-store/templates.md
 * Define the lifecycle in the template section or include a composable template that defines the lifecycle.
 * Use a priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../../data-store/templates.md#avoid-index-pattern-collisions).
 
-You can use the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html).
+You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
 ```console
 PUT _index_template/my-index-template
 {
-  "index_patterns": ["my-data-stream*"],
+  "index_patterns": ["my-data-stream-test"], <1>
   "data_stream": { },
   "priority": 500,
   "template": {
@@ -38,36 +43,36 @@ PUT _index_template/my-index-template
   }
 }
 ```
+1. In this case the index template will be applied to a data stream named `my-data-stream-test`. You can optionally use a wildcard (`*`) in the index pattern to match all data streams created (either manually or using an indexing request) that have a name matching the specified pattern.
 
-
-## Create a data stream [create-data-stream-with-lifecycle] 
+## Create a data stream [create-data-stream-with-lifecycle]
 
 You can create a data stream in two ways:
 
-1. By manually creating the stream using the [create data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html). The stream’s name must still match one of your template’s index patterns.
+1. By manually creating the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
 
     ```console
-    PUT _data_stream/my-data-stream
+    PUT _data_stream/my-data-stream-test
     ```
 
-2. By [indexing requests](../../data-store/index-types/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
+2. By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
 
     ```console
-    PUT my-data-stream/_bulk
+    PUT my-data-stream-test/_bulk
     { "create":{ } }
-    { "@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/elasticsearch-reference-bg.jpg HTTP/1.0\" 200 24736" }
+    { "@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736" }
     { "create":{ } }
     { "@timestamp": "2099-05-06T16:25:42.000Z", "message": "192.0.2.255 - - [06/May/2099:16:25:42 +0000] \"GET /favicon.ico HTTP/1.0\" 200 3638" }
     ```
 
 
 
-## Retrieve lifecycle information [retrieve-lifecycle-information] 
+## Retrieve lifecycle information [retrieve-lifecycle-information]
 
-You can use the [get data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-get-lifecycle.html) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html) to see the exact state of each backing index.
+You can use the [get data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) to see the exact state of each backing index.
 
 ```console
-GET _data_stream/my-data-stream/_lifecycle
+GET _data_stream/my-data-stream-test/_lifecycle
 ```
 
 The result will look like this:
@@ -76,7 +81,7 @@ The result will look like this:
 {
   "data_streams": [
     {
-      "name": "my-data-stream",                                     <1>
+      "name": "my-data-stream-test",                                <1>
       "lifecycle": {
         "enabled": true,                                            <2>
         "data_retention": "7d",                                     <3>
@@ -95,19 +100,23 @@ The result will look like this:
 4. The retention period that will be applied by the data stream lifecycle. This means that the data in this data stream will be kept at least for 7 days. After that {{es}} can delete it at its own discretion.
 
 
-If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html):
+If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
 
 ```console
-GET .ds-my-data-stream-*/_lifecycle/explain
+GET .ds-my-data-stream-test/_lifecycle/explain
 ```
+
+:::{tip}
+You can use a wildcard (`*`) in the data stream name to retrieve the lifecycle status for all data streams matching the pattern.
+:::
 
 The result will look like this:
 
 ```console-result
 {
   "indices": {
-    ".ds-my-data-stream-2023.04.19-000001": {
-      "index": ".ds-my-data-stream-2023.04.19-000001",      <1>
+    ".ds-my-data-stream-test-2023.04.19-000001": {
+      "index": ".ds-my-data-stream-test-2023.04.19-000001",      <1>
       "managed_by_lifecycle": true,                               <2>
       "index_creation_date_millis": 1681918009501,
       "time_since_index_creation": "1.6m",                  <3>

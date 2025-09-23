@@ -1,7 +1,11 @@
 ---
-navigation_title: "Upgrade"
+navigation_title: Upgrade
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-upgrade.html
+applies_to:
+  stack: ga
+products:
+  - id: observability
 ---
 
 
@@ -18,7 +22,7 @@ For self-hosted installations, refer to [Upgrade Universal Profiling in self-hos
 
 To upgrade from all versions earlier than 8.10 (GA), you need to:
 
-1. Perform a stack upgrade in {ecloud}
+1. Perform a stack upgrade in {{ecloud}}
 2. Stop profiling data ingestion
 3. Delete existing profiling data
 4. Setup Universal Profiling from scratch
@@ -26,10 +30,10 @@ To upgrade from all versions earlier than 8.10 (GA), you need to:
 
 To upgrade from version 8.10 or later, you need to:
 
-1. Perform a stack upgrade in {ecloud}
+1. Perform a stack upgrade in {{ecloud}}
 
 
-### Perform a stack upgrade in the {{ecloud}} console [profiling-upgrade-in-cloud]
+### Perform a stack upgrade in the {{ecloud}} Console [profiling-upgrade-in-cloud]
 
 To perform a stack upgrade in {{ecloud}}:
 
@@ -63,7 +67,7 @@ When stopping incoming requests, Universal Profiling Agent replicas back off and
 
 You can delete existing profiling data in Kibana:
 
-1. If you’re upgrading from 8.9.0 or later, go to **Console** and execute the following snippet. (To open **Console**, find `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).) If you’re upgrading from an earlier version, skip this step.
+1. If you’re upgrading from 8.9.0 or later, go to **Console** and execute the following snippet. (To open **Console**, find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).) If you’re upgrading from an earlier version, skip this step.
 
     ```console
     PUT /_cluster/settings
@@ -74,7 +78,7 @@ You can delete existing profiling data in Kibana:
     }
     ```
 
-2. Open **Index Management** by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+2. Open **Index Management** by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Make sure you’re in the **Data Streams** tab, and search for `profiling-` in the search bar.
 4. Select all resulting data streams, and click the **Delete data streams** button.
 5. Switch to the **Indices** tab, enable **Include hidden indices**, and  search for `profiling-` in the search bar.
@@ -104,4 +108,4 @@ Click any subheadings under Universal Profiling in the navigation menu. You shou
 
 If you see instructions on how to deploy the Universal Profiling Agent like in the [examples](get-started-with-universal-profiling.md#profiling-install-profiling-agent) from the [Get Started](get-started-with-universal-profiling.md) documentation, the agents did not reconnect to the Integrations Server replicas.
 
-Refer to the [troubleshooting](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md) documentation and the [Get Started](get-started-with-universal-profiling.md) documentation to investigate the issue.
+Refer to the [troubleshooting](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md) documentation and the [Get Started](get-started-with-universal-profiling.md) documentation to investigate the issue.

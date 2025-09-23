@@ -1,7 +1,12 @@
 ---
-navigation_title: "EQL"
+navigation_title: EQL
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 
@@ -15,27 +20,27 @@ Event Query Language (EQL) is a query language for event-based time series data,
 ## Advantages of EQL [eql-advantages]
 
 * **EQL lets you express relationships between events.**<br> Many query languages allow you to match single events. EQL lets you match a sequence of events across different event categories and time spans.
-* **EQL has a low learning curve.**<br> [EQL syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html) looks like other common query languages, such as SQL. EQL lets you write and read queries intuitively, which makes for quick, iterative searching.
+* **EQL has a low learning curve.**<br> [EQL syntax](elasticsearch://reference/query-languages/eql/eql-syntax.md) looks like other common query languages, such as SQL. EQL lets you write and read queries intuitively, which makes for quick, iterative searching.
 * **EQL is designed for security use cases.**<br> While you can use it for any event-based data, we created EQL for threat hunting. EQL not only supports indicator of compromise (IOC) searches but can describe activity that goes beyond IOCs.
 
 
 ## Required fields [eql-required-fields]
 
-With the exception of sample queries, EQL searches require that the searched data stream or index  contains a *timestamp* field. By default, EQL uses the `@timestamp` field from the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}).
+With the exception of sample queries, EQL searches require that the searched data stream or index  contains a *timestamp* field. By default, EQL uses the `@timestamp` field from the [Elastic Common Schema (ECS)](ecs://reference/index.md).
 
-EQL searches also require an *event category* field, unless you use the [`any` keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-syntax-match-any-event-category) to search for  documents without an event category field. By default, EQL uses the ECS `event.category` field.
+EQL searches also require an *event category* field, unless you use the [`any` keyword](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-syntax-match-any-event-category) to search for  documents without an event category field. By default, EQL uses the ECS `event.category` field.
 
 To use a different timestamp or event category field, see [Specify a timestamp or event category field](#specify-a-timestamp-or-event-category-field).
 
 ::::{tip}
-While no schema is required to use EQL, we recommend using the [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}). EQL searches are designed to work with core ECS fields by default.
+While no schema is required to use EQL, we recommend using the [ECS](ecs://reference/index.md). EQL searches are designed to work with core ECS fields by default.
 ::::
 
 
 
 ## Run an EQL search [run-an-eql-search]
 
-Use the [EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html) to run a [basic EQL query](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax).
+Use the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) to run a [basic EQL query](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-basic-syntax).
 
 ```console
 GET /my-data-stream/_eql/search
@@ -116,7 +121,7 @@ GET /my-data-stream/_eql/search
 
 ## Search for a sequence of events [eql-search-sequence]
 
-Use EQL’s [sequence syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences) to search for a series of ordered events. List the event items in ascending chronological order, with the most recent event listed last:
+Use EQL’s [sequence syntax](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-sequences) to search for a series of ordered events. List the event items in ascending chronological order, with the most recent event listed last:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -185,7 +190,7 @@ The response’s `hits.sequences` property contains the 10 most recent matching 
 }
 ```
 
-Use [`with maxspan`](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-with-maxspan-keywords) to constrain matching sequences to a timespan:
+Use [`with maxspan`](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-with-maxspan-keywords) to constrain matching sequences to a timespan:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -198,7 +203,7 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-Use `!` to match [missing events](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-missing-events): events in a sequence that do not meet a condition within a given timespan:
+Use `!` to match [missing events](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-missing-events): events in a sequence that do not meet a condition within a given timespan:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -273,7 +278,7 @@ Missing events are indicated in the response as `missing": true`:
 }
 ```
 
-Use the [`by` keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-by-keyword) to match events that share the same field values:
+Use the [`by` keyword](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-by-keyword) to match events that share the same field values:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -317,7 +322,7 @@ The `hits.sequences.join_keys` property contains the shared field values.
 }
 ```
 
-Use the [`until` keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-until-keyword) to specify an expiration event for sequences. Matching sequences must end before this event.
+Use the [`until` keyword](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-until-keyword) to specify an expiration event for sequences. Matching sequences must end before this event.
 
 ```console
 GET /my-data-stream/_eql/search
@@ -334,7 +339,7 @@ GET /my-data-stream/_eql/search
 
 ## Sample chronologically unordered events [eql-search-sample]
 
-Use EQL’s [sample syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-samples) to search for events that match one or more join keys and a set of filters. Samples are similar to sequences, but do not return events in chronological order. In fact, sample queries can run on data without a timestamp. Sample queries can be useful to find correlations in events that don’t always occur in the same sequence, or that occur across long time spans.
+Use EQL’s [sample syntax](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-samples) to search for events that match one or more join keys and a set of filters. Samples are similar to sequences, but do not return events in chronological order. In fact, sample queries can run on data without a timestamp. Sample queries can be useful to find correlations in events that don’t always occur in the same sequence, or that occur across long time spans.
 
 ::::{dropdown} Click to show the sample data used in the examples below
 ```console
@@ -550,7 +555,7 @@ POST /my-index-000003/_bulk?refresh
 ::::
 
 
-A sample query specifies at least one join key, using the [`by` keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-by-keyword), and up to five filters:
+A sample query specifies at least one join key, using the [`by` keyword](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-by-keyword), and up to five filters:
 
 ```console
 GET /my-index*/_eql/search
@@ -868,7 +873,7 @@ GET /my-index*/_eql/search
 
 By default, each hit in the search response includes the document `_source`, which is the entire JSON object that was provided when indexing the document.
 
-You can use the [`filter_path`](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#common-options-response-filtering) query parameter to filter the API response. For example, the following search returns only the timestamp and PID from the `_source` of each matching event.
+You can use the [`filter_path`](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) query parameter to filter the API response. For example, the following search returns only the timestamp and PID from the `_source` of each matching event.
 
 ```console
 GET /my-data-stream/_eql/search?filter_path=hits.events._source.@timestamp,hits.events._source.process.pid
@@ -906,12 +911,12 @@ The API returns the following response.
 }
 ```
 
-You can also use the `fields` parameter to retrieve and format specific fields in the response. This field is identical to the search API’s [`fields` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html).
+You can also use the `fields` parameter to retrieve and format specific fields in the response. This field is identical to the search API’s [`fields` parameter](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
 
 Because it consults the index mappings, the `fields` parameter provides several advantages over referencing the `_source` directly. Specifically, the `fields` parameter:
 
 * Returns each value in a standardized way that matches its mapping type
-* Accepts [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html) and [field aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-alias.html)
+* Accepts [multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) and [field aliases](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md)
 * Formats dates and spatial data types
 * Retrieves [runtime field values](../../../manage-data/data-store/mapping/retrieve-runtime-field.md)
 * Returns fields calculated by a script at index time
@@ -1039,7 +1044,7 @@ The API returns:
 
 ## Specify a timestamp or event category field [specify-a-timestamp-or-event-category-field]
 
-The EQL search API uses the `@timestamp` and `event.category` fields from the [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) by default. To specify different fields, use the `timestamp_field` and `event_category_field` parameters:
+The EQL search API uses the `@timestamp` and `event.category` fields from the [ECS](ecs://reference/index.md) by default. To specify different fields, use the `timestamp_field` and `event_category_field` parameters:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -1052,7 +1057,7 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-The event category field must be mapped as a [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) family field type. The timestamp field should be mapped as a [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) field type. [`date_nanos`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date_nanos.html) timestamp fields are not supported. You cannot use a [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) field or the sub-fields of a `nested` field as the timestamp or event category field.
+The event category field must be mapped as a [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) family field type. The timestamp field should be mapped as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) field type. [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) timestamp fields are not supported. You cannot use a [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) field or the sub-fields of a `nested` field as the timestamp or event category field.
 
 
 ## Specify a sort tiebreaker [eql-search-specify-a-sort-tiebreaker]
@@ -1061,7 +1066,7 @@ By default, the EQL search API returns matching hits by timestamp. If two or mor
 
 If you don’t specify a tiebreaker field or the events also share the same tiebreaker value, {{es}} considers the events concurrent and may not return them in a consistent sort order.
 
-To specify a tiebreaker field, use the `tiebreaker_field` parameter. If you use the [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}), we recommend using `event.sequence` as the tiebreaker field.
+To specify a tiebreaker field, use the `tiebreaker_field` parameter. If you use the [ECS](ecs://reference/index.md), we recommend using `event.sequence` as the tiebreaker field.
 
 ```console
 GET /my-data-stream/_eql/search
@@ -1131,7 +1136,7 @@ The async search continues to run in the background without blocking other reque
 }
 ```
 
-To check the progress of an async search, use the [get async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html) with the search ID. Specify how long you’d like for complete results in the `wait_for_completion_timeout` parameter.
+To check the progress of an async search, use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get) with the search ID. Specify how long you’d like for complete results in the `wait_for_completion_timeout` parameter.
 
 ```console
 GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=2s
@@ -1150,7 +1155,7 @@ If the response’s `is_running` value is `false`, the async search has finished
 }
 ```
 
-Another more lightweight way to check the progress of an async search is to use the [get async EQL status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-eql-status-api.html) with the search ID.
+Another more lightweight way to check the progress of an async search is to use the [get async EQL status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get-status) with the search ID.
 
 ```console
 GET /_eql/search/status/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=
@@ -1182,13 +1187,13 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-You can use the [get async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html)'s `keep_alive` parameter to later change the retention period. The new retention period starts after the get request runs.
+You can use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get)'s `keep_alive` parameter to later change the retention period. The new retention period starts after the get request runs.
 
 ```console
 GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?keep_alive=5d
 ```
 
-Use the [delete async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html) to manually delete an async EQL search before the `keep_alive` period ends. If the search is still ongoing, {{es}} cancels the search request.
+Use the [delete async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete) to manually delete an async EQL search before the `keep_alive` period ends. If the search is still ongoing, {{es}} cancels the search request.
 
 ```console
 DELETE /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=
@@ -1223,7 +1228,7 @@ The response includes a search ID. `is_partial` and `is_running` are `false`, in
 }
 ```
 
-Use the [get async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html) to get the same results later:
+Use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get) to get the same results later:
 
 ```console
 GET /_eql/search/FjlmbndxNmJjU0RPdExBTGg0elNOOEEaQk9xSjJBQzBRMldZa1VVQ2pPa01YUToxMDY=
@@ -1231,9 +1236,9 @@ GET /_eql/search/FjlmbndxNmJjU0RPdExBTGg0elNOOEEaQk9xSjJBQzBRMldZa1VVQ2pPa01YUTo
 
 Saved synchronous searches are still subject to the `keep_alive` parameter’s retention period. When this period ends, the search and its results are deleted.
 
-You can also check only the status of the saved synchronous search without results by using [get async EQL status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-eql-status-api.html).
+You can also check only the status of the saved synchronous search without results by using [get async EQL status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get-status).
 
-You can also manually delete saved synchronous searches using the [delete async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html).
+You can also manually delete saved synchronous searches using the [delete async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete).
 
 
 ## Run an EQL search across clusters [run-eql-search-across-clusters]
@@ -1245,7 +1250,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 The EQL search API supports [cross-cluster search](../../../solutions/search/cross-cluster-search.md). However, the local and [remote clusters](../../../deploy-manage/remote-clusters.md) must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
 
-The following [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) request adds two remote clusters: `cluster_one` and `cluster_two`.
+The following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request adds two remote clusters: `cluster_one` and `cluster_two`.
 
 ```console
 PUT /_cluster/settings
@@ -1283,5 +1288,5 @@ GET /cluster_one:my-data-stream,cluster_two:my-data-stream/_eql/search
 
 ## EQL circuit breaker settings [eql-circuit-breaker]
 
-The relevant circuit breaker settings can be found in the [Circuit Breakers page](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#circuit-breakers-page-eql).
+The relevant circuit breaker settings can be found in the [Circuit Breakers page](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#circuit-breakers-page-eql).
 

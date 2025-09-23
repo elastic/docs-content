@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-functions-conditional.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Conditional Functions And Expressions [sql-functions-conditional]
@@ -154,7 +159,7 @@ COALESCE(
 2. 2nd expression
 
 
-…​
+…
 
 **N**th expression
 
@@ -196,7 +201,7 @@ GREATEST(
 2. 2nd expression
 
 
-…​
+…
 
 **N**th expression
 
@@ -355,7 +360,7 @@ LEAST(
 2. 2nd expression
 
 
-…​
+…
 
 **N**th expression
 

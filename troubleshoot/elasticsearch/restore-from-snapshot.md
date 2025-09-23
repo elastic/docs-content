@@ -1,6 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-from-snapshot.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Restore from snapshot [restore-from-snapshot]
@@ -8,32 +17,32 @@ mapped_pages:
 Elasticsearch is using snapshots to store a copy of your data outside a cluster. You can restore a snapshot to recover indices and data streams for which there are no copies of the shards in the cluster. This can happen if the data (indices or data streams) was deleted or if the cluster membership changed and the current nodes in the system do not contain a copy of the data anymore.
 
 ::::{important}
-Restoring the missing data requires you to have a backup of the affected indices and data streams that is up-to-date enough for your use case. Please do not proceed without confirming this.
+Restoring the missing data requires you to have a backup of the affected indices and data streams that is up-to-date enough for your use case. Don't proceed without confirming this.
 ::::
 
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 In order to restore the indices and data streams that are missing data:
 
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the name of your deployment.
+2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
-4. To view the affected indices using the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
+4. To view the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
@@ -49,7 +58,7 @@ In order to restore the indices and data streams that are missing data:
 
     The `red` health of the indices above indicates that these indices are missing primary shards, meaning they are missing data.
 
-5. In order to restore the data we need to find a snapshot that contains these two indices. To find such a snapshot use the [get snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-api.html).
+5. In order to restore the data we need to find a snapshot that contains these two indices. To find such a snapshot use the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get).
 
     ```console
     GET _snapshot/my_repository/*?verbose=false
@@ -150,13 +159,13 @@ In order to restore the indices and data streams that are missing data:
     POST my-data-stream/_rollover
     ```
 
-8. Now that the data stream preparation is done, we will close the target indices by using the [close indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-close.html).
+8. Now that the data stream preparation is done, we will close the target indices by using the [close indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close).
 
     ```console
     POST kibana_sample_data_flights,.ds-my-data-stream-2022.06.17-000001/_close
     ```
 
-    You can confirm that they are closed with the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
+    You can confirm that they are closed with the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
@@ -170,7 +179,7 @@ In order to restore the indices and data streams that are missing data:
     kibana_sample_data_flights           close   red
     ```
 
-9. The indices are closed, now we can restore them from snapshots without causing any complications using the [restore snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html):
+9. The indices are closed, now we can restore them from snapshots without causing any complications using the [restore snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore):
 
     ```console
     POST _snapshot/my_repository/snapshot-20200617/_restore
@@ -185,7 +194,7 @@ In order to restore the indices and data streams that are missing data:
 
 
     ::::{note}
-    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. e.g.:
+    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. e.g.:
     ::::
 
 
@@ -198,7 +207,7 @@ In order to restore the indices and data streams that are missing data:
     }
     ```
 
-10. Finally we can verify that the indices health is now `green` via the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
+10. Finally we can verify that the indices health is now `green` via the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&index=.ds-my-data-stream-2022.06.17-000001,kibana_sample_data_flightsh=index,status,health
@@ -221,7 +230,7 @@ For more guidance on creating and restoring snapshots see [this guide](../../dep
 ::::::{tab-item} Self-managed
 In order to restore the indices that are missing shards:
 
-1. View the affected indices using the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
+1. View the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
@@ -237,7 +246,7 @@ In order to restore the indices that are missing shards:
 
     The `red` health of the indices above indicates that these indices are missing primary shards, meaning they are missing data.
 
-2. In order to restore the data we need to find a snapshot that contains these two indices. To find such a snapshot use the [get snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-api.html).
+2. In order to restore the data we need to find a snapshot that contains these two indices. To find such a snapshot use the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get).
 
     ```console
     GET _snapshot/my_repository/*?verbose=false
@@ -338,13 +347,13 @@ In order to restore the indices that are missing shards:
     POST my-data-stream/_rollover
     ```
 
-5. Now that the data stream preparation is done, we will close the target indices by using the [close indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-close.html).
+5. Now that the data stream preparation is done, we will close the target indices by using the [close indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close).
 
     ```console
     POST kibana_sample_data_flights,.ds-my-data-stream-2022.06.17-000001/_close
     ```
 
-    You can confirm that they are closed with the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
+    You can confirm that they are closed with the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
@@ -358,7 +367,7 @@ In order to restore the indices that are missing shards:
     kibana_sample_data_flights           close   red
     ```
 
-6. The indices are closed, now we can restore them from snapshots without causing any complications using the [restore snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html):
+6. The indices are closed, now we can restore them from snapshots without causing any complications using the [restore snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore):
 
     ```console
     POST _snapshot/my_repository/snapshot-20200617/_restore
@@ -373,7 +382,7 @@ In order to restore the indices that are missing shards:
 
 
     ::::{note}
-    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. e.g.:
+    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. e.g.:
     ::::
 
 
@@ -386,7 +395,7 @@ In order to restore the indices that are missing shards:
     }
     ```
 
-7. Finally we can verify that the indices health is now `green` via the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
+7. Finally we can verify that the indices health is now `green` via the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&index=.ds-my-data-stream-2022.06.17-000001,kibana_sample_data_flightsh=index,status,health

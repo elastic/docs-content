@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-capture-heap-dumps.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Heap dumps [ece-capture-heap-dumps]
@@ -13,7 +18,7 @@ From the Elastic Cloud Enterprise console you can capture JVM heap dumps from de
 You can view and download captured heap dumps for a given deployment.
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -42,7 +47,7 @@ The JVM will be paused while the heap dump is being captured, so there may be a 
 
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -51,7 +56,7 @@ The JVM will be paused while the heap dump is being captured, so there may be a 
 Alternatively, you can capture an on-demand heap dump directly from the **Heap dumps** page.
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

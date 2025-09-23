@@ -1,20 +1,21 @@
 ---
-navigation_title: "Text embedding and semantic search"
+navigation_title: Text embedding and semantic search
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
-
-
 # Text embedding and semantic search [ml-nlp-text-emb-vector-search-example]
-
 
 You can use these instructions to deploy a [text embedding](ml-nlp-search-compare.md#ml-nlp-text-embedding) model in {{es}}, test the model, and add it to an {{infer}} ingest pipeline. It enables you to generate vector representations of text and perform vector similarity search on the generated vectors. The model that is used in the example is publicly available on [HuggingFace](https://huggingface.co/).
 
 The example uses a public data set from the [MS MARCO Passage Ranking Task](https://microsoft.github.io/msmarco/#ranking). It consists of real questions from the Microsoft Bing search engine and human generated answers for them. The example works with a sample of this data set, uses a model to produce text embeddings, and then runs vector search on it.
 
 You can find [this example as a Jupyter notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/hugging-face/loading-model-from-hugging-face.ipynb) using the Python client in the `elasticsearch-labs` repo.
-
 
 ## Requirements [ex-te-vs-requirements]
 
@@ -24,10 +25,9 @@ To follow along the process on this page, you must have:
 * The [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated.
 * [Docker](https://docs.docker.com/get-docker/) installed.
 
-
 ## Deploy a text embedding model [ex-te-vs-deploy]
 
-You can use the [Eland client](https://www.elastic.co/guide/en/elasticsearch/client/eland/current) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
+You can use the [Eland client](eland://reference/index.md) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
 
 ```shell
 docker pull docker.elastic.co/eland/eland
@@ -49,24 +49,23 @@ docker run -it --rm docker.elastic.co/eland/eland \
       --start
 ```
 
-You need to provide an administrator username and password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the deployments page on your Cloud website.
+You need to provide an administrator username and password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Hosted deployments** page on your Cloud website.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/guide/en/kibana/current/ml-sync.html).
-
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
 
 ## Test the text embedding model [ex-text-emb-test]
 
 Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Models** by selecting the **Test model** action for the respective model.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-test.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-test.png
 :alt: Test trained model UI
-:class: screenshot
+:screenshot:
 :::
 
-::::{dropdown} **Test the model by using the _infer API**
-You can also evaluate your models by using the [_infer API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model-deployment.html). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
+::::{dropdown} Test the model by using the _infer API
+You can also evaluate your models by using the [_infer API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
 POST /_ml/trained_models/sentence-transformers__msmarco-minilm-l-12-v3/_infer
@@ -98,9 +97,7 @@ The API returns a response similar to the following:
 
 ::::
 
-
 The result is the predicted dense vector transformed from the example text.
-
 
 ## Load data [ex-text-emb-data]
 
@@ -108,17 +105,16 @@ In this step, you load the data that you later use in an ingest pipeline to get 
 
 The data set `msmarco-passagetest2019-top1000` is a subset of the MS MARCO Passage Ranking data set used in the testing stage of the 2019 TREC Deep Learning Track. It contains 200 queries and for each query a list of relevant text passages extracted by a simple information retrieval (IR) system. From that data set, all unique passages with their IDs have been extracted and put into a [tsv file](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv), totaling 182469 passages. In the following, this file is used as the example data set.
 
-Upload the file by using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
+Upload the file by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data
-:class: screenshot
+:screenshot:
 :::
-
 
 ## Add the text embedding model to an {{infer}} ingest pipeline [ex-text-emb-ingest]
 
-Process the initial data with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
+Process the initial data with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
 
 Now create an ingest pipeline either in the [{{stack-manage-app}} UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 
@@ -158,7 +154,7 @@ PUT _ingest/pipeline/text-embeddings
 
 The passages are in a field named `text`. The `field_map` maps the text to the field `text_field` that the model expects. The `on_failure` handler is set to index failures into a different index.
 
-Before ingesting the data through the pipeline, create the mappings of the destination index, in particular for the field `text_embedding.predicted_value` where the ingest processor stores the embeddings. The `dense_vector` field must be configured with the same number of dimensions (`dims`) as the text embedding produced by the model. That value can be found in the `embedding_size` option in the model configuration either under the Trained Models page in {{kib}} or in the response body of the [Get trained models API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html) call. The msmarco-MiniLM-L-12-v3 model has embedding_size of 384, so `dims` is set to 384.
+Before ingesting the data through the pipeline, create the mappings of the destination index, in particular for the field `text_embedding.predicted_value` where the ingest processor stores the embeddings. The `dense_vector` field must be configured with the same number of dimensions (`dims`) as the text embedding produced by the model. That value can be found in the `embedding_size` option in the model configuration either under the Trained Models page in {{kib}} or in the response body of the [Get trained models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) call. The msmarco-MiniLM-L-12-v3 model has embedding_size of 384, so `dims` is set to 384.
 
 ```js
 PUT collection-with-embeddings
@@ -195,7 +191,6 @@ POST _reindex?wait_for_completion=false
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
-
 The API call returns a task ID that can be used to monitor the progress:
 
 ```js
@@ -204,13 +199,12 @@ GET _tasks/<task_id>
 
 You can also open the model stat UI to follow the progress.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-reindex.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-reindex.png
 :alt: Model status UI
-:class: screenshot
+:screenshot:
 :::
 
 After the reindexing is finished, the documents in the new index contain the {{infer}} results – the vector embeddings.
-
 
 ## Semantic search [ex-text-emb-vect-search]
 

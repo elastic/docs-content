@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-transform.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Altering data in your datafeed with runtime fields [ml-configuring-transform]
@@ -15,7 +20,6 @@ Some of these examples use regular expressions. By default, regular expressions 
 {{ml-cap}} analysis is case sensitive. For example, "John" is considered to be different than "john". This is one reason you might consider using scripts that convert your strings to upper or lowercase letters.
 
 ::::
-
 
 * [Example 1: Adding two numerical fields](#ml-configuring-transform1)
 * [Example 2: Concatenating strings](#ml-configuring-transform2)
@@ -72,7 +76,7 @@ PUT /my-index-000001/_doc/1
 }
 ```
 
-1. In this example, string fields are mapped as `keyword` fields to support aggregation. If you want both a full text (`text`) and a keyword (`keyword`) version of the same field, use multi-fields. For more information, see [fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html).
+1. In this example, string fields are mapped as `keyword` fields to support aggregation. If you want both a full text (`text`) and a keyword (`keyword`) version of the same field, use multi-fields. For more information, see [fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md).
 
 
 $$$ml-configuring-transform1$$$
@@ -110,7 +114,6 @@ PUT _ml/anomaly_detectors/test1
 1. A runtime field named `total_error_count` is referenced in the detector within the job.
 2. The runtime field is defined in the {{dfeed}}.
 
-
 This `test1` {{anomaly-job}} contains a detector that uses a runtime field in a mean analysis function. The `datafeed-test1` {{dfeed}} defines the runtime field. It contains a script that adds two fields in the document to produce a "total" error count.
 
 The syntax for the `runtime_mappings` property is identical to that used by {{es}}. For more information, see [Runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md).
@@ -136,12 +139,11 @@ In this example, the API returns the following results, which contain a sum of t
 This example demonstrates how to use runtime fields, but it contains insufficient data to generate meaningful results.
 ::::
 
-
 You can alternatively use {{kib}} to create an advanced {{anomaly-job}} that uses runtime fields. To add the `runtime_mappings` property to your {{dfeed}}, you must use the **Edit JSON** tab. For example:
 
-:::{image} ../../../images/machine-learning-ml-runtimefields.jpg
-:alt: Using runtime_mappings in {{dfeed}} config via {kib}
-:class: screenshot
+:::{image} /explore-analyze/images/machine-learning-ml-runtimefields.jpg
+:alt: Using runtime_mappings in {{dfeed}} config via {{kib}}
+:screenshot:
 :::
 
 $$$ml-configuring-transform2$$$
@@ -181,7 +183,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 1. The runtime field has a generic name in this case, since it is used for various tests in the examples.
 2. The runtime field uses the plus (+) operator to concatenate strings.
 
-
 The preview {{dfeed}} API returns the following results, which show that "JOE" and "SMITH  " have been concatenated and an underscore was added:
 
 ```js
@@ -212,7 +213,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 ```
 
 1. This runtime field uses the `trim()` function to trim extra white space from a string.
-
 
 The preview {{dfeed}} API returns the following results, which show that "SMITH  " has been trimmed to "SMITH":
 
@@ -245,7 +245,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 
 1. This runtime field uses the `toLowerCase` function to convert a string to all lowercase letters. Likewise, you can use the `toUpperCase` function to convert a string to uppercase letters.
 
-
 The preview {{dfeed}} API returns the following results, which show that "JOE" has been converted to "joe":
 
 ```js
@@ -276,7 +275,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 ```
 
 1. This runtime field is a more complicated example of case manipulation. It uses the `subString()` function to capitalize the first letter of a string and converts the remaining characters to lowercase.
-
 
 The preview {{dfeed}} API returns the following results, which show that "JOE" has been converted to "Joe":
 
@@ -309,7 +307,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 
 1. This script uses regular expressions to replace white space with underscores.
 
-
 The preview {{dfeed}} API returns the following results, which show that "foo bar baz" has been converted to "foo_bar_baz":
 
 ```js
@@ -341,7 +338,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 
 1. This script looks for a specific regular expression pattern and emits the matched groups as a concatenated string. If no match is found, it emits an empty string.
 
-
 The preview {{dfeed}} API returns the following results, which show that "foo-bar-19" has been converted to "foo_19":
 
 ```js
@@ -353,7 +349,6 @@ The preview {{dfeed}} API returns the following results, which show that "foo-ba
 ]
 ```
 
-$$$ml-configuring-transform8$$$
 
 ```console
 PUT _ml/anomaly_detectors/test3
@@ -387,7 +382,7 @@ PUT _ml/anomaly_detectors/test3
 GET _ml/datafeeds/datafeed-test3/_preview
 ```
 
-In {{es}}, location data can be stored in `geo_point` fields but this data type is not supported natively in {{ml}} analytics. This example of a runtime field transforms the data into an appropriate format. For more information, see [Geographic functions](https://www.elastic.co/guide/en/machine-learning/current/ml-geo-functions.html).
+In {{es}}, location data can be stored in `geo_point` fields but this data type is not supported natively in {{ml}} analytics. This example of a runtime field transforms the data into an appropriate format. For more information, see [Geographic functions](/reference/data-analysis/machine-learning/ml-geo-functions.md).
 
 The preview {{dfeed}} API returns the following results, which show that `41.44` and `90.5` have been combined into "41.44,90.5":
 
@@ -399,3 +394,5 @@ The preview {{dfeed}} API returns the following results, which show that `41.44`
   }
 ]
 ```
+
+$$$ml-configuring-transform8$$$

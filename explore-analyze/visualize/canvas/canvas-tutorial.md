@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tutorial.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Tutorial: Create a workpad for monitoring sales [canvas-tutorial]
@@ -12,8 +17,8 @@ To familiarize yourself with **Canvas**, add the Sample eCommerce orders data, t
 
 To create a workpad of the eCommerce store data, add the data set, then create the workpad.
 
-1. [Install the eCommerce sample data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
-2. Go to **Canvas** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. [Install the eCommerce sample data](../../index.md#gs-get-data-into-kibana).
+2. Go to **Canvas** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select **Create workpad**.
 
 
@@ -30,10 +35,10 @@ To customize your workpad to look the way you want, add your own images.
     1. Click the Elastic logo.
     2. Drag the image file to the **Select or drag and drop an image** field.
 
-        :::{image} ../../../images/kibana-canvas_tutorialCustomImage_7.17.0.png
-        :alt: The Analytics logo added to the workpad
-        :class: screenshot
-        :::
+       :::{image} /explore-analyze/images/kibana-canvas_tutorialCustomImage_7.17.0.png
+       :alt: The Analytics logo added to the workpad
+       :screenshot:
+       :::
 
 
 
@@ -73,9 +78,9 @@ Customize your data by connecting it to the Sample eCommerce orders data.
     3. Click **Run**.
 
 
-:::{image} ../../../images/kibana-canvas_tutorialCustomMetric_7.17.0.png
+:::{image} /explore-analyze/images/kibana-canvas_tutorialCustomMetric_7.17.0.png
 :alt: The total sales metric added to the workpad using Elasticsearch SQL
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -101,9 +106,9 @@ To show what your data can do, add charts, graphs, progress monitors, and more t
     3. From the **Y-axis** dropdown, select **Value**, then select **taxless_total_price**.
 
 
-:::{image} ../../../images/kibana-canvas_tutorialCustomChart_7.17.0.png
+:::{image} /explore-analyze/images/kibana-canvas_tutorialCustomChart_7.17.0.png
 :alt: Custom line chart added to the workpad using Elasticsearch SQL
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -115,11 +120,11 @@ To focus your data on a specific time range, add the time filter.
 2. Click **Display**
 3. To use the date time field from the sample data, enter `order_date` in the **Column** field, then click **Set**.
 
-% image doesn't exist (also broken in asciidoc https://www.elastic.co/guide/en/kibana/current/canvas-tutorial.html#_show_how_your_data_changes_over_time)
+% image doesn't exist (also broken in asciidoc /explore-analyze/visualize/canvas/canvas-tutorial.md#_show_how_your_data_changes_over_time)
 
-% :::{image} ../../../images/kibana-canvas_tutorialCustomTimeFilter_7.17.0.png
+% :::{image} /explore-analyze/images/kibana-canvas_tutorialCustomTimeFilter_7.17.0.png
 % :alt: Custom time filter added to the workpad
-% :class: screenshot
+% :screenshot:
 % :::
 
 To see how the data changes, set the time filter to **Last 7 days**. As you change the time filter options, the elements automatically update.
@@ -133,6 +138,6 @@ Now that you know the basics, you’re ready to explore on your own.
 
 Here are some things to try:
 
-* Play with the [sample Canvas workpads](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html).
+* Play with the [sample Canvas workpads](/explore-analyze/index.md).
 * Build presentations of your own data with [workpads](../canvas.md#create-workpads).
 * Deep dive into the [expression language and functions](canvas-function-reference.md) that drive **Canvas**.

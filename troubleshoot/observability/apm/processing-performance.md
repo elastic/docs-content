@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-processing-and-performance.html
+applies_to:
+  stack: all
+products:
+  - id: observability
 ---
 
 # Processing and performance [apm-processing-and-performance]
@@ -9,7 +13,7 @@ APM Server performance depends on a number of factors: memory and CPU available,
 
 We tested several scenarios to help you understand how to size the APM Server so that it can keep up with the load that your Elastic APM agents are sending:
 
-* Using the *CPU Optimized* hardware template on AWS, GCP and Azure on {{ecloud}} with the following instances (for more details see [Hardware Profiles](../../../deploy-manage/deploy/elastic-cloud/ec-configure-deployment-settings.md#ec-hardware-profiles)):
+* Using the *CPU Optimized* hardware template on AWS, GCP and Azure on {{ecloud}} with the following instances (for more details see [Hardware Profiles](../../../deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md)):
 
     * AWS: c6gd
     * Azure: fsv2
@@ -17,7 +21,7 @@ We tested several scenarios to help you understand how to size the APM Server so
 
 * For each hardware template, testing with several sizes: 1 GB, 4 GB, 8 GB, and 32 GB.
 * For each size, using a fixed number of APM agents: 10 agents for 1 GB, 30 agents for 4 GB, 60 agents for 8 GB, and 240 agents for 32 GB.
-* In all scenarios, using medium sized events. Events include [transactions](../../../solutions/observability/apps/transactions.md) and [spans](../../../solutions/observability/apps/spans.md).
+* In all scenarios, using medium sized events. Events include [transactions](/solutions/observability/apm/transactions.md) and [spans](/solutions/observability/apm/spans.md).
 
 ::::{note}
 You will also need to scale up {{es}} accordingly, potentially with an increased number of shards configured. For more details on scaling {{es}}, refer to the [{{es}} documentation](../../../deploy-manage/index.md).
@@ -41,5 +45,5 @@ RUM deserves special consideration. The RUM agent runs in browsers, and there ca
 ::::
 
 
-Alternatively or in addition to scaling the APM Server, consider decreasing the ingestion volume. Read more in [Reduce storage](../../../solutions/observability/apps/reduce-storage.md).
+Alternatively or in addition to scaling the APM Server, consider decreasing the ingestion volume. Read more in [Reduce storage](/solutions/observability/apm/reduce-storage.md).
 

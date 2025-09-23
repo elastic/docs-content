@@ -1,9 +1,19 @@
 ---
+navigation_title: Active Directory
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trouble-shoot-active-directory.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Users are frequently locked out of Active Directory [trouble-shoot-active-directory]
+# Troubleshoot Active Directory lockouts [trouble-shoot-active-directory]
 
 **Symptoms:**
 

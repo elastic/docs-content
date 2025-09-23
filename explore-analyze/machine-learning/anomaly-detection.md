@@ -1,16 +1,23 @@
 ---
-mapped_urls:
+navigation_title: Anomaly detection
+mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml-anomalies.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
+  - id: kibana
 ---
 
-# Anomaly detection
+# Anomaly detection with machine learning [ml-ad-overview]
 
-% What needs to be done: Align serverless/stateful
+You can use {{stack}} {{ml-features}} to analyze time series data and identify anomalous patterns in your data set.
 
-% Scope notes: Colleen McGinnis removed "https://www.elastic.co/guide/en/serverless/current/observability-machine-learning.html" and "All children" because this page is also used below in "AIOps Labs" with "All children" selected. We can't copy all children to two places.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/stack-docs/machine-learning/ml-ad-overview.md
-% - [ ] ./raw-migrated-files/kibana/kibana/xpack-ml-anomalies.md
+* [Finding anomalies](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies.md)
+* [Tutorial: Getting started with {{anomaly-detect}}](../../explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md)
+* [*Advanced concepts*](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-concepts.md)
+* [*API quick reference*](../../explore-analyze/machine-learning/anomaly-detection/ml-api-quickref.md)
+* [How-tos](../../explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md)
+* [*Resources*](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-resources.md)

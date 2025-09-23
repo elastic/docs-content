@@ -1,12 +1,43 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
+products:
+  - id: elasticsearch
 ---
 
-# Size your shards [size-your-shards]
+# Size your shards
 
-Each index in {{es}} is divided into one or more shards, each of which may be replicated across multiple nodes to protect against hardware failures. If you are using [Data streams](../../../manage-data/data-store/index-types/data-streams.md) then each data stream is backed by a sequence of indices. There is a limit to the amount of data you can store on a single node so you can increase the capacity of your cluster by adding nodes and increasing the number of indices and shards to match. However, each index and shard has some overhead and if you divide your data across too many shards then the overhead can become overwhelming. A cluster with too many indices or shards is said to suffer from *oversharding*. An oversharded cluster will be less efficient at responding to searches and in extreme cases it may even become unstable.
+A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, refer to [nodes and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
 
+## General guidelines [sizing-shard-guidelines]
+
+Balancing the number and size of your shards is important for the performance and stability of an {{es}} cluster:
+
+* Too many shards can degrade search performance and make the cluster unstable. This is referred to as _oversharding_.
+* Very large shards can slow down search operations and prolong recovery times after failures.
+
+To avoid either of these states, implement the following guidelines:
+
+### General sizing guidelines
+
+* Aim for shard sizes between 10GB and 50GB
+* Keep the number of documents on each shard below 200 million
+
+### Shard distribution guidelines
+
+To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability.
+
+While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
+
+If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards.
+
+Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations.
 
 ## Create a sharding strategy [create-a-sharding-strategy]
 
@@ -28,16 +59,16 @@ Keep the following things in mind when building your sharding strategy.
 
 ### Searches run on a single thread per shard [single-thread-per-shard]
 
-Most searches hit multiple shards. Each shard runs the search on a single CPU thread. While a shard can run multiple concurrent searches, searches across a large number of shards can deplete a node’s [search thread pool](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html). This can result in low throughput and slow search speeds.
+Most searches hit multiple shards. Each shard runs the search on a single CPU thread. While a shard can run multiple concurrent searches, searches across a large number of shards can deplete a node’s [search thread pool](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md). This can result in low throughput and slow search speeds.
 
 
 ### Each index, shard, segment and field has overhead [each-shard-has-overhead]
 
 Every index and every shard requires some memory and CPU resources. In most cases, a small set of large shards uses fewer resources than many small shards.
 
-Segments play a big role in a shard’s resource usage. Most shards contain several segments, which store its index data. {{es}} keeps some segment metadata in heap memory so it can be quickly retrieved for searches. As a shard grows, its segments are [merged](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html) into fewer, larger segments. This decreases the number of segments, which means less metadata is kept in heap memory.
+Segments play a big role in a shard’s resource usage. Most shards contain several segments, which store its index data. {{es}} keeps some segment metadata in heap memory so it can be quickly retrieved for searches. As a shard grows, its segments are [merged](elasticsearch://reference/elasticsearch/index-settings/merge.md) into fewer, larger segments. This decreases the number of segments, which means less metadata is kept in heap memory.
 
-Every mapped field also carries some overhead in terms of memory usage and disk space. By default {{es}} will automatically create a mapping for every field in every document it indexes, but you can switch off this behaviour to [take control of your mappings](../../../manage-data/data-store/mapping/explicit-mapping.md).
+Every mapped field also carries some overhead in terms of memory usage and disk space. By default {{es}} will automatically create a mapping for every field in every document it indexes, but you can switch off this behavior to [take control of your mappings](../../../manage-data/data-store/mapping/explicit-mapping.md).
 
 Moreover every segment requires a small amount of heap memory for each mapped field. This per-segment-per-field heap overhead includes a copy of the field name, encoded using ISO-8859-1 if applicable or UTF-16 otherwise. Usually this is not noticeable, but you may need to account for this overhead if your shards have high segment counts and the corresponding mappings contain high field counts and/or very long field names.
 
@@ -54,21 +85,21 @@ Where applicable, use the following best practices as starting points for your s
 
 ### Delete indices, not documents [delete-indices-not-documents]
 
-Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html).
+Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](elasticsearch://reference/elasticsearch/index-settings/merge.md).
 
 When possible, delete entire indices instead. {{es}} can immediately remove deleted indices directly from the file system and free up resources.
 
 
 ### Use data streams and {{ilm-init}} for time series data [use-ds-ilm-for-time-series]
 
-[Data streams](../../../manage-data/data-store/index-types/data-streams.md) let you store time series data across multiple, time-based backing indices. You can use [{{ilm}} ({{ilm-init}})](../../../manage-data/lifecycle/index-lifecycle-management.md) to automatically manage these backing indices.
+[Data streams](../../../manage-data/data-store/data-streams.md) let you store time series data across multiple, time-based backing indices. You can use [{{ilm}} ({{ilm-init}})](../../../manage-data/lifecycle/index-lifecycle-management.md) to automatically manage these backing indices.
 
 One advantage of this setup is [automatic rollover](../../../manage-data/lifecycle/index-lifecycle-management.md), which creates a new write index when the current one meets a defined `max_primary_shard_size`, `max_age`, `max_docs`, or `max_size` threshold. When an index is no longer needed, you can use {{ilm-init}} to automatically delete it and free up resources.
 
 {{ilm-init}} also makes it easy to change your sharding strategy over time:
 
-* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/index-types/modify-data-stream.md#data-streams-change-mappings-and-settings).
-* **Want larger shards or fewer backing indices?**<br> Increase your {{ilm-init}} policy’s [rollover threshold](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html).
+* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/data-streams/modify-data-stream.md#data-streams-change-mappings-and-settings).
+* **Want larger shards or fewer backing indices?**<br> Increase your {{ilm-init}} policy’s [rollover threshold](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md).
 * **Need indices that span shorter intervals?**<br> Offset the increased shard count by deleting older indices sooner. You can do this by lowering the `min_age` threshold for your policy’s [delete phase](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
 Every new backing index is an opportunity to further tune your strategy.
@@ -80,11 +111,11 @@ There is some overhead associated with each shard, both in terms of cluster mana
 
 There is no hard limit on the physical size of a shard, and each shard can in theory contain up to [just over two billion documents](#troubleshooting-max-docs-limit). However, experience shows that shards between 10GB and 50GB typically work well for many use cases, as long as the per-shard document count is kept below 200 million.
 
-You may be able to use larger shards depending on your network and use case, and smaller shards may be appropriate for [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/index.html) and similar use cases.
+You may be able to use larger shards depending on your network and use case, and smaller shards may be appropriate for certain use cases.
 
-If you use {{ilm-init}}, set the [rollover action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html)'s `max_primary_shard_size` threshold to `50gb` to avoid shards larger than 50GB and `min_primary_shard_size` threshold to `10gb` to avoid shards smaller than 10GB.
+If you use {{ilm-init}}, set the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md)'s `max_primary_shard_size` threshold to `50gb` to avoid shards larger than 50GB and `min_primary_shard_size` threshold to `10gb` to avoid shards smaller than 10GB.
 
-To see the current size of your shards, use the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html).
+To see the current size of your shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
 ```console
 GET _cat/shards?v=true&h=index,prirep,shard,store&s=prirep,store&bytes=gb
@@ -100,12 +131,12 @@ index                                 prirep shard store
 
 If an index’s shard is experiencing degraded performance from surpassing the recommended 50GB size, you may consider fixing the index’s shards' sizing. Shards are immutable and therefore their size is fixed in place, so indices must be copied with corrected settings. This requires first ensuring sufficient disk to copy the data. Afterwards, you can copy the index’s data with corrected settings via one of the following options:
 
-* running [Split Index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-split-index.html) to increase number of primary shards
-* creating a destination index with corrected settings and then running [Reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html)
+* running [Split Index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) to increase number of primary shards
+* creating a destination index with corrected settings and then running [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex)
 
-Kindly note performing a [Restore Snapshot](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html) and/or [Clone Index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-clone-index.html) would be insufficient to resolve shards' sizing.
+Kindly note performing a [Restore Snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) and/or [Clone Index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) would be insufficient to resolve shards' sizing.
 
-Once a source index’s data is copied into its destination index, the source index can be [removed](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html). You may then consider setting [Create Alias](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-add-alias.html) against the destination index for the source index’s name to point to it for continuity.
+Once a source index’s data is copied into its destination index, the source index can be [removed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete). You may then consider setting [Create Alias](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-alias) against the destination index for the source index’s name to point to it for continuity.
 
 See this [fixing shard sizes video](https://www.youtube.com/watch?v=sHyNYnwbYro) for an example troubleshooting walkthrough.
 
@@ -118,13 +149,13 @@ As a general rule of thumb, you should have fewer than 3000 indices per GB of he
 
 Note that this rule defines the absolute maximum number of indices that a master node can manage, but does not guarantee the performance of searches or indexing involving this many indices. You must also ensure that your data nodes have adequate resources for your workload and that your overall sharding strategy meets all your performance requirements. See also [Searches run on a single thread per shard](#single-thread-per-shard) and [Each index, shard, segment and field has overhead](#each-shard-has-overhead).
 
-To check the configured size of each node’s heap, use the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html).
+To check the configured size of each node’s heap, use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes).
 
 ```console
 GET _cat/nodes?v=true&h=heap.max
 ```
 
-You can use the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html) to check the number of shards per node.
+You can use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) to check the number of shards per node.
 
 ```console
 GET _cat/shards?v=true
@@ -133,7 +164,7 @@ GET _cat/shards?v=true
 
 ### Add enough nodes to stay within the cluster shard limits [shard-count-per-node-recommendation]
 
-[Cluster shard limits](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
+[Cluster shard limits](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
 
 
 ### Allow enough heap for field mappers and overheads [field-count-recommendation]
@@ -143,7 +174,7 @@ Mapped fields consume some heap memory on each node, and require extra heap on d
 
 #### Mapping metadata in the cluster state [_mapping_metadata_in_the_cluster_state]
 
-Each node in the cluster has a copy of the [cluster state](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html#cluster-state-api-desc). The cluster state includes information about the field mappings for each index. This information has heap overhead. You can use the [Cluster stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html) to get the heap overhead of the total size of all mappings after deduplication and compression.
+Each node in the cluster has a copy of the [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state). The cluster state includes information about the field mappings for each index. This information has heap overhead. You can use the [Cluster stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats) to get the heap overhead of the total size of all mappings after deduplication and compression.
 
 ```console
 GET _cluster/stats?human&filter_path=indices.mappings.total_deduplicated_mapping_size*
@@ -165,7 +196,7 @@ This will show you information like in this example output:
 
 #### Retrieving heap size and field mapper overheads [_retrieving_heap_size_and_field_mapper_overheads]
 
-You can use the [Nodes stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html) to get two relevant metrics for each node:
+You can use the [Nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to get two relevant metrics for each node:
 
 * The size of the heap on each node.
 * Any additional estimated heap overhead for the fields per node. This is specific to data nodes, where apart from the cluster state field information mentioned above, there is additional heap overhead for each mapped field of an index held by the data node. For nodes which are not data nodes, this field may be zero.
@@ -223,7 +254,7 @@ Note that the above rules do not necessarily guarantee the performance of search
 
 If too many shards are allocated to a specific node, the node can become a hotspot. For example, if a single node contains too many shards for an index with a high indexing volume, the node is likely to have issues.
 
-To prevent hotspots, use the [`index.routing.allocation.total_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-total-shards.html#total-shards-per-node) index setting to explicitly limit the number of shards on a single node. You can configure `index.routing.allocation.total_shards_per_node` using the [update index settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html).
+To prevent hotspots, use the [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) index setting to explicitly limit the number of shards on a single node. You can configure `index.routing.allocation.total_shards_per_node` using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
 
 ```console
 PUT my-index-000001/_settings
@@ -237,9 +268,9 @@ PUT my-index-000001/_settings
 
 ### Avoid unnecessary mapped fields [avoid-unnecessary-fields]
 
-By default {{es}} [automatically creates a mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md) for every field in every document it indexes. Every mapped field corresponds to some data structures on disk which are needed for efficient search, retrieval, and aggregations on this field. Details about each mapped field are also held in memory. In many cases this overhead is unnecessary because a field is not used in any searches or aggregations. Use [*Explicit mapping*](../../../manage-data/data-store/mapping/explicit-mapping.md) instead of dynamic mapping to avoid creating fields that are never used. If a collection of fields are typically used together, consider using [`copy_to`](https://www.elastic.co/guide/en/elasticsearch/reference/current/copy-to.html) to consolidate them at index time. If a field is only rarely used, it may be better to make it a [Runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) instead.
+By default {{es}} [automatically creates a mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md) for every field in every document it indexes. Every mapped field corresponds to some data structures on disk which are needed for efficient search, retrieval, and aggregations on this field. Details about each mapped field are also held in memory. In many cases this overhead is unnecessary because a field is not used in any searches or aggregations. Use [*Explicit mapping*](../../../manage-data/data-store/mapping/explicit-mapping.md) instead of dynamic mapping to avoid creating fields that are never used. If a collection of fields are typically used together, consider using [`copy_to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) to consolidate them at index time. If a field is only rarely used, it may be better to make it a [Runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) instead.
 
-You can get information about which fields are being used with the [Field usage stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-usage-stats.html) API, and you can analyze the disk usage of mapped fields using the [Analyze index disk usage](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-disk-usage.html) API. Note however that unnecessary mapped fields also carry some memory overhead as well as their disk usage.
+You can get information about which fields are being used with the [Field usage stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-field-usage-stats) API, and you can analyze the disk usage of mapped fields using the [Analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) API. Note however that unnecessary mapped fields also carry some memory overhead as well as their disk usage.
 
 
 ## Reduce a cluster’s shard count [reduce-cluster-shard-count]
@@ -258,13 +289,13 @@ If your retention policy requires a `max_age` threshold, increase it to create i
 
 If you’re using {{ilm-init}} and roll over indices based on a `max_age` threshold, you can inadvertently create indices with no documents. These empty indices provide no benefit but still consume resources.
 
-You can find these empty indices using the [cat count API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html).
+You can find these empty indices using the [cat count API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-count).
 
 ```console
 GET _cat/count/my-index-000001?v=true
 ```
 
-Once you have a list of empty indices, you can delete them using the [delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html). You can also delete any other unneeded indices.
+Once you have a list of empty indices, you can delete them using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete). You can also delete any other unneeded indices.
 
 ```console
 DELETE my-index-000001
@@ -273,7 +304,7 @@ DELETE my-index-000001
 
 ### Force merge during off-peak hours [force-merge-during-off-peak-hours]
 
-If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) to [merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
+If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to [merge](elasticsearch://reference/elasticsearch/index-settings/merge.md) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
 
 ```console
 POST my-index-000001/_forcemerge
@@ -282,14 +313,14 @@ POST my-index-000001/_forcemerge
 
 ### Shrink an existing index to fewer shards [shrink-existing-index-to-fewer-shards]
 
-If you no longer write to an index, you can use the [shrink index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-shrink-index.html) to reduce its shard count.
+If you no longer write to an index, you can use the [shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) to reduce its shard count.
 
-{{ilm-init}} also has a [shrink action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-shrink.html) for indices in the warm phase.
+{{ilm-init}} also has a [shrink action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) for indices in the warm phase.
 
 
 ### Combine smaller indices [combine-smaller-indices]
 
-You can also use the [reindex API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) to combine indices with similar mappings into a single large index. For time series data, you could reindex indices for short time periods into a new index covering a longer period. For example, you could reindex daily indices from October with a shared index pattern, such as `my-index-2099.10.11`, into a monthly `my-index-2099.10` index. After the reindex, delete the smaller indices.
+You can also use the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to combine indices with similar mappings into a single large index. For time series data, you could reindex indices for short time periods into a new index covering a longer period. For example, you could reindex daily indices from October with a shared index pattern, such as `my-index-2099.10.11`, into a monthly `my-index-2099.10` index. After the reindex, delete the smaller indices.
 
 ```console
 POST _reindex
@@ -311,9 +342,9 @@ Here’s how to resolve common shard-related errors.
 
 ### this action would add [x] total shards, but this cluster currently has [y]/[z] maximum shards open; [troubleshooting-max-shards-open]
 
-The [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
+The [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
 
-If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) and retry the action.
+If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) and retry the action.
 
 ```console
 PUT _cluster/settings
@@ -324,7 +355,7 @@ PUT _cluster/settings
 }
 ```
 
-This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](#reduce-cluster-shard-count). To get a cluster’s current shard count after making changes, use the [cluster stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html).
+This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](#reduce-cluster-shard-count). To get a cluster’s current shard count after making changes, use the [cluster stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats).
 
 ```console
 GET _cluster/stats?filter_path=indices.shards.total
@@ -346,26 +377,26 @@ See this [fixing "max shards open" video](https://www.youtube.com/watch?v=tZKbDe
 
 ### Number of documents in the shard cannot exceed [2147483519] [troubleshooting-max-docs-limit]
 
-Each {{es}} shard is a separate Lucene index, so it shares Lucene’s [`MAX_DOC` limit](https://github.com/apache/lucene/issues/5176) of having at most 2,147,483,519 (`(2^31)-129`) documents. This per-shard limit applies to the sum of `docs.count` plus `docs.deleted` as reported by the [Index stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-stats.html). Exceeding this limit will result in errors like the following:
+Each {{es}} shard is a separate Lucene index, so it shares Lucene’s [`MAX_DOC` limit](https://github.com/apache/lucene/issues/5176) of having at most 2,147,483,519 (`(2^31)-129`) documents. This per-shard limit applies to the sum of `docs.count` plus `docs.deleted` as reported by the [Index stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats). Exceeding this limit will result in errors like the following:
 
-```txt
-Elasticsearch exception [type=illegal_argument_exception, reason=Number of documents in the shard cannot exceed [2147483519]]
+```txt subs=true
+{{es}} exception [type=illegal_argument_exception, reason=Number of documents in the shard cannot exceed [2147483519]]
 ```
 
 ::::{tip}
-This calculation may differ from the [Count API’s](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html) calculation, because the Count API does not include nested documents and does not count deleted documents.
+This calculation may differ from the [Count API’s](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-count) calculation, because the Count API does not include nested documents and does not count deleted documents.
 ::::
 
 
 This limit is much higher than the [recommended maximum document count](#shard-size-recommendation) of approximately 200M documents per shard.
 
-If you encounter this problem, try to mitigate it by using the [Force Merge API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) to merge away some deleted docs. For example:
+If you encounter this problem, try to mitigate it by using the [Force Merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to merge away some deleted docs. For example:
 
 ```console
 POST my-index-000001/_forcemerge?only_expunge_deletes=true
 ```
 
-This will launch an asynchronous task which can be monitored via the [Task Management API](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html).
+This will launch an asynchronous task which can be monitored via the [Task Management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks).
 
-It may also be helpful to [delete unneeded documents](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html), or to [split](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-split-index.html) or [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) the index into one with a larger number of shards.
+It may also be helpful to [delete unneeded documents](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query), or to [split](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) the index into one with a larger number of shards.
 

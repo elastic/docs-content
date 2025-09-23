@@ -1,13 +1,22 @@
 ---
+navigation_title: Trace {{es}} query
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-trace-query.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    self: all
+    eck: all
+products:
+  - id: kibana
 ---
 
-# Trace Elasticsearch query to the origin in Kibana [kibana-troubleshooting-trace-query]
+# Trace an {{es}} query in {{kib}} [kibana-troubleshooting-trace-query]
 
-Sometimes the {{es}} server might be slowed down by the execution of an expensive query. Such queries are logged to {{es}}'s [search slow log](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html#search-slow-log) file. But there is a problem: it’s impossible to say what triggered a slow search request—a {{kib}} instance or a user accessing an {{es}} endpoint directly. To simplify the investigation of such cases, the search slow log file includes the `x-opaque-id` header, which might provide additional information about a request if it originated from {{kib}}.
+Sometimes the {{es}} server might be slowed down by the execution of an expensive query. Such queries are logged to {{es}}'s [search slow log](elasticsearch://reference/elasticsearch/index-settings/slow-log.md#search-slow-log) file. But there is a problem: it’s impossible to say what triggered a slow search request—a {{kib}} instance or a user accessing an {{es}} endpoint directly. To simplify the investigation of such cases, the search slow log file includes the `x-opaque-id` header, which might provide additional information about a request if it originated from {{kib}}.
 
-::::{warning} 
+::::{warning}
 At the moment, {{kib}} can only highlight cases where a slow query originated from a {{kib}} visualization, **Lens**, **Discover**, **Maps**, or **Alerting**.
 ::::
 

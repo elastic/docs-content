@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-data.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Map data [k8s-maps-data]
@@ -14,7 +19,7 @@ The Elastic Maps Server Docker image contains only a few zoom levels of data. To
 
 ## Basemap download [k8s-maps-basemap-download]
 
-You have to download the basemap ahead of time on a machine that is not air-gapped and populate a volume that can be mounted into the Elastic Maps Server Pods. Check also the [Elastic Maps Server documentation.](https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html#elastic-maps-server)
+You have to download the basemap ahead of time on a machine that is not air-gapped and populate a volume that can be mounted into the Elastic Maps Server Pods. Check also the [Elastic Maps Server documentation.](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server)
 
 The procedure on how to get a Kubernetes volume populated with that data is outside the scope of this document, as it depends on your specific Kubernetes setup and choice of volume provisioner. This is a possible approach that works for most setups:
 
@@ -80,13 +85,13 @@ You can [customize the Elastic Maps Server Pod](customize-pods.md) using a Pod t
 
 The following example demonstrates how to create a Elastic Maps Server deployment which mounts a data volume with the complete basemap.
 
-```yaml
+```yaml subs=true
 apiVersion: maps.k8s.elastic.co/v1alpha1
 kind: ElasticMapsServer
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   podTemplate:
     spec:

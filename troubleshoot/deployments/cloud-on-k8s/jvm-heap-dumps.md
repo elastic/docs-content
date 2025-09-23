@@ -1,13 +1,19 @@
 ---
+navigation_title: JVM heap dumps
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-jvm-heap-dumps.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
-# JVM heap dumps [k8s-jvm-heap-dumps]
+# Troubleshoot JVM heap dumps [k8s-jvm-heap-dumps]
 
 ## Ensure sufficient storage [k8s_ensure_sufficient_storage]
 
-Elasticsearch is [configured by default](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#heap-dump-path) to take heap dumps on out-of-memory exceptions to the default data directory. The default data directory is `/usr/share/elasticsearch/data` in the official Docker images that ECK uses. If you are running Elasticsearch with a large heap that is as large as the remaining space on the data volume, this can lead to a situation where Elasticsearch is no longer able to start. To avoid this scenario you have two options:
+Elasticsearch is [configured by default](/deploy-manage/deploy/self-managed/important-settings-configuration.md#heap-dump-path) to take heap dumps on out-of-memory exceptions to the default data directory. The default data directory is `/usr/share/elasticsearch/data` in the official Docker images that ECK uses. If you are running Elasticsearch with a large heap that is as large as the remaining space on the data volume, this can lead to a situation where Elasticsearch is no longer able to start. To avoid this scenario you have two options:
 
 1. Choose a different path by setting `-XX:HeapDumpPath=` with the  `ES_JAVA_OPTS` variable to a path where a volume with sufficient storage space is mounted
 2. [Resize the data volume](../../../deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md) to a sufficiently large size if your volume provisioner supports volume expansion

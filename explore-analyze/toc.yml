@@ -1,29 +1,17 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
-  - file: overview/kibana-quickstart.md
-    children:
-      - file: overview/kibana-quickstart/accessibility-in-kibana.md
   - file: query-filter.md
     children:
       - file: query-filter/languages.md
         children:
           - file: query-filter/languages/querydsl.md
-          - file: query-filter/languages/esorql.md
-            children:
-              - file: query-filter/languages/esql-rest.md
-              - file: query-filter/languages/esql-kibana.md
-              - file: query-filter/languages/esql-elastic-security.md
-              - file: query-filter/languages/esql-multi-index.md
-              - file: query-filter/languages/esql-cross-clusters.md
-              - file: query-filter/languages/esql-task-management.md
+          - file: query-filter/languages/esql-kibana.md
           - file: query-filter/languages/sql.md
             children:
               - file: query-filter/languages/sql-overview.md
               - file: query-filter/languages/sql-getting-started.md
               - file: query-filter/languages/sql-concepts.md
-                children:
-                  - file: query-filter/languages/_mapping_concepts_across_sql_and_elasticsearch.md
               - file: query-filter/languages/sql-security.md
               - file: query-filter/languages/sql-rest.md
                 children:
@@ -39,7 +27,7 @@ toc:
               - file: query-filter/languages/sql-cli.md
               - file: query-filter/languages/sql-jdbc.md
                 children:
-                  - file: query-filter/languages/_api_usage.md
+                  - file: query-filter/languages/sql-jdbc-api-usage.md
               - file: query-filter/languages/sql-odbc.md
                 children:
                   - file: query-filter/languages/sql-odbc-installation.md
@@ -101,27 +89,10 @@ toc:
           - file: query-filter/tools/search-profiler.md
           - file: query-filter/tools/grok-debugger.md
           - file: query-filter/tools/playground.md
+      - file: query-filter/aggregations.md
+        children:
+          - file: query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
       - file: query-filter/filtering.md
-  - file: scripting.md
-    children:
-      - file: scripting/modules-scripting-painless.md
-      - file: scripting/modules-scripting-using.md
-        children:
-          - file: scripting/scripts-search-speed.md
-          - file: scripting/dissect.md
-          - file: scripting/grok.md
-      - file: scripting/script-fields-api.md
-      - file: scripting/common-script-uses.md
-        children:
-          - file: scripting/scripting-field-extraction.md
-      - file: scripting/modules-scripting-fields.md
-      - file: scripting/modules-scripting-security.md
-      - file: scripting/modules-scripting-expression.md
-      - file: scripting/modules-scripting-engine.md
-      - file: scripting/painless-lab.md
-  - file: aggregations.md
-    children:
-      - file: aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
   - file: geospatial-analysis.md
   - file: transforms.md
     children:
@@ -136,14 +107,13 @@ toc:
       - file: transforms/transform-examples.md
       - file: transforms/transform-painless-examples.md
       - file: transforms/transform-limitations.md
+  - file: elastic-inference.md
+    children:
+      - file: elastic-inference/eis.md
+      - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
-      - file: machine-learning/machine-learning-in-kibana.md
-        children:
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
       - file: machine-learning/anomaly-detection.md
         children:
           - file: machine-learning/anomaly-detection/ml-ad-finding-anomalies.md
@@ -168,6 +138,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-configuring-transform.md
               - file: machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md
               - file: machine-learning/anomaly-detection/ml-configuring-categories.md
+              - file: machine-learning/anomaly-detection/ml-configuring-populations.md
               - file: machine-learning/anomaly-detection/ml-reverting-model-snapshot.md
               - file: machine-learning/anomaly-detection/geographic-anomalies.md
               - file: machine-learning/anomaly-detection/mapping-anomalies.md
@@ -214,7 +185,6 @@ toc:
               - file: machine-learning/nlp/ml-nlp-import-model.md
               - file: machine-learning/nlp/ml-nlp-deploy-model.md
               - file: machine-learning/nlp/ml-nlp-test-inference.md
-          - file: machine-learning/nlp/ml-nlp-auto-scale.md
           - file: machine-learning/nlp/ml-nlp-inference.md
           - file: machine-learning/nlp/ml-nlp-apis.md
           - file: machine-learning/nlp/ml-nlp-built-in-models.md
@@ -226,20 +196,31 @@ toc:
           - file: machine-learning/nlp/ml-nlp-model-ref.md
           - file: machine-learning/nlp/ml-nlp-examples.md
             children:
+              - file: machine-learning/nlp/nlp-end-to-end-tutorial.md
               - file: machine-learning/nlp/ml-nlp-ner-example.md
               - file: machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md
           - file: machine-learning/nlp/ml-nlp-limitations.md
-          - file: machine-learning/nlp/inference-processing.md
-            children:
-              - file: machine-learning/nlp/nlp-example.md
-      - file: machine-learning/aiops-labs.md
+      - file: machine-learning/machine-learning-in-kibana.md
         children:
-          - file: machine-learning/aiops-labs/observability-aiops-detect-anomalies.md
-            children:
-              - file: machine-learning/aiops-labs/observability-aiops-tune-anomaly-detection-job.md
-              - file: machine-learning/aiops-labs/observability-aiops-forecast-anomalies.md
-          - file: machine-learning/aiops-labs/observability-aiops-analyze-spikes.md
-          - file: machine-learning/aiops-labs/observability-aiops-detect-change-points.md
+          - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
+          - file: machine-learning/machine-learning-in-kibana/inference-processing.md
+  - file: scripting.md
+    children:
+      - file: scripting/modules-scripting-painless.md
+      - file: scripting/modules-scripting-using.md
+        children:
+          - file: scripting/scripts-search-speed.md
+          - file: scripting/dissect.md
+          - file: scripting/grok.md
+      - file: scripting/script-fields-api.md
+      - file: scripting/common-script-uses.md
+        children:
+          - file: scripting/scripting-field-extraction.md
+      - file: scripting/modules-scripting-fields.md
+      - file: scripting/modules-scripting-security.md
+      - file: scripting/modules-scripting-expression.md
+      - file: scripting/modules-scripting-engine.md
+      - file: scripting/painless-lab.md
   - file: ai-assistant.md
   - file: discover.md
     children:
@@ -262,7 +243,7 @@ toc:
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/_import_dashboards.md
+          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
       - file: dashboards/sharing.md
       - file: dashboards/tutorials.md
@@ -272,15 +253,15 @@ toc:
   - file: visualize.md
     children:
       - file: visualize/supported-chart-types.md
-      - file: visualize/manage-panels.md
       - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
       - file: visualize/lens.md
       - file: visualize/esorql.md
-      - file: visualize/field-statistics.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
+      - file: visualize/alert-panels.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -324,6 +305,10 @@ toc:
           - file: visualize/graph/graph-configuration.md
           - file: visualize/graph/graph-troubleshooting.md
       - file: visualize/legacy-editors.md
+        children:
+          - file: visualize/legacy-editors/aggregation-based.md
+          - file: visualize/legacy-editors/tsvb.md
+          - file: visualize/legacy-editors/timelion.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md
@@ -339,70 +324,77 @@ toc:
         children:
           - file: report-and-share/reporting-troubleshooting-csv.md
           - file: report-and-share/reporting-troubleshooting-pdf.md
-  - file: alerts.md
+  - file: alerts-cases.md
     children:
-      - file: alerts/kibana.md
+      - file: alerts-cases/alerts.md
         children:
-          - file: alerts/kibana/alerting-setup.md
-          - file: alerts/kibana/create-manage-rules.md
-          - file: alerts/kibana/view-alerts.md
-          - file: alerts/kibana/rule-types.md
+          - file: alerts-cases/alerts/alerting-getting-started.md
+          - file: alerts-cases/alerts/alerting-setup.md
+          - file: alerts-cases/alerts/create-manage-rules.md
+          - file: alerts-cases/alerts/view-alerts.md
+          - file: alerts-cases/alerts/rule-types.md
             children:
-              - file: alerts/kibana/rule-type-index-threshold.md
-              - file: alerts/kibana/rule-type-es-query.md
-              - file: alerts/kibana/geo-alerting.md
-          - file: alerts/kibana/rule-action-variables.md
-          - file: alerts/kibana/alerting-troubleshooting.md
+              - file: alerts-cases/alerts/rule-type-index-threshold.md
+              - file: alerts-cases/alerts/rule-type-es-query.md
+              - file: alerts-cases/alerts/geo-alerting.md
+          - file: alerts-cases/alerts/rule-action-variables.md
+          - file: alerts-cases/alerts/notifications-domain-allowlist.md
+          - file: alerts-cases/alerts/alerting-troubleshooting.md
             children:
-              - file: alerts/kibana/alerting-common-issues.md
-              - file: alerts/kibana/event-log-index.md
-              - file: alerts/kibana/testing-connectors.md
-          - file: alerts/kibana/maintenance-windows.md
-      - file: alerts/watcher.md
+              - file: alerts-cases/alerts/alerting-common-issues.md
+              - file: alerts-cases/alerts/event-log-index.md
+              - file: alerts-cases/alerts/testing-connectors.md
+          - file: alerts-cases/alerts/maintenance-windows.md
+      - file: alerts-cases/watcher.md
         children:
-          - file: alerts/watcher/watcher-getting-started.md
-          - file: alerts/watcher/how-watcher-works.md
-          - file: alerts/watcher/encrypting-data.md
-          - file: alerts/watcher/input.md
+          - file: alerts-cases/watcher/watcher-getting-started.md
+          - file: alerts-cases/watcher/how-watcher-works.md
+          - file: alerts-cases/watcher/enable-watcher.md
+          - file: alerts-cases/watcher/watcher-ui.md
+          - file: alerts-cases/watcher/encrypting-data.md
+          - file: alerts-cases/watcher/input.md
             children:
-              - file: alerts/watcher/input-simple.md
-              - file: alerts/watcher/input-search.md
-              - file: alerts/watcher/input-http.md
-              - file: alerts/watcher/input-chain.md
-          - file: alerts/watcher/trigger.md
+              - file: alerts-cases/watcher/input-simple.md
+              - file: alerts-cases/watcher/input-search.md
+              - file: alerts-cases/watcher/input-http.md
+              - file: alerts-cases/watcher/input-chain.md
+          - file: alerts-cases/watcher/trigger.md
             children:
-              - file: alerts/watcher/trigger-schedule.md
-          - file: alerts/watcher/condition.md
+              - file: alerts-cases/watcher/trigger-schedule.md
+              - file: alerts-cases/watcher/throttling.md
+              - file: alerts-cases/watcher/schedule-types.md
+          - file: alerts-cases/watcher/condition.md
             children:
-              - file: alerts/watcher/condition-always.md
-              - file: alerts/watcher/condition-never.md
-              - file: alerts/watcher/condition-compare.md
-              - file: alerts/watcher/condition-array-compare.md
-              - file: alerts/watcher/condition-script.md
-          - file: alerts/watcher/actions.md
+              - file: alerts-cases/watcher/condition-always.md
+              - file: alerts-cases/watcher/condition-never.md
+              - file: alerts-cases/watcher/condition-compare.md
+              - file: alerts-cases/watcher/condition-array-compare.md
+              - file: alerts-cases/watcher/condition-script.md
+          - file: alerts-cases/watcher/actions.md
             children:
-              - file: alerts/watcher/action-foreach.md
-              - file: alerts/watcher/action-conditions.md
-              - file: alerts/watcher/actions-email.md
-              - file: alerts/watcher/actions-webhook.md
-              - file: alerts/watcher/actions-index.md
-              - file: alerts/watcher/actions-logging.md
-              - file: alerts/watcher/actions-slack.md
-              - file: alerts/watcher/actions-pagerduty.md
-              - file: alerts/watcher/actions-jira.md
-          - file: alerts/watcher/transform.md
+              - file: alerts-cases/watcher/action-foreach.md
+              - file: alerts-cases/watcher/action-conditions.md
+              - file: alerts-cases/watcher/actions-email.md
+              - file: alerts-cases/watcher/actions-webhook.md
+              - file: alerts-cases/watcher/actions-index.md
+              - file: alerts-cases/watcher/actions-logging.md
+              - file: alerts-cases/watcher/actions-slack.md
+              - file: alerts-cases/watcher/actions-pagerduty.md
+              - file: alerts-cases/watcher/actions-jira.md
+          - file: alerts-cases/watcher/transform.md
             children:
-              - file: alerts/watcher/transform-search.md
-              - file: alerts/watcher/transform-script.md
-              - file: alerts/watcher/transform-chain.md
-          - file: alerts/watcher/managing-watches.md
-          - file: alerts/watcher/example-watches.md
+              - file: alerts-cases/watcher/transform-search.md
+              - file: alerts-cases/watcher/transform-script.md
+              - file: alerts-cases/watcher/transform-chain.md
+          - file: alerts-cases/watcher/managing-watches.md
+          - file: alerts-cases/watcher/example-watches.md
             children:
-              - file: alerts/watcher/watch-cluster-status.md
-          - file: alerts/watcher/watcher-limitations.md
-      - file: alerts/cases.md
+              - file: alerts-cases/watcher/watch-cluster-status.md
+              - file: alerts-cases/watcher/execute-watch.md
+          - file: alerts-cases/watcher/watcher-limitations.md
+      - file: alerts-cases/cases.md
         children:
-          - file: alerts/cases/setup-cases.md
-          - file: alerts/cases/manage-cases.md
-          - file: alerts/cases/manage-cases-settings.md
+          - file: alerts-cases/cases/setup-cases.md
+          - file: alerts-cases/cases/manage-cases.md
+          - file: alerts-cases/cases/manage-cases-settings.md
   - file: numeral-formatting.md

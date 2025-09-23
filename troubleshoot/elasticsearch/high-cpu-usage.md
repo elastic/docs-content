@@ -1,28 +1,35 @@
 ---
+navigation_title: High CPU usage
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-cpu-usage.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# High CPU usage [high-cpu-usage]
+# Symptom: High CPU usage [high-cpu-usage]
 
-{{es}} uses [thread pools](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
+{{es}} uses [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
 
 If a thread pool is depleted, {{es}} will [reject requests](rejected-requests.md) related to the thread pool. For example, if the `search` thread pool is depleted, {{es}} will reject search requests until more threads are available.
 
-You might experience high CPU usage if a [data tier](../../manage-data/lifecycle/data-tiers.md), and therefore the nodes assigned to that tier, is experiencing more traffic than other tiers. This imbalance in resource utilization is also known as [hot spotting](hotspotting.md).
-
-::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
-
+::::{tip}
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
 
 ## Diagnose high CPU usage [diagnose-high-cpu-usage]
 
-**Check CPU usage**
+### Check CPU usage [check-cpu-usage]
 
-You can check the CPU usage per node using the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html):
+You can check the CPU usage per node using the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
 
 ```console
 GET _cat/nodes?v=true&s=cpu:desc
@@ -34,30 +41,30 @@ To track CPU usage over time, we recommend enabling monitoring:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
-* (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
+::::::{tab-item} {{ech}}
+* (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
-    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
+    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 
-* From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) page. On this page, you can view two key metrics:
+* From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) page. On this page, you can view two key metrics:
 
     * **CPU usage**: Your deployment’s CPU usage, represented as a percentage.
     * **CPU credits**: Your remaining CPU credits, measured in seconds of CPU time.
 
 
-{{ess}} grants [CPU credits](../../deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
+{{ech}} grants [CPU credits](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
 ::::::
 
 ::::::{tab-item} Self-managed
 * Enable [{{es}} monitoring](../../deploy-manage/monitor/stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
-    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
+    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 ::::::
 
 :::::::
-**Check hot threads**
+### Check hot threads [check-hot-threads]
 
-If a node has high CPU usage, use the [nodes hot threads API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html) to check for resource-intensive threads running on the node.
+If a node has high CPU usage, use the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) to check for resource-intensive threads running on the node.
 
 ```console
 GET _nodes/hot_threads
@@ -70,17 +77,61 @@ This API returns a breakdown of any hot threads in plain text. High CPU usage fr
 
 The following tips outline the most common causes of high CPU usage and their solutions.
 
-**Scale your cluster**
+### Check JVM garbage collection [check-jvm-garbage-collection]
 
-Heavy indexing and search loads can deplete smaller thread pools. To better handle heavy workloads, add more nodes to your cluster or upgrade your existing nodes to increase capacity.
+High CPU usage is often caused by excessive JVM garbage collection (GC) activity. This excessive GC typically arises from configuration problems or inefficient queries causing increased heap memory usage.
 
-**Spread out bulk requests**
+For optimal JVM performance, garbage collection should meet these criteria:
 
-While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) or [multi-search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) requests still require CPU resources. If possible, submit smaller requests and allow more time between them.
+| GC type | Completion time | Frequency |
+|---------|----------------|---------------------|
+| Young GC | <50ms | ~once per 10 seconds |
+| Old GC | <1s | ≤once per 10 minutes |
 
-**Cancel long-running searches**
+Excessive JVM garbage collection usually indicates high heap memory usage. Common potential reasons for increased heap memory usage include:
 
-Long-running searches can block threads in the `search` thread pool. To check for these searches, use the [task management API](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html).
+* Oversharding of indices
+* Very large aggregation queries
+* Excessively large bulk indexing requests
+* Inefficient or incorrect mapping definitions
+* Improper heap size configuration
+* Misconfiguration of JVM new generation ratio (`-XX:NewRatio`)
+
+### Hot spotting [high-cpu-usage-hot-spotting]
+
+You might experience high CPU usage on specific data nodes or an entire [data tier](/manage-data/lifecycle/data-tiers.md) if traffic isn’t evenly distributed. This is known as [hot spotting](hotspotting.md). Hot spotting commonly occurs when read or write applications don’t evenly distribute requests across nodes, or when indices receiving heavy write activity, such as indices in the hot tier, have their shards concentrated on just one or a few nodes.
+
+For details on diagnosing and resolving these issues, refer to [](hotspotting.md).
+
+### Oversharding [high-cpu-usage-oversharding]
+
+Oversharding occurs when a cluster has too many shards, often times caused by shards being smaller than optimal. While {{es}} doesn’t have a strict minimum shard size, an excessive number of small shards can negatively impact performance. Each shard consumes cluster resources because {{es}} must maintain metadata and manage shard states across all nodes.
+
+If you have too many small shards, you can address this by doing the following:
+
+* Removing empty or unused indices.
+* Deleting or closing indices containing outdated or unnecessary data.
+* Reindexing smaller shards into fewer, larger shards to optimize cluster performance.
+
+If your shards are sized correctly but you are still experiencing oversharding, creating a more aggressive [index lifecycle management strategy](/manage-data/lifecycle/index-lifecycle-management.md) or deleting old indices can help reduce the number of shards.
+
+For more information, refer to [](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
+
+### Additional recommendations
+
+To further reduce CPU load or mitigate temporary spikes in resource usage, consider these steps:
+
+#### Scale your cluster [scale-your-cluster]
+
+Heavy indexing and search loads can deplete smaller thread pools. Add nodes or upgrade existing ones to handle increased indexing and search loads more effectively.
+
+#### Spread out bulk requests [spread-out-bulk-requests]
+
+Submit smaller [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk-1) or multi-search requests, and space them out to avoid overwhelming thread pools.
+
+#### Cancel long-running searches [cancel-long-running-searches]
+
+Regularly use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-list) to identify and cancel searches that consume excessive CPU time.
 
 ```console
 GET _tasks?actions=*search&detailed

@@ -1,7 +1,12 @@
 ---
-navigation_title: "Collecting log data with {{filebeat}}"
+navigation_title: Collecting log data with {{filebeat}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-filebeat.html
+applies_to:
+  deployment:
+    self: all
+products:
+  - id: elasticsearch
 ---
 
 
@@ -11,26 +16,28 @@ mapped_pages:
 
 You can use {{filebeat}} to monitor the {{es}} log files, collect log events, and ship them to the monitoring cluster. Your recent logs are visible on the **Monitoring** page in {{kib}}.
 
-::::{important} 
+::::{important}
 If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Instead, configure the {{es}} integration to collect logs.
 ::::
 
 
 1. Verify that {{es}} is running and that the monitoring cluster is ready to receive data from {{filebeat}}.
 
-    ::::{tip} 
-    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. See [*Monitoring in a production environment*](elasticsearch-monitoring-self-managed.md).
+    ::::{tip}
+    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. 
+    
+    For more information, refer to [](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
     ::::
 
 2. Identify which logs you want to monitor.
 
-    The {{filebeat}} {es} module can handle [audit logs](../logging-configuration/logfile-audit-output.md), [deprecation logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md#deprecation-logging), [gc logs](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
+    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
 
-    ::::{important} 
+    ::::{important}
     If there are both structured (`*.json`) and unstructured (plain text) versions of the logs, you must use the structured logs. Otherwise, they might not appear in the appropriate context in {{kib}}.
     ::::
 
-3. [Install {{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html) on the {{es}} nodes that contain logs that you want to monitor.
+3. [Install {{filebeat}}](beats://reference/filebeat/filebeat-installation-configuration.md) on the {{es}} nodes that contain logs that you want to monitor.
 4. Identify where to send the log data.
 
     For example, specify {{es}} output information for your monitoring cluster in the {{filebeat}} configuration file (`filebeat.yml`):
@@ -38,7 +45,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon-2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"
@@ -51,14 +58,14 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
     If you configured the monitoring cluster to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://es-mon-1:9200`.
 
-    ::::{important} 
-    The {{es}} {monitor-features} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one [ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).
+    ::::{important}
+    The {{es}} {{monitor-features}} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one [ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).
     ::::
 
 
-    If {{es}} {security-features} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{filebeat}} can send metrics successfully.
+    If {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{filebeat}} can send metrics successfully.
 
-    For more information about these configuration options, see [Configure the {{es}} output](https://www.elastic.co/guide/en/beats/filebeat/current/elasticsearch-output.html).
+    For more information about these configuration options, see [Configure the {{es}} output](beats://reference/filebeat/elasticsearch-output.md).
 
 5. Optional: Identify where to visualize the data.
 
@@ -71,17 +78,17 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
       #password: "YOUR_PASSWORD"
     ```
 
-    ::::{tip} 
+    ::::{tip}
     In production environments, we strongly recommend using a dedicated {{kib}} instance for your monitoring cluster.
     ::::
 
 
     If {{security-features}} are enabled, you must provide a valid user ID and password so that {{filebeat}} can connect to {{kib}}:
 
-    1. Create a user on the monitoring cluster that has the [`kibana_admin` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md) or equivalent privileges.
-    2. Add the `username` and `password` settings to the {{es}} output information in the {{filebeat}} configuration file. The example shows a hard-coded password, but you should store sensitive values in the [secrets keystore](https://www.elastic.co/guide/en/beats/filebeat/current/keystore.html).
+    1. Create a user on the monitoring cluster that has the [`kibana_admin` built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-kibana-admin) or equivalent privileges.
+    2. Add the `username` and `password` settings to the {{es}} output information in the {{filebeat}} configuration file. The example shows a hard-coded password, but you should store sensitive values in the [secrets keystore](beats://reference/filebeat/keystore.md).
 
-    See [Configure the {{kib}} endpoint](https://www.elastic.co/guide/en/beats/filebeat/current/setup-kibana-endpoint.html).
+    See [Configure the {{kib}} endpoint](beats://reference/filebeat/setup-kibana-endpoint.md).
 
 6. Enable the {{es}} module and set up the initial {{filebeat}} environment on each node.
 
@@ -92,29 +99,29 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     filebeat setup -e
     ```
 
-    For more information, see [{{es}} module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-elasticsearch.html).
+    For more information, see [{{es}} module](beats://reference/filebeat/filebeat-module-elasticsearch.md).
 
 7. Configure the {{es}} module in {{filebeat}} on each node.
 
-    If the logs that you want to monitor aren’t in the default location, set the appropriate path variables in the `modules.d/elasticsearch.yml` file. See [Configure the {{es}} module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-elasticsearch.html#configuring-elasticsearch-module).
+    If the logs that you want to monitor aren’t in the default location, set the appropriate path variables in the `modules.d/elasticsearch.yml` file. See [Configure the {{es}} module](beats://reference/filebeat/filebeat-module-elasticsearch.md#configuring-elasticsearch-module).
 
-    ::::{important} 
+    ::::{important}
     If there are JSON logs, configure the `var.paths` settings to point to them instead of the plain text logs.
     ::::
 
-8. [Start {{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-starting.html) on each node.
+8. [Start {{filebeat}}](beats://reference/filebeat/filebeat-starting.md) on each node.
 
-    ::::{note} 
-    Depending on how you’ve installed {{filebeat}}, you might see errors related to file ownership or permissions when you try to run {{filebeat}} modules. See [Config file ownership and permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+    ::::{note}
+    Depending on how you’ve installed {{filebeat}}, you might see errors related to file ownership or permissions when you try to run {{filebeat}} modules. See [Config file ownership and permissions](beats://reference/libbeat/config-file-permissions.md).
     ::::
 
 9. Check whether the appropriate indices exist on the monitoring cluster.
 
-    For example, use the [cat indices](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html) command to verify that there are new `filebeat-*` indices.
+    For example, use the [cat indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) command to verify that there are new `filebeat-*` indices.
 
-    ::::{tip} 
+    ::::{tip}
     If you want to use the **Monitoring** UI in {{kib}}, there must also be `.monitoring-*` indices. Those indices are generated when you collect metrics about {{stack}} products. For example, see [Collecting monitoring data with {{metricbeat}}](collecting-monitoring-data-with-metricbeat.md).
     ::::
 
-10. [View the monitoring data in {{kib}}](monitoring-data.md).
+10. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-extract-info.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
 ---
 
 # Extract information [ml-nlp-extract-info]
@@ -10,7 +15,6 @@ These NLP tasks enable you to extract information from your unstructured text:
 * [Named entity recognition](#ml-nlp-ner)
 * [Fill-mask](#ml-nlp-mask)
 * [Question answering](#ml-nlp-question-answering)
-
 
 ## Named entity recognition [ml-nlp-ner] 
 
@@ -53,7 +57,6 @@ The task returns the following result:
 ...
 ```
 
-
 ## Fill-mask [ml-nlp-mask] 
 
 The objective of the fill-mask task is to predict a missing word from a text sequence. The model uses the context of the masked word to predict the most likely word to complete the text.
@@ -80,7 +83,6 @@ The task returns the following result:
 ...
 ```
 
-
 ## Question answering [ml-nlp-question-answering] 
 
 The question answering (or extractive question answering) task makes it possible to get answers to certain questions by extracting information from the provided text.
@@ -105,4 +107,3 @@ The answer is shown by the object below:
 }
 ...
 ```
-

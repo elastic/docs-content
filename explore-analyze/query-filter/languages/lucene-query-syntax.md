@@ -1,17 +1,22 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lucene-query.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Lucene query syntax [lucene-query]
 
-Lucene query syntax is available to {{kib}} users who opt out of the [{{kib}} Query Language](kql.md). Full documentation for this syntax is available as part of {{es}} [query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
+Lucene query syntax is available to {{kib}} users who opt out of the [{{kib}} Query Language](kql.md). Full documentation for this syntax is available as part of {{es}} [query string syntax](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md#query-string-syntax).
 
 The main reason to use the Lucene query syntax in {{kib}} is for advanced Lucene features, such as regular expressions or fuzzy term matching. However, Lucene syntax is not able to search nested objects or scripted fields.
 
 To use the Lucene syntax, open the **Saved query** menu, and then select **Language: KQL** > **Lucene**.
 
-![Click the circle icon for the saved query menu](../../../images/kibana-lucene.png "")
+![Click the circle icon for the saved query menu](/explore-analyze/images/kibana-lucene.png "")
 
 To perform a free text search, simply enter a text string. For example, if you’re searching web server logs, you could enter `safari` to search all fields:
 

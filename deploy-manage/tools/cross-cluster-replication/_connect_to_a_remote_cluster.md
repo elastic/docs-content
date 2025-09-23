@@ -1,24 +1,32 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_connect_to_a_remote_cluster.html
+applies_to:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Connect to a remote cluster [_connect_to_a_remote_cluster]
 
 To replicate an index on a remote cluster (Cluster A) to a local cluster (Cluster B), you configure Cluster A as a remote on Cluster B.
 
-:::{image} ../../../images/elasticsearch-reference-ccr-tutorial-clusters.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-tutorial-clusters.png
 :alt: ClusterA contains the leader index and ClusterB contains the follower index
 :::
 
 To configure a remote cluster from Stack Management in {{kib}}:
 
-1. Set up a [secure connection](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#add-remote-clusters) as needed.
+1. Set up a [secure connection](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#add-remote-clusters) as needed.
 2. Select **Remote Clusters** from the side navigation.
 3. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster (`ClusterA`) followed by the transport port (defaults to `9300`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9400` or `192.168.1.1:9300`.
 
 ::::{dropdown} API example
-You can also use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) to add a remote cluster:
+You can also use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster:
 
 ```console
 PUT /_cluster/settings

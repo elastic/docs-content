@@ -1,15 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/range-enrich-policy-type.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Example: Enrich your data by matching a value to a range [range-enrich-policy-type]
 
-A `range` [enrich policy](data-enrichment.md#enrich-policy) uses a [`term` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html) to match a number, date, or IP address in incoming documents to a range of the same type in the enrich index. Matching a range to a range is not supported.
+A `range` [enrich policy](data-enrichment.md#enrich-policy) uses a [`term` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) to match a number, date, or IP address in incoming documents to a range of the same type in the enrich index. Matching a range to a range is not supported.
 
 The following example creates a `range` enrich policy that adds a descriptive network name and responsible department to incoming documents based on an IP address. It then adds the enrich policy to a processor in an ingest pipeline.
 
-Use the [create index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html) with the appropriate mappings to create a source index.
+Use the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) with the appropriate mappings to create a source index.
 
 ```console
 PUT /networks
@@ -54,13 +59,13 @@ PUT /_enrich/policy/networks-policy
 }
 ```
 
-Use the [execute enrich policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html) to create an enrich index for the policy.
+Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) to create an enrich index for the policy.
 
 ```console
 POST /_enrich/policy/networks-policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html) to create an ingest pipeline. In the pipeline, add an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) that includes:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match documents from the enrich index.
@@ -92,7 +97,7 @@ PUT /my-index-000001/_doc/my_id?pipeline=networks_lookup
 }
 ```
 
-To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html) to view the indexed document.
+To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) to view the indexed document.
 
 ```console
 GET /my-index-000001/_doc/my_id

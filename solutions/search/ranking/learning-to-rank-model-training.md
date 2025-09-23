@@ -1,7 +1,12 @@
 ---
-navigation_title: "Deploy and manage LTR models"
+navigation_title: Deploy and manage LTR models
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/learning-to-rank-model-training.html
+applies_to:
+  stack:
+  serverless:
+products:
+  - id: elasticsearch
 ---
 
 
@@ -25,7 +30,7 @@ We highly recommend using [eland](https://eland.readthedocs.io/) in your workflo
 
 * Configure feature extraction
 * Extract features for training
-* Deploy the model in {es}
+* Deploy the model in {{es}}
 
 
 ### Configure feature extraction in Eland [learning-to-rank-model-training-feature-definition]
@@ -75,10 +80,10 @@ feature_extractors=[
 ]
 ```
 
-::::{admonition} Tern statistics as features
+::::{admonition} Term statistics as features
 :class: note
 
-It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query.
+It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query.
 
 ::::
 
@@ -99,7 +104,7 @@ Building your dataset is a critical step in the training process. This involves 
 ```python
 from eland.ml.ltr import FeatureLogger
 
-# Create a feature logger that will be used to query {es} to retrieve the features:
+# Create a feature logger that will be used to query Elasticsearch to retrieve the features:
 feature_logger = FeatureLogger(es_client, MOVIE_INDEX, ltr_config)
 ```
 
@@ -139,20 +144,20 @@ MLModel.import_ltr_model(
 )
 ```
 
-This method will serialize the trained model and the Learning To Rank configuration (including feature extraction) in a format that {{es}} can understand. The model is then deployed to {{es}} using the [Create Trained Models API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html).
+This method will serialize the trained model and the Learning To Rank configuration (including feature extraction) in a format that {{es}} can understand. The model is then deployed to {{es}} using the [Create Trained Models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model).
 
 The following types of models are currently supported for LTR with {{es}}:
 
-* [`DecisionTreeRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.md)
-* [`RandomForestRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.md)
-* [`LGBMRegressor`](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.md)
-* [`XGBRanker`](https://xgboost.readthedocs.io/en/stable/python/python_api.md#xgboost.XGBRanker)
-* [`XGBRegressor`](https://xgboost.readthedocs.io/en/stable/python/python_api.md#xgboost.XGBRegressor)
+* [`DecisionTreeRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)
+* [`RandomForestRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+* [`LGBMRegressor`](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html)
+* [`XGBRanker`](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRanker)
+* [`XGBRegressor`](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRegressor)
 
 More model types will be supported in the future.
 
 
 ## Learning To Rank model management [learning-to-rank-model-management]
 
-Once your model is deployed in {{es}} you can manage it using the [trained model APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-trained-models-apis.html). You’re now ready to work with your LTR model as a rescorer at [search time](learning-to-rank-search-usage.md).
+Once your model is deployed in {{es}} you can manage it using the [trained model APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-trained-model). You’re now ready to work with your LTR model as a rescorer at [search time](learning-to-rank-search-usage.md).
 

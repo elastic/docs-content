@@ -1,9 +1,18 @@
 ---
+navigation_title: Prerequisites
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_prerequisites_14.html
+applies_to:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Prerequisites [_prerequisites_14]
+# Prerequisites for uni-directional disaster recovery [_prerequisites_14]
 
 Before completing this tutorial, [set up cross-cluster replication](set-up-cross-cluster-replication.md) to connect two clusters and configure a follower index.
 

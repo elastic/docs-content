@@ -1,9 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-update-strategy.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
+navigation_title: Update strategy
 ---
 
-# Update Strategy [k8s-logstash-update-strategy]
+# Pod update strategy for Logstash on ECK [k8s-logstash-update-strategy]
 
 The operator takes a Pod down to restart and applies a new configuration value. All Pods are restarted in reverse ordinal order.
 

@@ -1,17 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/files.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: cloud-serverless
 ---
 
 # Files [files]
 
-This content applies to: [![Elasticsearch](../../images/serverless-es-badge.svg "")](../../solutions/search.md) [![Observability](../../images/serverless-obs-badge.svg "")](../../solutions/observability.md) [![Security](../../images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md)
+Several features let you upload files. For example, you can add files to [cases](../../solutions/observability/incident-management/cases.md) or upload a logo to an [Image panel](../visualize/image-panels.md) in a dashboard.
 
-Several {{serverless-full}} features let you upload files. For example, you can add files to [cases](../../solutions/observability/incident-management/cases.md) or upload a logo to an **Image** panel in a [Dashboard](../dashboards.md).
+You can access and manage all of the files currently stored in {{kib}} from the **Files** page.
 
-You can access these uploaded files in **{{project-settings}} → {{manage-app}} → {{files-app}}**.
-
-:::{image} ../../images/serverless-file-management.png
+:::{image} /explore-analyze/images/serverless-file-management.png
 :alt: Files UI
-:class: screenshot
+:screenshot:
 :::

@@ -1,13 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-grokdebugger.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-debug-grok-expressions.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Grok debugger [xpack-grokdebugger]
 
 You can build and debug grok patterns in the {{kib}} **Grok Debugger** before you use them in your data processing pipelines. Grok is a pattern matching syntax that you can use to parse arbitrary text and structure it. Grok is good for parsing syslog, apache, and other webserver logs, mysql logs, and in general, any log format that is written for human consumption.
 
-Grok patterns are supported in {{es}} [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), the {{es}} [grok ingest processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html), and the {{ls}} [grok filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html). For syntax, see [Grokking grok](../../scripting/grok.md).
+Grok patterns are supported in {{es}} [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), the {{es}} [grok ingest processor](elasticsearch://reference/enrich-processor/grok-processor.md), and the {{ls}} [grok filter](logstash-docs-md://lsr/plugins-filters-grok.md). For syntax, see [Grokking grok](../../scripting/grok.md).
 
 The {{stack}} ships with more than 120 reusable grok patterns. For a complete list of patterns, see [{{es}} grok patterns](https://github.com/elastic/elasticsearch/tree/master/libs/grok/src/main/resources/patterns) and [{{ls}} grok patterns](https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns).
 
@@ -23,7 +30,7 @@ If you’re using {{stack-security-features}}, you must have the `manage_pipelin
 ::::
 
 
-1. Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Sample Data**, enter a message that is representative of the data that you want to parse. For example:
 
     ```ruby
@@ -40,12 +47,12 @@ If you’re using {{stack-security-features}}, you must have the `manage_pipelin
 
 4. Click **Simulate**.
 
-    You’ll see the simulated event that results from applying the grok pattern.
+   You’ll see the simulated event that results from applying the grok pattern.
 
-    :::{image} ../../../images/kibana-grok-debugger-overview.png
-    :alt: Grok Debugger
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-grok-debugger-overview.png
+   :alt: Grok Debugger
+   :screenshot:
+   :::
 
 
 
@@ -82,11 +89,11 @@ Follow this example to define a custom pattern.
 
 4. Click **Simulate**.
 
-    You’ll see the simulated output event that results from applying the grok pattern that contains the custom pattern:
+   You’ll see the simulated output event that results from applying the grok pattern that contains the custom pattern:
 
-    :::{image} ../../../images/kibana-grok-debugger-custom-pattern.png
-    :alt: Debugging a custom pattern
-    :class: screenshot
-    :::
+   :::{image} /explore-analyze/images/kibana-grok-debugger-custom-pattern.png
+   :alt: Debugging a custom pattern
+   :screenshot:
+   :::
 
-    If an error occurs, you can continue iterating over the custom pattern until the output matches the event that you expect.
+   If an error occurs, you can continue iterating over the custom pattern until the output matches the event that you expect.

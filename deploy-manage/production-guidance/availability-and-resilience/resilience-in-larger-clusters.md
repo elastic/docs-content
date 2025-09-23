@@ -1,15 +1,29 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design-large-clusters.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
+products:
+  - id: elasticsearch
 ---
 
 # Resilience in larger clusters [high-availability-cluster-design-large-clusters]
 
 It’s not unusual for nodes to share common infrastructure, such as network interconnects or a power supply. If so, you should plan for the failure of this infrastructure and ensure that such a failure would not affect too many of your nodes. It is common practice to group all the nodes sharing some infrastructure into *zones* and to plan for the failure of any whole zone at once.
 
+::::{note}
+This document focuses on self-managed {{es}} deployments and describes how {{es}} handles zone-aware resilience internally, including behavior during network partitions, shard allocation strategies, and the role of master-eligible nodes.
+
+This information might also be useful for other deployment types, such as {{eck}}. 
+
+For details on how similar principles are implemented in {{ech}} and {{ece}}, refer to [](./resilience-in-ech.md).
+::::
+
 {{es}} expects node-to-node connections to be reliable, have low latency, and have adequate bandwidth. Many {{es}} tasks require multiple round-trips between nodes. A slow or unreliable interconnect may have a significant effect on the performance and stability of your cluster.
 
-For example, a few milliseconds of latency added to each round-trip can quickly accumulate into a noticeable performance penalty. An unreliable network may have frequent network partitions. {{es}} will automatically recover from a network partition as quickly as it can but your cluster may be partly unavailable during a partition and will need to spend time and resources to [resynchronize any missing data](../../distributed-architecture/shard-allocation-relocation-recovery.md#shard-recovery) and [rebalance](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#shards-rebalancing-settings) itself once the partition heals. Recovering from a failure may involve copying a large amount of data between nodes so the recovery time is often determined by the available bandwidth.
+For example, a few milliseconds of latency added to each round-trip can quickly accumulate into a noticeable performance penalty. An unreliable network may have frequent network partitions. {{es}} will automatically recover from a network partition as quickly as it can but your cluster may be partly unavailable during a partition and will need to spend time and resources to [resynchronize any missing data](../../distributed-architecture/shard-allocation-relocation-recovery.md#shard-recovery) and [rebalance](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-settings) itself once the partition heals. Recovering from a failure may involve copying a large amount of data between nodes so the recovery time is often determined by the available bandwidth.
 
 If you’ve divided your cluster into zones, the network connections within each zone are typically of higher quality than the connections between the zones. Ensure the network connections between zones are of sufficiently high quality. You will see the best results by locating all your zones within a single data center with each zone having its own independent power supply and other supporting infrastructure. You can also *stretch* your cluster across nearby data centers as long as the network interconnection between each pair of data centers is good enough.
 
@@ -51,11 +65,11 @@ As always, your indices should have at least one replica in case a node fails, u
 
 The cluster will be resilient to the loss of any zone as long as:
 
-* The [cluster health status](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) is `green`.
+* The [cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) is `green`.
 * There are at least two zones containing data nodes.
 * Every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) has at least one replica of each shard, in addition to the primary.
 * [Shard allocation awareness](../../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) is configured to avoid concentrating all copies of a shard within a single zone.
 * The cluster has at least three master-eligible nodes. At least two of these nodes are not [voting-only master-eligible nodes](../../distributed-architecture/clusters-nodes-shards/node-roles.md#voting-only-node), and they are spread evenly across at least three zones.
-* Clients are configured to send their requests to nodes in more than one zone or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+* Clients are configured to send their requests to nodes in more than one zone or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 

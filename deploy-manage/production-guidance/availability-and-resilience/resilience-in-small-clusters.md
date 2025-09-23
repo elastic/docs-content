@@ -1,17 +1,29 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
+products:
+  - id: elasticsearch
 ---
 
 # Resilience in small clusters [high-availability-cluster-small-clusters]
 
 In smaller clusters, it is most important to be resilient to single-node failures. This section gives some guidance on making your cluster as resilient as possible to the failure of an individual node.
 
+::::{note}
+This document focuses on self-managed {{es}} deployments and describes resilience strategies for clusters with one to a few nodes. While the guidance is tailored to these environments, many of the core concepts, such as master elections, replica configuration, and client request distribution, are also relevant to other deployment types, like {{eck}}.
+
+For a more in-depth description of how resilience is handled in {{ech}} and {{ece}}, refer to [](./resilience-in-ech.md).
+::::
+
 ## One-node clusters [high-availability-cluster-design-one-node]
 
 If your cluster consists of one node, that single node must do everything. To accommodate this, {{es}} assigns nodes every role by default.
 
-A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-settings) to `0` on every index.
+A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) to `0` on every index.
 
 If the node fails, you may need to restore an older copy of any lost indices from a [snapshot](../../tools/snapshot-and-restore.md).
 
@@ -20,7 +32,7 @@ Because they are not resilient to any failures, we do not recommend using one-no
 
 ## Two-node clusters [high-availability-cluster-design-two-nodes]
 
-If you have two nodes, we recommend they both be data nodes. You should also ensure every shard is stored redundantly on both nodes by setting [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-settings) to `1` on every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md). This is the default behaviour but may be overridden by an [index template](../../../manage-data/data-store/templates.md). [Auto-expand replicas](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-settings) can also achieve the same thing, but it’s not necessary to use this feature in such a small cluster.
+If you have two nodes, we recommend they both be data nodes. You should also ensure every shard is stored redundantly on both nodes by setting [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) to `1` on every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md). This is the default behavior but may be overridden by an [index template](../../../manage-data/data-store/templates.md). [Auto-expand replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) can also achieve the same thing, but it’s not necessary to use this feature in such a small cluster.
 
 We recommend you set only one of your two nodes to be [master-eligible](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). This means you can be certain which of your nodes is the elected master of the cluster. The cluster can tolerate the loss of the other master-ineligible node. If you set both nodes to master-eligible, two nodes are required for a master election. Since the election will fail if either node is unavailable, your cluster cannot reliably tolerate the loss of either node.
 
@@ -41,7 +53,7 @@ The two original nodes should not be voting-only master-eligible nodes since a r
 
 We recommend assigning both non-tiebreaker nodes all other roles. This creates redundancy by ensuring any task in the cluster can be handled by either node.
 
-You should not send any client requests to the dedicated tiebreaker node. You should also avoid sending client requests to just one of the other two nodes. If you do, and this node fails, then any requests will not receive responses, even if the remaining nodes form a healthy cluster. Ideally, you should balance your client requests across both of the non-tiebreaker nodes. You can do this by specifying the address of both nodes when configuring your client to connect to your cluster. Alternatively, you can use a resilient load balancer to balance client requests across the appropriate nodes in your cluster. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+You should not send any client requests to the dedicated tiebreaker node. You should also avoid sending client requests to just one of the other two nodes. If you do, and this node fails, then any requests will not receive responses, even if the remaining nodes form a healthy cluster. Ideally, you should balance your client requests across both of the non-tiebreaker nodes. You can do this by specifying the address of both nodes when configuring your client to connect to your cluster. Alternatively, you can use a resilient load balancer to balance client requests across the appropriate nodes in your cluster. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 A two-node cluster with an additional tiebreaker node is the smallest possible cluster that is suitable for production deployments.
 
@@ -50,7 +62,7 @@ A two-node cluster with an additional tiebreaker node is the smallest possible c
 
 If you have three nodes, we recommend they all be [data nodes](../../distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) and every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) should have at least one replica. Nodes are data nodes by default. You may prefer for some indices to have two replicas so that each node has a copy of each shard in those indices. You should also configure each node to be [master-eligible](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) so that any two of them can hold a master election without needing to communicate with the third node. Nodes are master-eligible by default. This cluster will be resilient to the loss of any single node.
 
-You should avoid sending client requests to just one of your nodes. If you do, and this node fails, then any requests will not receive responses even if the remaining two nodes form a healthy cluster. Ideally, you should balance your client requests across all three nodes. You can do this by specifying the address of multiple nodes when configuring your client to connect to your cluster. Alternatively you can use a resilient load balancer to balance client requests across your cluster. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+You should avoid sending client requests to just one of your nodes. If you do, and this node fails, then any requests will not receive responses even if the remaining two nodes form a healthy cluster. Ideally, you should balance your client requests across all three nodes. You can do this by specifying the address of multiple nodes when configuring your client to connect to your cluster. Alternatively you can use a resilient load balancer to balance client requests across your cluster. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 
 ## Clusters with more than three nodes [high-availability-cluster-design-three-plus-nodes]
@@ -66,10 +78,10 @@ You may configure one of your master-eligible nodes to be a [voting-only node](.
 
 The cluster will be resilient to the loss of any node as long as:
 
-* The [cluster health status](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) is `green`.
+* The [cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) is `green`.
 * There are at least two data nodes.
 * Every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) has at least one replica of each shard, in addition to the primary.
 * The cluster has at least three master-eligible nodes, as long as at least two of these nodes are not voting-only master-eligible nodes.
-* Clients are configured to send their requests to more than one node or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+* Clients are configured to send their requests to more than one node or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 

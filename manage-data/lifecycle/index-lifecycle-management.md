@@ -1,48 +1,103 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
-  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-differences.html#elasticsearch-differences-serverless-features-replaced
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-index-management.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-concepts.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-configure-index-management.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
+applies_to:
+  stack: ga
+  serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # Index lifecycle management
 
-% What needs to be done: Refine
+{{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage your time series data. You can configure {{ilm-init}} policies to automatically manage indices according to your performance, resiliency, and retention requirements. For example, you could use {{ilm-init}} to:
 
-% GitHub issue: docs-projects#376
+* Spin up a new index when an index reaches a certain size or number of documents
+* Create a new index each day, week, or month and archive previous ones
+* Delete stale indices to enforce data retention standards
 
-% Scope notes: Combine the linked resources. The "migrate to ILM" one is probably outdated now.
+::::{important}
+To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
+::::
 
-% Use migrated content from existing pages that map to this page:
+## {{ilm-init}} availability
 
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-lifecycle-management.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/elasticsearch-differences.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-migrate-index-management.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-configure-index-management.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-migrate-index-management.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-disable-data-tier.md
+Note the availability of {{ilm-init}} to ensure that it's applicable for your use case.
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+* You can use {{ilm-init}} to manage indices and data streams:
 
-$$$ilm-gs-alias-bootstrap$$$
+    * **Indices:** You use {{ilm-init}} to manage a specific index or set of indices by defining a lifecycle policy and applying it to the indices or an index alias. Each index is then evaluated against its policy and transitions through phases (`hot`, `warm`, `cold`, `frozen`, `delete`) based on pre-defined conditions. This approach allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
 
-$$$manage-time-series-data-without-data-streams$$$
+    * **Data streams:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
 
-$$$ilm-gs-create-policy$$$
+* {{ilm-init}} is available for all deployment types on the versioned {{stack}} but is not available for {{es-serverless}}. In a {{serverless-short}} environment, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data lifecycle option.
 
-$$$ilm-gs-apply-policy$$$
+    :::{admonition} Simpler lifecycle management in Serverless environments
+    {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, data stream lifecycle is available as a data management option.
 
-$$$ilm-gs-create-the-data-stream$$$
+    Data stream lifecycle is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a detailed comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
+    :::
 
-$$$ilm-gs-check-progress$$$
+## Index lifecycle actions
 
-$$$ilm-gs-alias-apply-policy$$$
+{{ilm-init}} policies can trigger actions like:
 
-$$$ilm-gs-alias-check-progress$$$
+* **Rollover**: Creates a new write index when the current one reaches a certain size, number of docs, or age.
+* **Shrink**: Reduces the number of primary shards in an index.
+* **Force merge**: Triggers a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
+* **Delete**: Permanently remove an index, including all of its data and metadata.
+* [And more](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md)
 
-$$$ec-update-data-tier-allocation-rules$$$
+Each action has options you can use to specify index behavior and characteristics like:
+
+* The maximum shard size, number of documents, or age at which you want to roll over to a new index.
+* The point at which the index is no longer being updated and the number of primary shards can be reduced.
+* When to force a merge to permanently remove documents marked for deletion.
+* The point at which the index can be moved to less performant hardware.
+* The point at which the availability is not as critical and the number of replicas can be reduced.
+* When the index can be safely deleted.
+
+For example, if you are indexing metrics data from a fleet of ATMs into Elasticsearch, you might define a policy that says:
+
+1. When the total size of the index’s primary shards reaches 50GB, roll over to a new index.
+2. Move the old index into the warm phase, mark it read only, and shrink it down to a single shard.
+3. After 7 days, move the index into the cold phase and move it to less expensive hardware.
+4. Delete the index once the required 30 day retention period is reached.
+
+**Learn about all available actions in [Index lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md).**
+
+## Create and manage {{ilm-init}} policies
+
+You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
+
+* [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
+* [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
+* [Update or switch a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
+* [Restore a managed data stream or index](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
+* [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
+
+Default {{ilm}} policies are created automatically when you install an [Elastic Integration](integration-docs://reference/index.md), or when you use {{agent}}, {{beats}}, or the {{ls}} {{es}} output plugin to send data to the {{stack}}.
+
+![index lifecycle policies](/manage-data/images/elasticsearch-reference-index-lifecycle-policies.png)
+
+::::{tip}
+To automatically back up your indices and manage snapshots, use [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
+::::
+
+## Pausing and troubleshooting {{ilm-init}}
+
+In case you want to temporarily pause the {{ilm-init}} service while you perform maintenance, make other changes to your cluster, or do any troubleshooting, refer to [Start and stop {{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md).
+
+In the event of any issues running {{ilm-init}}, refer to [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) for detailed troubleshooting guidance. 
+
+## Migrate to {{ilm-init}}
+
+For existing hot-warm deployments that are currently using index curation, migrating to ILM gives you more fine-grained control over the lifecycle of each index. Read more in:
+
+* [Manage existing indices](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
+* [Migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
+* [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)

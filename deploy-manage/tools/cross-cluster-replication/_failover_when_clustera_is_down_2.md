@@ -1,9 +1,18 @@
 ---
+navigation_title: Failover when clusterA is down
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_failover_when_clustera_is_down_2.html
+applies_to:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
-# Failover when clusterA is down [_failover_when_clustera_is_down_2]
+# Bi-directional recovery: Failover when clusterA is down [_failover_when_clustera_is_down_2]
 
 1. You can simulate this by shutting down either of the clusters. Let’s shut down `cluster A` in this tutorial.
 2. Start {{ls}} with the same configuration file. (This step is not required in real use cases where {{ls}} ingests continuously.)

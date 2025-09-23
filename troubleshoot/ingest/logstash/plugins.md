@@ -1,9 +1,15 @@
 ---
+navigation_title: Plugins
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/ts-plugins-general.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: logstash
 ---
 
-# Plugins [ts-plugins-general]
+# Troubleshoot Logstash plugins [ts-plugins-general]
 
 
 ## Plugin tracing [ts-plugin-tracing] 
