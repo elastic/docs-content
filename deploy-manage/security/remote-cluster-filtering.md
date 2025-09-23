@@ -4,6 +4,8 @@ applies_to:
     ess: ga
     ece: ga
 navigation_title: "Remote cluster filters"
+sub:
+  policy-type: "Private connection"
 ---
 
 # Remote cluster filtering
