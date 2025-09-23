@@ -19,7 +19,6 @@ You can configure an {{ece}} deployment to either connect to remote clusters or 
 * A deployment running on an {{eck}} installation
 * A self-managed installation
 
-$$$ece-ccs-ccr-network-security$$$
 ::::{note}
 Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security) for details on how remote clusters interact with network security filters and the implications for your deployments.
 ::::
