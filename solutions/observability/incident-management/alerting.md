@@ -35,5 +35,5 @@ You can filter this table by alert status or time period, customize the visible 
 
 ## Next steps [observability-alerting-next-steps]
 
-* [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md)
+* [](/solutions/observability/incident-management/create-manage-rules.md)
 * [View alerts](/solutions/observability/incident-management/view-alerts.md)

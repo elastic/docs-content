@@ -133,8 +133,8 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
 | Low | 0 to 2 dynamically | 1 | 0 to 16 dynamically |
-| Medium | 1 to 32 dynamically | 1 | 8 to 256 dynamically |
-| High | 1 to 512 for Search<br> 1 to 128 for Security and Observability<br> | 1 | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
+| Medium | 0 to 32 dynamically | 1 | 8 to 256 dynamically |
+| High | 0 to 512 for Search<br> 1 to 128 for Security and Observability<br> | 1 | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
 
 :::
 

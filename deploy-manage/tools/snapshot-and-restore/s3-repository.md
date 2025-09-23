@@ -125,6 +125,9 @@ The following list contains the available S3 client settings. Those that must be
 `max_retries`
 :   The number of retries to use when an S3 request fails. The default value is `3`.
 
+`connection_max_idle_time`
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The timeout after which {{es}} will close an idle connection. The default value is 60 seconds.
+
 `path_style_access`
 :   Whether to force the use of the path style access pattern. If `true`, the path style access pattern will be used. If `false`, the access pattern will be automatically determined by the AWS Java SDK (See [AWS documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#setPathStyleAccessEnabled-java.lang.Boolean-) for details). Defaults to `false`.
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Analysis function reference
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-functions.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Function reference [ml-functions]
+# Machine learning analysis function reference [ml-functions]
 
 The {{ml-features}} include analysis functions that provide a wide variety of flexible ways to analyze data for anomalies.
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: View and manage alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# View and manage alerts [observability-view-alerts]
+# View and manage alerts in Elastic Observability [observability-view-alerts]
 
 ::::{note}
 

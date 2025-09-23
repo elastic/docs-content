@@ -1,4 +1,5 @@
 ---
+navigation_title: Limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-known-limitations.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-limitations.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Limitations [apm-open-telemetry-known-limitations]
+# OpenTelemetry limitations in Elastic APM [apm-open-telemetry-known-limitations]
 
 ## OpenTelemetry traces [apm-open-telemetry-traces-limitations]
 
@@ -25,7 +26,7 @@ products:
 * The application logs data stream (`app_logs`) has dynamic mapping disabled. This means the automatic detection and mapping of new fields is disabled (see issue [#9093](https://github.com/elastic/apm-server/issues/9093)).
 
 ::::{note}
-Logs ingest through the [EDOT Collector](opentelemetry://reference/edot-collector/index.md) is fully supported.
+Logs ingest through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) is fully supported.
 ::::
 
 ## OpenTelemetry Line Protocol (OTLP) [apm-open-telemetry-otlp-limitations]
