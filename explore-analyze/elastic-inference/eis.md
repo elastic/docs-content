@@ -29,10 +29,10 @@ ELSER requests are managed by Elastic's own EIS infrastructure.
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 ```{applies_to}
-ess: preview 9.1
-eck: preview 9.1
-ece: preview 9.1
+stack: preview 9.1
 serverless: preview
+deployment:
+  self: unavailable
 ```
 
 ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
