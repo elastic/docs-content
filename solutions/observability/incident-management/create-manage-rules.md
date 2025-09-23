@@ -109,9 +109,7 @@ When creating or editing a rule, add the following resources to help you get sta
 * {applies_to}`stack: ga 9.1` **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page. 
 
     ::::{tip}
-    
     Use Markdown to format and structure text in your investigation guide.
-
     ::::
 
 * {applies_to}`stack: ga 9.1` **Related and suggested dashboards**: Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards (available for custom threshold rules only).
