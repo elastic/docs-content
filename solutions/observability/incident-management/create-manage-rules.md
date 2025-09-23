@@ -105,7 +105,7 @@ Rules are disabled on export. You are prompted to re-enable the rule on successf
 
 When creating or editing a rule, add the following resources to help you get started with investigating alerts:
 
-* {applies_to}`stack: ga 9.1` **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the [alert's details page](/solutions/observability/incident-management/view-alerts.md#observability-view-alerts-view-alert-details). 
+* {applies_to}`stack: ga 9.1` **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page. 
 
     ::::{tip}
     
