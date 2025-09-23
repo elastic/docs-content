@@ -12,7 +12,7 @@ products:
 
 {{es}} includes a SQL feature to execute SQL queries against indices and return results in tabular format.
 
-The following chapters aim to cover everything from usage, to syntax and drivers. Experienced users or those in a hurry might want to jump directly to the list of SQL [commands](elasticsearch://reference/query-languages/sql/sql-commands.md) and [functions](elasticsearch://reference/query-languages/sql/sql-functions.md).
+The following chapters aim to cover everything from usage, to syntax and drivers. Experienced users might want to jump directly to the list of SQL [commands](elasticsearch://reference/query-languages/sql/sql-commands.md) and [functions](elasticsearch://reference/query-languages/sql/sql-functions.md).
 
 [Overview](sql-overview.md)
 :   Overview of Elasticsearch SQL and its features.
