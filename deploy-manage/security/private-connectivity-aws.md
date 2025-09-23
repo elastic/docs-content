@@ -355,7 +355,7 @@ In this example, `region 1` contains your VPC endpoint. `region 2` is the region
 
 1. [Create a private connection policy](#create-private-connection-policy) in the region where your deployment is hosted (`region 2`), and [associate it](#associate-private-connection-policy) with your deployment.
    
-2. [Test the connection](#ec-azure-access-the-deployment-over-private-link) from a VM or client in `region 1` to your Private Link endpoint, and it should be able to connect to your {{es}} cluster hosted in `region 2`.
+2. [Test the connection](#ec-access-the-deployment-over-private-link) from a VM or client in `region 1` to your Private Link endpoint, and it should be able to connect to your {{es}} cluster hosted in `region 2`.
 
 ## Manage private connection policies
 
