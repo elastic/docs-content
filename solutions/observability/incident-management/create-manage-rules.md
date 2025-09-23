@@ -113,4 +113,4 @@ When creating or editing a rule, add the following resources to help you get sta
 
     ::::
 
-* {applies_to}`stack: ga 9.1` **Related and suggested dashboards**: (Only available for custom threshold rules) Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards.
+* {applies_to}`stack: ga 9.1` **Related and suggested dashboards**: Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards (available for custom threshold rules only).
