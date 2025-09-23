@@ -38,7 +38,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes a bug where previously installed product docs (E5) were not upgraded during a Kibana version upgrade [#234792]({{kib-pull}}234792)
 * Improves the accessibility of the badges on individual stream pages [#235625]({{kib-pull}}235625)
 * Fixes the autocomplete configuration for the `pinned` retriever by removing the `match_criteria` field [#234903]({{kib-pull}}234903)
-* Fixes a bug by adding the default Monaco contrib import for `cmd + /` comment toggling [#235334]({{kib-pull}}235334)
+* Fixes a bug by allowing the use of `cmd + /` for comment toggling in the Monaco editor [#235334]({{kib-pull}}235334)
 * Adds a check for all privileges for {{sec-serverless}} when creating lists [#234602]({{kib-pull}}234602)
 
 
