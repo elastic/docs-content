@@ -75,7 +75,7 @@ Check related alerts for patterns and recurring events that might need further i
 The relevancy of alerts is determined by how closely they match the current alert and other similiarites that they might share. The relevancy scoring proccess is briefly outlined below:
 
 1. Alerts in the space are filtered down to only include alerts that were created about one day before or after the current alert. 
-2. Data from the new subset of alerts is compared against the current alert to identify matching values and similarities. Data such as the time of which alerts were generated or recovered, tags added to the alerts, alert IDs, and more are evaluated.
+2. Data from the new subset of alerts is compared against the current alert to identify matching values and similarities. Data such as the time at which alerts were generated or recovered, tags added to the alerts, group values, and more are evaluated.
 3. Alerts are scored based on how closely they match the current alert. Alerts with a score above a certain threshold are considered relevant and are included in the list of related alerts.
 
 
