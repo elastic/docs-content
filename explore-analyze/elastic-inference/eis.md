@@ -1,8 +1,10 @@
 ---
 navigation_title: Elastic Inference Service (EIS)
 applies_to:
-  stack: ga 9.0
+  stack: ga
   serverless: ga
+  deployment:
+    self: unavailable
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
@@ -61,3 +63,7 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 #### Rate Limits 
 
 Rate limit for search and ingest is currently at 2000 requests per minute.
+
+## Pricing 
+
+All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER. 
