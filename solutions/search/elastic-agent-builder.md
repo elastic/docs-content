@@ -14,7 +14,7 @@ These pages are hidden from the docs TOC and have `noindexed` meta headers.
 
 # {{agent-builder}} 
 
-{{agent-builder}} is an AI-powered conversation framework for working with {{es}} data using natural language. It features both a chat UI for synchronous interaction and extensive programmatic access through APIs, MCP and A2A servers.
+{{agent-builder}} is a set of AI-powered capabilities for developing and interacting with Agents that work with your {{es}} data. Agent Builder simplifies building data-driven agents with intuitive UI and API interfaces, so you don't have to compose the different pieces separately. It includes a built-in agent for natural language conversations with any {{es}} data or instance, as well as programmatic interfaces for tools, agents, and conversations using Elastic APIs, MCP, and A2A.
 
 ## Key capabilities
 
