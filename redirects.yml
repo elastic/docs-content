@@ -365,7 +365,7 @@ redirects:
   'deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md': 'elasticsearch://reference/elasticsearch/security-privileges.md'
 
 
-# Remove duplicate reference content for SQL
+# Remove duplicate reference content for SQL Language section: related to https://github.com/elastic/docs-content/pull/3117
   'explore-analyze/query-filter/languages/sql-spec.md': 'elasticsearch://reference/query-languages/sql/sql-spec.md'
   'explore-analyze/query-filter/languages/sql-lexical-structure.md': 'elasticsearch://reference/query-languages/sql/sql-lexical-structure.md'
   'explore-analyze/query-filter/languages/sql-commands.md': 'elasticsearch://reference/query-languages/sql/sql-commands.md'
@@ -378,6 +378,24 @@ redirects:
   'explore-analyze/query-filter/languages/sql-data-types.md': 'elasticsearch://reference/query-languages/sql/sql-data-types.md'
   'explore-analyze/query-filter/languages/sql-index-patterns.md': 'elasticsearch://reference/query-languages/sql/sql-index-patterns.md'
   'explore-analyze/query-filter/languages/sql-index-frozen.md': 'elasticsearch://reference/query-languages/sql/sql-index-frozen.md'
+
+# Remove duplicated content for the Functions and Operators section: related to https://github.com/elastic/docs-content/pull/3117
+  'explore-analyze/query-filter/languages/sql-functions.md': 'elasticsearch://reference/query-languages/sql/sql-functions.md'
+  'explore-analyze/query-filter/languages/sql-operators.md': 'elasticsearch://reference/query-languages/sql/sql-operators.md'
+  'explore-analyze/query-filter/languages/sql-operators-logical.md': 'elasticsearch://reference/query-languages/sql/sql-operators-logical.md'
+  'explore-analyze/query-filter/languages/sql-operators-math.md': 'elasticsearch://reference/query-languages/sql/sql-operators-math.md'
+  'explore-analyze/query-filter/languages/sql-operators-cast.md': 'elasticsearch://reference/query-languages/sql/sql-operators-cast.md'
+  'explore-analyze/query-filter/languages/sql-like-rlike-operators.md': 'elasticsearch://reference/query-languages/sql/sql-like-rlike-operators.md'
+  'explore-analyze/query-filter/languages/sql-functions-aggs.md': 'elasticsearch://reference/query-languages/sql/sql-functions-aggs.md'
+  'explore-analyze/query-filter/languages/sql-functions-grouping.md': 'elasticsearch://reference/query-languages/sql/sql-functions-grouping.md'
+  'explore-analyze/query-filter/languages/sql-functions-datetime.md': 'elasticsearch://reference/query-languages/sql/sql-functions-datetime.md'
+  'explore-analyze/query-filter/languages/sql-functions-search.md': 'elasticsearch://reference/query-languages/sql/sql-functions-search.md'
+  'explore-analyze/query-filter/languages/sql-functions-math.md': 'elasticsearch://reference/query-languages/sql/sql-functions-math.md'
+  'explore-analyze/query-filter/languages/sql-functions-string.md': 'elasticsearch://reference/query-languages/sql/sql-functions-string.md'
+  'explore-analyze/query-filter/languages/sql-functions-type-conversion.md': 'elasticsearch://reference/query-languages/sql/sql-functions-type-conversion.md'
+  'explore-analyze/query-filter/languages/sql-functions-geo.md': 'elasticsearch://reference/query-languages/sql/sql-functions-geo.md'
+  'explore-analyze/query-filter/languages/sql-functions-conditional.md': 'elasticsearch://reference/query-languages/sql/sql-functions-conditional.md'
+  'explore-analyze/query-filter/languages/sql-functions-system.md': 'elasticsearch://reference/query-languages/sql/sql-functions-system.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3101
   'solutions/observability/logs/streams/streams.md': 'solutions/observability/streams/streams.md'

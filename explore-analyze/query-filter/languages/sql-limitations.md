@@ -134,12 +134,12 @@ SELECT first_name, last_name FROM emp WHERE last_name NOT LIKE '%a%' AND first_n
 But, if the sub-select would include a `GROUP BY` or `HAVING` or the enclosing `SELECT` would be more complex than `SELECT X FROM (SELECT ...) WHERE [simple_condition]`, this is currently **un-supported**.
 
 
-## Using [`FIRST`](sql-functions-aggs.md#sql-functions-aggs-first)/[`LAST`](sql-functions-aggs.md#sql-functions-aggs-last) aggregation functions in `HAVING` clause [first-last-agg-functions-having-clause]
+## Using [`FIRST`](elasticsearch://reference/query-languages/sql/sql-functions-aggs.md#sql-functions-aggs-first)/[`LAST`](elasticsearch://reference/query-languages/sql/sql-functions-aggs.md#sql-functions-aggs-last) aggregation functions in `HAVING` clause [first-last-agg-functions-having-clause]
 
-Using `FIRST` and `LAST` in the `HAVING` clause is not supported. The same applies to [`MIN`](sql-functions-aggs.md#sql-functions-aggs-min) and [`MAX`](sql-functions-aggs.md#sql-functions-aggs-max) when their target column is of type [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) or [`unsigned_long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) as they are internally translated to `FIRST` and `LAST`.
+Using `FIRST` and `LAST` in the `HAVING` clause is not supported. The same applies to [`MIN`](elasticsearch://reference/query-languages/sql/sql-functions-aggs.md#sql-functions-aggs-min) and [`MAX`](elasticsearch://reference/query-languages/sql/sql-functions-aggs.md#sql-functions-aggs-max) when their target column is of type [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) or [`unsigned_long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) as they are internally translated to `FIRST` and `LAST`.
 
 
-## Using TIME data type in GROUP BY or [`HISTOGRAM`](sql-functions-grouping.md#sql-functions-grouping-histogram) [group-by-time]
+## Using TIME data type in GROUP BY or [`HISTOGRAM`](elasticsearch://reference/query-languages/sql/reference/query-languages/sql/sql-functions-grouping.md#sql-functions-grouping-histogram) [group-by-time]
 
 Using `TIME` data type as a grouping key is currently not supported. For example:
 
