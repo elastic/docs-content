@@ -5,7 +5,7 @@ applies_to:
 ---
 
 :::{warning}
-Streams is currently in Technical Preview and only available on Elastic Cloud Serverless deployments. This feature may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+Streams is currently in Technical Preview. This feature may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 :::
 
 # Streams
@@ -29,12 +29,12 @@ In {{obs-serverless}}, Streams is automatically available.
 
 In {{stack}} version 9.1 and later, you can enable Streams in the {{observability}} Advanced Settings. To do this:
 
-1. Go to **Management** > **Stack Management** > **Advanced Settings**, or search for "Advanced Settings" in the [global search field](../../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to **Management** > **Stack Management** > **Advanced Settings**, or search for "Advanced Settings" in the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Enable **Streams UI** under **Observability**.
 
 In {{serverless-short}} or after enabling Streams in {{stack}}, access the UI in one of the following ways:
 
-- Select **Streams** from the navigation menu or use the [global search field](../../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 - From **Discover**, expand a document's details flyout and select **Stream** or an action associated with the document's data stream. Streams will open filtered to only the selected stream. This only works for documents stored in a data stream.
 

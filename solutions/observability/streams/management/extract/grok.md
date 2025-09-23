@@ -35,7 +35,7 @@ Instead of writing the Grok patterns by hand, you can use the **Generate Pattern
 
 % TODO Elastic LLM?
 
-![generated patterns](<../../../../../images/logs-streams-patterns.png>)
+![generated patterns](<../../../../images/logs-streams-patterns.png>)
 
 Click the plus icon next to the pattern to accept it and add it to the list of patterns used by the Grok processor.
 
