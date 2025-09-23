@@ -1,9 +1,10 @@
 ---
 navigation_title: Connectivity issues
-description: Troubleshoot connectivity issues between EDOT SDKs, the Collector, and Elastic.
+description: Troubleshoot connectivity issues between EDOT SDKs, the EDOT Collector, and Elastic.
 applies_to:
-  stack: all
-  serverless: all
+  - serverless: all
+  - product:
+      edot_collector: ga  
 products:
   - id: observability
   - id: edot-collector
@@ -12,7 +13,7 @@ products:
 
 # Connectivity issues with EDOT
 
-Connectivity problems occur when the OpenTelemetry SDK or Collector cannot reach the Elastic endpoint. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
+Connectivity problems occur when the EDOT SDKs or the EDOT Collector can't reach Elastic. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
 
 
 ## Symptoms
@@ -24,7 +25,7 @@ You might see one or more of the following error messages:
 - `i/o timeout`
 - `tls: handshake failure`
 
-These errors may appear either in application logs (from the SDK) or in the Collector logs.
+These errors might appear either in application logs (from the SDK) or in the Collector logs.
 
 
 ## Causes
@@ -45,18 +46,18 @@ Connectivity errors usually trace back to one of the following issues:
 
 - **Proxy misconfiguration**  
   
-  Proxy environment variables (`HTTP_PROXY`, `HTTPS_PROXY`) may be set correctly but the proxy itself lacks access to Elastic or restricts ports. Refer to [Proxy settings](opentelemetry://reference/edot-collector/config/proxy.md) for more information.
+  Proxy environment variables (`HTTP_PROXY`, `HTTPS_PROXY`) might be set correctly but the proxy itself lacks access to Elastic or restricts ports. Refer to [Proxy settings](opentelemetry://reference/edot-collector/config/proxy.md) for more information.
 
 
-### Differentiating SDK vs Collector issues
+### Differences between SDK and Collector issues
 
-Errors can look similar whether they come from an SDK or the Collector, but identifying the source helps you isolate the problem:
+Errors can look similar whether they come from an SDK or the Collector. Identifying the source helps you isolate the problem:
 
-* **SDK**
+#### SDK
 
 Application logs report failures when the SDK cannot send data to the Collector or directly to Elastic. These often appear as `connection refused` or `timeout` messages. If seen, verify that the Collector endpoint is reachable.
 
-* **The Collector**
+#### The Collector
 
 Collector logs show export failures when it cannot forward data to Elastic. Look for messages like `cannot send spans` or `failed to connect to <endpoint>`. If present, confirm the Collector’s exporters configuration and network access.
 
