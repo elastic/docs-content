@@ -1,8 +1,10 @@
 ---
 navigation_title: Elastic Inference Service (EIS)
 applies_to:
-  stack: ga 9.0
+  stack: ga
   serverless: ga
+  deployment:
+    self: unavailable
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
