@@ -31,11 +31,7 @@ stack: preview 9.1
 serverless: preview
 ```
 
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability. 
-
-### Private preview access
-
-Private preview access is available by submitting the form provided [here](https://docs.google.com/forms/d/e/1FAIpQLSfp2rLsayhw6pLVQYYp4KM6BFtaaljplWdYowJfflpOICgViA/viewform).
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
 
 ### Limitations
 
@@ -65,3 +61,7 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 #### Rate Limits 
 
 Rate limit for search and ingest is currently at 2000 requests per minute.
+
+## Pricing 
+
+All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER. 

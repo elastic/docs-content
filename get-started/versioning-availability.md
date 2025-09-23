@@ -74,12 +74,12 @@ Want to learn more about how availability badges are used? Check the [Elastic Do
 
 Documentation for {{stack}} 8.19.0 and earlier is available at [elastic.co/guide](https://www.elastic.co/guide).
 
-If a previous version for a specific page exists, you can select the version from the dropdown in the page sidebar. 
+If a previous version for a specific page exists, you can select the version from the dropdown in the page sidebar.
 
 ### How often is the documentation updated?
 
 We frequently update Elastic Docs to reflect the following:
-* Minor versions, such as {{stack}} 9.1.0 
+* Minor versions, such as {{stack}} 9.1.0
 * Patch-level updates, such as {{stack}} 9.1.1
 * Ongoing improvements to clarify and expand guidance
 
@@ -141,7 +141,8 @@ Find the documentation for your Elastic product versions or releases.
 | --- | --- |
 | [Elasticsearch](elasticsearch://release-notes/index.md) | 9.0.0 and later |
 | [Kibana](kibana://release-notes/index.md) | 9.0.0 and later |
-| [Fleet and Elastic Agent](/release-notes/fleet-elastic-agent/index.md) | 9.0.0 and later |
+| [Elastic Agent](elastic-agent://release-notes/index.md) | 9.0.0 and later |
+| [Fleet](fleet-server://release-notes/index.md) 9.0.0 and later |
 | [Logstash](logstash://release-notes/index.md) | 9.0.0 and later |
 | [Beats](beats://release-notes/index.md) | 9.0.0 and later |
 | [Elastic Observability](/release-notes/elastic-observability/index.md) | 9.0.0 and later |

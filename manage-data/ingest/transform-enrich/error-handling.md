@@ -1,6 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/docs/manage-data/ingest/transform-enrich/error-handling.html
 applies_to:
   stack: ga
   serverless: ga

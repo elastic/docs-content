@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-api.html
 applies_to:
-  stack:
+  stack: ga
   serverless:
 products:
   - id: observability

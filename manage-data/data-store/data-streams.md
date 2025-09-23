@@ -13,7 +13,7 @@ products:
 
 # Data streams [data-streams]
 
-A data stream lets you store append-only time series data across multiple indices while giving you a single named resource for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
+A data stream acts as a layer of abstraction over a set of indices that are optimized for storing append-only time series data. It stores data across multiple backing indices while giving you a single named resource to use for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
 
 You can submit indexing and search requests directly to a data stream. The stream automatically routes the request to backing indices that store the stream’s data. You can use [{{ilm}} ({{ilm-init}})](../lifecycle/index-lifecycle-management.md) to automate the management of these backing indices. For example, you can use {{ilm-init}} to automatically move older backing indices to less expensive hardware and delete unneeded indices. {{ilm-init}} can help you reduce costs and overhead as your data grows.
 
@@ -26,7 +26,7 @@ To determine whether you should use a data stream for your data, you should cons
 * You mostly perform indexing requests, with occasional updates and deletes.
 * You index documents without an `_id`, or when indexing documents with an explicit `_id` you expect first-write-wins behavior.
 
-For most time series data use-cases, a data stream will be a good fit. However, if you find that your data doesn’t fit into these categories (for example, if you frequently send multiple documents using the same `_id` expecting last-write-wins), you may want to use an index alias with a write index instead. See documentation for [managing time series data without a data stream](../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams) for more information.
+For most time series data use-cases, a data stream will be a good fit. However, if you find that your data doesn’t fit into these categories (for example, if you frequently send multiple documents using the same `_id` expecting last-write-wins), you may want to use an index alias with a write index instead. See the tutorial [](../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md) for more information.
 
 Keep in mind that some features such as [Time Series Data Streams (TSDS)](../data-store/data-streams/time-series-data-stream-tsds.md) and [data stream lifecycles](../lifecycle/data-stream.md) require a data stream.
 
@@ -39,7 +39,7 @@ A data stream consists of one or more [hidden](elasticsearch://reference/elastic
 :alt: data streams diagram
 :::
 
-A data stream requires a matching [index template](templates.md). The template contains the mappings and settings used to configure the stream’s backing indices.
+A data stream requires a matching [index template](templates.md). The template contains the mappings and settings used to configure the stream’s backing indices and defines the {{ilm-init}} policy that the data stream uses.
 
 Every document indexed to a data stream must contain a `@timestamp` field, mapped as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) field type. If the index template doesn’t specify a mapping for the `@timestamp` field, {{es}} maps `@timestamp` as a `date` field with default options.
 
@@ -106,7 +106,7 @@ Data streams are designed for use cases where existing data is rarely updated. Y
 If you need to update a larger number of documents in a data stream, you can use the [update by query](data-streams/use-data-stream.md#update-docs-in-a-data-stream-by-query) and [delete by query](data-streams/use-data-stream.md#delete-docs-in-a-data-stream-by-query) APIs.
 
 ::::{tip}
-If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. See [Manage time series data without data streams](../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams).
+If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. See the tutorial [](../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md).
 ::::
 
 

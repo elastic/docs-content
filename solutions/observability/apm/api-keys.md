@@ -2,13 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-key.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
+navigation_title: API keys
 ---
 
-# API keys [apm-api-key]
+# API keys for Elastic APM [apm-api-key]
 
 :::{include} _snippets/apm-server-vs-mis.md
 :::
@@ -151,10 +152,10 @@ To view all API keys for your project:
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
 
-* **Android**: [`apiKey`](opentelemetry://reference/edot-sdks/android/configuration.md)
+* **Android**: [`apiKey`](apm-agent-android://reference/edot-android/configuration.md)
 * **Go agent**: [`ELASTIC_APM_API_KEY`](apm-agent-go://reference/configuration.md#config-api-key)
 * **.NET agent**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
-* **iOS**: [`withApiKey`](opentelemetry://reference/edot-sdks/ios/configuration.md#withapikey)
+* **iOS**: [`withApiKey`](apm-agent-ios://reference/edot-ios/configuration.md#withapikey)
 * **Java agent**: [`api_key`](apm-agent-java://reference/config-reporter.md#config-api-key)
 * **Node.js agent**: [`apiKey`](apm-agent-nodejs://reference/configuration.md#api-key)
 * **PHP agent**: [`api_key`](apm-agent-php://reference/configuration-reference.md#config-api-key)
@@ -164,7 +165,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 ## Alternate API key creation method [apm-configure-api-key-alternative]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
