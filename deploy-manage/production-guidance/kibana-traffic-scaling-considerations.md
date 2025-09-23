@@ -14,6 +14,10 @@ products:
 
 # Scale {{kib}} for your traffic workload
 
+::::{important}
+This guidance does not apply to scaling {{kib}} for task manager. If you intend to optimize {{kib}} for alerting capabilities, see [](./kibana-task-manager-scaling-considerations.md).
+::::
+
 {{kib}}'s HTTP traffic is diverse and can be unpredictable. Traffic includes serving static assets like files, processing large search responses from {{es}}, and managing CRUD operations against complex domain objects like SLOs. The scale of the load created by each of these kinds of traffic will vary depending on your usage patterns. While difficult to predict, there are two important aspects to consider when provisioning CPU and memory resources for your {{kib}} instances:
 
 * **Concurrency**: How many users you expect to be interacting with {{kib}} simultaneously. Concurrency performance is largely **CPU-bound**. Approaching this limit increases response times.
@@ -59,10 +63,6 @@ It is recommended to scale vertically to a maximum of **8.4 vCPU** and **8GB** o
 
 You should also combine vertical scaling with horizontal scaling to handle greater concurrency or bursty traffic. Refer to [](./kibana-load-balance-traffic.md) for guidance.
 
-::::{important}
-This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilities, see [](./kibana-task-manager-scaling-considerations.md).
-::::
-
 ### Scaling examples
 
 | Concurrent users | Minimum vCPU | Minimum memory | ECH and ECE deployment examples |
@@ -70,15 +70,7 @@ This advice does not apply to scaling {{kib}} for task manager. If you intend to
 | 50 | 5 vCPU | 10GB | • {{kib}} size per zone of 16GB RAM and 8 vCPU in 1 availability zone (creates 2 x 8GB nodes)<br><br>• {{kib}} size per zone of 8GB RAM and up to 8 vCPU across 2 availability zones<br><br>• {{kib}} size per zone of 4GB RAM and up to 8 vCPU across 3 availability zones |
 | 100 | 10 vCPU | 20GB | • {{kib}} size per zone of 24 GB RAM and 12 vCPU in 1 availability zone (creates 3 x 8GB nodes)<br><br>• {{kib}} size per zone of 8GB RAM and up to 8 vCPU across 3 availability zones<br><br>|
 
-## Adjust resource allocations for {{kib}}
-The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type.
-* **[{{ech}}](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) and [{{ece}}](/deploy-manage/deploy/elastic-cloud/configure.md):** Users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. In these environments, size increments are predetermined.
-* **{{eck}}:** Users can configure pod memory and CPU resources. Refer to [](../deploy/cloud-on-k8s/manage-compute-resources.md).
-* **Self-managed:** Users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
-
-:::{note}
-Node.js suggests allocating 80% of available host memory to heap, assuming that {{kib}} is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example, allowing for HTTP sockets to be allocated.
-:::
+Refer to the [guidance on adjusting {{kib}}'s allocated resources](#adjust-resource-allocations) once you have determined sizing.
 
 ## Advanced scaling using stack monitoring metrics
 
@@ -94,7 +86,7 @@ Using stack monitoring, you can gather the following metrics for your {{kib}} in
 * **Heap size in bytes:** The amount of bytes currently held in memory dedicated to {{kib}}'s heap space.
 * **HTTP connections:** The number of sockets that the {{kib}} server has open.
 
-#### Scale CPU using ELD metrics [kibana-traffic-load-cpu-sizing]
+### Scale CPU using ELD metrics [kibana-traffic-load-cpu-sizing]
 
 Event loop delay (ELD) is an important metric for understanding whether {{kib}} is engaged in CPU-bound activity.
 
@@ -104,9 +96,22 @@ Before increasing CPU resources, consider the impact of ELD on user experience. 
 
 Monitoring {{kib}}'s ELD over time is a solid strategy for knowing when additional CPU resource is needed based on your usage patterns.
 
-#### Scale memory using heap size metrics [kibana-traffic-load-memory-sizing]
+Refer to the [guidance on adjusting {{kib}}'s allocated resources](#adjust-resource-allocations) once you have determined vCPU sizing.
+
+### Scale memory using heap size metrics [kibana-traffic-load-memory-sizing]
 
 Heap size is an important metric to track. If {{kib}}'s heap size grows beyond the heap limit, {{kib}} will crash. By monitoring heap size, you can help ensure that {{kib}} has enough memory available.
 
 Self-managed users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
 
+Refer to the [guidance on adjusting {{kib}}'s allocated resources](#adjust-resource-allocations) once you have determined memory sizing.
+
+## Adjust resource allocations for {{kib}} [adjust-resource-allocations]
+After you determine the resources that you want to allocate to your {{kib}} instance, you can alter your deployment to reflect the new allocation. The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type.
+* **[{{ech}}](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) and [{{ece}}](/deploy-manage/deploy/elastic-cloud/configure.md):** Users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. In these environments, size increments are predetermined.
+* **{{eck}}:** Users can configure pod memory and CPU resources. Refer to [](../deploy/cloud-on-k8s/manage-compute-resources.md).
+* **Self-managed:** Users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
+
+:::{note}
+For {{eck}} and self-managed deployments, Node.js suggests allocating 80% of available host memory to heap, assuming that {{kib}} is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example, allowing for HTTP sockets to be allocated.
+:::
