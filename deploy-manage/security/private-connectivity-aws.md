@@ -345,13 +345,13 @@ To access the deployment:
 :::{include} _snippets/private-connection-fleet.md
 :::
 
-## Setting up an cross-region PrivateLink connection [ec-aws-inter-region-private-link]
+## Setting up a cross-region PrivateLink connection [ec-aws-inter-region-private-link]
 
 AWS supports cross-region PrivateLink as described on the [AWS blog](https://aws.amazon.com/blogs/networking-and-content-delivery/introducing-cross-region-connectivity-for-aws-privatelink/).
 
 This means your deployment on {{ecloud}} can be in a different region than the PrivateLink endpoints or the clients that consume the deployment endpoints.
 
-In this example, `region 1` contains your VPC endpoint. `region 2` is the region where your deployment is hosted.
+In this example, `region 1` contains your VPC endpoint and `region 2` is the region where your deployment is hosted.
 
 1. Begin to create your VPC endpoint in `region 1`, as described in [Create your VPC endpoint and DNS entries in AWS](#ec-aws-vpc-dns). In the service settings, do the following:
 
