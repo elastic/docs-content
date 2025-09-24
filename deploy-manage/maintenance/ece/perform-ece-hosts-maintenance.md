@@ -138,7 +138,7 @@ To perform host maintenance:
   The use `-a` flag ensures that no containers are overlooked.
 
 
-7. If you enabled maintenance mode in Step 1: Take the allocator out of maintenance mode.
+7. If you enabled maintenance mode in Step 1, take the allocator out of maintenance mode.
 8. Optional for allocators: ECE will start using the allocator again as you create new or change existing clusters, but it will not automatically redistribute nodes to an allocator after it becomes available. If you want to move nodes back to the same allocator after host maintenance, you need to manually [move the nodes](move-nodes-instances-from-allocators.md) and specify the allocator as a target.
 9. Verify that all ECE services and deployments are back up by checking that the host shows a green status in the Cloud UI.
 
