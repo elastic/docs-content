@@ -128,7 +128,7 @@ If you use ILM to have time-based indices, consider using the [Date index name](
 When running a large number of SLO {{transforms}}, two types of limitations can appear:
 
 - {{transforms-cap}} may [misreport](#transforms-inaccurate-errors) their state and suggest deletion even though they are still valid
-- Point-in-time (PIT) requests may [accumulate](#transforms-pit-storms), creating extra activity on the cluster and slowing down operations
+- Point-in-time (PIT) requests may [accumulate](#transforms-pit-overloads), creating extra activity on the cluster and slowing down operations
 
 #### {{transforms-cap}} can return inaccurate errors that suggest deletion [transforms-inaccurate-errors]
 
