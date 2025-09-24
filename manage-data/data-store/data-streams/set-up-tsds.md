@@ -9,12 +9,9 @@ products:
   - id: elasticsearch
 ---
 
+# Set up a time series data stream [set-up-tsds]
 
-
-# Set up a TSDS [set-up-tsds]
-
-
-To set up a [time series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md), follow these steps:
+To set up a [time series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md), complete these steps:
 
 1. Check the [prerequisites](#tsds-prereqs).
 2. [Create an index lifecycle policy](#tsds-ilm-policy).
