@@ -521,3 +521,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     5. Remove the Docker allocator by following the [Delete Hosts](../../maintenance/ece/delete-ece-hosts.md) guidelines.
 
     As an alternative, use the [Delete Runner](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-delete-runner) API.
+
+::::{note}
+When using Podman, removing an image with the `--force` (`-f`) option not only deletes the image reference but also removes any containers that depend on that image. This behavior differs from Docker, where forced image removal does not automatically remove running or stopped containers. Therefore, avoid using the `--force` (`-f`) option with the `docker rmi` command.
+::::

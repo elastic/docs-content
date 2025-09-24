@@ -92,9 +92,9 @@ Select one of the following methods to install {{agent}}:
 
 * **Kubernetes**
 * **Docker**
+* **Linux**
 <!-- Not applicable for private preview
-* Linux
-* Windows
+* **Windows**
 -->
 
 :::{important} 
@@ -204,7 +204,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available cloud service providers and regions.
+* **Metrics storage location**: Select where to store your metrics data from the list of available regions.
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
@@ -220,8 +220,8 @@ The wizard will generate an installation command based on your configuration. De
 * Docker
     * Docker
     * Docker compose
-<!-- Not applicable for private preview
 * Linux
+<!-- Not applicable for private preview
 * Windows
 -->
 

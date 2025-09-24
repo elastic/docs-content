@@ -21,7 +21,7 @@ The most likely cause for this error is using incompatible versions of {{apm-age
 :::
 
 :::{tab-item} {{serverless-short}}
-The most likely cause for this error is using an incompatible version of an {{apm-agent}}. See [minimum supported APM agent versions](/solutions/observability/apm/elastic-apm-agents.md#observability-apm-agents-elastic-apm-agents-minimum-supported-versions) to verify compatibility.
+The most likely cause for this error is using an incompatible version of an {{apm-agent}}. See [minimum supported APM agent versions](/solutions/observability/apm/apm-agents/index.md#observability-apm-agents-elastic-apm-agents-minimum-supported-versions) to verify compatibility.
 :::
 
 ::::
@@ -32,7 +32,7 @@ The most likely cause for this error is using an incompatible version of an {{ap
 ::::{tab-set}
 
 :::{tab-item} {{stack}}
-APM agents communicate with the APM server by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you should consider increasing the [Max event size](/solutions/observability/apm/general-configuration-options.md#apm-max_event_size) setting in the APM integration, and adjusting relevant settings in the agent.
+APM agents communicate with the APM server by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you should consider increasing the [Max event size](/solutions/observability/apm/apm-server/general-configuration-options.md#apm-max_event_size) setting in the APM integration, and adjusting relevant settings in the agent.
 :::
 
 :::{tab-item} {{serverless-short}}
@@ -59,7 +59,7 @@ The API key is invalid.
 
 ## HTTP 403: Forbidden request [apm-forbidden]
 
-Either you are sending requests to a [RUM](/solutions/observability/apm/real-user-monitoring-rum.md) endpoint without RUM enabled, or a request is coming from an origin not specified in the APM integration settings. See the [Allowed origins](/solutions/observability/apm/configure-real-user-monitoring-rum.md#apm-rum-allow-origins) setting for more information.
+Either you are sending requests to a [RUM](/solutions/observability/apm/apm-agents/real-user-monitoring-rum.md) endpoint without RUM enabled, or a request is coming from an origin not specified in the APM integration settings. See the [Allowed origins](/solutions/observability/apm/apm-server/configure-real-user-monitoring-rum.md#apm-rum-allow-origins) setting for more information.
 
 
 ## HTTP 503: Request timed out waiting to be processed [apm-request-timed-out]
