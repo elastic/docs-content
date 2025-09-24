@@ -9,13 +9,13 @@ applies_to:
 ---
 # Solutions and use cases [introduction]
 
-Elastic offers three major search-powered solutions: {{es}}, {{observability}}, and {{elastic-sec}}— all built on an open source, extensible platform.
+Elastic offers three major search-powered solutions: {{es}}, {{observability}}, and {{elastic-sec}}—all built on an open source, extensible platform.
 Whether you're building a search experience, monitoring your infrastructure, or securing your environment, this topic helps you understand what each Elastic solution offers—and how to choose the right one for your business needs.
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
 | Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights  | [{{es}}](#search-overview) | Developers, architects, data engineers |
-| Observe and monitor system health and performance or send telemetry data | [Elastic {{observability}}](#observability-overview) | DevOps, SREs, IT operations |
+| Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](#observability-overview) | DevOps, SREs, IT operations |
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](#security-overview) | SOC teams, security analysts, IT security admins |
 
 :::{tip}
@@ -31,7 +31,7 @@ Each of our solutions is available as a fully managed {{serverless-short}} proje
 <!--
 ### {{es}} use cases [search-use-cases]
 -->
-For an overview of search use cases, including full-text, geospatial, semantic, and vector search, and retrieval augmented generation (RAG), go to [](/solutions/search.md).
+For an overview of search use cases, including full-text, geospatial, semantic, and vector search, as well as retrieval augmented generation (RAG), go to [](/solutions/search.md).
 To try out some simple search use cases, go to [](/solutions/search/get-started/quickstarts.md).
 <!--
 ### {{es}} core concepts [search-concepts]
@@ -89,13 +89,13 @@ At the heart of Elastic {{observability}} are several key concepts that enable i
 
 :::{dropdown} Concepts
 * The three pillars of {{observability}} are: 
-  * **Logs:** Timestamped records of events that provide detailed, contextual information.
+  * [**Logs:**](/solutions/observability/logs) Timestamped records of events that provide detailed, contextual information.
   * **Metrics:** Numerical measurements of system performance and health over time.
   * **Traces:** A representation of the end-to-end journey of a request as it travels through a distributed system.
 * **OpenTelemetry:** {{Observability}} offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the Elastic Distribution of OpenTelemetry (EDOT).
-* **AIOps and AI Assistant:** Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
-* **Alerting and Cases:** A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use Cases to track investigation details, assign tasks, and collaborate on resolutions.
-* **Service Level Objectives (SLOs):** A framework for defining and monitoring the reliability of a service. Elastic Observability allows for creating and tracking SLOs to ensure that performance targets are being met.
+* [**AIOps and AI Assistant:**](/solutions/observability/observability-ai-assistant) Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
+* **[Alerting](/solutions/observability/incident-management/alerting) and [Cases](/solutions/observability/incident-management/cases):** A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use cases to track investigation details, assign tasks, and collaborate on resolutions.
+* [**Service Level Objectives (SLOs):**](/solutions/observability/incident-management/service-level-objectives-slos) A framework for defining and monitoring the reliability of a service. Elastic {{observability}} allows for creating and tracking SLOs to ensure that performance targets are being met.
 :::
 
 ## {{elastic-sec}}
@@ -108,11 +108,11 @@ Install {{elastic-sec}} on one of our Elastic-managed Cloud deployments or your 
 
 ### Security use cases [security-use-cases]
 
-Use {{elastic-sec}} for numerous security needs to ensure your systems are protected from the latest threats.
+Use {{elastic-sec}} to protect your systems from the latest threats.
 
 :::{dropdown} Use cases
 * **SIEM:** {{elastic-sec}} is a modern SIEM that provides a centralized platform for ingesting, analyzing, and managing security data from various sources. 
-* **Third-party integration support:** Ingest data from a variety of tools and data sources so you can centralize your security data.
+* **Third-party integration support:** Ingest data from a various tools and data sources so you can centralize your security data.
 * **Threat detection and analytics:** Identify unknown threats by enabling prebuilt or custom detection rules, automatically detect anomalous activity with built-in machine learning jobs, or proactively search for threats using our powerful threat hunting and interactive visualization tools. 
 * **Automatic migration:** Migrate SIEM rules from other platforms to {{elastic-sec}}. 
 * **Endpoint protection and threat prevention:** Automatically stop cybersecurity attacks—such as malware and ransomware—before damage and loss can occur.
