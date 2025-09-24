@@ -135,6 +135,10 @@ $ aws ec2 describe-availability-zones --region us-east-1 | jq -c '.AvailabilityZ
 
 The mapping will be different for your region. Our production VPC Service for `us-east-1` is located in `use1-az2`, `use1-az4`, `use1-az6`. We need to create the VPC Endpoint for the preceding mapping in at least one of `us-east-1e`, `us-east-1a`, `us-east-1b`.
 
+:::{note}
+This limitation does not apply to [cross-region PrivateLink connections](#ec-aws-inter-region-private-link). If you're creating a cross-region connection, then you don't need to check that your VPC is present in all availability zones.
+:::
+
 ### Create your VPC endpoint and DNS entries in AWS [ec-aws-vpc-dns]
 
 1. Create a VPC endpoint in your VPC using the service name for your region.
