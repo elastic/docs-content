@@ -139,7 +139,7 @@ The message typically reads:
 ```console
 Found task for transform [...], but no configuration for it. To delete this transform use DELETE with force=true.
 ```
-Although the error suggests that the {{transform}} is broken and should be deleted, this is usually not the case. The error is caused by a bug in how the {{transforms}} are queried and presented by the API and UI. Deleting the {{transform}} can unnecessarily break related SLOs.
+Although the error suggests that the {{transform}} is broken and should be deleted, this is usually not the case. The error occurs because of a limitation in how the {{transforms}} are queried and presented by the API and UI. Deleting the {{transform}} can break related SLOs.
 
 If you see this error, do not delete the transform. If a transform was already deleted, you can restore it by resetting the SLO, either in the {{kib}} or with the API:
 
