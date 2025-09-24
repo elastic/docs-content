@@ -405,7 +405,7 @@ From the deployment **APM & Fleet** page you can also:
 
 ### Upgrading to {{stack}} 8.0 [ec-upgrade-apm-stack-8]
 
-The following APM settings have been removed in {{stack}} version 8.0. This change is only relevant to users upgrading a standalone (legacy) deployment of APM Server to {{stack}} version 8.0. Check [Add APM user settings](/solutions/observability/apm/configure-apm-server.md) for more details.
+The following APM settings have been removed in {{stack}} version 8.0. This change is only relevant to users upgrading a standalone (legacy) deployment of APM Server to {{stack}} version 8.0. Check [Add APM user settings](/solutions/observability/apm/apm-server/configure.md) for more details.
 
 ```yaml
 apm-server.api_key.enabled
