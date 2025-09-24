@@ -143,7 +143,7 @@ Although the error suggests that the {{transform}} is broken and should be delet
 
 If you encounter this error, do not delete the {{transform}}. If a {{transform}} was already deleted, you can restore it by resetting the SLO, either in the {{kib}} or with the API:
 
-- In Kibana, go to the **Observability** > **SLOs application**, open the menu for the affected SLO, and click **Reset**. 
+- In {{kib}}, go to the **Observability** > **SLOs application**, open the menu for the affected SLO, and click **Reset**. 
 
 - With the API, run:
 
