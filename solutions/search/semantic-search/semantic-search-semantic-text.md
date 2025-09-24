@@ -27,6 +27,8 @@ This tutorial uses the `elasticsearch` service for demonstration, which is creat
 
 The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
 
+You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own ML-nodes. The following examples show you both scenarios.
+
 :::::::{tab-set}
 
 ::::::{tab-item} Using EIS on Serverless
