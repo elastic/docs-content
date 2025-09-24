@@ -159,7 +159,7 @@ When many transforms run concurrently, especially in environments with large num
 
 A PIT storm increases the memory pressure on hot nodes. This may result in rising memory usage and long garbage collection cycles. In practice, searches and writes may slow down or queue until the node recovers, and in severe cases a restart may be required.
 
-As a workaround, you can disable PIT for a specific transform:
+As a workaround, you can disable PIT for a specific {{transform}}:
 
 ```console
 POST _transform/<transform_id>/_update
