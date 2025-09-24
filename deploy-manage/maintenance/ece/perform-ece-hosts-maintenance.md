@@ -103,11 +103,16 @@ To perform host maintenance:
     sudo reboot
     ```
 
-After rebooting, confirm there are no running containers:
-- `sudo podman ps` - Output should be empty
+4. After rebooting, confirm there are no running containers by running the following command. The output should be empty.
+    ```sh
+    sudo podman ps
+    ```
 
-If an `frc-*` or `fac-*` container is found to be running for some reason, stop it:
-- `sudo podman stop $(sudo podman ps -a --filter "name=fac" --filter "name=frc" --format "{{.ID}}")`
+	If an `frc-*` or `fac-*` container is returned in the output, stop it:
+	
+	```sh
+	sudo podman stop $(sudo podman ps -a --filter "name=fac" --filter "name=frc" --format "{{.ID}}")
+	```
 
 4. Perform your maintenance on the host, such as patching the operating system.
 5. Re-enable the Podman related services:
