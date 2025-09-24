@@ -42,7 +42,7 @@ $$$autoops-metrics-cost$$$ **Is there an added cost for shipping metrics data to
     You can [choose the CSP region where your data is stored](#autoops-metrics-storage). 
 
 $$$es-versions$$$ **Which versions of {{es}} does AutoOps support?**
-:   AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.co/support/eol).
+:   AutoOps is compatible with [supported {{es}} versions](https://www.elastic.co/support/eol) (7.17.x and above).
 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
