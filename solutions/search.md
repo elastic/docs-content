@@ -33,7 +33,7 @@ The {{es}} solution and serverless project type include specialized user interfa
 You can think of {{es}} in two complementary ways:
 
 1. **As a datastore and vector database**: use {{es}} directly to ingest, store, and manage many types of data in a scalable, cost-efficient way, without the need to add anything else.
-2. **As a foundation for custom applications**: including search and discovery experiences that you design and build using {{es}}'s building blocks.  
+2. **As a foundation for custom applications**: use {{es}}'s building blocks to design and build applications including search and discovery tools.  
 
 ### Datastore and vector database
 
