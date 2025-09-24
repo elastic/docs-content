@@ -33,7 +33,7 @@ With this security model, authorization is enforced jointly by the local and rem
 * On the local cluster side, not every local user needs to access every piece of data allowed by the API key. An administrator of the local cluster can further configure additional permission constraints on local users so each user only gets access to the necessary remote data. Note it is only possible to further reduce the permissions allowed by the API key for individual local users. It is impossible to increase the permissions to go beyond what is allowed by the API key.
 
   ::::{tip}
-  To configure fine-grained authorization for remote resources, use the `remote_indices` and `remote_clusters` fields in [role definitions](/docs-content/tree/main/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md).
+  To configure fine-grained authorization for remote resources, use the `remote_indices` and `remote_clusters` fields in [role definitions](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md).
   ::::
 
 ### Connection details
