@@ -129,9 +129,13 @@ To perform host maintenance:
     sudo reboot
     ```
 
-Confirm the containers have started:
-- `sudo podman ps -a`
-  - use `-a` flag so no containers are overlooked 
+7. Confirm the containers have started:
+
+    ```sh
+    sudo podman ps -a
+    ```
+  
+  The use `-a` flag ensures that no containers are overlooked.
 
 
 7. If you enabled maintenance mode in Step 1: Take the allocator out of maintenance mode.
