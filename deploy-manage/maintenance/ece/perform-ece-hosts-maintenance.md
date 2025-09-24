@@ -20,7 +20,7 @@ These steps show how you can safely perform maintenance on hosts in your ECE ins
 You can perform these maintenance actions on the hosts in your ECE installation using one of these methods:
 
 * [By disabling the Docker daemon (nondestructive)](#ece-perform-host-maintenance-docker-disable)
-* [By disabling the Podman related services (nondestructive)](#ece-perform-host-maintenance-podman-disable) - **For Podman Only** 
+* [By disabling the Podman related services (nondestructive)](#ece-perform-host-maintenance-podman-disable) 
 * [By deleting the host (destructive)](#ece-perform-host-maintenance-delete-runner)
 * [By shutting down the host (less destructive)](#ece-perform-host-maintenance-delete-runner)
 
