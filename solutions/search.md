@@ -41,7 +41,7 @@ You can index many types of data, keep them stored efficiently, searchable, and 
 
 * **Textual data**: documents, logs, articles, and transcripts
 * **Numerical data**: metrics, performance data, sensor readings
-* **Time series data**: events, traces, or system metrics collected over time
+* **Time series data**: events, traces, and system metrics collected over time
 * **Geospatial data**: coordinates, maps, and location-based signals
 * **Vector data**: embeddings from {{ml}} models for semantic or hybrid search
 
