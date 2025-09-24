@@ -165,7 +165,7 @@ APM agent --> Load Balancer  --> APM Server
    10s            15s               3600s
 ```
 
-The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](/solutions/observability/apm/general-configuration-options.md#apm-read_timeout).
+The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](/solutions/observability/apm/apm-server/general-configuration-options.md#apm-read_timeout).
 
 
 ## Field limit exceeded [apm-field-limit-exceeded]
