@@ -301,7 +301,6 @@ toc:
             children:
               - file: deploy/self-managed/important-settings-configuration.md
               - file: deploy/self-managed/plugins.md
-              - file: deploy/self-managed/networkaddress-cache-ttl.md
           - file: deploy/self-managed/install-kibana.md
             children:
               - file: deploy/self-managed/install-kibana-from-archive-on-linux-macos.md
