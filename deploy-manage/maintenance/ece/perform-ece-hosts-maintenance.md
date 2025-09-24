@@ -26,7 +26,7 @@ You can perform these maintenance actions on the hosts in your ECE installation 
 
 Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted {{es}} clusters and {{kib}} instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
 
-## By disabling the Docker daemon (Non Destructive) [ece-perform-host-maintenance-docker-disable]
+## By disabling the Docker daemon (nondestructive) [ece-perform-host-maintenance-docker-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
