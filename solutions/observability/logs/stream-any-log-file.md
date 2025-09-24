@@ -420,7 +420,7 @@ If you're not seeing your log files in the UI, verify the following in the `elas
 * The path to your logs file under `paths` is correct.
 * Your API key is in `<id>:<key>` format. If not, your API key may be in an unsupported format, and you'll need to create an API key in **Beats** format.
 
-If you're still running into issues, see [{{agent}} troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/fleet/configure-standalone-elastic-agents.md).
+If you're still running into issues, see [](/troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/fleet/configure-standalone-elastic-agents.md).
 
 
 ## Next steps [logs-stream-next-steps]

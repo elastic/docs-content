@@ -1,4 +1,5 @@
 ---
+navigation_title: Open and manage cases
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cases-open-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Open and manage cases [security-cases-open-manage]
+# Open and manage cases in Elastic Security [security-cases-open-manage]
 
 You can create and manage cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 

@@ -25,6 +25,9 @@ Make sure to consider also your cluster’s shard count, index layout, and overa
 
 Bulk requests will yield much better performance than single-document index requests. In order to know the optimal size of a bulk request, you should run a benchmark on a single node with a single shard. First try to index 100 documents at once, then 200, then 400, etc. doubling the number of documents in a bulk request in every benchmark run. When the indexing speed starts to plateau then you know you reached the optimal size of a bulk request for your data. In case of tie, it is better to err in the direction of too few rather than too many documents. Beware that too large bulk requests might put the cluster under memory pressure when many of them are sent concurrently, so it is advisable to avoid going beyond a couple tens of megabytes per request even if larger requests seem to perform better.
 
+:::{note}
+In {{serverless-full}}, the minimum response time for a single bulk indexing request is 200ms.
+:::
 
 ## Use multiple workers/threads to send data to {{es}} [multiple-workers-threads]
 
@@ -79,7 +82,7 @@ PUT /my-index-000001/_settings
 
 1. For {{serverless-full}} deployments, `refresh_interval` must be either `-1`, or equal to or greater than `5s`
 
-When bulk indexing is complete, consider running a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) {applies_to}`serverless: unavailable` to optimize search performance::
+When bulk indexing is complete, consider running a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to optimize search performance. Force merging is not available on {{serverless-full}}.
 
 ```console
 POST /my-index-000001/_forcemerge?max_num_segments=5

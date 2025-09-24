@@ -12,6 +12,10 @@ products:
 
 Fine tune your explorations by customizing **Discover** to bring out the the best view of your documents.
 
+:::{tip}
+Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
+:::
+
 :::{image} /explore-analyze/images/kibana-hello-field.png
 :alt: A view of the Discover app
 :screenshot:

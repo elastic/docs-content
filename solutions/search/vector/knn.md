@@ -44,7 +44,12 @@ To run a kNN search in {{es}}:
   * `create`, `index`, or `write` to add data
   * `read` to search the index
 
-## kNN search methods: approxiamte and exact kNN [knn-methods]
+:::{tip}
+The default type of {{es-serverless}} project is suitable for this use case unless you plan to use uncompressed dense vectors (`int4` or `int8` quantization strategies) with high dimensionality.
+Refer to [](dense-vector.md#vector-profiles).
+:::
+
+## kNN search methods: approximate and exact kNN [knn-methods]
 
 {{es}} supports two methods for kNN search:
 
@@ -1219,7 +1224,7 @@ This example will:
 * Search using approximate kNN for the top 100 candidates.
 * Rescore the top 20 candidates (`oversample * k`) per shard using the original, non quantized vectors.
 * Return the top 10 (`k`) rescored candidates.
-* Merge the rescored canddidates from all shards, and return the top 10 (`k`) results.
+* Merge the rescored candidates from all shards, and return the top 10 (`k`) results.
 
 #### Additional rescoring techniques [dense-vector-knn-search-rescoring-rescore-additional]
 
