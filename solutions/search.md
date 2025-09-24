@@ -39,7 +39,7 @@ You can think of {{es}} in two complementary ways:
 
 You can index many types of data, keep them stored efficiently, searchable, and analyzable. If all you need is a reliable and scalable datastore, you can use {{es}} that way without adding anything else. All of {{es}}’s advanced capabilities start with its role as a [data store](/manage-data/data-store.md). Examples include, but are not limited to:
 
-* **Textual data**: documents, logs, articles, or transcripts
+* **Textual data**: documents, logs, articles, and transcripts
 * **Numerical data**: metrics, performance data, sensor readings
 * **Time series data**: events, traces, or system metrics collected over time
 * **Geospatial data**: coordinates, maps, and location-based signals
