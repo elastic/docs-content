@@ -20,7 +20,7 @@ The {{es}} solution and serverless project type position {{es}} as a comprehensi
 
 The {{es}} solution and serverless project type include specialized user interfaces and tools that simplify working with {{es}}:
 
-* **Ingestion tools**: Content connectors, crawlers, file upload function, and indexing APIs for ingesting and storing data
+* **Ingestion tools**: Content connectors, crawlers, file upload capabilities, and indexing APIs for ingesting and storing data
 * **Data management and discovery**: Discover and Dashboards for exploring data, building visualizations, and creating interactive experiences
 * **Management interfaces**: Index Management and other tools for configuring and optimizing your stored data and implementation
 * **Search relevance tools**: Purpose-built UIs for managing synonyms, query rules, and other relevance-enhancing features
