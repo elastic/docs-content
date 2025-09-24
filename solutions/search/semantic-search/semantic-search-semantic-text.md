@@ -27,14 +27,15 @@ This tutorial uses the `elasticsearch` service for demonstration, which is creat
 
 The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
 
-::::{tab-set}
+:::::::{tab-set}
 
-:::{tab-item} Using EIS on Serverless
+::::::{tab-item} Using EIS on Serverless
 
 ```{applies_to}
 serverless: ga
 ```
 
+```console
 PUT semantic-embeddings
 {
   "mappings": {
@@ -45,12 +46,14 @@ PUT semantic-embeddings
     }
   }
 }
-:::
+```
 
 1. The name of the field to contain the generated embeddings.
 2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elastic` for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 
-:::{tab-item} Using EIS in Cloud
+::::::
+
+::::::{tab-item} Using EIS in Cloud
 
 ```{applies_to}
 stack: ga
@@ -58,6 +61,7 @@ deployment:
   self: unavailable
 ```
 
+```console
 PUT semantic-embeddings
 {
   "mappings": {
@@ -69,13 +73,15 @@ PUT semantic-embeddings
     }
   }
 }
-:::
+```
 
 1. The name of the field to contain the generated embeddings.
 2. The field to contain the embeddings is a `semantic_text` field.
 3. The `.elser-2-elastic` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 
-:::{tab-item} Using ML-nodes
+::::::
+
+::::::{tab-item} Using ML-nodes
 
 ```console
 PUT semantic-embeddings
@@ -95,9 +101,9 @@ PUT semantic-embeddings
 2. The field to contain the embeddings is a `semantic_text` field.
 3. The `.elser-2-elasticsearch` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
 
-:::
+::::::
 
-::::
+:::::::
 
 ::::{note}
 If you’re using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
