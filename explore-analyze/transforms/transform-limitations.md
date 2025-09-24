@@ -157,7 +157,7 @@ Transforms rely on point-in-time (PIT) searches to ensure that queries are consi
 
 When many transforms run concurrently, especially in environments with large numbers of SLOs (hundreds to more than 1000 transforms), PITs can be opened and closed in quick succession. Because PITs are closed asynchronously, the close operation does not wait for the previous request to complete. This can create a backlog of PIT close requests, known as a PIT storm.
 
-A PIT storm increases the memory pressure on hot nodes. This may result in rising memory usage and long garbage collection cycles. In practice, searches and writes may slow down or queue until the node recovers, and in severe cases a restart may be required.
+A PIT overload increases the memory pressure on hot nodes. This may result in rising memory usage and long garbage collection cycles. In practice, searches and writes may slow down or queue until the node recovers, and in severe cases a restart may be required.
 
 As a workaround, you can disable PIT for a specific {{transform}}:
 
