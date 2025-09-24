@@ -55,7 +55,7 @@ http(s)://{hostname}:{port}/intake/v2/events?async=true
 Since asynchronous processing defers some of the event processing to the background and takes place after the client has closed the request, some errors can’t be communicated back to the client and are logged by the APM Server. Furthermore, asynchronous processing requests will only be scheduled if the APM Server can service the incoming request, requests that cannot be serviced will receive an internal error `503` "queue is full" error.
 ::::
 
-For [RUM](/solutions/observability/apm/real-user-monitoring-rum.md) send an `HTTP POST` request to the APM Server `intake/v3/rum/events` endpoint instead:
+For [RUM](/solutions/observability/apm/apm-agents/real-user-monitoring-rum.md) send an `HTTP POST` request to the APM Server `intake/v3/rum/events` endpoint instead:
 
 ```bash
 http(s)://{hostname}:{port}/intake/v3/rum/events

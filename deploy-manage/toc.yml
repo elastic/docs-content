@@ -283,7 +283,6 @@ toc:
                   - file: deploy/self-managed/file-descriptors.md
                   - file: deploy/self-managed/vm-max-map-count.md
                   - file: deploy/self-managed/max-number-of-threads.md
-                  - file: deploy/self-managed/networkaddress-cache-ttl.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
                   - file: deploy/self-managed/bootstrap-checks.md
