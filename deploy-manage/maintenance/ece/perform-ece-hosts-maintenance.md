@@ -19,14 +19,17 @@ These steps show how you can safely perform maintenance on hosts in your ECE ins
 
 You can perform these maintenance actions on the hosts in your ECE installation using one of these methods:
 
-* [By disabling the Docker daemon (nondestructive)](#ece-perform-host-maintenance-docker-disable)
-* [By disabling the Podman related services (nondestructive)](#ece-perform-host-maintenance-podman-disable) 
+* [By disabling the container services (nondestructive)](#ece-perform-host-maintenance-container-engine-disable):
+  * [For Docker-based installations: Disabling the Docker service](#ece-perform-host-maintenance-docker-disable)
+  * [For Podman-based installations: Disabling the Podman-related services](#ece-perform-host-maintenance-podman-disable) 
 * [By deleting the host (destructive)](#ece-perform-host-maintenance-delete-runner)
 * [By shutting down the host (less destructive)](#ece-perform-host-maintenance-delete-runner)
 
 Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted {{es}} clusters and {{kib}} instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
 
-## By disabling the Docker daemon (nondestructive) [ece-perform-host-maintenance-docker-disable]
+## By disabling the container services (nondestructive) [ece-perform-host-maintenance-container-engine-disable]
+
+### For Docker-based installations: Disabling the Docker service [ece-perform-host-maintenance-docker-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
@@ -72,11 +75,7 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
-## By disabling the Podman related services (nondestructive) [ece-perform-host-maintenance-podman-disable]
-
-:::{note}
-This section only applies to Podman. 
-:::
+### For Podman-based installations: Disabling the Podman-related services [ece-perform-host-maintenance-podman-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Podman related services. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
@@ -134,13 +133,13 @@ To perform host maintenance:
     ```sh
     sudo podman ps -a
     ```
-  
-  The use `-a` flag ensures that no containers are overlooked.
+
+	The use `-a` flag ensures that no containers are overlooked.
 
 
-7. If you enabled maintenance mode in Step 1, take the allocator out of maintenance mode.
-8. Optional for allocators: ECE will start using the allocator again as you create new or change existing clusters, but it will not automatically redistribute nodes to an allocator after it becomes available. If you want to move nodes back to the same allocator after host maintenance, you need to manually [move the nodes](move-nodes-instances-from-allocators.md) and specify the allocator as a target.
-9. Verify that all ECE services and deployments are back up by checking that the host shows a green status in the Cloud UI.
+8. If you enabled maintenance mode in Step 1, take the allocator out of maintenance mode.
+9. Optional for allocators: ECE will start using the allocator again as you create new or change existing clusters, but it will not automatically redistribute nodes to an allocator after it becomes available. If you want to move nodes back to the same allocator after host maintenance, you need to manually [move the nodes](move-nodes-instances-from-allocators.md) and specify the allocator as a target.
+10. Verify that all ECE services and deployments are back up by checking that the host shows a green status in the Cloud UI.
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
