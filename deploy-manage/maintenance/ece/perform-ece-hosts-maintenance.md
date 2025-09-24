@@ -89,7 +89,7 @@ To perform host maintenance:
    Skipping Step 1 will affect the availability of clusters with nodes on the allocator.
    ::::
 
-2. Disable the Podman Service, Podman Socket, and Podman Restart Service
+2. Disable the Podman service, Podman socket, and Podman restart service:
 
     ```sh
     sudo systemctl disable podman.service
