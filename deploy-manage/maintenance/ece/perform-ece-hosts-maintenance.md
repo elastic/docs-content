@@ -72,7 +72,7 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
-## By disabling the Podman related services (Non Destructive) [ece-perform-host-maintenance-podman-disable]
+## By disabling the Podman related services (nondestructive) [ece-perform-host-maintenance-podman-disable]
 
 :::{note}
 This section only applies to Podman. 
