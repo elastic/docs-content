@@ -60,7 +60,7 @@ Configuration options are available to specialize connections to TLS servers, in
 Rules are taking a long time to run and are impacting the overall health of your deployment.
 
 ::::{important}
-By default, only users with a `superuser` role can query the [preview] {{kib}} event log because it is a system index. To enable additional users to run this query, assign `read` privileges to the `.kibana-event-log*` index.
+By default, only users with a `superuser` role can query the {{kib}} event log because it is a system index. To enable additional users to run this query, assign `read` privileges to the `.kibana-event-log*` index.
 
 ::::
 

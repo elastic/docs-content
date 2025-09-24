@@ -19,7 +19,7 @@ products:
 | [`short`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | `short` | SMALLINT | 5 |
 | [`integer`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | `integer` | INTEGER | 10 |
 | [`long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | `long` | BIGINT | 19 |
-| [`unsigned_long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | `[preview] unsigned_long` | BIGINT | 20 |
+| [`unsigned_long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | {applies_to}`stack: preview` {applies_to}`serverless: preview` `unsigned_long` | BIGINT | 20 |
 | [`double`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | `double` | DOUBLE | 15 |
 | [`float`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | `float` | REAL | 7 |
 | [`half_float`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) | `half_float` | FLOAT | 3 |

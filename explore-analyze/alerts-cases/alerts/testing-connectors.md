@@ -29,7 +29,11 @@ or by directly opening the proper connector edit flyout:
 :screenshot:
 :::
 
-## [preview] Troubleshooting connectors with the `kbn-action` tool [_troubleshooting_connectors_with_the_kbn_action_tool]
+## Troubleshooting connectors with the `kbn-action` tool [_troubleshooting_connectors_with_the_kbn_action_tool]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
 You can run an email action via [kbn-action](https://github.com/pmuellr/kbn-action). In this example, it is a Cloud hosted deployment of the {{stack}}:
 

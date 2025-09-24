@@ -22,7 +22,7 @@ You can create and manage cases using the UI or the [cases API](https://www.elas
 Open a new case to keep track of security issues and share their details with colleagues.
 
 1. Find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create case**. If no cases exist, the Cases table will be empty and you’ll be prompted to create one by clicking the **Create case** button inside the table.
-2. If you defined [templates](/solutions/security/investigate/configure-case-settings.md#cases-templates), you can optionally select one to use its default field values. [preview]
+2. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [templates](/solutions/security/investigate/configure-case-settings.md#cases-templates), you can optionally select one to use its default field values.
 3. Give the case a name, assign a severity level, and provide a description. You can use [Markdown](https://www.markdownguide.org/cheat-sheet) syntax in the case description.
 
     ::::{note}
@@ -35,7 +35,7 @@ Open a new case to keep track of security issues and share their details with co
     ::::
 
 4. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/solutions/security/investigate/cases-requirements.md).
-5. If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section. [preview]
+5. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section.
 6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is enabled by default, but you can turn it off after creating the case.
 7. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
 8. Click **Create case**.
