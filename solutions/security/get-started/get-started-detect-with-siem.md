@@ -176,4 +176,5 @@ Once you've had a chance to install detection rules and check out alerts, we rec
 * Learn how to use [Cases](/solutions/security/investigate/cases.md) to track investigation details.  
 * Download the "Guide to high-volume data sources for SIEM" [white paper](https://www.elastic.co/campaigns/guide-to-high-volume-data-sources-for-siem?elektra=organic&storm=CLP&rogue=siem-gic). 
 * Check out [Elastic Security Labs](https://www.elastic.co/security-labs) for the latest on threat research.  
+* Learn how to manage your [data lifecycle](/manage-data/lifecycle.md), including how long data is retained, and how indices can be transitioned through data tiers according to your performance needs and retention policies.
 % add endpoint getting started guide when it's done 
