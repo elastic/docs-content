@@ -153,7 +153,7 @@ If you encounter this error, do not delete the {{transform}}. If a {{transform}}
 
 #### Large numbers of {{transform}} can cause PIT overloads [transforms-pit-overloads]
 
-{{transforms-cap}} relies on point-in-time (PIT) searches to ensure that queries remain consistent during data changes. Each {{transform}} can open and close multiple PITs during its lifetime. 
+{{transforms-cap}} rely on point-in-time (PIT) searches to ensure that queries remain consistent during data changes. Each {{transform}} can open and close multiple PITs during its lifetime. 
 
 When many {{transforms}} run concurrently, especially in environments with large numbers of SLOs (hundreds to more than a thousand transforms), PITs can be opened and closed in quick succession. Because PITs are closed asynchronously, the close operation does not wait for the previous request to complete. This can create a backlog of PIT close requests, known as a PIT overload.
 
