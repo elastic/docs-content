@@ -4478,7 +4478,7 @@ The managed intake service supports two OTLP communication protocols on the same
 | OTLP logs intake | `/v1/logs` |
 
 ::::{tip}
-See our [OpenTelemetry docs](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
+See our [OpenTelemetry docs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
 
 ::::
 
