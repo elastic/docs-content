@@ -15,7 +15,7 @@ products:
 
 Elastic APM provides performance and error monitoring for AWS Lambda functions. See how your Lambda functions relate to and depend on other services, and get insight into function execution and runtime behavior, like lambda duration, cold start rate, cold start duration, compute usage, memory usage, and more.
 
-To set up Lambda monitoring, refer to [AWS Lambda functions](/solutions/observability/apm/monitor-aws-lambda-functions.md).
+To set up Lambda monitoring, refer to [AWS Lambda functions](/solutions/observability/apm/ingest/monitor-aws-lambda-functions.md).
 
 :::{image} /solutions/images/observability-lambda-overview.png
 :alt: lambda overview
