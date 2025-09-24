@@ -349,9 +349,10 @@ This means your deployment on {{ecloud}} can be in a different region than the P
 
 In this example, `region 1` contains your VPC endpoint. `region 2` is the region where your deployment is hosted.
 
-1. Begin to create your VPC endpoint in `region 1`, as described in [Create your VPC endpoint and DNS entries in AWS](#ec-aws-vpc-dns).
+1. Begin to create your VPC endpoint in `region 1`, as described in [Create your VPC endpoint and DNS entries in AWS](#ec-aws-vpc-dns). In the service settings, do the following:
 
-    In the service settings, select **Enable Cross Region endpoint** and select `region 2` from the **Select a region** drop-down list.
+    * In the **Service name** field, enter the [VPC service name](#ec-private-link-service-names-aliases) for `region 2`.
+    * Select **Enable Cross Region endpoint** and select `region 2` from the **Select a region** drop-down list.
 
 1. [Create a private connection policy](#create-private-connection-policy) in the region where your deployment is hosted (`region 2`), and [associate it](#associate-private-connection-policy) with your deployment.
    
