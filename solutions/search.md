@@ -45,7 +45,7 @@ You can index many types of data, keep them stored efficiently, searchable, and 
 * **Geospatial data**: coordinates, maps, and location-based signals
 * **Vector data**: embeddings from {{ml}} models for semantic or hybrid search
 
-By bringing these capabilities together, {{es}} acts as a powerful data store, time series database, geospatial engine, and vector database, all within a single technology. Whether you use it as a datastore or as the backbone for advanced search and analytics, this unified foundation enables you to work seamlessly with diverse data types and power your own applications.
+By bringing these capabilities together, {{es}} acts as a powerful data store, time series database, geospatial engine, and vector database, all within a single platform. Whether you use it as a datastore or as the backbone for advanced search and analytics, this unified foundation enables you to work seamlessly with diverse data types and power your own applications.
 
 ### Search and discovery applications
 
