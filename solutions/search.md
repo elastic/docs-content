@@ -49,7 +49,7 @@ By bringing these capabilities together, {{es}} acts as a powerful data store, t
 
 ### Search and discovery applications
 
-Search is one of the common use cases built on {{es}}. With your own data (text, logs, metrics, events, vectors, or geospatial information), {{es}} gives you the tools to store, search, and analyze it. Using these building blocks, you can design search and discovery experiences, from internal knowledge bases to product catalogs, chat interfaces, or geospatial applications.
+Search is one of the common use cases built on {{es}}. {{es}} gives you the tools to store, search, and analyze your own data, including text, logs, metrics, events, vectors, and geospatial information. Using these building blocks, you can design search and discovery experiences, from internal knowledge bases to product catalogs, chat interfaces, or geospatial applications.
 
 {{es}} gives you the core platform to build the experiences that best match your requirements.
 
