@@ -151,7 +151,7 @@ If you see this error, do not delete the transform. If a transform was already d
   POST kbn:/api/observability/slos/<SLO_ID>/_reset
   ```
 
-#### Large numbers of {{transform}} can cause PIT storms [transforms-pit-storms]
+#### Large numbers of {{transform}} can cause PIT overloads [transforms-pit-overloads]
 
 Transforms rely on point-in-time (PIT) searches to ensure that queries are consistent while data is changing. Each transform can open and close multiple PITs during its lifetime. 
 
