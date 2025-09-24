@@ -145,7 +145,7 @@ If you encounter this error, do not delete the {{transform}}. If a {{transform}}
 
 - In {{kib}}, go to the **Observability** > **SLOs application**, open the menu for the affected SLO, and click **Reset**. 
 
-- With the API, run:
+- If you use the API, run the following request:
 
   ```console
   POST kbn:/api/observability/slos/<SLO_ID>/_reset
