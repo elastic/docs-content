@@ -66,13 +66,9 @@ This section explains how remote clusters interact with network security when us
 
 With API key–based authentication, remote clusters require the local cluster (A) to trust the transport SSL certificate presented by the remote cluster server (B). When network security is enabled on the destination cluster (B), it’s also necessary to explicitly allow the incoming traffic from cluster A. This can be achieved using different types of traffic filters:
 
+* [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md), which allow filtering by organization ID or {{es}} cluster ID. This method is more reliable and recommended, as it combines mTLS with API key authentication for stronger security. These filters are specific to ECH and ECE, because they rely on the certificates and proxy mechanisms provided by ECH and ECE.
+
 * [IP filters](/deploy-manage/security/ip-filtering.md), which allow traffic based on IP addresses or CIDR ranges. These can be difficult to manage in orchestrated environments, where the source IP of individual {{es}} instances may change.
-
-  Use IP filters when the local cluster is self-managed.
-
-* [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md), which allow filtering by organization ID or {{es}} cluster ID. This method is more reliable and recommended, as it combines mTLS with API key authentication for stronger security.
-
-  Use remote cluster filters when the local cluster is also on ECH or ECE, as these filters are specific to {{ecloud}} and ECE platforms.
 
 ### Use cases for remote clusters and network security [use-cases-network-security]
 
