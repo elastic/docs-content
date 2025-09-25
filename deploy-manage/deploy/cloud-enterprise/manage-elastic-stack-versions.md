@@ -23,7 +23,7 @@ New or updated versions of the {{stack}} must be prepared to work with {{ece}} a
 ## Most recent {{stack}} packs [ece_most_recent_elastic_stack_packs]
 
 :::{admonition} {{ece}} 4 removed support for {{stack}} 7.x versions
-{{ece}} 4 no longer supports {{stack}} versions prior to 8.0.0. All deployments must be upgraded to stack version 8.0.0 or later, prior to upgrading to ECE 4.0. Review [Support Matrix Product Compatibility > Compatibility with {{ece}}](https://www.elastic.co/support/matrix#matrix_compatibility) for more guidance.
+{{ece}} 4 no longer supports {{stack}} versions prior to 8.0.0. Upgrade all deployments to 8.0.0 or later before upgrading to {{ece}} 4.x. Refer to the [Product compatibility support matrix -> Compatibility with {{ece}}](https://www.elastic.co/support/matrix#matrix_compatibility) for details.
 :::
 
 :::{note}
