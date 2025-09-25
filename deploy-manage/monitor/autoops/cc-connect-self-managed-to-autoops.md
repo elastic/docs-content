@@ -21,7 +21,7 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 
 Ensure your system meets the following requirements before proceeding:
 
-* Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol).
+* Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol) (7.17.x and above).
 * Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
@@ -101,11 +101,13 @@ Select one of the following methods to install {{agent}}:
 Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
 :::
 
+To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md#data-gathering).
+
 ### Configure agent
 
 Depending on your selected installation method, you may have to provide the following information to create the installation command:
 
-* **{{es}} endpoint URL**: The agent will use this URL to identify which cluster you want to connect to AutoOps.
+* **{{es}} endpoint URL**: Enter the URL for the {{es}} cluster you want to monitor by connecting to AutoOps.
 * **Preferred authentication method**: Choose one of the following:
 :::::{tab-set}
 :group: api-key-or-basic
@@ -204,7 +206,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available regions.
+* **Metrics storage location**: Select where to store your metrics data from the list of available AWS regions.
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
@@ -281,10 +283,11 @@ You can use the same installation command to connect multiple clusters, but each
 
 Complete the following steps to disconnect your cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
 
+2. Based on your [installation method](#select-installation-method), complete the steps to stop {{agent}} from shipping metrics to {{ecloud}}.
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
-2. In the **Connected clusters** section, locate the cluster you want to disconnect.
-3. From that cluster’s actions menu, select **Disconnect cluster**.
-4. Enter the cluster’s name in the field that appears and then select **Disconnect cluster**.
+3. On the **Connected clusters** page or the **Connected clusters** section of the home page, locate the cluster you want to disconnect.
+4. From that cluster’s actions menu, select **Disconnect cluster**.
+5. Enter the cluster’s name in the field that appears and then select **Disconnect cluster**.
 
 :::{include} /deploy-manage/monitor/_snippets/disconnect-cluster.md
 :::
