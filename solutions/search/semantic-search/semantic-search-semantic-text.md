@@ -79,7 +79,7 @@ PUT semantic-embeddings
 
 1. The name of the field to contain the generated embeddings.
 2. The field to contain the embeddings is a `semantic_text` field.
-3. The `.elser-2-elastic` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+3. The `.elser-v2-elastic` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 
 ::::::
 
