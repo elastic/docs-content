@@ -70,7 +70,7 @@ PUT semantic-embeddings
     "properties": {
       "content": { <1>
         "type": "semantic_text", <2>
-        "inference_id": ".elser-2-elastic" <3>
+        "inference_id": ".elser-v2-elastic" <3>
       }
     }
   }
