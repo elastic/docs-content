@@ -24,6 +24,8 @@ Remote clusters are especially useful in two cases:
 In the case of remote clusters, the {{es}} cluster or deployment initiating the connection and requests is often referred to as the **local cluster**, while the {{es}} cluster or deployment receiving the requests is referred to as the **remote cluster**.
 ::::
 
+## Security models and connection modes
+
 When configuring remote clusters, you can choose between two security models and two connection modes. Both security models are compatible with either connection mode.
 
 You can learn more in the following documents:

@@ -17,15 +17,16 @@ When you configure a remote cluster, the local cluster needs a way to connect to
 - **Sniff mode**: The local cluster discovers the remote cluster’s gateway nodes and connects to them directly.
 - **Proxy mode**: The local cluster connects through a reverse proxy or load balancer, which forwards traffic to the appropriate nodes in the remote cluster.
 
+::::{note}
+Connection modes work independently of [security models](./security-models.md). Both connection modes are compatible with either security model.
+::::
+
 The choice between sniff and proxy mode depends on your network architecture and deployment type.  
 
 - **Self-managed environments:** If direct connections on the publish addresses between {{es}} nodes in both clusters are possible, you can use sniff mode. If direct connectivity is difficult to implement—for example, when clusters are separated by NAT, firewalls, or containerized environments—you can place a reverse proxy or load balancer in front of the remote cluster and use proxy mode instead.  
 
 - **Managed environments ({{ece}}, {{ech}}, {{eck}}):** Direct node-to-node connectivity is generally not feasible, so these deployments always rely on the proxy connection mode.
 
-::::{note}
-Connection modes are independent of [security models](./security-models.md). Connection modes define *how* the local cluster reaches the remote cluster (directly to node publish addresses or through a reverse proxy/load balancer), while security models determine *which service* is used and *how authentication and authorization* are handled between the clusters.
-::::
 
 The following sections describe each method in more detail.
 
@@ -46,18 +47,22 @@ The sniff mode is not supported in {{ech}} and {{ece}} deployments, and it's not
 
 ## Proxy mode
 
-In proxy mode, a cluster alias is registered with a name of your choosing and the address of a TCP (layer 4) reverse proxy specified with the `cluster.remote.<cluster_alias>.proxy_address` setting. You must configure this proxy to route connections to one or more nodes of the remote cluster. When you register a remote cluster using proxy mode, {{es}} opens several TCP connections to the proxy address and uses these connections to communicate with the remote cluster. In proxy mode {{es}} disregards the publish addresses of the remote cluster nodes which means that the publish addresses of the remote cluster nodes do not need to be accessible to the local cluster.
+In proxy mode, a cluster alias is registered with a name of your choosing and the address of a TCP (layer 4) reverse proxy specified with the `cluster.remote.<cluster_alias>.proxy_address` setting. You must configure this proxy to route connections to one or more nodes of the remote cluster. The service port to forward traffic to depends on the [security model](./security-models.md) in use, as each model uses a different service port.
+
+When you register a remote cluster using proxy mode, {{es}} opens several TCP connections to the proxy address and uses these connections to communicate with the remote cluster. In proxy mode {{es}} disregards the publish addresses of the remote cluster nodes which means that the publish addresses of the remote cluster nodes do not need to be accessible to the local cluster.
 
 Proxy mode is not the default connection mode, so you must set `cluster.remote.<cluster_alias>.mode: proxy` to use it. See [Proxy mode remote cluster settings](remote-clusters-settings.md#remote-cluster-proxy-settings) for more information about configuring proxy mode.
 
 ## Connection modes: comparison
 
+The following table summarizes the key differences between sniff and proxy mode to help you choose the most suitable option for your deployment.
+
 | Aspect                  | Sniff mode                                                                                       | Proxy mode                                                                                   |
 |-------------------------|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| **Default**             | Yes                                                                                              | No (must be explicitly configured)                                                           |
-| **How it connects**     | Local cluster connects directly to remote gateway node publish addresses discovered from seeds   | Local cluster connects to a single configured address; the reverse proxy or load balancer forwards traffic to remote nodes |
-| **Network requirements**| Local cluster must be able to reach the remote cluster’s gateway node publish addresses          | Only the proxy address must be reachable; no need for local cluster to resolve internal remote addresses |
+| **Defaul when adding a remote**             | Yes                                                                                              | No (must be explicitly configured)                                                           |
+| **Recommended deployment types**    | Self-managed                                                                                     | Self-managed, {{ech}}, {{ece}}, and {{eck}}                                                  |
+| **How it connects**     | Local cluster connects directly to remote nodes addresses, discovered from the configured seeds   | Local cluster connects to a single configured address. The reverse proxy or load balancer forwards traffic to remote nodes |
+| **Node discovery**      | Dynamic: local cluster discovers remote gateway nodes through the seed list                      | None: all traffic goes through the reverse proxy                                                |
+| **Network requirements**| Local cluster must be able to reach the remote cluster’s gateway node publish addresses          | Only the proxy address must be reachable; no need for local cluster to connect directly to remote nodes |
 | **Configuration**       | Configure remote seeds (`cluster.remote.<alias>.seeds`)                                          | Configure proxy address (`cluster.remote.<alias>.proxy_address`) and set mode to `proxy`      |
-| **Node discovery**      | Dynamic: local cluster discovers remote gateway nodes through the seed list                      | Static: all traffic goes through the reverse proxy                                                   |
-| **Deployment types**    | Self-managed                                                                                     | Self-managed, {{ece}}, {{ech}}, and {{eck}}                                                  |
 | **Use cases**           | Clusters with direct network reachability between nodes (e.g., same VPC or peered networks)      | Clusters separated by firewalls, NAT, or when exposing only a single ingress point is required |

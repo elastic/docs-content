@@ -12,12 +12,14 @@ products:
 ---
 # Remote clusters security models
 
-Remote clusters security models determine how authentication and authorization works between clusters. {{es}} has evolved from a TLS certificate–based model, relying on mutual TLS authentication over the transport interface and duplicated roles across clusters, to a more flexible API key–based model that uses a dedicated service endpoint and supports fine-grained authorization on both local and remote clusters. TLS certificate–based authentication is now deprecated, and users are encouraged to migrate to the API key–based model.
+Remote clusters security models determine how authentication and authorization works between clusters. {{es}} has evolved from a TLS certificate–based model, relying on mutual TLS authentication over the transport interface and duplicated roles across clusters, to a more flexible API key–based model that uses a dedicated service endpoint and supports fine-grained authorization on both local and remote clusters.
+
+TLS certificate–based authentication is now deprecated, and users are encouraged to migrate to the API key–based model.
 
 The following sections describe both models in detail and highlight their key differences.
 
 ::::{note}
-Security models are independent of [connection modes](./connection-modes.md). Connection modes define *how* the local cluster reaches the remote cluster (directly to node publish addresses or through a reverse proxy/load balancer), while security models determine *which service* is used and *how authentication and authorization* are handled between the clusters.
+Security models work independently of [connection modes](./connection-modes.md). Both security models are compatible with either connection mode.
 ::::
 
 ## API key authentication [api-key]
@@ -26,7 +28,7 @@ API key authentication enables a local cluster to authenticate itself with a rem
 
 ### Authorization
 
-With this security model, authorization is enforced jointly by the local and remote clusters, as follows:
+With this security model, authorization is enforced jointly by the local and remote cluster, as follows:
 
 * All cross-cluster requests from the local cluster are bound by the API key’s privileges, regardless of local users associated with the requests. For example, if the API key only allows read access to `my-index` on the remote cluster, even a superuser from the local cluster is limited by this constraint. This mechanism enables the remote cluster’s administrator to have full control over who can access what data with cross-cluster search and/or cross-cluster replication. The remote cluster’s administrator can be confident that no access is possible beyond what is explicitly assigned to the API key.
 
@@ -38,7 +40,7 @@ With this security model, authorization is enforced jointly by the local and rem
 
 ### Connection details
 
-In this model, cross-cluster operations use [a dedicated server port](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port), known as the remote cluster interface, for communication between clusters. The default port is `9443`.
+In this model, cross-cluster operations use [a dedicated server port](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (remote cluster interface), for communication between clusters. The default port is `9443`. The remote cluster must enable this port for local clusters to connect.
 
 From a TLS perspective, the local cluster must trust the remote cluster on the remote cluster interface. This means the local cluster must trust the certificate authority (CA) that signs the server certificate used by the remote cluster interface. When establishing a connection, all nodes from the local cluster that participate in cross-cluster communication verify certificates from nodes on the other side, based on the TLS trust configuration.
 
@@ -57,7 +59,7 @@ TLS certificate authentication requires all connected clusters to trust one anot
 
 ### Authorization
 
-With this security model, user authentication is performed on the local cluster, and the user and user’s roles names are passed to the remote clusters. A remote cluster checks the user’s role names against its local role definitions to determine which indices the user is allowed to access. This requires at least a role existing in the remote cluster with the same name as the local cluster for the user to gain privileges.
+With this security model, user authentication is performed on the local cluster, and the user and user’s roles names are passed to the remote cluster. A remote cluster checks the user’s role names against its local role definitions to determine which indices the user is allowed to access. This requires at least a role existing in the remote cluster with the same name as the local cluster for the user to gain privileges.
 
 ::::{warning}
 In this model, a superuser on the local cluster gains total read access to the remote cluster, so it is only suitable for clusters that are in the same security domain.
@@ -76,10 +78,9 @@ Refer to [Remote clusters setup](../remote-clusters.md#setup) for configuration 
 | Aspect              | API key–based                                                                 | TLS certificate–based                          |
 |---------------------|-------------------------------------------------------------------------------|------------------------------------------------|
 | **Status**          | Recommended                                                                   | Deprecated                                     |
-| **Service endpoint**| Uses a dedicated remote-cluster service endpoint                              | Uses the default transport interface            |
+| **Service endpoint**| Uses a dedicated remote-cluster-server service endpoint                       | Uses the default transport interface            |
 | **Default port**    | 9443                                                                          | 9300 in self-managed, 9400 in {{ech}} or {{ece}}                              |
 | **Authentication**  | Client authenticates with an API key and validates the server’s certificate | Requires mutual TLS (both client and server present and validate certificates) |
 | **Authorization** | Flexible: privileges can be scoped in the API key and combined with roles on the local cluster; supports fine-grained authorization | Rigid: roles must exist on the remote cluster with exact name matching; all authorization defined remotely |
 | **Credential management** | API keys can be created with expiration and revoked without PKI changes        | Requires certificate issuance, distribution, and rotation across clusters |
-| **Connection modes** | Works with sniff and proxy                                                    | Works with sniff and proxy                     |
 
