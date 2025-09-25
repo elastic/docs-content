@@ -10,6 +10,38 @@ products:
 Review the changes, fixes, and more to {{serverless-full}}.
 
 
+## September 22, 2025 [serverless-changelog-09222025]
+
+### Features and enhancements [serverless-changelog-09222025-features-enhancements]
+
+* Adds a new connector for Jira Service Management [#235408]({{kib-pull}}235408)
+* Adds OAuth2 client credentials authentication support to {{kib}} Webhook connectors [#218442]({{kib-pull}}218442)
+* Completes OTel configuration pipelines by adding an exporter [#233090]({{kib-pull}}233090)
+* Enables controls in Discover from the editor [#229598]({{kib-pull}}229598)
+* Displays errors in the context of a trace [#234178]({{kib-pull}}234178)
+* Creates functional tests for the Logs Essentials tier [#234904]({{kib-pull}}234904)
+* Sets up the saved object infrastructure for Cloud Connectors and implements the end-to-end persistence flow for creating integrations with Cloud Connector support [#230137]({{kib-pull}}230137)
+* Removes the **Tech Preview** badge and feature flag for Automatic Troubleshooting [#234853]({{kib-pull}}234853)
+* Adds advanced options for opting out of collecting ransomware diagnostics on macOS [#235193]({{kib-pull}}235193)
+* Adds the **Tech Preview** badge for the preconfigured `rerank` endpoint in the inference endpoints UI [#235222]({{kib-pull}}235222)
+* Adds a default placeholder icon for future AI connectors [#235166]({{kib-pull}}235166)
+* Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
+* Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
+* Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
+% Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
+
+### Fixes [serverless-changelog-09222025-fixes]
+
+* Skips automatic scrolling when a panel is visible [#233226]({{kib-pull}}233226)
+* Fixes an issue with the Actions column header size [#235227]({{kib-pull}}235227)
+* Clears time field sorting when switching from classic to {{esql}} mode [#235338]({{kib-pull}}235338)
+* Fixes a bug where previously installed product docs (E5) were not upgraded during a Kibana version upgrade [#234792]({{kib-pull}}234792)
+* Improves the accessibility of the badges on individual stream pages [#235625]({{kib-pull}}235625)
+* Fixes the autocomplete configuration for the `pinned` retriever by removing the `match_criteria` field [#234903]({{kib-pull}}234903)
+* Fixes a bug by allowing the use of `cmd + /` for comment toggling in the Monaco editor [#235334]({{kib-pull}}235334)
+* Adds a check for all privileges for {{sec-serverless}} when creating lists [#234602]({{kib-pull}}234602)
+
+
 ## September 19, 2025 [serverless-changelog-09192025]
 
 ### Features and enhancements [serverless-changelog-09192025-features-enhancements]

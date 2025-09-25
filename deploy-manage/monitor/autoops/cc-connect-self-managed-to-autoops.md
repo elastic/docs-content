@@ -22,7 +22,7 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 Ensure your system meets the following requirements before proceeding:
 
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol).
-* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions).
+* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
 ## Connect to AutoOps (private preview) [connect-to-autoops]
@@ -238,9 +238,9 @@ Complete the following steps to run the command:
     | --- | --- |
     | `AUTOOPS_OTEL_URL` | The {{ecloud}} URL to which {{agent}} ships data. The URL is generated based on the CSP and region you pick. <br> This URL shouldn't be edited. |
     | `AUTOOPS_ES_URL` | The URL {{agent}} uses to communicate with {{es}}. |
-    | `ELASTICSEARCH_READ_API_KEY` | The API key for API key authentication to access the cluster. It combines the `${id}:${api_key}` values. <br> This variable shouldn't be used with `ELASTICSEARCH_READ_USERNAME` and `ELASTICSEARCH_READ_PASSWORD`. |
-    | `ELASTICSEARCH_READ_USERNAME` | The username for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_PASSWORD`. |
-    | `ELASTICSEARCH_READ_PASSWORD` | The password for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_USERNAME`. |
+    | `AUTOOPS_ES_API_KEY` | The API key for API key authentication to access the cluster. It combines the `${id}:${api_key}` values. <br> This variable shouldn't be used with `AUTOOPS_ES_USERNAME` and `AUTOOPS_ES_PASSWORD`. |
+    | `AUTOOPS_ES_USERNAME` | The username for basic authentication to access the cluster. <br> This variable should be used with `AUTOOPS_ES_PASSWORD`. |
+    | `AUTOOPS_ES_PASSWORD` | The password for basic authentication to access the cluster. <br> This variable should be used with `AUTOOPS_ES_USERNAME`. |
     | `ELASTIC_CLOUD_CONNECTED_MODE_API_KEY` | The {{ecloud}} API Key used to register the cluster. <br> This key shouldn't be edited. |
     | `AUTOOPS_TEMP_RESOURCE_ID` | The temporary ID for the current installation wizard. |
 
