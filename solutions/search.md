@@ -35,7 +35,7 @@ You can think of {{es}} in two complementary ways:
 1. **As a datastore and vector database**: use {{es}} directly to ingest, store, and manage many types of data in a scalable, cost-efficient way, without the need to add anything else.
 2. **As a foundation for custom applications**: use {{es}}'s building blocks to design and build applications including search and discovery tools.  
 
-### Datastore and vector database
+### Datastore
 
 You can index many types of data, keep them stored efficiently, searchable, and analyzable. If all you need is a reliable and scalable datastore, you can use {{es}} that way without adding anything else. All of {{es}}’s advanced capabilities start with its role as a [data store](/manage-data/data-store.md). Examples include, but are not limited to:
 
