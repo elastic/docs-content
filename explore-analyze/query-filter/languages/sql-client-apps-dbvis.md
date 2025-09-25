@@ -47,7 +47,7 @@ and check its availability status:
 
 Once the {{es}} driver is in place, create a new connection:
 
-![dbvis new connecction](/explore-analyze/images/elasticsearch-reference-dbvis_add_db_connection.png "")
+![dbvis new connection](/explore-analyze/images/elasticsearch-reference-dbvis_add_db_connection.png "")
 
 by double-clicking the {{es}} entry in the list of available drivers:
 
