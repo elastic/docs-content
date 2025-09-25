@@ -22,7 +22,7 @@ By playing with a simple use case, you'll take the first steps toward understand
 
 ## Prerequisites
 
-- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), you must have a `developer` or `admin` predefined role or an equivalent custom role to add the sample data.
+- If you're using {{es-serverless}}, you must have a `developer` or `admin` predefined role or an equivalent custom role to add the sample data.
 - If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).

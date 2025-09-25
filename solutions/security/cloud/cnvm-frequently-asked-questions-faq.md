@@ -1,4 +1,5 @@
 ---
+navigation_title: Frequently asked questions (FAQ)
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-faq.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-faq.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Frequently asked questions (FAQ)
+# Cloud Native Vulnerability Management FAQ
 
 Frequently asked questions about the Cloud Native Vulnerability Management (CNVM) integration and features.
 

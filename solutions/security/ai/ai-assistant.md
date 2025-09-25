@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: AI Assistant
 ---
 
-# AI Assistant
+# AI Assistant for {{elastic-sec}}
 
 The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
 
@@ -119,7 +120,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Conversations that you start with AI Assistant are private by default and not visible to other members of your team. You have two ways to share conversations - either with selected members or more broadly to everyone with access to the space.
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space. 
 
 To share a conversation, do one of the following:
 

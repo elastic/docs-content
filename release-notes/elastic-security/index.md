@@ -33,6 +33,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds more Linux diagnostic process `ptrace` events.
 
 ### Fixes [elastic-security-9.1.4-fixes]
+* Fixes filtering on the **Alerts** page by checking for an empty dataView [#235144]({{kib-pull}}235144).
 * Fixes a bug where the toggle column functionality only functioned on the **Alerts** page [#234278]({{kib-pull}}234278).
 * Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
 * Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
