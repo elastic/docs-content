@@ -33,7 +33,8 @@ For a comparison of these deployment options, refer to [Choosing your deployment
 
 This section focuses on deploying {{es}} and {{kib}} without an orchestrator.
 
-Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash. Deploying those components is not covered in this section. [Learn more about optional components](/get-started/the-stack.md).
+Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash.
+Deploying those components is not covered in this section. [Learn more about optional components](/get-started/the-stack.md).
 
 This section covers the following tasks:
 
