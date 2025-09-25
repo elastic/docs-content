@@ -77,7 +77,7 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
-### For Podman-based installations: Disabling the Podman-related services [ece-perform-host-maintenance-podman-disable]
+### For Podman-based installations: disable the Podman-related services [ece-perform-host-maintenance-podman-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Podman related services. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
