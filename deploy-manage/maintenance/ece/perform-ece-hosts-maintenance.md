@@ -31,7 +31,7 @@ Which method you choose depends on how invasive your host maintenance needs to b
 
 The way that you disable container services differs based on the platform you used to deploy your ECE hosts.
 
-### For Docker-based installations: Disabling the Docker service [ece-perform-host-maintenance-docker-disable]
+### For Docker-based installations: disable the Docker service [ece-perform-host-maintenance-docker-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
