@@ -62,7 +62,7 @@ In {{ech}} (ECH) and {{ece}} (ECE), the remote clusters functionality interacts 
 
 This section explains how remote clusters interact with network security when using API key–based authentication, and describes the supported use cases.
 
-### Filter types for remote clusters traffic
+### Filter types for remote cluster traffic
 
 With API key–based authentication, remote clusters require the local cluster (A) to trust the transport SSL certificate presented by the remote cluster server (B). When network security is enabled on the destination cluster (B), it’s also necessary to explicitly allow the incoming traffic from cluster A. This can be achieved using different types of traffic filters:
 
