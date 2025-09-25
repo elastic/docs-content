@@ -92,9 +92,9 @@ Select one of the following methods to install {{agent}}:
 
 * **Kubernetes**
 * **Docker**
+* **Linux**
 <!-- Not applicable for private preview
-* Linux
-* Windows
+* **Windows**
 -->
 
 :::{important} 
@@ -204,7 +204,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available cloud service providers and regions.
+* **Metrics storage location**: Select where to store your metrics data from the list of available regions.
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
@@ -220,8 +220,8 @@ The wizard will generate an installation command based on your configuration. De
 * Docker
     * Docker
     * Docker compose
-<!-- Not applicable for private preview
 * Linux
+<!-- Not applicable for private preview
 * Windows
 -->
 
@@ -238,9 +238,9 @@ Complete the following steps to run the command:
     | --- | --- |
     | `AUTOOPS_OTEL_URL` | The {{ecloud}} URL to which {{agent}} ships data. The URL is generated based on the CSP and region you pick. <br> This URL shouldn't be edited. |
     | `AUTOOPS_ES_URL` | The URL {{agent}} uses to communicate with {{es}}. |
-    | `ELASTICSEARCH_READ_API_KEY` | The API key for API key authentication to access the cluster. It combines the `${id}:${api_key}` values. <br> This variable shouldn't be used with `ELASTICSEARCH_READ_USERNAME` and `ELASTICSEARCH_READ_PASSWORD`. |
-    | `ELASTICSEARCH_READ_USERNAME` | The username for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_PASSWORD`. |
-    | `ELASTICSEARCH_READ_PASSWORD` | The password for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_USERNAME`. |
+    | `AUTOOPS_ES_API_KEY` | The API key for API key authentication to access the cluster. It combines the `${id}:${api_key}` values. <br> This variable shouldn't be used with `AUTOOPS_ES_USERNAME` and `AUTOOPS_ES_PASSWORD`. |
+    | `AUTOOPS_ES_USERNAME` | The username for basic authentication to access the cluster. <br> This variable should be used with `AUTOOPS_ES_PASSWORD`. |
+    | `AUTOOPS_ES_PASSWORD` | The password for basic authentication to access the cluster. <br> This variable should be used with `AUTOOPS_ES_USERNAME`. |
     | `ELASTIC_CLOUD_CONNECTED_MODE_API_KEY` | The {{ecloud}} API Key used to register the cluster. <br> This key shouldn't be edited. |
     | `AUTOOPS_TEMP_RESOURCE_ID` | The temporary ID for the current installation wizard. |
 

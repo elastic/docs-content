@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Configure advanced settings
 ---
 
-# Configure advanced settings [security-advanced-settings]
+# Configure advanced settings for {{elastic-sec}} [security-advanced-settings]
 
 The advanced settings control the behavior of the {{security-app}}, such as:
 

@@ -182,7 +182,6 @@ subs:
   stack-monitor-features:   "Elastic Stack monitoring features"
   watcher:   "Watcher"
   alert-features:   "alerting features"
-  reporting:   "X-Pack reporting"
   report-features:   "reporting features"
   graph-features:   "graph analytics features"
   searchprofiler:   "Search Profiler"
@@ -296,5 +295,5 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.6.3
+  kube-stack-version: 0.9.1
 
