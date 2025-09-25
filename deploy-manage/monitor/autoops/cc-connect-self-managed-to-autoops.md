@@ -107,7 +107,7 @@ To learn more about how AutoOps securely gathers data from your cluster, refer t
 
 Depending on your selected installation method, you may have to provide the following information to create the installation command:
 
-* **{{es}} endpoint URL**: Enter the URL for the cluster you want to connect to AutoOps.
+* **{{es}} endpoint URL**: Enter the URL for the {{es}} cluster you want to monitor by connecting to AutoOps.
 * **Preferred authentication method**: Choose one of the following:
 :::::{tab-set}
 :group: api-key-or-basic
@@ -206,7 +206,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available regions.
+* **Metrics storage location**: Select where to store your metrics data from the list of available AWS regions.
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
@@ -283,9 +283,9 @@ You can use the same installation command to connect multiple clusters, but each
 
 Complete the following steps to disconnect your cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
 
-1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. Based on your [installation method](#select-installation-method), complete the steps to stop {{agent}} from shipping metrics to {{ecloud}}.
-3. In the **Connected clusters** section, locate the cluster you want to disconnect.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
+3. On the **Connected clusters** page or the **Connected clusters** section of the home page, locate the cluster you want to disconnect.
 4. From that cluster’s actions menu, select **Disconnect cluster**.
 5. Enter the cluster’s name in the field that appears and then select **Disconnect cluster**.
 
