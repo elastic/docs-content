@@ -4,6 +4,9 @@ mapped_pages:
 navigation_title: Regions
 applies_to:
   deployment:
+    self:
+    ece:
+    eck:
     ess: all
 products:
   - id: cloud-hosted
