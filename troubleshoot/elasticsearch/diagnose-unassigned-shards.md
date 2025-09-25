@@ -45,7 +45,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 4. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
     ```console
-    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
+    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state&format=json
     ```
 
     The response will look like this:
