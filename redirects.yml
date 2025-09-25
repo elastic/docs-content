@@ -466,3 +466,5 @@ redirects:
   'solutions/observability/apm/collect-application-data.md': 'solutions/observability/apm/ingest/index.md'
   'solutions/observability/apm/jaeger.md': 'solutions/observability/apm/ingest/jaeger.md'
   'solutions/observability/apm/monitor-aws-lambda-functions.md': 'solutions/observability/apm/ingest/monitor-aws-lambda-functions.md'
+# Related to https://github.com/elastic/docs-content/pull/3142
+  'deploy-manage/deploy/self-managed/networkaddress-cache-ttl.md': 'deploy-manage/deploy/self-managed/important-settings-configuration.md'
