@@ -32,7 +32,7 @@ Proxy certificate
     After the certificates have been installed, connecting securely to {{es}}, {{kib}}, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
 
 Adminconsole certificate
-:   This certificate facilitates a secure connection to an alternative API port, which can be used in rare scenarios where the UI is unavailable. We recommend reusing the UI certificate for this purpose.
+:   This certificate facilitates a secure connection to an alternative API port, which can be used in rare scenarios where the UI is unavailable. We recommend using the same certificate as the one configured for the Cloud UI.
 
 
 ## Before you begin [ece_before_you_begin_7] 
