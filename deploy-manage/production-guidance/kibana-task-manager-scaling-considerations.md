@@ -156,7 +156,7 @@ For this reason, we recommend grouping tasks by _tasks per minute_ and _tasks pe
 
 It is highly recommended that you maintain at least 20% additional capacity, beyond your expected workload, as spikes in ad-hoc tasks is possible at times of high activity (such as a spike in actions in response to an active alert).
 
-Given the predicted workload, you can estimate a lower bound throughput of `2175/tpm` (`6/tpm` _ 300 + `0.05/tph` _ 300 + 20% buffer). As a default, a {{kib}} instance provides a throughput of `1200/tpm`. A good starting point for your deployment is to provision 2 {{kib}} instances. You could then monitor their performance and reassess as the required throughput becomes clearer.
+Given the predicted workload, you can estimate a lower bound throughput of `2175/tpm` (`6/tpm` \* 300 + `0.05/tph` \* 300 + 20% buffer). As a default, a {{kib}} instance provides a throughput of `1200/tpm`. A good starting point for your deployment is to provision 2 {{kib}} instances. You could then monitor their performance and reassess as the required throughput becomes clearer.
 
 Although this is a _rough_ estimate, the _tasks per minute_ provides the lower bound needed to execute tasks on time.
 
