@@ -30,7 +30,7 @@ New or updated versions of the {{stack}} must be prepared to work with {{ece}} a
 Enterprise Search is not available in versions 9.0+.
 :::
 
-The following are the most recently released {{stack}} packs for version 9.x, 8.x and 7.x, respectively:
+The following are the most recently released {{stack}} packs for version 9.x, 8.x, and 7.x, respectively:
 
 $$$ece-elastic-stack-stackpacks-recent$$$
 
