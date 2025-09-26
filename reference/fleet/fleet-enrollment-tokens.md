@@ -8,19 +8,27 @@ products:
 
 # Fleet enrollment tokens [fleet-enrollment-tokens]
 
-A {{fleet}} enrollment token (referred to as an `enrollment API key` in the {{fleet}} API documentation) is an {{es}} API key that you use to enroll one or more {{agent}}s in {{fleet}}. The enrollment token enrolls the {{agent}} in a specific agent policy that defines the data to be collected by the agent. You can use the token as many times as required. It will remain valid until you revoke it.
+A {{fleet}} enrollment token (referred to as an `enrollment API key` in the {{fleet}} API documentation) is an {{es}} API key that you use to enroll one or more {{agent}}s in {{fleet}}. The enrollment token enrolls the {{agent}} in a specific agent policy that defines the data to be collected by the agent and the output to use. You can use the token as many times as needed. It will remain valid until you revoke it.
 
-The enrollment token is used for the initial communication between {{agent}} and {{fleet-server}}. After the initial connection request from the {{agent}}, the {{fleet-server}} passes two API keys to the {{agent}}:
+The enrollment token is used for the initial communication between {{agent}} and {{fleet-server}}. After the initial connection request from the {{agent}}, the {{fleet-server}} passes a communication API key to the {{agent}}. This API key includes only the necessary permissions to communicate with the {{fleet-server}}. If the API key is invalid, {{fleet-server}} stops communicating with the {{agent}}.
 
-* An output API key
-
+Depending on the output of the agent policy with which the enrollment token is associated, the {{fleet-server}} also passes additional data to the {{agent}}:
+    
+* For the {{es}} and remote {{es}} outputs, it passes an output API key.
+    
     This API key is used to send data to {{es}}. It has the minimal permissions needed to ingest all the data specified by the agent policy. If the API key is invalid, the {{agent}} stops ingesting data into {{es}}.
 
-* A communication API key
+* For the Kafka output, it passes authentication parameters.
 
-    This API key is used to communicate with the {{fleet-server}}. It has only the permissions needed to communicate with the {{fleet-server}}. If the API key is invalid, {{fleet-server}} stops communicating with the {{agent}}.
+    The authentication parameters are defined in the authentication settings of the Kafka output and are used by the {{agent}} to connect to Kafka.
 
+* For the {{ls}} output, it passes SSL/TLS configuration details.
 
+    The SSL/TLS configuration details such as the SSL certificate authority, the SSL certificate, and the SSL certificate key are defined during the Logstash output creation and are used by the {{agent}} to connect to Logstash.
+
+:::{note}
+Although an API key is generated during the {{ls}} output creation, this key is not passed to the {{agent}} by the {{fleet-server}}.
+:::
 
 ## Create enrollment tokens [create-fleet-enrollment-tokens]
 
