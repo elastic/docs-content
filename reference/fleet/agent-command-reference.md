@@ -710,7 +710,7 @@ See the `--unprivileged` option and [Run {{agent}} without administrative privil
 
     Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
 
-    [preview] To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
+    {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
 
     For example:
 
@@ -1038,7 +1038,7 @@ Run {{agent}} without full superuser privileges. This is useful in organizations
 
 Note that changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
 
-[preview] To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
+{applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 
 
 ### Examples [_examples_19]
@@ -1049,13 +1049,13 @@ Run {{agent}} without administrative privileges:
 elastic-agent unprivileged
 ```
 
-[preview] Run {{agent}} without administrative privileges, as a pre-existing user:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` Run {{agent}} without administrative privileges, as a pre-existing user:
 
 ```shell
 elastic-agent unprivileged --user="my.pathl\username" --password="mypassword"
 ```
 
-[preview] Run {{agent}} without administrative privileges, as a pre-existing group:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` Run {{agent}} without administrative privileges, as a pre-existing group:
 
 ```shell
 elastic-agent unprivileged --group="my.pathl\groupname" --password="mypassword"

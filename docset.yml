@@ -27,6 +27,7 @@ cross_links:
   - cloud-on-k8s
   - curator
   - detection-rules
+  - docs-content
   - ecctl
   - ecs
   - ecs-dotnet
