@@ -18,7 +18,7 @@ Access these specialized tools in Kibana and the Serverless UI to develop, debug
 | [Console](tools/console.md) | Interact with the REST APIs of {{es}} and {{kib}}, including sending requests and viewing API documentation. |
 | [{{searchprofiler}}](tools/search-profiler.md) | Inspect and analyze your search queries. |
 | [Grok Debugger](tools/grok-debugger.md) | Build and debug grok patterns before you use them in your data processing pipelines. |
-| [Painless Lab](../scripting/painless-lab.md) | [beta] Test and debug Painless scripts in real-time. |
+| [Painless Lab](../scripting/painless-lab.md) | {applies_to}`stack: beta` {applies_to}`serverless: beta` Test and debug Painless scripts in real-time. |
 | [Playground](tools/playground.md) | Combine your Elasticsearch data with the power of large language models (LLMs) for retrieval augmented generation (RAG), using a chat interface. |
 
 
