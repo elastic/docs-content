@@ -1,4 +1,5 @@
 ---
+navigation_title: Keep track of deployment activity
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-activity-page.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Keep track of deployment activity [ece-activity-page]
+# Keep track of deployment activity on {{ece}} [ece-activity-page]
 
 The deployment **Activity** page gives you a convenient way to follow all configuration changes that have been applied to your deployment, including which resources were affected, when the changes were applied, who initiated the changes, and whether or not the changes were successful. You can also select **Details** for an expanded, step-by-step view of each change applied to each deployment resource.
 

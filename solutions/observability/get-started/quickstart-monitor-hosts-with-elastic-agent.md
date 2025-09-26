@@ -6,8 +6,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -179,3 +179,7 @@ For host monitoring, the following capabilities and features are recommended:
 
 
 Refer to the [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+
+## Manage your data [_manage_your_data]
+
+Now that you're ingesting data and using it gather insights, learn how to manage your [data lifecycle](/manage-data/lifecycle.md). These features in {{es}} allow you to govern how long your {{agent}} data is retained, and to tune performance by configuring background operations that optimize how your data is stored.

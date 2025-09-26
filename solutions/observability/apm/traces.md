@@ -1,16 +1,17 @@
 ---
+navigation_title: Traces
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-distributed-tracing.html
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-traces.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
 ---
 
-# Traces [apm-data-model-traces]
+# Traces in Elastic APM [apm-data-model-traces]
 
 A trace is a group of [transactions](/solutions/observability/apm/transactions.md) and [spans](/solutions/observability/apm/spans.md) with a common root. Each trace tracks the entirety of a single request. It describes the individual operations and their causality that ensue from a single logical operation.
 

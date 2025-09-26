@@ -18,10 +18,12 @@ In this introduction to [vector search](/solutions/search/vector.md), you’ll s
 
 ## Prerequisites for vector search
 
-- If you're using {{es-serverless}}, create a project with the general purpose configuration. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+- If you're using {{es-serverless}}, you must have a `developer` or `admin` predefined role or an equivalent custom role to add the sample data.
 - If you're using {{ech}} or a self-managed cluster, start {{es}} and {{kib}}. The simplest method to complete the steps in this guide is to log in with a user that has the `superuser` built-in role.
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+
+To learn about {{es-serverless}} project profiles, refer to [](dense-vector.md#vector-profiles).
 
 ## Create a vector database
 
@@ -43,7 +45,8 @@ Each document in our simple data set will have:
 * An embedding of that review: stored in a `review_vector` field, which is defined as a [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) data type.
 
 :::{tip}
-The `dense_vector` type automatically uses `int8_hnsw` quantization by default to reduce the memory footprint when searching float vectors. Learn how to balance performance and accuracy in [Dense vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization).
+The `dense_vector` type automatically uses quantization to reduce the memory footprint when searching float vectors.
+Learn more about the default quantization strategy and balancing performance and accuracy in [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 :::
 
 The following API request defines the `review_text` and `review_vector` fields:

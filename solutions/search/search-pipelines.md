@@ -2,7 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ingest-pipeline-search.html
 applies_to:
-  stack:
+  stack: ga
+  deployment:
+    ess: ga
 products:
   - id: elasticsearch
 ---
@@ -11,17 +13,17 @@ products:
 
 You can manage ingest pipelines through Elasticsearch APIs or Kibana UIs.
 
-The **Content** UI under **Search** has a set of tools for creating and managing indices optimized for search use cases (non-time series data). You can also manage your ingest pipelines in this UI.
+The **Pipelines** tab under **Build > Connectors** lets you manage the ingest pipeline used by the connector’s destination index. Here you can view the managed pipeline and adjust its settings. For general pipeline authoring, use **Stack Management > Ingest Pipelines.**
 
-## Find pipelines in Content UI [ingest-pipeline-search-where]
+## Find pipelines [ingest-pipeline-search-where]
 
-To work with ingest pipelines using these UI tools, you’ll be using the **Pipelines** tab on your search-optimized Elasticsearch index.
+To work with ingest pipelines using these UI tools, open the **Pipelines** tab.
 
 To find this tab in the Kibana UI:
 
-1. Go to **Search > Content > Elasticsearch indices**.
-2. Select the index you want to work with. For example, `search-my-index`.
-3. On the index’s overview page, open the **Pipelines** tab.
+1. Go to **Build > Connectors**.
+2. Select the connector you want to work with. For example, `azure-blob-storage`.
+3. On the conector’s page, open the **Pipelines** tab.
 4. From here, you can follow the instructions to create custom pipelines, and set up ML inference pipelines.
 
 The tab is highlighted in this screenshot:
@@ -37,17 +39,17 @@ These tools can be particularly helpful by providing a layer of customization an
 
 * providing consistent extraction of text from binary data types
 * ensuring consistent formatting
-* providing consistent sanitization steps (removing PII like phone numbers or SSN’s)
+* providing consistent sanitization steps (removing PII like phone numbers or SSNs)
 
 It can be a lot of work to set up and manage production-ready pipelines from scratch. Considerations such as error handling, conditional execution, sequencing, versioning, and modularization must all be taken into account.
 
-To this end, when you create indices for search use cases, (including web crawler, content connectors and API indices), each index already has a pipeline set up with several processors that optimize your content for search.
+To this end, when you create indices for search use cases, (including connectors and API indices), each index already has a pipeline set up with several processors that optimize your content for search.
 
 This pipeline is called `search-default-ingestion`. While it is a "managed" pipeline (meaning it should not be tampered with), you can view its details via the Kibana UI or the Elasticsearch API. You can also [read more about its contents below](#ingest-pipeline-search-details-generic-reference).
 
-You can control whether you run some of these processors. While all features are enabled by default, they are eligible for opt-out. For [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) and [connectors](elasticsearch://reference/search-connectors/index.md). , you can opt out (or back in) per index, and your choices are saved. For API indices, you can opt out (or back in) by including specific fields in your documents. [See below for details](#ingest-pipeline-search-pipeline-settings-using-the-api).
+You can control whether you run some of these processors. While all features are enabled by default, they are eligible for opt-out. For [connectors](elasticsearch://reference/search-connectors/index.md), you can opt out (or back in) per index, and your choices are saved. For API indices, you can opt out (or back in) by including specific fields in your documents. [See below for details](#ingest-pipeline-search-pipeline-settings-using-the-api).
 
-At the deployment level, you can change the default settings for all new indices. This will not effect existing indices.
+At the deployment level, you can change the default settings for all new indices. This will not affect existing indices.
 
 Each index also provides the capability to easily create index-specific ingest pipelines with customizable processing. If you need that extra flexibility, you can create a custom pipeline by going to your pipeline settings and choosing to "copy and customize". This will replace the index’s use of `search-default-ingestion` with 3 newly generated pipelines:
 
@@ -63,12 +65,12 @@ Like `search-default-ingestion`, the first of these is "managed", but the other 
 Aside from the pipeline itself, you have a few configuration options which control individual features of the pipelines.
 
 * **Extract Binary Content** - This controls whether or not binary documents should be processed and any textual content should be extracted.
-* **Reduce Whitespace** - This controls whether or not consecutive, leading, and trailing whitespaces should be removed. This can help to display more content in some search experiences.
+* **Reduce Whitespace** - This controls whether or not consecutive, leading, and trailing whitespace should be removed. This can help to display more content in some search experiences.
 * **Run ML Inference** - Only available on index-specific pipelines. This controls whether or not the optional `<index-name>@ml-inference` pipeline will be run. Enabled by default.
 
-For Elastic web crawler and connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. These settings can be changed there directly, or through the Kibana UI at **Search > Content > Indices > <your index> > Pipelines > Settings**.
+For connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. These settings can be changed there directly, or through the Kibana UI at **Build > Connectors > Available connectors > <your connector> > Pipelines > Settings**.
 
-You can also change the deployment wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Search > Content > Settings** tab. Changing the deployment wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
+You can also change the deployment-wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Build > Connectors > Configuration** page. Changing the deployment-wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
 
 
 ### Using the API [ingest-pipeline-search-pipeline-settings-using-the-api]
@@ -130,12 +132,12 @@ The `search-default-ingestion` pipeline does not always run all processors. It u
 * `_extract_binary_content` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `attachment`, `set_body`, and `remove_replacement_chars` processors. Note that the document will also need an `_attachment` field populated with base64-encoded binary data in order for the `attachment` processor to have any output. If the `_extract_binary_content` field is missing or `false` on a source document, these processors will be skipped.
 * `_reduce_whitespace` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `remove_extra_whitespace` and `trim` processors. These processors only apply to the `body` field. If the `_reduce_whitespace` field is missing or `false` on a source document, these processors will be skipped.
 
-Crawler, Native Connectors, and Connector Clients will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
+Connectors will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment-wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
 
 
 ### Index-specific ingest pipelines [ingest-pipeline-search-details-specific]
 
-In the Kibana UI for your index, by clicking on the Pipelines tab, then **Settings > Copy and customize**, you can quickly generate 3 pipelines which are specific to your index. These 3 pipelines replace `search-default-ingestion` for the index. There is nothing lost in this action, as the `<index-name>` pipeline is a superset of functionality over the `search-default-ingestion` pipeline.
+In the Kibana UI for your index, by clicking on the **Pipelines** tab, then **Copy and customize**, you can quickly generate 3 pipelines which are specific to your index. These 3 pipelines replace `search-default-ingestion` for the index. There is nothing lost in this action, as the `<index-name>` pipeline is a superset of functionality over the `search-default-ingestion` pipeline.
 
 ::::{important}
 The "copy and customize" button is not available at all Elastic subscription levels. Refer to the Elastic subscriptions pages for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [self-managed](https://www.elastic.co/subscriptions) deployments.
@@ -175,14 +177,14 @@ Like the `search-default-ingestion` pipeline, the `<index-name>` pipeline does n
 
 * `_run_ml_inference` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `index_ml_inference_pipeline` processor. If the `_run_ml_inference` field is missing or `false` on a source document, this processor will be skipped.
 
-Crawler, Native Connectors, and Connector Clients will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
+Connectors will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment-wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
 
 
 #### `<index-name>@ml-inference` Reference [ingest-pipeline-search-details-specific-ml-reference]
 
 This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the Pipelines tab of your index, or from the **Stack Management > Ingest Pipelines** page. Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
 
-It’s possible to add one or more ML inference pipelines to an index in the **Content** UI. This pipeline will serve as a container for all of the ML inference pipelines configured for the index. Each ML inference pipeline added to the index is referenced within `<index-name>@ml-inference` using a `pipeline` processor.
+It’s possible to add one or more ML inference pipelines to an index in the **Pipelines** tab. This pipeline will serve as a container for all of the ML inference pipelines configured for the index. Each ML inference pipeline added to the index is referenced within `<index-name>@ml-inference` using a `pipeline` processor.
 
 ::::{warning}
 You should not rename this pipeline.

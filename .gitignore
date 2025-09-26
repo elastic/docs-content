@@ -2,6 +2,10 @@
 .artifacts
 .DS_store
 
+# Jetbrains files
+.idea
+*.iml
+
 # Add LLM/AI related files
 AGENTS.md
 .github/copilot-instructions.md

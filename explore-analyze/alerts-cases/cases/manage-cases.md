@@ -1,4 +1,5 @@
 ---
+navigation_title: Open and manage cases
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Open and manage cases [manage-cases]
+# Open and manage cases in {{kib}} [manage-cases]
 
 To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case features in {{kib}}.
 
@@ -22,7 +23,7 @@ Open a new case to keep track of issues and share their details with colleagues.
    :screenshot:
    :::
 
-2. If you defined [templates](manage-cases-settings.md#case-templates), you can optionally select one to use its default field values. [preview]
+2. If you defined [templates](manage-cases-settings.md#case-templates), you can optionally select one to use its default field values.
 3. Give the case a name, severity, and description.
    ::::{tip}
    In the `Description` area, you can use [Markdown](https://www.markdownguide.org/cheat-sheet) syntax to create formatted text.
@@ -31,14 +32,10 @@ Open a new case to keep track of issues and share their details with colleagues.
 4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](setup-cases.md).
 5. If you defined any [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section.
 
-    :::{admonition} Added in 8.15.0
-    This functionality was added in 8.15.0.
-    :::
-
 6. For the **External incident management system**, select a connector. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
 7. After you’ve completed all of the required fields, click **Create case**.
 
-[preview] Alternatively, you can configure your rules to automatically create cases by using [case actions](kibana://reference/connectors-kibana/cases-action-type.md). By default, the rule adds all of the alerts within a specified time window to a single case. You can optionally choose a field to group the alerts and create separate cases for each group. You can also choose whether you want the rule to reopen cases or open new ones when the time window elapses.
+{applies_to}`stack: preview` {applies_to}`serverless: preview` Alternatively, you can configure your rules to automatically create cases by using [case actions](kibana://reference/connectors-kibana/cases-action-type.md). By default, the rule adds all of the alerts within a specified time window to a single case. You can optionally choose a field to group the alerts and create separate cases for each group. You can also choose whether you want the rule to reopen cases or open new ones when the time window elapses.
 
 ## Add email notifications [add-case-notifications]
 

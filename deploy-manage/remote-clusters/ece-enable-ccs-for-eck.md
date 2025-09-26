@@ -1,5 +1,5 @@
 ---
-navigation_title: With {{eck}}
+navigation_title: To {{eck}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs-for-eck.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Remote clusters between {{ece}} and ECK [ece-enable-ccs-for-eck]
+# Connect {{ece}} deployments to {{eck}} clusters [ece-enable-ccs-for-eck]
 
 These steps describe how to configure remote clusters between an {{es}} cluster in {{ece}} and an {{es}} cluster running within [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
