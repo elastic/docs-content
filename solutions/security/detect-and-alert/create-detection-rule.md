@@ -152,7 +152,12 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         You can also leave the **Group by** field undefined. The rule then creates an alert when the number of search results is equal to or greater than the threshold value. If you set **Count** to limit the results by `process.name` >= 2, an alert will only be generated for source/destination IP pairs that appear with at least 2 unique process names across all events.
 
         ::::{important}
-        Alerts created by threshold rules are synthetic alerts that do not resemble the source documents. The alert itself only contains data about the fields that were aggregated over (the **Group by** fields). Other fields are omitted, because they can vary across all source documents that were counted toward the threshold. Because of this, it isn’t possible to iterate on the search hits, so those aren’t available in the context. You can reference the actual count of documents that exceeded the threshold from the `kibana.alert.threshold_result.count` field. `context.alerts.kibana.alert.threshold_result.terms` contains fields and values from any group by specified by the rule. For example:
+        Alerts created by threshold rules are synthetic alerts that do not resemble the source documents:
+        
+          - The alert itself only contains data about the fields that were aggregated over (the **Group by** fields specified in the rule).
+          - All other fields are omitted and aren't available in the alert. This is because these fields can vary across all source documents that were counted toward the threshold. 
+          - You can reference the actual count of documents that exceeded the threshold from the `kibana.alert.threshold_result.count` field. 
+          - `context.alerts.kibana.alert.threshold_result.terms` contains fields and values from any **Group by** fields specified in the rule. For example:
         ```
           {{#context.alerts}}
             {{#kibana.alert.threshold_result.terms}}
