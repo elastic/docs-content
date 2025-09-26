@@ -14,7 +14,7 @@ products:
 
 # AutoOps regions [ec-autoops-regions]
 
-A region is where a cloud service provider's data center that hosts your deployments is located.
+A region is where a cloud service provider's data center hosts your deployments or clusters.
 
 ## AutoOps for {{ECH}} regions
 

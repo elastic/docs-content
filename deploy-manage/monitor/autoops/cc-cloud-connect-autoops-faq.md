@@ -16,7 +16,7 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 * [Does this feature require additional payment?](#additional-payment)
 * [Is there an added cost for shipping metrics data to {{ecloud}}?](#autoops-metrics-cost)
 * [Which versions of {{es}} does AutoOps support?](#es-versions)
-* [Which deployment types can be connected to AutoOps?](#deployment-types)
+* [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 
 **Questions about setting up**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
@@ -44,7 +44,7 @@ $$$autoops-metrics-cost$$$ **Is there an added cost for shipping metrics data to
 $$$es-versions$$$ **Which versions of {{es}} does AutoOps support?**
 :   AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.co/support/eol).
 
-$$$deployment-types$$$ **Which deployment types can be connected to AutoOps?**
+$$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
 
 ## Questions about setting up

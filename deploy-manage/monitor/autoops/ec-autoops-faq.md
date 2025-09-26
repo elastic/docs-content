@@ -15,8 +15,8 @@ Here are answers to some common questions about AutoOps.
 $$$faq-what-is-autoops$$$What does AutoOps do?
 :   AutoOps for {{es}} significantly simplifies cluster management with performance recommendations, resource utilization and cost insights, real-time issue detection and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver savings in administration time and hardware costs.
 
-$$$faq-autoops-availability$$$Will AutoOps be available for {{serverless-full}} and self-hosted users?
-:   AutoOps will be available for {{serverless-full}} and self-hosted customers with a different set of capabilities in the future.
+$$$faq-autoops-deployment-types$$$Is AutoOps available in all types of deployments?
+:   AutoOps is available in all {{ech}} deployments and {{serverless-full}} projects, and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
 
 $$$faq-autoops-monitoring$$$Does AutoOps monitor the entire {{stack}}?
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash, and Beats).
@@ -25,7 +25,9 @@ $$$faq-autoops-supported-versions$$$What versions of {{es}} are supported for {{
 :   AutoOps supports {{es}} versions according to the [supported {{stack}} versions](https://www.elastic.co/support/eol).
 
 $$$faq-autoops-license$$$How is AutoOps currently licensed?
-:   AutoOps' current feature set is available to {{ech}} customers at all subscription tiers. For more information, refer to the [subscription page](https://www.elastic.co/subscriptions/cloud).
+:   Using AutoOps for {{ech}} deployments is available at all [subscription tiers](https://www.elastic.co/subscriptions/cloud).
+    :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+    ::: 
 
 $$$faq-autoops-installation$$$How does AutoOps get installed and why may I not see AutoOps available on specific deployments?
 :   AutoOps is automatically applied to {{es}} clusters on {{ecloud}}, rolling out in phases across CSPs and regions. Read more about AutoOps [regions](ec-autoops-regions.md).
