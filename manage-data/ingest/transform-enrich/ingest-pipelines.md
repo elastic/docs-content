@@ -460,6 +460,7 @@ PUT _ingest/pipeline/my-pipeline
 2. The logic for resolving field paths used by processors to read and write values to ingest documents is based on the access pattern. 
 
 ### Classic field access pattern [access-source-pattern-classic]
+
 The `classic` access pattern is the default access pattern that has been around since ingest node first released. Field paths given to processors (e.g. `event.tags.ingest.processed_by`) are split on the dot character (`.`). The processor then uses the resulting field names to traverse the document until a value is found. When writing a value to a document, if its parent fields do not exist in the source, the processor will create nested objects for the missing fields.
 
 ```console
