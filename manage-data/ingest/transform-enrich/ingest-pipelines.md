@@ -388,7 +388,7 @@ PUT _ingest/pipeline/my-pipeline
 Use dot notation to access object fields.
 
 ::::{important}
-If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them. If you wish to maintain your document structure, use the [`flexible`](ingest-pipelines.md#access-source-flexible) access pattern in your pipeline definition. Otherwise Ingest processors cannot access dotted field names.
+If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them. If you wish to maintain your document structure, use the [`flexible`](ingest-pipelines.md#access-source-pattern-flexible) access pattern in your pipeline definition. Otherwise Ingest processors cannot access dotted field names.
 ::::
 
 
@@ -431,7 +431,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-## Flexible field access pattern [access-source-flexible]
+## Ingest field access pattern [access-source-pattern]
 ```{applies_to}
 serverless: ga
 stack: ga 9.2
@@ -439,7 +439,7 @@ stack: ga 9.2
 
 The default ingest pipeline access pattern does not recognize dotted field names in documents. Retrieving flattened and dotted field names from an ingest document requires a different field retrieval algorithm that does not have this limitation. We know that some pipelines have come to rely on these dotted field name limitations in their logic. In order to continue supporting the original behavior while still adding support for dotted field names, ingest pipelines now support configuring an access pattern to use for all processors in the pipeline.
 
-The `field_access_pattern` property on an ingest pipeline defines how ingest document fields are read and written for all processors in the current pipeline. It accepts two values: `classic` and `flexible`.
+The `field_access_pattern` property on an ingest pipeline defines how ingest document fields are read and written for all processors in the current pipeline. It accepts two values: `classic` (which is the default) and `flexible`.
 
 ```console
 PUT _ingest/pipeline/my-pipeline
@@ -459,6 +459,7 @@ PUT _ingest/pipeline/my-pipeline
 1. All processors in this pipeline will use the `classic` access pattern.
 2. The logic for resolving field paths used by processors to read and write values to ingest documents is based on the access pattern. 
 
+### Classic field access pattern [access-source-pattern-classic]
 The `classic` access pattern is the default access pattern that has been around since ingest node first released. Field paths given to processors (e.g. `event.tags.ingest.processed_by`) are split on the dot character (`.`). The processor then uses the resulting field names to traverse the document until a value is found. When writing a value to a document, if its parent fields do not exist in the source, the processor will create nested objects for the missing fields.
 
 ```console
@@ -563,6 +564,8 @@ If the documents you are ingesting contain dotted field names, to read them with
 }
 ```
 If the `event.tags` field was processed with the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor, the field values would collide. The `http.host` field cannot be a text value and an object value at the same time.
+
+### Flexible field access pattern [access-source-pattern-flexible]
 
 The `flexible` access pattern allows for ingest pipelines to access both nested and dotted field names without using the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor. Additionally, when writing a value to a field that does not exist, any parent fields that are missing are concatenated to the start of the new key. Use the `flexible` access pattern if your documents have dotted field names, and also if you prefer to write missing fields to the document with dotted names.
 
