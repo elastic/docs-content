@@ -388,7 +388,7 @@ PUT _ingest/pipeline/my-pipeline
 Use dot notation to access object fields.
 
 ::::{important}
-If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them. If you wish to maintain your document structure, use the [`flexible`](ingest-pipelines.md#access-source-flexible) access pattern in your pipeline definition. Ingest processors cannot access dotted field names otherwise. 
+If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them. If you wish to maintain your document structure, use the [`flexible`](ingest-pipelines.md#access-source-flexible) access pattern in your pipeline definition. Otherwise Ingest processors cannot access dotted field names.
 ::::
 
 
