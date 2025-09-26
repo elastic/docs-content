@@ -2,8 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-faq.html
 applies_to:
+  serverless:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
 ---
