@@ -152,7 +152,7 @@ Create and share JSON files for workpads.
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]
 
-* [beta] **Share on a website** — Download and securely share **Canvas** workpads on any website.
+* {applies_to}`stack: beta` {applies_to}`serverless: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
 * **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
 
 ::::{note}
@@ -164,8 +164,12 @@ For {{ech}} deployments, {{kib}} instances require a minimum of 2GB RAM to gener
 
 
 ## Share workpads on a website [add-workpad-website]
+```{applies_to}
+stack: beta
+serverless: beta
+```
 
-[beta] Create and securely share static **Canvas** workpads on a website. To customize the behavior of the workpad on your website, you can choose to autoplay the pages or hide the workpad toolbar.
+Create and securely share static **Canvas** workpads on a website. To customize the behavior of the workpad on your website, you can choose to autoplay the pages or hide the workpad toolbar.
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.

@@ -23,6 +23,19 @@ Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3
 **Impact**
 
 After upgrading to 9.1.0 and later, some users may experience inconsistent results when applying filters to the Alerts page. 
+
+**Workaround**
+
+You can turn off the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings), which only applies to the current space. However, turning off this setting might prevent dashboards and visualizations with applied filters from displaying properly. If you have important dashboards that this will impact, you can temporarily move them to a new space by doing the following: 
+
+1. Create a [new space](/deploy-manage/manage-spaces.md#spaces-managing). 
+2. Turn on the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings) so that filters  apply to visualizations only if the index contains the filtering field. 
+3. Use the [import saved objects tool](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) to move the dashboards or visualizations to the space you just created. 
+
+:::{note}
+Ensure you give any users who will need access to the new space the appropriate permissions. 
+:::
+
 :::
 
 :::{dropdown} The {{elastic-agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`

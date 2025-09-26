@@ -183,9 +183,12 @@ The following examples provide a `tolerations` config that you can add to the He
 Some {{k8s}} clusters are configured with hardened security add-ons to limit the blast radius of exploited application vulnerabilities. Different hardening methodologies can impair Universal Profiling Agent operations and may, for example, result in pods continuously restarting after displaying a `CrashLoopBackoff` status.
 
 
-#### {{k8s}} PodSecurityPolicy ([deprecated](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/)) [profiling-kubernetes-podsecuritypolicy]
+#### {{k8s}} PodSecurityPolicy [profiling-kubernetes-podsecuritypolicy]
+```{applies_to}
+stack: deprecated
+```
 
-This {{k8s}} API has been deprecated, but some still use it. A PodSecurityPolicy (PSP) may explicitly prevent the execution of `privileged` containers across the entire cluster.
+This {{k8s}} API [has been deprecated](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/), but some still use it. A PodSecurityPolicy (PSP) may explicitly prevent the execution of `privileged` containers across the entire cluster.
 
 Since Universal Profiling Agent *needs* privileges in most kernels/CRI, you need to build a PSP to allow the Universal Profiling Agent DaemonSet to run.
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: View and manage alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# View and manage alerts [observability-view-alerts]
+# View and manage alerts in Elastic Observability [observability-view-alerts]
 
 ::::{note}
 
@@ -63,6 +64,22 @@ To view the alert in the app that triggered it:
 
 * From the alert detail flyout, click **View in app**.
 * From the **Alerts** table, click the {icon}`eye` icon.
+
+## Review related alerts [observability-view-alerts-find-related-alerts]
+```{applies_to}
+stack: ga 9.1 
+```
+
+Check related alerts to find other alerts that might be related to the same incident. You can add these alerts to a case and investigate them as a group instead of analyzing them individually.
+
+To find related alerts, go to the **Related alerts** tab from an alert's details page. Within the table, alerts are ordered from most to least relevant. To only view alerts that were created around the same time as the current alert (+/- 30 minutes), apply the **Triggered around the same time** filter.
+
+The relevancy of alerts is determined by how closely they match the current alert and other similiarites that they might share:
+
+1. Alerts in the space are filtered down to only include alerts that were created about one day before or after the current alert. 
+2. Data from the new subset of alerts is compared against the current alert to identify matching values and similarities. Data such as the time at which alerts were generated or recovered, tags added to the alerts, group values, and more are evaluated.
+3. Alerts are scored based on how closely they match the current alert. Alerts with a score above a certain threshold are considered relevant and are included in the list of related alerts.
+
 
 ## Understand alert statuses [observability-view-alerts-understand-statuses]
 

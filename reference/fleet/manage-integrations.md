@@ -47,15 +47,6 @@ The **Integrations** app in {{kib}} needs access to the public {{package-registr
 
 ::::
 
-
-
-
-
-
-
-
-
-
-
-
-
+:::{tip}
+Once you've started using integrations to ingest data, you can customize how that data is managed over time. Refer to [Index lifecycle management](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.
+:::

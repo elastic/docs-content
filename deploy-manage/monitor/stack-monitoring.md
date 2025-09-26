@@ -89,7 +89,7 @@ Most of these methods require that you configure monitoring of {{es}} before mon
     * [Packetbeat](beats://reference/packetbeat/monitoring.md)
     * [Winlogbeat](beats://reference/winlogbeat/monitoring.md)
 
-* [**APM Server**](/solutions/observability/apm/monitor-apm-server.md)
+* [**APM Server**](/solutions/observability/apm/apm-server/monitor.md)
 
 * **{{agent}}s**:
   * [{{fleet}}-managed {{agent}}s](/reference/fleet/monitor-elastic-agent.md)
