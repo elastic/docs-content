@@ -7,8 +7,6 @@ applies_to:
 ---
 
 :::{warning}
-WIP
-
 These pages are hidden from the docs TOC and have `noindexed` meta headers.
 :::
 
@@ -18,7 +16,8 @@ These APIs allow you to programmatically work with the {{agent-builder}} abstrac
 
 ## API reference
 
-For the full API documentation, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/).
+For the full API documentation, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).
+% TODO: Update link once page is live
 
 ## Using the APIs
 
