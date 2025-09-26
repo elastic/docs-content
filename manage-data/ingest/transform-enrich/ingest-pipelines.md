@@ -624,7 +624,7 @@ POST /_ingest/pipeline/_simulate
                 "bar": "baz" <1>
               },
               "a": {
-                "b.c,d": "baz" <2>
+                "b.c.d": "baz" <2>
               }
             },
             "_ingest": {
