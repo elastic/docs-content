@@ -97,7 +97,7 @@ It might take some time for the DNS records to be updated and propagated in the 
 ::::
 
 ::::{note}
-After the domain has been claimed by your organization, you can safely remove the TXT record from your DNS provider settings. This can be useful, particularly if you want to claim the same domain across multiple Elastic Cloud organizations.
+After the domain has been claimed by your organization, you can safely remove the TXT record from your DNS provider settings. You must remove this record if you want to claim the same domain in additional {{ecloud}} organizations.
 ::::
 
 ### Step 2: Register a SAML IdP [ec-saml-sso-register-idp]
