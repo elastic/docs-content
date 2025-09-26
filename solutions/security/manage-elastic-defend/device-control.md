@@ -10,29 +10,36 @@ products:
 
 # Device control
 
-Device control helps protect your organization from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external storage devices—such as USB drives and hard drives—can connect to endpoints that have {{elastic-defend}} installed. You can select which
+Device control helps protect your organization from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to endpoints that have {{elastic-defend}} installed.  You can also create Trusted Devices to define exceptions to your policy for specific devices. 
 
 
 ## Configure Device Control for your hosts using {{elastic-defend}} 
 
-To configure Device Control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. 
+To configure Device Control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. Your policy specifies which operations (read, write, or execute) these devices are allowed to take on a host.
 
-:::{note}
-By default, new {{elastic-defend}} policies have Device Control enabled, with all device types set to **Block**. {{elastic-defend}} policies that existed before Device Control was supported have Device Control disabled by default. 
-:::
+By default, new {{elastic-defend}} policies have Device Control enabled, with all operations set to **Block**. {{elastic-defend}} policies that existed before Device Control was supported have Device Control disabled by default. 
 
 
 ## Add Trusted Devices to specify which devices are exempt from Device Control
 
-Trusted Devices are specific external devices that can connect to your protected hosts regardless of Device Control settings. Use Trusted Devices to avoid interfering with expected workflows that involve known hardware. Trusted Devices can apply to a specific policy, or globally to all policies. 
+Trusted Devices are specific external devices that are allowed to connect to your protected hosts regardless of Device Control settings. Use Trusted Devices to avoid interfering with expected workflows that involve known hardware. Trusted Devices can apply to a specific policy, or globally to all policies. 
 
-Add a Trusted Device to a single policy:
-
-1. Navigate to the {{elastic-defend}} policy for which you want to create a Trusted Device.
-2. Go to the **Trusted Devices** tab, and click **Assign trusted devices to policy**.
-3. 
-
-Add a Trusted Device globally:
+### Create a new Trusted Device
 
 1. Go to the **Trusted Devices** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **+ Add trusted device**. The Add trusted application flyout opens.
+2. Click **+ Add trusted device**. The Add trusted device flyout opens.
+3. Name your trusted device and give it a description. 
+4. In the **Conditions** section, specify the operating system and the `Device ID`. 
+5. Select either **Global** or **Per policy**.
+6. Click **Add trusted device**.
+
+### Add a Trusted Device to a policy
+
+1. Navigate to the {{elastic-defend}} policy to which you want to add a Trusted Device.
+2. Go to the **Trusted Devices** tab, and click **Assign trusted devices to policy**.
+3. Next, select one or more existing trusted devices, then click **+ Assign trusted devices to policy**.
+
+
+## View the Device Control dashboard
+
+By default, your {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has Device Control enabled, the dashboard displays data about attempted device connections and their outcomes.
