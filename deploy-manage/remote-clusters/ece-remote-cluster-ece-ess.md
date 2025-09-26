@@ -15,9 +15,9 @@ products:
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
 
 ::::{note}
-* [Network security](../security/network-security.md) policies are not supported for cross-cluster operations from an {{ece}} environment to a remote {{ech}} deployment when using the API key–based authentication model.
-
-* If you configure remote clusters with the deprecated TLS certificate–based authentication model, connections work regardless of network security policies on the remote deployment.  
+[Network security](../security/network-security.md) with [remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md) isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment when using the API key–based authentication model. For this use case, consider one of the following options:
+  * Disable network security in the remote cluster.
+  * Use an [IP filter network security policy](/deploy-manage/security/ip-filtering-cloud.md).
 
 For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
 ::::

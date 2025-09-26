@@ -10,19 +10,25 @@ sub:
 
 # Remote cluster filtering
 
-In {{ech}} (ECH) and {{ece}} (ECE), remote cluster filters let you control incoming traffic from other deployments that use the [remote clusters functionality](/deploy-manage/remote-clusters.md) with API key–based authentication. These filters are specific to ECH and ECE and are not applicable when connecting from {{es}} clusters that run in {{eck}} or are self-managed, because they rely on the certificates and proxy mechanisms provided by ECH and ECE.
+In {{ech}} (ECH) and {{ece}} (ECE), remote cluster filters let you control incoming traffic from other deployments that use the [remote clusters functionality](/deploy-manage/remote-clusters.md) with API key–based authentication. These filters are specific to ECH and ECE, because they rely on the certificates and proxy mechanisms provided by these environments.
 
 ::::{note} about terminology
 In the case of remote clusters, the {{es}} cluster or deployment initiating the connection and requests is often referred to as the **local cluster**, while the {{es}} cluster or deployment receiving the requests is referred to as the **remote cluster**.
 ::::
+
+::::{important}
+Remote cluster filters aren’t supported when the local cluster runs in {{eck}} or is self-managed, or when connecting from an {{ece}} cluster to a remote {{ech}} deployment. For these cases, use an [IP filter](./ip-filtering-cloud.md) instead.
+
+Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security) for more information about the remote clusters functionality, its relationship to network security, and the supported [use cases](/deploy-manage/remote-clusters.md#use-cases-network-security).
+::::
+
+## How remote cluster filters work
 
 Remote cluster filters operate at the proxy level, filtering incoming connections based on the organization ID or {{es}} cluster ID of the local cluster that initiates the connection to the remote cluster service endpoint (default port `9443`).
 
 Because of [how network security works](/deploy-manage/security/network-security.md#how-network-security-works), these filters are only relevant when network security is enabled on the remote cluster.
 * If network security is disabled, all traffic is allowed by default and remote clusters work without any filtering policy.
 * If network security is enabled, all traffic is blocked unless explicitly allowed. In this case, you must add a remote cluster filter in the remote cluster to permit remote cluster connections from the local clusters.
-
-Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security) for more information about the remote clusters functionality, its relationship to network security, and the supported use cases.
 
 To apply a filter to a deployment, you must first create a security policy at the organization or platform level, and then apply it to your deployment.
 

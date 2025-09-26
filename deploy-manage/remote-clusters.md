@@ -78,25 +78,9 @@ With API key–based authentication, remote clusters require the local cluster (
   * Local and remote clusters are {{ece}} deployments in the same ECE environment
   * Local and remote clusters are {{ece}} deployments in different ECE environments
   * The local deployment is on {{ech}} and the remote deployment is on an {{ece}} environment
+
     ::::{note}
-    Network security isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
+    Network security with remote cluster filters isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment. For this use case, consider disabling network security on the remote cluster or use an IP filter instead.
     ::::
 
 [IP filters](/deploy-manage/security/ip-filtering.md) are the only option for applying network security when the local deployment is a self-managed or an {{eck}} cluster, and the remote is on {{ece}} or {{ech}}.
-
-### (option 2) Use cases for remote clusters and network security [use-cases-network-security2]
-
-Network security can be used to control remote cluster traffic in the following scenarios. The supported filter depends on the deployment types involved:
-
-| Scenario                                                                                  | Supported filter                                                                 |
-|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| Local and remote clusters are ECH deployments in the same organization                | [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md)     |
-| Local and remote clusters are ECH deployments in different organizations              | [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md)     |
-| Local and remote clusters are ECE deployments in the same environment                 | [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md)     |
-| Local and remote clusters are ECE deployments in different environments               | [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md)     |
-| The local deployment is on ECH and the remote deployment is on an ECE environment | [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md)     |
-| Local deployment is self-managed or orchestrated by ECK                               | [IP filters](/deploy-manage/security/ip-filtering.md)                             |
-
-::::{note}
-Network security isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
-::::
