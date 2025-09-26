@@ -34,7 +34,53 @@ Depending on the environment the local and remote clusters are deployed on and t
 
 Find the instructions with details on the supported security models and available connection modes for your specific scenario:
 
-- [Remote clusters with {{ech}}](remote-clusters/ec-enable-ccs.md)
-- [Remote clusters with {{ece}}](remote-clusters/ece-enable-ccs.md)
-- [Remote clusters with {{eck}}](remote-clusters/eck-remote-clusters.md)
-- [Remote clusters with self-managed installations](remote-clusters/remote-clusters-self-managed.md)
+- [Remote clusters on {{ech}}](remote-clusters/ec-enable-ccs.md)
+- [Remote clusters on {{ece}}](remote-clusters/ece-enable-ccs.md)
+- [Remote clusters on {{eck}}](remote-clusters/eck-remote-clusters.md)
+- [Remote clusters on self-managed installations](remote-clusters/remote-clusters-self-managed.md)
+
+## Remote clusters and network security [network-security]
+```{applies_to}
+deployment:
+  ece: ga
+  ess: ga
+```
+
+In {{ech}} (ECH) and {{ece}} (ECE), the remote clusters functionality interacts with [network security](/deploy-manage/security/network-security.md) traffic filtering rules in different ways, depending on the [security model](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#remote-clusters-security-models) you use.
+
+* **TLS certificate–based authentication (deprecated):**
+  For remote clusters configured using the TLS certificate–based security model, network security policies or rule sets have no effect on remote clusters functionality. Connections established with this method (mTLS) are already considered secure and are always accepted, regardless of any filtering policies or rule sets applied on the local or remote deployment to restrict other traffic.
+
+* **API key–based authentication (recommended):**
+  When remote clusters use the API key–based authentication model, network security policies or rule sets on the **destination (remote) deployment** do affect remote cluster functionality if enabled. In this case, you can use traffic filters to explicitly control which deployments are allowed to connect to the remote cluster service endpoint.
+
+  ::::{note}
+  Because of [how network security works](/deploy-manage/security/network-security.md#how-network-security-works):
+    * If network security is disabled, all traffic is allowed by default, and remote clusters work without requiring any specific filtering policy.
+    * If network security is enabled on the remote cluster, apply a [remote cluster filter](/deploy-manage/security/remote-cluster-filtering.md#create-remote-cluster-filter) to allow incoming connections from the local clusters. Without this filter, the connections are blocked.
+  ::::
+
+This section explains how remote clusters interact with network security when using API key–based authentication, and describes the supported use cases.
+
+### Filter types for remote cluster traffic
+
+With API key–based authentication, remote clusters require the local cluster (A) to trust the transport SSL certificate presented by the remote cluster server (B). When network security is enabled on the destination cluster (B), it’s also necessary to explicitly allow the incoming traffic from cluster A. This can be achieved using different types of traffic filters:
+
+* [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md), which allow filtering by organization ID or {{es}} cluster ID. This method is more reliable and recommended, as it combines mTLS with API key authentication for stronger security. These filters are specific to ECH and ECE, because they rely on the certificates and proxy mechanisms provided by ECH and ECE.
+
+* [IP filters](/deploy-manage/security/ip-filtering.md), which allow traffic based on IP addresses or CIDR ranges. These can be difficult to manage in orchestrated environments, where the source IP of individual {{es}} instances may change.
+
+### Use cases for remote clusters and network security [use-cases-network-security]
+
+[Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md) are supported to control remote cluster traffic in the following scenarios:
+  * Local and remote clusters are {{ech}} deployments in the same organization
+  * Local and remote clusters are {{ech}} deployments in different organizations 
+  * Local and remote clusters are {{ece}} deployments in the same ECE environment
+  * Local and remote clusters are {{ece}} deployments in different ECE environments
+  * The local deployment is on {{ech}} and the remote deployment is on an {{ece}} environment
+
+    ::::{note}
+    Network security with remote cluster filters isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment. For this use case, consider disabling network security on the remote cluster or use an IP filter instead.
+    ::::
+
+[IP filters](/deploy-manage/security/ip-filtering.md) are the only option for applying network security when the local deployment is a self-managed or an {{eck}} cluster, and the remote is on {{ece}} or {{ech}}.
