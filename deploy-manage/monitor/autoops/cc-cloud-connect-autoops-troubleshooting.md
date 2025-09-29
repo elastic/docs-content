@@ -19,8 +19,7 @@ Use this guide to troubleshoot any issues you may encounter.
 * [I need to uninstall {{agent}}.](#unistall-agent)
 * [My cluster was disconnected from {{ecloud}} and I want to reconnect it.](#disconnected-cluster)
 * [After running the installation command, I can't move on to the next steps.](#next-steps)
-* [I'm running into issues connecting my self-managed cluster to my {{es}} cluster.](#es-cluster-connection-issues)
-* [I'm running into issues connecting my self-managed cluster to {{ecloud}}.](#cloud-connection-issues)
+* [My organization's firewall may be preventing {{agent}} from collecting and sending metrics.](#firewall)
 
 $$$single-cloud-org$$$**I’m trying to create a Cloud organization, but I’m already part of a different one.**
 :   :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
@@ -35,10 +34,47 @@ $$$disconnected-cluster$$$**My cluster was disconnected from {{ecloud}} and I wa
 $$$next-steps$$$**After running the installation command, I can't move on to the next steps.**
 :   If an error appears on the screen, follow the suggestion in the error message and try to run the command again. If the issue is not resolved, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
-$$$es-cluster-connection-issues$$$**I'm running into issues connecting my self-managed cluster to my {{es}} cluster.**
-:   You may be behind a corporate firewall. Run the connection steps within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the    container, and so on. 
+$$$firewall$$$**My organization's firewall may be preventing {{agent}} from collecting and sending metrics.**
+:   If you suspect that a corporate firewall is hindering {{agent}}, complete the following steps to test each component of the connection and implement an appropriate solution. 
 
-    Depending on your chosen authentication method, run the following command:
+    :::{tip}
+    Run the following tests within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the container, and so on. 
+    :::
+
+    There are three main components of {{agent}}'s connection with your system:
+
+    1. {{agent}} registers your cluster with {{ecloud}}
+    2. {{agent}} connects to your cluster
+    3. {{agent}} sends metrics from your cluster to {{ecloud}}
+
+    If there is an issue with the first component, the agent will stop working and your logs might look like: 
+    
+    `... failed to register Cloud Connected Mode: ... Post \"https://api.elastic-cloud.com/api/v1/cloud-connected/clusters\": ...`
+    
+    To test if your organization is not allowing the agent to register your cluster with {{ecloud}}, run the following command:
+
+    ```json
+    curl -XPOST -i \
+    https://api.elastic-cloud.com/api/v1/cloud-connected/clusters \
+    -H 'Content-Type: application/json' \
+    -d '{"self_managed_cluster": {"id": "my-cluster-uuid", "name": "my-cluster-name", "version": "9.1.0"}, "license": {"uid": "my-license-id", "type": "basic"}}'
+    ```
+    
+    The command should return an HTTP 401 response similar to: 
+
+    ```json
+          {"UnauthorizedMessages":["Invalid credential headers"],"Cause":null}
+    ```
+    If you do not receive a similar response, configure your HTTP proxy to allow it to reach the URL (with headers and a JSON body):
+    
+    ```json
+          POST https://api.elastic-cloud.com/api/v1/cloud-connected/clusters
+    ```
+    :::{note}
+    If you are using Docker, you may need to complete this configuration directly via the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
+    :::
+
+    If there is an issue with the second component, {{agent}} cannot connect to your cluster. To test if your organization is not allowing this connection, run the following command depending on your chosen authentication method:
 
     :::::{tab-set}
     :group: api-key-or-basic
@@ -47,7 +83,7 @@ $$$es-cluster-connection-issues$$$**I'm running into issues connecting my self-m
     :sync: api-key
     
     ```json
-curl -XGET -i $AUTOOPS_ES_URL \
+  curl -XGET -i $AUTOOPS_ES_URL \
   -H "Authorization: ApiKey $AUTOOPS_ES_API_KEY"
     ```
     ::::
@@ -56,14 +92,14 @@ curl -XGET -i $AUTOOPS_ES_URL \
     :sync: basic
     
     ```json
-curl -XGET -i $AUTOOPS_ES_URL \
+  curl -XGET -i $AUTOOPS_ES_URL \
   -u $AUTOOPS_ES_USERNAME
     ```
     ::::
     
     :::::
 
-    The command should return something similar to the following:
+    The command should return a response similar to:
 
     ```json
 {
@@ -84,9 +120,8 @@ curl -XGET -i $AUTOOPS_ES_URL \
   "tagline" : "You Know, for Search"
 }
     ```
-    However, if this request fails, your system will return an error indicating one or more reasons for failure as outlined in the table below. 
-    
-    Use the corresponding proposed solution to fix the issue.
+
+    If you do not receive a similar response, your system will return an error indicating one or more reasons for failure as outlined in the following table. Use the corresponding proposed solution to fix the issue.
 
     | Reason for failure | Proposed solution |
     | :--- | :--- |
@@ -95,48 +130,23 @@ curl -XGET -i $AUTOOPS_ES_URL \
     | Your username and/or password are incorrect | - Recheck for typos. <br> - Ensure that your provided user has the [necessary privileges](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#configure-agent). We do not recommend providing a privileged superuser like `elastic` for this purpose.|
     | You are providing both the API key and username/password | Choose one type of authentication only. |
     | A proxy is blocking communication with your {{es}} cluster | You may have to configure `NO_PROXY`. |
-    | You are connecting a local development cluster using Docker without specifying `--network host` | - Make sure you are following all the steps to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md#connect-your-local-development-cluster-to-autoops). <br> - In the [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) step, make sure you are replacing `docker run -d \` with `docker run -d --network host \`. |
     | You are using a custom SSL/TLS configuration with {{es}} | Disable SSL/TLS verification so that your system trusts all certificates. We do not recommend disabling verification in production environments. <br><br> If you are using API key authentication, run the following command: <br><br>`curl -XGET --insecure -i $AUTOOPS_ES_URL \ -H "Authorization: ApiKey $AUTOOPS_ES_API_KEY"`. <br><br> If you are using username/password authentication, run the following command: <br><br> `curl -XGET --insecure -i $AUTOOPS_ES_URL \ -u $AUTOOPS_ES_USERNAME` <br><br> If the issue is resolved, you need to configure your custom SSL/TLS settings with {{agent}}. If the issue persists, contact [Elastic support](https://support.elastic.co/).| 
-    
+    | You are connecting a local development cluster using Docker without specifying `--network host` | - Make sure you are following all the steps to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md#connect-your-local-development-cluster-to-autoops). <br> - In the [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) step, make sure you are replacing `docker run -d \` with `docker run -d --network host \`. |
 
-$$$cloud-connection-issues$$$**I'm running into issues connecting my self-managed cluster to {{ecloud}}.**
-:   You may be behind a corporate firewall. Run the connection steps within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the    container, and so on.
 
-    There are two parts of connecting your self-managed cluster to {{ecloud}}:
-  * Registering your cluster with {{ecloud}}
-  * Shipping data to {{ecloud}}
-
-    First, to register your cluster with {{ecloud}}, you need to collect some basic information about your cluster and send it to {{ecloud}}. Run the following command:
+    If there is an issue with the third component, the agent will attempt to establish the connection and your logs might look like: 
+        
+    `... Exporting failed. Dropping data. ... no more retries left: failed to make an HTTP request: Post \"https://otel-collector.auto-ops.eu-west-1.aws.cloud.elastic.co:4318/v1/logs\": ...`
+        
+    To test if your organization is not allowing the agent to send metrics from your cluster to {{ecloud}}, run the following command. We will use AWS eu-west-1 as the CSP region, but you should replace it with your chosen CSP region before running the command.
 
     ```json
-    curl -XPOST -i \
-  https://api.elastic-cloud.com/api/v1/cloud-connected/clusters \
-  -H 'Content-Type: application/json' \
-  -d '{"self_managed_cluster": {"id": "my-cluster-uuid", "name": "my-cluster-name", "version": "9.1.0"}, "license": {"uid": "my-license-id", "type": "basic"}}'
-     ```
-  
-    The command should return an HTTP 401 response similar to the following: 
-
-    ```json
-        {"UnauthorizedMessages":["Invalid credential headers"],"Cause":null}
-    ```
-    If you do not receive a similar response, configure your HTTP proxy to allow it to reach the URL (with headers and a JSON body):
-    ```json
-        POST https://api.elastic-cloud.com/api/v1/cloud-connected/clusters
-    ```
-    :::{note}
-    If you are using Docker, you may need to complete this configuration directly via the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
-    :::
-
-    Next, to ship data to {{ecloud}}, your proxy must allow sending data to a specific URL. This URL depends on the [CSP region](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where you have chosen to store your data, and it may change in the future. The following command uses AWS eu-west-1 as an example. Replace the example with your chosen CSP region and run the command: 
-
-    ```json
-        curl -XPOST -i \
+  curl -XPOST -i \
   https://otel-collector.auto-ops.eu-west-1.aws.cloud.elastic.co:4318/v1/logs \
   -H 'Content-Type: application/json'
 
     ```
-    The command should return an HTTP 401 response similar to the following: 
+    The command should return an HTTP 401 response similar to: 
 
     ```json
       {"code":16,"message":"no auth provided"}
