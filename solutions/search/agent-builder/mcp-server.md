@@ -24,7 +24,7 @@ The MCP server is available at:
 {KIBANA_URL}/api/agent_builder/mcp
 ```
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#mcp-server-access).
+You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#copy-your-mcp-server-url).
 :::
 
 ## Configuring MCP clients
