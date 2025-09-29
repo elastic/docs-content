@@ -24,10 +24,10 @@ The chat GUI and programmatic interfaces enable real-time communication where yo
 Refer to the [getting started](get-started.md) guide to enable the feature and ingest some data.
 :::
 
-Once the feature is enabled, find **Agents** in the navigation menu to start chatting.
+Once the feature is enabled, find **Agents** in the navigation menu to begin chatting.
 You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-This will take you to the chat GUI:
+This takes you to the chat GUI:
 
 :::{image} images/agent-builder-chat-UI-get-started.png
 :::
@@ -37,7 +37,7 @@ This will take you to the chat GUI:
 
 ### Chat and select agent
 
-Use the text input area to chat with an agent in real time. By default, you'll be chatting with the built-in Elastic AI Agent.
+Use the text input area to chat with an agent in real time. By default, you chat with the built-in Elastic AI Agent.
 
 :::{image} images/agent-builder-chat-input.png
 :alt: Text input area for chatting with agents
@@ -55,7 +55,7 @@ Use the agent selector to switch agents, to navigate to the agent management sec
 
 ### Find conversation history
 
-The left sidebar shows your conversation history, so you can easily access all your conversations.
+Use the left sidebar to access previous conversations.
 
 :::{image} images/agent-builder-chat-history.png
 :alt: Chat history panel showing conversation list
