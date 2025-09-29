@@ -110,3 +110,15 @@ Click **Save** to create your agent, or **Save and chat** to create the agent an
 
 ::::
 :::::
+
+## Agents API
+
+The Agents API enables programmatic access to agent creation and management actions.
+
+### Quick overview
+
+For a quick overview of refer to [Agents API](kibana-api.md#agents).
+
+### Serverless API reference
+
+For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).

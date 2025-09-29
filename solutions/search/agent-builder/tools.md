@@ -147,7 +147,7 @@ If you didn't click **Save and test** immediately:
    - The tool executes without errors
    - Results are returned in the expected format
    - The data matches your expectations
-7. [Assign the tool to an agent](#assign-tools-to-agents)
+7. Now you can [assign the tool to an agent](#assign-tools-to-agents)
 
 :::{image} images/tool-testing.png
 :::
