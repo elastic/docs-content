@@ -28,7 +28,7 @@ You can use the built-in agent for natural language conversations with any {{es}
 
 ## Key concepts
 
-The {{agent-builder}} framework is built around several key components that work together to provide a flexible and powerful conversational experience.
+The {{agent-builder}} framework consists of three key components: Agent Chat, Agents, and Tools.
 
 ### Agent Chat
 
