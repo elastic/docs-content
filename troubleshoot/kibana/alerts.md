@@ -67,7 +67,7 @@ curl -X POST -k \
  -d '{"params":{"subject":"hallo","message":"hallo!","to":["me@example.com"]}}'
 ```
 
-[preview] In addition, there is a command-line client that uses legacy rule APIs, which can be easier to use, but must be updated for the new APIs. CLI tools to list, create, edit, and delete alerts (rules) and actions (connectors) are available in [kbn-action](https://github.com/pmuellr/kbn-action), which you can install as follows:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` In addition, there is a command-line client that uses legacy rule APIs, which can be easier to use, but must be updated for the new APIs. CLI tools to list, create, edit, and delete alerts (rules) and actions (connectors) are available in [kbn-action](https://github.com/pmuellr/kbn-action), which you can install as follows:
 
 ```txt
 npm install -g pmuellr/kbn-action
