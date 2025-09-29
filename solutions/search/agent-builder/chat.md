@@ -14,7 +14,7 @@ These pages are currently hidden from the docs TOC and have `noindexed` meta hea
 
 # {{agent-builder}}: Agent Chat
 
-**Agent Chat** is the synchronous chat interface for natural language conversations with your agents.
+**Agent Chat** is the synchronous chat interface for natural language conversations with your [agents](agent-builder-agents.md).
 
 The chat GUI and programmatic interfaces enable real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 

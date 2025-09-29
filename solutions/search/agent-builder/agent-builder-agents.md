@@ -24,6 +24,10 @@ When you ask a question to an agent, it analyzes your request to define a specif
 
 {{agent-builder}} includes a default agent (named `Elastic AI Agent`) with access to all built-in tools. You can create specialized agents with custom instructions and selected tools to address specific use cases or workflows.
 
+:::{note}
+The default `Elastic AI Agent` is immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning the default agent or creating a new one from scratch.
+:::
+
 ## Manage your agents
 
 The **Agents** page provides a centralized view of all your agents. From this page you can:
@@ -33,7 +37,7 @@ The **Agents** page provides a centralized view of all your agents. From this pa
 - Filter agents by labels using the **Labels** dropdown
 - Create new agents using the **+ New agent** button
 - Start chatting with an agent or perform other actions
-    - **Elastic AI Agent**: you can **chat** or **clone** the default agent using the chat or clone buttons.
+    - **Elastic AI Agent**: you can **chat** or **clone** the default agent using the chat or clone buttons. The default agent cannot be edited directly.
       :::{image} images/chat-and-clone-buttons.png
       :alt: Chat with agent and clone agent buttons
       :width: 120px
