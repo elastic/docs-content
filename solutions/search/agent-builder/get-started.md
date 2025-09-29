@@ -7,9 +7,9 @@ applies_to:
 ---
 
 :::{warning}
-WIP
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
 
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
 :::
 
 # Get started with {{agent-builder}}
@@ -69,7 +69,6 @@ If you're not ready to add your own data, you can use the Elastic [sample data](
 The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. {{agent-builder}} includes a default agent named `Elastic AI Agent` with access to all built-in tools, so you can start chatting immediately.
 
 Learn more in [Agent Chat](chat.md).
-
 
 ::::
 

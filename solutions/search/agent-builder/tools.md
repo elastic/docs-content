@@ -7,14 +7,14 @@ applies_to:
 ---
 
 :::{warning}
-WIP
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
 
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
 :::
 
 # Tools in {{agent-builder}}
 
-Agents use tools to search, retrieve, and take meaningful steps on your behalf.
+[Agents](agent-builder-agents.md) use tools to search, retrieve, and take meaningful steps on your behalf.
 
 Tools can be thought of as functions: modular, reusable actions that agents can call to interact with your {{es}} data.
 

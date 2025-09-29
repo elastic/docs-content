@@ -7,9 +7,7 @@ applies_to:
 ---
 
 :::{warning}
-WIP
-
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
 :::
 
 # {{agent-builder}} 
@@ -32,9 +30,9 @@ You can use the built-in agent for natural language conversations with any {{es}
 
 The {{agent-builder}} framework is built around several key components that work together to provide a flexible and powerful conversational experience.
 
-### Agent Chat UI
+### Agent Chat
 
-The **Agent Chat** UI is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
+**Agent Chat** is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
 [**Learn more about Agent Chat**](agent-builder/chat.md)
 

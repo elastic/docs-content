@@ -7,21 +7,20 @@ applies_to:
 ---
 
 :::{warning}
-WIP
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
 
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
 :::
 
 # {{agent-builder}}: Agents
 
-Agents engage in natural language conversations with users and interact with your {{es}} data through tools.
-Fundamentally, an agent is defined by its custom instructions and the set of tools it's assigned.
+Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
-Each agent manages the conversation flow, interprets user requests, and provides responses based on its configured tools, instructions, and behavior settings.
+An agent parses user requests to define a goal and then runs tools in a loop to achieve that goal. The agent provides responses based on its configured tools, instructions, and behavior settings.
 
 ## How agents work
 
-When you ask a question to an agent, it analyzes your request, selects the most appropriate tool, and determines the right arguments to use. After receiving results, the agent evaluates the information and decides whether to use additional tools or formulate a response. This iterative process of tool selection, execution, and analysis continues until the agent can provide a complete answer.
+When you ask a question to an agent, it analyzes your request to define a specific goal. It selects the most appropriate tool(s), and determines the right arguments to use. The agent evaluates the information returned after each action and decides whether to use additional tools or formulate a response. This iterative process of tool selection, execution, and analysis continues until the agent can provide a complete answer.
 
 {{agent-builder}} includes a default agent (named `Elastic AI Agent`) with access to all built-in tools. You can create specialized agents with custom instructions and selected tools to address specific use cases or workflows.
 

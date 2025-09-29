@@ -14,12 +14,9 @@ These pages are currently hidden from the docs TOC and have `noindexed` meta hea
 
 # Work with {{agent-builder}} using the APIs
 
+This page provides a quick overview of the main Kibana API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).
+
 These APIs allow you to programmatically work with the {{agent-builder}} abstractions.
-
-## API reference
-
-For the full API documentation, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).
-% TODO: Update link once page is live
 
 ## Using the APIs
 
@@ -53,7 +50,7 @@ To generate API keys, search for `API keys` in the [global search bar](/explore-
 
 ### Tools
 
-List all tools
+**Example:** List all tools
 ::::{tab-set}
 :group: api-examples
 
@@ -74,7 +71,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 ::::
 
-Create a tool
+**Example:** Create a tool
 ::::{tab-set}
 :group: api-examples
 
@@ -135,7 +132,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 ::::
 
-Get a tool by ID
+**Example:** Get a tool by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -156,7 +153,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
 
 ::::
 
-Delete a tool by ID
+**Example:** Delete a tool by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -178,7 +175,7 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
 
 ::::
 
-Update a tool by ID
+**Example:** Update a tool by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -235,7 +232,7 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/tools/{toolId}" \
 
 ::::
 
-Execute a tool
+**Example:** Execute a tool
 ::::{tab-set}
 :group: api-examples
 
@@ -272,7 +269,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ### Agents
 
-List all agents
+**Example:** List all agents
 ::::{tab-set}
 :group: api-examples
 
@@ -293,7 +290,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents" \
 
 ::::
 
-Create an agent
+**Example:** Create an agent
 ::::{tab-set}
 :group: api-examples
 
@@ -358,7 +355,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/agents" \
 
 ::::
 
-Get an agent by ID
+**Example:** Get an agent by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -379,7 +376,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 ::::
 
-Update an agent by ID
+**Example:** Update an agent by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -438,7 +435,7 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 ::::
 
-Delete an agent by ID
+**Example:** Delete an agent by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -462,7 +459,7 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 ### Chat and conversations
 
-Chat with an agent
+**Example:** Chat with an agent
 ::::{tab-set}
 :group: api-examples
 
@@ -492,7 +489,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
-Chat with an agent and stream events
+**Example:** Chat with an agent and stream events
 ::::{tab-set}
 :group: api-examples
 
@@ -525,7 +522,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse/async" \
 
 ::::
 
-List conversations
+**Example:** List conversations
 ::::{tab-set}
 :group: api-examples
 
@@ -546,7 +543,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations" \
 
 ::::
 
-Get conversation by ID
+**Example:** Get conversation by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -567,7 +564,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations/{conversation
 
 ::::
 
-Delete conversation by ID
+**Example:** Delete conversation by ID
 ::::{tab-set}
 :group: api-examples
 
@@ -595,29 +592,29 @@ Refer to [](mcp-server.md) for more information.
 
 
 Communicate with the MCP server via JSON-RPC 2.0.
-:   ```bash
-    curl -X POST "https://${KIBANA_URL}/api/agent_builder/mcp" \
-        -H "Authorization: ApiKey ${API_KEY}" \
-        -H "Content-Type: application/json" \
-        -H "Accept: application/json" \
-        -H "kbn-xsrf: true" \
-        -d '{
-            "jsonrpc": "2.0",
-            "id": 1,
-            "method": "tools/list"
-        }'
+
+```bash
+curl -X POST "https://${KIBANA_URL}/api/agent_builder/mcp" \
+    -H "Authorization: ApiKey ${API_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "kbn-xsrf: true" \
+    -d '{
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/list"
+    }'
 ```
 
 :::{note}
 This endpoint uses the JSON-RPC protocol. The MCP server is designed for AI clients like Claude Desktop, Cursor, and VS Code extensions to access your Elastic tools. Use this endpoint for testing MCP connectivity or debugging protocol communication. This endpoint requires JSON-RPC formatting and will not work from the Dev Tools Console.
 :::
 
-
 ### A2A Protocol
 
 Refer to [](a2a-server.md) for more information.
 
-Get A2A agent card configuration
+**Example:** Get A2A agent card configuration
 ::::{tab-set}
 :group: api-examples
 
@@ -638,39 +635,49 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
 
 ::::
 
-Execute A2A agent task
-::::{tab-set}
-:group: api-examples
 
-:::{tab-item} Console
-:sync: console
-:::{note}
-This endpoint uses the JSON-RPC protocol, which cannot be executed in the Dev Tools Console.
-Use curl or another HTTP client.
-:::
+% TODO: Execute A2A agent task section - commented out until ready
+% Execute A2A agent task
+% ::::{tab-set}
+% :group: api-examples
+% 
+% :::{tab-item} Console
+% :sync: console
+% :::{note}
+% This endpoint uses the JSON-RPC protocol, which cannot be executed in the Dev Tools Console.
+% Use curl or another HTTP client.
+% :::
+% 
+% :::{tab-item} curl
+% :sync: curl
+% ```bash
+% curl -X POST "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}" \
+%      -H "Authorization: ApiKey ${API_KEY}" \
+%      -H "kbn-xsrf: true" \
+%      -H "Content-Type: application/json" \
+%      -d '{
+%        "jsonrpc": "2.0",
+%        "method": "complete",
+%        "params": {
+%          "messages": [
+%            {
+%              "role": "user",
+%              "content": "Hello from A2A protocol"
+%            }
+%          ]
+%        },
+%        "id": "task-123"
+%      }'
+% ```
+% :::
+% 
+% ::::
 
-:::{tab-item} curl
-:sync: curl
-```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}" \
-     -H "Authorization: ApiKey ${API_KEY}" \
-     -H "kbn-xsrf: true" \
-     -H "Content-Type: application/json" \
-     -d '{
-       "jsonrpc": "2.0",
-       "method": "complete",
-       "params": {
-         "messages": [
-           {
-             "role": "user",
-             "content": "Hello from A2A protocol"
-           }
-         ]
-       },
-       "id": "task-123"
-     }'
-```
-:::
 
-::::
 
+
+
+## API reference
+
+For the full API documentation, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).
+% TODO: Update link once page is live

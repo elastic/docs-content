@@ -9,9 +9,9 @@ applies_to:
 # MCP server
 
 :::{warning}
-WIP
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
 
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
 :::
 
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
@@ -36,19 +36,27 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
       "command": "npx",
       "args": [
         "mcp-remote",
-        "<YOUR_KIBANA_URL>/api/agent_builder/mcp",
+        "${KIBANA_URL}/api/agent_builder/mcp",
         "--header",
         "Authorization:${AUTH_HEADER}"
       ],
       "env": {
-        "AUTH_HEADER": "ApiKey <YOUR_API_KEY>"
+        "KIBANA_URL": "${KIBANA_URL}",
+        "AUTH_HEADER": "ApiKey ${API_KEY}"
       }
     }
 }
 ```
 
 :::{note}
-Replace `<YOUR_KIBANA_URL>` with your actual Kibana URL and `<YOUR_API_KEY>` with your API key. For information on generating API keys, see [API keys](https://www.elastic.co/docs/solutions/search/search-connection-details).
+Set the following environment variables:
+
+```bash
+export KIBANA_URL="your-kibana-url"
+export API_KEY="your-api-key"
+```
+
+For information on generating API keys, see [API keys](https://www.elastic.co/docs/solutions/search/search-connection-details).
 
 Tools will be executed with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose via the MCP server.
 :::
