@@ -57,10 +57,10 @@ Navigate to the **Agents** page to access the agent management interface.
 
 ::::{step} Create a new agent
 
-Click the **New agent** button to start creating a new agent.
+Select the **New agent** button to being creating a new agent.
 
 :::{image} images/new-agent-button.png
-:alt: Click the New agent button to create a new agent
+:alt: Select the New agent button to create a new agent
 :width: 150px
 :::
 
@@ -72,12 +72,12 @@ Click the **New agent** button to start creating a new agent.
 Configure the essential agent settings in the **settings** tab:
 
 1. Enter an **Agent ID**, a unique identifier for reference in code.
-1. Add **Custom instructions**.<br><br>Custom instructions define the agent's personality and determine how it will interact with users and perform tasks.
+1. Add **Custom instructions**.<br><br>Custom instructions define the agent's personality and determine how it interacts with users and perform tasks.
 
     :::{note}
-    Your custom instructions are added to the system prompt to define the agent's behavior. The system prompt enables core features like visualization and citations.
+    Agent Builder adds your custom instructions to the system prompt to define the agent's behavior. The system prompt enables core features like visualization and citations.
     :::
-1. Set the **Display name** that users will see.
+1. Set the **Display name** for users.
 1. Add a **Display description** to explain the agent's purpose
 
 ::::
@@ -95,13 +95,13 @@ Select the combination of built-in and custom tools available to the agent, base
 Optionally customize the agent's appearance and organization:
 
 - Add **Labels** to organize your agents
-- Choose an **Avatar color** and **Avatar symbol** to help visually distinguish the agent
+- Select an **Avatar color** and **Avatar symbol** to help visually distinguish the agent
 
 ::::
 
 ::::{step} Save your changes
 
-Click **Save** to create your agent, or **Save and chat** to create the agent and immediately start a conversation with it.
+Select **Save** to create your agent, or **Save and chat** to create the agent and immediately begin a conversation with it.
 
 :::{image} images/save-and-chat-buttons.png
 :alt: Save and Save and chat buttons
