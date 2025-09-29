@@ -15,7 +15,7 @@ These pages are currently hidden from the docs TOC and have `noindexed` meta hea
 # Get started with {{agent-builder}}
 
 :::{tip}
-refer to the [overview page](../elastic-agent-builder.md) for full list of docs pages.
+Refer to the [overview page](../elastic-agent-builder.md) for the full list of docs pages.
 :::
 % TODO: Remove this tip when unhide pages
 
