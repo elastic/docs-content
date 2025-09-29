@@ -12,6 +12,7 @@ products:
   - id: cloud-hosted
   - id: cloud-kubernetes
   - id: cloud-enterprise
+navigation_title: FAQ
 ---
 
 # AutoOps FAQ [ec-autoops-faq]
@@ -22,7 +23,10 @@ $$$faq-what-is-autoops$$$What does AutoOps do?
 :   AutoOps for {{es}} significantly simplifies cluster management with performance recommendations, resource utilization and cost insights, real-time issue detection and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver savings in administration time and hardware costs.
 
 $$$faq-autoops-deployment-types$$$Is AutoOps available in all types of deployments?
-:   AutoOps is available in all {{ech}} deployments and {{serverless-full}} projects, and can be set up for ECE, ECK, and self-managed clusters.
+:   In the [regions](ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and {{serverless-full}} projects, and can be [set up](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) for ECE, ECK, and self-managed clusters.
+
+$$$faq-autoops-regions$$$Why can't I see AutoOps in some deployments?
+:   AutoOps is rolling out in phases across CSPs and [regions](ec-autoops-regions.md), so you may not see it if your deployment is in a region where AutoOps is not available yet. 
 
 $$$faq-autoops-monitoring$$$Does AutoOps monitor the entire {{stack}}?
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash, and Beats).
@@ -34,9 +38,6 @@ $$$faq-autoops-license$$$How is AutoOps currently licensed?
 :   Using AutoOps for {{ech}} deployments is available at all [subscription tiers](https://www.elastic.co/subscriptions/cloud).
     :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
     ::: 
-
-$$$faq-autoops-installation$$$How does AutoOps get installed and why may I not see AutoOps available on specific deployments?
-:   AutoOps is automatically available in {{es}} clusters on {{ecloud}} and can be [set up](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) for ECE, ECK, and self-managed clusters. AutoOps is rolling out in phases across CSPs and [regions](ec-autoops-regions.md), so you may not see it if your deployment is in a region where AutoOps is not available yet. 
 
 $$$faq-autoops-issue-resolution$$$Can AutoOps currently automatically resolve issues?
 :   AutoOps only analyzes metrics, and is a read-only solution.
