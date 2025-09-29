@@ -232,7 +232,7 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/tools/{toolId}" \
 
 ::::
 
-**Example:** Execute a tool
+**Example:** Run a tool
 ::::{tab-set}
 :group: api-examples
 
@@ -591,7 +591,7 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/{conversat
 Refer to [](mcp-server.md) for more information.
 
 
-Communicate with the MCP server via JSON-RPC 2.0.
+Communicate with the MCP server using JSON-RPC 2.0.
 
 ```bash
 curl -X POST "https://${KIBANA_URL}/api/agent_builder/mcp" \
@@ -607,10 +607,10 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/mcp" \
 ```
 
 :::{note}
-This endpoint uses the JSON-RPC protocol. The MCP server is designed for AI clients like Claude Desktop, Cursor, and VS Code extensions to access your Elastic tools. Use this endpoint for testing MCP connectivity or debugging protocol communication. This endpoint requires JSON-RPC formatting and will not work from the Dev Tools Console.
+This endpoint uses the JSON-RPC protocol. The MCP server is used by AI clients like Claude Desktop, Cursor, and VS Code extensions to access your Elastic tools. Use this Kibana API endpoint for testing MCP connectivity or debugging protocol communication. This endpoint requires JSON-RPC formatting and does not work from the Dev Tools Console.
 :::
 
-### A2A Protocol
+### A2A protocol
 
 Refer to [](a2a-server.md) for more information.
 
