@@ -48,6 +48,12 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 
 [**Learn more about tools**](agent-builder/tools.md)
 
+## Get started
+
+To get started you need an Elastic deployment and you must enable the feature.
+
+[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
+
 ## Programmatic interfaces
 
 {{agent-builder}} provides APIs and LLM integration options for programmatic access and automation.
@@ -55,9 +61,9 @@ These interfaces enable you to build integrations with other applications and ex
 
 [**Learn more about programmatic access**](agent-builder/programmatic-access.md)
 
-## Get started
+## Limitations and known issues
 
-To get started you need an Elastic deployment and you must enable the feature.
+{{agent-builder}} is in technical preview.
 
-[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
+[**Learn more about limitations and known issues**](agent-builder/limitations-known-issues.md)
 
