@@ -7,16 +7,24 @@ applies_to:
 ---
 
 :::{warning}
-WIP
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
 
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
 :::
 
 # Tools in {{agent-builder}}
 
-Agents use tools to search, retrieve, and take meaningful steps on your behalf.
+[Agents](agent-builder-agents.md) use tools to search, retrieve, and take meaningful steps on your behalf.
 
 Tools can be thought of as functions: modular, reusable actions that agents can call to interact with your {{es}} data.
+
+Each tool is defined by several key fields:
+
+- **`id`**: The unique identifier that agents use to reference the tool (e.g., `.get_document_by_id`)
+- **`type`**: Specifies whether the tool is `builtin` (pre-defined) or `esql` (custom)
+- **`description`**: Natural language explanation of what the tool does, used by the AI to determine when to use it
+- **`configuration`**: Contains the tool's logic - empty for built-in tools, or query and parameters for custom ESQL tools
+- **`schema`**: Defines the input parameters the tool requires, written in JSON Schema format
 
 ## How agents use tools
 
@@ -46,6 +54,16 @@ Key built-in tools include:
 
 Built-in tools serve as building blocks for more complex interactions and provide the foundation for agent capabilities.
 
+:::{note}
+
+Tool namespacing helps organize and identify tools by their source. Built-in tools use a consistent prefix (`platform.core`) to indicate they are built-in capabilities. This convention:
+
+- Prevents naming conflicts between system and custom tools
+- Makes it easy to identify tool sources
+- Provides a consistent pattern for tool identification
+
+:::
+
 ## Custom tools
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data:
@@ -55,17 +73,7 @@ You can extend the built-in tool catalog with your own custom tool definitions. 
 
 This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
-### Find available tools
-
-Find the list of available tools on the **Tools** landing page in the UI.
-
-You can also use the following API call, which returns detailed information about built-in tools, including their parameters and descriptions.
-
-```
-GET kbn://api/agent_builder/tools
-```
-
-## Tool parameters
+### Tool parameters
 
 Parameters enable tools to be dynamic and adaptable to different queries. Each parameter has:
 
@@ -73,97 +81,69 @@ Parameters enable tools to be dynamic and adaptable to different queries. Each p
 - A **type** (such as keyword, number, boolean)
 - A **description** that helps the agent understand when and how to use it
 
-For tools with explicit queries, parameters are defined in the query using the syntax `?parameter_name` and must be configured when creating the tool.
+For {{esql}} tools, parameters are defined in the query using the syntax `?parameter_name` and must be configured when creating the tool.
 
 Parameters can be:
 - **Manually defined**: You explicitly define the parameters a tool needs
-- **Inferred from query**: For tools with explicit queries, you can use the "Infer parameters from query" button to automatically detect parameters in your query statement
+- **Inferred from query**: For {{esql}} tools, you can use the "Infer parameters from query" button to automatically detect parameters in your query statement
+
+The tool's `schema` field defines these parameters using JSON Schema format, specifying:
+- **`type`**: Always `"object"` for tool parameters
+- **`properties`**: Dictionary defining each parameter's type and description
+- **`required`**: Array listing mandatory parameters
+- **`additionalProperties`**: Set to `false` to reject undefined parameters
 
 Providing clear, descriptive parameter names and descriptions helps agents properly use your tools when answering queries.
 
 ## Create custom tools
 
-You can create custom tools to help agents interact with your data in specific ways. This section covers how to create and test tools through both the UI and API.
+You can create custom tools to help agents interact with your data in specific ways. This section covers how to create and test tools in the UI
 
-### Use the UI
+1. Navigate to the **Tools** page in Kibana
+2. Click **New tool**
 
-1. Navigate to the Tools page in Kibana
-2. Click the blue **New tool** button
-3. Select the tool type you want to create
+  :::{image} images/new-tool-button.png
+  :alt: New tool button for creating custom tools
+  :width: 150px
+  :::
+
 4. Fill in the required fields:
    - **Name**: Enter a descriptive name for your tool
    - **Description**: Write a clear explanation of what the tool does and when it should be used
-   - Tool-specific configuration (explicit query or index settings)
-   - **Parameters**: For tools with explicit queries, define any parameters your query needs
+   - **Tool type**: Choose either **{{esql}}** query or **Index search**
+   - **Parameters**: For tools with {{esql}} queries, define any parameters your query needs
    - **Tags**: (Optional) Add labels to categorize and organize your tools
-5. Click **Save** to create your tool
+5. Choose how to save your tool:
+   - Click **Save** to create the tool
+   - Click **Save and test** to create the tool and immediately open the testing interface
 
-### Use the API
-
-You can also create tools programmatically:
-
-For tools with explicit {{esql}} queries:
-
-```json
-POST kbn://api/agent_builder/tools
-{
-  "id": "recent_orders", <1>
-  "description": "Find recent orders for a specific customer. Use this tool when users ask about their recent orders or purchase history.", <2>
-  "configuration": {
-    "query": "FROM orders | WHERE customer_id == ?customer_id | SORT @timestamp DESC | LIMIT 5", <3>
-    "params": {
-      "customer_id": { <4>
-        "type": "keyword",
-        "description": "The unique identifier for the customer"
-      }
-    }
-  },
-  "type": "esql", <5>
-  "tags": ["orders", "customers"] <6>
-}
-```
-
-1. A unique identifier for your tool that will be used in API calls
-2. Detailed description that helps the agent understand when to use this tool
-3. {{esql}} query with parameters prefixed by `?`
-4. Parameter definition including type and description
-5. Tool type specifier (use "esql" for tools with explicit {{esql}} queries)
-6. Optional tags for categorization
-
-For index search tools:
-
-```json
-POST kbn://api/agent_builder/tools
-{
-  "id": "search_products", <1>
-  "description": "Search the products catalog for specific items. Use this when users are looking for product information.", <2>
-  "configuration": {
-    "pattern": "products", <3>
-    "fields": ["name", "description", "category", "tags"] <4>
-  },
-  "type": "index_search", <5>
-  "tags": ["products", "catalog"] <6>
-}
-```
-
-1. Unique identifier for the tool
-2. Description explaining when and how to use this tool
-3. The specific index pattern this tool will search against
-4. Fields within the index that should be searchable
-5. Tool type specifier (use `index_search` for index search tools)
-6. Optional tags for organization
+    :::{image} images/tool-save-save-and-test-buttons.png
+    :alt: Save and Save and test buttons for tool creation
+    :width:250px
+    :::
 
 ### Testing your tools
 
-After creating a tool, test it before assigning it to agents:
+Before assigning tools to agents, verify they work correctly by testing them. Testing helps ensure your tool returns useful results and handles parameters correctly.
+
+If you didn't click **Save and test** immediately:
 
 1. Find your tool in the Tools list
-2. Click the test icon associated with your tool
-3. Enter test values for each parameter or search query
-4. Run the test to verify the tool executes correctly and returns the expected results
+2. Click the test icon (play button) associated with your tool
 
-Testing helps ensure your tool returns useful results and handles parameters correctly.
-
+:::{image} images/test-icon.png
+:alt: Test icon (play button) for running tool tests
+:width: 150px
+:::
+3. Enter test data based on your tool type:
+   - **For {{esql}} tools with parameters**: Enter realistic test values for each parameter in the **Inputs** section
+   - **For Index search tools**: Enter a sample search query to test the search functionality
+4. Click **Submit** to run the test
+5. Review the Response section to verify:
+   - The tool executes without errors
+   - Results are returned in the expected format
+   - The data matches your expectations
+7. Now you can [assign the tool to an agent](#assign-tools-to-agents)
 
 ### Best practices
 
@@ -172,23 +152,24 @@ Testing helps ensure your tool returns useful results and handles parameters cor
 3. **Limit scope**: Focus each tool on a specific task rather than creating overly complex tools
 4. **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents
 5. **Add comprehensive parameter descriptions**: Help the agent understand what values to use
-6. **Include `LIMIT` clauses in explicit queries**: Prevent returning excessive results
+6. **Include `LIMIT` clauses in {{esql}} queries**: Prevent returning excessive results
 7. **Use appropriate tags**: Add relevant tags to make tools easier to find and organize
 8. **Limit tool count**: More tools are not always better. Try to keep each agent focused with a limited number of relevant tools.
 
-## Tool namespaces
-
-Tool namespacing helps organize and identify tools by their source. Built-in tools use a consistent prefix (`platform.core`) to indicate they are built-in capabilities. This convention:
-
-- Prevents naming conflicts between system and custom tools
-- Makes it easy to identify tool sources
-- Provides a consistent pattern for tool identification
-
 ## Manage tools
+
+### Find available tools
+
+Find the list of available tools on the **Tools** landing page in the UI, or use [Tools API](kibana-api.md#tools).
+
+:::{image} images/tools-overview.png
+:alt: Tools landing page showing the list of available tools with their descriptions and actions
+:width:800px
+:::
 
 ### List available tools
 
-Access the complete list of available tools from the Tools page in Kibana. This view shows:
+Access the complete list of available tools from the **Tools** page in Kibana. This view shows:
 - Tool names and descriptions
 - Tool types
 - Associated tags
@@ -210,3 +191,24 @@ Custom tools can be modified or removed as needed:
 3. For updates, modify the tool properties and save your changes
 
 Note that built-in tools cannot be modified or deleted.
+
+## Tools API
+
+For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools).
+
+### Serverless API reference
+
+For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).
+
+## Copy your MCP server URL
+
+Tools can also be accessed through the Model Context Protocol (MCP) server, which provides a standardized interface for external clients to use Agent Builder tools.
+
+The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
+
+:::{image} images/copy-mcp-server-url-button.png
+:alt: Copy MCP server URL button for easy configuration of external clients
+:width: 250px
+:::
+
+For detailed MCP server configuration, refer to [MCP server](mcp-server.md).
