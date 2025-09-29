@@ -49,7 +49,9 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
 
     If there is an issue with the first component, the agent will stop working and your logs might look like: 
     
-    `... failed to register Cloud Connected Mode: ... Post \"https://api.elastic-cloud.com/api/v1/cloud-connected/clusters\": ...`
+    ```sh
+    ... failed to register Cloud Connected Mode: ... Post \"https://api.elastic-cloud.com/api/v1/cloud-connected/clusters\": ...
+    ```
     
     To test if your organization is not allowing the agent to register your cluster with {{ecloud}}, run the following command:
 
@@ -136,7 +138,9 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
 
     If there is an issue with the third component, the agent will attempt to establish the connection and your logs might look like: 
         
-    `... Exporting failed. Dropping data. ... no more retries left: failed to make an HTTP request: Post \"https://otel-collector.auto-ops.eu-west-1.aws.cloud.elastic.co:4318/v1/logs\": ...`
+    ```sh
+    ... Exporting failed. Dropping data. ... no more retries left: failed to make an HTTP request: Post \"https://otel-collector.auto-ops.eu-west-1.aws.cloud.elastic.co:4318/v1/logs\": ...
+    ```
         
     To test if your organization is not allowing the agent to send metrics from your cluster to {{ecloud}}, run the following command. We will use AWS eu-west-1 as the CSP region, but you should replace it with your chosen CSP region before running the command.
 
