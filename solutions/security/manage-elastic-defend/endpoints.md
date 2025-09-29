@@ -34,17 +34,11 @@ The **Endpoints** list displays all hosts running {{elastic-defend}} and their r
 The Endpoints list provides the following data:
 
 * **Endpoint**: The system hostname. Click the link to display [endpoint details](/solutions/security/manage-elastic-defend/endpoints.md#endpoint-details) in a flyout.
-* **Agent Status**: The current status of the {{agent}}, which is one of the following:
+* **Agent Status**: The current [status](/reference/fleet/monitor-elastic-agent.md#view-agent-status) of the {{agent}}. 
 
-    * `Healthy`: The agent is online and communicating with {{kib}}.
-    * `Unenrolling`: The agent is currently unenrolling and will soon be removed from Fleet. Afterward, the endpoint will also uninstall.
-    * `Unhealthy`: The agent is online but requires attention from an administrator because it’s reporting a problem with a process. An unhealthy status could mean an upgrade failed and was rolled back to its previous version, or an integration might be missing prerequisites or additional configuration. Refer to [](/troubleshoot/security/elastic-defend.md#ts-unhealthy-agent) for more on resolving an unhealthy agent status.
-    * `Updating`: The agent is online and is updating the agent policy or binary, or is enrolling or unenrolling.
-    * `Offline`: The agent is still enrolled but may be on a machine that is shut down or currently does not have internet access. In this state, the agent is no longer communicating with {{kib}} at a regular interval.
-
-        ::::{note}
-        {{agent}} statuses in {{fleet}} correspond to the agent statuses in the {{security-app}}.
-        ::::
+    ::::{note}
+    Not all {{agent}} statuses in {{fleet}} correspond to the statuses in the {{security-app}}. For example, an `unenrolled` {{agent}} in {{fleet}} shows as `offline` in the {{security-app}}.
+    ::::
 
 * **Policy:** The name of the associated integration policy when the agent was installed. Click the link to display the [integration policy details](/solutions/security/manage-elastic-defend/endpoints.md#integration-policy-details) page.
 * **Policy status:** Indicates whether the integration policy was successfully applied. Click the link to view [policy status](/solutions/security/manage-elastic-defend/endpoints.md#policy-status) response details in a flyout.

@@ -10,9 +10,8 @@ products:
 # Get started with {{obs-serverless}} Logs Essentials [logs-essentials-get-started]
 
 ```{note}
-Use this guide to get started with the Logs Essentials feature tier of {{obs-serverless}}. Refer to the main [{{observability}} getting started](/solutions/observability/get-started.md) docs to get started with {{obs-serverless}} Complete, which includes APM and Infrastructure metrics.
+Use this guide to get started with the Logs Essentials feature tier of {{obs-serverless}}. Refer to the main [{{observability}} getting started](/solutions/observability/get-started.md) docs to get started with {{obs-serverless}} Complete, which includes APM and Infrastructure metrics. The [{{obs-serverless}} feature tiers](../observability-serverless-feature-tiers.md) page details the difference between tiers.
 ```
-% Note should link to the feature tier comparison docs once published.
 
 New to {{obs-serverless}} Logs Essentials? Discover more about its features and how to get started. The following instructions guide you through setting up your first Elastic {{observability}} Logs Essentials deployment, collecting log data, and exploring your data.
 
@@ -35,12 +34,12 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 1. Select **Create serverless project**.
 1. Under **Elastic for Observability**, select **Next**.
 1. Enter a name for your project.
+1. Under **Product features**, select **Observability Logs Essentials**.
 1. (Optional) Under **Settings** you can change the following:
 
     * **Cloud provider**: The cloud platform where you’ll deploy your project. We currently support Amazon Web Services (AWS).
     * **Region**: The [region](/deploy-manage/deploy/elastic-cloud/regions.md) where your project will live.
 
-1. Select **Edit settings**, and select **Observability Logs Essentials**.
 1. Select **Create serverless project**. It takes a few minutes to create your project.
 1. When the project is ready, click **Continue**.
 
@@ -114,7 +113,7 @@ For more information about creating dashboards, refer to [Create your first dash
 
 ::::::{step} Set up alerts
 
-Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. Elastic {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
+Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. Elastic {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [](/solutions/observability/incident-management/create-manage-rules.md) to get started.
 
 ::::::
 

@@ -14,6 +14,10 @@ products:
 
 # Get started with Elastic {{observability}} [observability-get-started]
 
+```{note}
+Use this guide to get started with the Observability Complete feature tier of {{obs-serverless}}. Refer to the [Logs Essentials getting started](/solutions/observability/get-started/logs-essentials.md) docs to get started with {{obs-serverless}} Logs Essentials. The [{{obs-serverless}} feature tiers](/solutions/observability/observability-serverless-feature-tiers.md) page details the difference between tiers.
+```
+
 New to Elastic {{observability}}? Discover more about our observability features and how to get started. The following instructions guides you through setting up your first Elastic {{observability}} deployment, collecting data from infrastructure and applications, and exploring your data.
 
 ## Get started with your use case [get-started-with-use-case]
@@ -101,7 +105,7 @@ Elastic provides a powerful LLM observability framework including key metrics, l
 
 Refer to [LLM observability](/solutions/observability/applications/llm-observability.md) for more information.
 :::
-
+::::
 :::::
 ::::::
 
@@ -118,7 +122,7 @@ Refer to [LLM observability](/solutions/observability/applications/llm-observabi
 
 :::::{dropdown} Steps for adding Synthetics monitoring
 1. Select **Add data** from the main menu and then select **Application**.
-2. Select **Synthetic monitor**. 
+2. Select **Synthetic monitor**.
 3. Select a [monitor type](/solutions/observability/synthetics/index.md).
 4. Fill out the details.
 5. (Optional) Add a [Playwright](https://playwright.dev/) script.
@@ -149,7 +153,7 @@ For more information about creating dashboards, refer to [Create your first dash
 
 ::::::{step} Set up alerts and SLOs
 
-Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
+Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [](/solutions/observability/incident-management/create-manage-rules.md) to get started.
 
 {{observability}} also lets you define Service Level Objectives (SLOs) to set clear, measurable targets for your service performance, based on factors like availability, response times, error rates, and other key metrics. Refer to [Create and manage SLOs](/solutions/observability/incident-management/service-level-objectives-slos.md) to get started.
 
@@ -174,5 +178,5 @@ Many [{{observability}} integrations](https://www.elastic.co/integrations/data-i
 ### Other resources
 
 * [What's Elastic {{observability}}](/solutions/observability/get-started/what-is-elastic-observability.md)
-* [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
+* [What's new in Elastic Stack](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)

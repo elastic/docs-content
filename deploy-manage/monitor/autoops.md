@@ -4,8 +4,13 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps [ec-autoops]
@@ -55,10 +60,9 @@ AutoOps currently monitors only {{es}}, not the entire {{stack}}. Any deployment
 
 In this section, you'll find the following information:
 
-* How to [open AutoOps](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) for your deployment.
-* The contents of [AutoOps events](/deploy-manage/monitor/autoops/ec-autoops-events.md).
-* The [views](/deploy-manage/monitor/autoops/views.md) AutoOps offers to gain insight into facets of your deployment.
-* [Notification settings](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md) that allow you to specify when and how to be notified.
-* [Event settings](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) that allow you to fine-tune when events are triggered, and a method to [dismiss](/deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md) certain categories of events.
-* The [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where AutoOps is available.
-* Additional [frequently asked questions](/deploy-manage/monitor/autoops/ec-autoops-faq.md).
+* How to [access AutoOps in your {{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md).
+* How to [connect your ECE, ECK, or self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) to AutoOps.
+* What [events](/deploy-manage/monitor/autoops/ec-autoops-events.md) are and how you can configure [event settings](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) and [notifications](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md).
+* Which [views](/deploy-manage/monitor/autoops/views.md) AutoOps offers to gain insight into your deployment.
+* [Regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where AutoOps is available.
+* [Frequently asked questions](/deploy-manage/monitor/autoops/ec-autoops-faq.md) about AutoOps.

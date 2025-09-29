@@ -1,4 +1,5 @@
 ---
+navigation_title: Observability
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html
@@ -13,7 +14,7 @@ products:
   - id: edot-collector
 ---
 
-# Observability
+# Elastic Observability overview
 
 Elastic {{observability}} accelerates problem resolution with open, flexible, and unified observability powered by advanced machine learning and analytics. Elastic ingests all operational and business telemetry and correlates for faster root cause detection.
 

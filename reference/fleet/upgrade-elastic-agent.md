@@ -57,7 +57,7 @@ To upgrade your {{agents}}, go to **Management** → **{{fleet}}** → **Agents*
 | [Restart an upgrade for a single agent](#restart-upgrade-single) | Restart an upgrade process that has stalled for a single agent. |
 | [Restart an upgrade for multiple agents](#restart-upgrade-multiple) | Do a bulk restart of the upgrade process for a set of agents. |
 
-With the right [subscription level](https://www.elastic.co/subscriptions), you can also configure an automatic, gradual upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
+With an [Elastic subscription level](https://www.elastic.co/subscriptions) that supports **automatic agent binary upgrades**, you can also configure an automatic upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
 
 
 ## Upgrade a single {{agent}} [upgrade-an-agent]
@@ -80,7 +80,9 @@ With the right [subscription level](https://www.elastic.co/subscriptions), you c
 
 3. In the Upgrade agent window, select or specify an upgrade version and click **Upgrade agent**.
 
-    In certain cases the latest available {{agent}} version may not be recognized by {{kib}}. For instance, this occurs when the {{kib}} version is lower than the {{agent}} version. You can specify a custom version for {{agent}} to upgrade to by entering the version into the **Upgrade version** text field.
+    {{kib}} provides a list of the {{agent}} versions available for upgrade. A version number ending with a build identifier in the format `+build{yyyymmddhhmm}` indicates an [independent {{agent}} release version](./fleet-agent-release-process.md#independent-agent-releases).
+
+    In certain cases, the latest available {{agent}} version may not be recognized by {{kib}}. For instance, this occurs when the {{kib}} version is lower than the {{agent}} version. You can specify a custom version for {{agent}} to upgrade to by entering the version into the **Upgrade version** text field.
 
     :::{image} images/upgrade-agent-custom.png
     :alt: Menu for upgrading a single {{agent}}
@@ -101,8 +103,13 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
 
 5. Upgrade the agents.
 
+Note that agents in a rollout period have the status `Updating` until the upgrade is complete, even if the upgrade has not started yet.
 
 ## Schedule an upgrade [schedule-agent-upgrade]
+
+::::{note}
+This feature is available only for certain subscription levels. For more information, check **Scheduled agent binary upgrades** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
+::::
 
 1. On the **Agents** tab, select one or more agents, and click **Actions**.
 2. From the **Actions** menu, choose to schedule an upgrade.
@@ -111,8 +118,6 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
     :alt: Menu for scheduling {{agent}} upgrades
     :screenshot:
     :::
-
-    If the schedule option is grayed out, it may not be available at your subscription level. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
 
 3. In the Upgrade window, select an upgrade version.
 4. Select a maintenance window. For more information, refer to [Do a rolling upgrade of multiple {{agent}}s](#rolling-agent-upgrade).
@@ -226,7 +231,7 @@ stack: ga 9.1.0
 ```
 
 ::::{note}
-This feature is only available for certain subscription levels. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
+This feature is available only for certain subscription levels. For more information, check **Automatic agent binary upgrades** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 To configure an automatic rollout of a new minor or patch version to a percentage of the agents enrolled in your {{agent}} policy. follow these steps:
@@ -245,7 +250,9 @@ To configure an automatic rollout of a new minor or patch version to a percentag
 7. You can then add a different target version, and specify the percentage of agents you want to be upgraded to that version. The total percentage of agents to be upgraded cannot exceed 100%.
 8. Click **Save**.
 
-Once the configuration is saved, an asynchronous task runs every 30 minutes, gradually upgrading the agents in the policy to the specified target version.
+Once the configuration is saved, an asynchronous task runs every 30 minutes, upgrading the agents in the policy to the specified target version.
+
+If the number of agents to be upgraded is greater than or equal to 10, a rollout period is automatically applied. The rollout duration is either 10 minutes or `nAgents * 0.03` seconds, whichever is greater.
 
 In case of any failed upgrades, the upgrades are retried with exponential backoff mechanism until the upgrade is successful, or the maximum number of retries is reached. Note that the maximum number of retries is the number of [configured retry delays](#auto-upgrade-settings).
 
