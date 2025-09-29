@@ -33,5 +33,5 @@ POST /api/agent_builder/a2a/{agentId}
 ```
 
 :::{important}
-Both A2A endpoints require API key authentication. For more information about the A2A protocol, see the [A2A protocol specification](https://a2aprotocol.ai/docs/guide/a2a-protocol-specification-python#protocol-flow-diagram).
+Both A2A endpoints require API key authentication. For more information about the A2A protocol, refer to the [A2A protocol specification](https://a2aprotocol.ai/docs/guide/a2a-protocol-specification-python#protocol-flow-diagram).
 :::
