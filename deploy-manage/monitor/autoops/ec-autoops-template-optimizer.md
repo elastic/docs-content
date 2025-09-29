@@ -17,5 +17,5 @@ The **Template Optimizer** view offers detailed recommendations for optimizing t
 :alt: The Template Optimizer view
 :::
 
-When AutoOps identifies a recommended change, it logs the template separately, allowing you to track past impactful changes. You can navigate between different deployments to view all template recommendations.
+When AutoOps identifies a recommended change, it logs the template separately, allowing you to track past impactful changes. You can navigate between different deployments/clusters to view all template recommendations.
 
