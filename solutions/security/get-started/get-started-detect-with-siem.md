@@ -13,13 +13,15 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 
 ## Prerequisites 
 
-* Access to an {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md). 
-* Ensure you have the appropriate [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md). To see all deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
+* If you're using the recommended integration in this guide, {{elastic-defend}}, then: 
+  * Ensure you have the minimum system requirements to install {{elastic-defend}}. Refer to [](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) for more information. 
+  * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).  At minimum, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
 
 
 ## Add data using {{elastic-defend}}
 
-Before you can start using {{elastic-sec}}, you need to choose an integration to start collecting and analyzing your data. For this guide, we're going to use the {{elastic-defend}} integration. {{elastic-defend}} detects and protects endpoints from malicious activity, and provides automated response options before damage and loss occur. You have full control over which protections are enabled 
+Before you can begin using {{elastic-sec}}, you need to choose an integration to start collecting and analyzing your data. For this guide, we're going to use the {{elastic-defend}} integration. {{elastic-defend}} detects and protects endpoints from malicious activity, and provides automated response options before damage and loss occur. You have full control over which protections are enabled.  
 
 :::::{stepper} 
 ::::{step} Install the Elastic Defend integration

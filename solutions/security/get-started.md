@@ -16,13 +16,13 @@ New to {{elastic-sec}}? Follow the instructions in this topic to get started. Th
 ::::::{{stepper}}
 :::::{{step}} Choose your deployment type   
 
-Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend [](./elastic-security-serverless.md), which enables you to run {{elastic-sec}} in fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances.
+Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend [](./elastic-security-serverless.md), which enables you to run {{elastic-sec}} in fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances. 
 
 ::::{dropdown} Create an Elastic Security Serverless project
 
 There are two options to create serverless projects:
-- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about the {[ecloud]} trials, check out [Trial features](/docs/deploy-manage/deploy/elastic-cloud/create-an-organization#general-sign-up-trial-what-is-included-in-my-trial).
-- If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and follow [these instructions to create a serverless project](./get-started/create-security-project.md). 
+- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, check out [Trial features](/docs/deploy-manage/deploy/elastic-cloud/create-an-organization#general-sign-up-trial-what-is-included-in-my-trial).
+- If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and follow [these instructions](./get-started/create-security-project.md) on how to create a serverless project.  
 
 :::{note}
 You need the `admin` predefined role or an equivalent custom role to create projects. For more information, refer to [User roles and privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cloud-organization/user-roles).
@@ -74,5 +74,6 @@ Use these resources to learn more about {{elastic-sec}} or get started in a diff
 * Migrate your SIEM rules from Splunk's Search Processing Language (SPL) to Elasticsearch Query Language ({{esql}}) using [Automatic Migration](../security/get-started/automatic-migration.md). 
 * Check out the numerous [Security integrations](https://www.elastic.co/integrations/data-integrations?solution=security) available to collect and process your data.  
 * Get started with [AI for Security](../security/ai.md). 
+* Learn how to use {{es}} Query Language ({{esql}}) for [security use cases](/solutions/security/esql-for-security.md). 
 * View our [release notes](../../release-notes/elastic-security/index.md) for the latest updates. 
 
