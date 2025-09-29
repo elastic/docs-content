@@ -20,7 +20,7 @@ An agent parses user requests to define a goal and then runs tools in a loop to 
 
 ## How agents work
 
-When you ask a question to an agent, it analyzes your request to define a specific goal. It selects the most appropriate tool(s), and determines the right arguments to use. The agent evaluates the information returned after each action and decides whether to use additional tools or formulate a response. This iterative process of tool selection, execution, and analysis continues until the agent can provide a complete answer.
+When you ask a question to an agent, it analyzes your request to define a specific goal. It selects the most appropriate tools and determines the right arguments to use. The agent evaluates the information returned after each action and decides whether to use additional tools or formulate a response. This iterative process of tool selection, execution, and analysis continues until the agent can provide a complete answer.
 
 {{agent-builder}} includes a default agent (named `Elastic AI Agent`) with access to all built-in tools. You can create specialized agents with custom instructions and selected tools to address specific use cases or workflows.
 
@@ -121,7 +121,7 @@ The Agents API enables programmatic access to agent creation and management acti
 
 ### Quick overview
 
-For a quick overview of refer to [Agents API](kibana-api.md#agents).
+For an overview, refer to [Agents API](kibana-api.md#agents).
 
 ### Serverless API reference
 

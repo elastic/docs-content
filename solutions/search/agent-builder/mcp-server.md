@@ -6,7 +6,7 @@ applies_to:
     elasticsearch: preview
 ---
 
-# MCP server
+# Model Context Protocol (MCP) server
 
 :::{warning}
 These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
