@@ -68,7 +68,7 @@ The Agent Chat API provides programmatic access to chat functionality through RE
 
 ### Quick overview
 
-For a quick overview of the programmtic interfaces for conversations, refer to [Chat and conversations API](kibana-api.md#chat-and-conversations).
+For a quick overview of the REST API for conversations, refer to [Chat and conversations API](kibana-api.md#chat-and-conversations).
 
 ### Serverless API reference
 
