@@ -8,7 +8,7 @@ products:
 
 # Fleet enrollment tokens [fleet-enrollment-tokens]
 
-A {{fleet}} enrollment token (referred to as an `enrollment API key` in the {{fleet}} API documentation) is an {{es}} API key that you use to enroll one or more {{agent}}s in {{fleet}}. The enrollment token enrolls the {{agent}} in a specific agent policy that defines the data to be collected by the agent and the output to use. You can use the token as many times as needed. It will remain valid until you revoke it.
+A {{fleet}} enrollment token (referred to as an `enrollment API key` in the {{fleet}} API documentation) is an {{es}} API key that you use to enroll one or more {{agent}}s in {{fleet}}. The enrollment token enrolls the {{agent}} in a specific agent policy that defines the data to be collected by the agent and which output to use. You can use the token as many times as needed. It will remain valid until you revoke it.
 
 The enrollment token is used for the initial communication between {{agent}} and {{fleet-server}}. After the initial connection request from the {{agent}}, the {{fleet-server}} passes a communication API key to the {{agent}}. This API key includes only the necessary permissions to communicate with the {{fleet-server}}. If the API key is invalid, {{fleet-server}} stops communicating with the {{agent}}.
 
@@ -24,7 +24,7 @@ Depending on the output of the agent policy with which the enrollment token is a
 
 * For the {{ls}} output, it passes SSL/TLS configuration details.
 
-    The SSL/TLS configuration details such as the SSL certificate authority, the SSL certificate, and the SSL certificate key are defined during the Logstash output creation and are used by the {{agent}} to connect to Logstash.
+    The SSL/TLS configuration details such as the SSL certificate authority, the SSL certificate, and the SSL certificate key are defined during {{ls}} output creation and are used by the {{agent}} to connect to {{ls}}.
 
 :::{note}
 Although an API key is generated during the {{ls}} output creation, this key is not passed to the {{agent}} by the {{fleet-server}}.
