@@ -107,10 +107,6 @@ You can create custom tools to help agents interact with your data in specific w
   :width: 150px
   :::
 
-:::{image} images/tool-creation-form.png
-:::
-:alt: Tool creation form showing the fields for name, description, and configuration options
-
 4. Fill in the required fields:
    - **Name**: Enter a descriptive name for your tool
    - **Description**: Write a clear explanation of what the tool does and when it should be used
@@ -149,10 +145,6 @@ If you didn't click **Save and test** immediately:
    - The data matches your expectations
 7. Now you can [assign the tool to an agent](#assign-tools-to-agents)
 
-:::{image} images/tool-testing.png
-:::
-:alt: Tool testing interface showing parameter input and test results
-
 ### Best practices
 
 1. **Write descriptive names**: Use clear, action-oriented names
@@ -190,10 +182,6 @@ Tools must be assigned to agents before they can be used:
 2. Select the **Tools** tab
 3. Add the desired tools to the agent
 4. Save the agent configuration
-
-:::{image} images/assign-tools-to-agent.png
-:::
-:alt: Agent configuration page showing the Tools tab with available tools to assign
 
 ### Update and delete tools
 
