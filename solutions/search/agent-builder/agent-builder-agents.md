@@ -78,7 +78,7 @@ Configure the essential agent settings in the **settings** tab:
     Agent Builder adds your custom instructions to the system prompt to define the agent's behavior. The system prompt enables core features like visualization and citations.
     :::
 1. Set the **Display name** for users.
-1. Add a **Display description** to explain the agent's purpose
+1. Add a **Display description** to explain the agent's purpose.
 
 ::::
 
