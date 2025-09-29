@@ -81,7 +81,7 @@ ECK handles smooth upgrades from one cluster specification to another. You can a
 * Add five additional {{es}} data nodes: In `data-nodes` change the value in the `count` field from 10 to 15.
 * Increase the memory limit of data nodes to 32Gi: Set a [different resource limit](manage-compute-resources.md) in the existing `data-nodes` NodeSet.
 * Replace dedicated master and dedicated data nodes with nodes having both master and data roles: Replace the two existing NodeSets by a single one with a different name and the appropriate {{es}} configuration settings.
-* Upgrade {{es}} from version 7.2.0 to 7.3.0: Change the value in the `version` field.
+* Upgrade {{es}} from version {{version.stack | -1}} to {{version.stack}}: Change the value in the `version` field.
 
 ECK orchestrates NodeSet changes with no downtime and makes sure that:
 
@@ -172,7 +172,7 @@ The health of the cluster is deliberately ignored in the following cases:
 * If all the {{es}} nodes of a NodeSet are unavailable, probably caused by a misconfiguration, the operator ignores the cluster health and upgrades nodes of the NodeSet.
 * If an {{es}} node to upgrade is not healthy, and not part of the {{es}} cluster, the operator ignores the cluster health and upgrades the {{es}} node.
 
-    * {{es}} versions cannot be downgraded. For example, it is impossible to downgrade an existing cluster from version 7.3.0 to 7.2.0. This is not supported by {{es}}.
+    * {{es}} versions cannot be downgraded. For example, it is impossible to downgrade an existing cluster from version {{version.stack}} to {{version.stack | -1}}. This is not supported by {{es}}.
 
 
 Advanced users may force an upgrade by manually deleting Pods themselves. The deleted Pods are automatically recreated at the latest revision.
