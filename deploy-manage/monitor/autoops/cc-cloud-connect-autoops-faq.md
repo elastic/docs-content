@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: FAQ
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps for self-managed clusters FAQ

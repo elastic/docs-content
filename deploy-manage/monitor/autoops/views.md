@@ -2,6 +2,9 @@
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 navigation_title: Views
 ---
 

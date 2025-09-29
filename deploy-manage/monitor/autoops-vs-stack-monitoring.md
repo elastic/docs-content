@@ -1,11 +1,16 @@
 ---
 applies_to:
+  serverless:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
 navigation_title: AutoOps vs. Stack Monitoring
+products:
+  - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps and Stack Monitoring comparison

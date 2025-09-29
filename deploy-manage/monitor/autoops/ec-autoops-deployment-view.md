@@ -5,8 +5,13 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Deployment or Cluster view in AutoOps [ec-autoops-deployment-view]

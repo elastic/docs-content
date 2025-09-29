@@ -10,6 +10,8 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps regions [ec-autoops-regions]

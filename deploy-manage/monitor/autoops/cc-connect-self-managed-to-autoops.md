@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: Connect your self-managed cluster
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Connect your self-managed cluster to AutoOps

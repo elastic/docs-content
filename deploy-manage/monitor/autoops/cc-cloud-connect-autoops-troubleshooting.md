@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: Troubleshooting
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps for self-managed clusters troubleshooting

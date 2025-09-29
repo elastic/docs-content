@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: AutoOps for self-managed clusters
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps for self-managed clusters
