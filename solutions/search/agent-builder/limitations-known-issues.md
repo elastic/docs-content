@@ -16,7 +16,7 @@ These pages are currently hidden from the docs TOC and have `noindexed` meta hea
 
 ## Limitations
 
-### {{agent-builder}} is not enabled by default
+### Agent Builder not enabled by default
 
 While in private technical preview, {{agent-builder}} is not enabled by default. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
 
@@ -28,7 +28,21 @@ Learn about [pricing](https://www.elastic.co/pricing/serverless-search) for the 
 
 ## Known issues
 
-### Default agent can misinterpret SQL syntax as ES|QL
+### Incompatible LLMs
+
+While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}. We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) (the default).
+
+The following errors suggest your selected model may not be compatible with {{agent-builder}}:
+
+```console-response
+Error: Invalid function call syntax
+```
+
+```console-response
+Error executing agent: No tool calls found in the response.
+```
+
+### Misinterpreted SQL syntax as ES|QL
 
 The `.execute_esql` tool is designed only for [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax, not other query languages.
 
@@ -46,21 +60,5 @@ This results in parsing errors like this:
   }
 ]
 ```
-
-### Not all LLMs are compatible
-
-While Elastic offers LLM connectors for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}.
-
-The following errors suggest your selected model may not be compatible with {{agent-builder}}:
-
-```console-response
-Error: Invalid function call syntax
-```
-
-```console-response
-Error executing agent: No tool calls found in the response.
-```
-
-We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md).
 
     
