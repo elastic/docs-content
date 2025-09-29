@@ -1,8 +1,10 @@
 ---
 navigation_title: Elastic Inference Service (EIS)
 applies_to:
-  stack: ga 9.0
+  stack: ga
   serverless: ga
+  deployment:
+    self: unavailable
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
@@ -22,7 +24,8 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-ELSER requests are managed by Elastic's own EIS infrastructure.
+ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`.
+
 
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
@@ -37,10 +40,9 @@ ELSER on EIS enables you to use the ELSER model on GPUs, without having to manag
 
 While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
 
-#### Access
+#### Region Availability 
 
-This feature is being gradually rolled out to Serverless and Cloud Hosted customers.
-It may not be available to all users at launch.
+ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
 
 #### Uptime
 
@@ -60,4 +62,8 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 
 #### Rate Limits 
 
-Rate limit for search and ingest is currently at 2000 requests per minute.
+Rate limit for search and ingest is currently at 500 requests per minute.
+
+## Pricing 
+
+All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER. 
