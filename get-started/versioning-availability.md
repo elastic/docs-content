@@ -57,7 +57,7 @@ serverless:
 
 This means the feature is:
 * Generally Available for {{es-serverless}} projects
-* Beta for {{security-serverless}} projects
+* Beta for {{sec-serverless}} projects
 
 #### Elastic Cloud Enterprise example
 
