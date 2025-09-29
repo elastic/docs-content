@@ -91,6 +91,11 @@ The AI Assistant connects to one of these supported LLM providers:
    - The provider's API endpoint URL
    - Your authentication key or secret
 
+::::{admonition} Recommended models
+While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/llm-performance-matrix.md) to select models that perform well with your desired use cases.
+
+::::
+
 ### Elastic Managed LLM [elastic-managed-llm-obs-ai-assistant]
 
 :::{include} ../_snippets/elastic-managed-llm.md

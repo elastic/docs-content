@@ -5,13 +5,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/fleet.html
   - https://www.elastic.co/guide/en/fleet/current/fleet-overview.html
   - https://www.elastic.co/guide/en/fleet/current/index.html
+navigation_title: Fleet and Elastic Agent
 products:
   - id: cloud-serverless
   - id: fleet
   - id: kibana
 ---
 
-# Fleet and Elastic Agent [fleet-and-elastic-agent]
+# {{fleet}} and {{elastic-agent}} overview [fleet-and-elastic-agent]
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 $$$package-registry-intro$$$
@@ -109,7 +110,7 @@ When you're ready to upgrade your {{agent}} binaries or integrations, you can in
 
 Some subscription levels support bulk select operations, including:
 
-* Selective binary updates
+* Selective agent binary updates
 * Selective agent policy reassignment
 * Selective agent unenrollment
 
