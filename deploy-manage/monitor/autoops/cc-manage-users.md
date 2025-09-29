@@ -44,4 +44,4 @@ Assign the following roles to new or existing users based on levels of access to
 | Role | Allowed actions in AutoOps |
 | --- | --- |
 | **Organization owner** | View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect and disconnect clusters |
-| **Connected cluster access** | **Viewer**: <br> View events and metrics reports <br><br>  **Admin** for all connected clusters: <br> View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect and disconnect clusters <br><br>  **Admin** for selected clusters: <br> View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect clusters |
+| **Connected cluster access** | **Viewer**: <br> View events and metrics reports <br><br>  **Admin** for all connected clusters: <br> View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect and disconnect clusters <br><br>  **Admin** for selected clusters: <br> View events and metrics reports <br> Connect clusters |
