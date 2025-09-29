@@ -11,7 +11,7 @@ navigation_title: For {{ech}}
 
 # AutoOps for {{ech}}
 
-AutoOps is available in all {{ech}} deployments in supported [regions](ec-autoops-regions.md#autoops-for-ech-regions). More regions are coming soon. 
+For {{ech}} deployments, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md#autoops-for-ech-regions). More regions are coming soon. 
 
 ## How to access AutoOps [ec-autoops-how-to-access]
 

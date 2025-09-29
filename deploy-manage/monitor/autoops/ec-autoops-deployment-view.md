@@ -37,7 +37,7 @@ The **Events History** panel lists events that happened at some point and that h
 
 ## Resources [ec-deployment-resources]
 
-The **Resources** panel provides a quick overview of Elasticsearch cluster resource usage. The resources are presented based on their respective data tiers and include JVM memory usage, CPU usage, and storage usage over time. You can view essential cluster information such as the Elasticsearch version, total number of nodes, total shards, and total used storage.
+The **Resources** panel provides a quick overview of {{es}} cluster resource usage. The resources are presented based on their respective data tiers and include JVM memory usage, CPU usage, and storage usage over time. You can view essential cluster information such as the {{es}} version, total number of nodes, total number of shards, and total volume of used storage.
 
 :::{image} /deploy-manage/images/cloud-autoops-deployment-resources.png
 :alt: The AutoOps Resources panel

@@ -37,7 +37,7 @@ On {{ech}} and {{serverless-full}}, AutoOps is set up and enabled automatically 
 :alt: Diagram showing AutoOps setup in Elastic Cloud
 :::
 
-For {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters, you need to go through a [connection process](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) to connect to AutoOps. This involves installing {{agent}} to ship your monitoring metrics to {{ecloud}} through [](/deploy-manage/cloud-connect.md). Since you can only access AutoOps from the {{ecloud}} UI, you need an {{ecloud}} account for this service.
+For {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters, you need to [connect your cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md). This involves installing {{agent}} to ship your monitoring metrics to {{ecloud}} through [](/deploy-manage/cloud-connect.md). Since you can only access AutoOps from the {{ecloud}} UI, you need an {{ecloud}} account for this service.
 
 :::{image} /deploy-manage/images/self-managed-autoops-setup.png
 :alt: Diagram showing AutoOps setup for ECE, ECK, and self-managed clusters
