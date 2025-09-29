@@ -105,7 +105,7 @@ The components of the {{stack}} typically use semantic versioning in the `X.Y.Z`
 
 Understanding versioning is essential for [upgrade planning](/deploy-manage/upgrade.md) and ensuring compatibility, particularly for the self-managed [deployment option](/get-started/deployment-options.md).
 
-## Feature availability
+## Availability of features
 
 Available features can differ based on deployment type, product lifecycle stage, and specific version.
 
