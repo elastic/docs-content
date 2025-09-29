@@ -44,7 +44,7 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :width: 130px
       :::
 
-## How to create a new agent
+## Create a new agent in the GUI
 
 Follow these steps to create a new agent:
 
