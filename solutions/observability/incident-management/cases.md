@@ -18,7 +18,7 @@ Collect and share information about observability issues by creating a case. Cas
 :::
 
 ::::{note} 
-{applies_to}`stack: ga 9.1` With the appropriate index access, you can [build visualizations and metrics](../../../explore-analyze/alerts-cases/cases/visualize-case-data.md) of data in {{observability}}, {{stack-manage-app}}, and {{elastic-sec}} cases. This can provide improved visibility into patterns and trends of cases within your space.
+{applies_to}`stack: ga 9.2` With the appropriate index access, you can [build visualizations and metrics](../../../explore-analyze/alerts-cases/cases/visualize-case-data.md) of data in {{observability}}, {{stack-manage-app}}, and {{elastic-sec}} cases. This can provide improved visibility into patterns and trends of cases within your space.
 ::::
 
 ## Limitations [observability-case-limitations]
