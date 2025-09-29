@@ -43,7 +43,7 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 
 ## AutoOps retention period [ec_autoops_retention_period]
 
-AutoOps currently has a four-day retention period for all {{ech}} customers.
+AutoOps currently has a four-day retention period.
 
 
 ## AutoOps scope [ec_autoops_scope]
