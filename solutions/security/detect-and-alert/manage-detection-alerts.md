@@ -197,7 +197,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-When you close an alert, you can specify a reason for closing by selecting one of the following options:
+You can specify a reason for closing an alert by selecting one of the following options:
 
 * **Close without reason**: Close the alert without specifying a reason.
 * **Duplicate**: The alert is a duplicate of another alert.
