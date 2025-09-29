@@ -60,7 +60,8 @@ AutoOps currently monitors only {{es}}, not the entire {{stack}}. Any deployment
 
 In this section, you'll find the following information:
 
-* How to [open AutoOps](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) for your deployment.
+* How to [access AutoOps in your {{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md).
+* How to [connect your ECE, ECK, or self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) to AutoOps.
 * What [events](/deploy-manage/monitor/autoops/ec-autoops-events.md) are and how you can configure [event settings](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) and [notifications](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md).
 * Which [views](/deploy-manage/monitor/autoops/views.md) AutoOps offers to gain insight into your deployment.
 * [Regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where AutoOps is available.
