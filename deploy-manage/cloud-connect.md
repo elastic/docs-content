@@ -23,11 +23,11 @@ Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-clou
 
 Find answers to your questions about Cloud Connect.
 
-* [Does using Cloud Connect require additional payment?](#cc-additional-payment)
+* [Does Cloud Connect require additional payment?](#cc-additional-payment)
 * [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?](#cc-ech)
 * [Are more services going to be available with Cloud Connect?](#cc-more-services)
 
-$$$cc-additional-payment$$$ **Does using Cloud Connect require additional payment?** 
+$$$cc-additional-payment$$$ **Does Cloud Connect require additional payment?** 
 :   Each cloud connected service has its own licensing and payment requirements. 
     :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 ::: 
