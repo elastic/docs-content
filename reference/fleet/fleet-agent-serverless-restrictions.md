@@ -3,7 +3,7 @@ navigation_title: Restrictions for {{serverless-full}}
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-serverless-restrictions.html
 applies_to:
-  serverless: all
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
