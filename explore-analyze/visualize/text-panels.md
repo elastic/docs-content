@@ -12,6 +12,13 @@ products:
 
 To provide context to your dashboard panels, add **Text** panels that display important information, instructions, images, and more. You can create **Text** panels using GitHub-flavored Markdown text.
 
+::::{applies-switch}
+
+:::{applies-item} Stack 9.1
+Content for Stack 9.1
+:::
+
+:::{applies-item} Stack 9.2
 1. From your dashboard, select **Add panel**.
 2. In the **Add panel** flyout, select **Markdown Text**. A Markdown editor appears and lets you configure the information you want to display. 
 3. Enter your text, then click **Apply**.
@@ -23,7 +30,7 @@ For example, in **Editor** mode you enter:
 :::{image} /explore-analyze/images/kibana-markdown-editor-mode.png
 :alt: Markdown text with links
 :screenshot:
-:width: 75%
+:width: 60%
 :::
 
 The following instructions are displayed in **Preview** mode:
@@ -31,7 +38,7 @@ The following instructions are displayed in **Preview** mode:
 :::{image} /explore-analyze/images/kibana-markdown-preview-mode.png
 :alt: Panel with markdown link text
 :screenshot:
-:width: 75%
+:width: 60%
 :::
 
 Or when you enter:
@@ -50,4 +57,7 @@ The following image is displayed:
 :::
 
 For detailed information about writing on GitHub, click **Syntax help** on the top-right of the Markdown editor.
+:::
+
+::::
 
