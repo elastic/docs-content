@@ -34,7 +34,11 @@ stack: preview 9.1
 serverless: preview
 ```
 
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect significantly better performance for throughput and consistent search latency as compared to ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
+
+### Usage
+
+You can now use `semantic_text` with the new ELSER endpoint on EIS, see the [instructions to change the inference id](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis) to use the `.elser-2-elastic` inference endpoint. 
 
 ### Limitations
 
