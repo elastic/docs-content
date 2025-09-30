@@ -200,17 +200,16 @@ You can use the [get data stream API](https://www.elastic.co/docs/api/doc/elasti
 
 Within each TSDS backing index, {{es}} uses one of the following strategies to route documents with the same dimensions to the same shards.
 
-1. Based on the internally managed `index.dimensions` index setting (available as of stack version 9.2)
-2. Based on the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) index setting
+1. Based on the internally managed `index.dimensions` index setting (preferred). Available as of stack version 9.2.
+2. Based on the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) index setting (as a fallback).
 
 The `index.dimensions`-based strategy uses a list of dimension paths that's automatically kept up-to-date and is not user-configurable.
-When active, the routing decision will be made based on all dimension fields, instead of only those defined statically via the `index.routing_path` setting,
-which can help to prevent shard hot-spotting issues.
+When active, the routing decision will be made based on all dimension fields, instead of only those defined statically via the `index.routing_path` setting.
 This strategy is only available on data streams with no dynamic templates setting `time_series_dimension: true`.
 It is used by default if applicable and improves the ingest performance as dimensions only need to be processed once for the purposes of routing and creating the `_tsid` field.
 
-For more details including how to disable this strategy,
-see [`index.index_dimensions_tsid_strategy_enabled`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-dimensions-tsid-strategy-enabled)
+This strategy can be disabled by setting [`index.index_dimensions_tsid_strategy_enabled`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-dimensions-tsid-strategy-enabled) to `false`,
+or by manually setting `index.routing_path`.
 
 To use the `index.routing_path`-based strategy,
 you must specify one or more dimensions in the `index.routing_path` setting. Each document in a TSDS must contain one or more dimensions that match the `index.routing_path` setting.
