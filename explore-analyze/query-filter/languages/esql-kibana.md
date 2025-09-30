@@ -119,6 +119,7 @@ You can then:
 :::
 
 :::{note}
+The maximum number of queries in the history depends on the version you're using:
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` The query history can keep up to 50 KB of queries, which represents about 200 large queries, or about 300 short queries.
 - {applies_to}`stack: ga 9.0` The query history keeps up to 20 queries.
 :::
