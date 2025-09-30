@@ -37,7 +37,7 @@ In {{eck}} clusters licensed with an enterprise license, a separate PDB is creat
 | transform | Yellow |  |
 | remote_cluster_client | Yellow |  |
 
-Single-node clusters are not considered highly available and can always be disrupted.
+Single-node clusters are not considered highly available and can always be disrupted regardless of license type.
 
 ### Non-enterprise licensed customers
 :::{note}
