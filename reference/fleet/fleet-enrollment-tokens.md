@@ -20,14 +20,14 @@ Depending on the output of the agent policy with which the enrollment token is a
 
 * For the Kafka output, it passes authentication parameters.
 
-    The authentication parameters are defined in the authentication settings of the Kafka output and are used by {{agent}} to connect to Kafka.
+    The authentication parameters are defined in the authentication settings of the Kafka output and are used by {{agent}} to authenticate with the Kafka cluster before sending data to it.
 
 * For the {{ls}} output, it passes SSL/TLS configuration details.
 
-    The SSL/TLS configuration details such as the SSL certificate authority, the SSL certificate, and the SSL certificate key are defined during {{ls}} output creation and are used by {{agent}} to connect to {{ls}}.
+    The SSL/TLS configuration details such as the SSL certificate authority, the SSL certificate, and the SSL certificate key are defined during {{ls}} output creation. {{agent}} uses SSL/TLS client authentication to authenticate with the {{ls}} pipeline before sending data to it.
 
 :::{note}
-Although an API key is generated during {{ls}} output creation, this key is not passed to {{agent}} by {{fleet-server}}.
+Although an API key is generated during {{ls}} output creation, this key is not passed to {{agent}} by {{fleet-server}}. If the {{ls}} pipeline uses the {{es}} output, this API key is used by {{ls}} to authenticate with the {{es}} cluster before sending data to it.
 :::
 
 ## Create enrollment tokens [create-fleet-enrollment-tokens]
