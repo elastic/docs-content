@@ -18,24 +18,24 @@ ECK manages either a single default PDB, or multiple PDBs per {{es}} resource ac
 In ECK 3.1 and earlier, all clusters follow the [non-enterprise behavior](#non-enterprise-licensed-customers), regardless of license type.
 :::
 
-### Enterprise licensed customers
+## Enterprise licensed customers
 ```{applies_to}
 deployment:
   eck: ga 3.2
 ```
 
-A separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. The PDBs allow one {{es}} Pod per nodeSet to simultaneously be taken down as long as the cluster has the health defined in the following table:
+In {{eck}} clusters licensed with an enterprise license, a separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. The PDBs allow one {{es}} Pod per nodeSet to simultaneously be taken down as long as the cluster has the health defined in the following table:
 
 | Role | Cluster health required | Notes |
 |------|------------------------|--------|
-| Master | Yellow |  |
-| Data | Green | All Data roles are grouped together into a single PDB, except for data_frozen. |
-| Data Frozen | Yellow | Since the frozen tier are essentially stateless, managing searchable snapshots, additional disruptions are allowed. |
-| Ingest | Yellow |  |
-| ML | Yellow |  |
-| Coordinating | Yellow |  |
-| Transform | Yellow |  |
-| Remote cluster client | Yellow |  |
+| master | Yellow |  |
+| data | Green | All Data roles are grouped together into a single PDB, except for data_frozen. |
+| data_frozen | Yellow | Since data_frozen nodes are essentially stateless, managing searchable snapshots when compared to other data node types, additional disruptions are allowed. |
+| ingest | Yellow |  |
+| ml | Yellow |  |
+| coordinating | Yellow |  |
+| transform | Yellow |  |
+| remote_cluster_client | Yellow |  |
 
 Single-node clusters are not considered highly available and can always be disrupted.
 
@@ -44,11 +44,13 @@ Single-node clusters are not considered highly available and can always be disru
 In ECK 3.1 and earlier, all clusters follow this behavior regardless of license type.
 :::
 
-It allows one {{es}} Pod to be taken down, as long as the cluster has a `green` health. Single-node clusters are not considered highly available and can always be disrupted.
+In {{eck}} clusters that do not have an enterprise license, one {{es}} Pod can be taken down at a time, as long as the cluster has a health status of `green`. Single-node clusters are not considered highly available and can always be disrupted.
 
 ## Overriding the default behavior
 
-In the {{es}} specification, you can change the default behavior as follows:
+In the {{es}} specification, you can change the default behavior in 2 ways. By fully overriding the PodDisruptionBudget within the {{es}} spec or by disabling the default PodDisruptionBudget and specifying one or more PodDisruptionBudget(s).
+
+### Fully override the PodDisruptionBudget within the {{es}} spec [k8s-override-default-pdb]
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -68,13 +70,13 @@ spec:
           elasticsearch.k8s.elastic.co/cluster-name: quickstart
 ```
 
-This will cause the ECK operator to only create the PodDisruptionBudget defined in the spec and will not create any additional PodDisruptionBudgets.
+This will cause the ECK operator to only create the PodDisruptionBudget defined in the spec. It will not create any additional PodDisruptionBudgets.
 
 ::::{note}
 [`maxUnavailable`](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#arbitrary-controllers-and-selectors) cannot be used with an arbitrary label selector, therefore `minAvailable` is used in this example.
 ::::
 
-## Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
+### Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
 
 You can specify a PDB per nodeSet or node role.
 
