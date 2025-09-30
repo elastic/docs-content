@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshoot Collector sampling configuration
+navigation_title: Collector sampling issues
 description: Learn how to troubleshoot missing or incomplete traces in the EDOT Collector caused by sampling configuration.
 applies_to:
   serverless: all
@@ -12,17 +12,21 @@ products:
 
 # Missing or incomplete traces due to Collector sampling
 
-If traces or spans are missing in Kibana, the issue might be related to the Collector’s sampling configuration. Tail-based sampling in the Collector can reduce trace volume if policies are too strict or misconfigured.
+If traces or spans are missing in {{kib}}, the issue might be related to the Collector’s sampling configuration. Tail-based sampling in the Collector can reduce trace volume if policies are too strict or misconfigured.
 
 Both Collector-based and SDK-level sampling can lead to gaps in telemetry if not configured correctly. See [Missing or incomplete traces due to SDK sampling](../edot-sdks/misconfigured-sampling-sdk.md) for more information.
 
 ## Symptoms
 
-- Only a small subset of traces reaches Elasticsearch/Kibana, even though SDKs are exporting spans.
+When Collector-based tail sampling is misconfigured or too restrictive, you might observe the following:
+
+- Only a small subset of traces reaches {{es}}/{{kib}}, even though SDKs are exporting spans.
 - Error traces are missing because they’re not explicitly included in the `sampling_policy`.
 - Collector logs show dropped spans.
 
 ## Causes
+
+The following conditions can lead to missing or incomplete traces when using tail-based sampling in the Collector:
 
 - Tail sampling policies in the Collector are too narrow or restrictive.
 - The default rule set excludes key transaction types (for example long-running requests, non-error transactions).
@@ -54,9 +58,9 @@ Follow these steps to resolve sampling configuration issues:
 - Review Collector logs for messages about dropped spans, and determine whether drops are due to sampling policy outcomes or resource limits
 :::
 
-:::{step} Differentiate head vs. tail sampling
+:::{step} Differentiate head and tail sampling
 
-- Review if SDKs apply head sampling, which reduces traces available for tail sampling
+- Review if SDKs already applies head sampling, which reduces traces available for tail sampling in the Collector
 - Consider setting SDKs to `always_on` and managing sampling centrally in the Collector for more flexibility
 :::
 
