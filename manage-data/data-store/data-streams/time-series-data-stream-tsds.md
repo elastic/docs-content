@@ -198,11 +198,26 @@ You can use the [get data stream API](https://www.elastic.co/docs/api/doc/elasti
 
 ### Dimension-based routing [dimension-based-routing]
 
-Within each TSDS backing index, {{es}} uses the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) index setting to route documents with the same dimensions to the same shards.
+Within each TSDS backing index, {{es}} uses one of two strategies to route documents with the same dimensions to the same shards.
 
-When you create the matching index template for a TSDS, you must specify one or more dimensions in the `index.routing_path` setting. Each document in a TSDS must contain one or more dimensions that match the `index.routing_path` setting.
+1. Based on the internally managed `index.dimensions` index setting (available as of stack version 9.2)
+2. Based on the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) index setting
+
+The `index.dimensions`-based strategy uses a list of dimension paths that's automatically kept up-to-date and is not user-configurable.
+When active, the routing decision will be made based on all dimension fields instead of only those defined statically via the `index.routing_path` setting,
+which can help to prevent shard hot-spotting issues.
+This strategy is only available on data streams and requires that there are no dynamic templates that set `time_series_dimension: true`.
+It is used by default if applicable and improves the ingest performance as dimensions only need to be processed once for the purposes of routing and creating the `_tsid` field.
+
+For more details including how to disable this strategy,
+see [`index.index_dimensions_tsid_strategy_enabled`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-dimensions-tsid-strategy-enabled)
+
+To use the `index.routing_path`-based strategy,
+you must specify one or more dimensions in the `index.routing_path` setting. Each document in a TSDS must contain one or more dimensions that match the `index.routing_path` setting.
 
 The `index.routing_path` setting accepts wildcard patterns (for example `dim.*`) and can dynamically match new fields. However, {{es}} will reject any mapping updates that add scripted, runtime, or non-dimension fields that match the `index.routing_path` value.
+
+The following applies to both strategies: 
 
 [Pass-through](elasticsearch://reference/elasticsearch/mapping-reference/passthrough.md#passthrough-dimensions) fields may be configured as dimension containers. In this case, their sub-fields get included to the routing path automatically.
 
