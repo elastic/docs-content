@@ -198,15 +198,15 @@ You can use the [get data stream API](https://www.elastic.co/docs/api/doc/elasti
 
 ### Dimension-based routing [dimension-based-routing]
 
-Within each TSDS backing index, {{es}} uses one of two strategies to route documents with the same dimensions to the same shards.
+Within each TSDS backing index, {{es}} uses one of the following strategies to route documents with the same dimensions to the same shards.
 
 1. Based on the internally managed `index.dimensions` index setting (available as of stack version 9.2)
 2. Based on the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) index setting
 
 The `index.dimensions`-based strategy uses a list of dimension paths that's automatically kept up-to-date and is not user-configurable.
-When active, the routing decision will be made based on all dimension fields instead of only those defined statically via the `index.routing_path` setting,
+When active, the routing decision will be made based on all dimension fields, instead of only those defined statically via the `index.routing_path` setting,
 which can help to prevent shard hot-spotting issues.
-This strategy is only available on data streams and requires that there are no dynamic templates that set `time_series_dimension: true`.
+This strategy is only available on data streams with no dynamic templates setting `time_series_dimension: true`.
 It is used by default if applicable and improves the ingest performance as dimensions only need to be processed once for the purposes of routing and creating the `_tsid` field.
 
 For more details including how to disable this strategy,
