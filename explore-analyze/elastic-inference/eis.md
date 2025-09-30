@@ -40,6 +40,7 @@ ELSER on EIS enables you to use the ELSER model on GPUs, without having to manag
 ```{applies_to}
 stack: preview 9.1
 serverless: preview
+```
 
 You can now use `semantic_text` with the new ELSER endpoint on EIS, see the [instructions to change the inference id](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis) to use the `.elser-2-elastic` inference endpoint. 
 
