@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-your-data.html
-  - https://www.elastic.co/customer-success/data-ingestion
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-ingestion-overview.html
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-intro.html
 applies_to:
@@ -16,9 +15,9 @@ products:
   - id: elasticsearch
 ---
 
-# Ingestion
+# Ingest: Bring your data to Elastic
 
-Bring your data! Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
+Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
 
 Our ingest tools are flexible, and support a wide range of scenarios. We can help you with everything from popular and straightforward use cases, all the way to advanced use cases that require additional processing in order to modify or reshape your data before it goes to {{es}}.
 

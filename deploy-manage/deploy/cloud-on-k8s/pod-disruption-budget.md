@@ -58,7 +58,7 @@ kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -80,14 +80,14 @@ This will cause the ECK operator to only create the PodDisruptionBudget defined 
 
 You can specify a PDB per nodeSet or node role.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
   podDisruptionBudget: {} <1>
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: master
       count: 3

@@ -10,7 +10,7 @@ products:
 
 # Virtual memory [k8s-virtual-memory]
 
-By default, {{es}} uses memory mapping (`mmap`) to efficiently access indices. Usually, default values for virtual address space on Linux distributions are too low for {{es}} to work properly, which may result in out-of-memory exceptions. This is why [the quickstart example](deploy-an-orchestrator.md) disables `mmap` through the `node.store.allow_mmap: false` setting. For production workloads, it is strongly recommended to increase the kernel setting `vm.max_map_count` to `262144` and leave `node.store.allow_mmap` unset.
+By default, {{es}} uses memory mapping (`mmap`) to efficiently access indices. Usually, default values for virtual address space on Linux distributions are too low for {{es}} to work properly, which may result in out-of-memory exceptions. This is why [the quickstart example](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) disables `mmap` through the `node.store.allow_mmap: false` setting. For production workloads, it is strongly recommended to increase the kernel setting `vm.max_map_count` to `262144` and leave `node.store.allow_mmap` unset.
 
 The kernel setting `vm.max_map_count=262144` can be set on the host directly, by a dedicated init container which must be privileged, or a dedicated Daemonset.
 
@@ -31,14 +31,14 @@ spec:
 
 To add an init container that changes the host kernel setting before your {{es}} container starts, you can use the following example {{es}} spec:
 
-```yaml
+```yaml subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -97,14 +97,14 @@ EOF
 
 To run an {{es}} instance that waits for the kernel setting to be in place:
 
-```yaml
+```yaml subs=true
 cat <<'EOF' | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elasticsearch-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1

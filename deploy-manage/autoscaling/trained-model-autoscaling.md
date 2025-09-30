@@ -22,7 +22,7 @@ There are two ways to enable autoscaling:
 * through APIs by enabling adaptive allocations
 * in {{kib}} by enabling adaptive resources
 
-For {{serverless-short}} projects, trained model autoscaling is automatically enabled and cannot be disabled.
+For {{serverless-short}} projects, trained model autoscaling is always enabled and cannot be turned off. 
 
 ::::{important}
 To fully leverage model autoscaling in {{ech}}, {{ece}}, and {{eck}}, it is highly recommended to enable [{{es}} deployment autoscaling](../../deploy-manage/autoscaling.md).
@@ -35,6 +35,16 @@ The available resources of self-managed deployments are static, so trained model
 :::
 
 {{serverless-full}} Security and Observability projects are only charged for data ingestion and retention. They are not charged for processing power (VCU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
+
+## Cooldown periods [cooldown-periods]
+
+Trained model deployments remain active for 24 hours after the last inference request. After that, they scale down to zero. When scaled up again, they stay active for 5 minutes before they can scale down. These cooldown periods prevent unnecessary scaling and ensure models are available when needed.
+
+::::{important}
+During these cooldown periods, you will continue to be billed for the active resources.
+::::
+
+For {{ech}}, {{eck}} and {{ece}} deployments, you can change the length of this period with the `xpack.ml.trained_models.adaptive_allocations.scale_to_zero_time` cluster setting (minimum 1 minute). For {{serverless-short}} projects, this period is fixed and cannot be changed.
 
 ## Enabling autoscaling through APIs - adaptive allocations [enabling-autoscaling-through-apis-adaptive-allocations]
 
@@ -123,8 +133,8 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
 | Low | 0 to 2 dynamically | 1 | 0 to 16 dynamically |
-| Medium | 1 to 32 dynamically | 1 | 8 to 256 dynamically |
-| High | 1 to 512 for Search<br> 1 to 128 for Security and Observability<br> | 1 | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
+| Medium | 0 to 32 dynamically | 1 | 8 to 256 dynamically |
+| High | 0 to 512 for Search<br> 1 to 128 for Security and Observability<br> | 1 | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
 
 :::
 

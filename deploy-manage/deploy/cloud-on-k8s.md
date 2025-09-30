@@ -91,7 +91,7 @@ ECK should work with all conformant **installers** listed in these [FAQs](https:
 
 Alpha, beta, and stable API versions follow the same [conventions used by Kubernetes](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-versioning).
 
-### {{stack}} compatibility
+### {{stack}} compatibility [stack-compatibility]
 
 ECK is compatible with the following {{stack}} applications:
 

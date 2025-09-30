@@ -79,7 +79,7 @@ To use these features:
 stack: ga
 ```
 
-If you use {{es}} {{security-features}}, the following [security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) are required:
+If you use {{es}} {{security-features}}, the following [security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) are required:
 
 * The `monitor` cluster privilege to access {{kib}}'s **Index Management** features.
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index’s data.
@@ -153,7 +153,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 
 * To view information about the stream's backing indices, click the number in the **Indices** column.
 * A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
-* To modify the data retention value, select an index, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is not managed by an ILM policy.
+* To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is not managed by an ILM policy.
 * To view more information about a data stream including it's lifecycle settings, click the stream's name.
 
 ### Manage index templates [index-management-manage-index-templates]
@@ -289,7 +289,7 @@ You’re now ready to create new indices using your index template.
     GET /my-index-000001,my-index-000002
     ```
 
-### Manage component templates
+### Manage component templates [index-management-manage-component-templates]
 
 Component templates are a type of [template](/manage-data/data-store/templates.md) used as reusable building blocks within index templates to configure index settings, mappings, and aliases.
 
@@ -303,7 +303,7 @@ Create, edit, clone, and delete your component templates in the **Component Temp
 * To show details and perform operations, click the template name.
 * To create new component templates, use the **Create component template** wizard.
 
-### Manage enrich policies
+### Manage enrich policies [manage-enrich-policies]
 
 An [enrich policy](/manage-data/ingest/transform-enrich/data-enrichment.md#enrich-policy) is a set of configuration options used to add data from your existing indices to incoming documents during ingest. An enrich policy contains:
 

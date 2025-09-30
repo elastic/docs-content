@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-tls.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -32,7 +32,7 @@ Enable TLS and configure the APM Server to point to the extracted certificate an
 :::::::{tab-set}
 
 ::::::{tab-item} Fleet-managed
-Enable TLS in the APM integration settings and use the [SSL/TLS input settings](/solutions/observability/apm/ssl-tls-input-settings.md) to set the path to the server certificate and key.
+Enable TLS in the APM integration settings and use the [SSL/TLS input settings](/solutions/observability/apm/apm-server/ssl-tls-input-settings.md) to set the path to the server certificate and key.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -44,7 +44,7 @@ apm-server.ssl.certificate: "/path/to/apm-server.crt"
 apm-server.ssl.key: "/path/to/apm-server.key"
 ```
 
-A full list of configuration options is available in [SSL/TLS input settings](/solutions/observability/apm/ssl-tls-input-settings.md).
+A full list of configuration options is available in [SSL/TLS input settings](/solutions/observability/apm/apm-server/ssl-tls-input-settings.md).
 
 ::::{tip}
 If APM agents are authenticating themselves using a certificate that cannot be authenticated through known CAs (e.g. self signed certificates), use the `ssl.certificate_authorities` to set a custom CA. This will automatically modify the `ssl.client_authentication` configuration to require authentication.

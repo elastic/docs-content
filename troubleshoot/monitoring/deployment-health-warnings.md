@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Troubleshoot deployment health warnings [ec-deployment-no-op]
+# Troubleshoot deployment health warnings on {{ech}} [ec-deployment-no-op]
 
 The {{ecloud}} [Deployments](https://cloud.elastic.co/deployments) page shows the current status of your active deployments. From time to time you may get one or more health warnings, such as the following:
 
@@ -37,5 +37,5 @@ If the warning refers to a system change, check the deployment’s [Activity](/d
 :::
 
 ## Additional resources
-* [Elastic Cloud Enterprise deployment health warnings](/troubleshoot/deployments/cloud-enterprise/deployment-health-warnings.md)
+* [](/troubleshoot/deployments/cloud-enterprise/deployment-health-warnings.md)
 * [Troubleshooting overview](/troubleshoot/index.md)

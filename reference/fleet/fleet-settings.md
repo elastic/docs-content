@@ -65,7 +65,7 @@ When a {{fleet-server}} is added or removed from the list, all agent policies ar
 Add or edit output settings to specify where {{agent}}s send data. {{agent}}s use the default output if you don’t select an output in the agent policy.
 
 ::::{tip}
-If you have an `Enterprise` [{{stack}} subscription](https://www.elastic.co/subscriptions), you can configure {{agent}} to [send data to different outputs for different integration policies](/reference/fleet/integration-level-outputs.md).
+If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} to [send data to different outputs for different integration policies](/reference/fleet/integration-level-outputs.md).
 ::::
 
 

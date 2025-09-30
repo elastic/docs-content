@@ -1,14 +1,13 @@
 toc:
   - file: index.md
   - file: fleet-agent-serverless-restrictions.md
+  - file: beats-agent-comparison.md
   - file: migrate-from-beats-to-elastic-agent.md
     children:
       - file: migrate-auditbeat-to-agent.md
   - file: deployment-models.md
     children:
       - file: fleet-server.md
-      - file: get-started-managed-apm-server.md
-      - file: get-started-apm-server-binary.md
       - file: add-fleet-server-cloud.md
       - file: add-fleet-server-on-prem.md
       - file: add-fleet-server-mixed.md
@@ -20,6 +19,7 @@ toc:
       - file: fleet-server-monitoring.md
   - file: install-elastic-agents.md
     children:
+      - file: fleet-agent-release-process.md
       - file: install-fleet-managed-elastic-agent.md
       - file: install-standalone-elastic-agent.md
         children:

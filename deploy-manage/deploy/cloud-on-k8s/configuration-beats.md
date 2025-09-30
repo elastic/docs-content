@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-beat-configuration]
+# Configuration for Beats on {{eck}} [k8s-beat-configuration]
 
 ## Upgrade the Beat specification [k8s-beat-upgrade-specification]
 
@@ -19,14 +20,14 @@ You can upgrade the Beat version or change settings by editing the YAML specific
 
 The Beat configuration is defined in the `config` element:
 
-```yaml
+```yaml subs=true
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
 metadata:
   name: quickstart
 spec:
   type: heartbeat
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRef:
     name: quickstart
   config:
@@ -44,14 +45,14 @@ spec:
 
 Alternatively, it can be provided through a Secret specified in the `configRef` element:
 
-```yaml
+```yaml subs=true
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
 metadata:
   name: heartbeat-quickstart
 spec:
   type: heartbeat
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRef:
     name: quickstart
   configRef:

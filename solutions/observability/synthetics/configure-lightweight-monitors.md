@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-lightweight.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-lightweight.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -403,7 +403,7 @@ $$$monitor-http-proxy_url$$$
     **Example**:
 
     ```yaml
-    http://proxy.mydomain.com:3128
+    http://proxy.example.com:3128
     ```
 
 $$$monitor-http-username$$$
@@ -496,7 +496,7 @@ check.request:
   headers:
     'Content-Type': 'application/x-www-form-urlencoded'
   # urlencode the body:
-  body: "name=first&email=someemail%40someemailprovider.com"
+  body: "name=first&email=someemail%40example.com"
 ```
 
 **`response`**

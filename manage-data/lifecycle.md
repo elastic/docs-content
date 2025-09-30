@@ -26,6 +26,9 @@ To help you manage your data, {{es}} offers you the following options: {{ilm-cap
 ::::
 
 ## {{ilm-init}} [ilm]
+```{applies_to}
+serverless: unavailable
+```
 
 ::::{tip}
 {{ilm-init}} is not available on {{es-serverless}}.
@@ -57,6 +60,9 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 **[Read more in Data stream lifecycle ->](/manage-data/lifecycle/data-stream.md)**
 
 ## Elastic Curator [elastic-curator]
+```{applies_to}
+serverless: unavailable
+```
 
 **Elastic Curator** is a tool that allows you to manage your indices and snapshots using user-defined filters and predefined actions. If ILM provides the functionality to manage your index lifecycle, and you have at least a Basic license, consider using ILM in place of Curator. Many stack components make use of ILM by default.
 

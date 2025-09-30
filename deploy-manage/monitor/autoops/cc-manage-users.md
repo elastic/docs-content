@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: Manage connected cluster users
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Manage connected cluster users
@@ -18,7 +21,7 @@ Learn how to invite users to your {{ecloud}} organization and give them access t
 :::
 :::
 
-To invite users to your organization and give them access to your self-managed cluster:
+To invite users to your organization and give them access to your cluster:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, select a cluster.
@@ -28,7 +31,7 @@ To invite users to your organization and give them access to your self-managed c
     
     To add multiple users, enter their email addresses separated by a space.
 6. In the **Assign roles** section, enable **Connected cluster access**. 
-7. Set roles for the users on all or selected self-managed clusters so that they have the appropriate permissions when they accept the invitation and sign in to {{ecloud}}. 
+7. Set roles for the users on all or selected clusters so that they have the appropriate permissions when they accept the invitation and sign in to {{ecloud}}. 
 
     Learn more about roles and their levels of access to AutoOps in [Assign roles](#assign-roles).
 8. Click **Send invites**.
@@ -44,4 +47,4 @@ Assign the following roles to new or existing users based on levels of access to
 | Role | Allowed actions in AutoOps |
 | --- | --- |
 | **Organization owner** | View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect and disconnect clusters |
-| **Connected cluster access** | **Viewer**: <br> View events and metrics reports <br><br>  **Admin** for all connected clusters: <br> View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect and disconnect clusters <br><br>  **Admin** for selected clusters: <br> View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect clusters |
+| **Connected cluster access** | **Viewer**: <br> View events and metrics reports <br><br>  **Admin** for all connected clusters: <br> View events and metrics reports <br> Add or edit customizations and notification preferences <br> Connect and disconnect clusters <br><br>  **Admin** for selected clusters: <br> View events and metrics reports <br> Connect clusters |
