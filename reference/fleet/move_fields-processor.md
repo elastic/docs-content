@@ -2,6 +2,8 @@
 navigation_title: move_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/move_fields-processor.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
