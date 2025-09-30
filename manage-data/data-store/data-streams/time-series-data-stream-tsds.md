@@ -135,3 +135,4 @@ The `_tsid` is an automatically generated object containing the document’s dim
 ##### [tsds-look-back-time]
 ##### [time-bound-indices]
 ##### [dimension-based-routing]
+##### [tsds-accepted-time-range]
