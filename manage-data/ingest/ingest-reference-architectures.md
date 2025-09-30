@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/index.html
   - https://www.elastic.co/guide/en/ingest/current/use-case-arch.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: elastic-agent
 ---
@@ -27,5 +30,5 @@ You can host {{es}} on your own hardware or send your data to {{es}} on {{ecloud
 | [*{{agent}} to proxy to Elasticsearch*](./ingest-reference-architectures/agent-proxy.md)<br><br>![Image showing connections between {{agent}} and {{es}} using a proxy](/manage-data/images/ingest-ea-proxy-es.png "") | Agents have [network restrictions](./ingest-reference-architectures/agent-proxy.md) that prevent connecting outside of the {{agent}} network. [{{ls}} as proxy](./ingest-reference-architectures/ls-networkbridge.md) is one option.<br> |
 | [*{{agent}} to {{es}} with Kafka as middleware message queue*](./ingest-reference-architectures/agent-kafka-es.md)<br><br>![Image showing {{agent}} collecting data and using Kafka as a message queue enroute to {{es}}](/manage-data/images/ingest-ea-kafka.png "") | Kafka is your [middleware message queue](./ingest-reference-architectures/agent-kafka-es.md):<br><br>* [Kafka ES sink connector](./ingest-reference-architectures/agent-kafka-essink.md) to write from Kafka to {{es}}<br>* [{{ls}} to read from Kafka and route to {{es}}](./ingest-reference-architectures/agent-kafka-ls.md)<br> |
 | [*{{ls}} to Elasticsearch*](./ingest-reference-architectures/ls-for-input.md)<br><br>![Image showing {{ls}} collecting data and sending to {{es}}](/manage-data/images/ingest-ls-es.png "") | You need to collect data from a source that {{agent}} can’t read (such as databases, AWS Kinesis). Check out the [{{ls}} input plugins](logstash-docs-md://lsr/input-plugins.md).<br> |
-| [*Elastic air-gapped architectures*](./ingest-reference-architectures/airgapped-env.md)<br><br>![Image showing {{stack}} in an air-gapped environment](/manage-data/images/ingest-ea-airgapped.png "") | You want to deploy {{agent}} and {{stack}} in an air-gapped environment (no access to outside networks)<br> |
+| [*Elastic air-gapped architectures*](./ingest-reference-architectures/airgapped-env.md) {applies_to}`serverless: unavailable`<br><br>![Image showing {{stack}} in an air-gapped environment](/manage-data/images/ingest-ea-airgapped.png "") | You want to deploy {{agent}} and {{stack}} in an air-gapped environment (no access to outside networks)<br> |
 
