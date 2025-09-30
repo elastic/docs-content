@@ -49,7 +49,9 @@ These response actions are supported for Microsoft Defender for Endpoint–enrol
 
     Refer to the instructions on [isolating](/solutions/security/endpoint-response-actions/isolate-host.md#isolate-a-host) and [releasing](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) hosts for more details.
 
-* {applies_to}`stack: ga 9.1` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#microsoft-defender-for-endpoint).
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#microsoft-defender-for-endpoint).
+
+* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` **Cancel an ongoing action on a host** with the [`cancel` response action](/solutions/security/endpoint-response-actions.md#cancel).
 
 ## SentinelOne response actions [sentinelone-response-actions]
 
@@ -79,4 +81,4 @@ These response actions are supported for SentinelOne-enrolled hosts:
 
 * **View past response action activity** in the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) log.
 
-* {applies_to}`stack: ga 9.2` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#sentinelone).
+* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#sentinelone).
