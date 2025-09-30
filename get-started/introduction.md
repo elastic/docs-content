@@ -7,6 +7,7 @@ applies_to:
   stack:
   serverless:
 ---
+
 # Solutions and use cases [introduction]
 
 Elastic offers three major search-powered solutions: {{es}}, {{observability}}, and {{elastic-sec}}—all built on an open source, extensible platform.
