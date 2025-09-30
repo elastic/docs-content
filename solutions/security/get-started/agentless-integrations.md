@@ -34,11 +34,11 @@ Agentless deployment for other integrations is in beta and is subject to change.
 For setup guides and to learn more about Elastic's integrations, including whether each supports agentless deployment, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).
 
 ## Filter the integrations page to find agentless integrations
----
-applies_to:
+
+```{applies_to}
 stack: ga 9.2
 serverless: ga 
----
+```
 
 To identify which integrations support agentless deployment:
 
