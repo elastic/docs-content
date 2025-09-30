@@ -14,7 +14,7 @@ products:
 
 If traces or spans are missing in {{kib}}, the issue might be related to the Collector’s sampling configuration. 
 
-{applies_to}`stack: 9.2` Tail-based sampling (TBS) allows the Collector to evaluate entire traces before deciding whether to keep them. If TBS policies are too strict or not aligned with your workloads, traces you expect to see may be dropped.
+{applies_to}`stack: ga 9.2` Tail-based sampling (TBS) allows the Collector to evaluate entire traces before deciding whether to keep them. If TBS policies are too strict or not aligned with your workloads, traces you expect to see may be dropped.
 
 Both SDK-level and Collector-based sampling can result in gaps in telemetry if misconfigured. Refer to [Missing or incomplete traces due to Collector sampling](../edot-collector/misconfigured-sampling-collector.md) for more details.
 
