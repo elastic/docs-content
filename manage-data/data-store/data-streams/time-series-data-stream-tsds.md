@@ -128,3 +128,10 @@ The `_tsid` is an automatically generated object containing the document’s dim
 * Try the [quickstart](/manage-data/data-store/data-streams/quickstart-tsds.md) for a hands-on introduction
 * [Set up a time series data stream](/manage-data/data-store/data-streams/set-up-tsds.md)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint
+
+% suppress anchor warnings until chicken-and-egg resolved
+##### [time-series-mode]
+##### [tsds-look-ahead-time]
+##### [tsds-look-back-time]
+##### [time-bound-indices]
+##### [dimension-based-routing]
