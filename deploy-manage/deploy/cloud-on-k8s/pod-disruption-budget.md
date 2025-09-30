@@ -39,18 +39,18 @@ In {{eck}} clusters licensed with an enterprise license, a separate PDB is creat
 
 Single-node clusters are not considered highly available and can always be disrupted regardless of license type.
 
-### Non-enterprise licensed customers
+## Non-enterprise licensed customers
 :::{note}
 In ECK 3.1 and earlier, all clusters follow this behavior regardless of license type.
 :::
 
 In {{eck}} clusters that do not have an enterprise license, one {{es}} Pod can be taken down at a time, as long as the cluster has a health status of `green`. Single-node clusters are not considered highly available and can always be disrupted.
 
-## Overriding the default behavior
+### Overriding the default behavior
 
 In the {{es}} specification, you can change the default behavior in 2 ways. By fully overriding the PodDisruptionBudget within the {{es}} spec or by disabling the default PodDisruptionBudget and specifying one or more PodDisruptionBudget(s).
 
-### Fully override the PodDisruptionBudget within the {{es}} spec [k8s-override-default-pdb]
+#### Fully override the PodDisruptionBudget within the {{es}} spec [k8s-override-default-pdb]
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -76,7 +76,7 @@ This will cause the ECK operator to only create the PodDisruptionBudget defined 
 [`maxUnavailable`](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#arbitrary-controllers-and-selectors) cannot be used with an arbitrary label selector, therefore `minAvailable` is used in this example.
 ::::
 
-### Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
+#### Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
 
 You can specify a PDB per nodeSet or node role.
 
