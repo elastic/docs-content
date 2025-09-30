@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/beats-agent-comparison.html
+applies_to:
+  stack: ga
+products:
+  - id: beats
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{beats}} and {{agent}} capabilities
