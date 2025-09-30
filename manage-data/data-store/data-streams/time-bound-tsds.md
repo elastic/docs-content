@@ -58,7 +58,17 @@ These {{ilm-init}} actions mark the source index as read-only or prevent writes 
 
 ### Dimension-based routing [dimension-based-routing]
 
-In addition to time-based routing, time series data streams use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards.
+In addition to time-based routing, time series data streams use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards using one of two strategies:
+
+1. Based on the internally managed `index.dimensions` index setting (preferred). Available as of stack version 9.2.
+2. Based on the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) index setting (as a fallback).
+
+The `index.dimensions`-based strategy offers a better ingest performance.
+It uses a list of dimension paths that's automatically kept up-to-date and is not user-configurable.
+This strategy is not available for time series data streams with dynamic templates that set `time_series_dimension: true`.
+
+It can be disabled by setting [`index.index_dimensions_tsid_strategy_enabled`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-dimensions-tsid-strategy-enabled) to `false`,
+or by manually setting `index.routing_path`.
 
 The [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) setting specifies the dimension fields to use for routing, for example:
 
