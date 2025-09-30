@@ -92,10 +92,6 @@ FROM kibana_sample_data_logs
 
 You can do that automatically using the {icon}`pipeBreaks` **Prettify query** button from the query editor’s footer.
 
-:::{note}
-In versions 9.1 and earlier, this option is called **Add line breaks on pipes**.
-:::
-
 :::{image} /explore-analyze/images/esql-line-breakdown.gif
 :alt: Automatic line breaks and indentation for ES|QL queries
 :width: 75%
