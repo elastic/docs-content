@@ -656,12 +656,20 @@ toc:
           - file: remote-clusters/remote-clusters-migrate.md
           - file: remote-clusters/remote-clusters-settings.md
       - file: remote-clusters/eck-remote-clusters.md
-  - hidden: cloud-connect.md
+  - file: cloud-connect.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
+          - file: monitor/autoops/cc-autoops-as-cloud-connected.md
+            children: 
+            - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+            - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
+            - file: monitor/autoops/cc-manage-users.md
+            - file: monitor/autoops/cc-cloud-connect-autoops-faq.md
+            - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
+          - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-events.md
             children:
               - file: monitor/autoops/ec-autoops-event-settings.md
@@ -675,14 +683,7 @@ toc:
               - file: monitor/autoops/ec-autoops-shards-view.md
               - file: monitor/autoops/ec-autoops-template-optimizer.md
           - hidden: monitor/autoops/ec-autoops-dismiss-event.md
-          - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-faq.md
-          - hidden: monitor/autoops/cc-autoops-as-cloud-connected.md
-          - hidden: monitor/autoops/cc-connect-self-managed-to-autoops.md
-          - hidden: monitor/autoops/cc-connect-local-dev-to-autoops.md
-          - hidden: monitor/autoops/cc-manage-users.md
-          - hidden: monitor/autoops/cc-cloud-connect-autoops-faq.md
-          - hidden: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
       - file: monitor/stack-monitoring.md
         children:
           - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
