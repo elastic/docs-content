@@ -75,6 +75,7 @@ Apply {{observability}} to various scenarios to improve operational awareness an
 * **Log Monitoring and Analytics:** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
 * **Application Performance Monitoring (APM):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
 * **Infrastructure Monitoring:** Monitor metrics from servers, virtual machines, containers, and serverless environments with over 400 out-of-the-box integrations, including OpenTelemetry. This provides deep insights into resource utilization and overall system health.
+* **AI-Powered Log Analysis**: Use [Streams](/solutions/observability/streams/streams.md) to ingest raw logs in any format directly to a single endpoint without the need for complex agent management or manual parsing pipelines. Streams uses AI to automatically parse, structure, and analyze log data on the fly.
 * **Digital Experience Monitoring:**
   * **Real User Monitoring (RUM):** Capture and analyze data on how real users interact with web applications to improve perceived performance.
   * **Synthetic Monitoring:** Proactively simulate user journeys and API calls to test application availability and functionality.
