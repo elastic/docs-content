@@ -98,7 +98,7 @@ In versions 9.1 and earlier, this option is called **Add line breaks on pipes**.
 
 :::{image} /explore-analyze/images/esql-line-breakdown.gif
 :alt: Automatic line breaks and indentation for ES|QL queries
-:width: 50%
+:width: 75%
 :::
 
 You can adjust the editor’s height by dragging its bottom border to your liking.
