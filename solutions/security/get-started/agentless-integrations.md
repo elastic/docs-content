@@ -20,9 +20,6 @@ During technical preview, there are no additional costs associated with deployin
 There is a limit of 5 agentless integrations per project. 
 ::::
 
-::::{applies-switch}
-
-:::{applies-item} stack: 9.0
 ## Generally available (GA) agentless integrations
 
 Elastic fully supports agentless deployment for the Cloud Security Posture Management (CSPM) integration. Using this integration’s agentless deployment option, you can enable Elastic’s CSPM capabilities just by providing the necessary credentials. Agentless CSPM deployments support AWS, Azure, and GCP accounts.
@@ -35,17 +32,15 @@ To learn more about agentless CSPM deployments, refer to the getting started gui
 Agentless deployment for other integrations is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 
 For setup guides and to learn more about Elastic's integrations, including whether each supports agentless deployment, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).
-:::
 
-:::{applies-item} { stack: 9.2, serverless }
+## Filter the integrations page to find agentless integrations
+---
+applies_to:
+stack: ga 9.2
+serverless: ga 
+---
 
-## Generally available (GA) agentless integrations
-
-Elastic fully supports agentless deployment for many of our integrations. To identify which integrations support agentless deployment:
+To identify which integrations support agentless deployment:
 
 1. In {{kib}}, go to **Integrations**.
 2. On the left, enable the **Only agentless integrations** toggle. 
-
-:::
-
-::::
