@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga
+  stack: ga 9.2
   serverless: ga
 products:
   - id: kibana
@@ -8,20 +8,26 @@ products:
 
 # Visualize case data [visualize-case-data]
 
-Case data, such as details about comments, activities, and attachments, is stored in case analytics indices. You can query these indices to build dashboards and metrics that improve your visibility into case patterns and trends. 
+Case data, such as details about comments, activities, and attachments, is collected in case analytics indices. You can query these indices to build dashboards and metrics that improve your visibility into case patterns and trends. 
 
-::::{tip} 
-To learn more about queryable fields in the case analytics indices, refer to 
-% [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md) 
+::::{admonition} Requirements
+
+To visualize case data, you must do the following:
+
+* {applies_to}`stack: ga` Turn on the case analytics indices feature by adding `xpack.cases.incrementalId.enabled: true` to your [`kibana.yml`](/deploy-manage/stack-settings.md) file.
+* Ensure your role has at least `read` and `view_index_metadata` access to the appropriate case anlaytics indices.
+* (Optional) If you don't have cases, create a new one in a {{kib}} space to automatically generate the case analytics indices. 
+
 ::::
 
 ## About case analytics indices [about-case-analytics-indices]
 
-The following case analytics indices and their aliases are automatically generated for _all_ {{kib}} spaces if any spaces have cases. 
+After you turn on the case analytics indices feature, your {{kib}} spaces are checked for case data. If they have any, {{es}} automatically creates case analytics indices for each solution (Stack Management, {{observability}}, and Security) and every {{kib}} space. Aliases for the case analytics indices are automatically created as well.
+
+The case analytics indices are updated very five minutes with a snapshot of most current cases data in your spaces. Historical data for cases is not stored; it gets overwritten whenever the indices are refreshed.
 
 ::::{note} 
-* Every five minutes, indices are updated with a snapshot of most current cases data in your spaces. Historical data for cases is not stored; it gets overwritten whenever the indices are refreshed.
-* It may take around an hour for case analytics indices to form in a new {{kib}} space.
+It may take up to an hour for case analytics indices to form in a new {{kib}} space. 
 ::::
 
 ### General case data
@@ -68,13 +74,6 @@ These indices store data related to activity in Stack Management, {{observabilit
 
 ## Explore case data [explore-case-analytics-indices]
 
-::::{admonition} Requirements
-
-* Enable the case analytics indices feature by adding `xpack.cases.incrementalId.enabled: true` to your [`kibana.yml`](/deploy-manage/stack-settings.md) file.
-* Ensure your role has at least `read` and `view_index_metadata` access to the appropriate case anlaytics indices.
-
-::::
-
 Search and filter case data in [Discover](../../discover.md) and [Lens](../../visualize/lens.md), and build visualizations for [dashboards](../../dashboards.md). To help you start visualizing your case data, here are some sample {{esql}} queries that you can run from the [{{esql}} editor](../../../explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-get-started) in Discover.
 
 * Find the total number of open cases in the default {{kib}} space:
@@ -106,3 +105,8 @@ Search and filter case data in [Discover](../../discover.md) and [Lens](../../vi
   ```console
   FROM .internal.cases.default-securitysolution | STATS average_time_to_close = AVG(time_to_resolve)
   ```
+
+::::{tip} 
+To learn more about queryable fields in the indices, refer to 
+% [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md) 
+::::
