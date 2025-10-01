@@ -5,7 +5,8 @@ mapped_pages:
 applies_to:
   serverless:
   deployment:
-    ess: preview 9.2
+    ess:
+  stack: preview 9.2
 ---
 
 # Quickstart: Send data to the {{motlp}}
@@ -18,8 +19,6 @@ This endpoint is designed for the following use cases:
 * APM: Application telemetry in OTLP format.
 
 Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to Elastic.
-
-## Get started
 
 ## Send data to Elastic
 
@@ -49,7 +48,8 @@ To retrieve your {{motlp}} endpoint address, follow these steps:
 4. Copy the **Managed OTLP endpoint** URL.
 :::
 
-:::{applies-item} ess: preview 9.2
+:::{applies-item} ess:
+{applies_to}`stack: preview 9.2`
 1. Open your deployment in the Elastic Cloud console.
 2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
 3. Copy the endpoint URL shown.
@@ -174,9 +174,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Self-managed environments
 
-To send data to the {{motlp}} from a self-managed environment, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
-
-## Troubleshoot
+To send data to the {{motlp}} from a self-managed environment, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway) for more information.
 
 The following sections provide troubleshooting information for the {{motlp}}.
 
