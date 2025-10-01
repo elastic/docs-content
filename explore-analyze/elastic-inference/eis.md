@@ -66,7 +66,7 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 
 #### Rate limits 
 
-Rate limit for search and ingest is currently at 500 requests per minute. This permits ingest to approximately 8,000 documents per minute when ingesting 16 documents per request.
+Rate limit for search and ingest is currently at 500 requests per minute. This allows you to ingest approximately 8000 documents per minute at 16 documents per request.
 
 ## Pricing 
 
