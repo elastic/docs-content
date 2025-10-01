@@ -14,7 +14,7 @@ To provide context to your dashboard panels, add **Text** panels that display im
 
 ::::{applies-switch}
 
-:::{applies-item} Stack 9.1
+::::{applies-item} stack: ga 9.0
 Content for Stack 9.1
 :::
 
