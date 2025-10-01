@@ -40,13 +40,15 @@ ELSER on EIS enables you to use the ELSER model on GPUs, without having to manag
 
 You can now use `semantic_text` with the new ELSER endpoint on EIS, see the [instructions to change the inference id](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis) to use the `.elser-2-elastic` inference endpoint. 
 
+All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure and GCP and more regions, we will automatically route requests to the same CSP and closest region the Elaticsearch cluster is hosted on. 
+
 ### Limitations
 
 While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
 
 #### Region Availability 
 
-ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
+ELSER on EIS is only available in AWS `us-east-1`. We will be expanding the service availability to Azure and GCP, and more regions soon. 
 
 #### Uptime
 
