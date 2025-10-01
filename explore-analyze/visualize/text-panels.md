@@ -12,7 +12,7 @@ products:
 
 To provide context to your dashboard panels, add **Text** panels that display important information, instructions, images, and more. You can create **Text** panels using GitHub-flavored Markdown text.
 
-::::{applies-switch}
+:::::{applies-switch}
 
 ::::{applies-item} stack: ga 9.0
 Content for Stack 9.1
