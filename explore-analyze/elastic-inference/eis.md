@@ -34,7 +34,11 @@ stack: preview 9.1
 serverless: preview
 ```
 
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect significantly better performance for throughput and consistent search latency as compared to ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
+
+### Usage
+
+You can now use `semantic_text` with the new ELSER endpoint on EIS, see the [instructions to change the inference id](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis) to use the `.elser-2-elastic` inference endpoint. 
 
 ### Limitations
 
@@ -60,9 +64,9 @@ Performance may vary during the Technical Preview.
 Batches are limited to a maximum of 16 documents.
 This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
 
-#### Rate Limits 
+#### Rate limits 
 
-Rate limit for search and ingest is currently at 500 requests per minute.
+Rate limit for search and ingest is currently at 500 requests per minute. This allows you to ingest approximately 8000 documents per minute at 16 documents per request.
 
 ## Pricing 
 
