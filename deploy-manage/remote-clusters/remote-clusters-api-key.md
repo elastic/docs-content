@@ -124,6 +124,10 @@ If a remote cluster is part of an {{ech}} (ECH) deployment, the remote cluster s
         xpack.security.remote_cluster_client.ssl.certificate_authorities: [ "remote-cluster-ca.crt" ]
         ```
 
+        ::::{tip}
+        If the remote cluster uses a publicly trusted certificate, you don't need to add the CA certificate to the `certificate_authorities` setting. This example assumes you're using the private certificates created manually in the previous step, which require the CA to be added.
+        ::::
+
     3. Add the cross-cluster API key, created on the remote cluster earlier, to the keystore:
 
         ```sh
