@@ -23,7 +23,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Displays document count chart for {{esql}} categorize queries [#231459]({{kib-pull}}231459)
 * Lets you manually map new fields from the schema editor [#235919]({{kib-pull}}235919)
 * Adds AI-generative partition suggestions to Streams [#235759]({{kib-pull}}235759)
-* In Streams, allows you to create routing conditions directly from preview table cells. [#235560]({{kib-pull}}235560)
+* In Streams, allows you to create routing conditions directly from preview table cells [#235560]({{kib-pull}}235560)
 * Adds an option to convert an index to a lookup index to the **Manage index** menu [#233998]({{kib-pull}}233998)
 * Improves code examples in the Synonyms UI [#235944]({{kib-pull}}235944)
 * Automatically copies source data into the alerts-as-data documents for other ES Query rule types [#230010]({{kib-pull}}230010)
