@@ -95,38 +95,38 @@ The final step is to use the {{motlp}} endpoint and your Elastic API key to send
 ::::{tab-set}
 
 :::{tab-item} OpenTelemetry Collector example
-To send data to the {{motlp}} from the {{edot}} Collector or the upstream Collector, configure the `otlp` exporter:
+To send data to the {{motlp}} from the {{edot}} Collector or the contrib Collector, configure the `otlp` exporter:
 
 ```yaml
 exporters:
   otlp:
-    endpoint: https://<motlp-endpoint>
+    endpoint: https://<motlp-endpoint> <1>
     headers:
-      Authorization: ApiKey <your-api-key>
+      Authorization: ApiKey <your-api-key> <2>
 ```
+
+1. The endpoint retrieved at [step 2](#locate-your-motlp)
+2. The API key created at [step 3](#create-an-api-key)
 
 Set the API key as an environment variable or directly in the configuration as shown in the example.
 :::
 
 :::{tab-item} OpenTelemetry SDK example
-To send data to the {{motlp}} from {{edot}} SDKs or upstream SDKs, set the following variables in your application's environment:
+To send data to the {{motlp}} from {{edot}} SDKs or contrib SDKs, set the following variables in your application's environment:
 
 ```bash
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>"
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>" <1>
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>" <2>
 ```
 
-Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
-
-```
-OTEL_EXPORTER_OTLP_HEADERS=Authorization=ApiKey%20<your-api-key>`
-```
+1. The endpoint retrieved at [step 2](#locate-your-motlp)
+2. The API key created at [step 3](#create-an-api-key)
 :::
 
 :::{tab-item} Kubernetes example
 You can store your API key in a Kubernetes secret and reference it in your OTLP exporter configuration. This is more secure than hardcoding credentials.
 
-The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it. 
+The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it.
 
 For example, if your API key from Kibana is `abc123`, run:
 
@@ -141,10 +141,13 @@ Mount the secret as an environment variable or file, then reference it in your O
 ```yaml
 exporters:
   otlp:
-    endpoint: https://<motlp-endpoint>
+    endpoint: https://<motlp-endpoint> <1>
     headers:
-      Authorization: ${API_KEY}
+      Authorization: ${API_KEY} <2>
 ```
+
+1. The endpoint retrieved at [step 2](#locate-your-motlp)
+2. The API key created at [step 3](#create-an-api-key)
 
 And in your deployment spec:
 
@@ -170,7 +173,7 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ## Differences from the Elastic APM Endpoint
 
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
+The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/opentelemetry/index.md), which primarily focuses on traces and the APM use case.
 
 ## Troubleshoot
 
@@ -180,9 +183,9 @@ The following sections provide troubleshooting information for the {{motlp}}.
 
 Don't have a collector or SDK running? Spin up an EDOT collector in just a few steps:
 
-* [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
-* [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
-* [Docker Quickstart](opentelemetry://reference/quickstart/serverless/docker.md)
+* [Kubernetes Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)
+* [Hosts & VMs Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)
+* [Docker Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)
 
 ### Api Key prefix not found
 

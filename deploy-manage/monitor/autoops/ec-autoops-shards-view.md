@@ -1,14 +1,20 @@
 ---
+navigation_title: Shards
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-shards-view.html
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
-# Shards [ec-autoops-shards-view]
+# Shards view in AutoOps [ec-autoops-shards-view]
 
 The **Shards** view allows you to manage and monitor shards allocated to each node, ensuring optimal performance and reliability of your search and indexing operations.
 

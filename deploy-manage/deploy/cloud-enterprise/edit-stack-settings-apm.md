@@ -18,7 +18,7 @@ Starting in {{stack}} version 8.0, how you change APM settings and the settings 
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
     * This mode requires SSL/TLS configuration. Check [TLS configuration for {{fleet}}-managed mode](#ece-edit-apm-fleet-tls) for details.
-    * Check [APM integration input settings](/solutions/observability/apm/configure-apm-server.md) for all other Elastic APM configuration options in this mode.
+    * Check [APM integration input settings](/solutions/observability/apm/apm-server/configure.md) for all other Elastic APM configuration options in this mode.
 
 
 Standalone APM Server (legacy)
@@ -45,7 +45,7 @@ Pick one of the following options:
 {{ece}} supports most of the legacy APM settings. Through a YAML editor in the console, you can append your APM Server properties to the `apm-server.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apm/configure-apm-server.md).
+Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apm/apm-server/configure.md).
 ::::
 
 

@@ -153,7 +153,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 
 * To view information about the stream's backing indices, click the number in the **Indices** column.
 * A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
-* To modify the data retention value, select an index, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is not managed by an ILM policy.
+* To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is not managed by an ILM policy.
 * To view more information about a data stream including it's lifecycle settings, click the stream's name.
 
 ### Manage index templates [index-management-manage-index-templates]

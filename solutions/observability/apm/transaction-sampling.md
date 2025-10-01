@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-sampling.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-transaction-sampling.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -28,8 +28,8 @@ Elastic APM supports two types of sampling:
 ## Head-based sampling [apm-head-based-sampling]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 In head-based sampling, the sampling decision for each trace is made when the trace is initiated. Each trace has a defined and equal probability of being sampled.
@@ -108,14 +108,14 @@ Refer to the documentation of your favorite OpenTelemetry agent or SDK for more 
 ## Tail-based sampling [apm-tail-based-sampling]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
 ::::{note}
 **Support for tail-based sampling**
 
-Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/configure-output.md), tail-based sampling is *not* supported.
+Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/apm-server/configure-output.md), tail-based sampling is *not* supported.
 ::::
 
 In tail-based sampling, the sampling decision for each trace is made after the trace has completed. This means all traces will be analyzed against a set of rules, or policies, which will determine the rate at which they are sampled.
@@ -140,13 +140,13 @@ In this example, `Service A` initiates four transactions. If our sample rate is 
 
 Tail-based sampling is implemented entirely in APM Server, and will work with traces sent by either Elastic APM agents or OpenTelemetry SDKs.
 
-Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apm/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
+Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apm/opentelemetry/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
 
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
 Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
 
-In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, trace events are indexed or discarded based on the [discard on write failure](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-discard-on-write-failure-ref) configuration.
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/apm-server/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, trace events are indexed or discarded based on the [discard on write failure](/solutions/observability/apm/apm-server/tail-based-sampling.md#sampling-tail-discard-on-write-failure-ref) configuration.
 
 It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
@@ -194,8 +194,8 @@ The tail-based sampling implementation in version 9.0 offers significantly bette
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data.[^1^](#footnote-1) Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
@@ -215,8 +215,8 @@ These calculation methods ensure that the APM app provides the most accurate met
 ## Sample rates [_sample_rates]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 What’s the best sampling rate? Unfortunately, there isn’t one. Sampling is dependent on your data, the throughput of your application, data retention policies, and other factors. A sampling rate from `.1%` to `100%` would all be considered normal. You’ll likely decide on a unique sample rate for different scenarios. Here are some examples:
@@ -231,15 +231,15 @@ Regardless of the above, cost conscious customers are likely to be fine with a l
 ## Configure head-based sampling [apm-configure-head-based-sampling]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 There are three ways to adjust the head-based sampling rate of your APM agents:
 
 ### Dynamic configuration [_dynamic_configuration]
 
-The transaction sample rate can be changed dynamically (no redeployment necessary) on a per-service and per-environment basis with [{{apm-agent}} Configuration](/solutions/observability/apm/apm-agent-central-configuration.md) in {{kib}}.
+The transaction sample rate can be changed dynamically (no redeployment necessary) on a per-service and per-environment basis with [{{apm-agent}} Configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) in {{kib}}.
 
 ### {{kib}} API configuration [_kib_api_configuration]
 
@@ -260,7 +260,7 @@ Each agent provides a configuration value used to set the transaction sample rat
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -268,7 +268,7 @@ serverless: unavailable
 Enhanced privileges are required to use tail-based sampling. For more information, refer to [Create a tail-based sampling role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-tail-based-sampling).
 ::::
 
-Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
+Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apm/apm-server/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
 
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 
@@ -340,4 +340,4 @@ Policies are evaluated **in order** and the first one that meets all match condi
 
 ### Configuration reference [_configuration_reference]
 
-For a complete reference of tail-based sampling configuration options, refer to [](/solutions/observability/apm/tail-based-sampling.md).
+For a complete reference of tail-based sampling configuration options, refer to [](/solutions/observability/apm/apm-server/tail-based-sampling.md).

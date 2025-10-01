@@ -1,8 +1,10 @@
 ---
 navigation_title: Elastic Inference Service (EIS)
 applies_to:
-  stack: ga 9.0
+  stack: ga
   serverless: ga
+  deployment:
+    self: unavailable
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
@@ -22,7 +24,8 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-ELSER requests are managed by Elastic's own EIS infrastructure.
+ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`.
+
 
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
@@ -31,20 +34,19 @@ stack: preview 9.1
 serverless: preview
 ```
 
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability. 
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect significantly better performance for throughput and consistent search latency as compared to ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
 
-### Private preview access
+### Usage
 
-Private preview access is available by submitting the form provided [here](https://docs.google.com/forms/d/e/1FAIpQLSfp2rLsayhw6pLVQYYp4KM6BFtaaljplWdYowJfflpOICgViA/viewform).
+You can now use `semantic_text` with the new ELSER endpoint on EIS, see the [instructions to change the inference id](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis) to use the `.elser-2-elastic` inference endpoint. 
 
 ### Limitations
 
 While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
 
-#### Access
+#### Region Availability 
 
-This feature is being gradually rolled out to Serverless and Cloud Hosted customers.
-It may not be available to all users at launch.
+ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
 
 #### Uptime
 
@@ -62,6 +64,10 @@ Performance may vary during the Technical Preview.
 Batches are limited to a maximum of 16 documents.
 This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
 
-#### Rate Limits 
+#### Rate limits 
 
-Rate limit for search and ingest is currently at 2000 requests per minute.
+Rate limit for search and ingest is currently at 500 requests per minute. This allows you to ingest approximately 8000 documents per minute at 16 documents per request.
+
+## Pricing 
+
+All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER. 

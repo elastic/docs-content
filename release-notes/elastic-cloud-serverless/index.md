@@ -9,6 +9,117 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+
+## September 22, 2025 [serverless-changelog-09222025]
+
+### Features and enhancements [serverless-changelog-09222025-features-enhancements]
+
+* Adds a new connector for Jira Service Management [#235408]({{kib-pull}}235408)
+* Adds OAuth2 client credentials authentication support to {{kib}} Webhook connectors [#218442]({{kib-pull}}218442)
+* Completes OTel configuration pipelines by adding an exporter [#233090]({{kib-pull}}233090)
+* Enables controls in Discover from the editor [#229598]({{kib-pull}}229598)
+* Displays errors in the context of a trace [#234178]({{kib-pull}}234178)
+* Creates functional tests for the Logs Essentials tier [#234904]({{kib-pull}}234904)
+* Sets up the saved object infrastructure for Cloud Connectors and implements the end-to-end persistence flow for creating integrations with Cloud Connector support [#230137]({{kib-pull}}230137)
+* Removes the **Tech Preview** badge and feature flag for Automatic Troubleshooting [#234853]({{kib-pull}}234853)
+* Adds advanced options for opting out of collecting ransomware diagnostics on macOS [#235193]({{kib-pull}}235193)
+* Adds the **Tech Preview** badge for the preconfigured `rerank` endpoint in the inference endpoints UI [#235222]({{kib-pull}}235222)
+* Adds a default placeholder icon for future AI connectors [#235166]({{kib-pull}}235166)
+* Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
+* Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
+* Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
+% Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
+
+### Fixes [serverless-changelog-09222025-fixes]
+
+* Skips automatic scrolling when a panel is visible [#233226]({{kib-pull}}233226)
+* Fixes an issue with the Actions column header size [#235227]({{kib-pull}}235227)
+* Clears time field sorting when switching from classic to {{esql}} mode [#235338]({{kib-pull}}235338)
+* Fixes a bug where previously installed product docs (E5) were not upgraded during a Kibana version upgrade [#234792]({{kib-pull}}234792)
+* Improves the accessibility of the badges on individual stream pages [#235625]({{kib-pull}}235625)
+* Fixes the autocomplete configuration for the `pinned` retriever by removing the `match_criteria` field [#234903]({{kib-pull}}234903)
+* Fixes a bug by allowing the use of `cmd + /` for comment toggling in the Monaco editor [#235334]({{kib-pull}}235334)
+* Adds a check for all privileges for {{sec-serverless}} when creating lists [#234602]({{kib-pull}}234602)
+
+
+## September 19, 2025 [serverless-changelog-09192025]
+
+### Features and enhancements [serverless-changelog-09192025-features-enhancements]
+* {{serverless-full}} is now available in three new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP South Carolina (`us-east1`), GCP Virginia (`us-east4`), and GCP Oregon (`us-west1`).
+
+
+## September 15, 2025 [serverless-changelog-09152025]
+
+### Features and enhancements [serverless-changelog-09152025-features-enhancements]
+
+* Improves the {{esql}} suggestions logic when a query changes [#231767]({{kib-pull}}231767)
+* Updates the appearance popover in Lens metric charts [#233992]({{kib-pull}}233992)
+* Adds support for installing `alerting_rule_template` assets from packages [#233533]({{kib-pull}}233533)
+* Removes the default query limit of 10 [#234349]({{kib-pull}}234349)
+* Adds support for remote cluster lookup mode indices in the editor [#232907]({{kib-pull}}232907)
+* Extends {{esql}} autocomplete to include columns from lookup indices and enrichment policies after `LOOKUP JOIN` and `ENRICH` commands [#233221]({{kib-pull}}233221)
+* Adds a trace waterfall visualization for logs [#234072]({{kib-pull}}234072)
+* Adds end-to-end UI tests for onboarding page validation [#232363]({{kib-pull}}232363)
+* Updates the Playwright end-to-end tests to support Logs Essentials tier functionality [#234644]({{kib-pull}}234644)
+* Introduces a Security Risk Scoring AI Assistant tool [#233647]({{kib-pull}}233647)
+* Enables the SentinelOne `runscript` response action [#234492]({{kib-pull}}234492)
+* Extends the `origin_info_collection` advanced policy setting to include `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields for Windows process events [#234268]({{kib-pull}}234268)
+* Restricts access to the Value report page to `admin` and `soc_manager` roles in complete tier [#234377]({{kib-pull}}234377)
+* Ensures the **Tech Preview** badge is shown for the default inference endpoint for e5 on the inference endpoints UI [#234811]({{kib-pull}}234811)
+* Ensures mapped fields are remembered across simulations [#233799]({{kib-pull}}233799)
+
+### Fixes [serverless-changelog-09152025-fixes]
+
+* Hides the side navigation during report generation [#234675]({{kib-pull}}234675)
+* Fixes a bug where the save modal allowed duplicate saves of dashboards, visualizations, and other assets [#233933]({{kib-pull}}233933)
+* Fixes an issue with special character handling when creating a pipeline from the flyout [#233651]({{kib-pull}}233651)
+* Fixes a bug where the toggle column only worked on the Alerts page [#234278]({{kib-pull}}234278)
+* Correctly updates the `@timestamp` and `event.ingested` fields when a privileged user is updated [#233735]({{kib-pull}}233735)
+* Returns a `500` response code if there is an error during monitoring engine initialization [#234368]({{kib-pull}}234368)
+* Fixes table highlighting issues in flyouts [#234222]({{kib-pull}}234222)
+* Fixes issues in AI Assistant where it didn't append conversation messages or update titles [#233219]({{kib-pull}}233219)
+* Enables repeated System Prompt navigation from the **Conversations** tab [#234812]({{kib-pull}}234812)
+* Increases the `bulkGet` limit [#234151]({{kib-pull}}234151)
+* Fixes an issue on the API Keys Management page that occurred when loading API keys with null names [#234083]({{kib-pull}}234083)
+* Fixes an Anomaly Detection bug where custom URLs omitted generated fields in datafeed preview requests [#234709]({{kib-pull}}234709)
+* Ensures full tool traces are displayed in flyouts [#234654]({{kib-pull}}234654)
+
+## September 8, 2025 [serverless-changelog-09082025]
+
+### Features and enhancements [serverless-changelog-09082025-features-enhancements]
+
+* Makes maintenance windows globally available [#233870]({{kib-pull}}233870)
+* Updates `@elastic/charts` to 71.0.0 and enables new metric chart in Lens [#229815]({{kib-pull}}229815)
+* Adds toggle that grants permission for agents to write to `logs` datastream [#233374]({{kib-pull}}233374).
+* Adds Knowledge Base integration support [#230107]({{kib-pull}}230107)
+* Adds support for duration variable type to {{fleet}} [#231027]({{kib-pull}}231027)
+* Uses native function calling for self-managed LLMs [#232109]({{kib-pull}}232109)
+* Unifies installation settings and improves status display for AI Assistant's Knowledge Base & product documentation [#232559]({{kib-pull}}232559)
+* Links dashboards to SLO [#233265]({{kib-pull}}233265)
+* Disables add-to-case functionality when all selected alerts are already attached [#231877]({{kib-pull}}231877)
+* Disables save button on empty input [#233184]({{kib-pull}}233184)
+* Adds **View in discover** button to alert details header [#233259]({{kib-pull}}233259)
+* Adds `send_traces`, `send_metrics`, and `send_logs` agent configuration settings for EDOT Node.js [#233798]({{kib-pull}}233798)
+* Updates missing index pattern table action [#233258]({{kib-pull}}233258)
+* Shows trace context for logs [#232784]({{kib-pull}}232784)
+* Adds IPv6 support to address fields in the Remote Clusters UI [#233415]({{kib-pull}}233415)
+* Updates the {{es-serverless}} project creation in the UI to use the general purpose profile.
+  The API continues to support alternative `optimized_for` options. Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-managing-elasticsearch-costs).
+  % Relates to https://github.com/elastic/cloud/pull/146418
+
+
+### Fixes [serverless-changelog-09082025-fixes]
+
+* Fixes resize bug [#233755]({{kib-pull}}233755)
+* Fixes the page height of the Observability AI Assistant page [#233924]({{kib-pull}}233924)
+* Updates kibana MITRE data to `v17.1` [#231375]({{kib-pull}}231375)
+* Fixes import of endpoint exceptions [#233142]({{kib-pull}}233142)
+* Fixes a bug that affected display of mitre attack data [#233805]({{kib-pull}}233805).
+* Prevents users who don't have crud privilege from deleting notes [#233948]({{kib-pull}}233948).
+* Fixes rule editor flyout for Anomaly Explorer when no filter lists have been configured [#233085]({{kib-pull}}233085)
+* Fixes `FormattedMessage` rendering escaped HTML instead of markup [#234079]({{kib-pull}}234079)
+
+
 ## September 1, 2025 
 
 ### Features and enhancements [serverless-changelog-09012025-features-enhancements]
@@ -258,6 +369,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables custom roles by default [#227878]({{kib-pull}}227878)
 * Allows submitting case comments by pressing **⌘+Enter** (or **Ctrl+Enter**) [#228473]({{kib-pull}}228473)
 * Increases the number of supported **Group by** fields in threshold rules from 3 to 5 [#227465]({{kib-pull}}227465)
+* Adds the **Search AI Lake** view to AutoOps for {{serverless-full}} to provide storage usage insights
 
 ### Fixes [serverless-changelog-07222025-fixes]
 
@@ -326,6 +438,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses `id` instead of `name` to group vulnerabilities by resource and cloud account in {{sec-serverless}} [#225492]({{kib-pull}}225492)
 * Updates Gemini model in {{sec-serverless}} [#225917]({{kib-pull}}225917)
 * Updates the navigation menu in {{es-serverless}} [#225709]({{kib-pull}}225709)
+* Adds performance charts to the **Usage and performance** section on the project overview page in {{serverless-full}}
 
 
 ### Fixes [serverless-changelog-07072025-fixes]
