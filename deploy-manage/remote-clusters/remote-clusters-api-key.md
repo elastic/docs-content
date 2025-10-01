@@ -154,7 +154,7 @@ To add a remote cluster from Stack Management in {{kib}}:
 3. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.168.1.1:9443`.
 
 ::::{note}
-If the remote cluster is part of an {{ech}}, {{ece}}, or {{eck}} deployment, ensure you configure the connection to use `proxy`, as the default `sniff` mode won't work in this type of environments. Refer to the [connection modes](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-proxy-modes) description for more information.
+If the remote cluster is part of an {{ech}}, {{ece}}, or {{eck}} deployment, configure the connection to use `proxy`. The default `sniff` mode doesn't work in these environments. Refer to the [connection modes](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-proxy-modes) description for more information.
 ::::
 
 Alternatively, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster. You can also use this API to dynamically configure remote clusters for *every* node in the local cluster. To configure remote clusters on individual nodes in the local cluster, define static settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) for each node.
