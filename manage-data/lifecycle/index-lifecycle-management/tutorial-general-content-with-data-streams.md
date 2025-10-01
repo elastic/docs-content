@@ -33,7 +33,26 @@ For more information, refer to [Check lifecycle progress](/manage-data/lifecycle
 
 ## Create an ingest pipeline to transform your general content [manage-general-content-with-data-streams-ingest]
 
-Create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://reference/enrich-processor/set-processor.md) to add a `@timestamp` field:
+You can create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://reference/enrich-processor/set-processor.md) to add a `@timestamp` field in Kibana or with the [create or update a pipeline](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) API.
+
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To add an ingest pipeline from {{kib}}, go to **Stack Management > Ingest Pipelines**. From the upper right, select **Create pipeline > New pipeline**.
+
+Configure the pipeline with a name, description, and a **Set** processor that adds the `@timestamp` field with a value of `{{_ingest.timestamp}}`.
+
+:::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-general-content-ingest.png
+:alt: Create ingest pipeline
+:screenshot:
+:::
+
+:::
+
+:::{tab-item} API
+:sync: api
+Use the API to add an ingest pipeline:
 
 ```console
 PUT _ingest/pipeline/ingest_time_1
@@ -48,6 +67,8 @@ PUT _ingest/pipeline/ingest_time_1
     }]
 }
 ```
+:::
+::::
 
 ## Create a lifecycle policy [manage-general-content-with-data-streams-policy]
 
