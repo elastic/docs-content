@@ -11,7 +11,7 @@ products:
 # {{stack}} configuration policies [k8s-stack-config-policy]
 
 ::::{warning}
-We have identified an issue with {{es}} 8.15.1 and 8.15.2 that prevents security role mappings configured via Stack configuration policies to work correctly. Avoid these versions and upgrade to 8.16.0 to remedy this issue if you are affected.
+We have identified an issue with {{es}} 8.15.1 and 8.15.2 that prevents security role mappings configured via Stack configuration policies to work correctly. Avoid these versions and upgrade to 8.16+ to remedy this issue if you are affected.
 ::::
 
 
@@ -19,6 +19,9 @@ We have identified an issue with {{es}} 8.15.1 and 8.15.2 that prevents security
 This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
 ::::
 
+::::{note}
+Component templates created in configuration policies cannot currently be referenced from index templates created through the {{es}} API or {{kib}} UI.
+::::
 
 Starting from ECK `2.6.1` and {{es}} `8.6.1`, {{stack}} configuration policies allow you to configure the following settings for {{es}}:
 
