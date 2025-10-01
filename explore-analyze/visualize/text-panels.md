@@ -16,7 +16,7 @@ To provide context to your dashboard panels, add **Text** panels that display im
 
 ::::{applies-item} stack: ga 9.0
 Content for Stack 9.1
-:::
+::::
 
 ::::{applies-item} { stack: ga 9.2, serverless: ga }
 1. From your dashboard, select **Add panel**.
