@@ -2,6 +2,8 @@
 navigation_title: Secure connections
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
