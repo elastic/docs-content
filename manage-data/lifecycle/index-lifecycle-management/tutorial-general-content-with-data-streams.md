@@ -72,7 +72,32 @@ PUT _ingest/pipeline/ingest_time_1
 
 ## Create a lifecycle policy [manage-general-content-with-data-streams-policy]
 
- In this example, the policy is configured to roll over when the shard size reaches 10 GB:
+A lifecycle policy specifies the phases in the index lifecycle and the actions to perform in each phase. A lifecycle can have up to five phases: `hot`, `warm`, `cold`, `frozen`, and `delete`.
+
+For example, you might define a policy named `indextods` that is configured to roll over when the shard size reaches 10 GB.
+
+You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. 
+
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+
+In the **Hot phase**, by default, an ILM-managed index [rolls over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) when either:
+* It reaches 30 days of age.
+* One or more primary shards reach 50 GB in size.
+  
+Disable **Use recommended defaults** to adjust these values and roll over when the primary shard reaches 10GB.
+
+:::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-rollover-general-content-create-policy.png
+:alt: Create policy page
+:screenshot:
+:::
+:::
+
+:::{tab-item} API
+:sync: api
 
 ```console
 PUT _ilm/policy/indextods
@@ -94,8 +119,10 @@ PUT _ilm/policy/indextods
   }
 }
 ```
+:::
+::::
 
-For more information about lifecycle phases and available actions, check [Create a lifecycle policy](configure-lifecycle-policy.md#ilm-create-policy).
+For more information about lifecycle phases and available actions, refer to [Create a lifecycle policy](configure-lifecycle-policy.md#ilm-create-policy).
 
 
 ## Create an index template to apply the ingest pipeline and lifecycle policy [manage-general-content-with-data-streams-template]
