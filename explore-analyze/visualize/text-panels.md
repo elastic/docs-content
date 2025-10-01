@@ -18,7 +18,7 @@ To provide context to your dashboard panels, add **Text** panels that display im
 Content for Stack 9.1
 :::
 
-:::{applies-item} Stack 9.2
+::::{applies-item} { stack: ga 9.2, serverless: ga }
 1. From your dashboard, select **Add panel**.
 2. In the **Add panel** flyout, select **Markdown Text**. A Markdown editor appears and lets you configure the information you want to display. 
 3. Enter your text, then click **Apply**.
