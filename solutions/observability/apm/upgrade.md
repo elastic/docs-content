@@ -1,4 +1,5 @@
 ---
+navigation_title: Upgrade
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: apm
 ---
 
-# Upgrade [apm-upgrade]
+# Upgrade Elastic APM [apm-upgrade]
 
 This guide gives general recommendations for upgrading Elastic APM.
 

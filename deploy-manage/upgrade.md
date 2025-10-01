@@ -12,9 +12,10 @@ products:
   - id: cloud-hosted
   - id: cloud-kubernetes
   - id: elasticsearch
+navigation_title: Upgrade
 ---
 
-# Upgrade
+# Upgrade your deployment, cluster, or orchestrator
 
 Upgrading to the latest version provides access to the newest Elastic features, security patches, performance improvements, and bug fixes. These updates reduce costs, speed up threat response, and improve investigative and analytical data tools.
 

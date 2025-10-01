@@ -408,6 +408,8 @@ POST _aliases
 :::{dropdown} Marking anomaly result indices as read-only
 Legacy indices created in {{es}} 7.x can be made read-only and supported in {{es}} 9.x. Making an index with a large amount of historical results read-only allows for a quick migration to the next major release, since you don’t have to wait for the data to be reindexed into the new format. However, it has the limitation that even after deleting an {{anomaly-job}}, the historical results associated with this job are not completely deleted. Therefore, the system will prevent you from creating a new job with the same name.
 
+Make sure to upgrade or delete all deprecated model snapshots using the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) **before** marking the index `.ml-anomalies-shared` as read-only. 
+
 To set the index as read-only, add the write block to the index:
 
 ```

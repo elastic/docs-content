@@ -118,18 +118,12 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>" <2>
 
 1. The endpoint retrieved at [step 2](#locate-your-motlp)
 2. The API key created at [step 3](#create-an-api-key)
-
-Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
-
-```
-OTEL_EXPORTER_OTLP_HEADERS=Authorization=ApiKey%20<your-api-key>`
-```
 :::
 
 :::{tab-item} Kubernetes example
 You can store your API key in a Kubernetes secret and reference it in your OTLP exporter configuration. This is more secure than hardcoding credentials.
 
-The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it. 
+The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it.
 
 For example, if your API key from Kibana is `abc123`, run:
 
@@ -176,7 +170,7 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ## Differences from the Elastic APM Endpoint
 
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
+The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/opentelemetry/index.md), which primarily focuses on traces and the APM use case.
 
 ## Self-managed environments
 
@@ -190,9 +184,9 @@ The following sections provide troubleshooting information for the {{motlp}}.
 
 Don't have a collector or SDK running? Spin up an EDOT collector in few steps:
 
-* [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
-* [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
-* [Docker Quickstart](opentelemetry://reference/quickstart/serverless/docker.md)
+* [Kubernetes Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)
+* [Hosts & VMs Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)
+* [Docker Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)
 
 ### Api Key prefix not found
 

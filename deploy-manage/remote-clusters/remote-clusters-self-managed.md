@@ -1,5 +1,5 @@
 ---
-navigation_title: Self-managed {{stack}}
+navigation_title: On self-managed {{stack}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Remote clusters with self-managed installations [remote-clusters]
+# Remote clusters on self-managed installations [remote-clusters]
 
 The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ech}} deployment](/deploy-manage/remote-clusters/ec-enable-ccs.md) or from an [{{ece}} deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md).
 

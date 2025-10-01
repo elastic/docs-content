@@ -78,3 +78,5 @@ These response actions are supported for SentinelOne-enrolled hosts:
     ::::
 
 * **View past response action activity** in the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) log.
+
+* {applies_to}`stack: ga 9.2` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#sentinelone).

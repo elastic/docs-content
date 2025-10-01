@@ -4,16 +4,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-troubleshooting.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
 ---
 
 
 
-# Troubleshooting and limitations [graph-troubleshooting]
-
-
+# Troubleshooting and limitations of the Graph API [graph-troubleshooting]
 
 ## Why are results missing? [_why_are_results_missing]
 
