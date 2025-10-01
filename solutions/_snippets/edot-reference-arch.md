@@ -12,20 +12,17 @@ The following diagrams show the reference architecture for OpenTelemetry with El
 
 ::::{applies-item} ess:
 
-```{applies_to}
-stack: preview 9.2
-```
-:::{image} /solutions/images/ech-preview-motlp.png
-:alt: APM data ingest path (ECH)
-:::
+- {applies_to}`stack: preview 9.2`
 
-```{applies_to}
-stack: ga 9.1
-```
+   :::{image} /solutions/images/ech-preview-motlp.png
+   :alt: APM data ingest path (ECH)
+   :::
 
-:::{image} /solutions/images/observability-apm-otel-distro-ech.png
-:alt: APM data ingest path (ECH)
-:::
+- {applies_to}`stack: ga 9.1`
+
+   :::{image} /solutions/images/observability-apm-otel-distro-ech.png
+   :alt: APM data ingest path (ECH)
+   :::
 
 ::::
 
