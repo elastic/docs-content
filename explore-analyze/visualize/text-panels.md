@@ -18,8 +18,8 @@ To provide context to your dashboard panels, add **Text** panels that display im
 Content for Stack 9.1
 ::::
 
-::::{applies-item} { stack: ga 9.2, serverless: ga }
-1. From your dashboard, select **Add panel**.
+::::{applies-item} stack: ga 9.2 
+1. From your dashboard, select **Add** => **New panel**.
 2. In the **Add panel** flyout, select **Markdown Text**. A Markdown editor appears and lets you configure the information you want to display. 
 3. Enter your text, then click **Apply**.
 
@@ -43,17 +43,18 @@ The following instructions are displayed in **Preview** mode:
 
 Or when you enter:
 
-:::{image} /explore-analyze/images/kibana-markdown_example_3.png
+:::{image} /explore-analyze/images/kibana-markdown-editor-screenshot.png
 :alt: Markdown text with image file
 :screenshot:
-:width: 75%
+:width: 60%
 :::
 
 The following image is displayed:
 
-:::{image} /explore-analyze/images/kibana-markdown_example_4.png
+:::{image} /explore-analyze/images/kibana-markdown-preview-screenshot.png
 :alt: Panel with markdown image
 :screenshot:
+:width: 60%
 :::
 
 For detailed information about writing on GitHub, click **Syntax help** on the top-right of the Markdown editor.
