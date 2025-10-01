@@ -12,10 +12,10 @@ products:
 
 A [Pod Disruption Budget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) allows you to limit the disruption to your application when its pods need to be rescheduled for some reason such as upgrades or routine maintenance work on the Kubernetes nodes.
 
-ECK manages either a single default PDB, or multiple PDBs per {{es}} resource according to the license available.
+{{eck}} manages either a single default PDB, or multiple PDBs per {{es}} resource depending on the license level of the ECK installation.
 
 :::{note}
-In ECK 3.1 and earlier, all clusters follow the [non-enterprise behavior](#non-enterprise-licensed-customers), regardless of license type.
+In {{eck}} 3.1 and earlier, all clusters follow the [non-enterprise behavior](#non-enterprise-licensed-customers), regardless of license type.
 :::
 
 ## Enterprise licensed customers
@@ -24,13 +24,13 @@ deployment:
   eck: ga 3.2
 ```
 
-In {{eck}} clusters licensed with an enterprise license, a separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. The PDBs allow one {{es}} Pod per nodeSet to simultaneously be taken down as long as the cluster has the health defined in the following table:
+In Elasticsearch clusters managed by ECK and licensed with an enterprise license, a separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. Each PDB permits one Elasticsearch Pod per nodeSet to be disrupted at a time, provided the cluster maintains the health status described in the following table:
 
 | Role | Cluster health required | Notes |
 |------|------------------------|--------|
 | master | Yellow |  |
 | data | Green | All Data roles are grouped together into a single PDB, except for data_frozen. |
-| data_frozen | Yellow | Since data_frozen nodes are essentially stateless, managing searchable snapshots when compared to other data node types, additional disruptions are allowed. |
+| data_frozen | Yellow | Since frozen data tier nodes only host partially mounted indices backed by searchable snapshots additional disruptions are allowed. |
 | ingest | Yellow |  |
 | ml | Yellow |  |
 | coordinating | Yellow |  |
@@ -41,7 +41,7 @@ Single-node clusters are not considered highly available and can always be disru
 
 ## Non-enterprise licensed customers
 :::{note}
-In ECK 3.1 and earlier, all clusters follow this behavior regardless of license type.
+In {{eck}} 3.1 and earlier, all clusters follow this behavior regardless of license type.
 :::
 
 In {{eck}} clusters that do not have an enterprise license, one {{es}} Pod can be taken down at a time, as long as the cluster has a health status of `green`. Single-node clusters are not considered highly available and can always be disrupted.
