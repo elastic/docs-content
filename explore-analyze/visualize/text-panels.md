@@ -59,5 +59,5 @@ The following image is displayed:
 For detailed information about writing on GitHub, click **Syntax help** on the top-right of the Markdown editor.
 ::::
 
-::::
+:::::
 
