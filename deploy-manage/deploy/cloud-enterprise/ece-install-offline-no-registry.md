@@ -50,10 +50,10 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker load < FILE_PATH/ece.{{version.ece}}.tar
-    docker load < FILE_PATH/es.8.18.17.tar
-    docker load < FILE_PATH/kibana.8.18.17.tar
-    docker load < FILE_PATH/apm.8.18.17.tar
-    docker load < FILE_PATH/enterprise-search.8.18.17.tar
+    docker load < FILE_PATH/es.8.18.7.tar
+    docker load < FILE_PATH/kibana.8.18.7.tar
+    docker load < FILE_PATH/apm.8.18.7.tar
+    docker load < FILE_PATH/enterprise-search.8.18.7.tar
     docker load < FILE_PATH/es.9.0.2.tar
     docker load < FILE_PATH/kibana.9.0.2.tar
     docker load < FILE_PATH/apm.9.0.2.tar
