@@ -125,7 +125,7 @@ If a remote cluster is part of an {{ech}} (ECH) deployment, the remote cluster s
         ```
 
         ::::{tip}
-        If the remote cluster uses a publicly trusted certificate, you don't need to add the CA certificate to the `certificate_authorities` setting. This example assumes you're using the private certificates [created earlier on the remote cluster](#remote-clusters-security-api-key-remote-action), which require the CA to be added.
+        If the remote cluster uses a publicly trusted certificate, don't include the `certificate_authorities` setting. This example assumes you're using the private certificates [created earlier on the remote cluster](#remote-clusters-security-api-key-remote-action), which require the CA to be added.
         ::::
 
     3. Add the cross-cluster API key, created on the remote cluster earlier, to the keystore:
