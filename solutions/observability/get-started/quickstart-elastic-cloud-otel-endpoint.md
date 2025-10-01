@@ -40,16 +40,16 @@ To use the {{motlp}} you need the following:
 
 To retrieve your {{motlp}} endpoint address, follow these steps:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} Elastic Cloud Serverless
+:::{applies-item} serverless:
 1. In {{ecloud}}, create an Observability project or open an existing one.
 2. Select your project's name and then select **Manage project**.
 3. Locate the **Connection alias** and select **Edit**.
 4. Copy the **Managed OTLP endpoint** URL.
 :::
 
-:::{tab-item} Elastic Cloud Hosted
+:::{applies-item} ess: preview 9.2
 1. Open your deployment in the Elastic Cloud console.
 2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
 3. Copy the endpoint URL shown.

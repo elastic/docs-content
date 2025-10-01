@@ -1,7 +1,8 @@
 The following diagrams show the reference architecture for OpenTelemetry with Elastic, depending on your deployment model.
 
-:::::{tab-set}
-::::{tab-item} Serverless
+:::::{applies-switch}
+
+::::{applies-item} serverless:
 
 :::{image} /solutions/images/observability-apm-otel-distro-serverless.png
 :alt: APM data ingest path (Serverless)
@@ -9,7 +10,7 @@ The following diagrams show the reference architecture for OpenTelemetry with El
 
 ::::
 
-::::{tab-item} ECH
+::::{applies-item} ess: ga
 
 :::{image} /solutions/images/observability-apm-otel-distro-ech.png
 :alt: APM data ingest path (ECH)
@@ -17,7 +18,15 @@ The following diagrams show the reference architecture for OpenTelemetry with El
 
 ::::
 
-::::{tab-item} Self-managed
+::::{applies-item} ess: preview 9.2
+
+:::{image} /solutions/images/ech-preview-motlp.png
+:alt: APM data ingest path (ECH)
+:::
+
+::::
+
+::::{applies-item} self:
 
 :::{image} /solutions/images/observability-apm-otel-distro-self-managed.png
 :alt: APM data ingest path (Self-managed)
