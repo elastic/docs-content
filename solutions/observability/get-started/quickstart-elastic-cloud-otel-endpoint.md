@@ -121,12 +121,6 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>" <2>
 
 1. The endpoint retrieved at [step 2](#locate-your-motlp)
 2. The API key created at [step 3](#create-an-api-key)
-
-Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
-
-```
-OTEL_EXPORTER_OTLP_HEADERS=Authorization=ApiKey%20<your-api-key>`
-```
 :::
 
 :::{tab-item} Kubernetes example
