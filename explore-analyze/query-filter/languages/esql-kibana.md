@@ -107,12 +107,21 @@ A query may result in warnings, for example when querying an unsupported field t
 
 ### Query history [esql-kibana-query-history]
 
-You can reuse your recent {{esql}} queries in the query bar. In the query bar, click **Show recent queries**.
+You can reuse your recent {{esql}} queries in the query bar. In the query bar, select **Show recent queries**.
 
-You can then scroll through your recent queries:
+You can then: 
+- scroll through your most recent queries
+- {applies_to}`stack: ga 9.2` search for specific queries of your history
 
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-history.png
+:::{image} /explore-analyze/images/esql-history.gif
 :alt: esql discover query history
+:width: 75%
+:::
+
+:::{note}
+The maximum number of queries in the history depends on the version you're using:
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` The query history can keep up to 50 KB of queries, which represents about 200 large queries, or about 300 short queries.
+- {applies_to}`stack: ga 9.0` The query history keeps your 20 most recent queries.
 :::
 
 ### Query help
