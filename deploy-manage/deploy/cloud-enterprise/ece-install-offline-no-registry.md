@@ -19,10 +19,10 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.17
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.17
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.17
-    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.17
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.7
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.7
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.7
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.7
     docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.2
     docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.2
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.2
@@ -36,10 +36,10 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker save -o ece.{{version.ece}}.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker save -o es.8.18.2.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.17
-    docker save -o kibana.8.18.2.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.17
-    docker save -o apm.8.18.2.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.17
-    docker save -o enterprise-search.8.18.2.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.17
+    docker save -o es.8.18.2.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.7
+    docker save -o kibana.8.18.2.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.7
+    docker save -o apm.8.18.2.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.7
+    docker save -o enterprise-search.8.18.2.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.7
     docker save -o es.9.0.1.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.2
     docker save -o kibana.9.0.1.tar docker.elastic.co/cloud-release/kibana-cloud:9.0.2
     docker save -o apm.9.0.1.tar docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.2

@@ -25,10 +25,10 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 
     ```sh subs=true
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.17
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.17
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.17
-    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.17
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.7
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.7
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.7
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.7
     docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.2
     docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.2
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.2
