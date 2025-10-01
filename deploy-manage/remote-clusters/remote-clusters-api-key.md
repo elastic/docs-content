@@ -39,7 +39,7 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 ## Establish trust with a remote cluster [remote-clusters-security-api-key]
 
 ::::{note}
-If a remote cluster is part of an {{ech}} (ECH) deployment, the remote cluster server is enabled by default and it uses a publicly trusted certificate provided by the platform proxies. You can therefore skip the following steps in these instructions:
+If a remote cluster is part of an {{ech}} (ECH) deployment, the remote cluster server is enabled by default and it uses a publicly trusted certificate provided by the platform proxies. Therefore, you can skip the following steps in these instructions:
 
 **On the remote (ECH) cluster:** Skip steps 1-4 (enabling the service, generating certificates, configuring SSL settings, and restarting the cluster), and go straight to step 5 (create API key step).
 
