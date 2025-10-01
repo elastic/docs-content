@@ -12,15 +12,15 @@ The following diagrams show the reference architecture for OpenTelemetry with El
 
 ::::{applies-item} ess:
 
-Up to version 9.1:
-
-:::{image} /solutions/images/observability-apm-otel-distro-ech.png
-:alt: APM data ingest path (ECH)
-:::
-
 From version 9.2 {applies_to}`product: preview` onwards:
 
 :::{image} /solutions/images/ech-preview-motlp.png
+:alt: APM data ingest path (ECH)
+:::
+
+Up to version 9.1:
+
+:::{image} /solutions/images/observability-apm-otel-distro-ech.png
 :alt: APM data ingest path (ECH)
 :::
 

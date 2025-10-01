@@ -49,7 +49,9 @@ To retrieve your {{motlp}} endpoint address, follow these steps:
 :::
 
 :::{applies-item} ess:
-{applies_to}`stack: preview 9.2`
+```{applies_to}
+stack: preview 9.2
+```
 1. Open your deployment in the Elastic Cloud console.
 2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
 3. Copy the endpoint URL shown.
