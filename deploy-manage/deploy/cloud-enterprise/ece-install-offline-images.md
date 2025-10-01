@@ -17,10 +17,10 @@ The first table contains the stack versions shipped with the current {{version.e
 | Docker images included with {{ece}} {{version.ece}} |
 | --- |
 | docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}} |
-| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.7 |
-| docker.elastic.co/cloud-release/kibana-cloud:8.18.7 |
-| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.7 |
-| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.7 |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.17 |
+| docker.elastic.co/cloud-release/kibana-cloud:8.18.17 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.17 |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.17 |
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.2 |
 | docker.elastic.co/cloud-release/kibana-cloud:9.0.2 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.2 |
