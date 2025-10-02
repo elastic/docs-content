@@ -470,7 +470,7 @@ redirects:
   'deploy-manage/deploy/self-managed/networkaddress-cache-ttl.md': 'deploy-manage/deploy/self-managed/important-settings-configuration.md'
 
 # Move all content for SQL under Explore & Analyze-> SQL to Reference content: related to https://github.com/elastic/docs-content/pull/3270
-  'explore-analyze/query-filter/languages/sql-overview.md': 'elasticsearch://reference/query-languages/sql/sql-overview.md'
+  'explore-analyze/query-filter/languages/sql-overview.md': 'elasticsearch://reference/query-languages/sql/sql.md'
   'explore-analyze/query-filter/languages/sql-getting-started.md': 'elasticsearch://reference/query-languages/sql/sql-getting-started.md  '
   'explore-analyze/query-filter/languages/sql-concepts': 'elasticsearch://reference/query-languages/sql/sql-concepts'
   'explore-analyze/query-filter/languages/sql-security.md': 'elasticsearch://reference/query-languages/sql/sql-security.md'
