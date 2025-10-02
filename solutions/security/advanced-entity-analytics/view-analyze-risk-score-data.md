@@ -16,10 +16,8 @@ products:
 The {{security-app}} provides several ways to monitor the change in the risk posture of entities in your environment.
 
 ::::{tip}
-We recommend that you prioritize [alert triaging](#alert-triaging) to identify anomalies or abnormal behavior patterns.
+After reviewing an entity’s risk score, the recommended next step is to investigate the risky entity in [Timeline](/solutions/security/investigate/timeline.md).
 ::::
-
-
 
 ## Entity Analytics overview [entity-analytics-overview]
 
@@ -183,7 +181,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) allows you to analyze how entity attributes change over time, making it easier to investigate past activity, track trends, and identify unusual behavior or changes that indicate risk. Use time-based queries in [Discover](/explore-analyze/discover.md) to answer questions such as:
+The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) allows you to analyze how entity attributes change over time, making it easier to investigate past activity, track trends, and identify unusual behavior or changes that may indicate risk. Use time-based queries in [Discover](/explore-analyze/discover.md) to answer questions such as:
 
 * What did user A’s attributes look like on March 15?
 * How has user B's risk score changed over the last 90 days?
