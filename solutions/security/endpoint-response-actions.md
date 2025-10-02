@@ -41,6 +41,7 @@ Launch the response console from any of the following places in {{elastic-sec}}:
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**
+* {applies_to}`stack: ga 9.1` Event details flyout → **Take action** → **Respond** 
 
 To perform an action on the endpoint, enter a [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the input area at the bottom of the console, then press **Return**. Output from the action is displayed in the console.
 
@@ -243,15 +244,17 @@ Scanning can take longer for directories containing a lot of files.
 
 ### `runscript` [runscript]
 
-::::{note}
-This response action is supported only for [CrowdStrike-enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#crowdstrike-response-actions).
-::::
+Run a script on a host. 
 
+#### CrowdStrike
 
-Run a script on a host. You must include one of the following parameters to identify the script you want to run:
+For CrowdStrike, you must include one of the following parameters to identify the script you want to run:
 
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
+
+   {applies_to}`stack: ga 9.1` When using this parameter, select from a list of saved custom scripts.
+
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
 You can also use these optional parameters:
@@ -271,6 +274,46 @@ Examples:
 
 `runscript --HostPath="C:\temp\LocalScript.ps1" --CommandLine="-Verbose true"`
 
+
+#### Microsoft Defender for Endpoint
+```yaml {applies_to}
+stack: ga 9.1
+```
+
+For Microsoft Defender for Endpoint, you must include the following parameter to identify the script you want to run:
+
+* `--ScriptName`: The name of the script stored in a cloud storage location. Select from a list of saved custom scripts.
+
+You can also use this optional parameter:
+
+* `--Args`: Additional command-line arguments passed to the script to customize its execution.
+  :::{note}
+  The response console does not support double-dash (`--`) syntax within the `--Args` parameter.
+  :::
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
+
+#### SentinelOne
+```yaml {applies_to}
+stack: ga 9.2
+```
+For SentinelOne, you must include the following parameter to identify the script you want to run:
+
+* `--script`: The name of the script to run. Select from a list of saved custom scripts.
+
+You can also use this optional parameter:
+
+* `--inputParams`: Additional command-line arguments passed to the script to customize its execution.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.backup.txt"`
 
 ## Supporting commands and parameters [supporting-commands-parameters]
 
@@ -303,7 +346,7 @@ You can also get a list of commands in the [Help panel](/solutions/security/endp
 
 ## Help panel [help-panel]
 
-Click ![Help icon](/solutions/images/security-help-icon.png "title =20x20") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
+Click {icon}`question` **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
 
 ::::{note}
 This panel displays only the response actions that you have the user role or privileges to perform.

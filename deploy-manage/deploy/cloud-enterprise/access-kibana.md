@@ -1,4 +1,5 @@
 ---
+navigation_title: Access {{kib}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-access-kibana.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana.html
@@ -9,7 +10,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access {{kib}} [ece-access-kibana]
+# Access {{kib}} on {{ece}} [ece-access-kibana]
 
 {{kib}} is an open source analytics and visualization platform designed to search, view, and interact with data stored in {{es}} indices.
 
@@ -27,7 +28,9 @@ To access {{kib}}:
 3. Under **Applications**, select the {{kib}} **Open** link and wait for {{kib}} to open.
 
     ::::{note} 
-    Both ports 443 and 9243 can be used to access {{kib}}. SSO only works with 9243 on older deployments, where you will see an option in the Cloud UI to migrate the default to port 443. In addition, any version upgrade will automatically migrate the default port to 443.
+    The URL provided to access {{kib}} is based on the [endpoint URL](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md) configured in the ECE **Settings** UI. This URL should resolve to your [external load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md), which forwards the traffic to ECE proxies on port `9243`.
+
+    If your load balancer is configured to accept traffic on both ports `9243` and `443`, you can use either port when connecting to {{kib}}. However, [built-in SSO](/deploy-manage/users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md) will only work with the URL configured in ECE **Settings** UI.
     ::::
 
 4. Log into {{kib}}. Single sign-on (SSO) is enabled between your {{ece}} account and the {{kib}} instance. If you’re logged in already, then {{kib}} opens without requiring you to log in again. However, if your token has expired, choose from one of these methods to log in:

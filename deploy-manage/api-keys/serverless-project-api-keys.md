@@ -46,9 +46,9 @@ API keys are intended for programmatic access. Don’t use API keys to authentic
 
 
 
-### Restrict privileges [api-keys-restrict-privileges]
+### Control security privileges [api-keys-restrict-privileges]
 
-When you create or update an API key, use **Restrict privileges** to limit the permissions. Define the permissions using a JSON `role_descriptors` object, where you specify one or more roles and the associated privileges.
+When you create or update an API key, use **Control security privileges** to configure access to specific {{es}} APIs and resources. Define the permissions using a JSON `role_descriptors` object, where you specify one or more roles and the associated privileges.
 
 For example, the following `role_descriptors` object defines a `books-read-only` role that limits the API key to `read` privileges on the `books` index.
 
@@ -72,7 +72,7 @@ For example, the following `role_descriptors` object defines a `books-read-only`
 }
 ```
 
-For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices).
+For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
 
 ## Update an API key [api-keys-update-an-api-key]

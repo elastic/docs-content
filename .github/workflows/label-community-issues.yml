@@ -1,0 +1,64 @@
+name: Label Community Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  label-community-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    
+    steps:
+        # Adding this step for debug purposes
+        # If this works as expected, we can simplify this workflow
+        # and replace it with the `check-membership` step
+      - name: Check organization membership (test)
+        run: echo "${{ github.event.issue.author_association == 'MEMBER' }}"
+      - name: Check organization membership
+        id: check-membership
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.ORG_MEMBER_READ_TOKEN }}
+          result-encoding: string
+          script: |
+            const issueAuthor = '${{ github.event.issue.user.login }}';
+            const orgName = 'elastic';
+            
+            try {
+              await github.rest.orgs.getMembershipForUser({
+                org: orgName,
+                username: issueAuthor
+              });
+              
+              console.log(`${issueAuthor} is a member of ${orgName} organization`);
+              return 'member';
+              
+            } catch (error) {
+              if (error.status === 404) {
+                console.log(`${issueAuthor} is not a member of ${orgName} organization`);
+                return 'non-member';
+              } else {
+                console.log('Error checking organization membership:', error);
+                return 'error';
+              }
+            }
+
+      - name: Add community label
+        if: steps.check-membership.outputs.result == 'non-member'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueAuthor = '${{ github.event.issue.user.login }}';
+            
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['community']
+            });
+            
+            console.log(`Added "community" label to issue by ${issueAuthor}`);

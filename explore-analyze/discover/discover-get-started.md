@@ -22,6 +22,26 @@ Learn how to use **Discover** to:
 * You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
 * You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 
+## Context-aware data exploration [context-aware-discover]
+
+**Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:
+
+* Observability:
+  * **[Logs exploration](/solutions/observability/logs/explore-logs.md)**
+% LINK/PAGE TBD  * **Traces exploration**
+% LINK/PAGE TBD  * **Metrics exploration**
+% * Security: 
+% LINK/PAGE TBD  * **Security data exploration**
+
+This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
+
+When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
+
+### Context-awareness with multiple data types
+
+Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context. 
+
+In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
 
 ## Load data into Discover [find-the-data-you-want-to-use]
 
@@ -206,7 +226,7 @@ Dive into an individual document to view its fields and the documents that occur
    * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
 
    ::::{tip}
-   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values.
+   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
 3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
@@ -221,6 +241,10 @@ Dive into an individual document to view its fields and the documents that occur
 One of the unique capabilities of **Discover** is the ability to combine free text search with filtering based on structured data. To search all fields, enter a simple string in the query bar.
 
 ![Search field in Discover](/explore-analyze/images/kibana-discover-search-field.png "")
+
+:::{note}
+Free text searches that don't specify a field may not return expected results depending on how the [`index.query.default_field` index setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field) is configured for the indices matching the current data view.
+:::
 
 To search particular fields and build more complex queries, use the [Kibana Query language](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
 
@@ -249,18 +273,24 @@ For example, exclude results from the ecommerce sample data view where day of we
 4. Continue your exploration by adding more filters.
 5. To remove a filter, click the close icon (x) next to its name in the filter bar.
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ### Search and filter using ES|QL [_search_and_filter_using_esql]
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
 You can switch to the ES|QL mode of Discover from the application menu bar.
-
-:::{tip}
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-:::
 
 Note that in ES|QL mode, the **Documents** tab is named **Results**.
+
+:::{important}
+{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+:::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 
@@ -277,7 +307,7 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 ### Share your Discover session [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Generate alerts [alert-from-Discover]

@@ -32,23 +32,23 @@ To install and run {{agent}} standalone:
 
     ::::::{tab-item} macOS
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-darwin-aarch64.tar.gz
-    tar xzvf elastic-agent-{{stack-version}}-darwin-aarch64.tar.gz
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-darwin-aarch64.tar.gz
+    tar xzvf elastic-agent-{{version.stack}}-darwin-aarch64.tar.gz
     ```
     ::::::
 
     ::::::{tab-item} Linux
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
-    tar xzvf elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz
+    tar xzvf elastic-agent-{{version.stack}}-linux-x86_64.tar.gz
     ```
     ::::::
 
     ::::::{tab-item} Windows
     ```shell subs=true
     # PowerShell 5.0+
-    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-windows-x86_64.zip -OutFile elastic-agent-{{stack-version}}-windows-x86_64.zip
-    Expand-Archive .\elastic-agent-{{stack-version}}-windows-x86_64.zip
+    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-windows-x86_64.zip -OutFile elastic-agent-{{version.stack}}-windows-x86_64.zip
+    Expand-Archive .\elastic-agent-{{version.stack}}-windows-x86_64.zip
     ```
     Or manually:
 
@@ -65,8 +65,8 @@ To install and run {{agent}} standalone:
     :::::
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
-    sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
     By default the {{agent}} basic flavor is installed. To install the servers flavor add the `ELASTIC_AGENT_FLAVOR=servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details about the different flavors.
@@ -74,13 +74,13 @@ To install and run {{agent}} standalone:
     You can use either of the two command formats to set the `ELASTIC_AGENT_FLAVOR` environment variable:
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
-    sudo ELASTIC_AGENT_FLAVOR=servers dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    sudo ELASTIC_AGENT_FLAVOR=servers dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
-    ELASTIC_AGENT_FLAVOR=servers sudo -E dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    ELASTIC_AGENT_FLAVOR=servers sudo -E dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
     :::::{note}
@@ -97,8 +97,8 @@ To install and run {{agent}} standalone:
     :::::
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
-    sudo rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
+    sudo rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
     By default the {{agent}} basic flavor is installed. To install the servers flavor add the `ELASTIC_AGENT_FLAVOR=servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details about the different flavors.
@@ -106,13 +106,13 @@ To install and run {{agent}} standalone:
     You can use either of the two command formats to set the `ELASTIC_AGENT_FLAVOR` environment variable:
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
-    sudo ELASTIC_AGENT_FLAVOR=servers rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    sudo ELASTIC_AGENT_FLAVOR=servers rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
-    ELASTIC_AGENT_FLAVOR=servers sudo -E rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    ELASTIC_AGENT_FLAVOR=servers sudo -E rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
     ::::::
@@ -223,4 +223,4 @@ Refer to [Installation layout](/reference/fleet/installation-layout.md) for the 
 
 Because {{agent}} is installed as an auto-starting service, it will restart automatically if the system is rebooted.
 
-If you run into problems, refer to [Troubleshoot common problems](/troubleshoot/ingest/fleet/common-problems.md).
+If you run into problems, refer to [](/troubleshoot/ingest/fleet/common-problems.md).

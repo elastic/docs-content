@@ -214,9 +214,8 @@ To change a [dynamic index setting](elasticsearch://reference/elasticsearch/inde
 
 
 ::::{important}
-To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](../../lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#switch-lifecycle-policies).
+To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
 ::::
-
 
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
@@ -252,6 +251,7 @@ If wanted, you can [roll over the data stream](../data-streams/use-data-stream.m
 
 To apply static setting changes to existing backing indices, you must create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 
+See [this video](https://www.youtube.com/watch?v=fHL7SkQr7Wc) for a walkthrough of updating [`number_of_shards`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards).
 
 ### Use reindex to change mappings or settings [data-streams-use-reindex-to-change-mappings-settings]
 
@@ -344,7 +344,7 @@ Follow these steps:
     ```
 
 4. If you do not want to mix new and old data in your new data stream, pause the indexing of new documents. While mixing old and new data is safe, it could interfere with data retention. See [Mixing new and old data in a data stream](../data-streams/modify-data-stream.md#data-stream-mix-new-old-data).
-5. If you use {{ilm-init}} to [automate rollover](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md), reduce the {{ilm-init}} poll interval. This ensures the current write index doesn’t grow too large while waiting for the rollover check. By default, {{ilm-init}} checks rollover conditions every 10 minutes.
+5. If you use {{ilm-init}} to [automate rollover](../../lifecycle/index-lifecycle-management/tutorial-time-series-with-data-streams.md), reduce the {{ilm-init}} poll interval. This ensures the current write index doesn’t grow too large while waiting for the rollover check. By default, {{ilm-init}} checks rollover conditions every 10 minutes.
 
     The following [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request lowers the `indices.lifecycle.poll_interval` setting to `1m` (one minute).
 

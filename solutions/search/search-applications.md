@@ -31,9 +31,8 @@ Documentation for the Search Applications feature lives in two places:
 The Search Applications feature was introduced in Elastic version **8.8.0**.
 
 ::::{note} 
-Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features. Elastic plans to promote this feature to GA in a future release.
+Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
 ::::
-
 
 This feature is available to all **{{ech}}** deployments.
 
@@ -43,7 +42,7 @@ For Serverless users, this is an API-only feature. You can create and manage sea
 
 Your deployment must include the {{es}} and {{kib}} services.
 
-Managing search applications requires the `manage_search_application` cluster privilege, and also requires the `manage` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) on all indices associated with the search application.
+Managing search applications requires the `manage_search_application` cluster privilege, and also requires the `manage` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) on all indices associated with the search application.
 
 
 ## Overview [search-application-overview-summary] 

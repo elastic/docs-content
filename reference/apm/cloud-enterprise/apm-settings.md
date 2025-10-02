@@ -13,13 +13,13 @@ Starting in {{stack}} version 8.0, how you change APM settings and the settings 
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
     * This mode requires SSL/TLS configuration. Check [TLS configuration for {{fleet}}-managed mode](#ece-edit-apm-fleet-tls) for details.
-    * Check [APM integration input settings](/solutions/observability/apm/configure-apm-server.md) for all other Elastic APM configuration options in this mode.
+    * Check [APM integration input settings](/solutions/observability/apm/apm-server/configure.md) for all other Elastic APM configuration options in this mode.
 
 
 Standalone APM Server (legacy)
 :   Deployments created prior to {{stack}} version 8.0 are in legacy mode. Upgrading to or past {{stack}} 8.0 does not remove you from legacy mode.
 
-    Check [Edit standalone APM settings (legacy)](#ece-edit-apm-standalone-settings-ece)for information on how to configure Elastic APM in this mode.
+    Check [Edit standalone APM settings (legacy)](#ece-edit-apm-standalone-settings-ece) for information on how to configure Elastic APM in this mode.
 
 
 To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apm/switch-to-elastic-apm-integration.md).
@@ -40,7 +40,7 @@ Pick one of the following options:
 Elastic Cloud Enterprise supports most of the legacy APM settings. Through a YAML editor in the console, you can append your APM Server properties to the `apm-server.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apm/configure-apm-server.md).
+Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apm/apm-server/configure.md).
 ::::
 
 
@@ -64,17 +64,15 @@ If a setting is not supported by Elastic Cloud Enterprise, you get an error mess
 
 ## Example: Enable RUM and increase the rate limit (legacy) [ece_example_enable_rum_and_increase_the_rate_limit_legacy]
 
-When capturing the user interaction with clients with real user monitoring (RUM), particularly for situations with concurrent clients, you can increase the number of times each IP address can send a request to the RUM endpoint. Version 6.5 includes an additional settings for the LRU cache.
-
-For APM Server with RUM agent version 2.x or 3.x:
+When capturing the user interaction with clients with real user monitoring (RUM), particularly for situations with concurrent clients, you can increase the number of times each IP address can send a request to the RUM endpoint.
 
 ```sh
 apm-server:
+  auth:
+    anonymous:
+      event_limit: 3000
   rum:
     enabled: true
-    event rate:
-      limit: 3000
-      lru_size: 5000
 ```
 
 

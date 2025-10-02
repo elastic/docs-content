@@ -19,8 +19,8 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
 ## Prerequisites [_prerequisites]
 
-* [Set up {{es}} monitoring](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md) and optionally [create a monitoring cluster](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md). 
-* Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md).
+* [Set up {{es}} monitoring](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md) and optionally [create a monitoring cluster](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
+* Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-collector).
 
 
 ## Add {{kib}} monitoring data [_add_kib_monitoring_data]
@@ -43,8 +43,8 @@ To collect {{kib}} monitoring data, add a {{kib}} integration to an {{agent}} an
 
 5. Configure the integration name and optionally add a description. Make sure you configure all required settings:
 
-    * Under **Collect {{kib}} logs**, modify the log paths to match your {{kib}} environment.
-    * Under **Collect {{kib}} metrics**, make sure the hosts setting points to your {{kib}} host URLs. By default, the integration collects {{kib}} monitoring metrics from `localhost:5601`. If that host and port number are not correct, update the `hosts` setting. If you configured {{kib}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:5601`.
+    * Under **Logs**, modify the log paths to match your {{kib}} environment.
+    * Under **Metrics (Stack Monitoring)**, make sure the hosts setting points to your {{kib}} host URLs. By default, the integration collects {{kib}} monitoring metrics from `localhost:5601`. If that host and port number are not correct, update the `hosts` setting. If you configured {{kib}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:5601`.
     * If the Elastic {{security-features}} are enabled, expand **Advanced options** under the Hosts setting and enter the username and password of a user that has the `remote_monitoring_collector` role.
 
 6. Choose where to add the integration policy. Click **New hosts** to add it to new agent policy or **Existing hosts** to add it to an existing agent policy.

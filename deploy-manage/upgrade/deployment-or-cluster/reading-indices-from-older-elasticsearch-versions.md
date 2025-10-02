@@ -6,6 +6,8 @@ applies_to:
   deployment:
     ess:
     self:
+    eck:
+    ece:
 products:
   - id: elasticsearch
 ---

@@ -1,5 +1,5 @@
 ---
-navigation_title: With a different {{ecloud}} organization
+navigation_title: To a different {{ecloud}} organization
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-other-ess.html
 applies_to:
@@ -9,12 +9,12 @@ products:
   - id: cloud-hosted
 ---
 
-# Access deployments of another {{ecloud}} organization [ec-remote-cluster-other-ess]
+# Connect to deployments in another {{ecloud}} organization [ec-remote-cluster-other-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ecloud}} organization.
 
 ::::{note}
-If traffic filtering is enabled on the remote cluster, the remote cluster administrator must configure a traffic filter of type remote cluster, using either the organization ID or the Elasticsearch cluster ID as the filtering criteria. For detailed instructions, refer to [Remote clusters and traffic filtering](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-traffic-filtering).
+If network security policies are applied to the remote cluster, the remote cluster administrator must configure a private connection policy of type remote cluster, using either the organization ID or the Elasticsearch cluster ID as the filtering criteria. For detailed instructions, refer to [Remote clusters and network security](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-network-security).
 ::::
 
 ## Allow the remote connection [ec_allow_the_remote_connection_2]
@@ -42,7 +42,6 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 ### Prerequisites and limitations [ec_prerequisites_and_limitations_2]
 
 * The local and remote deployments must be on {{stack}} 8.14 or later.
-* API key authentication can’t be used in combination with traffic filters.
 * Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
 
 
@@ -61,13 +60,13 @@ The API key created previously will be used by the local deployment to authentic
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+3. From the navigation menu, select **Security**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
     1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
 
@@ -78,7 +77,7 @@ The API key created previously will be used by the local deployment to authentic
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
@@ -86,19 +85,21 @@ If you later need to update the remote connection with different permissions, yo
 
 A deployment can be configured to trust all or specific deployments in another {{ech}} [organization](../users-roles/cloud-organization.md). To add cross-organization trust:
 
-1. From the **Security** menu, select **Remote Connections > Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
+1. From the **Security** page, select **Remote Connections > Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
 2. Select **Certificates** as authentication mechanism and click **Next**.
-3. Enter the ID of the deployment’s organization which you want to establish trust with. You can find that ID on the Organization page. It is usually made of 10 digits.
+3. Enter the ID of the deployment’s organization which you want to establish trust with. You can find that ID on the **Organization** page. It is usually made of 10 digits.
 4. Choose one of following options to configure the level of trust with the other organization:
 
-    * All deployments - This deployment trusts all deployments in the other organization, including new deployments when they are created.
-    * Specific deployments - Specify which of the existing deployments you want to trust in the other organization. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
+    * **All deployments** - This deployment trusts all deployments in the other organization, including new deployments when they are created.
+    * **Specific deployments** - Specify which of the existing deployments you want to trust in the other organization. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
 
 5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
 6. Select **Create trust** to complete the configuration.
-7. Repeat these steps from each of the deployments you want to use for CCS or CCR in both organizations. You will only be able to connect 2 deployments successfully when both of them trust each other.
+7. Repeat these steps from each of the deployments you want to use for CCS or CCR in both organizations. You will only be able to connect two deployments successfully when both of them trust each other.
 
-Note that the organization ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-organization trust does not appear to be working, double-checking the IDs is a good place to start.
+::::{note}
+The organization ID and cluster IDs must be entered fully and correctly. For security reasons, verification of the IDs is not possible. If cross-organization trust does not appear to be working, double-checking the IDs is a good place to start.
+::::
 
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
@@ -142,7 +143,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
+    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
+
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
     * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
 
       ::::{tip}
@@ -150,11 +153,6 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
-      :alt: Remote Cluster Parameters in Deployment
-      :screenshot:
-      :::
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
@@ -196,6 +194,10 @@ PUT /_cluster/settings
   }
 }
 ```
+
+::::{note}
+When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
+::::
 
 ### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api_2]
 

@@ -7,9 +7,10 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
+navigation_title: Google Cloud Storage
 ---
 
-# Configure a snapshot repository using GCS [ec-gcs-snapshotting]
+# Configure a GCS snapshot repository in {{ech}}
 
 Configure a custom snapshot repository using your Google Cloud Storage account.
 
@@ -32,25 +33,7 @@ For more detailed information on the JSON account service key, refer to [Using a
 Follow the Google Cloud Storage documentation to [create a GCS bucket](https://cloud.google.com/storage/docs/creating-buckets).
 
 
-## Enable the `repository-gcs` plugin in {{stack}} 7.17 and earlier [ec-enable-gcs-plugin]
-
-For deployments with **{{stack}} version 7.17 and earlier**, you’ll need to enable the `repository-gcs` plugin to use the Google Cloud Storage repository type. On Google Cloud Platform, the plugin is enabled by default. If your deployment is on AWS or Azure, follow these steps to enable the `repository-gcs` plugin:
-
-1. Refer to [Google Cloud Storage Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/7.17/repository-gcs.html) to download the version of the plugin that matches your {{stack}} version.
-2. Upload the plugin to your deployment:
-
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Open the **Features > Extensions** page and select **Upload extension**.
-    3. Specify the plugin name (`repository-gcs`) and the version.
-    4. Select **An installable plugin (Compiled, no source code)**.
-    5. Select **Create extension**.
-    6. Navigate back to the **Features > Extensions** page.
-    7. Select the extension name.
-    8. Drag and drop to upload the `repository-gcs` plugin zip file.
-
-
-
-### Configure the keystore [ec-configure-gcs-keystore]
+## Configure the keystore [ec-configure-gcs-keystore]
 
 Create an entry for the GCS client in the {{es}} keystore:
 
@@ -61,8 +44,7 @@ Create an entry for the GCS client in the {{es}} keystore:
 5. With **Type** set to **JSON block / file**, add your [GCS service account key JSON file](#ec-gcs-service-account-key).
 6. Select **Save**.
 
-
-### Create the repository [ec-create-gcs-repository]
+## Create the repository [ec-create-gcs-repository]
 
 1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.

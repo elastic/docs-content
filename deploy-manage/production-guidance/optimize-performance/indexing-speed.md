@@ -25,6 +25,9 @@ Make sure to consider also your cluster’s shard count, index layout, and overa
 
 Bulk requests will yield much better performance than single-document index requests. In order to know the optimal size of a bulk request, you should run a benchmark on a single node with a single shard. First try to index 100 documents at once, then 200, then 400, etc. doubling the number of documents in a bulk request in every benchmark run. When the indexing speed starts to plateau then you know you reached the optimal size of a bulk request for your data. In case of tie, it is better to err in the direction of too few rather than too many documents. Beware that too large bulk requests might put the cluster under memory pressure when many of them are sent concurrently, so it is advisable to avoid going beyond a couple tens of megabytes per request even if larger requests seem to perform better.
 
+:::{note}
+In {{serverless-full}}, the minimum response time for a single bulk indexing request is 200ms.
+:::
 
 ## Use multiple workers/threads to send data to {{es}} [multiple-workers-threads]
 
@@ -46,6 +49,49 @@ This is the optimal configuration if you have no or very little search traffic (
 
 On the other hand, if your index experiences regular search requests, this default behavior means that {{es}} will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-refresh-interval-setting) to a larger value, e.g. `30s`, might help improve indexing speed.
 
+### Disable refresh interval
+
+To maximize indexing performance during large bulk operations, you can disable refreshing by setting the refresh interval to `-1`. This prevents {{es}} from performing any refreshes during the bulk indexing process.
+
+To disable the refresh interval, run the following request:
+
+```console
+PUT /my-index-000001/_settings
+{
+  "index" : {
+    "refresh_interval" : "-1"
+  }
+}
+```
+% TEST[setup:my_index]
+
+While refresh is disabled, your newly indexed documents will not be visible to search operations. Only re-enable refreshing after your bulk indexing is complete and you need the data to be searchable.
+
+To restore the refresh interval, run the following request with your desired value:
+
+```console
+PUT /my-index-000001/_settings
+{
+  "index" : {
+    "refresh_interval" : "5s" <1>
+  }
+}
+```
+% TEST[continued]
+
+
+1. For {{serverless-full}} deployments, `refresh_interval` must be either `-1`, or equal to or greater than `5s`
+
+When bulk indexing is complete, consider running a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to optimize search performance. Force merging is not available on {{serverless-full}}.
+
+```console
+POST /my-index-000001/_forcemerge?max_num_segments=5
+```
+% TEST[continued]
+
+::::{warning}
+Force merge is an expensive operation.
+::::
 
 ## Disable replicas for initial loads [_disable_replicas_for_initial_loads]
 
@@ -90,7 +136,7 @@ If indexing is I/O-bound, consider increasing the size of the filesystem cache (
 Stripe your index across multiple SSDs by configuring a RAID 0 array. Remember that it will increase the risk of failure since the failure of any one SSD destroys the index. However this is typically the right tradeoff to make: optimize single shards for maximum performance, and then add replicas across different nodes so there’s redundancy for any node failures. You can also use [snapshot and restore](../../tools/snapshot-and-restore.md) to backup the index for further insurance.
 
 ::::{note}
-In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH > Change hardware](/deploy-manage/deploy/elastic-cloud/change-hardware.md) and [ECE deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
+In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH > Manage hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) and [ECE > Manage deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
 ::::
 
 ### Local vs. remote storage [_local_vs_remote_storage]

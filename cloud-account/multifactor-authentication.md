@@ -21,7 +21,11 @@ Multifactor authentication (MFA) is **mandatory** when you log in to {{ecloud}} 
 You can no longer configure SMS as a multifactor authentication method. 
 ::::
 
-Elastic recommends that you enable multiple methods so that you can still access your account if you lose access to one method.
+::::{important} 
+
+For enhanced security, we recommend you configure at least two different authentication methods. This redundancy ensures that losing access to one method doesn't impair access to your {{ecloud}} account.
+
+::::
 
 If you use only a Google or Microsoft account to log in, then you can’t configure MFA in {{ecloud}}. You can check and manage your multifactor authentication options in your Google or Microsoft account security settings.
 
@@ -105,5 +109,13 @@ The only secure and recommended approach is to use one Elastic account for each 
 **After I set up an MFA method, will I need to answer an MFA challenge every time I authenticate through Elastic Cloud?**
 
 For now, you will need to answer an MFA challenge on every login, but we are working on adding a **Trust this device** option, which will "silence" the MFA challenge for one month per user session.
+
+**Can I use multiple email addresses for MFA?**
+
+No, only one email address can be used for MFA verification. In alignment with security best practices, Elastic Cloud is designed to use only one designated email address for MFA purposes. This email is used to send your one-time verification codes during login. If you need to update your MFA email address, review [Update your email address](update-your-email-address.md) for more information.
+
+
+
+
 
 

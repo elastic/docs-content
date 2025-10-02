@@ -33,10 +33,11 @@ If, at any time during your monthly subscription with {{ecloud}}, you decide you
 To change your subscription level:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Select the user icon on the header bar and select **Billing** from the menu.
-3. On the **Overview** page, select **Update subscription**.
-4. Choose a new subscription level.
-5. Save your changes.
+2. From a deployment or project on the home page, select **Manage**.
+3. From the lower navigation menu, select **Billing and Subscription**.
+4. On the **Overview** page, select **Update subscription**.
+5. Choose a new subscription level.
+6. Save your changes.
 
 ::::{important}
 * Changing to a higher subscription level takes place immediately. Moving to a lower subscription level takes effect 30 days after you most recently changed to a higher subscription level. In the interim, you pay the current rate. If you haven’t performed a self-service change in the past 30 days, then the change to the lower subscription level is immediate.
@@ -70,6 +71,9 @@ You can [change your subscription level](/deploy-manage/cloud-organization/billi
 
 `Field-level or document-level security`
 :   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the {{kib}} [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) page.
+
+`ES|QL cross-cluster search`
+:   Discontinue all [ES|QL CCS queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) or upgrade license tier to Enterprise.
 
 ::::{note}
 After you have made your changes to the deployment, it can take up to one hour to clear the notification banner.

@@ -4,8 +4,13 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Event Settings [ec-autoops-event-settings]
@@ -13,7 +18,7 @@ products:
 AutoOps events are triggered when specific conditions are met and are closed when those conditions are no longer satisfied. An event can be triggered by multiple conditions, and each event comes with a default setting that can be adjusted differently for each connected deployment.
 
 ::::{note}
-Only **Organization owners** can set up notifications.
+Only **Organization owners** can configure these settings.
 ::::
 
 

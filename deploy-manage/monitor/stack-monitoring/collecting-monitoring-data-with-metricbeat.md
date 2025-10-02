@@ -67,7 +67,7 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
 
     If Elastic {{security-features}} are enabled, you must also provide a user ID and password so that {{metricbeat}} can collect metrics successfully:
 
-    1. Create a user on the production cluster that has the [`remote_monitoring_collector` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the production cluster that has the [`remote_monitoring_collector` built-in role](elasticsearch://reference/elasticsearch/roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](elasticsearch://reference/elasticsearch/roles.md).
     2. Add the `username` and `password` settings to the {{es}} module configuration file.
     3. If TLS is enabled on the HTTP layer of your {{es}} cluster, you must either use https as the URL scheme in the `hosts` setting or add the `ssl.enabled: true` setting. Depending on the TLS configuration of your {{es}} cluster, you might also need to specify [additional ssl.*](beats://reference/metricbeat/configuration-ssl.md) settings.
 
@@ -93,7 +93,7 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon-2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"
@@ -113,7 +113,7 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
 
     If {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 
-    1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](elasticsearch://reference/elasticsearch/roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.
 
     For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).

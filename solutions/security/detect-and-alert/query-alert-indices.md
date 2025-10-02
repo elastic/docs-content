@@ -15,6 +15,12 @@ products:
 
 This page explains how you should query alert indices, for example, when building rule queries, custom dashboards, or visualizations. For more information about alert event field definitions, review the [Alert schema](/reference/security/fields-and-object-schemas/alert-schema.md).
 
+::::{important}
+
+System indices, such as the alert indices, contain important configuration and internal data; do not change their mappings. Changes can lead to rule execution and alert indexing failures. Use [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) instead, which allow you to add fields to existing alert and event documents.
+
+::::
+
 
 ## Alert index aliases [_alert_index_aliases]
 

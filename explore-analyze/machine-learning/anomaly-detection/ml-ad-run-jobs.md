@@ -24,7 +24,7 @@ If your data is located outside of {{es}}, you cannot use {{kib}} to create your
 
 ## Create an {{anomaly-job}} [ml-ad-create-job]
 
-You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To open **Anomaly Detection**, find **{{ml-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To start creating an {{anomaly-job}}, navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/machine-learning-ml-create-job.png
 :alt: Create New Job
@@ -225,7 +225,7 @@ POST _ml/datafeeds/feed1/_stop
 ```
 
 ::::{note}
-You must have `manage_ml`, or `manage` cluster privileges to stop {{dfeeds}}. For more information, see [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+You must have `manage_ml`, or `manage` cluster privileges to stop {{dfeeds}}. For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 ::::
 
 A {{dfeed}} can be started and stopped multiple times throughout its lifecycle.
@@ -247,7 +247,7 @@ POST _ml/anomaly_detectors/job1/_close
 ```
 
 ::::{note}
-You must have `manage_ml`, or `manage` cluster privileges to stop {{anomaly-jobs}}. For more information, see [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+You must have `manage_ml`, or `manage` cluster privileges to stop {{anomaly-jobs}}. For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 ::::
 
 If you submit a request to close an {{anomaly-job}} and its {{dfeed}} is running, the request first tries to stop the {{dfeed}}. This behavior is equivalent to calling the [stop {{dfeeds}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-stop-datafeed) with the same `timeout` and `force` parameters as the close job request.

@@ -1,4 +1,5 @@
 ---
+navigation_title: Common problems
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-troubleshooting.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Common problems [fleet-troubleshooting]
+# Common problems with {{fleet}} and {{elastic-agent}} [fleet-troubleshooting]
 
 We have collected the most common known problems and listed them here. If your problem is not described here, review the open issues in the following GitHub repositories:
 
@@ -20,7 +21,7 @@ We have collected the most common known problems and listed them here. If your p
 | [elastic/beats](https://github.com/elastic/beats/issues) | {{beats}} shippers |
 | [elastic/fleet-server](https://github.com/elastic/fleet-server/issues) | {{fleet-server}} |
 | [elastic/package-registry](https://github.com/elastic/package-registry/issues) | {{package-registry}} |
-| [elastic/observability-docs](https://github.com/elastic/observability-docs/issues) | Documentation issues |
+| [elastic/docs-content](https://github.com/elastic/docs-content/issues) | Documentation issues |
 
 Have a question? Read our [FAQ](frequently-asked-questions.md), or contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is valuable to us.
 
@@ -59,6 +60,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 * [Hosted {{agent}} is offline](#hosted-agent-offline)
 * [APM & {{fleet}} fails to upgrade to 8.x on {{ecloud}}](#hosted-agent-8-x-upgrade-fail)
 * [Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key](#pgp-key-download-fail)
+* [{{agent}} upgrade fails on Windows with exit status `0xc0000142`](#agent-upgrade-fail-windows)
 * [{{agents}} are unable to connect after removing the {{fleet-server}} integration](#fleet-server-integration-removed)
 * [{{agent}} Out of Memory errors on Kubernetes](#agent-oom-k8s)
 * [Error when running {{agent}} commands with `sudo`](#agent-sudo-error)
@@ -361,7 +363,7 @@ The ZIP archive containing diagnostics information will include the raw events o
 
 **Get the diagnostics bundle using the CLI**
 
-Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
+Run the [`diagnostics` command](/reference/fleet/agent-command-reference.md#elastic-agent-diagnostics-command) to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases:
 
 ```shell
 elastic-agent diagnostics
@@ -650,6 +652,50 @@ curl -u elastic:<password> --request POST \
 ## Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key [pgp-key-download-fail]
 
 In versions 8.9 and above, an {{agent}} upgrade may fail when the upgrader can’t access a PGP key required to verify the binary signature. For details and a workaround, refer to the [PGP key download fails in an air-gapped environment](https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375) known issue in the version 8.9.0 Release Notes or to the [workaround documentation](https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md) in the elastic-agent GitHub repository.
+
+
+## {{agent}} upgrade fails on Windows with exit status `0xc0000142` [agent-upgrade-fail-windows]
+
+During an {{agent}} upgrade on Windows, {{agent}} spawns a "watcher" process that monitors the upgrade process. Windows attempts to create a temporary console for this process. If Windows can't create this console, the watcher process initialization fails with error code `0xc0000142` (`STATUS_DLL_INIT_FAILED`), resulting in an upgrade failure. {{agent}} logs this error at the `info` level.
+
+The error is caused by Windows [desktop heap exhaustion](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory). When {{agent}} runs as a [Windows service application](https://learn.microsoft.com/en-us/dotnet/framework/windows-services/introduction-to-windows-service-applications), it uses the service desktop, and shares the desktop heap with other running services. If a service process is using windowing resources, but is failing to release them, this may exhaust the desktop heap and affect {{agent}}.
+
+:::{note}
+Interactively-run instances of `elastic-agent.exe` are not subject to this limitation. Only instances running as a service are potentially affected.
+:::
+
+To resolve the issue, you can try the following:
+
+- **Update {{agent}} immediately after a system reboot**
+
+    A system reboot destroys and recreates the desktop heap, resolving any prior exhaustion.
+    Because many memory leaks are gradual, updating {{agent}} immediately after a system reboot may allow {{agent}} to upgrade before the memory leaking application exhausts the desktop heap.
+
+    :::{tip}
+    A [cold startup](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/distinguishing-fast-startup-from-wake-from-hibernation) resets kernel memory, but a fast startup or a wake from hibernation does not.
+    A regular reboot (for example, `shutdown /r /t 0`) results in a cold startup, and resets the desktop heap.
+    :::
+
+- **Update third-party service applications**
+
+    As standard Windows tools such as Task Manager and Process Explorer do not attribute desktop heap usage by application, you have to consider updating all third-party processes that are running as a service. To list these applications, use the following PowerShell command:
+
+    ```powershell
+    PS C:\> Get-Process | Where {$_.SI -eq 0} | Where {$_.MainModule.FileVersionInfo.ProductName -and (-not (($_.MainModule.FileVersionInfo.CompanyName -eq "Microsoft Corporation") -and ($_.MainModule.FileVersionInfo.ProductName -like "*Windows*"))) } | ForEach-Object { $_.MainModule.FileVersionInfo.ProductName + ' - ' + $_.Path }
+    ```
+
+    You can then install any updates from the listed applications' manufacturers.
+
+- **Terminate or uninstall third-party service applications**
+
+    You can try terminating or uninstalling non-critical third-party service applications before updating {{agent}}.
+    Terminating a process releases its desktop heap resources.
+
+    Note that the {{agent}} update process does not require a significant amount of desktop heap resources, so a successful {{agent}} update following the termination or uninstallation of a service application does not necessarily mean that the application was exhausting the desktop heap.
+
+- **Resize the desktop heap**
+
+    As a short-term solution, follow the steps described in the [Microsoft guide](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory) to increase the size of the desktop heap. Note that if a service application is causing a memory leak, increasing the size of the desktop heap may only postpone the desktop heap exhaustion.
 
 
 ## {{agents}} are unable to connect after removing the {{fleet-server}} integration [fleet-server-integration-removed]

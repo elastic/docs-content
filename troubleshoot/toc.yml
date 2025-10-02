@@ -21,6 +21,7 @@ toc:
           - file: elasticsearch/remote-clusters.md
           - file: elasticsearch/diagnose-unassigned-shards.md
           - file: elasticsearch/troubleshooting-shards-capacity-issues.md
+          - file: elasticsearch/cluster-allocation-api-examples.md
       - file: elasticsearch/data.md
         children:
           - file: elasticsearch/allow-all-cluster-allocation.md
@@ -31,6 +32,7 @@ toc:
           - file: elasticsearch/increase-shard-limit.md
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
+          - file: elasticsearch/troubleshoot-ingest-pipelines.md
 
       - file: elasticsearch/capacity.md
         children:  
@@ -52,6 +54,7 @@ toc:
       - file: elasticsearch/troubleshooting-searches.md
       - file: elasticsearch/start-ilm.md
       - file: elasticsearch/index-lifecycle-management-errors.md
+      - file: elasticsearch/file-based-recovery.md
       - file: elasticsearch/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md
@@ -113,7 +116,6 @@ toc:
           - file: observability/apm/enable-apm-server-binary-debugging.md
           - file: observability/apm/apm-server-performance-diagnostic.md
           - file: observability/apm-agent-go/apm-go-agent.md
-          - file: observability/apm-agent-swift/apm-ios-agent.md
           - file: observability/apm-agent-java/apm-java-agent.md
           - file: observability/apm-agent-dotnet/apm-net-agent.md
           - file: observability/apm-agent-nodejs/apm-nodejs-agent.md
@@ -141,6 +143,7 @@ toc:
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
+      - toc: ingest/opentelemetry
       - file: ingest/logstash.md
         children:
           - file: ingest/logstash/plugins.md
@@ -149,6 +152,7 @@ toc:
               - file: ingest/logstash/azure-event-hub.md
           - file: ingest/logstash/health-report-pipelines.md
           - file: ingest/logstash/contribute.md
+          - file: ingest/logstash/diagnostic.md
       - file: ingest/fleet/fleet-elastic-agent.md
         children:
           - file: ingest/fleet/common-problems.md

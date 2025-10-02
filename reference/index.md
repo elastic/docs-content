@@ -17,7 +17,7 @@ Explore the reference documentation for [Elastic APIs]({{apis}}).
 | {{es}} | • [{{es}}]({{es-apis}})<br>• [{{es-serverless}}]({{es-serverless-apis}})<br> |
 | {{kib}}<br>({{observability}}, {{elastic-sec}}, {{apm-agent}}, {{fleet}}, and more features) | • [{{kib}}]({{kib-apis}})<br>• [{{kib}} Serverless]({{kib-serverless-apis}})<br> |
 | {{ls}} | • [{{ls}}]({{ls-apis}})<br> |
-| APM | • [APM Server](/solutions/observability/apm/apm-server-api.md)<br>• [Observability intake Serverless]({{intake-apis}})<br> |
+| APM | • [APM Server](/solutions/observability/apm/apm-server/api.md)<br>• [Observability intake Serverless]({{intake-apis}})<br> |
 | {{ecloud}} | • [{{ech}}]({{cloud-apis}})<br>• [{{ecloud}} Serverless]({{cloud-serverless-apis}})<br>• [{{ece}}]({{ece-apis}})<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br>• [{{ecloud}} billing]({{cloud-billing-apis}})<br> |
 
 ## Security
@@ -37,6 +37,12 @@ Access detailed reference documentation on field and object schemas as well as t
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
 
 **Learn more in [Elasticsearch and index management](elasticsearch://reference/elasticsearch/index.md)**
+
+## Elastic Distributions of OpenTelemetry (EDOT)
+
+Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of OpenTelemetry distributions tailored to Elastic. They include a customized OpenTelemetry Collector and several OpenTelemetry Language SDKs.
+
+**Learn more in [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md)**
 
 ## Ingestion tools
 

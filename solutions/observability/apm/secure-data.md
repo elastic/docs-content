@@ -3,8 +3,8 @@ navigation_title: Secure data
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-security.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm

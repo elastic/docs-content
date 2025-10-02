@@ -4,12 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-limitations.html
 applies_to:
   stack: ga
-  serverless: ga
 products:
   - id: elasticsearch
 ---
 
-# Limitations [watcher-limitations]
+# Watcher limitations [watcher-limitations]
 
 ## Watches are not updated when file based scripts change [_watches_are_not_updated_when_file_based_scripts_change]
 

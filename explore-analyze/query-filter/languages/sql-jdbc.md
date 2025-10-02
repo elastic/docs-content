@@ -27,7 +27,7 @@ Maven dependency
 <dependency>
   <groupId>org.elasticsearch.plugin</groupId>
   <artifactId>x-pack-sql-jdbc</artifactId>
-  <version>{{version}}</version>
+  <version>{{version.stack}}</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ from [Maven Central Repository](https://search.maven.org/artifact/org.elasticsea
 Your driver must be compatible with your {{es}} version.
 
 ::::{important}
-The driver version cannot be newer than the {{es}} version. For example, {{es}} version 7.10.0 is not compatible with {{version}} drivers.
+The driver version cannot be newer than the {{es}} version. For example, {{es}} version 7.10.0 is not compatible with {{version.stack}} drivers.
 ::::
 
 
@@ -173,7 +173,7 @@ $$$jdbc-cfg-timezone$$$
 `catalog`
 :   Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.
 
-    [preview] See [{{ccs}}](../../../solutions/search/cross-cluster-search.md).
+    See [{{ccs}}](../../../solutions/search/cross-cluster-search.md).
 
 
 

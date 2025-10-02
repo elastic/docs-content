@@ -28,7 +28,7 @@ If security is enabled on your cluster, you can pass the username and password i
 $ ./bin/elasticsearch-sql-cli https://sql_user:strongpassword@some.server:9200
 ```
 
-Once the CLI is running you can use any [query](sql-spec.md) that Elasticsearch supports:
+Once the CLI is running you can use any [query](elasticsearch://reference/query-languages/sql/sql-spec.md) that Elasticsearch supports:
 
 ```sql
 sql> SELECT * FROM library WHERE page_count > 500 ORDER BY page_count DESC;

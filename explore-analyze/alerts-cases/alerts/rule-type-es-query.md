@@ -26,7 +26,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
 1. Define your query
 
-    If you use [query DSL](../../query-filter/languages/querydsl.md), you must select an index and time field then provide your query. Only the `query`, `fields`, `_source` and `runtime_mappings` fields are used, other DSL fields are not considered. For example:
+    * If you use [query DSL](../../query-filter/languages/querydsl.md), you must select an index and time field then provide your query. Only the `query`, `fields`, `_source` and `runtime_mappings` fields are used, other DSL fields are not considered. For example:
 
     ```sh
     {
@@ -36,34 +36,45 @@ When you create an {{es}} query rule, your choice of query type affects the info
      }
     ```
 
-    If you use [KQL](../../query-filter/languages/kql.md) or [Lucene](../../query-filter/languages/lucene-query-syntax.md), you must specify a data view then define a text-based query. For example, `http.request.referrer: "https://example.com"`.
+    * If you use [KQL](../../query-filter/languages/kql.md) or [Lucene](../../query-filter/languages/lucene-query-syntax.md), you must specify a data view then define a text-based query. For example, `http.request.referrer: "https://example.com"`.
 
-    If you use [ES|QL](../../query-filter/languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|).
+   * If you use [ES|QL](elasticsearch://reference/query-languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|).
 
-    :::{admonition} Added in 8.16.0
-    This functionality was added in 8.16.0.
-    :::
+        :::{admonition} Added in 8.16.0
+        This functionality was added in 8.16.0.
+        :::
 
-    For example:
+        For example:
 
-    ```sh
-    FROM kibana_sample_data_logs
-    | STATS total_bytes = SUM(bytes) BY host
-    | WHERE total_bytes > 200000
-    | SORT total_bytes DESC
-    | LIMIT 10
-    ```
+        ```sh
+        FROM kibana_sample_data_logs
+        | STATS total_bytes = SUM(bytes) BY host
+        | WHERE total_bytes > 200000
+        | SORT total_bytes DESC
+        | LIMIT 10
+        ```
 
-2. If you use query DSL, KQL, or Lucene, set the group and theshold.
+2. Specify details for grouping alerts based on your query language.
 
-    When
-    :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
+    * If you use query DSL, KQL, or Lucene, set the group and theshold.
 
-    Over or Grouped Over
-    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
+        When
+        :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
 
-    Threshold
-    :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
+        Over or Grouped Over
+        :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
+
+        Threshold
+        :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
+
+    * {applies_to}`stack: ga 9.2` If you use {{esql}}, specify a time field and how to group alerts. 
+
+        Time field
+        :   Choose the time field to use when filtering query results by the time window that you later specify for the rule. You can choose any time field that's availble on the index you're querying, for example, the `@timestamp` field.
+
+        Alert group
+        :   Select **Create an alert if matches are found** to create a single alert for multiple events matching the {{esql}} query. Select **Create an alert for each row** to create a separate alert for each event that matches the {{esql}} query. Whenever possible, each alert is given a unique ID. 
+ 
 
 3. Set the time window, which defines how far back to search for documents.
 4. If you use query DSL, KQL, or Lucene, set the number of documents to send to the configured actions when the threshold condition is met.

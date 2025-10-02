@@ -1,5 +1,5 @@
 ---
-navigation_title: With a different ECE environment
+navigation_title: To a different ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access deployments of another {{ece}} environment [ece-remote-cluster-other-ece]
+# Connect to deployments in a different {{ece}} environment [ece-remote-cluster-other-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ece}} environment.
 
@@ -59,12 +59,12 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
-    1. Add a setting:
+    1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
 
@@ -75,7 +75,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
 
 ::::
 
@@ -119,7 +119,7 @@ If you later need to update the remote connection with different permissions, yo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
 
 ::::
 ::::::
@@ -158,7 +158,7 @@ You can update a deployment using the appropriate trust settings for the {{es}} 
 Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships):
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false
+curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false
 ```
 
 For each remote ECE environment, it will return something like this:
@@ -217,7 +217,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
+    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
+
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
     * **Proxy address**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.<br>
 
       ::::{tip}
@@ -277,6 +279,9 @@ PUT /_cluster/settings
 }
 ```
 
+::::{note}
+When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
+::::
 
 ### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api_2]
 
@@ -286,7 +291,7 @@ This section only applies if you’re using TLS certificates as cross-cluster se
 
 
 ```sh
-curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters -d '
+curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters -d '
 {
   "resources" : [
     {
@@ -314,7 +319,7 @@ Note the following when using the {{ece}} RESTful API:
 The following API request retrieves the remote clusters configuration:
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters
+curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters
 ```
 
 ::::{note}

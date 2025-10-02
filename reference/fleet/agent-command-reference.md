@@ -28,7 +28,7 @@ Note the following restrictions for running {{agent}} commands:
 * [help](#elastic-agent-help-command)
 * [inspect](#elastic-agent-inspect-command)
 * [install](#elastic-agent-install-command)
-* [otel](#elastic-agent-otel-command) [preview]
+* [otel](#elastic-agent-otel-command)
 * [privileged](#elastic-agent-privileged-command)
 * [restart](#elastic-agent-restart-command)
 * [run](#elastic-agent-run-command)
@@ -39,7 +39,7 @@ Note the following restrictions for running {{agent}} commands:
 * [unprivileged](#elastic-agent-unprivileged-command)
 * [version](#elastic-agent-version-command)
 
-<hr>
+
 
 ## elastic-agent diagnostics [elastic-agent-diagnostics-command]
 
@@ -105,7 +105,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent diagnostics
 ```
 
-<hr>
 
 ## elastic-agent enroll [elastic-agent-enroll-command]
 
@@ -381,7 +380,6 @@ elastic-agent enroll --url=https://fleet-server:8220 \
   --certificate-authorities=/path/to/ca.crt
 ```
 
-<hr>
 
 ## elastic-agent help [elastic-agent-help-command]
 
@@ -412,7 +410,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent help enroll
 ```
 
-<hr>
 
 ## elastic-agent inspect [elastic-agent-inspect-command]
 
@@ -458,7 +455,6 @@ elastic-agent inspect components --show-config
 elastic-agent inspect components log-default
 ```
 
-<hr>
 
 ## elastic-agent privileged [elastic-agent-privileged-command]
 
@@ -473,7 +469,6 @@ Refer to [Run {{agent}} without administrative privileges](/reference/fleet/elas
 elastic-agent privileged
 ```
 
-<hr>
 
 ## elastic-agent install [elastic-agent-install-command]
 
@@ -715,7 +710,7 @@ See the `--unprivileged` option and [Run {{agent}} without administrative privil
 
     Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
 
-    [preview] To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
+    {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
 
     For example:
 
@@ -780,7 +775,6 @@ elastic-agent install --url=https://fleet-server:8220 \
   --certificate-authorities=/path/to/ca.crt
 ```
 
-<hr>
 
 ## elastic-agent otel [elastic-agent-otel-command]
 
@@ -833,7 +827,6 @@ Change the default verbosity setting in the {{agent}} EDOT Collector configurati
 ./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"
 ```
 
-<hr>
 
 ## elastic-agent restart [elastic-agent-restart-command]
 
@@ -861,7 +854,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent restart
 ```
 
-<hr>
 
 ## elastic-agent run [elastic-agent-run-command]
 
@@ -910,7 +902,6 @@ These flags are valid whenever you run `elastic-agent` on the command line.
 elastic-agent run -c myagentconfig.yml
 ```
 
-<hr>
 
 ## elastic-agent status [elastic-agent-status-command]
 
@@ -958,7 +949,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent status
 ```
 
-<hr>
 
 ## elastic-agent uninstall [elastic-agent-uninstall-command]
 
@@ -1041,7 +1031,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent uninstall
 ```
 
-<hr>
 
 ## elastic-agent unprivileged [elastic-agent-unprivileged-command]
 
@@ -1049,7 +1038,7 @@ Run {{agent}} without full superuser privileges. This is useful in organizations
 
 Note that changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
 
-[preview] To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
+{applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 
 
 ### Examples [_examples_19]
@@ -1060,19 +1049,18 @@ Run {{agent}} without administrative privileges:
 elastic-agent unprivileged
 ```
 
-[preview] Run {{agent}} without administrative privileges, as a pre-existing user:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` Run {{agent}} without administrative privileges, as a pre-existing user:
 
 ```shell
 elastic-agent unprivileged --user="my.pathl\username" --password="mypassword"
 ```
 
-[preview] Run {{agent}} without administrative privileges, as a pre-existing group:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` Run {{agent}} without administrative privileges, as a pre-existing group:
 
 ```shell
 elastic-agent unprivileged --group="my.pathl\groupname" --password="mypassword"
 ```
 
-<hr>
 
 ## elastic-agent upgrade [elastic-agent-upgrade-command]
 
@@ -1117,7 +1105,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent upgrade 7.10.1
 ```
 
-<hr>
 
 ## elastic-agent logs [elastic-agent-logs-command]
 
@@ -1157,7 +1144,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent logs -n 100 -f -C "system/metrics-default"
 ```
 
-<hr>
 
 ## elastic-agent version [elastic-agent-version-command]
 
@@ -1184,5 +1170,3 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 ```shell
 elastic-agent version
 ```
-
-<hr>

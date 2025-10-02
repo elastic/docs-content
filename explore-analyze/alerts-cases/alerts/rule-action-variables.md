@@ -68,23 +68,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.all.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 `alerts.new.count`
 :   The count of new alerts.
@@ -94,23 +94,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.new.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 `alerts.ongoing.count`
 :   The count of ongoing alerts.
@@ -120,23 +120,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.ongoing.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 `alerts.recovered.count`
 :   The count of recovered alerts.
@@ -146,23 +146,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.recovered.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 ### Action frequency: For each alert [alert-action-variables]
 
@@ -187,7 +187,7 @@ If the rule’s action frequency is not a summary of alerts, it passes the follo
 :   The ID of the alert that scheduled the action.
 
 `alert.uuid`
-:   A universally unique identifier for the alert. While the alert is active, the UUID value remains unchanged each time the rule runs. [preview]
+:   A universally unique identifier for the alert. While the alert is active, the UUID value remains unchanged each time the rule runs.
 
 #### Context [defining-rules-actions-variable-context]
 

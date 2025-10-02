@@ -13,7 +13,7 @@ products:
   - id: elasticsearch
 ---
 
-# Capture diagnostics [diagnostic]
+# Capture {{es}} diagnostics [diagnostic]
 
 
 The {{es}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of cluster statistics and most settings. It works against all {{es}} versions.
@@ -74,7 +74,7 @@ To capture an {{es}} diagnostic:
     **Windows**
 
     ```sh
-    sudo .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
+    .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
     ::::{tip}

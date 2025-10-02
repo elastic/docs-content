@@ -15,14 +15,15 @@ products:
 * [Offerings](#offerings)
 * [Add-ons](#add-ons)
 
+Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
 ## Offerings [offerings] 
 
 To learn about billing dimensions for specific offerings, refer to:
 
-* [{{es}} billing dimensions](elasticsearch-billing-dimensions.md)
-* [Elastic for Observability billing dimensions](elastic-observability-billing-dimensions.md)
-* [Elastic for Security dimensions](security-billing-dimensions.md)
+* [](elasticsearch-billing-dimensions.md)
+* [](elastic-observability-billing-dimensions.md)
+* [](security-billing-dimensions.md)
 
 
 ## Add-ons [add-ons] 

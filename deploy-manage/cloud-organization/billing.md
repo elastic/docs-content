@@ -14,17 +14,17 @@ products:
 
 # Billing
 
-Elastic charges a recurring fee for using our offerings on {{ecloud}}. In this section, you'll learn how to about the dimensions used to calculate your bill, how to monitor account usage, how to manage billing, and more.
+Elastic charges a recurring fee for using our offerings on {{ecloud}}. In this section, you'll learn about the dimensions used to calculate your bill, how to monitor account usage, how to manage billing, and more.
 
 ## Pricing model
 
 {{ecloud}} pricing and billing is based on your usage across a number of dimensions. These dimensions are different for {{ech}} deployments and {{serverless-full}} projects. Each {{serverless-full}} project type also has its own billing dimensions.
 
-* [{{ech}} deployments](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md)
-* [{{serverless-full}}](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
-  * [{{es}} projects](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
-  * [Elastic Observability projects](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
-  * [Elastic Security projects](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
+* [](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md)
+* [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
+  * [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
+  * [](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
+  * [](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
 
 For more information, you can also refer to our [{{ech}}](https://www.elastic.co/pricing) and [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search) pricing pages.
 

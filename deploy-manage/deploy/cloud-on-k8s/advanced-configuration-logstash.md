@@ -1,4 +1,5 @@
 ---
+navigation_title: Advanced configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-advanced-configuration.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Advanced configuration [k8s-logstash-advanced-configuration]
+# Advanced configuration for {{ls}} on {{eck}} [k8s-logstash-advanced-configuration]
 
 ## Setting JVM options [k8s-logstash-jvm-options]
 
@@ -41,7 +42,7 @@ You can specify sensitive settings with Kubernetes secrets. ECK automatically in
 
 The Logstash Keystore can be password protected by setting an environment variable called `LOGSTASH_KEYSTORE_PASS`. Check out [Logstash Keystore](logstash://reference/keystore.md#keystore-password) documentation for details.
 
-```yaml
+```yaml subs=true
 apiVersion: v1
 kind: Secret
 metadata:
@@ -54,7 +55,7 @@ kind: Logstash
 metadata:
   name: logstash-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   pipelines:
     - pipeline.id: main

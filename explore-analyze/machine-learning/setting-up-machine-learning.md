@@ -77,7 +77,7 @@ In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-man
 
 In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}**, find **{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
-Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning**, find **{{stack-manage-app}} > Alerts and Insights** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
+Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning**, find the page in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
 
 :::{image} /explore-analyze/images/machine-learning-assign-job-spaces.jpg
 :alt: Assign machine learning jobs to spaces
@@ -120,4 +120,4 @@ Within a {{kib}} space, to upload and import files in the **{{data-viz}}**, you 
 * `ingest_admin` built-in role, or `manage_ingest_pipelines` cluster privilege
 * `create`, `create_index`, `manage` and `read` index privileges for destination indices
 
-For more information, see [Security privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).

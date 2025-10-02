@@ -69,18 +69,19 @@ You can filter on a specific `action`, such as [bulk indexing](https://www.elast
 * Filter on [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) actions:
 
     ```console
-    GET /_tasks?human&detailed&actions=indices:data/write/bulk
+    GET /_tasks?human&detailed&actions=indices:*write*
     ```
 
 * Filter on search actions:
 
     ```console
-    GET /_tasks?human&detailed&actions=indices:data/write/search
+    GET /_tasks?human&detailed&actions=indices:*search*
     ```
 
 
 Long-running tasks might need to be [canceled](#resolve-task-queue-backlog-stuck-tasks).
 
+See this [this video](https://www.youtube.com/watch?v=lzw6Wla92NY) for a walkthrough of troubleshooting the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) output.
 
 ### Look for long-running cluster tasks [diagnose-task-queue-long-running-cluster-tasks] 
 

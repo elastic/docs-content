@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic Cloud on Kubernetes
+navigation_title: On Elastic Cloud on Kubernetes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
 applies_to:
@@ -9,13 +9,13 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Remote clusters with {{eck}} [k8s-remote-clusters]
+# Remote clusters on {{eck}} [k8s-remote-clusters]
 
 The [remote clusters module](/deploy-manage/remote-clusters.md) in {{es}} enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
 
 When using remote cluster connections with ECK, the setup process depends on where the remote cluster is deployed.
 
-## Connect from an {{es}} cluster running in the same Kubernetes cluster [k8s-remote-clusters-connect-internal]
+## Connect to {{es}} clusters in the same ECK environment [k8s-remote-clusters-connect-internal]
 
 ::::{note}
 The remote clusters feature requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
@@ -78,21 +78,21 @@ spec:
     elasticsearchRef:
       name: cluster-two
       namespace: ns-two
-      apiKey:
-        access:
-          search:
-            names:
-              - kibana_sample_data_ecommerce  <1>
-          replication:
-            names:
-              - kibana_sample_data_ecommerce  <1>
+    apiKey:
+      access:
+        search:
+          names:
+            - kibana_sample_data_ecommerce  <1>
+        replication:
+          names:
+            - kibana_sample_data_ecommerce  <1>
   version: 8.16.1
 ```
 
 1. This requires the sample data: [/explore-analyze/index.md#gs-get-data-into-kibana](/explore-analyze/index.md#gs-get-data-into-kibana)
 
 
-You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/recipes/remoteclusters).
+You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/remoteclusters).
 
 
 ### Using the certificate security model [k8s_using_the_certificate_security_model]

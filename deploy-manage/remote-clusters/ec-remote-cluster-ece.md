@@ -1,5 +1,5 @@
 ---
-navigation_title: With {{ece}}
+navigation_title: To {{ece}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Access deployments of an {{ece}} environment [ec-remote-cluster-ece]
+# Connect {{ech}} deployments to an {{ece}} environment [ec-remote-cluster-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ECE}} (ECE) environment.
 
@@ -39,7 +39,6 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 ### Prerequisites and limitations [ec_prerequisites_and_limitations_3]
 
 * The local and remote deployments must be on {{stack}} 8.14 or later.
-* API key authentication can’t be used in combination with traffic filters.
 * Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
 
 
@@ -61,13 +60,13 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+3. From the navigation menu, select **Security**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
-    1. Add a setting:
+    1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
 
@@ -78,7 +77,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 
 ::::
 
@@ -96,8 +95,8 @@ If you later need to update the remote connection with different permissions, yo
 
     1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
     3. Repeat these steps for each API key you want to add. For example, if you want to use several deployments of the remote environment for CCR or CCS.
@@ -122,7 +121,7 @@ If you later need to update the remote connection with different permissions, yo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 
 ::::
 ::::::
@@ -139,14 +138,16 @@ A deployment can be configured to trust all or specific deployments in a remote 
 5. Upload the Certificate Authority of the ECE environment. You can download it from Platform > Trust Management in your ECE administration UI.
 6. Choose one of following options to configure the level of trust with the ECE environment:
 
-    * All deployments - This deployment trusts all deployments in the ECE environment, including new deployments when they are created.
-    * Specific deployments - Specify which of the existing deployments you want to trust in the ECE environment. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
+    * **All deployments** - This deployment trusts all deployments in the ECE environment, including new deployments when they are created.
+    * **Specific deployments** - Specify which of the existing deployments you want to trust in the ECE environment. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
 
 7. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
 8. Select **Create trust** to complete the configuration.
-9. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md). You will only be able to connect 2 deployments successfully when both of them trust each other.
+9. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md). You will only be able to connect two deployments successfully when both of them trust each other.
 
-Note that the environment ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
+::::{note}
+The environment ID and cluster IDs must be entered fully and correctly. For security reasons, verification of the IDs is not possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
+::::
 
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
@@ -200,19 +201,16 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
-    * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
+    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
+
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
+    * **Proxy address**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.<br>
 
       ::::{tip}
       If you’re using API keys as security model, change the port into `9443`.
       ::::
 
-    * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
-      :alt: Remote Cluster Parameters in Deployment
-      :screenshot:
-      :::
+    * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
@@ -255,6 +253,9 @@ PUT /_cluster/settings
 }
 ```
 
+::::{note}
+When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
+::::
 
 ### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api_3]
 

@@ -9,10 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-
-
-
-# Legacy collection methods [collecting-monitoring-data]
+# Legacy collection methods for self-managed {{es}} [collecting-monitoring-data]
 
 
 ::::{admonition} Deprecated in 7.16
@@ -94,12 +91,12 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         xpack.monitoring.exporters:
           id1:
             type: http
-            host: ["http://es-mon-1:9200", "http://es-mon-2:9200"]
+            host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
         ```
 
     2. If the Elastic {{security-features}} are enabled on the monitoring cluster, you must provide appropriate credentials when data is shipped to the monitoring cluster:
 
-        1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+        1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-agent). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
         2. Add the user ID and password settings to the HTTP exporter settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file and keystore on each node.<br>
 
             For example:
@@ -108,7 +105,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["http://es-mon-1:9200", "http://es-mon-2:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth.username: remote_monitoring_user
                 # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore
             ```
@@ -121,7 +118,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["https://es-mon1:9200", "https://es-mon-2:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth:
                   username: remote_monitoring_user
                   # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore
@@ -135,7 +132,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["https://es-mon1:9200", "https://es-mon-2:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth:
                   username: remote_monitoring_user
                   # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore

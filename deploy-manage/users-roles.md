@@ -22,7 +22,7 @@ The methods that you use to authenticate users and control access depends on the
 ::::{note}
 Preventing unauthorized access is only one element of a complete security strategy. To secure your Elastic environment, you can also do the following:
  
-* Restrict the nodes and clients that can connect to the cluster using [traffic filters](/deploy-manage/security/traffic-filtering.md). 
+* Restrict the nodes and clients that can connect to the cluster using [network security](/deploy-manage/security/network-security.md) policies. 
 * Take steps to maintain your data integrity and confidentiality by [encrypting HTTP and inter-node communications](/deploy-manage/security/secure-cluster-communications.md), as well as [encrypting your data at rest](/deploy-manage/security/data-security.md).
 * Maintain an [audit trail](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) for security-related events.
 * Control access to dashboards and other saved objects in your UI using [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
@@ -86,7 +86,7 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 serverless: all
 ```
 
-As an extension of the [predefined instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
+As an extension of the [predefined cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
 
 [Learn more about custom roles for {{serverless-full}} projects](/deploy-manage/users-roles/serverless-custom-roles.md).
 
@@ -122,7 +122,7 @@ After a user is authenticated, use role-based access control to determine whethe
 
 Key tasks for managing user authorization include: 
 
-* Assigning [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or [defining your own](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
+* Assigning [built-in roles](elasticsearch://reference/elasticsearch/roles.md) or [defining your own](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 

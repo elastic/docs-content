@@ -6,20 +6,7 @@ toc:
       - file: query-filter/languages.md
         children:
           - file: query-filter/languages/querydsl.md
-          - file: query-filter/languages/esql.md
-            children:
-              - file: query-filter/languages/esql-getting-started.md
-              - file: query-filter/languages/esql-where.md
-                children:
-                  - file: query-filter/languages/esql-rest.md
-                  - file: query-filter/languages/esql-kibana.md
-                  - file: query-filter/languages/esql-elastic-security.md
-              - file: query-filter/languages/esql-multi.md
-                children:
-                  - file: query-filter/languages/esql-multi-index.md
-                  - file: query-filter/languages/esql-cross-clusters.md
-              - file: query-filter/languages/esql-examples.md
-              - file: query-filter/languages/esql-task-management.md
+          - file: query-filter/languages/esql-kibana.md
           - file: query-filter/languages/sql.md
             children:
               - file: query-filter/languages/sql-overview.md
@@ -58,38 +45,6 @@ toc:
                   - file: query-filter/languages/sql-client-apps-workbench.md
                   - file: query-filter/languages/sql-client-apps-tableau-desktop.md
                   - file: query-filter/languages/sql-client-apps-tableau-server.md
-              - file: query-filter/languages/sql-spec.md
-                children:
-                  - file: query-filter/languages/sql-lexical-structure.md
-                  - file: query-filter/languages/sql-commands.md
-                  - file: query-filter/languages/sql-syntax-describe-table.md
-                  - file: query-filter/languages/sql-syntax-select.md
-                  - file: query-filter/languages/sql-syntax-show-catalogs.md
-                  - file: query-filter/languages/sql-syntax-show-columns.md
-                  - file: query-filter/languages/sql-syntax-show-functions.md
-                  - file: query-filter/languages/sql-syntax-show-tables.md
-                  - file: query-filter/languages/sql-data-types.md
-                  - file: query-filter/languages/sql-index-patterns.md
-                  - file: query-filter/languages/sql-index-frozen.md
-              - file: query-filter/languages/sql-functions.md
-                children:
-                  - file: query-filter/languages/sql-operators.md
-                  - file: query-filter/languages/sql-operators-logical.md
-                  - file: query-filter/languages/sql-operators-math.md
-                  - file: query-filter/languages/sql-operators-cast.md
-                  - file: query-filter/languages/sql-like-rlike-operators.md
-                  - file: query-filter/languages/sql-functions-aggs.md
-                  - file: query-filter/languages/sql-functions-grouping.md
-                  - file: query-filter/languages/sql-functions-datetime.md
-                  - file: query-filter/languages/sql-functions-search.md
-                  - file: query-filter/languages/sql-functions-math.md
-                  - file: query-filter/languages/sql-functions-string.md
-                  - file: query-filter/languages/sql-functions-type-conversion.md
-                  - file: query-filter/languages/sql-functions-geo.md
-                  - file: query-filter/languages/sql-functions-conditional.md
-                  - file: query-filter/languages/sql-functions-system.md
-              - file: query-filter/languages/sql-syntax-reserved.md
-              - file: query-filter/languages/sql-limitations.md
           - file: query-filter/languages/eql.md
             children:
               - file: query-filter/languages/example-detect-threats-with-eql.md
@@ -122,6 +77,7 @@ toc:
       - file: transforms/transform-limitations.md
   - file: elastic-inference.md
     children:
+      - file: elastic-inference/eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -214,8 +170,6 @@ toc:
           - file: machine-learning/nlp/ml-nlp-limitations.md
       - file: machine-learning/machine-learning-in-kibana.md
         children:
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
           - file: machine-learning/machine-learning-in-kibana/inference-processing.md
   - file: scripting.md
@@ -271,11 +225,11 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
       - file: visualize/esorql.md
-      - file: visualize/field-statistics.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
+      - file: visualize/alert-panels.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -404,6 +358,7 @@ toc:
           - file: alerts-cases/watcher/example-watches.md
             children:
               - file: alerts-cases/watcher/watch-cluster-status.md
+              - file: alerts-cases/watcher/execute-watch.md
           - file: alerts-cases/watcher/watcher-limitations.md
       - file: alerts-cases/cases.md
         children:
