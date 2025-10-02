@@ -24,7 +24,7 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`.
+ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure and GCP and more regions, we will automatically route requests to the same CSP and closest region the Elaticsearch cluster is hosted on. 
 
 
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
@@ -41,7 +41,7 @@ ELSER on EIS enables you to use the ELSER model on GPUs, without having to manag
 You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how to use the `.elser-2-elastic` inference endpoint, refer to [Using ELSER on EIS](elasticsearch://reference/elasticsearch/mapping-reference/semantic-tex.md#using-elser-on-eis).
 
 #### Get started with semantic search with ELSER on EIS
-[Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint. 
+[Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
 
 ### Limitations
 
