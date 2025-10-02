@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-ilm-tutorial.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -15,7 +17,7 @@ These tutorials explain how to apply a custom {{ilm-init}} policy to an integrat
 
 For certain features you’ll need to use a slightly different procedure to manage the index lifecycle:
 
-* APM: For verions 8.15 and later, refer to [Index lifecycle management](/solutions/observability/apm/index-lifecycle-management.md).
+* APM: For versions 8.15 and later, refer to [Index lifecycle management](/solutions/observability/apm/index-lifecycle-management.md).
 * Synthetic monitoring: Refer to [Manage data retention](/solutions/observability/synthetics/manage-data-retention.md).
 * Universal Profiling: Refer to [Universal Profiling index life cycle management](/solutions/observability/infra-and-hosts/universal-profiling-index-life-cycle-management.md).
 

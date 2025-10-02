@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/airgapped-env.html
+applies_to:
+  stack: ga
+  deployment:
+    self: ga
 products:
   - id: elastic-agent
 ---

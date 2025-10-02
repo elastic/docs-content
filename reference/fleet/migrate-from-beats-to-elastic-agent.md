@@ -1,7 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-beats-to-agent.html
+applies_to:
+  stack: ga
 products:
+  - id: beats
   - id: fleet
   - id: elastic-agent
 ---

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/certificates-rotation.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -8,7 +10,7 @@ products:
 
 # Rotate SSL/TLS CA certificates [certificates-rotation]
 
-In some scenarioes you may want to rotate your configured certificate authorities (CAs), for instance if your chosen CAs are due to expire. Refer to the following steps to rotate certificates between connected components:
+In some scenarios you may want to rotate your configured certificate authorities (CAs), for instance if your chosen CAs are due to expire. Refer to the following steps to rotate certificates between connected components:
 
 * [Rotating a {{fleet-server}} CA](#certificates-rotation-agent-fs)
 * [Rotating an {{es}} CA for connections from {{fleet-server}}](#certificates-rotation-fs-es)

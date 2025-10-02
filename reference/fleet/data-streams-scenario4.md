@@ -7,7 +7,6 @@ products:
   - id: elastic-agent
 applies_to:
   stack: ga 9.1
-  serverless: ga
 ---
 
 # Scenario 4: Apply an ILM policy to all data streams in a custom integration [data-streams-scenario4]

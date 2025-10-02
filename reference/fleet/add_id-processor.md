@@ -2,6 +2,8 @@
 navigation_title: add_id
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_id-processor.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
