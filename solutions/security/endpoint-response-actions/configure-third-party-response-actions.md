@@ -97,9 +97,11 @@ Expand a section below for your endpoint security system:
         * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
         * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Read.All` and `Machine.Isolate`).
 
-    * {applies_to}`stack: ga 9.1` To run a script on a host:
+    * {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` To run a script on a host:
     
         * Microsoft Defender for Endpoint connector: Permission to  manage live response library files as well as run live response on a specific machine (`Windows Defender ATP: Library.Manage` and `Machine.LiveResponse`)
+
+    * {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` To cancel an ongoing action on a host, you need the same permissions that are required for the action you're canceling.
 
     Refer to the [Microsoft Defender for Endpoint integration documentation](https://docs.elastic.co/en/integrations/microsoft_defender_endpoint) or [Microsoft’s documentation](https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp) for details on creating a new Azure application.
 
