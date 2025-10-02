@@ -98,7 +98,7 @@ Disable **Use recommended defaults** to adjust these values and roll over when t
 
 :::{tab-item} API
 :sync: api
-
+Use the API to create a lifecyle policy:
 ```console
 PUT _ilm/policy/indextods
 {
@@ -127,7 +127,14 @@ For more information about lifecycle phases and available actions, refer to [Cre
 
 ## Create an index template to apply the ingest pipeline and lifecycle policy [manage-general-content-with-data-streams-template]
 
-Create an index template that uses the created ingest pipeline and lifecycle policy:
+To use the created lifecycle policy, you configure an index template that uses it.
+When creating the index template, specify the following details:
+* the name of the lifecycle policy, which in our example is `indextods`
+* the ingest pipeline that enriches the data by adding the `@timestamp` field, which in our example is `ingest_time_1`
+* that the template is data stream enabled by including the `data_stream` definition
+* the index pattern, which ensures that this template will be applied to matching indices and in our example is `movetods` 
+
+Use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create an index template that uses the created ingest pipeline and lifecycle policy:
 
 ```console
 PUT _index_template/index_to_dot
@@ -168,6 +175,9 @@ PUT _index_template/index_to_dot
   }
 }
 ```
+
+To create an index template in Kibana, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
+Refer to [Manage index templates](docs-content/manage-data/data-store/index-basics.md#index-management-manage-index-templates) for more information about configuring templates in Kibana.
 
 ## Create a data stream [manage-general-content-with-data-streams-create-stream]
 
