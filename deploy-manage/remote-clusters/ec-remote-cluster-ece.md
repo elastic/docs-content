@@ -204,13 +204,13 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
     * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
 
       When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
-    * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
+    * **Proxy address**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.<br>
 
       ::::{tip}
       If you’re using API keys as security model, change the port into `9443`.
       ::::
 
-    * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
+    * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
