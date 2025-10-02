@@ -44,10 +44,6 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS, see the [ins
 
 While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
 
-#### Region Availability 
-
-ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
-
 #### Uptime
 
 There are no uptime guarantees during the Technical Preview.
