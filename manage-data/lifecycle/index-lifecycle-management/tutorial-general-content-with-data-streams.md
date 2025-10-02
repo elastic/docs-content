@@ -177,7 +177,7 @@ PUT _index_template/index_to_dot
 ```
 
 To create an index template in Kibana, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
-Refer to [Manage index templates](docs-content/manage-data/data-store/index-basics.md#index-management-manage-index-templates) for more information about configuring templates in Kibana.
+Refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) for more information about configuring templates in Kibana.
 
 ## Create a data stream [manage-general-content-with-data-streams-create-stream]
 
