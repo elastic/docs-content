@@ -34,7 +34,7 @@ This issue typically occurs when the `sending_queue` configuration is misaligned
 * Export batching is disabled, increasing processing overhead.
 * EDOT Collector resources (CPU, memory) are not sufficient for the traffic volume.
 
-:::{tip}
+:::{note}
 Increasing the `timeout` value (for example from 30s to 90s) doesn't help if the queue itself is the bottleneck.
 :::
 
@@ -48,18 +48,18 @@ Update the EDOT Collector configuration as follows:
 
 Prevent silent trace drops by enabling blocking behavior when the queue is full:
 
-    ```yaml
-    sending_queue:
-      enabled: true
-      queue_size: 1000
-      num_consumers: 10
-      block_on_overflow: true
-    ```
+```yaml
+sending_queue:
+    enabled: true
+    queue_size: 1000
+    num_consumers: 10
+    block_on_overflow: true
+```
 ::::
 
 ::::{step} Increase `num_consumers`
 
-Raise the number of queue consumers (`num_consumers`) to increase parallel processing of queued items. Start with 20–30 and adjust based on throughput and resource usage.
+Raise the number of queue consumers to increase parallel processing of queued items. Start with 20–30 and adjust based on throughput and resource usage.
 
 ::::
 
@@ -92,4 +92,4 @@ Check for indexing delays or errors on the {{es}} side. Bottlenecks here can als
 
 ## Resources
 
-* [Upstream documentation - OpenTelemetry Collector `sending_queue` configuration](https://opentelemetry.io/docs/collector/configuration/#exporters)
+* [Upstream documentation - OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration)
