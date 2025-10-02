@@ -168,6 +168,20 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
+## 9.0.8 [elastic-security-9.0.8-release-notes]
+
+### Features and enhancements [elastic-security-9.0.8-features-enhancements]
+* Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
+* Fixes {{elastic-defend}} error log on Windows where only the first character, usually 'C', was logged instead of a path.
+
+### Fixes [elastic-security-9.0.8-fixes]
+* Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
+* Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
+* Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
+* Fixes a bug in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
+* Fixes a bug in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+
 ## 9.0.7 [elastic-security-9.0.7-release-notes]
 
 ### Fixes [elastic-security-9.0.7-fixes]
