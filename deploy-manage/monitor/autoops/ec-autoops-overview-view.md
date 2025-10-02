@@ -5,24 +5,29 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Overview in AutoOps [ec-autoops-overview-view]
 
-The **Overview** page displays the current status of customer deployments in {{ech}} that are linked to the same Elastic organization.
+The **Overview** page displays the current status of customer deployments and clusters that are linked to the same Elastic organization.
 
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
 :alt: The Overview page
 :::
 
 ::::{note}
-The **Overview** page displays a complete list of deployments only if AutoOps is available in the specific Cloud Service Provider (CSP) region.
+The **Overview** page displays a complete list of deployments and clusters only if AutoOps is available in the specific Cloud Service Provider (CSP) region.
 ::::
 
 
-High-level metrics are available, including the most important and currently open events in a single pane. You can view the cluster status, the number of open events in each {{es}} deployments over different periods of time, and navigate to a specific deployment for more details.
+High-level metrics are available, including the most important and currently open events in a single pane. You can view the cluster status, the number of open events in each {{es}} deployment or cluster over different periods of time, and navigate to a specific deployment or cluster for more details.
 
 
 ## Deployments table [ec-autoops-deployment-table]
@@ -37,14 +42,14 @@ This section shows the number of active deployments, the number of nodes, and a 
 
 ## Top events [ec-autoops-top-events]
 
-This section provides a quick overview of the top open events in the selected period. You can filter by deployment, severity, name, and search for a specific event across all of the connected deployments.
+This section provides a quick overview of the top open events in the selected period. You can filter by deployment/cluster, severity, name, and search for a specific event across all of the connected deployments or clusters.
 
-The default view lists the top 10 important events across all deployments, sorted by severity.
+The default view lists the top 10 important events, sorted by severity.
 
-The event card indicates when the last event occurred, the number of occurrences across all deployments, the deployments impacted by the event, and it includes a direct link to the event to get additional details.
+The event card indicates when the last event occurred, the number of occurrences across all deployments/clusters, the deployments/clusters impacted by the event, and it includes a direct link to the event to get additional details.
 
 
 ## Events in time period [ec-autoops-events-time-period]
 
-This time series chart displays all events identified across the connected deployments during the selected period. This allows you to detect which deployment is generating the most events, investigate, and take appropriate actions to resolve any issues.
+This time series chart displays all events identified across the connected deployments/clusters during the selected period. This allows you to detect which deployment/cluster is generating the most events, investigate, and take appropriate actions to resolve any issues.
 

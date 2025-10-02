@@ -39,16 +39,16 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 
     ![Previewing an ESQL visualization](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt69dcceb4f1e12bc1/66c752d6aff77d384dc44209/edit-esql-visualization.gif "")
 
-    :::{tip}
+    :::{note}
     {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
 
-    When you edit the query and run it again, the visualization configuration persists as long as it is compatible with the query changes.
+    When you edit the query and run it again, the visualization configuration persists as long as it is compatible with the query changes. Refer to [](#chart-config-persist) for more details.
     :::
 
 4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-esql-control).
 5. Select **Apply and close** to save the visualization to the dashboard.
 
-## Customize the appearance of your {{esql}} visualization
+### Customize the appearance of your {{esql}} visualization
 
 When editing an {{esql}} visualization, you can customize the appearance of the chart. To do that:
 
@@ -62,8 +62,20 @@ When editing an {{esql}} visualization, you can customize the appearance of the 
 
 3. Return to the previous menu, then **Apply and close** the configuration to save your changes.
 
-## Create an alert from your {{esql}} visualization
+### Chart configuration persistence over {{esql}} query update [chart-config-persist]
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
 
+When you edit the {{esql}} query and run it again, the visualization configuration persists as you defined it as long as it is compatible with the query changes.
+
+The chart configuration resets or follows automatic suggestions when:
+- {applies_to}`stack: ga 9.2` You manually select a different chart type incompatible with the one previously selected.
+- {applies_to}`stack: ga 9.2` You create a new chart and haven't edited the visualization's options yet.
+- The query changes significantly and no longer returns compatible columns.
+
+## Create an alert from your {{esql}} visualization
 ```{applies_to}
 stack: ga 9.1
 serverless:

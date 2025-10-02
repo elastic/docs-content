@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: Connect your self-managed cluster
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Connect your self-managed cluster to AutoOps
@@ -25,15 +28,16 @@ Ensure your system meets the following requirements before proceeding:
 * Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
-## Connect to AutoOps (private preview) [connect-to-autoops]
+## Connect to AutoOps [connect-to-autoops]
 
 :::{note}
 :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
 :::
 :::
 
-The following steps describe how to connect to AutoOps during the private preview of AutoOps for self-managed clusters. 
+The following steps describe how to connect your ECE, ECK, or self-managed cluster to AutoOps. 
 
+<!-- Private preview instructions:
 :::::{tab-set}
 :group: existing-or-new-cloud-account
 
@@ -57,8 +61,7 @@ If you don’t have an existing {{ecloud}} account:
 ::::
 
 :::::
-
-<!-- Not applicable for private preview. Unhide for GA.
+-->
 
 :::::{tab-set}
 :group: existing-or-new-cloud-account
@@ -70,19 +73,20 @@ If you already have an {{ecloud}} account:
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On your home page, in the **Connected clusters** section, select **Connect self-managed cluster**. 
 3. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
+4. Go through the installation wizard as detailed in the following sections.
 ::::
 
 ::::{tab-item} New account
 :sync: new
 
 If you don’t have an existing {{ecloud}} account: 
-1. Sign up for an account. 
-2. Follow the prompts on your screen to create an organization.
+1. Go to the [Cloud Connected Services sign up](https://cloud.elastic.co/registration?onboarding_service_type=ccm) page. 
+2. Follow the prompts on your screen to sign up for {{ecloud}} and create an organization.
 3. Go through the installation wizard as detailed in the following sections.
 ::::
 
 :::::
--->
+
 
 ### Select installation method
 
