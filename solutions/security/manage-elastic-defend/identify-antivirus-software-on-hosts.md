@@ -25,7 +25,7 @@ After you’ve installed {{elastic-defend}} on one or more hosts, you can use *A
 ::::{admonition} Requirements
 To use this feature, you need:
 
-* In serverless, a Security Analytics Complete [subscription](https://www.elastic.co/pricing/serverless-security).
+* In serverless, a project with the Security Analytics Complete [feature tier](https://www.elastic.co/pricing/serverless-security).
 * The **Automatic Troubleshooting: Read** or **Automatic Troubleshooting: All** security [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
    :::{note}
    In {{stack}} 9.0.0, this privilege is called **Endpoint Insights**.

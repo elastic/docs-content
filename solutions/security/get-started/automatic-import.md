@@ -26,7 +26,7 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 
 * A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 * {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
-* {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* {{serverless-short}} users: a project with the [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) feature tier.
 * A sample of the data you want to import.
 
 ::::
