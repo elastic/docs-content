@@ -15,7 +15,7 @@ products:
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ECE}} (ECE) environment.
 
 ::::{note}
-If network security filters are applied to the remote cluster on ECE, the remote cluster administrator must configure a [remote cluster security filter](/deploy-manage/security/remote-cluster-filtering.md), using either the organization ID or the Elasticsearch cluster ID of the local ECH cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
+If network security filters are applied to the remote cluster on ECE, the remote cluster administrator must configure an [IP filter](/deploy-manage/security/ip-filtering-ece.md) to allow traffic from [{{ecloud}} IP addresses](/deploy-manage/security/elastic-cloud-static-ips.md#ec-egress). For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
 ::::
 
 ## Allow the remote connection [ec_allow_the_remote_connection_3]
@@ -215,6 +215,11 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
+
+      :::{image} /deploy-manage/images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
+      :alt: Remote Cluster Parameters in Deployment
+      :screenshot:
+      :::
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).

@@ -12,14 +12,10 @@ products:
 
 # Connect {{ece}} deployments to an {{ecloud}} organization [ece-remote-cluster-ece-ess]
 
-This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
+This section explains how to configure an {{ece}} (ECE) deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
 
 ::::{note}
-[Network security](../security/network-security.md) with [remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md) isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment when using the API key–based authentication model. For this use case, consider one of the following options:
-  * Disable network security in the remote cluster.
-  * Use an [IP filter network security policy](/deploy-manage/security/ip-filtering-cloud.md).
-
-For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
+If network security filters are applied to the remote cluster on {{ecloud}}, the remote cluster administrator must configure an [IP filter](/deploy-manage/security/ip-filtering-cloud.md) to allow connections from the IP addresses (or CIDR ranges) of the local ECE allocator hosts. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
 ::::
 
 ## Allow the remote connection [ece_allow_the_remote_connection_3]
@@ -155,22 +151,13 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
     * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
 
       When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
-    * **Proxy address**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.<br>
+    * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
 
       ::::{tip}
       If you’re using API keys as security model, change the port into `9443`.
       ::::
 
-    * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
-
-      :::{image} /deploy-manage/images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
-      :alt: Remote Cluster Parameters in Deployment
-      :screenshot:
-      :::
-
-      ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
-      ::::
+    * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
 
 4. Click **Next**.
 5. Click **Add remote cluster** (you have already established trust in a previous step).

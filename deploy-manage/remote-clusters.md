@@ -62,25 +62,24 @@ In {{ech}} (ECH) and {{ece}} (ECE), the remote clusters functionality interacts 
 
 This section explains how remote clusters interact with network security when using API key–based authentication, and describes the supported use cases.
 
-### Filter types for remote cluster traffic
+### Filter types and supported use cases for remote cluster traffic [use-cases-network-security]
 
 With API key–based authentication, remote clusters require the local cluster (A) to trust the transport SSL certificate presented by the remote cluster server (B). When network security is enabled on the destination cluster (B), it’s also necessary to explicitly allow the incoming traffic from cluster A. This can be achieved using different types of traffic filters:
 
-* [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md), which allow filtering by organization ID or {{es}} cluster ID. This method is more reliable and recommended, as it combines mTLS with API key authentication for stronger security. These filters are specific to ECH and ECE, because they rely on the certificates and proxy mechanisms provided by ECH and ECE.
+* [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md), available exclusively in ECH and ECE. They allow filtering by organization ID or {{es}} cluster ID and are the recommended option, as they combine mTLS with API key authentication for stronger security.
 
-* [IP filters](/deploy-manage/security/ip-filtering.md), which allow traffic based on IP addresses or CIDR ranges. These can be difficult to manage in orchestrated environments, where the source IP of individual {{es}} instances may change.
+* [IP filters](/deploy-manage/security/ip-filtering.md), which allow traffic based on IP addresses or CIDR ranges.
 
-### Use cases for remote clusters and network security [use-cases-network-security]
+The applicable filter type for the remote cluster depends on the local and remote deployment types:
 
-[Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md) are supported to control remote cluster traffic in the following scenarios:
-  * Local and remote clusters are {{ech}} deployments in the same organization
-  * Local and remote clusters are {{ech}} deployments in different organizations 
-  * Local and remote clusters are {{ece}} deployments in the same ECE environment
-  * Local and remote clusters are {{ece}} deployments in different ECE environments
-  * The local deployment is on {{ech}} and the remote deployment is on an {{ece}} environment
+| Remote cluster → <br>Local cluster ↓  | Elastic Cloud Hosted | Elastic Cloud Enterprise | Self-managed / Elastic Cloud on Kubernetes |
+|-------------------------|----------------------|--------------------------|--------------------------------------------|
+| **Elastic Cloud Hosted** | [Remote cluster filter](/deploy-manage/security/remote-cluster-filtering.md) | [IP filter](/deploy-manage/security/ip-filtering.md) | [IP filter](/deploy-manage/security/ip-filtering.md) or [Kubernetes network policy](/deploy-manage/security/k8s-network-policies.md) |
+| **Elastic Cloud Enterprise** | [IP filter](/deploy-manage/security/ip-filtering.md) | [Remote cluster filter](/deploy-manage/security/remote-cluster-filtering.md) / [IP filter](/deploy-manage/security/ip-filtering.md) (\*) | [IP filter](/deploy-manage/security/ip-filtering.md) or [Kubernetes network policy](/deploy-manage/security/k8s-network-policies.md) |
+| **Self-managed / Elastic Cloud on Kubernetes** | [IP filter](/deploy-manage/security/ip-filtering.md) | [IP filter](/deploy-manage/security/ip-filtering.md) | [IP filter](/deploy-manage/security/ip-filtering.md) or [Kubernetes network policy](/deploy-manage/security/k8s-network-policies.md) |
 
-    ::::{note}
-    Network security with remote cluster filters isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment. For this use case, consider disabling network security on the remote cluster or use an IP filter instead.
-    ::::
+(*) For ECE, remote cluster filters apply when both clusters are in the **same environment**. Use IP filters when the clusters belong to **different environments**.
 
-[IP filters](/deploy-manage/security/ip-filtering.md) are the only option for applying network security when the local deployment is a self-managed or an {{eck}} cluster, and the remote is on {{ece}} or {{ech}}.
+::::{note}
+When using self-managed security mechanisms (such as firewalls), keep in mind that remote clusters with API key–based authentication use port `9443` by default. Specify this port if a destination port is required.
+::::
