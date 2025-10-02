@@ -7,9 +7,7 @@ applies_to:
 ---
 
 :::{warning}
-WIP
-
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
 :::
 
 # {{agent-builder}} 
@@ -23,18 +21,18 @@ You can use the built-in agent for natural language conversations with any {{es}
 - **Interactive chat interface**: Ask questions about your {{es}} data using natural language in the Agent Chat UI.
 - **Agent-based architecture**: Configure AI-powered agents with customizable behaviors and tool access.
 - **Modular and extensible tools**: Extend your system with tools for {{es}} data access and manipulation.
-- **ES|QL integration**: Create and execute [ES|QL](elasticsearch://reference/query-languages/esql.md)-powered tools for specialized data queries.
+- **ES|QL integration**: Create and run [ES|QL](elasticsearch://reference/query-languages/esql.md)-powered tools for specialized data queries.
 - **MCP server**: Connect external MCP clients to access chat tools through a standardized interface.
 - **A2A server**: Enable agent-to-agent communication following the A2A protocol specification.
 - **Programmatic APIs**: Create, manage, and execute tools and agents through Kibana APIs.
 
 ## Key concepts
 
-The {{agent-builder}} framework is built around several key components that work together to provide a flexible and powerful conversational experience.
+The {{agent-builder}} framework consists of three key components: Agent Chat, Agents, and Tools.
 
-### Agent Chat UI
+### Agent Chat
 
-The **Agent Chat** UI is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
+**Agent Chat** is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
 [**Learn more about Agent Chat**](agent-builder/chat.md)
 
@@ -50,6 +48,12 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 
 [**Learn more about tools**](agent-builder/tools.md)
 
+## Get started
+
+To get started you need an Elastic deployment and you must enable the feature.
+
+[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
+
 ## Programmatic interfaces
 
 {{agent-builder}} provides APIs and LLM integration options for programmatic access and automation.
@@ -57,9 +61,9 @@ These interfaces enable you to build integrations with other applications and ex
 
 [**Learn more about programmatic access**](agent-builder/programmatic-access.md)
 
-## Get started
+## Limitations and known issues
 
-To get started you need an Elastic deployment and you must enable the feature.
+{{agent-builder}} is in technical preview.
 
-[**Get started with {{agent-builder}}**](agent-builder/get-started.md)
+[**Learn more about limitations and known issues**](agent-builder/limitations-known-issues.md)
 

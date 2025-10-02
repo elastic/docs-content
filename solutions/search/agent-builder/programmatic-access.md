@@ -7,7 +7,9 @@ applies_to:
 ---
 
 :::{warning}
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
+
+**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
 :::
 
 # Work programmatically with {{agent-builder}}

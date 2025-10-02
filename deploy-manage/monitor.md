@@ -36,11 +36,14 @@ To help you make your decision, refer to [](/deploy-manage/monitor/autoops-vs-st
 ```{applies_to}
 deployment:
   ess:
+  self:
+  ece:
+  eck:
 ```
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
-AutoOps is currently only available for Elastic Cloud Hosted deployments.
+AutoOps is available in all {{ech}} deployments and {{serverless-full}} projects, and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
 
 ### Stack monitoring
 
