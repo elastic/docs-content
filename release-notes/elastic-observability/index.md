@@ -201,7 +201,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.0.8 [elastic-observability-9.0.8-release-notes]
 
 ### Features and enhancements[elastic-observability-9.0.8-features]
-* Allows implementation of a default LLM connector from settings [#236103]({{kib-pull}}236103)
+* Allows implementation of a default LLM connector from settings [#236103]({{kib-pull}}236103).
 
 ### Fixes [elastic-observability-9.0.8-fixes]
 * Removes span documents from `getServiceAgent` function [#236732]({{kib-pull}}236732).
