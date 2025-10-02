@@ -204,7 +204,6 @@ You can specify a reason for closing an alert by selecting one of the following 
 * **False positive**: The alert was triggered by normal activity and doesn't indicate a security issue.
 * **True positive**: The alert represents a real security incident that has been resolved.
 * **Benign positive**: The alert correctly identified the activity, but the activity is acceptable or not actionable.
-* **Automated closure**: TBD
 * **Other**: Any other reason not covered by the predefined categories.
 
 When you select a closing reason, the alert document is populated with a new field called `kibana.alert.workflow_reason`. You can use this field to filter and sort alerts on the **Alerts** page. If you later reopen the alert, the field is removed from the document.
