@@ -9,6 +9,52 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## September 29, 2025 [serverless-changelog-09292025]
+
+### Features and enhancements [serverless-changelog-09292025-features-enhancements]
+
+* Updates the Observability navigation menu [#236001]({{kib-pull}}236001)
+* Enables cancelling response actions sent to hosts running Microsoft Defender Endpoint [#230399]({{kib-pull}}230399)
+* Adds each alert's reason for closing to the Alerts page [#226590]({{kib-pull}}226590)
+* Adds the Endpoint exceptions sub-privilege [#233433]({{kib-pull}}233433)
+* Updates the source saved object schema to enable integrations sync markers [#236457]({{kib-pull}}236457)
+* Updates the indicator details flyout [#230593]({{kib-pull}}230593)
+* Adds an advanced policy `windows.advanced.firewall_anti_tamper` that lets you set the firewall anti-tamper plugin to off or detect-only [#236431]({{kib-pull}}236431)
+* Displays document count chart for {{esql}} categorize queries [#231459]({{kib-pull}}231459)
+* Lets you manually map new fields from the schema editor [#235919]({{kib-pull}}235919)
+* Adds AI-generative partition suggestions to Streams [#235759]({{kib-pull}}235759)
+* In Streams, allows you to create routing conditions directly from preview table cells [#235560]({{kib-pull}}235560)
+* Adds an option to convert an index to a lookup index to the **Manage index** menu [#233998]({{kib-pull}}233998)
+* Improves code examples in the Synonyms UI [#235944]({{kib-pull}}235944)
+* Automatically copies source data into the alerts-as-data documents for other ES Query rule types [#230010]({{kib-pull}}230010)
+* Replaces the dashboard editor toolbar with the **Add** menu [#230324]({{kib-pull}}230324)
+* Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
+* Adds in-product documentation for the {{esql}} `FORK` command [#236494]({{kib-pull}}236494)
+* Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
+
+### Fixes [serverless-changelog-09292025-fixes]
+
+* Adjusts **Cancel** button height in Discover's tabs enabled view [#236118]({{kib-pull}}236118)
+* Fixes dashboard title not updating when edited from content editor [#236561]({{kib-pull}}236561)
+* Adds a unique count to transforms on the integrations overview to fix overcounting error [#236177]({{kib-pull}}236177)
+* Fixes malformed synthetics package policies [#236176]({{kib-pull}}236176)
+* Fixes controls trigger across various commands [#236121]({{kib-pull}}236121)
+* Reverts filter policy inputs [#236104]({{kib-pull}}236104)
+* Fixes the multiselect issue inside the toolbar selector when search is used [#236091]({{kib-pull}}236091)
+* Integrates dataview logic into host KPIs charts [#236084]({{kib-pull}}236084)
+* Fixes integrations RAG [#234211]({{kib-pull}}234211)
+* Ensures the data view picker icon is always vertically centered [#236379]({{kib-pull}}236379)
+* Fixes browser fields cache [#234381]({{kib-pull}}234381)
+* Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067)
+* Refactors `nav_control_popover` [#235780]({{kib-pull}}235780)
+* Allows `xpack.spaces.defaultSolution` to be configured via docker [#236570]({{kib-pull}}236570)
+* Fixes the Job details fly-out on the Analytics Map page [#236131]({{kib-pull}}236131)
+* Limits `msearch` usage for log rate analysis [#235611]({{kib-pull}}235611)
+* Fixes display of alerts from anomaly detection rules in [#236289]({{kib-pull}}236289)
+* Adds `time` field to the get data views response schema [#235975]({{kib-pull}}235975)
+* Adds `managed` field to the get data views response schema [#236237]({{kib-pull}}236237)
+* Validates {{ls}} pipeline IDs sent to Kibana APIs [#236347]({{kib-pull}}236347)
+
 
 ## September 22, 2025 [serverless-changelog-09222025]
 
