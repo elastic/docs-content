@@ -45,7 +45,7 @@ Each document in our simple data set will have:
 * An embedding of that review: stored in a `review_vector` field, which is defined as a [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) data type.
 
 :::{tip}
-The `dense_vector` type automatically uses quantization by default to reduce the memory footprint when searching float vectors.
+The `dense_vector` type automatically uses quantization to reduce the memory footprint when searching float vectors.
 Learn more about the default quantization strategy and balancing performance and accuracy in [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 :::
 
