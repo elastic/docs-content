@@ -204,6 +204,13 @@ Each time a detection rule runs using a remote cross-cluster search (CCS) index 
 
 If you’ve ensured that your detection rules have the required privileges across your remote indices, you can use the `securitySolution:enableCcsWarning` setting to disable this warning and reduce noise.
 
+## Configure alert suppression window behavior [suppression-window-behavior]
+
+```yaml {applies_to}
+stack: ga 9.2
+```
+
+To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
 ## Show/hide related integrations in Rules page tables [show-related-integrations]
 
