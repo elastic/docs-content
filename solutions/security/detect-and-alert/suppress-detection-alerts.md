@@ -19,13 +19,6 @@ Depending on the rule type, you can configure alert suppression to create alerts
 
 The {{security-app}} displays several indicators in the Alerts table and the alert details flyout when a detection alert is created with alert suppression enabled. You can view the original events associated with suppressed alerts by investigating the alert in Timeline.
 
-::::{note}
-
-When modifying Elastic prebuilt rules, you can also add on alert suppression. Refer to [Modify existing rules settings](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) to learn about the requirements for editing prebuilt rules and the rule settings that you can change.
-
-::::
-
-
 ## Configure alert suppression [security-alert-suppression-configure-alert-suppression]
 
 ::::{admonition} Requirements and notices
