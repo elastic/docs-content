@@ -29,7 +29,7 @@ Follow these recommended actions to make sure that EDOT Python is configured cor
 
 ```{applies_to}
 product:
-  edot_python: 1.9.0
+  edot_python: ga 1.9.0
 ```
 
 You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values.
@@ -38,7 +38,7 @@ You can change the default verbosity of both EDOT Python and OpenTelemetry Pytho
 
 ```{applies_to}
 product:
-  edot_python: 1.9.0
+  edot_python: ga 1.9.0
 ```
 
 EDOT Python would print its configuration at startup when `OTEL_LOG_LEVEL` is set to `info` or a more verbose logging level.
