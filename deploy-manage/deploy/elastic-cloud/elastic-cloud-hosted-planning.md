@@ -67,7 +67,7 @@ Scaling with {{ecloud}} is easy:
 
 The recommendation is to scale up the resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), then scale out by adding additional zones depending on your requirements: two zones for High Availability, three zones for Fault Tolerance. 
 
-## Minimum Size Recommendations for Production Use [ec-minimum-recommendations]
+## Minimum size recommendations for production use [ec-minimum-recommendations]
 
 To ensure optimal performance and cluster stability in your production environment, we recommend adhering to the following minimum size guidelines. Deviating from these recommendations may lead to performance issues and cluster instability. For an enhanced user experience, consider planning your deployment capacity above these minimum recommendations, and adjust sizing based on your specific use case.
 
