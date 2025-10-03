@@ -130,7 +130,7 @@ FROM kibana_sample_data_ecommerce
 :alt: ESQL query with a custom time field enabled
 :::
 
-### Create and edit lookup indices from LOOKUP JOINs commands [discover-esql-lookup-join]
+### Create and edit lookup indices from queries [discover-esql-lookup-join]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
