@@ -39,13 +39,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
 * Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
 * Fixes system prompt updates from the Conversations tab in AI Assistant [#234812]({{kib-pull}}234812).
-* Fixes a bug in the Highlighted fields table in the alert details flyout [#234222]({{kib-pull}}234222).
-* Fixes a bug in rule exceptions to include the `matches` operator only for supported fields [#233127]({{kib-pull}}233127).
+* Fixes an issue in the Highlighted fields table in the alert details flyout [#234222]({{kib-pull}}234222).
+* Fixes an issue in rule exceptions to include the `matches` operator only for supported fields [#233127]({{kib-pull}}233127).
 * Adds support in {{elastic-defend}} for installing eBPF event probes on Linux endpoints when cgroup2 is mounted in a non-standard location or not mounted at all.
 * Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
-* Fixes a bug in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
 * Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
-* Fixes a bug in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
 
 
 ## 9.1.4 [elastic-security-9.1.4-release-notes]
