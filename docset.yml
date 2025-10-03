@@ -78,6 +78,7 @@ toc:
   - toc: troubleshoot
   - toc: release-notes
   - toc: reference
+  - toc: contribute-docs
   - toc: extend
   - file: archive.md
   - file: versions.md

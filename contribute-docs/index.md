@@ -1,5 +1,5 @@
 ---
-navigation_title: Contribute to docs
+navigation_title: Contribute to the docs
 ---
 
 # Contribute to Elastic documentation

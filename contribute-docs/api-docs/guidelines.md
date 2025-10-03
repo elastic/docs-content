@@ -510,7 +510,7 @@ paths:
 :::{tab-item} Elasticsearch
 :sync: elasticsearch
 
-**External documentation links** use the `@ext_doc_id` annotation to connect to narrative guides. This is transformed into an OpenAPI `externalDocs` field in the [compilation process](overview.md#example-elasticsearch):
+**External documentation links** use the `@ext_doc_id` annotation to connect to narrative guides. This is transformed into an OpenAPI `externalDocs` field in the [compilation process](./overview.md#example-elasticsearch):
 
 ```ts
 /**
@@ -621,7 +621,7 @@ The [Elasticsearch API specification](https://github.com/elastic/elasticsearch-s
 - **Spectral**: Configuration in `.spectral.yaml`
 - **Redocly**: Configuration in `redocly.yaml`
 
-Refer to [the Elasticsearch quickstart](quickstart.md#lint-your-docs) to learn how to run the linter locally.
+Refer to [the Elasticsearch quickstart](./quickstart.md#lint-your-docs) to learn how to run the linter locally.
 
 ::::
 ::::
