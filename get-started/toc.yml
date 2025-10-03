@@ -5,3 +5,6 @@ toc:
   - file: the-stack.md
   - file: deployment-options.md
   - file: versioning-availability.md
+  - file: howto-use-the-docs.md
+  - title: Glossary
+    crosslink: docs-content://reference/glossary/index.md
