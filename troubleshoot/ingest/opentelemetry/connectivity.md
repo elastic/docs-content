@@ -51,8 +51,8 @@ Connectivity errors usually trace back to one of the following issues:
 
   - OTLP/HTTP: TCP 4318  
   - OTLP/gRPC: TCP 4317  
-  - Elastic over HTTPS: TCP 443  
-  - Elastic over HTTP: TCP 9200  
+  - {{es}} (over HTTPS): 443  
+  - {{es}}: 9200  
 
   Also confirm whether your environment uses IPv4 or IPv6, as routing rules may differ.
 
@@ -100,7 +100,7 @@ Collector logs show export failures when it cannot forward data to Elastic. Look
 Before you dig into SDK or Collector configuration, confirm that your environment can reach the Elastic endpoint. 
 
 :::{note}
-The examples below use Linux/Unix-style commands. On Windows or when testing IPv6, the equivalent tooling or syntax may differ (for example, `Test-NetConnection` in PowerShell).
+The examples below use command syntax from Linux and macOS. On Windows or when testing IPv6, the equivalent tooling or syntax may differ (for example, `Test-NetConnection` in PowerShell).
 :::
 
 :::::{stepper}
