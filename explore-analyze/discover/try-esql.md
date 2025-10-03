@@ -158,7 +158,7 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
    - It must not start with `-`, `_`, or `+`.
 
 4. Provide the data of the lookup index. You can choose between:
-   - **Uploading a CSV file up to 500 MB**. When uploading a file, you can preview the data and inspect the file's content before it is imported. If possible issues are detected, a **File issues** tab with more details also appears before you validate the import.
+   - **Uploading a CSV file up to 500 MB**. When uploading a file, you can preview the data and inspect the file's content before it is imported. If issues are detected, a **File issues** tab with more details also appears before you validate the import.
    - **Adding data manually**. To do that, you can add rows and columns, and edit cells directly.
    - **Using a combination of both methods**. You can upload a file after adding data manually, and edit or expand data imported from a file.
 
@@ -168,13 +168,15 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
 
 5. **Save** any unsaved changes, then **Close** the index editor to return to your query.
 
-Your new index is automatically added to your query. You can then specify the field to join using `ON <field_to_join`.
+Your new index is automatically added to your query. You can then specify the field to join using `ON <field_to_join>`.
 
 #### View or edit a lookup index from the editor
 
 You can view and modify existing lookup indices referenced in an {{esql}} query directly from the editor, depending on your privileges:
 - To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
 - To view lookup indices in read-only mode, you need the [`view_index_metadata`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
+
+To view or edit an index:
 
 1. In the {{esql}} query, hover over the lookup index name.
 
