@@ -2,8 +2,8 @@
 navigation_title: Connectivity issues
 description: Troubleshoot connectivity issues between EDOT SDKs, the EDOT Collector, and Elastic.
 applies_to:
-  - serverless: all
-  - product:
+  serverless: all
+  product:
       edot_collector: ga  
 products:
   - id: observability
