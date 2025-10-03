@@ -26,7 +26,7 @@ In this scenario, you have {{agent}}s collecting system metrics with the System 
 
 The **Data Streams** view in {{kib}} shows you the data streams, index templates, and {{ilm-init}} policies associated with a given integration.
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Data Streams**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Data Streams** tab.
 2. Search for `system` to see all data streams associated with the System integration.
 3. Select the `metrics-system.network-{{namespace}}` data stream to view its associated index template and {{ilm-init}} policy. As you can see, the data stream follows the [Data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme) and starts with its type, `metrics-`.
 
@@ -51,7 +51,7 @@ For example, to create custom index settings for the `system.network` data strea
 metrics-system.network-production@custom
 ```
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Component Templates**
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Component Templates** tab.
 2. Click **Create component template**.
 3. Use the template above to set the name—in this case, `metrics-system.network-production@custom`. Click **Next**.
 4. Under **Index settings**, set the {{ilm-init}} policy name under the `lifecycle.name` key:
@@ -86,7 +86,7 @@ Now that you’ve created a component template, you need to create an index temp
 ::::
 
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Index Templates**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you want to clone. The index template will have the `<type>` and `<dataset>` in its name, but not the `<namespace>`. In this case, it’s `metrics-system.network`.
 3. Select **Actions** > **Clone**.
 4. Set the name of the new index template to `metrics-system.network-production`.
@@ -144,7 +144,7 @@ If you cloned an index template to customize the data retention policy on an {{e
 
 To update the cloned index template:
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Index Templates**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you cloned. The index template will have the `<type>` and `<dataset>` in its name.
 3. Select **Manage** > **Edit**.
 4. Select **(2) Component templates**

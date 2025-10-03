@@ -88,7 +88,7 @@ If you encounter a `“Required transform failed”` notice on the Endpoints pag
 
 To restart a transform that’s not running:
 
-1. Go to **Kibana** → **Stack Management** → **Data** → **Transforms**.
+1. Go to {{kib}}'s **Transforms** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enter `endpoint.metadata` in the search box to find the transforms for {{elastic-defend}}.
 3. Click the **Actions** menu (**…**) and do one of the following for each transform, depending on the value in the **Status** column:
 

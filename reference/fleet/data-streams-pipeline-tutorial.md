@@ -19,9 +19,10 @@ This tutorial explains how to add a custom ingest pipeline to an Elastic Integra
 
 Create a custom ingest pipeline that will be called by the default integration pipeline. In this tutorial, we’ll create a pipeline that adds a new field to our documents.
 
-1. In {{kib}}, navigate to **Stack Management** → **Ingest Pipelines** → **Create pipeline** → **New pipeline**.
-2. Name your pipeline. We’ll call this one, `add_field`.
-3. Select **Add a processor**. Fill out the following information:
+1. In {{kib}}, go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. **Create pipeline** → **New pipeline**.
+1. Name your pipeline. We’ll call this one, `add_field`.
+1. Select **Add a processor**. Fill out the following information:
 
     * Processor: "Set"
     * Field: `test`
@@ -29,8 +30,8 @@ Create a custom ingest pipeline that will be called by the default integration p
 
         The [Set processor](elasticsearch://reference/enrich-processor/set-processor.md) sets a document field and associates it with the specified value.
 
-4. Click **Add**.
-5. Click **Create pipeline**.
+1. Click **Add**.
+1. Click **Create pipeline**.
 
 
 ## Step 2: Apply your ingest pipeline [data-streams-pipeline-two]
@@ -55,7 +56,7 @@ Most integrations write to multiple data streams. You’ll need to add the custo
 1. Find the first data stream you wish to edit and select **Change defaults**. For this tutorial, find the data stream configuration titled, **Collect metrics from System instances**.
 2. Scroll to **System CPU metrics** and under **Advanced options** select **Add custom pipeline**.
 
-    This will take you to the **Create pipeline** workflow in **Stack management**.
+    This will take you to the **Create pipeline** workflow.
 
 
 
