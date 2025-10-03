@@ -1,11 +1,12 @@
 toc:
   - file: index.md
-  - file: api-docs/index.md
+  - folder: api-docs
     children:
-      - file: api-docs/overview.md
-      - file: api-docs/checklist.md
-      - file: api-docs/guidelines.md
-      - file: api-docs/organize-annotate.md
-      - file: api-docs/quickstart.md
-      - file: api-docs/workflows.md
-      - file: api-docs/help.md
+      - file: index.md
+      - file: overview.md
+      - file: checklist.md
+      - file: guidelines.md
+      - file: organize-annotate.md
+      - file: quickstart.md
+      - file: workflows.md
+      - file: help.md
