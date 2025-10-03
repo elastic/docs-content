@@ -33,13 +33,13 @@ For more information, refer to [Check lifecycle progress](/manage-data/lifecycle
 
 ## Create an ingest pipeline to transform your general content [manage-general-content-with-data-streams-ingest]
 
-You can create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://reference/enrich-processor/set-processor.md) to add a `@timestamp` field in Kibana or with the [create or update a pipeline](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) API.
+You can create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://reference/enrich-processor/set-processor.md) to add a `@timestamp` field. Follow these steps in Kibana or using the [create or update a pipeline](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) API.
 
 ::::{tab-set}
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To add an ingest pipeline from {{kib}}, go to **Stack Management > Ingest Pipelines**. From the upper right, select **Create pipeline > New pipeline**.
+To add an ingest pipeline in {{kib}}, go to **Stack Management > Ingest Pipelines**, and then select **Create pipeline > New pipeline**.
 
 Configure the pipeline with a name, description, and a **Set** processor that adds the `@timestamp` field with a value of `{{_ingest.timestamp}}`.
 
@@ -82,7 +82,7 @@ You can create the policy in {{kib}} or with the [create or update policy](https
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+To create the policy in {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
 In the **Hot phase**, by default, an ILM-managed index [rolls over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) when either:
 * It reaches 30 days of age.
@@ -177,6 +177,7 @@ PUT _index_template/index_to_dot
 ```
 
 To create an index template in Kibana, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
+
 Refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) for more information about configuring templates in Kibana.
 
 ## Create a data stream [manage-general-content-with-data-streams-create-stream]
