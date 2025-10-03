@@ -151,7 +151,7 @@ To create an index template in Kibana, complete these steps:
     1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `movetodos`.
     1. Turn on the **Create data streams** toggle.
     1. Set the [index mode](elasticsearch://reference/elasticsearch/index-settings/time-series.md) to **Standard**.
-1. Optional: On the **Component templates** page, use the search and filter tools to select any [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
+1. Optional: On the **Component templates** page, use the search and filter tools to select any [component templates](/manage-data/data-store/templates.md#component-templates) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
 
 1. On the **Index settings** page, specify the lifecycle policy and ingest pipeline you want to use. For example, `indextods` and `ingest_time_1`:
 
