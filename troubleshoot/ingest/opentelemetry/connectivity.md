@@ -27,14 +27,35 @@ You might see one or more of the following error messages:
 
 These errors might appear either in application logs (from the SDK) or in the Collector logs.
 
+Example (Collector):
+
+```text
+2024-09-15T12:44:30Z error exporterhelper/queued_retry.go:149 Exporting failed. Rejecting data. Error: context deadline exceeded
+```
+
+Example (Python SDK):
+
+```text
+opentelemetry.sdk ERROR OTLPSpanExporter - Failed to export spans: [Errno 111] Connection refused
+```
 
 ## Causes
 
 Connectivity errors usually trace back to one of the following issues:
 
 - **Firewall or port blocking**  
-  
-  Outbound traffic on port `443` is blocked by corporate firewalls or network policies.
+
+  Outbound traffic may be blocked by corporate firewalls or network policies. 
+
+  Check that the required protocol and port combination is allowed:
+
+  - OTLP/HTTP: TCP 4318  
+  - OTLP/gRPC: TCP 4317  
+  - Elastic over HTTPS: TCP 443  
+  - Elastic over HTTP: TCP 9200  
+
+  Also confirm whether your environment uses IPv4 or IPv6, as routing rules may differ.
+
 
 - **Endpoint errors**  
   
@@ -51,11 +72,23 @@ Connectivity errors usually trace back to one of the following issues:
 
 ### Differences between SDK and Collector issues
 
-Errors can look similar whether they come from an SDK or the Collector. Identifying the source helps you isolate the problem:
+Errors can look similar whether they come from an SDK or the Collector. Identifying the source helps you isolate the problem.
+
+:::{note}
+Note: Some SDKs support setting a proxy directly (for example, using `HTTPS_PROXY`). Refer to [Proxy settings for EDOT SDKs](../opentelemetry/edot-sdks/proxy.md) for details.
+:::
 
 #### SDK
 
 Application logs report failures when the SDK cannot send data to the Collector or directly to Elastic. These often appear as `connection refused` or `timeout` messages. If seen, verify that the Collector endpoint is reachable.
+
+For guidance on enabling logs in your SDK, see [Enable SDK debug logging](../opentelemetry/edot-sdks/enable-debug-logging.md).
+
+Example (Java SDK):
+
+```text
+io.opentelemetry.exporter.otlp.internal.grpc.OkHttpGrpcExporter - Failed to export spans. Error: UNAVAILABLE: io exception
+```
 
 #### The Collector
 
@@ -64,7 +97,11 @@ Collector logs show export failures when it cannot forward data to Elastic. Look
 
 ## Resolution
 
-Before you dig into SDK or Collector configuration, confirm that your environment can reach the Elastic endpoint by performing the following checks:
+Before you dig into SDK or Collector configuration, confirm that your environment can reach the Elastic endpoint. 
+
+:::{note}
+The examples below use Linux/Unix-style commands. On Windows or when testing IPv6, the equivalent tooling or syntax may differ (for example, `Test-NetConnection` in PowerShell).
+:::
 
 :::::{stepper}
 
