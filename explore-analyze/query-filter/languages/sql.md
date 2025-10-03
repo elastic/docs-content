@@ -30,34 +30,34 @@ Lightweight and efficient
 
 The following chapters aim to cover everything from usage, to syntax and drivers. Experienced users might want to jump directly to the list of SQL [commands](elasticsearch://reference/query-languages/sql/sql-commands.md) and [functions](elasticsearch://reference/query-languages/sql/sql-functions.md).
 
-[Overview](elasticsearch://reference/query-languages/sql-overview.md)
+[Overview](elasticsearch://reference/query-languages/sql/sql.md)
 :   Overview of Elasticsearch SQL and its features.
 
-[Getting Started](elasticsearch://reference/query-languages/sql-getting-started.md)
+[Getting Started](elasticsearch://reference/query-languages/sql/sql-getting-started.md)
 :   Start using SQL right away in {{es}}.
 
-[Concepts and Terminology](elasticsearch://reference/query-languages/sql-concepts.md)
+[Concepts and Terminology](elasticsearch://reference/query-languages/sql/sql-concepts.md)
 :   Language conventions across SQL and {{es}}.
 
-[Security](elasticsearch://reference/query-languages/sql-security.md)
+[Security](elasticsearch://reference/query-languages/sql/sql-security.md)
 :   Secure Elasticsearch SQL and {{es}}.
 
-[REST API](elasticsearch://reference/query-languages/sql-rest.md)
+[REST API](elasticsearch://reference/query-languages/sql/sql-rest.md)
 :   Execute SQL in JSON format over REST.
 
-[Translate API](elasticsearch://reference/query-languages/sql-translate.md)
+[Translate API](elasticsearch://reference/query-languages/sql/sql-translate.md)
 :   Translate SQL in JSON format to {{es}} native query.
 
-[CLI](elasticsearch://reference/query-languages/sql-cli.md)
+[CLI](elasticsearch://reference/query-languages/sql/sql-cli.md)
 :   Command-line application for executing SQL against {{es}}.
 
-[JDBC](elasticsearch://reference/query-languages/sql-jdbc.md)
+[JDBC](elasticsearch://reference/query-languages/sql/sql-jdbc.md)
 :   JDBC driver for {{es}}.
 
-[ODBC](elasticsearch://reference/query-languages/sql-odbc.md)
+[ODBC](elasticsearch://reference/query-languages/sql/sql-odbc.md)
 :   ODBC driver for {{es}}.
 
-[Client Applications](elasticsearch://reference/query-languages/sql-client-apps.md)
+[Client Applications](elasticsearch://reference/query-languages/sql/sql-client-apps.md)
 :   Setup various SQL/BI tools with Elasticsearch SQL.
 
 [SQL Language](elasticsearch://reference/query-languages/sql/sql-spec.md)
