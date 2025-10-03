@@ -468,3 +468,43 @@ redirects:
   'solutions/observability/apm/monitor-aws-lambda-functions.md': 'solutions/observability/apm/ingest/monitor-aws-lambda-functions.md'
 # Related to https://github.com/elastic/docs-content/pull/3142
   'deploy-manage/deploy/self-managed/networkaddress-cache-ttl.md': 'deploy-manage/deploy/self-managed/important-settings-configuration.md'
+
+# Move all content for SQL under Explore & Analyze-> SQL to Reference content: related to https://github.com/elastic/docs-content/pull/3270
+  'explore-analyze/query-filter/languages/sql-overview.md': 'elasticsearch://reference/query-languages/sql/sql.md'
+  'explore-analyze/query-filter/languages/sql-getting-started.md': 'elasticsearch://reference/query-languages/sql/sql-getting-started.md  '
+  'explore-analyze/query-filter/languages/sql-concepts': 'elasticsearch://reference/query-languages/sql/sql-concepts'
+  'explore-analyze/query-filter/languages/sql-security.md': 'elasticsearch://reference/query-languages/sql/sql-security.md'
+  'explore-analyze/query-filter/languages/sql-rest.md': 'elasticsearch://reference/query-languages/sql/sql-rest.md'
+  'explore-analyze/query-filter/languages/sql-rest-overview.md': 'elasticsearch://reference/query-languages/sql/sql-rest-overview.md'
+  'explore-analyze/query-filter/languages/sql-rest-format.md': 'elasticsearch://reference/query-languages/sql/sql-rest-format.md'
+  'explore-analyze/query-filter/languages/sql-pagination.md': 'elasticsearch://reference/query-languages/sql/sql-pagination.md'
+  'explore-analyze/query-filter/languages/sql-rest-filtering.md': 'elasticsearch://reference/query-languages/sql/sql-rest-filtering.md'
+  'explore-analyze/query-filter/languages/sql-rest-columnar.md': 'elasticsearch://reference/query-languages/sql/sql-rest-columnar.md'
+  'explore-analyze/query-filter/languages/sql-rest-params.md': 'elasticsearch://reference/query-languages/sql/sql-rest-params.md'
+  'explore-analyze/query-filter/languages/sql-runtime-fields.md': 'elasticsearch://reference/query-languages/sql/sql-runtime-fields.md'
+  'explore-analyze/query-filter/languages/sql-async.md': 'elasticsearch://reference/query-languages/sql/sql-async.md'
+  'explore-analyze/query-filter/languages/sql-translate.md': 'elasticsearch://reference/query-languages/sql/sql-translate.md'
+  'explore-analyze/query-filter/languages/sql-cli.md': 'elasticsearch://reference/query-languages/sql/sql-cli.md'
+  'explore-analyze/query-filter/languages/sql-jdbc.md': 'elasticsearch://reference/query-languages/sql/sql-jdbc.md'
+  'explore-analyze/query-filter/languages/sql-jdbc-api-usage.md': 'elasticsearch://reference/query-languages/sql/sql-jdbc-api-usage.md'
+  'explore-analyze/query-filter/languages/sql-odbc.md': 'elasticsearch://reference/query-languages/sql/sql-odbc.md'
+  'explore-analyze/query-filter/languages/sql-odbc-installation.md': 'elasticsearch://reference/query-languages/sql/sql-odbc-installation.md'
+  'explore-analyze/query-filter/languages/sql-odbc-setup.md': 'elasticsearch://reference/query-languages/sql/sql-odbc-setup.md'
+  'explore-analyze/query-filter/languages/sql-client-apps.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-dbeaver.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-dbeaver.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-dbvis.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-dbvis.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-excel.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-excel.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-powerbi.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-powerbi.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-ps1.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-ps1.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-microstrat.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-microstrat.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-qlik.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-qlik.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-squirrel.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-squirrel.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-workbench.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-workbench.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-tableau-desktop.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-desktop.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-tableau-server.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-server.md'
+
+
+
+
+
+
