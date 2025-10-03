@@ -28,9 +28,14 @@ No external parts
 Lightweight and efficient
 :   Elasticsearch SQL does not abstract {{es}} and its search capabilities - on the contrary, it embraces and exposes SQL to allow proper full-text search, in real-time, in the same declarative, succinct fashion.
 
-The following chapters aim to cover everything from usage, to syntax and drivers. Experienced users might want to jump directly to the list of SQL [commands](elasticsearch://reference/query-languages/sql/sql-commands.md) and [functions](elasticsearch://reference/query-languages/sql/sql-functions.md).
 
-[Overview](elasticsearch://reference/query-languages/sql/sql.md)
+## Reference documentation
+
+:::{note}
+ This overview page is in the Explore & Analyze section. All of the {{es}} SQL documentation lives in the **Reference** section.
+:::
+
+[Overview](elasticsearch://reference/query-languages/sql.md)
 :   Overview of Elasticsearch SQL and its features.
 
 [Getting Started](elasticsearch://reference/query-languages/sql/sql-getting-started.md)
