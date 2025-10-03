@@ -20,7 +20,7 @@ The [`_search` endpoint](../../../solutions/search/querying-for-search.md) accep
 
 ### Search and filter with Query DSL [search-analyze-query-dsl-search-filter]
 
-Query DSL support a wide range of search techniques, including the following:
+Query DSL supports a wide range of search techniques, including the following:
 
 * [**Full-text search**](/solutions/search/full-text.md): Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.
 * [**Keyword search**](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md): Search for exact matches using `keyword` fields.
