@@ -147,7 +147,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
         
         Refer to the [Create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) documentation for details about these options.
 
-1. On the **Component templates** page, use the search and filter tools to select any [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
+1. On the **Component templates** page, use the search and filter tools to select any [component templates](/manage-data/data-store/templates.md#component-templates) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
 
 1. On the **Index settings** page:
     1. Configure ILM by specifying the [ILM settings](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md) to apply to the indices:
