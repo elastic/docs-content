@@ -134,7 +134,69 @@ When creating the index template, specify the following details:
 * that the template is data stream enabled by including the `data_stream` definition
 * the index pattern, which ensures that this template will be applied to matching indices and in our example is `movetods` 
 
-Use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create an index template that uses the created ingest pipeline and lifecycle policy:
+You can create the template in {{kib}} or with the [create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API.
+
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To create an index template in Kibana, complete these steps:
+
+1. Go to **Stack Management > Index Management**. In the **Index Templates** tab, select **Create template**.
+
+    ![Create template page](/manage-data/images/elasticsearch-reference-tutorial-ilm-rollover-general-content-create-template.png "")
+
+1. On the **Logistics** page: 
+    1. Specify the name of the template. For example `index_to_dot`.
+    1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `movetodos`.
+    1. Turn on the **Create data streams** toggle.
+    1. Set the [index mode](elasticsearch://reference/elasticsearch/index-settings/time-series.md) to **Standard**.
+1. Optional: On the **Component templates** page, use the search and filter tools to select any [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
+
+1. On the **Index settings** page, specify the lifecycle policy and ingest pipeline you want to use. For example, `indextods` and `ingest_time_1`:
+
+    ```json
+    {
+       "lifecycle": {
+         "name": "indextods"
+        },
+      "default_pipeline": "ingest_time_1"
+    }
+    ```
+
+1. On the **Mappings** page, customize the fields and data types used when documents are indexed into {{es}}. For example, select **Load JSON** and include these mappings:
+
+    ```json
+    {
+      "_source": {
+        "excludes": [],
+        "includes": [],
+        "enabled": true
+        },
+        "_routing": {
+          "required": false
+          },
+        "dynamic": true,
+        "numeric_detection": false,
+        "date_detection": true,
+        "dynamic_date_formats": [
+          "strict_date_optional_time",
+          "yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"
+        ]
+      }
+    ```
+
+1. On the **Review** page, confirm your selections. You can check your selected options, as well as both the format of the index template that will be created and the associated API request.
+
+The newly created index template will be used for all new indices with names that match the specified pattern, and for each of these, the specified ILM policy will be applied.
+
+For more information about configuring templates in Kibana, refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates). 
+:::
+
+:::{tab-item} API
+:sync: api
+
+Use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create an index template that specifies the created ingest pipeline and lifecycle policy:
 
 ```console
 PUT _index_template/index_to_dot
@@ -175,10 +237,10 @@ PUT _index_template/index_to_dot
   }
 }
 ```
+:::
+::::
 
-To create an index template in Kibana, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
 
-Refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) for more information about configuring templates in Kibana.
 
 ## Create a data stream [manage-general-content-with-data-streams-create-stream]
 
