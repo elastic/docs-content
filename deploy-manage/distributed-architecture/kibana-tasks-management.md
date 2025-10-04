@@ -33,7 +33,7 @@ If you lose this index, all scheduled alerts and actions are lost.
 - {{es}} and {{kib}} instances use the system clock to determine the current time. To ensure schedules are triggered when expected, synchronize the clocks of all nodes in the cluster using a time service such as [Network Time Protocol](http://www.ntp.org/).
 - Tasks are run on the {{kib}} server. <br>
   It is recommended to use an isolated node for the background task.
-  You can achieve that by setting `node.roles` to `background` for on-prem and scaling Kibana to 8G+ in ECH.
+  You can achieve that by setting `node.roles` to `background_tasks` for on-prem or by scaling Kibana to 8G+ in ECH.
 - Task Manager ensures that tasks:
   - Are only executed once
   - Are retried when they fail (if configured to do so)
