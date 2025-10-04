@@ -104,7 +104,7 @@ PUT _index_template/new-tsds-template
 
 ### Create the destination data stream and reindex [tsds-reindex-op]
 
-Run the reindex operation using `op_type: create` to prevent overwrites:
+Run the reindex operation:
 
 ```console
 POST /_reindex
