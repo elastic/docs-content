@@ -28,7 +28,7 @@ products:
 
 ## Customize Osquery sub-feature privileges [_customize_osquery_sub_feature_privileges]
 
-Depending on your [subscription level](https://www.elastic.co/pricing) or  [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
+Depending on your [subscription level](https://www.elastic.co/pricing) or  [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
 
 
 ## Customize Osquery configuration [osquery-custom-config]
