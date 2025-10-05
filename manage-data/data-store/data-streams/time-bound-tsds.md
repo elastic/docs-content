@@ -58,19 +58,18 @@ Writes within the accepted time range might still be rejected. The following act
 
 ### Dimension-based routing [dimension-based-routing]
 
-In addition to time-based routing, time series data streams use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards using one of two strategies:
+In addition to time-based routing, time series data streams use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards, using one of two strategies:
 
-1. Based on the internally managed `index.dimensions` index setting (preferred). Available as of stack version 9.2.
-2. Based on the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) index setting (as a fallback).
+**Index dimensions** {applies_to}`stack: ga 9.2` {applies_to}`serverless: all`
+:    Routing based on the internally managed `index.dimensions` setting.
 
-The `index.dimensions`-based strategy offers a better ingest performance.
-It uses a list of dimension paths that's automatically kept up-to-date and is not user-configurable.
-This strategy is not available for time series data streams with dynamic templates that set `time_series_dimension: true`.
+**Routing path**
+:    Routing based on the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path)  setting (as a fallback).
 
-It can be disabled by setting [`index.index_dimensions_tsid_strategy_enabled`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-dimensions-tsid-strategy-enabled) to `false`,
-or by manually setting `index.routing_path`.
+The `index.dimensions`-based strategy offers better ingest performance. It uses a list of dimension paths that is automatically updated (and is not user-configurable). This strategy is not available for time series data streams with dynamic templates that set `time_series_dimension: true`.
 
-The [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) setting specifies the dimension fields to use for routing, for example:
+To disable routing based on `index.dimensions`, set [`index.index_dimensions_tsid_strategy_enabled`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-dimensions-tsid-strategy-enabled) to `false`,
+or manually set the [`index.routing_path`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-routing-path) to the dimensions you want to use:
 
 ```console
 "settings": {
