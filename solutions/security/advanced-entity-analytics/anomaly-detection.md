@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Anomaly detection
 ---
 
-# Anomaly detection
+# Anomaly detection in {{elastic-sec}}
 
 
 ::::{note}
