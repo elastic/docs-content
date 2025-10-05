@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Query downsampled data"
+navigation_title: "Querying"
 products:
   - id: elasticsearch
 ---
