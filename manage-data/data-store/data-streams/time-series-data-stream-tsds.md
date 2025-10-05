@@ -19,7 +19,7 @@ Before setting up a time series data stream, make sure you're familiar with gene
 
 ## When to use a time series data stream [when-to-use-tsds]
 
-_Metrics_ consist of data point&ndash;timestamp pairs, identified by [dimension fields]() that can be used in aggregation queries. Both a regular data stream and a time series data stream can store metrics data. 
+_Metrics_ consist of data point&ndash;timestamp pairs, identified by [dimension fields](#time-series-dimension) that can be used in aggregation queries. Both a regular data stream and a time series data stream can store metrics data. 
 
 Choose a time series data stream if you typically add metrics data to {{es}} in near real-time and in `@timestamp` order. For other timestamped data, such as logs or traces, use a [logs data stream](logs-data-stream.md) or [regular data stream](/manage-data/data-store/data-streams.md).
 
@@ -38,11 +38,9 @@ A time series is a sequence of observations for a specific entity. Together, the
 :title: Time series of weather sensor readings plotted as a graph
 :::
 
-In a TSDS, each {{es}} document represents an observation, or data point, in a specific time series. Although a TSDS can contain multiple time series, a document can belong to only one time series. A single time series can't span multiple data streams.
-
 ### Time series fields
 
-Compared to a regular data stream, a TSDS uses some additional fields specific to time series:  dimension fields (required) and metric fields (optional but usually defined), plus an internal `_tsid` metadata field.
+Compared to a regular data stream, a TSDS uses some additional fields specific to time series:  dimension fields and metric fields, plus an internal `_tsid` metadata field.
 
 #### Dimensions [time-series-dimension]
 
@@ -63,15 +61,13 @@ To mark a field as a dimension, set the Boolean `time_series_dimension` mapping 
 * [`unsigned_long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
 * [`boolean`](elasticsearch://reference/elasticsearch/mapping-reference/boolean.md)
 
-:::{dropdown} Advanced field types
 To work with a flattened field, use the `time_series_dimensions` parameter to configure an array of fields as dimensions. For details, refer to [`flattened`](elasticsearch://reference/elasticsearch/mapping-reference/flattened.md#flattened-params).
 
 You can also simplify dimension definitions by using [pass-through](elasticsearch://reference/elasticsearch/mapping-reference/passthrough.md#passthrough-dimensions) fields.
-:::
 
 #### Metrics [time-series-metric]
 
-Metrics are numeric measurements that change over time. Documents in a TSDS contain one or more metric fields. 
+Metrics are numeric measurements that change over time. Documents in a TSDS typically contain one or more metric fields. 
 
 :::{tip}
 Metrics are expected to change (even if rarely or slowly), while dimensions generally remain constant.
@@ -79,46 +75,42 @@ Metrics are expected to change (even if rarely or slowly), while dimensions gene
 
 To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The following field types support the `time_series_metric` parameter:
 
-* [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md)
 * All [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
+* [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md), for internal use during downsampling (rarely user-populated)
 
 The valid values for `time_series_metric` are `counter` and `gauge`:
 
 `counter`
-:   A cumulative metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks. 
+:   A cumulative metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. 
 
 `gauge`
 :   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. 
 
 #### `_tsid` metadata field [tsid]
 
-The `_tsid` is an automatically generated object containing the document’s dimensions. It's intended for internal {{es}} use, so in most cases you won't need to work with it.
-
-- You **can't** query or update the internal `_tsid` field.
-- You **can** use the `_tsid` in aggregations.
-- To retrieve the value of `_tsid`, use the fields parameter in a search. The `_tsid` is not included in get document responses.
-- The format of the `_tsid` field is subject to change. 
+The `_tsid` is an automatically generated object containing the document’s dimensions. It's intended for internal {{es}} use, so in most cases you won't need to work with it. The format of the `_tsid` field is subject to change. 
 
 ### Differences from a regular data stream [differences-from-regular-data-stream]
 
 A time series data stream works like a regular data stream, with some key differences:
 
 * **Time series index mode:** The matching index template for a TSDS must include a `data_stream` object with `index.mode` set to `time_series`. This option enables most TSDS-related functionality.
-* **Required fields:** In a TSDS, each document contains:
+* **Fields:** In a TSDS, each document contains:
   * A `@timestamp` field
   * One or more [dimension fields](#time-series-dimension), set with `time_series_dimension: true`  
-  * One or more [metric fields](#time-series-metric) (not strictly required, but typical for a TSDS)
-* **Document IDs:** Time series documents use two IDs: 
-    * An internal [`_tsid`](#tsid) metadata field, generated by {{es}} for each document in a TSDS and used for sorting and compression
-    * The document `_id`, a generated hash of the document's dimensions and `@timestamp` (custom `_id` values are not supported)
+  * One or more [metric fields](#time-series-metric)
+  * An auto-generated document `_id` (custom `_id` values are not supported)
 * **Backing indices:** A TSDS uses [time-bound indices](/manage-data/data-store/data-streams/time-bound-tsds.md) to store data from the same time period in the same backing index.
-* **Dimension-based routing:** The matching index template for a TSDS must contain the `index.routing_path` index setting, which specifies dimensions for routing documents to shards.
+* **Dimension-based routing:** The routing logic uses dimension fields to map data to shards, improving storage efficiency and query performance.
 * **Sorting:** A TSDS uses internal [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) to order shard segments by `_tsid` and `@timestamp`, for better compression. Time series data streams do not use `index.sort.*` settings.
-* **Synthetic source:** A TSDS uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), which has some [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions) and [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications).
 
 ## Query time series data
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
-You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for time series data. It also enables the use of aggregation functions that efficiently process metrics per time series, before aggregating results.
+You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) (in technical preview) to query time series data streams. The `TS` command is optimized for time series data. It also enables the use of aggregation functions that efficiently process metrics per time series, before aggregating results.
 
 
 ## Next steps [tsds-whats-next]

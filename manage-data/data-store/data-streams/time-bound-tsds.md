@@ -44,13 +44,13 @@ GET _data_stream/my-tsds
 ```
 
 ::::{tip}
-These {{ilm-init}} actions mark the source index as read-only or prevent writes for performance reasons:
+The following actions affect the writable time range of a TSDS, either because they make a backing index read-only or remove it:
  - [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) 
  - [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) 
  - [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) 
  - [Read only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
  - [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) 
- - [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) 
+ - [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md), which might then revert the read-only status at the end of the action
  
  {{ilm-cap}} will **not** proceed with executing these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
 ::::
