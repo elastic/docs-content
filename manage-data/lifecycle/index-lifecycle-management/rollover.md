@@ -17,10 +17,20 @@ Without rollover, a single index would continue to grow, causing search performa
 The rollover feature is an important part of how [index lifecycle](../index-lifecycle-management/index-lifecycle.md) ({{ilm-init}}) and [data stream lifecycles](../data-stream.md) ({{dlm-init}}) work to keep your indices fast and manageable. By switching the write target of an index, the rollover action provides the following benefits:
 
 * **Lifecycle** - works with lifecycle management ({{ilm-init}} or {{dlm-init}}) to transition the index through its lifecycle actions and allows for granular control over retention cycles
-* **Optimized performance** - keeps shard sizes within recommended limits (10-50 GB)
+* **Optimized performance** - keeps shard sizes within [recommended limits](/deploy-manage/production-guidance/optimize-performance/size-shards.md) (10-50 GB)
 * **Queries run faster** - improves search performance
 
 Rollover can be triggered via the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
+
+:::{tip}
+The following tutorials are available to help you configure rollover for your indices, for three different scenarios:
+* [](/manage-data/lifecycle/index-lifecycle-management/tutorial-time-series-with-data-streams.md)
+* [](/manage-data/lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md)
+* [](/manage-data/lifecycle/index-lifecycle-management/tutorial-general-content-with-data-streams.md)
+
+Refer to [](/manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md) for an overview of these.
+
+:::
 
 ## How rollover works in {{ilm-init}}
 
@@ -70,7 +80,7 @@ Each data stream requires an [index template](../../data-store/templates.md) tha
 * A configuration that indicates a data stream is used for the index pattern.
 * Optional: The mappings and settings applied to each backing index when it’s created.
 
-For more information about this approach, refer to the [Manage time series data with data streams](../index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-with-data-streams) tutorial.
+For more information about this approach, refer to the [](../index-lifecycle-management/tutorial-time-series-with-data-streams.md) tutorial.
 
 :::{tip}
 Data streams are designed for append-only data, where the data stream name can be used as the operations (read, write, rollover, shrink etc.) target. If your use case requires data to be updated in place, you can perform [update or delete operations directly on the backing indices](../../data-store/data-streams/use-data-stream.md#update-delete-docs-in-a-backing-index).
@@ -79,14 +89,15 @@ Data streams are designed for append-only data, where the data stream name can b
 **Data streams naming pattern**<br>
 {{es}} uses a structured naming convention for the backing indices of data streams, following this pattern:
 
-```console
+```
 .ds-<DATA-STREAM-NAME>-<yyyy.MM.dd>-<GENERATION>
 ```
+
 For more information about the data stream naming pattern, refer to the [Generation](../../data-store/data-streams.md#data-streams-generation) section of the Data streams page.
 
 ### Rotating your indices with aliases [rollover-with-aliases]
 
- Rotating indices with aliases requires additional configuration steps, including bootstrapping the initial index. For more details about this approach, refer to the [Manage time series data without data streams](../index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams) tutorial.
+ Rotating indices with aliases requires additional configuration steps, including bootstrapping the initial index. For more details about this approach, refer to the [](../index-lifecycle-management/tutorial-time-series-without-data-streams.md) tutorial.
 
 :::{important}
 The use of aliases for rollover requires meeting certain conditions. Review these considerations before applying this approach:
