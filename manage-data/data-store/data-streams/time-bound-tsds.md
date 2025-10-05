@@ -44,7 +44,7 @@ GET _data_stream/my-tsds
 ```
 
 ::::{tip}
-The following actions affect the writable time range of a TSDS, either because they make a backing index read-only or remove it:
+Writes within the accepted time range might still be rejected. The following actions can affect the writable time range, either because they make a backing index read-only or remove it:
  - [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) 
  - [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) 
  - [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) 
