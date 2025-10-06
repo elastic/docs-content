@@ -36,13 +36,12 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 To retrieve your {{motlp}} endpoint address and API key, follow these steps:
 
 ::::{applies-switch}
-
 :::{applies-item} serverless:
 1. In {{ecloud}}, create an Observability project or open an existing one.
 2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.
 
-Alternatively, go to **Manage project**, locate the **Connection alias** and select **Edit** to see the **Managed OTLP endpoint** URL.
+Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
 
 :::{applies-item} ess:
@@ -51,16 +50,15 @@ Alternatively, go to **Manage project**, locate the **Connection alias** and sel
 2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.
 
-Alternatively, go to **Manage project**, locate the **Connection alias** and select **Edit** to see the **Managed OTLP endpoint** URL.
+Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
-
 ::::
 
 :::::
 
-:::::{step} Send data to the {{motlp}}
+:::::{step} Configure your OTLP shipper
 
-The final step is to use the {{motlp}} endpoint and your Elastic API key to send data to {{ecloud}}.
+The final step is to configure your Collector or SDK to use the {{motlp}} endpoint and your Elastic API key to send data to {{ecloud}}.
 
 ::::{tab-set}
 
@@ -172,6 +170,6 @@ Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in o
 
 For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
-## What's next?
+## What's next
 
 Visualize your OpenTelemetry data. Learn more in [](/solutions/observability/otlp-visualize.md).
