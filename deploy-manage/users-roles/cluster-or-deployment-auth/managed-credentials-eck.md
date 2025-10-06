@@ -127,7 +127,7 @@ This will not cause existing passwords to be changed. To change existing passwor
 
 ### Using the operator manifests
 
-If you installed ECK through using the manifests using the commands listed in [](../../deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md), some additional changes are required to control password length.
+If you installed ECK through using the manifests using the commands listed in [](../../deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md), a manual update to the `ConfigMap` is required to control password length.
 
 1. Set the `password-length` in the `ConfigMap`.
 
@@ -162,14 +162,14 @@ data:
     enable-leader-election: true
     elasticsearch-observation-interval: 10s
     ubi-only: false
-    password-legnth: 64
+    password-length: 64
 EOF
 ```
 
-2. Restart the ECK operator
+2. Ensure that the ECK operator reloads it's configuration
 
 ```shell
-kubectl delete pod -n elastic-system elastic-operator-0
+kubectl logs -n elastic-system elastic-operator-0 --since=1m
 ```
 
 This will cause any new file-based passwords that are generated to be a length of 64.
