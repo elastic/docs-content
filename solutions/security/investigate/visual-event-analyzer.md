@@ -134,7 +134,7 @@ Access event details by selecting that event’s URL at the top of the process d
 When you select an `event.category` pill (for example, **_x_ file** or **_x_ registry**), all the events within that category are listed in the preview analyzer panel. To display more details about a specific event, select it from the list.
 
 ::::{note}
-- You must have the appropriate [{{stack}}](https://www.elastic.co/pricing) subscription or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to examine alerts associated with events.
+- You must have the appropriate [{{stack}}](https://www.elastic.co/pricing) subscription or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to examine alerts associated with events.
 - There is no limit to the number of events that can be associated with a process.
 ::::
 
