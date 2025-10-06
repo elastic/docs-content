@@ -15,6 +15,16 @@ The UI also shows indexing problems, such as mapping conflicts, so you can addre
 Applied changes aren't retroactive and only affect *future ingested data*.
 :::
 
+## Supported processors
+Streams supports the following processors:
+
+- [Date](./extract/date.md): convert date strings into timestamps with options for timezone, locale, and output format settings.
+- [Dissect](./extract/dissect.md): extract fields from structured log messages using defined delimiters instead of patterns, making it faster than Grok and ideal for consistently formatted logs.
+- [Grok](./extract/grok.md): extract fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an LLM connector.
+- [Set](./extract/set.md): assign a specific value to a field, creating the field if it doesn’t exist or overwriting its value if it does.
+- [Rename](./extract/rename.md): change the name of a field, moving its value to a new field name and removing the original.
+- [Append](./extract/append.md): add a value to an existing array field, or create the field as an array if it doesn’t exist.
+
 ## Add a processor [streams-add-processors]
 
 Streams uses {{es}} ingest pipelines to process your data. Ingest pipelines are made up of processors that transform your data.
@@ -22,14 +32,7 @@ Streams uses {{es}} ingest pipelines to process your data. Ingest pipelines are 
 To add a processor:
 
 1. Select **Add processor** to open a list of supported processors.
-1. Select a processor from the list:
-    - [Date](./extract/date.md)
-    - [Dissect](./extract/dissect.md)
-    - [Grok](./extract/grok.md)
-    - GeoIP
-    - Rename
-    - Set
-    - URL Decode
+1. Select a processor from the list.
 1. Select **Add Processor** to save the processor.
 
 :::{note}
@@ -39,7 +42,10 @@ Editing processors with JSON is planned for a future release, and additional pro
 ### Add conditions to processors [streams-add-processor-conditions]
 
 You can provide a condition for each processor under **Optional fields**. Conditions are boolean expressions that are evaluated for each document. Provide a field, a value, and a comparator.
-Processors support these comparators:
+
+:::{dropdown} Supported comparators
+Streams processors support the following comparators:
+
 - equals
 - not equals
 - less than
@@ -51,6 +57,7 @@ Processors support these comparators:
 - ends with
 - exists
 - not exists
+:::
 
 ### Preview changes [streams-preview-changes]
 
