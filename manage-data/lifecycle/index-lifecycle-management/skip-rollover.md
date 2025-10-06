@@ -35,7 +35,7 @@ To update the automatic rollover setting in an {{ilm-init}} policy:
 
 When the [`index.lifecycle.indexing_complete`](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md#_index_level_settings_2) setting is `true`, {{ilm-init}} won’t perform the rollover action on an index, even if it otherwise meets the rollover criteria. This setting is updated to `true` automatically by {{ilm-init}} when the rollover action completes successfully.
 
-You can update this setting manually to skip rollover if, for instance, you need to make an exception to your normal lifecycle policy and update the alias to force a rollover, but you want {{ilm-init}} to continue to manage the index. If you use the rollover API rather than an {{ilm-init}} policy to rollover indices, it is not necessary to configure this setting manually.
+You can update this setting manually to skip rollover if, for instance, you need to make an exception to your normal lifecycle policy and update the alias to force a rollover, but you want {{ilm-init}} to continue to manage the index. If you use the rollover API rather than an {{ilm-init}} policy to roll over indices, it is not necessary to configure this setting manually.
 
 If an index’s lifecycle policy is removed, this setting is also removed.
 
