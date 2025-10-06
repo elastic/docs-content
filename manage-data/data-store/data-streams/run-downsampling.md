@@ -102,6 +102,28 @@ Set `fixed_interval` to your preferred level of granularity. The original time s
 :::
 ::::
 
+## Practical tips
+
+Downsampling requires reading and indexing the contents of a backing index. The following guidelines can help you get the most out of it.
+
+### Choosing the downsampling interval
+
+When choosing the downsampling interval, you need to consider the original sampling rate of your measurements. Ideally, you would like an interval that would reduce your number of documents by a significant amount. For example, if a sensor sends data every 10 seconds downsampling to 1 minute would reduce the number of documents by 83%, compared to downsampling to 5 minutes by 96%.
+
+The same applied when downsampling already downsampled data. 
+
+### Downsampling, phases and tiers
+
+When using index lifecycle management (ILM), you can define at most one downsampling round in the following phases:
+
+- `hot` phase: it will execute the downsampling after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed
+- `warm` phase: it will execute the downsampling `min_age` time after the rollover (respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
+- `cold` phase: it will execute the downsampling `min_age` time after the rollover (respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
+
+The phases do not require the respective tiers to exist. However, when a cluster has tiers, ILM automatically migrates the data processed in the phase to the respective tier. This can be disabled by adding the [migrate action](elasticsearch://reference/elasticsearch/reference/elasticsearch/index-lifecycle-actions/ilm-migrate#ilm-migrate-options.md) with `enabled: false`.
+
+The migrate action is implicitly enabled, so unless explicitly disabled, the downsampling data will have to move to the respective tier; the downsampling operation occurs at the same tier as the source index and then the downsampled data gets migrated, this implementation choice allows downsampling to leverage the better resources from the "hotter" tier and move less data to the next tier.
+
 ## Additional resources
 
 * [](downsampling-concepts.md)
