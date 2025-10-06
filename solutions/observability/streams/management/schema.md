@@ -5,4 +5,8 @@ applies_to:
   stack: preview 9.1, ga 9.2
 ---
 
-# Manage field mapping using the Schema tab [streams-data-retention]
+# Manage field mapping using the Schema tab [streams-schema]
+
+## Permissions to edit and add fields [streams-schema-permissions]
+
+## Field statuses [streams-schema-statuses]

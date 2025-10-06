@@ -467,6 +467,8 @@ toc:
             - file: observability/streams/management/extract/append.md
             - file: observability/streams/management/extract/manual-pipeline-configuration.md
         - file: observability/streams/management/retention.md
+        - file: observability/streams/management/schema.md
+        - file: observability/streams/management/data-quality.md
         - file: observability/streams/management/advanced.md
       - file: observability/incident-management.md
         children:

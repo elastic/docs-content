@@ -38,12 +38,22 @@ The previous pattern can then be used in the processor.
 ```
 
 ## Generate patterns [streams-grok-patterns]
+:::{note}
 Requires an LLM Connector to be configured.
+:::
+
 Instead of writing the Grok patterns by hand, you can use the **Generate Patterns** button to generate the patterns for you.
+
+Generated patterns work best on semi-structured data. For very custom logs with a lot of text, creating manual patterns general creates more accurate results.
 
 ![generated patterns](<../../../../images/logs-streams-patterns.png>)
 
-Select **Accept** to add a generated pattern to the list of patterns used by the grok processor.
+To add a generated grok pattern:
+
+1. Select **Create** → **Create processor**.
+1. Select **Grok** from the **Processor** menu.
+1. Select **Generate pattern**.
+1. Select **Accept** to add a generated pattern to the list of patterns used by the grok processor.
 
 ### How does **Generate patterns** work? [streams-grok-pattern-generation]
 % need to check to make sure this is still accurate.
