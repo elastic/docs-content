@@ -22,7 +22,7 @@ By default, {{agent-builder}} uses the Elastic Managed LLM connector running on 
 
 This managed service requires zero setup and no additional API key management.
 
-Learn more about the [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm) and [pricing](https://www.elastic.co/pricing).
+Learn more about the [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md) and [pricing](https://www.elastic.co/pricing).
 
 ## Change the default model
 
@@ -151,4 +151,4 @@ To use your local model as the default for {{agent-builder}}:
 
 - [Limitations and known issues](limitations-known-issues.md): Current limitations around model selection
 - [Get started](get-started.md): Initial setup and configuration
-- [Connectors](/deploy-manage/manage-connectors): Detailed connector configuration guide
+- [Connectors](/deploy-manage/manage-connectors.md): Detailed connector configuration guide
