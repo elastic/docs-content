@@ -116,63 +116,17 @@ In {{eck}} 3.1 and earlier all file-based passwords are 24 characters long.
 
 If you installed {{eck}} through the Helm chart commands listed in [](../../deploy/cloud-on-k8s/install-using-helm-chart.md), you can set `config.policies.passwords.length` to control the length of generated file-based passwords.
 
-For example:
-```shell
-helm upgrade -i eck-operator -n elastic-system --set=config.policies.passwords.length=64
-```
-
-This will cause any new file-based passwords that are generated to be a length of 64.
+Refer to the [operator configuration docs](/deploy-manage/deploy/cloud-on-k8s/configure-eck#using-the-operator-helm-chart) for details concerning Helm values management.
 
 ::: {note}
 This will not cause existing passwords to be changed. To change existing password refer to [Rotating credentials](k8s-rotate-credentials)
 :::
 
-### Using the operator manifests
+### Controlling the length of passwords using the operator manifests
 
-If you installed ECK through using the manifests using the commands listed in [](../../deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md), a manual update to the `ConfigMap` is required to control password length.
+If you installed ECK through using the manifests using the commands listed in [](../../deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md), you can set `password-length` in the `elastic-operator` `ConfigMap` to control the length of generated file-based passwords.
 
-1. Set the `password-length` in the `ConfigMap`.
-
-```yaml
-cat <<EOF | kubectl apply -f -
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: elastic-operator
-  namespace: elastic-system
-data:
-  eck.yaml: |-
-    log-verbosity: 0
-    metrics-port: 0
-    metrics-secure: false
-    container-registry: docker.elastic.co
-    max-concurrent-reconciles: 3
-    ca-cert-validity: 8760h
-    ca-cert-rotate-before: 24h
-    cert-validity: 8760h
-    cert-rotate-before: 24h
-    disable-config-watch: false
-    exposed-node-labels: [topology.kubernetes.io/.*,failure-domain.beta.kubernetes.io/.*]
-    set-default-security-context: auto-detect
-    kube-client-timeout: 60s
-    elasticsearch-client-timeout: 180s
-    disable-telemetry: false
-    distribution-channel: all-in-one
-    validate-storage-class: true
-    enable-webhook: false
-    operator-namespace: elastic-system
-    enable-leader-election: true
-    elasticsearch-observation-interval: 10s
-    ubi-only: false
-    password-length: 64
-EOF
-```
-
-2. Ensure that the ECK operator reloads it's configuration
-
-```shell
-kubectl logs -n elastic-system elastic-operator-0 --since=1m
-```
+Refer to the [operator configuration docs](/deploy-manage/deploy/cloud-on-k8s/configure-eck#using-the-operator-yaml-manifests) for details concerning manifest management.
 
 This will cause any new file-based passwords that are generated to be a length of 64.
 
