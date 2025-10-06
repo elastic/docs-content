@@ -32,8 +32,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.1.5-features-enhancements]
 * Adds `customized_fields` and `has_base_version` fields to the internal rule schema [#235394]({{kib-pull}}235394).
 * Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
-* Increases the throughput of {elastic-defend} Logstash connections by increasing the maximum size it can upload at once.
-* Improves reliability and accuracy of reporting of the {elastic-defend}'s Elasticsearch connection.
+* Increases the throughput of {{elastic-defend}} Logstash connections by increasing the maximum size it can upload at once.
+* Improves reliability and accuracy of reporting of the {{elastic-defend}}'s {{es}} connection.
 
 ### Fixes [elastic-security-9.1.5-fixes]
 * Fixes browser fields caching to use the `dataView` ID instead of the index pattern [#234381]({{kib-pull}}234381).
@@ -47,8 +47,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
 * Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
 * Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
-* Fixes an issue where {elastic-defend} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
-* Fixes an issue in {elastic-defend} installation logging where only the first character of install paths (usually 'C') would be logged.
+* Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
+* Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') would be logged.
 
 
 ## 9.1.4 [elastic-security-9.1.4-release-notes]
