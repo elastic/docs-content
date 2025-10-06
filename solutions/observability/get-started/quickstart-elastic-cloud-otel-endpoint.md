@@ -9,7 +9,7 @@ applies_to:
   stack: preview 9.2
 ---
 
-# Quickstart: Send OTLP data to Elastic Serverless and Elastic Cloud Hosted
+# Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
 
 You can send OpenTelemetry data to Elastic Serverless and Elastic Cloud Hosted using the {{motlp}} endpoint.
 
@@ -134,11 +134,9 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ## Differences from the Elastic APM Endpoint
 
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/opentelemetry/index.md), which primarily focuses on traces and the APM use case.
+The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data.
 
-## Self-managed environments
-
-To send data to the {{motlp}} from a self-managed environment, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway) for more information.
+## Troubleshooting
 
 The following sections provide troubleshooting information for the {{motlp}}.
 
