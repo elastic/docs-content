@@ -57,9 +57,8 @@ To create a rule set:
 
 After you’ve created the rule set, you’ll need to associate it with your deployment:
 
-1. Go to the deployment.
-2. On the **Security** page, under **Traffic filters**, select **Apply filter**.
-3. Choose the filter you want to apply and select **Apply filter**.
+:::{include} _snippets/associate-filter-ece.md
+:::
 
 At this point, the IP filtering rule set is active. You can remove or edit it at any time.
 
@@ -67,8 +66,8 @@ At this point, the IP filtering rule set is active. You can remove or edit it at
 
 If you want to remove any traffic restrictions from a deployment or delete a rule set, you’ll need to remove any rule set associations first. To remove an association through the UI:
 
-1. Go to the deployment.
-2. On the **Security** page, under **Traffic filters** select **Remove**.
+:::{include} _snippets/detach-filter-ece.md
+:::
 
 ## Edit an IP filtering rule set
 
