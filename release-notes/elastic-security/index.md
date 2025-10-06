@@ -172,7 +172,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.0.8-features-enhancements]
 * Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
-* Fixes {{elastic-defend}} error log on Windows where only the first character, usually 'C', was logged instead of a path.
 
 ### Fixes [elastic-security-9.0.8-fixes]
 * Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
@@ -181,6 +180,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
 * Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
 * Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Improves the reliability of local {elastic-defend} administrative shell commands. In rare cases, a command could fail to execute due to issue with interprocess communication.
+* Fixes an issue where {elastic-defend} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
+* Fixes an issue in {elastic-defend} installation logging where only the first character of install paths (usually 'C') would be logged.
 
 ## 9.0.7 [elastic-security-9.0.7-release-notes]
 
