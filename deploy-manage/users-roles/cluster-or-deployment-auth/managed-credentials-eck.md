@@ -128,8 +128,6 @@ If you installed ECK through using the manifests using the commands listed in []
 
 Refer to the [operator configuration docs](../../deploy/cloud-on-k8s/configure-eck.md#using-the-operator-yaml-manifests) for details concerning manifest management.
 
-This will cause any new file-based passwords that are generated to be a length of 64.
-
 ::: {note}
 This will not cause existing passwords to be changed. To change existing password refer to [Rotating credentials](#k8s-rotate-credentials)
 :::
