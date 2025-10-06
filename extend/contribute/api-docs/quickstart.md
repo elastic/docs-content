@@ -1,8 +1,11 @@
 ---
-navigation_title: Contribute locally (Elasticsearch)
+navigation_title: Contribute locally: quickstarts
 ---
 
-# Contribute locally: Elasticsearch quickstart
+# Contribute to Elastic API docs locally: Quickstart guides
+
+::::::::{tab-set}
+:::::::{tab-item} Elasticsearch
 
 The Elasticsearch APIs are the foundation of the Elastic Stack and the largest API set we maintain. Because the workflow is quite complex, we created this quickstart guide to help you get started.
 
@@ -116,3 +119,70 @@ Once you're satisfied with your docs changes:
 ::::
 
 :::::
+
+:::::::
+
+:::::::{tab-item} Kibana
+Follow these steps to capture live API specs from Kibana, generate OpenAPI documentation, and view a preview URL.
+
+## Step 0: Set up Kibana environment
+
+```bash
+cd kibana
+nvm use
+yarn kbn bootstrap
+```
+
+**Note:** Run `yarn kbn clean` first if dependencies are broken.
+
+## Step 0.1: Start Docker
+Ensure Docker is running, otherwise things will fail slowly.
+
+## Step 1: Capture OAS snapshot
+
+### 1.1: Ensure OAS is enabled
+`kibana/config/kibana.dev.yml` shoud look like this:
+```yaml
+server.oas.enabled: true
+```
+
+### 1.2: Run capture command
+
+You can just include your API set of interest, here it's for all plugins per [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh).
+
+
+```bash
+node scripts/capture_oas_snapshot \
+  --update \
+  --include-path /api/status \
+  --include-path /api/alerting/rule/ \
+  --include-path /api/alerting/rules \
+  --include-path /api/actions \
+  --include-path /api/security/role \
+  --include-path /api/spaces \
+  --include-path /api/streams \
+  --include-path /api/fleet \
+  --include-path /api/saved_objects/_import \
+  --include-path /api/saved_objects/_export \
+  --include-path /api/maintenance_window \
+  --include-path /api/agent_builder
+```
+
+**Output:** `oas_docs/bundle.json` and `oas_docs/bundle.serverless.json`
+
+## Step 2: Generate docs
+```bash
+cd oas_docs
+make api-docs
+```
+
+**Output:** `oas_docs/output/kibana.yaml` and `oas_docs/output/kibana.info.yaml`
+
+## Step 3: Preview the API docs
+```bash
+make api-docs-preview
+```
+
+This creates a short-lived URL preview on Bump.sh.
+:::::::
+::::::::
