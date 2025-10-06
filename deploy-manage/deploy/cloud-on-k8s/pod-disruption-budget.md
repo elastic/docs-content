@@ -18,13 +18,13 @@ A [Pod Disruption Budget](https://kubernetes.io/docs/tasks/run-application/confi
 In {{eck}} 3.1 and earlier, all clusters follow the [default PodDisruptionBudget rules](#default-pdb-rules), regardless of license type.
 :::
 
-## Advanced PodDisruptionBudget rules (Enterprise License Required)
+## Advanced rules (Enterprise license required)
 ```{applies_to}
 deployment:
   eck: ga 3.2
 ```
 
-In Elasticsearch clusters managed by ECK and licensed with an enterprise license, a separate PDB is created for each type of nodeSet defined in the manifest. This setup allows upgrade or maintenance operations to be executed more quickly. Each PDB permits one Elasticsearch Pod per nodeSet to be disrupted at a time, provided the cluster maintains the health status described in the following table:
+In Elasticsearch clusters managed by ECK and licensed with an Enterprise license, a separate PDB is created for each type of `nodeSet` defined in the manifest. This setup allows upgrade or maintenance operations to be executed more quickly. Each PDB permits one Elasticsearch Pod per `nodeSet` to be disrupted at a time, provided the cluster maintains the health status described in the following table:
 
 | Role | Cluster health required | Notes |
 |------|------------------------|--------|
@@ -39,12 +39,12 @@ In Elasticsearch clusters managed by ECK and licensed with an enterprise license
 
 Single-node clusters are not considered highly available and can always be disrupted regardless of license type.
 
-## Default PodDisruptionBudget rules (Basic license) [default-pdb-rules]
+## Default rules (Basic license) [default-pdb-rules]
 :::{note}
 In {{eck}} 3.1 and earlier, all clusters follow this behavior regardless of license type.
 :::
 
-In {{eck}} clusters that do not have an enterprise license, one {{es}} Pod can be taken down at a time, as long as the cluster has a health status of `green`. Single-node clusters are not considered highly available and can always be disrupted.
+In {{eck}} clusters that do not have an Enterprise license, one {{es}} Pod can be taken down at a time, as long as the cluster has a health status of `green`. Single-node clusters are not considered highly available and can always be disrupted.
 
 ## Overriding the default behavior
 
