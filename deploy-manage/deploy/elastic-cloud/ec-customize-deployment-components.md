@@ -43,7 +43,7 @@ The CPU resources assigned to a cluster are relative to the size of your cluster
 If you don’t want to autoscale your deployment, you can manually increase or decrease capacity by adjusting the size of hot, warm, cold, and frozen [data tiers](../../../manage-data/lifecycle/data-tiers.md) nodes. For example, you might want to add warm tier nodes if you have time series data that is accessed less frequently and rarely needs to be updated. Alternatively, you might need cold tier nodes if you have time series data that is accessed occasionally and not normally updated. For clusters that have six or more {{es}} nodes, dedicated master-eligible nodes are introduced. When your cluster grows, it becomes important to consider separating dedicated master-eligible nodes from dedicated data nodes.
 
 ::::{tip}
-For clusters with dedicated master nodes, we advise using at least 4 GB of RAM for each dedicated master node. Review [Minimum Size Recommendations for Production Use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
+For clusters with dedicated master nodes, we recommend using at least 4 GB of RAM for each dedicated master node. Review [Minimum size recommendations for production use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 ::::
 
 
