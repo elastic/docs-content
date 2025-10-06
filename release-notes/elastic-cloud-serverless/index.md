@@ -38,7 +38,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the incorrect `fleet.ssl` configuration option [#236788]({{kib-pull}}236788)
 * Fixes MSI commands (#233750) [#236994]({{kib-pull}}236994)
 * Removes unnecessary span documents from the `getServiceAgent` function [#236732]({{kib-pull}}236732)
-* Cleans up extra synthetics package policies [#235200]({{kib-pull}}235200)
+* Cleans up extra Synthetics package policies [#235200]({{kib-pull}}235200)
 * Reverts a change to the page attachment type in {{obs-serverless}} [#236958]({{kib-pull}}236958)
 * Removes `null` values in the confirmation dialog when bulk-editing index patterns for rules [#236572]({{kib-pull}}236572)
 * Increases the z-index of Timeline and related flyout components so they appear above the side navigation [#236655]({{kib-pull}}236655)
