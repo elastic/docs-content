@@ -64,7 +64,7 @@ bin/elasticsearch-keystore add s3.client.default.session_token
 
 If you do not configure these settings then {{es}} will attempt to automatically obtain credentials from the environment in which it is running:
 
-* Nodes running on an instance in AWS EC2 will attempt to use the EC2 Instance Metadata Service (IMDS) to obtain instance role credentials. {{es}} supports both IMDS version 1 and IMDS version 2.
+* Nodes running on an instance in AWS EC2 will attempt to use the EC2 Instance Metadata Service (IMDS) to obtain instance role credentials. {{es}} supports IMDS version 2 only.
 * Nodes running in a container in AWS ECS and AWS EKS will attempt to obtain container role credentials similarly.
 
 You can switch from using specific credentials back to the default of using the instance role or container role by removing these settings from the keystore as follows:
