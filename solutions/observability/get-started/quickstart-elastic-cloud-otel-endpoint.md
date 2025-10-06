@@ -13,7 +13,7 @@ applies_to:
 
 The {{motlp}} is a fully managed offering exclusively for Elastic Cloud users that simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. Refer to [{{motlp}}](opentelemetry://reference/motlp.md) for more information.
 
-The {{moltp}} is designed for the following use cases:
+The {{motlp}} is designed for the following use cases:
 
 * Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
@@ -70,13 +70,10 @@ To send data to the {{motlp}} from the {{edot}} Collector or the contrib Collect
 ```yaml
 exporters:
   otlp:
-    endpoint: https://<motlp-endpoint> <1>
+    endpoint: https://<motlp-endpoint>
     headers:
-      Authorization: ApiKey <your-api-key> <2>
+      Authorization: ApiKey <your-api-key>
 ```
-
-1. The endpoint retrieved at [step 2](#locate-your-motlp)
-2. The API key created at [step 3](#create-an-api-key)
 
 Set the API key as an environment variable or directly in the configuration as shown in the example.
 :::
@@ -85,12 +82,9 @@ Set the API key as an environment variable or directly in the configuration as s
 To send data to the {{motlp}} from {{edot}} SDKs or contrib SDKs, set the following variables in your application's environment:
 
 ```bash
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>" <1>
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>" <2>
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>"
 ```
-
-1. The endpoint retrieved at [step 2](#locate-your-motlp)
-2. The API key created at [step 3](#create-an-api-key)
 :::
 
 :::{tab-item} Kubernetes example
@@ -111,13 +105,10 @@ Mount the secret as an environment variable or file, then reference it in your O
 ```yaml
 exporters:
   otlp:
-    endpoint: https://<motlp-endpoint> <1>
+    endpoint: https://<motlp-endpoint>
     headers:
-      Authorization: ${API_KEY} <2>
+      Authorization: ${API_KEY}
 ```
-
-1. The endpoint retrieved at [step 2](#locate-your-motlp)
-2. The API key created at [step 3](#create-an-api-key)
 
 And in your deployment spec:
 
