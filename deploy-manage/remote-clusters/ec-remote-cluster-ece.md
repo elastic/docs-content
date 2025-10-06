@@ -14,6 +14,10 @@ products:
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ECE}} (ECE) environment.
 
+::::{note}
+If network security filters are applied to the remote cluster on ECE, the remote cluster administrator must configure an [IP filter](/deploy-manage/security/ip-filtering-ece.md) to allow traffic from [{{ecloud}} IP addresses](/deploy-manage/security/elastic-cloud-static-ips.md#ec-egress). For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
+::::
+
 ## Allow the remote connection [ec_allow_the_remote_connection_3]
 
 Before you start, consider the security model that you would prefer to use for authenticating remote connections between clusters, and follow the corresponding steps.
@@ -143,7 +147,7 @@ A deployment can be configured to trust all or specific deployments in a remote 
 
 7. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
 8. Select **Create trust** to complete the configuration.
-9. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md). You will only be able to connect two deployments successfully when both of them trust each other.
+9. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-remote-cluster-ece-ess.md#ece-trust-ec). You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{note}
 The environment ID and cluster IDs must be entered fully and correctly. For security reasons, verification of the IDs is not possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
@@ -211,6 +215,11 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
+
+      :::{image} /deploy-manage/images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
+      :alt: Remote Cluster Parameters in Deployment
+      :screenshot:
+      :::
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
