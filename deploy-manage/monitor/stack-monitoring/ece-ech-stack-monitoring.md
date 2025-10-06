@@ -41,7 +41,7 @@ For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/aut
 ## Before you begin [logging-and-monitoring-limitations]
 
 * Some limitations apply when you use monitoring on ECH or ECE. To learn more, check the monitoring [restrictions and limitations](#restrictions-monitoring).
-* Enabling logs and monitoring requires additional resources. For production systems with these features enabled, we recommend allocating at least 4 GB of RAM per {{es}} instance. Review [Minimum Size Recommendations for Production Use](../../deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
+* Enabling logs and monitoring requires additional resources. For production systems where these features are enabled, we recommend allocating at least 4 GB of RAM per {{es}} instance. Review [Minimum size recommendations for production use](../../deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 
 ## Monitoring for production use [logging-and-monitoring-production]
 
