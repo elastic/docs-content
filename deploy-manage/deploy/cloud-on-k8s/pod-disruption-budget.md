@@ -15,16 +15,16 @@ A [Pod Disruption Budget](https://kubernetes.io/docs/tasks/run-application/confi
 {{eck}} manages either a single default PDB, or multiple PDBs per {{es}} resource depending on the license level of the ECK installation.
 
 :::{note}
-In {{eck}} 3.1 and earlier, all clusters follow the [non-enterprise behavior](#non-enterprise-licensed-customers), regardless of license type.
+In {{eck}} 3.1 and earlier, all clusters follow the [default PodDisruptionBudget rules](#default-pdb-rules), regardless of license type.
 :::
 
-## Enterprise licensed customers
+## Advanced PodDisruptionBudget rules (Enterprise License Required)
 ```{applies_to}
 deployment:
   eck: ga 3.2
 ```
 
-In Elasticsearch clusters managed by ECK and licensed with an enterprise license, a separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. Each PDB permits one Elasticsearch Pod per nodeSet to be disrupted at a time, provided the cluster maintains the health status described in the following table:
+In Elasticsearch clusters managed by ECK and licensed with an enterprise license, a separate PDB is created for each type of nodeSet defined in the manifest. This setup allows upgrade or maintenance operations to be executed more quickly. Each PDB permits one Elasticsearch Pod per nodeSet to be disrupted at a time, provided the cluster maintains the health status described in the following table:
 
 | Role | Cluster health required | Notes |
 |------|------------------------|--------|
@@ -39,18 +39,18 @@ In Elasticsearch clusters managed by ECK and licensed with an enterprise license
 
 Single-node clusters are not considered highly available and can always be disrupted regardless of license type.
 
-## Non-enterprise licensed customers
+## Default PodDisruptionBudget rules (Basic license) [default-pdb-rules]
 :::{note}
 In {{eck}} 3.1 and earlier, all clusters follow this behavior regardless of license type.
 :::
 
 In {{eck}} clusters that do not have an enterprise license, one {{es}} Pod can be taken down at a time, as long as the cluster has a health status of `green`. Single-node clusters are not considered highly available and can always be disrupted.
 
-### Overriding the default behavior
+## Overriding the default behavior
 
-In the {{es}} specification, you can change the default behavior in 2 ways. By fully overriding the PodDisruptionBudget within the {{es}} spec or by disabling the default PodDisruptionBudget and specifying one or more PodDisruptionBudget(s).
+In the {{es}} specification, you can change the default behavior in two ways. By fully overriding the PodDisruptionBudget within the {{es}} spec or by disabling the default PodDisruptionBudget and specifying one or more PodDisruptionBudget(s).
 
-#### Fully override the PodDisruptionBudget within the {{es}} spec [k8s-override-default-pdb]
+### Fully override the PodDisruptionBudget within the {{es}} spec [k8s-override-default-pdb]
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -76,9 +76,9 @@ This will cause the ECK operator to only create the PodDisruptionBudget defined 
 [`maxUnavailable`](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#arbitrary-controllers-and-selectors) cannot be used with an arbitrary label selector, therefore `minAvailable` is used in this example.
 ::::
 
-#### Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
+### Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
 
-You can specify a PDB per nodeSet or node role.
+You can specify a PDB per `nodeSet` or node role.
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
