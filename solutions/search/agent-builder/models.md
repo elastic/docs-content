@@ -94,9 +94,9 @@ You can connect a locally hosted LLM to Elastic using the OpenAI connector. This
 ### Requirements
 
 **Model selection:**
-- Must include "instruct" in the model name to work with Elastic
 - Download from trusted sources only
 - Consider parameter size, context window, and quantization format for your needs
+- Prefer "instruct" variants over "base" or "chat" versions when multiple variants are available, as instruct models are typically better tuned for following instructions
 
 **Integration setup:**
 - For Elastic Cloud: Requires a reverse proxy (such as Nginx) to authenticate requests using a bearer token and forward them to your local LLM endpoint
