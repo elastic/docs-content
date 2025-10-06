@@ -54,7 +54,7 @@ Connectivity errors usually trace back to one of the following issues:
   - {{es}} (over HTTPS): 443  
   - {{es}}: 9200  
 
-  Also confirm whether your environment uses IPv4 or IPv6, as routing rules may differ.
+  Also confirm whether your environment uses IPv4 or IPv6, as routing and firewall rules may differ.
 
 
 - **Endpoint errors**  
