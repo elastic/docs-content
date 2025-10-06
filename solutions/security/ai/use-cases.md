@@ -29,6 +29,6 @@ In addition to AI Assistant and Attack Discovery, {{elastic-sec}} provides sever
 * [Automatic Migration](/solutions/security/get-started/automatic-migration.md): Helps you quickly convert SIEM rules from the Splunk Processing Language (SPL) to the Elasticsearch Query Language ({{esql}}). If comparable Elastic-authored rules exist, it simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules on the fly so you can verify and edit them instead of writing them from scratch.
 * [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md): Helps you quickly check whether your endpoints have third-party AV software installed by analyzing file event logs from your hosts to determine whether antivirus software is present. From there, you can address any incompatibilities to make sure your endpoints are protected.
 
-  {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Helps you detect any issues in {{elastic-defend}} integration policies and  suggests remediation steps.
+  {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Helps you detect any issues in {{elastic-defend}} integration policies and suggests remediation steps.
 
 
