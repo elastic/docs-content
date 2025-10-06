@@ -52,7 +52,7 @@ To use this functionality, you need to enable [AI Assistant Knowledge Base](/sol
 
 ### Resolve policy issues 
 
-After a scan has completed, automatic troubleshooting suggests recommended next steps for each policy issue. These may include adjusting specific {{elastic-defend}} policy settings or reviewing conflicting host configurations. Click **Learn more** to the right of a result to open Elastic documentation, which provides more context and guidance for resolving the issue.
+After a scan has completed, automatic troubleshooting suggests recommended next steps for each policy issue. These may include adjusting specific {{elastic-defend}} policy settings or reviewing conflicting host configurations. Where available, click **Learn more** to the right of a result to open Elastic documentation, which provides more context and guidance for resolving the issue.
 
 ## Identify antivirus software on your hosts [identify-third-party-av-products]
 
