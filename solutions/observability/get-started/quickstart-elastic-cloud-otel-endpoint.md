@@ -1,5 +1,5 @@
 ---
-description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic Observability.
+description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic Serverless and Elastic Cloud Hosted.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
@@ -9,16 +9,21 @@ applies_to:
   stack: preview 9.2
 ---
 
-# Quickstart: Send data to the {{motlp}}
+# Quickstart: Send OTLP data to Elastic Serverless and Elastic Cloud Hosted
 
 The {{motlp}} is a fully managed offering exclusively for Elastic Cloud users that simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. Refer to [{{motlp}}](opentelemetry://reference/motlp.md) for more information.
 
-This endpoint is designed for the following use cases:
+The {{moltp}} is designed for the following use cases:
 
 * Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
 
-Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to Elastic.
+Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
+
+:::{note}
+:applies_to: { ess:, stack: preview 9.2 }
+The Managed OTLP endpoint might not be available in all {{ech}} regions during the Technical Preview.
+:::
 
 ## Send data to Elastic
 
@@ -26,62 +31,30 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 
 ::::::{stepper}
 
-:::::{step} Check the requirements
+:::::{step} Retrieve your endpoint and API key
 
-To use the {{motlp}} you need the following:
-
-* An {{obs-serverless}} or an {{ech}} project. Security projects are not yet supported.
-* An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (EDOT, Contrib, or other distributions), OpenTelemetry SDKs (EDOT, upstream, or other distributions), or any other forwarder that supports the OTLP protocol.
-
-:::::
-
-:::::{step} Locate your {{motlp}}
-
-To retrieve your {{motlp}} endpoint address, follow these steps:
+To retrieve your {{motlp}} endpoint address and API key, follow these steps:
 
 ::::{applies-switch}
 
 :::{applies-item} serverless:
 1. In {{ecloud}}, create an Observability project or open an existing one.
-2. Select your project's name and then select **Manage project**.
-3. Locate the **Connection alias** and select **Edit**.
-4. Copy the **Managed OTLP endpoint** URL.
+2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
+3. Copy the endpoint and authentication headers values.
+
+Alternatively, go to **Manage project**, locate the **Connection alias** and select **Edit** to see the **Managed OTLP endpoint** URL.
 :::
 
 :::{applies-item} ess:
 {applies_to}`stack: preview 9.2`
-1. Open your deployment in the Elastic Cloud console.
-2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
-3. Copy the endpoint URL shown.
+1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
+2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
+3. Copy the endpoint and authentication headers values.
+
+Alternatively, go to **Manage project**, locate the **Connection alias** and select **Edit** to see the **Managed OTLP endpoint** URL.
 :::
 
 ::::
-
-:::::
-
-:::::{step} Create an API key
-
-Generate an API key with appropriate ingest privileges to authenticate OTLP traffic:
-
-1. In {{ecloud}}, go to **Manage project** → **API Keys**.
-2. Select **Create API Key**.
-3. Name the key. For example, `otlp-client`.
-4. Edit the optional security settings.
-5. Select **Create API Key**.
-6. Copy the key to the clipboard.
-
-Add this key to your final API key string. For example:
-
-```
-Authorization: ApiKey <your-api-key>
-```
-
-:::{important}
-The API key copied from Kibana does not include the `ApiKey` scheme. Always prepend `ApiKey ` before using it in your configuration or encoding it for Kubernetes secrets. For example:
-
-  - Correct: `Authorization: ApiKey abc123`
-  - Incorrect: `Authorization: abc123`
-:::
 
 :::::
 
