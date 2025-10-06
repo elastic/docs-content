@@ -114,7 +114,7 @@ In {{eck}} 3.1 and earlier all file-based passwords are 24 characters long.
 
 ### Controlling the length of passwords in Helm installations
 
-If you installed {{eck}} through the Helm chart commands listed in [](../../deploy/cloud-on-k8s/install-using-helm-chart.md), you can set `config.policies.passwords.length` to control the length of generated file-based passwords.
+If you installed {{eck}} through the Helm chart commands listed in [](/deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md), you can set `config.policies.passwords.length` to control the length of generated file-based passwords.
 
 Refer to the [operator configuration docs](/deploy-manage/deploy/cloud-on-k8s/configure-eck#using-the-operator-helm-chart) for details concerning Helm values management.
 
@@ -124,7 +124,7 @@ This will not cause existing passwords to be changed. To change existing passwor
 
 ### Controlling the length of passwords using the operator manifests
 
-If you installed ECK through using the manifests using the commands listed in [](../../deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md), you can set `password-length` in the `elastic-operator` `ConfigMap` to control the length of generated file-based passwords.
+If you installed ECK through using the manifests using the commands listed in [](/deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md), you can set `password-length` in the `elastic-operator` `ConfigMap` to control the length of generated file-based passwords.
 
 Refer to the [operator configuration docs](/deploy-manage/deploy/cloud-on-k8s/configure-eck#using-the-operator-yaml-manifests) for details concerning manifest management.
 
