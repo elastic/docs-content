@@ -1,0 +1,154 @@
+---
+navigation_title: "Use different models"
+applies_to:
+  stack: preview 9.2
+  serverless:
+    elasticsearch: preview
+---
+
+:::{warning}
+These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
+
+**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
+:::
+
+# Using different models in {{agent-builder}}
+
+{{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making. By default, agents use the Elastic Managed LLM, but you can configure other models through Kibana connectors.
+
+## Default model configuration
+
+By default, {{agent-builder}} uses the Elastic Managed LLM connector running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) {applies_to}`serverless: preview` {applies_to}`ess: preview 9.2`. 
+
+This managed service requires zero setup and no additional API key management.
+
+Learn more about the [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm) and [pricing](https://www.elastic.co/pricing).
+
+## Change the default model
+
+By default, {{agent-builder}} uses the Elastic Managed LLM. To use a different model, you'll need a configured connector and then set it as the default.
+
+### Use a pre-configured connector
+
+1. Search for **GenAI Settings** in the global search field
+2. Select your preferred connector from the **Default AI Connector** dropdown
+3. Save your changes
+
+### Create a new connector in the UI
+
+1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md)
+2. Select **Create Connector** and select your model provider
+3. Configure the connector with your API credentials and preferred model
+4. Search for **GenAI Settings** in the global search field
+5. Select your new connector from the **Default AI Connector** dropdown
+6. Save your changes
+
+For detailed instructions on creating connectors, refer to [Connectors](https://www.elastic.co/docs/deploy-manage/manage-connectors).
+
+Learn more about [preconfigured connectors](https://www.elastic.co/docs/reference/kibana/connectors-kibana/pre-configured-connectors).
+
+## Connectors API
+
+For programmatic access to connector management, refer to the [Connectors API documentation]({{kib-serverless-apis}}group/endpoint-connectors).
+
+## Recommended models
+
+{{agent-builder}} requires models with strong reasoning and tool-calling capabilities. State-of-the-art models perform significantly better than smaller or older models.
+
+### Recommended model families
+
+The following models are known to work well with {{agent-builder}}:
+
+- **OpenAI**: GPT-4.1, GPT-4o
+- **Anthropic**: Claude Sonnet 4.5, Claude Sonnet 4, Claude Sonnet 3.7
+- **Google**: Gemini 2.5 Pro
+
+### Why model quality matters
+
+Agent Builder relies on advanced LLM capabilities including:
+
+- **Function calling**: Models must accurately select appropriate tools and construct valid parameters from natural language requests
+- **Multi-step reasoning**: Agents need to plan, execute, and adapt based on tool results across multiple iterations
+- **Structured output**: Models must produce properly formatted responses that the agent framework can parse
+
+Smaller or less capable models may produce errors like:
+
+```console-response
+Error: Invalid function call syntax
+```
+
+```console-response
+Error executing agent: No tool calls found in the response.
+```
+
+While any chat-completion-compatible connector can technically be configured, we strongly recommend using state-of-the-art models for reliable agent performance.
+
+:::{note}
+GPT-4o-mini and similar smaller models are not recommended for {{agent-builder}} as they lack the necessary capabilities for reliable agent workflows.
+:::
+
+## Connect a local LLM
+
+You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
+
+### Requirements
+
+**Model selection:**
+- Must include "instruct" in the model name to work with Elastic
+- Download from trusted sources only
+- Consider parameter size, context window, and quantization format for your needs
+
+**Integration setup:**
+- For Elastic Cloud: Requires a reverse proxy (such as Nginx) to authenticate requests using a bearer token and forward them to your local LLM endpoint
+- For self-managed deployments on the same host as your LLM: Can connect directly without a reverse proxy
+- Your local LLM server must use the OpenAI SDK for API compatibility
+
+### Configure the connector
+
+:::::{stepper}
+::::{step} Set up your local LLM server
+
+Ensure your local LLM is running and accessible via an OpenAI-compatible API endpoint.
+
+::::
+
+::::{step} Create the OpenAI connector
+
+1. Log in to your Elastic deployment
+2. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md)
+3. Select **Create Connector** and select **OpenAI**
+4. Name your connector to help track the model version you're using
+5. Under **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**
+
+::::
+
+::::{step} Configure connection details
+
+1. Under **URL**, enter:
+   - For Elastic Cloud: Your reverse proxy domain + `/v1/chat/completions`
+   - For same-host self-managed: `http://localhost:1234/v1/chat/completions` (adjust port as needed)
+2. Under **Default model**, enter `local-model`
+3. Under **API key**, enter:
+   - For Elastic Cloud: Your reverse proxy authentication token
+   - For same-host self-managed: Your LLM server's API key
+4. Select **Save**
+
+::::
+
+::::{step} Set as default (optional)
+
+To use your local model as the default for {{agent-builder}}:
+
+1. Search for **GenAI Settings** in the global search field
+2. Select your local LLM connector from the **Default AI Connector** dropdown
+3. Save your changes
+
+::::
+
+:::::
+
+## Related pages
+
+- [Limitations and known issues](limitations-known-issues.md): Current limitations around model selection
+- [Get started](get-started.md): Initial setup and configuration
+- [Connectors](/deploy-manage/manage-connectors): Detailed connector configuration guide
