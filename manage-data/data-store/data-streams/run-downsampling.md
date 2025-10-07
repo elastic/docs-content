@@ -116,12 +116,6 @@ The same applied when downsampling already downsampled data.
 
 The following tips apply to data streams downsampled by index lifecycle management (ILM).
 
-#### Reducing index size
-
-When configuring an ILM policy with downsampling, it is necessary to define the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) in the  `hot` phase. The rollover action consists of the conditions that would trigger a rollover hence it determines the size of an index and its shards. The size of an index can influence the impact that downsampling has on a cluster's performance. 
-
-The downsampling operation runs over a whole index, so in certain cases downsampling can increase the load on a cluster. One of the ways to reduce that load is to reduce the size of the index; this way you can have smaller downsampling tasks that get better distributed. You can achieve that either by reducing the number of primary shards or by using setting [`max_primary_shard_docs`](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover#ilm-rollover-options) to reduce the number of docs in a single shard. Using a lower value than the default of 200 million is expected to help smoothen load spikes due to downsampling.
-
 #### Phases and tiers
 
 When using ILM, you can define at most one downsampling round in the following phases:
@@ -133,6 +127,12 @@ When using ILM, you can define at most one downsampling round in the following p
 The phases do not require the respective tiers to exist. However, when a cluster has tiers, ILM automatically migrates the data processed in the phase to the respective tier. This can be disabled by adding the [migrate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-migrate-options) with `enabled: false`.
 
 The migrate action is implicitly enabled, moving downsampling data to the respective tier. The downsampling operation occurs at the same tier as the source index and then the downsampled data gets migrated, allowing downsampling to leverage the resources of the "hotter" tier and move less data to the next tier.
+
+#### Reducing index size
+
+When configuring an ILM policy with downsampling, it is necessary to define the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) in the  `hot` phase. The rollover action consists of the conditions that would trigger a rollover hence it determines the size of an index and its shards. The size of an index can influence the impact that downsampling has on a cluster's performance. 
+
+The downsampling operation runs over a whole index, so in certain cases downsampling can increase the load on a cluster. One of the ways to reduce that load is to reduce the size of the index; this way you can have smaller downsampling tasks that get better distributed. You can achieve that either by reducing the number of primary shards or by using setting [`max_primary_shard_docs`](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover#ilm-rollover-options) to reduce the number of docs in a single shard. Using a lower value than the default of 200 million is expected to help smoothen load spikes due to downsampling.
 
 ## Additional resources
 
