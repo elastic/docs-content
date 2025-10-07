@@ -153,7 +153,7 @@ Each case can have a maximum of 1,000 alerts.
 stack: ga 9.2
 ```
 
-To explore the events attached to a case, click the **Events** tab. In the table, alerts are organized from oldest to newest. To view event details, click the **View details** button.
+You can add events to cases from the Events table (which you can access from **Events** tab on the **Hosts**, **Network**, or **Users** pages) or Timeline. To examine attached events, open the appropriate case, then click the **Events** tab. In the table, alerts are organized from oldest to newest. To view event details, clieck the **View details** button.
 
 
 ### Add files [cases-add-files]
