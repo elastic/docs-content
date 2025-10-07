@@ -15,7 +15,7 @@ products:
 
 # Kubernetes observability with EDOT
 
-The [quickstart guides]/solutions/observability/get-started/opentelemetry/quickstart/index.md) for Kubernetes install a set of different EDOT Collectors and EDOT SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
+The [quickstart guides](/solutions/observability/get-started/opentelemetry/quickstart/index.md) for Kubernetes install a set of different EDOT Collectors and EDOT SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
 
 The Kubernetes setup relies on the OpenTelemetry Operator, configured to automate orchestration of EDOT as follows:
 
