@@ -253,10 +253,10 @@ Go to the **Similar cases** tab to access other cases with the same observables.
 ::::
 
 
-:::{image} /solutions/images/security-cases-add-observables.png
-:alt: Shows you where to add observables
-:screenshot:
-:::
+% :::{image} /solutions/images/security-cases-add-observables.png
+%:alt: Shows you where to add observables
+% :screenshot:
+% :::
 
 
 ### Copy the case UUID [cases-copy-case-uuid]
