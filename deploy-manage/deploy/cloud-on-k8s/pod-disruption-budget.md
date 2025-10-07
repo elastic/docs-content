@@ -24,7 +24,7 @@ deployment:
   eck: ga 3.2
 ```
 
-In Elasticsearch clusters managed by ECK and licensed with an Enterprise license, a separate PDB is created for each type of `nodeSet` defined in the manifest. This setup allows upgrade or maintenance operations to be executed more quickly. Each PDB permits one Elasticsearch Pod per `nodeSet` to be disrupted at a time, provided the cluster maintains the health status described in the following table:
+In Elasticsearch clusters managed by ECK and licensed with an Enterprise license, a separate PDB is created for each type of `nodeSet` defined in the manifest. This setup allows Kubernetes upgrade or maintenance operations to be executed more quickly. Each PDB permits one Elasticsearch Pod per `nodeSet` to be disrupted at a time, provided the Elasticsearch cluster maintains the health status described in the following table:
 
 | Role | Cluster health required | Notes |
 |------|------------------------|--------|
@@ -50,7 +50,9 @@ In {{eck}} clusters that do not have an Enterprise license, one {{es}} Pod can b
 
 In the {{es}} specification, you can change the default behavior in two ways. By fully overriding the PodDisruptionBudget within the {{es}} spec or by disabling the default PodDisruptionBudget and specifying one or more PodDisruptionBudget(s).
 
-### Fully override the PodDisruptionBudget within the {{es}} spec [k8s-override-default-pdb]
+### Specify your own PodDisruptionBudget [k8s-specify-own-pdb]
+
+You can fully override the default PodDisruptionBudget by specifying your own PodDisruptionBudget in the {{es}} spec.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -76,7 +78,7 @@ This will cause the ECK operator to only create the PodDisruptionBudget defined 
 [`maxUnavailable`](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#arbitrary-controllers-and-selectors) cannot be used with an arbitrary label selector, therefore `minAvailable` is used in this example.
 ::::
 
-### Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
+### Create a PodDisruptionBudget per nodeSet [k8s-pdb-per-nodeset]
 
 You can specify a PDB per `nodeSet` or node role.
 
