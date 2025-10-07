@@ -37,7 +37,12 @@ Open a new case to keep track of security issues and share their details with co
 4. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/solutions/security/investigate/cases-requirements.md).
 5. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section.
 6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is enabled by default, but you can turn it off after creating the case.
-7. {applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract [observables](/solutions/security/investigate/open-manage-cases.md#cases-add-observables) from alerts that you're adding to the case.
+7. {applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case.
+
+    ::::{tip}
+    After creating the case, you can turn this setting on or off by toggling **Auto-extract observables** on the case's **Observables** tab. From the tab, you can also [add observables manually](/solutions/security/investigate/open-manage-cases.md#cases-add-observables).  
+    ::::
+
 8. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
 9. Click **Create case**.
 
@@ -224,10 +229,6 @@ Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/
 
 
 An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case.
-
-::::{tip}
-{applies_to}`stack: ga 9.2` When creating a new case, keep the **Extract observables** option turned on to automatically extract observables from alerts that you're adding to the case. After creating the case, you can turn this setting on or off using the **Auto-extract observables** setting on the case's **Observables** tab.
-::::
 
 To create an observable:
 
