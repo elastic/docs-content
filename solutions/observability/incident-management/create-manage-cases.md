@@ -99,3 +99,11 @@ To view a case, click on its name. You can then:
 * Refresh the case to retrieve the latest updates.
 * Close the case.
 * Reopen a closed case.
+
+## Search and filter by case ID [cases-id]
+
+```{applies_to}
+stack: ga 9.2
+```
+
+Existing and new cases are automatically assigned numeric IDs, which display after the case name. Use these IDs to quickly search and filter the Cases table.You can also use them for simplified tracking and collaboration when communicating about a case.

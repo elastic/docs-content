@@ -95,7 +95,7 @@ To explore a case, click on its name. You can then:
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
-* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts) and [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case) attached to the case
+* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and {applies_to}`stack: ga 9.2.0` events attached to the case
 * [Add files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
 * [Add a Lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
 * Modify the case’s description, assignees, category, severity, status, and tags.
@@ -147,6 +147,13 @@ To explore the alerts attached to a case, click the **Alerts** tab. In the table
 Each case can have a maximum of 1,000 alerts.
 ::::
 
+### Examine events attached to a case [cases-examine-events]
+
+```{applies_to}
+stack: ga 9.2
+```
+
+To explore the events attached to a case, click the **Events** tab. In the table, alerts are organized from oldest to newest. To view event details, click the **View details** button.
 
 
 ### Add files [cases-add-files]
@@ -328,3 +335,11 @@ To import a case:
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
+
+## Search and filter by case ID [cases-id]
+
+```{applies_to}
+stack: ga 9.2
+```
+
+Existing and new cases are automatically assigned numeric IDs, which display after the case name. Use these IDs to quickly search and filter the Cases table. You can also use them for simplified tracking and collaboration when communicating about a case.
