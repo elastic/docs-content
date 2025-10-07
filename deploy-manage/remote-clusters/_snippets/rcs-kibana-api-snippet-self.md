@@ -3,7 +3,6 @@ This snippet is in use in the following locations:
 - ece-remote-cluster-self-managed.md
 - ec-remote-cluster-self-managed.md
 -->
-% EC - SELF / ECE - SELF
 1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
 2. In **Select connection type**, choose the authentication mechanism you prepared earlier (**API keys** or **Certificates**), and click **Next**.
 
