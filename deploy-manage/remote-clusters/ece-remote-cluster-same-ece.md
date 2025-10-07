@@ -192,6 +192,10 @@ If you’re having issues establishing the connection and the remote cluster is 
 :::
 
 ### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api]
+```{applies_to}
+deployment:
+  ece: deprecated
+```
 
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model and when both clusters belong to the same ECE environment. For other scenarios, the [{{es}} API](#ece_using_the_elasticsearch_api) should be used instead.

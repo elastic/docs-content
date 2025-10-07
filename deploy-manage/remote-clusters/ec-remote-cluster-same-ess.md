@@ -181,6 +181,10 @@ snippet:
 :::
 
 ### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api]
+```{applies_to}
+deployment:
+  ess: deprecated
+```
 
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model and when both clusters belong to the same organization. For other scenarios, the [{{es}} API](#ec_using_the_elasticsearch_api) should be used instead.
