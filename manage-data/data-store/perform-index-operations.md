@@ -13,7 +13,7 @@ You can perform a number of index operations from the **Index management** page 
 
 To perform index actions:
 
-1. Go to the **Index management** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Index management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 1. Open the **Indices** view.
 1. Click the index name, or to perform operations on multiple indices select their checkboxes and open the **Manage index** menu.
