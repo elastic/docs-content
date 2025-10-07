@@ -695,7 +695,7 @@ Some data views are exclusively configured and **managed** by Elastic. You can v
 
 3. Still from the data view selection menu, select **Manage this data view**. A flyout with more details about the data view opens, and indicates that you can't edit it directly.
 
-   ![Manage this data view option](../images/manage-this-data-view.png "=50%")
+   ![Manage this data view option](../images/manage-this-data-view.png "Manage this data view option =50%")
 
 4. Select **Duplicate**. A Similar flyout opens where you can adjust the settings of the new copy of the managed data view.
 
