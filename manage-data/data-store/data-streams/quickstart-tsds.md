@@ -315,6 +315,7 @@ This quickstart introduced the basics of time series data streams. To learn more
 
 * [](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
 * [](/manage-data/data-store/data-streams/set-up-tsds.md)
+* [](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
 
 For more information about the APIs used in this quickstart, review the {{es}} API reference documentation:
 
