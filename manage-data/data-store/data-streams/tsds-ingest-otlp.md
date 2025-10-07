@@ -18,7 +18,7 @@ Ingesting metrics data using the OTLP endpoint has the following advantages:
 * Improved ingestion performance, especially if the data contains many resource attributes.
 * Simplified index mapping:
   there's no need to manually create an index template, or define dimensions and metrics.
-  Using the OTLP endpoint, metrics are dynamically mapped using the metadata included in the OTLP requests.
+  Metrics are dynamically mapped using the metadata included in the OTLP requests.
 
 :::{important}
 On {{ecloud}} , use the [{{motlp}}](opentelemetry:/reference/motlp.md) instead of connecting directly to the {{es}} OTLP endpoint.
