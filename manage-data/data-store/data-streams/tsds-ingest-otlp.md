@@ -44,20 +44,25 @@ extensions:
       username: <user>
       password: <password>
 exporters:
-  otlphttp/elasticsearch:
+  otlphttp/elasticsearch-metrics:
     endpoint: <es_endpoint>/_otlp
     sending_queue:
       enabled: true
-      sizer: requests
-      queue_size: 5000
+      sizer: bytes
+      queue_size: 50_000_000 # 50MB uncompressed
       block_on_overflow: true
       batch:
-        flush_timeout: 5s
-        sizer: bytes
-        min_size: 2_000_000
-        max_size: 5_000_000
+        flush_timeout: 1s
+        min_size: 1_000_000 # 1MB uncompressed
+        max_size: 4_000_000 # 4MB uncompressed
     auth:
       authenticator: basicauth/elasticsearch
+service:
+  extensions: [basicauth/elasticsearch]
+  pipelines:
+    metrics:
+      exporters: [otlphttp/elasticsearch-metrics]
+      receivers: ...
 ```
 :::{note} 
 Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.
