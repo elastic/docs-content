@@ -221,28 +221,8 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
 ### Using {{kib}} [ec_using_kibana_4]
 
-1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
-2. Enable **Manually enter proxy address and server name**.
-3. Fill in the following fields:
-
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
-
-      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
-    * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
-
-      ::::{tip}
-      If you’re using API keys as security model, change the port to `9443`.
-      ::::
-
-    * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
-      ::::
-
-4. Click **Next**.
-5. Click **Add remote cluster** (you have already established trust in a previous step).
-
+:::{include} _snippets/rcs-kibana-api-snippet-self.md
+:::
 
 ### Using the {{es}} API [ec_using_the_elasticsearch_api_4]
 
