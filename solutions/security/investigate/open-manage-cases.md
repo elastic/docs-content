@@ -147,8 +147,6 @@ To explore the alerts attached to a case, click the **Alerts** tab. In the table
 Each case can have a maximum of 1,000 alerts.
 ::::
 
-
-
 ### Add files [cases-add-files]
 
 To upload files to a case, click the **Files** tab:
@@ -328,3 +326,11 @@ To import a case:
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
+
+## Search and filter by case ID [cases-id]
+
+```{applies_to}
+stack: ga 9.2
+```
+
+Existing and new cases are automatically assigned numeric IDs, which display after the case name. Use these IDs to quickly search and filter the Cases table. You can also use them for simplified tracking and collaboration when communicating about a case.
