@@ -112,15 +112,25 @@ When choosing the downsampling interval, you need to consider the original sampl
 
 The same applied when downsampling already downsampled data. 
 
-### Downsampling, phases and tiers
+### Downsampling with Index Lifecycle Management
 
-When using index lifecycle management (ILM), you can define at most one downsampling round in the following phases:
+The following tips apply to data streams downsampled by index lifecycle management (ILM).
+
+#### Reducing index size
+
+When configuring an ILM policy with downsampling, it is necessary to define the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) in the  `hot` phase. The rollover action consists of the conditions that would trigger a rollover hence it determines the size of an index and its shards. The size of an index can influence the impact that downsampling has on a cluster's performance. 
+
+The downsampling operation runs over a whole index, so in certain cases downsampling can increase the load on a cluster. One of the ways to reduce that load is to reduce the size of the index; this way you can have smaller downsampling tasks that get better distributed. You can achieve that either by reducing the number of primary shards or by using the `max_primary_shard_docs` to reduce the number of docs in a single shard. There is already an upper limit enforced by elasticsearch for `max_primary_shard_docs` which is 200 million, but reducing it to 180 or 150 million could be beneficial. Please experiment and monitor the effect of such changes since their impact varies depending on the specific use cases.
+
+#### Phases and tiers
+
+When using ILM, you can define at most one downsampling round in the following phases:
 
 - `hot` phase: it will execute the downsampling after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed
 - `warm` phase: it will execute the downsampling `min_age` time after the rollover (respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
 - `cold` phase: it will execute the downsampling `min_age` time after the rollover (respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
 
-The phases do not require the respective tiers to exist. However, when a cluster has tiers, ILM automatically migrates the data processed in the phase to the respective tier. This can be disabled by adding the [migrate action](elasticsearch://reference/elasticsearch/reference/elasticsearch/index-lifecycle-actions/ilm-migrate#ilm-migrate-options.md) with `enabled: false`.
+The phases do not require the respective tiers to exist. However, when a cluster has tiers, ILM automatically migrates the data processed in the phase to the respective tier. This can be disabled by adding the [migrate action](elasticsearch://reference/elasticsearch/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-migrate-options) with `enabled: false`.
 
 The migrate action is implicitly enabled, so unless explicitly disabled, the downsampling data will have to move to the respective tier; the downsampling operation occurs at the same tier as the source index and then the downsampled data gets migrated, this implementation choice allows downsampling to leverage the better resources from the "hotter" tier and move less data to the next tier.
 
