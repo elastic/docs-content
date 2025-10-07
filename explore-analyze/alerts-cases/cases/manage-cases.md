@@ -139,7 +139,7 @@ To view a case, click on its name. You can then:
 * Close or delete the case.
 * Reopen a closed case.
 
-### Search and filter by case ID [cases-id]
+## Search and filter by case ID [cases-id]
 
 ```{applies_to}
 stack: ga 9.2

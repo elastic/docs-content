@@ -106,4 +106,4 @@ To view a case, click on its name. You can then:
 stack: ga 9.2
 ```
 
-Existing and new cases are automatically assigned numeric IDs, which display after the case name. Use these IDs to quickly search and filter the Cases table.You can also use them for simplified tracking and collaboration when communicating about a case.
+Existing and new cases are automatically assigned numeric IDs, which display after the case name. Use these IDs to quickly search and filter the Cases table. You can also use them for simplified tracking and collaboration when communicating about a case.
