@@ -34,8 +34,7 @@ In our example, the **Index Response Times** metric shows that high memory press
 
 If the performance impact from high memory pressure is not acceptable, you need to increase the cluster size or reduce the workload.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Increase the deployment size [ec_increase_the_deployment_size]
