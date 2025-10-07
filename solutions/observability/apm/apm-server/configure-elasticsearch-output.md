@@ -14,7 +14,7 @@ products:
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
-This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](/reference/fleet/elasticsearch-output.md).
+The configuration options described in this documentation apply to both APM Server binary and Fleet-managed APM Server. However, the YAML configuration method shown here only applies to APM Server binary users. Fleet-managed users configure these same APM-specific Elasticsearch output settings through the Fleet UI in Kibana.
 
 ::::
 
