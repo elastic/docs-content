@@ -7,14 +7,14 @@ products:
   - id: elasticsearch
 ---
 
-# Ingest metrics via the OpenTelemetry Protocol (OTLP)
+# Ingest metrics using the OpenTelemetry Protocol (OTLP)
 
-In addition to the ingestion of metrics data via the bulk API,
+In addition to the ingestion of metrics data through the bulk API,
 {{es}} offers an alternative way to ingest data via the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
 
 The endpoint is available under `/_otlp/v1/metrics`.
 
-Ingesting metrics data via this endpoint has the following advantages:
+Ingesting metrics data using the OTLP endpoint has the following advantages:
 * Improved ingestion performance, especially if the data contains many resource attributes.
 * Simplified index mapping:
   there's no need to manually create an index template, or define dimensions and metrics.
@@ -22,7 +22,7 @@ Ingesting metrics data via this endpoint has the following advantages:
 
 ## How to send data to the OTLP endpoint
 
-To send data from an OpenTelemetry collector to the {{es}} OTLP endpoint,
+To send data from an OpenTelemetry Collector to the {{es}} OTLP endpoint,
 use the [`OTLP/HTTP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter).
 This is an example configuration:
 
@@ -48,12 +48,12 @@ exporters:
     auth:
       authenticator: basicauth/elasticsearch
 ```
-Note that at this point, only `encoding: proto` is supported,
-which the `OTLP/HTTP` exporter uses by default.
-
+:::{note} 
+Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.
+:::
 The supported options for `compression` are `gzip` (default value of the `OTLP/HTTP` exporter) and `none`.
 
-[//]: # (TODO we might actually also support snappy and zstd, test and update accordingly)
+% TODO we might actually also support snappy and zstd, test and update accordingly)
 
 To track metrics in your custom application,
 use the [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) of your choice.
