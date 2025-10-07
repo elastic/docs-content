@@ -19,7 +19,7 @@ It requires remote_type substitution to be defined
 
     * **Remote address**: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section.
 
-      ::::{tip}
+      ::::{note}
       If you’re using API keys as security model, change the port into `9443`.
       ::::
 
