@@ -21,7 +21,7 @@ Before setting up a time series data stream, make sure you're familiar with gene
 
 _Metrics_ consist of data point&ndash;timestamp pairs, identified by [dimension fields](#time-series-dimension), that can be used in aggregation queries. Both a regular data stream and a time series data stream can store metrics data. 
 
-Choose a time series data stream if you typically add metrics data to {{es}} in near real-time and in `@timestamp` order. For other timestamped data, such as logs or traces, use a [logs data stream](logs-data-stream.md) or [regular data stream](/manage-data/data-store/data-streams.md).
+Choose a time series data stream if you typically add metrics data to {{es}} in near real-time and in `@timestamp` order. For other timestamped data, such as logs or traces, use a [logs data stream](logs-data-stream.md) or a [regular data stream](/manage-data/data-store/data-streams.md).
 
 To make sure a TSDS is right for your use case, review the list of [differences from a regular data stream](#differences-from-regular-data-stream) on this page.
 
