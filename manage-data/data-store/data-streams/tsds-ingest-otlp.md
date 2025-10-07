@@ -78,8 +78,6 @@ By default, metrics are ingested into the `metrics-generic.otel-default` data st
 
 The target data stream name is constructed as `metrics-${data_stream.dataset}.otel-${data_stream.namespace}`.
 
-## Mapping hints
-
 ## Limitations
 
 * Histograms are only supported in delta temporality. Set the temporality preference to delta in your SDKs, or use the [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) to avoid cumulative histograms to be dropped.
