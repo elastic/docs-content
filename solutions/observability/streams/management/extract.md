@@ -174,7 +174,6 @@ You can still add your own processors manually to the `@custom` pipeline if need
 % update these limitations/verify limitations
 
 - Streams does not support all processors. We are working on adding more processors in the future.
-- Streams does not support all processor options. We are working on adding more options in the future.
-- The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
+- The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them. We will allow proper simulations using original documents in a future version.
 - Field names containing dots are not supported. You can use the dot expand processor in the `@custom` pipeline as a workaround. You need to manually add the dot expand processor.
 - Providing any arbitrary JSON in the Streams UI is not supported. We are working on adding this in the future.
