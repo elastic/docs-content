@@ -87,7 +87,7 @@ The ability to control the length of passwords for [file-based credentials](/dep
 
 You can control the length of generated file-based passwords in {{eck}} installations by setting either `config.policies.passwords.length` in your Helm chart values or `password-length` in the `elastic-operator` `ConfigMap` when installing with YAML manifests. Refer to the [operator configuration documentation](../../deploy/cloud-on-k8s/configure-eck.md) for details on managing these settings.
 
-Changing these values does not update existing passwords. To rotate current credentials, refer to the [rotating credentials documentation](#k7s-rotate-credentials)
+Changing these values does not update existing passwords. To rotate current credentials, refer to the [rotating credentials documentation](#k8s-rotate-credentials)
 
 ## Creating custom users
 
