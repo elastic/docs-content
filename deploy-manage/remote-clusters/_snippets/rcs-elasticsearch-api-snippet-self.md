@@ -3,7 +3,7 @@ This snippet is in use in the following locations:
 - ece-remote-cluster-self-managed.md
 - ec-remote-cluster-self-managed.md
 -->
-To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
+To configure a self-managed cluster as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
 * `mode`: `proxy`
 * `proxy_address`: Enter the endpoint of the remote self-managed cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 ({applies_to}`stack: ga 9.2`) addresses are supported.
