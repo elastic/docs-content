@@ -50,7 +50,15 @@ Two deployment technologies are available: agentless and agent-based.
 :::
 
 7. For **Deployment options**, select **Agentless**.
-8. For **Setup Access**, authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
+8. Next, you’ll need to authenticate to Azure. Two methods are available:
+    
+    * {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Option 1: Cloud Connector (recommended). 
+      * To use a pre-existing Cloud Connector for this deployment, select it under **Existing connection**. 
+      * To use a new Cloud Connector: under **New connection**, expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generates a `Client ID` and `Tenant ID`, then enter them in Kibana.
+    
+    * Option 2: Azure Client ID with Client Secret. Provide a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
+
+
 9. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
 ## Agent-based deployment [cspm-azure-agent-based]
