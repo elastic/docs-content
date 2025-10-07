@@ -13,8 +13,10 @@ products:
 
 This page shows you how to manually set up a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS).
 
+::::{note}
 For a simplified setup that doesn't require manually mapping dimension and metric fields via index templates,
 have a look at the [OpenTelemetry Protocol (OTLP)-based data ingestion](tsds-ingest-otlp.md).
+::::
 
 ## Before you begin [tsds-prereqs]
 
