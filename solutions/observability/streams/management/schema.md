@@ -1,7 +1,7 @@
 ---
 navigation_title: Manage field mapping
 applies_to:
-  serverless: preview
+  serverless: ga
   stack: preview 9.1, ga 9.2
 ---
 

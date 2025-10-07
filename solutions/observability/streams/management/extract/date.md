@@ -6,9 +6,9 @@ applies_to:
 
 # Date processor [streams-date-processor]
 
-The date processor parses date strings and uses them as the timestamp of the document.
+The date processor parses dates from fields, and then uses the date or timestamp as the timestamp for the document.
 
-To parse a date string using the date processor:
+To extract a timestamp field using the date processor:
 
 1. Set the **Source Field** to the field containing the timestamp.
 1. Set the **Format** field to one of the accepted date formats (ISO8602, UNIX, UNIX_MS, or TAI64N) or use a Java time pattern. Refer to the [example formats](#streams-date-examples) for more information.
