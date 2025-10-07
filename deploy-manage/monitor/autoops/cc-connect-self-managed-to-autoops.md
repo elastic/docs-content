@@ -80,8 +80,8 @@ If you already have an {{ecloud}} account:
 :sync: new
 
 If you don’t have an existing {{ecloud}} account: 
-1. Sign up for an account. 
-2. Follow the prompts on your screen to create an organization.
+1. Go to the [Cloud Connected Services sign up](https://cloud.elastic.co/registration?onboarding_service_type=ccm) page. 
+2. Follow the prompts on your screen to sign up for {{ecloud}} and create an organization.
 3. Go through the installation wizard as detailed in the following sections.
 ::::
 
