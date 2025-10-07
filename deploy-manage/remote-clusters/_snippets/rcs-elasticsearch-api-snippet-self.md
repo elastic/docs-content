@@ -12,7 +12,7 @@ To configure a self-managed cluster as a remote cluster, use the [cluster update
   * **API keys**: Use the port configured in the remote cluster interface of the remote cluster (defaults to `9443`).  
   * **TLS Certificates**: Use the {{es}} transport port (defaults to `9300`).
 
-  When using an IPv6 address ({applies_to}`stack: ga 9.2`), enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
+  When using an IPv6 address, enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
 
 * `server_name`: Specify a value if the certificate presented by the remote cluster is signed for a different name than the proxy_address.
 
