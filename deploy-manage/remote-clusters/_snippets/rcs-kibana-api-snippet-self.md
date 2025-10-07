@@ -13,10 +13,12 @@ This snippet is in use in the following locations:
       When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
     * **Remote address**: Enter the endpoint of the remote self-managed cluster,  including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 ({applies_to}`stack: ga 9.2`) addresses are supported.
 
-      ::::{tip}
+      ::::{note}
       Use the correct port for your authentication method:  
       * **API keys**: Use the port configured in the remote cluster interface of the remote cluster (defaults to `9443`).  
-      * **TLS Certificates**: Use the {{es}} transport port (defaults to `9300`).  
+      * **TLS Certificates**: Use the {{es}} transport port (defaults to `9300`).
+
+      When using an IPv6 address ({applies_to}`stack: ga 9.2`), enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
       ::::
 
     * **Configure advanced options** (optional): Expand this section if you need to customize additional settings.
