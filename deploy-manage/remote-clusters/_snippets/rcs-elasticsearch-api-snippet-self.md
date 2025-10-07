@@ -8,13 +8,11 @@ To configure a self-managed cluster as a remote cluster, use the [cluster update
 * `mode`: `proxy`
 * `proxy_address`: Enter the endpoint of the remote self-managed cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 ({applies_to}`stack: ga 9.2`) addresses are supported.
 
-  ::::{note}
-  Use the correct port for your authentication method:  
+  Make sure you use the correct port for your authentication method:
   * **API keys**: Use the port configured in the remote cluster interface of the remote cluster (defaults to `9443`).  
   * **TLS Certificates**: Use the {{es}} transport port (defaults to `9300`).
 
   When using an IPv6 address ({applies_to}`stack: ga 9.2`), enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
-  ::::
 
 * `server_name`: Specify a value if the certificate presented by the remote cluster is signed for a different name than the proxy_address.
 
