@@ -30,7 +30,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.1.5 [elastic-security-9.1.5-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.5-features-enhancements]
-* Adds `customized_fields` and `has_base_version` fields to the internal rule schema [#235394]({{kib-pull}}235394).
 * Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
 * Increases the throughput of {{elastic-defend}} Logstash connections by increasing the maximum size it can upload at once.
 * Improves reliability and accuracy of reporting of the {{elastic-defend}}'s {{es}} connection.
