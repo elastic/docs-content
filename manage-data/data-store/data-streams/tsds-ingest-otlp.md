@@ -60,7 +60,7 @@ use the [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-start
 
 ## When not to use the {{es}} OTLP endpoint
 
-On Elastic Cloud, use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry::/reference/motlp.md) instead of connecting directly to the Elasticsearch OTLP endpoint.
+On Elastic Cloud, use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry:/reference/motlp.md) instead of connecting directly to the Elasticsearch OTLP endpoint.
 
 It's not recommended to send metrics from applications directly to the Elasticsearch OTLP endpoint,
 especially if there are many individual applications that each periodically send a small amount of metrics.
@@ -68,14 +68,14 @@ Instead, send data to an OpenTelemetry collector first.
 This helps with handling many connections,
 and with creating bigger batches to improve ingestion performance.
 For more details on the recommended way to set up OpenTelemetry-based data ingestion,
-have a look at the [EDOT reference architecture](opentelemetry::/reference/architecture/index.md).
+have a look at the [EDOT reference architecture](opentelemetry:/reference/architecture/index.md).
 
 At this point, {{es}} only supports the OTLP metrics endpoint (`/_otlp/v1/metrics`).
 Other signals,  are not supported as a native {{es}} OTLP endpoint at the moment.
 To ingest other signals,
 such as logs, traces, and profiles,
-use a distribution of the OpenTelemetry collector that includes the [Elasticsearch exporter](opentelemetry::/reference/edot-collector/components/elasticsearchexporter.md),
-such as the [Elastic distribution of OpenTelemetry (EDOT) Collector](opentelemetry::/reference/edot-collector/index.md).
+use a distribution of the OpenTelemetry collector that includes the [Elasticsearch exporter](opentelemetry:/reference/edot-collector/components/elasticsearchexporter.md),
+such as the [Elastic distribution of OpenTelemetry (EDOT) Collector](opentelemetry:/reference/edot-collector/index.md).
 
 ## Send data to different data streams
 
