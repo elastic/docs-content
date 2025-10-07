@@ -148,7 +148,6 @@ Each case can have a maximum of 1,000 alerts.
 ::::
 
 ### Examine events attached to a case [cases-examine-events]
-
 ```{applies_to}
 stack: ga 9.2
 ```
