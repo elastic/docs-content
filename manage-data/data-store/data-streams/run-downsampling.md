@@ -132,7 +132,7 @@ When using ILM, you can define at most one downsampling round in the following p
 
 The phases do not require the respective tiers to exist. However, when a cluster has tiers, ILM automatically migrates the data processed in the phase to the respective tier. This can be disabled by adding the [migrate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-migrate-options) with `enabled: false`.
 
-The migrate action is implicitly enabled, so unless explicitly disabled, the downsampling data will have to move to the respective tier; the downsampling operation occurs at the same tier as the source index and then the downsampled data gets migrated, this implementation choice allows downsampling to leverage the better resources from the "hotter" tier and move less data to the next tier.
+The migrate action is implicitly enabled, moving downsampling data to the respective tier. The downsampling operation occurs at the same tier as the source index and then the downsampled data gets migrated, allowing downsampling to leverage the resources of the "hotter" tier and move less data to the next tier.
 
 ## Additional resources
 
