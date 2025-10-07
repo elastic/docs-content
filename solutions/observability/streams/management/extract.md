@@ -9,7 +9,7 @@ Extracting meaningful fields from your log messages lets you filter and analyze 
 
 From the **Processing** tab, you can add the [processors](#streams-extract-processors) you need to extract these structured fields. The UI then simulates your changes and provides an immediate [preview](#streams-preview-changes) that's tested end-to-end.
 
-The UI also shows when you have indexing problems, such as [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
+Streams also shows when you have indexing problems, such as [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
 
 After creating your processor, all future ingested data will be parsed into structured fields accordingly.
 
@@ -135,6 +135,8 @@ Once saved, the processor provides a quick look at the processor's success rate 
 
 ## Advanced: How and where do these changes get applied to the underlying data stream? [streams-applied-changes]
 
+% make sure this is all still accurate.
+
 When you save processors, Streams modifies the "best-matching" ingest pipeline for the data stream. In short, Streams either chooses the best-matching pipeline ending in `@custom` that is already part of your data stream, or it adds one for you.
 
 Streams identifies the appropriate @custom pipeline (for example, `logs-myintegration@custom` or `logs@custom`).
@@ -168,6 +170,8 @@ Do not manually modify the `<data_stream_name>@stream.processing` pipeline creat
 You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor created by Streams may cause unexpected behavior.
 
 ## Known limitations [streams-known-limitations]
+
+% update these limitations/verify limitations
 
 - Streams does not support all processors. We are working on adding more processors in the future.
 - Streams does not support all processor options. We are working on adding more options in the future.
