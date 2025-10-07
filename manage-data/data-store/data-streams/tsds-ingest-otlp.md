@@ -2,6 +2,8 @@
 navigation_title: "OTLP/HTTP endpoint"
 applies_to:
   stack: preview 9.2
+  deployment:
+    self:
 products:
   - id: elasticsearch
 ---
@@ -9,20 +11,13 @@ products:
 # OTLP/HTTP endpoint
 
 :::{important}
-Usually, you'll want to send data to an OpenTelemetry Collector or the [{{motlp}}](opentelemetry:/reference/motlp.md),
-rather than directly going to the {{es}} OTLP endpoint.
-See [Best practices](#best-practices) for more details.
+The recommended way to send OTLP data for most use cases is through a Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) or, if you're on {{ecloud}}, directly to the [{{motlp}}](opentelemetry:/reference/motlp.md). Refer to [Best practices](#best-practices) for more details.
 :::
 
 In addition to the ingestion of metrics data through the bulk API,
-{{es}} offers an alternative way to ingest data via the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
+{{es}} offers an alternative way to ingest data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
 
 The endpoint is available under `/_otlp/v1/metrics`.
-
-:::{note}
-{{es}} only supports [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp),
-not [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc).
-:::
 
 Ingesting metrics data using the OTLP endpoint has the following advantages:
 
@@ -30,6 +25,11 @@ Ingesting metrics data using the OTLP endpoint has the following advantages:
 * Simplified index mapping:
   there's no need to manually create data streams, index templates, or define dimensions and metrics.
   Metrics are dynamically mapped using the metadata included in the OTLP requests.
+
+:::{note}
+{{es}} only supports [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp),
+not [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc).
+:::
 
 ## How to send data to the OTLP endpoint
 
@@ -59,9 +59,7 @@ exporters:
     auth:
       authenticator: basicauth/elasticsearch
 ```
-:::{note} 
-Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.
-:::
+
 The supported options for `compression` are `gzip` (default value of the `OTLP/HTTP` exporter) and `none`.
 
 % TODO we might actually also support snappy and zstd, test and update accordingly)
@@ -69,9 +67,15 @@ The supported options for `compression` are `gzip` (default value of the `OTLP/H
 To track metrics in your custom application,
 use the [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) of your choice.
 
+:::{note} 
+Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.
+:::
+
 ## Best practices
 
-Do not send metrics from applications directly to the {{es}} OTLP endpoint, especially if there are many individual applications that periodically send a small amount of metrics. Instead, send data to an OpenTelemetry Collector first. This helps with handling many connections, and with creating bigger batches to improve ingestion performance. On {{ecloud}}, use the [{{motlp}}](opentelemetry:/reference/motlp.md) and for self-managed use cases, you can use the [Elastic Distribution of OpenTelemetry Collector](elastic-agent:/reference/edot-collector/index.md).
+Don't send metrics from applications directly to the {{es}} OTLP endpoint, especially if there are many individual applications that periodically send a small amount of metrics. Instead, send data to an OpenTelemetry Collector first. This helps with handling many connections, and with creating bigger batches to improve ingestion performance. 
+
+On {{ecloud}}, use the [{{motlp}}](opentelemetry:/reference/motlp.md) and for self-managed use cases, you can use the [Elastic Distribution of OpenTelemetry Collector](elastic-agent:/reference/edot-collector/index.md).
 
 For more details on the recommended way to set up OpenTelemetry-based data ingestion, refer to the [EDOT reference architecture](opentelemetry:/reference/architecture/index.md).
 
