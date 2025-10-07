@@ -42,7 +42,7 @@ Two deployment technologies are available: agentless and agent-based.
       * To use a pre-existing Cloud Connector for this deployment, select it under **Existing connection**. 
       * To use a new Cloud Connector: under **New connection**, expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in Kibana.
 
-    * Option 2: Direct access keys/CloudFormation (Recommended). For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
+    * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
        ::::{note}
        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
