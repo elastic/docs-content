@@ -102,37 +102,37 @@ Set `fixed_interval` to your preferred level of granularity. The original time s
 :::
 ::::
 
-## Practical tips
+## Best practices
 
-Downsampling requires reading and indexing the contents of a backing index. The following guidelines can help you get the most out of it.
+This section provides some best practices for downsampling.
 
-### Choosing the downsampling interval
+### Choose an optimal downsampling interval
 
-When choosing the downsampling interval, you need to consider the original sampling rate of your measurements. Ideally, you would like an interval that would reduce your number of documents by a significant amount. For example, if a sensor sends data every 10 seconds downsampling to 1 minute would reduce the number of documents by 83%, compared to downsampling to 5 minutes by 96%.
+When choosing the downsampling interval, make sure to consider the original sampling rate of your measurements. Use an interval that reduces the number of documents by a significant percentage. For example, if a sensor sends data every 10 seconds, downsampling to 1 minute would reduce the number of documents by 83%. Downsampling to 5 minutes instead would reduce the number by 96%.
 
-The same applied when downsampling already downsampled data. 
+The same applies when downsampling already downsampled data. 
 
 ### Downsampling with Index Lifecycle Management
 
 The following tips apply to data streams downsampled by index lifecycle management (ILM).
 
-#### Phases and tiers
+### Configure phases and tiers for downsampling
 
-When using ILM, you can define at most one downsampling round in the following phases:
+When using [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) (ILM), you can define at most one downsampling round in each of the following phases:
 
-- `hot` phase: it will execute the downsampling after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed
-- `warm` phase: it will execute the downsampling `min_age` time after the rollover (respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
-- `cold` phase: it will execute the downsampling `min_age` time after the rollover (respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
+- `hot` phase: Runs after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) passes
+- `warm` phase: Runs after the `min_age` time (following the rollover and  respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
+- `cold` phase: Runs after the `min_age` time (following the rollover and respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time)
 
-The phases do not require the respective tiers to exist. However, when a cluster has tiers, ILM automatically migrates the data processed in the phase to the respective tier. This can be disabled by adding the [migrate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-migrate-options) with `enabled: false`.
+Phases don't require matching tiers. If a matching tier exists for the phase, ILM automatically migrates the data to the respective tier. To prevent this, add a [migrate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-migrate-options) and specify `enabled: false`.
 
-The migrate action is implicitly enabled, moving downsampling data to the respective tier. The downsampling operation occurs at the same tier as the source index and then the downsampled data gets migrated, allowing downsampling to leverage the resources of the "hotter" tier and move less data to the next tier.
+If you leave the default migrate action enabled, downsampling runs on the hotter tier, which typically has more resources. The smaller, downsampled data is then migrated to the next tier.
 
-#### Reducing index size
+### Reduce the index size
 
-When configuring an ILM policy with downsampling, it is necessary to define the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) in the  `hot` phase. The rollover action consists of the conditions that would trigger a rollover hence it determines the size of an index and its shards. The size of an index can influence the impact that downsampling has on a cluster's performance. 
+When configuring an ILM policy with downsampling, define the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) in the `hot` phase to control index size. Using smaller indices helps to minimize the impact of downsampling on a cluster's performance. 
 
-The downsampling operation runs over a whole index, so in certain cases downsampling can increase the load on a cluster. One of the ways to reduce that load is to reduce the size of the index; this way you can have smaller downsampling tasks that get better distributed. You can achieve that either by reducing the number of primary shards or by using setting [`max_primary_shard_docs`](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover#ilm-rollover-options) to reduce the number of docs in a single shard. Using a lower value than the default of 200 million is expected to help smoothen load spikes due to downsampling.
+Because the downsampling operation processes an entire index at once, it can increase the load on the cluster. Smaller indices improve task distribution. To reduce the index size, limit the number of primary shards or use  [`max_primary_shard_docs`](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover#ilm-rollover-options) to cap documents per shard. Specify a lower value than the default of 200 million, to help prevent load spikes due to downsampling.
 
 ## Additional resources
 
