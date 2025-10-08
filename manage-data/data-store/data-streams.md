@@ -20,9 +20,9 @@ You can submit indexing and search requests directly to a data stream. The strea
 You can also use a [data stream lifecycle](../lifecycle/data-stream.md) to automate lifecycle management according to your retention requirements.
 
 :::{admonition} Streams
-:applies_to: {"stack": "preview 9.1, ga 9.2", "serverless": "ga"}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
 
-Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream directly corresponds to an {{es}} data stream, for example `logs-myapp-default`. Any changes to you make in Streams are automatically propagated to the associated data stream.
+Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream directly corresponds to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make in Streams are automatically propagated to the associated data stream.
 
 You can use Streams to perform the following data management tasks:
 * defining parsing and field extraction logic to structure incoming data
