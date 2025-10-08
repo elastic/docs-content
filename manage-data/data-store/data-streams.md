@@ -17,6 +17,24 @@ A data stream acts as a layer of abstraction over a set of indices that are opti
 
 You can submit indexing and search requests directly to a data stream. The stream automatically routes the request to backing indices that store the stream’s data. You can use [{{ilm}} ({{ilm-init}})](../lifecycle/index-lifecycle-management.md) to automate the management of these backing indices. For example, you can use {{ilm-init}} to automatically move older backing indices to less expensive hardware and delete unneeded indices. {{ilm-init}} can help you reduce costs and overhead as your data grows.
 
+You can also use a [data stream lifecycle](../lifecycle/data-stream.md) to automate lifecycle management according to your retention requirements.
+
+## Streams
+```{applies_to}
+serverless: ga
+stack: preview 9.1, ga 9.2
+```
+
+Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream directly corresponds to an {{es}} data stream, for example `logs-myapp-default`. Any changes to you make in Streams are automatically propagated to the associated data stream.
+
+You can use Streams to perform the following data management tasks:
+* defining parsing and field extraction logic to structure incoming data
+* managing and updating field mappings
+* configuring data retention policies
+* identifying failed and degraded documents
+* manually adjusting underlying {{es}} components of your streams
+
+For more information, refer to [Streams](/solutions/observability/streams/streams.md).
 
 ## Should you use a data stream? [should-you-use-a-data-stream]
 
