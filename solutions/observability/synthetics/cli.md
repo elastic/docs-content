@@ -187,7 +187,7 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
     * If you `push` a Synthetics project that’s already been pushed using one Synthetics project ID and then try to `push` it using a *different* ID, it will create duplicates of all monitors in the Synthetics project.
 
 `--proxy-uri`
-:   The Proxy URL to be used when connecting to the deployment or Observability Serverless project.
+:   The Proxy URL to be used when connecting to the deployment or Observability Serverless project Kibana's.
 
     This can also be set in the configuration file using [`proxy.uri` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
 
@@ -272,7 +272,7 @@ To list both locations on Elastic’s global managed infrastructure and {{privat
 :   API key used for [authentication](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 `--proxy-uri`
-:   The Proxy URL to be used when connecting to the deployment or Observability Serverless project.
+:   The Proxy URL to be used when connecting to the deployment or Observability Serverless project Kibana's.
 
     This can also be set in the configuration file using [`proxy.uri` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
 
