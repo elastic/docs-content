@@ -239,8 +239,8 @@ Even when the `excludedDataTiersForRuleExecution` advanced setting is enabled, i
 
 ## Access privileged user monitoring
 ```yaml {applies_to}
-stack: preview 9.1
-serverless: unavailable
+stack: ga 9.1
+serverless: ga
 ```
 
 The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
