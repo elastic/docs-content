@@ -157,7 +157,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * To view more information about a data stream including it's lifecycle settings, click the stream's name.
 
 :::{admonition} Streams
-:applies_to: stack: ga 9.2
+:applies_to: {"stack": "preview 9.1, ga 9.2", "serverless": "ga"}
 
 Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for common data management tasks in {{kib}}, including tasks such as modifying data retention values.
 
