@@ -19,11 +19,29 @@ Use the information on this page to troubleshoot issues using EDOT Python.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
-As a first step, review the [supported technologies](opentelemetry://reference/edot-sdks/python/supported-technologies.md) to ensure your application is supported by the agent. Are you using a Python version that EDOT Python supports? Are the versions of your dependencies in the supported version range to be instrumented?
+As a first step, review the [supported technologies](elastic-otel-python://reference/edot-python/supported-technologies.md) to ensure your application is supported by the agent. Are you using a Python version that EDOT Python supports? Are the versions of your dependencies in the supported version range to be instrumented?
 
 ## General troubleshooting
 
 Follow these recommended actions to make sure that EDOT Python is configured correctly.
+
+### EDOT Logging level 
+
+```{applies_to}
+product:
+  edot_python: ga 1.9.0
+```
+
+You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values.
+
+### Log configuration
+
+```{applies_to}
+product:
+  edot_python: ga 1.9.0
+```
+
+EDOT Python would print its configuration at startup when `OTEL_LOG_LEVEL` is set to `info` or a more verbose logging level.
 
 ### Debug and development modes
 

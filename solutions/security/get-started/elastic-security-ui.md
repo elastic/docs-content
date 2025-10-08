@@ -107,7 +107,7 @@ Expand this section to access the following dashboards, which provide interactiv
 - Entity Analytics
 - Data Quality.
 
-You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
+You can also create and view custom dashboards. Refer to [](/solutions/security/dashboards.md) for more information.
 
 
 ### Rules [_rules]

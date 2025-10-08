@@ -48,7 +48,7 @@ You can control costs using the following strategies:
 * **Machine learning trained model autoscaling**: [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) is always enabled and cannot be disabled, ensuring efficient resource usage, reduced costs, and optimal performance without manual configuration.
 
   Trained model deployments automatically scale down to zero allocations after 24 hours without any inference requests. When they scale up again, they remain active for 5 minutes before they can scale down. During these cooldown periods, you will continue to be billed for the active resources.
-* **Indexing strategies** Consider your indexing strategies and how they might impact overall VCU usage and costs.
+* **Indexing strategies**: Consider your indexing strategies and how they might impact overall VCU usage and costs.
   To ensure optimal performance and cost-effectiveness for your project, it's important to consider how you structure your data.
   
   Consolidate small indices for better efficiency.
@@ -59,3 +59,8 @@ You can control costs using the following strategies:
   Higher resource consumption can lead to higher costs and potentially impact the overall performance of your project.
   
   If your use case naturally generates many small, separate streams of data, the recommended approach is to implement a process to consolidate them into fewer, larger indices. This practice leads to more efficient resource utilization. By grouping your data into larger indices, you can ensure a more performant and cost-efficient experience with {{es-serverless}}.
+* **Project subtype or profile**: When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) to create projects, be aware that the `optimized_for` option affects the VCU allocation and costs.
+
+  The `general_purpose` option is suitable for most search use cases. For example, it is the right profile for full-text search, sparse vectors, and dense vectors that use compression such as BBQ. It is used by default when you create projects from the UI.
+
+  The `vector` option is recommended only for uncompressed dense vectors ([dense_vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields with `int4` or `int8` quantization strategies) and high dimensionality. Though the per VCU cost is the same for general purpose and vector profiles, the latter allocates more VCUs for searchable data. This leads to higher VCU consumption in order to improve the performance for uncompressed vector data.

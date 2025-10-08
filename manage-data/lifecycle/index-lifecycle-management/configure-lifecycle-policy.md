@@ -62,7 +62,7 @@ To add an ILM policy to an {{es}} cluster:
     Disable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
 
     ::::{important}
-    The rollover action implicitly rolls over a data stream or alias if one or more shards contain 200,000,000 or more documents. Typically, a shard will reach 50GB before it reaches 200M documents, however, this isn’t the case for space efficient data sets. This built-in limit exists to avoid Search performance loss if a shard contains more than 200M documents.
+    The rollover action implicitly rolls over a data stream or alias if one or more shards contain 200,000,000 or more documents. Typically, a shard will reach 50GB before it reaches 200M documents, however, this isn’t the case for space efficient data sets. This built-in limit exists to avoid Search performance loss if a shard contains more than 200M documents. For more information about recommended limits, refer to [](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
     ::::
 
 1. By default, only the hot index lifecycle phase is enabled. Enable each additional lifecycle phase that you'd like, and for each choose any [index lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) to perform on indices when they enter that phase.
@@ -147,10 +147,10 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
         
         Refer to the [Create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) documentation for details about these options.
 
-1. On the **Component templates** page, use the search and filter tools to select any [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
+1. On the **Component templates** page, use the search and filter tools to select any [component templates](/manage-data/data-store/templates.md#component-templates) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
 
 1. On the **Index settings** page:
-    1. Configure ILM by specifying the [ILM settings](https://www.elastic.co/docs/api/doc/elasticsearch/configuration-reference/index-lifecycle-management-settings#_index_level_settings_2) to apply to the indices:
+    1. Configure ILM by specifying the [ILM settings](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md) to apply to the indices:
         * `index.lifecycle.name` - The lifecycle policy to manage the created indices.
         * `index.lifecycle.rollover_alias` - The index [alias](/manage-data/data-store/aliases.md) used for querying and managing the set of indices associated with a lifecycle policy that contains a rollover action.
 
@@ -171,7 +171,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
 
 1. Optional: On the **Mappings** page, customize the fields and data types used when documents are indexed into {{es}}. Refer to [Mapping](/manage-data/data-store/mapping.md) for details.
 
-1. Optional: On the **Aliases** page, specify an [alias](/manage-data/data-store/aliases.md) for each created index. This isn't required when configuring ILM, which instead uses the `index.lifecycle.rollover_alias` setting to acceess rolling indices.
+1. Optional: On the **Aliases** page, specify an [alias](/manage-data/data-store/aliases.md) for each created index. This isn't required when configuring ILM, which instead uses the `index.lifecycle.rollover_alias` setting to access rolling indices.
 
 1. On the **Review** page, confirm your selections. You can check your selected options, as well as both the format of the index template that will be created and the associated API request.
 

@@ -5,8 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -15,7 +15,7 @@ products:
 
 # Get started with traces and APM [apm-getting-started-apm-server]
 
-Elastic APM receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents. 
+Elastic APM receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents.
 
 In this guide you’ll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
 
@@ -40,6 +40,8 @@ Follow these steps to send APM data to Elastic.
 :::{include} /solutions/_snippets/obs-serverless-project.md
 :::
 
+:::::
+
 :::::{step} Add data using EDOT or APM Agents
 
 To send APM data to Elastic, you must install an Elastic Distribution of OpenTelemetry or an APM agent and configure it to send data to your project:
@@ -49,7 +51,7 @@ To send APM data to Elastic, you must install an Elastic Distribution of OpenTel
 
 2. If you’re using the step-by-step instructions in the UI, after you’ve installed and configured an agent, you can click **Check Agent Status** to verify that the agent is sending data.
 
-To learn more about APM agents, including how to fine-tune how agents send traces to Elastic, refer to [Collect application data](/solutions/observability/apm/collect-application-data.md).
+To learn more about APM agents, including how to fine-tune how agents send traces to Elastic, refer to [Collect application data](/solutions/observability/apm/ingest/index.md).
 
 :::::
 :::::{step} View your data
@@ -68,5 +70,5 @@ Not seeing any data? Find helpful tips in [Troubleshooting](/troubleshoot/observ
 
 ## Next steps [observability-apm-get-started-next-steps]
 
-Now that data is streaming into your project, take your investigation to a deeper level. Learn how to use [Elastic’s built-in visualizations for APM data](/solutions/observability/apm/view-analyze-data.md), [alert on APM data](/solutions/observability/incident-management/alerting.md), or [fine-tune how agents send traces to Elastic](/solutions/observability/apm/collect-application-data.md).
+Now that data is streaming into your project, take your investigation to a deeper level. Learn how to use [Elastic’s built-in visualizations for APM data](/solutions/observability/apm/view-analyze-data.md), [alert on APM data](/solutions/observability/incident-management/alerting.md), or [fine-tune how agents send traces to Elastic](/solutions/observability/apm/ingest/index.md).
 

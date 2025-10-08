@@ -15,7 +15,7 @@ products:
 
 This guide shows you how to manually configure the {{edot}} (EDOT) Collector to send your log data to {{es}} by configuring the `otel.yml` file. For an Elastic Agent equivalent, refer to [Stream any log file using {{agent}}](/solutions/observability/logs/stream-any-log-file.md).
 
-For more OpenTelemetry quickstarts, refer to [EDOT quickstarts](opentelemetry://reference/quickstart/index.md).
+For more OpenTelemetry quickstarts, refer to [EDOT quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 ## Prerequisites [logs-stream-edot-prereq]
 
@@ -356,7 +356,7 @@ If you're not seeing your log files in the UI, verify the following:
 * The OTLP endpoint URL is correct and accessible.
 * The Collector is running without errors (check the console output).
 
-If you're still running into issues, see [EDOT Collector troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Configure EDOT Collector](opentelemetry://reference/edot-collector/config/index.md).
+If you're still running into issues, see [EDOT Collector troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Configure EDOT Collector](elastic-agent://reference/edot-collector/config/index.md).
 
 ## Next steps [logs-stream-edot-next-steps]
 

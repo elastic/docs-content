@@ -1,4 +1,5 @@
 ---
+navigation_title: Playground
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
   - https://www.elastic.co/guide/en/kibana/current/playground.html
@@ -10,7 +11,7 @@ products:
   - id: kibana
 ---
 
-# Playground [playground]
+# Playground for RAG [playground]
 
 Use Playground to combine your Elasticsearch data with the power of large language models (LLMs) for retrieval augmented generation (RAG). The chat interface translates your natural language questions into {{es}} queries, retrieves the most relevant results from your {{es}} documents, and passes those documents to the LLM to generate tailored responses.
 
