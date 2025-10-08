@@ -3,7 +3,7 @@ applies_to:
   stack: ga
   serverless: ga
 description: Learn how to ingest, store, and manage data in Elasticsearch. Understand
-  indices, mappings, text analysis, data lifecycle management, and migration between
+  indices, mappings, text analysis, data lifecycle management, and data migration between
   clusters.
 ---
 
