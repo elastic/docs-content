@@ -693,7 +693,7 @@ Some data views are exclusively configured and **managed** by Elastic. You can v
 
 2. In the data view selection menu, select the managed data view that you want to duplicate.
 
-3. Still from the data view selection menu, select **Manage this data view**. A flyout with more details about the data view opens, and indicates that you can't edit it directly.
+3. Still in the data view selection menu, select **Manage this data view**. A flyout with more details about the data view opens, and indicates that you can't edit it directly.
 
    ![Manage this data view option](../images/manage-this-data-view.png "Manage this data view option =50%")
 
