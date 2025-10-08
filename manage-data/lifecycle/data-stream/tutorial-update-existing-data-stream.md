@@ -14,6 +14,7 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 
 - [Set a data stream’s lifecycle](#set-lifecycle)
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
+- [Manage data retention in Streams](#data-retention-streams)
 
 Note that these steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
