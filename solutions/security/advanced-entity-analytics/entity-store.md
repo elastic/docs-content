@@ -45,7 +45,7 @@ To enable the entity store:
 
 Once you enable the entity store, the **Entities** section appears on the following pages:
 
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: unavailable` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 ## Clear entity store data [clear-entity-store]
