@@ -16,7 +16,7 @@ Note that since version 2.7.0, system deployments are automatically upgraded whe
 
 | {{ece}} version | Admin cluster | Logging & Metrics cluster | Security cluster |
 | --- | --- | --- | --- |
-| 4.0.2 | 8.18.7 | 8.18.7 | 8.18.7 |
+| 4.0.2 | 8.18.8 | 8.18.8 | 8.18.8 |
 | 4.0.1 | 8.18.2 | 8.18.2 | 8.18.2 |
 | 4.0.0 | 8.18.0 | 8.18.0 | 8.18.0 |
 | 3.8.2 | 8.17.10 | 8.17.10 | 8.17.10 |
