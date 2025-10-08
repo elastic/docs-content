@@ -22,9 +22,7 @@ See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough 
 
 ## Getting started [repository-s3-usage]
 
-To register an S3 repository, specify the type as `s3` when creating the repository. The repository defaults to using [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication.
-
-The only mandatory setting is the bucket name:
+To register an S3 repository, specify the type as `s3` when creating the repository. The only mandatory setting is the bucket name:
 
 ```console
 PUT _snapshot/my_s3_repository
@@ -36,6 +34,7 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
+By default, an S3 repository will attempt to obtain its credentials automatically from the environment. For instance, if {{es}} is running on an AWS EC2 instance then it will attempt to use the [EC2 Instance Metadata Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) to obtain temporary credentials for the [instance IAM role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html). Likewise, if {{es}} is running in AWS EC2, then it will automatically obtain temporary [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication. To disable this behavior, specify an access key, a secret key, and optionally a session token, in the {{es}} keystore.
 
 ## Client settings [repository-s3-client]
 
@@ -65,7 +64,7 @@ bin/elasticsearch-keystore add s3.client.default.session_token
 
 If you do not configure these settings then {{es}} will attempt to automatically obtain credentials from the environment in which it is running:
 
-* Nodes running on an instance in AWS EC2 will attempt to use the EC2 Instance Metadata Service (IMDS) to obtain instance role credentials. {{es}} supports both IMDS version 1 and IMDS version 2.
+* Nodes running on an instance in AWS EC2 will attempt to use the EC2 Instance Metadata Service (IMDS) to obtain instance role credentials. {{es}} supports IMDS version 2 only.
 * Nodes running in a container in AWS ECS and AWS EKS will attempt to obtain container role credentials similarly.
 
 You can switch from using specific credentials back to the default of using the instance role or container role by removing these settings from the keystore as follows:
@@ -385,7 +384,7 @@ There are a number of storage systems that provide an S3-compatible API, and the
 
 By default {{es}} communicates with your storage system using HTTPS, and validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the JVM-wide truststore includes an entry for your repository. If you wish to use unsecured HTTP communication instead of HTTPS, set `s3.client.CLIENT_NAME.protocol` to `http`.
 
-There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behavior in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency and performance at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
+There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behavior in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency, performance, and reliability at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
 
 You can perform some basic checks of the suitability of your storage system using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, these checks do not guarantee full compatibility.
 

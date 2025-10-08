@@ -9,6 +9,9 @@ products:
   - id: kibana
   - id: cloud-hosted
   - id: cloud-enterprise
+description: Deploy and manage your Elastic environment. Learn how to design resilient
+  clusters, secure access, monitor performance, and maintain your Elastic Stack
+  components across different deployment options.
 ---
 
 # Deploy and manage
