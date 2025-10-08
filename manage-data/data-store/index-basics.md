@@ -156,6 +156,14 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is not managed by an ILM policy.
 * To view more information about a data stream including it's lifecycle settings, click the stream's name.
 
+:::{admonition} Streams
+:applies_to: stack: ga 9.2
+
+Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for common data management tasks in {{kib}}, including tasks such as modifying data retention values.
+
+A stream directly corresponds to an {{es}} data stream, for example `logs-myapp-default`. Any changes to you make in Streams are automatically propagated to the associated data stream. For more information, refer to [Streams](/solutions/observability/streams/streams.md).
+:::
+
 ### Manage index templates [index-management-manage-index-templates]
 
 An index template is a type of [template](/manage-data/data-store/templates.md) that tells {{es}} how to configure an index when it is created.
