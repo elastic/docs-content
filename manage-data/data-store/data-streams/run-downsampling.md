@@ -112,25 +112,21 @@ When choosing the downsampling interval, make sure to consider the original samp
 
 The same applies when downsampling already downsampled data. 
 
-### Downsampling with Index Lifecycle Management
-
-The following tips apply to data streams downsampled by index lifecycle management (ILM).
-
-### Configure phases and tiers for downsampling
+### Understand downsampling phases (ILM only)
 
 When using [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) (ILM), you can define at most one downsampling round in each of the following phases:
 
 - `hot` phase: Runs after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) passes
-- `warm` phase: Runs after the `min_age` time (following the rollover and  respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
-- `cold` phase: Runs after the `min_age` time (following the rollover and respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time)
+- `warm` phase: Runs after the `min_age` time (starting to count after the rollover and  respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time))
+- `cold` phase: Runs after the `min_age` time (starting to count after the rollover and respecting the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time)
 
 Phases don't require matching tiers. If a matching tier exists for the phase, ILM automatically migrates the data to the respective tier. To prevent this, add a [migrate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-migrate-options) and specify `enabled: false`.
 
-If you leave the default migrate action enabled, downsampling runs on the hotter tier, which typically has more resources. The smaller, downsampled data is then migrated to the next tier.
+If you leave the default migrate action enabled, downsampling runs on the tier of the source index, which typically has more resources. The smaller, downsampled data is then migrated to the next tier.
 
-### Reduce the index size
+### Reduce the index size (ILM only)
 
-When configuring an ILM policy with downsampling, define the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) in the `hot` phase to control index size. Using smaller indices helps to minimize the impact of downsampling on a cluster's performance. 
+When configuring an ILM policy with downsampling, use the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) in the `hot` phase to control index size. Using smaller indices helps to minimize the impact of downsampling on a cluster's performance. 
 
 Because the downsampling operation processes an entire index at once, it can increase the load on the cluster. Smaller indices improve task distribution. To reduce the index size, limit the number of primary shards or use  [`max_primary_shard_docs`](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover#ilm-rollover-options) to cap documents per shard. Specify a lower value than the default of 200 million, to help prevent load spikes due to downsampling.
 
