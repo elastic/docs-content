@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-regions.html
 navigation_title: Regions
 applies_to:
+  serverless:
   deployment:
     self:
     ece:
@@ -17,6 +18,10 @@ products:
 # AutoOps regions [ec-autoops-regions]
 
 A region is where a cloud service provider's data center hosts your deployments or clusters.
+
+::::{note} 
+AutoOps is currently not available in any region for GovCloud customers.
+::::
 
 ## AutoOps for {{ECH}} regions
 
@@ -57,7 +62,15 @@ This service is currently available in the following regions for AWS:
 :::{include} ../_snippets/autoops-cc-regions.md
 :::
 
-<br>
-::::{note} 
-AutoOps is currently not available for GovCloud customers.
-::::
+## AutoOps for {{serverless-full}} regions
+
+AutoOps for serverless projects is currently available in the following regions for AWS:
+
+| Region | Name |
+| --- | --- | --- | --- |
+| us-east-1 | N. Virginia |
+| eu-west-1 | Ireland |
+| ap-southeast-1 | Singapore |
+| us-west-2 | Oregon |
+
+The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure and GCP.

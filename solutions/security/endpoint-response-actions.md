@@ -18,7 +18,7 @@ The response console allows you to perform response actions on an endpoint using
 Response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
 
 ::::{admonition} Requirements
-* Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+* Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Endpoints must have {{agent}} version 8.4 or higher installed with the {{elastic-defend}} integration to receive response actions.
 * Some response actions require:
   * In {{stack}}, specific [privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md), indicated below.

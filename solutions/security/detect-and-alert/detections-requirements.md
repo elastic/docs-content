@@ -13,7 +13,7 @@ products:
 
 # Detections requirements
 
-To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated. Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
+To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated. Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
 
 ::::{important}
 Several steps are **only** required for **self-managed** {{stack}} deployments. If you’re using an Elastic Cloud deployment, you only need to [enable detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui).
