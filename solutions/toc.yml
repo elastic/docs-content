@@ -627,7 +627,7 @@ toc:
           - file: security/manage-elastic-defend/optimize-elastic-defend.md
           - file: security/manage-elastic-defend/event-capture-elastic-defend.md
           - file: security/manage-elastic-defend/endpoint-protection-rules.md
-          - file: security/manage-elastic-defend/identify-antivirus-software-on-hosts.md
+          - file: security/manage-elastic-defend/automatic-troubleshooting.md
           - file: security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md
           - file: security/manage-elastic-defend/elastic-endpoint-self-protection-features.md
       - file: security/endpoint-response-actions.md

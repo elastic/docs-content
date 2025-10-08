@@ -26,7 +26,7 @@ In the Entity Analytics overview, you can view entity key performance indicators
 If you have enabled the [entity store](entity-store.md), you'll also get access to the **Entities** section, where you can view all hosts, users, and services along with their risk and asset criticality data.
 
 Access the Entity Analytics overview from the following pages:
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: unavailable` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md) 
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md) 
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 

@@ -149,8 +149,8 @@ Open and track security issues. Refer to [Cases](/solutions/security/investigate
 
 ### Entity analytics
 ```yaml {applies_to}
-stack: preview 9.1
-serverless: unavailable
+stack: ga 9.1
+serverless: ga
 ```
 
 :::{admonition} Requirements

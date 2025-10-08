@@ -9,6 +9,9 @@ applies_to:
 products:
   - id: cloud-hosted
   - id: cloud-serverless
+description: Manage your Elastic Cloud account settings, including email, password,
+  authentication methods, and personal preferences. Configure your user profile
+  and customize your interface.
 ---
 
 # Manage your Cloud account and preferences
