@@ -163,11 +163,11 @@ API keys are the recommended way of authenticating the agent with your {{stack}}
 
 ### Use {{kib}}'s Applications UI
 
-Follow [this quick guide](../../../../../solutions/observability/apm/api-keys.md#apm-create-an-api-key) and leave all the settings with their default values.
+Follow [this quick guide](../../../../../deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) and leave all the settings with their default values.
 
 ### Use REST APIs
 
-Follow [this guide](https://www.elastic.co/docs/api/doc/kibana/operation/operation-createagentkey) to create an API Key with a set of privileges that are scoped for the APM Agent use case only.
+Follow [this guide](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to create an API Key using REST APIs.
 
 ## Missing general attributes
 
