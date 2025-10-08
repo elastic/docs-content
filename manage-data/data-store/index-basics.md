@@ -83,7 +83,7 @@ If you use {{es}} {{security-features}}, the following [security privileges](ela
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index’s data.
 * The `manage_index_templates` cluster privilege to manage index templates.
 
-To add these privileges, go to **Security > Roles** or use the [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role).
+To add these privileges, go to **Stack Management > Security > Roles** or use the [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role).
 
 ### Manage indices
 
