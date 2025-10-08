@@ -11,7 +11,13 @@ products:
 
 # Set up a time series data stream [set-up-tsds]
 
-This page shows you how to set up a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS).
+This page shows you how to manually set up a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS).
+
+::::{note}
+If you're looking to ingest OpenTelemetry metrics,
+follow the [OpenTelemetry quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
+This allows you to start sending data into a TSDS without having to worry about manually setting up data streams or configuring mappings.
+::::
 
 ## Before you begin [tsds-prereqs]
 

@@ -13,3 +13,4 @@ This section contains information about advanced concepts and operations for [ti
 
 - [](/manage-data/data-store/data-streams/time-bound-tsds.md)
 - [](/manage-data/data-store/data-streams/reindex-tsds.md)
+- [](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
