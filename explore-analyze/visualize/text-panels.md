@@ -53,7 +53,7 @@ The following image is displayed:
 For detailed information about writing on GitHub, click **Help** on the top-right of the Markdown editor.
 ::::
 
-::::{applies-item} stack: ga 9.2 
+::::{applies-item} { stack: ga 9.2, serverless: } 
 1. From your dashboard, select **Add** => **New panel**.
 2. In the **Add panel** flyout, select **Markdown Text**. A Markdown editor appears and lets you configure the information you want to display. 
 3. Enter your text, then click **Apply**.
