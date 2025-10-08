@@ -49,7 +49,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 6. Define how you want the control to appear:
 
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
-    * **Minimum width**: How much horizontal space does the control occupies. The final width can vary depending on the other controls and their own width setting.
+    * **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
     * **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
 7. Specify the additional settings:
@@ -61,15 +61,15 @@ To add interactive Options list and Range slider controls, create the controls, 
 
             * **Prefix**: Show options that *start with* the entered value.
             * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
-            * **Exact**: Show options that are a 100% match with the entered value.
+            * **Exact**: Show options that are an *exact* match with the entered value.
 
               ::::{tip}
               The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
               ::::
 
-        * **Ignore timeout for results** delays the display of the list of values to when it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
+        * **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
 
-    * For Range sliders, set the step size. The step size determines the number of steps of the slider. The smaller the step size is, the more steps there is in the slider.
+    * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
 
 8. Select **Save and close**. The control can now be used.
 9. Consider the position of the control if you have several controls active on the dashboard. Controls are applied from left to right, which can change the options available depending on their position when the [Chain controls](#configure-controls-settings) setting is enabled.
@@ -114,12 +114,12 @@ Only **Options lists** are supported for {{esql}}-based controls. Options can be
 2. A menu opens to let you configure the control. This is where you can specify:
 
     * The type of the control. 
-      * For controls with **Static values**, you select the options available in the controls by entering them manually or by using a dropdown listing available values. 
-      * For controls with **Values from a query**, you write an {{esql}} query to populate the list of options.
+      * For controls with **Static values**, select the options available in the controls by entering them manually or by using a dropdown listing available values. 
+      * For controls with **Values from a query**, write an {{esql}} query to populate the list of options.
     * The name of the control. This name is used to reference the control in {{esql}} queries. 
       * Start the name with `?` if you want the options to be simple static values.
       * Start the name with `??` if you want the options of the control to be fields or functions. {applies_to}`stack: ga 9.1`
-    * Values available to select for users with this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an {{esql}} query at this step.
+    * The values users can select for this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an {{esql}} query at this step.
     * The label of the control. This is the label displayed for users viewing the dashboard for that control.
     * The width of the control.
 
@@ -163,7 +163,7 @@ You can then insert it in any other {{esql}} visualization queries by typing the
 
 ## Configure the controls settings [configure-controls-settings]
 
-Several settings that apply to all controls of the same dashboard are available.
+Several settings apply to all controls that are part of a dashboard.
 
 1. Configure the control settings.
 
