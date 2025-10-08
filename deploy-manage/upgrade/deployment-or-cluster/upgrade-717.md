@@ -1,7 +1,6 @@
 ---
 applies_to:
   stack: ga
-  serverless: unavailable
 ---
 # Upgrade from 7.17 to {{version.stack}}
 
