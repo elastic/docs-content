@@ -9,11 +9,11 @@ applies_to:
 
 Mappings define how {{es}} stores and indexes your data, balancing storage efficiency against query capability and performance.
 
-Unmapped fields can still be searched using [runtime fields](../../../../manage-data/data-store/mapping/runtime-fields.md), but these incur higher query costs. Runtime fields are useful for exploring your data and experimenting with different query types before finalizing a schema.
+Unmapped fields can still be searched using [runtime fields](../../../../manage-data/data-store/mapping/runtime-fields.md), but these incur higher query costs.
 
 Once you know which fields you query most often, you can map them to improve performance, at the cost of additional storage. For a general overview, refer to the [Mapping](../../../../manage-data/data-store/mapping.md) documentation.
 
-Streams gives you options for mapping fields and editing field mappings, either after creating a processor or from the **Schema** tab.
+Streams lets you map fields either after creating a processor or from the **Schema** tab.
 
 ## Processing tab
 
@@ -29,7 +29,7 @@ From here, you can:
 
 The **Schema** tab provides an overview of how fields are defined within your stream.
 
-**Classic streams:** the **Schema** tab lists all fields found in the underlying index or index template. Each field shows its mapping status and type. Fields are labelled with either a **Mapped** or **Unmapped** status accordingly.
+**Classic streams:** the **Schema** tab lists all fields found in the underlying index or index template. Each field shows its mapping status and type, either **Mapped** or **Unmapped**.
 
 **Wired streams:** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` the **Schema** tab determines field mappings by combining information from the current stream’s index and its parent streams. Fields whose type is defined in a parent stream have the status of **Inherited**. You can navigate to that parent stream to view or edit the mapping (except for fields defined in the root logs stream, which cannot be modified).
 
