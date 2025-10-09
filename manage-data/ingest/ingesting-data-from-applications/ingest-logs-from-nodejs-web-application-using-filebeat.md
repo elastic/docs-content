@@ -3,8 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-node-logs.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-node-logs.html
 applies_to:
-  stack: 
-    - ga 9.0
+  stack: ga 9.0
 products:
   - id: cloud-hosted
   - id: cloud-enterprise
@@ -12,7 +11,7 @@ products:
 
 # Ingest logs from a Node.js web application using Filebeat
 
-This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} or {{ece}} deployment. You'll do that by using Filebeat and the Filestream input. You’ll run a simple Node.js server that emits ECS-formatted JSON logs, forward them securely to {{cloud}}, and explore them in Kibana.
+This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} or {{ece}} deployment. You'll do that by using Filebeat and the Filestream input. You’ll run a simple Node.js server that emits ECS-formatted JSON logs, forward them securely to {{ecloud}}, and explore them in Kibana.
 
 While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md#_get_started).
 
@@ -61,7 +60,7 @@ To connect to, stream data to, and issue queries, you need to think about authen
 
 ## Create a Node.js web application with ECS-formatted logs [ec-node-logs-create-server-script]
 
-Next, create a basic Node.js script that runs a web server and logs HTTP requests.
+First, create a basic Node.js script that runs a web server and logs HTTP requests.
 
 :::::{stepper}
 
@@ -437,7 +436,7 @@ output.elasticsearch:
 
 ## Send the Node.js logs to Elasticsearch [ec-node-logs-send-ess]
 
-It's time to send some log data into {{es}}! Follow these steps to start the data pipeline and verify that your logs are successfully ingested.
+It's time to send some log data into {{es}}. Follow these steps to start the data pipeline and verify that your logs are successfully ingested.
 
 :::::{stepper}
 
@@ -478,7 +477,7 @@ Run the Node.js `webrequests.js` script to send random requests to the Node.js w
 node webrequests.js
 ```
 
-Let the script run for a few minutes and maybe brew up a quick coffee or tea ☕ . After that, make sure that the *log.json* file is generated as expected and is populated with several log entries.
+Let the script run for a few minutes. After that, make sure that the *log.json* file is generated as expected and is populated with several log entries.
 
 ::::
 
@@ -530,7 +529,7 @@ You can now visualize your log data using Lens:
 8. Save your dashboard and watch events update in real time.
 
 ::::{tip}
-If logs stop appearing, verify that the log file exceeds 1 KB — the Filestream input only fingerprints files once they reach that size. Refer to [File identity and fingerprinting](beats://reference/filebeat/how-filebeat-works.md#_file_identity_and_fingerprinting) for more details.
+If logs stop appearing, verify that the log file exceeds 1 KB — the Filestream input only fingerprints files once they reach that size.
 ::::
 
 ::::
