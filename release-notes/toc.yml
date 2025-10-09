@@ -3,6 +3,5 @@ toc:
   - toc: intro
   - toc: elasticsearch-clients
   - toc: elastic-observability
-  - toc: apm-agents
   - toc: elastic-security
   - toc: elastic-cloud-serverless

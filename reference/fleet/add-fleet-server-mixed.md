@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-mixed.html
+applies_to:
+  deployment:
+    ece: ga
+    self: ga
+    ess: ga
 products:
   - id: fleet
   - id: elastic-agent
