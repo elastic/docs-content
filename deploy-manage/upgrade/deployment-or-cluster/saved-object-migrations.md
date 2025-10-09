@@ -2,12 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/saved-object-migrations.html
 applies_to:
-  stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  stack: ga
 products:
   - id: kibana
 ---

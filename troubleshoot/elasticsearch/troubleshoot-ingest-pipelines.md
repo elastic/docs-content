@@ -15,7 +15,7 @@ products:
 
 {{es}} [Ingest Pipelines](https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines) allow you to transform data during ingest. Per [write model](https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents#basic-write-model), they run from `ingest` [node roles](https://www.elastic.co/docs/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles) under the `write` [thread pool](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/thread-pool-settings).
 
-You can edit ingest pipelines under {{kib}}'s **Stack Management > Ingest Pipelines** or from {{es}}'s [Modify Pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline). They store under {{es}}'s [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state) as accessed from [List Pipelines](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-pipeline).
+You can edit ingest pipelines in {{kib}}'s **Ingest Pipelines** management page or from {{es}}'s [Modify Pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline). They store under {{es}}'s [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state) as accessed from [List Pipelines](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-pipeline).
 
 Ingest pipelines can be [Simulated](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) during testing, but after go-live are triggered during event ingest from
 
