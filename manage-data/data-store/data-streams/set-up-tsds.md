@@ -13,12 +13,6 @@ products:
 
 This page shows you how to manually set up a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS).
 
-::::{note}
-If you're looking to ingest OpenTelemetry metrics,
-follow the [OpenTelemetry quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
-This allows you to start sending data into a TSDS without having to worry about manually setting up data streams or configuring mappings.
-::::
-
 ## Before you begin [tsds-prereqs]
 
 - Before you create a time series data stream, review [](../data-streams.md) and [TSDS concepts](time-series-data-stream-tsds.md). You can also try the [quickstart](/manage-data/data-store/data-streams/quickstart-tsds.md) for a hands-on introduction.
@@ -28,6 +22,10 @@ This allows you to start sending data into a TSDS without having to worry about 
     - [Index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) 
         - `create_doc` and `create_index` for creating or converting a TSDS
         - `manage` to [roll over](#convert-existing-data-stream-to-tsds) a TSDS
+
+::::{note}
+If you're working with OpenTelemetry data, try the [OpenTelemetry quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
+::::
 
 ## Set up a TSDS
 

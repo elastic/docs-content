@@ -13,12 +13,6 @@ Use this quickstart to set up a time series data stream (TSDS), ingest a few doc
 
 A _time series_ is a sequence of data points collected at regular time intervals. For example, you might track CPU usage or stock price over time. This quickstart uses simplified weather sensor readings to show how a TSDS helps you analyze metrics data over time. 
 
-::::{note}
-If you're looking to ingest OpenTelemetry metrics,
-follow the [OpenTelemetry quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
-This allows you to start sending data into a TSDS without having to worry about manually setting up data streams or configuring mappings.
-::::
-
 ## Prerequisites
 
 * Access to [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md) in {{kib}}, or another way to make {{es}} API requests
@@ -321,6 +315,10 @@ This quickstart introduced the basics of time series data streams. To learn more
 
 * [](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
 * [](/manage-data/data-store/data-streams/set-up-tsds.md)
+
+If you're working with OpenTelemetry (OTLP) data, refer to the OTLP documentation:
+* [](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
+* [](/solutions/observability/get-started/opentelemetry/quickstart/index.md)
 
 For more information about the APIs used in this quickstart, review the {{es}} API reference documentation:
 
