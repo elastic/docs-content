@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/upgrade-migrations-rolling-back.html
 applies_to:
   deployment:
-    self: all
+    self: ga
 products:
   - id: kibana
 ---

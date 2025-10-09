@@ -16,6 +16,10 @@ products:
 
 Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of {{eck_resources_list}} on Kubernetes.
 
+:::{admonition} Use cloud services in your ECK environment with Cloud Connect
+With [Cloud Connect](/deploy-manage/cloud-connect.md), you can use Elastic-managed cloud services in your ECK environment without having to install and manage their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
+::::
+
 ## ECK overview
 
 With {{eck}}, you can streamline critical operations, such as:
@@ -35,7 +39,7 @@ This section provides everything you need to install, configure, and manage {{st
 
 Other sections of the documentation include the following important topics around ECK:
 
-- [Logging and Monitoring](../monitor.md): Configure stack monitoring and logs forwarding with the help of ECK.
+- [Logging and Monitoring](../monitor.md): Configure monitoring and logs forwarding with the help of ECK.
 - [Remote Clusters](../remote-clusters.md): Configure remote clusters on ECK.
 - [](../tools.md): Add snapshot repositories to your {{es}} clusters for automatic snapshots.
 - [Security](../security.md): Secure communications, manage HTTP certificates, or add secure settings to your applications.

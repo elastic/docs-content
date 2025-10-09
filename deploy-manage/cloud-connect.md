@@ -9,7 +9,7 @@ navigation_title: Cloud Connect
 
 # Cloud Connect
 
-Cloud Connect enables you to use {{ecloud}} services in your ECE, ECK, or self-managed cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features while significantly reducing your operational overhead.
+Cloud Connect enables you to use {{ecloud}} services in your ECE, ECK, or self-managed cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
 
 AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
 
