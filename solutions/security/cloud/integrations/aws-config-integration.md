@@ -12,7 +12,7 @@ products:
 
 This page explains how to make data from the AWS Config integration appear in the following places within {{elastic-sec}}:
 
-- **Findings page**: Data appears on Findings page's [Misconfiguations](/solutions/security/cloud/findings-page.md).
+- **Findings page**: Data appears on the Findings page's [Misconfigurations](/solutions/security/cloud/findings-page.md) tab.
 - **Alert and Entity details flyouts**: Data appears in the Insights section of the [Alert](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) and [Entity](/solutions/security/advanced-entity-analytics/view-entity-details.md#insights) details flyouts.
 
 
