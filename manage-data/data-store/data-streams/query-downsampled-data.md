@@ -26,3 +26,11 @@ Date histograms are based on UTC values. Some time zone situations require offse
 When offsetting is applied, responses include the field `downsampled_results_offset: true`.
 
 For more details, refer to [Date histogram aggregation: Time zone](elasticsearch://reference/aggregations/search-aggregations-bucket-datehistogram-aggregation.md#datehistogram-aggregation-time-zone).
+
+## {{esql}} `TS` command
+```{applies_to}
+stack: preview
+serverless: preview
+```
+
+You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) (in technical preview) to query time series data streams. The `TS` command is optimized for time series data. It also enables the use of aggregation functions that efficiently process metrics per time series, before aggregating results.

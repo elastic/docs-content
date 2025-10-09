@@ -69,10 +69,6 @@ You can also simplify dimension definitions by using [pass-through](elasticsearc
 
 Metrics are numeric measurements that change over time. Documents in a TSDS typically contain one or more metric fields. 
 
-:::{tip}
-Metrics are expected to change (even if rarely or slowly), while dimensions generally remain constant.
-:::
-
 To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The following field types support the `time_series_metric` parameter:
 
 * All [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
@@ -88,7 +84,7 @@ The valid values for `time_series_metric` are `counter` and `gauge`:
 
 #### `_tsid` metadata field [tsid]
 
-The `_tsid` is an automatically generated object containing the document’s dimensions. It's intended for internal {{es}} use, so in most cases you won't need to work with it. The format of the `_tsid` field is subject to change. 
+The `_tsid` is an automatically generated object derived from the document’s dimensions. It's intended for internal {{es}} use, so in most cases you won't need to work with it. The format of the `_tsid` field is subject to change. 
 
 ### Differences from a regular data stream [differences-from-regular-data-stream]
 
