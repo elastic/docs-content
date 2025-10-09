@@ -64,7 +64,7 @@ On the {{observability}} **Overview** page, the **Hosts** table shows your top h
 :screenshot:
 :::
 
-You can then drill down into the {{infrastructure-app}} by clicking **Show inventory**. Here you can monitor and filter your data by hosts, pods, containers,or EC2 instances and create custom groupings such as availability zones or namespaces.
+You can then drill down into the {{infrastructure-app}} by clicking **Show inventory**. Here you can monitor and filter your data by hosts, pods, containers, or EC2 instances and create custom groupings such as availability zones or namespaces.
 
 [Learn more about infrastructure monitoring](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md).
 
@@ -81,7 +81,7 @@ On the {{observability}} **Overview** page, the **{{user-experience}}** chart pr
 :screenshot:
 :::
 
-You can then drill down into the {{user-experience}} dashboard by clicking **Show dashboard** too see data by URL, operating system, browser, and location.
+You can then drill down into the {{user-experience}} dashboard by clicking **Show dashboard** to see data by URL, operating system, browser, and location.
 
  [Learn more about {{user-experience}}](/solutions/observability/applications/user-experience.md).
 

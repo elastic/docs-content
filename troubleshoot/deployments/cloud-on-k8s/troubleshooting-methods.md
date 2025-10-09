@@ -34,6 +34,8 @@ Alternatively, or if you do not have a support contract, and if you are unable t
 * [ECK Discuss forums](https://discuss.elastic.co/c/eck) to ask any question
 * [Github issues](https://github.com/elastic/cloud-on-k8s/issues) for bugs and feature requests
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## View the list of resources [k8s-get-resources]
 

@@ -17,7 +17,7 @@ products:
 You can perform response actions on hosts enrolled in other third-party endpoint protection systems, such as CrowdStrike or SentinelOne. For example, you can direct the other system to isolate a suspicious endpoint from your network, without leaving the {{elastic-sec}} UI.
 
 ::::{admonition} Requirements
-* Third-party response actions require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+* Third-party response actions require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Each response action type has its own user role privilege requirements. Find an action’s role requirements at [Endpoint response actions](/solutions/security/endpoint-response-actions.md).
 * Additional [configuration](/solutions/security/endpoint-response-actions/configure-third-party-response-actions.md) is required to connect {{elastic-sec}} with a third-party system.
 ::::
@@ -49,7 +49,9 @@ These response actions are supported for Microsoft Defender for Endpoint–enrol
 
     Refer to the instructions on [isolating](/solutions/security/endpoint-response-actions/isolate-host.md#isolate-a-host) and [releasing](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) hosts for more details.
 
-* {applies_to}`stack: ga 9.1` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#microsoft-defender-for-endpoint).
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#microsoft-defender-for-endpoint).
+
+* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` **Cancel an ongoing action on a host** with the [`cancel` response action](/solutions/security/endpoint-response-actions.md#cancel).
 
 ## SentinelOne response actions [sentinelone-response-actions]
 
@@ -79,4 +81,4 @@ These response actions are supported for SentinelOne-enrolled hosts:
 
 * **View past response action activity** in the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) log.
 
-* {applies_to}`stack: ga 9.2` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#sentinelone).
+* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#sentinelone).

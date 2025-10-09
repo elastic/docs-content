@@ -1,11 +1,16 @@
 ---
 applies_to:
+  serverless:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
 navigation_title: AutoOps vs. Stack Monitoring
+products:
+  - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps and Stack Monitoring comparison
@@ -18,7 +23,7 @@ Review how these tools differ in their provisioning, set up procedure, method of
 ### Resource provisioning and billing
 
 #### AutoOps [ao-resource]
-AutoOps stores and backs up your monitoring data internally on {{ecloud}} infrastructure so you don’t need to think about provisioning, sizing, and availability. The data is retained for four days by default. Using AutoOps is free for {{ecloud}} customers and is offered to [all subscription tiers](https://www.elastic.co/subscriptions/cloud).
+AutoOps stores and backs up your monitoring data internally on {{ecloud}} infrastructure so you don’t need to think about provisioning, sizing, and availability. The data is retained for 10 days by default. Using AutoOps is free for {{ecloud}} customers and is offered to [all subscription tiers](https://www.elastic.co/subscriptions/cloud).
 
 #### Stack Monitoring [sm-resource]
 With Stack Monitoring, you are responsible for storing your monitoring data. This requires provisioning the necessary resources based on your performance and retention needs as well as paying for the allocated resources. The default retention period is six days.
@@ -26,18 +31,24 @@ With Stack Monitoring, you are responsible for storing your monitoring data. Thi
 ### Setup
 
 #### AutoOps [ao-setup]
-On {{ech}} (ECH), AutoOps is set up and enabled automatically in all supported [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), with no action required from you.
-
-:::{note}
-AutoOps is planned to be available in self-managed environments in the future.
-:::
+On {{ech}} and {{serverless-full}}, AutoOps is set up and enabled automatically in all supported [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), with no action required from you.
 
 :::{image} /deploy-manage/images/cloud-autoops-setup.png
 :alt: Diagram showing AutoOps setup in Elastic Cloud
 :::
 
+For {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters, you need to [connect your cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md). This involves installing {{agent}} to ship your monitoring metrics to {{ecloud}} through [](/deploy-manage/cloud-connect.md). Since you can only access AutoOps from the {{ecloud}} UI, you need an {{ecloud}} account for this service.
+
+:::{image} /deploy-manage/images/self-managed-autoops-setup.png
+:alt: Diagram showing AutoOps setup for ECE, ECK, and self-managed clusters
+:::
+
+:::{note}
+AutoOps will be available for self-managed air-gapped environments (ECE, ECK, or standard stack deployments) in the future.
+:::
+
 #### Stack Monitoring [sm-setup]
-Stack Monitoring is a {{kib}} application that can be enabled on self-managed clusters on your premises, ECH deployments, {{eck}} (ECK), and {{ece}} (ECE). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your Serverless projects.
+Stack Monitoring is a {{kib}} application that can be enabled on self-managed clusters on your premises, {{ech}} deployments, {{ece}} (ECE), and {{eck}} (ECK). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your Serverless projects.
 
 Depending on your deployment model, there is [some setting up](/deploy-manage/monitor/stack-monitoring.md#configure-and-use-stack-monitoring) involved to enable Stack Monitoring. You need to configure an agent, specify which logs and metrics you want to collect from all your {{stack}} components, and where to send them.
 

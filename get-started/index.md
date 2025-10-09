@@ -12,6 +12,9 @@ products:
 applies_to:
   serverless:
   stack:
+description: Learn the fundamentals of Elastic. Discover what Elastic offers, explore
+  core concepts of the Elastic Stack, understand deployment options, and access
+  training resources to get started.
 ---
 
 # Elastic fundamentals
@@ -32,9 +35,9 @@ Elastic provides an open source search, analytics, and AI platform, and out-of-t
 
 Elastic offers the following solutions or types of projects:
 
-* [{{es}}](/solutions/search.md): Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.  
-* [Elastic {{observability}}](/solutions/observability.md): Gain comprehensive visibility into applications, infrastructure, and user experience through logs, metrics, traces, and other telemetry data, all in a single interface.
-* [{{elastic-sec}}](/solutions/security.md): Combine SIEM, endpoint security, and cloud security to provide comprehensive tools for threat detection and prevention, investigation, and response.
+* [**{{es}}**](/solutions/search/get-started.md): Build powerful search and RAG applications using {{es}}'s vector database, AI toolkit, and advanced retrieval capabilities.  
+* [**Elastic {{observability}}**](/solutions/observability/get-started.md): Gain comprehensive visibility into applications, infrastructure, and user experience through logs, metrics, traces, and other telemetry data, all in a single interface.
+* [**{{elastic-sec}}**](/solutions/security/get-started.md): Combine SIEM, endpoint security, and cloud security to provide comprehensive tools for threat detection and prevention, investigation, and response.
 
 ## Explore the fundamentals
 
