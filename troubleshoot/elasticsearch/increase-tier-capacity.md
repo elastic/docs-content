@@ -15,11 +15,11 @@ products:
 
 # Warning: Not enough nodes to allocate all shard replicas [increase-tier-capacity]
 
-Distributing copies of the data (index shard replicas) on different nodes can parallelize processing requests thus speeding up search queries. This can be achieved by increasing the number of replica shards up to the maximum value (total number of nodes minus one) which also serves the purpose to protect against hardware failure. If the index has a preferred tier, Elasticsearch will only place the copies of the data for that index on nodes in the target tier.
+Distributing copies of the data (index shard replicas) on different nodes can parallelize processing requests, speeding up search queries. To achieve this, increase the number of replica shards up to the maximum value (total number of nodes minus one), which also protects against hardware failure. If the index has a preferred tier, {{es}} will only place the copies of the data for that index on nodes in the target tier.
 
-If a warning is encountered with not enough nodes to allocate all shard replicas, you can influence this behavior by adding more nodes to the cluster (or tier if tiers are in use), or by reducing the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting.
+If a warning is encountered with not enough nodes to allocate all shard replicas, you can influence this behavior by adding more nodes to the cluster (or tier), or by reducing the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting.
 
-In order to fix this follow the next steps:
+To accomplish this, complete the following steps:
 
 :::::::{tab-set}
 
@@ -214,6 +214,6 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
 ::::::
 
 :::::::
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
