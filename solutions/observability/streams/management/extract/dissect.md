@@ -10,6 +10,9 @@ The dissect processor parses structured log messages and extracts fields from th
 Dissect is much faster than Grok, and is recommend for log messages that follow a consistent, structured format.
 
 To parse a log message with a dissect processor:
+
+1. Select **Create** → **Create processor**.
+1. Select **Dissect** from the **Processor** menu.
 1. Set the **Source Field** to the field you want to dissect
 1. Set the delimiters you want to use in the **Pattern** field. Refer to the [example pattern](#streams-dissect-example) for more information on setting delimiters.
 

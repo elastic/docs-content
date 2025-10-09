@@ -10,6 +10,8 @@ Use the rename processor to change the name of a field, moving its value to a ne
 
 To use a rename processor:
 
+1. Select **Create** → **Create processor**.
+1. Select **Rename** from the **Processor** menu.
 1. Set **Source Field** to the field you want to rename.
 1. Set **Target field** to the new name you want to use for the **Source Field**.
 

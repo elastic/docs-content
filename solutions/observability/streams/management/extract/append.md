@@ -10,6 +10,8 @@ Use the append processor to add a value to an existing array field, or create th
 
 To use an append processor:
 
+1. Select **Create** → **Create processor**.
+1. Select **Append** from the **Processor** menu.
 1. Set **Source Field** to the field you want append values to.
 1. Set **Target field** to the values you want to append to the **Source Field**.
 

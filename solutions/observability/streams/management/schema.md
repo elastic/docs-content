@@ -5,7 +5,7 @@ applies_to:
   stack: preview 9.1, ga 9.2
 ---
 
-# Map fields [streams-schema]
+# Map fields in Streams [streams-schema]
 
 Mappings define how {{es}} stores and indexes your data, balancing storage efficiency against query capability and performance.
 

@@ -10,6 +10,8 @@ The date processor parses dates from fields, and then uses the date or timestamp
 
 To extract a timestamp field using the date processor:
 
+1. Select **Create** → **Create processor**.
+1. Select **Date** from the **Processor** menu.
 1. Set the **Source Field** to the field containing the timestamp.
 1. Set the **Format** field to one of the accepted date formats (ISO8602, UNIX, UNIX_MS, or TAI64N) or use a Java time pattern. Refer to the [example formats](#streams-date-examples) for more information.
 
