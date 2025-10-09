@@ -47,7 +47,7 @@ Compared to a regular data stream, a TSDS uses some additional fields specific t
 Dimension fields often correspond to characteristics of the items you're measuring. For example, documents related to the same weather sensor might have the same `sensor_id` and `location` values.
 
 :::{tip}
-{{es}} uses dimensions and timestamps to generate time series document `_id` values. Two documents with the same dimensions and timestamp are considered duplicates.
+{{es}} uses dimensions and timestamps to generate time series document `_id` values. Two documents with the same dimensions and timestamp are considered duplicates. Duplicates are rejected during ingestion with a `409 Conflict` status.
 ::: 
 
 To mark a field as a dimension, set the Boolean `time_series_dimension` mapping parameter to `true`. The following field types support the `time_series_dimension` parameter:
