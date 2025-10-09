@@ -1,8 +1,13 @@
 ---
-navigation_title: Contribute locally (Elasticsearch)
+navigation_title: Quickstarts
 ---
 
-# Contribute locally: Elasticsearch quickstart
+# Contribute to Elastic API docs locally: Quickstart guides
+
+This guide provides step-by-step workflows for contributing to Elasticsearch and {{kib}} API documentation locally. These workflows enable you to validate, preview, and debug your changes before submitting them for review.
+
+::::::::{tab-set}
+:::::::{tab-item} Elasticsearch
 
 The Elasticsearch APIs are the foundation of the Elastic Stack and the largest API set we maintain. Because the workflow is quite complex, we created this quickstart guide to help you get started.
 
@@ -78,6 +83,15 @@ The `transform-to-openapi` command (run by `make contrib`) is used for client li
 :::
 ::::
 
+::::{step} Apply overlays
+
+[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested/recursive schema objects.
+
+```shell
+make overlay-docs
+```
+::::
+
 ::::{step} Lint your docs
 
 Run this command to lint your docs-specific OpenAPI files:
@@ -88,14 +102,6 @@ make lint-docs
 You should try to fix all linter warnings and not just errors. Fixing errors alone will not ensure your docs are complete, i.e. helpful for users.
 :::
 ::::
-
-::::{step} Apply overlays
-
-[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested/recursive schema objects.
-
-```shell
-make overlay-docs
-```
 
 ::::{step} Preview your changes
 Generate a preview of how your docs will appear:
@@ -116,3 +122,177 @@ Once you're satisfied with your docs changes:
 ::::
 
 :::::
+
+:::::::
+
+:::::::{tab-item} {{kib}}
+
+Follow these steps to capture live API specs from {{kib}}, generate OpenAPI documentation, and view a preview URL.
+
+:::{tip}
+Refer to the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation) for more information.
+:::
+
+:::::{stepper}
+
+::::{step} Set up {{kib}} environment
+
+```bash
+cd kibana
+nvm use
+yarn kbn bootstrap
+```
+
+:::{note}
+Run `yarn kbn clean` first if dependencies are broken.
+:::
+::::
+
+::::{step} Start Docker
+Ensure Docker is running, otherwise things will fail slowly.
+::::
+
+::::{step} Enable OAS in {{kib}}
+
+Ensure `kibana/config/kibana.dev.yml` contains:
+```yaml
+server.oas.enabled: true
+```
+::::
+
+::::{step} Add examples to your routes (optional)
+
+Beyond schema definitions, providing concrete request and response examples significantly improves API documentation usability. Examples are type-checked at development time, so shape errors are caught during authoring.
+
+:::{dropdown} Inline TypeScript examples
+You can add examples directly in your route definitions:
+```typescript
+.addVersion({
+  version: '2023-10-31',
+  options: {
+    oasOperationObject: () => ({
+      requestBody: {
+        content: {
+          'application/json': {
+            examples: {
+              fooExample1: {
+                summary: 'An example foo request',
+                value: {
+                  name: 'Cool foo!',
+                } as FooResource,
+              },
+            },
+          },
+        },
+      },
+    }),
+  },
+  // ...
+})
+```
+:::
+
+:::{dropdown} YAML-based examples
+For pre-existing YAML examples:
+```typescript
+import path from 'node:path';
+
+const oasOperationObject = () => path.join(__dirname, 'foo.examples.yaml');
+
+.addVersion({
+  version: '2023-10-31',
+  options: {
+    oasOperationObject,
+  },
+  validate: {
+    request: {
+      body: fooResource,
+    },
+    response: {
+      200: {
+        body: fooResourceResponse,
+      },
+    },
+  },
+})
+```
+
+Where `foo.examples.yaml` contains:
+```yaml
+requestBody:
+  content:
+    application/json:
+      examples: # Use examples (plural), not example (deprecated)
+        fooExample:
+          summary: Foo example
+          description: >
+            An example request of creating foo.
+          value:
+            name: 'Cool foo!'
+        fooExampleRef:
+          # You can use JSONSchema $refs to organize further
+          $ref: "./examples/foo_example_i_factored_out_of_this_file.yaml"
+responses:
+  200:
+    content:
+      application/json:
+        examples:
+          # Apply a similar pattern for response examples
+```
+:::
+::::
+
+::::{step} Capture OAS snapshot
+
+:::{tip}
+Skip this step if you've only edited manually-maintained YAML files (like `bundled.yaml`, `*.schema.yaml`, or `kibana.info.serverless.yaml`).
+:::
+
+Run this step when you've made changes to route definitions, request/response schemas, or added new HTTP APIs in your plugin code.
+
+This spins up a local {{es}} and {{kib}} cluster with your code changes, then extracts the OpenAPI specification that {{kib}} generates at runtime based on your route definitions and schemas.
+
+This example includes all plugins per [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh):
+
+```bash
+node scripts/capture_oas_snapshot \
+  --update \
+  --include-path /api/status \
+  --include-path /api/alerting/rule/ \
+  --include-path /api/alerting/rules \
+  --include-path /api/actions \
+  --include-path /api/security/role \
+  --include-path /api/spaces \
+  --include-path /api/streams \
+  --include-path /api/fleet \
+  --include-path /api/saved_objects/_import \
+  --include-path /api/saved_objects/_export \
+  --include-path /api/maintenance_window \
+  --include-path /api/agent_builder
+```
+
+This generates `oas_docs/bundle.json` and `oas_docs/bundle.serverless.json`.
+::::
+
+::::{step} Generate docs
+```bash
+cd oas_docs
+make api-docs
+```
+
+This generates `oas_docs/output/kibana.yaml` and `oas_docs/output/kibana.info.yaml`.
+
+Use `make help` to see available commands.
+::::
+
+::::{step} Preview the API docs
+```bash
+make api-docs-preview
+```
+
+This creates a short-lived URL preview on Bump.sh.
+::::
+
+:::::
+
+:::::::
