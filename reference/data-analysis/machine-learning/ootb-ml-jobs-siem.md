@@ -37,7 +37,7 @@ By default, when you create these job in the {{security-app}}, it uses a {{data-
 | suspicious_login_activity | Detect unusually high number of authentication attempts. | [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/suspicious_login_activity.json)| [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_suspicious_login_activity.json)| [System](https://www.elastic.co/docs/reference/integrations/system), [{{elastic-defend}}](https://www.elastic.co/docs/reference/integrations/endpoint), [Auditd Manager](https://www.elastic.co/docs/reference/integrations/auditd_manager)                                                          | windows, linux |
 
 
-## Security: Azure Activiy Logs [security-azure-activitylogs]
+## Security: Azure Activity Logs [security-azure-activitylogs]
 
 Detect suspicious activity recorded in your Azure Activity Logs.
 
