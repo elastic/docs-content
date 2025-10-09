@@ -23,10 +23,8 @@ Normally, a node will only leave a cluster if deliberately shut down. If a node 
 * The `.security` index may be unavailable, blocking access to the cluster.
 * The master may appear busy due to frequent cluster state updates.
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
-
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 To troubleshoot a cluster in this state, first ensure the cluster has a [stable master](discovery-troubleshooting.md). Next, focus on the nodes unexpectedly leaving the cluster ahead of all other issues. It will not be possible to solve other issues until the cluster has a stable master node and stable node membership.
 

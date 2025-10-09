@@ -32,10 +32,7 @@ Monitoring consists of two components:
 
 With logging and monitoring enabled for a deployment, metrics are collected for {{es}}, {{kib}}, and APM with Fleet Server.
 
-:::{admonition} Simplify monitoring with AutoOps
-If you’re using {{ech}}, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths.
-
-For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Before you begin [logging-and-monitoring-limitations]

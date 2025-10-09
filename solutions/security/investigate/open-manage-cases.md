@@ -95,7 +95,7 @@ To explore a case, click on its name. You can then:
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
-* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts) and [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case) attached to the case
+* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and {applies_to}`stack: ga 9.2.0` [events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) attached to the case
 * [Add files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
 * [Add a Lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
 * Modify the case’s description, assignees, category, severity, status, and tags.
@@ -147,7 +147,12 @@ To explore the alerts attached to a case, click the **Alerts** tab. In the table
 Each case can have a maximum of 1,000 alerts.
 ::::
 
+### Examine events attached to a case [cases-examine-events]
+```{applies_to}
+stack: ga 9.2
+```
 
+After adding events to cases from the Events table (which you can access from the **Events** tab on the **Hosts**, **Network**, or **Users** pages) or from Timeline, you can examine them in the case's **Events** tab. Within the tab, alerts are organized from newest to oldest. Click the **View details** button the find out more about the event.
 
 ### Add files [cases-add-files]
 
