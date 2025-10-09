@@ -681,6 +681,7 @@ toc:
               - file: security/cloud/integration-qualys.md
               - file: security/cloud/integration-tenablevm.md
               - file: security/cloud/integration-rapid7.md
+              - file: security/cloud/integrations/aws-config-integration.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
