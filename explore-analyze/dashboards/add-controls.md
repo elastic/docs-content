@@ -29,14 +29,16 @@ There are three types of controls:
 
   ![Time slider control for the the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
 
-
-
 ## Create and add Options list and Range slider controls [create-and-add-options-list-and-range-slider-controls]
 
 To add interactive Options list and Range slider controls, create the controls, then add them to your dashboard.
 
 1. Open or create a new dashboard.
-2. In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+2. Add a control.
+
+    * {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
+    * {applies_to}`stack: ga 9.0` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
 4. In the **Field** list, select the field you want to filter on.
 5. Under **Control type**, select whether the control should be an **Options list** or a **Range slider**.
@@ -47,7 +49,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 6. Define how you want the control to appear:
 
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
-    * **Minimum width**: How much horizontal space does the control occupies. The final width can vary depending on the other controls and their own width setting.
+    * **Minimum width**: Specify how much horizontal space does the control should occupy. The final width can vary depending on the other controls and their own width setting.
     * **Expand width to fit available space**: Expand the width of the control to fit the available horizontal space on the dashboard.
 
 7. Specify the additional settings:
@@ -59,36 +61,39 @@ To add interactive Options list and Range slider controls, create the controls, 
 
             * **Prefix**: Show options that *start with* the entered value.
             * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
-            * **Exact**: Show options that are a 100% match with the entered value.
+            * **Exact**: Show options that are an *exact* match with the entered value.
 
               ::::{tip}
               The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
               ::::
 
-        * **Ignore timeout for results** delays the display of the list of values to when it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
+        * **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
 
-    * For Range sliders, set the step size. The step size determines the number of steps of the slider. The smaller the step size is, the more steps there is in the slider.
+    * For Range sliders, set the step size. The step size determines the slider's number of steps. The smaller a slider's step size, the more steps it has.
 
 8. Select **Save and close**. The control can now be used.
 9. Consider the position of the control if you have several controls active on the dashboard. Controls are applied from left to right, which can change the options available depending on their position when the [Chain controls](#configure-controls-settings) setting is enabled.
 10. Save the dashboard.
-
 
 ## Add time slider controls [add-time-slider-controls]
 
 You can add one interactive time slider control to a dashboard.
 
 1. Open or create a new dashboard.
-2. In **Edit** mode, select **Controls** > **Add time slider control**.
+2. Add a time slider control.
+
+    * {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`stack: ga 9.0` In **Edit** mode, select **Controls** > **Add time slider control**.
+
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
 4. Save the dashboard. The control can now be used.
 
 
-## Add {{esql}} controls [add-esql-control]
-```{applies_to}
-stack: preview 9.0
-serverless: preview
-```
+## Add variable controls [add-variable-control]
+
+:::{note}
+In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
+:::
 
 You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
 
@@ -100,21 +105,21 @@ Only **Options lists** are supported for {{esql}}-based controls. Options can be
 - functions {applies_to}`stack: ga 9.1`
 :::
 
-1. Use one of the following options to start creating an {{esql}} control:
-   - **From the dashboard Controls menu**: In **Edit** mode, select **Controls** > **Add {{esql}} control** in the dashboard toolbar. {applies_to}`stack: ga 9.1`
-   - **From your {{esql}} visualization's query**: While editing your {{esql}} visualization's query, the autocomplete menu suggests adding a control when relevant or when typing `?` in the query.
+1. Use one of the following options to start creating a variable control:
+   - In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar. 
+   - On the **Create variable control** flyout, while editing your {{esql}} visualization's query, the autocomplete menu suggests adding a control when relevant or when typing `?` in the query.
 
    ![ESQL query prompting to add a control](/explore-analyze/images/esql-visualization-control-suggestion.png)
 
 2. A menu opens to let you configure the control. This is where you can specify:
 
     * The type of the control. 
-      * For controls with **Static values**, you select the options available in the controls by entering them manually or by using a dropdown listing available values. 
-      * For controls with **Values from a query**, you write an {{esql}} query to populate the list of options.
+      * For controls with **Static values**, select the options available in the controls by entering them manually or by using a dropdown listing available values. 
+      * For controls with **Values from a query**, write an {{esql}} query to populate the list of options.
     * The name of the control. This name is used to reference the control in {{esql}} queries. 
       * Start the name with `?` if you want the options to be simple static values.
       * Start the name with `??` if you want the options of the control to be fields or functions. {applies_to}`stack: ga 9.1`
-    * Values available to select for users with this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an {{esql}} query at this step.
+    * The values users can select for this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an {{esql}} query at this step.
     * The label of the control. This is the label displayed for users viewing the dashboard for that control.
     * The width of the control.
 
@@ -156,12 +161,15 @@ You can then insert it in any other {{esql}} visualization queries by typing the
 
 ![Editing {{esql}} controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
 
-
 ## Configure the controls settings [configure-controls-settings]
 
-Several settings that apply to all controls of the same dashboard are available.
+Several settings apply to all controls that are part of a dashboard.
 
-1. In **Edit** mode, select **Controls** > **Settings**.
+1. Configure the control settings.
+
+    * {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+    * {applies_to}`stack: ga 9.0` In **Edit** mode, select **Controls** > **Settings**.
+
 2. On the **Control settings** flyout, configure the following settings:
 
     * **Label position** — Specify where the control label appears.
@@ -197,5 +205,5 @@ Delete controls from your dashboard.
 2. In the **Delete control?** window, select **Delete**.
 
 :::{note}
-If you delete an {{esql}} control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
+If you delete an variable control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
 :::
