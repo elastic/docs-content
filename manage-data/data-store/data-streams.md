@@ -27,7 +27,7 @@ Starting with {{stack}} version 9.2, **Streams** provides a centralized interfac
 You can use Streams to perform the following data management tasks:
 * defining parsing and field extraction logic to structure incoming data {applies_to}`"stack": "ga 9.2, preview 9.1"` 
 * configuring data retention policies {applies_to}`"stack": "ga 9.2, preview 9.1"`
-* manually adjusting index configuration settings {applies_to}`"stack": "ga 9.2, preview 9.1"`
+* manually adjusting index settings {applies_to}`"stack": "ga 9.2, preview 9.1"`
 * managing and updating field mappings {applies_to}`stack: ga 9.2` 
 * identifying failed and degraded documents {applies_to}`stack: ga 9.2`
 
