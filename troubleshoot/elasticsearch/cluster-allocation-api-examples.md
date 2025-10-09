@@ -4,6 +4,9 @@ navigation_title: Cluster allocation API examples
 
 # Using the cluster allocation API for troubleshooting
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 Troubleshooting shard allocation issues in an {{es}} cluster can be complex, especially when dealing with unassigned shards or rebalancing issues. The [cluster allocation explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) helps diagnose these problems by providing detailed, node-by-node explanations of allocation decisions.
 
 This page walks you through common scenarios to show how the API can guide you in resolving allocation issues efficiently.

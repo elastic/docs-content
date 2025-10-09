@@ -89,7 +89,7 @@ As discussed above `@timestamp` is set to the timestamp from within the collecte
     lang: javascript
     source: >
       function process(event) {
-          event.put("event.created", Date.now());
+          event.Put("event.created", Date.now());
       }
 ```
 
