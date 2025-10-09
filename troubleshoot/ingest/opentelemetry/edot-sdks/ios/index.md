@@ -155,7 +155,7 @@ Try these steps to resolve initialization and startup issues:
 
 If problems persist:
 
-* Review the [iOS SDK reference documentation](apm-agent-ios://reference/edot-ios/).
+* Review the [iOS SDK reference documentation](apm-agent-ios://reference/edot-ios/index.md).
 
 * [Enable debug logging for the Collector](../../edot-collector/enable-debug-logging.md) and [the SDKs](../enable-debug-logging.md).
 
