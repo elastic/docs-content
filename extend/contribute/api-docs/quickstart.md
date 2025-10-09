@@ -83,6 +83,15 @@ The `transform-to-openapi` command (run by `make contrib`) is used for client li
 :::
 ::::
 
+::::{step} Apply overlays
+
+[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested/recursive schema objects.
+
+```shell
+make overlay-docs
+```
+::::
+
 ::::{step} Lint your docs
 
 Run this command to lint your docs-specific OpenAPI files:
@@ -92,15 +101,6 @@ make lint-docs
 :::{tip}
 You should try to fix all linter warnings and not just errors. Fixing errors alone will not ensure your docs are complete, i.e. helpful for users.
 :::
-::::
-
-::::{step} Apply overlays
-
-[OpenAPI overlays](https://github.com/OAI/Overlay-Specification?tab=readme-ov-file#overlay-specification) are used to handle publisher-specific requirements or work around rendering limitations. For example, they sort the list of tags alphabetically and apply `x-model` extensions to abbreviate deeply nested/recursive schema objects.
-
-```shell
-make overlay-docs
-```
 ::::
 
 ::::{step} Preview your changes
