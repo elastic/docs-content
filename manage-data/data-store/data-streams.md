@@ -25,11 +25,11 @@ You can also use a [data stream lifecycle](../lifecycle/data-stream.md) to autom
 Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream directly corresponds to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make in Streams are automatically propagated to the associated data stream.
 
 You can use Streams to perform the following data management tasks:
-* defining parsing and field extraction logic to structure incoming data
-* managing and updating field mappings
-* configuring data retention policies
-* identifying failed and degraded documents
-* manually adjusting index configuration settings
+* defining parsing and field extraction logic to structure incoming data {applies_to}`"stack": "ga 9.2, preview 9.1"` 
+* configuring data retention policies {applies_to}`"stack": "ga 9.2, preview 9.1"`
+* manually adjusting index configuration settings {applies_to}`"stack": "ga 9.2, preview 9.1"`
+* managing and updating field mappings {applies_to}`stack: ga 9.2` 
+* identifying failed and degraded documents {applies_to}`stack: ga 9.2`
 
 For more information, refer to [Streams](/solutions/observability/streams/streams.md).
 :::
