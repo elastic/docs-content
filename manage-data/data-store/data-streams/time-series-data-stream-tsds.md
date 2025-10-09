@@ -97,7 +97,7 @@ A time series data stream works like a regular data stream, with some key differ
   * One or more [metric fields](#time-series-metric)
   * An auto-generated document `_id` (custom `_id` values are not supported)
 * **Backing indices:** A TSDS uses [time-bound indices](/manage-data/data-store/data-streams/time-bound-tsds.md) to store data from the same time period in the same backing index.
-* **Dimension-based routing:** The routing logic uses dimension fields to map data to shards, improving storage efficiency and query performance.
+* **Dimension-based routing:** The routing logic uses dimension fields to map all data points of a time series to the same shard, improving storage efficiency and query performance. Duplicate data points are rejected.
 * **Sorting:** A TSDS uses internal [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) to order shard segments by `_tsid` and `@timestamp`, for better compression. Time series data streams do not use `index.sort.*` settings.
 
 ## Query time series data
