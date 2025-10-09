@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
 products:
   - id: elastic-stack
+description: Explore reference documentation for the Elastic Stack including APIs,
+  security schemas, configuration settings, query languages, scripting, ECS field
+  references, and more.
 ---
 
 # Reference [api-reference]
