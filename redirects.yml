@@ -482,7 +482,7 @@ redirects:
 # Move all content for SQL under Explore & Analyze-> SQL to Reference content: related to https://github.com/elastic/docs-content/pull/3270
   'explore-analyze/query-filter/languages/sql-overview.md': 'elasticsearch://reference/query-languages/sql.md'
   'explore-analyze/query-filter/languages/sql-getting-started.md': 'elasticsearch://reference/query-languages/sql/sql-getting-started.md  '
-  'explore-analyze/query-filter/languages/sql-concepts.md': 'elasticsearch://reference/query-languages/sql/sql-concepts'
+  'explore-analyze/query-filter/languages/sql-concepts.md': 'elasticsearch://reference/query-languages/sql/sql-concepts.md'
   'explore-analyze/query-filter/languages/sql-security.md': 'elasticsearch://reference/query-languages/sql/sql-security.md'
   'explore-analyze/query-filter/languages/sql-rest.md': 'elasticsearch://reference/query-languages/sql/sql-rest.md'
   'explore-analyze/query-filter/languages/sql-rest-overview.md': 'elasticsearch://reference/query-languages/sql/sql-rest-overview.md'
