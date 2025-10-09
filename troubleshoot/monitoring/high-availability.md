@@ -28,6 +28,5 @@ This CPU usage graph indicates that your cluster is load-balancing between the n
 
 Even if your cluster is performing well, you still need to make sure that there is sufficient spare capacity to deal with the outage of an entire availability zone. For this cluster to remain highly available at all times, you either need to increase its size or reduce its workload.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::

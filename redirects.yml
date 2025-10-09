@@ -503,6 +503,8 @@ redirects:
   'explore-analyze/query-filter/languages/sql-client-apps-tableau-desktop.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-desktop.md'
   'explore-analyze/query-filter/languages/sql-client-apps-tableau-server.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-server.md'
 
+# Related to https://github.com/elastic/docs-content/pull/3318
+  'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
 
 
