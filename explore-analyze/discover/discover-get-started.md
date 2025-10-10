@@ -94,6 +94,8 @@ You can later filter the data that shows in the chart and in the table by specif
    You can combine multiple keywords or characters. For example, `geo dest` finds `geo.dest` and `geo.src.dest`.
    ::::
 
+   {applies_to}`stack: ga 9.2` When they exist in your data, Discover shows a small list of recommended fields to explore. This list is static and managed by Elastic.
+
 2. Select a field to view its most frequent values.
   **Discover** shows the top 10 values and the number of records used to calculate those values.
 
@@ -303,6 +305,38 @@ Note that in ES|QL mode, the **Documents** tab is named **Results**.
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 
+### Run multiple explorations with tabs
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+**Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or KQL), time range, filters, selected data source, columns and sort order your defined, and the active [context-aware experience](#context-aware-discover).
+
+This allows you to pivot quickly between different explorations without rebuilding everything. For example:
+
+* **Compare time periods:** Open multiple tabs with the same query but different time ranges
+* **Test query variations:** Duplicate a tab to experiment with different {{esql}} queries or filters
+* **Switch contexts:** Keep separate tabs for logs, metrics, and traces exploration
+* **Test an hypothesis:** Switch between different data sources or field combinations
+
+#### Manage Discover tabs
+
+You can open new tabs or duplicate existing ones to compare different queries:
+- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to existing tabs.
+- To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
+
+To manage and organize your tabs as you need, you can: 
+- Rename them: Hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
+- Reorder them: Drag and drop tabs as you choose.
+- Close them: Hover over a tab and select the {icon}`cross` icon.
+- Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any inconclusive explorations in subsequent tabs.
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
+
+::::{tip}
+Tab state persists when you save a Discover session, so you can resume multi-tab explorations later.
+::::
+
+
 ### Inspect your Discover queries
 
 :::{include} ../_snippets/inspect-request.md
@@ -311,7 +345,7 @@ Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 
 ### Save your Discover session for later use [save-discover-search]
 
-Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves the query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
+Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
 
 1. In the application menu bar, click **Save**.
 2. Give your session a title and a description.
