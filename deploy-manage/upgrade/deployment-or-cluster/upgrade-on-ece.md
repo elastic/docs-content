@@ -1,9 +1,8 @@
 ---
 navigation_title: Upgrade on {{ece}}
 applies_to:
-  stack:
   deployment:
-    ece:
+    ece: ga
 products:
   - id: kibana
   - id: cloud-enterprise
