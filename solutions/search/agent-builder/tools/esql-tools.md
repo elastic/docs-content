@@ -14,7 +14,7 @@ These pages are currently hidden from the docs TOC and have `noindexed` meta hea
 
 # {{esql}} tools
 
-{{esql}} query tools enable you to create parameterized queries that execute directly against your {{es}} data. These custom tools provide precise control over data retrieval through templated {{esql}} statements.
+{{esql}} query tools enable you to create parameterized queries that execute directly against your {{es}} data. These custom tools provide precise control over data retrieval through templated [{{esql}}](elasticsearch://reference/query-languages/esql.md) statements.
 
 ## When to use {{esql}} tools
 
