@@ -247,13 +247,6 @@ After adding an observable to a case, you can remove or edit it by using the **A
 Go to the **Similar cases** tab to access other cases with the same observables.
 ::::
 
-
-% :::{image} /solutions/images/security-cases-add-observables.png
-%:alt: Shows you where to add observables
-% :screenshot:
-% :::
-
-
 ### Copy the case UUID [cases-copy-case-uuid]
 
 Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the Cases page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
