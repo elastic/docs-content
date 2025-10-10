@@ -58,3 +58,7 @@ In your {{esql}} query, reference parameters using the `?parameter_name` syntax.
 - **Include LIMIT clauses**: Prevent returning excessive results by setting reasonable limits
 - **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents (e.g., `start_date` instead of `date1`)
 - **Provide clear descriptions**: Help agents understand when and how to use each parameter
+
+## {{esql}} documentation
+
+To learn more about the language, refer to the [{{esql}} docs](elasticsearch://reference/query-languages/esql.md).
