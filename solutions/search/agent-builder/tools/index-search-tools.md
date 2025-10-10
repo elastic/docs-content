@@ -66,4 +66,4 @@ When an agent calls an index search tool:
 * **Wildcard patterns**: `logs-*`, `metrics-*`, `events-*`
 * **Specific indices**: `products`, `users`, `orders`
 * **System indices**: `.alerts-security-*`, `.ml-anomalies-*`
-* **Date-based patterns**: `logs-2024-*`, `events-2024.01.*`
+* **All resources**:  `*`
