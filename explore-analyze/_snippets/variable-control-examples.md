@@ -9,7 +9,7 @@
 * Fields in controls for dynamic group by
 
   ```esql
-  | STATS count=COUNT(*) BY ?field
+  | STATS count=COUNT(*) BY ??field
   ```
 
 * Variable time ranges? Bind function configuration settings to a control
