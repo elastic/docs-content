@@ -17,7 +17,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Once you’ve set up your chat interface, you can start chatting with the model. Playground will automatically generate {{es}} queries based on your questions, and retrieve the most relevant documents from your {{es}} indices. The Playground UI enables you to view and modify these queries.
 
-* Click **View query** to open the visual query editor.
+* Select the **Query** tab to open the visual query editor.
 * Modify the query by selecting fields to query per index.
 
 ::::{tip}

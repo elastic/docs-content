@@ -17,7 +17,7 @@ products:
 * This tutorial predates the [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Today there are simpler, higher-level options for semantic search than the ones outlined in this tutorial. The semantic text workflow is the recommended way to perform semantic search for most use cases.
 ::::
 
-**This guide shows how to implement semantic search in {{es}} with deployed NLP models: from selecting a model, to configuring ingest pipelines, to running queries.**
+This guide shows how to implement semantic search in {{es}} with deployed NLP models: from selecting a model, to configuring ingest pipelines, to running queries.
 
 ## Select an NLP model [deployed-select-nlp-model]
 
