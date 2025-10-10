@@ -332,10 +332,7 @@ To manage and organize your tabs as you need, you can:
 - Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any inconclusive explorations in subsequent tabs.
 - Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
 
-::::{tip}
-Tab state persists when you save a Discover session, so you can resume multi-tab explorations later.
-::::
-
+To keep all of your tabs ready for a later exploration session, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it later.
 
 ### Inspect your Discover queries
 
