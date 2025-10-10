@@ -107,7 +107,7 @@ Expand this section to access the following dashboards, which provide interactiv
 - Entity Analytics
 - Data Quality.
 
-You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
+You can also create and view custom dashboards. Refer to [](/solutions/security/dashboards.md) for more information.
 
 
 ### Rules [_rules]
@@ -184,6 +184,23 @@ The Assets section allows you to manage the following features:
     * [Response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
 
 * [Cloud security](/solutions/security/cloud.md)
+
+
+### Entity analytics
+```yaml {applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+:::{admonition} Requirements
+To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+:::
+
+Expand this section to access the following pages:
+
+- [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior. 
+
 
 ### {{ml-cap}} [security-ui-ml-cap]
 

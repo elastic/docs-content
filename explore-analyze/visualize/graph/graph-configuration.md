@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-configuration.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
 ---
@@ -45,7 +45,7 @@ The supported save policies are:
 
 ## Use Security to grant access [_use_security_to_grant_access]
 
-You can also use security to grant read only or all access to different roles. When security is used to grant read only access, the following  indicator in Kibana is displayed. For more information on granting access to Kibana, see [Granting access to {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+You can also use security to grant read only or all access to different roles. When security is used to grant read only access, the following  indicator in Kibana is displayed. For more information on granting access to Kibana, see [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-graph-read-only-badge.png
 :alt: Example of Graph's read only access indicator in Kibana's header

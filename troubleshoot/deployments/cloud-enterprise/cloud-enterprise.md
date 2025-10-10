@@ -13,17 +13,13 @@ products:
 
 ## Finding deployments [ts-ece-find]
 
+When you first install {{ece}} and [log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md), three [system deployments](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md) are already in place. After [creating your first deployments](/deploy-manage/deploy/cloud-enterprise/create-deployment.md), you may still be managing only a few. But in a production environment with hundreds or even thousands of deployments, identifying those that require attention becomes critical.
 
-When you installed Elastic Cloud Enterprise and [logged into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) for the first time, you were greeted by two deployments. We’ve also shown you how to [create your own first deployment](../../../deploy-manage/deploy/cloud-enterprise/create-deployment.md), but that still only makes a few deployments. What if you had hundreds of deployments to look after or maybe even a thousand? How would you find the ones that need your attention?
+The **Deployments** page in the Cloud UI provides several ways to find deployments that might need your attention, whether you’re troubleshooting, planning upgrades, or performing routine maintenance. You can:
 
-The **Deployments** page in the Cloud UI provides several ways to find deployments that might need your attention, whether that’s deployments that have a problem or deployments that are at a specific version level or really almost anything you might want to find on a complex production system:
+* Use the visual indicators to review the health of your deployments at a glance.
+* Search by full or partial deployment names or IDs.
+* Use the **Health** and **Version** dropdown filters to narrow the list of deployments shown. These filters help you find deployments by version, configuration status, or other attributes, making it easier to identify those that require upgrades, are undergoing changes, or match specific operational criteria.
 
-* Check the visual health indicators of deployments
-* Search for partial or whole deployment names or IDs in the search text box
-* Add filters to the **Deployments** view to filter for specific conditions:
-
-    :::{image} /troubleshoot/images/cloud-enterprise-deployment-filter.png
-    :alt: Add a filter
-    :::
-
-    Looking for all deployments of a specific version, because you want to upgrade them? Easy. Or what about that deployments you noticed before lunch that seemed to be spending an awfully long time changing its configuration—is it done? Just add a filter to find any ongoing configuration changes.
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::

@@ -11,6 +11,8 @@ products:
 
 # Troubleshoot common Elastic Cloud on Kubernetes issues [k8s-common-problems]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Operator crashes on startup with `OOMKilled` [k8s-common-problems-operator-oom]
 
@@ -25,7 +27,7 @@ kubectl -n elastic-system \
 [
   {
     "containerID": "containerd://...",
-    "image": "docker.elastic.co/eck/eck-operator:{{eck_version}}",
+    "image": "docker.elastic.co/eck/eck-operator:{{version.eck}}",
     "imageID": "docker.elastic.co/eck/eck-operator@sha256:...",
     "lastState": {
       "terminated": {

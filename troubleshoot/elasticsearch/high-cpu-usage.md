@@ -19,17 +19,14 @@ products:
 
 If a thread pool is depleted, {{es}} will [reject requests](rejected-requests.md) related to the thread pool. For example, if the `search` thread pool is depleted, {{es}} will reject search requests until more threads are available.
 
-You might experience high CPU usage if a [data tier](../../manage-data/lifecycle/data-tiers.md), and therefore the nodes assigned to that tier, is experiencing more traffic than other tiers. This imbalance in resource utilization is also known as [hot spotting](hotspotting.md).
-
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 
 
 ## Diagnose high CPU usage [diagnose-high-cpu-usage]
 
-**Check CPU usage**
+### Check CPU usage [check-cpu-usage]
 
 You can check the CPU usage per node using the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
 
@@ -64,7 +61,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 ::::::
 
 :::::::
-**Check hot threads**
+### Check hot threads [check-hot-threads]
 
 If a node has high CPU usage, use the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) to check for resource-intensive threads running on the node.
 
@@ -79,17 +76,61 @@ This API returns a breakdown of any hot threads in plain text. High CPU usage fr
 
 The following tips outline the most common causes of high CPU usage and their solutions.
 
-**Scale your cluster**
+### Check JVM garbage collection [check-jvm-garbage-collection]
 
-Heavy indexing and search loads can deplete smaller thread pools. To better handle heavy workloads, add more nodes to your cluster or upgrade your existing nodes to increase capacity.
+High CPU usage is often caused by excessive JVM garbage collection (GC) activity. This excessive GC typically arises from configuration problems or inefficient queries causing increased heap memory usage.
 
-**Spread out bulk requests**
+For optimal JVM performance, garbage collection should meet these criteria:
 
-While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) or [multi-search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) requests still require CPU resources. If possible, submit smaller requests and allow more time between them.
+| GC type | Completion time | Frequency |
+|---------|----------------|---------------------|
+| Young GC | <50ms | ~once per 10 seconds |
+| Old GC | <1s | ≤once per 10 minutes |
 
-**Cancel long-running searches**
+Excessive JVM garbage collection usually indicates high heap memory usage. Common potential reasons for increased heap memory usage include:
 
-Long-running searches can block threads in the `search` thread pool. To check for these searches, use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks).
+* Oversharding of indices
+* Very large aggregation queries
+* Excessively large bulk indexing requests
+* Inefficient or incorrect mapping definitions
+* Improper heap size configuration
+* Misconfiguration of JVM new generation ratio (`-XX:NewRatio`)
+
+### Hot spotting [high-cpu-usage-hot-spotting]
+
+You might experience high CPU usage on specific data nodes or an entire [data tier](/manage-data/lifecycle/data-tiers.md) if traffic isn’t evenly distributed. This is known as [hot spotting](hotspotting.md). Hot spotting commonly occurs when read or write applications don’t evenly distribute requests across nodes, or when indices receiving heavy write activity, such as indices in the hot tier, have their shards concentrated on just one or a few nodes.
+
+For details on diagnosing and resolving these issues, refer to [](hotspotting.md).
+
+### Oversharding [high-cpu-usage-oversharding]
+
+Oversharding occurs when a cluster has too many shards, often times caused by shards being smaller than optimal. While {{es}} doesn’t have a strict minimum shard size, an excessive number of small shards can negatively impact performance. Each shard consumes cluster resources because {{es}} must maintain metadata and manage shard states across all nodes.
+
+If you have too many small shards, you can address this by doing the following:
+
+* Removing empty or unused indices.
+* Deleting or closing indices containing outdated or unnecessary data.
+* Reindexing smaller shards into fewer, larger shards to optimize cluster performance.
+
+If your shards are sized correctly but you are still experiencing oversharding, creating a more aggressive [index lifecycle management strategy](/manage-data/lifecycle/index-lifecycle-management.md) or deleting old indices can help reduce the number of shards.
+
+For more information, refer to [](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
+
+### Additional recommendations
+
+To further reduce CPU load or mitigate temporary spikes in resource usage, consider these steps:
+
+#### Scale your cluster [scale-your-cluster]
+
+Heavy indexing and search loads can deplete smaller thread pools. Add nodes or upgrade existing ones to handle increased indexing and search loads more effectively.
+
+#### Spread out bulk requests [spread-out-bulk-requests]
+
+Submit smaller [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk-1) or multi-search requests, and space them out to avoid overwhelming thread pools.
+
+#### Cancel long-running searches [cancel-long-running-searches]
+
+Regularly use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-list) to identify and cancel searches that consume excessive CPU time.
 
 ```console
 GET _tasks?actions=*search&detailed

@@ -2,6 +2,9 @@
 navigation_title: Roll back to a previous version
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/upgrade-migrations-rolling-back.html
+applies_to:
+  deployment:
+    self: ga
 products:
   - id: kibana
 ---

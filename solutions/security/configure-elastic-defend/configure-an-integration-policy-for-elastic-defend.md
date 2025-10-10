@@ -67,7 +67,7 @@ By default, malware protection is enabled on Windows, macOS, and Linux hosts. To
 
 ::::{admonition} Requirements
 :class: note
-In {{serverless-short}}, malware protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+In {{serverless-short}}, malware protection requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 Malware protection levels are:
@@ -83,7 +83,7 @@ These additional options are available for malware protection:
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
+If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
 ::::
 
 
@@ -95,7 +95,7 @@ If you have the appropriate license or project feature, you can customize these 
 
 ### Manage quarantined files [manage-quarantined-files]
 
-When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, encrypt it with the encryption key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
+When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, apply a rolling XOR with the key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
 
 The quarantine folder location varies by operating system:
 
@@ -107,6 +107,10 @@ The quarantine folder location varies by operating system:
 To restore a quarantined file to its original state and location, [add an exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) to the rule that identified the file as malicious. If the exception would’ve stopped the rule from identifying the file as malicious, {{elastic-defend}} restores the file.
 
 You can access a quarantined file by using the `get-file` [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the response console. To do this, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter. This action doesn’t restore the file to its original location, so you will need to do this manually.
+
+::::{important}
+When you retrieve a quarantined file using `get-file`, the XOR obfuscation is automatically reversed, and the original malicious file is retrieved.
+::::
 
 ::::{note}
 * In {{stack}}, response actions and the response console UI are [Enterprise subscription](https://www.elastic.co/pricing) features.
@@ -121,7 +125,7 @@ Behavioral ransomware prevention detects and stops ransomware attacks on Windows
 ::::{admonition} Requirements
 :class: note
 * In {{stack}}, ransomware protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, ransomware protection will be disabled by default.
-* In {{serverless-short}}, ransomware protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* In {{serverless-short}}, ransomware protection requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 
@@ -135,7 +139,7 @@ When ransomware protection is enabled, canary files placed in targeted locations
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
+If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
 ::::
 
 
@@ -152,7 +156,7 @@ Memory threat protection detects and stops in-memory threats, such as shellcode 
 :::{admonition} Requirements
 :class: note
 * In {{stack}}, memory threat protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, memory threat protection will be disabled by default.
-* In {{serverless-short}}, memory threat protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* In {{serverless-short}}, memory threat protection requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 
@@ -164,7 +168,7 @@ Memory threat protection levels are:
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
+If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
 ::::
 
 
@@ -181,7 +185,7 @@ Malicious behavior protection detects and stops threats by monitoring the behavi
 ::::{admonition} Requirements
 :class: note
 * In {{stack}}, malicious behavior protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, malicious behavior protection will be disabled by default.
-* In {{serverless-short}}, malicious behavior protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* In {{serverless-short}}, malicious behavior protection requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 
@@ -200,7 +204,7 @@ In {{stack}}, reputation service requires an active [Platinum or Enterprise subs
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
+If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
 ::::
 
 
@@ -216,7 +220,7 @@ This section helps you reduce vulnerabilities that attackers can target on Windo
 
 ::::{admonition} Requirements
 :class: note
-In {{serverless-short}}, attack surface reduction requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+In {{serverless-short}}, attack surface reduction requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.

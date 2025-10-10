@@ -5,6 +5,14 @@ Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agent
 
 After you create a new agentless integration, the new integration policy may show a button that says **Add agent** instead of the associated agent for several minutes during agent enrollment. No action is needed other than refreshing the page once enrollment is complete.
 
+## Why isn't my agentless agent appearing in Fleet?
+
+```{applies_to}
+  stack: ga 9.1
+  serverless: ga
+```
+
+Agentless agents (which run on Elastic's infrastructure to enable agentless integrations) do not appear on the **Fleet** page by default. To view them on this page, add the following query to the end of its URL: `?showAgentless=true`. 
 
 ## How do I troubleshoot an `Offline` agent? [_how_do_i_troubleshoot_an_offline_agent]
 
@@ -19,6 +27,9 @@ To troubleshoot this issue:
 If the **Make this {{fleet}} server the default one** setting was already enabled but problems persist, it’s possible someone changed the default {{fleet}} server’s **URL** value. In this case, contact Elastic Support to find out what the original **URL** value was, update the settings to match this value, then delete your integration and create it again.
 ::::
 
+## Why can't I upgrade my agentless integration to a newer version?
+
+On versions of {{stack}} before v9.2, agentless integrations can't be upgraded to newer versions of the integration. To get a newer version in your {{stack}} environment, upgrade to {{stack}} v9.2+ or delete and re-install the desired integration.
 
 
 ## How do I troubleshoot an `Unhealthy` agent? [_how_do_i_troubleshoot_an_unhealthy_agent]
@@ -32,7 +43,7 @@ On the **{{fleet}}** page, the agent associated with an agentless integration ha
     ```
 
 
-For instructions on checking {{fleet}} logs, refer to [{{fleet}} troubleshooting](/troubleshoot/ingest/fleet/common-problems.md).
+For instructions on checking {{fleet}} logs, refer to [](/troubleshoot/ingest/fleet/common-problems.md).
 
 
 ## How do I delete an agentless integration? [_how_do_i_delete_an_agentless_integration]

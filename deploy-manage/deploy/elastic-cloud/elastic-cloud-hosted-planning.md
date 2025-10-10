@@ -66,3 +66,12 @@ Scaling with {{ecloud}} is easy:
 * Or, if you prefer manual control, log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select your deployment, select *Edit*, and either increase the number of zones or the size per zone.
 
 The recommendation is to scale up the resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), then scale out by adding additional zones depending on your requirements: two zones for High Availability, three zones for Fault Tolerance. 
+
+## Minimum size recommendations for production use [ec-minimum-recommendations]
+
+To ensure optimal performance and cluster stability in your production environment, we recommend adhering to the following minimum size guidelines. Deviating from these recommendations may lead to performance issues and cluster instability. For an enhanced user experience, consider planning your deployment capacity above these minimum recommendations, and adjust sizing based on your specific use case.
+
+* **{{es}} nodes / instances**: For production systems, we recommend that each {{es}} node / instance in your cluster has at least 4 GB of RAM.
+* **Clusters with logs and monitoring enabled**: Enabling logs and monitoring requires additional resources. For production systems with these features enabled, we recommend allocating at least 4 GB of RAM per {{es}} node / instance.
+* **Clusters with dedicated master nodes**: For clusters with dedicated master nodes, we advise using at least 4 GB of RAM for each dedicated master node.
+

@@ -17,10 +17,10 @@ The Indicators page collects data from enabled threat intelligence feeds and pro
 
 ::::{admonition} Requirements
 * In {{stack}}, the Indicators page is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
-* In serverless, the Indicators page requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md)
+* In serverless, the Indicators page requires the Security Analytics Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md)
 * You must have *one* of the following installed on the hosts you want to monitor:
 
-    * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed-elastic-agent.md) and ensure the agent’s status is `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+    * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed-elastic-agent.md) and ensure the agent’s status is `Healthy`. Refer to [](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
     * **{{filebeat}}** - Install [{{filebeat}}](beats://reference/filebeat/filebeat-installation-configuration.md) version 8.x or later. Earlier {{filebeat}} versions are incompatible with ECS and will prevent indicator data from displaying in the Indicators table.
 
 

@@ -9,9 +9,9 @@ products:
   - id: elasticsearch
 ---
 
-# Limitations [transform-limitations]
+# {{transforms-cap}} limitations [transform-limitations]
 
-The following limitations and known problems apply to the {{version}} release of the Elastic {{transform}} feature. The limitations are grouped into the following categories:
+The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{transform}} feature. The limitations are grouped into the following categories:
 
 * [Configuration limitations](#transform-config-limitations) apply to the configuration process of the {{transforms}}.
 * [Operational limitations](#transform-operational-limitations) affect the behavior of the {{transforms}} that are running.
@@ -122,6 +122,55 @@ If your data uses the [date nanosecond data type](elasticsearch://reference/elas
 [ILM](../../manage-data/lifecycle/index-lifecycle-management.md) is not recommended to use as a {{transform}} destination index. {{transforms-cap}} update documents in the current destination, and cannot delete documents in the indices previously used by ILM. This may lead to duplicated documents when you use {{transforms}} combined with ILM in case of a rollover.
 
 If you use ILM to have time-based indices, consider using the [Date index name](elasticsearch://reference/enrich-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your {{transform}} contains a `group_by` based on `date_histogram`.
+
+### SLO transforms at scale may misreport state and increase PIT activity
+
+When running a large number of SLO {{transforms}}, two types of limitations can appear:
+
+- {{transforms-cap}} may [misreport](#transforms-inaccurate-errors) their state and suggest deletion even though they are still valid
+- Point-in-time (PIT) requests may [accumulate](#transforms-pit-overloads), creating extra activity on the cluster and slowing down operations
+
+#### {{transforms-cap}} can return inaccurate errors that suggest deletion [transforms-inaccurate-errors]
+
+The {{transforms-cap}} API and the {{transforms-cap}} management page in {{kib}} may display misleading error messages for {{transforms}} created by service level objectives (SLOs).
+
+The message typically reads:
+
+```console
+Found task for transform [...], but no configuration for it. To delete this transform use DELETE with force=true.
+```
+Although the error suggests that the {{transform}} is broken and should be deleted, this is usually not the case. The error occurs because of a limitation in how the {{transforms}} are queried and presented by the API and UI. Deleting the {{transform}} can break related SLOs.
+
+If you encounter this error, do not delete the {{transform}}. If a {{transform}} was already deleted, you can restore it by resetting the SLO, either in the {{kib}} or with the API:
+
+- In {{kib}}, go to the **Observability** > **SLOs application**, open the menu for the affected SLO, and click **Reset**. 
+
+- If you use the API, run the following request:
+
+  ```console
+  POST kbn:/api/observability/slos/<SLO_ID>/_reset
+  ```
+
+#### Large numbers of {{transform}} can cause PIT overloads [transforms-pit-overloads]
+
+{{transforms-cap}} rely on point-in-time (PIT) searches to ensure that queries remain consistent during data changes. Each {{transform}} can open and close multiple PITs during its lifetime. 
+
+When many {{transforms}} run concurrently, especially in environments with large numbers of SLOs (hundreds to more than a thousand transforms), PITs can be opened and closed in quick succession. Because PITs are closed asynchronously, the close operation does not wait for the previous request to complete. This can create a backlog of PIT close requests, known as a PIT overload.
+
+A PIT overload increases the memory pressure on hot nodes. This may result in rising memory usage and long garbage collection cycles. In practice, searches and writes may slow down or queue until the node recovers, and in severe cases a restart may be required.
+
+As a workaround, you can disable PIT for a specific {{transform}}:
+
+```console
+POST _transform/<transform_id>/_update
+{
+  "settings": {
+    "use_point_in_time": false
+  }
+}
+```
+
+To fix this issue permanently, upgrade to the following versions or later: 8.18.8, 8.19.5, 9.0.8, 9.1.5, or 9.2.0.
 
 ## Limitations in {{kib}} [transform-ui-limitations]
 

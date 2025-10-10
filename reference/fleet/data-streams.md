@@ -4,9 +4,10 @@ mapped_pages:
 products:
   - id: fleet
   - id: elastic-agent
+navigation_title: Data streams
 ---
 
-# Data streams [data-streams]
+# {{agent}} data streams for {{fleet}} [data-streams]
 
 {{agent}} uses data streams to store time series data across multiple indices while giving you a single named resource for requests. Data streams are well-suited for logs, metrics, traces, and other continuously generated data. They offer a host of benefits over other indexing strategies:
 
@@ -97,10 +98,10 @@ The `@custom` component template specific to a datastream has higher precedence 
 
 You can edit a `@custom` component template to customize your {{es}} indices:
 
-1. Open {{kib}} and navigate to to **{{stack-manage-app}}** > **Index Management** > **Data Streams**.
+1. Open {{kib}} and go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open the **Data Streams** tab.
 2. Find and click the name of the integration data stream, such as `logs-cisco_ise.log-default`.
 3. Click the index template link for the data stream to see the list of associated component templates.
-4. Navigate to **{{stack-manage-app}}** > **Index Management** > **Component Templates**.
+4. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Component Templates** tab.
 5. Search for the name of the data stream’s custom component template and click the edit icon.
 6. Add any custom index settings, metadata, or mappings. For example, you may want to:
 

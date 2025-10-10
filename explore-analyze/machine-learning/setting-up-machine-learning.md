@@ -37,7 +37,7 @@ Assigning security privileges affects how users access {{ml-features}}. Consider
 
 You can configure these privileges
 
-* under **Security**. To open Security, find **{{stack-manage-app}}** in the main menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
+* under the **Roles** and **Spaces** management pages. Find these pages in the main menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 * via the respective {{es}} security APIs.
 
 ### {{es}} API user [es-security-privileges]
@@ -68,7 +68,7 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 
 #### Feature visibility in Spaces [kib-visibility-spaces]
 
-In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
+In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md). To manage which features are visible in your space, go to the **Spaces** management page using the navigation menu or the [global search field](../find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/machine-learning-spaces.jpg
 :alt: Manage spaces in {{kib}}
@@ -120,4 +120,4 @@ Within a {{kib}} space, to upload and import files in the **{{data-viz}}**, you 
 * `ingest_admin` built-in role, or `manage_ingest_pipelines` cluster privilege
 * `create`, `create_index`, `manage` and `read` index privileges for destination indices
 
-For more information, see [Security privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).

@@ -17,7 +17,7 @@ sub:
 
 # Install {{es}} with RPM [rpm]
 
-The RPM package for {{es}} can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install {{es}} on any RPM-based system such as OpenSuSE, SLES, Centos, Red Hat, and Oracle Enterprise.
+The RPM package for {{es}} can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install {{es}} on any RPM-based system such as openSUSE, SUSE Linux Enterprise Server (SLES), CentOS, Red Hat Enterprise Linux (RHEL), and Oracle Linux.
 
 ::::{note}
 RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Refer to [Install {{es}} from archive on Linux or MacOS](install-elasticsearch-from-archive-on-linux-macos.md) instead.
@@ -48,14 +48,35 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 ## Step 2: Install {{es}}
 
-You have several options for installing the {{es}} RPM package:
+You have two options for installing the {{es}} RPM package:
 
 * [From the RPM repository](#rpm-repo)
 * [Manually](#install-rpm)
 
 ### Install from the RPM repository [rpm-repo]
 
-Create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
+1. Define a repository for {{es}}.
+
+::::{tab-set}
+:group:linux-distros
+:::{tab-item} RedHat distributions
+:sync: rhel
+For RedHat based distributions, create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory and include the following configuration: 
+
+```ini subs=true
+[elasticsearch]
+name={{es}} repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=0
+type=rpm-md
+```
+::: 
+
+:::{tab-item} openSUSE distributions
+:sync: suse
+For openSUSE based distributions, create a file called `elasticsearch.repo` in the `/etc/zypp/repos.d/` directory and include the following configuration:
 
 ```ini subs=true
 [elasticsearch]
@@ -67,35 +88,79 @@ enabled=0
 autorefresh=1
 type=rpm-md
 ```
-And your repository is ready for use. You can now install {{es}} with one of the following commands:
+:::
+:::: 
+
+2. Install {{es}} from the repository you defined earlier.
+
+::::{tab-set}
+:group:linux-distros
+:::{tab-item} RedHat distributions
+:sync: rhel
+If you use Fedora, or Red Hat Enterprise Linux 8 and later, enter the following command:
 
 ```sh
-sudo yum install --enablerepo=elasticsearch elasticsearch <1>
-sudo dnf install --enablerepo=elasticsearch elasticsearch <2>
-sudo zypper modifyrepo --enable elasticsearch && \
-  sudo zypper install elasticsearch; \
-  sudo zypper modifyrepo --disable elasticsearch <3>
+sudo dnf install --enablerepo=elasticsearch elasticsearch
 ```
 
-1. Use `yum` on CentOS and older Red Hat based distributions.
-2. Use `dnf` on Fedora and other newer Red Hat distributions.
-3. Use `zypper` on OpenSUSE based distributions.
+If you use CentOS, or Red Hat Enterprise Linux 7 and earlier, enter the following command:
+```sh
+sudo yum install --enablerepo=elasticsearch elasticsearch
+```
+:::
+:::{tab-item} openSUSE distributions
+:sync: suse
+Enter the following command:
+
+```sh
+sudo zypper modifyrepo --enable elasticsearch && \
+  sudo zypper install elasticsearch; \
+  sudo zypper modifyrepo --disable elasticsearch
+```
+::: 
+:::: 
+
 
 ### Download and install the RPM manually [install-rpm]
 
-1. Download and install the RPM for {{es}} {{stack-version}} with the following commands:
+1. Download and install the RPM for {{es}} with the following commands:
 
-    ```sh subs=true
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm.sha512
-    shasum -a 512 -c elasticsearch-{{stack-version}}-x86_64.rpm.sha512 <1>
-    sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
-    ```
+::::{tab-set}
 
-    1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.
+:::{tab-item} Latest
+To download and install the {{es}} {{version.stack}} RPM, enter:
+  ```sh subs=true
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm.sha512
+  shasum -a 512 -c elasticsearch-{{version.stack}}-x86_64.rpm.sha512 <1>
+  sudo rpm --install elasticsearch-{{version.stack}}-x86_64.rpm
+  ```
+  1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.
+  
+  :::{include} _snippets/skip-set-kernel-params.md
+  :::
 
-    :::{include} _snippets/skip-set-kernel-params.md
-    :::
+:::
+
+:::{tab-item} Specific version
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+  ```sh subs=true
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512
+  shasum -a 512 -c elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512 <1>
+  sudo rpm --install elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+  ```
+  1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm: OK`.
+  
+  :::{include} _snippets/skip-set-kernel-params.md
+  :::
+
+:::
+::::
+ 
+
+  
+
 
 2. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to [run as a service](#running-systemd).
 

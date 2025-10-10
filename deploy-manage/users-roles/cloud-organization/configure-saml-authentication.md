@@ -51,9 +51,14 @@ Before you configure SAML SSO, familiarize yourself with the following risks and
 
 * Actions taken on the IdP are not automatically reflected in {{ecloud}}. For example, if you remove a user from your IdP, they are not removed from the {{ecloud}} organization and their active sessions are not invalidated.
 
-    To immediately revoke a user’s active sessions, an organization owner must [remove the user from the {{ecloud}} organization](https://cloud.elastic.co/account/members) or remove their assigned roles.
+    To immediately revoke a user’s active sessions, an [Organization owner](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) must [remove the user from the {{ecloud}} organization](https://cloud.elastic.co/account/members) or remove their assigned roles.
 
 * If you enforce SSO authentication, you can be locked out of {{ecloud}} if your IdP is unavailable or misconfigured. You might need to work with Elastic Support to regain access to your account. To avoid being locked out, you should maintain and store an [{{ecloud}} API key](../../api-keys/elastic-cloud-api-keys.md#ec-api-keys) with organization owner level privileges so that an administrator can disable enforcement in an emergency.
+  
+  :::{note}
+  To further ensure continuous access to and control over your organization settings, {{ecloud}} [verifies](#role-mapping-verification) that organization owner access is maintained when a role mapping is created, edited, or deleted.
+  :::
+
 * If you do not enforce SSO authentication, users can still log in without authenticating with your IdP. You need to manage these users in {{ecloud}}.
 * {{ecloud}} passwords are invalidated each time a user logs in using SSO. If a user needs sign in with their email and password again, they need to [change their password](../../../cloud-account/change-your-password.md).
 * Role mappings only take effect when your organization’s members authenticate using SSO. If SSO authentication is not enforced, users might have roles that are inconsistent with the role mapping when they log in using other methods.
@@ -91,7 +96,9 @@ You must have authority to modify your domain’s DNS records and be a member of
 It might take some time for the DNS records to be updated and propagated in the network. If verification isn’t successful, wait a while and try again.
 ::::
 
-
+::::{note}
+After the domain has been claimed by your organization, you can safely remove the TXT record from your DNS provider settings. You must remove this record if you want to claim the same domain in additional {{ecloud}} organizations.
+::::
 
 ### Step 2: Register a SAML IdP [ec-saml-sso-register-idp]
 
@@ -126,7 +133,7 @@ Add the information that you collected to {{ecloud}}.
 4. Click **Update configuration**.
 
 ::::{tip}
-The **Only allow login through my identity provider** option is disabled by default. You must verify your SSO configuration by logging in using SSO to enable this option.
+The **Enforce SAML SSO** option is disabled by default. You must verify your SSO configuration by logging in using SSO to enable this option.
 ::::
 
 
@@ -157,6 +164,8 @@ After you register the IdP in {{ecloud}} and configure your IdP, you can test au
 
 Users who are not a member of the {{ecloud}} organization can authenticate with your IdP to automatically create an {{ecloud}} account provided that their email matches the claimed domain.
 
+To guarantee ongoing access to the organization, you can also run a [role mapping verification](#role-mapping-verification) when you add, edit, or delete [role mappings](#role-mappings) that impact the organization owner role.
+
 
 ## Enforce SSO [enforce-sso]
 
@@ -175,14 +184,14 @@ To protect your account from being accidentally locked out when this option is e
 
 1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
 2. In the **User authentication** section, click **Edit**.
-3. Toggle the **Only allow login through my identity provider** option on to enable enforcement.
+3. Toggle the **Enforce SAML SSO** option on to enable enforcement.
 
 
 ### Disable enforcement [ec_disable_enforcement]
 
 1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
 2. In the **User authentication** section, click **Edit**.
-3. Toggle the **Only allow login through my identity provider** option off to disable enforcement.
+3. Toggle the **Enforce SAML SSO** option off to disable enforcement.
 
 If you are unable to access the {{ecloud}} Console for any reason, use the following API call to disable enforcement. The API key that you use must have organization owner level privileges to disable enforcement.
 
@@ -203,13 +212,16 @@ curl -XPUT \
 
 To automate [role](user-roles.md) assignments to your {{ecloud}} organization’s members, you can use role mappings. Role mappings map groups returned by your IdP in the `groups` SAML attribute to one or more {{ecloud}} roles. The mapping will be evaluated and the applicable roles will be assigned each time your organization’s members log into {{ecloud}} using SSO.
 
+To ensure continuous access and control over your organization settings, the first role mapping of your SAML SSO configuration must include the **Organization owner** role.
+
+To allow for role mapping verification, SSO must be configured and enabled for you to create role mappings.
+
 ::::{note}
 * If [SSO enforcement](#enforce-sso) is not enabled, user roles might not be consistent with your role mapping and additional manual role assignment might be needed. Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
 * If the `groups` attribute is not included in the SAML response, the user will keep whatever groups they were last assigned by the IdP. If you want to remove all groups for a user as part of an offboarding process, instead unassign the user from the {{ecloud}} application.
 ::::
 
-
-To configure role mappings:
+### Create a role mapping
 
 1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
 2. In the **Role mappings** section, click **Create role mapping**.
@@ -221,8 +233,30 @@ To configure role mappings:
     2. Add group name or names that the member must have in their SAML assertion to be assigned the role.
 
         Use the wildcard character `*` to specify group name patterns. Wildcards will match 0 or more characters.
+6. If your role mapping contains the Organization owner role, then click **Run test** to run role mapping verification.
+7. Click **Save** to save the role mapping.
 
+### Verify Organization owner access [role-mapping-verification]
 
+To maintain uninterrupted control over your organization settings, at least one user must always be granted the Organization owner role through a valid role mapping.
+
+Whenever a role mapping that affects the Organization owner role is created, updated, or deleted, {{ecloud}} verifies whether your current IdP groups will still grant you the Organization owner role after the change. 
+
+This verification does not confirm that the role mapping is correct. It only confirms that you, as the currently logged in user, will continue to belong to the Organization owner role after the change.
+
+* **When creating or editing a role mapping:**
+  
+  Click **Run test** to verify your access. A success or failure message appears, showing the SAML response and your currently mapped roles. If verification succeeds, you can save the role mapping.
+
+* **When deleting a role mapping:**
+  
+  Your currently mapped roles are verified after you click **Delete**. If verification succeeds, the role mapping is deleted. If verification fails, a failure message is shown that includes the SAML response and your currently mapped roles, and the mapping is not deleted.
+
+If you're logged in to {{ecloud}} through a method other than SAML SSO, then you're prompted to sign in through your IdP as part of the verification process.
+
+:::{{note}}
+{{ecloud}} runs this check against your IdP groups because you are already an Organization owner and making the change. However, to maintain access, the requirement is that at least one Organization owner is assigned the role through a valid role mapping at all times.
+:::
 
 ## Disable SSO [ec_disable_sso]
 

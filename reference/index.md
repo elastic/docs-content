@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
 products:
   - id: elastic-stack
+description: Explore reference documentation for the Elastic Stack including APIs,
+  security schemas, configuration settings, query languages, scripting, ECS field
+  references, and more.
 ---
 
 # Reference [api-reference]
@@ -17,7 +20,7 @@ Explore the reference documentation for [Elastic APIs]({{apis}}).
 | {{es}} | • [{{es}}]({{es-apis}})<br>• [{{es-serverless}}]({{es-serverless-apis}})<br> |
 | {{kib}}<br>({{observability}}, {{elastic-sec}}, {{apm-agent}}, {{fleet}}, and more features) | • [{{kib}}]({{kib-apis}})<br>• [{{kib}} Serverless]({{kib-serverless-apis}})<br> |
 | {{ls}} | • [{{ls}}]({{ls-apis}})<br> |
-| APM | • [APM Server](/solutions/observability/apm/apm-server-api.md)<br>• [Observability intake Serverless]({{intake-apis}})<br> |
+| APM | • [APM Server](/solutions/observability/apm/apm-server/api.md)<br>• [Observability intake Serverless]({{intake-apis}})<br> |
 | {{ecloud}} | • [{{ech}}]({{cloud-apis}})<br>• [{{ecloud}} Serverless]({{cloud-serverless-apis}})<br>• [{{ece}}]({{ece-apis}})<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br>• [{{ecloud}} billing]({{cloud-billing-apis}})<br> |
 
 ## Security

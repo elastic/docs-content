@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-get-started.html
 applies_to:
-  stack: all
+  stack: ga 8.8
   serverless:
     security: all
 products:
@@ -16,18 +16,14 @@ products:
 
 This page explains how to set up Cloud Native Vulnerability Management (CNVM).
 
-::::{admonition} Requirements
-* {{stack}} users: {{stack}} version 8.8 or higher and an [Enterprise subscription](https://www.elastic.co/pricing).
+
+## Requirements 
+* {{stack}} users: {{stack}} version 8.8 or higher and an [appropriate subscription](https://www.elastic.co/pricing) level.
 * CNVM only works in the `Default` {{kib}} space. Installing the CNVM integration on a different {{kib}} space will not work.
 * CNVM can only be deployed on ARM-based VMs.
 * You need an AWS user account with permissions to perform the following actions: run CloudFormation templates, create IAM Roles and InstanceProfiles, and create EC2 SecurityGroups and Instances.
 * Depending on whether you want to `read`, `write`, or `manage` CNVM data, you need [specific privileges](/solutions/security/cloud/cnvm-privilege-requirements.md).
-::::
-
-
-::::{note}
-CNVM currently only supports AWS EC2 Linux workloads.
-::::
+* CNVM is supported only on AWS. AWS GovCloud is not supported. To request support, [open a GitHub ticket](https://github.com/elastic/kibana/issues/new/choose).
 
 
 
@@ -44,7 +40,7 @@ Do not add the integration to an existing {{agent}} policy. It should always be 
 ### Step 1: Add the CNVM integration [vuln-management-setup-step-1]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for **Cloud Native Vulnerability Management**, then click on the result.
+2. Search for and select **Cloud Native Vulnerability Management**.
 3. Click **Add Cloud Native Vulnerability Management**.
 4. Give your integration a name that matches its purpose or the AWS account region you want to scan for vulnerabilities (for example, `uswest2-aws-account`.)
 

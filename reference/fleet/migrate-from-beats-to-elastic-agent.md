@@ -27,7 +27,7 @@ There are currently some limitations and requirements to be aware of before migr
 
 * **No support for configuring the {{beats}} internal queue.** Each Beat has an internal queue that stores events before batching and publishing them to the output. To improve data throughput, {{beats}} users can set [configuration options](beats://reference/filebeat/configuring-internal-queue.md) to tune the performance of the internal queue. However, the endless fine tuning required to configure the queue is cumbersome and not always fruitful. Instead of expecting users to configure the internal queue, {{agent}} uses sensible defaults. This means you won’t be able to migrate internal queue configurations to {{agent}}.
 
-For more information about {{agent}} limitations, see [*{{beats}} and {{agent}} capabilities*](/reference/fleet/index.md).
+For more information about {{agent}} limitations, see [*{{beats}} and {{agent}} capabilities*](beats-agent-comparison.md).
 
 
 ## Prepare for the migration [prepare-for-migration]
@@ -36,7 +36,7 @@ Before you begin:
 
 1. Review your existing {{beats}} configurations and make a list of the integrations that are required. For example, if your existing implementation collects logs and metrics from Nginx, add Nginx to your list.
 2. Make a note of any processors or custom configurations you want to migrate. Some of these customizations may no longer be needed or possible in {{agent}}.
-3. Decide if it’s the right time to migrate to {{agent}}. Review the information under [*{{beats}} and {{agent}} capabilities*](/reference/fleet/index.md). Make sure the integrations you need are supported and Generally Available, and that the output and features you require are also supported.
+3. Decide if it’s the right time to migrate to {{agent}}. Review the information under [*{{beats}} and {{agent}} capabilities*](beats-agent-comparison.md). Make sure the integrations you need are supported and Generally Available, and that the output and features you require are also supported.
 
 If everything checks out, proceed to the next step. Otherwise, you might want to continue using {{beats}} and possibly deploy {{agent}} alongside {{beats}} to use features like endpoint protection.
 
@@ -308,7 +308,7 @@ When you migrate from {{beats}} to {{agent}}, you have a couple of options for m
 
     If you have existing index lifecycle policies for {{beats}}, it’s highly recommended that you modify the lifecycle policies for {{agent}} to match your previous policy. To do this:
 
-    1. In {{kib}}, go to **{{stack-manage-app}} > Index Lifecycle Policies** and search for a {{beats}} policy, for example, **filebeat**. Under **Linked indices**, notice you can view indices linked to the policy. Click the policy name to see the settings.
+    1. In {{kib}}, go to the **Index Lifecycle Policies** management page and search for a {{beats}} policy, for example, **filebeat**. Under **Linked indices**, notice you can view indices linked to the policy. Click the policy name to see the settings.
     2. Click the **logs** policy and, if necessary, edit the settings to match the old policy.
     3. Under **Index Lifecycle Policies**, search for another {{beats}} policy, for example, **metricbeat**.
     4. Click the **metrics** policy and edit the settings to match the old policy.

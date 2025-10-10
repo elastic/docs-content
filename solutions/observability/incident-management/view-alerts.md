@@ -1,13 +1,18 @@
 ---
+navigation_title: View and manage alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# View and manage alerts [observability-view-alerts]
+# View and manage alerts in Elastic Observability [observability-view-alerts]
 
 ::::{note}
 
@@ -50,37 +55,63 @@ From the **Alerts** table, you can click on a specific alert to open the alert d
 :screenshot:
 :::
 
-There are four common alert statuses:
-
-`active`
-:   The conditions for the rule are met and actions should be generated according to the notification settings.
-
-`flapping`
-:   The alert is switching repeatedly between active and recovered states.
-
-`recovered`
-:   The conditions for the rule are no longer met and recovery actions should be generated.
-
-`untracked`
-:   The corresponding rule is disabled or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the *More actions* menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
-
-::::{note}
-**Flapping alerts**
-
-The flapping state is possible only if you have enabled alert flapping detection. Go to the **Alerts** page and click **Manage Rules** to navigate to the {{obs-serverless}} **{{rules-app}}** page. Click **Settings** then set the look back window and threshold that are used to determine whether alerts are flapping. For example, you can specify that the alert must change status at least 6 times in the last 10 runs. If the rule has actions that run when the alert status changes, those actions are suppressed while the alert is flapping.
-
-::::
-
-
 To further inspect the rule:
 
 * From the alert detail flyout, click **View rule details**.
-* From the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon and select **View rule details**.
+* From the **Alerts** table, click the {icon}`boxes_horizontal` icon and select **View rule details**.
 
 To view the alert in the app that triggered it:
 
 * From the alert detail flyout, click **View in app**.
-* From the **Alerts** table, click the ![View in app](/solutions/images/serverless-eye.svg "") icon.
+* From the **Alerts** table, click the {icon}`eye` icon.
+
+## Review related alerts [observability-view-alerts-find-related-alerts]
+```{applies_to}
+stack: ga 9.1 
+```
+
+Check related alerts to find other alerts that might be related to the same incident. You can add these alerts to a case and investigate them as a group instead of analyzing them individually.
+
+To find related alerts, go to the **Related alerts** tab from an alert's details page. Within the table, alerts are ordered from most to least relevant. To only view alerts that were created around the same time as the current alert (+/- 30 minutes), apply the **Triggered around the same time** filter.
+
+The relevancy of alerts is determined by how closely they match the current alert and other similiarites that they might share:
+
+1. Alerts in the space are filtered down to only include alerts that were created about one day before or after the current alert. 
+2. Data from the new subset of alerts is compared against the current alert to identify matching values and similarities. Data such as the time at which alerts were generated or recovered, tags added to the alerts, group values, and more are evaluated.
+3. Alerts are scored based on how closely they match the current alert. Alerts with a score above a certain threshold are considered relevant and are included in the list of related alerts.
+
+
+## Understand alert statuses [observability-view-alerts-understand-statuses]
+
+There are four common alert statuses:
+
+`active`
+:   The conditions for the rule are met. If the rule has [actions](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. 
+
+`flapping`
+
+:   The alert is switching repeatedly between active and recovered states. If the rule has actions that run when the alert status changes states, those actions are suppressed while the alert is flapping.
+
+::::{note}  
+
+Alert flapping is turned on by default. You can modify the criteria for changing an alert's status to the flapping state by configuring the **Alert flapping detection** settings. To do this, navigate to the **Alerts** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, click **Manage Rules**, then **Settings** to open the global rule settings for the space. In the **Alert flapping detection** section, modify the rules' look back window and threshold for alert status changes. For example, you can specify that the alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. 
+
+::::
+
+`recovered`
+:   The conditions for the rule are no longer met. If the rule has [recovery actions](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
+
+
+    An active alert changes to recovered if the conditions for the rule that generated it are no longer met. 
+
+    A flapping alert changes to recovered when the rule's conditions are unmet for a specific number of consecutive runs. This number is determined by the **Alert status change threshold** setting, which you can configure under the **Alert flapping detection** settings.
+    
+    For example, if the threshold requires an alert to change status at least 6 times in the last 10 runs to be considered flapping, then to recover, the rule's conditions must remain unmet for 6 consecutive runs. If the rule's conditions are met at any point during this recovery period, the count of consecutive unmet runs will reset, requiring the alert to remain unmet for an additional 6 consecutive runs to finally be reported as recovered.
+
+    Once a flapping alert is recovered, it cannot be changed to flapping again. Only new alerts with repeated status changes are candidates for the flapping status. 
+
+`untracked`
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
 
 ## Customize the alerts table [observability-view-alerts-customize-the-alerts-table]
@@ -98,13 +129,12 @@ You can also use the toolbar buttons in the upper-right to customize the display
 
 ## Add alerts to cases [observability-view-alerts-add-alerts-to-cases]
 
-From the **Alerts** table, you can add one or more alerts to a case. Click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
+From the **Alerts** table, you can add one or more alerts to a case. Click the {icon}`boxes_horizontal` icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
 
 ::::{note}
 Each case can have a maximum of 1,000 alerts.
 
 ::::
-
 
 
 ### Add an alert to a new case [observability-view-alerts-add-an-alert-to-a-new-case]

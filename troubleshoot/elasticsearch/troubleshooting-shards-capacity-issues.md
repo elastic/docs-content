@@ -15,6 +15,9 @@ products:
 
 # Troubleshoot shard capacity health issues [troubleshooting-shards-capacity-issues]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 {{es}} limits the maximum number of shards to be held per node using the [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) and [`cluster.max_shards_per_node.frozen`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node-frozen) settings. The current shards capacity of the cluster is available in the [health API shards capacity section](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report).
 
 
@@ -434,6 +437,3 @@ PUT _cluster/settings
 ::::::
 
 :::::::
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::

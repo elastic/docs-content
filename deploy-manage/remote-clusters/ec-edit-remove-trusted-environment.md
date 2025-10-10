@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage trusted environments
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-edit-remove-trusted-environment.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Edit or remove a trusted environment [ec-edit-remove-trusted-environment]
+# Manage trusted environments for remote connections in {{ech}} [ec-edit-remove-trusted-environment]
 
 From a deployment’s **Security** page, you can manage trusted environments that were created previously. This can happen when:
 
@@ -22,7 +23,7 @@ From a deployment’s **Security** page, you can manage trusted environments tha
 By removing a trusted environment, this deployment will no longer be able to establish remote connections using certificate trust to clusters of that environment. The remote environment will also no longer be able to connect to this deployment using certificate trust.
 
 ::::{note}
-With this method, you can only remove trusted environments relying exclusively on certificates. To remove remote connections that use API keys for authentication, refer to [Update the access level of a remote cluster connection relying on a cross-cluster API key](#ec-edit-remove-trusted-environment-api-key).
+With this method, you can only remove trusted environments relying exclusively on certificates. To remove remote connections that use API keys for authentication, refer to [Change a cross-cluster API key used for a remote connection](#ec-edit-remove-trusted-environment-api-key).
 ::::
 
 

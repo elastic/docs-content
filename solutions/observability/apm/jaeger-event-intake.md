@@ -15,7 +15,7 @@ products:
 
 ::::
 
-Elastic APM natively supports Jaeger, an open-source, distributed tracing system. [Learn more](/solutions/observability/apm/jaeger.md).
+Elastic APM natively supports Jaeger, an open-source, distributed tracing system. [Learn more](/solutions/observability/apm/ingest/jaeger.md).
 
 **Jaeger/gRPC paths**
 

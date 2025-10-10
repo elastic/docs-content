@@ -1,15 +1,16 @@
 ---
+navigation_title: Transactions
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-transactions.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
 ---
 
-# Transactions [apm-data-model-transactions]
+# Transactions in Elastic APM [apm-data-model-transactions]
 
 **Transactions** are a special kind of [span](/solutions/observability/apm/spans.md) that have additional attributes associated with them. They describe an event captured by an Elastic {{apm-agent}} instrumenting a service. You can think of transactions as the highest level of work you’re measuring within a service. As an example, a transaction might be a:
 

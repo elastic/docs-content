@@ -23,7 +23,7 @@ You can also [convert an index alias to a data stream](#convert-index-alias-to-d
 ::::{important}
 If you use {{fleet}}, {{agent}}, or {{ls}}, skip this tutorial. They all set up data streams for you.
 
-For {{fleet}} and {{agent}}, check out this [data streams documentation](/reference/fleet/data-streams.md). For {{ls}}, check out the [data streams settings](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
+For {{fleet}} and {{agent}}, refer to [](/reference/fleet/data-streams.md). For {{ls}}, refer to the [data streams settings](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
 
 ::::
 
@@ -206,14 +206,14 @@ After it's been created, you can view and manage this and other data streams fro
 
 ## Secure the data stream [secure-data-stream]
 
-Use [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
+Use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
 
 For an example, see [Data stream privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
 
 ## Convert an index alias to a data stream [convert-index-alias-to-data-stream]
 
-Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
+Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
 
 To convert an index alias with a write index to a data stream with the same name, use the [migrate to data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream). During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
 
@@ -235,7 +235,7 @@ GET _data_stream/my-data-stream
 
 ## Delete a data stream [delete-data-stream]
 
-To delete a data stream and its backing indices in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) for the data stream.
+To delete a data stream and its backing indices in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](elasticsearch://reference/elasticsearch/security-privileges.md) for the data stream.
 
 You can also use the [delete data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream).
 
