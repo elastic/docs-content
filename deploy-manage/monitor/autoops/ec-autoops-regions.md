@@ -1,18 +1,31 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-regions.html
+navigation_title: Regions
 applies_to:
+  serverless:
   deployment:
+    self:
+    ece:
+    eck:
     ess: all
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps regions [ec-autoops-regions]
 
-A region is where a cloud service provider's data center that hosts your deployments is located. Based on a planned release schedule, Elastic is enabling AutoOps on the following cloud service providers: AWS, Azure, and GCP.
+A region is where a cloud service provider's data center hosts your deployments or clusters.
 
-AutoOps is currently available in the following regions for AWS:
+::::{note} 
+AutoOps is currently not available in any region for GovCloud customers.
+::::
+
+## AutoOps for {{ECH}} regions
+
+AutoOps for {{ECH}} is currently available in the following regions for AWS:
 
 | Region | Name |
 | --- | --- | --- | --- |
@@ -38,8 +51,26 @@ AutoOps is currently available in the following regions for AWS:
 | sa-east-1 | Sao Paulo |
 | af-south-1 | Cape Town |
 
-Regions for Azure and GCP will be added in the future.
+Regions for Azure and GCP are coming soon.
 
-::::{note} 
-AutoOps is currently not available for GovCloud customers.
-::::
+## AutoOps for self-managed clusters regions
+
+You can also use AutoOps with your ECE ({{ece}}), ECK ({{eck}}), or self-managed clusters through [Cloud Connect](/deploy-manage/cloud-connect.md). 
+
+This service is currently available in the following regions for AWS:
+
+:::{include} ../_snippets/autoops-cc-regions.md
+:::
+
+## AutoOps for {{serverless-full}} regions
+
+AutoOps for serverless projects is currently available in the following regions for AWS:
+
+| Region | Name |
+| --- | --- | --- | --- |
+| us-east-1 | N. Virginia |
+| eu-west-1 | Ireland |
+| ap-southeast-1 | Singapore |
+| us-west-2 | Oregon |
+
+The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure and GCP.
