@@ -120,7 +120,7 @@ Filter the data with one or more options that you select.
 4. To clear the selections, click ![The icon to clear all selected options in the Options list](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 5. To display only the options you selected in the dropdown, click ![The icon to display only the options you have selected in the Options list](/explore-analyze/images/kibana-dashboard_showOnlySelectedOptions_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList_8.7.0.png
+:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
 :alt: Options list control
 :screenshot:
 :::
