@@ -50,9 +50,8 @@ toc:
       - hidden: search/agent-builder/chat.md
       - hidden: search/agent-builder/agent-builder-agents.md
       - hidden: search/agent-builder/tools.md
-        children:
-          - hidden: search/agent-builder/tools/esql-tools.md
-          - hidden: search/agent-builder/tools/index-search-tools.md
+      - hidden: search/agent-builder/tools/esql-tools.md
+      - hidden: search/agent-builder/tools/index-search-tools.md
       - hidden: search/agent-builder/programmatic-access.md
       - hidden: search/agent-builder/kibana-api.md
       - hidden: search/agent-builder/mcp-server.md
