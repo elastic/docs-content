@@ -47,15 +47,19 @@ Two deployment technologies are available: agentless and agent-based.
 :::
 
 7. In **Deployment options** select **Agentless**.
-8. Next, you’ll need to authenticate to AWS. Two methods are available:
+8. Next, you’ll need to authenticate to AWS. Three methods are available:
 
-    * Option 1: Direct access keys/CloudFormation (Recommended). For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
+    * {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Option 1: Cloud Connector (recommended). 
+      * To use a pre-existing Cloud Connector for this deployment, select it under **Existing connection**. 
+      * To use a new Cloud Connector: under **New connection**, expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in Kibana.
+
+    * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the instructions to automatically create the necessary credentials using CloudFormation.
 
        ::::{note}
        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
        ::::
 
-    * Option 2: Temporary keys. To authenticate using temporary keys, refer to the instructions for [temporary keys](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-use-temp-credentials).
+    * Option 3: Temporary keys. To authenticate using temporary keys, refer to the instructions for [temporary keys](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-use-temp-credentials).
 
 9. Once you’ve selected an authentication method and provided all necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
