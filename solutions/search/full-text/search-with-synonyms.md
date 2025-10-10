@@ -96,7 +96,7 @@ You can create and manage synonym sets and synonym rules using the {{kib}} user 
 
 To create a synonym set using the UI:
 
-1. Navigate to **Elasticsearch** > **Synonyms** or use the [global search field](/explore-analyze/query-filter/filtering.md#_finding_your_apps_and_objects).
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Synonyms, then select **Synonyms / Synonyms** from the results.
 2. Click **Get started**.
 3. Enter a name for your synonym set.
 4. Add your synonym rules in the editor by adding terms to match against:
