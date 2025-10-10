@@ -418,7 +418,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 6. Repeat steps 4 and 5 until all snapshots are restored to regular indices.
 7. Once all snapshots are restored, use `GET _cat/indices/<index-pattern>?v=true` to check that the restored indices are `green` and are correctly reflecting the expected `doc` and `store.size` counts.
 
-    If you are using data stream, you may need to use `GET _data_stream/<data-stream-name>` to get the list of the backing indices, and then specify them by using `GET _cat/indices/<backing-index-name>?v=true` to check.
+    If you are using data stream, you may need to use `GET _data_stream/<data-stream-name>` to get the list of the backing indices, and then specify them by using `GET _cat/indices/<backing-index-name>?v=true` to check. Note that when you restore the backing indices of a data stream, some [considerations](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#considerations) apply, and you might need to manually add the restored indices into your data stream or recreate your data stream.
 
 8. Once your data has completed restoration from searchable snapshots to the target data tier, `DELETE` searchable snapshot indices using the prefix from step 2.
 
