@@ -401,6 +401,15 @@ When you include a particular event as context, such as an alert from the Alerts
 
 The **Knowledge base** tab of the **Security AI settings** page allows you to enable AI Assistant to remember specified information, and use it as context to improve response quality. To learn more, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md).
 
+### AI Assistant visibility [ai-assistant-visibility]
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+:::{include} ../../_snippets/ai-assistant-visibility.md
+:::
+If you select the option to show the Security AI Assistant in other apps, the Security AI Assistant becomes **accessible outside of the Security solution**, for example, in Discover. The chat history remains persistent and is available no matter where you access the assistant within Kibana. 
+
 ### Get the most from your queries [rag-for-esql]
 
 Elastic AI Assistant allows you to take full advantage of the {{elastic-sec}} platform to improve your security operations. It can help you write an {{esql}} query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
