@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Downsample data"
+navigation_title: "Configuration"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-manual.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-ilm.html
@@ -10,11 +10,11 @@ products:
   - id: elasticsearch
 ---
 
-# Downsample time series data [running-downsampling]
+# Configuring a time series data stream for downsampling [running-downsampling]
 
 To downsample a time series data stream (TSDS), you can use index lifecycle management (ILM) or a data stream lifecycle. (You can also use the [downsample API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-downsample) with an individual time series index, but most users don't need to use the API.)
 
-Before you begin, review the [](downsampling-concepts.md).
+Before you begin, review [](downsampling-concepts.md).
 
 :::{important}
 Downsampling requires **read-only** data.
@@ -140,19 +140,4 @@ To reduce the index size:
 * [](time-series-data-stream-tsds.md)
 * [](set-up-tsds.md)
 
-% :::{tab-item} Downsample API
 
-% ## Downsampling with the API
-
-% Make a [downsample API] request:
-
-% ```console
-% POST /my-time-series-index/_downsample/my-downsampled-time-series-index
-% {
-%    "fixed_interval": "1d"
-% }
-% ```
-
-% Set `fixed_interval` to your preferred level of granularity. The original time series data will be aggregated at this interval.
-
-% :::
