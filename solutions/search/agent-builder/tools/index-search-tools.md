@@ -14,7 +14,7 @@ These pages are currently hidden from the docs TOC and have `noindexed` meta hea
 
 # Index search tools
 
-Index search tools provide intelligent, natural language-driven search over specified {{es}} resources. Instead of defining explicit queries, you specify a pattern of indices, aliases, or data streams, and the tool uses a combination of built-in capabilities to intelligently interpret and execute search requests.
+Index search tools provide intelligent, natural language-driven search over specified {{es}} resources. Instead of defining explicit queries, you specify a pattern of [indices](/manage-data/data-store/index-basics.md), [aliases](/manage-data/data-store/aliases), or [data streams](/manage-data/data-store/data-streams.md), and the tool uses a combination of built-in capabilities to intelligently interpret and execute search requests.
 
 ## When to use index search tools
 
