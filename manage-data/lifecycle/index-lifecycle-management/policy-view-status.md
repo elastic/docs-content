@@ -49,7 +49,7 @@ To learn how to create a specialized ILM policy for any data stream, such as tho
 
 **To view the current lifecycle status for a datastream in Streams:** {applies_to}`"stack": "ga 9.2, preview 9.1"` 
 
-Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for common data management tasks in {{kib}}.
+Starting with {{stack}} version 9.2, [Streams](/solutions/observability/streams/streams.md) provides a centralized interface for common data management tasks in {{kib}}.
 
 1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. A stream directly corresponds to an {{es}} data stream. Select a stream to view its details.
