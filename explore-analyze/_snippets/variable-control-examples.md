@@ -21,5 +21,5 @@
 * Make the function itself dynamic
 
   ```esql
-  | STATS metric = ?function
+  | STATS metric = ??function
   ```
