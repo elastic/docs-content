@@ -73,4 +73,4 @@ AutoOps for serverless projects is currently available in the following regions 
 | ap-southeast-1 | Singapore |
 | us-west-2 | Oregon |
 
-The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure and GCP.
+The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure, and GCP.
