@@ -22,9 +22,9 @@ While in private technical preview, {{agent-builder}} is not enabled by default.
 
 ### Model selection
 
-Initially, {{agent-builder}} only supports working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) {applies_to}`serverless: preview` {applies_to}`ess: preview 9.2`.
+Initially, {{agent-builder}} defaults to working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) {applies_to}`serverless: preview` {applies_to}`ess: preview 9.2`.
 
-Learn about [pricing](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM.
+Learn more on the [models page](models.md).
 
 ## Known issues
 
