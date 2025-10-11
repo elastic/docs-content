@@ -8,7 +8,7 @@ To add a Discover query to a dashboard in a way that preserves the [controls cre
 
 1. Find and select the Discover session you saved earlier.
 
-A new panel with the results of the query is added to the dashboard, and any existing controls attached to that query are added to the dashboard.
+A new panel appears on the dashboard with the results of the query along with any attached controls.
 
 ![Importing Discover controls into a dashboard](/explore-analyze/images/import-discover-control-dashboard.png " =40%")
 
