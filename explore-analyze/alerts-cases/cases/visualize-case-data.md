@@ -22,7 +22,7 @@ To visualize case data, you must do the following:
 
 ## About case analytics indices [about-case-analytics-indices]
 
-After you turn on the case analytics indices feature, your {{kib}} spaces are checked for case data. If they have any, {{es}} automatically creates case analytics indices for each solution (Stack Management, {{observability}}, and Security) and every {{kib}} space. Aliases for the case analytics indices are automatically created as well.
+After turning on the case analytics indices feature, your {{kib}} spaces are checked for case data. {{es}} automatically creates case analytics indices for Stack Management, {{observability}}, and Security in each {{kib}} space that has cases. {{es}} automatically creates aliases for the case analytics indices as well.
 
 The case analytics indices are updated very five minutes with a snapshot of most current cases data in your spaces. Historical data for cases is not stored; it gets overwritten whenever the indices are refreshed.
 
