@@ -90,6 +90,10 @@ You can add one interactive time slider control to a dashboard.
 
 
 ## Add variable controls [add-variable-control]
+```{applies_to}
+stack: preview 9.0
+serverless: preview
+```
 
 :::{note}
 In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
@@ -113,17 +117,8 @@ Only **Options lists** are supported for {{esql}}-based controls. Options can be
 
 2. A menu opens to let you configure the control. This is where you can specify:
 
-    * The type of the control. 
-      * For controls with **Static values**, select the options available in the controls by entering them manually or by using a dropdown listing available values. 
-      * For controls with **Values from a query**, write an {{esql}} query to populate the list of options.
-    * The name of the control. This name is used to reference the control in {{esql}} queries. 
-      * Start the name with `?` if you want the options to be simple static values.
-      * Start the name with `??` if you want the options of the control to be fields or functions. {applies_to}`stack: ga 9.1`
-    * The values users can select for this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an {{esql}} query at this step.
-    * The label of the control. This is the label displayed for users viewing the dashboard for that control.
-    * The width of the control.
-
-    ![ESQL control settings](/explore-analyze/images/esql-visualization-control-settings.png "title =50%")
+   :::{include} ../_snippets/variable-control-form.md
+   :::
 
 3. Save the control. 
 
@@ -132,34 +127,19 @@ If you added it by starting from a query, the control is directly inserted in th
 
 You can then insert it in any other {{esql}} visualization queries by typing the control's name.
 
-
-**Examples**
-
-* Integrate filtering into your {{esql}} experience
-
-  ```esql
-  | WHERE field == ?value
-  ```
-
-* Fields in controls for dynamic group by
-
-  ```esql
-  | STATS count=COUNT(*) BY ?field
-  ```
-
-* Variable time ranges? Bind function configuration settings to a control
-
-  ```esql
-  | BUCKET(@timestamp, ?interval),
-  ```
-
-* Make the function itself dynamic
-
-  ```esql
-  | STATS metric = ?function
-  ```
+:::{include} ../_snippets/variable-control-examples.md
+:::
 
 ![Editing {{esql}} controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
+
+### Import a Discover query along with its controls into a dashboard
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+
+:::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
+:::
 
 ## Configure the controls settings [configure-controls-settings]
 
