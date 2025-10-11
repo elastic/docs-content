@@ -325,7 +325,7 @@ You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to existing tabs.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
-To manage and organize your tabs as you need, you can: 
+To manage and organize your tabs, you can: 
 - Rename them: Hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
 - Reorder them: Drag and drop tabs as you choose.
 - Close them: Hover over a tab and select the {icon}`cross` icon.
