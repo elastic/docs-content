@@ -1,5 +1,5 @@
 * The type of the control. 
-  * For controls with **Static values**, select the options available in the controls by entering them manually or by using a dropdown listing available values. 
+  * For controls with **Static values**, enter available controls manually or select them from the dropdown list. 
   * For controls with **Values from a query**, write an {{esql}} query to populate the list of options.
 * The name of the control. This name is used to reference the control in {{esql}} queries. 
   * Start the name with `?` if you want the options to be simple static values.
