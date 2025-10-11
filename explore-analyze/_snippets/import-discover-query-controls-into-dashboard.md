@@ -13,5 +13,5 @@ A new panel appears on the dashboard with the results of the query along with an
 ![Importing Discover controls into a dashboard](/explore-analyze/images/import-discover-control-dashboard.png " =40%")
 
 :::{note}
-When directly adding the visualization to a dashboard using the {icon}`save` **Save visualization** option, controls are not added to the dashboard.
+When you add a visualization to a dashboard using the {icon}`save` **Save visualization** option, controls are not added to the dashboard.
 :::
