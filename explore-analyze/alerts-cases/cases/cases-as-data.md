@@ -38,9 +38,9 @@ Ensure your role has at least `read` and `view_index_metadata` access to the app
 
 ## Explore and visualize case data with Discover [explore-case-data]
 
- By default, {{kib}} requires a [{{data-source}}](../../find-and-organize/data-views.md) to access your Elasticsearch data. When creating a {{data-source}} for case data, point to one or more [case analytics indices or their aliases](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names).
+By default, {{kib}} requires a [{{data-source}}](../../find-and-organize/data-views.md) to access your Elasticsearch data. When creating a {{data-source}} for case data, point to one or more [case analytics indices or their aliases](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names).
 
-You can also [try {{esql}}](../../../explore-analyze/discover/try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first. Here are some sample queries to get you started:
+You can also [try {{esql}}](../../../explore-analyze/discover/try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first. Here are some sample queries to get you started:
 
 * Find the total number of open {{observability}} cases in the default space:
 
