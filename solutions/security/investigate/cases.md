@@ -32,7 +32,7 @@ You can also send cases to these external systems by [configuring external conne
 
 ::::{tip}
 :applies_to: stack: preview 9.2
-After creating cases, use case data to build dashboards and visualizations that give you insights into case trends and operational metrics. Refer to [Cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
+After creating cases, use case data to build dashboards and visualizations that provide insights into case trends and operational metrics. Refer to [Cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
 ::::
 
 
