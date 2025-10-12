@@ -24,16 +24,16 @@ After turning on cases as data, you do not need to manually create the analytics
 You also do not need to manually manage the analytics indices' index lifecycle management (ILM) policies. The indices are updated by a background task that runs every five minutes and applies a snapshot of the most current cases data. Note that historical case data is not retained; it gets overwritten whenever the indices are refreshed.
 
 ::::{note} 
-After you create cases, {{es}} may take up to 10 minutes to index the new case data. If you create a new space, it can take up to an hour for new case analytics indices to form.  
+There may be delays in indexing data and creating indices:
+- After making new cases, it may take up to 10 minutes to index the new case data. 
+- After making a new space, it can take up to an hour for the case analytics indices for that space to form.  
 ::::
 
 ## Explore case data [explore-case-data]
 
 ::::{admonition} Requirements
-
-* Your role has at least `read` and `view_index_metadata` access to the appropriate case anlaytics indices.
+* Your role needs at least `read` and `view_index_metadata` access to the appropriate case analytics indices.
 * You must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
-
 ::::
 
 To explore case data:
@@ -43,31 +43,31 @@ To explore case data:
 
 To help you start visualizing your case data, here are some sample {{esql}} queries that you can run from the [{{esql}} editor](../../../explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-get-started) in Discover.
 
-* Find the total number of open cases in the default {{kib}} space:
+* Find the total number of open cases in the default space:
 
   ```console
   FROM .internal.cases.default-observability | STATS count = COUNT(*) BY status | WHERE status  == "open"
   ```
 
-* Find the total number of in progress Stack Management cases in the default {{kib}} space:
+* Find the total number of in progress Stack Management cases in the default space:
 
   ```console
   FROM .internal.cases.default-cases | STATS count = COUNT(*) BY status | WHERE status  == "in-progress"
   ```
 
-* Find the total number of closed {{observability}} cases in the default {{kib}} space:
+* Find the total number of closed {{observability}} cases in the default space:
 
   ```console
   FROM .internal.cases.default-observability | STATS count = COUNT(*) BY status | WHERE status  == "closed"
   ```
 
-* Find Security cases that are open in the default {{kib}} space, and sort them by time, with the most recent at the top:
+* Find Security cases that are open in the default space, and sort them by time, with the most recent at the top:
 
   ```console
   FROM .internal.cases.default-securitysolution | WHERE status  == "open" | SORT created_at DESC
   ```
 
-* Find the average time that it takes to close Security cases in the default {{kib}} space:
+* Find the average time that it takes to close Security cases in the default space:
 
   ```console
   FROM .internal.cases.default-securitysolution | STATS average_time_to_close = AVG(time_to_resolve)
