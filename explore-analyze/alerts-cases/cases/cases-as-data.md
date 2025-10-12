@@ -31,7 +31,7 @@ After you create cases, {{es}} may take up to 10 minutes to index the new case d
 
 ::::{admonition} Requirements
 
-* Your role has at least `read` and `view_index_metadata` access to the appropriate [case anlaytics indices](/explore-analyze/alerts-cases.md/cases/cases-as-data.md#case-analytics-indices).
+* Your role has at least `read` and `view_index_metadata` access to the appropriate case anlaytics indices.
 * You must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 
 ::::
