@@ -1,7 +1,7 @@
 ---
 applies_to:
-  serverless: preview
-  stack: preview 9.1
+  serverless: ga
+  stack: preview 9.1, ga 9.2
 ---
 
 # Date processor [streams-date-processor]

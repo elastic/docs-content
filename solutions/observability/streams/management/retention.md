@@ -1,8 +1,8 @@
 ---
 navigation_title: Manage data retention
 applies_to:
-  serverless: preview
-  stack: preview 9.1
+  serverless: ga
+  stack: preview 9.1, ga 9.2
 ---
 
 # Manage data retention for streams [streams-data-retention]
