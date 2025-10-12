@@ -30,9 +30,11 @@ You can also send cases to these external systems by [configuring external conne
 :screenshot:
 :::
 
-::::{note} 
-{applies_to}`stack: ga 9.2` With the appropriate index access, you can [build visualizations and metrics](../../../explore-analyze/alerts-cases/cases/visualize-case-data.md) of data in {{observability}}, {{stack-manage-app}}, and {{elastic-sec}} cases. This can provide improved visibility into patterns and trends of cases within your space.
+::::{tip}
+:applies_to: stack: preview 9.2
+After creating cases, use case data to build dashboards and visualizations that give you insights into case trends and operational metrics. Refer to [Cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
 ::::
+
 
 ## Limitations [security-case-limitations]
 
