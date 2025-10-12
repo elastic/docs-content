@@ -459,14 +459,6 @@ toc:
       - file: observability/streams/streams.md
         children:
         - file: observability/streams/management/retention.md
-        - file: observability/streams/management/partitioning.md
-          children:
-            - file: observability/streams/management/pipelines/create-edit-pipeline.md
-            - file: observability/streams/management/pipelines/pipeline-processor-types.md
-            - file: observability/streams/management/pipelines/pipeline-priorities.md
-            - file: observability/streams/management/pipelines/pipeline-ordering.md
-            - file: observability/streams/management/pipelines/pipeline-monitoring.md
-            - file: observability/streams/management/pipelines/pipeline-troubleshooting.md
         - file: observability/streams/management/extract.md
           children:
             - file: observability/streams/management/extract/date.md
@@ -476,6 +468,7 @@ toc:
             - file: observability/streams/management/extract/rename.md
             - file: observability/streams/management/extract/append.md
             - file: observability/streams/management/extract/manual-pipeline-configuration.md
+        - file: observability/streams/management/partitioning.md
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
         - file: observability/streams/management/significant-events.md
