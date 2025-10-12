@@ -38,7 +38,7 @@ After you create cases, {{es}} may take up to 10 minutes to index the new case d
 
 To explore case data:
 
-1. Create a [data view](/explore-analyze/find-and-organize/data-views.md) that uses any of the [case analytics indices](/explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names).
+1. Create a [data view](/explore-analyze/find-and-organize/data-views.md) that uses any of the case analytics indices.
 2. Search and filter the case data in [Discover](../../discover.md) or build visualizations for dashboards in [Lens](../../visualize/lens.md). 
 
 To help you start visualizing your case data, here are some sample {{esql}} queries that you can run from the [{{esql}} editor](../../../explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-get-started) in Discover.
