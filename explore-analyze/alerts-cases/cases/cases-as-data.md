@@ -27,7 +27,7 @@ You also do not need to manually manage the analytics indices' index lifecycle m
 After you create cases, {{es}} may take up to 10 minutes to index the new case data. If you create a new space, it can take up to an hour for new case analytics indices to form.  
 ::::
 
-## Explore case data [understand-case-analytics-indices]
+## Explore case data [explore-case-data]
 
 ::::{admonition} Requirements
 
@@ -38,7 +38,7 @@ After you create cases, {{es}} may take up to 10 minutes to index the new case d
 
 To explore case data:
 
-1. Create a [data view](/explore-analyze/find-and-organize/data-views.md) that uses any of the [case analytics indices](/explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices).
+1. Create a [data view](/explore-analyze/find-and-organize/data-views.md) that uses any of the [case analytics indices](/explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names).
 2. Search and filter the case data in [Discover](../../discover.md) or build visualizations for dashboards in [Lens](../../visualize/lens.md). 
 
 To help you start visualizing your case data, here are some sample {{esql}} queries that you can run from the [{{esql}} editor](../../../explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-get-started) in Discover.
@@ -73,7 +73,7 @@ To help you start visualizing your case data, here are some sample {{esql}} quer
   FROM .internal.cases.default-securitysolution | STATS average_time_to_close = AVG(time_to_resolve)
   ```
 
-## Case analytics indices names and aliases
+## Case analytics indices names and aliases [case-analytics-indices-names]
 
 This section provides the names and aliases of the case analytics indices that {{es}} creates per space and solution. Note that `<space-name>` is a placeholder for the name of a space.  
 
@@ -112,7 +112,7 @@ These indices store data related to attachments in Stack Management, {{observabi
 | `.internal.cases-attachments.<space-name>-observability` |  `.cases-attachments.<space-name>-observability` | {{observability}} cases    | 
 | `.internal.cases-attachments.<space-name>-securitysolution` |  `.cases-attachments.<space-name>-securitysolution` | Security cases    | 
 
-### Indices for case activity [case-activity-indices]
+### Indices for case activity 
 
 These indices store data related to activity in Stack Management, {{observability}}, and Security cases.
 
