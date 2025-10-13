@@ -516,7 +516,15 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/3318
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
-
-
-
-
+# Related to https://github.com/elastic/docs-content/pull/3222
+  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
+    many:
+    - to: 'manage-data/data-store/data-streams/time-bound-tsds.md'
+      anchors: 
+        'time-bound-indices': 'time-bound-indices'
+        'dimension-based-routing': 'dimension-based-routing'
+        'tsds-accepted-time-range': 'tsds-accepted-time-range'   
+    anchors:
+      'time-series-mode': 
+      'tsds-look-ahead-time': 
+      'tsds-look-back-time':
