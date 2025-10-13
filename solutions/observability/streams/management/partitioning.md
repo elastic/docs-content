@@ -1,9 +1,9 @@
 ---
-navigation_title: Partitioning
+navigation_title: Partition child streams
 applies_to:
   serverless: preview
   stack: preview 9.2
 ---
 
-# Partitioning your wired streams
+# Partition child streams in your wired streams
 

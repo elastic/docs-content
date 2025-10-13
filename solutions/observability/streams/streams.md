@@ -20,6 +20,8 @@ Streams requires the following Elastic Cloud Serverless roles:
 - Admin: ability to manage all Streams.
 - Editor/Viewer: limited access, unable to perform all actions.
 
+% ## Wired streams vs classic streams - need to add this in
+
 ## Access Streams
 
 Open Streams from one of the following places in {{kib}}:
