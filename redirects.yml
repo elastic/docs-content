@@ -520,7 +520,6 @@ redirects:
   'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
     to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
     anchors:
-      'tsds': 'tsds'
       'when-to-use-tsds': 'when-to-use-tsds'
       'time-series': 'time-series'
       'time-series-dimension': 'time-series-dimension'
