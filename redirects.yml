@@ -518,7 +518,7 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/3222
   'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
-    to: 'manage-data/data-store/data-streams/time-series-data-streams-tsds.md'
+    to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
     anchors:
       'tsds': 'tsds'
       'when-to-use-tsds': 'when-to-use-tsds'
