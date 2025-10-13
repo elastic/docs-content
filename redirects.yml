@@ -518,7 +518,15 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/3222
   'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
+    to: 'manage-data/data-store/data-streams/time-series-data-streams-tsds.md'
     anchors:
+      'tsds': 'tsds'
+      'when-to-use-tsds': 'when-to-use-tsds'
+      'time-series': 'time-series'
+      'time-series-dimension': 'time-series-dimension'
+      'time-series-metric': 'time-series-metric'
+      'tsid': 'tsid'
+      'tsds-whats-next': 'tsds-whats-next'
       'time-series-mode':
       'tsds-look-ahead-time':
       'tsds-look-back-time':
