@@ -19,6 +19,7 @@ This page shows you how to manually set up a [time series data stream](/manage-d
 - Make sure you have the following permissions:
     - [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster)
         - `manage_index_templates` for creating a template to base the TSDS on
+        - {applies_to}`stack: ga` `manage_ilm` if you're using [index lifecycle management](#tsds-ilm-policy)
     - [Index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) 
         - `create_doc` and `create_index` for creating or converting a TSDS
         - `manage` to [roll over](#convert-existing-data-stream-to-tsds) a TSDS
@@ -30,21 +31,65 @@ If you're working with OpenTelemetry data, try the [OpenTelemetry quickstarts](/
 ## Set up a TSDS
 
 :::::{stepper}
+:::{step} Create an index lifecycle policy (optional)
+:anchor: tsds-ilm-policy
+
+```{applies_to}
+stack: ga
+serverless: unavailable
+```
+
+In most cases, you can use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage your time series data stream. If you're using [data tiers](/manage-data/lifecycle/data-tiers.md) in {{stack}}, you can use [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
+
+:::{dropdown} Create an ILM policy
+
+If you're using {{stack}}, {{ilm-init}} can help you manage a time series data stream's backing indices. {{ilm-init}} requires an index lifecycle policy.
+
+For best results, specify a `max_age` for the `rollover` action in the policy. This nesures the [`timestamp` ranges](/manage-data/data-store/data-streams/time-bound-tsds.md) for the backing indices are consistent. For example, setting a `max_age` of `1d` for the `rollover` action ensures your backing indices consistently contain one day's worth of data.
+
+**Example:**
+
+```console
+PUT _ilm/policy/my-weather-sensor-lifecycle-policy
+{
+  "policy": {
+    "phases": {
+      "hot": {
+        "actions": {
+          "rollover": {
+            "max_age": "1d",
+            "max_primary_shard_size": "50gb"
+          }
+        }
+      }
+      // Additional phases (warm, cold, delete) as needed
+      }
+    }
+  }
+}
+```
+
+:::
+
+
 ::::{step} Create an index template 
 :anchor: create-tsds-index-template
 
 The structure of a time series data stream is defined by an index template. Create an index template with the following required elements and settings:
 
-- **Index patterns:** One or more wildcard patterns matching the name of your TSDS, such as `weather-sernsors-*`. For best results, use the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
+- **Index patterns:** One or more wildcard patterns matching the name of your TSDS, such as `weather-sensors-*`. For best results, use the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 - **Data stream object:** The template must include `"data_stream": {}`.
 - **Time series mode:** Set `index.mode: time_series`.
 - **Field mappings:** Define at least one dimension field and typically one or more metric fields:
-    - To define a dimension, set `time_series_dimension` to `true`. For more details, refer to [Dimensions](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension). 
+    - **Dimensions:** To define a dimension, set `time_series_dimension` to `true`. For details, refer to [Dimensions](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension). 
         - To define dimensions dynamically, you can use a pass-through object. For details, refer to [Defining sub-fields as time series dimensions](elasticsearch://reference/elasticsearch/mapping-reference/passthrough.md#passthrough-dimensions).
-    - To define a metric, use the `time_series_metric` mapping parameter. For more details, refer to [Metrics](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-metric).
-    - (Optional) Define a `date` or `date_nanos` mapping for the `@timestamp` field. If you don't specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
-    * (Optional) Other index settings, such as [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas), for the data stream's backing indices.
-- A priority higher than `200`, to avoid [collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions) with built-in templates.
+    - **Metrics:** To define a metric, use the `time_series_metric` mapping parameter. For details, refer to [Metrics](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-metric).
+    - **Timestamp** (optional): Define a `date` or `date_nanos` mapping for the `@timestamp` field. If you don't specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
+    -  {applies_to}`serverless: unavailable` {applies_to}`stack: ga` **Lifecycle management**: For {{stack}}, include lifecycle settings to enable automatic rollover and prevent indices from growing too large. 
+        - Set `"lifecycle": { "enabled": true }`. 
+        - If you created an ILM policy in [step 1](#tsds-ilm-policy), reference it with `index.lifecycle.name`.
+    - **Other settings**  (optional): Additional index settings, such as [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas), for the data stream's backing indices.
+- **Priority:** Set the priority higher than `200`, to avoid [collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions) with built-in templates.
 
 **Example index template PUT request:**
 
@@ -56,7 +101,10 @@ PUT _index_template/my-weather-sensor-index-template
   "template": {
     "settings": {
       "index.mode": "time_series",
-      "index.lifecycle.name": "my-lifecycle-policy"
+      "index.lifecycle.name": "my-lifecycle-policy", <1>
+      "lifecycle": { 
+        "enabled": true <2>
+      }
     },
     "mappings": {
       "properties": {
@@ -88,6 +136,13 @@ PUT _index_template/my-weather-sensor-index-template
   }
 }
 ```
+1. {{stack}} only
+2. {{stack}} only
+
+:::{important}
+:applies_to: stack: ga
+Without lifecycle management enabled, time series data streams can grow into very large indices that never roll over. This can lead to performance issues. Always configure lifecycle management for {{stack}} production deployments.
+:::
 
 :::{dropdown} Component templates (optional)
 
@@ -164,7 +219,7 @@ GET metrics-prod/_search
 
 You can convert an existing regular data stream to a TSDS. Follow these steps:
 
-1. Update your existing index template and component templates (if any) to include time series settings. 
+1. Update your existing index template and component templates (if any) to include time series settings. For {{stack}}, configure lifecycle management. 
 2. Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to manually roll over the existing data stream's write index, to apply the changes you made in step 1:
 
 ```console
@@ -180,10 +235,6 @@ After the rollover, new backing indices will have time series functionality. Exi
 To control access to a TSDS, use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices). Privileges set on a TSDS also apply to the backing indices.
 
 For an example, refer to [Data stream privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
-
-### Set up lifecycle management
-
-In most cases, you can use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage your time series data stream. If you're using [data tiers](/manage-data/lifecycle/data-tiers.md) in {{stack}}, you can use [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
 
 ## Next steps [set-up-tsds-whats-next]
 
