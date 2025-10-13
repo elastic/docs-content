@@ -47,8 +47,7 @@ PUT _index_template/my-new-tsds-template
   "data_stream": {},
   "template": {
     "settings": {
-      "index.mode": "time_series",
-      "index.routing_path": ["dimension_field"]
+      "index.mode": "time_series"
     },
     "mappings": {
       "properties": {
