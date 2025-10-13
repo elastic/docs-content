@@ -27,6 +27,53 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+
+## 9.2.0 [elastic-security-9.2.0-release-notes]
+
+### Features and enhancements [elastic-security-9.2.0-features-enhancements]
+* Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start {{agent}} service.
+* Updates the `endpoint-package` submodule.
+* Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control by the end user.
+* Increases the throughput of {{elastic-defend}} {{ls}} connections by increasing the maximum size it can upload at once.
+* Adds {{elastic-defend}} support for device control on macOS.
+* Updates the device control schema.
+* Adds architecture of PE file in malware alerts to {{elastic-defend}}.
+* Adds the `Endpoint.state.orphaned` indicator to {{elastic-defend}} policy response.
+* Adds {{elastic-defend}} support for cluster migration.
+* Adds firewall anti-tamper plug-in to protect {{elastic-endpoint}} processes against network blocking via Windows Firewall.
+* Includes `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields by default to Windows image load and process events, if the information can be retrieved.
+* Improves {{elastic-defend}} by integrating a new Event Tracing for Windows (ETW) provider (Microsoft-Windows-Ldap-Client) to create new event types that prebuilt endpoint rules can use to detect malicious LDAP activity.
+* Adds more Linux diagnostic process `ptrace` events.
+* Improves reporting reliability and accuracy of the {{elastic-defend}}'s {{es}} connection.
+* Enriches {{elastic-defend}} macOS network connect events with `network.direction`. Possible values are `ingress` and `egress`.
+* Improves {{elastic-defend}} malware scan queue efficiency by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* Adds an {{elastic-defend}} advanced policy setting `windows.advanced.events.security.event_disabled` that lets users disable security event collection per event ID.
+* Shortens the time it takes {{elastic-defend}} to recover from a `DEGRADED` status caused by communication issues with {{agent}}.
+* Improves the `verify` command to ensure {{elastic-endpoint}} service is running, otherwise {{agent}} has to fix it automatically.
+* Adds {{elastic-defend}} support for Windows on ARM.
+* Improves the reliability of {{elastic-defend}} Kafka connections.
+* Adds {{elastic-defend}} support for diagnostic DNS events on Linux.
+
+### Fixes [elastic-security-9.2.0-fixes]
+* Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within Malware Protections to avoid invalid watchdog firings.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
+* Addresses CVE-2025-##### in {{elastic-defend}} on Windows, which could allow a low-privilege attacker to delete arbitrary files on the system. On Windows versions before 25H2, this could result in local privilege escalation.
+* Adds support in {{elastic-defend}} for installing eBPF event probes on Linux endpoints when cgroup2 is mounted in a non-standard location or not mounted at all.
+* Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
+* Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output. This may have limited event throughput on extremely busy endpoints.
+* Improves the reliability of local {{elastic-defend}} administrative shell commands. In rare cases, a command could fail to execute due to issues with interprocess communication.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+* Fixes an improper status in process remediation, when a cancelled process cannot be stopped because it's being debugged.
+* Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') was logged.
+* Prevents {{elastic-endpoint}} from stopping system-critical processes or threads.
+* Fixes an issue to improve reliability of health status reporting between {{elastic-endpoint}} and {{agent}}.
+* Fixes a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count` and `process.args`, leading to false positives.
+* Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
+
+
 ## 9.1.5 [elastic-security-9.1.5-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.5-features-enhancements]
