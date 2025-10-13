@@ -120,7 +120,7 @@ Filter the data with one or more options that you select.
 4. To clear the selections, click ![The icon to clear all selected options in the Options list](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 5. To display only the options you selected in the dropdown, click ![The icon to display only the options you have selected in the Options list](/explore-analyze/images/kibana-dashboard_showOnlySelectedOptions_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList_8.7.0.png
+:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
 :alt: Options list control
 :screenshot:
 :::
@@ -180,21 +180,8 @@ This action is possible for all charts created using **Lens** or {{esql}}. It is
 
 #### View the requests that collect the data
 
-This action is possible for all visualization panels that are built based on a query, but the available information can differ based on the panel type.
-
-1. Open the panel menu and select **Inspect**.
-1. Open the **View** dropdown, then select **Requests**.
-1. Some visualizations rely on several requests. From the dropdown, select the request you want to inspect. Several tabs with different information can appear, depending on the panel type:
-    * **Statistics**: Provides general information and statistics about the request. For example, you can check if the number of hits and query time match your expectations. If not, this may indicate an issue with the request used to build the visualization.
-    * **Clusters and shards**: Lists the {{es}} clusters and shards per cluster queried to fetch the data and shows the status of the request on each of them. With the information in this tab, you can check if the request is properly executed, especially in case of cross-cluster search.
-
-      :::{note}
-      This tab is not available for {{esql}} and Vega visualizations.
-      :::
-      
-    * **Request**: Provides a full view of the visualization's request, which you can copy or **Open in Console** to refine, if needed.
-    * **Response**: Provides a full view of the response returned by the request.
-
+:::{include} ../_snippets/inspect-request.md
+:::
 
 #### View the time range on specific panels
 
