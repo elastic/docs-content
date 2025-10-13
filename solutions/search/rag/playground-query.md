@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-query.html
 applies_to:
-  stack:
-  serverless:
+  stack: preview 9.0, beta 9.1
+  serverless: beta
 products:
   - id: kibana
 ---
@@ -11,7 +11,7 @@ products:
 # View and modify queries [playground-query]
 
 ::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
 
