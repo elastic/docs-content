@@ -75,7 +75,7 @@ $$$glossary-zone$$$ availability zone
 ## B [b-glos]
 
 $$$glossary-background-search$$$ Background search
-:   A query executed asynchronously. The results of the background search are stored for a period of time, so you can access it once it has completed. Background searches are user specific. Before {{stack}} 9.2, background searches are called ["search sessions"](#glossary-search-session).
+:   A long-running query queued and executed while you perform other tasks. The results of the background search are stored for a period of time, so you can access it once it has completed. Background searches are user specific. Before {{stack}} 9.2, background searches are called ["search sessions"](#glossary-search-session).
 
 $$$glossary-basemap$$$ basemap
 :   The background detail necessary to orient the location of a map.

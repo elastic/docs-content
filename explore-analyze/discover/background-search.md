@@ -21,7 +21,7 @@ Sometimes you might need to search through large amounts of data, no matter how 
 
 You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work. 
 
-A notification appears when a background search has completed, and lets you open the list of background searches. You can also access that list at any time to check the status of your searches and interact with them from the {icon}`background_task` **Background searches** button in the toolbar.
+A notification appears when a background search has completed, and allows you to open the list of background searches. You can also access that list at any time to check the status of your searches and interact with them from the {icon}`background_task` **Background searches** button in the toolbar.
 
 ![Send search to background](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltee31dcf0d3917c75/68ecf412e5bae49d65a286ff/background-search.gif " =75%")
 
@@ -31,7 +31,7 @@ A notification appears when a background search has completed, and lets you open
 This feature is disabled by default. You can enable background searches in versions 9.2 and higher, or search sessions in versions 9.1 and lower, by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 
 :::{note} - Exception for search sessions users
-If you are upgrading to version 9.2 or higher and search sessions were already enabled before, background searches are already enabled.
+If you upgrade to version 9.2 or higher with search sessions enabled in the version you upgrade from, background searches are automatically enabled.
 :::
 
 ## Usage requirements [_requirements]
@@ -71,7 +71,7 @@ Background searches expire after 7 days. Beyond that period, you must run the se
 
 ## Reopen or manage background searches
 
-From the list of background searches, you can reopen and edit any searches, but also extend their validity period or delete to keep only searches that you care about.
+From the list of background searches, you can reopen and edit any searches, but also extend their validity period or delete them to keep only searches that you care about.
 
 1. Open your list of background searches using one of the following methods:
    - Once a background search has completed, a notification appears to inform you, with a link to open the list of background searches.
