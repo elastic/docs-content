@@ -115,3 +115,11 @@ You can use the {{esql}} [`TS` command](elasticsearch://reference/query-language
 * [Set up a time series data stream](/manage-data/data-store/data-streams/set-up-tsds.md)
 * [Ingest data using the OpenTelemetry Protocol (OTLP)](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint
+
+% suppress anchor warnings until chicken-and-egg resolved
+##### [time-series-mode]
+##### [tsds-look-ahead-time]
+##### [tsds-look-back-time]
+##### [time-bound-indices]
+##### [dimension-based-routing]
+##### [tsds-accepted-time-range]
