@@ -7,4 +7,83 @@ products:
   - id: cloud-serverless
 ---
 
-# Wired streams
+# Send data to wired streams
+
+## Turn on wired streams
+
+To turn on wired streams:
+
+1. From the Streams page, open **Settings**.
+1. Turn on **Enable wired streams**.
+
+## Configure your shippers
+
+To send data to wired streams, configure your shippers to send data to the `/logs` endpoint. To do this, complete the following configurations for your shipper:
+
+::::{tab-set}
+
+:::{tab-item} OpenTelemetry
+```yaml
+processors:
+  transform/logs-streams:
+    log_statements:
+      - context: resource
+        statements:
+          - set(attributes["elasticsearch.index"], "logs")
+service:
+  pipelines:
+    logs:
+      receivers: [myreceiver] # works with any logs receiver
+      processors: [transform/logs-streams]
+      exporters: [elasticsearch, otlp] # works with either
+```
+:::
+
+:::{tab-item} Filebeat
+```yaml
+filebeat.inputs:
+  - type: filestream
+    id: my-filestream-id
+    index: logs
+    enabled: true
+    paths:
+      - /var/log/*.log
+
+# No need to install templates for wired streams
+setup:
+  template:
+    enabled: false
+
+output.elasticsearch:
+  hosts: ["<elasticsearch-host>"]
+  api_key: "<your-api-key>"
+```
+:::
+
+:::{tab-item} Logstash
+```json
+output {
+  elasticsearch {
+    hosts => ["<elasticsearch-host>"]
+    api_key => "<your-api-key>"
+    index => "logs"
+    action => "create"
+  }
+}
+```
+:::
+
+:::{tab-item} Fleet
+Use the **Custom Logs (Filestream)** integration to send data to Wired Streams:
+
+1. find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select the **Settings** tab.
+1. Under **Outputs**, find the output you want to use to send data to Streams, and select the {icon}`pencil` icon.
+1. Turn on **Write to logs streams**.
+1. Add the** Custom Logs (Filestream)** integration to an agent policy.
+1. Enable the **Use the "logs" data stream** setting in the integration configuration under **Change defaults**.
+1. Under **Where to add this integration**, select an agent policy that uses the output you configured in **Step 4**.
+:::
+
+
+::::
