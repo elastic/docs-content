@@ -18,7 +18,7 @@ To use cases as data, you must have the appropriate subscription. Refer to the s
 To turn on cases as data, add `xpack.cases.incrementalId.enabled: true` to your [`kibana.yml`](/deploy-manage/stack-settings.md) file.
 
 ::::{warning} 
-3 tasks will be created that each execute in 5 minute interval. If you have lots of spaces with cases (for example, dozens), we do not reccomend enabling this feature as it will clog up task manager.
+3 tasks will be created that each execute in 5 minute interval. If you have lots of spaces with cases (for example, dozens), we do not recommend enabling this feature as it will clog up task manager.
 ::::
 
 ## Create and manage indices for case data [create-manage-case-analytics-indices]
@@ -36,11 +36,17 @@ You also do not need to manually manage the lifecycle policies of the analytics 
 
 Ensure your role has at least `read` and `view_index_metadata` access to the appropriate [case analytics indices](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names).
 
-## Explore and visualize case data with Discover [explore-case-data]
+## Explore case data with Discover and Lens [explore-case-data]
 
-By default, {{kib}} requires a [{{data-source}}](../../find-and-organize/data-views.md) to access your Elasticsearch data. When creating a {{data-source}} for case data, point to one or more [case analytics indices or their aliases](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names).
+Use [Discover](../../discover.md) and [Lens](../../visualize/lens.md) to search and filter your case data and display your findings in visualizations. 
 
-You can also [try {{esql}}](../../../explore-analyze/discover/try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first. Here are some sample queries to get you started:
+To get started, create a [{{data-source}}](../../find-and-organize/data-views.md) that points to one or more [case analytics indices or their aliases](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names). To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
+
+::::{note} 
+Case data is stored in hidden indices. You can display hidden indices by selecting **Show advanced settings**, then turning on the setting that allows hidden and system indices. 
+::::
+
+You can also interact with your case data using [{{esql}} in Discover](../../../explore-analyze/discover/try-esql.md). Here are some sample queries to get you started: 
 
 * Find the total number of open {{observability}} cases in the default space:
 
