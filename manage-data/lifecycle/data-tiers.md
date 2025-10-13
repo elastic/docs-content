@@ -428,7 +428,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 9. Delete the searchable snapshots by following these steps:
 
-    1. Open Kibana and navigate to Management > Data > Snapshot and Restore > Snapshots (or go to `<kibana-endpoint>/app/management/data/snapshot_restore/snapshots`)
+    1. Open Kibana, go to the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and go to the **Snapshots** tab. (Alternatively, go to `<kibana-endpoint>/app/management/data/snapshot_restore/snapshots`.)
     2. Search for `*<ilm-policy-name>*`
     3. Bulk select the snapshots and delete them
 
@@ -494,7 +494,7 @@ This setting will not unallocate a currently allocated shard, but might prevent 
 
 ### Automatic data tier migration [data-tier-migration]
 
-{{ilm-init}} automatically transitions managed indices through the available data tiers using the [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action. By default, this action is automatically injected in every phase. 
+{{ilm-init}} automatically transitions managed indices through the available data tiers using the [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action. By default, this action is automatically injected in every phase.
 
 ### Disable data tier allocation [data-tier-allocation]
 You can explicitly disable data allocation for  data tier migration in an ILM policy with the following setting:
@@ -520,7 +520,7 @@ For example:
       },
 ```
 
-Defining the `migrate` action with `"enabled": false` for a data tier [disables automatic {{ilm-init}} shard migration](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex). This is useful if, for example, you’re using the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.          
+Defining the `migrate` action with `"enabled": false` for a data tier [disables automatic {{ilm-init}} shard migration](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex). This is useful if, for example, you’re using the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.
 
-#### Important Note: 
+#### Important Note:
 Do not disable automatic {{ilm-init}} migration without manually defining {{ilm-init}} allocation rules. If data migration is disabled without allocation rules defined, this can prevent data from moving to the specified data tier, even though the data has successfully moved through the {{ilm-init}} policy with a status of `complete`.
