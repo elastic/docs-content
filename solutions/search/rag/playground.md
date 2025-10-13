@@ -92,8 +92,7 @@ To use Playground, you’ll need the following:
 
     * **Google**
 
-        * Google Gemini 1.5 Pro
-        * Google Gemini 1.5 Flash
+        * Google Gemini 2.5 Pro
 
 ::::{tip}
 :name: playground-local-llms
