@@ -6,7 +6,7 @@ applies_to:
 
 # Partition data into child streams [streams-partitioning]
 :::{note}
-The **Partitioning** tab and routing data into child streams is only available on [wired streams](../wired-streams.md).
+The **Partitioning** tab and ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::
 
 With [wired streams](../wired-streams.md), you send all of your logs to the `/logs` endpoint. This endpoint acts as your entry point for all of your log data.
