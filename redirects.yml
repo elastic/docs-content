@@ -516,7 +516,7 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/3318
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
-# Related to https://github.com/elastic/docs-content/pull/3222
+# Related to https://github.com/elastic/docs-content/pull/3461
   'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
     to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
     anchors:
