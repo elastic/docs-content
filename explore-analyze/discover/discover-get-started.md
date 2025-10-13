@@ -43,6 +43,15 @@ Your query may include multiple data types that each have tailored experiences; 
 
 In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
 
+### View active context-aware experience
+
+You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
+
+1. Select **Inspect** from Discover's toolbar.
+1. Open the **View** dropdown, then select **Profiles**.
+
+The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
+
 ## Load data into Discover [find-the-data-you-want-to-use]
 
 Select the data you want to explore, and then specify the time range in which to view that data.
@@ -293,6 +302,11 @@ Note that in ES|QL mode, the **Documents** tab is named **Results**.
 :::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+
+### Inspect your Discover queries
+
+:::{include} ../_snippets/inspect-request.md
+:::
 
 
 ### Save your Discover session for later use [save-discover-search]
