@@ -525,6 +525,7 @@ redirects:
       'time-series-dimension': 'time-series-dimension'
       'time-series-metric': 'time-series-metric'
       'tsid': 'tsid'
+      'differences-from-regular-data-stream': 'differences-from-regular-data-stream'
       'tsds-whats-next': 'tsds-whats-next'
       'time-series-mode':
       'tsds-look-ahead-time':
