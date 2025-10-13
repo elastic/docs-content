@@ -153,7 +153,7 @@ As mentioned, the `custom` preset allows you to input your own set of parameters
 
 These presets apply only to agents on version 8.12.0 or later.
 
-| worker | bulk_max_size | queue.mem_events | queue.mem.flush.min_events | queue.mem.flush.timeout | idle_connection_timeout | Relative EPS |
+| worker | bulk_max_size | queue.mem.events | queue.mem.flush.min_events | queue.mem.flush.timeout | idle_connection_timeout | Relative EPS |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 1600 | 3200 | 1600 | 5 | 15 | 1x |
 | 1 | 2048 | 4096 | 2048 | 5 | 15 | 1x |
