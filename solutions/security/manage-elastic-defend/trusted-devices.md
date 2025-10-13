@@ -32,4 +32,4 @@ Trusted Devices are specific external devices that are allowed to connect to you
 
 ## View the Device Control dashboard
 
-By default, each new {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has Device Control enabled, the dashboard displays data about attempted device connections and their outcomes.
+By default, each new {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has Device Control enabled, the dashboard displays data about attempted device connections and their outcomes. To access it and review information about blocked connections, search for `device control` in the **Dashboards** page's Custom Dashboards section.
