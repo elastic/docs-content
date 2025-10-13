@@ -43,7 +43,7 @@ Use [Discover](../../discover.md) and [Lens](../../visualize/lens.md) to search 
 To get started, create a [{{data-source}}](../../find-and-organize/data-views.md) that points to one or more [case analytics indices or their aliases](../../../explore-analyze/alerts-cases/cases/cases-as-data.md#case-analytics-indices-names). To point to all case analytics indices in your space, use the `.internal.cases*` index pattern.
 
 ::::{note} 
-Case data is stored in hidden indices. You can display hidden indices by selecting **Show advanced settings**, then turning on the setting that allows hidden and system indices. 
+Case data is stored in hidden indices. You can display hidden indices by selecting **Show advanced settings**, then turning on **Allow hidden and system indices**. 
 ::::
 
 You can also interact with your case data using [{{esql}} in Discover](../../../explore-analyze/discover/try-esql.md). Here are some sample queries to get you started: 
