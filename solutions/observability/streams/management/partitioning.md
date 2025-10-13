@@ -13,7 +13,7 @@ With [wired streams](../wired-streams.md), you send all of your logs to the `/lo
 
 Once you've sent your data to the `/logs` endpoint, you can route sections of your data into meaningful child streams using the **Partitioning** tab. Create partitions the following ways:
 
-- [manual configurations](#streams-manual-partitioning): If you know how you want to partition your data, manually configure when to send data to a child stream.
+- [Manual configurations](#streams-manual-partitioning): If you know how you want to partition your data, manually configure when to send data to a child stream.
 - [AI suggestions](#streams-AI-partitioning): If you want suggestions for partitioning your data, Streams provides suggestions based on your data that you can accept or reject.
 
 ## Create partitions manually [streams-manual-partitioning]
