@@ -123,8 +123,8 @@ With this authentication method, you need to create an API key to grant access t
 
 1. From your {{ecloud}} home page, select a deployment.
 2. Go to **Stack management** > **API keys** and select **Create API key**.
-4. In the flyout, enter a name for your key and select **User API key**.
-5. Enable **Control security privileges** and enter the following script:
+3. In the flyout, enter a name for your key and select **User API key**.
+4. Enable **Control security privileges** and enter the following script:
 ```json
 {
  "autoops": {
@@ -287,8 +287,8 @@ You can use the same installation command to connect multiple clusters, but each
 
 Complete the following steps to disconnect your cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
 
-2. Based on your [installation method](#select-installation-method), complete the steps to stop {{agent}} from shipping metrics to {{ecloud}}.
-1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
+1. Based on your [installation method](#select-installation-method), complete the steps to stop {{agent}} from shipping metrics to {{ecloud}}.
+2. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 3. On the **Connected clusters** page or the **Connected clusters** section of the home page, locate the cluster you want to disconnect.
 4. From that cluster’s actions menu, select **Disconnect cluster**.
 5. Enter the cluster’s name in the field that appears and then select **Disconnect cluster**.

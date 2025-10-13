@@ -9,6 +9,47 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## October 6, 2025 [serverless-changelog-10062025]
+
+### Features and enhancements [serverless-changelog-10062025-features-enhancements]
+* Adds support for encrypted headers in the Webhook connector to enhance security [#233695]({{kib-pull}}233695)
+* Allows users to add custom fields to the IBM Resilient connector [#236144]({{kib-pull}}236144)
+* Renames Fleet Server Host SSL options for clarity [#236887]({{kib-pull}}236887)
+* Enables Discover tabs by default, allowing you to manage multiple data explorations in parallel [#235150]({{kib-pull}}235150)
+* Automatically extracts case observables in the **Add to case** workflow [#233027]({{kib-pull}}233027)
+* Introduces missing icons and updates v2 icons for the ECH Observability navigation [#236808]({{kib-pull}}236808)
+* Adds a metrics dashboard for non-EDOT agents in the OpenTelemetry native ingestion path [#236978]({{kib-pull}}236978)
+* Adds public APIs for Attack Discovery and Attack Discovery schedules [#236736]({{kib-pull}}236736)
+* Enables automatic observable extraction in the Alerts table [#235433]({{kib-pull}}235433)
+* Turns on the `newDataViewPickerEnabled` feature flag [#234101]({{kib-pull}}234101)
+* Adds the ability to discover privileged users from the Entity Analytics Okta integration [#237129]({{kib-pull}}237129)
+* Allows you to select which AI Assistant to show in the Elastic header; moves the **AI Assistant visibility** setting to the **GenAI Settings** page [#233727]({{kib-pull}}233727)
+* Adds a new `update_all` endpoint for product documentation management [#231884]({{kib-pull}}231884)
+* Adds an icon for Contextual AI in the AI Connector and Inference endpoint creation UI [#236951]({{kib-pull}}236951)
+* Enables the new background search experience for improved performance [#236818]({{kib-pull}}236818)
+* Adds triple-quote support to the Manual Ingest Pipeline Processor editor [#236595]({{kib-pull}}236595)
+* Introduces the German locale for Kibana in `beta` [#236903]({{kib-pull}}236903)
+* Adds an advanced option to disable filtering of file-backed volumes and CD-ROMs in the **Device Control** plugin [#236620]({{kib-pull}}236620)
+
+### Fixes [serverless-changelog-10062025-fixes]
+* Rolls over the reporting data stream automatically when a newer template version is available [#234119]({{kib-pull}}234119)
+* Fixes an issue where exported CSV columns in Lens tables could appear out of order [#236673]({{kib-pull}}236673)
+* Fixes a bug causing Controls to fetch data twice [#237169]({{kib-pull}}237169)
+* Removes the incorrect `fleet.ssl` configuration option [#236788]({{kib-pull}}236788)
+* Fixes MSI commands (#233750) [#236994]({{kib-pull}}236994)
+* Removes unnecessary span documents from the `getServiceAgent` function [#236732]({{kib-pull}}236732)
+* Cleans up extra Synthetics package policies [#235200]({{kib-pull}}235200)
+* Reverts a change to the page attachment type in {{obs-serverless}} [#236958]({{kib-pull}}236958)
+* Removes `null` values in the confirmation dialog when bulk-editing index patterns for rules [#236572]({{kib-pull}}236572)
+* Increases the z-index of Timeline and related flyout components so they appear above the side navigation [#236655]({{kib-pull}}236655)
+* Adds support for API key wildcard search [#221959]({{kib-pull}}221959)
+* Hides the **Show forecast** button when changing jobs in the Single Metric Viewer [#236724]({{kib-pull}}236724)
+* Improves performance of the Trained Models list [#237072]({{kib-pull}}237072)
+* Fixes partition field settings errors in the Single Metric Viewer dashboard panels [#237046]({{kib-pull}}237046)
+* Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
+* Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
+* Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
+
 ## September 29, 2025 [serverless-changelog-09292025]
 
 ### Features and enhancements [serverless-changelog-09292025-features-enhancements]
