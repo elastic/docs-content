@@ -20,7 +20,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
 1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create case**.
-3. (Optional) If you defined [templates](/solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), select one to use its default field values. [preview]
+3. {applies_to}`stack: preview` {applies_to}`serverless: preview` (Optional) If you defined [templates](/solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), select one to use its default field values.
 4. Give the case a name, severity, and description.
 
     ::::{tip}

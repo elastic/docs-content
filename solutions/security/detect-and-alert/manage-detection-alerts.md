@@ -191,6 +191,22 @@ To change an alert’s status, do one of the following:
     ::::
 * In an alert’s details flyout, click **Take action** and select a status.
 
+#### Set an alert's closing reason
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+You can specify a reason for closing an alert by selecting one of the following options:
+
+* **Close without reason**: Close the alert without specifying a reason.
+* **Duplicate**: The alert is a duplicate of another alert.
+* **False positive**: The alert was triggered by normal activity and doesn't indicate a security issue.
+* **True positive**: The alert represents a real security incident that has been resolved.
+* **Benign positive**: The alert correctly identified the activity, but the activity is acceptable or not actionable.
+* **Other**: Any other reason not covered by the predefined categories.
+
+When you select a closing reason, the alert document is populated with a new field called `kibana.alert.workflow_reason`. You can use this field to filter and sort alerts on the **Alerts** page. If you later reopen the alert, the field is removed from the document.
 
 ### Apply and filter alert tags [apply-alert-tags]
 
