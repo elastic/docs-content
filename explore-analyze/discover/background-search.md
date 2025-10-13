@@ -1,4 +1,5 @@
 ---
+navigation_title: "Run queries in the background"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
 applies_to:
@@ -9,7 +10,7 @@ products:
 description: Send your long-running queries to run in the background with background searches and search sessions, and focus on your other tasks while they complete.
 ---
 
-# Run a search in the background
+# Run Discover and Dashboards queries in the background
 
 ::::{important} - Background search replaces Search sessions
 
@@ -63,7 +64,7 @@ You can send a search to the background only after it starts running. Until then
 
 1. Select {icon}`play` **Run** (or {icon}`refresh` **Refresh** if you already ran the query at least once) to start executing the query. At this point, the {icon}`background_task` **Send to background** button becomes available.
 
-1. Select this button. The search is sent to the background and added to the queue of background searches.
+1. Select {icon}`background_task` **Send to background**. The search is sent to the background and added to the queue of background searches.
 
 You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser. Once the search has completed, a notification informs you and lets you access the search to view its results.
 
