@@ -2,10 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/archive-indices.html
 applies_to:
-  stack:
-  deployment:
-    ess:
-    self:
+  stack: ga
 products:
   - id: elasticsearch
 ---

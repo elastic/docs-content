@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-elastic-agent-fleet-configuration]
+# Configuration for Fleet managed agents on {{eck}} [k8s-elastic-agent-fleet-configuration]
 
 {{fleet}}-managed {{agents}} must connect to {{fleet-server}} to receive their configurations. You can deploy {{fleet-server}} instances using ECKs Agent CRD with the appropriate configuration, as shown in [Fleet mode and Fleet Server](#k8s-elastic-agent-fleet-configuration-fleet-mode-and-fleet-server).
 
@@ -146,8 +147,23 @@ By default, every reference targets all instances in your {{es}}, {{kib}} and {{
 
 ## Customize {{agent}} configuration [k8s-elastic-agent-fleet-configuration-custom-configuration]
 
-In contrast to {{agents}} in standalone mode, the configuration is managed through {{fleet}}, and it cannot be defined through `config` or `configRef` elements.
+In contrast to {{agents}} in standalone mode, the configuration is managed through {{fleet}}, and it cannot be defined through `config` or `configRef` elements with a few exceptions.
 
+One of those exceptions is the configuration of providers as described in [advanced Agent configuration managed by Fleet](/reference/fleet/advanced-kubernetes-managed-by-fleet.md). When {{agent}} is managed by {{fleet}} and is orchestrated by ECK, the configuration of providers can simply be done through the `.spec.config` element in the Agent resource as of {applies_to}`stack: ga 8.13`:
+
+```yaml
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: elastic-agent
+spec:
+  config:
+    fleet:
+      enabled: true
+    providers.kubernetes:
+      add_resource_metadata:
+        deployment: true
+```
 
 ## Upgrade the {{agent}} specification [k8s-elastic-agent-fleet-configuration-upgrade-specification]
 
@@ -160,13 +176,13 @@ Depending on the use case, {{agent}} may need to be deployed as a [Deployment](h
 
 Similarly, you can set the [update strategy](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/) when deploying as a DaemonSet. This allows you to control the rollout speed for new configuration by modifying the `maxUnavailable` setting:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     strategy:
       type: RollingUpdate
@@ -182,13 +198,13 @@ Refer to [Set compute resources for Beats and Elastic Agent](manage-compute-reso
 
 Some {{agent}} features, such as the [{{k8s}} integration](https://epr.elastic.co/package/kubernetes/0.2.8/), require that Agent Pods interact with {{k8s}} APIs. This functionality requires specific permissions. Standard {{k8s}} [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow API interactions:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: elasticsearch-sample
   daemonSet:

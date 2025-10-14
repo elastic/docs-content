@@ -18,13 +18,39 @@ products:
 
 ## Step 1: Download and install the `.zip` package [install-windows]
 
+::::{tab-set}
+
+:::{tab-item} Latest
 Download the .zip windows archive for {{kib}} {{version.stack}} from [https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-windows-x86_64.zip)
 
-Unzip it with your favorite unzip tool. This will create a folder called kibana-{{version.stack}}-windows-x86_64, which we will refer to as `$KIBANA_HOME`. In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
+Unzip it with your favorite unzip tool. This will create a folder with the following name:
+
+```text subs=true
+kibana-{{version.stack}}-windows-x86_64
+```
+We will refer to this folder as `$KIBANA_HOME`.
+
+In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
 
 ```sh subs=true
 CD c:\kibana-{{version.stack}}-windows-x86_64
 ```
+:::
+
+:::{tab-item} Specific version
+Download the `.zip` archive for the {{kib}} version that you want from the [Past Releases](https://www.elastic.co/downloads/past-releases) page. 
+If you're unsure about which version to install, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version) for more information about version compatibility.
+
+Unzip it with your favorite unzip tool. This will create a folder called `kibana-<SPECIFIC.VERSION.NUMBER>-windows-x86_64`, where `<SPECIFIC.VERSION.NUMBER>` is the version you downloaded. We will refer to this folder as `$KIBANA_HOME`. 
+
+In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
+
+```sh subs=true
+CD c:\kibana-<SPECIFIC.VERSION.NUMBER>}-windows-x86_64
+```
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you installed. 
+:::
+::::
 
 ## Step 2: Start {{es}} and generate an enrollment token for {{kib}} [windows-enroll]
 

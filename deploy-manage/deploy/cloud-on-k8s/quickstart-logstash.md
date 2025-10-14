@@ -1,4 +1,5 @@
 ---
+navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-quickstart.html
 applies_to:
@@ -8,11 +9,11 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Quickstart [k8s-logstash-quickstart]
+# Quickstart: Running {{ls}} on {{eck}} [k8s-logstash-quickstart]
 
-Add the following specification to create a minimal {{ls}} deployment that will listen to a Beats agent or Elastic Agent configured to send to Logstash on port 5044, create the service and write the output to an {{es}} cluster named `quickstart`, created in the [{{es}} quickstart](deploy-an-orchestrator.md).
+Add the following specification to create a minimal {{ls}} deployment that will listen to a Beats agent or Elastic Agent configured to send to Logstash on port 5044, create the service and write the output to an {{es}} cluster named `quickstart`, created in [](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md).
 
-```yaml
+```yaml subs=true
 cat <<'EOF' | kubectl apply -f -
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
@@ -23,7 +24,7 @@ spec:
   elasticsearchRefs:
     - name: quickstart
       clusterName: qs
-  version: 8.16.1
+  version: {{version.stack}}
   pipelines:
     - pipeline.id: main
       config.string: |
@@ -61,9 +62,9 @@ Check [Configuration examples](configuration-examples-logstash.md) for more read
     kubectl get logstash
     ```
 
-    ```sh
+    ```sh subs=true
     NAME              AVAILABLE   EXPECTED   AGE   VERSION
-    quickstart        3           3          4s    8.16.1
+    quickstart        3           3          4s    {{version.stack}}
     ```
 
 2. List all the Pods that belong to a given Logstash specification.

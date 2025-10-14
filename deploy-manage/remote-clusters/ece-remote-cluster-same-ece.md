@@ -1,5 +1,5 @@
 ---
-navigation_title: Within the same ECE environment
+navigation_title: To the same ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html
 applies_to:
@@ -9,10 +9,13 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access other deployments of the same {{ece}} environment [ece-remote-cluster-same-ece]
+# Connect to deployments in the same {{ece}} environment [ece-remote-cluster-same-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ece}} environment.
 
+::::{note}
+If network security filters are applied to the remote cluster, the remote cluster administrator must configure a [remote cluster filter](/deploy-manage/security/remote-cluster-filtering.md), using either the ECE environment ID or the Elasticsearch cluster ID of the local cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
+::::
 
 ## Allow the remote connection [ece_allow_the_remote_connection]
 
@@ -57,12 +60,12 @@ The API key created previously will be used by the local deployment to authentic
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
     1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
 
@@ -73,7 +76,7 @@ The API key created previously will be used by the local deployment to authentic
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
@@ -173,7 +176,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
+    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
+
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
     * **Proxy address**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.<br>
 
       ::::{tip}
@@ -233,6 +238,9 @@ PUT /_cluster/settings
 }
 ```
 
+::::{note}
+When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
+::::
 
 ### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api]
 

@@ -16,8 +16,8 @@ toc:
                   - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
-                  - file: deploy/elastic-cloud/azure-native-isv-service.md                    
-                  - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md                  
+                  - file: deploy/elastic-cloud/azure-native-isv-service.md
+                  - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
                       - file: deploy/elastic-cloud/heroku-getting-started-installing.md
@@ -47,7 +47,7 @@ toc:
                     children:
                       - file: deploy/elastic-cloud/ec-change-hardware-profile.md
                         children:
-                          - file: deploy/elastic-cloud/change-hardware.md 
+                          - file: deploy/elastic-cloud/change-hardware.md
                       - file: deploy/elastic-cloud/ec-customize-deployment-components.md
                       - file: deploy/elastic-cloud/edit-stack-settings.md
                       - file: deploy/elastic-cloud/add-plugins-extensions.md
@@ -225,6 +225,7 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
+                  - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
                   - file: deploy/cloud-on-k8s/recipes.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
@@ -282,7 +283,6 @@ toc:
                   - file: deploy/self-managed/file-descriptors.md
                   - file: deploy/self-managed/vm-max-map-count.md
                   - file: deploy/self-managed/max-number-of-threads.md
-                  - file: deploy/self-managed/networkaddress-cache-ttl.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
                   - file: deploy/self-managed/bootstrap-checks.md
@@ -357,6 +357,7 @@ toc:
           - file: production-guidance/kibana-load-balance-traffic.md
           - file: production-guidance/kibana-configure-memory.md
           - file: production-guidance/kibana-task-manager-scaling-considerations.md
+          - file: production-guidance/kibana-traffic-scaling-considerations.md
           - file: production-guidance/kibana-alerting-production-considerations.md
           - file: production-guidance/kibana-reporting-production-considerations.md
   - file: reference-architectures.md
@@ -450,8 +451,9 @@ toc:
       - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
+  - file: cloud-connect.md
   - file: security.md
-    children: 
+    children:
       - file: security/secure-hosting-environment.md
         children:
           - file: security/secure-your-elastic-cloud-enterprise-installation.md
@@ -494,6 +496,7 @@ toc:
                   - file: security/ip-filtering-cloud.md
                   - file: security/ip-filtering-ece.md
                   - file: security/ip-filtering-basic.md
+              - file: security/remote-cluster-filtering.md
               - file: security/private-connectivity.md
                 children:
                   - file: security/private-connectivity-aws.md
@@ -577,7 +580,7 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/pki.md
                   - file: users-roles/cluster-or-deployment-auth/custom.md
               - file: users-roles/cluster-or-deployment-auth/built-in-users.md
-                children: 
+                children:
                   - file: users-roles/cluster-or-deployment-auth/built-in-sm.md
               - file: users-roles/cluster-or-deployment-auth/orchestrator-managed-users-overview.md
                 children:
@@ -600,14 +603,16 @@ toc:
               - file: users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md
           - file: users-roles/cluster-or-deployment-auth/user-roles.md
             children:
-              - file: users-roles/cluster-or-deployment-auth/built-in-roles.md
+              - title: "Built-in roles"
+                crosslink: elasticsearch://reference/elasticsearch/roles.md
               - file: users-roles/cluster-or-deployment-auth/defining-roles.md
                 children:
                   - file: users-roles/cluster-or-deployment-auth/role-structure.md
                   - file: users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md
                   - file: users-roles/cluster-or-deployment-auth/kibana-role-management.md
                   - file: users-roles/cluster-or-deployment-auth/role-restriction.md
-              - file: users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md                  
+              - title: "Elasticsearch privileges"
+                crosslink: elasticsearch://reference/elasticsearch/security-privileges.md
               - file: users-roles/cluster-or-deployment-auth/kibana-privileges.md
               - file: users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md
                 children:
@@ -617,6 +622,8 @@ toc:
               - file: users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
               - file: users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md
   - file: manage-spaces.md
+    children:
+      - file: manage-spaces-fleet.md
   - file: api-keys.md
     children:
       - file: api-keys/elasticsearch-api-keys.md
@@ -656,7 +663,18 @@ toc:
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
+          - file: monitor/autoops/cc-autoops-as-cloud-connected.md
+            children: 
+            - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+            - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
+            - file: monitor/autoops/cc-manage-users.md
+            - file: monitor/autoops/cc-cloud-connect-autoops-faq.md
+            - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
+          - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-events.md
+            children:
+              - file: monitor/autoops/ec-autoops-event-settings.md
+              - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/views.md
             children:
               - file: monitor/autoops/ec-autoops-overview-view.md
@@ -665,10 +683,7 @@ toc:
               - file: monitor/autoops/ec-autoops-index-view.md
               - file: monitor/autoops/ec-autoops-shards-view.md
               - file: monitor/autoops/ec-autoops-template-optimizer.md
-          - file: monitor/autoops/ec-autoops-notifications-settings.md
-          - file: monitor/autoops/ec-autoops-event-settings.md
-          - file: monitor/autoops/ec-autoops-dismiss-event.md
-          - file: monitor/autoops/ec-autoops-regions.md
+          - hidden: monitor/autoops/ec-autoops-dismiss-event.md
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
@@ -691,7 +706,7 @@ toc:
             children:
               - file: monitor/stack-monitoring/kibana-monitoring-elastic-agent.md
               - file: monitor/stack-monitoring/kibana-monitoring-metricbeat.md
-              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md 
+              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md
           - file: monitor/stack-monitoring/kibana-monitoring-data.md
           - file: monitor/monitoring-data/visualizing-monitoring-data.md
             children:
@@ -788,17 +803,12 @@ toc:
   - file: upgrade.md
     children:
       - file: upgrade/plan-upgrade.md
-      - file: upgrade/orchestrator.md
-        children:
-          - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
-            children:
-              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
-          - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/prepare-to-upgrade.md
         children:
-          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md      
+          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
       - file: upgrade/deployment-or-cluster.md
         children:
+          - hidden: upgrade/deployment-or-cluster/upgrade-717.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ece.md
           - file: upgrade/deployment-or-cluster/upgrade-on-eck.md
@@ -812,8 +822,14 @@ toc:
                 children:
                   - file: upgrade/deployment-or-cluster/saved-object-migrations.md
                   - file: upgrade/deployment-or-cluster/kibana-roll-back.md
-          - file: upgrade/deployment-or-cluster/enterprise-search.md   
-      - file: upgrade/ingest-components.md        
+          - file: upgrade/deployment-or-cluster/enterprise-search.md
+      - file: upgrade/ingest-components.md
+      - file: upgrade/orchestrator.md
+        children:
+          - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
+            children:
+              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
+          - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
   - file: uninstall.md
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md

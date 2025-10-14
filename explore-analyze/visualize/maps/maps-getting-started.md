@@ -31,7 +31,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 * If you don’t already have {{kib}}, set it up with [our free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs).
 * This tutorial requires the [web logs sample data set](/explore-analyze/index.md#gs-get-data-into-kibana). The sample data includes a [Logs] Total Requests and Bytes map, which you’ll re-create in this tutorial.
-* You must have the correct privileges for creating a map. If you don’t have sufficient privileges to create or save maps, a read-only icon appears in the toolbar. For more information, refer to [Granting access to {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+* You must have the correct privileges for creating a map. If you don’t have sufficient privileges to create or save maps, a read-only icon appears in the toolbar. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 
 ## Step 1. Create a map [maps-create]
@@ -187,7 +187,10 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
        :screenshot:
        :::
 
+### Filter pill actions
 
+:::{include} ../../_snippets/global-filters.md
+:::
 
 ## What’s next? [_whats_next_6]
 

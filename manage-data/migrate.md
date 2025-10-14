@@ -44,7 +44,7 @@ Restore from a snapshot
 
 :::{admonition} Migrating system {{es}} indices
 In {{es}} 8.0 and later versions, to back up and restore system indices and system data streams such as `.kibana` or `.security`, you must snapshot and restore the related feature's [feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state).
-    
+
 Refer to [Migrate system indices](./migrate/migrate-internal-indices.md) to learn how to restore the internal {{es}} system indices from a snapshot.
 :::
 
@@ -126,17 +126,22 @@ Restoring from a snapshot is often the fastest and most reliable way to migrate 
 
 System indices can be restored by including their corresponding [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the restore operation, allowing you to retain internal configurations related to security, {{kib}}, or other stack features.
 
-This method is especially useful when you want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state.
+This method is especially useful when:
 
-To use this method, the new cluster must have access to the snapshot repository that contains the data from the old cluster. Also ensure that both clusters use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
+* You want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state.
+* Your old cluster contains mostly static data, allowing you to snapshot the source cluster, restore in the new cluster, and continue operations.
 
-For more information, refer to [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster)
+When your source cluster is actively ingesting data, such as logs, metrics, or traces, and you need a seamless migration with minimal downtime, consider using the [minimal downtime migration](migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md).
+
+### Requirements [ec-restore-snapshots-requirements]
+* The new cluster must have access to the snapshot repository that contains the data from the old cluster.
+* Both clusters must use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
+
+For more information, refer to [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 
 ::::{note}
-For {{ece}} users, while it is most common to have Amazon S3 buckets, you should be able to restore from any addressable external storage that has your {{es}} snapshots.
+For {{ece}}, Amazon S3 us the most common snapshot storage, but you can restor from any accesible external storage that contains your {{es}} snapshots.
 ::::
-
-The following steps assume you already have a snapshot repository configured in the old cluster, with at least one valid snapshot containing the data you want to migrate.
 
 ### Step 1: Set up the repository in the new cluster [migrate-repo-setup]
 
@@ -177,7 +182,7 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
     * **Azure Blob Storage**
         * [Store credentials in the keystore](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-configure-azure-keystore).
         * [Create the repository](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-create-azure-repository).
-    
+
     ::::{important}
     Although these instructions are focused on {{ech}}, you should follow the same steps for {{ece}} by configuring the repository directly **at the deployment level**.
 
@@ -195,7 +200,7 @@ For details about the contents of a snapshot, refer to [](/deploy-manage/tools/s
 
 To start the restore process:
 
-1. Open Kibana and go to **Management** > **Snapshot and Restore**.
+1. Open Kibana and go to the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Snapshots** tab, you can find the available snapshots from your newly added snapshot repository. Select any snapshot to view its details, and from there you can choose to restore it.
 3. Select **Restore**.
 4. Select the index or indices you wish to restore.

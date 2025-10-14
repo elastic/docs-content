@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration examples
 ---
 
-# Configuration examples [k8s-logstash-configuration-examples]
+# Logstash configuration examples on {{eck}} [k8s-logstash-configuration-examples]
 
 This section contains manifests that illustrate common use cases, and can be your starting point in exploring Logstash deployed with ECK. These manifests are self-contained and work out-of-the-box on any non-secured Kubernetes cluster. They all contain a three-node {{es}} cluster and a single {{kib}} instance.
 

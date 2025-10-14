@@ -10,9 +10,8 @@ products:
 
 This section helps you fix issues with {{es}} deployments.
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## General [troubleshooting-general]
 
@@ -30,11 +29,13 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/increase-shard-limit.md)
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
+* [](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md)
 
 ## Management [troubleshooting-management]
 
 * [](/troubleshoot/elasticsearch/start-ilm.md)
 * [](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md)
+* [](/troubleshoot/elasticsearch/file-based-recovery.md)
 
 ## Capacity [troubleshooting-capacity]
 

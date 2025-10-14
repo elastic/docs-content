@@ -36,7 +36,7 @@ Ready to try [{{agent}}](/reference/fleet/index.md)? Check out the [installation
 
 Beats require that you install a separate Beat for each type of data you want to collect. A single Elastic Agent installed on a host can collect and transport multiple types of data.
 
-**Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/manage-data/ingest/tools.md#additional-capabilities-beats-and-agent) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
+**Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/reference/fleet/beats-agent-comparison.md) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
 
 
 ## OpenTelemetry (OTel) collectors [ingest-otel]

@@ -1,4 +1,5 @@
 ---
+navigation_title: Advanced configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-advanced-configuration.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Advanced configuration [k8s-maps-advanced-configuration]
+# Advanced configuration for Elastic Maps Server on {{eck}} [k8s-maps-advanced-configuration]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
@@ -27,13 +28,13 @@ You can add any valid Elastic Maps Server setting as documented on the [product]
 
 The following example demonstrates how to set the log level to `debug`:
 
-```yaml
+```yaml subs=true
 apiVersion: maps.k8s.elastic.co/v1alpha1
 kind: ElasticMapsServer
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   config:
      logging.level: debug
@@ -41,13 +42,13 @@ spec:
 
 Alternatively, settings can be provided through a Secret specified in the `configRef` element:
 
-```yaml
+```yaml subs=true
 apiVersion: maps.k8s.elastic.co/v1alpha1
 kind: ElasticMapsServer
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   configRef:
     secretName: maps-config
 ---

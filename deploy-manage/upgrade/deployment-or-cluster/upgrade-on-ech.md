@@ -5,18 +5,19 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v6.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v5.html
 applies_to:
-  stack:
   deployment:
-    ess:
+    ess: ga
 products:
   - id: cloud-hosted
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Upgrade on {{ech}} (ECH)
 
 Once you are [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), a single click in the {{ecloud}} console can upgrade a deployment to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, Elastic APM, and all of your deployment components are upgraded simultaneously.
 
-{{ecloud}} only supports upgrades to released versions. Release candidate builds and master snapshots are not supported.
+{{ecloud}} only supports and enables upgrades to released versions that comply with the supported [upgrade paths](/deploy-manage/upgrade.md#upgrade-paths). Release candidate builds and master snapshots are not supported.
 
 ::::{important}
 Although it’s simple to upgrade an {{ecloud}} deployment, the new version might include breaking changes that affect your application. Ensure you review breaking changes and deprecation logs, make any necessary changes, and test against the new version before upgrading your production deployment.
@@ -24,7 +25,7 @@ Although it’s simple to upgrade an {{ecloud}} deployment, the new version migh
 
 ## Availability during upgrades
 
-For deployments with nodes in more than one availability zone, you can perform minor version upgrades, upgrades from 8.18 to 9.0.0, and cluster configuration changes with no downtime. Deployments with nodes in only one zone might experience downtime during these operations.
+For deployments with nodes in more than one availability zone, you can perform upgrades and cluster configuration changes with no downtime. Deployments with nodes in only one zone might experience downtime during these operations.
 
 When {{kib}} instances are upgraded, all instances are shut down simultaneously, making {{kib}} temporarily inaccessible, even if it's deployed across multiple zones.
 

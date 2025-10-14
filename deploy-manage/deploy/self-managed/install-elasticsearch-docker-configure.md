@@ -63,15 +63,36 @@ To encrypt your secure settings with a password and have them persist outside th
 
 For example:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
 docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} \
 bin/elasticsearch-keystore create -p
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```sh subs=true
+docker run -it --rm \
+-v full_path_to/config:/usr/share/elasticsearch/config \
+docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> \
+bin/elasticsearch-keystore create -p
+```
+:::
+::::
 
 You can also use a `docker run` command to add or update secure settings in the keystore. You’ll be prompted to enter the setting values. If the keystore is encrypted, you’ll also be prompted to enter the keystore password.
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
@@ -80,6 +101,21 @@ bin/elasticsearch-keystore \
 add my.secure.setting \
 my.other.secure.setting
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```sh subs=true
+docker run -it --rm \
+-v full_path_to/config:/usr/share/elasticsearch/config \
+docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> \
+bin/elasticsearch-keystore \
+add my.secure.setting \
+my.other.secure.setting
+```
+:::
+::::
 
 If you’ve already created the keystore and don’t need to update it, you can bind-mount the `elasticsearch.keystore` file directly. You can use the `KEYSTORE_PASSWORD` environment variable to provide the keystore password to the container at startup. For example, a `docker run` command might have the following options:
 
@@ -88,15 +124,31 @@ If you’ve already created the keystore and don’t need to update it, you can 
 -e KEYSTORE_PASSWORD=mypassword
 ```
 
+When you upgrade your cluster to a newer version, {{es}} will attempt to automatically upgrade the `elasticsearch.keystore` file to match. However, bind-mounted files are read-only, so {{es}} cannot automatically upgrade a bind-mounted `elasticsearch.keystore` file. Instead, if you are bind-mounting the `elasticsearch.keystore` file directly, you must use the `bin/elasticsearch-keystore upgrade` command to manually upgrade each node's keystore when you upgrade that node.
 
 ## Using custom Docker images [_c_customized_image]
 
 In some environments, it might make more sense to prepare a custom image that contains your configuration. A `Dockerfile` to achieve this might be as simple as:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 FROM docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
 COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```sh subs=true
+FROM docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
+COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
+```
+:::
+::::
 
 You could then build and run the image with:
 

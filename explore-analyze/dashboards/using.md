@@ -52,6 +52,11 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 :alt: Filter editor with 2 conditions
 :::
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
@@ -115,7 +120,7 @@ Filter the data with one or more options that you select.
 4. To clear the selections, click ![The icon to clear all selected options in the Options list](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 5. To display only the options you selected in the dropdown, click ![The icon to display only the options you have selected in the Options list](/explore-analyze/images/kibana-dashboard_showOnlySelectedOptions_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList_8.7.0.png
+:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
 :alt: Options list control
 :screenshot:
 :::
@@ -156,31 +161,33 @@ Filter the data within a specified range of time.
 
 ### View the panel data and requests [download-csv]
 
-**View the data in visualizations and the requests that collect the data:**
+Viewing the details of all requests used to build a visualization and the resulting data helps you confirm that the visualization is showing the right data and that the requests are performing as expected.
+
+The available actions can vary depending on the panel you're inspecting. 
+
+#### View and download the data in visualizations
+
+This action is possible for all charts created using **Lens** or {{esql}}. It is not available for other types of panels, such as **Maps** or **Vega** visualizations.
 
 1. Open the panel menu and select **Inspect**.
-2. View and download the panel data.
+1. Open the **View** dropdown, then select **Data**.
+1. If you'd like to download the data, select **Download CSV**, then select the format type from the dropdown:
 
-    1. Open the **View** dropdown, then click **Data**.
-    2. Click **Download CSV**, then select the format type from the dropdown:
+    * **Formatted CSV**: Contains human-readable dates and numbers.
+    * **Raw CSV**: Formatted for computer use.
 
-        * **Formatted CSV** — Contains human-readable dates and numbers.
-        * **Unformatted** — Best used for computer use.
+        When you download a visualization panel with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
 
-            When you download visualization panels with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
+#### View the requests that collect the data
 
-3. View the requests that collect the data.
+:::{include} ../_snippets/inspect-request.md
+:::
 
-    1. Open the **View** dropdown, then click **Requests**.
-    2. From the dropdown, select the requests you want to view.
-    3. To view the requests in **Console**, click **Request**, then click **Open in Console**.
-
-
-**View the time range on specific panels:**
+#### View the time range on specific panels
 
 When a custom time range is active for a single panel, it is indicated in the panel’s header.
 
-You can view it in more details and edit it by clicking the filter.
+You can view it in more detail and edit it by clicking the filter.
 
 ### View and edit the visualization configuration
 ```{applies_to}

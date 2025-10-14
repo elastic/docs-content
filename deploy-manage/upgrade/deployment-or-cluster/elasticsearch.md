@@ -1,21 +1,39 @@
 ---
 applies_to:
-  stack:
   deployment:
-    self: all
+    self: ga
+products:
+  - id: elasticsearch
 ---
 
 # Upgrade {{es}} [upgrading-elasticsearch]
 
-An {{es}} cluster can be upgraded one node at a time so upgrading does not interrupt service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
+This document provides the detailed steps for performing a rolling upgrade of a self-managed {{es}} cluster. A rolling upgrade allows you to upgrade your cluster one node at a time without interrupting service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
 
-Before you start, [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md). When performing a [rolling upgrade](#rolling-upgrades):
+:::{note}
+Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
+:::
 
-1. Upgrade the data nodes first, tier-by-tier, starting with the frozen tier, then the cold tier, then the warm tier, then the hot tier, and finally any other data nodes which are not in a tier. Complete the upgrade for all nodes in each data tier before moving to the next. This ensures {{ilm-init}} can continue to move data through the tiers during the upgrade. You can get the list of nodes in a specific tier with a `GET /_nodes` request, for example: `GET /_nodes/data_frozen:true/_none`.
+Before you start the rolling upgrade procedure, [plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) and [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md).
+
+## {{es}} nodes upgrade order
+
+When performing a [rolling upgrade](#rolling-upgrades):
+
+1. Upgrade the data nodes first, tier-by-tier, in the following order: 
+    1. The frozen tier
+    2. The cold tier
+    3. The warm tier
+    4. The hot tier
+    5. Any other data nodes which are not in a tier.
+    
+    Complete the upgrade for all nodes in each data tier before moving to the next. This ensures {{ilm-init}} can continue to move data through the tiers during the upgrade. You can get the list of nodes in a specific tier with a `GET /_nodes` request, for example: `GET /_nodes/data_frozen:true/_none`.
 2. Upgrade all remaining nodes that are neither master-eligible nor data nodes. This includes dedicated ML nodes, dedicated ingest nodes, and dedicated coordinating nodes.
 3. Upgrade the master-eligible nodes last. You can retrieve a list of these nodes with `GET /_nodes/master:true/_none`.
 
 This order ensures that all nodes can join the cluster during the upgrade. Upgraded nodes can join a cluster with an older master, but older nodes cannot always join a cluster with a upgraded master.
+
+## Upgrade process
 
 To upgrade a cluster:
 
@@ -45,9 +63,8 @@ To upgrade a cluster:
     It is possible to leave your {{ml}} jobs running during the upgrade, but it puts increased load on the cluster. When you shut down a {{ml}} node, its jobs automatically move to another node and restore the model states.
 
     ::::{note}
-    Any {{ml}} indices created before 8.x must be reindexed before upgrading, which you can initiate from the **Upgrade Assistant** in 8.18. For more information, refer to [Anomaly detection results migration]
+    Any {{ml}} indices created before 8.x must be reindexed before upgrading, which you can initiate from the **Upgrade Assistant** in 8.19. For more information, refer to [Anomaly detection results migration]
     ::::
-
 
     * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-set-upgrade-mode):
 
@@ -187,7 +204,7 @@ To upgrade a cluster:
 
 
 
-## Rolling upgrades [rolling-upgrades]
+## Rolling upgrades considerations [rolling-upgrades]
 
 During a rolling upgrade, the cluster continues to operate normally. However, any new functionality is disabled or operates in a backward compatible mode until all nodes in the cluster are upgraded. New functionality becomes operational once the upgrade is complete and all nodes are running the new version. Once that has happened, there’s no way to return to operating in a backward compatible mode. Nodes running the previous version will not be allowed to join the fully-updated cluster.
 

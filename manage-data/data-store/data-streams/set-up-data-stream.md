@@ -23,7 +23,7 @@ You can also [convert an index alias to a data stream](#convert-index-alias-to-d
 ::::{important}
 If you use {{fleet}}, {{agent}}, or {{ls}}, skip this tutorial. They all set up data streams for you.
 
-For {{fleet}} and {{agent}}, check out this [data streams documentation](/reference/fleet/data-streams.md). For {{ls}}, check out the [data streams settings](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
+For {{fleet}} and {{agent}}, refer to [](/reference/fleet/data-streams.md). For {{ls}}, refer to the [data streams settings](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
 
 ::::
 
@@ -33,7 +33,10 @@ For {{fleet}} and {{agent}}, check out this [data streams documentation](/refere
 
 While optional, we recommend using {{ilm-init}} to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
 
-To create an index lifecycle policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+To create an index lifecycle policy in {{kib}}:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click **Create policy**.
 
 You can also use the [create lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
@@ -104,8 +107,10 @@ If you’re unsure how to map your fields, use [runtime fields](../mapping/defin
 
 ::::
 
+To create a component template in {{kib}}:
 
-To create a component template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create component template**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create component template**.
 
 You can also use the [create component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
 
@@ -157,7 +162,10 @@ Use your component templates to create an index template. Specify:
 * Any component templates that contain your mappings and index settings.
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).
 
-To create an index template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
+To create an index template in {{kib}}:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create template**.
 
 You can also use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template). Include the `data_stream` object to enable data streams.
 
@@ -202,18 +210,18 @@ You can also manually create the stream using the [create data stream API](https
 PUT _data_stream/my-data-stream
 ```
 
-After it's been created, you can view and manage this and other data streams from the **Stack Management > Index Management** view. Refer to [Manage a data stream](./manage-data-stream.md) for details.
+After it's been created, you can view and manage this and other data streams from the **Index Management** view. Refer to [Manage a data stream](./manage-data-stream.md) for details.
 
 ## Secure the data stream [secure-data-stream]
 
-Use [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
+Use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
 
 For an example, see [Data stream privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
 
 ## Convert an index alias to a data stream [convert-index-alias-to-data-stream]
 
-Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
+Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
 
 To convert an index alias with a write index to a data stream with the same name, use the [migrate to data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream). During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
 
@@ -224,7 +232,10 @@ POST _data_stream/_migrate/my-time-series-data
 
 ## Get information about a data stream [get-info-about-data-stream]
 
-To get information about a data stream in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the data stream’s name.
+To get information about a data stream in {{kib}}:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Data Streams** tab, click the data stream’s name.
 
 You can also use the [get data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream).
 
@@ -235,7 +246,10 @@ GET _data_stream/my-data-stream
 
 ## Delete a data stream [delete-data-stream]
 
-To delete a data stream and its backing indices in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) for the data stream.
+To delete a data stream and its backing indices in {{kib}}:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](elasticsearch://reference/elasticsearch/security-privileges.md) for the data stream.
 
 You can also use the [delete data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream).
 

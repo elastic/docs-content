@@ -37,12 +37,12 @@ Integration policy response information is also available from the **Endpoints**
 
 Common causes of failure in the {{elastic-defend}} integration policy include missing prerequisites or unexpected system configuration. Consult the following topics to resolve a specific error:
 
-* [Approve the system extension for {{elastic-endpoint}}](../../solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md#system-extension-endpoint) (macOS)
-* [Enable Full Disk Access for {{elastic-endpoint}}](../../solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md#enable-fda-endpoint) (macOS)
+* [Approve the system extension for {{elastic-endpoint}}](../../solutions/security/configure-elastic-defend/enable-access-for-macos.md#system-extension-endpoint) (macOS)
+* [Enable Full Disk Access for {{elastic-endpoint}}](../../solutions/security/configure-elastic-defend/enable-access-for-macos.md#enable-fda-endpoint) (macOS)
 * [Resolve a potential system deadlock](../../troubleshoot/security/elastic-defend.md#linux-deadlock) (Linux)
 
 ::::{tip}
-If the {{elastic-defend}} integration policy is not the cause of the `Unhealthy` agent status, refer to [{{fleet}} troubleshooting](../ingest/fleet/common-problems.md) for help with the {{agent}}.
+If the {{elastic-defend}} integration policy is not the cause of the `Unhealthy` agent status, refer to [](/troubleshoot/ingest/fleet/common-problems.md) for help with the {{agent}}.
 ::::
 
 
@@ -88,7 +88,7 @@ If you encounter a `“Required transform failed”` notice on the Endpoints pag
 
 To restart a transform that’s not running:
 
-1. Go to **Kibana** → **Stack Management** → **Data** → **Transforms**.
+1. Go to {{kib}}'s **Transforms** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enter `endpoint.metadata` in the search box to find the transforms for {{elastic-defend}}.
 3. Click the **Actions** menu (**…**) and do one of the following for each transform, depending on the value in the **Status** column:
 
@@ -183,7 +183,7 @@ After deploying {{elastic-defend}}, you might encounter warnings or errors in th
 This means that the system extension or kernel extension was not approved. Consult the following topics for approving the system extension with or without MDM:
 
 * [Approve the system extension with MDM](../../solutions/security/configure-elastic-defend/deploy-on-macos-with-mdm.md#system-extension-jamf)
-* [Approve the system extension without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md#system-extension-endpoint)
+* [Approve the system extension without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos.md#system-extension-endpoint)
 
 You can validate the system extension is loaded by running:
 
@@ -199,7 +199,7 @@ In the command output, the system extension should be marked as "active enabled"
 If the system extension is loaded and kernel connection still fails, this means that Full Disk Access was not granted. {{elastic-endpoint}} requires Full Disk Access to subscribe to system events through the {{elastic-defend}} framework, which is one of the primary sources of eventing information used by {{elastic-endpoint}}. Consult the following topics for granting Full Disk Access with or without MDM:
 
 * [Enable Full Disk Access with MDM](../../solutions/security/configure-elastic-defend/deploy-on-macos-with-mdm.md#fda-jamf)
-* [Enable Full Disk Access without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md#enable-fda-endpoint-ven)
+* [Enable Full Disk Access without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos.md#enable-fda-endpoint)
 
 You can validate that Full Disk Access is approved by running
 
@@ -215,7 +215,7 @@ If the command output doesn’t contain a message about enabling Full Disk Acces
 This means that the network extension content filtering was not approved. Consult the following topics for approving network content filtering with or without MDM:
 
 * [Approve network content filtering with MDM](../../solutions/security/configure-elastic-defend/deploy-on-macos-with-mdm.md#content-filtering-jamf)
-* [Approve network content filtering without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md#allow-filter-content-ven)
+* [Approve network content filtering without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos.md#allow-filter-content)
 
 You can validate that network content filtering is approved by running
 
@@ -231,7 +231,7 @@ If the command output doesn’t contain a message about approving network conten
 This means that Full Disk Access was not granted for one or all {{elastic-endpoint}} components. Consult the following topics for granting Full Disk Access with or without MDM:
 
 * [Enable Full Disk Access with MDM](../../solutions/security/configure-elastic-defend/deploy-on-macos-with-mdm.md#fda-jamf)
-* [Enable Full Disk Access without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md#enable-fda-endpoint-ven)
+* [Enable Full Disk Access without MDM](../../solutions/security/configure-elastic-defend/enable-access-for-macos.md#enable-fda-endpoint)
 
 You can validate that Full Disk Access is approved by running
 

@@ -1,5 +1,4 @@
 ---
-navigation_title: Update or switch a policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-lifecycle-policy.html
 applies_to:
@@ -10,13 +9,13 @@ products:
 
 # Update or switch a lifecycle policy
 
-
 You can change how the lifecycle of an index or collection of rolling indices is managed by modifying the current policy or switching to a different policy.
 
 To ensure that policy updates don’t put an index into a state where it can’t exit the current phase, the phase definition is cached in the index metadata when it enters the phase. If changes can be safely applied, {{ilm-init}} updates the cached phase definition. If they cannot, phase execution continues using the cached definition.
 
 When the index advances to the next phase, it uses the phase definition from the updated policy.
 
+To configure an index not currently managed by {{ilm-init}} to be governed by an lifecycle policy, refer to [Manually apply a policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
 
 ## How changes are applied [ilm-apply-changes]
 
@@ -46,7 +45,8 @@ Avoid changing any managed policies that are shipped with {{es}}, such as `logs@
 :sync: kibana
 To update a lifecycle policy:
 
-1. Go to **Stack Management > Index Lifecycle Policies** and use the search tool to find the lifecycle policy that you want to update.
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Use the search tool to find the lifecycle policy that you want to update.
 
    You can deselect the **Include managed system policies** option to filter out managed policies from the list, since it's strongly recommended not to update these.
 
@@ -113,8 +113,9 @@ For example, in certain cases the [`forcemerge`](elasticsearch://reference/elast
 :sync: kibana
 To switch an index’s lifecycle policy:
 
-1. Go to **Stack Management > Index Management**. In the **Indices** tab, search for and select the index that you that you want to switch to a new policy. You can use the **Lifecycle status** filter to narrow the list.
-    
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Indices** tab, search for and select the index that you that you want to switch to a new policy. You can use the **Lifecycle status** filter to narrow the list.
+
 1. From the **Manage index** dropdown menu, select **Remove lifecycle policy**. Confirm your choice before the ILM policy is removed.
 
 1. From the **Manage index** dropdown menu, select **Add lifecycle policy**, and then select a new policy to apply.
