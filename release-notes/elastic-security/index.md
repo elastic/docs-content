@@ -45,8 +45,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Displays total execution time for automatic migrations [#236147]({{kib-pull}}236147).
 * Adds **Update missing index pattern** option to the automatic migration **Translated rules** page [#233258]({{kib-pull}}233258).
 * Introduces new API endpoints for automatic migration of dashboards [#229112]({{kib-pull}}229112).
-* Adds a new deployment method, "cloud connector", for the CSPM and Asset Discovery integrations [#235442]({{kib-pull}}235442).
-* Adds saved object infrastructure for cloud connectors and implements end-to-end persistence flow for creating integrations with cloud connector support [#230137]({{kib-pull}}230137).
+* Adds a new deployment method, "cloud connector", for the CSPM and Asset Discovery integrations [#235442]({{kib-pull}}235442), [#230137]({{kib-pull}}230137).
 * Makes automatic troubleshooting generally available [#234853]({{kib-pull}}234853).
 * Updates the automatic troubleshooting feature to detect warnings and failures in {{elastic-defend}} policy responses and suggest possible remediations [#231908]({{kib-pull}}231908).
 * Adds an advanced setting that keeps the alert suppression window active after you close an alert, preventing new alerts during that period [#231079]({{kib-pull}}231079).
@@ -57,7 +56,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a `managed` property to data views, marking Kibana-managed data views with a **Managed** tag [#223451]({{kib-pull}}223451).
 * Adds support for specifying a reason when closing an alert [#226590]({{kib-pull}}226590).
 * Adds a source event ID link to the alert flyout's **Highlighted fields** section, allowing you to quickly preview the event that triggered the alert [#224451]({{kib-pull}}224451).
-* Updates the indicator details flyout's UI to be more consistent with the alert details flyout [#230593]({{kib-pull}}230593).
+* Updates the indicator details flyout's UI to be more consistent with the alert details flyout's UI [#230593]({{kib-pull}}230593).
 * Restricts **Value report** page access to `admin` and `soc_manager` roles in the Security Analytics Complete {{serverless-short}} feature tier [#234377]({{kib-pull}}234377).
 * Implements the **Value report** page for the Elastic AI SOC Engine (EASE) {{serverless-short}} project type [#228877]({{kib-pull}}228877).
 * Adds conversation sharing functionality to the Security AI Assistant, allowing you to share conversations with team members [#230614]({{kib-pull}}230614).
