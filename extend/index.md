@@ -61,4 +61,4 @@ Ready to get started? Explore the [Elastic API Reference]({{apis}}).
 
 ## Contributing to Elastic documentation
 
-You can contribute to the Elastic documentation in several ways. Refer to [Contribute to Elastic documentation](./contribute/index.md) for an overview.
+You can contribute to the Elastic documentation in several ways. Refer to [Contribute to Elastic documentation](./../contribute-docs/index.md) for an overview.
