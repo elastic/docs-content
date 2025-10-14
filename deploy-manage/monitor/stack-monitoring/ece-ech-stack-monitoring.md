@@ -57,7 +57,7 @@ Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may 
 
 ## Retention of logging and monitoring indices [logging-and-monitoring-retention]
 
-When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, open {{kib}} **Stack management > Data > Index Lifecycle Policies**.
+When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, Go to the **Index Lifecycle Policiess** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 For monitoring indices, the retention period is configured in the `.monitoring-8-ilm-policy` index lifecycle policy.
 
