@@ -44,7 +44,12 @@ You can register and manage snapshot repositories in two ways:
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot)
 
-To manage repositories in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Repositories**. To register a snapshot repository, click **Register repository**.
+To manage repositories in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Repositories** tab. 
+
+To register a snapshot repository, click **Register repository**.
 
 You can also register a repository using the [Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository).
 

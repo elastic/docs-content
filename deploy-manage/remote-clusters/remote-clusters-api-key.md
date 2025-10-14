@@ -151,11 +151,13 @@ You must have the `manage` cluster privilege to connect remote clusters.
 
 The local cluster uses the [remote cluster interface](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
 
-To add a remote cluster from Stack Management in {{kib}}:
+To add a remote cluster in {{kib}}:
 
-1. Select **Remote Clusters** from the side navigation.
-2. Enter a name (*cluster alias*) for the remote cluster.
-3. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.168.1.1:9443`.
+1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Add a remote cluster**.
+3. Select **API keys** as the connection type.
+4. Enter a name (*cluster alias*) for the remote cluster.
+5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.168.1.1:9443`.
 
 ::::{note}
 If the remote cluster is part of an {{ech}}, {{ece}}, or {{eck}} deployment, configure the connection to use `proxy`. The default `sniff` mode doesn't work in these environments. Refer to the [connection modes](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-proxy-modes) description for more information.
@@ -337,7 +339,7 @@ cluster:
 
 To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) or [remote cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-cluster-priv) on the local cluster.
 
-You can manage users and roles from Stack Management in {{kib}} by selecting **Security > Roles** from the side navigation. You can also use the [role management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) to add, update, remove, and retrieve roles dynamically.
+To manage users and roles in {{kib}}, go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use the [role management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) to add, update, remove, and retrieve roles dynamically.
 
 The following examples use the [Create or update roles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API. You must have at least the `manage_security` cluster privilege to use this API.
 

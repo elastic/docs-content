@@ -63,7 +63,7 @@ If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters run
 
 If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
-To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
+To view your remote clusters in {{kib}}, Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
 
 ::::{step} (Optional) Close machine learning jobs
