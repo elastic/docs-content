@@ -7,16 +7,22 @@ products:
   - id: cloud-serverless
 ---
 
-# Send data to wired streams
+# Send data to wired streams [streams-wired-streams]
 
-## Turn on wired streams
+With wired streams, all logs are sent to a single `/logs` endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) rules you set up manually or with the help of AI suggestions.
+
+To send data to wired streams, you need to:
+- [Turn on wired streams](#streams-wired-streams-enable)
+- [Configure your data shipper](#streams-wired-streams-ship)
+
+## Turn on wired streams [streams-wired-streams-enable]
 
 To turn on wired streams:
 
 1. From the Streams page, open **Settings**.
 1. Turn on **Enable wired streams**.
 
-## Configure your shippers
+## Configure your data shipper [streams-wired-streams-ship]
 
 To send data to wired streams, configure your shippers to send data to the `/logs` endpoint. To do this, complete the following configurations for your shipper:
 
@@ -85,5 +91,12 @@ Use the **Custom Logs (Filestream)** integration to send data to Wired Streams:
 1. Under **Where to add this integration**, select an agent policy that uses the output you configured in **Step 4**.
 :::
 
-
 ::::
+
+## Next steps
+
+After sending your data to wired streams:
+
+- [Partition data](./management/partitioning.md) using the **Partitioning** tab to send data into meaningful child streams.
+- [Extract fields](./extract.md) using the **Processing** tab to filter and analyze your data effectively.
+- [Map fields](./schema.md) using the **Schema** tab to make fields easier to query.

@@ -6,7 +6,7 @@ applies_to:
 
 # Add significant events
 
-Significant events surface noteworthy occurrences within a Stream’s data. These can include events like out-of-memory errors, startup and shutdown messages, and configuration changes.
+Significant events surface noteworthy occurrences within a stream’s data. These can include events like out-of-memory errors, startup and shutdown messages, and configuration changes.
 
 You can define significant events by either:
 
