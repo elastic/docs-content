@@ -51,41 +51,40 @@ You can also interact with your case data using [{{esql}} in Discover](../../../
 * Find the total number of open {{observability}} cases in the default space:
 
   ```console
-  FROM .internal.cases.default-observability | STATS count = COUNT(*) BY status | WHERE status  == "open"
+  FROM .internal.cases.observability-default | STATS count = COUNT(*) BY status | WHERE status  == "open"
   ```
 
 * Find the total number of in progress Stack Management cases in the default space:
 
   ```console
-  FROM .internal.cases.default-cases | STATS count = COUNT(*) BY status | WHERE status  == "in-progress"
+  FROM .internal.cases.cases-default | STATS count = COUNT(*) BY status | WHERE status  == "in-progress"
   ```
 
 * Find the total number of closed {{observability}} cases in the default space:
 
   ```console
-  FROM .internal.cases.default-observability | STATS count = COUNT(*) BY status | WHERE status  == "closed"
+  FROM .internal.cases.observability-default | STATS count = COUNT(*) BY status | WHERE status  == "closed"
   ```
 
 * Find Security cases that are open in the default space, and sort them by time, with the most recent at the top:
 
   ```console
-  FROM .internal.cases.default-securitysolution | WHERE status  == "open" | SORT created_at DESC
+  FROM .internal.cases.securitysolution-default | WHERE status  == "open" | SORT created_at DESC
   ```
 
 * Find the average time that it takes to close Security cases in the default space:
 
   ```console
-  FROM .internal.cases.default-securitysolution | STATS average_time_to_close = AVG(time_to_resolve)
+  FROM .internal.cases.securitysolution-default | STATS average_time_to_close = AVG(time_to_resolve)
   ```
 
 ## Case analytics indices names and aliases [case-analytics-indices-names]
 
 {{es}} automatically creates the following case analytics indices and their aliases in spaces with case data. 
 
-::::{note} 
-Go to
-% [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md) for schema details. 
-::::
+% ::::{note} 
+% Go to [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md) for schema details. 
+% ::::
 
 ### General case data 
 
@@ -93,9 +92,9 @@ These indices store general data about cases.
 
 | Index    | Alias | Created for | 
 | ---------------------------- | ---------------------- |----------------------------------------- | 
-| `.internal.cases.<space-name>-cases` |  `.cases.<space-name>-cases` | Stack Management cases  | 
-| `.internal.cases.<space-name>-observability` |  `.cases.<space-name>-observability` | {{observability}} cases   | 
-| `.internal.cases.<space-name>-securitysolution` |  `.cases.<space-name>-securitysolution` | Security cases  | 
+| `.internal.cases.cases-<space-name>` |  `.cases.cases-<space-name>` | Stack Management cases  | 
+| `.internal.cases.observability-<space-name>` |  `.cases.observability-<space-name>` | {{observability}} cases   | 
+| `.internal.cases.securitysolution-<space-name>` |  `.cases.securitysolution-<space-name>` | Security cases  | 
 
 ### Case comments
 
@@ -103,9 +102,9 @@ These indices store data related to comments.
 
 | Index    | Alias | Created for | 
 | ---------------------------- | ---------------------- |----------------------------------------- | 
-| `.internal.cases-comments.<space-name>-cases` |  `.cases-comments.<space-name>-cases` | Stack Management cases    | 
-| `.internal.cases-comments.<space-name>-observability` |  `.cases-comments.<space-name>-observability` | {{observability}} cases    | 
-| `.internal.cases-comments.<space-name>-securitysolution` |  `.cases-comments.<space-name>-securitysolution` | Security cases   | 
+| `.internal.cases-comments.cases-<space-name>` |  `.cases-comments.cases-<space-name>` | Stack Management cases    | 
+| `.internal.cases-comments.observability-<space-name>` |  `.cases-comments.observability-<space-name>` | {{observability}} cases    | 
+| `.internal.cases-comments.securitysolution-<space-name>` |  `.cases-comments.securitysolution-<space-name>` | Security cases   | 
 
 ### Case attachments 
 
@@ -113,9 +112,9 @@ These indices store data related to attachments.
 
 | Index    | Alias | Created for | 
 | ---------------------------- | ---------------------- |----------------------------------------- | 
-| `.internal.cases-attachments.<space-name>-cases` |  `.cases-attachments.<space-name>-cases` | Stack Management cases    | 
-| `.internal.cases-attachments.<space-name>-observability` |  `.cases-attachments.<space-name>-observability` | {{observability}} cases    | 
-| `.internal.cases-attachments.<space-name>-securitysolution` |  `.cases-attachments.<space-name>-securitysolution` | Security cases    | 
+| `.internal.cases-attachments.cases-<space-name>` |  `.cases-attachments.cases-<space-name>` | Stack Management cases    | 
+| `.internal.cases-attachments.observability-<space-name>` |  `.cases-attachments.observability-<space-name>` | {{observability}} cases    | 
+| `.internal.cases-attachments.securitysolution-<space-name>` |  `.cases-attachments.securitysolution-<space-name>` | Security cases    | 
 
 ### Case activity 
 
@@ -123,6 +122,6 @@ These indices store data related to activity.
 
 | Index    | Alias | Created for | 
 | ---------------------------- | ---------------------- |----------------------------------------- | 
-| `.internal.cases-activity.<space-name>-cases` |  `.cases-activity.<space-name>-cases` | Stack Management cases    | 
-| `.internal.cases-activity.<space-name>-observability` |  `.cases-activity.<space-name>-observability` | {{observability}} cases    | 
-| `.internal.cases-activity.<space-name>-securitysolution` |  `.cases-activity.<space-name>-securitysolution` | Security cases    | 
+| `.internal.cases-activity.cases-<space-name>` |  `.cases-activity.cases-<space-name>` | Stack Management cases    | 
+| `.internal.cases-activity.observability-<space-name>` |  `.cases-activity.observability-<space-name>` | {{observability}} cases    | 
+| `.internal.cases-activity.securitysolution-<space-name>` |  `.cases-activity.securitysolution-<space-name>` | Security cases    | 
