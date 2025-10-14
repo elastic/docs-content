@@ -125,8 +125,6 @@ stack: preview 9.0
 
 For an enhanced logs view with additional information including the log pattern, the number of events for each log, change type, and the time the change occurred, turn on the `observability:newLogsOverview` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings).
 
-% Need to add this setting to the Advanced setting kibana docs
-
 
 ## View alerts [analyze-hosts-view-alerts]
 

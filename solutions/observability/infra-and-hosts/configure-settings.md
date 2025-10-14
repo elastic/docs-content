@@ -17,7 +17,7 @@ The **Editor** role or higher is required to configure settings. To learn more, 
 ::::
 
 
-From the main menu, go to **Infrastructure** → **Infrastructure inventory** or **Hosts**, and click the **Settings** link at the top of the page. The following settings are available:
+From the navigation menu, go to **Infrastructure** → **Infrastructure inventory** or **Hosts**, and click the **Settings** link at the top of the page. The following settings are available:
 
 | Setting | Description |
 | --- | --- |
