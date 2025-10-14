@@ -107,7 +107,7 @@ If you’re unsure how to map your fields, use [runtime fields](../mapping/defin
 
 ::::
 
-To create an index lifecycle policy in {{kib}}:
+To create a component template in {{kib}}:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. In the **Index Templates** tab, click **Create component template**.
