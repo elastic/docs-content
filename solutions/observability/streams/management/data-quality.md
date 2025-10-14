@@ -6,7 +6,7 @@ applies_to:
 
 # Manage data quality [streams-data-retention]
 
-Use the **Data quality** tab to find failed and degraded documents in your stream. The **Data quality** tab is made up of the following components:
+Use the **Data quality** tab to find failed and degraded documents in your stream. Use the following components to monitor the health of your data and identify and fix issues:
 
 - **Degraded documents:** Documents with the `ignored` property usually because of malformed fields or exceeding the limit of total fields when `ignore_above:false`. This component shows the total number of degraded documents, the percentage, and status (**Good**, **Degraded**, **Poor**).
 - **Failed documents:**: Documents that were rejected during ingestion because of mapping conflicts or pipeline failures.
