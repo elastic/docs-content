@@ -20,8 +20,8 @@ To configure email notifications for your {{ecloud}} billing:
 3. From the lower navigation menu, select **Billing and Subscription**.
 4. Follow the steps to set up or change the types of email notifications you'd like to receive:
     * [Configure budget emails](#configure-budget-emails)
-    * [Configure usage summmary emails](#configure-usage-summmary-emails)
-    * [Configure credit consumption emails](#configure-credit-consumption-emails-configure-credit-consumption-emails)
+    * [Configure usage summmary emails](#configure-usage-summary-emails)
+    * [Configure credit consumption emails](#configure-credit-consumption-emails)
 
 ## Configure budget emails [configure-budget-emails]
 
