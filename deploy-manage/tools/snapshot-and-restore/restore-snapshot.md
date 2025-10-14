@@ -53,7 +53,10 @@ When restoring data from a snapshot, keep the following in mind:
 
 ## Get a list of available snapshots
 
-To view a list of available snapshots in {{kib}}, go to **Stack Management > Snapshot and Restore**.
+To view a list of available snapshots in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Snapshots** tab. 
 
 You can also use the get repository API and the get snapshot API to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
 
