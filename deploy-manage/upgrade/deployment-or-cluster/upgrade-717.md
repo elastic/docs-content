@@ -54,9 +54,9 @@ For the 7.17.x → 9.x upgrade path, the main planning outcome is a set of requi
 
   Before the initial upgrade to 8.19.x, ensure that all ingest components ({{beats}}, {{agent}}, {{ls}}, APM) are on version 7.17.x.
 
-  Before the final upgrade to {{version.stack}}, upgrade all ingest components to 8.19.x.
+  After upgrading the cluster to 8.19.x and before proceeding to {{version.stack}}, upgrade all ingest components to 8.19.x.
 
-  Refer to [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md) for more details.
+  Refer to [Upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md) for detailed upgrade instructions.
   
 * **Client libraries:**
 
@@ -64,28 +64,33 @@ For the 7.17.x → 9.x upgrade path, the main planning outcome is a set of requi
 
 * **Orchestration platforms:**
 
-  * {applies_to}`eck:` If you are running an ECK version older than 3.x you need to upgrade ECK before the final upgrade to 9.x. This can be done at the beginning before the initial upgrade or between them.
-  * {applies_to}`ece:` If you are running an ECE version older than 4.x you need to upgrade your ECE platform before the final upgrade to 9.x. This can be done at the beginning before the initial upgrade or between them.
+  * {applies_to}`eck:` If you are running an ECK version earlier than 3.x, you need to upgrade ECK before the final upgrade to 9.x.
 
-Finally, it is strongly recommended to [test the full upgrade process in a non-production environment](/deploy-manage/upgrade/plan-upgrade.md#test-in-a-non-production-environment) before applying it to production.
+    This can be done either at the beginning, before the initial upgrade, or between the two upgrade phases.
+
+  * {applies_to}`ece:` If you are running an ECE version earlier than 4.x, you need to upgrade your ECE platform before the final upgrade to 9.x.
+
+    This can be done either at the beginning, before the initial upgrade, or between the two upgrade phases.
+
+Finally, we strongly recommend [testing the full upgrade process in a non-production environment](/deploy-manage/upgrade/plan-upgrade.md#test-in-a-non-production-environment) before applying it to production.
 
 ## Upgrade Step 1: 7.17.x → 8.19.x
 
-This step assumes that you want to perform the deployment upgrade as part of your [upgrade plan](#planning), and all your ingest components and client libraries are compatible with 8.19.x.
+This step covers upgrading your deployment from 7.17.x to 8.19.x, following the [planning phase](#planning) and assuming that all ingest components and client libraries are compatible with 8.19.x.
 
 ### 8.19 upgrade preparations
 
-The most important preparation steps for a major upgrade are:
+The most important [upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md) for a major upgrade are:
+
 * Breaking changes and known issues analysis.
 * Run the upgrade assistant in {{kib}} to detect and resolve issues.
 * Take a snapshot of your deployment before the upgrade.
 
 {{ech}} and {{ece}} platforms facilitates the upgrade preparations by automatically creating snapshots before the upgrade and by checking the upgrade assistant for critical issues before proceeding.
 
-Also take in mind the following points:
-* If you are using dedicated monitoring clusters or remote clusters, upgrade them first.
+(upgrade order, you can only upgrade...??)
 
-* Take a cluster snapshot before starting the ugprade
+https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade
 
 Upgrade 8.19: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html
 
@@ -136,7 +141,10 @@ On Elastic Cloud Enterprise, you need to [configure a snapshot repository](/depl
 :::
 
 :::{applies-item} self:
-Follow all preparations per [](/deploy-manage/upgrade/prepare-to-upgrade.md)
+
+Follow the [Prepare to upgrade from 7.x](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade) steps before starting the upgrade.
+
+Also https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html ?
 :::
 
 ::::
