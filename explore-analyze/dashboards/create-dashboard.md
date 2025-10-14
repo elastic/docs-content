@@ -15,7 +15,7 @@ products:
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
 
-3. Add content to the dashboard. You have several options covered in more detail in the [Visualizations section](../visualize.md#panels-editors).
+3. Add content to the dashboard. The following tabs show the available options in certain versions and deployment types. Some options are covered in more detail in the [Visualizations section](../visualize.md#panels-editors).
 
     :::::{applies-switch}
     ::::{applies-item} { stack: ga 9.2, serverless: }
