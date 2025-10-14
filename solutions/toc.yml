@@ -1,4 +1,4 @@
-project: 'Solutions and use cases'
+project: "Solutions and use cases"
 toc:
   - file: index.md
   - file: search.md
@@ -50,6 +50,8 @@ toc:
       - hidden: search/agent-builder/chat.md
       - hidden: search/agent-builder/agent-builder-agents.md
       - hidden: search/agent-builder/tools.md
+      - hidden: search/agent-builder/tools/esql-tools.md
+      - hidden: search/agent-builder/tools/index-search-tools.md
       - hidden: search/agent-builder/programmatic-access.md
       - hidden: search/agent-builder/kibana-api.md
       - hidden: search/agent-builder/mcp-server.md
@@ -458,13 +460,13 @@ toc:
               - file: observability/logs/logs-index-template-defaults.md
           - file: observability/streams/streams.md
             children:
-            - file: observability/streams/management/extract.md
-              children:
-                - file: observability/streams/management/extract/date.md
-                - file: observability/streams/management/extract/dissect.md
-                - file: observability/streams/management/extract/grok.md
-            - file: observability/streams/management/retention.md
-            - file: observability/streams/management/advanced.md
+              - file: observability/streams/management/extract.md
+                children:
+                  - file: observability/streams/management/extract/date.md
+                  - file: observability/streams/management/extract/dissect.md
+                  - file: observability/streams/management/extract/grok.md
+              - file: observability/streams/management/retention.md
+              - file: observability/streams/management/advanced.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
