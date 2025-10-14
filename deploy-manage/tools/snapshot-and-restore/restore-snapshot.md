@@ -37,6 +37,7 @@ This guide also provides tips for [restoring to another cluster](#restore-differ
 
   ```console
   GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
+  ```
 
 - If no such template exists, you can [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) or restore a cluster state that contains one. Without a matching index template, a data stream can’t roll over or create backing indices.
 - If your snapshot contains data from App Search or Workplace Search, ensure you’ve restored the Enterprise Search encryption key before restoring the snapshot.
