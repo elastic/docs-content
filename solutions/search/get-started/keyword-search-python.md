@@ -37,7 +37,7 @@ To learn about role-based access control, go to [](/deploy-manage/users-roles/cl
 
 An index is a collection of documents uniquely identified by a name or an alias.
 To create an index:
-1. Go to  **Index Management** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to **Index Management** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Create index**, select **Keyword Search**, and follow the guided workflow.
 
 To enable your client to talk to your project, you must also create an API key.
