@@ -1,4 +1,4 @@
-project: 'Solutions and use cases'
+project: "Solutions and use cases"
 toc:
   - file: index.md
   - file: search.md
@@ -46,9 +46,12 @@ toc:
           - file: search/using-openai-compatible-models.md
       - hidden: search/elastic-agent-builder.md
       - hidden: search/agent-builder/get-started.md
+      - hidden: search/agent-builder/models.md
       - hidden: search/agent-builder/chat.md
       - hidden: search/agent-builder/agent-builder-agents.md
       - hidden: search/agent-builder/tools.md
+      - hidden: search/agent-builder/tools/esql-tools.md
+      - hidden: search/agent-builder/tools/index-search-tools.md
       - hidden: search/agent-builder/programmatic-access.md
       - hidden: search/agent-builder/kibana-api.md
       - hidden: search/agent-builder/mcp-server.md
@@ -457,13 +460,13 @@ toc:
               - file: observability/logs/logs-index-template-defaults.md
           - file: observability/streams/streams.md
             children:
-            - file: observability/streams/management/extract.md
-              children:
-                - file: observability/streams/management/extract/date.md
-                - file: observability/streams/management/extract/dissect.md
-                - file: observability/streams/management/extract/grok.md
-            - file: observability/streams/management/retention.md
-            - file: observability/streams/management/advanced.md
+              - file: observability/streams/management/extract.md
+                children:
+                  - file: observability/streams/management/extract/date.md
+                  - file: observability/streams/management/extract/dissect.md
+                  - file: observability/streams/management/extract/grok.md
+              - file: observability/streams/management/retention.md
+              - file: observability/streams/management/advanced.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -626,7 +629,7 @@ toc:
           - file: security/manage-elastic-defend/optimize-elastic-defend.md
           - file: security/manage-elastic-defend/event-capture-elastic-defend.md
           - file: security/manage-elastic-defend/endpoint-protection-rules.md
-          - file: security/manage-elastic-defend/identify-antivirus-software-on-hosts.md
+          - file: security/manage-elastic-defend/automatic-troubleshooting.md
           - file: security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md
           - file: security/manage-elastic-defend/elastic-endpoint-self-protection-features.md
       - file: security/endpoint-response-actions.md
@@ -680,6 +683,9 @@ toc:
               - file: security/cloud/integration-qualys.md
               - file: security/cloud/integration-tenablevm.md
               - file: security/cloud/integration-rapid7.md
+              - file: security/cloud/integrations/aws-config-integration.md
+              - file: security/cloud/integrations/google-security-command-center.md
+
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md

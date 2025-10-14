@@ -13,20 +13,11 @@ products:
 
 # View and analyze risk score data [analyze-risk-score-data]
 
-The {{security-app}} provides several options to monitor the change in the risk posture of hosts and users from your environment. Use the following places in the {{security-app}} to view and analyze risk score data:
-
-* [Entity Analytics overview](#entity-analytics-overview)
-* [Alerts page](#alerts-page)
-* [Alert details flyout](#alert-details-flyout)
-* [Hosts and Users pages](#hosts-users-pages)
-* [Host and user details pages](#host-user-details-pages)
-* [Entity details flyouts](#entity-details-flyouts)
+The {{security-app}} provides several ways to monitor the change in the risk posture of entities in your environment.
 
 ::::{tip}
-We recommend that you prioritize [alert triaging](#alert-triaging) to identify anomalies or abnormal behavior patterns.
+After reviewing an entity’s risk score, the recommended next step is to investigate the risky entity in [Timeline](/solutions/security/investigate/timeline.md).
 ::::
-
-
 
 ## Entity Analytics overview [entity-analytics-overview]
 
@@ -35,7 +26,7 @@ In the Entity Analytics overview, you can view entity key performance indicators
 If you have enabled the [entity store](entity-store.md), you'll also get access to the **Entities** section, where you can view all hosts, users, and services along with their risk and asset criticality data.
 
 Access the Entity Analytics overview from the following pages:
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: unavailable` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md) 
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md) 
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 
@@ -183,3 +174,21 @@ In the entity details flyouts, you can access the risk score data in the risk su
 :alt: Host risk data in the Host risk summary section
 :screenshot:
 :::
+
+## Analyze entities over time [historical-entity-analysis]
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) allows you to analyze how entity attributes change over time, making it easier to investigate past activity, track trends, and identify unusual behavior or changes that may indicate risk. Use time-based queries in [Discover](/explore-analyze/discover.md) to answer questions such as:
+
+* What did user A’s attributes look like on March 15?
+* How has user B's risk score changed over the last 90 days?
+* Which user had the biggest jump in their risk score since yesterday?
+
+By analyzing current and past entity data, you can understand how your environment and its entities evolve over time.
+
+::::{note}
+If you enabled the entity store before upgrading to 9.2, you'll need to re-start it using the **On**/**Off** toggle to access the historical analysis feature.
+::::

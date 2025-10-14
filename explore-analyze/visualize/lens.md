@@ -531,6 +531,22 @@ These options can vary depending on the type of chart.
 **Point visibility** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
 :   For **Area** and **Line** charts. Use this option to show or hide data points. Set to `Auto` by default: Points are visible unless the distance between them is too short.
 
+#### Metric charts
+```{applies_to}
+stack: ga 9.2
+```
+**Primary metric**
+:   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
+
+**Title and subtitle**
+:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+
+**Secondary metric**
+:   Define the **Alignment**.
+
+**Other**
+:   Choose the **Icon** position.
+
 #### Tables
 
 **Density** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
