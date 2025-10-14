@@ -49,7 +49,8 @@ A lifecycle policy defines a set of index lifecycle phases and the actions to pe
 :sync: kibana
 To add an ILM policy to an {{es}} cluster:
 
-1. Go to **Stack Management > Index Lifecycle Policies**, and select **Create policy**.
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select **Create policy**.
 
     ![Create policy page](/manage-data/images/elasticsearch-reference-create-policy.png "")
 
@@ -58,7 +59,7 @@ To add an ILM policy to an {{es}} cluster:
 1. In the **Hot phase**, by default an ILM-managed index [rolls over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) when either:
     * It reaches 30 days of age.
     * One or more primary shards reach 50 GB in size.
-  
+
     Disable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
 
     ::::{important}
@@ -117,7 +118,7 @@ The rollover action implicitly rolls over a data stream or alias if one or more 
 To use a lifecycle policy that triggers a rollover action, you need to configure the policy in the index template used to create each new index. You specify the name of the policy and the alias used to reference the rolling indices.
 
 :::{tip}
-If you already have an index template to which you'd like to add an {{ilm-init}} policy, you can do this from **Stack Management > Index Lifecycle Policies**. Search for and select the policy you want, and from the **Actions** menu, select **Add to index template**.
+If you already have an index template to which you'd like to add an {{ilm-init}} policy, you can do this from the **Index Lifecycle Policies** management page. Search for and select the policy you want, and from the **Actions** menu, select **Add to index template**.
 :::
 
 ::::{tab-set}
@@ -126,11 +127,12 @@ If you already have an index template to which you'd like to add an {{ilm-init}}
 :sync: kibana
 To add an index template to a cluster and apply the lifecycle policy to indices matching the template:
 
-1. Go to **Stack Management > Index Management**. In the **Index Templates** tab, select **Create template**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, select **Create template**.
 
     ![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard-my_template.png "")
 
-1. On the **Logistics** page: 
+1. On the **Logistics** page:
     1. Specify a name for the template.
     1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `my-index-*`.
     1. If you're storing continuously generated, append-only data, you can opt to create [data streams](/manage-data/data-store/data-streams.md) instead of indices for more efficient storage.
@@ -144,7 +146,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
         * The [index mode](elasticsearch://reference/elasticsearch/index-settings/time-series.md) to use for the created indices.
         * The template priority, version, and any metadata.
         * Whether or not to overwrite the `action.auto_create_index` cluster setting.
-        
+
         Refer to the [Create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) documentation for details about these options.
 
 1. On the **Component templates** page, use the search and filter tools to select any [component templates](/manage-data/data-store/templates.md#component-templates) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
@@ -225,7 +227,8 @@ When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}}
 :sync: kibana
 To create the initial managed index:
 
-1. Go to **Stack Management > Index Management**. In the **Indices** tab, select **Create index**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Indices** tab, select **Create index**.
 1. Specify a name for the index that matches the index template pattern and that ends with a number. For example, `test-000001`.
 1. Leave the **Index mode** set to the default **Standard**.
 
