@@ -102,7 +102,7 @@ The gzip compression level. Setting this value to `0` disables compression. The 
 
 Increasing the compression level will reduce the network usage but will increase the CPU usage.
 
-The default value is `0`.
+The default value is `5`.
 
 ### `escape_html` [_escape_html]
 
@@ -167,7 +167,7 @@ The default is 3.
 
 ### `flush_bytes` [_flush_bytes]
 
-The bulk request size threshold, in bytes, before flushing to {{es}}. The value must have a suffix, e.g. `"2MB"`. The default is `1MB`.
+The bulk request size threshold, in bytes, before flushing to {{es}}. If compression is enabled, this is compressed bytes. The value must have a suffix, e.g. `"2MB"`. The default is `1MB`.
 
 ### `flush_interval` [_flush_interval]
 
