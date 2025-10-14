@@ -35,7 +35,7 @@ To preview risky entities, find **Entity risk score** in the navigation menu or 
 
 ::::{note}
 * To view risk score data, you must have alerts generated in your environment.
-* In {{stack}}, if you previously installed the original user and host risk score modules, and you’re upgrading to {{stack}} version 8.11 or newer, refer to [Upgrade to the latest risk engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#upgrade-risk-engine).
+* In {{stack}}, if you previously installed the original user and host risk score modules, and you’re upgrading to {{stack}} version 9.0 or later, refer to [Upgrade to the latest risk engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#upgrade-risk-engine).
 
 ::::
 
