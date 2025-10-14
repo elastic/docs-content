@@ -8,7 +8,7 @@ products:
 ---
 
 ::::{important}
-The information provided in this section is applicable to all deployment types. However, the configuration settings detailed here are only valid for self-managed {{es}} deployments. For {{ecloud}} and {{serverless-full}} deployments this seciton should only be used for general information.
+The information provided in this section is applicable to all deployment types. However, the configuration settings detailed here are only valid for fully self-managed {{es}} deployments. For ECE, ECK, and ECH deployments, this section should only be used for general information and troubleshooting.
 ::::
 
 # Discovery and cluster formation [modules-discovery]
