@@ -28,7 +28,7 @@ The preview is limited to two risk scores per {{kib}} instance or serverless pro
 ::::
 
 
-To preview risky entities, find **Entity Risk Score** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To preview risky entities, find **Entity risk score** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ## Turn on the latest risk engine [_turn_on_the_latest_risk_engine]
@@ -42,10 +42,11 @@ To preview risky entities, find **Entity Risk Score** in the navigation menu or 
 
 If you’re installing the risk scoring engine for the first time:
 
-1. Find **Entity Risk Score** in the navigation menu.
-2. On the **Entity Risk Score** page, turn the toggle on.
-
-You can also choose to include `Closed` alerts in risk scoring calculations and specify a date and time range for the calculation.
+1. Find **Entity risk score** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Entity risk score** page, turn the toggle on.
+3. {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Choose whether to retain [residual risk scores](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#residual-risk-score).
+4. Choose whether to include `Closed` alerts in risk scoring calculations.
+5. Optinally, specify a date and time range for the calculation.
 
 :::{image} /solutions/images/security-turn-on-risk-engine.png
 :alt: Turn on entity risk scoring
@@ -58,7 +59,7 @@ You can also choose to include `Closed` alerts in risk scoring calculations and 
 stack:
 ```
 
-If you upgraded to 8.11 from an earlier {{stack}} version, and you have the original risk engine installed, you can upgrade to the latest risk engine. You will be prompted to upgrade in places where risk score data exists, such as:
+If you upgraded to 9.0 or later from an earlier {{stack}} version, and you have the original risk engine installed, you can upgrade to the latest risk engine. You will be prompted to upgrade in places where risk score data exists, such as:
 
 * The Entity Analytics dashboard
 * The **User risk** tab on the Users page
@@ -71,7 +72,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 :screenshot:
 :::
 
-1. Click **Manage** in the upgrade prompt, or find **Entity Risk Score** in the navigation menu.
+1. Click **Manage** in the upgrade prompt, or find **Entity risk score** in the navigation menu.
 2. On the Entity Risk Score page, click **Start update** next to the **Update available** label.
 
     :::{image} /solutions/images/security-risk-score-start-update.png
