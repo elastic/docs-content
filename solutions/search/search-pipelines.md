@@ -188,7 +188,7 @@ Connectors will automatically add these control flow parameters based on the set
 
 #### `<index-name>@ml-inference` Reference [ingest-pipeline-search-details-specific-ml-reference]
 
-This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the Pipelines tab of your index, or by navigating to **Ingest Pipelines** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
+This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the **Pipelines** tab of your index, or by navigating to **Ingest Pipelines** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
 
 It’s possible to add one or more ML inference pipelines to an index in the **Pipelines** tab. This pipeline will serve as a container for all of the ML inference pipelines configured for the index. Each ML inference pipeline added to the index is referenced within `<index-name>@ml-inference` using a `pipeline` processor.
 
@@ -207,7 +207,7 @@ The `monitor_ml` Elasticsearch cluster permission is required in order to manage
 
 #### `<index-name>@custom` Reference [ingest-pipeline-search-details-specific-custom-reference]
 
-This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the Pipelines tab of your index, or go to **Ingest Pipelines** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
+This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the **Pipelines** tab of your index, or go to **Ingest Pipelines** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
 
 You are encouraged to make additions and edits to this pipeline, provided its name remains the same. This provides a convenient hook from which to add custom processing and transformations for your data. Be sure to read the [docs for ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to see what options are available.
 

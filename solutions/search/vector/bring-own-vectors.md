@@ -136,7 +136,7 @@ If you want to try a similar workflow from an {{es}} client, use the following g
 
 * Go to **Index Management** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * Select **Create index**. Specify a name and then select **Create my index**. 
-* Select **Vector Search** option and configure your index.
+* Select **Vector Search** option and follow the guided workflow.
 
 When you finish your tests and no longer need the sample data set, delete the index:
 

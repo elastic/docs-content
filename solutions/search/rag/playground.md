@@ -118,7 +118,7 @@ To get started with Playground, you need to create a [connector](../../../deploy
 
 To connect to an LLM provider, use the following steps on the Playground landing page:
 
-1. Select **New Playground**. Select the tool icon in the **Large Language Model (LLM)** tile to connect an LLM.
+1. Select **New Playground**. Select the wrench button (🔧) in the **Large Language Model (LLM)** tile to connect an LLM.
 2. Select your **LLM provider**.
 3. **Name** your connector.
 4. Select a **URL endpoint** (or use the default).
