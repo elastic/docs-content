@@ -15,8 +15,13 @@ products:
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
 
-3. Add content to the dashboard. You have several options covered in more detail in the [Visualizations section](../visualize.md#panels-editors):
+3. Add content to the dashboard. You have several options covered in more detail in the [Visualizations section](../visualize.md#panels-editors).
 
+    * {applies_to}`stack: ga 9.2` 
+    * [**Create visualization**](../visualize/lens.md). This option is a shortcut to create a chart using **Lens**, the default visualization editor in {{kib}}.
+    * **Add from library**. Select existing content that has already been configured and saved to the **Add from library flyout**.
+
+    * {applies_to}`stack: ga 9.0` 
     * [**Create visualization**](../visualize/lens.md). This option is a shortcut to create a chart using **Lens**, the default visualization editor in {{kib}}.
     * [**Add panel**](../visualize.md#panels-editors). Choose one of the available panels to add and configure content to your dashboard.
     * **Add from library**. Select existing content that has already been configured and saved to the **Visualize Library**.
