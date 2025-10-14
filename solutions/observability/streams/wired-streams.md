@@ -97,6 +97,6 @@ Use the **Custom Logs (Filestream)** integration to send data to Wired Streams:
 
 After sending your data to wired streams:
 
-- [Partition data](./management/partitioning.md) using the **Partitioning** tab to send data into meaningful child streams.
-- [Extract fields](./management/extract.md) using the **Processing** tab to filter and analyze your data effectively.
-- [Map fields](./management/schema.md) using the **Schema** tab to make fields easier to query.
+- [Partition data](./management/partitioning.md): Use the **Partitioning** tab to send data into meaningful child streams.
+- [Extract fields](./management/extract.md): Use the **Processing** tab to filter and analyze your data effectively.
+- [Map fields](./management/schema.md): Use the **Schema** tab to make fields easier to query.
