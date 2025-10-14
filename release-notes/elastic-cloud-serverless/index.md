@@ -9,6 +9,77 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## October 13, 2025 [serverless-changelog-10132025]
+
+### Features and enhancements [serverless-changelog-10132025-features-enhancements]
+
+* Adds a **Show agentless resources** toggle on the Fleet > Settings page for debugging and diagnostics [#237528]({{kib-pull}}237528)
+* Allows you to carry over the controls when navigating to a dashboard, preserving the histogram [#237070]({{kib-pull}}237070)
+* Enables the risk score reset feature [#237829]({{kib-pull}}237829)
+* Uses {{esql}} for calculating risk scores [#237871]({{kib-pull}}237871)
+* Adds Security ML modules for GCP Audit and Azure Activity Logs [#236849]({{kib-pull}}236849)
+* Removes the global empty state redirect [#237612]({{kib-pull}}237612)
+* Replaces the existing document count chart with RED metrics [#236635]({{kib-pull}}236635)
+
+### Fixes [serverless-changelog-10132025-fixes]
+
+* Fixes an error that occurred when deleting orphaned integration policies [#237875]({{kib-pull}}237875)
+* Prevents creation of default alerts when no connectors are defined [#237504]({{kib-pull}}237504)
+* Turns off the maximum attempts limit for the private locations sync task [#237784]({{kib-pull}}237784)
+* Fixes a flyout rendering issue [#237840]({{kib-pull}}237840)
+* Corrects icon colors in the side navigation [#237970]({{kib-pull}}237970)
+* Fixes a bug that affected the controls on the Alerts page [#236756]({{kib-pull}}236756)
+* Updates the names of the **Security solution default** and **Security solution alerts** data views in the data view picker [#238354]({{kib-pull}}238354)
+* Fixes a bug that caused the flyout on the Files management page to crash when there were uploaded files [#237588]({{kib-pull}}237588)
+* Introduces a separate error message for empty login attempts with `saml/oidc` providers [#237611]({{kib-pull}}237611)
+* Fixes an issue in the component template creation flow where creating a new template with an `@custom` suffix in its name could incorrectly update mappings for unrelated data streams and trigger rollover prompts [#237952]({{kib-pull}}237952)
+* Fixes an issue where the retriever query copied from the **Search your data** JavaScript tutorial failed with `parsing_exception` when passed as a query parameter in the Node.js client; retriever queries are now passed in the request body to ensure correct serialization [#237654]({{kib-pull}}237654)
+* Ensures the Index management mappings editor synchronizes the model deployment status correctly [#237812]({{kib-pull}}237812)
+* Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
+* Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
+* Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
+
+## October 6, 2025 [serverless-changelog-10062025]
+
+### Features and enhancements [serverless-changelog-10062025-features-enhancements]
+* Adds support for encrypted headers in the Webhook connector to enhance security [#233695]({{kib-pull}}233695)
+* Allows users to add custom fields to the IBM Resilient connector [#236144]({{kib-pull}}236144)
+* Renames Fleet Server Host SSL options for clarity [#236887]({{kib-pull}}236887)
+* Enables Discover tabs by default, allowing you to manage multiple data explorations in parallel [#235150]({{kib-pull}}235150)
+* Automatically extracts case observables in the **Add to case** workflow [#233027]({{kib-pull}}233027)
+* Introduces missing icons and updates v2 icons for the ECH Observability navigation [#236808]({{kib-pull}}236808)
+* Adds a metrics dashboard for non-EDOT agents in the OpenTelemetry native ingestion path [#236978]({{kib-pull}}236978)
+* Adds public APIs for Attack Discovery and Attack Discovery schedules [#236736]({{kib-pull}}236736)
+* Enables automatic observable extraction in the Alerts table [#235433]({{kib-pull}}235433)
+* Turns on the `newDataViewPickerEnabled` feature flag [#234101]({{kib-pull}}234101)
+* Adds the ability to discover privileged users from the Entity Analytics Okta integration [#237129]({{kib-pull}}237129)
+* Allows you to select which AI Assistant to show in the Elastic header; moves the **AI Assistant visibility** setting to the **GenAI Settings** page [#233727]({{kib-pull}}233727)
+* Adds a new `update_all` endpoint for product documentation management [#231884]({{kib-pull}}231884)
+* Adds an icon for Contextual AI in the AI Connector and Inference endpoint creation UI [#236951]({{kib-pull}}236951)
+* Enables the new background search experience for improved performance [#236818]({{kib-pull}}236818)
+* Adds triple-quote support to the Manual Ingest Pipeline Processor editor [#236595]({{kib-pull}}236595)
+* Introduces the German locale for Kibana in `beta` [#236903]({{kib-pull}}236903)
+* Adds an advanced option to disable filtering of file-backed volumes and CD-ROMs in the **Device Control** plugin [#236620]({{kib-pull}}236620)
+
+### Fixes [serverless-changelog-10062025-fixes]
+* Rolls over the reporting data stream automatically when a newer template version is available [#234119]({{kib-pull}}234119)
+* Fixes an issue where exported CSV columns in Lens tables could appear out of order [#236673]({{kib-pull}}236673)
+* Fixes a bug causing Controls to fetch data twice [#237169]({{kib-pull}}237169)
+* Removes the incorrect `fleet.ssl` configuration option [#236788]({{kib-pull}}236788)
+* Fixes MSI commands (#233750) [#236994]({{kib-pull}}236994)
+* Removes unnecessary span documents from the `getServiceAgent` function [#236732]({{kib-pull}}236732)
+* Cleans up extra Synthetics package policies [#235200]({{kib-pull}}235200)
+* Reverts a change to the page attachment type in {{obs-serverless}} [#236958]({{kib-pull}}236958)
+* Removes `null` values in the confirmation dialog when bulk-editing index patterns for rules [#236572]({{kib-pull}}236572)
+* Increases the z-index of Timeline and related flyout components so they appear above the side navigation [#236655]({{kib-pull}}236655)
+* Adds support for API key wildcard search [#221959]({{kib-pull}}221959)
+* Hides the **Show forecast** button when changing jobs in the Single Metric Viewer [#236724]({{kib-pull}}236724)
+* Improves performance of the Trained Models list [#237072]({{kib-pull}}237072)
+* Fixes partition field settings errors in the Single Metric Viewer dashboard panels [#237046]({{kib-pull}}237046)
+* Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
+* Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
+* Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
+
 ## September 29, 2025 [serverless-changelog-09292025]
 
 ### Features and enhancements [serverless-changelog-09292025-features-enhancements]

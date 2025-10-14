@@ -34,7 +34,7 @@ Reducing the replicas of an index can potentially reduce search throughput and d
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Index Management**.
+3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to the **Index Management** page. You can find this page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 4. In the list of all your indices, click the `Replicas` column twice to sort the indices based on their number of replicas starting with the one that has the most. Go through the indices and pick one by one the index with the least importance and higher number of replicas.
 
     ::::{warning}

@@ -175,6 +175,6 @@ In the event that snapshots are failing for other reasons check the logs on the 
 ::::::
 
 :::::::
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
