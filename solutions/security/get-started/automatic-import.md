@@ -108,7 +108,7 @@ Using Automatic Import allows users to create new third-party data integrations 
     :::
 
 14. Click **Add to an agent** to deploy your new integration and start collecting data, or click **View integration** to view detailed information about your new integration.
-15. (Optional) Once you’ve added an integration, you can edit the ingest pipeline by going to **Project Settings → Stack Management → Ingest Pipelines**.
+15. (Optional) Once you’ve added an integration, you can edit the ingest pipeline by going to the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{tip}
 You can use the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) to check the health of your data ingest pipelines and field mappings.
