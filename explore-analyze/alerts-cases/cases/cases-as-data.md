@@ -18,7 +18,7 @@ To use cases as data, you must have the appropriate subscription. Refer to the s
 To turn on cases as data, add `xpack.cases.incrementalId.enabled: true` to your [`kibana.yml`](/deploy-manage/stack-settings.md) file.
 
 ::::{warning} 
-3 tasks will be created that each execute in 5 minute interval. If you have lots of spaces with cases (for example, dozens), we do not recommend enabling this feature as it will clog up task manager.
+If your deployment has more than 10 spaces, we do not recommend turning on cases as data. The background tasks that refresh the case analytics indices in each space are run every five minutes and may overload Task Manager.  
 ::::
 
 ## Create and manage indices for case data [create-manage-case-analytics-indices]
