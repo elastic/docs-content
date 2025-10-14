@@ -46,7 +46,7 @@ To configure an integration policy:
     * [Advanced policy settings (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings)
     * [Save the general policy settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#save-policy)
 
-4. Click the **Trusted applications**, **Trusted devices**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md), [Event filters](/solutions/security/manage-elastic-defend/event-filters.md), [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
+4. Click the **Trusted applications**, **Trusted devices**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md), [Trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md), [Event filters](/solutions/security/manage-elastic-defend/event-filters.md), [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
 
     * Expand and view an artifact: Click the arrow next to its name.
     * View an artifact’s details: Click the actions menu (**…**), then select **View full details**.
@@ -238,9 +238,9 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Device control helps protect your organization from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to endpoints that have {{elastic-defend}} installed. 
+Device control helps protect your organization from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
 
-To configure Device Control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. Your policy specifies which operations these devices are allowed to take on a host. You can create [Trusted Devices](/solutions/security/manage-elastic-defend/trusted-devices.md) to define exceptions to your policy for specific devices. 
+To configure device control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. Your policy specifies which operations these devices are allowed to take on a host. You can create [trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md) to define exceptions to your policy for specific devices. 
 
 
 :::{image} /solutions/images/security-defend-policy-device-control.png
@@ -248,7 +248,7 @@ To configure Device Control for one or more hosts, edit the {{elastic-defend}} p
 :screenshot:
 :::
 
-By default, each new {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has Device Control enabled, the dashboard displays data about attempted device connections and their outcomes. To access it and review information about blocked connections, search for `device control` in the **Dashboards** page's Custom Dashboards section.
+By default, each {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has device control enabled, the dashboard displays data about attempted device connections and their outcomes. To access it and review information about blocked connections, search for `device control` in the **Dashboards** page's **Custom Dashboards** section.
 
 ## Event collection [event-collection]
 
