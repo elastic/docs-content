@@ -39,7 +39,7 @@ You can create an ingest pipeline that uses the [`set` enrich processor](elastic
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To add an ingest pipeline in {{kib}}
+To add an ingest pipeline in {{kib}}:
 
 1. Go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Create pipeline > New pipeline**.
