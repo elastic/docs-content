@@ -29,7 +29,7 @@ From the main menu, go to **Infrastructure** → **Infrastructure inventory** or
 Click **Apply** to save your changes.
 
 ::::{note}
-The patterns used to match log sources are configured in {{kib}} advanced settings. The default setting is `logs-*-*,logs-*,filebeat-*`. To change the default, go to **Log sources** at **Stack Management** → **Advanced settings** under **Observability**.
+The patterns used to match log sources are configured in {{kib}} advanced settings. The default setting is `logs-*-*,logs-*,filebeat-*`. To change the default, go to **Log sources** [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings).
 ::::
 
 
