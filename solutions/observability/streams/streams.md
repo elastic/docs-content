@@ -5,13 +5,37 @@ applies_to:
 ---
 
 # Streams
-% can we document when to use streams vs when to not use streams?
 
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
 
-% add a wired vs classic streams section
+## Classic vs. wired streams
 
-A stream directly corresponds to an {{es}} data stream (for example, `logs-myapp-default`). Any updates you perform in Streams configures a specific [data stream](../../../manage-data/data-store/data-streams.md).
+Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ in configuration, inheritance, and field mapping.
+
+### Classic streams
+
+Classic streams work with existing Elasticsearch data streams. Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
+
+Classic streams:
+
+- Are based on existing data streams, index templates, and component templates.
+- Can follow the data retention policy set in the existing index template.
+- Do not support hierarchical inheritance or cascading configuration updates.
+
+### Wired streams
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+
+Wired streams data is sent directly to a single endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
+
+Wired streams:
+- Allow you to organize streams in a parent-child hierarchy.
+- Let child streams automatically inherit mappings, lifecycle settings, and processors.
+- Send configuration changes through the hierarchy to keep streams consistent.
+
+For more information, refer to [sending data to wired streams](./wired-streams.md).
 
 ## Required permissions
 
@@ -53,7 +77,7 @@ Open Streams from the following places in {{kib}}:
 Interact with and configure your streams in the following ways:
 
 - [Retention](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
-- [Partitioning](./management/partitioning.md):
+- [Partitioning](./management/partitioning.md): {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Route data into child streams.
 - [Processing](./management/extract.md): Parse and extract information from documents into dedicated fields.
 - [Schema](./management/schema.md): Manage field mappings.
 - [Data quality](./management/data-quality.md): Get information about failed and degraded documents in your stream.

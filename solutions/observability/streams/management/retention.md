@@ -40,7 +40,7 @@ This is useful when onboarding existing data streams and you want to preserve th
 
 #### Inherit from parent stream
 ```{applies_to}
-stack: preview 9.1
+stack: preview 9.2
 serverless: preview
 ```
 

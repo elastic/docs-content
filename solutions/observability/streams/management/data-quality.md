@@ -20,7 +20,7 @@ A [failure store](../../../../manage-data/data-store/data-streams/failure-store.
 
 ### Required permissions
 To view and modify failure store in {{stack}}, you need the following data stream level privileges:
--  `read_failure_store`
+- `read_failure_store`
 - `manage_failure_store`
 
 
