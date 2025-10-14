@@ -3,9 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/grant-cases-access.html
 products:
   - id: observability
+navigation_title: Configure access to cases
 ---
 
-# Configure access to cases [grant-cases-access]
+# Configure access to cases in Elastic {{observability}} [grant-cases-access]
 
 To access and send cases to external systems, you need the [appropriate license](https://www.elastic.co/subscriptions), and your role must have the **Cases** {{kib}} privilege as a user for the **{{observability}}** feature.
 

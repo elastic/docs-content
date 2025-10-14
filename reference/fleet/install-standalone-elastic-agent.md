@@ -223,4 +223,4 @@ Refer to [Installation layout](/reference/fleet/installation-layout.md) for the 
 
 Because {{agent}} is installed as an auto-starting service, it will restart automatically if the system is rebooted.
 
-If you run into problems, refer to [Troubleshoot common problems](/troubleshoot/ingest/fleet/common-problems.md).
+If you run into problems, refer to [](/troubleshoot/ingest/fleet/common-problems.md).

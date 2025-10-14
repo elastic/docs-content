@@ -1,4 +1,5 @@
 ---
+navigation_title: CSPM Findings
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm-findings-page.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-findings-page.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Findings page
+# View and manage CSPM misconfigurations in Findings
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 

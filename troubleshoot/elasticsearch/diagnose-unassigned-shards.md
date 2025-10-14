@@ -17,6 +17,9 @@ products:
 
 # Diagnose unassigned shards [diagnose-unassigned-shards]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 There are multiple reasons why shards might get unassigned, ranging from misconfigured allocation settings to lack of disk space.
 
 In order to diagnose the unassigned shards in your deployment use the following steps:
@@ -45,7 +48,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 4. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
     ```console
-    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
+    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state&format=json
     ```
 
     The response will look like this:
@@ -240,11 +243,7 @@ For more guidance on fixing the most common causes for unassinged shards follow 
 ::::::
 
 :::::::
-See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
-
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+Watch [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
 
 ## Common issues
 

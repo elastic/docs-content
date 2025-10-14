@@ -1,11 +1,10 @@
 ---
 applies_to:
-  stack:
   deployment:
-    eck:
-    ess:
-    ece:
-    self:
+    eck: ga
+    ess: ga
+    ece: ga
+    self: ga
 products:
   - id: kibana
   - id: cloud-enterprise

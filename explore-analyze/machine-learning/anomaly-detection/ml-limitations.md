@@ -9,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Limitations [ml-limitations]
+# Anomaly detection limitations [ml-limitations]
 
 The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{ml-features}}. The limitations are grouped into four categories:
 

@@ -44,7 +44,12 @@ To run a kNN search in {{es}}:
   * `create`, `index`, or `write` to add data
   * `read` to search the index
 
-## kNN search methods: approxiamte and exact kNN [knn-methods]
+:::{tip}
+The default type of {{es-serverless}} project is suitable for this use case unless you plan to use uncompressed dense vectors (`int4` or `int8` quantization strategies) with high dimensionality.
+Refer to [](dense-vector.md#vector-profiles).
+:::
+
+## kNN search methods: approximate and exact kNN [knn-methods]
 
 {{es}} supports two methods for kNN search:
 
@@ -232,10 +237,11 @@ POST byte-image-index/_search
 If you want to provide `float` vectors but still get the memory savings of `byte` vectors, use the [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) feature. Quantization allows you to provide `float` vectors, but internally they are indexed as `byte` vectors. Additionally, the original `float` vectors are still retained in the index.
 
 ::::{note}
-The default index type for `dense_vector` is `int8_hnsw`.
+The default index type for `dense_vector` is either `bbq_hnsw` or `int8_hnsw`, depending on your product version. Refer to [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 ::::
 
-To use quantization, set the `dense_vector` index type to `int8_hnsw` or `int4_hnsw`.
+You can use the default quantization strategy or specify an index option.
+For example, use `int8_hnsw`:
 
 ```console
 PUT quantized-image-index
@@ -286,7 +292,7 @@ PUT quantized-image-index
     }
     ```
 
-Because the original `float` vectors are retained alongside the quantized index, you can use them for re-scoring: retrieve candidates quickly via the `int8_hnsw` (or `int4_hnsw`) index, then rescore the top `k` hits using the original `float` vectors. This provides the best of both worlds, fast search and accurate scoring.
+Because the original `float` vectors are retained alongside the quantized index, you can use them for re-scoring: retrieve candidates quickly via the `int8_hnsw` index, then rescore the top `k` hits using the original `float` vectors. This provides the best of both worlds, fast search and accurate scoring.
 
 ```console
 POST quantized-image-index/_search
@@ -1219,7 +1225,7 @@ This example will:
 * Search using approximate kNN for the top 100 candidates.
 * Rescore the top 20 candidates (`oversample * k`) per shard using the original, non quantized vectors.
 * Return the top 10 (`k`) rescored candidates.
-* Merge the rescored canddidates from all shards, and return the top 10 (`k`) results.
+* Merge the rescored candidates from all shards, and return the top 10 (`k`) results.
 
 #### Additional rescoring techniques [dense-vector-knn-search-rescoring-rescore-additional]
 
