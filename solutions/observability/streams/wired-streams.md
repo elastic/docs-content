@@ -82,7 +82,7 @@ output {
 :::{tab-item} Fleet
 Use the **Custom Logs (Filestream)** integration to send data to Wired Streams:
 
-1. find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select the **Settings** tab.
 1. Under **Outputs**, find the output you want to use to send data to Streams, and select the {icon}`pencil` icon.
 1. Turn on **Write to logs streams**.

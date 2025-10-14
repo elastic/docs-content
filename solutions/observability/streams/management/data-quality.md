@@ -18,6 +18,12 @@ Use the **Data quality** tab to find failed and degraded documents in your strea
 
 A [failure store](../../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents. Instead of losing documents that are rejected during ingestion, a failure store retains it in a `::failures` index, so you can review failed documents to understand what went wrong and how to fix it.
 
+### Required permissions
+To view and modify failure store in {{stack}}, you need the following data stream level privileges:
+-  `read_failure_store`
+- `manage_failure_store`
+
+
 In Streams, you need to turn on failure stores to see failed documents. To do this, select **Enable failure store*. From here you can set your failure store retention period.
 
 For more information on data quality, refer to the [data set quality](../../data-set-quality-monitoring.md) documentation.

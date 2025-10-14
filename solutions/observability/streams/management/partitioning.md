@@ -9,17 +9,17 @@ applies_to:
 The **Partitioning** tab and ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::
 
-With [wired streams](../wired-streams.md), you send all of your logs to the `/logs` endpoint. This endpoint acts as your entry point for all of your log data.
+With [wired streams](../wired-streams.md), send all of your logs to the `/logs` endpoint. This endpoint acts as your entry point for all of your log data.
 
-Once you've sent your data to the `/logs` endpoint, you can route sections of your data into meaningful child streams using the **Partitioning** tab. For example, you might partition your log data into child streams that represent specific types of log data:
+Once you've sent your data to the `/logs` endpoint, use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
 
-- Send application logs to a `logs.myapp` child stream.
-- Send system logs to a `logs.system` child stream.
+- Route application logs to a `logs.myapp` child stream.
+- Route system logs to a `logs.system` child stream.
 
 Create partitions using the following options:
 
-- [Manual configurations](#streams-manual-partitioning): If you know how you want to partition your data, manually configure what data to send to a child stream.
-- [AI suggestions](#streams-AI-partitioning): If you want suggestions for partitioning your data, Streams reviews your data and provides suggestions that you can accept or reject.
+- [Manual configuration](#streams-manual-partitioning): Use fields and attributes from your data to define how it's routed to child streams.
+- [AI suggestions](#streams-AI-partitioning): Let Streams analyze your data and suggest partitions, which you can review and accept or reject.
 
 ## Create partitions manually [streams-manual-partitioning]
 
