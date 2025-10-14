@@ -5,13 +5,16 @@ applies_to:
 ---
 # Extract fields [streams-extract-fields]
 
-Use the **Processing** tab to add [processors](#streams-extract-processors) that extract meaningful fields from your log messages. Structured fields let you filter and analyze your data more effectively. For example, in [Discover](../../../../explore-analyze/discover.md), you can filter for log messages with a `WARNING` or `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracted fields like log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
+Use the **Processing** tab to add [processors](#streams-extract-processors) that extract meaningful fields from your log messages. These fields let you filter and analyze your data more effectively.
 
-When adding processors, Streams simulates your changes and provides an immediate [preview](#streams-preview-changes) that's tested end to end.
+For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
-Streams also flags indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
+The processing tab also:
 
-After creating your processor, all future ingested data will be parsed into structured fields accordingly.
+- Simulates your processors and provides an immediate [preview](#streams-preview-changes) that's tested end to end.
+- Flags indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
+
+After creating your processor, all future data ingested ingested into the stream will be parsed into structured fields accordingly.
 
 :::{note}
 Applied changes aren't retroactive and only affect *future ingested data*.
@@ -48,9 +51,10 @@ Editing processors with JSON is planned for a future release, and additional pro
 
 ### Add conditions to processors [streams-add-processor-conditions]
 
-You can provide conditions for processors to focus only on data that meets those conditions. Conditions are boolean expressions that are evaluated for each document.
+You can add conditions to processors so they only run on data that meets those conditions. Each condition is a boolean expression evaluated for every document.
 
 To add a condition:
+
 1. Select **Create** → **Create condition**.
 1. Provide a **Field**, a **Value**, and a comparator.
 1. Select **Create condition**.
@@ -101,7 +105,7 @@ Each processor has the option to **Ignore failures**. When enabled, processing o
 
 Dissect, grok, and rename processors include the **Ignore missing fields** option. When enabled, processing of the document continues when a source field is missing.
 
-## Detect and handle failures [streams-detect-failures]
+## Detect and resolve failures [streams-detect-failures]
 
 Documents can fail processing for various reasons. Streams helps you identify and resolve these issues before deploying changes.
 
