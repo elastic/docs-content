@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage notifications
 applies_to:
   deployment:
     ess: ga 9.3
