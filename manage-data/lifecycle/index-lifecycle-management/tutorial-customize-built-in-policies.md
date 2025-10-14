@@ -84,7 +84,7 @@ You should never edit managed policies directly. Changes to managed policies mig
 
 To save the `logs@lifecycle` policy as a new policy in {{kib}}:
 
-1. Open the menu and go to **Stack Management** > **Index Lifecycle Policies**.
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Toggle **Include managed system policies**.
 3. Select the `logs@lifecycle` policy.
 4. On the **Edit policy logs** page, toggle **Save as new policy**, and then provide a new name for the policy, for example, `logs-custom`.

@@ -49,14 +49,15 @@ To find the data streams associated with an installed integration:
 ::::{dropdown} Find the data streams managed in {{fleet}}
 To find all of the data streams that are managed in {{fleet}}:
 
-1. In {{kib}} go to **Management > {{fleet}}** and select the **Data streams** tab.
+1. In {{kib}}, go to the **{{fleet}}** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select the **Data streams** tab.
 
 1. Use the search field and dropdown menus to filter the list. You can filter by the data stream type, dataset, namespace, or by the integration that the data stream belongs to.
 
     ![Integration assets](/manage-data/images/ilm-fleet-data-streams.png "")
 ::::
 
-For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy. 
+For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy.
 
 After you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
 
