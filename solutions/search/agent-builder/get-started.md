@@ -19,7 +19,7 @@ Refer to the [overview page](../elastic-agent-builder.md) for the full list of A
 :::
 % TODO: Remove this tip when unhide pages
 
-Learn how get started by enabling the {{agent-builder}} features and begin chatting with your data.
+Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 
 :::::{stepper}
 ::::{step} Set up an Elastic deployment
@@ -39,10 +39,9 @@ You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solutio
 
 You can enable the features using the UI:
 
-1. Navigate to **Stack Management > Settings**
-2. Find **AI > Agent Builder** in the left-hand navigation
-3. Toggle **{{agent-builder}}** to on
-4. Select **Save changes**
+1. Navigate to **Agent Builder** under **AI** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Toggle **{{agent-builder}}** to on.
+3. Select **Save changes**.
 
 Refresh the browser page and find **Agents** in the navigation menu to begin using the feature.
 You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
