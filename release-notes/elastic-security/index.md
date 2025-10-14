@@ -35,21 +35,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the Security Entity Analytics risk score reset feature [#237829]({{kib-pull}}237829).
 * Introduces a Security risk scoring AI Assistant tool [#233647]({{kib-pull}}233647).
 * Uses {{esql}} for calculating entity risk scores [#237871]({{kib-pull}}237871).
-* Updates the entity source saved object schema to support integrations sync markers and index [#236457]({{kib-pull}}236457).
+* Updates the entity source saved object schema to support integrations sync markers [#236457]({{kib-pull}}236457).
 * Enables privileged user monitoring advanced setting by default [#237436]({{kib-pull}}237436).
 * Enables discovering privileged users from the Entity Analytics Okta integration [#237129]({{kib-pull}}237129).
 * Adds the data view picker to the **Privileged user monitoring** dashboard page [#233264]({{kib-pull}}233264).
 * Implements minor UI changes on **Privileged user monitoring** dashboard page [#231921]({{kib-pull}}231921).
 * Populates the `entity.attributes.Privileged` field in the entity store for users [#237038]({{kib-pull}}237038).
 * Adds public APIs for attack discovery and attack discovery schedules [#236736]({{kib-pull}}236736).
-* Introduces total execution time for automatic migrations [#236147]({{kib-pull}}236147).
-* Adds the **Update missing index pattern** functionality to the automatic migrations **Translated rules** page [#233258]({{kib-pull}}233258).
-* Introduces new API endpoints for dashboard automatic migration [#229112]({{kib-pull}}229112).
-* Adds support for creating new cloud connectors and reusing cloud connector between integrations. Supported integrations: CSPM and Asset Inventory [#235442]({{kib-pull}}235442).
+* Displays total execution time for automatic migrations [#236147]({{kib-pull}}236147).
+* Adds **Update missing index pattern** option to the automatic migration **Translated rules** page [#233258]({{kib-pull}}233258).
+* Introduces new API endpoints for automatic migration of dashboards [#229112]({{kib-pull}}229112).
+* Adds a new deployment method, "cloud connector", for the CSPM and Asset Discovery integrations [#235442]({{kib-pull}}235442).
 * Adds saved object infrastructure for cloud connectors and implements end-to-end persistence flow for creating integrations with cloud connector support [#230137]({{kib-pull}}230137).
-* Automatic troubleshooting is now generally available [#234853]({{kib-pull}}234853).
+* Makes automatic troubleshooting generally available [#234853]({{kib-pull}}234853).
 * Updates the automatic troubleshooting feature to detect warnings and failures in {{elastic-defend}} policy responses and suggest possible remediations [#231908]({{kib-pull}}231908).
-* Adds an advanced setting to keep the alert suppression window active after closing an alert, preventing new alerts during that period [#231079]({{kib-pull}}231079).
+* Adds an advanced setting that keeps the alert suppression window active after you close an alert, preventing new alerts during that period [#231079]({{kib-pull}}231079).
 * Adds `DOES NOT MATCH` capability to indicator match rules [#227084]({{kib-pull}}227084).
 * Adds the `customized_fields` and `has_base_version` fields to the `rule_source` object schema [#234793]({{kib-pull}}234793).
 * Enables the auto-extract observables toggle in the alerts table for both row and bulk actions when adding alerts to a case [#235433]({{kib-pull}}235433).
@@ -70,8 +70,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds two new {{elastic-defend}} advanced policy settings that allow you to opt out of collecting ransomware diagnostics on macOS [#235193]({{kib-pull}}235193).
 * Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start {{agent}} service.
 * Updates the `endpoint-package` submodule.
-* Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control by the end user.
-* Increases the throughput of {{elastic-defend}} {{ls}} connections by increasing the maximum size it can upload at once.
+* Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
+* Increases the throughput of {{elastic-defend}}'s {{ls}} connections by increasing the maximum size it can upload at once.
 * Adds {{elastic-defend}} support for device control on macOS.
 * Updates the device control schema.
 * Adds architecture of PE file in malware alerts to {{elastic-defend}}.
@@ -103,7 +103,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Ensures that privileged user `@timestamp` and `event.ingested` fields are updated when a privileged user is updated [#233735]({{kib-pull}}233735).
 * Fixes a bug in privileged user monitoring index synchronization where stale users weren't removed after index pattern changes [#229789]({{kib-pull}}229789).
 * Updates the privileged user monitoring UI to replace hard-coded CSS values with the EUI theme [#225307]({{kib-pull}}225307).
-* Fixes incorrect threat enrichment for partially matched `AND` condition in indicator match rules [#230773]({{kib-pull}}230773).
+* Fixes incorrect threat enrichment for partially matched `AND` conditions in indicator match rules [#230773]({{kib-pull}}230773).
 * Adds a validation error to prevent users from setting a custom action interval shorter than the rule's check interval [#229976]({{kib-pull}}229976).
 * Fixes accessibility issues on the **Benchmarks** page [#229521]({{kib-pull}}229521).
 * Simplifies the Cloud Security Posture Misconfigurations data view by removing redundancy in the index pattern definition [#227995]({{kib-pull}}227995).
@@ -122,7 +122,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') was logged.
 * Prevents {{elastic-endpoint}} from stopping system-critical processes or threads.
 * Fixes an issue to improve reliability of health status reporting between {{elastic-endpoint}} and {{agent}}.
-* Fixes a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count` and `process.args`, leading to false positives.
+* Fixes a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count`, and `process.args`, leading to false positives.
 * Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
 
 
