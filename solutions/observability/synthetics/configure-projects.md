@@ -292,7 +292,7 @@ For information on configuring monitors individually, refer to:
 :   The Proxy URL to be used when connecting to the deployment or Observability Serverless project.
 
 `token` (`string`)
-:   (Optional) The authentication token to be used when connecting to the proxy url. Based in auth header format `Basic Asaaas==`
+:   (Optional) The authentication token to be used when connecting to the proxy URL. Based on auth header format `Basic Asaaas==`
 
 `ca` (`string | Buffer`)
 :   (Optional) Override the trusted CA certificates for the proxy connection.
