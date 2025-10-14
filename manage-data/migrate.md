@@ -44,7 +44,7 @@ Restore from a snapshot
 
 :::{admonition} Migrating system {{es}} indices
 In {{es}} 8.0 and later versions, to back up and restore system indices and system data streams such as `.kibana` or `.security`, you must snapshot and restore the related feature's [feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state).
-    
+
 Refer to [Migrate system indices](./migrate/migrate-internal-indices.md) to learn how to restore the internal {{es}} system indices from a snapshot.
 :::
 
@@ -128,8 +128,8 @@ System indices can be restored by including their corresponding [feature states]
 
 This method is especially useful when:
 
-* You want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state. 
-* Your old cluster contains mostly static data, allowing you to snapshot the source cluster, restore in the new cluster, and continue operations. 
+* You want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state.
+* Your old cluster contains mostly static data, allowing you to snapshot the source cluster, restore in the new cluster, and continue operations.
 
 When your source cluster is actively ingesting data, such as logs, metrics, or traces, and you need a seamless migration with minimal downtime, consider using the [minimal downtime migration](migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md).
 
@@ -182,7 +182,7 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
     * **Azure Blob Storage**
         * [Store credentials in the keystore](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-configure-azure-keystore).
         * [Create the repository](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-create-azure-repository).
-    
+
     ::::{important}
     Although these instructions are focused on {{ech}}, you should follow the same steps for {{ece}} by configuring the repository directly **at the deployment level**.
 
@@ -200,7 +200,7 @@ For details about the contents of a snapshot, refer to [](/deploy-manage/tools/s
 
 To start the restore process:
 
-1. Open Kibana and go to **Management** > **Snapshot and Restore**.
+1. Open Kibana and go to the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Snapshots** tab, you can find the available snapshots from your newly added snapshot repository. Select any snapshot to view its details, and from there you can choose to restore it.
 3. Select **Restore**.
 4. Select the index or indices you wish to restore.
