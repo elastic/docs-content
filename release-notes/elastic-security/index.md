@@ -108,7 +108,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Simplifies the Cloud Security Posture Misconfigurations data view by removing redundancy in the index pattern definition [#227995]({{kib-pull}}227995).
 * Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within Malware Protections to avoid invalid watchdog firings.
 * Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
-* Addresses CVE-2025-##### in {{elastic-defend}} on Windows, which could allow a low-privilege attacker to delete arbitrary files on the system. On Windows versions before 25H2, this could result in local privilege escalation.
 * Adds support in {{elastic-defend}} for installing eBPF event probes on Linux endpoints when cgroup2 is mounted in a non-standard location or not mounted at all.
 * Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
 * Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
