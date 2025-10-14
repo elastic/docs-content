@@ -25,7 +25,7 @@ products:
 :screenshot:
 :::
 
-To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 For more info on working with spaces, check out: 
 - [Create a space](#spaces-managing)
