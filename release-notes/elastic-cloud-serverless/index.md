@@ -9,6 +9,36 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## October 13, 2025 [serverless-changelog-10132025]
+
+### Features and enhancements [serverless-changelog-10132025-features-enhancements]
+
+* Adds a **Show agentless resources** toggle on the Fleet > Settings page for debugging and diagnostics [#237528]({{kib-pull}}237528)
+* Allows you to carry over the controls when navigating to a dashboard, preserving the histogram [#237070]({{kib-pull}}237070)
+* Enables the risk score reset feature [#237829]({{kib-pull}}237829)
+* Uses {{esql}} for calculating risk scores [#237871]({{kib-pull}}237871)
+* Adds Security ML modules for GCP Audit and Azure Activity Logs [#236849]({{kib-pull}}236849)
+* Removes the global empty state redirect [#237612]({{kib-pull}}237612)
+* Replaces the existing document count chart with RED metrics [#236635]({{kib-pull}}236635)
+
+### Fixes [serverless-changelog-10132025-fixes]
+
+* Fixes an error that occurred when deleting orphaned integration policies [#237875]({{kib-pull}}237875)
+* Prevents creation of default alerts when no connectors are defined [#237504]({{kib-pull}}237504)
+* Turns off the maximum attempts limit for the private locations sync task [#237784]({{kib-pull}}237784)
+* Fixes a flyout rendering issue [#237840]({{kib-pull}}237840)
+* Corrects icon colors in the side navigation [#237970]({{kib-pull}}237970)
+* Fixes a bug that affected the controls on the Alerts page [#236756]({{kib-pull}}236756)
+* Updates the names of the **Security solution default** and **Security solution alerts** data views in the data view picker [#238354]({{kib-pull}}238354)
+* Fixes a bug that caused the flyout on the Files management page to crash when there were uploaded files [#237588]({{kib-pull}}237588)
+* Introduces a separate error message for empty login attempts with `saml/oidc` providers [#237611]({{kib-pull}}237611)
+* Fixes an issue in the component template creation flow where creating a new template with an `@custom` suffix in its name could incorrectly update mappings for unrelated data streams and trigger rollover prompts [#237952]({{kib-pull}}237952)
+* Fixes an issue where the retriever query copied from the **Search your data** JavaScript tutorial failed with `parsing_exception` when passed as a query parameter in the Node.js client; retriever queries are now passed in the request body to ensure correct serialization [#237654]({{kib-pull}}237654)
+* Ensures the Index management mappings editor synchronizes the model deployment status correctly [#237812]({{kib-pull}}237812)
+* Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
+* Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
+* Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
+
 ## October 6, 2025 [serverless-changelog-10062025]
 
 ### Features and enhancements [serverless-changelog-10062025-features-enhancements]
