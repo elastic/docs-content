@@ -1,13 +1,14 @@
 ---
+navigation_title: Cloud connector authentication for agentless
 applies_to:
   stack: preview 9.2
   serverless:
     security: preview
 ---
 
-# Deploy integrations using cloud connector
+# Quickly authenticate agentless integrations using cloud connector
 
-Cloud connector deployment for integrations allows you to quickly provide Elastic with access to your third-party cloud service provider accounts. This deployment method reduces administrative burden by eliminating the need to keep track of authentication details such as API keys or passwords. Ultimately, cloud connectors are meant to make it easy to manage deployments with many integrations collecting data from CSPs, by providing a simple, reusable means of authentication. 
+Cloud connector authentication for agentless integrations allows you to quickly provide Elastic with access to your third-party cloud service provider accounts. This authentication method reduces administrative burden by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a simple, reusable means of authentication, making it easier to manage deployments with many integrations collecting data from multiple cloud security providers.
 
 ## Where is cloud connector deployment supported?
 
