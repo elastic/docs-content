@@ -94,7 +94,7 @@ output.elasticsearch:
 
 ## Create an API key for monitoring [apm-beats-api-key-monitor]
 
-To open **API keys**, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create API key**.
+To open the **API keys** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create API key**.
 
 :::{image} /solutions/images/observability-server-api-key-create.png
 :alt: API key creation
