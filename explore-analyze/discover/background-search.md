@@ -68,7 +68,7 @@ You can send a search to the background only after it starts running. Until then
 
 You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser. Once the search has completed, a notification informs you and lets you access the search to view its results.
 
-Background searches expire after 7 days. Beyond that period, you must run the search again.
+Background searches expire after 7 days. Beyond that period, you must run the search again. You can change this default value by editing the [`data.search.sessions.defaultExpiration`](kibana://reference/configuration-reference/search-sessions-settings.md) setting.
 
 ## Reopen or manage background searches
 
