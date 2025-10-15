@@ -42,7 +42,7 @@ serverless: preview
 ```
 
 1. On the **Privileged user monitoring** page, select an integration. The supported integrations are:
-   * [Active Directory Entity Analytics](integration-docs://reference/entityanalytics_ad.md). Users in the following security groups will be automatically assigned as privileged users:
+   * [Active Directory Entity Analytics](integration-docs://reference/entityanalytics_ad.md). Users in the following security groups will be automatically assigned as privileged:
       * Domain Admins
       * Enterprise Admins
    * [Okta Entity Analytics](integration-docs://reference/entityanalytics_okta.md). Refer to [Standard administrator roles and permissions](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm) for a list of Okta roles that will be automatically assigned as privileged users.
