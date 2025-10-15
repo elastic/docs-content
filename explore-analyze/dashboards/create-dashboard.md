@@ -20,7 +20,7 @@ products:
     :::::{applies-switch}
     ::::{applies-item} { stack: ga 9.2, serverless: }
     * [**Create visualization**](../visualize/lens.md). This option is a shortcut to create a chart using **Lens**, the default visualization editor in {{kib}}.
-    * **Add from library**. Select existing content that has already been configured and saved to the **Add from library flyout**.
+    * **Add from library**. Select existing content that has already been configured and saved to the **Add from library** flyout.
     ::::
 
     ::::{applies-item} stack: ga 9.0 
