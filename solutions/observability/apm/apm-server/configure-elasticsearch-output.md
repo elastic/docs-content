@@ -12,9 +12,12 @@ products:
 # Configure the Elasticsearch output for APM Server[apm-elasticsearch-output]
 
 ::::{note}
-![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
-This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](/reference/fleet/elasticsearch-output.md).
+The configuration options described here apply to both APM Server binary and Fleet-managed users, but how they are specified varies:
+
+* **APM Server binary users**: Use the syntax in YAML configuration examples shown below in your configuration file.
+* **Fleet-managed users**: Use the same APM-specific {{es}} output settings outlined below, but [configure them in the Fleet UI](/reference/fleet/fleet-settings.md#output-settings).
 
 ::::
 
