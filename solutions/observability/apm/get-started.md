@@ -40,6 +40,8 @@ Follow these steps to send APM data to Elastic.
 :::{include} /solutions/_snippets/obs-serverless-project.md
 :::
 
+:::::
+
 :::::{step} Add data using EDOT or APM Agents
 
 To send APM data to Elastic, you must install an Elastic Distribution of OpenTelemetry or an APM agent and configure it to send data to your project:

@@ -36,10 +36,12 @@ To learn about role-based access control, go to [](/deploy-manage/users-roles/cl
 ::::{step} Create an index
 
 An index is a collection of documents uniquely identified by a name or an alias.
-To create an index, go to **{{es}} > Home**, select keyword search, and follow the guided workflow.
+To create an index:
+1. Go to **Index Management** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Create index**, select **Keyword Search**, and follow the guided workflow.
 
 To enable your client to talk to your project, you must also create an API key.
-Click **Create API Key** and use the default values, which are sufficient for this quickstart.
+Select **Create an API Key** and use the default values, which are sufficient for this quickstart.
 
 :::{tip}
 For more information about indices and API keys, go to [](/manage-data/data-store/index-basics.md) and [](/deploy-manage/api-keys/serverless-project-api-keys.md).
@@ -50,7 +52,7 @@ For more information about indices and API keys, go to [](/manage-data/data-stor
 Select your preferred language in the keyword search workflow.
 For this quickstart, use Python.
 
-![Client installation step in the keyword search workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf810f73fd4082fb/67c21c06304ea9790b82ee4d/screenshot-my-index.png)
+![Client installation step in the keyword search workflow](/solutions/images/search-quickstart-install-python-client.png)
 
 The {{es}} client library is a Python package that is installed with `pip`:
 
@@ -132,7 +134,7 @@ For more details about bulker helpers, refer to [Client helpers](elasticsearch-p
 
 You should now be able to see the documents in the guided workflow:
 
-![Viewing data in the guided workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt0ac36402cde2a645/67d0a443b8764e72b9e8e1f3/view_docs_in_elasticsearch.png)
+![Viewing data in the guided workflow](/solutions/images/search-quickstart-view-data-python-keywordsearch.png)
 
 Optionally open [Discover](/explore-analyze/discover.md) from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to familiarize yourself with this data set.
 
