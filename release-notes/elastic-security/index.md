@@ -67,6 +67,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Introduces the {{elastic-defend}} **Endpoint Exceptions** sub-feature privilege [#233433]({{kib-pull}}233433).
 * Adds an {{elastic-defend}} advanced policy setting that allows you to disable the firewall anti-tamper plugin or move it into detect-only mode [#236431]({{kib-pull}}236431).
 * Adds two new {{elastic-defend}} advanced policy settings that allow you to opt out of collecting ransomware diagnostics on macOS [#235193]({{kib-pull}}235193).
+* Adds {{elastic-defend}} advanced policy setting to disable the filtering of file-backed volumes and CD-ROMs in the `device_control` plugin [#236620]({{kib-pull}}236620).
 * Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start {{agent}} service.
 * Updates the `endpoint-package` submodule.
 * Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
