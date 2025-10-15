@@ -223,7 +223,7 @@ POST /_aliases?pretty
 
 ### Step 2: Create {{kib}} spaces [_step_2_create_kib_spaces]
 
-Next, you’ll need to create a {{kib}} space for each service environment. Open **Spaces** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
+Next, you’ll need to create a {{kib}} space for each service environment. Open the **Spaces** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
 
 See [Kibana spaces](/deploy-manage/manage-spaces.md) for more information on creating a space.
 
