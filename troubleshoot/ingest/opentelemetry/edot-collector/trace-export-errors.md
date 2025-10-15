@@ -25,7 +25,7 @@ These errors indicate the Collector is overwhelmed and unable to export data fas
 
 ## Causes
 
-This issue typically occurs when the `sending_queue` configuration is misaligned with the incoming telemetry volume. 
+This issue typically occurs when the `sending_queue` configuration or the Elasticsearch cluster scaling is misaligned with the incoming telemetry volume.  
 
 :::{important}
 The sending queue is disabled by default in versions earlier than **v0.138.0** and enabled by default from **v0.138.0** onward. If you're using an earlier version, verify that `enabled: true` is explicitly set — otherwise any queue configuration will be ignored.
@@ -33,14 +33,15 @@ The sending queue is disabled by default in versions earlier than **v0.138.0** a
 
 Common contributing factors include:
 
-* `sending_queue.block_on_overflow` is not enabled (it defaults to `false`), so data is dropped when the queue is full.
+* Underscaled Elasticsearch cluster is the most frequent cause of persistent export failures. If Elasticsearch cannot index data fast enough, the Collector’s queue fills up.
+* `sending_queue.block_on_overflow` is disabled in **pre-v0.138.0** releases (defaults to `false`), which can lead to silent data drops. Starting from **v0.138.0**, the Elasticsearch exporter enables this setting by default.
 * `num_consumers` is too low to keep up with the incoming data volume.
 * The queue size (`queue_size`) is too small for the traffic load.
 * Export batching is disabled, increasing processing overhead.
-* EDOT Collector resources (CPU, memory) are not sufficient for the traffic volume.
+* EDOT Collector resources (CPU, memory) are insufficient for the traffic volume.
 
 :::{note}
-Increasing the `timeout` value (for example from 30s to 90s) doesn't help if the queue itself is the bottleneck.
+Increasing the `timeout` value (for example from 30s to 90s) doesn't help if the queue itself or Elasticsearch throughput is the bottleneck.
 :::
 
 ## Resolution
@@ -61,15 +62,44 @@ sending_queue:
 
 ### For EDOT Collector v0.138.0 and later
 
-The `sending_queue` behavior is managed internally by the exporter. Adjusting its parameters has a limited effect on throughput. In these versions, the most effective optimizations are:
+The Elasticsearch exporter provides default `sending_queue` parameters (including `block_on_overflow: true`) but these can and often should be tuned for specific workloads.
 
-* Increase Collector resources by ensuring the EDOT Collector pod has enough CPU and memory. Scale vertically (more resources) or horizontally (more replicas) if you experience backpressure.
+The following steps can help identify and resolve export bottlenecks:
 
-* Optimize Elasticsearch performance by checking for indexing delays, rejected bulk requests, or cluster resource limits. Bottlenecks in {{es}} often manifest as Collector export timeouts.
+:::::{stepper}
+
+::::{step} Check the Collector's internal metrics
+
+If internal telemetry is enabled, review these metrics:
+
+* `otelcol.elasticsearch.bulk_requests.latency` — high tail latency suggests Elasticsearch is the bottleneck. Check Elasticsearch cluster metrics and scale if necessary.
+
+* `otelcol.elasticsearch.bulk_requests.count` and `otelcol.elasticsearch.flushed.bytes` — they help assess whether the Collector is sending too many or too large requests. Tune `sending_queue.num_consumers` or batching configuration to balance throughput.
+
+* `otelcol_exporter_queue_size` and `otelcol_exporter_queue_capacity` — if the queue runs near capacity, but Elasticsearch is healthy, increase the queue size or number of consumers.
+
+* `otelcol_enqueue_failed_spans`, `otelcol_enqueue_failed_metric_points`, `otelcol_enqueue_failed_log_records` — persistent enqueue failures indicate undersized queues or slow consumers.
+
+For a complete list of available metrics, refer to the upstream OpenTelemetry metadata files for the [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/metadata.yaml) and [exporter helper](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/metadata.yaml).
+::::
+
+::::{step} Scale the Collector's resources
+
+* Ensure sufficient CPU and memory for the EDOT Collector.
+* Scale vertically (more resources) or horizontally (more replicas) as needed.
+::::
+
+::::{step} Optimize Elasticsearch performance
+
+Address indexing delays, rejected bulk requests, or shard imbalances that limit ingestion throughput.
+::::
+
+:::::
 
 :::{tip}
-Focus tuning efforts on the Collector’s resource allocation and the downstream Elasticsearch cluster rather than queue parameters for v0.138.0+.
+For **v0.138.0+**, focus tuning efforts on Elasticsearch performance, Collector resource allocation, and queue sizing informed by the internal telemetry metrics above.
 :::
+
 
 ## Resources
 
