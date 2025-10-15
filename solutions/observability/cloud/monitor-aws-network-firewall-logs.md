@@ -76,7 +76,7 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Select **Open Kibana**.
-        3. Open **API keys** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
+        3. Open the **API keys** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
 
 4. Set up the delivery stream by specifying the following data:
 
