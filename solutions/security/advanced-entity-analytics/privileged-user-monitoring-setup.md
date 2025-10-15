@@ -28,14 +28,14 @@ Privileged users typically include accounts with elevated access rights that all
 
 You can define privileged users in the following ways:
 
-* {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` [Add a supported integration](#add-integration) with your organization’s user identities. If your environment is already ingesting data from a supported integration, the setup steps are skipped—you're taken directly to the Privileged user monitoring dashboard, where you can start [monitoring user activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md).
+* {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` [Add a supported integration](#privmon-integrations) with your organization’s user identities. If your environment is already ingesting data from a supported integration, the setup steps are skipped—you're taken directly to the Privileged user monitoring dashboard, where you can start [monitoring user activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md).
 * [Select an existing index](#privmon-index) or create a new custom index with privileged user data.
 * [Bulk-upload](#privmon-upload) a list of privileged users using a CSV or TXT file. 
 * Use the Entity analytics APIs to [mark individual users as privileged]({{kib-apis}}/operation/operation-createprivmonuser) or [bulk-upload multiple privileged users]({{kib-apis}}/operation/operation-privmonbulkuploaduserscsv).
 
 To get started, find the **Privileged user monitoring** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-### Add a supported integration [add-integration]
+### Add a supported integration [privmon-integrations]
 ```yaml {applies_to}
 stack: preview 9.2
 serverless: preview
