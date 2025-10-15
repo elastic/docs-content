@@ -22,7 +22,7 @@ Sometimes you might need to search through large amounts of data, no matter how 
 
 You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work. 
 
-A notification appears when a background search has completed, and allows you to open the list of background searches. You can also access that list at any time to check the status of your searches and interact with them from the {icon}`background_task` **Background searches** button in the toolbar.
+You can access your list of background searches at any time to check their status and manage them from the {icon}`background_task` **Background searches** button in the toolbar.
 
 ![Send search to background](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltee31dcf0d3917c75/68ecf412e5bae49d65a286ff/background-search.gif " =75%")
 
