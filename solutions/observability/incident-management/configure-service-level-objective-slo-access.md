@@ -33,7 +33,7 @@ You can enable access to SLOs in two different ways:
 
 To create a role:
 
-1. To open **Roles**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Roles** management page by finding it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Roles** page, click **Create role**.
 
 

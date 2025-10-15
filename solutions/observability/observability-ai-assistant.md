@@ -42,7 +42,7 @@ The AI assistant requires the following:
 
     - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
 
-- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure [AI Assistant settings](../../solutions/observability/observability-ai-assistant.md#obs-ai-settings) to simulate function calling, but this might affect performance.
 
   - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
 
@@ -85,8 +85,8 @@ The AI Assistant connects to one of these supported LLM providers:
 
 **Setup steps**:
 
-1. **Create authentication credentials** with your chosen provider using the links above
-2. **Create an LLM connector** by navigating to **Stack Management → Connectors** to create an LLM connector for your chosen provider.
+1. **Create authentication credentials** with your chosen provider using the links above.
+2. **Create an LLM connector** for your chosen provider by going to the **Connectors** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. **Authenticate the connection** by entering:
    - The provider's API endpoint URL
    - Your authentication key or secret
