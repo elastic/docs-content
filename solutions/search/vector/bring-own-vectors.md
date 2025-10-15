@@ -134,7 +134,7 @@ POST /amazon-reviews/_search
 
 If you want to try a similar workflow from an {{es}} client, use the following guided index workflow in {{es}} Serverless, {{ech}}, or a self-managed cluster:
 
-* Go to **Index Management** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * Select **Create index**. Specify a name and then select **Create my index**. 
 * Select **Vector Search** option and follow the guided workflow.
 
