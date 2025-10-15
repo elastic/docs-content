@@ -42,7 +42,7 @@ In a cross-cluster search (CCS) environment, it’s possible for different clust
 
 To prevent this, you can exclude [data tiers](/manage-data/lifecycle/data-tiers.md) that might slow down responses from search: the `data_frozen` and `data_cold` tiers. To exclude data tiers from search in the APM UI:
 
-1. To open **Advanced settings**, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. To open the **Advanced settings** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Observability** section, update the **Excluded data tiers from search** option with a list of data tiers.
 
 ::::
