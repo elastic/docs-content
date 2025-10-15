@@ -14,7 +14,10 @@ products:
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
-The configuration options described here apply to both APM Server binary and Fleet-managed users. The YAML configuration examples shown are specific to APM Server binary users. Fleet-managed users should configure these same APM-specific {{es}} output settings through the {{fleet}} UI rather than the general [{{es}} output settings](/reference/fleet/elasticsearch-output.md).
+The configuration options described here apply to both APM Server binary and Fleet-managed users, but how they are specified varies:
+
+* **APM Server binary users**: Use the syntax in YAML configuration examples shown below in your configuration file.
+* **Fleet-managed users**: Use the same APM-specific {{es}} output settings outlined below, but [configure them in the Fleet UI](/reference/fleet/fleet-settings#output-settings).
 
 ::::
 
