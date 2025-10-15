@@ -132,10 +132,11 @@ POST /amazon-reviews/_search
 
 ## Next steps: implementing vector search
 
-If you want to try a similar workflow from an {{es}} client, use the guided index workflow:
+If you want to try a similar workflow from an {{es}} client, use the following guided index workflow in {{es}} Serverless, {{ech}}, or a self-managed cluster:
 
-* If you're using {{es}} Serverless, go to **{{es}} > Home**, select the vector search workflow, and **Create a vector optimized index**.
-* If you're using {{ech}} or a self-managed cluster, go to **{{es}} > Home** and click **Create API index**. Select the vector search workflow.
+* Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* Select **Create index**. Specify a name and then select **Create my index**. 
+* Select **Vector Search** option and follow the guided workflow.
 
 When you finish your tests and no longer need the sample data set, delete the index:
 
