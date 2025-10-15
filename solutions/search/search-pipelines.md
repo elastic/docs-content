@@ -13,7 +13,7 @@ products:
 
 You can manage ingest pipelines through Elasticsearch APIs or Kibana UIs.
 
-The **Pipelines** tab under **Connectors** lets you manage the ingest pipeline used by the connector’s destination index. Here you can view the managed pipeline and adjust its settings. For general pipeline authoring, go to **Ingest Pipelines** in the management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+The **Pipelines** tab under **Connectors** lets you manage the ingest pipeline used by the connector’s destination index. Here you can view the managed pipeline and adjust its settings. For general pipeline authoring, go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Find pipelines [ingest-pipeline-search-where]
 
