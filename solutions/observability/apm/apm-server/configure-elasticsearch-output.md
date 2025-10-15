@@ -17,7 +17,7 @@ products:
 The configuration options described here apply to both APM Server binary and Fleet-managed users, but how they are specified varies:
 
 * **APM Server binary users**: Use the syntax in YAML configuration examples shown below in your configuration file.
-* **Fleet-managed users**: Use the same APM-specific {{es}} output settings outlined below, but [configure them in the Fleet UI](/reference/fleet/fleet-settings#output-settings).
+* **Fleet-managed users**: Use the same APM-specific {{es}} output settings outlined below, but [configure them in the Fleet UI](/reference/fleet/fleet-settings.md#output-settings).
 
 ::::
 
