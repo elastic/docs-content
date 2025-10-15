@@ -75,7 +75,7 @@ The **Data Streams** view in {{kib}} shows you data streams, index templates, an
 
 ## Step 2: Create an index lifecycle policy [apm-data-streams-custom-two]
 
-1. Open **Lifecycle Policies** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Lifecycle Policies** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 
 Name your new policy; For this tutorial, I’ve chosen `custom-traces-apm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.
