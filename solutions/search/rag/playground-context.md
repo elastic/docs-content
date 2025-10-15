@@ -28,7 +28,7 @@ Currently you can only select **one field** to be provided as context to the LLM
 
 ## Edit context in UI [playground-context-ui] 
 
-Use the **Edit context** button in the Playground UI to adjust the number of documents and fields sent to the LLM.
+Use the **Playground context** section in the Playground UI to adjust the number of documents and fields sent to the LLM.
 
 If you’re hitting context length limits, try the following:
 
@@ -56,9 +56,9 @@ Refer to the following Python notebooks for examples of how to chunk your docume
 * [Website content](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks/ingestion-and-chunking/website-chunking-ingest.ipynb)
 
 
-### Balancing cost/latency and result quality [playground-context-balance] 
+### Optimizing context for cost and performance [playground-context-balance] 
 
-Here are some general recommendations for balancing cost/latency and result quality with different context sizes:
+The following recommendations can help you balance cost, latency, and result quality when working with different context sizes:
 
 Optimize context length
 :   Determine the optimal context length through empirical testing. Start with a baseline and adjust incrementally to find a balance that optimizes both response quality and system performance.
@@ -68,7 +68,6 @@ Implement token pruning for ELSER model
 
     * [Optimizing retrieval with ELSER v2](https://www.elastic.co/search-labs/blog/introducing-elser-v2-part-2)
     * [Improving text expansion performance using token pruning](https://www.elastic.co/search-labs/blog/text-expansion-pruning)
-
 
 Monitor and adjust
 :   Continuously monitor the effects of context size changes on performance and adjust as necessary.

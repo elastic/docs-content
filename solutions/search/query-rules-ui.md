@@ -38,12 +38,7 @@ For full access to the Query Rules UI, you need the following privileges:
 
 ## Accessing the Query Rules UI
 
-Go to your deployment and select **Query Rules** from the left navigation menu under **Relevance**. If the option does not appear, contact your administrator to review your privileges.
-
-:::{image} /solutions/images/elasticsearch-query-rules-ui-home.png
-:alt: Landing page for Query Rules UI.
-:screenshot:
-:::
+Go to the **Query Rules** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). If the option does not appear, contact your administrator to review your privileges.
 
 ### Create a query rule
 Use the following steps to first create a query ruleset, and then a query rule:

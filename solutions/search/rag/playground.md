@@ -61,7 +61,7 @@ Here’s a simpified overview of how Playground works:
 
 ## Availability and prerequisites [playground-availability-prerequisites]
 
-For Elastic Cloud and self-managed deployments Playground is available in the **Search** space in {{kib}}, under **Content** > **Playground**.
+For Elastic Cloud and self-managed deployments, select **Playground** from the left navigation menu.
 
 For Elastic Serverless, Playground is available in your {{es}} project UI.
 
@@ -114,11 +114,11 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 
 ### Connect to LLM provider [playground-getting-started-connect]
 
-To get started with Playground, you need to create a [connector](../../../deploy-manage/manage-connectors.md) for your LLM provider. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
+To get started with Playground, you need to create a [connector](../../../deploy-manage/manage-connectors.md) for your LLM provider. By default, an Elastic Managed LLM is connected. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
 
-To connect to an LLM provider, follow these steps on the Playground landing page:
+To connect to an LLM provider, use the following steps on the Playground landing page:
 
-1. Under **Connect to an LLM**, click **Create connector**.
+1. Select **New Playground**. Select the {icon}`wrench` button in the **Large Language Model (LLM)** tile to connect an LLM.
 2. Select your **LLM provider**.
 3. **Name** your connector.
 4. Select a **URL endpoint** (or use the default).
@@ -170,7 +170,7 @@ We’ve also provided some Jupyter notebooks to easily ingest sample data into {
 
 Once you’ve connected to your LLM provider, it’s time to choose the data you want to search.
 
-1. Click **Add data sources**.
+1. Select **Add data sources**.
 2. Select one or more {{es}} indices.
 3. Click **Save and continue** to launch the chat interface.
 
@@ -219,9 +219,9 @@ Learn more about the underlying {{es}} queries used to search your data in [View
 
 You can start chatting with your data immediately, but you might want to tweak some defaults first.
 
-You can adjust the following under **Model settings**:
+You can adjust the following under **LLM settings**:
 
-* **Model**. The model used for generating responses.
+* **AI Connector**. The model used for generating responses.
 * **Instructions**. Also known as the *system prompt*, these initial instructions and guidelines define the behavior of the model throughout the conversation. Be **clear and specific** for best results.
 * **Include citations**. A toggle to include citations from the relevant {{es}} documents in responses.
 
@@ -236,21 +236,12 @@ Click **⟳ Clear chat** to clear chat history and start a new conversation.
 
 ::::
 
-
-
 ### View and download Python code [playground-getting-started-view-code]
 
-Use the **View code** button to see the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
+Select {icon}`export` to see the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
 
 * {{es}} Python Client + LLM provider
 * LangChain + LLM provider
-
-:::{image} /solutions/images/kibana-view-code-button.png
-:alt: view code button
-:screenshot:
-:width: 150px
-:::
-
 
 ### Next steps [playground-next-steps]
 
