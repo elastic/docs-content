@@ -124,7 +124,7 @@ Follow the instructions from the **Add agent** screen to install the {{agent}} o
 
 Before installing and running the standalone {{agent}}, you need to create an API key. To create an {{ecloud}} API key:
 
-1. To open **API keys**, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. To open the **API keys** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Create API key**.
 3. Give the key a name. For example, `nginx API key`.
 4. Leave the other default options and select **Create API key**.
