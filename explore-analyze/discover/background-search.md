@@ -37,7 +37,7 @@ If you upgrade to version 9.2 or higher with search sessions enabled in the vers
 
 ## Usage requirements [_requirements]
 
-The background searches that you run are personal and only visible by you. To be able to use this feature, you must have the following minimum permissions:
+The background searches that you run are personal and only visible by you. To use this feature, you must have the following minimum permissions:
 
 :::::{tab-set}
 :group: background search
