@@ -22,7 +22,7 @@ For security reasons, we recommend using a unique API key per APM Server instanc
 
 To create an API key:
 
-1. Open **API keys** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create API key**.
 
     :::{image} /solutions/images/observability-server-api-key-create.png
