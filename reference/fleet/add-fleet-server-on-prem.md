@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html
+applies_to:
+  deployment:
+    ece: ga
+    self: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -55,7 +59,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 
 Before deploying, you need to:
 
-* Obtain or generate a Cerfiticate Authority (CA) certificate.
+* Obtain or generate a Certificate Authority (CA) certificate.
 * Ensure components have access to the ports needed for communication.
 
 

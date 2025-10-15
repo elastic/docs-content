@@ -2,6 +2,9 @@
 navigation_title: Command reference
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -464,7 +467,7 @@ elastic-agent inspect components [--show-config]
     :   Use to display the configuration in all units.
 
     `--show-spec`
-    :   Use to get input/output runtime spectification for a component.
+    :   Use to get input/output runtime specification for a component.
 
 
 `--help`

@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-ls-airgapped.html
+applies_to:
+  stack: ga
+  deployment:
+    self: ga
 products:
   - id: elastic-agent
   - id: logstash

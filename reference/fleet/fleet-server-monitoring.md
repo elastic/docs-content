@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-monitoring.html
+applies_to:
+  deployment:
+    self: ga
+    ece: ga
 products:
   - id: fleet
   - id: elastic-agent
