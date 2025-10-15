@@ -3,10 +3,10 @@
 This page explains at a high-level how API docs work at Elastic today, with context on how this differs from our previous approaches and where we're heading. Use this page to understand the core primitives and workflows that apply across all Elastic teams, so you can contribute effectively.
 
 :::{tip}
-The API docs use a different system to the main Elastic docs. Refer to [Contribute to Elastic docs](../../contribute/index.md) for an overview of the two systems.
+The API docs use a different system to the main Elastic docs. Refer to [Contribute to Elastic docs](../index.md) for an overview of the two systems.
 :::
 
-While the implementation details [vary significantly across teams](workflows.md), at a high level:
+While the implementation details [vary significantly across teams](./workflows.md), at a high level:
 
 - We use [OpenAPI](https://spec.openapis.org/oas/latest.html) files to generate REST API documentation
 - Our API docs are hosted by [Bump.sh](https://bump.sh/)

@@ -297,7 +297,7 @@ You can also edit the {{esql}} visualization from here. Click the options button
 :width: 50%
 :::
 
-You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-esql-control)
+You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-variable-control)
 
 
 ## Create an enrich policy [esql-kibana-enrich]
