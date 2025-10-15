@@ -26,7 +26,7 @@ Learn more about the [Elastic Managed LLM connector](kibana://reference/connecto
 
 ## Change the default model
 
-By default, {{agent-builder}} uses the Elastic Managed LLM. To use a different model, you'll need a configured connector and then set it as the default.
+By default, {{agent-builder}} uses the Elastic Managed LLM. To use a different model, select a configured connector and set it as the default.
 
 ### Use a pre-configured connector
 
@@ -91,61 +91,7 @@ GPT-4o-mini and similar smaller models are not recommended for {{agent-builder}}
 
 You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
 
-### Requirements
-
-**Model selection:**
-- Download from trusted sources only
-- Consider parameter size, context window, and quantization format for your needs
-- Prefer "instruct" variants over "base" or "chat" versions when multiple variants are available, as instruct models are typically better tuned for following instructions
-
-**Integration setup:**
-- For Elastic Cloud: Requires a reverse proxy (such as Nginx) to authenticate requests using a bearer token and forward them to your local LLM endpoint
-- For self-managed deployments on the same host as your LLM: Can connect directly without a reverse proxy
-- Your local LLM server must use the OpenAI SDK for API compatibility
-
-### Configure the connector
-
-:::::{stepper}
-::::{step} Set up your local LLM server
-
-Ensure your local LLM is running and accessible via an OpenAI-compatible API endpoint.
-
-::::
-
-::::{step} Create the OpenAI connector
-
-1. Log in to your Elastic deployment
-2. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md)
-3. Select **Create Connector** and select **OpenAI**
-4. Name your connector to help track the model version you're using
-5. Under **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**
-
-::::
-
-::::{step} Configure connection details
-
-1. Under **URL**, enter:
-   - For Elastic Cloud: Your reverse proxy domain + `/v1/chat/completions`
-   - For same-host self-managed: `http://localhost:1234/v1/chat/completions` (adjust port as needed)
-2. Under **Default model**, enter `local-model`
-3. Under **API key**, enter:
-   - For Elastic Cloud: Your reverse proxy authentication token
-   - For same-host self-managed: Your LLM server's API key
-4. Select **Save**
-
-::::
-
-::::{step} Set as default (optional)
-
-To use your local model as the default for {{agent-builder}}:
-
-1. Search for **GenAI Settings** in the global search field
-2. Select your local LLM connector from the **Default AI Connector** dropdown
-3. Save your changes
-
-::::
-
-:::::
+Refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai.md) for detailed setup instructions.
 
 ## Related pages
 
