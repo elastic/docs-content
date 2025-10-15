@@ -308,6 +308,14 @@ Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 :::{include} ../_snippets/inspect-request.md
 :::
 
+### Run long-running queries in the background
+```{applies_to}
+stack: ga 9.2
+serverless: unavailable
+```
+
+You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
+
 
 ### Save your Discover session for later use [save-discover-search]
 

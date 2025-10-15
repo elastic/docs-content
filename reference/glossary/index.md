@@ -74,6 +74,9 @@ $$$glossary-zone$$$ availability zone
 
 ## B [b-glos]
 
+$$$glossary-background-search$$$ Background search
+:   A long-running query that is queued and that runs while you perform other tasks. The results of the background search are stored for a period of time, so you can access it once it has completed. Background searches are user specific. Before {{stack}} 9.2, background searches are called ["search sessions"](#glossary-search-session).
+
 $$$glossary-basemap$$$ basemap
 :   The background detail necessary to orient the location of a map.
 
@@ -668,7 +671,7 @@ $$$glossary-scripted-field$$$ scripted field
 :   A field that computes data on the fly from the data in {{es}} indices. Scripted field data is shown in Discover and used in visualizations.
 
 $$$glossary-search-session$$$ search session
-:   A group of one or more queries that are executed asynchronously. The results of the session are stored for a period of time, so you can recall the query. Search sessions are user specific.
+:   A group of one or more queries that are executed asynchronously. The results of the session are stored for a period of time, so you can recall the query. Search sessions are user specific. From {{stack}} 9.2, search sessions are called ["background searches"](#glossary-background-search).
 
 $$$glossary-search-template$$$ search template
 :   A stored search you can run with different variables. See [Search templates](/solutions/search/search-templates.md).

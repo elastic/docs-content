@@ -516,7 +516,8 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/3318
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
-
+# Search sessions becoming background search
+  'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
 
 
