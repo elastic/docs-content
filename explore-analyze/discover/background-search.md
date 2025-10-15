@@ -75,7 +75,7 @@ Background searches expire after 7 days. Beyond that period, you must run the se
 From the list of background searches, you can reopen and edit any searches, but also extend their validity period or delete them to keep only searches that you care about.
 
 1. Open your list of background searches using one of the following methods:
-   - Once a background search has completed, a notification appears to inform you, with a link to open the list of background searches.
+   - Once a background search is sent to the background, a notification appears to inform you, with a link to open the list of background searches.
    - If you miss the notification or need to access this list at any time, go to **Discover** or **Dashboards** and select the {icon}`background_task` **Background searches** button in the toolbar. This option is only available from version 9.2.
 
      :::{tip}
