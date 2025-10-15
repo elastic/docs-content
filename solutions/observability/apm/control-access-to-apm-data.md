@@ -242,7 +242,7 @@ Open the Applications UI and navigate to **Settings** → **Indices**. Use the t
 
 ### Step 4: Create {{kib}} access roles [_step_4_create_kib_access_roles]
 
-Open **Roles** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create role**.
+Open the **Roles** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create role**.
 
 You’ll need to create two roles: one for `staging` users (we’ll call this role `staging_apm_viewer`) and one for `production` users (we’ll call this role `production_apm_viewer`).
 
