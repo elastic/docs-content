@@ -27,7 +27,7 @@ If you create cases in the {{observability}} or {{security-app}}, they are not v
 * [Configure access to cases](cases/setup-cases.md)
 * [Open and manage cases](cases/manage-cases.md)
 * [Configure case settings](cases/manage-cases-settings.md)
-* {applies_to}`stack: preview 9.2`[Use cases as data](cases/cases-as-data.md)
+* {applies_to}`stack: preview 9.2` {applies_to}`serverless: unavailable`[Use cases as data](cases/cases-as-data.md)
 
 ## Limitations [kibana-case-limitations]
 

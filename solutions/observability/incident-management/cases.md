@@ -18,7 +18,7 @@ Collect and share information about observability issues by creating a case. Cas
 :::
 
 ::::{tip}
-:applies_to: stack: preview 9.2
+:applies_to: {stack: preview 9.2, serverless: unavailable}
 After creating cases, use case data to build dashboards and visualizations that provide insights into case trends and operational metrics. Refer to [Use cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
 ::::
 
