@@ -40,7 +40,7 @@ You can use KQL to create complex queries that filter your dashboard data. For e
 
 :::{tip}
 :applies_to: {"stack": "preview 9.2", "serverless": "unavailable"}
-When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads. A notification will appear when the search completes.
+When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads.
 :::
 
 
