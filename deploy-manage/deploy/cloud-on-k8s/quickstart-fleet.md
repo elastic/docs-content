@@ -11,8 +11,9 @@ products:
 
 # Quickstart: Running {{fleet}} on {{eck}} [k8s-elastic-agent-fleet-quickstart]
 
-1. To deploy {{fleet-server}}, {{agents}}, {{es}}, and {{kib}}, apply the following specification:
+:::::{stepper}
 
+::::{step} To deploy {{fleet-server}}, {{agents}}, {{es}}, and {{kib}}, apply the following specification:
     ```yaml
     cat <<EOF | kubectl apply -f -
     apiVersion: agent.k8s.elastic.co/v1alpha1
@@ -186,36 +187,50 @@ products:
 
 ECK automatically configures secure connections between all components. {{fleet}} will be set up, and all agents are enrolled in the default policy.
 
-1. Monitor the status of {{fleet-server}} and {{agent}}.
+::::{step} Monitor the status of {{fleet-server}} and {{agent}}.
 
-    ```sh
-    kubectl get agent
-    ```
+```sh
+kubectl get agent
+```
 
-    ```sh subs=true
-    NAME                       HEALTH   AVAILABLE   EXPECTED   VERSION      AGE
-    elastic-agent-quickstart   green    3           3          {{version.stack}}    14s
-    fleet-server-quickstart    green    1           1          {{version.stack}}    19s
-    ```
+```sh subs=true
+NAME                       HEALTH   AVAILABLE   EXPECTED   VERSION      AGE
+elastic-agent-quickstart   green    3           3          {{version.stack}}    14s
+fleet-server-quickstart    green    1           1          {{version.stack}}    19s
+```
 
-2. List all the Pods belonging to a given {{agent}} specification.
+::::
 
-    ```sh
-    kubectl get pods --selector='agent.k8s.elastic.co/name=elastic-agent-quickstart'
-    ```
 
-    ```sh
-    NAME                                   READY   STATUS    RESTARTS   AGE
-    elastic-agent-quickstart-agent-t49fd   1/1     Running   0          54s
-    elastic-agent-quickstart-agent-xbcxr   1/1     Running   0          54s
-    elastic-agent-quickstart-agent-zqp55   1/1     Running   0          54s
-    ```
+::::{step} List all the Pods belonging to a given {{agent}} specification.
 
-3. Access logs for one of the Pods.
+```sh
+kubectl get pods --selector='agent.k8s.elastic.co/name=elastic-agent-quickstart'
+```
 
-    ```sh
-    kubectl logs -f elastic-agent-quickstart-agent-xbcxr
-    ```
+```sh
+NAME                                   READY   STATUS    RESTARTS   AGE
+elastic-agent-quickstart-agent-t49fd   1/1     Running   0          54s
+elastic-agent-quickstart-agent-xbcxr   1/1     Running   0          54s
+elastic-agent-quickstart-agent-zqp55   1/1     Running   0          54s
+```
+::::
 
-4. Configure the policy used by {{agents}}. Check [{{agent}} policies](/reference/fleet/agent-policy.md) for more details.
+::::{step} Access logs for one of the Pods.
+
+```sh
+kubectl logs -f elastic-agent-quickstart-agent-xbcxr
+```
+
+::::
+
+::::{step} Configure the policy used by {{agents}}. Check [{{agent}} policies](/reference/fleet/agent-policy.md) for more details.
+:::
+
+:::::
+
+
+
+
+
 
