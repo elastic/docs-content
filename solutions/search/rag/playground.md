@@ -236,21 +236,12 @@ Click **⟳ Clear chat** to clear chat history and start a new conversation.
 
 ::::
 
-
-
 ### View and download Python code [playground-getting-started-view-code]
 
-Use the **Export** button to see the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
+Select {icon}`export` to see the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
 
 * {{es}} Python Client + LLM provider
 * LangChain + LLM provider
-
-:::{image} /solutions/images/kibana-view-python-code.png
-:alt: view code button
-:screenshot:
-:width: 150px
-:::
-
 
 ### Next steps [playground-next-steps]
 
