@@ -168,7 +168,8 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
 ### Using {{kib}} [ec_using_kibana]
 
-1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
+1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Add a remote cluster**.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 

@@ -122,9 +122,10 @@ Depending on your selected installation method, you may have to provide the foll
 With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
 1. From your {{ecloud}} home page, select a deployment.
-2. Go to **Stack management** > **API keys** and select **Create API key**.
-3. In the flyout, enter a name for your key and select **User API key**.
-4. Enable **Control security privileges** and enter the following script:
+2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3.  Select **Create API key**.
+4. In the flyout, enter a name for your key and select **User API key**.
+5. Enable **Control security privileges** and enter the following script:
 ```json
 {
  "autoops": {
