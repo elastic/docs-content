@@ -358,14 +358,16 @@ Refer to [upgrade your ingest components](/deploy-manage/upgrade/ingest-componen
 
 
 ## Post-Upgrade Wrap-Up
+
+(TBD)
 - Confirm cluster stability over an observation period  
 - Update operational runbooks and monitoring baselines  
 - Validate client library upgrades and integrations  
 - Decommission old snapshots if no longer needed  
 - Document lessons learned  
 
----
-(internal list)
+<!--
+(internal list):
 upgrade assistant
   * if you are prompted.... refer to xxx ccr / transforms / old ML indices
 breaking changes
@@ -375,3 +377,4 @@ test
 monit first
 remote first
 close ML jobs
+-->
