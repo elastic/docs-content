@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
+description: Learn how to explore and interact with Kibana dashboards using filters, time ranges, and controls to uncover insights in your data.
 applies_to:
   stack: ga
   serverless: ga
@@ -9,6 +10,11 @@ products:
 ---
 
 # Exploring dashboards [_use_and_filter_dashboards]
+
+Kibana dashboards support filtering, time range adjustments, and interactive controls that let you focus on specific data segments or time periods.
+
+This page covers the main ways to explore dashboard data: using KQL queries, filter pills, time ranges, and dashboard controls. You'll also learn how to view underlying data and switch between different display modes.
+
 
 
 ## Search and filter your dashboard data [search-or-filter-your-data]
@@ -22,6 +28,20 @@ products:
 * View the data of a panel and the requests used to build it.
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
+
+### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
+
+The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
+
+You can use KQL to create complex queries that filter your dashboard data. For example:
+- `status:error` to show only error records
+- `response_time > 1000` to display requests slower than 1 second
+- `user.name:"john doe" AND status:active` to combine multiple conditions
+
+:::{tip}
+:applies_to: {"stack": "preview 9.2", "serverless": "unavailable"}
+When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads.
+:::
 
 
 ### Use filter pills [_use_filter_pills]
