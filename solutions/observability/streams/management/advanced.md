@@ -26,9 +26,14 @@ Streams analyzes your stream and identifies systems. Then, you can select the on
 
 % Can we add use cases of when it makes sense to modify shards/replicas/refresh interval
 
-For classic streams, you can manually configure the stream's [index template](../../../../manage-data/data-store/templates.md#index-templates), [component templates](../../../../manage-data/data-store/templates.md#component-templates), [pipeline](../../../../manage-data/ingest/transform-enrich.md), and [data stream](../../../../manage-data/data-store/data-streams.md).
+For classic streams, you can manually configure the stream's:
 
-For both wired ({applies_to}`stack: preview 9.2`) and classic streams, you can configure:
+- [index template](../../../../manage-data/data-store/templates.md#index-templates)
+- [component templates](../../../../manage-data/data-store/templates.md#component-templates)
+- [pipeline](../../../../manage-data/ingest/transform-enrich.md)
+- [data stream](../../../../manage-data/data-store/data-streams.md).
+
+For both wired ({applies_to}`stack: preview 9.2`) and classic streams, you can manually configure:
 
 - **Shards:** Control how the index is split across nodes. More shards can improve parallelism but may increase overhead.
 - **Replicas:** Define how many copies of the data exist. More replicas improve resilience and read performance but increase storage usage.
