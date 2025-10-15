@@ -5,6 +5,8 @@ applies_to:
 ---
 # Upgrade from 7.17 to {{version.stack}}
 
+% add enterprise search related comments?
+
 {{stack}} version 7.17 has a defined end of support date of 15 January 2026, as stated in the [Elastic Product & Version End of Life Policy](https://www.elastic.co/support/eol). This document provides a guided plan to upgrade from 7.17 to the latest {{version.stack}} release. It complements the official upgrade documentation by showing how the different pieces fit together in a complete upgrade exercise.  
 
 ::::{important}
@@ -70,7 +72,7 @@ For the 7.17.x → 9.x upgrade path, the main planning outcome is a set of requi
 
   * {applies_to}`ece:` If you are running an ECE version earlier than 4.x, you need to upgrade your ECE platform before the final upgrade to 9.x.
 
-    This can be done either at the beginning, before the initial upgrade, or between the two upgrade phases.
+    This upgrade must be performed after upgrading your deployments to 8.19.x, since ECE 4.x is not compatible with 7.x deployments.
 
 Finally, we strongly recommend [testing the full upgrade process in a non-production environment](/deploy-manage/upgrade/plan-upgrade.md#test-in-a-non-production-environment) before applying it to production.
 
@@ -80,75 +82,76 @@ This step covers upgrading your deployment from 7.17.x to 8.19.x, following the 
 
 ### 8.19 upgrade preparations
 
-The most important [upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md) for a major upgrade are:
+The [upgrade preparation steps from 7.x](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade) are designed to prevent upgrade failures by detecting and addressing internal incompatibilities, including deprecated settings that are no longer supported in the next release.
 
-* Breaking changes and known issues analysis.
-* Run the upgrade assistant in {{kib}} to detect and resolve issues.
-* Take a snapshot of your deployment before the upgrade.
+During a major upgrade, the [**Upgrade Assistant**](https://www.elastic.co/guide/en/kibana/7.17/upgrade-assistant.html) in {{kib}} 7.17 plays a critical role. It scans your cluster for deprecated settings, incompatible indices, and other issues that could prevent nodes from starting after the upgrade. The tool guides you through reindexing old indices, fixing configuration problems, and reviewing deprecation logs to ensure your deployment is fully compatible with the next major version. Ignoring its recommendations can lead to upgrade failures or cluster downtime.
 
-{{ech}} and {{ece}} platforms facilitates the upgrade preparations by automatically creating snapshots before the upgrade and by checking the upgrade assistant for critical issues before proceeding.
+While the Upgrade Assistant helps you identify breaking changes that affect your deployment or cluster, it's still recommended to review the full list of breaking changes and known issues during your preparations phase. To review all breaking changes for the 8.x versions of {{es}} and {{kib}}, refer to the following documents:
+* [{{es}} 8.x migration guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/breaking-changes.html)
+* [Kibana breaking changes summary](https://www.elastic.co/guide/en/kibana/8.19/breaking-changes-summary.html)
 
-(upgrade order, you can only upgrade...??)
-
-https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade
-
-Upgrade 8.19: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html
-
-Prepare from 7.x: https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade
-
+Follow these guidelines and considerations depending on your deployment type:
 
 ::::{applies-switch}
 
 :::{applies-item} ess:
 
-old doc: https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html#perform-cloud-upgrade
+The {{ecloud}} platform simplifies major upgrades by:
+* Automatically creating a snapshot before the upgrade.
+* Detecting deprecated settings and index compatibility issues.
+* Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
 
-* **Breaking changes**
+For detailed guidance on preparing your deployment for the upgrade, follow the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section.
 
-* **Known issues**
+As a summary:
 
-* **Snapshots**
+1. Run the **Upgrade Assistant** in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
+   * Reindex legacy indices (created before 7.0).  
+   * Remove or update deprecated settings and mappings.  
+   * Review deprecation logs for both {{es}} and {{kib}}.  
 
-To keep your data safe during the upgrade process, a snapshot is taken automatically before any changes are made to your cluster. After a major version upgrade is complete and a snapshot of the upgraded cluster is available, all snapshots taken with the previous major version of Elasticsearch are stored in the snapshot repository.
+2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they’re compatible with the next major release.  
 
-From version 8.3, snapshots are generally available as simple archives. Use the archive functionality to search snapshots as old as version 5.0 without the need of an old Elasticsearch cluster. This ensures that data you store in Elasticsearch doesn’t have an end of life and is still accessible when you upgrade, without requiring a reindex process.
-
-On Elastic Cloud Enterprise, you need to [configure a snapshot repository](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) to enable snapshots.
-
-* **Security realm settings**
-
-  (only if needed)During the upgrade process, you are prompted to update the security realm settings if your user settings include a `xpack.security.authc.realms` value.
-
-  If the security realms are configured in user_settings, you’ll be prompted to modify the settings:
-    1. On the Update security realm settings window, edit the settings.
-    2. Click Update settings. If the security realm settings are located in `user_settings_override`, contact support to help you upgrade.
-
-* **Upgrade Assistant**
-
-  Prior to upgrading, Elastic Cloud checks the deprecation API to retrieve information about the cluster, node, and index-level settings that need to be removed or changed. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. Use the [Upgrade Assistant in 7.17](https://www.elastic.co/guide/en/kibana/7.17/upgrade-assistant.html) to identify and resolve issues and reindex any indices created before 7.0.
-
-
-  If any incompatibilities are detected when you attempt to upgrade to 8.19.5, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. After resolving the issues, return to the deployments page and restart the upgrade.
-
-* 
+3. As a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) if your custom client applications are affected by breaking changes. This mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy.
 :::
 
 :::{applies-item} ece:
+
+{{ece}} platform simplifies major upgrades by:
+* When [snapshots are configured](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), automatically creating a snapshot before the upgrade.
+* Detecting deprecated settings and index compatibility issues.
+* Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
+
+For detailed guidance on preparing your deployment for the upgrade, follow the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section. *Note: Although this guide refers to {{ecloud}}, the same preparation steps apply to {{ece}} deployments.*
+
+As a summary:
+
+1. Run the **Upgrade Assistant** in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
+   * Reindex legacy indices (created before 7.0).  
+   * Remove or update deprecated settings and mappings.  
+   * Review deprecation logs for both {{es}} and {{kib}}.  
+
+2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they’re compatible with the next major release.  
+
+3. As a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) if your custom client applications are affected by breaking changes. This mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy.
 :::
 
 
 :::{applies-item} { eck: }
+
+Upgrade preparations for an ECK managed cluster are similar to a self-managed cluster:
+* Follow the [Prepare to upgrade from 7.x](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade) steps before starting the upgrade.
+* Review also https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html for extra details.
 :::
 
 :::{applies-item} self:
 
 Follow the [Prepare to upgrade from 7.x](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade) steps before starting the upgrade.
+Review also https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html for extra details.
 
-Also https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html ?
 :::
 
 ::::
-
 
 ### 8.19 upgrade execution
 
@@ -162,7 +165,7 @@ To upgrade your deployment or cluster, do the following depending on the deploym
 
 :::{applies-item} ess:
 
-To upgrade your deployment, follow the steps and guidance from [](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md#perform-cloud-upgrade).
+To upgrade your deployment, follow the steps and guidance from [Upgrade on Elastic Cloud -> Perform the upgrade](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html#perform-cloud-upgrade).
 
 During the upgrade process all of your deployment components will be upgraded in the expected order:
 - {{es}}
@@ -171,7 +174,7 @@ During the upgrade process all of your deployment components will be upgraded in
 :::
 
 :::{applies-item} ece:
-To upgrade your deployment, follow the steps and guidance from [](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md#perform-the-upgrade).
+To upgrade your deployment, follow the steps and guidance from [Upgrade on Elastic Cloud -> Perform the upgrade](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html#perform-cloud-upgrade).
 
 During the upgrade process all of your deployment components will be upgraded in the expected order:
 - {{es}}
@@ -188,12 +191,15 @@ After the upgrade of {{es}} and {{kib}}, upgrade any [other Elastic application]
 :::
 
 :::{applies-item} self:
-Follow the steps in the [upgrade Elastic on-prem](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack-on-prem.html) guide, ensuring that all components are upgraded in the specified order.
+Follow the steps in the [upgrade Elastic on-prem](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack-on-prem.html) guide, ensuring that all components are upgraded in the specified order:
 :::
 
 ::::
 
 ### 8.19 upgrade validation
+
+After the upgrade, ensure everything is working fine.
+
 - Post-upgrade health checks (cluster status, ingest, search)  
 - Validate monitoring dashboards and alerts  
 - Resolve deprecation warnings  
@@ -208,25 +214,60 @@ Refer to [upgrade your ingest components](/deploy-manage/upgrade/ingest-componen
 
 ### {{version.stack}} preparations
 
-During the preparations of the final upgrade, the **upgrade assistant** will play an important role, as we will need to take action on the older indices created in 7.x. Pay special attention to ML or transform related items, and refer to [prepare to upgrade]() for more details.
+The [upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md) are designed to prevent upgrade failures by detecting and addressing internal incompatibilities, including deprecated settings that are no longer supported in the next release.
 
-Rest of items will be similar to the previous upgrade preparations:
-* Breaking changes and known issues analysis.
-* Run the upgrade assistant in {{kib}} to detect and resolve issues.
-* Take a snapshot of your deployment or cluster before the upgrade.
+During a major upgrade, the [**Upgrade Assistant**](/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md) in {{kib}} 8.19 plays a critical role. It scans your cluster for deprecated settings, incompatible indices, and other issues that could prevent nodes from starting after the upgrade. The tool guides you through reindexing your old 7.x indices, fixing configuration problems, and reviewing deprecation logs to ensure your deployment is fully compatible with the next major version. Ignoring its recommendations can lead to upgrade failures or cluster downtime.
+
+While the Upgrade Assistant helps you identify breaking changes that affect your deployment or cluster, it's still recommended to review the full list of breaking changes and known issues during your preparations phase. To review all breaking changes for the 9.x versions of {{es}} and {{kib}}, refer to the following documents:
+* [{{es}} 9.x breaking changes](elasticsearch://release-notes/breaking-changes.md)
+* [Kibana breaking changes summary](kibana://release-notes/breaking-changes.md)
+
+Follow these guidelines and considerations depending on your deployment type:
 
 ::::{applies-switch}
 
 :::{applies-item} ess:
 
-{{ecloud}} detects incmpatibilities. If they are found open the Upgrade Assistant and solve them.
+The {{ecloud}} platform simplifies major upgrades by:
+* Automatically creating a snapshot before the upgrade.
+* Detecting deprecated settings and index compatibility issues.
+* Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
 
+For detailed guidance on preparing your deployment for the upgrade, follow the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section.
+
+As a summary:
+
+1. Run the **Upgrade Assistant** in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
+   * Reindex legacy indices (created before 7.0).  
+   * Remove or update deprecated settings and mappings.  
+   * Review deprecation logs for both {{es}} and {{kib}}.  
+
+2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they’re compatible with the next major release.  
+
+3. As a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) if your custom client applications are affected by breaking changes. This mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy.
 :::
 
 :::{applies-item} ece:
 
-Before upgrading to 9.x ensure ECE is upgraded to 4.x
+Before upgrading to 9.x ensure ECE is upgraded to 4.x.
 
+{{ece}} platform simplifies major upgrades by:
+* When [snapshots are configured](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), automatically creating a snapshot before the upgrade.
+* Detecting deprecated settings and index compatibility issues.
+* Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
+
+For detailed guidance on preparing your deployment for the upgrade, follow the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section. *Note: Although this guide refers to {{ecloud}}, the same preparation steps apply to {{ece}} deployments.*
+
+As a summary:
+
+1. Run the **Upgrade Assistant** in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
+   * Reindex legacy indices (created before 7.0).  
+   * Remove or update deprecated settings and mappings.  
+   * Review deprecation logs for both {{es}} and {{kib}}.  
+
+2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they’re compatible with the next major release.  
+
+3. As a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) if your custom client applications are affected by breaking changes. This mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy.
 :::
 
 
@@ -234,14 +275,29 @@ Before upgrading to 9.x ensure ECE is upgraded to 4.x
 
 Before upgrading to 9.x ensure ECK is upgraded to 3.x
 
+Upgrade preparations for an ECK managed cluster are similar to a self-managed cluster:
+* Follow the [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) steps before starting the upgrade.
 :::
 
 :::{applies-item} self:
+
 Follow all preparations per [](/deploy-manage/upgrade/prepare-to-upgrade.md)
+Follow the [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) steps before starting the upgrade.
+
 :::
 
 ::::
 
+(internal list)
+upgrade assistant
+  * if you are prompted.... refer to xxx ccr / transforms / old ML indices
+breaking changes
+plugins
+snapshot
+test
+monit first
+remote first
+close ML jobs
 
 ### {{version.stack}} upgrade execution
 
@@ -341,81 +397,3 @@ Refer to [upgrade your ingest components](/deploy-manage/upgrade/ingest-componen
 - Validate client library upgrades and integrations  
 - Decommission old snapshots if no longer needed  
 - Document lessons learned  
-
-<!--
-
------
-older text and links in case of need
-
-{{stack}} version 7.17 is getting EOL soon. This document provides guidance to upgrade from 7.17 to the latest {{version.stack}} version, relying on existing documents and procedures.
-
-old reference: https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html
-https://www.elastic.co/guide/en/elastic-stack/8.18/upgrading-elastic-stack.html
-new: https://www.elastic.co/docs/deploy-manage/upgrade/deployment-or-cluster
-
-Upgrade 8.19: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html
-
-Prepare from 7.x: https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade
-
-Elastic Cloud specifics? 
-ECE or ECK specifics?
-
-## Overview
-
-Upgrading from 7.17 to the latest {{version.stack}} implies two major upgrades. Each of them needs to be treated independently in terms preparations and execution. The planning phase can be common.
-
-* Upgrade from 7.17.x to 8.19.x
-
-* Upgrade from 8.19.x latest to {{version.stack}}
-
-As a general guideline we recommend reading the following documents before upgrading:
-- Plan your upgrade: This doc tells you all the necessary to plan your upgrade properly.
-
-- Preparations.
-
-Run upgrade assistant.
-
-Consider [reindex to upgrade](https://www.elastic.co/docs/deploy-manage/upgrade/prepare-to-upgrade#reindex-to-upgrade)? 
-
-## Different deployment types
-
-asda
-
-## Upgrade order and plan
-
-
-## Major upgrade to 8.19.x
-
-### Preparations and pre-requisites.
-CCR / CCS / Remote clusters / ML / Transform indices
-Execute the upgrade
-
-
-Run the upgrade assistant as explained in [this doc](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade).
-
-Notes:
-* If you use a monitoring cluster, upgrade the monitoring cluster first.
-* If you use remote clusters functionality, upgrade the remote clusters first.
-
-Divide the recommendations per deployment type: for Elastic Cloud we can tell that the UI takes care of almost everything, the user needs to take care of the external components (beats, Elastic Agent, Logstash, etc.)
-
-### Execute the upgrade
-
-Start with the deployment
-Don't forget beats and external components afterwards, as upgrading them to 8.19.x is a pre-requisite to upgrade to 9.x
-
-Self-managed: Follow the [official guide](8.19) to perform the rolling upgrade of your cluster.
-
-ECH: (we need to guide users or check the current doc).
-ECE: (we need to guide users or check the current doc).
-ECK: (check docs to run the upgrade)
-
-## Major upgrade to 9.1.x
-
-### Preparations and pre-requisites
-
-### Execute the upgrade
-
-(Optional): Upgrade external components to 9.x, although 8.19.x is compatible with 9.x.
-
-
