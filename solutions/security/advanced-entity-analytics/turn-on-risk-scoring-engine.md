@@ -46,7 +46,7 @@ If you’re installing the risk scoring engine for the first time:
 2. On the **Entity risk score** page, turn the toggle on.
 3. {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Choose whether to retain [residual risk scores](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#residual-risk-score).
 4. Choose whether to include `Closed` alerts in risk scoring calculations.
-5. Optinally, specify a date and time range for the calculation.
+5. Optionally, specify a date and time range for the calculation.
 
 :::{image} /solutions/images/security-turn-on-risk-engine.png
 :alt: Turn on entity risk scoring

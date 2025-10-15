@@ -83,7 +83,7 @@ In some cases, entities can retain a residual risk score:
 {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` By default, in these scenarios, entity risk scores are reset to zero if there are no new inputs. If, instead, you want entities to retain their last calculated risk score, select the **Retain previously calculated risk scores** checkbox on the [Entity risk score page](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
 
 :::{note}
-In versions 9.1 and earlier, residual risk scores are retained by default. This means that the entity keeps its last computed risk score until a new alert triggers a recalculation.
+In versions 9.1 and earlier, residual risk scores are retained by default. This means that each entity keeps its last computed risk score until a new alert triggers a recalculation.
 :::
 
 ::::{dropdown} Click for a risk score calculation example
