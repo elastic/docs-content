@@ -30,6 +30,6 @@ To configure log data sources using the `saved_objects` API and the **Advanced S
 
 1. Go to **Advanced Settings** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Configure your custom log sources in `observability:logSources`.
-1. Go to **Saved Objects** from the navigation or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Saved Objects** management page from the navigation or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. [Export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) the **Advanced Settings** saved object.
 1. Import the saved object to your target cluster using the [import saved objects API]({{kib-apis}}/operation/operation-importsavedobjectsdefault).
