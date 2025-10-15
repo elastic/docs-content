@@ -32,7 +32,7 @@ You can access your list of background searches at any time to check their statu
 This feature is disabled by default. You can enable background searches in versions 9.2 and later, or search sessions in versions 9.1 and earlier, by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 
 :::{note} - Exception for search sessions users
-If you upgrade to version 9.2 or higher with search sessions enabled in the version you upgrade from, background searches are automatically enabled.
+If you upgrade to version 9.2 or later with search sessions enabled in the version you upgrade from, background searches are automatically enabled.
 :::
 
 ## Usage requirements [_requirements]
