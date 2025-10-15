@@ -73,6 +73,6 @@ The following actions help you filter and focus on specific fields in the log de
 
 ## View log data set details [view-log-data-set-details]
 
-Go to **Data Sets** to view more details about your data sets and monitor their overall quality. To open **Data Set Quality**, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Go to **Data Sets** to view more details about your data sets and monitor their overall quality. To open the **Data Set Quality** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Refer to [Data set quality](/solutions/observability/data-set-quality-monitoring.md) for more information.
