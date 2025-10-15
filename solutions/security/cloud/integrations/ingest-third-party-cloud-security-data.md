@@ -30,7 +30,7 @@ You can ingest third-party cloud security alerts into {{elastic-sec}} to view th
 You can ingest third-party data into {{elastic-sec}} to review and investigate it alongside data collected by {{elastic-sec}}'s native cloud security integrations. Once ingested, cloud security posture and vulnerability data appears on the [Findings](/solutions/security/cloud/findings-page.md) page, on the [Cloud Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md), and in the [entity details](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout) and [alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) flyouts.
 
 ::::{note}
-Data from third-party integration does not appear on the [CNVM dashboard](/solutions/security/cloud/cnvm-dashboard.md).
+Data from third-party integrations does not appear on the [CNVM dashboard](/solutions/security/cloud/cnvm-dashboard.md).
 ::::
 
 Data from each of the following integrations can feed into at least some of these workflows:
