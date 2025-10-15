@@ -63,7 +63,7 @@ This tutorial explains how to apply a custom index lifecycle policy to the `trac
 
 The **Data Streams** view in {{kib}} shows you data streams, index templates, and lifecycle policies:
 
-1. Open **Index Management** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Index Management** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Data Streams**.
 3. Search for `traces-apm` to see all data streams associated with APM trace data.
 4. In this example, I only have one data stream because I’m only using the `default` namespace. You may have more if your setup includes multiple namespaces.
