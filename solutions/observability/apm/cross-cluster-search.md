@@ -33,7 +33,7 @@ You can also specify certain clusters to display data from, for example, `cluste
 
 There are two ways to edit the default {{data-source}}:
 
-* In the Applications UI — Find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
+* In the Applications UI — Find **Applications** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
 * In [`kibana.yml`](/deploy-manage/stack-settings.md) — Update the [`xpack.apm.indices.*`](kibana://reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
 
 ::::{tip}
@@ -42,7 +42,7 @@ In a cross-cluster search (CCS) environment, it’s possible for different clust
 
 To prevent this, you can exclude [data tiers](/manage-data/lifecycle/data-tiers.md) that might slow down responses from search: the `data_frozen` and `data_cold` tiers. To exclude data tiers from search in the APM UI:
 
-1. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. To open the **Advanced settings** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Observability** section, update the **Excluded data tiers from search** option with a list of data tiers.
 
 ::::
