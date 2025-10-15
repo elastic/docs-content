@@ -18,6 +18,6 @@ This page explains how to make data from the Microsoft Defender for Endpoint int
 
 In order for Microsoft Defender for Endpoint data to appear in these workflows:
 
-* Follow the steps to [set up the Microsoft Defender for Endpoint integration](https://www.elastic.co/docs/reference/integrations/microsoft-defender-for-endpoint).
+* Follow the steps to [set up the Microsoft Defender for Endpoint integration](https://www.elastic.co/docs/reference/integrations/microsoft_defender_endpoint).
 * Make sure the integration version is at least 3.0.0.
 * Ensure you have `read` privileges for the following index: `security_solution-*.vulnerability_latest`.
