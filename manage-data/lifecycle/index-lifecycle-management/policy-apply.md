@@ -31,7 +31,8 @@ You can do this procedure in {{kib}} or using the {{es}} API.
 
 To apply a lifecycle policy to an existing index:
 
-1. Go to **Stack Management > Index Management**. In the **Indices** tab, search for and select an index. Enable **Include hidden indices** to see the full list of indices.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Indices** tab, search for and select an index. Enable **Include hidden indices** to see the full list of indices.
 
 1. From the **Manage index** dropdown menu select **Add lifecycle policy**.
 
