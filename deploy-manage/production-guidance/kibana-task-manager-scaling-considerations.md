@@ -70,7 +70,7 @@ By default, {{kib}} polls for tasks at a rate of 10 tasks every 500 milliseconds
 
 - As of v8.15 a new task claim strategy was introduced: `mget`. And as of v8.18, `mget` has been made the default strategy -as part of some performance improvement efforts-, with a default polling interval of 500 milliseconds. Since these changes offers a better task execution performance, It is highly recommended you to upgrade to v8.18.
 
-- Maximum number of concurrent tasks can be changed by using `xpack.task_manager.capacity`, The default value is 10, the minimum and maximum values ​​are 5 and 50 respectively.
+- Maximum number of concurrent tasks can be changed by using `xpack.task_manager.capacity`, The default value is 10, the minimum and maximum values are 5 and 50 respectively.
 
 In practice, a {{kib}} instance will only achieve the upper bound of `1200/tpm` if the duration of task execution is below the polling rate of 500 milliseconds. But for the most part, the duration of tasks is above that threshold, it can vary greatly as {{es}} and {{kib}} usage grow and task complexity increases (such as alerts executing heavy queries across large datasets). Therefore you should find your the average execution time of your tasks to estimate the number of {{kib}} instances you need.
 
