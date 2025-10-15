@@ -9,6 +9,11 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+
+## October 15, 2025 [serverless-changelog-10152025]
+* {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London).
+
+
 ## October 13, 2025 [serverless-changelog-10132025]
 
 ### Features and enhancements [serverless-changelog-10132025-features-enhancements]
@@ -38,6 +43,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
 * Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
 * Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
+
 
 ## October 6, 2025 [serverless-changelog-10062025]
 
@@ -79,6 +85,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
 * Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
 * Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
+
 
 ## September 29, 2025 [serverless-changelog-09292025]
 
