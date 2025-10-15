@@ -49,7 +49,7 @@ Complete the following steps to configure a custom index lifecycle policy.
 
 ### Step 1: Create an index lifecycle policy [profiling-ilm-custom-policy-create-policy]
 
-1. Open **Index Lifecycle Policies** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Index Lifecycle Policies** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 3. Name your new policy, for example `custom-profiling-policy`.
 4. Customize the policy to your liking.
