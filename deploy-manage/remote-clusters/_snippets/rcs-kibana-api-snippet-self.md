@@ -24,7 +24,5 @@ This snippet is in use in the following locations:
       * **TLS server name**: Specify a value if the certificate presented by the remote cluster is signed for a different name than the remote address.
       * **Socket connections**: Define the number of connections to open with the remote cluster.
 
-    For a full list of available client connection settings, refer to [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).
-
 4. Click **Next**.
 5. In **Confirm setup**, click **Add remote cluster** (you have already established trust in a previous step).

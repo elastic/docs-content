@@ -38,3 +38,5 @@ PUT /_cluster/settings
 ::::{note}
 When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
 ::::
+
+For a full list of available client connection settings in proxy mode, refer to [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).
