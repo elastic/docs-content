@@ -29,6 +29,12 @@ Self-hosted options:
 For a comparison of these deployment options, refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) and [](/deploy-manage/deploy/deployment-comparison.md).
 :::
 
+:::{admonition} Use cloud services in your self-managed cluster with Cloud Connect
+If you need to run Elastic on your own infrastructure, use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud connect enables you to use Elastic-managed cloud services in your self-managed cluster without having to install and manage their infrastructure yourself.
+
+This way, you can get faster access to new cloud features while still meeting your infrastructure requirements.
+:::: 
+
 ## Section overview
 
 This section focuses on deploying {{es}} and {{kib}} without an orchestrator.

@@ -13,6 +13,9 @@ products:
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ece}} environment.
 
+::::{note}
+If network security filters are applied to the remote cluster, the remote cluster administrator must configure a [remote cluster filter](/deploy-manage/security/remote-cluster-filtering.md), using either the ECE environment ID or the Elasticsearch cluster ID of the local cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
+::::
 
 ## Allow the remote connection [ece_allow_the_remote_connection]
 
@@ -169,7 +172,8 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
 ### Using {{kib}} [ece_using_kibana]
 
-1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
+1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Add a remote cluster**.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 

@@ -40,11 +40,9 @@ This diagram summarizes the relative complexity of each workflow:
 
 ### Option 1: `semantic_text` [_semantic_text_workflow]
 
-The simplest way to use NLP models in the {{stack}} is through the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). We recommend using this approach because it abstracts away a lot of manual work. All you need to do is create an index mapping to start ingesting, embedding, and querying data. There is no need to define model-related settings and parameters, or to create {{infer}} ingest pipelines. 
+The simplest way to use NLP models in the {{stack}} is through the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). We recommend using this approach because it abstracts away a lot of manual work. All you need to do is create an index mapping to start ingesting, embedding, and querying data. There is no need to define model-related settings and parameters, or to create {{infer}} ingest pipelines. For guidance on the available query types for `semantic_text`, see [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
 
-To learn more about supported services, refer to [](/explore-analyze/elastic-inference/inference-api.md) and the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) documentation.
-
-For an end-to-end tutorial, refer to [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md).
+To learn more about supported services, refer to [](/explore-analyze/elastic-inference/inference-api.md) and the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) documentation. For an end-to-end tutorial, refer to [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md).
 
 ### Option 2: Inference API [_infer_api_workflow]
 

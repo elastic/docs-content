@@ -43,7 +43,7 @@ Some action types are subscription features, while others are free. For a compar
 To review and modify existing **{{stack-monitor-app}}** rules, click **Enter setup mode** on the **Cluster overview** page. Cards with alerts configured are annotated with an indicator.
 
 :::{tip}
-Alternatively, to manage all rules, including create and delete functionality go to **{{stack-manage-app}} > {{rules-ui}}**.
+Alternatively, to manage all rules, including create and delete functionality, find the **{{rules-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 :::
 
 1. On any card showing available alerts, select the **alerts** indicator. Use the menu to select the type of alert for which you’d like to be notified.

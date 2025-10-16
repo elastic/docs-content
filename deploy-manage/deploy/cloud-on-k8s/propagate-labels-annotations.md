@@ -6,13 +6,13 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Propagate Labels and Annotations [k8s-propagate-labels-annotations]
+# Propagate labels and annotations [k8s-propagate-labels-annotations]
 
 Starting with version `3.1.0`, {{eck}} supports propagating labels and annotations from the parent resource to the child resources it creates. This can be used on all custom resources managed by ECK, such as {{eck_resources_list}}.
 
 The example below demonstrates how to use this feature on a {{es}} cluster, however, as mentioned above, this can be also applied to any custom resource managed by {{eck}}.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -29,7 +29,7 @@ metadata:
     my-label2: "my-label2-value"
   name: elasticsearch-sample
 spec:
-  version: 9.1.0
+  version: {{version.stack}}
   nodeSets:
     - name: default
       config:
@@ -60,7 +60,7 @@ service/elasticsearch-sample-es-transport       ClusterIP   None             <no
 
 It is possible to use `*` as a wildcard to propagate all labels and annotations from the parent resource to the child resources. For example:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -70,7 +70,7 @@ metadata:
     eck.k8s.alpha.elastic.co/propagate-labels: "*"
   name: elasticsearch-sample
 spec:
-  version: 9.1.0
+  version: {{version.stack}}
   nodeSets:
     - name: default
       config:
