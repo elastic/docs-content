@@ -217,7 +217,6 @@ You can now connect remotely to the trusted clusters.
 
 On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
-% ECE locals only
 ::::{note}
 This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) and requires the ECE allocators to be able to connect to the remote address endpoint.
 ::::
@@ -227,7 +226,7 @@ This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remot
 :::{include} _snippets/rcs-kibana-api-snippet-self.md
 :::
 
-### Using the {{es}} API [ece_using_the_elasticsearch_api_4]
+### Using the {{es}} RESTful API [ece_using_the_elasticsearch_api_4]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet-self.md
 :::

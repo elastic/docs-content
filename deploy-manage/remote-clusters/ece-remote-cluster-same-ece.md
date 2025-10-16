@@ -169,9 +169,8 @@ You can now connect remotely to the trusted clusters.
 
 ## Connect to the remote cluster [ece_connect_to_the_remote_cluster]
 
-On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
+On the local cluster, add the remote cluster using {{kib}}, the {{es}} API, or the ECE API.
 
-% ECE locals only
 ::::{note}
 This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) and requires the ECE allocators to be able to connect to the remote address endpoint.
 ::::
@@ -185,12 +184,12 @@ This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remot
 If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
 ::::
 
-### Using the {{es}} API [ece_using_the_elasticsearch_api]
+### Using the {{es}} RESTful API [ece_using_the_elasticsearch_api]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::
 
-### Using the {{ece}} API [ece_using_the_elastic_cloud_enterprise_restful_api]
+### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api]
 ```{applies_to}
 deployment:
   ece: deprecated

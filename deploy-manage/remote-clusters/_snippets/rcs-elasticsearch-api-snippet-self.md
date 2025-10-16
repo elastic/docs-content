@@ -5,6 +5,7 @@ This snippet is in use in the following locations:
 -->
 To configure a self-managed cluster as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
+* `Remote cluster alias`: When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI as **Remote cluster name**.
 * `mode`: `proxy`
 * `proxy_address`: Enter the endpoint of the remote self-managed cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
 
@@ -34,9 +35,5 @@ PUT /_cluster/settings
   }
 }
 ```
-
-::::{note}
-When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
-::::
 
 For a full list of available client connection settings in proxy mode, refer to [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).

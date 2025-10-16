@@ -224,7 +224,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 :::{include} _snippets/rcs-kibana-api-snippet-self.md
 :::
 
-### Using the {{es}} API [ec_using_the_elasticsearch_api_4]
+### Using the {{es}} RESTful API [ec_using_the_elasticsearch_api_4]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet-self.md
 :::

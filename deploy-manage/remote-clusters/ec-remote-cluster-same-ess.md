@@ -165,7 +165,7 @@ You can now connect remotely to the trusted clusters.
 
 ## Connect to the remote cluster [ec_connect_to_the_remote_cluster]
 
-On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
+On the local cluster, add the remote cluster using {{kib}}, the {{es}} API, or the {{ecloud}} API.
 
 
 ### Using {{kib}} [ec_using_kibana]
@@ -173,12 +173,12 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 :::{include} _snippets/rcs-kibana-api-snippet.md
 :::
 
-### Using the {{es}} API [ec_using_the_elasticsearch_api]
+### Using the {{es}} RESTful API [ec_using_the_elasticsearch_api]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::
 
-### Using the {{ecloud}} API [ec_using_the_elasticsearch_service_restful_api]
+### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api]
 ```{applies_to}
 deployment:
   ess: deprecated
