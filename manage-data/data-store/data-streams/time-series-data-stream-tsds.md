@@ -40,7 +40,7 @@ A time series is a sequence of observations for a specific entity. Together, the
 
 ### Time series fields
 
-Compared to a regular data stream, a TSDS uses some additional fields specific to time series:  dimension fields and metric fields, plus an internal `_tsid` metadata field.
+Compared to a regular data stream, a TSDS uses some additional fields specific to time series: dimension fields and metric fields, plus an internal `_tsid` metadata field.
 
 #### Dimensions [time-series-dimension]
 
