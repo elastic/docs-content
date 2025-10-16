@@ -94,7 +94,7 @@ You can later filter the data that shows in the chart and in the table by specif
    You can combine multiple keywords or characters. For example, `geo dest` finds `geo.dest` and `geo.src.dest`.
    ::::
 
-   {applies_to}`stack: ga 9.2` When they exist in your data, Discover shows a small list of recommended fields to explore. This list is static and managed by Elastic.
+   {applies_to}`stack: ga 9.2` For some searches, Discover suggests recommended fields to explore. These suggestions are based on the data you query and are managed by Elastic.
 
 2. Select a field to view its most frequent values.
   **Discover** shows the top 10 values and the number of records used to calculate those values.
