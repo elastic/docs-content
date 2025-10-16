@@ -322,7 +322,7 @@ This allows you to pivot quickly between different explorations without losing y
 #### Manage Discover tabs
 
 You can open new tabs or duplicate existing ones to compare different queries:
-- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to existing tabs.
+- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
 To manage and organize your tabs, you can: 
