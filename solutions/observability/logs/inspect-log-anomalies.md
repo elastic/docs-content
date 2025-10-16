@@ -33,6 +33,8 @@ Create a {{ml}} job to detect anomalous log entry rates automatically.
 4. Click **Create ML job**. This creates and runs the job. It takes a few minutes for the {{ml}} robots to collect the necessary data. After the job has processed the data, you can view its results.
 
 ::::{note}
+:applies_to: stack: ga 9.2
+
 Log anomaly {{ml}} jobs retain results for 120 days by default. Modify the `results_retention_days` setting to change this period.
 ::::
 
