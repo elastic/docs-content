@@ -2,7 +2,7 @@
 navigation_title: Manage notifications
 applies_to:
   deployment:
-    ess: ga 9.3
+    ess: all
   serverless: all
 products:
   - id: cloud-hosted
