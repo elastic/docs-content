@@ -25,7 +25,7 @@ This process only applies to time series data streams without a [downsampling](/
 
 ## Overview
 
-These high-level steps summarize the process of reindexing a time series data stream. Each step is detailed in later sections.
+These high-level steps summarize the process of reindexing a time series data stream. Each step is detailed in a later section.
 
 1. Create an index template for the destination data stream
 2. Update the template with temporary settings for reindexing
