@@ -146,10 +146,12 @@ elastic-agent enroll --url <string>
                      [--force]
                      [--header <strings>]
                      [--help]
+                     [--id <string>]
                      [--insecure ]
                      [--proxy-disabled]
                      [--proxy-header <strings>]
                      [--proxy-url <string>]
+                     [--replace-token <string>]
                      [--staging <string>]
                      [--tag <string>]
                      [global-flags]
@@ -298,6 +300,13 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 `--help`
 :   Show help for the `enroll` command.
 
+`--id <string>`
+:   Specifies the unique identifier (agent ID) to use when enrolling the {{agent}} with {{fleet-server}}. This setting is useful when restoring a previously enrolled agent or in stateless environments where the agent cannot persist enrollment data between redeployments.
+
+    :::{note}
+    If an agent with the same ID is already enrolled in {{fleet}}, enrollment will fail unless a valid replacement token is provided using the `--replace-token` flag.
+    :::
+
 `--insecure`
 :   Allow the {{agent}} to connect to {{fleet-server}} over insecure connections. This setting is required in the following situations:
 
@@ -316,6 +325,13 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 
 `--proxy-url <string>`
 :   Configures the proxy URL.
+
+`--replace-token <string>`
+:   Specifies a token that can be used to replace the {{agent}} after its enrollment in {{fleet-server}}. The token must be provided when enrolling an agent with a specific agent ID for the first time. Subsequently, the agent can be replaced by enrolling another agent using the same agent ID and replacement token. Once replaced, the original agent can no longer communicate with {{fleet}}.
+
+    :::{note}
+    If an {{agent}} is enrolled without a replacement token, it cannot be replaced by another agent with the same ID. This mechanism prevents accidental or malicious takeovers by requiring the replacement token to match the hashed token stored in {{fleet}}.
+    :::
 
 `--staging <string>`
 :   Configures agent to download artifacts from a staging build.
@@ -378,6 +394,16 @@ Then enroll another {{agent}} into the {{fleet-server}} started in the previous 
 elastic-agent enroll --url=https://fleet-server:8220 \
   --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== \
   --certificate-authorities=/path/to/ca.crt
+```
+
+Replace an {{agent}} enrolled in {{fleet-server}} with a specific agent ID and a replacement token:
+
+```shell
+elastic-agent enroll \
+  --url=https://fleet-server:8220 \
+  --enrollment-token=ENROLLMENT_TOKEN_HASH \
+  --id=MY_AGENT_ID \
+  --replace-token=REPLACEMENT_TOKEN_HASH
 ```
 
 

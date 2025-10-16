@@ -38,6 +38,10 @@ To learn how to deploy optional {{stack}} components, refer to the following sec
 :::{include} _snippets/deployment-options-overview.md
 :::
 
+::::{tip}
+Documentation will specify when certain features or configurations are not applicable to specific deployment types.
+::::
+
 ### Who manages the infrastructure?
 
 #### Managed by Elastic
@@ -58,8 +62,8 @@ If you need to run Elastic on your infrastructure, choose between a fully self-m
   - **{{eck}} (ECK)**: If you need Kubernetes-native orchestration
   - **{{ece}} (ECE)**: If you need a multi-tenant orchestration platform
 
-::::{tip}
-Documentation will specify when certain features or configurations are not applicable to specific deployment types.
+:::{admonition} Use cloud services in your self-hosted environment with Cloud Connect
+With [Cloud Connect](/deploy-manage/cloud-connect.md), you can use Elastic-managed cloud services in your self-managed, ECE, or ECK environment without having to install and manage their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
 ::::
 
 ### About orchestration
@@ -100,5 +104,5 @@ Learn more about [versioning and availability](/get-started/versioning-availabil
 - **Self-hosted options**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
 
 :::::{tip}
-For a detailed comparison of features and capabilities across deployment types, see the [Deployment comparison reference](./deploy/deployment-comparison.md).
+For a detailed comparison of features and capabilities across deployment types, see the [](./deploy/deployment-comparison.md).
 :::::
