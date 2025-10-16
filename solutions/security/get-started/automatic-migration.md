@@ -12,7 +12,7 @@ Automatic Migration for detection rules helps you quickly migrate Splunk assets 
 * {applies_to}`stack: preview 9.0, ga 9.1` {applies_to}`serverless: ga` Splunk rules
 * {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Splunk dashboards
 
-For rule migrations, if comparable Elastic-authored rules exist, it simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
+For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
 You can ingest your data before migrating your assets, or migrate your assets first in which case the tool will recommend which data sources you need to power your migrated rules.
 
@@ -23,7 +23,6 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
-
 ::::
 
 ## Get started with Automatic Migration
@@ -41,7 +40,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 
    ::::{note}
-   The provided query downloads Splunk correlation rules and saved searches. Alternatively, as long as you export your results in a JSON format, you can use a different query. For example:
+   The provided queries download a default selection of Splunk assets. Alternatively, as long as you export your results as JSON, you can use a different query. For example, the following custom query would download rules related to just the `splunksysmonsecurity` app:
 
    ```
    | rest /servicesNS/-/-/saved/searches
@@ -49,17 +48,16 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    | where disabled=0
    | table id, title, search, description, action.escu.eli5,
    ```
-   The above sample query would download rules related to just the `splunksysmonsecurity` app.
 
-   We don't recommend downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since most of the data will be irrelevant to SIEM rule migration.
+   We don't recommend downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since much of the data would be irrelevant to asset migration.
    ::::
 
 5. Select your JSON file and click **Upload**. If the file is large, you may need to separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
 
 6. After you upload your Splunk assets, Automatic Migration will detect whether they use any macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to wait on the page for them to be processed — a notification will appear when processing is complete.
 
-7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. By default, the **Match to Elastic prebuilt rules** option is enabled; when it's enabled, any rules you translate that are similar to Elastic prebuilt rules are converted to those prebuilt rules. When it's disabled, each of your rules will be converted into a new custom rule. 
-8. Click **Translate**. A name for the migration is automatically created, and you can track its progress on this page. The **More actions** ({icon}`boxes_vertical`) button lets you rename or pause the migration. 
+7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option, which is enabled by default; when it's enabled, any rules you translate that are similar to Elastic prebuilt rules are converted to those prebuilt rules. When it's disabled, each of your rules will be converted into a new custom rule. 
+8. Click **Translate**. A name for the migration is automatically created, and you can track its progress on this page. The **More actions** ({icon}`boxes_vertical`) button lets you rename or delete the migration. 
 
    ::::{image} /solutions/images/security-siem-migration-rule-status-more-actions.png
    :alt: The rule migration status view
@@ -70,7 +68,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    You don't need to stay on this page. A notification will appear when the migration is complete.
 
 
-9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rule migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom creations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated assets. These include both Elastic-managed integrations and any applicable custom creations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
 
    ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
    :alt: The add integrations panel.
@@ -83,9 +81,9 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ## The Translated rules page
 
-This section describes the **Translated rules** page's interface and explains how the data that appears here is derived.
+This section describes the **Translated rules** page's interface and the data it displays.
 
-When you execute a migration, it gets a default or a custom name, for example `SIEM rule migration 1`, `Dashboard-migration-test`, or `your-custom-name`. Use the **Migrations** dropdown menu in the upper right to select which migration appears.
+Use the **Migrations** dropdown menu in the upper right to select which migration appears. 
 
 ::::{image} /solutions/images/security-siem-migration-processed-rules.png
 :alt: The translated rules page
@@ -131,9 +129,9 @@ The table's fields are as follows:
 :screenshot:
 ::::
 
-## Finalize translated rules
+## Finalize translated assets
 
-Once you're on the **Translated rules** page, to install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom rules that were successfully translated to finetune them.
+Once you're on the **Translated rules** or **Translated dashboards** page, to install any assets that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom assets that were successfully translated to finetune them.
 
 :::{note}
 You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
@@ -163,9 +161,9 @@ All the details about your migrations is stored in the `.kibana-siem-rule-migrat
 
 ## Frequently asked questions (FAQ)
 
-**How does Automatic Migration handle rules that can't be exactly translated for various reasons, such as feature parity issues?**
+**How does Automatic Migration handle assets that can't be exactly translated for various reasons, such as feature parity issues?**
 
-After translation, rules that can't be translated appear with a status of either partially translated (yellow) or not translated (red). From there, you can address them individually.
+After translation, assets that can't be translated appear with a status of either partially translated (yellow) or not translated (red). From there, you can address them individually.
 
 **Are nested macros supported?**
 
@@ -173,12 +171,12 @@ Yes, Automatic Migration can handle nested macros.
 
 **How can we ensure rules stay up to date?**
 
-Automatic Migration maps your rules to Elastic-authored rules whenever possible, which are updated automatically. Like all custom rules, rules created by Automatic Migration must be maintained by you.
+With the exception of rules that were matched to Elastic-authored rules (which are updated automatically), assets created by Automatic Migration must be maintained by you.
 
 **What index does information about each migration appear in?**
 
 No matter how many times you use Automatic Migration, migration data will continue to appear in `.kibana-siem-rule-migrations-rules-default`.
 
-**How does Automatic Migration handle Splunk rules which lookup other indices?**
+**How does Automatic Migration handle Splunk assets which lookup other indices?**
 
-Rules that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation.
+Assets that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation.
