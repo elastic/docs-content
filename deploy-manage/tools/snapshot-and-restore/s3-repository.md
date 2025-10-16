@@ -377,6 +377,13 @@ AWS instances resolve S3 endpoints to a public IP. If the {{es}} instances resid
 
 Instances residing in a public subnet in an AWS VPC will connect to S3 via the VPC’s internet gateway and not be bandwidth limited by the VPC’s NAT instance.
 
+## Replicating objects [repository-s3-replicating-objects]
+
+AWS S3 supports [replication of objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html), both within a single region and across regions.
+Unfortunately this replication is not compatible with {{es}} snapshots.
+The objects that {{es}} writes to the repository refer to other objects which already exist in the repository, and {{es}} only deletes an object from the repository after it becomes unreferenced by all other objects.
+AWS S3 replication will apply operations to the replica repository in a different order from the order in which {{es}} applies them to the primary repository, and this may leave the replica repository in an invalid state, with objects referring to other objects that do not exist.
+To replicate a repository's contents elsewhere you must follow the [repository backup](snapshot-and-restore/self-managed.md#snapshots-repository-backup) process.
 
 ## S3-compatible services [repository-s3-compatible-services]
 
