@@ -312,7 +312,7 @@ serverless: preview
 ```
 **Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or classic mode), time range, filters, selected data source, columns and sort order you defined, and the active [context-aware experience](#context-aware-discover).
 
-This allows you to pivot quickly between different explorations without rebuilding everything. For example:
+This allows you to pivot quickly between different explorations without losing your place. For example:
 
 * **Compare time periods:** Open multiple tabs with the same query but different time ranges
 * **Test query variations:** Duplicate a tab to experiment with different {{esql}} queries or filters
