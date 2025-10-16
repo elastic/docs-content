@@ -49,12 +49,12 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    | table id, title, search, description, action.escu.eli5,
    ```
 
-   We don't recommend downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since much of the data would be irrelevant to asset migration.
+   For rule migration, we recommend against downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since much of the data would be irrelevant to asset migration.
    ::::
 
 5. Select your JSON file and click **Upload**. If the file is large, you may need to separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
 
-6. After you upload your Splunk assets, Automatic Migration will detect whether they use any macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to wait on the page for them to be processed — a notification will appear when processing is complete.
+6. After you upload your Splunk assets, Automatic Migration will detect whether they use any macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to wait on this page for them to be processed — a notification will appear when processing is complete.
 
 7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option, which is enabled by default; when it's enabled, any rules you translate that are similar to Elastic prebuilt rules are converted to those prebuilt rules. When it's disabled, each of your rules will be converted into a new custom rule. 
 8. Click **Translate**. A name for the migration is automatically created, and you can track its progress on this page. The **More actions** ({icon}`boxes_vertical`) button lets you rename or delete the migration. 
@@ -68,7 +68,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    You don't need to stay on this page. A notification will appear when the migration is complete.
 
 
-9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated assets. These include both Elastic-managed integrations and any applicable custom creations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated assets. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
 
    ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
    :alt: The add integrations panel.
@@ -76,7 +76,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    :screenshot:
    ::::
 
-10. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** to open the **Translated rules** page. 
+10. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** or **View translated dashboards** to open the [**Translated rules**](#the-translated-rules-page) page  or the [**Translated dashboards**](#the-translated-dashboards-page) page. 
 
 
 ## The Translated rules page
@@ -128,9 +128,9 @@ The table's fields are as follows:
 :screenshot:
 ::::
 
-### Finalize translated rules
+### Finalize translated rules and view rule details
 
-Once you're on the **Translated rules** page, to install any assets that were partially translated or not translated, you will need to edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
+To install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
 
 :::{note}
 You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
@@ -147,8 +147,6 @@ Click a rule's name to open its details flyout to the **Translation** tab, which
 ::::{note}
 If you haven't yet ingested your data, you may encounter `Unknown index` or `Unknown column` errors. You can ignore these and add your data later.
 ::::
-
-### View rule details
 
 The rule details flyout has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic-authored rule.
 
@@ -179,7 +177,7 @@ The table's fields are as follows:
 To view an explanation of the logic behind how each dashboard was translated, click a dashboard's name to open the dashboard details flyout. 
 ::::
 
-## Finalize translated dashboards
+### Finalize translated dashboards
 
 Once you're on the **Translated rules** or **Translated dashboards** page, to install any assets that were partially translated or not translated, you will need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
 
