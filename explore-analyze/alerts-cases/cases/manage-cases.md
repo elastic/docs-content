@@ -137,12 +137,4 @@ To view a case, click on its name. You can then:
 * Change the status.
 * Change the severity.
 * Close or delete the case.
-* Reopen a closed case.
-
-## Use human-readable numeric case IDs [cases-id]
-
-```{applies_to}
-stack: ga 9.2
-```
-
-Existing and new cases are automatically assigned human-readable numeric IDs, which you can use for easier referencing. Each time you create a new case in your [space](docs-content://deploy-manage/manage-spaces.md), the case case ID increments by one. You can find the ID after the case's name and can use it while searching the Cases table. 
+* Reopen a closed case. 

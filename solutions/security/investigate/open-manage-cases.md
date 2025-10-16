@@ -327,11 +327,3 @@ To import a case:
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
-
-## Use human-readable numeric case IDs [security-cases-id]
-
-```{applies_to}
-stack: ga 9.2
-```
-
-Existing and new cases are automatically assigned human-readable numeric IDs, which you can use for easier referencing. Each time you create a new case in your [space](docs-content://deploy-manage/manage-spaces.md), the case case ID increments by one. You can find the ID after the case's name and can use it while searching the Cases table. 
