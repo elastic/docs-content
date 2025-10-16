@@ -80,7 +80,11 @@ In some cases, entities can retain a residual risk score:
 * If all alerts for an entity are closed
 * If all of the entity’s open alerts fall outside of the configured date and time range
 
-In these situations, the entity retains its last computed risk score until a new alert causes the score to be recalculated.
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` By default, in these scenarios, entity risk scores are reset to zero if there are no new inputs. If, instead, you want entities to retain their last calculated risk score, select the **Retain previously calculated risk scores** checkbox on the [Entity risk score page](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
+
+:::{note}
+In versions 9.1 and earlier, residual risk scores are retained by default. This means that each entity keeps its last computed risk score until a new alert triggers a recalculation.
+:::
 
 ::::{dropdown} Click for a risk score calculation example
 This example shows how the risk scoring engine calculates the user risk score for `User_A`, whose asset criticality level is **Extreme impact**.
