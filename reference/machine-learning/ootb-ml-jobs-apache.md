@@ -27,7 +27,7 @@ For more details, see the {{dfeed}} and job definitions in [GitHub](https://gith
 
 ## Apache access logs ({{filebeat}}) [apache-access-logs-filebeat]
 
-These legacy {{anomaly-jobs}} find unusual activity in HTTP access logs. For the latest versions, install the Apache integration in {{fleet}}; see [Apache access logs](../../machine-learning/machine-learning/ootb-ml-jobs-apache.md#apache-access-logs).
+These legacy {{anomaly-jobs}} find unusual activity in HTTP access logs. For the latest versions, install the Apache integration in {{fleet}}; see [Apache access logs](../../machine-learning/ootb-ml-jobs-apache.md#apache-access-logs).
 
 For more details, see the {{dfeed}} and job definitions in [GitHub](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/apache_ecs/ml).
 
