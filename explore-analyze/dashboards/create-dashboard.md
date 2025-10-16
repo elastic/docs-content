@@ -15,14 +15,12 @@ products:
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
 
-3. Add content to the dashboard. You have several options covered in more detail in the [Visualizations section](../visualize.md#panels-editors):
+3. Populate your dashboard with the content that you need. You can:
 
-    * [**Create visualization**](../visualize/lens.md). This option is a shortcut to create a chart using **Lens**, the default visualization editor in {{kib}}.
-    * [**Add panel**](../visualize.md#panels-editors). Choose one of the available panels to add and configure content to your dashboard.
-    * **Add from library**. Select existing content that has already been configured and saved to the **Visualize Library**.
-    * [**Controls**](add-controls.md). Add controls to help filter the content of your dashboard.
-
-      ![Options to add content to your dashboard](/explore-analyze/images/kibana-add_content_to_dashboard_8.15.0.png "title =60%")
+    * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{kib}}, or other visualizations such as [Maps](../visualize/maps.md).
+    * [**Add existing content from the library**](../visualize/visualize-library.md). Select existing visualizations or Discover sessions that have already been configured and saved to the **Visualize Library**.
+    * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
+    * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.  
 
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
 5. Define the main settings of your dashboard from the **Settings** menu located in the toolbar.
