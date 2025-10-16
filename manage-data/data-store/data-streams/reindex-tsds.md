@@ -11,7 +11,7 @@ products:
 
 # Reindex a time series data stream [tsds-reindex]
 
-Reindexing allows you to copy documents from an old [time series data stream (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) to a new one. All data streams support reindexing, but time series data streams require special handling due to their time-bound backing indices and strict timestamp acceptance windows.
+Reindexing allows you to copy documents from an existing [time series data stream (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) to a new one. All data streams support reindexing, but time series data streams require special handling due to their time-bound backing indices and strict timestamp acceptance windows.
 
 :::{important}
 When you reindex, the result is a single backing index of a new data stream.
