@@ -11,6 +11,8 @@ products:
 
 {{es}} includes a set of built-in {{ilm-init}} policies that govern how managed indices transition as they age. This guide demonstrates how you can customize the lifecycle of a managed index, to adjust how the index transitions across [data tiers](/manage-data/lifecycle/data-tiers.md) and what [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), such as downsampling or shrinking, are performed on the index during each lifecycle phase.
 
+Setting a custom {{ilm-init}} policy is useful when you have a specific set of indices, for example a set of Kubernetes logs which can grow to be quite large in volume, for which you don't want to use the default data retention duration and other {{ilm-init}} settings.
+
 [{{agent}}](/reference/fleet/index.md) uses the following set of built-in {{ilm-init}} policies to manage backing indices for its data streams:
 
 * `logs@lifecycle`
