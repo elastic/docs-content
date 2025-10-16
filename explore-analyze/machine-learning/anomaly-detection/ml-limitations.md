@@ -153,8 +153,8 @@ The charts can also look odd in circumstances where there is very little data to
 | varp, high_varp, low_varp | [Varp, high_varp, low_varp](/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-varp) | yes (only if model plot is enabled) |
 | lat_long | [Lat_long](/reference/data-analysis/machine-learning/ml-geo-functions.md#ml-lat-long) | no (but map is displayed in the Anomaly Explorer) |
 | info_content, high_info_content, low_info_content | [Info_content, High_info_content, Low_info_content](/reference/data-analysis/machine-learning/ml-info-functions.md#ml-info-content) | yes (only if model plot is enabled) |
-| rare | [Rare](/reference/data-analysis/machine-learning/ml-rare-functions.md#ml-rare) | yes |
-| freq_rare | [Freq_rare](/reference/data-analysis/machine-learning/ml-rare-functions.md#ml-freq-rare) | no |
+| rare | [Rare](/reference/machine-learning/ml-rare-functions.md#ml-rare) | yes |
+| freq_rare | [Freq_rare](/reference/machine-learning/ml-rare-functions.md#ml-freq-rare) | no |
 | time_of_day, time_of_week | [Time functions](/reference/data-analysis/machine-learning/ml-time-functions.md) | no |
 
 ### Jobs created in {{kib}} must use {{dfeeds}} [_jobs_created_in_kib_must_use_dfeeds]

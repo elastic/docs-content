@@ -25,6 +25,6 @@ If your data is sparse, there may be gaps in the data which means you might have
 * [Geographic functions](/reference/data-analysis/machine-learning/ml-geo-functions.md)
 * [Information content functions](/reference/data-analysis/machine-learning/ml-info-functions.md)
 * [Metric functions](/reference/data-analysis/machine-learning/ml-metric-functions.md)
-* [Rare functions](/reference/data-analysis/machine-learning/ml-rare-functions.md)
+* [Rare functions](/reference/machine-learning/ml-rare-functions.md)
 * [Sum functions](/reference/data-analysis/machine-learning/ml-sum-functions.md)
 * [Time functions](/reference/data-analysis/machine-learning/ml-time-functions.md)

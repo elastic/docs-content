@@ -87,7 +87,7 @@ Standardize your data with ECS. Access logging libraries, field references, and 
 
 Unlock insights with powerful data analysis tools. Utilize text analysis components, aggregations, and function references to derive meaningful conclusions from your data.
 
-**Learn more in [Data analysis](data-analysis/index.md)**
+**Learn more in [Data analysis](machine-learning/index.md)**
 
 ## Search UI library
 

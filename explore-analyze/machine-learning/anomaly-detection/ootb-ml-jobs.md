@@ -17,7 +17,7 @@ products:
 * [APM](/reference/data-analysis/machine-learning/ootb-ml-jobs-apm.md)
 * [{{auditbeat}}](/reference/data-analysis/machine-learning/ootb-ml-jobs-auditbeat.md)
 * [Logs](/reference/data-analysis/machine-learning/ootb-ml-jobs-logs-ui.md)
-* [{{metricbeat}}](/reference/data-analysis/machine-learning/ootb-ml-jobs-metricbeat.md)
+* [{{metricbeat}}](/reference/machine-learning/ootb-ml-jobs-metricbeat.md)
 * [Metrics](/reference/data-analysis/machine-learning/ootb-ml-jobs-metrics-ui.md)
 * [Nginx](/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md)
 * [Security](/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md)

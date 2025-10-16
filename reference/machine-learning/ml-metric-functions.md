@@ -11,12 +11,12 @@ The metric functions include functions such as mean, min and max. These values a
 
 The {{ml-features}} include the following metric functions:
 
-* [`min`](ml-metric-functions.md#ml-metric-min)
-* [`max`](ml-metric-functions.md#ml-metric-max)
-* [`median`, `high_median`, `low_median`](ml-metric-functions.md#ml-metric-median)
-* [`mean`, `high_mean`, `low_mean`](ml-metric-functions.md#ml-metric-mean)
-* [`metric`](ml-metric-functions.md#ml-metric-metric)
-* [`varp`, `high_varp`, `low_varp`](ml-metric-functions.md#ml-metric-varp)
+* [`min`](../../machine-learning/machine-learning/ml-metric-functions.md#ml-metric-min)
+* [`max`](../../machine-learning/machine-learning/ml-metric-functions.md#ml-metric-max)
+* [`median`, `high_median`, `low_median`](../../machine-learning/machine-learning/ml-metric-functions.md#ml-metric-median)
+* [`mean`, `high_mean`, `low_mean`](../../machine-learning/machine-learning/ml-metric-functions.md#ml-metric-mean)
+* [`metric`](../../machine-learning/machine-learning/ml-metric-functions.md#ml-metric-metric)
+* [`varp`, `high_varp`, `low_varp`](../../machine-learning/machine-learning/ml-metric-functions.md#ml-metric-varp)
 
 ::::{note}
 You cannot add rules with conditions to detectors that use the `metric` function.
