@@ -11,7 +11,9 @@ products:
 
 # Manage usage and cost notifications [billing-notifications]
 
-To help you to better understand your costs and manage spending on {{ecloud}}, you can configure email alerts to be sent when your monthly usage or credit consumption reaches a specified threshold. You can also opt to receive a biweekly sumary of your organization's usage and estimated costs for the previous month.
+To help you to better understand your costs and manage spending on {{ecloud}}, you can configure email alerts to be sent when your monthly usage reaches a specified threshold, relative to a budget that you define for your account. You can also opt to receive a biweekly summary of your organization's usage and estimated costs for the previous month.
+
+When configured, any email notifications are sent to users who are members of the Organization owner or Billing admin [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles).
 
 To configure email notifications for your {{ecloud}} billing:
 
@@ -21,7 +23,8 @@ To configure email notifications for your {{ecloud}} billing:
 4. Follow the steps to set up or change the types of email notifications you'd like to receive:
     * [Configure budget emails](#configure-budget-emails)
     * [Configure usage summmary emails](#configure-usage-summary-emails)
-    * [Configure credit consumption emails](#configure-credit-consumption-emails)
+
+Note that [Credit consumption emails](#configure-credit-consumption-emails) are also shown on the **Billing and Subscription** page, but these notifications are not configurable.
 
 ## Configure budget emails [configure-budget-emails]
 
@@ -37,13 +40,11 @@ To create a budget and configure budget emails:
     The budget scope is automatically fixed to your entire {{ecloud}} organization. Alert emails are configured automatically based on the configured budget:
      - A warning email is sent when the organization's usage reaches 75% of the specified target amount.
      - An overage email is sent when the organization's usage reaches 100% of the specified target amount.
-     
-     Email notifications are sent to the addresses associated with the Organization owner and Billing admin [user roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles).
 
 1. Click **Create budget** to confirm your settings.
 1. Enable **Budget email**.
 
-After creating a budget you can navigate to the **Notifications** page at any time to view or update it, and to access the used versus total remaining ECU in your organization's budget.
+After creating a budget, you can navigate to the **Notifications** page at any time to view or update it, and to access the used versus total remaining ECU in your organization's budget.
 
 ## Configure usage summmary emails [configure-usage-summary-emails]
 
@@ -54,16 +55,10 @@ To configure usage summary emails:
 1. Open the **Notifications** page.
 1. Enable **Usage summary email**.
 
-The notifications will be sent to the Organization owner and Billing admin on the second Friday of each month.
+The notifications are sent on the second Friday of each month.
 
+## Credit consumption emails [configure-credit-consumption-emails]
 
-## Configure credit consumption emails [configure-credit-consumption-emails]
+Credit consumption alerts are sent when your organization has used a certain percentage of [available credits](/deploy-manage/cloud-organization/billing/ecu.md#view-available-credits). These alerts are set automatically and can't be configured.
 
-Credit consumption alerts can be sent when your organization has used a set percentage of [available credits](/deploy-manage/cloud-organization/billing/ecu.md#view-available-credits).
-
-To configure credit consumption emails:
-
-1. Open the **Notifications** page.
-1. Enable **Credit consumption email**.
-
-    Alerts are triggered to be sent when your credit consumption reaches any of the set thresholds: 33%, 25%, and 16% of active credits remaining. These thresholds are set automatically and cannot be configured.
+Alerts are triggered to be sent when your credit consumption reaches one of the set thresholds: 33%, 25%, and 16% of active credits remaining.
