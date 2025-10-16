@@ -28,7 +28,7 @@ Create a {{ml}} job to categorize log messages automatically. {{ml-cap}} observe
 4. Click **Create ML job**. This creates and runs the job. It takes a few minutes for the {{ml}} robots to collect the necessary data. After the job has processed the data, you can view its results.
 
 ::::{note}
-The {{ml}} job created for log categories has a default retention period of 120 days for results. This means that categorization results older than 120 days are automatically deleted to save storage space. You can change this retention period by modifying the `results_retention_days` setting for the job.
+Log categorization {{ml}} jobs retain results for 120 days by default. Modify the `results_retention_days` setting to change this period.
 ::::
 
 
