@@ -173,12 +173,12 @@ On the local cluster, add the remote cluster using {{kib}}, the {{es}} API, or t
 :::{include} _snippets/rcs-kibana-api-snippet.md
 :::
 
-### Using the {{es}} RESTful API [ec_using_the_elasticsearch_api]
+### Using the {{es}} API [ec_using_the_elasticsearch_api]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::
 
-### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api]
+### Using the {{ecloud}} API [ec_using_the_elasticsearch_service_restful_api]
 ```{applies_to}
 deployment:
   ess: deprecated

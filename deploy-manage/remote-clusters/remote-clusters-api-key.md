@@ -162,7 +162,7 @@ To add a remote cluster from Stack Management in {{kib}}:
 
     Starting with {{kib}} 9.2, you can also specify IPv6 addresses.
 
-### Using the {{es}} RESTful API
+### Using the {{es}} API
 
 Alternatively, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster. You can also use this API to dynamically configure remote clusters for *every* node in the local cluster. To configure remote clusters on individual nodes in the local cluster, define static settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) for each node.
 

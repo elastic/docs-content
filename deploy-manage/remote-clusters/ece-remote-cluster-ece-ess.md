@@ -153,7 +153,7 @@ This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remot
 :::{include} _snippets/rcs-kibana-api-snippet.md
 :::
 
-### Using the {{es}} RESTful API [ece_using_the_elasticsearch_api_3]
+### Using the {{es}} API [ece_using_the_elasticsearch_api_3]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::

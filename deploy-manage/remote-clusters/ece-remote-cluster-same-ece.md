@@ -184,12 +184,12 @@ This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remot
 If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
 ::::
 
-### Using the {{es}} RESTful API [ece_using_the_elasticsearch_api]
+### Using the {{es}} API [ece_using_the_elasticsearch_api]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::
 
-### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api]
+### Using the {{ece}} API [ece_using_the_elastic_cloud_enterprise_restful_api]
 ```{applies_to}
 deployment:
   ece: deprecated

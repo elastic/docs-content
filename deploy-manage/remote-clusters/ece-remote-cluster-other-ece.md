@@ -229,7 +229,7 @@ If you’re having issues establishing the connection and the remote cluster is 
 ::::
 
 
-### Using the {{es}} RESTful API [ece_using_the_elasticsearch_api_2]
+### Using the {{es}} API [ece_using_the_elasticsearch_api_2]
 
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::
