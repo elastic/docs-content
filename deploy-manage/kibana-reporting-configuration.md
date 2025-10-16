@@ -121,7 +121,9 @@ When security is enabled, you grant users access to {{report-features}} with [{{
     4. Click **Update user**.
 
 
-Granting the privilege to generate reports also grants the user the privilege to view their reports in **Stack Management > Reporting**. Users can only access their own reports.
+Granting the privilege to generate reports also grants the user the privilege to view their reports in **Reporting**. Users can only access their own reports.
+
+To view reports, go to the **Reporting** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ::::

@@ -77,7 +77,7 @@ The way that you assign roles to users depends on your authentication realm:
 
 * [Native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md): 
   * Using {{es}} API [`_security` endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security)
-  * [In {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users), using the **Stack Management > Security > Users** page
+  * [In {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users), from the **Users** management page. Find the page in the navigation menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * [File realm](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md): 
   * Using a [`user_roles` file](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)
   * In ECK: As part of a [basic authentication secret](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)

@@ -96,13 +96,13 @@ You can create and manage synonym sets and synonym rules using the {{kib}} user 
 
 To create a synonym set using the UI:
 
-1. Navigate to **Elasticsearch** > **Synonyms** or use the [global search field](/explore-analyze/query-filter/filtering.md#_finding_your_apps_and_objects).
-2. Click **Get started**.
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Synonyms, then select **Synonyms / Synonyms** from the results.
+2. Select **Get started**.
 3. Enter a name for your synonym set.
 4. Add your synonym rules in the editor by adding terms to match against:
    - Add **Equivalent rules** by adding multiple equivalent terms. For example: `ipod, i-pod, i pod`
    - Add **Explicit rules** by adding multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
-5. Click **Save** to save your rules.
+5. Select **Save** to save your rules.
 
 The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI will automatically reload the associated analyzers.
 
@@ -123,7 +123,7 @@ You can store your synonyms set in a file.
 
 Make sure you upload a synonyms set file for all your cluster nodes, to the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
-An example synonyms file:
+An example of a synonyms file:
 
 ```markdown
 # Blank lines and lines starting with pound are comments.
