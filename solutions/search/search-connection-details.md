@@ -79,15 +79,16 @@ The **Cloud ID** is also available in the **Connection Details** section. Toggle
 ### Create an API key [create-an-api-key-serverless]
 
 1. Go to the serverless project’s home page.
-2. In the **Connect to Elasticsearch** section, select **Create API key**.
+2. Select the settings icon in the **Elasticsearch endpoint** section.
+3. On the **API keys** page, select **Create API key**.
 
     :::{image} /solutions/images/kibana-serverless-create-an-api-key.png
     :alt: serverless create an api key
     :screenshot:
     :::
 
-3. Enter the API key details, and select **Create API key**.
-4. Copy and securely store the API key, since it won't appear again.
+4. Enter the API key details, and select **Create API key**.
+5. Copy and securely store the API key, since it won't appear again.
 
 ### Test connection [elasticsearch-get-started-test-connection]
 

@@ -27,9 +27,9 @@ This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have
 
 Create a {{ml}} job to detect anomalous log entry rates automatically.
 
-1. From the main menu, go to **Other tools** → **Logs Anomalies**, or find `Logs anomalies` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From here, you’ll be prompted to create a {{ml}} job which will carry out the log rate analysis.
+1. From the navigation menu, go to **Other tools** → **Logs Anomalies**, or find `Logs anomalies` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From here, you’ll be prompted to create a {{ml}} job which will carry out the log rate analysis.
 2. Choose a time range for the {{ml}} analysis.
-3. Add the indices that contain the logs you want to examine. By default, Machine Learning analyzes messages in all log indices that match the patterns set in the **logs source** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. Add the indices that contain the logs you want to examine. By default, Machine Learning analyzes messages in all log indices that match the patterns set in the **logs source** advanced setting. To open **Advanced settings**, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 4. Click **Create ML job**. This creates and runs the job. It takes a few minutes for the {{ml}} robots to collect the necessary data. After the job has processed the data, you can view its results.
 
 ## Anomalies chart [anomalies-chart]
