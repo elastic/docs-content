@@ -45,7 +45,7 @@ In most cases, you can use a [data stream lifecycle](/manage-data/lifecycle/data
 
 If you're using {{stack}}, {{ilm-init}} can help you manage a time series data stream's backing indices. {{ilm-init}} requires an index lifecycle policy.
 
-For best results, specify a `max_age` for the `rollover` action in the policy. This nesures the [`timestamp` ranges](/manage-data/data-store/data-streams/time-bound-tsds.md) for the backing indices are consistent. For example, setting a `max_age` of `1d` for the `rollover` action ensures your backing indices consistently contain one day's worth of data.
+For best results, specify a `max_age` for the `rollover` action in the policy. This ensures the [`timestamp` ranges](/manage-data/data-store/data-streams/time-bound-tsds.md) for the backing indices are consistent. For example, setting a `max_age` of `1d` for the `rollover` action ensures your backing indices consistently contain one day's worth of data.
 
 **Example:**
 
