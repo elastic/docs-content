@@ -38,6 +38,21 @@ ELSER on EIS enables you to use the ELSER model on GPUs, without having to manag
 
 ### Using the ELSER on EIS endpoint
 
+You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how to use the `.elser-2-elastic` inference endpoint, refer to [Using ELSER on EIS](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#using-elser-on-eis).
+
+#### Get started with semantic search with ELSER on EIS
+
+[Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
+
+### Limitations
+
+While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
+
+#### Uptime
+
+There are no uptime guarantees during the Technical Preview.
+While Elastic will address issues promptly, the feature may be unavailable for extended periods.
+
 Elastic is continuously working to remove these constraints and further improve performance and scalability.
 
 #### Throughput and latency
