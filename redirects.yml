@@ -513,14 +513,14 @@ redirects:
   'explore-analyze/query-filter/languages/sql-client-apps-tableau-desktop.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-desktop.md'
   'explore-analyze/query-filter/languages/sql-client-apps-tableau-server.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-server.md'
 
-  # Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
-  'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
-
 # Related to https://github.com/elastic/docs-content/pull/3318
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+
+# Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
+  'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
 
 
 
