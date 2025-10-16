@@ -26,6 +26,3 @@ toc:
       - file: observability/observability-container-metrics.md
       - file: observability/observability-kubernetes-pod-metrics.md
       - file: observability/observability-aws-metrics.md
-  - file: kibana/canvas-functions.md
-    children:
-      - file: kibana/tinymath-functions.md
