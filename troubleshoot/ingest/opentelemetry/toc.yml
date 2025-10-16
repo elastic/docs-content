@@ -26,4 +26,5 @@ toc:
       - file: edot-sdks/proxy.md
       - file: edot-sdks/misconfigured-sampling-sdk.md
   - file: no-data-in-kibana.md
+  - file: connectivity.md
   - file: contact-support.md
