@@ -81,9 +81,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ## The Translated rules page
 
-This section describes the **Translated rules** page's interface and the data it displays.
-
-Use the **Migrations** dropdown menu in the upper right to select which migration appears. 
+This section describes the **Translated rules** page's interface and the data it displays. Use the **Migrations** dropdown menu in the upper right to select which migration appears. 
 
 ::::{image} /solutions/images/security-siem-migration-processed-rules.png
 :alt: The translated rules page
@@ -93,6 +91,7 @@ Use the **Migrations** dropdown menu in the upper right to select which migratio
 
 The table's fields are as follows:
 
+* **Updated:** The migration date.
 * **Name:** The names of Elastic-authored rules cannot be edited until after rule installation. To edit the name of a custom translated rule, click the name and select **Edit**.
 * **Status:** The rule's translation status:
   * `Installed`: Already added to Elastic SIEM. Click **View** to manage and enable it.
@@ -102,7 +101,7 @@ The table's fields are as follows:
     To fix partially translated rules that are missing an index pattern, use the **Update missing index pattern** button. This affects all migrated assets that contain the placeholder `[indexPattern]`, not just those currently visibly on the table page.
     ::::
   * `Not translated`: None of the original query could be translated.
-  * `Error`: Translation failed. Refer to the the error details.
+  * `Failed`: Translation failed. Refer to the the error for details.
 * **Risk Score:** For Elastic-authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
   * If the source rule has a field comparable to Elastic's `risk score`, we use that value.
   * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
@@ -129,17 +128,15 @@ The table's fields are as follows:
 :screenshot:
 ::::
 
-## Finalize translated assets
+### Finalize translated rules
 
-Once you're on the **Translated rules** or **Translated dashboards** page, to install any assets that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom assets that were successfully translated to finetune them.
+Once you're on the **Translated rules** page, to install any assets that were partially translated or not translated, you will need to edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
 
 :::{note}
 You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
 :::
 
-### Edit a custom rule
-
-Click the rule's name to open the rule's details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
+Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
 
 ::::{image} /solutions/images/security-siem-migration-edit-rule.png
 :alt: The rule details flyout
@@ -148,16 +145,43 @@ Click the rule's name to open the rule's details flyout to the **Translation** t
 ::::
 
 ::::{note}
-If you haven't yet ingested your data, you will likely encounter `Unknown index` or `Unknown column` errors while editing. You can ignore these and add your data later.
+If you haven't yet ingested your data, you may encounter `Unknown index` or `Unknown column` errors. You can ignore these and add your data later.
 ::::
 
 ### View rule details
 
-The rule details flyout (which appears when you click on a rule's name in the **Translate rules** table) has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic-authored rule.
+The rule details flyout has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic-authored rule.
 
-::::{important}
-All the details about your migrations is stored in the `.kibana-siem-rule-migrations-rules-default` index. You can use [Discover](/explore-analyze/discover.md) to review a variety of metrics, analyze metrics, and more.
+## The Translated dashboards page 
+
+This section describes the **Translated dashboards** page's interface and the data it displays. Use the **Migrations** dropdown menu in the upper right to select which migration appears. 
+
+::::{image} /solutions/images/security-siem-migration-processed-dashboards.png
+:alt: The translated rules page
+:width: 850px
+:screenshot:
 ::::
+
+The table's fields are as follows:
+
+* **Name:** The names of the translated dashboards cannot be edited until after installation. 
+* **Updated:** The migration date.
+* **Status:** The dashboard's translation status:
+  * `Installed`: Already added to {{elastic-sec}}. Click **View** to manage and enable it.
+  * `Translated`: Ready to install. Click **Install** to install it.
+  * `Partially translated`: Part of the dashboard could not be translated. Upload any missing macros or lookups, or fix broken syntax. 
+  * `Not translated`: None of the original dashboard could be translated.
+  * `Failed`: Translation failed. Click the dashboard's name to open the details flyout and view error details.
+* **Tags:** The dashboard's tags, which can be used to identify it on the **Dashboards** page. You can edit these after installing the dashboard.
+* **Actions:** To view an `Installed` dashboard, click **View**. To install a `Translated` dashboard, click **Install**. To reprocess a `Failed` dashboard, click **Reprocess**.
+
+::::{note}
+To view an explanation of the logic behind how each dashboard was translated, click a dashboard's name to open the dashboard details flyout. 
+::::
+
+## Finalize translated dashboards
+
+Once you're on the **Translated rules** or **Translated dashboards** page, to install any assets that were partially translated or not translated, you will need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
 
 ## Frequently asked questions (FAQ)
 
@@ -175,7 +199,7 @@ With the exception of rules that were matched to Elastic-authored rules (which a
 
 **What index does information about each migration appear in?**
 
-No matter how many times you use Automatic Migration, migration data will continue to appear in `.kibana-siem-rule-migrations-rules-default`.
+Rule migration data appears in `.kibana-siem-rule-migrations-rules-default`. Dashboard migration data appears in `.kibana-siem-dashboard-migrations-dashboards-default`. You can use [Discover](/explore-analyze/discover.md) to review a variety of metrics, analyze metrics, and more.
 
 **How does Automatic Migration handle Splunk assets which lookup other indices?**
 
