@@ -519,5 +519,8 @@ redirects:
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
+# Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
+  'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
+
 
 
