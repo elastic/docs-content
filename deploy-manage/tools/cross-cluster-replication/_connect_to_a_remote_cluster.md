@@ -19,11 +19,12 @@ To replicate an index on a remote cluster (Cluster A) to a local cluster (Cluste
 :alt: ClusterA contains the leader index and ClusterB contains the follower index
 :::
 
-To configure a remote cluster from Stack Management in {{kib}}:
+To configure a remote cluster in {{kib}}:
 
 1. Set up a [secure connection](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#add-remote-clusters) as needed.
-2. Select **Remote Clusters** from the side navigation.
-3. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster (`ClusterA`) followed by the transport port (defaults to `9300`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9400` or `192.168.1.1:9300`.
+2. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. Select the appropriate connection type.
+4. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster (`ClusterA`) followed by the transport port (defaults to `9300`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9400` or `192.168.1.1:9300`.
 
 ::::{dropdown} API example
 You can also use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster:

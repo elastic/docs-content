@@ -1,14 +1,9 @@
 ---
 applies_to:
-  stack:
-  deployment:
-    self:
-    eck:
-    ess:
-    ece:
+  stack: ga 9.0
 ---
 
-# Upgrade to Enterprise Search
+# Upgrade Enterprise Search
 
 In {{stack}} 9.0.0 and beyond, Enterprise Search is unavailable. We recommend migrating to {{es}} for improved performance, scalability, and flexibility. For information about what {{es}} features you can use, check out this [blog post](https://www.elastic.co/blog/app-search-to-elasticsearch). 
 

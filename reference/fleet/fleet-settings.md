@@ -99,22 +99,6 @@ To add or edit an output:
 If the options for editing an output are grayed out, outputs are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
 ::::
 
-
-
-## Agent binary download settings [fleet-agent-binary-download-settings]
-
-{{agent}}s must be able to access the {{artifact-registry}} to download binaries during upgrades. By default {{agent}}s download artifacts from the artifact registry at `https://artifacts.elastic.co/downloads/`.
-
-For {{agent}}s that cannot access the internet, you can specify agent binary download settings, and then configure agents to download their artifacts from the alternate location. For more information about running {{agent}}s in a restricted environment, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
-
-To add or edit the source of binary downloads:
-
-1. Go to **{{fleet}} > Settings**.
-2. Under **Agent Binary Download**, select **Add agent binary source** or **Edit**.
-3. Set the agent binary source name.
-4. For **Host**, specify the address where you are hosting the artifacts repository.
-5. (Optional) To make this location the default, select **Make this host the default for all agent policies**. {{agent}}s use the default location if you don’t select a different agent binary source in the agent policy.
-
 ## Agent binary download settings [fleet-agent-binary-download-settings]
 
 {{agent}}s must be able to access the {{artifact-registry}} to download binaries during upgrades. By default {{agent}}s download artifacts from the artifact registry at `https://artifacts.elastic.co/downloads/`.
