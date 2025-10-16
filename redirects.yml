@@ -519,8 +519,13 @@ redirects:
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
+# Deduplicate canvas function reference
+  'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
+  'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
+
 # Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
   'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
+
 
 
 
