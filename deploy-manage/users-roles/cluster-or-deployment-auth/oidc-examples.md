@@ -100,9 +100,11 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
     ::::{tip} for organizations with many group memberships
-    If you use [`claims.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-properties) to map the list of Azure AD groups included in the ID token, be aware that users with a large number of group memberships may exceed the token size limit. To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**App registration > Token configuration > Edit group claims**). This limits the groups included in the ID token to those assigned to the application.
+    If you use [`claims.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-properties) to map the list of Azure AD groups included in the ID token,  users with a large number of group memberships might exceed the token size limit. 
+    
+    To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**App registrations > Token configuration > Edit groups claim**). This limits the groups included in the ID token to those assigned to the application.
 
-    For more details, refer to [Configure group claims for tokens and app roles in Azure AD](https://learn.microsoft.com/en-us/security/zero-trust/develop/configure-tokens-group-claims-app-roles).
+    For more details, refer to [Configure group claims and app roles in tokens](https://learn.microsoft.com/en-us/security/zero-trust/develop/configure-tokens-group-claims-app-roles) in the Microsoft Security documentation.
     ::::
 
     If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
