@@ -11,6 +11,8 @@ products:
 
 # Troubleshoot common Elastic Cloud on Kubernetes issues [k8s-common-problems]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Operator crashes on startup with `OOMKilled` [k8s-common-problems-operator-oom]
 

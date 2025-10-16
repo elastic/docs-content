@@ -33,7 +33,8 @@ When the entity store is enabled, the following resources are generated for each
 * {{es}} resources, such as transforms, ingest pipelines, and enrich policies.
 * Data and fields for each entity.
 * The `.entities.v1.latest.security_user_<space-id>`, `.entities.v1.latest.security_host_<space-id>`, and `.entities.v1.latest.security_services_<space-id>` indices, which contain field mappings for hosts, users, and services respectively. You can query these indices to see a list of fields that are mapped in the entity store.
-
+* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Snapshot indices (`.entities.v1.history.<ISO_date>.*`) that store daily snapshots of entity data, enabling [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of attributes over time.
+* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Reset indices (`.entities.v1.reset.*`) that ensure entity timestamps are updated correctly in the latest index, supporting accurate time-based queries and future data resets.
 
 ## Enable entity store [enable-entity-store]
 
@@ -44,7 +45,7 @@ To enable the entity store:
 
 Once you enable the entity store, the **Entities** section appears on the following pages:
 
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: unavailable` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 ## Clear entity store data [clear-entity-store]
