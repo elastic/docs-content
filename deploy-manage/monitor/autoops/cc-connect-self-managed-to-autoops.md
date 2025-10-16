@@ -121,7 +121,7 @@ Depending on your selected installation method, you may have to provide the foll
 
 With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
-1. From your {{ecloud}} home page, select a deployment.
+1. Open your self-managed cluster's Kibana
 2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3.  Select **Create API key**.
 4. In the flyout, enter a name for your key and select **User API key**.
@@ -167,7 +167,7 @@ With this authentication method, you need to create an API key to grant access t
 
 With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
 
-* (Recommended) From your {{ecloud}} home page, select a deployment and go to **Developer tools**. In **Console**, run the following command:
+* (Recommended) Open your self-managed cluster's Kibana and go to **Developer tools**. In **Console**, run the following command:
 ```js
 POST /_security/role/autoops
 {
