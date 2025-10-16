@@ -178,7 +178,6 @@ This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remot
 
 ### Using {{kib}} [ece_using_kibana]
 
-% snippet
 :::{include} _snippets/rcs-kibana-api-snippet.md
 :::
 

@@ -60,7 +60,7 @@ Before you can monitor nginx, you need the following:
 
 Follow these steps to add the nginx integration to your deployment:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enter "nginx" in the search bar, and select the **Nginx** integration.
 3. Select **Add Nginx** at the top of the integration page.
 4. Select **Add integration only (skip agent installation)** at the bottom of the page.
@@ -124,7 +124,7 @@ Follow the instructions from the **Add agent** screen to install the {{agent}} o
 
 Before installing and running the standalone {{agent}}, you need to create an API key. To create an {{ecloud}} API key:
 
-1. To open **API keys**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. To open the **API keys** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Create API key**.
 3. Give the key a name. For example, `nginx API key`.
 4. Leave the other default options and select **Create API key**.
@@ -184,7 +184,7 @@ Use {{kib}} to view the metric and log data collected by {{agent}}. Refer to the
 
 The nginx integration has a built-in dashboard that shows the full picture of your nginx metrics in one place. To open the nginx dashboard:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Installed integrations**.
 3. Select the **Nginx** card and open the **Assets** tab.
 4. Select either the `[Metrics Nginx] Overview` dashboard.
@@ -218,7 +218,7 @@ Filter your results to see logs from the nginx integration from the data selecto
 
 The nginx integration has built-in dashboards that show the full picture of your nginx logs in one place. To open the nginx dashboards:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Installed integrations**.
 3. Select the **Nginx** card and open the **Assets** tab.
 4. Select either the `[Logs Nginx] Overview` dashboard or the `[Logs Nginx] Access and error logs` dashboard.
@@ -284,7 +284,7 @@ Verify that your environment is set up properly to use the {{ml-features}}. If {
 
 Add the nginx ML jobs from the nginx integration to start using anomaly detection:
 
-* To open **Jobs**, find **Machine Learning** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* To open **Jobs**, find **Machine Learning** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     1. Select **Create job**.
     2. In the search bar, enter **nginx** and select **Nginx access logs [Logs Nginx]**.

@@ -170,8 +170,6 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
 ### Using {{kib}} [ec_using_kibana]
 
-snippet:
-
 :::{include} _snippets/rcs-kibana-api-snippet.md
 :::
 

@@ -39,7 +39,10 @@ You can create an ingest pipeline that uses the [`set` enrich processor](elastic
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To add an ingest pipeline in {{kib}}, go to **Stack Management > Ingest Pipelines**, and then select **Create pipeline > New pipeline**.
+To add an ingest pipeline in {{kib}}:
+
+1. Go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select **Create pipeline > New pipeline**.
 
 Configure the pipeline with a name, description, and a **Set** processor that adds the `@timestamp` field with a value of `{{_ingest.timestamp}}`.
 
@@ -76,18 +79,21 @@ A lifecycle policy specifies the phases in the index lifecycle and the actions t
 
 For example, you might define a policy named `indextods` that is configured to roll over when the shard size reaches 10 GB.
 
-You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. 
+You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API.
 
 ::::{tab-set}
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To create the policy in {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+To create the policy in {{kib}}:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click **Create policy**.
 
 In the **Hot phase**, by default, an ILM-managed index [rolls over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) when either:
 * It reaches 30 days of age.
 * One or more primary shards reach 50 GB in size.
-  
+
 Disable **Use recommended defaults** to adjust these values and roll over when the primary shard reaches 10GB.
 
 :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-rollover-general-content-create-policy.png
@@ -132,7 +138,7 @@ When creating the index template, specify the following details:
 * the name of the lifecycle policy, which in our example is `indextods`
 * the ingest pipeline that enriches the data by adding the `@timestamp` field, which in our example is `ingest_time_1`
 * that the template is data stream enabled by including the `data_stream` definition
-* the index pattern, which ensures that this template will be applied to matching indices and in our example is `movetods` 
+* the index pattern, which ensures that this template will be applied to matching indices and in our example is `movetods`
 
 You can create the template in {{kib}} or with the [create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API.
 
@@ -142,11 +148,12 @@ You can create the template in {{kib}} or with the [create or update index templ
 :sync: kibana
 To create an index template in Kibana, complete these steps:
 
-1. Go to **Stack Management > Index Management**. In the **Index Templates** tab, select **Create template**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, select **Create template**.
 
     ![Create template page](/manage-data/images/elasticsearch-reference-tutorial-ilm-rollover-general-content-create-template.png "")
 
-1. On the **Logistics** page: 
+1. On the **Logistics** page:
     1. Specify the name of the template. For example `index_to_dot`.
     1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `movetodos`.
     1. Turn on the **Create data streams** toggle.
@@ -190,7 +197,7 @@ To create an index template in Kibana, complete these steps:
 
 The newly created index template will be used for all new indices with names that match the specified pattern, and for each of these, the specified ILM policy will be applied.
 
-For more information about configuring templates in Kibana, refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates). 
+For more information about configuring templates in Kibana, refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates).
 :::
 
 :::{tab-item} API
@@ -265,7 +272,7 @@ POST /_reindex
   "dest": {
     "index": "movetods",
     "op_type": "create"
-    
+
   }
 }
 ```
