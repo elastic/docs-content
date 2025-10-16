@@ -158,7 +158,7 @@ To add a remote cluster from Stack Management in {{kib}}:
 2. Enter a name (*cluster alias*) for the remote cluster.
 3. Specify the {{es}} endpoint URL, the IP address, or host name of the remote cluster, followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.168.1.1:9443`.
 
-    Both IPv4 and IPv6 ({applies_to}`stack: ga 9.2`) addresses are supported.
+    Starting with {{kib}} 9.2, you can also specify IPv6 addresses.
 
 ### Using the {{es}} API
 
