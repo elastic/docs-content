@@ -58,16 +58,21 @@ Before using {{ccr}} or {{ccs}} with secured {{es}} clusters, complete the follo
 You must have the `manage` cluster privilege to connect remote clusters.
 ::::
 
-
 The local cluster uses the [transport interface](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
 
-To add a remote cluster in {{kib}}:
+### Using {{kib}}
+
+To add a remote cluster from Stack Management in {{kib}}:
 
 1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Add a remote cluster**.
 3. Select **Certificates** as the connection type.
 4. Enter a name (*cluster alias*) for the remote cluster.
 5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the transport port (defaults to `9300`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9300` or `192.168.1.1:9300`.
+
+    Starting with {{kib}} 9.2, you can also specify IPv6 addresses.
+
+### Using the {{es}} API
 
 Alternatively, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster. You can also use this API to dynamically configure remote clusters for *every* node in the local cluster. To configure remote clusters on individual nodes in the local cluster, define static settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) for each node.
 
