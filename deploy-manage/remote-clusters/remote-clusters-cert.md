@@ -64,8 +64,7 @@ The local cluster uses the [transport interface](elasticsearch://reference/elast
 
 To add a remote cluster from Stack Management in {{kib}}:
 
-1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/
-find-and-organize/find-apps-and-objects.md).
+1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Add a remote cluster**.
 3. Select **Certificates** as the connection type.
 4. Enter a name (*cluster alias*) for the remote cluster.
