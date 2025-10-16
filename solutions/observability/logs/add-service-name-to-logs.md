@@ -48,7 +48,7 @@ For more on defining processors, refer to [define processors](/reference/fleet/a
 
 For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md). Follow these steps to update your mapping:
 
-1. Find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find the **Index Management** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.
 3. Search for the index template you want to update.
 4. From the **Actions** menu for that template, select **edit**.
