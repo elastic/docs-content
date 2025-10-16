@@ -191,7 +191,7 @@ If you’re having issues establishing the connection and the remote cluster is 
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::
 
-### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api]
+### Using the {{ece}} API [ece_using_the_elastic_cloud_enterprise_restful_api]
 ```{applies_to}
 deployment:
   ece: deprecated

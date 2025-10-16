@@ -15,7 +15,7 @@ To configure a deployment as a remote cluster, use the [cluster update settings 
 * `proxy_address`: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
 
   ::::{note}
-  If you’re using API keys as security model, change the port into `9443`.
+  If you’re using API keys as security model, change the port to `9443`.
   ::::
 
 * `server_name`: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Server name** from the **Remote cluster parameters** section. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.

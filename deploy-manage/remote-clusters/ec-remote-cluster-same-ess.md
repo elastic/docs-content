@@ -180,7 +180,7 @@ snippet:
 :::{include} _snippets/rcs-elasticsearch-api-snippet.md
 :::
 
-### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api]
+### Using the {{ecloud}} API [ec_using_the_elasticsearch_service_restful_api]
 ```{applies_to}
 deployment:
   ess: deprecated
