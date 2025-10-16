@@ -91,7 +91,7 @@ GPT-4o-mini and similar smaller models are not recommended for {{agent-builder}}
 
 You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
 
-Refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai.md) for detailed setup instructions.
+Refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md) for detailed setup instructions.
 
 ## Related pages
 
