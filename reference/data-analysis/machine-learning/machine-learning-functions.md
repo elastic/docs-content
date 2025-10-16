@@ -6,7 +6,7 @@ products:
   - id: machine-learning
 ---
 
-# Function reference for Elastic {{ml} [ml-functions]
+# Function reference for Elastic {{ml}} [ml-functions]
 
 The {{ml-features}} include analysis functions that provide a wide variety of flexible ways to analyze data for anomalies.
 
