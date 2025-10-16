@@ -551,5 +551,8 @@ redirects:
   'reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md': 'reference/machine-learning/ootb-ml-jobs-siem.md'
   'reference/data-analysis/machine-learning/ootb-ml-jobs-uptime.md': 'reference/machine-learning/ootb-ml-jobs-uptime.md'
 
+# Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
+  'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
+
 
 

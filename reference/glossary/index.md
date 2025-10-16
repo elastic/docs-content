@@ -95,7 +95,7 @@ $$$glossary-ml-bucket$$$ bucket
 ## C [c-glos]
 
 $$$glossary-canvas-language$$$ Canvas expression language
-:   A pipeline-based expression language for manipulating and visualizing data. Includes dozens of functions and other capabilities, such as table transforms, type casting, and sub-expressions. Supports TinyMath functions for complex math calculations. See [Canvas function reference](/reference/data-analysis/kibana/canvas-functions.md).
+:   A pipeline-based expression language for manipulating and visualizing data. Includes dozens of functions and other capabilities, such as table transforms, type casting, and sub-expressions. Supports TinyMath functions for complex math calculations. See [Canvas function reference](/explore-analyze/visualize/canvas/canvas-function-reference.md).
 
 $$$glossary-canvas$$$ Canvas
 :   Enables you to create presentations and infographics that pull live data directly from {{es}}. See [Canvas](/explore-analyze/visualize/canvas.md).
