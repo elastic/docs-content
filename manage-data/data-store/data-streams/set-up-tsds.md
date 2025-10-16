@@ -89,7 +89,7 @@ The structure of a time series data stream is defined by an index template. Crea
         - Set `"lifecycle": { "enabled": true }`. 
         - If you created an ILM policy in [step 1](#tsds-ilm-policy), reference it with `index.lifecycle.name`.
     - **Other settings**  (optional): Additional index settings, such as [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas), for the data stream's backing indices.
-- **Priority:** Set the priority higher than `200`, to avoid [collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions) with built-in templates.
+- **Priority:** Set the priority higher than `200` to avoid [collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions) with built-in templates.
 
 **Example index template PUT request:**
 
