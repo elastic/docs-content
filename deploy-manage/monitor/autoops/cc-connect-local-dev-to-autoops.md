@@ -3,6 +3,9 @@ applies_to:
   deployment:
     self:
 navigation_title: Connect your local development cluster
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Connect your local development cluster to AutoOps

@@ -24,7 +24,8 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
+
+ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure and GCP and more regions, we will automatically route requests to the same CSP and closest region the Elaticsearch cluster is hosted on. 
 
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
@@ -35,7 +36,7 @@ serverless: ga
 
 ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput than ML nodes and equivalent performance for latency. We will continue to benchmark, remove limitations and address concerns.
 
-### Limitations
+### Using the ELSER on EIS endpoint
 
 Elastic is continuously working to remove these constraints and further improve performance and scalability.
 
@@ -50,9 +51,9 @@ Performance may vary during the Technical Preview.
 Batches are limited to a maximum of 16 documents.
 This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
 
-#### Rate Limits
+#### Rate limits 
 
-Rate limit for search and ingest is currently at 2000 requests per minute.
+Rate limit for search and ingest is currently at 500 requests per minute. This allows you to ingest approximately 8000 documents per minute at 16 documents per request.
 
 ## Pricing 
 

@@ -24,9 +24,8 @@ When your cluster has a red or yellow health status, it will continue to process
 
 In many cases, your cluster will recover to green health status automatically. If the cluster doesn’t automatically recover, then you must [manually address](#fix-red-yellow-cluster-status) the remaining problems so management and cleanup activities can proceed. See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 
 
