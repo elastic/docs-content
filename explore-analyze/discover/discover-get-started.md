@@ -316,7 +316,7 @@ This allows you to pivot quickly between different explorations without losing y
 
 * **Compare time periods:** Open multiple tabs with the same query but different time ranges
 * **Test query variations:** Duplicate a tab to experiment with different {{esql}} queries or filters
-* **Switch contexts:** Keep separate tabs for logs, metrics, and traces exploration
+* **Switch contexts:** Keep separate tabs for logs, metrics, and traces explorations
 * **Test a hypothesis:** Switch between different data sources or field combinations
 
 #### Manage Discover tabs
