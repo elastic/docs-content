@@ -310,7 +310,7 @@ Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 stack: preview 9.2
 serverless: preview
 ```
-**Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or KQL), time range, filters, selected data source, columns and sort order you defined, and the active [context-aware experience](#context-aware-discover).
+**Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or classic mode), time range, filters, selected data source, columns and sort order you defined, and the active [context-aware experience](#context-aware-discover).
 
 This allows you to pivot quickly between different explorations without rebuilding everything. For example:
 
