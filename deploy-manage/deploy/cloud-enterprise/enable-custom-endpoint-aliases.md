@@ -33,9 +33,6 @@ After installing or upgrading to version 2.10 or later:
     * For Fleet, the certificate needs to allow for **\*.fleet.<your-domain>**
     * For Universal Profiling, the certificate needs to allow for **\*.profiling.<your-domain>** and **\*.symbols.<your-domain>**
 
-    ::::{note} 
-    If you plan to deploy [Integration Servers](../../deploy/cloud-enterprise/manage-integrations-server.md), you must add two additional wildcard subdomains, `*.fleet.<your-domain>` and `*.apm.<your-domain>`, to the Subject Alternative Names (SANs) attached to the proxy wildcard certificate.
-    ::::
 
 3. In the **Platform** menu, select **Settings**.
 4. Under the **Enable custom endpoint alias naming**, toggle the setting to allow platform administrators and deployment managers to choose a simplified, unique URL for the endpoint.
