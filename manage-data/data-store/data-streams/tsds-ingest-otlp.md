@@ -85,14 +85,6 @@ use the [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-start
 Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.
 :::
 
-## Best practices
-
-Don't send metrics from applications directly to the {{es}} OTLP endpoint, especially if there are many individual applications that periodically send a small amount of metrics. Instead, send data to an OpenTelemetry Collector first. This helps with handling many connections, and with creating bigger batches to improve ingestion performance. 
-
-On {{ecloud}}, use the [{{motlp}}](opentelemetry:/reference/motlp.md) and for self-managed use cases, you can use the [Elastic Distribution of OpenTelemetry Collector](elastic-agent:/reference/edot-collector/index.md).
-
-For more details on the recommended way to set up OpenTelemetry-based data ingestion, refer to the [EDOT reference architecture](opentelemetry:/reference/architecture/index.md).
-
 ## Send data to different data streams
 
 By default, metrics are ingested into the `metrics-generic.otel-default` data stream. You can influence the target data stream by setting specific attributes on your data:
