@@ -40,8 +40,8 @@ Next, to make alerts from Falco appear on {{elastic-sec}}'s Alerts page:
 
 You can either:
 
-* [Send Falco data to {{es}} from virtual machines (VMs)](/solutions/security/cloud/ingest-cncf-falco-data.md#ingest-falco-setup-falco-vm); or,
-* [Send Falco data to {{es}} from Kubernetes](/solutions/security/cloud/ingest-cncf-falco-data.md#ingest-falco-setup-falco-kubernetes).
+* [Send Falco data to {{es}} from virtual machines (VMs)](#ingest-falco-setup-falco-vm); or,
+* [Send Falco data to {{es}} from Kubernetes](#ingest-falco-setup-falco-kubernetes).
 
 
 ### Configure Falco and Falcosidekick for VMs [ingest-falco-setup-falco-vm]

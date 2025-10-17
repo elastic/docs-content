@@ -24,9 +24,11 @@ You can use **Links** panels to create links to other dashboards or external web
 
 ## Add a links panel [add-links-panel]
 
-To add a links panel to your dashboard:
+1. Add a new panel.
 
-1. From your dashboard, select **Add panel**.
+    * {applies_to}`stack: ga 9.2` Select **Add** > **New panel** in the toolbar.
+    * {applies_to}`stack: ga 9.0` Click **Add panel** in the dashboard toolbar.
+
 2. In the **Add panel** flyout, select **Links**. The **Create links panel** flyout appears and lets you add the link you want to display.
 3. Choose between the panel displaying vertically or horizontally on your dashboard and add your link.
 4. Specify the following:
@@ -44,10 +46,13 @@ To add a links panel to your dashboard:
 
 To add a previously saved links panel to another dashboard:
 
-1. From your dashboard, select **Add from library**.
-2. In the **Add from library** flyout, select **Links** from the **Types** dropdown and then select the Links panel you want to add.
-3. Click **Save**.
+1. Open the **Add from library** flyout.
 
+    * {applies_to}`stack: ga 9.2` Select **Add** > **From library** in the toolbar.
+    * {applies_to}`stack: ga 9.0` Click **Add from library** in the dashboard toolbar.
+
+2. Select **Links** from the **Types** dropdown and then select the Links panel you want to add.
+3. Click **Save**.
 
 ## Edit links panels [edit-links-panel]
 
