@@ -15,7 +15,7 @@ products:
 
 The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. You can then use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 
-To open the **Data Set Quality** page, find it under **Stack Management** in the main menu, or search for "data set quality" using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To open the **Data Set Quality** management page, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
 
