@@ -423,6 +423,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves rate limiter UX [#227678]({{kib-pull}}227678)
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
+* Organization IdP routes are now public in the OpenAPI specifications.
 
 ### Fixes [serverless-changelog-08042025-fixes]
 * Fixes loading of saved queries in the Alerting rule definition [#229964]({{kib-pull}}229964)
@@ -1011,6 +1012,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds callouts for Fleet breaking changes for integration upgrades [#217257](https://github.com/elastic/kibana/pull/217257)
 * Adds support for local `xpack.productDocBase.artifactRepositoryUrl` file path in Machine Learning [#217046](https://github.com/elastic/kibana/pull/217046)
 * Adds defaultSolution to spaces configuration [#218360](https://github.com/elastic/kibana/pull/218360)
+* Adds support for dots in the role mappings. Dots (.) can be used as part of the role mappings and the groups that are returned by the custom IdPs to match to.
 
 ### Fixes [serverless-changelog-04212025-fixes]
 * Fixes allow_hidden usage in the request for fields in Discover [#217628](https://github.com/elastic/kibana/pull/217628)
@@ -1360,6 +1362,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the values control FT [#211159]({{kib-pull}}211159)
 * Trained models: Replaces the **Download** button by extending the deploy action [#205699]({{kib-pull}}205699)
 * Adds the useCustomDragHandle property [#210463]({{kib-pull}}210463)
+* Upcoming removal of SMS multifactor authentication method. In October, we made multifactor authentication mandatory for all users. As an additional security measure, the SMS MFA method will be removed in April. If you’re still using SMS, you will be prompted to set up a more secure MFA method, and your registered SMS MFA devices will be automatically deleted from Elastic Cloud.
 
 ### Fixes [elastic-cloud-serverless-02172025-fixes]
 * Fixes an issue where clicking on the name badge for a synthetics monitor on an SLO details page would lead to a page that failed to load monitor details [#210695]({{kib-pull}}210695)
@@ -1491,6 +1494,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates KNN search and query template autocompletion in Elasticsearch Serverless [#207187]({{kib-pull}}207187)
 * Updates JSON schemas for code editors in Machine Learning [#207706]({{kib-pull}}207706)
 * Reindexes the .kibana_security_session_1 index to the 8.x format in Security [#204097]({{kib-pull}}204097)
+* Disables `prompt=login` and sign out of Okta before initiating SSO. Fixes an issue when using organization SAML SSO where users are required to re-authenticate with the external IdP due to ForceAuthn=true being sent in SAML requests. SAML requests will now send `ForceAuthn=false`.
 
 ### Fixes [elastic-cloud-serverless-01272025-fixes]
 * Fixes editing alerts filters for multi-consumer rule types in Alerting [#206848]({{kib-pull}}206848)
@@ -1521,6 +1525,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Feature Flag Support for Cloud Security Posture Plugin in Elastic Security Serverless [#205438]({{kib-pull}}205438)
 * Adds the ability to sync Machine Learning saved objects to all spaces [#202175]({{kib-pull}}202175)
 * Improves messages for recovered alerts in Machine Learning Transforms [#205721]({{kib-pull}}205721)
+* Introduces new deployment performance metrics charts. AutoOps provides aggregate metrics at the cluster level for key performance indicators. The data is tier-based, offering users a comprehensive understanding of each tier and the entire cluster.
+* Deprecates Cloud Defend billing alerts. Following the deprecation of Cloud Defend in {{serverless-short}}, removes the billing logic associated with the feature.
 
 ### Fixes [elastic-cloud-serverless-01132025-fixes]
 * Fixes an issue where "KEEP" columns are not applied after an Elasticsearch error in Discover [#205833]({{kib-pull}}205833)
