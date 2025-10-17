@@ -25,58 +25,57 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements[elastic-observability-9.2.0-features]
 
-* Cell-level actions for stream routing conditions [#235560]({{kib-pull}}235560).
-* Aware of new `.integration_knowledge*` system index [#237085]({{kib-pull}}237085).
-* Introduce missing icons and update v2 icons for ECH o11y nav [#236808]({{kib-pull}}236808).
-* Create functional tests for Logs Essentials flavor [#234904]({{kib-pull}}234904).
-* Update playwright tests for Logs Essentials [#234644]({{kib-pull}}234644).
-* Adds view in discover to synthetics alerts details page [#234104]({{kib-pull}}234104).
-* Adding trace waterfall [#234072]({{kib-pull}}234072).
-* Adds View in discover button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855).
+* users can create routing conditions directly from preview table in Streams. [#235560]({{kib-pull}}235560).
+* Adds new Observability navigation [#233784]({{kib-pull}}233784).
+* Observability navigation uses new icons [#236808]({{kib-pull}}236808).
+* Adds functional tests for Logs Essentials tier to cover tier-specific behavior [#234904]({{kib-pull}}234904).
+* Observability onboarding Playwright tests now support Logs Essentials tier [#234644]({{kib-pull}}234644).
+* Adds **View in Discover** to the alerts details page for Synthetics Monitor Status and TLS alert rules. [#234104]({{kib-pull}}234104).
+* Adds **View in discover** to the alerts details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855).
+* Adds **View in discover** button in alert details header [#233259]({{kib-pull}}233259).
+* Adds time range filter to links from alert details to related dashboards [#230601]({{kib-pull}}230601).
+* Adds rules callout in metric, logs, and inventory rules [#237085]({{kib-pull}}237085).
+* Adds ability for users choose how to recover alerts, when the monitor is back up or when the condition is no longer met. [#229962]({{kib-pull}}229962).
+* Adds the **Trace timeline** to Discover flyout [#234072]({{kib-pull}}234072).
 * Adds `send_traces`, `send_metrics`, and `send_logs` agent configuration settings for EDOT Node.js [#233798]({{kib-pull}}233798).
-* Update o11y nav for v2 [#233784]({{kib-pull}}233784).
-* Link dashboards to SLO [#233265]({{kib-pull}}233265).
-* Adds View in discover button in alert details header [#233259]({{kib-pull}}233259).
-* Retry aborted inference error [#232610]({{kib-pull}}232610).
-* Adds dashboard references to SLO saved object [#232583]({{kib-pull}}232583).
-* Unify Installation Settings and Improve Status Display for Knowledge Base & Product Docs [#232559]({{kib-pull}}232559).
-* Adds e2e UI tests for onboarding page validation [#232363]({{kib-pull}}232363).
-* Adds raw_request to trace [#232229]({{kib-pull}}232229).
-* Showing Span Links [#232135]({{kib-pull}}232135).
-* Disable add-to-case functionality when all selected alerts are already attached [#231877]({{kib-pull}}231877).
-* EDOT central config polling and sampling [#231835]({{kib-pull}}231835).
-* Links from alert details to related dashboards include a time range filter [#230601]({{kib-pull}}230601).
-* Adds kibana.alert.grouping field to Synthetics monitor status rule [#230513]({{kib-pull}}230513).
-* Adding error param on agent config API [#230298]({{kib-pull}}230298).
-* Adds recovery mode switch for status alerts [#229962]({{kib-pull}}229962).
-* Related dashboards tags are shown [#228902]({{kib-pull}}228902).
-* When fetching dashboards referenced panels are also fetched [#228811]({{kib-pull}}228811).
-* Install product docs with KB installation [#228695]({{kib-pull}}228695).
-* Create api, detect existing schemas [#226597]({{kib-pull}}226597).
-* Paste screenshot into markdown comment fields for cases [#226077]({{kib-pull}}226077).
-* Adds the ability to the shared logs overview to see all available log events even when ML features are not available [#225785]({{kib-pull}}225785).
-* Adds manual test for bulk import functionality [#225497]({{kib-pull}}225497).
+* Adds the ability to link dashboards to SLOs [#233265]({{kib-pull}}233265).
+* Adds dashboard references to SLO saved objects [#232583]({{kib-pull}}232583).
+* Adds dashboard tags for linked dashboards and suggested dashboards on the alert details page **Related dashboards** tab [#228902]({{kib-pull}}228902).
+* When fetching dashboards, referenced panels are also fetched [#228811]({{kib-pull}}228811).
+* Moves the installation settings for the Knowledge Base and Product Docs components into a single location. [#232559]({{kib-pull}}232559).
+* Observability AI Assistant is now aware of LLM-facing documentation for any installed integrations in the user's cluster [#237085]({{kib-pull}}237085).
+* Adds `raw_request` to traces for `.gen-ai`, `.gemini`, and `.bedrock` connectors [#232229]({{kib-pull}}232229).
+* Installs product docs when the knowledge base is installed [#228695]({{kib-pull}}228695).
+* Adds manual test for bulk import functionality for Observability AI Assistant [#225497]({{kib-pull}}225497).
 * Improves the AI Assistant Settings page by updating the logos to be solution-specific [#224906]({{kib-pull}}224906).
-* New rules callout in Metric, Logs, and Inventory rules [#237085]({{kib-pull}}237085).
 * Adds docs for chat/complete public API [#224235]({{kib-pull}}224235).
-* Gemini prompt improvements [#223476]({{kib-pull}}223476).
+* Improves Gemini prompts [#223476]({{kib-pull}}223476).
+* Adds UI tests to validate the onboarding page [#232363]({{kib-pull}}232363).
+* Shows span links when APM indices are available [#232135]({{kib-pull}}232135).
+* Disables add-to-case functionality when all selected alerts are already added to a case [#231877]({{kib-pull}}231877).
+* Adds `opamp_polling_interval` and `sampling_rate` in central config for EDOT application agents [#231835]({{kib-pull}}231835).
+* Adds `kibana.alert.grouping` field to Synthetics monitor status rule [#230513]({{kib-pull}}230513).
+* Adds error param on agent config API [#230298]({{kib-pull}}230298).
+* Creates an API to detect existing schemas [#226597]({{kib-pull}}226597).
+* Adds ability to paste screenshot into markdown comment fields for cases [#226077]({{kib-pull}}226077).
+* Adds ability to the shared logs overview to see all available log events even when ML features are not available [#225785]({{kib-pull}}225785).
 
 ### Fixes [elastic-observability-9.2.0-fixes]
 
 * Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418).
-* Fixing colors of icons for sidenav [#237970]({{kib-pull}}237970).
-* Update useAnyOfApmParams to include mobile services [#237500]({{kib-pull}}237500).
-* Adds Background Search nav item to ECH o11y nav [#237494]({{kib-pull}}237494).
+* Fixes icon colors for navigation menu [#237970]({{kib-pull}}237970).
+* Updates `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).
+* Adds background search to Observability navigation [#237494]({{kib-pull}}237494).
 * Fixes the multiselect issue inside the toolbar selector when search is used [#237494]({{kib-pull}}237494).
 * Fixes the page height of the Observability AI Assistant page [#233924]({{kib-pull}}233924).
-* Show alert details actions button [#233113]({{kib-pull}}233113).
-* Get_alerts_dataset_info fails completely if any parallel select_relevant_fields request fails [#232281]({{kib-pull}}232281).
-* Adjust k8s OTel test to work in serverless nightly workflow [#231462]({{kib-pull}}231462).
+* Fixes **Show alert details** actions button [#233113]({{kib-pull}}233113).
+* Fixes `get_alerts_dataset_info` to fail completely if any parallel `select_relevant_fields` request fails [#232281]({{kib-pull}}232281).
+* Adjusts Kubernetes OTel test to work in serverless nightly workflow [#231462]({{kib-pull}}231462).
 * Fixes title generation for conversations in the Observability AI Assistant with self-managed LLMs  [#231198]({{kib-pull}}231198).
-* Inventory Date Picker state fix [#231141]({{kib-pull}}231141).
-* Enable recovery strategy switch for monitor status rules [#231091]({{kib-pull}}231091).
-* Include `ContentManagement` plugin to allow linked dashboards [#237085]({{kib-pull}}229685).
-* Improve performance of clustering [#238394]({{kib-pull}}238394).
+* Fixes inventory date picker state [#231141]({{kib-pull}}231141).
+* Enables recovery strategy switch for monitor status rules [#231091]({{kib-pull}}231091).
+* Includes `ContentManagement` plugin to allow linked dashboards [#237085]({{kib-pull}}229685).
+* Improves performance of clustering [#238394]({{kib-pull}}238394).
 
 ## 9.1.5 [elastic-observability-9.1.5-release-notes]
 
