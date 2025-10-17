@@ -21,7 +21,7 @@ To configure a deployment as a remote cluster, use the [cluster update settings 
 
 * `server_name`: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Server name** from the **Remote cluster parameters** section. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
 
-This is an example of the API call to `_cluster/settings`:
+This example shows the API call to add or update a remote cluster. The alias `alias-for-my-remote-cluster` must match the remote cluster name used when adding the API key to the deployment:
 
 ```json
 PUT /_cluster/settings
@@ -29,7 +29,7 @@ PUT /_cluster/settings
   "persistent": {
     "cluster": {
       "remote": {
-        "alias-for-my-remote-cluster": {
+        "alias-for-my-remote-cluster": { // Remote cluster alias
           "mode":"proxy",
           "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9400",
           "server_name": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io"
@@ -40,4 +40,4 @@ PUT /_cluster/settings
 }
 ```
 
-For a full list of available client connection settings in proxy mode, refer to [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).
+For a full list of available client connection settings in proxy mode, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).
