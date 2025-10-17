@@ -68,7 +68,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    You don't need to stay on this page. A notification will appear when the migration is complete.
 
 
-9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated assets. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
 
    ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
    :alt: The add integrations panel.
@@ -163,7 +163,7 @@ This section describes the **Translated dashboards** page's interface and the da
 The table's fields are as follows:
 
 * **Name:** The names of the translated dashboards cannot be edited until after installation. 
-* **Updated:** The date when the source dashboard was last modified.
+* **Updated:** The date when the dashboard was last modified in its source platform.
 * **Status:** The dashboard's translation status:
   * `Installed`: Already added to {{elastic-sec}}. Click **View** to manage it.
   * `Translated`: Ready to install. Click **Install** to install it.
