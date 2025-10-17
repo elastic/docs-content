@@ -50,7 +50,7 @@ By contrast, if a static SAN certificate does not include a new deployment’s h
 
 ### Performance perspective
 
-Wildcard certificates are generally more performant than large static SAN certificates. They are smaller, which reduces TLS handshake time, and scale automatically with new deployments. 
+Wildcard certificates are generally more performant than certificates with a large number of SAN entries. They are smaller, which reduces TLS handshake time, and scale automatically with new deployments. 
 
 By contrast, large SAN certificates can increase handshake latency and may affect client compatibility.
 
