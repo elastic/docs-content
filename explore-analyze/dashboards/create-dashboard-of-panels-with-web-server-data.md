@@ -19,7 +19,6 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 :screenshot:
 :::
 
-
 ## Add the data and create the dashboard [add-the-data-and-create-the-dashboard]
 
 Add the sample web logs data, and create and set up the dashboard.
@@ -37,7 +36,7 @@ Open the visualization editor, then make sure the correct fields appear.
 1. Create a visualization.
    
    * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
-   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+   * {applies_to}`stack: ga 9.0` Click **Create visualization**.
 
 2. Make sure the **{{kib}} Sample Data Logs** {{data-source}} appears.
 
