@@ -28,16 +28,17 @@ These errors indicate the Collector is overwhelmed and unable to export data fas
 This issue typically occurs when the `sending_queue` configuration or the Elasticsearch cluster scaling is misaligned with the incoming telemetry volume.  
 
 :::{important}
-The sending queue is disabled by default in versions earlier than **v0.138.0** and enabled by default from **v0.138.0** onward. If you're using an earlier version, verify that `enabled: true` is explicitly set — otherwise any queue configuration will be ignored.
+{applies_to}`stack: ga 9.0, deprecated 9.3`
+The sending queue is turned off by default. Verify that `enabled: true` is explicitly set — otherwise any queue configuration will be ignored.
 :::
 
 Common contributing factors include:
 
 * Underscaled Elasticsearch cluster is the most frequent cause of persistent export failures. If Elasticsearch cannot index data fast enough, the Collector’s queue fills up.
-* `sending_queue.block_on_overflow` is disabled in **pre-v0.138.0** releases (defaults to `false`), which can lead to silent data drops. Starting from **v0.138.0**, the Elasticsearch exporter enables this setting by default.
-* `num_consumers` is too low to keep up with the incoming data volume.
-* The queue size (`queue_size`) is too small for the traffic load.
-* Export batching is disabled, increasing processing overhead.
+* {applies_to}`stack: ga 9.0, deprecated 9.3` `sending_queue.block_on_overflow` is turned off (defaults to `false`), which can lead to data drops.
+* Sending queue is enabled but `num_consumers` is too low to keep up with the incoming data volume.
+* Sending queue size (`queue_size`) is too small for the traffic load.
+* Both internal and sending queue batching are disabled, increasing processing overhead.
 * EDOT Collector resources (CPU, memory) are insufficient for the traffic volume.
 
 :::{note}
@@ -46,11 +47,12 @@ Increasing the `timeout` value (for example from 30s to 90s) doesn't help if the
 
 ## Resolution
 
-The resolution approach depends on which EDOT Collector version you're using.
+The resolution approach depends on your {{stack}} version and Collector configuration.
 
-### For EDOT Collector versions earlier than v0.138.0
+### When the sending queue is not enabled by default
+{applies_to}`stack: ga 9.0, deprecated 9.3`
 
-Enable the sending queue and block on overflow to prevent silent data drops:
+Enable the sending queue and block on overflow to prevent data drops:
 
 ```yaml
 sending_queue:
@@ -60,7 +62,8 @@ sending_queue:
   block_on_overflow: true
 ```
 
-### For EDOT Collector v0.138.0 and later
+### When the sending queue is enabled by default
+{applies_to}`stack: ga 9.3`
 
 The Elasticsearch exporter provides default `sending_queue` parameters (including `block_on_overflow: true`) but these can and often should be tuned for specific workloads.
 
@@ -97,7 +100,8 @@ Address indexing delays, rejected bulk requests, or shard imbalances that limit 
 :::::
 
 :::{tip}
-For **v0.138.0+**, focus tuning efforts on Elasticsearch performance, Collector resource allocation, and queue sizing informed by the internal telemetry metrics above.
+{applies_to}`stack: ga 9.3`
+Focus tuning efforts on {{es}} performance, Collector resource allocation, and queue sizing informed by the internal telemetry metrics above.
 :::
 
 
