@@ -20,8 +20,8 @@ The endpoint is available under `/_otlp/v1/metrics`.
 :::{important}
 The recommended approach for sending OpenTelemetry Protocol (OTLP) data depends on your deployment:
 
-- **{{ecloud}}:** Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry:/reference/motlp.md) directly.
-- **Self-managed:** Use the {{es}} OTLP endpoint described on this page, ideally through an OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
+- **ECH and {{serverless-short}}:** Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry:/reference/motlp.md) directly.
+- **ECE, ECK, and self-managed:** Use the {{es}} OTLP endpoint described on this page, ideally through an OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 
 For details on the recommended way to set up OpenTelemetry-based data ingestion, refer to the [EDOT reference architecture](opentelemetry:/reference/architecture/index.md).
 :::
