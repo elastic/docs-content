@@ -38,6 +38,8 @@ Ingesting metrics data using the OTLP endpoint has the following advantages:
 not [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc).
 :::
 
+Don't send metrics from applications directly to the {{es}} OTLP endpoint, especially if there are many individual applications that periodically send a small amount of metrics. Instead, send data to an OpenTelemetry Collector first. This helps with handling many connections, and with creating bigger batches to improve ingestion performance.
+
 ## How to send data to the OTLP endpoint
 
 To send data from an OpenTelemetry Collector to the {{es}} OTLP endpoint,
