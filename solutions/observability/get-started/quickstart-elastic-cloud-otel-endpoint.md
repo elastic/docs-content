@@ -20,7 +20,7 @@ The {{motlp}} is designed for the following use cases:
 * Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
 
-Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
+Keep reading to learn how to use the {{motlp}} toSe send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
 
 :::{note}
 :applies_to: { ess:, stack: preview 9.2 }
