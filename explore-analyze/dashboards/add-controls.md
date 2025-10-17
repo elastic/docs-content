@@ -109,28 +109,29 @@ Only **Options lists** are supported for {{esql}}-based controls. Options can be
 - functions {applies_to}`stack: ga 9.1`
 :::
 
-1. Use one of the following options to start creating a variable control:
-   - In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar. 
-   - On the **Create variable control** flyout, while editing your {{esql}} visualization's query, the autocomplete menu suggests adding a control when relevant or when typing `?` in the query.
+:::{include} ../_snippets/variable-control-procedure.md
+:::
 
-   ![ESQL query prompting to add a control](/explore-analyze/images/esql-visualization-control-suggestion.png)
-
-2. A menu opens to let you configure the control. This is where you can specify:
-
-   :::{include} ../_snippets/variable-control-form.md
-   :::
-
-3. Save the control. 
-
-The panel closes and the control is added to the dashboard.
 If you added it by starting from a query, the control is directly inserted in that query and you can continue editing it.
-
 You can then insert it in any other {{esql}} visualization queries by typing the control's name.
+
+:::{tip}
+You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
+:::
+
+![Editing {{esql}} controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
 
 :::{include} ../_snippets/variable-control-examples.md
 :::
 
-![Editing {{esql}} controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
+### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+:::{include} ../_snippets/multi-value-esql-controls.md
+:::
 
 ### Import a Discover query along with its controls into a dashboard
 ```{applies_to}
