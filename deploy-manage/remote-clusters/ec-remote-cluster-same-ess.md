@@ -7,6 +7,8 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
+sub:
+  remote_type: Elastic Cloud Hosted deployment
 ---
 
 # Connect to deployments in the same {{ecloud}} organization [ec-remote-cluster-same-ess]
@@ -163,72 +165,24 @@ You can now connect remotely to the trusted clusters.
 
 ## Connect to the remote cluster [ec_connect_to_the_remote_cluster]
 
-On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
+On the local cluster, add the remote cluster using {{kib}}, the {{es}} API, or the {{ecloud}} API.
 
 
 ### Using {{kib}} [ec_using_kibana]
 
-1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
-2. Enable **Manually enter proxy address and server name**.
-3. Fill in the following fields:
-
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
-
-      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
-    * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
-
-      ::::{tip}
-      If you’re using API keys as security model, change the port into `9443`.
-      ::::
-
-    * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
-      ::::
-
-4. Click **Next**.
-5. Click **Add remote cluster** (you have already established trust in a previous step).
-
+:::{include} _snippets/rcs-kibana-api-snippet.md
+:::
 
 ### Using the {{es}} API [ec_using_the_elasticsearch_api]
 
-To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
+:::{include} _snippets/rcs-elasticsearch-api-snippet.md
+:::
 
-* `mode`: `proxy`
-* `proxy_address`: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
-
-  ::::{tip}
-  If you’re using API keys as security model, change the port into `9443`.
-  ::::
-
-
-* `server_name`: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
-
-This is an example of the API call to `_cluster/settings`:
-
-```json
-PUT /_cluster/settings
-{
-  "persistent": {
-    "cluster": {
-      "remote": {
-        "alias-for-my-remote-cluster": {
-          "mode":"proxy",
-          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9400",
-          "server_name": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io"
-        }
-      }
-    }
-  }
-}
+### Using the {{ecloud}} API [ec_using_the_elasticsearch_service_restful_api]
+```{applies_to}
+deployment:
+  ess: deprecated
 ```
-
-::::{note}
-When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
-::::
-
-### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api]
 
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model and when both clusters belong to the same organization. For other scenarios, the [{{es}} API](#ec_using_the_elasticsearch_api) should be used instead.
