@@ -26,7 +26,7 @@ You can change the certificates for the following ECE components separately:
 
     If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
 
-    A wildcard DNS certificate is more performant, scalable, and operationally safe than a static SAN certificate. Review [Wildcard DNS record and certificates](./ece-wildcard-dns.md) for more guidance.
+    A wildcard DNS certificate is more performant, scalable, and operationally safe than a static SAN certificate. Review [Wildcard DNS record and certificates](../../deploy/cloud-enterprise/ece-wildcard-dns.md) for more guidance.
 
     After the certificates have been installed, connecting securely to {{es}}, {{kib}}, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
 
