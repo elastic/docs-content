@@ -22,7 +22,7 @@ You can ingest both third-party cloud workload protection data and third-party s
 
 You can ingest third-party cloud security alerts into {{elastic-sec}} to view them on the [Alerts page](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#alerts-page) and incorporate them into your triage and threat hunting workflows.
 
-* Learn to [ingest alerts from Sysdig Falco](/solutions/security/cloud/ingest-cncf-falco-data.md).
+* Learn to [ingest alerts from Sysdig Falco](/solutions/security/cloud/integrations/cncf-falco.md).
 
 
 ## Ingest third-party security posture and vulnerability data [_ingest_third_party_security_posture_and_vulnerability_data]
