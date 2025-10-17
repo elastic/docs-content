@@ -516,8 +516,34 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/3318
   'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
 
+# Related to https://github.com/elastic/docs-content/pull/3461
+  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
+    to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
+    anchors:
+      'when-to-use-tsds': 'when-to-use-tsds'
+      'time-series': 'time-series'
+      'time-series-dimension': 'time-series-dimension'
+      'time-series-metric': 'time-series-metric'
+      'tsid': 'tsid'
+      'differences-from-regular-data-stream': 'differences-from-regular-data-stream'
+      'tsds-whats-next': 'tsds-whats-next'
+      'time-series-mode':
+      'tsds-look-ahead-time':
+      'tsds-look-back-time':
+      'time-bound-indices':
+      'dimension-based-routing':
+      'tsds-accepted-time-range':
+      
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+
+# Deduplicate canvas function reference
+  'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
+  'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
+
+# Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
+  'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
+
 
 
 
