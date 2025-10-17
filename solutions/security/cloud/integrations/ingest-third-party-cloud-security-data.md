@@ -35,8 +35,8 @@ Data from third-party integrations does not appear on the [CNVM dashboard](/solu
 
 Data from each of the following integrations can feed into at least some of these workflows:
 
-* [AWS Config](solutions/security/cloud/integrations/aws-config.md)
-* [AWS Inspector](solutions/security/cloud/integrations/aws-inspector.md)
+* [AWS Config](/solutions/security/cloud/integrations/aws-config.md)
+* [AWS Inspector](/solutions/security/cloud/integrations/aws-inspector.md)
 * [AWS Security Hub](/solutions/security/cloud/integrations/aws-security-hub.md).
 * [CNCF Falco](/solutions/security/cloud/integrations/cncf-falco.md)
 * [Google Security Command Center](/solutions/security/cloud/integrations/google-security-command-center.md)
