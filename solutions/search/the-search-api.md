@@ -172,23 +172,59 @@ The response includes an aggregation based on the `day_of_week` runtime field. U
 
 ## Search timeout [search-timeout]
 
-By default, search requests don’t time out. The request waits for complete results from each shard before returning a response.
+Search requests do not time out by default. The request waits for complete results from every shard before returning a response as outlined in the [basic read model](https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents#_basic_read_model).
 
-While [async search](async-search-api.md) is designed for long-running searches, you can also use the `timeout` parameter to specify a duration you’d like to wait on each shard to complete. Each shard collects hits within the specified time period. If collection isn’t finished when the period ends, {{es}} uses only the hits accumulated up to that point. The overall latency of a search request depends on the number of shards needed for the search and the number of concurrent shard requests.
+You can override the search request to best-effort time out through its [`timeout` setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search), provided either as query parameter or within request body. If the search timeout is surpassed before the search request finishes for the given shard it stops where it is and returns partial results. The `timeout` setting
+
+* Checks for duration expiration on a per shard basis. 
+* Performs cancellations along a shard's segment boundaries; therefore, large segments may delay cancellation.
+* Compares timeout duration against the search `query` phase's duration. This implies that it does not include time spent in
+    * internet network nor inter-node transport network
+    * coordinating node wrapping task
+    * [thread pool queue](https://www.elastic.co/docs/troubleshoot/elasticsearch/task-queue-backlog#diagnose-task-queue-thread-pool)
+    * [`fetch` phase](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile#profiling-fetch)
+
+You can set a cluster-wide default  `timeout` for all search requests. This is configured by the `search.default_search_timeout` cluster setting. This setting defaults to `-1` indicating disabled or no timeout. This cluster-wide time-out is used as fallback if no `timeout` argument is designated by a search request. You can override this to a desired [time unit](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units) value using the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). In this case, the request will be cancelled using the [task cancellation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-cancel). For example
 
 ```console
-GET /my-index-000001/_search
+PUT /_cluster/settings
+{ "persistent": { "search.default_search_timeout": "5m" } }
+```
+
+:::{note}
+The `search.default_search_timeout` setting's resolution sensitivity is based from expert setting `thread_pool.estimated_time_interval` which defaults to `200ms`. This means the minimum meaningful impact threshold for `search.default_search_timeout` would also be `200ms`. Elastic recommends against overriding this expert setting as it has far reaching impact.
+:::
+
+:::{tip}
+The `search.default_search_timeout` cluster setting only applies to the current cluster and does not cascade during [Cross Cluster Search (CSS)](https://www.elastic.co/docs/solutions/search/cross-cluster-search). Remote clusters should be individually configured as makes sense for your use case.
+:::
+
+To demonstrate the impact of the `timeout` parameter, consider an [async search](async-search-api.md). Async searches are designed for long-running searches, but you can use the `timeout` parameter to specify a duration you’d like to wait on each shard to complete. The overall latency of a search request depends on the number of shards needed for the search and the number of concurrent shard requests. Each shard collects hits within the specified time period. If collection isn’t finished when the period ends, {{es}} uses only the hits accumulated up to that point. 
+
+For example response, if the `timeout` duration was surpassed for at least one shard, the API response will return a HTTP 200 status code but the response body field `timed_out` will report `true`.
+
+```json
 {
-  "timeout": "2s",
-  "query": {
-    "match": {
-      "user.id": "kimchy"
-    }
+  "took" : 11,
+  "timed_out" : true,
+  "_shards" : {
+    "total" : 40,
+    "successful" : 40,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 98393, // possibly incomplete value
+      "relation" : "eq"
+    },
+    
+    // ... 
   }
 }
 ```
 
-To set a cluster-wide default timeout for all search requests, configure `search.default_search_timeout` using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). This global timeout duration is used if no `timeout` argument is passed in the request. If the global search timeout expires before the search request finishes, the request is cancelled using [task cancellation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). The `search.default_search_timeout` setting defaults to `-1` (no timeout).
+For a particular search request, if the request should error out instead of returning partial results, consider also overriding [`default_allow_partial_results` setting](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search) to `false`.
 
 
 ## Search cancellation [global-search-cancellation]
