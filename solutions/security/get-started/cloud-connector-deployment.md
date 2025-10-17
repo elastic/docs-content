@@ -6,9 +6,9 @@ applies_to:
     security: preview
 ---
 
-# Quickly authenticate agentless integrations using cloud connectors
+# Authenticate agentless integrations using cloud connectors
 
-Cloud connector authentication for agentless integrations allows you to quickly provide Elastic with access to your third-party cloud service provider accounts. Cloud connectors provide a simple, reusable means of authentication, making it easier to manage deployments with many integrations collecting data from multiple cloud security providers. This reduces your administrative burden by eliminating the need to keep track of credentials such as API keys or passwords. 
+Cloud connector authentication for agentless integrations reduces the administrative burden of authentating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud security providers. 
 
 ## Where is cloud connector authentication supported?
 
@@ -20,5 +20,5 @@ You can use cloud connector deployment to authenticate with AWS and Azure while 
 - CSPM: [CSPM on Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md); [CSPM on AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md)
 
 ::::{important}
-in order to use cloud connector for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+In order to use cloud connector for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
 ::::

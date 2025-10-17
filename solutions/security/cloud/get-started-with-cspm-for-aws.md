@@ -47,14 +47,14 @@ Two deployment technologies are available: agentless and agent-based.
 :::
 
 7. In **Deployment options** select **Agentless**.
-8. Next, you’ll need to authenticate to AWS. Three methods are available:
+8. Next, you’ll need to authenticate to AWS. The following methods are available:
 
-    * {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Option 1: Cloud connector (recommended). 
+    * Option 1: Cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` 
       * To use a pre-existing cloud connector for this deployment, select it under **Existing connection**. 
       * To use a new cloud connector: under **New connection**, expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
 
       ::::{important}
-      in order to use cloud connector for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      In order to use cloud connector for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
       ::::
 
     * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the instructions to automatically create the necessary credentials using CloudFormation.
