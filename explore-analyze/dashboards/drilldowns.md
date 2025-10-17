@@ -60,8 +60,6 @@ Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to creat
 
     Search: `extension.keyword: ("gz" or "css" or "deb")`<br> Filter: `geo.src: US`
 
-
-
 ### Create the dashboard drilldown [_create_the_dashboard_drilldown]
 
 Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] Web Traffic** dashboard.
@@ -81,8 +79,6 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
    :screenshot:
    :::
 
-
-
 ## Create URL drilldowns [create-url-drilldowns]
 
 URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](/explore-analyze/dashboards/drilldowns.md) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
@@ -96,7 +92,6 @@ Some panels support multiple interactions, also known as triggers. The [variable
 
 For example, **Single click** has `{{event.value}}` and **Range selection** has `{{event.from}}` and `{{event.to}}`.
 
-
 ### Create a URL drilldown [_create_a_url_drilldown]
 
 For example, if you have a dashboard that shows data from a Github repository, you can create a URL drilldown that opens Github from the dashboard panel.
@@ -104,14 +99,16 @@ For example, if you have a dashboard that shows data from a Github repository, y
 1. Add the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data.
 2. Open the **[Logs] Web Traffic** dashboard.
 3. In the toolbar, click **Edit**.
-4. Create a donut chart
+4. Create a donut chart.
 
-    1. Click **Create visualization**.
-    2. From the **Chart type** dropdown, select **Donut**.
+    * {applies_to}`stack: ga 9.2` 1. Select **Add** > **Visualization** in the toolbar.
+    * {applies_to}`stack: ga 9.0` 1. Click **Create visualization** in the dashboard toolbar.
+
+    2. From the **Chart type** dropdown, select **Pie**.
     3. From the **Available fields** list, drag **machine.os.keyword** to the workspace.
     4. Click **Save and return**.
 
-5. Open the donut chart panel menu, then select **Create drilldown**.
+5. Open the pie chart panel menu, then select **Create drilldown**.
 6. Click **Go to URL**.
 
     1. Give the drilldown a name. For example, `Show on Github`.
@@ -127,7 +124,7 @@ For example, if you have a dashboard that shows data from a Github repository, y
     4. Click **Create drilldown**.
 
 7. Save the dashboard.
-8. On the donut chart panel, click any chart slice, then select **Show on Github**.
+8. On the pie chart panel, click any chart slice, then select **Show on Github**.
 
     ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png "")
 
