@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/esql-for-search.html
 applies_to:
-  stack: preview 9.0, ga 9.1
-  serverless: ga
+  stack:
+  serverless:
 products:
   - id: elasticsearch
 ---
@@ -26,12 +26,16 @@ The following table summarizes the key search features available in [{{esql}}](e
 | Feature | Description | Available since |
 |---------|-------------|----------------|
 | [Match function/operator](#match-function-and-operator) | Perform basic text searches with `MATCH` function or match operator (`:`) | 8.17 |
-| [Query string function](#query-string-qstr-function) | Execute complex queries with `QSTR` using Query String syntax | 8.17 |
+| [Query string function](#qstr-function) | Execute complex queries with `QSTR` using Query String syntax | 8.17 |
 | [Relevance scoring](#esql-for-search-scoring) | Calculate and sort by relevance with `METADATA _score` | 8.18/9.0 |
 | [Semantic search](#semantic-search) | Perform semantic searches on `semantic_text` field types | 8.18/9.0 |
 | [Hybrid search](#hybrid-search) | Combine lexical and semantic search approaches with custom weights | 8.18/9.0 |
 | [Kibana Query Language](#kql-function) | Use Kibana Query Language with the `KQL` function | 8.18/9.0 |
 | [Match phrase function](#match_phrase-function) | Perform phrase matching with `MATCH_PHRASE` function | 8.19/9.1 |
+| [FORK command](#fork-and-fuse-commands) | Create multiple execution branches to operate on the same input data | 8.19/9.1 |
+| [FUSE command](#fork-and-fuse-commands) | Combine and score results from multiple queries for hybrid search | 9.2 |
+| [KNN function](#knn-function) | Find k nearest vectors using approximate search on indexed fields | 9.2 |
+| [TEXT_EMBEDDING function](#text_embedding-function) | Generate dense vector embeddings from text using inference endpoints | 9.2 |
 
 ## How search works in {{esql}}
 
@@ -84,9 +88,9 @@ Use the [`MATCH_PHRASE` function](elasticsearch://reference/query-languages/esql
 
 For exact phrase matching rather than individual word matching, use `MATCH_PHRASE`.
 
-### Query string (`QSTR`) function
+### `QSTR` function
 
-The [`qstr` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-qstr) provides the same functionality as the Query DSL's `query_string` query. This enables advanced search patterns with wildcards, boolean logic, and multi-field searches.
+The [`QSTR` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-qstr) provides the same functionality as the Query DSL's `query_string` query. This enables advanced search patterns with wildcards, boolean logic, and multi-field searches.
 
 For complete details, refer to the [Query DSL `query_string` docs](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md).
 
@@ -95,6 +99,18 @@ For complete details, refer to the [Query DSL `query_string` docs](elasticsearch
 Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {{esql}} queries.
 
 For migrating queries from other Kibana interfaces, the `KQL` function preserves existing query syntax and allows gradual migration to {{esql}} without rewriting existing Kibana queries.
+
+### `KNN` function
+
+The [`KNN` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md#esql-knn) finds the k nearest vectors to a query vector, as measured by a similarity metric. It performs approximate search on indexed `dense_vector` or `semantic_text` fields.
+
+Use `KNN` for vector similarity search use cases, such as finding semantically similar documents or implementing recommendation systems based on vector embeddings.
+
+### `TEXT_EMBEDDING` function
+
+The [`TEXT_EMBEDDING` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md#esql-text_embedding) generates dense vector embeddings from text input using a specified inference endpoint.
+
+Use `TEXT_EMBEDDING` to generate query vectors for KNN searches against your vectorized data or for other dense vector based operations.
 
 ## Advanced search capabilities
 
@@ -109,6 +125,12 @@ Refer to [semantic search with semantic_text](/solutions/search/semantic-search/
 ### Hybrid search
 
 [Hybrid search](/solutions/search/hybrid-search.md) combines lexical and semantic search with custom weights to leverage both exact keyword matching and semantic understanding.
+
+#### `FORK` and `FUSE` commands
+
+The [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) commands work together to enable hybrid search in {{esql}}.
+
+`FORK` creates multiple execution branches that operate on the same input data. `FUSE` then combines and scores the results from these branches. Together, these commands allow you to execute different search strategies (such as lexical and semantic searches) in parallel and merge their results with proper relevance scoring.
 
 Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
 
