@@ -7,7 +7,7 @@ applies_to:
 
 # Automatic migration
 
-Automatic Migration for detection rules helps you quickly migrate Splunk assets to {{elastic-sec}}. The following asset types are supported:
+Automatic Migration helps you quickly migrate Splunk assets to {{elastic-sec}}. The following asset types are supported:
 
 * {applies_to}`stack: preview 9.0, ga 9.1` {applies_to}`serverless: ga` Splunk rules
 * {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Splunk dashboards
@@ -56,7 +56,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 6. After you upload your Splunk assets, Automatic Migration will detect whether they use any macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to wait on this page for them to be processed — a notification will appear when processing is complete.
 
-7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option, which is enabled by default; when it's enabled, any rules you translate that are similar to Elastic prebuilt rules are converted to those prebuilt rules. When it's disabled, each of your rules will be converted into a new custom rule. 
+7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option, which is enabled by default; when it's enabled, any migrated rules that are similar to an Elastic prebuilt rule are converted to those prebuilt rules (this uses fewer tokens). When it's disabled, each of your rules will be converted into a new custom rule. 
 8. Click **Translate**. A name for the migration is automatically created, and you can track its progress on this page. The **More actions** ({icon}`boxes_vertical`) button lets you rename or delete the migration. 
 
    ::::{image} /solutions/images/security-siem-migration-rule-status-more-actions.png
@@ -163,14 +163,14 @@ This section describes the **Translated dashboards** page's interface and the da
 The table's fields are as follows:
 
 * **Name:** The names of the translated dashboards cannot be edited until after installation. 
-* **Updated:** The migration date.
+* **Updated:** The date when the source dashboard was last modified.
 * **Status:** The dashboard's translation status:
-  * `Installed`: Already added to {{elastic-sec}}. Click **View** to manage and enable it.
+  * `Installed`: Already added to {{elastic-sec}}. Click **View** to manage it.
   * `Translated`: Ready to install. Click **Install** to install it.
   * `Partially translated`: Part of the dashboard could not be translated. Upload any missing macros or lookups, or fix broken syntax. 
   * `Not translated`: None of the original dashboard could be translated.
   * `Failed`: Translation failed. Click the dashboard's name to open the details flyout and view error details.
-* **Tags:** The dashboard's tags, which can be used to identify it on the **Dashboards** page. You can edit these after installing the dashboard.
+* **Tags:** The dashboard's tags, which identify it's source application, and can be used to identify it on the **Dashboards** page.
 * **Actions:** To view an `Installed` dashboard, click **View**. To install a `Translated` dashboard, click **Install**. To reprocess a `Failed` dashboard, click **Reprocess**.
 
 ::::{note}
@@ -179,7 +179,7 @@ To view an explanation of the logic behind how each dashboard was translated, cl
 
 ### Finalize translated dashboards
 
-Once you're on the **Translated rules** or **Translated dashboards** page, to install any assets that were partially translated or not translated, you will need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
+Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you will need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
 
 ## Frequently asked questions (FAQ)
 
