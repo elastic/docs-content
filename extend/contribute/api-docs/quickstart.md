@@ -6,8 +6,7 @@ navigation_title: Quickstarts
 
 This guide provides step-by-step workflows for contributing to Elasticsearch and {{kib}} API documentation locally. These workflows enable you to validate, preview, and debug your changes before submitting them for review.
 
-::::::::{tab-set}
-:::::::{tab-item} Elasticsearch
+## Elasticsearch
 
 The Elasticsearch APIs are the foundation of the Elastic Stack and the largest API set we maintain. Because the workflow is quite complex, we created this quickstart guide to help you get started.
 
@@ -123,48 +122,88 @@ Once you're satisfied with your docs changes:
 
 :::::
 
-:::::::
+## {{kib}}
 
-:::::::{tab-item} {{kib}}
+The Kibana API documentation is created by merging multiple OpenAPI documents. The workflow you follow depends on which set of APIs you're updating:
 
-Follow these steps to capture live API specs from {{kib}}, generate OpenAPI documentation, and view a preview URL.
+::::{tab-set}
 
-:::{tip}
-Refer to the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation) for more information.
+:::{tab-item} Code-generated APIs
+
+The core Kibana APIs are automatically generated from TypeScript route definitions in the codebase. Edit the `.ts` files in your plugin, and CI will regenerate the OpenAPI files when you push your PR. You can also run the generation locally for validation.
 :::
 
-:::::{stepper}
+:::{tab-item} Manually-maintained APIs
 
-::::{step} Set up {{kib}} environment
+Some teams, including Security and Observability, work with hand-edited YAML files in the `oas_docs` directory. Edit these files directly and skip the code-generation steps.
+:::
+::::
+
+For the complete list of files and which workflow they follow, refer to the [merge scripts](https://github.com/elastic/kibana/tree/main/oas_docs/scripts). For more details, see the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
+
+Follow these steps to contribute to Kibana API docs locally:
+
+::::::::{stepper}
+
+::::{step} Prepare your environment
+
+Run this command to set up your Node.js environment:
 
 ```bash
-cd kibana
 nvm use
+```
+
+If you don't have Node.js installed, refer to the [Kibana development getting started guide](https://www.elastic.co/docs/extend/kibana/development-getting-started).
+::::
+
+::::{step} Clone the repository
+
+```bash
+git clone https://github.com/elastic/kibana.git
+cd kibana
+```
+::::
+
+::::{step} Install dependencies
+
+```bash
 yarn kbn bootstrap
 ```
 
 :::{note}
-Run `yarn kbn clean` first if dependencies are broken.
+If dependencies are broken or bootstrap fails, run `yarn kbn clean` first. For more troubleshooting guidance, refer to the [Kibana development getting started guide](https://www.elastic.co/docs/extend/kibana/development-getting-started).
 :::
 ::::
 
-::::{step} Start Docker
-Ensure Docker is running, otherwise things will fail slowly.
+::::::{step} Make your docs changes
+
+Choose your workflow based on which APIs you're updating:
+
+:::::{tab-set}
+
+::::{tab-item} Code-generated APIs
+Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, request/response schemas, and examples as needed.
+
+:::{note}
+**CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
+:::
+
 ::::
 
-::::{step} Enable OAS in {{kib}}
+::::{tab-item} Manually-maintained APIs
+Edit the YAML files directly in the `oas_docs` directory. Refer to the README alongside each file for specific guidance on adding summaries, descriptions, tags, metadata, links, and examples.
 
-Ensure `kibana/config/kibana.dev.yml` contains:
-```yaml
-server.oas.enabled: true
-```
+Once you've made your changes, skip the next two steps and proceed to "Generate docs".
 ::::
 
-::::{step} Add examples to your routes (optional)
+::::::
 
+:::::{step} Add examples to your routes (optional)
+
+(For code-generated APIs)
 Beyond schema definitions, providing concrete request and response examples significantly improves API documentation usability. Examples are type-checked at development time, so shape errors are caught during authoring.
 
-:::{dropdown} Inline TypeScript examples
+::::{dropdown} Inline TypeScript examples
 You can add examples directly in your route definitions:
 ```typescript
 .addVersion({
@@ -190,9 +229,9 @@ You can add examples directly in your route definitions:
   // ...
 })
 ```
-:::
+::::
 
-:::{dropdown} YAML-based examples
+::::{dropdown} YAML-based examples
 For pre-existing YAML examples:
 ```typescript
 import path from 'node:path';
@@ -239,37 +278,33 @@ responses:
         examples:
           # Apply a similar pattern for response examples
 ```
-:::
 ::::
+:::::
 
-::::{step} Capture OAS snapshot
+::::{step} For code-generated APIs: Capture OAS snapshot
 
-:::{tip}
-Skip this step if you've only edited manually-maintained YAML files (like `bundled.yaml`, `*.schema.yaml`, or `kibana.info.serverless.yaml`).
-:::
+This step captures the OpenAPI specification that {{kib}} generates at runtime from your route definitions. It spins up a local {{es}} and {{kib}} cluster with your code changes.
 
-Run this step when you've made changes to route definitions, request/response schemas, or added new HTTP APIs in your plugin code.
+Before running the capture script:
+1. Ensure Docker is running
 
-This spins up a local {{es}} and {{kib}} cluster with your code changes, then extracts the OpenAPI specification that {{kib}} generates at runtime based on your route definitions and schemas.
+**To capture all API paths** (recommended for most cases):
 
-This example includes all plugins per [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh):
+```bash
+node scripts/capture_oas_snapshot --update
+```
+
+**To capture specific API paths** (useful for faster iteration during development), specify the paths you're working on:
 
 ```bash
 node scripts/capture_oas_snapshot \
   --update \
-  --include-path /api/status \
-  --include-path /api/alerting/rule/ \
-  --include-path /api/alerting/rules \
-  --include-path /api/actions \
-  --include-path /api/security/role \
-  --include-path /api/spaces \
-  --include-path /api/streams \
-  --include-path /api/fleet \
-  --include-path /api/saved_objects/_import \
-  --include-path /api/saved_objects/_export \
-  --include-path /api/maintenance_window \
-  --include-path /api/agent_builder
+  --include-path /api/your/specific/path
 ```
+
+:::{tip}
+The full list of paths captured in CI is available in [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh). However, most contributors should use `--update` without path restrictions to ensure complete documentation.
+:::
 
 This generates `oas_docs/bundle.json` and `oas_docs/bundle.serverless.json`.
 ::::
@@ -285,6 +320,21 @@ This generates `oas_docs/output/kibana.yaml` and `oas_docs/output/kibana.info.ya
 Use `make help` to see available commands.
 ::::
 
+::::{step} Lint your docs
+
+Run this command to lint your OpenAPI files:
+
+```bash
+node ../scripts/validate_oas_docs.js
+```
+
+You can limit the scope of APIs that the linter checks by using `--path` or `--only` options. For details and examples, add `--help`.
+
+:::{tip}
+When you open a pull request to submit API documentation changes, this linter runs in a CI check. It uses the `--assert-no-error-increase` option which causes the check to fail if the number of errors increases compared to the baseline.
+:::
+::::
+
 ::::{step} Preview the API docs
 ```bash
 make api-docs-preview
@@ -293,6 +343,24 @@ make api-docs-preview
 This creates a short-lived URL preview on Bump.sh.
 ::::
 
+:::::{step} Open a pull request
+
+Once you're satisfied with your docs changes, create a pull request:
+
+::::{tab-set}
+
+:::{tab-item} Manually-maintained APIs
+Push your edited YAML files. The CI will validate your OpenAPI specs using the linter. Once approved, merge your changes.
+:::
+
+:::{tab-item} Code-generated APIs
+You have two options:
+- Push only your `.ts` changes and let CI regenerate the OpenAPI files automatically
+- Push both your `.ts` changes and locally-generated OpenAPI files together
+
+The CI will validate your OpenAPI specs using the linter. Once approved, merge your changes.
+:::
+
 :::::
 
-:::::::
+::::::::
