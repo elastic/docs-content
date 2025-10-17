@@ -52,7 +52,7 @@ By contrast, if a static SAN certificate does not include a new deployment’s h
 
 Wildcard certificates are generally more performant than certificates with a large number of SAN entries. They are smaller, which reduces TLS handshake time, and scale automatically with new deployments. 
 
-By contrast, large SAN certificates can increase handshake latency and may affect client compatibility.
+By contrast, certificates with a large number of SAN entries can increase handshake latency and may affect client compatibility.
 
 
 ## Security Contact
