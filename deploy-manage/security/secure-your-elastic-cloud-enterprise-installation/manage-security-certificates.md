@@ -22,7 +22,7 @@ You can change the certificates for the following ECE components separately:
 **Proxy certificate**
 :   Used to connect securely to {{es}} clusters and other components such as {{kib}}, etc. 
 
-    {{ece}} highly recommend to use a wildcard certificate typically configured as a subdomain, at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.ece.mycompany.com`, for example). 
+    We strongly recommend using a wildcard certificate configured for a subdomain at the [cluster endpoint you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (for example, `*.ece.mycompany.com`).
 
     If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
 
