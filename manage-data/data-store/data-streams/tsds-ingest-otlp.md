@@ -10,10 +10,6 @@ products:
 
 # OTLP/HTTP endpoint
 
-:::{important}
-The recommended way to send OTLP data for most use cases is through an OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) or, if you're on {{ecloud}}, directly to the [{{motlp}}](opentelemetry:/reference/motlp.md). Refer to [Best practices](#best-practices) for more details.
-:::
-
 In addition to the ingestion of metrics data through the bulk API,
 {{es}} offers an alternative way to ingest data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
 
