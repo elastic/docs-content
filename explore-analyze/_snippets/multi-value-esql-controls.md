@@ -12,6 +12,6 @@ You can create controls that let users select multiple values. To do that:
 
 2. When defining the control, select the **Allow multiple selections** option.
 
-3. Save the the control.
+3. Save the control.
 
 The newly configured control becomes available and allows to select multiple values.
