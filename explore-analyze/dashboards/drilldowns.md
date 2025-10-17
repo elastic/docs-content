@@ -99,14 +99,14 @@ For example, if you have a dashboard that shows data from a Github repository, y
 1. Add the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data.
 2. Open the **[Logs] Web Traffic** dashboard.
 3. In the toolbar, click **Edit**.
-4. Create a donut chart.
+4. Create a pie chart.
 
-    * {applies_to}`stack: ga 9.2` 1. Select **Add** > **Visualization** in the toolbar.
-    * {applies_to}`stack: ga 9.0` 1. Click **Create visualization** in the dashboard toolbar.
+    * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+    * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
 
-    2. From the **Chart type** dropdown, select **Pie**.
-    3. From the **Available fields** list, drag **machine.os.keyword** to the workspace.
-    4. Click **Save and return**.
+2. From the **Chart type** dropdown, select **Pie**.
+3. From the **Available fields** list, drag **machine.os.keyword** to the workspace.
+4. Click **Save and return**.
 
 5. Open the pie chart panel menu, then select **Create drilldown**.
 6. Click **Go to URL**.
