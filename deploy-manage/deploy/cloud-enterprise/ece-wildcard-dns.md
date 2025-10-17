@@ -28,7 +28,7 @@ The `ip.es.io` service is provided to help you evaluate {{ece}} without having t
 
 {{ece}} highly recommends using a wildcard DNS certificate, typically configured as a subdomain (for example, `*.ece.mycompany.com`), to automatically secure the unique endpoints generated for each deployment (for example, `[deployment-id].ece.mycompany.com`). For details on modifying the deployment domain name, see [Change endpoint URLs](change-endpoint-urls.md). The deployment domain name also determines the endpoint URLs displayed in the Cloud UI.
 
-Alternatively, if you use custom endpoint aliases, you can configure a wildcard DNS certificate for each application-specific subdomain, such as `*.es.mycompany.com` for {{es}} or `*.kb.mycompany.com` for {{kib}}. See [Enable custom endpoint aliases](./enable-custom-endpoint-aliases.md) for more information. Platform administrators must enable this feature to allow deployment managers to create and modify aliases for their deployments.
+Additionally, if you use custom endpoint aliases, you can configure a wildcard DNS certificate for each application-specific subdomain, such as `*.es.mycompany.com` for {{es}} or `*.kb.mycompany.com` for {{kib}}. Refer to [Enable custom endpoint aliases](./enable-custom-endpoint-aliases.md) for more information. Platform administrators must enable this feature to allow deployment managers to create and modify aliases for their deployments.
 
 
 ## Wildcard DNS certificate vs static SAN certificate
