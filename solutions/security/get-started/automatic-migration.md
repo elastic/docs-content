@@ -170,7 +170,7 @@ The table's fields are as follows:
   * `Partially translated`: Part of the dashboard could not be translated. Upload any missing macros or lookups, or fix broken syntax. 
   * `Not translated`: None of the original dashboard could be translated.
   * `Failed`: Translation failed. Click the dashboard's name to open the details flyout and view error details.
-* **Tags:** The dashboard's tags, which identify it's source application, and can be used to identify it on the **Dashboards** page.
+* **Tags:** The dashboard's tags, which identify its source application, and can be used to identify it on the **Dashboards** page.
 * **Actions:** To view an `Installed` dashboard, click **View**. To install a `Translated` dashboard, click **Install**. To reprocess a `Failed` dashboard, click **Reprocess**.
 
 ::::{note}
