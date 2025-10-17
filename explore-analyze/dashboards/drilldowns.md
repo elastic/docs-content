@@ -45,14 +45,18 @@ The panels you create using the following editors support dashboard drilldowns:
 Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to create a dashboard and add panels, then set a search and filter on the **[Logs] Web Traffic** dashboard.
 
 1. Add the **Sample web logs** data.
-2. Create a new dashboard, click **Add from Library**, then add the following panels:
+2. Create a new dashboard.
 
-    * **[Logs] Response Codes Over Time + Annotations**
+    * {applies_to}`stack: ga 9.2` Select **Add** > **From library** in the toolbar.
+    * {applies_to}`stack: ga 9.0` Click **Add from library** in the dashboard toolbar.
+
+3. Add the following panel:
+
     * **[Logs] Visits**
 
-3. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**.
-4. Save the dashboard. In the **Title** field, enter `Detailed logs`.
-5. Open the **[Logs] Web Traffic** dashboard, then set a search and filter.
+4. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**.
+5. Save the dashboard. In the **Title** field, enter `Detailed logs`.
+6. Open the **[Logs] Web Traffic** dashboard, then set a search and filter.
 
     Search: `extension.keyword: ("gz" or "css" or "deb")`<br> Filter: `geo.src: US`
 
