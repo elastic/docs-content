@@ -9,9 +9,9 @@ applies_to:
 
 ::::{admonition} Requirements
 
-You must have an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Complete project tier subscription](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}} to access this feature. 
+You must have an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}} to access this feature. 
 
-If you have a Platinum subscription or lower on {{stack}} or an Essentials project tier subscription on {{serverless-short}}, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) instead.
+If you have a Platinum subscription or lower on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) instead.
 
 ::::
 
