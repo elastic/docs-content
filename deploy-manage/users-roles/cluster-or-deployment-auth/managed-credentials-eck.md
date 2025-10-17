@@ -66,12 +66,16 @@ If you are using the `elastic` user credentials in your own applications, they w
 To regenerate all auto-generated credentials in a namespace, run the following command:
 
 ```sh
-kubectl delete secret -l eck.k8s.elastic.co/credentials=true
+kubectl delete secret -l eck.k8s.elastic.co/credentials=true,common.k8s.elastic.co/type!=kibana
 ```
 
 ::::{warning}
 This command regenerates auto-generated credentials of **all** {{stack}} applications in the namespace.
 ::::
+
+:::{note}
+Previous documentation suggested deleting all secrets with the label `eck.k8s.elastic.co/credentials=true`, which included the Kibana secret that contained encryption keys. Deletion of the Kibana config secret is not recommended.
+:::
 
 ## Creating custom users
 
