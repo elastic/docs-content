@@ -126,7 +126,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Integrate weights into simplified RRF retriever syntax [#132680](https://github.com/elastic/elasticsearch/pull/132680)
 * DLM: Better `max_age` rollover for tiny retentions [#134941](https://github.com/elastic/elasticsearch/pull/134941)
 * ES|QL: add support for include_execution_metadata parameter [#134446](https://github.com/elastic/elasticsearch/pull/134446)
-* ESQL: Add telemetry support for Lookup Join On Expression [#134942](https://github.com/elastic/elasticsearch/pull/134942)
+* ES|QL: Add telemetry support for Lookup Join On Expression [#134942](https://github.com/elastic/elasticsearch/pull/134942)
 * Improve block loader for source only runtime fields of type keyword [#135026](https://github.com/elastic/elasticsearch/pull/135026)
 * Optimize BytesArray::indexOf, which is used heavily in ndjson parsing [#135087](https://github.com/elastic/elasticsearch/pull/135087)
 * Make SecureString comparisons constant time [#135053](https://github.com/elastic/elasticsearch/pull/135053)
