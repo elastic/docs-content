@@ -19,7 +19,7 @@ To send data to wired streams, you need to:
 
 To turn on wired streams:
 
-1. From the Streams page, open **Settings**.
+1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Settings**.
 1. Turn on **Enable wired streams**.
 
 ## Configure your data shipper [streams-wired-streams-ship]
@@ -80,15 +80,15 @@ output {
 :::
 
 :::{tab-item} Fleet
-Use the **Custom Logs (Filestream)** integration to send data to Wired Streams:
+Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 
-1. Find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select the **Settings** tab.
-1. Under **Outputs**, find the output you want to use to send data to Streams, and select the {icon}`pencil` icon.
+1. Under **Outputs**, find the output you want to use to send data to streams, and select the {icon}`pencil` icon.
 1. Turn on **Write to logs streams**.
-1. Add the** Custom Logs (Filestream)** integration to an agent policy.
+1. Add the **Custom Logs (Filestream)** integration to an agent policy.
 1. Enable the **Use the "logs" data stream** setting in the integration configuration under **Change defaults**.
-1. Under **Where to add this integration**, select an agent policy that uses the output you configured in **Step 4**.
+1. Under **Where to add this integration**, select an agent policy that uses the output you configured in step 4.
 :::
 
 ::::

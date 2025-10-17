@@ -7,7 +7,7 @@ applies_to:
 
 # Manage data retention for Streams [streams-data-retention]
 
-Use the **Retention** tab to set how long your stream retains data and to get insight into your stream's data ingestion and storage size. The following components help you determine how long you want your stream to retain data:
+After selecting a stream, use the **Retention** tab to set how long your stream retains data and to get insight into your stream's data ingestion and storage size. The following components help you determine how long you want your stream to retain data:
 
 - **Retention**: The current retention policy, including the source of the policy.
 - **Storage size**: The total data volume and number of documents in the stream.
@@ -23,12 +23,14 @@ To edit data retention in {{stack}}, you need the following data stream level pr
 - `manage_data_stream_lifecycle`
 - `manage_ilm`
 
+For more information, refer to [Granting privileges for data streams and aliases](../../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
+
 ## Retention configuration options [streams-update-data-retention]
 Under **Retention**, select **Edit data retention** to open the configuration options. You have the following options when setting your data retention:
 
-- [Inherit from index template or parent stream](#streams-retention-inherit-from-template): Use the data retention configuration that's set in a classic stream's index template or a wired stream's parent stream.
-- [Set a specific retention period](#streams-retention-dsl): For simplicity, you can set your stream to retain data for a specific number of days. Setting a specific or indefinite retention period stores data in the hot phase for best indexing and search performance.
-- [Follow an ILM policy](#streams-retention-ilm): {applies_to}`stack: preview 9.1, ga 9.2` Select an existing ILM policy that uses phases for your data (hot, warm, cold) to allow more control when managing storage, performance, and cost as your data ages.
+- [**Inherit from index template or parent stream**](#streams-retention-inherit-from-template): Use the data retention configuration that's set in a classic stream's index template or a wired stream's parent stream.
+- [**Set a specific retention period**](#streams-retention-dsl): For simplicity, you can set your stream to retain data for a specific number of days. Setting a specific or indefinite retention period stores data in the hot phase for best indexing and search performance.
+- [**Follow an ILM policy**](#streams-retention-ilm): {applies_to}`stack: preview 9.1, ga 9.2` Select an existing ILM policy that uses phases for your data (hot, warm, cold) to allow more control when managing storage, performance, and cost as your data ages.
 
 ### Inherit from index template or parent stream [streams-retention-inherit-from-template]
 If you enable **Inherit from index template** or **parent stream**, the stream uses the retention settings from its index template (for classic streams) or parent stream (for wired streams). When this option is enabled, you don’t need to specify a custom retention period or policy.
@@ -36,7 +38,7 @@ If you enable **Inherit from index template** or **parent stream**, the stream u
 #### Inherit from index template
 Classic streams let you default to the data stream's existing index template’s data retention configuration. When a stream inherits retention settings from an index template, Streams doesn't manage retention.
 
-This is useful when onboarding existing data streams and you want to preserve their lifecycle behavior while still benefiting from Streams' visibility and monitoring features.
+This is useful when onboarding existing data streams and preserving their lifecycle behavior while still benefiting from Streams' visibility and monitoring features.
 
 #### Inherit from parent stream
 ```{applies_to}
@@ -52,9 +54,9 @@ When the ancestor’s lifecycle is updated, Streams cascades the change to all c
 The **Retention period** is the minimum number of days after which the data is deleted. To set data retention to a specific time period:
 
 1. Under **Retention**, select **Edit data retention**.
-1. Turn off **Inherit from index template** or **parent stream** if on.
+1. Turn off **Inherit from index template** or **parent stream**, if on.
 1. Select **Custom period**.
-1. Set the period of time you want to retain data for this stream.
+1. Set the period of time that you want to retain data for this stream.
 
 To define a global default retention policy, refer to [project settings](../../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
@@ -68,7 +70,7 @@ stack: preview 9.1, ga 9.2
 To have your streams follow an existing policy:
 
 1. Under **Retention**, select **Edit data retention**.
-1. Turn off **Inherit from index template** or **parent stream** if on.
+1. Turn off **Inherit from index template** or **parent stream**, if on.
 1. Select **ILM policy**, then select a pre-defined ILM policy from the list.
 
 If the policy you want doesn't exist, create a new ILM policy. Refer to [Configure a lifecycle policy](../../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) for more information.

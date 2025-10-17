@@ -8,30 +8,34 @@ navigation_title: Configure advanced settings
 
 The **Advanced** tab shows the underlying {{es}} configuration details and advanced configuration options for your stream.
 
-You can use the **Advanced** tab to manually configure the index or component templates or modify other ingest pipelines used by the stream.
+You can use the **Advanced** tab to add [descriptions](#streams-advanced-description) or [features](#streams-advanced-features) that provide useful information to Stream's AI components. You can also  [manually configure](#streams-advanced-index-config) the index or component templates or modify other ingest pipelines used by the stream.
 
-## Stream description
-
-% can we provide more information on what users should put here.
+## Stream description [streams-advanced-description]
 
 Describe the data in the stream. AI features like system identification and significant events use this description when generating suggestions.
 
-## Stream system configuration
+## Stream feature configuration [streams-advanced-features]
 
-% Why do users want to add systems here?
+Streams analyzes your data and identifies features. Features are a way to classify some of the data you have in your stream.
 
-Streams analyzes your stream and identifies systems. Then, you can select the ones you want to add to your stream.
+Each feature has a natural language description and an optional filter which points to a subset of your data.
 
-## Index configuration
+For example, in a stream of Kubernetes logs, the feature identification process would be able to identify that you have data from "nginx" which can be found by filtering for `WHERE service.name==nginx`. It would also include a description defining nginx.
 
-% Can we add use cases of when it makes sense to modify shards/replicas/refresh interval
+Features provide useful information for AI processes, such as significant events, and are used as the foundation for them.
 
-For classic streams, you can manually configure the stream's:
+## Index configuration [streams-advanced-index-config]
 
-- [index template](../../../../manage-data/data-store/templates.md#index-templates)
-- [component templates](../../../../manage-data/data-store/templates.md#component-templates)
-- [pipeline](../../../../manage-data/ingest/transform-enrich.md)
-- [data stream](../../../../manage-data/data-store/data-streams.md).
+:::{note}
+Processing and schema changes should typically be done through the Streams interface, and none of these configuration processes are required. This feature mainly exists to help advanced users maintain familiar workflows.
+:::
+
+For classic streams, you can manually configure:
+
+- [Index templates](../../../../manage-data/data-store/templates.md#index-templates)
+- [Component templates](../../../../manage-data/data-store/templates.md#component-templates)
+- [Pipelines](../../../../manage-data/ingest/transform-enrich.md)
+- [Data streams](../../../../manage-data/data-store/data-streams.md).
 
 For both wired ({applies_to}`stack: preview 9.2`) and classic streams, you can manually configure:
 

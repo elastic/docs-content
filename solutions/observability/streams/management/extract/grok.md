@@ -5,11 +5,11 @@ applies_to:
 ---
 # Grok processor [streams-grok-processor]
 
-The grok processor parses unstructured log messages using a set of predefined patterns to match the log messages and extract the fields. The Grok processor is very powerful and can parse a wide variety of log formats.
+The grok processor parses unstructured log messages using a set of predefined patterns to match the log messages and extract the fields. The grok processor is very powerful and can parse a wide variety of log formats.
 
-You can provide multiple patterns to the grok processor. The Grok processor will try to match the log message against each pattern in the order they are provided. If a pattern matches, the fields will be extracted and the remaining patterns will not be used.
+You can provide multiple patterns to the grok processor. The grok processor tries to match the log message against each pattern in the order they are provided. If a pattern matches, it extracts the fields and the remaining patterns won't be used.
 
-If a pattern doesn't match, the grok processor will try the next pattern. If no patterns match, the Grok processor will fail and you can troubleshoot the issue. Instead of writing grok patterns, you can have streams generate patterns for you. Refer to [generate patterns](#streams-grok-patterns) for more information.
+If a pattern doesn't match, the grok processor tries the next pattern. If no patterns match, the Grok processor will fail and you can troubleshoot the issue. Instead of writing grok patterns, you can have Streams generate patterns for you. Refer to [generate patterns](#streams-grok-patterns) for more information.
 
 :::{tip}
 To improve pipeline performance, start with the most common patterns first, then add more specific patterns. This reduces the number times the grok processor has to run.
@@ -44,7 +44,7 @@ Requires an LLM Connector to be configured.
 
 Instead of writing the Grok patterns by hand, you can use the **Generate Patterns** button to generate the patterns for you.
 
-Generated patterns work best on semi-structured data. For very custom logs with a lot of text, creating manual patterns general creates more accurate results.
+Generated patterns work best on semi-structured data. For very custom logs with a lot of text, creating patterns manually generally creates more accurate results.
 
 ![generated patterns](<../../../../images/logs-streams-patterns.png>)
 

@@ -14,7 +14,7 @@ Streams can operate in two modes: wired and classic. Both manage data streams in
 
 ### Classic streams
 
-Classic streams work with existing Elasticsearch data streams. Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
+Classic streams work with existing {{es}} data streams. Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
 
 Classic streams:
 
@@ -46,19 +46,21 @@ Streams requires the following permissions:
 :::{tab-item} Serverless
 Streams requires these Elastic Cloud Serverless roles:
 
-- Admin: ability to manage all Streams.
-- Editor/Viewer: limited access, unable to perform all actions.
+- Admin: Ability to manage all Streams
+- Editor/Viewer: Limited access, unable to perform all actions
 
 :::
 
 :::{tab-item} Stack
-To manage all Streams, you need the following permissions:
+To manage all streams, you need the following permissions:
 
-- Cluster permissions: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
-- Data stream level permissions: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
+- **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
+- **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
 
 To view streams, you need the following permissions:
-- Data stream level: `read`, v`iew_index_metadata`, `monitor`
+- **Data stream level**: `read`, v`iew_index_metadata`, `monitor`
+
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
 
 :::
 
@@ -76,9 +78,9 @@ Open Streams from the following places in {{kib}}:
 
 Interact with and configure your streams in the following ways:
 
-- [Retention](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
-- [Partitioning](./management/partitioning.md): {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Route data into child streams.
-- [Processing](./management/extract.md): Parse and extract information from documents into dedicated fields.
-- [Schema](./management/schema.md): Manage field mappings.
-- [Data quality](./management/data-quality.md): Get information about failed and degraded documents in your stream.
-- [Advanced](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
+- [**Retention**](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
+- [**Partitioning**](./management/partitioning.md): {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Route data into child streams.
+- [**Processing**](./management/extract.md): Parse and extract information from documents into dedicated fields.
+- [**Schema**](./management/schema.md): Manage field mappings.
+- [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
+- [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
