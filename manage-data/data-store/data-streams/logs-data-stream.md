@@ -189,5 +189,5 @@ The `logsdb` index mode uses the following settings:
 
 Starting with version `9.0`, `logsdb` index mode is automatically applied to data streams with names matching the pattern `logs-*-*`. This default applies to Elasticsearch instances created in version `9.0` or later, as well as older instances that had no data streams matching the pattern `logs-*-*`. For the latter, you can still [configure `logsdb` index mode manually](#how-to-use-logsds).
 
-## Runtime Fields [runtime-fields]
+## Runtime fields [runtime-fields]
 There are some compatibility issues with runtime fields which are commonly used within Rules for Elastic Security. Refer to [](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security#logsdb-runtime-fields.md) for more information.
