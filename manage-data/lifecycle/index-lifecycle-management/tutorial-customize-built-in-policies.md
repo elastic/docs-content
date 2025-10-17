@@ -144,7 +144,20 @@ Copies of managed {{ilm-init}} policies are also marked as **Managed**. You can 
 
 To apply your new {{ilm-init}} policy to the `logs` index template, create or edit the `logs@custom` component template.
 
-A `*@custom` component template allows you to customize the mappings and settings of managed index templates, without having to override managed index templates or component templates. This type of component template is automatically picked up by the index template.
+
+:::::{admonition} Using @custom component templates
+A `@custom` component template allows you to customize the mappings and settings of the managed index templates, without having to override them or their main component templates.
+
+Many {{es}} managed index templates include one or more `@custom` component templates. A `@custom` component template must first be created before it can be used, and its name must exactly match the name specified in the managed index template in order to be applied automatically to indices as they're created.
+
+For example, if you're ingesting OpenTelemetry (OTel) logs, any OTel log data streams and their backing indices are configured by the `logs-otel@template` managed index template. That index template automatically applies settings defined in the `logs@custom` or the `logs-otel@custom` template when they exist.
+
+Go to **Index Management > Index Templates** and select any managed index to view the `@custom` component templates associated with it. 
+
+:::{image} /manage-data/images/elasticsearch-reference-tutorial-custom-policies-otel-template.png
+:alt: A screenshot showing the logs@custom and logs-otel@custom component templates associated with the logs-otel@template index template.
+:::
+:::::
 
 :::{tip}
 If you want your {{ilm-init}} changes to apply only to specific indices, you can create a custom index template directly instead of modifying the custom component template. Use the **Index management** page in {{kib}} or the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to create a new template.
