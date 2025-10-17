@@ -142,7 +142,9 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
     3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold’s value.
 
         ::::{note}
-        Nested fields are not supported for use with **Group by**.
+        Consider the following when using the **Group by** field:
+        - Nested fields are not supported.
+        - High cardinality in the fields or a high number of matching documents can result in a rule timeout or a circuit breaker error from {{es}}.
         ::::
 
     4. Use the **Count** field to limit alerts by cardinality of a certain field.
