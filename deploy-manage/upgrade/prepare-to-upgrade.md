@@ -824,11 +824,11 @@ Follow these steps to perform a reindex-based upgrade to a new deployment or clu
 
 2. **Migrate ingest pipelines, templates, and configuration**
 
-    Review and adapt index templates, ingest pipelines, and other resources to ensure compatibility with the new cluster.
+    Create in the new cluster the index templates, ingest pipelines, and ILM policies so that they work similarly to those in the old cluster.
 
 3. **Reindex your data into the new {{es}} cluster**
 
-    Use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new indexing requests to both clusters.
+    Use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) to migrate existing data from the old cluster to the new one, and temporarily send new indexing requests to both clusters.
 
 4. **Validate and cut over**
 
