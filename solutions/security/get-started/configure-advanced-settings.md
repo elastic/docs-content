@@ -252,3 +252,9 @@ serverless: ga
 
 The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
 
+## Turn off {{esql}}-based risk scoring
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+By default, [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) calculations are based on {{esql}} queries. Turn off `securitySolution:enableEsqlRiskScoring` to use scripted metrics instead.
