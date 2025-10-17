@@ -15,7 +15,7 @@ In addition to the ingestion of metrics data through the bulk API,
 
 The endpoint is available under `/_otlp/v1/metrics`.
 
-## Overview and deployment options [best-practices]
+## Overview and deployment options
 
 :::{important}
 The recommended approach for sending OpenTelemetry Protocol (OTLP) data depends on your deployment:
