@@ -33,7 +33,9 @@ Additionally, if you use custom endpoint aliases, you can configure a wildcard D
 
 ## Wildcard DNS certificate vs static SAN certificate
 
-In {{ece}}, where you create new cluster deployments dynamically, a wildcard DNS certificate is more performant, scalable, and operationally safe than a static SAN certificate.
+In {{ece}}, each deployment generates multiple DNS entries, as every component within a deployment has its own cluster ID and fully qualified domain name (FQDN). In environments with many deployments, especially when deployment aliases are used, this can result in hundreds of unique FQDNs that need to be covered by the certificate.
+
+For this reason, using a wildcard DNS certificate is recommended over a certificate with static SAN entries, as it provides a more scalable, performant, and operationally safe solution.
 
 ### Operational cost perspective
 
