@@ -423,7 +423,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves rate limiter UX [#227678]({{kib-pull}}227678)
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
-* Make Organization IdP routes public. Organization IdP routes are now public in the OpenAPI specifications.
+* Organization IdP routes are now public in the OpenAPI specifications.
 
 ### Fixes [serverless-changelog-08042025-fixes]
 * Fixes loading of saved queries in the Alerting rule definition [#229964]({{kib-pull}}229964)
@@ -1494,7 +1494,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates KNN search and query template autocompletion in Elasticsearch Serverless [#207187]({{kib-pull}}207187)
 * Updates JSON schemas for code editors in Machine Learning [#207706]({{kib-pull}}207706)
 * Reindexes the .kibana_security_session_1 index to the 8.x format in Security [#204097]({{kib-pull}}204097)
-* Disables prompt=login and sign out of Okta before initiating SSO. Fixes an issue when using organization SAML SSO where users are required to re-authenticate with the external IdP due to ForceAuthn=true being sent in SAML requests. SAML requests will now send ForceAuthn=false.
+* Disables `prompt=login` and sign out of Okta before initiating SSO. Fixes an issue when using organization SAML SSO where users are required to re-authenticate with the external IdP due to ForceAuthn=true being sent in SAML requests. SAML requests will now send `ForceAuthn=false`.
 
 ### Fixes [elastic-cloud-serverless-01272025-fixes]
 * Fixes editing alerts filters for multi-consumer rule types in Alerting [#206848]({{kib-pull}}206848)
@@ -1525,8 +1525,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Feature Flag Support for Cloud Security Posture Plugin in Elastic Security Serverless [#205438]({{kib-pull}}205438)
 * Adds the ability to sync Machine Learning saved objects to all spaces [#202175]({{kib-pull}}202175)
 * Improves messages for recovered alerts in Machine Learning Transforms [#205721]({{kib-pull}}205721)
-* New Deployment Performance Metrics Charts. AutoOps provides aggregate metrics at the cluster level for key performance indicators. The data is tier-based, offering users a comprehensive understanding of each tier and the entire cluster.
-* Deprecate Cloud Defend billing alerts. Following the deprecation of Cloud Defend in Serverless, removes the billing logic associated with the feature.
+* Introduces new deployment performance metrics charts. AutoOps provides aggregate metrics at the cluster level for key performance indicators. The data is tier-based, offering users a comprehensive understanding of each tier and the entire cluster.
+* Deprecates Cloud Defend billing alerts. Following the deprecation of Cloud Defend in {{serverless-short}}, removes the billing logic associated with the feature.
 
 ### Fixes [elastic-cloud-serverless-01132025-fixes]
 * Fixes an issue where "KEEP" columns are not applied after an Elasticsearch error in Discover [#205833]({{kib-pull}}205833)
