@@ -53,15 +53,6 @@ AutoOps for {{ECH}} is currently available in the following regions for AWS:
 
 Regions for Azure and GCP are coming soon.
 
-## AutoOps for self-managed clusters regions
-
-You can also use AutoOps with your ECE ({{ece}}), ECK ({{eck}}), or self-managed clusters through [Cloud Connect](/deploy-manage/cloud-connect.md). 
-
-This service is currently available in the following regions for AWS:
-
-:::{include} ../_snippets/autoops-cc-regions.md
-:::
-
 ## AutoOps for {{serverless-full}} regions
 
 AutoOps for serverless projects is currently available in the following regions for AWS:
@@ -74,3 +65,12 @@ AutoOps for serverless projects is currently available in the following regions 
 | us-west-2 | Oregon |
 
 The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure, and GCP.
+
+## AutoOps for self-managed clusters regions
+
+You can also use AutoOps with your ECE ({{ece}}), ECK ({{eck}}), or self-managed clusters through [Cloud Connect](/deploy-manage/cloud-connect.md). 
+
+This service is currently available in the following regions for AWS:
+
+:::{include} ../_snippets/autoops-cc-regions.md
+:::

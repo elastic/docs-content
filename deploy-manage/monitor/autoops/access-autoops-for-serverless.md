@@ -1,6 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-autoops-how-to-access.html
 applies_to:
   serverless:
 navigation_title: Access AutoOps in your project
