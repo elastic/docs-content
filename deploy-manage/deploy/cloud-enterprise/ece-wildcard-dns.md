@@ -47,7 +47,7 @@ By contrast, a static SAN certificate requires reissuing the certificate wheneve
 
 We suggest configuring your wildcard DNS certificate as a subdomain (e.g., `*.ece.mycompany.com`). Doing so significantly reduces security risks associated with certificate misconfigurations.
 
-By contrast, if a static SAN certificate does not include a new deployment’s hostname, clients will encounter a certificate name mismatch warning, indicating a security misconfiguration.
+By contrast, if a certificate with static SAN entries does not include the new deployment’s cluster IDs (each component has its own FQDN), clients will encounter certificate name mismatch warnings, indicating a security misconfiguration.
 
 
 ### Performance perspective
