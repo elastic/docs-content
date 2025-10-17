@@ -15,6 +15,17 @@ In addition to the ingestion of metrics data through the bulk API,
 
 The endpoint is available under `/_otlp/v1/metrics`.
 
+## Overview and deployment options [best-practices]
+
+:::{important}
+The recommended approach for sending OpenTelemetry Protocol (OTLP) data depends on your deployment:
+
+- **{{ecloud}}:** Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry:/reference/motlp.md) directly.
+- **Self-managed:** Use the {{es}} OTLP endpoint described on this page, ideally through an OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
+
+For details on the recommended way to set up OpenTelemetry-based data ingestion, refer to the [EDOT reference architecture](opentelemetry:/reference/architecture/index.md).
+:::
+
 Ingesting metrics data using the OTLP endpoint has the following advantages:
 
 * Improved ingestion performance, especially if the data contains many resource attributes.
