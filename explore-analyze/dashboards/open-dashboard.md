@@ -18,7 +18,7 @@ products:
    ::::
 
 3. Click the dashboard name you want to open.
-   The dashboard opens automatically in **Edit** mode. You can switch between edit and view modes from the toolbar.
+   The dashboard opens automatically in **Edit** mode if you have the right permissions. You can switch between edit and view modes from the toolbar.
 
 5. Make the changes that you need to the dashboard:
 
