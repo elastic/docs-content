@@ -537,6 +537,16 @@ redirects:
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
+# Related to https://github.com/elastic/docs-content/pull/3493
+  'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/cloud/integrations/ingest-third-party-cloud-security-data.md'
+  'solutions/security/cloud/ingest-cncf-falco-data.md': 'solutions/security/cloud/integrations/cncf-falco.md'
+  'solutions/security/cloud/ingest-wiz-data.md': 'solutions/security/cloud/integrations/wiz.md'
+  'solutions/security/cloud/integration-tenablevm.md': 'solutions/security/cloud/integrations/tenablevm.md'
+  'solutions/security/cloud/integration-rapid7.md': 'solutions/security/cloud/integrations/rapid7.md'
+  'solutions/security/cloud/integration-qualys.md': 'solutions/security/cloud/integrations/qualys.md'
+  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/cloud/integrations/aws-security-hub.md'
+  'solutions/security/cloud/aws-config-integration.md': 'solutions/security/cloud/integrations/aws-config.md'
+  
 # Deduplicate canvas function reference
   'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
   'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
