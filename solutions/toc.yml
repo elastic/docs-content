@@ -531,7 +531,9 @@ toc:
               - file: security/get-started/automatic-import.md
               - file: security/get-started/content-connectors.md
               - file: security/get-started/agentless-integrations.md
-              - file: security/get-started/agentless-integrations-faq.md
+                children:
+                  - file: security/get-started/cloud-connector-deployment.md
+                  - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
             children:
               - file: security/get-started/spaces-defend-faq.md
