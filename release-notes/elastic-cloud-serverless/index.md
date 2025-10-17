@@ -148,15 +148,15 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Correctly update SLM stats with master shutdown [#134152](https://github.com/elastic/elasticsearch/pull/134152)
 * Bug fix: Facilitate second retrieval of the same value [#134790](https://github.com/elastic/elasticsearch/pull/134790)
 * Avoid holding references to SearchExecutionContext in SourceConfirmedTextQuery [#134887](https://github.com/elastic/elasticsearch/pull/134887)
-* Add exception for perform embedding inference requests with query provided [#131641](https://github.com/elastic/elasticsearch/pull/131641)
-* Fixed match only text block loader not working when a keyword multi field is present [#134582](https://github.com/elastic/elasticsearch/pull/134582)
-* Fixing conditional processor mutability bugs [#134936](https://github.com/elastic/elasticsearch/pull/134936)
+* Adds exception for perform embedding inference requests with query provided [#131641](https://github.com/elastic/elasticsearch/pull/131641)
+* Fixes match only text block loader not working when a keyword multi field is present [#134582](https://github.com/elastic/elasticsearch/pull/134582)
+* Fixes conditional processor mutability bugs [#134936](https://github.com/elastic/elasticsearch/pull/134936)
 * [Transform] Wait for PIT to close [#134955](https://github.com/elastic/elasticsearch/pull/134955)
 * Bypass MMap arena grouping as this has caused issues with too many regions being mapped [#135012](https://github.com/elastic/elasticsearch/pull/135012)
-* Fix deadlock in ThreadPoolMergeScheduler when a failing merge closes the IndexWriter [#134656](https://github.com/elastic/elasticsearch/pull/134656)
+* Fixes deadlock in ThreadPoolMergeScheduler when a failing merge closes the IndexWriter [#134656](https://github.com/elastic/elasticsearch/pull/134656)
 * Fixes countDistinctWithConditions in csv-spec tests [#135097](https://github.com/elastic/elasticsearch/pull/135097)
 * CentroidCalculator does not return negative summation weights [#135176](https://github.com/elastic/elasticsearch/pull/135176)
-* ESQL: Limit when we push topn to lucene [#134497](https://github.com/elastic/elasticsearch/pull/134497)
+* ES|QL: Limit when we push topn to lucene [#134497](https://github.com/elastic/elasticsearch/pull/134497)
 * Ban Limit + MvExpand before remote Enrich [#135051](https://github.com/elastic/elasticsearch/pull/135051)
 * Fix expiration time in ES|QL async [#135209](https://github.com/elastic/elasticsearch/pull/135209)
 
@@ -187,7 +187,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Restricts access to the Value report page to `admin` and `soc_manager` roles in complete tier [#234377]({{kib-pull}}234377)
 * Ensures the **Tech Preview** badge is shown for the default inference endpoint for e5 on the inference endpoints UI [#234811]({{kib-pull}}234811)
 * Ensures mapped fields are remembered across simulations [#233799]({{kib-pull}}233799)
-* [Downsampling++] Add time series telemetry in xpack usage [#134214](https://github.com/elastic/elasticsearch/pull/134214)
+* [Downsampling++] Adds time series telemetry in xpack usage [#134214](https://github.com/elastic/elasticsearch/pull/134214)
 
 ### Fixes [serverless-changelog-09152025-fixes]
 
@@ -339,7 +339,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds an `AI` section to the `Stack Management` menu [#227289]({{kib-pull}}227289)
 * Sets the default retention period for Logs anomaly detection to 120 days [#231080]({{kib-pull}}231080)
 * Restrict Indexing To Child Streams When Streams Is Enabled [#132011](https://github.com/elastic/elasticsearch/pull/132011)
-* [ML] Add support for dimensions in google vertex ai request [#132689](https://github.com/elastic/elasticsearch/pull/132689)
+* [ML] Adds support for dimensions in google vertex ai request [#132689](https://github.com/elastic/elasticsearch/pull/132689)
 
 ### Fixes [serverless-changelog-08182025-fixes]
 
@@ -424,9 +424,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
 * Skip search shards with INDEX_REFRESH_BLOCK
-* Pipelines: Add `created_date` and `modified_date` #130847](https://github.com/elastic/elasticsearch/pull/130847)
-* Component Templates: Add `{created,modified}_date` [#131536](https://github.com/elastic/elasticsearch/pull/131536)
-* [Security] Add entity store and asset criticality index privileges to built in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
+* Pipelines: Adds `created_date` and `modified_date` #130847](https://github.com/elastic/elasticsearch/pull/130847)
+* Component Templates: Adds `{created,modified}_date` [#131536](https://github.com/elastic/elasticsearch/pull/131536)
+* [Security] Adds entity store and asset criticality index privileges to built in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
   
 ### Fixes [serverless-changelog-08042025-fixes]
 * Fixes loading of saved queries in the Alerting rule definition [#229964]({{kib-pull}}229964)
