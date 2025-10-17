@@ -11,8 +11,8 @@ The time functions detect events that happen at unusual times, either of the day
 
 The {{ml-features}} include the following time functions:
 
-* [`time_of_day`](ml-time-functions.md#ml-time-of-day)
-* [`time_of_week`](ml-time-functions.md#ml-time-of-week)
+* [`time_of_day`](/reference/machine-learning/ml-time-functions.md#ml-time-of-day)
+* [`time_of_week`](/reference/machine-learning/ml-time-functions.md#ml-time-of-week)
 
 ::::{note}
 

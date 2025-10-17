@@ -40,8 +40,8 @@ There are a number of requirements for using aggregations in {{dfeeds}}.
 
 ## Recommendations [aggs-recommendations-dfeeds]
 
-* When your detectors use [metric](/reference/data-analysis/machine-learning/ml-metric-functions.md) or [sum](/reference/data-analysis/machine-learning/ml-sum-functions.md) analytical functions, it’s recommended to set the `date_histogram` or `composite` aggregation interval to a tenth of the bucket span. This creates finer, more granular time buckets, which are ideal for this type of analysis.
-* When your detectors use [count](/reference/data-analysis/machine-learning/ml-count-functions.md) or [rare](/reference/data-analysis/machine-learning/ml-rare-functions.md) functions, set the interval to the same value as the bucket span.
+* When your detectors use [metric](/reference/machine-learning/ml-metric-functions.md) or [sum](/reference/machine-learning/ml-sum-functions.md) analytical functions, it’s recommended to set the `date_histogram` or `composite` aggregation interval to a tenth of the bucket span. This creates finer, more granular time buckets, which are ideal for this type of analysis.
+* When your detectors use [count](/reference/machine-learning/ml-count-functions.md) or [rare](/reference/machine-learning/ml-rare-functions.md) functions, set the interval to the same value as the bucket span.
 * If you have multiple influencers or partition fields or if your field cardinality is more than 1000, use [composite aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md).
 
     To determine the cardinality of your data, you can run searches such as:

@@ -17,8 +17,8 @@ If your data is sparse, use `non_null_sum` functions. Buckets without values are
 
 The {{ml-features}} include the following sum functions:
 
-* [`sum`, `high_sum`, `low_sum`](ml-sum-functions.md#ml-sum)
-* [`non_null_sum`, `high_non_null_sum`, `low_non_null_sum`](ml-sum-functions.md#ml-nonnull-sum)
+* [`sum`, `high_sum`, `low_sum`](/reference/machine-learning/ml-sum-functions.md#ml-sum)
+* [`non_null_sum`, `high_non_null_sum`, `low_non_null_sum`](/reference/machine-learning/ml-sum-functions.md#ml-nonnull-sum)
 
 
 ## Sum, high_sum, low_sum [ml-sum]

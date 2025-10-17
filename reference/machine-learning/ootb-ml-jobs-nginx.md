@@ -27,7 +27,7 @@ These jobs are available in {{kib}} only if data exists that matches the query s
 
 ## Nginx access logs ({{filebeat}}) [nginx-access-logs-filebeat]
 
-These legacy {{anomaly-jobs}} find unusual activity in HTTP access logs. For the latest versions, install the Nginx integration in {{fleet}}; see [Nginx access logs](ootb-ml-jobs-nginx.md#nginx-access-logs).
+These legacy {{anomaly-jobs}} find unusual activity in HTTP access logs. For the latest versions, install the Nginx integration in {{fleet}}; see [Nginx access logs](/reference/machine-learning/ootb-ml-jobs-nginx.md#nginx-access-logs).
 
 These jobs exist in {{kib}} only if data exists that matches the recognizer query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/nginx_ecs/manifest.json).
 
