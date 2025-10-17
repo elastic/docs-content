@@ -1,16 +1,23 @@
 ---
 applies_to:
-  serverless: preview
-  stack: preview 9.1
+  serverless: ga
+  stack: preview 9.1, ga 9.2
 ---
 
 # Date processor [streams-date-processor]
 
-The date processor parses date strings and uses them as the timestamp of the document.
+The date processor parses dates from fields, and then uses the date or timestamp as the timestamp for the document.
+
+To extract a timestamp field using the date processor:
+
+1. Select **Create** → **Create processor**.
+1. Select **Date** from the **Processor** menu.
+1. Set the **Source Field** to the field containing the timestamp.
+1. Set the **Format** field to one of the accepted date formats (ISO8602, UNIX, UNIX_MS, or TAI64N) or use a Java time pattern. Refer to the [example formats](#streams-date-examples) for more information.
 
 This functionality uses the {{es}} date pipeline processor. Refer to the [date processor](elasticsearch://reference/enrich-processor/date-processor.md) {{es}} documentation for more information.
 
-## Examples
+## Example formats [streams-date-examples]
 
 The following list provides some common examples of date formats and how to parse them.
 
@@ -34,9 +41,8 @@ Sunday, October 15, 2023 => EEEE, MMMM dd, yyyy
 2023-10-15 14:30:00 => yyyy-MM-dd HH:mm:ss
 ```
 
-
 ## Optional fields [streams-date-optional-fields]
-The following fields are optional for the date processor:
+You can set the following optional fields for the date processor in the **Advanced settings**:
 
 | Field | Description|
 | ------- | --------------- |
