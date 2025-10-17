@@ -13,13 +13,17 @@ To configure a deployment as a remote cluster, use the [cluster update settings 
 
 * `Remote cluster alias`: When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI as **Remote cluster name**.
 * `mode`: `proxy`
-* `proxy_address`: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
+* `proxy_address`: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section. 
+   
+   Using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
 
   ::::{note}
   If you’re using API keys as security model, change the port to `9443`.
   ::::
 
-* `server_name`: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Server name** from the **Remote cluster parameters** section. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
+* `server_name`: This value can be found on the **Security** page of the {{remote_type}} you want to use as a remote. Copy the **Server name** from the **Remote cluster parameters** section. 
+   
+   Using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
 
 This example shows the API call to add or update a remote cluster. The alias `alias-for-my-remote-cluster` must match the remote cluster name used when adding the API key to the deployment:
 
