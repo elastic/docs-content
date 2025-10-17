@@ -9,7 +9,7 @@ applies_to:
 
 {{stack}} version 7.17 has a defined end of support date of 15 January 2026, as stated in the [Elastic Product & Version End of Life Policy](https://www.elastic.co/support/eol). This document provides a guided plan to upgrade from 7.17 to the latest {{version.stack}} release. It complements the official upgrade documentation by showing how the different pieces fit together in a complete upgrade exercise.
 
-This guide applies to all deployment types ({{ech}} (ECH), {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters) running {{es}} version **7.17.x**. If you are using an earlier version, upgrade first to the latest 7.17 release before proceeding.
+This guide applies to all deployment types: ({{ech}} (ECH), {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters) running {{es}} version **7.17.x**. If you are using an earlier version, [upgrade first to the latest 7.17 release](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html) before proceeding.
 
 ## Overview
 
@@ -35,9 +35,9 @@ For detailed guidance on how to plan and execute this method, refer to [Reindex 
 It may be suitable when:
 - You prefer to build new infrastructure rather than modify an existing one.  
 - You want to reduce the risk of performing two consecutive major upgrades.  
-- You plan to redesign your topology or move to a new environment (for example, from self-managed to {{ech}} or {{ece}}).  
+- You plan to redesign your topology or move to a new environment, for example from self-managed to {{ech}} or {{ece}}.  
 
-This approach is intended for {{es}} use cases focused on indexing and querying your own data. If you need a smooth transition that preserves {{kib}} configurations and {{stack}} features data, follow the standard upgrade path instead.
+This approach is intended for {{es}} use cases focused on indexing and querying your own data. If you need to preserve {{kib}} configurations and {{stack}} feature data, follow the standard upgrade path instead.
 ::::
 
 ## Upgrade planning [planning]
@@ -62,9 +62,9 @@ For the 7.17.x → 9.x upgrade path, the main planning outcome is a set of requi
 
 * **Orchestration platforms:**
 
-  * {applies_to}`eck:` If you are running an ECK version earlier than 3.x, you need to upgrade [ECK before](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md) the final upgrade to 9.x. This can be done either at the beginning, before the initial upgrade, or between the two upgrade phases.
+  * **ECK**: If you are running an ECK version earlier than 3.x, you need to [upgrade ECK to 3.x](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md) before the final upgrade to 9.x. This can be done either at the beginning, before the initial upgrade, or between the two upgrade phases.
 
-  * {applies_to}`ece:` If you are running an ECE version earlier than 4.x, you need to [upgrade your ECE platform](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md) before the final upgrade to 9.x. This upgrade must be performed after upgrading your deployments to 8.19.x, since ECE 4.x is not compatible with 7.x deployments.
+  * **ECE**: If you are running an ECE version earlier than 4.x, you need to [upgrade your ECE platform to 4.x](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md) before the final upgrade to 9.x. This upgrade must be performed after upgrading your deployments to 8.19.x, because ECE 4.x is not compatible with 7.x deployments.
 
 Finally, we strongly recommend [testing the full upgrade process in a non-production environment](/deploy-manage/upgrade/plan-upgrade.md#test-in-a-non-production-environment) before applying it to production.
 
@@ -88,7 +88,7 @@ Follow the guidelines below for your specific deployment type:
 
 :::{applies-item} ess:
 
-The {{ecloud}} platform facilitates major upgrades by:
+The {{ecloud}} platform facilitates major upgrades by doing the following:
 * Automatically creating a snapshot before the upgrade.
 * Detecting deprecated settings and index compatibility issues.
 * Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
@@ -109,12 +109,16 @@ You should make sure to:
 
 :::{applies-item} ece:
 
-{{ece}} platform facilitates major upgrades by:
+{{ece}} platform facilitates major upgrades by doing the following:
 * When [snapshots are configured](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), automatically creating a snapshot before the upgrade.
 * Detecting deprecated settings and index compatibility issues.
 * Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
 
-To prepare your deployment for the upgrade, complete the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section. *Note: Although this guide refers to {{ecloud}}, the same preparation steps apply to ECE deployments.*
+To prepare your deployment for the upgrade, complete the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section. 
+
+:::{note}
+Although this guide refers to {{ecloud}}, the same preparation steps apply to ECE deployments.
+:::
 
 You should make sure to:
 
@@ -128,7 +132,7 @@ You should make sure to:
 3. As a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) if your custom client applications are affected by breaking changes. This mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy.
 :::
 
-:::{applies-item} { eck: }
+:::{applies-item} eck:
 
 Upgrade preparations for an {{eck}}-managed cluster are similar to a self-managed deployment. Before starting the upgrade:
 
@@ -152,7 +156,7 @@ For additional details and best practices, review the [{{es}} upgrade setup guid
 Keep the following considerations in mind when upgrading your deployment or cluster:
 
 * If you use [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md) with a dedicated monitoring cluster, upgrade your monitoring cluster first.
-* If you use [remote clusters](/deploy-manage/remote-clusters.md) functionality, upgrade the remote clusters first.
+* If you use [remote cluster](/deploy-manage/remote-clusters.md) functionality, upgrade the remote clusters first.
 
 To perform the upgrade, follow the instructions below for your specific deployment type:
 
@@ -170,7 +174,11 @@ During the upgrade process, all components of your deployment are upgraded in th
 
 :::{applies-item} ece:
 
-To upgrade your deployment to 8.19, follow the steps in [Upgrade on Elastic Cloud → Perform the upgrade](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html#perform-cloud-upgrade). *Note: Although this guide refers to {{ecloud}}, the same steps apply to ECE deployments.*
+To upgrade your deployment to 8.19, follow the steps in [Upgrade on Elastic Cloud → Perform the upgrade](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html#perform-cloud-upgrade). 
+
+:::{note}
+Although this guide refers to {{ecloud}}, the same steps apply to ECE deployments.
+:::
 
 During the upgrade process, all components of your deployment are upgraded in the expected order:
 - {{es}}  
@@ -178,7 +186,7 @@ During the upgrade process, all components of your deployment are upgraded in th
 - Integrations Server ({{fleet-server}} and APM)  
 :::
 
-:::{applies-item} { eck: }
+:::{applies-item} eck:
 
 To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md).
 
