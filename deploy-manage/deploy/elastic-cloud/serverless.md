@@ -65,6 +65,8 @@ To learn more about serverless status, see [Service status](../../cloud-organiza
 
 The following FAQ addresses common questions about using {{serverless-full}} projects.
 
+For information about upcoming features, refer to our [roadmap](https://www.elastic.co/cloud/serverless/roadmap).
+
 ### Pricing and availability
 **Q: Where can I learn about pricing for {{serverless-short}}?**  
 A: See pricing information for [{{es-serverless}}](https://www.elastic.co/pricing/serverless-search), [{{observability}}](https://www.elastic.co/pricing/serverless-observability), and [{{sec-serverless}}](https://www.elastic.co/pricing/serverless-security).
@@ -73,6 +75,7 @@ A: See pricing information for [{{es-serverless}}](https://www.elastic.co/pricin
 A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with plans to expand to more regions. For more information, refer to [](/deploy-manage/deploy/elastic-cloud/regions.md).
 
 ### Data management
+
 **Q: How can I move data to or from {{serverless-short}} projects?**  
 A: We are working on data migration tools. In the interim, [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from {{serverless-short}} projects.
 
@@ -82,6 +85,9 @@ A: Request for project backups or restores is currently unsupported, and we are 
 ### Security, compliance, and access
 **Q: How can I create {{serverless-full}} service accounts?**  
 A: Create API keys for service accounts in your {{serverless-short}} projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
+
+**Q: What compliance and privacy standards does {{serverless-full}} adhere to?**  
+A: Alongside the entire Elastic platform, {{serverless-full}} is independently audited and certified to meet industry-leading compliance and privacy standards. Refer to the [Elastic Trust Center](https://www.elastic.co/trust) for more information. Further details about specific standards are available on our [roadmap](https://www.elastic.co/cloud/serverless/roadmap).
 
 ### Project lifecycle and support
 **Q: How does {{serverless-full}} ensure compatibility between software versions?**  
