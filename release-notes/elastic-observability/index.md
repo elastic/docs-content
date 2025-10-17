@@ -26,8 +26,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements[elastic-observability-9.2.0-features]
 
 * Lets you create routing conditions directly from preview table in Streams. [#235560]({{kib-pull}}235560).
-* Updates the Observability navigation menu [#233784]({{kib-pull}}233784).
-* Observability navigation uses new icons [#236808]({{kib-pull}}236808).
+* Updates the Observability navigation menu [#233784]({{kib-pull}}233784), [#236808]({{kib-pull}}236808).
 * Adds functional tests for Logs Essentials tier to cover tier-specific behavior [#234904]({{kib-pull}}234904).
 * Enables Observability onboarding Playwright tests for the Logs Essentials tier [#234644]({{kib-pull}}234644).
 * Adds **View in Discover** to the alerts details page for Synthetics Monitor Status and TLS alert rules. [#234104]({{kib-pull}}234104).
@@ -35,20 +34,18 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds **View in discover** button to alert details header [#233259]({{kib-pull}}233259).
 * Adds time range filter to links from alert details to related dashboards [#230601]({{kib-pull}}230601).
 * Adds rules callout in metric, logs, and inventory rules [#237085]({{kib-pull}}237085).
-* Adds ability for users choose how to recover alerts, when the monitor is back up or when the condition is no longer met. [#229962]({{kib-pull}}229962).
+* Adds option to recover alerts when the monitor is back up or when the condition is no longer met. [#229962]({{kib-pull}}229962).
 * Adds the **Trace timeline** to Discover flyout [#234072]({{kib-pull}}234072).
 * Adds `send_traces`, `send_metrics`, and `send_logs` agent configuration settings for EDOT Node.js [#233798]({{kib-pull}}233798).
-* Adds the ability to link dashboards to SLOs [#233265]({{kib-pull}}233265).
+* Adds option to link dashboards to SLOs [#233265]({{kib-pull}}233265).
 * Adds dashboard references to SLO saved objects [#232583]({{kib-pull}}232583).
 * Adds dashboard tags for linked dashboards and suggested dashboards on the alert details page's **Related dashboards** tab [#228902]({{kib-pull}}228902).
 * Fetches referenced panels when fetching dashboards [#228811]({{kib-pull}}228811).
-* Moves the installation settings for AI Assistant's Knowledge Base and Product Docs components into a single location. [#232559]({{kib-pull}}232559).
+* Moves the installation settings for AI Assistant's Knowledge Base and Product Docs components into a single location [#232559]({{kib-pull}}232559), [#228695]({{kib-pull}}228695).
 * Makes AI Assistant aware of LLM-facing documentation for integrations installed in your cluster [#237085]({{kib-pull}}237085).
 * Adds `raw_request` to traces for `.gen-ai`, `.gemini`, and `.bedrock` connectors [#232229]({{kib-pull}}232229).
-* Installs product docs when the knowledge base is installed [#228695]({{kib-pull}}228695).
-* Adds manual test for bulk import functionality for Observability AI Assistant [#225497]({{kib-pull}}225497).
+* Adds manual test for bulk import functionality for AI Assistant [#225497]({{kib-pull}}225497).
 * Improves the AI Assistant Settings page by updating the logos to be solution-specific [#224906]({{kib-pull}}224906).
-* Adds docs for chat/complete public API [#224235]({{kib-pull}}224235).
 * Improves Gemini prompts [#223476]({{kib-pull}}223476).
 * Adds UI tests to validate the onboarding page [#232363]({{kib-pull}}232363).
 * Shows span links when APM indices are available [#232135]({{kib-pull}}232135).
@@ -58,7 +55,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds error param to agent config API [#230298]({{kib-pull}}230298).
 * Creates an API to detect existing schemas [#226597]({{kib-pull}}226597).
 * Adds ability to paste screenshots into markdown comment fields for cases [#226077]({{kib-pull}}226077).
-* Adds ability to the shared logs overview to see all available log events even when ML features are not available [#225785]({{kib-pull}}225785).
+* Adds option to the shared logs overview to see all available log events even when ML features are not available [#225785]({{kib-pull}}225785).
 
 ### Fixes [elastic-observability-9.2.0-fixes]
 
@@ -67,7 +64,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).
 * Adds background search to Observability navigation [#237494]({{kib-pull}}237494).
 * Fixes the multiselect issue inside the toolbar selector when search is used [#237494]({{kib-pull}}237494).
-* Fixes the page height of the Observability AI Assistant page [#233924]({{kib-pull}}233924).
+* Fixes the page height of the AI Assistant page [#233924]({{kib-pull}}233924).
 * Fixes **Show alert details** actions button [#233113]({{kib-pull}}233113).
 * Fixes `get_alerts_dataset_info` to fail completely if any parallel `select_relevant_fields` request fails [#232281]({{kib-pull}}232281).
 * Adjusts Kubernetes OTel test to work in serverless nightly workflow [#231462]({{kib-pull}}231462).
