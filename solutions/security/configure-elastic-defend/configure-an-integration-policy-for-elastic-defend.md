@@ -13,7 +13,7 @@ products:
 
 # Configure an integration policy for {{elastic-defend}}
 
-After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts. If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
+After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts. If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, trusted devices, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
 
 You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then follow the steps for [adding the {{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md#add-security-integration).
 
