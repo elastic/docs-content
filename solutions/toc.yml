@@ -625,6 +625,7 @@ toc:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
           - file: security/manage-elastic-defend/trusted-applications.md
+          - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md
