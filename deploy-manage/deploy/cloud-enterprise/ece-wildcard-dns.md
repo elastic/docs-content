@@ -40,20 +40,17 @@ For this reason, using a wildcard DNS certificate is recommended over a certific
 ### Operational cost perspective
 
 A central ECE proxy manages all traffic for dynamically created endpoints and performs TLS termination for incoming requests. Since all deployment hostnames cannot be predicted in advance, a wildcard certificate (`*.ece.mycompany.com`) provides optimal flexibility, allowing the proxy to present a valid certificate for any deployment URL accessed by a user.
-
 By contrast, a static SAN certificate requires reissuing the certificate whenever a new deployment is created and updating the SAN list for all clusters and applications (Elasticsearch, Kibana, etc.), which increases operational overhead.
 
 ### Security perspective
 
 We suggest configuring your wildcard DNS certificate as a subdomain (e.g., `*.ece.mycompany.com`). Doing so significantly reduces security risks associated with certificate misconfigurations.
-
 By contrast, if a certificate with static SAN entries does not include the new deployment’s cluster IDs (each component has its own FQDN), clients will encounter certificate name mismatch warnings, indicating a security misconfiguration.
 
 
 ### Performance perspective
 
 Wildcard certificates are generally more performant than certificates with a large number of SAN entries. They are smaller, which reduces TLS handshake time, and scale automatically with new deployments. 
-
 By contrast, certificates with a large number of SAN entries can increase handshake latency and may affect client compatibility.
 
 
