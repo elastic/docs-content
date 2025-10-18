@@ -15,6 +15,8 @@ Cases are used to open and track issues directly in {{kib}}. You can add assigne
 
 {applies_to}`stack: preview` {applies_to}`serverless: preview` You can also optionally add custom fields and case templates.
 
+{applies_to}`stack: ga 9.2` Cases are automatically assigned human-readable numeric IDs, which you can use for easier referencing. Each time you create a new case in your [space](docs-content://deploy-manage/manage-spaces.md), the case ID increments by one. IDs are assigned to cases by a background task that runs every 10 minutes, which can cause a delay in ID assignment, especially in spaces with many cases. You can find the case ID after the case's name and can use it while searching the Cases table.
+
 :::{image} /explore-analyze/images/kibana-cases-list.png
 :alt: Cases page
 :screenshot:
