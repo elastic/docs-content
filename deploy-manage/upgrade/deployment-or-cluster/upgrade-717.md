@@ -23,6 +23,10 @@ Upgrading from 7.17 to {{version.stack}} requires two major upgrades. Each major
     This completes the upgrade to the latest 9.x release.
     Before running this upgrade, all ingest components and client libraries must be upgraded to 8.19.x.
 
+:::{note}
+Upgrading only to version 8.19.x is also a supported path, as it remains a maintained and fully supported release. However, we recommend completing the upgrade to the latest {{version.stack}} version to take advantage of ongoing improvements and new features.
+:::
+
 The following sections describe these phases in detail and point to the relevant documentation for each deployment type.
 
 Refer to [upgrade paths](/deploy-manage/upgrade.md#upgrade-paths) for more information.
@@ -46,7 +50,7 @@ The [planning phase](/deploy-manage/upgrade/plan-upgrade.md) ensures that the up
 
 It involves defining a clear sequence of actions and assessing the impact on [service availability](/deploy-manage/upgrade.md#availability-during-upgrades) and performance during the upgrade.
 
-For the 7.17.x → 9.x upgrade path, the main planning outcome is a set of required actions to ensure compatibility across the ecosystem:
+For the 7.17.x → 9.x upgrade path, the main planning outcome is a set of required actions to ensure compatibility across the environment:
 
 * **Ingest components:**
 
@@ -158,6 +162,8 @@ Keep the following considerations in mind when upgrading your deployment or clus
 * If you use [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md) with a dedicated monitoring cluster, upgrade your monitoring cluster first.
 * If you use [remote cluster](/deploy-manage/remote-clusters.md) functionality, upgrade the remote clusters first.
 
+Before starting the upgrade, run the same checks and validations you plan to perform afterward, so you have a baseline for comparison. Refer to [](#819-validation) for example checks.
+
 To perform the upgrade, follow the instructions below for your specific deployment type:
 
 ::::{applies-switch}
@@ -186,7 +192,9 @@ During the upgrade process, all components of your deployment are upgraded in th
 - Integrations Server ({{fleet-server}} and APM)  
 :::
 
+
 :::{applies-item} eck:
+In ECK, upgrades are performed declaratively by updating the `spec.version` field in the resource manifest. Once the new version is applied, the operator automatically orchestrates the upgrade, ensuring that each component is upgraded safely and in the correct order.
 
 To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md).
 
@@ -201,12 +209,10 @@ Make sure to upgrade all components in the specified order.
 
 ::::
 
-### 8.19 upgrade validation
+### 8.19 upgrade validation [819-validation]
 
-After completing the upgrade, verify that your system is fully operational. Check that data ingestion and search are working as expected, clients and integrations can connect, and {{kib}} is accessible.
-
-Confirm that the cluster is healthy and reports the expected version.
-
+:::{include} _snippets/upgrade-validation.md
+:::
 
 ### Upgrade ingest components to 8.19.x
 
@@ -215,6 +221,12 @@ Because the upgrade to 8.19.x is an intermediate step toward {{version.stack}}, 
 Refer to [Upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md) for more details.  
 
 After upgrading your ingest components, verify that they’re running correctly and sending data to the cluster before proceeding with the next upgrade.
+
+:::{note}
+At this point, you have a fully operational {{stack}} 8.19.x environment. You can choose to remain on this version, as it’s fully maintained and supported.
+
+However, we recommend upgrading to {{version.stack}} to benefit from the latest features and performance improvements.
+:::
 
 ## Upgrade Step 2: 8.19.x → {{version.stack}}
 
@@ -351,34 +363,15 @@ Follow the steps in the [upgrade Elastic on-prem](https://www.elastic.co/guide/e
 
 ### {{version.stack}} upgrade validation
 
-(TBD)
+:::{include} _snippets/upgrade-validation.md
+:::
 
 ### (Optional) Upgrade ingest components to {{version.stack}}
 
-(TBD)
-This step is optional, because all ingest components on 8.19.x are compatible with {{stack}} 9.x.
+This step is optional, as all ingest components running on 8.19.x are fully compatible with {{stack}} 9.x. However, upgrading them to {{version.stack}} ensures version alignment across your environment and allows you to take advantage of the latest features, performance improvements, and fixes.
 
-Refer to [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md) for more details.
+Refer to [Upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md) for detailed upgrade instructions.
 
+## Next steps
 
-## Post-Upgrade Wrap-Up
-
-(TBD)
-- Confirm cluster stability over an observation period  
-- Update operational runbooks and monitoring baselines  
-- Validate client library upgrades and integrations  
-- Decommission old snapshots if no longer needed  
-- Document lessons learned  
-
-<!--
-(internal list):
-upgrade assistant
-  * if you are prompted.... refer to xxx ccr / transforms / old ML indices
-breaking changes
-plugins
-snapshot
-test
-monit first
-remote first
-close ML jobs
--->
+You now have a fully upgraded {{stack}} {{version.stack}} environment. To explore new capabilities, see [What’s new in {{version.stack}}](/release-notes/intro/index.md#whats-new-in-the-latest-elastic-release).
