@@ -47,6 +47,7 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
         "AUTH_HEADER": "ApiKey ${API_KEY}"
       }
     }
+  }
 }
 ```
 
