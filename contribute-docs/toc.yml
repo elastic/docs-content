@@ -8,5 +8,8 @@ toc:
       - file: guidelines.md
       - file: organize-annotate.md
       - file: quickstart.md
+        children:
+          - file: elasticsearch-api-docs-quickstart.md
+          - file: kibana-api-docs-quickstart.md
       - file: workflows.md
       - file: help.md
