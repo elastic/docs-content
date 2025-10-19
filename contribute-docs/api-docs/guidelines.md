@@ -510,7 +510,7 @@ paths:
 :::{tab-item} Elasticsearch
 :sync: elasticsearch
 
-**External documentation links** use the `@ext_doc_id` annotation to connect to narrative guides. This is transformed into an OpenAPI `externalDocs` field in the [compilation process](overview.md#example-elasticsearch):
+**External documentation links** use the `@ext_doc_id` annotation to connect to narrative guides. This is transformed into an OpenAPI `externalDocs` field in the [compilation process](./overview.md#example-elasticsearch):
 
 ```ts
 /**
