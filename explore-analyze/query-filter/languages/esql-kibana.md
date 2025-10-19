@@ -190,6 +190,9 @@ FROM kibana_sample_data_logs
 
 To display data within a specified time range, you can use the standard time filter, custom time parameters, or a WHERE command.
 
+% DO NOT REMOVE - Link from the product, will become a real section link shortly
+$$$esql-multi-values-controls$$$
+
 
 #### Standard time filter [_standard_time_filter]
 
