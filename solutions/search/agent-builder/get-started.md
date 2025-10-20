@@ -43,7 +43,7 @@ You have to enable {{agent-builder}} to get started on non-serverless deployment
 
 You can enable the features using the UI:
 
-1. Navigate to **Management > AI > Agent Builder** using the navigation menu or search for **AI / Agent Builder** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Search for **AI / Agent Builder** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Toggle **{{agent-builder}}** to on.
 3. Select **Save changes**.
 
