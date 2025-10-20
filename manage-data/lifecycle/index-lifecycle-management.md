@@ -101,3 +101,5 @@ For existing hot-warm deployments that are currently using index curation, migra
 * [Manage existing indices](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
 * [Migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
 * [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)
+
+You can also set up {{ilm-init}} to manage an existing set of indices that do not already have a managed lifecycle. The {{ilm-init}} policy that you apply should not contain a rollover action, because the policy won't be carried forward when the rollover action creates a new index. Refer to [Manually apply a lifecycle policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to learn more.
