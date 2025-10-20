@@ -35,8 +35,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the Security Entity Analytics risk score reset feature [#237829]({{kib-pull}}237829).
 * Introduces a Security risk scoring AI Assistant tool [#233647]({{kib-pull}}233647).
 * Uses {{esql}} for calculating entity risk scores [#237871]({{kib-pull}}237871).
-* Updates the entity source saved object schema to support integrations sync markers [#236457]({{kib-pull}}236457).
-* Enables privileged user monitoring advanced setting by default [#237436]({{kib-pull}}237436).
+* Enables privileged user monitoring and the Entity analytics navigation item by default [#237436]({{kib-pull}}237436).
 * Enables discovering privileged users from the Entity Analytics Okta integration [#237129]({{kib-pull}}237129).
 * Adds the data view picker to the **Privileged user monitoring** dashboard page [#233264]({{kib-pull}}233264).
 * Implements minor UI changes on **Privileged user monitoring** dashboard page [#231921]({{kib-pull}}231921).
