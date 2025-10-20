@@ -23,7 +23,7 @@ Unlike {{agent}} integrations based on the [Elastic Common Schema](ecs://referen
 When OTel data is collected using an OpenTelemetry input package, content packages with assets related to the collected data type are automatically installed if available.
 
 :::{important}
-OpenTelemetry input packages are used with {{Fleet}} and {{agent}} running in default mode. They are distinct from [running {{agent}} as an EDOT Collector](/reference/fleet/otel-agent.md), and cannot be used on {{agent}} running in `otel` mode.
+OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in default mode. They are distinct from [running {{agent}} as an EDOT Collector](/reference/fleet/otel-agent.md), and cannot be used on {{agent}} running in `otel` mode.
 :::
 
 ## Configure OpenTelemetry input packages
