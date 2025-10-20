@@ -68,18 +68,18 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds two new {{elastic-defend}} advanced policy settings that allow you to opt out of collecting ransomware diagnostics on macOS [#235193]({{kib-pull}}235193).
 * Adds an {{elastic-defend}} advanced policy setting to disable the filtering of file-backed volumes and CD-ROMs in the `device_control` plugin [#236620]({{kib-pull}}236620).
 * Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start {{agent}} service.
-* Updates the `endpoint-package` submodule.
+* Adds a new device data stream to the {{elastic-defend}} integration.
+* Adds two new dashboards to the {{elastic-defend}} integration.
 * Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
 * Increases the throughput of {{elastic-defend}}'s {{ls}} connections by increasing the maximum size it can upload at once.
-* Adds {{elastic-defend}} support for device control on macOS.
-* Updates the device control schema.
+* Adds {{elastic-defend}} support for device control on macOS and Windows.
 * Adds architecture of PE file in malware alerts to {{elastic-defend}}.
 * Adds the `Endpoint.state.orphaned` indicator to {{elastic-defend}} policy response.
 * Adds {{elastic-defend}} support for cluster migration.
 * Adds firewall anti-tamper plug-in to protect {{elastic-endpoint}} processes against network blocking via Windows Firewall.
-* Includes `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields by default to Windows image load and process events, if the information can be retrieved.
+* Includes `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields to {{elastic-defend}} by default to Windows image load and process events, if the information can be retrieved.
 * Improves {{elastic-defend}} by integrating a new Event Tracing for Windows (ETW) provider (Microsoft-Windows-Ldap-Client) to create new event types that prebuilt endpoint rules can use to detect malicious LDAP activity.
-* Adds more Linux diagnostic process `ptrace` events.
+* Adds more {{elastic-defend}} Linux diagnostic process `ptrace` events.
 * Improves reporting reliability and accuracy of {{elastic-defend}}'s {{es}} connection.
 * Enriches {{elastic-defend}} macOS network connect events with `network.direction`. Possible values are `ingress` and `egress`.
 * Improves {{elastic-defend}} malware scan queue efficiency by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
