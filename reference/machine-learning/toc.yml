@@ -1,0 +1,22 @@
+toc:
+  - file: index.md
+  - file: supplied-anomaly-detection-configurations.md
+    children:
+      - file: ootb-ml-jobs-apache.md
+      - file: ootb-ml-jobs-apm.md
+      - file: ootb-ml-jobs-auditbeat.md
+      - file: ootb-ml-jobs-logs-ui.md
+      - file: ootb-ml-jobs-metricbeat.md
+      - file: ootb-ml-jobs-metrics-ui.md
+      - file: ootb-ml-jobs-nginx.md
+      - file: ootb-ml-jobs-siem.md
+      - file: ootb-ml-jobs-uptime.md
+  - file: machine-learning-functions.md
+    children:
+      - file: ml-count-functions.md
+      - file: ml-geo-functions.md
+      - file: ml-info-functions.md
+      - file: ml-metric-functions.md
+      - file: ml-rare-functions.md
+      - file: ml-sum-functions.md
+      - file: ml-time-functions.md
