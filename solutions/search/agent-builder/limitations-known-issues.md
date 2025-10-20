@@ -18,11 +18,11 @@ These pages are currently hidden from the docs TOC and have `noindexed` meta hea
 
 ### Agent Builder not enabled by default
 
-While in private technical preview, {{agent-builder}} is not enabled by default. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
+{{agent-builder}} must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
 
 ### Model selection
 
-Initially, {{agent-builder}} only supports working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) {applies_to}`serverless: preview` {applies_to}`ess: preview 9.2`.
+Initially, {{agent-builder}} only supports working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) {applies_to}`stack: preview 9.2`.
 
 Learn about [pricing](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM.
 
@@ -45,6 +45,8 @@ Error executing agent: No tool calls found in the response.
 ### {{esql}} limitations
 
 {{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
+
+For non-serverless deployments, ensure your cluster supports the {{esql}} features you intend to use.
 
 For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
