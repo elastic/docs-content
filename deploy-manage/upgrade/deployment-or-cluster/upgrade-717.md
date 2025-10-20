@@ -68,7 +68,7 @@ For the 7.17.x → 9.x upgrade path, the main planning outcome is a set of requi
   
 * **Client libraries:**
 
-  If you use custom-developed applications that rely on [{{es}} client libraries](/reference/elasticsearch-clients/index.md), make sure to include them in your plan. Typically, libraries are upgraded to match the {{es}} version after each of the major upgrades.
+  If you use custom-developed applications that rely on [{{es}} client libraries](/reference/elasticsearch-clients/index.md), make sure to include them in your plan. Client libraries must be upgraded after each major {{es}} upgrade to ensure support and compatibility.
 
   Applications that use deprecated or removed APIs might require code updates, or you can use the [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) feature to maintain compatibility with the next major version.
 
@@ -92,7 +92,7 @@ The [upgrade preparation steps from 7.x](https://www.elastic.co/guide/en/elastic
 
 During a major upgrade, the [**Upgrade Assistant**](https://www.elastic.co/guide/en/kibana/7.17/upgrade-assistant.html) in {{kib}} 7.17 plays a critical role. It scans your cluster for deprecated settings, incompatible indices, and other issues that could prevent nodes from starting after the upgrade. The tool guides you through reindexing old indices, fixing configuration problems, and reviewing deprecation logs to ensure your deployment is fully compatible with the next major version. Ignoring its recommendations can lead to upgrade failures or cluster downtime.
 
-While the **Upgrade Assistant** helps you identify breaking changes that affect your deployment or cluster, it's still recommended to review the complete list of breaking changes and known issues during your preparation phase. These are available in the following documents:
+While the **Upgrade Assistant** helps you identify breaking changes that affect your deployment or cluster, it's still recommended to review the complete list of breaking changes and known issues in every release from your current version through your target version as part of the preparation phase. These are available in the following documents:
 * [{{es}} 8.x migration guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/breaking-changes.html)
 * [Kibana breaking changes summary](https://www.elastic.co/guide/en/kibana/8.19/breaking-changes-summary.html)
 
