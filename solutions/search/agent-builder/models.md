@@ -61,8 +61,6 @@ For programmatic access to connector management, refer to the [Connectors API do
 
 {{agent-builder}} requires models with strong reasoning and tool-calling capabilities. State-of-the-art models perform significantly better than smaller or older models.
 
-### Recommended model families
-
 The following models are known to work well with {{agent-builder}}:
 
 - **OpenAI**: GPT-4.1, GPT-4o
@@ -93,7 +91,7 @@ While any chat-completion-compatible connector can technically be configured, we
 GPT-4o-mini and similar smaller models are not recommended for {{agent-builder}} as they lack the necessary capabilities for reliable agent workflows.
 :::
 
-## Related pages
+## Related resources
 
 - [Limitations and known issues](limitations-known-issues.md): Current limitations around model selection
 - [Get started](get-started.md): Initial setup and configuration
