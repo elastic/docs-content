@@ -1,4 +1,5 @@
 ---
+navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/getting-started.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: security
 ---
 
-# Get started [getting-started]
+# Get started with {{elastic-sec}} [getting-started]
 
 New to {{elastic-sec}}? Follow the instructions in this topic to get started. Then, review the rest of the Get Started section to learn how to use the UI, review requirements, and discover more about our security features.
 

@@ -19,10 +19,10 @@ After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you
 
 ## Add an {{infer}} processor to an ingest pipeline [ml-nlp-inference-processor]
 
-In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+In {{kib}}, you can create and edit pipelines from the **Ingest Pipelines** management page. You can find this page in the main menu or using the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/machine-learning-ml-nlp-pipeline-lang.png
-:alt: Creating a pipeline in the Stack Management app
+:alt: Creating a pipeline
 :screenshot:
 :::
 
