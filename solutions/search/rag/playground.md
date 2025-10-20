@@ -74,6 +74,9 @@ To use Playground, you’ll need the following:
 
 3. An account with a **supported LLM provider**. Playground supports the following:
 
+    * **Elastic**
+        * [Elastic Managed LLM](kibana://reference/kibana/connectors-kibana/elastic-managed-llm.md)
+
     * **Amazon Bedrock**
 
         * Anthropic: Claude 3.5 Sonnet
