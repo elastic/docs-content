@@ -31,8 +31,6 @@ Add a trusted device to exempt it from device control:
 
 ## View and manage trusted devices
 
-## View and manage trusted devices
-
 The **Trusted devices** page displays all the trusted devices that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
 :::{image} /solutions/images/security-trusted-devices-list.png
@@ -41,13 +39,13 @@ The **Trusted devices** page displays all the trusted devices that have been add
 :::
 
 
-### Edit a trusted application [edit-trusted-app]
+### Edit a trusted device
 
-You can individually modify each trusted application. You can also change the policies that a trusted application is assigned to.
+You can individually modify each trusted device. You can also change the policies that a trusted device is assigned to.
 
-To edit a trusted application:
+To edit a trusted device:
 
-1. Click the actions menu (**…**) on the trusted application you want to edit, then select **Edit trusted device**.
+1. Click the actions menu (**…**) on the trusted device you want to edit, then select **Edit trusted device**.
 2. Modify details as needed.
 3. Click **Save**.
 
