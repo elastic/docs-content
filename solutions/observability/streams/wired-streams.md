@@ -7,13 +7,35 @@ products:
   - id: cloud-serverless
 ---
 
-# Send data to wired streams [streams-wired-streams]
+# Wired streams [streams-wired-streams]
 
 With wired streams, all logs are sent to a single `/logs` endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) rules you set up manually or with the help of AI suggestions.
 
-To send data to wired streams, you need to:
+For more on wired streams, refer to:
+- [Wired streams field naming](#streams-wired-streams-field-naming)
 - [Turn on wired streams](#streams-wired-streams-enable)
-- [Configure your data shipper](#streams-wired-streams-ship)
+- [Send data to streams](#streams-wired-streams-ship)
+- [View data in Discover]()
+
+## Wired streams field naming [streams-wired-streams-field-naming]
+
+Wired streams store and process data in a normalized OpenTelemetry (OTel)–compatible format. This format aligns Elastic Common Schema (ECS) fields with OTel semantic conventions so all data is consistently structured and OTTL-expressible.
+
+When data is ingested into a wired stream, it’s automatically translated into this normalized format:
+- Standard ECS documents are converted to OTel fields (`message → body.text`, `log.level → severity_text`, `host.name → resource.attributes.host.name`, and so on).
+- Custom fields are stored under `attributes.*`.
+
+To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.
+
+| ECS field | OTel field |
+|------------|-------------------------|
+| `message` | `body.text` |
+| `log.level` | `severity_text` |
+| `span.id` | `span_id` |
+| `trace.id` | `trace_id` |
+| `host.name` | `resource.attributes.host.name` |
+| `host.ip` | `resource.attributes.host.ip` |
+| `custom_field` | `attributes.custom_field` |
 
 ## Turn on wired streams [streams-wired-streams-enable]
 
@@ -22,7 +44,7 @@ To turn on wired streams:
 1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Settings**.
 1. Turn on **Enable wired streams**.
 
-## Configure your data shipper [streams-wired-streams-ship]
+## Ship data to streams [streams-wired-streams-ship]
 
 To send data to wired streams, configure your shippers to send data to the `/logs` endpoint. To do this, complete the following configurations for your shipper:
 
@@ -92,6 +114,10 @@ Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 :::
 
 ::::
+
+## View wired streams in Discover [streams-wired-streams-discover]
+
+To view wired log streams in Discover, you need to manually [create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern), and add the wireds streams  index pattern to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Next steps
 
