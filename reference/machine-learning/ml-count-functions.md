@@ -17,9 +17,9 @@ Use high-sided functions if you want to monitor unusually high event rates. Use 
 
 The {{ml-features}} include the following count functions:
 
-* [`count`, `high_count`, `low_count`](ml-count-functions.md#ml-count)
-* [`non_zero_count`, `high_non_zero_count`, `low_non_zero_count`](ml-count-functions.md#ml-nonzero-count)
-* [`distinct_count`, `high_distinct_count`, `low_distinct_count`](ml-count-functions.md#ml-distinct-count)
+* [`count`, `high_count`, `low_count`](/reference/machine-learning/ml-count-functions.md#ml-count)
+* [`non_zero_count`, `high_non_zero_count`, `low_non_zero_count`](/reference/machine-learning/ml-count-functions.md#ml-nonzero-count)
+* [`distinct_count`, `high_distinct_count`, `low_distinct_count`](/reference/machine-learning/ml-count-functions.md#ml-distinct-count)
 
 
 ## Count, high_count, low_count [ml-count]

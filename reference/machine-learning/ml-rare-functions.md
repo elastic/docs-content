@@ -23,8 +23,8 @@ The `rare` analysis detects anomalies according to the number of distinct rare v
 
 The {{ml-features}} include the following rare functions:
 
-* [`rare`](ml-rare-functions.md#ml-rare)
-* [`freq_rare`](ml-rare-functions.md#ml-freq-rare)
+* [`rare`](/reference/machine-learning/ml-rare-functions.md#ml-rare)
+* [`freq_rare`](/reference/machine-learning/ml-rare-functions.md#ml-freq-rare)
 
 
 ## Rare [ml-rare]
