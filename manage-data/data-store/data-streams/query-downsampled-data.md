@@ -29,7 +29,7 @@ For more details, refer to [Date histogram aggregation: Time zone](elasticsearch
 
 ## {{esql}} `TS` command
 ```{applies_to}
-stack: planned
+stack: preview 9.2
 serverless: preview
 ```
 
