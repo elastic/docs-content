@@ -21,7 +21,7 @@ Elastic provides several self-managed and Elastic-managed options. For simplicit
 ::::{dropdown} Create an Elastic Security Serverless project
 
 There are two options to create serverless projects:
-- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, check out [Trial features](/docs/deploy-manage/deploy/elastic-cloud/create-an-organization#general-sign-up-trial-what-is-included-in-my-trial).
+- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, check out [Trial features](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#get-started-with-your-trial-general-sign-up-trial-how-do-i-get-started-with-my-trial).
 - If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and follow [these instructions](./get-started/create-security-project.md) on how to create a serverless project.  
 
 :::{note}
@@ -37,7 +37,7 @@ Alternatively, if you prefer a self-managed deployment, you can create a [local 
 curl -fsSL https://elastic.co/start-local | sh
 ```
 
-Check out the full list of [deployment types](/docs/deploy-manage/deploy#choosing-your-deployment-type) to learn more.
+Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
 
 :::::
 
@@ -53,7 +53,7 @@ After you've deployed {{elastic-sec}}, the next step is to get data into the pro
 :screenshot:
 :::
 
-Elastic also provides different [ingestion methods](integration-docs://reference/index.md#ingestion-methods) to meet your infrastructure needs. 
+Elastic also provides different [ingestion methods](/manage-data/ingest.md) to meet your infrastructure needs. 
 
 :::{{tip}}
 If you have data from a source that doesn't yet have an integration, you can use our [Automatic Import tool](/solutions/security/get-started/automatic-import.md).   
