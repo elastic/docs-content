@@ -47,7 +47,7 @@ You can enable the features using the UI:
 2. Toggle **{{agent-builder}}** to on.
 3. Select **Save changes**.
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
@@ -55,7 +55,7 @@ Find **Agents** in the navigation menu to begin using the feature, or search for
 
 {{agent-builder}} is enabled by default in serverless deployments.
 
-Find **Agents** in the navigation menu to begin using the feature.
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
