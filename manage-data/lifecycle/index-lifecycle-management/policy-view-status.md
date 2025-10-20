@@ -24,7 +24,8 @@ If you're investigating an {{ilm-init}}-related problem, refer to [Troubleshoot 
 :sync: kibana
 **To view the current lifecycle status for one or more indices:**
 
-1. Go to **Stack Management > Index Management** and open the **Indices** tab.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Indices** tab.
 1. Enable **Include hidden indices** to view all indices, including those managed by ILM. Note that if you're using data streams, you can find the data stream associated with any index listed in the **Data stream** column.
 1. Use the search tool to find the index you're looking for. You can also filter the results by lifecycle status and lifecycle phase.
 1. Select the index to view details.
@@ -40,7 +41,8 @@ To learn how to create a specialized ILM policy for any data stream, such as tho
 
 **To view the current lifecycle status for a datastream:**
 
-1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view details. The flyout that opens includes direct links to the ILM policy and the index template.
 
