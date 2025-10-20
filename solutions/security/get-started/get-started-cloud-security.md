@@ -13,7 +13,7 @@ In this quickstart guide, you'll learn how to get started with Elastic Security 
 
 ## Prerequisites 
 
-* Access to an {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md) to learn how to create one. 
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). To see all deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type).
 * An admin account for the cloud service provider (CSP) you want to use.  
 
 
