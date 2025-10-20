@@ -22,7 +22,7 @@ Elastic provides several self-managed and Elastic-managed options. For simplicit
 ::::{dropdown} Create an Elastic Security Serverless project
 
 There are two options to create serverless projects:
-- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, check out [Trial features](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#get-started-with-your-trial-general-sign-up-trial-how-do-i-get-started-with-my-trial).
+- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 - If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and follow [these instructions](./get-started/create-security-project.md) on how to create a serverless project.  
 
 :::{note}
