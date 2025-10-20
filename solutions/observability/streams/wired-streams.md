@@ -14,8 +14,8 @@ With wired streams, all logs are sent to a single `/logs` endpoint, from which y
 For more on wired streams, refer to:
 - [Wired streams field naming](#streams-wired-streams-field-naming)
 - [Turn on wired streams](#streams-wired-streams-enable)
-- [Send data to streams](#streams-wired-streams-ship)
-- [View data in Discover]()
+- [Send data to wired streams](#streams-wired-streams-ship)
+- [View wired streams in Discover](#streams-wired-streams-discover)
 
 ## Wired streams field naming [streams-wired-streams-field-naming]
 
