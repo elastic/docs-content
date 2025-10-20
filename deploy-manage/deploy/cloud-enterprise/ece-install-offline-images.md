@@ -17,13 +17,13 @@ The first table contains the stack versions shipped with the current {{version.e
 | Docker images included with {{ece}} {{version.ece}} |
 | --- |
 | docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}} |
-| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.8 |
-| docker.elastic.co/cloud-release/kibana-cloud:8.18.8 |
-| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.8 |
-| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.8 |
-| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.8 |
-| docker.elastic.co/cloud-release/kibana-cloud:9.0.8 |
-| docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.8 |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}} |
+| docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}} |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}} |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}} |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}} |
+| docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}} |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}} |
 
 $$$ece-all-stacks$$$Additional {{stack}} versions are available as Docker images that you can use with ECE. For offline installations, you need to download both the {{stack}} pack and the Docker images for the same version.
 
