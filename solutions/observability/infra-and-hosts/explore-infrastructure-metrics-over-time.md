@@ -20,7 +20,7 @@ To open **Metrics Explorer**, find **Infrastructure** in the main menu or use th
 :screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md) documentation.
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/observability/metrics-reference.md) documentation.
 
 ::::{tip}
 If there are no metrics to display, {{kib}} prompts you to add a metrics integration. Click **Add a metrics integration** to get started. If you want to add more data in the future, click **Add data** from any page in the {{infrastructure-app}}.
