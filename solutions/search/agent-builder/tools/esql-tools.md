@@ -52,12 +52,33 @@ Parameters can be configured as:
 
 In your {{esql}} query, reference parameters using the `?parameter_name` syntax. The agent will automatically interpolate parameter values when executing the query.
 
+### Example
+
+Here's an example {{esql}} tool that searches for books using full-text search. `?search_terms` is a named parameter that the agent will provide when executing the query. 
+
+```esql
+FROM books
+| WHERE MATCH(title, ?search_terms)
+| KEEP title, author, year
+| LIMIT 10
+```
+
+You can ask the LLM to infer the parameters for the query or add them manually.
+
+:::{image} ../images/create-esql-tool-query.png 
+:alt: Creating an ES|QL tool with a parameterized query
+:::
 
 ## Best practices
 
-- **Include LIMIT clauses**: Prevent returning excessive results by setting reasonable limits
+- **Include [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) clauses**: Prevent returning excessive results by setting reasonable limits
 - **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents (e.g., `start_date` instead of `date1`)
+- **Define parameter types**: Ensure parameters have the correct type to avoid runtime errors
 - **Provide clear descriptions**: Help agents understand when and how to use each parameter
+
+## Limitations
+
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For more information, refer to [{{esql}} tool limitations](../limitations-known-issues.md#esql-limitations).
 
 ## {{esql}} documentation
 

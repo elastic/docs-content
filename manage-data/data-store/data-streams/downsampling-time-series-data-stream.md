@@ -8,7 +8,6 @@ applies_to:
 products:
   - id: elasticsearch
 ---
-% TODO flesh out after the rest of the section has been restructured
 
 # Downsampling a time series data stream [downsampling]
 
