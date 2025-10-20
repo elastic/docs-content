@@ -1,4 +1,4 @@
-1. While editing your {{esql}} query, the autocomplete menu suggests adding a control when relevant or when typing `?` in the query. Select **Create control**.
+1. While you edit your {{esql}} query, the autocomplete menu suggests adding a control when relevant or when you type `?` in the query. Select **Create control**.
 
    ![ESQL query prompting to add a control](/explore-analyze/images/esql-visualization-control-suggestion.png " =40%")
 
