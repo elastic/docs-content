@@ -2,6 +2,8 @@
 navigation_title: Scenario 3
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario3.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
