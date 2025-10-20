@@ -57,7 +57,6 @@ You can also search for **Agent Builder** in the [global search bar](/explore-an
 {{agent-builder}} is enabled by default in serverless deployments.
 
 Find **Agents** in the navigation menu to begin using the feature.
-You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
