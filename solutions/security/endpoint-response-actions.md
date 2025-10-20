@@ -18,7 +18,7 @@ The response console allows you to perform response actions on an endpoint using
 Response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
 
 ::::{admonition} Requirements
-* Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+* Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Endpoints must have {{agent}} version 8.4 or higher installed with the {{elastic-defend}} integration to receive response actions.
 * Some response actions require:
   * In {{stack}}, specific [privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md), indicated below.
@@ -41,7 +41,7 @@ Launch the response console from any of the following places in {{elastic-sec}}:
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**
-* {applies_to}`stack: ga 9.1` Event details flyout → **Take action** → **Respond** 
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` Event details flyout → **Take action** → **Respond** 
 
 To perform an action on the endpoint, enter a [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the input area at the bottom of the console, then press **Return**. Output from the action is displayed in the console.
 
@@ -253,7 +253,7 @@ For CrowdStrike, you must include one of the following parameters to identify th
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
 
-   {applies_to}`stack: ga 9.1` When using this parameter, select from a list of saved custom scripts.
+   {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` When using this parameter, select from a list of saved custom scripts.
 
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
@@ -278,6 +278,7 @@ Examples:
 #### Microsoft Defender for Endpoint
 ```yaml {applies_to}
 stack: ga 9.1
+serverless: ga
 ```
 
 For Microsoft Defender for Endpoint, you must include the following parameter to identify the script you want to run:
@@ -300,6 +301,7 @@ Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
 #### SentinelOne
 ```yaml {applies_to}
 stack: ga 9.2
+serverless: ga
 ```
 For SentinelOne, you must include the following parameter to identify the script you want to run:
 
@@ -314,6 +316,26 @@ Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operati
 Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
 
 Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.backup.txt"`
+
+### `cancel` [cancel]
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+::::{note}
+This response action is supported only for [Microsoft Defender for Endpoint–enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions).
+::::
+
+Cancel an ongoing action on the host. This allows you to force-cancel actions that are stuck in a pending state, unblocking further use of the response console.
+
+You must include the following parameter to identify the action to cancel:
+
+* `--action`: The response action to cancel. Select from a list of pending actions.
+
+Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
+
+Example: `cancel --action="copy.sh" --comment="Canceled because it is stuck"`
 
 ## Supporting commands and parameters [supporting-commands-parameters]
 

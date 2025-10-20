@@ -27,12 +27,36 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.5 [elastic-security-9.1.5-release-notes]
+
+### Features and enhancements [elastic-security-9.1.5-features-enhancements]
+* Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
+* Increases the throughput of {{elastic-defend}} Logstash connections by increasing the maximum size it can upload at once.
+* Improves reliability and accuracy of reporting of the {{elastic-defend}}'s {{es}} connection.
+
+### Fixes [elastic-security-9.1.5-fixes]
+* Fixes browser fields caching to use the `dataView` ID instead of the index pattern [#234381]({{kib-pull}}234381).
+* Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
+* Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
+* Fixes system prompt updates from the Conversations tab in AI Assistant [#234812]({{kib-pull}}234812).
+* Fixes an issue in the Highlighted fields table in the alert details flyout [#234222]({{kib-pull}}234222).
+* Fixes an issue in rule exceptions to include the `matches` operator only for supported fields [#233127]({{kib-pull}}233127).
+* Adds support in {{elastic-defend}} for installing eBPF event probes on Linux endpoints when cgroup2 is mounted in a non-standard location or not mounted at all.
+* Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
+* Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
+* Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') would be logged.
+
+
 ## 9.1.4 [elastic-security-9.1.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.4-features-enhancements]
 * Adds more Linux diagnostic process `ptrace` events.
 
 ### Fixes [elastic-security-9.1.4-fixes]
+* Fixes filtering on the **Alerts** page by checking for an empty dataView [#235144]({{kib-pull}}235144).
 * Fixes a bug where the toggle column functionality only functioned on the **Alerts** page [#234278]({{kib-pull}}234278).
 * Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
 * Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
@@ -166,6 +190,22 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a memory growth bug in {{elastic-defend}} on Linux when both **Collect session data** and **Capture terminal output** are enabled.
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
+
+## 9.0.8 [elastic-security-9.0.8-release-notes]
+
+### Features and enhancements [elastic-security-9.0.8-features-enhancements]
+* Adds an {{elastic-defend}} option to remediate orphaned state by attempting to start Elastic Agent service.
+
+### Fixes [elastic-security-9.0.8-fixes]
+* Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
+* Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
+* Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
+* Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
+* Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Improves the reliability of local {{elastic-defend}} administrative shell commands. In rare cases, a command could fail to execute due to issue with interprocess communication.
+* Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
+* Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') would be logged.
 
 ## 9.0.7 [elastic-security-9.0.7-release-notes]
 

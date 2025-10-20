@@ -19,7 +19,6 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 :screenshot:
 :::
 
-
 ## Add the data and create the dashboard [add-the-data-and-create-the-dashboard]
 
 Add the sample web logs data, and create and set up the dashboard.
@@ -34,14 +33,17 @@ Add the sample web logs data, and create and set up the dashboard.
 
 Open the visualization editor, then make sure the correct fields appear.
 
-1. On the dashboard, click **Create visualization**.
+1. Create a visualization.
+   
+   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0` Click **Create visualization**.
+
 2. Make sure the **{{kib}} Sample Data Logs** {{data-source}} appears.
 
    :::{image} /explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png
    :alt: Data view dropdown
    :screenshot:
    :::
-
 
 To create the visualizations in this tutorial, you’ll use the following fields:
 
@@ -58,7 +60,6 @@ Click a field name to view more details, such as its top values and distribution
 :screenshot:
 :width: 50%
 :::
-
 
 ## Create your first visualization [view-the-number-of-website-visitors]
 
@@ -89,17 +90,20 @@ The only number function that you can use with **clientip** is **Unique count**,
 
 4. Click **Save and return**.
 
-
 ## View a metric over time [mixed-multiaxis]
 
 There are two shortcuts you can use to view metrics over time. When you drag a numeric field to the workspace, the visualization editor adds the default time field from the {{data-source}}. When you use the **Date histogram** function, you can replace the time field by dragging the field to the workspace.
 
 To visualize the **bytes** field over time:
 
-1. On the dashboard, click **Create visualization**.
+1. Create a visualization.
+   
+   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+
 2. From the **Available fields** list, drag **bytes** to the workspace.
 
-    The visualization editor creates a bar chart with the **timestamp** and **Median of bytes** fields.
+   The visualization editor creates a bar chart with the **timestamp** and **Median of bytes** fields.
 
 3. To zoom in on the data, click and drag your cursor across the bars.
 
@@ -150,15 +154,17 @@ Since you removed the axis labels, add a panel title:
    :width: 50%
    :::
 
-
-
 ## View the top values of a field [view-the-distribution-of-visitors-by-operating-system]
 
 Create a visualization that displays the most frequent values of **request.keyword** on your website, ranked by the unique visitors. To create the visualization, use **Top values of request.keyword** ranked by **Unique count of clientip**, instead of being ranked by **Count of records**.
 
 The **Top values** function ranks the unique values of a field by another function. The values are the most frequent when ranked by a **Count** function, and the largest when ranked by the **Sum** function.
 
-1. On the dashboard, click **Create visualization**.
+1. Create a visualization.
+   
+   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+
 2. From the **Available fields** list, drag **clientip** to the **Vertical axis** field in the layer pane.
 
     The visualization editor automatically applies the **Unique count** function. If you drag **clientip** to the workspace, the editor adds the field to the incorrect axis.
@@ -200,13 +206,15 @@ The chart labels are unable to display because the **request.keyword** field con
 
     Since the table columns are labeled, you do not need to add a panel title.
 
-
-
 ## Compare a subset of documents to all documents [custom-ranges]
 
 Create a proportional visualization that helps you determine if your users transfer more bytes from documents under 10KB versus documents over 10Kb.
 
-1. On the dashboard, click **Create visualization**.
+1. Create a visualization.
+   
+   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+
 2. From the **Available fields** list, drag **bytes** to the **Vertical axis** field in the layer pane.
 3. In the layer pane, click **Median of bytes**.
 4. Click the **Sum** quick function, then click **Close**.
@@ -251,12 +259,15 @@ Add a panel title:
 1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png "kibana-settings-icon-hover-action =4%x4%"). The **Settings** flyout appears.
 2. In the **Title** field, enter `Sum of bytes from large requests`, then click **Apply**.
 
-
 ## View the distribution of a number field [histogram]
 
 The distribution of a number can help you find patterns. For example, you can analyze the website traffic per hour to find the best time for routine maintenance.
 
-1. On the dashboard, click **Create visualization**.
+1. Create a visualization.
+   
+   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+
 2. From the **Available fields** list, drag **bytes** to **Vertical axis** field in the layer pane.
 3. In the layer pane, click **Median of bytes**.
 
@@ -280,12 +291,15 @@ Add a panel title:
 1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png "kibana-settings-icon-hover-action =4%x4%"). The **Settings** flyout appears.
 2. In the **Title** field, enter `Website traffic`, then click **Apply**.
 
-
 ## Create a multi-level chart [treemap]
 
 **Table** and **Proportion** visualizations support multiple functions. For example, to create visualizations that break down the data by website traffic sources and user geography, apply the **Filters** and **Top values** functions.
 
-1. On the dashboard, click **Create visualization**.
+1. Create a visualization.
+   
+   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+
 2. Open the **Visualization type** dropdown, then select **Treemap**.
 3. From the **Available fields** list, drag **Records** to the **Metric** field in the layer pane.
 4. In the layer pane, click **Add or drag-and-drop a field** for **Group by**.

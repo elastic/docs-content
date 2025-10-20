@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: FAQ
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps for self-managed clusters FAQ
@@ -16,7 +19,7 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 * [Does this feature require additional payment?](#additional-payment)
 * [Is there an added cost for shipping metrics data to {{ecloud}}?](#autoops-metrics-cost)
 * [Which versions of {{es}} does AutoOps support?](#es-versions)
-* [Which deployment types can be connected to AutoOps?](#deployment-types)
+* [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 
 **Questions about setting up**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
@@ -24,9 +27,10 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 * [Can I use macOS to install {{agent}} for this feature?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 
-**Questions about collected metrics**
+**Questions about collected metrics and data**
 * [Where are AutoOps metrics stored?](#autoops-metrics-storage)
 * [What information does {{agent}} extract from my cluster?](#extracted-info)
+* [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
 
 ## General questions
 $$$why-autoops$$$ **Why should I use AutoOps for my clusters?** 
@@ -42,9 +46,9 @@ $$$autoops-metrics-cost$$$ **Is there an added cost for shipping metrics data to
     You can [choose the CSP region where your data is stored](#autoops-metrics-storage). 
 
 $$$es-versions$$$ **Which versions of {{es}} does AutoOps support?**
-:   AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.co/support/eol).
+:   AutoOps is compatible with [supported {{es}} versions](https://www.elastic.co/support/eol) (7.17.x and above).
 
-$$$deployment-types$$$ **Which deployment types can be connected to AutoOps?**
+$$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
 
 ## Questions about setting up
@@ -65,7 +69,7 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 
 :   For more information, refer to [](/deploy-manage/security/elastic-cloud-static-ips.md).
 
-## Questions about collected metrics
+## Questions about collected metrics and data
 $$$autoops-metrics-storage$$$ **Where are AutoOps metrics stored?**
 :   You can choose where to store your metrics from the following AWS regions:
 
@@ -88,3 +92,14 @@ $$$extracted-info$$$ **What information does {{agent}} extract from my cluster?*
     | [_template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-template) | Retrieves legacy index templates | Similar to composable index templates but in older format |
     | [_resolve/index/*](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index) | Resolves index, data stream, and alias names to their current definitions | Mappings between names and underlying data objects |
 
+$$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure its security?**
+:   AutoOps gathers data from your cluster using two protocols:
+    * **HTTP request**: Made to our Cloud Connected API to register your cluster with {{ecloud}} and gather registration-related data.
+    * **OpenTelemetry Protocol (OTLP)**: Used to gather all other operational data.
+
+    Each channel is authenticated through an API key or token to ensure your data's security. The following table offers more details: 
+
+    | Protocol | Data extracted | Port | Authentication method | 
+    | --- | --- | --- | --- |
+    | HTTP |  Basic cluster information from the `/` endpoint <br><br> License information from the `/_license` endpoint | **443**: standard HTTPS port | Uses an {{ecloud}} API key which is limited for use with Cloud Connect only. |
+    | OTLP over HTTP | Operational information | **443**: standard HTTPS port | Uses an AutoOps token which is functionally equivalent to an API key. |

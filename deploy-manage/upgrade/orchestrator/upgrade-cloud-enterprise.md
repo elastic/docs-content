@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece_re_running_the_ece_upgrade.html
 applies_to:
   deployment:
-    ece:
+    ece: ga
 products:
   - id: cloud-enterprise
 ---
