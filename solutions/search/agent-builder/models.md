@@ -40,7 +40,7 @@ By default, {{agent-builder}} uses the Elastic Managed LLM. To use a different m
 2. Select **Create Connector** and select your model provider
 3. Configure the connector with your API credentials and preferred model
 4. Search for **GenAI Settings** in the global search field
-5. Select your new connector from the **Default AI Connector** dropdown
+5. Select your new connector from the **Default AI Connector** dropdown under **Custom connectors**
 6. Save your changes
 
 For detailed instructions on creating connectors, refer to [Connectors](https://www.elastic.co/docs/deploy-manage/manage-connectors).
