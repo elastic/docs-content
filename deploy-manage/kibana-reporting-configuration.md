@@ -34,7 +34,11 @@ Before upgrading {{kib}} in a production environment, we encourage you to test y
 
 ## Configuration overview
 
-To secure {{report-features}}, you must grant users access to reporting functionality and protect the reporting endpoints with TLS/SSL encryption. Additionally, you can install graphical packages on the operating system to enable screenshot capabilities in the {{kib}} server.
+To secure {{report-features}}, you must grant users role access to reporting functionality and protect the reporting endpoints with [API key authentication](remote-clusters/remote-clusters-api-key.md). Additionally, you can install graphical packages on the operating system to enable screenshot capabilities in the {{kib}} server.
+
+:::{admonition} Set up security for cross-cluster search environments
+TLS certificate-based authentication is deprecated in 9.0.0. To secure connections between local (self-managed) and remote clusters, set up API key authentication instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](remote-clusters/remote-clusters-api-key.md).
+:::
 
 Configuring reporting in your environment involves two main areas:
 
