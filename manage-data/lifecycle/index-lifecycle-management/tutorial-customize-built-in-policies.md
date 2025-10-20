@@ -150,7 +150,7 @@ A `@custom` component template allows you to customize the mappings and settings
 
 Many {{es}} managed index templates include one or more `@custom` component templates. A `@custom` component template must first be created before it can be used, and its name must exactly match the name specified in the managed index template in order to be applied automatically to indices as they're created.
 
-For example, if you're ingesting OpenTelemetry (OTel) logs, any OTel log data streams and their backing indices are configured by the `logs-otel@template` managed index template. That index template automatically applies settings defined in the `logs@custom` or the `logs-otel@custom` template when they exist.
+For example, if you're ingesting OpenTelemetry (OTel) logs, any OTel log data streams and their backing indices are configured by the `logs-otel@template` managed index template. That index template automatically applies settings defined in the `logs@custom` and the `logs-otel@custom` template when they exist.
 
 Go to **Index Management > Index Templates** and select any managed index to view the `@custom` component templates associated with it. 
 
