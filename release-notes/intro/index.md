@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack/current/elastic-stack-breaking-changes.html
 products:
   - id: elastic-stack
-description: Explore the new features, enhancements, fixes, and deprecations for Elastic Stack 9.0+ (latest 9.1.1), Elastic Cloud Serverless, and...
+description: Explore new features, enhancements, fixes, and deprecations for Elastic Stack 9.0+, Elastic Cloud Serverless, and all other Elastic products
 navigation_title: Release notes
 ---
 
