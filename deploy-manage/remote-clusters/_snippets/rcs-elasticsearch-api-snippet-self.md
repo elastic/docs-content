@@ -5,6 +5,7 @@ This snippet is in use in the following locations:
 -->
 To configure a self-managed cluster as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
+* `Remote cluster alias`: When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI as **Remote cluster name**.
 * `mode`: `proxy`
 * `proxy_address`: Enter the endpoint of the remote self-managed cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
 
@@ -16,7 +17,7 @@ To configure a self-managed cluster as a remote cluster, use the [cluster update
 
 * `server_name`: Specify a value if the certificate presented by the remote cluster is signed for a different name than the proxy_address.
 
-This is an example of the API call to `_cluster/settings`:
+This is an example of the API call to add or update a remote cluster:
 
 ```json
 PUT /_cluster/settings
@@ -24,9 +25,9 @@ PUT /_cluster/settings
   "persistent": {
     "cluster": {
       "remote": {
-        "alias-for-my-remote-cluster": {
+        "alias-for-my-remote-cluster": { // Align the alias with the remote cluster name used when adding the API key.
           "mode":"proxy",
-          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9300",
+          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9400",
           "server_name": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io"
         }
       }
@@ -35,8 +36,4 @@ PUT /_cluster/settings
 }
 ```
 
-::::{note}
-When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
-::::
-
-For a full list of available client connection settings in proxy mode, refer to [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).
+For a full list of available client connection settings in proxy mode, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).
