@@ -1,16 +1,10 @@
 ---
-navigation_title: "Use different models"
+navigation_title: "Models"
 applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # Using different models in {{agent-builder}}
 
@@ -46,6 +40,12 @@ By default, {{agent-builder}} uses the Elastic Managed LLM. To use a different m
 For detailed instructions on creating connectors, refer to [Connectors](https://www.elastic.co/docs/deploy-manage/manage-connectors).
 
 Learn more about [preconfigured connectors](https://www.elastic.co/docs/reference/kibana/connectors-kibana/pre-configured-connectors).
+
+#### Connect a local LLM
+
+You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
+
+Refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md) for detailed setup instructions.
 
 ## Connectors API
 
@@ -86,12 +86,6 @@ While any chat-completion-compatible connector can technically be configured, we
 :::{note}
 GPT-4o-mini and similar smaller models are not recommended for {{agent-builder}} as they lack the necessary capabilities for reliable agent workflows.
 :::
-
-## Connect a local LLM
-
-You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
-
-Refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md) for detailed setup instructions.
 
 ## Related pages
 

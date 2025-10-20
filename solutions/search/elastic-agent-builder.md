@@ -6,10 +6,6 @@ applies_to:
     elasticsearch: preview
 ---
 
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-:::
-
 # {{agent-builder}} 
 
 {{agent-builder}} is a set of AI-powered capabilities for developing and interacting with agents that work with your {{es}} data. Agent Builder simplifies building data-driven agents with intuitive UI and programmatic interfaces, so you don't have to compose the different pieces separately.

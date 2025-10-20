@@ -6,18 +6,7 @@ applies_to:
     elasticsearch: preview
 ---
 
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
-
 # Get started with {{agent-builder}}
-
-:::{tip}
-Refer to the [overview page](../elastic-agent-builder.md) for the full list of Agent Builder docs.
-:::
-% TODO: Remove this tip when unhide pages
 
 Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 

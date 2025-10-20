@@ -6,12 +6,6 @@ applies_to:
     elasticsearch: preview
 ---
 
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
-
 # Work with {{agent-builder}} using the APIs
 
 This page provides a quick overview of the main Kibana API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-agent-builder).
