@@ -5,9 +5,10 @@ applies_to:
   stack: ga
 products:
   - id: observability
+navigation_title: Advanced configuration
 ---
 
-# Advanced configuration [profiling-advanced-configuration]
+# Advanced configuration for Elastic Universal Profiling [profiling-advanced-configuration]
 
 After completing the steps in the [Get started](get-started-with-universal-profiling.md) documentation, you may need to continue to more advanced configuration for your deployment. See the following sections for more information:
 

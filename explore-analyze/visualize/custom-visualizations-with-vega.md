@@ -1123,10 +1123,10 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 * Automatic sizing
 * Default theme to match {{kib}}
 * Writing {{es}} queries using the time range and filters from dashboards
-* [preview] Using the Elastic Map Service in Vega maps
+* {applies_to}`stack: preview` {applies_to}`serverless: preview` Using the Elastic Map Service in Vega maps
 * Additional tooltip styling
 * Advanced setting to enable URL loading from any domain
-* Debugging support using the {{kib}} inspector or browser console
+* Debugging support using the {{kib}} inspector
 * (Vega only) Expression functions which can update the time range and dashboard filters
 
 
@@ -1165,7 +1165,7 @@ padding: {
 To learn more, read about [Vega autosize](https://vega.github.io/vega/docs/specification/#autosize) and [Vega-Lite autosize](https://vega.github.io/vega-lite/docs/size.html).
 
 ::::{note}
-Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.html#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega. If you need full control, convert your spec to Vega using the [browser console](#vega-browser-debugging-console) `VEGA_DEBUG.vega_spec` output. To disable these warnings, you can [add extra options to your spec](#vega-additional-configuration-options).
+Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.html#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega.
 ::::
 
 
@@ -1320,8 +1320,12 @@ The `"%timefilter%"` can also be used to specify a single min or max value. The 
 
 
 #### Access Elastic Map Service files [vega-esmfiles]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
-[preview] Access the Elastic Map Service files via the same mechanism:
+Access the Elastic Map Service files using the same mechanism:
 
 ```yaml
 url: {
@@ -1343,8 +1347,12 @@ format: {property: "features"}
 
 
 ### Vega with a Map [vega-with-a-map]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
-[preview] To enable **Maps**, the graph must specify `type=map` in the host configuration:
+To enable **Maps**, the graph must specify `type=map` in the host configuration:
 
 ```yaml
 {
@@ -1390,7 +1398,7 @@ format: {property: "features"}
 
 The visualization automatically injects a `"projection"`, which you can use to calculate the position of all geo-aware marks. Additionally, you can use `latitude`, `longitude`, and `zoom` signals. These signals can be used in the graph, or can be updated to modify the position of the map.
 
-[preview] You can use the **Vega** [data](https://vega.github.io/vega/docs/data/) element to access [Elastic Maps Service (EMS)](https://www.elastic.co/elastic-maps-service) vector shapes of administrative boundaries in your Vega map by setting `url.data` to `emsFile`:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` You can use the **Vega** [data](https://vega.github.io/vega/docs/data/) element to access [Elastic Maps Service (EMS)](https://www.elastic.co/elastic-maps-service) vector shapes of administrative boundaries in your Vega map by setting `url.data` to `emsFile`:
 
 ```yaml
   "data": [
@@ -1472,7 +1480,7 @@ The runtime data is read from the [runtime scope](https://vega.github.io/vega/do
 :screenshot:
 :::
 
-To debug more complex specs, access to the `view` variable.  For more information, refer to the [Vega browser debugging process](#vega-browser-debugging-console).
+To debug more complex specs, copy the Vega spec from the **Spec** tab and use the [online Vega Editor](https://vega.github.io/editor/) to debug it.
 
 
 ##### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
@@ -1485,15 +1493,6 @@ Because of the dynamic nature of the data in {{es}}, it is hard to help you with
 :::
 
 To copy the response, click **Copy to clipboard**. Paste the copied data to [gist.github.com](https://gist.github.com/), possibly with a .json extension. Use the [raw] button, and share that when asking for help.
-
-
-#### Browser debugging console [vega-browser-debugging-console]
-
-[preview] Use browser debugging tools (for example, F12 or Ctrl+Shift+J in Chrome) to inspect the `VEGA_DEBUG` variable:
-
-* `view` — Access to the Vega View object. See [Vega Debugging Guide](https://vega.github.io/vega/docs/api/debugging/) on how to inspect data and signals at runtime. For Vega-Lite, `VEGA_DEBUG.view.data('source_0')` gets the pre-transformed data, and `VEGA_DEBUG.view.data('data_0')` gets the encoded data. For Vega, it uses the data name as defined in your Vega spec.
-* `vega_spec` — Vega JSON graph specification after some modifications by {{kib}}. In case of Vega-Lite, this is the output of the Vega-Lite compiler.
-* `vegalite_spec` — If this is a Vega-Lite graph, JSON specification of the graph before Vega-Lite compilation.
 
 
 #### (Vega only) Expression functions which can update the time range and dashboard filters [vega-expression-functions]

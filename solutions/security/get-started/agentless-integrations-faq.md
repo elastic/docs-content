@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Agentless integrations FAQs
 ---
 
-# Agentless integrations FAQ [agentless-integration-troubleshooting]
+# {{elastic-sec}} agentless integrations FAQs [agentless-integration-troubleshooting]
 
 :::{include} _snippets/agentless-integrations-faq.md
 :::

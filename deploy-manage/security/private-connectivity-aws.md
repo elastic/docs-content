@@ -35,7 +35,7 @@ Before you begin, review  the following considerations:
 
 ### Private connections and regions
 
-Private connectivity with AWS PrivateLink is supported only in AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations).
+Private connectivity with AWS PrivateLink is supported only in AWS regions.
 
 AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the ID (e.g. `use1-az4`) of each available AZ for the service.
 
@@ -135,14 +135,17 @@ $ aws ec2 describe-availability-zones --region us-east-1 | jq -c '.AvailabilityZ
 
 The mapping will be different for your region. Our production VPC Service for `us-east-1` is located in `use1-az2`, `use1-az4`, `use1-az6`. We need to create the VPC Endpoint for the preceding mapping in at least one of `us-east-1e`, `us-east-1a`, `us-east-1b`.
 
+:::{note}
+This limitation does not apply to [cross-region PrivateLink connections](#ec-aws-inter-region-private-link). If you're creating a cross-region connection, then you don't need to check that your VPC is present in all availability zones.
+:::
 
 ### Create your VPC endpoint and DNS entries in AWS [ec-aws-vpc-dns]
 
 1. Create a VPC endpoint in your VPC using the service name for your region.
 
-    Refer to the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) for details on creating a VPC interface endpoint to an endpoint service.
+    Refer to the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) for additional details on creating a VPC interface endpoint to an endpoint service.
 
-    Use [the service name for your region](#ec-private-link-service-names-aliases).
+    Select **PrivateLink Ready partner services** as the endpoint type. Use [the service name for your region](#ec-private-link-service-names-aliases) as the **Service name**.
 
     :::{image} /deploy-manage/images/cloud-ec-private-link-service.png
     :alt: PrivateLink
@@ -150,6 +153,10 @@ The mapping will be different for your region. Our production VPC Service for `u
     :::
 
     The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
+
+    :::{tip}
+    You can also create a cross-region endpoint. Refer to [Setting up an cross-region Private Link connection](#ec-aws-inter-region-private-link).
+    :::
 
 2. Create a DNS record.
 
@@ -294,7 +301,7 @@ If the policy doesn't contain a VPC filter, then the association can serve as a 
 
 ## Access the deployment over a PrivateLink [ec-access-the-deployment-over-private-link]
 
-For traffic to connect with the deployment over Azure PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
+For traffic to connect with the deployment over AWS PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
 
 ::::{important}
 Use the alias you’ve set up as CNAME DNS record to access your deployment.
@@ -337,6 +344,23 @@ To access the deployment:
 
 :::{include} _snippets/private-connection-fleet.md
 :::
+
+## Setting up a cross-region PrivateLink connection [ec-aws-inter-region-private-link]
+
+AWS supports cross-region PrivateLink as described on the [AWS blog](https://aws.amazon.com/blogs/networking-and-content-delivery/introducing-cross-region-connectivity-for-aws-privatelink/).
+
+This means your deployment on {{ecloud}} can be in a different region than the PrivateLink endpoints or the clients that consume the deployment endpoints.
+
+In this example, `region 1` contains your VPC endpoint and `region 2` is the region where your deployment is hosted.
+
+1. Begin to create your VPC endpoint in `region 1`, as described in [Create your VPC endpoint and DNS entries in AWS](#ec-aws-vpc-dns). In the service settings, do the following:
+
+    * In the **Service name** field, enter the [VPC service name](#ec-private-link-service-names-aliases) for `region 2`.
+    * Select **Enable Cross Region endpoint** and select `region 2` from the **Select a region** drop-down list.
+
+1. [Create a private connection policy](#create-private-connection-policy) in the region where your deployment is hosted (`region 2`), and [associate it](#associate-private-connection-policy) with your deployment.
+   
+2. [Test the connection](#ec-access-the-deployment-over-private-link) from a VM or client in `region 1` to your Private Link endpoint, and it should be able to connect to your {{es}} cluster hosted in `region 2`.
 
 ## Manage private connection policies
 

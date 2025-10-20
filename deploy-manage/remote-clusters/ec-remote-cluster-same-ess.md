@@ -1,5 +1,5 @@
 ---
-navigation_title: Within the same {{ecloud}} organization
+navigation_title: To the same {{ecloud}} organization
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-same-ess.html
 applies_to:
@@ -7,14 +7,16 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
+sub:
+  remote_type: Elastic Cloud Hosted deployment
 ---
 
-# Access other deployments of the same {{ecloud}} organization [ec-remote-cluster-same-ess]
+# Connect to deployments in the same {{ecloud}} organization [ec-remote-cluster-same-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ecloud}} organization.
 
 ::::{note}
-If network security is enabled on the remote cluster, the remote cluster administrator must configure a private connection policy of type **Remote cluster**, specifying either the organization ID or the Elasticsearch cluster ID. For detailed instructions, refer to [Remote clusters and network security](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-network-security).
+If network security policies are applied to the remote cluster, the remote cluster administrator must configure a [private connection policy of type remote cluster](/deploy-manage/security/remote-cluster-filtering.md), using either the organization ID or the Elasticsearch cluster ID of the local cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
 ::::
 
 ## Allow the remote connection [ec_allow_the_remote_connection]
@@ -61,12 +63,12 @@ The API key created previously will be used by the local deployment to authentic
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the navigation menu, select **Security**.
-4. Locate **Remote connections** and select **Add API key**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
     1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key.
 
@@ -77,7 +79,7 @@ The API key created previously will be used by the local deployment to authentic
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
@@ -163,67 +165,24 @@ You can now connect remotely to the trusted clusters.
 
 ## Connect to the remote cluster [ec_connect_to_the_remote_cluster]
 
-On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
+On the local cluster, add the remote cluster using {{kib}}, the {{es}} API, or the {{ecloud}} API.
 
 
 ### Using {{kib}} [ec_using_kibana]
 
-1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
-2. Enable **Manually enter proxy address and server name**.
-3. Fill in the following fields:
-
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
-    * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
-
-      ::::{tip}
-      If you’re using API keys as security model, change the port into `9443`.
-      ::::
-
-    * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
-      ::::
-
-4. Click **Next**.
-5. Click **Add remote cluster** (you have already established trust in a previous step).
-
+:::{include} _snippets/rcs-kibana-api-snippet.md
+:::
 
 ### Using the {{es}} API [ec_using_the_elasticsearch_api]
 
-To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
+:::{include} _snippets/rcs-elasticsearch-api-snippet.md
+:::
 
-* `mode`: `proxy`
-* `proxy_address`: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
-
-  ::::{tip}
-  If you’re using API keys as security model, change the port into `9443`.
-  ::::
-
-
-* `server_name`: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
-
-This is an example of the API call to `_cluster/settings`:
-
-```json
-PUT /_cluster/settings
-{
-  "persistent": {
-    "cluster": {
-      "remote": {
-        "alias-for-my-remote-cluster": {
-          "mode":"proxy",
-          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9400",
-          "server_name": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io"
-        }
-      }
-    }
-  }
-}
+### Using the {{ecloud}} API [ec_using_the_elasticsearch_service_restful_api]
+```{applies_to}
+deployment:
+  ess: deprecated
 ```
-
-
-### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api]
 
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model and when both clusters belong to the same organization. For other scenarios, the [{{es}} API](#ec_using_the_elasticsearch_api) should be used instead.

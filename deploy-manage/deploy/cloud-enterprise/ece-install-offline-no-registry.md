@@ -19,13 +19,13 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.2
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.2
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.2
-    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.2
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.1
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.1
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.1
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}}
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
     ```
 
     ::::{note}
@@ -36,13 +36,13 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker save -o ece.{{version.ece}}.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker save -o es.8.18.2.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.2
-    docker save -o kibana.8.18.2.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.2
-    docker save -o apm.8.18.2.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.2
-    docker save -o enterprise-search.8.18.2.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.2
-    docker save -o es.9.0.1.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.1
-    docker save -o kibana.9.0.1.tar docker.elastic.co/cloud-release/kibana-cloud:9.0.1
-    docker save -o apm.9.0.1.tar docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.1
+    docker save -o es.8.18.2.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
+    docker save -o kibana.8.18.2.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}}
+    docker save -o apm.8.18.2.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
+    docker save -o enterprise-search.8.18.2.tar docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
+    docker save -o es.9.0.1.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
+    docker save -o kibana.9.0.1.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}}
+    docker save -o apm.9.0.1.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
     ```
 
 3. Copy the .tar files to a location on your network where they are available to each host where you plan to install {{ece}}. Alternatively, you can copy the .tar files to each host directly.
@@ -50,13 +50,13 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker load < FILE_PATH/ece.{{version.ece}}.tar
-    docker load < FILE_PATH/es.8.18.2.tar
-    docker load < FILE_PATH/kibana.8.18.2.tar
-    docker load < FILE_PATH/apm.8.18.2.tar
-    docker load < FILE_PATH/enterprise-search.8.18.2.tar
-    docker load < FILE_PATH/es.9.0.1.tar
-    docker load < FILE_PATH/kibana.9.0.1.tar
-    docker load < FILE_PATH/apm.9.0.1.tar
+    docker load < FILE_PATH/es.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/kibana.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/apm.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/enterprise-search.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/es.{{ece-docker-images-9}}.tar
+    docker load < FILE_PATH/kibana.{{ece-docker-images-9}}.tar
+    docker load < FILE_PATH/apm.{{ece-docker-images-9}}.tar
     ```
 
 5. Optional: Remove the .tar files after installation.

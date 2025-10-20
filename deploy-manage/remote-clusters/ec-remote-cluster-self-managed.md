@@ -1,5 +1,5 @@
 ---
-navigation_title: With a self-managed cluster
+navigation_title: To a self-managed cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-self-managed.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Access clusters of a self-managed environment [ec-remote-cluster-self-managed]
+# Connect {{ech}} deployments to self-managed clusters [ec-remote-cluster-self-managed]
 
 This section explains how to configure a deployment to connect remotely to self-managed clusters.
 
@@ -61,12 +61,12 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the navigation menu, select **Security**.
-4. Locate **Remote connections** and select **Add API key**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
-    1. Add a setting:
+    1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
 
@@ -77,7 +77,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 
 ::::
 
@@ -95,8 +95,8 @@ If you later need to update the remote connection with different permissions, yo
 
     1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
     3. Repeat these steps for each API key you want to add. For example, if you want to use several clusters of the remote environment for CCR or CCS.
@@ -111,7 +111,7 @@ If you later need to update the remote connection with different permissions, yo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 
 ::::
 ::::::
@@ -221,102 +221,13 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
 ### Using {{kib}} [ec_using_kibana_4]
 
-1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
-2. Enable **Manually enter proxy address and server name**.
-3. Fill in the following fields:
-
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
-    * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
-
-      ::::{tip}
-      If you’re using API keys as security model, change the port to `9443`.
-      ::::
-
-    * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
-      ::::
-
-4. Click **Next**.
-5. Click **Add remote cluster** (you have already established trust in a previous step).
-
+:::{include} _snippets/rcs-kibana-api-snippet-self.md
+:::
 
 ### Using the {{es}} API [ec_using_the_elasticsearch_api_4]
 
-To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
-
-* `mode`: `proxy`
-* `proxy_address`: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
-
-  ::::{tip}
-  If you’re using API keys as security model, change the port into `9443`.
-  ::::
-
-
-* `server_name`: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
-
-This is an example of the API call to `_cluster/settings`:
-
-```json
-PUT /_cluster/settings
-{
-  "persistent": {
-    "cluster": {
-      "remote": {
-        "alias-for-my-remote-cluster": {
-          "mode":"proxy",
-          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9400",
-          "server_name": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io"
-        }
-      }
-    }
-  }
-}
-```
-
-### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api_4]
-
-::::{note}
-This section only applies if you’re using TLS certificates as cross-cluster security model and when both clusters belong to the same organization. For other scenarios, the [{{es}} API](#ec_using_the_elasticsearch_api_4) should be used instead.
-::::
-
-
-```sh
-curl -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters -d '
-{
-  "resources" : [
-    {
-      "deployment_id": "$DEPLOYMENT_ID_REMOTE",
-      "elasticsearch_ref_id": "$REF_ID_REMOTE",
-      "alias": "alias-your-remote",
-      "skip_unavailable" : true
-    }
-  ]
-}'
-```
-
-`DEPLOYMENT_ID_REMOTE`
-:   The ID of your remote deployment, as shown in the Cloud UI or obtained through the API.
-
-`REF_ID_REMOTE`
-:   The unique ID of the {{es}} resources inside your remote deployment (you can obtain these values through the API).
-
-Note the following when using the {{ecloud}} RESTful API:
-
-1. A cluster alias must contain only letters, numbers, dashes (-), or underscores (_).
-2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](/solutions/search/cross-cluster-search.md#skip-unavailable-clusters).
-3. When remote clusters are already configured for a deployment, the `PUT` request replaces the existing configuration with the new configuration passed. Passing an empty array of resources will remove all remote clusters.
-
-The following API request retrieves the remote clusters configuration:
-
-```sh
-curl -X GET -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters
-```
-
-::::{note}
-The response will include just the remote clusters from the same {{ecloud}} organization. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
-::::
+:::{include} _snippets/rcs-elasticsearch-api-snippet-self.md
+:::
 
 ## Configure roles and users [ec_configure_roles_and_users_4]
 
