@@ -117,7 +117,7 @@ GET semantic-embeddings/_search
 {
   "query": {
     "match": {
-      "message": {
+      "content": {
         "query": "What causes muscle soreness after running?" <1>
       }
     }
