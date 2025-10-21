@@ -46,7 +46,9 @@ Instead of writing the Grok patterns by hand, you can use the **Generate Pattern
 
 Generated patterns work best on semi-structured data. For very custom logs with a lot of text, creating patterns manually generally creates more accurate results.
 
-![generated patterns](<../../../../images/logs-streams-patterns.png>)
+:::{image} ../../../../images/logs-streams-patterns.png
+:screenshot:
+:::
 
 To add a generated grok pattern:
 
