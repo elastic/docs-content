@@ -33,7 +33,7 @@ You can tell which {{data-source}} is active under **{{data-source-cap}}** in th
 ## Create or modify a {{data-source}} [security-data-views-in-sec-create-or-modify-a-data-source]
 
 :::{note}
-:applies_to: stack: ga 9.2
+:applies_to: {"stack": "ga 9.2", "serverless": "ga"}
 Some data views are managed by Elastic and cannot be edited. However, you can [duplicate them](/explore-analyze/find-and-organize/data-views.md#duplicate-managed-data-view) and make changes to the duplicate without affecting the managed data view. 
 :::
 
