@@ -14,12 +14,12 @@ navigation_title: Built-in alerts and templates
 
 ## {{agent}} out-of-the-box alert rules [ea-alert-rules]
 
-When you install or upgrade {{agent}}, a new alert rule is created automatically. You can configure and customize out-of-the-box alerts to get them up and running quickly. 
+When you install or upgrade {{agent}}, new alert rules are created automatically. You can configure and customize out-of-the-box alerts to get them up and running quickly. 
 
 ::::{note}
-The built-in alerts feature for {{agent}} requires a valid Enterprise license or Enterprise trial license. Be sure that the license is in place before you install or upgrade {{agent}}. 
+The built-in alerts feature for {{agent}} is available only for some subscription levels. The license (or a trial license) must be in place before you install or upgrade {{agent}} before this feature is available. 
 
-Check the [subscription information](https://www.elastic.co/subscriptions) for more details about managing licenses.
+Refer [Elastic subscriptions](https://www.elastic.co/subscriptions) for more information. 
 ::::
 
 In {{kib}}, you can enable out-of-the-box rules pre-configured with reasonable defaults to provide immediate value for managing agents.
