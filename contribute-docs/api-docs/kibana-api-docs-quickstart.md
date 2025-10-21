@@ -22,11 +22,11 @@ The core Kibana APIs are automatically generated from TypeScript route definitio
 :::{tab-item} Manual YAML
 :sync: manual
 
-Some teams, including Security and Observability, work with hand-edited YAML files in the `oas_docs` directory. Edit these files directly and skip the code-generation steps.
+Some teams, including Security and Observability, work with hand-edited YAML files in their plugin and package directories. Edit these files directly and skip the code-generation steps. For the complete list of files, refer to the [merge scripts](https://github.com/elastic/kibana/tree/main/oas_docs/scripts). 
 :::
 ::::
 
-For the complete list of files and which workflow they follow, refer to the [merge scripts](https://github.com/elastic/kibana/tree/main/oas_docs/scripts). For more details, see the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
+ For more details, see the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
 
 ## Quickstart
 
