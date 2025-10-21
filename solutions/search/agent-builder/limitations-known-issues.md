@@ -4,33 +4,31 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # Limitations and known issues in {{agent-builder}}
 
 ## Limitations
 
-### Agent Builder not enabled by default
+### Feature availability
 
-While in private technical preview, {{agent-builder}} is not enabled by default. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
+#### Non-serverless deployments
 
-### Model selection
+{{agent-builder}} is enabled by default in {{serverless-full}} for {{es}} projects.
 
-Initially, {{agent-builder}} only supports working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) {applies_to}`serverless: preview` {applies_to}`ess: preview 9.2`.
+However, it must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
 
-Learn about [pricing](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM.
+#### Serverless deployments
+
+In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
 
 ## Known issues
 
 ### Incompatible LLMs
 
-While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}. We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) (the default).
+While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}. We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) (the default). Learn more in [](models.md).
 
 The following errors suggest your selected model may not be compatible with {{agent-builder}}:
 
@@ -41,6 +39,14 @@ Error: Invalid function call syntax
 ```console-response
 Error executing agent: No tool calls found in the response.
 ```
+
+### {{esql}} limitations
+
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
+
+For non-serverless deployments, ensure your cluster supports the {{esql}} features you intend to use.
+
+For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
 ### Misinterpreted SQL syntax as ES|QL
 

@@ -27,14 +27,14 @@ You can find log rate analysis embedded in multiple applications. In {{kib}}, yo
 :screenshot:
 :::
 
-Select a spike or drop in the log event histogram chart to start the analysis. It identifies statistically significant field-value combinations that contribute to the spike or drop and displays them in a table. You can optionally choose to summarize the results into groups. The table also shows an indicator of the level of impact and a sparkline showing the shape of the impact in the chart. Hovering over a row displays the impact on the histogram chart in more detail. You can inspect a field in **Discover**, further investigate in **Log pattern analysis**, or copy the table row information as a query filter to the clipboard by selecting the corresponding option under the **Actions** column. You can also pin a table row by clicking on it then move the cursor to the histogram chart. It displays a tooltip with exact count values for the pinned field which enables closer investigation.
+Select a spike or drop in the log event histogram chart to start the analysis. It identifies statistically significant field-value combinations that contribute to the spike or drop and displays them in a table. The table also shows an indicator of the level of impact and a sparkline showing the shape of the impact in the chart. Hovering over a row displays the impact on the histogram chart in more detail. You can inspect a field in **Discover**, further investigate in **Log pattern analysis**, or copy the table row information as a query filter to the clipboard by selecting the corresponding option under the **Actions** column. You can also pin a table row by clicking on it then move the cursor to the histogram chart. It displays a tooltip with exact count values for the pinned field which enables closer investigation.
 
 Brushes in the chart show the baseline time range and the deviation in the analyzed data. You can move the brushes to redefine both the baseline and the deviation and rerun the analysis with the modified values.
 
-:::{image} /explore-analyze/images/kibana-ml-log-rate-analysis.png
-:alt: Log rate spike explained
-:screenshot:
-:::
+% :::{image} /explore-analyze/images/kibana-ml-log-rate-analysis.png
+% :alt: Log rate spike explained
+% :screenshot:
+% :::
 
 ## Log pattern analysis [log-pattern-analysis]
 
