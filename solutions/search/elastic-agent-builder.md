@@ -4,11 +4,9 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-:::
 
 # {{agent-builder}} 
 
@@ -53,6 +51,13 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 To get started you need an Elastic deployment and you must enable the feature.
 
 [**Get started with {{agent-builder}}**](agent-builder/get-started.md)
+
+## Model selection
+
+By default, agents use the Elastic Managed LLM, but you can configure other model providers using connectors, including local LLMs deployed on your infrastructure.
+
+[**Learn more about model selection**](agent-builder/models.md)
+
 
 ## Programmatic interfaces
 
