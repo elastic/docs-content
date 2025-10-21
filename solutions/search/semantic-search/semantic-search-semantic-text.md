@@ -117,15 +117,16 @@ GET semantic-embeddings/_search
 {
   "query": {
     "match": {
-      "content": {
-        "query": "What causes muscle soreness after running?" <1>
+      "content": { <1>
+        "query": "What causes muscle soreness after running?" <2>
       }
     }
   }
 }
 ```
 
-1. The query text.
+1. The `semantic_text` field on which you want to perform the search.
+2. The query text.
 :::
 
 :::{tab-item} ES|QL
