@@ -7,7 +7,7 @@ applies_to:
 
 {{stack}} version 7.17 has a defined end of support date of 15 January 2026, as stated in the [Elastic Product & Version End of Life Policy](https://www.elastic.co/support/eol). This document provides a guided plan to upgrade from 7.17 to the latest {{version.stack}} release. It complements the official upgrade documentation by showing how the different pieces fit together in a complete upgrade exercise.
 
-This guide applies to all deployment types: ({{ech}} (ECH), {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters) running {{es}} version **7.17.x**. If you are using an earlier version, [upgrade first to the latest 7.17 release](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html) before proceeding.
+This guide applies to all clusters running {{stack} version **7.17.x** across all deployment types, including {{ech}} (ECH), {{ece}} (ECE), or {{eck}} (ECK) deployments and completely self-managed clusters. If you are using an earlier version, [upgrade first to the latest 7.17 release](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html) before proceeding.
 
 ## Overview
 
