@@ -15,7 +15,7 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 ## Requirements
 
 * The user who gives the Cloud Asset Discovery integration permissions in Azure must be an Azure subscription `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require the [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing).
 * The Cloud Asset Discovery integration is supported only on Azure, not on Azure Government. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 
@@ -26,8 +26,8 @@ You can set up Cloud Asset Discovery for Azure by enrolling an Azure organizatio
 
 Two deployment technologies are available: agentless and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 
 ## Agentless deployment [cad-azure-agentless]
@@ -49,7 +49,7 @@ Two deployment technologies are available: agentless and agent-based.
 ## Agent-based deployment [cad-azure-agent-based]
 
 
-### Add your Cloud Asset Discovery integration [cad-add-and-name-integration-azure]
+### Add the Cloud Asset Discovery integration [cad-add-and-name-integration-azure]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select `Cloud asset discovery`.

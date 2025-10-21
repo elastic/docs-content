@@ -14,7 +14,7 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 ## Requirements 
 
 * The user who gives the integration GCP permissions must be a GCP project `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing).
 * The Cloud Asset Discovery integration is supported only on GCP, not Google Public Sector. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 
@@ -26,8 +26,8 @@ You can set up Cloud Asset Discovery for GCP either by enrolling a single projec
 
 Two deployment technologies are available: agentless and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* [Agentless deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 ## Agentless deployment [cad-gcp-agentless]
 
@@ -36,7 +36,7 @@ Two deployment technologies are available: agentless and agent-based.
 3. Click **Add Cloud Asset Discovery**.
 4. Select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-account`.
-6. In **Deployment Options**, select **Agentless**.
+6. In **Deployment options**, select **Agentless**.
 7. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
