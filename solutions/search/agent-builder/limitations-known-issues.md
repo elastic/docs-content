@@ -4,21 +4,25 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # Limitations and known issues in {{agent-builder}}
 
 ## Limitations
 
-### Agent Builder not enabled by default
+### Feature availability
 
-{{agent-builder}} must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
+#### Non-serverless deployments
+
+{{agent-builder}} is enabled by default in {{serverless-full}} for {{es}} projects.
+
+However, it must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
+
+#### Serverless deployments
+
+In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
 
 ## Known issues
 
