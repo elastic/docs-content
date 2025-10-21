@@ -1,5 +1,5 @@
 ---
-navigation_title: "Agent Chat"
+navigation_title: "Chat"
 applies_to:
   stack: preview 9.2
   serverless:
