@@ -36,8 +36,10 @@ Before upgrading {{kib}} in a production environment, we encourage you to test y
 
 To secure {{report-features}}, you must grant users role access to reporting functionality and protect the reporting endpoints with [API key authentication](remote-clusters/remote-clusters-api-key.md). Additionally, you can install graphical packages on the operating system to enable screenshot capabilities in the {{kib}} server.
 
-:::{admonition} Set up security for cross-cluster search environments
-TLS certificate-based authentication is deprecated in 9.0.0. To secure connections between local (self-managed) and remote clusters, set up API key authentication instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](remote-clusters/remote-clusters-api-key.md).
+:::{note}
+
+API keys are used to authenticate requests to generate reports. If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the leader index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](remote-clusters/remote-clusters-cert.md).
+
 :::
 
 Configuring reporting in your environment involves two main areas:
@@ -45,25 +47,6 @@ Configuring reporting in your environment involves two main areas:
 ### Granting users access to {{report-features}}
 
 Depending on your license, the type of users, and whether you prefer using the {{kib}} UI or API, there are multiple ways to [grant access to reporting functionality](#grant-user-access).
-
-::::{admonition} Generate reports in a cross-cluster search environment
-
-To generate reports in a cross-cluster search environment, ensure your role has the appropriate cluster and index privileges to access indices in the remote and local cluster. This may differ based on whether you are using an API key for authentication or directly authenticating as with your user credentials. For more information, refer to [Configure privileges for cross-cluster replication](remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccr).
-
-To provide an example, here is a role that has access to both the index in the remote cluster (`general:filebeat-*`) and the index in the local cluster (`filebeat-*`). The `read_cross_cluster` privilege allows cross-cluster search access to the remote index.
-
-```yaml
-{
- "indices": [
-  {
-   "names": [ "general:filebeat-*-isam*", "filebeat-*-isam*" ],
-   "privileges": [ "read", "view_index_metadata", "read_cross_cluster" ]
-  }
- ]
-}
-```
-
-::::
 
 ### Applying system configuration
 
