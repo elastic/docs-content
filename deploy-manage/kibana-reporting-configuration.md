@@ -34,7 +34,7 @@ Before upgrading {{kib}} in a production environment, we encourage you to test y
 
 ## Configuration overview
 
-To secure {{report-features}}, you must grant users role access to reporting functionality and protect the reporting endpoints with [API key authentication](remote-clusters/remote-clusters-api-key.md). Additionally, you can install graphical packages on the operating system to enable screenshot capabilities in the {{kib}} server.
+To secure {{report-features}}, you must grant users access to reporting functionality and protect the reporting endpoints with TLS/SSL encryption. Additionally, you can install graphical packages on the operating system to enable screenshot capabilities in the {{kib}} server.
 
 :::{note}
 :applies_to: {stack: ga, serverless: unavailable}
