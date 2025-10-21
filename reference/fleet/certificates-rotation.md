@@ -14,6 +14,8 @@ In some scenarioes you may want to rotate your configured certificate authoritie
 * [Rotating an {{es}} CA for connections from {{fleet-server}}](#certificates-rotation-fs-es)
 * [Rotating an {{es}} CA for connections from {{agent}}](#certificates-rotation-agent-es)
 
+For important notes about current limitations (such as restart requirements and unsupported features), refer to [Limitations](#limitations).
+
 
 ## Rotating a {{fleet-server}} CA [certificates-rotation-agent-fs]
 
@@ -193,3 +195,23 @@ To rotate a CA certificate on {{es}} for connections from {{agent}}:
     :alt: Screen capture of the Edit Output UI: Elasticsearch CA trusted fingerprint
     :screenshot:
     :::
+
+## Limitations
+
+Keep the following in mind when rotating certificates and certificate authorities (CAs):
+
+* **Agent restart required**
+
+  {{agent}} does not support hot reloading of updated certificates or CA files. You must restart the agent to apply changes.
+
+* **Directory loading not supported**
+
+  Unlike {{beats}}, {{agent}} does not support passing a directory of CAs (for example, `--capath`) or monitoring a directory for changes. You must reference a specific file.
+
+* **Rotation without re-enrollment**
+
+  When rotating a CA, you can avoid agent re-enrollment by including both the old and new CAs in the configured CA file, restarting the agent, and then removing the old CA after the switch.
+
+* **Mutual TLS (`--fleet-server-client-auth=required`)**
+
+  If mTLS is enabled, you must apply the same overlap approach (adding a new CA before removing the old) on both client and server. The rotation process itself is otherwise unchanged.
