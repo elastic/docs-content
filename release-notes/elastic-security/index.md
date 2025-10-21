@@ -73,13 +73,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
 * Increases the throughput of {{elastic-defend}}'s {{ls}} connections by increasing the maximum size it can upload at once.
 * Adds {{elastic-defend}} support for device control on macOS and Windows.
-* Adds architecture of PE file in malware alerts to {{elastic-defend}}.
+* Adds architecture of PE file in Windows malware alerts to {{elastic-defend}}.
 * Adds the `Endpoint.state.orphaned` indicator to {{elastic-defend}} policy response.
 * Adds {{elastic-defend}} support for cluster migration.
 * Adds firewall anti-tamper plug-in to protect {{elastic-endpoint}} processes against network blocking via Windows Firewall.
 * Includes `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields to {{elastic-defend}} by default to Windows image load and process events, if the information can be retrieved.
 * Improves {{elastic-defend}} by integrating a new Event Tracing for Windows (ETW) provider (Microsoft-Windows-Ldap-Client) to create new event types that prebuilt endpoint rules can use to detect malicious LDAP activity.
-* Adds more {{elastic-defend}} Linux diagnostic process `ptrace` events.
 * Improves reporting reliability and accuracy of {{elastic-defend}}'s {{es}} connection.
 * Enriches {{elastic-defend}} macOS network connect events with `network.direction`. Possible values are `ingress` and `egress`.
 * Improves {{elastic-defend}} malware scan queue efficiency by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
@@ -88,7 +87,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the `verify` command to ensure {{elastic-endpoint}} service is running, otherwise {{agent}} has to fix it automatically.
 * Adds {{elastic-defend}} support for Windows on ARM.
 * Improves the reliability of {{elastic-defend}} Kafka connections.
-* Adds {{elastic-defend}} support for diagnostic DNS events on Linux.
 
 ### Fixes [elastic-security-9.2.0-fixes]
 
@@ -117,9 +115,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the reliability of local {{elastic-defend}} administrative shell commands. In rare cases, a command could fail to execute due to issues with interprocess communication.
 * Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
 * Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
-* Fixes an improper status in process remediation, when a cancelled process cannot be stopped because it's being debugged.
+* Fixes an issue which could cause {{elastic-defend}} to improperly report success when self-healing rollback attempted to terminate a process with an active debugger on Windows.
 * Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') was logged.
-* Prevents {{elastic-endpoint}} from stopping system-critical processes or threads.
 * Fixes an issue to improve reliability of health status reporting between {{elastic-endpoint}} and {{agent}}.
 * Fixes a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count`, and `process.args`, leading to false positives.
 * Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
