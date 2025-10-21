@@ -34,7 +34,7 @@ In the following graph, `quick` and its synonym `fast` both have a position of `
 
 ## Multi-position tokens [token-graphs-multi-position-tokens]
 
-Some token filters can add tokens that span multiple positions. These can include tokens for multi-word synonyms, such as using "atm" as a synonym for "automatic teller machine."
+Some token filters can add tokens that span multiple positions. These can include tokens for multi-word synonyms, such as using "atm" as a synonym for "automatic teller machine".
 
 However, only some token filters, known as *graph token filters*, accurately record the `positionLength` for multi-position tokens. These filters include:
 
