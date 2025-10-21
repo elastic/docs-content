@@ -189,7 +189,7 @@ Each log entry contains details of the HTTP request. In particular, in this exam
 
 ::::{step} Stop the Node.js script
 
-After confirming that both `webserver.js` and `webrequests.js` run as expected, enter *CTRL + C* to stop the Node.js script, and also delete `logs/log.json`.
+After confirming that both `webserver.js` and `webrequests.js` run as expected, enter *CTRL + C* to stop the Node.js script.
 
 ::::
 
