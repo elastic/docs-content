@@ -2,6 +2,9 @@
 navigation_title: Manage integrations
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/integrations.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -12,13 +15,15 @@ products:
 {{agent}} integrations provide a simple, unified way to collect data from popular apps and services, and protect systems from security threats.
 Integrations are available for a wide array of popular services and platforms. To see the full list, go to the **Integrations** page in {{kib}}, or visit [Elastic Integrations](integration-docs://reference/index.md). 
 
-Each integration comes prepackaged with assets that support your observability needs:
+{{agent}} integrations based on the [Elastic Common Schema](ecs://reference/index.md) (ECS) come prepackaged with assets that support your observability needs:
 
 * Data ingestion, storage, and transformation rules
 * Configuration options
 * Alert templates to enable users to quickly set up custom alerting rules (available in some integrations) {applies_to}`stack: ga 9.2`
 * Pre-built, custom dashboards and visualizations
 * Documentation
+
+{applies_to}`stack: preview 9.2.0` {{fleet}} also supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry data. For more information, refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
 
 Note that the **Integrations** app in {{kib}} needs access to the public {{package-registry}} to discover integrations. If your deployment has network restrictions, you can [deploy your own self-managed {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr).
 

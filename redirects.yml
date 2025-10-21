@@ -551,9 +551,36 @@ redirects:
   'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
   'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
 
+# Related to data-analysis restructure - moved observability metrics to reference/observability
+  'reference/data-analysis/observability/index.md': 'reference/observability/metrics-reference.md'
+  'reference/data-analysis/observability/observability-host-metrics.md': 'reference/observability/observability-host-metrics.md'
+  'reference/data-analysis/observability/observability-container-metrics.md': 'reference/observability/observability-container-metrics.md'
+  'reference/data-analysis/observability/observability-kubernetes-pod-metrics.md': 'reference/observability/observability-kubernetes-pod-metrics.md'
+  'reference/data-analysis/observability/observability-aws-metrics.md': 'reference/observability/observability-aws-metrics.md'
+
+# Renamed data-analysis to machine-learning
+  'reference/data-analysis/index.md': 'reference/machine-learning/index.md'
+  'reference/data-analysis/machine-learning/supplied-anomaly-detection-configurations.md': 'reference/machine-learning/supplied-anomaly-detection-configurations.md'
+  'reference/data-analysis/machine-learning/machine-learning-functions.md': 'reference/machine-learning/machine-learning-functions.md'
+  'reference/data-analysis/machine-learning/ml-count-functions.md': 'reference/machine-learning/ml-count-functions.md'
+  'reference/data-analysis/machine-learning/ml-geo-functions.md': 'reference/machine-learning/ml-geo-functions.md'
+  'reference/data-analysis/machine-learning/ml-info-functions.md': 'reference/machine-learning/ml-info-functions.md'
+  'reference/data-analysis/machine-learning/ml-metric-functions.md': 'reference/machine-learning/ml-metric-functions.md'
+  'reference/data-analysis/machine-learning/ml-rare-functions.md': 'reference/machine-learning/ml-rare-functions.md'
+  'reference/data-analysis/machine-learning/ml-sum-functions.md': 'reference/machine-learning/ml-sum-functions.md'
+  'reference/data-analysis/machine-learning/ml-time-functions.md': 'reference/machine-learning/ml-time-functions.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md': 'reference/machine-learning/ootb-ml-jobs-apache.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-apm.md': 'reference/machine-learning/ootb-ml-jobs-apm.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-auditbeat.md': 'reference/machine-learning/ootb-ml-jobs-auditbeat.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-logs-ui.md': 'reference/machine-learning/ootb-ml-jobs-logs-ui.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-metricbeat.md': 'reference/machine-learning/ootb-ml-jobs-metricbeat.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-metrics-ui.md': 'reference/machine-learning/ootb-ml-jobs-metrics-ui.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md': 'reference/machine-learning/ootb-ml-jobs-nginx.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md': 'reference/machine-learning/ootb-ml-jobs-siem.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-uptime.md': 'reference/machine-learning/ootb-ml-jobs-uptime.md'
+
 # Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
   'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
-
 
 
 
