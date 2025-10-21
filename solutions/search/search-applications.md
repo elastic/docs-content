@@ -59,7 +59,7 @@ Search Applications use [search templates](search-templates.md) to simplify the 
 serverless: unavailable 
 ```
 :::{warning}
-:applies_to: {"stack": "ga 9.2.0", "ess": "ga 9.2.0"}
+:applies_to: {"stack": "unavailable 9.2.0"}
 This feature is unavailable for new users and is hidden from the navigation menu. It remains accessible for users who started using the feature before 9.2.
 ::::
 
