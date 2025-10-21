@@ -74,7 +74,7 @@ This command regenerates auto-generated credentials of **all** {{stack}} applica
 ::::
 
 :::{note}
-Previous documentation suggested deleting all secrets with the label `eck.k8s.elastic.co/credentials=true`, which included the Kibana secret that contained encryption keys. Deletion of the Kibana config secret is not recommended.
+When deleting secrets so they can be regenerated, make sure to exclude {{kib}} secrets by specifying `type!=kibana`. {{kib}} secrets contain encryption keys, which should not be deleted.
 :::
 
 ## Creating custom users
