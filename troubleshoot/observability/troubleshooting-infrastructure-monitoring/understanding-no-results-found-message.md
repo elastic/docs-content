@@ -13,7 +13,7 @@ products:
 
 # Understand "no results found" message [handle-no-results-found-message]
 
-To correctly render visualizations in the {{observability}} UI, all metrics used by the UI must be present in the collected data. For a description of these metrics, refer to [Metrics reference](/reference/data-analysis/observability/index.md).
+To correctly render visualizations in the {{observability}} UI, all metrics used by the UI must be present in the collected data. For a description of these metrics, refer to [Metrics reference](/reference/observability/metrics-reference.md).
 
 There are several reasons why metrics might be missing from the collected data:
 

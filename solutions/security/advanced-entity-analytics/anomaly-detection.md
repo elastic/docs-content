@@ -75,7 +75,7 @@ Or
 
 * You install one or more of the [Advanced Analytics integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations).
 
-[](/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md) describes all available {{ml}} jobs and lists their requirements. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
+[](/reference/machine-learning/ootb-ml-jobs-siem.md) describes all available {{ml}} jobs and lists their requirements. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
 
 ::::{note}
 Machine learning jobs look back and analyze two weeks of historical data prior to the time they are enabled. After jobs are enabled, they continuously analyze incoming data. When jobs are stopped and restarted within the two-week time frame, previously analyzed data is not processed again.
