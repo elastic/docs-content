@@ -15,8 +15,8 @@ products:
 
 There are two types of OpenTelemetry integration packages:
 
-- Input packages which include an OTel Collector configuration
-- Content packages which include {{es}} and {{kib}} assets such as prebuilt dashboards and visualizations
+- Input packages which include an OTel Collector configuration.
+- Content packages which include {{es}} and {{kib}} assets such as prebuilt dashboards and visualizations.
 
 Unlike {{agent}} integrations based on the [Elastic Common Schema](ecs://reference/index.md) (ECS), OpenTelemetry input packages use OTel Collector receivers to collect OTel data following [OpenTelemetry semantic conventions](https://opentelemetry.io/docs/specs/semconv).
 

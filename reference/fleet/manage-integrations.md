@@ -14,7 +14,7 @@ products:
 
 {{agent}} integrations provide a unified way to collect data from apps and services and to protect systems from security threats. 
 
-Integrations are available for a wide array of services and platforms. To see the full list of available integrations, go to the **Integrations** page in {{kib}}, or visit [Elastic Integrations](integration-docs://reference/index.md).
+Integrations are available for a wide array of services and platforms. To browse the full list of available integrations, go to the **Integrations** page in {{kib}}, or visit [Elastic Integrations](integration-docs://reference/index.md).
 
 {{agent}} integrations based on the [Elastic Common Schema](ecs://reference/index.md) (ECS) come prepackaged with assets that support your observability needs:
 
