@@ -226,7 +226,7 @@ node scripts/capture_oas_snapshot --update --include-path /api/your/specific/pat
 ::::{tab-item} Manual YAML
 :sync: manual
 
-This step is not applicable for Manual YAML. Your YAML files in the `oas_docs` directory are used directly - no snapshot capture is needed. Skip to the next step.
+This step is not applicable for Manual YAML. Your YAML files are used directly. Skip to the next step.
 ::::
 
 :::::
