@@ -252,7 +252,7 @@ To configure device control for one or more hosts, edit the {{elastic-defend}} p
 By default, each {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has device control enabled, the dashboard displays data about attempted device connections and their outcomes. To access it and review information about blocked connections, search for `device control` in the **Dashboards** page's **Custom Dashboards** section.
 
 :::{important} 
-To collect device control data, {{elastic-defend}} must be updated to at least v9.2.0. Until you update it to this version, the device control dashboard will not appear and device control events will not be ingested. Device control blocking will still work. 
+To collect device control data, {{elastic-defend}} must be updated to at least version 9.2.0. Until you update it to this version, the device control dashboard will not appear and device control events will not be ingested. Device control blocking will still work. 
 :::
 
 ## Event collection [event-collection]
