@@ -111,22 +111,30 @@ Documents can fail processing for various reasons. Streams helps you identify an
 
 In the following screenshot, the **Failed** percentage indicates that some messages didn't match the provided grok pattern:
 
-![Screenshot showing some failed documents](<../../../images/logs-streams-parsed.png>)
+:::{image} ../../../images/logs-streams-parsed.png
+:screenshot:
+:::
 
 You can filter your documents by selecting **Parsed** or **Failed** on the **Data preview** tab.
 Selecting **Failed** shows the documents that weren't parsed correctly:
 
-![Screenshot showing the documents UI with Failed selected](<../../../images/logs-streams-failures.png>)
+:::{image} ../../../images/logs-streams-failures.png
+:screenshot:
+:::
 
 Failures are displayed at the bottom of the process editor. Some failures may require fixes, while others simply serve as a warning:
 
-![Screenshot showing failure notifications](<../../../images/logs-streams-processor-failures.png>)
+:::{image} ../../../images/logs-streams-processor-failures.png
+:screenshot:
+:::
 
 ### Mapping conflicts [streams-processing-mapping-conflicts]
 
 As part of processing, Streams simulates your changes end to end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
 
-![Screenshot showing mapping conflict notifications](<../../../images/logs-streams-mapping-conflicts.png>)
+:::{image} ../../../images/logs-streams-mapping-conflicts.png
+:screenshot:
+:::
 
 Use the information in the failure message to find and troubleshoot the mapping issues.
 
@@ -134,7 +142,9 @@ Use the information in the failure message to find and troubleshoot the mapping 
 
 Once saved, the processor displays its success rate and the fields it added.
 
-![Screenshot showing field stats](<../../../images/logs-streams-field-stats.png>)
+:::{image} ../../../images/logs-streams-field-stats.png
+:screenshot:
+:::
 
 ## Advanced: How and where do these changes get applied to the underlying data stream? [streams-applied-changes]
 
