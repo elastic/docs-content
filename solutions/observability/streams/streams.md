@@ -74,6 +74,14 @@ Open Streams from the following places in {{kib}}:
 
 - Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams will open filtered to the selected data stream.
 
+### Streams API
+``` yaml {applies_to}
+stack: preview 9.1
+serverless: preview
+```
+
+You can also access Streams features using the Streams API. Refer to the [Streams API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-streams) for more information.
+
 ## Manage individual streams [streams-management-tab]
 
 Interact with and configure your streams in the following ways:
