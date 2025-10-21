@@ -89,7 +89,7 @@ Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, r
 
 ::::{tab-item} Manual YAML
 :sync: manual
-Edit the YAML files directly in the `oas_docs` directory. Refer to the README alongside each file for specific guidance on adding summaries, descriptions, tags, metadata, links, and examples.
+Edit the YAML files in the appropriate plugin or package directory. Refer to the README alongside each file for specific guidance on adding summaries, descriptions, tags, metadata, links, and examples.
 
 Review the the [checklist](checklist.md) for best practices.
 
@@ -158,7 +158,7 @@ const oasOperationObject = () => path.join(__dirname, 'foo.examples.yaml');
 })
 ```
 
-**For Manual YAML**, add examples directly in your YAML files in the `oas_docs` directory.
+**For manual YAML**, add examples directly in your YAML files in the appropriate plugin or package directory.
 
 **Example YAML structure:**
 
@@ -189,7 +189,7 @@ responses:
 
 ::::::
 
-::::::{step} (optional) Capture OAS snapshot
+::::::{step} (optional) Capture code-generated output
 
 :::::{tab-set}
 :group: kibana-workflow
@@ -234,17 +234,17 @@ This step is not applicable for Manual YAML. Your YAML files in the `oas_docs` d
 
 ::::{step} Generate docs
 
-Run these commands to generate the merged OpenAPI documentation files:
+Run these commands to merge the OpenAPI documentation files:
 
 ```bash
 cd oas_docs
 make api-docs
 ```
 
-This generates the the following files:
+This generates the following files:
 
 - `oas_docs/output/kibana.yaml`
-- `oas_docs/output/kibana.info.yaml`
+- `oas_docs/output/kibana.serverless.yaml`
 
 :::{tip}
 Use `make help` to see available commands.
