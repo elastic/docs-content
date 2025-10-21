@@ -46,19 +46,19 @@ For more information about how autoscaling works in serverless, refer to the fol
 * [Ingest autoscaling](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling)
 :::
 
-:::{admonition} Example: How Search VCU billing is calculated
-Let's say your constant search workload requires 4GB of RAM, which means your Search VCU usage for one day will be 4 Search VCUs/hour * 24 hours = 96 VCUs. 
+:::{admonition} Example: How search VCU billing is calculated
+Let's say your constant search workload requires 4GB of RAM, which means your search VCU usage for one day will be 4 search VCUs/hour * 24 hours = 96 VCUs. 
 
-Given that 1 Search VCU = [$0.09/hour](https://www.elastic.co/pricing/serverless-search), this translates to $8.64 for that day.
+Given that 1 search VCU = [$0.09/hour](https://www.elastic.co/pricing/serverless-search), this translates to $8.64 for that day.
 :::
 
 ### Storage billing dimensions
 
-On [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md) and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) serverless projects, one storage-related billing dimension is called the **Ingest rate**, which represents the volume of data (in GB) ingested per unit of time.
+On [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md) and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) Serverless projects, one storage-related billing dimension is called the **Ingest rate**, which represents the volume of data (in GB) ingested per unit of time.
 
-On all [{{es}}](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md), [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md), and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) serverless projects, the main storage-related billing dimension is called **Retention**, and it represents the total volume of data (in GB prorated over a month) retained in your project.
+On all [{{es}}](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md), [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md), and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) Serverless projects, the main storage-related billing dimension is called **Storage retained** or **Retention**, and it represents the total volume of data (in GB prorated over a month) retained in your project.
 
-:::{admonition} Example: How ingest rate and retention billing is calculated
+:::{admonition} Example: How ingest rate and storage retained billing is calculated
 Let’s say you ingest 1TB of data into your Observability project.
 
 * **Ingest rate**: Given that 1GB ingested per hour = [$0.105](https://www.elastic.co/pricing/serverless-observability), your ingest rate cost will be $107.2.
@@ -78,6 +78,6 @@ The following features are coming soon to AutoOps for serverless:
 In this section, you'll find the following information:
 
 * How to [access AutoOps in your serverless project](access-autoops-for-serverless.md)
-* How to use the Search tier view to understand the impact of search performance on your Search VCUs
+* How to use the Search tier view to understand the impact of search performance on your search VCUs
 * How to use the Search AI Lake view to drill down into your storage-related usage
 
