@@ -24,7 +24,7 @@ Upgrading from 7.17 to {{version.stack}} requires two major upgrades. Each major
     Before running this upgrade, all ingest components and client libraries must be upgraded to 8.19.x.
 
 :::{note}
-Upgrading only to version 8.19.x is also a supported path, as it remains a maintained and fully supported release. However, we recommend completing the upgrade to the latest {{version.stack}} version to take advantage of ongoing improvements and new features.
+Upgrading only to version 8.19.x is also a supported path, as it remains a maintained and fully supported release. However, we recommend completing the upgrade to the latest {{version.stack}} version to take advantage of performance ongoing improvements and new features.
 :::
 
 The following sections describe these phases in detail and point to the relevant documentation for each deployment type.
@@ -85,6 +85,8 @@ Finally, we strongly recommend [testing the full upgrade process in a non-produc
 ## Upgrade Step 1: 7.17.x → 8.19.x
 
 This step covers upgrading your deployment from 7.17.x to 8.19.x, following the [planning phase](#planning) and assuming that all ingest components and client libraries are compatible with 8.19.x.
+
+It's highly recommended to start this upgrade from the latest 7.17.x patch release to ensure that you’re using the most recent version of the **Upgrade Assistant**. You should also upgrade to the latest available 8.19.x patch release so that the same benefits apply when you later upgrade to 9.x.
 
 ### 8.19 upgrade preparations
 
@@ -244,7 +246,7 @@ Make sure to upgrade all components in the specified order.
 
 Before upgrading to {{version.stack}}, ensure that all ingest components and {{es}} clients are upgraded to version 8.19.x, as 7.x versions aren’t compatible with {{stack}} 9.x, according to the [Product compatibility support matrix](https://www.elastic.co/support/matrix#matrix_compatibility).
 
-For more details, refer to the documentation for the following products and client libraries:
+For more details, refer to the documentation of the following products and client libraries:
 
 ::::{dropdown} 8.19 {{stack}} ingest components
 * {{beats}}: [Upgrade instructions](https://www.elastic.co/guide/en/beats/libbeat/8.19/upgrading.html)
@@ -277,13 +279,15 @@ However, we recommend upgrading to {{version.stack}} to benefit from the latest 
 
 This step covers upgrading your deployment from 8.19.x to {{version.stack}}, assuming that all ingest components have been upgraded to 8.19.x, and client libraries are compatible with 9.x.
 
+It's highly recommended to start this upgrade from the latest 8.19.x patch release to ensure that you’re using the most recent version of the **Upgrade Assistant**.
+
 ### {{version.stack}} upgrade preparations
 
 The [upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md) are designed to prevent upgrade failures by detecting and addressing internal incompatibilities, including deprecated settings that are no longer supported in the next release.
 
 During a major upgrade, the [**Upgrade Assistant**](/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md) in {{kib}} 8.19 plays a critical role. It scans your cluster for deprecated settings, incompatible indices, and other issues that could prevent nodes from starting after the upgrade. The tool guides you through reindexing old 7.x indices or marking them as read-only, fixing configuration problems, and reviewing deprecation logs to ensure your deployment is fully compatible with the next major version. Ignoring its recommendations can lead to upgrade failures or cluster downtime.
 
-While the **Upgrade Assistant** helps you identify breaking changes that affect your deployment or cluster, it's still recommended to review the complete list of breaking changes and known issues during your preparation phase. These are available in the following documents:
+While the **Upgrade Assistant** helps you identify breaking changes that affect your deployment or cluster, it's still recommended to review the complete list of breaking changes and known issues in every release from your current version through your target version as part of the preparation phase. These are available in the following documents:
 * [{{es}} 9.x breaking changes](elasticsearch://release-notes/breaking-changes.md)
 * [Kibana breaking changes summary](kibana://release-notes/breaking-changes.md)
 
@@ -316,21 +320,18 @@ To prepare your deployment for the upgrade, review the [prepare to upgrade guide
 
 2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they’re compatible with the next major release.
 
-3. As a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) if your custom client applications are affected by breaking changes. This mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy.
-
-If you use custom-developed applications or clients, ensure the [{{es}} client libraries](/reference/elasticsearch-clients/index.md) are compatible with the target version. If your applications use deprecated or removed APIs, then you might need to update the client code first.
+3. If you use custom-developed applications that are impacted by API-related breaking changes, make the recommended changes to ensure that your applications continue to operate as expected after the upgrade, or, as a temporary solution, you can use [REST API compatibility mode](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to submit requests to 9.x using the 8.x syntax.
 
     :::{note}
-    By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} cluster.
-    REST API compatibility is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
+    The REST API compatibility mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy. For a high-level description of the steps to ensure a smooth upgrade involving client applications that use this mode, refer to the [REST API compatibility workflow example](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md#_rest_api_compatibility_workflow).
     :::
-
-
 ::::
 
 ::::{applies-item} ece:
 
-Before upgrading your deployment to 9.x ensure ECE is upgraded to 4.x.
+:::{important}
+If you're running an {{ece}} version earlier than 4.x, ensure that you [upgrade ECE first](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md). ECK 2.x is not compatible with {{stack}} version 9.
+:::
 
 {{ece}} platform facilitates major upgrades by:
 * When [snapshots are configured](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), automatically creating a snapshot before the upgrade.
@@ -341,89 +342,145 @@ To prepare your deployment for the upgrade, complete the steps described in the 
 
 You should make sure to:
 
-1. Run the **Upgrade Assistant** in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
-   * Reindex legacy indices (created in 7.0).  
-   * Remove or update deprecated settings and mappings.
-   * Review deprecation logs for both {{es}} and {{kib}}.
+1. [Run the **Upgrade Assistant**](/deploy-manage/upgrade/prepare-to-upgrade.md#run-the-upgrade-assistant) in {{kib}} and resolve all critical issues before continuing.
+
+    As described in the linked guide, the assistant helps you:
+    * Reindex or mark as read-only legacy indices and data streams (created before 8.0).
+    * Remove or update deprecated settings and mappings.
+    * Review deprecation logs for both {{es}} and {{kib}}.
+
+    :::{note}
+    If the **Upgrade Assistant** reports old {{ml}}, {{ccr}}, or transform indices that require action or reindexing, make sure to review the relevant sections in the preparations guide:
+    * [Manage CCR follower data streams](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-ccr-follower-data-streams)
+    * [Manage old Machine Learning indices](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-old-machine-learning-indices)
+    * [Manage old Transform indices](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-old-transform-indices)
+    :::
 
 2. If you use [custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md), make sure they're compatible with the next major release.
 
-3. As a temporary solution, you can use [REST API compatibility mode](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-compatibility.html) if your custom client applications are affected by breaking changes. This mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy.
+3. If you use custom-developed applications that are impacted by API-related breaking changes, make the recommended changes to ensure that your applications continue to operate as expected after the upgrade, or, as a temporary solution, you can use [REST API compatibility mode](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to submit requests to 9.x using the 8.x syntax.
+
+    :::{note}
+    The REST API compatibility mode should only serve as a bridge to ease the upgrade process, not as a long-term strategy. For a high-level description of the steps to ensure a smooth upgrade involving client applications that use this mode, refer to the [REST API compatibility workflow example](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md#_rest_api_compatibility_workflow).
+    :::
 ::::
 
 
 ::::{applies-item} { eck: }
 
-Upgrade preparations for an ECK-managed cluster are similar to a self-managed deployment. Before starting the upgrade follow the steps in [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md).
+:::{important}
+If you're running an {{eck}} version earlier than 3.x, ensure that you [upgrade ECK first](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md). ECK 2.x is not compatible with {{stack}} version 9.
+:::
 
-If you're upgrading from an {{eck}} version earlier than 3.x, make sure to [upgrade ECK first](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md) before performing the final upgrade to 9.x, as ECK 2.x does not support {{stack}} version 9.
+Upgrade preparations for an ECK-managed cluster are similar to a self-managed deployment.
+
+Before starting the upgrade follow the steps in [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md).
+
+As part of your preparation, make sure to complete all tasks reported by the **Upgrade Assistant**, review any installed plugins for compatibility, and check whether custom client applications are affected by API-related breaking changes so you can address them before the upgrade.
 ::::
 
 ::::{applies-item} self:
 
 Before starting the upgrade, follow the [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) steps.
+
+As part of your preparation, make sure to complete all tasks reported by the **Upgrade Assistant**, review any installed plugins for compatibility, and check whether custom client applications are affected by API-related breaking changes so you can address them before the upgrade.
 ::::
 
 :::::
 
 ### {{version.stack}} upgrade execution
 
-**(work in progress)**
+As with the previous major upgrade, keep the following considerations in mind when upgrading your deployment or cluster:
 
-As with the previous upgrade, remind the following items:
-* If you use stack monitoring, upgrade your monitoring clusters first.
-* If you use remote clusters, upgrade the remote clusters first.
+* If you use [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md) with a dedicated monitoring cluster, upgrade your monitoring cluster first.
+* If you use [remote cluster](/deploy-manage/remote-clusters.md) functionality, upgrade the remote clusters first.
+* Before starting the upgrade, run the same checks and validations you plan to perform afterward, so you have a baseline for comparison. Refer to the [upgrade validation](#819-validation) section for example checks.
 
-To upgrade your deployment or cluster, do the following depending on the deployment type:
+The steps below describe how to upgrade the core components of your {{stack}} environment, {{es}}, {{kib}}, and, when applicable, {{fleet-server}} and Elastic APM, for each deployment type.
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} ess:
+::::{applies-item} ess:
 
-To upgrade your deployment, follow the steps and guidance from [](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md#perform-cloud-upgrade).
-
-During the upgrade process all of your deployment components will be upgraded in the expected order:
-- {{es}}
-- {{kib}}
-- Integrations Server ({{fleet-server}} and APM)
-:::
-
-:::{applies-item} ece:
-To upgrade your deployment, follow the steps and guidance from [](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md#perform-the-upgrade).
+To upgrade your deployment to {{version.stack}}, follow the steps in [Upgrade your deployment on ECH](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md).
 
 During the upgrade process all of your deployment components will be upgraded in the expected order:
 - {{es}}
 - {{kib}}
 - Integrations Server ({{fleet-server}} and APM)
-:::
-
-
-:::{applies-item} { eck: }
-
-Upgrade your cluster per [](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
-
-After the upgrade of {{es}} and {{kib}}, upgrade any [other Elastic application](/deploy-manage/deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md) connected to the cluster, such as {{fleet-server}}, or Elastic APM.
-:::
-
-:::{applies-item} self:
-Follow the steps in the [upgrade Elastic on-prem](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack-on-prem.html) guide, ensuring that all components are upgraded in the specified order.
-
-1. Upgrade {{es}} following the rolling upgrade method.
-2. Upgrade {{kib}}
-:::
-
 ::::
+
+::::{applies-item} ece:
+To upgrade your deployment to {{version.stack}}, follow the steps in [Upgrade your deployment on ECE](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md#perform-the-upgrade).
+
+If the [{{stack}} pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md) for this version isn’t already added to the platform, make sure to add it before starting the upgrade.
+
+During the upgrade process all of your deployment components will be upgraded in the expected order:
+- {{es}}
+- {{kib}}
+- Integrations Server ({{fleet-server}} and APM)
+::::
+
+
+::::{applies-item} { eck: }
+In ECK, upgrades are performed declaratively by updating the `spec.version` field in the resource manifest. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
+
+To upgrade your cluster to {{version.stack}}, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start upgrading the {{es}} and {{kib}} resources that represent the cluster.
+
+:::{note}
+For more information on how ECK manages upgrades and how to tune its behavior, refer to [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md).
+:::
+
+After upgrading {{es}} and {{kib}}, upgrade any [other Elastic applications](/deploy-manage/deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md) connected to the cluster, such as {{fleet-server}} or Elastic APM.
+::::
+
+::::{applies-item} self:
+
+To upgrade your cluster to {{version.stack}}, follow the steps in [Upgrade a self-managed cluster](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md).
+
+Make sure to upgrade all components in the specified order:
+1. [Upgrade {{es}}](/deploy-manage/upgrade/deployment-or-cluster/elasticsearch.md) following the rolling upgrade method.
+2. [Upgrade {{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana.md)
+::::
+
+:::::
 
 ### {{version.stack}} upgrade validation
 
 :::{include} _snippets/upgrade-validation.md
 :::
 
-### (Optional) Upgrade ingest components to {{version.stack}}
+### Upgrade ingest components and {{es}} client libraries to {{version.stack}}
 
-This step is optional, as all ingest components running on 8.19.x are fully compatible with {{stack}} 9.x. However, upgrading them to {{version.stack}} ensures version alignment across your environment and allows you to take advantage of the latest features, performance improvements, and fixes.
+After upgrading your deployment or cluster to {{version.stack}}, review your ingest components and client libraries to ensure full compatibility across the environment.
 
-Refer to [Upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md) for detailed upgrade instructions.
+All custom-developed applications that rely on [{{es}} client libraries](/reference/elasticsearch-clients/index.md) must be upgraded to the latest {{version.stack}} client version to guarantee full API compatibility and support for new features.
+
+For ingest components, version 8.19.x remains fully compatible with the entire 9.x series. You can keep running them on 8.19.x if you prefer a gradual rollout. However, we recommend upgrading to {{version.stack}} to take advantage of ongoing improvements and feature enhancements.
+
+For more details, refer to the documentation of the following products and client libraries:
+
+::::{dropdown} {{version.stack}} {{stack}} ingest components
+* {{beats}}: [Upgrade instructions](beats://reference/libbeat/upgrading.md)
+* {{ls}}: [Upgrade instructions](logstash://reference/upgrading-logstash.md)
+* {{fleet}} managed {{agent}}: [Upgrade instructions](/reference/fleet/upgrade-elastic-agent.md)
+* Standalone {{agent}}: [Upgrade instructions](/reference/fleet/upgrade-standalone.md)
+* Elastic APM: [Upgrade instructions](/solutions/observability/apm/upgrade.md)
+::::
+
+::::{dropdown} {{version.stack}} {{es}} client libraries
+* [Go](go-elasticsearch://reference/index.md)
+* [Java](elasticsearch-java://reference/index.md)
+* [JavaScript (Node.js)](elasticsearch-js://reference/index.md)
+* [.NET](elasticsearch-net://reference/index.md)
+* [PHP](elasticsearch-php://reference/index.md)
+* [Python](elasticsearch-py://reference/index.md)
+  * [Eland](eland://reference/index.md)
+* [Ruby](elasticsearch-ruby://reference/index.md)
+* [Rust](elasticsearch-rs://reference/index.md)
+::::
+
+After completing the upgrades, verify that all ingest components and client applications can connect and send data to the deployment without issues.
 
 ## Next steps
 
