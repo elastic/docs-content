@@ -153,7 +153,7 @@ If you have transform destination indices created in {{es}} 7.x, reset, reindex,
 ::::{step} Migrate Enterprise Search functionality
 In {{stack}} 9.0.0 and later, Enterprise Search is no longer available, and it must be removed before upgrading from 8.x.
 
-If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first  [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
+If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
 ::::
 
 :::::
