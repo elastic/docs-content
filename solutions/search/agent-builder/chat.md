@@ -4,6 +4,8 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
 
 # {{agent-builder}}: Agent Chat
