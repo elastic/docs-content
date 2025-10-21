@@ -5,8 +5,6 @@ applies_to:
 ---
 # Upgrade from 7.17 to {{version.stack}}
 
-% add enterprise search related comments?
-
 {{stack}} version 7.17 has a defined end of support date of 15 January 2026, as stated in the [Elastic Product & Version End of Life Policy](https://www.elastic.co/support/eol). This document provides a guided plan to upgrade from 7.17 to the latest {{version.stack}} release. It complements the official upgrade documentation by showing how the different pieces fit together in a complete upgrade exercise.
 
 This guide applies to all deployment types: ({{ech}} (ECH), {{ece}} (ECE), {{eck}} (ECK), and self-managed clusters) running {{es}} version **7.17.x**. If you are using an earlier version, [upgrade first to the latest 7.17 release](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html) before proceeding.
@@ -200,6 +198,7 @@ During the upgrade process, all components of your deployment are upgraded in th
 - {{es}}
 - {{kib}}
 - Integrations Server ({{fleet-server}} and APM)
+- Enterprise Search
 ::::
 
 ::::{applies-item} ece:
@@ -214,6 +213,7 @@ During the upgrade process, all components of your deployment are upgraded in th
 - {{es}}
 - {{kib}}
 - Integrations Server ({{fleet-server}} and APM)
+- Enterprise Search
 ::::
 
 
@@ -253,7 +253,13 @@ For more details, refer to the documentation of the following products and clien
 * {{ls}}: [Upgrade instructions](https://www.elastic.co/guide/en/logstash/8.19/upgrading-logstash.html)
 * {{fleet}} managed {{agent}}: [Upgrade instructions](https://www.elastic.co/guide/en/fleet/8.19/upgrade-elastic-agent.html)
 * Standalone {{agent}}: [Upgrade instructions](https://www.elastic.co/guide/en/fleet/8.19/upgrade-standalone.html)
-* Elastic APM: [Upgrade instructions](https://www.elastic.co/guide/en/observability/8.19/apm-upgrade.html)
+* Elastic APM: [Upgrade instructions](https://www.elastic.co/guide/en/observability/8.19/apm-upgrade.html).
+* Enterprise Search: [Upgrade and migration guides](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-and-migrating.html)
+
+:::{note}
+The Elastic APM Server and Enterprise Search components require manual upgrade only in ECK-managed or self-managed environments. In {{ech}} and {{ece}}, these components are upgraded automatically as part of the deployment upgrade process.
+:::
+
 ::::
 
 ::::{dropdown} 8.19 {{es}} client libraries
@@ -280,6 +286,12 @@ However, we recommend upgrading to {{version.stack}} to benefit from the latest 
 This step covers upgrading your deployment from 8.19.x to {{version.stack}}, assuming that all ingest components have been upgraded to 8.19.x, and client libraries are compatible with 9.x.
 
 It's highly recommended to start this upgrade from the latest 8.19.x patch release to ensure that you’re using the most recent version of the **Upgrade Assistant**.
+
+:::::{important} note for Enterprise Search users
+In {{stack}} 9.0.0 and later, Enterprise Search is no longer available.
+* You must remove any Enterprise Search nodes from your deployment before proceeding with the upgrade.
+* If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first  [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
+:::::
 
 ### {{version.stack}} upgrade preparations
 
@@ -310,6 +322,7 @@ To prepare your deployment for the upgrade, review the [prepare to upgrade guide
     * Reindex or mark as read-only legacy indices and data streams (created before 8.0).
     * Remove or update deprecated settings and mappings.
     * Review deprecation logs for both {{es}} and {{kib}}.
+    * Remove Enterprise Search if it's part of the deployment.
 
     :::{note}
     If the **Upgrade Assistant** reports old {{ml}}, {{ccr}}, or transform indices that require action or reindexing, make sure to review the relevant sections in the preparations guide:
@@ -348,6 +361,7 @@ You should make sure to:
     * Reindex or mark as read-only legacy indices and data streams (created before 8.0).
     * Remove or update deprecated settings and mappings.
     * Review deprecation logs for both {{es}} and {{kib}}.
+    * Terminate Enterprise Search if it's part of the deployment.
 
     :::{note}
     If the **Upgrade Assistant** reports old {{ml}}, {{ccr}}, or transform indices that require action or reindexing, make sure to review the relevant sections in the preparations guide:
