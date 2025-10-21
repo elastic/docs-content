@@ -119,7 +119,7 @@ To create the role:
 
 Now that you created a role, create a user account.
 
-1. Navigate to **Stack Management**, and under **Security**, select **Users**.
+1. Go to the **Users** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create user**.
 3. Give this user a descriptive username, and choose a secure password.
 4. Assign the **marketing_dashboards_role** that you previously created to this new user.

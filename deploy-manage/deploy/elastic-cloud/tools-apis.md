@@ -33,6 +33,7 @@ The following REST APIs allow you to manage your {{ecloud}} organization, users,
 | {{ecloud}} organization<br><br>{{ech}} deployments | [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/) | Manage your Cloud organization, members, costs, billing, and more.<br><br>Manage your hosted deployments and all of the resources associated with them, including scaling or autoscaling resources, and managing network security, deployment extensions, remote clusters, and {{stack}} versions.<br><br>Refer to [{{ecloud}} RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md) for usage information and examples. |
 | {{serverless-full}} projects | [{{serverless-full}} API](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless) | Manage {{serverless-full}} projects. |
 | {{ecloud}} services | [Service Status API](https://status.elastic.co/api/) | Programmatically ingest [service status](/deploy-manage/cloud-organization/service-status.md) updates. |
+| {{ecloud}} billing information | [Cloud Billing API](https://www.elastic.co/docs/api/doc/cloud-billing/) | Retrieve additional billing and cost information about your {{ecloud}} organization. |
 
 
 ### APIs to interact with data and solution features

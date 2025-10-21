@@ -74,6 +74,9 @@ $$$glossary-zone$$$ availability zone
 
 ## B [b-glos]
 
+$$$glossary-background-search$$$ Background search
+:   A long-running query that is queued and that runs while you perform other tasks. The results of the background search are stored for a period of time, so you can access it once it has completed. Background searches are user specific. Before {{stack}} 9.2, background searches are called ["search sessions"](#glossary-search-session).
+
 $$$glossary-basemap$$$ basemap
 :   The background detail necessary to orient the location of a map.
 
@@ -92,7 +95,7 @@ $$$glossary-ml-bucket$$$ bucket
 ## C [c-glos]
 
 $$$glossary-canvas-language$$$ Canvas expression language
-:   A pipeline-based expression language for manipulating and visualizing data. Includes dozens of functions and other capabilities, such as table transforms, type casting, and sub-expressions. Supports TinyMath functions for complex math calculations. See [Canvas function reference](/reference/data-analysis/kibana/canvas-functions.md).
+:   A pipeline-based expression language for manipulating and visualizing data. Includes dozens of functions and other capabilities, such as table transforms, type casting, and sub-expressions. Supports TinyMath functions for complex math calculations. See [Canvas function reference](/explore-analyze/visualize/canvas/canvas-function-reference.md).
 
 $$$glossary-canvas$$$ Canvas
 :   Enables you to create presentations and infographics that pull live data directly from {{es}}. See [Canvas](/explore-analyze/visualize/canvas.md).
@@ -668,7 +671,7 @@ $$$glossary-scripted-field$$$ scripted field
 :   A field that computes data on the fly from the data in {{es}} indices. Scripted field data is shown in Discover and used in visualizations.
 
 $$$glossary-search-session$$$ search session
-:   A group of one or more queries that are executed asynchronously. The results of the session are stored for a period of time, so you can recall the query. Search sessions are user specific.
+:   A group of one or more queries that are executed asynchronously. The results of the session are stored for a period of time, so you can recall the query. Search sessions are user specific. From {{stack}} 9.2, search sessions are called ["background searches"](#glossary-background-search).
 
 $$$glossary-search-template$$$ search template
 :   A stored search you can run with different variables. See [Search templates](/solutions/search/search-templates.md).

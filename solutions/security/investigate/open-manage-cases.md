@@ -36,9 +36,10 @@ Open a new case to keep track of security issues and share their details with co
 
 4. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/solutions/security/investigate/cases-requirements.md).
 5. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section.
-6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is enabled by default, but you can turn it off after creating the case.
-7. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
-8. Click **Create case**.
+6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is turned on by default, but you can turn it off after creating the case.
+7. {applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case. This option is turned on by default. You can turn it off after creating the case by toggling **Auto-extract observables** on the case's **Observables** tab.
+8. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
+9. Click **Create case**.
 
     ::::{note}
     If you’ve selected a connector for the case, the case is automatically pushed to the third-party system it’s connected to.
@@ -250,13 +251,6 @@ After adding an observable to a case, you can remove or edit it by using the **A
 ::::{tip}
 Go to the **Similar cases** tab to access other cases with the same observables.
 ::::
-
-
-:::{image} /solutions/images/security-cases-add-observables.png
-:alt: Shows you where to add observables
-:screenshot:
-:::
-
 
 ### Copy the case UUID [cases-copy-case-uuid]
 

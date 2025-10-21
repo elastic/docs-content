@@ -13,7 +13,9 @@ products:
 
 # Upgrade Assistant [upgrade-assistant]
 
-The Upgrade Assistant helps you [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) to the next major version of the {{stack}}. To access the assistant, go to **{{stack-manage-app}} → Upgrade Assistant**.
+The Upgrade Assistant helps you [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) to the next major version of the {{stack}}. 
+
+To access the assistant, go to the **Upgrade Assistant** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{tip}
 Upgrade assistant should be run from the latest minor release before a major upgrade. When upgrading to 9.x, ensure you run 8.19.latest, and run the assistant there.
