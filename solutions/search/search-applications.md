@@ -58,7 +58,6 @@ Search Applications use [search templates](search-templates.md) to simplify the 
 ```{applies_to}
 serverless: unavailable
 ```
-
 ::::{warning}
 For {{ech}} and self-managed deployments, this feature is no longer accessible through the navigation menu starting with {{es}} 9.2 and later. It'll be visible to existing users who have previously used it, but new users will not be able to discover or enable this feature through the UI.
 ::::
