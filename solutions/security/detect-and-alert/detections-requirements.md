@@ -35,7 +35,7 @@ These steps are only required for **self-managed** deployments:
     `xpack.encryptedSavedObjects.encryptionKey: 'fhjskloppd678ehkdfdlliverpoolfcr'`
 
 * In [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
-    1. Set the `xpack.security.enabled` setting to `true`. Refer to [General security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) for more information.
+    * Set the `xpack.security.enabled` setting to `true`. Refer to [General security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) for more information.
     2. Remove the line `search.allow_expensive_queries=false` if you find it. The `search.allow_expensive_queries` setting must be left on its default value of `true` for key detection features like [alerting rules](https://www.elastic.co/docs/explore-analyze/alerts-cases/alerts/alerting-setup#alerting-prerequisites) and rule exceptions to work.
 
 
