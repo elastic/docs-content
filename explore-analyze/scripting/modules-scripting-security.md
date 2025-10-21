@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Scripting and security [modules-scripting-security]
+# Scripting and security in Painless [modules-scripting-security]
 
 Painless and {{es}} implement layers of security to build a defense in depth strategy for running scripts safely.
 

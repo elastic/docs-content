@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Advanced scripts using script engines [modules-scripting-engine]
+# Implementing custom scripting language in Elasticsearch [modules-scripting-engine]
 
 A `ScriptEngine` is a backend for implementing a scripting language. It may also be used to write scripts that need to use advanced internals of scripting. For example, a script that wants to use term frequencies while scoring.
 

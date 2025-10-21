@@ -1,4 +1,5 @@
 ---
+navigation_title: Extracting fields
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripting-field-extraction.html
 applies_to:
