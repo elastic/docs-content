@@ -11,7 +11,7 @@ products:
 
 
 
-# Access fields in a document [script-fields-api]
+# Accessing fields in a document [script-fields-api]
 
 
 ::::{warning} 

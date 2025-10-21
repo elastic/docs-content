@@ -7,6 +7,6 @@ products:
   - id: elasticsearch
 ---
 
-# Type casting tutorial [type-casting-tutorial]
+# Converting data types [type-casting-tutorial]
 
 tbd

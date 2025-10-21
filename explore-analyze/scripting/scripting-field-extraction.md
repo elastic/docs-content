@@ -1,5 +1,4 @@
 ---
-navigation_title: Extracting fields
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripting-field-extraction.html
 applies_to:
@@ -9,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Field extraction [scripting-field-extraction]
+# Extracing fields [scripting-field-extraction]
 
 The goal of field extraction is simple; you have fields in your data with a bunch of information, but you only want to extract pieces and parts.
 

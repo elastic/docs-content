@@ -17,13 +17,13 @@ Painless scripting becomes powerful when applied to real-world scenarios. These 
 # Available tutorials
 
 
-* [Access fields in a document](/explore-analyze/scripting/script-fields-api.md)
+* [Accessing fields in a document](/explore-analyze/scripting/script-fields-api.md)
 * [Accessing document fields and special variables](/explore-analyze/scripting/modules-scripting-fields.md)
 * [Dissecting data](/explore-analyze/scripting/dissect.md)
 * [Grokking grok](/explore-analyze/scripting/grok.md)
 * [Scripts, caching, and search speed](/explore-analyze/scripting/scripts-search-speed.md)
-* [Field extraction](/explore-analyze/scripting/scripting-field-extraction.md)
-* [Datetime tutorial](/explore-analyze/scripting/modules-scripting-datetime-tutorial.md)
-* [Document update tutorial](/explore-analyze/scripting/modules-scripting-document-update-tutorial.md)
-* [Regular expressions tutorial](/explore-analyze/scripting/modules-scripting-regular-expressions-tutorial.md)
-* [Type casting tutorial](/explore-analyze/scripting/modules-scripting-type-casting-tutorial.md)
+* [Extracting fields](/explore-analyze/scripting/scripting-field-extraction.md)
+* [Working with dates](/explore-analyze/scripting/modules-scripting-datetime-tutorial.md)
+* [Updating documents](/explore-analyze/scripting/modules-scripting-document-update-tutorial.md)
+* [Using Painless regular expressions](/explore-analyze/scripting/modules-scripting-regular-expressions-tutorial.md)
+* [Converting data types](/explore-analyze/scripting/modules-scripting-type-casting-tutorial.md)
