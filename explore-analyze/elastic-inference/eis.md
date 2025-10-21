@@ -34,7 +34,7 @@ stack: preview 9.1, ga 9.2
 serverless: ga
 ```
 
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput than ML nodes and equivalent performance for latency. We will continue to benchmark, remove limitations and address concerns.
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency. We will continue to benchmark, remove limitations and address concerns.
 
 ### Using the ELSER on EIS endpoint
 
