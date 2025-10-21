@@ -1,5 +1,5 @@
 ---
-navigation_title: Reindex a TSDS
+navigation_title: "Reindex a TSDS"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds-reindex.html
 applies_to:
@@ -9,208 +9,114 @@ products:
   - id: elasticsearch
 ---
 
-# Reindex a TSDS [tsds-reindex]
+# Reindex a time series data stream [tsds-reindex]
 
-## Introduction [tsds-reindex-intro]
+Reindexing allows you to copy documents from an existing [time series data stream (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) to a new one. All data streams support reindexing, but time series data streams require special handling due to their time-bound backing indices and strict timestamp acceptance windows.
 
-With reindexing, you can copy documents from an old [time-series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md) to a new one. Data streams support reindexing in general, with a few [restrictions](use-data-stream.md#reindex-with-a-data-stream). Still, time-series data streams introduce additional challenges due to tight control on the accepted timestamp range for each backing index they contain. Direct use of the reindex API would likely error out due to attempting to insert documents with timestamps that are outside the current acceptance window.
+:::{important}
+When you reindex, the result is a single backing index of a new data stream.
+:::
 
-To avoid these limitations, use the process that is outlined below:
+To reindex, follow the steps on this page.
 
-1. Create an index template for the destination data stream that will contain the re-indexed data.
-2. Update the template to
+:::{note}
+This process only applies to time series data streams without a [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) configuration. To reindex a downsampled data stream, reindex the backing indices individually, then add them to a new, empty data stream.
+:::
 
-    1. Set `index.time_series.start_time` and `index.time_series.end_time` index settings to match the lowest and highest `@timestamp` values in the old data stream.
-    2. Set the `index.number_of_shards` index setting to the sum of all primary shards of all backing indices of the old data stream.
-    3. Set `index.number_of_replicas` to zero and unset the `index.lifecycle.name` index setting.
+## Overview
 
-3. Run the reindex operation to completion.
-4. Revert the overridden index settings in the destination index template.
-5. Invoke the `rollover` api to create a new backing index that can receive new documents.
+These high-level steps summarize the process of reindexing a time series data stream. Each step is detailed in a later section.
 
-::::{note}
-This process only applies to time-series data streams without [downsampling](./downsampling-time-series-data-stream.md) configuration. Data streams with downsampling can only be re-indexed by re-indexing their backing indexes individually and adding them to an empty destination data stream.
-::::
+1. Create an index template for the destination data stream
+2. Update the template with temporary settings for reindexing
+3. Run the reindex operation
+4. Revert the temporary index settings
+5. Perform a manual rollover to create a new backing index for incoming data
 
+The examples on this page use Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) syntax.
 
-In what follows, we elaborate on each step of the process with examples.
+## Create the destination index template [tsds-reindex-create-template]
 
-
-## Create a TSDS template to accept old documents [tsds-reindex-create-template]
-
-Consider a TSDS with the following template:
+Create an index template for the new TSDS, using your preferred mappings and settings:
 
 ```console
-POST /_component_template/source_template
+PUT _index_template/my-new-tsds-template
 {
+  "index_patterns": ["my-new-tsds"],
+  "priority": 100,
+  "data_stream": {},
   "template": {
     "settings": {
-      "index": {
-        "number_of_replicas": 2,
-        "number_of_shards": 2,
-        "mode": "time_series",
-        "routing_path": [ "metricset" ]
-      }
+      "index.mode": "time_series"
     },
     "mappings": {
       "properties": {
-        "@timestamp": { "type": "date" },
-        "metricset": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "dimension_field": {
           "type": "keyword",
           "time_series_dimension": true
         },
-        "k8s": {
-          "properties": {
-            "tx": { "type": "long" },
-            "rx": { "type": "long" }
-          }
+        "metric_field": {
+          "type": "double",
+          "time_series_metric": "gauge"
         }
       }
     }
   }
 }
-
-POST /_index_template/1
-{
-  "index_patterns": [
-    "k8s*"
-  ],
-  "composed_of": [
-    "source_template"
-  ],
-  "data_stream": {}
-}
 ```
+## Update the template for reindexing 
 
-A possible output of `/k8s/_settings` looks like:
+To support the reindexing process, you need to temporarily modify the template:
 
-```console-result
-{
-  ".ds-k8s-2023.09.01-000002": {
-    "settings": {
-      "index": {
-        "mode": "time_series",
-        "routing": {
-          "allocation": {
-            "include": {
-              "_tier_preference": "data_hot"
-            }
-          }
-        },
-        "hidden": "true",
-        "number_of_shards": "2",
-        "time_series": {
-          "end_time": "2023-09-01T14:00:00.000Z",
-          "start_time": "2023-09-01T10:00:00.000Z"
-        },
-        "provided_name": ".ds-k9s-2023.09.01-000002",
-        "creation_date": "1694439857608",
-        "number_of_replicas": "2",
-        "routing_path": [
-          "metricset"
-        ],
-        ...
-      }
-    }
-  },
-  ".ds-k8s-2023.09.01-000001": {
-    "settings": {
-      "index": {
-        "mode": "time_series",
-        "routing": {
-          "allocation": {
-            "include": {
-              "_tier_preference": "data_hot"
-            }
-          }
-        },
-        "hidden": "true",
-        "number_of_shards": "2",
-        "time_series": {
-          "end_time": "2023-09-01T10:00:00.000Z",
-          "start_time": "2023-09-01T06:00:00.000Z"
-        },
-        "provided_name": ".ds-k9s-2023.09.01-000001",
-        "creation_date": "1694439837126",
-        "number_of_replicas": "2",
-        "routing_path": [
-          "metricset"
-        ],
-        ...
-      }
-    }
-  }
-}
-```
-
-To reindex this TSDS, do not to re-use its index template in the destination data stream, to avoid impacting its functionality. Instead, clone the template of the source TSDS and apply the following modifications:
-
-* Set `index.time_series.start_time` and `index.time_series.end_time` index settings explicitly. Their values should be based on the lowest and highest `@timestamp` values in the data stream to reindex. This way, the initial backing index can load all data that is contained in the source data stream.
-* Set `index.number_of_shards` index setting to the sum of all primary shards of all backing indices of the source data stream. This helps maintain the same level of search parallelism, as each shard is processed in a separate thread (or more).
-* Unset the `index.lifecycle.name` index setting, if any. This prevents ILM from modifying the destination data stream during reindexing.
-* (Optional) Set `index.number_of_replicas` to zero. This helps speed up the reindex operation. Since the data gets copied, there is limited risk of data loss due to lack of replicas.
-
-Using the example above as source TSDS, the template for the destination TSDS would be:
+  1. Set `index.time_series.start_time` and `index.time_series.end_time` index settings to match the lowest and highest `@timestamp` values in the old data stream. 
+  2. Set `index.number_of_shards` to the sum of all primary shards of all backing indices of the old data stream. 
+  3. Clear the `index.lifecycle.name` index setting (if any), to prevent ILM from modifying the destination data stream during reindexing.
+  4. (Optional) Set `index.number_of_replicas` to zero, to speed up reindexing. Because the data gets copied in the reindexing process, you don't need replicas.
 
 ```console
-POST /_component_template/destination_template
+PUT _index_template/new-tsds-template
 {
+  "index_patterns": ["new-tsds*"],
+  "priority": 100,
+  "data_stream": {},
   "template": {
     "settings": {
-      "index": {
-        "number_of_replicas": 0,
-        "number_of_shards": 4,
-        "mode": "time_series",
-        "routing_path": [ "metricset" ],
-        "time_series": {
-          "end_time": "2023-09-01T14:00:00.000Z",
-          "start_time": "2023-09-01T06:00:00.000Z"
-        }
-      }
+      "index.mode": "time_series",
+      "index.routing_path": ["host", "service"], 
+      "index.time_series.start_time": "2023-01-01T00:00:00Z", <1>
+      "index.time_series.end_time": "2025-01-01T00:00:00Z",  <2>
+      "index.number_of_shards": 6, <3>
+      "index.number_of_replicas": 0, <4>
+      "index.lifecycle.name": null  <5>
     },
     "mappings": {
-      "properties": {
-        "@timestamp": { "type": "date" },
-        "metricset": {
-          "type": "keyword",
-          "time_series_dimension": true
-        },
-        "k8s": {
-          "properties": {
-            "tx": { "type": "long" },
-            "rx": { "type": "long" }
-          }
-        }
-      }
+      ...
     }
   }
 }
-
-POST /_index_template/2
-{
-  "index_patterns": [
-    "k9s*"
-  ],
-  "composed_of": [
-    "destination_template"
-  ],
-  "data_stream": {}
-}
 ```
 
+1. Lowest timestamp value in the old data stream
+2. Highest timestamp value in the old data stream
+3. Sum of the primary shards from all source backing indices
+4. Speed up reindexing
+5. Pause ILM
 
-## Reindex [tsds-reindex-op]
+### Create the destination data stream and reindex [tsds-reindex-op]
 
-Invoke the reindex api, for instance:
+Run the reindex operation:
 
 ```console
 POST /_reindex
 {
   "source": {
-    "index": "k8s"
+    "index": "old-tsds"
   },
   "dest": {
-    "index": "k9s",
+    "index": "new-tsds",
     "op_type": "create"
   }
 }
@@ -219,51 +125,45 @@ POST /_reindex
 
 ## Restore the destination index template [tsds-reindex-restore]
 
-Once the reindexing operation completes, restore the index template for the destination TSDS as follows:
+After reindexing completes, update the index template again to remove the temporary settings:
 
 * Remove the overrides for `index.time_series.start_time` and `index.time_series.end_time`.
-* Restore the values of `index.number_of_shards`, `index.number_of_replicas`  and  `index.lifecycle.name` as applicable.
-
-Using the previous example, the destination template is modified as follows:
+* Restore the values of `index.number_of_shards`, `index.number_of_replicas`,  and  `index.lifecycle.name` (as applicable).
 
 ```console
-POST /_component_template/destination_template
+PUT _index_template/new-tsds-template
 {
+  "index_patterns": ["new-tsds*"],
+  "priority": 100,
+  "data_stream": {},
   "template": {
-    "settings": {
-      "index": {
-        "number_of_replicas": 2,
-        "number_of_shards": 2,
-        "mode": "time_series",
-        "routing_path": [ "metricset" ]
-      }
-    },
+    "settings": { 
+      "index.mode": "time_series",
+      "index.routing_path": ["host", "service"],
+      "index.number_of_replicas": 1, <1>
+      "index.lifecycle.name": "my-ilm-policy" <2>
+    }, 
     "mappings": {
-      "properties": {
-        "@timestamp": { "type": "date" },
-        "metricset": {
-          "type": "keyword",
-          "time_series_dimension": true
-        },
-        "k8s": {
-          "properties": {
-            "tx": { "type": "long" },
-            "rx": { "type": "long" }
-          }
-        }
-      }
+      ...
     }
   }
 }
 ```
 
-Next, Invoke the `rollover` api on the destination data stream without any conditions set.
+1. Restore replicas
+2. Re-enable ILM
+
+## Roll over for new data
+
+Create a new backing index with a manual rollover request:
 
 ```console
-POST /k9s/_rollover/
+POST new-tsds/_rollover/
 ```
 
-This creates a new backing index with the updated index settings. The destination data stream is now ready to accept new documents.
+The destination data stream is now ready to accept new documents.
 
-Note that the initial backing index can still accept documents within the range of timestamps derived from the source data stream. If this is not desired, mark it as [read-only](elasticsearch://reference/elasticsearch/index-settings/index-block.md#index-blocks-read-only) explicitly.
+## Related resources
 
+- [Time series data streams overview](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
+- [Reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex)

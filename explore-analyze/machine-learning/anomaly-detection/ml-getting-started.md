@@ -315,6 +315,6 @@ If you’re now thinking about where {{anomaly-detect}} can be most impactful fo
 
 In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](/explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md).
 
-If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
+If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
 
 If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).

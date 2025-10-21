@@ -223,7 +223,7 @@ POST /_aliases?pretty
 
 ### Step 2: Create {{kib}} spaces [_step_2_create_kib_spaces]
 
-Next, you’ll need to create a {{kib}} space for each service environment. To open **Spaces**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
+Next, you’ll need to create a {{kib}} space for each service environment. Open the **Spaces** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
 
 See [Kibana spaces](/deploy-manage/manage-spaces.md) for more information on creating a space.
 
@@ -242,7 +242,7 @@ Open the Applications UI and navigate to **Settings** → **Indices**. Use the t
 
 ### Step 4: Create {{kib}} access roles [_step_4_create_kib_access_roles]
 
-To open **Roles**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create role**.
+Open the **Roles** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create role**.
 
 You’ll need to create two roles: one for `staging` users (we’ll call this role `staging_apm_viewer`) and one for `production` users (we’ll call this role `production_apm_viewer`).
 

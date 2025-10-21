@@ -4,15 +4,11 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
 
 # Model Context Protocol (MCP) server
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
 
@@ -47,6 +43,7 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
         "AUTH_HEADER": "ApiKey ${API_KEY}"
       }
     }
+  }
 }
 ```
 

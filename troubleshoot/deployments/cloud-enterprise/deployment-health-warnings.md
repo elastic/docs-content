@@ -35,6 +35,9 @@ To run a no-op plan:
 
 If multiple health warnings appear for one of your deployments, check [](/troubleshoot/deployments/cloud-enterprise/common-issues.md) or [contact us](/troubleshoot/index.md#contact-us).
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 ## Additional resources
 * [](/troubleshoot/monitoring/deployment-health-warnings.md)
 * [Troubleshooting overview](/troubleshoot/index.md)
