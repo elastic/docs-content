@@ -27,7 +27,7 @@ Users with these minimum permissions can view data on the **Findings** page and 
 
 * `logs-cloud_security_posture.findings_latest-*`
 * `logs-cloud_security_posture.scores-*`
-* {applies_to}`stack: 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
 
 
 ### {{kib}} privileges [_kib_privileges]
@@ -46,7 +46,7 @@ Users with these minimum permissions can view data on the **Findings** page and 
 
 * `logs-cloud_security_posture.findings_latest-*`
 * `logs-cloud_security_posture.scores-*`
-* {applies_to}`stack: 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
 
 
 
@@ -66,7 +66,7 @@ Users with these minimum permissions can view data on the **Findings** page and 
 
 * `logs-cloud_security_posture.findings_latest-*`
 * `logs-cloud_security_posture.scores-*`
-* {applies_to}`stack: 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
 
 
 
