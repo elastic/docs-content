@@ -56,9 +56,10 @@ Search Applications use [search templates](search-templates.md) to simplify the 
 ### Option 1: Get started in the UI [search-application-overview-get-started-ui] 
 
 ```{applies_to}
-serverless: unavailable
+serverless: unavailable 
 ```
-::::{warning}
+:::{warning}
+:applies_to: {"stack": "ga 9.2.0", "ess": "ga 9.2.0"}
 This feature is unavailable for new users and is hidden from the navigation menu. It remains accessible for users who started using the feature before 9.2.
 ::::
 
