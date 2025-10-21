@@ -10,6 +10,10 @@ applies_to:
 
 # Using different models in {{agent-builder}}
 
+:::{important}
+Due to phased rollout, the ability to use different models may not be immediately available in your project.
+:::
+
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making. By default, agents use the Elastic Managed LLM, but you can configure other models through Kibana connectors.
 
 ## Default model configuration
