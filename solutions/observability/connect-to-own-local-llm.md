@@ -11,6 +11,11 @@ products:
 
 # Connect to your own local LLM
 
+:::{important}
+Elastic doesn’t support the setup and configuration of local LLMs. The example provided is for reference only.
+Before using a local LLM, evaluate its performance according to the [LLM performance matrix](./llm-performance-matrix.md#evaluate-your-own-model).
+:::
+
 This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally configure the connector in your Elastic deployment.
 
 ::::{note}
