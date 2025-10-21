@@ -20,6 +20,10 @@ Most options in this section are supported by all APM Server deployment methods.
 
 The [Real User Monitoring (RUM) agent](apm-agent-rum-js://reference/index.md) captures user interactions with clients such as web browsers. These interactions are sent as events to the APM Server. Because the RUM agent runs on the client side, the connection between agent and server is unauthenticated. As a security precaution, RUM is therefore disabled by default.
 
+:::{important}
+To use RUM, you need a centralized APM Server, either running as standalone binary or managed through Fleet.
+:::
+
 :::::::{tab-set}
 
 ::::::{tab-item} APM Server binary
