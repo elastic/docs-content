@@ -107,7 +107,7 @@ Global default and max retention do not apply to data streams internal to elasti
     :::{tip}
     :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
 
-    To adjust the retention period of a data stream in {{kib}}, locate a data stream on the **Streams** page. A stream directly corresponds to a data stream. Next, select a stream to view its details and review the **Retention** tab to find out how it's managed before making your adjustments.
+    To adjust the retention period of a data stream in {{kib}}, locate a data stream on the **Streams** page. A stream maps directly to a data stream. Next, select a stream to view its details and review the **Retention** tab to find out how it's managed before making your adjustments.
     :::
 
 * By setting the global retention via the `data_streams.lifecycle.retention.default` and/or `data_streams.lifecycle.retention.max` that are set on a cluster level. You can set this via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). For example:

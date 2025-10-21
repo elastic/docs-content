@@ -54,8 +54,8 @@ To learn how to create a specialized ILM policy for any data stream, such as tho
 Starting with {{stack}} version 9.2, [Streams](/solutions/observability/streams/streams.md) provides a centralized interface for common data management tasks in {{kib}}.
 
 1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. A stream directly corresponds to an {{es}} data stream. Select a stream to view its details.
-1. Go to the **Retention** tab to see how long your stream retains data and to get insight into your stream's data ingestion and storage size. A stream can retain the data indefinitely, for a custom period, or by following an existing ILM policy.
+1. A stream maps directly to an {{es}} data stream. Select a stream to view its details.
+1. Go to the **Retention** tab to see how long your stream retains data and to get insight into your stream's data ingestion and storage size. A stream can retain the data indefinitely, for a custom period, or by following an existing ILM policy. For more information, refer to [](ADD LINK to /solutions/observability/streams/management/retention.md).
 
 ::::
 

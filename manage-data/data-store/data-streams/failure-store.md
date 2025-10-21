@@ -93,7 +93,7 @@ PUT _data_stream/my-datastream-existing/_options
 :::{tip}
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
 
-You can also enable the data stream failure store in {{kib}}. Locate the data stream on the **Streams** page, where a stream directly corresponds to a data stream. Select a stream to view its details and go to the **Retention** tab where you can find the **Enable failure store** button.
+You can also enable the data stream failure store in {{kib}}. Locate the data stream on the **Streams** page, where a stream maps directly to a data stream. Select a stream to view its details and go to the **Retention** tab where you can find the **Enable failure store** option.
 :::
 
 ### Enable failure store via cluster setting [set-up-failure-store-cluster-setting]
