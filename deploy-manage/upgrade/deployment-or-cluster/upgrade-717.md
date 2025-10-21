@@ -14,7 +14,9 @@ This guide applies to all clusters running {{stack} version **7.17.x** across al
 Upgrading from 7.17 to {{version.stack}} requires two major upgrades. Each major upgrade must be prepared and executed independently, although the planning phase can be shared.
 
 1. **7.17.x → 8.19.x**
+
     This brings the cluster onto the latest supported 8.x release, which is the required intermediate version before upgrading to {{version.stack}}.
+    
     Before running this upgrade, all ingest components and client libraries must be upgraded to 7.17.x.
 
 2. **8.19.x → {{version.stack}}**
