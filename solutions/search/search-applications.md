@@ -11,7 +11,6 @@ products:
 
 # Search applications [search-application-overview]
 
-
 *Search Applications* enable users to build search-powered applications that leverage the full power of {{es}} and its Query DSL, with a simplified user experience. Create search applications based on your {{es}} indices, build queries using search templates, and easily preview your results directly in the {{kib}} Search UI.
 
 You can also interact with your search applications using the [Search Application APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search_application). Search Applications are designed to simplify building unified search experiences across a range of enterprise search use cases, using the Elastic platform.
@@ -54,12 +53,16 @@ Search Applications use [search templates](search-templates.md) to simplify the 
 
 ## Get started [search-application-overview-get-started] 
 
-
 ### Option 1: Get started in the UI [search-application-overview-get-started-ui] 
 
 ```{applies_to}
 serverless: unavailable
 ```
+
+::::{warning}
+For {{ech}} and self-managed deployments, this feature is no longer accessible through the navigation menu starting with {{es}} 9.2 and later. It'll be visible to existing users who have previously used it, but new users will not be able to discover or enable this feature through the UI.
+::::
+
 
 You can create build, and manage your search applications directly in the {{kib}} UI under **Search**. Make sure you have at least one {{es}} index to work with on your deployment. The indices underlying your search application are searched together, similar to how an [alias](../../manage-data/data-store/aliases.md) searches over multiple indices.
 
