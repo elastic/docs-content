@@ -29,7 +29,7 @@ In {{obs-serverless}}, Streams is automatically available.
 
 In {{stack}} version 9.1 and later, you can enable Streams in the {{observability}} Advanced Settings. To do this:
 
-1. Go to **Management** > **Stack Management** > **Advanced Settings**, or search for "Advanced Settings" in the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Advanced Settings** page in the navigation menu or by searching fo, or search for "Advanced Settings" in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Enable **Streams UI** under **Observability**.
 
 In {{serverless-short}} or after enabling Streams in {{stack}}, access the UI in one of the following ways:

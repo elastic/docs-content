@@ -42,7 +42,7 @@ The AI assistant requires the following:
 
     - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
 
-- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure [AI Assistant settings](../../solutions/observability/observability-ai-assistant.md#obs-ai-settings) to simulate function calling, but this might affect performance.
 
   - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
 
@@ -85,8 +85,8 @@ The AI Assistant connects to one of these supported LLM providers:
 
 **Setup steps**:
 
-1. **Create authentication credentials** with your chosen provider using the links above
-2. **Create an LLM connector** by navigating to **Stack Management → Connectors** to create an LLM connector for your chosen provider.
+1. **Create authentication credentials** with your chosen provider using the links above.
+2. **Create an LLM connector** for your chosen provider by going to the **Connectors** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. **Authenticate the connection** by entering:
    - The provider's API endpoint URL
    - Your authentication key or secret
@@ -102,6 +102,10 @@ While the {{obs-ai-assistant}} is compatible with many different models, refer t
 :::
 
 ### Connect to a custom local LLM
+```{applies_to}
+serverless: ga
+stack: ga 9.2
+```
 
 [Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
@@ -524,6 +528,7 @@ Results for other languages or models may vary.
 ### Limitations [obs-ai-anonymization-limitations]
 Anonymization has the following limitations:
 
+* **Non-string fields**:  {applies_to}`stack: ga 9.1.3` Anonymization only applies to string values. Booleans, numbers, image types, and other non-string values are ignored.
 * **Performance (NER)**: Running an NER model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
 * **Structured JSON**: The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax.
 * **False negatives / positives**: No model or pattern is perfect. Model accuracy may vary depending on model and input.

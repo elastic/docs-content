@@ -9,12 +9,15 @@ products:
   - id: cloud-enterprise
 ---
 
-# Migrate from the cross-cluster search deployment template in {{ece}} [ece-migrate-ccs]
+# Migrate from the legacy cross-cluster search deployment template in {{ece}} [ece-migrate-ccs]
 
-The cross-cluster search deployment template is now deprecated was removed in {{ece}} 3.0. You no longer need to use the dedicated cross-cluster template to search across deployments. Instead, you can now use any template to [configure remote clusters](ece-enable-ccs.md) and search across them. Existing deployments created using this template are not affected, but they are required to migrate to another template before upgrading to {{stack}} 8.x.
+The legacy cross-cluster search deployment template was removed in {{ece}} 3.0. You no longer need a dedicated template to search across deployments. Instead, you can now use any template to [configure remote clusters](ece-enable-ccs.md) and search across them. Existing deployments created using this template are not affected, but they are required to migrate to another template before upgrading to {{stack}} 8.x.
 
-In order to migrate your existing CCS deployment using the CCS Deployment template to the new mechanism which supports CCR and cross-environment remote clusters you will need to migrate your data a new deployment [following these steps](#ece-migrate-ccs-deployment-using-snapshot).
+::::{important}
+This guide only applies to {{ece}} 3.x installations and to deployments on {{stack}} versions earlier than 8.0 that were created using the legacy cross-cluster search template.
+::::
 
+Follow these instructions to migrate your existing CCS deployment that uses the legacy cross-cluster search template and its data to a new deployment.
 
 ## Use a snapshot to migrate deployments that use the cross-cluster search deployment template [ece-migrate-ccs-deployment-using-snapshot]
 

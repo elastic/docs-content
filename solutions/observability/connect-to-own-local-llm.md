@@ -11,12 +11,17 @@ products:
 
 # Connect to your own local LLM
 
+:::{important}
+Elastic doesn’t support the setup and configuration of local LLMs. The example provided is for reference only.
+Before using a local LLM, evaluate its performance according to the [LLM performance matrix](./llm-performance-matrix.md#evaluate-your-own-model).
+:::
+
 This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally configure the connector in your Elastic deployment.
 
 ::::{note}
 If your Elastic deployment is not on the same network, you must configure an Nginx reverse proxy to authenticate with Elastic. Refer to [Configure your reverse proxy](https://www.elastic.co/docs/solutions/security/ai/connect-to-own-local-llm#_configure_your_reverse_proxy) for more detailed instructions.
 
-You do not have to set up a proxy if LM Studio is running locally, or on the same network as your Elastic deployment. 
+You do not have to set up a proxy if LM Studio is running locally, or on the same network as your Elastic deployment.
 ::::
 
 ::::{note}
@@ -85,7 +90,7 @@ Once you’ve downloaded a model, use the following commands in your CLI:
 4. Load a model: `lms load llama-3.3-70b-instruct --context-length 64000 --gpu max`.
 
 ::::{important}
-When loading a model, use the `--context-length` flag with a context window of 64,000 or higher. 
+When loading a model, use the `--context-length` flag with a context window of 64,000 or higher.
 Optionally, you can set how much to offload to the GPU by using the `--gpu` flag. `--gpu max` will offload all layers to GPU.
 ::::
 
