@@ -44,9 +44,24 @@ serverless: ga
 
 The [**GenAI settings page**](/explore-analyze/ai-assistant/manage-access-to-ai-assistant.md) allows you to:
 
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.2
+
 - Specify that a specific LLM connector must be used for conversations with AI Assistant. 
-- Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 - Disable AI Assistant access completely.
+
+:::
+
+:::{applies-item} serverless:
+
+- Manage which AI connectors are available in your environment. 
+- Enable or disable AI Assistant and other AI-powered features in your environment.
+
+:::
+
+::::
 
 
 
