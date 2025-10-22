@@ -85,7 +85,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds an {{elastic-defend}} advanced policy setting `windows.advanced.events.security.event_disabled` that lets users disable security event collection per event ID.
 * Shortens the time it takes {{elastic-defend}} to recover from a `DEGRADED` status caused by communication issues with {{agent}}.
 * Improves the `verify` command to ensure {{elastic-endpoint}} service is running, otherwise {{agent}} has to fix it automatically.
-* Adds {{elastic-defend}} support for Windows on ARM.
+* Adds experimental {{elastic-defend}} support for Windows on ARM. This is pre-release software under active development which should not be run on any production systems. We welcome feedback in our community Slack https://ela.st/slack
 * Improves the reliability of {{elastic-defend}} Kafka connections.
 
 ### Fixes [elastic-security-9.2.0-fixes]
