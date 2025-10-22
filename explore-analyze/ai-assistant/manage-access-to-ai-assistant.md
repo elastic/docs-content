@@ -15,7 +15,7 @@ This page describes how to use the GenAI Settings page to control access to AI A
 
 ::::{applies-switch}
 
-:::{applies-item} stack:
+:::{applies-item} stack: ga 9.2
 
 - Specify that a specific LLM connector must be used for conversations with AI Assistant. 
 - {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
@@ -44,9 +44,9 @@ To manage these settings, go to the **GenAI Settings** page by using the navigat
 
 ::::{applies-switch}
 
-:::{applies-item} stack:
+:::{applies-item} stack: ga 9.2
 
-![GenAI Settings page](/explore-analyze/images/ai-assistant-settings-page.png "")
+![GenAI Settings page for Stack](/explore-analyze/images/ai-assistant-settings-page.png "")
 
 
 The **GenAI Settings** page has the following settings:
@@ -60,7 +60,7 @@ The **GenAI Settings** page has the following settings:
 
 :::{applies-item} serverless:
 
-![Example dashboard](/explore-analyze/images/ai-assistant-settings-page-serverless.png "")
+![GenAI Settings page for Serverless](/explore-analyze/images/ai-assistant-settings-page-serverless.png "")
 
 The **GenAI Settings** page has the following settings:
 
