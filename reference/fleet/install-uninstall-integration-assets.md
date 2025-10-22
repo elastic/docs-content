@@ -23,18 +23,17 @@ Note that it’s currently not possible to have multiple versions of the same in
 
 ::::{admonition} Spaces support for integration assets
 
-Elastic Agent integrations and their assets, such as dashboards, visualizations, and saved searches, behave differently depending on your {{stack}} version:
+Elastic Agent integrations and associated assets, such as dashboards, visualizations, and saved searches, behave differently depending on your {{stack}} version:
 
-* {applies_to}`stack: ga, removed 9.1` In versions earlier than {{stack}} 9.1, integration assets can be installed in only one {{kib}} space.
-You can manually [copy them](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space) to other spaces. However, many integrations include markdown panels with dynamically generated links to other dashboards. When copied between spaces, these links might not behave as expected and can result in a `Dashboard not found` (404) error. Refer to known issue [#175072](https://github.com/elastic/kibana/issues/175072) for details.
-
-* {applies_to}`stack: ga 9.1` Starting in {{stack}} 9.1, Fleet introduces a space-aware data model for {{agent}} policies and integrations. Agent policies can now span multiple spaces, while integration assets remain space-specific. 
-
+* {applies_to}`stack: ga 9.1` Fleet uses a space-aware data model for {{agent}} policies and integrations. Agent policies can now span multiple spaces, while integration assets remain space-specific. 
+  
   Integration assets are still installed per space, but can be managed and reinstalled independently in each space.
-
+  
   If you upgraded from an earlier version, enable space awareness in Fleet before managing integrations across spaces.
-
+  
   For more details, refer to [Using Spaces with Fleet](../../deploy-manage/manage-spaces-fleet.md).
+
+* {applies_to}`stack: ga 9.0` In versions earlier than {{stack}} 9.1, integration assets can be installed in only one {{kib}} space. You can manually [copy them](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space) to other spaces. However, many integrations include markdown panels with dynamically generated links to other dashboards. When copied between spaces, these links might not behave as expected and can result in a `Dashboard not found` (404) error. Refer to known issue [#175072](https://github.com/elastic/kibana/issues/175072) for details.
 
 ::::
 
