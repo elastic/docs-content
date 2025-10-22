@@ -102,6 +102,10 @@ While the {{obs-ai-assistant}} is compatible with many different models, refer t
 :::
 
 ### Connect to a custom local LLM
+```{applies_to}
+serverless: ga
+stack: ga 9.2
+```
 
 [Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 

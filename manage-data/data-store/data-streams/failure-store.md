@@ -870,3 +870,8 @@ POST _data_stream/_modify
 
 This API gives you fine-grained control over the indices in your failure store, allowing you to manage backup and restoration operations as well as isolate failure data for later remediation.
 
+## Cross Cluster Search compatibility [ccs-compatibility]
+
+:::{important}
+Accessing the failure store across clusters using `::failures` is not yet supported.
+:::
