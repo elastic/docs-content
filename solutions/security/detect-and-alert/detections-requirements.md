@@ -36,7 +36,7 @@ These steps are only required for **self-managed** deployments:
 
 * In [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
     * Set the `xpack.security.enabled` setting to `true`. Refer to [General security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) for more information.
-    * Remove the line `search.allow_expensive_queries=false` if you find it. The `search.allow_expensive_queries` setting must be left on its default value of `true` for key detection features like [alerting rules](https://www.elastic.co/docs/explore-analyze/alerts-cases/alerts/alerting-setup#alerting-prerequisites) and rule exceptions to work.
+    * If the `search.allow_expensive_queries` setting is set to `false`, remove it. If the setting is set to its default value of `true` or not included in the `elasticsearch.yml` file, you don't need to change it. When this setting is set to `true`, it allows key detection features, such as [alerting rules](../../../explore-analyze/alerts-cases/alerts/alerting-getting-started.md#_rules) and rule exceptions, to work.
 
 
 ::::{important}
