@@ -150,6 +150,12 @@ If you have `.ml-anomalies-*` anomaly detection result indices created in {{es}}
 If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.x. For more information, refer to [Migrate transform destination indices](#transform-migration).
 ::::
 
+::::{step} Migrate Enterprise Search functionality
+In {{stack}} 9.0.0 and later, Enterprise Search is no longer available, and it must be removed before upgrading from 8.x.
+
+If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
+::::
+
 :::::
 
 After completing all the preparation steps, you're ready to [upgrade your deployment or cluster](./deployment-or-cluster.md).
