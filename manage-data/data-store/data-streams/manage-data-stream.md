@@ -37,9 +37,9 @@ Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/
 
 
 You can perform the following data management tasks on the **Streams** page:
-* [define parsing and field extraction logic](ADD LINK to /solutions/observability/streams/management/extract.md) to process and structure incoming data 
-* [configure data retention policies](ADD LINK to /solutions/observability/streams/management/retention.md)
-* [manually adjust index settings](ADD LINK to /solutions/observability/streams/management/advanced.md)
-* [manage and update field mappings](ADD LINK to /solutions/observability/streams/management/schema.md) {applies_to}`stack: unavailable 9.1`
-* [identify failed and degraded documents](ADD LINK to /solutions/observability/streams/management/data-quality.md) {applies_to}`stack: unavailable 9.1`
-* [partition data into child streams](ADD LINK to /solutions/observability/streams/management/partitioning.md) {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+* [define parsing and field extraction logic](/solutions/observability/streams/management/extract.md)
+* [configure data retention policies](/solutions/observability/streams/management/retention.md)
+* [manually adjust index settings](/solutions/observability/streams/management/advanced.md)
+* [manage and update field mappings](/solutions/observability/streams/management/schema.md) {applies_to}`stack: unavailable 9.1`
+* [identify failed and degraded documents](/solutions/observability/streams/management/data-quality.md) {applies_to}`stack: unavailable 9.1`
+* [partition data into child streams](/solutions/observability/streams/management/partitioning.md) {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`

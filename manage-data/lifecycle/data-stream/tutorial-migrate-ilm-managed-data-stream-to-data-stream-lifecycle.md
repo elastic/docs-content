@@ -16,7 +16,7 @@ In this tutorial we’ll look at migrating an existing data stream from [Index L
 :::{admonition} Configure data retention policies for Streams
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
 
-Starting with {{stack}} version 9.2, [Streams](/solutions/observability/streams/streams.md) provides a centralized interface for common data management tasks in {{kib}}, including tasks such as configuring data retention policies. You can choose to retain your data indefinitely, for a custom period, or by following an existing ILM policy. For more information, refer to [Manage data retention in Streams](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#data-retention-streams).
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for common data management tasks in {{kib}}, including tasks such as configuring data retention policies. You can choose to retain your data indefinitely, for a custom period, or by following an existing ILM policy. For more information, refer to [Manage data retention in Streams](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#data-retention-streams).
 
 :::
 
