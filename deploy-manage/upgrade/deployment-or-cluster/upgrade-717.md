@@ -7,7 +7,7 @@ applies_to:
 
 {{stack}} version 7.17 has a defined end of support date of 15 January 2026, as stated in the [Elastic Product & Version End of Life Policy](https://www.elastic.co/support/eol). This document provides a guided plan to upgrade from 7.17 to the latest {{version.stack}} release. It complements the official upgrade documentation by showing how the different pieces fit together in a complete upgrade exercise.
 
-This guide applies to all clusters running {{stack} version **7.17.x** across all deployment types, including {{ech}} (ECH), {{ece}} (ECE), or {{eck}} (ECK) deployments and completely self-managed clusters. If you are using an earlier version, [upgrade first to the latest 7.17 release](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html) before proceeding.
+This guide applies to all clusters running {{stack}} version **7.17.x** across all deployment types, including {{ech}} (ECH), {{ece}} (ECE), or {{eck}} (ECK) deployments and completely self-managed clusters. If you are using an earlier version, [upgrade first to the latest 7.17 release](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html) before proceeding.
 
 ## Overview
 
@@ -111,11 +111,11 @@ The {{ecloud}} platform facilitates major upgrades by doing the following:
 * Detecting deprecated settings and index compatibility issues.
 * Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
 
-To prepare your deployment for the upgrade, complete the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) **up to the "Perform the upgrade" section.**
+To prepare your deployment for the upgrade, complete the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section.
 
 You should make sure to:
 
-1. Run the **Upgrade Assistant** in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
+1. Run the Upgrade Assistant in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
    * Reindex legacy indices (created before 7.0).
    * Remove or update deprecated settings and mappings.
    * Review deprecation logs for both {{es}} and {{kib}}.
@@ -145,7 +145,7 @@ Although this guide refers to {{ecloud}}, the same preparation steps apply to EC
 
 You should make sure to:
 
-1. Run the **Upgrade Assistant** in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
+1. Run the Upgrade Assistant in {{kib}} and resolve all critical issues before continuing. The assistant helps you:
    * Reindex legacy indices (created before 7.0).
    * Remove or update deprecated settings and mappings.
    * Review deprecation logs for both {{es}} and {{kib}}.
@@ -166,7 +166,7 @@ Upgrade preparations for an {{eck}}-managed cluster are similar to a self-manage
 * Follow the steps in [Prepare to upgrade from 7.x](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade).
 * Review the [{{es}} upgrade setup guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html) for additional details and best practices.
 
-As part of your preparation, make sure to complete all tasks reported by the **Upgrade Assistant**, review any installed plugins for compatibility, and check whether custom client applications are affected by API-related breaking changes so you can address them before the upgrade.
+As part of your preparation, make sure to complete all tasks reported by the Upgrade Assistant, review any installed plugins for compatibility, and check whether custom client applications are affected by API-related breaking changes so you can address them before the upgrade.
 
 If you're running an {{eck}} version earlier than 3.x, consider [upgrading ECK](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md) at this stage. Although this is not required for the 7.17 → 8.19 upgrade, ECK 3.x or later is needed before performing the final upgrade to 9.x.
 ::::
@@ -177,7 +177,7 @@ Before starting the upgrade, follow the [Prepare to upgrade from 7.x](https://ww
 
 For additional details and best practices, review the [{{es}} upgrade setup guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.19/setup-upgrade.html).
 
-As part of your preparation, make sure to complete all tasks reported by the **Upgrade Assistant**, review any installed plugins for compatibility, and check whether custom client applications are affected by API-related breaking changes so you can address them before the upgrade.
+As part of your preparation, make sure to complete all tasks reported by the Upgrade Assistant, review any installed plugins for compatibility, and check whether custom client applications are affected by API-related breaking changes so you can address them before the upgrade.
 ::::
 
 :::::
@@ -355,11 +355,8 @@ If you're running an {{ece}} version earlier than 4.x, ensure that you [upgrade 
 * Detecting deprecated settings and index compatibility issues.
 * Blocking the upgrade until all issues are resolved through the Upgrade Assistant, ensuring a reliable outcome.
 
-To prepare your deployment for the upgrade, complete the steps described in the [8.19 {{ecloud}} upgrade guide](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrade-elastic-stack-for-elastic-cloud.html) up to the "Perform the upgrade" section.*Note: Although this guide refers to {{ecloud}}, the same preparation steps apply to ECE deployments.*
-
-You should make sure to:
-
-1. [Run the **Upgrade Assistant**](/deploy-manage/upgrade/prepare-to-upgrade.md#run-the-upgrade-assistant) in {{kib}} and resolve all critical issues before continuing.
+To prepare your deployment for the upgrade, review the [Prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) guide. You should make sure to:
+1. [Run the Upgrade Assistant](/deploy-manage/upgrade/prepare-to-upgrade.md#run-the-upgrade-assistant) in {{kib}} and resolve all critical issues before continuing.
 
     As described in the linked guide, the assistant helps you:
     * Reindex or mark as read-only legacy indices and data streams (created before 8.0).
@@ -368,7 +365,7 @@ You should make sure to:
     * Terminate Enterprise Search if it's part of the deployment.
 
     :::{note}
-    If the **Upgrade Assistant** reports old {{ml}}, {{ccr}}, or transform indices that require action or reindexing, make sure to review the relevant sections in the preparations guide:
+    If the Upgrade Assistant reports old {{ml}}, {{ccr}}, or transform indices that require action or reindexing, make sure to review the relevant sections in the preparations guide:
     * [Manage CCR follower data streams](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-ccr-follower-data-streams)
     * [Manage old Machine Learning indices](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-old-machine-learning-indices)
     * [Manage old Transform indices](/deploy-manage/upgrade/prepare-to-upgrade.md#manage-old-transform-indices)
