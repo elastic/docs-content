@@ -224,7 +224,7 @@ During the upgrade process, all components of your deployment are upgraded in th
 ::::{applies-item} eck:
 In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying clusters through Helm charts. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
 
-To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start upgrading the {{es}} and {{kib}} resources that represent the cluster.
+To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start by upgrading the {{es}} and {{kib}} resources that represent the cluster. Set the `version` field to the latest 8.19.x release number in each manifest or Helm chart values file.
 
 :::{note}
 For more information on how ECK manages upgrades and how to tune its behavior, refer to [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md).
@@ -443,7 +443,7 @@ During the upgrade process all of your deployment components will be upgraded in
 ::::{applies-item} eck:
 In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying clusters through Helm charts. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
 
-To upgrade your cluster to {{version.stack}}, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start upgrading the {{es}} and {{kib}} resources that represent the cluster.
+To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start by upgrading the {{es}} and {{kib}} resources that represent the cluster. Set the version field to the latest 8.19.x release number in each manifest or Helm chart values file.
 
 :::{note}
 For more information on how ECK manages upgrades and how to tune its behavior, refer to [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md).
