@@ -24,6 +24,19 @@ Enabling debug logging can help surface common problems such as:
 * Unsupported framework or language version
 * Sampling rate being set too low (resulting in missing spans)
 
+
+## Verify you're looking at the right logs
+
+Ensure you’re checking logs for the same process that starts your app (systemd service, container entrypoint, IIS worker, and so on):
+
+* For containerized environments such as Kubernetes/Docker:  
+  * `kubectl logs <pod> -c <container>` (correct container name matters if there are sidecars)  
+  * Check the new Pod after a rollout, as old Pods may show stale environment without your debug flags.
+* Tail the place your launcher writes to, and make sure your debug environment variables and flags are applied to that process.
+* Some environments redirect `stdout`/`stderr` to `files—confirm` the target (for example `/var/log/...`, platform log drains).
+* Look for messages like `installing instrumentation for …`, `detected framework …`, or `exporter configured …`. If you don’t see these after enabling debug, your flags likely aren’t applied to the running process.
+
+
 ## General SDK troubleshooting tips
 
 Check your application logs for SDK-specific output and errors. If no logs appear at all, verify that:

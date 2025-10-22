@@ -73,4 +73,4 @@ For more details about {{elastic-sec}} serverless project rates and billable ass
 
 ## Elastic Managed LLM
 
-The default [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of your "Complete" tier subscription. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.
+The default [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.

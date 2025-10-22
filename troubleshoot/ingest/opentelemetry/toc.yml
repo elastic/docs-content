@@ -9,6 +9,8 @@ toc:
       - file: edot-collector/metadata.md
       - file: edot-collector/enable-debug-logging.md
       - file: edot-collector/collector-not-starting.md
+      - file: edot-collector/misconfigured-sampling-collector.md
+      - file: edot-collector/trace-export-errors.md
   - file: edot-sdks/index.md
     children:
       - file: edot-sdks/android/index.md
@@ -21,6 +23,9 @@ toc:
       - file: edot-sdks/php/index.md
       - file: edot-sdks/python/index.md
       - file: edot-sdks/enable-debug-logging.md
+      - file: edot-sdks/missing-app-telemetry.md
       - file: edot-sdks/proxy.md
+      - file: edot-sdks/misconfigured-sampling-sdk.md
   - file: no-data-in-kibana.md
+  - file: connectivity.md
   - file: contact-support.md

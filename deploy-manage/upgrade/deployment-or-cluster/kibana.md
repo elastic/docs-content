@@ -1,8 +1,7 @@
 ---
 applies_to:
-  stack:
   deployment:
-    self: all
+    self: ga
 products:
   - id: kibana
 ---

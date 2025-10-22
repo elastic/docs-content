@@ -30,7 +30,7 @@ The following section lists the default {{infer}} endpoints, identified by their
 
 ### Default endpoints for Elastic {{infer-cap}} Service (EIS)
 
-- `.elser-2-elastic`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) trained model as an Elastic {{infer-cap}} Service for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2`. {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
+- `.elser-2-elastic`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) trained model as an Elastic {{infer-cap}} Service for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2`. {applies_to}`stack: preview 9.1` {applies_to}`self: unavailable` {applies_to}`serverless: preview`
 
 ### Default endpoints used on ML-nodes
 

@@ -6,14 +6,14 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
+navigation_title: For {{ech}}
 ---
 
-# How to access AutoOps [ec-autoops-how-to-access]
+# AutoOps for {{ech}}
 
-::::{note}
-AutoOps supports {{es}} versions according to the [supported {{stack}} versions](https://www.elastic.co/support/eol).
-::::
+For {{ech}} deployments, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md#autoops-for-ech-regions). More regions are coming soon. 
 
+## How to access AutoOps [ec-autoops-how-to-access]
 
 To access AutoOps from your {{ecloud}} console, follow these steps:
 

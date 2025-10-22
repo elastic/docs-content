@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: AI Assistant
 ---
 
-# AI Assistant
+# AI Assistant for {{elastic-sec}}
 
 The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
 
@@ -119,7 +120,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Conversations that you start with AI Assistant are private by default and not visible to other members of your team. You have two ways to share conversations - either with selected members or more broadly to everyone with access to the space.
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space. 
 
 To share a conversation, do one of the following:
 
@@ -399,6 +400,15 @@ When you include a particular event as context, such as an alert from the Alerts
 ### Knowledge base [ai-assistant-page-knowledge-base]
 
 The **Knowledge base** tab of the **Security AI settings** page allows you to enable AI Assistant to remember specified information, and use it as context to improve response quality. To learn more, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md).
+
+### AI Assistant visibility [ai-assistant-visibility]
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+:::{include} ../../_snippets/ai-assistant-visibility.md
+:::
+If you select the option to show the Security AI Assistant in other apps, the Security AI Assistant becomes **accessible outside of the Security solution**, for example, in Discover. The chat history remains persistent and is available no matter where you access the assistant within Kibana. 
 
 ### Get the most from your queries [rag-for-esql]
 

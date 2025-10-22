@@ -13,8 +13,6 @@ products:
 In this tutorial we’ll look at migrating an existing data stream from [Index Lifecycle Management ({{ilm-init}})](../index-lifecycle-management.md) to [data stream lifecycle](../data-stream.md). The existing {{ilm-init}} managed backing indices will continue to be managed by {{ilm-init}} until they age out and get deleted by {{ilm-init}}; however, the new backing indices will be managed by data stream lifecycle. This way, a data stream is gradually migrated away from being managed by {{ilm-init}} to being managed by data stream lifecycle. As we’ll see, {{ilm-init}} and data stream lifecycle can co-manage a data stream; however, an index can only be managed by one system at a time.
 
 
-## TL;DR [migrate-dsl-ilm-tldr]
-
 To migrate a data stream from {{ilm-init}} to data stream lifecycle we’ll have to execute two steps:
 
 1. Update the index template that’s backing the data stream to set [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.

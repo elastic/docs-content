@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Cases
 ---
 
-# Cases [security-cases-overview]
+# Cases for {{elastic-sec}} [security-cases-overview]
 
 Collect and share information about security issues by opening a case in {{elastic-sec}}. Cases allow you to track key investigation details, collect alerts in a central location, and more. The {{elastic-sec}} UI provides several ways to create and manage cases. Alternatively, you can use the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases) to perform the same tasks.
 

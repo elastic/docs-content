@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/fields-reference.html
   - https://www.elastic.co/guide/en/observability/current/metrics-app-fields.html
   - https://www.elastic.co/guide/en/serverless/current/observability-infrastructure-monitoring-required-fields.html
+navigation_title: Fields and object schemas
 applies_to:
   stack: all
   serverless: all
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Fields and object schemas [fields-reference]
+# Fields and object schemas for {{observability}} [fields-reference]
 
 This section lists Elastic Common Schema (ECS) fields the Infrastructure apps use to display data.
 

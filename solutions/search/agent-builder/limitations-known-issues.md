@@ -4,59 +4,67 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-WIP
-
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
-:::
 
 # Limitations and known issues in {{agent-builder}}
 
-## Model selection
+## Limitations
 
-Initally, {{agent-builder}} only supports working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the Elastic Inference Service which uses Claude Sonnet 3.7, on {{ech}} and {{serverless-full}}. 
+### Feature availability
 
-Locally this picks the first AI connector available.
+#### Non-serverless deployments
 
-This can be changed under Stack Management -> AI -> GenAI Settings -> Default AI Connector.
+{{agent-builder}} is enabled by default in {{serverless-full}} for {{es}} projects.
+
+However, it must be enabled for non-serverless deployments {applies_to}`stack: preview 9.2`. Refer to [Get started](get-started.md#enable-agent-builder) for instructions.
+
+#### Serverless deployments
+
+In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
 
 ## Known issues
 
+### Incompatible LLMs
 
-- **Default agent can misinterpret SQL syntax as ES|QL**
-  - The `.execute_esql` tool is designed only for [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax, not other query languages
-  - When using SQL syntax with the default agent, it attempts to use the `.execute_esql` tool instead of recognizing the input as SQL
-  - This results in parsing errors like this:
-    ```console-response
-    [
-      {
-        "type": "error",
-        "data": {
-          "message": "parsing_exception\n\tCaused by:\n\t\tinput_mismatch_exception: null\n\tRoot causes:\n\t\tparsing_exception: line 1:15: mismatched input 'WHERE' expecting {<EOF>, '|', ',', 'metadata'}",
-          "stack": "ResponseError: parsing_exception\n\tCaused by:\n\t\tinput_mismatch_exception: null\n\tRoot causes:\n\t\tparsing_exception: line 1:15: mismatched input 'WHERE' expecting {<EOF>, '|', ',', 'metadata'}\n    at KibanaTransport._request (Desktop/Dev/kibana/node_modules/@elastic/elasticsearch/node_modules/@elastic/transport/src/Transport.ts:591:17)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at Desktop/Dev/kibana/node_modules/@elastic/elasticsearch/node_modules/@elastic/transport/src/Transport.ts:697:22\n    at KibanaTransport.request (Desktop/Dev/kibana/node_modules/@elastic/elasticsearch/node_modules/@elastic/transport/src/Transport.ts:694:14)"
-        }
-      }
-    ]
-    ``` 
+While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}. We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) (the default). Learn more in [](models.md).
 
-- **Not all LLMs are compatible**
-  - While Elastic offers LLM connectors for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}.
-  - Errors such as:
-    ```console-response
-    Error: Invalid function call syntax
-    ```
-    or
-    ```
-    Error executing agent: No tool calls found in the response.
-    ```
-    may indicate that your selected model is ill-equipped for the precise response structure necessary for {{agent-builder}}.
-  - We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) 
+The following errors suggest your selected model may not be compatible with {{agent-builder}}:
 
-- **{{agent-builder}} is not accessible**
-  - {{agent-builder}} was added in a private preview in September, 2025 for Serverless, and in 9.2.0 for Elastic Cloud.
-  - While in this preview stage, {{agent-builder}} is not enabled by default.
-  - To enable it, you must go to Stack Management -> Kibana -> Advanced Settings -> Elastic Agent Builder, and enable it.
+```console-response
+Error: Invalid function call syntax
+```
+
+```console-response
+Error executing agent: No tool calls found in the response.
+```
+
+### {{esql}} limitations
+
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
+
+For non-serverless deployments, ensure your cluster supports the {{esql}} features you intend to use.
+
+For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
+
+### Misinterpreted SQL syntax as ES|QL
+
+The `.execute_esql` tool is designed only for [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax, not other query languages.
+
+When using SQL syntax with the default agent, it attempts to use the `.execute_esql` tool instead of recognizing the input as SQL.
+
+This results in parsing errors like this:
+```console-response
+[
+  {
+    "type": "error",
+    "data": {
+      "message": "parsing_exception\n\tCaused by:\n\t\tinput_mismatch_exception: null\n\tRoot causes:\n\t\tparsing_exception: line 1:15: mismatched input 'WHERE' expecting {<EOF>, '|', ',', 'metadata'}",
+      "stack": "ResponseError: parsing_exception\n\tCaused by:\n\t\tinput_mismatch_exception: null\n\tRoot causes:\n\t\tparsing_exception: line 1:15: mismatched input 'WHERE' expecting {<EOF>, '|', ',', 'metadata'}\n    at KibanaTransport._request (Desktop/Dev/kibana/node_modules/@elastic/elasticsearch/node_modules/@elastic/transport/src/Transport.ts:591:17)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at Desktop/Dev/kibana/node_modules/@elastic/elasticsearch/node_modules/@elastic/transport/src/Transport.ts:697:22\n    at KibanaTransport.request (Desktop/Dev/kibana/node_modules/@elastic/elasticsearch/node_modules/@elastic/transport/src/Transport.ts:694:14)"
+    }
+  }
+]
+```
 
     

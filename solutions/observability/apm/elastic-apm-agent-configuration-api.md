@@ -10,7 +10,7 @@ products:
 
 # Elastic APM agent configuration API [apm-api-config]
 
-APM Server exposes API endpoints that allow Elastic APM agents to query the APM Server for configuration changes. More information on this feature is available in [{{apm-agent}} configuration in {{kib}}](/solutions/observability/apm/apm-agent-central-configuration.md).
+APM Server exposes API endpoints that allow Elastic APM agents to query the APM Server for configuration changes. More information on this feature is available in [{{apm-agent}} configuration in {{kib}}](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md).
 
 ## Agent configuration endpoints [apm-api-config-endpoint]
 

@@ -20,7 +20,7 @@ When enabled, {{agent}} and {{elastic-endpoint}} can only be uninstalled on the 
 
 ::::{admonition} Requirements
 * In {{stack}}, agent tamper protection requires a [Platinum or higher subscription](https://www.elastic.co/pricing).
-* In {{serverless-short}}, agent tamper protection requires the Endpoint Protection Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* In {{serverless-short}}, agent tamper protection requires the Endpoint Protection Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * Hosts must be enrolled in the {{elastic-defend}} integration.
 * {{agent}}s must be version 8.11.0 or later.
 * This feature is supported for all operating systems.

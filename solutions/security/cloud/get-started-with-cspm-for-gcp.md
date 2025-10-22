@@ -28,12 +28,12 @@ This page explains how to get started monitoring the security posture of your GC
 
 ## Set up CSPM for GCP [cspm-setup-gcp]
 
-You can set up CSPM for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the CSPM integration, then enable cloud account access. 
+You can set up CSPM for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the CSPM integration, then enable cloud access. 
 
 Two deployment technologies are available: agentless and agent-based. 
 
 * [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud project or projects you want to monitor.
 
 
 ## Agentless deployment [cspm-gcp-agentless]
@@ -41,8 +41,8 @@ Two deployment technologies are available: agentless and agent-based.
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
-4. Under **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual account.
-5. Give your integration a name and description that match the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-account`.
+4. Under **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual project.
+5. Give your integration a name and description that match the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-project`.
 6. (Optional) Expand **Advanced options** and add a `Namespace` to the integration's data stream.
 
 :::{include} _snippets/cspm-namespace.md
@@ -60,8 +60,8 @@ Two deployment technologies are available: agentless and agent-based.
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
-4. For **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual account.
-5. Give your integration a name and description that match the purpose or team of the GCP account you want to monitor, for example, `dev-gcp-project`.
+4. For **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual project.
+5. Give your integration a name and description that match the purpose or team of the GCP project you want to monitor, for example, `dev-gcp-project`.
 6. (Optional) Expand the **Advanced options** menu and add a `Namespace` to the integration's data stream.
 
 ::::{include} _snippets/cspm-namespace.md
@@ -76,7 +76,7 @@ To set up CSPM for a GCP project, you need admin privileges for the project.
 ::::
 
 
-For most users, the simplest option is to use a Google Cloud Shell script to automatically provision the necessary resources and permissions in your GCP account. This method, as well as two manual options, are described next on this page.
+For most users, the simplest option is to use a Google Cloud Shell script to automatically provision the necessary GCP resources and permissions. This method, as well as two manual options, are described next on this page.
 
 
 ## Cloud Shell script setup (recommended) [cspm-set-up-cloudshell]
@@ -85,8 +85,8 @@ For most users, the simplest option is to use a Google Cloud Shell script to aut
 2. In **Where to add this integration**:
 
     1. Select **New Hosts**.
-    2. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud account or accounts you want to monitor. For example, `dev-gcp-account`.
-    3. Click **Save and continue**, then **Add {{agent}} to your hosts**. The **Add agent** wizard appears and provides {{agent}} binaries, which you can download and deploy to a VM in your GCP account.
+    2. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud project or projects you want to monitor. For example, `dev-gcp-project`.
+    3. Click **Save and continue**, then **Add {{agent}} to your hosts**. The **Add agent** wizard appears and provides {{agent}} binaries, which you can download and deploy to a VM in GCP.
 
 3. Click **Save and continue**.
 4. Copy the command that appears, then click **Launch Google Cloud Shell**. It opens in a new window.
@@ -160,7 +160,7 @@ Provide credentials to the CSPM integration:
 2. Enter your GCP **Organization ID**. Enter the GCP **Project ID** of the project where you want to provision the compute instance that will run CSPM.
 3. Select **Credentials JSON**, and enter the value you generated earlier.
 4. For **Where to add this integration**, select **New Hosts**.
-5. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud account or accounts you want to monitor. For example, `dev-gcp-account`.
+5. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud project or projects you want to monitor. For example, `dev-gcp-project`.
 6. Click **Save and continue**, then follow the instructions to install {{agent}} in your chosen GCP project.
 
 Wait for the confirmation that {{kib}} received data from your new integration. Then you can click **View Assets** to see your data.
@@ -217,7 +217,7 @@ Provide credentials to the CSPM integration:
 2. Enter your GCP **Project ID**.
 3. Select **Credentials JSON**, and enter the value you generated earlier.
 4. For **Where to add this integration**, select **New Hosts**.
-5. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud account or accounts you want to monitor. For example, `dev-gcp-account`.
+5. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud project or projects you want to monitor. For example, `dev-gcp-project`.
 6. Click **Save and continue**, then follow the instructions to install {{agent}} in your chosen GCP project.
 
 Wait for the confirmation that {{kib}} received data from your new integration. Then you can click **View Assets** to see your data.

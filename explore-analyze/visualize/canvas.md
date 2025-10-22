@@ -94,7 +94,7 @@ Choose the type of element you want to use, then use the preconfigured demo data
 1. Click **Add element**, then select the element you want to use.
 2. To connect the element to your data, select **Data > Demo data**, then select one of the following data sources:
 
-    * **{{es}} SQL** — Access your data in {{es}} using [SQL syntax](../query-filter/languages/sql-spec.md).
+    * **{{es}} SQL** — Access your data in {{es}} using [SQL syntax](elasticsearch://reference/query-languages/sql/sql-spec.md).
     * **{{es}} documents** — Access your data in {{es}} without using aggregations. To use, select a {{data-source}} and fields. Use **{{es}} documents** when you have low-volume datasets, and you want to view raw documents or to plot exact, non-aggregated values on a chart.
     * **Timelion** — Access your time series data using [**Timelion**](legacy-editors/timelion.md) queries. To use **Timelion** queries, you can enter a query using the [Lucene Query Syntax](../query-filter/languages/lucene-query-syntax.md).
 

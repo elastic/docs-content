@@ -285,3 +285,17 @@ For information on configuring monitors individually, refer to:
 
 * [Configure individual browser monitors](/solutions/observability/synthetics/configure-individual-browser-monitors.md) for browser monitors
 * [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md) for lightweight monitors
+
+## `proxy` [synthetics-configuration-proxy]
+
+`uri` (`string`)
+:   The Proxy URL to be used when connecting to the deployment or Observability Serverless project.
+
+`token` (`string`)
+:   (Optional) The authentication token to be used when connecting to the proxy URL. Based on auth header format `Basic Asaaas==`
+
+`ca` (`string | Buffer`)
+:   (Optional) Override the trusted CA certificates for the proxy connection.
+
+`noVerify` (`boolean`)
+:   (Optional) Disable TLS verification for the proxy connection.

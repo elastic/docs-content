@@ -54,6 +54,7 @@ toc:
       - file: elasticsearch/troubleshooting-searches.md
       - file: elasticsearch/start-ilm.md
       - file: elasticsearch/index-lifecycle-management-errors.md
+      - file: elasticsearch/file-based-recovery.md
       - file: elasticsearch/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md

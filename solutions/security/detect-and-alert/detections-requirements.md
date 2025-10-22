@@ -13,7 +13,7 @@ products:
 
 # Detections requirements
 
-To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated. Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
+To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated. Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
 
 ::::{important}
 Several steps are **only** required for **self-managed** {{stack}} deployments. If you’re using an Elastic Cloud deployment, you only need to [enable detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui).
@@ -28,10 +28,15 @@ stack:
 These steps are only required for **self-managed** deployments:
 
 * HTTPS must be configured for communication between [{{es}} and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
-* In the `elasticsearch.yml` configuration file, set the `xpack.security.enabled` setting to `true`. For more information, refer to [Configuring {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) and [Security settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
-* In [`kibana.yml`](/deploy-manage/stack-settings.md), add the `xpack.encryptedSavedObjects.encryptionKey` setting with any alphanumeric value of at least 32 characters. For example:
+* In [`kibana.yml`](/deploy-manage/stack-settings.md):
+
+  Add the `xpack.encryptedSavedObjects.encryptionKey` setting with any alphanumeric value of at least 32 characters. For example:
 
     `xpack.encryptedSavedObjects.encryptionKey: 'fhjskloppd678ehkdfdlliverpoolfcr'`
+
+* In [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
+    * Set the `xpack.security.enabled` setting to `true`. Refer to [General security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) for more information.
+    * If the `search.allow_expensive_queries` setting is set to `false`, remove it. If set to its default value of `true` or not included in the `elasticsearch.yml` file, you don't need to make changes. This setting must be `true` for key detection features, such as [alerting rules](/explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-prerequisites) and rule exceptions, to work.
 
 
 ::::{important}

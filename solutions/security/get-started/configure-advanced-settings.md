@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Configure advanced settings
 ---
 
-# Configure advanced settings [security-advanced-settings]
+# Configure advanced settings for {{elastic-sec}} [security-advanced-settings]
 
 The advanced settings control the behavior of the {{security-app}}, such as:
 
@@ -203,6 +204,13 @@ Each time a detection rule runs using a remote cross-cluster search (CCS) index 
 
 If you’ve ensured that your detection rules have the required privileges across your remote indices, you can use the `securitySolution:enableCcsWarning` setting to disable this warning and reduce noise.
 
+## Configure alert suppression window behavior [suppression-window-behavior]
+
+```yaml {applies_to}
+stack: ga 9.2
+```
+
+To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
 ## Show/hide related integrations in Rules page tables [show-related-integrations]
 
@@ -238,9 +246,15 @@ Even when the `excludedDataTiersForRuleExecution` advanced setting is enabled, i
 
 ## Access privileged user monitoring
 ```yaml {applies_to}
-stack: preview 9.1
-serverless: unavailable
+stack: ga 9.1
+serverless: ga
 ```
 
 The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
 
+## Turn off {{esql}}-based risk scoring
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+By default, [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) calculations are based on {{esql}} queries. Turn off `securitySolution:enableEsqlRiskScoring` to use scripted metrics instead.

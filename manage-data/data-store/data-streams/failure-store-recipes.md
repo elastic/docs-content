@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/failure-store-recipes.html
 applies_to:
   stack: ga 9.1
   serverless: ga
