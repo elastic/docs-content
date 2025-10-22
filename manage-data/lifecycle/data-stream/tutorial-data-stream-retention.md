@@ -10,7 +10,7 @@ products:
 
 # Tutorial: Configure data stream retention [tutorial-manage-data-stream-retention]
 
-In this tutorial, we are going to go over the data stream lifecycle retention; we will define it, go over how it can be configured and how it gets applied. Keep in mind, the following options apply only to data streams that are managed by the data stream lifecycle.
+This tutorial demonstrates lifecycle retention, showing how to define, configure, and apply it. Keep in mind that the following options apply only to data streams that are managed by the data stream lifecycle.
 
 1. [What is data stream retention?](#what-is-retention)
 2. [How to configure retention?](#retention-configuration)
@@ -110,7 +110,7 @@ Global default and max retention do not apply to data streams internal to elasti
     To adjust the retention period of a data stream in {{kib}}, locate a data stream on the **Streams** page. A stream maps directly to a data stream. Next, select a stream to view its details and review the **Retention** tab to find out how it's managed before making your adjustments.
     :::
 
-* By setting the global retention via the `data_streams.lifecycle.retention.default` and/or `data_streams.lifecycle.retention.max` that are set on a cluster level. You can set this via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). For example:
+* By setting the global retention via the `data_streams.lifecycle.retention.default` and/or `data_streams.lifecycle.retention.max` that are applied on a cluster level. You can set these via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). For example:
 
     ```console
     PUT /_cluster/settings

@@ -22,7 +22,7 @@ You can also use a [data stream lifecycle](../lifecycle/data-stream.md) to autom
 :::{admonition} Managing data streams with Streams
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
 
-Starting with {{stack}} version 9.2, [Streams](/solutions/observability/streams/streams.md) provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make in Streams are automatically propagated to the associated data stream.
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
 
 For more information, refer to [Manage data streams with Streams](/manage-data/data-store/data-streams/manage-data-stream.md#manage-data-streams-with-streams).
 

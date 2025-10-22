@@ -14,7 +14,7 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 
 - [Set a data stream’s lifecycle](#set-lifecycle)
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
-- [Manage data retention for Streams](#data-retention-streams)
+- [Manage data retention with Streams](#data-retention-streams)
 
 Note that these steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
@@ -215,13 +215,13 @@ GET .ds-my-data-stream-*/_lifecycle/explain
 :::
 :::::
 
-## Manage data retention for Streams [data-retention-streams]
+## Manage data retention with Streams [data-retention-streams]
 ```{applies_to}
 serverless: ga
 stack: preview 9.1, ga 9.2
 ```
 
-Starting with {{stack}} version 9.2, **Streams** provides a centralized interface for common data management tasks in {{kib}}, including getting insight into how your data streams retain data. 
+Starting with {{stack}} version 9.2, the **Streams** page provides a centralized interface for common data management tasks in {{kib}}, including getting insight into how your data streams retain data. 
 
 1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Each stream maps directly to an {{es}} data stream. Select a stream to view its details.

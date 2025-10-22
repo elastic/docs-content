@@ -28,15 +28,15 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 serverless: ga
 stack: preview 9.1, ga 9.2
 ```
-Starting with {{stack}} version 9.2, [Streams](/solutions/observability/streams/streams.md) provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make in Streams are automatically propagated to the associated data stream.
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
 
 :::{image} /manage-data/images/data-stream-management-streams.png
-:alt: Streams details
+:alt: The Streams page
 :screenshot:
 :::
 
 
-You can perform the following data management tasks in Streams:
+You can perform the following data management tasks on the **Streams** page:
 * [define parsing and field extraction logic](ADD LINK to /solutions/observability/streams/management/extract.md) to process and structure incoming data 
 * [configure data retention policies](ADD LINK to /solutions/observability/streams/management/retention.md)
 * [manually adjust index settings](ADD LINK to /solutions/observability/streams/management/advanced.md)

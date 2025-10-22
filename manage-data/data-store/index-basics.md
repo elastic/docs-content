@@ -156,7 +156,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 :::{admonition} Streams
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
 
-Starting with {{stack}} version 9.2, [Streams](/solutions/observability/streams/streams.md) provides a centralized interface for common data management tasks in {{kib}}, including tasks such as [modifying data retention](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#data-retention-streams) values.
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for common data management tasks in {{kib}}, including tasks such as [modifying data retention](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#data-retention-streams) values.
 :::
 
 ### Manage index templates [index-management-manage-index-templates]
