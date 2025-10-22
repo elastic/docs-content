@@ -46,4 +46,4 @@ You can perform a variety of actions in the **Integrations** app in {{kib}}. Som
 
 ## Customize integrations [customize-integrations]
 
-After you've started using integrations to ingest data, you can customize how the data is managed over time. Refer to [Index lifecycle management](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.
+After you've started using integrations to ingest data, you can customize how the data is managed over time. Refer to [{{ilm-cap}}](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.
