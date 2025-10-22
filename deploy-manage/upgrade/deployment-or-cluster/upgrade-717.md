@@ -201,7 +201,7 @@ To upgrade your deployment to 8.19, follow the steps in [Upgrade on Elastic Clou
 During the upgrade process, all components of your deployment are upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM), if present
+- Integrations Server ({{fleet-server}}, Elastic APM), if present
 - Enterprise Search, if present
 ::::
 
@@ -216,7 +216,7 @@ Although this guide refers to {{ecloud}}, the same steps apply to ECE deployment
 During the upgrade process, all components of your deployment are upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM), if present
+- Integrations Server ({{fleet-server}}, Elastic APM), if present
 - Enterprise Search, if present
 ::::
 
@@ -362,7 +362,7 @@ To prepare your deployment for the upgrade, review the [Prepare to upgrade](/dep
     * Reindex or mark as read-only legacy indices and data streams (created before 8.0).
     * Remove or update deprecated settings and mappings.
     * Review deprecation logs for both {{es}} and {{kib}}.
-    * Terminate Enterprise Search if it's part of the deployment.
+    * Remove Enterprise Search if it's part of the deployment.
 
     :::{note}
     If the Upgrade Assistant reports old {{ml}}, {{ccr}}, or transform indices that require action or reindexing, make sure to review the relevant sections in the preparations guide:
@@ -422,7 +422,7 @@ To upgrade your deployment to {{version.stack}}, follow the steps in [Upgrade yo
 During the upgrade process all of your deployment components will be upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM), if present
+- Integrations Server ({{fleet-server}}, Elastic APM), if present
 ::::
 
 ::::{applies-item} ece:
@@ -433,7 +433,7 @@ If the [{{stack}} pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-st
 During the upgrade process all of your deployment components will be upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM), if present
+- Integrations Server ({{fleet-server}}, Elastic APM), if present
 ::::
 
 
