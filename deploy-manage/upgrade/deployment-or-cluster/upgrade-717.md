@@ -222,7 +222,7 @@ During the upgrade process, all components of your deployment are upgraded in th
 
 
 ::::{applies-item} eck:
-In ECK, upgrades are performed declaratively by updating the `spec.version` field in the resource manifest. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
+In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying clusters through Helm charts. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
 
 To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start upgrading the {{es}} and {{kib}} resources that represent the cluster.
 
@@ -230,7 +230,7 @@ To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-ma
 For more information on how ECK manages upgrades and how to tune its behavior, refer to [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md).
 :::
 
-After upgrading {{es}} and {{kib}}, upgrade any [other Elastic applications](/deploy-manage/deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md) connected to the cluster, such as {{fleet-server}} or Elastic APM using the same variable.
+After upgrading {{es}} and {{kib}}, upgrade any [other Elastic applications](/deploy-manage/deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md) connected to the cluster, such as {{fleet-server}} or Elastic APM, using the same version value.
 ::::
 
 ::::{applies-item} self:
@@ -291,7 +291,7 @@ This step covers upgrading your deployment from 8.19.x to {{version.stack}}, ass
 
 It's highly recommended to start this upgrade from the latest 8.19.x patch release to ensure that you’re using the most recent version of the Upgrade Assistant.
 
-:::::{important} note for Enterprise Search users
+:::::{admonition} Important note for Enterprise Search users
 In {{stack}} 9.0.0 and later, Enterprise Search is no longer available.
 * You must remove any Enterprise Search nodes from your deployment before proceeding with the upgrade.
 * If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first  [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
@@ -440,8 +440,8 @@ During the upgrade process all of your deployment components will be upgraded in
 ::::
 
 
-::::{applies-item} { eck: }
-In ECK, upgrades are performed declaratively by updating the `spec.version` field in the resource manifest. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
+::::{applies-item} eck:
+In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying clusters through Helm charts. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
 
 To upgrade your cluster to {{version.stack}}, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start upgrading the {{es}} and {{kib}} resources that represent the cluster.
 
@@ -449,7 +449,7 @@ To upgrade your cluster to {{version.stack}}, follow the steps in [Upgrade on EC
 For more information on how ECK manages upgrades and how to tune its behavior, refer to [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md).
 :::
 
-After upgrading {{es}} and {{kib}}, upgrade any [other Elastic applications](/deploy-manage/deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md) connected to the cluster, such as {{fleet-server}} or Elastic APM.
+After upgrading {{es}} and {{kib}}, upgrade any [other Elastic applications](/deploy-manage/deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md) connected to the cluster, such as {{fleet-server}} or Elastic APM, using the same version value.
 ::::
 
 ::::{applies-item} self:
