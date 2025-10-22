@@ -26,7 +26,7 @@ Upgrading from 7.17 to {{version.stack}} requires two major upgrades. Each major
     Before running this upgrade, all ingest components and client libraries must be upgraded to 8.19.x.
 
 :::{note}
-Upgrading only as far as {{stack}} 8.19.x is also a supported path, as 8.19.x remains a maintained and fully supported release. However, we recommend completing the upgrade to the latest version, {{version.stack}}, to take advantage of ongoing performance improvements and new features.
+Upgrading only as far as {{stack}} 8.19.x is also a supported path, as 8.19.x remains a maintained and fully supported release. However, we recommend completing the upgrade to the latest version, {{version.stack}}, to take advantage of ongoing improvements and new features.
 :::
 
 The following sections describe these phases in detail and point to the relevant documentation for each deployment type.
@@ -201,8 +201,8 @@ To upgrade your deployment to 8.19, follow the steps in [Upgrade on Elastic Clou
 During the upgrade process, all components of your deployment are upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM)
-- Enterprise Search
+- Integrations Server ({{fleet-server}} and APM), if present
+- Enterprise Search, if present
 ::::
 
 ::::{applies-item} ece:
@@ -216,13 +216,13 @@ Although this guide refers to {{ecloud}}, the same steps apply to ECE deployment
 During the upgrade process, all components of your deployment are upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM)
-- Enterprise Search
+- Integrations Server ({{fleet-server}} and APM), if present
+- Enterprise Search, if present
 ::::
 
 
 ::::{applies-item} eck:
-In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying clusters through Helm charts. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
+In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying through Helm charts. Once the new version is applied, the operator orchestrates a rolling upgrade, ensuring components are upgraded safely and in the correct order.
 
 To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start by upgrading the {{es}} and {{kib}} resources that represent the cluster. Set the `version` field to the latest 8.19.x release number in each manifest or Helm chart values file.
 
@@ -294,7 +294,7 @@ It's highly recommended to start this upgrade from the latest 8.19.x patch relea
 :::::{admonition} Important note for Enterprise Search users
 In {{stack}} 9.0.0 and later, Enterprise Search is no longer available.
 * You must remove any Enterprise Search nodes from your deployment before proceeding with the upgrade.
-* If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first  [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
+* If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterprise Search from your deployment. Therefore, it is critical to first  [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
 :::::
 
 ### {{version.stack}} upgrade preparations
@@ -347,7 +347,7 @@ To prepare your deployment for the upgrade, review the [Prepare to upgrade](/dep
 ::::{applies-item} ece:
 
 :::{important}
-If you're running an {{ece}} version earlier than 4.x, ensure that you [upgrade ECE first](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md). ECK 2.x is not compatible with {{stack}} version 9.
+If you're running an {{ece}} version earlier than 4.x, ensure that you [upgrade ECE first](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md). ECE 3.x is not compatible with {{stack}} version 9.
 :::
 
 {{ece}} platform facilitates major upgrades by:
@@ -422,7 +422,7 @@ To upgrade your deployment to {{version.stack}}, follow the steps in [Upgrade yo
 During the upgrade process all of your deployment components will be upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM)
+- Integrations Server ({{fleet-server}} and APM), if present
 ::::
 
 ::::{applies-item} ece:
@@ -433,14 +433,14 @@ If the [{{stack}} pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-st
 During the upgrade process all of your deployment components will be upgraded in the expected order:
 - {{es}}
 - {{kib}}
-- Integrations Server ({{fleet-server}} and APM)
+- Integrations Server ({{fleet-server}} and APM), if present
 ::::
 
 
 ::::{applies-item} eck:
-In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying clusters through Helm charts. Once the new version is applied, the operator automatically orchestrates the rolling upgrade, ensuring that each component is upgraded safely and in the correct order.
+In ECK, upgrades are performed declaratively by updating the `spec.version` field in your resource manifests, or by setting the equivalent version values when deploying through Helm charts. Once the new version is applied, the operator orchestrates a rolling upgrade, ensuring components are upgraded safely and in the correct order.
 
-To upgrade your cluster to 8.19, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start by upgrading the {{es}} and {{kib}} resources that represent the cluster. Set the version field to the latest 8.19.x release number in each manifest or Helm chart values file.
+To upgrade your cluster to {{version.stack}}, follow the steps in [Upgrade on ECK](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md), and start by upgrading the {{es}} and {{kib}} resources that represent the cluster. Set the version field to {{version.stack}} in each manifest or Helm chart values file.
 
 :::{note}
 For more information on how ECK manages upgrades and how to tune its behavior, refer to [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md).
