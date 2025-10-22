@@ -60,7 +60,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings page**](/explore-analyze/manage-access-to-ai-assistant.md) allows you to:
+The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
 
 - Manage which AI connectors are available in your environment. 
 - Enable or disable AI Assistant and other AI-powered features in your environment.
