@@ -42,26 +42,11 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings page**](/explore-analyze/ai-assistant/manage-access-to-ai-assistant.md) allows you to:
-
-::::{applies-switch}
-
-:::{applies-item} stack: ga 9.2
-
-- Specify that a specific LLM connector must be used for conversations with AI Assistant. 
-- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
-- Disable AI Assistant access completely.
-
-:::
-
-:::{applies-item} serverless:
+The [**GenAI settings page**](/explore-analyze/manage-access-to-ai-assistant.md) allows you to:
 
 - Manage which AI connectors are available in your environment. 
 - Enable or disable AI Assistant and other AI-powered features in your environment.
-
-:::
-
-::::
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
 
 
@@ -430,15 +415,6 @@ When you include a particular event as context, such as an alert from the Alerts
 ### Knowledge base [ai-assistant-page-knowledge-base]
 
 The **Knowledge base** tab of the **Security AI settings** page allows you to enable AI Assistant to remember specified information, and use it as context to improve response quality. To learn more, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md).
-
-### AI Assistant visibility [ai-assistant-visibility]
-```{applies_to}
-stack: ga 9.1
-serverless: ga
-```
-:::{include} ../../_snippets/ai-assistant-visibility.md
-:::
-If you select the option to show the Security AI Assistant in other apps, the Security AI Assistant becomes **accessible outside of the Security solution**, for example, in Discover. The chat history remains persistent and is available no matter where you access the assistant within Kibana. 
 
 ### Get the most from your queries [rag-for-esql]
 

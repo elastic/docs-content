@@ -9,34 +9,20 @@ products:
   - id: cloud-serverless
 ---
 
-# Manage access to AI Assistant
+# Manage access to AI Features
 
-This page describes how to use the GenAI Settings page to control access to AI Assistant in your deployments in the following ways:
+This page describes how to use the GenAI Settings page to control access to AI-powered features in your deployments in the following ways:
 
-::::{applies-switch}
-
-:::{applies-item} stack: ga 9.2
-
-- Specify that a specific LLM connector must be used for conversations with AI Assistant. 
-- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
-- Disable AI Assistant access completely.
-
-:::
-
-:::{applies-item} serverless:
 
 - Manage which AI connectors are available in your environment. 
 - Enable or disable AI Assistant and other AI-powered features in your environment.
-
-:::
-
-::::
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
 
 
 ## Requirements
 
-- To access the **GenAI Settings** page, you need the `Actions and connectors: all` or `Actions and connectors: read` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md)
-- To modify the settings on this page, you need the `Advanced Settings: all` or `Advanced Settings: read` {{kib}} privilege.
+- To access the **GenAI Settings** page, you need the `Actions and connectors: all` or `Actions and connectors: read` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- To modify the settings on this page, you need the `Advanced Settings: all` {{kib}} privilege.
 
 ## The GenAI Settings page
 
