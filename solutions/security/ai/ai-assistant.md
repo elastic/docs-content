@@ -35,6 +35,21 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 * A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
+## Manage access to AI Assistant
+
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+The [**GenAI settings page**](/explore-analyze/ai-assistant/manage-access-to-ai-assistant.md) allows you to:
+
+- Specify that a specific LLM connector must be used for conversations with AI Assistant. 
+- Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+- Disable AI Assistant access completely.
+
+
+
 ## Your data and AI Assistant [data-information]
 
 Elastic does not store or examine prompts or results used by AI Assistant, or use this data for model training. This includes anything you send the model, such as alert or event data, detection rule configurations, queries, and prompts. However, any data you provide to AI Assistant will be processed by the third-party large language model (LLM) provider you connected to as part of AI Assistant setup.
