@@ -461,15 +461,24 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
-          - file: observability/streams/streams.md
-            children:
-              - file: observability/streams/management/extract.md
-                children:
-                  - file: observability/streams/management/extract/date.md
-                  - file: observability/streams/management/extract/dissect.md
-                  - file: observability/streams/management/extract/grok.md
-              - file: observability/streams/management/retention.md
-              - file: observability/streams/management/advanced.md
+      - file: observability/streams/streams.md
+        children:
+        - file: observability/streams/management/retention.md
+        - file: observability/streams/management/extract.md
+          children:
+            - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/dissect.md
+            - file: observability/streams/management/extract/grok.md
+            - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/rename.md
+            - file: observability/streams/management/extract/append.md
+            - file: observability/streams/management/extract/manual-pipeline-configuration.md
+        - file: observability/streams/management/partitioning.md
+        - file: observability/streams/management/schema.md
+        - file: observability/streams/management/data-quality.md
+        - file: observability/streams/management/significant-events.md
+        - file: observability/streams/management/advanced.md
+        - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -513,7 +522,6 @@ toc:
         children:
           - file: observability/connect-to-own-local-llm.md
           - file: observability/llm-performance-matrix.md
-      - hidden: observability/streams/wired-streams.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
