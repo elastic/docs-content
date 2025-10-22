@@ -52,10 +52,10 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 | Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Poor | Good | Excellent |
-| Alibaba Cloud | **Qwen2.5-72b-instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
+| Alibaba Cloud | **Qwen2.5-72b-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 
 ::::{note}
-`Llama-3.3-70B-Instruct` and `Qwen2.5-72b-instruct` are supported with simulated function calling.
+`Llama-3.3-70B-Instruct` and `Qwen2.5-72b-Instruct` are supported with simulated function calling.
 ::::
 
 ## Evaluate your own model
