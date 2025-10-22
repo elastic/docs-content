@@ -34,7 +34,7 @@ You can learn more in the following documents:
 - [Connection modes](./remote-clusters/connection-modes.md): Sniff mode (direct connections to {{es}} nodes) or proxy mode (connections through a reverse proxy or load balancer endpoint).
 
 ::::{note}
-In managed or orchestrated environments, such as {{ech}}, {{ece}}, and {{eck}}, you can select the security model, but the connection mode is effectively limited to *proxy*, as sniff mode requires {{es}} nodes publish addresses to be directly reachable across clusters, which is generally not practical in containerized deployments.
+In managed or orchestrated environments, such as {{ech}}, {{ece}}, and {{eck}}, you can select the security model, but the connection mode is effectively limited to *proxy*. This is because sniff mode requires {{es}} nodes publish addresses to be directly reachable across clusters, which is generally not practical in containerized deployments.
 ::::
 
 ## Setup
