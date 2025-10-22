@@ -32,10 +32,12 @@ The following table summarizes the key search features available in [{{esql}}](e
 | [Hybrid search](#hybrid-search) | Combine lexical and semantic search approaches with custom weights | 8.18/9.0 |
 | [Kibana Query Language](#kql-function) | Use Kibana Query Language with the `KQL` function | 8.18/9.0 |
 | [Match phrase function](#match_phrase-function) | Perform phrase matching with `MATCH_PHRASE` function | 8.19/9.1 |
-| [FORK command](#fork-and-fuse-commands) | Create multiple execution branches to operate on the same input data | 8.19/9.1 |
-| [FUSE command](#fork-and-fuse-commands) | Combine and score results from multiple queries for hybrid search | 9.2 |
+| [FORK command](#fork-and-fuse) | Create multiple execution branches to operate on the same input data | 8.19/9.1 |
+| [FUSE command](#fork-and-fuse) | Combine and score results from multiple queries for hybrid search | 9.2 |
 | [KNN function](#knn-function) | Find k nearest vectors using approximate search on indexed fields | 9.2 |
-| [TEXT_EMBEDDING function](#text_embedding-function) | Generate dense vector embeddings from text using inference endpoints | 9.2 |
+| [RERANK command](#semantic-reranking-with-rerank) | Re-score search results using inference models for improved relevance | 9.2 |
+| [COMPLETION command](#text-generation-with-completion) | Perform arbitrary text generation tasks by calling LLMs | 9.2 |
+| [TEXT_EMBEDDING function](#text_embedding-function) | Generate dense vector embeddings using inference endpoints | 9.3 |
 
 ## How search works in {{esql}}
 
@@ -126,13 +128,24 @@ Refer to [semantic search with semantic_text](/solutions/search/semantic-search/
 
 [Hybrid search](/solutions/search/hybrid-search.md) combines lexical and semantic search with custom weights to leverage both exact keyword matching and semantic understanding.
 
-#### `FORK` and `FUSE` commands
+#### `FORK` and `FUSE`
 
 The [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) commands work together to enable hybrid search in {{esql}}.
 
 `FORK` creates multiple execution branches that operate on the same input data. `FUSE` then combines and scores the results from these branches. Together, these commands allow you to execute different search strategies (such as lexical and semantic searches) in parallel and merge their results with proper relevance scoring.
 
 Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
+
+### Text generation with `COMPLETION`
+
+The [`COMPLETION` command](elasticsearch://reference/query-languages/esql/commands/completion.md) sends prompts to a Large Language Model (LLM) for text generation tasks.
+
+Use `COMPLETION` for question answering, summarization, translation, or other AI-powered text generation.
+
+
+### Semantic reranking with `RERANK`
+
+Use the [`RERANK` command](elasticsearch://reference/query-languages/esql/commands/rerank.md) to re-score search results using inference models for improved relevance.
 
 ## Next steps [esql-for-search-next-steps]
 
