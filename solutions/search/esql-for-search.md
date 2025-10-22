@@ -21,7 +21,11 @@ For a hands-on tutorial check out [Search and filter with {{esql}}](elasticsearc
 
 ## {{esql}} search quick reference
 
-The following table summarizes the key search features available in [{{esql}}](elasticsearch://reference/query-languages/esql.md) and when they were introduced, organized chronologically by release.
+The following table summarizes the key search features available in [{{esql}}](elasticsearch://reference/query-languages/esql.md) and when they were introduced, organized chronologically by their stack version availability.
+
+:::{note}
+Features are usually available on {{serverless-full}} before stack-versioned deployments.
+:::
 
 | Feature | Description | Available since |
 |---------|-------------|----------------|
