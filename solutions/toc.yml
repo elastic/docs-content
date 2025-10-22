@@ -44,19 +44,22 @@ toc:
               - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
               - file: search/semantic-search/cohere-es.md
           - file: search/using-openai-compatible-models.md
-      - hidden: search/elastic-agent-builder.md
-      - hidden: search/agent-builder/get-started.md
-      - hidden: search/agent-builder/models.md
-      - hidden: search/agent-builder/chat.md
-      - hidden: search/agent-builder/agent-builder-agents.md
-      - hidden: search/agent-builder/tools.md
-      - hidden: search/agent-builder/tools/esql-tools.md
-      - hidden: search/agent-builder/tools/index-search-tools.md
-      - hidden: search/agent-builder/programmatic-access.md
-      - hidden: search/agent-builder/kibana-api.md
-      - hidden: search/agent-builder/mcp-server.md
-      - hidden: search/agent-builder/a2a-server.md
-      - hidden: search/agent-builder/limitations-known-issues.md
+      - file: search/elastic-agent-builder.md
+        children:
+          - file: search/agent-builder/get-started.md
+          - file: search/agent-builder/models.md
+          - file: search/agent-builder/chat.md
+          - file: search/agent-builder/agent-builder-agents.md
+          - file: search/agent-builder/tools.md
+            children:
+              - file: search/agent-builder/tools/esql-tools.md
+              - file: search/agent-builder/tools/index-search-tools.md
+          - file: search/agent-builder/programmatic-access.md
+            children:
+              - file: search/agent-builder/kibana-api.md
+              - file: search/agent-builder/a2a-server.md
+              - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
@@ -625,6 +628,7 @@ toc:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
           - file: security/manage-elastic-defend/trusted-applications.md
+          - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md

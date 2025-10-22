@@ -149,6 +149,7 @@ toc:
       - file: upgrade-integration.md
       - file: managed-integrations-content.md
       - file: integrations-assets-best-practices.md
+      - file: otel-integrations.md
       - file: data-streams.md
         children:
           - file: data-streams-ilm-tutorial.md
