@@ -22,7 +22,7 @@ For more on wired streams, refer to:
 Wired streams store and process data in a normalized OpenTelemetry (OTel)–compatible format. This format aligns Elastic Common Schema (ECS) fields with OTel semantic conventions so all data is consistently structured and OTTL-expressible.
 
 When data is ingested into a wired stream, it’s automatically translated into this normalized format:
-- Standard ECS documents are converted to OTel fields (`message → body.text`, `log.level → severity_text`, `host.name → resource.attributes.host.name`, and so on).
+- Standard ECS documents are converted to OTel fields (`message → body.text`, `severity_text → log.level`, `host.name → resource.attributes.host.name`, and so on).
 - Custom fields are stored under `attributes.*`.
 
 To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.
@@ -117,7 +117,10 @@ Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 
 ## View wired streams in Discover [streams-wired-streams-discover]
 
-To view wired log streams in Discover, you need to manually [create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern), and add the wireds streams  index pattern to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+To view wired log streams in Discover:
+
+1. Manually [create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
+1. add the wireds streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Next steps
 
