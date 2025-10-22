@@ -27,12 +27,11 @@ In this guide, you’ll learn how to:
 This guide also provides tips for [restoring to another cluster](#restore-different-cluster) and [troubleshooting common restore errors](#troubleshoot-restore).
 
 ## Prerequisites
-- To use Kibana’s Snapshot and Restore feature, you must have the following permissions:
-  - [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-  - [Index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `all` on the monitor index
+:::{include} _snippets/restore-snapshot-common-prerequisites.md
+:::
+
 - You can only restore a snapshot to a running cluster with an elected [master node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be registered and available to the cluster.
 - The snapshot and cluster versions must be compatible. See [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
-- To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any cluster blocks that prevent writes. The restore operation ignores index blocks.
 - Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) feature or the get index template API:
 
   ```console
