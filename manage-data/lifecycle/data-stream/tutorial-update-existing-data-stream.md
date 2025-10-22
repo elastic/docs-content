@@ -228,5 +228,5 @@ Starting with {{stack}} version 9.2, the **Streams** page provides a centralized
 1. Go to the **Retention** tab to set how long your stream retains data and to get insight into your stream's data ingestion and storage size.
 1. Select **Edit data retention** and choose to retain your data indefinitely, for a custom period, or by following an existing ILM policy. You can also use the data retention configuration that's set in the index template by enabling the  **Inherit from index template** option. If you use this option, you don't need to specify a custom retention period or policy.
 
-For more information about the retention configuration options, refer to [](ADD LINK to /solutions/observability/streams/management/retention.md).
+For more information about the retention configuration options, refer to [](/solutions/observability/streams/management/retention.md).
 
