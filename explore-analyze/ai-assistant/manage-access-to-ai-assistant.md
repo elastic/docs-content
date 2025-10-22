@@ -46,30 +46,21 @@ To manage these settings, go to the **GenAI Settings** page by using the navigat
 
 :::{applies-item} stack:
 
-:::{image} /explore-analyze/images/ai-assistant-settings-page.png
-:alt: The GenAI Settings page
-:screenshot:
-:::
+![GenAI Settings page](/explore-analyze/images/ai-assistant-settings-page.png "")
+
 
 The **GenAI Settings** page has the following settings:
 
 - **Default AI Connector**: Use this setting to specify which connector is selected by default. This affects all AI-powered features, not just AI Assistant. 
 - **Disallow all other connectors**: Enable this setting to prevent connectors other than the default connector specified above from being used in your space. This affects all AI-powered features, not just AI Assistant. 
 - **AI feature visibility**: This button opens the current Space's settings page. Here you can specify which features should appear in your environment, including AI-powered features. 
-- **AI Assistant visibility**: This setting allows you to choose which AI Assistants are available to use and where. You can choose to only show the AI Assistants in their native solutions, in other {{kib}} pages (for example, Discover, Dashboards, and Stack Management), or nowhere.
-
-::::{important}
-To disable AI Assistant throughout {{kib}}, set **AI Assistant visibility** to **Hide all assistants**.
-::::
+- **AI Assistant visibility**: This setting allows you to choose which AI Assistants are available to use and where. You can choose to only show the AI Assistants in their native solutions, in other {{kib}} pages (for example, Discover, Dashboards, and Stack Management), or select **Hide all assistants** to disable AI Assistant throughout {{kib}}.
 
 :::
 
 :::{applies-item} serverless:
 
-:::{image} /explore-analyze/images/ai-assistant-settings-page.png
-:alt: The GenAI Settings page
-:screenshot:
-:::
+![Example dashboard](/explore-analyze/images/ai-assistant-settings-page-serverless.png "")
 
 The **GenAI Settings** page has the following settings:
 
