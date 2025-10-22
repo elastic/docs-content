@@ -234,7 +234,7 @@ To change the `index.lifecycle.name` setting, first use the [remove policy API](
 
 You can also update certain dynamic index settings for a data stream in {{kib}}, such as the number of shards, replicas, and the refresh interval used. 
 
-Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select the stream to view its details and go to the **Advanced** tab to make your adjustments. For more information, refer to [](/solutions/observability/streams/management/advanced.md#index-configuration).
+Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select the stream to view its details and go to the **Advanced** tab to make your adjustments. For more information, refer to [](/solutions/observability/streams/management/advanced.md#streams-advanced-index-config).
 :::
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
