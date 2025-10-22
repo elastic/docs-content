@@ -3,6 +3,8 @@ toc:
   - file: index.md
   - file: search.md
     children:
+      - title: "Reference docs"
+        crosslink: elasticsearch://reference/elasticsearch/index.md
       - file: search/get-started.md
         children:
           - file: search/search-connection-details.md
