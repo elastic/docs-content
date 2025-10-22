@@ -110,15 +110,16 @@ After the data has been indexed with the embeddings, you can query the data usin
 :::{tab-item} Query DSL
 :sync: dsl
 
-The Query DSL approach uses the `semantic` query type with the `semantic_text` field:
+The Query DSL approach uses the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) type with the `semantic_text` field:
 
 ```esql
 GET semantic-embeddings/_search
 {
   "query": {
-    "semantic": {
-      "field": "content", <1>
-      "query": "What causes muscle soreness after running?" <2>
+    "match": {
+      "content": { <1>
+        "query": "What causes muscle soreness after running?" <2>
+      }
     }
   }
 }

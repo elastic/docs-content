@@ -155,7 +155,7 @@ Interact with the table to filter data and view more details:
 Anomaly detection jobs identify suspicious or irregular behavior patterns. The Anomalies table displays the total number of anomalies identified by these prebuilt {{ml}} jobs (named in the **Anomaly name** column).
 
 ::::{admonition} Requirements
-To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
+To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](/reference/machine-learning/ootb-ml-jobs-siem.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
 ::::
 
 
