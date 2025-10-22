@@ -20,7 +20,3 @@ To access AutoOps from your {{ecloud}} console, follow these steps:
 1. Log in to your {{ech}} account.
 2. Locate the deployment you want to work on and select **Manage**.
 4. On the deployment overview page, select **Open AutoOps**.
-
-:::{image} /deploy-manage/images/cloud-autoops-how-to-access.png
-:alt: How to access AutoOps
-:::
