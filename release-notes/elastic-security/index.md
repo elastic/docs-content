@@ -27,6 +27,20 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.6 [elastic-security-9.1.6-release-notes]
+
+### Features and enhancements [elastic-security-9.1.6-features-enhancements]
+* Adds the `customized_fields` and `has_base_version` fields to the `rule_source` object schema  [#234793]({{kib-pull}}234793).
+
+### Fixes [elastic-security-9.1.6-fixes]
+* Fixes {{elastic-endpoint}} artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
+* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin. [#237796]({{kib-pull}}237796).
+* Fixes an {{elastic-defend}} issue in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within malware protection to avoid invalid watchdog firings.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
+* Fixes an {{elastic-defend}} issue on Windows which could allow a low-privilege attacker to delete arbitrary files on the system. On versions of Windows before Windows 11 24H2, this could result in local privilege escalation.
+* Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
+
 ## 9.1.5 [elastic-security-9.1.5-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.5-features-enhancements]
