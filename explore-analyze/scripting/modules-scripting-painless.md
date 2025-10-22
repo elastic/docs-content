@@ -72,8 +72,7 @@ Painless provides three core benefits across all scripting contexts:
 ## Where to write in Painless
 
 :::{image} /explore-analyze/images/elasticsearch-painless-where-to-write.png
-:alt: A view of the Discover app
-:screenshot:
+:alt: A graphic showing six different options of where to write Painless scripts
 :::
 
 You can use Painless in multiple contexts throughout {{es}}:

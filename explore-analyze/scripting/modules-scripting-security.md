@@ -10,53 +10,52 @@ products:
 
 # Scripting and security in Painless [modules-scripting-security]
 
-Painless and {{es}} implement layers of security to build a defense in depth strategy for running scripts safely.
+As part of its core design, Painless provides secure scripting capabilities across {{es}}.
 
-Painless uses a fine-grained allowlist. Anything that is not part of the allowlist results in a compilation error. This capability is the first layer of security in a defense in depth strategy for scripting.
+## Why Painless is Safe
 
-The second layer of security is the [Java Security Manager](https://www.oracle.com/java/technologies/javase/seccodeguide.html). As part of its startup sequence, {{es}} enables the Java Security Manager to limit the actions that portions of the code can take. [Painless](modules-scripting-painless.md) uses the Java Security Manager as an additional layer of defense to prevent scripts from doing things like writing files and listening to sockets.
+Introduced in [{{es}} 5.0](https://www.elastic.co/blog/painless-a-new-scripting-language) as a replacement for Groovy, Painless is purpose-built for {{es}}, enabling native performance while preventing unauthorized access to system resources.
+   
+By operating in a controlled sandbox environment, Painless ensures that you won’t get compromised when using it. Painless only allows pre-approved operations through fine-grained allowlists. Scripts cannot access file systems, networks, or other system resources that could compromise your cluster while still providing the flexibility you need for search scoring, data processing, and operational automation.
 
-{{es}} uses [seccomp](https://en.wikipedia.org/wiki/Seccomp) in Linux, [Seatbelt](https://www.chromium.org/developers/design-documents/sandbox/osx-sandboxing-design) in macOS, and [ActiveProcessLimit](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684147) on Windows as additional security layers to prevent {{es}} from forking or running other processes.
+## Security Architecture Overview
 
-Finally, scripts used in [scripted metrics aggregations](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) can be restricted to a defined list of scripts, or forbidden altogether. This can prevent users from running particularly slow or resource intensive aggregation queries.
+:::{image} /explore-analyze/images/elasticsearch-painless-security-architecture-overview.png
+:alt: Flow chart showing four layers of security between script request and safe script execution
+:width: 350px
+:::
 
-You can modify the following script settings to restrict the type of scripts that are allowed to run, and control the available [contexts](elasticsearch://reference/scripting-languages/painless/painless-contexts.md) that scripts can run in. To implement additional layers in your defense in depth strategy, follow the [{{es}} security principles](../../deploy-manage/security.md).
+The fine-grained allowlist operates as the **first security layer**. Anything that is not part of the allowlist will result in a compilation error.   
+   
+The **second layer of security** is [Java Security Manager(JSM)](https://www.oracle.com/java/technologies/javase/seccodeguide.html). As part of its startup sequence, {{es}} enables JSM to limit the actions that portions of the code can take. Painless uses this additional layer of defense to prevent scripts from doing things such as writing files and listening to sockets.
 
+{{es}} uses [Seccomp](https://en.wikipedia.org/wiki/Seccomp) in Linux, [Seatbelt](https://www.chromium.org/developers/design-documents/sandbox/osx-sandboxing-design) in macOS, and [ActiveProcessLimit](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684147) on Windows as **additional security layers** to prevent {{es}} from forking or running other processes.
+
+Finally, scripts used in [scripted metrics aggregations](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) can be restricted to a defined list of scripts or forbidden altogether. This can prevent users from running particularly slow or resource-intensive aggregation queries.
+
+You can modify the ***allowed script types setting*** to restrict the type of scripts that are allowed to run and control the available [contexts](elasticsearch://reference/scripting-languages/painless/painless-contexts.md) that scripts can run in. To implement additional layers in your defense-in-depth strategy, follow the [{{es}} security principles](/deploy-manage/security.md). 
 
 ## Allowed script types setting [allowed-script-types-setting]
 
-{{es}} supports two script types: `inline` and `stored`. By default, {{es}} is configured to run both types of scripts. To limit what type of scripts are run, set `script.allowed_types` to `inline` or `stored`. To prevent any scripts from running, set `script.allowed_types` to `none`.
-
-::::{important}
-If you use {{kib}}, set `script.allowed_types` to both or just `inline`. Some {{kib}} features rely on inline scripts and do not function as expected if {{es}} does not allow inline scripts.
-::::
-
+{{es}} supports two script types: `inline` and `stored`. By default, {{es}} is configured to run both types of scripts. To limit what type of scripts are run, set `script.allowed_types` to `inline` or `stored`. To prevent any scripts from running, set `script.allowed_types` to `none`. If you use Kibana, set \`script.allowed\_types\` to both or just \`inline\`. Some Kibana features rely on inline scripts and do not function as expected if {{es}} does not allow inline scripts. 
 
 For example, to run `inline` scripts but not `stored` scripts:
 
-```yaml
+```
 script.allowed_types: inline
 ```
 
-
 ## Allowed script contexts setting [allowed-script-contexts-setting]
 
-By default, all script contexts are permitted. Use the `script.allowed_contexts` setting to specify the contexts that are allowed. To specify that no contexts are allowed, set `script.allowed_contexts` to `none`.
+By default, all script contexts are permitted. Use the `script.allowed_contexts` setting to specify the contexts that are allowed. To specify that no contexts are allowed, set `script.allowed_contexts` to `none`. For example, to allow scripts to run only in `scoring` and `update` contexts:
 
-For example, to allow scripts to run only in `scoring` and `update` contexts:
-
-```yaml
+```
 script.allowed_contexts: score, update
 ```
 
-
 ## Allowed scripts in scripted metrics aggregations [allowed-script-in-aggs-settings]
 
-By default, all scripts are permitted in [scripted metrics aggregations](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md). To restrict the set of allowed scripts, set [`search.aggs.only_allowed_metric_scripts`](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-only-allowed-scripts) to `true` and provide the allowed scripts using [`search.aggs.allowed_inline_metric_scripts`](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-allowed-inline-scripts) and/or [`search.aggs.allowed_stored_metric_scripts`](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-allowed-stored-scripts).
-
-To disallow certain script types, omit the corresponding script list (`search.aggs.allowed_inline_metric_scripts` or `search.aggs.allowed_stored_metric_scripts`) or set it to an empty array. When both script lists are not empty, the given stored scripts and the given inline scripts will be allowed.
-
-The following example permits only 4 specific stored scripts to be used, and no inline scripts:
+By default, all scripts are permitted in [scripted metrics aggregations](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md). To restrict the set of allowed scripts, set [`search.aggs.only_allowed_metric_scripts`](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-only-allowed-scripts) to `true` and provide the allowed scripts using [`search.aggs.allowed_inline_metric_scripts`](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-allowed-inline-scripts) and/or [`search.aggs.allowed_stored_metric_scripts`](elasticsearch://reference/configuration-reference/search-settings.md#search-settings-allowed-stored-scripts). To disallow certain script types, omit the corresponding script list (`search.aggs.allowed_inline_metric_scripts` or `search.aggs.allowed_stored_metric_scripts`) or set it to an empty array. When both script lists are not empty, the given stored scripts and the given inline scripts will be allowed. The following example permits only 4 specific stored scripts to be used, and no inline scripts:
 
 ```yaml
 search.aggs.only_allowed_metric_scripts: true
@@ -79,4 +78,3 @@ search.aggs.allowed_inline_metric_scripts:
    - 'long sum = 0; for (a in states) { sum += a } return sum'
 search.aggs.allowed_stored_metric_scripts: []
 ```
-

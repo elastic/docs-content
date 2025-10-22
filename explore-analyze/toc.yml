@@ -147,16 +147,16 @@ toc:
           - file: scripting/modules-scripting-update-documents.md
       - file: scripting/common-script-uses.md
         children:
-          - file: scripting/script-fields-api.md
           - file: scripting/modules-scripting-fields.md
+          - file: scripting/script-fields-api.md
+          - file: scripting/modules-scripting-type-casting-tutorial.md 
           - file: scripting/dissect.md
+          - file: scripting/scripting-field-extraction.md
           - file: scripting/grok.md
           - file: scripting/scripts-search-speed.md
-          - file: scripting/scripting-field-extraction.md
-          - file: scripting/modules-scripting-datetime-tutorial.md
           - file: scripting/modules-scripting-document-update-tutorial.md
           - file: scripting/modules-scripting-regular-expressions-tutorial.md
-          - file: scripting/modules-scripting-type-casting-tutorial.md
+          - file: scripting/modules-scripting-datetime-tutorial.md
       - file: scripting/painless-syntax-context-bridge.md
       - file: scripting/modules-scripting-security.md
       - file: scripting/modules-scripting-expression.md

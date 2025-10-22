@@ -10,165 +10,79 @@ products:
 
 # Implementing custom scripting language in Elasticsearch [modules-scripting-engine]
 
-A `ScriptEngine` is a backend for implementing a scripting language. It may also be used to write scripts that need to use advanced internals of scripting. For example, a script that wants to use term frequencies while scoring.
+A `ScriptEngine` is a backend for implementing a scripting language in {{es}}.
 
-The plugin [documentation](elasticsearch://extend/index.md) has more information on how to write a plugin so that Elasticsearch will properly load it. To register the `ScriptEngine`, your plugin should implement the `ScriptPlugin` interface and override the `getScriptEngine(Settings settings)` method.
+## How it works
 
-The following is an example of a custom `ScriptEngine` which uses the language name `expert_scripts`. It implements a single script called `pure_df` which may be used as a search script to override each document’s score as the document frequency of a provided term.
+Custom script engines integrate with {{es}} scripting framework through the `ScriptEngine` interface. To register the `ScriptEngine`, your plugin should implement the `ScriptPlugin` interface and override the `getScriptEngine(Settings settings)` method during plugin initialization. 
+
+## When to implement
+
+Consider implementing a custom script engine when you need to use advanced internals of scripting, such as scripts that require term frequencies while scoring, or when implementing specialized scripting languages with custom syntax beyond standard Painless capabilities.
+
+## Example implementation
+
+The plugin [documentation](elasticsearch://extend/index.md) has more information on how to write a plugin so {{es}} will properly load it. For the complete ScriptEngine interface reference, refer to the [official implementation](https://github.com/elastic/elasticsearch/blob/main/server/src/main/java/org/elasticsearch/script/ScriptEngine.java).
+
+### What this script does
+
+This code creates a custom script engine that allows you to use `expert_scripts` as the language name and `pure_df` as the script source in your {{es}} queries. The script calculates document scores using term frequency data instead of {{es}} standard scoring algorithm.
+
+The following example shows the essential parts of implementing a custom `ScriptEngine`: 
 
 ```java
 private static class MyExpertScriptEngine implements ScriptEngine {
+    
+    // 1. Define your custom language name
     @Override
     public String getType() {
-        return "expert_scripts";
+        return "expert_scripts";  // This becomes your "lang" value
     }
 
+    // 2. Define your script source and compilation
     @Override
-    public <T> T compile(
-        String scriptName,
-        String scriptSource,
-        ScriptContext<T> context,
-        Map<String, String> params
-    ) {
-        if (context.equals(ScoreScript.CONTEXT) == false) {
-            throw new IllegalArgumentException(getType()
-                    + " scripts cannot be used for context ["
-                    + context.name + "]");
-        }
-        // we use the script "source" as the script identifier
+    public <T> T compile(String scriptName, String scriptSource, 
+                         ScriptContext<T> context, Map<String, String> params) {
+        // This recognizes "pure_df" as your script source
         if ("pure_df".equals(scriptSource)) {
             ScoreScript.Factory factory = new PureDfFactory();
             return context.factoryClazz.cast(factory);
         }
-        throw new IllegalArgumentException("Unknown script name "
-                + scriptSource);
+        throw new IllegalArgumentException("Unknown script: " + scriptSource);
     }
+    
+    // ... (additional required methods)
+}
 
+// 3. Where the actual score calculation happens
+private static class ScoreScriptImpl extends ScoreScript {
     @Override
-    public void close() {
-        // optionally close resources
-    }
-
-    @Override
-    public Set<ScriptContext<?>> getSupportedContexts() {
-        return Set.of(ScoreScript.CONTEXT);
-    }
-
-    private static class PureDfFactory implements ScoreScript.Factory,
-                                                  ScriptFactory {
-        @Override
-        public boolean isResultDeterministic() {
-            // PureDfLeafFactory only uses deterministic APIs, this
-            // implies the results are cacheable.
-            return true;
-        }
-
-        @Override
-        public LeafFactory newFactory(
-            Map<String, Object> params,
-            SearchLookup lookup
-        ) {
-            return new PureDfLeafFactory(params, lookup);
-        }
-    }
-
-    private static class PureDfLeafFactory implements LeafFactory {
-        private final Map<String, Object> params;
-        private final SearchLookup lookup;
-        private final String field;
-        private final String term;
-
-        private PureDfLeafFactory(
-                    Map<String, Object> params, SearchLookup lookup) {
-            if (params.containsKey("field") == false) {
-                throw new IllegalArgumentException(
-                        "Missing parameter [field]");
-            }
-            if (params.containsKey("term") == false) {
-                throw new IllegalArgumentException(
-                        "Missing parameter [term]");
-            }
-            this.params = params;
-            this.lookup = lookup;
-            field = params.get("field").toString();
-            term = params.get("term").toString();
-        }
-
-        @Override
-        public boolean needs_score() {
-            return false;  // Return true if the script needs the score
-        }
-
-        @Override
-        public boolean needs_termStats() {
-            return false; // Return true if the script needs term statistics via get_termStats()
-        }
-
-        @Override
-        public ScoreScript newInstance(DocReader docReader)
-                throws IOException {
-            DocValuesDocReader dvReader = DocValuesDocReader) docReader);             PostingsEnum postings = dvReader.getLeafReaderContext()                     .reader().postings(new Term(field, term;
-            if (postings == null) {
-                /*
-                 * the field and/or term don't exist in this segment,
-                 * so always return 0
-                 */
-                return new ScoreScript(params, lookup, docReader) {
-                    @Override
-                    public double execute(
-                        ExplanationHolder explanation
-                    ) {
-                        if(explanation != null) {
-                            explanation.set("An example optional custom description to explain details for this script's execution; we'll provide a default one if you leave this out.");
-                        }
-                        return 0.0d;
-                    }
-                };
-            }
-            return new ScoreScript(params, lookup, docReader) {
-                int currentDocid = -1;
-                @Override
-                public void setDocument(int docid) {
-                    /*
-                     * advance has undefined behavior calling with
-                     * a docid <= its current docid
-                     */
-                    if (postings.docID() < docid) {
-                        try {
-                            postings.advance(docid);
-                        } catch (IOException e) {
-                            throw new UncheckedIOException(e);
-                        }
-                    }
-                    currentDocid = docid;
-                }
-                @Override
-                public double execute(ExplanationHolder explanation) {
-                    if(explanation != null) {
-                        explanation.set("An example optional custom description to explain details for this script's execution; we'll provide a default one if you leave this out.");
-                    }
-                    if (postings.docID() != currentDocid) {
-                        /*
-                         * advance moved past the current doc, so this
-                         * doc has no occurrences of the term
-                         */
-                        return 0.0d;
-                    }
-                    try {
-                        return postings.freq();
-                    } catch (IOException e) {
-                        throw new UncheckedIOException(e);
-                    }
-                }
-            };
+    public double execute(ExplanationHolder explanation) {
+        // This is where you define your custom scoring logic
+        // In this example: return term frequency as the score
+        try {
+            return postings.freq();  // Custom score calculation
+        } catch (IOException e) {
+            return 0.0d;
         }
     }
 }
+
 ```
 
-You can execute the script by specifying its `lang` as `expert_scripts`, and the name of the script as the script source:
+### Key points
 
-```console
+* **Language Definition**: The `getType()` method returns `expert_scripts`, which becomes the value you use for the `lang` parameter in your scripts.  
+* **Script Recognition:** The `compile()` method identifies `pure_df` as a valid script source, which becomes the value you use for the `source` parameter.  
+* **Custom Scoring:** The `execute()` method replaces {{es}} standard scoring with your custom logic. In this case, using term frequency as the document score. 
+
+**For the complete implementation, refer to the [official script engine example](https://github.com/elastic/elasticsearch/blob/main/plugins/examples/script-expert-scoring/src/main/java/org/elasticsearch/example/expertscript/ExpertScriptPlugin.java).**
+
+### Usage example
+
+This example shows how to use your custom script engine in a search query:
+
+```json
 POST /_search
 {
   "query": {
@@ -195,5 +109,7 @@ POST /_search
     }
   }
 }
+
 ```
+
 
