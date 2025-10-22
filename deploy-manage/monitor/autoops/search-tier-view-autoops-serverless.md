@@ -14,22 +14,30 @@ To get to the Search Tier view, [access AutoOps](/deploy-manage/monitor/autoops/
 
 ## Project-level insights
 
-On the **Search Tier** page, the top half of the screen offers general insights at the project level. Use the following features to explore this view:
+On the **Search Tier** page, the top half of the screen offers general insights at the project level.
 
 :::{image} /deploy-manage/images/search-tier-project-level-features.png
 :screenshot:
 :alt: Screenshot showing the features in the top half of the Search Tier page
 :::
 
-1. Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-2. Select **custom time windows** let to explore usage and performance data ranging from the last 3 hours to the last 10 days. The charted data is bucketed per day except when you select a period of up to 24 hours, when it is bucketed per hour.
-3. Explore different **visualizations** presenting the trend of search VCU usage over time and how it compares to the performance of the search tier in terms of search rate and latency.
-4. View the **annotations** overlaying the search VCUs usage chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
-5. Gain insights from the **performance charts** depicting search rate and search latency trends to understand why your VCU consumption might fluctuate over time. 
+Use the following features to explore this view:
+* Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
+* Select **custom time windows** let to explore usage and performance data ranging from the last 3 hours to the last 10 days. The charted data is bucketed per day except when you select a period of up to 24 hours, when it is bucketed per hour.
+* Explore different **visualizations** presenting the trend of search VCU usage over time and how it compares to the performance of the search tier in terms of search rate and latency.
+* View the **annotations** overlaying the search VCUs usage chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
+* Gain insights from the **performance charts** depicting search rate and search latency trends to understand why your VCU consumption might fluctuate over time. 
 
 ## Index and data stream-level insights
  
-The bottom half of the screen offers a more granular breakdown table of index-level and data stream-level insights into search performance. Each row of the table represents a single index or data stream and provides the following information:
+The bottom half of the screen offers a more granular breakdown table of index-level and data stream-level insights into search performance. 
+
+:::{image} /deploy-manage/images/search-tier-breakdown-table.png
+:screenshot:
+:alt: Screenshot showing an expanded row in the data set table in the bottom half of the Search Tier page
+:::
+
+Each row of the table represents a single index or data stream and provides the following information:
 * The **number of documents** in the index or data stream.
 * The latest **search rate** in the selected time period.
 * The latest **search latency** in the selected time period.
@@ -38,11 +46,6 @@ The bottom half of the screen offers a more granular breakdown table of index-le
 Using this table, you can detect which of your indices or data streams are currently being searched and at what rate and latency. This helps you identify which indices are suffering from search pressure, so that you can deduce where that load is coming from manage it to optimize your search VCU consumption.
 
 For historical analysis, you can also expand each row to reveal performance trends over time, helping you detect patterns or anomalies in search performance for each index and data stream individually.
-
-:::{image} /deploy-manage/images/search-tier-breakdown-table.png
-:screenshot:
-:alt: Screenshot showing an expanded row in the data set table in the bottom half of the Search Tier page
-:::
 
 Also, this table is interactive and can be:
 

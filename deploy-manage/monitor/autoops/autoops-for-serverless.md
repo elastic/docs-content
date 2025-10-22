@@ -33,7 +33,7 @@ AutoOps for serverless focuses on different [billing dimensions](/deploy-manage/
 ### Compute billing dimensions
 On [{{es-serverless}} projects](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md), the main compute-related billing dimension is called a **Virtual Compute Unit (VCU)**. 1 VCU contains 1GB of RAM and the corresponding vCPU and local storage for caching. 
 
-AutoOps focuses on three types of VCUs:
+There are three main types of VCUs:
 * **Search VCUs** powering the search tier, which handles all search operations.
 * **Indexing VCUs** powering the indexing tier, which handles all data indexing operations.
 * **Machine learning VCUs** powering the machine learning tier, which handles all ML-related operations such as inference, anomaly detection, data frame analytics, transforms, and more.
@@ -67,9 +67,9 @@ Let’s say you ingest 1TB of data into your Observability project.
 
 ## Coming soon
 
-The following features are coming soon to AutoOps for serverless:
+The following features are coming soon to AutoOps for Serverless:
 
-* An **Indexing tier** view, which will show you how indexing performance influences your Ingest VCUs.
+* An **Indexing tier** view, which will show you how indexing performance influences your use of ingest VCUs.
 * A **Machine learning tier** view, which will provide insight into your machine learning jobs and inference performance, as well as token usage.
 * Visibility into other billing dimensions such as data transfer out of {{ecloud}} and the various Observability and Security add-ons.
 
@@ -77,7 +77,7 @@ The following features are coming soon to AutoOps for serverless:
 
 In this section, you'll find the following information:
 
-* How to [access AutoOps in your serverless project](access-autoops-for-serverless.md)
-* How to use the Search tier view to understand the impact of search performance on your search VCUs
-* How to use the Search AI Lake view to drill down into your storage-related usage
+* How to [access AutoOps in your serverless project](access-autoops-for-serverless.md).
+* How to use the [Search tier view](search-tier-view-autoops-serverless.md) to see the impact of search performance on your use of search VCUs.
+* How to use the [Search AI Lake view](search-ai-lake-view-autoops-serverless.md) to drill down into your storage-related usage.
 
