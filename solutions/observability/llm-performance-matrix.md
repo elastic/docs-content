@@ -55,7 +55,7 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | Alibaba Cloud | **Qwen2.5-72b-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 
 ::::{note}
-`Llama-3.3-70B-Instruct` and `Qwen2.5-72b-Instruct` are supported with simulated function calling.
+`Llama-3.3-70B-Instruct` and `Qwen2.5-72b-Instruct` were tested with simulated function calling.
 ::::
 
 ## Evaluate your own model
