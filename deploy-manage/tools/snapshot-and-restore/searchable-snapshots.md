@@ -13,7 +13,7 @@ products:
 
 # Searchable snapshots [searchable-snapshots]
 ::::{important}
-Searchable snapshots is a feature that requires an Enteprise license. 
+Searchable snapshots is a feature that requires an Enterprise license. 
 ::::
 
 {{search-snaps-cap}} let you use [snapshots](../snapshot-and-restore.md) to search infrequently accessed and read-only data in a very cost-effective fashion. The [cold](../../../manage-data/lifecycle/data-tiers.md#cold-tier) and [frozen](../../../manage-data/lifecycle/data-tiers.md#frozen-tier) data tiers use {{search-snaps}} to reduce your storage and operating costs.

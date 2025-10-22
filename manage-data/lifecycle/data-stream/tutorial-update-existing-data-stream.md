@@ -14,6 +14,7 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 
 - [Set a data stream’s lifecycle](#set-lifecycle)
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
+- [Manage data retention with Streams](#data-retention-streams)
 
 Note that these steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
@@ -213,3 +214,19 @@ GET .ds-my-data-stream-*/_lifecycle/explain
 4. Indication that the index is not managed by the data stream lifecycle.
 :::
 :::::
+
+## Manage data retention with Streams [data-retention-streams]
+```{applies_to}
+serverless: ga
+stack: preview 9.1, ga 9.2
+```
+
+Starting with {{stack}} version 9.2, the **Streams** page provides a centralized interface for common data management tasks in {{kib}}, including getting insight into how your data streams retain data. 
+
+1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Each stream maps directly to an {{es}} data stream. Select a stream to view its details.
+1. Go to the **Retention** tab to set how long your stream retains data and to get insight into your stream's data ingestion and storage size.
+1. Select **Edit data retention** and choose to retain your data indefinitely, for a custom period, or by following an existing ILM policy. You can also use the data retention configuration that's set in the index template by enabling the  **Inherit from index template** option. If you use this option, you don't need to specify a custom retention period or policy.
+
+For more information about the retention configuration options, refer to [](/solutions/observability/streams/management/retention.md).
+

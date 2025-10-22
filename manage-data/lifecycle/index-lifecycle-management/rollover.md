@@ -7,7 +7,7 @@ products:
   - id: elasticsearch
 ---
 
-# Rollover [index-rollover]
+# About rollover [index-rollover]
 
 In {{es}}, the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) replaces your active write index with a new one whenever your index grows beyond a specified size, age, or number of documents.
 This is particularly useful for time-series data, such as logs or metrics where index growth is continuous, in order to meet performance and retention requirements.
