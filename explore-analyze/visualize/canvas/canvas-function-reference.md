@@ -1308,7 +1308,7 @@ Interprets a `TinyMath` math expression using a `number` or `datatable` as *cont
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed*<br>Alias: `expression` | `string` | An evaluated `TinyMath` expression. See [canvas-tinymath-functions.md](/reference/data-analysis/kibana/tinymath-functions.md). |
+| *Unnamed*<br>Alias: `expression` | `string` | An evaluated `TinyMath` expression. See [canvas-tinymath-functions.md](/explore-analyze/visualize/canvas/canvas-tinymath-functions.md). |
 | `onError` | `string` | In case the `TinyMath` evaluation fails or returns NaN, the return value is specified by onError. When `'throw'`, it will throw an exception, terminating expression execution (default). |
 
 **Returns:** Depends on your input and arguments
@@ -1323,7 +1323,7 @@ Adds a column by evaluating `TinyMath` on each row. This function is optimized f
 | Argument | Type | Description |
 | --- | --- | --- |
 | *Unnamed* **\***<br>Aliases: `column`, `name` | `string` | The name of the resulting column. Names are not required to be unique. |
-| *Unnamed*<br>Alias: `expression` | `string` | An evaluated `TinyMath` expression. See [canvas-tinymath-functions.md](/reference/data-analysis/kibana/tinymath-functions.md). |
+| *Unnamed*<br>Alias: `expression` | `string` | An evaluated `TinyMath` expression. See [canvas-tinymath-functions.md](/explore-analyze/visualize/canvas/canvas-tinymath-functions.md). |
 | `castColumns` † | `string` | The column ids that are cast to numbers before the formula is applied. |
 | `copyMetaFrom` | `string`, `null` | If set, the meta object from the specified column id is copied over to the specified target column. If the column doesn’t exist it silently fails.<br>Default: `null` |
 | `id` **\*** | `string` | id of the resulting column. Must be unique. |
@@ -1443,7 +1443,7 @@ Subdivides a `datatable` by the unique values of the specified columns, and pass
 
 ### `pointseries` [pointseries_fn]
 
-Turn a `datatable` into a point series model. Currently we differentiate measure from dimensions by looking for a `TinyMath` expression. See [canvas-tinymath-functions.md](/reference/data-analysis/kibana/tinymath-functions.md). If you enter a `TinyMath` expression in your argument, we treat that argument as a measure, otherwise it is a dimension. Dimensions are combined to create unique keys. Measures are then deduplicated by those keys using the specified `TinyMath` function
+Turn a `datatable` into a point series model. Currently we differentiate measure from dimensions by looking for a `TinyMath` expression. See [canvas-tinymath-functions.md](/explore-analyze/visualize/canvas/canvas-tinymath-functions.md). If you enter a `TinyMath` expression in your argument, we treat that argument as a measure, otherwise it is a dimension. Dimensions are combined to create unique keys. Measures are then deduplicated by those keys using the specified `TinyMath` function
 
 **Accepts:** `datatable`
 

@@ -301,7 +301,7 @@ If the policy doesn't contain a VPC filter, then the association can serve as a 
 
 ## Access the deployment over a PrivateLink [ec-access-the-deployment-over-private-link]
 
-For traffic to connect with the deployment over Azure PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
+For traffic to connect with the deployment over AWS PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
 
 ::::{important}
 Use the alias you’ve set up as CNAME DNS record to access your deployment.

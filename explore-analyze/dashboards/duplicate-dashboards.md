@@ -11,7 +11,7 @@ products:
 # Duplicate a dashboard [duplicate-dashboards]
 
 1. Open the dashboard you want to duplicate.
-2. In **View** mode, click **Duplicate** in the toolbar.
+2. Exit the edit mode, and click **Duplicate** in the toolbar.
 3. In the **Duplicate dashboard** window, enter a title and optional description and tags.
 4. Click **Save**.
 

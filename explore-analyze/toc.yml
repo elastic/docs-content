@@ -153,6 +153,7 @@ toc:
       - file: scripting/modules-scripting-engine.md
       - file: scripting/painless-lab.md
   - file: ai-assistant.md
+  - file: manage-access-to-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
@@ -161,7 +162,7 @@ toc:
       - file: discover/save-open-search.md
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
-      - file: discover/search-sessions.md
+      - file: discover/background-search.md
       - file: discover/try-esql.md
   - file: dashboards.md
     children:

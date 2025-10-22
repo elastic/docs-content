@@ -29,7 +29,9 @@ You can create and manage ingest pipelines using {{kib}}'s **Ingest Pipelines** 
 
 ## Create and manage pipelines [create-manage-ingest-pipelines]
 
-In {{kib}}, open the main menu and click **Stack Management > Ingest Pipelines**. From the list view, you can:
+In {{kib}}, go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+From the list view, you can:
 
 * View a list of your pipelines and drill down into details
 * Edit or clone existing pipelines
@@ -457,7 +459,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 1. All processors in this pipeline will use the `classic` access pattern.
-2. The logic for resolving field paths used by processors to read and write values to ingest documents is based on the access pattern. 
+2. The logic for resolving field paths used by processors to read and write values to ingest documents is based on the access pattern.
 
 ### Classic field access pattern [access-source-pattern-classic]
 
@@ -503,7 +505,7 @@ POST /_ingest/pipeline/_simulate
 1. Explicitly declaring to use the `classic` access pattern in the pipeline. This is the default value.
 2. We are reading a value from the field `foo.bar`.
 3. We are writing its value to the field `a.b.c.d`.
-4. This document uses nested json objects in its structure. 
+4. This document uses nested json objects in its structure.
 5. This document uses dotted field names in its structure.
 
 ```console-result
@@ -514,7 +516,7 @@ POST /_ingest/pipeline/_simulate
             "_id": "id",
             "_index": "index",
             "_version": "-3",
-            "_source": { 
+            "_source": {
               "foo": {
                 "bar": "baz" <1>
               },
@@ -551,14 +553,14 @@ POST /_ingest/pipeline/_simulate
 2. The value from the `foo.bar` field is written to a nested json structure at field `a.b.c.d`. The processor creates objects for each field in the path.
 3. The second document uses a dotted field name for `foo.bar`. The `classic` access pattern does not recognize dotted field names, and so nothing is copied.
 
-If the documents you are ingesting contain dotted field names, to read them with the `classic` access pattern, you must use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor. This approach is not always reasonable though. Consider the following document: 
+If the documents you are ingesting contain dotted field names, to read them with the `classic` access pattern, you must use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor. This approach is not always reasonable though. Consider the following document:
 
 ```json
 {
   "event": {
     "tags": {
       "http.host": "localhost:9200",
-      "http.host.name": "localhost", 
+      "http.host.name": "localhost",
       "http.host.port": 9200
     }
   }
@@ -623,7 +625,7 @@ POST /_ingest/pipeline/_simulate
             "_id": "id",
             "_index": "index",
             "_version": "-3",
-            "_source": { 
+            "_source": {
               "foo": {
                 "bar": "baz" <1>
               },

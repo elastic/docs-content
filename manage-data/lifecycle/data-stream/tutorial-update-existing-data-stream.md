@@ -14,10 +14,11 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 
 - [Set a data stream’s lifecycle](#set-lifecycle)
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
+- [Manage data retention with Streams](#data-retention-streams)
 
 Note that these steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
-## Set a data stream’s lifecycle [set-lifecycle] 
+## Set a data stream’s lifecycle [set-lifecycle]
 
 To add or to change the retention period of your data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
@@ -29,7 +30,8 @@ To add or to change the retention period of your data stream you can use the **I
 
 To change the data retention settings for a data stream:
 
-1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view its details.
 1. In the data stream details pane, select **Manage > Edit data retention** to adjust the settings. You can do any of the following:
@@ -70,7 +72,7 @@ To change the data retention settings for a data stream:
 :::
 :::::
 
-The changes in the lifecycle are applied on all backing indices of the data stream. 
+The changes in the lifecycle are applied on all backing indices of the data stream.
 
 You can see the effect of the change in {{kib}} or using the {{es}} [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
 
@@ -80,7 +82,8 @@ You can see the effect of the change in {{kib}} or using the {{es}} [explain API
 :sync: kibana
 To check the data retention settings for a data stream:
 
-1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view its details. The flyout shows the data retention settings for the data stream. Note that if the data stream is currently managed by an [{{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management.md), the **Effective data retention** may differ from the retention value that you've set in the data stream, as indicated by the **Data retention**.
 
@@ -144,9 +147,9 @@ The response will look like:
 :::
 :::::
 
-## Remove the lifecycle for a data stream [delete-lifecycle] 
+## Remove the lifecycle for a data stream [delete-lifecycle]
 
-To remove the lifecycle of a data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). 
+To remove the lifecycle of a data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle).
 
 
 :::::{tab-set}
@@ -156,7 +159,8 @@ To remove the lifecycle of a data stream you can use the **Index Management** to
 
 To remove a data stream's lifecycle:
 
-1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view its details.
 1. In the data stream details pane, select **Manage > Edit data retention**.
@@ -210,3 +214,19 @@ GET .ds-my-data-stream-*/_lifecycle/explain
 4. Indication that the index is not managed by the data stream lifecycle.
 :::
 :::::
+
+## Manage data retention with Streams [data-retention-streams]
+```{applies_to}
+serverless: ga
+stack: preview 9.1, ga 9.2
+```
+
+Starting with {{stack}} version 9.2, the **Streams** page provides a centralized interface for common data management tasks in {{kib}}, including getting insight into how your data streams retain data. 
+
+1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Each stream maps directly to an {{es}} data stream. Select a stream to view its details.
+1. Go to the **Retention** tab to set how long your stream retains data and to get insight into your stream's data ingestion and storage size.
+1. Select **Edit data retention** and choose to retain your data indefinitely, for a custom period, or by following an existing ILM policy. You can also use the data retention configuration that's set in the index template by enabling the  **Inherit from index template** option. If you use this option, you don't need to specify a custom retention period or policy.
+
+For more information about the retention configuration options, refer to [](/solutions/observability/streams/management/retention.md).
+
