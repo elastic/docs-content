@@ -73,7 +73,7 @@ To add an ILM policy to an {{es}} cluster:
     ![Create policy page](/manage-data/images/elasticsearch-reference-create-policy-downsample.png "")
 
     ::::{note}
-    Note that for each phase after the hot phase, you have the option to move the data into the next phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
+    For each phase after the hot phase, you have the option to move the data into the next phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
     ::::
 
 
