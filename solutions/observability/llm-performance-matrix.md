@@ -51,7 +51,7 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
-| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Poor | Good | Excellent |
+| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Good | Good | Excellent |
 | Alibaba Cloud | **Qwen2.5-72b-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 
 ::::{note}
