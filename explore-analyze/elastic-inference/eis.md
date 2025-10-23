@@ -57,7 +57,7 @@ All models on EIS incur a charge per million tokens. The pricing details are at 
 
 ## Rate Limits
 
-The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the limit time is reached and the limit resets.
+The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
 
 ### Elastic Managed LLM
 
