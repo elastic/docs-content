@@ -1,18 +1,18 @@
 ---
-navigation_title: "Use different models"
+navigation_title: "Models"
 applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
 
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
-
 # Using different models in {{agent-builder}}
+
+:::{important}
+Due to phased rollout, the ability to use different models may not be immediately available in your project.
+:::
 
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making. By default, agents use the Elastic Managed LLM, but you can configure other models through Kibana connectors.
 
