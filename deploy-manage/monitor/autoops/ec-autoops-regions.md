@@ -57,7 +57,7 @@ Learn how to [access](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md
 
 ## AutoOps for {{serverless-full}} regions
 
-AutoOps for Serverless is set up and enabled automatically in the following regions for AWS:
+AutoOps for {{serverless-short}} is set up and enabled automatically in the following regions for AWS:
 
 | Region | Name |
 | --- | --- | --- | --- |
@@ -68,7 +68,7 @@ AutoOps for Serverless is set up and enabled automatically in the following regi
 
 The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure, and GCP.
 
-Learn how to [access](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) AutoOps in your serverless project.
+Learn how to [access](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) AutoOps in your {{serverless-short}} project.
 
 ## AutoOps for self-managed clusters regions
 

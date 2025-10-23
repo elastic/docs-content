@@ -8,31 +8,31 @@ navigation_title: For {{serverless-full}}
 
 For [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) projects, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md#autoops-for-serverless-full-regions). More regions are coming soon. 
 
-## How AutoOps monitors your serverless project
+## How AutoOps monitors your {{serverless-short}} project
 
 In your {{serverless-full}} project, Elastic ensures that the appropriate resources are adequately provisioned and autoscaled so that your workloads run efficiently. This is why {{serverless-full}} is billed based on the effective usage of compute and storage resources.
 
 :::{tip} 
 For more information about how {{serverless-full}} is priced and packaged, refer to the following pages:
 * [{{serverless-full}} pricing page](https://www.elastic.co/pricing/serverless-search)
-* [{{serverless-full}} pricing and packaging blog post](https://www.elastic.co/blog/elastic-cloud-serverless-pricing-packaging)
+* [{{serverless-full}} pricing and packaging blog](https://www.elastic.co/blog/elastic-cloud-serverless-pricing-packaging)
 :::
 
-Since your monthly serverless bill is directly related to how many resources have been consumed, it's important for you to understand why your consumption fluctuates and how past usage was influenced by your project's performance. This information lets you adapt your workloads accordingly and have better control over your future bills.
+Since your monthly {{serverless-short}} bill is directly related to how many resources have been consumed, it's important for you to understand why your consumption fluctuates and how past usage was influenced by your project's performance. This information lets you adapt your workloads accordingly and have better control over your future bills.
 
-This is where AutoOps comes in. With AutoOps for Serverless, you can:
+This is where AutoOps comes in. With AutoOps for {{serverless-short}}, you can:
 
 * understand and monitor your usage patterns through project-level and index-level performance metrics.
 * access several curated dashboards to look at your project from all the different angles.
-* have full visibility into the main serverless billing dimensions.
+* have full visibility into the main {{serverless-short}} billing dimensions.
 
 :::{note}
-To align with the [new {{serverless-full}} architecture](https://www.elastic.co/blog/journey-to-build-elastic-cloud-serverless#rethinking-architecture:-from-stateful-to-stateless), AutoOps for Serverless does not include monitoring API endpoints such as [node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) and [cluster statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats). These endpoints are included in [](ec-autoops-how-to-access.md) and [](cc-autoops-as-cloud-connected.md).
+To align with the [new {{serverless-full}} architecture](https://www.elastic.co/blog/journey-to-build-elastic-cloud-serverless#rethinking-architecture:-from-stateful-to-stateless), AutoOps for {{serverless-short}} does not include monitoring API endpoints such as [node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) and [cluster statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats). These endpoints are included in [](ec-autoops-how-to-access.md) and [](cc-autoops-as-cloud-connected.md).
 :::
 
-## AutoOps for Serverless billing dimensions
+## AutoOps for {{serverless-short}} billing dimensions
 
-AutoOps for serverless focuses on different [billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) related to compute and storage, which are explained in the following subsections.
+AutoOps for {{serverless-short}} focuses on different [billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) related to compute and storage, which are explained in the following subsections.
 
 ### Compute billing dimensions
 On [{{es-serverless}} projects](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md), the main compute-related billing dimension is called a **Virtual Compute Unit (VCU)**. 1 VCU contains 1GB of RAM and the corresponding vCPU and local storage for caching. 
@@ -42,10 +42,10 @@ There are three main types of VCUs:
 * **Indexing VCUs** powering the indexing tier, which handles all data indexing operations.
 * **Machine learning VCUs** powering the machine learning tier, which handles all ML-related operations such as inference, anomaly detection, data frame analytics, transforms, and more.
 
-VCUs materialize the load that each of the above tiers has to sustain to respond to your search, indexing, and machine learning needs respectively. As the load of a given tier fluctuates above or below some pre-defined thresholds, the tier will autoscale accordingly to accommodate that load.
+VCUs materialize the load that each of the above tiers has to sustain to respond to your search, indexing, and machine learning needs respectively. As the load of a given tier fluctuates above or below some pre-defined thresholds, the tier autoscales accordingly to accommodate that load.
 
 :::{tip} 
-For more information about how autoscaling works in serverless, refer to the following blog posts:
+For more information about how autoscaling works in {{serverless-short}}, refer to the following blogs:
 * [Search tier autoscaling](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling)
 * [Ingest autoscaling](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling)
 :::
@@ -58,9 +58,9 @@ Given that 1 search VCU = [$0.09/hour](https://www.elastic.co/pricing/serverless
 
 ### Storage billing dimensions
 
-On [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md) and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) Serverless projects, one storage-related billing dimension is called the **Ingest rate**, which represents the volume of data (in GB) ingested per unit of time.
+On [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md) and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) {{serverless-short}} projects, one storage-related billing dimension is called the **Ingest rate**, which represents the volume of data (in GB) ingested per unit of time.
 
-On all [{{es}}](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md), [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md), and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) Serverless projects, the main storage-related billing dimension is called **Storage retained** or **Retention**, and it represents the total volume of data (in GB prorated over a month) retained in your project.
+On all [{{es}}](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md), [Observability](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md), and [Security](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) {{serverless-short}} projects, the main storage-related billing dimension is called **Storage retained** or **Retention**, and it represents the total volume of data (in GB prorated over a month) retained in your project.
 
 :::{admonition} Example: How ingest rate and storage retained billing is calculated
 Let’s say you ingest 1TB of data into your Observability project.
@@ -71,7 +71,7 @@ Let’s say you ingest 1TB of data into your Observability project.
 
 ## Coming soon
 
-The following features are coming soon to AutoOps for Serverless:
+The following features are coming soon to AutoOps for {{serverless-short}}:
 
 * An **Indexing tier** view, which will show you how indexing performance influences your use of ingest VCUs.
 * A **Machine learning tier** view, which will provide insight into your machine learning jobs and inference performance, as well as token usage.
@@ -81,7 +81,7 @@ The following features are coming soon to AutoOps for Serverless:
 
 In this section, you'll find the following information:
 
-* How to [access AutoOps in your serverless project](access-autoops-for-serverless.md).
+* How to [access AutoOps in your {{serverless-short}} project](access-autoops-for-serverless.md).
 * How to use the [Search tier view](search-tier-view-autoops-serverless.md) to see the impact of search performance on your use of search VCUs.
 * How to use the [Search AI Lake view](search-ai-lake-view-autoops-serverless.md) to drill down into your storage-related usage.
 

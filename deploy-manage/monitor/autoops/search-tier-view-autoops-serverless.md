@@ -4,9 +4,9 @@ applies_to:
 navigation_title: Search Tier view
 ---
 
-# Search Tier view in AutoOps for Serverless
+# Search Tier view in AutoOps for {{serverless-short}}
 
-The Search Tier view in AutoOps for Serverless provides visibility into the consumption of search VCUs, which are a type of [compute billing dimension](/deploy-manage/monitor/autoops/autoops-for-serverless.md#compute-billing-dimensions). This view helps you understand how search activities and performance contribute to your search VCU consumption and as a result, your project's bill. 
+The Search Tier view in AutoOps for {{serverless-short}} provides visibility into the consumption of search VCUs, which are a type of [compute billing dimension](/deploy-manage/monitor/autoops/autoops-for-serverless.md#compute-billing-dimensions). This view helps you understand how search activities and performance contribute to your search VCU consumption and, as a result, your project's bill. 
 
 This view provides both high-level project summaries and detailed index-level and data stream-level breakdowns. 
 
@@ -14,7 +14,7 @@ To get to the Search Tier view, [access AutoOps](/deploy-manage/monitor/autoops/
 
 ## Project-level insights
 
-On the **Search Tier** page, the top half of the screen offers general insights at the project level.
+On the **Search Tier** page, the top half of the page offers general insights at the project level.
 
 :::{image} /deploy-manage/images/search-tier-project-level-features.png
 :screenshot:
@@ -30,20 +30,20 @@ Use the following features to explore this view:
 
 ## Index and data stream-level insights
  
-The bottom half of the screen offers a more granular breakdown table of index-level and data stream-level insights into search performance. 
+The bottom half of the page offers a more granular breakdown table of index-level and data stream-level insights into search performance. 
 
 :::{image} /deploy-manage/images/search-tier-breakdown-table.png
 :screenshot:
 :alt: Screenshot showing an expanded row in the data set table in the bottom half of the Search Tier page
 :::
 
-Each row of the table represents a single index or data stream and provides the following information:
+Each row of the table represents a single index or data stream, providing the following information:
 * The **number of documents** in the index or data stream.
 * The latest **search rate** in the selected time period.
 * The latest **search latency** in the selected time period.
 * The timestamp of the **last search** on the index or data stream.
 
-Using this table, you can detect which of your indices or data streams are currently being searched and at what rate and latency. This helps you identify which indices are suffering from high [search load](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling#what-is-search-load?), so that you can deduce where that load is coming from and manage it accordingly.
+Using this table, you can detect which of your indices or data streams is currently being searched and at what rate and latency. This helps you identify which indices are suffering from high [search load](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling#what-is-search-load?), so that you can deduce where that load is coming from and manage it accordingly.
 
 For historical analysis, you can also expand each row to reveal performance trends over time, helping you detect patterns or anomalies in search performance for each index and data stream individually.
 

@@ -4,9 +4,9 @@ applies_to:
 navigation_title: Search AI Lake view
 ---
 
-# Search AI Lake view in AutoOps for Serverless
+# Search AI Lake view in AutoOps for {{serverless-short}}
 
-The Search AI Lake view in AutoOps for Serverless provides visibility into the key [storage billing dimensions](/deploy-manage/monitor/autoops/autoops-for-serverless.md#storage-billing-dimensions) that drive the costs of your serverless projects. This view helps you understand how ingest and storage activities contribute to your storage usage costs with both high-level summaries and detailed index-level and data stream-levels breakdowns.
+The Search AI Lake view in AutoOps for {{serverless-short}} provides visibility into the key [storage billing dimensions](/deploy-manage/monitor/autoops/autoops-for-serverless.md#storage-billing-dimensions) that drive the costs of your {{serverless-short}} projects. This view helps you understand how ingest and storage activities contribute to your storage usage costs with both high-level summaries and detailed index-level and data stream-level breakdowns.
 
 The Search AI Lake view is available in all regions across AWS, Azure, and GCP.
 
@@ -14,7 +14,7 @@ To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-auto
 
 ## Project-level insights
 
-{applies_to}`observability:` {applies_to}`security:` On the **Search AI Lake** page, the top half of the screen offers project-level insights into the ingest rate and storage retained usage metrics over a selected time period.
+{applies_to}`observability:` {applies_to}`security:` On the **Search AI Lake** page, the top half of the page offers project-level insights into the ingest rate and storage retained usage metrics over a selected time period.
 
 :::{image} /deploy-manage/images/search-ai-lake-project-level-features.png
 :screenshot:
@@ -25,18 +25,18 @@ Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
 * Select **custom time windows** to explore usage and performance data up to the last 10 days. The charted data is bucketed per day except when you select a period of up to 72 hours, when it is bucketed per hour.
 
-{applies_to}`elasticsearch:` {{es-serverless}} projects offer the same experience, except that unlike Observability and Security Serverless projects, they only focus on storage retained and not on ingest rate usage metrics.
+{applies_to}`elasticsearch:` {{es-serverless}} projects offer the same experience, except that unlike Observability and Security {{serverless-short}} projects, they only focus on storage retained and not on ingest rate usage metrics.
 
 ## Index and data-stream level insights
 
-{applies_to}`observability:` {applies_to}`security:` The bottom half of the screen offers a more granular breakdown table of index-level and data stream-level insights into ingest rate and storage retained metrics. 
+{applies_to}`observability:` {applies_to}`security:` The bottom half of the page offers a more granular breakdown table of index-level and data stream-level insights into ingest rate and storage retained metrics. 
 
 :::{image} /deploy-manage/images/search-ai-lake-breakdown-table.png
 :screenshot:
 :alt: Screenshot showing an expanded row in the table in the bottom half of the Search AI Lake page
 :::
 
-Each row of the table represents a single index or data stream and provides the following information:
+Each row of the table represents a single index or data stream, providing the following information:
 * the **aggregated ingest rate** for the selected time period
 * the **latest recorded storage retained value** during that period
 * the timestamp of the **latest update** for these usage metrics
@@ -49,7 +49,7 @@ Also, this table is interactive and can be:
 * sorted by name, ingest rate, storage retained, or latest update time.
 * paginated to handle large sets of indices or data streams.
 
-{applies_to}`elasticsearch:` {{es-serverless}} projects offer the same experience, except that unlike Observability and Security Serverless projects, they only focus on storage retained and not on ingest rate usage metrics.
+{applies_to}`elasticsearch:` {{es-serverless}} projects offer the same experience, except that unlike Observability and Security {{serverless-short}} projects, they only focus on storage retained and not on ingest rate usage metrics.
 
 ## Factors affecting storage consumption
 
