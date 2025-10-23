@@ -32,9 +32,17 @@ You can also send cases to these external systems by [configuring external conne
 :screenshot:
 :::
 
-::::{note}
-From {{elastic-sec}} in the {{stack}}, you cannot access cases created in {{observability}} or Stack Management.
+::::{tip}
+:applies_to: {stack: preview 9.2, serverless: unavailable}
+After creating cases, use case data to build dashboards and visualizations that provide insights into case trends and operational metrics. Refer to [Cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
 ::::
+
+
+## Limitations [security-case-limitations]
+
+* If you create cases in the {{security-app}}, they are not visible from {{observability}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in {{elastic-sec}} or {{observability}}.
+* You cannot attach alerts from the {{observability}} or {{stack-manage-app}} to cases in {{elastic-sec}}.
+
 
 
 

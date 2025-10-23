@@ -54,3 +54,26 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 ## Pricing 
 
 All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER. 
+
+## Rate Limits
+
+The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
+
+### Elastic Managed LLM
+
+- 50 requests per minute
+- No rate limit on tokens
+
+### ELSER (Sparse Embeddings)
+
+We limit on both requests per minute and tokens per minute (whichever limit is reached first).
+
+#### Ingest 
+
+- 6,000 request per minute
+- 6,000,000 tokens per minute
+
+#### Search
+
+- 6,000 requests per minute
+- 600,000 tokens per minute

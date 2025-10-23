@@ -100,7 +100,7 @@ See [Aggregating data for faster performance](ml-configuring-aggregation.md) to 
 
 Set a results retention window to reduce the amount of results stored.
 
-{{anomaly-detect-cap}} results are retained indefinitely by default. Results build up over time, and your result index may be quite large. A large results index is slow to query and takes up significant space on your cluster. Consider how long you wish to retain the results and set `results_retention_days` accordingly – for example, to 30 or 60 days – to avoid unnecessarily large result indices. Deleting old results does not affect the model behavior. You can change this setting for existing jobs.
+{{anomaly-detect-cap}} results are retained indefinitely by default, except for predefined {{ml}} configurations for logs which retain results for 120 days ({applies_to}`stack: ga 9.2`). Results build up over time, and your result index may be quite large. A large results index is slow to query and takes up significant space on your cluster. Consider how long you wish to retain the results and set `results_retention_days` accordingly – for example, to 30 or 60 days – to avoid unnecessarily large result indices. Deleting old results does not affect the model behavior. You can change this setting for existing jobs.
 
 ## 10. Optimize the renormalization window [renormalization-window]
 

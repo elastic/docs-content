@@ -1,5 +1,5 @@
 ---
-navigation_title: Stream any log file using OTel Collector
+navigation_title: Send any log file using OTel Collector
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-stream-edot.html
   - https://www.elastic.co/guide/en/serverless/current/observability-stream-log-files-edot.html
@@ -11,9 +11,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Stream any log file using OTel Collector [logs-stream-edot]
+# Send any log file using OTel Collector [logs-stream-edot]
 
-This guide shows you how to manually configure the {{edot}} (EDOT) Collector to send your log data to {{es}} by configuring the `otel.yml` file. For an Elastic Agent equivalent, refer to [Stream any log file using {{agent}}](/solutions/observability/logs/stream-any-log-file.md).
+This guide shows you how to manually configure the {{edot}} (EDOT) Collector to send your log data to {{es}} by configuring the `otel.yml` file. For an Elastic Agent equivalent, refer to [Send any log file using {{agent}}](/solutions/observability/logs/stream-any-log-file.md).
 
 For more OpenTelemetry quickstarts, refer to [EDOT quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
