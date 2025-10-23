@@ -33,7 +33,7 @@ Wherever scripting is supported in the {{es}} APIs, the syntax follows the same 
 :   The script itself, which you specify as `source` for an inline script or `id` for a stored script. Use the [stored script APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-script) to create and manage stored scripts.
 
 `params`
-:   Specifies any named parameters that are passed into the script as variables. [Use parameters](#prefer-params) instead of hard-coded values to decrease compile time.
+:   Specifies any named parameters that are passed into the script as variables. [Use parameters](/explore-analyze/scripting/modules-scripting-use-parameters.md) instead of hard-coded values to decrease compile time.
 
 Get started with Painless scripting:
 
