@@ -30,21 +30,17 @@ You'll also find other helpful information, such as how to use our docs, trainin
 
 Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Search AI platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value.
 
-Elastic offers the following solutions or types of projects:
-
-* [**{{es}}**](/solutions/search/get-started.md): Build powerful search and RAG applications using {{es}}'s vector database, AI toolkit, and advanced retrieval capabilities.  
-* [**Elastic {{observability}}**](/solutions/observability/get-started.md): Gain comprehensive visibility into applications, infrastructure, and user experience through logs, metrics, traces, and other telemetry data, all in a single interface.
-* [**{{elastic-sec}}**](/solutions/security/get-started.md): Combine SIEM, endpoint security, and cloud security to provide comprehensive tools for threat detection and prevention, investigation, and response.
-
 ## Explore the fundamentals
 
 Continue your journey with these essential guides that will help you understand and work with Elastic:
 
-* **[The {{stack}}](/get-started/the-stack.md)**: Dive deeper into how the {{stack}}—our suite of open-source tools, including {{es}}, {{kib}}, {{beats}}, and {{ls}}—components work together. Learn about data ingestion methods and understand the core concepts of storing, visualizing, and querying your data.
+* **[](/get-started/introduction.md)**: Get an introduction to the {{es}}, Elastic {{observability}}, and {{elastic-sec}} solutions and projects.
 
-* **[Deployment options](/get-started/deployment-options.md)**: Explore the different ways you can deploy Elastic, from fully managed serverless solutions to self-managed installations, and choose the approach that best fits your operational needs.
+* **[](/get-started/the-stack.md)**: Dive deeper into how the {{stack}}—our suite of open-source tools, including {{es}}, {{kib}}, {{beats}}, and {{ls}}—components work together. Learn about data ingestion methods and understand the core concepts of storing, visualizing, and querying your data.
 
-* **[Versioning and availability](/get-started/versioning-availability.md)**: Learn how Elastic handles versioning, understand feature availability across different deployment types, and navigate our continuously updated documentation with confidence.
+* **[](/get-started/deployment-options.md)**: Explore the different ways you can deploy Elastic, from fully managed serverless solutions to self-managed installations, and choose the approach that best fits your operational needs.
+
+* **[](/get-started/versioning-availability.md)**: Learn how Elastic handles versioning, understand feature availability across different deployment types, and navigate our continuously updated documentation with confidence.
 
 ## Training resources
 
