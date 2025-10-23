@@ -21,6 +21,9 @@ Use the information in this section to troubleshoot common problems and find ans
 If you can't find your issue here, explore the other [troubleshooting topics](/troubleshoot/index.md) or [contact us](/troubleshoot/index.md#contact-us).
 :::
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 ## No monitoring data is visible in {{kib}} [monitoring-troubleshooting-no-data]
 
 **Symptoms**: There is no information about your cluster on the **Stack Monitoring** page in {{kib}}.

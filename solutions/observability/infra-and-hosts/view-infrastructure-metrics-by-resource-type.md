@@ -23,7 +23,7 @@ To open the **Infrastructure inventory** page in:
 :screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md).
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/observability/metrics-reference.md).
 
 ::::{note}
 **Don’t see any metrics?**

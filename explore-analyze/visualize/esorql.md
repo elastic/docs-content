@@ -13,17 +13,18 @@ products:
 
 You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
 
-
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
 In Discover, [typing ES|QL queries](../query-filter/languages/esql-kibana.md) automatically shows a visualization. The visualization type depends on the content of the query: histogram, bar charts, etc. You can manually make changes to that visualization and edit its type and display options using the pencil button ![pencil button](/explore-analyze/images/kibana-esql-icon-edit-visualization.svg "").
 
 You can then **Save** and add it to an existing or a new dashboard using the save button of the visualization ![save button](/explore-analyze/images/kibana-esql-icon-save-visualization.svg "").
 
-
 ## Create from dashboard [_create_from_dashboard]
 
-1. From your dashboard, select **Add panel**.
+1. Add a new panel from your dashboard.
+
+    * {applies_to}`stack: ga 9.2` Select **Add** > **New panel** in the toolbar.
+    * {applies_to}`stack: ga 9.0` Click **Add panel** in the dashboard toolbar.
 
    ::::{tip}
    If you haven't created a [data view](/explore-analyze/find-and-organize/data-views.md) and you don't have a dashboard yet, the **Dashboards** page offers you the possibility to **Try ES|QL** right away. By selecting this option, a dashboard is created with an ES|QL visualization that you can interact with and configure using ES|QL.
@@ -45,7 +46,7 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
     When you edit the query and run it again, the visualization configuration persists as long as it is compatible with the query changes. Refer to [](#chart-config-persist) for more details.
     :::
 
-4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-esql-control).
+4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-variable-control).
 5. Select **Apply and close** to save the visualization to the dashboard.
 
 ### Customize the appearance of your {{esql}} visualization

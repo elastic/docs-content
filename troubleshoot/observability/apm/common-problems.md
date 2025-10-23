@@ -252,7 +252,7 @@ In Elasticsearch, index templates are used to define settings and mappings that 
 
 As an example, some APM agents store cookie values in `http.request.cookies`. Since `http.request` has disabled dynamic indexing, and `http.request.cookies` is not declared in a custom mapping, the values in `http.request.cookies` are not indexed and thus not searchable.
 
-**Ensure an APM data view exists** As a first step, you should ensure the correct data view exists. In {{kib}}, go to **Stack Management** > **Data views**. You should see the APM data view—the default is `traces-apm*,apm-*,logs-apm*,apm-*,metrics-apm*,apm-*`. If you don’t, the data view doesn’t exist. To fix this, navigate to the Applications UI in {{kib}} and select **Add data**. In the APM tutorial, click **Load Kibana objects** to create the APM data view.
+**Ensure an APM data view exists** As a first step, you should ensure the correct data view exists. In {{kib}}, go to **Stack Management** > **Data Views**. You should see the APM data view—the default is `traces-apm*,apm-*,logs-apm*,apm-*,metrics-apm*,apm-*`. If you don’t, the data view doesn’t exist. To fix this, navigate to the Applications UI in {{kib}} and select **Add data**. In the APM tutorial, click **Load Kibana objects** to create the APM data view.
 
 **Ensure a field is searchable** There are two things you can do to if you’d like to ensure a field is searchable:
 

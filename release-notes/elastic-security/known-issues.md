@@ -17,7 +17,7 @@ Known issues are significant defects or limitations that may impact your impleme
 % :::
 
 
-:::{dropdown} Filters may not apply correctly on the Alerts page
+::::{dropdown} Filters may not apply correctly on the Alerts page
 Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3 
 
 **Impact**
@@ -36,7 +36,11 @@ You can turn off the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced s
 Ensure you give any users who will need access to the new space the appropriate permissions. 
 :::
 
-:::
+**Resolved**<br>
+
+Resolved in {{stack}} 9.1.4
+
+::::
 
 :::{dropdown} The {{elastic-agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
 

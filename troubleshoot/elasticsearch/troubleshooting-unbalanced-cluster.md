@@ -17,16 +17,14 @@ products:
 
 # Troubleshoot an unbalanced cluster [troubleshooting-unbalanced-cluster]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 Elasticsearch balances shards across data tiers to achieve a good compromise between:
 
 * shard count
 * disk usage
 * write load (for indices in data streams)
-
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
-
 
 Elasticsearch does not take into account the amount or complexity of search queries when rebalancing shards. This is indirectly achieved by balancing shard count and disk usage.
 

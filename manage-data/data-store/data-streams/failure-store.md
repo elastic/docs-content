@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/failure-store.html
 applies_to:
   stack: ga 9.1
   serverless: ga
@@ -87,6 +89,12 @@ PUT _data_stream/my-datastream-existing/_options
 ```
 
 1. Redirecting failed documents into the failure store will now be disabled.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also enable the data stream failure store in {{kib}}. Locate the data stream on the **Streams** page, where a stream maps directly to a data stream. Select a stream to view its details and go to the **Retention** tab where you can find the **Enable failure store** option.
+:::
 
 ### Enable failure store via cluster setting [set-up-failure-store-cluster-setting]
 
@@ -862,3 +870,8 @@ POST _data_stream/_modify
 
 This API gives you fine-grained control over the indices in your failure store, allowing you to manage backup and restoration operations as well as isolate failure data for later remediation.
 
+## Cross Cluster Search compatibility [ccs-compatibility]
+
+:::{important}
+Accessing the failure store across clusters using `::failures` is not yet supported.
+:::
