@@ -12,6 +12,11 @@ To access AutoOps in your {{serverless-short}} project, follow these steps:
 2. Locate the {{serverless-short}} project you want to work on and select **Manage**.
 3. On the project overview page, in the **Usage and Performance** section, select **View in AutoOps**.
 
+:::{image} /deploy-manage/images/serverless-autoops-how-to-access.png
+:screenshot:
+:alt: Screenshot showing the View in AutoOps button
+:::
+
 :::{note} 
 AutoOps for {{serverless-full}} is only available in supported [regions](ec-autoops-regions.md#autoops-for-serverless-full-regions), with the exception of the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure, and GCP.
 :::
