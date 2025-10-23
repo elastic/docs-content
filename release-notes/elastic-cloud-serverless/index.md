@@ -22,10 +22,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates the UI and API for process descendants in trusted applications [#236318]({{kib-pull}}236318)
 * Adds usage statistics collection for CSPM cloud connectors [#236992]({{kib-pull}}236992)
 * Enhances the error message for malformed roles [#239098]({{kib-pull}}239098)
-* Edits feature condition and add feature discover url [#238646]({{kib-pull}}238646)
+* Enables editing feature condition in the feature identification flyout and adds the **Open in Discover** button [#238646]({{kib-pull}}238646)
 * Improves processing warnings for Streams [#239188]({{kib-pull}}239188)
 * Enables AI-powered significant event identification for Streams [#239070]({{kib-pull}}239070)
-* Enables cases numerical ID service [#238555]({{kib-pull}}238555)
+* Enables numerical ID service for Cases [#238555]({{kib-pull}}238555)
 * Adds agent ID as a default observables type [#238533]({{kib-pull}}238533)
 
 
@@ -33,8 +33,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Updates `nodemailer` [#238816]({{kib-pull}}238816)
 * Improves error handling on the **Visualize Listing** page [#238355]({{kib-pull}}238355)
-* Prevents Adhoc dataviews from {{esql}} charts from being filtered out in the KQL search bar [#238731]({{kib-pull}}238731)
-* Fixes a bug in the Lens Table that broke **Click to filter** on table rows when any column was used as a formula in Lens [#239222]({{kib-pull}}239222)
+* Prevents adhoc dataviews in {{esql}} charts from being filtered out in the KQL search bar [#238731]({{kib-pull}}238731)
+* Fixes a bug in Lens that broke **Click to filter** on table rows when any column was used as a formula [#239222]({{kib-pull}}239222)
 * Fixes metric color assignment when breakdown and a max dimension are defined in Lens [#238901]({{kib-pull}}238901)
 * Fixes "package not found" error when skipping cloud onboarding for a prerelease package [#238629]({{kib-pull}}238629)
 * Fixes an issue with integration policy upgrades [#238542]({{kib-pull}}238542)
@@ -64,7 +64,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Separates sync alert and auto-extract updates in activity log [#236519]({{kib-pull}}236519)
 * Fixes auto extraction of observables in EASE [#239000]({{kib-pull}}239000)
 * Removes `autoFocus` to preserve proper focus upon modal close [#239366]({{kib-pull}}239366)
-* Adds manual focus to action buttons' actions [#239504]({{kib-pull}}239504)
+* Adds manual focus to the Cases action button's actions [#239504]({{kib-pull}}239504)
 * Fixes the behavior of Security serverless projects' Tier 1 and Tier 2 analyst roles by revoking their Endpoint exceptions read access
 
 ## October 15, 2025 [serverless-changelog-10152025]
