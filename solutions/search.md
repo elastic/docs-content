@@ -13,7 +13,7 @@ products:
 navigation_title: Elasticsearch
 ---
 
-# Elasticsearch solution and project overview
+# Elasticsearch solution overview
 
 The {{es}} solution and serverless project type positions {{es}} as a comprehensive platform: a scalable data store, a powerful search engine, and a vector database in one.
 
@@ -39,6 +39,7 @@ If you're new to {{es}} and want to try out some simple search use cases, go to 
 ## Core concepts [search-concepts]
 
 For an introduction to core {{es}} concepts such as indices, documents, and mappings, refer to [](/manage-data/data-store.md).
+
 To dive more deeply into the building blocks of {{es}} clusters, including nodes, shards, primaries, and replicas, refer to [](/deploy-manage/distributed-architecture.md).
 
 ## Related reference
