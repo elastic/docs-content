@@ -123,6 +123,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
 
 
+## 9.1.6 [elastic-security-9.1.6-release-notes]
+
+### Features and enhancements [elastic-security-9.1.6-features-enhancements]
+* Adds the `customized_fields` and `has_base_version` fields to the `rule_source` object schema  [#234793]({{kib-pull}}234793).
+* Implements CDR Data View versioning and migration logic [#238547]({{kib-pull}}238547).
+
+### Fixes [elastic-security-9.1.6-fixes]
+* Fixes {{elastic-endpoint}} artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
+* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin. [#237796]({{kib-pull}}237796).
+
+
 ## 9.1.5 [elastic-security-9.1.5-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.5-features-enhancements]
