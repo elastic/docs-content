@@ -31,7 +31,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.1.6-features-enhancements]
 * Adds the `customized_fields` and `has_base_version` fields to the `rule_source` object schema  [#234793]({{kib-pull}}234793).
-* Implements CDR Data View versioning and migration logic ({kibana-pull}238547[#238547]).
+* Implements CDR Data View versioning and migration logic [#238547]({{kib-pull}}238547).
 
 ### Fixes [elastic-security-9.1.6-fixes]
 * Fixes {{elastic-endpoint}} artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
