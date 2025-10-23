@@ -89,9 +89,12 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
         * `<Tenant_ID>` is your Tenant ID, available in the tenant overview page in Azure.
         * `<Kibana_Endpoint_URL>` is your {{kib}} endpoint, available from the {{ech}} console. Ensure this is the same value that you set for `Identifier (Entity ID)` in the earlier Microsoft Entra ID configuration step.
 
-            For `idp.metadata.path`, we’ve shown the format to construct the URL. This value should be identical to the `App Federation Metadata URL` setting that you made a note of in the previous step.
+        * For `idp.metadata.path`, we’ve shown the format to construct the URL. This value should be identical to the `App Federation Metadata URL` setting that you made a note of in the previous step.
 
-            If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
+        ::::{include} ../_snippets/azure-group-overage.md
+        ::::
+
+        If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
     2. Next, configure {{kib}} to enable SAML authentication:
         1. [Update your {{kib}} user settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
