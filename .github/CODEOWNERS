@@ -77,7 +77,7 @@
 /troubleshoot/security/                     @elastic/ski-docs
 
 # Raw migrated files
-/raw-migrated-files/                        @elastic/docs
+/raw-migrated-files/                        @elastic/admin-docs
 
 # Legacy serverless docs
 /serverless/                                @elastic/admin-docs
