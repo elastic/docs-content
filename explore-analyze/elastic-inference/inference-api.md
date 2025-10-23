@@ -88,7 +88,7 @@ The behavior of allocations depends on several factors:
 If you enable adaptive allocations and set the `min_number_of_allocations` to a value greater than `0`, you will be charged for the machine learning resources, even if no inference requests are sent.
 
 However, setting the `min_number_of_allocations` to a value greater than `0` keeps the model always available without scaling delays. Choose the configuration that best fits your workload and availability needs.
-:::: 
+::::
 
 For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) documentation.
 
@@ -105,9 +105,9 @@ By default, documents are split into sentences and grouped in sections up to 250
 
 ### Chunking strategies
 
-Several strategies are available for chunking: 
+Several strategies are available for chunking:
 
-#### `sentence` 
+#### `sentence`
 
 The `sentence` strategy splits the input text at sentence boundaries. Each chunk contains one or more complete sentences ensuring that the integrity of sentence-level context is preserved, except when a sentence causes a chunk to exceed a word count of `max_chunk_size`, in which case it will be split across chunks. The `sentence_overlap` option defines the number of sentences from the previous chunk to include in the current chunk which is either `0` or `1`.
 
@@ -134,7 +134,7 @@ The default chunking strategy is `sentence`.
 
 #### `word`
 
-The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk. 
+The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk.
 
 The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures the chunking behavior with the `word` strategy, setting a maximum of 120 words per chunk and an overlap of 40 words between chunks.
 
@@ -158,7 +158,7 @@ PUT _inference/sparse_embedding/word_chunks
 #### `recursive`
 
 ```{applies_to}
-stack: ga 9.1`
+stack: ga 9.1
 ```
 
 The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
@@ -215,7 +215,7 @@ PUT _inference/sparse_embedding/recursive_custom_chunks
 #### `none`
 
 ```{applies_to}
-stack: ga 9.1`
+stack: ga 9.1
 ```
 
 The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
