@@ -254,10 +254,10 @@ groups
 :   *(Recommended)* If you want to use your OP’s concept of groups or roles as the basis for a user’s {{es}} privileges, you should map them with this property. The `groups` are passed directly to your [role mapping rules](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-role-mappings).
 
 name
-:   *(Optional)* The user’s full name.
+:   *(Optional)* The user’s full name. It will be used in {{kib}}'s profile page to display user details. Use the payload key of your ID token that fits best here.
 
 mail
-:   *(Optional)* The user’s email address.
+:   *(Optional)* The user’s email address. It will be used in {{kib}}'s profile page to display user details. Use the payload key of your ID token that fits best here.
 
 dn
 :   *(Optional)* The user’s X.500 Distinguished Name.

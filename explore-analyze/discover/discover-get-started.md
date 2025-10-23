@@ -28,9 +28,9 @@ Learn how to use **Discover** to:
 
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/explore-logs.md)**
+  * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
 % LINK/PAGE TBD  * **Traces exploration**
-% LINK/PAGE TBD  * **Metrics exploration**
-% * Security: 
+% * Security:
 % LINK/PAGE TBD  * **Security data exploration**
 
 This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
@@ -39,7 +39,7 @@ When you access **Discover** outside of a specific solution context, or when wor
 
 ### Context-awareness with multiple data types
 
-Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context. 
+Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context.
 
 In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
 
@@ -325,14 +325,14 @@ You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
-To manage and organize your tabs, you can: 
+To manage and organize your tabs, you can:
 - Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
 - Reorder them: Drag and drop a tab to move it.
 - Close them: Hover over a tab and select the {icon}`cross` icon.
 - Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
 
   :::{tip}
-  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost. 
+  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
   :::
 - Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
 
