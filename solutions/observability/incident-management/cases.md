@@ -16,3 +16,13 @@ Collect and share information about observability issues by creating a case. Cas
 :alt: Cases page
 :screenshot:
 :::
+
+::::{tip}
+:applies_to: {stack: preview 9.2, serverless: unavailable}
+After creating cases, use case data to build dashboards and visualizations that provide insights into case trends and operational metrics. Refer to [Use cases as data](/explore-analyze/alerts-cases/cases/cases-as-data.md) to learn more.
+::::
+
+## Limitations [observability-case-limitations]
+
+* If you create cases in {{observability}}, they are not visible from the {{security-app}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}. 
+* You cannot attach alerts from {{elastic-sec}} or {{stack-manage-app}} to cases in {{observability}}.

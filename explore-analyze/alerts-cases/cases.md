@@ -27,3 +27,9 @@ If you create cases in the {{observability}} or {{security-app}}, they are not v
 * [Configure access to cases](cases/setup-cases.md)
 * [Open and manage cases](cases/manage-cases.md)
 * [Configure case settings](cases/manage-cases-settings.md)
+* {applies_to}`stack: preview 9.2` {applies_to}`serverless: unavailable`[Use cases as data](cases/cases-as-data.md)
+
+## Limitations [kibana-case-limitations]
+
+* If you create cases in {{stack-manage-app}}, they are not visible from {{observability}} or the {{security-app}}. Likewise, the cases you create in {{observability}} are not visible in {{stack-manage-app}} or {{elastic-sec}}. 
+* You cannot attach alerts from {{observability}} or {{elastic-sec}} to cases in {{stack-manage-app}}.
