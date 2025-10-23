@@ -75,5 +75,5 @@ We limit on both requests per minute and tokens per minute (whichever limit is r
 
 #### Search
 
-- 6000 requests per minute
+- 6,000 requests per minute
 - 600,000 tokens per minute
