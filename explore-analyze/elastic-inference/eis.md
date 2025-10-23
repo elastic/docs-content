@@ -70,8 +70,8 @@ We limit on both requests per minute and tokens per minute (whichever limit is r
 
 #### Ingest 
 
-- 6000 request per minute
-- 6 million tokens per minute
+- 6,000 request per minute
+- 6,000,000 tokens per minute
 
 #### Search
 
