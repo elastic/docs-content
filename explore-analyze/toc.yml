@@ -153,6 +153,7 @@ toc:
       - file: scripting/modules-scripting-engine.md
       - file: scripting/painless-lab.md
   - file: ai-assistant.md
+  - file: manage-access-to-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md

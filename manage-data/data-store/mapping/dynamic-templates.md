@@ -247,7 +247,7 @@ PUT my-index-000001
   }
 }
 
-PUT my-index/_doc/1
+PUT my-index-000001/_doc/1
 {
   "one_ip":   "will not match", <1>
   "ip_two":   "will not match", <2>
