@@ -23,7 +23,7 @@ To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-auto
 
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** let to explore usage data ranging from the last 3 hours to the last 10 days. The charted data is bucketed per day except when you select a period of up to 24 hours, when it is bucketed per hour.
+* Select **custom time windows** to explore usage and performance data up to the last 10 days. The charted data is bucketed per day except when you select a period of up to 72 hours, when it is bucketed per hour.
 
 {applies_to}`elasticsearch:` {{es-serverless}} projects offer the same experience, except that unlike Observability and Security Serverless projects, they only focus on storage retained and not on ingest rate usage metrics.
 

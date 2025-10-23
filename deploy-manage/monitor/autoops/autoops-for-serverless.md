@@ -12,7 +12,7 @@ For [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) pro
 
 In your {{serverless-full}} project, Elastic ensures that the appropriate resources are adequately provisioned and autoscaled so that your workloads run efficiently. This is why {{serverless-full}} is billed based on the effective usage of compute and storage resources.
 
-:::{note} 
+:::{tip} 
 For more information about how {{serverless-full}} is priced and packaged, refer to the following pages:
 * [{{serverless-full}} pricing page](https://www.elastic.co/pricing/serverless-search)
 * [{{serverless-full}} pricing and packaging blog post](https://www.elastic.co/blog/elastic-cloud-serverless-pricing-packaging)
@@ -20,13 +20,17 @@ For more information about how {{serverless-full}} is priced and packaged, refer
 
 Since your monthly serverless bill is directly related to how many resources have been consumed, it's important for you to understand why your consumption fluctuates and how past usage was influenced by your project's performance. This information lets you adapt your workloads accordingly and have better control over your future bills.
 
-This is where AutoOps comes in. With AutoOps for serverless, you can:
+This is where AutoOps comes in. With AutoOps for Serverless, you can:
 
 * understand and monitor your usage patterns through project-level and index-level performance metrics.
 * access several curated dashboards to look at your project from all the different angles.
 * have full visibility into the main serverless billing dimensions.
 
-## AutoOps for serverless billing dimensions
+:::{note}
+To align with the [new {{serverless-full}} architecture](https://www.elastic.co/blog/journey-to-build-elastic-cloud-serverless#rethinking-architecture:-from-stateful-to-stateless), AutoOps for Serverless does not include monitoring API endpoints such as [node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) and [cluster statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats). These endpoints are included in [](ec-autoops-how-to-access.md) and [](cc-autoops-as-cloud-connected.md).
+:::
+
+## AutoOps for Serverless billing dimensions
 
 AutoOps for serverless focuses on different [billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) related to compute and storage, which are explained in the following subsections.
 
@@ -40,7 +44,7 @@ There are three main types of VCUs:
 
 VCUs materialize the load that each of the above tiers has to sustain to respond to your search, indexing, and machine learning needs respectively. As the load of a given tier fluctuates above or below some pre-defined thresholds, the tier will autoscale accordingly to accommodate that load.
 
-:::{note} 
+:::{tip} 
 For more information about how autoscaling works in serverless, refer to the following blog posts:
 * [Search tier autoscaling](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling)
 * [Ingest autoscaling](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling)

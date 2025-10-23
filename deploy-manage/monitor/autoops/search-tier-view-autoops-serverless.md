@@ -23,7 +23,7 @@ On the **Search Tier** page, the top half of the screen offers general insights 
 
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** let to explore usage and performance data ranging from the last 3 hours to the last 10 days. The charted data is bucketed per day except when you select a period of up to 24 hours, when it is bucketed per hour.
+* Select **custom time windows** to explore usage and performance data up to the last 10 days. The charted data is bucketed per day except when you select a period of up to 72 hours, when it is bucketed per hour.
 * Explore different **visualizations** presenting the trend of search VCU usage over time and how it compares to the performance of the search tier in terms of search rate and latency.
 * View the **annotations** overlaying the search VCUs usage chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
 * Gain insights from the **performance charts** depicting search rate and search latency trends to understand why your VCU consumption might fluctuate over time. 
@@ -43,7 +43,7 @@ Each row of the table represents a single index or data stream and provides the 
 * The latest **search latency** in the selected time period.
 * The timestamp of the **last search** on the index or data stream.
 
-Using this table, you can detect which of your indices or data streams are currently being searched and at what rate and latency. This helps you identify which indices are suffering from search pressure, so that you can deduce where that load is coming from manage it to optimize your search VCU consumption.
+Using this table, you can detect which of your indices or data streams are currently being searched and at what rate and latency. This helps you identify which indices are suffering from high [search load](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling#what-is-search-load?), so that you can deduce where that load is coming from and manage it accordingly.
 
 For historical analysis, you can also expand each row to reveal performance trends over time, helping you detect patterns or anomalies in search performance for each index and data stream individually.
 
@@ -61,7 +61,7 @@ The consumption of search VCUs is directly related to autoscaling. When your pro
 The following factors may cause upscaling or downscaling and consequently an increase or decrease in the number of search VCUs consumed:
 
 ### Search rate
-A higher search rate will lead to a larger search load, which means the project will be upscaled and more search VCUs will be consumed. Similarly, a smaller search load means fewer search VCUs being consumed.
+A higher search rate will lead to a larger [search load](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling#what-is-search-load?), which means the project will be upscaled and more search VCUs will be consumed. Similarly, a smaller search load means fewer search VCUs being consumed.
 
 The search rate on your project can increase for many different reasons, such as when more clients start issuing search requests at the same time, or when a complex dashboard with many visualizations is configured with a low auto-refresh rate. 
 
