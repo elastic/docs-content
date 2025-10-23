@@ -113,7 +113,11 @@ POST _security/role/slm-read-only
 
 ### Create an {{slm-init}} policy [create-slm-policy]
 
-To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**. To create a policy, click **Create policy**.
+To manage {{slm-init}} in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Policies** tab. 
+3. To create a policy, click **Create policy**.
 
 You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle).
 
@@ -189,7 +193,11 @@ A snapshot repository can safely scale to thousands of snapshots. However, to ma
 
 ### Update an existing {{slm-init}} policy [update-slm-policy]
 
-You can update an existing {{slm-init}} policy after it's created. To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**, click **Edit** `✎`, and make the desired change. 
+You can update an existing {{slm-init}} policy after it's created. To manage {{slm-init}} in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Policies** tab. 
+3. On the policy that you want to edit, click **Edit** `✎`, and make the desired change. 
 
 For example, you can change the schedule, or snapshot retention-related configurations.
 

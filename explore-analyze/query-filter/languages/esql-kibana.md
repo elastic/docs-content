@@ -190,6 +190,9 @@ FROM kibana_sample_data_logs
 
 To display data within a specified time range, you can use the standard time filter, custom time parameters, or a WHERE command.
 
+% DO NOT REMOVE - Link from the product, will become a real section link shortly
+$$$esql-multi-values-controls$$$
+
 
 #### Standard time filter [_standard_time_filter]
 
@@ -297,7 +300,7 @@ You can also edit the {{esql}} visualization from here. Click the options button
 :width: 50%
 :::
 
-You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-esql-control)
+You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-variable-control)
 
 
 ## Create an enrich policy [esql-kibana-enrich]

@@ -4,13 +4,9 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # Tools in {{agent-builder}}
 
@@ -68,8 +64,9 @@ Tool namespacing helps organize and identify tools by their source. Built-in too
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data:
 
-- **Scoped tools**: Define tools that are scoped to a specific index or pattern, allowing the LLM to decide how to query those indices based on the user's request
-- **Explicit query tools**: Define tools with explicit {{esql}} queries for precise, pre-defined data retrieval operations
+- **[Index search tools](tools/index-search-tools.md)**: Define tools that are scoped to a specific index or pattern, allowing the LLM to decide how to query those indices based on the user's request.
+- **[ES|QL tools](tools/esql-tools.md)**: Define tools with explicit {{esql}} queries for precise, pre-defined data retrieval operations.
+
 
 This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
@@ -99,8 +96,8 @@ Providing clear, descriptive parameter names and descriptions helps agents prope
 
 You can create custom tools to help agents interact with your data in specific ways. This section covers how to create and test tools in the UI
 
-1. Navigate to the **Tools** page in Kibana
-2. Click **New tool**
+1. Navigate to the **Tools** section on the **Agents** page in Kibana.
+2. Click **New tool**.
 
   :::{image} images/new-tool-button.png
   :alt: New tool button for creating custom tools
@@ -108,14 +105,14 @@ You can create custom tools to help agents interact with your data in specific w
   :::
 
 4. Fill in the required fields:
-   - **Name**: Enter a descriptive name for your tool
-   - **Description**: Write a clear explanation of what the tool does and when it should be used
-   - **Tool type**: Choose either **{{esql}}** query or **Index search**
-   - **Parameters**: For tools with {{esql}} queries, define any parameters your query needs
-   - **Tags**: (Optional) Add labels to categorize and organize your tools
+   - **Name**: Enter a descriptive name for your tool.
+   - **Description**: Write a clear explanation of what the tool does and when it should be used.
+   - **Tool type**: Choose either **[{{esql}}](tools/esql-tools.md)** or **[Index search](tools/index-search-tools.md).**
+   - **Parameters**: For tools with {{esql}} queries, define any parameters your query needs.
+   - **Tags**: (Optional) Add labels to categorize and organize your tools.
 5. Choose how to save your tool:
-   - Click **Save** to create the tool
-   - Click **Save and test** to create the tool and immediately open the testing interface
+   - Select **Save** to create the tool.
+   - Select **Save and test** to create the tool and immediately open the testing interface
 
     :::{image} images/tool-save-save-and-test-buttons.png
     :alt: Save and Save and test buttons for tool creation
@@ -126,34 +123,34 @@ You can create custom tools to help agents interact with your data in specific w
 
 Before assigning tools to agents, verify they work correctly by testing them. Testing helps ensure your tool returns useful results and handles parameters correctly.
 
-If you didn't click **Save and test** immediately:
+If you didn't select **Save and test** immediately:
 
-1. Find your tool in the Tools list
-2. Click the test icon (play button) associated with your tool
+1. Find your tool in the Tools list.
+2. Click the test icon (play button) associated with your tool.
 
 :::{image} images/test-icon.png
 :alt: Test icon (play button) for running tool tests
 :width: 150px
 :::
 3. Enter test data based on your tool type:
-   - **For {{esql}} tools with parameters**: Enter realistic test values for each parameter in the **Inputs** section
-   - **For Index search tools**: Enter a sample search query to test the search functionality
-4. Click **Submit** to run the test
+   - **For {{esql}} tools with parameters**: Enter realistic test values for each parameter in the **Inputs** section.
+   - **For Index search tools**: Enter a sample search query to test the search functionality.
+4. Select **Submit** to run the test.
 5. Review the Response section to verify:
-   - The tool executes without errors
-   - Results are returned in the expected format
-   - The data matches your expectations
-7. Now you can [assign the tool to an agent](#assign-tools-to-agents)
+   - The tool executes without errors.
+   - Results are returned in the expected format.
+   - The data matches your expectations.
+6. Now you can [assign the tool to an agent](#assign-tools-to-agents).
 
 ### Best practices
 
-1. **Write descriptive names**: Use clear, action-oriented names
-2. **Provide detailed descriptions**: Explain when and how the tool should be used
-3. **Limit scope**: Focus each tool on a specific task rather than creating overly complex tools
-4. **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents
-5. **Add comprehensive parameter descriptions**: Help the agent understand what values to use
-6. **Include `LIMIT` clauses in {{esql}} queries**: Prevent returning excessive results
-7. **Use appropriate tags**: Add relevant tags to make tools easier to find and organize
+1. **Write descriptive names**: Use clear, action-oriented names.
+2. **Provide detailed descriptions**: Explain when and how the tool should be used.
+3. **Limit scope**: Focus each tool on a specific task rather than creating overly complex tools.
+4. **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents.
+5. **Add comprehensive parameter descriptions**: Help the agent understand what values to use.
+6. **Include `LIMIT` clauses in {{esql}} queries**: Prevent returning excessive results.
+7. **Use appropriate tags**: Add relevant tags to make tools easier to find and organize.
 8. **Limit tool count**: More tools are not always better. Try to keep each agent focused with a limited number of relevant tools.
 
 ## Manage tools
@@ -178,17 +175,17 @@ Access the complete list of available tools from the **Tools** page in Kibana. T
 ### Assign tools to agents
 
 Tools must be assigned to agents before they can be used:
-1. Navigate to the agent configuration page
-2. Select the **Tools** tab
-3. Add the desired tools to the agent
-4. Save the agent configuration
+1. Navigate to the agent configuration page.
+2. Select the **Tools** tab.
+3. Add the desired tools to the agent.
+4. Save the agent configuration.
 
 ### Update and delete tools
 
 Custom tools can be modified or removed as needed:
-1. From the Tools page, find the tool you want to modify
-2. Click the edit icon to update the tool or the delete icon to remove it
-3. For updates, modify the tool properties and save your changes
+1. From the Tools page, find the tool you want to modify.
+2. Select the edit icon to update the tool or the delete icon to remove it.
+3. For updates, modify the tool properties and save your changes.
 
 Note that built-in tools cannot be modified or deleted.
 
@@ -198,7 +195,7 @@ For a quick overview of how to work programmatically with tools, refer to [Tools
 
 ### Serverless API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).
+For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-tools).
 
 ## Copy your MCP server URL
 

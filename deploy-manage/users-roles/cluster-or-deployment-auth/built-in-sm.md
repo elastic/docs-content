@@ -22,7 +22,9 @@ This topic describes resetting passwords after the initial bootstrap password is
 
 ## Using {{kib}}
 
-Elastic enables you to easily manage users in {{kib}} on the **Stack Management > Security > Users** page. From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.
+Elastic enables you to easily manage users in {{kib}} from the **Users** page. From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.
+
+You can access the **Users** management page in the navigation menu or find it using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Using `elasticsearch-reset-password`
 

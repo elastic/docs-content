@@ -78,6 +78,7 @@ toc:
   - toc: troubleshoot
   - toc: release-notes
   - toc: reference
+  - toc: contribute-docs
   - toc: extend
   - file: archive.md
   - file: versions.md
@@ -296,4 +297,6 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.9.1
+  ece-docker-images-8: 8.18.8
+  ece-docker-images-9: 9.0.8
 
