@@ -45,6 +45,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds **Update missing index pattern** option to the automatic migration **Translated rules** page [#233258]({{kib-pull}}233258).
 * Introduces new API endpoints for automatic migration of dashboards [#229112]({{kib-pull}}229112).
 * Adds a new deployment method, "cloud connector", for the CSPM and Asset Discovery integrations [#235442]({{kib-pull}}235442), [#230137]({{kib-pull}}230137).
+* Implements CDR Data View versioning and migration logic ({kibana-pull}238547[#238547]).
 * Makes automatic troubleshooting generally available [#234853]({{kib-pull}}234853).
 * Updates the automatic troubleshooting feature to detect warnings and failures in {{elastic-defend}} policy responses and suggest possible remediations [#231908]({{kib-pull}}231908).
 * Adds an advanced setting that keeps the alert suppression window active after you close an alert, preventing new alerts during that period [#231079]({{kib-pull}}231079).
