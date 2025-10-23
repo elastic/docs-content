@@ -21,6 +21,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.1.6 [elastic-observability-9.1.6-release-notes]
+
+### Fixes [elastic-observability-9.1.6-fixes]
+
+* Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418).
+* Removes {{es}} `_sources` from query responses [#239205]({{kib-pull}}239205).
+* Fixes rule condition chart parser replacing metric names in filter values [#238849]{{kib-pull}}(238849).
+* Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
+* Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
+* Fixes `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).
+* Fixes a bug with Synthetics alerting where a down monitor triggered recovered alerts when it shouldn't [#237479]({{kib-pull}}237479).
+* Fixes the AI Assistant button tooltip by closing the tooltip when the button is not being hovered over [#237202]({{kib-pull}}237202).
+
 ## 9.1.5 [elastic-observability-9.1.5-release-notes]
 
 ### Features and enhancements[elastic-observability-9.1.5-features]
