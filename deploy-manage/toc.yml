@@ -633,6 +633,8 @@ toc:
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:
+      - file: remote-clusters/security-models.md
+      - file: remote-clusters/connection-modes.md
       - file: remote-clusters/ec-enable-ccs.md
         children:
           - file: remote-clusters/ec-remote-cluster-same-ess.md
