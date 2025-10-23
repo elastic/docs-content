@@ -12,7 +12,7 @@ products:
 
 This page explains how to make data from the Google Security Command Center integration appear in the following workflows within {{elastic-sec}}:
 
-- **Findings page**: Data appears on the [Findings page's](/solutions/security/cloud/findings-page.md) **Vulnerabilities** tab and **Misconfigurations** tab.
+- **Findings page**: Data appears on the [Vulnerabilities](/solutions/security/cloud/findings-page-3.md) tab and the [Misconfiguations](/solutions/security/cloud/findings-page.md) tab.
 - **Alert and Entity details flyouts**: Data appears in the **Insights** section of the [Alert](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) and [Entity](/solutions/security/advanced-entity-analytics/view-entity-details.md#insights) details flyouts.
 
 
