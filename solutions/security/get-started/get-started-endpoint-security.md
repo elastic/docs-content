@@ -3,6 +3,8 @@ navigation_title: Protect your hosts with endpoint security
 description: A quick start guide to securing your hosts with endpoint security.
 applies_to:
   serverless:
+    security: all
+  stack:
 products:
   - id: security
 ---
@@ -13,9 +15,9 @@ In this guide, you’ll learn how to use {{elastic-sec}} to protect your hosts f
 
 ## Prerequisites 
 
-* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). To see all deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
-* Ensure you have the minimum system requirements to install {{elastic-defend}}. Refer to [](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) for more information. 
-* Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).  We recommend granting them all, but at minimum, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
+* Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}.  
+* Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).  We recommend granting them all, but you need at least `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
 
 ## Install {{elastic-defend}}
 
@@ -84,7 +86,7 @@ For a comprehensive explanation of all endpoint protections and policy settings,
 :::::
 
 ## Manage endpoints 
-Now that you've got endpoint protection turned on, it's important not only to monitor your environment for alerts, but to manage your hosts to ensure they're healthy and have all appropriate security settings. 
+Now that you've turned on endpoint protection, it's important not only to monitor your environment for alerts, but to manage your hosts to ensure they're healthy and have all appropriate security settings. 
 
 :::{{note}}
 You must have `admin` privileges to manage endpoints. 
@@ -118,5 +120,5 @@ You can apply trusted applications, blocklist entries, and host isolation except
 After your hosts are secure and your environment has all the appropriate security settings configured, we recommend taking these next steps: 
 
 * Check out the [Hosts page](/solutions/security/explore/hosts-page.md) for a comprehensive overview of all hosts and host-related security events. This page is also useful to identify uncommon processes and anomalies discovered by {{ml}} jobs. 
-*  Install and turn on prebuilt detection rules. You're already set to receive endpoint threat alerts from {{elastic-defend}}, but did you know {{elastic-sec}} ships with several out-of-the-box rules that you can turn on? Check out our [SIEM quick start guide](/solutions/security/get-started/get-started-detect-with-siem.md#add-elastic-prebuilt-detection-rules) or our [documentation](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).  
+*  Install and turn on prebuilt detection rules. You're already set to receive endpoint threat alerts from {{elastic-defend}}, but did you know {{elastic-sec}} ships with several out-of-the-box rules you can turn on? Check out our [SIEM quick start guide](/solutions/security/get-started/get-started-detect-with-siem.md#add-elastic-prebuilt-detection-rules) or our [documentation](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).  
 * Discover all the other tools available to [manage {{elastic-defend}}](/solutions/security/manage-elastic-defend.md). 

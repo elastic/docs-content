@@ -17,12 +17,12 @@ New to {{elastic-sec}}? Follow the instructions in this topic to get started. Th
 ::::::{{stepper}}
 :::::{{step}} Choose your deployment type   
 
-Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend [](./elastic-security-serverless.md), which enables you to run {{elastic-sec}} in fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances. 
+Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend [](./elastic-security-serverless.md), which enables you to run {{elastic-sec}} in a fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances. 
 
 ::::{dropdown} Create an Elastic Security Serverless project
 
 There are two options to create serverless projects:
-- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
+- If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 - If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and follow [these instructions](./get-started/create-security-project.md) on how to create a serverless project.  
 
 :::{note}
@@ -38,16 +38,16 @@ Alternatively, if you prefer a self-managed deployment, you can create a [local 
 curl -fsSL https://elastic.co/start-local | sh
 ```
 
-Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
+Check out the complete list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
 
 :::::
 
 ::::{{step}} Ingest your data 
 
 
-After you've deployed {{elastic-sec}}, the next step is to get data into the product before you can search, analyze, or use any visualization tools. The easiest way to get data into {{elastic-sec}} is through one of our integrations—a pre-packaged collection of assets that allows you to easily collect, store, and visualize any data from any source. You can add an integration directly from the **Get Started** page within the **Ingest your data** section:
-1. At the top of page, click **Set up Security**. 
-2. In the Ingest your data section, click Add data with integrations. 
+After you've deployed {{elastic-sec}}, the next step is to get data into the product before you can search, analyze, or use any visualization tools. The easiest way to get data into {{elastic-sec}} is through one of our hundreds of ready-made integrations. You can add an integration directly from the **Get Started** page within the **Ingest your data** section:
+1. At the top of the page, click **Set up Security**. 
+2. In the Ingest your data section, click **Add data with integrations**. 
 3. Choose from one of our recommended integrations, or select another tab to browse by category. 
 :::{image} /solutions/images/security-gs-ingest-data.png
 :alt: Ingest data
@@ -57,7 +57,7 @@ After you've deployed {{elastic-sec}}, the next step is to get data into the pro
 Elastic also provides different [ingestion methods](/manage-data/ingest.md) to meet your infrastructure needs. 
 
 :::{{tip}}
-If you have data from a source that doesn't yet have an integration, you can use our [Automatic Import tool](/solutions/security/get-started/automatic-import.md).   
+If you have data from a source that doesn't yet have an integration, you can use [Automatic Import](/solutions/security/get-started/automatic-import.md) to create one using AI.   
 :::
 ::::
 

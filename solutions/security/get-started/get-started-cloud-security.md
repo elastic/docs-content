@@ -3,6 +3,8 @@ navigation_title: Secure your cloud assets with cloud security posture managemen
 description: A quick start guide to securing your cloud assets using {{elastic-sec}}.
 applies_to:
   serverless:
+    security: all
+  stack:
 products:
   - id: security
 ---
@@ -13,21 +15,21 @@ In this quickstart guide, you'll learn how to get started with Elastic Security 
 
 ## Prerequisites 
 
-* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). To see all deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type).
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type).
 * An admin account for the cloud service provider (CSP) you want to use.  
 
 
 ## Add the Cloud Security Posture Management integration 
 
-The Cloud Security Posture Management (CSPM) integration helps you identify and remediate configurations risks that could potentially undermine the confidentiality, integrity, and availability of your data in the cloud.
+The Cloud Security Posture Management (CSPM) integration helps you identify and remediate configuration risks that could undermine the confidentiality, integrity, and availability of your cloud data.
 
 To add the CSPM integration: 
 
 1. On the **Get Started** home page, in the **Ingest your data** section, select the **Cloud** tab. 
 2. Select **Cloud Security Posture Management (CSPM)**, then click Add **Cloud Security Posture Management (CSPM)**. The integration configuration page displays. 
-3. For this guide, we'll be using AWS single account for configuration. Select these options in the configuration integration section. 
+3. For this guide, we'll be using a single AWS account. Select these options in the **Configure integration** section. 
 4. Give the integration a name and enter an optional description. 
-5. Next, choose your deployment option. An agent-based deployment requires you to deploy and manage {{agent}} in the cloud account you want to monitor, whereas an agentless deployment allows you to collect cloud posture data without having to manage the {{agent}} deployment in your cloud. For simplicity, select **Agentless**.
+5. Next, choose your deployment option. An agent-based deployment requires you to deploy and manage {{agent}} in the cloud account you want to monitor, whereas an agentless deployment allows you to collect cloud posture data without managing the {{agent}} deployment in your cloud. For simplicity, select **Agentless**.
 6. Next, in the **Setup Access** section, choose your preferred authentication method—direct access keys (recommended) or temporary keys. For this guide, we'll use direct access keys. 
 7. Expand the Steps to Generate AWS Account Credentials, and follow the instructions. 
 8. Once you've generated an access key ID and secret access key and pasted the credentials, click **Save and continue** to complete deployment. Your data should start to appear within a few minutes.
@@ -37,17 +39,15 @@ To add the CSPM integration:
 :screenshot:
 :::
 
-% insert image 
-
 :::{{{note}}}
-Consider also adding the Cloud Native Vulnerability Management (CNVM) integration, which identifies vulnerabilities in your cloud workloads.
+Consider adding the Cloud Native Vulnerability Management (CNVM) integration, which identifies vulnerabilities in your cloud workloads.
 :::
 
 ## View the Cloud Security Posture dashboard
 
-The Cloud Posture dashboard summarizes your cloud infrastructure's overall performance against security guidelines defined by the Center for Internet Security (CIS). It shows configuration risk metrics for all of your monitored cloud accounts and Kubernetes clusters and groups them by specific parameters. All configuration risks the integration identifies are called benchmark rules, and are listed on the **Findings** page. 
+The Cloud Posture dashboard summarizes your cloud infrastructure's overall performance against security guidelines defined by the Center for Internet Security (CIS). It shows configuration risk metrics for all your monitored cloud accounts and Kubernetes clusters and groups them by specific parameters. All configuration risks the integration identifies are called benchmark rules and are listed on the **Findings** page. 
 
-The dashboard also shows your overall compliance score, and your compliance score for each CIS section. Use these scores to determine how securely configured your overall cloud environment is. To learn more, refer to our [documentation](/solutions/security/cloud/cspm-dashboard.md).
+The dashboard also shows your overall compliance score and your compliance score for each CIS section. Use these scores to determine how securely configured your overall cloud environment is. To learn more, refer to our [documentation](/solutions/security/cloud/cspm-dashboard.md).
 
 :::{image} /solutions/images/security-gs-cspm-dashboard.png
 :alt: Cloud Security Posture dashboard
@@ -59,7 +59,7 @@ To access the Cloud Security Posture dashboard, go to **Dashboards** → **Cloud
 
 ## Analyze Findings 
 
-After you install the CSPM integration, it evaluates the configuration of resources in your environment every 24 hours. It lists the results and whether a given resource passed or failed evaluation against a specific security guideline on the **Findings** page, which you can access from the navigation menu. By default, the Findings page lists all findings without any grouping or filtering. However, we recommend [filtering the data](/solutions/security/cloud/findings-page.md#cspm-findings-page-filter-findings) for failed findings. You can also [customize](/solutions/security/cloud/findings-page.md#cspm-customize-the-findings-table) the table to control which columns appear.  
+After you install the CSPM integration, it evaluates the configuration of resources in your environment every 24 hours. It lists the results and whether a given resource passed or failed evaluation against a specific security guideline on the **Findings** page, which you can access from the navigation menu. By default, the Findings page lists all findings without grouping or filtering. However, we recommend [filtering the data](/solutions/security/cloud/findings-page.md#cspm-findings-page-filter-findings) for failed findings. You can also [customize](/solutions/security/cloud/findings-page.md#cspm-customize-the-findings-table) the table to control which columns appear.  
 
 To remediate a failed finding, click the arrow to the left of a failed finding to open the findings flyout, then follow the steps under **Remediation**. 
 
@@ -74,13 +74,13 @@ On the Cloud Security Posture dashboard, click one of the "View all failed findi
 
 ### Set up alerts 
 
-To monitor your configuration more closely, we recommend creating detection rules to detect specific failed findings, which if found, generates an alert. 
+To monitor your configuration more closely, we recommend creating detection rules to detect specific failed findings, which, if found, generate an alert. 
 
-You can create detection rule directly from the **Findings** page: 
+You can create a detection rule directly from the **Findings** page: 
 
 1. Click the arrow to the left of a finding to open the findings flyout.
-2. Click **Take action**, then **Create a detection rule**. This creates a detection rule that creates alerts when the associated benchmark rule generates a failed finding.
-3. To review or customize the new rule, click **View rule**. For example, you may want to set up a rule action—like an email or Slack notification—when alerts are generated. To learn more about rule actions, refer to [](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications).   
+2. Click **Take action**, then **Create a detection rule**. 
+3. To review or customize the new rule, click **View rule**. For example, you might want to set up a rule action—like an email or Slack notification—when alerts are generated. To learn more about rule actions, refer to [](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications).   
 
 ## More resources 
 
