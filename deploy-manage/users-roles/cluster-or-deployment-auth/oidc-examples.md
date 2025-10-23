@@ -106,7 +106,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
     **Alternative:** If you can’t restrict groups to app-assigned ones, use the [Microsoft Graph Authz plugin for Elasticsearch](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md). It looks up group memberships through Microsoft Graph during authorization, so it continues to work even when the `groups` claim is omitted due to overage.
 
-    Refer to [Group overages](https://learn.microsoft.com/en-us/security/zero-trust/develop/configure-tokens-group-claims-app-roles#group-overages) for more information.
+    Refer to [Group overages](https://learn.microsoft.com/en-us/security/zero-trust/develop/configure-tokens-group-claims-app-roles#group-overages) in the Microsoft Security documentation for more information.
     :::
 
     If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.

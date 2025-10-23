@@ -94,7 +94,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
         :::{admonition} For organizations with many group memberships
         If you configure [`attributes.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-es-user-properties) to read the list of Azure AD groups from the SAML assertion, be aware that users who belong to many groups may exceed Azure AD’s size limit for SAML tokens. In that case, the `groups` attribute will be omitted.
 
-        To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**Enterprise applications > Single sign-on > Attributes & Claims > Edit**). This setting limits the `groups` attribute in the SAML assertion to only those groups assigned to the application.
+        To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**App registrations > Token configuration > Edit groups claim**). This setting limits the `groups` attribute in the SAML assertion to only those groups assigned to the application.
 
         **Alternative:** If you can’t restrict groups to app-assigned ones, use the [Microsoft Graph Authz plugin for Elasticsearch](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md). It looks up group memberships through Microsoft Graph during authorization, so it continues to work even when the `groups` attribute is omitted due to overage.
 
