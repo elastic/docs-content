@@ -43,14 +43,15 @@ To dive more deeply into the building blocks of {{es}} clusters, including nodes
 
 ## Related reference
 
-* [{{es}} reference documentation](elasticsearch::docs/reference/elasticsearch/index.md)
-* [Content connectors](elasticsearch::docs/reference/search-connectors/index.md)
-* [{{es}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/v9/)
+* [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
+* [Content connectors](elasticsearch://reference/search-connectors/index.md)
+* [{{es}} API documentation]({{es-apis}})
 
 ::::{tip}
 Not sure whether {{es}} on {{serverless-full}} is the right deployment choice for you?
 
 Check out the following resources to help you decide:
+
 - [What’s different?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md): Understand the differences between {{serverless-full}} and other deployment types.
 - [Billing](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md): Learn about the billing model for {{es}} on {{serverless-full}}.
 ::::
