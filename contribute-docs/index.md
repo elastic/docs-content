@@ -12,7 +12,7 @@ We have two distinct systems for contributing to the current Elastic docs:
 
 |System|What it covers|Published at|Format|How to contribute
 |----|----|----|----|----|----|
-|Main docs|Guides, Troubleshooting, release notes, etc.|[elastic.co/docs](https://www.elastic.co/docs)|Markdown+|- [DocsV3](https://elastic.github.io/docs-builder/contribute/) <br><br> - [Syntax guide](https://elastic.github.io/docs-builder/syntax/)|
+|Main docs|Guides, Troubleshooting, release notes, etc.|[elastic.co/docs](https://www.elastic.co/docs)|Markdown+|- [Contribution guide](https://elastic.github.io/docs-builder/contribute/) <br><br> - [Syntax guide](https://elastic.github.io/docs-builder/syntax/)|
 |API references|Elastic REST APIs|[elastic.co/docs/api](https://www.elastic.co/docs/api/)|[OpenAPI](https://swagger.io/specification/)|[Contribute to API docs](./api-docs/index.md)|
 
 ## Contribute to legacy docs
