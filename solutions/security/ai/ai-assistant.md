@@ -35,6 +35,21 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 * A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
+## Manage access to AI Assistant
+
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
+
+- Manage which AI connectors are available in your environment. 
+- Enable or disable AI Assistant and other AI-powered features in your environment.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+
+
+
 ## Your data and AI Assistant [data-information]
 
 Elastic does not store or examine prompts or results used by AI Assistant, or use this data for model training. This includes anything you send the model, such as alert or event data, detection rule configurations, queries, and prompts. However, any data you provide to AI Assistant will be processed by the third-party large language model (LLM) provider you connected to as part of AI Assistant setup.
@@ -400,15 +415,6 @@ When you include a particular event as context, such as an alert from the Alerts
 ### Knowledge base [ai-assistant-page-knowledge-base]
 
 The **Knowledge base** tab of the **Security AI settings** page allows you to enable AI Assistant to remember specified information, and use it as context to improve response quality. To learn more, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md).
-
-### AI Assistant visibility [ai-assistant-visibility]
-```{applies_to}
-stack: ga 9.1
-serverless: ga
-```
-:::{include} ../../_snippets/ai-assistant-visibility.md
-:::
-If you select the option to show the Security AI Assistant in other apps, the Security AI Assistant becomes **accessible outside of the Security solution**, for example, in Discover. The chat history remains persistent and is available no matter where you access the assistant within Kibana. 
 
 ### Get the most from your queries [rag-for-esql]
 
