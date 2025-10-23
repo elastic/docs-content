@@ -64,7 +64,7 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit will res
 - 50 requests per minute
 - No rate limit on tokens
 
-### ELSER (Sparse Embedding)
+### ELSER (Sparse Embeddings)
 
 We limit on both requests per minute and tokens per minute (whichever limit is reached first).
 
