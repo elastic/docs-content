@@ -53,7 +53,9 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 
 ## Pricing 
 
-All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER. 
+All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER.
+
+Please not that this pricing models differs to the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models) (billed via VCUs consumed).
 
 ## Rate Limits
 
