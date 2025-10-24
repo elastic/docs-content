@@ -9,7 +9,7 @@ products:
 
 # Troubleshoot regex pattern matching failures in Painless
 
-Follow these guidelines to avoid [regex](elasticsearch://reference/scripting-languages/painless/painless-regexes) operation errors in your Painless script.
+Follow these guidelines to avoid [regex](elasticsearch://reference/scripting-languages/painless/painless-regexes.md) operation errors in your Painless script.
 
 ## Regex compilation and usage errors in Painless scripts
 
