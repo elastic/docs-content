@@ -405,6 +405,7 @@ toc:
             children:
               - file: observability/infra-and-hosts/get-started-with-system-metrics.md
               - file: observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md
+              - file: observability/infra-and-hosts/discover-metrics.md
               - file: observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md
               - file: observability/infra-and-hosts/analyze-compare-hosts.md
               - file: observability/infra-and-hosts/detect-metric-anomalies.md
