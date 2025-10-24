@@ -6,9 +6,9 @@ navigation_title: Search AI Lake view
 
 # Search AI Lake view in AutoOps for {{serverless-short}}
 
-The Search AI Lake view in AutoOps for {{serverless-short}} provides visibility into the key [storage billing dimensions](/deploy-manage/monitor/autoops/autoops-for-serverless.md#storage-billing-dimensions) that drive the costs of your {{serverless-short}} projects. This view helps you understand how ingest and storage activities contribute to your storage usage costs with both high-level summaries and detailed index-level and data stream-level breakdowns.
+The **Search AI Lake** view in AutoOps for {{serverless-short}} provides visibility into the key [storage billing dimensions](/deploy-manage/monitor/autoops/autoops-for-serverless.md#storage-billing-dimensions) that drive the costs of your {{serverless-short}} projects. This view helps you understand how ingest and storage activities contribute to your storage usage costs with both high-level summaries and detailed index-level and data stream-level breakdowns.
 
-The Search AI Lake view is available in all regions across AWS, Azure, and GCP.
+The **Search AI Lake** view is available in all regions across AWS, Azure, and GCP.
 
 To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md) in your project and then select **Search AI Lake** from the navigation menu.
 
@@ -18,7 +18,7 @@ To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-auto
 
 :::{image} /deploy-manage/images/search-ai-lake-project-level-features.png
 :screenshot:
-:alt: Screenshot showing the features in the top half of the Search AI Lake page
+:alt: Screenshot showing the features in the top half of the **Search AI Lake** page
 :::
 
 Use the following features to explore this view:
@@ -33,7 +33,7 @@ Use the following features to explore this view:
 
 :::{image} /deploy-manage/images/search-ai-lake-breakdown-table.png
 :screenshot:
-:alt: Screenshot showing an expanded row in the table in the bottom half of the Search AI Lake page
+:alt: Screenshot showing an expanded row in the table in the bottom half of the **Search AI Lake** page
 :::
 
 Each row of the table represents a single index or data stream, providing the following information:
@@ -53,7 +53,7 @@ Also, this table is interactive and can be:
 
 ## Factors affecting storage consumption
 
-The Search AI Lake view shows you how your project's ingest rate and storage retention changes over time. This section explains what might be causing these changes so you can make adjustments to manage your consumption. 
+The **Search AI Lake** view shows you how your project's ingest rate and storage retention changes over time. This section explains what might be causing these changes so you can make adjustments to manage your consumption. 
 
 The main factor that influences storage consumption is the data retention duration set on your data streams. A longer retention period means more storage space needs to be allocated to accommodate that retention. 
 
