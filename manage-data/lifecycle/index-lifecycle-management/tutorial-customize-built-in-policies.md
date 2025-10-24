@@ -1,4 +1,5 @@
 ---
+navigation_title: Customize built-in {{ilm-init}} policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/example-using-index-lifecycle-policy.html
 applies_to:
@@ -7,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Customize built-in policies
+# Customize built-in {{ilm-init}} policies for {{agent}} data streams
 
 {{es}} includes a set of built-in {{ilm-init}} policies that govern how managed indices transition as they age. This guide demonstrates how you can customize the lifecycle of a managed index, to adjust how the index transitions across [data tiers](/manage-data/lifecycle/data-tiers.md) and what [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), such as downsampling or shrinking, are performed on the index during each lifecycle phase.
 
