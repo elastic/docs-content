@@ -51,6 +51,19 @@ toc:
               - file: elasticsearch/diagnosing-unknown-repositories.md
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
+      - file: elasticsearch/painless-scripting.md
+        children:
+          - file: elasticsearch/painless-array-list-manipulation-errors.md
+          - file: elasticsearch/painless-date-math-errors.md
+          - file: elasticsearch/painless-field-not-found.md
+          - file: elasticsearch/painless-ingest-pipeline-failures.md
+          - file: elasticsearch/painless-null-pointer-exceptions.md
+          - file: elasticsearch/painless-regex-pattern-matching-failures.md
+          - file: elasticsearch/painless-runtime-field-exceptions.md
+          - file: elasticsearch/painless-sandbox-limitations.md
+          - file: elasticsearch/painless-script-score-calculation-errors.md
+          - file: elasticsearch/painless-subfield-access.md
+          - file: elasticsearch/painless-type-casting-issues.md
       - file: elasticsearch/troubleshooting-searches.md
       - file: elasticsearch/start-ilm.md
       - file: elasticsearch/index-lifecycle-management-errors.md
