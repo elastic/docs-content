@@ -100,6 +100,8 @@ toc:
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
       - file: search/query-rules-ui.md
+      - title: "Elasticsearch engine reference →"
+        crosslink: elasticsearch://reference/elasticsearch/index.md
   - file: observability.md
     children:
       - file: observability/get-started.md
