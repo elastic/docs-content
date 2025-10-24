@@ -27,7 +27,7 @@ Use this checklist to verify the quality, completeness, and consistency of your 
 
 ## Quality assurance
 
-- Preview your changes locally before submitting (see [Contribute locally: Elasticsearch quickstart](./quickstart.md))
-- [Lint your API docs](./guidelines.md#lint-your-api-docs) to identify and fix issues
+- Preview your changes locally before submitting (see [Quickstarts](./quickstart.md))
+- [Lint your API docs](guidelines.md#lint-your-api-docs) to identify and fix issues
 - Check all links to ensure they work correctly
 - Ensure examples are realistic and error-free

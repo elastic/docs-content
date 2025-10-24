@@ -621,7 +621,7 @@ The [Elasticsearch API specification](https://github.com/elastic/elasticsearch-s
 - **Spectral**: Configuration in `.spectral.yaml`
 - **Redocly**: Configuration in `redocly.yaml`
 
-Refer to [the Elasticsearch quickstart](./quickstart.md#lint-your-docs) to learn how to run the linter locally.
+Refer to [the quickstarts](quickstart.md) to learn how to run the linter locally.
 
 ::::
 ::::
