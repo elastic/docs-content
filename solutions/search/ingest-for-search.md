@@ -22,7 +22,13 @@ Search use cases usually focus on general **content**, typically text-heavy data
 
 Once you've decided how to [deploy Elastic](/deploy-manage/index.md), the next step is getting your content into {{es}}. Your choice of ingestion method depends on where your content lives and how you need to access it.
 
-There are several methods to ingest data into {{es}} for search use cases. Choose one or more based on your requirements.
+There are several methods to ingest data into {{es}} for search use cases.
+Choose one or more based on your requirements:
+
+* [Native APIs and language clients](#es-ingestion-overview-apis): Index any JSON document directly using the {{es}} REST API or the official clients for languages like Python, Java, Go, and more.  
+* **Web crawler:** Ingest content from public or private websites to make it searchable.  
+* **Enterprise connectors:** Use pre-built connectors to sync data from external content sources like SharePoint, Confluence, Jira, and databases like MongoDB or PostgreSQL into {{es}}.
+
 
 ::::{tip}
 If you just want to do a quick test, you can load [sample data](/manage-data/ingest/sample-data.md) into your {{es}} cluster using the UI.
