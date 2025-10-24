@@ -44,19 +44,22 @@ toc:
               - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
               - file: search/semantic-search/cohere-es.md
           - file: search/using-openai-compatible-models.md
-      - hidden: search/elastic-agent-builder.md
-      - hidden: search/agent-builder/get-started.md
-      - hidden: search/agent-builder/models.md
-      - hidden: search/agent-builder/chat.md
-      - hidden: search/agent-builder/agent-builder-agents.md
-      - hidden: search/agent-builder/tools.md
-      - hidden: search/agent-builder/tools/esql-tools.md
-      - hidden: search/agent-builder/tools/index-search-tools.md
-      - hidden: search/agent-builder/programmatic-access.md
-      - hidden: search/agent-builder/kibana-api.md
-      - hidden: search/agent-builder/mcp-server.md
-      - hidden: search/agent-builder/a2a-server.md
-      - hidden: search/agent-builder/limitations-known-issues.md
+      - file: search/elastic-agent-builder.md
+        children:
+          - file: search/agent-builder/get-started.md
+          - file: search/agent-builder/models.md
+          - file: search/agent-builder/chat.md
+          - file: search/agent-builder/agent-builder-agents.md
+          - file: search/agent-builder/tools.md
+            children:
+              - file: search/agent-builder/tools/esql-tools.md
+              - file: search/agent-builder/tools/index-search-tools.md
+          - file: search/agent-builder/programmatic-access.md
+            children:
+              - file: search/agent-builder/kibana-api.md
+              - file: search/agent-builder/a2a-server.md
+              - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
@@ -402,6 +405,7 @@ toc:
             children:
               - file: observability/infra-and-hosts/get-started-with-system-metrics.md
               - file: observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md
+              - file: observability/infra-and-hosts/discover-metrics.md
               - file: observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md
               - file: observability/infra-and-hosts/analyze-compare-hosts.md
               - file: observability/infra-and-hosts/detect-metric-anomalies.md
@@ -458,15 +462,24 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
-          - file: observability/streams/streams.md
-            children:
-              - file: observability/streams/management/extract.md
-                children:
-                  - file: observability/streams/management/extract/date.md
-                  - file: observability/streams/management/extract/dissect.md
-                  - file: observability/streams/management/extract/grok.md
-              - file: observability/streams/management/retention.md
-              - file: observability/streams/management/advanced.md
+      - file: observability/streams/streams.md
+        children:
+        - file: observability/streams/management/retention.md
+        - file: observability/streams/management/extract.md
+          children:
+            - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/dissect.md
+            - file: observability/streams/management/extract/grok.md
+            - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/rename.md
+            - file: observability/streams/management/extract/append.md
+            - file: observability/streams/management/extract/manual-pipeline-configuration.md
+        - file: observability/streams/management/partitioning.md
+        - file: observability/streams/management/schema.md
+        - file: observability/streams/management/data-quality.md
+        - file: observability/streams/management/significant-events.md
+        - file: observability/streams/management/advanced.md
+        - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -480,6 +493,7 @@ toc:
                   - file: observability/incident-management/create-an-elasticsearch-query-rule.md
                   - file: observability/incident-management/create-an-error-count-threshold-rule.md
                   - file: observability/incident-management/create-failed-transaction-rate-threshold-rule.md
+                  - file: observability/incident-management/create-a-failed-docs-rule.md
                   - file: observability/incident-management/create-an-inventory-rule.md
                   - file: observability/incident-management/create-latency-threshold-rule.md
                   - file: observability/incident-management/create-log-threshold-rule.md
@@ -509,7 +523,6 @@ toc:
         children:
           - file: observability/connect-to-own-local-llm.md
           - file: observability/llm-performance-matrix.md
-      - hidden: observability/streams/wired-streams.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
@@ -625,6 +638,7 @@ toc:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
           - file: security/manage-elastic-defend/trusted-applications.md
+          - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md

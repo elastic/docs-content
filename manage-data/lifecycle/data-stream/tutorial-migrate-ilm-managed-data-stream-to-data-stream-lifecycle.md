@@ -13,7 +13,14 @@ products:
 In this tutorial we’ll look at migrating an existing data stream from [Index Lifecycle Management ({{ilm-init}})](../index-lifecycle-management.md) to [data stream lifecycle](../data-stream.md). The existing {{ilm-init}} managed backing indices will continue to be managed by {{ilm-init}} until they age out and get deleted by {{ilm-init}}; however, the new backing indices will be managed by data stream lifecycle. This way, a data stream is gradually migrated away from being managed by {{ilm-init}} to being managed by data stream lifecycle. As we’ll see, {{ilm-init}} and data stream lifecycle can co-manage a data stream; however, an index can only be managed by one system at a time.
 
 
-To migrate a data stream from {{ilm-init}} to data stream lifecycle we’ll have to execute two steps:
+:::{admonition} Configure data retention policies for Streams
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for common data management tasks in {{kib}}, including tasks such as configuring data retention policies. You can choose to retain your data indefinitely, for a custom period, or by following an existing ILM policy. For more information, refer to [Manage data retention in Streams](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#data-retention-streams).
+
+:::
+
+To migrate a data stream from {{ilm-init}} to data stream lifecycle using APIs you need to run two steps:
 
 1. Update the index template that’s backing the data stream to set [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.
 2. Configure the data stream lifecycle for the *existing* data stream using the [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).

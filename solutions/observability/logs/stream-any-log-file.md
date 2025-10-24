@@ -10,9 +10,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Stream any log file using {{agent}} [logs-stream]
+# Send any log file using {{agent}} [logs-stream]
 
-This guide shows you how to manually configure a standalone {{agent}} to send your log data to {{es}} using the `elastic-agent.yml` file. For an {{edot}} (EDOT) Collector equivalent, refer to [Stream any log file using OTel Collector](/solutions/observability/logs/stream-any-log-file-using-edot-collector.md).
+This guide shows you how to manually configure a standalone {{agent}} to send your log data to {{es}} using the `elastic-agent.yml` file. For an {{edot}} (EDOT) Collector equivalent, refer to [Send any log file using OTel Collector](/solutions/observability/logs/stream-any-log-file-using-edot-collector.md).
 
 To get started quickly without manually configuring the {{agent}}, you can use the **Monitor hosts with {{agent}}** quickstart. Refer to the [quickstart documentation](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) for more information.
 

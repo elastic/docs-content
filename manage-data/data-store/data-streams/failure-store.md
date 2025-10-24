@@ -90,6 +90,12 @@ PUT _data_stream/my-datastream-existing/_options
 
 1. Redirecting failed documents into the failure store will now be disabled.
 
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also enable the data stream failure store in {{kib}}. Locate the data stream on the **Streams** page, where a stream maps directly to a data stream. Select a stream to view its details and go to the **Retention** tab where you can find the **Enable failure store** option.
+:::
+
 ### Enable failure store via cluster setting [set-up-failure-store-cluster-setting]
 
 If you have a large number of existing data streams you may want to enable their failure stores in one place. Instead of updating each of their options individually, set `data_streams.failure_store.enabled` to a list of index patterns in the [cluster settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Any data streams that match one of these patterns will operate with their failure store enabled.
