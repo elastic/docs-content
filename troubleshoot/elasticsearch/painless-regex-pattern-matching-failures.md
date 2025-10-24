@@ -1,5 +1,10 @@
 ---
 navigation_title: Regex pattern matching failures
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot regex pattern matching failures in Painless

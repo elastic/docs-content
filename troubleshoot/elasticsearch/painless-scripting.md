@@ -1,5 +1,10 @@
 ---
 navigation_title: Painless scripting
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot Painless scripting in {{es}}

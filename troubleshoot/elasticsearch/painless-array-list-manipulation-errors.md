@@ -1,5 +1,10 @@
 ---
 navigation_title: Array/list manipulation errors
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot array/list manipulation errors in Painless

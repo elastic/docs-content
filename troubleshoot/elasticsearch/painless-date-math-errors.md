@@ -1,5 +1,10 @@
 ---
 navigation_title: Date math errors
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot date math errors in Painless

@@ -1,5 +1,10 @@
 ---
 navigation_title: Script score calculation errors
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot script score calculation errors in Painless

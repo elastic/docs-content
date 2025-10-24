@@ -1,5 +1,10 @@
 ---
 navigation_title: Null pointer exceptions
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot null pointer exceptions in Painless

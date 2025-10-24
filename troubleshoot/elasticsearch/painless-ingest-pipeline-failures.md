@@ -1,5 +1,10 @@
 ---
 navigation_title: Ingest pipeline failures
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot ingest pipeline failures in Painless

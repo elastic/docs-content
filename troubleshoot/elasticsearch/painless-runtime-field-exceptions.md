@@ -1,5 +1,10 @@
 ---
 navigation_title: Runtime field exceptions
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot runtime field exceptions in Painless

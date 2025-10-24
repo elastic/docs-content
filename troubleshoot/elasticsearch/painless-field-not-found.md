@@ -1,5 +1,10 @@
 ---
 navigation_title: Field not found (mapping conflicts)
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot field not found (mapping conflicts) in Painless

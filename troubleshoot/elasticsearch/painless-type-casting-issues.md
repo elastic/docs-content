@@ -1,5 +1,10 @@
 ---
 navigation_title: Type casting issues
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot type casting issues in Painless

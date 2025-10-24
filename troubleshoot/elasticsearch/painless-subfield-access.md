@@ -1,5 +1,10 @@
 ---
 navigation_title: Subfield access
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot subfield access in Painless

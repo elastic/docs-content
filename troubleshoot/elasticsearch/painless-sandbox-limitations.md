@@ -1,5 +1,10 @@
 ---
 navigation_title: Sandbox limitations
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot sandbox limitations in Painless
