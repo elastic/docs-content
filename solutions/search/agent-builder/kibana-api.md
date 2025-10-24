@@ -1,5 +1,5 @@
 ---
-navigation_title: "{{kib}} APIs"
+navigation_title: "Kibana APIs"
 applies_to:
   stack: preview 9.2
   serverless:
