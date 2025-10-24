@@ -1,5 +1,5 @@
 ---
-navigation_title: "Kibana APIs"
+navigation_title: "{{kib}} APIs"
 applies_to:
   stack: preview 9.2
   serverless:
@@ -10,7 +10,7 @@ applies_to:
 
 # Work with {{agent-builder}} using the APIs
 
-This page provides a quick overview of the main Kibana API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-agent-builder).
+This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} serverless API reference](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-agent-builder).
 
 These APIs allow you to programmatically work with the {{agent-builder}} abstractions.
 
@@ -21,7 +21,7 @@ The examples in this documentation use Dev Tools [Console](/explore-analyze/quer
 GET kbn://api/agent_builder/tools
 ```
 
-To use these APIs with tools like `curl`, replace the `kbn://` protocol with your Kibana URL.
+To use these APIs with tools like `curl`, replace the `kbn://` protocol with your {{kib}} URL.
 
 :::{note}
 Set the required environment variables before running curl commands:
@@ -39,6 +39,21 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
 To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 [Learn more](https://www.elastic.co/docs/solutions/search/search-connection-details).
 :::
+
+### Working with Spaces
+
+If you're using [Spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
+
+For example, to list tools in a space named `my-space`:
+
+```bash
+curl -X GET "https://${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
+     -H "Authorization: ApiKey ${API_KEY}"
+```
+
+The default space does not require the `/s/default` prefix.
+
+Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space_name>` prefix.
 
 ## Available APIs
 
@@ -66,6 +81,8 @@ GET kbn://api/agent_builder/tools
 curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -130,6 +147,8 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
        }
      }'
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -154,6 +173,8 @@ GET kbn://api/agent_builder/tools/{id}
 curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -179,6 +200,8 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -239,6 +262,8 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/tools/{toolId}" \
        }
      }'
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -277,6 +302,8 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
        }
      }'
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -303,6 +330,8 @@ GET kbn://api/agent_builder/agents
 curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -371,6 +400,8 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/agents" \
        }
      }'
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -395,6 +426,8 @@ GET kbn://api/agent_builder/agents/{id}
 curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -457,6 +490,8 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
        }
      }'
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -482,6 +517,8 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -517,6 +554,8 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
        "input": "What is Elasticsearch?",
        "agent_id": "elastic-ai-agent"}'
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -553,6 +592,8 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse/async" \
        "conversation_id": "<CONVERSATION_ID>"
      }'
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -577,6 +618,8 @@ GET kbn://api/agent_builder/conversations
 curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -601,6 +644,8 @@ GET kbn://api/agent_builder/conversations/{conversation_id}
 curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -626,6 +671,8 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/{conversat
      -H "Authorization: ApiKey ${API_KEY}" \
      -H "kbn-xsrf: true"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -648,9 +695,10 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/mcp" \
         "method": "tools/list"
     }'
 ```
+If you're using Spaces, you need to prefix `/api/agent_builder` with `/s/<space_name>`. Refer to [Working with Spaces](#working-with-spaces).
 
 :::{note}
-This endpoint uses the JSON-RPC protocol. The MCP server is used by AI clients like Claude Desktop, Cursor, and VS Code extensions to access your Elastic tools. Use this Kibana API endpoint for testing MCP connectivity or debugging protocol communication. This endpoint requires JSON-RPC formatting and does not work from the Dev Tools Console.
+This endpoint uses the JSON-RPC protocol. The MCP server is used by AI clients like Claude Desktop, Cursor, and VS Code extensions to access your Elastic tools. Use this {{kib}} API endpoint for testing MCP connectivity or debugging protocol communication. This endpoint requires JSON-RPC formatting and does not work from the Dev Tools Console.
 :::
 
 ### A2A protocol
@@ -677,6 +725,8 @@ GET kbn://api/agent_builder/a2a/{agentId}.json
 curl -X GET "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
      -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{include} _snippets/spaces-api-note.md
+:::
 :::
 
 ::::
@@ -725,4 +775,4 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
 
 ## API reference
 
-For the full API documentation, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-agent-builder).
+For the full API documentation, refer to the [{{kib}} serverless API reference](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-agent-builder).
