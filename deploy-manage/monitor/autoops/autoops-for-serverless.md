@@ -10,7 +10,7 @@ For [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) pro
 
 ## How AutoOps monitors your {{serverless-short}} project
 
-In your {{serverless-full}} project, Elastic ensures that the appropriate resources are adequately provisioned and autoscaled so that your workloads run efficiently. This is why {{serverless-full}} is billed based on the effective usage of compute and storage resources.
+In your {{serverless-full}} project, Elastic takes care of provisioning, monitoring, and autoscaling resources so you can focus on your business. This is why {{serverless-full}} is billed based on the effective usage of compute and storage resources.
 
 :::{tip} 
 For more information about how {{serverless-full}} is priced and packaged, refer to the following pages:
@@ -27,7 +27,7 @@ This is where AutoOps comes in. With AutoOps for {{serverless-short}}, you can:
 * have full visibility into the main {{serverless-short}} billing dimensions.
 
 :::{note}
-To align with the [new {{serverless-full}} architecture](https://www.elastic.co/blog/journey-to-build-elastic-cloud-serverless#rethinking-architecture:-from-stateful-to-stateless), AutoOps for {{serverless-short}} does not include monitoring API endpoints such as [node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) and [cluster statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats). These endpoints are included in [](ec-autoops-how-to-access.md) and [](cc-autoops-as-cloud-connected.md).
+Stack Monitoring is not available in {{serverless-full}} because there is no need for it. Elastic takes care of monitoring and managing your {{serverless-short}} projects. Learn more about the [differences between AutoOps and Stack Monitoring](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 :::
 
 ## AutoOps for {{serverless-short}} billing dimensions
