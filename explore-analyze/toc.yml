@@ -188,6 +188,7 @@ toc:
       - file: visualize/visualize-library.md
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
+      - file: visualize/metric-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
