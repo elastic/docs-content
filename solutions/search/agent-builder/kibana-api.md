@@ -42,7 +42,7 @@ To generate API keys, search for `API keys` in the [global search bar](/explore-
 
 ### Working with Spaces
 
-If you're using [Spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
+To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
 
 For example, to list tools in a space named `my-space`:
 
