@@ -12,7 +12,21 @@ After you create a new agentless integration, the new integration policy may sho
   serverless: ga
 ```
 
-Agentless agents (which run on Elastic's infrastructure to enable agentless integrations) do not appear on the **Fleet** page by default. To view them on this page, add the following query to the end of its URL: `?showAgentless=true`. 
+Agentless agents (which run on Elastic's infrastructure to enable agentless integrations) do not appear on the **Fleet** page by default. To view them on this page:
+
+
+::::{applies-switch}
+
+:::{applies-item} stack 9.1:
+Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
+:::
+
+:::{applies-item} stack 9.2+:
+Go to the **Settings** tab of the **Fleet** page, and  Turn on the **View agentless** toggle
+:::
+
+::::
+
 
 ## How do I troubleshoot an `Offline` agent? [_how_do_i_troubleshoot_an_offline_agent]
 
