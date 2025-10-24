@@ -23,9 +23,9 @@ After installing or upgrading to version 2.10 or later:
 2. [Update your proxy certificate(s)](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). In addition to currently configured domains, additional SAN entries must be configured for each application-specific subdomain:
 
     ::::{note}
-    If you are not using wildcard certificates, you need to repeat this process for each deployment to account for specific aliases.
+    If you are not using wildcard certificates, you need to repeat this process for each deployment to account for specific aliases. Review [Wildcard DNS record and certificates](./ece-wildcard-dns.md) for more guidance.
     ::::
-
+    
 
     * For {{es}}, the certificate needs to allow for **\*.es.<your-domain>**
     * For {{kib}}, the certificate needs to allow for **\*.kb.<your-domain>**
@@ -33,11 +33,8 @@ After installing or upgrading to version 2.10 or later:
     * For Fleet, the certificate needs to allow for **\*.fleet.<your-domain>**
     * For Universal Profiling, the certificate needs to allow for **\*.profiling.<your-domain>** and **\*.symbols.<your-domain>**
 
+
 3. In the **Platform** menu, select **Settings**.
 4. Under the **Enable custom endpoint alias naming**, toggle the setting to allow platform administrators and deployment managers to choose a simplified, unique URL for the endpoint.
-
-If you do not perform these steps, application endpoints will behave as they did in versions before 2.10.
-
-To learn about setting up custom endpoint aliases for your deployments, check [Custom endpoint aliases](ece-regional-deployment-aliases.md).
 
 

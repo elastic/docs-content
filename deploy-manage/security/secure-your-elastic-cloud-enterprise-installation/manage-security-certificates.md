@@ -16,22 +16,21 @@ In these instructions, we show you how you can download the security certificate
 
 You can change the certificates for the following ECE components separately:
 
-Cloud UI certificate
+**Cloud UI certificate**
 :   Used to connect securely to the Cloud UI and to make RESTful API calls.
 
-Proxy certificate
-:   Used to connect securely to {{es}} clusters and {{kib}}. You should use a wildcard certificate rooted at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.example.com`, for example). A wildcard certificate is required, because the first label of the DNS address is distinct for {{es}} clusters and {{kib}} (`bc898abb421843918ebc31a513169a.example.com`, for example).
+**Proxy certificate**
+:   Used to connect securely to {{es}} clusters and other components such as {{kib}}, etc. 
+
+    We strongly recommend using a wildcard certificate configured for a subdomain at the [cluster endpoint you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (for example, `*.ece.mycompany.com`).
 
     If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
 
-    ::::{note} 
-    If you plan to deploy [Integration Servers](../../deploy/cloud-enterprise/manage-integrations-server.md), you must add two additional wildcard subdomains, `*.fleet.<your-domain>` and `*.apm.<your-domain>`, to the Subject Alternative Names (SANs) attached to the proxy wildcard certificate. Based on the previous example, your proxy certificates should end up with those three wildcards: `*.example.com`, `*.fleet.example.com`, and `*.apm.example.com`.
-    ::::
-
+    A wildcard DNS certificate is more performant, scalable, and operationally safe than a static SAN certificate. Review [Wildcard DNS record and certificates](../../deploy/cloud-enterprise/ece-wildcard-dns.md) for more guidance.
 
     After the certificates have been installed, connecting securely to {{es}}, {{kib}}, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
 
-Adminconsole certificate
+**Adminconsole certificate**
 :   This certificate facilitates a secure connection to an alternative API port, which can be used in rare scenarios where the UI is unavailable. We recommend using the same certificate as the one configured for the Cloud UI.
 
 
