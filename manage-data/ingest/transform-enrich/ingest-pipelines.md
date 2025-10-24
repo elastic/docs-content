@@ -937,7 +937,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-You can also specify a [stored script](../../../explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts) as the `if` condition.
+You can also specify a [stored script](../../../explore-analyze/scripting/modules-scripting-store-and-retrieve.md) as the `if` condition.
 
 ```console
 PUT _scripts/my-prod-tag-script
