@@ -22,7 +22,7 @@ Add the following query to the end of the **Fleet** page's URL: `?showAgentless=
 :::
 
 :::{applies-item} stack: ga 9.2
-Go to the **Settings** tab of the **Fleet** page, and  Turn on the **View agentless** toggle.
+Go to the **Settings** tab of the **Fleet** page. Go to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
 :::
 
 ::::
