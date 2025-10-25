@@ -48,7 +48,7 @@ AutoOps will be available for self-managed air-gapped environments (ECE, ECK, or
 :::
 
 #### Stack Monitoring [sm-setup]
-Stack Monitoring is a {{kib}} application that can be enabled on self-managed clusters on your premises, {{ech}} deployments, {{ece}} (ECE), and {{eck}} (ECK). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your Serverless projects.
+Stack Monitoring is a {{kib}} application that can be enabled on self-managed clusters on your premises, {{ech}} deployments, {{ece}} (ECE), and {{eck}} (ECK). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your {{serverless-short}} projects.
 
 Depending on your deployment model, there is [some setting up](/deploy-manage/monitor/stack-monitoring.md#configure-and-use-stack-monitoring) involved to enable Stack Monitoring. You need to configure an agent, specify which logs and metrics you want to collect from all your {{stack}} components, and where to send them.
 
