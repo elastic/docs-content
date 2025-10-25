@@ -9,6 +9,99 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## October 20, 2025 [serverless-changelog-10202025]
+
+### Features and enhancements [serverless-changelog-10202025-features-enhancements]
+
+* Lets you remove root privileges from {{fleet}} managed agents [#237790]({{kib-pull}}237790)
+* Adds the `xpack.fleet.experimentalFeatures` setting [#238840]({{kib-pull}}238840)
+* Supports expression suggestions within function parameters [#236343]({{kib-pull}}236343)
+* Updates the Observability Serverless navigation menu [#235984]({{kib-pull}}235984)
+* Allows the Observability AI Assistant to retrieve information from the  `.integration_knowledge*` system index [#237085]({{kib-pull}}237085)
+* Adds file download relative URI to response actions that provide file output [#237713]({{kib-pull}}237713)
+* Updates the UI and API for process descendants in trusted applications [#236318]({{kib-pull}}236318)
+* Adds usage statistics collection for CSPM cloud connectors [#236992]({{kib-pull}}236992)
+* Enhances the error message for malformed roles [#239098]({{kib-pull}}239098)
+* Enables editing feature condition in the feature identification flyout and adds the **Open in Discover** button [#238646]({{kib-pull}}238646)
+* Improves processing warnings for Streams [#239188]({{kib-pull}}239188)
+* Enables AI-powered significant event identification for Streams [#239070]({{kib-pull}}239070)
+* Enables numerical ID service for Cases [#238555]({{kib-pull}}238555)
+* Adds agent ID as a default observables type [#238533]({{kib-pull}}238533)
+
+
+### Fixes [serverless-changelog-10202025-fixes]
+
+* Updates `nodemailer` [#238816]({{kib-pull}}238816)
+* Improves error handling on the **Visualize Listing** page [#238355]({{kib-pull}}238355)
+* Prevents adhoc dataviews in {{esql}} charts from being filtered out in the KQL search bar [#238731]({{kib-pull}}238731)
+* Fixes a bug in Lens that broke **Click to filter** on table rows when any column was used as a formula [#239222]({{kib-pull}}239222)
+* Fixes metric color assignment when breakdown and a max dimension are defined in Lens [#238901]({{kib-pull}}238901)
+* Fixes "package not found" error when skipping cloud onboarding for a prerelease package [#238629]({{kib-pull}}238629)
+* Fixes an issue with integration policy upgrades [#238542]({{kib-pull}}238542)
+* Fixes `ignore_above` mapping for `flattened` fields [#238890]({{kib-pull}}238890)
+* Fixes missing fields when using combined filters with the `ignoreFilterIfFieldNotInIndex` UI setting [#238945]({{kib-pull}}238945)
+* Displays the available options when editing an existing variable control [#239315]({{kib-pull}}239315)
+* Fixes `KEEP` behavior in {{esql}} when a query initially returns no results [#239063]({{kib-pull}}239063)
+* Adds a 10 second request timeout to {{esql}} query execution [#238200]({{kib-pull}}238200)
+* Uses `runWithCache` for bulk {{fleet}} operations [#238326]({{kib-pull}}238326)
+* Fixes error when Observability AI Assistant was disabled [#238811]({{kib-pull}}238811)
+* Removes unecessary `_source` field from queries [#239205]({{kib-pull}}239205)
+* Makes the rule condition chart parser replace metric names inside filter values (e.g., A in "Accounts") [#238849]({{kib-pull}}238849)
+* Fixes recover alert while monitor is down [#237479]({{kib-pull}}237479)
+* Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418)
+* Adds missing aria-label to BetaBadge component [#239400]({{kib-pull}}239400)
+* Fixes the "missing authentication credentials" issue in `TelemetryConfigWatcher` and `PolicyWatcher` [#237796]({{kib-pull}}237796)
+* Fixes an issue with Automatic Migration that prevented you from switching between migrations while translating rules [#238679]({{kib-pull}}238679)
+* Fixes artifacts spaces migration (`v9.1`) to ensure all artifacts are processed [#238740]({{kib-pull}}238740)
+* Checks for integrations permissions before loading component [#239122]({{kib-pull}}239122)
+* Prioritizes connector `defaultModel` over stored conversation model [#237947]({{kib-pull}}237947)
+* Deselects current selection after index pattern update [#239245]({{kib-pull}}239245)
+* Fixes graph not rendering when switching tabs or refreshing the page [#238038]({{kib-pull}}238038)
+* Adds unique accessible labels for **Show top field values** buttons [#237972]({{kib-pull}}237972)
+* Fixes tool calling unavailable tools [#237174]({{kib-pull}}237174)
+* Adds Jira's `otherFields` JSON editor to case creation flow [#238435]({{kib-pull}}238435)
+* Updates connector API [#236863]({{kib-pull}}236863)
+* Separates sync alert and auto-extract updates in activity log [#236519]({{kib-pull}}236519)
+* Fixes auto extraction of observables in EASE [#239000]({{kib-pull}}239000)
+* Removes `autoFocus` to preserve proper focus upon modal close [#239366]({{kib-pull}}239366)
+* Adds manual focus to the Cases action button's actions [#239504]({{kib-pull}}239504)
+* Fixes the behavior of Security serverless projects' Tier 1 and Tier 2 analyst roles by revoking their Endpoint exceptions read access
+
+## October 15, 2025 [serverless-changelog-10152025]
+* {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London)
+
+
+## October 13, 2025 [serverless-changelog-10132025]
+
+### Features and enhancements [serverless-changelog-10132025-features-enhancements]
+
+* Adds a **Show agentless resources** toggle on the Fleet > Settings page for debugging and diagnostics [#237528]({{kib-pull}}237528)
+* Allows you to carry over the controls when navigating to a dashboard, preserving the histogram [#237070]({{kib-pull}}237070)
+* Enables the risk score reset feature [#237829]({{kib-pull}}237829)
+* Uses {{esql}} for calculating risk scores [#237871]({{kib-pull}}237871)
+* Adds Security ML modules for GCP Audit and Azure Activity Logs [#236849]({{kib-pull}}236849)
+* Removes the global empty state redirect [#237612]({{kib-pull}}237612)
+* Replaces the existing document count chart with RED metrics [#236635]({{kib-pull}}236635)
+
+### Fixes [serverless-changelog-10132025-fixes]
+
+* Fixes an error that occurred when deleting orphaned integration policies [#237875]({{kib-pull}}237875)
+* Prevents creation of default alerts when no connectors are defined [#237504]({{kib-pull}}237504)
+* Turns off the maximum attempts limit for the private locations sync task [#237784]({{kib-pull}}237784)
+* Fixes a flyout rendering issue [#237840]({{kib-pull}}237840)
+* Corrects icon colors in the side navigation [#237970]({{kib-pull}}237970)
+* Fixes a bug that affected the controls on the Alerts page [#236756]({{kib-pull}}236756)
+* Updates the names of the **Security solution default** and **Security solution alerts** data views in the data view picker [#238354]({{kib-pull}}238354)
+* Fixes a bug that caused the flyout on the Files management page to crash when there were uploaded files [#237588]({{kib-pull}}237588)
+* Introduces a separate error message for empty login attempts with `saml/oidc` providers [#237611]({{kib-pull}}237611)
+* Fixes an issue in the component template creation flow where creating a new template with an `@custom` suffix in its name could incorrectly update mappings for unrelated data streams and trigger rollover prompts [#237952]({{kib-pull}}237952)
+* Fixes an issue where the retriever query copied from the **Search your data** JavaScript tutorial failed with `parsing_exception` when passed as a query parameter in the Node.js client; retriever queries are now passed in the request body to ensure correct serialization [#237654]({{kib-pull}}237654)
+* Ensures the Index management mappings editor synchronizes the model deployment status correctly [#237812]({{kib-pull}}237812)
+* Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
+* Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
+* Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
+
+
 ## October 6, 2025 [serverless-changelog-10062025]
 
 ### Features and enhancements [serverless-changelog-10062025-features-enhancements]
@@ -49,6 +142,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
 * Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
 * Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
+
 
 ## September 29, 2025 [serverless-changelog-09292025]
 
@@ -386,6 +480,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves rate limiter UX [#227678]({{kib-pull}}227678)
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
+* Organization IdP routes are now public in the OpenAPI specifications.
 
 ### Fixes [serverless-changelog-08042025-fixes]
 * Fixes loading of saved queries in the Alerting rule definition [#229964]({{kib-pull}}229964)
@@ -974,6 +1069,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds callouts for Fleet breaking changes for integration upgrades [#217257](https://github.com/elastic/kibana/pull/217257)
 * Adds support for local `xpack.productDocBase.artifactRepositoryUrl` file path in Machine Learning [#217046](https://github.com/elastic/kibana/pull/217046)
 * Adds defaultSolution to spaces configuration [#218360](https://github.com/elastic/kibana/pull/218360)
+* Adds support for dots in the role mappings. Dots (.) can be used as part of the role mappings and the groups that are returned by the custom IdPs to match to.
 
 ### Fixes [serverless-changelog-04212025-fixes]
 * Fixes allow_hidden usage in the request for fields in Discover [#217628](https://github.com/elastic/kibana/pull/217628)
@@ -1323,6 +1419,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the values control FT [#211159]({{kib-pull}}211159)
 * Trained models: Replaces the **Download** button by extending the deploy action [#205699]({{kib-pull}}205699)
 * Adds the useCustomDragHandle property [#210463]({{kib-pull}}210463)
+* Upcoming removal of SMS multifactor authentication method. In October, we made multifactor authentication mandatory for all users. As an additional security measure, the SMS MFA method will be removed in April. If you’re still using SMS, you will be prompted to set up a more secure MFA method, and your registered SMS MFA devices will be automatically deleted from Elastic Cloud.
 
 ### Fixes [elastic-cloud-serverless-02172025-fixes]
 * Fixes an issue where clicking on the name badge for a synthetics monitor on an SLO details page would lead to a page that failed to load monitor details [#210695]({{kib-pull}}210695)
@@ -1454,6 +1551,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates KNN search and query template autocompletion in Elasticsearch Serverless [#207187]({{kib-pull}}207187)
 * Updates JSON schemas for code editors in Machine Learning [#207706]({{kib-pull}}207706)
 * Reindexes the .kibana_security_session_1 index to the 8.x format in Security [#204097]({{kib-pull}}204097)
+* Disables `prompt=login` and sign out of Okta before initiating SSO. Fixes an issue when using organization SAML SSO where users are required to re-authenticate with the external IdP due to ForceAuthn=true being sent in SAML requests. SAML requests will now send `ForceAuthn=false`.
 
 ### Fixes [elastic-cloud-serverless-01272025-fixes]
 * Fixes editing alerts filters for multi-consumer rule types in Alerting [#206848]({{kib-pull}}206848)
@@ -1484,6 +1582,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Feature Flag Support for Cloud Security Posture Plugin in Elastic Security Serverless [#205438]({{kib-pull}}205438)
 * Adds the ability to sync Machine Learning saved objects to all spaces [#202175]({{kib-pull}}202175)
 * Improves messages for recovered alerts in Machine Learning Transforms [#205721]({{kib-pull}}205721)
+* Introduces new deployment performance metrics charts. AutoOps provides aggregate metrics at the cluster level for key performance indicators. The data is tier-based, offering users a comprehensive understanding of each tier and the entire cluster.
+* Deprecates Cloud Defend billing alerts. Following the deprecation of Cloud Defend in {{serverless-short}}, removes the billing logic associated with the feature.
 
 ### Fixes [elastic-cloud-serverless-01132025-fixes]
 * Fixes an issue where "KEEP" columns are not applied after an Elasticsearch error in Discover [#205833]({{kib-pull}}205833)

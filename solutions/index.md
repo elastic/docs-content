@@ -6,6 +6,9 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
+description: Learn about Elastic solutions for search, observability, and security
+  use cases. Get started with ready-to-use implementations and discover how to build
+  custom applications.
 ---
 
 # Solutions and use cases

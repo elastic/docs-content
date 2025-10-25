@@ -37,6 +37,7 @@ In certain apps, you can also query your {{es}} data using [{{esql}}](elasticsea
   - `Data View Management` {{kib}} privilege.
   - `view_index_metadata` {{es}} privilege.
 * If a read-only indicator appears, you have insufficient privileges to create or save {{data-sources}}. In addition, the buttons to create {{data-sources}} or save existing {{data-sources}} are not visible.
+* {applies_to}`stack: ga 9.2` Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can [duplicate it](#duplicate-managed-data-view) and edit that new copy as needed.
 
 
 ## Create a data view [settings-create-pattern]
@@ -678,3 +679,24 @@ The **Color** field formatter enables you to specify colors with ranges of value
 When you select the **Color** formatter, click **Add Color**, then specify the **Range**, **Text color**, and **Background color**.
 
 
+## Duplicate managed data views [duplicate-managed-data-view]
+```{applies_to}
+stack: ga 9.2
+```
+
+Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can duplicate it and edit that new copy as needed. To do this:
+
+1. Open the {{kib}} application where you want to use the data view. For example, **Discover** or **Lens**.
+   :::{note}
+   The duplication operation isn't available from the **Data Views** management page.
+   :::
+
+2. In the data view selection menu, select the managed data view that you want to duplicate.
+
+3. Still in the data view selection menu, select **Manage this data view**. A flyout with more details about the data view opens, and indicates that you can't edit it directly.
+
+   ![Manage this data view option](../images/manage-this-data-view.png "Manage this data view option =50%")
+
+4. Select **Duplicate**. A Similar flyout opens where you can adjust the settings of the new copy of the managed data view.
+
+5. Finalize your edits, then select **Save data view to Kibana** or **Use without saving**, depending on your needs. By saving it to {{kib}}, you can retrieve it and use it again later.

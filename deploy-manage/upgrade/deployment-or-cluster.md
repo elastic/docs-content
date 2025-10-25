@@ -13,11 +13,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: kibana
   - id: cloud-enterprise
@@ -33,6 +28,8 @@ This section contains the upgrade instructions for {{es}} clusters and {{kib}} i
 ## Prerequisites
 
 Before proceeding with the upgrade, review the [Plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) guidance to understand compatibility and timing considerations, and follow the steps in [Prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) to get your environment ready for the upgrade.
+
+If you’re still running {{stack}} version 7.17 or earlier, refer to the [Upgrade from 7.17 guide](/deploy-manage/upgrade/deployment-or-cluster/upgrade-717.md) for detailed guidance on planning and executing the upgrade to the latest {{version.stack}} release.
 
 ## Out-of-order releases [out-of-order-releases]
 

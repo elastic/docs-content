@@ -121,10 +121,11 @@ Depending on your selected installation method, you may have to provide the foll
 
 With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
-1. From your {{ecloud}} home page, select a deployment.
-2. Go to **Stack management** > **API keys** and select **Create API key**.
-3. In the flyout, enter a name for your key and select **User API key**.
-4. Enable **Control security privileges** and enter the following script:
+1. Open your self-managed cluster's Kibana
+2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3.  Select **Create API key**.
+4. In the flyout, enter a name for your key and select **User API key**.
+5. Enable **Control security privileges** and enter the following script:
 ```json
 {
  "autoops": {
@@ -156,8 +157,7 @@ With this authentication method, you need to create an API key to grant access t
 
 ```
 5. Select **Create API key**.
-6. When prompted to copy the key, select **Beats** from the dropdown.
-7. Copy the key and save it for later. You will need it when you [install the agent](#install-agent). 
+6. Copy the key and save it for later. You will need it when you [install the agent](#install-agent).
 
 ::::
 
@@ -166,7 +166,7 @@ With this authentication method, you need to create an API key to grant access t
 
 With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
 
-* (Recommended) From your {{ecloud}} home page, select a deployment and go to **Developer tools**. In **Console**, run the following command:
+* (Recommended) Open your self-managed cluster's Kibana and go to **Developer tools**. In **Console**, run the following command:
 ```js
 POST /_security/role/autoops
 {

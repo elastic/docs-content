@@ -27,16 +27,16 @@ In this guide, you’ll learn how to:
 This guide also provides tips for [restoring to another cluster](#restore-different-cluster) and [troubleshooting common restore errors](#troubleshoot-restore).
 
 ## Prerequisites
-- To use Kibana’s Snapshot and Restore feature, you must have the following permissions:
-  - [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-  - [Index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `all` on the monitor index
+:::{include} _snippets/restore-snapshot-common-prerequisites.md
+:::
+
 - You can only restore a snapshot to a running cluster with an elected [master node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be registered and available to the cluster.
 - The snapshot and cluster versions must be compatible. See [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
-- To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any cluster blocks that prevent writes. The restore operation ignores index blocks.
 - Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) feature or the get index template API:
 
   ```console
   GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
+  ```
 
 - If no such template exists, you can [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) or restore a cluster state that contains one. Without a matching index template, a data stream can’t roll over or create backing indices.
 - If your snapshot contains data from App Search or Workplace Search, ensure you’ve restored the Enterprise Search encryption key before restoring the snapshot.
@@ -53,7 +53,10 @@ When restoring data from a snapshot, keep the following in mind:
 
 ## Get a list of available snapshots
 
-To view a list of available snapshots in {{kib}}, go to **Stack Management > Snapshot and Restore**.
+To view a list of available snapshots in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Snapshots** tab. 
 
 You can also use the get repository API and the get snapshot API to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
 

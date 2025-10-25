@@ -20,7 +20,7 @@ When you [configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-m
 
 To update the automatic rollover setting in an {{ilm-init}} policy:
 
-1. Go to **Stack Management > Index Lifecycle Policies**.
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 1. Select a policy to update, and from the **Actions** menu select **Edit**.
 
@@ -39,7 +39,7 @@ You can update this setting manually to skip rollover if, for instance, you need
 
 If an index’s lifecycle policy is removed, this setting is also removed.
 
-::::{important} 
+::::{important}
 When `index.lifecycle.indexing_complete` is set to `true`, {{ilm-init}} verifies that the index is no longer the write index for the alias specified by `index.lifecycle.rollover_alias`. If the index is still the write index or the rollover alias is not set, the index is moved to the [`ERROR` step](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md).
 ::::
 

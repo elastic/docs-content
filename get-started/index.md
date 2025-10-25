@@ -12,6 +12,9 @@ products:
 applies_to:
   serverless:
   stack:
+description: Learn the fundamentals of Elastic. Discover what Elastic offers, explore
+  core concepts of the Elastic Stack, understand deployment options, and access
+  training resources to get started.
 ---
 
 # Elastic fundamentals
