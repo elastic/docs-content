@@ -163,7 +163,7 @@ Applies to: {{stack}} 9.1.6, 9.2.0
 
 **Details**
 
-Users trying to collect logs and host metrics using the Elastic distribution of the OTel collector will see error when using the [OpenTelemetry quickstart](app/observabilityOnboarding/otel-logs/?category=host) onboarding flow:
+Users trying to collect logs and host metrics using the Elastic distribution of the OTel collector will see error when using the OpenTelemetry quickstart onboarding flow:
 
 ```
 > sudo ./otelcol --config otel.yml
