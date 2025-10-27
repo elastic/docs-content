@@ -40,7 +40,7 @@ For more information, refer to [sending data to wired streams](./wired-streams.m
 ## Managed assets
 When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level assets like templates and pipelines are created for the stream. These assets are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
 
-You can still edit non-managed ingest pipelines, templates, and other assets, but avoid editing assets marked as *managed* or any per-data-stream mappings and settings. This behavior is similar to how Elasticsearch handles assets managed by integrations. Refer to the [advanced tab](./management/advanced.md) to review managed assets.
+You can still edit non-managed ingest pipelines, templates, and other assets, but avoid editing assets marked as managed or any per-data-stream mappings and settings. This behavior is similar to how Elasticsearch handles assets managed by integrations. Refer to the [advanced tab](./management/advanced.md) to review managed assets.
 
 ## Required permissions
 
