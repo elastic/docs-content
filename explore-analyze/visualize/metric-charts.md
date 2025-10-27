@@ -179,7 +179,7 @@ To add trend indicators to your metric visualization:
 
 7. Apply your changes. 
 
-The metric visualization is updated and now shows the secondary metric as a comparison with a trend indicator.
+The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
 ## Metric chart settings [settings]
 
@@ -201,7 +201,7 @@ Customize your metric chart to display exactly the information you need, formatt
       - **Dynamic**: Define colors to apply to the chart based on the value of the primary metric.
     - **Supporting visualization**: Display a visualization as background or on the side of the metric.
       - **Type**: Select **Panel** for a unified background, **Line** for showing a light line chart in the background, or **Bar** for showing a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
-      - **Apply color to**: This option is available when **Panel** is selected as supporting visualization type. Choose to apply the color defined to the background, or to the primary metric's value.
+      - **Apply color to**: This option is available when you have selected **Panel** as supporting visualization type. Choose to apply the color defined to the background, or to the primary metric's value.
     - **Icon decoration**: Add an icon to the top right corner of the chart.
 
 ### Secondary metric settings [secondary-metric-options]
