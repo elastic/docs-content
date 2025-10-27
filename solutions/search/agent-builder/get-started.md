@@ -26,24 +26,19 @@ You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solutio
 
 :::::{step} Enable {{agent-builder}}
 
-
-<!-- 
-
-TODO: uncomment once default enabled is live on serverless
-
 ::::{applies-switch}
 
 :::{applies-item} { "serverless": "preview", "elasticsearch" }
 
 {{agent-builder}} is enabled by default in serverless {{es}} projects.
 
-Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+Find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
 :::{applies-item} stack: preview 9.2
--->
-You have to enable {{agent-builder}} to get started.
+
+You have to enable {{agent-builder}} to get started on non-serverless deployments.
 
 You can enable the features using the UI:
 
