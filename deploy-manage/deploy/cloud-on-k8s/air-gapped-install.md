@@ -10,12 +10,12 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Running in air-gapped environments [k8s-air-gapped]
+# Running ECK in air-gapped environments [k8s-air-gapped]
 
 The ECK operator can be run in an air-gapped environment without access to the open internet when configured to avoid pulling container images from `docker.elastic.co`.
 
 :::{note}
-To deploy ECK in Google Distributed Hosted Cloud refer to [](./eck-gdch.md).
+To deploy ECK in Google Distributed Hosted Cloud (GDCH) refer to [Deploy ECK on GDCH](./eck-gdch.md).
 :::
 
 By default ECK does not require you to specify the container image for each {{stack}} application you deploy.
