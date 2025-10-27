@@ -121,4 +121,4 @@ For an overview, refer to [Agents API](kibana-api.md#agents).
 
 ### Serverless API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).

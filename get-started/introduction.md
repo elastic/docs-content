@@ -7,6 +7,7 @@ products:
 applies_to:
   stack:
   serverless:
+navigation_title: Solutions
 ---
 
 # Solutions overview [introduction]
@@ -24,7 +25,7 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
 :::
 
-Each of our solutions is available as a fully managed {{serverless-short}} project or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
+Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
 
 ## {{es}}
 
