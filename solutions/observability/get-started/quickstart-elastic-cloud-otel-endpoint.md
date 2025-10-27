@@ -162,7 +162,10 @@ You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"`
 
 ### Error: too many requests
 
-The Managed OTLP endpoint has per-project rate limits in place. If you reach this limit, reach out to our [support team](https://support.elastic.co). Refer to [Rate limiting](opentelemetry://reference/motlp.md#rate-limiting) for more information.
+If you see HTTP `429 Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP Endpoint (mOTLP) endpoint, your project might be hitting ingest rate limits.
+
+Refer to the dedicated [429 errors when using the Elastic Cloud Managed OTLP Endpoint](/troubleshoot/ingest/opentelemetry/429-errors-motlp.md) troubleshooting guide for details on causes, rate limits, and solutions.
+
 
 ## Provide feedback
 
