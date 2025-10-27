@@ -63,6 +63,8 @@ Tokenizers convert text into numerical data by segmenting it into subword units.
 
 For example, the sentence "It was the best of times, it was the worst of times." contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
 
+Both input tokens (your prompts and any context provided) and output tokens (the model's responses) count toward usage. Longer conversations with extensive context or detailed responses will consume more tokens.
+
 ## Rate Limits
 
 The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
