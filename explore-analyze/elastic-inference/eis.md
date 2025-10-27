@@ -55,6 +55,18 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 
 All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER. 
 
+### Token-based billing
+
+EIS is billed per million "tokens" used. Tokens can be thought of loosely as "words" which are given to a machine learning model to operate upon. The model may also produce a number of tokens in response.
+
+For example, the sentence:
+
+"It was the best of times, it was the worst of times."
+
+contains 52 characters, but would be tokenised into 14 tokens - one for each of the 12 words, one for the comma, and one for the period character.
+
+This is because machine learning models use words to denote meaning.
+
 ## Rate Limits
 
 The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
