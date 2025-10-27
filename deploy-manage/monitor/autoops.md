@@ -48,7 +48,7 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 
 ## AutoOps availability
 
-In the [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
+In the [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) through [Cloud Connect](/deploy-manage/cloud-connect.md).
 
 AutoOps is currently not available for air-gapped environments since it is a cloud service and you need an internet connection to send metrics to {{ecloud}}. However, we plan to offer a locally deployable version in the future.
 
