@@ -51,7 +51,7 @@ Refer to the [OpenAI connector documentation](kibana://reference/connectors-kiba
 
 ## Connectors API
 
-For programmatic access to connector management, refer to the [Connectors API documentation]({{kib-serverless-apis}}group/endpoint-connectors).
+For programmatic access to connector management, refer to the [Connectors API documentation]({{kib-apis}}group/endpoint-connectors).
 
 ## Recommended models
 
