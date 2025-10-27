@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+navigation_title: Solutions
 products:
   - id: elasticsearch
 applies_to:
@@ -8,7 +9,7 @@ applies_to:
   serverless:
 ---
 
-# Solutions and use cases [introduction]
+# Solutions overview [introduction]
 
 Elastic offers three major search-powered solutions: {{es}}, Elastic {{observability}}, and {{elastic-sec}}—all built on an open source, extensible platform.
 Whether you're building a search experience, monitoring your infrastructure, or securing your environment, there is a solution that is right for your business needs.
@@ -25,7 +26,18 @@ Check out our [customer success stories](https://www.elastic.co/customers/succes
 
 Each of our solutions is available as a fully managed {{serverless-short}} project or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
 
-If you're new to Elastic, you can find quickstarts and introductory steps in [](/solutions/search/get-started.md), [](/solutions/observability/get-started.md), and [](/solutions/security/get-started.md).
+## {{es}}
+
+## Elastic {{observability}}
+
+:::{include} _snippets/observability-overview.md
+:::
+
+## {{elastic-sec}}
+:::{include} _snippets/security-overview.md
+:::
+
+<!--If you're new to Elastic, you can find quickstarts and introductory steps in [](/solutions/search/get-started.md), [](/solutions/observability/get-started.md), and [](/solutions/security/get-started.md).-->
 
 % TODO: cleanup these links, consolidate with Explore and analyze
 $$$what-is-kib$$$
