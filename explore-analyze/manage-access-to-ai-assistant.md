@@ -35,11 +35,12 @@ To manage these settings, go to the **GenAI Settings** page by using the navigat
 
 The **GenAI Settings** page has the following settings:
 
-- **Default AI Connector**: Use this setting to specify which connector is selected by default. This affects all AI-powered features, not just AI Assistant. The default value for this setting is "Elastic Managed LLM". 
-- **Disallow all other connectors**: Enable this setting to prevent connectors other than the default connector specified above from being used in your space. This affects all AI-powered features, not just AI Assistant. 
-- **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features should appear in your environment, including AI-powered features. 
+- **Default AI Connector**: Use this setting to specify which connector is selected by default when you access AI-powered features. Default setting: **No default connector**.
+  - If **Elastic Managed LLM** or a custom LLM connector is selected, AI-powered features will default to that connector regardless of which connector was used most recently in your environment. 
+- **Disallow all other connectors**: When this setting is disabled, whenever you use an AI-powered feature you can select which connector should power it. Enable it to prevent connectors other than the default connector specified above from being used in your space. Default setting: disabled.
+- **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features. 
 - **AI Assistant visibility**: This setting allows you to choose which AI Assistants are available to use and where. There are several options:
-  - **Only in their solutions**: The Security AI Assistant appears in {{elastic-sec}}, and the {{obs-ai-assistant}} appears in {{es}} and {{observability}}.
+  - **Only in their solutions** (default): The Security AI Assistant appears in {{elastic-sec}}, and the {{obs-ai-assistant}} appears in {{es}} and {{observability}}.
   - **{{obs-ai-assistant}} in other apps**: The {{obs-ai-assistant}} appears throughout {{kib}} regardless of solution. The Security AI Assistant does not appear anywhere.
   - **Security AI Assistant in other apps**: The Security AI Assistant appears throughout {{kib}} regardless of solution. The {{obs-ai-assistant}} does not appear anywhere.
   - **Hide all assistants**: Disables AI Assistant throughout {{kib}}.
@@ -53,7 +54,7 @@ The **GenAI Settings** page has the following settings:
 The **GenAI Settings** page has the following settings:
 
 - **Default AI Connector**: Click **Manage connectors** to open the **Connectors** page, where you can create or delete AI connectors. To update these settings, you need the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- **AI feature visibility**: Click **Go to Permissions tab** to access the active {{kib}} space's settings page, where you can specify which features each custom [user role](deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) has access to in your environment. This includes AI-powered features. 
+- **AI feature visibility**: Click **Go to Permissions tab** to access the active {{kib}} space's settings page, where you can specify which features each [user role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) has access to in your environment. This includes AI-powered features. 
 
 :::
 
