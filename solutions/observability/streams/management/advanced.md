@@ -27,10 +27,10 @@ Features provide useful information for AI processes, such as significant events
 ## Index configuration [streams-advanced-index-config]
 
 :::{Important}
-Avoid editing assets marked as *managed* or any per-data-stream mappings and settings. Processing and schema changes should typically be done through the Streams interface or API, and none of these configuration processes are required. This feature mainly exists to help advanced users maintain familiar workflows.
+Avoid editing components marked as **managed** or any per-data-stream mappings and settings. Processing and schema changes should typically be done through the Streams interface or API, and none of these configuration processes are required. This feature mainly exists to help advanced users maintain familiar workflows.
 :::
 
-For classic streams, you can access the following assets:
+For classic streams, you can access the following components:
 
 - [Index templates](../../../../manage-data/data-store/templates.md#index-templates)
 - [Component templates](../../../../manage-data/data-store/templates.md#component-templates)
