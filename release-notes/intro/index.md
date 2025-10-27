@@ -14,7 +14,7 @@ Stay up to date with the latest changes, fixes, known issues, and deprecations i
 
 Release notes cover all the latest Elastic product changes, including the following:
 * {{stack}} {{version.stack.base}} and later, including the most recent {{version.stack}} release
-* {{serverless-full}}, including updates to {{es}}, and {{observability}} and {{elastic-sec}} solutions
+* {{serverless-full}}, including updates to {{es}}, and {{observability}} and {{elastic-sec}} solutions.
 
 ## What's new in the latest Elastic release?
 
