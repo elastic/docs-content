@@ -57,15 +57,11 @@ All models on EIS incur a charge per million tokens. The pricing details are at 
 
 ### Token-based billing
 
-EIS is billed per million "tokens" used. Tokens can be thought of loosely as "words" which are given to a machine learning model to operate upon. The model may also produce a number of tokens in response.
+EIS is billed per million tokens used. Tokens are the fundamental units that language models process for both input and output.
 
-For example, the sentence:
+Tokenizers convert text into numerical data by segmenting it into subword units. A token may be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
 
-"It was the best of times, it was the worst of times."
-
-contains 52 characters, but would be tokenised into 14 tokens - one for each of the 12 words, one for the comma, and one for the period character.
-
-This is because machine learning models use words to denote meaning.
+For example, the sentence "It was the best of times, it was the worst of times." contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
 
 ## Rate Limits
 
