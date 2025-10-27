@@ -37,7 +37,7 @@ For classic streams, you can access the following components:
 - [Pipelines](../../../../manage-data/ingest/transform-enrich.md)
 - [Data streams](../../../../manage-data/data-store/data-streams.md)
 
-For both wired ({applies_to}`stack: preview 9.2`) and classic streams, you can manually configure:
+For both wired ({applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`) and classic streams, you can manually configure:
 
 - **Shards:** Control how the index is split across nodes. More shards can improve parallelism but may increase overhead.
 - **Replicas:** Define how many copies of the data exist. More replicas improve resilience and read performance but increase storage usage.
