@@ -6,9 +6,10 @@ products:
 applies_to:
   stack:
   serverless:
+navigation_title: Solutions
 ---
 
-# Solutions and use cases [introduction]
+# Solutions overview [introduction]
 
 Elastic offers three major search-powered solutions: {{es}}, Elastic {{observability}}, and {{elastic-sec}}—all built on an open source, extensible platform.
 Whether you're building a search experience, monitoring your infrastructure, or securing your environment, there is a solution that is right for your business needs.
