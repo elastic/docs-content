@@ -41,7 +41,10 @@ Using the dropdown indicating **Bar**, select **Metric**.
 ::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
 2. Define the **Primary metric** by dragging a field from the fields list to the chart. {{kib}} automatically selects an appropriate aggregation function like Sum, Average, or Count based on the field type. This is the only setting that your metric chart requires to display something.
-3. Optionally, add a secondary metric. You can use this secondary metric as a comparison value or as a trend indicator to show how the primary metric evolves over time.
+3. Optionally:
+    - Add a secondary metric. You can use this secondary metric as a comparison value or as a trend indicator to show how the primary metric evolves over time.
+    - Specify a maximum value.
+    - Break down the metric into multiple tiles based on another dimension. 
 
 Refer to [](#settings) to find all data configuration options for your metric chart.
 ::::
