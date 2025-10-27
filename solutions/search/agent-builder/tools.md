@@ -195,7 +195,7 @@ For a quick overview of how to work programmatically with tools, refer to [Tools
 
 ### Serverless API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-tools).
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools).
 
 ## Copy your MCP server URL
 
