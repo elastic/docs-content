@@ -59,8 +59,8 @@ All models on EIS incur a charge per million tokens. The pricing details are at 
 
 EIS is billed per million tokens used:
 
-- For chat models input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
-- For embeddings models, only input tokens are billed.
+- For **chat** models, input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
+- For **embeddings** models, only input tokens are billed.
 
 Tokens are the fundamental units that language models process for both input and output. Tokenizers convert text into numerical data by segmenting it into subword units. A token may be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
 
