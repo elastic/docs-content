@@ -28,4 +28,5 @@ toc:
       - file: edot-sdks/misconfigured-sampling-sdk.md
   - file: no-data-in-kibana.md
   - file: connectivity.md
+  - file: 429-errors-motlp.md
   - file: contact-support.md
