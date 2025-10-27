@@ -15,7 +15,7 @@ navigation_title: Elasticsearch
 
 # Elasticsearch solution overview
 
-The {{es}} solution and serverless project type positions {{es}} as a comprehensive platform: a scalable data store, a powerful search engine, and a vector database in one.
+The {{es}} solution and serverless project type enable you to build your own applications on top of the {{es}} platform's scalable data store, search engine, and vector database capabilities.
 
 At its core, {{es}} is a distributed datastore that can ingest, index, and manage various types of data in near real-time, making them both searchable and analyzable.
 With specialized user interfaces and tools, it provides the flexibility to create, deploy, and run a wide range of applications, from search to analytics to AI-driven solutions.
