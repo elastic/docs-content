@@ -10,7 +10,7 @@ applies_to:
 
 # Work with {{agent-builder}} using the APIs
 
-This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} serverless API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
+This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
 These APIs allow you to programmatically work with the {{agent-builder}} abstractions.
 
@@ -775,4 +775,4 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
 
 ## API reference
 
-For the full API documentation, refer to the [{{kib}} serverless API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
+For the full API documentation, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
