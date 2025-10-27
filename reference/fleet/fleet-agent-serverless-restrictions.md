@@ -15,7 +15,7 @@ products:
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ech}} and self-managed {{es}}:
 
-* A maximum of 10,000 {{agents}} may be connected to an {{serverless-full}} project.
+* A maximum of 10,000 {{fleet}}-managed {{agents}} can be connected to an {{serverless-full}} project. This limit does not apply to stand-alone agents. 
 * The minimum supported version of {{agent}} supported for use with {{serverless-full}} is 8.11.0.
 
 ### Outputs
