@@ -53,7 +53,7 @@ On the **{{fleet}}** page, agents associated with agentless integrations have na
 1. Go to the **Settings** tab of the **Fleet** page. Go to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
 2. In {{fleet}}, select the unhealthy agent. 
 3. From the **Actions** menu, select **Request diagnostics .zip**. 
-4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/common-problems#trb-collect-agent-diagnostics.md). Refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md) for more information.
+4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/common-problems.md#trb-collect-agent-diagnostics). Refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md) for more information.
 
 
 ## How do I delete an agentless integration? [_how_do_i_delete_an_agentless_integration]
