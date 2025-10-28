@@ -82,14 +82,22 @@ In {{ece}} deployments, a warning is also issued in the ECE `service-constructor
 
 ## Restrictions and limitations[ec-autoscaling-restrictions]
 
+### Generic limitations
+
 The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last {{es}} plan failed.
+
+### {{ech}} specific limitations
 
 In {{ech}} the following additional limitations apply:
 
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
 * ELSER deployments do not scale automatically. For more information, refer to [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../autoscaling/trained-model-autoscaling.md).
+* The maximum configurable node count is 32, which means `Maximum size per zone` in autoscaling is limited to multiplying the maximum RAM size of the instance configuration in use by 32. For example, for the instance configuration [`aws.es.datahot.c6gd`](cloud://reference/cloud-hosted/aws-default.md), the maximum RAM size is 60GB. Therefore, the `Maximum size per zone` in autoscaling is limited to `60GB x 32 = 1.875TB` (displayed as `1.88TB` in the {{ecloud}} console UI). Review [Restrictions and known problems > Node Count and Size](../deploy/elastic-cloud/restrictions-known-problems.md#ec-node-count-size) for more guidance. 
+
+
+### {{ece}} specific limitations
 
 In {{ece}}, the following additional limitations apply:
 
