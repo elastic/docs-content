@@ -451,6 +451,7 @@ toc:
       - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
+  - file: cloud-connect.md
   - file: security.md
     children:
       - file: security/secure-hosting-environment.md
@@ -495,6 +496,7 @@ toc:
                   - file: security/ip-filtering-cloud.md
                   - file: security/ip-filtering-ece.md
                   - file: security/ip-filtering-basic.md
+              - file: security/remote-cluster-filtering.md
               - file: security/private-connectivity.md
                 children:
                   - file: security/private-connectivity-aws.md
@@ -656,9 +658,7 @@ toc:
           - file: remote-clusters/remote-clusters-api-key.md
           - file: remote-clusters/remote-clusters-cert.md
           - file: remote-clusters/remote-clusters-migrate.md
-          - file: remote-clusters/remote-clusters-settings.md
       - file: remote-clusters/eck-remote-clusters.md
-  - file: cloud-connect.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
@@ -809,6 +809,7 @@ toc:
           - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
       - file: upgrade/deployment-or-cluster.md
         children:
+          - file: upgrade/deployment-or-cluster/upgrade-717.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ece.md
           - file: upgrade/deployment-or-cluster/upgrade-on-eck.md

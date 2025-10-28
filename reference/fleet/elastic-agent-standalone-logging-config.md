@@ -29,7 +29,7 @@ agent.logging.files:
 
 You can specify the following settings in the Logging section of the `elastic-agent.yml` config file.
 
-Some outputs will log raw events on errors like indexing errors in the Elasticsearch output, to prevent logging raw events (that may contain sensitive information) together with other log messages, a different log file, only for log entries containing raw events, is used. It will use the same level, selectors and all other configurations from the default logger, but it will have it’s own file configuration.
+Some outputs will log raw events on errors like indexing errors in the Elasticsearch output, to prevent logging raw events (that may contain sensitive information) together with other log messages, a different log file, only for log entries containing raw events, is used. It will use the same level, selectors and all other configurations from the default logger, but it will have its own file configuration.
 
 Having a different log file for raw events also prevents event data from drowning out the regular log files. Use `agent.logging.event_data` to configure the events logger.
 

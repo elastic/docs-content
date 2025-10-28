@@ -25,6 +25,24 @@ As a first step, review the [supported technologies](elastic-otel-python://refer
 
 Follow these recommended actions to make sure that EDOT Python is configured correctly.
 
+### EDOT Logging level 
+
+```{applies_to}
+product:
+  edot_python: ga 1.9.0
+```
+
+You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values.
+
+### Log configuration
+
+```{applies_to}
+product:
+  edot_python: ga 1.9.0
+```
+
+EDOT Python would print its configuration at startup when `OTEL_LOG_LEVEL` is set to `info` or a more verbose logging level.
+
 ### Debug and development modes
 
 Most frameworks support a debug mode. This mode is intended for non-production environments and provides detailed error messages and logging of potentially sensitive data. Turning on instrumentation in debug mode is not advised and might pose privacy and security issues in recording sensitive data.

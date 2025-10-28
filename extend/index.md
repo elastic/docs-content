@@ -1,3 +1,9 @@
+---
+description: Extend the Elastic Platform by creating integrations for data ingestion
+  or building custom applications with REST APIs. Learn how to contribute to Elastic
+  documentation and ecosystem.
+---
+
 # Extend and contribute 
 
 You can extend and build on the Elastic Platform in several ways. Whether you need to get data into Elasticsearch, add new functionality, edit the documentation, or build a custom application, here is an overview of the primary development paths to help you choose the right one for your project.
@@ -55,4 +61,4 @@ Ready to get started? Explore the [Elastic API Reference]({{apis}}).
 
 ## Contributing to Elastic documentation
 
-You can contribute to the Elastic documentation in several ways. Refer to [Contribute to Elastic documentation](./contribute/index.md) for an overview.
+You can contribute to the Elastic documentation in several ways. Refer to [Contribute to Elastic documentation](./../contribute-docs/index.md) for an overview.

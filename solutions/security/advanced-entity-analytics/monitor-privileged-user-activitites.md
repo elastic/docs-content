@@ -1,6 +1,8 @@
 ---
 applies_to:
   stack: preview 9.1
+  serverless:
+    security: preview
 products:
   - id: security
   - id: cloud-serverless

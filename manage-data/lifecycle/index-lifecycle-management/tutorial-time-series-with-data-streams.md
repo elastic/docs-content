@@ -38,7 +38,10 @@ Use the {{kib}} **Create template** wizard to add a template or the [Create or u
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To add an index template to a cluster using the wizard, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template** and follow the instructions.
+To add an index template to a cluster using the wizard:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create template** and follow the instructions.
 
 ![Create template page](/manage-data/images/elasticsearch-reference-create-index-template.png "")
 
@@ -46,7 +49,7 @@ You specify the name of the lifecycle policy that you want to apply to the data 
 
 ![Create template page](/manage-data/images/elasticsearch-reference-tutorial-ilm-datastreams-tutorial-create-index-template.png "")
 
-:::{tip} 
+:::{tip}
 To learn about which index template options you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
 :::
 :::

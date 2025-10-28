@@ -1,9 +1,8 @@
 ---
 navigation_title: Upgrade on {{eck}}
 applies_to:
-  stack:
   deployment:
-    eck:
+    eck: ga
 products:
   - id: kibana
   - id: cloud-kubernetes

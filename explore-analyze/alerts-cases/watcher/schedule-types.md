@@ -422,7 +422,7 @@ By default, the `yearly` schedule is evaluated in the UTC time zone. To use a di
 ## {{watcher}} cron schedule [schedule-cron]
 
 
-Defines a [`schedule`](trigger-schedule.md) using a [cron expression](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-cron-expressions) that specifiues when to execute a watch.
+Defines a [`schedule`](trigger-schedule.md) using a [cron expression](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-cron-expressions) that specifies when to execute a watch.
 
 ::::{tip}
 While cron expressions are powerful, a regularly occurring schedule is easier to configure with the other schedule types. If you must use a cron schedule, make sure you verify it with [`elasticsearch-croneval`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-croneval.md) .

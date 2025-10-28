@@ -2,8 +2,8 @@
 navigation_title: Upgrade your ECE or ECK orchestrator
 applies_to:
   deployment:
-    ece:
-    eck:
+    ece: ga
+    eck: ga
 products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
