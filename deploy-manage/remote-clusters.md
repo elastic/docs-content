@@ -28,8 +28,6 @@ In the case of remote clusters, the {{es}} cluster or deployment initiating the 
 
 When configuring remote clusters, you can choose between two security models and two connection modes. Both security models are compatible with either connection mode.
 
-You can learn more in the following documents:
-
 - [Security models](./remote-clusters/security-models.md): API key–based authentication (recommended) or TLS certificate–based authentication (deprecated).
 - [Connection modes](./remote-clusters/connection-modes.md): Sniff mode (direct connections to {{es}} nodes) or proxy mode (connections through a reverse proxy or load balancer endpoint).
 
