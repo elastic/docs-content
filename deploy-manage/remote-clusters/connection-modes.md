@@ -31,7 +31,7 @@ In proxy mode, a cluster alias is registered with a name of your choosing and th
 
 When you register a remote cluster using proxy mode, {{es}} opens several TCP connections to the proxy address and uses these connections to communicate with the remote cluster. In proxy mode, {{es}} disregards the publish addresses of the remote cluster nodes, which means that the publish addresses of the remote cluster nodes do not need to be accessible to the local cluster.
 
-Proxy mode is not the default connection mode when adding remotes using the {{es}} API, so you must set `cluster.remote.<cluster_alias>.mode: proxy` to use it. Refer to [Proxy mode remote cluster settings](remote-clusters-settings.md#remote-cluster-proxy-settings) for more information about configuring proxy mode.
+Proxy mode is not the default connection mode when adding remotes using the {{es}} API, so you must set `cluster.remote.<cluster_alias>.mode: proxy` to use it. Refer to [Proxy mode remote cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings) for more information about configuring proxy mode.
 
 ::::{note}
 Remote clusters configured through **{{kib}}** support only proxy mode. You canâ€™t select a connection mode or configure sniff mode from the UI.
@@ -41,4 +41,4 @@ Remote clusters configured through **{{kib}}** support only proxy mode. You canâ
 
 In sniff mode, a cluster alias is registered with a name of your choosing and a list of addresses of *seed* nodes specified with the `cluster.remote.<cluster_alias>.seeds` setting. When you register a remote cluster using sniff mode, {{es}} retrieves from one of the seed nodes the addresses of up to three *gateway nodes*. Each `remote_cluster_client` node in the local {{es}} cluster then opens several TCP connections to the publish addresses of the gateway nodes. This mode therefore requires that the gateway nodes' publish addresses are accessible to nodes in the local cluster.
 
-Sniff mode is the default connection mode when adding a remote cluster through the {{es}} API. Refer to [Sniff mode remote cluster settings](remote-clusters-settings.md#remote-cluster-sniff-settings) for more information about configuring sniff mode.
+Sniff mode is the default connection mode when adding a remote cluster through the {{es}} API. Refer to [Sniff mode remote cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-sniff-settings) for more information about configuring sniff mode.
