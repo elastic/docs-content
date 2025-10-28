@@ -9,6 +9,44 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## October 27, 2025 [serverless-changelog-10272025]
+
+### Features and enhancements [elastic-security-10272025-features-enhancements]
+* Adds support for deleting export schedules [#238197]({{kib-pull}}238197)
+* Moves the **Lens** visualization toolbar from the **Visualization parameters** section to the flyout header [#239176]({{kib-pull}}239176)
+* Changes the processing order in {{esql}} so the breakdown is applied before the date histogram [#239685]({{kib-pull}}239685)
+* Adds a **View in Discover** button to the Alert details page for infrastructure rules [#236880]({{kib-pull}}236880)
+* Introduces CDR Data View versioning and migration logic [#238547]({{kib-pull}}238547)
+* Fixes layout wrapping for fields in the Overview and Notifications pages [#239113]({{kib-pull}}239113)
+* Removes the AI Assistant Settings privilege [#239144]({{kib-pull}}239144)
+* Adds ingest pipeline processor template suggestions to the manual ingest pipeline processor editor [#236919]({{kib-pull}}236919)
+* Adds the `kibana.alert.index_pattern` field to all alerts [#239450]({{kib-pull}}239450)
+
+### Fixes [elastic-security-10272025-fixes]
+* Fixes missing accessibility announcements in form rows [#240132]({{kib-pull}}240132)
+* Improves the All cases table loading behavior to prevent flashing [#240155]({{kib-pull}}240155)
+* Fixes a bug in Lens that incorrectly assigned unsaved data view references [#239431]({{kib-pull}}239431)
+* Fixes an error when selecting the **(blank)** value in options lists [#239791]({{kib-pull}}239791)
+* Pauses fetch operations until initialization completes [#239228]({{kib-pull}}239228)
+* Fixes a bug that prevented users from resetting unsaved changes when enabling **timeRestore** and setting a time range [#239992]({{kib-pull}}239992)
+* Fixes a search session restoration issue [#239822]({{kib-pull}}239822)
+* Allows {{fleet}} setup retries on start in all environments [#240342]({{kib-pull}}240342)
+* Adds **FORK with KEEP/STATS** options to transformational commands [#240011]({{kib-pull}}240011)
+* Fixes dependencies and service map issues for `txn == exit-span` use cases [#235392]({{kib-pull}}235392)
+* Fixes the model label display in AI Assistant Settings [#239824]({{kib-pull}}239824)
+* Updates the **Open in Discover** query in the related Logs section of the **Overview** tab [#240409]({{kib-pull}}240409)
+* Fixes an issue where the Onboarding Integrations list wasn’t fetched for all pages [#239709]({{kib-pull}}239709)
+* Fixes an issue where schedules couldn’t be created with **case** as the connector type [#239748]({{kib-pull}}239748)
+* Fixes an issue where operators couldn’t be removed after selection in the Exception builder [#236051]({{kib-pull}}236051)
+* Fixes `react-query` ID collision issues [#240517]({{kib-pull}}240517)
+* Updates GenAI Settings to reflect the selected `AI Assistants Visibility` value from the header selector on the Settings page [#239555]({{kib-pull}}239555)
+* Fixes the Inference endpoints UI to ensure the list loads correctly when the provider is custom [#240189]({{kib-pull}}240189)
+* Fixes the URL in **Disk Usage** alerting rules [#240279]({{kib-pull}}240279)
+* Fixes data preview metadata pop-up display issues by adding a tooltip and copy button to handle long IDs [#239768]({{kib-pull}}239768)
+* Fixes Agents & Playground icons in the side navigation to render correctly in dark mode [#240475]({{kib-pull}}240475)
+* Ensures only valid queries are returned for significant events [#239501]({{kib-pull}}239501)
+* Hides filtering capabilities in Hosts Metrics [#239724]({{kib-pull}}239724)
+
 ## October 20, 2025 [serverless-changelog-10202025]
 
 ### Features and enhancements [serverless-changelog-10202025-features-enhancements]
