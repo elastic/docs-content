@@ -12,7 +12,7 @@ Remote cluster security models determine how authentication and authorization wo
 
 TLS certificate–based authentication is now deprecated, and users are encouraged to migrate to the API key–based model.
 
-The following sections describe both models in detail and highlight their key differences.
+The following sections describe each model in more detail.
 
 ::::{tip}
 Security models work independently of [connection modes](./connection-modes.md). Both security models are compatible with either connection mode.
@@ -68,15 +68,3 @@ The local cluster uses the [transport interface](elasticsearch://reference/elast
 ### Setup
 
 Refer to [Remote cluster setup](../remote-clusters.md#setup) for configuration guidance across all deployment types.
-
-### Security models: comparison
-
-| Aspect              | API key–based                                                                 | TLS certificate–based                          |
-|---------------------|-------------------------------------------------------------------------------|------------------------------------------------|
-| **Status**          | Recommended                                                                   | Deprecated                                     |
-| **Service endpoint**| Uses a dedicated remote-cluster-server service endpoint                       | Uses the default transport interface            |
-| **Default port**    | 9443                                                                          | 9300 in self-managed, 9400 in {{ech}} or {{ece}}                              |
-| **Authentication**  | Client authenticates with an API key and validates the server’s certificate | Requires mutual TLS (both client and server present and validate certificates) |
-| **Authorization** | Flexible: privileges can be scoped in the API key and combined with roles on the local cluster; supports fine-grained authorization | Rigid: roles must exist on the remote cluster with exact name matching; all authorization defined remotely |
-| **Credential management** | API keys can be created with expiration and revoked without PKI changes        | Requires certificate issuance, distribution, and rotation across clusters |
-
