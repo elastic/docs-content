@@ -44,9 +44,3 @@ For this reason, using a wildcard DNS certificate for a subdomain, such as `*.ec
 * **Performance:** Wildcard certificates are generally more performant than certificates with a large number of SAN entries. They are smaller, which reduces TLS handshake time, and scale automatically with new deployments. In contrast, certificates with a large number of SAN entries can increase handshake latency and may affect client compatibility.
 
 
-## Security Contact
-
-Report security issues to security@elastic.co. 
-
-
-
