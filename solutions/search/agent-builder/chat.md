@@ -68,9 +68,7 @@ For a quick overview of the REST API for conversations, refer to [Chat and conve
 
 ### Serverless API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-conversations). 
-
-
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-conversations).
 
 
 

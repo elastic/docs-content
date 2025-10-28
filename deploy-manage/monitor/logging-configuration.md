@@ -98,7 +98,7 @@ Files in `$ES_HOME` risk deletion during an upgrade. In production, we strongly 
 ::::::{tab-item} Windows .zip
 For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%ES_HOME%\logs`.
 
-Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `%ES_HOME%``. See [Path settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings).
+Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `%ES_HOME%`. See [Path settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings).
 ::::::
 
 :::::::
