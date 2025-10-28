@@ -24,6 +24,8 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
+* [Node count and size](#ec-node-count-size)
+* [Repository Analysis API is unavailable in {{ecloud}}](ec-repository-analyis-unavailable)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
@@ -130,6 +132,13 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 * The AWS `us-west-1` region is limited to two availability zones for ES data nodes and one (tiebreaker only) virtual zone (as depicted by the `-z` in the AZ (`us-west-1z`). Deployment creation with three availability zones for {{es}} data nodes for hot, warm, and cold tiers is not possible. This includes scaling an existing deployment with one or two AZs to three availability zones. The virtual zone `us-west-1z` can only hold an {{es}} tiebreaker node (no data nodes). The workaround is to use a different AWS US region that allows three availability zones, or to scale existing nodes up within the two availability zones.
 * The AWS `eu-central-2` region is limited to two availability zones for CPU Optimized (ARM) Hardware profile ES data node and warm/cold tier. Deployment creation with three availability zones for {{es}} data nodes for hot (for CPU Optimized (ARM) profile), warm and cold tiers is not possible. This includes scaling an existing deployment with one or two AZs to three availability zones. The workaround is to use a different AWS region that allows three availability zones, or to scale existing nodes up within the two availability zones.
+
+## Node Count and Size [ec-node-count-size]
+* In the {{ecloud}} console UI, the maximum configurable node count is 32.
+  * The total RAM for `Size per zone` is calculated by multiplying the maximum RAM size of the instance configuration in use by 32. For example, for the instance configuration [`aws.es.datahot.c6gd`](cloud://reference/cloud-hosted/aws-default.md), the maximum RAM size is 60GB. Therefore, the total RAM for `Size per zone` is `60GB x 32 = 1.875TB` (displayed as `1.88TB` in the {{ecloud}} console UI).
+  * This maximum node count limitation applies to the UI and affects both the maximum `Size per zone` during manual scaling and the `Maximum size per zone` in autoscaling.
+  * This limit is in place to prevent users from inadvertently deploying excessive capacity. However, this limitation does not apply when using the API for manual scaling or autoscaling. If you require additional capacity, you can use the API to scale up or configure the maximum size for autoscaling, in a self-sufficient way. For more guidance on using the cloud API, please review the [Elastic Cloud RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md).
+* Apart from the maximum node count configurable in the {{ecloud}} console UI, there are other service limits based on each instance configuration. These service limits are typically greater than 32. For more details, please [contact Elastic support for assistance](/troubleshoot/index.md).
 
 ## Repository Analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
 
