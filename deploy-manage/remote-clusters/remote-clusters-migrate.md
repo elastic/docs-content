@@ -69,7 +69,7 @@ On the remote cluster:
     3. Generate a certificate and private key pair for the nodes in the remote cluster:
 
         ```sh
-        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=example.com --ip=127.0.0.1
+        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=example.com --ip=192.0.2.1
         ```
 
         * Replace `CA_PASSWORD` with the CA password from the previous step.

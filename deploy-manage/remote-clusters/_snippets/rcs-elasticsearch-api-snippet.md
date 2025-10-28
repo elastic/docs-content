@@ -35,8 +35,8 @@ PUT /_cluster/settings
       "remote": {
         "alias-for-my-remote-cluster": { // Remote cluster alias
           "mode":"proxy",
-          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9400",
-          "server_name": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io"
+          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.0.2.10.ip.es.io:9400",
+          "server_name": "a542184a7a7d45b88b83f95392f450ab.192.0.2.10.ip.es.io"
         }
       }
     }

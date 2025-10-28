@@ -76,7 +76,7 @@ If a remote cluster is part of an {{ech}} (ECH) deployment, the remote cluster s
     3. Generate a certificate and private key pair for the nodes in the remote cluster:
 
         ```sh
-        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=example.com --ip=127.0.0.1
+        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=example.com --ip=192.0.2.1
         ```
 
         * Replace `CA_PASSWORD` with the CA password from the previous step.
@@ -158,7 +158,7 @@ To add a remote cluster from Stack Management in {{kib}}:
 2. Select **Add a remote cluster**.
 3. Select **API keys** as the connection type.
 4. Enter a name (*cluster alias*) for the remote cluster.
-5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.168.1.1:9443`.
+5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.0.2.1:9443`.
 
     Starting with {{kib}} 9.2, you can also specify IPv6 addresses.
 
