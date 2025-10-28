@@ -386,7 +386,7 @@ AWS S3 supports [replication of objects](https://docs.aws.amazon.com/AmazonS3/la
 
 The objects that {{es}} writes to the repository refer to other objects in the repository. {{es}} writes objects in a very specific order to ensure that each object only refers to objects which already exist. Likewise, {{es}} only deletes an object from the repository after it becomes unreferenced by all other objects. AWS S3 replication will apply operations to the replica repository in a different order from the order in which {{es}} applies them to the primary repository, which can cause some objects in replica repositories to refer to other objects that do not exist. This is an invalid state. It may not be possible to recover any data from a repository if it is in this state.
 
-To replicate a repository's contents elsewhere, follow the [repository backup](/deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) process.
+To replicate a repository's contents elsewhere, follow the [repository backup](/deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) process. In particular, you may use the point-in-time restore capability of [AWS S3 backups](https://docs.aws.amazon.com/aws-backup/latest/devguide/s3-backups.html) to restore a backup of a snapshot repository to an earlier point in time.
 
 ## S3-compatible services [repository-s3-compatible-services]
 
