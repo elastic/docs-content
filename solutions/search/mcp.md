@@ -7,7 +7,7 @@ applies_to:
 
 # Elastic Model Context Protocol (MCP) servers
 
-Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ and Serverless deployments, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, the `mcp-elasticsearch` server provides basic connectivity with simpler tooling.
+Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ and Serverless deployments, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
 
 ## {{agent-builder}} MCP server
 ```{applies_to}
