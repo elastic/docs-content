@@ -226,41 +226,44 @@ This is best performed one policy at a time. For a given policy, you need to cap
     :screenshot:
     :::
 
-::::{tab-set}
-:::{tab-item} 9.2.0
+5. Choose an approach:
 
-**For 9.2.0 and later, you can migrate remote agents directly from the {{fleet}} UI, eliminating the need to run commands on each individual host.**
+    ::::{tab-set}
+    :::{tab-item} Fleet UI
 
-5. In the source cluster, select the agents you want to migrate. Click the three dots next to the agents, and select **Migrate agents**.
-6. In the migration dialog, provide the URI and enrollment token you obtained from the target cluster.
-7. Use replace_token (Optional): When you are migrating a single agent, you can use the `replace_token` field to preserve the agent's original ID from the source cluster. This step helps with event matching, but will cause the migration to fail if the target cluster already has an agent with the same ID.
-:::
+    {applies_to}`stack: ga 9.2` Migrate remote agents directly from the {{fleet}} UI:
 
-:::{tab-item} 9.1.0
-**On 9.1.0 and earlier, you need to run commands on each individual host.** 
-
-5. On the host machines where the current agents are installed, enroll the agents again using this copied URL and the enrollment token:
-
-    ```shell
-    sudo elastic-agent enroll --url=<fleet server url> --enrollment-token=<token for the new policy>
-    ```
-
-    The command output should resemble this:
-
-    :::{image} images/migrate-agent-install-command-output.png
-    :alt: Install command output
-    :screenshot:
+    1. In the source cluster, select the agents you want to migrate. Click the three dots next to the agents, and select **Migrate agents**.
+    2. In the migration dialog, provide the URI and enrollment token you obtained from the target cluster.
+    3. Use replace_token (Optional): When you are migrating a single agent, you can use the `replace_token` field to preserve the agent's original ID from the source cluster. This step helps with event matching, but will cause the migration to fail if the target cluster already has an agent with the same ID.
     :::
 
-6. The agent on each host will now check into the new {{fleet-server}} and appear in the new target cluster. In the source cluster, the agents will go offline as they won’t be sending any check-ins.
+    :::{tab-item} Command line
 
-    :::{image} images/migrate-agent-newly-enrolled-agents.png
-    :alt: Newly enrolled agents in the target cluster
-    :screenshot:
-    :::
+    Run the `enroll` command on each individual host:
 
-7. Repeat this procedure for each {{agent}} policy.
-:::
-::::
+   1. On the host machines where the current agents are installed, enroll the agents again using this copied URL and the enrollment token:
+
+       ```shell
+       sudo elastic-agent enroll --url=<fleet server url> --enrollment-token=<token for the new policy>
+        ```
+
+        The command output should resemble this:
+
+       :::{image} images/migrate-agent-install-command-output.png
+       :alt: Install command output
+        :screenshot:
+       :::
+
+     2. The agent on each host will now check into the new {{fleet-server}} and appear in the new target cluster. In the source cluster, the agents will go offline as they won’t be sending any check-ins.
+
+        :::{image} images/migrate-agent-newly-enrolled-agents.png
+        :alt: Newly enrolled agents in the target cluster
+        :screenshot:
+        :::
+
+     3. Repeat this procedure for each {{agent}} policy.
+     :::
+     ::::
 
 If all has gone well, you’ve successfully migrated your {{fleet}}-managed {{agent}}s to a new cluster.
