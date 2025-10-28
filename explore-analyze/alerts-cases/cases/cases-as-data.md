@@ -81,9 +81,9 @@ You can also interact with your case data using [{{esql}} in Discover](../../../
 
 {{es}} automatically creates the following case analytics indices and their aliases in spaces with case data. 
 
-% ::::{note} 
-% Go to [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md) for schema details. 
-% ::::
+::::{note} 
+Go to [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md) for schema details. 
+::::
 
 ### General case data 
 
