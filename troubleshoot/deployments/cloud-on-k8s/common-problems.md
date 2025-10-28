@@ -310,7 +310,7 @@ GET /_security/role_mapping/<roleName>
 
 ## If a volume expansion failed [k8s-common-problems-volume-failed-expansion]
 
-If you attempted an expansion of an {{es}} volume via its [volume claim template](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#k8s-volume-claim-templates-update), you may have encountered scenarios where the operation failed such as Azure not allowing volume expansion without shutting down the Virtual Machine to which it is attached. If you try to adjust the volume claim template back to the original size you will encounter a failure:
+If you attempted an expansion of an {{es}} data volume via its [volume claim template](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#k8s-volume-claim-templates-update), you may have encountered scenarios where the operation failed. For example older versions of the Azure Disk CSI driver did  not allow volume expansion without shutting down the Virtual Machine to which it is attached. If you try to adjust the volume claim template back to the original size you will encounter an error:
 
 ```
 Failed to apply spec change: handle volume expansion: decreasing storage size is not supported: an attempt was made to decrease storage size for claim elasticsearch-data
