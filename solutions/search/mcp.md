@@ -18,4 +18,4 @@ Elastic 9.2.0+ and Serverless deployments provide an [Agent Builder MCP server e
 
 ## {{es}} MCP server
 
-For users running older versions of Elasticsearch without Agent Builder, [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server) provides basic MCP connectivity. This server enables connecting agents to your {{es}} data and allows you to interact with your {{es}} indices through natural language conversations, though with a more limited feature set compared to the Agent Builder MCP server.
+If you're running older versions of Elasticsearch without Agent Builder, you can use [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server). This MCP server enables connecting agents to your {{es}} data and allows you to interact with your {{es}} indices through natural language conversations, though with a more limited tool set compared to the Agent Builder MCP server.
