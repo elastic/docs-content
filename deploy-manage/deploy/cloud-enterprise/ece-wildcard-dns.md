@@ -31,27 +31,17 @@ The `ip.es.io` service is provided to help you evaluate {{ece}} without having t
 Additionally, if you use custom endpoint aliases, you must configure a wildcard DNS certificate for each application-specific subdomain, such as `*.es.mycompany.com` for {{es}} or `*.kb.mycompany.com` for {{kib}}. Refer to [Enable custom endpoint aliases](./enable-custom-endpoint-aliases.md) for more information. Platform administrators must enable this feature to allow deployment managers to create and modify aliases for their deployments.
 
 
-## Wildcard DNS certificate vs static SAN certificate
+### Wildcard DNS certificate vs static SAN certificates
 
-In {{ece}}, each deployment generates multiple DNS entries, as every component within a deployment has its own cluster ID and fully qualified domain name (FQDN) and can have a second DNS entry using [its alias](./enable-custom-endpoint-aliases.md). In environments with many deployments, especially when deployment aliases are used, this can result in hundreds of unique FQDNs that need to be covered by the certificate.
+In {{ece}}, each deployment generates multiple DNS entries, as every component within a deployment has its own cluster ID and fully qualified domain name (FQDN), and may also have an [alias](./enable-custom-endpoint-aliases.md). In environments with many deployments, especially when aliases are used, this can result in hundreds of unique FQDNs that must be covered by the certificate.
 
-For this reason, using a wildcard DNS certificate is recommended over a certificate with static SAN entries, as it provides a more scalable, performant, and operationally safe solution.
+For this reason, using a wildcard DNS certificate for a subdomain, such as `*.ece.mycompany.com`, is recommended over a certificate with static SAN entries, as it offers a more scalable, efficient, and operationally safe solution:
 
-### Operational cost perspective
+* **Operational cost:** Because deployment FQDNs cannot be predicted in advance, a wildcard certificate provides optimal flexibility, allowing the proxy to present a valid certificate for any deployment URL. In contrast, a certificate with static SAN entries must be reissued whenever a new deployment is created, which increases the operational overhead.
 
-A central ECE proxy manages all traffic for dynamically created endpoints and performs TLS termination for incoming requests. Since all deployment hostnames cannot be predicted in advance, a wildcard certificate (`*.ece.mycompany.com`) provides optimal flexibility, allowing the proxy to present a valid certificate for any deployment URL accessed by a user.
-By contrast, a static SAN certificate requires reissuing the certificate whenever a new deployment is created and updating the SAN list for all clusters and applications (Elasticsearch, Kibana, etc.), which increases operational overhead.
+* **Security:** We suggest configuring your wildcard DNS certificate for a subdomain, such as `*.ece.mycompany.com`. Doing so significantly reduces security risks associated with certificate misconfigurations. In contrast, if a certificate with static SAN entries does not include the new deployment’s cluster IDs, clients will encounter certificate name mismatch warnings, indicating a security misconfiguration.
 
-### Security perspective
-
-We suggest configuring your wildcard DNS certificate as a subdomain (e.g., `*.ece.mycompany.com`). Doing so significantly reduces security risks associated with certificate misconfigurations.
-By contrast, if a certificate with static SAN entries does not include the new deployment’s cluster IDs (each component has its own FQDN), clients will encounter certificate name mismatch warnings, indicating a security misconfiguration.
-
-
-### Performance perspective
-
-Wildcard certificates are generally more performant than certificates with a large number of SAN entries. They are smaller, which reduces TLS handshake time, and scale automatically with new deployments. 
-By contrast, certificates with a large number of SAN entries can increase handshake latency and may affect client compatibility.
+* **Performance:** Wildcard certificates are generally more performant than certificates with a large number of SAN entries. They are smaller, which reduces TLS handshake time, and scale automatically with new deployments. In contrast, certificates with a large number of SAN entries can increase handshake latency and may affect client compatibility.
 
 
 ## Security Contact
