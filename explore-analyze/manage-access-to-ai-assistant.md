@@ -38,7 +38,7 @@ The **GenAI Settings** page has the following settings:
 - **Default AI Connector**: Use this setting to specify which connector is selected by default when you access AI-powered features. Default setting: **No default connector**.
   - If **No default connector** is selected, AI-powered features will default to the connector that was most recently used in your environment. 
   - If **Elastic Managed LLM** or a custom LLM connector is selected, AI-powered features will default to that connector regardless of which connector was used most recently in your environment. 
-- **Disallow all other connectors**: When this setting is disabled, whenever you use an AI-powered feature you can select which connector should power it. Enable it to prevent connectors other than the default connector specified above from being used in your space. Default setting: disabled.
+- **Disallow all other connectors**: When this setting is disabled, whenever you use an AI-powered feature you can select which connector should power it. Enable it to prevent connectors other than the default connector from being used in your space. Default setting: disabled.
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features. 
 - **AI Assistant visibility**: This setting allows you to choose which AI Assistants are available to use and where. There are several options:
   - **Only in their solutions** (default): The Security AI Assistant appears in {{elastic-sec}}, and the {{obs-ai-assistant}} appears in {{es}} and {{observability}}.
