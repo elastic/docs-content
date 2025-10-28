@@ -17,9 +17,9 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
-| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| • [{{es}}](/solutions/search.md)<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
-| Observe and monitor system health and performance, or send telemetry data | • [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
-| Monitor data for anomalous activity, detect, prevent, and respond to security incidents | • [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
+| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/search.md)<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
+| Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
+| Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 
 :::{tip}
 Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
