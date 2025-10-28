@@ -16,12 +16,14 @@ The Elastic Package Registry (EPR) container image is not yet available in GDCH 
 For extra guidance on running ECK in isolated environments, refer to [Running ECK in air-gapped environments](/deploy-manage/deploy/cloud-on-k8s/air-gapped-install.md).
 :::
 
+## Installation procedure
+
 To install ECK:
 
 1. Open the **Marketplace** in your GDCH console.
 2. Search for **Elastic Cloud on Kubernetes (BYOL)**.
 3. Click **Install**.
-4. Select a **user-cluster**, review or adjust the installation parameters, and proceed with the installation.
+4. Select a **user cluster**, review or adjust the installation parameters, and start the installation.
 
     If you prefer to customize the configuration, refer to the [ECK configuration guide](/deploy-manage/deploy/cloud-on-k8s/configure.md) for details on setting operator parameters in the **Configure the service** page.
 
