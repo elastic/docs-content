@@ -18,7 +18,7 @@ On the **Search Tier** page, the top half of the page offers general insights at
 
 :::{image} /deploy-manage/images/search-tier-project-level-features.png
 :screenshot:
-:alt: Screenshot showing the features in the top half of the **Search Tier** page
+:alt: Screenshot showing the features in the top half of the Search Tier page
 :::
 
 Use the following features to explore this view:
@@ -34,7 +34,7 @@ The bottom half of the page offers a more granular breakdown table of index-leve
 
 :::{image} /deploy-manage/images/search-tier-breakdown-table.png
 :screenshot:
-:alt: Screenshot showing an expanded row in the data set table in the bottom half of the **Search Tier** page
+:alt: Screenshot showing an expanded row in the data set table in the bottom half of the Search Tier page
 :::
 
 Each row of the table represents a single index or data stream, providing the following information:

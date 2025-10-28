@@ -18,7 +18,7 @@ To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-auto
 
 :::{image} /deploy-manage/images/search-ai-lake-project-level-features.png
 :screenshot:
-:alt: Screenshot showing the features in the top half of the **Search AI Lake** page
+:alt: Screenshot showing the features in the top half of the Search AI Lake page
 :::
 
 Use the following features to explore this view:
@@ -33,7 +33,7 @@ Use the following features to explore this view:
 
 :::{image} /deploy-manage/images/search-ai-lake-breakdown-table.png
 :screenshot:
-:alt: Screenshot showing an expanded row in the table in the bottom half of the **Search AI Lake** page
+:alt: Screenshot showing an expanded row in the table in the bottom half of the Search AI Lake page
 :::
 
 Each row of the table represents a single index or data stream, providing the following information:
