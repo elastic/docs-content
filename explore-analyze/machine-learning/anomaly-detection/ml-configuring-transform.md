@@ -382,7 +382,7 @@ PUT _ml/anomaly_detectors/test3
 GET _ml/datafeeds/datafeed-test3/_preview
 ```
 
-In {{es}}, location data can be stored in `geo_point` fields but this data type is not supported natively in {{ml}} analytics. This example of a runtime field transforms the data into an appropriate format. For more information, see [Geographic functions](/reference/data-analysis/machine-learning/ml-geo-functions.md).
+In {{es}}, location data can be stored in `geo_point` fields but this data type is not supported natively in {{ml}} analytics. This example of a runtime field transforms the data into an appropriate format. For more information, see [Geographic functions](/reference/machine-learning/ml-geo-functions.md).
 
 The preview {{dfeed}} API returns the following results, which show that `41.44` and `90.5` have been combined into "41.44,90.5":
 
