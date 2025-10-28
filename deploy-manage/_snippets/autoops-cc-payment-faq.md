@@ -1,1 +1,1 @@
-Using AutoOps for self-managed clusters through Cloud Connect is included with [self-managed Enterprise licenses](https://www.elastic.co/subscriptions) and self-managed free trials, and it does not consume ECU. 
+Using AutoOps for self-managed clusters (ECE, ECK, or standalone) on-premise or in private cloud environments through Cloud Connect is included with [self-managed Enterprise licenses](https://www.elastic.co/subscriptions) and self-managed free trials, and it does not consume ECU. 
