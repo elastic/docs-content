@@ -24,7 +24,7 @@ Only **one field** can be selected as context for the LLM.
 
 ## Edit context in UI [playground-context-ui]
 ```{applies_to}
-stack: preview 9.0.0
+stack: preview 9.0.0, unavailable 9.1.0
 ```
 
 Use the **Playground context** section in the Playground UI to adjust the number of documents and fields sent to the LLM.
