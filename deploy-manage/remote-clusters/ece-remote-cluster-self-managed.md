@@ -159,17 +159,16 @@ A deployment can be configured to trust all or specific deployments in any envir
     * All the clusters in your {{ece}} environment are signed by the same certificate authority. Therefore, adding this CA would make the self-managed cluster trust all your clusters in your ECE environment. This should be limited using the setting `xpack.security.transport.ssl.trust_restrictions.path` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md), which points to a file that limits the certificates to trust based on their `otherName`-attribute.
     * For example, the following file would trust:
 
-    ```yaml
-      trust.subject_name:
-      - *.node.aaaabbbbaaaabbbb.cluster.1053523734.account <1>
-      - *.node.xxxxyyyyxxxxyyyy.cluster.1053523734.account <1>
-      - *.node.*.cluster.83988631.account <2>
-      - node*.<CLUSTER_FQDN> <4>
-    ```
-
-    1. two specific clusters with cluster ids `aaaabbbbaaaabbbb` and `xxxxyyyyxxxxyyyy` in an ECE environment with Environment ID `1053523734`
-    2. any cluster from an ECE environment with Environment ID `83988631`
-    3. the nodes from its own cluster (whose certificates follow a different convention: `CN = node1.<CLUSTER_FQDN>`, `CN = node2.<CLUSTER_FQDN>` and `CN = node3.<CLUSTER_FQDN>`)
+      ```yaml
+        trust.subject_name:
+        - *.node.aaaabbbbaaaabbbb.cluster.1053523734.account <1>
+        - *.node.xxxxyyyyxxxxyyyy.cluster.1053523734.account <1>
+        - *.node.*.cluster.83988631.account <2>
+        - node*.<CLUSTER_FQDN> <3>
+      ```
+      1. two specific clusters with cluster ids `aaaabbbbaaaabbbb` and `xxxxyyyyxxxxyyyy` in an ECE environment with Environment ID `1053523734`
+      2. any cluster from an ECE environment with Environment ID `83988631`
+      3. the nodes from its own cluster (whose certificates follow a different convention: `CN = node1.<CLUSTER_FQDN>`, `CN = node2.<CLUSTER_FQDN>` and `CN = node3.<CLUSTER_FQDN>`)
 
 ::::{tip}
 Generate new node certificates for an entire cluster using the file input mode of the certutil.
