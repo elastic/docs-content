@@ -435,12 +435,12 @@ When rendered into Markdown and then HTML and viewed in an email client, it look
 
 ![Email template rendered in an email client](/explore-analyze/images/kibana-email-mustache-template-rendered.png "")
 
-## Debugging Rule Variables [debugging-rule-action-variables]
-For diagnostic or exploratory purposes, you can list all available variables and their content. To do this, use the `{{{.}}}` triple-brace Mustache tag in your connector's body (for example, in an email message or a webhook payload).
+## Debugging rule variables [debugging-rule-action-variables]
+For diagnostic or exploratory purposes, you can list all available variables and their content. To do this, use the `{{{.}}}` triple-brace Mustache tag in your connector's body. For example, in an email message or a webhook payload.
 
 This tag renders the entire variable context as a JSON object in the action's output. Reviewing this output helps you understand the data structure and identify the correct variable paths to use in your templates, such as `{{context.reason}}` or `{{rule.name}}`.
 
-Here is an example of the JSON output you might see:
+The following block is an example of the JSON output you can get using this method:
 ```json
 {
     "alertId": "40db4e2e-9f33-4b4c-8562-1b60408cdd57",
