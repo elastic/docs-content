@@ -30,7 +30,8 @@ This section explains how to configure a deployment to connect remotely to self-
 
 ### Prerequisites and limitations [ece_prerequisites_and_limitations_4]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment_4]
@@ -40,7 +41,8 @@ This section explains how to configure a deployment to connect remotely to self-
 
 ### Configure the local deployment [ece_configure_the_local_deployment_2]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
 The steps to follow depend on whether the Certificate Authority (CA) of the remote environment’s {{es}} HTTPS server, proxy or, load balancing infrastructure is public or private.
 

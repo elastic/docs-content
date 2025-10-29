@@ -34,8 +34,8 @@ If network security policies are applied to the remote cluster, the remote clust
 
 ### Prerequisites and limitations [ec_prerequisites_and_limitations]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
-* Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 
 ### Create a cross-cluster API key on the remote deployment [ec_create_a_cross_cluster_api_key_on_the_remote_deployment]
@@ -45,7 +45,8 @@ If network security policies are applied to the remote cluster, the remote clust
 
 ### Add the cross-cluster API key to the local deployment [ec_add_the_cross_cluster_api_key_to_the_local_deployment]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
 :::{include} _snippets/apikeys-local-ech-remote-public.md
 :::
