@@ -72,4 +72,4 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 
 ## Can agentless integrations use a specific range of static IP addresses for configuring allow and deny rules for traffic?
 
-No, currently, our agentless solution does not offer a fixed range of static IP addresses for configuring ingress and egress allow/deny rules.
+No, agentless can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
