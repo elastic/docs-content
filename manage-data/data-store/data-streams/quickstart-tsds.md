@@ -200,7 +200,7 @@ The response shows five sample weather data documents.
 :::
 
 :::{tip}
-If you get an error about timestamp values, check the error response for the valid timestamp range. For more details, refer to [](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#tsds-accepted-time-range).
+If you get an error about timestamp values, check the error response for the valid timestamp range. For more details, refer to [Accepted time range for adding data](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range).
 
 :::
 
@@ -315,6 +315,10 @@ This quickstart introduced the basics of time series data streams. To learn more
 
 * [](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
 * [](/manage-data/data-store/data-streams/set-up-tsds.md)
+
+If you're working with OpenTelemetry (OTLP) data, refer to the OTLP documentation:
+* [](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
+* [](/solutions/observability/get-started/opentelemetry/quickstart/index.md)
 
 For more information about the APIs used in this quickstart, review the {{es}} API reference documentation:
 

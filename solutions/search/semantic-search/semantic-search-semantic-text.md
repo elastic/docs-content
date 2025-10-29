@@ -110,15 +110,16 @@ After the data has been indexed with the embeddings, you can query the data usin
 :::{tab-item} Query DSL
 :sync: dsl
 
-The Query DSL approach uses the `semantic` query type with the `semantic_text` field:
+The Query DSL approach uses the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) type with the `semantic_text` field:
 
 ```esql
 GET semantic-embeddings/_search
 {
   "query": {
-    "semantic": {
-      "field": "content", <1>
-      "query": "What causes muscle soreness after running?" <2>
+    "match": {
+      "content": { <1>
+        "query": "What causes muscle soreness after running?" <2>
+      }
     }
   }
 }
@@ -156,6 +157,7 @@ POST /_query?format=txt
 
 ## Further examples and reading [semantic-text-further-examples]
 
+* For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, see [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
 * For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
 * To learn more about model autoscaling, refer to the [trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) page.

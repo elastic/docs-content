@@ -72,7 +72,7 @@ For example, if you are indexing metrics data from a fleet of ATMs into Elastics
 
 ## Create and manage {{ilm-init}} policies
 
-You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
+You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs]({{es-apis}}group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
 
 * [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
@@ -101,3 +101,5 @@ For existing hot-warm deployments that are currently using index curation, migra
 * [Manage existing indices](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
 * [Migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
 * [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)
+
+You can also set up {{ilm-init}} to manage an existing set of indices that do not already have a managed lifecycle. The {{ilm-init}} policy that you apply should not contain a rollover action, because the policy won't be carried forward when the rollover action creates a new index. Refer to [Manually apply a lifecycle policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to learn more.

@@ -23,7 +23,7 @@ Context length error
 :   You’ll need to adjust the size of the context you’re sending to the model. Refer to [Optimize model context](playground-context.md).
 
 LLM credentials not working
-:   Under **Model settings**, use the wrench button (🔧) to edit your GenAI connector settings.
+:   Under **LLM settings**, use the {icon}`wrench` button to edit your GenAI connector settings.
 
 Poor answer quality
 :   Check the retrieved documents to see if they are valid. Adjust your {{es}} queries to improve the relevance of the documents retrieved. Refer to [View and modify queries](playground-query.md).

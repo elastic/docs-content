@@ -35,8 +35,8 @@ With this method, you can only remove trusted environments relying exclusively o
    :alt: button for deleting a trusted environment
    :::
 
-4. In {{kib}}, go to **Stack Management** > **Remote Clusters**.
-5. In the list of existing remote clusters, delete the ones corresponding to the trusted environment you removed earlier.
+1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the list of existing remote clusters, delete the ones corresponding to the trusted environment you removed earlier.
 
 
 ## Update a certificate-based trusted environment [ece_update_a_certificate_based_trusted_environment]

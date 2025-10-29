@@ -38,11 +38,15 @@ To enable automatic rollover, the template configures two {{ilm-init}} settings:
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To use the {{kib}} **Create template** wizard to add the template, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+
+To use the {{kib}} **Create template** wizard to add the template:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create template**.
 
 ![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard.png "")
 
-:::{tip} 
+:::{tip}
 For more information about the available index template options that you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
 :::
 :::
