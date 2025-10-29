@@ -258,7 +258,7 @@ View [this video](https://www.youtube.com/watch?v=5z3n2VgusLE) for a walkthrough
 
 When Elasticsearch is unable to allocate a shard, it will attempt to retry allocation up to the maximum number of retries allowed.
 After this, Elasticsearch will stop attempting to allocate the shard in order to prevent infinite retries which may impact cluster performance.
-You can use an API to [reroute the cluster](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-cluster-reroute), which will allocate the shard if the issue preventing allocation has been resolved.
+You can use an API to [reroute the cluster]({{es-apis}}operation/operation-cluster-reroute), which will allocate the shard if the issue preventing allocation has been resolved.
 
 ### No valid shard copy [no-shard-copy]
 
