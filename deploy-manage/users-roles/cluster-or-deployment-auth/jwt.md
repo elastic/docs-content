@@ -136,7 +136,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
   :   Specifies the maximum reload interval for URL-based JWKS. This configuration setting is the upper bound of what is considered from header responses (`5d`).
 
   `claims.principal`
-  :   The name of the JWT claim that contains the user’s principal (username).
+  :   The name of the JWT claim that contains the user’s principal. Defaults to `username`.
 
   ::::
 
