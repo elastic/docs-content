@@ -22,7 +22,7 @@ The core Kibana APIs are automatically generated from TypeScript route definitio
 :::{tab-item} Manual YAML
 :sync: manual
 
-Some teams, including Security and Observability, work with hand-edited YAML files in their plugin and package directories. Edit these files directly and skip the code-generation steps. For the complete list of files, refer to the [merge scripts](https://github.com/elastic/kibana/tree/main/oas_docs/scripts). 
+Some teams, including Security and Observability, work with hand-edited YAML files in their plugin and package directories. For the complete list of files, refer to the [merge scripts](https://github.com/elastic/kibana/tree/main/oas_docs/scripts). 
 :::
 ::::
 
@@ -90,6 +90,10 @@ Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, r
 ::::{tab-item} Manual YAML
 :sync: manual
 Edit the YAML files in the appropriate plugin or package directory. Refer to the README alongside each file for specific guidance on adding summaries, descriptions, tags, metadata, links, and examples.
+
+In these README files, you'll also find instructions for generating intermediate bundle files that capture your changes, and that are later used to generate the full API documentation.
+
+The YAML files with the content changes and the intermediate bundle files are the minimum set of files required for creating a pull request. Without the intermediate bundle files, the automation won't pick up the changes and won't generate the full API documentation.
 
 Review the the [checklist](checklist.md) for best practices.
 
