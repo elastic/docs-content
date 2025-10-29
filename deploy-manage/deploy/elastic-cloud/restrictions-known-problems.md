@@ -25,7 +25,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Node count and size](#ec-node-count-size)
-* [Repository Analysis API is unavailable in {{ecloud}}](#ec-repository-analyis-unavailable)
+* [Repository analysis API is unavailable in {{ecloud}}](#ec-repository-analyis-unavailable)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
