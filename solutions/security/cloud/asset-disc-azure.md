@@ -15,7 +15,7 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 ## Requirements
 
 * The user who gives the Cloud Asset Discovery integration permissions in Azure must be an Azure subscription `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require the [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing).
 * The Cloud Asset Discovery integration is supported only on Azure, not on Azure Government. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 
@@ -26,8 +26,8 @@ You can set up Cloud Asset Discovery for Azure by enrolling an Azure organizatio
 
 Two deployment technologies are available: agentless and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 
 ## Agentless deployment [cad-azure-agentless]
@@ -38,13 +38,18 @@ Two deployment technologies are available: agentless and agent-based.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
 5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
 6. In **Deployment options**, select **Agentless**.
-7. Next, you’ll need to authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/asset-disc-azure.md#cad-azure-client-secret).
+7. Next, you’ll need to authenticate to Azure. The following methods are available:
+    
+    * Option 1: Cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
+      Under **New connection**, expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
+    
+    * Option 2: Azure Client ID with Client Secret. Provide a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/asset-disc-azure.md#cad-azure-client-secret).
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
 ## Agent-based deployment [cad-azure-agent-based]
 
 
-### Add your Cloud Asset Discovery integration [cad-add-and-name-integration-azure]
+### Add the Cloud Asset Discovery integration [cad-add-and-name-integration-azure]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select `Cloud asset discovery`.

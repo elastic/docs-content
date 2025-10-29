@@ -157,8 +157,7 @@ With this authentication method, you need to create an API key to grant access t
 
 ```
 5. Select **Create API key**.
-6. When prompted to copy the key, select **Beats** from the dropdown.
-7. Copy the key and save it for later. You will need it when you [install the agent](#install-agent). 
+6. Copy the key and save it for later. You will need it when you [install the agent](#install-agent).
 
 ::::
 

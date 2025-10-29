@@ -4,13 +4,9 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # Tools in {{agent-builder}}
 
@@ -199,7 +195,7 @@ For a quick overview of how to work programmatically with tools, refer to [Tools
 
 ### Serverless API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-tools).
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools).
 
 ## Copy your MCP server URL
 

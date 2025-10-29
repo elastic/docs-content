@@ -662,6 +662,11 @@ toc:
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
+          - file: monitor/autoops/autoops-for-serverless.md
+            children:
+            - file: monitor/autoops/access-autoops-for-serverless.md
+            - file: monitor/autoops/search-tier-view-autoops-serverless.md
+            - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children: 
             - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
@@ -807,7 +812,7 @@ toc:
           - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
       - file: upgrade/deployment-or-cluster.md
         children:
-          - hidden: upgrade/deployment-or-cluster/upgrade-717.md
+          - file: upgrade/deployment-or-cluster/upgrade-717.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ece.md
           - file: upgrade/deployment-or-cluster/upgrade-on-eck.md
