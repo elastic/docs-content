@@ -37,6 +37,11 @@ Wired streams:
 
 For more information, refer to [sending data to wired streams](./wired-streams.md).
 
+## Managed components
+When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
+
+You can still edit non-managed ingest pipelines, templates, and other components, but avoid those marked as managed or any per-data-stream mappings and settings. This behavior is similar to how Elasticsearch handles components managed by integrations. Refer to the [**Advanced** tab](./management/advanced.md) to review managed components.
+
 ## Required permissions
 
 Streams requires the following permissions:
