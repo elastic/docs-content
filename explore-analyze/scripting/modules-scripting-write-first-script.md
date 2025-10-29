@@ -14,35 +14,41 @@ A Painless script is structured as one or more statements and optionally has one
 
 The [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md) provides the ability to test a script with simple user-defined parameters and receive a result. Let’s start with a complete script and review its constituent parts.
 
-First, index a document with a single field so that we have some data to work with:
+1. Index a document
 
-```console
-PUT my-index-000001/_doc/1
-{
-  "my_field": 5
-}
-```
+    Index a document with a single field so that we have some data to work with:
 
-We can then construct a script that operates on that field and run evaluate the script as part of a query. The following query uses the [`script_fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) parameter of the search API to retrieve a script valuation. There’s a lot happening here, but we’ll break it down the components to understand them individually. For now, you only need to understand that this script takes `my_field` and operates on it.
+    ```console
+    PUT my-index-000001/_doc/1
+    {
+      "my_field": 5
+    }
+    ```
 
-```console
-GET my-index-000001/_search
-{
-  "script_fields": {
-    "my_doubled_field": {
-      "script": { <1>
-        "source": "doc['my_field'].value * params['multiplier']", <2>
-        "params": {
-          "multiplier": 2
+1. Operate on a field
+
+    You can now construct a script that operates on that field and then evaluate the script as part of a query. The following query uses the [`script_fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) parameter of the search API to retrieve a script valuation.
+
+    The components of this script are detailed in later pages. For now, note that the script takes `my_field` as input and operates on it.
+
+    ```console
+    GET my-index-000001/_search
+    {
+      "script_fields": {
+        "my_doubled_field": {
+          "script": { <1>
+            "source": "doc['my_field'].value * params['multiplier']", <2>
+            "params": {
+              "multiplier": 2
+            }
+          }
         }
       }
     }
-  }
-}
-```
+    ```
 
-1. `script` object
-2. `script` source
+    1. `script` object
+    2. `script` source
 
 
-The `script` is a standard JSON object that defines scripts under most APIs in {{es}}. This object requires `source` to define the script itself. The script doesn’t specify a language, so it defaults to Painless.
+    The `script` is a standard JSON object that defines scripts under most APIs in {{es}}. This object requires `source` to define the script itself. Since `script` isn't set, the [scripting language](/explore-analyze/scripting.md) is interpreted as being Painless, by default.

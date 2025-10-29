@@ -17,7 +17,7 @@ If you're new to Painless contexts, refer to [Painless contexts](elasticsearch:/
 
 ## Technical differences
 
-* [**`doc` values**](#when-to-use-doc-values)) use columnar field value store enabled by default on all the fields except analyzed text fields. They can only return simple field values such as numbers, dates, geo-points, and terms.  
+* [**`doc` values**](#when-to-use-doc-values) are a columnar field value store, enabled by default on all the fields except analyzed text fields. They can only return simple field values such as numbers, dates, geo-points, and terms.
 * [**`ctx` access**](#when-to-use-ctx) provides structured access to document content during modification contexts, with fields accessible as map and list structures for existing document fields.  
 * [**`_source` access**](#when-to-use-source) loads the complete document as a map-of-maps, optimized for returning several fields per result but slower than doc values for single field access.
 
@@ -132,7 +132,7 @@ POST /kibana_sample_data_ecommerce/_update_by_query
 
 ## Next steps
 
-* **New users:** Explore Accessing [Accessing document fields and special variables](/explore-analyze/scripting/modules-scripting-fields.md)  
+* **New users:** Explore [Accessing document fields and special variables](/explore-analyze/scripting/modules-scripting-fields.md)  
 * **Advanced users:** Review [Painless contexts](elasticsearch://reference/scripting-languages/painless/painless-contexts.md) for context-specific implementation details
 
 

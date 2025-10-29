@@ -12,8 +12,6 @@ products:
 
 As part of its core design, Painless provides secure scripting capabilities across {{es}}.
 
-## Why Painless is Safe
-
 Introduced in [{{es}} 5.0](https://www.elastic.co/blog/painless-a-new-scripting-language) as a replacement for Groovy, Painless is purpose-built for {{es}}, enabling native performance while preventing unauthorized access to system resources.
    
 By operating in a controlled sandbox environment, Painless ensures that you wonâ€™t get compromised when using it. Painless only allows pre-approved operations through fine-grained allowlists. Scripts cannot access file systems, networks, or other system resources that could compromise your cluster while still providing the flexibility you need for search scoring, data processing, and operational automation.
@@ -27,17 +25,17 @@ By operating in a controlled sandbox environment, Painless ensures that you wonâ
 
 The fine-grained allowlist operates as the **first security layer**. Anything that is not part of the allowlist will result in a compilation error.   
    
-The **second layer of security** is [Java Security Manager(JSM)](https://www.oracle.com/java/technologies/javase/seccodeguide.html). As part of its startup sequence, {{es}} enables JSM to limit the actions that portions of the code can take. Painless uses this additional layer of defense to prevent scripts from doing things such as writing files and listening to sockets.
+The **second layer of security** is [Java Security Manager (JSM)](https://www.oracle.com/java/technologies/javase/seccodeguide.html). As part of its startup sequence, {{es}} enables JSM to limit the actions that portions of the code can take. Painless uses this additional layer of defense to prevent scripts from doing things such as writing files and listening to sockets.
 
 {{es}} uses [Seccomp](https://en.wikipedia.org/wiki/Seccomp) in Linux, [Seatbelt](https://www.chromium.org/developers/design-documents/sandbox/osx-sandboxing-design) in macOS, and [ActiveProcessLimit](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684147) on Windows as **additional security layers** to prevent {{es}} from forking or running other processes.
 
 Finally, scripts used in [scripted metrics aggregations](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) can be restricted to a defined list of scripts or forbidden altogether. This can prevent users from running particularly slow or resource-intensive aggregation queries.
 
-You can modify the ***allowed script types setting*** to restrict the type of scripts that are allowed to run and control the available [contexts](elasticsearch://reference/scripting-languages/painless/painless-contexts.md) that scripts can run in. To implement additional layers in your defense-in-depth strategy, follow the [{{es}} security principles](/deploy-manage/security.md). 
+You can modify the allowed script types setting to restrict the type of scripts that are allowed to run and control the available [contexts](elasticsearch://reference/scripting-languages/painless/painless-contexts.md) that scripts can run in. As well, you can use the {{es}} [security features](/deploy-manage/security.md) to enhance your defence strategy.
 
 ## Allowed script types setting [allowed-script-types-setting]
 
-{{es}} supports two script types: `inline` and `stored`. By default, {{es}} is configured to run both types of scripts. To limit what type of scripts are run, set `script.allowed_types` to `inline` or `stored`. To prevent any scripts from running, set `script.allowed_types` to `none`. If you use Kibana, set \`script.allowed\_types\` to both or just \`inline\`. Some Kibana features rely on inline scripts and do not function as expected if {{es}} does not allow inline scripts. 
+{{es}} supports two script types: `inline` and `stored`. By default, {{es}} is configured to run both types of scripts. To limit what type of scripts are run, set `script.allowed_types` to `inline` or `stored`. To prevent any scripts from running, set `script.allowed_types` to `none`. If you use Kibana, set `script.allowed_types` to both or just `inline`. Some Kibana features rely on inline scripts and do not function as expected if {{es}} does not allow inline scripts. 
 
 For example, to run `inline` scripts but not `stored` scripts:
 

@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# How to write scripts [modules-scripting-using]
+# How to write Painless scripts [modules-scripting-using]
 
 :::{tip}   
 This guide provides a beginner-friendly introduction to Painless scripting with step-by-step tutorials and practical examples. If you're new to scripting or Painless, this is the recommended starting point.
