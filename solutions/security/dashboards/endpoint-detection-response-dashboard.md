@@ -32,13 +32,13 @@ The dashboard presents various information about detections, preventions, and al
 
 The following visualizations are included:
 
-* **Total detection, prevention, and ransomware alerts**
-* **Open alerts over time**
-* **Open alerts by severity**
-* **Open alerts by top 10 MITRE technique**
-* **Open alerts by OS**
-* **Top 10 infected endpoints**
-* **Top 10 impacted users per endpoint**
+* **Total detection, prevention, and ransomware alerts**: Displays the total number of detection, prevention, and ransomware alerts from protected endpoints within the specified time range.
+* **Open alerts over time**: Shows the trend of active alerts over the selected period, helping you identify spikes or patterns in alert activity.
+* **Open alerts by severity**: Displays the distribution of open alerts by severity level.
+* **Open alerts by top 10 MITRE technique**: Highlights the most frequent MITRE ATT&CK® techniques observed across alerts.
+* **Open alerts by OS**: Shows the distribution of open alerts across different operating systems to help assess environment coverage.
+* **Top 10 infected endpoints**: Displays endpoints with the most detections or alerts, enabling you to prioritize remediation and take immediate action on heavily impacted systems.
+* **Top 10 impacted users per endpoint**: Displays users with the most detections or alerts, helping you to identify potentially compromised users linked to repeated alerts on the same endpoint.
 
 ## Visualization panel actions 
 
@@ -53,6 +53,18 @@ Hover over a visualization panel to take the following actions:
 * **Download CSV**: Download the panel’s data as a CSV file.
 * **Copy to dashboard**: Copy the panel to an existing or new dashboard.
 * **Add to case**: Add the panel to an existing case.
+* **Detect anomalies**: Create a {{ml}} anomaly detection job using the panel’s data.
+
+Click a visualization panel or part of a panel (such as a section of a donut chart) to take the following actions:
+
+* **Apply filter to current view**: Apply the selected value as a filter to update all visualizations.
+* **Show**: Open the **Alerts** page filtered by the selected value (for example, **Show Medium** opens alerts with medium severity, or **Show ransomware** opens ransomware alerts). 
+
+In the table panels, click the options menu ({icon}`boxes_vertical`) to take action over endpoints or users with a high number of alerts:
+
+:::{image} /solutions/images/security-endpoint-dashboard-options.png
+:alt: Take action on an endpoint
+:::
 
 ## Duplicate and edit the dashboard 
 
