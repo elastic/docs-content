@@ -47,14 +47,28 @@ A 429 status means that the rate of requests sent to the Managed OTLP endpoint h
     | Serverless      | 15 MB/s    | 30 MB/s     |
     | ECH             | Depends on deployment size and available {{es}} capacity | Depends on deployment size and available {{es}} capacity |
 
+    Exact limits depend on your subscription tier.
     Refer to the [Rate limiting section](opentelemetry://reference/motlp.md#rate-limiting) in the mOTLP reference documentation for details.
 
-* The {{es}} capacity for your Cloud deployment cannot handle the incoming data rate.
+* In {{ech}}, the {{es}} capacity for your deployment might be underscaled for the current ingest rate.
+* In Elastic Cloud Serverless, rate limiting should not result from {{es}} capacity, since the platform automatically scales ingest capacity. If you suspect a scaling issue, [contact Elastic Support](contact-support.md).
 * Multiple Collectors or SDKs are sending data concurrently without load balancing or backoff mechanisms.
 
 ## Resolution
 
 To resolve 429 errors, identify whether the bottleneck is caused by ingest limits or {{es}} capacity.
+
+### Scale your deployment or request higher limits
+
+If you’ve confirmed that your ingest configuration is stable but still encounter 429 errors:
+
+* Elastic Cloud Serverless: [Contact Elastic Support](contact-support.md) to request an increase in ingest limits.
+* {{ech}} (ECH): Increase your {{es}} capacity by scaling or resizing your deployment:
+  * [Scaling considerations](../../../deploy-manage/production-guidance/scaling-considerations.md)
+  * [Resize deployment](../../../deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
+  * [Autoscaling in ECE and ECH](../../../deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
+
+After scaling, monitor your ingest metrics to verify that the rate of accepted requests increases and 429 responses stop appearing.
 
 ### Reduce ingest rate or enable backpressure
 
@@ -76,18 +90,6 @@ exporters:
 ```
 
 These settings help smooth out spikes and automatically retry failed exports after rate-limit responses.
-
-### Scale your deployment or request higher limits
-
-If you’ve confirmed that your ingest configuration is stable but still encounter 429 errors:
-
-* Elastic Cloud Serverless: [Contact Elastic Support](contact-support.md) to request an increase in ingest limits.
-* {{ech}} (ECH): Increase your {{es}} capacity by scaling or resizing your deployment:
-  * [Scaling considerations](../../../deploy-manage/production-guidance/scaling-considerations.md)
-  * [Resize deployment](../../../deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
-  * [Autoscaling in ECE and ECH](../../../deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
-
-After scaling, monitor your ingest metrics to verify that the rate of accepted requests increases and 429 responses stop appearing.
 
 ### Enable retry logic and queueing
 
