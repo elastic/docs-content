@@ -251,14 +251,6 @@ To stop a scheduled report, you can take the following actions from the **Schedu
 - **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but turns it off permanently. If you want to restart it, you must create a new schedule.
 - **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule removes it from the **Reporting** page permanently. You cannot recover a schedule after deleting it.
 
-::::{note} 
-:applies_to: stack: ga 9.2.0
-In 9.2.0, you cannot edit or delete a schedule after you create it. To stop the schedule from running, you must disable it. Disabling a schedule permanently stops it from running. To restart it, you must create a new schedule. 
-::::
-
-To
-
-
 ### Scheduled reports limitations [scheduled-reports-limitations]
 
 The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Issues with report generation and sharing are likely to happen in the following scenarios:
