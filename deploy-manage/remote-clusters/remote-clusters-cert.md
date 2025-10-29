@@ -86,7 +86,7 @@ PUT /_cluster/settings
       "remote" : {
         "cluster_one" : {    <1>
           "seeds" : [
-            "my.remote.cluster.com:9300" <2>
+            "<MY_REMOTE_CLUSTER_ADDRESS>:9300" <2>
           ]
         }
       }
@@ -111,7 +111,7 @@ The API response indicates that the local cluster is connected to the remote clu
 {
   "cluster_one" : {
     "seeds" : [
-      "my.remote.cluster.com:9300"
+      "<MY_REMOTE_CLUSTER_ADDRESS>:9300"
     ],
     "connected" : true,
     "num_nodes_connected" : 1,  <1>
@@ -143,20 +143,20 @@ PUT _cluster/settings
       "remote": {
         "cluster_one": {
           "seeds": [
-            "my.remote.cluster.com:9300"
+            "<MY_REMOTE_CLUSTER_ADDRESS>:9300"
           ]
         },
         "cluster_two": {
           "mode": "sniff",
           "seeds": [
-            "my.second.remote.cluster.com:9300"
+            "<MY_SECOND_REMOTE_CLUSTER_ADDRESS>:9300"
           ],
           "transport.compress": true,
           "skip_unavailable": true
         },
         "cluster_three": {
           "mode": "proxy",
-          "proxy_address": "my.third.remote.cluster.com:9302"
+          "proxy_address": "<MY_THIRD_REMOTE_CLUSTER_ADDRESS>:9300"
         }
       }
     }
@@ -226,15 +226,15 @@ In the following example, `cluster_one`, `cluster_two`, and `cluster_three` are 
 cluster:
     remote:
         cluster_one:
-            seeds: my.remote.cluster.com:9300
+            seeds: <MY_REMOTE_CLUSTER_ADDRESS>:9300
         cluster_two:
             mode: sniff
-            seeds: my.second.remote.cluster.com:9300
+            seeds: <MY_SECOND_REMOTE_CLUSTER_ADDRESS>:9300
             transport.compress: true      <1>
             skip_unavailable: true        <2>
         cluster_three:
             mode: proxy
-            proxy_address: my.third.remote.cluster.com:9302 <3>
+            proxy_address: <MY_THIRD_REMOTE_CLUSTER_ADDRESS>:9300 <3>
 ```
 
 1. Compression is explicitly enabled for requests to `cluster_two`.

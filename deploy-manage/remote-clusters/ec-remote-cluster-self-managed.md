@@ -161,7 +161,7 @@ A deployment can be configured to trust all or specific deployments in any envir
 
         * two specific clusters with the cluster IDs `aaaabbbbaaaabbbb`<1> and `xxxxyyyyxxxxyyyy`<2> from an organization with organization ID `1053523734`
         * <3> any cluster from an organization with organization ID `83988631`
-        * <4> The nodes from its own cluster (whose certificates follow a different convention: `CN = node1.example.com`, `CN = node2.example.com` and `CN = node3.example.com`)
+        * <4> The nodes from its own cluster (whose certificates follow a different convention: `CN = node1.<CLUSTER_FQDN>`, `CN = node2.<CLUSTER_FQDN>` and `CN = node3.<CLUSTER_FQDN>`)
 
 
 ```
@@ -169,7 +169,7 @@ A deployment can be configured to trust all or specific deployments in any envir
   - *.node.aaaabbbbaaaabbbb.cluster.1053523734.account
   - *.node.xxxxyyyyxxxxyyyy.cluster.1053523734.account
   - *.node.*.cluster.83988631.account
-  - node*.example.com
+  - node*.<CLUSTER_FQDN>
 ```
 
 ::::{tip}
@@ -180,7 +180,7 @@ Generate new node certificates for an entire cluster using the file input mode o
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.example.com", "CN = node2.example.com" and "CN = node3.example.com" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:
+In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.<CLUSTER_FQDN>", "CN = node2.<CLUSTER_FQDN>" and "CN = node3.<CLUSTER_FQDN>" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:
 
 ```json
 {
@@ -195,7 +195,7 @@ In order to trust a cluster whose nodes present certificates with the subject na
       {
         "type" : "generic",
         "name" : "My Self-managed environment",
-        "additional_node_names" : ["node1.example.com", "node2.example.com", "node3.example.com",],
+        "additional_node_names" : ["node1.<CLUSTER_FQDN>", "node2.<CLUSTER_FQDN>", "node3.<CLUSTER_FQDN>",],
         "certificates" : [
             {
                 "pem" : "-----BEGIN CERTIFICATE-----\nMIIDTzCCA...H0=\n-----END CERTIFICATE-----"
