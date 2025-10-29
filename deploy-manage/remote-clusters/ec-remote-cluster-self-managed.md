@@ -166,9 +166,9 @@ A deployment can be configured to trust all or specific deployments in any envir
         - *.node.*.cluster.83988631.account <2>
         - node*.<CLUSTER_FQDN> <3>
       ```
-      1. two specific clusters with cluster ids `aaaabbbbaaaabbbb` and `xxxxyyyyxxxxyyyy` in an ECE environment with Environment ID `1053523734`
-      2. any cluster from an ECE environment with Environment ID `83988631`
-      3. the nodes from its own cluster (whose certificates follow a different convention: `CN = node1.<CLUSTER_FQDN>`, `CN = node2.<CLUSTER_FQDN>` and `CN = node3.<CLUSTER_FQDN>`)
+      1. Two specific clusters with cluster ids `aaaabbbbaaaabbbb` and `xxxxyyyyxxxxyyyy` in an ECE environment with Environment ID `1053523734`
+      2. Any cluster from an ECE environment with Environment ID `83988631`
+      3. The nodes from its own cluster (whose certificates follow a different convention: `CN = node1.<CLUSTER_FQDN>`, `CN = node2.<CLUSTER_FQDN>` and `CN = node3.<CLUSTER_FQDN>`)
 
 ::::{tip}
 Generate new node certificates for an entire cluster using the file input mode of the certutil.
