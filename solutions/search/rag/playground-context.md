@@ -15,8 +15,9 @@ Context is the information you provide to the LLM, to optimize the relevance of 
 There are a few ways to optimize this context for better results. Some adjustments can be made directly in the Playground UI. Others require refining your indexing strategy, and potentially reindexing your data.
 
 ::::{note} 
-{applies_to}`stack: preview 9.0` Currently you can only select **one field** to be provided as context to the LLM.
+:applies_to: stack: preview 9.0 
 
+You can only select **one field** to be provided as context to the LLM.
 ::::
 
 
