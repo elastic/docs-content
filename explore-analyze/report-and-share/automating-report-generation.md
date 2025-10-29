@@ -248,8 +248,8 @@ A message appears, indicating that the schedule is available on the **Reporting*
 
 To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
 
-- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but turns it off permanently. If you want to restart it, you must create a new schedule.
-- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule removes it from the **Reporting** page permanently. You cannot recover a schedule after deleting it.
+- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
+- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule permanently removes it from the **Reporting** page. You cannot recover a deleted schedule.
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 
