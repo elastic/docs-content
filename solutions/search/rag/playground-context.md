@@ -17,7 +17,7 @@ There are a few ways to optimize this context for better results. Some adjustmen
 ::::{note} 
 :applies_to: stack: preview 9.0 
 
-You can only select **one field** to be provided as context to the LLM.
+Only **one field** can be selected as context for the LLM.
 ::::
 
 
