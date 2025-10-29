@@ -49,7 +49,7 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 #### Batch size
 
 Batches are limited to a maximum of 16 documents.
-This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
+This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
 
 ## Pricing 
 

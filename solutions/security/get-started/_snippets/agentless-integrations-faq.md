@@ -12,7 +12,21 @@ After you create a new agentless integration, the new integration policy may sho
   serverless: ga
 ```
 
-Agentless agents (which run on Elastic's infrastructure to enable agentless integrations) do not appear on the **Fleet** page by default. To view them on this page, add the following query to the end of its URL: `?showAgentless=true`. 
+Agentless agents (which run on Elastic's infrastructure to enable agentless integrations) do not appear on the **Fleet** page by default. To view them on this page:
+
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.1
+Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
+:::
+
+:::{applies-item} stack: ga 9.2
+Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
+:::
+
+::::
+
 
 ## How do I troubleshoot an `Offline` agent? [_how_do_i_troubleshoot_an_offline_agent]
 
@@ -34,16 +48,12 @@ On versions of {{stack}} before v9.2, agentless integrations can't be upgraded t
 
 ## How do I troubleshoot an `Unhealthy` agent? [_how_do_i_troubleshoot_an_unhealthy_agent]
 
-On the **{{fleet}}** page, the agent associated with an agentless integration has a name that begins with `agentless`. To troubleshoot an `Unhealthy` agent:
+On the **{{fleet}}** page, agents associated with agentless integrations have names that begin with `agentless`. To troubleshoot an `Unhealthy` agent:
 
-* Confirm that you entered the correct credentials for the cloud provider you’re monitoring. The following is an example of an error log resulting from using incorrect AWS credentials:
-
-    ```
-    [elastic_agent.cloudbeat][error] Failed to update registry: failed to get AWS accounts: operation error Organizations: ListAccounts, get identity: get credentials: failed to refresh cached credentials, operation error STS: AssumeRole, https response error StatusCode: 403, RequestID: XXX, api error AccessDenied: User: XXX is not authorized to perform: sts:AssumeRole on resource:XXX
-    ```
-
-
-For instructions on checking {{fleet}} logs, refer to [](/troubleshoot/ingest/fleet/common-problems.md).
+1. Go to the **Settings** tab of the **Fleet** page. Go to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
+2. In {{fleet}}, select the unhealthy agent. 
+3. From the **Actions** menu, select **Request diagnostics .zip**. 
+4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/common-problems.md#trb-collect-agent-diagnostics). Refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md) for more information.
 
 
 ## How do I delete an agentless integration? [_how_do_i_delete_an_agentless_integration]
