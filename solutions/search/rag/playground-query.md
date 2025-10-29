@@ -10,11 +10,6 @@ products:
 
 # View and modify queries [playground-query]
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
-
 Once you’ve set up your chat interface, you can start chatting with the model. Playground will automatically generate {{es}} queries based on your questions, and retrieve the most relevant documents from your {{es}} indices. The Playground UI enables you to view and modify these queries.
 
 * Select the **Query** tab to open the visual query editor.

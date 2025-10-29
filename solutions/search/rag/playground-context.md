@@ -10,11 +10,6 @@ products:
 
 # Optimize model context [playground-context]
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
-
 Context is the information you provide to the LLM, to optimize the relevance of your query results. Without additional context, an LLM will generate results solely based on its training data. In Playground, this additional context is the information contained in your {{es}} indices.
 
 There are a few ways to optimize this context for better results. Some adjustments can be made directly in the Playground UI. Others require refining your indexing strategy, and potentially reindexing your data.
