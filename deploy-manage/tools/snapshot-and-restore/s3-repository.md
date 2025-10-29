@@ -233,6 +233,9 @@ The following settings are supported:
 `get_register_retry_delay`
 :   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
 
+`unsafely_incompatible_with_s3_conditional_writes` {applies_to}`stack: ga 9.3`
+:   (boolean) {{es}} uses AWS S3's support for conditional writes to protect against repository corruption. If your repository is based on a storage system which claims to be S3-compatible but does not accept conditional writes, set this setting to `true` to make {{es}} perform unconditional writes, bypassing the repository corruption protection, while you work with your storage supplier to address this incompatibility with AWS S3. Defaults to `false`.
+
 ::::{note}
 The option of defining client settings in the repository settings as documented below is considered deprecated, and will be removed in a future version.
 ::::
@@ -377,6 +380,13 @@ AWS instances resolve S3 endpoints to a public IP. If the {{es}} instances resid
 
 Instances residing in a public subnet in an AWS VPC will connect to S3 via the VPC’s internet gateway and not be bandwidth limited by the VPC’s NAT instance.
 
+## Replicating objects [repository-s3-replicating-objects]
+
+AWS S3 supports [replication of objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html), both within a single region and across regions. However, this replication is not compatible with {{es}} snapshots.
+
+The objects that {{es}} writes to the repository refer to other objects in the repository. {{es}} writes objects in a very specific order to ensure that each object only refers to objects which already exist. Likewise, {{es}} only deletes an object from the repository after it becomes unreferenced by all other objects. AWS S3 replication will apply operations to the replica repository in a different order from the order in which {{es}} applies them to the primary repository, which can cause some objects in replica repositories to refer to other objects that do not exist. This is an invalid state. It may not be possible to recover any data from a repository if it is in this state.
+
+To replicate a repository's contents elsewhere, follow the [repository backup](/deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) process. In particular, you may use the point-in-time restore capability of [AWS S3 backups](https://docs.aws.amazon.com/aws-backup/latest/devguide/s3-backups.html) to restore a backup of a snapshot repository to an earlier point in time.
 
 ## S3-compatible services [repository-s3-compatible-services]
 

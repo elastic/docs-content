@@ -53,6 +53,19 @@ The AI assistant requires the following:
 
 * A self-deployed connector service if [content connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
 
+## Manage access to AI Assistant
+
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
+
+- Manage which AI connectors are available in your environment. 
+- Enable or disable AI Assistant and other AI-powered features in your environment.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+
 ## Your data and the AI Assistant [data-information]
 
 It's important to understand how your data is handled when using the AI Assistant. Here are some key points:
@@ -102,6 +115,10 @@ While the {{obs-ai-assistant}} is compatible with many different models, refer t
 :::
 
 ### Connect to a custom local LLM
+```{applies_to}
+serverless: ga
+stack: ga 9.2
+```
 
 [Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
