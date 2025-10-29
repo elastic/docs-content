@@ -8,7 +8,7 @@ products:
 
 ## August 25, 2025 [elastic-cloud-serverless-08252025-breaking]
 
-* Allow partial results by default in ES|QL [#125060](https://github.com/elastic/elasticsearch/pull/125060)
+* Allows partial results by default in {{esql}} [#125060](https://github.com/elastic/elasticsearch/pull/125060)
 
 ## August 11, 2025 [elastic-cloud-serverless-08112025-breaking]
 
