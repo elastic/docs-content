@@ -70,6 +70,6 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 3. Find the integration policy for the integration you want to delete. Click **Actions**, then **Delete integration**.
 4. Confirm by clicking **Delete integration** again.
 
-## Does the current agentless provides a specific range of static IP addresses for configuring allow/deny rules for traffic?
+## Can agentless integrations use a specific range of static IP addresses for configuring allow and deny rules for traffic?
 
 No, currently, our agentless solution does not offer a fixed range of static IP addresses for configuring ingress and egress allow/deny rules.
