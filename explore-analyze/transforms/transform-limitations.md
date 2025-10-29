@@ -132,7 +132,7 @@ When running a large number of SLO {{transforms}}, two types of limitations can 
 
 #### {{transforms-cap}} can return inaccurate errors that suggest deletion [transforms-inaccurate-errors]
 
-The {{transforms-cap}} API and the {{transforms-cap}} page in {{kib}} (**Stack Management** > **{{transforms-cap}})** may display misleading error messages for {{transforms}} created by service level objectives (SLOs).
+The {{transforms-cap}} API and the {{transforms-cap}} management page in {{kib}} may display misleading error messages for {{transforms}} created by service level objectives (SLOs).
 
 The message typically reads:
 

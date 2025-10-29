@@ -9,9 +9,9 @@ applies_to:
 
 ::::{admonition} Requirements
 
-You must have an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Complete project tier subscription](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}} to access this feature. 
+You must have an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}} to access this feature. 
 
-If you have a Platinum subscription or lower on {{stack}} or an Essentials project tier subscription on {{serverless-short}}, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) instead.
+If you have a Platinum subscription or lower on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) instead.
 
 ::::
 
@@ -82,7 +82,7 @@ This table describes statuses that might appear for rule fields being updated.
 | **Ready for update** | Displays when there are no conflicts to resolve.<br><br>Further action is not required for the field. It is ready to be updated.<br> |
 | **No update** | Displays when the field is not being updated by Elastic, but the current field value differs from the original one. This typically happens when the field's value was changed after the prebuilt rule was initially installed.<br><br>Further action is not required for the field. It is ready to be updated.<br><br> **Tip**: You can still change the final field update, if needed. To do so, make your changes in the **Final update** section and save them.<br><br> |
 | **Review required** | Displays when Elastic auto-resolves a conflict between the current field value and the value from the incoming Elastic update.<br><br>You must accept or edit the field's final update and save the changes. Refer to [Resolve and reduce update conflicts](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts) to learn more about auto-resolved conflicts and how to reduce future conflicts.<br> |
-| **Action required** | Displays when Elastic could not auto-resolve the conflict between the current field value and the value from the incoming Elastic update.<br><br>You must manually set and save the field's final update. Refer to Refer to [Resolve and reduce update conflicts](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts) to learn more about conflicts that need manual fixes and how to reduce future conflicts.<br> |
+| **Action required** | Displays when Elastic could not auto-resolve the conflict between the current field value and the value from the incoming Elastic update.<br><br>You must manually set and save the field's final update. Refer to [Resolve and reduce update conflicts](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts) to learn more about conflicts that need manual fixes and how to reduce future conflicts.<br> |
 
 
 ## Resolve and reduce update conflicts [resolve-reduce-rule-conflicts]

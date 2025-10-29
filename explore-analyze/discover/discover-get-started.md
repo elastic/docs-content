@@ -28,9 +28,9 @@ Learn how to use **Discover** to:
 
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/explore-logs.md)**
+  * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
 % LINK/PAGE TBD  * **Traces exploration**
-% LINK/PAGE TBD  * **Metrics exploration**
-% * Security: 
+% * Security:
 % LINK/PAGE TBD  * **Security data exploration**
 
 This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
@@ -39,9 +39,18 @@ When you access **Discover** outside of a specific solution context, or when wor
 
 ### Context-awareness with multiple data types
 
-Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context. 
+Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context.
 
 In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
+
+### View active context-aware experience
+
+You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
+
+1. Select **Inspect** from Discover's toolbar.
+1. Open the **View** dropdown, then select **Profiles**.
+
+The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
 
 ## Load data into Discover [find-the-data-you-want-to-use]
 
@@ -84,6 +93,8 @@ You can later filter the data that shows in the chart and in the table by specif
    ::::{tip}
    You can combine multiple keywords or characters. For example, `geo dest` finds `geo.dest` and `geo.src.dest`.
    ::::
+
+   {applies_to}`stack: ga 9.2` For some searches, Discover suggests recommended fields to explore. These suggestions are based on the data you query and are managed by Elastic.
 
 2. Select a field to view its most frequent values.
   **Discover** shows the top 10 values and the number of records used to calculate those values.
@@ -294,10 +305,56 @@ Note that in ES|QL mode, the **Documents** tab is named **Results**.
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 
+### Run multiple explorations with tabs
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+**Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or classic mode), time range, filters, selected data source, columns and sort order you defined, and the active [context-aware experience](#context-aware-discover).
+
+This allows you to pivot quickly between different explorations without losing your place. For example:
+
+* **Compare time periods:** Open multiple tabs with the same query but different time ranges
+* **Test query variations:** Duplicate a tab to experiment with different {{esql}} queries or filters
+* **Switch contexts:** Keep separate tabs for logs, metrics, and traces explorations
+* **Test a hypothesis:** Switch between different data sources or field combinations
+
+#### Manage Discover tabs
+
+You can open new tabs or duplicate existing ones to compare different queries:
+- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
+- To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
+
+To manage and organize your tabs, you can:
+- Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
+- Reorder them: Drag and drop a tab to move it.
+- Close them: Hover over a tab and select the {icon}`cross` icon.
+- Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
+
+  :::{tip}
+  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
+  :::
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
+
+To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
+
+### Inspect your Discover queries
+
+:::{include} ../_snippets/inspect-request.md
+:::
+
+### Run long-running queries in the background
+```{applies_to}
+stack: ga 9.2
+serverless: unavailable
+```
+
+You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
+
 
 ### Save your Discover session for later use [save-discover-search]
 
-Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves the query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
+Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
 
 1. In the application menu bar, click **Save**.
 2. Give your session a title and a description.

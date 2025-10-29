@@ -308,7 +308,7 @@ When you migrate from {{beats}} to {{agent}}, you have a couple of options for m
 
     If you have existing index lifecycle policies for {{beats}}, it’s highly recommended that you modify the lifecycle policies for {{agent}} to match your previous policy. To do this:
 
-    1. In {{kib}}, go to **{{stack-manage-app}} > Index Lifecycle Policies** and search for a {{beats}} policy, for example, **filebeat**. Under **Linked indices**, notice you can view indices linked to the policy. Click the policy name to see the settings.
+    1. In {{kib}}, go to the **Index Lifecycle Policies** management page and search for a {{beats}} policy, for example, **filebeat**. Under **Linked indices**, notice you can view indices linked to the policy. Click the policy name to see the settings.
     2. Click the **logs** policy and, if necessary, edit the settings to match the old policy.
     3. Under **Index Lifecycle Policies**, search for another {{beats}} policy, for example, **metricbeat**.
     4. Click the **metrics** policy and edit the settings to match the old policy.

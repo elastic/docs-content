@@ -4,12 +4,15 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: AutoOps for self-managed clusters
+navigation_title: For self-managed clusters
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps for self-managed clusters
 
-Use [AutoOps](/deploy-manage/monitor/autoops.md) with your ECE ({{ece}}), ECK ({{eck}}), or self-managed clusters through [Cloud Connect](/deploy-manage/cloud-connect.md). 
+For ECE ({{ece}}), ECK ({{eck}}), and self-managed clusters, AutoOps can be set up in all supported [regions](ec-autoops-regions.md#autoops-for-self-managed-clusters-regions) through [Cloud Connect](/deploy-manage/cloud-connect.md). More regions are coming soon.
 
 Cloud Connect enables users of ECE, ECK, and self-managed clusters to use {{ecloud}} services. This means you can take advantage of the simplified cluster monitoring, real-time issue detection, and performance recommendations of AutoOps without having to run and manage the underlying infrastructure.
 

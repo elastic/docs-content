@@ -5,9 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v6.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v5.html
 applies_to:
-  stack:
   deployment:
-    ess:
+    ess: ga
 products:
   - id: cloud-hosted
   - id: elasticsearch

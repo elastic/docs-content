@@ -5,6 +5,9 @@ applies_to:
     ece:
     eck:
 navigation_title: FAQ
+products:
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # AutoOps for self-managed clusters FAQ
@@ -16,7 +19,7 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 * [Does this feature require additional payment?](#additional-payment)
 * [Is there an added cost for shipping metrics data to {{ecloud}}?](#autoops-metrics-cost)
 * [Which versions of {{es}} does AutoOps support?](#es-versions)
-* [Which deployment types can be connected to AutoOps?](#deployment-types)
+* [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 
 **Questions about setting up**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
@@ -45,7 +48,7 @@ $$$autoops-metrics-cost$$$ **Is there an added cost for shipping metrics data to
 $$$es-versions$$$ **Which versions of {{es}} does AutoOps support?**
 :   AutoOps is compatible with [supported {{es}} versions](https://www.elastic.co/support/eol) (7.17.x and above).
 
-$$$deployment-types$$$ **Which deployment types can be connected to AutoOps?**
+$$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
 
 ## Questions about setting up
@@ -99,4 +102,4 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     | Protocol | Data extracted | Port | Authentication method | 
     | --- | --- | --- | --- |
     | HTTP |  Basic cluster information from the `/` endpoint <br><br> License information from the `/_license` endpoint | **443**: standard HTTPS port | Uses an {{ecloud}} API key which is limited for use with Cloud Connect only. |
-    | OTLP | Operational information | **4318**: standard OTLP HTTP port <br><br> This service will be exposed on port 443 in the future. | Uses an AutoOps token which is functionally equivalent to an API key. |
+    | OTLP over HTTP | Operational information | **443**: standard HTTPS port | Uses an AutoOps token which is functionally equivalent to an API key. |

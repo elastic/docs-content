@@ -89,7 +89,7 @@ Additional configuration is required for detection rules using cross-cluster sea
 
 ::::{admonition} Requirements
 To create or edit {{ml}} rules, you need:
-* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * The [`machine_learning_admin`](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-ml-admin) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The selected {{ml}} job to be running for the rule to function correctly.
 ::::
@@ -142,7 +142,9 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
     3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold’s value.
 
         ::::{note}
-        Nested fields are not supported for use with **Group by**.
+        Consider the following when using the **Group by** field:
+        - Nested fields are not supported.
+        - High cardinality in the fields or a high number of matching documents can result in a rule timeout or a circuit breaker error from {{es}}.
         ::::
 
     4. Use the **Count** field to limit alerts by cardinality of a certain field.

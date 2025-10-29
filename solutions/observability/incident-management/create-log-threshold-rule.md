@@ -337,7 +337,7 @@ When a rule check is performed, a query is built based on the configuration of t
 
 ## Settings [settings]
 
-With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from **Log sources** at **Stack Management** → **Advanced settings** under **Observability**.
+With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from the **Log sources** [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings).
 
 With each execution of the rule check, the **Log indices** setting is checked, but it is not stored when the rule is created.
 

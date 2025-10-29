@@ -22,9 +22,7 @@ See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough 
 
 ## Getting started [repository-s3-usage]
 
-To register an S3 repository, specify the type as `s3` when creating the repository. The repository defaults to using [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication.
-
-The only mandatory setting is the bucket name:
+To register an S3 repository, specify the type as `s3` when creating the repository. The only mandatory setting is the bucket name:
 
 ```console
 PUT _snapshot/my_s3_repository
@@ -36,6 +34,7 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
+By default, an S3 repository will attempt to obtain its credentials automatically from the environment. For instance, if {{es}} is running on an AWS EC2 instance then it will attempt to use the [EC2 Instance Metadata Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) to obtain temporary credentials for the [instance IAM role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html). Likewise, if {{es}} is running in AWS EC2, then it will automatically obtain temporary [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication. To disable this behavior, specify an access key, a secret key, and optionally a session token, in the {{es}} keystore.
 
 ## Client settings [repository-s3-client]
 
@@ -65,7 +64,7 @@ bin/elasticsearch-keystore add s3.client.default.session_token
 
 If you do not configure these settings then {{es}} will attempt to automatically obtain credentials from the environment in which it is running:
 
-* Nodes running on an instance in AWS EC2 will attempt to use the EC2 Instance Metadata Service (IMDS) to obtain instance role credentials. {{es}} supports both IMDS version 1 and IMDS version 2.
+* Nodes running on an instance in AWS EC2 will attempt to use the EC2 Instance Metadata Service (IMDS) to obtain instance role credentials. {{es}} supports IMDS version 2 only.
 * Nodes running in a container in AWS ECS and AWS EKS will attempt to obtain container role credentials similarly.
 
 You can switch from using specific credentials back to the default of using the instance role or container role by removing these settings from the keystore as follows:
@@ -378,6 +377,13 @@ AWS instances resolve S3 endpoints to a public IP. If the {{es}} instances resid
 
 Instances residing in a public subnet in an AWS VPC will connect to S3 via the VPC’s internet gateway and not be bandwidth limited by the VPC’s NAT instance.
 
+## Replicating objects [repository-s3-replicating-objects]
+
+AWS S3 supports [replication of objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html), both within a single region and across regions. However, this replication is not compatible with {{es}} snapshots.
+
+The objects that {{es}} writes to the repository refer to other objects in the repository. {{es}} writes objects in a very specific order to ensure that each object only refers to objects which already exist. Likewise, {{es}} only deletes an object from the repository after it becomes unreferenced by all other objects. AWS S3 replication will apply operations to the replica repository in a different order from the order in which {{es}} applies them to the primary repository, which can cause some objects in replica repositories to refer to other objects that do not exist. This is an invalid state. It may not be possible to recover any data from a repository if it is in this state.
+
+To replicate a repository's contents elsewhere, follow the [repository backup](/deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) process. In particular, you may use the point-in-time restore capability of [AWS S3 backups](https://docs.aws.amazon.com/aws-backup/latest/devguide/s3-backups.html) to restore a backup of a snapshot repository to an earlier point in time.
 
 ## S3-compatible services [repository-s3-compatible-services]
 
@@ -385,7 +391,7 @@ There are a number of storage systems that provide an S3-compatible API, and the
 
 By default {{es}} communicates with your storage system using HTTPS, and validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the JVM-wide truststore includes an entry for your repository. If you wish to use unsecured HTTP communication instead of HTTPS, set `s3.client.CLIENT_NAME.protocol` to `http`.
 
-There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behavior in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency and performance at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
+There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behavior in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency, performance, and reliability at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
 
 You can perform some basic checks of the suitability of your storage system using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, these checks do not guarantee full compatibility.
 
