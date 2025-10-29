@@ -79,8 +79,7 @@ The **Cloud ID** is also available in the **Connection Details** section. Toggle
 ### Create an API key [create-an-api-key-serverless]
 
 1. Go to the serverless project’s home page.
-2. Select the settings icon in the **Elasticsearch endpoint** section.
-3. On the **API keys** page, select **Create API key**.
+2. Select **Create API key**.
 
     :::{image} /solutions/images/kibana-serverless-create-an-api-key.png
     :alt: serverless create an api key
