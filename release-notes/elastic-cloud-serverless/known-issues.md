@@ -16,6 +16,18 @@ Known issues are significant defects or limitations that may impact your impleme
 
 ## Active
 
+::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1
+
+**Details**
+
+On October 22, 2025, it was discovered that alerts aren't generated for rules that have **Alert flapping detection** turned off and the alert delay set to a value higher than 1.
+
+**Workaround**
+
+Set the alert delay value to 1 or turn on **Alert flapping detection**.
+
+::::
+
 :::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents
 
 On May 30, 2025, it was discovered that the entity risk score feature may stop persisting risk score documents if risk scoring was previously turned on. This is due to a bug that prevents the `entity_analytics_create_eventIngest_from_timestamp-pipeline-<space_name>` ingest pipeline (which is set as a default pipeline for the risk scoring index in an earlier {{serverless-short}} release) from being created when {{kib}} starts up.
