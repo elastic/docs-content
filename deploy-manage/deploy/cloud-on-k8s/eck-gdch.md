@@ -16,7 +16,7 @@ The Elastic Package Registry (EPR) container image is not yet available in GDCH 
 For extra guidance on running ECK in isolated environments, refer to [Running ECK in air-gapped environments](/deploy-manage/deploy/cloud-on-k8s/air-gapped-install.md).
 :::
 
-## Installation procedure
+## Install ECK
 
 To install ECK:
 
@@ -33,10 +33,10 @@ Once completed, ECK will be running in your GDCH environment.
 
 Next, open a terminal with `kubectl` and choose one of the following options:
 
-1. [Start a trial](/deploy-manage/license/manage-your-license-in-eck.md#k8s-start-trial) to enable ECK’s enterprise features.
-2. Continue using ECK in free & basic mode.
-3. [Apply an Enterprise license](/deploy-manage/license/manage-your-license-in-eck.md#k8s-add-license).
+* [Start a trial](/deploy-manage/license/manage-your-license-in-eck.md#k8s-start-trial) to enable ECK’s enterprise features.
+* Continue using ECK in free & basic mode.
+* [Apply an Enterprise license](/deploy-manage/license/manage-your-license-in-eck.md#k8s-add-license).
 
 ## Next steps
 
-When ECK is up and licensed, follow the [ECK Quickstart guide](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) to deploy {{es}} and {{kib}} for your use case, whether it’s [Observability](/solutions/observability.md), [Security](/solutions/security.md), or [Search](/solutions/search.md).
+Follow the [ECK Quickstart guide](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) to deploy {{es}} and {{kib}} for your use case, whether it’s [Observability](/solutions/observability.md), [Security](/solutions/security.md), or [Search](/solutions/search.md).
