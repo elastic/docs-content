@@ -10,7 +10,7 @@ products:
 
 # Endpoint Detection and Response dashboard
 
-The Endpoint Detection and Response (EDR) dashboard provides visualizations to help you monitor and analyze detection and prevention activity on endpoints running {{elastic-defend}}. Use this dashboard to view total detection, prevention, and ransomware alerts, as well as open alerts by severity, MITRE technique, and operating system. The dashboard also highlights the top 10 most infected endpoints and the top 10 most impacted users per endpoint.
+The Endpoint Detection and Response (EDR) dashboard provides visualizations that help you monitor and analyze detection and prevention activity on endpoints running {{elastic-defend}}. It shows total counts of detection, prevention, and ransomware alerts, as well as open alerts by severity, MITRE technique, and operating system. It also highlights the top 10 most infected endpoints and the top 10 most impacted users per endpoint.
 
 With these insights, security analysts and administrators can quickly identify high-risk endpoints or potentially compromised users, evaluate detection rule performance, understand environment coverage, and pivot directly into the relevant alert details to begin investigations.
 
@@ -49,7 +49,7 @@ The following visualizations are included:
 Hover over a visualization panel to take the following actions:
 
 * **Query**: View the panel's KQL query.
-* **Show visualization configuration**: View the configuration of the visualization.
+* **Show visualization configuration**: View the visualization's configuration.
 * **Explore in Discover**: Open Discover with preloaded filters to display the panel’s data.
 * **Inspect**: Examine the panel’s underlying data.
 * **Maximize**: Expand the panel.
@@ -60,7 +60,7 @@ Hover over a visualization panel to take the following actions:
 
 ## Duplicate and edit the dashboard 
 
-This dashboard is managed by Elastic, so any changes you make to it will not persist. To make persistent changes, you can duplicate the dashboard and edit the copy, but your copy will not get updates from Elastic.
+This dashboard is managed by Elastic, so any changes you make to it will not persist. To make persistent changes, you can duplicate the dashboard and edit the copy. Your copy will not get updated when Elastic updates the managed dashboard.
 
 1. Click **Duplicate** in the toolbar.
 2. In the **Duplicate dashboard** window, enter a title and optional description and tags.
