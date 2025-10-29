@@ -185,3 +185,4 @@ You can still add your own processors manually to the `@custom` pipeline if need
 
 - Streams does not support all processors. More processors will be added in future versions.
 - The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them. Streams will allow proper simulations using original documents in a future version.
+- Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./extract/manual-pipeline-configuration.md) that supports Painless scripting and all ingest processors.

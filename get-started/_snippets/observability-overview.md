@@ -1,29 +1,3 @@
----
-navigation_title: Observability
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
-  - https://www.elastic.co/guide/en/observability/current/index.html
-  - https://www.elastic.co/guide/en/kibana/current/observability.html
-applies_to:
-  stack:
-  serverless:
-products:
-  - id: cloud-serverless
-  - id: observability
-  - id: kibana
-  - id: edot-collector
----
-
-# Elastic Observability overview
-
-:::{include} ../get-started/_snippets/observability-overview.md
-:::
-
-<!--
-Elastic {{observability}} accelerates problem resolution with open, flexible, and unified observability powered by advanced machine learning and analytics. Elastic ingests all operational and business telemetry and correlates for faster root cause detection.
--->
-
-<!--
 Elastic {{observability}} provides unified observability across applications and infrastructure. It combines logs, metrics, application traces, user experience data, and more into a single, integrated platform.
 This consolidation allows for powerful, cross-referenced analysis, enabling teams to move from detecting issues to understanding their root causes quickly and efficiently.
 By leveraging the search and analytics capabilities of {{es}}, it offers a holistic view of system behavior.
@@ -37,6 +11,7 @@ For a complete overview, refer to [](/solutions/observability/get-started/what-i
 Apply {{observability}} to various scenarios to improve operational awareness and system reliability. 
 
 :::{dropdown} Use cases
+:open:
 * **Log monitoring and analytics:** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
 * **Application Performance Monitoring (APM):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
 * **Infrastructure monitoring:** Monitor metrics from servers, virtual machines, containers, and serverless environments with over 400 out-of-the-box integrations, including OpenTelemetry. This provides deep insights into resource utilization and overall system health.
@@ -52,12 +27,12 @@ Apply {{observability}} to various scenarios to improve operational awareness an
 
 To start your {{observability}} journey, read the [**Get started**](/solutions/observability/get-started.md) guide, which presents all the essential steps, with links to valuable resources. You can also browse the {{observability}} [**Quickstart guides**](/solutions/observability/get-started/quickstarts.md).
 
-
 ## Core concepts [observability-concepts]
 
 At the heart of Elastic {{observability}} are several key components that enable its capabilities. 
 
 :::{dropdown} Concepts
+:open:
 * The three pillars of {{observability}} are:
 
   * [**Logs:**](/solutions/observability/logs.md) Timestamped records of events that provide detailed, contextual information.
@@ -68,26 +43,3 @@ At the heart of Elastic {{observability}} are several key components that enable
 * **[Alerting](/solutions/observability/incident-management/alerting.md) and [Cases](/solutions/observability/incident-management/cases.md):** Allows you to create  rules to detect complex conditions and perform actions. Cases allows teams to stay aware of potential issues and track investigation details, assign tasks, and collaborate on resolutions.
 * [**Service Level Objectives (SLOs):**](/solutions/observability/incident-management/service-level-objectives-slos.md) A framework for defining and monitoring the reliability of a service. Elastic {{observability}} allows for creating and tracking SLOs to ensure that performance targets are being met.
 :::
-
-Read the documentation for each of the {{observability}} features to learn more about how to use them.
-
-- [Log monitoring](/solutions/observability/logs.md)
-- [Infrastructure and hosts monitoring](/solutions/observability/infra-and-hosts.md)
-- [Applications performance monitoring](/solutions/observability/apm/index.md)
-- [Synthetics monitoring](/solutions/observability/synthetics/index.md)
-- [Incident management](/solutions/observability/incident-management.md)
-- [AI Assistant](/solutions/observability/observability-ai-assistant.md)
--->
-
-## Related reference [_reference_documentation]
-
-The {{observability}} reference documentation is available in the [Elastic reference documentation](/reference/observability/index.md).
-
-You can also browse reference documentation for the following components:
-
-- [Elastic Distributions of OpenTelemetry (EDOT)](opentelemetry://reference/index.md)
-- [Fleet and Elastic Agent](/reference/fleet/index.md)
-- [Elastic APM](/reference/apm/observability/apm.md)
-- [Elastic APM agents](/reference/apm-agents/index.md)
-
-Browse the latest [{{observability}} release notes](/release-notes/elastic-observability/index.md) for more information on new features, enhancements, and fixes.
