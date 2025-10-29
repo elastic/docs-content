@@ -117,12 +117,12 @@ A deployment can be configured to trust all or specific deployments in any envir
     ```yaml
     instances:
       - name: "node1"
-        dns: ["node1.mydomain.com"]
-        ip: ["192.168.1.1"]
+        dns: ["<NODE1_FQDN>"]
+        ip: ["192.0.2.1"]
         cn: ["node1.node.1234567abcd.cluster.myscope.account"]
       - name: "node2"
-        dns: ["node2.mydomain.com"]
-        ip: ["192.168.1.2"]
+        dns: ["<NODE2_FQDN>"]
+        ip: ["192.0.2.2"]
         cn: ["node2.node.1234567abcd.cluster.myscope.account"]
     ```
 
@@ -131,17 +131,16 @@ A deployment can be configured to trust all or specific deployments in any envir
     * All the clusters in your {{ece}} environment are signed by the same certificate authority. Therefore, adding this CA would make the self-managed cluster trust all your clusters in your ECE environment. This should be limited using the setting `xpack.security.transport.ssl.trust_restrictions.path` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md), which points to a file that limits the certificates to trust based on their `otherName`-attribute.
     * For example, the following file would trust:
 
-    ```yaml
-      trust.subject_name:
-      - *.node.aaaabbbbaaaabbbb.cluster.1053523734.account <1>
-      - *.node.xxxxyyyyxxxxyyyy.cluster.1053523734.account <1>
-      - *.node.*.cluster.83988631.account <2>
-      - node*.example.com <4>
-    ```
-
-    1. two specific clusters with cluster ids `aaaabbbbaaaabbbb` and `xxxxyyyyxxxxyyyy` in an ECE environment with Environment ID `1053523734`
-    2. any cluster from an ECE environment with Environment ID `83988631`
-    3. the nodes from its own cluster (whose certificates follow a different convention: `CN = node1.example.com`, `CN = node2.example.com` and `CN = node3.example.com`)
+      ```yaml
+        trust.subject_name:
+        - *.node.aaaabbbbaaaabbbb.cluster.1053523734.account <1>
+        - *.node.xxxxyyyyxxxxyyyy.cluster.1053523734.account <1>
+        - *.node.*.cluster.83988631.account <2>
+        - node*.<CLUSTER_FQDN> <3>
+      ```
+      1. Two specific clusters with cluster ids `aaaabbbbaaaabbbb` and `xxxxyyyyxxxxyyyy` in an ECE environment with Environment ID `1053523734`
+      2. Any cluster from an ECE environment with Environment ID `83988631`
+      3. The nodes from its own cluster (whose certificates follow a different convention: `CN = node1.<CLUSTER_FQDN>`, `CN = node2.<CLUSTER_FQDN>` and `CN = node3.<CLUSTER_FQDN>`)
 
 ::::{tip}
 Generate new node certificates for an entire cluster using the file input mode of the certutil.
@@ -151,7 +150,7 @@ Generate new node certificates for an entire cluster using the file input mode o
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.example.com", "CN = node2.example.com" and "CN = node3.example.com" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:
+In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.<CLUSTER_FQDN>", "CN = node2.<CLUSTER_FQDN>" and "CN = node3.<CLUSTER_FQDN>" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:
 
 ```json
 {
@@ -166,7 +165,7 @@ In order to trust a cluster whose nodes present certificates with the subject na
       {
         "type" : "generic",
         "name" : "My Self-managed environment",
-        "additional_node_names" : ["node1.example.com", "node2.example.com", "node3.example.com",],
+        "additional_node_names" : ["node1.<CLUSTER_FQDN>", "node2.<CLUSTER_FQDN>", "node3.<CLUSTER_FQDN>",],
         "certificates" : [
             {
                 "pem" : "-----BEGIN CERTIFICATE-----\nMIIDTzCCA...H0=\n-----END CERTIFICATE-----"
