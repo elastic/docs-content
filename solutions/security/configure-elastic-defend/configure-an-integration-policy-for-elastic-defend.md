@@ -238,8 +238,11 @@ stack: ga 9.2
 serverless: ga
 ```
 
+Device control helps protect your Linux and Mac endpoints from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
 
-Device control helps protect your organization from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
+::::{important}
+Device control only affects external USB storage devices. It does not affect other peripherals such as Yubikeys, webcams, or keyboards.
+::::
 
 To configure device control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. Your policy specifies which operations these devices are allowed to take on a host. You can create [trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md) to define exceptions to your policy for specific devices. 
 
