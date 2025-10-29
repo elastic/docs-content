@@ -68,7 +68,7 @@ To add a remote cluster from Stack Management in {{kib}}:
 2. Select **Add a remote cluster**.
 3. Select **Certificates** as the connection type.
 4. Enter a name (*cluster alias*) for the remote cluster.
-5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the transport port (defaults to `9300`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9300` or `192.168.1.1:9300`.
+5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the transport port (defaults to `9300`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9300` or `192.0.2.1:9300`.
 
     Starting with {{kib}} 9.2, you can also specify IPv6 addresses.
 
@@ -86,7 +86,7 @@ PUT /_cluster/settings
       "remote" : {
         "cluster_one" : {    <1>
           "seeds" : [
-            "127.0.0.1:9300" <2>
+            "<MY_REMOTE_CLUSTER_ADDRESS>:9300" <2>
           ]
         }
       }
@@ -96,7 +96,7 @@ PUT /_cluster/settings
 ```
 
 1. The cluster alias of this remote cluster is `cluster_one`.
-2. Specifies the hostname and transport port of a seed node in the remote cluster.
+2. Specifies the hostname and transport port of at least a seed node in the remote cluster.
 
 
 You can use the [remote cluster info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) to verify that the local cluster is successfully connected to the remote cluster:
@@ -111,7 +111,7 @@ The API response indicates that the local cluster is connected to the remote clu
 {
   "cluster_one" : {
     "seeds" : [
-      "127.0.0.1:9300"
+      "<MY_REMOTE_CLUSTER_ADDRESS>:9300"
     ],
     "connected" : true,
     "num_nodes_connected" : 1,  <1>
@@ -143,20 +143,20 @@ PUT _cluster/settings
       "remote": {
         "cluster_one": {
           "seeds": [
-            "127.0.0.1:9300"
+            "<MY_REMOTE_CLUSTER_ADDRESS>:9300"
           ]
         },
         "cluster_two": {
           "mode": "sniff",
           "seeds": [
-            "127.0.0.1:9301"
+            "<MY_SECOND_REMOTE_CLUSTER_ADDRESS>:9300"
           ],
           "transport.compress": true,
           "skip_unavailable": true
         },
         "cluster_three": {
           "mode": "proxy",
-          "proxy_address": "127.0.0.1:9302"
+          "proxy_address": "<MY_THIRD_REMOTE_CLUSTER_ADDRESS>:9300"
         }
       }
     }
@@ -226,15 +226,15 @@ In the following example, `cluster_one`, `cluster_two`, and `cluster_three` are 
 cluster:
     remote:
         cluster_one:
-            seeds: 127.0.0.1:9300
+            seeds: <MY_REMOTE_CLUSTER_ADDRESS>:9300
         cluster_two:
             mode: sniff
-            seeds: 127.0.0.1:9301
+            seeds: <MY_SECOND_REMOTE_CLUSTER_ADDRESS>:9300
             transport.compress: true      <1>
             skip_unavailable: true        <2>
         cluster_three:
             mode: proxy
-            proxy_address: 127.0.0.1:9302 <3>
+            proxy_address: <MY_THIRD_REMOTE_CLUSTER_ADDRESS>:9300 <3>
 ```
 
 1. Compression is explicitly enabled for requests to `cluster_two`.
