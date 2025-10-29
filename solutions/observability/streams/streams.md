@@ -63,7 +63,7 @@ To manage all streams, you need the following permissions:
 - **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
 
 To view streams, you need the following permissions:
-- **Data stream level**: `read`, v`iew_index_metadata`, `monitor`
+- **Data stream level**: `read`, `view_index_metadata`, `monitor`
 
 For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
 
