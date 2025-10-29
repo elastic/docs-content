@@ -127,7 +127,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
   :   Indicates whether JWKS background reloading is enabled. Defaults to `false`.
 
   `pkc_jwkset_reload.file_interval`
-  :   Specifies the reload interval for file-based JWKS (`5m`).
+  :   Specifies the reload interval for file-based JWKS. Defaults to `5m`.
 
   `pkc_jwkset_reload.url_interval_min`
   :   Specifies the minimum reload interval for URL-based JWKS. The `Expires` and `Cache-Control` HTTP response headers inform the reload interval. This configuration setting is the lower bound of what is considered, and it is also the default interval in the absence of useful response headers (`1h`).
