@@ -434,3 +434,106 @@ You can create the following Mustache template in the email action for your rule
 When rendered into Markdown and then HTML and viewed in an email client, it looks like this:
 
 ![Email template rendered in an email client](/explore-analyze/images/kibana-email-mustache-template-rendered.png "")
+
+## Debugging Rule Variables [debugging-rule-action-variables]
+For diagnostic or exploratory purposes, you can list all available variables and their content. To do this, use the `{{{.}}}` triple-brace Mustache tag in your connector's body (for example, in an email message or a webhook payload).
+
+This tag renders the entire variable context as a JSON object in the action's output. Reviewing this output helps you understand the data structure and identify the correct variable paths to use in your templates, such as `{{context.reason}}` or `{{rule.name}}`.
+
+Here is an example of the JSON output you might see:
+```json
+{
+    "alertId": "40db4e2e-9f33-4b4c-8562-1b60408cdd57",
+    "alertName": "Custom threshold rule deactivate",
+    "spaceId": "default",
+    "tags": [],
+    "alertInstanceId": "*",
+    "alertActionGroup": "custom_threshold.fired",
+    "alertActionGroupName": "Alert",
+    "context": {
+        "alertDetailsUrl": "https://....",
+        "reason": "Document count is 4,656, above the threshold of 1. (duration: 1 min, data view: Metrics)",
+        "timestamp": "2025-10-29T08:40:59.208Z",
+        "value": [
+            "4,656"
+        ],
+        "viewInAppUrl": "https://.....",
+        "tags": []
+    },
+    "date": "2025-10-29T08:41:00.229Z",
+    "state": {
+        "start": "2025-10-29T08:40:59.208Z",
+        "duration": "0"
+    },
+    "kibanaBaseUrl": "https://.....",
+    "params": {
+        "criteria": [
+            {
+                "comparator": ">",
+                "metrics": [
+                    {
+                        "name": "A",
+                        "aggType": "count"
+                    }
+                ],
+                "threshold": [
+                    1
+                ],
+                "timeSize": 1,
+                "timeUnit": "m"
+            }
+        ],
+        "alertOnNoData": false,
+        "alertOnGroupDisappear": false,
+        "searchConfiguration": {
+            "query": {
+                "query": "",
+                "language": "kuery"
+            },
+            "index": "52756a9e-48d7-4d49-8e50-357fda22adf9"
+        }
+    },
+    "rule": {
+        "params": {
+            "criteria": [
+                {
+                    "comparator": ">",
+                    "metrics": [
+                        {
+                            "name": "A",
+                            "aggType": "count"
+                        }
+                    ],
+                    "threshold": [
+                        1
+                    ],
+                    "timeSize": 1,
+                    "timeUnit": "m"
+                }
+            ],
+            "alertOnNoData": false,
+            "alertOnGroupDisappear": false,
+            "searchConfiguration": {
+                "query": {
+                    "query": "",
+                    "language": "kuery"
+                },
+                "index": "52756a9e-48d7-4d49-8e50-357fda22adf9"
+            }
+        },
+        "id": "40db4e2e-9f33-4b4c-8562-1b60408cdd57",
+        "name": "Custom threshold rule deactivate",
+        "type": "observability.rules.custom_threshold",
+        "spaceId": "default",
+        "tags": [],
+        "url": "https://.../app/observability/alerts/rules/40db4e2e-9f33-4b4c-8562-1b60408cdd57"
+    },
+    "alert": {
+        "id": "*",
+        "uuid": "2b96fa25-3f6d-482d-8787-4df902e5c315",
+        "actionGroup": "custom_threshold.fired",
+        "actionGroupName": "Alert",
+        "flapping": false
+    }
+}
+```
