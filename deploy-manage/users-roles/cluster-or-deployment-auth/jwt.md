@@ -123,7 +123,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
   `pkc_jwkset_path`
   :   The file name or URL to a JSON Web Key Set (JWKS) with the public key material that the JWT Realm uses for verifying token signatures. A value is considered a file name if it does not begin with `https`. The file name is resolved relative to the {{es}} configuration directory. If a URL is provided, then it must begin with `https://` (`http://` is not supported). {{es}} automatically caches the JWK set and will attempt to refresh the JWK set upon signature verification failure, as this might indicate that the JWT Provider has rotated the signing keys. Background JWKS reloading can also be configured with the setting `pkc_jwkset_reload.enabled`.
 
-  `pkc_jwkset_reload.enabled`
+  `pkc_jwkset_reload.enabled` {applies_to}`stack: ga 9.3`
   :   Indicates whether JWKS background reloading is enabled. Defaults to `false`.
 
   `pkc_jwkset_reload.file_interval`
