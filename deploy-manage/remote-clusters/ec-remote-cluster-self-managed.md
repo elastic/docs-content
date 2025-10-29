@@ -145,11 +145,11 @@ A deployment can be configured to trust all or specific deployments in any envir
     ```yaml
     instances:
       - name: "node1"
-        dns: ["node1.mydomain.com"]
+        dns: ["<NODE1_FQDN>"]
         ip: ["192.0.2.1"]
         cn: ["node1.node.1234567abcd.cluster.myscope.account"]
       - name: "node2"
-        dns: ["node2.mydomain.com"]
+        dns: ["<NODE2_FQDN>"]
         ip: ["192.0.2.2"]
         cn: ["node2.node.1234567abcd.cluster.myscope.account"]
     ```
