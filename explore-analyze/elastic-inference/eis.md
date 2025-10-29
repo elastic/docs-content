@@ -68,6 +68,10 @@ Tokens are the fundamental units that language models process for both input and
 
 For example, the sentence "It was the best of times, it was the worst of times." contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
 
+### Checking Usage
+
+You can see your token usage by [checking your overall cloud usage](https://cloud.elastic.co/billing/usage) and looking for items that have "Inference" set as the Billing Dimension.
+
 ## Rate Limits
 
 The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
