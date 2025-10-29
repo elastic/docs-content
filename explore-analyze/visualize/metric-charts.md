@@ -8,17 +8,17 @@ description: Instructions and best practices for building metric charts with Kib
 
 # Build metric charts with {{kib}}
 
-Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs like total sales, active users, or error rates. They can show a plain number, a percentage, or a calculation like a count, sum, or average.
+Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs like total sales, active users, or error rates.
 
-Metric charts are the best visualization when you need to show a single, important value and make it visible.
+They work with any numeric data: plain numbers, percentages, or calculations like a count, sum, or average. You can get this numeric data from numeric fields stored in your {{es}} documents, or from aggregation functions and formulas that you can apply to any type of field.
 
 The best way to create metric charts in {{kib}} is with **Lens**.
 
 ![Metric chart representing an SLO](../images/metric-chart.png "=30%")
 
-## Requirements
+## When to use metric charts
 
-Metric charts work with any numeric data. That data can directly come from numeric fields in your data, or be the result of aggregations or formulas.
+Metric charts are the best visualization when you need to show a single, important value and make it visible.
 
 ## Build a metric chart
 
@@ -33,7 +33,7 @@ To build a metric chart:
 ::::
 
 ::::{step} Set the visualization to Metric
-New visualizations suggest to create **Bar** charts by default. 
+New visualizations default to creating **Bar** charts. 
 
 Using the dropdown indicating **Bar**, select **Metric**.
 ::::
@@ -49,7 +49,7 @@ Using the dropdown indicating **Bar**, select **Metric**.
 Refer to [](#settings) to find all data configuration options for your metric chart.
 ::::
 
-::::{step} Customize the appearance of the chart
+::::{step} Customize the chart with best practices
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
 **Use color wisely**
@@ -69,67 +69,6 @@ Save your visualization by selecting **Save and return** if you're adding it fro
 ::::
 
 :::::
-
-## Examples
-
-Here are common patterns you can adapt for your own data.
-
-**Executive dashboard KPI**
-:   Display total revenue as a prominent number on an executive dashboard:
-
-    * **Primary metric**: `sum(sales.revenue)`
-    * **Value format**: Currency with 1 decimal place
-    * **Title**: "Total Revenue"
-    * **Subtitle**: "Current Quarter"
-    * **Color by value**: Green when above target, red when below
-
-**Website traffic with trend**
-:   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
-
-    * **Primary metric**: `count()` (current week's page views)
-    * **Secondary metric**: `count(shift='1w')` (previous week's page views)
-      * **Trend indicator**: Dynamic coloring enabled
-      * **Compare to**: Primary metric
-      * **Display**: Both icon and value
-      * **Color palette**: Green for increases (more traffic is positive)
-    * **Title**: "Weekly Page Views"
-
-**System performance by service**
-:   Compare response times across multiple services using breakdown:
-
-    * **Primary metric**: `average(response_time_ms)`
-    * **Break down by**: `service.name`
-    * **Value format**: Number with suffix "ms"
-    * **Title**: "Average Response Time"
-    * **Color mapping**: Assign consistent colors to each service name
-    * **Color by value**: Red above 500ms, yellow between 200-500ms, green below 200ms
-
-**Error rate with formula**
-:   Calculate and display error percentage using a formula:
-
-    * **Primary metric formula**: `count(kql='status_code >= 400') / count() * 100`
-    * **Value format**: Percent with 2 decimals
-    * **Title**: "Error Rate"
-    * **Color by value**: Green below 1%, yellow between 1-5%, red above 5%
-
-**Capacity utilization**
-:   Show current usage against maximum capacity:
-
-    * **Primary metric**: `average(system.memory.used.bytes)`
-    * **Maximum**: `average(system.memory.total.bytes)`
-    * **Value format**: Bytes
-    * **Title**: "Memory Usage"
-    * **Color by value** (Percent mode): Green 0-70%, yellow 70-90%, red above 90%
-
-**Multi-service comparison**
-:   Create a comprehensive view with multiple services side-by-side:
-
-    * **Primary metric**: `count()`
-    * **Break down by**: `service.name`
-    * **Value format**: Number, compact values enabled
-    * **Title**: "Request Volume by Service"
-    * **Subtitle**: "Last Hour"
-    * **Color mapping**: Assign brand colors to each service for consistency
 
 ## Advanced configurations
 
@@ -177,7 +116,7 @@ To add trend indicators to your metric visualization:
        * The secondary metric label changes to **Difference**. You can change this by editing the **Prefix** option of the metric.
        * If you chose a **Display** option that shows a value, the secondary metric value is automatically updated to show the difference compared to the primary metric.
 
-7. Apply your changes. 
+8. Apply your changes. 
 
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
@@ -195,7 +134,7 @@ Customize your metric chart to display exactly the information you need, formatt
 
 **Appearance**
 :   Define the formatting of the primary metric, including:
-    - **Name**: By default, the chart uses the function or formula as title. It is a best practice to customize this with a readable title.
+    - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a readable title.
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Color by value**: Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
       - **Static**: Pick a color and its opacity. That color always remains the same and is independent from the metric's value.
@@ -218,7 +157,7 @@ Customize your metric chart to display exactly the information you need, formatt
 
 **Appearance**
 :   Define the formatting of the secondary metric, including:
-    - **Name**: By default, the chart uses the function or formula as title. It is a best practice to customize this with a readable title.
+    - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a readable title.
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Label**: Define the label displayed next to the secondary metric. By default, the **Name** shows. You can instead show a **Custom** value or hide it by selecting **None**.
     - **Label position**: Choose to show the label **Before** or **After** the metric.
@@ -233,8 +172,8 @@ Customize your metric chart to display exactly the information you need, formatt
     :::
 
 **Appearance**
-:   Define the formatting of the secondary metric, including:
-    - **Name**: By default, the chart uses the function or formula as title. It is a best practice to customize this with a readable title.
+:   Define the formatting of the maximum value, including:
+    - **Name**: It's a best practice to customize this with a readable title.
 
 ### Breakdown settings [breakdown-options]
 
@@ -242,7 +181,7 @@ Customize your metric chart to display exactly the information you need, formatt
 :   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. You can optionally specify the following options:
 
     - **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
-    - **Rank by**: The dimension top values are ranked by.
+    - **Rank by**: The dimension by which top values are ranked.
     - **Rank direction**: The direction to use for the ranking.
     - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
 
@@ -250,8 +189,8 @@ Customize your metric chart to display exactly the information you need, formatt
     :::
 
 **Appearance**
-:   Define the formatting of the secondary metric, including:
-    - **Name**: By default, the chart uses the function or formula as title. It is a best practice to customize this with a readable title.
+:   Define the formatting of the broken down view of the metric, including:
+    - **Name**: It's a best practice to customize this with a readable title.
     - **Layout columns**: The number of columns used to lay out the various tiles of your metric chart.
 
 
@@ -272,3 +211,48 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Other**
 :   Choose the **Icon** position.
+
+
+## Metric chart examples
+
+The following examples show various configuration options that you can use for building impactful metrics.
+
+**Executive dashboard KPI**
+:   Display total revenue as a prominent number on an executive dashboard:
+
+    * **Title**: "Total Revenue"
+    * **Primary metric**: `sum(sales.revenue)`
+    * **Value format**: Currency with no decimal. You can use a custom format to add symbols such as `$`
+    * **Subtitle**: "Current Quarter"
+    * **Color by value**: Green when above $250,000 target, red when below
+    * **Supporting visualization:** "Line" to show revenue evolution throughout the quarter
+
+    ![Metric with a total revenue below the target](../images/metric-total-revenue-example.png "=70%")
+
+**Website traffic with trend**
+:   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
+
+    * **Title**: "Weekly page views"
+    * **Subtitle**: "This week"
+    * **Primary metric**: `count()` (current week's page views)
+    * **Secondary metric**: `count(shift='1w')` (previous week's page views)
+      * **Color by value**: Dynamic coloring
+      * **Compare to**: Primary metric
+      * **Display**: Both icon and value
+      * **Label**: "Compared to last week"
+      * **Color palette**: Green for increases (more traffic is positive)
+
+    ![Metric showing weekly visits with weekly comparison trend](../images/metric-website-views-weekly-trend-example.png "=70%")
+
+**Sales per day of the week**
+:   Compare revenue across days of the week using breakdown:
+
+    * **Title**: "Revenue per weekday"
+    * **Primary metric**: `sum(sales.total)`
+      * **Value format**: Currency with no decimal. You can use a custom format to add symbols such as `$`
+      * **Color by value**: Red below $30,000, yellow between $30,000-$35,000, green above $35,000
+    * **Break down by**: `day_of_week`
+      * **Number of values**: `7`
+      * **Layout columns**: `4`
+
+    ![Metric showing revenue broken down per day of the week](../images/metric-revenue-breakdown-example.png "=70%")
