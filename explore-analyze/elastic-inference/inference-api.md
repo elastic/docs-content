@@ -11,11 +11,11 @@ products:
 
 # {{infer-cap}} integrations
 
-{{es}} provides a machine learning [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/group/endpoint-inference) to create and manage {{infer}} endpoints that integrate with services such as {{es}} (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
+{{es}} provides a machine learning [{{infer}} API]({{es-apis}}group/endpoint-inference) to create and manage {{infer}} endpoints that integrate with services such as {{es}} (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
 You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint:
 
-- using the [Create an inference endpoint API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-inference-put)
+- using the [Create an inference endpoint API]({{es-apis}}operation/operation-inference-put)
 - through the [Inference endpoints UI](#add-inference-endpoints).
 
 ## Default {{infer}} endpoints [default-enpoints]
