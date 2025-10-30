@@ -34,7 +34,8 @@ If network security filters are applied to the remote cluster on ECE, the remote
 
 ### Prerequisites and limitations [ece_prerequisites_and_limitations_2]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment_2]
 
@@ -43,7 +44,8 @@ If network security filters are applied to the remote cluster on ECE, the remote
 
 ### Configure the local deployment [ece_configure_the_local_deployment]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
 The steps to follow depend on whether the Certificate Authority (CA) of the remote ECE environment’s proxy or load balancing infrastructure is public or private.
 
