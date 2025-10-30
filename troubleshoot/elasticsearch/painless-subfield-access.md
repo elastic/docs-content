@@ -9,13 +9,11 @@ products:
 
 # Troubleshoot subfield access in Painless
 
-Follow these guidelines to avoid nested field access errors in your Painless script.
+Follow these guidelines to avoid nested field access errors in your Painless scripts.
 
-## No field found for \[field\] in mapping
+When you access subfields using the doc accessor, using incorrect syntax or trying to access non-existent fields without proper validation leads to runtime errors.
 
-When accessing subfields through doc accessor, using incorrect syntax or trying to access non-existent fields without proper validation leads to runtime errors.
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -80,9 +78,9 @@ When accessing subfields through doc accessor, using incorrect syntax or trying 
 }
 ```
 
-### Problematic approaches
+## Problematic approaches
 
-Following are some common incorrect ways to access subfields:
+The following two methods of accessing subfields will result in errors:
 
 ```json
 {
@@ -122,7 +120,7 @@ Or:
 }
 ```
 
-### Sample data
+## Sample data
 
 ```json
 PUT events/_doc/1
@@ -149,13 +147,13 @@ PUT events/_doc/3
 }
 ```
 
-### Root cause
+## Root cause
 
-When accessing subfields in Painless scripts using the `doc` accessor, the correct syntax requires using the full dot notation path as a single string (`doc['parent.child’]`), not as a separate property access or bracket notation. This applies to all Painless contexts where `doc` accessor is available, including runtime mapping, script queries, aggregations, and ingest processors.
+When accessing subfields in Painless scripts using the `doc` accessor, the correct syntax requires using the full dot notation path as a single string (`doc['parent.child’]`), rather than as a separate property access or bracket notation. This applies to all Painless contexts where `doc` accessor is available, including runtime mapping, script queries, aggregations, and ingest processors.
 
 The error occurs because `doc[‘event’]` attempts to find a field named “event” rather than accessing subfields within the event object. 
 
-### Solution: Correct subfield access with validation
+## Solution: Correct subfield access with validation
 
 Use full dot notation and validate that the field exists::
 
@@ -188,7 +186,7 @@ POST events/_search
 }
 ```
 
-### Results
+## Results
 
 ```json
 {
@@ -280,9 +278,9 @@ POST events/_search
 }
 ```
 
-### Notes
+## Notes
 
-* Use full dot notation as a single string: `doc['parent.child’]` not `doc['parent.['child’].`  
+* Use full dot notation as a single string: `doc['parent.child’]` rather than `doc['parent.['child’].`  
 * Always validate field existence using `.size() > 0` before accessing subfield values.  
 * Field validation is crucial when documents have varying object structures.
 

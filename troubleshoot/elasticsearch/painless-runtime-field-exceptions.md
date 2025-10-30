@@ -9,15 +9,13 @@ products:
 
 # Troubleshoot runtime field exceptions in Painless
 
-Follow these guidelines to avoid [runtime field](elasticsearch://reference/scripting-languages/painless/painless-runtime-fields-context.md) exceptions in your Painless script.
+Follow these guidelines to avoid [runtime field](elasticsearch://reference/scripting-languages/painless/painless-runtime-fields-context.md) exceptions in your Painless scripts.
 
-## Runtime mappings
+## Using `return` instead of `emit` in runtime field in runtime mappings
 
-### Using return instead of emit in runtime field
+When you create runtime mappings in a Painless script, using `return` instead of `emit` to output values leads to compilation errors, as runtime field scripts require the `emit()` function to produce field values.
 
-When creating runtime mappings, using `return` instead of `emit` to output values leads to compilation errors, as runtime field scripts require the `emit()` function to produce field values.
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -74,7 +72,7 @@ When creating runtime mappings, using `return` instead of `emit` to output value
 }
 ```
 
-### Problematic code
+## Problematic code
 
 ```json
 {
@@ -94,11 +92,11 @@ When creating runtime mappings, using `return` instead of `emit` to output value
 }
 ```
 
-### Root cause
+## Root cause
 
-Runtime field scripts use `emit()` to produce values, not `return`. The `emit()` function is specifically designed for runtime mappings to output field values, while `return` is used in other Painless contexts like script queries or update scripts. The error occurs because runtime field scripts expect void return type, but the script attempts to return a String value. 
+Runtime field scripts use `emit()` to produce values, rather than `return`. The `emit()` function is specifically designed for runtime mappings to output field values, while `return` is used in other Painless contexts such as script queries or update scripts. The error occurs because runtime field scripts expect a void return type, but the script attempts to return a String value. 
 
-### Solution: Replace return with emit
+## Solution: Replace return with emit
 
 Replace `return` statements with `emit()` calls:
 
@@ -127,7 +125,7 @@ POST users/_search
 }
 ```
 
-### Results
+## Results
 
 ```json
 {
@@ -159,8 +157,7 @@ POST users/_search
 }
 ```
 
-### Notes
+## Notes
 
 * Runtime field scripts must use `emit()` to output values, not `return`.  
 * `emit()` can be called multiple times in a script to emit multiple values.
-

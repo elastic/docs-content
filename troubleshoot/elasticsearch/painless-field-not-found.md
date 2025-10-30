@@ -1,5 +1,5 @@
 ---
-navigation_title: Field not found (mapping conflicts)
+navigation_title: Field not found errors
 applies_to:
   stack: ga
   serverless: ga
@@ -7,15 +7,13 @@ products:
   - id: elasticsearch
 ---
 
-# Troubleshoot field not found (mapping conflicts) in Painless
+# Troubleshoot field not found errors in Painless
 
-Follow these guidelines to avoid field access errors in your Painless script.
+Follow these guidelines to avoid field access errors in your Painless scripts.
 
-## A document doesn't have a value for a field
+When you work with document fields, attempting to access fields that don't exist in all documents or aren't properly mapped leads to field not found exceptions, causing script failures.
 
-When working with document fields, attempting to access fields that don't exist in all documents or aren't properly mapped leads to field not found exceptions, causing script failures.
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -78,7 +76,7 @@ When working with document fields, attempting to access fields that don't exist 
 }
 ```
 
-### Problematic code
+## Problematic code
 
 ```json
 {
@@ -98,13 +96,13 @@ When working with document fields, attempting to access fields that don't exist 
 }
 ```
 
-### Root cause
+## Root cause
 
 A field not found exception occurs when a script tries to access a field that is not defined in the index mappings. If the field is defined in the mappings but has no value in some documents, the script will not fail as long as you first check whether the field has values.  
    
-For example, calling `doc['author_score'].value` directly on a document without that field will cause an error. The recommended approach is to use `doc[<field>].size()==0` to check if the field is missing in a document before accessing its value.
+For example, calling `doc['author_score'].value` directly on a document that does not contain that field causes an error. The recommended approach is to use `doc[<field>].size()==0` to check if the field is missing in a document before accessing its value.
 
-### Sample documents
+## Sample documents
 
 ```json
 POST articles/_doc
@@ -123,9 +121,9 @@ POST articles/_doc
 }
 ```
 
-### Solution 1: Check field existence before accessing
+## Solution 1: Check field existence before accessing
 
-Always verify field existence using `size()` before accessing field values:
+Always verify the existence of a field by using `size()` before accessing field values:
 
 ```json
 GET articles/_search
@@ -152,9 +150,9 @@ GET articles/_search
 }
 ```
 
-### Solution 2: New field API approach
+## Solution 2: New field API approach
 
-The [field API](/explore-analyze/scripting/script-fields-api.md) provides a more elegant solution that handles missing values automatically by allowing you to specify default values. This approach is more concise and eliminates the need for explicit field existence checks:
+The [field API](/explore-analyze/scripting/script-fields-api.md) provides a more elegant solution that handles missing values automatically, by allowing you to specify default values. This approach is more concise and eliminates the need for explicit field existence checks:
 
 ```json
 GET articles/_search
@@ -178,9 +176,9 @@ GET articles/_search
 }
 ```
 
-### Solution 3: Use the $ shortcut in field API syntax
+## Solution 3: Use the $ shortcut in field API syntax
 
-With the field API you can make the solution even more concise using the `$` shortcut:
+With the field API, you can make the solution even more concise using the `$` shortcut:
 
 ```json
 GET articles/_search
@@ -204,7 +202,7 @@ GET articles/_search
 }
 ```
 
-### Results
+## Results
 
 ```json
 {
@@ -238,12 +236,10 @@ GET articles/_search
 }
 ```
 
-### Notes
+## Notes
 
-* **Field presence:** Always check if fields exist before accessing them using `.size() > 0`.  
+* **Field presence:** Always check if fields exist before accessing them, using `.size() > 0`.  
 * **Document variation:** Not all documents are guaranteed to have the same field structure.  
 * **Mapping awareness:** A field must be defined in the index mappings to be accessed with doc values, and its value in each document must be validated.  
-* **Field API:** The `field` API and `$` shortcut handle missing values gracefully with default values.  
-* **Compatibility:** Some field types (like `text` or `geo`) [aren't yet supported](/explore-analyze/scripting/script-fields-api.md#_supported_mapped_field_types) by the field API; continue using `doc` for those.
-
-
+* **Field API:** The `field` API and `$` shortcut handle missing values gracefully, using default values.  
+* **Compatibility:** Some field types (such as `text` or `geo`) [aren't yet supported](/explore-analyze/scripting/script-fields-api.md#_supported_mapped_field_types) by the field API; continue using `doc` for those.

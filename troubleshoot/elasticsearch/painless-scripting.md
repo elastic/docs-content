@@ -9,7 +9,7 @@ products:
 
 # Troubleshoot Painless scripting in {{es}}
 
-Use the topics in this section to troubleshoot common errors in your [Painless scripts](/explore-analyze/scripting/modules-scripting-painless.md).
+Use the topics in this section to troubleshoot common errors in your [Painless](/explore-analyze/scripting/modules-scripting-painless.md) scripts.
 
 * [Array/list manipulation errors](/troubleshoot/elasticsearch/painless-array-list-manipulation-errors.md)
 * [Date math errors](/troubleshoot/elasticsearch/painless-date-math-errors.md)

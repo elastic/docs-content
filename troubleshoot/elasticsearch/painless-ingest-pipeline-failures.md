@@ -9,15 +9,11 @@ products:
 
 # Troubleshoot ingest pipeline failures in Painless
 
-Follow these guidelines to avoid [ingest pipeline](elasticsearch://reference/scripting-languages/painless/painless-ingest-processor-context.md) script errors in your Painless script.
+Follow these guidelines to avoid [ingest pipeline](elasticsearch://reference/scripting-languages/painless/painless-ingest-processor-context.md) errors in your Painless scripts.
 
-## Date conversion
+When you convert time strings to nanoseconds in ingest pipelines, attempting to perform arithmetic operations directly on string values without proper date parsing causes type casting errors. 
 
-### Class cast exception when converting date data types
-
-When converting time strings to nanoseconds in ingest pipelines, attempting to perform arithmetic operations directly on string values without proper date parsing leads to type casting errors. 
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -64,7 +60,7 @@ When converting time strings to nanoseconds in ingest pipelines, attempting to p
 }
 ```
 
-### Problematic code
+## Problematic code
 
 ```json
 {
@@ -76,11 +72,11 @@ When converting time strings to nanoseconds in ingest pipelines, attempting to p
 }
 ```
 
-### Root cause
+## Root cause
 
-When accessing fields via `ctx.time_field` in ingest pipelines, the values are not automatically parsed to their mapped field types. The script attempts to multiply a string value (time field) directly with an integer. Time strings like `"00:00:00.022"` remain as strings and need to be properly parsed as dates and converted to epoch milliseconds before performing arithmetic operations.
+When accessing fields using `ctx.time_field` in ingest pipelines, the values are not automatically parsed to their mapped field types. The script attempts to multiply a string value (time field) directly with an integer. Time strings such as `"00:00:00.022"` remain as strings. They need to be properly parsed as dates and converted to epoch milliseconds before performing arithmetic operations.
 
-### Solution: Use `SimpleDateFormat` in the script processor
+## Solution: Use `SimpleDateFormat` in the script processor
 
 Parse the time string directly using SimpleDateFormat and get epoch milliseconds:
 
@@ -113,7 +109,7 @@ POST _ingest/pipeline/_simulate
 }
 ```
 
-### Result
+## Result
 
 ```json
 {
@@ -136,7 +132,7 @@ POST _ingest/pipeline/_simulate
 }
 ```
 
-### Note
+## Notes
 
-* Time strings like `"HH:mm:ss.SSS"` must be explicitly parsed before arithmetic operations.  
+* Time strings such as `"HH:mm:ss.SSS"` must be explicitly parsed before performaing arithmetic operations.  
 * Using `SimpleDateFormat` in a script processor allows custom parsing.

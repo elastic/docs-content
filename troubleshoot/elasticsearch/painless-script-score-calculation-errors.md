@@ -9,14 +9,12 @@ products:
 
 # Troubleshoot script score calculation errors in Painless
 
-Follow these guidelines to avoid scoring calculation errors in your Painless script.
+Follow these guidelines to avoid scoring calculation errors in your Painless scripts.
 
-## script\_score script returned an invalid score
+When you use [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with type `double`,
+ the script can return unexpected null values, negative values `0.0`, or Infinity, causing documents to receive a score of `0` or be excluded from results entirely. This commonly occurs when field access patterns don't account for missing values or when mathematical operations result in null propagation.
 
-When using [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with type `double`,
- it can return unexpected null values, negative values `0.0` or Infinity, causing documents to receive a score of `0` or be excluded from results entirely. This commonly occurs when field access patterns don't account for missing values or when mathematical operations result in null propagation.
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -55,7 +53,7 @@ When using [`script_score`](elasticsearch://reference/query-languages/query-dsl/
 }
 ```
 
-### Problematic code
+## Problematic code
 
 ```json
 {
@@ -78,12 +76,12 @@ When using [`script_score`](elasticsearch://reference/query-languages/query-dsl/
 }
 ```
 
-### Root cause
+## Root cause
 
 The error occurs because of mathematical edge cases in calculations:
 
 1. **Math.log() with zero or negative values:** `Math.log(0)` returns negative infinity, `Math.log(-x)` returns `NaN`.  
-2. **Division by zero:** Operations like `x/0` throw an arithmetic\_exception.  
+2. **Division by zero:** Operations such as `x/0` throw an `arithmetic_exception`.  
 3. **NaN propagation:** Any mathematical operation involving `NaN` results in `NaN`.  
 4. **Infinity calculations:** Operations with infinity often result in `NaN` or unexpected values.
 
@@ -118,7 +116,7 @@ GET products/_search
             return 1.0;
           }
           
-          return Math.max(score, 0.1);  // Ensure minimum positive score
+          return Math.max(score, 0.1);  // Ensure a minimum positive score
         """
       }
     }
@@ -126,7 +124,7 @@ GET products/_search
 }
 ```
 
-### Sample documents
+## Sample documents
 
 ```json
 POST products/_doc
@@ -146,7 +144,7 @@ POST products/_doc
 }
 ```
 
-### Results
+## Results
 
 ```json
 {
@@ -181,7 +179,7 @@ POST products/_doc
 }
 ```
 
-### Notes
+## Notes
 
 * **Mathematical safety:** Validate inputs for functions like `Math.log()`.  
 * **Default values:** Provide meaningful defaults for missing fields to maintain consistent scoring.  

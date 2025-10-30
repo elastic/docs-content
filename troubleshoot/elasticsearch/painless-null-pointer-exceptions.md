@@ -9,17 +9,11 @@ products:
 
 # Troubleshoot null pointer exceptions in Painless
 
-Follow these guidelines to avoid null pointer exceptions in your Painless script.
+Follow these guidelines to avoid null pointer exceptions in your Painless scripts.
 
-## Null\_pointer\_exception
+In Painless, field access methods vary depending on the script execution [context](elasticsearch://reference/scripting-languages/painless/painless-contexts.md). Using a field access pattern that is not valid for the current script context causes a `null_pointer_exception`.
 
-Null pointer exceptions in Painless scripts often occur due to using field access patterns that are not valid for the current script context. 
-
-### Wrong field access patterns in script contexts
-
-When writing Painless scripts in different [contexts](elasticsearch://reference/scripting-languages/painless/painless-contexts.md), using wrong field access patterns leads to null pointer exceptions because field access methods vary depending on the script execution context.
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -109,7 +103,8 @@ POST products/_doc
 
 ### Root cause
 
-A common cause of null pointer exceptions in Painless scripts is attempting to access document fields using incorrect access patterns for the specific [script context](elasticsearch://reference/scripting-languages/painless/painless-contexts.md). In Painless, field access methods are context-dependent. For more information, refer to "Painless syntax-context bridge" in the Explore and Analyze documentation. 
+A common cause of null pointer exceptions in Painless scripts is attempting to access document fields using incorrect access patterns for the specific [script context](elasticsearch://reference/scripting-languages/painless/painless-contexts.md). To learn more about the context-dependent field access methods in Painless, refer to Painless syntax-context bridge in the Explore and Analyze documentation. 
+% Link to come after E&A PR is merged.
 
 The error occurs because `params['_source']` is not available in script filter contexts. In script filters, field values must be accessed through `doc` values, not through the `params['_source']` map.
 
@@ -166,6 +161,4 @@ GET products/_search
 * **Context matters:** Always verify the correct field access pattern for your script context.  
 * **Context limitations:** Script filters cannot access `params['_source']` .  
 * **Field mapping:** Use `.keyword` suffix for text fields when accessing via doc values.
-
-For more details related to Painless context, refer to [Painless context documentation](elasticsearch://reference/scripting-languages/painless/painless-contexts.md) and Painless syntax-context bridge. 
 

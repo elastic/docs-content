@@ -9,13 +9,11 @@ products:
 
 # Troubleshoot type casting issues in Painless
 
-Follow these guidelines to avoid type conversion errors in your Painless script.
+Follow these guidelines to avoid type conversion errors in your Painless scripts.
 
-## Cannot cast from \[type\_number\] to \[type\_number\]
+When you perform [type casting](elasticsearch://reference/scripting-languages/painless/painless-casting.md) in Painless scripts, attempting implicit conversions or casting incompatible types without proper validation leads to compilation and runtime errors.
 
-When performing [type casting](elasticsearch://reference/scripting-languages/painless/painless-casting.md) in Painless scripts, attempting implicit conversions or casting incompatible types without proper validation leads to compilation and runtime errors.
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -70,7 +68,7 @@ When performing [type casting](elasticsearch://reference/scripting-languages/pai
 }
 ```
 
-### Problematic code
+## Problematic code
 
 ```json
 {
@@ -90,7 +88,7 @@ When performing [type casting](elasticsearch://reference/scripting-languages/pai
 }
 ```
 
-### Sample data
+## Sample data
 
 ```json
 PUT products/_doc/1
@@ -106,11 +104,11 @@ PUT products/_doc/2
 }
 ```
 
-### Root cause
+## Root cause
 
-Painless has [specific rules](https://www.elastic.co/docs/reference/scripting-languages/painless/painless-casting) for implicit and explicit type casting between numeric types. While some numeric conversions are allowed implicitly (widening conversions like `int` into `double`), narrowing conversions like `double` to `int` require explicit casting. The script attempts to assign a `double` result to an `int` variable without explicit casting, which causes a compilation error since this is a narrowing conversion that could lose precision. Additionally, field values may be null or of unexpected types, requiring proper validation before casting.
+Painless has [specific rules](https://www.elastic.co/docs/reference/scripting-languages/painless/painless-casting) for implicit and explicit type casting between numeric types. While some numeric conversions are allowed implicitly (widening conversions such as `int` into `double`), narrowing conversions such as `double` to `int` require explicit casting. The script attempts to assign a `double` result to an `int` variable without explicit casting, which causes a compilation error since this is a narrowing conversion that could lose precision. Additionally, field values may be null or of unexpected types, requiring proper validation before casting.
 
-### Solution: Use explicit numeric type casting
+## Solution: Use explicit numeric type casting
 
 Use explicit casting with proper validation:
 
@@ -149,7 +147,7 @@ POST products/_search
 }
 ```
 
-### Results
+## Results
 
 ```json
 {
@@ -208,10 +206,10 @@ POST products/_search
 }
 ```
 
-### Notes
+## Notes
 
-* Validate field existence using `.size() > 0` before accessing values.  
+* Validate the existence of a field using `.size() > 0` before accessing values.  
 * Check for null values using `value != null` before casting.  
 * Use `instanceof Number` to verify the value is numeric before casting.  
 * Handle missing fields gracefully with default values.  
-* When working with {{es}} field values, always validate the actual field type before assuming.
+* When working with {{es}} field values, always validate the actual field type.

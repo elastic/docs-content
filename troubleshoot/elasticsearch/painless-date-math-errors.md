@@ -9,15 +9,11 @@ products:
 
 # Troubleshoot date math errors in Painless
 
-Follow these guidelines to avoid [date](elasticsearch://reference/scripting-languages/painless/using-datetime-in-painless.md) operation errors in your Painless script.
+Follow these guidelines to avoid [date](elasticsearch://reference/scripting-languages/painless/using-datetime-in-painless.md) operation errors in your Painless scripts.
 
-## Runtime mappings context
+When you work with date fields in runtime mappings, accessing methods directly on the document field object can cause errors if the proper value accessor is not used.
 
-### Dynamic method not found error
-
-When working with date fields in runtime mappings, accessing methods directly on the document field object can cause errors if the proper value accessor is not used.
-
-### Error
+## Error
 
 ```json
 {
@@ -76,7 +72,7 @@ When working with date fields in runtime mappings, accessing methods directly on
 }
 ```
 
-### Problematic code
+## Problematic code
 
 ```json
 "script": {
@@ -88,11 +84,11 @@ When working with date fields in runtime mappings, accessing methods directly on
 }
 ```
 
-### Root cause
+## Root cause
 
 The script attempts to call `toInstant()` directly on a `ScriptDocValues.Dates` object. Date fields in Painless require accessing the `.value` property to get the actual date value before calling date methods.
 
-### Solution
+## Solution
 
 Access the date value using `.value` before calling date methods:
 
@@ -100,13 +96,13 @@ Access the date value using `.value` before calling date methods:
 "script": {
   "lang": "painless",
   "source": """
-    def orderDate = doc['order_date'].value; // added .value here
+    def orderDate = doc['order_date'].value; // Appended `.value` to the method.
     emit(orderDate.toInstant().toEpochMilli() + 14400000);
   """
 }
 ```
 
-### Notes
+## Notes
 
 * Always use `.value` when accessing single values from document fields in Painless.  
 * Check for empty fields when the field might not exist in all documents.  

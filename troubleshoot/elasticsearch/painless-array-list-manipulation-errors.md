@@ -7,15 +7,13 @@ products:
   - id: elasticsearch
 ---
 
-# Troubleshoot array/list manipulation errors in Painless
+# Troubleshoot array manipulation errors in Painless
 
-Follow these guidelines to avoid array access errors in your Painless script.
+Follow these guidelines to avoid array (list) access errors in your Painless scripts.
 
-## Array index\_out\_of\_bounds\_exception
+An array `index_out_of_bounds_exception` occurs when a script tries to access an element at a position that does not exist in the array. For example, if an array has two elements, trying to access a third element triggers this exception. 
 
-Array index out of bounds exceptions occur when a script tries to access an element at a position that does not exist in the array. For example, if an array has two elements, trying to access a third element will trigger this exception. 
-
-### Sample error
+## Sample error
 
 ```json
 {
@@ -71,7 +69,7 @@ Array index out of bounds exceptions occur when a script tries to access an elem
 }
 ```
 
-### Problematic code
+## Problematic code
 
 ```json
 {
@@ -92,13 +90,13 @@ Array index out of bounds exceptions occur when a script tries to access an elem
 }
 ```
 
-### Root cause
+## Root cause
 
 The error occurs because the script tries to access index 2 (the third element) in an array that only has two elements (indices 0, 1). Arrays in Painless are zero-indexed, so accessing an index greater than or equal to the array size causes an exception.
 
-### Solution: Check array bounds before accessing
+## Solution: Check array bounds before accessing
 
-Always verify array size before accessing specific indices:
+Always verify the size of an array before accessing specific indices:
 
 ```json
 GET blog_posts/_search
@@ -125,7 +123,7 @@ GET blog_posts/_search
 }
 ```
 
-### Sample document
+## Sample document
 
 ```json
 POST blog_posts/_doc
@@ -136,7 +134,7 @@ POST blog_posts/_doc
 }
 ```
 
-### Results
+## Results
 
 ```json
 {
@@ -159,8 +157,8 @@ POST blog_posts/_doc
 }
 ```
 
-### Notes
+## Notes
 
-* **Array bounds:** Always check array size before accessing specific indices.  
-* **Zero-indexed:** Remember that arrays start at index 0, so size() \- 1 is the last valid index.  
-* **Empty arrays:** Handle cases where arrays might be completely empty (size() \== 0).
+* **Array bounds:** Always check the size of an array before accessing specific indices.  
+* **Zero-indexed:** Remember that arrays start at index 0, so `size() - 1` is the last valid index.  
+* **Empty arrays:** Handle cases where arrays might be completely empty (`size() == 0`).
