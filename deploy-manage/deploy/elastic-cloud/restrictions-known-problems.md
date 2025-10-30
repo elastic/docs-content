@@ -139,7 +139,7 @@ To make a seamless migration, after restoring from a snapshot there are some add
   
   This maximum node count limitation applies to the UI and affects both the maximum `Size per zone` during manual scaling and the `Maximum size per zone` in autoscaling. This limit is in place to prevent users from inadvertently deploying excessive capacity. 
   
-  This limitation does not apply when using the API for manual scaling or autoscaling. If you require additional capacity, you can use the [Elastic Cloud API](cloud://reference/cloud-hosted/ec-api-restful.md) to scale up or configure the maximum size for autoscaling. Refer to the [Update a deployment](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_update_a_deployment) example to learn how to make a deployment update request using the API.
+  This limitation does not apply when using the API for manual scaling or autoscaling. If you require additional capacity, you can use the [Elastic Cloud API](cloud://reference/cloud-hosted/ec-api-restful.md) to scale up or configure the maximum size for autoscaling, in a self-sufficient way. Refer to the [Update a deployment](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_update_a_deployment) example to learn how to make a deployment update request using the API.
 * Apart from the maximum node count configurable in the {{ecloud}} console UI, there are other service limits based on each instance configuration. These service limits are typically greater than 32. For more details, please [contact Elastic support for assistance](/troubleshoot/index.md).
 
 ## Repository analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
