@@ -33,6 +33,7 @@ Two workarounds are available:
     3. Your agent-based integration deployments will work as expected.
 2. Use agentless deployment. 
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
+::::
 
 ::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1
 

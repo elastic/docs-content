@@ -33,6 +33,7 @@ Two workarounds are available:
     3. Your agent-based integration deployments will work as expected.
 2. Use agentless deployment. 
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
+::::
 
 
 ::::{dropdown} Filters may not apply correctly on the Alerts page
