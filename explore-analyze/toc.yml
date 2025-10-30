@@ -184,6 +184,7 @@ toc:
           - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
   - file: visualize.md
     children:
+      - file: visualize/choose-your-chart.md
       - file: visualize/supported-chart-types.md
       - file: visualize/visualize-library.md
       - file: visualize/manage-panels.md
