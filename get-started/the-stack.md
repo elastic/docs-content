@@ -16,8 +16,6 @@ applies_to:
 
 This section provides an overview of the {{stack}} and its components.
 
-$$$kibana-navigation-search$$$
-
 ## An overview of the {{stack}} [stack-components]
 
 What is the {{stack}}? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
