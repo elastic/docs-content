@@ -664,6 +664,11 @@ toc:
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
+          - file: monitor/autoops/autoops-for-serverless.md
+            children:
+            - file: monitor/autoops/access-autoops-for-serverless.md
+            - file: monitor/autoops/search-tier-view-autoops-serverless.md
+            - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children: 
             - file: monitor/autoops/cc-connect-self-managed-to-autoops.md

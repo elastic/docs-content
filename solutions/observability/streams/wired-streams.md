@@ -113,6 +113,19 @@ Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 1. Under **Where to add this integration**, select an agent policy that uses the output you configured in step 4.
 :::
 
+:::{tab-item} API
+
+Send data to the `/logs/` endpoint using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Refer to the following example for more information:
+
+```json
+POST /logs/_bulk
+{ "create": {} }
+{ "@timestamp": "2025-05-05T12:12:12", "body": { "text": "Hello world!" }, "resource": { "attributes": { "host.name": "my-host-name" } } }
+{ "create": {} }
+{ "@timestamp": "2025-05-05T12:12:12", "message": "Hello world!", "host.name": "my-host-name" }
+```
+:::
+
 ::::
 
 ## View wired streams in Discover [streams-wired-streams-discover]
