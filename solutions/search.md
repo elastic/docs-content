@@ -10,11 +10,15 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
   - id: kibana
+navigation_title: Elasticsearch
 ---
 
-# Elasticsearch
+# Elasticsearch solution overview
 
-{{es}} enables you to build powerful search experiences for websites, applications, and enterprise data using Elastic's unified platform.
+The {{es}} solution and serverless project type enable you to build your own applications on top of the {{es}} platform's scalable data store, search engine, and vector database capabilities.
+
+{{es}} is a distributed datastore that can ingest, index, and manage various types of data in near real-time, making them both searchable and analyzable.
+With specialized user interfaces and tools, it provides the flexibility to create, deploy, and run a wide range of applications, from search to analytics to AI-driven solutions.
 
 ## Use cases
 
@@ -30,23 +34,25 @@ Here are a few common real-world applications:
 | **Chatbots/RAG**                     | Enable natural conversations, provide context, maintain knowledge  | Vector search, ML models, knowledge base integration          |
 | **Geospatial search**                | Process location queries, sort by proximity, filter by area        | Geo-mapping, spatial indexing, distance calculations          |
 
-## {{es-serverless}} [elasticsearch-serverless]
-```{applies_to}
-serverless:
-  elasticsearch: ga
-```
+If you're new to {{es}} and want to try out some simple search use cases, go to [](/solutions/search/get-started.md) and [](/solutions/search/get-started/quickstarts.md).
 
-{{es-serverless}} is one of the three available project types on [{{serverless-full}}](/deploy-manage/deploy.md).
+## Core concepts [search-concepts]
 
-This project type enables you to use the core functionality of {{es}}: searching, indexing, storing, and analyzing data of all shapes and sizes.
+For an introduction to core {{es}} concepts such as indices, documents, and mappings, refer to [](/manage-data/data-store.md).
 
-When using {{es}} on {{serverless-full}} you don’t need to worry about managing the infrastructure that keeps {{es}} distributed and available: nodes, shards, and replicas. These resources are completely automated on the serverless platform, which is designed to scale up and down with your workload.
-This automation allows you to focus on building your search applications and solutions.
+To dive more deeply into the building blocks of {{es}} clusters, including nodes, shards, primaries, and replicas, refer to [](/deploy-manage/distributed-architecture.md).
+
+## Related reference
+
+* [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
+* [Content connectors](elasticsearch://reference/search-connectors/index.md)
+* [{{es}} API documentation]({{es-apis}})
 
 ::::{tip}
 Not sure whether {{es}} on {{serverless-full}} is the right deployment choice for you?
 
 Check out the following resources to help you decide:
+
 - [What’s different?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md): Understand the differences between {{serverless-full}} and other deployment types.
 - [Billing](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md): Learn about the billing model for {{es}} on {{serverless-full}}.
 ::::

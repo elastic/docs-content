@@ -28,7 +28,7 @@ We recommend that you use at least two availability zones for production and thr
 Increasing the number of zones should not be used to add more resources. The concept of zones is meant for High Availability (2 zones) and Fault Tolerance (3 zones), but neither will work if the cluster relies on the resources from those zones to be operational.
 :::
 
-With multiple {{es}} nodes in multiple availability zones you have the recommended hardware. The next step is to ensure proper index replication. Each index, with the exception of searchable snapshot indices, should have one or more replicas. Use the [index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-get-settings-1) to find any indices without replicas:
+With multiple {{es}} nodes in multiple availability zones you have the recommended hardware. The next step is to ensure proper index replication. Each index, with the exception of searchable snapshot indices, should have one or more replicas. Use the [index settings API]({{es-apis}}operation/operation-indices-get-settings) to find any indices without replicas:
 
 ```sh
 GET _all/_settings/index.number_of_replicas
