@@ -737,6 +737,7 @@ toc:
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
           - file: security/dashboards/detection-rule-monitoring-dashboard.md
+          - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/explore.md
         children:
           - file: security/explore/hosts-page.md
