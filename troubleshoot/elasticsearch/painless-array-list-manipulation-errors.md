@@ -1,5 +1,5 @@
 ---
-navigation_title: Array/list manipulation errors
+navigation_title: Array manipulation errors
 applies_to:
   stack: ga
   serverless: ga
