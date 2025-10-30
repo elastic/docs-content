@@ -4,7 +4,7 @@ navigation_title: Set up redirects
 
 # Manage redirects across doc sets
 
-When you [move](move.md) or delete pages, other [documentation sets](../configure/content-set/index.md) might still link to them. This can lead to a chicken-and-egg problem: you can't publish your changes without breaking links elsewhere.
+When you [move](move.md) or delete pages, other documentation sets might still link to them. This can lead to a chicken-and-egg problem: you can't publish your changes without breaking links elsewhere.
 
 Redirects let you map old links to new targets across documentation sets, so you can publish changes while updating other doc sets.
 

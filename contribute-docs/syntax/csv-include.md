@@ -8,7 +8,7 @@ The `{csv-include}` directive allows you to include and render CSV files as form
 
 ::::{tab-item} Output
 
-:::{csv-include} ../_snippets/sample-data.csv
+:::{csv-include} ..../_snippets/sample-data.csv
 :caption: Sample user data from the database
 :::
 

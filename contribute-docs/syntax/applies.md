@@ -1,6 +1,6 @@
 # Applies to
 
-Starting with Elastic Stack 9.0, ECE 4.0, and ECK 3.0, documentation follows a [cumulative approach](/contribute/cumulative-docs/index.md): instead of creating separate pages for each product and release, we update a single page with product- and version-specific details over time.
+Starting with Elastic Stack 9.0, ECE 4.0, and ECK 3.0, documentation follows a [cumulative approach](../contribute/how-to/cumulative-docs/index.md): instead of creating separate pages for each product and release, we update a single page with product- and version-specific details over time.
 
 To support this, source files use a tagging system to indicate:
 
@@ -11,7 +11,7 @@ This is what the `applies_to` metadata is for. It can be used at the [page](#pag
 [section](#section-level), or [inline](#inline-level) level to specify applicability with precision.
 
 :::{note}
-For detailed guidance, refer to [](/contribute/cumulative-docs/index.md).
+For detailed guidance, refer to [](../contribute/how-to/cumulative-docs/index.md).
 :::
 
 ## Syntax
@@ -102,21 +102,21 @@ Use the following key-value reference to find the appropriate key and value for 
 
 ::::{tab-item} Keys
 
-:::{include} /_snippets/applies_to-key.md
+:::{include} ../_snippets/applies_to-key.md
 :::
 
 ::::
 
 ::::{tab-item} Lifecycles
 
-:::{include} /_snippets/applies_to-lifecycle.md
+:::{include} ../_snippets/applies_to-lifecycle.md
 :::
 
 ::::
 
 ::::{tab-item} Versions
 
-:::{include} /_snippets/applies_to-version.md
+:::{include} ../_snippets/applies_to-version.md
 :::
 
 ::::
@@ -162,7 +162,7 @@ applies_to:
 
 :::::{dropdown} Identify multiple states for the same content
 
-:::{include} /syntax/_snippets/multiple-lifecycle-states.md
+:::{include} ../syntax../_snippets/multiple-lifecycle-states.md
 :::
 
 :::::

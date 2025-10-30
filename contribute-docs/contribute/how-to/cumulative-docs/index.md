@@ -64,10 +64,10 @@ We have a central version config called [`versions.yml`](https://github.com/elas
 This central version config is used in certain inline version variables and drives our dynamic rendering logic, which allows us to label documentation related to unreleased versions as `planned`, continuously release documentation, and document our Serverless and {{stack}} offerings in one place.
 
 :::{tip}
-Read more about how site configuration works in [](/configure/site/index.md).
+Read more about how site configuration works in the [docs-builder configuration guide](https://elastic.github.io/docs-builder/configure/site/).
 :::
 
-:::{include} ../../_snippets/tag-processing.md
+:::{include} ../..../_snippets/tag-processing.md
 :::
 
 ### How to tag content

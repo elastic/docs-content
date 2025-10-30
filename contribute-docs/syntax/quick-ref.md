@@ -114,7 +114,7 @@ A default anchor is automatically created for each [heading](#headings), in the 
 
 ## Applies to
 
-Tags that identify technical contexts: the feature base (stack/serverless), deployments, and project types that a piece of content "applies to." Use `applies_to` tags to help users determine whether content is right for their deployments and configuration. These tags are a [version content pattern](/contribute/cumulative-docs/example-scenarios.md) in Elastic Docs v3.
+Tags that identify technical contexts: the feature base (stack/serverless), deployments, and project types that a piece of content "applies to." Use `applies_to` tags to help users determine whether content is right for their deployments and configuration. These tags are a [version content pattern](../contribute/how-to/cumulative-docs/example-scenarios.md) in Elastic Docs v3.
 
 **Example: Section tag**
 
@@ -391,7 +391,7 @@ Standard Markdown images: `[alt text]` in square brackets, followed by the image
 
 **DOs**<br>
 ✅ **Do:** Store images in a centralized directory<br>
-✅ **Do:** Follow v3 [best practices for screenshots](/contribute/cumulative-docs/badge-placement.md#images)<br>
+✅ **Do:** Follow v3 [best practices for screenshots](../contribute/how-to/cumulative-docs/badge-placement.md#images)<br>
 ✅ **Do:** Specify `:screenshot:` in an [image directive](images.md#screenshots) to add a border
 
 **DON'Ts**<br>
@@ -590,7 +590,7 @@ Elastic Cloud Hosted supports most standard Kibana settings.
 
 ## Tabs
 
-Block element that displays content in switchable tabs to help users zero in on the right context (such as a deployment or language). [Synced tab groups](/syntax/tabs.md#tab-groups) are supported.
+Block element that displays content in switchable tabs to help users zero in on the right context (such as a deployment or language). [Synced tab groups](../syntax/tabs.md#tab-groups) are supported.
 
 :::::{dropdown} Syntax
 ```markdown

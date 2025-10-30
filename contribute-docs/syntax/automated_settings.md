@@ -5,7 +5,7 @@ Elastic Docs V3 supports the ability to build a markdown settings reference from
 ### Syntax
 
 ```markdown
-:::{settings} /syntax/kibana-alerting-action-settings.yml
+:::{settings} ../syntax/kibana-alerting-action-settings.yml
 :::
 ```
 
@@ -30,5 +30,5 @@ groups:
 
 _Everything below this line is auto-generated._
 
-:::{settings} /syntax/kibana-alerting-action-settings.yml
+:::{settings} ../syntax/kibana-alerting-action-settings.yml
 :::
