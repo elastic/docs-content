@@ -162,7 +162,7 @@ applies_to:
 
 :::::{dropdown} Identify multiple states for the same content
 
-:::{include} ../syntax../_snippets/multiple-lifecycle-states.md
+:::{include} /contribute-docs/syntax/_snippets/multiple-lifecycle-states.md
 :::
 
 :::::

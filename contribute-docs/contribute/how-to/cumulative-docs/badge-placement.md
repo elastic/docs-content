@@ -38,15 +38,15 @@ There are more specific guidelines on badge placement to follow when using speci
 
 ### Page frontmatter
 
-Use [`applies_to` in a page's frontmatter](/syntax/applies.md#syntax) to provide signals that a page applies to the reader.
+Use [`applies_to` in a page's frontmatter](/contribute-docs/syntax/applies.md#syntax) to provide signals that a page applies to the reader.
 
 ::::{warning}
-Do **not** use [section-level](/syntax/applies.md#section-level) or [inline annotations](/syntax/applies.md#inline-level) with the page title.
+Do **not** use [section-level](/contribute-docs/syntax/applies.md#section-level) or [inline annotations](/contribute-docs/syntax/applies.md#inline-level) with the page title.
 ::::
 
 ### Headings [headings]
 
-Use [section annotations](/syntax/applies.md#section-level) on the next line after a heading when the entire content between that heading and the next [heading](/syntax/headings.md) of the same or higher level is version or product-specific.
+Use [section annotations](/contribute-docs/syntax/applies.md#section-level) on the next line after a heading when the entire content between that heading and the next [heading](/contribute-docs/syntax/headings.md) of the same or higher level is version or product-specific.
 
 For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
 
@@ -58,7 +58,7 @@ For example, on the [Observability AI Assistant](https://www.elastic.co/docs/sol
 % FOR THE REVIEWER: IS THIS TRUE?
 % What do you think of allowing inline applies_to in headings as long as there is only one badge?
 :::{warning}
-Do **not** use [inline annotations](/syntax/applies.md#inline-level) with headings.
+Do **not** use [inline annotations](/contribute-docs/syntax/applies.md#inline-level) with headings.
 
 ::::{image} ./images/heading-incorrect.png
 :screenshot:

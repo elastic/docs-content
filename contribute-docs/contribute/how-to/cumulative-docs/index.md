@@ -67,7 +67,7 @@ This central version config is used in certain inline version variables and driv
 Read more about how site configuration works in the [docs-builder configuration guide](https://elastic.github.io/docs-builder/configure/site/).
 :::
 
-:::{include} ../..../_snippets/tag-processing.md
+:::{include} /contribute-docs/_snippets/tag-processing.md
 :::
 
 ### How to tag content
@@ -80,5 +80,5 @@ Read more about _how_ to tag content in:
   Learn how to integrate `applies_to` badges into docs content.
 * [Example scenarios](example-scenarios.md):
   Browse common scenarios you might run into as a docs contributor that require different approaches to labeling cumulative docs.
-* [`applies_to` syntax guide](../../../syntax/applies.md):
+* [`applies_to` syntax guide](../../../contribute-docs/syntax/applies.md):
   Reference all valid values and syntax patterns available in `applies_to`.

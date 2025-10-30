@@ -6,7 +6,7 @@ The `applies_to` directive uses the following format:
 <key>: <lifecycle> <version>
 ```
 
-This page provides minimal reference information on the `applies_to` directive. For more detailed information, refer to [](/syntax/applies.md).
+This page provides minimal reference information on the `applies_to` directive. For more detailed information, refer to [](/contribute-docs/syntax/applies.md).
 
 ## key
 

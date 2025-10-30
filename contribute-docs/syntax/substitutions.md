@@ -38,11 +38,11 @@ Here are some variable substitutions:
 
 | Variable              | Defined in     |
 |-----------------------|----------------|
-| {{frontmatter_key}}   | Front Matter   |
-| {{a-key-with-dashes}} | Front Matter   |
-| {{a-global-variable}} | `docset.yml`   |
-| {{product.kibana}}    | `products.yml` |
-| {{.kibana}}           | `products.yml` |
+| `{{frontmatter_key}}`   | Front Matter   |
+| `{{a-key-with-dashes}}` | Front Matter   |
+| `{{a-global-variable}}` | `docset.yml`   |
+| `{{product.kibana}}`    | `products.yml` |
+| `{{.kibana}}`           | `products.yml` |
 
 ## Mutations
 
