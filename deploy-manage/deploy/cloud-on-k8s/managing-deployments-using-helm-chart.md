@@ -137,14 +137,14 @@ helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namesp
 
 For illustration purposes, the ingress objects created by the previous command will look similar to the following:
 
-```yaml
+```yaml subs=true
 # Source: eck-stack/charts/eck-elasticsearch/templates/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: elasticsearch
   labels:
-    helm.sh/chart: eck-elasticsearch-0.14.1
+    helm.sh/chart: eck-elasticsearch-{{eck_helm_chart_version}}
     app.kubernetes.io/name: eck-elasticsearch
     app.kubernetes.io/instance: es-kb-quickstart
     app.kubernetes.io/managed-by: Helm
@@ -167,7 +167,7 @@ kind: Ingress
 metadata:
   name: es-kb-quickstart-eck-kibana
   labels:
-    helm.sh/chart: eck-kibana-0.14.1
+    helm.sh/chart: eck-kibana-{{eck_helm_chart_version}}
     app.kubernetes.io/name: eck-kibana
     app.kubernetes.io/instance: es-kb-quickstart
     app.kubernetes.io/managed-by: Helm
