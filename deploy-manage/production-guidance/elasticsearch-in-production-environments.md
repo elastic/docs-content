@@ -64,7 +64,7 @@ The following topics, covered in other sections of the documentation, offer valu
 
 ### Security and monitoring [security-and-monitoring]
 
-As with any enterprise system, you need tools to secure, manage, and monitor your deployments. Security, monitoring, and administrative features that are integrated into {{es}} enable you to use [Kibana](/get-started/the-stack.md) as a control center for managing a cluster.
+As with any enterprise system, you need tools to secure, manage, and monitor your deployments. Security, monitoring, and administrative features that are integrated into {{es}} enable you to use {{kib}} as a control center for managing a cluster.
 
 * [Learn about securing an {{es}} cluster](../security.md)
 

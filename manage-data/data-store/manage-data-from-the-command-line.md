@@ -15,7 +15,7 @@ products:
 Learn how to index, update, retrieve, search, and delete documents in an {{es}} cluster from the command line.
 
 ::::{tip}
-If you are looking for a user interface for {{es}} and your data, head on over to [Kibana](/get-started/the-stack.md)! Not only are there amazing visualization and index management tools, Kibana includes realistic sample data sets to play with so that you can get to know what you *could* do with your data.
+If you are looking for a user interface for {{es}} and your data, head on over to {{kib}}! Not only are there amazing visualization and index management tools, Kibana includes realistic sample data sets to play with so that you can get to know what you *could* do with your data.
 ::::
 
 ## Before you begin [before-you-begin]

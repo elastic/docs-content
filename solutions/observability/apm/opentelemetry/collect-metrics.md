@@ -40,7 +40,7 @@ See the [Open Telemetry Metrics API](https://github.com/open-telemetry/opentelem
 Use **Discover** to validate that metrics are successfully reported to {{kib}}.
 
 1. Open your Observability instance.
-2. Find **Discover** in the main menu or use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+2. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Click **All logs** → **Data Views** then select **APM**.
 4. Filter the data to only show documents with metrics: `processor.name :"metric"`
 5. Narrow your search with a known OpenTelemetry field. For example, if you have an `order_value` field, add `order_value: *` to your search to return only OpenTelemetry metrics documents.
