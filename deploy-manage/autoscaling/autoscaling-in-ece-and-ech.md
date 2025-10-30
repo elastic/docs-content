@@ -97,7 +97,7 @@ In {{ech}} the following additional limitations apply:
 * The maximum configurable node count is 32. This means that the `Maximum size per zone` in autoscaling is limited to the maximum RAM size of the instance configuration in use, multiplied by 32. For example, for the instance configuration [`aws.es.datahot.c6gd`](cloud://reference/cloud-hosted/aws-default.md), the maximum RAM size is 60GB. Therefore, the `Maximum size per zone` in autoscaling is limited to `60GB x 32 = 1.875TB` (displayed as `1.88TB` in the {{ecloud}} console UI). For more details, refer to [Restrictions and known problems > Node count and size](../deploy/elastic-cloud/restrictions-known-problems.md#ec-node-count-size).
 
 
-### {{ece}} specific limitations
+### {{ece}}-specific limitations
 
 In {{ece}}, the following additional limitations apply:
 
