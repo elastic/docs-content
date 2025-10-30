@@ -10,15 +10,15 @@ This page provides minimal reference information on the `applies_to` directive. 
 
 ## key
 
-:::{include} ../_snippets/applies_to-key.md
+:::{include} /contribute-docs/_snippets/applies_to-key.md
 :::
 
 ## lifecycle
 
-:::{include} ../_snippets/applies_to-lifecycle.md
+:::{include} /contribute-docs/_snippets/applies_to-lifecycle.md
 :::
 
 ## version
 
-:::{include} ../_snippets/applies_to-version.md
+:::{include} /contribute-docs/_snippets/applies_to-version.md
 :::
