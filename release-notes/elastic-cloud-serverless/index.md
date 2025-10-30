@@ -9,9 +9,105 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## October 27, 2025 [serverless-changelog-10272025]
+
+### Features and enhancements [elastic-security-10272025-features-enhancements]
+* Adds support for deleting export schedules [#238197]({{kib-pull}}238197)
+* Moves the **Lens** visualization toolbar from the **Visualization parameters** section to the flyout header [#239176]({{kib-pull}}239176)
+* Changes the processing order in {{esql}} so the breakdown is applied before the date histogram [#239685]({{kib-pull}}239685)
+* Adds a **View in Discover** button to the Alert details page for infrastructure rules [#236880]({{kib-pull}}236880)
+* Introduces CDR Data View versioning and migration logic [#238547]({{kib-pull}}238547)
+* Fixes layout wrapping for fields in the Machine Learning Overview and Notifications pages [#239113]({{kib-pull}}239113)
+* Removes the AI Assistant Settings privilege [#239144]({{kib-pull}}239144)
+* Adds ingest pipeline processor template suggestions to the manual ingest pipeline processor editor [#236919]({{kib-pull}}236919)
+* Adds the `kibana.alert.index_pattern` field to all alerts [#239450]({{kib-pull}}239450)
+
+### Fixes [elastic-security-10272025-fixes]
+* Fixes missing accessibility announcements in form rows [#240132]({{kib-pull}}240132)
+* Improves the **Cases** table loading behavior to prevent flashing [#240155]({{kib-pull}}240155)
+* Fixes a bug in Lens that incorrectly assigned unsaved data view references [#239431]({{kib-pull}}239431)
+* Fixes an error when selecting the `(blank)` value in options lists [#239791]({{kib-pull}}239791)
+* Pauses fetch operations until initialization completes [#239228]({{kib-pull}}239228)
+* Fixes a bug that prevented users from resetting unsaved changes when enabling **timeRestore** and setting a time range [#239992]({{kib-pull}}239992)
+* Fixes a search session restoration issue [#239822]({{kib-pull}}239822)
+* Allows {{fleet}} setup retries on start in all environments [#240342]({{kib-pull}}240342)
+* Adds **FORK with KEEP/STATS** options to transformational commands [#240011]({{kib-pull}}240011)
+* Fixes dependencies and service map issues for `txn == exit-span` use cases [#235392]({{kib-pull}}235392)
+* Fixes the model label display in AI Assistant Settings [#239824]({{kib-pull}}239824)
+* Updates the **Open in Discover** query in the related Logs section of the **Overview** tab [#240409]({{kib-pull}}240409)
+* Fixes an issue where the Onboarding Integrations list wasn’t fetched for all pages [#239709]({{kib-pull}}239709)
+* Fixes an issue where schedules couldn’t be created with **Cases** as the connector type [#239748]({{kib-pull}}239748)
+* Fixes an issue where operators couldn’t be removed after selection in the **Add rule exception** flyout [#236051]({{kib-pull}}236051)
+* Fixes `react-query` ID collision issues [#240517]({{kib-pull}}240517)
+* Updates GenAI Settings to reflect the selected `AI Assistants Visibility` value from the header selector on the Settings page [#239555]({{kib-pull}}239555)
+* Fixes the Inference endpoints UI to ensure the list loads correctly when the provider is custom [#240189]({{kib-pull}}240189)
+* Fixes the URL in **Disk Usage** alerting rules [#240279]({{kib-pull}}240279)
+* Fixes data preview metadata pop-up display issues by adding a tooltip and copy button to handle long IDs [#239768]({{kib-pull}}239768)
+* Fixes the **Agents** and **Playground** icons in the side navigation to render correctly in dark mode [#240475]({{kib-pull}}240475)
+* Ensures only valid queries are returned for significant events [#239501]({{kib-pull}}239501)
+* Hides filtering capabilities in Hosts Metrics [#239724]({{kib-pull}}239724)
+
+## October 20, 2025 [serverless-changelog-10202025]
+
+### Features and enhancements [serverless-changelog-10202025-features-enhancements]
+
+* [Agent Builder](/solutions/search/elastic-agent-builder.md) is now available in technical preview and is enabled by default on {{serverless-full}}
+* Lets you remove root privileges from {{fleet}} managed agents [#237790]({{kib-pull}}237790)
+* Adds the `xpack.fleet.experimentalFeatures` setting [#238840]({{kib-pull}}238840)
+* Supports expression suggestions within function parameters [#236343]({{kib-pull}}236343)
+* Updates the Observability Serverless navigation menu [#235984]({{kib-pull}}235984)
+* Allows the Observability AI Assistant to retrieve information from the  `.integration_knowledge*` system index [#237085]({{kib-pull}}237085)
+* Adds file download relative URI to response actions that provide file output [#237713]({{kib-pull}}237713)
+* Updates the UI and API for process descendants in trusted applications [#236318]({{kib-pull}}236318)
+* Adds usage statistics collection for CSPM cloud connectors [#236992]({{kib-pull}}236992)
+* Enhances the error message for malformed roles [#239098]({{kib-pull}}239098)
+* Enables editing feature condition in the feature identification flyout and adds the **Open in Discover** button [#238646]({{kib-pull}}238646)
+* Improves processing warnings for Streams [#239188]({{kib-pull}}239188)
+* Enables AI-powered significant event identification for Streams [#239070]({{kib-pull}}239070)
+* Enables numerical ID service for Cases [#238555]({{kib-pull}}238555)
+* Adds agent ID as a default observables type [#238533]({{kib-pull}}238533)
+
+
+### Fixes [serverless-changelog-10202025-fixes]
+
+* Updates `nodemailer` [#238816]({{kib-pull}}238816)
+* Improves error handling on the **Visualize Listing** page [#238355]({{kib-pull}}238355)
+* Prevents adhoc dataviews in {{esql}} charts from being filtered out in the KQL search bar [#238731]({{kib-pull}}238731)
+* Fixes a bug in Lens that broke **Click to filter** on table rows when any column was used as a formula [#239222]({{kib-pull}}239222)
+* Fixes metric color assignment when breakdown and a max dimension are defined in Lens [#238901]({{kib-pull}}238901)
+* Fixes "package not found" error when skipping cloud onboarding for a prerelease package [#238629]({{kib-pull}}238629)
+* Fixes an issue with integration policy upgrades [#238542]({{kib-pull}}238542)
+* Fixes `ignore_above` mapping for `flattened` fields [#238890]({{kib-pull}}238890)
+* Fixes missing fields when using combined filters with the `ignoreFilterIfFieldNotInIndex` UI setting [#238945]({{kib-pull}}238945)
+* Displays the available options when editing an existing variable control [#239315]({{kib-pull}}239315)
+* Fixes `KEEP` behavior in {{esql}} when a query initially returns no results [#239063]({{kib-pull}}239063)
+* Adds a 10 second request timeout to {{esql}} query execution [#238200]({{kib-pull}}238200)
+* Uses `runWithCache` for bulk {{fleet}} operations [#238326]({{kib-pull}}238326)
+* Fixes error when Observability AI Assistant was disabled [#238811]({{kib-pull}}238811)
+* Removes unecessary `_source` field from queries [#239205]({{kib-pull}}239205)
+* Makes the rule condition chart parser replace metric names inside filter values (e.g., A in "Accounts") [#238849]({{kib-pull}}238849)
+* Fixes recover alert while monitor is down [#237479]({{kib-pull}}237479)
+* Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418)
+* Adds missing aria-label to BetaBadge component [#239400]({{kib-pull}}239400)
+* Fixes the "missing authentication credentials" issue in `TelemetryConfigWatcher` and `PolicyWatcher` [#237796]({{kib-pull}}237796)
+* Fixes an issue with Automatic Migration that prevented you from switching between migrations while translating rules [#238679]({{kib-pull}}238679)
+* Fixes artifacts spaces migration (`v9.1`) to ensure all artifacts are processed [#238740]({{kib-pull}}238740)
+* Checks for integrations permissions before loading component [#239122]({{kib-pull}}239122)
+* Prioritizes connector `defaultModel` over stored conversation model [#237947]({{kib-pull}}237947)
+* Deselects current selection after index pattern update [#239245]({{kib-pull}}239245)
+* Fixes graph not rendering when switching tabs or refreshing the page [#238038]({{kib-pull}}238038)
+* Adds unique accessible labels for **Show top field values** buttons [#237972]({{kib-pull}}237972)
+* Fixes tool calling unavailable tools [#237174]({{kib-pull}}237174)
+* Adds Jira's `otherFields` JSON editor to case creation flow [#238435]({{kib-pull}}238435)
+* Updates connector API [#236863]({{kib-pull}}236863)
+* Separates sync alert and auto-extract updates in activity log [#236519]({{kib-pull}}236519)
+* Fixes auto extraction of observables in EASE [#239000]({{kib-pull}}239000)
+* Removes `autoFocus` to preserve proper focus upon modal close [#239366]({{kib-pull}}239366)
+* Adds manual focus to the Cases action button's actions [#239504]({{kib-pull}}239504)
+* Fixes the behavior of Security serverless projects' Tier 1 and Tier 2 analyst roles by revoking their Endpoint exceptions read access
 
 ## October 15, 2025 [serverless-changelog-10152025]
-* {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London).
+* {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London)
 
 
 ## October 13, 2025 [serverless-changelog-10132025]

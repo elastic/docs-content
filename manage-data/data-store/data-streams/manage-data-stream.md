@@ -23,7 +23,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * To view information about the stream’s backing indices, click the number in the **Indices** column.
 * To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**.
 
-## Manage data streams with Streams [manage-data-streams-with-streams]
+## Manage data streams on the Streams page [manage-data-streams-with-streams]
 ```{applies_to}
 serverless: ga
 stack: preview 9.1, ga 9.2

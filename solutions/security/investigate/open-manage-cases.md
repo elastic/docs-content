@@ -45,12 +45,6 @@ Open a new case to keep track of security issues and share their details with co
     If you’ve selected a connector for the case, the case is automatically pushed to the third-party system it’s connected to.
     ::::
 
-
-:::{image} /solutions/images/security-cases-ui-open.png
-:alt: Shows an open case
-:screenshot:
-:::
-
 % Check with Lisa if email notifications is an ESS-only feature. Not in Serverless docs: https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
 
 ## Add email notifications [cases-ui-notifications]
@@ -81,11 +75,6 @@ When you subsequently add assignees to cases, they receive an email.
 ## Manage existing cases [cases-ui-manage]
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
-
-:::{image} /solutions/images/security-cases-home-page.png
-:alt: Case UI Home
-:screenshot:
-:::
 
 To explore a case, click on its name. You can then:
 
@@ -119,12 +108,6 @@ Click on an existing case to access its summary. The case summary, located under
 * **In progress duration**: How long the case has been in the `In progress` state
 * **Duration from creation to close**: Time elapsed from when the case was created to when it was closed
 
-:::{image} /solutions/images/security-cases-summary.png
-:alt: Shows you a summary of the case
-:screenshot:
-:::
-
-
 ### Manage case comments [cases-manage-comments]
 
 To edit, delete, or quote a comment, select the appropriate option from the **More actions** menu (**…**).
@@ -153,18 +136,11 @@ Each case can have a maximum of 1,000 alerts.
 stack: ga 9.2
 ```
 
-After adding events to cases from the Events table (which you can access from the **Events** tab on the **Hosts**, **Network**, or **Users** pages) or from Timeline, you can examine them in the case's **Events** tab. Within the tab, alerts are organized from newest to oldest. Click the **View details** button the find out more about the event.
+After adding events to cases from the Events table (which you can access from the **Events** tab on the **Hosts**, **Network**, or **Users** pages) or from Timeline, you can examine them in the case's **Events** tab. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
 
 ### Add files [cases-add-files]
 
-To upload files to a case, click the **Files** tab:
-
-:::{image} /solutions/images/security-cases-files.png
-:alt: A list of files attached to a case
-:screenshot:
-:::
-
-You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
+To upload files to a case, select the **Files** tab, then click **Add files**. You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
 
 % Check with Lisa whether following note is only applicable to Serverless or if it's for ESS too.
 

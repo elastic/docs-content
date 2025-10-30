@@ -26,18 +26,18 @@ Features provide useful information for AI processes, such as significant events
 
 ## Index configuration [streams-advanced-index-config]
 
-:::{note}
-Processing and schema changes should typically be done through the Streams interface, and none of these configuration processes are required. This feature mainly exists to help advanced users maintain familiar workflows.
+:::{Important}
+Avoid editing components marked as **managed** or any per-data-stream mappings and settings. Processing and schema changes should typically be done through the Streams interface or API, and none of these configuration processes are required. This feature mainly exists to help advanced users maintain familiar workflows.
 :::
 
-For classic streams, you can manually configure:
+For classic streams, you can access the following components:
 
 - [Index templates](../../../../manage-data/data-store/templates.md#index-templates)
 - [Component templates](../../../../manage-data/data-store/templates.md#component-templates)
 - [Pipelines](../../../../manage-data/ingest/transform-enrich.md)
-- [Data streams](../../../../manage-data/data-store/data-streams.md).
+- [Data streams](../../../../manage-data/data-store/data-streams.md)
 
-For both wired ({applies_to}`stack: preview 9.2`) and classic streams, you can manually configure:
+For both wired ({applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`) and classic streams, you can manually configure:
 
 - **Shards:** Control how the index is split across nodes. More shards can improve parallelism but may increase overhead.
 - **Replicas:** Define how many copies of the data exist. More replicas improve resilience and read performance but increase storage usage.
