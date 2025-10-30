@@ -88,7 +88,7 @@ The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last {{es}} plan failed.
 
-### {{ech}} specific limitations
+### {{ech}}-specific limitations
 
 In {{ech}} the following additional limitations apply:
 
