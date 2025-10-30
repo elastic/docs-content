@@ -238,7 +238,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Device control helps protect your Linux and Mac endpoints from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
+Device control helps protect your Windows and Mac endpoints from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
 
 ::::{important}
 Device control only affects external USB storage devices. It does not affect other peripherals such as Yubikeys, webcams, or keyboards.
