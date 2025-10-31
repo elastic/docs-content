@@ -101,6 +101,9 @@ $$$faq-refund$$$Can I get a refund?
 $$$billing-cc-additional-payment$$$Does Cloud Connect require additional payment?
 :   Each [cloud connected service](/deploy-manage/cloud-connect.md) has its own licensing and payment requirements. For more information, refer to the [Elastic self-managed subscriptions](https://www.elastic.co/subscriptions) page.
 
+    :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+:::
+
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
 :   All subscription tiers for {{ech}} include the following free allowance:
 
