@@ -16,6 +16,21 @@ Known issues are significant defects or limitations that may impact your impleme
 
 ## Active
 
+:::{dropdown} Entity store transform is unavailable 
+
+**Details**
+
+A new feature introduced to the entity store caused the transform to scan for nonexistent indices.
+
+**Workaround** 
+
+Restart the entity store:
+1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Entity Store** page, turn the toggle off.
+3. Turn the toggle back on.
+
+::::
+
 :::{dropdown} CSPM and Asset Management integrations don't ingest data when deployed using agent-based technology if {{kib}} is hosted on AWS
 Applies to: {{serverless-short}} deployments hosted on AWS
 
