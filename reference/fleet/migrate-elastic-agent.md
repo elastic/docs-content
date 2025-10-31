@@ -208,10 +208,6 @@ The agents can now be re-enrolled into these policies and migrated over to the n
 
 ## Migrate {{agent}}s to the new target cluster [migrate-elastic-agent-migrated-agents]
 
-::::{note}
-Agents to be migrated cannot be tamper-protected or running as a {{fleet}} server.
-::::
-
 In order to ensure that all required API keys are correctly created, the agents in your current cluster need to be re-enrolled into the new target cluster.
 
 This is best performed one policy at a time. For a given policy, you need to capture the enrollment token and the URL for the agent to connect to. You can find these by running the in-product steps to add a new agent.
