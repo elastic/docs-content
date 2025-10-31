@@ -586,3 +586,8 @@ redirects:
   'explore-analyze/manage-access-to-ai-assistant.md': 'explore-analyze/ai-features/manage-access-to-ai-assistant.md'
   'explore-analyze/ai-assistant.md': 'explore-analyze/ai-features/ai-assistant.md'
 
+# Related to https://github.com/elastic/docs-content/pull/3685
+  'deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md': 'deploy-manage/monitor/autoops/ec-autoops-faq.md'
+
+
+
