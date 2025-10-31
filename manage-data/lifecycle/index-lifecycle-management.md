@@ -78,7 +78,7 @@ You can create and manage index lifecycle policies through {{kib}}'s [Index Mana
 * [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
 * [Update or switch a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
 * [Restore a managed data stream or index](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
-* [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
+* [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
 
 Default {{ilm}} policies are created automatically when you install an [Elastic Integration](integration-docs://reference/index.md), or when you use {{agent}}, {{beats}}, or the {{ls}} {{es}} output plugin to send data to the {{stack}}.
 

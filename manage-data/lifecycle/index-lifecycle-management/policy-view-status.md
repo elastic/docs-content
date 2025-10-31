@@ -36,7 +36,7 @@ If you're investigating an {{ilm-init}}-related problem, refer to [Troubleshoot 
 :::{tip}
 {{es}} comes with many built-in ILM policies. For standard Observability or Security use cases, you will have two {{ilm-init}} policies configured automatically: `logs@lifecycle` for logs and `metrics@lifecycle` for metrics.
 
-To learn how to create a specialized ILM policy for any data stream, such as those created when you install an Elastic Integration, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+To learn how to create and adjust copies of built-in {{ilm-init}} policies for managed data streams, such as those created when you install an Elastic Integration, refer to our tutorial [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
 :::
 
 **To view the current lifecycle status for a datastream:**
