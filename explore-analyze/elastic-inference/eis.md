@@ -49,7 +49,7 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 #### Batch size
 
 Batches are limited to a maximum of 16 documents.
-This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
+This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
 
 ## Pricing 
 
@@ -68,7 +68,14 @@ Tokens are the fundamental units that language models process for both input and
 
 For example, the sentence "It was the best of times, it was the worst of times." contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
 
-## Rate Limits
+### Monitor your token usage
+
+To track your token consumption:
+
+1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console
+2. Look for line items where the **Billing dimension** is set to "Inference"
+
+## Rate limits
 
 The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
 
