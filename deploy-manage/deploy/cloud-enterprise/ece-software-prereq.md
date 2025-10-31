@@ -12,9 +12,6 @@ products:
 
 To install ECE, make sure you prepare your environment with the following software. Pay special attention to what Linux kernel and Docker or Podman versions you plan to use and follow our recommendations. Our testing has shown that not all software combinations work well together.
 
-::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
-::::
-
 * [Supported Linux kernel](#ece-linux-kernel)
 * [Linux distributions with compatible Docker versions](#ece-linux-docker)
 * [Free RAM](#ece-free-ram)
@@ -84,3 +81,9 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 ::::
 
 
+## FIPS compliance
+
+:::{include} /deploy-manage/deploy/_snippets/ece-fips-message.md
+:::
+
+For more information about FIPS compliance across the {{stack}}, refer to [](/deploy-manage/security/fips.md).
