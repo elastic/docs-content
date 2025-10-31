@@ -58,6 +58,6 @@ If you prefer a deep dive where you can learn at your own pace, check out our si
 ## Other resources 
 Check out these additional resources to learn and explore other areas of Elastic: 
 
-* Check out **[Deploy and manage](/deploy-manage/index.md)** to learn how to deploy and manage all aspects of your Elastic environment.
-* Refer to **[Manage data](/manage-data/index.md)** to understand how to ingest and manage data stored in {{es}}. 
-* Read **[How to use the documentation](/get-started/howto-use-the-docs.md)** to discover how our documentation is organized, find the right version information for your products, and understand how to contribute to our community.
+* **[Deploy and manage](/deploy-manage/index.md)**: Learn how to deploy and manage all aspects of your Elastic environment.
+* **[Manage data](/manage-data/index.md)**: Learn how to ingest and manage data stored in {{es}}. 
+* **[How to use the documentation](/get-started/howto-use-the-docs.md)**: Understand how our documentation is organized, find the right version information for your products, and learn how to contribute.
