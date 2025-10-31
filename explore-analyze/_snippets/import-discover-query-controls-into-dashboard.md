@@ -1,4 +1,4 @@
-To add a Discover query to a dashboard in a way that preserves the [controls created from Discover](/explore-analyze/discover/try-esql.md#add-variable-control-discover) and also adds them to the dashboard, do as follows:
+To add a Discover query to a dashboard in a way that preserves the [controls created from Discover](/explore-analyze/discover/try-esql.md#add-variable-control) and also adds them to the dashboard, do as follows:
 
 1. Save the {{esql}} query containing the variable control into a Discover session. If your Discover session contains several tabs, only the first tab will be imported to the dashboard.
 
