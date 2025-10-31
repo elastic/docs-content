@@ -1,0 +1,1 @@
+The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment's keystore.

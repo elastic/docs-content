@@ -244,9 +244,12 @@ Save time by setting up a recurring task that automatically generates reports an
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-::::{important} 
-Note that you cannot edit or delete a schedule after you create it. To stop the schedule from running, you must disable it. Disabling a schedule permanently stops it from running. To restart it, you must create a new schedule. 
-::::
+### Stop scheduled reports [stop-scheduled-reports]
+
+To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
+
+- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
+- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 

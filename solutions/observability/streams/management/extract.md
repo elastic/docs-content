@@ -26,7 +26,7 @@ Streams supports the following processors:
 
 - [**Date**](./extract/date.md): Converts date strings into timestamps, with options for timezone, locale, and output formatting.
 - [**Dissect**](./extract/dissect.md): Extracts fields from structured log messages using defined delimiters instead of patterns, making it faster than Grok and ideal for consistently formatted logs.
-- [**Grok**](./extract/grok.md): Extracts fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an LLM connector.
+- [**Grok**](./extract/grok.md): Extracts fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an [LLM connector](../../../security/ai/set-up-connectors-for-large-language-models-llm.md).
 - [**Set**](./extract/set.md): Assigns a specific value to a field, creating the field if it doesn’t exist or overwriting its value if it does.
 - [**Rename**](./extract/rename.md): Changes the name of a field, moving its value to a new field name and removing the original.
 - [**Append**](./extract/append.md): Adds a value to an existing array field, or creates the field as an array if it doesn’t exist.
@@ -185,3 +185,4 @@ You can still add your own processors manually to the `@custom` pipeline if need
 
 - Streams does not support all processors. More processors will be added in future versions.
 - The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them. Streams will allow proper simulations using original documents in a future version.
+- Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./extract/manual-pipeline-configuration.md) that supports Painless scripting and all ingest processors.
