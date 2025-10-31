@@ -276,7 +276,8 @@ subs:
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
   es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
-  eck_helm_minimum_version: "3.2.0"
+  eck_helm_minimum_version: 3.2.0
+  eck_helm_chart_version: 0.17.0
   eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   eck_resources_list_short: "APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   heroku: "Elasticsearch Add-on for Heroku"
