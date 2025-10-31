@@ -76,7 +76,7 @@ The {{ecloud}} internal output is locked and cannot be edited. This output is us
 
 To add or edit an output:
 
-1. Go to **{{fleet}} > Settings**.
+1. Go to **{{fleet}}** > **Settings**.
 2. Under **Outputs**, select **Add output** or **Edit**.
 
     :::{image} images/fleet-add-output-button.png
@@ -107,7 +107,7 @@ For {{agent}}s that cannot access the internet, you can specify agent binary dow
 
 To add or edit the source of binary downloads:
 
-1. Go to **{{fleet}} > Settings**.
+1. Go to **{{fleet}}** > **Settings**.
 2. Under **Agent Binary Download**, select **Add agent binary source** or **Edit**.
 3. Set the agent binary source name.
 4. For **Host**, specify the address where you are hosting the artifacts repository.
@@ -134,8 +134,11 @@ The following SSL options are available when adding or editing an agent binary s
 
 You can specify a proxy server to be used in {{fleet-server}}, {{agent}} outputs, or for any agent binary download sources. For full details about proxy configuration refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
 
+## Advanced settings [fleet-advanced-settings]
 
-## Delete unenrolled agents [delete-unenrolled-agents-setting]
+On the **{{fleet}}** > **Settings** page, you can also configure {{fleet}} to automatically delete unenrolled agents or to display agentless resources for inspection and diagnostics purposes.
+
+### Delete unenrolled agents [delete-unenrolled-agents-setting]
 
 After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained just in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically.
 
@@ -143,5 +146,21 @@ Note that this option can also be enabled by adding the `xpack.fleet.enableDelet
 
 To enable automatic deletion of unenrolled agents:
 
-1. Go to **{{fleet}} > Settings**.
-2. Under **Advanced Settings**, enable the **Delete unenrolled agents** option.
+1. Go to **{{fleet}}** > **Settings**.
+2. In the **Advanced Settings** section, enable the **Delete unenrolled agents** option.
+
+### Show agentless resources [show-agentless-resources-setting]
+
+```{applies_to}
+stack: ga 9.1.6
+serverless: ga 
+```
+
+If you have [agentless integrations](/solutions/security/get-started/agentless-integrations.md) deployed, you can enable the **Show agentless resources** option to display related resources such as agentless agents and policies for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
+
+To display the agentless resources in the agent and agent policy lists:
+
+1. Go to **{{fleet}}** > **Settings**.
+2. In the **Advanced Settings** section, enable the **Show agentless resources** option.
+
+Note that you can view and request diagnostics for agentless agents, but you cannot upgrade, unenroll, or reassign them.
