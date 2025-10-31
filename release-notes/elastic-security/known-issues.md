@@ -16,17 +16,20 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Entity Store transform is unavailable 
+:::{dropdown} Entity store transform is unavailable 
+
+Applies to: 9.2.0
 
 **Details**
 
-A new feature has been introduced to Entity Store on 9.2.0 that caused the transform to scan for non existent indices
+A new feature was introduced to entity store in 9.2.0 that caused the transform to scan for non-existent indices.
 
 **Workaround** 
-1. Access entity store page (/app/security/entity_analytics_entity_store)
-2. Locate the Entity Store switch on the top right corner of the screen
-3. Switch the Entity Store it off
-4. Switch the Entity Store it on
+
+Restart the entity store:
+1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Entity Store** page, turn the toggle off.
+3. Turn the toggle back on.
 
 ::::
 
