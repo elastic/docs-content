@@ -7,7 +7,7 @@ This allows information from the filesystem to be used as variables in the {{age
 For example, the following configuration watches for changes to `file1`:
 
 ```yaml
-provides:
+providers:
   filesource:
     sources:
       file1:

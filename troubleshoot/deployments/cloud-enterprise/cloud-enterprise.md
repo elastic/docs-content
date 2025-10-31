@@ -20,3 +20,6 @@ The **Deployments** page in the Cloud UI provides several ways to find deploymen
 * Use the visual indicators to review the health of your deployments at a glance.
 * Search by full or partial deployment names or IDs.
 * Use the **Health** and **Version** dropdown filters to narrow the list of deployments shown. These filters help you find deployments by version, configuration status, or other attributes, making it easier to identify those that require upgrades, are undergoing changes, or match specific operational criteria.
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::

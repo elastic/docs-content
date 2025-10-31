@@ -17,6 +17,9 @@ products:
 
 # Diagnose unassigned shards [diagnose-unassigned-shards]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 There are multiple reasons why shards might get unassigned, ranging from misconfigured allocation settings to lack of disk space.
 
 In order to diagnose the unassigned shards in your deployment use the following steps:
@@ -240,11 +243,7 @@ For more guidance on fixing the most common causes for unassinged shards follow 
 ::::::
 
 :::::::
-See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
-
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+Watch [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
 
 ## Common issues
 
@@ -259,7 +258,7 @@ View [this video](https://www.youtube.com/watch?v=5z3n2VgusLE) for a walkthrough
 
 When Elasticsearch is unable to allocate a shard, it will attempt to retry allocation up to the maximum number of retries allowed.
 After this, Elasticsearch will stop attempting to allocate the shard in order to prevent infinite retries which may impact cluster performance.
-You can use an API to [reroute the cluster](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-cluster-reroute), which will allocate the shard if the issue preventing allocation has been resolved.
+You can use an API to [reroute the cluster]({{es-apis}}operation/operation-cluster-reroute), which will allocate the shard if the issue preventing allocation has been resolved.
 
 ### No valid shard copy [no-shard-copy]
 

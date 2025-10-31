@@ -33,7 +33,7 @@ First mark the repository as read-only on the secondary deployments:
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Snapshot and Restore > Repositories**.
+3. Go to **Snapshot and Restore > Repositories**. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
@@ -46,7 +46,7 @@ At this point, it’s only the primary (current) deployment that has the reposit
 
 Note that we’re now configuring the primary (current) deployment.
 
-1. Open the primary deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Snapshot and Restore > Repositories**.
+1. Open the primary deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Snapshot and Restore > Repositories**. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console

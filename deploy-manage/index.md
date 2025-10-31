@@ -9,6 +9,9 @@ products:
   - id: kibana
   - id: cloud-hosted
   - id: cloud-enterprise
+description: Deploy and manage your Elastic environment. Learn how to design resilient
+  clusters, secure access, monitor performance, and maintain your Elastic Stack
+  components across different deployment options.
 ---
 
 # Deploy and manage
@@ -41,6 +44,7 @@ Learn how to design and deploy a production-ready Elastic environment.
 * [](/deploy-manage/reference-architectures.md): Explore blueprints for deploying clusters tailored to different use cases.
 * [](/deploy-manage/tools.md): Learn about the tools available to safeguard data, ensure continuous availability, and maintain resilience in your {{es}} environment.
 * [](/deploy-manage/autoscaling.md): Learn how to configure your [orchestrated](/deploy-manage/deploy.md#about-orchestration) deployment to scale based on policies and cluster signals. Applies to {{ech}}, {{ece}}, and {{eck}} deployments.
+* [](/deploy-manage/cloud-connect.md): Learn how to use {{ecloud}} services in your self-hosted environment.
 
 :::{admonition} Serverless does it for you
 If you deploy an {{serverless-full}} project, then you don't need to learn about Elastic architecture, production design, resilience, or scaling concepts. Serverless automatically scales and backs up your cluster for you, and is ready for production out of the box.

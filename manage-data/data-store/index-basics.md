@@ -70,9 +70,7 @@ Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how
 
 Elastic's **Index Management** features are an easy, convenient way to manage your cluster’s indices, [data streams](/manage-data/lifecycle/data-stream.md), [templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md). Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
 
-To use these features:
- * On {{serverless-full}}, go to **Project settings** > **Management** > **Index Management**.
- * On {{stack}}, go to **Stack Management** > **Index Management**.
+To use these features, go to the **Index management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ### Required permissions [index-mgm-req-permissions]
 ```{applies_to}
@@ -102,14 +100,17 @@ Investigate your indices and perform operations from the **Indices** view.
 :screenshot:
 :::
 
+* To access details and perform operations on indices:
+
+    * For a single index, click the index name to drill down into the index overview, [mappings](/manage-data/data-store/mapping.md), and [settings](elasticsearch://reference/elasticsearch/index-settings/index.md). From this view, you can navigate to **Discover** to further explore the documents in the index.
+
+    * For multiple indices, select their checkboxes and then open the **Manage indices** menu. 
+
+    Refer to [Perform operations on indices](/manage-data/data-store/perform-index-operations.md) for details about the actions that you can run.
+
 * Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 
-* To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
-
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
-
-* To drill down into the index overivew, [mappings](/manage-data/data-store/mapping.md), and [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
-
 ::::
 
 ::::{tab-item} {{stack}}
@@ -120,21 +121,17 @@ Investigate your indices and perform operations from the **Indices** view.
 :screenshot:
 :::
 
+* To access details and perform operations on indices:
+
+    * For a single index, click the index name to drill down into the index overview, [mappings](/manage-data/data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), and statistics. From this view, you can navigate to **Discover** to further explore the documents in the index, and you can perform operations using the **Manage index** menu.
+
+    * For multiple indices, select their checkboxes and then open the **Manage indices** menu. 
+
+    Refer to [Perform operations on indices](/manage-data/data-store/perform-index-operations.md) for details about the actions that you can run.
+
 * Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 
-* To show details and perform operations such as close, forcemerge, and flush, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
-
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
-
-   You can also use the drop-down menus to filter the list by the [index lifecycle](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md) status or phase.
-
-* To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), statistics, and lifecycle details, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
-
-    :::{image} /manage-data/images/elasticsearch-reference-management_index_details.png
-    :alt: Index Management UI
-    :screenshot:
-    :::
-
 ::::
 :::::
 
@@ -155,6 +152,12 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
 * To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is not managed by an ILM policy.
 * To view more information about a data stream including it's lifecycle settings, click the stream's name.
+
+:::{admonition} Streams
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for common data management tasks in {{kib}}, including tasks such as [modifying data retention](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#data-retention-streams) values.
+:::
 
 ### Manage index templates [index-management-manage-index-templates]
 

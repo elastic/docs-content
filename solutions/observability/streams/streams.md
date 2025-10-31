@@ -1,47 +1,99 @@
 ---
 applies_to:
-  serverless: preview
-  stack: preview 9.1
+  serverless: ga
+  stack: preview 9.1, ga 9.2
 ---
-
-:::{warning}
-Streams is currently in Technical Preview. This feature may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-:::
 
 # Streams
 
-Streams provides a single, centralized UI within {{kib}} that streamlines common tasks, reducing the need to navigate multiple applications or manually configure underlying {{es}} components. Key workflows include:
-- [Extract fields](../streams/management/extract.md) from your documents.
-- [Change the data retention](../streams/management/retention.md) of a stream.
+Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
 
-A Stream directly corresponds to an {{es}} data stream (for example, `logs-myapp-default`). Operations performed in the Streams UI configure that specific data stream.
+## Classic vs. wired streams
+
+Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ in configuration, inheritance, and field mapping.
+
+### Classic streams
+
+Classic streams work with existing {{es}} data streams. Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
+
+Classic streams:
+
+- Are based on existing data streams, index templates, and component templates.
+- Can follow the data retention policy set in the existing index template.
+- Do not support hierarchical inheritance or cascading configuration updates.
+
+### Wired streams
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+
+Wired streams data is sent directly to a single endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
+
+Wired streams:
+- Allow you to organize streams in a parent-child hierarchy.
+- Let child streams automatically inherit mappings, lifecycle settings, and processors.
+- Send configuration changes through the hierarchy to keep streams consistent.
+
+For more information, refer to [sending data to wired streams](./wired-streams.md).
+
+## Managed components
+When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
+
+You can still edit non-managed ingest pipelines, templates, and other components, but avoid those marked as managed or any per-data-stream mappings and settings. This behavior is similar to how Elasticsearch handles components managed by integrations. Refer to the [**Advanced** tab](./management/advanced.md) to review managed components.
 
 ## Required permissions
 
-Streams requires the following Elastic Cloud Serverless roles:
+Streams requires the following permissions:
 
-- Admin: ability to manage all Streams.
-- Editor/Viewer: limited access, unable to perform all actions.
+::::{tab-set}
 
-## Access the Streams UI
+:::{tab-item} Serverless
+Streams requires these Elastic Cloud Serverless roles:
 
-In {{obs-serverless}}, Streams is automatically available.
+- Admin: Ability to manage all Streams
+- Editor/Viewer: Limited access, unable to perform all actions
 
-In {{stack}} version 9.1 and later, you can enable Streams in the {{observability}} Advanced Settings. To do this:
+:::
 
-1. Go to **Management** > **Stack Management** > **Advanced Settings**, or search for "Advanced Settings" in the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Enable **Streams UI** under **Observability**.
+:::{tab-item} Stack
+To manage all streams, you need the following permissions:
 
-In {{serverless-short}} or after enabling Streams in {{stack}}, access the UI in one of the following ways:
+- **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
+- **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
+
+To view streams, you need the following permissions:
+- **Data stream level**: `read`, `view_index_metadata`, `monitor`
+
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
+
+:::
+
+::::
+
+## Access Streams
+
+Open Streams from the following places in {{kib}}:
 
 - Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-- From **Discover**, expand a document's details flyout and select **Stream** or an action associated with the document's data stream. Streams will open filtered to only the selected stream. This only works for documents stored in a data stream.
+- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams will open filtered to the selected data stream.
+
+### Streams API
+``` yaml {applies_to}
+stack: preview 9.1
+serverless: preview
+```
+
+You can also access Streams features using the Streams API. Refer to the [Streams API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-streams) for more information.
 
 ## Manage individual streams [streams-management-tab]
 
 Interact with and configure your streams in the following ways:
 
-- [Data retention](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size under the **Data retention** tab.
-- [Processing](./management/extract.md): Parse and extract information from log messages into dedicated fields under the **Processing** tab.
-- [Advanced](./management/advanced.md): Review and manually modify the inner workings of your stream under the **Advanced** tab.
+- [**Retention**](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
+- [**Partitioning**](./management/partitioning.md): {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Route data into child streams.
+- [**Processing**](./management/extract.md): Parse and extract information from documents into dedicated fields.
+- [**Schema**](./management/schema.md): Manage field mappings.
+- [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
+- [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
