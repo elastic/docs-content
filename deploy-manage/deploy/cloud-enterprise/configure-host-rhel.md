@@ -100,7 +100,7 @@ Make sure to use a supported combination of Linux distribution and container eng
 
     * For Podman 5
 
-        * Install the latest available version of Podman `5.2.2` using dnf.
+        * Install the latest available version of Podman `5.4` using dnf.
 
             :::{note}
             Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later version. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
