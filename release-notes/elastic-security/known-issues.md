@@ -22,7 +22,7 @@ Applies to: 9.2.0
 
 **Details**
 
-A new feature was introduced to entity store in 9.2.0 that caused the transform to scan for non-existent indices.
+A new feature introduced to the entity store in 9.2.0 caused the transform to scan for nonexistent indices.
 
 **Workaround** 
 

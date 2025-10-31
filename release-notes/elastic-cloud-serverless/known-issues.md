@@ -20,7 +20,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 **Details**
 
-A new feature has been introduced to entity store that caused the transform to scan for non-existent indices.
+A new feature introduced to the entity store caused the transform to scan for nonexistent indices.
 
 **Workaround** 
 
