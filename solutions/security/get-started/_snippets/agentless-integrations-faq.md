@@ -18,7 +18,7 @@ Agentless agents (which run on Elastic's infrastructure to enable agentless inte
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.2, serverless: }
-Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
+Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and enable **Show agentless resources**.
 :::
 
 :::{applies-item} stack: ga 9.1
