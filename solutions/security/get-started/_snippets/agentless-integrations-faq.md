@@ -17,12 +17,12 @@ Agentless agents (which run on Elastic's infrastructure to enable agentless inte
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.1
-Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
+:::{applies-item} { stack: ga 9.2, serverless: }
+Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
 :::
 
-:::{applies-item} stack: ga 9.2
-Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
+:::{applies-item} stack: ga 9.1
+Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
 :::
 
 ::::

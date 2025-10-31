@@ -153,7 +153,7 @@ To enable automatic deletion of unenrolled agents:
 
 ```{applies_to}
 stack: ga 9.1.6
-serverless: ga 
+serverless: ga
 ```
 
 If you have [agentless integrations](/solutions/security/get-started/agentless-integrations.md) deployed, you can enable the **Show agentless resources** option to display related resources such as agentless agents and policies for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
