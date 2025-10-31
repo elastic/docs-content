@@ -152,8 +152,10 @@ toc:
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
       - file: scripting/painless-lab.md
-  - file: ai-assistant.md
-  - file: manage-access-to-ai-assistant.md
+  - file: ai-features/ai-features.md
+    children:
+      - file: ai-features/ai-assistant.md
+      - file: ai-features/manage-access-to-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
