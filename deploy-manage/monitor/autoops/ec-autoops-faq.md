@@ -17,13 +17,13 @@ navigation_title: FAQ
 
 # AutoOps FAQ [ec-autoops-faq]
 
-Here are answers to some common questions about AutoOps.
+Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md), [{{serverless-short}} project](/deploy-manage/monitor/autoops/autoops-for-serverless.md), or [self-managed cluster](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md), find answers to some common questions about it on this page.
 
 **General AutoOps questions**
 * [What does AutoOps do?](#what-is-autoops)
 * [Where is AutoOps available?](#autoops-deployment-types)
 * [Why can't I see AutoOps in some deployments and projects?](#cant-see-autoops)
-* [How is AutoOps currently licensed?](#autoops-license)
+* [How is AutoOps licensed?](#autoops-license)
 * [Does AutoOps monitor the entire {{stack}}?](#autoops-monitoring)
 * [Can AutoOps automatically resolve issues?](#autoops-issue-resolution)
 * [Which versions of {{es}} are supported in AutoOps for {{ech}} and self-managed clusters?](#autoops-supported-versions)
@@ -32,8 +32,8 @@ Here are answers to some common questions about AutoOps.
 * [Has AutoOps replaced Stack Monitoring?](#autoops-vs-stack-monitoring)
 
 **Questions about AutoOps for self-managed clusters**
-* [Does AutoOps for self-managed clusters require additional payment?](#additional-payment)
-* [Is there an added cost for shipping metrics data to {{ecloud}}?](#autoops-metrics-cost)
+* [Does AutoOps for self-managed clusters incur additional costs?](#additional-payment)
+* [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 
 **Setting up AutoOps for self-managed clusters**
@@ -51,7 +51,7 @@ Here are answers to some common questions about AutoOps.
 ## General AutoOps questions
 
 $$$what-is-autoops$$$**What does AutoOps do?**
-:   AutoOps for {{es}} significantly simplifies cluster management with performance recommendations, resource utilization, cost insights, real-time issue detection, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver savings in administration time and hardware costs.
+:   AutoOps for {{es}} simplifies cluster management by providing performance recommendations, resource utilization and cost insights, real-time issue detection, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps provides operational and monitoring recommendations that reduce administration time and hardware costs.
 
 $$$autoops-deployment-types$$$**Where is AutoOps available?**
 :   In the [regions](ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) through [Cloud Connect](/deploy-manage/cloud-connect.md). 
@@ -59,8 +59,8 @@ $$$autoops-deployment-types$$$**Where is AutoOps available?**
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
 AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
 
-$$$autoops-license$$$**How is AutoOps currently licensed?**
-:   Using AutoOps for {{ech}} deployments and {{serverless-short}} projects is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
+$$$autoops-license$$$**How is AutoOps licensed?**
+:   For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
     :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
     ::: 
 
@@ -74,27 +74,27 @@ $$$autoops-supported-versions$$$**Which versions of {{es}} are supported in Auto
 :   AutoOps is compatible with [supported {{es}} versions](https://www.elastic.co/support/eol) (7.17.x and above).
 
 $$$autoops-data-retention$$$**How long does Elastic retain AutoOps data?**
-:   Currently, AutoOps has a 10 day retention period.
+:   AutoOps has a 10 day retention period.
 
 $$$autoops-metrics-storage$$$**Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?**
 :   AutoOps metrics are stored internally within the Elastic infrastructure, not on customer deployments. Using AutoOps does not consume customer ECU.
 
 $$$autoops-vs-stack-monitoring$$$**Has AutoOps replaced Stack Monitoring?**
-:   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, but not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
+:   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
 ## Questions about AutoOps for self-managed clusters
 
-$$$additional-payment$$$ **Does AutoOps for self-managed clusters require additional payment?**
+$$$additional-payment$$$ **Does AutoOps for self-managed clusters incur additional costs?**
 :   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 ::: 
 
-$$$autoops-metrics-cost$$$ **Is there an added cost for shipping metrics data to {{ecloud}}?**
-:   Elastic does not charge extra for this service, but your cloud service provider (CSP) might add small charges. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs will be determined by your agreement with that CSP. 
+$$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
+:   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
 
-    You can [choose the CSP region where your data is stored](/deploy-manage/monitor/autoops/ec-autoops-regions.md).
+    You can [choose the CSP region where your data is stored](/deploy-manage/monitor/autoops/ec-autoops-regions.md#autoops-for-self-managed-clusters-regions).
 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
-:   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise or in private cloud environments.
+:   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
 
 ### Setting up AutoOps for self-managed clusters
 
@@ -144,7 +144,7 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     * **HTTP request**: Made to our Cloud Connected API to register your cluster with {{ecloud}} and gather registration-related data.
     * **OpenTelemetry Protocol (OTLP)**: Used to gather all other operational data.
 
-    Each channel is authenticated through an API key or token to ensure your data's security. The following table offers more details: 
+    Each channel is authenticated using an API key or token to ensure your data's security. The following table offers more details: 
 
     | Protocol | Data extracted | Port | Authentication method | 
     | --- | --- | --- | --- |
