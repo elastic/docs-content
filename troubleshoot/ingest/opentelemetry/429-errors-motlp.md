@@ -16,9 +16,9 @@ products:
 
 # 429 errors when using the Elastic Cloud Managed OTLP Endpoint
 
-When sending telemetry data through the {{motlp}} (mOTLP), you might encounter HTTP `429 Too Many Requests` errors. These indicate that your ingest rate has temporarily exceeded the rate or burst limits configured for your Elastic Cloud project.
+When sending telemetry data through the {{motlp}} (mOTLP), you might encounter HTTP `429 Too Many Requests` errors. These indicate that your ingest rate has temporarily exceeded the rate or burst limits configured for your {{ecloud}} project.
 
-This issue can occur in both Elastic Cloud Serverless and {{ech}} (ECH) environments.
+This issue can occur in both {{serverless-full}} and {{ech}} (ECH) environments.
 
 ## Symptoms
 
@@ -51,7 +51,7 @@ A 429 status means that the rate of requests sent to the Managed OTLP endpoint h
     Refer to the [Rate limiting section](opentelemetry://reference/motlp.md#rate-limiting) in the mOTLP reference documentation for details.
 
 * In {{ech}}, the {{es}} capacity for your deployment might be underscaled for the current ingest rate.
-* In Elastic Cloud Serverless, rate limiting should not result from {{es}} capacity, since the platform automatically scales ingest capacity. If you suspect a scaling issue, [contact Elastic Support](contact-support.md).
+* In {{serverless-full}}, rate limiting should not result from {{es}} capacity, since the platform automatically scales ingest capacity. If you suspect a scaling issue, [contact Elastic Support](contact-support.md).
 * Multiple Collectors or SDKs are sending data concurrently without load balancing or backoff mechanisms.
 
 ## Resolution
@@ -62,7 +62,7 @@ To resolve 429 errors, identify whether the bottleneck is caused by ingest limit
 
 If you’ve confirmed that your ingest configuration is stable but still encounter 429 errors:
 
-* Elastic Cloud Serverless: [Contact Elastic Support](contact-support.md) to request an increase in ingest limits.
+* {{serverless-full}}: [Contact Elastic Support](contact-support.md) to request an increase in ingest limits.
 * {{ech}} (ECH): Increase your {{es}} capacity by scaling or resizing your deployment:
   * [Scaling considerations](../../../deploy-manage/production-guidance/scaling-considerations.md)
   * [Resize deployment](../../../deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
