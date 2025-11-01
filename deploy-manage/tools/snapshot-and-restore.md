@@ -91,7 +91,7 @@ By default, a snapshot of a cluster contains the cluster state, all regular data
 - [Legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-templates-v1.html)
 - [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 - [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md)
-- [Stored scripts](/explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts)
+- [Stored scripts](/explore-analyze/scripting/modules-scripting-store-and-retrieve.md)
 - For snapshots taken after 7.12.0, [feature states](#feature-state)
 
 You can also take snapshots of only specific data streams or indices in the cluster. A snapshot that includes a data stream or index automatically includes its aliases. When you restore a snapshot, you can choose whether to restore these aliases.

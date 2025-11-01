@@ -184,7 +184,7 @@ Deactivating a watch also enables you to keep it around for future use without d
 
 You can use scripts and templates when defining a watch. Scripts and templates can reference elements in the watch execution context, including the watch payload. The execution context defines variables you can use in a script and parameter placeholders in a template.
 
-{{watcher}} uses the Elasticsearch script infrastructure, which supports [inline](#inline-templates-scripts) and [stored](#stored-templates-scripts). Scripts and templates are compiled and cached by Elasticsearch to optimize recurring execution. Autoloading is also supported. For more information, see [Scripting](../../scripting.md) and [*How to write scripts*](../../scripting/modules-scripting-using.md).
+{{watcher}} uses the Elasticsearch script infrastructure, which supports [inline](#inline-templates-scripts) and [stored](#stored-templates-scripts). Scripts and templates are compiled and cached by Elasticsearch to optimize recurring execution. Autoloading is also supported. For more information, see [Scripting](../../scripting.md) and [*How to write Painless scripts*](../../scripting/modules-scripting-using.md).
 
 
 ### Watch execution context [watch-execution-context]
