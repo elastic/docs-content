@@ -74,14 +74,14 @@ The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearc
 
 ## Generative AI tools
 
+### Agent Builder
+
+[Agent Builder](elastic-agent-builder.md) enables you to create AI agents that can interact with your Elasticsearch data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+
 ### Playground
 
 Use [Playground](rag/playground.md) to combine your {{es}} data with the power of large language models (LLMs) for retrieval augmented generation (RAG), using a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
 
-### {{es}} Model Context Protocol (MCP) server
+### Model Context Protocol (MCP)
 
-Connect to your Elasticsearch data directly from any MCP Client (like Claude Desktop) using the Model Context Protocol (MCP).
-
-This server enables connecting agents to your Elasticsearch data and allows you to interact with your Elasticsearch indices through natural language conversations.
-
-Learn more in the [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server) GitHub repository.
+The [Model Context Protocol (MCP)](mcp.md) enables connecting AI agents and assistants to your Elasticsearch data, allowing natural language interactions with your indices.
