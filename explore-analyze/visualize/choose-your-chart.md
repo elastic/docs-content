@@ -11,8 +11,6 @@ products:
 # Choose your chart [choose-your-chart]
 
 Use this guide to pick the most effective visualization. 
-
-## How do I choose?
  
 ### OPTION A
 
@@ -69,6 +67,6 @@ Use this guide to pick the most effective visualization.
 
 ## Next steps in Lens
 
-Create and refine a visualization: [Create visualizations](./lens.md#create-the-visualization-panel)
+Create and refine a visualization: [Create visualizations](./lens.md#create-the-visualization-panel).
 
 
