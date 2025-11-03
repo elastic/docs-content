@@ -76,7 +76,7 @@ If a remote cluster is part of an {{ech}} (ECH) deployment, the remote cluster s
     3. Generate a certificate and private key pair for the nodes in the remote cluster:
 
         ```sh
-        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=example.com --ip=127.0.0.1
+        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=<CLUSTER_FQDN> --ip=192.0.2.1
         ```
 
         * Replace `CA_PASSWORD` with the CA password from the previous step.
@@ -158,7 +158,7 @@ To add a remote cluster from Stack Management in {{kib}}:
 2. Select **Add a remote cluster**.
 3. Select **API keys** as the connection type.
 4. Enter a name (*cluster alias*) for the remote cluster.
-5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.168.1.1:9443`.
+5. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.0.2.1:9443`.
 
     Starting with {{kib}} 9.2, you can also specify IPv6 addresses.
 
@@ -180,7 +180,7 @@ PUT /_cluster/settings
       "remote" : {
         "cluster_one" : {    <1>
           "seeds" : [
-            "127.0.0.1:9443" <2>
+            "<MY_REMOTE_CLUSTER_ADDRESS>:9443" <2>
           ]
         }
       }
@@ -205,7 +205,7 @@ The API response indicates that the local cluster is connected to the remote clu
 {
   "cluster_one" : {
     "seeds" : [
-      "127.0.0.1:9443"
+      "<MY_REMOTE_CLUSTER_ADDRESS>:9443"
     ],
     "connected" : true,
     "num_nodes_connected" : 1,  <1>
@@ -239,20 +239,20 @@ PUT _cluster/settings
       "remote": {
         "cluster_one": {
           "seeds": [
-            "127.0.0.1:9443"
+            "<MY_REMOTE_CLUSTER_ADDRESS>:9443"
           ]
         },
         "cluster_two": {
           "mode": "sniff",
           "seeds": [
-            "127.0.0.1:9444"
+            "<MY_SECOND_REMOTE_CLUSTER_ADDRESS>:9443"
           ],
           "transport.compress": true,
           "skip_unavailable": true
         },
         "cluster_three": {
           "mode": "proxy",
-          "proxy_address": "127.0.0.1:9445"
+          "proxy_address": "<MY_THIRD_REMOTE_CLUSTER_ADDRESS>:9443"
         }
       }
     }
@@ -322,15 +322,15 @@ In the following example, `cluster_one`, `cluster_two`, and `cluster_three` are 
 cluster:
     remote:
         cluster_one:
-            seeds: 127.0.0.1:9443
+            seeds: <MY_REMOTE_CLUSTER_ADDRESS>:9443
         cluster_two:
             mode: sniff
-            seeds: 127.0.0.1:9444
+            seeds: <MY_SECOND_REMOTE_CLUSTER_ADDRESS>:9443
             transport.compress: true      <1>
             skip_unavailable: true        <2>
         cluster_three:
             mode: proxy
-            proxy_address: 127.0.0.1:9445 <3>
+            proxy_address: <MY_THIRD_REMOTE_CLUSTER_ADDRESS>:9443 <3>
 ```
 
 1. Compression is explicitly enabled for requests to `cluster_two`.
