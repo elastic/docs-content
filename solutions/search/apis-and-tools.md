@@ -80,8 +80,8 @@ The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearc
 
 ### Playground
 
-Use [Playground](rag/playground.md) to combine your {{es}} data with the power of large language models (LLMs) for retrieval augmented generation (RAG), using a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
 
 ### Model Context Protocol (MCP)
 
-The [Model Context Protocol (MCP)](mcp.md) enables connecting AI agents and assistants to your Elasticsearch data, allowing natural language interactions with your indices.
+The [Model Context Protocol (MCP)](mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
