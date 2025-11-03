@@ -186,7 +186,7 @@ redirects:
   'solutions/observability/apps/analyze-monitors.md': 'solutions/observability/uptime/analyze-monitors.md'
   'solutions/observability/apps/inspect-uptime-duration-anomalies.md': 'solutions/observability/uptime/inspect-duration-anomalies.md'
   'solutions/observability/apps/configure-settings.md': 'solutions/observability/uptime/configure-settings.md'
-  'solutions/observability/apps/tutorial-monitor-java-application.md': 'solutions/observability/get-started/other-tutorials/tutorial-monitor-java-application.md'
+  'solutions/observability/apps/tutorial-monitor-java-application.md': 'solutions/observability/get-started/tutorial-monitor-java-application.md'
   # we can't redirect to the search-ui book so this is the next best option
   'reference/search/index.md': 'reference/index.md'
 
@@ -206,7 +206,7 @@ redirects:
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/logging.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/net.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-ruby-api/ruby.md': 'troubleshoot/elasticsearch/clients.md'
-  'solutions/observability/get-started/add-data-from-splunk.md': 'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md'
+  'solutions/observability/get-started/add-data-from-splunk.md': 'solutions/observability/get-started.md'
   'solutions/observability/get-started/create-an-observability-project.md': 'solutions/observability/get-started.md'
   'solutions/observability/get-started/get-started-with-dashboards.md': 'solutions/observability/get-started.md'
 # Related to https://github.com/elastic/docs-content/pull/1329
