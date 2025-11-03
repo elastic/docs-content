@@ -8,7 +8,7 @@ applies_to:
 ---
 ```
 
-Because these changes need to be published as soon as the feature is released in Serverless, you might need to publish your docs before the feature is available in the {{stack}}. To allow for this, Docs V3 [displays badges differently](/contribute/cumulative-docs/index.md#how-do-these-tags-behave-in-the-output) when the `applies_to` tag specifies a product version that has not yet been released to customers.
+Because these changes need to be published as soon as the feature is released in Serverless, you might need to publish your docs before the feature is available in the {{stack}}. To allow for this, Docs V3 [displays badges differently](/contribute-docs/how-to/cumulative-docs/index.md#how-do-these-tags-behave-in-the-output) when the `applies_to` tag specifies a product version that has not yet been released to customers.
 
 * A feature is tagged as available in a current Serverless release and a future {{stack}} version will render the following badges:
 
