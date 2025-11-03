@@ -41,9 +41,9 @@ A deployment lets you explore Elastic solutions for Search, Observability, and S
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
-**One serverless project**
+**Three {{serverless-short}} project**
 
-Serverless projects package {{stack}} features by type of solution:
+{{serverless-short}} projects package {{stack}} features by type of solution:
 
 * [{{es}}](../../../solutions/search.md)
 * [Observability](../../../solutions/observability.md)
@@ -56,7 +56,7 @@ For more information, check the [{{serverless-short}} documentation](serverless.
 
 ### Trial limitations [general-sign-up-trial-what-limits-are-in-place-during-a-trial]
 
-During the free 14 day trial, Elastic provides access to one hosted deployment and one serverless project. If all you want to do is try out Elastic, the trial includes more than enough to get you started. During the trial period, some limitations apply.
+During the free 14 day trial, Elastic provides access to one hosted deployment and three {{serverless-short}} projects. If all you want to do is try out Elastic, the trial includes more than enough to get you started. During the trial period, some limitations apply.
 
 **Hosted deployments**
 
@@ -70,10 +70,10 @@ For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
 **Serverless projects**
 
-* You can have one active serverless project at a time.
+* You can have three active {{serverless-short}} projects at a time.
 * Search Power is limited to 100. This setting only exists in {{es-serverless}} projects
 * Search Boost Window is limited to 7 days. This setting only exists in {{es-serverless}} projects
-* Scaling is limited for serverless projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
+* Scaling is limited for {{serverless-short}} projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
 * We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
 
 **Remove limitations**
@@ -95,7 +95,7 @@ Start by checking out some common approaches for [moving data into {{ecloud}}](/
 
 ### Maintain access to your trial projects and data [general-sign-up-trial-what-happens-at-the-end-of-the-trial]
 
-When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and serverless project, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, serverless project, and ingested data are permanently deleted.
+When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and {{serverless-short}} projects, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, {{serverless-short}} projects, and ingested data are permanently deleted.
 
 If you’re interested in learning more ways to subscribe to {{ecloud}}, don’t hesitate to [contact us](https://www.elastic.co/contact).
 
