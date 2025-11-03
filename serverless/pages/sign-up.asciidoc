@@ -18,7 +18,7 @@ Each deployment includes Elastic features such as Maps, SIEM, machine learning, 
 
 To learn more about Elastic Cloud Hosted, check our https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html[Elasticsearch Service documentation].
 
-**One serverless project**
+**Three {{serverless-short}} project**
 
 Serverless projects package Elastic Stack features by type of solution:
 
@@ -30,14 +30,14 @@ When you create a project, you select the project type applicable to your use ca
 
 [NOTE]
 ====
-During the trial period, you are limited to one active hosted deployment and one active serverless project at a time. When you subscribe, you can create additional deployments and projects.
+During the trial period, you are limited to one active hosted deployment and three active {{serverless-short}} projects at a time. When you subscribe, you can create additional deployments and projects.
 ====
 
 [discrete]
 [[general-sign-up-trial-what-limits-are-in-place-during-a-trial]]
 == Trial limitations
 
-During the free 14 day trial, Elastic provides access to one hosted deployment and one serverless project. If all you want to do is try out Elastic, the trial includes more than enough to get you started. During the trial period, some limitations apply.
+During the free 14 day trial, Elastic provides access to one hosted deployment and three {{serverless-short}} projects. If all you want to do is try out Elastic, the trial includes more than enough to get you started. During the trial period, some limitations apply.
 
 **Hosted deployments**
 
@@ -50,10 +50,10 @@ To learn more about Elastic Cloud Hosted, check our https://www.elastic.co/guide
 
 **Serverless projects**
 
-* You can have one active serverless project at a time.
+* You can have three active {{serverless-short}} projects at a time.
 * Search Power is limited to 100. This setting only exists in {es-serverless} projects
 * Search Boost Window is limited to 7 days. This setting only exists in {es-serverless} projects
-* Scaling is limited for serverless projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
+* Scaling is limited for {{serverless-short}} projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
 
 **Remove limitations**
 
@@ -76,7 +76,7 @@ Start by checking out some common approaches for https://www.elastic.co/guide/en
 [[general-sign-up-trial-what-happens-at-the-end-of-the-trial]]
 == Maintain access to your trial projects and data
 
-When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to https://www.elastic.co/guide/en/cloud/current/ec-billing-details.html[Elastic Cloud]. When you subscribe, you are able to resume your deployment and serverless project, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, serverless project, and ingested data are permanently deleted.
+When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to https://www.elastic.co/guide/en/cloud/current/ec-billing-details.html[Elastic Cloud]. When you subscribe, you are able to resume your deployment and {{serverless-short}} projects, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, {{serverless-short}} projects, and ingested data are permanently deleted.
 
 If you’re interested in learning more ways to subscribe to Elastic Cloud, don’t hesitate to https://www.elastic.co/contact[contact us].
 
