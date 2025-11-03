@@ -171,6 +171,7 @@ toc:
               - file: ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md
           - file: ingest/opentelemetry/no-data-in-kibana.md
           - file: ingest/opentelemetry/connectivity.md
+          - file: ingest/opentelemetry/429-errors-motlp.md
           - file: ingest/opentelemetry/contact-support.md
       - file: ingest/logstash.md
         children:
