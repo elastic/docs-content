@@ -391,7 +391,7 @@ Standard Markdown images: `[alt text]` in square brackets, followed by the image
 
 **DOs**<br>
 ✅ **Do:** Store images in a centralized directory<br>
-✅ **Do:** Follow v3 [best practices for screenshots](../contribute/how-to/cumulative-docs/badge-placement.md#images)<br>
+✅ **Do:** Follow v3 [best practices for screenshots](../how-to/cumulative-docs/badge-placement.md#images)<br>
 ✅ **Do:** Specify `:screenshot:` in an [image directive](images.md#screenshots) to add a border
 
 **DON'Ts**<br>
