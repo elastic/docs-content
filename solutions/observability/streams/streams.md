@@ -6,15 +6,9 @@ applies_to:
 
 # Streams
 
-:::::{tab-set}
-
-::::{tab-item} Overview
-
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
 
-::::
-
-::::{tab-item} Classic versus wired streams
+## Classic vs. wired streams
 
 Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ in configuration, inheritance, and field mapping.
 
@@ -43,17 +37,10 @@ Wired streams:
 
 For more information, refer to [sending data to wired streams](./wired-streams.md).
 
-::::
-
-::::{tab-item} Managed components
-
+## Managed components
 When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
 
-You can still edit non-managed ingest pipelines, templates, and other components, but avoid those marked as managed or any per-data-stream mappings and settings. This behavior is similar to how {{es}} handles components managed by integrations. Refer to the [**Advanced** tab](./management/advanced.md) to review managed components.
-
-::::
-
-:::::
+You can still edit non-managed ingest pipelines, templates, and other components, but avoid those marked as managed or any per-data-stream mappings and settings. This behavior is similar to how Elasticsearch handles components managed by integrations. Refer to the [**Advanced** tab](./management/advanced.md) to review managed components.
 
 ## Required permissions
 
