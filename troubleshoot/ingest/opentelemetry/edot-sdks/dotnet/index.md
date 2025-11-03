@@ -198,7 +198,7 @@ Logger.LogInformation("Eat your {fruit1} {fruit2} {fruit3}!", "apple", "banana",
 
 ### Custom processors are not applied to exported data
 
-__TL;DR;__ When using custom processors, they may not run before data is exported.
+When using custom processors, they may not run before data is exported.
 
 By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md).
 
