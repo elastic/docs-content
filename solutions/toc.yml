@@ -143,10 +143,7 @@ toc:
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
               - folder: observability/get-started/opentelemetry/use-cases/llms
-          - file: observability/get-started/other-tutorials/index.md
-            children:
-              - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
-              - file: observability/get-started/other-tutorials/add-data-from-splunk.md
+          - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
           - file: observability/get-started/logs-essentials.md
       - file: observability/applications/index.md
         children:

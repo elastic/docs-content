@@ -585,5 +585,7 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/3685
   'deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md': 'deploy-manage/monitor/autoops/ec-autoops-faq.md'
 
-
-
+# Related to https://github.com/elastic/docs-content/pull/3791
+  'solutions/observability/get-started/other-tutorials/index.md': 'solutions/observability/get-started/tutorial-monitor-java-application.md'
+  'solutions/observability/get-started/other-tutorials/tutorial-monitor-java-application.md': 'solutions/observability/get-started/tutorial-monitor-java-application.md'
+  'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
