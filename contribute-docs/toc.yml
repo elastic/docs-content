@@ -1,24 +1,22 @@
 toc:
   - file: index.md
-  - folder: contribute
+  - file: contribute-index.md
+  - file: locally.md
+  - file: on-the-web.md
+  - file: legacy-docs.md
+  - file: tools.md
+  - folder: how-to
     children:
       - file: index.md
-      - file: locally.md
-      - file: on-the-web.md
-      - file: legacy-docs.md
-      - file: tools.md
-      - folder: how-to
+      - folder: cumulative-docs
         children:
           - file: index.md
-          - folder: cumulative-docs
-            children:
-              - file: index.md
-              - file: guidelines.md
-              - file: badge-placement.md
-              - file: example-scenarios.md
-              - file: reference.md
-          - file: move.md
-          - file: redirects.md
+          - file: guidelines.md
+          - file: badge-placement.md
+          - file: example-scenarios.md
+          - file: reference.md
+      - file: move.md
+      - file: redirects.md
   - folder: syntax
     children:
       - file: index.md

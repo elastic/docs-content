@@ -38,7 +38,7 @@ For complex or multi-page updates to legacy documentation, refer to the [legacy 
 If you need to merge changes that are published in both systems (usually because a change is valid in multiple product versions, such as stack 9.x and 8.x), it is recommended to update the documentation in elastic.co/docs first. Then you can convert the updates to ASCIIDoc and make the changes to the elastic.co/guide documentation. To do this, follow these steps:
 
 1. Install [pandoc](https://pandoc.org/installing.html) to convert your markdown file to ASCIIDoc
-2. Update the /docs content first in Markdown as described in [Contribute on the web](on-the-web.md) in the relevant repository.
+2. Update the /docs content first in Markdown as described in [Contribute on the web](contribute/on-the-web.md) in the relevant repository.
 3. Run your changes through pandoc:
    1. If you need to bring over the entire file, you can run the following command and it will create an ASCIIDoc file for you: `pandoc -f gfm -t asciidoc ./<file-name>.md -o <file-name>.asciidoc`
    2. If you just need to port a specific section you can use: `pandoc -f gfm -t asciidoc ./<file-name>.md` and the output of the file will be in your command window from which you can copy.

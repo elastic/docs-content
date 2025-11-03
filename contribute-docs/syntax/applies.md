@@ -1,6 +1,6 @@
 # Applies to
 
-Starting with Elastic Stack 9.0, ECE 4.0, and ECK 3.0, documentation follows a [cumulative approach](../contribute/how-to/cumulative-docs/index.md): instead of creating separate pages for each product and release, we update a single page with product- and version-specific details over time.
+Starting with Elastic Stack 9.0, ECE 4.0, and ECK 3.0, documentation follows a [cumulative approach](../how-to/cumulative-docs/index.md): instead of creating separate pages for each product and release, we update a single page with product- and version-specific details over time.
 
 To support this, source files use a tagging system to indicate:
 
@@ -11,7 +11,7 @@ This is what the `applies_to` metadata is for. It can be used at the [page](#pag
 [section](#section-level), or [inline](#inline-level) level to specify applicability with precision.
 
 :::{note}
-For detailed guidance, refer to [](../contribute/how-to/cumulative-docs/index.md).
+For detailed guidance, refer to [](../how-to/cumulative-docs/index.md).
 :::
 
 ## Syntax

@@ -12,15 +12,15 @@ We have two distinct systems for contributing to the current Elastic docs:
 
 |System|What it covers|Published at|Format|How to contribute
 |----|----|----|----|----|----|
-|Main docs|Guides, Troubleshooting, release notes, etc.|[elastic.co/docs](https://www.elastic.co/docs)|Markdown+|- [Contribution guide](./contribute/index.md) <br><br> - [Syntax guide](./syntax/index.md)|
+|Main docs|Guides, Troubleshooting, release notes, etc.|[elastic.co/docs](https://www.elastic.co/docs)|Markdown+|- [Contribution guide](./contribute-index.md) <br><br> - [Syntax guide](./syntax/index.md)|
 |API references|Elastic REST APIs|[elastic.co/docs/api](https://www.elastic.co/docs/api/)|[OpenAPI](https://swagger.io/specification/)|[Contribute to API docs](./api-docs/index.md)|
 
 :::{note}
-If you need to update documentation in both the current and legacy systems, you'll need two separate PRs. Refer to [Updating docs in both systems](./contribute/legacy-docs.md#updating-docs-in-both-systems).
+If you need to update documentation in both the current and legacy systems, you'll need two separate PRs. Refer to [Updating docs in both systems](./legacy-docs.md#updating-docs-in-both-systems).
 :::
 
 ## Contribute to legacy docs
 
 |System|What it covers|Published at|Format/toolchain|How to contribute
 |----|----|----|----|----|----|
-|Legacy docs|Elastic docs & API references for 8.x and earlier|[elastic.co/guide](https://www.elastic.co/guide/index.html)|Asciidoc|[Contribute to legacy docs](./contribute/legacy-docs.md)|
+|Legacy docs|Elastic docs & API references for 8.x and earlier|[elastic.co/guide](https://www.elastic.co/guide/index.html)|Asciidoc|[Contribute to legacy docs](./legacy-docs.md)|

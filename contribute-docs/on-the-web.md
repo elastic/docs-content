@@ -27,7 +27,7 @@ To make quick edits to a single page:
 
 For more details on editing files on GitHub, refer to [GitHub's documentation on editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
 
-:::{include} _snippets/tagged-warning.md
+:::{include} _snippets-contribute/tagged-warning.md
 :::
 
 ## Editing legacy docs

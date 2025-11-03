@@ -32,4 +32,4 @@ V3 supports some GitHub Flavored Markdown extensions:
 
 This syntax guide covers Markdown for [elastic.co/docs](https://elastic.co/docs).
 
-If you need to work on [elastic.co/guide](https://elastic.co/guide) pages, which are written in AsciiDoc,refer to [Contribute to legacy documentation](../contribute/legacy-docs.md).
+If you need to work on [elastic.co/guide](https://elastic.co/guide) pages, which are written in AsciiDoc,refer to [Contribute to legacy documentation](../legacy-docs.md).

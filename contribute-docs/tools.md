@@ -20,8 +20,8 @@ The [Elastic Docs Utilities extension](https://marketplace.visualstudio.com/item
 
 The extension is available in VS Code whether you're:
 
-- Working [locally](../contribute/locally.md) in the VS Code desktop application
-- Working [in the browser](../contribute/on-the-web.md) in VS Code web editors ([GitHub Codespaces](https://github.com/features/codespaces), [github.dev](https://github.dev))
+- Working [locally](locally.md) in the VS Code desktop application
+- Working [in the browser](on-the-web.md) in VS Code web editors ([GitHub Codespaces](https://github.com/features/codespaces), [github.dev](https://github.dev))
 
 ### Key capabilities
 

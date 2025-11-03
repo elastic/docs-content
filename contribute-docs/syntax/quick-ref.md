@@ -114,7 +114,7 @@ A default anchor is automatically created for each [heading](#headings), in the 
 
 ## Applies to
 
-Tags that identify technical contexts: the feature base (stack/serverless), deployments, and project types that a piece of content "applies to." Use `applies_to` tags to help users determine whether content is right for their deployments and configuration. These tags are a [version content pattern](../contribute/how-to/cumulative-docs/example-scenarios.md) in Elastic Docs v3.
+Tags that identify technical contexts: the feature base (stack/serverless), deployments, and project types that a piece of content "applies to." Use `applies_to` tags to help users determine whether content is right for their deployments and configuration. These tags are a [version content pattern](../how-to/cumulative-docs/example-scenarios.md) in Elastic Docs v3.
 
 **Example: Section tag**
 
