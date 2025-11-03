@@ -53,29 +53,8 @@ Dropdown content
 
 ## With applies_to badge
 
-You can add an applies_to badge to the dropdown title by specifying the `:applies_to:` option. This displays a badge indicating which deployment types, versions, or other applicability criteria the dropdown content applies to.
-
-:::::{tab-set}
-
-::::{tab-item} Output
-
-:::{dropdown} Dropdown Title
-:applies_to: stack: ga 9.0
-Dropdown content for Stack GA 9.0
+:::{include} _snippets/applies-to-dropdowns.md
 :::
-
-::::
-
-::::{tab-item} Markdown
-```markdown
-:::{dropdown} Dropdown Title
-:applies_to: stack: ga 9.0
-Dropdown content for Stack GA 9.0
-:::
-```
-::::
-
-:::::
 
 ## Multiple applies_to definitions
 
