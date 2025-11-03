@@ -10,13 +10,20 @@ The `min_age` value is relative to the rollover time, not the index creation tim
 ::::
 
 
-You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. 
+You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API.
 
 ::::{tab-set}
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+
+To create the policy from {{kib}}:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click **Create policy**.
+
+By default, only the hot index lifecycle phase is enabled. Enable each additional lifecycle phase that you'd like.
+
 
 :::{image} /manage-data/images/elasticsearch-reference-create-policy.png
 :alt: Create policy page
@@ -59,6 +66,8 @@ PUT _ilm/policy/timeseries_policy
 
 :::
 ::::
+
+Note that for each phase after the hot phase, you have the option to move the data into the next phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
 
 :::{tip}
 For more details about default {{ilm-init}} policy settings, refer to [Create a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#ilm-create-policy).

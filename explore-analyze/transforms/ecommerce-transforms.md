@@ -23,7 +23,7 @@ products:
 
    For example, you might want to group the data by product ID and calculate the total number of sales for each product and its average price. Alternatively, you might want to look at the behavior of individual customers and calculate how much each customer spent in total and how many different categories of products they purchased. Or you might want to take the currencies or geographies into consideration. What are the most interesting ways you can transform and interpret this data?
 
-   Go to **Management** > **Stack Management** > **Data** > **Transforms** in {{kib}} and use the wizard to create a {{transform}}:
+   Go to the **Transforms** management page in {{kib}} using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then use the wizard to create a {{transform}}:
    :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-pivot1.png
    :alt: Creating a simple {{transform}} in {{kib}}
    :screenshot:

@@ -237,10 +237,11 @@ POST byte-image-index/_search
 If you want to provide `float` vectors but still get the memory savings of `byte` vectors, use the [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) feature. Quantization allows you to provide `float` vectors, but internally they are indexed as `byte` vectors. Additionally, the original `float` vectors are still retained in the index.
 
 ::::{note}
-The default index type for `dense_vector` is `int8_hnsw`.
+The default index type for `dense_vector` is either `bbq_hnsw` or `int8_hnsw`, depending on your product version. Refer to [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 ::::
 
-To use quantization, set the `dense_vector` index type to `int8_hnsw` or `int4_hnsw`.
+You can use the default quantization strategy or specify an index option.
+For example, use `int8_hnsw`:
 
 ```console
 PUT quantized-image-index
@@ -291,7 +292,7 @@ PUT quantized-image-index
     }
     ```
 
-Because the original `float` vectors are retained alongside the quantized index, you can use them for re-scoring: retrieve candidates quickly via the `int8_hnsw` (or `int4_hnsw`) index, then rescore the top `k` hits using the original `float` vectors. This provides the best of both worlds, fast search and accurate scoring.
+Because the original `float` vectors are retained alongside the quantized index, you can use them for re-scoring: retrieve candidates quickly via the `int8_hnsw` index, then rescore the top `k` hits using the original `float` vectors. This provides the best of both worlds, fast search and accurate scoring.
 
 ```console
 POST quantized-image-index/_search

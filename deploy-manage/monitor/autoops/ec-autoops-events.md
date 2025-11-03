@@ -4,8 +4,13 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 navigation_title: Events
 ---
 
@@ -17,7 +22,7 @@ When AutoOps detects an issue, it creates an event. Events provide detailed anal
 
 ## Event insights
 
-You can view events on the **Deployment** page in the **Open Events** and **Events History** sections.
+You can view events on the **Deployment** page (for {{ECH}} deployments) or the **Cluster** page (for ECE, ECK, and self-managed clusters) in the **Open Events** and **Events History** sections.
 
 When you select an event, a flyout appears with insights and context for the detected issue.
 
@@ -63,6 +68,6 @@ This action can be reversed using the **Dismiss events** report.
 You can share event information with other users by sending them a link to the event in AutoOps. Select **Share event link** to share the event.
 
 :::{note}
-Users can only view the event from the shared link if they have access to the AutoOps deployment from which the link was copied.
+Users can only view the event from the shared link if they have access to the AutoOps deployment or cluster from which the link was copied.
 :::
 

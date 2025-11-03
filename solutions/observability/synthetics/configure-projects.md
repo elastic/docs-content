@@ -243,7 +243,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     To list available locations you can:
 
     * Run the [`elastic-synthetics locations` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command).
-    * Find `Synthetics` in the [global search field](/get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. Locations will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. Locations will be listed in *Locations*.
 
 `privateLocations` (`Array<string>`)
 :   The [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
@@ -251,7 +251,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     To list available {{private-location}}s you can:
 
     * Run the [`elastic-synthetics locations` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command) with the URL for the Observability project or the {{kib}} URL for the deployment from which to fetch available locations.
-    * Find `Synthetics` in the [global search field](/get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
 
 `throttling` (`boolean` | [`ThrottlingOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L194-L198))
 :   Control the monitor’s download speeds, upload speeds, and latency to simulate your application’s behavior on slower or laggier networks. Set to `false` to disable throttling altogether.
@@ -285,3 +285,17 @@ For information on configuring monitors individually, refer to:
 
 * [Configure individual browser monitors](/solutions/observability/synthetics/configure-individual-browser-monitors.md) for browser monitors
 * [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md) for lightweight monitors
+
+## `proxy` [synthetics-configuration-proxy]
+
+`uri` (`string`)
+:   The Proxy URL to be used when connecting to the deployment or Observability Serverless project.
+
+`token` (`string`)
+:   (Optional) The authentication token to be used when connecting to the proxy URL. Based on auth header format `Basic Asaaas==`
+
+`ca` (`string | Buffer`)
+:   (Optional) Override the trusted CA certificates for the proxy connection.
+
+`noVerify` (`boolean`)
+:   (Optional) Disable TLS verification for the proxy connection.

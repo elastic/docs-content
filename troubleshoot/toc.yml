@@ -54,6 +54,7 @@ toc:
       - file: elasticsearch/troubleshooting-searches.md
       - file: elasticsearch/start-ilm.md
       - file: elasticsearch/index-lifecycle-management-errors.md
+      - file: elasticsearch/file-based-recovery.md
       - file: elasticsearch/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md
@@ -142,7 +143,36 @@ toc:
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
-      - toc: ingest/opentelemetry
+      - file: ingest/opentelemetry/index.md
+        children:
+          - file: ingest/opentelemetry/edot-collector/index.md
+            children:
+              - file: ingest/opentelemetry/edot-collector/collector-oomkilled.md
+              - file: ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md
+              - file: ingest/opentelemetry/edot-collector/metadata.md
+              - file: ingest/opentelemetry/edot-collector/enable-debug-logging.md
+              - file: ingest/opentelemetry/edot-collector/collector-not-starting.md
+              - file: ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md
+              - file: ingest/opentelemetry/edot-collector/trace-export-errors.md
+          - file: ingest/opentelemetry/edot-sdks/index.md
+            children:
+              - file: ingest/opentelemetry/edot-sdks/android/index.md
+              - file: ingest/opentelemetry/edot-sdks/dotnet/index.md
+              - file: ingest/opentelemetry/edot-sdks/ios/index.md
+              - file: ingest/opentelemetry/edot-sdks/java/index.md
+                children:
+                  - file: ingest/opentelemetry/edot-sdks/java/proxy-issues.md
+              - file: ingest/opentelemetry/edot-sdks/nodejs/index.md
+              - file: ingest/opentelemetry/edot-sdks/php/index.md
+              - file: ingest/opentelemetry/edot-sdks/python/index.md
+              - file: ingest/opentelemetry/edot-sdks/enable-debug-logging.md
+              - file: ingest/opentelemetry/edot-sdks/missing-app-telemetry.md
+              - file: ingest/opentelemetry/edot-sdks/proxy.md
+              - file: ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md
+          - file: ingest/opentelemetry/no-data-in-kibana.md
+          - file: ingest/opentelemetry/connectivity.md
+          - file: ingest/opentelemetry/429-errors-motlp.md
+          - file: ingest/opentelemetry/contact-support.md
       - file: ingest/logstash.md
         children:
           - file: ingest/logstash/plugins.md

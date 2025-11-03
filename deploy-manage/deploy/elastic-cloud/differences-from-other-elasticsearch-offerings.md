@@ -105,13 +105,13 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 
 ### Observability
 
-This table compares Observability capabilities between {{ech}} deployments and Observability Complete Serverless projects. For more information on Observability Logs Essentials Serverless projects, refer to [Observability subscription tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
+This table compares Observability capabilities between {{ech}} deployments and Observability Complete Serverless projects. For more information on Observability Logs Essentials Serverless projects, refer to [Observability feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
 
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
-| [**APM Agent Central Configuration**](/solutions/observability/apm/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
+| [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
 | [**Android agent/SDK instrumentation**](apm-agent-android://reference/edot-android/index.md) | ✅ | ✅ | |
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |

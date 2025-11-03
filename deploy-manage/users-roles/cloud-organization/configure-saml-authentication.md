@@ -96,7 +96,9 @@ You must have authority to modify your domain’s DNS records and be a member of
 It might take some time for the DNS records to be updated and propagated in the network. If verification isn’t successful, wait a while and try again.
 ::::
 
-
+::::{note}
+After the domain has been claimed by your organization, you can safely remove the TXT record from your DNS provider settings. You must remove this record if you want to claim the same domain in additional {{ecloud}} organizations.
+::::
 
 ### Step 2: Register a SAML IdP [ec-saml-sso-register-idp]
 

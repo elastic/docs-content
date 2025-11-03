@@ -9,9 +9,9 @@ products:
   - id: cloud-hosted
 ---
 
-# Migrate from the cross-cluster search deployment template in {{ech}} [ec-migrate-ccs]
+# Migrate from the legacy cross-cluster search deployment template in {{ech}} [ec-migrate-ccs]
 
-The cross-cluster search deployment template is now deprecated and has been removed from the {{ecloud}} Console. You no longer need to use the dedicated cross-cluster template to search across deployments. Instead, you can now use any template to [configure remote clusters](ec-enable-ccs.md) and search across them. Existing deployments created using this template are not affected, but they are required to migrate to another template before upgrading to {{stack}} 8.x.
+The legacy cross-cluster search deployment template has been removed from the {{ecloud}} Console. You no longer need a dedicated template to search across deployments. Instead, you can now use any template to [configure remote clusters](ec-enable-ccs.md) and search across them. Existing deployments created using this template are not affected, but they are required to migrate to another template before upgrading to {{stack}} 8.x.
 
 There are two different approaches to do this migration:
 

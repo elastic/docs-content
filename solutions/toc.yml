@@ -1,4 +1,4 @@
-project: 'Solutions and use cases'
+project: "Solutions and use cases"
 toc:
   - file: index.md
   - file: search.md
@@ -44,16 +44,22 @@ toc:
               - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
               - file: search/semantic-search/cohere-es.md
           - file: search/using-openai-compatible-models.md
-      - hidden: search/elastic-agent-builder.md
-      - hidden: search/agent-builder/get-started.md
-      - hidden: search/agent-builder/chat.md
-      - hidden: search/agent-builder/agent-builder-agents.md
-      - hidden: search/agent-builder/tools.md
-      - hidden: search/agent-builder/programmatic-access.md
-      - hidden: search/agent-builder/kibana-api.md
-      - hidden: search/agent-builder/mcp-server.md
-      - hidden: search/agent-builder/a2a-server.md
-      - hidden: search/agent-builder/limitations-known-issues.md
+      - file: search/elastic-agent-builder.md
+        children:
+          - file: search/agent-builder/get-started.md
+          - file: search/agent-builder/models.md
+          - file: search/agent-builder/chat.md
+          - file: search/agent-builder/agent-builder-agents.md
+          - file: search/agent-builder/tools.md
+            children:
+              - file: search/agent-builder/tools/esql-tools.md
+              - file: search/agent-builder/tools/index-search-tools.md
+          - file: search/agent-builder/programmatic-access.md
+            children:
+              - file: search/agent-builder/kibana-api.md
+              - file: search/agent-builder/a2a-server.md
+              - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
@@ -157,24 +163,26 @@ toc:
                   - file: observability/apm/errors.md
                   - file: observability/apm/metrics.md
                   - file: observability/apm/metadata.md
-              - file: observability/apm/collect-application-data.md
+              - file: observability/apm/ingest/index.md
                 children:
-                  - file: observability/apm/use-opentelemetry-with-apm.md
+                  - folder: observability/apm/opentelemetry
+                    file: index.md
                     children:
-                      - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
-                      - file: observability/apm/collect-metrics.md
-                      - file: observability/apm/edot-sdks-central-configuration.md
-                      - file: observability/apm/limitations.md
-                      - file: observability/apm/attributes.md
-                      - file: observability/apm/data-stream-routing.md
-                  - file: observability/apm/elastic-apm-agents.md
+                      - file: upstream-opentelemetry-collectors-language-sdks.md
+                      - file: collect-metrics.md
+                      - file: edot-sdks-central-configuration.md
+                      - file: limitations.md
+                      - file: attributes.md
+                      - file: data-stream-routing.md
+                  - folder: observability/apm/apm-agents
+                    file: index.md
                     children:
-                      - file: observability/apm/apm-agent-central-configuration.md
-                      - file: observability/apm/real-user-monitoring-rum.md
-                      - file: observability/apm/create-upload-source-maps-rum.md
-                  - file: observability/apm/apm-k8s-attacher.md
-                  - file: observability/apm/monitor-aws-lambda-functions.md
-                  - file: observability/apm/jaeger.md
+                      - file: central-configuration.md
+                      - file: real-user-monitoring-rum.md
+                      - file: create-upload-source-maps-rum.md
+                  - file: observability/apm/ingest/apm-k8s-attacher.md
+                  - file: observability/apm/ingest/monitor-aws-lambda-functions.md
+                  - file: observability/apm/ingest/jaeger.md
               - file: observability/apm/view-analyze-data.md
                 children:
                   - file: observability/apm/overviews.md
@@ -246,59 +254,60 @@ toc:
                   - file: observability/apm/storage-sizing-guide.md
                   - file: observability/apm/reduce-storage.md
                   - file: observability/apm/explore-data-in-elasticsearch.md
-              - file: observability/apm/apm-server.md
+              - folder: observability/apm/apm-server
+                file: index.md
                 children:
-                  - file: observability/apm/apm-server-setup.md
+                  - file: setup.md
                     children:
-                      - file: observability/apm/apm-server-fleet-managed.md
-                      - file: observability/apm/apm-server-binary.md
-                  - file: observability/apm/configure-apm-server.md
+                      - file: fleet-managed.md
+                      - file: binary.md
+                  - file: configure.md
                     children:
-                      - file: observability/apm/general-configuration-options.md
-                      - file: observability/apm/configure-anonymous-authentication.md
-                      - file: observability/apm/apm-agent-authorization.md
-                      - file: observability/apm/configure-apm-agent-central-configuration.md
-                      - file: observability/apm/configure-apm-instrumentation.md
-                      - file: observability/apm/configure-kibana-endpoint.md
-                      - file: observability/apm/configure-logging.md
-                      - file: observability/apm/configure-output.md
+                      - file: general-configuration-options.md
+                      - file: configure-anonymous-authentication.md
+                      - file: apm-agent-authorization.md
+                      - file: apm-agent-central-configuration.md
+                      - file: configure-apm-instrumentation.md
+                      - file: configure-kibana-endpoint.md
+                      - file: configure-logging.md
+                      - file: configure-output.md
                         children:
-                          - file: observability/apm/configure-output-for-elasticsearch-service-on-elastic-cloud.md
-                          - file: observability/apm/configure-elasticsearch-output.md
-                          - file: observability/apm/configure-logstash-output.md
-                          - file: observability/apm/configure-kafka-output.md
-                          - file: observability/apm/configure-redis-output.md
-                          - file: observability/apm/configure-console-output.md
-                      - file: observability/apm/configure-project-paths.md
-                      - file: observability/apm/configure-real-user-monitoring-rum.md
-                      - file: observability/apm/ssl-tls-settings.md
+                          - file: configure-output-for-elasticsearch-service-on-elastic-cloud.md
+                          - file: configure-elasticsearch-output.md
+                          - file: configure-logstash-output.md
+                          - file: configure-kafka-output.md
+                          - file: configure-redis-output.md
+                          - file: configure-console-output.md
+                      - file: configure-project-paths.md
+                      - file: configure-real-user-monitoring-rum.md
+                      - file: ssl-tls-settings.md
                         children:
-                          - file: observability/apm/ssl-tls-output-settings.md
-                          - file: observability/apm/ssl-tls-input-settings.md
-                      - file: observability/apm/tail-based-sampling.md
-                      - file: observability/apm/use-environment-variables-in-configuration.md
-                      - file: observability/apm/apm-server-advanced-setup.md
+                          - file: ssl-tls-output-settings.md
+                          - file: ssl-tls-input-settings.md
+                      - file: tail-based-sampling.md
+                      - file: use-environment-variables-in-configuration.md
+                      - file: advanced-setup.md
                         children:
-                          - file: observability/apm/installation-layout.md
-                          - file: observability/apm/secrets-keystore-for-secure-settings.md
-                          - file: observability/apm/apm-server-command-reference.md
-                          - file: observability/apm/tune-data-ingestion.md
-                          - file: observability/apm/high-availability.md
-                          - file: observability/apm/apm-server-systemd.md
-                  - file: observability/apm/monitor-apm-server.md
+                          - file: installation-layout.md
+                          - file: secrets-keystore-for-secure-settings.md
+                          - file: command-reference.md
+                          - file: tune-data-ingestion.md
+                          - file: high-availability.md
+                          - file: systemd.md
+                  - file: monitor.md
                     children:
-                      - file: observability/apm/monitor-fleet-managed-apm-server.md
-                      - file: observability/apm/monitor-apm-server-binary.md
+                      - file: monitor-fleet-managed.md
+                      - file: monitor-binary.md
                         children:
-                          - file: observability/apm/use-internal-collection-to-send-monitoring-data.md
-                          - file: observability/apm/use-metricbeat-to-send-monitoring-data.md
-                          - file: observability/apm/use-select-metrics-emitted-directly-to-monitoring-cluster.md
+                          - file: use-internal-collection-to-send-monitoring-data.md
+                          - file: use-metricbeat-to-send-monitoring-data.md
+                          - file: use-select-metrics-emitted-directly-to-monitoring-cluster.md
               - file: observability/apm/apis.md
                 children:
                   - file: observability/apm/apm-ui-api.md
-                  - file: observability/apm/apm-server-api.md
+                  - file: observability/apm/apm-server/api.md
                     children:
-                      - file: observability/apm/apm-server-information-api.md
+                      - file: observability/apm/apm-server/information-api.md
                       - file: observability/apm/elastic-apm-events-intake-api.md
                       - file: observability/apm/elastic-apm-agent-configuration-api.md
                       - file: observability/apm/opentelemetry-intake-api.md
@@ -396,6 +405,7 @@ toc:
             children:
               - file: observability/infra-and-hosts/get-started-with-system-metrics.md
               - file: observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md
+              - file: observability/infra-and-hosts/discover-metrics.md
               - file: observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md
               - file: observability/infra-and-hosts/analyze-compare-hosts.md
               - file: observability/infra-and-hosts/detect-metric-anomalies.md
@@ -452,15 +462,24 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
-          - file: observability/streams/streams.md
-            children:
-            - file: observability/streams/management/extract.md
-              children:
-                - file: observability/streams/management/extract/date.md
-                - file: observability/streams/management/extract/dissect.md
-                - file: observability/streams/management/extract/grok.md
-            - file: observability/streams/management/retention.md
-            - file: observability/streams/management/advanced.md
+      - file: observability/streams/streams.md
+        children:
+        - file: observability/streams/management/retention.md
+        - file: observability/streams/management/extract.md
+          children:
+            - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/dissect.md
+            - file: observability/streams/management/extract/grok.md
+            - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/rename.md
+            - file: observability/streams/management/extract/append.md
+            - file: observability/streams/management/extract/manual-pipeline-configuration.md
+        - file: observability/streams/management/partitioning.md
+        - file: observability/streams/management/schema.md
+        - file: observability/streams/management/data-quality.md
+        - file: observability/streams/management/significant-events.md
+        - file: observability/streams/management/advanced.md
+        - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -474,6 +493,7 @@ toc:
                   - file: observability/incident-management/create-an-elasticsearch-query-rule.md
                   - file: observability/incident-management/create-an-error-count-threshold-rule.md
                   - file: observability/incident-management/create-failed-transaction-rate-threshold-rule.md
+                  - file: observability/incident-management/create-a-failed-docs-rule.md
                   - file: observability/incident-management/create-an-inventory-rule.md
                   - file: observability/incident-management/create-latency-threshold-rule.md
                   - file: observability/incident-management/create-log-threshold-rule.md
@@ -503,7 +523,6 @@ toc:
         children:
           - file: observability/connect-to-own-local-llm.md
           - file: observability/llm-performance-matrix.md
-      - hidden: observability/streams/wired-streams.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
@@ -525,7 +544,9 @@ toc:
               - file: security/get-started/automatic-import.md
               - file: security/get-started/content-connectors.md
               - file: security/get-started/agentless-integrations.md
-              - file: security/get-started/agentless-integrations-faq.md
+                children:
+                  - file: security/get-started/cloud-connector-deployment.md
+                  - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
             children:
               - file: security/get-started/spaces-defend-faq.md
@@ -617,13 +638,14 @@ toc:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
           - file: security/manage-elastic-defend/trusted-applications.md
+          - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md
           - file: security/manage-elastic-defend/optimize-elastic-defend.md
           - file: security/manage-elastic-defend/event-capture-elastic-defend.md
           - file: security/manage-elastic-defend/endpoint-protection-rules.md
-          - file: security/manage-elastic-defend/identify-antivirus-software-on-hosts.md
+          - file: security/manage-elastic-defend/automatic-troubleshooting.md
           - file: security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md
           - file: security/manage-elastic-defend/elastic-endpoint-self-protection-features.md
       - file: security/endpoint-response-actions.md
@@ -669,14 +691,20 @@ toc:
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
-          - file: security/cloud/ingest-third-party-cloud-security-data.md
+          - file: security/cloud/integrations/ingest-third-party-cloud-security-data.md
             children:
-              - file: security/cloud/ingest-cncf-falco-data.md
-              - file: security/cloud/ingest-aws-security-hub-data.md
-              - file: security/cloud/ingest-wiz-data.md
-              - file: security/cloud/integration-qualys.md
-              - file: security/cloud/integration-tenablevm.md
-              - file: security/cloud/integration-rapid7.md
+              - file: security/cloud/integrations/cncf-falco.md
+              - file: security/cloud/integrations/aws-security-hub.md
+              - file: security/cloud/integrations/wiz.md
+              - file: security/cloud/integrations/qualys.md
+              - file: security/cloud/integrations/tenablevm.md
+              - file: security/cloud/integrations/rapid7.md
+              - file: security/cloud/integrations/aws-config.md
+              - file: security/cloud/integrations/aws-inspector.md
+              - file: security/cloud/integrations/microsoft-defender-for-cloud.md
+              - file: security/cloud/integrations/microsoft-defender-for-endpoint.md
+              - file: security/cloud/integrations/microsoft-defender-xdr.md
+              - file: security/cloud/integrations/google-security-command-center.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
@@ -709,6 +737,7 @@ toc:
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
           - file: security/dashboards/detection-rule-monitoring-dashboard.md
+          - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/explore.md
         children:
           - file: security/explore/hosts-page.md

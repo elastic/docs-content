@@ -13,20 +13,19 @@ products:
 
 You can manage ingest pipelines through Elasticsearch APIs or Kibana UIs.
 
-The **Pipelines** tab under **Build > Connectors** lets you manage the ingest pipeline used by the connector’s destination index. Here you can view the managed pipeline and adjust its settings. For general pipeline authoring, use **Stack Management > Ingest Pipelines.**
+The **Pipelines** tab under **Connectors** lets you manage the ingest pipeline used by the connector’s destination index. Here you can view the managed pipeline and adjust its settings. For general pipeline authoring, go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Find pipelines [ingest-pipeline-search-where]
 
 To work with ingest pipelines using these UI tools, open the **Pipelines** tab.
 
 To find this tab in the Kibana UI:
-
-1. Go to **Build > Connectors**.
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** from the results.
 2. Select the connector you want to work with. For example, `azure-blob-storage`.
-3. On the conector’s page, open the **Pipelines** tab.
+3. On the connector’s page, open the **Pipelines** tab.
 4. From here, you can follow the instructions to create custom pipelines, and set up ML inference pipelines.
 
-The tab is highlighted in this screenshot:
+The tab is highlighted in the following screenshot:
 
 :::{image} /solutions/images/elasticsearch-reference-ingest-pipeline-ent-search-ui.png
 :alt: ingest pipeline ent search ui
@@ -68,9 +67,16 @@ Aside from the pipeline itself, you have a few configuration options which contr
 * **Reduce Whitespace** - This controls whether or not consecutive, leading, and trailing whitespace should be removed. This can help to display more content in some search experiences.
 * **Run ML Inference** - Only available on index-specific pipelines. This controls whether or not the optional `<index-name>@ml-inference` pipeline will be run. Enabled by default.
 
-For connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. These settings can be changed there directly, or through the Kibana UI at **Build > Connectors > Available connectors > <your connector> > Pipelines > Settings**.
+* For connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. You can change these settings there directly. Alternatively, you can:
+  1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** from the results.
+  2. Choose your connector, then go to **Pipelines > Settings** to make changes.
 
-You can also change the deployment-wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Build > Connectors > Configuration** page. Changing the deployment-wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
+* You can also change the deployment-wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. You can change these settings there directly.
+Alternatively, you can:
+  1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** from the results.
+  2. Choose your connector, then go to **Configuration** to make changes.
+
+Changing the deployment-wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
 
 
 ### Using the API [ingest-pipeline-search-pipeline-settings-using-the-api]
@@ -106,7 +112,7 @@ If the pipeline is not specified, the underscore-prefixed fields will actually b
 
 ### `search-default-ingestion` Reference [ingest-pipeline-search-details-generic-reference]
 
-You can access this pipeline with the [Elasticsearch Ingest Pipelines API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-pipeline) or via Kibana’s [Stack Management > Ingest Pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#create-manage-ingest-pipelines) UI.
+Access this pipeline with the [Elasticsearch Ingest Pipelines API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-pipeline), or go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{warning}
 This pipeline is a "managed" pipeline. That means that it is not intended to be edited. Editing/updating this pipeline manually could result in unintended behaviors, or difficulty in upgrading in the future. If you want to make customizations, we recommend you utilize index-specific pipelines (see below), specifically [the `<index-name>@custom` pipeline](#ingest-pipeline-search-details-specific-custom-reference).
@@ -137,7 +143,7 @@ Connectors will automatically add these control flow parameters based on the set
 
 ### Index-specific ingest pipelines [ingest-pipeline-search-details-specific]
 
-In the Kibana UI for your index, by clicking on the **Pipelines** tab, then **Copy and customize**, you can quickly generate 3 pipelines which are specific to your index. These 3 pipelines replace `search-default-ingestion` for the index. There is nothing lost in this action, as the `<index-name>` pipeline is a superset of functionality over the `search-default-ingestion` pipeline.
+In the Kibana UI for your index, by selecting the **Pipelines** tab, then **Copy and customize**, you can quickly generate 3 pipelines which are specific to your index. These 3 pipelines replace `search-default-ingestion` for the index. There is nothing lost in this action, as the `<index-name>` pipeline is a superset of functionality over the `search-default-ingestion` pipeline.
 
 ::::{important}
 The "copy and customize" button is not available at all Elastic subscription levels. Refer to the Elastic subscriptions pages for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [self-managed](https://www.elastic.co/subscriptions) deployments.
@@ -182,7 +188,7 @@ Connectors will automatically add these control flow parameters based on the set
 
 #### `<index-name>@ml-inference` Reference [ingest-pipeline-search-details-specific-ml-reference]
 
-This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the Pipelines tab of your index, or from the **Stack Management > Ingest Pipelines** page. Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
+This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the **Pipelines** tab of your index, or by navigating to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
 
 It’s possible to add one or more ML inference pipelines to an index in the **Pipelines** tab. This pipeline will serve as a container for all of the ML inference pipelines configured for the index. Each ML inference pipeline added to the index is referenced within `<index-name>@ml-inference` using a `pipeline` processor.
 
@@ -201,7 +207,7 @@ The `monitor_ml` Elasticsearch cluster permission is required in order to manage
 
 #### `<index-name>@custom` Reference [ingest-pipeline-search-details-specific-custom-reference]
 
-This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the Pipelines tab of your index, or from the **Stack Management > Ingest Pipelines** page. Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
+This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the **Pipelines** tab of your index, or go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
 
 You are encouraged to make additions and edits to this pipeline, provided its name remains the same. This provides a convenient hook from which to add custom processing and transformations for your data. Be sure to read the [docs for ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to see what options are available.
 

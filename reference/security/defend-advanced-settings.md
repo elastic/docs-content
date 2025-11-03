@@ -62,18 +62,6 @@ Advanced settings are not recommended for most users. Use them only if you have 
     ::::
 
 
-`windows.advanced.alerts.rollback.self_healing.registry_enabled`
-:   Added in 8.8.0.
-
-    *Enable self-healing of registry based malware artifacts when prevention alerts are triggered. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`.*
-
-    As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can roll back recent registry changes when an attack occurs. Use this setting to enable this feature.
-    
-    ::::{warning}
-    This feature can cause permanent data loss.
-    ::::
-
-
 `windows.advanced.alerts.rollback.self_healing.process_enabled`
 :   Added in 8.8.0.
 
@@ -81,6 +69,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can terminate recently spawned processes when an attack occurs. Use this setting to enable this feature.
 
+    ::::{warning}
+    This feature can cause permanent data loss.
+    ::::
+
+
+`windows.advanced.alerts.rollback.self_healing.registry_enabled`
+:   Added in 8.8.0.
+
+    *Enable self-healing of registry based malware artifacts when prevention alerts are triggered. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`.*
+
+    As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can roll back recent registry changes when an attack occurs. Use this setting to enable this feature.
+    
     ::::{warning}
     This feature can cause permanent data loss.
     ::::
@@ -208,6 +208,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Provide a comma-separated list of up to five environment variables to capture in process create events. Default: none.*
 
     Use this setting to include a limited number of environment variables in process `create` events.
+
+
+`[mac,windows].advanced.device_control.filter_images`
+:   Added in 9.2.0.
+
+    *Filter out file  backed images and CD-ROM volumes from consideration by device control. Default: `true`.*
 
 
 `[linux,mac,windows].advanced.diagnostic.enabled`
@@ -435,6 +441,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to enable reporting of process capabilities on Linux. {{elastic-endpoint}} began reporting these capabilities in 8.11.0, but this was disabled by default in 8.14.0 due to data volume concerns. This setting must be enabled for some SIEM detection rules, but all malicious behavior detection rules running within {{elastic-defend}} work regardless of its status.
 
 
+`windows.advanced.events.enforce_registry_filters`
+:   Added in 8.15.0.
+
+    *Reduce data volume by filtering out registry events which are not relevant to behavioral protections. Default: `true`.*
+
+
 `windows.advanced.events.event_on_access.file_paths`
 :   Added in 8.15.0.
 
@@ -454,6 +466,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     ::::{note}
     Enabling file hashing may increase CPU and IO use, decrease system responsiveness, and interfere with malicious behavior and ransomware protections.
     ::::
+
+
+`windows.advanced.events.file.origin_info_collection`
+:   Added in 8.19.0.
+
+    *Include `file.origin_url`, `file.origin_referrer_url`, and `file.Ext.windows.zone_identifier` in file events. These fields show the details of file's Mark of the Web. Default: `true`.*
 
 
 `[linux,mac,windows].advanced.events.hash.md5`
@@ -492,20 +510,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
     :::
 
 
+`windows.advanced.events.image_load.origin_info_collection`
+:   Added in 8.19.0.
+
+    *Include `dll.origin_url`, `dll.origin_referrer_url`, and `dll.Ext.windows.zone_identifier` in image load events. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
+
+
 `windows.advanced.events.memory_scan`
 :   Added in: 8.14.0.
 
     *Enable an additional scan of suspicious memory regions against well-known malware signatures when malicious behavior alerts are triggered. Default: `true`.*
 
     Additional memory scanning of behavior alerts provides more context for responders analyzing alerts. Use this setting to disable this feature.
-
-
-`windows.advanced.events.process.creation_flags`
-:   Added in 8.13.0.
-
-    *Enrich process events with process creation flags. Only use this setting to troubleshoot if process events are not functioning as expected. Default: `true`.*
-
-    Use this setting to control whether {{elastic-endpoint}} captures process creation flags, such as `CREATE_SUSPENDED`, in process events.
 
 
 `[linux,mac,windows].advanced.events.process_ancestry_length`
@@ -516,10 +532,30 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Prior to 8.15, this field contained the last 20 ancestor processes; starting with 8.15, it was reduced to the last 5, to limit data volume.
 
 
-`windows.advanced.events.enforce_registry_filters`
-:   Added in 8.15.0.
+`windows.advanced.events.process.creation_flags`
+:   Added in 8.13.0.
 
-    *Reduce data volume by filtering out registry events which are not relevant to behavioral protections. Default: `true`.*
+    *Enrich process events with process creation flags. Only use this setting to troubleshoot if process events are not functioning as expected. Default: `true`.*
+
+    Use this setting to control whether {{elastic-endpoint}} captures process creation flags, such as `CREATE_SUSPENDED`, in process events.
+
+
+`windows.advanced.events.process.origin_info_collection`
+:   Added in 8.19.0.
+
+    *Include `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier` in process events. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
+
+
+`windows.advanced.events.security.event_disabled`
+:   Added in 9.2.0.
+
+    *Provide a comma-separated list of security event IDs to selectively disable. An example is `4624,4800,4801`. Default: none.*
+
+
+`windows.advanced.events.security.provider_etw`
+:   Added in 8.19.0.
+
+    *Enable the Microsoft-Windows-Security-Auditing ETW provider for security events collection. Default: `true`.*
 
 
 `linux.advanced.fanotify.ignore_unknown_filesystems`
@@ -558,6 +594,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Control the number of file metadata cache entries stored in memory. Larger values can improve performance but increase memory usage. Default: `5000`.*
 
     Elastic caches information about recently read files in memory. Use this setting to control the number of recent file entries to cache.
+
+
+`windows.advanced.firewall_anti_tamper`
+:   Added in 9.2.0.
+
+    *Enable firewall anti tamper prevention or detection. Tamper protetion must also be enabled. Allowed values are `prevent`, `detect`, and `off`. Default: `prevent`.*
 
 
 `[linux,mac,windows].advanced.flags`
@@ -874,6 +916,24 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to collect memory surrounding detected malicious regions when Memory Threat alerts are triggered by YARA rule scanning.
 
 
+`windows.advanced.memory_protection.scan_on_api_event`
+:   Added in 8.17.6.
+
+    *Scan for memory threats in response to API events. Default: `true`.*
+
+
+`[linux,mac,windows].advanced.memory_protection.scan_on_image_load_event`
+:   Added in 8.17.6.
+
+    *Scan for memory threats in response to image loads. Default: `true`.*
+
+
+`[linux,mac,windows].advanced.memory_protection.scan_on_network_event`
+:   Added in 8.17.6.
+
+    *Scan for memory threats in response to network activity. Default: `true`.*
+
+
 `windows.advanced.memory_protection.shellcode`
 :   Added in 7.15.0.
 
@@ -916,6 +976,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable ransomware canary protection. Default: `true`.*
 
     Use this setting to disable ransomware detection based on canary files, even if ransomware protection is enabled. Ransomware protection will remain effective even when this ransomware detection is disabled.
+
+
+`mac.advanced.ransomware.diagnostic`
+:   Added in 9.2.0.
+
+    *Enable diagnostic ransomware protection. Default: `true`.*
+
+
+`windows.advanced.ransomware.dump_process`
+:   Added in 8.11.0.
+
+    *Enable the generation of a memory dump of the ransomware process. This is ignored if the canary protection is off. Default: `true`.*
 
 
 `windows.advanced.ransomware.mbr`
@@ -966,27 +1038,3 @@ Advanced settings are not recommended for most users. Use them only if you have 
 :   Added in 8.12.0.
 
     *Control how much memory (in MB) should be kept resident in RAM. This setting affects Private Working Set but does not affect the amount of virtual memory requested from the OS (Private Bytes or Commit Charge). If plenty of unused RAM is available, Windows may give {{elastic-endpoint}} more RAM than requested to reduce unnecessary paging and improve performance. If the current {{elastic-defend}} configuration requires regularly touching more than the requested amount of memory, then the Private Working Set will be higher than requested here. The minimum value is 50. Default: `200`.*
-
-
-`windows.advanced.events.image_load.origin_info_collection`
-:   Added in 8.19.0.
-
-    *Include `dll.origin_url`, `dll.origin_referrer_url`, and `dll.Ext.windows.zone_identifier` in image load events. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
-
-
-`windows.advanced.events.process.origin_info_collection`
-:   Added in 8.19.0.
-
-    *Include `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier` in process events. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
-
-
-`windows.advanced.events.file.origin_info_collection`
-:   Added in 8.19.0.
-
-    *Include `file.origin_url`, `file.origin_referrer_url`, and `file.Ext.windows.zone_identifier` in file events. These fields show the details of file's Mark of the Web. Default: `true`.*
-
-
-`windows.advanced.events.security.provider_etw`
-:   Added in 8.19.0.
-
-    *Enable the Microsoft-Windows-Security-Auditing ETW provider for security events collection. Default: `true`.*

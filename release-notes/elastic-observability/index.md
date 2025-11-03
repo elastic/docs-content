@@ -21,6 +21,106 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.2.0 [elastic-observability-9.2.0-release-notes]
+
+### Features and enhancements[elastic-observability-9.2.0-features]
+
+* Lets you create routing conditions directly from preview table in Streams. [#235560]({{kib-pull}}235560).
+* Allows Streams users to manually map new fields from the **Schema** tab [#235919]({{kib-pull}}235919).
+* Adds AI suggestion partitioning to Streams [#235759]({{kib-pull}}235759).
+* Improves processing warnings in Streams [#239188]({{kib-pull}}239188).
+* Adds ingest pipeline processor template suggestions to the Streams manual ingest pipeline processor editor [#236919]({{kib-pull}}236919).
+* Add triple quotes support to the Streams manual ingest pipeline processor editor [#236595]({{kib-pull}}236595).
+* Adds persistent field mappings for Streams processors [#233799]({{kib-pull}}233799).
+* Updates the Observability navigation menu [#233784]({{kib-pull}}233784), [#236808]({{kib-pull}}236808).
+* Adds functional tests for Logs Essentials tier to cover tier-specific behavior [#234904]({{kib-pull}}234904).
+* Enables Observability onboarding Playwright tests for the Logs Essentials tier [#234644]({{kib-pull}}234644).
+* Adds **View in Discover** to the alerts details page for Synthetics Monitor Status and TLS alert rules. [#234104]({{kib-pull}}234104).
+* Adds **View in discover** to the alerts details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855).
+* Adds **View in discover** button to alert details header [#233259]({{kib-pull}}233259).
+* Adds time range filter to links from alert details to related dashboards [#230601]({{kib-pull}}230601).
+* Adds rules callout in metric, logs, and inventory rules [#237085]({{kib-pull}}237085).
+* Enables filters and saved queries in custom threshold rules [#229453]({{kib-pull}}229453).
+* Adds option to recover alerts when the monitor is back up or when the condition is no longer met. [#229962]({{kib-pull}}229962).
+* Adds the **Trace timeline** to Discover flyout [#234072]({{kib-pull}}234072).
+* Adds `send_traces`, `send_metrics`, and `send_logs` agent configuration settings for EDOT Node.js [#233798]({{kib-pull}}233798).
+* Shows errors in context of traces [#234178]({{kib-pull}}234178)
+* Adds option to link dashboards to SLOs [#233265]({{kib-pull}}233265).
+* Adds dashboard references to SLO saved objects [#232583]({{kib-pull}}232583).
+* Adds dashboard tags for linked dashboards and suggested dashboards on the alert details page's **Related dashboards** tab [#228902]({{kib-pull}}228902).
+* Fetches referenced panels when fetching dashboards [#228811]({{kib-pull}}228811).
+* Moves the installation settings for AI Assistant's Knowledge Base and Product Docs components into a single location [#232559]({{kib-pull}}232559), [#228695]({{kib-pull}}228695).
+* Makes AI Assistant aware of LLM-facing documentation for integrations installed in your cluster [#237085]({{kib-pull}}237085).
+* Adds `raw_request` to traces for `.gen-ai`, `.gemini`, and `.bedrock` connectors [#232229]({{kib-pull}}232229).
+* Adds manual test for bulk import functionality for AI Assistant [#225497]({{kib-pull}}225497).
+* Improves the AI Assistant Settings page by updating the logos to be solution-specific [#224906]({{kib-pull}}224906).
+* Adds native function calling schema change to the OpenAI connector when the API provider is set to `other` [#232097]({{kib-pull}}232097).
+* Adds native function calling for self-managed LLMs [#232109]({{kib-pull}}232109).
+* Improves Gemini prompts [#223476]({{kib-pull}}223476).
+* Adds **GenAI Settings** to **Stack management** [#227289]({{kib-pull}}227289).
+* Moves the **AI Assistant visibility** setting to **GenAI Settings** page [#233727]({{kib-pull}}233727).
+* Adds UI tests to validate the onboarding page [#232363]({{kib-pull}}232363).
+* Shows span links when APM indices are available [#232135]({{kib-pull}}232135).
+* Adds error count and badge and support for span types to trace samples [#227413]({{kib-pull}}227413) [#227208]({{kib-pull}}227208).
+* Disables add-to-case functionality when all selected alerts are already added to a case [#231877]({{kib-pull}}231877).
+* Allows users to paste screenshots into markdown comment fields for cases [#226077]({{kib-pull}}226077).
+* Extracts case observables automatically when attaching alerts to a case [#233027]({{kib-pull}}233027).
+* Allows attaching any event to a case, not just alert events [#230970]({{kib-pull}}230970).
+* Adds `opamp_polling_interval` and `sampling_rate` to central config for EDOT application agents [#231835]({{kib-pull}}231835).
+* Adds `kibana.alert.grouping` field to Synthetics monitor status rule [#230513]({{kib-pull}}230513).
+* Adds a public endpoint for manually testing synthetic monitors [#227760]({{kib-pull}}227760).
+* Adds error param to agent config API [#230298]({{kib-pull}}230298).
+* Creates an API to detect existing schemas [#226597]({{kib-pull}}226597).
+* Adds option to the shared logs overview to see all available log events even when ML features are not available [#225785]({{kib-pull}}225785).
+
+### Fixes [elastic-observability-9.2.0-fixes]
+
+* Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418).
+* Fixes icon colors for navigation menu [#237970]({{kib-pull}}237970).
+* Updates `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).
+* Adds background search to Observability navigation [#237494]({{kib-pull}}237494).
+* Fixes the multiselect issue inside the toolbar selector when search is used [#237494]({{kib-pull}}237494).
+* Fixes the page height of the AI Assistant page [#233924]({{kib-pull}}233924).
+* Fixes knowledge base model label in AI Assistant settings [#239824]({{kib-pull}}239824).
+* Fixes **Show alert details** actions button [#233113]({{kib-pull}}233113).
+* Fixes `get_alerts_dataset_info` to fail completely if any parallel `select_relevant_fields` request fails [#232281]({{kib-pull}}232281).
+* Adjusts Kubernetes OTel test to work in serverless nightly workflow [#231462]({{kib-pull}}231462).
+* Fixes title generation for conversations in the Observability AI Assistant with self-managed LLMs  [#231198]({{kib-pull}}231198).
+* Fixes inventory date picker state [#231141]({{kib-pull}}231141).
+* Enables recovery strategy switch for monitor status rules [#231091]({{kib-pull}}231091).
+* Includes `ContentManagement` plugin to allow linked dashboards [#237085]({{kib-pull}}229685).
+* Improves performance of clustering [#238394]({{kib-pull}}238394).
+* Fixes multiselect issue in Discover toolbar [#236091]({{kib-pull}}236091).
+* Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
+* Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
+
+## 9.1.6 [elastic-observability-9.1.6-release-notes]
+
+### Fixes [elastic-observability-9.1.6-fixes]
+
+* Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418).
+* Removes {{es}} `_sources` from query responses [#239205]({{kib-pull}}239205).
+* Fixes rule condition chart parser replacing metric names in filter values [#238849]{{kib-pull}}(238849).
+* Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
+* Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
+* Fixes `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).
+* Fixes a bug with Synthetics alerting where a down monitor triggered recovered alerts when it shouldn't [#237479]({{kib-pull}}237479).
+* Fixes the AI Assistant button tooltip by closing the tooltip when the button is not being hovered over [#237202]({{kib-pull}}237202).
+
+## 9.1.5 [elastic-observability-9.1.5-release-notes]
+
+### Features and enhancements[elastic-observability-9.1.5-features]
+
+* Allows implementation of a default LLM connector from settings [#236103]({{kib-pull}}236103).
+
+### Fixes [elastic-observability-9.1.5-fixes]
+
+* Removes span documents from `getServiceAgent` function [#236732]({{kib-pull}}236732).
+* Removes incorrect `fleet.ssl` configuration [#236788]({{kib-pull}}236788).
+* Fixes malformed synthetics package policies [#236176]({{kib-pull}}236176).
+* Reverts filter policy inputs [#236104]({{kib-pull}}236104).
+* Removes extra synthetics package policies [#235200]({{kib-pull}}235200).
+
 ## 9.1.4 [elastic-observability-9.1.4-release-notes]
 
 ### Enhancements [elastic-observability-9.1.4-enhancements]
@@ -197,6 +297,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Applies chunking algorithm for `getIndexBasicStats` in Dataset Health [#221153]({{kib-pull}}221153).
 * Improves finding functions in Universal Profiling [#210437]({{kib-pull}}210437).
 * Adds logical `AND` to monitor tags and locations filter [#217985]({{kib-pull}}217985).
+
+## 9.0.8 [elastic-observability-9.0.8-release-notes]
+
+### Features and enhancements[elastic-observability-9.0.8-features]
+* Allows implementation of a default LLM connector from settings [#236103]({{kib-pull}}236103).
+
+### Fixes [elastic-observability-9.0.8-fixes]
+* Removes span documents from `getServiceAgent` function [#236732]({{kib-pull}}236732).
 
 ## 9.0.7 [elastic-observability-9.0.7-release-notes]
 

@@ -17,10 +17,8 @@ products:
 
 Use these topics to fix common issues with {{es}} clusters.
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
-
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+::: 
 
 [](fix-watermark-errors.md)
 :   Fix watermark errors that occur when a data node is critically low on disk space and has reached the flood-stage disk usage watermark.

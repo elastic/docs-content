@@ -129,7 +129,7 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 
 To work around the limitations, use filters to create multiple smaller reports, or extract the data you need directly with the Elasticsearch APIs.
 
-For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](/explore-analyze/query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
+For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
 
 [Reporting parameters](kibana://reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
@@ -152,7 +152,7 @@ Create and share JSON files for workpads.
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]
 
-* [beta] **Share on a website** — Download and securely share **Canvas** workpads on any website.
+* {applies_to}`stack: beta` {applies_to}`serverless: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
 * **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
 
 ::::{note}
@@ -164,8 +164,12 @@ For {{ech}} deployments, {{kib}} instances require a minimum of 2GB RAM to gener
 
 
 ## Share workpads on a website [add-workpad-website]
+```{applies_to}
+stack: beta
+serverless: beta
+```
 
-[beta] Create and securely share static **Canvas** workpads on a website. To customize the behavior of the workpad on your website, you can choose to autoplay the pages or hide the workpad toolbar.
+Create and securely share static **Canvas** workpads on a website. To customize the behavior of the workpad on your website, you can choose to autoplay the pages or hide the workpad toolbar.
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.

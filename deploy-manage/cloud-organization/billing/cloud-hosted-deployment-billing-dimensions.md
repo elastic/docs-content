@@ -78,7 +78,7 @@ As is common with Cloud providers, we meter and bill snapshot storage using two 
    
    This is calculated by metering the storage space (GBs) occupied by all snapshots of all deployments tied to an account. The same unit price applies to all regions. To calculate the due charges, we meter the amount of storage on an hourly basis and produce an average size (in GB) for a given month. The average amount is then used to bill the account for the GB/month used within a billing cycle (a calendar month).
     
-   For example, if the storage used in April 2019 was 100GB for 10 days, and then 130GB for the remaining 20 days of the month, the average storage would be 120 GB/month, calculated as (100*10 + 130*20)/30.
+   For example, if the storage used in April 2019 was 100GB for 10 days, and then 130GB for the remaining 20 days of the month, the average storage would be 120 GB/month, calculated as `(100*10 + 130*20)/30`.
    
    We provide a free allowance of 100 GB/month to all accounts across all the account deployments. Any metered storage usage below that amount will not be billed. Whenever the 100 GB/month threshold is crossed, we bill for the storage used in excess of the 100GB/month free allowance.
 

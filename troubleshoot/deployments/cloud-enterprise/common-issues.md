@@ -12,6 +12,8 @@ products:
 
 This set of common symptoms and resolutions can help you to diagnose unexpected behavior with Elastic Cloud Enterprise. You can also refer to the list of product [Limitations and known problems](cloud://release-notes/cloud-enterprise/known-issues.md).
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Emergency token not spinning up the coordinator role [ece_emergency_token_not_spinning_up_the_coordinator_role]
 

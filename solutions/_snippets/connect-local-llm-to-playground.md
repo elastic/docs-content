@@ -1,6 +1,6 @@
 Create a connector using the public URL from ngrok.
 
-1. In Kibana, go to **Search > Playground**, and click **Connect to an LLM**.
+1. In Kibana, go to **Playground** from the left navigation menu, and select the {icon}`wrench` button in the **Large Language Model (LLM)** tile to connect an LLM.
 2. Select **OpenAI** on the fly-out.
 3. Provide a name for the connector.
 4. Under **Connector settings**, select **Other (OpenAI Compatible Service)** as the OpenAI provider.

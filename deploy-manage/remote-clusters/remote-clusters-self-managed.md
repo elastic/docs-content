@@ -35,14 +35,14 @@ $$$sniff-mode$$$
 Sniff mode
 :   In sniff mode, a cluster alias is registered with a name of your choosing and a list of addresses of *seed* nodes specified with the `cluster.remote.<cluster_alias>.seeds` setting. When you register a remote cluster using sniff mode, {{es}} retrieves from one of the seed nodes the addresses of up to three *gateway nodes*. Each `remote_cluster_client` node in the local {{es}} cluster then opens several TCP connections to the publish addresses of the gateway nodes. This mode therefore requires that the gateway nodes' publish addresses are accessible to nodes in the local cluster.
 
-    Sniff mode is the default connection mode. See [Sniff mode remote cluster settings](remote-clusters-settings.md#remote-cluster-sniff-settings) for more information about configuring sniff mode.
+    Sniff mode is the default connection mode. See [Sniff mode remote cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-sniff-settings) for more information about configuring sniff mode.
 
     $$$gateway-nodes-selection$$$
     The *gateway nodes* selection depends on the following criteria:
 
     * **version**: Remote nodes must be compatible with the cluster they are registered to.
     * **role**: By default, any non-[master-eligible](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) node can act as a gateway node. Dedicated master nodes are never selected as gateway nodes.
-    * **attributes**: You can define the gateway nodes for a cluster by setting [`cluster.remote.node.attr.gateway`](remote-clusters-settings.md#cluster-remote-node-attr) to `true`. However, such nodes still have to satisfy the two above requirements.
+    * **attributes**: You can define the gateway nodes for a cluster by setting [`cluster.remote.node.attr.gateway`](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#cluster-remote-node-attr) to `true`. However, such nodes still have to satisfy the two above requirements.
 
 
 $$$proxy-mode$$$
@@ -50,6 +50,6 @@ $$$proxy-mode$$$
 Proxy mode
 :   In proxy mode, a cluster alias is registered with a name of your choosing and the address of a TCP (layer 4) reverse proxy specified with the `cluster.remote.<cluster_alias>.proxy_address` setting. You must configure this proxy to route connections to one or more nodes of the remote cluster. When you register a remote cluster using proxy mode, {{es}} opens several TCP connections to the proxy address and uses these connections to communicate with the remote cluster. In proxy mode {{es}} disregards the publish addresses of the remote cluster nodes which means that the publish addresses of the remote cluster nodes need not be accessible to the local cluster.
 
-    Proxy mode is not the default connection mode, so you must set `cluster.remote.<cluster_alias>.mode: proxy` to use it. See [Proxy mode remote cluster settings](remote-clusters-settings.md#remote-cluster-proxy-settings) for more information about configuring proxy mode.
+    Proxy mode is not the default connection mode, so you must set `cluster.remote.<cluster_alias>.mode: proxy` to use it. See [Proxy mode remote cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings) for more information about configuring proxy mode.
 
     Proxy mode has the same [version compatibility requirements](#gateway-nodes-selection) as sniff mode.

@@ -35,6 +35,21 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 * A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
+## Manage access to AI Assistant
+
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
+
+- Manage which AI connectors are available in your environment. 
+- Enable or disable AI Assistant and other AI-powered features in your environment.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
+
+
+
 ## Your data and AI Assistant [data-information]
 
 Elastic does not store or examine prompts or results used by AI Assistant, or use this data for model training. This includes anything you send the model, such as alert or event data, detection rule configurations, queries, and prompts. However, any data you provide to AI Assistant will be processed by the third-party large language model (LLM) provider you connected to as part of AI Assistant setup.
@@ -110,7 +125,7 @@ System Prompts and Quick Prompts can also be [configured](#configure-ai-assistan
 Be sure to specify which language you’d like AI Assistant to use when writing a query. For example: "Can you generate an Event Query Language query to find four failed logins followed by a successful login?"
 
 ::::{tip}
-AI Assistant can remember particular information you tell it to remember. For example, you could tell it: "When anwering any question about srv-win-s1-rsa or an alert that references it, mention that this host is in the New York data center". This will cause it to remember the detail you highlighted.
+AI Assistant can remember particular information you tell it to remember. For example, you could tell it: "When answering any question about srv-win-s1-rsa or an alert that references it, mention that this host is in the New York data center". This will cause it to remember the detail you highlighted.
 ::::
 
 ## Share conversations
@@ -120,7 +135,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Conversations that you start with AI Assistant are private by default and not visible to other members of your team. You have two ways to share conversations - either with selected members or more broadly to everyone with access to the space.
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space. 
 
 To share a conversation, do one of the following:
 

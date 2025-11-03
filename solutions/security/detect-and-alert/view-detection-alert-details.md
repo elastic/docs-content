@@ -124,11 +124,11 @@ The Insights section is located on the **Overview** tab in the right panel. It o
 
 ### Entities [entities-overview]
 
-The Entities overview provides high-level details about the user and host that are related to the alert. Host and user risk classifications are also available with a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+The Entities overview provides high-level details about the user and host that are related to the alert. Host and user risk classifications are also available with a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
 #### Expanded entities view [expanded-entities-view]
 
-From the right panel, click **Entities** to open a detailed view of the host and user associated with the alert. The expanded view also includes risk scores and classifications and activity on related hosts and users. Access to these features requires a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}
+From the right panel, click **Entities** to open a detailed view of the host and user associated with the alert. The expanded view also includes risk scores and classifications and activity on related hosts and users. Access to these features requires a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}
 
 ### Threat intelligence [threat-intelligence-overview]
 
@@ -192,7 +192,7 @@ The Correlations overview provides the following information:
 * **Alerts related by process ancestry**: Shows the number of alerts that are related by process events on the same linear branch.
 
     ::::{note}
-    To access data about alerts related by process ancestry, you must have a [Platinum or higher subscription](https://www.elastic.co/pricing) in {{stack}} or the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+    To access data about alerts related by process ancestry, you must have a [Platinum or higher subscription](https://www.elastic.co/pricing) in {{stack}} or the appropriate [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
     ::::
 
 
@@ -230,7 +230,7 @@ The expanded Prevalence view provides the following details:
 * **Alert count**: Shows the total number of alert documents that have identical highlighted field values, including the alert you’re currently examining. For example, if the `host.name` field has an alert count of 5, that means there are five total alerts with the same `host.name` value. The Alert count column only retrieves documents that contain the [`event.kind:signal`](ecs://reference/ecs-allowed-values-event-kind.md#ecs-event-kind-signal) field-value pair.
 * **Document count**: Shows the total number of event documents that have identical field values. A dash (`——`) displays if there are no event documents that match the field value. The Document count column only retrieves documents that don’t contain the [`event.kind:signal`](ecs://reference/ecs-allowed-values-event-kind.md#ecs-event-kind-signal) field-value pair.
 
-The following features require a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md)
+The following features require a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the appropriate [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md)
 
 * **Host prevalence**: Shows the percentage of unique hosts that have identical field values. Host prevalence for highlighted fields is calculated by taking the number of unique hosts with identical highlighted field values and dividing that number by the total number of unique hosts in your environment.
 * **User prevalence**: Shows the percentage of unique users that have identical highlighted field values. User prevalence for highlighted fields is calculated by taking the number of unique users with identical field values and dividing that number by the total number of unique users in your environment.

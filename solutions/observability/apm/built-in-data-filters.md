@@ -30,7 +30,7 @@ By default, APM agents capture HTTP request and response headers (including cook
 
 The default list of sanitized fields attempts to target common field names for data relating to passwords, credit card numbers, authorization, etc., but can be customized to fit your data. This sensitive data never leaves the instrumented service.
 
-This setting supports [Central configuration](/solutions/observability/apm/apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
+This setting supports [Central configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
 * Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](apm-agent-go://reference/configuration.md#config-sanitize-field-names)
 * Java: [`sanitize_field_names`](apm-agent-java://reference/config-core.md#config-sanitize-field-names)
@@ -39,7 +39,7 @@ This setting supports [Central configuration](/solutions/observability/apm/apm-a
 * Python: [`sanitize_field_names`](apm-agent-python://reference/configuration.md#config-sanitize-field-names)
 * Ruby: [`sanitize_field_names`](apm-agent-ruby://reference/configuration.md#config-sanitize-field-names)
 
-Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](/solutions/observability/apm/apm-agent-central-configuration.md):
+Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md):
 
 * Go: [`ELASTIC_APM_CAPTURE_HEADERS`](apm-agent-go://reference/configuration.md#config-capture-headers)
 * Java: [`capture_headers`](apm-agent-java://reference/config-core.md#config-capture-headers)
@@ -52,7 +52,7 @@ Alternatively, you can completely disable the capturing of HTTP headers. This se
 
 By default, the body of HTTP requests is not recorded. Request bodies often contain sensitive data like passwords or credit card numbers, so use care when enabling this feature.
 
-This setting supports [Central configuration](/solutions/observability/apm/apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
+This setting supports [Central configuration](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
 * Go: [`ELASTIC_APM_CAPTURE_BODY`](apm-agent-go://reference/configuration.md#config-capture-body)
 * Java: [`capture_body`](apm-agent-java://reference/config-core.md#config-capture-body)
