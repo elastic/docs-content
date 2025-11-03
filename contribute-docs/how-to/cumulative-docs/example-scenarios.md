@@ -21,7 +21,7 @@ the Serverless UI, add both the `stack` and `serverless` keys to the `applies_to
 
 ### If released in Serverless, but not yet released in Elastic Stack
 
-:::{include} //contribute-docs/syntax/_snippets/stack-serverless-lifecycle-example.md
+:::{include} /contribute-docs/_snippets/stack-serverless-lifecycle-example.md
 :::
 
 

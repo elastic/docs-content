@@ -50,7 +50,7 @@ For each type of applicability information, you can add `applies_to` metadata at
   or properties without disrupting the surrounding content.
 
 For a full syntax reference for page, section, and inline level `applies_to` annotations,
-refer to [](/contribute-docs/syntax/applies.md).
+refer to [the applies_to syntax guide](https://elastic.github.io/docs-builder/syntax/applies).
 
 ## General guidelines
 

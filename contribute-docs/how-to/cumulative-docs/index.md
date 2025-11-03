@@ -80,5 +80,5 @@ Read more about _how_ to tag content in:
   Learn how to integrate `applies_to` badges into docs content.
 * [Example scenarios](example-scenarios.md):
   Browse common scenarios you might run into as a docs contributor that require different approaches to labeling cumulative docs.
-* [`applies_to` syntax guide](/contribute-docs/syntax/applies.md):
+* [`applies_to` syntax guide](https://elastic.github.io/docs-builder/syntax/applies):
   Reference all valid values and syntax patterns available in `applies_to`.
