@@ -57,5 +57,63 @@ export API_KEY="your-api-key"
 
 For information on generating API keys, refer to [API keys](https://www.elastic.co/docs/solutions/search/search-connection-details).
 
-Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server.
+Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. Refer to 
 :::
+
+## API key application privileges
+
+To access the MCP server endpoint, your API key must include {{kib}} application privileges. 
+
+### Development and testing
+
+For development and testing purposes, you can create an unrestricted API key with full access:
+
+```json
+POST /_security/api_key
+{
+  "name": "my-mcp-api-key",
+  "expiration": "1d",
+  "role_descriptors": {
+    "unrestricted": {
+      "cluster": ["all"],
+      "indices": [
+        {
+          "names": ["*"],
+          "privileges": ["all"]
+        }
+      ]
+    }
+  }
+}
+```
+
+### Production
+
+For production environments, use a restricted API key with specific application privileges:
+
+```json
+POST /_security/api_key
+{
+  "name": "my-mcp-api-key",
+  "expiration": "1d",   
+  "role_descriptors": { 
+    "mcp-access": {
+      "cluster": ["all"],
+      "indices": [
+        {
+          "names": ["*"],
+          "privileges": ["read", "view_index_metadata"]
+        }
+      ],
+      "applications": [
+        {
+          "application": "kibana-.kibana",
+          "privileges": ["read_onechat", "space_read"], <1>
+          "resources": ["space:default"]
+        }
+      ]
+    }
+  }
+}
+```
+1. The `read_onechat` and `space_read` application privileges are required to authorize access to the MCP endpoint. Without these privileges, you'll receive a 403 Forbidden error.
