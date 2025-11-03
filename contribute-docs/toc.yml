@@ -6,39 +6,6 @@ toc:
     children:
       - file: index.md
       - file: quick-ref.md
-      - file: directives.md
-      - file: admonitions.md
-      - file: applies.md
-      - file: applies-switch.md
-      - file: automated_settings.md
-      - file: code.md
-      - file: comments.md
-      - file: conditionals.md
-      - file: csv-include.md
-      - file: definition-lists.md
-      - file: diagrams.md
-      - file: dropdowns.md
-      - file: example_blocks.md
-      - file: file_inclusion.md
-      - file: frontmatter.md
-      - file: headings.md
-      - file: icons.md
-      - file: images.md
-      - file: kbd.md
-      - file: line_breaks.md
-      - file: links.md
-      - file: lists.md
-      - file: math.md
-      - file: passthrough.md
-      - file: sidebars.md
-      - file: stepper.md
-      - file: substitutions.md
-      - file: sundries.md
-      - file: tables.md
-      - file: tabs.md
-      - file: tagged_regions.md
-      - file: titles.md
-      - file: version-variables.md
   - folder: how-to
     children:
       - file: index.md
@@ -49,8 +16,6 @@ toc:
           - file: badge-placement.md
           - file: example-scenarios.md
           - file: reference.md
-      - file: move.md
-      - file: redirects.md
   - file: tools.md
   - folder: api-docs
     children:
