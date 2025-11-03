@@ -30,19 +30,19 @@ For the three following packages, you can create a working directory to install 
 ::::
 
 
-* [winston](https://www.npmjs.com/package/winston) - a popular logging package for Node.js. Create a new, local directory and run the following command to install winston in it:
+* [winston](https://www.npmjs.com/package/winston): a popular logging package for Node.js. Create a new, local directory and run the following command to install winston in it:
 
     ```sh
     npm install winston
     ```
 
-* The [Elastic Common Schema (ECS) formatter](ecs-logging-nodejs://reference/winston.md) for the Node.js winston logger - this plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
+* The [Elastic Common Schema (ECS) formatter](ecs-logging-nodejs://reference/winston.md) for the Node.js winston logger: this plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
 
     ```sh
     npm install @elastic/ecs-winston-format
     ```
 
-* [Got](https://www.npmjs.com/package/got) - Got is a "Human-friendly and powerful HTTP request library for Node.js." - this plugin can be used to query the sample web server used in the tutorial. To install the Got package, run the following command in your working directory:
+* [Got](https://www.npmjs.com/package/got): Got is a "Human-friendly and powerful HTTP request library for Node.js." - this plugin can be used to query the sample web server used in the tutorial. To install the Got package, run the following command in your working directory:
 
     ```sh
     npm install got
@@ -51,11 +51,14 @@ For the three following packages, you can create a working directory to install 
 
 ## Before you begin
 
-Make sure you have access to an [Elastic Cloud deployment](../../../deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md). You’ll need the **Cloud ID** and credentials to connect Filebeat later.
+Make sure you have access to an [Elastic Cloud deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md). You’ll need the **Cloud ID** and credentials to connect Filebeat later.
 
 To find your **Cloud ID**, open the Elastic Cloud console, locate your deployment, and select **Manage**. On the **Deployment overview** page, copy the **Cloud ID** value displayed. You’ll use it in your `filebeat.yml` configuration.
 
-To connect to, stream data to, and issue queries, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+Connecting to, streaming data to, and issuing queries require authentication. There are two supported authentication mechanisms:
+
+* **Basic authentication**: This tutorial beings with basic authentication because it is easier to get started quickly.
+* **API key**: API keys are safer and preferred for production environments. To generate and use an API key, refer to [Optional: Use an API key to authenticate](#optional-use-an-api-key-to-authenticate).
 
 
 ## Create a Node.js web application with ECS-formatted logs [ec-node-logs-create-server-script]
@@ -210,7 +213,7 @@ To collect and forward your Node.js application logs to Elastic Cloud, you'll ne
 
 ::::{step} Configure Filebeat to access {{ech}} or {{ece}}
 
-In *<localpath>/filebeat-<version>/* (where *<localpath>* is the directory where Filebeat is installed and *<version>* is the Filebeat version number), open the `filebeat.yml` configuration file for editing.
+In `<localpath>/filebeat-<version>/` (where `<localpath>` is the directory where Filebeat is installed and `<version>` is the Filebeat version number), open the `filebeat.yml` configuration file for editing.
 
 
 ```yaml
@@ -225,7 +228,7 @@ cloud.auth: "elastic:your_password"
 
 ## Set up Filebeat [ec-node-logs-filebeat]
 
-Filebeat offers a straightforward, easy to configure way to monitor your Node.js log files and port the log data into your deployment.
+Filebeat offers a straightforward, easy-to-configure way to monitor your Node.js log files and port the log data into your deployment.
 
 :::::{stepper}
 
@@ -311,7 +314,7 @@ If you encounter permissions errors when reading `filebeat.yml`, try disabling t
 
 Filebeat should begin tailing `logs/log.json` and shipping events to Elasticsearch. To verify the setup:
 
-1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+1. [Log in to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu, under **Observability** select **Discover**.
 3. In the **Data view** dropdown, select **`filebeat-*`**.
 
@@ -375,9 +378,9 @@ The output should be similar to the following:
 
 ::::{step} Configure Filebeat to use the API key
 
-Add your API key information to the *Elasticsearch Output* section of *filebeat.yml*, just below *output.elasticsearch:*. Use the format `<id>:<api_key>`.
+Add your API key information to the *Elasticsearch Output* section of `filebeat.yml`, just below `output.elasticsearch:`. Use the format `<id>:<api_key>`.
 
-```txt
+```yaml
 cloud.id: my-deployment:yTMtd5VzdKEuP2NwPbNsb3VkLtKzLmldJDcyMzUyNjBhZGP7MjQ4OTZiNTIxZTQyOPY2C2NeOGQwJGQ2YWQ4M5FhNjIyYjQ9ODZhYWNjKDdlX2Yz4ELhRYJ7
 #cloud.auth: elastic:591KhtuAgTP46by9C4EmhGuk
 output.elasticsearch:
@@ -438,7 +441,7 @@ Let the script run for a few minutes. After that, make sure that the `logs/log.j
 
 The next step is to confirm that the log data has successfully found its way into {{ech}} or {{ece}}:
 
-1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+1. [Log in to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu, under **Observability** select **Discover**.
 3. In the **Data view** dropdown, select **`filebeat-*`**.
 
@@ -461,4 +464,4 @@ Stop all running processes by pressing `Ctrl + C` in each terminal window.
 
 You can delete temporary files such as the `logs/` directory and the node_modules folder when finished.
 
-You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](beats://reference/filebeat/index.md) to learn more about the ingestion and processing options available for your data.
+You have learned how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. To learn more about the ingestion and processing options available for your data, refer to the [Filebeat documentation](beats://reference/filebeat/index.md).
