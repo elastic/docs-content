@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/splunk-get-started.html
 applies_to:
-  stack: preview
+  stack: deprecated 9.0
 products:
   - id: observability
 ---
@@ -10,7 +10,7 @@ products:
 # Add data from Splunk [splunk-get-started]
 
 ::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+This functionality was deprecated in {{stack}} v9.0 and is no longer supported.
 ::::
 
 
