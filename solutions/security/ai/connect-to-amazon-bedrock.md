@@ -93,20 +93,6 @@ The following video demonstrates these steps (click to watch).
 [![bedrock-accesskey-video](https://play.vidyard.com/8oXgP1fbaQCqjWUgncF9at.jpg)](https://videos.elastic.co/watch/8oXgP1fbaQCqjWUgncF9at?)
 
 
-### Enable model access [_enable_model_access]
-
-Make sure the supported Amazon Bedrock LLMs are enabled:
-
-1. Search the AWS console for Amazon Bedrock.
-2. From the Amazon Bedrock page, click **Get started**.
-3. Select **Model access** from the left navigation menu, then click **Manage model access**.
-4. Check the box for the model or models you plan to use.
-5. Click **Save changes**.
-
-The following video demonstrates these steps (click to watch).
-
-[![bedrock-model-video](https://play.vidyard.com/Z7zpHq4N9uvUxegBUMbXDj.jpg)](https://videos.elastic.co/watch/Z7zpHq4N9uvUxegBUMbXDj?)
-
 
 ## Configure the Amazon Bedrock connector [_configure_the_amazon_bedrock_connector]
 
