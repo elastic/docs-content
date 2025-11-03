@@ -33,10 +33,10 @@ Models from third-party LLM providers.
 | Amazon Bedrock | **Claude Sonnet 3.7** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Excellent |
 | Amazon Bedrock | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Excellent |
 | Amazon Bedrock | **Claude Sonnet 4.5**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Good | Excellent |
-| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | Google Gemini    | **Gemini 2.0 Flash**    | Excellent | Good | Excellent | Excellent | Excellent | Good | Good | Excellent |
 | Google Gemini    | **Gemini 2.5 Flash**    | Excellent | Good | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Great | Excellent | Excellent | Excellent | Great | Good | Excellent |
+| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Good | Excellent |
 
 
 ## Open-source models [_open_source_models]
@@ -50,10 +50,10 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DeepSeek | **DeepSeek-V3.1** | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent |
 | Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 | Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Good | Good | Excellent |
 | Alibaba Cloud | **Qwen2.5-72b-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
-| DeepSeek | **DeepSeek-V3.1** | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent |
 
 ::::{note}
 `Llama-3.3-70B-Instruct` and `Qwen2.5-72b-Instruct` were tested with simulated function calling.
