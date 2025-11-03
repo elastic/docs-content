@@ -23,5 +23,7 @@ The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 
 
 :::{note}
 If you are running {{es}} through {{eck}}, refer to [ECK FIPS compatibility](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md).
+
+FIPS compliance is not officially supported in {{ece}} (ECE). While ECE may function on FIPS-enabled systems, this configuration has not been validated through our testing processes and is not recommended for production environments.
 :::
 

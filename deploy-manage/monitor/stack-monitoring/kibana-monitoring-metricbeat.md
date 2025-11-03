@@ -14,7 +14,7 @@ products:
 # Collect monitoring data with Metricbeat [monitoring-metricbeat]
 
 
-Yu can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster.
+You can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster.
 
 To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 

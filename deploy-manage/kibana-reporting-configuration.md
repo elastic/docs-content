@@ -36,6 +36,11 @@ Before upgrading {{kib}} in a production environment, we encourage you to test y
 
 To secure {{report-features}}, you must grant users access to reporting functionality and protect the reporting endpoints with TLS/SSL encryption. Additionally, you can install graphical packages on the operating system to enable screenshot capabilities in the {{kib}} server.
 
+:::{note}
+:applies_to: {stack: ga, serverless: unavailable}
+API keys are used to authenticate requests to generate reports. If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the leader index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+:::
+
 Configuring reporting in your environment involves two main areas:
 
 ### Granting users access to {{report-features}}

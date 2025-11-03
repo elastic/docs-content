@@ -154,7 +154,7 @@ If you have the appropriate license or project feature tier, you can customize t
 
 Memory threat protection detects and stops in-memory threats, such as shellcode injection, which are used to evade traditional file-based detection techniques.
 
-:::{admonition} Requirements
+::::{admonition} Requirements
 :class: note
 * In {{stack}}, memory threat protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, memory threat protection will be disabled by default.
 * In {{serverless-short}}, memory threat protection requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
@@ -238,7 +238,11 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Device control helps protect your organization from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
+Device control helps protect your Windows and Mac endpoints from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
+
+::::{important}
+Device control only affects external USB storage devices. It does not affect other peripherals such as Yubikeys, webcams, or keyboards.
+::::
 
 To configure device control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. Your policy specifies which operations these devices are allowed to take on a host. You can create [trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md) to define exceptions to your policy for specific devices. 
 
@@ -249,6 +253,10 @@ To configure device control for one or more hosts, edit the {{elastic-defend}} p
 :::
 
 By default, each {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has device control enabled, the dashboard displays data about attempted device connections and their outcomes. To access it and review information about blocked connections, search for `device control` in the **Dashboards** page's **Custom Dashboards** section.
+
+:::{important} 
+To collect device control data, {{elastic-defend}} must be updated to at least version 9.2.0. Until you update it to this version, the device control dashboard will not appear and device control events will not be ingested. Device control blocking will still work. 
+:::
 
 ## Event collection [event-collection]
 

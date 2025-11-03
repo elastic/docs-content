@@ -1,49 +1,49 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+navigation_title: Solutions
 products:
   - id: elasticsearch
+applies_to:
+  stack:
+  serverless:
+navigation_title: Solutions
 ---
 
-# Use cases [introduction]
+# Solutions overview [introduction]
+
+Elastic offers three major search-powered solutions: {{es}}, Elastic {{observability}}, and {{elastic-sec}}—all built on an open source, extensible platform.
+Whether you're building a search experience, monitoring your infrastructure, or securing your environment, there is a solution that is right for your business needs.
+
+| Your need | Recommended solution | Best for |
+|-----------|-------------------|----------|
+| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/search.md)<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
+| Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
+| Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
+
+:::{tip}
+Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
+:::
+
+Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
+
+If you're new to Elastic, you can find quickstarts and introductory steps for each solution within [](/solutions/index.md).
+
+<!--
+## {{es}}
+
+## Elastic {{observability}}
+
+:::{include} _snippets/observability-overview.md
+:::
+
+## {{elastic-sec}}
+:::{include} _snippets/security-overview.md
+:::
+-->
+% TODO: cleanup these links, consolidate with Explore and analyze
 $$$what-is-kib$$$
 $$$what-is-es$$$
-
-The {{stack}} is used for a wide and growing range of use cases. Here are a few examples:
-
-## Elasticsearch
-
-- **Full-text search**: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis.
-- **Vector database**: Store and search vectorized data, and create vector embeddings with built-in and third-party natural language processing (NLP) models.
-- **Semantic search**: Understand the intent and contextual meaning behind search queries using tools like synonyms, dense vector embeddings, and learned sparse query-document expansion.
-- **Hybrid search**: Combine full-text search with vector search using state-of-the-art ranking algorithms.
-- **Build search experiences**: Add hybrid search capabilities to apps or websites, or build enterprise search engines over your organization’s internal data sources.
-- **Retrieval augmented generation (RAG)**: Use {{ecloud}} as a retrieval engine to supplement generative AI models with more relevant, up-to-date, or proprietary data for a range of use cases.
-- **Geospatial search**: Search for locations and calculate spatial relationships using geospatial queries.
-
-[**Get started with {{es}} →**](../solutions/search/get-started.md)
-
-## Observability
-
-- **Logs, metrics, and traces**: Collect, store, and analyze logs, metrics, and traces from applications, systems, and services.
-- **Application performance monitoring (APM)**: Monitor and analyze the performance of business-critical software applications.
-- **Real user monitoring (RUM)**: Monitor, quantify, and analyze user interactions with web applications.
-- **OpenTelemetry**: Reuse your existing instrumentation to send telemetry data to the Elastic Stack using the OpenTelemetry standard.
-
-[**Get started with {{observability}} →**](../solutions/observability/get-started.md)
-
-## Security
-
-- **Security information and event management (SIEM)**: Collect, store, and analyze security data from applications, systems, and services.
-- **Endpoint security**: Monitor and analyze endpoint security data.
-- **Threat hunting**: Search and analyze data to detect and respond to security threats.
-
-[**Get started with {{elastic-sec}} →**](../solutions/security/get-started.md)
-
-This is just a sample of search, observability, and security use cases enabled by {{ecloud}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
-
-% TODO: cleanup these links, consolidate with Explore and analyze
-
 $$$visualize-and-analyze$$$
 $$$extend-your-use-case$$$
 $$$_manage_your_data$$$
