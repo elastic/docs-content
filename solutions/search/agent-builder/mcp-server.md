@@ -40,12 +40,13 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
       ],
       "env": {
         "KIBANA_URL": "${KIBANA_URL}",
-        "AUTH_HEADER": "ApiKey ${API_KEY}"
+        "AUTH_HEADER": "ApiKey ${API_KEY}" <1>
       }
     }
   }
 }
 ```
+1. Refer to [](API key application privileges)
 
 :::{note}
 Set the following environment variables:
@@ -57,7 +58,7 @@ export API_KEY="your-api-key"
 
 For information on generating API keys, refer to [API keys](https://www.elastic.co/docs/solutions/search/search-connection-details).
 
-Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. Refer to 
+Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. To learn more, refer to [](API key application privileges).
 :::
 
 ## API key application privileges
