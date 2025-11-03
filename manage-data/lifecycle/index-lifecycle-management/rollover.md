@@ -7,7 +7,7 @@ products:
   - id: elasticsearch
 ---
 
-# Rollover [index-rollover]
+# About rollover [index-rollover]
 
 In {{es}}, the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) replaces your active write index with a new one whenever your index grows beyond a specified size, age, or number of documents.
 This is particularly useful for time-series data, such as logs or metrics where index growth is continuous, in order to meet performance and retention requirements.
@@ -17,7 +17,7 @@ Without rollover, a single index would continue to grow, causing search performa
 The rollover feature is an important part of how [index lifecycle](../index-lifecycle-management/index-lifecycle.md) ({{ilm-init}}) and [data stream lifecycles](../data-stream.md) ({{dlm-init}}) work to keep your indices fast and manageable. By switching the write target of an index, the rollover action provides the following benefits:
 
 * **Lifecycle** - works with lifecycle management ({{ilm-init}} or {{dlm-init}}) to transition the index through its lifecycle actions and allows for granular control over retention cycles
-* **Optimized performance** - keeps shard sizes within recommended limits (10-50 GB)
+* **Optimized performance** - keeps shard sizes within [recommended limits](/deploy-manage/production-guidance/optimize-performance/size-shards.md) (10-50 GB)
 * **Queries run faster** - improves search performance
 
 Rollover can be triggered via the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.

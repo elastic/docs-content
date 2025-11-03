@@ -17,7 +17,7 @@ This page covers the requirements and guidelines for using the entity risk scori
 
 To use these features in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In {{serverless-short}}, you need the appropriate user roles or a custom role with the right privileges.
 
-In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In {{serverless-short}}, they require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In {{serverless-short}}, they require the Security Analytics Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 
 ## Entity risk scoring [_entity_risk_scoring]

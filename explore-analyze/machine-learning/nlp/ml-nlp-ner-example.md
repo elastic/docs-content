@@ -49,7 +49,7 @@ You need to provide an administrator username and its password and replace the `
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API]({{kib-apis}}group/endpoint-ml).
 
 ## Test the NER model [ex-ner-test]
 
@@ -117,7 +117,7 @@ Using the example text "Elastic is headquartered in Mountain View, California.",
 
 You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
 
-Now create an ingest pipeline either in the [Stack management UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
+Now create an ingest pipeline either from the [Ingest Pipelines](ml-nlp-inference.md#ml-nlp-inference-processor) management page in {{kib}} or by using the API:
 
 ```js
 PUT _ingest/pipeline/ner

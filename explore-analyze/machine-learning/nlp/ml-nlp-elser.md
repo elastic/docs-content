@@ -18,7 +18,7 @@ ELSER is an out-of-domain model which means it does not require fine-tuning on y
 This model is recommended for English language documents and queries. If you want to perform semantic search on non-English language documents, use the [E5](ml-nlp-e5.md) model.
 
 ::::{important}
-While ELSER V2 is generally available, ELSER V1 is in [preview] and will remain in technical preview.
+While ELSER V2 is generally available, ELSER V1 is and will remain in technical preview.
 ::::
 
 ## Tokens - not synonyms [elser-tokens]

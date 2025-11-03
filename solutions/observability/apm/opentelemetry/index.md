@@ -78,6 +78,6 @@ Find more details about how to use an OpenTelemetry API or SDK with an Elastic A
 
 AWS Lambda functions can be instrumented with OpenTelemetry and monitored with Elastic {{observability}} or {{obs-serverless}}.
 
-To get started, follow the official AWS Distribution for OpenTelemetry Lambda documentation, and configure the OpenTelemetry Collector to output traces and metrics to your Elastic cluster:
+To get started, follow the official AWS Distribution for OpenTelemetry Lambda documentation, and [configure the EDOT Collector in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) to send traces and metrics to your Elastic cluster:
 
 [**Get started with the AWS Distro for OpenTelemetry Lambda**](https://aws-otel.github.io/docs/getting-started/lambda)

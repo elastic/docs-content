@@ -1123,7 +1123,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 * Automatic sizing
 * Default theme to match {{kib}}
 * Writing {{es}} queries using the time range and filters from dashboards
-* [preview] Using the Elastic Map Service in Vega maps
+* {applies_to}`stack: preview` {applies_to}`serverless: preview` Using the Elastic Map Service in Vega maps
 * Additional tooltip styling
 * Advanced setting to enable URL loading from any domain
 * Debugging support using the {{kib}} inspector
@@ -1320,8 +1320,12 @@ The `"%timefilter%"` can also be used to specify a single min or max value. The 
 
 
 #### Access Elastic Map Service files [vega-esmfiles]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
-[preview] Access the Elastic Map Service files via the same mechanism:
+Access the Elastic Map Service files using the same mechanism:
 
 ```yaml
 url: {
@@ -1343,8 +1347,12 @@ format: {property: "features"}
 
 
 ### Vega with a Map [vega-with-a-map]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
-[preview] To enable **Maps**, the graph must specify `type=map` in the host configuration:
+To enable **Maps**, the graph must specify `type=map` in the host configuration:
 
 ```yaml
 {
@@ -1390,7 +1398,7 @@ format: {property: "features"}
 
 The visualization automatically injects a `"projection"`, which you can use to calculate the position of all geo-aware marks. Additionally, you can use `latitude`, `longitude`, and `zoom` signals. These signals can be used in the graph, or can be updated to modify the position of the map.
 
-[preview] You can use the **Vega** [data](https://vega.github.io/vega/docs/data/) element to access [Elastic Maps Service (EMS)](https://www.elastic.co/elastic-maps-service) vector shapes of administrative boundaries in your Vega map by setting `url.data` to `emsFile`:
+{applies_to}`stack: preview` {applies_to}`serverless: preview` You can use the **Vega** [data](https://vega.github.io/vega/docs/data/) element to access [Elastic Maps Service (EMS)](https://www.elastic.co/elastic-maps-service) vector shapes of administrative boundaries in your Vega map by setting `url.data` to `emsFile`:
 
 ```yaml
   "data": [

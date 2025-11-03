@@ -106,7 +106,7 @@ Here, you’ll be able to:
 
 Inference processors added to your index-specific ML {{infer}} pipelines are normal Elasticsearch pipelines. Once created, each processor will have options to **View in Stack Management** and **Delete Pipeline**. Deleting an {{infer}} processor from within the **Content** UI deletes the pipeline and also removes its reference from your index-specific ML {{infer}} pipeline.
 
-These pipelines can also be viewed, edited, and deleted in Kibana via **Stack Management → Ingest Pipelines**, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
+These pipelines can also be viewed, edited, and deleted in Kibana from the **Ingest Pipelines** management page, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
 
 ## Test your ML {{infer}} pipeline [ingest-pipeline-search-inference-test-inference-pipeline]
 

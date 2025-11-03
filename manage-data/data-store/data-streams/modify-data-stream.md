@@ -91,6 +91,11 @@ To add a mapping for a new field to a data stream, following these steps:
     ```
 
 
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also add a new field mapping to a data stream in {{kib}}. Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select a stream to view its details and go to the **Schema** tab to add a new field.
+:::
 
 ### Change an existing field mapping in a data stream [change-existing-field-mapping-in-a-data-stream]
 
@@ -168,6 +173,12 @@ The documentation for each [mapping parameter](elasticsearch://reference/elastic
     ```
 
 
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also update an existing field's mapping in {{kib}}. Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select the stream to view its details and go to the **Schema** tab to make your updates. For more information, refer to [](/solutions/observability/streams/management/schema.md).
+:::
+
 Except for supported mapping parameters, we don’t recommend you change the mapping or field data type of existing fields, even in a data stream’s matching index template or its backing indices. Changing the mapping of an existing field could invalidate any data that’s already indexed.
 
 If you need to change the mapping of an existing field, create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
@@ -217,6 +228,14 @@ To change a [dynamic index setting](elasticsearch://reference/elasticsearch/inde
 To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
 ::::
 
+
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also update certain dynamic index settings for a data stream in {{kib}}, such as the number of shards, replicas, and the refresh interval used. 
+
+Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select the stream to view its details and go to the **Advanced** tab to make your adjustments. For more information, refer to [](/solutions/observability/streams/management/advanced.md#streams-advanced-index-config).
+:::
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
 

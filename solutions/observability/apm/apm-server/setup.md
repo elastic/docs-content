@@ -83,6 +83,6 @@ Install, configure, and run the APM Server binary wherever you need it.
 
 This decision tree highlights key factors to help you make an informed decision about implementing Elastic APM. It provides practical guidance and is not intended to serve as a comprehensive reference of all possible implementations and capabilities.
 
-:::{image} /solutions/images/observability-apm-help-me-decide.png
+:::{image} /solutions/images/observability-apm-help-me-decide.svg
 :alt: APM decision tree
 :::

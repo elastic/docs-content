@@ -16,13 +16,9 @@ products:
 
 Frequently asked questions about the Cloud Native Vulnerability Management (CNVM) integration and features.
 
-**Which security data sources does the CNVM integration use to identify vulnerabilities?**
-
-The CNVM integration uses various security data sources. The complete list can be found [here](https://github.com/aquasecurity/trivy/blob/v0.35.0/docs/docs/vulnerability/detection/data-source.md).
-
 **What’s the underlying scanner used by CNVM integration?**
 
-CNVM uses the open source scanner [Trivy](https://github.com/aquasecurity/trivy) v0.35.
+CNVM uses the open source scanner [Trivy](https://github.com/aquasecurity/trivy).
 
 **What system architectures are supported?**
 

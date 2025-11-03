@@ -29,8 +29,8 @@ stack: ga 9.1
 
 To change APM settings, select **Settings** from any **Applications** page. The following settings are available.
 
-`observability:apmAgentExplorerView`
-:   [beta] Enables the Agent explorer view.
+`observability:apmAgentExplorerView` {applies_to}`stack: beta`
+:   Enables the Agent explorer view.
 
 `observability:apmAWSLambdaPriceFactor`
 :   Set the price per Gb-second for your AWS Lambda functions.
@@ -38,11 +38,11 @@ To change APM settings, select **Settings** from any **Applications** page. The 
 `observability:apmAWSLambdaRequestCostPerMillion`
 :   Set the AWS Lambda cost per million requests.
 
-`observability:apmEnableContinuousRollups`
-:   [beta] When continuous rollups are enabled, the UI will select metrics with the appropriate resolution. On larger time ranges, lower resolution metrics will be used, which will improve loading times.
+`observability:apmEnableContinuousRollups` {applies_to}`stack: beta`
+:   When continuous rollups are enabled, the UI will select metrics with the appropriate resolution. On larger time ranges, lower resolution metrics will be used, which will improve loading times.
 
-`observability:apmEnableServiceMetrics`
-:   [beta] Enables the usage of service transaction metrics, which are low cardinality metrics that can be used by certain views like the service inventory for faster loading times.
+`observability:apmEnableServiceMetrics` {applies_to}`stack: beta`
+:   Enables the usage of service transaction metrics, which are low cardinality metrics that can be used by certain views like the service inventory for faster loading times.
 
 `observability:apmLabsButton`
 :   Enable or disable the APM Labs button — a quick way to enable and disable technical preview features in APM.

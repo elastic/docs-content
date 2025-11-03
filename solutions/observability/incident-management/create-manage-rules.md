@@ -64,7 +64,6 @@ From the action menu you can also:
 * Run rule (without waiting for next scheduled check)
 * Update API keys
 
-
 ## View rule details [observability-create-manage-rules-view-rule-details]
 
 Click on an individual rule on the **{{rules-app}}** page to view details including the rule name, status, definition, execution history, related alerts, and more.
@@ -102,3 +101,15 @@ To temporarily suppress notifications for *all* rules, create a [maintenance win
 To import and export rules, use [{{saved-objects-app}}](/explore-analyze/find-and-organize.md).
 
 Rules are disabled on export. You are prompted to re-enable the rule on successful import.
+
+## Add resources for investigating alerts [observability-create-manage-rules-add-investigation-resources]
+
+When creating or editing a rule, add the following resources to help you get started with investigating alerts:
+
+* {applies_to}`stack: ga 9.1` **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page. 
+
+    ::::{tip}
+    Use Markdown to format and structure text in your investigation guide.
+    ::::
+
+* {applies_to}`stack: ga 9.1` **Related and suggested dashboards**: Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards (available for custom threshold rules only).
