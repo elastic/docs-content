@@ -1,6 +1,5 @@
 toc:
   - file: index.md
-  - file: contribute-index.md
   - file: on-the-web.md
   - file: locally.md
   - folder: syntax
