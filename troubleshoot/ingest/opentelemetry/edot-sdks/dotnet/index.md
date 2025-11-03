@@ -212,7 +212,7 @@ signal provider builder.
 For example, one may try to use the following code to register a custom processor for trace data using
 the `TracerProviderBuilder`.
 
-```c#
+```csharp
 builder.AddElasticOpenTelemetry(b => b
   .WithTracing(t => t.AddProcessor<SpanRollupProcessor>())
   .WithMetrics(m => m.AddMeter("MyAppMeter")));
@@ -229,7 +229,7 @@ processor(s).
 
 Taking the prior example, the correct code should be as follows:
 
-```c#
+```csharp
 builder.AddElasticOpenTelemetry(new ElasticOpenTelemetryOptions() { SkipOtlpExporter = true }, b => b
   .WithLogging(l => l.AddOtlpExporter())
   .WithTracing(t =>
