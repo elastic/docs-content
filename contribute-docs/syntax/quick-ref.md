@@ -75,7 +75,7 @@ These examples show the syntax first, followed by the rendered admonition.
 ❌ **Don't:** Stack admonitions<br>
 ❌ **Don't:** Overload a page with too many admonitions
 
-[More details: Admonitions →](admonitions.md)
+[More details: Admonitions →](docs-builder://syntax/admonitions.md)
 <br>
 <br>
 
@@ -106,7 +106,7 @@ A default anchor is automatically created for each [heading](#headings), in the 
 ❌ **Don't:** Include punctuation marks in custom anchors<br>
 ❌ **Don't:** Define custom anchors in text that is not a heading
 
-[More details: Links →](links.md#same-page-links-anchors)
+[More details: Links →](docs-builder://syntax/links.md#same-page-links-anchors)
 <br>
 <br>
 
@@ -134,7 +134,7 @@ stack:
 ```
 :::
 
-For full syntax and more examples, see [](applies.md).
+For full syntax and more examples, see [Applies to](docs-builder://syntax/applies.md).
 
 <!--
 :::{tip}
@@ -145,8 +145,8 @@ The `applies_to` tags are scope signals for readers, not comprehensive metadata.
 % TODO restore details when guidance has settled
 
 **DOs**<br>
-✅ **Do:** Define a set of [page-level tags](applies.md#page-level) in a front matter block<br>
-✅ **Do:** Add section-level tags in an `{applies_to}` [directive](applies.md#section-level) after a heading<br>
+✅ **Do:** Define a set of [page-level tags](docs-builder://syntax/applies.md#page-level) in a front matter block<br>
+✅ **Do:** Add section-level tags in an `{applies_to}` [directive](docs-builder://syntax/applies.md#section-level) after a heading<br>
 ✅ **Do:** Indicate versions (`major.minor` with an optional `[.patch]`) and release phases like `beta`
 
 **DON'Ts**<br>
@@ -187,7 +187,7 @@ elasticsearch.hosts: ["http://localhost:9200"]
 ❌ **Don't:** Place code blocks in admonitions<br>
 ❌ **Don't:** Use inline code formatting (single backticks) for multi-line content
 
-[More details: Code →](code.md)
+[More details: Code →](docs-builder://syntax/code.md)
 <br>
 <br>
 
@@ -260,7 +260,7 @@ Add comments with `//` or `#` to magically create callouts.
 **DON'Ts**<br>
 ❌ **Don't:** Overuse callouts &mdash; they can impede readability
 
-[More details: Code callouts→](code.md#code-callouts)
+[More details: Code callouts→](docs-builder://syntax/code.md#code-callouts)
 <br>
 <br>
 
@@ -334,7 +334,7 @@ Collapsible content
 **DON'Ts**<br>
 ❌ **Don't:** Use dropdowns for very long paragraphs or entire sections
 
-[More details: Dropdowns →](dropdowns.md)
+[More details: Dropdowns →](docs-builder://syntax/dropdowns.md)
 <br>
 <br>
 
@@ -370,7 +370,7 @@ Title of a page or a section. To create a heading, add number signs `#` at the b
 ❌ **Don't:** Use headings in tabs or dropdowns<br>
 ❌ **Don't:** Go deeper than Heading 4
 
-[More details: Headings →](headings.md)
+[More details: Headings →](docs-builder://syntax/headings.md)
 <br>
 <br>
 
@@ -392,14 +392,14 @@ Standard Markdown images: `[alt text]` in square brackets, followed by the image
 **DOs**<br>
 ✅ **Do:** Store images in a centralized directory<br>
 ✅ **Do:** Follow v3 [best practices for screenshots](../how-to/cumulative-docs/badge-placement.md#images)<br>
-✅ **Do:** Specify `:screenshot:` in an [image directive](images.md#screenshots) to add a border
+✅ **Do:** Specify `:screenshot:` in an [image directive](docs-builder://syntax/images.md#screenshots) to add a border
 
 **DON'Ts**<br>
 ❌ **Don't:** Use lots of UI screenshots that create a maintenance burden<br>
 ❌ **Don't:** Include confidential info or PII in an image<br>
 ❌ **Don't:** Add a drop shadow or torn edge effect
 
-[More details: Images →](images.md)
+[More details: Images →](docs-builder://syntax/images.md)
 <br>
 <br>
 
@@ -448,7 +448,7 @@ Standard Markdown links to doc pages, sections (anchors), or external content. P
 ❌ **Don't:** Use unclear, inaccessible link text like "click here" or "this"<br>
 ❌ **Don't:** Include terminal punctuation in link text
 
-[More details: Links →](links.md)
+[More details: Links →](docs-builder://syntax/links.md)
 <br>
 <br>
 
@@ -483,7 +483,7 @@ Standard Markdown ordered (numbered) and unordered (bulleted) lists. Indent with
 ❌ **Don't:** Use lists solely for layout purposes <br>
 ❌ **Don't:** Use lists for structured data or comparisons — use tables instead
 
-[More details: Lists →](lists.md)
+[More details: Lists →](docs-builder://syntax/lists.md)
 <br>
 <br>
 
@@ -491,7 +491,7 @@ Standard Markdown ordered (numbered) and unordered (bulleted) lists. Indent with
 
 ## Navigation title
 
-Optional [front matter](frontmatter.md) element that sets a custom title for docs navigation features: appears in the left nav (table of contents), breadcrumbs, and previous/next links. Compare [headings](#headings) (H1 = page title).
+Optional [front matter](docs-builder://syntax/frontmatter.md) element that sets a custom title for docs navigation features: appears in the left nav (table of contents), breadcrumbs, and previous/next links. Compare [headings](#headings) (H1 = page title).
 
 :::{dropdown} Syntax
 
@@ -528,7 +528,7 @@ Page title (Markdown H1):
 ❌ **Don't:** Use a long navigation title or lots of punctuation<br>
 ❌ **Don't:** Abbreviate with periods or ellipses
 
-[More details: Title →](./titles.md)
+[More details: Title →](docs-builder://syntax/titles.md)
 <br>
 <br>
 
@@ -582,7 +582,7 @@ Elastic Cloud Hosted supports most standard Kibana settings.
 ❌ **Don't:** Override a `docset.yml` sub by defining a page-level sub with the same key (causes build errors)<br>
 ❌ **Don't:** Use substitutions for common words that don't need to be standardized
 
-[More details: Substitutions →](./substitutions.md)
+[More details: Substitutions →](docs-builder://syntax/substitutions.md)
 <br>
 <br>
 
@@ -590,7 +590,7 @@ Elastic Cloud Hosted supports most standard Kibana settings.
 
 ## Tabs
 
-Block element that displays content in switchable tabs to help users zero in on the right context (such as a deployment or language). [Synced tab groups](../syntax/tabs.md#tab-groups) are supported.
+Block element that displays content in switchable tabs to help users zero in on the right context (such as a deployment or language). [Synced tab groups](docs-builder://syntax/tabs.md#tab-groups) are supported.
 
 :::::{dropdown} Syntax
 ```markdown
@@ -635,7 +635,7 @@ Tab 2 content
 ❌ **Don't:** Use tabs in [dropdowns](#dropdowns)
 
 
-[More details: Tabs →](tabs.md)
+[More details: Tabs →](docs-builder://syntax/tabs.md)
 <br>
 <br>
 
@@ -671,4 +671,4 @@ Standard table layout for structured data. Automatically scrolls horizontally if
 ❌ **Don't:** Insert block elements or multiple paragraphs in a table cell<br>
 ❌ **Don't:** Use a table solely for position or spacing purposes
 
-[More details: Tables →](tables.md)
+[More details: Tables →](docs-builder://syntax/tables.md)

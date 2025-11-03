@@ -6,39 +6,72 @@ toc:
     children:
       - file: index.md
       - file: quick-ref.md
-      - file: directives.md
-      - file: admonitions.md
-      - file: applies.md
-      - file: applies-switch.md
-      - file: automated_settings.md
-      - file: code.md
-      - file: comments.md
-      - file: conditionals.md
-      - file: csv-include.md
-      - file: definition-lists.md
-      - file: diagrams.md
-      - file: dropdowns.md
-      - file: example_blocks.md
-      - file: file_inclusion.md
-      - file: frontmatter.md
-      - file: headings.md
-      - file: icons.md
-      - file: images.md
-      - file: kbd.md
-      - file: line_breaks.md
-      - file: links.md
-      - file: lists.md
-      - file: math.md
-      - file: passthrough.md
-      - file: sidebars.md
-      - file: stepper.md
-      - file: substitutions.md
-      - file: sundries.md
-      - file: tables.md
-      - file: tabs.md
-      - file: tagged_regions.md
-      - file: titles.md
-      - file: version-variables.md
+      - title: Directives
+        crosslink: docs-builder://syntax/directives.md
+      - title: Admonitions
+        crosslink: docs-builder://syntax/admonitions.md
+      - title: Applies to
+        crosslink: docs-builder://syntax/applies.md
+      - title: Applies switch
+        crosslink: docs-builder://syntax/applies-switch.md
+      - title: Automated settings reference
+        crosslink: docs-builder://syntax/automated_settings.md
+      - title: Code
+        crosslink: docs-builder://syntax/code.md
+      - title: Comments
+        crosslink: docs-builder://syntax/comments.md
+      - title: Conditionals
+        crosslink: docs-builder://syntax/conditionals.md
+      - title: CSV files
+        crosslink: docs-builder://syntax/csv-include.md
+      - title: Definition lists
+        crosslink: docs-builder://syntax/definition-lists.md
+      - title: Diagrams
+        crosslink: docs-builder://syntax/diagrams.md
+      - title: Dropdowns
+        crosslink: docs-builder://syntax/dropdowns.md
+      - title: Example blocks
+        crosslink: docs-builder://syntax/example_blocks.md
+      - title: File inclusion
+        crosslink: docs-builder://syntax/file_inclusion.md
+      - title: Frontmatter
+        crosslink: docs-builder://syntax/frontmatter.md
+      - title: Headings
+        crosslink: docs-builder://syntax/headings.md
+      - title: Icons
+        crosslink: docs-builder://syntax/icons.md
+      - title: Images
+        crosslink: docs-builder://syntax/images.md
+      - title: Keyboard shortcuts
+        crosslink: docs-builder://syntax/kbd.md
+      - title: Line breaks
+        crosslink: docs-builder://syntax/line_breaks.md
+      - title: Links
+        crosslink: docs-builder://syntax/links.md
+      - title: Lists
+        crosslink: docs-builder://syntax/lists.md
+      - title: Math
+        crosslink: docs-builder://syntax/math.md
+      - title: Passthrough blocks
+        crosslink: docs-builder://syntax/passthrough.md
+      - title: Sidebars
+        crosslink: docs-builder://syntax/sidebars.md
+      - title: Stepper
+        crosslink: docs-builder://syntax/stepper.md
+      - title: Substitutions
+        crosslink: docs-builder://syntax/substitutions.md
+      - title: Sundries
+        crosslink: docs-builder://syntax/sundries.md
+      - title: Tables
+        crosslink: docs-builder://syntax/tables.md
+      - title: Tabs
+        crosslink: docs-builder://syntax/tabs.md
+      - title: Tagged regions
+        crosslink: docs-builder://syntax/tagged_regions.md
+      - title: Title
+        crosslink: docs-builder://syntax/titles.md
+      - title: Version variables
+        crosslink: docs-builder://syntax/version-variables.md
   - folder: how-to
     children:
       - file: index.md

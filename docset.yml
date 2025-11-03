@@ -28,6 +28,7 @@ cross_links:
   - curator
   - detection-rules
   - docs-content
+  - docs-builder
   - ecctl
   - ecs
   - ecs-dotnet
