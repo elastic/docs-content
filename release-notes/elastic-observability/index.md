@@ -21,6 +21,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.2.1 [elastic-observability-9.2.1-release-notes]
+
+### Fixes [elastic-observability-9.2.1-fixes]
+* Fixes simulation of geo points in Streams [#241824]({{kib-pull}}241824).
+* Speeds up field simulation in Streams [#241313]({{kib-pull}}241313).
+* Fixes the incorrectly formatted **Values** dropdown in Storybook [#241812]({{kib-pull}}241812).
+* Escapes special characters when creating ESQL query for Lens charts [#241662]({{kib-pull}}241662).
+
+
 ## 9.2.0 [elastic-observability-9.2.0-release-notes]
 
 ### Features and enhancements[elastic-observability-9.2.0-features]
