@@ -26,7 +26,7 @@ Learn how to create an {{obs-serverless}} project and use Elastic {{observabilit
 
 :::::::{stepper}
 
-::::::{step} Create an {{observability}} project
+::::::{step} Create an {{observability}} serverless project
 
 :::{include} /solutions/_snippets/obs-serverless-project.md
 :::
@@ -177,6 +177,6 @@ Many [{{observability}} integrations](https://www.elastic.co/integrations/data-i
 
 ### Other resources
 
-* [What's Elastic {{observability}}](/solutions/observability/get-started/what-is-elastic-observability.md)
+* [What's Elastic {{observability}}](/solutions/observability.md)
 * [What's new in {{product.elastic-stack}}](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
