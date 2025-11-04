@@ -26,7 +26,7 @@ Learn how to create an {{obs-serverless}} project and use Elastic {{observabilit
 
 :::::::{stepper}
 
-::::::{step} Create an {{observability}} serverless project
+::::::{step} Create an {{obs-serverless}} project
 
 :::{include} /solutions/_snippets/obs-serverless-project.md
 :::
