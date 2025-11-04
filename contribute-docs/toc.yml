@@ -2,10 +2,7 @@ toc:
   - file: index.md
   - file: on-the-web.md
   - file: locally.md
-  - folder: syntax
-    children:
-      - file: index.md
-      - file: quick-ref.md
+  - file: syntax-quick-reference.md
   - folder: how-to
     children:
       - file: index.md

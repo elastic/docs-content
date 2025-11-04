@@ -1,10 +1,20 @@
 ---
-navigation_title: "Quick reference"
+navigation_title: "Syntax quick reference"
 ---
 
 # Syntax quick reference
 
-This page offers quick guidance on Elastic Docs v3 syntax, including usage tips. Elements are in alphabetical order. The [full syntax guide](https://elastic.github.io/docs-builder/syntax/index) provides implementation details.
+Elastic documentation uses a custom implementation of [MyST Markdown](https://mystmd.org/) with extended syntax for directives, metadata, and tagging.
+
+:::{tip}
+For the full syntax reference, go to [elastic.github.io/docs-builder/syntax/](https://elastic.github.io/docs-builder/syntax/).
+:::
+
+:::{tip}
+Contributing to `elastic.co/guide` (Asciidoc)? Refer to [Contribute to `elastic.co/guide` (Asciidoc)](asciidoc-guide.md).
+:::
+
+This page offers quick guidance on commonly used syntax elements. Elements are in alphabetical order.
 
 ## Admonitions
 
@@ -116,7 +126,7 @@ A default anchor is automatically created for each [heading](#headings), in the 
 
 Use applies_to metadata to tag content for specific contexts, for example whether a feature is available on certain products, versions, or deployment types.
 
-This metadata enables you to write [cumulative documentation](../how-to/cumulative-docs/index.md), because Elastic no longer publishes separate docs sets for every minor release.
+This metadata enables you to write [cumulative documentation](how-to/cumulative-docs/index.md), because Elastic no longer publishes separate docs sets for every minor release.
 
 **Example: Section tag**
 
@@ -396,7 +406,7 @@ Standard Markdown images: `[alt text]` in square brackets, followed by the image
 
 **DOs**<br>
 ✅ **Do:** Store images in a centralized directory<br>
-✅ **Do:** Follow v3 [best practices for screenshots](../how-to/cumulative-docs/badge-placement.md#images)<br>
+✅ **Do:** Follow v3 [best practices for screenshots](how-to/cumulative-docs/badge-placement.md#images)<br>
 ✅ **Do:** Specify `:screenshot:` in an [image directive](https://elastic.github.io/docs-builder/syntax/images#screenshots) to add a border
 
 **DON'Ts**<br>
