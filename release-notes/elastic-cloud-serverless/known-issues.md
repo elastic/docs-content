@@ -64,20 +64,6 @@ Set the alert delay value to 1 or turn on **Alert flapping detection**.
 
 ## Resolved
 
-:::{dropdown} Installing the {{elastic-defend}} integration or a new agent policy in {{sec-serverless}} forces an upgrade of prebuilt rules
-
-On April 10, 2025, it was discovered that when you install a new {{elastic-defend}} integration or agent policy, the installed prebuilt detection rules upgrade to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and customizations. 
-
-**Workaround**
-
-To resolve this issue, before you add an {{elastic-defend}} integration to a policy in {{fleet}}, apply any pending prebuilt rule updates. This will prevent rule actions, exceptions, and customizations from being overwritten.
-
-**Resolved**
-
-This was resolved on April 14, 2025.
-
-:::
-
 :::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents
 
 On May 30, 2025, it was discovered that the entity risk score feature may stop persisting risk score documents if risk scoring was previously turned on. This is due to a bug that prevents the `entity_analytics_create_eventIngest_from_timestamp-pipeline-<space_name>` ingest pipeline (which is set as a default pipeline for the risk scoring index in an earlier {{serverless-short}} release) from being created when {{kib}} starts up.
@@ -112,5 +98,19 @@ After you complete this step, risk scores should automatically begin to successf
 **Resolved**
 
 This was resolved on June 17, 2025.
+
+:::
+
+:::{dropdown} Installing the {{elastic-defend}} integration or a new agent policy in {{sec-serverless}} forces an upgrade of prebuilt rules
+
+On April 10, 2025, it was discovered that when you install a new {{elastic-defend}} integration or agent policy, the installed prebuilt detection rules upgrade to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and customizations. 
+
+**Workaround**
+
+To resolve this issue, before you add an {{elastic-defend}} integration to a policy in {{fleet}}, apply any pending prebuilt rule updates. This will prevent rule actions, exceptions, and customizations from being overwritten.
+
+**Resolved**
+
+This was resolved on April 14, 2025.
 
 :::
