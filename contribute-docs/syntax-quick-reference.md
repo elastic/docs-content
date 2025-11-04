@@ -6,14 +6,14 @@ navigation_title: "Syntax quick reference"
 
 Elastic documentation uses a custom implementation of [MyST Markdown](https://mystmd.org/) with extended syntax for directives, metadata, and tagging.
 
+This page offers quick guidance on commonly used syntax elements. Elements are in alphabetical order.
+
 For the full syntax reference, go to [elastic.github.io/docs-builder/syntax/](https://elastic.github.io/docs-builder/syntax/).
 
 
 :::{tip}
 Contributing to `elastic.co/guide`? Refer to [Contribute to `elastic.co/guide` (Asciidoc)](asciidoc-guide.md).
 :::
-
-This page offers quick guidance on commonly used syntax elements. Elements are in alphabetical order.
 
 ## Admonitions
 
