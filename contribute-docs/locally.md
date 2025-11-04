@@ -104,7 +104,7 @@ git clone https://github.com/elastic/docs-content.git
 
 ## Write the docs [#write-docs]
 
-We write docs in Markdown. Refer to our [syntax](syntax/index.md) guide for the flavor of Markdown we support and all of our custom directives that enable you to add a little extra pizzazz to your docs.
+We write docs in Markdown. Refer to our [syntax quick reference](syntax-quick-reference.md) for the flavor of Markdown we support and all of our custom directives that enable you to add a little extra pizzazz to your docs.
 
 This documentation is **cumulative**. This means that a new set of docs is not published for every minor release. Instead, each page stays valid over time and incorporates version-specific changes directly within the content. [Learn how to write cumulative documentation](how-to/cumulative-docs/index.md).
 
