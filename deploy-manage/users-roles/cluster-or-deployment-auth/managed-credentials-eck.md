@@ -73,9 +73,17 @@ kubectl delete secret -l eck.k8s.elastic.co/credentials=true,common.k8s.elastic.
 This command regenerates auto-generated credentials of **all** {{stack}} applications in the namespace.
 ::::
 
-:::{note}
-When deleting secrets so they can be regenerated, make sure to exclude {{kib}} secrets by specifying `type!=kibana`. {{kib}} secrets contain encryption keys, which should not be deleted.
+::::{applies-switch}
+
+:::{applies-item} 3.2+:
+When deleting secrets so they can be regenerated, the following label `common.k8s.elastic.co/type!=kibana` is no longer required as the {{kib}} secret is no longer labeled as containing credentials.
 :::
+
+:::{applies-item} Prior to 3.2:
+When deleting secrets so they can be regenerated, make sure to exclude {{kib}} secrets by specifying `common.k8s.elastic.co/type!=kibana`. {{kib}} secrets contain encryption keys, which should not be deleted.
+:::
+
+::::
 
 ## Creating custom users
 
