@@ -93,9 +93,6 @@ Consider this when choosing your deployment type:
 - Choose {{serverless-full}} if you want automatic access to the latest features and don't want to manage version compatibility
 - Choose other deployment types if you need more control over version management
 
-:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
-:::
-
 :::{tip}
 Learn more about [versioning and availability](/get-started/versioning-availability.md).
 :::
