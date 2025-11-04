@@ -66,7 +66,7 @@ This script demonstrates a few facets of Painless scripting:
 
 Painless provides three core benefits across all scripting contexts:
 
-* **Security:** Fine-grained allowlists that prevent access to restricted Java APIs and enforce multiple security layers.  
+* **Security:** Fine-grained allowlists that prevent access to restricted Java APIs.  
 * **Performance**: Direct compilation to [bytecode](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html) eliminates interpretation overhead and leverages JVM optimization.  
 * **Flexibility**: Wide range of scripting syntax and contexts across {{es}}, from search scoring to data processing to operational processing.
 

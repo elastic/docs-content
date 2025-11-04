@@ -53,4 +53,4 @@ This version of the script removes several components and simplifies the syntax 
 * The `get` method, which is replaced with brackets `[]`. Painless uses a shortcut specifically for the `Map` type that allows us to use brackets instead of the lengthier `get` method.
 * The semicolon at the end of the `source` statement. Painless does not require semicolons for the final statement of a block. However, it does require them in other cases to remove ambiguity.
 
-Use this abbreviated syntax anywhere that {{es}} supports scripts, such as when you’re creating [runtime fields](../../manage-data/data-store/mapping/map-runtime-field.md).
+You can use this abbreviated syntax anywhere that {{es}} supports scripts, such as when you’re creating [runtime fields](../../manage-data/data-store/mapping/map-runtime-field.md). Be mindful, however, that the `field` access API is not a direct replacement for `doc`. This shortened version of the original script includes a default value (the `null`) so the script may access both `doc` values and `_source` as underlying structures, depending on the field type.
