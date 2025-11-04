@@ -104,7 +104,6 @@ toc:
     children:
       - file: observability/get-started.md
         children:
-          - file: observability/get-started/what-is-elastic-observability.md
           - file: observability/get-started/quickstarts.md
             children:
               - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
@@ -737,6 +736,7 @@ toc:
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
           - file: security/dashboards/detection-rule-monitoring-dashboard.md
+          - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/explore.md
         children:
           - file: security/explore/hosts-page.md
