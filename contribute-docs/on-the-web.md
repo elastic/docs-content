@@ -6,7 +6,7 @@ Learn how to make documentation updates directly in your browser without setting
 If you're working in [GitHub Codespaces](https://github.com/features/codespaces) or [github.dev](https://github.dev), you can install the [VS Code extension](tools.md#vs-code-extension) to simplify the authoring experience.
 :::
 
-## Making quick edits
+## Suggesting quick edits
 
 For content hosted on [elastic.co/docs](https://www.elastic.co/docs), most conceptual and narrative content is stored in the [`docs-content`](https://github.com/elastic/docs-content) repository, and most reference content is hosted in the relevant product's repository.
 
