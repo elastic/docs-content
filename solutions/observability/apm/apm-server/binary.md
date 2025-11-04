@@ -31,7 +31,8 @@ For more information about installing these products, refer to [](/deploy-manage
 ## Step 1: Install [apm-installing]
 
 ::::{note}
-**Before you begin**: If you haven’t installed the {{stack}}, do that now. Refer to [](/deploy-manage/deploy.md).
+**Before you begin**: If you haven’t installed the {{stack}}, do that now.
+Refer to [](/deploy-manage/deploy.md).
 ::::
 
 To download and install APM Server, use the commands below that work with your system. If you use `apt` or `yum`, you can [install APM Server from our repositories](#apm-setup-repositories) to update to the newest version more easily.
