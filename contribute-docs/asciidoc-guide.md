@@ -4,15 +4,9 @@ navigation_title: Contribute to Asciidoc docs
 
 # Contribute to `elastic.co/guide` (Asciidoc)
 
-To contribute to pages that live at [elastic.co/guide](https://www.elastic.co/guide/index.html), you must work with our [Asciidoc documentation build system](https://github.com/elastic/docs).
+To contribute to pages that live at [elastic.co/guide](https://www.elastic.co/guide/index.html), you must work with our [Asciidoc documentation build system](https://github.com/elastic/docs). These docs are written in the [ASCIIDoc](https://asciidoc.org/) markup language.
 
-This system uses the [ASCIIDoc](https://asciidoc.org/) markup language.
-
-The following versions use this system:
-
-- {{stack}}: `8.x` and earlier
-- {{ece}}: `3.x` and earlier
-- {{eck}}: `2.x` and earlier
+Refer to [elastic.co/guide](https://www.elastic.co/guide) for the full list of products and versions that use this system.
 
 ## Contribute on the web
 
@@ -26,7 +20,7 @@ These changes should be made in the original source folders in their respective 
 6. Add the appropriate labels as required by the repo. To learn which labels to add, refer to the contribution documentation for that repo or reach out to the file codeowners.
 
 :::{note}
-If you are working in a repo like Kibana or the cloud repo, backports can be complicated. You can use the [backport tool](https://github.com/sorenlouv/backport) to manage your backport.
+Backports can be complicated. You can use the [backport tool](https://github.com/sorenlouv/backport) to manage backporting your changes to other version branches.
 :::
 
 ## Contribute locally
