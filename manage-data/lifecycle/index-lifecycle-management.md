@@ -72,7 +72,7 @@ For example, if you are indexing metrics data from a fleet of ATMs into Elastics
 
 ## Create and manage {{ilm-init}} policies
 
-You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
+You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs]({{es-apis}}group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
 
 * [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)

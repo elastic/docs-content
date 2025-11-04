@@ -36,13 +36,13 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker save -o ece.{{version.ece}}.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker save -o es.8.18.2.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
-    docker save -o kibana.8.18.2.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}}
-    docker save -o apm.8.18.2.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
-    docker save -o enterprise-search.8.18.2.tar docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
-    docker save -o es.9.0.1.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
-    docker save -o kibana.9.0.1.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}}
-    docker save -o apm.9.0.1.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
+    docker save -o es.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
+    docker save -o kibana.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}}
+    docker save -o apm.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
+    docker save -o enterprise-search.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
+    docker save -o es.{{ece-docker-images-9}}.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
+    docker save -o kibana.{{ece-docker-images-9}}.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}}
+    docker save -o apm.{{ece-docker-images-9}}.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
     ```
 
 3. Copy the .tar files to a location on your network where they are available to each host where you plan to install {{ece}}. Alternatively, you can copy the .tar files to each host directly.

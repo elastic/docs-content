@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
+  serverless:
   deployment:
     ess: all
     ece: all
@@ -36,6 +37,7 @@ The following sections provide more details.
 ### AutoOps (recommended)
 
 ```{applies_to}
+serverless:
 deployment:
   ess:
   self:
@@ -45,7 +47,7 @@ deployment:
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
-In the [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md), and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
+In the [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and [{{serverless-full}} projects](/deploy-manage/monitor/autoops/autoops-for-serverless.md), and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
 
 ### Stack monitoring
 
