@@ -1912,5 +1912,5 @@ Do not underestimate the importance of this kind of monitoring. Also, consider t
 
 ## What’s next? [_whats_next]
 
-For more information about using  Elastic {{observability}}, see the [{{observability}} documentation](/solutions/observability.md).
+For more information about using  Elastic {{observability}}, refer to the [{{observability}} documentation](/solutions/observability.md).
 
