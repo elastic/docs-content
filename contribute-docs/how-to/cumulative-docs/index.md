@@ -74,7 +74,7 @@ Read more about how site configuration works in the [docs-builder configuration 
 
 Read more about _how_ to tag content in:
 
-* [guidelines.md](guidelines.md):
+* [Guidelines](guidelines.md):
   Review more detailed guidance on when to tag content.
 * [Badge usage and placement](badge-placement.md):
   Learn how to integrate `applies_to` badges into docs content.
