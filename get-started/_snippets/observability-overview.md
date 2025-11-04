@@ -5,7 +5,7 @@ By leveraging the search and analytics capabilities of {{es}}, it offers a holis
 Elastic {{observability}} embraces open standards like OpenTelemetry for flexible data collection, and offers scalable, cost-efficient data retention with tiered storage.
 
 :::{tip}
-New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the Elastic Stack and its components, and your deployment options.
+New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the Elastic Stack, its components, and your deployment options.
 :::
 
 ## Use cases [observability-use-cases]
