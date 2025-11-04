@@ -178,7 +178,7 @@ For host monitoring, the following capabilities and features are recommended:
     * [Detect change points](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
-Refer to the [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+Refer to the [Observability overview](/solutions/observability.md) for a description of other useful features.
 
 ## Manage your data [_manage_your_data]
 
