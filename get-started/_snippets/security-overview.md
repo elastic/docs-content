@@ -12,13 +12,13 @@ Use {{elastic-sec}} to protect your systems from security threats.
 :open:
 
 * **SIEM:** {{elastic-sec}}'s modern SIEM provides a centralized platform for ingesting, analyzing, and managing security data from various sources. 
-* **Third-party integration support:** Ingest data from a various tools and data sources so you can centralize your security data.
-* **Threat detection and analytics:** Identify threats by using prebuilt rules with the ability to customize or create custom detection rules, automatically detect anomalous activity with built-in machine learning jobs, or proactively search for threats using our powerful threat hunting and interactive visualization tools. 
-* **Automatic migration:** Migrate SIEM rules from other platforms to {{elastic-sec}}. 
-* **Endpoint protection and threat prevention:** Automatically stop cybersecurity attacks—such as malware and ransomware—before damage and loss can occur.
-* **AI-powered features:** Leverage generative AI to help enhance threat detection, assist with incident response, and improve day-to-day security operations.
-* **Custom dashboards and visualizations:** Create custom dashboards and visualizations to gain insights into security events.
-* **Cloud Security:** {{elastic-sec}} provides the following cloud features:
+* [**Third-party integration support**](/solutions/security/get-started/ingest-data-to-elastic-security.md): Ingest data from a various tools and data sources so you can centralize your security data.
+* **Threat detection and analytics:** Identify threats by using [prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md) with the ability to customize or create custom detection rules, automatically detect anomalous activity with built-in machine learning jobs, or proactively search for threats using our powerful [threat hunting and interactive visualization tools](/solutions/security/investigate.md). 
+* [**Automatic migration**](/solutions/security/get-started/automatic-migration.md): Migrate SIEM rules from other platforms to {{elastic-sec}}. 
+* [**Endpoint protection and threat prevention**](/solutions/security/configure-elastic-defend.md): Automatically stop cybersecurity attacks—such as malware and ransomware—before damage and loss can occur.
+* [**AI-powered features**](/solutions/security/ai.md): Leverage generative AI to help enhance threat detection, assist with incident response, and improve day-to-day security operations.
+* [**Custom dashboards and visualizations**](/solutions/security/dashboards.md): Create custom dashboards and visualizations to gain insights into security events.
+* [**Cloud Security**](/solutions/security/cloud.md): {{elastic-sec}} provides the following cloud features:
   * **Cloud Security Posture Management (CSPM) and Kubernetes Security Posture Management (KSPM):** Check cloud service configurations against security benchmarks to identify and resolve misconfigurations that can be exploited.
   * **Cloud Workload Protection:** Get visibility and runtime protection for cloud workloads.
   * **Vulnerability Management:** Uncover vulnerabilities within your cloud infrastructure.
