@@ -36,6 +36,7 @@ Models from third-party LLM providers.
 | Google Gemini    | **Gemini 2.0 Flash**    | Excellent | Good | Excellent | Excellent | Excellent | Good | Good | Excellent |
 | Google Gemini    | **Gemini 2.5 Flash**    | Excellent | Good | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Great | Excellent | Excellent | Excellent | Great | Good | Excellent |
+| Google DeepMind    | **Gemma 3 27b it**    | Excellent | Good | Excellent | Great | Excellent | Good | Great | Excellent |
 | OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Good | Excellent |
 
 
