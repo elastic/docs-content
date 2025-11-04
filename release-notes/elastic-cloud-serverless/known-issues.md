@@ -62,6 +62,8 @@ Set the alert delay value to 1 or turn on **Alert flapping detection**.
 
 ::::
 
+## Resolved
+
 :::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents
 
 On May 30, 2025, it was discovered that the entity risk score feature may stop persisting risk score documents if risk scoring was previously turned on. This is due to a bug that prevents the `entity_analytics_create_eventIngest_from_timestamp-pipeline-<space_name>` ingest pipeline (which is set as a default pipeline for the risk scoring index in an earlier {{serverless-short}} release) from being created when {{kib}} starts up.
@@ -93,9 +95,11 @@ PUT /_ingest/pipeline/entity_analytics_create_eventIngest_from_timestamp-pipelin
 
 After you complete this step, risk scores should automatically begin to successfully persist during the entity risk engine's next run. Details for the next run time are described on the **Entity risk score** page, where you can also manually run the risk score by clicking **Run Engine**.
 
-:::
+**Resolved**
 
-## Resolved
+This was resolved on June 17, 2025.
+
+:::
 
 :::{dropdown} Installing the {{elastic-defend}} integration or a new agent policy in {{sec-serverless}} forces an upgrade of prebuilt rules
 
