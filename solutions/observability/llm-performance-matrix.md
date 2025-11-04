@@ -54,7 +54,7 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 | Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Good | Good | Excellent |
 | Alibaba Cloud | **Qwen2.5-72b-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
-| Google DeepMind    | **Gemma 3 27b it**    | Excellent | Good | Great | Great | Excellent | Good | Great | Excellent |
+| Google DeepMind    | **Gemma-3-27b-it**    | Excellent | Good | Great | Great | Excellent | Good | Great | Excellent |
 
 ::::{note}
 `Llama-3.3-70B-Instruct` and `Qwen2.5-72b-Instruct` were tested with simulated function calling.
