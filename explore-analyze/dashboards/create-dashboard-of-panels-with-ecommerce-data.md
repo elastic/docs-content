@@ -21,7 +21,7 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 
 ## Add the data and create the dashboard [add-the-data-and-create-the-dashboard-advanced]
 
-Add the sample eCommerce data, and create and set up the dashboard.
+Add the sample eCommerce data, and set up the dashboard.
 
 1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.

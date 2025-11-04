@@ -105,7 +105,7 @@ Select one of the following methods to install {{agent}}:
 Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
 :::
 
-To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md#data-gathering).
+To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#data-gathering).
 
 ### Configure agent
 
@@ -157,8 +157,7 @@ With this authentication method, you need to create an API key to grant access t
 
 ```
 5. Select **Create API key**.
-6. When prompted to copy the key, select **Beats** from the dropdown.
-7. Copy the key and save it for later. You will need it when you [install the agent](#install-agent). 
+6. Copy the key and save it for later. You will need it when you [install the agent](#install-agent).
 
 ::::
 
