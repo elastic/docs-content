@@ -400,6 +400,9 @@ Using a code callout is the lightest-touch solution, but might not be sufficient
 
 ### Solution B: Use tabs [code-block-tabs]
 
+:::{include} _snippets/applies-switch-and-tabs.md
+:::
+
 **When to use tabs**: If using a [code callout](#code-block-callout) isn't appropriate.
 
 **Best practices**:
@@ -442,6 +445,9 @@ but might not be sufficient in all cases.
 ::::
 
 ### Solution B: Use tabs [workflow-tabs]
+
+:::{include} _snippets/applies-switch-and-tabs.md
+:::
 
 Tabs are minimally disruptive in many situations.
 
@@ -497,6 +503,9 @@ Sometimes the UI differs between versions, deployment types or other conditions.
 
 ### Solution A: Use tabs [screenshot-tabs]
 
+:::{include} _snippets/applies-switch-and-tabs.md
+:::
+
 **When to use tabs**:
 * When the screenshot shows significantly different interfaces or workflows for each product, deployment type, or version.
 * When the screenshot represents a specific, interactive action, like clicking a button or navigating a UI that changes meaningfully between contexts.
@@ -532,6 +541,9 @@ For example, versioning the screenshot on the [Dashboards](https://www.elastic.c
 ## Multiple adjacent block elements vary [multiple-block]
 
 ### Solution A: Use tabs [multiple-block-tabs]
+
+:::{include} _snippets/applies-switch-and-tabs.md
+:::
 
 **When to use tabs**:
 * When the content is structurally similar but differs in detail — for example, slightly different instructions, outputs, or paths.

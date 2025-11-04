@@ -177,26 +177,15 @@ If needed, break the contents of the cell into multiple lines using `<br>` to is
 
 ### Tabs
 
-In the future ([elastic/docs-builder#1436](https://github.com/elastic/docs-builder/issues/1436)), tabs will be able to accept `applies_to` information. Until then, if an `applies_to` badge is relevant to the entire tab item, add the badge to the beginning of the content.
-
-% TO DO: Add example
-% <image>
+When you need to show versions as tab titles, consider using [applies-switch](https://elastic.github.io/docs-builder/syntax/applies-switch) instead. The applies-switch component has built-in support for using applies-to metadata as tab titles and render these as badges.
 
 ### Admonitions
 
-In the future ([elastic/docs-builder#1436](https://github.com/elastic/docs-builder/issues/1436)), admonitions will be able to accept `applies_to` information. Until then, if an `applies_to` badge is relevant to the entire admonition, add the badge to the beginning of the content.
-
-::::{image} ./images/admonition-correct.png
-:screenshot:
-:alt:
-::::
+Admonitions support the `applies_to` property to indicate which products or versions the information applies to. Refer to the [admonitions documentation](https://elastic.github.io/docs-builder/syntax/admonitions#applies-to-information) for syntax details.
 
 ### Dropdowns
 
-In the future ([elastic/docs-builder#1436](https://github.com/elastic/docs-builder/issues/1436)), dropdowns will be able to accept `applies_to` information. Until then, if an `applies_to` badge is relevant to the entire dropdown, add the badge to the beginning of the content.
-
-% TO DO: Add example
-% <image>
+Dropdowns support the `applies_to` property to add a badge to the dropdown title. Refer to the [dropdowns documentation](https://elastic.github.io/docs-builder/syntax/dropdowns#with-applies_to-badge) for syntax details.
 
 ### Code blocks
 
