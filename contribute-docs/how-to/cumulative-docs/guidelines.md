@@ -2,11 +2,13 @@
 navigation_title: Guidelines
 ---
 
-% Audience: Anyone who contributes to docs
-% Goals:
-%   * Provide guidance that is appropriate for new contributors
-
 # Cumulative docs guidelines
+
+:::{note}
+This content is still in development.
+If you have questions about how to write cumulative documentation while contributing,
+reach out to **@elastic/docs** in the related GitHub issue or PR. 
+:::
 
 Start by asking yourself:
 

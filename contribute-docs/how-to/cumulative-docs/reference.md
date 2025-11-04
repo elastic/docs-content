@@ -1,5 +1,11 @@
 # Quick reference
 
+:::{note}
+This content is still in development.
+If you have questions about how to write cumulative documentation while contributing,
+reach out to **@elastic/docs** in the related GitHub issue or PR. 
+:::
+
 The `applies_to` directive uses the following format:
 
 ```

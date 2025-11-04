@@ -2,11 +2,13 @@
 navigation_title: Example scenarios
 ---
 
-% Audience: Technical writers and other frequent docs contributors
-% Goals:
-%   * Provide realistic examples of situations with one or more solution
-
 # Cumulative docs example scenarios
+
+:::{note}
+This content is still in development.
+If you have questions about how to write cumulative documentation while contributing,
+reach out to **@elastic/docs** in the related GitHub issue or PR. 
+:::
 
 Browse common scenarios you might run into as a docs contributor that require different approaches to labeling cumulative docs.
 

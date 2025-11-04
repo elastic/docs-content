@@ -1,8 +1,10 @@
-% Audience: Technical writers and other frequent docs contributors
-% Goals:
-%   * Provide guidance on badge placement in specific situations
-
 # Badge usage and placement
+
+:::{note}
+This content is still in development.
+If you have questions about how to write cumulative documentation while contributing,
+reach out to **@elastic/docs** in the related GitHub issue or PR. 
+:::
 
 As you continue contributing to documentation and more versions are released,
 you might have questions about how to integrate `applies_to` badges in

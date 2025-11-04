@@ -1,14 +1,14 @@
 # Write cumulative documentation
 
-% Audience: Anyone who contributes to docs or is curious about the cumulative documentation model
-% Goals:
-%   * Introduce the concept of cumulative documentation
-%   * Explain its impacts on both readers and contributors
-%   * Point docs contributors to more detailed resources on how to write cumulative documentation
+:::{note}
+This content is still in development.
+If you have questions about how to write cumulative documentation while contributing,
+reach out to **@elastic/docs** in the related GitHub issue or PR. 
+:::
 
 In [elastic.co/docs](https://elastic.co/docs) (Docs V3) we write docs cumulatively. This means that in our Markdown-based docs, there is no longer a new documentation set published with every minor release: the same page stays valid over time and shows version-related evolutions.
 
-:::{note}
+:::{important}
 This new behavior starts with the following **versions** of our products: Elastic Stack 9.0, ECE 4.0, ECK 3.0, and even more like EDOT docs. It also includes our unversioned products: Serverless and Elastic Cloud.
 
 Nothing changes for our ASCIIDoc-based documentation system, that remains published and maintained for the following versions: Elastic Stack until 8.x, ECE until 3.x, ECK until 2.x, etc.
