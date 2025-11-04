@@ -25,6 +25,8 @@ To make quick edits to a single page:
 6. Select **Propose changes**. This takes you to the pull request creation page where you can edit the description if necessary.
 7. Select **Create pull request** to submit your changes.
 
+An Elastician will review, merge, and propagate your change to the right places for publication.
+
 For more details on editing files on GitHub, refer to [GitHub's documentation on editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files).
 
 :::{include} _snippets-contribute/tagged-warning.md
