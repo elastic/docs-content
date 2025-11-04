@@ -14,7 +14,7 @@ description: Learn about Elastic solutions for search, observability, and securi
 # Solutions and use cases
 
 :::{tip}
-New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the Elastic Stack and its components, and your deployment options.
+New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the {{stack}}, its components, and your deployment options.
 :::
 
 Users reach for Elastic products, features, and tools for three main use cases: observability, security, and search.
