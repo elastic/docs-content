@@ -8,8 +8,8 @@ The [quick reference](quick-ref.md) provides a cheat sheet of commonly used synt
 
 ## Full syntax reference
 
-For the complete syntax documentation, refer to the [full syntax reference](https://elastic.github.io/docs-builder/syntax/) in the `elastic/docs-builder` repository.
+For the full syntax reference, go to [elastic.github.io/docs-builder/syntax/](https://elastic.github.io/docs-builder/syntax/).
 
-## Contributing to legacy docs
+## Contributing to `elastic.co/guide` (Asciidoc)
 
-If you need to work on [elastic.co/guide](https://elastic.co/guide) pages (written in AsciiDoc), refer to [Contribute to legacy documentation](../legacy-docs.md).
+If you need to work on [elastic.co/guide](https://elastic.co/guide) pages (written in AsciiDoc), refer to [Contribute to `elastic.co/guide` (Asciidoc)](../asciidoc-guide.md).

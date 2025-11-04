@@ -30,4 +30,4 @@ toc:
           - file: kibana-api-docs-quickstart.md
       - file: workflows.md
       - file: help.md
-  - file: legacy-docs.md
+  - file: asciidoc-guide.md

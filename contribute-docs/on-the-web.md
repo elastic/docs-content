@@ -30,7 +30,7 @@ For more details on editing files on GitHub, refer to [GitHub's documentation on
 :::{include} _snippets-contribute/tagged-warning.md
 :::
 
-## Editing legacy docs
+## Editing `elastic.co/guide` docs (Asciidoc)
 
-If you need to contribute to [elastic.co/guide](https://elastic.co/guide) pages, refer to [Contribute to legacy documentation](legacy-docs.md) to learn about the asciidoc system.
+If you need to contribute to [elastic.co/guide](https://elastic.co/guide) pages, refer to [Contribute to `elastic.co/guide` (Asciidoc)](asciidoc-guide.md) to learn about the Asciidoc system.
 

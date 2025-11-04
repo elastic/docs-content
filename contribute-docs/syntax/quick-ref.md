@@ -114,7 +114,9 @@ A default anchor is automatically created for each [heading](#headings), in the 
 
 ## Applies to
 
-Tags that identify technical contexts: the feature base (stack/serverless), deployments, and project types that a piece of content "applies to." Use `applies_to` tags to help users determine whether content is right for their deployments and configuration. These tags are a [version content pattern](../how-to/cumulative-docs/example-scenarios.md) in Elastic Docs v3.
+Use applies_to metadata to tag content for specific contexts, for example whether a feature is available on certain products, versions, or deployment types.
+
+This metadata enables you to write [cumulative documentation](../how-to/cumulative-docs/index.md), because Elastic no longer publishes separate docs sets for every minor release.
 
 **Example: Section tag**
 
@@ -134,7 +136,11 @@ stack:
 ```
 :::
 
-For full syntax and more examples, see [](https://elastic.github.io/docs-builder/syntax/applies).
+For full syntax and more examples, refer to [the `applies_to` documentation](https://elastic.github.io/docs-builder/syntax/applies).
+
+:::{tip}
+The syntax for `applies_to` metadata differs depending on whether it's added at the [page level](https://elastic.github.io/docs-builder/syntax/applies/#page-level) (in frontmatter), [section level](https://elastic.github.io/docs-builder/syntax/applies/#section-level) (after a heading), or [inline](https://elastic.github.io/docs-builder/syntax/applies/#inline-level).
+:::
 
 <!--
 :::{tip}
@@ -152,7 +158,6 @@ The `applies_to` tags are scope signals for readers, not comprehensive metadata.
 **DON'Ts**<br>
 ❌ **Don't:** Include `applies_to` tags in admonitions<br>
 ❌ **Don't:** Add `applies_to` tags to general, broadly applicable content<br>
-❌ **Don't:** Use `Coming (x.x.x)` tags, except in special cases (don't pre-announce features)
 <br>
 <br>
 

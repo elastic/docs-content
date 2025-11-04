@@ -1,14 +1,14 @@
 ---
-navigation_title: Contribute to legacy docs
+navigation_title: Contribute to Asciidoc docs
 ---
 
-# Contribute to legacy documentation
+# Contribute to `elastic.co/guide` (Asciidoc)
 
-To contribute to pages that live at [elastic.co/guide](https://www.elastic.co/guide/index.html), you must work with our [legacy documentation build system](https://github.com/elastic/docs).
+To contribute to pages that live at [elastic.co/guide](https://www.elastic.co/guide/index.html), you must work with our [Asciidoc documentation build system](https://github.com/elastic/docs).
 
 This system uses the [ASCIIDoc](https://asciidoc.org/) markup language.
 
-The following versions are considered legacy and use this system:
+The following versions use this system:
 
 - {{stack}}: `8.x` and earlier
 - {{ece}}: `3.x` and earlier
@@ -31,7 +31,7 @@ If you are working in a repo like Kibana or the cloud repo, backports can be com
 
 ## Contribute locally
 
-For complex or multi-page updates to legacy documentation, refer to the [legacy documentation build guide](https://github.com/elastic/docs?tab=readme-ov-file#building-documentation).
+For complex or multi-page updates to `elastic.co/guide` (Asciidoc) documentation, refer to the [Asciidoc documentation build guide](https://github.com/elastic/docs?tab=readme-ov-file#building-documentation).
 
 ## Updating docs in both systems
 
@@ -44,4 +44,4 @@ If you need to merge changes that are published in both systems (usually because
    2. If you just need to port a specific section you can use: `pandoc -f gfm -t asciidoc ./<file-name>.md` and the output of the file will be in your command window from which you can copy.
 4. Follow the steps in [Contribute on the web](#contribute-on-the-web) to publish your changes.
 5. If the change is too large or complicated, create a new issue in the [`docs-content`](https://github.com/elastic/docs-content) or [`docs-content-internal`](https://github.com/elastic/docs-content-internal) repository detailing the changes made for the team to triage.
-6. Merge the changes and close the issue once the updates are reflected in the documentation.
+6. Merge the changes and close the issue (if applicable) once the updates are reflected in the documentation.

@@ -113,7 +113,7 @@ This documentation is **cumulative**. This means that a new set of docs is not p
 
 ## Build the docs
 
-Before pushing your changes, verify all of them locally .
+Before pushing your changes, verify them locally by running:
 
 ```
 docs-builder
@@ -130,7 +130,7 @@ After you've made your changes locally:
 
 ## Preview locally [#local-docs-preview]
 
-Static-site generators like docs-builder can serve docs locally. This means you can edit the source and see the result in the browser in real time.
+`docs-builder` can serve docs locally. This means you can edit the source and see the result in the browser in real time.
 
 To serve the local copy of the documentation in your browser, follow these steps:
 
