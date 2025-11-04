@@ -32,6 +32,8 @@ The process involves three main steps:
  2. [Modify the new policy to suit your requirements](#ilm-ex-modify-policy).
  3. [Apply the new policy to your log data using a `logs@custom` component template](#example-using-index-lifecycle-policy-apply-policy).
 
+Once applied, your customized policy will govern any new indices created after the change. Existing indices will continue to use their current lifecycle policy until they roll over. If you want the policy to take effect immediately, you can manually [roll over](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) the data stream.
+
 :::{tip}
 * If you're using [Elastic integrations](https://docs.elastic.co/en/integrations) and are not yet familiar with which data streams are associated with them, refer to [Manage the lifecycle policy for integrations data](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md).
 
