@@ -17,12 +17,12 @@ Agentless agents (which run on Elastic's infrastructure to enable agentless inte
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.1
-Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
+:::{applies-item} { stack: ga 9.2, serverless: }
+Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and enable **Show agentless resources**.
 :::
 
-:::{applies-item} stack: ga 9.2
-Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
+:::{applies-item} stack: ga 9.1
+Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
 :::
 
 ::::
@@ -69,3 +69,7 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 2. Go to the CSPM Integration’s **Integration policies** tab.
 3. Find the integration policy for the integration you want to delete. Click **Actions**, then **Delete integration**.
 4. Confirm by clicking **Delete integration** again.
+
+## Can agentless integrations use a specific range of static IP addresses for configuring allow and deny rules for traffic?
+
+No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.

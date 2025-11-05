@@ -167,4 +167,4 @@ Find **Machine Learning** in the main menu or use the [global search field](/exp
 * To troubleshoot deployment and installation, refer to [installation verification](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#verify-the-installation).
 * For application instrumentation details, refer to [Instrumenting applications with EDOT SDKs on Kubernetes](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/instrumenting-applications.md).
 * To customize the configuration, refer to [custom configuration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md).
-* Refer to [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+* Refer to [Observability overview](/solutions/observability.md) for a description of other useful features.

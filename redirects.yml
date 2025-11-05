@@ -582,5 +582,8 @@ redirects:
 # Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
   'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
 
+# Related to https://github.com/elastic/docs-content/pull/3685
+  'deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md': 'deploy-manage/monitor/autoops/ec-autoops-faq.md'
 
-
+# Related to https://github.com/elastic/docs-team/issues/104
+  'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
