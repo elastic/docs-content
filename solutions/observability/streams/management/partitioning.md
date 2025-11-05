@@ -32,6 +32,10 @@ To manually configure when to send data to child streams:
 
 ## Create partitions using AI suggestions [streams-AI-partitioning]
 
+:::{note}
+This feature requires an [LLM connector](../../../../security/ai/set-up-connectors-for-large-language-models-llm.md).
+:::
+
 To use AI suggestions to send data to child streams:
 
 1. Select **Suggest partitions with AI**. Streams uses AI to look at your data and give you suggestions for grouping your data.
