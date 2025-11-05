@@ -17,7 +17,7 @@ Use EIS if you're getting started with [semantic search](/solutions/search/seman
 
 ## When to use {{ml}} nodes?
 
-ML nodes are a more configurable solution than EIS where you can set up specific nodes using CPUs to execute [ML {{infer}}](/explore-analyze/elastic-inference/inference-api.md). {{ml-cap}} nodes tend to incur higher costs but give more control.
+ML nodes are a more configurable solution than EIS where you can set up specific nodes using CPUs to execute [ML {{infer}}](/explore-analyze/elastic-inference/inference-api.md). {{ml-cap}} nodes tend to give more fine-grained control.
 
 Use ML nodes if you want to decide how your models run, you want to run custom models, or you have a self-managed setup.
 
