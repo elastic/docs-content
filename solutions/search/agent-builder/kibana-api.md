@@ -677,37 +677,14 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/{conversat
 
 ::::
 
-### MCP server API
+### Get A2A agent card configuration
 
-Refer to [](mcp-server.md) for more information.
-
-Communicate with the MCP server using JSON-RPC 2.0.
-
-```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/mcp" \
-    -H "Authorization: ApiKey ${API_KEY}" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "kbn-xsrf: true" \
-    -d '{
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "tools/list"
-    }'
-```
-If you're using Spaces, you need to prefix `/api/agent_builder` with `/s/<space_name>`. Refer to [Working with Spaces](#working-with-spaces).
-
-:::{note}
-This endpoint uses the JSON-RPC protocol. The MCP server is used by AI clients like Claude Desktop, Cursor, and VS Code extensions to access your Elastic tools. Use this {{kib}} API endpoint for testing MCP connectivity or debugging protocol communication. This endpoint requires JSON-RPC formatting and does not work from the Dev Tools Console.
+:::{important}
+You shouldn't use the REST APIs to interact with the A2A endpoint, apart from getting the A2A agent card configuration.
+Refer to [](a2a-server.md) for more information about using the A2A protocol. 
 :::
 
-### A2A protocol
-
-Refer to [](a2a-server.md) for more information.
-
 **Example:** Get A2A agent card configuration
-
-This example uses the [get A2A agent card API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-a2a-agentid-json).
 
 ::::{tab-set}
 :group: api-examples
@@ -730,47 +707,6 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
 :::
 
 ::::
-
-
-% TODO: Execute A2A agent task section - commented out until ready
-% Execute A2A agent task
-% ::::{tab-set}
-% :group: api-examples
-% 
-% :::{tab-item} Console
-% :sync: console
-% :::{note}
-% This endpoint uses the JSON-RPC protocol, which cannot be executed in the Dev Tools Console.
-% Use curl or another HTTP client.
-% :::
-% 
-% :::{tab-item} curl
-% :sync: curl
-% ```bash
-% curl -X POST "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}" \
-%      -H "Authorization: ApiKey ${API_KEY}" \
-%      -H "kbn-xsrf: true" \
-%      -H "Content-Type: application/json" \
-%      -d '{
-%        "jsonrpc": "2.0",
-%        "method": "complete",
-%        "params": {
-%          "messages": [
-%            {
-%              "role": "user",
-%              "content": "Hello from A2A protocol"
-%            }
-%          ]
-%        },
-%        "id": "task-123"
-%      }'
-% ```
-% :::
-% 
-% ::::
-
-
-
 
 
 ## API reference

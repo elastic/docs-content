@@ -21,64 +21,35 @@ If network security filters are applied to the remote cluster, the remote cluste
 
 ## Allow the remote connection [ece_allow_the_remote_connection]
 
-Before you start, consider the security model that you would prefer to use for authenticating remote connections between clusters, and follow the corresponding steps.
-
-API key
-:   For deployments based on {{stack}} 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote deployment fine-grained access controls.
-
-TLS certificate (deprecated in {{stack}} 9.0.0)
-:   This model uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. A superuser on the local deployment gains total read access to the remote deployment, so it is only suitable for deployments that are in the same security domain.
+:::{include} _snippets/allow-connection-intro.md
+:::
 
 :::::::{tab-set}
 
 ::::::{tab-item} API key
-API key authentication enables a local cluster to authenticate itself with a remote cluster via a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key and grants access, based on the API key’s privileges.
 
-All cross-cluster requests from the local cluster are bound by the API key’s privileges, regardless of local users associated with the requests. For example, if the API key only allows read access to `my-index` on the remote cluster, even a superuser from the local cluster is limited by this constraint. This mechanism enables the remote cluster’s administrator to have full control over who can access what data with cross-cluster search and/or cross-cluster replication. The remote cluster’s administrator can be confident that no access is possible beyond what is explicitly assigned to the API key.
-
-On the local cluster side, not every local user needs to access every piece of data allowed by the API key. An administrator of the local cluster can further configure additional permission constraints on local users so each user only gets access to the necessary remote data. Note it is only possible to further reduce the permissions allowed by the API key for individual local users. It is impossible to increase the permissions to go beyond what is allowed by the API key.
-
-If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
+:::{include} _snippets/apikeys-intro.md
+:::
 
 
 ### Prerequisites and limitations [ece_prerequisites_and_limitations]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment]
 
-* On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [{{kib}}](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
-* Copy the encoded key (`encoded` in the response) to a safe location. You will need it in the next step.
-
+:::{include} _snippets/apikeys-create-key.md
+:::
 
 ### Add the cross-cluster API key to the keystore of the local deployment [ece_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
-1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
-
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-
-3. From the deployment menu, select **Security**.
-4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
-
-    1. Fill both fields.
-
-        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
-
-    2. Click **Add** to save the API key to the keystore.
-
-5. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
-
-    ::::{note}
-    If the local deployment runs on version 8.14 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
-    ::::
-
-
-If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
+:::{include} _snippets/apikeys-local-ece-remote-public.md
+:::
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
@@ -238,4 +209,5 @@ The response includes just the remote clusters from the same ECE environment. In
 
 ## Configure roles and users [ece_configure_roles_and_users]
 
-To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
+:::{include} _snippets/configure-roles-and-users.md
+:::
