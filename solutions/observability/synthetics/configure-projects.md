@@ -281,6 +281,15 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     }
     ```
 
+`namespace` (`string`)
+:   Assign the monitor to a specific datastream namespace. Overrides the default value, Kibana's namespace.
+
+    For example:
+
+    ```js
+    namespace: 'custom-namespace'
+    ```
+
 For information on configuring monitors individually, refer to:
 
 * [Configure individual browser monitors](/solutions/observability/synthetics/configure-individual-browser-monitors.md) for browser monitors
