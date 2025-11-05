@@ -203,4 +203,4 @@ Here is an example of the VPC Flow logs dashboard:
 :screenshot:
 :::
 
-Refer to [What is Elastic {{observability}}?](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+Refer to [What is Elastic {{observability}}?](/solutions/observability.md) for a description of other useful features.

@@ -105,7 +105,6 @@ toc:
     children:
       - file: observability/get-started.md
         children:
-          - file: observability/get-started/what-is-elastic-observability.md
           - file: observability/get-started/quickstarts.md
             children:
               - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md

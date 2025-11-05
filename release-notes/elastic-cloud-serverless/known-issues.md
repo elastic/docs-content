@@ -16,6 +16,21 @@ Known issues are significant defects or limitations that may impact your impleme
 
 ## Active
 
+:::{dropdown} Entity store transform is unavailable 
+
+**Details**
+
+A new feature introduced to the entity store caused the transform to scan for nonexistent indices.
+
+**Workaround** 
+
+Restart the entity store:
+1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Entity Store** page, turn the toggle off.
+3. Turn the toggle back on.
+
+::::
+
 :::{dropdown} CSPM and Asset Management integrations don't ingest data when deployed using agent-based technology if {{kib}} is hosted on AWS
 Applies to: {{serverless-short}} deployments hosted on AWS
 
@@ -46,6 +61,8 @@ On October 22, 2025, it was discovered that alerts aren't generated for rules th
 Set the alert delay value to 1 or turn on **Alert flapping detection**.
 
 ::::
+
+## Resolved
 
 :::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents
 
@@ -78,9 +95,11 @@ PUT /_ingest/pipeline/entity_analytics_create_eventIngest_from_timestamp-pipelin
 
 After you complete this step, risk scores should automatically begin to successfully persist during the entity risk engine's next run. Details for the next run time are described on the **Entity risk score** page, where you can also manually run the risk score by clicking **Run Engine**.
 
-:::
+**Resolved**
 
-## Resolved
+This was resolved on June 17, 2025.
+
+:::
 
 :::{dropdown} Installing the {{elastic-defend}} integration or a new agent policy in {{sec-serverless}} forces an upgrade of prebuilt rules
 

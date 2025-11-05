@@ -62,9 +62,13 @@ AutoOps for {{serverless-short}} is set up and enabled automatically in the foll
 | Region | Name |
 | --- | --- | --- | --- |
 | us-east-1 | US East (N. Virginia) |
-| eu-west-1 | Europe (Ireland) |
-| ap-southeast-1 | Asia Pacific (Singapore) |
+| us-east-2 | US East (Ohio) |
 | us-west-2 | US West (Oregon) |
+| eu-west-1 | Europe (Ireland) |
+| eu-west-2 | Europe (London) |
+| eu-central-1 | Europe (Frankfurt) |
+| ap-northeast-1 | Asia Pacific (Tokyo) |
+| ap-southeast-1 | Asia Pacific (Singapore) |
 
 The only exception is the **Search AI Lake** view, which is available in all CSP regions across AWS, Azure, and GCP.
 
