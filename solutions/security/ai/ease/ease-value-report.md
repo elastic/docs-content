@@ -5,9 +5,9 @@ applies_to:
     security: preview
 ---
 
-# EASE Value Report
+# Value Report
 
-The **Value report** page estimates your savings from using Elastic AI SOC Engine (EASE) for alert triage, in terms of **Analyst time saved** and **Cost Savings**. The message at the top of the page explains how those numbers were determined, and how many alerts were **Escalated** and **Filtered** by AI. 
+The **Value report** page estimates your savings from using Elastic's AI SOC features for alert triage, in terms of **Analyst time saved** and **Cost Savings**. The message at the top of the page explains how those numbers were determined, and how many alerts were **Escalated** and **Filtered** by AI. 
 
 You can interact with the page in the following ways:
 
@@ -17,4 +17,18 @@ You can interact with the page in the following ways:
 
 :::{image} /solutions/images/security-ease-value-report.png
 :alt: The Value Report in an EASE project
+:::
+
+## Requirements
+
+```{applies_to}
+serverless
+stack: 9.3
+```
+
+To access the **Value report** page, you need the **SOC Management** Security sub-feature privilege. 
+
+:::{image} /solutions/images/security-value-report-rbac.png
+:alt: value report RBAC setting
+:screenshot:
 :::
