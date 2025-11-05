@@ -13,17 +13,20 @@ applies_to:
 
 The Elastic Inference Service (EIS) requires zero setup or management. It's always-on, has excellent ingest throughput, and uses simple token-based billing.
 
-You should use EIS if you're getting started with semantic/hybrid search and want a smooth experience. Under the hood, EIS uses GPUs for ML inference, which are far more efficient and allow a faster (and more cost-effective) experience for most usecases.
+Use EIS if you're getting started with [semantic search](./solutions/search/semantic-search.md) or [hybrid search](./solutions/search/hybrid-search-md) and want a smooth experience. Under the hood, EIS uses GPUs for ML {{infer}}, which are more efficient and allow a faster, more cost-effective experience for most usecases.
 
-## When to use ML nodes?
+## When to use {{ml}} nodes?
 
-ML nodes are a more configurable solution than EIS where you can set up specific nodes using CPUs to execute ML inference. ML nodes tend to incur higher costs but give more control.
+ML nodes are a more configurable solution than EIS where you can set up specific nodes using CPUs to execute [ML {{infer}}]((./explore-analyze/elastic-inference/inference-api.md)). {{ml-cap}} nodes tend to incur higher costs but give more control.
 
-You should use ML nodes if you want to decide how your models run, you want to run custom models, or you have a self-managed setup.
+Use ML nodes if you want to decide how your models run, you want to run custom models, or you have a self-managed setup.
 
 ## How do I switch from using ML nodes to EIS on an existing index?
 
-The below will work in serverless now, and everywhere else after 9.3:
+```{applies_to}
+stack: ga 9.3
+serverless: ga
+```
 
 ```console
 PUT /my-ml-node-index/_mapping
