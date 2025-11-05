@@ -144,10 +144,7 @@ kind: Ingress
 metadata:
   name: elasticsearch
   labels:
-    helm.sh/chart: eck-elasticsearch-{{eck_helm_chart_version}}
-    app.kubernetes.io/name: eck-elasticsearch
-    app.kubernetes.io/instance: es-kb-quickstart
-    app.kubernetes.io/managed-by: Helm
+    ...
 spec:
   rules:
   - host: "elasticsearch.example.com"
@@ -167,10 +164,7 @@ kind: Ingress
 metadata:
   name: es-kb-quickstart-eck-kibana
   labels:
-    helm.sh/chart: eck-kibana-{{eck_helm_chart_version}}
-    app.kubernetes.io/name: eck-kibana
-    app.kubernetes.io/instance: es-kb-quickstart
-    app.kubernetes.io/managed-by: Helm
+    ...
 spec:
   rules:
   - host: "kibana.example.com"
