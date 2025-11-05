@@ -11,9 +11,9 @@ Use {{elastic-sec}} to protect your systems from security threats.
 :::{dropdown} Use cases
 :open:
 
-* **SIEM:** {{elastic-sec}}'s modern SIEM provides a centralized platform for ingesting, analyzing, and managing security data from various sources. 
+* [**SIEM:**](https://www.elastic.co/security/siem): {{elastic-sec}}'s modern SIEM provides a centralized platform for ingesting, analyzing, and managing security data from various sources. 
 * [**Third-party integration support**](/solutions/security/get-started/ingest-data-to-elastic-security.md): Ingest data from a various tools and data sources so you can centralize your security data.
-* **Threat detection and analytics:** Identify threats by using [prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md) with the ability to customize or create custom detection rules, automatically detect anomalous activity with built-in machine learning jobs, or proactively search for threats using our powerful [threat hunting and interactive visualization tools](/solutions/security/investigate.md). 
+* [**Threat detection and analytics:**](/solutions/security/detect-and-alert): Identify threats by using [prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md) with the ability to customize or create custom detection rules, automatically detect anomalous activity with built-in machine learning jobs, or proactively search for threats using our powerful [threat hunting and interactive visualization tools](/solutions/security/investigate.md). 
 * [**Automatic migration**](/solutions/security/get-started/automatic-migration.md): Migrate SIEM rules from other platforms to {{elastic-sec}}. 
 * [**Endpoint protection and threat prevention**](/solutions/security/configure-elastic-defend.md): Automatically stop cybersecurity attacks—such as malware and ransomware—before damage and loss can occur.
 * [**AI-powered features**](/solutions/security/ai.md): Leverage generative AI to help enhance threat detection, assist with incident response, and improve day-to-day security operations.
