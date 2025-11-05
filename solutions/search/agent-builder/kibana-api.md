@@ -679,7 +679,10 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/{conversat
 
 ### Get A2A agent card configuration
 
-Refer to [](a2a-server.md) for more information.
+:::{note}
+You shouldn't use the REST APIs to interact with the A2A endpoint, apart from getting the A2A agent card configuration.
+Refer to [](a2a-server.md) for more information about using the A2A protocol. 
+:::
 
 **Example:** Get A2A agent card configuration
 
