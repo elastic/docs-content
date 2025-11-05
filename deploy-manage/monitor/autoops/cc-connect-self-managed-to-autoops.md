@@ -70,7 +70,8 @@ If you don’t have an existing {{ecloud}} account:
 :sync: existing
 
 If you already have an {{ecloud}} account:
-1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to [{{ecloud}}](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services).
+    - The link provided should take you directly to the **Connect your self-managed cluster** page
 2. On your home page, in the **Connected clusters** section, select **Connect self-managed cluster**. 
 3. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
 4. Go through the installation wizard as detailed in the following sections.
