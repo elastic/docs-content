@@ -18,9 +18,9 @@ Cloud Connect enables users of ECE, ECK, and self-managed clusters to use {{eclo
 
 ## How it works
 
-To connect your ECE, ECK, or self-managed cluster to AutoOps, you have to use your {{ecloud}} account to install {{agent}} so that it can pull data from your {{es}} cluster. 
+To connect your cluster to AutoOps, you have to use your {{ecloud}} account to install {{agent}} so that it can pull metrics from your {{es}} cluster. 
 
-The agent first registers your cluster with {{ecloud}} and connects it to {{ecloud}} using the Cloud Connect API. Then, it sends that pulled data to AutoOps in your selected CSP region. Refer to [](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) for instructions on how to get started.
+The agent first connects to your ECE, ECK, or self-managed {{es}} cluster. Then, it registers your cluster with {{ecloud}} using the Cloud Connect API and begins to send data from your cluster to AutoOps in your selected CSP region. Refer to [](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) for instructions on how to get started.
 
 :::{image} /deploy-manage/images/self-managed-autoops-diagram.png
 :alt: Diagram depicting how AutoOps for self-managed clusters works
