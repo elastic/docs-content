@@ -677,13 +677,11 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/{conversat
 
 ::::
 
-### A2A protocol
+### Get A2A agent card configuration
 
 Refer to [](a2a-server.md) for more information.
 
 **Example:** Get A2A agent card configuration
-
-This example uses the [get A2A agent card API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-a2a-agentid-json).
 
 ::::{tab-set}
 :group: api-examples
