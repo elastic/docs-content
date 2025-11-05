@@ -22,8 +22,8 @@ You can interact with the page in the following ways:
 ## Requirements
 
 ```{applies_to}
-serverless
-stack: 9.3
+serverless: preview
+stack: preview 9.3
 ```
 
 To access the **Value report** page, you need the **SOC Management** Security sub-feature [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). 
