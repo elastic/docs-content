@@ -20,8 +20,8 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors. Refer to following for more information:
 
-- [Set up the AI Assistant](#obs-ai-set-up) for more on available AI connectors.
-- [{{obs-ai-assistant}} LLM performance matrix](./llm-performance-matrix.md) for supported third-party LLM providers and their ratings for different use cases.
+- [Set up the AI Assistant](#obs-ai-set-up) for available AI connectors.
+- [{{obs-ai-assistant}} LLM performance matrix](./llm-performance-matrix.md) for supported third-party LLM providers and performance ratings.
 
 ## Use cases
 
