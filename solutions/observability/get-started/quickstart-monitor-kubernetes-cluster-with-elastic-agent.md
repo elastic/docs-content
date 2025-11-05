@@ -190,7 +190,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 Furthermore, you can access other useful prebuilt dashboards for monitoring Kubernetes resources, for example running pods per namespace, as well as the resources they consume, like CPU and memory.
 
-Refer to [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+Refer to [Observability overview](/solutions/observability.md) for a description of other useful features.
 
 ## Uninstall {{agent}} from the Kubernetes cluster [monitor-k8s-with-agent-delete-agent]
 
