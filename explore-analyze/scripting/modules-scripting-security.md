@@ -19,10 +19,8 @@ By operating in a controlled sandbox environment, Painless ensures that you wonâ
 ## Security Architecture Overview
 
 The fine-grained allowlist operates as the first security layer. Anything that is not part of the allowlist will result in an error.   
-   
-Another layer of security is the [Java Security Manager (JSM)](https://www.oracle.com/java/technologies/javase/seccodeguide.html). As part of its startup sequence, {{es}} enables JSM to limit the entitlements that portions of the code have. Painless uses this additional layer of defense to prevent scripts from doing things such as writing files and listening to sockets.
 
-{{es}} uses [Seccomp](https://en.wikipedia.org/wiki/Seccomp) in Linux, [Seatbelt](https://www.chromium.org/developers/design-documents/sandbox/osx-sandboxing-design) in macOS, and [ActiveProcessLimit](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684147) on Windows as additional security layers to prevent {{es}} from forking or running other processes.
+As another layer of security, {{es}} uses [Seccomp](https://en.wikipedia.org/wiki/Seccomp) in Linux, [Seatbelt](https://www.chromium.org/developers/design-documents/sandbox/osx-sandboxing-design) in macOS, and [ActiveProcessLimit](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684147) on Windows to prevent {{es}} from forking or running other processes.
 
 Finally, scripts used in [scripted metrics aggregations](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) can be restricted to a defined list of scripts or forbidden altogether. This can prevent users from running particularly slow or resource-intensive aggregation queries.
 
