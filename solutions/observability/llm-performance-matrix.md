@@ -37,6 +37,7 @@ Models from third-party LLM providers.
 | Google Gemini    | **Gemini 2.5 Flash**    | Excellent | Good | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Great | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Good | Excellent |
+| OpenAI    | **GPT-5 Chat**           | Excellent | Good | Excellent | Excellent | Excellent | Great | Good | Excellent |
 
 
 ## Open-source models [_open_source_models]
