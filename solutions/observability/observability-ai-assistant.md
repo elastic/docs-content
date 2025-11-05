@@ -49,12 +49,12 @@ The AI assistant requires the following:
 
   - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
 
-    Refer to the [documentation](/deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
+    Refer to the [documentation](kibana://reference/connectors-kibana/gen-ai-connectors.md) for your provider to learn about supported and default models.
 
 * The knowledge base requires a 4 GB {{ml}} node.
   - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
 
-* A self-deployed connector service if [content connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
+* A self-deployed connector service if you're using [content connectors](elasticsearch://reference/search-connectors/index.md) to populate external data into the knowledge base.
 
 ## Manage access to AI Assistant
 
