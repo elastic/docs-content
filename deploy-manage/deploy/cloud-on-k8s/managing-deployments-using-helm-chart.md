@@ -137,7 +137,7 @@ helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namesp
 
 For illustration purposes, the ingress objects created by the previous command will look similar to the following:
 
-```yaml subs=true
+```yaml
 # Source: eck-stack/charts/eck-elasticsearch/templates/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
