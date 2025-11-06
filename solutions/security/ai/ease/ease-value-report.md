@@ -28,7 +28,4 @@ stack: preview 9.3
 
 To access the **Value report** page, you need the **SOC Management** Security sub-feature [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). 
 
-:::{image} /solutions/images/security-value-report-rbac.png
-:alt: value report RBAC setting
-:screenshot:
-:::
+![value report RBAC setting](/solutions/images/security-value-report-rbac.png "=50%")
