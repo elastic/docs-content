@@ -324,6 +324,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-09192025-features-enhancements]
 * {{serverless-full}} is now available in three new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP South Carolina (`us-east1`), GCP Virginia (`us-east4`), and GCP Oregon (`us-west1`).
+* refactor(semantic_text): fail early in pre-8.11 indices [#133080](https://github.com/elastic/elasticsearch/pull/133080)
 
 
 ## September 15, 2025 [serverless-changelog-09152025]
@@ -601,6 +602,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes product docs install logic when the target version is higher than the current version for Machine Learning [#229704]({{kib-pull}}229704)
 * Adds support for the `name` attribute in create and update actions for saved objects [#228464]({{kib-pull}}228464)
 * Fixes missing data view [#229467]({{kib-pull}}229467)
+* Implement support for weighted rrf [#130658](https://github.com/elastic/elasticsearch/pull/130658)
+* Add Sparse Vector Index Options Settings to Semantic Text Field [#131058](https://github.com/elastic/elasticsearch/pull/131058)
 
 ## July 28, 2025 [serverless-changelog-07282025]
 
@@ -629,6 +632,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures the Gemini Vertex AI documentation link is available in the AI Connector [#228348]({{kib-pull}}228348)
 * Fixes a skipped autocomplete test in the console [#229274]({{kib-pull}}229274)
 * Ignores missing filters in rule parameters instead of causing errors [#229422]({{kib-pull}}229422)
+* Support semantic reranking using contextual snippets instead of entire field text [#129369](https://github.com/elastic/elasticsearch/pull/129369)
 
 
 ## July 22, 2025 [serverless-changelog-07222025]
@@ -667,6 +671,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Migrates the anonymization in-memory table to `EuiBasicTable` for improved selection control [#222825]({{kib-pull}}222825)
 * Fixes styling issues in flyouts [#228078]({{kib-pull}}228078)
 * Fixes sub-menu behavior in the solution nav when collapsed [#227705]({{kib-pull}}227705)
+* Fix Semantic Query Rewrite Interception Drops Boosts [#129282](https://github.com/elastic/elasticsearch/pull/129282)
+* refactor: enhance semantic_text inference error msg [#131519](https://github.com/elastic/elasticsearch/pull/131519)
 
 
 ## July 15, 2025 [serverless-changelog-07152025]
@@ -705,6 +711,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes time range handling in embedded anomaly swim lanes [#225803]({{kib-pull}}225803)
 * Adds discernible text to the **Refresh data preview** button [#225816]({{kib-pull}}225816)
 * Improves error handling in **Search Playground** when context limit is exceeded using Elastic Managed LLM [#225360]({{kib-pull}}225360)
+* [Synonym] Return Empty RuleSet [#131032](https://github.com/elastic/elasticsearch/pull/131032)
+* Don't allow field caps to use semantic queries as index filters [#131111](https://github.com/elastic/elasticsearch/pull/131111)
 
 ## July 7, 2025 [serverless-changelog-07072025]
 
@@ -795,6 +803,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Replaces hard-coded CSS values to us the `euiTheme` instead in {{sec-serverless}} [#225307]({{kib-pull}}225307)
 * Fixes URL query handling for asset inventory flyout in {{sec-serverless}} [#225199]({{kib-pull}}225199)
 * Adds missing model Claude 3.7 to accepted models in {{es-serverless}} [#224943]({{kib-pull}}224943)
+* Fix incorrect accounting of semantic text indexing memory pressure [#130221](https://github.com/elastic/elasticsearch/pull/130221)
 
 
 
@@ -805,6 +814,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-06262025-features-enhancements]
 * {{serverless-full}} is now available in the Microsoft Azure `eastus` [region](/deploy-manage/deploy/elastic-cloud/regions.md). 
+* Fix: Allow non-score sorts in pinned retriever sub-retrievers [#128323](https://github.com/elastic/elasticsearch/pull/128323)
 
 ## June 23, 2025 [serverless-changelog-06232025]
 
@@ -868,6 +878,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes several issues introduced in versions 8.18.0 through 9.1.0, including broken pagination (limited to 10 items), erroneous error banners, and broken search functionality.
 * Fixes **Discard** button state change logic for toggles [#223493]({{kib-pull}}223493)
 * Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
+* Update sparse_vector field mapping to include default setting for token pruning [#129089](https://github.com/elastic/elasticsearch/pull/129089)
+* Simplified Linear Retriever [#129200](https://github.com/elastic/elasticsearch/pull/129200)
+* Add index_options to semantic_text field mappings [#119967](https://github.com/elastic/elasticsearch/pull/119967)
+* Simplified RRF Retriever [#129659](https://github.com/elastic/elasticsearch/pull/129659)
+* Simplified Linear & RRF Retrievers - Return error on empty fields param [#129962](https://github.com/elastic/elasticsearch/pull/129962)
 
 ## June 17, 2025 [serverless-changelog-06172025]
 
@@ -955,6 +970,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue with the OpenAI connector not using the action proxy configuration for all subactions in Machine Learning [#219617]({{kib-pull}}219617).
 * Fixes an issue with **Anomaly Explorer** where the selected Overall swimlane bucket is not respected for `viewBy jobId` in Machine Learning [#222845]({{kib-pull}}222845).
 * Fixes error handling when one or more connectors is deleted [#221958]({{kib-pull}}221958).
+* Add l2_norm normalization support to linear retriever [#128504](https://github.com/elastic/elasticsearch/pull/128504)
+* Semantic_text match_all with Highlighter [#128702](https://github.com/elastic/elasticsearch/pull/128702)
 
 ## June 2, 2025 [serverless-changelog-06022025]
 
@@ -1030,6 +1047,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes inability to clear Document ID in data view field editor preview [#220891]({{kib-pull}}220891)
 * Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
 * Changes the AI Connector description [#221154]({{kib-pull}}221154)
+* Fix: Add NamedWriteable for RuleQueryRankDoc [#128153](https://github.com/elastic/elasticsearch/pull/128153)
 
 ## May 19, 2025 [serverless-changelog-05192025]
 
@@ -1552,6 +1570,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes unattended Transforms in integration packages not automatically restarting after reauthorizing [#210217]({{kib-pull}}210217)
 * Reinstates switch to support generating public URLs for embed when supported [#207383]({{kib-pull}}207383)
 * Provides a fallback view to recover from Stack Alerts page filters bar errors [#209559]({{kib-pull}}209559)
+* [Inference API] Rename model_id prop to model in EIS sparse inference request body [#122272](https://github.com/elastic/elasticsearch/pull/122272)
 
 ## February 10, 2025 [serverless-changelog-02102025]
 
