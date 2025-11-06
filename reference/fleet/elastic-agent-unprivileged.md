@@ -182,7 +182,7 @@ For example:
 ## Using `unprivileged` mode with a pre-existing user and group [unprivileged-preexisting-user]
 
 ::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+Whilst this functionality is GA, interfacing with Active Directory to determine the user group is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
 
