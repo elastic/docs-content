@@ -69,7 +69,9 @@ docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{{version.stack}
 
 ### Complete flavor
 
-If you want to run Synthetics Browser tests, run the docker pull command to fetch the elastic-agent-complete image:
+In case you need to run {{agent}} as a Synthetic Private Location and you'll use only Lightweight monitors, you can use the `elastic-agent` (and the `wolfi` variant).
+
+ In case you need to run {{agent}} as a Synthetic Private Location and you'll use both Lightweight monitors and Synthetics Browser tests, run the docker pull command to fetch the `elastic-agent-complete` image:
 
 ```terminal subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
