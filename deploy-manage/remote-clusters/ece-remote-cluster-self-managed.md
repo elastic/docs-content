@@ -16,6 +16,8 @@ sub:
 
 This section explains how to configure a deployment to connect remotely to self-managed clusters.
 
+:::{include} _snippets/terminology.md
+:::
 
 ## Allow the remote connection [ece_allow_the_remote_connection_4]
 
