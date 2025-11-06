@@ -27,6 +27,22 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.2.1 [elastic-security-9.2.1-release-notes]
+
+### Features and enhancements [elastic-security-9.2.1-features-enhancements]
+
+* Improves the startup log in {{elastic-defend}} to explain the details of unsigned policy.
+* Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+
+### Fixes [elastic-security-9.2.1-fixes]
+* Fixes an issue where switching from agentless to agent-based cloud posture caused CSPM and Asset Inventory data to stop ingesting [#241390]({{kib-pull}}241390).
+* Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
+* Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
+* Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* Fixes an issue in {{elastic-defend}} that could cause the `get-file` and `execute` response actions to start failing after many are issued with a single running instance of {{elastic-defend}}
+* Improves {{elastic-defend}} detection of file rename operations on Windows when performed over Server Message Block (SMB).
+* Fixes an {{elastic-defend}} issue on Windows where the `code_signature.thumbprint_sha256` field was missing under process and DLL events for certain event types.
+
 
 ## 9.2.0 [elastic-security-9.2.0-release-notes]
 
