@@ -56,7 +56,7 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | OpenAI | **gpt-oss-20b** | Poor | Poor | Great | Poor | Good | Poor | Good | Good |
 | OpenAI | **gpt-oss-120b** | Excellent | Poor | Great | Great | Excellent | Good | Good | Excellent |
 | Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
-| Meta | **Llama-4-Maverick-17B** | Good | Good | Good | Excellent | Excellent | Good | Good | Great |
+| Meta | **Llama-4-Maverick-17B** | Great | Good | Great | Excellent | Excellent | Good | Good | Great |
 | Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Good | Good | Excellent |
 | Alibaba Cloud | **Qwen2.5-72b-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 
