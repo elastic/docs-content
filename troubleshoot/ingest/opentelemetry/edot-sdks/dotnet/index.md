@@ -202,9 +202,7 @@ When using custom processors, be aware that they may not run before data is expo
 
 By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md). These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry data is exported automatically, without requiring additional code.
 
-In advanced scenarios, you may develop custom processors to enrich signal data with custom logic before it
-passes to the next processor in the pipeline. In such circumstances, you will add the processor to the relevant
-signal provider builder. 
+In advanced scenarios, you might want to develop custom processors that enrich telemetry data before it passes through the rest of the processing pipeline. In such circumstances, you have to add the processor to the relevant signal provider builder. 
 
 For example, one may try to use the following code to register a custom processor for trace data using
 the `TracerProviderBuilder`.
