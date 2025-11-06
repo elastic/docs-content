@@ -85,3 +85,6 @@ In this section, you'll find the following information:
 * How to use the [Search tier view](search-tier-view-autoops-serverless.md) to see the impact of search performance on your use of search VCUs.
 * How to use the [Search AI Lake view](search-ai-lake-view-autoops-serverless.md) to drill down into your storage-related usage.
 
+:::{tip}
+Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md) for answers to commonly asked questions about AutoOps.
+:::

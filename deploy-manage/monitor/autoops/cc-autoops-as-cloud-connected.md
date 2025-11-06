@@ -27,3 +27,4 @@ In this section, you'll find the following information:
 
 :::{tip}
 Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#questions-about-autoops-for-self-managed-clusters) for answers to commonly asked questions about AutoOps for self-managed clusters.
+:::
