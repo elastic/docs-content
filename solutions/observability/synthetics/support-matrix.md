@@ -41,9 +41,9 @@ There are various components that make up the Synthetics solution, which are sup
 
         * Any *inline* or *Zip URL* monitors configured with the beta Synthetics integration prior to 1.0.0, are not supported and will stop running in the future
 
-    * Shipped as multiple `elastic-agent` Docker image variants:
+    * Shipped as multiple `elastic-agent` variants:
 
-        * `elastic-agent-complete`, which includes all dependencies required to run browser monitors, TCP, HTTP and ICMP monitors.
+        * `elastic-agent-complete`, exclusively provided as a Docker image which includes all dependencies required to run browser, TCP, HTTP and ICMP monitors.
         * `elastic-agent` which only supports TCP, HTTP and ICMP monitors. 
 
     * Must have a direct connection to {{es}}
