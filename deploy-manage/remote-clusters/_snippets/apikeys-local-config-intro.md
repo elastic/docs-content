@@ -1,3 +1,1 @@
 The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment's keystore.
-
-Additionally, if the remote cluster server uses a certificate signed by a private certificate authority (CA), you must add the CA to the local deployment configuration so that it can trust the remote server.
