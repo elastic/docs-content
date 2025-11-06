@@ -14,6 +14,9 @@ products:
 
 This section explains how to configure a deployment to connect remotely to self-managed clusters.
 
+:::{include} _snippets/terminology.md
+:::
+
 ## Allow the remote connection [ec_allow_the_remote_connection_4]
 
 :::{include} _snippets/allow-connection-intro.md
@@ -43,7 +46,7 @@ This section explains how to configure a deployment to connect remotely to self-
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
 
-The steps to follow depend on whether the Certificate Authority (CA) of the remote environment’s {{es}} HTTPS server, proxy or, load balancing infrastructure is public or private.
+The steps to follow depend on whether the Certificate Authority (CA) of the remote environment’s {{es}} remote cluster server, proxy or, load balancing infrastructure is public or private.
 
 ::::{dropdown} The CA is public
 

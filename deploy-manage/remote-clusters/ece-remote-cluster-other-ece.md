@@ -15,6 +15,9 @@ sub:
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ece}} environment.
 
+:::{include} _snippets/terminology.md
+:::
+
 ::::{note}
 If network security filters are applied to the remote cluster on ECE, the remote cluster administrator must configure an [IP filter](/deploy-manage/security/ip-filtering-ece.md) to allow connections from the IP addresses (or CIDR ranges) of the local ECE allocator hosts. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
 ::::
