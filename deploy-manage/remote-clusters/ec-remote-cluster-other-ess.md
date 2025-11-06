@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
-  remote_type: Elastic Cloud Hosted deployment
+  remote_type: Elastic Cloud Hosted
 ---
 
 # Connect to deployments in another {{ecloud}} organization [ec-remote-cluster-other-ess]

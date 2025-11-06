@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
-  remote_type: Elastic Cloud Enterprise deployment
+  remote_type: Elastic Cloud Enterprise
 ---
 
 # Connect to deployments in the same {{ece}} environment [ece-remote-cluster-same-ece]
