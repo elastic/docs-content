@@ -587,3 +587,8 @@ redirects:
 
 # Related to https://github.com/elastic/docs-team/issues/104
   'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
+  'solutions/security/get-started/create-security-project.md': 
+    to: 'solutions/security/get-started.md'
+    anchors:
+      'create-sec-serverless-project':
+  'solutions/security/elastic-security-serverless.md': 'solutions/security.md'
