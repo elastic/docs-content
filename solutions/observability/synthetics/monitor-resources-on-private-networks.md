@@ -58,7 +58,7 @@ After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your 
 
 Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. For running browser monitors on {{private-location}}s, you *must* use one of the `elastic-agent-complete` Docker image variants, as it includes the required dependencies. The standard {{agent}} variant only supports TCP, ICMP and HTTP monitors.
 ::::{important}
-The `elastic-agent` Docker image variants are the only way to have all available options that you see in the UI.
+The `elastic-agent-complete` Docker image is the only way to have all available options that you see in the UI. You can use `elastic-agent` Docker image only in case you will only use lightweight monitors.
 
 ::::
 
