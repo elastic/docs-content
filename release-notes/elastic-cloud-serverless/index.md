@@ -166,6 +166,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## October 15, 2025 [serverless-changelog-10152025]
 * {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London)
+* [ES-13091] Add PR-based benchmarks [#4663](https://github.com/elastic/elasticsearch-serverless/pull/4663)
+* [ES-12916] Add tags to PR-based benchmarks [#136185](https://github.com/elastic/elasticsearch/pull/136185)
 
 
 ## October 13, 2025 [serverless-changelog-10132025]
@@ -286,6 +288,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds `time` field to the get data views response schema [#235975]({{kib-pull}}235975)
 * Adds `managed` field to the get data views response schema [#236237]({{kib-pull}}236237)
 * Validates {{ls}} pipeline IDs sent to Kibana APIs [#236347]({{kib-pull}}236347)
+* Optimize dotCount in expanding dot parser [#135263](https://github.com/elastic/elasticsearch/pull/135263)
 
 
 ## September 22, 2025 [serverless-changelog-09222025]
