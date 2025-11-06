@@ -2,8 +2,6 @@
 This snippet is in use in the following locations:
 - ece-remote-cluster-self-managed.md
 - ec-remote-cluster-self-managed.md
-- ece-enable-ccs-for-eck.md
-- ec-enable-ccs-for-eck.md
 -->
 To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 

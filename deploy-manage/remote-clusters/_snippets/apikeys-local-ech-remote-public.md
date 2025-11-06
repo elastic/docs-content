@@ -1,3 +1,10 @@
+<!--
+This snippet is in use in the following locations:
+- ec-remote-cluster-self-managed.md
+- ec-remote-cluster-same-ess.md
+- ec-remote-cluster-other-ess.md
+- ec-remote-cluster-ece.md
+-->
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 

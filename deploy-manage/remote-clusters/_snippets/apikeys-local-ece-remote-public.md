@@ -1,3 +1,10 @@
+<!--
+This snippet is in use in the following locations:
+- ece-remote-cluster-self-managed.md
+- ece-remote-cluster-same-ece.md
+- ece-remote-cluster-other-ece.md
+- ece-remote-cluster-ece-ess.md
+-->
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
 

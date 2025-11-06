@@ -2,8 +2,6 @@
 This snippet is in use in the following locations:
 - ece-remote-cluster-self-managed.md
 - ec-remote-cluster-self-managed.md
-- ece-enable-ccs-for-eck.md
-- ec-enable-ccs-for-eck.md
 -->
 1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Add a remote cluster**.

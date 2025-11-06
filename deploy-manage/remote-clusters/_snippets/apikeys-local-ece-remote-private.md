@@ -1,6 +1,7 @@
 <!--
 This snippet is in use in the following locations:
-- xxx
+- ece-remote-cluster-self-managed.md
+- ece-remote-cluster-other-ece.md
 
 It requires remote_type substitution to be defined
 -->
