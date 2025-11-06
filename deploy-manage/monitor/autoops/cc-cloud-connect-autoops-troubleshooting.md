@@ -44,11 +44,10 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
     Run the following tests within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the container, and so on. 
     :::
 
-    There are [three main components](cc-autoops-as-cloud-connected.md#how-it-works) of {{agent}}'s connection with your system:
+    There are [three main components](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#how-your-self-managed-cluster-connects-to-autoops) of {{agent}}'s connection with your system:
 
-    1. {{agent}} connects to your cluster
-    2. {{agent}} registers your cluster with {{ecloud}}
-    3. {{agent}} sends metrics from your cluster to AutoOps in {{ecloud}}
+    :::{include} /deploy-manage/monitor/_snippets/autoops-cc-components.md
+    :::
 
     If there is an issue with the first component, {{agent}} cannot connect to your cluster. To test if your organization is not allowing this connection, run the following command depending on your chosen authentication method:
 
