@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Field extraction [scripting-field-extraction]
+# Extracing fields [scripting-field-extraction]
 
 The goal of field extraction is simple; you have fields in your data with a bunch of information, but you only want to extract pieces and parts.
 
