@@ -218,9 +218,7 @@ therefore running earlier in the pipeline than `SpanRollupProcessor`. The exact 
 work because trace data is exported in batches and the custom processor may partially apply to trace data before
 the batch is exported.
 
-EDOT .NET provides a configuration option that should be used in this scenario to disable the automatic registration
-of the OTLP exporter. Once disabled, you should manually add the exporter ***after*** registering your custom
-processor(s).
+To address this, you can disable the automatic OTLP exporter registration using the `SkipOtlpExporter` option. This allows you to manually register the exporter *after* registering your custom processor.
 
 Taking the prior example, the correct code should be as follows:
 
