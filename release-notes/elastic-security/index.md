@@ -123,6 +123,28 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
 
 
+## 9.1.7 [elastic-security-9.1.7-release-notes]
+
+### Features and enhancements [elastic-security-9.1.7-features-enhancements]
+* Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions  [#238547]({{kib-pull}}238547).
+* Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
+* Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+
+
+### Fixes [elastic-security-9.1.7-fixes]
+* Fixes entity flyout **Risk contributions** tab link [#241153]({{kib-pull}}241153).
+* Fixes a pagination issue with the data table on the **Indicators** page [#241108]({{kib-pull}}241108).
+* Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
+* Allows partial matches on rule name when searching installed rules [#237496]({{kib-pull}}237496).
+* Fixes an issue where rule exception operators could not be cleared when editing a rule exception [#236051]({{kib-pull}}236051).
+* Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within malware protection to avoid invalid watchdog firings.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
+* Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* Fixes an {{elastic-defend}} issue on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
+* Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
+* Fixes an issue in {{elastic-defend}} that could cause the `get-file` and `execute` response actions to start failing after many are issued with a single running instance of {{elastic-defend}}.
+
+
 ## 9.1.6 [elastic-security-9.1.6-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.6-features-enhancements]
