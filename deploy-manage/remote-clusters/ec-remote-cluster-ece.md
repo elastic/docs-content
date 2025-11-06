@@ -63,19 +63,8 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 ::::{dropdown} The CA is private
 
-Before configuring the local deployment, retrieve the CA certificate of the remote {{ece}} environment’s proxy or load-balancing infrastructure. To find this certificate:
-
-1. In the remote {{ece}} environment, go to **Platform > Settings > TLS certificates**.
-2. Select **Show certificate chain** under **Proxy**.
-3. Click **Copy root certificate** and paste it into a new file. The root certificate is the last certificate shown in the chain.
-
-    :::{image} /deploy-manage/images/cloud-remote-clusters-proxy-certificate.png
-    :alt: Certificate to copy from the chain
-    :::
-
-4. Save that file as `.crt`.
-
-You can now proceed to configure the local deployment. The CA file you just saved will be used in one of the following steps.
+:::{include} _snippets/retrieve-ece-ca.md
+:::
 
 :::{include} _snippets/apikeys-local-ech-remote-private.md
 :::

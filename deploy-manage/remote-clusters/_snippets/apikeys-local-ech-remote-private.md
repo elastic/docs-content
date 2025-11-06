@@ -24,7 +24,7 @@ It requires remote_type substitution to be defined
     2. Click **Add** to save the API key to the keystore.
     3. Repeat these steps for each API key you want to add. For example, if you want to use several clusters of the remote environment for CCR or CCS.
 
-8. Add the CA certificate of the remote deployment or cluster.
+8. Add the CA certificate of the remote environment.
 9. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment's **Security** page.
 10. Select **Create trust** to complete the configuration.
 11. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment's main page, locate the **Actions** menu, and select **Restart {{es}}**.

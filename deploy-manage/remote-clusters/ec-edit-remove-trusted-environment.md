@@ -72,13 +72,13 @@ If you need to update the permissions granted by a cross-cluster API key for a r
 4. Locate the API key currently used for connecting to the remote cluster, copy its current alias, and delete it.
 5. Add the new API key by selecting **Add API key**.
 
-    * For the **Setting name**, enter the same alias that was used for the previous key.
+    * For the **Remote cluster name**, enter the same alias that was used for the previous key.
 
       ::::{note}
       If you use a different alias, you also need to re-create the remote cluster in {{kib}} with a **Name** that matches the new alias.
       ::::
 
-    * For the **Secret**, paste the encoded cross-cluster API key, then click **Add** to save the API key to the keystore.
+    * For the **Cross-cluster API key**, paste the encoded cross-cluster API key, then click **Add** to save the API key to the keystore.
 
 6. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
 
