@@ -204,8 +204,8 @@ By default, EDOT .NET simplifies the getting started experience by applying [opi
 
 In advanced scenarios, you might want to develop custom processors that enrich telemetry data before it passes through the rest of the processing pipeline. In such circumstances, you have to add the processor to the relevant signal provider builder. 
 
-For example, one may try to use the following code to register a custom processor for trace data using
-the `TracerProviderBuilder`.
+For example, if you use the following code to register a custom processor for trace data using
+the `TracerProviderBuilder`, it won't work as intended:
 
 ```csharp
 builder.AddElasticOpenTelemetry(b => b
