@@ -235,9 +235,7 @@ builder.AddElasticOpenTelemetry(new ElasticOpenTelemetryOptions() { SkipOtlpExpo
     .AddOtlpExporter()));
 ```
 
-The preceding code uses an overload of `AddElasticOpenTelemetry` which accepts an `ElasticOpenTelemetryOptions`
-instance. The code configures `SkipOtlpExporter` as `true`. If preferred, this may also be configured using the
-`appSettings.json` file.
+In this example, `SkipOtlpExporter` is set to `true` using the `ElasticOpenTelemetryOptions` overload of `AddElasticOpenTelemetry`. If preferred, this can also be configured using the `appSettings.json` file.
 
 With `SkipOtlpExporter` enabled, the exporter must be added to __each__ signal that should be exported. In
 this example, the OTLP exporter is manually added for logs, traces and metrics. Crucially, for traces, the
