@@ -25,10 +25,10 @@ The AI Assistant integrates with your large language model (LLM) provider throug
 The {{obs-ai-assistant}} helps you:
 
 * **Decode error messages**: Interpret stack traces and error logs to pinpoint root causes.
-* **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in {{es}}
-* **Generate reports**: Create alert summaries and incident timelines with key metrics
-* **Build and execute queries**: Build {{es}} queries from natural language, convert Query DSL to {{esql}} syntax, and execute queries directly from the chat interface
-* **Visualize data**: Create time-series charts and distribution graphs from your {{es}} data
+* **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in {{es}}.
+* **Generate reports**: Create alert summaries and incident timelines with key metrics.
+* **Build and execute queries**: Build {{es}} queries from natural language, convert Query DSL to {{esql}} syntax, and execute queries directly from the chat interface.
+* **Visualize data**: Create time-series charts and distribution graphs from your {{es}} data.
 
 ## Requirements [obs-ai-requirements]
 
