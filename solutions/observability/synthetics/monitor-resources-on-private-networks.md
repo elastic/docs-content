@@ -56,9 +56,9 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 
 After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your Observability Serverless project and enroll an {{agent}} in {{fleet}}.
 
-Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily, additional installation methods can be found on the [{{agent}} installation guide](/reference/fleet/install-elastic-agents.md). 
+Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. Additional installation methods can be found on the [{{agent}} installation guide](/reference/fleet/install-elastic-agents.md). 
 ::::{important}
-For running browser monitors on {{private-location}}s, you *must* use one of the `elastic-agent-complete` Docker image variants in a containerized environment, as it includes the required dependencies. The standard {{agent}} variant only supports TCP, ICMP and HTTP monitors.
+For running browser monitors on {{private-location}}s, you *must* use one of the `elastic-agent-complete` Docker image variants in a containerized environment. The standard {{agent}} variant only supports TCP, ICMP and HTTP monitors.
 
 ::::
 
@@ -66,7 +66,7 @@ To pull the Docker image run:
 
 ::::{tab-set}
 :group: docker
-:::{tab-item} `elastic-agent-complete`
+:::{tab-item} elastic-agent-complete
 :sync: specific
 
 ```sh subs=true
@@ -76,7 +76,7 @@ docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.sta
 
 :::
 
-:::{tab-item} `elastic-agent`
+:::{tab-item} elastic-agent
 :sync: latest
 
 ```shell subs=true
@@ -96,7 +96,7 @@ For more information on running {{agent}} with Docker, refer to [Run {{agent}} i
 
 ::::{tab-set}
 :group: docker
-:::{tab-item} `elastic-agent-complete`
+:::{tab-item} elastic-agent-complete
 :sync: specific
 
 ```shell subs=true
@@ -109,14 +109,11 @@ docker run \
   --rm docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 
-::::{important}
 The `elastic-agent-complete` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
-
-::::
 
 :::
 
-:::{tab-item} `elastic-agent`
+:::{tab-item} elastic-agent
 :sync: latest
 
 ```shell subs=true
@@ -129,10 +126,7 @@ docker run \
   --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
 ```
 
-::::{important}
 The `elastic-agent` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
-
-::::
 
 :::
 
