@@ -13,7 +13,7 @@ This guide describes the supported ways to upgrade or migrate your {{ece}} (ECE)
 
 * **Grow-and-shrink upgrade**: [Add new hosts](./install-ece-on-additional-hosts.md) running the desired Podman version to your ECE installation, then [remove the old ones](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md). This method is safer and preferred, as it avoids potential risks associated with upgrading the container engine or the operating system in place.
 
-ECE supports Podman 5 in version `5.4`, regardless of your upgrade method. Refer always to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for details on supported versions.
+ECE supports Podman 5, regardless of your upgrade method. Refer always to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for details on supported versions.
 
 :::{important}
 Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this issue, use a later podman version. 
@@ -21,7 +21,7 @@ Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak i
 
 The following table summarizes the supported upgrade paths to Podman 5 in ECE.
 
-| **From ↓** ...       **To →**           | Podman 5.4 |
+| **From ↓** ...       **To →**           | Podman 5 |
 |-----------------------------------------|-----------------|
 | **<vanilla Linux installation> (grow)** | ✓               |
 | **Docker (grow-and-shrink)**            | ✓               |
