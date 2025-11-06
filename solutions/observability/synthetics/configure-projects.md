@@ -282,7 +282,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     ```
 
 `namespace` (`string`)
-:   Assign the monitor to a specific datastream namespace. Overrides the default value, Kibana's namespace.
+:   Assign the monitor to a specific datastream namespace. Defaults to Kibana's namespace.
 
     For example:
 

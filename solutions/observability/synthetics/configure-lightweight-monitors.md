@@ -369,7 +369,7 @@ $$$monitor-namespace$$$
 **`namespace`**
 :   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
 
-    Assign the monitor to a specific datastream namespace. Overrides the default value, Kibana's namespace.
+    Assign the monitor to a specific datastream namespace. Defaults to Kibana's namespace.
 
     **Examples**:
 
