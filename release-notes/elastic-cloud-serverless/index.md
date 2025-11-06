@@ -104,7 +104,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the **Agents** and **Playground** icons in the side navigation to render correctly in dark mode [#240475]({{kib-pull}}240475)
 * Ensures only valid queries are returned for significant events [#239501]({{kib-pull}}239501)
 * Hides filtering capabilities in Hosts Metrics [#239724]({{kib-pull}}239724)
-* Catch exceptions from mapperService in StoreRecovery.recoverFromLocalShards [#137077](https://github.com/elastic/elasticsearch/pull/137077)
+* Catches exceptions from `mapperService` in `StoreRecovery.recoverFromLocalShards` [#137077](https://github.com/elastic/elasticsearch/pull/137077)
 
 ## October 20, 2025 [serverless-changelog-10202025]
 
@@ -167,7 +167,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## October 15, 2025 [serverless-changelog-10152025]
 * {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London)
-* Ensure that only REFRESH blocks are taken into account in RemoveRefreshClusterBlockService [#4640](https://github.com/elastic/elasticsearch-serverless/pull/4640)
+* Ensures that only refresh blocks are taken into account in `RemoveRefreshClusterBlockService`
 
 
 ## October 13, 2025 [serverless-changelog-10132025]
@@ -241,8 +241,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
 * Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
 * Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
-* Delete unowned documents upon recovery after shard starts [#4548](https://github.com/elastic/elasticsearch-serverless/pull/4548)
-* Unmute modules:stateless:internalClusterTestWithHollow [#4617](https://github.com/elastic/elasticsearch-serverless/pull/4617)
+* Deletes unowned documents upon recovery after shard starts
+* Unmutes `modules:stateless:internalClusterTestWithHollow` test
 
 
 ## September 29, 2025 [serverless-changelog-09292025]
@@ -290,7 +290,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds `time` field to the get data views response schema [#235975]({{kib-pull}}235975)
 * Adds `managed` field to the get data views response schema [#236237]({{kib-pull}}236237)
 * Validates {{ls}} pipeline IDs sent to Kibana APIs [#236347]({{kib-pull}}236347)
-* Delete unowned documents upon recovery after shard starts [#4548](https://github.com/elastic/elasticsearch-serverless/pull/4548)
+* Deletes unowned documents upon recovery after shard starts
 
 
 ## September 22, 2025 [serverless-changelog-09222025]
@@ -323,7 +323,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the autocomplete configuration for the `pinned` retriever by removing the `match_criteria` field [#234903]({{kib-pull}}234903)
 * Fixes a bug by allowing the use of `cmd + /` for comment toggling in the Monaco editor [#235334]({{kib-pull}}235334)
 * Adds a check for all privileges for {{sec-serverless}} when creating lists [#234602]({{kib-pull}}234602)
-* Have last source shard to complete remove reshard metadata [#4461](https://github.com/elastic/elasticsearch-serverless/pull/4461)
+* Allows the last source shard to complete removing reshard metadata
 
 
 ## September 19, 2025 [serverless-changelog-09192025]
@@ -673,8 +673,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Migrates the anonymization in-memory table to `EuiBasicTable` for improved selection control [#222825]({{kib-pull}}222825)
 * Fixes styling issues in flyouts [#228078]({{kib-pull}}228078)
 * Fixes sub-menu behavior in the solution nav when collapsed [#227705]({{kib-pull}}227705)
-* Do not delete stale indices appear in the last state check [#4207](https://github.com/elastic/elasticsearch-serverless/pull/4207)
-* Resolve projectId from context for new index shard recovery [#4148](https://github.com/elastic/elasticsearch-serverless/pull/4148)
+* Prevents deletion of stale indices that appear in the last state check
+* Resolves `projectId` from context for new index shard recovery
 
 
 ## July 15, 2025 [serverless-changelog-07152025]
@@ -713,7 +713,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes time range handling in embedded anomaly swim lanes [#225803]({{kib-pull}}225803)
 * Adds discernible text to the **Refresh data preview** button [#225816]({{kib-pull}}225816)
 * Improves error handling in **Search Playground** when context limit is exceeded using Elastic Managed LLM [#225360]({{kib-pull}}225360)
-* Add new CachePopulationReason [#130593](https://github.com/elastic/elasticsearch/pull/130593)
+* Adds new `CachePopulationReason` [#130593](https://github.com/elastic/elasticsearch/pull/130593)
 
 ## July 7, 2025 [serverless-changelog-07072025]
 
@@ -804,7 +804,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Replaces hard-coded CSS values to us the `euiTheme` instead in {{sec-serverless}} [#225307]({{kib-pull}}225307)
 * Fixes URL query handling for asset inventory flyout in {{sec-serverless}} [#225199]({{kib-pull}}225199)
 * Adds missing model Claude 3.7 to accepted models in {{es-serverless}} [#224943]({{kib-pull}}224943)
-* Parse StatelessCompoundCommit contained in referenced BCCs incrementally during recoveries [#4091](https://github.com/elastic/elasticsearch-serverless/pull/4091)
+* Parses `StatelessCompoundCommit` contained in referenced BCCs incrementally during recoveries
 
 
 
@@ -815,8 +815,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-06262025-features-enhancements]
 * {{serverless-full}} is now available in the Microsoft Azure `eastus` [region](/deploy-manage/deploy/elastic-cloud/regions.md). 
-* Upload large VBCC using concurrent multipart uploads in Azure [#3909](https://github.com/elastic/elasticsearch-serverless/pull/3909)
-* Modify the mechanism to pause indexing [#128405](https://github.com/elastic/elasticsearch/pull/128405)
+* Uploads large VBCC using concurrent multipart uploads in Azure
+* Modifies the mechanism to pause indexing
 
 ## June 23, 2025 [serverless-changelog-06232025]
 
@@ -1084,8 +1084,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes issue where exceptions list and actions were overwritten during legacy prebuilt rule upgrades in Elastic Security Serverless [#218519]({{kib-pull}}218519)
 * Fixes incorrect validation for names containing asterisks in **ES|QL** [#219832]({{kib-pull}}219832)
 * Fixes overridden SSL config in full agent policy advanced YAML for Fleet [#219902]({{kib-pull}}219902)
-* Ignore initializing unpromotable node commit notifications responses [#3803](https://github.com/elastic/elasticsearch-serverless/pull/3803)
-* Pause indexing completely in serverless when throttling [#3801](https://github.com/elastic/elasticsearch-serverless/pull/3801)
+* Ignores initializing unpromotable node commit notification responses
+* Pauses indexing completely in serverless when throttling
 
 ## May 5, 2025 [serverless-changelog-050525]
 
@@ -1372,7 +1372,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes regression that caused the cases actions to disappear from the detections engine alerts table bulk actions menu [#215111]({{kib-pull}}215111)
 * Changes "Close project" to "Log out" in nav menu in serverless mode [#211463]({{kib-pull}}211463)
 * Fixes search profiler index reset field when query is changed [#215420]({{kib-pull}}215420)
-* Remove IndexEngine dependency from TransportGetVirtualBatchedCompoundCommitChunkAction [#3640](https://github.com/elastic/elasticsearch-serverless/pull/3640)
+* Removes `IndexEngine` dependency from `TransportGetVirtualBatchedCompoundCommitChunkAction`
 
 
 ## March 17, 2025 [serverless-changelog-03172025]
@@ -1418,7 +1418,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Supports `date_nanos` in `BUCKET` in the {{esql}} editor [#213319]({{kib-pull}}213319)
 * Fixes appearance of warnings in the {{esql}} editor [#213685]({{kib-pull}}213685)
 * Makes the Apply time range switch visible in the Job selection flyout when opened from the Anomaly Explorer [#213382]({{kib-pull}}213382)
-* Pass IndexReshardingMetadata over the wire [#124841](https://github.com/elastic/elasticsearch/pull/124841)
+* Passes `IndexReshardingMetadata` over the wire [#124841](https://github.com/elastic/elasticsearch/pull/124841)
 
 
 
@@ -1461,9 +1461,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue in solution project navigation where panels sometimes failed to toggle closed [#211852]({{kib-pull}}211852)
 * Updates wording for options in the sortBy dropdown component [#206464]({{kib-pull}}206464)
 * Allows EU hooks hostname in the Torq connector for Elastic Security Serverless [#212563]({{kib-pull}}212563)
-* Abort pending deletion on IndicesService stop [#123569](https://github.com/elastic/elasticsearch/pull/123569)
-* Check integrity of VBCC files on read, not close [#3549](https://github.com/elastic/elasticsearch-serverless/pull/3549)
-* Enhance memory accounting for document expansion and introduce max document size limit [#123543](https://github.com/elastic/elasticsearch/pull/123543)
+* Aborts pending deletion on `IndicesService` stop [#123569](https://github.com/elastic/elasticsearch/pull/123569)
+* Checks integrity of VBCC files on read, not close
+* Enhances memory accounting for document expansion and introduces a maximum document size limit [#123543](https://github.com/elastic/elasticsearch/pull/123543)
 
 ## March 3, 2025 [serverless-changelog-03032025]
 
@@ -1517,8 +1517,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows deploying a model after a failed deployment in Machine Learning [#211459]({{kib-pull}}211459)
 * Ensures the members array is unique for GroupStreamDefinitions [#210089]({{kib-pull}}210089)
 * Improves function search for easier navigation and discovery [#210437]({{kib-pull}}210437)
-* Prevent trace context to propagate in SearchShardSizeCollector to protect from high memory usage in APM agent [#3544](https://github.com/elastic/elasticsearch-serverless/pull/3544)
-* Reduce licence checks in `LicensedWriteLoadForecaster` [#123346](https://github.com/elastic/elasticsearch/pull/123346)
+* Prevents trace context from propagating in `SearchShardSizeCollector` to protect against high memory usage in the APM agent
+* Reduces license checks in `LicensedWriteLoadForecaster` [#123346](https://github.com/elastic/elasticsearch/pull/123346)
 
 ## February 17, 2025 [serverless-changelog-02172025]
 
