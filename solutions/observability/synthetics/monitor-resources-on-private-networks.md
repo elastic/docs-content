@@ -129,7 +129,7 @@ docker run \
 ::::
 
 ::::{important}
-The `elastic-agent`/`elastic-agent-complete` container requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+The `elastic-agent`/`elastic-agent-complete` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
 
 ::::
 
