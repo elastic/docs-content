@@ -8,17 +8,13 @@ description: Instructions and best practices for building metric charts with Kib
 
 # Build metric charts with {{kib}}
 
-Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs like total sales, active users, or error rates.
+Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs such as error rates or SLOs for example, and for making them understandable at a glance with dynamic coloring or trend indicators.
 
 They work with any numeric data: plain numbers, percentages, or calculations like a count, sum, or average. You can get this numeric data from numeric fields stored in your {{es}} documents, or from aggregation functions and formulas that you can apply to any type of field.
 
 The best way to create metric charts in {{kib}} is with **Lens**.
 
-![Metric chart representing an SLO](../images/metric-chart.png "=30%")
-
-## When to use metric charts
-
-Metric charts are the best visualization when you need to show a single, important value and make it visible.
+![Metric chart representing an SLO](../../images/metric-chart.png "=30%")
 
 ## Build a metric chart
 
@@ -52,7 +48,7 @@ Refer to [](#settings) to find all data configuration options for your metric ch
 ::::{step} Customize the chart with best practices
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
-**Use color wisely**
+**Use color wisely** {applies_to}`stack: preview 9.1, ga 9.3`
 :   Assign colors that match your users' expectations. Red typically means problems, yellow means caution, and green means good. But consider your specific context: for costs, lower might be better (green), while for revenue, higher is better (green).
 
 **Format for readability**
@@ -82,7 +78,7 @@ When creating **Metric** visualizations with numeric data, you can add trend ind
 
 | Without trend | With trend |
 |--------|-------|
-| ![Secondary metric before comparison](../images/secondary_metric_before_compare.png "title =70%") | ![Secondary metric after comparison](../images/secondary_metric_after_compare.png "title =70%") |
+| ![Secondary metric before comparison](../../images/secondary_metric_before_compare.png "title =70%") | ![Secondary metric after comparison](../../images/secondary_metric_after_compare.png "title =70%") |
 
 To add trend indicators to your metric visualization:
 
@@ -129,7 +125,7 @@ Customize your metric chart to display exactly the information you need, formatt
 **Value**
 :   The main numeric value that appears prominently in your chart. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Sum`, `Average`, `Count`, `Median`, and more, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
-    :::{include} ../_snippets/lens-value-advanced-settings.md
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
 **Appearance**
@@ -152,7 +148,7 @@ Customize your metric chart to display exactly the information you need, formatt
     * Different aggregations on the same data (for example, showing both average and median response times)
     * Related metrics for context (for example, showing total count alongside an average)
 
-    :::{include} ../_snippets/lens-value-advanced-settings.md
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
 **Appearance**
@@ -168,7 +164,7 @@ Customize your metric chart to display exactly the information you need, formatt
 **Value**
 :   An optional reference value that defines the upper bound for your metric. When you specify a maximum, you can show a progress bar by setting the primary metric's **Supporting visualization** option to **Bar**. This is useful for showing progress toward goals or capacity limits.
 
-    :::{include} ../_snippets/lens-value-advanced-settings.md
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
 **Appearance**
@@ -185,7 +181,7 @@ Customize your metric chart to display exactly the information you need, formatt
     - **Rank direction**: The direction to use for the ranking.
     - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
 
-    :::{include} ../_snippets/lens-breakdown-advanced-settings.md
+    :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
     :::
 
 **Appearance**
@@ -227,7 +223,7 @@ The following examples show various configuration options that you can use for b
     * **Color by value**: Green when above $250,000 target, red when below
     * **Supporting visualization:** "Line" to show revenue evolution throughout the quarter
 
-    ![Metric with a total revenue below the target](../images/metric-total-revenue-example.png "=70%")
+    ![Metric with a total revenue below the target](../../images/metric-total-revenue-example.png "=70%")
 
 **Website traffic with trend**
 :   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
@@ -242,7 +238,7 @@ The following examples show various configuration options that you can use for b
       * **Label**: "Compared to last week"
       * **Color palette**: Green for increases (more traffic is positive)
 
-    ![Metric showing weekly visits with weekly comparison trend](../images/metric-website-views-weekly-trend-example.png "=70%")
+    ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
 
 **Sales per day of the week**
 :   Compare revenue across days of the week using breakdown:
@@ -255,4 +251,4 @@ The following examples show various configuration options that you can use for b
       * **Number of values**: `7`
       * **Layout columns**: `4`
 
-    ![Metric showing revenue broken down per day of the week](../images/metric-revenue-breakdown-example.png "=70%")
+    ![Metric showing revenue broken down per day of the week](../../images/metric-revenue-breakdown-example.png "=70%")
