@@ -198,12 +198,9 @@ Logger.LogInformation("Eat your {fruit1} {fruit2} {fruit3}!", "apple", "banana",
 
 ### Custom processors are not applied to exported data
 
-When using custom processors, they may not run before data is exported.
+When using custom processors, be aware that they may not run before data is exported unless explicitly configured.
 
-By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md).
-
-These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry signal data
-is exported without requiring additional code.
+By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md). These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry data is exported automatically, without requiring additional code.
 
 In advanced scenarios, you may develop custom processors to enrich signal data with custom logic before it
 passes to the next processor in the pipeline. In such circumstances, you will add the processor to the relevant
