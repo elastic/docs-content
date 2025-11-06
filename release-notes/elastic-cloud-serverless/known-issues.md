@@ -31,6 +31,20 @@ Restart the entity store:
 
 ::::
 
+::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1
+
+**Details**
+
+On October 22, 2025, it was discovered that alerts aren't generated for rules that have **Alert flapping detection** turned off and the alert delay set to a value higher than 1.
+
+**Workaround**
+
+Set the alert delay value to 1 or turn on **Alert flapping detection**.
+
+::::
+
+## Resolved
+
 :::{dropdown} CSPM and Asset Management integrations don't ingest data when deployed using agent-based technology if {{kib}} is hosted on AWS
 Applies to: {{serverless-short}} deployments hosted on AWS
 
@@ -48,21 +62,14 @@ Two workarounds are available:
     3. Your agent-based integration deployments will work as expected.
 2. Use agentless deployment. 
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
-::::
 
-::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1
 
-**Details**
+**Resolved** 
 
-On October 22, 2025, it was discovered that alerts aren't generated for rules that have **Alert flapping detection** turned off and the alert delay set to a value higher than 1.
-
-**Workaround**
-
-Set the alert delay value to 1 or turn on **Alert flapping detection**.
+This was resolved on November 5, 2025.
 
 ::::
 
-## Resolved
 
 :::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents
 
