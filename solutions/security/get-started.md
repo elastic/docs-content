@@ -19,11 +19,18 @@ New to {{elastic-sec}}? Follow the instructions in this topic to get started. Th
 
 Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend [](./elastic-security-serverless.md), which enables you to run {{elastic-sec}} in a fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances. 
 
-::::{dropdown} Create an Elastic Security Serverless project
-
+$$$create-sec-serverless-project$$$ 
+::::{dropdown} Create an {{sec-serverless}} project 
+:open:
 There are two options to create serverless projects:
 - If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
-- If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and follow [these instructions](./get-started/create-security-project.md) on how to create a serverless project.  
+- If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following: 
+  1. Select **Create project** from the **Serverless projects** panel.
+  2. Select **Next** from the **Security** panel.
+  3. Name your project and select your feature tier. For more information about tiers, refer to [pricing](https://www.elastic.co/pricing/serverless-security).
+  4. Select a cloud provider and region.
+  5. Select **Create project**. It takes a few minutes to create your project.
+  6. Once the project is ready, select **Continue** to open the **Get started** page (you might need to log in to Elastic Cloud again).   From here, you can learn more about Elastic Security features and start setting up your workspace.  
 
 :::{note}
 You need the `admin` predefined role or an equivalent custom role to create projects. For more information, refer to [User roles and privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cloud-organization/user-roles).
@@ -77,4 +84,3 @@ Use these resources to learn more about {{elastic-sec}} or get started in a diff
 * Get started with [AI for Security](../security/ai.md). 
 * Learn how to use {{es}} Query Language ({{esql}}) for [security use cases](/solutions/security/esql-for-security.md). 
 * View our [release notes](../../release-notes/elastic-security/index.md) for the latest updates. 
-
