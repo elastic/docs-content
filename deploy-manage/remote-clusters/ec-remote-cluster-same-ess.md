@@ -15,6 +15,9 @@ sub:
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ecloud}} organization.
 
+:::{include} _snippets/terminology.md
+:::
+
 ::::{note}
 If network security policies are applied to the remote cluster, the remote cluster administrator must configure a [private connection policy of type remote cluster](/deploy-manage/security/remote-cluster-filtering.md), using either the organization ID or the Elasticsearch cluster ID of the local cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
 ::::
