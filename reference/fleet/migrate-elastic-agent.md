@@ -209,7 +209,7 @@ The agents can now be re-enrolled into these policies and migrated over to the n
 ## Migrate {{agent}}s to the new target cluster [migrate-elastic-agent-migrated-agents]
 
 ::::{note}
-Agents to be migrated cannot be tamper-protected or running as a {{fleet}} server.
+Agents to be migrated cannot be tamper-protected or running as a {{fleet-server}}.
 ::::
 
 In order to ensure that all required API keys are correctly created, the agents in your current cluster need to be re-enrolled into the new target cluster.
@@ -235,14 +235,14 @@ This is best performed one policy at a time. For a given policy, you need to cap
 
     1. In the source cluster, select the agents you want to migrate. Click the three dots next to the agents, and select **Migrate agents**.
     2. In the migration dialog, provide the URI and enrollment token you obtained from the target cluster.
-    3. Use replace_token (Optional): When you are migrating a single agent, you can use the `replace_token` field to preserve the agent's original ID from the source cluster. This step helps with event matching, but will cause the migration to fail if the target cluster already has an agent with the same ID.
+    3. Use `replace_token` (Optional): When you are migrating a single agent, you can use the `replace_token` field to preserve the agent's original ID from the source cluster. This step helps with event matching, but will cause the migration to fail if the target cluster already has an agent with the same ID.
     :::
 
     :::{tab-item} Command line
 
     Run the `enroll` command on each individual host:
 
-   1. On the host machines where the current agents are installed, enroll the agents again using this copied URL and the enrollment token:
+   1. On the host machines where the current agents are installed, enroll the agents again using the URL and enrollment token you obtained from the target cluster:
 
        ```shell
        sudo elastic-agent enroll --url=<fleet server url> --enrollment-token=<token for the new policy>
