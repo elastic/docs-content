@@ -26,12 +26,7 @@ Different LLMs have varying performance when used to power different features an
 
 ## Connect to a third-party LLM
 
-Follow these guides to connect to one or more third-party LLM providers:
-
-* [Azure OpenAI](/solutions/security/ai/connect-to-azure-openai.md)
-* [Amazon Bedrock](/solutions/security/ai/connect-to-amazon-bedrock.md)
-* [OpenAI](/solutions/security/ai/connect-to-openai.md)
-* [Google Vertex](/solutions/security/ai/connect-to-google-vertex.md)
+To access deployment guides for each available generative third-party LLM connector, refer to [GenAI Connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). 
 
 ## Connect to a custom local LLM
 
