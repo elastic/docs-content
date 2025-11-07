@@ -16,12 +16,12 @@ AI is built into many parts of the {{stack}}. This page describes Elastaic's AI-
 
 To learn about enabling and disabling these features in your deployment, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
 
+For pricing information, refer to [pricing](https://www.elastic.co/pricing).
+
 ## Requirements 
 
-To use Elastic's AI-powered features, you need:
-
-- An appropriate license and feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- At least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+- To use Elastic's AI-powered features, you need an appropriate license and feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
+- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 
 
 ## AI-powered features in {{es}}
@@ -44,6 +44,27 @@ serverless:
 ```
 
 [](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+
+### Elastic inference
+```{applies_to}
+stack:
+serverless:
+```
+[Elastic Inference](/explore-analyze/elastic-inference.md) helps you use machine learning models to make predictions or enact operations — such as text embedding, or reranking - on your data.
+
+To learn more, refer to:
+
+- [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md): a managed service that runs inference outside your cluster resources.
+- [The inference API](/explore-analyze/elastic-inference/inference-api.md): a general-purpose API that enables you to run inference using EIS, your own models, or third-party services.
+
+### Natural language processing
+```{applies_to}
+stack:
+serverless:
+```
+Natural Language Processing (NLP) allows you to analyze natural language data and make predictions.
+
+Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md). You can also [deploy custom models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
 ### AI-powered search
 ```{applies_to}
