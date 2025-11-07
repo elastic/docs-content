@@ -31,7 +31,7 @@ You can [configure the rollback time-to-live (TTL)](#configure-rollback-ttl) in 
 
 ## Requirements
 
-To successfully roll back an integration, you must have access to all of its integration policies across **all spaces**. If you don't have access to the related spaces, the rollback action will be disabled.
+To successfully roll back an integration, you must have access to all of its integration policies across **all spaces**. If you don't have access to the related spaces, the rollback action will not succeed.
 
 ## Roll back an integration
 
@@ -45,6 +45,7 @@ To successfully roll back an integration, you must have access to all of its int
    - You don't have access to all integration policies across all spaces.
    - No previous version is available to roll back to.
    - The integration was never upgraded.
+   - The integration is not installed from the {{package-registry}}.
 
 5. In the confirmation window, click **Rollback integration** to confirm the action. A confirmation appears if the rollback is successful.
 
