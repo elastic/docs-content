@@ -134,7 +134,11 @@ Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_
 
 For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Building HNSW graphs is compute-intensive, so indexing vectors can take time; you may need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search performance.
 
-In addition to search-time parameters, HNSW exposes index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
+In addition to search-time parameters, HNSW exposes index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters.
+
+::::{tip}
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) with dense vector embeddings, you can also configure `index_options` through the `model_settings` parameter. See [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples.
+::::
 
 ```console
 PUT image-index
