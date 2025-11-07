@@ -26,7 +26,7 @@ Agent Builder uses two {{kib}} privileges within the `agentBuilder` feature:
 - `read_onechat`: Required to use agents, send chat messages, view tools, and access conversations. Maps to the "Read" feature privilege.
 - `manage_onechat`: Required to create, update, or delete custom agents and tools. Maps to the "All" feature privilege along with `read_onechat`.
 
-Learn more about [{{kib}} privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-kibana).
+Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ### {{es}} cluster privileges
 
@@ -81,7 +81,7 @@ When using the Agent Builder APIs programmatically, authenticate with an API key
 
 Unlike roles, which use UI-friendly feature privilege names like `feature_agentBuilder.all`, API keys use the underlying API privilege names (`read_onechat`, `manage_onechat`). This is because API keys interact directly with the {{kib}} API layer rather than through the UI.
 
-See these pages for API key configuration examples:
+Refer to these pages for API key configuration examples:
 - [MCP server](mcp-server.md#api-key-application-privileges)
 - [{{kib}} API](kibana-api.md)
 
