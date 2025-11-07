@@ -14,7 +14,14 @@ products:
 
 AI is built into many parts of the {{stack}}. This page describes Elastaic's AI-powered features, organized by solution, and provides links to more detailed information about each of them.
 
-To learn about enabling and disabling these features in your deployment, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+To learn about enabling and disabling these features in your deployment, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+
+## Requirements 
+
+To use Elastic's AI-powered features, you need:
+
+- An appropriate license and feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
+- At least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 
 
 ## AI-powered features in {{es}}
@@ -22,7 +29,7 @@ To learn about enabling and disabling these features in your deployment, refer t
 ### Agent builder
 
 ```{applies_to}
-stack: preview 9.2
+[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 serverless:
   elasticsearch: preview
   observability: unavailable
@@ -45,9 +52,12 @@ stack:
 serverless:
 ```
 
-[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses machine learning models to capture meaning in content. These vector representations come in two forms: dense vectors that capture overall meaning, and sparse vectors that focus on key terms and their relationships. 
+[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses machine learning models to capture meaning in content.  
 
-Depending on your team's technical expertise and requirements, you can choose from two main paths to implement AI-powered search in {{es}}. You can use managed workflows that abstract away much of the complexity, or you can work directly with the underlying vector search technology.
+Depending on your team's technical expertise and requirements, you can choose from two broad paths:  
+
+- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text) 
+- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) 
 
 ### Hybrid search
 ```{applies_to}
@@ -81,7 +91,7 @@ stack:
 serverless:
 ```
 
-[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Streams 
 ```{applies_to}
@@ -103,7 +113,14 @@ stack: preview 9.1, ga 9.2
 serverless: ga
 stack: preview 9.1, ga 9.2
 ```
-You can [generate Grok patterns](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns) using AI instead of writing them by by hand. 
+You can [generate Grok patterns](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns) using AI instead of writing them by hand. 
+
+#### Generate stream descriptions and feature identification
+```{applies_to}
+serverless: ga
+stack: preview 9.1, ga 9.2
+```
+On the Streams [advanced settings](/solutions/observability/streams/management/advanced.md) page, you can use AI to generate your [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features).
 
 ## AI-powered features in {{elastic-sec}}
 
