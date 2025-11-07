@@ -20,9 +20,8 @@ Remote clusters are especially useful in two cases:
 - **Cross-cluster search**
   [Cross-cluster search](/solutions/search/cross-cluster-search.md), or CCS, enables you to run a search request against one or more remote clusters. This capability provides each region with a global view of all clusters, allowing you to send a search request from a local cluster and return results from all connected remote clusters. For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
 
-::::{note} about terminology
-In the case of remote clusters, the {{es}} cluster or deployment initiating the connection and requests is often referred to as the **local cluster**, while the {{es}} cluster or deployment receiving the requests is referred to as the **remote cluster**.
-::::
+:::{include} ./remote-clusters/_snippets/terminology.md
+:::
 
 ## Security models and connection modes
 
