@@ -133,14 +133,21 @@ stack: preview 9.1, ga 9.2
 serverless: ga
 stack: preview 9.1, ga 9.2
 ```
-You can [generate Grok patterns](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns) using AI instead of writing them by hand. 
+You can [generate Grok patterns](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns) to parse your data using AI instead of writing them by hand. 
+
+#### Generate stream descriptions and feature identification
+```{applies_to}
+serverless: preview
+stack: preview 9.2
+```
+[Partitioning](/solutions/observability/streams/management/partitioning.md) helps you organize log data into meaningful child streams within a wired stream. You can let AI suggest logical groupings based on your data, which you can review and accept.
 
 #### Generate stream descriptions and feature identification
 ```{applies_to}
 serverless: ga
 stack: preview 9.1, ga 9.2
 ```
-On the Streams [advanced settings](/solutions/observability/streams/management/advanced.md) page, you can use AI to generate your [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features).
+On the Streams [advanced settings](/solutions/observability/streams/management/advanced.md) tab, you can use AI to generate your [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that AI features like significant events use when generating suggestions.
 
 ## AI-powered features in {{elastic-sec}}
 
