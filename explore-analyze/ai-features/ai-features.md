@@ -126,7 +126,7 @@ stack: preview 9.1, ga 9.2
 serverless: ga
 stack: preview 9.1, ga 9.2
 ```
-[Significant Events](/solutions/observability/streams/management/significant-events.md) periodically runs a query on your stream to find important events. These can include error messages, exceptions, and other relevant log messages. You can use AI to suggest queries based on previously identified significant events in your Stream.
+[Significant Events](/solutions/observability/streams/management/significant-events.md) periodically runs a query on your stream to find important events. These can include error messages, exceptions, and other relevant log messages. You can use AI to suggest queries based on your data.
 
 #### Generate Grok patterns
 ```{applies_to}
@@ -135,7 +135,7 @@ stack: preview 9.1, ga 9.2
 ```
 You can [generate Grok patterns](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns) to parse your data using AI instead of writing them by hand. 
 
-#### Generate stream descriptions and feature identification
+#### Generate partition suggestions
 ```{applies_to}
 serverless: preview
 stack: preview 9.2
