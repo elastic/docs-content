@@ -37,6 +37,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.2.1-fixes]
 * Fixes an issue where the CSPM and Asset Discovery integrations failed to collect data when using agent-based deployment [#241390]({{kib-pull}}241390).
 * Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
+* Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
 * Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
 * Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
 * Fixes an {{elastic-defend}} issue that could cause the `get-file` and `execute` response actions to fail after many were issued with a single running instance of {{elastic-defend}}
