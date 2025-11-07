@@ -37,8 +37,12 @@ To troubleshoot this issue:
 1. Find **{{fleet}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to the **Settings** tab.
 2. Under **{{fleet}} server hosts**, click the **Actions** button for the policy named `Default`. This opens the Edit {{fleet}} Server flyout. The policy named `Default` should have the **Make this {{fleet}} server the default one** setting enabled. If not, enable it, then delete your integration and create it again.
 
-::::{note}
 If the **Make this {{fleet}} server the default one** setting was already enabled but problems persist, it’s possible someone changed the default {{fleet}} server’s **URL** value. In this case, contact Elastic Support to find out what the original **URL** value was, update the settings to match this value, then delete your integration and create it again.
+
+::::{note}
+In {{ech}} deployments on {{stack}} versions prior to 9.1.6, the connection between agentless integrations and {{fleet-server}} can be broken if the default {{fleet-server}} host URL value in {{fleet}} is modified or if a different host URL is set as the default.
+
+This issue is resolved in {{stack}} 9.1.6 and 9.2.0. In these versions, agentless integration policies are assigned to a default managed {{fleet-server}} host which cannot be modified.
 ::::
 
 ## Why can't I upgrade my agentless integration to a newer version?
@@ -54,12 +58,6 @@ On the **{{fleet}}** page, agents associated with agentless integrations have na
 2. In {{fleet}}, select the unhealthy agent. 
 3. From the **Actions** menu, select **Request diagnostics .zip**. 
 4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/common-problems.md#trb-collect-agent-diagnostics). Refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md) for more information.
-
-::::{note}
-In {{ech}} deployments on {{stack}} versions 9.0.0-9.1.5, the connection between agentless integrations and {{fleet-server}} can be broken if the default {{fleet-server}} host URL value in {{fleet}} is modified or if a different host URL is set as the default. This can result in agentless agents having an `Unhealthy` status.
-
-This issue is resolved in {{stack}} 9.1.6 and 9.2.0. In these versions, agentless integration policies are assigned to a default managed {{fleet-server}} host which cannot be modified.
-::::
 
 ## How do I delete an agentless integration? [_how_do_i_delete_an_agentless_integration]
 
