@@ -35,7 +35,6 @@ You can find these rules in **Stack Management** > **Alerts and Insights** > **R
 | [Elastic Agent] Excessive restarts| Checks for excessive restarts on a host which require further investigation. Some restarts can have a business impact and getting alerts for them can enable timely mitigation.<br>- Condition: Alert on restarts > 10 restarts in a 5 minute window<br>- Default: Enabled |
 | [Elastic Agent] High pipeline queue | Checks if max of `beat.stats.libbeat.pipeline.queue.filled.pct` exceeds 90%. Rows are distinguished by agent ID and component ID. |
 | [Elastic Agent] Output errors | Checks if errors per minute from an agent component is greater than 5. Rows are distinguished by agent ID and component ID. |
-| [Elastic Agent] Unhealthy status | Checks logs for an agent status change to `error` using the new `elastic_agent.status_change` datastreams. |
 
 **Connectors** are not added to rules automatically, but you can attach a connector to route alerts to your Slack, email, or other notification platforms.
 In addition, you can add filters for policies, tags, or hostnames to scope alerts to specific sets of agents.  
