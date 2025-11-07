@@ -229,6 +229,23 @@ The following examples show various configuration options that you can use for b
 
     ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
+**Ratio of successful requests per origin**
+:   This example builds on the previous one to display the percentage of successful requests for the 10 countries with the most incoming requests on a monitoring dashboard:
+
+    * **Title**: "Successful requests (2xx)"
+    * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
+      * **Value format**: `Percent`
+      * **Color by value**: Green when above 95%, yellow between 75% and 95%, red when below
+      * **Supporting visualization:** "Line" to show evolution over time
+    * **Secondary metric**: `0.95` formula
+      * **Name**: `Target:`
+      * **Value format**: `Percent`
+    * **Break down by**: `geo.dest`
+      * **Number of values**: `10`
+      * **Rank by**: `Custom` > `Count` > `Records` to get countries generating most requests 
+
+    ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
+
 **Website traffic with trend**
 :   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
 
@@ -243,16 +260,3 @@ The following examples show various configuration options that you can use for b
       * **Color palette**: Green for increases (more traffic is positive)
 
     ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
-
-**Sales per day of the week**
-:   Compare revenue across days of the week using breakdown:
-
-    * **Title**: "Revenue per weekday"
-    * **Primary metric**: `sum(sales.total)`
-      * **Value format**: Currency with no decimal. You can use a custom format to add symbols such as `$`
-      * **Color by value**: Red below $30,000, yellow between $30,000-$35,000, green above $35,000
-    * **Break down by**: `day_of_week`
-      * **Number of values**: `7`
-      * **Layout columns**: `4`
-
-    ![Metric showing revenue broken down per day of the week](../../images/metric-revenue-breakdown-example.png "=70%")
