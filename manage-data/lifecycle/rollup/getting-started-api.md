@@ -2,6 +2,9 @@
 navigation_title: Get started using the API
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-getting-started.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---

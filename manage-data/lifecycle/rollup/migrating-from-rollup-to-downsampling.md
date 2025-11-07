@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-migrating-to-downsampling.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---
@@ -19,7 +19,7 @@ Rollup and downsampling are two different features that allow historical metrics
 The following aspects of downsampling are easier or more robust:
 
 * No need to schedule jobs. Downsampling is integrated with Index Lifecycle Management (ILM) and Data Stream Lifecycle (DSL).
-* No separate search API. Downsampled indices can be accessed via the search api and es|ql.
+* No separate search API. Downsampled indices can be accessed via the search API and {{esql}}.
 * No separate rollup configuration. Downsampling uses the time series dimension and metric configuration from the mapping.
 
 It isn’t possible to migrate all rollup usages to downsampling. The main requirement is that the data should be stored in Elasticsearch as [time series data stream (TSDS)](../../data-store/data-streams/time-series-data-stream-tsds.md). Rollup usages that basically roll the data up by time and all dimensions can migrate to downsampling.
