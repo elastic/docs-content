@@ -66,7 +66,7 @@ Save your visualization by selecting **Save and return** if you're adding it fro
 
 :::::
 
-## Advanced configurations
+## Advanced metric scenarios
 
 ### Show trends in Metric charts [metric-trends]
 ```{applies_to}
@@ -117,6 +117,37 @@ To add trend indicators to your metric visualization:
 8. Apply your changes. 
 
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
+
+### Show progress by setting a maximum value [metric-progress]
+
+When creating **Metric** visualizations with numeric data, you can specify a maximum value to show progress toward a goal or capacity limit. When combined with the **Bar** supporting visualization option, this displays a progress bar that visually represents how close your current metric is to reaching the maximum value.
+
+| Without progress | With progress |
+|--------|-------|
+| ![Metric before showing progress](../../images/metric-no-max.png "title =70%") | ![Metric showing progress](../../images/metric-max.png "title =70%") |
+
+To add a progress bar to your metric visualization:
+
+1. Create a **Metric** visualization with a numeric primary metric.
+
+2. Optionally, [customize the appearance of the metric](#primary-metric-options). For example, add dynamic coloring to the primary metric to change colors based on progress: red when below 50%, yellow between 50-80%, and green above 80%. The progress bar will reflect this configuration once you set up a maximum value.
+
+3. Add a maximum value that represents your goal or upper limit. The [maximum value](#max-value-options) can be a static value, a function, or a formula based on your data.
+
+   ![Metric maximum value option](../../images/metric-maximum-value.png "title =70%")
+
+4. Configure the **Primary metric** appearance to show the progress bar. Depending on the configuration of the primary metric, Lens might automatically set this option for you. If not, complete these steps:
+   1. In the primary metric configuration, find the **Supporting visualization** option.
+   2. Set **Type** to **Bar**.
+   3. Optionally, change the orientation of the progress bar as needed.
+
+5. Apply your changes.
+
+The metric visualization now shows a progress bar indicating how close the current value is to the maximum.
+
+::::{tip}
+You can combine progress bars with secondary metrics to show both progress toward a goal and trends over time. To do this, add both a maximum value and a secondary metric to your visualization.
+::::
 
 ## Metric chart settings [settings]
 
