@@ -575,6 +575,7 @@ toc:
               - file: security/ai/connect-to-openai.md
               - file: security/ai/connect-to-google-vertex.md
               - file: security/ai/connect-to-own-local-llm.md
+              - file: security/ai/connect-to-vLLM.md
           - file: security/ai/use-cases.md
             children:
               - file: security/ai/triage-alerts.md
