@@ -12,7 +12,7 @@ products:
 
 # AI-powered features
 
-AI is built into many parts of the {{stack}}. This page describes Elastaic's AI-powered features, organized by solution, and provides links to more detailed information about each of them.
+AI is built into many parts of the {{stack}}. This page describes Elastic's AI-powered features, organized by solution, and provides links to more detailed information about each of them.
 
 To learn about enabling and disabling these features in your deployment, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
 
