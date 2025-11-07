@@ -96,6 +96,8 @@ To add trend indicators to your metric visualization:
 
 4. Select **Dynamic** coloring. More options appear.
 
+   ![Dynamic coloring options for secondary metrics](../../images/metric-secondary-dynamic-coloring.png "=70%")
+
 5. Choose a **Color palette** that matches how you'd like to represent the comparison.
 
 6. Configure the **Display** option:
