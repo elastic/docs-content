@@ -51,6 +51,7 @@ Another option is to use  [synthetic `_source`](elasticsearch://reference/elasti
 Here are estimates for different element types and quantization levels:
 
 * `element_type: float`: `num_vectors * num_dimensions * 4`
+* `element_type: bfloat16`: `num_vectors * num_dimensions * 2`
 * `element_type: float` with `quantization: int8`: `num_vectors * (num_dimensions + 4)`
 * `element_type: float` with `quantization: int4`: `num_vectors * (num_dimensions/2 + 4)`
 * `element_type: float` with `quantization: bbq`: `num_vectors * (num_dimensions/8 + 14)`
@@ -122,13 +123,11 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 ::::
 
 
-## Use Direct IO when the vector data does not fit in RAM
+## Use on-disk rescoring when the vector data does not fit in RAM
 ```{applies_to}
-stack: preview 9.1
+stack: preview 9.3
 serverless: unavailable
 ```
-If your indices are of type `bbq_hnsw` and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float32 vectors.
+If you use quantized indices and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float vectors.
 
-In these scenarios, direct IO can significantly reduce query latency. Enable it by setting the JVM option `vector.rescoring.directio=true` on all vector search nodes in your cluster.
-
-Only use this option if you're experiencing very high query latencies on indices of type `bbq_hnsw`. Otherwise, enabling direct IO may increase your query latencies.
+In these scenarios, on-disk rescoring can significantly reduce query latency. Enable it by setting the `on_disk_rescore: true` option on your vector indices. Note that your data will need to be re-indexed or force-merged to use the new setting in subsequent searches.

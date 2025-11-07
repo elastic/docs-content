@@ -325,6 +325,15 @@ POST quantized-image-index/_search
 }
 ```
 
+### BFloat16 vector encoding [knn-search-bfloat16]
+```
+{applies_to}
+stack: ga 9.3
+```
+Instead of storing raw vectors as 4-byte values, you can use `element_type: bfloat16` to store each dimension as a 2-byte value. This can be useful if your indexed vectors are at bfloat16 precision already, or if you wish to reduce the disk space required to store vector data. Elasticsearch will automatically truncate 4-byte float values to 2-byte bfloat16 values when indexing vectors.
+
+Due to the reduced precision of bfloat16, any vectors retrieved from the index may have slightly different values to those originally indexed.
+
 ### Filtered kNN search [knn-search-filter-example]
 
 The kNN search API supports restricting vector similarity search with a filter. The request returns the top `k` nearest neighbors that also satisfy the filter query, enabling targeted, pre-filtered approximate kNN in {{es}}.
@@ -1226,6 +1235,16 @@ This example will:
 * Rescore the top 20 candidates (`oversample * k`) per shard using the original, non quantized vectors.
 * Return the top 10 (`k`) rescored candidates.
 * Merge the rescored candidates from all shards, and return the top 10 (`k`) results.
+
+#### The `on_disk_rescore` option
+```{applies_to}
+stack: preview 9.3
+serverless: unavailable
+```
+
+By default, Elasticsearch will read raw vector data into memory to perform rescoring. This may have an effect on performance if the vector data is too large to all fit in off-heap memory at once. By specifying the `on_disk_rescore: true` index setting, Elasticsearch will read vector data from disk directly during rescoring.
+
+Note that this setting will only apply to newly indexed vectors; to apply the option to all vectors in the index, the vectors must be re-indexed or force-merged after changing the setting.
 
 #### Additional rescoring techniques [dense-vector-knn-search-rescoring-rescore-additional]
 
