@@ -8,12 +8,15 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
-  remote_type: Elastic Cloud Hosted deployment
+  remote_type: Elastic Cloud Hosted
 ---
 
 # Connect to deployments in the same {{ecloud}} organization [ec-remote-cluster-same-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ecloud}} organization.
+
+:::{include} _snippets/terminology.md
+:::
 
 ::::{note}
 If network security policies are applied to the remote cluster, the remote cluster administrator must configure a [private connection policy of type remote cluster](/deploy-manage/security/remote-cluster-filtering.md), using either the organization ID or the Elasticsearch cluster ID of the local cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
@@ -34,8 +37,8 @@ If network security policies are applied to the remote cluster, the remote clust
 
 ### Prerequisites and limitations [ec_prerequisites_and_limitations]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
-* Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 
 ### Create a cross-cluster API key on the remote deployment [ec_create_a_cross_cluster_api_key_on_the_remote_deployment]
@@ -45,7 +48,8 @@ If network security policies are applied to the remote cluster, the remote clust
 
 ### Add the cross-cluster API key to the local deployment [ec_add_the_cross_cluster_api_key_to_the_local_deployment]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
 :::{include} _snippets/apikeys-local-ech-remote-public.md
 :::

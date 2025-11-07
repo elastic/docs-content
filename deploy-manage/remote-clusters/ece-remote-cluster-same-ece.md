@@ -8,12 +8,15 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
-  remote_type: Elastic Cloud Enterprise deployment
+  remote_type: Elastic Cloud Enterprise
 ---
 
 # Connect to deployments in the same {{ece}} environment [ece-remote-cluster-same-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ece}} environment.
+
+:::{include} _snippets/terminology.md
+:::
 
 ::::{note}
 If network security filters are applied to the remote cluster, the remote cluster administrator must configure a [remote cluster filter](/deploy-manage/security/remote-cluster-filtering.md), using either the ECE environment ID or the Elasticsearch cluster ID of the local cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
@@ -34,7 +37,8 @@ If network security filters are applied to the remote cluster, the remote cluste
 
 ### Prerequisites and limitations [ece_prerequisites_and_limitations]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment]
@@ -44,7 +48,8 @@ If network security filters are applied to the remote cluster, the remote cluste
 
 ### Add the cross-cluster API key to the keystore of the local deployment [ece_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
 :::{include} _snippets/apikeys-local-ece-remote-public.md
 :::

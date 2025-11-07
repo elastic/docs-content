@@ -8,12 +8,15 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
-  remote_type: Elastic Cloud Enterprise deployment
+  remote_type: Elastic Cloud Enterprise
 ---
 
 # Connect to deployments in a different {{ece}} environment [ece-remote-cluster-other-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ece}} environment.
+
+:::{include} _snippets/terminology.md
+:::
 
 ::::{note}
 If network security filters are applied to the remote cluster on ECE, the remote cluster administrator must configure an [IP filter](/deploy-manage/security/ip-filtering-ece.md) to allow connections from the IP addresses (or CIDR ranges) of the local ECE allocator hosts. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
@@ -34,7 +37,8 @@ If network security filters are applied to the remote cluster on ECE, the remote
 
 ### Prerequisites and limitations [ece_prerequisites_and_limitations_2]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment_2]
 
@@ -43,7 +47,8 @@ If network security filters are applied to the remote cluster on ECE, the remote
 
 ### Configure the local deployment [ece_configure_the_local_deployment]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
 The steps to follow depend on whether the Certificate Authority (CA) of the remote ECE environment’s proxy or load balancing infrastructure is public or private.
 
@@ -56,45 +61,12 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 
 ::::{dropdown} The CA is private
-1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
 
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
+:::{include} _snippets/retrieve-ece-ca.md
+:::
 
-3. Access the **Security** page of the deployment.
-4. Select **Remote Connections > Add trusted environment** and choose **{{ece}}**. Then click **Next**.
-5. Select **API keys** as authentication mechanism and click **Next**.
-6. Add a the API key:
-
-    1. Fill both fields.
-
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
-
-    2. Click **Add** to save the API key to the keystore.
-    3. Repeat these steps for each API key you want to add. For example, if you want to use several deployments of the remote environment for CCR or CCS.
-
-7. Add the CA certificate of the private proxy or load balancing infrastructure of the remote environment. To find this certificate:
-
-    1. In the remote {{ece}} environment, go to **Platform > Settings > TLS certificates**.
-    2. Select **Show certificate chain** under **Proxy**.
-    3. Click **Copy root certificate** and paste it into a new file. The root certificate is the last certificate shown in the chain.
-    4. Save that file as `.crt`. It is now ready to be uploaded.
-
-        :::{image} /deploy-manage/images/cloud-enterprise-remote-clusters-proxy-certificate.png
-        :alt: Certificate to copy from the chain
-        :::
-
-8. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
-9. Select **Create trust** to complete the configuration.
-10. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
-
-    ::::{note}
-    If the local deployment runs on version 8.14 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
-    ::::
-
-
-If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
+:::{include} _snippets/apikeys-local-ece-remote-private.md
+:::
 
 ::::
 ::::::

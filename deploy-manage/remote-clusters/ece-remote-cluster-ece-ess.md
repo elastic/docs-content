@@ -9,12 +9,15 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
-  remote_type: Elastic Cloud Hosted deployment
+  remote_type: Elastic Cloud Hosted
 ---
 
 # Connect {{ece}} deployments to an {{ecloud}} organization [ece-remote-cluster-ece-ess]
 
 This section explains how to configure an {{ece}} (ECE) deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
+
+:::{include} _snippets/terminology.md
+:::
 
 ::::{note}
 If network security filters are applied to the remote cluster on {{ecloud}}, the remote cluster administrator must configure an [IP filter](/deploy-manage/security/ip-filtering-cloud.md) to allow connections from the IP addresses (or CIDR ranges) of the local ECE allocator hosts. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
@@ -35,7 +38,8 @@ If network security filters are applied to the remote cluster on {{ecloud}}, the
 
 ### Prerequisites and limitations [ece_prerequisites_and_limitations_3]
 
-* The local and remote deployments must be on {{stack}} 8.14 or later.
+:::{include} _snippets/apikeys-prerequisites-limitations.md
+:::
 
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment_3]
@@ -45,7 +49,8 @@ If network security filters are applied to the remote cluster on {{ecloud}}, the
 
 ### Add the cross-cluster API key to the keystore of the local deployment [ece_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment_2]
 
-The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
+:::{include} _snippets/apikeys-local-config-intro.md
+:::
 
 :::{include} _snippets/apikeys-local-ece-remote-public.md
 :::

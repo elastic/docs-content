@@ -69,7 +69,7 @@ On the remote cluster:
     3. Generate a certificate and private key pair for the nodes in the remote cluster:
 
         ```sh
-        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=example.com --ip=127.0.0.1
+        ./bin/elasticsearch-certutil cert --out=cross-cluster.p12 --pass=CERT_PASSWORD --ca-cert=ca/ca.crt --ca-key=ca/ca.key --ca-pass=CA_PASSWORD --dns=<CLUSTER_FQDN> --ip=192.0.2.1
         ```
 
         * Replace `CA_PASSWORD` with the CA password from the previous step.
@@ -169,7 +169,7 @@ On the local cluster:
               "remote" : {
                 "my_remote" : { <1>
                   "mode": "proxy",
-                  "proxy_address": "my.remote.cluster.com:9443" <2>
+                  "proxy_address": "<MY_REMOTE_CLUSTER_ADDRESS>:9443" <2>
                 }
               }
             }
@@ -198,7 +198,7 @@ On the local cluster:
       "my_remote": {
         "connected": true, <1>
         "mode": "proxy",
-        "proxy_address": "my.remote.cluster.com:9443",
+        "proxy_address": "<MY_REMOTE_CLUSTER_ADDRESS>:9443",
         "server_name": "",
         "num_proxy_sockets_connected": 0,
         "max_proxy_socket_connections": 18,
