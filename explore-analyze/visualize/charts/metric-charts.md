@@ -215,17 +215,19 @@ When creating or editing a visualization, you can customize several appearance o
 
 The following examples show various configuration options that you can use for building impactful metrics.
 
-**Executive dashboard KPI**
-:   Display total revenue as a prominent number on an executive dashboard:
+**Ratio of successful requests**
+:   Display the percentage of successful requests on a monitoring dashboard:
 
-    * **Title**: "Total Revenue"
-    * **Primary metric**: `sum(sales.revenue)`
-    * **Value format**: Currency with no decimal. You can use a custom format to add symbols such as `$`
-    * **Subtitle**: "Current Quarter"
-    * **Color by value**: Green when above $250,000 target, red when below
-    * **Supporting visualization:** "Line" to show revenue evolution throughout the quarter
+    * **Title**: "Successful requests (2xx)"
+    * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
+      * **Value format**: `Percent`
+      * **Color by value**: Green when above 95%, yellow between 75% and 95%, red when below
+      * **Supporting visualization:** "Line" to show evolution over time
+    * **Secondary metric**: `0.95` formula
+      * **Name**: `Target:`
+      * **Value format**: `Percent`
 
-    ![Metric with a total revenue below the target](../../images/metric-total-revenue-example.png "=70%")
+    ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
 **Website traffic with trend**
 :   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
