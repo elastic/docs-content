@@ -266,4 +266,3 @@ This is best performed one policy at a time. For a given policy, you need to cap
      :::
      ::::
 
-If all has gone well, you’ve successfully migrated your {{fleet}}-managed {{agent}}s to a new cluster.
