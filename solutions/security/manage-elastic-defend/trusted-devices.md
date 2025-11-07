@@ -12,6 +12,11 @@ products:
 
 By default, {{elastic-defend}} policies have [device control](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#device-control) enabled, with access level set to block all operations. This prevents external storage devices from connecting to protected hosts.
 
+::::{important}
+- Device control only affects external USB storage devices. It does not affect other peripherals such as Yubikeys, webcams, or keyboards.
+- Device control only supports Windows and Mac endpoints. 
+::::
+
 Trusted devices are specific external devices that are allowed to connect to your protected hosts regardless of device control settings. Create trusted devices to avoid interfering with expected workflows that involve known hardware. 
 
 By default, a trusted device is recognized globally across all hosts running {{elastic-defend}}. You can also assign a trusted device to a specific {{elastic-defend}} integration policy, enabling the device to be trusted by only the hosts assigned to that policy.

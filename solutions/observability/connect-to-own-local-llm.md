@@ -147,3 +147,10 @@ Setup is now complete. You can use the model you’ve loaded in LM Studio to pow
 ::::{note}
 While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [Set up the AI Assistant](/solutions/observability/observability-ai-assistant.md#obs-ai-set-up).
 ::::
+
+## Air-gapped environments
+
+Local LLMs in air-gapped environments have specific installation and configuration instructions for deploying ELSER and configuring product documentation. Refer to the following links for more information:
+
+- [Deploy ELSER in an air-gapped environment](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install)
+- [Configure product documentation for air-gapped-environments](kibana://reference/configuration-reference/ai-assistant-settings.md#configuring-product-doc-for-airgap)
