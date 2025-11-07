@@ -135,7 +135,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes entity flyout **Risk contributions** tab link [#241153]({{kib-pull}}241153).
 * Fixes a pagination issue with the data table on the **Indicators** page [#241108]({{kib-pull}}241108).
 * Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
-* Allows partial matches on rule name when searching installed rules [#237496]({{kib-pull}}237496).
+* Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
 * Fixes an issue where rule exception operators could not be cleared when editing a rule exception [#236051]({{kib-pull}}236051).
 * Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within malware protection to avoid invalid watchdog firings.
 * Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
