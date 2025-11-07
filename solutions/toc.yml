@@ -571,10 +571,6 @@ toc:
           - file: security/ai/set-up-connectors-for-large-language-models-llm.md
             children:
               - file: security/ai/large-language-model-performance-matrix.md
-              - file: security/ai/connect-to-azure-openai.md
-              - file: security/ai/connect-to-amazon-bedrock.md
-              - file: security/ai/connect-to-openai.md
-              - file: security/ai/connect-to-google-vertex.md
               - file: security/ai/connect-to-own-local-llm.md
           - file: security/ai/use-cases.md
             children:
