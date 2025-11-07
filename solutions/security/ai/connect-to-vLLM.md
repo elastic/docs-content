@@ -44,8 +44,9 @@ The process involves four main steps:
 1. (Optional) If you plan to use a gated model (like Llama 3.1) or a private model, you need to create a [Hugging Face user access token](https://huggingface.co/docs/hub/en/security-tokens).
   1. Log in to your Hugging Face account.
   2. Navigate to **Settings > Access Tokens**.
-  3. Create a new token with at least `read` permissions. Copy it to a secure location.
+  3. Create a new token with at least `read` permissions. Save it in a secure location.
 2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between {{ecloud}} and your Nginx reverse proxy.
+3. Install any necessary GPU drivers. 
 
 ## Step 2: Run your vLLM container
 
@@ -72,9 +73,11 @@ vllm/vllm-openai:v0.9.1 \
 --tensor-parallel-size 2
 ```
 
-::::{admonition} Explanation of command
+.**Click to expand an explanation of the command** 
+[%collapsible]
+=====
 `--gpus all`: Exposes all available GPUs to the container.
-`--name`: Set predefined name for the container, otherwise it’s going to be generated
+`--name`: Defines a name for the container.
 `-v /root/.cache/huggingface:/root/.cache/huggingface`: Hugging Face cache directory (optional if used with `HUGGING_FACE_HUB_TOKEN`).
 `-e HUGGING_FACE_HUB_TOKEN`: Sets the environment variable for your Hugging Face token (only required for gated models).
 `--env VLLM_API_KEY`: vLLM API Key used for authentication between {{ecloud}} and vLLM.
@@ -86,4 +89,5 @@ vllm/vllm-openai:v0.9.1 \
 `-enable-auto-tool-choice`: Enables automatic function calling.
 `--gpu-memory-utilization 0.90`: Limits max GPU used by vLLM (may vary depending on the machine resources available).
 `--tensor-parallel-size 2`: This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems. 
-::::
+=====
+
