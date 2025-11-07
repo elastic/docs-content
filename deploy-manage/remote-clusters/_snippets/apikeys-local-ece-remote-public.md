@@ -1,3 +1,10 @@
+<!--
+This snippet is in use in the following locations:
+- ece-remote-cluster-self-managed.md
+- ece-remote-cluster-same-ece.md
+- ece-remote-cluster-other-ece.md
+- ece-remote-cluster-ece-ess.md
+-->
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
 
@@ -13,11 +20,10 @@
 
     2. Click **Add** to save the API key to the keystore.
 
-5. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment's main page (named after your deployment's name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
+5. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment's main page (named after your deployment's name), locate the **Actions** menu, and select **Restart {{es}}**.
 
     ::::{note}
     If the local deployment runs on version 8.14 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
     ::::
 
-
-If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](/deploy-manage/remote-clusters/ece-edit-remove-trusted-environment.md#ece-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](/deploy-manage/remote-clusters/ece-edit-remove-trusted-environment.md#edit-remove-trusted-environment-api-key).
