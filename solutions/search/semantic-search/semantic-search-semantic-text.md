@@ -29,6 +29,10 @@ The mapping of the destination index - the index that contains the embeddings th
 
 You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own ML-nodes. The following examples show you both scenarios.
 
+::::{tip}
+For production deployments with dense vector embeddings, consider optimizing storage and performance using [`index_options`](#semantic-text-index-options). This allows you to configure quantization strategies like BBQ (Better Binary Quantization) that can reduce memory usage by up to 32x.
+::::
+
 :::::::{tab-set}
 
 ::::::{tab-item} Using EIS on Serverless
@@ -107,10 +111,151 @@ PUT semantic-embeddings
 
 :::::::
 
-To try the ELSER model on the Elastic Inference Service, explicitly set the `inference_id` to `.elser-2-elastic`. For instructions, refer to [Using `semantic_text` with ELSER on EIS](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis). 
+To try the ELSER model on the Elastic Inference Service, explicitly set the `inference_id` to `.elser-2-elastic`. For instructions, refer to [Using `semantic_text` with ELSER on EIS](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis).
+
+### Optimizing vector storage with `index_options` [semantic-text-index-options]
+
+When using `semantic_text` with dense vector embeddings (such as E5 or other text embedding models), you can optimize storage and search performance by configuring `index_options` on the underlying `dense_vector` field. This is particularly useful for large-scale deployments.
+
+The `index_options` parameter controls how vectors are indexed and stored. For dense vector embeddings, you can specify quantization strategies like Better Binary Quantization (BBQ) that significantly reduce memory footprint while maintaining search quality. For details on available options and their trade-offs, refer to the [`dense_vector` `index_options` documentation](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
+
+::::{tip}
+For most production use cases with dense vector embeddings, using BBQ is recommended as it provides up to 32x memory reduction with minimal accuracy loss. Choose from:
+- `bbq_hnsw` - Best for most use cases (default for 384+ dimensions)
+- `bbq_flat` - Simpler option for smaller datasets
+- `bbq_disk` - Disk-based storage for very large datasets with minimal memory requirements (Elasticsearch 9.2+)
+::::
+
+Here's an example using `semantic_text` with a text embedding inference endpoint and BBQ quantization:
+
+```console
+PUT semantic-embeddings-optimized
+{
+  "mappings": {
+    "properties": {
+      "content": {
+        "type": "semantic_text",
+        "inference_id": "my-e5-model", <1>
+        "index_options": {
+          "dense_vector": {
+            "type": "bbq_hnsw" <2>
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+1. Reference to a text embedding inference endpoint (e.g., E5, OpenAI, or Cohere embeddings). You must create this endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+2. Use Better Binary Quantization with HNSW indexing for optimal memory efficiency. This setting applies to the underlying `dense_vector` field that stores the embeddings.
+
+You can also use `bbq_flat` for simpler datasets or when you don't need the HNSW graph:
+
+```console
+PUT semantic-embeddings-flat
+{
+  "mappings": {
+    "properties": {
+      "content": {
+        "type": "semantic_text",
+        "inference_id": "my-e5-model",
+        "index_options": {
+          "dense_vector": {
+            "type": "bbq_flat" <1>
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+1. Use BBQ without HNSW for simpler use cases with fewer vectors. This requires less compute resources during indexing.
+
+For very large datasets where memory is constrained, use `bbq_disk` (DiskBBQ) to store vectors on disk:
+
+```console
+PUT semantic-embeddings-disk
+{
+  "mappings": {
+    "properties": {
+      "content": {
+        "type": "semantic_text",
+        "inference_id": "my-e5-model",
+        "index_options": {
+          "dense_vector": {
+            "type": "bbq_disk" <1>
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+```{applies_to}
+stack: ga 9.2
+serverless: unavailable
+```
+
+1. Use DiskBBQ for disk-based vector storage with minimal memory requirements. Available in Elasticsearch 9.2+. This option stores compressed vectors on disk, reducing RAM usage to as little as 100 MB while maintaining query latencies around 15ms.
+
+Other quantization options include `int8_hnsw` and `int4_hnsw`:
+
+```console
+PUT semantic-embeddings-int8
+{
+  "mappings": {
+    "properties": {
+      "content": {
+        "type": "semantic_text",
+        "inference_id": "my-e5-model",
+        "index_options": {
+          "dense_vector": {
+            "type": "int8_hnsw" <1>
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+1. Use 8-bit integer quantization for 4x memory reduction with high accuracy retention.
+
+For HNSW-specific tuning parameters like `m` and `ef_construction`, you can include them in the `index_options`:
+
+```console
+PUT semantic-embeddings-custom
+{
+  "mappings": {
+    "properties": {
+      "content": {
+        "type": "semantic_text",
+        "inference_id": "my-e5-model",
+        "index_options": {
+          "dense_vector": {
+            "type": "bbq_hnsw",
+            "m": 32, <1>
+            "ef_construction": 200 <2>
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+1. Number of bidirectional links per node in the HNSW graph. Higher values improve recall but increase memory usage. Default is 16.
+2. Number of candidates considered during graph construction. Higher values improve index quality but slow down indexing. Default is 100.
 
 ::::{note}
-If you’re using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
+The `index_options` parameter is only applicable when using inference endpoints that produce dense vector embeddings (like E5, OpenAI embeddings, Cohere embeddings, etc.). It does not apply to sparse vector models like ELSER, which use a different internal representation.
+::::
+
+::::{note}
+If you're using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you'll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
 
 ::::
 
