@@ -40,7 +40,7 @@ To successfully roll back an integration, you must have access to all of its int
 3. Click the **Settings** tab.
 4. Click **Rollback <integration>**.
 
-   If the button is disabled for an integration, this may be because:
+   If the button is disabled for an integration, this may indicate:
    - The 7-day rollback window has expired.
    - You don't have access to all integration policies across all spaces.
    - No previous version is available to roll back to.
