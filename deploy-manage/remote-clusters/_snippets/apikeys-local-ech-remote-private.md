@@ -27,7 +27,7 @@ It requires remote_type substitution to be defined
 8. Add the CA certificate of the remote environment.
 9. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment's **Security** page.
 10. Select **Create trust** to complete the configuration.
-11. Restart the local deployment to reload the new setting. To do that, go to the deployment's main page, locate the **Actions** menu, and select **Restart {{es}}**.
+11. Restart the local deployment to reload the new settings. To do that, go to the deployment's main page, locate the **Actions** menu, and select **Restart {{es}}**.
 
     ::::{note}
     If the local deployment runs on version 8.14 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
