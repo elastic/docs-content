@@ -2,6 +2,7 @@
 This snippet is in use in the following locations:
 - ec-remote-cluster-self-managed.md
 - ec-remote-cluster-ece.md
+- ec-enable-ccs-for-eck.md
 
 It requires remote_type substitution to be defined
 -->
