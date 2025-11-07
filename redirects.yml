@@ -587,3 +587,9 @@ redirects:
 
 # Related to https://github.com/elastic/docs-team/issues/104
   'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
+
+# Related to https://github.com/elastic/docs-content-internal/issues/487
+  'solutions/security/ai/connect-to-azure-openai.md': 'kibana://reference/connectors-kibana/openai-action-type.md'
+  'solutions/security/ai/connect-to-amazon-bedrock.md': 'kibana://reference/connectors-kibana/bedrock-action-type.md'
+  'solutions/security/ai/connect-to-openai.md': 'kibana://reference/connectors-kibana/openai-action-type.md'
+  'solutions/security/ai/connect-to-google-vertex.md': 'kibana://reference/connectors-kibana/gemini-action-type.md'
