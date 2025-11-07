@@ -69,7 +69,7 @@ Let’s say you ingest 1TB of data into your Observability project.
 * **Retention**: Given that 1GB retained per hour = [$0.018](https://www.elastic.co/pricing/serverless-observability) and assuming it took one hour to ingest 1TB of data, that 1TB will be billed 1.42GB for that slice of one hour (1TB/720 hours per month), which translates to $0.025. Each subsequent hour in that month will cost the same.
 :::
 
-## Coming soon
+## Coming soon to AutoOps for Serverless
 
 The following features are coming soon to AutoOps for {{serverless-short}}:
 

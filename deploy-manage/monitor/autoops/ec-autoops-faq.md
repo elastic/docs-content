@@ -21,7 +21,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 
 **General AutoOps questions**
 * [What does AutoOps do?](#what-is-autoops)
-* [Where is AutoOps available?](#autoops-deployment-types)
+* [Is AutoOps available in all deployment types?](#autoops-deployment-types)
 * [Why can't I see AutoOps in some deployments and projects?](#cant-see-autoops)
 * [How is AutoOps licensed?](#autoops-license)
 * [Does AutoOps monitor the entire {{stack}}?](#autoops-monitoring)
@@ -53,11 +53,12 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 $$$what-is-autoops$$$**What does AutoOps do?**
 :   AutoOps for {{es}} simplifies cluster management by providing performance recommendations, resource utilization and cost insights, real-time issue detection, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps provides operational and monitoring recommendations that reduce administration time and hardware costs.
 
-$$$autoops-deployment-types$$$**Where is AutoOps available?**
-:   In the [regions](ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/autoops-for-cloud-hosted.md) and [{{serverless-short}} projects](/deploy-manage/monitor/autoops/autoops-for-serverless.md), and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) through [Cloud Connect](/deploy-manage/cloud-connect.md). 
+$$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
+:   :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
+::: 
 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
-AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
+:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
 :   For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.

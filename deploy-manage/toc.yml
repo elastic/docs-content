@@ -691,6 +691,8 @@ toc:
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/cc-manage-users.md
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
+                children:
+                  - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
