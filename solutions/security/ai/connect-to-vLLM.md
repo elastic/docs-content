@@ -91,7 +91,7 @@ vllm/vllm-openai:v0.9.1 \
 `--tensor-parallel-size 2`: This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems. 
 =====
 
-3. Verify the containers were created by running `docker ps -a`. The output should show the value you specified for the `--name` parameter.
+3. Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
 
 ## Step 3: Expose the API with a reverse proxy
 
@@ -144,8 +144,22 @@ Finally, create the connector within your Elastic deployment to link it to your 
   * For **API key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
   * If your chosen model supports tool use, then turn on **Enable native function calling**.
 7. Click **Save**
+8. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+  * On the **Conversations** tab, turn off **Streaming**.
+  * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
+  
+  ```
+  You are a model running under OpenAI-compatible tool calling mode.
+  
+  Rules:
+  1. When you want to invoke a tool, never describe the call in text.
+  2. Always return the invocation in the `tool_calls` field.
+  3. The `content` field must remain empty for any assistant message that performs a tool call.
+  4. Only use tool calls defined in the "tools" parameter.
+  ```
 
-Setup is now complete. The model served by your vLLM container can now power Elastic's generative AI features, such as the AI Assistant. 
+Setup is now complete. The model served by your vLLM container can now power Elastic's generative AI features.
+
 
 :::{note}
 To run a different model, stop the current container and run a new one with an updated `--model` parameter.
