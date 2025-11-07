@@ -8,7 +8,7 @@ Before configuring the local deployment, retrieve the CA certificate of the remo
     :alt: Certificate to copy from the chain
     :::
 
-4. Save that file as `.crt`.
+4. Save the file as `.crt`.
 
-You can now proceed to configure the local deployment. The CA file you just saved will be used in one of the following steps.
+You can now proceed to configure the local deployment. The CA file you saved will be used in one of the following steps.
 
