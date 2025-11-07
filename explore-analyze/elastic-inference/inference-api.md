@@ -161,11 +161,64 @@ PUT _inference/sparse_embedding/word_chunks
 stack: ga 9.1
 ```
 
-The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
+The `recursive` strategy splits the input text based on a configurable list of separator patterns, such as paragraph boundaries or Markdown structural elements like headings and horizontal rules. The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to [sentence-level splitting](#sentence).
 
-##### Markdown separator group
+You can configure the `recursive` strategy using either:
+- [Predefined separator groups](#separator-groups): [`plaintext`](#plaintext) or [`markdown`](#markdown)
+- [Custom separators](#custom-separators): Define your own regular expression patterns
 
-The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy using the markdown separator group and a maximum of 200 words per chunk.
+##### Predefined separator groups [separator-groups]
+
+Predefined separator groups provide optimized patterns for common text formats: [`plaintext`](#plaintext) for simple line-structured text without markup, and [`markdown`](#markdown) for Markdown-formatted content.
+
+###### `plaintext`
+
+The `plaintext` separator group splits text at paragraph boundaries, first attempting to split on double newlines (paragraph breaks), then falling back to single newlines when chunks are still too large.
+
+:::{dropdown} Regular expression patterns for the `plaintext` separator group
+
+1. `(?<!\\n)\\n\\n(?!\\n)`: Splits on consecutive newlines that indicate paragraph breaks.
+2. `(?<!\\n)\\n(?!\\n)`: Splits on single newlines when double newlines don't produce small enough chunks.
+
+:::
+
+The following example configures chunking with the `recursive` strategy using the `plaintext` separator group and a maximum of 200 words per chunk.
+
+```console
+PUT _inference/sparse_embedding/recursive_plaintext_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "recursive",
+    "max_chunk_size": 200,
+    "separator_group": "plaintext"
+  }
+}
+```
+
+###### `markdown`
+
+The `markdown` separator group splits text based on Markdown structural elements, processing separators hierarchically from highest to lowest level: H1 through H6 headings, then horizontal rules.
+
+:::{dropdown} Regular expression patterns for the `markdown` separator group
+
+1. `\n# `: Splits on level 1 headings (H1).
+2. `\n## `: Splits on level 2 headings (H2).
+3. `\n### `: Splits on level 3 headings (H3).
+4. `\n#### `: Splits on level 4 headings (H4).
+5. `\n##### `: Splits on level 5 headings (H5).
+6. `\n###### `: Splits on level 6 headings (H6).
+7. `\n^(?!\\s*$).*\\n-{1,}\\n`: Splits on horizontal rules created with hyphens.
+8. `\n^(?!\\s*$).*\\n={1,}\\n`: Splits on horizontal rules created with equals signs.
+
+:::
+
+The following example configures chunking with the `recursive` strategy using the `markdown` separator group and a maximum of 200 words per chunk.
 
 ```console
 PUT _inference/sparse_embedding/recursive_markdown_chunks
@@ -184,10 +237,9 @@ PUT _inference/sparse_embedding/recursive_markdown_chunks
 }
 ```
 
-##### Custom separator group
+##### Custom separators
 
-The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy. It uses a custom list of separators to split plaintext into chunks of up to 180 words.
-
+If the [predefined separator groups](#separator-groups) don't meet your needs, you can define custom separators using regular expressions. The following example configures chunking with the `recursive` strategy using a custom list of separators to split text into chunks of up to 180 words.
 
 ```console
 PUT _inference/sparse_embedding/recursive_custom_chunks
@@ -236,3 +288,5 @@ PUT _inference/sparse_embedding/none_chunking
   }
 }
 ```
+
+
