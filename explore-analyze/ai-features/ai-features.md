@@ -29,16 +29,15 @@ To use Elastic's AI-powered features, you need:
 ### Agent builder
 
 ```{applies_to}
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 serverless:
   elasticsearch: preview
   observability: unavailable
   security: unavailable
 ```
 
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your Elasticsearch data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your Elasticsearch data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
-### AI Assistant
+### AI assistant
 ```{applies_to}
 stack:
 serverless:
@@ -85,7 +84,7 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 
 ## AI-powered features in {{observability}}
 
-### AI Assistant
+### AI assistant
 ```{applies_to}
 stack:
 serverless:
