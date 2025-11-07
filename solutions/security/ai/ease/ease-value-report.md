@@ -6,7 +6,7 @@ applies_to:
   stack: preview 9.3
 ---
 
-# Value Report
+# Value report
 
 The **Value report** page estimates your savings from using Elastic's AI SOC features for alert triage, in terms of **Analyst time saved** and **Cost Savings**. The message at the top of the page explains how those numbers were determined, and how many alerts were **Escalated** and **Filtered** by AI. 
 
