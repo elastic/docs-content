@@ -17,10 +17,10 @@ The [{{search-platform}}](https://www.elastic.co/platform) is the open source fo
 It has components for ingesting, storing, searching, analyzing, and visualizing data at scale.
 The core components (also known as ELK or the [{{stack}}](https://www.elastic.co/elastic-stack)) are:
 
-- [{{es}}](#stack-components-elasticsearch): The distributed search and analytics engine.
-- [{{ls}}](#stack-components-logstash): The data ingestion and transformation pipeline.
-- [{{kib}}](#stack-components-kibana): The exploration, visualization, and dashboarding user interface.
-- [{{beats}}](#stack-components-beats): Lightweight data shippers.
+- [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine. It handles indexing, querying, and analytics.
+- [{{ls}}](#stack-components-logstash): The data ingestion and transformation engine, often used for more complex ETL (extract, transform, load) pipelines.
+- [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools for data that's stored in {{es}}.
+- [{{beats}}](#stack-components-beats): Lightweight data shippers that collect and forward data to {{es}}.
 
 $$$stack-components$$$
 <!--
