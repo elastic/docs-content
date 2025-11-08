@@ -15,35 +15,53 @@ toc:
         children:
           - file: search/search-pipelines.md
       - file: search/search-approaches.md
-      - file: search/full-text.md
         children:
-          - file: search/full-text/how-full-text-works.md
-          - file: search/full-text/search-with-synonyms.md
+          - file: search/full-text.md
             children:
-              - file: search/full-text/create-update-synonyms-api-example.md
-          - file: search/full-text/text-analysis-during-search.md
-          - file: search/full-text/search-relevance.md
-            children:
-              - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
-              - file: search/full-text/search-relevance/consistent-scoring.md
-              - file: search/full-text/search-relevance/static-scoring-signals.md
-      - file: search/ai-search/ai-search.md
-        children:
-          - file: search/vector.md
-            children:
-              - file: search/vector/dense-vector.md
+              - file: search/full-text/how-full-text-works.md
+              - file: search/full-text/search-with-synonyms.md
                 children:
-                  - file: search/vector/knn.md
-                  - file: search/vector/bring-own-vectors.md
-              - file: search/vector/sparse-vector.md
-              - file: search/vector/dense-versus-sparse-ingest-pipelines.md
-          - file: search/semantic-search.md
+                  - file: search/full-text/create-update-synonyms-api-example.md
+              - file: search/full-text/text-analysis-during-search.md
+              - file: search/full-text/search-relevance.md
+                children:
+                  - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
+                  - file: search/full-text/search-relevance/consistent-scoring.md
+                  - file: search/full-text/search-relevance/static-scoring-signals.md
+          - file: search/ai-search/ai-search.md
             children:
-              - file: search/semantic-search/semantic-search-semantic-text.md
-              - file: search/semantic-search/semantic-search-inference.md
-              - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
-              - file: search/semantic-search/cohere-es.md
-          - file: search/using-openai-compatible-models.md
+              - file: search/vector.md
+                children:
+                  - file: search/vector/dense-vector.md
+                    children:
+                      - file: search/vector/knn.md
+                      - file: search/vector/bring-own-vectors.md
+                  - file: search/vector/sparse-vector.md
+                  - file: search/vector/dense-versus-sparse-ingest-pipelines.md
+              - file: search/semantic-search.md
+                children:
+                  - file: search/semantic-search/semantic-search-semantic-text.md
+                  - file: search/semantic-search/semantic-search-inference.md
+                  - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
+                  - file: search/semantic-search/cohere-es.md
+              - file: search/using-openai-compatible-models.md
+          - file: search/hybrid-search.md
+            children:
+              - file: search/hybrid-semantic-text.md
+          - file: search/ranking.md
+            children:
+              - file: search/ranking/semantic-reranking.md
+              - file: search/ranking/learning-to-rank-ltr.md
+                children:
+                  - file: search/ranking/learning-to-rank-model-training.md
+                  - file: search/ranking/learning-to-rank-search-usage.md
+      - file: search/querying-for-search.md
+        children:
+          - file: search/the-search-api.md
+          - file: search/async-search-api.md
+          - file: search/esql-for-search.md
+          - file: search/retrievers-overview.md
+          - file: search/search-templates.md
       - file: search/elastic-agent-builder.md
         children:
           - file: search/agent-builder/get-started.md
@@ -68,26 +86,6 @@ toc:
               - file: search/rag/playground-query.md
               - file: search/rag/playground-troubleshooting.md
           - file: search/mcp.md
-      - file: search/hybrid-search.md
-        children:
-          - file: search/hybrid-semantic-text.md
-      - file: search/ranking.md
-        children:
-          - file: search/ranking/semantic-reranking.md
-          - file: search/ranking/learning-to-rank-ltr.md
-            children:
-              - file: search/ranking/learning-to-rank-model-training.md
-              - file: search/ranking/learning-to-rank-search-usage.md
-      - file: search/cross-cluster-search.md
-        children:
-          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
-      - file: search/querying-for-search.md
-        children:
-          - file: search/the-search-api.md
-          - file: search/async-search-api.md
-          - file: search/esql-for-search.md
-          - file: search/retrievers-overview.md
-          - file: search/search-templates.md
       - file: search/site-or-app.md
         children:
           - file: search/site-or-app/clients.md
@@ -97,6 +95,9 @@ toc:
               - file: search/search-applications/search-application-api.md
               - file: search/search-applications/search-application-security.md
               - file: search/search-applications/search-application-client.md
+      - file: search/cross-cluster-search.md
+        children:
+          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
       - file: search/query-rules-ui.md
@@ -145,7 +146,6 @@ toc:
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
-              - file: observability/get-started/other-tutorials/add-data-from-splunk.md
           - file: observability/get-started/logs-essentials.md
       - file: observability/applications/index.md
         children:
