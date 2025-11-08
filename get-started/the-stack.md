@@ -26,7 +26,7 @@ All deployments include {{es}}.
 Although {{kib}} is not required to use {{es}}, it is included by default when you use deployment methods such as {{serverless-full}}.
 
 $$$stack-components$$$
-The {{search-platform}} has components for ingesting, storing, searching, analyzing, and visualizing data at scale:
+The {{search-platform}} has components for ingesting, storing, and exploring data at scale:
 
 ![Components of the {{search-platform}}](/get-started/images/platform-components-diagram.svg)
 
@@ -34,14 +34,11 @@ Continue reading to learn how these components work together.
 
 ## Ingest [_ingest]
 
-Elastic provides a number of components that ingest data.
-Collect and ship logs, metrics, and other types of data with {{agent}} or {{beats}}.
-Manage your {{agents}} with {{fleet}}.
-Collect detailed performance information with Elastic APM.
+There are multiple methods for ingesting data in the {{search-platform}}.
+For example, you can collect and ship logs, metrics, and other types of data with {{agent}} or collect detailed performance information with Elastic APM.
+If you want to transform and enrich data before it's stored, you can use {{es}} ingest pipelines or {{ls}}.
 
-If you want to transform or enrich data before it's stored, you can use {{es}} ingest pipelines or {{ls}}.
-
-Trying to decide which ingest component to use? Refer to [](/manage-data/ingest.md) to help you decide.
+Trying to decide which ingest components to use? Refer to [](/manage-data/ingest.md) and [](/manage-data/ingest/tools.md).
 
 ### {{fleet}} and {{agent}} [stack-components-agent]
 
@@ -86,7 +83,8 @@ It can dynamically unify data from disparate sources and normalize the data into
 
 ## Store, search, and analyze [_store]
 
-{{es}} is the distributed search, storage, and analytics engine at the heart of the {{search-platform}}.
+{{es}} is the distributed storage, search, and analytics engine at the heart of the {{search-platform}}.
+You can use the {{es}} clients to access data directly by using common programming languages.
 
 ### {{es}} [stack-components-elasticsearch]
 
@@ -105,10 +103,17 @@ This API-first approach is fundamental to enabling infrastructure-as-code practi
 
 Learn more about [the {{es}} data store](/manage-data/data-store.md), its [distributed architecture](/deploy-manage/distributed-architecture.md), and [APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md).
 
-## Explore [_consume]
+### {{es}} clients [stack-components-elasticsearch-clients]
+
+The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others.
+Both official and community contributed clients are available.
+
+[Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
+
+## Explore and visualize [_consume]
 
 Use {{kib}} to explore and visualize the data that's stored in {{es}} and to manage the {{search-platform}}.
-You can use the {{es}} clients to access data directly by using common programming languages.
+It is also the home for the {{es}}, Elastic {{observability}} and {{elastic-sec}} [solutions](/get-started/introduction.md).
 
 ### {{kib}} [stack-components-kibana]
 
@@ -123,13 +128,3 @@ It also has [query tools](/explore-analyze/query-filter/tools.md) such as **Cons
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
 
 [Learn more about {{kib}}](/explore-analyze/index.md).
-
-### {{es}} clients [stack-components-elasticsearch-clients]
-
-The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others.
-Both official and community contributed clients are available.
-
-[Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
-
-<!-- TO-DO: Remove lingering anchors -->
-$$$kibana-navigation-search$$$
