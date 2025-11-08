@@ -93,4 +93,10 @@ Agent Builder respects {{kib}} Spaces when enabled. All conversations, custom ag
 
 When configuring roles or API keys, specify the Space in the application privileges resources (e.g., `"resources": ["space:production"]`). Users and API keys cannot access resources in other Spaces.
 
+:::{important}
+When accessing Agent Builder APIs or the MCP server from a custom Space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`
+
+The default space uses the standard URL format without `/s/<space-name>`.
+:::
+
 Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
