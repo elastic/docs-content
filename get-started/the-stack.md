@@ -13,29 +13,22 @@ applies_to:
 ---
 # {{search-platform}}
 
-The [{{search-platform}}](https://www.elastic.co/platform) is the open source foundation for Elastic solutions and for developers seeking to build generative AI powered applications and services.
-It has components for ingesting, storing, searching, analyzing, and visualizing data at scale.
-The core components (also known as ELK or the [{{stack}}](https://www.elastic.co/elastic-stack)) are:
+The [{{search-platform}}](https://www.elastic.co/platform) is the open source foundation for Elastic solutions and for developers seeking to build generative AI powered applications.
+Its core components (also known as ELK or the [{{stack}}](https://www.elastic.co/elastic-stack)) are:
 
-- [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine. It handles indexing, querying, and analytics.
-- [{{ls}}](#stack-components-logstash): The data ingestion and transformation engine, often used for more complex ETL (extract, transform, load) pipelines.
-- [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools for data that's stored in {{es}}.
+- [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine that handles indexing, querying, and analytics.
+- [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools.
 - [{{beats}}](#stack-components-beats): Lightweight data shippers that collect and forward data to {{es}}.
-
-$$$stack-components$$$
-<!--
-![Components of the {{search-platform}}](/get-started/images/platform-components-diagram.svg)
--->
-
-<!--
-:::{tip}
-The components that share the same versioning scheme are often referred to as the _{{stack}}_. Learn more in [](/get-started/versioning-availability.md).
-:::
--->
+- [{{ls}}](#stack-components-logstash): The data ingestion and transformation engine, often used for more complex ETL (extract, transform, load) pipelines.
 
 You have many options for deploying the {{search-platform}}, which are summarized in [](/get-started/deployment-options.md).
 All deployments include {{es}}.
 Although {{kib}} is not required to use {{es}}, it is included by default when you use deployment methods such as {{serverless-full}}.
+
+$$$stack-components$$$
+The {{search-platform}} has components for ingesting, storing, searching, analyzing, and visualizing data at scale:
+
+![Components of the {{search-platform}}](/get-started/images/platform-components-diagram.svg)
 
 Continue reading to learn how these components work together.
 
