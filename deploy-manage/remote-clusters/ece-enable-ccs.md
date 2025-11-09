@@ -31,9 +31,19 @@ To use CCS or CCR, your environment must meet the following criteria:
   
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
+
+* ECE proxies must answer TCP requests on the port used by the selected [security model](./security-models.md):
+  * `9400` when using TLS certificate–based authentication (deprecated).
+  * `9443` when using API key–based authentication.
   
-* Proxies must answer TCP requests on the port 9400. Check the [prerequisites for the ports that must permit outbound or inbound traffic](../deploy/cloud-enterprise/ece-networking-prereq.md).
-* Load balancers must pass-through TCP requests on port 9400. Check the [configuration details](../deploy/cloud-enterprise/ece-load-balancers.md).
+  For details, refer to the [remote cluster security models](../path/to/security-models.md) documentation and [ECE networking prerequisites](../deploy/cloud-enterprise/ece-networking-prereq.md).
+
+* Load balancers must pass through TCP requests on the port that corresponds to the security model:
+  * `9400` for TLS certificate–based authentication (deprecated).
+  * `9443` for API key–based authentication.
+
+  For configuration details, refer to the [ECE load balancer requirements](../deploy/cloud-enterprise/ece-load-balancers.md).
+
 * If your deployment was created before ECE version `2.9.0`, the Remote clusters page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
 
 ::::{note}
