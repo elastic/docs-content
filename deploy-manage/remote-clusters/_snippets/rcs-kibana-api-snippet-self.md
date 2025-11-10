@@ -12,7 +12,7 @@ This snippet is in use in the following locations:
     * **Remote cluster name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
 
       When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
-    * **Remote address**: Enter the endpoint of the remote self-managed cluster, including the hostname, FQDN, or IP address, and the port.
+    * **Remote address**: Enter the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port.
 
       Make sure you use the correct port for your authentication method:
       * **API keys**: Use the port configured in the remote cluster interface of the remote cluster (defaults to `9443`).  
