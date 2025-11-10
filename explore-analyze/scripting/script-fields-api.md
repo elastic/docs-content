@@ -1,5 +1,5 @@
 ---
-navigation_title: Access fields in a document
+navigation_title: Accessing fields in a document
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/script-fields-api.html
 applies_to:
@@ -11,7 +11,7 @@ products:
 
 
 
-# Access fields in a document [script-fields-api]
+# Accessing fields in a document [script-fields-api]
 
 
 ::::{warning} 
