@@ -42,7 +42,7 @@ If the **Make this {{fleet}} server the default one** setting was already enable
 ::::{note}
 In {{ech}} deployments on {{stack}} versions prior to 9.1.6, the connection between agentless integrations and {{fleet-server}} can be broken if the default {{fleet-server}} host URL value in {{fleet}} is modified or if a different host URL is set as the default.
 
-This issue is resolved in {{stack}} 9.1.6 and 9.2.0. In these versions, agentless integration policies are assigned to a default managed {{fleet-server}} host which cannot be modified.
+This issue is resolved in {{stack}} 9.1.6. In this and later versions, agentless integration policies are assigned to a default managed {{fleet-server}} host which cannot be modified.
 ::::
 
 ## Why can't I upgrade my agentless integration to a newer version?
