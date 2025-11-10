@@ -76,4 +76,6 @@ This section provides guidelines and recommendations to install ECE using a Podm
 
     To add a new allocator, use `--roles "allocator"`. To add a new coordinator, director, proxy, and allocator, use `--roles "allocator,coordinator,director,proxy"`
 
-
+::::{note}
+When using Podman, removing an image with the `--force` (`-f`) option not only deletes the image reference but also removes any containers that depend on that image. This behavior differs from Docker, where forced image removal does not automatically remove running or stopped containers. Therefore, avoid using the `--force` (`-f`) option with the `docker rmi` command.
+::::

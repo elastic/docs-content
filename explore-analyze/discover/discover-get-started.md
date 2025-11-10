@@ -22,6 +22,35 @@ Learn how to use **Discover** to:
 * You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
 * You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 
+## Context-aware data exploration [context-aware-discover]
+
+**Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:
+
+* Observability:
+  * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
+  * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+% LINK/PAGE TBD  * **Traces exploration**
+% * Security:
+% LINK/PAGE TBD  * **Security data exploration**
+
+This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
+
+When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
+
+### Context-awareness with multiple data types
+
+Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context.
+
+In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
+
+### View active context-aware experience
+
+You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
+
+1. Select **Inspect** from Discover's toolbar.
+1. Open the **View** dropdown, then select **Profiles**.
+
+The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
 
 ## Load data into Discover [find-the-data-you-want-to-use]
 
@@ -64,6 +93,8 @@ You can later filter the data that shows in the chart and in the table by specif
    ::::{tip}
    You can combine multiple keywords or characters. For example, `geo dest` finds `geo.dest` and `geo.src.dest`.
    ::::
+
+   {applies_to}`stack: ga 9.2` For some searches, Discover suggests recommended fields to explore. These suggestions are based on the data you query and are managed by Elastic.
 
 2. Select a field to view its most frequent values.
   **Discover** shows the top 10 values and the number of records used to calculate those values.
@@ -206,7 +237,7 @@ Dive into an individual document to view its fields and the documents that occur
    * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
 
    ::::{tip}
-   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values.
+   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
 3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
@@ -221,6 +252,10 @@ Dive into an individual document to view its fields and the documents that occur
 One of the unique capabilities of **Discover** is the ability to combine free text search with filtering based on structured data. To search all fields, enter a simple string in the query bar.
 
 ![Search field in Discover](/explore-analyze/images/kibana-discover-search-field.png "")
+
+:::{note}
+Free text searches that don't specify a field may not return expected results depending on how the [`index.query.default_field` index setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field) is configured for the indices matching the current data view.
+:::
 
 To search particular fields and build more complex queries, use the [Kibana Query language](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
 
@@ -249,25 +284,77 @@ For example, exclude results from the ecommerce sample data view where day of we
 4. Continue your exploration by adding more filters.
 5. To remove a filter, click the close icon (x) next to its name in the filter bar.
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ### Search and filter using ES|QL [_search_and_filter_using_esql]
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
 You can switch to the ES|QL mode of Discover from the application menu bar.
-
-:::{tip}
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-:::
 
 Note that in ES|QL mode, the **Documents** tab is named **Results**.
 
+:::{important}
+{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+:::
+
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+
+### Run multiple explorations with tabs
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+**Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or classic mode), time range, filters, selected data source, columns and sort order you defined, and the active [context-aware experience](#context-aware-discover).
+
+This allows you to pivot quickly between different explorations without losing your place. For example:
+
+* **Compare time periods:** Open multiple tabs with the same query but different time ranges
+* **Test query variations:** Duplicate a tab to experiment with different {{esql}} queries or filters
+* **Switch contexts:** Keep separate tabs for logs, metrics, and traces explorations
+* **Test a hypothesis:** Switch between different data sources or field combinations
+
+#### Manage Discover tabs
+
+You can open new tabs or duplicate existing ones to compare different queries:
+- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
+- To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
+
+To manage and organize your tabs, you can:
+- Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
+- Reorder them: Drag and drop a tab to move it.
+- Close them: Hover over a tab and select the {icon}`cross` icon.
+- Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
+
+  :::{tip}
+  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
+  :::
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
+
+To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
+
+### Inspect your Discover queries
+
+:::{include} ../_snippets/inspect-request.md
+:::
+
+### Run long-running queries in the background
+```{applies_to}
+stack: ga 9.2
+serverless: unavailable
+```
+
+You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
 
 
 ### Save your Discover session for later use [save-discover-search]
 
-Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves the query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
+Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
 
 1. In the application menu bar, click **Save**.
 2. Give your session a title and a description.
@@ -277,7 +364,7 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 ### Share your Discover session [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Generate alerts [alert-from-Discover]

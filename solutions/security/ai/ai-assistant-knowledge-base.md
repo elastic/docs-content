@@ -19,7 +19,6 @@ AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific 
 {{stack}} users: when you upgrade from {{elastic-sec}} version 8.15 to a newer version, information previously stored by AI Assistant will be lost.
 ::::
 
-
 ::::{admonition} Requirements
 * To use Knowledge Base, the `Elastic AI Assistant: All` privilege.
 * To edit global Knowledge Base entries (information that will affect the AI Assistant experience for other users in the {{kib}} space), the `Allow Changes to Global Entries` privilege.
@@ -27,7 +26,9 @@ AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific 
 
 ::::
 
-
+::::{note}
+We strongly recommend you [enable autoscaling](/deploy-manage/autoscaling.md#cluster-autoscaling) before using Knowledge Base.
+::::
 
 ## Role-based access control (RBAC) for Knowledge Base [knowledge-base-rbac]
 
@@ -37,6 +38,11 @@ The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant an
 :alt: Knowledge base's RBAC settings
 :::
 
+## Give AI Assistant access to Elastic's product documentation [elastic-docs]
+
+When you enable Knowledge Base, AI Assistant automatically gains access to Elastic's product documentation. This improves its answers to questions related to Elastic products and features.
+
+In air-gapped environments, this requires additional configuration. Refer to the [{{kib}} AI Assistant settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions. Once you complete the instructions on that page, AI Assistant will automatically gain access to Elastic's documentation as soon as you start a new conversation.
 
 ## Enable Knowledge Base [enable-knowledge-base]
 
@@ -45,7 +51,6 @@ There are two ways to enable Knowledge Base.
 ::::{note}
 You must individually enable Knowledge Base for each {{kib}} space where you want to use it.
 ::::
-
 
 
 ### Option 1: Enable Knowledge Base from an AI Assistant conversation [_option_1_enable_knowledge_base_from_an_ai_assistant_conversation]
@@ -75,12 +80,13 @@ Knowledge base setup may take several minutes. It will continue in the backgroun
 
 ## Knowledge base for alerts [rag-for-alerts]
 
-When Knowledge Base is enabled, AI Assistant receives `open` or `acknowledged` alerts from your environment from the last 24 hours. It uses these as context for each of your prompts. This enables it to answer questions about multiple alerts in your environment rather than just about individual alerts you choose to send it. It receives alerts ordered by risk score, then by the most recently generated. Building block alerts are excluded.
+AI Assistant receives `open` or `acknowledged` alerts from your environment from the last 24 hours and uses them as context for your prompts. This enables it to answer questions about multiple alerts in your environment rather than just about individual alerts you choose to send it. It receives alerts ordered by risk score, then by the most recently generated. Building block alerts are excluded.
 
-To enable Knowledge Base for alerts:
+To configure alert access for Knowledge Base:
 
-1. Ensure that knowledge base is [enabled](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
-2. On the **Security AI settings** page, go to the **Knowledge Base** tab and use the slider to select the number of alerts to send to AI Assistant. Click **Save**.
+1. Go the **Security AI settings** page. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security."
+2. On the **Knowledge Base** tab, use the slider to select the number of alerts to send to AI Assistant.
+3. Click **Save**.
 
 ::::{note}
 Including a large number of alerts may cause your request to exceed the maximum token length of your third-party generative AI provider. If this happens, try selecting a lower number of alerts to send.
@@ -98,9 +104,9 @@ When you enable Knowledge Base, it comes pre-populated with articles from [Elast
 
 
 
-### Add an individual document [knowledge-base-add-knowledge-document]
+### Add a markdown document [knowledge-base-add-knowledge-document]
 
-Add an individual document to Knowledge Base when you want AI Assistant to remember a specific piece of information.
+Add a markdown document to Knowledge Base when you want AI Assistant to remember a specific piece of information. 
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
 2. Click **New → Document** and give it a name.
@@ -113,48 +119,67 @@ Refer to the following video for an example of adding a document to Knowledge Ba
 
 [![Add knowledge document video](https://play.vidyard.com/rQsTujEfikpx3vv1vrbfde.jpg)](https://videos.elastic.co/watch/rQsTujEfikpx3vv1vrbfde?)
 
+### Add an individual file [add-specific-file]
+
+To add an individual file to Knowledge Base, you first need to ingest it into an index and ensure that it includes a semantic text or text field. Supported file types include text, PDF, ODF, Word, Excel, PowerPoint, NDJSON, CSV, and TSV.
+
+1. Access the **Data Visualizer** interface to upload a file using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "File upload". 
+2. Review the list of currently supported file formats and sizes, then select the file you want to upload. A preview of your data appears. In the **Summary** section, click **Import**.
+3. Go to the **Advanced** tab.  In the **Index name** field , enter a name for the index that will contain the data in the uploaded file.
+4. (Optional) Review and update the mappings and ingest pipeline for your new index. 
+5. Click **Add additional field -> Add semantic text field**. 
+  - For **Field**, select the field you want to use as a semantic text field. It should contain information that AI Assistant can use to determine whether a document is relevant to a given query. Do not select a metadata field.
+  - For **Copy to field**, enter a name for your new semantic text field.
+  - For **Inference endpoint**, use the default or select another model that's enabled in your environment. 
+  - Click **Add**. The new field appears in the **Mappings** section.
+6. Click **Import**. File ingest begins and should complete within a few seconds.
+7. Once your file has been ingested to an index, add it to Knowledge Base by following the steps to [add an index](#knowledge-base-add-knowledge-index). 
+
+Refer to the following video for an example of this process (click to play video):
+
+[![Add knowledge index video](https://play.vidyard.com/Q5CjXMN4R2GYLGLUy5P177.jpg)](https://videos.elastic.co/watch/Q5CjXMN4R2GYLGLUy5P177?)
+
 
 
 ### Add an index [knowledge-base-add-knowledge-index]
 
-Add an index as a knowledge source when you want new information added to that index to automatically inform AI Assistant’s responses. Common security examples include asset inventories, network configuration information, on-call matrices, threat intelligence reports, and vulnerability scans.
+Add an index as a knowledge source when you want information in that index to inform AI Assistant’s responses. Common security examples include asset inventories, network configuration information, on-call matrices, threat intelligence reports, and vulnerability scans. When you update the index with new information, AI Assistant will gain access to the new information.
 
 ::::{important}
-Indices added to Knowledge Base must have at least one field mapped as [semantic text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
-::::
+Indices added to Knowledge Base must have at least one field mapped as [semantic text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). 
 
+{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can use a text field instead of a semantic text field. Semantic text fields offer better performance for large blobs of text and matching on semantic relevancy, while text fields perform better for retrieval based on specific document values or attributes, such as email or username. 
+::::
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
 2. Click **New → Index**.
 3. Name the knowledge source.
 4. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 5. Under **Index**, enter the name of the index you want to use as a knowledge source.
-6. Under **Field**, enter the names of one or more semantic text fields within the index.
+6. Under **Field**, enter the names of one or more semantic text ({applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` or text) fields within the index.
 7. Under **Data Description**, describe when this information should be used by AI Assistant.
-8. Under **Query Instruction**, describe how AI Assistant should query this index to retrieve relevant information.
-9. Under **Output Fields**, list the fields which should be sent to AI Assistant. If none are listed, all fields will be sent.
+8. Under **Query Instruction**, describe how AI Assistant should query this index to retrieve relevant documents.
+9. Under **Output Fields**, list the fields which AI Assistant should look at when reviewing documents in this index. If none are listed, all fields are sent.
 
 :::{image} /solutions/images/security-knowledge-base-add-index-config.png
 :alt: Knowledge base's Edit index entry menu
 :::
 
-Refer to the following video for an example of adding an index to Knowledge Base (click to play video).
 
-
-[![Add knowledge index video](https://play.vidyard.com/Q5CjXMN4R2GYLGLUy5P177.jpg)](https://videos.elastic.co/watch/Q5CjXMN4R2GYLGLUy5P177?)
-
-
-
-### Add knowledge with a connector or web crawler [knowledge-base-crawler-or-connector]
+### Add knowledge to an index using a content connector or web crawler [knowledge-base-crawler-or-connector]
 
 You can use an {{es}} connector or web crawler to create an index that contains data you want to add to Knowledge Base.
 
-This section provides an example of adding a threat intelligence feed to Knowledge Base using a web crawler. For more information on adding data to {{es}} using a connector, refer to [Ingest data with Elastic connectors](elasticsearch://reference/search-connectors/index.md). For more information on web crawlers, refer to [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
+#### Use a content connector to ingest data from third-party applications to Knowledge Base
+
+You can ingest data from third-party platforms such as Github, Jira, Teams, Google Drive, Slack, email, and [more](elasticsearch://reference/search-connectors/index.md) using [content connectors](/solutions/security/get-started/content-connectors.md). 
+
+Once you've set up a content connector, data from the selected source is ingested to an {{es}} index. To add it to Knowledge Base, follow the steps to [add an index](#knowledge-base-add-knowledge-index). 
 
 
 #### Use a web crawler to add threat intelligence to Knowledge Base [_use_a_web_crawler_to_add_threat_intelligence_to_knowledge_base]
 
-First, you’ll need to set up a web crawler to add the desired data to an index, then you’ll need to add that index to Knowledge Base.
+First, you’ll need to set up a web crawler to add the desired data to an index, then you’ll need to add that index to Knowledge Base. For more information on web crawlers, refer to [web crawlers](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
 
 1. From the **Search** section of {{kib}}, find **Web crawlers** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **New web crawler**.
@@ -184,3 +209,10 @@ Your new threat intelligence data is now included in Knowledge Base and can info
 Refer to the following video for an example of creating a web crawler to ingest threat intelligence data and adding it to Knowledge Base.
 
 [![Add knowledge via web crawler video](https://play.vidyard.com/eYo1e1ZRwT2mjfM7Yr9MuZ.jpg)](https://videos.elastic.co/watch/eYo1e1ZRwT2mjfM7Yr9MuZ?)
+
+
+## Additional resources
+
+- For a walkthrough of how Knowledge Base can improve the quality of AI Assistant's responses, refer to [Use AI Assistant's Knowledge Base to improve response quality](/solutions/security/ai/usecase-knowledge-base-walkthrough.md).
+- To learn more about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
+- For more information about how the data in Knowledge Base gets chunked, refer to [Intelligent RAG data chunking](https://www.elastic.co/search-labs/blog/advanced-chunking-fetch-surrounding-chunks).

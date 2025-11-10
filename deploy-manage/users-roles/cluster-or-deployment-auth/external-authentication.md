@@ -13,7 +13,7 @@ External authentication in Elastic is any form of authentication that requires i
 
 Elastic offers several external [realm](authentication-realms.md) types, each of which represents a common authentication provider. You can have as many external realms as you would like, each with its own unique name and configuration.
 
-If the authentication provider that you want to use is not currently supported, then you can create a your own [custom realm plugin](custom.md) to integrate with additional systems.
+If the authentication provider that you want to use is not currently supported, then you can create your own [custom realm plugin](custom.md) to integrate with additional systems.
 
 In this section, you'll learn how to configure different types of external realms, and use them to grant access to Elastic resources.
 

@@ -14,7 +14,7 @@ products:
 # Collect monitoring data with Metricbeat [monitoring-metricbeat]
 
 
-Yu can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster.
+You can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster.
 
 To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
@@ -102,7 +102,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
     If the Elastic {{security-features}} are enabled, you must also provide a user ID and password so that {{metricbeat}} can collect metrics successfully:
 
-    1. Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the `remote_monitoring_user` [built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-collector). Alternatively, use the `remote_monitoring_user` [built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{kib}} module configuration file.
 
 7. Optional: Disable the system module in {{metricbeat}}.
@@ -127,7 +127,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "http://es-mon2:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"
@@ -147,7 +147,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
     If the {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 
-    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the `remote_monitoring_user` [built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-collector). Alternatively, use the `remote_monitoring_user` [built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.
 
     For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).

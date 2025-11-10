@@ -2,6 +2,8 @@
 navigation_title: Upgrade {{agent}}s
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -44,7 +46,7 @@ These restrictions apply whether you are upgrading {{agents}} individually or in
 
 ## Upgrading {{agent}} [upgrade-agent]
 
-To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}. You can perform the following upgrade-related actions:
+To upgrade your {{agents}}, go to **Management** → **{{fleet}}** → **Agents** in {{kib}}. You can perform the following upgrade-related actions:
 
 | User action | Result |
 | --- | --- |
@@ -54,6 +56,8 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
 | [View upgrade status](#view-upgrade-status) | View the detailed status of an agent upgrade, including upgrade metrics and agent logs. |
 | [Restart an upgrade for a single agent](#restart-upgrade-single) | Restart an upgrade process that has stalled for a single agent. |
 | [Restart an upgrade for multiple agents](#restart-upgrade-multiple) | Do a bulk restart of the upgrade process for a set of agents. |
+
+With an [Elastic subscription level](https://www.elastic.co/subscriptions) that supports **automatic agent binary upgrades**, you can also configure an automatic upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
 
 
 ## Upgrade a single {{agent}} [upgrade-an-agent]
@@ -76,13 +80,14 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
 
 3. In the Upgrade agent window, select or specify an upgrade version and click **Upgrade agent**.
 
-    In certain cases the latest available {{agent}} version may not be recognized by {{kib}}. For instance, this occurs when the {{kib}} version is lower than the {{agent}} version. You can specify a custom version for {{agent}} to upgrade to by entering the version into the **Upgrade version** text field.
+    {{kib}} provides a list of the {{agent}} versions available for upgrade. A version number ending with a build identifier in the format `+build{yyyymmddhhmm}` indicates an [independent {{agent}} release version](./fleet-agent-release-process.md#independent-agent-releases).
+
+    In certain cases, the latest available {{agent}} version may not be recognized by {{kib}}. For instance, this occurs when the {{kib}} version is lower than the {{agent}} version. You can specify a custom version for {{agent}} to upgrade to by entering the version into the **Upgrade version** text field.
 
     :::{image} images/upgrade-agent-custom.png
     :alt: Menu for upgrading a single {{agent}}
     :screenshot:
     :::
-
 
 
 ## Do a rolling upgrade of multiple {{agent}}s [rolling-agent-upgrade]
@@ -98,8 +103,13 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
 
 5. Upgrade the agents.
 
+Note that agents in a rollout period have the status `Updating` until the upgrade is complete, even if the upgrade has not started yet.
 
 ## Schedule an upgrade [schedule-agent-upgrade]
+
+::::{note}
+This feature is available only for certain subscription levels. For more information, check **Scheduled agent binary upgrades** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
+::::
 
 1. On the **Agents** tab, select one or more agents, and click **Actions**.
 2. From the **Actions** menu, choose to schedule an upgrade.
@@ -108,8 +118,6 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
     :alt: Menu for scheduling {{agent}} upgrades
     :screenshot:
     :::
-
-    If the schedule option is grayed out, it may not be available at your subscription level. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
 
 3. In the Upgrade window, select an upgrade version.
 4. Select a maintenance window. For more information, refer to [Do a rolling upgrade of multiple {{agent}}s](#rolling-agent-upgrade).
@@ -182,7 +190,6 @@ If an upgrade fails, you can view the agent logs to find the reason:
     :::
 
 
-
 ## Restart an upgrade for a single agent [restart-upgrade-single]
 
 An {{agent}} upgrade process may sometimes stall. This can happen for various reasons, including, for example, network connectivity issues or a delayed shutdown.
@@ -217,6 +224,70 @@ When the upgrade process for multiple agents has been detected to have stalled, 
 5. Restart the upgrades.
 
 
+## Auto-upgrade agents enrolled in a policy [auto-upgrade-agents]
+
+```{applies_to}
+stack: ga 9.1.0
+```
+
+::::{note}
+This feature is available only for certain subscription levels. For more information, check **Automatic agent binary upgrades** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
+::::
+
+To configure an automatic rollout of a new minor or patch version to a percentage of the agents enrolled in your {{agent}} policy. follow these steps:
+
+1. In {{kib}}, go to **Management** → **{{fleet}}** → **Agent policies**.
+2. Select the agent policy for which you want to configure an automatic agent upgrade.
+3. On the agent policy's details page, find **Auto-upgrade agents**, and select **Manage** next to it.
+4. In the **Manage auto-upgrade agents** window, click **Add target version**.
+5. From the **Target agent version** dropdown, select the minor or patch version to which you want to upgrade a percentage of your agents.
+6. In the **% of agents to upgrade** field, enter the percentage of active agents you want to upgrade to this target version.
+   
+   Note that:
+   - Unenrolling, unenrolled, inactive, and uninstalled agents are not included in the count. For example, if you set the target upgrade percentage to 50% for a policy with 10 active agents and 10 inactive agents, the target is met when 5 active agents are upgraded.
+   - Rounding is applied, and the actual percentage of the upgraded agents may vary slightly. For example, if you set the target upgrade percentage to 30% for a policy with 25 active agents, the target is met when 8 active agents are upgraded (32%).
+
+7. You can then add a different target version, and specify the percentage of agents you want to be upgraded to that version. The total percentage of agents to be upgraded cannot exceed 100%.
+8. Click **Save**.
+
+Once the configuration is saved, an asynchronous task runs every 30 minutes, upgrading the agents in the policy to the specified target version.
+
+If the number of agents to be upgraded is greater than or equal to 10, a rollout period is automatically applied. The rollout duration is either 10 minutes or `nAgents * 0.03` seconds, whichever is greater.
+
+In case of any failed upgrades, the upgrades are retried with exponential backoff mechanism until the upgrade is successful, or the maximum number of retries is reached. Note that the maximum number of retries is the number of [configured retry delays](#auto-upgrade-settings).
+
+::::{note}
+Only active agents enrolled in the policy are considered for the automatic upgrade.
+
+If new agents are assigned to the policy, the number of {{agents}} to be upgraded is adjusted according to the set percentages.
+::::
+
+### Configure the auto-upgrade settings [auto-upgrade-settings]
+
+On self-managed and cloud deployments of {{stack}}, you can configure the default task interval and the retry delays of the automatic upgrade in the [{{kib}} {{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md). For example:
+
+```yml
+xpack.fleet.autoUpgrades.taskInterval: 15m <1>
+xpack.fleet.autoUpgrades.retryDelays: ['5m', '10m', '20m'] <2>
+```
+1. The time interval at which the auto-upgrade task should run. Defaults to `30m`.
+2. Array indicating how much time should pass before a failed auto-upgrade is retried. The array's length indicates the maximum number of retries. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`.
+
+For more information, refer to the [Kibana configuration reference](kibana://reference/configuration-reference.md).
+
+### View the status of the automatic upgrade [auto-upgrade-view-status]
+
+You can view the status of the automatic upgrade in the following ways:
+
+- On the agent policy's details page, find **Auto-upgrade agents**, and select **Manage** to open the **Manage auto-upgrade agents** window.
+  
+  The status of the upgrade is displayed next to the specified target version and percentage, and includes the percentage of agents that have already been upgraded.
+
+  To view any failed upgrades, hover over the **Upgrade failed** status, then click **Go to upgrade**.
+
+- On the **{{fleet}}** → **Agents** page, click **Agent activity** to open a flyout showing logs of the {{agent}} activity and the progress of the automatic agent upgrade.
+
+
 ## Upgrade RPM and DEB system packages [upgrade-system-packages]
 
 If you have installed and enrolled {{agent}} using either a DEB (for a Debian-based Linux distribution) or RPM (for a RedHat-based Linux distribution) install package, the upgrade cannot be managed by {{fleet}}. Instead, you can perform the upgrade using these steps.
@@ -229,13 +300,13 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 1. Download the {{agent}} Debian install package for the release that you want to upgrade to:
 
     ```bash subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
     ```
 
 2. Upgrade {{agent}} to the target release:
 
     ```bash subs=true
-    sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.
@@ -246,13 +317,13 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 1. Download the {{agent}} RPM install package for the release that you want to upgrade to:
 
     ```bash subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
 2. Upgrade {{agent}} to the target release:
 
     ```bash subs=true
-    sudo rpm -U elastic-agent-{{stack-version}}-x86_64.rpm
+    sudo rpm -U elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.

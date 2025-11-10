@@ -71,13 +71,13 @@ By default, the {{es}} service created by ECK is configured to route traffic to 
 When you change the `clusterIP` setting of the service, ECK will delete and re-create the service as `clusterIP` is an immutable field. Depending on your client implementation, this might result in a short disruption until the service DNS entries refresh to point to the new endpoints.
 ::::
 
-```yaml
+```yaml subs=true
 apiVersion: <kind>.k8s.elastic.co/v1
 kind: <Kind>
 metadata:
   name: hulk
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   http:
     service:
       spec:

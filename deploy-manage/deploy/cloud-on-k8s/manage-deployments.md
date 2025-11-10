@@ -1,9 +1,10 @@
 ---
+navigation_title: Manage deployments
 applies_to:
   deployment:
     eck: all
 ---
-# Manage deployments
+# Manage deployments in {{eck}}
 
 This section provides detailed guidance on deploying, configuring, and managing {{es}} and {{kib}} within ECK. A **deployment** refers to an {{es}} cluster, optionally with one or more {{kib}} instances connected to it.
 

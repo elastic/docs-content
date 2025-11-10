@@ -20,18 +20,29 @@ Elastic Observability allows you to deploy and manage logs at a petabyte scale, 
 * [Run pattern analysis on log data](/solutions/observability/logs/run-pattern-analysis-on-log-data.md): Find patterns in unstructured log messages and make it easier to examine your data.
 * [Troubleshoot logs](/troubleshoot/observability/troubleshoot-logs.md): Find solutions for errors you might encounter while onboarding your logs.
 
+## Send log data to your project [observability-log-monitoring-send-logs-data-to-your-project]
 
-## Send logs data to your project [observability-log-monitoring-send-logs-data-to-your-project]
+You can send log data to your project in different ways depending on your needs. When choosing between these options, consider the different features and functionalities between them. 
 
-You can send logs data to your project in different ways depending on your needs:
-
-* {{agent}}
-* {{filebeat}}
-
-When choosing between {{agent}} and {{filebeat}}, consider the different features and functionalities between the two options. See [{{beats}} and {{agent}} capabilities](/manage-data/ingest/tools.md) for more information on which option best fits your situation.
+Refer to [Ingest tools overview](/manage-data/ingest/tools.md) for more information on which option best fits your situation.
 
 
-### {{agent}} [observability-log-monitoring-agent]
+::::{tab-set}
+
+:::{tab-item} {{edot}}
+
+The Elastic Distribution of OpenTelemetry (EDOT) Collector and SDKs provide native OpenTelemetry support for collecting logs, metrics, and traces. This approach is ideal for:
+
+* Native OpenTelemetry: When you want to use OpenTelemetry standards and are already using OpenTelemetry in your environment.
+* Full observability: When you need to collect logs, metrics, and traces from a single collector.
+* Modern applications: When building new applications with OpenTelemetry instrumentation.
+* Standards compliance: When you need to follow OpenTelemetry specifications.
+
+For more information, refer to [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md).
+
+:::
+
+:::{tab-item} {{agent}}
 
 {{agent}} uses [integrations](https://www.elastic.co/integrations/data-integrations) to ingest logs from Kubernetes, MySQL, and many more data sources. You have the following options when installing and managing an {{agent}}:
 
@@ -45,7 +56,7 @@ See [install {{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed
 
 #### Standalone {{agent}} [observability-log-monitoring-standalone-agent]
 
-Install an {{agent}} and manually configure it locally on the system where it’s installed. You are responsible for managing and upgrading the agents.
+Install an {{agent}} and manually configure it locally on the system where it's installed. You are responsible for managing and upgrading the agents.
 
 See [install standalone {{agent}}](/reference/fleet/install-standalone-elastic-agent.md).
 
@@ -56,8 +67,9 @@ Run an {{agent}} inside of a container — either with {{fleet-server}} or stand
 
 See [install {{agent}} in containers](/reference/fleet/install-elastic-agents-in-containers.md).
 
+:::
 
-### {{filebeat}} [observability-log-monitoring-filebeat]
+:::{tab-item} {{filebeat}}
 
 {{filebeat}} is a lightweight shipper for forwarding and centralizing log data. Installed as a service on your servers, {{filebeat}} monitors the log files or locations that you specify, collects log events, and forwards them to your Observability project for indexing.
 
@@ -65,6 +77,22 @@ See [install {{agent}} in containers](/reference/fleet/install-elastic-agents-in
 * [{{filebeat}} quick start](beats://reference/filebeat/filebeat-installation-configuration.md): Basic installation instructions to get you started.
 * [Set up and run {{filebeat}}](beats://reference/filebeat/setting-up-running.md): Information on how to install, set up, and run {{filebeat}}.
 
+:::
+
+:::{tab-item} {{ls}}
+
+{{ls}} is a powerful data processing pipeline that can collect, transform, and enrich log data before sending it to Elasticsearch. It's ideal for:
+
+* Complex data processing: When you need to parse, filter, and transform logs before indexing.
+* Multiple data sources: When you need to collect logs from various sources and normalize them.
+* Advanced use cases: When you need data enrichment, aggregation, or routing to multiple destinations.
+* Extending Elastic integrations: When you want to add custom processing to data collected by Elastic Agent or Beats.
+
+For more information, refer to [Logstash](logstash://reference/index.md) and [Using Logstash with Elastic integrations](logstash://reference/using-logstash-with-elastic-integrations.md).
+
+:::
+
+::::
 
 ## Configure logs [observability-log-monitoring-configure-logs]
 

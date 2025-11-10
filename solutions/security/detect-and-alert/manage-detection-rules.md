@@ -67,9 +67,9 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ## Modify existing rules settings [edit-rules-settings]
 
 ::::{admonition} Requirements
-* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project tier.
-* You must have an [Enterprise subscription](https://www.elastic.co/pricing) {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them.
+* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project feature tier.
+* You must have an [Enterprise subscription](https://www.elastic.co/pricing) {{stack}} or a [Security Analytics Complete project](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them.
 
 ::::
 
@@ -110,6 +110,32 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 
 4. If available, select **Overwrite all selected _x_** to overwrite the settings on the rules. For example, if you’re adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
 5. Click **Save**.
+
+::::{note}
+
+```{applies_to}
+   stack: ga 9.1 
+```
+
+Modified fields on prebuilt rules are marked with the **Modified** badge. From the rule's details page, click the badge to view the changed fields. Changes are displayed in a side-by-side comparison of the original Elastic version and the modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also view this comparison by clicking the **Modified Elastic rule** badge under the rule's name on the rule's details page.
+
+::::
+
+## Revert modifications to prebuilt rules [revert-rule-changes]
+
+```{applies_to}
+   stack: ga 9.1 
+```
+
+After modifying a prebuilt rule, you can restore it's original version. To do this:
+
+1. Open the rule's details page, click the **All actions** menu, then **Revert to Elastic version**.
+2. In the flyout, review the modified fields. Deleted characters are highlighted in red; added characters are highlighted in green.
+3. Click **Revert** to restore the modified fields to their original versions. 
+
+::::{note}
+If you haven’t updated the rule in a while, its original version might be unavailable for comparison. You can avoid this by regularly updating prebuilt rules.
+::::
 
 
 ## Manage rules [manage-rules-ui]
@@ -162,7 +188,28 @@ Be mindful of the following:
 
 ::::
 
+## Fill gaps for multiple rules [bulk-fill-gaps-multiple-rules]
 
+```{applies_to}
+   stack: ga 9.1
+```
+
+From the Rules table, fill gaps for multiple rules by using the **Fill gaps** bulk action.
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, click the **Rule Monitoring** tab, then do one of the following:
+
+   * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then click **Bulk actions → Fill gaps**.
+   
+   * Only fill rules with unfilled gaps: In the panel above the table, click the **Only rules with unfilled gaps** filter to only show rules with unfilled gaps (rules with gaps that are being filled are excluded). Select the appropriate rules or all of them, then click **Bulk actions → Fill gaps**. 
+
+3. Specify when to start and end the manual run that will fill the gaps. 
+4. Click **Schedule gap fills**. The rule will manually run over unfilled gaps in the selected time range. 
+
+After scheduling the manual run, you can track gap fill progress by checking the **Total rules with gaps:** field in the panel above the Rules table. The field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. 
+
+Alternatively, you can check gap fill progress for individual rules by going to their details page, clicking the **Execution results** tab, then going to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
+ 
 
 ## Snooze rule actions [snooze-rule-actions]
 
@@ -182,7 +229,7 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 ## Export and import rules [import-export-rules-ui]
 
 ::::{admonition} Requirements
-* You can export and import custom rules and prebuilt rules (modified and unmodified) with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* You can export and import custom rules and prebuilt rules (modified and unmodified) with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) to learn more about the required privileges for managing rules.
 ::::
 

@@ -22,7 +22,7 @@ When a repository is assigned to a deployment, a snapshot is taken every 30 minu
 * AWS S3
 * Azure Blob Storage
 * Google Cloud Storage
-* Minio S3
+* MinIO S3
 
 ::::{note}
 No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
@@ -36,7 +36,7 @@ For more details about how snapshots are used with {{es}}, check [Snapshot and R
 * [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/)
 
 ::::{tip}
-If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.  We suggest that you use [Minio](https://www.minio.io/). For our installation notes, check [Snapshotting to Minio On-Premise Storage](minio-on-premise-repository.md).
+If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.  We suggest that you use [MinIO](https://www.minio.io/). For our installation notes, check [Snapshotting to MinIO On-Premise Storage](minio-on-premise-repository.md).
 ::::
 
 
@@ -47,7 +47,7 @@ The following guides provide instructions on adding a snapshot repository in ECE
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
+* [MinIO](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 ## Edit snapshot repository configurations [ece_edit_snapshot_repository_configurations]
 
@@ -71,7 +71,7 @@ To delete a snapshot repository configuration from your {{ece}} installation:
 4. Run the following command against the repository name:
 
     ```sh
-    curl -s -XDELETE -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/platform/configuration/snapshots/repositories/REPOSITORY_NAME
+    curl -s -XDELETE -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/snapshots/repositories/REPOSITORY_NAME
     ```
 
     ::::{note}

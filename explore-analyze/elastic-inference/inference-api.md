@@ -9,17 +9,39 @@ products:
   - id: kibana
 ---
 
-# Integrate with third-party services
+# {{infer-cap}} integrations
 
-{{es}} provides a machine learning [inference API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-get-1) to create and manage inference endpoints to integrate with machine learning models provide by popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
+{{es}} provides a machine learning [{{infer}} API]({{es-apis}}group/endpoint-inference) to create and manage {{infer}} endpoints that integrate with services such as {{es}} (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
-Learn how to integrate with specific services in the subpages of this section.
+You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint:
 
-## Inference endpoints UI [inference-endpoints]
+- using the [Create an inference endpoint API]({{es-apis}}operation/operation-inference-put)
+- through the [Inference endpoints UI](#add-inference-endpoints).
 
-You can also manage inference endpoints using the UI.
+## Default {{infer}} endpoints [default-enpoints]
 
-The **Inference endpoints** page provides an interface for managing inference endpoints.
+Your {{es}} deployment contains preconfigured {{infer}} endpoints, which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. These endpoints come in two forms:
+
+- **Elastic Inference Service (EIS) endpoints**, which provide {{infer}} as a managed service and do not consume resources from your own nodes.
+
+- **ML node-based endpoints**, which run on your dedicated {{ml}} nodes.
+
+The following section lists the default {{infer}} endpoints, identified by their `inference_id`, grouped by whether they are EIS- or ML node–based.
+
+### Default endpoints for Elastic {{infer-cap}} Service (EIS)
+
+- `.elser-2-elastic`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) trained model as an Elastic {{infer-cap}} Service for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2`. {applies_to}`stack: preview 9.1` {applies_to}`self: unavailable` {applies_to}`serverless: preview`
+
+### Default endpoints used on ML-nodes
+
+- `.elser-2-elasticsearch`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) built-in trained model for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2_linux-x86_64`.
+- `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.
+
+Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
+
+## {{infer-cap}} endpoints UI [inference-endpoints]
+
+The **{{infer-cap}} endpoints** page provides an interface for managing {{infer}} endpoints.
 
 :::{image} /explore-analyze/images/kibana-inference-endpoints-ui.png
 :alt: Inference endpoints UI
@@ -28,41 +50,47 @@ The **Inference endpoints** page provides an interface for managing inference en
 
 Available actions:
 
-* Add new endpoint
-* View endpoint details
-* Copy the inference endpoint ID
-* Delete endpoints
+- Add new endpoint
+- View endpoint details
+- Copy the inference endpoint ID
+- Delete endpoints
 
-## Add new inference endpoint
+## Add new {{infer}} endpoint [add-inference-endpoints]
 
-To add a new interference endpoint using the UI:
+To add a new {{infer}} endpoint using the UI:
 
 1. Select the **Add endpoint** button.
 1. Select a service from the drop down menu.
 1. Provide the required configuration details.
 1. Select **Save** to create the endpoint.
 
+If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
+
 ## Adaptive allocations [adaptive-allocations]
 
-Adaptive allocations allow inference services to dynamically adjust the number of model allocations based on the current load.
+Adaptive allocations allow {{infer}} services to dynamically adjust the number of model allocations based on the current load.
+This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for models used through the Elastic {{infer-cap}} Service (EIS) and third-party services (for example, Alibaba Cloud, Cohere, or OpenAI), because those models are not deployed within your Elasticsearch cluster.
 
 When adaptive allocations are enabled:
 
-* The number of allocations scales up automatically when the load increases.
-* Allocations scale down to a minimum of 0 when the load decreases, saving resources.
+- The number of allocations scales up automatically when the load increases.
+- Allocations scale down to a minimum of 0 when the load decreases, saving resources.
 
-For more information about adaptive allocations and resources, refer to the trained model autoscaling documentation.
+### Allocation scaling behavior
 
-% TO DO: Add a link to trained model autoscaling when the page is available.%
+The behavior of allocations depends on several factors:
 
-## Default {{infer}} endpoints [default-enpoints]
+- Deployment type (Elastic Cloud Hosted, Elastic Cloud Enterprise, or Serverless)
+- Usage level (low, medium, or high)
+- Optimization type ([ingest](/deploy-manage/autoscaling/trained-model-autoscaling.md#ingest-optimized) or [search](/deploy-manage/autoscaling/trained-model-autoscaling.md#search-optimized))
 
-Your {{es}} deployment contains preconfigured {{infer}} endpoints which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. The following list contains the default {{infer}} endpoints listed by `inference_id`:
+::::{important}
+If you enable adaptive allocations and set the `min_number_of_allocations` to a value greater than `0`, you will be charged for the machine learning resources, even if no inference requests are sent.
 
-* `.elser-2-elasticsearch`: uses the [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) built-in trained model for `sparse_embedding` tasks (recommended for English language tex). The `model_id` is `.elser_model_2_linux-x86_64`.
-* `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.
+However, setting the `min_number_of_allocations` to a value greater than `0` keeps the model always available without scaling delays. Choose the configuration that best fits your workload and availability needs.
+::::
 
-Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
+For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) documentation.
 
 ## Configuring chunking [infer-chunking-config]
 
@@ -77,23 +105,20 @@ By default, documents are split into sentences and grouped in sections up to 250
 
 ### Chunking strategies
 
-Two strategies are available for chunking: `sentence` and `word`.
+Several strategies are available for chunking:
+
+#### `sentence`
 
 The `sentence` strategy splits the input text at sentence boundaries. Each chunk contains one or more complete sentences ensuring that the integrity of sentence-level context is preserved, except when a sentence causes a chunk to exceed a word count of `max_chunk_size`, in which case it will be split across chunks. The `sentence_overlap` option defines the number of sentences from the previous chunk to include in the current chunk which is either `0` or `1`.
 
-The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk.
-
-The default chunking strategy is `sentence`.
-
-#### Example of configuring the chunking behavior
-
-The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model by default and configures the chunking behavior.
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures the chunking behavior with the `sentence` strategy.
 
 ```console
-PUT _inference/sparse_embedding/small_chunk_size
+PUT _inference/sparse_embedding/sentence_chunks
 {
   "service": "elasticsearch",
   "service_settings": {
+    "model_id": ".elser_model_2",
     "num_allocations": 1,
     "num_threads": 1
   },
@@ -101,6 +126,113 @@ PUT _inference/sparse_embedding/small_chunk_size
     "strategy": "sentence",
     "max_chunk_size": 100,
     "sentence_overlap": 0
+  }
+}
+```
+
+The default chunking strategy is `sentence`.
+
+#### `word`
+
+The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk.
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures the chunking behavior with the `word` strategy, setting a maximum of 120 words per chunk and an overlap of 40 words between chunks.
+
+```console
+PUT _inference/sparse_embedding/word_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "word",
+    "max_chunk_size": 120,
+    "overlap": 40
+  }
+}
+```
+
+#### `recursive`
+
+```{applies_to}
+stack: ga 9.1
+```
+
+The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
+
+##### Markdown separator group
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy using the markdown separator group and a maximum of 200 words per chunk.
+
+```console
+PUT _inference/sparse_embedding/recursive_markdown_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "recursive",
+    "max_chunk_size": 200,
+    "separator_group": "markdown"
+  }
+}
+```
+
+##### Custom separator group
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy. It uses a custom list of separators to split plaintext into chunks of up to 180 words.
+
+
+```console
+PUT _inference/sparse_embedding/recursive_custom_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "recursive",
+    "max_chunk_size": 180,
+    "separators": [
+      "^(#{1,6})\\s",
+      "\\n\\n",
+      "\\n[-*]\\s",
+      "\\n\\d+\\.\\s",
+      "\\n"
+    ]
+  }
+}
+```
+
+#### `none`
+
+```{applies_to}
+stack: ga 9.1
+```
+
+The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and disables chunking by setting the strategy to `none`.
+
+```console
+PUT _inference/sparse_embedding/none_chunking
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "none"
   }
 }
 ```

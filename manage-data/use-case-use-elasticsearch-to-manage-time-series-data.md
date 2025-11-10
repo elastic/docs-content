@@ -85,9 +85,9 @@ The `found-snapshots` repository is specific to your cluster. To use another clu
 
 You can also use any of the following custom repository types with {{search-snaps}}:
 
-* [Google Cloud Storage (GCS)](../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
-* [Azure Blob Storage](../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
-* [Amazon Web Services (AWS)](../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
+* [Google Cloud Storage (GCS)](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
+* [Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
+* [Amazon Web Services (AWS)](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
 ::::::
 
 ::::::{tab-item} Self-managed
@@ -127,7 +127,10 @@ If you use {{fleet}} or {{agent}}, edit one of {{es}}'s built-in lifecycle polic
 
 You can customize these policies based on your performance, resilience, and retention requirements.
 
-To edit a policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click the policy you’d like to edit.
+To edit a policy in {{kib}}:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click the policy you’d like to edit.
 
 You can also use the [update lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
@@ -183,7 +186,10 @@ PUT _ilm/policy/logs
 ::::::
 
 ::::::{tab-item} Custom application
-To create a policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+To create a policy in {{kib}}:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click **Create policy**.
 
 You can also use the [update lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
@@ -261,8 +267,10 @@ If you’re unsure how to map your fields, use [runtime fields](data-store/mappi
 
 ::::
 
+To create a component template in {{kib}}:
 
-To create a component template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create component template**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create component template**.
 
 You can also use the [create component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
 
@@ -314,7 +322,10 @@ Use your component templates to create an index template. Specify:
 * Any component templates that contain your mappings and index settings.
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](data-store/templates.md#avoid-index-pattern-collisions).
 
-To create an index template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
+To create an index template in {{kib}}:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create template**.
 
 You can also use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template). Include the `data_stream` object to enable data streams.
 

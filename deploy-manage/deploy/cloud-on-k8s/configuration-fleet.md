@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-elastic-agent-fleet-configuration]
+# Configuration for Fleet managed agents on {{eck}} [k8s-elastic-agent-fleet-configuration]
 
 {{fleet}}-managed {{agents}} must connect to {{fleet-server}} to receive their configurations. You can deploy {{fleet-server}} instances using ECKs Agent CRD with the appropriate configuration, as shown in [Fleet mode and Fleet Server](#k8s-elastic-agent-fleet-configuration-fleet-mode-and-fleet-server).
 
@@ -53,8 +54,8 @@ metadata:
   name: kibana-sample
 spec:
   config:
-    xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-sample-es-http.default.svc:9200"]
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-sample-agent-http.default.svc:8220"]
+    xpack.fleet.agents.elasticsearch.hosts: ["<ELASTICSEARCH_HOST_URL>-es-http.default.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>-sample-agent-http.default.svc:8220"]
     xpack.fleet.packages:
       - name: system
         version: latest
@@ -92,8 +93,8 @@ spec:
               name: system
 ```
 
-* `xpack.fleet.agents.elasticsearch.hosts` must point to the {{es}} cluster where {{agents}} should send data. For ECK-managed {{es}} clusters ECK creates a Service accessible through `https://ES_RESOURCE_NAME-es-http.ES_RESOURCE_NAMESPACE.svc:9200` URL, where `ES_RESOURCE_NAME` is the name of {{es}} resource and `ES_RESOURCE_NAMESPACE` is the namespace it was deployed within. See [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for details on adjusting this field when running agent as non-root as it becomes required.
-* `xpack.fleet.agents.fleet_server.hosts` must point to {{fleet-server}} that {{agents}} should connect to. For ECK-managed {{fleet-server}} instances, ECK creates a Service accessible through `https://FS_RESOURCE_NAME-agent-http.FS_RESOURCE_NAMESPACE.svc:8220` URL, where `FS_RESOURCE_NAME` is the name of {{agent}} resource with {{fleet-server}} enabled and `FS_RESOURCE_NAMESPACE` is the namespace it was deployed in.
+* `xpack.fleet.agents.elasticsearch.hosts` must point to the {{es}} cluster where {{agents}} should send data. For ECK-managed {{es}} clusters ECK creates a Service accessible through `<ES_RESOURCE_NAME>-es-http.<ES_RESOURCE_NAMESPACE>.svc:9200` URL, where `ES_RESOURCE_NAME` is the name of {{es}} resource and `ES_RESOURCE_NAMESPACE` is the namespace it was deployed within. See [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for details on adjusting this field when running agent as non-root as it becomes required.
+* `xpack.fleet.agents.fleet_server.hosts` must point to {{fleet-server}} that {{agents}} should connect to. For ECK-managed {{fleet-server}} instances, ECK creates a Service accessible through `<FS_RESOURCE_NAME>-agent-http.FS_RESOURCE_NAMESPACE.svc:8220` URL, where `FS_RESOURCE_NAME` is the name of {{agent}} resource with {{fleet-server}} enabled and `FS_RESOURCE_NAMESPACE` is the namespace it was deployed in.
 * `xpack.fleet.packages` are required packages to enable {{fleet-server}} and {{agents}} to enroll.
 * `xpack.fleet.agentPolicies` policies are needed for {{fleet-server}} and {{agents}} to enroll to, check https://www.elastic.co/guide/en/fleet/current/agent-policy.html for more information.
 
@@ -146,8 +147,23 @@ By default, every reference targets all instances in your {{es}}, {{kib}} and {{
 
 ## Customize {{agent}} configuration [k8s-elastic-agent-fleet-configuration-custom-configuration]
 
-In contrast to {{agents}} in standalone mode, the configuration is managed through {{fleet}}, and it cannot be defined through `config` or `configRef` elements.
+In contrast to {{agents}} in standalone mode, the configuration is managed through {{fleet}}, and it cannot be defined through `config` or `configRef` elements with a few exceptions.
 
+One of those exceptions is the configuration of providers as described in [advanced Agent configuration managed by Fleet](/reference/fleet/advanced-kubernetes-managed-by-fleet.md). When {{agent}} is managed by {{fleet}} and is orchestrated by ECK, the configuration of providers can simply be done through the `.spec.config` element in the Agent resource as of {applies_to}`stack: ga 8.13`:
+
+```yaml
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: elastic-agent
+spec:
+  config:
+    fleet:
+      enabled: true
+    providers.kubernetes:
+      add_resource_metadata:
+        deployment: true
+```
 
 ## Upgrade the {{agent}} specification [k8s-elastic-agent-fleet-configuration-upgrade-specification]
 
@@ -160,13 +176,13 @@ Depending on the use case, {{agent}} may need to be deployed as a [Deployment](h
 
 Similarly, you can set the [update strategy](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/) when deploying as a DaemonSet. This allows you to control the rollout speed for new configuration by modifying the `maxUnavailable` setting:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     strategy:
       type: RollingUpdate
@@ -182,13 +198,13 @@ Refer to [Set compute resources for Beats and Elastic Agent](manage-compute-reso
 
 Some {{agent}} features, such as the [{{k8s}} integration](https://epr.elastic.co/package/kubernetes/0.2.8/), require that Agent Pods interact with {{k8s}} APIs. This functionality requires specific permissions. Standard {{k8s}} [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow API interactions:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: elasticsearch-sample
   daemonSet:
@@ -253,7 +269,7 @@ In order to run {{agent}} as a non-root user you must choose how you want to per
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 2. Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user.
 
-In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `certificate_authorities.ssl` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
+In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `ssl.certificate_authorities` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
 
 To run {{agent}} with an `emptyDir` volume.
 
@@ -380,20 +396,20 @@ metadata:
 spec:
   config:
     # xpack.fleet.agents.elasticsearch.hosts: <1>
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-sample-agent-http.default.svc:8220"]
+    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>-agent-http.default.svc:8220"]
     xpack.fleet.outputs:
     - id: eck-fleet-agent-output-elasticsearch
       is_default: true
       name: eck-elasticsearch
       type: elasticsearch
       hosts:
-      - "https://elasticsearch-sample-es-http.default.svc:9200" <2>
+      - "<ELASTICSEARCH-HOST_URL>-es-http.default.svc:9200" <2>
       ssl:
         certificate_authorities: ["/mnt/elastic-internal/elasticsearch-association/default/elasticsearch-sample/certs/ca.crt"] <3>
 ```
 
 1. This entry must not exist when running agent in fleet mode as a non-root user.
-2. Note that the correct URL for {{es}} is `https://ELASTICSEARCH_NAME-es-http.YOUR-NAMESPACE.svc:9200`
+2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.<YOUR-NAMESPACE>.svc:9200`
 3. Note that the correct path for {{es}} `certificate_authorities` is `/mnt/elastic-internal/elasticsearch-association/YOUR-NAMESPACE/ELASTICSEARCH-NAME/certs/ca.crt`
 
 

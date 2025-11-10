@@ -43,7 +43,7 @@ Currently, autoscaling behavior is as follows:
 * **Data tiers**
 
     * Each {{es}} [data tier](../../manage-data/lifecycle/data-tiers.md) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
-    * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html).
+    * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](/manage-data/lifecycle/index-lifecycle-management.md).
     * To control the maximum size of each data tier and ensure it will not scale above a certain size, you can use the maximum size per zone field.
     * Autoscaling based on memory or CPU, as well as autoscaling downward, is not currently supported. In case you want to adjust the size of your data tier to add more memory or CPU, or in case you deleted data and want to scale it down, you can set the current size per zone of each data tier manually.
 
@@ -82,14 +82,26 @@ In {{ece}} deployments, a warning is also issued in the ECE `service-constructor
 
 ## Restrictions and limitations[ec-autoscaling-restrictions]
 
+### Generic limitations
+
 The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last {{es}} plan failed.
+
+### {{ech}}-specific limitations
 
 In {{ech}} the following additional limitations apply:
 
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
 * ELSER deployments do not scale automatically. For more information, refer to [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../autoscaling/trained-model-autoscaling.md).
+* The maximum configurable node count is 32. This means that the `Maximum size per zone` in autoscaling is limited to the maximum RAM size of the instance configuration in use, multiplied by 32. 
+
+   For example, for the instance configuration [`aws.es.datahot.c6gd`](cloud://reference/cloud-hosted/aws-default.md), the maximum RAM size is 60GB. Therefore, the `Maximum size per zone` in autoscaling is limited to `60GB x 32 = 1.875TB` (displayed as `1.88TB` in the {{ecloud}} console UI). 
+   
+   For more details, refer to [Restrictions and known problems > Node count and size](../deploy/elastic-cloud/restrictions-known-problems.md#ec-node-count-size).
+
+
+### {{ece}}-specific limitations
 
 In {{ece}}, the following additional limitations apply:
 

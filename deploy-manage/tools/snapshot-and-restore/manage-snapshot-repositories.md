@@ -54,7 +54,7 @@ When a platform-level repository is associated with a deployment, the `found-sna
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
+* [MinIO](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 :::{note}
 No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.

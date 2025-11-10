@@ -15,22 +15,27 @@ products:
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ech}} and self-managed {{es}}:
 
-* The number of {{agents}} that may be connected to an {{serverless-full}} project is limited to 10 thousand.
+* A maximum of 10,000 {{fleet}}-managed {{agents}} can be connected to an {{serverless-full}} project. This limit does not apply to stand-alone agents. 
 * The minimum supported version of {{agent}} supported for use with {{serverless-full}} is 8.11.0.
 
-$$$outputs-serverless-restrictions$$$
-**Outputs**
+### Outputs
 
-* On {{serverless-short}}, you can configure new {{es}} outputs to use a proxy, with the restriction that the output URL is fixed. Any new {{es}} outputs must use the default {{es}} host URL.
+On {{serverless-short}}, you can configure new {{es}} outputs to use a proxy, with the restriction that the output URL is fixed. Any new {{es}} outputs must use the default {{es}} host URL.
+
+### Upgrade
+
+{{agents}} are not automatically upgraded with the upgrade of the {{serverless-short}} project. You can upgrade standalone or {{fleet}}-managed {{agent}}s at your convenience.
+
+For more information, see [](upgrade-elastic-agent.md) and [](upgrade-standalone.md).
 
 
 ## {{fleet}} [fleet-serverless-restrictions]
 
 The path to get to the {{fleet}} application in {{kib}} differs across projects:
 
-* In {{ech}} deployments, navigate to **Management > Fleet**.
-* In {{serverless-short}} {{observability}} projects, navigate to **Project settings > Fleet**.
-* In {{serverless-short}} Security projects, navigate to **Assets > Fleet**.
+* In {{ech}} deployments, navigate to **Management** → **Fleet**.
+* In {{serverless-short}} {{observability}} projects, navigate to **Project settings** → **Fleet**.
+* In {{serverless-short}} Security projects, navigate to **Assets** → **Fleet**.
 
 
 ## {{fleet-server}} [fleet-server-serverless-restrictions]

@@ -41,15 +41,15 @@ helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namesp
 
 ### Customize {{es}} and {{kib}} installation with example values [k8s-eck-stack-helm-customize]
 
-You can find example Helm values files for deploying and managing more advanced {{es}} and {{kib}} setups [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/deploy/eck-stack/examples).
+You can find example Helm values files for deploying and managing more advanced {{es}} and {{kib}} setups [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-stack/examples).
 
 To use one or more of these example configurations, use the `--values` Helm option, as seen in the following section.
 
 ```sh subs=true
 # Install an eck-managed Elasticsearch and Kibana using the Elasticsearch node roles example with hot, warm, and cold data tiers, and the Kibana example customizing the http service.
 helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/elasticsearch/hot-warm-cold.yaml \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/kibana/http-configuration.yaml
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/elasticsearch/hot-warm-cold.yaml \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/kibana/http-configuration.yaml
 ```
 
 ## Fleet Server with Elastic Agents along with {{es}} and {{kib}} [k8s-install-fleet-agent-elasticsearch-kibana-helm]
@@ -59,7 +59,7 @@ The following section builds upon the previous section, and allows installing Fl
 ```sh subs=true
 # Install an eck-managed Elasticsearch, Kibana, Fleet Server, and managed Elastic Agents using custom values.
 helm install eck-stack-with-fleet elastic/eck-stack \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/agent/fleet-agents.yaml -n elastic-stack
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/agent/fleet-agents.yaml -n elastic-stack
 ```
 
 ## Logstash along with {{es}}, {{kib}} and Beats [k8s-install-logstash-elasticsearch-kibana-helm]
@@ -69,7 +69,7 @@ The following section builds upon the previous sections, and allows installing L
 ```sh subs=true
 # Install an eck-managed Elasticsearch, Kibana, Beats and Logstash using custom values.
 helm install eck-stack-with-logstash elastic/eck-stack \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/logstash/basic-eck.yaml -n elastic-stack
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/logstash/basic-eck.yaml -n elastic-stack
 ```
 
 ## Standalone Elastic APM Server along with {{es}} and {{kib}} [k8s-install-apm-server-elasticsearch-kibana-helm]
@@ -79,7 +79,7 @@ The following section builds upon the previous sections, and allows installing a
 ```sh subs=true
 # Install an eck-managed Elasticsearch, Kibana, and standalone APM Server using custom values.
 helm install eck-stack-with-apm-server elastic/eck-stack \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
 ## Enterprise Search server along with {{es}} and {{kib}} [k8s-install-enterprise-search-elasticsearch-kibana-helm]
@@ -144,10 +144,7 @@ kind: Ingress
 metadata:
   name: elasticsearch
   labels:
-    helm.sh/chart: eck-elasticsearch-0.14.1
-    app.kubernetes.io/name: eck-elasticsearch
-    app.kubernetes.io/instance: es-kb-quickstart
-    app.kubernetes.io/managed-by: Helm
+    ...
 spec:
   rules:
   - host: "elasticsearch.example.com"
@@ -167,10 +164,7 @@ kind: Ingress
 metadata:
   name: es-kb-quickstart-eck-kibana
   labels:
-    helm.sh/chart: eck-kibana-0.14.1
-    app.kubernetes.io/name: eck-kibana
-    app.kubernetes.io/instance: es-kb-quickstart
-    app.kubernetes.io/managed-by: Helm
+    ...
 spec:
   rules:
   - host: "kibana.example.com"

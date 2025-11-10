@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-watcher.html
 applies_to:
   stack: ga
-  serverless: ga
 products:
   - id: cloud-hosted
 ---
@@ -38,12 +37,7 @@ For more information on sending alerts by email, check [Email action](../../../e
 
 ## Cloud email service limits [cloud-email-service-limits]
 
-The following quotas apply when using the Elastic email service:
-
-* Email sending quota: 500 emails per 15min period
-* Maximum number of recipients per message: 30 recipients per email (To, CC and BCC all count as recipients).
-* Maximum message size (including attachments): 10 MB per message (after base64 encoding).
-* The email-sender can’t be customized (Any custom `From:` header will be removed)
+Refer to [Email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
 
 ## Advanced usage [advanced_usage]
 

@@ -53,7 +53,9 @@ Click the star icon (![Favorite icon](/solutions/images/security-favorite-icon.p
 
 ## View and refine Timeline results [refine-timeline-results]
 
-You can select whether Timeline displays detection alerts and other raw events, or just alerts. By default, Timeline displays both raw events and alerts. To hide raw events and display alerts only, click **Data view** to the left of the KQL query bar, then select **Show only detection alerts**.
+You can select whether Timeline displays detection alerts and other raw events, or just alerts. By default, Timeline displays both raw events and alerts. To hide raw events and display alerts only:
+* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Select the `Security solution alerts` data view.
+* {applies_to}`stack: ga 9.0` Click **Data view** to the left of the KQL query bar, then select **Show only detection alerts**.
 
 
 ## Inspect an event or alert [timeline-inspect-events-alerts]
@@ -238,7 +240,7 @@ From the **Correlation** tab, you can also do the following:
 ::::
 
 
-The [Elasticsearch Query Language ({{esql}})](/explore-analyze/query-filter/languages/esql.md) provides a powerful way to filter, transform, and analyze event data stored in {{es}}. {{esql}} queries use "pipes" to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
+The [Elasticsearch Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md) provides a powerful way to filter, transform, and analyze event data stored in {{es}}. {{esql}} queries use "pipes" to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
 
 You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, you can:
 

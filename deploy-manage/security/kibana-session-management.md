@@ -24,7 +24,7 @@ To manage user sessions programmatically, {{kib}} exposes [session management AP
 You can use `xpack.security.session.idleTimeout` to expire sessions after a period of inactivity. This and `xpack.security.session.lifespan` are both highly recommended. By default, sessions expire after 3 days of inactivity. To define another value for a sliding session expiration, set the  property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. The idle timeout is formatted as a duration of `<count>[ms|s|m|h|d|w|M|Y]` (e.g. *20m*, *24h*, *7d*, *1w*). For example, set the idle timeout to expire sessions after 30 minutes of inactivity:
 
 ```yaml
-xpack.security.session.idleTimeout: "3d"
+xpack.security.session.idleTimeout: "30m"
 ```
 
 

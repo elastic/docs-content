@@ -9,19 +9,32 @@
 # The docs
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
-/explore-analyze/                           @elastic/core-docs @elastic/experience-docs 
+
+/explore-analyze/                           @elastic/core-docs @elastic/experience-docs
+/explore-analyze/alerts-cases/              @elastic/experience-docs
+/explore-analyze/dashboards/                @elastic/experience-docs
+/explore-analyze/discover/                  @elastic/experience-docs
+/explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/experience-docs
+/explore-analyze/find-and-organize/         @elastic/experience-docs
+/explore-analyze/machine-learning/          @elastic/developer-docs @elastic/experience-docs
+/explore-analyze/query-filter/              @elastic/developer-docs @elastic/experience-docs
+/explore-analyze/report-and-share/          @elastic/experience-docs
+/explore-analyze/scripting/                 @elastic/admin-docs
+/explore-analyze/transforms/                @elastic/developer-docs
+/explore-analyze/visualize/                 @elastic/experience-docs
+
 /extend/                                    @elastic/core-docs
-/get-started/                               @elastic/core-docs
+/get-started/                               @elastic/core-docs @elastic/project-docs
 
 /manage-data/                               @elastic/admin-docs
-/manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs 
+/manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs
 /manage-data/ingest/                        @elastic/ingest-docs
 
 /reference/                                 @elastic/docs
 /reference/apm-agents/                      @elastic/ingest-docs
 /reference/data-analysis/                   @elastic/docs
 /reference/data-analysis/observability/     @elastic/experience-docs
-/reference/data-analysis/kibana/            @elastic/experience-docs 
+/reference/data-analysis/kibana/            @elastic/experience-docs
 /reference/data-analysis/machine-learning/  @elastic/developer-docs
 /reference/data-analysis/observability/     @elastic/experience-docs
 /reference/elasticsearch/clients/           @elastic/developer-docs
@@ -35,31 +48,36 @@
 /release-notes/                             @elastic/docs
 
 /release-notes/apm-agents/                  @elastic/ingest-docs
-/release-notes/elastic-cloud-serverless/    @elastic/admin-docs
+/release-notes/elastic-cloud-serverless/    @elastic/admin-docs @elastic/docs-serverless-release-team
 /release-notes/elastic-observability/       @elastic/ski-docs
 /release-notes/elastic-security/            @elastic/ski-docs
 /release-notes/elasticsearch-clients/       @elastic/developer-docs
 /release-notes/fleet-elastic-agent/         @elastic/ingest-docs
 /release-notes/intro/                       @elastic/docs
 
-/solutions/                                 @elastic/experience-docs @elastic/developer-docs 
+/solutions/                                 @elastic/experience-docs @elastic/developer-docs
 /solutions/observability/                   @elastic/experience-docs
-/solutions/observability/get-started/       @elastic/ski-docs
+/solutions/observability/apm/apm-agents/    @elastic/ingest-docs
+/solutions/observability/apm/apm-server/    @elastic/ingest-docs
+/solutions/observability/apm/ingest/        @elastic/ingest-docs
+/solutions/observability/apm/opentelemetry/ @elastic/ingest-docs
+/solutions/observability/get-started/       @elastic/ski-docs @elastic/project-docs
 /solutions/search/                          @elastic/developer-docs
+/solutions/search/get-started/              @elastic/developer-docs @elastic/project-docs
 /solutions/security/                        @elastic/experience-docs
-/solutions/security/cloud/                  @elastic/ingest-docs
+/solutions/security/get-started             @elastic/experience-docs @elastic/project-docs
 
 /troubleshoot/                              @elastic/docs
 /troubleshoot/deployments/                  @elastic/admin-docs
 /troubleshoot/elasticsearch/                @elastic/admin-docs
 /troubleshoot/ingest/                       @elastic/ingest-docs
-/troubleshoot/kibana/                       @elastic/admin-docs @elastic/experience-docs 
+/troubleshoot/kibana/                       @elastic/admin-docs @elastic/experience-docs
 /troubleshoot/monitoring/                   @elastic/admin-docs @elastic/experience-docs
 /troubleshoot/observability/                @elastic/ski-docs
 /troubleshoot/security/                     @elastic/ski-docs
 
 # Raw migrated files
-/raw-migrated-files/                        @elastic/docs
+/raw-migrated-files/                        @elastic/admin-docs
 
 # Legacy serverless docs
 /serverless/                                @elastic/admin-docs

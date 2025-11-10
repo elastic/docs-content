@@ -20,7 +20,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
 1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create case**.
-3. (Optional) If you defined [templates](/solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), select one to use its default field values. [preview]
+3. {applies_to}`stack: preview` {applies_to}`serverless: preview` (Optional) If you defined [templates](/solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), select one to use its default field values.
 4. Give the case a name, severity, and description.
 
     ::::{tip}
@@ -78,7 +78,7 @@ There is a 10 MiB size limit for images. For all other MIME types, the limit is 
 
 To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the *External incident management system* section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
 
-For more information about configuring connections to external incident management systems, refer to [Configure case settings](/solutions/observability/incident-management/configure-case-settings.md).
+For more information about configuring connections to external incident management systems, refer to [](/solutions/observability/incident-management/configure-case-settings.md).
 
 
 ## Manage existing cases [observability-create-a-new-case-manage-existing-cases]

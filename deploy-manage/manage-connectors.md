@@ -12,10 +12,12 @@ products:
 
 # Connectors [connector-management]
 
-Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{stack-manage-app}} > {{connectors-ui}}** provides a central location to view and manage all connectors in the current space.
+Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{connectors-ui}}** provides a central location to view and manage all connectors in the current space. 
+
+You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
-This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for Search connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
+This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
 
 ::::
 
@@ -33,7 +35,7 @@ If you're using {{stack}}, use the [action configuration settings](kibana://refe
 
 ## Connector list [connectors-list]
 
-In **{{stack-manage-app}} > {{connectors-ui}}**, you can find a list of the connectors in the current space. You can use the search bar to find specific connectors by name and type. The **Type** dropdown also enables you to filter to a subset of connector types.
+In **{{connectors-ui}}**, you can find a list of the connectors in the current space. You can use the search bar to find specific connectors by name and type. The **Type** dropdown also enables you to filter to a subset of connector types.
 
 :::{image} /deploy-manage/images/kibana-connector-filter-by-type.png
 :alt: Filtering the connector list by types of connectors

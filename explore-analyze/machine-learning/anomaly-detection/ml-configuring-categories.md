@@ -10,7 +10,7 @@ products:
 
 # Detecting anomalous categories of data [ml-configuring-categories]
 
-Categorization is a {{ml}} process that tokenizes a text field, clusters similar data together, and classifies it into categories. It works best on machine-written messages and application output that typically consist of repeated elements. [Categorization jobs](ml-anomaly-detection-job-types.md#categorization-jobs) enable you to find anomalous behavior in your categorized data. Categorization is not natural language processing (NLP). When you create a categorization {{anomaly-job}}, the {{ml}} model learns what volume and pattern is normal for each category over time. You can then detect anomalies and surface rare events or unusual types of messages by using [count](/reference/data-analysis/machine-learning/ml-count-functions.md) or [rare](/reference/data-analysis/machine-learning/ml-rare-functions.md) functions. Categorization works well on finite set of possible messages, for example:
+Categorization is a {{ml}} process that tokenizes a text field, clusters similar data together, and classifies it into categories. It works best on machine-written messages and application output that typically consist of repeated elements. [Categorization jobs](ml-anomaly-detection-job-types.md#categorization-jobs) enable you to find anomalous behavior in your categorized data. Categorization is not natural language processing (NLP). When you create a categorization {{anomaly-job}}, the {{ml}} model learns what volume and pattern is normal for each category over time. You can then detect anomalies and surface rare events or unusual types of messages by using [count](/reference/machine-learning/ml-count-functions.md) or [rare](/reference/machine-learning/ml-rare-functions.md) functions. Categorization works well on finite set of possible messages, for example:
 
 ```js
 {"@timestamp":1549596476000,
@@ -25,8 +25,8 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 
 ## Creating categorization jobs [creating-categorization-jobs]
 
-1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
-2. Click **Create job**, select the data view you want to analyze.
+1. To create an {{anomaly-job}}, navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). 
+2. Click **Create anomaly detection job**, select the data view you want to analyze.
 3. Select the **Categorization** wizard from the list.
 4. Choose a categorization detector - it’s the `count` function in this example - and the field you want to categorize - the `message` field in this example.
 

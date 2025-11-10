@@ -1,4 +1,5 @@
 ---
+navigation_title: Advanced concepts
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-concepts.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Advanced concepts [ml-ad-concepts]
+# Advanced concepts for anomaly detection [ml-ad-concepts]
 
 This section explains the more complex concepts of the Elastic {{ml}} {{anomaly-detect}} feature.
 

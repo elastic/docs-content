@@ -22,7 +22,7 @@ products:
 
 Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. For this use case, {{es}} and {{kib}} provide secure keystores to store sensitive configuration values such as passwords, API keys, and tokens.
 
-Secure settings are often referred to as **keystore settings**, since they must be added to the product-specific keystore rather than the standard [`elasticsearch.yml` or `kibana.yml files](/deploy-manage/stack-settings.md). Unlike regular settings, they are encrypted and protected at rest, and they cannot be read or modified through the usual configuration files or environment variables.
+Secure settings are often referred to as **keystore settings**, since they must be added to the product-specific keystore rather than the standard [`elasticsearch.yml` or `kibana.yml` files](/deploy-manage/stack-settings.md). Unlike regular settings, they are encrypted and protected at rest, and they cannot be read or modified through the usual configuration files or environment variables.
 
 Keystore settings must be handled using a specific tool or method depending on the deployment type. The following table summarizes how {{es}} and {{kib}} keystores are supported and managed across different deployment models:
 
@@ -39,7 +39,7 @@ This section describes how to configure and manage secure settings in each keyst
 * [{{kib}} secure settings](./secure-settings.md#kibana)
 
 :::{tip}
-For information about the APM keystore, refer to [](/solutions/observability/apm/secrets-keystore-for-secure-settings.md).
+For information about the APM keystore, refer to [](/solutions/observability/apm/apm-server/secrets-keystore-for-secure-settings.md).
 :::
 
 ## {{es}} secure settings [elasticsearch]

@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/action-foreach.html
 applies_to:
   stack: ga
-  serverless: ga
 products:
   - id: elasticsearch
 ---
@@ -46,3 +45,7 @@ PUT _watcher/watch/log_event_watch
 ```
 
 1. The logging statement will be executed for each of the returned search hits.
+
+::::{note}
+If you are running a [`script`](transform-script.md) {{watcher-transform}}, the transform needs to be included prior to the `actions` section to ensure the output is available to the `foreach` loop.
+::::

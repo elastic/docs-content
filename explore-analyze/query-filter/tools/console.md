@@ -15,11 +15,6 @@ products:
 
 # Run API requests with Console [console-kibana]
 
-$$$configuring-console$$$
-
-$$$import-export-console-requests$$$
-
-
 **Console** is an interactive UI for sending requests to [{{es}} APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
 
 :::{image} /explore-analyze/images/kibana-console.png
@@ -72,7 +67,7 @@ GET kbn:/api/index_management/indices
 
 When you’re typing a command, **Console** makes context-sensitive suggestions. These suggestions show you the parameters for each API and speed up your typing.
 
-You can configure your preferences for autocomplete in the [Console settings](../../../explore-analyze/query-filter/tools/console.md#configuring-console).
+You can configure your preferences for autocomplete in the [Console settings](#configuring-console).
 
 
 ### Comments [console-comments]

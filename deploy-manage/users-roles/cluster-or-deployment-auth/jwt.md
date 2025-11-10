@@ -95,7 +95,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     order: 3
     token_type: id_token
     client_authentication.type: shared_secret
-    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_issuer: "<example-issuer-url>/jwt/"
     allowed_audiences: [ "8fb85eba-979c-496c-8ae2-a57fde3f12d0" ]
     allowed_signature_algorithms: [RS256,HS256]
     pkc_jwkset_path: jwt/jwkset.json
@@ -121,10 +121,22 @@ Client authentication is enabled by default for the JWT realms. Disabling client
   :   Indicates that {{es}} should use the `RS256` or `HS256` signature algorithms to verify the signature of the JWT from the JWT issuer.
 
   `pkc_jwkset_path`
-  :   The file name or URL to a JSON Web Key Set (JWKS) with the public key material that the JWT Realm uses for verifying token signatures. A value is considered a file name if it does not begin with `https`. The file name is resolved relative to the {{es}} configuration directory. If a URL is provided, then it must begin with `https://` (`http://` is not supported). {{es}} automatically caches the JWK set and will attempt to refresh the JWK set upon signature verification failure, as this might indicate that the JWT Provider has rotated the signing keys.
+  :   The file name or URL to a JSON Web Key Set (JWKS) with the public key material that the JWT Realm uses for verifying token signatures. A value is considered a file name if it does not begin with `https`. The file name is resolved relative to the {{es}} configuration directory. If a URL is provided, then it must begin with `https://` (`http://` is not supported). {{es}} automatically caches the JWK set and will attempt to refresh the JWK set upon signature verification failure, as this might indicate that the JWT Provider has rotated the signing keys. Background JWKS reloading can also be configured with the setting `pkc_jwkset_reload.enabled`. This ensures that rotated keys are automatically discovered and used to verify JWT signatures.
+
+  `pkc_jwkset_reload.enabled` {applies_to}`stack: ga 9.3`
+  :   Indicates whether JWKS background reloading is enabled. Defaults to `false`.
+
+  `pkc_jwkset_reload.file_interval` {applies_to}`stack: ga 9.3`
+  :   Specifies the reload interval for file-based JWKS. Defaults to `5m`.
+
+  `pkc_jwkset_reload.url_interval_min` {applies_to}`stack: ga 9.3`
+  :   Specifies the minimum reload interval for URL-based JWKS. The `Expires` and `Cache-Control` HTTP response headers inform the reload interval. This configuration setting is the lower bound of what is considered, and it is also the default interval in the absence of useful response headers. Defaults to `1h`.
+
+  `pkc_jwkset_reload.url_interval_max` {applies_to}`stack: ga 9.3`
+  :   Specifies the maximum reload interval for URL-based JWKS. This configuration setting is the upper bound of what is considered from header responses (`5d`).
 
   `claims.principal`
-  :   The name of the JWT claim that contains the user’s principal (username).
+  :   The name of the JWT claim that contains the user’s principal. Defaults to `username`.
 
   ::::
 
@@ -136,7 +148,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     order: 4
     token_type: access_token
     client_authentication.type: shared_secret
-    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_issuer: "<example-issuer-url>/jwt/"
     allowed_subjects: [ "123456-compute@admin.example.com" ]
     allowed_subject_patterns: [ "wild*@developer?.example.com", "/[a-z]+<1-10>\\@dev\\.example\\.com/"]
     allowed_audiences: [ "elasticsearch" ]
@@ -144,7 +156,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
       token_use: access
       version: ["1.0", "2.0"]
     allowed_signature_algorithms: [RS256,HS256]
-    pkc_jwkset_path: "https://idp-42.example.com/.well-known/configuration"
+    pkc_jwkset_path: "<example-idp-url>/.well-known/configuration"
     fallback_claims.sub: client_id
     fallback_claims.aud: scope
     claims.principal: sub
@@ -178,7 +190,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
 
    * The `shared_secret` value for `client_authentication.type`
 
-      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret1`)
+      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret`)
    * The HMAC keys for `allowed_signature_algorithms`
 
       (`xpack.security.authc.realms.jwt.jwt1.hmac_jwkset`)
@@ -284,7 +296,7 @@ You can relax validation of any of the time-based claims by setting `allowed_clo
 
 ## Role mapping [jwt-authorization]
 
-You can map LDAP groups to roles in the following ways:
+You can map JWT groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
 * Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
@@ -433,6 +445,8 @@ JWT authentication supports signature verification using PKC (Public Key Cryptog
 PKC JSON Web Token Key Sets (JWKS) can contain public RSA and EC keys. HMAC JWKS or an HMAC UTF-8 JWK contain secret keys. JWT issuers typically rotate PKC JWKS more frequently (such as daily), because RSA and EC public keys are designed to be easier to distribute than secret keys like HMAC.
 
 JWT realms load a PKC JWKS and an HMAC JWKS or HMAC UTF-8 JWK at startup. JWT realms can also reload PKC JWKS contents at runtime; a reload is triggered by signature validation failures.
+
+JWT realms can also be configured to reload a PKC JWKS periodically in the background.
 
 ::::{note}
 HMAC JWKS or HMAC UTF-8 JWK reloading is not supported at this time.

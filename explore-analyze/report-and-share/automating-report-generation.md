@@ -10,27 +10,38 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-To automatically generate PDF and CSV reports, generate a POST URL, then submit the HTTP `POST` request using {{watcher}} or a script.
+To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1 and Serverless, you can use {{kib}} to generate reports on a recurring schedule and share them with a list of emails that you specify.
 
+:::{note}
+:applies_to: {stack: ga, serverless: unavailable}
+API keys are used to authenticate requests to generate reports. If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the leader index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+:::
 
 ## Create a POST URL [create-a-post-url]
 
 Create the POST URL that triggers a report to generate PDF and CSV reports.
 
+### PDF and PNG reports [pdf-png-post-url]
+
 To create the POST URL for PDF reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
-2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report.
+2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
 
-    * If you are using **Dashboard** or **Visualize Library**, from the toolbar, click **Share > Export**, select the PDF option then click **Copy POST URL**.
-    * If you are using **Canvas**, from the toolbar, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
+    * {applies_to}`stack: ga 9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF or PNG option, then click **Copy POST URL**.
+    * {applies_to}`stack: ga 9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
+    * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
 
+### CSV reports [csv-post-url]
 
 To create the POST URL for CSV reports:
 
 1. Go to **Discover**.
 2. Open the saved Discover session you want to share.
-3. In the toolbar, click **Share > Export > Copy POST URL**.
+3. In the toolbar, do one of the following:
+  
+   * {applies_to}`stack: ga 9.0` Click **Share > Export > Copy POST URL**.
+   * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.
 
 
 ## Use Watcher [use-watcher]
@@ -159,3 +170,93 @@ If you experience issues with the deprecated report URLs after you upgrade {{kib
 :::{important}
 In earlier {{kib}} versions, you could use the `&sync` parameter to append to report URLs that held the request open until the document was fully generated. The `&sync` parameter is now unsupported. If you use the `&sync` parameter in Watcher, you must update the parameter.
 :::
+
+## Schedule and share reports [schedule-report-generation]
+
+```{applies_to}
+stack: preview 9.1
+serverless: preview
+```
+
+Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
+
+### Prerequisites [scheduled-reports-reqs]
+
+* To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
+* To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
+* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
+* Sharing reports outside of {{kib}} requires a default preconfigured email connector.
+
+   * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
+   * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{kib}}. To do this:
+     
+     1. Open your `kibana.yml` file.
+     2. Add the `xpack.actions.preconfigured` {{kib}} setting. This setting specifies configuration details for the preconfigured connector that you're defining. 
+     3. Under the `xpack.actions.preconfigured` setting, define the email connector. Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirements for different email services and providers.
+
+         :::{note} 
+         You must define preconfigured email connector details in the `kibana.yml` file. You cannot create a preconfigured email connector from the {{kib}} UI. 
+         :::
+
+     4. Add the `notifications.connectors.default.email` {{kib}} setting, and provide the name of your email connector. The `notifications.connectors.default.email` setting specifies the default email connector to use when sending notifications. This is especially useful if you have multiple email connectors and want to set a default one. 
+
+     The following example shows a modified `kibana.yml` file with a preconfigured email connector that's set as the default connector for email notifications:
+
+      ```
+        xpack.actions.preconfigured:
+          my-email:
+            name: preconfigured-email-connector-type
+            actionTypeId: .email
+            config:
+              service: other
+              from: testsender@test.com
+              host: validhostname
+              port: 8080
+              secure: false
+              hasAuth: true
+            secrets:
+              user: testuser
+              password: passwordkeystorevalue
+
+        notifications.connectors.default.email: my-email
+     ```
+
+* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
+
+### Create a schedule [create-scheduled-report]
+
+1. Open the saved Discover session, dashboard, or visualization you want to share. 
+2. Click the **Export** icon, then **Schedule export**.
+3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
+4. Set up a schedule for generating the report.
+
+    * **Date**: Choose when to start generating reports.
+    * **Timezone**: Specify a timezone for the schedule.
+    * **Repeat**: Choose how often you want to generate reports.  
+
+5. (Optional) To share generated reports outside of Kibana, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
+
+   ::::{note} 
+   If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
+   ::::
+
+6. Click **Schedule exports** to save the schedule. 
+
+A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
+
+### Stop scheduled reports [stop-scheduled-reports]
+
+To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
+
+- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
+- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+
+### Scheduled reports limitations [scheduled-reports-limitations]
+
+The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Issues with report generation and sharing are likely to happen in the following scenarios:
+
+* The limit for email attachments is 10 MB. {{kib}} might fail to attach reports that are larger than this size.
+* Scheduling too many reports at the same time might cause reports to be shared late or at an inconsistent schedule. {{kib}} Task Manager runs reporting tasks one at a time.
+* If your cluster is running many tasks in general, reports may be delayed.
+* Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode. 
+* Scheduling CSV reports of Lens visualizations is not supported. 

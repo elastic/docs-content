@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-add-symbols.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
@@ -16,8 +16,8 @@ To see function names and line numbers in traces of applications written in prog
 
 Click the appropriate link for your system to download the `symbtool` binary:
 
-* [x86_64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-{{version}}-linux-x86_64.tar.gz)
-* [ARM64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-{{version}}-linux-arm64.tar.gz)
+* [x86_64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-{{version.stack}}-linux-x86_64.tar.gz)
+* [ARM64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-{{version.stack}}-linux-arm64.tar.gz)
 
 ::::{note}
 The `symbtool` binary currently requires a Linux machine.

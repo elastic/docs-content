@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
+description: Learn how to explore and interact with Kibana dashboards using filters, time ranges, and controls to uncover insights in your data.
 applies_to:
   stack: ga
   serverless: ga
@@ -9,6 +10,11 @@ products:
 ---
 
 # Exploring dashboards [_use_and_filter_dashboards]
+
+Kibana dashboards support filtering, time range adjustments, and interactive controls that let you focus on specific data segments or time periods.
+
+This page covers the main ways to explore dashboard data: using KQL queries, filter pills, time ranges, and dashboard controls. You'll also learn how to view underlying data and switch between different display modes.
+
 
 
 ## Search and filter your dashboard data [search-or-filter-your-data]
@@ -22,6 +28,20 @@ products:
 * View the data of a panel and the requests used to build it.
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
+
+### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
+
+The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
+
+You can use KQL to create complex queries that filter your dashboard data. For example:
+- `status:error` to show only error records
+- `response_time > 1000` to display requests slower than 1 second
+- `user.name:"john doe" AND status:active` to combine multiple conditions
+
+:::{tip}
+:applies_to: {"stack": "preview 9.2", "serverless": "unavailable"}
+When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads.
+:::
 
 
 ### Use filter pills [_use_filter_pills]
@@ -50,6 +70,11 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-editor.png
 :alt: Filter editor with 2 conditions
+:::
+
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
 :::
 
 
@@ -115,7 +140,7 @@ Filter the data with one or more options that you select.
 4. To clear the selections, click ![The icon to clear all selected options in the Options list](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 5. To display only the options you selected in the dropdown, click ![The icon to display only the options you have selected in the Options list](/explore-analyze/images/kibana-dashboard_showOnlySelectedOptions_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList_8.7.0.png
+:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
 :alt: Options list control
 :screenshot:
 :::
@@ -156,31 +181,51 @@ Filter the data within a specified range of time.
 
 ### View the panel data and requests [download-csv]
 
-**View the data in visualizations and the requests that collect the data:**
+Viewing the details of all requests used to build a visualization and the resulting data helps you confirm that the visualization is showing the right data and that the requests are performing as expected.
+
+The available actions can vary depending on the panel you're inspecting. 
+
+#### View and download the data in visualizations
+
+This action is possible for all charts created using **Lens** or {{esql}}. It is not available for other types of panels, such as **Maps** or **Vega** visualizations.
 
 1. Open the panel menu and select **Inspect**.
-2. View and download the panel data.
+1. Open the **View** dropdown, then select **Data**.
+1. If you'd like to download the data, select **Download CSV**, then select the format type from the dropdown:
 
-    1. Open the **View** dropdown, then click **Data**.
-    2. Click **Download CSV**, then select the format type from the dropdown:
+    * **Formatted CSV**: Contains human-readable dates and numbers.
+    * **Raw CSV**: Formatted for computer use.
 
-        * **Formatted CSV** — Contains human-readable dates and numbers.
-        * **Unformatted** — Best used for computer use.
+        When you download a visualization panel with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
 
-            When you download visualization panels with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
+#### View the requests that collect the data
 
-3. View the requests that collect the data.
+:::{include} ../_snippets/inspect-request.md
+:::
 
-    1. Open the **View** dropdown, then click **Requests**.
-    2. From the dropdown, select the requests you want to view.
-    3. To view the requests in **Console**, click **Request**, then click **Open in Console**.
-
-
-**View the time range on specific panels:**
+#### View the time range on specific panels
 
 When a custom time range is active for a single panel, it is indicated in the panel’s header.
 
-You can view it in more details and edit it by clicking the filter.
+You can view it in more detail and edit it by clicking the filter.
+
+### View and edit the visualization configuration
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+When viewing a dashboard with read-only permissions, certain visualization panels allow you to view how the visualization itself is configured, and to temporarily edit that configuration.
+
+1. Hover over a visualization panel and select **Show visualization configuration**. The **Configuration** flyout appears.
+
+   If this option isn't available, it means one of two things:
+   * The visualization panel type doesn't support this option.
+   * You have **Edit** permissions for this dashboard. In this case, switch the dashboard to **Edit** mode. You will then be able to edit the configuration of the visualization for all viewers of the dashboard.
+
+2. View the configuration of the visualization. You can make edits, but these will be lost as soon as you exit the flyout.
+3. Select **Cancel** to exit the **Configuration** flyout.
+
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]

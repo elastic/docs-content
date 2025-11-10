@@ -7,12 +7,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/secure-reporting.html#securing-reporting
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: elasticsearch
   - id: cloud-hosted
   - id: kibana
-  - id: cloud-serverless
 ---
 
 # Watcher

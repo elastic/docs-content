@@ -1,9 +1,11 @@
 ---
 navigation_title: Upgrade Elastic on a self-managed cluster
 applies_to:
-  stack:
   deployment:
-    self:
+    self: ga
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Upgrade the {{stack}} on a self-managed cluster

@@ -12,10 +12,10 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-The following instructions show you how to prepare your hosts on SLES 12 SP5 or 15.
+The following instructions explain how to prepare your hosts on SUSE Linux Enterprise Server 12 SP5 (SLES 12) or 15 (SLES 15).
 
 * [Install Docker](#ece-install-docker-sles12)
-* [Set up XFS on SLES](#ece-xfs-setup-sles12)
+* [Set up XFS quotas](#ece-xfs-setup-sles12)
 * [Update the configurations settings](#ece-update-config-sles)
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
 
@@ -26,11 +26,9 @@ If you want to install {{ece}} (ECE) on your own hosts, the steps for preparing 
 
 Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with ECE.
 
+## Install Docker on SLES [ece-install-docker-sles12]
 
-## Install Docker [ece-install-docker-sles12]
-
-::::{important}
-Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 
@@ -87,7 +85,7 @@ Make sure to use a combination of Linux distribution and Docker version that is 
 
 
 
-## Set up XFS on SLES [ece-xfs-setup-sles12]
+## Set up XFS quotas [ece-xfs-setup-sles12]
 
 XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
 

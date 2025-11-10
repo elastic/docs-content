@@ -2,22 +2,17 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-query.html
 applies_to:
-  stack:
-  serverless:
+  stack: preview 9.0, beta 9.1
+  serverless: beta
 products:
   - id: kibana
 ---
 
 # View and modify queries [playground-query]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 Once you’ve set up your chat interface, you can start chatting with the model. Playground will automatically generate {{es}} queries based on your questions, and retrieve the most relevant documents from your {{es}} indices. The Playground UI enables you to view and modify these queries.
 
-* Click **View query** to open the visual query editor.
+* Select the **Query** tab to open the visual query editor.
 * Modify the query by selecting fields to query per index.
 
 ::::{tip}

@@ -1,4 +1,5 @@
 ---
+navigation_title: CNVM Findings
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-findings.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-findings.html
@@ -11,9 +12,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Findings page [security-vuln-management-findings]
+# View and manage CNVM vulnerabilities in Findings [security-vuln-management-findings]
 
-The **Vulnerabilities** tab on the Findings page displays the vulnerabilities detected by the [CNVM integration](cloud-native-vulnerability-management.md), as well as those detected by [third-party integrations](ingest-third-party-cloud-security-data.md).
+The **Vulnerabilities** tab on the **Findings** page displays the vulnerabilities detected by the [CNVM integration](cloud-native-vulnerability-management.md), as well as those detected by [third-party integrations](integrations/ingest-third-party-cloud-security-data.md).
 
 :::{image} /solutions/images/serverless--cloud-native-security-cnvm-findings-page.png
 :alt: The Vulnerabilities tab of the Findings page

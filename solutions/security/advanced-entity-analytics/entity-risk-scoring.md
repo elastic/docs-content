@@ -38,9 +38,9 @@ Entities without any alerts, or with only `Closed` alerts, are not assigned a ri
 
 
 
-## How is risk score calculated? [how-is-risk-score-calculated]
+## How are risk scores calculated? [how-is-risk-score-calculated]
 
-1. The risk scoring engine runs hourly to aggregate `Open` and `Acknowledged` alerts from the last 30 days. For each entity, the engine processes up to 10,000 alerts.
+1. The risk scoring engine runs hourly to aggregate `Open` and `Acknowledged` alerts from the last 30 days, including [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md). For each entity, the engine processes up to 10,000 alerts.
 
     ::::{note}
     When [turning on the risk engine](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts in risk scoring calculations.
@@ -72,6 +72,19 @@ Entities without any alerts, or with only `Closed` alerts, are not assigned a ri
     | Critical | > 90 |
 
 The risk score is updated every hour based on the configured date and time range, which defaults to 30 days. Each update generates a new score, calculated independently of any previous scores.
+
+### Residual risk score
+
+In some cases, entities can retain a residual risk score:
+
+* If all alerts for an entity are closed
+* If all of the entity’s open alerts fall outside of the configured date and time range
+
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` By default, in these scenarios, entity risk scores are reset to zero if there are no new inputs. If, instead, you want entities to retain their last calculated risk score, select the **Retain previously calculated risk scores** checkbox on the [Entity risk score page](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
+
+:::{note}
+In versions 9.1 and earlier, residual risk scores are retained by default. This means that each entity keeps its last computed risk score until a new alert triggers a recalculation.
+:::
 
 ::::{dropdown} Click for a risk score calculation example
 This example shows how the risk scoring engine calculates the user risk score for `User_A`, whose asset criticality level is **Extreme impact**.

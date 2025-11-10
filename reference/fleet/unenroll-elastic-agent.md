@@ -14,7 +14,7 @@ You can unenroll {{agent}}s to invalidate the API key used to connect to {{es}}.
 2. To unenroll a single agent, choose **Unenroll agent** from the **Actions** menu next to the agent you want to unenroll.
 3. To unenroll multiple agents, bulk select the agents and click **Unenroll agents**.
 
-    Unable to select multiple agents? Confirm that your subscription level supports selective agent unenrollment in {{fleet}}. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
+    Unable to select multiple agents? Confirm that your subscription level supports **selective agent unenrollment** in {{fleet}}. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 
 Unenrolled agents will continue to run, but will not be able to send data. They will show this error instead: `invalid api key to authenticate with fleet`.

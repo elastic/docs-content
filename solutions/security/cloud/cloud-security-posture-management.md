@@ -15,13 +15,18 @@ products:
 
 The Cloud Security Posture Management (CSPM) feature discovers and evaluates the services in your cloud environment — like storage, compute, IAM, and more — against configuration security guidelines defined by the [Center for Internet Security](https://www.cisecurity.org/) (CIS) to help you identify and remediate risks that could undermine the confidentiality, integrity, and availability of your cloud data.
 
-This feature currently supports agentless and agent-based deployments on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. For step-by-step getting started guides, refer to [Get started with CSPM for AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md), [Get started with CSPM for GCP](/solutions/security/cloud/get-started-with-cspm-for-gcp.md), or [Get started with CSPM for Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md).
+This feature currently supports agentless and agent-based deployments on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. 
+
+For step-by-step getting started guides, refer to:
+
+* [CSPM for AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md)
+* [CSPM for GCP](/solutions/security/cloud/get-started-with-cspm-for-gcp.md) 
+* [CSPM for Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md).
 
 ::::{admonition} Requirements
 * Minimum privileges vary depending on whether you need to read, write, or manage CSPM data and integrations. Refer to [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md).
-* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* CSPM only works in the `Default` {{kib}} space. Installing the CSPM integration on a different {{kib}} space will not work.
-* CSPM is supported only on AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. Other government cloud platforms are not supported. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
+* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing) level.
+* CSPM supports only the AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. AWS GovCloud is only supported for agent-based deployments — agentless deployments do not work on this platform. Other government cloud platforms are not supported. To request support for other platforms, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 ::::
 

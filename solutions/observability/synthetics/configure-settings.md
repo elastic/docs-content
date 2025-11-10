@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-settings.html
   - https://www.elastic.co/guide/en/observability/current/synthetics-settings.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -80,7 +80,7 @@ In the **Global parameters** tab, you can define variables and parameters. This 
 
 ## Data retention [synthetics-settings-data-retention]
 
-When you set up a synthetic monitor, data from the monitor is saved in [Elasticsearch data streams](/manage-data/data-store/data-streams.md), an append-only structure in Elasticsearch. You can customize how long synthetics data is stored by creating your own index lifecycle policy and attaching it to the relevant custom Component Template in Stack Management.
+When you set up a synthetic monitor, data from the monitor is saved in [Elasticsearch data streams](/manage-data/data-store/data-streams.md), an append-only structure in Elasticsearch. You can customize how long synthetics data is stored by creating your own index lifecycle policy and attaching it to the relevant custom Component Template.
 
 In the **Data retention** tab, use the links to jump to the relevant policy for each data stream. Learn more about the data included in each data stream in [Manage data retention](/solutions/observability/synthetics/manage-data-retention.md).
 

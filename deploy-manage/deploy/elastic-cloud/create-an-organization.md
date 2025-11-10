@@ -15,21 +15,6 @@ products:
 
 # Sign up and create an organization
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/336
-
-% Scope notes: merge
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-trial.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/general-sign-up-trial.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-existing-email.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$general-sign-up-trial-what-is-included-in-my-trial$$$
 
 To sign up:
 
@@ -37,10 +22,11 @@ To sign up:
 2. Choose one of the available sign up methods. You can register with your email address and a password, use a Google or Microsoft account, or [subscribe from a Marketplace](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 :::{note}
-You can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must leave the previous one or use a different email address.
+* You can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must [leave the previous one](/cloud-account/join-or-leave-an-organization.md#ec-leave-organization) or use a different email address.
+* An email address can’t be used for more than one {{ecloud}} account. To make the email address available for a new account, you can [remove it from your existing account](/cloud-account/update-your-email-address.md#sign-up-existing).
 :::
 
-When your first sign up, you create an organization and start with a trial license.
+When you first sign up, you create an organization and start with a trial license.
 
 This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. For more details on how to manage your organization, refer to [](/deploy-manage/cloud-organization.md).
 
@@ -55,9 +41,9 @@ A deployment lets you explore Elastic solutions for Search, Observability, and S
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
-**One serverless project**
+**Three {{serverless-short}} project**
 
-Serverless projects package {{stack}} features by type of solution:
+{{serverless-short}} projects package {{stack}} features by type of solution:
 
 * [{{es}}](../../../solutions/search.md)
 * [Observability](../../../solutions/observability.md)
@@ -70,23 +56,25 @@ For more information, check the [{{serverless-short}} documentation](serverless.
 
 ### Trial limitations [general-sign-up-trial-what-limits-are-in-place-during-a-trial]
 
-During the free 14 day trial, Elastic provides access to one hosted deployment and one serverless project. If all you want to do is try out Elastic, the trial includes more than enough to get you started. During the trial period, some limitations apply.
+During the free 14 day trial, Elastic provides access to one hosted deployment and three {{serverless-short}} projects. If all you want to do is try out Elastic, the trial includes more than enough to get you started. During the trial period, some limitations apply.
 
 **Hosted deployments**
 
 * You can have one active deployment at a time
 * The deployment size is limited to 8GB RAM and approximately 360GB of storage, depending on the specified hardware profile
-* Machine learning nodes are available up to 4GB RAM
+* Machine learning nodes are available up to 4GB RAM, or up to 8GB when using Reranker
 * Custom {{es}} plugins are not enabled
+* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
 **Serverless projects**
 
-* You can have one active serverless project at a time.
+* You can have three active {{serverless-short}} projects at a time.
 * Search Power is limited to 100. This setting only exists in {{es-serverless}} projects
 * Search Boost Window is limited to 7 days. This setting only exists in {{es-serverless}} projects
-* Scaling is limited for serverless projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
+* Scaling is limited for {{serverless-short}} projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
+* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
 
 **Remove limitations**
 
@@ -107,7 +95,7 @@ Start by checking out some common approaches for [moving data into {{ecloud}}](/
 
 ### Maintain access to your trial projects and data [general-sign-up-trial-what-happens-at-the-end-of-the-trial]
 
-When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and serverless project, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, serverless project, and ingested data are permanently deleted.
+When your trial expires, the deployment and projects that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and {{serverless-short}} projects, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, {{serverless-short}} projects, and ingested data are permanently deleted.
 
 If you’re interested in learning more ways to subscribe to {{ecloud}}, don’t hesitate to [contact us](https://www.elastic.co/contact).
 

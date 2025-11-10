@@ -336,7 +336,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
+            image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"
@@ -422,7 +422,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
+            image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"

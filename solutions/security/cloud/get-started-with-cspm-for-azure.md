@@ -17,20 +17,24 @@ products:
 
 This page explains how to get started monitoring the security posture of your cloud assets using the Cloud Security Posture Management (CSPM) feature.
 
-::::{admonition} Requirements
+## Requirements
+
 * Minimum privileges vary depending on whether you need to read, write, or manage CSPM data and integrations. Refer to [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md).
-* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* CSPM only works in the `Default` {{kib}} space. Installing the CSPM integration on a different {{kib}} space will not work.
-* CSPM is supported only on AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. Other government cloud platforms are not supported. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
+* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
+* CSPM is supported only on AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. Other government cloud platforms are not supported. To request support, [open a GitHub ticket](https://github.com/elastic/kibana/issues/new/choose).
 * The user who gives the CSPM integration permissions in Azure must be an Azure subscription `admin`.
 
-::::
 
 
 
 ## Set up CSPM for Azure [cspm-setup-azure]
 
-You can set up CSPM for Azure by by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, first add the CSPM integration, then enable cloud account access. Two deployment technologies are available: agentless, and agent-based. [Agentless deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+You can set up CSPM for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, first add the CSPM integration, then enable cloud account access. 
+
+The following deployment technologies are available: agentless and agent-based. 
+
+* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 
 ## Agentless deployment [cspm-azure-agentless]
@@ -39,14 +43,22 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
-5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
-6. Click **Advanced options**, then select **Agentless (BETA)**.
-7. Next, you’ll need to authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
-8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
+5. Give your integration a name and description that match the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
+6. (Optional) Expand the **Advanced options** menu and add a `Namespace` to the integration's data stream.
 
-::::{admonition} Important
-Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
-::::
+:::{include} _snippets/cspm-namespace.md
+:::
+
+7. For **Deployment options**, select **Agentless**.
+8. Next, you’ll need to authenticate to Azure. The following methods are available:
+    
+    * Option 1: Cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
+      Under **New connection**, expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
+    
+    * Option 2: Azure Client ID with Client Secret. Provide a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
+
+
+9. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
 ## Agent-based deployment [cspm-azure-agent-based]
 
@@ -56,8 +68,13 @@ Agentless deployment does not work if you are using [Traffic filtering](/deploy-
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
-4. Under **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
+4. In **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CSPM-dev-1`.
+6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
+
+:::{include} _snippets/cspm-namespace.md
+:::
+7. Under **Deployment options** select **Agent-based**.
 
 
 ### Set up cloud account access [cspm-set-up-cloud-access-section-azure]
@@ -67,7 +84,7 @@ To set up CSPM for an Azure organization or subscription, you will need admin pr
 ::::
 
 
-For most users, the simplest option is to use an Azure Resource Manager (ARM) template to automatically provision the necessary resources and permissions in Azure. If you prefer a more hands-on approach or require a specific configuration not supported by the ARM template, you can use one of the manual setup options described below.
+For most users, the simplest option is to use an Azure Resource Manager (ARM) template to automatically provision the necessary resources and permissions in Azure. If you prefer a more hands-on approach or require a specific configuration not supported by the ARM template, you can use one of the manual setup options described on this page.
 
 
 ## ARM template setup (recommended) [cspm-set-up-ARM]
@@ -77,8 +94,8 @@ If you are deploying to an Azure organization, you need the following permission
 ::::
 
 
-1. Under **Setup Access**, select **ARM Template**.
-2. Under **Where to add this integration**:
+1. For **Setup Access**, select **ARM Template**.
+2. In **Where to add this integration**:
 
     1. Select **New Hosts**.
     2. Name the {{agent}} policy. Use a name that matches the resources you want to monitor. For example, `azure-dev-policy`. Click **Save and continue**. The **ARM Template deployment** window appears.
@@ -104,7 +121,7 @@ For manual setup, multiple authentication methods are available:
 This method involves creating an Azure VM (or using an existing one), giving it read access to the resources you want to monitor with CSPM, and installing {{agent}} on it.
 
 1. Go to the Azure portal to [create a new Azure VM](https://portal.azure.com/#create/Microsoft.VirtualMachine-ARM).
-2. Follow the setup process, and make sure you enable **System assigned managed identity** under the **Management** tab.
+2. Follow the setup process, and make sure you enable **System assigned managed identity** in the **Management** tab.
 3. Go to your Azure subscription list and select the subscription or management group you want to monitor with CSPM.
 4. Go to **Access control (IAM)**, and select **Add Role Assignment**.
 5. Select the `Reader` function role, assign access to **Managed Identity**, then select your VM.
@@ -112,8 +129,8 @@ This method involves creating an Azure VM (or using an existing one), giving it 
 After assigning the role:
 
 1. Return to the **Add CSPM** page in {{kib}}.
-2. Under **Configure integration**, select **Azure**. Under **Setup access**, select **Manual**.
-3. Under **Where to add this integration**, select **New hosts**.
+2. For **Configure integration**, select **Azure**. For **Setup access**, select **Manual**.
+3. For **Where to add this integration**, select **New hosts**.
 4. Click **Save and continue**, then follow the instructions to install {{agent}} on your Azure VM.
 
 Wait for the confirmation that {{kib}} received data from your new integration. Then you can click **View Assets** to see your data.
@@ -124,7 +141,7 @@ Wait for the confirmation that {{kib}} received data from your new integration. 
 Before using this method, you must have set up a [Microsoft Entra application and service principal that can access resources](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in).
 
 1. On the **Add Cloud Security Posture Management (CSPM) integration** page, scroll to the **Setup access** section, then select **Manual**.
-2. Under **Preferred manual method**, select **Service principal with Client Secret**.
+2. For **Preferred manual method**, select **Service principal with Client Secret**.
 3. Go to the **Registered apps** section of [Microsoft Entra ID](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps).
 4. Click on **New Registration**, name your app and click **Register**.
 5. Copy your new app’s `Directory (tenant) ID` and `Application (client) ID`. Paste them into the corresponding fields in {{kib}}.
@@ -134,7 +151,7 @@ Before using this method, you must have set up a [Microsoft Entra application an
 9. Go to **Access control (IAM)** and select **Add Role Assignment**.
 10. Select the `Reader` function role, assign access to **User, group, or service principal**, and select your new app.
 11. Return to the **Add CSPM** page in {{kib}}.
-12. Under **Where to add this integration**, select **New hosts**.
+12. For **Where to add this integration**, select **New hosts**.
 13. Click **Save and continue**, then follow the instructions to install {{agent}} on your selected host.
 
 Wait for the confirmation that {{kib}} received data from your new integration. Then you can click **View Assets** to see your data.
@@ -144,8 +161,8 @@ Wait for the confirmation that {{kib}} received data from your new integration. 
 
 Before using this method, you must have set up a [Microsoft Entra application and service principal that can access resources](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in).
 
-1. On the **Add Cloud Security Posture Management (CSPM) integration** page, under **Setup access**, select **Manual**.
-2. Under **Preferred manual method**, select **Service principal with client certificate**.
+1. On the **Add Cloud Security Posture Management (CSPM) integration** page, for **Setup access**, select **Manual**.
+2. For **Preferred manual method**, select **Service principal with client certificate**.
 3. Go to the **Registered apps** section of [Microsoft Entra ID](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps).
 4. Click on **New Registration**, name your app and click **Register**.
 5. Copy your new app’s `Directory (tenant) ID` and `Application (client) ID`. Paste them into the corresponding fields in {{kib}}.
@@ -195,8 +212,8 @@ After creating your certificate:
 
 5. Return to the **Add CSPM** page in {{kib}}.
 6. For **Client Certificate Path**, enter the full path to the certificate that you uploaded to the host where you will install {{agent}}.
-7. If you used a pkcs12 certificate, enter its password under **Client Certificate Password**.
-8. Under **Where to add this integration**, select **New hosts**.
+7. If you used a pkcs12 certificate, enter its password in **Client Certificate Password**.
+8. For **Where to add this integration**, select **New hosts**.
 9. Click **Save and continue**, then follow the instructions to install {{agent}} on your selected host.
 
 Wait for the confirmation that {{kib}} received data from your new integration. Then you can click **View Assets** to see your data.

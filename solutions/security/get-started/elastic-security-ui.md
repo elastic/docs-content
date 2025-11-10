@@ -30,15 +30,6 @@ Filter for alerts, events, processes, and other important security data by enter
 * To save the current KQL query and any applied filters, select **Saved query menu** (![Saved query menu icon](/solutions/images/security-saved-query-menu-icon.png "title =20x20")), enter a name for the saved query, and select **Save saved query**.
 
 
-## Navigation menu [navigation-menu-overview]
-
-The navigation menu contains direct links and expandable groups, identified by the group icon (![Group icon](/solutions/images/security-group-icon.png "title =20x20")).
-
-* Click a top-level link to go directly to its landing page, which contains links and information for related pages.
-* Click a group’s icon (![Group icon](/solutions/images/security-group-icon.png "title =20x20")) to open its flyout menu, which displays links to related pages within that group. Click a link in the flyout to navigate to its landing page.
-* Click the **Collapse side navigation** icon (![Side menu collapse icon](/solutions/images/security-side-button.png "title =20x20")) to collapse and expand the main navigation menu.
-
-
 ## Visualization actions [visualization-actions]
 
 Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** button (![Inspect icon](/solutions/images/security-inspect-icon.png "title =20x20")) when you hover over them. Click to examine the {{es}} queries used to retrieve data throughout the app.
@@ -101,13 +92,13 @@ Expand this section to access the following dashboards, which provide interactiv
 
 - Overview
 - Detection & Response
-- Kubernetes (in {{stack}})
+- {applies_to}`serverless: unavailable` Kubernetes
 - Cloud Security Posture
 - Cloud Native Vulnerability Management
 - Entity Analytics
 - Data Quality.
 
-You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
+You can also create and view custom dashboards. Refer to [](/solutions/security/dashboards.md) for more information.
 
 
 ### Rules [_rules]
@@ -128,44 +119,9 @@ Expand this section to access the following pages:
 View and manage alerts to monitor activity within your network. Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
 
-### Findings [_findings]
+### Attack discovery
 
-Identify misconfigurations and vulnerabilities in your cloud infrastructure. For setup instructions, refer to [Cloud Security Posture Management](/solutions/security/cloud/cloud-security-posture-management.md), [Kubernetes Security Posture Management](/solutions/security/cloud/kubernetes-security-posture-management.md), or [Cloud Native Vulnerability Management](/solutions/security/cloud/cloud-native-vulnerability-management.md).
-
-
-### Cases [_cases]
-
-Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
-
-
-### Investigations [security-ui-investigations]
-
-Expand this section to access the following pages:
-
-* [Timelines](../investigate/timeline.md): Investigate alerts and complex threats — such as lateral movement — in your network. Timelines are interactive and allow you to share your findings with other team members.
-
-    ::::{tip}
-    Click the **Timeline** button at the bottom of the {{security-app}} to start an investigation.
-
-    ::::
-
-* [Osquery](../investigate/osquery.md): Deploy Osquery with {{agent}}, then run and schedule queries.
-
-
-### Intelligence [_intelligence]
-
-The Intelligence section contains the Indicators page, which collects data from enabled threat intelligence feeds and provides a centralized view of indicators of compromise (IoCs). Refer to [Indicators of compromise](/troubleshoot/security/indicators-of-compromise.md) to learn more.
-
-
-### Explore [_explore]
-
-Expand this section to access the following pages:
-
-* [Hosts](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
-
-* [Network](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
-
-* [Users](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
+Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery.md) for more information.
 
 
 ### Assets [security-ui-assets]
@@ -185,6 +141,65 @@ The Assets section allows you to manage the following features:
 
 * [Cloud security](/solutions/security/cloud.md)
 
+
+### Cases [_cases]
+
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
+
+
+### Entity analytics
+```yaml {applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+:::{admonition} Requirements
+To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+:::
+
+Expand this section to access the following pages:
+
+- [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior. 
+
+
+### Explore [_explore]
+
+Expand this section to access the following pages:
+
+* [Hosts](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
+
+* [Network](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
+
+* [Users](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
+
+
+### Investigations [security-ui-investigations]
+
+Expand this section to access the following pages:
+
+* [Timelines](../investigate/timeline.md): Investigate alerts and complex threats — such as lateral movement — in your network. Timelines are interactive and allow you to share your findings with other team members.
+
+    ::::{tip}
+    Click the **Timeline** button at the bottom of the {{security-app}} to start an investigation.
+
+    ::::
+
+* [Notes](/solutions/security/investigate/notes.md): View and interact with all existing notes.
+
+* [Osquery](../investigate/osquery.md): Deploy Osquery with {{agent}}, then run and schedule queries.
+
+
+### Findings [_findings]
+
+Identify misconfigurations and vulnerabilities in your cloud infrastructure. For setup instructions, refer to [Cloud Security Posture Management](/solutions/security/cloud/cloud-security-posture-management.md), [Kubernetes Security Posture Management](/solutions/security/cloud/kubernetes-security-posture-management.md), or [Cloud Native Vulnerability Management](/solutions/security/cloud/cloud-native-vulnerability-management.md).
+
+
+### Intelligence [_intelligence]
+
+The Intelligence section contains the Indicators page, which collects data from enabled threat intelligence feeds and provides a centralized view of indicators of compromise (IoCs). Refer to [Indicators of compromise](/troubleshoot/security/indicators-of-compromise.md) to learn more.
+
+
 ### {{ml-cap}} [security-ui-ml-cap]
 
 Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/machine-learning/anomaly-detection.md) for more information.
@@ -197,26 +212,15 @@ Quickly add security integrations that can ingest data and monitor your hosts.
 
 Use additional API and analysis tools to interact with your data.
 
-
 ### Management [_manage]
-```yaml {applies_to}
-stack: all
-```
 
-Expand this section to access and manage:
+Use the management or project settings pages to access and manage:
+
 - Additional security features
-- [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
+- {applies_to}`stack: ga` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
 - [{{integrations}}](/reference/fleet/manage-integrations.md)
-
-### Project Settings
-```yaml {applies_to}
-serverless: all
-```
-
-Expand this section to access and manage:
-- Additional security features
-- [{{integrations}}](/reference/fleet/manage-integrations.md)
-- [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
+- Indices, data streams, and rollups
+- {applies_to}`serverless: ga` [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
 
 
 ## Accessibility features [timeline-accessibility-features]

@@ -27,7 +27,7 @@ $$$data-views-read-only-access$$$
 By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
-In certain apps, you can also query your {{es}} data using [{{esql}}](../query-filter/languages/esql.md). With {{esql}}, data views aren't required.
+In certain apps, you can also query your {{es}} data using [{{esql}}](elasticsearch://reference/query-languages/esql.md). With {{esql}}, data views aren't required.
 ::::
 
 
@@ -37,6 +37,7 @@ In certain apps, you can also query your {{es}} data using [{{esql}}](../query-f
   - `Data View Management` {{kib}} privilege.
   - `view_index_metadata` {{es}} privilege.
 * If a read-only indicator appears, you have insufficient privileges to create or save {{data-sources}}. In addition, the buttons to create {{data-sources}} or save existing {{data-sources}} are not visible.
+* {applies_to}`stack: ga 9.2` Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can [duplicate it](#duplicate-managed-data-view) and edit that new copy as needed.
 
 
 ## Create a data view [settings-create-pattern]
@@ -324,7 +325,7 @@ Edit the settings for runtime fields, or remove runtime fields from data views.
 ::::{admonition} Deprecated in 7.13.
 :class: warning
 
-Use [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) instead of scripted fields. Runtime fields support Painless scripting and provide greater flexibility. You can also use the [Elasticsearch Query Language (ES|QL)](../../explore-analyze/query-filter/languages/esql.md) to compute values directly at query time.
+Use [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) instead of scripted fields. Runtime fields support Painless scripting and provide greater flexibility. You can also use the [Elasticsearch Query Language (ES|QL)](elasticsearch://reference/query-languages/esql.md) to compute values directly at query time.
 ::::
 
 
@@ -678,3 +679,24 @@ The **Color** field formatter enables you to specify colors with ranges of value
 When you select the **Color** formatter, click **Add Color**, then specify the **Range**, **Text color**, and **Background color**.
 
 
+## Duplicate managed data views [duplicate-managed-data-view]
+```{applies_to}
+stack: ga 9.2
+```
+
+Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can duplicate it and edit that new copy as needed. To do this:
+
+1. Open the {{kib}} application where you want to use the data view. For example, **Discover** or **Lens**.
+   :::{note}
+   The duplication operation isn't available from the **Data Views** management page.
+   :::
+
+2. In the data view selection menu, select the managed data view that you want to duplicate.
+
+3. Still in the data view selection menu, select **Manage this data view**. A flyout with more details about the data view opens, and indicates that you can't edit it directly.
+
+   ![Manage this data view option](../images/manage-this-data-view.png "Manage this data view option =50%")
+
+4. Select **Duplicate**. A Similar flyout opens where you can adjust the settings of the new copy of the managed data view.
+
+5. Finalize your edits, then select **Save data view to Kibana** or **Use without saving**, depending on your needs. By saving it to {{kib}}, you can retrieve it and use it again later.

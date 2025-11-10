@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-logs.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-logs.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -29,6 +29,13 @@ To learn how to correlate your logs with your instrumented services, refer to [S
 ::::{tip}
 Logs displayed on this page are filtered on `service.name`
 ::::
+
+### View enhanced logs [apm-enhanced-logs]
+```{applies_to}
+stack: preview 9.0
+```
+
+For an enhanced logs view with additional information including the log pattern, the number of events for each log, change type, and the time the change occurred, turn on the `observability:newLogsOverview` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings).
 
 ## Integrate with logging frameworks [apm-logs-correlation]
 ```{applies_to}

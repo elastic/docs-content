@@ -24,5 +24,5 @@ Painless is purpose-built for {{es}}, can be used for any purpose in the scripti
 | [`painless`](scripting/modules-scripting-painless.md) | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | Built-in | Purpose-built for {{es}} |
 | [`expression`](scripting/modules-scripting-expression.md) | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | Built-in | Fast custom ranking and sorting |
 | [`mustache`](../solutions/search/search-templates.md) | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | Built-in | Templates |
-| [`java`](scripting/modules-scripting-engine.md) | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | You write it! | Expert API |
+| [`java`](scripting/modules-scripting-engine.md) | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | Not available | Expert API |
 

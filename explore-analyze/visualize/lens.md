@@ -13,8 +13,15 @@ products:
 
 # Lens [lens]
 
+**Lens** is {{kib}}'s drag-and-drop visualization builder. It lets you create charts without writing queries: You drag fields onto the canvas, and {{kib}} suggests the best visualization types for your data.
 
-To create a visualization, drag the data fields you want to visualize to the workspace, then **Lens** uses visualization best practices to apply the fields and create a visualization that best displays the data.
+These fields come from your data indices stored in {{es}}. When you bring data into {{es}}, like logs, metrics, or business data, each piece of information becomes a field: timestamps, user names, error codes, sales amounts, and so on.
+
+Lens doesn't directly look into your {{es}} indices. You first need to specify a [data view](/explore-analyze/find-and-organize/data-views.md) that tells {{kib}} which indices to look at. When you open Lens and select a data view, you see all the fields from that data as a list you can drag and drop to build visualizations.
+
+:::{tip}
+If you collected data using one of the {{kib}} [ingest options](/manage-data/ingest.md), uploaded a file, or added sample data, you likely have a {{data-source}} created automatically, and can start exploring your data. If not, you must create one yourself.
+:::
 
 With **Lens**, you can:
 
@@ -26,7 +33,7 @@ With **Lens**, you can:
 * Add annotations and reference lines.
 
 
-### Create visualizations [create-the-visualization-panel]
+## Create visualizations [create-the-visualization-panel]
 
 If you’re unsure about the visualization type you want to use, or how you want to display the data, drag the fields you want to visualize onto the workspace, then let **Lens** choose for you.
 
@@ -97,23 +104,133 @@ Tables are highly customizable, and provide you with text alignment, value forma
 
 
 
-#### Assign colors to terms [assign-colors-to-terms]
+### Assign colors to terms [assign-colors-to-terms]
+```{applies_to}
+stack: preview 9.0, ga 9.1
+serverless: ga
+```
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
+You can assign specific colors to terms in your visualizations. This color mapping can be useful in several situations:
+
+* **Visual recognition and recall**: Keep colors consistent for each term regardless of filters or sorting.
+* **Semantic meaning**: Use colors to convey meaning or categorization.
+* **Consistency**: Align with brand colors and improve overall aesthetic consistency.
+
+![A bar chart with terms mapped to specific colors](../images/color_mapping.png)
+
+#### Supported visualization types
+
+Color mapping is available for the following **Lens** visualization types:
+
+* **Data tables**: Assign colors to terms in **Rows** or **Metrics** fields. You can apply colors to cell backgrounds or text.
+* **XY charts (Area, Bar, Line)**: Assign colors to breakdown dimensions that split your data into multiple series.
+* **Partition charts (Donut, Pie, Treemap, Waffle)**: Assign colors to the main slice or group-by dimension that defines the chart segments.
+* **Tag clouds**: Assign colors to the tags dimension that determines the terms displayed in the cloud.
+
+#### Configure color mapping in a chart
+
+To assign colors to terms in your visualization:
+
+1. Create a visualization using one of the supported types.
+2. Add a categorical field that contains the terms you want to color.
+3. In the field configuration, look for the **Color by value** option:
+   * For data tables: Select **Cell** or **Text**
+   * For other chart types: This option appears when you have a categorical breakdown
+4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
+5. Select a color palette from the available options:
+   * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
+   * **{{kib}} 7.0**: A palette that matches the {{kib}} 7.0 color theme for visualizations
+   * **{{kib}} 4.0**: A palette that matches the {{kib}} 4.0 color theme for visualizations
+   * **Elastic classic**: A palette made of classic Elastic brand colors
+6. Select the color mode you'd like to use with this palette:
+   * **Categorical**: Assign a distinct color to each term
+   * **Gradient**: Assign gradients of the same color to each term
+7. Choose which terms to color. You can assign colors manually or select **Add all unassigned terms** for automatic assignment.
+   :::{tip}
+   You can assign several terms to the same color.
+   :::
+8. Choose how to handle unassigned terms: Use the selected color palette or assign a single color.
 
 
-For term-based metrics, assign a color to each term with color mapping.
+#### Color options and accessibility
 
-1. Create a custom table.
-2. In the layer pane, select a **Rows** or **Metrics** field.
-3. In the **Color by value** option, select **Cell** or **Text**.
-4. Click the **Edit colors** icon.
-5. Toggle the button to use the Color Mapping feature.
-6. Select a color palette and mode.
-7. Click **Add assignment** to assign a color to a specific term, or click **Add all unassigned terms** to assign colors to all terms. Assigning colors to dates is unsupported.
-8. Configure color assignments. You can also select whether unassigned terms should be mapped to the selected color palette or a single color.
+**Discrete colors and gradients**
+
+Choose from discrete color sets or generate sequential or divergent gradients. Gradients work well for Likert scales and other term scales.
+
+**Theme-aware neutral colors**
+
+Use neutral gray colors that adjust automatically between light and dark themes. These help de-emphasize less important data.
+
+**Accessibility warnings**
+
+The system warns you when colors don't have enough contrast for accessibility.
+
+#### Best practices
+
+**Maintain consistency**
+
+Use color mapping to create consistent color schemes when the same categorical data appears across multiple visualizations in your dashboards.
+
+**Use semantic colors**
+
+Leverage color associations that users already understand (such as red for errors, green for success) to make your visualizations more intuitive.
+
+**Consider performance**
+
+Color mapping works best with fields that have a reasonable number of distinct values. Fields with hundreds or thousands of unique terms may impact visualization performance.
+
+**Plan for themes**
+
+When choosing colors, consider how they will appear in both light and dark themes. Use theme-aware neutral colors when you want to de-emphasize data.
+
+### Show trends in Metric charts [metric-trends]
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+When creating **Metric** visualizations with numeric data, you can add trend indicators that compare your primary metric to a secondary value. This feature displays colored badges with directional arrows to help you quickly identify whether values are increasing, decreasing, or staying the same.
+
+| Without trend | With trend |
+|--------|-------|
+| ![Secondary metric before comparison](../images/secondary_metric_before_compare.png "title =70%") | ![Secondary metric after comparison](../images/secondary_metric_after_compare.png "title =70%") |
+
+To add trend indicators to your metric visualization:
+
+1. Create a **Metric** visualization with a numeric primary metric.
+2. Add a secondary metric that represents the comparison value.
+
+    ::::{tip}
+    Use the `shift` parameter in formulas to compare current values against historical data. For example, if your primary metric is counting orders (based on an `order_id` field) for the current week, you can use the `count(order_id, shift='1w')` formula to compare this week's count of orders to last week's count.
+    ::::
+
+3. In the secondary metric configuration, look for the **Color by value** option. The possible choices are:
+   * **None** — No trend indicators (default)
+   * **Static** — Shows the secondary metric as a badge with a single color that you select
+   * **Dynamic** — Enables both color coding and directional icons based on the comparison
+
+4. Select **Dynamic** coloring. More options appear.
+
+5. Choose a **Color palette** that matches how you'd like to represent the comparison.
+
+6. Configure the **Display** option:
+   * **Icon** — Shows only directional arrows: ↑ for increase, ↓ for decrease, = for no change
+   * **Value** — Shows only the secondary metric value
+   * **Both** — Shows both the icon and value (default)
+
+7. The secondary metric does not automatically compare with the primary metric. Define the value to **Compare to**:
+   * **Static value** — Compares against a fixed baseline value that you specify
+   * **Primary metric** — Compares the secondary metric directly against the primary metric. This option is only available when the primary metric is numeric. 
+   
+     When you select this option, the secondary metric is automatically updated:
+
+       * The secondary metric label changes to **Difference**. You can change this by editing the **Prefix** option of the metric.
+       * If you chose a **Display** option that shows a value, the secondary metric value is automatically updated to show the difference compared to the primary metric.
+
+7. Apply your changes. 
+
+The metric visualization is updated and now shows the secondary metric as a comparison with a trend indicator.
 
 
 ### Create visualizations with keyboard navigation [drag-and-drop-keyboard-navigation]
@@ -338,20 +455,135 @@ In the legend, click the field, then choose one of the following options:
 * **Filter for value** — Applies a filter that displays only the field data in the visualization.
 * **Filter out value** — Applies a filter that removes the field data from the visualization.
 
+#### Filter pill actions
 
-### Configure the visualization components [configure-the-visualization-components]
+:::{include} ../_snippets/global-filters.md
+:::
+
+
+## Customize the visualization display [configure-the-visualization-components]
 
 Each visualization type comes with a set of components that you access from the editor toolbar.
 
 The following component menus are available:
 
-* **Visual options** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
+* **Appearance** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
 * **Labels** — Specifies how to display the labels for donut charts, pie charts, and treemaps.
 * **Legend** — Specifies how to display the legend. You can choose to display the legend inside or outside the visualization, truncate the legend values when they’re too long, and [select additional statistics to show](#customize-visualization-legend).
 * **Left axis**, **Bottom axis**, and **Right axis** — Specify how you want to display the chart axes. For example, add axis labels and change the orientation and bounds.
 
+### Visualization appearance options [customize-visualization-appearance]
 
-#### Customize a visualization legend [customize-visualization-legend]
+When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
+
+These options can vary depending on the type of chart.
+
+#### Area, Bar, and Line charts
+
+**Area fill opacity**
+:   For **Area** charts. Opacity of the area fill. Defaults to `0.3`.
+
+**Bar orientation**
+:   For **Bar** charts. Choose between **Horizontal** and **Vertical**.
+
+**Line interpolation**
+:   For **Line** charts. Choose how to interpolate the line between data points from the available options: **Straight** (default), **Smooth**, and **Step**.
+
+**Missing values**
+:   For **Area** and **Line** charts. Choose between **Hide**, **Zero**, **Linear**, **Last**, and **Next**. This option controls how gaps in data appear on the chart. By default, gaps are hidden.
+
+    _Missing values_ include empty buckets and metrics: Buckets without documents or metrics that returned `null` due to their operation and data content.
+    
+    ```{note}
+    You can only use this option when the **Include empty rows** option of the chart is enabled or when a metric produces a null bucket. For example, if a moving average finds empty buckets.
+    ```
+
+    * **Hide**: Don't show gaps in data.
+      
+      ![Hide missing values](../images/charts-gaps-fill-hide.png "Hide missing values =50%")
+
+    * **Zero**: Fill gaps by connecting starting and ending data points to zero.
+      
+      ![Fill gaps to zero](../images/charts-gaps-fill-zero.png "Fill gaps to zero =50%")
+
+    * **Linear**: Fill gaps by connecting related starting and ending data points together with a direct line.
+      
+      ![Fill gaps with a direct line](../images/charts-gaps-fill-linear.png "Fill gaps with a direct line =50%")
+    
+    * **Last**: Fill gaps between data points with a horizontal or vertical line that uses the last ending point value, when available, to determine its position.
+      
+      ![Fill gaps with a straight line from last known data point](../images/charts-gaps-fill-last.png "Fill gaps with a straight line from last known data point =50%")
+
+    * **Next**: Fill gaps between data points with a horizontal or vertical line that uses the next starting point value, when available, to determine its position.
+      
+      ![Fill gaps with a straight line from next known data point](../images/charts-gaps-fill-next.png "Fill gaps with a straight line from next known data point =50%")
+
+    **End values**
+    :   If you've chosen to show missing values, you can also decide to extend data series to the edge of the chart. By default, end values are hidden.
+        
+        * **Hide**: Don't extend series to the edge of the chart.
+        * **Zero**: Extend series as zero to the edge of the chart.
+        * **Nearest**: Extend series with their first or last value to the edge of the chart.
+
+    **Show as dotted line**
+    :   If you've chosen to show missing values, you can turn on this option to show gaps as a dotted line.
+
+**Point visibility** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
+:   For **Area** and **Line** charts. Use this option to show or hide data points. Set to `Auto` by default: Points are visible unless the distance between them is too short.
+
+#### Metric charts
+```{applies_to}
+stack: ga 9.2
+```
+**Primary metric**
+:   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
+
+**Title and subtitle**
+:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+
+**Secondary metric**
+:   Define the **Alignment**.
+
+**Other**
+:   Choose the **Icon** position.
+
+#### Tables
+
+**Density** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
+:   Make the table more or less compact. Choose between **Compact**, **Normal** (default), and **Expanded**.
+
+**Max header cell lines**
+:   The maximum number of lines that header cells can span over. If the content exceeds this limit and is truncated, an ellipsis indicates it.
+
+**Body cell lines**
+:   The fixed number of lines that body cells span over. If the content exceeds this limit and is truncated, an ellipsis indicates it.
+
+**Paginate table**
+:   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
+
+#### Pie charts
+
+**Donut hole**
+:   Display a **Small**, **Medium**, or **Large** hole at the center of the pie chart. Defaults to **None**.
+
+#### Gauge charts
+
+**Gauge shape**
+:   Define the shape of the gauge. Choose between **Linear**, **Minor arc**, **Major arc**, and **Circle**. When set to **Linear**, you can choose to display the chart horizontally or vertically.
+
+#### Tag clouds
+
+**Font size**
+:   Define the range of font sizes used in the tag cloud. The font size is based on the number of times a tag appears in the data.
+
+**Orientation**
+:   Define the orientation of the tags. Choose **Single**, **Right angled**, and **Multiple**.
+
+**Show label**
+:   Turn on this option to show a label for the tag cloud. You can define this label when defining the tags to show for the visualization, by customizing the **Name** field.
+
+
+### Customize the visualization legend [customize-visualization-legend]
 
 When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") icon.
 
@@ -405,7 +637,7 @@ For example, if the metric plotted in the chart is `Median(system.memory)` and t
 :::
 
 
-### Explore the data in Discover [explore-lens-data-in-discover]
+## Explore the data in Discover [explore-lens-data-in-discover]
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
@@ -414,7 +646,7 @@ To get started, click **Explore data in Discover** in the toolbar.
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
 
-### View the visualization data and requests [view-data-and-requests]
+## View the visualization data and requests [view-data-and-requests]
 
 To view the data included in the visualization and the requests that collected the data, use the **Inspector**.
 
@@ -431,7 +663,7 @@ To view the data included in the visualization and the requests that collected t
 
 
 
-### Save and add the panel [save-the-lens-panel]
+## Save and add the panel [save-the-lens-panel]
 
 Save the panel to the **Visualize Library** and add it to the dashboard, or add it to the dashboard without saving.
 

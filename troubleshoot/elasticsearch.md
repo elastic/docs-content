@@ -10,15 +10,13 @@ products:
 
 This section helps you fix issues with {{es}} deployments.
 
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## General [troubleshooting-general]
 
 * [](/troubleshoot/elasticsearch/fix-common-cluster-issues.md)
 * [Cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-health_report)
-
 
 ## Data [troubleshooting-data]
 
@@ -31,13 +29,13 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/increase-shard-limit.md)
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
-
+* [](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md)
 
 ## Management [troubleshooting-management]
 
 * [](/troubleshoot/elasticsearch/start-ilm.md)
 * [](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md)
-
+* [](/troubleshoot/elasticsearch/file-based-recovery.md)
 
 ## Capacity [troubleshooting-capacity]
 
@@ -45,17 +43,16 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/fix-master-node-out-of-disk.md)
 * [](/troubleshoot/elasticsearch/fix-other-node-out-of-disk.md)
 
-
 ## Snapshot and restore [troubleshooting-snapshot]
 
 * [](/troubleshoot/elasticsearch/restore-from-snapshot.md)
 * [](/troubleshoot/elasticsearch/add-repository.md)
 * [](/troubleshoot/elasticsearch/repeated-snapshot-failures.md)
 
-
 ## Other issues [troubleshooting-others]
 
 * [](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md)
+* [Troubleshoot using the cluster allocation API](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md)
 * [](/troubleshoot/elasticsearch/discovery-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/monitoring-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/transform-troubleshooting.md)
@@ -66,4 +63,5 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/remote-clusters.md)
 
 ## Additional resources
+
 If you can't find your issue here, check the [troubleshooting overview](/troubleshoot/index.md) or [contact us](/troubleshoot/index.md#contact-us).

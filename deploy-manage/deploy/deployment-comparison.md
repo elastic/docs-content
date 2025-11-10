@@ -30,7 +30,7 @@ For more details about feature availability in Serverless, check [](elastic-clou
 
 | Feature/capability | Self-managed | {{ech}} | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| [Deployment health monitoring](/deploy-manage/monitor.md) | Monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
+| [Deployment health monitoring](/deploy-manage/monitor.md) | AutoOps or monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
 | [Alerting](/explore-analyze/alerts-cases.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-features-replaced)) |
 
 ## Data lifecycle

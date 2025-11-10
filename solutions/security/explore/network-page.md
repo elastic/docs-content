@@ -59,7 +59,7 @@ There are also tabs for viewing and investigating specific types of data:
 
 * **Events**: All network events. To display alerts received from external monitoring tools, scroll down to the events table and select **Show only external alerts** on the right.
 * **Flows**: Source and destination IP addresses and countries.
-* **DNS**: DNS network queries.
+* **DNS**: DNS network queries. To view this data, you may need to [](/solutions/security/explore/configure-dns-histogram.md).
 * **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](/solutions/observability/apm/index.md) are monitored by default).
 * **TLS**: Handshake details.
 * **Anomalies**: Anomalies discovered by [machine learning jobs](/solutions/security/advanced-entity-analytics/anomaly-detection.md).

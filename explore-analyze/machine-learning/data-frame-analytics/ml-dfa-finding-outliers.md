@@ -121,7 +121,7 @@ The goal of {{oldetection}} is to find the most unusual documents in an index. L
 2. Create a {{transform}} that generates an entity-centric index with numeric or boolean data to analyze.
    In this example, we’ll use the web logs sample data and pivot the data such that we get a new index that contains a network usage summary for each client IP.
    In particular, create a {{transform}} that calculates the number of occasions when a specific client IP communicated with the network (`@timestamp.value_count`), the sum of the bytes that are exchanged between the network and the client’s machine (`bytes.sum`), the maximum exchanged bytes during a single occasion (`bytes.max`), and the total number of requests (`request.value_count`) initiated by a specific client IP.
-   You can preview the {{transform}} before you create it in **{{stack-manage-app}}** > **Transforms**:
+   You can preview the {{transform}} before you create it. Go to the **Transforms** page in the main menu or by using the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.:
    :::{image} /explore-analyze/images/machine-learning-logs-transform-preview.jpg
    :alt: Creating a {{transform}} in {{kib}}
    :screenshot:

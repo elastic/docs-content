@@ -106,7 +106,7 @@ R-squared (R^2^) represents the goodness of fit and measures how much of the var
 
 The model that you created is stored as {{es}} documents in internal indices. In other words, the characteristics of your trained model are saved and ready to be deployed and used as functions. The [{{infer}}](#ml-inference-reg) feature enables you to use your model in a preprocessor of an ingest pipeline or in a pipeline aggregation of a search query to make predictions about your data.
 
-1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
+1. To deploy {{dfanalytics}} model in a pipeline, navigate to the **Trained models** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
    :::{image} /explore-analyze/images/machine-learning-ml-dfa-trained-models-ui.png
    :alt: The trained models UI in {{kib}}
@@ -234,74 +234,78 @@ To predict the number of minutes delayed for each flight:
       3. Optionally improve the quality of the analysis by adding a query that removes erroneous data. In this case, we omit flights with a distance of 0 kilometers or less.
       4. Choose `FlightDelayMin` as the {{depvar}}, which is the field that we want to predict.
       5. Add `Cancelled`, `FlightDelay`, and `FlightDelayType` to the list of excluded fields. These fields will be excluded from the analysis. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
+         
          The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the chart. You can use this matrix to help you decide which fields to include or exclude from the analysis.
-   :::{image} /explore-analyze/images/machine-learning-flightdata-regression-scatterplot.png
-   :alt: A scatterplot matrix for three fields in {{kib}}
-   :screenshot:
-   :::
+     
+     :::{image} /explore-analyze/images/machine-learning-flightdata-regression-scatterplot.png
+     :alt: A scatterplot matrix for three fields in {{kib}}
+     :screenshot:
+     :::
+
          If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
+      
       6. Choose a training percent of `90` which means it randomly selects 90% of the source data for training.
       7. If you want to experiment with [{{feat-imp}}](ml-feature-importance.md), specify a value in the advanced configuration options. In this example, we choose to return a maximum of 5 {{feat-imp}} values per document. This option affects the speed of the analysis, so by default it is disabled.
       8. Use a model memory limit of at least 50 MB. If the job requires more than this amount of memory, it fails to start. If the available memory on the node is limited, this setting makes it possible to prevent job execution.
       9. Add a job ID (such as `model-flight-delay-regression`) and optionally a job description.
       10. Add the name of the destination index that will contain the results of the analysis. In {{kib}}, the index name matches the job ID by default. It will contain a copy of the source index data where each document is annotated with the results. If the index does not exist, it will be created automatically.
 
-::::{dropdown} API example
+      ::::{dropdown} API example
 
-```console
-PUT _ml/data_frame/analytics/model-flight-delays-regression
-        {
-          "source": {
-            "index": [
-              "kibana_sample_data_flights"
-            ],
-            "query": {
-              "range": {
-                "DistanceKilometers": {
-                  "gt": 0
+      ```console
+      PUT _ml/data_frame/analytics/model-flight-delays-regression
+              {
+                "source": {
+                  "index": [
+                    "kibana_sample_data_flights"
+                  ],
+                  "query": {
+                    "range": {
+                      "DistanceKilometers": {
+                        "gt": 0
+                      }
+                    }
+                  }
+                },
+                "dest": {
+                  "index": "model-flight-delays-regression"
+                },
+                "analysis": {
+                  "regression": {
+                    "dependent_variable": "FlightDelayMin",
+                    "training_percent": 90,
+                    "num_top_feature_importance_values": 5,
+                    "randomize_seed": 1000
+                  }
+                },
+                "model_memory_limit": "50mb",
+                "analyzed_fields": {
+                  "includes": [],
+                  "excludes": [
+                    "Cancelled",
+                    "FlightDelay",
+                    "FlightDelayType"
+                  ]
                 }
               }
-            }
-          },
-          "dest": {
-            "index": "model-flight-delays-regression"
-          },
-          "analysis": {
-            "regression": {
-              "dependent_variable": "FlightDelayMin",
-              "training_percent": 90,
-              "num_top_feature_importance_values": 5,
-              "randomize_seed": 1000
-            }
-          },
-          "model_memory_limit": "50mb",
-          "analyzed_fields": {
-            "includes": [],
-            "excludes": [
-              "Cancelled",
-              "FlightDelay",
-              "FlightDelayType"
-            ]
-          }
-        }
-```
+      ```
 
-::::
+      ::::
 
 
-After you configured your job, the configuration details are automatically validated. If the checks are successful, you can proceed and start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
+      After you configured your job, the configuration details are automatically validated. If the checks are successful, you can proceed and start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
 
 3. Start the job in {{kib}} or use the [start {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-data-frame-analytics) API.
 
-The job takes a few minutes to run. Runtime depends on the local hardware and also on the number of documents and fields that are analyzed. The more fields and documents, the longer the job runs. It stops automatically when the analysis is complete.
+      The job takes a few minutes to run. Runtime depends on the local hardware and also on the number of documents and fields that are analyzed. The more fields and documents, the longer the job runs. It stops automatically when the analysis is complete.
 
-::::{dropdown} API example
+      ::::{dropdown} API example
 
-```console
-POST _ml/data_frame/analytics/model-flight-delays-regression/_start
-```
+      ```console
+      POST _ml/data_frame/analytics/model-flight-delays-regression/_start
+      ```
 
-::::
+      ::::
 
 4. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-data-frame-analytics-stats).
 

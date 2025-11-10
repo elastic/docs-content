@@ -36,6 +36,11 @@ Before upgrading {{kib}} in a production environment, we encourage you to test y
 
 To secure {{report-features}}, you must grant users access to reporting functionality and protect the reporting endpoints with TLS/SSL encryption. Additionally, you can install graphical packages on the operating system to enable screenshot capabilities in the {{kib}} server.
 
+:::{note}
+:applies_to: {stack: ga, serverless: unavailable}
+API keys are used to authenticate requests to generate reports. If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the leader index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+:::
+
 Configuring reporting in your environment involves two main areas:
 
 ### Granting users access to {{report-features}}
@@ -88,7 +93,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         If you use index aliases, you must also grant `read` and `view_index_metadata` privileges to underlying indices to generate CSV reports.
         :::
 
-        For more information, refer to [Security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+        For more information, refer to [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 
 3. Add the {{kib}} privileges.
 
@@ -121,7 +126,9 @@ When security is enabled, you grant users access to {{report-features}} with [{{
     4. Click **Update user**.
 
 
-Granting the privilege to generate reports also grants the user the privilege to view their reports in **Stack Management > Reporting**. Users can only access their own reports.
+Granting the privilege to generate reports also grants the user the privilege to view their reports in **Reporting**. Users can only access their own reports.
+
+To view reports, go to the **Reporting** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ::::
@@ -167,12 +174,12 @@ PUT <kibana host>:<port>/api/security/role/custom_reporting_user
 
 If you are using an external identity provider, such as LDAP or Active Directory, you can assign roles to individual users or groups of users. Role mappings are configured in [`config/role_mapping.yml`](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
-For example, assign the `kibana_admin` and `reporting_user` roles to the Bill Murray user:
+For example, assign the `kibana_admin` and `custom_reporting_user` roles to the Bill Murray user:
 
 ```yaml
 kibana_admin:
   - "cn=Bill Murray,dc=example,dc=com"
-reporting_user:
+custom_reporting_user:
   - "cn=Bill Murray,dc=example,dc=com"
 ```
 
@@ -229,7 +236,7 @@ These steps apply only to **self-managed deployments**. Orchestrated deployments
 
 To automatically generate reports with {{watcher}}, you must configure {{watcher}} to trust the {{kib}} server certificate.
 
-1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [Getting started with security](/deploy-manage/security.md).
+1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [](/deploy-manage/security.md).
 2. Configure TLS/SSL encryption for the {{kib}} server. For more information, see [*Encrypt TLS communications in {{kib}}*](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 3. Specify the {{kib}} server CA certificate chain in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 

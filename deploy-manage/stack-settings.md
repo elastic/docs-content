@@ -73,10 +73,10 @@ For {{ech}} and {{ece}} deployments, you edit {{stack}} settings through the {{e
 
 :::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
 :::
-1. Under the deployment's name in the navigation menu, select **Edit**.
-2. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
-3. Apply the necessary settings in the **Users Settings** tab of the editor and select **Back** when finished.
-4. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
+4. Under the deployment's name in the navigation menu, select **Edit**.
+5. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
+6. Apply the necessary settings in the **Users Settings** tab of the editor and select **Back** when finished.
+7. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 
 For further details and examples, refer to the resource for your deployment type: 
 

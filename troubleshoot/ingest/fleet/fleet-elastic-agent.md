@@ -1,4 +1,5 @@
 ---
+navigation_title: Fleet and Elastic Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/troubleshooting-intro.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Fleet and Elastic Agent [troubleshooting-intro]
+# Troubleshoot {{fleet}} and {{elastic-agent}} [troubleshooting-intro]
 
 This section provides an [FAQ](frequently-asked-questions.md) and [troubleshooting](common-problems.md) tips to help you resolve common problems with {{fleet}} and {{agent}}.
 

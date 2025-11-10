@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic Cloud Enterprise
+navigation_title: On Elastic Cloud Enterprise
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html
 applies_to:
@@ -9,9 +9,9 @@ products:
   - id: cloud-enterprise
 ---
 
-# Remote clusters with {{ece}} [ece-enable-ccs]
+# Remote clusters on {{ece}} [ece-enable-ccs]
 
-You can configure an {{ece}} deployment to remotely access or (be accessed by) a cluster from:
+You can configure an {{ece}} deployment to either connect to remote clusters or accept connections from:
 
 * Another deployment of your ECE installation
 * A deployment running on a different ECE installation
@@ -19,6 +19,9 @@ You can configure an {{ece}} deployment to remotely access or (be accessed by) a
 * A deployment running on an {{eck}} installation
 * A self-managed installation
 
+::::{note}
+Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security) for details on how remote clusters interact with network security filters and the implications for your deployments.
+::::
 
 ## Prerequisites [ece-ccs-ccr-prerequisites]
 
@@ -57,21 +60,6 @@ The steps, information, and authentication method required to configure CCS and 
     * [From a self-managed cluster](/deploy-manage/remote-clusters/remote-clusters-self-managed.md)
     * [From an ECK environment](ece-enable-ccs-for-eck.md)
 
+## Remote clusters and network security [ece-ccs-ccr-network-security]
 
-## Remote clusters and traffic filtering [ece-ccs-ccr-traffic-filtering]
-
-::::{note}
-Traffic filtering isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
-::::
-
-
-For remote clusters configured using TLS certificate authentication, [traffic filtering](../security/traffic-filtering.md) can be enabled to restrict access to deployments that are used as a local or remote cluster without any impact to cross-cluster search or cross-cluster replication.
-
-Traffic filtering for remote clusters supports 2 methods:
-
-* [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-traffic-filtering.md)
-* Filtering by Organization or {{es}} cluster ID with a Remote cluster type filter. You can configure this type of filter from the **Platform** > **Security** page of your environment or using the [{{ece}} API](https://www.elastic.co/docs/api/doc/cloud-enterprise) and apply it from each deployment’s **Security** page.
-
-::::{note}
-When setting up traffic filters for a remote connection to an {{ece}} environment, you also need to upload the region’s TLS certificate of the local cluster to the {{ece}} environment’s proxy. You can find that region’s TLS certificate in the **Security** page of any deployment of the environment initiating the remote connection.
-::::
+If you have [network security policies](/deploy-manage/security/network-security-policies.md) applied to the remote cluster, you might need to take extra steps on the remote side to allow traffic from the local cluster. Some remote cluster configurations have limited compatibility with network security. To learn more, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).

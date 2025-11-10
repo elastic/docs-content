@@ -122,7 +122,6 @@ GET my-index-000001/_search
 }
 ```
 
-
 ## Specify the search analyzer for a field [specify-search-field-analyzer]
 
 When mapping an index, you can use the [`search_analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) mapping parameter to specify a search analyzer for each `text` field.
@@ -173,4 +172,42 @@ PUT my-index-000001
 }
 ```
 
+## Update analyzers on existing indices
+```yaml {applies_to}
+serverless: unavailable
+```
 
+You can only define new analyzers on closed indices. To add an analyzer, you must close the index, define the analyzer, and reopen the index.
+
+For example, the following commands add the `content` analyzer to the `my-index-000001` index:
+
+```console
+POST /my-index-000001/_close
+```
+% TEST[setup:my_index]
+
+```console
+PUT /my-index-000001/_settings
+{
+  "analysis" : {
+    "analyzer":{
+      "content":{
+        "type":"custom",
+        "tokenizer":"whitespace"
+      }
+    }
+  }
+}
+```
+% TEST[continued]
+
+```console
+POST /my-index-000001/_open
+```
+% TEST[continued]
+
+::::{warning}
+You cannot close the write index of a data stream. To update the analyzer for a data stream's write index and future backing indices, update the analyzer in the [index template](/manage-data/data-store/data-streams/set-up-data-stream.md#create-index-template) used by the stream. Then [roll over the data stream](/manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream) to apply the new analyzer to the stream's write index and future backing indices. This affects searches and any new data added to the stream after the rollover. However, it does not affect the data stream's backing indices or their existing data.
+
+To change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
+::::

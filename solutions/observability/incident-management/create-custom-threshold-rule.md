@@ -219,6 +219,9 @@ The following variables are specific to this rule type. You can also specify [va
 :   The container object defined by ECS if available in the source.
 
 `context.group`
+:   The array of objects containing groups that are reporting data.
+
+`context.grouping` {applies_to}`stack: ga 9.1`
 :   The object containing groups that are reporting data.
 
 `context.host`

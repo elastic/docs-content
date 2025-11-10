@@ -315,3 +315,4 @@ Congratulations! You have successfully set up monitoring for nginx using standal
 
 * Learn more about [{{fleet}} and {{agent}}](/reference/fleet/index.md).
 * Learn more about [{{integrations}}](integration-docs://reference/index.md).
+* Learn how to manage your [data lifecycle](/manage-data/lifecycle.md).

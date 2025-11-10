@@ -25,7 +25,7 @@ stack:
 
 {{ecloud}} offers all of the features of {{es}}, {{kib}}, and {{elastic-sec}} as a hosted service available on AWS, GCP, and Azure. To get started, sign up for a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
-For information about installing and managing the {{stack}} yourself, see [Installing the {{stack}}](/get-started/the-stack.md).
+For information about installing and managing the {{stack}} yourself, refer to [](/deploy-manage/deploy/self-managed.md).
 
 ### Node role requirements [node-role-requirements]
 
@@ -51,7 +51,7 @@ To use {{elastic-sec}}, your role must have at least:
 ::::
 
 
-For more information about index privileges, refer to [{{es}} security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+For more information about index privileges, refer to [{{es}} security privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 
 
 ## Feature-specific requirements [security-requirements-overview-feature-specific-requirements]
@@ -78,7 +78,9 @@ The [Elastic Common Schema (ECS)](ecs://reference/index.md) defines a common set
 {{elastic-sec}} requires [ECS-compliant data](ecs://reference/index.md). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [{{elastic-sec}} ECS field reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 ::::
 
+## Third-party collectors NOT mapped to ECS [security-requirements-overview-third-party-collectors-not-mapped-to-ecs]
 
+{{elastic-sec}} does not support the use of third-party connectors that do not map data to ECS, including third-party and open source OTel collectors.
 
 ## Cross-cluster searches [security-cross-cluster-searches]
 

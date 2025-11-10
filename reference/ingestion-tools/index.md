@@ -10,7 +10,7 @@ This section contains reference information for ingestion tools, including:
 * Logstash Plugins
 * Logstash Versioned Plugin Reference
 * Elastic Serverless forwarder for AWS
-* Search connectors
+* Content connectors
 * ES for Apache Hadoop
 * Elastic in integrations
 

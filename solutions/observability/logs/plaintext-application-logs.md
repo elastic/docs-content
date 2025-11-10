@@ -47,36 +47,36 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
-sudo dpkg -i filebeat-{{version}}-amd64.deb
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-amd64.deb
+sudo dpkg -i filebeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
-sudo rpm -vi filebeat-{{version}}-x86_64.rpm
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} macOS
 ```sh subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
-tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```sh subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
-tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [{{filebeat}} Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip).
+1. Download the [{{filebeat}} Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-windows-x86_64.zip).
 2. Extract the contents of the zip file into `C:\Program Files`.
-3. Rename the _filebeat-{{version}}-windows-x86_64_ directory to _{{filebeat}}_.
+3. Rename the _filebeat-{{version.stack}}-windows-x86_64_ directory to _{{filebeat}}_.
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 5. From the PowerShell prompt, run the following commands to install {{filebeat}} as a Windows service:
 

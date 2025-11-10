@@ -22,9 +22,6 @@ Create beautiful maps from your geographical data. With **Maps**, you can:
 * Symbolize features using data values.
 * Focus on only the data that’s important to you.
 
-On Elastic Cloud Serverless, Maps is only available for Security projects [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md).
-
-
 ## Build maps with multiple layers and indices [_build_maps_with_multiple_layers_and_indices]
 
 Use multiple layers and indices to show all your data in a single map. Show how data sits relative to physical features like weather patterns, human-made features like international borders, and business-specific features like sales regions. Plot individual documents or use aggregations to plot any data set, no matter how large.

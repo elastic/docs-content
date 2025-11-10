@@ -28,35 +28,37 @@ On this page, you'll learn the following:
 
 To edit the roles assigned to a user:
 
-1. Go to the user icon on the header bar and select **Organization**.
-2. Find the user on the **Members** tab of the **Organization** page. Click the member name to view their roles.
-3. Click **Edit** to change the user's roles.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From a deployment or project on the home page, select **Manage**.
+3. From the lower navigation menu, select **Organization**.
+4. Find the user on the **Members** tab of the **Organization** page. Click the member name to view their roles.
+5. Click **Edit roles** to change the user's roles.
 
 ## Types of roles
 
 There are two types of roles you can assign to users:
 
-* **Oranization-level roles:** These roles apply to the entire organization and are not specific to any serverless project or hosted deployment.
-* **Instance access roles:** These roles are specific to each serverless project or hosted deployment.
+* **Organization-level roles:** These roles apply to the entire organization and are not specific to any serverless project or hosted deployment.
+* **Cloud resource access roles:** These roles are specific to each serverless project or hosted deployment.
 
 ### Organization-level roles [ec_organization_level_roles]
 
-* **Organization owner**: The role assigned by default to the user who created the organization. Organization owners have all privileges to instances ({{ech}} deployments and {{serverless-full}} projects), users, organization-level details and properties, billing details and subscription levels. They are also able to sign on to deployments with superuser privileges.
+* **Organization owner**: The role assigned by default to the user who created the organization. Organization owners have all privileges to {{ecloud}} resources including {{ech}} deployments and {{serverless-full}} projects, as well as users, organization-level details and properties, billing details and subscription levels. They are also able to sign on to deployments with superuser privileges.
 * **Billing admin**: Can manage an organization’s billing details such as credit card information, subscription and invoice history. Cannot manage other organization or deployment details and properties.
 
-### Instance access roles [ec_instance_access_roles]
+### Cloud resource access roles [ec_instance_access_roles]
 
-You can set instance access roles at two levels:
+You can set cloud resource access roles at two levels:
 
-* **Globally**, for all {{ech}} deployments, or for all {{serverless-full}} projects of the time type ({{es-serverless}}, {{observability}}, or {{elastic-sec}}). In this case, the role will also apply to new deployments, or projects of the specified type type, created later.
+* **Globally**, for all {{ech}} deployments, or for all {{serverless-full}} projects of the same type ({{es-serverless}}, {{observability}}, or {{elastic-sec}}). In this case, the role will also apply to new deployments, or projects of the specified type type, created later.
 * **Individually**, for specific deployments or projects only. To do that, you have to leave the **Role for all hosted deployments** field, or the **Role for all** for the project type, blank.
 
-{{ech}} deployments and {{serverless-full}} projects each have a set of predefined instance access roles available:
+{{ech}} deployments and {{serverless-full}} projects each have a set of predefined cloud resource access roles available:
 
 * [{{ech}} predefined roles](#ech-predefined-roles)
 * [{{serverless-full}} predefined roles](#general-assign-user-roles-table)
 
-If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md). All custom roles grant the same access as the `Viewer` instance access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges.To assign a custom role to users, go to **Instance access roles** and select it from the list under the specific project it was created in.
+If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md). All custom roles grant the same access as the `Viewer` cloud resource access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges. To assign a custom role to users, go to **Cloud resource access** and select it from the list under the specific project it was created in.
 
 ## {{ech}} predefined roles [ech-predefined-roles]
 
@@ -72,7 +74,7 @@ For {{ech}} deployments, the following predefined roles are available:
 There are two ways for a user to access {{kib}} instances of an {{ech}} deployment:
 
 * [Directly with {{es}} credentials](/deploy-manage/users-roles/cluster-or-deployment-auth.md). In this case, users and their roles are managed directly in {{kib}}. Users in this case don’t need to be members of the {{ecloud}} organization to access the deployment. Note that if you have several deployments, you need to manage users for each of them, individually.
-* Through your {{ecloud}} organization. In this case, users who are members of your organization log in to {{ecloud}} and can open the deployments they have access to. Their access level is determined by the roles assigned to them from the **Organization** page. {{ecloud}} roles are mapped to [{{stack}} roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) on a per-deployment level. When logging in to a specific deployment, users get the stack role that maps to their {{ecloud}} role for that particular deployment.
+* Through your {{ecloud}} organization. In this case, users who are members of your organization log in to {{ecloud}} and can open the deployments they have access to. Their access level is determined by the roles assigned to them from the **Organization** page. {{ecloud}} roles are mapped to [{{stack}} roles](elasticsearch://reference/elasticsearch/roles.md) on a per-deployment level. When logging in to a specific deployment, users get the stack role that maps to their {{ecloud}} role for that particular deployment.
 
 The following table shows the default mapping:
 
@@ -117,7 +119,7 @@ This list describes the scope of the different roles:
 
 * **Organization owner**: This role is always scoped to administer all deployments.
 * **Billing admin**: This role does not refer to any deployment.
-* **Instance access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
+* **Cloud resource access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
 
 Members are only able to see the role assignments of other members under the organization they belong to, for role assignments they are able to manage. Members with the **Organization owner** role assigned are able to see the role assignments of every member of their organization.
 

@@ -2,6 +2,7 @@
 navigation_title: SAML
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-realm.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-sign-outgoing-saml-message.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece_sign_outgoing_saml_message.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece_optional_settings.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-SAML.html
@@ -36,7 +37,7 @@ Because this feature is designed with {{kib}} in mind, most sections of this gui
 
 The SAML support in {{kib}} is designed with the expectation that it will be the primary (or sole) authentication method for users of that {{kib}} instance. After you enable SAML authentication in {{kib}}, it will affect all users who try to login. The [Configuring {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana) section provides more detail about how this works.
 
-For a detailed walk-through of how to implement SAML authentication for {{kib}} with Microsoft Entra ID as an identity provider, refer to our guide [Set up SAML with Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+For a detailed walk-through of how to implement SAML authentication for {{kib}} with Microsoft Entra ID as an identity provider, refer to our guide [Set up SAML with Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-entra.md).
 
 To configure SAML, you need to perform the following steps:
 
@@ -134,10 +135,10 @@ If you're using {{ece}} or {{ech}}, and you're using machine learning or a deplo
 xpack.security.authc.realms.saml.saml1:
   order: 2
   idp.metadata.path: saml/idp-metadata.xml
-  idp.entity_id: "https://sso.example.com/"
-  sp.entity_id:  "https://kibana.example.com/"
-  sp.acs: "https://kibana.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.example.com/logout"
+  idp.entity_id: "<sso-example-url>"
+  sp.entity_id:  "<kibana-example-url>"
+  sp.acs: "<kibana-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-example-url>/logout"
   attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 ```
@@ -158,7 +159,7 @@ idp.metadata.path
     :::{tip}
     If you want to pass a file path, then review the following:
     * File path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-    * If you're using {{ece}} or {{ech}}, then you must upload the file [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+    * If you're using {{ech}} or {{ece}}, then you must upload the file before it can be referenced. For {{ech}}, upload the file [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
     * If you're using {{eck}}, then install the file as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
     :::
 
@@ -264,14 +265,14 @@ groups
 :   *(Recommended)* If you want to use your IdP’s concept of groups or roles as the basis for a user’s {{es}} privileges, you should map them with this attribute. The `groups` are passed directly to your [role mapping rules](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-role-mapping).
 
     :::{note}
-    Some IdPs are configured to send the `groups` list as a single value, comma-separated string. To map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, you can configure a string delimiter using the `attribute_delimiters.group` setting.<br><br>For example, splitting the SAML attribute value `engineering,elasticsearch-admins,employees` on a delimiter value of `,` will result in `engineering`, `elasticsearch-admins`, and `employees` as the list of groups for the user.
+    Some IdPs are configured to send the `groups` list as a single value, comma-separated string. To map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, you can configure a string delimiter using the `attribute_delimiters.groups` setting.<br><br>For example, splitting the SAML attribute value `engineering,elasticsearch-admins,employees` on a delimiter value of `,` will result in `engineering`, `elasticsearch-admins`, and `employees` as the list of groups for the user.
     ::::
 
 name
-:   *(Optional)* The user’s full name.
+:   *(Optional)* The user’s full name. It will be used in {{kib}}'s profile page to display user details.
 
 mail
-:   *(Optional)* The user’s email address.
+:   *(Optional)* The user’s email address. It will be used in {{kib}}'s profile page to display user details.
 
 dn
 :   *(Optional)* The user’s X.500 *Distinguished Name*.
@@ -416,11 +417,11 @@ Encryption certificates can be generated with the same process.
 
 ### Sign outgoing SAML messages [_configuring_es_for_signing]
 
-By default, {{es}} will sign *all* outgoing SAML messages if a signing key has been configured.
+By default, {{es}} will sign *all* outgoing SAML messages if a signing certificate and key has been configured.
 
 :::{tip}
 * In self-managed clusters, file path settings is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-* If you're using {{ece}} or {{ech}}, then you must upload any certificate or keystore files [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. You can add this file to your existing SAML bundle.
+* If you're using {{ech}} or {{ece}}, then you must upload any certificate or keystore files before they can be referenced in the configuration. For {{ech}}, upload them [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md). In both cases, you can add the files to your existing SAML bundle.
 * If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 :::
 
@@ -484,7 +485,7 @@ If an `Assertion` contains both encrypted and plain-text attributes, then failur
 
 :::{tip}
 * In self-managed clusters, file path settings is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-* If you're using {{ece}} or {{ech}}, then you must upload any certificate or keystore files [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. You can add this file to your existing SAML bundle.
+* If you're using {{ech}} or {{ece}}, then you must upload any certificate or keystore files before they can be referenced in the configuration. For {{ech}}, upload them [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md). In both cases, you can add the files to your existing SAML bundle.
 * If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 :::
 
@@ -700,34 +701,34 @@ Each SAML realm must have its own unique Entity ID (`sp.entity_id`), and its own
 
 These realms may use the same Identity Provider, but are not required to.
 
-The following is example of having 3 difference {{kib}} instances, 2 of which use the same internal IdP, and another which uses a different IdP.
+The following is example of having 3 different {{kib}} instances, 2 of which use the same internal IdP, and another which uses a different IdP.
 
 ```yaml
 xpack.security.authc.realms.saml.saml_finance:
   order: 2
   idp.metadata.path: saml/idp-metadata.xml
-  idp.entity_id: "https://sso.example.com/"
-  sp.entity_id:  "https://kibana.finance.example.com/"
-  sp.acs: "https://kibana.finance.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.finance.example.com/logout"
+  idp.entity_id: "<sso-example-url>"
+  sp.entity_id:  "<kibana-finance-example-url>"
+  sp.acs: "<kibana-finance-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-finance-example-url>/logout"
   attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 xpack.security.authc.realms.saml.saml_sales:
   order: 3
   idp.metadata.path: saml/idp-metadata.xml
-  idp.entity_id: "https://sso.example.com/"
-  sp.entity_id:  "https://kibana.sales.example.com/"
-  sp.acs: "https://kibana.sales.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.sales.example.com/logout"
+  idp.entity_id: "<sso-example-url>"
+  sp.entity_id:  "<kibana-sales-example-url>"
+  sp.acs: "<kibana-sales-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-sales-example-url>/logout"
   attributes.principal: "urn:oid:0.9.2342.19200300.100.1.1"
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 xpack.security.authc.realms.saml.saml_eng:
   order: 4
   idp.metadata.path: saml/idp-external.xml
-  idp.entity_id: "https://engineering.sso.example.net/"
-  sp.entity_id:  "https://kibana.engineering.example.com/"
-  sp.acs: "https://kibana.engineering.example.com/api/security/saml/callback"
-  sp.logout: "https://kibana.engineering.example.com/logout"
+  idp.entity_id: "<engineering-sso-example-url>"
+  sp.entity_id:  "<kibana-engineering-example-url>"
+  sp.acs: "<kibana-engineering-example-url>/api/security/saml/callback"
+  sp.logout: "<kibana-engineering-example-url>/logout"
   attributes.principal: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 ```
 

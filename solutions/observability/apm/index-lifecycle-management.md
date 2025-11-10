@@ -2,13 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-ilm-how-to.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
+navigation_title: Index lifecycle management
 ---
 
-# Index lifecycle management [apm-ilm-how-to]
+# Index lifecycle management for APM indices [apm-ilm-how-to]
 
 Lifecycle policies allow you to automate the lifecycle of your APM indices as they grow and age. A default policy is applied to each APM data stream, but can be customized depending on your business needs.
 
@@ -62,7 +63,7 @@ This tutorial explains how to apply a custom index lifecycle policy to the `trac
 
 The **Data Streams** view in {{kib}} shows you data streams, index templates, and lifecycle policies:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Index Management** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Data Streams**.
 3. Search for `traces-apm` to see all data streams associated with APM trace data.
 4. In this example, I only have one data stream because I’m only using the `default` namespace. You may have more if your setup includes multiple namespaces.
@@ -74,7 +75,7 @@ The **Data Streams** view in {{kib}} shows you data streams, index templates, an
 
 ## Step 2: Create an index lifecycle policy [apm-data-streams-custom-two]
 
-1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Lifecycle Policies** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 
 Name your new policy; For this tutorial, I’ve chosen `custom-traces-apm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.
@@ -139,4 +140,14 @@ POST /traces-apm-default/_rollover/
 
 ## Namespace-level index lifecycle policies [apm-data-streams-custom-policy-namespace]
 
-It is also possible to create more granular index lifecycle policies that apply to individual namespaces. This process is similar to the above tutorial, but includes cloning and modify the existing index template to use a new `*@custom` component template.
+It is also possible to create more granular index lifecycle policies that apply to individual namespaces. This process is similar to the tutorial, but includes cloning the original index template(s) and using the index lifecycle you've created in the cloned template(s).
+
+**Use case:** Use cloned index templates only in situations where you need to add namespace-specific customizations to a data stream.
+
+:::{important}
+- Cloning index templates is extremely risky because cloned templates are not automatically updated when you upgrade to a new product version. Users may find themselves in situations where their configurations are outdated because cloned templates are being used instead of the latest templates. <br><br>
+Any customization done using cloned index templates must be repeated _every time_ you upgrade to a new version.
+
+- Do not edit built-in index templates, add extra component templates, or change template order. Interfering with templates can disrupt how APM data is processed.
+
+:::

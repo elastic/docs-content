@@ -27,9 +27,13 @@ providers:
     vars:
       foo: bar
   local_dynamic:
-    vars:
-      - item: key1
-      - item: key2
+    items:
+      - vars:
+          item: key1
+      - vars:
+          item: key2
+      - vars:
+          item: key3
 ```
 
 Providers are enabled automatically if a provider is referenced in an {{agent}} policy. All providers are prefixed without name collisions. The name of the provider is in the key in the configuration.

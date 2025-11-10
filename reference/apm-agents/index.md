@@ -4,7 +4,6 @@
 
 This section contains reference information for APM Agents features, including:
 
-* Android
 * .NET
 * Go
 * Java

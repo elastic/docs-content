@@ -47,6 +47,13 @@ When you select **Alert me if there’s no data**, the rule is triggered if the 
 
 The **Filters** control the scope of the rule. If used, the rule will only evaluate metric data that matches the query in this field. In this example, the rule will only alert on metrics reported from a Cloud region called `us-east`.
 
+::::{note}
+If you've made a rule with the [create rule API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-alerting-rule-id) and added Query DSL filters using the `filterQuery` parameter, the filters won't appear in the UI for editing a rule. As a workaround, manually re-add the filters through the UI and save the rule. As you're modifying the rule's filters from the UI, be mindful of the following:
+
+- The **Filter** field only accepts KQL syntax, meaning you may need to manually convert your Query DSL filters to KQL. 
+- After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.  
+::::
+
 The **Group alerts by** creates an instance of the alert for every unique value of the `field` added. For example, you can create a rule per host or every mount point of each host. You can also add multiple fields. In this example, the rule will individually track the status of each `host.name` in your infrastructure. You will only receive an alert about `host-1`, if `host.name: host-1` passes the threshold, but `host-2` and `host-3` do not.
 
 When you select **Alert me if a group stops reporting data**, the rule is triggered if a group that previously reported metrics does not report them again over the expected time period.
@@ -141,6 +148,9 @@ The following variables are specific to this rule type. You an also specify [var
 :   Name of the group(s) reporting data. For accessing each group key, use `context.groupByKeys`.
 
 `context.groupByKeys`
+:   The object containing groups that are reporting data.
+
+`context.grouping` {applies_to}`stack: ga 9.2`
 :   The object containing groups that are reporting data.
 
 `context.host`

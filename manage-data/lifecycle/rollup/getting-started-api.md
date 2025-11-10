@@ -2,6 +2,9 @@
 navigation_title: Get started using the API
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-getting-started.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---
@@ -272,8 +275,179 @@ Which returns a corresponding response:
 
 In addition to being more complicated (date histogram and a terms aggregation, plus an additional average metric), you’ll notice the date_histogram uses a `7d` interval instead of `60m`.
 
-
-## Conclusion [_conclusion]
-
 This quickstart should have provided a concise overview of the core functionality that Rollup exposes. There are more tips and things to consider when setting up Rollups, which you can find throughout the rest of this section. You may also explore the [REST API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-jobs) for an overview of what is available.
 
+## Historical-only search example
+
+Suppose you have an index named `sensor-1` that contains raw data, and you've created a {{rollup-job}} with the following configuration:
+
+```console
+PUT _rollup/job/sensor
+{
+  "index_pattern": "sensor-*",
+  "rollup_index": "sensor_rollup",
+  "cron": "*/30 * * * * ?",
+  "page_size": 1000,
+  "groups": {
+    "date_histogram": {
+      "field": "timestamp",
+      "fixed_interval": "1h",
+      "delay": "7d"
+    },
+    "terms": {
+      "fields": [ "node" ]
+    }
+  },
+  "metrics": [
+    {
+      "field": "temperature",
+      "metrics": [ "min", "max", "sum" ]
+    },
+    {
+      "field": "voltage",
+      "metrics": [ "avg" ]
+    }
+  ]
+}
+```
+% TEST[setup:sensor_index]
+
+This rolls up the `sensor-*` pattern and stores the results in `sensor_rollup`.
+To search this rolled up data, use the `_rollup_search` endpoint.
+You can use Query DSL to search the rolled-up data:
+
+```console
+GET /sensor_rollup/_rollup_search
+{
+  "size": 0,
+  "aggregations": {
+    "max_temperature": {
+      "max": {
+        "field": "temperature"
+      }
+    }
+  }
+}
+```
+% TEST[setup:sensor_prefab_data]
+% TEST[s/_rollup_search/_rollup_search?filter_path=took,timed_out,terminated_early,_shards,hits,aggregations/]
+
+The query is targeting the `sensor_rollup` data, since this contains the rollup
+data as configured in the job. A `max` aggregation has been used on the
+`temperature` field, yielding the following response:
+
+```console-result
+GET /sensor_rollup/_rollup_search
+{
+  "size": 0,
+  "aggregations": {
+    "max_temperature": {
+      "max": {
+        "field": "temperature"
+      }
+    }
+  }
+}
+```
+% TESTRESPONSE[s/"took" : 102/"took" : $body.$_path/]
+% TESTRESPONSE[s/"_shards" : \.\.\. /"_shards" : $body.$_path/]
+
+The response follows the same structure as a standard query with aggregations: it includes metadata about the request (`took`, `_shards`, etc.), an empty hits section (as rollup searches do not return individual documents), and the aggregation results.
+
+Rollup searches are limited to the functionality defined in the {{rollup-job}} configuration. For example, if the `avg` metric was not configured for the `temperature` field, calculating the average temperature is not possible. Running such a query results in an error:
+
+```console
+GET sensor_rollup/_rollup_search
+{
+  "size": 0,
+  "aggregations": {
+    "avg_temperature": {
+      "avg": {
+        "field": "temperature"
+      }
+    }
+  }
+}
+```
+% TEST[continued]
+% TEST[catch:/illegal_argument_exception/]
+
+```console-result
+{
+  "error": {
+    "root_cause": [
+      {
+        "type": "illegal_argument_exception",
+        "reason": "There is not a rollup job that has a [avg] agg with name [avg_temperature] which also satisfies all requirements of query.",
+        "stack_trace": ...
+      }
+    ],
+    "type": "illegal_argument_exception",
+    "reason": "There is not a rollup job that has a [avg] agg with name [avg_temperature] which also satisfies all requirements of query.",
+    "stack_trace": ...
+  },
+  "status": 400
+}
+```
+% TESTRESPONSE[s/"stack_trace": \.\.\./"stack_trace": $body.$_path/]
+
+## Searching both historical rollup and non-rollup data
+
+The rollup search API has the capability to search across both live
+non-rollup data and the aggregated rollup data. This is done by adding
+the live indices to the URI:
+
+```console
+GET sensor-1,sensor_rollup/_rollup_search 
+{
+  "size": 0, 
+  "aggregations": {
+    "max_temperature": {
+      "max": {
+        "field": "temperature"
+      }
+    }
+  }
+}
+```
+% TEST[continued]
+% TEST[s/_rollup_search/_rollup_search?filter_path=took,timed_out,terminated_early,_shards,hits,aggregations/]
+
+Note the URI now searches `sensor-1` and `sensor_rollup` at the same time.
+
+When the search is executed, the rollup search endpoint does two things:
+
+1. The original request is sent to the non-rollup index unaltered.
+2. A rewritten version of the original request is sent to the rollup index.
+
+When the two responses are received, the endpoint rewrites the rollup response
+and merges the two together. During the merging process, if there is any overlap
+in buckets between the two responses, the buckets from the non-rollup index are
+used.
+
+The response to the above query looks as expected, despite spanning rollup and
+non-rollup indices:
+
+```console-result
+{
+  "took" : 102,
+  "timed_out" : false,
+  "terminated_early" : false,
+  "_shards" : ... ,
+  "hits" : {
+    "total" : {
+        "value": 0,
+        "relation": "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "max_temperature" : {
+      "value" : 202.0
+    }
+  }
+}
+```
+% TESTRESPONSE[s/"took" : 102/"took" : $body.$_path/]
+% TESTRESPONSE[s/"_shards" : \.\.\. /"_shards" : $body.$_path/]

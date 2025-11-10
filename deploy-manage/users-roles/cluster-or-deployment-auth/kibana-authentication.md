@@ -36,7 +36,7 @@ To provide login instructions to users, use the `xpack.security.loginHelp` setti
 ::::
 
 
-If you don’t want a specific provider to show up at the Login Selector UI (e.g. to only support third-party initiated login) you can hide it with `showInSelector` setting set to `false`. However, in this case, the provider is presented in the provider chain and may be consulted during authentication based on its `order`. To disable the provider, use the `enabled` setting.
+If you don’t want a specific provider to show up at the Login Selector UI (for example, if you only want to support third-party initiated login) you can hide it with `showInSelector` setting set to `false`. Or, if you only want to show a provider for a specific origin(s), you can use the `origin` setting. However, in both cases the provider is still part of the provider chain and may be used during authentication based on its order. To fully disable a provider, use the `enabled` setting.
 
 ::::{tip}
 The Login Selector UI can also be disabled or enabled with `xpack.security.authc.selector.enabled` setting.
@@ -56,7 +56,7 @@ xpack.security.authc.providers:
     order: 1
     realm: saml1
     description: "Log in with SSO"
-    icon: "https://my-company.xyz/saml-logo.svg"
+    icon: "<my-company-url>/saml-logo.svg"
   saml.saml2:
     order: 2
     realm: saml2

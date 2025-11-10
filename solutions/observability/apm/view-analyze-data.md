@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-view-and-analyze-data.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-view-and-analyze-traces.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -13,7 +13,7 @@ products:
 
 # View and analyze data [apm-view-and-analyze-data]
 
-After you’ve started [sending application data to Elastic](/solutions/observability/apm/collect-application-data.md), you can open the Applications UI to view your data in a variety of visualizations and start analyzing data.
+After you’ve started [sending application data to Elastic](/solutions/observability/apm/ingest/index.md), you can open the Applications UI to view your data in a variety of visualizations and start analyzing data.
 
 The Applications UI allows you to monitor your software services and applications in real-time. You can visualize detailed performance information on your services, identify and analyze errors, and monitor host-level and APM agent-specific metrics like JVM and Go runtime metrics.
 

@@ -21,6 +21,16 @@ Note the following restrictions when installing {{agent}} on your system:
 ::::
 
 
+
+
+::::{admonition} New FIPS compatible install packages
+:class: note
+
+{applies_to}`stack: preview 9.1` FIPS compatible binaries for {{agent}}, {{fleet}}, and other ingest tools are available for download. Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product [download page](https://www.elastic.co/downloads). Get more details about FIPS compatibility for {{agent}}, {{fleet}} and other ingest tools in [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+
+::::
+
+
 You have a few options for installing and managing an {{agent}}:
 
 * **Install a {{fleet}}-managed {{agent}} (recommended)**
@@ -109,9 +119,13 @@ For containerized environments, the basic {{agent}} flavor is installed using th
 
 For containerized environments, the servers {{agent}} flavor is installed using the default `elastic-agent` command with an agent container package. This flavor contains the same set of components described in [Servers flavor](#elastic-agent-servers-flavor-regular) above.
 
+{applies_to}`stack: ga 9.1` The servers {{agent}} flavor also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependencies necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md).
+
 #### Complete flavor [elastic-agent-complete-flavor]
 
-For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
+For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
+
+The complete {{agent}} flavor also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependencies necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md).
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 
@@ -142,7 +156,7 @@ The disk requirements for {{agent}} vary by operating system and {{stack}} versi
 | Operating system | 8.13 | 8.14 | 8.15 | 8.18 | 9.0 |
 | --- | --- | --- | --- |
 | **Linux** | 1800 MB | 1018 MB | 1060 MB | 1.5 GB | 1.5 GB |
-| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 7755 MB |
+| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 775 MB |
 | **Windows** | 891 MB | 504 MB | 500 MB | 678 MB | 705 MB |
 
 During upgrades, double the disk space is required to store the new {{agent}} binary. After the upgrade completes, the original {{agent}} is removed from disk to free up the space.

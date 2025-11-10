@@ -65,6 +65,7 @@ body:
         - '8.19'
         - '9.0'
         - '9.1'
+        - '9.2'
       default: 0
     validations:
       required: true

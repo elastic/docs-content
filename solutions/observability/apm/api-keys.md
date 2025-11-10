@@ -2,13 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-key.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
+navigation_title: API keys
 ---
 
-# API keys [apm-api-key]
+# API keys for Elastic APM [apm-api-key]
 
 :::{include} _snippets/apm-server-vs-mis.md
 :::
@@ -21,7 +22,7 @@ When enabled, API keys are used to authorize requests to {{apm-server-or-mis}}. 
 
 You can assign one or more unique privileges to each API key:
 
-* **Agent configuration** (`config_agent:read`): Required for agents to read [Agent configuration remotely](/solutions/observability/apm/apm-agent-central-configuration.md).
+* **Agent configuration** (`config_agent:read`): Required for agents to read [Agent configuration remotely](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md).
 * **Ingest** (`event:write`): Required for ingesting agent events.
 
 To secure the communication between APM Agents and either {{apm-server-or-mis}} with API keys, make sure [TLS](/solutions/observability/apm/apm-agent-tls-communication.md) is enabled, then complete these steps:
@@ -36,7 +37,7 @@ To secure the communication between APM Agents and either {{apm-server-or-mis}} 
 :::::::{tab-set}
 
 ::::::{tab-item} Fleet-managed
-Enable API key authorization in the [API key authentication options](/solutions/observability/apm/apm-agent-authorization.md#apm-api-key-auth-settings). You should also set a limit on the number of unique API keys that APM Server allows per minute; this value should be the number of unique API keys configured in your monitored services.
+Enable API key authorization in the [API key authentication options](/solutions/observability/apm/apm-server/apm-agent-authorization.md#apm-api-key-auth-settings). You should also set a limit on the number of unique API keys that APM Server allows per minute; this value should be the number of unique API keys configured in your monitored services.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -151,10 +152,10 @@ To view all API keys for your project:
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
 
-* **Android**: [`apiKey`](apm-agent-android://reference/configuration.md)
+* **Android**: [`apiKey`](apm-agent-android://reference/edot-android/configuration.md)
 * **Go agent**: [`ELASTIC_APM_API_KEY`](apm-agent-go://reference/configuration.md#config-api-key)
 * **.NET agent**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
-* **iOS**: [`withApiKey`](apm-agent-ios://reference/configuration.md#withapikey)
+* **iOS**: [`withApiKey`](apm-agent-ios://reference/edot-ios/configuration.md#withapikey)
 * **Java agent**: [`api_key`](apm-agent-java://reference/config-reporter.md#config-api-key)
 * **Node.js agent**: [`apiKey`](apm-agent-nodejs://reference/configuration.md#api-key)
 * **PHP agent**: [`api_key`](apm-agent-php://reference/configuration-reference.md#config-api-key)
@@ -164,7 +165,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 ## Alternate API key creation method [apm-configure-api-key-alternative]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 

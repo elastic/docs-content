@@ -17,6 +17,9 @@ products:
 
 # Diagnose unassigned shards [diagnose-unassigned-shards]
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 There are multiple reasons why shards might get unassigned, ranging from misconfigured allocation settings to lack of disk space.
 
 In order to diagnose the unassigned shards in your deployment use the following steps:
@@ -45,7 +48,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 4. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
     ```console
-    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
+    GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state&format=json
     ```
 
     The response will look like this:
@@ -136,7 +139,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 
 7. Change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs to the correct values in order to allow the index to be allocated.
 
-For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status) or contact [Elastic Support](https://support.elastic.co).
+For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status), see [these examples](https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples), or contact [Elastic Support](https://support.elastic.co).
 ::::::
 
 ::::::{tab-item} Self-managed
@@ -236,15 +239,11 @@ In order to diagnose the unassigned shards follow the next steps:
 
 4. Change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs to the correct values in order to allow the index to be allocated.
 
-For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status).
+For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status), see [these examples](https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples), or contact [Elastic Support](https://support.elastic.co).
 ::::::
 
 :::::::
-See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
-
-::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
-::::
+Watch [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
 
 ## Common issues
 
@@ -259,7 +258,7 @@ View [this video](https://www.youtube.com/watch?v=5z3n2VgusLE) for a walkthrough
 
 When Elasticsearch is unable to allocate a shard, it will attempt to retry allocation up to the maximum number of retries allowed.
 After this, Elasticsearch will stop attempting to allocate the shard in order to prevent infinite retries which may impact cluster performance.
-You can use an API to [reroute the cluster](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-cluster-reroute), which will allocate the shard if the issue preventing allocation has been resolved.
+You can use an API to [reroute the cluster]({{es-apis}}operation/operation-cluster-reroute), which will allocate the shard if the issue preventing allocation has been resolved.
 
 ### No valid shard copy [no-shard-copy]
 

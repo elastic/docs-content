@@ -1,4 +1,5 @@
 ---
+navigation_title: Advanced concepts
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-concepts.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Advanced concepts [ml-dfa-concepts]
+# Advanced concepts for data frame analytics [ml-dfa-concepts]
 
 This section explains the more complex concepts of the Elastic {{ml}} {{dfanalytics}} feature.
 
