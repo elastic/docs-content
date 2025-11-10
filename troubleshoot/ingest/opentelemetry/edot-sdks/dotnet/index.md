@@ -195,3 +195,49 @@ To avoid this scenario, make sure each placeholder uses a unique name. For examp
 ```csharp
 Logger.LogInformation("Eat your {fruit1} {fruit2} {fruit3}!", "apple", "banana", "mango");
 ```
+
+### Custom processors are not applied to exported data
+
+When using custom processors, be aware that they may not run before data is exported unless explicitly configured.
+
+By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md). These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry data is exported automatically, without requiring additional code.
+
+In advanced scenarios, you might want to develop custom processors that enrich telemetry data before it passes through the rest of the processing pipeline. In such circumstances, you have to add the processor to the relevant signal provider builder. 
+
+For example, if you use the following code to register a custom processor for trace data using
+the `TracerProviderBuilder`, it won't work as intended:
+
+```csharp
+builder.AddElasticOpenTelemetry(b => b
+  .WithTracing(t => t.AddProcessor<SpanRollupProcessor>())
+  .WithMetrics(m => m.AddMeter("MyAppMeter")));
+```
+
+This code will not work as desired due to EDOT .NET registering the OTLP exporter before the processor,
+therefore running earlier in the pipeline than `SpanRollupProcessor`. The exact behaviour may vary or appear to
+work because trace data is exported in batches and the custom processor may partially apply to trace data before
+the batch is exported.
+
+To address this, you can disable the automatic OTLP exporter registration using the `SkipOtlpExporter` option. This allows you to manually register the exporter *after* registering your custom processor.
+
+Taking the prior example, the correct code should be as follows:
+
+```csharp
+builder.AddElasticOpenTelemetry(new ElasticOpenTelemetryOptions() { SkipOtlpExporter = true }, b => b
+  .WithLogging(l => l.AddOtlpExporter())
+  .WithTracing(t =>
+  {
+    t.AddProcessor<SpanRollupProcessor>();
+    t.AddOtlpExporter();
+  })
+  .WithMetrics(m => m
+    .AddMeter("MyAppMeter")
+    .AddOtlpExporter()));
+```
+
+In this example, `SkipOtlpExporter` is set to `true` using the `ElasticOpenTelemetryOptions` overload of `AddElasticOpenTelemetry`. If preferred, this can also be configured using the `appSettings.json` file.
+
+With `SkipOtlpExporter` enabled, the exporter must be added to __each__ signal that should be exported. In
+this example, the OTLP exporter is manually added for logs, traces and metrics. Crucially, for traces, the
+exporter is registered after the custom `SpanRollupProcessor` to ensure that trace data is batched for export
+after the processor has completed.

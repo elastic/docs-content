@@ -179,7 +179,6 @@ After the restart, {{integrations-server}} will enroll a new {{agent}} for the {
 ::::
 
 
-
 ### Confirm your policy settings [migrate-elastic-agent-confirm-policy]
 
 Now that the {{fleet}} settings are correctly set up, it pays to ensure that the {{agent}} policy is also correctly pointing to the correct entities.
@@ -200,7 +199,6 @@ If you modified the {{fleet-server}} and the output in place these would have be
 ::::
 
 
-
 ## Agent policies in the new target cluster [migrate-elastic-agent-migrated-policies]
 
 By creating the new target cluster from a snapshot, all of your policies should have been created along with all of the agents. These agents will be offline due to the fact that the actual agents are not checking in with the new, target cluster (yet) and are still communicating with the source cluster.
@@ -210,7 +208,11 @@ The agents can now be re-enrolled into these policies and migrated over to the n
 
 ## Migrate {{agent}}s to the new target cluster [migrate-elastic-agent-migrated-agents]
 
-In order to ensure that all required API keys are correctly created, the agents in your current cluster need to be re-enrolled into the new, target cluster.
+::::{note}
+Agents to be migrated cannot be tamper-protected or running as a {{fleet-server}}.
+::::
+
+In order to ensure that all required API keys are correctly created, the agents in your current cluster need to be re-enrolled into the new target cluster.
 
 This is best performed one policy at a time. For a given policy, you need to capture the enrollment token and the URL for the agent to connect to. You can find these by running the in-product steps to add a new agent.
 
@@ -224,27 +226,43 @@ This is best performed one policy at a time. For a given policy, you need to cap
     :screenshot:
     :::
 
-5. On the host machines where the current agents are installed, enroll the agents again using this copied URL and the enrollment token:
+5. Choose an approach:
 
-    ```shell
-    sudo elastic-agent enroll --url=<fleet server url> --enrollment-token=<token for the new policy>
-    ```
+    ::::{tab-set}
+    :::{tab-item} Fleet UI
 
-    The command output should be like the following:
+    {applies_to}`stack: ga 9.2` Migrate remote agents directly from the {{fleet}} UI:
 
-    :::{image} images/migrate-agent-install-command-output.png
-    :alt: Install command output
-    :screenshot:
+    1. In the source cluster, select the agents you want to migrate. Click the three dots next to the agents, and select **Migrate agents**.
+    2. In the migration dialog, provide the URI and enrollment token you obtained from the target cluster.
+    3. Use `replace_token` (Optional): When you are migrating a single agent, you can use the `replace_token` field to preserve the agent's original ID from the source cluster. This step helps with event matching, but will cause the migration to fail if the target cluster already has an agent with the same ID.
     :::
 
-6. The agent on each host will now check into the new {{fleet-server}} and appear in the new target cluster. In the source cluster, the agents will go offline as they won’t be sending any check-ins.
+    :::{tab-item} Command line
 
-    :::{image} images/migrate-agent-newly-enrolled-agents.png
-    :alt: Newly enrolled agents in the target cluster
-    :screenshot:
-    :::
+    Run the `enroll` command on each individual host:
 
-7. Repeat this procedure for each {{agent}} policy.
+   1. On the host machines where the current agents are installed, enroll the agents again using the URL and enrollment token you obtained from the target cluster:
 
-If all has gone well, you’ve successfully migrated your {{fleet}}-managed {{agent}}s to a new cluster.
+       ```shell
+       sudo elastic-agent enroll --url=<fleet server url> --enrollment-token=<token for the new policy>
+        ```
+
+        The command output should resemble this:
+
+       :::{image} images/migrate-agent-install-command-output.png
+       :alt: Install command output
+        :screenshot:
+       :::
+
+     2. The agent on each host will now check into the new {{fleet-server}} and appear in the new target cluster. In the source cluster, the agents will go offline as they won’t be sending any check-ins.
+
+        :::{image} images/migrate-agent-newly-enrolled-agents.png
+        :alt: Newly enrolled agents in the target cluster
+        :screenshot:
+        :::
+
+     3. Repeat this procedure for each {{agent}} policy.
+     :::
+     ::::
 

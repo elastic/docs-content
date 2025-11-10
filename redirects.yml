@@ -206,7 +206,7 @@ redirects:
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/logging.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/net.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-ruby-api/ruby.md': 'troubleshoot/elasticsearch/clients.md'
-  'solutions/observability/get-started/add-data-from-splunk.md': 'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md'
+  'solutions/observability/get-started/add-data-from-splunk.md': 'solutions/observability/get-started.md'
   'solutions/observability/get-started/create-an-observability-project.md': 'solutions/observability/get-started.md'
   'solutions/observability/get-started/get-started-with-dashboards.md': 'solutions/observability/get-started.md'
 # Related to https://github.com/elastic/docs-content/pull/1329
@@ -587,3 +587,6 @@ redirects:
 
 # Related to https://github.com/elastic/docs-team/issues/104
   'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
+
+# Related to https://github.com/elastic/docs-content/pull/3808
+  'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'

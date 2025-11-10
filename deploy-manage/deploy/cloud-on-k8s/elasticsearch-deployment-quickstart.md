@@ -148,5 +148,5 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
 This completes the quickstart of deploying an {{es}} cluster. We recommend continuing to:
 
 * [Deploy a {{kib}} instance](kibana-instance-quickstart.md)
-* For information about how to apply changes to your deployments, refer to [aplying updates](./update-deployments.md).
+* For information about how to apply changes to your deployments, refer to [applying updates](./update-deployments.md).
 * To explore other configuration options for your {{es}} cluster, see [](./elasticsearch-configuration.md) and [](./configure-deployments.md).
