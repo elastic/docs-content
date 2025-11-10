@@ -411,10 +411,10 @@ Note that you only need to create this user on the local cluster.
 ## Remote cluster strong verification [remote-cluster-strong-verification]
 preview::[]
 
-Cross-cluster API keys can be configured with strong verification to provide an additional layer of security. To enable this feature, 
-the cross-cluster API key is created with a certificate identity pattern. The local cluster is then required to be configured to sign 
-the API key for every request to the remote cluster and provide a trusted certificate with a subject matching the certificate identity 
-pattern that was used when the cross-cluster API key was created.  
+Cross-cluster API keys can be configured with strong verification to provide an additional layer of security. To enable this feature,
+the cross-cluster API key is created with a certificate identity pattern. The local cluster is then required to sign each request
+to the remote cluster with its private key and provide a trusted certificate whose subject matches the certificate identity
+pattern configured on the cross-cluster API key.
 
 ### How strong verification works [_how_strong_verification_works]
 
@@ -437,12 +437,17 @@ headers.
 
 #### On the local cluster [_certificate_identity_local_cluster]
 
-The local cluster must be configured to sign cross-cluster requests with a certificate-private key pair.
+The local cluster must be configured to sign cross-cluster requests with a certificate-private key pair. You can generate a signing 
+certificate using `elasticsearch-certutil` or use an existing certificate. 
 
 ```yaml
 cluster.remote.my_remote_cluster.signing.certificate: "path/to/signing/certificate.crt"
 cluster.remote.my_remote_cluster.signing.key: "path/to/signing/key.key"
 ```
+
+::::{note}
+Replace my_remote_cluster with your remote cluster alias and the paths with actual paths
+::::
 
 #### On the remote cluster [_certificate_identity_remote_cluster]
 
@@ -472,6 +477,9 @@ POST /_security/cross_cluster/api_key
 
 The `certificate_identity` field supports regular expressions. For example:
 
-* `"CN=.*.example.com,O=Example Corp,C=US"` matches any certificate with a CN starting with any subdomain of example.com
+* `"CN=.*.example.com,O=Example Corp,C=US"` matches any certificate with a CN ending in "example.com"
 * `"CN=local-cluster.*,O=Example Corp,C=US"` matches any certificate with a CN starting with "local-cluster"
 * `"CN=.*"` matches any certificate (not recommended for production)
+
+To verify strong verification is active, check the Elasticsearch logs on the remote cluster for certificate validation messages, or 
+attempt a connection without proper signing configured (which should fail with a certificate validation error).
