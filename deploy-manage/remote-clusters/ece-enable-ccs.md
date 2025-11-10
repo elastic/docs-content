@@ -36,7 +36,7 @@ To use CCS or CCR, your environment must meet the following criteria:
   * `9400` when using TLS certificate–based authentication (deprecated).
   * `9443` when using API key–based authentication.
   
-  For details, refer to the [remote cluster security models](../path/to/security-models.md) documentation and [ECE networking prerequisites](../deploy/cloud-enterprise/ece-networking-prereq.md).
+  For details, refer to the [remote cluster security models](./security-models.md) documentation and [ECE networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md).
 
 * Load balancers must pass through TCP requests on the port that corresponds to the security model:
   * `9400` for TLS certificate–based authentication (deprecated).
