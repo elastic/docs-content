@@ -2,11 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html
 applies_to:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  stack: ga
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---
