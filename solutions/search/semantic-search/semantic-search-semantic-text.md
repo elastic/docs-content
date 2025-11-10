@@ -120,7 +120,7 @@ When using `semantic_text` with dense vector embeddings (such as E5 or other tex
 The `index_options` parameter controls how vectors are indexed and stored. For dense vector embeddings, you can specify quantization strategies like Better Binary Quantization (BBQ) that significantly reduce memory footprint while maintaining search quality. For details on available options and their trade-offs, refer to the [`dense_vector` `index_options` documentation](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
 
 ::::{tip}
-For most production use cases with dense vector embeddings, using BBQ is recommended as it provides up to 32x memory reduction with minimal accuracy loss. Choose from:
+For most production use cases using `semantic_text` with dense vector embeddings, using BBQ is recommended as it provides up to 32x memory reduction with minimal accuracy loss. Choose from:
 - `bbq_hnsw` - Best for most use cases (default for 384+ dimensions)
 - `bbq_flat` - Simpler option for smaller datasets
 - `bbq_disk` - Disk-based storage for very large datasets with minimal memory requirements (Elasticsearch 9.2+)
