@@ -2,6 +2,8 @@
 navigation_title: Preparation steps
 applies_to:
   stack: ga
+  deployment:
+    ess:
 products:
   - id: kibana
   - id: cloud-enterprise
