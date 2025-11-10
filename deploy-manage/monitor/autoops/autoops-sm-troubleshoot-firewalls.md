@@ -12,12 +12,14 @@ products:
 
 # Troubleshoot firewalls blocking {{agent}}
 
-If you suspect that a corporate firewall is hindering {{agent}} from connecting your cluster to {{ecloud}}, test each component of the connection and implement an appropriate solution. 
+If you are running into issues connecting your cluster to AutoOps, a corporate firewall might be blocking {{agent}}.
 
 There are [three main components](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#how-your-self-managed-cluster-connects-to-autoops) of {{agent}}'s connection with your system:
 
 :::{include} /deploy-manage/monitor/_snippets/autoops-cc-components.md
 :::
+
+The following subsections describe how to test each of these components to find out where the problem lies, and then implement an appropriate solution.
 
 :::{tip}
 Run the following tests within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the container, and so on. 
@@ -116,7 +118,7 @@ If you do not receive a similar response, configure your HTTP proxy to allow it 
 If you are using Docker, you may need to complete this configuration directly via the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
 :::
 
-## 3. Test if {{agent}} is sending metrics
+## 3. Test if {{agent}} is able to send metrics
 
 If there is an issue with the third component, the agent will attempt to establish the connection and your logs might look like: 
     
