@@ -35,10 +35,9 @@ To successfully roll back an integration, you must have access to all of its int
 
 ## Roll back an integration
 
-1. In {{kib}}, go to the **Integrations** page and open the **Installed integrations** tab.
-2. Search for and select the integration you want to roll back to the previously installed version.
-3. Click the **Settings** tab.
-4. Click **Rollback <integration>**.
+1. In {{kib}}, go to **Integrations** > **Installed integrations**.
+2. Select the integration you want to roll back, then open the integration's **Settings** tab.
+3. Click **Rollback <integration>**.
 
    If the button is disabled for an integration, this may indicate:
    - The 7-day rollback window has expired.
@@ -47,14 +46,16 @@ To successfully roll back an integration, you must have access to all of its int
    - The integration was never upgraded.
    - The integration is not installed from the {{package-registry}}.
 
-5. In the confirmation window, click **Rollback integration** to confirm the action. A confirmation appears if the rollback is successful.
-
-You can also roll back an integration from the **Installed integrations** tab of the **Integrations** page:
-
-1. Search for the integration you want to roll back, then click the actions button at the end of its row.
-2. Click **Rollback integration**, then confirm the action.
+4. In the confirmation window, click **Rollback integration**. A confirmation appears if the rollback is successful.
 
 After the rollback of the integration is complete, the associated integration policies, their configurations and related assets are restored to the integration's previous version.
+
+::::{tip}
+You can also roll back an integration from **Integrations** > **Installed integrations**:
+
+1. Click the actions button at the end of the integration's row.
+2. Select **Rollback integration**, then confirm the action.
+::::
 
 :::{note}
 The automatic upgrade of rolled back integrations is disabled until the integrations are manually upgraded.
