@@ -171,7 +171,7 @@ PUT semantic-embeddings-flat
 }
 ```
 
-1. Use BBQ without HNSW for simpler use cases with fewer vectors. This requires less compute resources during indexing.
+1. Use disk-optimized BBQ for simpler use cases with fewer vectors. This requires less compute resources during indexing.
 
 For very large datasets where memory is constrained, use `bbq_disk` (DiskBBQ) to store vectors on disk:
 
