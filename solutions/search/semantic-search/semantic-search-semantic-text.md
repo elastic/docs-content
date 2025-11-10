@@ -201,7 +201,7 @@ serverless: unavailable
 
 1. Use DiskBBQ for disk-based vector storage with minimal memory requirements. Available in Elasticsearch 9.2+. This option stores compressed vectors on disk, reducing RAM usage to as little as 100 MB while maintaining query latencies around 15ms.
 
-Other quantization options include `int8_hnsw` and `int4_hnsw`:
+Other quantization options include `int8_hnsw` (8-bit integer quantization) and `int4_hnsw` (4-bit integer quantization):
 
 ```console
 PUT semantic-embeddings-int8
@@ -222,7 +222,7 @@ PUT semantic-embeddings-int8
 }
 ```
 
-1. Use 8-bit integer quantization for 4x memory reduction with high accuracy retention.
+1. Use 8-bit integer quantization for 4x memory reduction with high accuracy retention. For 4-bit quantization, use `"type": "int4_hnsw"` instead, which provides 8x memory reduction.
 
 For HNSW-specific tuning parameters like `m` and `ef_construction`, you can include them in the `index_options`:
 

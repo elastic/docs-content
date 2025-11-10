@@ -55,5 +55,5 @@ Better Binary Quantization (BBQ) is an advanced vector quantization technique fo
 Learn more about how BBQ works, supported algorithms, and configuration examples in the [Better Binary Quantization (BBQ) documentation](https://www.elastic.co/docs/reference/elasticsearch/index-settings/bbq).
 
 ::::{tip}
-When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md), you can configure BBQ and other quantization options through the `model_settings.index_options` parameter. See [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples of using `bbq_hnsw`, `int8_hnsw`, and other quantization strategies with semantic text fields.
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md), you can configure BBQ and other quantization options through the `index_options` parameter. See [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples of using `bbq_hnsw`, `int8_hnsw`, and other quantization strategies with semantic text fields.
 ::::
