@@ -40,7 +40,8 @@ To troubleshoot this issue:
 If the **Make this {{fleet}} server the default one** setting was already enabled but problems persist, it’s possible someone changed the default {{fleet}} server’s **URL** value. In this case, contact Elastic Support to find out what the original **URL** value was, update the settings to match this value, then delete your integration and create it again.
 
 ::::{note}
-In {{ech}} deployments on {{stack}} versions prior to 9.1.6, the connection between agentless integrations and {{fleet-server}} can be broken if the default {{fleet-server}} host URL value in {{fleet}} is modified or if a different host URL is set as the default.
+:applies_to: ess: ga
+In {{ech}} deployments on {{stack}} versions prior to 9.1.6, the connection between agentless integrations and {{fleet-server}} can break if the default {{fleet-server}} host URL value in {{fleet}} is modified or if a different host URL is set as the default.
 
 This issue is resolved in {{stack}} 9.1.6. In this and later versions, agentless integration policies are assigned to a default managed {{fleet-server}} host which cannot be modified.
 ::::
