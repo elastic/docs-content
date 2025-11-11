@@ -8,12 +8,15 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
-  remote_type: Elastic Cloud Enterprise deployment
+  remote_type: Elastic Cloud Enterprise
 ---
 
 # Connect to deployments in the same {{ece}} environment [ece-remote-cluster-same-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ece}} environment.
+
+:::{include} _snippets/terminology.md
+:::
 
 ::::{note}
 If network security filters are applied to the remote cluster, the remote cluster administrator must configure a [remote cluster filter](/deploy-manage/security/remote-cluster-filtering.md), using either the ECE environment ID or the Elasticsearch cluster ID of the local cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).

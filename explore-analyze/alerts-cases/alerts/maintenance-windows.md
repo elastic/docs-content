@@ -12,7 +12,7 @@ products:
 
 # Maintenance windows
 
-This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security.md)
 
 
 You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
