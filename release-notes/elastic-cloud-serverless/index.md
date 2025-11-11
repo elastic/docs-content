@@ -66,14 +66,14 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
-* [ESQL] Catch-and-rethrow TooComplexToDeterminizeException [#137024](https://github.com/elastic/elasticsearch/pull/137024)
-* [ES|QL] Non-Correlated Subquery in FROM command [#135744](https://github.com/elastic/elasticsearch/pull/135744)
-* [ESQL] Support first/last functions [#137195](https://github.com/elastic/elasticsearch/pull/137195)
-* ESQL: introduce a new interface to declare functions depending on the `@timestamp` attribute [#137040](https://github.com/elastic/elasticsearch/pull/137040)
-* ESQL: Fix ReplaceAliasingEvalWithProject in case of shadowing [#137025](https://github.com/elastic/elasticsearch/pull/137025)
-* Reject invalid `reverse_nested` aggs [#137047](https://github.com/elastic/elasticsearch/pull/137047)
-* ES|QL: Improve value loading for match_only_text mapping [#137026](https://github.com/elastic/elasticsearch/pull/137026)
-* ESQL: Extends constant MVs handling with warnings to general binary comparisons [#137387](https://github.com/elastic/elasticsearch/pull/137387)
+* Catches and rethrows `TooComplexToDeterminizeException` in {{esql}} [#137024](https://github.com/elastic/elasticsearch/pull/137024)
+* Adds non-correlated subquery support in `FROM` command for {{esql}} [#135744](https://github.com/elastic/elasticsearch/pull/135744)
+* Adds support for `first` and `last` functions in {{esql}} [#137195](https://github.com/elastic/elasticsearch/pull/137195)
+* Introduces a new interface to declare functions depending on the `@timestamp` attribute in {{esql}} [#137040](https://github.com/elastic/elasticsearch/pull/137040)
+* Fixes `ReplaceAliasingEvalWithProject` in case of shadowing for {{esql}} [#137025](https://github.com/elastic/elasticsearch/pull/137025)
+* Rejects invalid `reverse_nested` aggregations [#137047](https://github.com/elastic/elasticsearch/pull/137047)
+* Improves value loading for `match_only_text` mapping in {{esql}} [#137026](https://github.com/elastic/elasticsearch/pull/137026)
+* Extends constant multi-value handling with warnings to general binary comparisons in {{esql}} [#137387](https://github.com/elastic/elasticsearch/pull/137387)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
