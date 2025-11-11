@@ -3,10 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-source-map-how-to.html
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: observability
   - id: apm
 ---
+::::{note}
+Elastic APM RUM and source maps are *not* compatible with [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md).
 
 # Create and upload source maps (RUM) [apm-source-map-how-to]
 
