@@ -278,6 +278,8 @@ After you've completed the setup, you can access AutoOps for your cluster at any
 2. In the **Connected clusters** section, locate the cluster you want to work on.
 3. In the **Services** column, select **AutoOps**.
 
+Learn more about [what you can do with AutoOps in your cluster](/deploy-manage/monitor/autoops/use-autoops-in-sm-cluster.md).
+
 ## Connect additional clusters
 
 To connect more clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
