@@ -1,4 +1,5 @@
 ---
+navigation_title: Elasticsearch
 description: An introduction to Elasticsearch. 
 applies_to:
   serverless: all
@@ -21,9 +22,9 @@ products:
 
 The distributed {{es}} architecture enables the following:
 
-* **Horizontal scaling** —— Add more nodes to increase capacity
-* **High availability** —— Maintained through data replication across nodes to prevent data loss
-* **Parallel processing** —— Queries execute across shards simultaneously to deliver fast performance
+* **Horizontal scaling** — Add more nodes to increase capacity
+* **High availability** — Maintained through data replication across nodes to prevent data loss
+* **Parallel processing** — Queries execute across shards simultaneously to deliver fast performance
 
 ### Near real-time indexing [elasticsearch-near-real-time-indexing]
 
@@ -100,27 +101,27 @@ When you search, {{es}}:
 
 ### Full-text and hybrid search [elasticsearch-full-text-hybrid-search]
 
-* **E-commerce product catalogs** —— Fast product discovery with filters, facets, and autocomplete
-* **Enterprise knowledge bases** —— Search across documents, wikis, and databases with permission controls
-* **Content platforms** —— Search articles, videos, and user-generated content by relevance
+* **E-commerce product catalogs** — Fast product discovery with filters, facets, and autocomplete
+* **Enterprise knowledge bases** — Search across documents, wikis, and databases with permission controls
+* **Content platforms** — Search articles, videos, and user-generated content by relevance
 
 ### AI-powered applications [elasticsearch-ai-powered-applications]
 
-* **Semantic search** —— Find documents by meaning using vector embeddings from models like BERT or OpenAI
-* **Chatbots and RAG systems** —— Retrieve relevant context from knowledge bases to enhance LLM responses
-* **Recommendation engines** —— Surface similar items based on vector similarity
+* **Semantic search** — Find documents by meaning using vector embeddings from models like BERT or OpenAI
+* **Chatbots and RAG systems** — Retrieve relevant context from knowledge bases to enhance LLM responses
+* **Recommendation engines** — Surface similar items based on vector similarity
 
 ### Geospatial search [elasticsearch-geospatial-search]
 
-* **Location-based services** —— Find nearby restaurants, stores, or services
-* **Delivery routing** —— Optimize routes based on geographic data
-* **Geofencing** —— Trigger actions when users enter specific areas
+* **Location-based services** — Find nearby restaurants, stores, or services
+* **Delivery routing** — Optimize routes based on geographic data
+* **Geofencing** — Trigger actions when users enter specific areas
 
 ### Analytics and monitoring [elasticsearch-analytics-monitoring]
 
-* **Log analytics** —— Centralize and analyze application and system logs
-* **Security analytics** —— Detect threats and anomalies in security events
-* **Business metrics** —— Analyze user behavior, sales trends, and KPIs
+* **Log analytics** — Centralize and analyze application and system logs
+* **Security analytics** — Detect threats and anomalies in security events
+* **Business metrics** — Analyze user behavior, sales trends, and KPIs
 
 ## When to use {{es}} [when-to-use-elasticsearch]
 
@@ -162,21 +163,23 @@ To make sure your {{es}} deployment performs efficiently and scales with your da
 
 ### Data modeling best practices [elasticsearch-data-modeling-best-practices]
 
-* **One document type per index** —— Keep related data together
-* **Denormalize data** —— Include related information in documents to avoid joins
-* **Use appropriate field types** —— Match data types to query patterns
-* **Plan for growth** —— Consider time-based indices for logs and events
+* **One document type per index** — Keep related data together
+* **Denormalize data** — Include related information in documents to avoid joins
+* **Use appropriate field types** — Match data types to query patterns
+* **Plan for growth** — Consider time-based indices for logs and events
 
 ## Next steps [elasticsearch-next-steps]
 
-Ready to try {{es}}? Here's how to get started:
+Ready to try {{es}}? 
 
-* [Get started](/solutions/search/get-started.md) - Run your first queries in 5 minutes
-% how* Tutorial: Build a search application - Create a full-featured search experience
-* [Understanding {{es}} architecture](/deploy-manage/distributed-architecture.md) - Deep dive into distributed systems concepts
+Here's how to get started:
+
+* [Get started](/solutions/search/get-started.md) — Run your first queries in 5 minutes
+% how* Tutorial: Build a search application — Create a full-featured search experience
+* [Understanding {{es}} architecture](/deploy-manage/distributed-architecture.md) — Deep dive into distributed systems concepts
 
 For specific use cases:
 
-* [Implementing semantic search](/solutions/search/get-started/semantic-search.md) - Add AI-powered search
-* [Building geospatial applications](/explore-analyze/geospatial-analysis.md) - Work with location data
-* [Analyzing logs and metrics](/solutions/observability/get-started.md) - Set up observability
+* [Implementing semantic search](/solutions/search/get-started/semantic-search.md) — Add AI-powered search
+* [Building geospatial applications](/explore-analyze/geospatial-analysis.md) — Work with location data
+* [Analyzing logs and metrics](/solutions/observability/get-started.md) — Set up observability
