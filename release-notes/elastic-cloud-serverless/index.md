@@ -33,7 +33,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
 * Default semantic_text fields to ELSER on EIS when available [#134708](https://github.com/elastic/elasticsearch/pull/134708)
 * Add chunk_rescorer usage to output of explain and profile for text_similarity_rank_retriever [#137249](https://github.com/elastic/elasticsearch/pull/137249)
-  
+* Enables `score` function in release builds for {{esql}} [#136988](https://github.com/elastic/elasticsearch/pull/136988)
+* Adds `CHUNK` function to {{esql}} [#134320](https://github.com/elastic/elasticsearch/pull/134320)
+* Adds base64 indexing for vector values [#137072](https://github.com/elastic/elasticsearch/pull/137072)
+
 ### Fixes [serverless-changelog-11032025-fixes]
 
 * Fixes layout issues for Markdown embeddables in small panels [#240806]({{kib-pull}}240806)
