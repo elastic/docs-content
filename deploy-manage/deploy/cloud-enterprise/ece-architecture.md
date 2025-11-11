@@ -88,7 +88,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 ## ECE service containers per host role(s) [ece-service-containers]
 
-Each Elastic Cloud Enterprise service runs as a dedicated Docker container. These containers are automatically deployed based on the roles assigned to each ECE host.
+Each {{ece}} service runs as a dedicated container. These containers are automatically deployed based on the roles assigned to each ECE host. The following table lists the containers you’ll find on your ECE hosts:
 
 | Container                                          | Roles         | Description |
 |---|---|---|
