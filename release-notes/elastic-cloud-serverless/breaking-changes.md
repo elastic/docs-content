@@ -6,6 +6,10 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+## August 25, 2025 [serverless-changelog-08252025-breaking]
+
+* Enables `exclude_source_vectors` by default for new indices [#131907](https://github.com/elastic/elasticsearch/pull/131907)
+
 ## August 11, 2025 [elastic-cloud-serverless-08112025-breaking]
 * Improves advanced settings management APIs privilege checks [#230067]({{kib-pull}}230067)
 
