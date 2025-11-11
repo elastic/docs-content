@@ -31,6 +31,10 @@ Restart the entity store:
 2. On the **Entity Store** page, turn the toggle off.
 3. Turn the toggle back on.
 
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.1
+
 ::::
 
 :::{dropdown} CSPM and Asset Management integrations don't ingest data when deployed using agent-based technology if {{kib}} is hosted on AWS
