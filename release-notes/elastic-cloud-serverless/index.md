@@ -31,7 +31,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for the `convert` processor in stream data processing [#240023]({{kib-pull}}240023)
 * Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
-
+* Default semantic_text fields to ELSER on EIS when available [#134708](https://github.com/elastic/elasticsearch/pull/134708)
+* Add chunk_rescorer usage to output of explain and profile for text_similarity_rank_retriever [#137249](https://github.com/elastic/elasticsearch/pull/137249)
+  
 ### Fixes [serverless-changelog-11032025-fixes]
 
 * Fixes layout issues for Markdown embeddables in small panels [#240806]({{kib-pull}}240806)
@@ -66,8 +68,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
-* Default semantic_text fields to ELSER on EIS when available [#134708](https://github.com/elastic/elasticsearch/pull/134708)
-* Add chunk_rescorer usage to output of explain and profile for text_similarity_rank_retriever [#137249](https://github.com/elastic/elasticsearch/pull/137249)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
