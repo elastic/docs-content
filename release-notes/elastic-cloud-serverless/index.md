@@ -66,6 +66,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
+* Enable reindex from remote in serverless [#4717](https://github.com/elastic/elasticsearch-serverless/pull/4717)
+* Support choosing the downsampling method in data stream lifecycle [#4782](https://github.com/elastic/elasticsearch-serverless/pull/4782)
+* Reindex-from-remote: Fail on manual slicing param [#137275](https://github.com/elastic/elasticsearch/pull/137275)
+* Support choosing the downsampling method in data stream lifecycle [#137023](https://github.com/elastic/elasticsearch/pull/137023)
+* Fix illegal_access_exception: class com.maxmind.db.Decoder from ip_location processor [#137479](https://github.com/elastic/elasticsearch/pull/137479)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
