@@ -96,7 +96,7 @@ Each {{ece}} service runs as a dedicated container. These containers are automat
 | `frc-client-forwarders-client-forwarder`          | All roles     | Manages communication between hosts and ZooKeeper. |
 | `frc-runners-runner`                              | All roles     | Runs on every ECE host and provides a supervisor service to deploy and manage containers according to their defined roles, ensuring they are online and healthy. |
 | `frc-services-forwarders-services-forwarder`      | All roles     | Routes internal service data across the ECE platform. |
-| `frc-allocator-metricbeats-allocator-metricbeat`  | Allocator     | Collects allocator metrics via Beats. |
+| `frc-allocator-metricbeats-allocator-metricbeat`  | Allocator     | Collects allocator metrics. |
 | `frc-allocators-allocator`                        | Allocator     | Manages container lifecycle for {{es}} and {{kib}} instances; reports host capacity to ZooKeeper. |
 | `frc-container-task-services-container-task-service` | Allocator  | Supports autoscaling and tracks feature usage. |
 | `frc-admin-consoles-admin-console`                | Controller    | Backend service for the ECE UI; handles API requests and coordinates with ZooKeeper, {{es}}, logging, and security services. |
