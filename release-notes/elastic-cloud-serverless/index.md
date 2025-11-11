@@ -83,7 +83,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the AI Assistant Settings privilege [#239144]({{kib-pull}}239144)
 * Adds ingest pipeline processor template suggestions to the manual ingest pipeline processor editor [#236919]({{kib-pull}}236919)
 * Adds the `kibana.alert.index_pattern` field to all alerts [#239450]({{kib-pull}}239450)
-
 * Adds cached tokens to Unified API response [#136412](https://github.com/elastic/elasticsearch/pull/136412)
 
 ### Fixes [elastic-security-10272025-fixes]
@@ -110,7 +109,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the **Agents** and **Playground** icons in the side navigation to render correctly in dark mode [#240475]({{kib-pull}}240475)
 * Ensures only valid queries are returned for significant events [#239501]({{kib-pull}}239501)
 * Hides filtering capabilities in Hosts Metrics [#239724]({{kib-pull}}239724)
-
 * Release cluster state [#136769](https://github.com/elastic/elasticsearch/pull/136769)
 * Allows dynamic updates to frequency [#136757](https://github.com/elastic/elasticsearch/pull/136757)
 
@@ -188,7 +186,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Security ML modules for GCP Audit and Azure Activity Logs [#236849]({{kib-pull}}236849)
 * Removes the global empty state redirect [#237612]({{kib-pull}}237612)
 * Replaces the existing document count chart with RED metrics [#236635]({{kib-pull}}236635)
-
 * Blocks disabling adaptive allocations
 * Adds Google Model Garden's Meta, Mistral, Hugging Face and Ai21 providers support to Inference Plugin [#135701](https://github.com/elastic/elasticsearch/pull/135701)
 
@@ -209,7 +206,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
 * Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
 * Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
-
 * Cohere service Model Id field is required [#136017](https://github.com/elastic/elasticsearch/pull/136017)
 * Ensures queued `AbstractRunnables` are notified when executor stops [#135966](https://github.com/elastic/elasticsearch/pull/135966)
 * Removes rate limit field from services API for `EIS` [#135838](https://github.com/elastic/elasticsearch/pull/135838)
@@ -236,7 +232,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds triple-quote support to the Manual Ingest Pipeline Processor editor [#236595]({{kib-pull}}236595)
 * Introduces the German locale for Kibana in `beta` [#236903]({{kib-pull}}236903)
 * Adds an advanced option to disable filtering of file-backed volumes and CD-ROMs in the **Device Control** plugin [#236620]({{kib-pull}}236620)
-
 * Adds RerankRequestChunker [#130485](https://github.com/elastic/elasticsearch/pull/130485)
 * Adds usage stats for semantic_text fields [#135262](https://github.com/elastic/elasticsearch/pull/135262)
 
@@ -258,7 +253,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
 * Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
 * Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
-
 * Reset health status on successful noop [#135653](https://github.com/elastic/elasticsearch/pull/135653)
 * Switches `TextExpansionQueryBuilder` and TextEmbeddingQueryVectorBuilder to return 400 instead of 500 errors [#135800](https://github.com/elastic/elasticsearch/pull/135800)
 
@@ -285,7 +279,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
 * Adds in-product documentation for the {{esql}} `FORK` command [#236494]({{kib-pull}}236494)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
-
 * Adding custom headers support openai text embeddings [#134960](https://github.com/elastic/elasticsearch/pull/134960)
 * Adds ContextualAI inference service [#134933](https://github.com/elastic/elasticsearch/pull/134933)
 
@@ -311,7 +304,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds `time` field to the get data views response schema [#235975]({{kib-pull}}235975)
 * Adds `managed` field to the get data views response schema [#236237]({{kib-pull}}236237)
 * Validates {{ls}} pipeline IDs sent to Kibana APIs [#236347]({{kib-pull}}236347)
-
 * [ML] Add .reindexed-v7-ml-anomalies-* to anomaly results template index pattern (#135270) [#135286](https://github.com/elastic/elasticsearch/pull/135286)
 * Tolerates mixed types in datafeed stats sort [#135096](https://github.com/elastic/elasticsearch/pull/135096)
 * Fixes Missing Config Errors [#134963](https://github.com/elastic/elasticsearch/pull/134963)
