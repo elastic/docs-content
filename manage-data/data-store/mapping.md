@@ -23,7 +23,7 @@ products:
 % - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-modules-mapper.md
 %      Notes: redirect only
 
-% Internal links rely on the following IDs being on this page (for example, as a heading ID, paragraph ID, and so on):
+% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$mapping-limit-settings$$$
 

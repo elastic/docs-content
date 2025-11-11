@@ -10,7 +10,7 @@ products:
 
 # Map a runtime field [runtime-mapping-fields]
 
-You map runtime fields by adding a `runtime` section under the mapping definition and defining [a Painless script](../../../explore-analyze/scripting/modules-scripting-using.md). This script has access to the entire context of a document, including the original `_source` through `params._source` and any mapped fields plus their values. At query time, the script runs and generates values for each scripted field that is required for the query.
+You map runtime fields by adding a `runtime` section under the mapping definition and defining [a Painless script](../../../explore-analyze/scripting/modules-scripting-using.md). This script has access to the entire context of a document, including the original `_source` via `params._source` and any mapped fields plus their values. At query time, the script runs and generates values for each scripted field that is required for the query.
 
 ::::{admonition} Emitting runtime field values
 When defining a Painless script to use with runtime fields, you must include the [`emit` method](elasticsearch://reference/scripting-languages/painless/painless-runtime-fields-context.md) to emit calculated values.
@@ -102,7 +102,7 @@ You can alternatively prefix the field you want to retrieve values for with `par
 
 ## Ignoring script errors on runtime fields [runtime-errorhandling]
 
-Scripts can throw errors at runtime, for example, on accessing missing or invalid values in documents or because of performing invalid operations. The `on_script_error` parameter can be used to control error behavior when this happens. Setting this parameter to `continue` will have the effect of silently ignoring all errors on this runtime field. The default `fail` value will cause a shard failure which gets reported in the search response.
+Scripts can throw errors at runtime, e.g. on accessing missing or invalid values in documents or because of performing invalid operations. The `on_script_error` parameter can be used to control error behavior when this happens. Setting this parameter to `continue` will have the effect of silently ignoring all errors on this runtime field. The default `fail` value will cause a shard failure which gets reported in the search response.
 
 
 ## Updating and removing runtime fields [runtime-updating-scripts]

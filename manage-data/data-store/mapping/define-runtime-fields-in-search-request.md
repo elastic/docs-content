@@ -12,7 +12,7 @@ products:
 
 You can specify a `runtime_mappings` section in a search request to create runtime fields that exist only as part of the query. You specify a script as part of the `runtime_mappings` section, just as you would if [adding a runtime field to the mappings](map-runtime-field.md).
 
-Defining a runtime field in a search request uses the same format as defining a runtime field in the index mapping. Copy the field definition from the `runtime` in the index mapping to the `runtime_mappings` section of the search request.
+Defining a runtime field in a search request uses the same format as defining a runtime field in the index mapping. Just copy the field definition from the `runtime` in the index mapping to the `runtime_mappings` section of the search request.
 
 The following search request adds a `day_of_week` field to the `runtime_mappings` section. The field values will be calculated dynamically, and only within the context of this search request:
 

@@ -96,7 +96,7 @@ The mapping contains two fields: `@timestamp` and `message`.
 
 If you want to retrieve results that include `clientip`, you can add that field as a runtime field in the mapping. The following runtime script defines a [grok pattern](../../../explore-analyze/scripting/grok.md) that extracts structured fields out of a single text field within a document. A grok pattern is like a regular expression that supports aliased expressions that you can reuse.
 
-The script matches on the `%{{COMMONAPACHELOG}}` log pattern, which understands the structure of Apache logs. If the pattern matches (`clientip != null`), the script emits the value of the matching IP address. If the pattern doesn't match, the script returns the field value without crashing.
+The script matches on the `%{{COMMONAPACHELOG}}` log pattern, which understands the structure of Apache logs. If the pattern matches (`clientip != null`), the script emits the value of the matching IP address. If the pattern doesn’t match, the script just returns the field value without crashing.
 
 ```console
 PUT my-index-000001/_mappings
@@ -116,7 +116,7 @@ PUT my-index-000001/_mappings
 1. This condition ensures that the script doesn’t crash even if the pattern of the message doesn’t match.
 
 
-Alternatively, you can define the same runtime field but in the context of a search request. The runtime definition and the script are exactly the same as the one defined previously in the index mapping. Copy that definition into the search request under the `runtime_mappings` section and include a query that matches on the runtime field. This query returns the same results as if you defined a search query for the `http.clientip` runtime field in your index mappings, but only in the context of this specific search:
+Alternatively, you can define the same runtime field but in the context of a search request. The runtime definition and the script are exactly the same as the one defined previously in the index mapping. Just copy that definition into the search request under the `runtime_mappings` section and include a query that matches on the runtime field. This query returns the same results as if you defined a search query for the `http.clientip` runtime field in your index mappings, but only in the context of this specific search:
 
 ```console
 GET my-index-000001/_search

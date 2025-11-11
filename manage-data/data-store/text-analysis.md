@@ -14,7 +14,7 @@ products:
 
 _Text analysis_ is the process of converting unstructured text, like the body of an email or a product description, into a structured format that’s [optimized for search](/solutions/search/full-text.md).
 
-Text analysis enables {{es}} to perform full-text search, where the search returns all *relevant* results rather than only exact matches. For example, if you search for `Quick fox jumps`, you probably want the document that contains `A quick brown fox jumps over the lazy dog`, and you might also want documents that contain related words like `fast fox` or `foxes leap`.
+Text analysis enables {{es}} to perform full-text search, where the search returns all *relevant* results rather than just exact matches. For example, if you search for `Quick fox jumps`, you probably want the document that contains `A quick brown fox jumps over the lazy dog`, and you might also want documents that contain related words like `fast fox` or `foxes leap`.
 
 {{es}} performs text analysis when indexing or searching [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) fields. If your index does _not_ contain `text` fields, no further setup is needed; you can skip the pages in this section. If you _do_ use `text` fields or your text searches aren’t returning results as expected, configuring text analysis can often help. You should also look into analysis configuration if you’re using {{es}} to:
 

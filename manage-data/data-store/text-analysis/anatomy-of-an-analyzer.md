@@ -10,7 +10,7 @@ products:
 
 # Anatomy of an analyzer [analyzer-anatomy]
 
-An *analyzer*  — whether built-in or custom — is a package which contains three lower-level building blocks: *character filters*, *tokenizers*, and *token filters*.
+An *analyzer*  — whether built-in or custom — is just a package which contains three lower-level building blocks: *character filters*, *tokenizers*, and *token filters*.
 
 The built-in [analyzers](elasticsearch://reference/text-analysis/analyzer-reference.md) pre-package these building blocks into analyzers suitable for different languages and types of text. Elasticsearch also exposes the individual building blocks so that they can be combined to define new [`custom`](create-custom-analyzer.md) analyzers.
 

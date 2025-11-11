@@ -49,10 +49,10 @@ Later, a user searches the same `text` field for:
 
 The user expects this search to match the sentence indexed earlier, `The QUICK brown foxes jumped over the dog!`.
 
-However, the query string does not contain the exact words used in the document's original text:
+However, the query string does not contain the exact words used in the document’s original text:
 
-* `Quick` versus `QUICK`
-* `fox` versus `foxes`
+* `Quick` vs `QUICK`
+* `fox` vs `foxes`
 
 To account for this, the query string is analyzed using the same analyzer. This analyzer produces the following tokens:
 

@@ -157,7 +157,7 @@ This time, the response includes only two hits. The value for `day_of_week` (`Su
 
 ## Retrieve fields from related indices [lookup-runtime-fields]
 
-The [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API can also be used to retrieve fields from the related indices using runtime fields with a type of `lookup`.
+The [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API can also be used to retrieve fields from the related indices via runtime fields with a type of `lookup`.
 
 ::::{note}
 Fields that are retrieved by runtime fields of type `lookup` can be used to enrich the hits in a search response. It’s not possible to query or aggregate on these fields.
