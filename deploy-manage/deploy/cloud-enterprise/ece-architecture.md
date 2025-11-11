@@ -102,7 +102,7 @@ Each {{ece}} service runs as a dedicated container. These containers are automat
 | `frc-admin-consoles-admin-console`                | Controller    | Backend service for the ECE UI; handles API requests and coordinates with ZooKeeper, {{es}}, logging, and security services. |
 | `frc-cloud-uis-cloud-ui`                          | Controller    | Web frontend for the ECE UI, served to users in the browser. |
 | `frc-constructors-constructor`                    | Controller    | Schedules and coordinates deployment changes through ZooKeeper; assigns instances to allocators and balances zones. |
-| `frc-blueprints-blueprint`                        | Director      | Coordinates container startup by providing configuration data to runners based on their role and token. |
+| `frc-blueprints-blueprint`                        | Controller    | Coordinates container startup by providing configuration data to runners based on their role and token. |
 | `frc-directors-director`                          | Director      | Manages ZooKeeper and internal certificates; maintains Stunnel and quorum. |
 | `frc-zookeeper-servers-zookeeper`                 | Director      | Consistent distributed store used to track ECE state and coordinate communication between services. |
 | `frc-proxies-proxyv2`                             | Proxy         | Routes user traffic; uses ZooKeeper to map deployment IDs to cluster nodes. |
