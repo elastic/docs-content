@@ -31,6 +31,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for the `convert` processor in stream data processing [#240023]({{kib-pull}}240023)
 * Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
+* Field caps transport changes to return for each original expression what it was resolved to [#136632](https://github.com/elastic/elasticsearch/pull/136632)
+* Use DV rewrites where possible in Keyword queries [#137536](https://github.com/elastic/elasticsearch/pull/137536)
 
 ### Fixes [serverless-changelog-11032025-fixes]
 
@@ -66,8 +68,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
-* Field caps transport changes to return for each original expression what it was resolved to [#136632](https://github.com/elastic/elasticsearch/pull/136632)
-* Use DV rewrites where possible in Keyword queries [#137536](https://github.com/elastic/elasticsearch/pull/137536)
+
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
