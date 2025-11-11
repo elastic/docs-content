@@ -27,7 +27,7 @@ Learn how to use **Discover** to:
 **Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:
 
 * Observability:
-  * **[Logs exploration](/solutions/observability/logs/explore-logs.md)**
+  * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
   * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
 % LINK/PAGE TBD  * **Traces exploration**
 % * Security:
