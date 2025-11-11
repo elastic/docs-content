@@ -17,7 +17,7 @@ New to {{elastic-sec}}? Follow the instructions in this topic to get started. Th
 ::::::{{stepper}}
 :::::{{step}} Choose your deployment type   
 
-Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend [](./elastic-security-serverless.md), which enables you to run {{elastic-sec}} in a fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances. 
+Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend {{sec-serverless}}, which enables you to run {{elastic-sec}} in a fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances. 
 
 $$$create-sec-serverless-project$$$ 
 ::::{dropdown} Create an {{sec-serverless}} project 
