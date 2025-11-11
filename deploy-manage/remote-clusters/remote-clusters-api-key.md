@@ -428,7 +428,10 @@ Note that you only need to create this user on the local cluster.
 
 
 ## Remote cluster strong verification [remote-cluster-strong-verification]
-preview::[]
+```{applies_to}
+deployment:
+  self: preview 9.3
+```
 
 Cross-cluster API keys can be configured with strong verification to provide an additional layer of security. To enable this feature,
 the cross-cluster API key is created with a certificate identity pattern. The local cluster is then required to sign each request
