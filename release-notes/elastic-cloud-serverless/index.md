@@ -265,6 +265,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
 * Adds in-product documentation for the {{esql}} `FORK` command [#236494]({{kib-pull}}236494)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
+* Optimizes `dotCount` in the expanding dot parser [#135263](https://github.com/elastic/elasticsearch/pull/135263)
 
 ### Fixes [serverless-changelog-09292025-fixes]
 
@@ -288,7 +289,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds `time` field to the get data views response schema [#235975]({{kib-pull}}235975)
 * Adds `managed` field to the get data views response schema [#236237]({{kib-pull}}236237)
 * Validates {{ls}} pipeline IDs sent to Kibana APIs [#236347]({{kib-pull}}236347)
-* Optimizes `dotCount` in the expanding dot parser [#135263](https://github.com/elastic/elasticsearch/pull/135263)
 
 
 ## September 22, 2025 [serverless-changelog-09222025]
