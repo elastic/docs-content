@@ -104,7 +104,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the **Agents** and **Playground** icons in the side navigation to render correctly in dark mode [#240475]({{kib-pull}}240475)
 * Ensures only valid queries are returned for significant events [#239501]({{kib-pull}}239501)
 * Hides filtering capabilities in Hosts Metrics [#239724]({{kib-pull}}239724)
-* Catches exceptions from `mapperService` in `StoreRecovery.recoverFromLocalShards` [#137077](https://github.com/elastic/elasticsearch/pull/137077)
+* Adds catches exceptions from `mapperservice` in `storerecovery.recoverfromlocalshards` [#137077](https://github.com/elastic/elasticsearch/pull/137077)
 
 ## October 20, 2025 [serverless-changelog-10202025]
 
@@ -1418,7 +1418,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Supports `date_nanos` in `BUCKET` in the {{esql}} editor [#213319]({{kib-pull}}213319)
 * Fixes appearance of warnings in the {{esql}} editor [#213685]({{kib-pull}}213685)
 * Makes the Apply time range switch visible in the Job selection flyout when opened from the Anomaly Explorer [#213382]({{kib-pull}}213382)
-* Passes `IndexReshardingMetadata` over the wire [#124841](https://github.com/elastic/elasticsearch/pull/124841)
+* Adds passes `indexreshardingmetadata` over the wire [#124841](https://github.com/elastic/elasticsearch/pull/124841)
 
 
 
@@ -1461,7 +1461,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue in solution project navigation where panels sometimes failed to toggle closed [#211852]({{kib-pull}}211852)
 * Updates wording for options in the sortBy dropdown component [#206464]({{kib-pull}}206464)
 * Allows EU hooks hostname in the Torq connector for Elastic Security Serverless [#212563]({{kib-pull}}212563)
-* Aborts pending deletion on `IndicesService` stop [#123569](https://github.com/elastic/elasticsearch/pull/123569)
+* Adds aborts pending deletion on `indicesservice` stop [#123569](https://github.com/elastic/elasticsearch/pull/123569)
 * Checks integrity of VBCC files on read, not close
 * Enhances memory accounting for document expansion and introduces a maximum document size limit [#123543](https://github.com/elastic/elasticsearch/pull/123543)
 
@@ -1518,7 +1518,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures the members array is unique for GroupStreamDefinitions [#210089]({{kib-pull}}210089)
 * Improves function search for easier navigation and discovery [#210437]({{kib-pull}}210437)
 * Prevents trace context from propagating in `SearchShardSizeCollector` to protect against high memory usage in the APM agent
-* Reduces license checks in `LicensedWriteLoadForecaster` [#123346](https://github.com/elastic/elasticsearch/pull/123346)
+* Adds reduces license checks in `licensedwriteloadforecaster` [#123346](https://github.com/elastic/elasticsearch/pull/123346)
 
 ## February 17, 2025 [serverless-changelog-02172025]
 
