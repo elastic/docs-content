@@ -66,6 +66,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
+* [ML] Perform query field validation for rerank task type [#137219](https://github.com/elastic/elasticsearch/pull/137219)
+* Preserve deployments with zero allocations during assignment planning [#137244](https://github.com/elastic/elasticsearch/pull/137244)
+* [ML] Skip dataframes when disabled [#137220](https://github.com/elastic/elasticsearch/pull/137220)
+* [ML] Do not create inference endpoint if ID is used in existing mappings [#137055](https://github.com/elastic/elasticsearch/pull/137055)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
