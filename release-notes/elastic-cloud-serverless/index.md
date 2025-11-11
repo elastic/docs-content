@@ -31,7 +31,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for the `convert` processor in stream data processing [#240023]({{kib-pull}}240023)
 * Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
-
+* Improves value loading for `match_only_text` mapping in {{esql}} [#137026](https://github.com/elastic/elasticsearch/pull/137026)
+* * Introduces a new interface to declare functions depending on the `@timestamp` attribute in {{esql}} [#137040](https://github.com/elastic/elasticsearch/pull/137040)
+* * Adds support for `first` and `last` functions in {{esql}} [#137195](https://github.com/elastic/elasticsearch/pull/137195)
+* * Adds non-correlated subquery support in `FROM` command for {{esql}} [#135744](https://github.com/elastic/elasticsearch/pull/135744)
+  
 ### Fixes [serverless-changelog-11032025-fixes]
 
 * Fixes layout issues for Markdown embeddables in small panels [#240806]({{kib-pull}}240806)
@@ -67,12 +71,12 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
 * Catches and rethrows `TooComplexToDeterminizeException` in {{esql}} [#137024](https://github.com/elastic/elasticsearch/pull/137024)
-* Adds non-correlated subquery support in `FROM` command for {{esql}} [#135744](https://github.com/elastic/elasticsearch/pull/135744)
-* Adds support for `first` and `last` functions in {{esql}} [#137195](https://github.com/elastic/elasticsearch/pull/137195)
-* Introduces a new interface to declare functions depending on the `@timestamp` attribute in {{esql}} [#137040](https://github.com/elastic/elasticsearch/pull/137040)
+
+
+
 * Fixes `ReplaceAliasingEvalWithProject` in case of shadowing for {{esql}} [#137025](https://github.com/elastic/elasticsearch/pull/137025)
 * Rejects invalid `reverse_nested` aggregations [#137047](https://github.com/elastic/elasticsearch/pull/137047)
-* Improves value loading for `match_only_text` mapping in {{esql}} [#137026](https://github.com/elastic/elasticsearch/pull/137026)
+
 * Extends constant multi-value handling with warnings to general binary comparisons in {{esql}} [#137387](https://github.com/elastic/elasticsearch/pull/137387)
 
 ## October 27, 2025 [serverless-changelog-10272025]
