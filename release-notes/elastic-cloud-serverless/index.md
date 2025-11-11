@@ -471,6 +471,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves the layout of custom URLs list in **Data Frame Analytics** [#232575]({{kib-pull}}232575)
 * Adds icons for **AI21 Labs** and **Llama Stack** to the AI connector/inference endpoints creation UI [#232098]({{kib-pull}}232098)
 * Ensures consistent Grok pattern generation across features [#230076]({{kib-pull}}230076)
+* Allows trailing empty string field names in paths of flattened fields [#133611](https://github.com/elastic/elasticsearch/pull/133611)
 
 ### Fixes [serverless-changelog-09012025-fixes]
 
