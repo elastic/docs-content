@@ -66,6 +66,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
+* Improving type resolution for Clamp [#137226](https://github.com/elastic/elasticsearch/pull/137226)
+* Enable _otlp usage with `create_doc`, `auto_configure` privileges [#137325](https://github.com/elastic/elasticsearch/pull/137325)
+* Fixed inconsistency in the isSyntheticSourceEnabled flag [#137297](https://github.com/elastic/elasticsearch/pull/137297)
+* Fix dropped ignore above fields [#137394](https://github.com/elastic/elasticsearch/pull/137394)
+* Add ES93BloomFilterStoredFieldsFormat for efficient field existence checks [#137331](https://github.com/elastic/elasticsearch/pull/137331)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
