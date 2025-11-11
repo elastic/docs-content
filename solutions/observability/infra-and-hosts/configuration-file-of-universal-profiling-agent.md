@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-config-file.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
@@ -21,7 +21,7 @@ secret-token: abc123
 collection-agent: example.com:443
 ```
 
-::::{warning} 
+::::{warning}
 Command line arguments to the Universal Profiling Agent take precedence over environment variables, and environment variables take precedence over the configuration file.
 ::::
 

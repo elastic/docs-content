@@ -1,4 +1,5 @@
 ---
+navigation_title: API quick reference
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-dfanalytics-apis.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# API quick reference [ml-dfanalytics-apis]
+# Data frame analytics API quick reference [ml-dfanalytics-apis]
 
 All {{dfanalytics}} endpoints have the following base:
 

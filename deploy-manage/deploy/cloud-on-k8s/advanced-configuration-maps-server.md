@@ -1,4 +1,5 @@
 ---
+navigation_title: Advanced configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-advanced-configuration.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Advanced configuration [k8s-maps-advanced-configuration]
+# Advanced configuration for Elastic Maps Server on {{eck}} [k8s-maps-advanced-configuration]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.

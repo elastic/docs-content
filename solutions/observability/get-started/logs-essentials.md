@@ -34,12 +34,12 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 1. Select **Create serverless project**.
 1. Under **Elastic for Observability**, select **Next**.
 1. Enter a name for your project.
+1. Under **Product features**, select **Observability Logs Essentials**.
 1. (Optional) Under **Settings** you can change the following:
 
     * **Cloud provider**: The cloud platform where you’ll deploy your project. We currently support Amazon Web Services (AWS).
     * **Region**: The [region](/deploy-manage/deploy/elastic-cloud/regions.md) where your project will live.
 
-1. Select **Edit settings**, and select **Observability Logs Essentials**.
 1. Select **Create serverless project**. It takes a few minutes to create your project.
 1. When the project is ready, click **Continue**.
 
@@ -113,7 +113,7 @@ For more information about creating dashboards, refer to [Create your first dash
 
 ::::::{step} Set up alerts
 
-Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. Elastic {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
+Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. Elastic {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [](/solutions/observability/incident-management/create-manage-rules.md) to get started.
 
 ::::::
 
@@ -135,7 +135,7 @@ Many {{observability}} integrations are available to collect and process your da
 
 ### Other resources
 
-* [What's Elastic {{observability}}](/solutions/observability/get-started/what-is-elastic-observability.md)
+* [What's Elastic {{observability}}](/solutions/observability.md)
 * [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
 * [Log monitoring](/solutions/observability/logs.md)

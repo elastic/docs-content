@@ -280,7 +280,7 @@ After a few minutes, a message confirming the {{agent}} enrollment appears, foll
 
 ### Set up KSPM on ECK deployments [kspm-eck]
 
-To run KSPM on an [ECK](/deploy-manage/deploy/cloud-on-k8s/deploy-an-orchestrator.md) deployment, you must edit the [Elastic Agent CRD](/deploy-manage/deploy/cloud-on-k8s/configuration-standalone.md) and [Elastic Agent Cluster-Role](/deploy-manage/deploy/cloud-on-k8s/configuration-standalone.md#k8s-elastic-agent-role-based-access-control) `.yaml` files.
+To run KSPM on an [ECK](/deploy-manage/deploy/cloud-on-k8s.md) deployment, you must edit the [Elastic Agent CRD](/deploy-manage/deploy/cloud-on-k8s/configuration-standalone.md) and [Elastic Agent Cluster-Role](/deploy-manage/deploy/cloud-on-k8s/configuration-standalone.md#k8s-elastic-agent-role-based-access-control) `.yaml` files.
 
 ::::{dropdown} Patch Elastic Agent
 Add `volumes` and `volumeMounts` to `podTemplate`:

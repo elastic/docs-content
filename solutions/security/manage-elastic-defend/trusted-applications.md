@@ -37,12 +37,20 @@ To add a trusted application:
 
 1. Find **Trusted applications** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add trusted application**.
-3. Fill in the following fields in the **Add trusted application** flyout:
+3. Fill in these fields in the **Details** section:
 
-    * `Name your trusted application`: Enter a name for the trusted application.
-    * `Description`(Optional): Enter a description for the trusted application.
-    * `Select operating system`: Select the appropriate operating system from the drop-down.
-    * `Field`: Select a field to identify the trusted application:
+    1. `Name`: Enter a name for the trusted application.
+    2. `Description` (Optional): Enter a description for the trusted application.
+4. Select an option in the **Conditions** section:
+
+   :::::{tab-set}
+
+   ::::{tab-item} Basic
+
+   Define conditions based on the application's hash, executable path, or signer.
+
+    1. `Select operating system`: Select the appropriate operating system from the drop-down.
+    2. `Field`: Select a field to identify the trusted application:
 
         * `Hash`: The MD5, SHA-1, or SHA-256 hash value of the application’s executable.
         * `Path`: The full file path of the application’s executable.
@@ -52,16 +60,50 @@ To add a trusted application:
             To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
             ::::
 
-    * `Operator`: Select an operator to define the condition:
+    3. `Operator`: Select an operator to define the condition:
 
         * `is`: Must be *exactly* equal to `Value`; wildcards are not supported. This operator is required for the `Hash` and `Signature` field types.
         * `matches`: Can include wildcards in `Value`, such as `C:\path\*\app.exe`. This option is only available for the `Path` field type. Available wildcards are `?` (match one character) and `*` (match zero or more characters).
 
-    * `Value`: Enter the hash value, file path, or signer name. To add an additional value, click **AND**.
+          ::::{note}
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          ::::
+
+    4. `Value`: Enter the hash value, file path, or signer name. To add an additional value, click **AND**.
 
         ::::{note}
         You can only add a single field type value per trusted application. For example, if you try to add two `Path` values, you’ll get an error message. Also, an application’s hash value must be valid to add it as a trusted application. In addition, to minimize visibility gaps in the {{security-app}}, be as specific as possible in your entries. For example, combine `Signature` information with a known `Path`.
         ::::
+
+   ::::
+
+   ::::{tab-item} Advanced
+
+   {applies_to}`stack: ga 9.2`
+
+   Define more complex conditions, such as trusting specific file paths or remote IP addresses.
+
+    1. `Select operating system`: Select the appropriate operating system from the drop-down.
+    2. `Field`: Select a field to identify the trusted application.
+    3. `Operator`: Select an operator to define the condition:
+       * `is`
+       * `is not`
+       * `is one of`
+       * `is not one of`
+       * `matches` | `does not match`:  Allows you to use wildcards in `Value`, such as `C:\path\*\app.exe`.  Available wildcards are `?` (match one character) and `*` (match zero or more characters).
+
+          ::::{note}
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          ::::
+
+          ::::{important}
+          Using wildcards can impact performance. To create a more efficient trusted application using wildcards, use multiple conditions and make them as specific as possible. For example, adding conditions using `process.name` or `file.name` can help limit the scope of wildcard matching.
+          ::::
+
+    4. `Value`: Enter the value associated with the `Field`. To enter multiple values (when using `is one of` or `is not one of`), enter each value, then press **Return**. 
+    5. To define multiple conditions, click `AND` and configure a new condition. You can also add nested conditions by selecting `Add nested condition`.
+
+   :::::
 
 4. Select an option in the **Assignment** section to assign the trusted application to a specific integration policy:
 
@@ -103,4 +145,4 @@ You can delete a trusted application, which removes it entirely from all {{elast
 To delete a trusted application:
 
 1. Click the actions menu (**…**) on the trusted application you want to delete, then select **Delete trusted application**.
-2. On the dialog that opens, verify that you are removing the correct application, then click **Delete**. A confirmation message is displayed.
+2. On the dialog that opens, verify that you are removing the correct application, then click **Delete**. A confirmation message appears.

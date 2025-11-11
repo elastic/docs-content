@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-beat-configuration]
+# Configuration for Beats on {{eck}} [k8s-beat-configuration]
 
 ## Upgrade the Beat specification [k8s-beat-upgrade-specification]
 

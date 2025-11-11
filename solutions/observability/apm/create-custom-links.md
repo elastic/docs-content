@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-links.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-create-custom-links.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -191,5 +191,5 @@ This link opens more data on a specific `user.email`. It only appears on front-e
 |     |     |
 | --- | --- |
 | Label | `View user internally` |
-| Link | `https://internal-site.company.com/user/{{user.email}}` |
+| Link | `https://internal-site.example.com/user/{{user.email}}` |
 | Filters | `service.name:client` |

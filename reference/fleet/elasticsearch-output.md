@@ -7,8 +7,7 @@ products:
   - id: elastic-agent
 ---
 
-# Configure the {{es}} output [elasticsearch-output]
-
+# Configure the {{es}} output for {{agent}} [elasticsearch-output]
 
 The {{es}} output sends events directly to {{es}} by using the {{es}} HTTP API.
 
@@ -259,7 +258,8 @@ Settings used to parse, filter, and transform data.
     ```yaml
     outputs:
       default:
-        type: elasticsearch  hosts: ["http://localhost:9200"]
+        type: elasticsearch
+        hosts: ["http://localhost:9200"]
         pipeline: "%{[fields.log_type]}_pipeline"
     ```
 

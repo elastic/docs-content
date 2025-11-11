@@ -1,4 +1,5 @@
 ---
+navigation_title: Resources
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-resources.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Resources [ml-ad-resources]
+# Resources for anomaly detection [ml-ad-resources]
 
 This section contains further resources for using {{anomaly-detect}}.
 

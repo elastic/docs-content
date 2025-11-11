@@ -27,16 +27,16 @@ In this guide, you’ll learn how to:
 This guide also provides tips for [restoring to another cluster](#restore-different-cluster) and [troubleshooting common restore errors](#troubleshoot-restore).
 
 ## Prerequisites
-- To use Kibana’s Snapshot and Restore feature, you must have the following permissions:
-  - [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-  - [Index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the monitor index
+:::{include} _snippets/restore-snapshot-common-prerequisites.md
+:::
+
 - You can only restore a snapshot to a running cluster with an elected [master node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be registered and available to the cluster.
 - The snapshot and cluster versions must be compatible. See [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
-- To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any cluster blocks that prevent writes. The restore operation ignores index blocks.
 - Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) feature or the get index template API:
 
   ```console
   GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
+  ```
 
 - If no such template exists, you can [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) or restore a cluster state that contains one. Without a matching index template, a data stream can’t roll over or create backing indices.
 - If your snapshot contains data from App Search or Workplace Search, ensure you’ve restored the Enterprise Search encryption key before restoring the snapshot.
@@ -53,7 +53,10 @@ When restoring data from a snapshot, keep the following in mind:
 
 ## Get a list of available snapshots
 
-To view a list of available snapshots in {{kib}}, go to **Stack Management > Snapshot and Restore**.
+To view a list of available snapshots in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Snapshots** tab. 
 
 You can also use the get repository API and the get snapshot API to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
 
@@ -162,25 +165,75 @@ You can restore a [feature state](../../../deploy-manage/tools/snapshot-and-rest
 
 If you restore a snapshot’s cluster state, the operation restores all feature states in the snapshot by default. Similarly, if you don’t restore a snapshot’s cluster state, the operation doesn’t restore any feature states by default. You can also choose to restore only specific feature states from a snapshot, regardless of the cluster state.
 
-To view a snapshot’s feature states, use the get snapshot API.
+Feature backing indices are version dependent. To see which indices are included within a snapshot's feature state, [list an applicable snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get). For example, on {{ech}} you might poll its latest snapshot on its built-in  `cloud-snapshot-policy` SLM policy:
 
 ```console
-GET _snapshot/my_repository/my_snapshot_2099.05.06
+GET /_snapshot/_all/_all?filter_path=snapshots.feature_states&index_names=false&sort=start_time&size=1&order=desc&slm_policy_filter=cloud-snapshot-policy
 ```
 
-The response’s `feature_states` property contains a list of features in the snapshot as well as each feature’s indices.
+The response’s `feature_states` property contains a list of features in the snapshot as well as each feature’s indices. The following is an example of the output that might display for a cluster:
 
-To restore a specific feature state from the snapshot, specify the `feature_name` from the response in the restore snapshot API’s [`feature_states`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) parameter.
+```json
+{
+  "snapshots": [
+    {
+      "feature_states": [
+        {
+          "feature_name": "security",
+          "indices": [".security-tokens-7",".security-7",".security-profile-8"]
+        },
+        {
+          "feature_name": "geoip",
+          "indices": [".geoip_databases"]
+        },
+        {
+          "feature_name": "async_search",
+          "indices": [".async-search"]
+        },
+        {
+          "feature_name": "searchable_snapshots",
+          "indices": [".snapshot-blob-cache"]
+        },
+        {
+          "feature_name": "transform",
+          "indices": [".transform-internal-007"]
+        },
+        {
+          "feature_name": "inference_plugin",
+          "indices": [".secrets-inference",".inference"]
+        },
+        {
+          "feature_name": "kibana",
+          "indices": [
+            ".kibana_usage_counters_9.x.x_001",
+            ".kibana_9.x.x_001",
+            ".apm-custom-link",
+            ".kibana_search_solution_9.x.x_001",
+            ".kibana_task_manager_9.x.x_001",
+            ".apm-agent-configuration",
+            ".kibana_locks-000001",
+            ".kibana_security_session_1",
+            ".kibana_alerting_cases_9.x.x_001",
+            ".kibana_analytics_9.x.x_001",
+            ".kibana_security_solution_9.x.x_001",
+            ".kibana_ingest_9.x.x_001"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
-::::{note}
-When you restore a feature state, {{es}} closes and overwrites the feature’s existing indices.
-::::
+To restore a specific feature state from the snapshot, specify the `feature_name` from the response in the [restore snapshot API’s](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) `feature_states` parameter.
 
+Note that feature state names may match {{kib}} UI sections, but restoring a single feature state may not fully reset that UI. For example, the {{fleet}} UI depends on the `fleet` feature state as well as `kibana` and `security`. When restoring, it's important to include all required feature states in the `feature_states` parameter to achieve the desired reset behavior.
 
 ::::{warning}
-Restoring the `security` feature state overwrites system indices used for authentication. If you use {{ech}}, ensure you have access to the {{ech}} Console before restoring the `security` feature state. If you run {{es}} on your own hardware, [create a superuser in the file realm](../../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-create-file-realm-user) to ensure you’ll still be able to access your cluster.
+Restoring the `security` feature state overwrites system indices used for authentication. If you use {{ech}} or {{ece}}, ensure you have access to the [{{es}} API console](cloud://reference/cloud-hosted/ec-api-console.md) before restoring the `security` feature state. If you run {{es}} on your own hardware or in {{eck}}, [create a temporary user with elevated permissions to edit restricted indices in the file realm](/troubleshoot/elasticsearch/file-based-recovery.md) to ensure you’ll still be able to access your cluster.
 ::::
 
+When you restore a feature state, {{es}} closes and overwrites the feature’s existing indices and data streams. For example, to [snapshot restore](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) the `geoip` feature state, you might use:
 
 ```console
 POST _snapshot/my_repository/my_snapshot_2099.05.06/_restore
@@ -279,15 +332,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
         }
         ```
 
-3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) tool.
-
-    For example, the following command creates a user named `restore_user`.
-
-    ```sh
-    ./bin/elasticsearch-users useradd restore_user -p my_password -r superuser
-    ```
-
-    Use this file realm user to authenticate requests until the restore operation is complete.
+3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, follow [File-based access recovery](/troubleshoot/elasticsearch/file-based-recovery.md) to temporarily create a user with temporary elevated permissions to edit restricted indices. Use this file realm user to authenticate requests until the restore operation is complete.
 
 4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
 

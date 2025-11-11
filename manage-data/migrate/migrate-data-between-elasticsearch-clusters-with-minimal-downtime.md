@@ -48,11 +48,11 @@ Tp complete the migration with minimal downtime, use incremental snapshots. Whil
 
 1. **09:00**: Take the initial full snapshot of the old cluster. You can also take the initial full snapshot the day before.
 2. **09:30**: Restore the snapshot to the new cluster.
-3. **09:55**: Take another snapshot of the old cluster and restore it to the new cluster. Repeat this process until the snapshot and restore operations take only a few seconds or minutes.
+3. **09:55**: Take another snapshot of the old cluster and restore it to the new cluster. Repeat this process until the snapshot and restore operations take only a few seconds or minutes. Remember that when restoring indices that _already_ exist in the new cluster (for example, to pull in recently copied data), they first need to be [closed](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#considerations). Also, remember that the restore operation automatically opens indices, so you will likely need to close the actively written ones after restoring them.
 4. **10:15**: Perform the final cutover.
     1. In the old cluster, pause indexing or set indices to read-only. For details on setting indices to read-only to safely pause indexing during migration, check [Index lifecycle actions: Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md).
     2. Take a final snapshot. 
-    3. Restore the snapshot to the new cluster. 
+    3. Restore the snapshot to the new cluster. Again, remember that to restore indices that already exist, they first need to be closed.
     4. Change ingestion and querying to the new cluster. 
     5. Open the indices in the new cluster. 
 

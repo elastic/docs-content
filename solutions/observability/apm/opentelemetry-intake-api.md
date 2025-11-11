@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-otlp.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -34,6 +34,6 @@ APM Server supports two OTLP communication protocols on the same port:
 | OTLP logs intake | `/v1/logs` |
 
 ::::{tip}
-See our OpenTelemetry documentation to learn how to send data to the APM Server from an [OpenTelemetry agent](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel) or [OpenTelemetry collector](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector).
+See our OpenTelemetry documentation to learn how to send data to the APM Server from an [OpenTelemetry agent](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel) or [OpenTelemetry collector](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector).
 ::::
 

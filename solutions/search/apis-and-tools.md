@@ -19,31 +19,31 @@ This page is handy list of the most important APIs and tools you need to build, 
 
 | Endpoint | Function |
 |----------|----------|
-| [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-search) | Searches and aggregations written in [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) and [retrievers](retrievers-overview.md) syntax |
-| [`_query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-esql)| Endpoint for [{{esql}}](/explore-analyze/query-filter/languages/esql.md) queries |
-| [`_explain`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-explain) | Provides detailed explanation of how a specific document matches a query with scoring breakdown |
-| [`_count`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-count) | Returns count of documents matching a query without retrieving results |
-| [`_validate/query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-validate-query) | Validates query syntax without executing the search |
+| [`_search`]({{es-apis}}group/endpoint-search) | Searches and aggregations written in [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) and [retrievers](retrievers-overview.md) syntax |
+| [`_query`]({{es-apis}}group/endpoint-esql)| Endpoint for [{{esql}}](elasticsearch://reference/query-languages/esql.md) queries |
+| [`_explain`]({{es-apis}}operation/operation-explain) | Provides detailed explanation of how a specific document matches a query with scoring breakdown |
+| [`_count`]({{es-apis}}operation/operation-count) | Returns count of documents matching a query without retrieving results |
+| [`_validate/query`]({{es-apis}}operation/operation-indices-validate-query) | Validates query syntax without executing the search |
 | [`_analyze`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) | Performs analysis for [full-text search](./full-text.md) on a text string and returns the resulting tokens. |
 
 ### Ingestion & mapping APIs
 
 | Endpoint | Function |
 |----------|----------|
-| [`_mapping`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-get-field-mapping) | Retrieves or updates field mappings with options for specific field inspection |
-| [`_reindex`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) | Copies documents from one index to another, useful for mapping changes |
-| [`_update_by_query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-update-by-query) | Updates documents matching a query without reindexing |
-| [`_bulk`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-bulk-1) | Performs multiple index/update/delete operations in a single request |
-| [`_refresh`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-refresh-3) | Forces a refresh to make recent operations searchable |
-| [`_ingest/pipeline`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-ingest) | Creates and manages document processing pipelines before indexing |
+| [`_mapping`]({{es-apis}}operation/operation-indices-get-field-mapping) | Retrieves or updates field mappings with options for specific field inspection |
+| [`_reindex`]({{es-apis}}operation/operation-reindex) | Copies documents from one index to another, useful for mapping changes |
+| [`_update_by_query`]({{es-apis}}operation/operation-update-by-query) | Updates documents matching a query without reindexing |
+| [`_bulk`]({{es-apis}}operation/operation-bulk) | Performs multiple index/update/delete operations in a single request |
+| [`_refresh`]({{es-apis}}operation/operation-indices-refresh) | Forces a refresh to make recent operations searchable |
+| [`_ingest/pipeline`]({{es-apis}}group/endpoint-ingest) | Creates and manages document processing pipelines before indexing |
 
 ### Search optimization APIs
 
 | Endpoint | Function |
 |----------|----------|
-| [`_rank_eval`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-rank-eval)| Evaluates search quality against known relevant documents |
-| [`_settings`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-get-settings-1) | Configures settings including slow logs, refresh intervals, and replicas (only index-level settings available in serverless) |
-| [`_scripts`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-script) | Creates or updates stored scripts for reuse in queries and aggregations |
+| [`_rank_eval`]({{es-apis}}operation/operation-rank-eval)| Evaluates search quality against known relevant documents |
+| [`_settings`]({{es-apis}}operation/operation-indices-get-settings) | Configures settings including slow logs, refresh intervals, and replicas (only index-level settings available in serverless) |
+| [`_scripts`]({{es-apis}}group/endpoint-script) | Creates or updates stored scripts for reuse in queries and aggregations |
 
 
 ## UI tools [elasticsearch-dev-tools]
@@ -74,14 +74,14 @@ The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearc
 
 ## Generative AI tools
 
+### Agent Builder
+
+[Agent Builder](elastic-agent-builder.md) enables you to create AI agents that can interact with your Elasticsearch data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+
 ### Playground
 
-Use [Playground](rag/playground.md) to combine your {{es}} data with the power of large language models (LLMs) for retrieval augmented generation (RAG), using a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
 
-### {{es}} Model Context Protocol (MCP) server
+### Model Context Protocol (MCP)
 
-Connect to your Elasticsearch data directly from any MCP Client (like Claude Desktop) using the Model Context Protocol (MCP).
-
-This server enables connecting agents to your Elasticsearch data and allows you to interact with your Elasticsearch indices through natural language conversations.
-
-Learn more in the [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server) GitHub repository.
+The [Model Context Protocol (MCP)](mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.

@@ -19,13 +19,7 @@ This page introduces {{elastic-sec}} space awareness and answers frequently aske
 :::: 
 
 ::::{note}
-{{elastic-sec}}'s space awareness works in conjunction with {{fleet}}'s space awareness. Space awareness is enabled by default in both applications, but for {{stack}} deployments that existed prior to version 9.1, {{fleet}} requires you to manually “opt-in” so that existing data can become space aware:
-
-1. Navigate to **Fleet** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Go to the **Settings** tab.
-3. Scroll to **Advanced settings**.
-4. Under **Migrate to space-aware agent policies**, click **Start migration**.
-5. Confirm the migration.
+{{elastic-sec}}'s space awareness works in conjunction with {{fleet}}'s space awareness. Space awareness is enabled by default in both applications, but for {{stack}} deployments that existed prior to version 9.1, {{fleet}} requires you to manually “opt-in” so that existing data can become space aware. For instructions, refer to [Enable space awareness in {{fleet}}](/deploy-manage/manage-spaces-fleet.md#spaces-fleet-enable).
 
 This is a one-time migration that copies your existing {{fleet}} data into a new, space-aware model. Previous data will be preserved in snapshots in case rollback is needed.
 ::::

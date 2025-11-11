@@ -1,4 +1,5 @@
 ---
+navigation_title: Open and manage cases
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cases-open-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Open and manage cases [security-cases-open-manage]
+# Open and manage cases in Elastic Security [security-cases-open-manage]
 
 You can create and manage cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 
@@ -21,7 +22,7 @@ You can create and manage cases using the UI or the [cases API](https://www.elas
 Open a new case to keep track of security issues and share their details with colleagues.
 
 1. Find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create case**. If no cases exist, the Cases table will be empty and you’ll be prompted to create one by clicking the **Create case** button inside the table.
-2. If you defined [templates](/solutions/security/investigate/configure-case-settings.md#cases-templates), you can optionally select one to use its default field values. [preview]
+2. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [templates](/solutions/security/investigate/configure-case-settings.md#cases-templates), you can optionally select one to use its default field values.
 3. Give the case a name, assign a severity level, and provide a description. You can use [Markdown](https://www.markdownguide.org/cheat-sheet) syntax in the case description.
 
     ::::{note}
@@ -34,20 +35,15 @@ Open a new case to keep track of security issues and share their details with co
     ::::
 
 4. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/solutions/security/investigate/cases-requirements.md).
-5. If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section. [preview]
-6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is enabled by default, but you can turn it off after creating the case.
-7. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
-8. Click **Create case**.
+5. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section.
+6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is turned on by default, but you can turn it off after creating the case.
+7. {applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case. This option is turned on by default. You can turn it off after creating the case by toggling **Auto-extract observables** on the case's **Observables** tab.
+8. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
+9. Click **Create case**.
 
     ::::{note}
     If you’ve selected a connector for the case, the case is automatically pushed to the third-party system it’s connected to.
     ::::
-
-
-:::{image} /solutions/images/security-cases-ui-open.png
-:alt: Shows an open case
-:screenshot:
-:::
 
 % Check with Lisa if email notifications is an ESS-only feature. Not in Serverless docs: https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
 
@@ -80,11 +76,6 @@ When you subsequently add assignees to cases, they receive an email.
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
 
-:::{image} /solutions/images/security-cases-home-page.png
-:alt: Case UI Home
-:screenshot:
-:::
-
 To explore a case, click on its name. You can then:
 
 * [Review the case summary](/solutions/security/investigate/open-manage-cases.md#cases-summary)
@@ -94,7 +85,7 @@ To explore a case, click on its name. You can then:
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
-* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts) and [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case) attached to the case
+* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and {applies_to}`stack: ga 9.2.0` [events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) attached to the case
 * [Add files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
 * [Add a Lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
 * Modify the case’s description, assignees, category, severity, status, and tags.
@@ -116,12 +107,6 @@ Click on an existing case to access its summary. The case summary, located under
 * **Open duration**: Time elapsed since the case was created
 * **In progress duration**: How long the case has been in the `In progress` state
 * **Duration from creation to close**: Time elapsed from when the case was created to when it was closed
-
-:::{image} /solutions/images/security-cases-summary.png
-:alt: Shows you a summary of the case
-:screenshot:
-:::
-
 
 ### Manage case comments [cases-manage-comments]
 
@@ -146,18 +131,16 @@ To explore the alerts attached to a case, click the **Alerts** tab. In the table
 Each case can have a maximum of 1,000 alerts.
 ::::
 
+### Examine events attached to a case [cases-examine-events]
+```{applies_to}
+stack: ga 9.2
+```
 
+After adding events to cases from the Events table (which you can access from the **Events** tab on the **Hosts**, **Network**, or **Users** pages) or from Timeline, you can examine them in the case's **Events** tab. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
 
 ### Add files [cases-add-files]
 
-To upload files to a case, click the **Files** tab:
-
-:::{image} /solutions/images/security-cases-files.png
-:alt: A list of files attached to a case
-:screenshot:
-:::
-
-You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
+To upload files to a case, select the **Files** tab, then click **Add files**. You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
 
 % Check with Lisa whether following note is only applicable to Serverless or if it's for ESS too.
 
@@ -216,7 +199,7 @@ After a visualization has been added to a case, you can modify or interact with 
 ### Add observables [cases-add-observables]
 
 ::::{admonition} Requirements
-Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 
@@ -244,13 +227,6 @@ After adding an observable to a case, you can remove or edit it by using the **A
 ::::{tip}
 Go to the **Similar cases** tab to access other cases with the same observables.
 ::::
-
-
-:::{image} /solutions/images/security-cases-add-observables.png
-:alt: Shows you where to add observables
-:screenshot:
-:::
-
 
 ### Copy the case UUID [cases-copy-case-uuid]
 

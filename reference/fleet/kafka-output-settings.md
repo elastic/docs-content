@@ -127,17 +127,31 @@ The number of partitions created is set automatically by the Kafka broker based 
 Use this option to set the Kafka topic for each {{agent}} event.
 
 **Default topic** $$$kafka-output-topics-default$$$
-:   Set a default topic to use for events sent by {{agent}} to the Kafka output.
+:   Set the default Kafka topic used for events sent by {{agent}}.
 
     You can set a static topic, for example `elastic-agent`, or you can choose to set a topic dynamically based on an [Elastic Common Schema (ECS)](ecs://reference/index.md) field. Available fields include:
 
-    * `data_stream_type`
+    * `data_stream.type`
     * `data_stream.dataset`
     * `data_stream.namespace`
     * `@timestamp`
-    * `event-dataset`
+    * `event.dataset`
 
-    You can also set a custom field. This is useful if you’re using the [`add_fields` processor](/reference/fleet/add_fields-processor.md) as part of your {{agent}} input. Otherwise, setting a custom field is not recommended.
+    You can also set a custom field. This is useful if you need to construct a more complex or structured topic name. For example, you can use the `fields.kafka_topic` custom field to set a dynamic topic for each event.
+    
+    To set a dynamic topic value for outputting {{agent}} data to Kafka, you can add the [`add_fields` processor](/reference/fleet/add_fields-processor.md) to any integration policies on your {{fleet}}-managed {{agents}}.
+    
+    For example, the following `add_fields` processor creates a dynamic topic value for the `fields.kafka_topic` field by interpolating multiple [data stream fields](ecs://reference/ecs-data_stream.md):
+
+    ```yaml
+    - add_fields:
+        target: ''
+        fields: 
+          kafka_topic: '${data_stream.type}-${data_stream.dataset}-${data_stream.namespace}' <1>
+    ```
+    1. Depending on the values of the data stream fields, this generates topic names such as `logs-nginx.access-production` or `metrics-system.cpu-staging` as the value of the custom `kafka_topic` field.
+
+    For more information, refer to [](/reference/fleet/agent-processors.md).
 
 
 ### Header settings [_header_settings]

@@ -19,6 +19,11 @@ products:
 Different LLMs have varying performance when used to power different features and use-cases. For more information about how various models perform on different tasks in {{elastic-sec}}, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 :::
 
+## Elastic Managed LLM
+
+:::{include} ../../_snippets/elastic-managed-llm.md
+:::
+
 ## Connect to a third-party LLM
 
 Follow these guides to connect to one or more third-party LLM providers:

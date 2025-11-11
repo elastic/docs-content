@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-beats-api-keys.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -22,7 +22,7 @@ For security reasons, we recommend using a unique API key per APM Server instanc
 
 To create an API key:
 
-1. Go to **Stack Management** in the main menu and find **API Keys** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create API key**.
 
     :::{image} /solutions/images/observability-server-api-key-create.png
@@ -94,7 +94,7 @@ output.elasticsearch:
 
 ## Create an API key for monitoring [apm-beats-api-key-monitor]
 
-To open **API keys**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create API key**.
+To open the **API keys** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create API key**.
 
 :::{image} /solutions/images/observability-server-api-key-create.png
 :alt: API key creation

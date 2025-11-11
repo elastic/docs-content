@@ -10,9 +10,9 @@ products:
 
 # Use an {{es}} cluster managed by ECK [k8s-apm-eck-managed-es]
 
-Managing APM Server, {{kib}} and {{es}} with ECK allows a smooth and secured integration between the stack components. The output configuration of the APM Server is setup automatically to establish a trust relationship with {{es}}. Specifying the {{kib}} reference allows ECK to automatically configure the [{{kib}} endpoint](/solutions/observability/apm/configure-kibana-endpoint.md).
+Managing APM Server, {{kib}} and {{es}} with ECK allows a smooth and secured integration between the stack components. The output configuration of the APM Server is setup automatically to establish a trust relationship with {{es}}. Specifying the {{kib}} reference allows ECK to automatically configure the [{{kib}} endpoint](/solutions/observability/apm/apm-server/configure-kibana-endpoint.md).
 
-1. To deploy an APM Server and connect it to the {{es}} cluster and {{kib}} instance you created in the [quickstart](deploy-an-orchestrator.md), apply the following specification:
+1. To deploy an APM Server and connect it to the {{es}} cluster and {{kib}} instance you created in [](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md), apply the following specification:
 
     ```yaml subs=true
     cat <<EOF | kubectl apply -f -
@@ -27,11 +27,11 @@ Managing APM Server, {{kib}} and {{es}} with ECK allows a smooth and secured int
       elasticsearchRef:
         name: quickstart
       kibanaRef:
-        name: quickstart
+        name: quickstart <1>
     EOF
     ```
 
-1. A reference to a {{kib}} instance is only required for APM Server versions 8.0.0 and later.
+    1. A reference to a {{kib}} instance is only required for APM Server versions 8.0.0 and later.
 
 
 ::::{note}

@@ -124,6 +124,7 @@ If you’ve already created the keystore and don’t need to update it, you can 
 -e KEYSTORE_PASSWORD=mypassword
 ```
 
+When you upgrade your cluster to a newer version, {{es}} will attempt to automatically upgrade the `elasticsearch.keystore` file to match. However, bind-mounted files are read-only, so {{es}} cannot automatically upgrade a bind-mounted `elasticsearch.keystore` file. Instead, if you are bind-mounting the `elasticsearch.keystore` file directly, you must use the `bin/elasticsearch-keystore upgrade` command to manually upgrade each node's keystore when you upgrade that node.
 
 ## Using custom Docker images [_c_customized_image]
 

@@ -17,7 +17,7 @@ mapped_pages:
 
 # Troubleshooting the EDOT Android SDK
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](opentelemetry://reference/edot-sdks/android/getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](apm-agent-android://reference/edot-android/getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/apm-agent-android/issues).
 
@@ -25,11 +25,11 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 The SDK creates logs that allow you to see what it's working on and what might have failed at some point. You can find the logs in [logcat](https://developer.android.com/studio/debug/logcat), filtered by the tag `ELASTIC_AGENT`.
 
-For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](opentelemetry://reference/edot-sdks/android/configuration.md#internal-logging-policy) configuration.
+For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration.
 
 ## Connectivity to the {{stack}}
 
-If after following the [getting started](opentelemetry://reference/edot-sdks/android/getting-started.md) guide and configuring your {{stack}} [endpoint parameters](opentelemetry://reference/edot-sdks/android/configuration.md#export-connectivity), you can't see your application's data in {{kib}}, you can follow the following tips to try and figure out what could be wrong.
+If after following the [getting started](apm-agent-android://reference/edot-android/getting-started.md) guide and configuring your {{stack}} [endpoint parameters](apm-agent-android://reference/edot-android/configuration.md#export-connectivity), you can't see your application's data in {{kib}}, you can follow the following tips to try and figure out what could be wrong.
 
 ### Check out the logs
 
@@ -151,11 +151,11 @@ Your export endpoint URL is the value for the `OTEL_EXPORTER_OTLP_ENDPOINT` conf
 
 ### Cloud hosted and self-managed deployments
 
-For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](opentelemetry://reference/edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by [downloading](opentelemetry://reference/edot-collector/download.md) and [configuring an EDOT Collector](opentelemetry://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
+For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](elastic-agent://reference/edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by [downloading](elastic-agent://reference/edot-collector/download.md) and [configuring an EDOT Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 
 ### Local testing deployment
 
-You can quickly launch a local [EDOT Collector](opentelemetry://reference/edot-collector/index.md) service and use it as your export endpoint for testing by running the EDOT Collector launcher as mentioned in the [Sample application guide](https://github.com/elastic/apm-agent-android/tree/main/sample-app#how-to-run). Note that it's not necessary to follow the whole guide, only the parts relevant to launching the EDOT Collector.
+You can quickly launch a local [EDOT Collector](elastic-agent://reference/edot-collector/index.md) service and use it as your export endpoint for testing by running the EDOT Collector launcher from the [Demo application](https://github.com/elastic/android-agent-demo/tree/main/edot-collector).
 
 ## Create an API key [create-api-key]
 
@@ -163,9 +163,16 @@ API keys are the recommended way of authenticating the agent with your {{stack}}
 
 ### Use {{kib}}'s Applications UI
 
-Follow [this quick guide](../../../../../solutions/observability/apm/api-keys.md#apm-create-an-api-key) and leave all the settings with their default values.
+Follow [this quick guide](../../../../../deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) and leave all the settings with their default values.
 
 ### Use REST APIs
 
-Follow [this guide](https://www.elastic.co/docs/api/doc/kibana/operation/operation-createagentkey) to create an API Key with a set of privileges that are scoped for the APM Agent use case only.
+Follow [this guide](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to create an API Key using REST APIs.
 
+## Missing general attributes
+
+Some [general attributes](https://opentelemetry.io/docs/specs/semconv/general/attributes/) require Android permissions to be granted for the host app; otherwise, they cannot be collected. The ones affected are the following:
+
+| Attribute                    | Required permission                                                                                      |
+|------------------------------|----------------------------------------------------------------------------------------------------------|
+| `network.connection.subtype` | [READ_PHONE_STATE](https://developer.android.com/reference/android/Manifest.permission#READ_PHONE_STATE) |

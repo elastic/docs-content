@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-logstash-configuration]
+# Configuration for Logstash on {{eck}} [k8s-logstash-configuration]
 
 ## Upgrade the Logstash specification [k8s-logstash-upgrade-specification]
 

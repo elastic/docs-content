@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-elastic-agent-configuration]
+# Configuration for standalone Elastic Agents on {{eck}} [k8s-elastic-agent-configuration]
 
 ## Upgrade the Elastic Agent specification [k8s-elastic-agent-upgrade-specification]
 

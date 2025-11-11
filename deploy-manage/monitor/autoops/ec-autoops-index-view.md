@@ -1,14 +1,20 @@
 ---
+navigation_title: Indices
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-index-view.html
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
-# Indices [ec-autoops-index-view]
+# Indices view in AutoOps [ec-autoops-index-view]
 
 The **Indices** view provides detailed statistics for each {{es}} index in your deployment.
 

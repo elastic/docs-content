@@ -20,10 +20,10 @@ Mirroring the MITRE ATT&CK® framework, columns represent major tactics, and cel
 To access the **MITRE ATT&CK® coverage** page, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **MITRE ATT&CK® coverage**.
 
 ::::{note}
-This page only includes the detection rules you currently have installed, and only rules that are mapped to MITRE ATT&CK®. The coverage page maps detections to the following [MITRE ATT&CK® version](https://attack.mitre.org/resources/updates/updates-april-2024) used by {{elastic-sec}}: `v16.1`. Elastic prebuilt rules that aren’t installed and custom rules that are either unmapped or mapped to a deprecated tactic or technique will not appear on the coverage map.
+This page only includes the detection rules you currently have installed, and only rules that are mapped to MITRE ATT&CK®. The coverage page maps detections to [MITRE ATT&CK® versions](https://attack.mitre.org/resources/updates/) used by {{elastic-sec}}. 
 
-You can map custom rules to tactics in **Advanced settings** when creating or editing a rule.
 
+Elastic prebuilt rules that aren’t installed and custom rules that are either unmapped or mapped to a deprecated tactic or technique will not appear on the coverage map. You can map custom rules to tactics in **Advanced settings** when creating or editing a rule.
 ::::
 
 
@@ -31,6 +31,13 @@ You can map custom rules to tactics in **Advanced settings** when creating or ed
 :alt: MITRE ATT&CK® coverage page
 :screenshot:
 :::
+
+Refer to the following table to find the MITRE ATT&CK® version that's mapped to your version of {{elastic-sec}}. 
+
+| MITRE ATT\&CK® version | {{elastic-sec}} version |
+| :---- | :---- |
+| [v16.1](https://attack.mitre.org/resources/updates/updates-october-2024/) | • 9.0.0-9.0.6 <br> • 9.1.0-9.1.3|
+| [v17.1](https://attack.mitre.org/resources/updates/updates-april-2025/) | • 9.0.7 <br> • 9.1.4 <br> • {applies_to}`stack: ga 9.2.0` <br> • {{serverless-short}} |
 
 
 ## Filter rules [security-rules-coverage-filter-rules]

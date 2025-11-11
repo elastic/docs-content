@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage case settings
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-cases-settings.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Configure case settings [manage-cases-settings]
+# Manage case settings in {{kib}} [manage-cases-settings]
 
 To change case closure options and add custom fields, templates, and connectors for external incident management systems, go to **{{stack-manage-app}} > Cases** and click **Settings**.
 

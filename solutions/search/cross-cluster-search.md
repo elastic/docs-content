@@ -26,9 +26,9 @@ The following APIs support {{ccs}}:
 * [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md)
 * [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
 * [Vector tile search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt)
-* {applies_to}`stack: preview 9.0, ga 9.1` [ES|QL](../../explore-analyze/query-filter/languages/esql-cross-clusters.md)
-* [preview] [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
-* [preview] [SQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)
+* {applies_to}`stack: preview 9.0, ga 9.1` [ES|QL](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md)
+* {applies_to}`stack: preview` [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
+* {applies_to}`stack: preview` [SQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)
 
 
 ## Prerequisites [_prerequisites]

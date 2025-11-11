@@ -16,7 +16,7 @@ If you’ve created a custom integration package, you can apply a single ILM pol
 
 ## Step 1: Define the ILM policy [data-streams-scenario4-step1]
 
-1. In {{kib}}, go to **Stack Management** and select **Index Lifecycle Policies**. You can also use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+1. In {{kib}}, go to the **Index Lifecycle Policies** management page. You can also use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 3. Name the policy, configure it as needed, and click **Save policy**.
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies_to:
@@ -11,7 +12,7 @@ products:
   - id: kibana
 ---
 
-# Quickstart [tutorial-secure-access-to-kibana]
+# Quickstart: Native {{es}} user and role management [tutorial-secure-access-to-kibana]
 
 If you plan to use native {{es}} user and role management, then you can manage your users and roles completely within your {{kib}} instance. 
 
@@ -34,7 +35,7 @@ Refer to the [Spaces documentation](/deploy-manage/manage-spaces.md) for more in
 
 After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the {{stack}}.
 
-You can create your own roles, or use any of the [built-in roles](built-in-roles.md). Some built-in roles are intended for {{stack}} components and should not be assigned to end users directly.
+You can create your own roles, or use any of the [built-in roles](elasticsearch://reference/elasticsearch/roles.md). Some built-in roles are intended for {{stack}} components and should not be assigned to end users directly.
 
 An example of a built-in role is `kibana_admin`. Assigning this role to your users will grant access to all of {{kib}}'s features. This includes the ability to manage spaces.
 
@@ -118,7 +119,7 @@ To create the role:
 
 Now that you created a role, create a user account.
 
-1. Navigate to **Stack Management**, and under **Security**, select **Users**.
+1. Go to the **Users** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create user**.
 3. Give this user a descriptive username, and choose a secure password.
 4. Assign the **marketing_dashboards_role** that you previously created to this new user.

@@ -8,7 +8,7 @@ products:
 
 # Set integration-level outputs [integration-level-outputs]
 
-If you have an `Enterprise` [{{stack}} subscription](https://www.elastic.co/subscriptions), you can configure {{agent}} data to be sent to different outputs for different integration policies. Note that the output clusters that you send data to must also be on the same subscription level.
+If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} data to be sent to different outputs for different integration policies. Note that the output clusters that you send data to must also be on the same subscription level.
 
 Integration-level outputs are very useful for certain scenarios. For example:
 

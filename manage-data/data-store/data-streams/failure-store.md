@@ -1,7 +1,6 @@
----  
+---
 mapped_pages:
-- (8.19 docs)
-
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/failure-store.html
 applies_to:
   stack: ga 9.1
   serverless: ga
@@ -90,6 +89,12 @@ PUT _data_stream/my-datastream-existing/_options
 ```
 
 1. Redirecting failed documents into the failure store will now be disabled.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also enable the data stream failure store in {{kib}}. Locate the data stream on the **Streams** page, where a stream maps directly to a data stream. Select a stream to view its details and go to the **Retention** tab where you can find the **Enable failure store** option.
+:::
 
 ### Enable failure store via cluster setting [set-up-failure-store-cluster-setting]
 
@@ -303,7 +308,7 @@ Documents redirected to the failure store in the event of a failed ingest pipeli
 
 Furthermore, failed documents are likely to be structured differently than normal data in a data stream, and thus special care should be taken when making use of [document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security) or [field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#field-level-security). Any security policies that expect to utilize these features for both regular documents and failure documents should account for any differences in document structure between the two document types.
 
-To limit visibility on potentially sensitive data, users require the [`read_failure_store`](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) index privilege for a data stream in order to search that data stream's failure store data.
+To limit visibility on potentially sensitive data, users require the [`read_failure_store`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) index privilege for a data stream in order to search that data stream's failure store data.
 :::
 
 Searching a data stream's failure store can be done by making use of the existing search APIs available in {{es}}. 
@@ -865,3 +870,8 @@ POST _data_stream/_modify
 
 This API gives you fine-grained control over the indices in your failure store, allowing you to manage backup and restoration operations as well as isolate failure data for later remediation.
 
+## Cross Cluster Search compatibility [ccs-compatibility]
+
+:::{important}
+Accessing the failure store across clusters using `::failures` is not yet supported.
+:::

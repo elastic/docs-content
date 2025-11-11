@@ -97,6 +97,7 @@ data:
     enable-leader-election: true
     elasticsearch-observation-interval: 10s
     ubi-only: false
+    password-length: 24
 ```
 
 Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.

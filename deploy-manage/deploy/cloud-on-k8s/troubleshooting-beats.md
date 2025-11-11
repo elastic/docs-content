@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Troubleshooting
 ---
 
-# Troubleshooting [k8s-beat-troubleshooting]
+# Troubleshooting Beats on {{eck}} [k8s-beat-troubleshooting]
 
 ## Beat Pods are crashing when kibanaRef is specified [k8s-beat-beat-pods-are-crashing-when-kibanaref-is-specified]
 

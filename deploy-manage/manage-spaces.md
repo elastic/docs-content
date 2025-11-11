@@ -25,7 +25,7 @@ products:
 :screenshot:
 :::
 
-To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 For more info on working with spaces, check out: 
 - [Create a space](#spaces-managing)
@@ -82,7 +82,7 @@ To create a space:
 3. If you selected the **Classic** solution view, you can customize the **Feature visibility** as you need it to be for that space.
 
    :::{note}
-   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](elasticsearch://reference/elasticsearch/roles.md).
    :::
 
 4. Customize the avatar of the space to your liking.
@@ -127,7 +127,9 @@ serverless: unavailable
 
 You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object as they enter each space.
 
-To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+To configure the landing page, use the default route setting in the [{{kib}} advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+
+You can access the **Advanced Settings** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
 
 :::{image} /deploy-manage/images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page

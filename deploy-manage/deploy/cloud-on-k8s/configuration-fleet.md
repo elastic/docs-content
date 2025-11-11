@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration
 ---
 
-# Configuration [k8s-elastic-agent-fleet-configuration]
+# Configuration for Fleet managed agents on {{eck}} [k8s-elastic-agent-fleet-configuration]
 
 {{fleet}}-managed {{agents}} must connect to {{fleet-server}} to receive their configurations. You can deploy {{fleet-server}} instances using ECKs Agent CRD with the appropriate configuration, as shown in [Fleet mode and Fleet Server](#k8s-elastic-agent-fleet-configuration-fleet-mode-and-fleet-server).
 

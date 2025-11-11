@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-log-anomalies.html
 applies_to:
-  stack: all
+  stack: ga
+  serverless: ga
 products:
   - id: observability
 ---
@@ -22,18 +23,20 @@ You can also view log anomalies directly in the [{{ml-app}} app](/explore-analyz
 This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
-
-
 ## Enable log rate analysis and {{anomaly-detect}} [enable-anomaly-detection]
 
 Create a {{ml}} job to detect anomalous log entry rates automatically.
 
-1. Select **Anomalies**, and you’ll be prompted to create a {{ml}} job which will carry out the log rate analysis.
+1. From the navigation menu, go to **Other tools** → **Logs Anomalies**, or find `Logs anomalies` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From here, you’ll be prompted to create a {{ml}} job which will carry out the log rate analysis.
 2. Choose a time range for the {{ml}} analysis.
-3. Add the indices that contain the logs you want to examine. By default, Machine Learning analyzes messages in all log indices that match the patterns set in the **logs source** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-4. Click **Create {{ml-init}} job**.
-5. You’re now ready to explore your log partitions.
+3. Add the indices that contain the logs you want to examine. By default, Machine Learning analyzes messages in all log indices that match the patterns set in the **logs source** advanced setting. To open **Advanced settings**, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+4. Click **Create ML job**. This creates and runs the job. It takes a few minutes for the {{ml}} robots to collect the necessary data. After the job has processed the data, you can view its results.
 
+::::{note}
+:applies_to: stack: ga 9.2
+
+Log anomaly {{ml}} jobs retain results for 120 days by default. Modify the `results_retention_days` setting to change this period.
+::::
 
 ## Anomalies chart [anomalies-chart]
 

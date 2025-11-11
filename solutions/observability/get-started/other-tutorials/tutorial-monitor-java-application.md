@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
@@ -1912,5 +1912,5 @@ Do not underestimate the importance of this kind of monitoring. Also, consider t
 
 ## What’s next? [_whats_next]
 
-For more information about using  Elastic {{observability}}, see the [{{observability}} documentation](../what-is-elastic-observability.md).
+For more information about using  Elastic {{observability}}, refer to the [{{observability}} documentation](/solutions/observability.md).
 

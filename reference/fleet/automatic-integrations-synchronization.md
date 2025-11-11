@@ -17,7 +17,7 @@ products:
 When enabled, this feature keeps integrations and custom assets synchronized between your main {{es}} cluster and one or more remote {{es}} clusters. 
 
 ::::{note}
-Automatic integrations synchronization is only available with certain subscriptions. For more information, refer to [Subscriptions](https://www.elastic.co/subscriptions).
+This feature is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 ## Requirements
@@ -25,6 +25,13 @@ Automatic integrations synchronization is only available with certain subscripti
 * To use this feature, you need a configured [remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md) and a set up [{{ccr}}](/deploy-manage/tools/cross-cluster-replication.md).
 * Remote clusters must be running the same {{es}} version as the management cluster, or a newer version that supports {{ccr}}.
 * To install integrations, remote clusters require access to the [{{package-registry}}](/reference/fleet/index.md#package-registry-intro).
+
+## Limitations
+
+These limitations apply when using the automatic integrations synchronization feature:
+
+- [Index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) (ILM) policies and enrich policies referenced in custom component templates are not automatically synchronized. Synchronizing custom assets that include references to ILM or enrich policies may cause custom component templates to break.
+- Integrations installed on the management cluster are synchronized to the remote cluster regardless of the space they are installed in. On the remote cluster, the synchronized integrations are always installed in the default space.
 
 ## Configure {{ccr}} on the remote cluster
 

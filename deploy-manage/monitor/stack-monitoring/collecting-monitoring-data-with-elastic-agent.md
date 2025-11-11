@@ -18,7 +18,7 @@ You can use {{agent}} to collect data about {{es}} and ship it to the monitoring
 ## Prerequisites [_prerequisites_11]
 
 * (Optional) Create a monitoring cluster as described in [](elasticsearch-monitoring-self-managed.md).
-* Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md).
+* Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-collector).
 
 
 ## Add {{es}} monitoring data [_add_es_monitoring_data]

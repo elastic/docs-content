@@ -1,4 +1,5 @@
 ---
+navigation_title: Common issues
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-common-issues.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Common Issues [alerting-common-issues]
+# Common issues with {{kib}} alerting [alerting-common-issues]
 
 This page describes how to resolve common problems you might encounter with Alerting.
 
@@ -59,7 +60,7 @@ Configuration options are available to specialize connections to TLS servers, in
 Rules are taking a long time to run and are impacting the overall health of your deployment.
 
 ::::{important}
-By default, only users with a `superuser` role can query the [preview] {{kib}} event log because it is a system index. To enable additional users to run this query, assign `read` privileges to the `.kibana-event-log*` index.
+By default, only users with a `superuser` role can query the {{kib}} event log because it is a system index. To enable additional users to run this query, assign `read` privileges to the `.kibana-event-log*` index.
 
 ::::
 

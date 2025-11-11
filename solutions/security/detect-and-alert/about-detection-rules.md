@@ -40,7 +40,7 @@ You can create the following types of rules:
     ::::
 
 * [**New terms**](/solutions/security/detect-and-alert/create-detection-rule.md#create-new-terms-rule): Generates an alert for each new term detected in source documents within a specified time range. You can also detect a combination of up to three new terms (for example, a `host.ip` and `host.id` that have never been observed together before).
-* [**ES|QL**](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule): Searches the defined indices and creates an alert when results match an [Elasticsearch Query Language {{esql}}](/explore-analyze/query-filter/languages/esql.md) query.
+* [**ES|QL**](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule): Searches the defined indices and creates an alert when results match an [Elasticsearch Query Language {{esql}}](elasticsearch://reference/query-languages/esql.md) query.
 
     ::::{note}
     {{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](kibana://reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.

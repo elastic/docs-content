@@ -24,6 +24,10 @@ With {{ece}}, you can:
 
 Refer to [](./cloud-enterprise/ece-architecture.md) for details about the ECE platform architecture and the technologies used.
 
+:::{admonition} Use cloud services in your ECE environment with Cloud Connect
+With [Cloud Connect](/deploy-manage/cloud-connect.md), you can use Elastic-managed cloud services in your ECE environment without having to install and manage their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
+::::
+
 ## ECE features
 
 - **Automated scaling & orchestration**: Handles cluster provisioning, scaling, and upgrades automatically.
@@ -44,7 +48,7 @@ In ECE, a deployment is a managed {{stack}} environment that provides users with
 
 The section covers the following tasks:
 
-* [Deploy ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
+* [Deploy an ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
     - [Prepare the environment](./cloud-enterprise/prepare-environment.md)
     - [Install ECE](./cloud-enterprise/install.md)
     - [Air gapped installations](./cloud-enterprise/air-gapped-install.md)

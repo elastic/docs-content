@@ -1,4 +1,5 @@
 ---
+navigation_title: Common problems
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-issues.html
 applies_to:
@@ -7,11 +8,12 @@ applies_to:
 products:
   - id: cloud-enterprise
 ---
-
-# Common issues [ece-issues]
+# Common problems with {{ece}} [ece-issues]
 
 This set of common symptoms and resolutions can help you to diagnose unexpected behavior with Elastic Cloud Enterprise. You can also refer to the list of product [Limitations and known problems](cloud://release-notes/cloud-enterprise/known-issues.md).
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Emergency token not spinning up the coordinator role [ece_emergency_token_not_spinning_up_the_coordinator_role]
 

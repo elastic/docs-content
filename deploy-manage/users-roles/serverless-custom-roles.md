@@ -20,7 +20,7 @@ Roles are a collection of privileges that enable users to access project feature
 On this page, you'll learn about how to [manage custom roles in your project](#manage-custom-roles), the types of privileges you can assign, and how to [assign the roles](#assign-custom-roles) that you create.
 
 ::::{note}
-You cannot assign [run as privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#_run_as_privilege) in {{serverless-full}} custom roles.
+You cannot assign [run as privileges](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) in {{serverless-full}} custom roles.
 ::::
 
 :::{{admonition}} Custom roles in {{stack}}
@@ -42,7 +42,7 @@ Cluster privileges grant access to monitoring and management features in {{es}}.
 :screenshot:
 :::
 
-Refer to [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) for a complete description of available options.
+Refer to [cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) for a complete description of available options.
 
 
 ## {{es}} index privileges [custom-roles-es-index-privileges]

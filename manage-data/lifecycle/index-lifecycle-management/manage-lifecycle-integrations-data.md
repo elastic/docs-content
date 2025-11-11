@@ -14,7 +14,7 @@ You can find installation and configuration details for all integrations in the 
 
 When you install an integration, an [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy is configured automatically to manage the integration's component [data streams](/manage-data/data-store/data-streams.md) and their backing indices. To view or adjust how your integration data is managed, a first step is to find the data streams that you're interested in. There are a few ways to do this:
 
-::::{dropdown} Find the data stream for a {{kib}} visualation
+::::{dropdown} Find the data stream for a {{kib}} visualization
 To find the data stream associated with a visualization in a {{kib}}:
 
 1. Open **Dashboards** from the {{kib}} menu and select a dashboard to view. For example, with the [System integration](integration-docs://reference/system.md) installed, you can open the `[Metrics System] Host overview` dashboard to find visualizations about the host system being monitored.
@@ -49,16 +49,17 @@ To find the data streams associated with an installed integration:
 ::::{dropdown} Find the data streams managed in {{fleet}}
 To find all of the data streams that are managed in {{fleet}}:
 
-1. In {{kib}} go to **Management > {{fleet}}** and select the **Data streams** tab.
+1. In {{kib}}, go to the **{{fleet}}** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select the **Data streams** tab.
 
 1. Use the search field and dropdown menus to filter the list. You can filter by the data stream type, dataset, namespace, or by the integration that the data stream belongs to.
 
     ![Integration assets](/manage-data/images/ilm-fleet-data-streams.png "")
 ::::
 
-For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy. 
+For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy.
 
 After you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
 
-* For a general guide about configuring a custom ILM policy for any managed data stream, try out our [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
+* For steps to customize an {{ilm-init}} policy for a data stream, try out the [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
 * For the steps to customize an ILM policy for a set of data streams, such as all logs or metrics data streams across all namespaces, across only a selected namespace, and others, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
