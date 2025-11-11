@@ -22,7 +22,7 @@ For a demo, refer to the following video (click to view).
 
 ## Role-based access control (RBAC) for Attack Discovery [attack-discovery-rbac]
 
-You need the `Attack Discovery: All` privilege to use Attack Discovery.
+You need the `Attack Discovery: All` and `Rules: All` privileges to use Attack Discovery.
 
 ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 

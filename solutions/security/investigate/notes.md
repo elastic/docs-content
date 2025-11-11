@@ -21,7 +21,7 @@ Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](/soluti
 
 ## Grant access to notes [notes-privileges]
 
-You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**.
+You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**. To view more details on SIEM requirements, see [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
 
 ## View and add notes to alerts and events [notes-alerts-events]
 
