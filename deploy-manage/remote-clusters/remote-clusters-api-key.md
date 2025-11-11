@@ -468,7 +468,7 @@ cluster.remote.my_remote_cluster.signing.key: "path/to/signing/key.key"
 ```
 
 ::::{note}
-Replace my_remote_cluster with your remote cluster alias and the paths with actual paths
+Replace `my_remote_cluster` with your remote cluster alias, and the paths with the paths to your certificate and key files.
 ::::
 
 #### On the remote cluster [_certificate_identity_remote_cluster]
