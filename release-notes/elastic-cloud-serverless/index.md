@@ -31,6 +31,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for the `convert` processor in stream data processing [#240023]({{kib-pull}}240023)
 * Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
+* Adds periodic PKC JWK set reloading capability to JWT realm [#136996](https://github.com/elastic/elasticsearch/pull/136996)
+* Adds audit log testing for certificate-based cross-cluster authentication [#137302](https://github.com/elastic/elasticsearch/pull/137302)
 
 ### Fixes [serverless-changelog-11032025-fixes]
 
@@ -66,10 +68,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
-* Grants kibana_system the ability to forcemerge certain indices. [#135795](https://github.com/elastic/elasticsearch/pull/135795)
-* Add periodic PKC JWK set reloading capability to JWT realm. [#136996](https://github.com/elastic/elasticsearch/pull/136996)
-* Add audit log testing for cert-based cross-cluster authentication [#137302](https://github.com/elastic/elasticsearch/pull/137302)
-* Handle ._original and._ignore_malformed stored fields correctly with fls [#137442](https://github.com/elastic/elasticsearch/pull/137442)
+* Grants `kibana_system` the ability to forcemerge certain indices [#135795](https://github.com/elastic/elasticsearch/pull/135795)
+* Handles `._original` and `._ignore_malformed` stored fields correctly with field-level security [#137442](https://github.com/elastic/elasticsearch/pull/137442)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
