@@ -9,12 +9,15 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
-  remote_type: Elastic Cloud Hosted deployment
+  remote_type: Elastic Cloud Hosted
 ---
 
 # Connect {{ece}} deployments to an {{ecloud}} organization [ece-remote-cluster-ece-ess]
 
 This section explains how to configure an {{ece}} (ECE) deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
+
+:::{include} _snippets/terminology.md
+:::
 
 ::::{note}
 If network security filters are applied to the remote cluster on {{ecloud}}, the remote cluster administrator must configure an [IP filter](/deploy-manage/security/ip-filtering-cloud.md) to allow connections from the IP addresses (or CIDR ranges) of the local ECE allocator hosts. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).

@@ -9,6 +9,64 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## November 3, 2025 [serverless-changelog-11032025]
+
+### Features and enhancements [serverless-changelog-11032025-features-enhancements]
+
+* Moves the **Lens** visualization toolbar from the workspace section to the configuration panel [#239879]({{kib-pull}}239879)
+* Adds support for rolling back integrations to previous versions [#240761]({{kib-pull}}240761)
+* Adds support for subqueries in the {{esql}} abstract syntax tree (AST) [#241227]({{kib-pull}}241227)
+* Adds subquery support for the walker and visitor in the {{esql}} AST [#241451]({{kib-pull}}241451)
+* Adds support for expressions in `LOOKUP JOIN` autocomplete [#240735]({{kib-pull}}240735)
+* Adds support for multi-value variables in `MV_CONTAINS` [#239266]({{kib-pull}}239266)
+* Adds client-side validation for `LOOKUP JOIN ON` expressions [#240930]({{kib-pull}}240930)
+* Improves the {{esql}} suggestions logic to provide more semantically intelligent suggestions [#241081]({{kib-pull}}241081)
+* Adds an `isStream` parameter to the `chat/complete` endpoint to support non-streaming responses in the Observability AI Assistant [#240819]({{kib-pull}}240819)
+* Makes the `opamp_polling_interval` and `sampling_rate` agent configuration variables available to EDOT Node.js [#241048]({{kib-pull}}241048)
+* Adds a free-text popup for the `runscript` argument to provide user input to the selected script [#239436]({{kib-pull}}239436)
+* Adds the deployment name to the breadcrumbs in {{ech}} [#238078]({{kib-pull}}238078)
+* Adds a **Give feedback** button to the Anomaly Explorer and Single Metric Viewer [#239883]({{kib-pull}}239883)
+* Adds a new `temperature` parameter to the AI Connector configuration schema [#239626]({{kib-pull}}239626)
+* Makes the Update spaces APIs public [#241109]({{kib-pull}}241109)
+* Adds support for the `convert` processor in stream data processing [#240023]({{kib-pull}}240023)
+* Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
+* Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
+
+### Fixes [serverless-changelog-11032025-fixes]
+
+* Fixes layout issues for Markdown embeddables in small panels [#240806]({{kib-pull}}240806)
+* Fixes an issue where labels in the **Create index** flow did not automatically render with the default vector tile scaling after saving or applying styling changes [#240728]({{kib-pull}}240728)
+* Fixes `template_path` asset selection for certain integration packages [#240750]({{kib-pull}}240750)
+* Omits system properties when syncing ingest pipelines [#241096]({{kib-pull}}241096)
+* Fixes autocomplete for time series sources after a comma [#241402]({{kib-pull}}241402)
+* Fixes a bottom gap that appeared while loading data in some cases [#238879]({{kib-pull}}238879)
+* Hides non-trace services in service maps [#240104]({{kib-pull}}240104)
+* Fixes an issue where the `kibana` tool failed when running {{kib}} behind a proxy [#236653]({{kib-pull}}236653)
+* Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026)
+* Aligns the **Members** link in the side navigation across all solutions [#240992]({{kib-pull}}240992)
+* Updates Metrics experience API routes to delegate authorization to {{es}} [#241195]({{kib-pull}}241195)
+* Copies alert states to the payload [#240411]({{kib-pull}}240411)
+* Adds missing fields to transaction data [#241336]({{kib-pull}}241336)
+* Simplifies metrics profile resolution by removing index pattern and time series validation [#241047]({{kib-pull}}241047)
+* Allows partial matches on rule names when searching installed rules [#237496]({{kib-pull}}237496)
+* Fixes a regression in threshold rule logic where threshold rules with no `group by` fields defined would no longer generate alerts [#241022]({{kib-pull}}241022)
+* Fixes an issue where the alert details flyout on the **Risk contributions** tab did not display data in some cases [#241153]({{kib-pull}}241153)
+* Fixes a table pagination issue on the Intelligence page [#241108]({{kib-pull}}241108)
+* Fixes an issue with the **Regenerate** button in the Security Assistant [#241240]({{kib-pull}}241240)
+* Fixes an issue where the Security AI Assistant's Index Entry form was showing incorrect field suggestions, missing searchable fields that exist as multi-fields or nested properties in {{es}} mappings [#239453]({{kib-pull}}239453)
+* Fixes an issue where agent-based integrations failed to produce data [#241390]({{kib-pull}}241390)
+* Fixes an infinite loop bug related to bootstrapping list resources [#241052]({{kib-pull}}241052)
+* Reduces re-renders on resize and items change [#239888]({{kib-pull}}239888)
+* Fixes index names causing an incompatible cluster error when product docs are installed with multiple inference IDs [#240506]({{kib-pull}}240506)
+* Ensures all authentication fields are displayed correctly [#240913]({{kib-pull}}240913)
+* Ensures the `max_tokens` parameter is passed as expected by the service [#241188]({{kib-pull}}241188)
+* Updates the inference creation endpoint to ensure the `max_tokens` parameter is passed as expected when creating an Anthropic Connector [#241212]({{kib-pull}}241212)
+* Removes the default fallback region for the Bedrock Connector [#241157]({{kib-pull}}241157)
+* Fixes wrapping issues in the Streams UI [#240883]({{kib-pull}}240883)
+* Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
+* Updates action response codes [#240420]({{kib-pull}}240420)
+* Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
+
 ## October 27, 2025 [serverless-changelog-10272025]
 
 ### Features and enhancements [elastic-security-10272025-features-enhancements]

@@ -1,3 +1,10 @@
+<!--
+This snippet is in use in the following locations:
+- ec-remote-cluster-self-managed.md
+- ec-remote-cluster-same-ess.md
+- ec-remote-cluster-other-ess.md
+- ec-remote-cluster-ece.md
+-->
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 
@@ -13,11 +20,10 @@
 
     2. Click **Add** to save the API key.
 
-5. Restart the local deployment to reload the new setting. To do that, go to the deployment's main page (named after your deployment's name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
+5. Restart the local deployment to reload the new setting. To do that, go to the deployment's main page (named after your deployment's name), locate the **Actions** menu, and select **Restart {{es}}**.
 
     ::::{note}
     If the local deployment runs on version 8.14 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
     ::::
 
-
-If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](/deploy-manage/remote-clusters/ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](/deploy-manage/remote-clusters/ec-edit-remove-trusted-environment.md#edit-remove-trusted-environment-api-key).
