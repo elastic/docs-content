@@ -363,6 +363,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an Anomaly Detection bug where custom URLs omitted generated fields in datafeed preview requests [#234709]({{kib-pull}}234709)
 * Ensures full tool traces are displayed in flyouts [#234654]({{kib-pull}}234654)
 
+* Uses latest setting value when initializing setting watch [#134091](https://github.com/elastic/elasticsearch/pull/134091)
+
 ## September 8, 2025 [serverless-changelog-09082025]
 
 ### Features and enhancements [serverless-changelog-09082025-features-enhancements]
@@ -438,6 +440,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes responsiveness issues in the Stream management code editor area [#232630]({{kib-pull}}232630)
 * Fixes an empty tooltip issue when creating tags [#232853]({{kib-pull}}232853)
 * Fixes an issue where the **Create tag** modal wouldn't close properly [#233012]({{kib-pull}}233012)
+* Updates `DefBootstrap` to handle `Error` from `ClassValue` [#133604](https://github.com/elastic/elasticsearch/pull/133604)
+* Changes `GeneralScriptException` to 400 [#133659](https://github.com/elastic/elasticsearch/pull/133659)
 
 ## August 28, 2025 [serverless-changelog-08282025]
 
@@ -459,6 +463,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds a check to confirm that uploaded files are indexed and searchable in {{ml-cap}} [#231614]({{kib-pull}}231614)
 * Updates sections and improves field handling in {{ml-cap}} [#231037]({{kib-pull}}231037)
 * Improves the layout of the custom URLs list in {{ml-cap}} [#231751]({{kib-pull}}231751)
+
+* Limits the depth of a filter [#133113](https://github.com/elastic/elasticsearch/pull/133113)
 
 ### Fixes [serverless-changelog-08252025-fixes]
 * Fixes a rendering issue that affected progress elements in Canvas [#232432]({{kib-pull}}232432)
@@ -957,6 +963,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue with **Anomaly Explorer** where the selected Overall swimlane bucket is not respected for `viewBy jobId` in Machine Learning [#222845]({{kib-pull}}222845).
 * Fixes error handling when one or more connectors is deleted [#221958]({{kib-pull}}221958).
 
+* Adds retry for `AccessDeniedException` in `AbstractFileWatchingService` [#128653](https://github.com/elastic/elasticsearch/pull/128653)
+
 ## June 2, 2025 [serverless-changelog-06022025]
 
 ### Features and enhancements [serverless-changelog-06022025-features-enhancements]
@@ -1013,6 +1021,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces a new endpoint scheme for SIEM migration [#219597]({{kib-pull}}219597)
 * Extends default log pattern on server side to include error information [#219940]({{kib-pull}}219940)
 
+* Ensures config reload on ..data symlink switch for `CSI` driver support [#127628](https://github.com/elastic/elasticsearch/pull/127628)
+
 
 ### Fixes [serverless-changelog-05262025-fixes]
 
@@ -1031,6 +1041,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes inability to clear Document ID in data view field editor preview [#220891]({{kib-pull}}220891)
 * Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
 * Changes the AI Connector description [#221154]({{kib-pull}}221154)
+
+* Fixes `NPE` in `APMTracer` through `RestController` [#128314](https://github.com/elastic/elasticsearch/pull/128314)
 
 ## May 19, 2025 [serverless-changelog-05192025]
 
@@ -1052,6 +1064,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds an **ES|QL** control option to the dashboard controls dropdown [#219495]({{kib-pull}}219495)
 * Enables full-text search in `STATS ... WHERE` **ES|QL** queries [#220691]({{kib-pull}}220691)
 * Prevents downloading trained models that are already present in other spaces and displays a warning in Machine Learning [#220238]({{kib-pull}}220238)
+* Creates and deletes per-project `objectstore`
 
 ### Fixes [serverless-changelog-05192025-fixes]
 * Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
@@ -1073,6 +1086,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes issue where exceptions list and actions were overwritten during legacy prebuilt rule upgrades in Elastic Security Serverless [#218519]({{kib-pull}}218519)
 * Fixes incorrect validation for names containing asterisks in **ES|QL** [#219832]({{kib-pull}}219832)
 * Fixes overridden SSL config in full agent policy advanced YAML for Fleet [#219902]({{kib-pull}}219902)
+
+* Avoids nested docs in `painless execute api` [#127991](https://github.com/elastic/elasticsearch/pull/127991)
 
 ## May 5, 2025 [serverless-changelog-050525]
 
@@ -1202,6 +1217,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reuses shared integration policies when duplicating agent policies in Fleet [#217872]({{kib-pull}}217872)
 * Enables adding badges to all list items in the side navigation except the section header [#217301]({{kib-pull}}217301)
 
+* `FileWatchingService` should not throw for missing file [#126264](https://github.com/elastic/elasticsearch/pull/126264)
+
 ### Fixes [serverless-changelog-04142025-fixes]
 * Fixes error message when previewing index templates used by data streams [#217604]({{kib-pull}}217604)
 * Wraps text in search bars [#217556]({{kib-pull}}217556)
@@ -1221,6 +1238,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes page crashes caused by the **Use full data** button [#217291]({{kib-pull}}217291)
 * Filters inference connectors that lack existing endpoints in **Connectors** [#217641]({{kib-pull}}217641)
 * Fixes focusability and keyboard access issues with the **Export** tab in the **Share this dashboard** modal [#217313]({{kib-pull}}217313)
+
+* Improves handling of empty response [#125562](https://github.com/elastic/elasticsearch/pull/125562)
+* Adds leniency to missing array values in mustache [#126550](https://github.com/elastic/elasticsearch/pull/126550)
+* Adds a custom toString to `DynamicMap` [#126562](https://github.com/elastic/elasticsearch/pull/126562)
+* Fixes painless return type cast for list shortcut [#126724](https://github.com/elastic/elasticsearch/pull/126724)
 
 ## April 7, 2025 [serverless-changelog-04072025]
 
@@ -1329,6 +1351,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates data feeds for anomaly detection jobs to exclude Elastic Agent and Beats processes [#213927]({{kib-pull}}213927)
 * Adds Mustache lambdas for alerting action [#213859]({{kib-pull}}213859)
 * Adds 'page reload' screen reader warning [#214822]({{kib-pull}}214822)
+* Supports `reserved state` to be spread across several files
+* Allows passing several `reserved state` chunks in single process call [#124574](https://github.com/elastic/elasticsearch/pull/124574)
 
 ### Fixes [elastic-cloud-serverless-03242025-fixes]
 * Fixes color by value for Last value array mode [#213917]({{kib-pull}}213917)
@@ -1378,6 +1402,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables endpoint actions for events [#206857]({{kib-pull}}206857)
 * Introduces GA support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type on {{serverless-full}}
 * Adds the ability for users to [customize prebuilt rules](https://github.com/elastic/kibana/issues/174168). Users can modify most rule parameters, export and import prebuilt rules — including customized ones — and upgrade prebuilt rules while retaining customization settings [#212761]({{kib-pull}}212761)
+
+* Indicates when errors represent timeouts [#124936](https://github.com/elastic/elasticsearch/pull/124936)
 
 
 ### Fixes [elastic-cloud-serverless-03172025-fixes]
