@@ -30,7 +30,7 @@ The mapping of the destination index - the index that contains the embeddings th
 You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own ML-nodes. The following examples show you both scenarios.
 
 ::::{tip}
-For production deployments with dense vector embeddings, consider optimizing storage and performance using [`index_options`](#semantic-text-index-options). This allows you to configure quantization strategies like BBQ (Better Binary Quantization) that can reduce memory usage by up to 32x. Note that new indices with 384 or more dimensions will default to BBQ HNSW automatically.
+For production deployments with dense vector embeddings, consider optimizing storage and performance using [`index_options`](#semantic-text-index-options). This allows you to configure quantization strategies like BBQ (Better Binary Quantization) that can reduce memory usage by up to 32x. Note that with newer indices, `semantic_text` will default to BBQ HNSW automatically.
 ::::
 
 :::::::{tab-set}
