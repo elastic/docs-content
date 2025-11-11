@@ -147,6 +147,7 @@ toc:
       - file: view-integration-assets.md
       - file: integration-level-outputs.md
       - file: upgrade-integration.md
+      - file: roll-back-integration.md
       - file: managed-integrations-content.md
       - file: integrations-assets-best-practices.md
       - file: otel-integrations.md
