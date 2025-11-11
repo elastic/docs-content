@@ -61,13 +61,6 @@ To enable fast and scalable search, {{es}} ingests, analyzes, and indexes data s
 
 ![How Elasticsearch works](/get-started/images/how-elasticsearch-works.png)
 
-| ----- | ----- |
-| 1 | Ingestion - Data enters {{es}} through the REST API, client libraries, or integrations. |
-| 2 | Analysis - Text is processed through analyzers, such as tokenization, stemming, and more. |
-| 3 | Indexing - Documents are stored in shards with inverted indexes for fast retrieval. |
-| 4 | Querying - Search requests are distributed to relevant shards and results are merged. |
-| 5 | Response - Results are returned, typically in milliseconds. |
-
 
 ### Storage model [elasticsearch-storage-model]
 
