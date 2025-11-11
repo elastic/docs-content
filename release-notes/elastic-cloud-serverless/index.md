@@ -66,6 +66,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
+* Default semantic_text fields to ELSER on EIS when available [#134708](https://github.com/elastic/elasticsearch/pull/134708)
+* Add chunk_rescorer usage to output of explain and profile for text_similarity_rank_retriever [#137249](https://github.com/elastic/elasticsearch/pull/137249)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
