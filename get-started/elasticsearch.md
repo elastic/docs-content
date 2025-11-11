@@ -162,10 +162,10 @@ To make sure your {{es}} deployment performs efficiently and scales with your da
 
 ### Data modeling best practices [elasticsearch-data-modeling-best-practices]
 
-* One document type per index - Keep related data together
-* Denormalize data - Include related information in documents to avoid joins
-* Use appropriate field types - Match data types to query patterns
-* Plan for growth - Consider time-based indices for logs and events
+* **One document type per index** —— Keep related data together
+* **Denormalize data** —— Include related information in documents to avoid joins
+* **Use appropriate field types** —— Match data types to query patterns
+* **Plan for growth** —— Consider time-based indices for logs and events
 
 ## Next steps [elasticsearch-next-steps]
 
