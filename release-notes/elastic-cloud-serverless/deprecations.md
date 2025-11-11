@@ -12,6 +12,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 ## October 13, 2025 [elastic-cloud-serverless-10132025-deprecations]
 * Filters endpoint exceptions from the detection engine's execution logic. For more information, check [#233289]({{kib-pull}}233289).
 
+## October 7, 2025 [elastic-cloud-serverless-10072025-deprecations]
+* Adds deprecation notice for `max_size` rollover condition. For more information, check [#135765](https://github.com/elastic/elasticsearch/pull/135765).
+
 ## June 30, 2025 [elastic-cloud-serverless-06302025-deprecations]
 * Removes Default Quick Prompts from the Security AI Assistant. For more information, check [#225536]({{kib-pull}}225536).
 
