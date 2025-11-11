@@ -99,7 +99,7 @@ Each {{ece}} service runs as a dedicated container. These containers are automat
 | `frc-allocator-metricbeats-allocator-metricbeat`  | Allocator     | Collects allocator metrics via Beats. |
 | `frc-allocators-allocator`                        | Allocator     | Manages container lifecycle for Elasticsearch and Kibana; reports host capacity to ZooKeeper. |
 | `frc-container-task-services-container-task-service` | Allocator  | Supports autoscaling and tracks feature usage. |
-| `frc-admin-consoles-admin-console`                | Controller    | Backend service for the ECE UI; handles API requests and coordinates with ZooKeeper, Elasticsearch, logging, and security services. |
+| `frc-admin-consoles-admin-console`                | Controller    | Backend service for the ECE UI; handles API requests and coordinates with ZooKeeper, {{es}}, logging, and security services. |
 | `frc-cloud-uis-cloud-ui`                          | Controller    | Web frontend for the ECE UI, served to users in the browser. |
 | `frc-constructors-constructor`                    | Controller    | Schedules and coordinates deployment changes through ZooKeeper; assigns instances to allocators and balances zones. |
 | `frc-blueprints-blueprint`                        | Director      | Coordinates container startup by providing configuration data to runners based on their role and token. |
