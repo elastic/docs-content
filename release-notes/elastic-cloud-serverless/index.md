@@ -66,6 +66,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
+* Grants kibana_system the ability to forcemerge certain indices. [#135795](https://github.com/elastic/elasticsearch/pull/135795)
+* Add periodic PKC JWK set reloading capability to JWT realm. [#136996](https://github.com/elastic/elasticsearch/pull/136996)
+* Add audit log testing for cert-based cross-cluster authentication [#137302](https://github.com/elastic/elasticsearch/pull/137302)
+* Handle ._original and._ignore_malformed stored fields correctly with fls [#137442](https://github.com/elastic/elasticsearch/pull/137442)
 
 ## October 27, 2025 [serverless-changelog-10272025]
 
