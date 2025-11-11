@@ -472,7 +472,7 @@ The OpenID Connect realm is designed to allow users to authenticate to {{kib}}. 
 
 ::::{note}
 The OpenID Connect protocol is used to authenticate interactive users via a web browser. It relies on the user being able to open URLs in their browser and, if necessary, enter their credentials into the login page that is displayed.
-{{es}} does not support using OpenID Connect to authenticate a non-interactive user (for example, a "service principal"). If you wish to authenticate a service, then the [JWT](jwt.md) realm may be a suitable alternative.
+{{es}} does not support using OpenID Connect to authenticate a non-interactive user (for example, a "service principal"). If you wish to authenticate a service then the [JWT](jwt.md) realm may be a suitable alternative.
 ::::
 
 Single sign-on realms such as OpenID Connect and SAML make use of the Token Service in {{es}} and in principle exchange a SAML or OpenID Connect Authentication response for an {{es}} access token and a refresh token. The access token is used as credentials for subsequent calls to {{es}}. The refresh token enables the user to get new {{es}} access tokens after the current one expires.
