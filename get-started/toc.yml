@@ -1,8 +1,8 @@
 project: 'Get started'
 toc:
   - file: index.md
-  - file: introduction.md
   - file: elasticsearch.md
+  - file: introduction.md
   - file: the-stack.md
   - file: deployment-options.md
   - file: versioning-availability.md

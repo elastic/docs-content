@@ -21,9 +21,9 @@ products:
 
 The distributed {{es}} architecture enables the following:
 
-* Horizontal scaling - Add more nodes to increase capacity
-* High availability - Maintained through data replication across nodes to prevent data loss
-* Parallel processing - Queries execute across shards simultaneously to deliver fast performance
+* **Horizontal scaling** —— Add more nodes to increase capacity
+* **High availability** —— Maintained through data replication across nodes to prevent data loss
+* **Parallel processing** —— Queries execute across shards simultaneously to deliver fast performance
 
 ### Near real-time indexing [elasticsearch-near-real-time-indexing]
 
@@ -51,9 +51,9 @@ Mappings play a key role in the following:
 
 Vector capabilities enable the following:
 
-* Semantic search - Find content based on meaning rather than exact keywords
-* Hybrid search - Combine keyword and vector-based search results for greater accuracy
-* Retrieval-augmented generation (RAG) systems - Provide relevant context to large language models
+* **Semantic search** —— Find content based on meaning rather than exact keywords
+* **Hybrid search** —— Combine keyword and vector-based search results for greater accuracy
+* **Retrieval-augmented generation (RAG) systems** —— Provide relevant context to large language models
 
 ## How {{es}} works [how-elasticsearch-works]
 
@@ -100,27 +100,27 @@ When you search, {{es}}:
 
 ### Full-text and hybrid search [elasticsearch-full-text-hybrid-search]
 
-* E-commerce product catalogs - Fast product discovery with filters, facets, and autocomplete
-* Enterprise knowledge bases - Search across documents, wikis, and databases with permission controls
-* Content platforms - Search articles, videos, and user-generated content by relevance
+* **E-commerce product catalogs** —— Fast product discovery with filters, facets, and autocomplete
+* **Enterprise knowledge bases** —— Search across documents, wikis, and databases with permission controls
+* **Content platforms** —— Search articles, videos, and user-generated content by relevance
 
 ### AI-powered applications [elasticsearch-ai-powered-applications]
 
-* Semantic search - Find documents by meaning using vector embeddings from models like BERT or OpenAI
-* Chatbots and RAG systems - Retrieve relevant context from knowledge bases to enhance LLM responses
-* Recommendation engines - Surface similar items based on vector similarity
+* **Semantic search** —— Find documents by meaning using vector embeddings from models like BERT or OpenAI
+* **Chatbots and RAG systems** —— Retrieve relevant context from knowledge bases to enhance LLM responses
+* **Recommendation engines** —— Surface similar items based on vector similarity
 
 ### Geospatial search [elasticsearch-geospatial-search]
 
-* Location-based services - Find nearby restaurants, stores, or services
-* Delivery routing - Optimize routes based on geographic data
-* Geofencing - Trigger actions when users enter specific areas
+* **Location-based services** —— Find nearby restaurants, stores, or services
+* **Delivery routing** —— Optimize routes based on geographic data
+* **Geofencing** —— Trigger actions when users enter specific areas
 
 ### Analytics and monitoring [elasticsearch-analytics-monitoring]
 
-* Log analytics - Centralize and analyze application and system logs
-* Security analytics - Detect threats and anomalies in security events
-* Business metrics - Analyze user behavior, sales trends, and KPIs
+* **Log analytics** —— Centralize and analyze application and system logs
+* **Security analytics** —— Detect threats and anomalies in security events
+* **Business metrics** —— Analyze user behavior, sales trends, and KPIs
 
 ## When to use {{es}} [when-to-use-elasticsearch]
 
@@ -142,15 +142,23 @@ Consider alternatives to {{es}} when:
 
 ### Deployment options [elasticsearch-deployment-options]
 
-* **[{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)** - Fully managed, auto-scaling deployment, which is recommended for new projects
-* **[{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)** - Managed {{es}} with more configuration control
-* **[Self-managed](/deploy-manage/deploy/self-managed.md)** - Install and operate {{es}} yourself, which requires expertise
+{{es}} offers flexible deployment options to match your organization requirements and level of operational control. 
+
+| Option | Description |
+| ----- | ----- |
+| **[{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)** | Fully managed, auto-scaling deployment. Recommended for new projects. |
+| **[{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)** | Managed {{es}} with more configuration control. |
+| **[Self-managed](/deploy-manage/deploy/self-managed.md)** | Install and operate {{es}} yourself. Requires expertise. |
 
 ### Cluster sizing [elasticsearch-cluster-sizing]
 
-* Small deployments - 3-5 nodes for development and small production use cases
-* Medium deployments - 10-20 nodes for moderate data volumes and query loads
-* Large deployments - 50 or more nodes for high-volume production systems
+To make sure your {{es}} deployment performs efficiently and scales with your data and query demands, use the right cluster size. 
+
+| Deployment size | Cluster size |
+| ----- | ----- |
+| **Small** | 3-5 nodes for development and small production use cases. |
+| **Medium** | 10-20 nodes for moderate data volumes and query loads. |
+| **Large** | 50 or more nodes for high-volume production systems. |
 
 ### Data modeling best practices [elasticsearch-data-modeling-best-practices]
 
