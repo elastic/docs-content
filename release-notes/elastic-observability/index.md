@@ -103,6 +103,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
 
+## 9.1.7 [elastic-observability-9.1.7-release-notes]
+
+### Fixes [elastic-observability-9.1.7-fixes]
+* Adds missing transaction action links [#241336]({{kib-pull}}241336).
+* Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
+* Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
+* Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
+
 ## 9.1.6 [elastic-observability-9.1.6-release-notes]
 
 ### Fixes [elastic-observability-9.1.6-fixes]
