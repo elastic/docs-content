@@ -23,10 +23,11 @@ The local cluster must trust the remote cluster on the remote cluster interface.
 To add a remote cluster using API key authentication:
 
 1. [Review the prerequisites](#remote-clusters-prerequisites-api-key)
-2. [Establish trust with a remote cluster](#remote-clusters-security-api-key)
+2. [Establish trust with a remote cluster](#remote-clusters-security-api-key) 
+   1. (Optional) [Configure remote cluster strong verification](#remote-cluster-strong-verification) for additional security
 3. [Connect to a remote cluster](#remote-clusters-connect-api-key)
 4. [Configure roles and users](#remote-clusters-privileges-api-key)
-5. (Optional) [Configure remote cluster strong verification](#remote-cluster-strong-verification) for additional security
+
 
 If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
@@ -433,10 +434,13 @@ deployment:
   self: preview 9.3
 ```
 
-Cross-cluster API keys can be configured with strong verification to provide an additional layer of security. To enable this feature,
-the cross-cluster API key is created with a certificate identity pattern. The local cluster is then required to sign each request
-to the remote cluster with its private key and provide a trusted certificate whose subject matches the certificate identity
-pattern configured on the cross-cluster API key.
+Cross-cluster API keys can be configured with strong verification to provide an additional layer of security. To enable this feature, a 
+cross-cluster API key is created on the remote cluster with a certificate identity pattern that specifies which certificates are allowed 
+to use it. The local cluster must then sign each request with its private key and include a certificate whose subject Distinguished Name 
+(DN) matches the pattern. The remote cluster validates both that the certificate is trusted by its configured certificate authorities 
+and that the certificate's subject matches the API key's identity pattern.
+
+Each remote cluster alias on the local cluster can have different remote signing configurations. 
 
 ### How strong verification works [_how_strong_verification_works]
 
@@ -460,7 +464,7 @@ headers.
 #### On the local cluster [_certificate_identity_local_cluster]
 
 The local cluster must be configured to sign cross-cluster requests with a certificate-private key pair. You can generate a signing 
-certificate using `elasticsearch-certutil` or use an existing certificate. 
+certificate using [elasticsearch-certutil](#remote-clusters-security-api-key-remote-action) or use an existing certificate. 
 
 ```yaml
 cluster.remote.my_remote_cluster.signing.certificate: "path/to/signing/certificate.crt"
@@ -502,6 +506,3 @@ The `certificate_identity` field supports regular expressions. For example:
 * `"CN=.*.example.com,O=Example Corp,C=US"` matches any certificate with a CN ending in "example.com"
 * `"CN=local-cluster.*,O=Example Corp,C=US"` matches any certificate with a CN starting with "local-cluster"
 * `"CN=.*"` matches any certificate (not recommended for production)
-
-To verify strong verification is active, check the Elasticsearch logs on the remote cluster for certificate validation messages, or 
-attempt a connection without proper signing configured (which should fail with a certificate validation error).
