@@ -150,7 +150,7 @@ PUT semantic-embeddings-optimized
 1. Reference to a text embedding inference endpoint. This example uses the built-in E5 endpoint that is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 2. Use Better Binary Quantization with HNSW indexing for optimal memory efficiency. This setting applies to the underlying `dense_vector` field that stores the embeddings.
 
-You can also use `bbq_flat` for simpler datasets where you need maximum accuracy at the expense of speed:
+You can also use `bbq_flat` for smaller datasets where you need maximum accuracy at the expense of speed:
 
 ```console
 PUT semantic-embeddings-flat
@@ -173,7 +173,7 @@ PUT semantic-embeddings-flat
 
 1. Use disk-optimized BBQ for simpler use cases with fewer vectors. This requires less compute resources during indexing.
 
-For very large datasets where memory is constrained, use `bbq_disk` (DiskBBQ) to store vectors on disk:
+For very large datasets where RAM is constrained, use `bbq_disk` (DiskBBQ) to minimize memory usage:
 
 ```console
 PUT semantic-embeddings-disk
@@ -199,7 +199,7 @@ stack: ga 9.2
 serverless: unavailable
 ```
 
-1. Use disk-optimized BBQ for simpler use cases with fewer vectors. This requires less compute resources during indexing. Available in Elasticsearch 9.2+, this option stores compressed vectors on disk, reducing RAM usage to as little as 100 MB while maintaining query latencies around 15ms.
+1. Use DiskBBQ when RAM is limited. Available in Elasticsearch 9.2+, this option keeps vectors in compressed form on disk and only loads/decompresses small portions on-demand during queries. Unlike standard HNSW indexes (which rely on filesystem cache to load vectors into memory for fast search), DiskBBQ dramatically reduces RAM requirements by avoiding the need to cache vectors in memory. This enables vector search on much larger datasets with minimal memory, though queries will be slower compared to in-memory approaches.
 
 Other quantization options include `int8_hnsw` (8-bit integer quantization) and `int4_hnsw` (4-bit integer quantization):
 
