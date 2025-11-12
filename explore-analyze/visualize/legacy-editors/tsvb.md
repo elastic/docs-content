@@ -3,6 +3,8 @@ description: Build time series visualizations with TSVB editor combining infinit
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
 ---
 
 # TSVB [tsvb-panel]

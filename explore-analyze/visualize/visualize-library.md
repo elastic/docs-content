@@ -6,6 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
+  - id: kibana
   - id: cloud-serverless
 ---
 

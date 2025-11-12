@@ -3,6 +3,8 @@ description: Query time series data with Timelion expression language. Pull data
 applies_to:
   stack: deprecated 7.10
   serverless: unavailable
+products:
+  - id: kibana
 ---
   
 # Timelion [timelion]

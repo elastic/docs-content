@@ -3,6 +3,8 @@ description: Create visualizations with aggregation-based editor for multi-level
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
 ---
 
 # Aggregation-based [add-aggregation-based-visualization-panels]
