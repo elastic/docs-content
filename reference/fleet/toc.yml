@@ -102,18 +102,6 @@ toc:
           - file: elastic-agent-simplified-input-configuration.md
           - file: elastic-agent-inputs-list.md
           - file: dynamic-input-configuration.md
-      - file: providers.md
-        children:
-          - file: local-provider.md
-          - file: agent-provider.md
-          - file: host-provider.md
-          - file: env-provider.md
-          - file: filesource-provider.md
-          - file: kubernetes_secrets-provider.md
-          - file: kubernetes_leaderelection-provider.md
-          - file: local-dynamic-provider.md
-          - file: docker-provider.md
-          - file: kubernetes-provider.md
       - file: elastic-agent-output-configuration.md
         children:
           - file: elasticsearch-output.md
@@ -162,6 +150,18 @@ toc:
           - file: data-streams-advanced-features.md
       - file: alert-templates.md
   - file: agent-command-reference.md
+  - file: providers.md
+    children:
+      - file: local-provider.md
+      - file: agent-provider.md
+      - file: host-provider.md
+      - file: env-provider.md
+      - file: filesource-provider.md
+      - file: kubernetes_secrets-provider.md
+      - file: kubernetes_leaderelection-provider.md
+      - file: local-dynamic-provider.md
+      - file: docker-provider.md
+      - file: kubernetes-provider.md
   - file: agent-processors.md
     children:
       - file: processor-syntax.md
