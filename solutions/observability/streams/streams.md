@@ -8,7 +8,7 @@ applies_to:
 
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
 
-## Classic vs. wired streams [streams-classic-vs-wired]
+## Classic versus wired streams [streams-classic-vs-wired]
 
 Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ in configuration, inheritance, and field mapping.
 
@@ -28,7 +28,7 @@ stack: preview 9.2
 serverless: preview
 ```
 
-Wired streams data is sent directly to a single endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
+Wired streams send data directly to a single endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
 
 Wired streams:
 - Allow you to organize streams in a parent-child hierarchy.
@@ -48,11 +48,11 @@ Streams requires the following permissions:
 
 ::::{tab-set}
 
-:::{tab-item} Serverless
-Streams requires these Elastic Cloud Serverless roles:
+:::{tab-item} {{serverless-short}}
+Streams requires these {{serverless-full}} roles:
 
 - Admin: Ability to manage all Streams
-- Editor/Viewer: Limited access, unable to perform all actions
+- Editor/Viewer: Limited access, cannot perform all actions
 
 :::
 
@@ -77,9 +77,9 @@ Open Streams from the following places in {{kib}}:
 
 - Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams will open filtered to the selected data stream.
+- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
 
-### Streams API [streams-access-api]
+### Streams API [streams-api]
 ``` yaml {applies_to}
 stack: preview 9.1
 serverless: preview
