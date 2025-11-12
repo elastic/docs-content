@@ -47,7 +47,7 @@ To load the sample data:
     | KEEP machine.os, machine.ram <2>
     ```
 
-    1. We’re specifically looking for data from the sample web logs we just installed.
+    1. We're specifically looking for data from the sample web logs we installed.
     2. We’re only keeping the `machine.os` and `machine.ram` fields in the results table.
    
    ::::{note}
