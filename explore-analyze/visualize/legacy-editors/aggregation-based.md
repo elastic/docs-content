@@ -1,4 +1,5 @@
 ---
+description: Create visualizations with aggregation-based editor for multi-level splits and non-time series data. Access classic Kibana chart types with plugin extensibility.
 applies_to:
   stack: ga
   serverless: ga

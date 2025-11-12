@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tinymath-functions.html
+description: Complete reference of TinyMath functions for complex math calculations in Canvas expressions. Perform array operations and apply JavaScript Math methods to data.
 applies_to:
   stack: ga
   serverless: ga

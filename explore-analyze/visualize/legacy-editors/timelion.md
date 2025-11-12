@@ -1,4 +1,5 @@
 ---
+description: Query time series data with Timelion expression language. Pull data from multiple indices, perform cross-series math, and visualize results with chained functions.
 applies_to:
   stack: deprecated 7.10
   serverless: unavailable

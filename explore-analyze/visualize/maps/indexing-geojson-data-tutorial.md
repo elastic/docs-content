@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/indexing-geojson-data-tutorial.html
+description: Step-by-step tutorial for importing and indexing GeoJSON files into Elasticsearch. Build multi-layer maps displaying flight paths and geographic points.
 applies_to:
   stack: ga
   serverless: ga

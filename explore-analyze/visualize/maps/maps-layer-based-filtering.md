@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-layer-based-filtering.html
+description: Apply filters to individual layers in Maps without affecting other layers. Create focused visualizations with layer-specific data filters and queries.
 applies_to:
   stack: ga
   serverless: ga

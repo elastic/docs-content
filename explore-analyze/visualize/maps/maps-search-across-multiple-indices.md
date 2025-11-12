@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-search-across-multiple-indices.html
+description: Query data from multiple Elasticsearch indices in Maps to visualize combined datasets. Build maps with layers from different data sources and indices.
 applies_to:
   stack: ga
   serverless: ga

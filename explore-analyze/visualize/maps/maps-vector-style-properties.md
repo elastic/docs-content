@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-vector-style-properties.html
+description: Customize vector layer appearance in Maps with fill colors, border styles, label formatting, and icon settings. Apply data-driven or static styling properties.
 applies_to:
   stack: ga
   serverless: ga

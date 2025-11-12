@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/vector-style.html
+description: Style vector layers in Maps with data-driven or static properties. Apply colors, sizes, and symbols based on field values for meaningful visualizations.
 applies_to:
   stack: ga
   serverless: ga

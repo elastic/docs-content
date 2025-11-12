@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-top-hits-aggregation.html
+description: Display most recent or highest-ranked documents in Maps with top hits aggregation. Show latest GPS positions and track entity movements over time.
 applies_to:
   stack: ga
   serverless: ga

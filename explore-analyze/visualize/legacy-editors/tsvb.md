@@ -1,4 +1,5 @@
 ---
+description: Build time series visualizations with TSVB editor combining infinite aggregations. Annotate data, display multiple data views, and create markdown panels.
 applies_to:
   stack: ga
   serverless: ga

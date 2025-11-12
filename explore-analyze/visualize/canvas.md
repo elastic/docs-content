@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas.html
+description: Design pixel-perfect presentations in Kibana Canvas with live Elasticsearch data. Create multi-page workpads combining visualizations, images, and text.
 applies_to:
   stack: ga
   serverless: ga

@@ -2,6 +2,7 @@
 navigation_title: Troubleshoot
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-troubleshooting.html
+description: Troubleshooting guide for Maps issues including Elasticsearch request inspection, polygon display problems, and layer configuration errors.
 applies_to:
   stack: ga
   serverless: ga

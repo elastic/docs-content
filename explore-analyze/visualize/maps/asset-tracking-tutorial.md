@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/asset-tracking-tutorial.html
+description: Step-by-step tutorial for tracking real-time asset locations with Maps. Visualize transit data, create alerts for geofences, and monitor vehicle movements.
 applies_to:
   stack: ga
   serverless: ga

@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/heatmap-layer.html
+description: Add heat map layers to Maps for visualizing point density clusters. Show geographic locations with higher data concentrations using geo_point or geo_shape fields.
 applies_to:
   stack: ga
   serverless: ga

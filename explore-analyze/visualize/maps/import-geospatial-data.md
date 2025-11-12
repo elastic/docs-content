@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/import-geospatial-data.html
+description: Import geospatial data into Elasticsearch as geo_point or geo_shape. Upload GeoJSON files, shapefiles, or use coordinate pairs for map visualization.
 applies_to:
   stack: ga
   serverless: ga

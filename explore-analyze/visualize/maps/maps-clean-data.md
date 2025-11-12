@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-clean-your-data.html
+description: Troubleshoot and prepare geospatial data for Elasticsearch upload. Convert formats, fix invalid geometries, and address field restrictions before indexing.
 applies_to:
   stack: ga
   serverless: ga

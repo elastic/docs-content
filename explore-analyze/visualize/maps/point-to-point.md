@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/point-to-point.html
+description: Visualize connections between geographic locations with point-to-point layers. Display origin-destination relationships and directional flows on maps.
 applies_to:
   stack: ga
   serverless: ga

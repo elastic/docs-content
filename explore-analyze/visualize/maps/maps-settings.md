@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-settings.html
+description: Configure Maps display settings for auto-fit bounds, browser location, initial view, and tooltip behavior. Customize map interaction and default appearance.
 applies_to:
   stack: ga
   serverless: ga

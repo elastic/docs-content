@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/vega.html
+description: Build custom visualizations with Vega and Vega-Lite grammars for advanced use cases. Create scatter charts, sankey diagrams, and custom maps with Elasticsearch queries.
 applies_to:
   stack: ga
   serverless: ga

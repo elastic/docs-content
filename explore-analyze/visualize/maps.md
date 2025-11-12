@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps.html
   - https://www.elastic.co/guide/en/serverless/current/maps.html
   - https://www.elastic.co/guide/en/kibana/current/maps-visualizations.html
+description: Create geospatial visualizations in Kibana Maps with multi-layer mapping, animations, and GeoJSON uploads. Visualize location data with custom styling and dashboard embedding.
 applies_to:
   stack: ga
   serverless: ga

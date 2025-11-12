@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-text.html
+description: Add Markdown text panels to dashboards for context and instructions. Display formatted text, images, and links using GitHub-flavored Markdown syntax.
 applies_to:
   stack: ga
   serverless: ga

@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-present-workpad.html
+description: Present Canvas workpads with autoplay and fullscreen modes. Configure cycling intervals and presentation settings for dynamic data storytelling.
 applies_to:
   stack: ga
   serverless: ga

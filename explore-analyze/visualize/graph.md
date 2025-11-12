@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
+description: Explore relationships in Elasticsearch data with Kibana Graph. Discover connections between indexed terms to detect fraud patterns and power recommendation engines.
 applies_to:
   stack: ga
   serverless: unavailable

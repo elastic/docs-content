@@ -2,6 +2,7 @@
 navigation_title: Lens
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
+description: Build visualizations in Kibana with Lens drag-and-drop editor. Create charts, tables, and metrics without writing queries using intelligent field suggestions.
 applies_to:
   stack: ga
   serverless: ga

@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tutorial.html
+description: Step-by-step tutorial for creating Canvas workpads with ecommerce data. Learn to build sales monitoring dashboards with custom elements and data visualizations.
 applies_to:
   stack: ga
   serverless: ga

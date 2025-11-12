@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reverse-geocoding-tutorial.html
+description: Step-by-step tutorial for converting coordinates to human-readable location names with reverse geocoding. Enrich geospatial data with place names and addresses.
 applies_to:
   stack: ga
   serverless: ga

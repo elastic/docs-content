@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/terms-join.html
+description: Enrich map layers with terms joins to combine metrics from Elasticsearch with vector boundaries. Calculate and visualize aggregated statistics by region.
 applies_to:
   stack: ga
   serverless: ga

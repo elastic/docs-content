@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-panels.html
+description: Save panels to Visualize Library for reuse across dashboards or save locally. Configure panel options, manage sharing, and control visualization updates.
 applies_to:
   stack: ga
   serverless: ga

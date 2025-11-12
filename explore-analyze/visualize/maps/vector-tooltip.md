@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/vector-tooltip.html
+description: Configure tooltips for vector layers to display field values on hover. Customize tooltip content and formatting for better data exploration in Maps.
 applies_to:
   stack: ga
   serverless: ga

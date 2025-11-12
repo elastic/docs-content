@@ -2,6 +2,7 @@
 navigation_title: ES|QL
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
+description: Create visualizations with ES|QL queries from Discover or dashboards. Generate charts dynamically from query results with automatic visualization type suggestions.
 applies_to:
   stack: ga
   serverless: ga

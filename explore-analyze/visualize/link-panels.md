@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/dashboard-links.html
+description: Add link panels to dashboards for navigation between dashboards or external URLs. Carry time ranges, filters, and queries to maintain exploration context.
 applies_to:
   stack: ga
   serverless: ga

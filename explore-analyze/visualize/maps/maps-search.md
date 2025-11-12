@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-search.html
+description: Search and filter map data with queries and time ranges. Control data visibility across layers using global or layer-specific search parameters.
 applies_to:
   stack: ga
   serverless: ga

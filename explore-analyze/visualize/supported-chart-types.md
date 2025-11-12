@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/chart-types.html
+description: Compare visualization capabilities across Lens, TSVB, aggregation-based editors, Vega, and Timelion. Reference tables list supported chart types, features, and aggregations.
 applies_to:
   stack: ga
   serverless: ga

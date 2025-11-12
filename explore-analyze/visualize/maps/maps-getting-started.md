@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-getting-started.html
+description: Step-by-step tutorial for building Maps to compare metrics by country or region. Create multi-layer maps with styled data, labels, and dashboard integration.
 applies_to:
   stack: ga
   serverless: ga

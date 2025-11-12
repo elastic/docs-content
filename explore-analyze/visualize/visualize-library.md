@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/visualize-library.html
+description: Store and reuse visualizations in Kibana Visualize Library. Manage shared panels, annotation groups, and visualization assets across multiple dashboards.
 applies_to:
   stack: ga
   serverless: ga

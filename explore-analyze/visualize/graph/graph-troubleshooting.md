@@ -2,6 +2,7 @@
 navigation_title: Troubleshooting and limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-troubleshooting.html
+description: Troubleshooting guide for Graph API issues including missing results, slow performance, and noisy connections. Understand sampling strategies and limitations.
 applies_to:
   stack: ga
   serverless: unavailable

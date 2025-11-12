@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html
+description: Configure Maps connection to Elastic Maps Service for base maps and administrative boundaries. Set up custom tile servers or disable EMS connections.
 applies_to:
   stack: ga
   serverless: ga

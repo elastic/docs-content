@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-grid-aggregation.html
+description: Visualize data with grid aggregations in Maps using geohash, geotile, or geohex grids. Group documents into geographic buckets for density analysis.
 applies_to:
   stack: ga
   serverless: ga

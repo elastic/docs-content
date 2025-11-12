@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/legacy-editors.html
+description: Access legacy visualization editors including aggregation-based, TSVB, and Timelion. Available for existing panels; new visualizations should use Lens instead.
 applies_to:
   stack: ga
   serverless: ga

@@ -2,6 +2,7 @@
 navigation_title: Plot big data
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-aggregations.html
+description: Visualize large datasets in Maps with aggregations to avoid overwhelming networks. Plot document groups with calculated metrics for efficient data visualization.
 applies_to:
   stack: ga
   serverless: ga

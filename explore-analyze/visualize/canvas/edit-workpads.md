@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/edit-workpads.html
+description: Customize Canvas workpads with variables, format settings, and element styling. Create reusable patterns and apply consistent formatting across workpad components.
 applies_to:
   stack: ga
   serverless: ga

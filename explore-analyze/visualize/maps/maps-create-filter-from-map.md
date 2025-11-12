@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-create-filter-from-map.html
+description: Create filters from Maps by drawing shapes or selecting features. Focus analysis on specific geographic regions with interactive spatial filtering.
 applies_to:
   stack: ga
   serverless: ga

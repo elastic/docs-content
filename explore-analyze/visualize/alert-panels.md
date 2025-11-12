@@ -1,4 +1,5 @@
 ---
+description: Display Observability or Security alerts in dashboard panels filtered by rule tags and types. View alert details, track status, and take actions directly from dashboards.
 applies_to:
   stack: ga 9.1
   serverless: ga

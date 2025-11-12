@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/tile-layer.html
+description: Add tile layers to Maps for base map backgrounds and overlays. Configure Elastic Maps Service, custom tile servers, and Web Map Services.
 applies_to:
   stack: ga
   serverless: ga

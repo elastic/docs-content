@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-configuration.html
+description: Configure Graph workspace settings for data views, fields, colors, icons, and data storage. Control how graph visualizations are saved and displayed.
 applies_to:
   stack: ga
   serverless: unavailable
