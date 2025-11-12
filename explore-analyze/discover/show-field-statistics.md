@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Examine field distributions and value ranges with Discover's Field statistics view. Identify data quality issues, understand cardinality, and create visualizations from field data.
 ---
 
 # View field statistics [show-field-statistics]

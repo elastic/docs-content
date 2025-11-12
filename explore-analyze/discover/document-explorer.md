@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Customize data exploration with Discover's table controls: arrange columns, adjust density and row height, control sample size, sort by multiple fields, and filter documents.
 ---
 
 # Customize the Discover view [document-explorer]

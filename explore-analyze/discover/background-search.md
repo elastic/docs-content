@@ -7,7 +7,7 @@ applies_to:
   serverless: unavailable
 products:
   - id: kibana
-description: Send your long-running queries to run in the background with background searches and search sessions, and focus on your other tasks while they complete.
+description: Execute long-running searches with background search in Discover and Dashboards when analyzing large datasets. Continue exploring while queries complete, then review results.
 ---
 
 # Run Discover and Dashboards queries in the background

@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Explore Elasticsearch data with Discover: select data views, filter and search documents, analyze field values, add runtime fields, and visualize findings to understand patterns.
 ---
 
 # Explore fields and data with Discover [discover-get-started]

@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Sort Discover results with relevance scoring to surface documents that best match search queries. Focus exploration on the most pertinent results for faster data insights.
 ---
 
 # Search for relevance [discover-search-for-relevance]

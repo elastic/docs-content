@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Query Elasticsearch data with ES|QL in Discover to explore any indices without predefining data views. Filter, aggregate, sort results, and build dynamic visualizations.
 ---
 
 # Using ES|QL [try-esql]

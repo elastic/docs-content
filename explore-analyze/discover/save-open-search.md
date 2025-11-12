@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Preserve exploration work with saved Discover sessions that store queries, filters, column selections, and data views. Reuse explorations, share with teams, or add to dashboards.
 ---
 
 # Discover sessions: Save a search for reuse [save-open-search]

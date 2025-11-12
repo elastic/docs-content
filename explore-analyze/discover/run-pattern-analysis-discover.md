@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Detect patterns in unstructured logs with Discover's pattern analysis. Categorize log messages, identify common structures, and filter out noise during troubleshooting.
 ---
 
 # Run a pattern analysis on your log data [run-pattern-analysis-discover]
