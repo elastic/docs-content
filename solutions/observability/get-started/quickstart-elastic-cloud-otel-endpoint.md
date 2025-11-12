@@ -6,8 +6,7 @@ applies_to:
   serverless: ga
   self: unavailable
   deployment:
-    ess: preview
-  stack: preview 9.2
+    ess:
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
