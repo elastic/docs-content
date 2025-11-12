@@ -37,6 +37,7 @@ Models from third-party LLM providers.
 | Google Gemini    | **Gemini 2.5 Flash**    | Excellent | Good | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Great | Excellent | Excellent | Excellent | Great | Good | Excellent |
 | OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Good | Excellent |
+| OpenAI    | **GPT-5**           | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Good | Excellent |
 
 
 ## Open-source models [_open_source_models]
@@ -51,7 +52,11 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DeepSeek | **DeepSeek-V3.1** | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent |
+| Google DeepMind    | **Gemma-3-27b-it**    | Excellent | Good | Great | Great | Excellent | Good | Great | Excellent |
+| OpenAI | **gpt-oss-20b** | Poor | Poor | Great | Poor | Good | Poor | Good | Good |
+| OpenAI | **gpt-oss-120b** | Excellent | Poor | Great | Great | Excellent | Good | Good | Excellent |
 | Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
+| Meta | **Llama-4-Maverick-17B-128E-Instruct** | Great | Good | Great | Excellent | Excellent | Good | Good | Great |
 | Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Good | Good | Excellent |
 | Alibaba Cloud | **Qwen2.5-72b-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
 
