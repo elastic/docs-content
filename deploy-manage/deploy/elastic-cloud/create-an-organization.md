@@ -47,7 +47,7 @@ For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
 * [{{es}}](../../../solutions/search.md)
 * [Observability](../../../solutions/observability.md)
-* [Security](../../../solutions/security/elastic-security-serverless.md)
+* [Security](../../../solutions/security.md)
 
 When you create a project, you select the project type applicable to your use case, so only the relevant and impactful applications and features are easily accessible to you.
 

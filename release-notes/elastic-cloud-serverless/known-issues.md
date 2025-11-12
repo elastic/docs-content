@@ -16,6 +16,22 @@ Known issues are significant defects or limitations that may impact your impleme
 
 ## Active
 
+
+
+::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1
+
+**Details**
+
+On October 22, 2025, it was discovered that alerts aren't generated for rules that have **Alert flapping detection** turned off and the alert delay set to a value higher than 1.
+
+**Workaround**
+
+Set the alert delay value to 1 or turn on **Alert flapping detection**.
+
+::::
+
+## Resolved
+
 :::{dropdown} Entity store transform is unavailable 
 
 **Details**
@@ -28,6 +44,10 @@ Restart the entity store:
 1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Entity Store** page, turn the toggle off.
 3. Turn the toggle back on.
+
+**Resolved** 
+
+This was resolved on November 4, 2025.
 
 ::::
 
@@ -48,21 +68,14 @@ Two workarounds are available:
     3. Your agent-based integration deployments will work as expected.
 2. Use agentless deployment. 
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
-::::
 
-::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1
 
-**Details**
+**Resolved** 
 
-On October 22, 2025, it was discovered that alerts aren't generated for rules that have **Alert flapping detection** turned off and the alert delay set to a value higher than 1.
-
-**Workaround**
-
-Set the alert delay value to 1 or turn on **Alert flapping detection**.
+This was resolved on November 5, 2025.
 
 ::::
 
-## Resolved
 
 :::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents
 
