@@ -16,6 +16,51 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Entity store transform is unavailable 
+
+Applies to: 9.2.0
+
+**Impact**
+
+A new feature introduced to the entity store in 9.2.0 caused the transform to scan for nonexistent indices.
+
+**Workaround** 
+
+Restart the entity store:
+1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Entity Store** page, turn the toggle off.
+3. Turn the toggle back on.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.1
+
+::::
+
+:::{dropdown} CSPM and Asset Management integrations don't ingest data when deployed using agent-based technology if {{kib}} is hosted on AWS
+Applies to: ECH 9.2.0 deployments hosted on AWS
+
+**Impact**
+
+If your ECH deployment is hosted on AWS, new Cloud Security Posture Management (CSPM) and Asset Inventory integrations will fail to produce findings when deployed using agent-based deployment. ECH deployments hosted on GCP or Azure are not affected. Integrations that use agentless deployment are not affected. 
+
+**Workaround** 
+
+Two workarounds are available:
+
+1. Turn off the **Enable Cloud Connector** advanced setting. 
+    1. Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    2. In the **Security Solution** section, turn off the **Enable Cloud Connector** option.
+    3. Your agent-based integration deployments will work as expected.
+2. Use agentless deployment. 
+    1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.1
+
+::::
+
 
 ::::{dropdown} Filters may not apply correctly on the Alerts page
 Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3 

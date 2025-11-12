@@ -4,13 +4,9 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # {{agent-builder}}: Agents
 
@@ -125,4 +121,4 @@ For an overview, refer to [Agents API](kibana-api.md#agents).
 
 ### Serverless API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).

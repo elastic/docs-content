@@ -276,7 +276,7 @@ subs:
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
   es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
-  eck_helm_minimum_version: "3.2.0"
+  eck_helm_minimum_version: 3.2.0
   eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   eck_resources_list_short: "APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   heroku: "Elasticsearch Add-on for Heroku"
@@ -296,5 +296,7 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.9.1
+  kube-stack-version: 0.10.5
+  ece-docker-images-8: 8.18.8
+  ece-docker-images-9: 9.0.8
 

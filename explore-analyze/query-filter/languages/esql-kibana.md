@@ -224,6 +224,32 @@ FROM kibana_sample_data_logs
 | WHERE timestamp > NOW() - 15minutes
 ```
 
+
+### Create controls with {{esql}} variables [add-variable-control]
+
+{{esql}} variables help you add interactive controls to your queries and make them more dynamic.
+
+They're available for:
+* [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
+* [{{esql}} visualizations in dashboards](/explore-analyze/dashboards/add-controls.md#add-variable-control)
+
+:::{include} ../../_snippets/variable-control-procedure.md
+:::
+
+:::{include} ../../_snippets/variable-control-examples.md
+:::
+
+% Link from the product
+#### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+:::{include} ../../_snippets/multi-value-esql-controls.md
+:::
+
+
 ### LOOKUP JOINs
 
 The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.

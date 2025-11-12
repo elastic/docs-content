@@ -26,12 +26,8 @@ From within {{ech}}, you can restore a snapshot from a different deployment in t
 
 ## Prerequisites for {{ech}}
 
-To use Kibana's Snapshot and Restore feature, you must have the following permissions:
-
-- Cluster privileges: `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-- Index privilege: `all` on the monitor index
-
-To register a snapshot repository, the cluster’s global metadata must be writable. Ensure there aren’t any cluster blocks that prevent write access.
+:::{include} _snippets/restore-snapshot-common-prerequisites.md
+:::
 
 ## Considerations
 

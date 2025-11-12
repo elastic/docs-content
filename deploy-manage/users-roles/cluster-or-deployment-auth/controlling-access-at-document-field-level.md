@@ -5,11 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/field-level-security.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
+  serverless: all
 products:
   - id: elasticsearch
 ---
