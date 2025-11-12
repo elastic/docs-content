@@ -43,7 +43,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 
 **Collected metrics and data in AutoOps for self-managed clusters**
-* [Where are metrics stored in AutoOps for self-managed clusters?](#autoops-metrics-storage)
+* [Where are metrics stored in AutoOps for self-managed clusters?](#sm-autoops-metrics-storage)
 * [What information does {{agent}} gather from my cluster?](#extracted-info)
 * [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
 * [Can I view the data gathered by {{agent}}?](#data-viewing-config)
@@ -117,7 +117,7 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 
 ### Collected metrics and data in AutoOps for self-managed clusters
 
-$$$autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for self-managed clusters?**
+$$$sm-autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for self-managed clusters?**
 :   You can choose where to store your metrics from the following AWS regions:
 
     :::{include} ../_snippets/autoops-cc-regions.md

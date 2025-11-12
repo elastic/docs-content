@@ -76,11 +76,6 @@ Learn how to [access](/deploy-manage/monitor/autoops/access-autoops-for-serverle
 
 ## AutoOps for self-managed clusters regions
 
-You can also use AutoOps with your ECE ({{ece}}), ECK ({{eck}}), or self-managed clusters through [Cloud Connect](/deploy-manage/cloud-connect.md). 
-
-This service is currently available in the following regions for AWS:
-
-:::{include} ../_snippets/autoops-cc-regions.md
-:::
+AutoOps for ECE ({{ece}}), ECK ({{eck}}), or self-managed clusters is available through [Cloud Connect](/deploy-manage/cloud-connect.md) in all regions. 
 
 Learn how to [set up](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) AutoOps in your ECE, ECK, or self-managed cluster.
