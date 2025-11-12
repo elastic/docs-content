@@ -117,6 +117,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
         ```
 
     4. Make sure that **Validate the Static Code Requirement** is selected.
+    5. Under **APP or SERVICE**, select `SystemPolicyAllFiles` and set it to `Allow`.
 
 3. Add a second entry with the following details:
 
@@ -129,6 +130,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
         ```
 
     4. Make sure that **Validate the Static Code Requirement** is selected.
+    5. Under **APP or SERVICE**, select `SystemPolicyAllFiles` and set it to `Allow`.
 
 4. Add a third entry with the following details:
 
@@ -141,6 +143,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
         ```
 
     4. Make sure that **Validate the Static Code Requirement** is selected.
+    5. Under **APP or SERVICE**, select `SystemPolicyAllFiles` and set it to `Allow`.
 
 5. Save the configuration.
 
