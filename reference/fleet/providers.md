@@ -76,12 +76,12 @@ Context providers use the {{product.ecs}} naming to ensure consistency and under
 
 {{agent}} supports the following context providers:
 
-* [Local](/reference/fleet/local-provider.md)
-* [Agent Provider](/reference/fleet/agent-provider.md)
-* [Host Provider](/reference/fleet/host-provider.md)
-* [Env Provider](/reference/fleet/env-provider.md)
-* [Kubernetes Secrets Provider](/reference/fleet/kubernetes_secrets-provider.md)
-* [Kubernetes Leader Election Provider](/reference/fleet/kubernetes_leaderelection-provider.md)
+* [Local provider](/reference/fleet/local-provider.md)
+* [Agent provider](/reference/fleet/agent-provider.md)
+* [Host provider](/reference/fleet/host-provider.md)
+* [Env provider](/reference/fleet/env-provider.md)
+* [Kubernetes Secrets provider](/reference/fleet/kubernetes_secrets-provider.md)
+* [Kubernetes LeaderElection provider](/reference/fleet/kubernetes_leaderelection-provider.md)
 
 
 ### Dynamic Providers [dynamic-providers]
@@ -90,9 +90,9 @@ Dynamic providers give an array of multiple key-value mappings. Each key-value m
 
 {{agent}} supports the following context providers:
 
-* [Local Dynamic Provider](/reference/fleet/local-dynamic-provider.md)
-* [Docker Provider](/reference/fleet/docker-provider.md)
-* [Kubernetes Provider](/reference/fleet/kubernetes-provider.md)
+* [Local dynamic provider](/reference/fleet/local-dynamic-provider.md)
+* [Docker provider](/reference/fleet/docker-provider.md)
+* [Kubernetes provider](/reference/fleet/kubernetes-provider.md)
 
 
 ### Disabling Providers By Default [disable-providers-by-default]

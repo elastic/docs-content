@@ -8,7 +8,7 @@ products:
   - id: elastic-agent
 ---
 
-# Docker Provider [docker-provider]
+# Docker provider [docker-provider]
 
 Provides inventory information from Docker. The available dynamic variables are:
 

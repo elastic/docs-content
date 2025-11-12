@@ -8,7 +8,7 @@ products:
   - id: elastic-agent
 ---
 
-# Kubernetes Provider [kubernetes-provider]
+# Kubernetes provider [kubernetes-provider]
 
 Provides inventory information from Kubernetes.
 

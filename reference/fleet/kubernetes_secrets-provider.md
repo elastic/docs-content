@@ -8,7 +8,7 @@ products:
   - id: elastic-agent
 ---
 
-# Kubernetes Secrets Provider [kubernetes_secrets-provider]
+# Kubernetes Secrets provider [kubernetes_secrets-provider]
 
 Provides access to the Kubernetes Secrets API.
 

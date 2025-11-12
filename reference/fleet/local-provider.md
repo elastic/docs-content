@@ -8,7 +8,7 @@ products:
   - id: elastic-agent
 ---
 
-# Local [local-provider]
+# Local provider [local-provider]
 
 Provides custom keys to use as variables. For example:
 

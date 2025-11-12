@@ -8,7 +8,7 @@ products:
   - id: elastic-agent
 ---
 
-# Env Provider [env-provider]
+# Env provider [env-provider]
 
 Provides access to the environment variables as key-value pairs.
 
