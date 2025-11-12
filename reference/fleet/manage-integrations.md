@@ -43,7 +43,8 @@ You can perform a variety of actions in the **Integrations** app in {{kib}}. Som
 | [Install and uninstall integration assets](/reference/fleet/install-uninstall-integration-assets.md) | Install, uninstall, and reinstall integration assets in {{kib}}. |
 | [View integration assets](/reference/fleet/view-integration-assets.md) | View the {{kib}} assets installed for a specific integration. |
 | [Upgrade an integration](/reference/fleet/upgrade-integration.md) | Upgrade an integration to the latest version. |
+| [Roll back an integration](/reference/fleet/roll-back-integration.md) {applies_to}`stack: ga 9.3` | Roll back an integration to the previously installed version if issues occur after an upgrade. |
 
 ## Customize integrations [customize-integrations]
 
-After you've started using integrations to ingest data, you can customize how the data is managed over time. Refer to [Index lifecycle management](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.
+After you've started using integrations to ingest data, you can customize how the data is managed over time. Refer to [{{ilm-cap}}](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.

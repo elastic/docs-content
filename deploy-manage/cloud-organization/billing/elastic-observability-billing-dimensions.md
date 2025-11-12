@@ -22,7 +22,7 @@ Your monthly bill is based on the capabilities you use. When you use {{obs-serve
 
 Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before {{es}} compression is performed, and will be higher than the volumes traditionally reported by {{es}} index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into {{es}}. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through Elastic Agent, Logstash, OpenTelemetry, or collectors — with no impact on the cost.
 
-Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates.
+Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates, or you can create a [Serverless estimate](https://cloud.elastic.co/pricing/serverless?s=observability).
 
 ## Synthetics [synthetics-billing]
 

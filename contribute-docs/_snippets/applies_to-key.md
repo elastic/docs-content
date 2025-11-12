@@ -1,7 +1,7 @@
 `applies_to` accepts the following keys in this structure.
 
 * `serverless`: Applies to [Elastic Cloud Serverless](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/serverless).
-  * `security`: Applies to Serverless [security projects](https://www.elastic.co/docs/solutions/security/get-started/create-security-project).
+  * `security`: Applies to Serverless [security projects](https://www.elastic.co/docs/solutions/security/get-started#create-sec-serverless-project).
   * `elasticsearch`: Applies to Serverless [search projects](https://www.elastic.co/docs/solutions/search/serverless-elasticsearch-get-started).
   * `observability`: Applies to Serverless [observability projects](https://www.elastic.co/docs/solutions/observability/get-started).
 * `stack`: Applies to the [Elastic Stack](https://www.elastic.co/docs/get-started/the-stack) including any Elastic Stack components.

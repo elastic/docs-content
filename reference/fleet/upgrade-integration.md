@@ -2,6 +2,9 @@
 navigation_title: Upgrade an integration
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -48,6 +51,10 @@ In larger deployments, you should test integration upgrades on a sample {{agent}
 You must upgrade standalone agents separately. If you used {{kib}} to create and download your standalone agent policy, see [Upgrade standalone agent policies after upgrading an integration](/reference/fleet/create-standalone-agent-policy.md#update-standalone-policies).
 ::::
 
+::::{tip}
+:applies_to: stack: ga 9.3
+If you encounter issues after upgrading an integration and your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **integration rollback**, you can [roll back the integration to the previously installed version](/reference/fleet/roll-back-integration.md).
+::::
 
 
 ## Keep integration policies up to date automatically [upgrade-integration-policies-automatically]

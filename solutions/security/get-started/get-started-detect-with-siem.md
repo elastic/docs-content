@@ -15,7 +15,7 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 
 ## Prerequisites 
 
-* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [{{sec-serverless}}](/solutions/security/get-started.md#create-sec-serverless-project) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
 * If you're using the recommended integration in this guide, {{elastic-defend}}, then: 
   * Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}. 
   * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). At the least, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 

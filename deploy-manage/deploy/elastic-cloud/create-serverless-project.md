@@ -19,5 +19,5 @@ Choose the type of project that matches your needs and we’ll help you get star
 |  |  |
 | ![elasticsearch](../../images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =50%") | **Elasticsearch**<br> Build custom search applications with {{es}}.<br><br>[**View guide →**](/solutions/search/get-started.md)<br> |
 | ![observability](../../images/64x64_Color_observability-logo-color-64px.png "observability =50%") | **Observability**<br> Monitor applications and systems with Elastic Observability.<br><br>[**View guide →**](/solutions/observability/get-started.md)<br> |
-| ![security](../../images/64x64_Color_security-logo-color-64px.png "security =50%") | **Security**<br> Detect, investigate, and respond to threats with Elastic Security.<br><br>[**View guide →**](/solutions/security/get-started/create-security-project.md)<br> |
+| ![security](../../images/64x64_Color_security-logo-color-64px.png "security =50%") | **Security**<br> Detect, investigate, and respond to threats with Elastic Security.<br><br>[**View guide →**](/solutions/security/get-started.md#create-sec-serverless-project)<br> |
 |  |  |

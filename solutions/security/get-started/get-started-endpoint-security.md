@@ -15,7 +15,7 @@ In this guide, you’ll learn how to use {{elastic-sec}} to protect your hosts f
 
 ## Prerequisites 
 
-* You can follow this guide using any deployment. To get up and running quickly, we recommend [](/solutions/security/elastic-security-serverless.md) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
+* You can follow this guide using any deployment. To get up and running quickly, we recommend [{{sec-serverless}}](/solutions/security/get-started.md#create-sec-serverless-project) with the **Security Analytics Complete** [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features). For a complete list of deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
 * Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}.  
 * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).  We recommend granting them all, but you need at least `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
 

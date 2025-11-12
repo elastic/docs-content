@@ -236,4 +236,4 @@ You can confirm that the desired `superduperuser` role is applied to your `admin
 curl -X GET -sk -u "admin:changeme" "https://localhost:9200/_security/_authenticate?pretty=true" 
 ```
 
-Now that you have regained recovery access to the cluster, you can investigate and recover the {{stack}} {{security-features}} as needed.
+Now that you have regained recovery access to the cluster, you can investigate and recover the {{stack}} {{security-features}} as needed. For more information, refer to [Restore a feature state](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-feature-state).
