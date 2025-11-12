@@ -37,7 +37,7 @@ These keys provides access to the API that enables you to manage your deployment
     When an API key is nearing expiration, Elastic sends an email to the creator of the API key and each of the operational contacts. When you use an API key to authenticate, the API response header `X-Elastic-Api-Key-Expiration` indicates the key’s expiration date. You can log this value to detect API keys that are nearing expiration.
     ::::
 
-6. Click **Create API key**, copy the generated API key, and store it in a safe place. You can also download the key as a CSV file.
+5. Click **Create API key**, copy the generated API key, and store it in a safe place. You can also download the key as a CSV file.
 
 The API key needs to be supplied in the `Authorization` header of a request, in the following format:
 
