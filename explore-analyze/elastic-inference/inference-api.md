@@ -169,7 +169,7 @@ You can configure the `recursive` strategy using either:
 
 ##### Predefined separator groups [separator-groups]
 
-Predefined separator groups provide optimized patterns for common text formats: [`plaintext`](#plaintext) for simple line-structured text without markup, and [`markdown`](#markdown) for Markdown-formatted content.
+Predefined separator groups provide optimized patterns for common text formats: [`plaintext`](#plaintext) works for simple line-structured text without markup, and [`markdown`](#markdown) works for Markdown-formatted content.
 
 ###### `plaintext`
 
