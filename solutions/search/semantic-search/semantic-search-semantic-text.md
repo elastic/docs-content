@@ -171,7 +171,7 @@ PUT semantic-embeddings-flat
 }
 ```
 
-1. Use disk-optimized BBQ for simpler use cases with fewer vectors. This requires less compute resources during indexing.
+1. Use BBQ without HNSW for smaller datasets. This uses brute-force search and requires less compute resources during indexing but more during querying.
 
 For very large datasets where RAM is constrained, use `bbq_disk` (DiskBBQ) to minimize memory usage:
 
@@ -222,7 +222,7 @@ PUT semantic-embeddings-int8
 }
 ```
 
-1. Use 8-bit integer quantization for 4x memory reduction with high accuracy retention. For 4-bit quantization, use `"type": "int4_hnsw"` instead, which provides 8x memory reduction. For the full list of other available quantization options (including `int4_flat` and others), refer to the [`dense_vector` `index_options` documentation](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
+1. Use 8-bit integer quantization for 4x memory reduction with high accuracy retention. For 4-bit quantization, use `"type": "int4_hnsw"` instead, which provides up to 8x memory reduction. For the full list of other available quantization options (including `int4_flat` and others), refer to the [`dense_vector` `index_options` documentation](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options).
 
 For HNSW-specific tuning parameters like `m` and `ef_construction`, you can include them in the `index_options`:
 
@@ -247,7 +247,7 @@ PUT semantic-embeddings-custom
 }
 ```
 
-1. Number of bidirectional links per node in the HNSW graph. Higher values improve recall but increase memory usage. Default is 16.
+1. The number of neighbors each node will be connected to in the HNSW graph. Higher values improve recall but increase memory usage. Default is 16.
 2. Number of candidates considered during graph construction. Higher values improve index quality but slow down indexing. Default is 100.
 
 ::::{note}
