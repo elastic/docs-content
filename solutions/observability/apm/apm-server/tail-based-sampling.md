@@ -180,6 +180,14 @@ This metric tracks the total number of events dropped by the tail-based sampler.
 
 This is a counter metric so, should be visualized with `counter_rate`.
 
+### `apm-server.sampling.tail.events.failed_writes` [sampling-tail-monitoring-events-failed-writes-ref]
+
+This metric tracks the total number of events that failed to be written to the tail-based sampling storage. Failed writes typically occur when the storage limit is reached or when there are issues with the local sampling database.
+
+The value of this metric should be 0 if tail-based sampling is functioning properly. If it is consistently increasing, check for misconfigured [storage limit](#sampling-tail-storage_limit-ref).
+
+This is a counter metric so, should be visualized with `counter_rate`.
+
 ### `apm-server.sampling.tail.storage.lsm_size` [sampling-tail-monitoring-storage-lsm-size-ref]
 
 This metric tracks the storage size of the log-structured merge trees used by the tail-based sampling database in bytes. Starting in version 9.0.0, this metric is effectively equal to the total storage size used by the database. This is the most crucial metric to track storage requirements for tail-based sampler, especially for big deployments with large distributed traces. Deployments using tail-based sampling extensively should set up alerts and monitoring on this metric.
