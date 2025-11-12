@@ -27,6 +27,23 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.2.1 [elastic-security-9.2.1-release-notes]
+
+### Features and enhancements [elastic-security-9.2.1-features-enhancements]
+
+* Improves the startup log in {{elastic-defend}} to explain the details of unsigned policy.
+* Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+
+### Fixes [elastic-security-9.2.1-fixes]
+* Fixes an issue where the CSPM and Asset Discovery integrations failed to collect data when using agent-based deployment [#241390]({{kib-pull}}241390).
+* Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
+* Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
+* Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
+* Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* Fixes an {{elastic-defend}} issue that could cause the `get-file` and `execute` response actions to fail after many were issued with a single running instance of {{elastic-defend}}
+* Improves {{elastic-defend}} detection of file rename operations on Windows when performed over Server Message Block (SMB).
+* Fixes an {{elastic-defend}} issue on Windows where the `code_signature.thumbprint_sha256` field was missing under process and DLL events for certain event types.
+
 
 ## 9.2.0 [elastic-security-9.2.0-release-notes]
 
@@ -121,6 +138,29 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue to improve reliability of health status reporting between {{elastic-endpoint}} and {{agent}}.
 * Fixes a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count`, and `process.args`, leading to false positives.
 * Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
+* Fixes CVE-2025-37735 ([ESA-2025-23](https://discuss.elastic.co/t/elastic-defend-8-19-6-9-1-6-and-9-2-0-security-update-esa-2025-23/383272)) in {{elastic-defend}} on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
+
+
+## 9.1.7 [elastic-security-9.1.7-release-notes]
+
+### Features and enhancements [elastic-security-9.1.7-features-enhancements]
+* Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions [#238547]({{kib-pull}}238547).
+* Adds more {{elastic-defend}} options to the {{ls}} output, allowing for finer control.
+* Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
+
+
+### Fixes [elastic-security-9.1.7-fixes]
+* Fixes entity flyout **Risk contributions** tab link [#241153]({{kib-pull}}241153).
+* Fixes a pagination issue with the data table on the **Indicators** page [#241108]({{kib-pull}}241108).
+* Fixes a react-query key collision that occurred when two different integration lookups shared the same key, which could cause errors when navigating between pages [#240517]({{kib-pull}}240517).
+* Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
+* Fixes an issue where rule exception operators could not be cleared when editing a rule exception [#236051]({{kib-pull}}236051).
+* Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within malware protection to avoid invalid watchdog firings.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
+* Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
+* Fixes CVE-2025-37735 ([ESA-2025-23](https://discuss.elastic.co/t/elastic-defend-8-19-6-9-1-6-and-9-2-0-security-update-esa-2025-23/383272)) in {{elastic-defend}} on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
+* Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
+* Fixes an {{elastic-defend}} issue that could cause the `get-file` and `execute` response actions to fail after many were issued with a single running instance of {{elastic-defend}}.
 
 
 ## 9.1.6 [elastic-security-9.1.6-release-notes]

@@ -3,10 +3,10 @@ description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send lo
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
-  serverless:
+  serverless: ga
   deployment:
-    ess:
-  stack: preview 9.2
+    ess: preview
+    self: unavailable
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted

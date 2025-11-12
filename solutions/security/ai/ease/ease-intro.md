@@ -48,7 +48,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
 To create an EASE project:
 
-1. [Create](/solutions/security/get-started/create-security-project.md) an {{sec-serverless}} project, and on the **Confirm your project settings** page, select **Elastic AI SOC Engine**. 
+1. [Create](/solutions/security/get-started.md#create-sec-serverless-project) an {{sec-serverless}} project, and on the **Confirm your project settings** page, select **Elastic AI SOC Engine**. 
 
    :::{image} /solutions/images/security-ease-create-ease-project.png
    :alt: The Confirm your project settings page
