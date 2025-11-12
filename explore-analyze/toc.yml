@@ -203,7 +203,7 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
-          - file: visualize/charts/metric-charts.md
+          - hidden: visualize/charts/metric-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
