@@ -18,6 +18,8 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
 
 * Add your own [load balancer](./ece-load-balancers.md). Load balancers are user supplied and we do not currently provide configuration steps for you.
 
+* Configure [ECE system deployments](./system-deployments-configuration.md) to ensure a highly available and resilient setup.
+
 * In production systems, add your own [Cloud UI and Proxy certificates](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) to enable secure connections over HTTPS. The proxy certificate must be a wildcard certificate signed for the needed DNS records of your domain.
 
   ::::{note}
@@ -43,6 +45,8 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
   :::{{note}}
   Encryption-at-rest is not implemented out of the box in {{ece}}. [Learn more](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md#ece_encryption).
   :::
+
+* Set up [traffic filters](/deploy-manage/security/network-security.md) to restrict traffic to your deployment to only trusted IP addresses or VPCs.
 
 * Learn about common maintenance activities—such as adding capacity, applying OS patches, and addressing host failures--at [](../../maintenance/ece.md).
 
