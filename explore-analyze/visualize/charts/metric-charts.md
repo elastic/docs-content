@@ -14,7 +14,7 @@ They work with any numeric data: plain numbers, percentages, or calculations lik
 
 The best way to create metric charts in {{kib}} is with **Lens**.
 
-![Metric chart representing an SLO](../../images/metric-chart.png "=30%")
+![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
 ## Build a metric chart
 
@@ -48,7 +48,7 @@ Refer to [](#settings) to find all data configuration options for your metric ch
 ::::{step} Customize the chart with best practices
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
-**Use color wisely** {applies_to}`stack: preview 9.1, ga 9.3`
+**Use color wisely**
 :   Assign colors that match your users' expectations. Red typically means problems, yellow means caution, and green means good. But consider your specific context: for costs, lower might be better (green), while for revenue, higher is better (green).
 
 **Format for readability**
@@ -111,7 +111,7 @@ To add trend indicators to your metric visualization:
    
      When you select this option, the secondary metric is automatically updated:
 
-       * The secondary metric label changes to **Difference**. You can change this by editing the **Prefix** option of the metric.
+       * The secondary metric label changes to **Difference**. You can edit this label.
        * If you chose a **Display** option that shows a value, the secondary metric value is automatically updated to show the difference compared to the primary metric.
 
 8. Apply your changes. 
@@ -252,11 +252,11 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Successful requests (2xx)"
     * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
       * **Value format**: `Percent`
-      * **Color by value**: Green when above 95%, yellow between 75% and 95%, red when below
+      * **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
       * **Supporting visualization:** "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
-      * **Name**: `Target:`
       * **Value format**: `Percent`
+      * **Label**: Custom, set to `Target:`
 
     ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
@@ -266,7 +266,7 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Successful requests (2xx)"
     * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
       * **Value format**: `Percent`
-      * **Color by value**: Green when above 95%, yellow between 75% and 95%, red when below
+      * **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
       * **Supporting visualization:** "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Name**: `Target:`
@@ -281,13 +281,12 @@ The following examples show various configuration options that you can use for b
 :   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
 
     * **Title**: "Weekly page views"
-    * **Subtitle**: "This week"
     * **Primary metric**: `count()` (current week's page views)
     * **Secondary metric**: `count(shift='1w')` (previous week's page views)
       * **Color by value**: Dynamic coloring
       * **Compare to**: Primary metric
       * **Display**: Both icon and value
-      * **Label**: "Compared to last week"
+      * **Label**: "Compared to previous week"
       * **Color palette**: Green for increases (more traffic is positive)
 
     ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
