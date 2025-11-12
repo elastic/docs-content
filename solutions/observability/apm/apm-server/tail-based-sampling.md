@@ -188,6 +188,18 @@ The value of this metric should be 0 if tail-based sampling is functioning prope
 
 This is a counter metric so, should be visualized with `counter_rate`.
 
+### `apm-server.sampling.tail.events.sampled` [sampling-tail-monitoring-events-sampled-ref]
+
+This metric tracks the total number of events that were sampled (kept) by the tail-based sampler after applying the configured policies and were selected for indexing. This includes all events that belong to traces that matched tail-based sampling policies.
+
+This is a counter metric so, should be visualized with `counter_rate`.
+
+### `apm-server.sampling.tail.events.head_unsampled` [sampling-tail-monitoring-events-head-unsampled-ref]
+
+This metric tracks the total number of events that were already unsampled by head-based sampling before reaching the tail-based sampler. These events are processed by the tail-based sampler but are not stored or indexed because they were already filtered out by head-based sampling decisions.
+
+This is a counter metric so, should be visualized with `counter_rate`.
+
 ### `apm-server.sampling.tail.storage.lsm_size` [sampling-tail-monitoring-storage-lsm-size-ref]
 
 This metric tracks the storage size of the log-structured merge trees used by the tail-based sampling database in bytes. Starting in version 9.0.0, this metric is effectively equal to the total storage size used by the database. This is the most crucial metric to track storage requirements for tail-based sampler, especially for big deployments with large distributed traces. Deployments using tail-based sampling extensively should set up alerts and monitoring on this metric.
