@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-web-server-data.html
+description: Step-by-step tutorial for building log monitoring dashboards with web server data, covering metrics, traffic analysis, and common Lens visualization patterns.
 applies_to:
   stack: ga
   serverless: ga

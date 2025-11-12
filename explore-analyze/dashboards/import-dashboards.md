@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_import_dashboards.html
+description: Import dashboards with related objects from saved object files. Configure import behavior for data views, visualizations, and handle object conflicts during migration.
 applies_to:
   stack: ga
   serverless: ga

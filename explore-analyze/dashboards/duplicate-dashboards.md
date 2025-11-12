@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/duplicate-dashboards.html
+description: Duplicate dashboards to create copies with identical panels and configurations. Modify duplicates independently while preserving original dashboard settings.
 applies_to:
   stack: ga
   serverless: ga

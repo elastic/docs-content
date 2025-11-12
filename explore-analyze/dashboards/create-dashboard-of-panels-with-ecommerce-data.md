@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-ecommerce-data.html
+description: Step-by-step tutorial for building a time series dashboard with e-commerce data, including custom intervals, percentiles, and multi-layer visualizations.
 applies_to:
   stack: ga
   serverless: ga

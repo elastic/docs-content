@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/arrange-panels.html
+description: Organize dashboard panels with collapsible sections, resize layouts, and reposition visualizations. Improve readability and load performance with structured arrangements.
 applies_to:
   stack: ga
   serverless: ga

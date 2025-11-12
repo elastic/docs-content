@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/drilldowns.html
+description: Create interactive drilldowns in dashboards to navigate between dashboards, external URLs, or Discover. Maintain context with filters and time ranges during exploration.
 applies_to:
   stack: ga
   serverless: ga

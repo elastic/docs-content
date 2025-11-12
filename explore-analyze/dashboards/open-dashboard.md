@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
+description: Edit dashboard content, settings, and layout with Edit mode. Adjust panels, controls, and configurations to maintain and update visualizations for viewers.
 applies_to:
   stack: ga
   serverless: ga

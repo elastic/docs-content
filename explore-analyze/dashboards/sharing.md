@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
+description: Share dashboards with links, reports, or exports. Generate shareable URLs with current filters and time ranges, or export dashboard configurations as NDJSON.
 applies_to:
   stack: ga
   serverless: ga

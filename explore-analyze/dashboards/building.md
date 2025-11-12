@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboards.html
+description: Build dashboards in Kibana with visualizations, charts, maps, and controls to track key metrics and enable data exploration across Elasticsearch data.
 applies_to:
   stack: ga
   serverless: ga

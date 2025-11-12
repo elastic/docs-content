@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_manage_dashboards.html
+description: Manage Kibana dashboards by searching, filtering by tags and creators, and tracking favorites to monitor usage statistics and organize collections.
 applies_to:
   stack: ga
   serverless: ga

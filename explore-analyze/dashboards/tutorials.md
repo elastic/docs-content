@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_tutorials.html
+description: Collection of step-by-step Kibana dashboard tutorials with sample data, covering visualization techniques and analytical workflows applicable to any dataset.
 applies_to:
   stack: ga
   serverless: ga

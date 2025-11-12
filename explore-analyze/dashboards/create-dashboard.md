@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
+description: Create dashboards with visualizations, controls, and content from the library. Configure settings, organize panels, and save custom analytics views for data exploration.
 applies_to:
   stack: ga
   serverless: ga

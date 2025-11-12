@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
-description: Learn how to explore and interact with Kibana dashboards using filters, time ranges, and controls to uncover insights in your data.
+description: Explore data with Kibana dashboards using KQL queries, filter pills, time ranges, and controls to view panel data and apply custom filters.
 applies_to:
   stack: ga
   serverless: ga
