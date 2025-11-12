@@ -164,7 +164,7 @@ stack: ga 9.1
 The `recursive` strategy splits the input text based on a configurable list of separator patterns, such as paragraph boundaries or Markdown structural elements like headings and horizontal rules. The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to [sentence-level splitting](#sentence).
 
 You can configure the `recursive` strategy using either:
-- [Predefined separator groups](#separator-groups): [`plaintext`](#plaintext) or [`markdown`](#markdown)
+- [Predefined separator groups](#separator-groups): [`Plaintext`](#plaintext) or [`markdown`](#markdown)
 - [Custom separators](#custom-separators): Define your own regular expression patterns
 
 ##### Predefined separator groups [separator-groups]
