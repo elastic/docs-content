@@ -4,9 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
   serverless: ga
-  self: unavailable
   deployment:
-    ess:
+    ess: preview
+    self: unavailable
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
