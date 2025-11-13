@@ -9,18 +9,14 @@ products:
 description: Explore Elasticsearch data with Kibana Discover. Select data views, filter and search documents, analyze field values, add runtime fields, and visualize findings to understand patterns.
 ---
 
-# Explore fields and data with Discover [discover-get-started]
+# Get started with Discover [discover-get-started]
 
-Learn how to use **Discover** to:
-
-* **Select** and **filter** your {{es}} data.
-* **Explore** the fields and content of your data in depth.
-* **Present** your findings in a visualization.
+Discover is your starting point for exploring data in {{es}}. Whether you're investigating an issue, learning about your data's structure, or building insights, Discover provides an interactive environment to search, filter, and analyze documents. This tutorial helps you learn the essential workflows and features that make data exploration effective.
 
 **Prerequisites:**
 
-* If you don’t already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
-* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
+* If you don't already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on {{ecloud}}.
+* You must have data in {{es}}. The examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
 * You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 
 ## Context-aware data exploration [context-aware-discover]

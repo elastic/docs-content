@@ -9,15 +9,21 @@ products:
 description: Sort Discover results with relevance scoring to surface documents that best match search queries. Focus exploration on the most pertinent results for faster data insights.
 ---
 
-# Search for relevance [discover-search-for-relevance]
+# Sort Discover results by relevance score [discover-search-for-relevance]
 
-{{es}} assigns a relevancy, or score to each document, so you can can narrow your search to the documents with the most relevant results. The higher the score, the better it matches your query.
+When searching large datasets, you want the most relevant documents to appear first. {{es}} assigns a relevance score to each document based on how well it matches your query. This guide shows you how to sort results by relevance score in Discover to surface the most pertinent matches.
 
-This example shows how to use **Discover** to list your documents from most relevant to least relevant. This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
+**Technical summary**: Add the `_score` meta field to your document table, clear the default time-based sort, and sort by `_score` in descending order to show most relevant results first.
+
+**Prerequisites:**
+
+* You need a {{data-source}} with searchable text fields
+* Works best with text search queries (not filters or time range queries alone)
+* This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data
 
 1. In **Discover**, open the {{data-source}} dropdown, and select the data that you want to work with.
 
-    For the sample flights data, set the {{data-source}} to **Kibana Sample Data Flights**.
+    For the sample flights data, set the {{data-source}} to **{{kib}} Sample Data Flights**.
 
 2. Run your search.  For the sample data, try:
 

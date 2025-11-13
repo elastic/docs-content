@@ -9,22 +9,25 @@ products:
 description: Examine field distributions and value ranges with Discover's Field statistics view. Identify data quality issues, understand cardinality, and create visualizations from field data.
 ---
 
-# View field statistics [show-field-statistics]
+# View field statistics in Discover [show-field-statistics]
 
-Explore the fields in your data with the **Field statistics** view in **Discover** and answer such questions as:
+Field statistics view in Discover shows distribution patterns, cardinality, and value ranges for fields in your data. Use this view to assess data quality, understand field usage, identify outliers, and create quick visualizations from field distributions. Statistics vary by field type. Numeric fields show ranges and distributions, while geo fields display coordinate maps.
 
-* What does the latency look like when one of the containers is down on a Sunday?
-* Is the field type and format in the data view appropriate for the data and its cardinality?
+Field statistics help you answer questions like:
+* What's the distribution of values across a field?
+* Are there unexpected patterns or outliers in the data?
+* Is the field format appropriate for its cardinality?
+* What does latency look like when one of the containers is down on a specific day?
 
-:::{note}
-Field statistics aren't available when **Discover** is in {{esql}} mode.
-:::
+**Prerequisites:**
 
-This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
+* You need a {{data-source}} with data to explore
+* Field statistics aren't available when Discover is in {{esql}} mode
+* This example uses [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data
 
 1. Go to **Discover**.
-2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
-3. If you don’t see any results, expand the time range, for example, to **Last 7 days**.
+2. Expand the {{data-source}} dropdown, and select **{{kib}} Sample Data Logs**.
+3. If you don't see any results, expand the time range, for example, to **Last 7 days**.
 4. Click **Field statistics**.
    The table summarizes how many documents in the sample contain each field for the selected time period the number of distinct values, and the distribution.
 

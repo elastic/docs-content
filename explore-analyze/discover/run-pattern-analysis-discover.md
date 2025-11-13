@@ -1,4 +1,5 @@
 ---
+navigation_title: "Pattern analysis"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/run-pattern-analysis-discover.html
 applies_to:
@@ -9,16 +10,20 @@ products:
 description: Detect patterns in unstructured logs with Discover's pattern analysis. Categorize log messages, identify common structures, and filter out noise during troubleshooting.
 ---
 
-# Run a pattern analysis on your log data [run-pattern-analysis-discover]
+# Analyze log patterns in Discover [run-pattern-analysis-discover]
 
-Log pattern analysis helps you to find patterns in unstructured log messages and makes it easier to examine your data. It performs categorization analysis on a selected field of a {{data-source}}, creates categories based on the data and displays them together with a chart that shows the distribution of each category and an example document that matches the category.
+When troubleshooting with unstructured log data, manually identifying patterns is time-consuming. Pattern analysis automatically categorizes log messages to help you find common structures and filter out noise during investigation. This guide shows you how to run pattern analysis in Discover.
 
-Log pattern analysis works on every text field.
+**Technical summary**: Open the **Patterns** tab in Discover, select a text field for analysis, adjust the minimum time range if needed, and filter or exclude patterns to focus on actionable data.
 
-This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
+**Prerequisites:**
+
+* You need a {{data-source}} with text fields containing log data
+* Pattern analysis works on any text field in your data
+* This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data
 
 1. Go to **Discover**.
-2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
+2. Expand the {{data-source}} dropdown, and select **{{kib}} Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
 4. Click the **Patterns** tab next to **Documents** and **Field statistics**. The pattern analysis starts. The results are displayed under the chart. You can change the analyzed field by using the field selector. In the **Pattern analysis menu**, you can change the **Minimum time range**. This option enables you to widen the time range for calculating patterns which improves accuracy. The patterns, however, are still displayed by the time range you selected in step 3.
 

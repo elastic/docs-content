@@ -11,10 +11,17 @@ description: Customize data exploration with Discover's table controls. Arrange 
 
 # Customize the Discover view [document-explorer]
 
-Fine tune your explorations by customizing **Discover** to bring out the the best view of your documents.
+Discover provides extensive customization options for the document table and interface layout. You can adjust table density, row height, column layout, sample size, and sorting to optimize your data exploration workflow. These settings persist across sessions and carry over when you create dashboard panels.
+
+This page covers:
+- Hiding and resizing interface areas (chart, fields list, document table)
+- Customizing the document table (columns, density, row height, sample size)
+- Sorting by single or multiple fields
+- Filtering documents and comparing field values
+- Editing field display formats
 
 :::{tip}
-Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
+Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data you're exploring. You can further customize your Discover view on top of these experiences.
 :::
 
 :::{image} /explore-analyze/images/kibana-hello-field.png
@@ -93,7 +100,7 @@ To sort by multiple fields:
 
 Change how {{kib}} displays a field.
 
-1. Click the column header for the field, and then select **Edit data view field.**
+1. Click the column header for the field, and then select **Edit {{data-source}} field.**
 2. In the **Edit field** form, change the field name and format.
    For detailed information on formatting options, refer to [Format data fields](../find-and-organize/data-views.md#managing-fields).
 

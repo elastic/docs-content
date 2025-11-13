@@ -12,17 +12,15 @@ description: Execute long-running searches with background search in Discover an
 
 # Run Discover and Dashboards queries in the background
 
+When searching through years of historical data or running complex queries on large datasets, you can send long-running queries to run in the background. This lets you continue your work in other applications, explore different data, or even close your browser while the search runs. Return anytime to check progress or view completed results.
+
+**Technical summary**: Start a query, click **Send to background** once it begins running, and manage background searches from the {icon}`background_task` toolbar icon. Searches expire after 7 days (configurable through `data.search.sessions.defaultExpiration`). Requires the Background search subfeature permission.
+
 ::::{important} - Background search replaces Search sessions
 
 Background search is a feature introduced in version 9.2. It replaces the deprecated **Search sessions** feature.
 If you have been using search sessions and upgrade to 9.2, your search sessions aren't lost and become background searches.
 ::::
-
-Sometimes you might need to search through large amounts of data, no matter how long the search takes. Consider a threat hunting scenario, where you need to search through years of data. 
-
-You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work. 
-
-You can access your list of background searches at any time to check their status and manage them from the {icon}`background_task` **Background searches** button in the toolbar.
 
 ![Send search to background](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltee31dcf0d3917c75/68ecf412e5bae49d65a286ff/background-search.gif " =75%")
 

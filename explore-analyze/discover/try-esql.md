@@ -9,22 +9,19 @@ products:
 description: Query Elasticsearch data with ES|QL in Discover to explore any indices without predefining data views. Filter, aggregate, sort results, and build dynamic visualizations.
 ---
 
-# Using ES|QL [try-esql]
+# Get started with {{esql}} in Discover [try-esql]
 
-The Elasticsearch Query Language, {{esql}}, makes it easier to explore your data without leaving Discover.
+{{esql}} brings a powerful piped query language directly into Discover, letting you work with your data more flexibly. Unlike traditional searches that require predefined {{data-sources}}, {{esql}} queries can target any index and reshape results on the fly. This tutorial helps you learn {{esql}} syntax fundamentals by progressively building queries that filter, sort, and aggregate data.
 
-The examples on this page use the {{kib}} sample web logs in Discover and Lens to explore the data and create visualizations. You can also install it by following [Add sample data](../index.md#gs-get-data-into-kibana).
+**Prerequisites:**
+
+* You need access to {{kib}} (version 8.11 or later for {{esql}} support)
+* The `enableESQL` setting must be enabled from {{kib}}'s **Advanced Settings**. It is enabled by default.
+* The examples use the [sample web logs data](../index.md#gs-get-data-into-kibana). Install it or use your own data.
 
 ::::{tip}
-For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
-
+For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in {{kib}}](../query-filter/languages/esql-kibana.md).
 ::::
-
-
-
-## Prerequisite [prerequisite]
-
-To view the {{esql}} option in **Discover**, the `enableESQL` setting must be enabled from Kibana’s **Advanced Settings**. It is enabled by default.
 
 
 ## Use {{esql}} [tutorial-try-esql]
