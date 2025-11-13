@@ -61,7 +61,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Excludes stale SLOs from group-by statistics in Elastic Observability Serverless [#240077]({{kib-pull}}240077)
 * Fixes missing `EngineMetadata.type` in generic entity popovers in Elastic Security Serverless [#239661]({{kib-pull}}239661)
 * Sanitizes lookup names when creating indices in Elastic Security Serverless [#240228]({{kib-pull}}240228)
-* Supports multiple values in IOC flyout table tab in Elastic Security Serverless  [#236110]({{kib-pull}}236110)
+* Supports multiple values in IOC flyout table tab in Elastic Security Serverless [#236110]({{kib-pull}}236110)
 * Fixes top-N popover overlapping the new case flyout in Elastic Security Serverless  [#242045]({{kib-pull}}242045)
 * Fixes threshold source event handling in Elastic Security Serverless  [#238707]({{kib-pull}}238707)
 * Ensures Timeline {{esql}} query editor displays correctly in full screen mode in Elastic Security Serverless  [#242027]({{kib-pull}}242027)
