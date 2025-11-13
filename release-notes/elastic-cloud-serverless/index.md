@@ -63,7 +63,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Sanitizes lookup names when creating indices in Elastic Security Serverless [#240228]({{kib-pull}}240228)
 * Supports multiple values in IOC flyout table tab in Elastic Security Serverless [#236110]({{kib-pull}}236110)
 * Fixes top-N popover overlapping the new case flyout in Elastic Security Serverless [#242045]({{kib-pull}}242045)
-* Fixes threshold source event handling in Elastic Security Serverless  [#238707]({{kib-pull}}238707)
+* Fixes threshold source event handling in Elastic Security Serverless [#238707]({{kib-pull}}238707)
 * Ensures Timeline {{esql}} query editor displays correctly in full screen mode in Elastic Security Serverless  [#242027]({{kib-pull}}242027)
 * Fixes invalid state for wired streams toggle [#241266]({{kib-pull}}241266)
 * Fixes simulation of geo points in Streams [#241824]({{kib-pull}}241824)
