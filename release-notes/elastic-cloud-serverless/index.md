@@ -30,7 +30,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Makes the Elastic logo open a custom home page in solution view [#241571]({{kib-pull}}241571)
 * Enforces the `object_src 'none'` directive in Kibana's Content Security Policy [#241029]({{kib-pull}}241029)
 * Adds origin configuration options for authentication providers [#239993]({{kib-pull}}239993)
-* Adds the ability to cancel Machine Learning file uploads [#241297]({{kib-pull}}241297)
+* Adds the ability to cancel {{ml}} file uploads [#241297]({{kib-pull}}241297)
 * Improves display of long field values in Data Visualizer top values list [#241006]({{kib-pull}}241006)
 * Adds a temperature parameter to Inference AI, and OpenAI, Bedrock, and Gemini connectors [#239806]({{kib-pull}}239806)
 * Adds support for custom headers in the OpenAI integration [#238710]({{kib-pull}}238710)
