@@ -73,6 +73,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for deleting export schedules [#238197]({{kib-pull}}238197)
 * Moves the **Lens** visualization toolbar from the **Visualization parameters** section to the flyout header [#239176]({{kib-pull}}239176)
 * Changes the processing order in {{esql}} so the breakdown is applied before the date histogram [#239685]({{kib-pull}}239685)
+* Limits concurrent `TLS` handshakes [#136386](https://github.com/elastic/elasticsearch/pull/136386)
 * Adds a **View in Discover** button to the Alert details page for infrastructure rules [#236880]({{kib-pull}}236880)
 * Introduces CDR Data View versioning and migration logic [#238547]({{kib-pull}}238547)
 * Fixes layout wrapping for fields in the Machine Learning Overview and Notifications pages [#239113]({{kib-pull}}239113)
@@ -239,6 +240,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes layout issues with the **Parse in streams** button on smaller flyouts [#236548]({{kib-pull}}236548)
 * Displays `(missing value)` and `(empty)` instead of `null` in charts and tables [#233369]({{kib-pull}}233369)
 * Fixes privilege requirements for reindexing indices in Upgrade Assistant [#237055]({{kib-pull}}237055)
+* Converts `BytesTransportResponse` when proxying responses to and from the local node [#135873](https://github.com/elastic/elasticsearch/pull/135873)
 
 
 ## September 29, 2025 [serverless-changelog-09292025]
@@ -346,6 +348,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures the **Tech Preview** badge is shown for the default inference endpoint for e5 on the inference endpoints UI [#234811]({{kib-pull}}234811)
 * Ensures mapped fields are remembered across simulations [#233799]({{kib-pull}}233799)
 
+* Differentiates between initial and reconnect RCS connections [#134415](https://github.com/elastic/elasticsearch/pull/134415)
+
+* Adds human-readable HTTP client statistics [#134296](https://github.com/elastic/elasticsearch/pull/134296)
+
 ### Fixes [serverless-changelog-09152025-fixes]
 
 * Hides the side navigation during report generation [#234675]({{kib-pull}}234675)
@@ -361,6 +367,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue on the API Keys Management page that occurred when loading API keys with null names [#234083]({{kib-pull}}234083)
 * Fixes an Anomaly Detection bug where custom URLs omitted generated fields in datafeed preview requests [#234709]({{kib-pull}}234709)
 * Ensures full tool traces are displayed in flyouts [#234654]({{kib-pull}}234654)
+* Fixes a null pointer exception in the transport trace logger [#132243](https://github.com/elastic/elasticsearch/pull/132243)
 
 ## September 8, 2025 [serverless-changelog-09082025]
 
@@ -459,6 +466,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates sections and improves field handling in {{ml-cap}} [#231037]({{kib-pull}}231037)
 * Improves the layout of the custom URLs list in {{ml-cap}} [#231751]({{kib-pull}}231751)
 
+* Returns 429 status code instead of 500 for timeout handlers [#133111](https://github.com/elastic/elasticsearch/pull/133111)
+
 ### Fixes [serverless-changelog-08252025-fixes]
 * Fixes a rendering issue that affected progress elements in Canvas [#232432]({{kib-pull}}232432)
 * Fixes the enforcement of deployment mode restrictions when creating package policies in {{fleet}} [#231679]({{kib-pull}}231679)
@@ -494,6 +503,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds an `AI` section to the `Stack Management` menu [#227289]({{kib-pull}}227289)
 * Sets the default retention period for Logs anomaly detection to 120 days [#231080]({{kib-pull}}231080)
 
+* Sets remote cluster server port when `CPS` is enabled on a search node
+
 
 ### Fixes [serverless-changelog-08182025-fixes]
 
@@ -519,6 +530,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes a bug that made the {{esql}} form read-only in the Rule upgrade flyout [#231699]({{kib-pull}}231699)
 * Removes the default port the from interactive setup cluster address form, unless specified [#230582]({{kib-pull}}230582)
 * Fixes positioning of the **Add rule** popover on the Role Mappings page [#231551]({{kib-pull}}231551)
+* Sets remote cluster server port when cross-project search is enabled on a search node
 
 ## August 11, 2025 [serverless-changelog-08112025]
 
@@ -680,6 +692,12 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Groups vulnerabilities by resource and cloud account using IDs instead of names in Elastic Security Serverless [#225492]({{kib-pull}}225492)
 * Updates the default Gemini model in Elastic Security Serverless [#225917]({{kib-pull}}225917)
 * Streamlines the side navigation in Elasticsearch Serverless [#225709]({{kib-pull}}225709)
+
+* Adds audit logging for stream content [#130594](https://github.com/elastic/elasticsearch/pull/130594)
+
+* Allows adjustment of transport TLS handshake timeout [#130909](https://github.com/elastic/elasticsearch/pull/130909)
+
+* Exposes HTTP connection metrics to telemetry [#130939](https://github.com/elastic/elasticsearch/pull/130939)
 
 ### Fixes [serverless-changelog-07152025-fixes]
 * Fixes an issue where reports timed out and failed with an invalid header error [#225919]({{kib-pull}}225919)
@@ -846,6 +864,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for partial result handling in **ES|QL** [#223198]({{kib-pull}}223198)
 * Adds an **Executable Name** tab to the TopN view [#224291]({{kib-pull}}224291)
 
+* Moves HTTP content aggregation from Netty into `RestController` [#129302](https://github.com/elastic/elasticsearch/pull/129302)
+
 
 ### Fixes [serverless-changelog-06232025-fixes]
 
@@ -938,6 +958,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables **Content Connectors** in the **Stack Management** menu in {{sec-serverless}} [#221856]({{kib-pull}}221856).
 * Implements PKI authentication support for the `.gen-ai` connector’s `OpenAI Other` provider [#219984]({{kib-pull}}219984).
 
+* Reacts more promptly to task cancellation while waiting for the cluster to unblock [#128737](https://github.com/elastic/elasticsearch/pull/128737)
+
 ### Fixes [serverless-changelog-06092025-fixes]
 
 * Fixes {{kib}} being stuck in a reboot loop when `cancelAlertsOnRuleTimeout` is set to `false` [#222263]({{kib-pull}}222263).
@@ -1012,6 +1034,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces a new endpoint scheme for SIEM migration [#219597]({{kib-pull}}219597)
 * Extends default log pattern on server side to include error information [#219940]({{kib-pull}}219940)
 
+* Removes `FlowControlHandler` from the HTTP pipeline [#128099](https://github.com/elastic/elasticsearch/pull/128099)
+
 
 ### Fixes [serverless-changelog-05262025-fixes]
 
@@ -1051,6 +1075,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds an **ES|QL** control option to the dashboard controls dropdown [#219495]({{kib-pull}}219495)
 * Enables full-text search in `STATS ... WHERE` **ES|QL** queries [#220691]({{kib-pull}}220691)
 * Prevents downloading trained models that are already present in other spaces and displays a warning in Machine Learning [#220238]({{kib-pull}}220238)
+
+* Replaces auto-read with proper flow control in the HTTP pipeline [#127817](https://github.com/elastic/elasticsearch/pull/127817)
+
+* Sets `connection: close` header on shutdown [#128025](https://github.com/elastic/elasticsearch/pull/128025)
 
 ### Fixes [serverless-changelog-05192025-fixes]
 * Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
@@ -1127,6 +1155,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows you to customize the table tab [#218686](https://github.com/elastic/kibana/pull/218686)
 * Enables keyboard navigation for the create annotations form [#217918](https://github.com/elastic/kibana/pull/217918)
 
+* Replaces auto-read with proper flow control in the HTTP pipeline [#127259](https://github.com/elastic/elasticsearch/pull/127259)
+
 
 ### Fixes [serverless-changelog-04282025-fixes]
 
@@ -1201,6 +1231,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reuses shared integration policies when duplicating agent policies in Fleet [#217872]({{kib-pull}}217872)
 * Enables adding badges to all list items in the side navigation except the section header [#217301]({{kib-pull}}217301)
 
+* Adds flow control and removes auto-read in the Netty4 HTTP pipeline [#126441](https://github.com/elastic/elasticsearch/pull/126441)
+
 ### Fixes [serverless-changelog-04142025-fixes]
 * Fixes error message when previewing index templates used by data streams [#217604]({{kib-pull}}217604)
 * Wraps text in search bars [#217556]({{kib-pull}}217556)
@@ -1220,6 +1252,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes page crashes caused by the **Use full data** button [#217291]({{kib-pull}}217291)
 * Filters inference connectors that lack existing endpoints in **Connectors** [#217641]({{kib-pull}}217641)
 * Fixes focusability and keyboard access issues with the **Export** tab in the **Share this dashboard** modal [#217313]({{kib-pull}}217313)
+* Fixes a race condition in `RestCancellableNodeClient` [#126686](https://github.com/elastic/elasticsearch/pull/126686)
 
 ## April 7, 2025 [serverless-changelog-04072025]
 
