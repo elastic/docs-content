@@ -2,10 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-mobile-service-overview.html
 applies_to:
-  stack: all
+  stack: ga
 products:
   - id: observability
   - id: apm
+  - id: edot-sdk
 ---
 
 # Mobile service overview [apm-mobile-service-overview]

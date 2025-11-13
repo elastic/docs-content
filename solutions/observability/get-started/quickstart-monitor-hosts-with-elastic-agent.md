@@ -12,6 +12,7 @@ products:
   - id: observability
   - id: cloud-serverless
   - id: elastic-stack
+  - id: edot-collector
 ---
 
 # Quickstart: Monitor hosts with {{agent}} [quickstart-monitor-hosts-with-elastic-agent]
@@ -21,6 +22,10 @@ In this quickstart guide, you’ll learn how to scan your host to detect and col
 To scan your host, you’ll run an auto-detection script that downloads and installs {{agent}}, which is used to collect observability data from the host and send it to Elastic.
 
 The script also generates an {{agent}} configuration file that you can use with your existing Infrastructure-as-Code tooling.
+
+:::{tip}
+You can also use the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) to collect system metrics and logs using OpenTelemetry.
+:::
 
 
 ## Prerequisites [_prerequisites]

@@ -6,6 +6,7 @@ applies_to:
   stack: ga
 products:
   - id: observability
+  - id: edot-collector
 ---
 
 
