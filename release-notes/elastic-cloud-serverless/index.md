@@ -38,7 +38,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves layout for custom inference endpoints [#241779]({{kib-pull}}241779)
 * Displays field data types in the Processing table and step editor [#241825]({{kib-pull}}241825)
 * Adds timezone and locale parameters to Streamlang [#241369]({{kib-pull}}241369)
-* Displays field data types in the partitioning UI [#242134]({{kib-pull}}242134)
+* Displays field data types in the Streams Partitioning UI [#242134]({{kib-pull}}242134)
 * Adds autocomplete for field values in Streams Partitioning and Processing tabs [#241119]({{kib-pull}}241119)
 * Hides document match filter controls for users without manage privileges [#242119]({{kib-pull}}242119)
 
