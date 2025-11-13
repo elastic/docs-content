@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-controls.html
-description: Add interactive filter controls to dashboards with Options lists, Range sliders, and Time sliders. Enable viewers to dynamically filter data and focus on specific segments.
+description: Add interactive filter controls to dashboards with options lists, range sliders, and time sliders. Help viewers dynamically filter data and focus on specific segments.
 applies_to:
   stack: ga
   serverless: ga
