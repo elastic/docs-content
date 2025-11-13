@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: kibana
-description: Manage saved objects including dashboards, visualizations, and data views. Import, export, copy between spaces, and understand globally unique IDs in version 8.x and later.
+description: Manage saved objects including dashboards, visualizations, and data views. Import, export, copy between spaces, and understand globally unique IDs.
 ---
 
 # Saved objects [saved-objects]
