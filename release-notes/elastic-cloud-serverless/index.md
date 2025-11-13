@@ -52,7 +52,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Prevents use-after-close errors in async search by making `MutableSearchResponse` reference-counted  [#134359]({{es-pull}}134359)
 * Removes early phase failures during batched search execution [#136889]({{es-pull}}136889)
 * Improves SQL validation errors by providing more descriptive exception messages [#137560]({{es-pull}}137560)
-* Correctly accounts for additional settings providers when determining data stream effective settings in Elasticsearch Serverless [#137407]({{es-pull}}137407)
+* Correctly accounts for additional settings providers when determining data stream effective settings [#137407]({{es-pull}}137407)
 * Adds proxy SSL options for download sources [#241115]({{kib-pull}}241115)
 * Ensures {{fleet}} policy name uniqueness is enforced consistently across spaces [#239631]({{kib-pull}}239631)
 * Shows warnings on the sync integrations UI when referencing other entities [#241623]({{kib-pull}}241623)
