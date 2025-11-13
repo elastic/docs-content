@@ -20,7 +20,7 @@ The {{stack}} ships with numerous [predefined grok patterns](https://github.com/
 
 |     |     |     |
 | --- | --- | --- |
-| `%{{SYNTAX}}` | `%{SYNTAX:ID}` | `%{SYNTAX:ID:TYPE}` |
+| `%{SYNTAX}` | `%{SYNTAX:ID}` | `%{SYNTAX:ID:TYPE}` |
 
 `SYNTAX`
 :   The name of the pattern that will match your text. For example, `NUMBER` and `IP` are both patterns that are provided within the default patterns set. The `NUMBER` pattern matches data like `3.44`, and the `IP` pattern matches data like `55.3.244.1`.
@@ -62,14 +62,14 @@ If you need help building grok patterns to match your data, use the [Grok Debugg
 ::::
 
 
-For example, if you’re working with Apache log data, you can use the `%{{COMMONAPACHELOG}}` syntax, which understands the structure of Apache logs. A sample document might look like this:
+For example, if you’re working with Apache log data, you can use the `%{COMMONAPACHELOG}` syntax, which understands the structure of Apache logs. A sample document might look like this:
 
 ```js
 "timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - -
 [30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"
 ```
 
-To extract the IP address from the `message` field, you can write a Painless script that incorporates the `%{{COMMONAPACHELOG}}` syntax. You can test this script using the [`ip` field context](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md#painless-runtime-ip) of the Painless execute API, but let’s use a runtime field instead.
+To extract the IP address from the `message` field, you can write a Painless script that incorporates the `%{COMMONAPACHELOG}` syntax. You can test this script using the [`ip` field context](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md#painless-runtime-ip) of the Painless execute API, but let’s use a runtime field instead.
 
 Based on the sample document, index the `@timestamp` and `message` fields. To remain flexible, use `wildcard` as the field type for `message`:
 
