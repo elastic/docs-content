@@ -8,6 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: kibana
+description: Categorize and organize saved objects with tags. Create color-coded tags, assign them to dashboards and visualizations, and filter objects by shared tags in global search.
 ---
 
 # Tags [managing-tags]

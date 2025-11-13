@@ -5,7 +5,9 @@ applies_to:
   stack: ga
   serverless: ga
 products:
+  - id: kibana
   - id: cloud-serverless
+description: Access and manage files uploaded to Kibana from features like cases and Image panels. View, organize, and delete stored files from a centralized management page.
 ---
 
 # Files [files]

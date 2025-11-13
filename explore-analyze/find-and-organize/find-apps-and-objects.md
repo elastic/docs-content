@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Find apps and saved objects quickly using the global search field. Search by type, name, and tag with keyboard shortcuts and advanced syntax for efficient navigation.
 ---
 
 # Find apps and objects [kibana-navigation-search]

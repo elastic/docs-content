@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
+description: Create and manage data views to access Elasticsearch data in Kibana analytics features. Add runtime fields, format data fields, and configure patterns for indices, data streams, and aliases.
 ---
 
 # Data views [data-views]

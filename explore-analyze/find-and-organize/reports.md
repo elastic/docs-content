@@ -5,7 +5,9 @@ applies_to:
   stack: ga
   serverless: ga
 products:
+  - id: kibana
   - id: cloud-serverless
+description: View and manage generated reports for saved searches, dashboards, and visualizations. Download CSV reports from Discover and track reporting history.
 ---
 
 # Reports [reports]
