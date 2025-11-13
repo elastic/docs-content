@@ -11,7 +11,9 @@ description: Find apps and saved objects quickly using the global search field. 
 
 # Find apps and objects [kibana-navigation-search]
 
-To quickly find apps and the objects you create, use the search field in the global header. Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
+The global search field in the {{kib}} header provides instant access to applications, dashboards, visualizations, and other saved objects. As you type, search suggestions appear with deep links that take you directly to specific views or objects.
+
+Use advanced search syntax to filter by object type or tag, and keyboard shortcuts to access search without using your mouse.
 
 :::{image} /explore-analyze/images/kibana-app-navigation-search.png
 :alt: Example of searching for apps

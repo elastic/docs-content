@@ -11,7 +11,9 @@ products:
 
 # Vector tooltips [vector-tooltip]
 
-Vector tooltips display attributes for the features at your mouse location. These tooltips give users an in-depth insight into what’s going on in the map.
+Vector layer tooltips display feature attributes when hovering over map elements. You can customize which fields appear, their formatting, and their display order. When multiple features overlap at a location, the tooltip shows attributes from the top feature and indicates how many additional features exist at that point.
+
+Tooltips provide essential context for understanding map data without cluttering the visualization with permanent labels.
 
 If more than one feature exists at a location, the tooltip displays the attributes for the top feature, and notes the number of features at that location. The following image has a tooltip with three features at the current location: a green circle from the **Total Sales Revenue** layer, a blue New York State polygon from **United States** layer, and a red United States Country polygon from the **World Countries** layer. The tooltip displays attributes for the top feature, the green circle, from the **Total Sales Revenue** layer.
 

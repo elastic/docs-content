@@ -9,9 +9,15 @@ products:
   - id: kibana
 ---
 
-# Sharing dashboards [share-the-dashboard]
+# Share dashboards [share-the-dashboard]
 
-To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar. For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
+You can share dashboards with colleagues, stakeholders, or external audiences using shareable links, scheduled reports, or exported files. When sharing with a link, you can include the current filters, queries, and time range to provide context.
+
+This page covers generating shareable links and exporting dashboard configurations. For detailed information about scheduling reports and other sharing options, refer to [Reporting and sharing](../report-and-share.md).
+
+## Generate shareable links
+
+To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar.
 
 ![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
 

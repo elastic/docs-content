@@ -9,8 +9,11 @@ products:
   - id: kibana
 ---
 
-# Managing dashboards [_manage_dashboards]
+# Manage dashboards [_manage_dashboards]
 
+As your collection of dashboards grows, you need efficient ways to find, organize, and track them. {{kib}} provides search, filtering, and tagging capabilities to help you locate specific dashboards quickly, plus favorites and usage tracking to monitor which dashboards your team relies on most.
+
+This guide shows you how to search dashboards by name or tag, filter by creator, mark favorites, and view usage statistics.
 
 ## Browse dashboards [find-dashboards]
 

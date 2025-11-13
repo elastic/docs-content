@@ -14,14 +14,17 @@ description: Manage saved objects including dashboards, visualizations, and data
 
 # Saved objects [saved-objects]
 
+Saved objects in {{kib}} include dashboards, visualizations, {{data-sources}}, searches, maps, and other reusable assets. You can organize saved objects with names and tags, import and export them between {{kib}} instances, and copy them between spaces to share with different teams.
+
+This guide covers managing, importing, exporting, and understanding saved object IDs across {{kib}} versions.
+
 $$$managing-saved-objects-copy-to-space$$$
 
 $$$managing-saved-objects-export-objects$$$
 
 $$$managing-saved-objects-share-to-space$$$
 
-
-{{kib}} lets you save objects for your own future use or for sharing with others. Each saved object type has different abilities. For example, you can save your search queries made with **Discover**, which lets you:
+Each saved object type provides different capabilities. For example, saved Discover searches let you:
 
 * Share a link to your search
 * Download the full search results in CSV form

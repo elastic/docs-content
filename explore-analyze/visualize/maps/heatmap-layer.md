@@ -11,7 +11,9 @@ products:
 
 # Heat map layer [heatmap-layer]
 
-Heat map layers cluster point data to show locations with higher densities.
+Heat map layers visualize point density by clustering geographic data and displaying concentration patterns with color gradients. Use heat maps to identify hotspots, understand geographic distribution patterns, and reveal areas with higher or lower activity levels.
+
+Heat map layers work with geo_point or geo_shape fields and support count, sum, and unique count aggregations. The layer automatically blends nearby values to create smooth density visualizations.
 
 :::{image} /explore-analyze/images/kibana-heatmap_layer.png
 :alt: heatmap layer

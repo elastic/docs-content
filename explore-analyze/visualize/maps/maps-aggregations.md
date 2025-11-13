@@ -14,8 +14,9 @@ products:
 
 # Plot big data [maps-aggregations]
 
+When visualizing large data sets, aggregations prevent network congestion and browser slowdowns by keeping documents in {{es}} and returning only calculated group metrics. Instead of transferring thousands or millions of individual documents, Maps receives summary statistics for each geographic bucket or region.
 
-Use [aggregations](../../query-filter/aggregations.md) to plot large data sets without overwhelming your network or your browser. When using aggregations, the documents stay in Elasticsearch and only the calculated values for each group are returned to your computer.
+Aggregations group documents into buckets and calculate metrics like count, average, or sum for each bucket. Use these metrics for data-driven styling or to display statistical patterns across geographic areas.
 
 Aggregations group your documents into buckets and calculate metrics for each bucket. Use metric aggregations for [data driven styling](vector-style.md#maps-vector-style-data-driven). For example, use the count aggregation to shade world countries by web log traffic.
 

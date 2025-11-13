@@ -12,7 +12,9 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
-You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
+{{esql}} visualizations let you create charts directly from {{esql}} queries without needing to configure {{data-sources}} or aggregations. The visualization type is automatically determined based on your query results, and you can customize the appearance and chart type as needed.
+
+You can create {{esql}} visualizations from Discover by writing queries and saving the results, or start from a dashboard and build the query and visualization together. This approach works well when you need query flexibility beyond what {{data-sources}} provide.
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 

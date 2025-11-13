@@ -9,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Term join [terms-join]
+# Term joins [terms-join]
 
-Use term joins to augment vector features with properties for [data driven styling](vector-style.md#maps-vector-style-data-driven) and richer tooltip content.
+Term joins enrich vector layer features with metrics calculated from {{es}} aggregations, enabling data-driven styling and detailed tooltips. A term join matches vector features to aggregated metrics using a common field value, allowing you to visualize statistics like traffic counts, sales totals, or error rates on geographic boundaries.
+
+Term joins work with Documents, Configured GeoJSON, and {{ems-init}} Boundaries vector layers, providing flexibility for combining boundary data with your metrics.
 
 Term joins are available for the following [vector layers](vector-layer.md):
 

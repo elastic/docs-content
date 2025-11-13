@@ -9,9 +9,9 @@ products:
   - id: kibana
 ---
 
-# Legacy editors [legacy-editors]
+# Legacy visualization editors [legacy-editors]
 
-Legacy editors are still available but have been replaced by better alternatives. Consider using one of the [modern editors](../visualize.md) offered in Elastic such as **Lens**.
+Legacy visualization editors including aggregation-based, TSVB, and Timelion remain available for existing visualizations but are no longer recommended for new work. Lens provides equivalent or superior functionality with a more intuitive interface.
 
 :::{note}
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.

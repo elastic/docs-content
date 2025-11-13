@@ -15,7 +15,7 @@ products:
 Canvas is only available for upgraded installations with existing workpads.
 :::
 
-**Canvas** is a data visualization and presentation tool that allows you to pull live data from {{es}}, then combine the data with colors, images, text, and your imagination to create dynamic, multi-page, pixel-perfect displays. If you are a little bit creative, a little bit technical, and a whole lot curious, then **Canvas** is for you.
+Canvas provides pixel-perfect control over dashboard layouts, letting you create custom presentations that combine live {{es}} data with images, text, and precise styling. Unlike standard dashboards, Canvas gives you complete freedom to position elements exactly where you want them, making it ideal for presentations, reports, and infographics.
 
 With **Canvas**, you can:
 

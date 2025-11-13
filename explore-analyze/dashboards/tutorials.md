@@ -9,11 +9,11 @@ products:
   - id: kibana
 ---
 
-# Tutorials [_tutorials]
+# Dashboard tutorials [_tutorials]
 
-Learn more about building dashboards and creating visualizations with the following tutorials.
+These step-by-step tutorials walk you through building complete dashboards from start to finish. Each tutorial demonstrates specific visualization techniques and analytical workflows that you can apply to your own data.
 
-These tutorials use [sample data](../index.md#gs-get-data-into-kibana) available in {{kib}} as a way to get started more easily, but you can apply and adapt these instructions to your own data as well.
+While the tutorials use {{kib}} sample data sets for convenience, the techniques and approaches work with any compatible data source. Choose a tutorial based on the type of analysis you want to perform.
 
 
 

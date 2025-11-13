@@ -11,9 +11,17 @@ products:
 
 # Add filter controls [add-controls]
 
-**Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore quicker. Controls apply to all relevant panels in a dashboard.
+Filter controls enable dashboard viewers to interactively narrow down displayed data without editing the dashboard itself. When viewers select values in a control, the filters apply across all relevant panels, making it easier to focus on specific data segments or time ranges.
 
-There are three types of controls:
+You can add filter controls to your dashboards:
+
+- **Options list**: Dropdown selections for one or more field values
+- **Range slider**: Numeric range filtering for continuous data
+- **Time slider**: Time range navigation and animation
+
+Before adding controls, make sure you have edit permissions for the dashboard and understand which fields your viewers need to filter by.
+
+## Control types
 
 * [**Options list**](#create-and-add-options-list-and-range-slider-controls) — Adds a dropdown that allows to filter data by selecting one or more values.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field that allows you to display only the logs generated from `osx` and `ios` operating systems.

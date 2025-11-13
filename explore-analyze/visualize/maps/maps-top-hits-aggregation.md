@@ -11,7 +11,9 @@ products:
 
 # Display the most relevant documents per entity [maps-top-hits-aggregation]
 
-Use **Top hits per entity** to display the most relevant documents per entity, for example, the most recent GPS tracks per flight route. To get this data, {{es}} first groups your data using a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md), then accumulates the most relevant documents based on sort order for each entry using a [top hits metric aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-top-hits-aggregation.md).
+Top hits per entity displays the most recent or highest-ranked documents for each unique entity, such as the latest GPS position per vehicle or most recent transaction per customer. This layer type combines terms aggregation to group by entity with top hits metric aggregation to select the most relevant documents from each group.
+
+Use top hits layers for asset tracking, displaying current states, or showing the most significant event per entity on a map.
 
 To enable top hits:
 

@@ -11,7 +11,9 @@ products:
 
 # Vector style properties [maps-vector-style-properties]
 
-Point, polygon, and line features support different styling properties.
+Vector layer styling properties differ based on feature geometry type. Points support icon and label styling, polygons support fill and border styling, and lines support stroke properties. Each property can use static values or data-driven expressions that change appearance based on field values.
+
+This reference documents all available style properties for point, polygon, and line features, including label positioning, color options, size controls, and icon customization.
 
 
 ## Point style properties [point-style-properties]

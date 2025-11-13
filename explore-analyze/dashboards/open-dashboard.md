@@ -9,7 +9,13 @@ products:
   - id: kibana
 ---
 
-# Edit a dashboard [open-the-dashboard]
+# Edit dashboards [open-the-dashboard]
+
+To modify an existing dashboard, you need to switch to Edit mode where you can add or remove panels, adjust settings, modify controls, and reorganize the layout. Changes you make are not visible to other viewers until you save the dashboard.
+
+This guide shows you how to open a dashboard for editing, make modifications, and save or reset your changes.
+
+To edit a dashboard:
 
 1. Open the **Dashboards** page in {{kib}}.
 2. Locate the dashboard you want to edit.

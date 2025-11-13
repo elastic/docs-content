@@ -9,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Create filters from a map [maps-create-filter-from-map]
+# Create filters from maps [maps-create-filter-from-map]
 
-Create filters from your map to focus in on just the data you want. **Maps** provides three ways to create filters:
+Maps supports interactive filtering that lets you select geographic areas or features to focus your analysis. You can filter by map bounds as you pan and zoom, draw custom shapes to create spatial filters, or click features to filter by specific values.
+
+Maps provides three filtering approaches:
 
 * [Filter dashboard by map bounds](#maps-map-extent-filter)
 * [Spatial filters](#maps-spatial-filters)

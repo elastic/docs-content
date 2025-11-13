@@ -11,11 +11,9 @@ products:
 
 # Graph [xpack-graph]
 
-The {{graph-features}} enable you to discover how items in an {{es}} index are related. You can explore the connections between indexed terms and see which connections are the most meaningful. This can be useful in a variety of applications, from fraud detection to recommendation engines.
+Graph explores relationships between terms in your {{es}} indices to reveal meaningful connections in your data. It works by analyzing which terms frequently appear together in documents, using relevance scoring to identify significant connections rather than simple co-occurrence counts.
 
-For example, graph exploration could help you uncover website vulnerabilities that hackers are targeting so you can harden your website. Or, you might provide graph-based personalized recommendations to your e-commerce customers.
-
-The {{graph-features}} provide a simple, yet powerful [graph exploration API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-graph), and an interactive graph visualization app for {{kib}}. Both work out of the box with existing {{es}} indices—you don’t need to store any additional data to use these features.
+Graph applications include fraud detection (identifying patterns in suspicious behavior), security analysis (uncovering attack vectors), and recommendation systems (suggesting related products or content). The feature works with existing indices without requiring additional data storage or special index configuration.
 
 
 ## How Graph works [how-graph-works]

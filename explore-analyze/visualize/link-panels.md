@@ -11,7 +11,9 @@ products:
 
 # Link panels [dashboard-links]
 
-You can use **Links** panels to create links to other dashboards or external websites. When creating links to other dashboards, you have the option to carry the time range, query, and filters to apply over to the linked dashboard. Links to external websites follow the [`externalUrl.policy`](kibana://reference/configuration-reference/url-drilldown-settings.md#external-url-policy) settings. **Links** panels support vertical and horizontal layouts and may be saved to the **Library** for use in other dashboards.
+Link panels provide navigation between dashboards or to external websites, helping users discover related content or access supporting documentation. When linking to other dashboards, you can preserve the current time range, filters, and queries to maintain context as users navigate.
+
+Links panels support vertical or horizontal layouts and can be saved to the Visualize Library for reuse. External links respect the [`externalUrl.policy`](kibana://reference/configuration-reference/url-drilldown-settings.md#external-url-policy) security settings.
 
 :::{image} /explore-analyze/images/kibana-dashboard_links_panel.png
 :alt: A screenshot displaying the new links panel

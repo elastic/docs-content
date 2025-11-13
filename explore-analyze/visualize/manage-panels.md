@@ -11,9 +11,9 @@ products:
 
 # Manage panels [manage-panels]
 
-When creating a panel, you can choose to add it to a dashboard, or to save it to the Visualize Library so it can be added to multiple dashboards later.
+Panels can be saved in two ways: locally to a single dashboard, or to the Visualize Library for reuse across multiple dashboards. Library panels stay synchronized across dashboards, so updating one instance updates all others. Local panels are independent and changes only affect that specific dashboard.
 
-There are also some common options that you can configure on the various types of panels to make a dashboard easier to navigate and analyze.
+This guide covers saving panels to the library or dashboard, editing existing panels, linking panels to Discover for data exploration, and unlinking library panels to make independent copies.
 
 
 ### Save to the Visualize Library [save-to-visualize-library] 

@@ -11,7 +11,9 @@ products:
 
 # Configure map settings [maps-settings]
 
-Maps offers settings that let you configure how a map is displayed. To access these settings, click **Settings** in the application toolbar.
+Map settings control display behavior, initial view positioning, tooltip preferences, and custom icon management. These settings determine how maps appear when opened and how users interact with layers and features.
+
+This reference covers all available map configuration options, including background colors, zoom behavior, browser location access, and custom icon management.
 
 
 ## Custom icons [maps-settings-custom-icons]

@@ -11,7 +11,9 @@ products:
 
 # Vector styling [vector-style]
 
-When styling a vector layer, you can customize your data by property, such as size and color. For each property, you can specify whether to use a constant or data driven value for the style.
+Vector layer styling controls the visual appearance of points, lines, and polygons through properties like color, size, opacity, and icons. Each style property can use static values that apply uniformly to all features, or data-driven values that change appearance based on field values.
+
+Data-driven styling enables choropleth maps, proportional symbols, and other visualizations that encode data values through visual variables.
 
 
 ## Static styling [maps-vector-style-static]

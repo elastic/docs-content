@@ -11,9 +11,9 @@ products:
 
 # Add drilldowns [drilldowns]
 
-Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range or click a pie slice, a filter for the time range or pie slice is applied. Drilldowns let you customize the interactive behavior while keeping the context of the interaction.
+Drilldowns extend the built-in interactivity of dashboard panels by letting you define custom actions that users can trigger by clicking on data points. Unlike basic click interactions that only apply filters, drilldowns can navigate to other dashboards, open external websites, or jump to Discover while preserving filters, time ranges, and other context.
 
-There are three types of drilldowns you can add to dashboards:
+You can add three types of drilldowns to dashboard panels:
 
 * **Dashboard** — Navigates you from one dashboard to another dashboard. For example, create a drilldown for a **Lens** panel that navigates you from a summary dashboard to a dashboard with a filter for a specific host name.
 * **URL** — Navigates you from a dashboard to an external website. For example, a website with the specific host name as a parameter.

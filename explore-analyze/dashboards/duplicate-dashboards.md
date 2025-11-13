@@ -9,7 +9,11 @@ products:
   - id: kibana
 ---
 
-# Duplicate a dashboard [duplicate-dashboards]
+# Duplicate dashboards [duplicate-dashboards]
+
+Duplicating a dashboard creates an exact copy with all panels, filters, and settings intact. This is useful when you want to experiment with changes without affecting the original dashboard, or when you need similar dashboards for different data sets or audiences.
+
+To duplicate a dashboard:
 
 1. Open the dashboard you want to duplicate.
 2. Exit the edit mode, and click **Duplicate** in the toolbar.

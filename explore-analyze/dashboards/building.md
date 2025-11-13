@@ -9,14 +9,11 @@ products:
   - id: kibana
 ---
 
-# Building dashboards [create-dashboards]
+# Build dashboards [create-dashboards]
 
-{{kib}} offers many ways to build powerful dashboards that will help you visualize and keep track of the most important information contained in your {{es}} data.
+Dashboards in {{kib}} combine multiple visualizations, metrics, and controls into a single view that tells a story about your data. You can create dashboards from scratch, start with templates, or assemble panels from the Visualize Library.
 
-* Create and assemble visualizations such as charts or maps, and enrich them with helpful legends containing key data.
-* Extract and show key indicators and metrics to keep them visible and highlighted at all times.
-* Add text, images, and links to help viewers make the most of your dashboard.
-* Include additional controls to facilitate filtering and browsing the data.
+This section covers the key concepts and requirements for building dashboards. To get started, you need indexed data in {{es}} and a {{data-source}} that defines which data to analyze.
 
 $$$dashboard-minimum-requirements$$$
 To create or edit dashboards, you first need to:

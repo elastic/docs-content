@@ -11,7 +11,13 @@ products:
 
 # Configure Graph [graph-configuration]
 
-When a user saves a graph workspace in Kibana, it is stored in the `.kibana` index along with other saved objects like visualizations and dashboards. By default, both the configuration and data are saved for the workspace:
+Graph configuration controls how workspaces are saved and what access users have to Graph features. The primary configuration concern is managing the save policy, which determines whether users can save workspace data, configuration, or both. This matters because saved workspace data represents a snapshot that bypasses normal security policies.
+
+This reference covers Graph save policies, security configuration, and how to disable specific features like drilldown configuration.
+
+## Save policies
+
+When a user saves a graph workspace in {{kib}}, it is stored in the `.kibana` index along with other saved objects like visualizations and dashboards. By default, both the configuration and data are saved for the workspace:
 
 **configuration**
 :   The selected data view, fields, colors, icons, and settings.

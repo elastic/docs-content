@@ -11,7 +11,9 @@ products:
 
 # Custom visualizations with Vega [vega]
 
-**Vega** and **Vega-Lite** are both grammars for creating custom visualizations. They are recommended for advanced users who are comfortable writing {{es}} queries manually. **Vega-Lite** is a good starting point for users who are new to both grammars, but they are not compatible.
+Vega and Vega-Lite provide declarative grammar for building custom visualizations beyond what standard {{kib}} editors support. Vega-Lite offers a simpler, high-level syntax for common charts, while Vega provides more control for complex visualizations like sankey diagrams, scatter charts, and custom maps.
+
+These grammars are designed for advanced users comfortable with writing {{es}} queries and JSON specifications. Note that Vega and Vega-Lite use different syntaxes and are not compatible with each other.
 
 **Vega** and **Vega-Lite** panels can display one or more data sources, including {{es}}, Elastic Map Service, URL, or static data, and support [{{kib}} extensions](#reference-for-kibana-extensions) that allow you to embed the panels on your dashboard and add interactive tools.
 

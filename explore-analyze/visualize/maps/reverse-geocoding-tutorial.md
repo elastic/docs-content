@@ -11,9 +11,9 @@ products:
 
 # Map custom regions with reverse geocoding [reverse-geocoding-tutorial]
 
-**Maps** comes with [predefined regions](https://maps.elastic.co/#file) that allow you to quickly visualize regions by metrics. **Maps** also offers the ability to map your own regions. You can use any region data you’d like, as long as your source data contains an identifier for the corresponding region.
+In this tutorial, you'll learn how to map custom geographic regions when your data contains coordinates but not region identifiers. You'll explore uploading custom region boundaries, using {{es}} enrich processors for reverse geocoding, and visualizing metrics by region. By the end, you'll understand how to assign region identifiers to data based on geographic location.
 
-But how can you map regions when your source data does not contain a region identifier? This is where reverse geocoding comes in. Reverse geocoding is the process of assigning a region identifier to a feature based on its location.
+Reverse geocoding converts coordinates into region identifiers by determining which region boundary contains each point. This tutorial demonstrates the technique using US Census Bureau Combined Statistical Areas, but it applies to any custom regional boundaries.
 
 In this tutorial, you’ll use reverse geocoding to visualize United States Census Bureau Combined Statistical Area (CSA) regions by web traffic.
 

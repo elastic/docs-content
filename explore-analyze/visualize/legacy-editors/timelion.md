@@ -9,7 +9,9 @@ products:
   
 # Timelion [timelion]
 
-To use **Timelion**, you define a graph by chaining functions together, using the **Timelion**-specific syntax. The syntax enables some features that classical point series charts don’t offer, such as pulling data from different indices or data sources into one graph.
+Timelion is a time series visualization tool that uses an expression language to define charts through chained functions. While deprecated since version 7.10, it remains available in some deployments for existing visualizations. For new work, use Lens or TSVB instead.
+
+Timelion's expression language lets you query multiple indices, perform mathematical operations across time series, and combine data sources in ways that standard visualizations don't support. You build visualizations by chaining functions together with a simple dot notation.
 
 **Timelion** is driven by a simple expression language that you use to:
 

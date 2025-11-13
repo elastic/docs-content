@@ -11,7 +11,9 @@ products:
 
 # Import geospatial data [import-geospatial-data]
 
-To import geospatical data into the Elastic Stack, the data must be indexed as [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md). Geospatial data comes in many formats. Choose an import tool based on the format of your geospatial data.
+Before visualizing geospatial data in Maps, you must index it in {{es}} as geo_point or geo_shape fields. The import method depends on your data format: you can upload GeoJSON files or shapefiles directly through the Maps interface, use the {{data-viz}} for delimited files with coordinate pairs, or programmatically index data using {{es}} APIs or {{product.logstash}}.
+
+This guide covers import options for different geospatial data formats, required permissions, and best practices for indexing location data.
 
 
 ## Security privileges [import-geospatial-privileges]

@@ -11,9 +11,9 @@ products:
 
 # Canvas function reference [canvas-function-reference]
 
-Behind the scenes, Canvas is driven by a powerful expression language, with dozens of functions and other capabilities, including table transforms, type casting, and sub-expressions.
+The Canvas expression language provides dozens of functions for transforming data, manipulating element properties, and controlling workpad behavior. Each function accepts specific arguments and returns values that can be passed to other functions through chaining or sub-expressions.
 
-The Canvas expression language also supports [TinyMath functions](canvas-tinymath-functions.md), which perform complex math calculations.
+This reference documents all available Canvas functions, organized alphabetically. Functions marked with * have required arguments, while † indicates arguments that can be passed multiple times. For mathematical operations, see the [TinyMath functions](canvas-tinymath-functions.md) reference.
 
 A **\*** denotes a required argument.
 

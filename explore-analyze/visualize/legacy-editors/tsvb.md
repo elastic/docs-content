@@ -9,7 +9,9 @@ products:
 
 # TSVB [tsvb-panel]
 
-**TSVB** is a set of visualization types that you configure and display on dashboards.
+TSVB (Time Series Visual Builder) is a legacy visualization editor specialized for time series data. While Lens now provides equivalent functionality with a more intuitive interface, TSVB remains available for existing visualizations and specific use cases where its advanced features are needed.
+
+TSVB excels at complex time series scenarios involving custom aggregation chains, annotations, and multiple {{data-sources}} in a single visualization. It supports unlimited aggregation combinations and custom mathematical functions.
 
 With **TSVB**, you can:
 

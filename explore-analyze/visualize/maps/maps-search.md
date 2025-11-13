@@ -11,7 +11,9 @@ products:
 
 # Search geographic data [maps-search]
 
-Search across the layers in your map to focus on just the data you want. Combine free text search with field-based search using the [{{kib}} Query Language](../../query-filter/languages/kql.md). Set the time filter to restrict layers by time.
+Global search and time filters in Maps narrow data across all {{es}}-backed layers simultaneously. You can use KQL queries for field-based searches, combine multiple filters, and set time ranges to focus on specific data subsets.
+
+This guide covers global search behavior, layer-specific search options, and strategies for controlling which layers respond to search criteria.
 
 This image shows an example of global search and global time narrowing results.
 

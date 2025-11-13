@@ -9,11 +9,11 @@ products:
   - id: kibana
 ---
 
-# Exploring dashboards [_use_and_filter_dashboards]
+# Explore dashboards [_use_and_filter_dashboards]
 
-Kibana dashboards support filtering, time range adjustments, and interactive controls that let you focus on specific data segments or time periods.
+When viewing a dashboard, you can refine what data appears by applying filters, adjusting time ranges, and using interactive controls. These techniques help you drill down into specific data patterns, compare different time periods, or isolate particular segments of your data set.
 
-This page covers the main ways to explore dashboard data: using KQL queries, filter pills, time ranges, and dashboard controls. You'll also learn how to view underlying data and switch between different display modes.
+This guide shows you how to filter dashboard data with {{kib}} Query Language queries, create and manage filter pills, adjust time ranges globally or per panel, use control elements, and inspect the underlying data behind visualizations.
 
 
 

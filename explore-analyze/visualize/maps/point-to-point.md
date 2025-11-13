@@ -9,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Point to point [point-to-point]
+# Point-to-point layers [point-to-point]
 
-A point-to-point connection plots aggregated data paths between the source and the destination. Thicker, darker lines symbolize more connections between a source and destination, and thinner, lighter lines symbolize less connections.
+Point-to-point layers visualize origin-destination relationships by drawing lines between source and destination locations. Line thickness and color intensity represent connection volume or frequency, with thicker, darker lines showing higher traffic and thinner, lighter lines showing lower traffic.
+
+Point-to-point layers work well for network traffic visualization, flight routes, migration patterns, and delivery logistics.
 
 Point to point uses an {{es}} [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) to group your documents by destination. Then, a nested [GeoTile grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) groups sources for each destination into grids. A line connects each source grid centroid to each destination.
 

@@ -12,10 +12,11 @@ products:
 
 
 
-# Troubleshoot [maps-troubleshooting]
+# Troubleshoot Maps [maps-troubleshooting]
 
+When Maps displays unexpected results or encounters errors, inspecting {{es}} requests and understanding common configuration issues helps identify root causes. The Maps inspector shows both vector tile and search API requests, revealing how layers query data and why certain features might not display.
 
-Use the information in this section to inspect Elasticsearch requests and find solutions to common problems.
+This guide covers inspecting {{es}} requests, troubleshooting missing or incorrect polygon displays, and resolving common layer configuration problems.
 
 
 ## Inspect Elasticsearch requests [_inspect_elasticsearch_requests]

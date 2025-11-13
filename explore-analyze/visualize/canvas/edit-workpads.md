@@ -11,7 +11,9 @@ products:
 
 # Edit workpads [edit-workpads]
 
-To create the look and feel that you want, apply format settings to the entire workpad, or individual elements.
+Customizing Canvas workpads involves creating variables for reusable patterns, applying formatting to elements and entire workpads, and styling components to achieve your desired appearance. Variables are particularly useful when cloning workpads or updating multiple elements that share common properties.
+
+This guide covers creating and using variables, applying workpad-level formatting, and customizing individual element styles.
 
 
 ## Create variables [create-variables]

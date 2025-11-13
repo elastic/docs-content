@@ -13,8 +13,9 @@ description: Categorize and organize saved objects with tags. Create color-coded
 
 # Tags [managing-tags]
 
+Tags help you organize and find saved objects by categorizing them into groups. You can create color-coded tags, assign them to multiple objects like dashboards and visualizations, and then use tags to quickly filter and locate related content in the global search or {{manage-app}} pages.
 
-Use tags to categorize your saved objects, then filter for related objects based on shared tags.
+This guide shows you how to create tags, assign them to objects, and manage tag assignments across your saved objects.
 
 To get started, go to the **Tags** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 

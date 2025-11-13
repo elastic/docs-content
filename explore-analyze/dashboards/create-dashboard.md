@@ -9,7 +9,13 @@ products:
   - id: kibana
 ---
 
-# Create a dashboard [create-dashboard]
+# Create dashboards [create-dashboard]
+
+Creating a dashboard involves assembling visualizations, controls, and other panel types into a cohesive view that tells a story about your data. You can start from scratch, add content from the Visualize Library, or combine both approaches.
+
+This guide walks through the process of creating a new dashboard, adding content, configuring settings, and saving your work.
+
+To create a dashboard:
 
 1. Open the **Dashboards** page in {{kib}}.
 2. Select **Create dashboard** to start with an empty dashboard.

@@ -11,9 +11,9 @@ products:
 
 # Connect to Elastic Maps Service [maps-connect-to-ems]
 
-[Elastic Maps Service (EMS)](https://www.elastic.co/elastic-maps-service) is a service that hosts tile layers and vector shapes of administrative boundaries. If you are using Kibana’s out-of-the-box settings, Maps is already configured to use EMS.
+{{ems}} provides base map tiles and administrative boundary vectors that Maps uses by default. In restricted or air-gapped environments, you'll need to configure firewall rules to allow {{ems-init}} connections, set up custom tile servers, or disable {{ems-init}} entirely.
 
-If you are on a restricted or fully air-gapped environment, you may need to configure your firewall to enable access to EMS resources. Find below details on the domains and HTTP headers used by Elastic Maps Service. Alternatively, Elastic Maps Service can be [disabled](#disable-ems) or [installed locally](#elastic-maps-server).
+This reference covers {{ems-init}} domain requirements, connection configuration, custom tile server setup, and local {{ems-init}} installation for offline environments.
 
 
 ## Domains [_domains]

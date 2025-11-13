@@ -14,6 +14,10 @@ products:
 
 # Troubleshooting and limitations of the Graph API [graph-troubleshooting]
 
+When Graph exploration returns unexpected results, performance issues, or missing connections, understanding the underlying sampling and filtering strategies helps you adjust settings appropriately. Graph uses statistical significance and sampling to filter noise from large data sets, but these defaults can sometimes exclude relevant details.
+
+This guide explains common issues like missing results, slow performance, and noisy connections, plus the limitations of multi-index exploration. Use these troubleshooting steps to balance performance with the level of detail you need.
+
 ## Why are results missing? [_why_are_results_missing]
 
 The default settings in Graph API requests are configured to tune out noisy results by using the following strategies:

@@ -25,10 +25,12 @@ $$$management-cross-cluster-search$$$
 $$$data-views-read-only-access$$$
 
 
-By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
+{{data-sources-cap}} define which {{es}} indices, data streams, or index aliases are accessible to {{kib}} analytics features like Discover, Lens, and Maps. A {{data-source}} can target a single index or use patterns to match multiple indices, allowing you to analyze data across related sources.
+
+Each {{data-source}} includes field definitions, formatting options, and a timestamp field for time-based filtering. You can also add runtime fields that calculate values on the fly without modifying your indexed data.
 
 ::::{note}
-In certain apps, you can also query your {{es}} data using [{{esql}}](elasticsearch://reference/query-languages/esql.md). With {{esql}}, data views aren't required.
+Some {{kib}} features support {{esql}} queries, which don't require {{data-sources}}. Refer to [{{esql}}](elasticsearch://reference/query-languages/esql.md) for details.
 ::::
 
 

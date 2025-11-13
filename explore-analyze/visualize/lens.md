@@ -14,11 +14,9 @@ products:
 
 # Lens [lens]
 
-**Lens** is {{kib}}'s drag-and-drop visualization builder. It lets you create charts without writing queries: You drag fields onto the canvas, and {{kib}} suggests the best visualization types for your data.
+Lens is the default visualization editor in {{kib}}, designed to make creating charts as simple as dragging fields onto a canvas. It automatically suggests appropriate visualization types based on your data and lets you switch between chart types with a single click.
 
-These fields come from your data indices stored in {{es}}. When you bring data into {{es}}, like logs, metrics, or business data, each piece of information becomes a field: timestamps, user names, error codes, sales amounts, and so on.
-
-Lens doesn't directly look into your {{es}} indices. You first need to specify a [data view](/explore-analyze/find-and-organize/data-views.md) that tells {{kib}} which indices to look at. When you open Lens and select a data view, you see all the fields from that data as a list you can drag and drop to build visualizations.
+To use Lens, you need a {{data-source}} that defines which {{es}} indices to visualize. Once you select a {{data-source}}, Lens presents all available fields, and you can drag them into different areas to build your visualization. The editor handles aggregations and formatting automatically, though you can customize them when needed.
 
 :::{tip}
 If you collected data using one of the {{kib}} [ingest options](/manage-data/ingest.md), uploaded a file, or added sample data, you likely have a {{data-source}} created automatically, and can start exploring your data. If not, you must create one yourself.

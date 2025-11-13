@@ -11,9 +11,9 @@ products:
 
 # Track, visualize, and alert on assets in real time [asset-tracking-tutorial]
 
-Are you interested in asset tracking? Good news! Visualizing and analyzing data that moves is easy with **Maps**. You can track the location of an IoT device and monitor a package or vehicle in transit.
+In this tutorial, you'll learn how to track moving assets using Maps with live data streams. You'll explore techniques for visualizing vehicle tracks, displaying last-known positions, styling movement direction, and creating geofence alerts to monitor when assets enter specific zones. By the end, you'll understand the workflows for building real-time asset tracking applications.
 
-In this tutorial, you’ll look at live urban transit data from the city of Portland, Oregon. You’ll watch the city buses, tram, and trains, use the data to visualize congestion, and notify a dispatch team when a vehicle enters a construction zone.
+The tutorial uses live transit data from Portland, Oregon to demonstrate tracking buses, trams, and trains, but these techniques apply to any moving assets like IoT devices, delivery vehicles, or mobile equipment.
 
 You’ll learn to:
 

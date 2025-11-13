@@ -11,9 +11,14 @@ products:
 
 # Create a dashboard with time series charts [create-a-dashboard-of-panels-with-ecommerce-data]
 
-In this tutorial, you’ll use the ecommerce sample data to analyze sales trends, but you can use any type of data to complete the tutorial.
+In this tutorial, you'll learn how to build time series visualizations that reveal patterns in your data over time. You'll explore techniques for customizing date intervals, calculating percentiles, comparing multiple data series, and analyzing percentage changes. By the end, you'll understand the core workflows for creating effective time series dashboards.
 
-When you’re done, you’ll have a complete overview of the sample web logs data.
+The tutorial uses ecommerce sample data, but you can apply these techniques to any time-based data set.
+
+**Prerequisites:**
+
+- Access to {{kib}} (version 8.0 or later)
+- Ecommerce sample data installed (instructions below)
 
 :::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
 :alt: Final dashboard with eCommerce sample data

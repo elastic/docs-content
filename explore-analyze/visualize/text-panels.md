@@ -11,7 +11,9 @@ products:
 
 # Text panels [add-text]
 
-To provide context to your dashboard panels, add **Text** panels that display important information, instructions, images, and more. You can create **Text** panels using GitHub-flavored Markdown text.
+Text panels add context to dashboards by displaying formatted text, instructions, images, and links. You write content using GitHub-flavored Markdown, which supports headings, lists, code blocks, tables, and more.
+
+Use text panels to explain dashboard purpose, provide usage instructions, document data sources, or add important notes for dashboard viewers.
 
 :::::{applies-switch}
 

@@ -11,6 +11,10 @@ products:
 
 # Supported chart types [chart-types]
 
+{{kib}} offers multiple visualization editors, each with different capabilities and supported chart types. Use this reference to compare which visualization types, features, and aggregations are available in Lens, TSVB, aggregation-based editors, Vega, and Timelion.
+
+Choose your editor based on which features you need for your specific use case. Lens provides the broadest support for standard chart types with an intuitive drag-and-drop interface, while Vega offers maximum flexibility for custom visualizations.
+
 $$$aggregation-reference$$$
 
 | Panel type | **Lens** | **TSVB** | **Aggregation-based** | **Vega** | **Timelion** |

@@ -9,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Filter a single layer [maps-layer-based-filtering]
+# Filter individual layers [maps-layer-based-filtering]
 
-You can apply a search request to individual layers by setting `Filters` in the layer details panel. Click the **Add filter** button to add a filter to a layer.
+Layer-specific filters let you apply different filter criteria to each layer without affecting other layers on the map. This approach enables focused visualizations where each layer displays a different subset or view of the data.
+
+To add layer-specific filters, use the layer details panel's filter controls. Note that layer filters don't apply to the right side of term joins.
 
 ::::{note}
 Layer filters are not applied to the right side of **term joins**. You can apply a search request to the right side of **term joins** by setting the **where** clause in the join definition. For example, suppose you have a layer with a term join where the left side is roads and the right side is traffic volume measurements. A layer filter of `roadType is "highway"` is applied to the roads index, but not to the traffic volume measurements index.

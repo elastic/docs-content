@@ -11,7 +11,14 @@ products:
 
 # Tutorial: Create a workpad for monitoring sales [canvas-tutorial]
 
-To familiarize yourself with **Canvas**, add the Sample eCommerce orders data, then use the data to create a workpad for monitoring sales at an eCommerce store.
+In this tutorial, you'll learn the fundamentals of building Canvas workpads by creating a sales monitoring dashboard. You'll explore how to add images, create metric displays, build data tables, and apply time range controls. By the end, you'll understand the core workflows for creating custom presentations with live data.
+
+The tutorial uses eCommerce sample data to demonstrate these techniques, but you can apply the same approaches to any data set.
+
+**Prerequisites:**
+
+- Access to {{kib}} (version 8.0 or later)
+- eCommerce sample data installed (instructions below)
 
 
 ## Open and set up Canvas [_open_and_set_up_canvas]

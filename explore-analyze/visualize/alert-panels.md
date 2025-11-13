@@ -9,7 +9,9 @@ products:
 
 # Alert panels
 
-To view alerts in a dashboard, add **Alerts** panels that show selected alerts. Each panel can display either **Observability** or **Security** alerts with the rule tags and rule types that you select. 
+Alert panels display {{observability}} or {{security}} alerts directly in your dashboards, providing quick visibility into active issues without switching to dedicated alert views. You can filter alerts by rule tags and types to focus on specific categories relevant to each dashboard.
+
+This guide shows you how to create alert panels, configure filters, and take actions on alerts from within your dashboard. 
 
 ## Create an alerts panel
 

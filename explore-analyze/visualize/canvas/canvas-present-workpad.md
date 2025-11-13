@@ -9,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Present your workpad [canvas-present-workpad]
+# Present workpads [canvas-present-workpad]
 
-When you are ready to present your workpad, use and enable the presentation options.
+Canvas workpads support presentation features including autoplay to cycle through pages, fullscreen mode for distraction-free viewing, and customizable auto-refresh intervals to keep data current. These features work together to create effective presentations and live monitoring displays.
+
+This guide shows you how to configure autoplay timing, enable fullscreen mode, adjust zoom levels, and control data refresh intervals.
 
 1. Configure the autoplay options.
 

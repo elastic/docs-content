@@ -11,7 +11,9 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
-Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, it makes your dashboard easier to read, faster to load, and helps its viewers locate important information quicker.
+Well-organized dashboard layouts help viewers find information quickly and improve overall performance. You can arrange panels into collapsible sections, resize and reposition them, and use keyboard controls for precise placement.
+
+This guide shows you how to create collapsible sections, move and resize panels using mouse or keyboard, and duplicate panels across dashboards.
 
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}

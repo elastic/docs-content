@@ -12,9 +12,9 @@ description: Access and manage files uploaded to Kibana from features like cases
 
 # Files [files]
 
-Several features let you upload files. For example, you can add files to [cases](../../solutions/observability/incident-management/cases.md) or upload a logo to an [Image panel](../visualize/image-panels.md) in a dashboard.
+The Files management page provides a centralized view of all files uploaded to {{kib}}, including images added to dashboards, attachments in cases, and other uploaded assets. From this page, you can view file metadata, download files, or delete them to manage storage.
 
-You can access and manage all of the files currently stored in {{kib}} from the **Files** page.
+Files uploaded through different {{kib}} features appear here regardless of where they were originally added, making it easier to audit file usage and maintain your {{kib}} instance.
 
 :::{image} /explore-analyze/images/serverless-file-management.png
 :alt: Files UI

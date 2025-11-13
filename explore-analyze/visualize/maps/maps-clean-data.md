@@ -9,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Clean your data [maps-clean-your-data]
+# Clean geospatial data [maps-clean-your-data]
 
-Geospatial fields in {{es}} have certain restrictions that need to be addressed before upload. On this section a few recipes will be presented to help troubleshooting common issues on this type of data.
+Before uploading geospatial data to {{es}}, you may need to address format incompatibilities, geometry errors, or field restrictions. Common issues include unsupported file formats, invalid geometries, and field names that conflict with {{es}} reserved words.
+
+This guide provides recipes for converting formats, fixing geometry problems, and preparing data to meet {{es}} geospatial field requirements.
 
 
 ## Convert to GeoJSON or Shapefile [_convert_to_geojson_or_shapefile] 
