@@ -29,7 +29,7 @@ Elastic provides three serverless solutions available on {{ecloud}}. Follow thes
 
 * **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
 * **[{{obs-serverless}}](../../../solutions/observability/get-started.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
-* **[{{sec-serverless}}](../../../solutions/security/get-started/create-security-project.md)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
+* **[{{sec-serverless}}](../../../solutions/security/get-started.md#create-sec-serverless-project)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 Afterwards, you can:
 
