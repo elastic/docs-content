@@ -1,4 +1,5 @@
 ---
+description: Generate reports automatically using {{watcher}}, scripts, or scheduled tasks. Configure recurring exports and share PDF, PNG, or CSV reports by email.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/automating-report-generation.html
 applies_to:
@@ -10,11 +11,23 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1 and Serverless, you can use {{kib}} to generate reports on a recurring schedule and share them with a list of emails that you specify.
+Automate report generation to share dashboards, visualizations, and data exports on a regular schedule. You can use {{watcher}} or scripts to trigger report generation through a POST URL, or set up recurring schedules directly in {{kib}} to generate and email reports automatically.
+
+Three approaches are available for automating reports:
+
+* **{{watcher}}**: Configure watches that generate and email reports based on schedules or conditions
+* **Scripts**: Use HTTP POST requests to programmatically generate reports on demand
+* **Scheduled exports**: {applies_to}`stack: preview 9.1, serverless: preview` Set up recurring tasks in {{kib}} that automatically generate and share reports by email
+
+**Prerequisites:**
+
+* Appropriate {{kib}} privileges to create reports
+* {applies_to}`stack: ga` API key or user credentials with reporting permissions
+* {applies_to}`stack: preview 9.1, serverless: preview` For scheduled email sharing, a configured email connector
 
 :::{note}
 :applies_to: {stack: ga, serverless: unavailable}
-API keys are used to authenticate requests to generate reports. If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the leader index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+{{api-keys-app}} are used to authenticate requests to generate reports. If you have a {{ccs}} environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the leader index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
 :::
 
 ## Create a POST URL [create-a-post-url]

@@ -1,4 +1,5 @@
 ---
+description: Diagnose and resolve common reporting errors including version conflicts, max attempts reached, and timeout issues. Enable verbose logging for troubleshooting.
 navigation_title: Troubleshoot reporting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting.html
@@ -13,10 +14,15 @@ products:
 
 # Troubleshoot report errors and logs in {{kib}} [reporting-troubleshooting]
 
+{{report-features}} in {{kib}} are designed for simple data exports and visualizations, not bulk data export or large-scale operations. When you encounter issues generating reports, understanding common error messages and enabling verbose logging can help you diagnose and resolve problems quickly.
 
-Kibana excels as a data visualization tool. The {{report-features}} exist to export data as simple reports, however Kibana is not a data export tool. To export data at a large scale, there are better ways and better architectures for exporting data at scale from Elasticsearch.
+Common issues include:
 
-If you have trouble creating simple reports, there are some general solutions to common problems you might encounter while using {{report-features}}. For tips related to specific types of reports, refer to [CSV](reporting-troubleshooting-csv.md) and [PDF/PNG](reporting-troubleshooting-pdf.md).
+* Version conflict exceptions in clustered environments
+* "Max attempts reached" errors due to timeouts or configuration issues
+* Report failures with large datasets or complex visualizations
+
+For issues specific to report formats, refer to [CSV troubleshooting](reporting-troubleshooting-csv.md) and [PDF/PNG troubleshooting](reporting-troubleshooting-pdf.md).
 
 
 ## Error messages [reporting-troubleshooting-error-messages]

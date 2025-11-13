@@ -1,4 +1,5 @@
 ---
+description: Troubleshoot PDF and PNG export issues including browser dependencies, sandbox requirements, font rendering, connection errors, and system requirements.
 navigation_title: PDF/PNG
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting-pdf.html
@@ -13,16 +14,26 @@ products:
 
 # PDF/PNG [reporting-troubleshooting-pdf]
 
+PDF and PNG reporting in {{kib}} uses a headless Chromium browser to capture screenshots of dashboards and visualizations. Issues can occur due to missing system dependencies, sandbox restrictions, font problems, or resource constraints. This page helps you diagnose and resolve common PDF and PNG export problems.
+
+Common issues include:
+
+* Missing Network Security Service (NSS) libraries
+* Chromium sandbox requirements and user namespace restrictions
+* Text rendering incorrectly due to missing fonts
+* Connection refused errors with server host settings
+* Memory limitations causing page crashes
+
+**Technical summary**: Use the built-in reporting diagnostics tool at **{{reports-app}} > Run reporting diagnostics** to identify common configuration issues. For Docker or {{ecloud}} deployments, most dependencies are preconfigured.
+
+For general troubleshooting guidance, refer to [Troubleshooting](reporting-troubleshooting.md).
 
 ::::{note}
-We recommend using PNG/PDF reports to export moderate amounts of data only. The feature enables a high-level export capability, but it’s not intended for bulk export. If you need to export several pages of image data, consider using multiple report jobs to export a small number of pages at a time. If the screenshot of exported dashboard contains a large number of pixels, consider splitting the large dashboard into smaller artifacts to use less memory and CPU resources.
+PDF and PNG reports work best with moderate amounts of visual data. The feature provides high-level export capability but is not intended for bulk export. If you need to export several pages of image data, use multiple report jobs to export a small number of pages at a time. If exported dashboard screenshots contain a large number of pixels, split large dashboards into smaller artifacts to reduce memory and CPU usage.
 
-For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../deploy-manage/deploy/self-managed/install-kibana-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
+For the most reliable configuration of PDF/PNG {{report-features}}, install {{kib}} using [Docker](../../deploy-manage/deploy/self-managed/install-kibana-with-docker.md) or use [{{ecloud}}](https://cloud.elastic.co).
 
 ::::
-
-
-For more advice about common problems, refer to [Troubleshooting](reporting-troubleshooting.md).
 
 
 ## Reporting diagnostics [reporting-diagnostics]
