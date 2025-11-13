@@ -6,6 +6,14 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+## October 27, 2025 [serverless-changelog-10272025-breaking]
+
+* Implements native synthetic source for normalized keywords [#136915](https://github.com/elastic/elasticsearch/pull/136915)
+
+## August 25, 2025 [serverless-changelog-08252025-breaking]
+
+* Prevents normalizing fields of type text when the index mode is LogsDB or TSDB [#131317](https://github.com/elastic/elasticsearch/pull/131317)
+
 ## August 11, 2025 [elastic-cloud-serverless-08112025-breaking]
 * Improves advanced settings management APIs privilege checks [#230067]({{kib-pull}}230067)
 
