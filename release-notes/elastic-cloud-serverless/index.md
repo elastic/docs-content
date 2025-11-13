@@ -26,7 +26,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds subquery support for columns after and validation in Discover [#241567]({{kib-pull}}241567)
 * Adds support for Discover subqueries in FROM clauses across tools [#242166]({{kib-pull}}242166)
 * Enables users to view the SLO associated with a burn rate rule on the rule details page in Elastic Observability Serverless [#240535]({{kib-pull}}240535)
-* Exposes 'sampling_rate' agent central config options to users in Elastic Observability Serverless [#241908]({{kib-pull}}241908)
+* Exposes `sampling_rate` agent central config options to users in Elastic Observability Serverless [#241908]({{kib-pull}}241908)
 * Makes the Elastic logo open a custom home page in solution view [#241571]({{kib-pull}}241571)
 * Enforces the `object_src 'none'` directive in Kibana's Content Security Policy [#241029]({{kib-pull}}241029)
 * Adds origin configuration options for authentication providers [#239993]({{kib-pull}}239993)
