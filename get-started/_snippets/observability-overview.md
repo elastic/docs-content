@@ -14,7 +14,7 @@ Apply {{observability}} to various scenarios to improve operational awareness an
 
 :::{dropdown} Use cases
 :open:
-* **[Log monitoring and analytics](/solutions/observability/logs.md):** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
+* **[Log monitoring and analytics](/solutions/observability/logs.md):** Centralize and analyze petabytes of log data from any source. This enables quick searching, querying with ES|QL if needed, and visualization with prebuilt dashboards to diagnose issues.
 * **[Application Performance Monitoring (APM)](/solutions/observability/applications/index.md):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
 * **[Infrastructure monitoring](/solutions/observability/infra-and-hosts.md):** Monitor metrics from servers, virtual machines, containers, and serverless environments with over 400 out-of-the-box integrations, including OpenTelemetry. This provides deep insights into resource utilization and overall system health.
 * **[AI-powered log analysis with Streams](/solutions/observability/streams/streams.md):** Ingest raw logs in any format directly to a single endpoint without the need for complex agent management or manual parsing pipelines. Streams leverages AI to automatically parse, structure, and analyze log data on the fly.
@@ -40,7 +40,7 @@ At the heart of Elastic {{observability}} are several key components that enable
   * [**Logs:**](/solutions/observability/logs.md) Timestamped records of events that provide detailed, contextual information.
   * [**Metrics:**](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) Numerical measurements of system performance and health over time.
   * [**Traces:**](/solutions/observability/apm/traces.md) Representations of end-to-end journeys of requests as they travel through distributed systems.
-* [**OpenTelemetry:**](/solutions/observability/apm/opentelemetry/index.md) {{Observability}} offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the {{edot}} (EDOT).
+* [**OpenTelemetry:**](/solutions/observability/apm/opentelemetry/index.md) {{Observability}} offers top-level, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the {{edot}} (EDOT).
 * [**AIOps and AI Assistant:**](/solutions/observability/observability-ai-assistant.md) Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config {{anomaly-detect}}, pattern analysis, and the ability to surface correlations and root causes.
 * **[Alerting](/solutions/observability/incident-management/alerting.md)**: Allows you to create  rules to detect complex conditions and perform actions. 
 * **[Cases](/solutions/observability/incident-management/cases.md):** Cases allows teams to stay aware of potential issues and track investigation details, assign tasks, and collaborate on resolutions.

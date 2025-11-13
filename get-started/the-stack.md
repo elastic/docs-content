@@ -20,9 +20,9 @@ $$$kibana-navigation-search$$$
 
 ## An overview of the {{stack}} [stack-components]
 
-What is the {{stack}}? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
+What is the {{stack}}? It's a fast and highly scalable set of components—{{es}}, {{kib}}, {{beats}}, {{ls}}, and others—that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
 
-The products in the {{es}} are designed to be used together and releases are synchronized to simplify the installation and upgrade process.
+The products in the {{es}} are designed to work together. We synchronize their releases to simplify the installation and upgrades.
 
 You have many options for deploying the {{stack}} to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
 
@@ -50,7 +50,7 @@ Trying to decide which ingest component to use? Refer to [Adding data to {{es}}]
 
 #### APM [stack-components-apm]
 
-Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apm/index.md).
+Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it efficient to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apm/index.md).
 
 #### {{beats}} [stack-components-beats]
 

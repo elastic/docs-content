@@ -19,11 +19,11 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 # Elastic fundamentals
 
-Welcome to Elastic fundamentals!
+Welcome to Elastic fundamentals.
 
-In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together. 
+In this section, we walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together. 
 
-You'll also find other helpful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology. Whether you're exercising your options and are curious about what Elastic can offer, are just getting started, or are looking to dive deeper, this is a great place to begin.
+You also find other helpful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology. Whether you're exercising your options and are curious about what Elastic can offer, are getting started, or are looking to dive deeper, this is a great place to begin.
 
 ## What is Elastic? [what-is-es]
 
@@ -35,7 +35,7 @@ Elastic provides an open source search, analytics, and AI platform, and out-of-t
 
 ## Explore the fundamentals
 
-Continue your journey with these essential guides that will help you understand and work with Elastic:
+Continue your journey with these essential guides that help you understand and work with Elastic:
 
 * **[](/get-started/introduction.md)**: Get an introduction to the {{es}}, Elastic {{observability}}, and {{elastic-sec}} solutions and projects.
 
@@ -47,7 +47,7 @@ Continue your journey with these essential guides that will help you understand 
 
 ## Training resources
 
-Whether you are just getting started with Elastic, an expert, or simply want to expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
+Whether you are getting started with Elastic, an expert, or want to efficiently expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
 
 Ready to dive in? Check out [https://www.elastic.co/training](https://www.elastic.co/training) to browse our virtual and on-demand training courses. If you're unsure where to start, check out the [Elasticsearch Engineer](https://www.elastic.co/training/elasticsearch-engineer) course. 
 
@@ -60,4 +60,4 @@ Check out these additional resources to learn and explore other areas of Elastic
 
 * **[Deploy and manage](/deploy-manage/index.md)**: Learn how to deploy and manage all aspects of your Elastic environment.
 * **[Manage data](/manage-data/index.md)**: Learn how to ingest and manage data stored in {{es}}. 
-* **[How to use the documentation](/get-started/howto-use-the-docs.md)**: Understand how our documentation is organized, find the right version information for your products, and learn how to contribute.
+* **[How to use the documentation](/get-started/howto-use-the-docs.md)**: Understand how we organize our documentation, find the right version information for your products, and learn how to contribute.

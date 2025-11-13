@@ -22,7 +22,7 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 
 :::{tip}
-Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
+Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations use our products for their specific business needs.
 :::
 
 Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.

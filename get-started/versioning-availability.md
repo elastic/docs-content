@@ -7,34 +7,34 @@ applies_to:
   stack:
 products:
   - id: elastic-stack
-description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that are supported, how to read availability badges, and...
+description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that Elastic supports, how to read availability badges, and more.
 ---
 
 # Versioning and availability
 
-Learn how Elastic products are versioned, the lifecycle of features, and how to find the relevant documentation for your deployment type and product version. Find answers to common questions about the versioning and confidently navigate our continuously updated documentation.
+Learn how Elastic versions products, the lifecycle of features, and how to find the relevant documentation for your deployment type and product version. Find answers to common questions about the versioning and confidently navigate our continuously updated documentation.
 
 ## Understanding versioning
 
 Many components of the [{{stack}}](/get-started/the-stack.md) (such as {{es}} and {{kib}}) share the same versioning pattern.
 In Elastic documentation, this group of components is typically referred to as the {{stack}}.
 
-Orchestrators such as {{ece}} and {{eck}}, and other tools such as code clients and SDKs, are versioned independently of the {{stack}}. The {{ecloud}} console and {{serverless-short}} projects are always automatically updated with the latest changes.
+Elastic versions orchestrators such as {{ece}} and {{eck}}, and other tools such as code clients and SDKs, independently of the {{stack}}. The {{ecloud}} console and {{serverless-short}} projects are always automatically updated with the latest changes.
 
 Need docs for an earlier version? Go to [elastic.co/guide](https://www.elastic.co/guide).
 
-### Why doesn't Elastic have separate documentation for each version?
+### Why Elastic doesn't have separate documentation for each version
 
-Starting with {{stack}} 9.0.0, Elastic no longer publishes separate documentation sets for each minor release. Instead, all changes in the 9.x series are included in a single, continuously updated documentation set.
+Starting with {{stack}} 9.0.0, Elastic no longer publishes separate documentation sets for each minor release. Instead, all changes in the 9.x series appear in a single, continuously updated documentation set.
 
 This approach helps:
 * Reduce duplicate pages
 * Show a feature's full history and context
 * Simplify search and navigation
 
-### How do I know content was added in a specific version?
+### How to identify content added in a specific version
 
-We clearly mark content added or changed in a specific version using availability badges. The availability badges appear in page headers, section headers, and inline.
+We clearly mark content that we added or changed in a specific version using availability badges. The availability badges appear in page headers, section headers, and inline.
 
 #### Elastic Stack example
 
@@ -74,7 +74,7 @@ This means the feature is:
 Want to learn more about how we use availability badges? Check out the [Elastic Docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/).
 :::
 
-### What if I'm using a version earlier than {{stack}} 9.0.0?
+### Using a version earlier than {{stack}} 9.0.0
 
 Documentation for {{stack}} 8.19.0 and earlier is available at [elastic.co/guide](https://www.elastic.co/guide).
 
@@ -89,7 +89,7 @@ We frequently update Elastic Docs to reflect the following:
 
 To learn what's changed, check the [release notes](/release-notes/index.md) for each Elastic product.
 
-### How do I know what the current {{stack}} version is?
+### How to identify the current {{stack}} version
 
 To ensure you're always viewing the most up-to-date and relevant documentation, the version dropdown at the top of each page shows the most recent 9.x release. For example, 9.0+.
 
@@ -99,7 +99,7 @@ The components of the {{stack}} typically use semantic versioning in the `X.Y.Z`
 
 | Version | Description |
 | ----- | ----- |
-| Major (X) | Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version may require changes to your existing setup and configurations. |
+| Major (X) | Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version can require changes to your existing setup and configurations. |
 | Minor (Y) | Introduces new features and improvements, while maintaining backward compatibility with the previous minor versions within the same major version. Upgrading to a new minor version should not require any changes to your existing setup. |
 | Patch (Z) | Contains bug fixes and security updates, without introducing new features or breaking changes. Upgrading to a new patch version should be seamless and not require any changes to your existing setup. |
 
@@ -124,9 +124,9 @@ Available features can differ based on deployment type, product lifecycle stage,
 | Technical preview | Feature is in early development stage |
 | Beta | Feature is nearing general availability, but not yet production ready |
 | Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
-| Deprecated | Feature is still usable, but is planned to be removed or replaced in a future update |
-| Removed | Feature can no longer be used |
-| Unavailable | Feature is unsupported in this deployment type or version |
+| Deprecated | Feature is still usable, but we plan to remove or replace it in a future update |
+| Removed | You can no longer use this feature |
+| Unavailable | This deployment type or version doesn't support this feature |
 
 ### Examples of where availability can vary
 
