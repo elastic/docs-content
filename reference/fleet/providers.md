@@ -21,11 +21,11 @@ For example, if a provider named `foo` provides `{"key1": "value1", "key2": "val
 
 How you use providers depends on whether you're running a standalone or a {{fleet}}-managed {{agent}}.
 
-### Standalone {{agent}}
+### Using providers on standalone {{agent}} [using-providers-standalone-agent]
 
 On standalone {{agent}}, providers can be configured through the `providers` key in the `elastic-agent.yml` configuration file. You can enable, disable, and configure provider settings as needed. For more details, refer to [Provider configuration](#provider_configuration).
 
-### {{fleet}}-managed {{agent}}
+### Using providers on {{fleet}}-managed {{agent}} [using-providers-fleet-managed-agent]
 
 On {{fleet}}-managed {{agent}}, you can use provider variables in integration policy settings (for example, `${host.name}`, `${env.foo}`, `${agent.id}`), but you cannot add a `providers` configuration block directly through the {{fleet}} UI.
 
@@ -84,7 +84,7 @@ Context providers use the {{product.ecs}} naming to ensure consistency and under
 * [Kubernetes LeaderElection provider](/reference/fleet/kubernetes_leaderelection-provider.md)
 
 
-### Dynamic Providers [dynamic-providers]
+### Dynamic providers [dynamic-providers]
 
 Dynamic providers give an array of multiple key-value mappings. Each key-value mapping is combined with the previous context provider’s key and value mapping which provides a new unique mapping that is used to generate a configuration.
 
@@ -95,7 +95,7 @@ Dynamic providers give an array of multiple key-value mappings. Each key-value m
 * [Kubernetes provider](/reference/fleet/kubernetes-provider.md)
 
 
-### Disabling Providers By Default [disable-providers-by-default]
+### Disabling providers by default [disable-providers-by-default]
 
 All registered providers are disabled by default until they are referenced in a policy.
 
