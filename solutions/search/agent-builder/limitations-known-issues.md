@@ -67,11 +67,15 @@ This results in parsing errors like this:
 ]
 ```
 
-### MCP server URL copy button does not include space name
+### MCP server URL copy button omits space name
 
-When using the **Copy your MCP server URL** button in the Tools UI from a custom {{kib}} Space, the copied URL does not include the space name in the path.
+:::{note}
+Fixed on serverless and 9.3.
+:::
 
-**Workaround:** Manually add `/s/<space-name>` to the URL after your deployment URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+On 9.2 deployments, the **Copy your MCP server URL** button does not include the space name when used from a custom {{kib}} Space.
+
+**Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#spaces).
 

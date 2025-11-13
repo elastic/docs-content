@@ -209,7 +209,7 @@ The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
 :::
 
 :::{important}
-If you're using a custom {{kib}} Space, the copied URL will not include the space name. You must manually add `/s/<space-name>` to the URL path. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-does-not-include-space-name) with the copy button in 9.2.
 :::
 
 For detailed MCP server configuration, refer to [MCP server](mcp-server.md).
