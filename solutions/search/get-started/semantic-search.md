@@ -74,7 +74,7 @@ import os
 from elasticsearch import Elasticsearch
 
 client = Elasticsearch(
-    hosts=["$ELASTICSEARCH_URL"],
+    hosts=[os.getenv("ELASTICSEARCH_URL")],
     api_key=os.getenv("ELASTIC_API_KEY"),
 )
 
@@ -91,7 +91,7 @@ resp = client.indices.create(
 const { Client } = require("@elastic/elasticsearch");
 
 const client = new Client({
-  nodes: ["$ELASTICSEARCH_URL"],
+  nodes: [process.env["ELASTICSEARCH_URL"]],
   auth: {
     apiKey: process.env["ELASTIC_API_KEY"],
   },
@@ -117,7 +117,7 @@ require(__DIR__ . "/vendor/autoload.php");
 use Elastic\Elasticsearch\ClientBuilder;
 
 $client = ClientBuilder::create()
-    ->setHosts(["$ELASTICSEARCH_URL"])
+    ->setHosts([getenv("ELASTICSEARCH_URL")])
     ->setApiKey(getenv("ELASTIC_API_KEY"))
     ->build();
 
@@ -134,7 +134,7 @@ $resp = $client->indices()->create([
 require "elasticsearch"
 
 client = Elasticsearch::Client.new(
-  host: "$ELASTICSEARCH_URL",
+  host: ENV["ELASTICSEARCH_URL"],
   api_key: ENV["ELASTIC_API_KEY"]
 )
 
