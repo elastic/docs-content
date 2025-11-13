@@ -10,7 +10,10 @@ products:
 
 # Manage transport certificates on ECK [k8s-transport-settings]
 
-The transport module in {{es}} is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [{{es}} documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Access services](../deploy/cloud-on-k8s/accessing-services.md) and [HTTP TLS certificates](./k8s-https-settings.md).
+The transport module in {{es}} is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [{{es}} documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, refer to [Access services](../deploy/cloud-on-k8s/accessing-services.md) and [HTTP TLS certificates](./k8s-https-settings.md).
+
+:::{include} ./_snippets/own-ca-warning.md
+:::
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 
@@ -74,9 +77,6 @@ spec:
 
 
 ## Issue node transport certificates with third-party tools [k8s-transport-third-party-tools]
-
-:::{include} ./_snippets/own-ca-warning.md
-:::
 
 When following the instructions in [Configure a custom Certificate Authority](#k8s-transport-ca) the issuance of certificates is orchestrated by the ECK operator and the operator needs access to the CAs private key. If this is undesirable it is also possible to configure node transport certificates without involving the ECK operator. The following two pre-requisites apply:
 
