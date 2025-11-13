@@ -12,9 +12,9 @@ description: View and manage generated reports for saved searches, dashboards, a
 
 # Reports [reports]
 
-The {{reports-app}} management page displays a history of generated reports from Discover searches, dashboards, and visualizations. From this page, you can download completed reports, view report details, or delete old reports to manage storage.
+The {{reports-app}} management page displays a history of generated reports from Discover searches, dashboards, and visualizations. From this page, you can download completed reports, view report details, or remove old reports to manage storage.
 
-{{reports-app}} are typically generated as CSV files for Discover searches or PDFs for dashboards and visualizations. The management interface shows report status, creation time, and file size.
+Reports are typically generated as CSV files for Discover searches or PDFs for dashboards and visualizations. The management interface shows report status, creation time, and file size.
 
 :::{image} /explore-analyze/images/serverless-reports-management.png
 :alt: {{reports-app}}
