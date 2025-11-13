@@ -463,8 +463,7 @@ headers.
 
 #### On the local cluster [_certificate_identity_local_cluster]
 
-The local cluster must be configured to sign cross-cluster requests with a certificate-private key pair. You can generate a signing 
-certificate using [elasticsearch-certutil](#remote-clusters-security-api-key-remote-action) or use an existing certificate. 
+When [adding the remote cluster](#using-the-es-api) to the local cluster, you must configure it to sign cross-cluster requests with a certificate–private key pair. You can generate a signing certificate using [elasticsearch-certutil](#remote-clusters-security-api-key-remote-action) or use an existing certificate.
 
 ```yaml
 cluster.remote.my_remote_cluster.signing.certificate: "path/to/signing/certificate.crt"
