@@ -17,7 +17,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds the ability to preview index requests in transforms [#137455]({{es-pull}}137455)
 * Allows field capabilities to span across Elasticsearch Serverless projects [#137530]({{es-pull}}137530)
 * Improves {{esql}} performance by skipping unnecessary query plan diff calculations in Elasticsearch Serverless [#137721]({{es-pull}}137721)
-* Passes the {{es}} version in the EIS inference request header in Elasticsearch Serverless[#137643]({{es-pull}}137643)
+* Passes the {{es}} version in the EIS inference request header in Elasticsearch Serverless [#137643]({{es-pull}}137643)
 * Introduces a synthetic `_id` format for time-series data streams in Elasticsearch Serverless [#137274]({{es-pull}}137274)
 * Updates the Dashboard top navigation to include a **Save Menu** [#237211]({{kib-pull}}237211)
 * Moves visualization configuration settings, including appearance, titles and text, axis, and legend to a flyout panel in **Lens** [#240804]({{kib-pull}}240804)
