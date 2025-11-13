@@ -49,7 +49,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures {{esql}} full text functions accept `null` values as field parameters in Elasticsearch Serverless  [#137430]({{es-pull}}137430)
 * Fixes a missing attribute issue in {{esql}} full text functions in Elasticsearch Serverless [#137395]({{es-pull}}137395)
 * Fixes a bug in `RankDocRetrieverBuilder` when `from` is set to the default -1 value [#137637]({{es-pull}}137637)
-* Prevents use-after-close errors in async search by making `MutableSearchResponse` reference-counted in Elasticsearch Serverless [#134359]({{es-pull}}134359)
+* Prevents use-after-close errors in async search by making `MutableSearchResponse` reference-counted  [#134359]({{es-pull}}134359)
 * Removes early phase failures during batched search execution in Elasticsearch Serverless [#136889]({{es-pull}}136889)
 * Improves SQL validation errors by providing more descriptive exception messages in Elasticsearch Serverless [#137560]({{es-pull}}137560)
 * Correctly accounts for additional settings providers when determining data stream effective settings in Elasticsearch Serverless [#137407]({{es-pull}}137407)
