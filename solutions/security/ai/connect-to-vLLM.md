@@ -73,9 +73,12 @@ vllm/vllm-openai:v0.9.1 \
 --tensor-parallel-size 2
 ```
 
-.**Click to expand a full explanation of the command** 
+
+.Click to expand a full explanation of the command
 [%collapsible]
 =====
+
+```
 `--gpus all`: Exposes all available GPUs to the container.
 `--name`: Defines a name for the container.
 `-v /root/.cache/huggingface:/root/.cache/huggingface`: Hugging Face cache directory (optional if used with `HUGGING_FACE_HUB_TOKEN`).
@@ -89,6 +92,8 @@ vllm/vllm-openai:v0.9.1 \
 `-enable-auto-tool-choice`: Enables automatic function calling.
 `--gpu-memory-utilization 0.90`: Limits max GPU used by vLLM (may vary depending on the machine resources available).
 `--tensor-parallel-size 2`: This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems. 
+```
+
 =====
 
 3. Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
