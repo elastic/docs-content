@@ -209,7 +209,7 @@ The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
 :::
 
 :::{important}
-There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-does-not-include-space-name) with the copy button in 9.2.
+There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.
 :::
 
 For detailed MCP server configuration, refer to [MCP server](mcp-server.md).
