@@ -101,7 +101,7 @@ Change how {{kib}} displays a field.
 
 ### Filter the documents [document-explorer-compare-data]
 
-Narrow your results to a subset of documents so you’re comparing just the data of interest.
+Narrow your results to a subset of documents so you're comparing the data of interest.
 
 1. Select the documents you want to compare.
 2. Click the **Selected** option, and then select **Show selected documents only**.

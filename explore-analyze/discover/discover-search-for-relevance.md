@@ -29,7 +29,7 @@ This example shows how to use **Discover** to list your documents from most rele
 4. From the list of **Meta fields** list in the sidebar, add `_score`.
 5. Add any other fields you want to the document table.
 
-    At this point, you’re sorting by the`timestamp` field.
+    You're sorting by the`timestamp` field.
 
 6. To turn off sorting by the `timestamp` field, click the **field sorted** option, and then click **Clear sorting.**
 7. Open the **Pick fields to sort by** menu, and then click **_score**.

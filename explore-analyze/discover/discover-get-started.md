@@ -88,7 +88,7 @@ You can later filter the data that shows in the chart and in the table by specif
 
 **Discover** provides utilities designed to help you make sense of your data:
 
-1. In the sidebar, check the available fields. It’s very common to have hundreds of fields. Use the search at the top of that sidebar to look for specific terms in the field names.
+1. In the sidebar, check the available fields. It's common to have hundreds of fields. Use the search at the top of that sidebar to look for specific terms in the field names.
    In this example, we’ve entered `ma` in the search field to find the `manufacturer` field.
    ![Fields list that displays the top five search results](/explore-analyze/images/kibana-discover-sidebar-available-fields.png "title =40%")
    ::::{tip}
@@ -238,7 +238,7 @@ Dive into an individual document to view its fields and the documents that occur
    * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
 
    ::::{tip}
-   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
+   You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
 3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
@@ -298,7 +298,7 @@ You can use **Discover** with the Elasticsearch Query Language, ES|QL. When usin
 You can switch to the ES|QL mode of Discover from the application menu bar.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
-Note that in ES|QL mode, the **Documents** tab is named **Results**.
+In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
 {applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
