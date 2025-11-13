@@ -558,7 +558,6 @@ toc:
           - file: security/ai/ease/ease-intro.md
             children:
               - file: security/ai/ease/ease-alerts.md
-              - file: security/ai/ease/ease-value-report.md
               - file: security/ai/ease/ease-upgrade.md
           - file: security/ai/ai-assistant.md
             children:
@@ -578,6 +577,7 @@ toc:
               - file: security/ai/triage-alerts.md
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
+          - file: security/ai/ease/ease-value-report.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/detections-requirements.md
