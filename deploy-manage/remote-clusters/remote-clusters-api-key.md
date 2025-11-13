@@ -23,10 +23,10 @@ The local cluster must trust the remote cluster on the remote cluster interface.
 To add a remote cluster using API key authentication:
 
 1. [Review the prerequisites](#remote-clusters-prerequisites-api-key)
-2. [Establish trust with a remote cluster](#remote-clusters-security-api-key) 
-   1. (Optional) [Configure remote cluster strong verification](#remote-cluster-strong-verification) for additional security
+2. [Establish trust with a remote cluster](#remote-clusters-security-api-key)
 3. [Connect to a remote cluster](#remote-clusters-connect-api-key)
-4. [Configure roles and users](#remote-clusters-privileges-api-key)
+4. (Optional) [Configure strong identity verification](#remote-cluster-strong-verification)
+5. [Configure roles and users](#remote-clusters-privileges-api-key)
 
 
 If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
@@ -340,6 +340,85 @@ cluster:
 3. The address for the proxy endpoint used to connect to `cluster_three`.
 
 
+## Strong identity verification [remote-cluster-strong-verification]
+```{applies_to}
+deployment:
+  stack: preview 9.3
+```
+
+Cross-cluster API keys can be configured with strong identity verification to provide an additional layer of security. To enable this feature, a
+cross-cluster API key is created on the remote cluster with a certificate identity pattern that specifies which certificates are allowed
+to use it. The local cluster must then sign each request with its private key and include a certificate whose subject Distinguished Name
+(DN) matches the pattern. The remote cluster validates both that the certificate is trusted by its configured certificate authorities
+and that the certificate's subject matches the API key's identity pattern.
+
+Each remote cluster alias on the local cluster can have different remote signing configurations.
+
+### How strong identity verification works [_how_strong_verification_works]
+
+When a local cluster makes a request to a remote cluster using a cross-cluster API key:
+
+1. The local cluster signs the request headers with its configured private key and sends the signature and certificate chain as header
+   in the request to the remote cluster.
+2. The remote cluster verifies that the API key is valid.
+3. If the API key has a certificate identity pattern configured, the remote cluster extracts the Distinguished Name (DN) from the
+   certificate chain's leaf certificate and matches it against the certificate identity pattern.
+4. The remote cluster validates that the provided certificate chain is trusted.
+5. The remote cluster validates the signature and checks that the certificate is not expired.
+
+If any of these validation steps fail, the request is rejected.
+
+### Configure strong identity verification [_configure_strong_verification]
+
+To use strong identity verification, the local and remote clusters must be configured to sign request headers and to verify request
+headers. This can be done through the cluster settings API or `elasticsearch.yaml`.
+
+#### On the local cluster [_certificate_identity_local_cluster]
+
+When [adding the remote cluster](#using-the-es-api) to the local cluster, you must configure it to sign cross-cluster requests with a certificate–private key pair. You can generate a signing certificate using [elasticsearch-certutil](#remote-clusters-security-api-key-remote-action) or use an existing certificate. The private key can be encrypted and the password must be stored securely as a secure setting in Elasticsearch keystore. Refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings) for details.
+
+```yaml
+cluster.remote.my_remote_cluster.signing.certificate: "path/to/signing/certificate.crt"
+cluster.remote.my_remote_cluster.signing.key: "path/to/signing/key.key"
+```
+
+::::{note}
+Replace `my_remote_cluster` with your remote cluster alias, and the paths with the paths to your certificate and key files.
+::::
+
+#### On the remote cluster [_certificate_identity_remote_cluster]
+
+The remote cluster must be configured with a certificate authority that trusts the certificate that was used to sign the request headers.
+
+```yaml
+cluster.remote.signing.certificate_authorities: "path/to/signing/certificate_authorities.crt"
+```
+
+When creating a cross-cluster API key on the remote cluster, specify a `certificate_identity` pattern that matches the Distinguished
+Name (DN) of the local cluster's certificate. Use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API:
+
+```console
+POST /_security/cross_cluster/api_key
+{
+  "name": "my-cross-cluster-api-key",
+  "access": {
+    "search": [
+      {
+        "names": ["logs-*"]
+      }
+    ]
+  },
+  "certificate_identity": "CN=local-cluster.example.com,O=Example Corp,C=US"
+}
+```
+
+The `certificate_identity` field supports regular expressions. For example:
+
+* `"CN=.*.example.com,O=Example Corp,C=US"` matches any certificate with a CN ending in "example.com"
+* `"CN=local-cluster.*,O=Example Corp,C=US"` matches any certificate with a CN starting with "local-cluster"
+* `"CN=.*"` matches any certificate (not recommended for production)
+
+For a full list of available strong identity verification settings for remote clusters, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings).
 
 
 ## Configure roles and users [remote-clusters-privileges-api-key]
@@ -426,84 +505,3 @@ POST /_security/user/cross-search-user
 ```
 
 Note that you only need to create this user on the local cluster.
-
-
-## Remote cluster strong verification [remote-cluster-strong-verification]
-```{applies_to}
-deployment:
-  stack: preview 9.3
-```
-
-Cross-cluster API keys can be configured with strong verification to provide an additional layer of security. To enable this feature, a 
-cross-cluster API key is created on the remote cluster with a certificate identity pattern that specifies which certificates are allowed 
-to use it. The local cluster must then sign each request with its private key and include a certificate whose subject Distinguished Name 
-(DN) matches the pattern. The remote cluster validates both that the certificate is trusted by its configured certificate authorities 
-and that the certificate's subject matches the API key's identity pattern.
-
-Each remote cluster alias on the local cluster can have different remote signing configurations. 
-
-### How strong verification works [_how_strong_verification_works]
-
-When a local cluster makes a request to a remote cluster using a cross-cluster API key:
-
-1. The local cluster signs the request headers with its configured private key and sends the signature and certificate chain as header
-   in the request to the remote cluster. 
-2. The remote cluster verifies that the API key is valid.
-3. If the API key has a certificate identity pattern configured, the remote cluster extracts the Distinguished Name (DN) from the 
-   certificate chain's leaf certificate and matches it against the certificate identity pattern.
-4. The remote cluster validates that the provided certificate chain is trusted.
-5. The remote cluster validates the signature and checks that the certificate is not expired.
-
-If any of these validation steps fail, the request is rejected.
-
-### Configure strong verification [_configure_strong_verification]
-
-To use certificate identity validation, the local and remote clusters must be configured to sign request headers and to verify request 
-headers.
-
-#### On the local cluster [_certificate_identity_local_cluster]
-
-When [adding the remote cluster](#using-the-es-api) to the local cluster, you must configure it to sign cross-cluster requests with a certificate–private key pair. You can generate a signing certificate using [elasticsearch-certutil](#remote-clusters-security-api-key-remote-action) or use an existing certificate.
-
-```yaml
-cluster.remote.my_remote_cluster.signing.certificate: "path/to/signing/certificate.crt"
-cluster.remote.my_remote_cluster.signing.key: "path/to/signing/key.key"
-```
-
-::::{note}
-Replace `my_remote_cluster` with your remote cluster alias, and the paths with the paths to your certificate and key files.
-::::
-
-#### On the remote cluster [_certificate_identity_remote_cluster]
-
-The remote cluster must be configured with a certificate authority that trusts the certificate that was used to sign the request headers. 
-
-```yaml
-cluster.remote.signing.certificate_authorities: "path/to/signing/certificate_authorities.crt"
-```
-
-When creating a cross-cluster API key on the remote cluster, specify a `certificate_identity` pattern that matches the Distinguished 
-Name (DN) of the local cluster's certificate. Use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API:
-
-```console
-POST /_security/cross_cluster/api_key
-{
-  "name": "my-cross-cluster-api-key",
-  "access": {
-    "search": [
-      {
-        "names": ["logs-*"]
-      }
-    ]
-  },
-  "certificate_identity": "CN=local-cluster.example.com,O=Example Corp,C=US"
-}
-```
-
-The `certificate_identity` field supports regular expressions. For example:
-
-* `"CN=.*.example.com,O=Example Corp,C=US"` matches any certificate with a CN ending in "example.com"
-* `"CN=local-cluster.*,O=Example Corp,C=US"` matches any certificate with a CN starting with "local-cluster"
-* `"CN=.*"` matches any certificate (not recommended for production)
-
-For a full list of available strong verification settings for remote clusters, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings).
