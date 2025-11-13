@@ -41,8 +41,8 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
 - **[Value report](/solutions/security/ai/ease/ease-value-report.md)**:
 
-:::{include} /solutions/_snippets/value-report-intro.md
-:::
+   :::{include} /solutions/_snippets/value-report-intro.md
+   :::
 
 ## Create an EASE project
 
