@@ -28,6 +28,14 @@ In this guide, you will learn how to:
 
 Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for the complete list of available settings in {{es}}.
 
+## Considerations for using an external CA
+
+You might choose to use an external CA to generate transport certificates for node-to-node connections.
+
+Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
+
+Carefully review [](/deploy-manage/security/self-tls-considerations.md) to ensure that the certificates that you provide meet the security requirements for transport connections.
+
 ## Generate the certificate authority [generate-certificates]
 
 You can add as many nodes as you want in a cluster but they must be able to communicate with each other. The communication between nodes in a cluster is handled by the transport module. To secure your cluster, you must ensure that internode communications are encrypted and verified, which is achieved with mutual TLS.

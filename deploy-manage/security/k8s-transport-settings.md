@@ -75,6 +75,12 @@ spec:
 
 ## Issue node transport certificates with third-party tools [k8s-transport-third-party-tools]
 
+:::{warning}
+Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
+
+If you choose to issue node transport certificates using third-party tools, then carefully review [](/deploy-manage/security/self-tls-considerations.md) to ensure that the certificates that you provide meet the security requirements for transport connections.
+:::
+
 When following the instructions in [Configure a custom Certificate Authority](#k8s-transport-ca) the issuance of certificates is orchestrated by the ECK operator and the operator needs access to the CAs private key. If this is undesirable it is also possible to configure node transport certificates without involving the ECK operator. The following two pre-requisites apply:
 
 1. The tooling used must be able to issue individual certificates for each {{es}} node and dynamically add or remove certificates as the cluster scales up and down.

@@ -15,6 +15,10 @@ products:
 
 If you have to trust a new CA from your organization, or you need to generate a new CA yourself, use this new CA to sign the new node certificates and instruct your nodes to trust the new CA.
 
+:::{include} ./_snippets/own-ca-warning.md
+:::
+
+
 ## Generate a new certificate for the transport layer [node-certs-different-transport]
 
 Create a new CA certificate, or get the CA certificate of your organization, and add it to your existing CA truststore. After you finish updating your certificates for all nodes, you can remove the old CA certificate from your truststore (but not before!).

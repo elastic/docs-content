@@ -22,6 +22,9 @@ You don’t have to restart each node, but doing so forces new TLS connections a
 
 The following steps provide instructions for generating new node certificates and keys for both the transport layer and the HTTP layer. You might only need to replace one of these layer’s certificates depending on which of your certificates are expiring.
 
+:::{include} ./_snippets/own-ca-warning.md
+:::
+
 ::::{important}
 :name: cert-password-updates
 
