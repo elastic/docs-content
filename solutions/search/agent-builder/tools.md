@@ -40,13 +40,13 @@ Each tool is an atomic operation with a defined signature - accepting typed para
 
 Key built-in tools include:
 
-- **`.execute_esql`**: Executes an {{esql}} query and returns the results in a tabular format
-- **`.generate_esql`**: Generates an {{esql}} query from a natural language query
-- **`.get_document_by_id`**: Retrieves the full content of an {{es}} document based on its ID and index name
-- **`.get_index_mapping`**: Retrieves mappings for the specified index or indices
-- **`.index_explorer`**: Lists relevant indices and corresponding mappings based on a natural language query
-- **`.list_indices`**: Lists the indices in the {{es}} cluster the current user has access to
-- **`.search`**: A powerful tool for searching and analyzing data within a specific {{es}} index
+- `.execute_esql`: Executes an {{esql}} query and returns the results in a tabular format
+- `.generate_esql`: Generates an {{esql}} query from a natural language query
+- `.get_document_by_id`: Retrieves the full content of an {{es}} document based on its ID and index name
+- `.get_index_mapping`: Retrieves mappings for the specified index or indices
+- `.index_explorer`: Lists relevant indices and corresponding mappings based on a natural language query
+- `.list_indices`: Lists the indices in the {{es}} cluster the current user has access to
+- `.search`: Searches and analyzes data within a specific {{es}} index
 
 Built-in tools serve as building blocks for more complex interactions and provide the foundation for agent capabilities.
 

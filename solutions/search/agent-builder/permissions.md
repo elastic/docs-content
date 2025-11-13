@@ -21,10 +21,11 @@ Agent Builder requires privileges at three levels:
 
 ### {{kib}} privileges
 
-Agent Builder uses two {{kib}} privileges within the `agentBuilder` feature:
+Agent Builder access control is managed by the `agentBuilder` {{kib}} feature:
 
-- `read_onechat`: Required to use agents, send chat messages, view tools, and access conversations. Maps to the "Read" feature privilege.
-- `manage_onechat`: Required to create, update, or delete custom agents and tools. Maps to the "All" feature privilege along with `read_onechat`.
+- "Read" access to the `agentBuilder` feature: Required to use agents, send chat messages, view tools, and access conversations.
+- "All" access to the `agentBuilder` feature: Required to create, update, or delete custom agents and tools.
+- "Read" access to the "Actions and Connectors" feature: Required to use AI connectors with agents. 
 
 Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
@@ -40,8 +41,8 @@ Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsea
 
 Tools execute queries against {{es}} indices as the current user. Required privileges depend on which indices the tools access:
 
-- `read`: Required for tools that query data, including `execute_esql`, `search`, `get_document_by_id`, and [{{esql}} tools](tools/esql-tools.md)
-- `view_index_metadata`: Required for tools that inspect index structure, including `list_indices`, `get_index_mapping`, and `index_explorer`
+- `read`: Required for tools that query data
+- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which may use index exploration capabilities internally
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
@@ -64,7 +65,10 @@ POST /_security/role/agent-builder-full
   "applications": [
     {
       "application": "kibana-.kibana",
-      "privileges": ["feature_agentBuilder.all"],
+      "privileges": [
+        "feature_agentBuilder.all",
+        "feature_actions.read"
+      ],
       "resources": ["space:default"]
     }
   ]
