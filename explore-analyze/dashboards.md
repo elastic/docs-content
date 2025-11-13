@@ -1,4 +1,5 @@
 ---
+navigation_title: Dashboards
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/dashboard.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Dashboards [dashboard]
+# {{kib}} dashboards [dashboard]
 
 Dashboards are the best way to visualize and share insights from your {{es}} data.
 

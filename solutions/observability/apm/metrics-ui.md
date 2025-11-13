@@ -1,17 +1,18 @@
 ---
+navigation_title: Metrics UI
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-metrics.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
   - id: cloud-serverless
 ---
 
-# Metrics [apm-metrics]
+# Metrics UI in Elastic APM [apm-metrics]
 
 The **Metrics** overview provides APM agent-specific metrics, which lets you perform more in-depth root cause analysis investigations within the Applications UI.
 

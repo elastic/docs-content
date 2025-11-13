@@ -69,6 +69,10 @@ sudo zypper install kibana <3>
 
 The RPM for {{kib}} {{version.stack}} can be downloaded from the website and installed as follows:
 
+::::{tab-set}
+
+:::{tab-item} Latest
+To download and install the {{kib}} {{version.stack}} RPM, enter:
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm
 wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm.sha512
@@ -77,7 +81,20 @@ sudo rpm --install kibana-{{version.stack}}-x86_64.rpm
 ```
 
 1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<version>-x86_64.rpm: OK`.
+:::
 
+:::{tab-item} Specific version
+Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}.
+```sh subs=true
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512
+shasum -a 512 -c kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512 <1>
+sudo rpm --install kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+```
+
+1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm: OK`.
+:::
+::::
 
 ## Step 3: Start {{es}} and generate an enrollment token for {{kib}} [rpm-enroll]
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-limitations.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Limitations [ml-nlp-limitations]
+# NLP limitations [ml-nlp-limitations]
 
 The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{nlp}} trained models feature.
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Prerequisites
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-prerequisites.html
 applies_to:
@@ -11,7 +12,7 @@ products:
   - id: elasticsearch
 ---
 
-# Prerequisites [ccr-getting-started-prerequisites]
+# Prerequisites for {{ccr}} [ccr-getting-started-prerequisites]
 
 To complete this tutorial, you need:
 

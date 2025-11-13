@@ -14,8 +14,8 @@ You can override the {{kib}} container image to use your own image with the plug
 
 This is a Dockerfile example:
 
-```
-FROM docker.elastic.co/kibana/kibana:8.16.1
+```sh subs=true
+FROM docker.elastic.co/kibana/kibana:{{version.stack}}
 RUN /usr/share/kibana/bin/kibana-plugin install $PLUGIN_URL
 RUN /usr/share/kibana/bin/kibana --optimize
 ```

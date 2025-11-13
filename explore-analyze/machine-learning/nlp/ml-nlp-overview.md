@@ -1,4 +1,5 @@
 ---
+navigation_title: Overview
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-overview.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Overview [ml-nlp-overview]
+# Overview of NLP with Elastic machine learning [ml-nlp-overview]
 
 {{nlp-cap}} (NLP) refers to the way in which we can use software to understand natural language in spoken word or written text.
 

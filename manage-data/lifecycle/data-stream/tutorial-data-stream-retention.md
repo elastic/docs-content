@@ -8,9 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Data stream retention [tutorial-manage-data-stream-retention]
+# Tutorial: Configure data stream retention [tutorial-manage-data-stream-retention]
 
-In this tutorial, we are going to go over the data stream lifecycle retention; we will define it, go over how it can be configured and how it can gets applied. Keep in mind, the following options apply only to data streams that are managed by the data stream lifecycle.
+This tutorial demonstrates lifecycle retention, showing how to define, configure, and apply it. Keep in mind that the following options apply only to data streams that are managed by the data stream lifecycle.
 
 1. [What is data stream retention?](#what-is-retention)
 2. [How to configure retention?](#retention-configuration)
@@ -42,6 +42,11 @@ The result should look like this:
 2. Ensure that the lifecycle is enabled, meaning this should be `true`.
 
 
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also review how a data stream is managed by locating it on the **Streams** page in {{kib}}. A stream directly corresponds to a data stream. Select a stream to view its details and go to the **Retention** tab.
+:::
 
 ## What is data stream retention? [what-is-retention]
 
@@ -67,9 +72,9 @@ Global default and max retention do not apply to data streams internal to elasti
 
 ## How to configure retention? [retention-configuration]
 
-* By setting the `data_retention` on the data stream level. This retention can be configured in two ways:
+* Configure data retention at the data stream level using the `data_retention` setting. You can do this in two ways:
 
-     — For new data streams, it can be defined in the index template that would be applied during the data stream’s creation. You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template), for example:
+     * For a new data stream, the `data_retention` setting can be included in the index template that is applied when the data stream is created. You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template), for example:
 
     ```console
     PUT _index_template/template
@@ -88,7 +93,7 @@ Global default and max retention do not apply to data streams internal to elasti
     }
     ```
 
-     — For an existing data stream, it can be set via the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+     * For an existing data stream, the `data_retention` setting can be configured using the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
     ```console
     PUT _data_stream/my-data-stream/_lifecycle
@@ -99,7 +104,13 @@ Global default and max retention do not apply to data streams internal to elasti
 
     1. The retention period of this data stream is set to 30 days.
 
-* By setting the global retention via the `data_streams.lifecycle.retention.default` and/or `data_streams.lifecycle.retention.max` that are set on a cluster level. You can be set via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). For example:
+    :::{tip}
+    :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+    To adjust the retention period of a data stream in {{kib}}, locate a data stream on the **Streams** page. A stream maps directly to a data stream. Next, select a stream to view its details and review the **Retention** tab to find out how it's managed before making your adjustments.
+    :::
+
+* By setting the global retention via the `data_streams.lifecycle.retention.default` and/or `data_streams.lifecycle.retention.max` that are applied on a cluster level. You can set these via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). For example:
 
     ```console
     PUT /_cluster/settings

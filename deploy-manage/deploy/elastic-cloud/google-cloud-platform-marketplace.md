@@ -4,20 +4,20 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
-  serverless: unavailable
+  serverless: ga
 products:
   - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Google Cloud Platform Marketplace [ec-billing-gcp]
 
-Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic.
+Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic. Your investment in Elastic draws against your cloud purchase commitment.
 
 Some differences exist when you subscribe to {{ecloud}} through the GCP Marketplace:
 
-* There is no trial period. Billing starts when you subscribe to {{ecloud}}.
-* Existing {{ecloud}} organizations cannot be converted to use the GCP Marketplace.
-* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/endpoints/elasticsearch-service.gcpmarketplace.elastic.co) page in the GCP Marketplace. Pricing is based the {{ecloud}} [Billing Dimensions](../../cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
+* New {{ecloud}} customers obtain a 7-day trial period. During this period, you can use a single deployment and three projects of {{ecloud}}. After this period, usage-based billing starts, unless you delete your cloud resources. Note that once customers unsubscribe from the GCP offer, their trial will end immediately. Even if they resubscribe, they will not be able to resume the trial.
+* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/endpoints/elasticsearch-service.gcpmarketplace.elastic.co) page in the GCP Marketplace. Pricing is based the {{ecloud}} [billing dimensions](../../cloud-organization/billing.md#pricing-model).
 * To access your billing information at any time go to **Account & Billing**. You can also go to **Account & Billing** and then **Usage** to view your usage hours and units per hour.
 
 ::::{important} 
@@ -47,7 +47,7 @@ To subscribe to {{ecloud}} through the GCP Marketplace:
     You are ready to [create your first deployment](create-an-elastic-cloud-hosted-deployment.md).
 
 
-If you have existing deployments that you want to migrate to your new marketplace account, we recommend using a custom repository to take a snapshot. Then restore that snapshot to a new deployment in your new marketplace account. Check [Snapshot and restore with custom repositories](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) for details.
+If you plan to use {{ech}} and have existing deployments that you want to migrate to your new marketplace account, we recommend using a custom repository to take a snapshot. Then restore that snapshot to a new deployment in your new marketplace account. Check [Snapshot and restore with custom repositories](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) for details.
 
 ::::{tip} 
 Your new account is automatically subscribed to the Enterprise subscription level. You can [change your subscription level](../../cloud-organization/billing/manage-subscription.md).
@@ -55,7 +55,7 @@ Your new account is automatically subscribed to the Enterprise subscription leve
 
 
 
-## Changes to your Billing Account [ec-billing-gcp-account-change] 
+## Changes to your billing account [ec-billing-gcp-account-change] 
 
 ::::{important} 
 To prevent downtime, do not remove the currently used billing account before the switch to the new billing account has been confirmed by Elastic.

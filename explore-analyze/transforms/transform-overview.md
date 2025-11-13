@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Overview [transform-overview]
+# {{transforms-cap}} overview [transform-overview]
 
 You can choose either of the following methods to transform your data: [pivot](#pivot-transform-overview) or [latest](#latest-transform-overview).
 

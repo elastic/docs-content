@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration examples
 ---
 
-# Configuration Examples [k8s-beat-configuration-examples]
+# Beats configuration examples on {{eck}} [k8s-beat-configuration-examples]
 
 In this section you can find manifests that address a number of common use cases and can be your starting point in exploring Beats deployed with ECK. These manifests are self-contained and work out-of-the-box on any non-secured Kubernetes cluster. They all contain three-node {{es}} cluster and single {{kib}} instance. All Beat configurations set up {{kib}} dashboards if they are available for a given Beat and all required RBAC resources.
 

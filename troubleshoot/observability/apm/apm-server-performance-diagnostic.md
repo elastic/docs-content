@@ -23,7 +23,7 @@ To quickly identify possible issues try looking for similar error logs lines in 
 ...
 ```
 
-To gain better insight into APM Server health and performance, consider enabling the monitoring feature by following the steps in [Monitor APM Server](/solutions/observability/apm/monitor-apm-server.md). When enabled, APM Server will additionally report a set of vital metrics to help you identify any performance degradation.
+To gain better insight into APM Server health and performance, consider enabling the monitoring feature by following the steps in [Monitor APM Server](/solutions/observability/apm/apm-server/monitor.md). When enabled, APM Server will additionally report a set of vital metrics to help you identify any performance degradation.
 
 Pay careful attention to the next metric fields:
 
@@ -39,7 +39,7 @@ See [{{metricbeat}} documentation](beats://reference/metricbeat/exported-fields-
 
 One likely cause of excessive indexing pressure or rejected requests is undersized {{es}}. To mitigate this, follow the guidance in [Rejected requests](../../elasticsearch/rejected-requests.md).
 
-(Not recommended) If scaling {{es}} resources up is not an option, you can adjust the `flush_bytes`, `flush_interval`, `max_retries` and `timeout` settings described in [Configure the Elasticsearch output](/solutions/observability/apm/configure-elasticsearch-output.md) to reduce APM Server indexing pressure. However, consider that increasing number of buffered documents and/or reducing retries may lead to a higher rate of dropped APM events. Down below a custom configuration example is listed where the number of default buffered documents is roughly doubled while {{es}} indexing retries are decreased simultaneously. This configuration provides a generic example and might not be applicable to your situation. Try adjusting the settings further to see what works for you.
+(Not recommended) If scaling {{es}} resources up is not an option, you can adjust the `flush_bytes`, `flush_interval`, `max_retries` and `timeout` settings described in [](/solutions/observability/apm/apm-server/configure-elasticsearch-output.md) to reduce APM Server indexing pressure. However, consider that increasing number of buffered documents and/or reducing retries may lead to a higher rate of dropped APM events. Down below a custom configuration example is listed where the number of default buffered documents is roughly doubled while {{es}} indexing retries are decreased simultaneously. This configuration provides a generic example and might not be applicable to your situation. Try adjusting the settings further to see what works for you.
 
 ```yaml
 output.elasticsearch:

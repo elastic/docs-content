@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-infrastructure-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-infrastructure-metrics.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -23,7 +23,7 @@ To open the **Infrastructure inventory** page in:
 :screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md).
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/observability/metrics-reference.md).
 
 ::::{note}
 **Don’t see any metrics?**
@@ -57,18 +57,22 @@ You can also use the search bar to create structured queries using [{{kib}} Quer
 
 To examine the metrics for a specific time, use the time filter to select the date and time.
 
-
 ## View host metrics [analyze-hosts-inventory]
 
 By default the **Infrastructure Inventory** page displays a waffle map that shows the hosts you are monitoring and the current CPU usage for each host. Alternatively, you can click the **Table view** icon ![table view icon](/solutions/images/observability-table-view-icon.png "") to switch to a table view.
 
 Without leaving the **Infrastructure Inventory** page, you can view enhanced metrics relating to each host running in your infrastructure. On the waffle map, select a host to display the host details overlay.
 
+::::{note}
+{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
+When showing **Hosts**, the **Schema** dropdown menu shows the available data collection schemas for the current query. If data from both the Elastic System integration and OpenTelemetry is available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see data collected by the Elastic System integration.
+::::
+
+
 ::::{tip}
 To expand the overlay and view more detail, click **Open as page** in the upper-right corner.
 
 ::::
-
 
 The host details overlay contains the following tabs:
 
@@ -116,6 +120,11 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 
 
 :::::{dropdown} Processes
+:::{note}
+{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
+To view processes for OpenTelemetry hosts, you need to configure the EDOT collector to send process metrics. Refer to [Process metrics](elastic-agent://reference/edot-collector/config/configure-metrics-collection.md#process-metrics) for more information.
+:::
+
 The **Processes** tab lists the total number of processes (`system.process.summary.total`) running on the host, along with the total number of processes in these various states:
 
 * Running (`system.process.summary.running`)
@@ -184,6 +193,11 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 
 :::::{dropdown} Anomalies
+:::{note}
+{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
+Anomaly detection isn't available for OpenTelemetry hosts. When the **Schema** is set to OpenTelemetry, this tab isn't available.
+:::
+
 The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} job for the specific host. By default, anomaly jobs are sorted by time, showing the most recent jobs first.
 
 Along with the name of each anomaly job, detected anomalies with a severity score equal to 50 or higher are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the host metric in the anomaly record result.

@@ -38,7 +38,7 @@ The path to an entry is a *Distinguished Name* (DN) that uniquely identifies a u
 The `ldap` realm supports two modes of operation, a user search mode and a mode with specific templates for user DNs.
 
 ::::{important}
-When you configure realms in `elasticsearch.yml`/deploy-manage/stack-settings.md, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
+When you configure realms in [`elasticsearch.yml`](/deploy-manage/stack-settings.md), only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
 ::::
 
 ## Step 1: Add a new realm configuration [ldap-realm-configuration]

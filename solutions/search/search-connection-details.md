@@ -9,24 +9,20 @@ products:
   - id: kibana
 ---
 
-# Find your connection details [search-space-connection-details]
+# Find connection details [search-space-connection-details]
 
 
-To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on the deployment type you use. For secure connections, it’s recommended to use an API key for authentication.
+To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on your deployment type. For secure connections, we recommend using an API key for authentication.
 
-* Learn how to [find your Cloud ID](#find-cloud-id-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
-* Learn how to [create an API key](#create-an-api-key-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
-* Learn how to [find your {{es}} endpoint or Cloud ID](#find-cloud-id-serverless) for a serverless deployment.
-* Learn how to [create an API key](#create-an-api-key-serverless) for a serverless deployment.
-
+The following sections describe how to find your Cloud ID and create API keys in both {{ecloud}} and {{serverless-short}} deployments.
 
 ## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]
 
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
-1. Navigate to the Elastic Cloud home page.
-2. In the main menu, click **Manage this deployment**.
+1. Go to the {{ecloud}} home page.
+2. In the main menu, select **Manage this deployment**.
 
     :::{image} /solutions/images/kibana-manage-deployment.png
     :alt: manage deployment
@@ -51,54 +47,53 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
     :screenshot:
     :::
 
-2. Click **Create API key**.
+2. Select **Create API key**.
 
     :::{image} /solutions/images/kibana-click-create-api-key.png
     :alt: click create api key
     :screenshot:
     :::
 
-3. Enter the API key details, and click **Create API key**.
-4. Copy and securely store the API key, as it will not be shown again.
+3. Enter the API key details, and select **Create API key**.
+4. Copy and securely store the API key, since it won't appear again.
 
 
 ## Serverless deployments [_serverless_deployments]
 
 ### Find your Elasticsearch endpoint [find-cloud-id-serverless]
 
-1. Navigate to the serverless project’s home page.
-2. Scroll down to the **Copy your connection details** section, and copy the **Elasticsearch endpoint**.
+1. Select the Help icon in the top right corner and then select **Connection Details**.
+2. Copy the **Elasticsearch endpoint** from the **Endpoints** tab.
 
     :::{image} /solutions/images/kibana-serverless-connection-details.png
     :alt: serverless connection details
     :screenshot:
     :::
 
-
 ::::{note}
-The **Cloud ID** is also displayed in the Copy your connection details section, which you can use with specific client libraries and connectors.
+The **Cloud ID** is also available in the **Connection Details** section. Toggle the **Show Cloud ID** option to view it.
 
 ::::
 
 
 ### Create an API key [create-an-api-key-serverless]
 
-1. Navigate to the serverless project’s home page.
-2. Scroll down to the **Add an API Key** section, and click **New**.
+1. Go to the serverless project’s home page.
+2. Select **Create API key**.
 
     :::{image} /solutions/images/kibana-serverless-create-an-api-key.png
     :alt: serverless create an api key
     :screenshot:
     :::
 
-3. Enter the API key details, and click **Create API key**.
-4. Copy and securely store the API key, as it will not be shown again.
+4. Enter the API key details, and select **Create API key**.
+5. Copy and securely store the API key, since it won't appear again.
 
 ### Test connection [elasticsearch-get-started-test-connection]
 
 Use [`curl`](https://curl.se) to verify your connection to {{es}}.
 
-`curl` will need access to your Elasticsearch endpoint and `encoded` API key. Within your terminal, assign these values to the `ES_URL` and `API_KEY` environment variables.
+In a terminal, assign the {{es}} endpoint and `encoded` API key to the `ES_URL` and `API_KEY` environment variables respectively. `curl` needs access to these values.
 
 For example:
 
@@ -107,7 +102,7 @@ export ES_URL="https://dda7de7f1d264286a8fc9741c7741690.es.us-east-1.aws.elastic
 export API_KEY="ZFZRbF9Jb0JDMEoxaVhoR2pSa3Q6dExwdmJSaldRTHFXWEp4TFFlR19Hdw=="
 ```
 
-Then run the following command to test your connection:
+Next, run the following command to test your connection:
 
 ```bash
 curl "${ES_URL}" \

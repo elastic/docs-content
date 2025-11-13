@@ -1,16 +1,17 @@
 ---
+navigation_title: Manage data retention
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-manage-retention.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-manage-retention.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Manage data retention [synthetics-manage-retention]
+# Manage data retention for Synthetics [synthetics-manage-retention]
 
 When you set up a synthetic monitor, data from the monitor is saved in [{{es}} data streams](/manage-data/data-store/data-streams.md), an append-only structure in {{es}}.
 

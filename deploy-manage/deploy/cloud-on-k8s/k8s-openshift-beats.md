@@ -33,14 +33,14 @@ If you used the examples from the [recipes directory](https://github.com/elastic
 
 3. Update the Beat manifest to use the new ServiceAccount, for example:
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: beat.k8s.elastic.co/v1beta1
     kind: Beat
     metadata:
       name: heartbeat
     spec:
       type: heartbeat
-      version: 8.16.1
+      version: {{version.stack}}
       elasticsearchRef:
         name: elasticsearch
       config:

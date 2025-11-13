@@ -15,7 +15,7 @@ products:
 
 # Troubleshooting the EDOT .NET SDK
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](opentelemetry://reference/edot-sdks/dotnet/supported-technologies.md) for EDOT .NET and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-dotnet://reference/edot-dotnet/supported-technologies.md) for EDOT .NET and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-dotnet/issues).
 
@@ -23,7 +23,7 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 For most problems, such as when you don't see data in your Elastic Observability backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Trace` to investigate further.
 
-The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the upstream OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
+The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the contrib OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
 
 ## ASP.NET Core (generic host) logging integration
 
@@ -178,7 +178,7 @@ The following known issues affect EDOT .NET.
 
 ### Missing log records
 
-The upstream SDK currently does not [comply with the spec](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding the deduplication of attributes when exporting log records. When you create a log within multiple scopes, each scope may store information using the same logical key. In this situation, the exported data will have duplicated attributes.
+The contrib SDK currently does not [comply with the spec](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding the deduplication of attributes when exporting log records. When you create a log within multiple scopes, each scope may store information using the same logical key. In this situation, the exported data will have duplicated attributes.
 
 You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the EDOT Collector or the [{{motlp}}](opentelemetry://reference/motlp.md) in serverless, non-compliant log records will fail to be ingested.
 
@@ -195,3 +195,49 @@ To avoid this scenario, make sure each placeholder uses a unique name. For examp
 ```csharp
 Logger.LogInformation("Eat your {fruit1} {fruit2} {fruit3}!", "apple", "banana", "mango");
 ```
+
+### Custom processors are not applied to exported data
+
+When using custom processors, be aware that they may not run before data is exported unless explicitly configured.
+
+By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md). These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry data is exported automatically, without requiring additional code.
+
+In advanced scenarios, you might want to develop custom processors that enrich telemetry data before it passes through the rest of the processing pipeline. In such circumstances, you have to add the processor to the relevant signal provider builder. 
+
+For example, if you use the following code to register a custom processor for trace data using
+the `TracerProviderBuilder`, it won't work as intended:
+
+```csharp
+builder.AddElasticOpenTelemetry(b => b
+  .WithTracing(t => t.AddProcessor<SpanRollupProcessor>())
+  .WithMetrics(m => m.AddMeter("MyAppMeter")));
+```
+
+This code will not work as desired due to EDOT .NET registering the OTLP exporter before the processor,
+therefore running earlier in the pipeline than `SpanRollupProcessor`. The exact behaviour may vary or appear to
+work because trace data is exported in batches and the custom processor may partially apply to trace data before
+the batch is exported.
+
+To address this, you can disable the automatic OTLP exporter registration using the `SkipOtlpExporter` option. This allows you to manually register the exporter *after* registering your custom processor.
+
+Taking the prior example, the correct code should be as follows:
+
+```csharp
+builder.AddElasticOpenTelemetry(new ElasticOpenTelemetryOptions() { SkipOtlpExporter = true }, b => b
+  .WithLogging(l => l.AddOtlpExporter())
+  .WithTracing(t =>
+  {
+    t.AddProcessor<SpanRollupProcessor>();
+    t.AddOtlpExporter();
+  })
+  .WithMetrics(m => m
+    .AddMeter("MyAppMeter")
+    .AddOtlpExporter()));
+```
+
+In this example, `SkipOtlpExporter` is set to `true` using the `ElasticOpenTelemetryOptions` overload of `AddElasticOpenTelemetry`. If preferred, this can also be configured using the `appSettings.json` file.
+
+With `SkipOtlpExporter` enabled, the exporter must be added to __each__ signal that should be exported. In
+this example, the OTLP exporter is manually added for logs, traces and metrics. Crucially, for traces, the
+exporter is registered after the custom `SpanRollupProcessor` to ensure that trace data is batched for export
+after the processor has completed.

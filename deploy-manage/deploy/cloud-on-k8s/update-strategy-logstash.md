@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Update strategy
 ---
 
-# Update Strategy [k8s-logstash-update-strategy]
+# Pod update strategy for Logstash on ECK [k8s-logstash-update-strategy]
 
 The operator takes a Pod down to restart and applies a new configuration value. All Pods are restarted in reverse ordinal order.
 

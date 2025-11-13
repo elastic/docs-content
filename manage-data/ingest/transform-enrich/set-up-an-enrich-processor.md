@@ -37,7 +37,7 @@ We do not recommend using the enrich processor to append real-time data. The enr
 To use enrich policies, you must have:
 
 * `read` index privileges for any indices used
-* The `enrich_user` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md)
+* The `enrich_user` [built-in role](elasticsearch://reference/elasticsearch/roles.md)
 
 ## Add enrich data [create-enrich-source-index]
 

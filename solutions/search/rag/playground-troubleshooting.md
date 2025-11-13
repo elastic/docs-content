@@ -1,19 +1,15 @@
 ---
+navigation_title: Troubleshooting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-troubleshooting.html
 applies_to:
-  stack:
-  serverless:
+  stack: preview 9.0, beta 9.1
+  serverless: beta
 products:
   - id: kibana
 ---
 
-# Troubleshooting [playground-troubleshooting]
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
+# Troubleshooting RAG Playground [playground-troubleshooting]
 
 Dense vectors are not searchable
 :   Embeddings must be generated using the [inference processor](elasticsearch://reference/enrich-processor/inference-processor.md) with an ML node.
@@ -22,7 +18,7 @@ Context length error
 :   You’ll need to adjust the size of the context you’re sending to the model. Refer to [Optimize model context](playground-context.md).
 
 LLM credentials not working
-:   Under **Model settings**, use the wrench button (🔧) to edit your GenAI connector settings.
+:   Under **LLM settings**, use the {icon}`wrench` button to edit your GenAI connector settings.
 
 Poor answer quality
 :   Check the retrieved documents to see if they are valid. Adjust your {{es}} queries to improve the relevance of the documents retrieved. Refer to [View and modify queries](playground-query.md).

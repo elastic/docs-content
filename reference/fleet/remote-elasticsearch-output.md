@@ -77,7 +77,7 @@ To prevent unauthorized access, the {{es}} Service Token is stored as a secret v
 Choose whether integrations should be automatically synchronized on the remote {{es}} cluster. To configure this feature, refer to [Automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md).
 
 :::{note}
-Automatic integrations synchronization is only available with certain subscriptions. For more information, refer to [Subscriptions](https://www.elastic.co/subscriptions).
+Automatic integrations synchronization is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
 :::
 ::::
 

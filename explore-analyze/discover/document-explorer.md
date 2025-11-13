@@ -12,6 +12,10 @@ products:
 
 Fine tune your explorations by customizing **Discover** to bring out the the best view of your documents.
 
+:::{tip}
+Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
+:::
+
 :::{image} /explore-analyze/images/kibana-hello-field.png
 :alt: A view of the Discover app
 :screenshot:
@@ -96,7 +100,7 @@ Change how {{kib}} displays a field.
 
 ### Filter the documents [document-explorer-compare-data]
 
-Narrow your results to a subset of documents so you’re comparing just the data of interest.
+Narrow your results to a subset of documents so you're comparing the data of interest.
 
 1. Select the documents you want to compare.
 2. Click the **Selected** option, and then select **Show selected documents only**.

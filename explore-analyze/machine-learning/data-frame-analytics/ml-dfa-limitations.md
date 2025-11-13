@@ -9,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Limitations [ml-dfa-limitations]
+# Data frame analytics limitations [ml-dfa-limitations]
 
 The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{dfanalytics}} feature. The limitations are grouped into the following categories:
 

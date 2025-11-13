@@ -10,6 +10,8 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
+Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, it makes your dashboard easier to read, faster to load, and helps its viewers locate important information quicker.
+
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
 stack: ga 9.1
@@ -21,7 +23,7 @@ Organize your dashboard panels into collapsible sections to improve readability 
 To add a collapsible section:
 
 1. Open the dashboard and make sure that you are in **Edit** mode.
-2. Select **Add panel** and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
+2. Add a new panel and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
 3. Optionally, edit the label of the section.
 4. Drag and drop any panels you want into the section.
    :::{tip}

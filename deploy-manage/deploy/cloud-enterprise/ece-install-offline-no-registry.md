@@ -11,37 +11,38 @@ products:
 
 # Air-gapped install without a private Docker registry [ece-install-offline-no-registry]
 
-To perform an offline installation without a private Docker registry, you have to download the available Docker Images on each host.
+To perform an offline installation without a private Docker registry, you have to download the required Docker images on each host.
 
-1. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md). Note that for ECE version 4.0, if you want to use {{stack}} version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images (the version 8.x images are required for system deployments).
+1. On an internet-connected host with Docker installed, download the Docker images required by the {{ece}} version you want to install. Refer to [available docker images](ece-install-offline-images.md) for more information.
+
+    For example, for {{ece}} {{version.ece}} and the {{stack}} versions it includes, you need:
 
     ```sh subs=true
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.2
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.2
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
-    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.0
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}}
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
     ```
 
-    For example, for {{ece}} {{version.ece}} and the {{stack}} versions it shipped with, you need:
-
-    * {{ece}} {{version.ece}}
-    * {{es}} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
+    ::::{note}
+    Version 8.x images are required for system deployments.
+    ::::
 
 2. Create .tar files of the images:
 
     ```sh subs=true
     docker save -o ece.{{version.ece}}.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker save -o es.8.18.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.2
-    docker save -o kibana.8.18.0.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.2
-    docker save -o apm.8.18.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
-    docker save -o enterprise-search.8.18.0.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
-    docker save -o es.9.0.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
-    docker save -o kibana.9.0.0.tar docker.elastic.co/cloud-release/kibana-cloud:9.0.0
-    docker save -o apm.9.0.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
+    docker save -o es.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
+    docker save -o kibana.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}}
+    docker save -o apm.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
+    docker save -o enterprise-search.{{ece-docker-images-8}}.tar docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
+    docker save -o es.{{ece-docker-images-9}}.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
+    docker save -o kibana.{{ece-docker-images-9}}.tar docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}}
+    docker save -o apm.{{ece-docker-images-9}}.tar docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
     ```
 
 3. Copy the .tar files to a location on your network where they are available to each host where you plan to install {{ece}}. Alternatively, you can copy the .tar files to each host directly.
@@ -49,13 +50,13 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh subs=true
     docker load < FILE_PATH/ece.{{version.ece}}.tar
-    docker load < FILE_PATH/es.8.18.0.tar
-    docker load < FILE_PATH/kibana.8.18.0.tar
-    docker load < FILE_PATH/apm.8.18.0.tar
-    docker load < FILE_PATH/enterprise-search.8.18.0.tar
-    docker load < FILE_PATH/es.9.0.0.tar
-    docker load < FILE_PATH/kibana.9.0.0.tar
-    docker load < FILE_PATH/apm.9.0.0.tar
+    docker load < FILE_PATH/es.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/kibana.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/apm.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/enterprise-search.{{ece-docker-images-8}}.tar
+    docker load < FILE_PATH/es.{{ece-docker-images-9}}.tar
+    docker load < FILE_PATH/kibana.{{ece-docker-images-9}}.tar
+    docker load < FILE_PATH/apm.{{ece-docker-images-9}}.tar
     ```
 
 5. Optional: Remove the .tar files after installation.

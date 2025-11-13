@@ -6,7 +6,7 @@ The Cloud Native Vulnerability Management (CNVM) dashboard gives you an overview
 
 ::::{admonition} Requirements
 * To collect this data, install the [Cloud Native Vulnerability Management](/solutions/security/cloud/get-started-with-cnvm.md) integration.
-* The CNVM dashboard is available to all Elastic Cloud users. For on-premises deployments, it requires an [Enterprise subscription](https://www.elastic.co/pricing).
+* The CNVM dashboard is available to all Elastic Cloud users. For on-premises deployments, it requires an [appropriate subscription](https://www.elastic.co/pricing) level.
 
 ::::
 

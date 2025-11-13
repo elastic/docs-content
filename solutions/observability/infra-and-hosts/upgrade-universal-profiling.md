@@ -3,7 +3,7 @@ navigation_title: Upgrade
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-upgrade.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---

@@ -1,11 +1,6 @@
 ---
 applies_to:
-  stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  stack: ga
 products:
   - id: kibana
   - id: cloud-enterprise
@@ -151,7 +146,7 @@ The minimum steps your plan should include are:
 1. Upgrade {{es}} and {{kib}} to the latest 8.19 version, as a requirement for the major upgrade to {{version.stack}}.
 2. Upgrade all ingest components to the latest 8.19 version, as otherwise they won't be compatible with {{es}} running {{version.stack}}.
 3. Follow all [preparation steps](./prepare-to-upgrade.md) and use the upgrade assistant to ensure the cluster is ready for a major upgrade.
-4. {{es}} and {{kib}} to {{version.stack}}.
+4. Upgrade {{es}} and {{kib}} to {{version.stack}}.
 
 ## Next steps
 

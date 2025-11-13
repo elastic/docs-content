@@ -23,13 +23,13 @@ If ingress configuration is challenging or unsupported in your environment, cons
 
 The service configurations shown in these sections are based on the following {{es}} cluster definition:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: hulk
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   # Dedicated master nodes
   - name: master
@@ -128,13 +128,13 @@ spec:
 
 You can then use your custom service in the `elasticsearchRef` element when specifying connections between {{es}} and other stack applications. This is an example on how to target only coordinating node from {{kib}}:
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: hulk
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: "hulk"

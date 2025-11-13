@@ -23,7 +23,7 @@ You can direct third-party endpoint protection systems to perform response actio
 Check out [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) to learn which response actions are supported for each system.
 
 ::::{admonition} Prerequisites
-* This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+* This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * [{{kib}} feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md): Under **Actions and Connectors**, turn on **Customize sub-feature privileges** and enable **Endpoint Security**.
 * [{{elastic-sec}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md): **All** for the response action features, such as **Host Isolation**, that you want to perform.
 * (In {{serverless-short}}) [User roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles): **SOC manager** or **Endpoint operations analyst**
@@ -97,9 +97,11 @@ Expand a section below for your endpoint security system:
         * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
         * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Read.All` and `Machine.Isolate`).
 
-    * {applies_to}`stack: ga 9.1` To run a script on a host:
+    * {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` To run a script on a host:
     
         * Microsoft Defender for Endpoint connector: Permission to  manage live response library files as well as run live response on a specific machine (`Windows Defender ATP: Library.Manage` and `Machine.LiveResponse`)
+
+    * {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` To cancel an ongoing action on a host, you need the same permissions that are required for the action you're canceling.
 
     Refer to the [Microsoft Defender for Endpoint integration documentation](https://docs.elastic.co/en/integrations/microsoft_defender_endpoint) or [Microsoft’s documentation](https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp) for details on creating a new Azure application.
 

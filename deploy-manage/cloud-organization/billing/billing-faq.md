@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-billing.html
 applies_to:
   deployment:
+    self:
+    ece:
+    eck:
     ess: all
   serverless: all
 products:
@@ -17,8 +20,8 @@ This frequently-asked-questions list answers some of your more common questions 
 
 * [Is there a way for me to estimate how much {{ecloud}} will cost?](#faq-cost)
 * [Where can I find a detailed view of my consumption?](#faq-consumption)
-* [How do I view previous receipts and billing history?](#faq-history)
-* [How can I change who receives receipts and billing notifications?](#faq-notify)
+* [How do I view previous invoices, statements, and billing history?](#faq-history)
+* [How can I change who receives invoices, statements, and billing notifications?](#faq-notify)
 * [What are the available payment methods on {{ecloud}}?](#faq-payment)
 * [Who can I contact for more information?](#faq-contact)
 * [Why is my credit card charged?](#faq-charge)
@@ -29,6 +32,7 @@ This frequently-asked-questions list answers some of your more common questions 
 * [How can I delete my {{ecloud}} account?](#faq-deleteaccount)
 * [Can I get a refund?](#faq-refund)
 * [What is included in my paid {{ecloud}} deployment?](#faq-included)
+* [Does Cloud Connect require additional payment?](#billing-cc-additional-payment)
 * [What are the data transfer and storage charges and how can I control them?](#faq-dts)
 * [What taxes will be applied on my invoice?](#faq-taxes)
 
@@ -61,17 +65,17 @@ $$$faq-consumption$$$Where can I find a detailed view of my consumption?
     Additionally, on the {{ecloud}} [Usage](https://cloud.elastic.co/billing/usage?page=docs&placement=docs-body) page, the **Month-to-date usage** tile shows accrued costs and can help you to better estimate the next charge amount.
 
 
-$$$faq-history$$$How do I view previous receipts and billing history?
-:   Check the [billing history](https://cloud.elastic.co/billing/history?page=docs&placement=docs-body), where you can view and download receipts for all previous charges.
+$$$faq-history$$$How do I view previous invoices, statements, and billing history?
+:   Check the [billing history](https://cloud.elastic.co/billing/history?page=docs&placement=docs-body), where you can view and download invoices for all previous charges.
 
-$$$faq-notify$$$How can I change who receives receipts and billing notifications?
-:   The account owner can change who receives receipts and billing notifications by changing the [email details](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body).
+$$$faq-notify$$$How can I change who receives invoices, statements, and billing notifications?
+:   The account owner can change who receives invoices and billing notifications by changing the [email details](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body).
 
 $$$faq-payment$$$What are the available payment methods on {{ecloud}}?
 :   For month-to-month payments only credit cards are accepted. We also allow payments by bank transfer for annual subscriptions.
 
 $$$faq-contact$$$Who can I contact for more information?
-:   If you have any further questions about your credit card statement, billing, or receipts, send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/index.md) using the *Billing issue* category.
+:   If you have any further questions about your credit card statement, billing, or invoices, send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/index.md) using the *Billing issue* category.
 
 $$$faq-charge$$$Why is my credit card charged?
 :   If you are on a monthly plan, the charge is a recurring fee for using {{ecloud}}. The fee is normally charged at the start of each month, but it can also be charged at other times during the month. If a charge is unsuccessful, we will try to charge your card again at a later date.
@@ -93,6 +97,12 @@ $$$faq-deleteaccount$$$How can I delete my {{ecloud}} account?
 
 $$$faq-refund$$$Can I get a refund?
 :   Charges are non-refundable, but once you delete a deployment we’ll stop charging you for that deployment immediately. You only pay for what you use and you can stop using the service at any time. For any special considerations warranting a potential refund, use the {{ecloud}} Console [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) to open a support case and select *Billing issue* as the category. To ensure quick processing, be sure to provide detail about the reasons for the refund request as well as other matters pertaining to the issue. For other ways to open a Support case, check [Contact us](../../../troubleshoot/index.md).
+
+$$$billing-cc-additional-payment$$$Does Cloud Connect require additional payment?
+:   Each [cloud connected service](/deploy-manage/cloud-connect.md) has its own licensing and payment requirements. For more information, refer to the [Elastic self-managed subscriptions](https://www.elastic.co/subscriptions) page.
+
+    :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+:::
 
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
 :   All subscription tiers for {{ech}} include the following free allowance:

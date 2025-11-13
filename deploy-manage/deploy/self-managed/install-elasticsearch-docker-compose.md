@@ -39,14 +39,31 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
     ...
     ```
 
-5. In the `.env` file, set `STACK_VERSION` to the current {{stack}} version.
+5. Edit the `.env` file to set the `STACK_VERSION`:
 
+    ::::{tab-set}
+    :group: docker
+    :::{tab-item} Latest
+    :sync: latest
+    Set the stack version to the current {{stack}} version. 
     ```txt subs=true
     ...
     # Version of Elastic products
     STACK_VERSION={{version.stack}}
     ...
     ```
+    :::
+
+    :::{tab-item} Specific version
+    :sync: specific
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+    ```txt subs=true
+    ...
+    # Version of Elastic products
+    STACK_VERSION=<SPECIFIC.VERSION.NUMBER>
+    ...
+    :::
+    ::::
 
 6. By default, the Docker Compose configuration exposes port `9200` on all network interfaces.
 

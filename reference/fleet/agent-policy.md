@@ -100,7 +100,7 @@ To add a new integration to one or more {{agent}} policies:
 6. In Step 2 on the page, you have two options:
 
     1. If you’d like to create a new policy for your {{agent}}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics. Collecting logs and metrics will add the System integration to the new agent policy.
-    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you’d like to add the integration to. Note that this feature, known as "reusable integration policies" is only available for specific subscription levels. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
+    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you’d like to add the integration to. Note that this feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 7. Click **Save and continue** to confirm your settings.
 
@@ -132,7 +132,7 @@ You can apply policies to one or more {{agent}}s. To apply a policy:
     :screenshot:
     :::
 
-    Unable to select multiple agents? Confirm that your subscription level supports selective agent policy reassignment in {{fleet}}. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
+    Unable to select multiple agents? Confirm that your subscription level supports **selective agent policy reassignment** in {{fleet}}. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 3. Select the {{agent}} policy from the dropdown list, and click **Assign policy**.
 
@@ -272,19 +272,19 @@ stack: ga 9.1.0
 For a high-scale deployment of {{fleet}}, you can configure an automatic, gradual rollout of a new minor or patch version to a percentage of the {{agents}} in your policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](/reference/fleet/upgrade-elastic-agent.md#auto-upgrade-agents).
 
 ::::{note}
-This feature is only available for certain subscription levels. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
+This feature is available only for certain subscription levels. For more information, check **Automatic agent binary upgrades** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 
 ## Change the output of a policy [change-policy-output]
 
-Assuming your [{{stack}} subscription level](https://www.elastic.co/subscriptions) supports per-policy outputs, you can change the output of a policy to send data to a different output.
+If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per policy output assignment**, you can change the output of a policy to send data to a different output.
 
 1. In {{fleet}}, click **Settings** and view the list of available outputs. If necessary, click **Add output** to add a new output with the settings you require. For more information, refer to [Output settings](/reference/fleet/fleet-settings.md#output-settings).
 2. Click **Agent policies**. Click the name of the policy you want to change, then click **Settings**.
 3. Set **Output for integrations** and (optionally) **Output for agent monitoring** to use a different output, for example, {{ls}}. You might need to scroll down to see these options.
 
-    Unable to select a different output? Confirm that your subscription level supports per-policy outputs in {{fleet}}.
+    Unable to select a different output? Confirm that your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per policy output assignment** in {{fleet}}.
 
     :::{image} images/agent-output-settings.png
     :alt: Screen capture showing the {{ls}} output policy selected in an agent policy
@@ -359,8 +359,13 @@ You can set the minimum log level that {{agents}} using the selected policy will
 
 You can also set the log level for an individual agent:
 
-1. In {{fleet}}, click **Agents**. Under the **Host** header, select the {{agent}} you want to edit.
-2. On the **Logs** tab, set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
+1. In {{fleet}}, click **Agents**. In the **Host** column, select the agent you want to edit. 
+2. Find the **Agent logging level** setting:
+   
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1.0` On the agent's **Settings** tab.
+   - {applies_to}`stack: ga 9.0.0` On the agent's **Logs** tab.
+
+3. Set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
 
 
 ## Change the {{agent}} binary download location [agent-binary-download-settings]
@@ -421,3 +426,7 @@ After you set an unenrollment timeout, any inactive agents are unenrolled automa
 A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If more policies are configured, UI performance might be impacted. The maximum number of policies is not affected by the number of spaces in which the policies are used.
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
+
+## Scaling limitations of integration package policies [integration-policies-scale-limitations]
+
+A single {{agent}} policy supports a maximum of 10,000 integration package policies.

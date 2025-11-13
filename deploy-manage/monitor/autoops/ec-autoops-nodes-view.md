@@ -1,24 +1,30 @@
 ---
+navigation_title: Nodes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-nodes-view.html
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
-# Nodes [ec-autoops-nodes-view]
+# Nodes view in AutoOps [ec-autoops-nodes-view]
 
-The **Nodes** view provides a thorough overview on the essential metrics for all monitored deployment nodes. You can delve into specific nodes to observe metrics over extended periods. This includes data on the indexing rate and latency, search rate and latency, as well as details concerning thread pools, data, circuit breakers, network, disk, and additional elements.
+The **Nodes** view provides a thorough overview on the essential metrics for all monitored nodes. You can delve into specific nodes to observe metrics over extended periods. This includes data on the indexing rate and latency, search rate and latency, as well as details concerning thread pools, data, circuit breakers, network, disk, and additional elements.
 
 :::{image} /deploy-manage/images/cloud-autoops-node-view.png
 :alt: The Node view
 :::
 
-Similar to the **Deployment** view, the list of open events is sorted by severity and open time.
+Similar to the **Deployment** or **Cluster** view, the list of open events is sorted by severity and open time.
 
-The following table lists all the nodes used by the Deployment {{es}} cluster, presenting node name, role and status. The elected master node will be marked with a start sign.
+The following table lists all the nodes used by the {{es}} cluster, presenting node name, role and status. The elected master node will be marked with a start sign.
 
 | Area | Metrics name | Metrics description | 
 | --- | --- | --- | 

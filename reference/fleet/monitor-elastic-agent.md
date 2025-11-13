@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html
+applies_to:
+  stack: ga 
 products:
   - id: fleet
   - id: elastic-agent
@@ -48,10 +50,12 @@ The **Agents** tab in **{{fleet}}** displays a maximum of 10,000 agents, shown o
 | --- | --- |
 | **Healthy** | {{agent}}s are enrolled and checked in. There are no agent policy updates or automatic agent binary updates in progress, but the agent binary may still be out of date. {{agent}}s continuously check in to the {{fleet-server}} for required updates. |
 | **Unhealthy** | {{agent}}s have errors or are running in a degraded state. An agent will be reported as `unhealthy` as a result of a configuration problem on the host system. For example, an {{agent}} may not have the correct permissions required to run an integration that has been added to the {{agent}} policy. In this case, you may need to investigate and address the situation. |
+| **Orphaned** | For {{agent}}s enrolled in {{elastic-defend}}, the `orphaned` status indicates an error in the communication between the {{agent}} service on the host system and the endpoint security service provided by {{elastic-defend}}. Note that on agents reported as `orphaned`, the {{elastic-defend}} integration is still running and protecting the host. |
 | **Updating** | {{agent}}s are updating the agent policy, updating the binary, or enrolling or unenrolling from {{fleet}}. |
 | **Offline** | {{agent}}s have stayed in an unhealthy status for a period of time. Offline agent’s API keys remain valid. You can still see these {{agent}}s in the {{fleet}} UI and investigate them for further diagnosis if required. |
 | **Inactive** | {{agent}}s have been offline for longer than the time set in your [inactivity timeout](/reference/fleet/set-inactivity-timeout.md). These {{agent}}s are valid, but have been removed from the main {{fleet}} UI. |
 | **Unenrolled** | {{agent}}s have been manually unenrolled and their API keys have been removed from the system. You can [unenroll](/reference/fleet/unenroll-elastic-agent.md) an offline {{agent}} using {{agent}} actions if you determine it’s offline and no longer valid.<br>These agents need to re-enroll in {{fleet}} to be operational again. |
+| **Uninstalled** | {{agent}}s have been successfully uninstalled and removed from the host system. |
 
 The following diagram shows the flow of {{agent}} statuses:
 

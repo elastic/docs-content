@@ -28,13 +28,13 @@ You can use [YAML anchors](https://yaml.org/spec/1.2/spec.html#id2765878) to dec
 ::::
 
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: master-nodes
     count: 3

@@ -16,20 +16,23 @@ For example, suppose you’re in **Discover**, and you’ve put time into buildi
 
 Saved queries are different than [saved Discover sessions](/explore-analyze/discover/save-open-search.md), which include the **Discover** configuration—selected columns in the document table, sort order, and {{data-source}}—in addition to the query. Discover sessions are primarily used for adding search results to a dashboard.
 
-## Saved query access [_saved_query_access]
+:::{note}
+Saved queries aren't available for {{esql}} queries. When using {{esql}}, the editor automatically keeps an [history of your most recent queries](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-query-history), and you can also [mark some as favorite](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-starred-queries) to find them faster later.
+:::
 
-If you have insufficient privileges to manage saved queries, you will be unable to load or save queries from the saved query management popover. For more information, see [Granting access to Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md)
+## Saved queries requirements [_saved_query_access]
+
+You must have **Saved Query Management** privileges in {{kib}} to use saved queries.
 
 
 ## Save a query [_save_a_query]
 
-1. Once you’ve built a query worth saving, click the save query icon ![save query icon](/explore-analyze/images/kibana-saved-query-icon.png "").
-2. In the menu, select the item to save the query.
+1. Once you’ve built a query worth saving, open the {icon}`filter` **Query menu**.
+2. In the menu, select **Save query**.
 3. Enter a unique name.
 4. Choose whether to include or exclude filters and a time range. By default, filters are automatically included, but the time filter is not.
 5. Save the query.
-6. To load a saved query, select it in the **Saved query** menu.
 
-    The query text, filters, and time range are updated and your data refreshed. If you’re loading a saved query that did not include the filters or time range, those components remain as-is.
+The query is saved. You can load it at any time by opening the **Query menu** again and selecting **Load query**.
 
-7. To add filters and clear saved queries, use the **Saved query** menu.
+When you load a saved query, the query text, filters, and time range are updated and your data refreshed. If you’re loading a saved query that did not include the filters or time range, those components remain as-is.

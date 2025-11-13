@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Update strategy
 ---
 
-# Update strategy [k8s-update-strategy]
+# Pod update strategy for Elastic Cloud on Kubernetes [k8s-update-strategy]
 
 You can use the `updateStrategy` specification to limit the number of simultaneous changes, like for example in the following cases:
 

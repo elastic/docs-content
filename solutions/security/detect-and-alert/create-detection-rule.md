@@ -89,8 +89,8 @@ Additional configuration is required for detection rules using cross-cluster sea
 
 ::::{admonition} Requirements
 To create or edit {{ml}} rules, you need:
-* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
+* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* The [`machine_learning_admin`](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-ml-admin) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The selected {{ml}} job to be running for the rule to function correctly.
 ::::
 
@@ -142,7 +142,9 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
     3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold’s value.
 
         ::::{note}
-        Nested fields are not supported for use with **Group by**.
+        Consider the following when using the **Group by** field:
+        - Nested fields are not supported.
+        - High cardinality in the fields or a high number of matching documents can result in a rule timeout or a circuit breaker error from {{es}}.
         ::::
 
     4. Use the **Count** field to limit alerts by cardinality of a certain field.
@@ -152,7 +154,19 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         You can also leave the **Group by** field undefined. The rule then creates an alert when the number of search results is equal to or greater than the threshold value. If you set **Count** to limit the results by `process.name` >= 2, an alert will only be generated for source/destination IP pairs that appear with at least 2 unique process names across all events.
 
         ::::{important}
-        Alerts created by threshold rules are synthetic alerts that do not resemble the source documents. The alert itself only contains data about the fields that were aggregated over (the **Group by** fields). Other fields are omitted, because they can vary across all source documents that were counted toward the threshold. Additionally, you can reference the actual count of documents that exceeded the threshold from the `kibana.alert.threshold_result.count` field.
+        Alerts created by threshold rules are synthetic alerts that do not resemble the source documents:
+        
+          - The alert itself only contains data about the fields that were aggregated over (the **Group by** fields specified in the rule).
+          - All other fields are omitted and aren't available in the alert. This is because these fields can vary across all source documents that were counted toward the threshold. 
+          - You can reference the actual count of documents that exceeded the threshold from the `kibana.alert.threshold_result.count` field. 
+          - `context.alerts.kibana.alert.threshold_result.terms` contains fields and values from any **Group by** fields specified in the rule. For example:
+        ```
+          {{#context.alerts}}
+            {{#kibana.alert.threshold_result.terms}}
+              {{field}}: {{value}}
+            {{/kibana.alert.threshold_result.terms}}
+         {{/context.alerts}}
+       ```
         ::::
 
 3. (Optional) Select **Suppress alerts** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
@@ -235,47 +249,53 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 ## Create an indicator match rule [create-indicator-rule]
 
 ::::{note}
-{{elastic-sec}} provides limited support for indicator match rules. See [Limited support for indicator match rules](/solutions/security/detect-and-alert.md#support-indicator-rules) for more information.
+{{elastic-sec}} provides [limited support](/solutions/security/detect-and-alert.md#support-indicator-rules) for indicator match rules.
 ::::
 
-
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create a rule that searches for events whose specified field value matches the specified indicator field value in the indicator index patterns, select **Indicator Match**, then fill in the following fields:
 
-    1. **Source**: The individual index patterns or data view that specifies what data to search.
-    2. **Custom query**: The query and filters used to retrieve the required results from the {{elastic-sec}} event indices. For example, if you want to match documents that only contain a `destination.ip` address field, add `destination.ip : *`.
+2. To create a rule that continually compares your security source events with threat indicators and generates alerts when they meet the rule criteria that you specify, select **Indicator Match**, then configure the following:
+
+    1. **Source**: The index patterns or data view that store your source event documents. The **Index patterns** field is prepopulated with indices that are set in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices). If you choose to use a **Data View**, you must specify one from the drop-down.  
+    
+    2. **Custom query**: The query and filters used to retrieve documents from your source event indices. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set.
+    
+        The default KQL query `*:*` retrieves every document in the specified event indices. You can modify the query as needed. For example, if you only want to retrieve documents that contain a `destination.ip` address field, enter `destination.ip : *`.
 
         ::::{tip}
-        If you want the rule to check every field in the indices, use this wildcard expression: `*:*`.
-        ::::
-
-
-        ::::{note}
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. **Indicator index patterns**: The indicator index patterns containing field values for which you want to generate alerts. This field is automatically populated with indices specified in the `securitySolution:defaultThreatIndex` advanced setting. For more information, see [Update default Elastic Security threat intelligence indices](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices).
+    3. **Indicator index patterns**: The index patterns that store your threat indicator documents. This field is prepopulated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
 
         ::::{important}
-        Data in indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
+        Data in threat indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
-    4. **Indicator index query**: The query and filters used to filter the fields from the indicator index patterns. The default query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the start time down to the nearest day (resolves to UTC `00:00:00`).
-    5. **Indicator mapping**: Compares the values of the specified event and indicator fields, and generates an alert if the values are identical.
+    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against source event values, according to the threat mapping conditions that you set. 
+    
+        The default KQL query `@timestamp > "now-30d/d"` searches the threat indicator indices for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
+
+    5. **Indicator mapping**: Set threat mapping conditions that compare values in source event fields with values in threat indicator fields. Alerts are generated if the conditions are met.
 
         ::::{note}
         Only single-value fields are supported.
         ::::
 
+        To specify fields to compare from your specified source event and threat indicator indices, create a threat mapping entry and configure the following:
 
-        To define which field values are compared from the indices, add the following:
+        * **Field**: Select a field from your source event indices for comparison. 
+        * {applies_to}`stack: ga 9.2` **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
 
-        * **Field**: The field used for comparing values in the {{elastic-sec}} event indices.
-        * **Indicator index field**: The field used for comparing values in the indicator indices.
+            ::::{note}
+            Define matching (`MATCHES`) conditions first, then narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
+            ::::
 
-    6. You can add `AND` and `OR` clauses to define when alerts are generated.
+        * **Indicator index field**: Select a field from your threat indicator index for comparison. 
 
-        For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding field values in the `mock-threat-list` indicator index, enter the rule parameters seen in the following image:
+    6. (Optional) Add more threat mapping entries and combine them with `AND` and `OR` clauses.
+
+        For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding field values in the `logs-ti_*` indicator index, enter the rule parameters seen in the following image:
 
         :::{image} /solutions/images/security-indicator-rule-example.png
         :alt: Indicator match rule settings
@@ -367,7 +387,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 ## Create an {{esql}} rule [create-esql-rule]
 
-Use [{{esql}}](/explore-analyze/query-filter/languages/esql.md) to query your source events and aggregate event data. Query results are returned in a table with rows and columns. Each row becomes an alert.
+Use [{{esql}}](elasticsearch://reference/query-languages/esql.md) to query your source events and aggregate event data. Query results are returned in a table with rows and columns. Each row becomes an alert.
 
 To create an {{esql}} rule:
 

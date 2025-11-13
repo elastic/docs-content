@@ -1,4 +1,5 @@
 ---
+navigation_title: API quick reference
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-api-quickref.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# API quick reference [transform-api-quickref]
+# {{transforms-cap}} API quick reference [transform-api-quickref]
 
 All {{transform}} endpoints have the following base:
 

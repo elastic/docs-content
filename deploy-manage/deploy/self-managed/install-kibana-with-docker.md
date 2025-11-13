@@ -11,7 +11,7 @@ products:
 # Install {{kib}} with Docker [docker]
 
 
-Docker images for {{kib}} are available from the Elastic Docker registry. The base image is [ubuntu:20.04](https://hub.docker.com/_/ubuntu).
+Docker [images for {{kib}}](https://hub.docker.com/_/kibana) are available from the Elastic Docker registry. The base image is Red Hat Universal Base Images (UBI) or Wolfi if you use [hardened Docker images](install-kibana-with-docker.md#_hardened_docker_images).
 
 A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/dockerfiles/tree/master/kibana).
 
@@ -48,12 +48,30 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
 3. Pull the {{es}} Docker image.
 
+    ::::{tab-set}
+    :group: docker
+    :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker pull docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
+    :::
+
+    :::{tab-item} Specific version
+    :sync: specific
+    Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}. You'll use this same version number throughout this tutorial.
+    ```sh subs=true
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
+    ```
+    :::
+    ::::
 
 4. Optional: Install [Cosign](https://docs.sigstore.dev/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
+    ::::{tab-set}
+    :group: docker
+    :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
@@ -68,12 +86,47 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
       - Existence of the claims in the transparency log was verified offline
       - The signatures were verified against the specified public key
     ```
+    :::
+
+    :::{tab-item} Specific version
+    :sync: specific
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+    ```sh subs=true
+    wget https://artifacts.elastic.co/cosign.pub
+    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
+    ```
+
+    The `cosign` command prints the check results and the signature payload in JSON format:
+
+    ```sh subs=true
+    Verification for docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> --
+    The following checks were performed on each of these signatures:
+      - The cosign claims were validated
+      - Existence of the claims in the transparency log was verified offline
+      - The signatures were verified against the specified public key
+    ```
+    :::
+    ::::
 
 5. Start an {{es}} container.
 
+    ::::{tab-set}
+    :group: docker
+    :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
+    :::
+
+    :::{tab-item} Specific version
+    :sync: specific
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+    ```sh subs=true
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
+    ```
+    :::
+    ::::
 
     ::::{tip}
     Use the `-m` flag to set a memory limit for the container. This removes the need to [manually set the JVM size](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md#docker-set-heap-size).
@@ -91,22 +144,65 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
 7. Pull the {{kib}} Docker image.
 
+    ::::{tab-set}
+    :group: docker
+    :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker pull docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
+    :::
+
+    :::{tab-item} Specific version
+    :sync: specific
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+    ```sh subs=true
+    docker pull docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
+    ```
+    :::
+    ::::
 
 8. Optional: Verify the {{kib}} image’s signature.
 
+    ::::{tab-set}
+    :group: docker
+    :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
+    :::
+
+    :::{tab-item} Specific version
+    :sync: specific
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+    ```sh subs=true
+    wget https://artifacts.elastic.co/cosign.pub
+    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
+    ```
+    :::
+    ::::
 
 9. Start a {{kib}} container.
 
+    ::::{tab-set}
+    :group: docker
+    :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
+    :::
+
+    :::{tab-item} Specific version
+    :sync: specific
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+    ```sh subs=true
+    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
+    ```
+    :::
+    ::::
 
 10. When {{kib}} starts, it outputs a unique generated link to the terminal. To access {{kib}}, open this link in a web browser.
 11. In your browser, enter the enrollment token that was generated when you started {{es}}.
@@ -150,6 +246,10 @@ The Docker images provide several methods for configuring {{kib}}. The conventio
 
 One way to configure {{kib}} on Docker is to provide `kibana.yml` via bind-mounting. With `docker-compose`, the bind-mount can be specified like this:
 
+::::{tab-set}
+:group: docker-kib
+:::{tab-item} Latest
+:sync: latest
 ```yaml subs=true
 version: '2'
 services:
@@ -158,16 +258,46 @@ services:
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```yaml subs=true
+version: '2'
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+```
+:::
+::::
 
 
 ## Persist the {{kib}} keystore [_persist_the_kib_keystore]
 
 By default, {{kib}} auto-generates a keystore file for secure settings at startup. To persist your [secure settings](/deploy-manage/security/secure-settings.md), use the `kibana-keystore` utility to bind-mount the parent directory of the keystore to the container. For example:
 
+::::{tab-set}
+:group: docker-kib
+:::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{version.stack}} bin/kibana-keystore create
 docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{version.stack}} bin/kibana-keystore add test_keystore_setting
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```sh subs=true
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER> bin/kibana-keystore create
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER> bin/kibana-keystore add test_keystore_setting
+```
+:::
+::::
 
 
 ### Environment variable configuration [environment-variable-config]
@@ -195,6 +325,10 @@ Supplying array options can be tricky. The following example shows the syntax fo
 
 These variables can be set with `docker-compose` like this:
 
+::::{tab-set}
+:group: docker-kib
+:::{tab-item} Latest
+:sync: latest
 ```yaml subs=true
 version: '2'
 services:
@@ -204,6 +338,22 @@ services:
       SERVER_NAME: kibana.example.org
       ELASTICSEARCH_HOSTS: '["<ELASTICSEARCH_HOST_URL_01>:9200","<ELASTICSEARCH_HOST_URL_02>:9200","<ELASTICSEARCH_HOST_URL_03>:9200"]'
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```yaml subs=true
+version: '2'
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
+    environment:
+      SERVER_NAME: kibana.example.org
+      ELASTICSEARCH_HOSTS: '["<ELASTICSEARCH_HOST_URL_01>:9200","<ELASTICSEARCH_HOST_URL_02>:9200","<ELASTICSEARCH_HOST_URL_03>:9200"]'
+```
+:::
+::::
 
 Since environment variables are translated to CLI arguments, they take precedence over settings configured in `kibana.yml`.
 

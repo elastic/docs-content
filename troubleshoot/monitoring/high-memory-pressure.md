@@ -34,8 +34,7 @@ In our example, the **Index Response Times** metric shows that high memory press
 
 If the performance impact from high memory pressure is not acceptable, you need to increase the cluster size or reduce the workload.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Increase the deployment size [ec_increase_the_deployment_size]
@@ -55,7 +54,7 @@ By understanding and adjusting the way your data is indexed, retained, and searc
 
 ### Data retention [ec_data_retention]
 
-The total amount of data being searched affects search performance. Check the tutorial [Automate rollover with index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) (ILM) to automate data retention policies.
+The total amount of data being searched affects search performance. Check the [{{ilm}} tutorials](/manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md) to learn about automating data retention policies.
 
 
 ### Tune for search speed [ec_tune_for_search_speed]

@@ -54,6 +54,7 @@ Attack Discovery is designed for use with alerts based on data that complies wit
 1.  Select an alert with some of the non-ECS fields you want to analyze, and go to its details flyout. From here, use the **Ask AI Assistant** button to open AI Assistant.
 2.  At the bottom of the chat window, the alert's information appears. Click **Edit** to open the anonymization window to this alert's fields.
 3.  Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**.
+4.  Check the `Update presets` box to add the allowed fields to the space's default anonymization settings.
 
 The selected fields can now be analyzed the next time you run Attack Discovery.
 :::
@@ -65,7 +66,7 @@ You’ll need to select an LLM connector before you can analyze alerts. Attack D
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
 2. Do one of the following:
    - {applies_to}`stack: ga 9.1` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
-   - {applies_to}`stack: removed 9.1` Select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`stack: ga 9.0` Select an existing connector from the dropdown menu, or add a new one.
 
    :::{admonition} Recommended models
    While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
@@ -79,7 +80,7 @@ You’ll need to select an LLM connector before you can analyze alerts. Attack D
 
 3. Once you’ve selected a connector, do one of the following to start the analysis:
    - {applies_to}`stack: ga 9.1` Click **Save and run**.
-   - {applies_to}`stack: removed 9.1` Click **Generate**.
+   - {applies_to}`stack: ga 9.0` Click **Generate**.
    
 It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one’s title to expand or collapse it. Click **Run** at any time to start the Attack Discovery process again with the selected alerts.
 

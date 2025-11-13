@@ -14,6 +14,10 @@ products:
 
 # Get started with Elastic {{observability}} [observability-get-started]
 
+```{note}
+Use this guide to get started with the {{observability}} Complete feature tier of {{obs-serverless}}. Refer to the [Logs Essentials getting started](/solutions/observability/get-started/logs-essentials.md) docs to get started with {{obs-serverless}} Logs Essentials. The [{{obs-serverless}} feature tiers](/solutions/observability/observability-serverless-feature-tiers.md) page details the difference between tiers.
+```
+
 New to Elastic {{observability}}? Discover more about our observability features and how to get started. The following instructions guides you through setting up your first Elastic {{observability}} deployment, collecting data from infrastructure and applications, and exploring your data.
 
 ## Get started with your use case [get-started-with-use-case]
@@ -22,7 +26,7 @@ Learn how to create an {{obs-serverless}} project and use Elastic {{observabilit
 
 :::::::{stepper}
 
-::::::{step} Create an Observability project
+::::::{step} Create an {{obs-serverless}} project
 
 :::{include} /solutions/_snippets/obs-serverless-project.md
 :::
@@ -35,52 +39,52 @@ For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For
 
 ::::::{step} Collect infrastructure logs and metrics
 
-Bring logs and metrics from your hosts and services into Elastic {{observability}} to monitor the health and performance of your infrastructure. You can collect this data from hosts, containers, Kubernetes, and Cloud services.
+Bring logs and metrics from your hosts and services into Elastic {{observability}} to monitor the health and performance of your infrastructure. You can collect this data from hosts, containers, {{k8s}}, and Cloud services.
 
 :::::{dropdown} Steps for collecting infrastructure logs and metrics
 
 ::::{tab-set}
 :::{tab-item} Hosts
 
-Elastic {{observability}} can collect telemetry data from hosts, containers, and Kubernetes through the EDOT Collector or the Elastic Agent.
+Elastic {{observability}} can collect telemetry data from hosts, containers, and {{k8s}} through the EDOT Collector or the Elastic Agent.
 
 1. Select **Add data** from the main menu and then select **Host**.
 2. Select one of these options:
-    * **OpenTelemetry: Full Observability**: Collect native OpenTelemetry metrics and logs.
-    * **Elastic Agent: Logs & Metrics**: Bring data from Elastic integrations.
+    * **OpenTelemetry: Full {{observability}}**: Collect native OpenTelemetry metrics and logs.
+    * **{{product.elastic-agent}}: Logs & Metrics**: Bring data from Elastic integrations.
 3. Follow the instructions for your platform.
 
-For an overview of the Elastic Distribution of OpenTelemetry Collector, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
+For an overview of the {{product.edot-collector}}, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
 
 :::
 
-:::{tab-item} Kubernetes
+:::{tab-item} {{k8s}}
 
-Elastic {{observability}} can collect telemetry data from Kubernetes through the Elastic Distribution of OpenTelemetry Collector or the Elastic Agent.
+Elastic {{observability}} can collect telemetry data from {{k8s}} through the Elastic Distribution of OpenTelemetry Collector or the Elastic Agent.
 
-1. Select **Add data** from the main menu and then select **Kubernetes**.
+1. Select **Add data** from the main menu and then select **{{k8s}}**.
 2. Select one of these options:
-    * **OpenTelemetry: Full Observability**: Collect native OpenTelemetry metrics and logs.
-    * **Elastic Agent: Logs & Metrics**: Bring data from Elastic integrations.
+    * **OpenTelemetry: Full {{observability}}**: Collect native OpenTelemetry metrics and logs.
+    * **{{product.elastic-agent}}: Logs & Metrics**: Bring data from Elastic {{integrations}}.
 3. Follow the instructions for your platform.
 
-For an overview of EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
+For an overview of EDOT, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
 
 :::
 
-:::{tab-item} Integrations
+:::{tab-item} {{integrations}}
 
-Elastic {{observability}} can collect telemetry data from services through Elastic integrations.
+Elastic {{observability}} can collect telemetry data from services through Elastic {{integrations}}.
 
 1. Select **Add data** from the main menu.
-2. In **Search through other ways of ingesting data**, type the name of an integration (for example, NGINX).
+2. In **Search through other ways of ingesting data**, enter the name of an integration (for example, NGINX).
 3. Select the integration you want to add.
 4. Select **Add**.
 :::
 
 :::{tab-item} Cloud
 
-Elastic {{observability}} can collect telemetry data from cloud services through Elastic integrations.
+Elastic {{observability}} can collect telemetry data from cloud services through Elastic {{integrations}}.
 
 1. Select **Add data** from the main menu and then select **Cloud**.
 2. Select your Cloud provider to view the collection of integrations available for that provider.
@@ -101,7 +105,7 @@ Elastic provides a powerful LLM observability framework including key metrics, l
 
 Refer to [LLM observability](/solutions/observability/applications/llm-observability.md) for more information.
 :::
-
+::::
 :::::
 ::::::
 
@@ -118,7 +122,7 @@ Refer to [LLM observability](/solutions/observability/applications/llm-observabi
 
 :::::{dropdown} Steps for adding Synthetics monitoring
 1. Select **Add data** from the main menu and then select **Application**.
-2. Select **Synthetic monitor**. 
+2. Select **Synthetic monitor**.
 3. Select a [monitor type](/solutions/observability/synthetics/index.md).
 4. Fill out the details.
 5. (Optional) Add a [Playwright](https://playwright.dev/) script.
@@ -139,7 +143,7 @@ After you've onboarded your data, you can explore it in the following Elastic {{
 
 ::::::{step} Create your first dashboards
 
-Elastic provides a wide range of prebuilt dashboards for visualizing observability data from a variety of sources. These dashboards are loaded automatically when you install [Elastic integrations](https://docs.elastic.co/integrations). You can also create new dashboards and visualizations based on your data views.
+Elastic provides a wide range of prebuilt dashboards for visualizing observability data from a variety of sources. These dashboards are loaded automatically when you install [Elastic {{integrations}}](https://docs.elastic.co/integrations). You can also create new dashboards and visualizations based on your data views.
 
 To create a new dashboard, select **Create Dashboard** and begin adding visualizations. You can create charts, graphs, maps, tables, and other types of visualizations from your data, or you can add visualizations from the library. You can also add other types of panels, such as filters and controls.
 
@@ -149,7 +153,7 @@ For more information about creating dashboards, refer to [Create your first dash
 
 ::::::{step} Set up alerts and SLOs
 
-Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
+Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [](/solutions/observability/incident-management/create-manage-rules.md) for more information.
 
 {{observability}} also lets you define Service Level Objectives (SLOs) to set clear, measurable targets for your service performance, based on factors like availability, response times, error rates, and other key metrics. Refer to [Create and manage SLOs](/solutions/observability/incident-management/service-level-objectives-slos.md) to get started.
 
@@ -167,12 +171,12 @@ Quickstarts are compact hands-on guides that help you experiment with {{observab
 
 [Browse the Elastic {{observability}} quickstarts](/solutions/observability/get-started/quickstarts.md) to get started with specific use cases.
 
-### Observability integrations
+### {{observability}} integrations
 
 Many [{{observability}} integrations](https://www.elastic.co/integrations/data-integrations?solution=observability) are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
 
 ### Other resources
 
-* [What's Elastic {{observability}}](/solutions/observability/get-started/what-is-elastic-observability.md)
-* [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
+* [What's Elastic {{observability}}](/solutions/observability.md)
+* [What's new in {{product.elastic-stack}}](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)

@@ -1,131 +1,154 @@
 ---
-description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic Observability.
+description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic Serverless and Elastic Cloud Hosted.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
-  serverless:
+  serverless: ga
+  deployment:
+    ess: preview
+    self: unavailable
 ---
 
-# Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint
+# Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
 
-In this quickstart guide, you'll learn how to use the [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to send logs, metrics, and traces to Elastic.
+You can send OpenTelemetry data to Elastic Serverless and Elastic Cloud Hosted using the {{motlp}} endpoint.
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+The {{motlp}} provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. Refer to [{{motlp}}](opentelemetry://reference/motlp.md) for more information.
+
+The {{motlp}} is designed for the following use cases:
+
+* Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
+* APM: Application telemetry in OTLP format.
+
+Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
+
+:::{note}
+:applies_to: { ess:, stack: preview 9.2 }
+The Managed OTLP endpoint might not be available in all {{ech}} regions during the Technical Preview.
+:::
+
+## Send data to Elastic
+
+Follow these steps to send data to Elastic using the {{motlp}}.
+
+::::::{stepper}
+
+:::::{step} Retrieve your endpoint and API key
+
+To retrieve your {{motlp}} endpoint address and API key, follow these steps:
+
+::::{applies-switch}
+:::{applies-item} serverless:
+1. In {{ecloud}}, create an Observability project or open an existing one.
+2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
+3. Copy the endpoint and authentication headers values.
+
+Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
+:::
+
+:::{applies-item} ess:
+{applies_to}`stack: preview 9.2`
+1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
+2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
+3. Copy the endpoint and authentication headers values.
+
+Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
+:::
 ::::
 
-## Prerequisites
+:::::
 
-* An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started.md).
-* A system forwarding logs, metrics, or traces in OTLP (any EDOT Collector or SDK—EDOT or community).
+:::::{step} Configure your OTLP shipper
 
-### Limitations
+The final step is to configure your Collector or SDK to use the {{motlp}} endpoint and your Elastic API key to send data to {{ecloud}}.
 
-* The {{ecloud}} Managed OTLP Endpoint only supports histograms with delta temporality. Cumulative histograms are dropped.
-* Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
+::::{tab-set}
 
-## Get started
-
-### Get your native OTLP endpoint credentials
-
-1. [Create a new Observability project](/solutions/observability/get-started.md), or open an existing one.
-
-1. In your {{obs-serverless}} project, go to **Add Data**.
-
-1. Under **What do you want to monitor?** select **Application**, and then under **Monitor your application using** select **OpenTelemetry**.
-
-    :::{note}
-    Follow this flow for all use cases, including logs and infrastructure monitoring.
-    :::
-
-1. Copy the `OTEL_EXPORTER_OTLP_ENDPOINT` URL. Replace `.apm` with `.ingest` and save this value for later.
-
-### Create an API key
-
-1. Click **Create an API Key** to generate a new API key. Copy this value for later.
-1. (Optional) Test your new API key by sending an empty JSON object to the `/v1/traces` endpoint. For example:
-
-    ```bash
-    curl -X POST \
-      -H "Content-Type: application/json" \
-      -H "Authorization: ApiKey <api-key>" \
-      https://{YOUR_CLUSTER}.ingest.us-east-1.aws.elastic.cloud:443/v1/traces \
-      -d '{}'
-    ```
-
-    The response should be similar to:
-
-    ```txt
-    {"partialSuccess":{}}%
-    ```
-
-### Send data to your Elastic Cloud Managed OTLP endpoint
-
-* [I have an EDOT Collector/SDK running](#otel-sdk-running)
-* [I need an EDOT Collector/SDK](#no-sdk-running)
-* [I just want to use the instrumentation](#instrumentation-please)
-
-#### I have an EDOT Collector/SDK running [otel-sdk-running]
-
-If you have an OpenTelemetry Collector or SDK exporting telemetry data,
-configure it with the endpoint and API key generated in the previous steps.
-
-**OpenTelemetry Collector configuration**
-
-Configure your EDOT Collector as follows:
+:::{tab-item} OpenTelemetry Collector example
+To send data to the {{motlp}} from the {{edot}} Collector or the contrib Collector, configure the `otlp` exporter:
 
 ```yaml
 exporters:
   otlp:
-    endpoint: "https://my_cluster.ingest.us-east-1.aws.elastic.cloud:443/v1/traces"
-    headers: "Authorization": "ApiKey <api-key-value-here>"
+    endpoint: https://<motlp-endpoint>
+    headers:
+      Authorization: ApiKey <your-api-key>
 ```
 
-For more information, see [OTLP Collector configuration](https://opentelemetry.io/docs/collector/configuration/).
+Set the API key as an environment variable or directly in the configuration as shown in the example.
+:::
 
-**Elastic Distributions of OpenTelemetry (EDOT) Collector configuration**
-
-Configure an EDOT Collector using the same method described above in **OpenTelemetry Collector configuration**.
-See the [EDOT Language SDK documentation](opentelemetry://reference/edot-collector/index.md) for more information.
-
-**OpenTelemetry SDK configuration**
-
-Configure your OTel SDK with the following environment variables:
-
-* Elastic Cloud Managed OTLP endpoint: `OTEL_EXPORTER_OTLP_ENDPOINT`
-* Elastic API key: `OTEL_EXPORTER_OTLP_HEADERS`
-
-For example:
+:::{tab-item} OpenTelemetry SDK example
+To send data to the {{motlp}} from {{edot}} SDKs or contrib SDKs, set the following variables in your application's environment:
 
 ```bash
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint:443"
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <api-key>"
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>"
+```
+:::
+
+:::{tab-item} Kubernetes example
+You can store your API key in a Kubernetes secret and reference it in your OTLP exporter configuration. This is more secure than hardcoding credentials.
+
+The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it.
+
+For example, if your API key from Kibana is `abc123`, run:
+
+```bash
+kubectl create secret generic otlp-api-key \
+  --namespace=default \
+  --from-literal=api-key="ApiKey abc123"
 ```
 
-For more information, see [OTLP Exporter configuration](https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/).
+Mount the secret as an environment variable or file, then reference it in your OTLP exporter configuration:
 
-**Elastic Distributions of OpenTelemetry (EDOT) SDK configuration**
+```yaml
+exporters:
+  otlp:
+    endpoint: https://<motlp-endpoint>
+    headers:
+      Authorization: ${API_KEY}
+```
 
-Configure an EDOT SDK using the same method described above in **OpenTelemetry SDK configuration**.
-See the [EDOT Language SDK documentation](opentelemetry://reference/edot-sdks/index.md) for more information.
+And in your deployment spec:
 
-#### I need an EDOT Collector/SDK [no-sdk-running]
+```yaml
+env:
+  - name: API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: otlp-api-key
+        key: api-key
+```
 
-Don't have a collector or SDK running? No problem. Spin up an EDOT collector in just a few steps:
+:::{important}
+When creating a Kubernetes secret, always encode the full string in Base64, including the scheme (for example, `ApiKey abc123`).
+:::
+:::
 
-* [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
-* [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
+::::
 
-% Commenting out Docker until the docs are ready
-% * [Docker Quickstart](opentelemetry://reference/quickstart/serverless/docker.md)
+:::::
 
-#### I just want to use the instrumentation [instrumentation-please]
+::::::
 
-See [application use-cases](opentelemetry://reference/edot-sdks/index.md) for more information.
+## Differences from the Elastic APM Endpoint
 
-## Troubleshoot
+The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data.
 
-**Api Key prefix not found**
+## Troubleshooting
+
+The following sections provide troubleshooting information for the {{motlp}}.
+
+### You don't have a Collector or SDK running
+
+Don't have a collector or SDK running? Spin up an EDOT collector in few steps:
+
+* [Kubernetes Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)
+* [Hosts & VMs Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)
+* [Docker Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)
+
+### Api Key prefix not found
 
 The following error is due to an improperly formatted API key:
 
@@ -135,11 +158,14 @@ Exporting failed. Dropping data.
 "Unauthenticated desc = ApiKey prefix not found"
 ```
 
-You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK. See [I have an EDOT Collector/SDK running](#otel-sdk-running) for more information.
+You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK.
 
-**Error: too many requests**
+### Error: too many requests
 
-The Managed endpoint has per-project rate limits in place. If you hit this limit, reach out to our [support team](https://support.elastic.co).
+If you see HTTP `429 Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP Endpoint (mOTLP) endpoint, your project might be hitting ingest rate limits.
+
+Refer to the dedicated [429 errors when using the Elastic Cloud Managed OTLP Endpoint](/troubleshoot/ingest/opentelemetry/429-errors-motlp.md) troubleshooting guide for details on causes, rate limits, and solutions.
+
 
 ## Provide feedback
 
@@ -147,6 +173,6 @@ Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in o
 
 For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
-## What's next?
+## What's next
 
 Visualize your OpenTelemetry data. Learn more in [](/solutions/observability/otlp-visualize.md).

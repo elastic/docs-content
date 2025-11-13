@@ -3,7 +3,7 @@ navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
@@ -87,6 +87,9 @@ If you’re upgrading from a previous version with Universal Profiling enabled, 
 
 
 ### Programmatic configuration [profiling-configure-data-ingestion-programmatic]
+```{applies_to}
+stack: ga 9.2
+```
 
 If you prefer to configure data ingestion programmatically, you can use a Kibana API call. This call can be made either through the "Dev Tools" console in Kibana or with any standalone HTTP client (such as `curl` or `wget`). In both cases, the API call must be executed using the `elastic` user credentials to ensure the necessary permissions.
 
@@ -95,7 +98,7 @@ A successful API call will return a `202 Accepted` response with an empty body.
 To configure data ingestion from the console, go to **Dev Tools** in the navigation menu and run the following command:
 
 ```console
-POST kbn:/internal/profiling/setup/es_resources
+POST kbn:/api/profiling/setup/es_resources
 {}
 ```
 
@@ -103,7 +106,7 @@ To configure data ingestion programmatically using a standalone HTTP client (e.g
 
 ```console
 curl -u elastic:<PASSWORD> -H "kbn-xsrf: true" -H "Content-Type: application/json" \
-    --data "{}" "https://<kibana-host>:<kibana-port>/internal/profiling/setup/es_resources"
+    --data "{}" "https://<kibana-host>:<kibana-port>/api/profiling/setup/es_resources"
 ```
 
 

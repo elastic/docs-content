@@ -49,9 +49,9 @@ To store monitoring data in a separate cluster:
         ::::
 
 
-        * If you plan to use {{agent}}, create a user that has the `remote_monitoring_collector` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md#built-in-roles-remote-monitoring-agent) and that the monitoring related [integration assets have been installed](/reference/fleet/install-uninstall-integration-assets.md#install-integration-assets) on the remote monitoring cluster.
-        * If you plan to use {{metricbeat}}, create a user that has the `remote_monitoring_collector` built-in role and a user that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md#built-in-roles-remote-monitoring-agent). Alternatively, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
-        * If you plan to use HTTP exporters to route data through your production cluster, create a user that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md#built-in-roles-remote-monitoring-agent).
+        * If you plan to use {{agent}}, create a user that has the `remote_monitoring_collector` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-collector) and that the monitoring related [integration assets have been installed](/reference/fleet/install-uninstall-integration-assets.md#install-integration-assets) on the remote monitoring cluster.
+        * If you plan to use {{metricbeat}}, create a user that has the `remote_monitoring_collector` built-in role and a user that has the `remote_monitoring_agent` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-agent). Alternatively, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+        * If you plan to use HTTP exporters to route data through your production cluster, create a user that has the `remote_monitoring_agent` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-agent).
 
             For example, the following request creates a `remote_monitor` user that has the `remote_monitoring_agent` role:
 

@@ -33,13 +33,13 @@ If you used the examples from the [recipes directory](https://github.com/elastic
 
 3. Update the Elastic Agent manifest to use the new ServiceAccount, for example:
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: agent.k8s.elastic.co/v1alpha1
     kind: Agent
     metadata:
       name: my-agent
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       daemonSet:
         podTemplate:
           spec:

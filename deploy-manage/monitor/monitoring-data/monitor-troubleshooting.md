@@ -12,7 +12,7 @@ products:
 % this page probably needs to be moved
 
 
-# Troubleshooting [monitor-troubleshooting]
+# Troubleshooting visualizing monitoring data in {{kib}} [monitor-troubleshooting]
 
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions related to the {{kib}} {{monitor-features}}.

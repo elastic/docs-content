@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage deployments
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-deployment.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Manage deployments [ec-manage-deployment]
+# Manage deployments in {{ech}} [ec-manage-deployment]
 
 {{ech}} allows you to configure and maintain your deployments with a high level of control on every component of the {{stack}}. You can adjust the settings of any of your deployments at any time.
 

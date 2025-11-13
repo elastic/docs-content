@@ -13,14 +13,14 @@ products:
 
 To deploy a simple [{{es}}](/solutions/search/get-started.md) cluster specification, with one {{es}} node:
 
-```yaml
+```yaml subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1
@@ -63,9 +63,9 @@ kubectl get elasticsearch
 
 When you first create the Kubernetes cluster, there is no `HEALTH` status and the `PHASE` is empty. After the pod and service start-up, the `PHASE` turns into `Ready`, and `HEALTH` becomes `green`. The `HEALTH` status comes from {{es}}'s [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
 
-```sh
+```sh subs=true
 NAME          HEALTH    NODES     VERSION   PHASE         AGE
-quickstart              1         8.16.1               1s
+quickstart              1         {{version.stack}}               1s
 ```
 
 While the {{es}} pod is in the process of being started it will report `Pending` as checked with [`get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/):
@@ -89,9 +89,9 @@ kubectl logs -f quickstart-es-default-0
 
 Once the pod has finished coming up, our original [`get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) request will now report:
 
-```sh
+```sh subs=true
 NAME          HEALTH    NODES     VERSION   PHASE         AGE
-quickstart    green     1         8.16.1     Ready         1m
+quickstart    green     1         {{version.stack}}     Ready         1m
 ```
 
 
@@ -148,5 +148,5 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
 This completes the quickstart of deploying an {{es}} cluster. We recommend continuing to:
 
 * [Deploy a {{kib}} instance](kibana-instance-quickstart.md)
-* For information about how to apply changes to your deployments, refer to [aplying updates](./update-deployments.md).
+* For information about how to apply changes to your deployments, refer to [applying updates](./update-deployments.md).
 * To explore other configuration options for your {{es}} cluster, see [](./elasticsearch-configuration.md) and [](./configure-deployments.md).

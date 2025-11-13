@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-command-reference.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-command-reference.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -186,6 +186,26 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
     * If you `push` a Synthetics project that used to contain one or more monitors but no longer contains any monitors, all monitors associated with the Synthetics project ID being pushed will be deleted.
     * If you `push` a Synthetics project that’s already been pushed using one Synthetics project ID and then try to `push` it using a *different* ID, it will create duplicates of all monitors in the Synthetics project.
 
+`--proxy-uri`
+:   The proxy URL to be used when connecting to Kibana on your deployment or Observability Serverless project.
+
+    This can also be set in the configuration file using [`proxy.uri` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
+`--proxy-token`
+:   (Optional) The authentication token to be used when connecting to the proxy URL. Based on auth header format `Basic Asaaas==`
+
+    This can also be set in the configuration file using [`proxy.token` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
+`--proxy-ca`
+:   (Optional) Override the trusted CA certificates for the proxy connection.
+
+    This can also be set in the configuration file using [`proxy.ca` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
+`--proxy-no-verify`
+:   (Optional) Disable TLS verification for the proxy connection.
+
+    This can also be set in the configuration file using [`proxy.noVerify` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
 ## Tag monitors [tagging-and-filtering]
 
 Synthetics journeys can be tagged with one or more tags. Use tags to filter journeys when running tests locally or pushing them to Elastic.
@@ -251,6 +271,27 @@ To list both locations on Elastic’s global managed infrastructure and {{privat
 `--auth <string>`
 :   API key used for [authentication](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
+`--proxy-uri`
+:   The proxy URL to be used when connecting to Kibana on your deployment or Observability Serverless project.
+
+    This can also be set in the configuration file using [`proxy.uri` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
+`--proxy-token`
+:   (Optional) The authentication token to be used when connecting to the proxy URL. Based on auth header format `Basic Asaaas==`
+
+    This can also be set in the configuration file using [`proxy.token` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
+`--proxy-ca`
+:   (Optional) Override the trusted CA certificates for the proxy connection.
+
+    This can also be set in the configuration file using [`proxy.ca` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
+`--proxy-no-verify`
+:   (Optional) Disable TLS verification for the proxy connection.
+
+    This can also be set in the configuration file using [`proxy.noVerify` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-proxy). The value defined via the CLI will take precedence.
+
+
 ::::{note}
 If an administrator has disabled Elastic managed locations for the role you are assigned and you do *not* include `--url` and `--auth`, all global locations managed by Elastic will be listed. However, you will not be able to push to these locations with your API key and will see an error: *You don’t have permission to use Elastic managed global locations*. For more details, refer to the [troubleshooting docs](/troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-public-locations-disabled).
 ::::
@@ -294,4 +335,4 @@ npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>
 
 ## Air-gapped environments
 
-When working in air-gapped environments, setup can become complex and require workarounds. One common issue is Node.js installations or containers not trusting custom certificates. To bypass certificate errors, prefix `npx` related commands with `NODE_TLS_REJECT_UNAUTHORIZED=0`. For example, `NODE_TLS_REJECT_UNAUTHORIZED=0 npx @elastic/synthetics init project-name`. This allows the command to bypass the certificate validations for all TLS connections. 
+When working in air-gapped environments, setup can become complex and require workarounds. One common issue is Node.js installations or containers not trusting custom certificates. To bypass certificate errors, prefix `npx` related commands with `NODE_TLS_REJECT_UNAUTHORIZED=0`. For example, `NODE_TLS_REJECT_UNAUTHORIZED=0 npx @elastic/synthetics init project-name`. This allows the command to bypass the certificate validations for all TLS connections.

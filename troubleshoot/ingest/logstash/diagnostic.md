@@ -11,7 +11,7 @@ products:
   - id: logstash
 ---
 
-# Capture diagnostics [diagnostic]
+# Capture {{ls}} diagnostics [diagnostic]
 
 The {{ls}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of its statistics and most settings. It works against all {{ls}} versions.
 

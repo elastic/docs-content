@@ -1,15 +1,14 @@
 ---
 applies_to:
-  stack:
   deployment:
-    self: all
+    self: ga
 products:
   - id: elasticsearch
 ---
 
 # Upgrade {{es}} [upgrading-elasticsearch]
 
-An {{es}} cluster can be upgraded one node at a time so upgrading does not interrupt service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
+This document provides the detailed steps for performing a rolling upgrade of a self-managed {{es}} cluster. A rolling upgrade allows you to upgrade your cluster one node at a time without interrupting service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
 
 :::{note}
 Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.

@@ -65,8 +65,8 @@ config:
 
 Alternatively, use a CLI override when installing or upgrading the [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector) release:
 
-```bash
-helm upgrade my-opentelemetry-collector open-telemetry/opentelemetry-collector --set mode=daemonset --set image.repository="docker.elastic.co/elastic-agent/elastic-otel-collector" --set image.tag="9.1.0" --set config.service.telemetry.logs.level=debug
+```bash subs=true
+helm upgrade my-opentelemetry-collector open-telemetry/opentelemetry-collector --set mode=daemonset --set image.repository="docker.elastic.co/elastic-agent/elastic-otel-collector" --set image.tag="{{version.edot_collector}}" --set config.service.telemetry.logs.level=debug
 ```
 
 This ensures the Collector logs at debug level when deployed into your cluster.
@@ -86,3 +86,6 @@ Debug logging for the Collector is not currently configurable through {{fleet}}.
 :::
 
 
+## Resources
+
+To learn how to enable debug logging for the EDOT SDKs, refer to [Enable debug logging for EDOT SDKs](../edot-sdks/enable-debug-logging.md).
