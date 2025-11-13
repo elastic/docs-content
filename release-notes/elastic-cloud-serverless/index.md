@@ -54,7 +54,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves SQL validation errors by providing more descriptive exception messages in Elasticsearch Serverless [#137560]({{es-pull}}137560)
 * Correctly accounts for additional settings providers when determining data stream effective settings in Elasticsearch Serverless [#137407]({{es-pull}}137407)
 * Adds proxy SSL options for download sources [#241115]({{kib-pull}}241115)
-* Ensures Fleet policy name uniqueness is enforced consistently across spaces [#239631]({{kib-pull}}239631)
+* Ensures {{fleet}} policy name uniqueness is enforced consistently across spaces [#239631]({{kib-pull}}239631)
 * Shows warnings on the sync integrations UI when referencing other entities [#241623]({{kib-pull}}241623)
 * Escapes special characters when creating ESQL queries for **Lens** charts in Elastic Observability Serverless [#241662]({{kib-pull}}241662)
 * Fixes "Values" dropdown display on smaller screens in Elastic Observability Serverless [#241812]({{kib-pull}}241812)
