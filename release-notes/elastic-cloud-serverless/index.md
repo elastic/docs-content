@@ -34,7 +34,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves display of long field values in Data Visualizer top values list [#241006]({{kib-pull}}241006)
 * Adds a temperature parameter to Inference AI, and OpenAI, Bedrock, and Gemini connectors [#239806]({{kib-pull}}239806)
 * Adds support for custom headers in the OpenAI integration [#238710]({{kib-pull}}238710)
-* Fixes public update space APIs [#242136]({{kib-pull}}242136)
+* Fixes public Update spaces APIs [#242136]({{kib-pull}}242136)
 * Improves layout for custom inference endpoints [#241779]({{kib-pull}}241779)
 * Displays field data types in the Processing table and step editor [#241825]({{kib-pull}}241825)
 * Adds timezone and locale parameters to Streamlang [#241369]({{kib-pull}}241369)
