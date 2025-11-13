@@ -25,7 +25,7 @@ Certificates used for mTLS must either have no Extended Key Usage extension, or 
 
 ### Transport certificates vs. HTTP certificates
 
-Transport certificates ([`xpack.security.transport.ssl.*`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) settings) have different security requirements than HTTP certificates ([`xpack.security.http.ssl.*`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#http-tls-ssl-settings) settings). HTTP connections don't typically use mTLS because HTTP has its own authentication mechanisms, so HTTP certificates usually don't need to include the `clientAuth` value in their Extended Key Usage extension. HTTP certificates can come from public or organization-wide certificate authorities, while transport certificates should use a cluster-specific private CA. In most cases, you should not use the same certificate for both HTTP and transport connections.
+Transport certificates have different security requirements than [HTTP certificates](/deploy-manage/security/secure-cluster-communications.md#encrypt-http-communication). HTTP connections don't typically use mTLS because HTTP has its own authentication mechanisms. Because of this, HTTP certificates usually don't need to include the `clientAuth` value in their Extended Key Usage extension. HTTP certificates can come from public or organization-wide certificate authorities, while transport certificates should use a cluster-specific private CA. In most cases, you should not use the same certificate for both HTTP and transport connections.
 
 ## Turning off mTLS for transport connections [turn-off-mtls]
 
