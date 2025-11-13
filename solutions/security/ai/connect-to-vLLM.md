@@ -73,10 +73,7 @@ vllm/vllm-openai:v0.9.1 \
 --tensor-parallel-size 2
 ```
 
-
-.Click to expand a full explanation of the command
-[%collapsible]
-=====
+For an explanation of each of the command's parameters, refer to the following list:
 
 ```
 `--gpus all`: Exposes all available GPUs to the container.
@@ -94,7 +91,6 @@ vllm/vllm-openai:v0.9.1 \
 `--tensor-parallel-size 2`: This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems. 
 ```
 
-=====
 
 3. Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
 
