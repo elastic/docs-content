@@ -505,3 +505,5 @@ The `certificate_identity` field supports regular expressions. For example:
 * `"CN=.*.example.com,O=Example Corp,C=US"` matches any certificate with a CN ending in "example.com"
 * `"CN=local-cluster.*,O=Example Corp,C=US"` matches any certificate with a CN starting with "local-cluster"
 * `"CN=.*"` matches any certificate (not recommended for production)
+
+For a full list of available strong verification settings for remote clusters, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings).
