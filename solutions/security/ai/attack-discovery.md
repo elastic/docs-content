@@ -24,9 +24,9 @@ For a demo, refer to the following video (click to view).
 
 You need the `Attack Discovery: All` privileges to use Attack Discovery.
 
-{applies_to}`serverless: ` Your role must also have `Rules: All` privileges to use Attack Discovery.
+{applies_to}`serverless: ` You need the `Rules: All` privileges to use Attack Discovery.
 
-![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "=65%")
 
 {applies_to}`stack: ga 9.1` Your role must also have the following privileges:
 

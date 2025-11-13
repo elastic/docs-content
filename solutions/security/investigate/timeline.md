@@ -27,7 +27,7 @@ In addition to Timelines, you can create and attach Timeline templates to [detec
 
 ## Grant access to Timeline [timeline-privileges]
 
-You can control access to Timeline by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Timeline** feature under **Security**. To view more details on SIEM requirements, see [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
+You can control access to Timeline by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Timeline** feature under **Security**. For more details on SIEM requirements, refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
 
 ## Create new or open existing Timeline [open-create-timeline]
 
