@@ -6,10 +6,10 @@ applies_to:
     eck:
 products:
   - id: elasticsearch
-navigation_title: External CA considerations
+navigation_title: Private or 3P CA considerations
 ---
 
-# Considerations for using an external CA for transport layer security
+# Considerations for using an private or third-party CA for transport layer security
 
 By default, {{es}} uses mutual TLS (mTLS) to secure node-to-node transport connections. Mutual TLS means that data is encrypted in transit, ensuring confidentiality and integrity, and also that both nodes in a connection must present a valid certificate to the other node when establishing the connection. Each node requires that certificates be issued by a trusted certificate authority, ensuring that only authorized nodes can connect. Configure trusted certificate authorities using settings in the [`xpack.security.transport.ssl.*`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) namespace, such as `xpack.security.transport.ssl.certificate_authorities` and `xpack.security.transport.ssl.truststore.path`. 
 
@@ -17,7 +17,7 @@ By default, {{es}} uses mutual TLS (mTLS) to secure node-to-node transport conne
 Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with unencrypted node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
 ::::
 
-## External CA mTLS transport certificate requirements
+## mTLS transport certificate requirements for private or third-party CAs
 
 Obtain your transport certificates from a certificate authority that only issues certificates to {{es}} nodes permitted to connect to your cluster. Do not use a public certificate authority or an organization-wide private certificate authority, because these issue certificates to entities beyond your authorized cluster nodes. Use a dedicated private certificate authority for each {{es}} cluster.
 
