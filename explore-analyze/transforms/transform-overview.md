@@ -38,9 +38,9 @@ As an optional step, you can also add a query to further limit the scope of the 
 
 The {{transform}} performs a composite aggregation that paginates through all the data defined by the source index query. The output of the aggregation is stored in a *destination index*. Each time the {{transform}} queries the source index, it creates a *checkpoint*. You can decide whether you want the {{transform}} to run once or continuously. A *batch {{transform}}* is a single operation that has a single checkpoint. *{{ctransforms-cap}}* continually increment and process checkpoints as new source data is ingested.
 
-Imagine that you run a webshop that sells clothes. Every order creates a document that contains a unique order ID, the name and the category of the ordered product, its price, the ordered quantity, the exact date of the order, and some customer information (name, gender, location, etc). Your data set contains all the transactions from last year.
+Imagine that you run a webshop that sells clothes. Every order creates a document that contains a unique order ID, the name and the category of the ordered product, its price, the ordered quantity, the exact date of the order, and some customer information (name, gender, location, and so on). Your data set contains all the transactions from last year.
 
-If you want to check the sales in the different categories in your last fiscal year, define a {{transform}} that groups the data by the product categories (women’s shoes, men’s clothing, etc.) and the order date. Use the last year as the interval for the order date. Then add a sum aggregation on the ordered quantity. The result is an entity-centric index that shows the number of sold items in every product category in the last year.
+If you want to check the sales in the different categories in your last fiscal year, define a {{transform}} that groups the data by the product categories (women's shoes, men's clothing, and so on) and the order date. Use the last year as the interval for the order date. Then add a sum aggregation on the ordered quantity. The result is an entity-centric index that shows the number of sold items in every product category in the last year.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-pivot-preview.png
 :alt: Example of a pivot {{transform}} preview in {{kib}}
