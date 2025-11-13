@@ -13,9 +13,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-11102025-features-enhancements]
 
-* Enables {{ml}} to manage anomaly detection results indices in Elasticsearch Serverless [#136065]({{es-pull}}136065)
+* Adds nightly maintenance for anomaly detection results indices to keep to manageable size [#136065]({{es-pull}}136065)
 * Adds the ability to preview index requests in Transform for Elasticsearch Serverless [#137455]({{es-pull}}137455)
-* Allows field capabilities to span across Elasticsearch Serverless projects [#137530]({{es-pull}}137530)
+* Allows the {{es}} field capabilities API to span projects [#137530]({{es-pull}}137530)
 * Improves ES|QL performance by skipping unnecessary query plan diff calculations in Elasticsearch Serverless [#137721]({{es-pull}}137721)
 * Passes the {{es}} version in the EIS inference request header in Elasticsearch Serverless[#137643]({{es-pull}}137643)
 * Introduces a synthetic `_id` format for time-series data streams in Elasticsearch Serverless [#137274]({{es-pull}}137274)
@@ -28,7 +28,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables users to view the SLO associated with a burn rate rule on the rule details page in Elastic Observability Serverless [#240535]({{kib-pull}}240535)
 * Exposes 'sampling_rate' agent central config options to users in Elastic Observability Serverless [#241908]({{kib-pull}}241908)
 * Makes the Elastic logo open a custom home page in solution view [#241571]({{kib-pull}}241571)
-* Enforces the `object_src 'none'` directive in Kibana's Content Security Policy [#241029]({{kib-pull}}241029)
+* Enforces the `object_src 'none'` directive in the {{kib}} content security policy [#241029]({{kib-pull}}241029)
 * Adds origin configuration options for authentication providers [#239993]({{kib-pull}}239993)
 * Adds the ability to cancel Machine Learning file uploads [#241297]({{kib-pull}}241297)
 * Improves display of long field values in Data Visualizer top values list [#241006]({{kib-pull}}241006)
@@ -44,7 +44,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Fixes [serverless-changelog-11102025-fixes]
 
-* Fixes feature display order when using explain in LTR [#137671]({{es-pull}}137671)
+* Fixes feature display order when using explain in Learning to Rank (LTR) [#137671]({{es-pull}}137671)
 * Fixes an issue where missing geotile buckets caused errors in Transform [#137476]({{es-pull}}137476)
 * Ensures ES|QL full text functions accept `null` values as field parameters in Elasticsearch Serverless  [#137430]({{es-pull}}137430)
 * Fixes a missing attribute issue in ES|QL full text functions in Elasticsearch Serverless [#137395]({{es-pull}}137395)
