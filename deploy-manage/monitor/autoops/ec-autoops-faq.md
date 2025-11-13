@@ -91,7 +91,7 @@ $$$additional-payment$$$ **Does AutoOps for self-managed clusters incur addition
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
 
-    You can [choose the CSP region where your data is stored](/deploy-manage/monitor/autoops/ec-autoops-regions.md#autoops-for-self-managed-clusters-regions).
+    You can [choose the CSP region where your data is stored](#sm-autoops-metrics-storage).
 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
