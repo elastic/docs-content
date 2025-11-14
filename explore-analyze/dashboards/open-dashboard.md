@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
+description: Edit dashboard content, settings, and layout with Edit mode. Adjust panels, controls, and configurations to maintain and update visualizations for viewers.
 applies_to:
   stack: ga
   serverless: ga
@@ -8,9 +9,15 @@ products:
   - id: kibana
 ---
 
-# Edit a dashboard [open-the-dashboard]
+# Edit dashboards [open-the-dashboard]
 
-1. Open the **Dashboards** page in {{kib}}.
+To modify an existing dashboard, you need to switch to Edit mode where you can add or remove panels, adjust settings, modify controls, and reorganize the layout. Changes you make are not visible to other viewers until you save the dashboard.
+
+This guide shows you how to open a dashboard for editing, make modifications, and save or reset your changes.
+
+To edit a dashboard:
+
+1. Open the **Dashboards** page in {{product.kibana}}.
 2. Locate the dashboard you want to edit.
 
    ::::{tip}

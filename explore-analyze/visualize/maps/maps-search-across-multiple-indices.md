@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-search-across-multiple-indices.html
+description: Query data from multiple Elasticsearch indices in Maps to visualize combined datasets. Build maps with layers from different data sources and indices.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,9 +11,9 @@ products:
 
 # Search across multiple indices [maps-search-across-multiple-indices]
 
-Your map might contain multiple {{es}} indices. This can occur when your map contains two or more layers with {{es}} sources from different indices. This can also occur with a single layer with an {{es}} source and a [Term join](terms-join.md).
+When maps contain layers from different {{product.elasticsearch}} indices, global searches may produce unexpected results or empty layers. This occurs when search queries reference fields that exist in some indices but not others.
 
-Searching across multiple indices might sometimes result in empty layers. The most common cause for empty layers are searches for a field that exists in one index, but does not exist in other indices.
+Understanding how to handle multi-index scenarios helps you avoid empty layers and create effective search strategies across diverse data sources.
 
 
 ## Disable global search for a layer [maps-disable-search-for-layer]

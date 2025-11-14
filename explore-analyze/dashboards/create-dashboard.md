@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
+description: Create dashboards with visualizations, controls, and content from the library. Configure settings, organize panels, and save custom analytics views for data exploration.
 applies_to:
   stack: ga
   serverless: ga
@@ -8,16 +9,22 @@ products:
   - id: kibana
 ---
 
-# Create a dashboard [create-dashboard]
+# Create dashboards [create-dashboard]
 
-1. Open the **Dashboards** page in {{kib}}.
+Creating a dashboard involves assembling visualizations, controls, and other panel types into a cohesive view that tells a story about your data. You can start from scratch, add content from the Visualize Library, or combine both approaches.
+
+This guide walks through the process of creating a new dashboard, adding content, configuring settings, and saving your work.
+
+To create a dashboard:
+
+1. Open the **Dashboards** page in {{product.kibana}}.
 2. Select **Create dashboard** to start with an empty dashboard.
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
 
 3. Populate your dashboard with the content that you need. You can:
 
-    * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{kib}}, or other visualizations such as [Maps](../visualize/maps.md).
+    * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{product.kibana}}, or other visualizations such as [Maps](../visualize/maps.md).
     * [**Add existing content from the library**](../visualize/visualize-library.md). Select existing visualizations or Discover sessions that have already been configured and saved to the **Visualize Library**.
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
     * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.  
@@ -25,7 +32,7 @@ products:
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
 5. Define the main settings of your dashboard from the **Settings** menu located in the toolbar.
 
-    1. A meaningful title, description, and [tags](../find-and-organize/tags.md) allow you to find the dashboard quickly later when browsing your list of dashboards or using the {{kib}} search bar.
+    1. A meaningful title, description, and [tags](../find-and-organize/tags.md) allow you to find the dashboard quickly later when browsing your list of dashboards or using the {{product.kibana}} search bar.
     2. Additional display options allow you unify the look and feel of the dashboard’s panels:
 
         * **Store time with dashboard** — Saves the specified time filter.

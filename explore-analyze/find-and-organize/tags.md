@@ -8,12 +8,14 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: kibana
+description: Categorize and organize saved objects with tags. Create color-coded tags, assign them to dashboards and visualizations, and filter objects by shared tags in global search.
 ---
 
 # Tags [managing-tags]
 
+Tags help you organize and find saved objects by categorizing them into groups. You can create color-coded tags, assign them to multiple objects like dashboards and visualizations, and then use tags to quickly filter and locate related content in the global search or {{manage-app}} pages.
 
-Use tags to categorize your saved objects, then filter for related objects based on shared tags.
+This guide shows you how to create tags, assign them to objects, and manage tag assignments across your saved objects.
 
 To get started, go to the **Tags** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -32,7 +34,7 @@ To create tags, you must meet the minimum requirements.
 * The `write` privilege allows to create, edit, and delete tags.
 
 ::::{note}
-Having the `Tag Management` {{kib}} privilege is not required to view tags assigned on objects you have `read` access to, or to filter objects by tags from the global search.
+Having the `Tag Management` {{product.kibana}} privilege is not required to view tags assigned on objects you have `read` access to, or to filter objects by tags from the global search.
 ::::
 
 

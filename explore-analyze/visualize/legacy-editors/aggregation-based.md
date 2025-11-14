@@ -1,12 +1,17 @@
 ---
+description: Create visualizations with aggregation-based editor for multi-level splits and non-time series data. Access classic Kibana chart types with plugin extensibility.
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
 ---
 
-# Aggregation-based [add-aggregation-based-visualization-panels]
+# Aggregation-based visualizations [add-aggregation-based-visualization-panels]
 
-Aggregation-based visualizations are the core {{kib}} panels, and are not optimized for a specific use case.
+Aggregation-based visualizations represent the original {{kib}} visualization editor, offering classic chart types like pie charts, data tables, and gauges. While Lens now provides a more intuitive interface for most use cases, aggregation-based visualizations remain available for specific scenarios where their features are still needed.
+
+These visualizations support deeper aggregation splits (up to three levels), non-time series data, and plugin extensibility. However, they lack some modern features like easy styling options and mathematical operations.
 
 With aggregation-based visualizations, you can:
 

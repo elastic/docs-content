@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/terms-join.html
+description: Enrich map layers with terms joins to combine metrics from Elasticsearch with vector boundaries. Calculate and visualize aggregated statistics by region.
 applies_to:
   stack: ga
   serverless: ga
@@ -8,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Term join [terms-join]
+# Term joins [terms-join]
 
-Use term joins to augment vector features with properties for [data driven styling](vector-style.md#maps-vector-style-data-driven) and richer tooltip content.
+Term joins enrich vector layer features with metrics calculated from {{product.elasticsearch}} aggregations, enabling data-driven styling and detailed tooltips. A term join matches vector features to aggregated metrics using a common field value, allowing you to visualize statistics like traffic counts, sales totals, or error rates on geographic boundaries.
+
+Term joins work with Documents, Configured GeoJSON, and {{ems-init}} Boundaries vector layers, providing flexibility for combining boundary data with your metrics.
 
 Term joins are available for the following [vector layers](vector-layer.md):
 
@@ -29,7 +32,7 @@ The [choropleth layer example](maps-getting-started.md#maps-add-choropleth-layer
 
 ### How a term join works [_how_a_term_join_works]
 
-A term join uses a shared key to combine vector features, the left source, with the results of an {{es}} terms aggregation, the right source.
+A term join uses a shared key to combine vector features, the left source, with the results of an {{product.elasticsearch}} terms aggregation, the right source.
 
 The cloropeth example uses the shared key, [ISO 3166-1 alpha-2 code](https://wikipedia.org/wiki/ISO_3166-1_alpha-2), to join world countries and web log traffic. ISO 3166-1 alpha-2 code is an international standard that identifies countries by a two-letter country code. For example, **Sweden** has an ISO 3166-1 alpha-2 code of **SE**.
 
