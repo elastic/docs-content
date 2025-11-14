@@ -122,641 +122,78 @@ Select a rule type below for detailed instructions:
 
 ## Create a custom query rule [create-custom-rule]
 
-::::{note}
-Detailed instructions for creating custom query rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/custom-query.md).
-::::
+Refer to [Custom query rule documentation](/solutions/security/detect-and-alert/rule-types/custom-query.md) for complete instructions on creating custom query rules, including:
 
-**Quick summary**: Custom query rules search for events matching a KQL or Lucene query and create alerts when matches are found.
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create a rule based on a KQL or Lucene query, select **Custom query** on the **Create new rule** page, then:
-
-    1. Define which {{es}} indices or data view the rule searches for alerts.
-    2. Use the filter and query fields to create the criteria used for detecting alerts.
-
-        The following example (based on the prebuilt rule [Volume Shadow Copy Deleted or Resized via VssAdmin](https://www.elastic.co/guide/en/security/8.17/prebuilt-rule-0-14-2-volume-shadow-copy-deleted-or-resized-via-vssadmin.html)) detects when the `vssadmin delete shadows` Windows command is executed:
-
-        * **Index patterns**: `winlogbeat-*`
-
-            Winlogbeat ships Windows event logs to {{elastic-sec}}.
-
-        * **Custom query**: `event.action:"Process Create (rule: ProcessCreate)" and process.name:"vssadmin.exe" and process.args:("delete" and "shadows")`
-
-            Searches the `winlogbeat-*` indices for `vssadmin.exe` executions with the `delete` and `shadow` arguments, which are used to delete a volume’s shadow copies.
-
-            :::{image} /solutions/images/security-rule-query-example.png
-            :alt: Rule query example
-            :screenshot:
-            :::
-
-    3. You can use {{kib}} saved queries (![Saved query menu](/solutions/images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
-
-        When you use a saved query, the **Load saved query "*query name*" dynamically on each rule execution** check box appears:
-
-        * Select this to use the saved query every time the rule runs. This links the rule to the saved query, and you won’t be able to modify the rule’s **Custom query** field or filters because the rule will only use settings from the saved query. To make changes, modify the saved query itself.
-        * Deselect this to load the saved query as a one-time way of populating the rule’s **Custom query** field and filters. This copies the settings from the saved query to the rule, so you can then further adjust the rule’s query and filters as needed. If the saved query is later changed, the rule will not inherit those changes.
-
-3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
-
-    1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
-    2. Enter the field’s data type.
-
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
-
-### Example: Detect failed SSH login attempts
-
-**Use case**: Alert when an IP address attempts SSH authentication more than 10 times in 10 minutes.
-
-**Prerequisites**:
-* {{filebeat}} system module OR {{auditbeat}} installed and collecting auth logs
-* Field `system.auth.ssh.event` must exist in your data
-
-**Configuration**:
-* **Index patterns**: `filebeat-*,auditbeat-*`
-* **Custom query**: `system.auth.ssh.event: "Failed" AND source.ip: *`
-
-**Testing**: Before creating the rule, verify the query returns results in **Discover**. If you get zero results, check that:
-* {{filebeat}} system module is enabled: `filebeat modules list`
-* Auth logs are being collected (check `/var/log/auth.log` on Ubuntu or `/var/log/secure` on RHEL)
-* Data is reaching {{es}}: Look for `system.auth` indices in **Index Management**
-
-**Expected behavior**: Rule creates one alert per execution when matches are found. For threshold-based counting (e.g., "10+ failures from same IP"), use a Threshold rule instead.
-
-**Tuning**:
-* Add exceptions for known security scanners: `source.ip is not <scanner-ip>`
-* If receiving too many alerts, increase threshold or add more specific filters
-
-### Example: Detect unusual outbound network connections
-
-**Use case**: Alert when servers in your DMZ or web tier make unexpected outbound connections to public IPs.
-
-**Prerequisites**:
-* {{packetbeat}} or {{filebeat}} with network logs
-* Field `network.direction` must exist
-
-**Configuration**:
-* **Index patterns**: `packetbeat-*,logs-network-*`
-* **Custom query**:
-  ```console
-  host.name: (web-server-* OR dmz-*) AND network.direction: outbound AND NOT destination.ip: (10.0.0.0/8 OR 172.16.0.0/12 OR 192.168.0.0/16) AND NOT destination.port: (80 OR 443 OR 53 OR 123)
-  ```
-
-**Query explanation**:
-* Matches servers with specific naming patterns (adjust `host.name` to match your environment)
-* Only outbound connections
-* Excludes private IP ranges (RFC1918)
-* Excludes common legitimate services: HTTP (80), HTTPS (443), DNS (53), NTP (123)
-
-**Expected alert volume**: 0-10 per day initially. Tune with exceptions as you identify legitimate outbound connections (package updates, monitoring agents, backup systems).
-
-**Common false positives**:
-* Package managers (apt, yum) connecting to update repositories: Add exception for specific `process.name`
-* Monitoring agents: Add exception for known monitoring service destinations
-* Time synchronization: Add exception for `destination.port: 123` if using public NTP servers
+* Step-by-step configuration
+* How to use saved queries and Timeline queries
+* Infrastructure-focused examples (SSH login detection, unusual outbound connections)
+* Testing and tuning guidance
 
 ## Create a machine learning rule [create-ml-rule]
 
-::::{note}
-Detailed instructions for creating machine learning rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/machine-learning.md).
-::::
+Refer to [Machine learning rule documentation](/solutions/security/detect-and-alert/rule-types/machine-learning.md) for complete instructions on creating machine learning rules, including:
 
-**Quick summary**: Machine learning rules create alerts when a {{ml}} job discovers an anomaly above a defined threshold.
-
-::::{admonition} Requirements
-To create or edit {{ml}} rules, you need:
-* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* The [`machine_learning_admin`](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-ml-admin) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
-* The selected {{ml}} job to be running for the rule to function correctly.
-::::
-
-::::{tip}
-For an overview of using {{ml}} with {{elastic-sec}}, refer to [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
-::::
-
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create a rule based on a {{ml}} anomaly threshold, select **Machine Learning** on the **Create new rule** page, then select:
-
-    1. The required {{ml}} jobs.
-
-    ::::{note}
-    If a required job isn't currently running, it will automatically start when you finish configuring and enable the rule.
-    ::::
-
-    ::::{warning}
-    **{{ml-cap}} job startup considerations**:
-
-    * **Startup time**: {{ml}} jobs take 30-60 seconds to fully start. Your rule may show a "Failed" status during the first few executions while the job initializes. This is normal behavior.
-    * **Resource requirements**: Each {{ml}} job requires approximately 2GB RAM. Ensure you have dedicated ML nodes or sufficient memory on data nodes. In production environments, dedicated ML nodes are recommended.
-    * **Baseline period**: Newly started {{ml}} jobs need 7-14 days to establish a baseline of normal behavior. Expect a higher volume of alerts initially as the job "learns" what is normal in your environment.
-    * **Shared jobs**: If multiple rules use the same {{ml}} job, only one instance of the job runs. Stopping the job will cause all dependent rules to fail.
-
-    **Best practice**: Start {{ml}} jobs manually in **Machine Learning → Anomaly Detection** and verify they're running before enabling {{ml}} detection rules in production.
-    ::::
-
-    2. The anomaly score threshold above which alerts are created.
-
-3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-
-    ::::{note}
-    Because {{ml}} rules generate alerts from anomalies, which don’t contain source event fields, you can only use anomaly fields when configuring alert suppression.
-    ::::
-
-4. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-5. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
-
-::::{tip}
-To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-and-alert/rule-exceptions.md).
-::::
+* Requirements and prerequisites
+* ML job startup considerations and resource requirements
+* Baseline learning periods and production best practices
+* Alert suppression with anomaly fields
 
 ## Create a threshold rule [create-threshold-rule]
 
-::::{note}
-Detailed instructions for creating threshold rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/threshold.md), including comprehensive guidance on cardinality limits and circuit breaker troubleshooting.
-::::
+Refer to [Threshold rule documentation](/solutions/security/detect-and-alert/rule-types/threshold.md) for complete instructions on creating threshold rules, including:
 
-**Quick summary**: Threshold rules create alerts when the number of times a specified field's value appears meets or exceeds a defined threshold.
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create a rule based on a source event field threshold, select **Threshold**, then:
-
-    1. Define which {{es}} indices the rule analyzes for alerts.
-    2. Use the filter and query fields to create the criteria used for detecting alerts.
-
-        ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](/solutions/images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
-        ::::
-
-    3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold's value.
-
-        ::::{note}
-        Consider the following when using the **Group by** field:
-        - Nested fields are not supported. Nested fields are fields defined with `"type": "nested"` in your {{es}} mapping. Regular object fields like `host.name` or `user.name` ARE supported.
-        - High cardinality in the fields or a high number of matching documents can result in a rule timeout or a circuit breaker error from {{es}}.
-
-        **Understanding cardinality limits**:
-
-        Cardinality refers to the number of unique values in a field. {{es}} must track each unique value in memory during aggregation.
-
-        **Risk levels**:
-        * **Low risk** (<10,000 unique values): Fields like `user.name`, `host.name` in typical environments
-        * **Medium risk** (10,000-100,000 unique values): Fields like `process.name` across large server fleets
-        * **High risk** (>100,000 unique values): Fields like `source.ip`, `url.full`, or `user_agent.original` in high-traffic environments
-
-        **Testing cardinality before creating the rule**:
-
-        Run this query in **Dev Tools** to check cardinality:
-
-        ```json
-        GET your-index-pattern/_search
-        {
-          "size": 0,
-          "query": {
-            "bool": {
-              "must": [
-                { "range": { "@timestamp": { "gte": "now-1h" } } }
-              ]
-            }
-          },
-          "aggs": {
-            "cardinality_check": {
-              "cardinality": {
-                "field": "your-field-name"
-              }
-            }
-          }
-        }
-        ```
-
-        If the returned `value` exceeds 50,000, consider:
-        * Using a different field with lower cardinality
-        * Adding more filters to your rule query to reduce the number of matched documents
-        * Increasing the {{es}} heap size and circuit breaker limits
-
-        **Circuit breaker error message**:
-
-        If you encounter a circuit breaker error, you'll see: `Data too large, data for [fielddata] would be [X/Xgb], which is larger than the limit of [Y/Ygb]`
-
-        To resolve:
-        1. Narrow your rule query to match fewer documents
-        2. Choose a field with lower cardinality
-        3. Increase the field data circuit breaker limit: Set `indices.breaker.fielddata.limit` to at least 40% of JVM heap in `elasticsearch.yml`
-        4. Increase {{es}} JVM heap size if system resources allow
-        ::::
-
-    4. Use the **Count** field to limit alerts by cardinality of a certain field.
-
-        For example, if **Group by** is `source.ip, destination.ip` and its **Threshold** is `10`, an alert is generated for every pair of source and destination IP addresses that appear in at least 10 of the rule’s search results.
-
-        You can also leave the **Group by** field undefined. The rule then creates an alert when the number of search results is equal to or greater than the threshold value. If you set **Count** to limit the results by `process.name` >= 2, an alert will only be generated for source/destination IP pairs that appear with at least 2 unique process names across all events.
-
-        ::::{important}
-        Alerts created by threshold rules are synthetic alerts that do not resemble the source documents:
-        
-          - The alert itself only contains data about the fields that were aggregated over (the **Group by** fields specified in the rule).
-          - All other fields are omitted and aren't available in the alert. This is because these fields can vary across all source documents that were counted toward the threshold. 
-          - You can reference the actual count of documents that exceeded the threshold from the `kibana.alert.threshold_result.count` field. 
-          - `context.alerts.kibana.alert.threshold_result.terms` contains fields and values from any **Group by** fields specified in the rule. For example:
-        ```
-          {{#context.alerts}}
-            {{#kibana.alert.threshold_result.terms}}
-              {{field}}: {{value}}
-            {{/kibana.alert.threshold_result.terms}}
-         {{/context.alerts}}
-       ```
-        ::::
-
-3. (Optional) Select **Suppress alerts** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
-
-    1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
-    2. Enter the field’s data type.
-
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+* Step-by-step configuration with Group by and Threshold fields
+* Understanding cardinality limits and risk levels
+* Testing cardinality before creating rules
+* Circuit breaker error troubleshooting
+* How threshold rule alerts differ from source documents
 
 
 ## Create an event correlation rule [create-eql-rule]
 
-::::{note}
-Detailed instructions for creating event correlation rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/event-correlation.md).
-::::
+Refer to [Event correlation rule documentation](/solutions/security/detect-and-alert/rule-types/event-correlation.md) for complete instructions on creating event correlation rules, including:
 
-**Quick summary**: Event correlation rules use EQL (Event Query Language) to detect sequences of related events or correlate events across different data sources.
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create an event correlation rule using EQL, select **Event Correlation** on the **Create new rule** page, then:
-
-    1. Define which {{es}} indices or data view the rule searches when querying for events.
-    2. Write an [EQL query](elasticsearch://reference/query-languages/eql/eql-syntax.md) that searches for matching events or a series of matching events.
-
-        ::::{tip}
-        To find events that are missing in a sequence, use the [missing events](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-missing-events) syntax.
-        ::::
-
-
-        For example, the following rule detects when `msxsl.exe` makes an outbound network connection:
-
-        * **Index patterns**: `winlogbeat-*`
-
-            Winlogbeat ships Windows events to {{elastic-sec}}.
-
-        * **EQL query**:
-
-            ```eql
-            sequence by process.entity_id
-              [process
-                where event.type in ("start", "process_started")
-                and process.name == "msxsl.exe"]
-              [network
-                where event.type == "connection"
-                and process.name == "msxsl.exe"
-                and network.direction == "outgoing"]
-            ```
-
-            Searches the `winlogbeat-*` indices for sequences of a `msxsl.exe` process start event followed by an outbound network connection event that was started by the `msxsl.exe` process.
-
-            :::{image} /solutions/images/security-eql-rule-query-example.png
-            :alt: eql rule query example
-            :screenshot:
-            :::
-
-            ::::{note}
-            For sequence events, the {{security-app}} generates a single alert when all events listed in the sequence are detected. To see the matched sequence events in more detail, you can view the alert in the Timeline, and, if all events came from the same process, open the alert in Analyze Event view.
-            ::::
-
-3. (Optional) Click the EQL settings icon (![EQL settings icon](/solutions/images/security-eql-settings-icon.png "title =20x20")) to configure additional fields used by [EQL search](/explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
-
-    * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md). Defaults to the `event.category` ECS field.
-    * **Tiebreaker field**: Sets a secondary field for sorting events (in ascending, lexicographic order) if they have the same timestamp.
-    * **Timestamp field**: Contains the event timestamp used for sorting a sequence of events. This is different from the **Timestamp override** advanced setting, which is used for querying events within a range. Defaults to the `@timestamp` ECS field.
-
-4. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
-
-    1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
-    2. Enter the field’s data type.
-
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-7. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+* Step-by-step configuration with EQL queries
+* How to detect sequences of related events
+* EQL settings configuration (event category, tiebreaker, timestamp fields)
+* Missing events syntax for sequence detection
 
 
 ## Create an indicator match rule [create-indicator-rule]
 
-::::{note}
-Detailed instructions for creating indicator match rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/indicator-match.md), including guidance on using value lists with indicator match rules.
-::::
+Refer to [Indicator match rule documentation](/solutions/security/detect-and-alert/rule-types/indicator-match.md) for complete instructions on creating indicator match rules, including:
 
-**Quick summary**: Indicator match rules continually compare your security source events with threat intelligence indicators and generate alerts when matches are found.
+* Step-by-step configuration with threat indicator mapping
+* How to compare source events with threat intelligence feeds
+* Using value lists as indicator match indices
+* Performance considerations and best practices
 
 ::::{note}
 {{elastic-sec}} provides [limited support](/solutions/security/detect-and-alert.md#support-indicator-rules) for indicator match rules.
 ::::
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-
-2. To create a rule that continually compares your security source events with threat indicators and generates alerts when they meet the rule criteria that you specify, select **Indicator Match**, then configure the following:
-
-    1. **Source**: The index patterns or data view that store your source event documents. The **Index patterns** field is prepopulated with indices that are set in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices). If you choose to use a **Data View**, you must specify one from the drop-down.  
-    
-    2. **Custom query**: The query and filters used to retrieve documents from your source event indices. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set.
-    
-        The default KQL query `*:*` retrieves every document in the specified event indices. You can modify the query as needed. For example, if you only want to retrieve documents that contain a `destination.ip` address field, enter `destination.ip : *`.
-
-        ::::{tip}
-        You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
-        ::::
-
-    3. **Indicator index patterns**: The index patterns that store your threat indicator documents. This field is prepopulated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
-
-        ::::{important}
-        Data in threat indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
-        ::::
-
-    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against source event values, according to the threat mapping conditions that you set. 
-    
-        The default KQL query `@timestamp > "now-30d/d"` searches the threat indicator indices for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
-
-    5. **Indicator mapping**: Set threat mapping conditions that compare values in source event fields with values in threat indicator fields. Alerts are generated if the conditions are met.
-
-        ::::{note}
-        Only single-value fields are supported.
-        ::::
-
-        To specify fields to compare from your specified source event and threat indicator indices, create a threat mapping entry and configure the following:
-
-        * **Field**: Select a field from your source event indices for comparison. 
-        * {applies_to}`stack: ga 9.2` **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
-
-            ::::{note}
-            Define matching (`MATCHES`) conditions first, then narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
-            ::::
-
-        * **Indicator index field**: Select a field from your threat indicator index for comparison. 
-
-    6. (Optional) Add more threat mapping entries and combine them with `AND` and `OR` clauses.
-
-        For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding field values in the `logs-ti_*` indicator index, enter the rule parameters seen in the following image:
-
-        :::{image} /solutions/images/security-indicator-rule-example.png
-        :alt: Indicator match rule settings
-        :screenshot:
-        :::
-
-        ::::{tip}
-        Before you create rules, create [Timeline templates](/solutions/security/investigate/timeline.md) so you can select them under **Timeline template** at the end of the **Define rule** section. When alerts generated by the rule are investigated in the Timeline, Timeline query values are replaced with their corresponding alert field values.
-        ::::
-
-3. (Optional) Select **Suppress alerts** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
-
-    1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
-    2. Enter the field’s data type.
-
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
-
-
-### Use value lists with indicator match rules [indicator-value-lists]
-
-While there are numerous ways you can add data into indicator indices, you can use value lists as the indicator match index in an indicator match rule. Take the following scenario, for example:
-
-You uploaded a value list of known ransomware domains, and you want to be notified if any of those domains matches a value contained in a domain field in your security event index pattern.
-
-1. Upload a value list of indicators.
-2. Create an indicator match rule and fill in the following fields:
-
-    1. **Index patterns**: The Elastic Security event indices on which the rule runs.
-    2. **Custom query**: The query and filters used to retrieve the required results from the Elastic Security event indices (e.g., `host.domain :*`).
-    3. **Indicator index patterns**: Value lists are stored in a hidden index called `.items-<Kibana space>`. Enter the name of the {{kib}} space in which this rule will run in this field.
-    4. **Indicator index query**: Enter the value `list_id :`, followed by the name of the value list you want to use as your indicator index (uploaded in Step 1 above).
-    5. **Indicator mapping**
-
-        * **Field**: Enter the field from the Elastic Security event indices to be used for comparing values.
-        * **Indicator index field**: Enter the type of value list you created (i.e., `keyword`, `text`, or `IP`).
-
-            ::::{tip}
-            If you don’t remember this information, refer to the appropriate [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) and find the list’s type in the **Type** column (for example, the type can be `Keywords`, `Text`, or `IP`).
-            ::::
-
-
-:::{image} /solutions/images/security-indicator_value_list.png
-:alt: indicator value list
-:screenshot:
-:::
-
 
 ## Create a new terms rule [create-new-terms-rule]
 
-::::{note}
-Detailed instructions for creating new terms rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/new-terms.md).
-::::
+Refer to [New terms rule documentation](/solutions/security/detect-and-alert/rule-types/new-terms.md) for complete instructions on creating new terms rules, including:
 
-**Quick summary**: New terms rules generate alerts for each new term detected in source documents within a specified time range.
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create a rule that searches for each new term detected in source documents, select **New Terms** on the **Create new rule** page, then:
-
-    1. Specify what data to search by entering individual {{es}} index patterns or selecting an existing data view.
-    2. Use the filter and query fields to create the criteria used for detecting alerts.
-
-        ::::{note}
-        You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
-        ::::
-
-    3. Use the **Fields** menu to select a field to check for new terms. You can also select up to three fields to detect a combination of new terms (for example, a `host.ip` and `host.id` that have never been observed together before).
-
-        ::::{important}
-        When checking multiple fields, each unique combination of values from those fields is evaluated separately. For example, a document with `host.name: ["host-1", "host-2", "host-3"]` and `user.name: ["user-1", "user-2", "user-3"]` has 9 (3x3) unique combinations of `host.name` and `user.name`. A document with 11 values in `host.name` and 10 values in `user.name` has 110 (11x10) unique combinations. The new terms rule only evaluates 100 unique combinations per document, so selecting fields with large arrays of values might cause incorrect results.
-        ::::
-
-    4. Use the **History Window Size** menu to specify the time range to search in minutes, hours, or days to determine if a term is new. The history window size must be larger than the rule interval plus additional look-back time, because the rule will look for terms where the only time(s) the term appears within the history window is *also* within the rule interval and additional look-back time.
-
-        For example, if a rule has an interval of 5 minutes, no additional look-back time, and a history window size of 7 days, a term will be considered new only if the time it appears within the last 7 days is also within the last 5 minutes. Configure the rule interval and additional look-back time when you [set the rule’s schedule](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule).
-
-3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
-
-    1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
-    2. Enter the field’s data type.
-
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+* Step-by-step configuration with field selection
+* How to detect first-time occurrences
+* Multi-field combination support (up to 3 fields)
+* History window size configuration
+* Important cardinality limits for field arrays
 
 
 ## Create an {{esql}} rule [create-esql-rule]
 
-::::{note}
-Detailed instructions for creating ES|QL rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/esql.md), including comprehensive coverage of aggregating vs. non-aggregating queries, query design considerations, and alert deduplication.
-::::
+Refer to [ES|QL rule documentation](/solutions/security/detect-and-alert/rule-types/esql.md) for complete instructions on creating ES|QL rules, including:
 
-**Quick summary**: ES|QL rules use the Elasticsearch Query Language to query source events and aggregate event data. Query results are returned in a table format where each row becomes an alert.
-
-Use [{{esql}}](elasticsearch://reference/query-languages/esql.md) to query your source events and aggregate event data. Query results are returned in a table with rows and columns. Each row becomes an alert.
-
-To create an {{esql}} rule:
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. Select **{{esql}}**, then write a query.
-
-    ::::{note}
-    Refer to the [dedicated ES|QL rule page](/solutions/security/detect-and-alert/rule-types/esql.md) to learn more about [{{esql}} query types](/solutions/security/detect-and-alert/rule-types/esql.md#esql-rule-query-types), [query design considerations](/solutions/security/detect-and-alert/rule-types/esql.md#esql-query-design), and [rule limitations](/solutions/security/detect-and-alert/rule-types/esql.md#esql-rule-limitations).
-    ::::
-
-
-    ::::{tip}
-    Click the help icon (![Click the ES|QL help icon](/solutions/images/security-esql-help-ref-button.png "title =20x20")) to open the in-product reference documentation for all {{esql}} commands and functions.
-    ::::
-
-3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
-
-    1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
-    2. Enter the field’s data type.
-
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
-
-
-### {{esql}} query types [esql-rule-query-types]
-
-{{esql}} rule queries are loosely categorized into two types: aggregating and non-aggregating.
-
-
-#### Aggregating query [esql-agg-query]
-
-Aggregating queries use [`STATS...BY`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md) functions to aggregate source event data. Alerts generated by a rule with an aggregating query only contain the fields that the {{esql}} query returns and any new fields that the query creates.
-
-::::{note}
-A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the `STATS...BY` function to create a column with aggregated values, the column is created when the rule runs and is added as a new field to any alerts that are generated by the rule.
-::::
-
-
-Here is an example aggregating query:
-
-```esql
-FROM logs-*
-| STATS host_count = COUNT(host.name) BY host.name
-| SORT host_count DESC
-| WHERE host_count > 20
-```
-
-* This query starts by searching logs from indices that match the pattern `logs-*`.
-* The query then aggregates the count of events by `host.name`.
-* Next, it sorts the result by `host_count` in descending order.
-* Then, it filters for events where the `host_count` field appears more than 20 times during the specified rule interval.
-
-::::{note}
-Rules that use aggregating queries might create duplicate alerts. This can happen  when events that occur in the additional look-back time are aggregated both in the current rule execution and in a previous rule execution.
-::::
-
-
-
-#### Non-aggregating query [esql-non-agg-query]
-
-Non-aggregating queries don’t use `STATS...BY` functions and don’t aggregate source event data. Alerts generated by a non-aggregating query contain source event fields that the query returns, new fields the query creates, and all other fields in the source event document.
-
-::::{note}
-A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the [`EVAL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-eval) command to append new columns with calculated values, the columns are created when the rule runs, and are added as new fields to any alerts generated by the rule.
-::::
-
-
-Here is an example non-aggregating query:
-
-```esql
-FROM logs-* METADATA _id, _index, _version
-| WHERE event.category == "process"  AND event.id == "8a4f500d"
-| LIMIT 10
-```
-
-* This query starts by querying logs from indices that match the pattern `logs-*`. The `METADATA _id, _index, _version` operator allows [alert deduplication](/solutions/security/detect-and-alert/rule-types/esql.md#esql-non-agg-query-dedupe).
-* Next, the query filters events where the `event.category` is a process and the `event.id` is `8a4f500d`.
-* Then, it limits the output to the top 10 results.
-
-
-#### Turn on alert deduplication for rules using non-aggregating queries [esql-non-agg-query-dedupe]
-
-To deduplicate alerts, a query needs access to the `_id`, `_index`, and `_version` metadata fields of the queried source event documents. You can allow this by adding the `METADATA _id, _index, _version` operator after the `FROM` source command, for example:
-
-```esql
-FROM logs-* METADATA _id, _index, _version
-| WHERE event.category == "process"  AND event.id == "8a4f500d"
-| LIMIT 10
-```
-
-When those metadata fields are provided, unique alert IDs are created for each alert generated by the query.
-
-When developing the query, make sure you don’t [`DROP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-drop) or filter out the `_id`, `_index`, or `_version` metadata fields.
-
-Here is an example of a query that fails to deduplicate alerts. It uses the `DROP` command to omit the `_id` property from the results table:
-
-```esql
-FROM logs-* METADATA _id, _index, _version
-| WHERE event.category == "process"  AND event.id == "8a4f500d"
-| DROP _id
-| LIMIT 10
-```
-
-Here is another example of an invalid query that uses the `KEEP` command to only return `event.*` fields in the results table:
-
-```esql
-FROM logs-* METADATA _id, _index, _version
-| WHERE event.category == "process"  AND event.id == "8a4f500d"
-| KEEP event.*
-| LIMIT 10
-```
-
-
-### Query design considerations [esql-query-design]
-
-When writing your query, consider the following:
-
-* The [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-limit) command specifies the maximum number of rows an {{esql}} query returns and the maximum number of alerts created per rule execution. Similarly, a detection rule’s **Max alerts per run** setting specifies the maximum number of alerts it can create every time it runs.
-
-    If the `LIMIT` value and **Max alerts per run** value are different, the rule uses the lower value to determine the maximum number of alerts the rule generates.
-
-* When writing an aggregating query, use the [`STATS...BY`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command with fields that you want to search and filter for after alerts are created. For example, using the `host.name`, `user.name`, `process.name` fields with the `BY` operator of the `STATS...BY` command returns these fields in alert documents, and allows you to search and filter for them from the Alerts table.
-* When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value.
-
-
-### {{esql}} rule limitations [esql-rule-limitations]
-
-If your {{esql}} query creates new fields that aren’t part of the ECS schema, they aren’t mapped to the alerts index, so you can’t search for or filter them in the Alerts table. As a workaround, create [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).
-
-
-### Highlight fields returned by the {{esql}} rule query [custom-highlighted-esql-fields]
-
-When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params)**, you can specify any fields that the rule’s aggregating or non-aggregating query return. This can help ensure that returned fields are visible in the alert details flyout while you’re investigating alerts.
+* Step-by-step configuration with query writing
+* Aggregating vs. non-aggregating query types
+* Alert deduplication configuration (METADATA fields)
+* Query design considerations (LIMIT, STATS...BY, sorting)
+* Rule limitations and workarounds
+* Custom highlighted fields guidance
 
 
 ## Configure basic rule settings [rule-ui-basic-params]
