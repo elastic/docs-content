@@ -21,7 +21,7 @@ Machine learning rules create alerts when a {{ml}} job discovers an anomaly abov
 
 ::::{admonition} Requirements
 To create or edit {{ml}} rules, you need:
-* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * The [`machine_learning_admin`](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-ml-admin) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The selected {{ml}} job to be running for the rule to function correctly.
 ::::
