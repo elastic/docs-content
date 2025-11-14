@@ -91,7 +91,7 @@ To establish a mutual TLS connection, the agent presents its certificate, `agent
 :alt: Diagram of mutual TLS connection between Fleet Server and Elasticsearch
 :::
 
-Note that you can also configure mutual TLS for {{fleet-server}} and {{agent}} [using a proxy](/reference/fleet/mutual-tls.md#mutual-tls-cloud-proxy).
+You can also configure mutual TLS for {{fleet-server}} and {{agent}} [using a proxy](/reference/fleet/mutual-tls.md#mutual-tls-cloud-proxy).
 
 
 ### Relationship between components in a mutual TLS connection [_relationship_between_components_in_a_mutual_tls_connection]

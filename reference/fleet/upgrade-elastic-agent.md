@@ -103,7 +103,7 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
 
 5. Upgrade the agents.
 
-Note that agents in a rollout period have the status `Updating` until the upgrade is complete, even if the upgrade has not started yet.
+Agents in a rollout period have the status `Updating` until the upgrade is complete, even if the upgrade has not started yet.
 
 ## Schedule an upgrade [schedule-agent-upgrade]
 
@@ -150,7 +150,7 @@ The following table explains the upgrade states in the order that they can occur
 | Upgrade rolled back | The upgrade was unsuccessful. {{agent}} is being rolled back to the former, pre-upgrade version. |
 | Upgrade failed | An error has been detected in the newly upgraded {{agent}} and the attempt to roll the upgrade back to the previous version has failed. |
 
-Under routine circumstances, an {{agent}} upgrade happens quickly. You typically will not see the agent transition through each of the upgrade states. The detailed upgrade status can be a very useful tool especially if you need to diagnose the state of an agent that may have become stuck, or just appears to have become stuck, during the upgrade process.
+Under routine circumstances, an {{agent}} upgrade happens quickly. You typically will not see the agent transition through each of the upgrade states. The detailed upgrade status can be a useful tool especially if you need to diagnose the state of an agent that may have become stuck, or appears to have become stuck, during the upgrade process.
 
 Beside the upgrade status indicator, you can hover your cursor over the information icon to get more detail about the upgrade.
 
@@ -164,7 +164,7 @@ Beside the upgrade status indicator, you can hover your cursor over the informat
 :screenshot:
 :::
 
-Note that when you upgrade agents from versions below 8.12, the upgrade details are not provided.
+When you upgrade agents from versions below 8.12, the upgrade details are not provided.
 
 :::{image} images/upgrade-non-detailed.png
 :alt: An earlier release agent showing only the updating state without additional details
@@ -196,7 +196,7 @@ An {{agent}} upgrade process may sometimes stall. This can happen for various re
 
 When an {{agent}} upgrade has been detected to be stuck, a warning indicator appears on the UI. When this occurs, you can restart the upgrade from either the **Agents** tab on the main {{fleet}} page or from the details page for any individual agent.
 
-Note that there is a required 10 minute cooldown period in between restart attempts. After launching a restart action you need to wait for the cooldown to complete before initiating another restart.
+There is a required 10 minute cooldown period in between restart attempts. After launching a restart action you need to wait for the cooldown to complete before initiating another restart.
 
 Restart from main {{fleet}} page:
 
