@@ -7,7 +7,7 @@ applies_to:
   serverless: unavailable
 products:
   - id: kibana
-description: Execute long-running searches with background search in Discover and Dashboards when analyzing large datasets. Continue exploring while queries complete, then review results.
+description: Run long-running searches with background search in Discover and Dashboards when analyzing large datasets. Continue working on your data while queries complete, then review results.
 ---
 
 # Run Discover and Dashboards queries in the background
