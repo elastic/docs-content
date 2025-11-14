@@ -14,12 +14,12 @@ products:
 
 # Lens [lens]
 
-Lens is the default visualization editor in {{kib}}, designed to make creating charts as simple as dragging fields onto a canvas. It automatically suggests appropriate visualization types based on your data and lets you switch between chart types with a single click.
+Lens is the default visualization editor in {{product.kibana}}, designed to make creating charts as simple as dragging fields onto a canvas. It automatically suggests appropriate visualization types based on your data and lets you switch between chart types with a single click.
 
-To use Lens, you need a {{data-source}} that defines which {{es}} indices to visualize. Once you select a {{data-source}}, Lens presents all available fields, and you can drag them into different areas to build your visualization. The editor handles aggregations and formatting automatically, though you can customize them when needed.
+To use Lens, you need a {{data-source}} that defines which {{product.elasticsearch}} indices to visualize. Once you select a {{data-source}}, Lens presents all available fields, and you can drag them into different areas to build your visualization. The editor handles aggregations and formatting automatically, though you can customize them when needed.
 
 :::{tip}
-If you collected data using one of the {{kib}} [ingest options](/manage-data/ingest.md), uploaded a file, or added sample data, you likely have a {{data-source}} created automatically, and can start exploring your data. If not, you must create one yourself.
+If you collected data using one of the {{product.kibana}} [ingest options](/manage-data/ingest.md), uploaded a file, or added sample data, you likely have a {{data-source}} created automatically, and can start exploring your data. If not, you must create one yourself.
 :::
 
 With **Lens**, you can:
@@ -138,8 +138,8 @@ To assign colors to terms in your visualization:
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:
    * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
-   * **{{kib}} 7.0**: A palette that matches the {{kib}} 7.0 color theme for visualizations
-   * **{{kib}} 4.0**: A palette that matches the {{kib}} 4.0 color theme for visualizations
+   * **{{product.kibana}} 7.0**: A palette that matches the {{product.kibana}} 7.0 color theme for visualizations
+   * **{{product.kibana}} 4.0**: A palette that matches the {{product.kibana}} 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
 6. Select the color mode you'd like to use with this palette:
    * **Categorical**: Assign a distinct color to each term
@@ -350,7 +350,7 @@ Annotations allow you to call out specific points in your visualizations that ar
 Annotations support two placement types:
 
 * **Static date** — Displays annotations for specific times or time ranges.
-* **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+* **Custom query** — Displays annotations based on custom {{product.elasticsearch}} queries. For detailed information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
 
 Any annotation layer can be saved as an annotation group to the **Visualize Library** in order to reuse it in other visualizations. Any changes made to the annotation group will be reflected in all visualizations to which it is added.
 
@@ -627,7 +627,7 @@ To make your legends as informative as possible, you can show some additional **
 * **Std Deviation**: Standard deviation of all data points plotted in the chart
 * **Current or last value**: The exact value of the current or last data point moused over
 
-All statistics are computed based on the selected time range and the aggregated data points shown in the chart, rather than the original data coming from {{es}}.
+All statistics are computed based on the selected time range and the aggregated data points shown in the chart, rather than the original data coming from {{product.elasticsearch}}.
 
 For example, if the metric plotted in the chart is `Median(system.memory)` and the time range is **last 24 hours**, when you show the **Max** statistic in the Legend, the value that shows corresponds to the `Max[Median(system.memory)]` for the last 24 hours.
 
@@ -735,9 +735,9 @@ By default, **Lens** retrieves only the documents from the fields. For bucket ag
 ::::{dropdown} When do I use runtime fields vs. formula?
 :name: when-do-i-use-runtime-fields-vs-formula
 
-Use runtime fields to format, concatenate, and extract document-level fields. Runtime fields work across all of {{kib}} and are best used for smaller computations without compromising performance.
+Use runtime fields to format, concatenate, and extract document-level fields. Runtime fields work across all of {{product.kibana}} and are best used for smaller computations without compromising performance.
 
-Use formulas to compare multiple {{es}} aggregations that can be filtered or shifted in time. Formulas apply only to **Lens** panels and are computationally intensive.
+Use formulas to compare multiple {{product.elasticsearch}} aggregations that can be filtered or shifted in time. Formulas apply only to **Lens** panels and are computationally intensive.
 
 ::::
 
@@ -816,10 +816,10 @@ You can display icons with [field formatters](../find-and-organize/data-views.md
 ::::
 
 
-::::{dropdown} How do I inspect {{es}} queries in visualizations?
+::::{dropdown} How do I inspect {{product.elasticsearch}} queries in visualizations?
 :name: is-it-possible-to-inspect-the-elasticsearch-queries-in-Lens
 
-You can inspect the requests sent by the visualization to {{es}} using the Inspector. It can be accessed within the editor or in the dashboard.
+You can inspect the requests sent by the visualization to {{product.elasticsearch}} using the Inspector. It can be accessed within the editor or in the dashboard.
 
 ::::
 

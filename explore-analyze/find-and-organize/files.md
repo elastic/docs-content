@@ -12,9 +12,9 @@ description: Access and manage files uploaded to Kibana from features like cases
 
 # Files [files]
 
-The Files management page provides a centralized view of all files uploaded to {{kib}}, including images added to dashboards, attachments in cases, and other uploaded assets. From this page, you can view file metadata, download files, or remove them to manage storage.
+The Files management page provides a centralized view of all files uploaded to {{product.kibana}}, including images added to dashboards, attachments in cases, and other uploaded assets. From this page, you can view file metadata, download files, or remove them to manage storage.
 
-Files uploaded through different {{kib}} features appear here regardless of where they were originally added, making it easier to audit file usage and maintain your {{kib}} instance.
+Files uploaded through different {{product.kibana}} features appear here regardless of where they were originally added, making it easier to audit file usage and maintain your {{product.kibana}} instance.
 
 :::{image} /explore-analyze/images/serverless-file-management.png
 :alt: Files UI

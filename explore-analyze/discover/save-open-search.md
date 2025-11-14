@@ -18,7 +18,7 @@ After configuring a search with specific queries, filters, and column selections
 
 **Prerequisites:**
 
-* You need privileges to save Discover sessions (refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md))
+* You need privileges to save Discover sessions (refer to [Granting access to {{product.kibana}}](elasticsearch://reference/elasticsearch/roles.md))
 * If a read-only indicator appears, you can view but not save sessions
 
 ## Read-only access [discover-read-only-access]

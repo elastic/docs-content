@@ -11,14 +11,14 @@ products:
 
 # Tutorial: Index GeoJSON data [indexing-geojson-data-tutorial]
 
-In this tutorial, you'll learn how to import and index GeoJSON files into {{es}} for visualization in Maps. You'll explore uploading vector data files, indexing them as geo_shape fields, and building multi-layer maps that combine different geographic features. By the end, you'll understand the workflow for working with custom GeoJSON data.
+In this tutorial, you'll learn how to import and index GeoJSON files into {{product.elasticsearch}} for visualization in Maps. You'll explore uploading vector data files, indexing them as geo_shape fields, and building multi-layer maps that combine different geographic features. By the end, you'll understand the workflow for working with custom GeoJSON data.
 
 The tutorial creates a map showing airport locations, flight paths, and lightning detection zones, but these techniques apply to any GeoJSON vector data.
 
 You'll learn to:
 
 * Import GeoJSON files into Kibana
-* Index the files in {{es}}
+* Index the files in {{product.elasticsearch}}
 * Display the data in a multi-layer map
 
 

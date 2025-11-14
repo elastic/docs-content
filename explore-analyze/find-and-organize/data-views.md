@@ -25,27 +25,27 @@ $$$management-cross-cluster-search$$$
 $$$data-views-read-only-access$$$
 
 
-{{data-sources-cap}} define which {{es}} indices, data streams, or index aliases are accessible to {{kib}} analytics features like Discover, Lens, and Maps. A {{data-source}} can target a single index or use patterns to match multiple indices, allowing you to analyze data across related sources.
+{{data-sources-cap}} define which {{product.elasticsearch}} indices, data streams, or index aliases are accessible to {{product.kibana}} analytics features like Discover, Lens, and Maps. A {{data-source}} can target a single index or use patterns to match multiple indices, allowing you to analyze data across related sources.
 
 Each {{data-source}} includes field definitions, formatting options, and a timestamp field for time-based filtering. You can also add runtime fields that calculate values on the fly without modifying your indexed data.
 
 ::::{note}
-Some {{kib}} features support {{esql}} queries, which don't require {{data-sources}}. Refer to [{{esql}}](elasticsearch://reference/query-languages/esql.md) for details.
+Some {{product.kibana}} features support {{esql}} queries, which don't require {{data-sources}}. Refer to [{{esql}}](elasticsearch://reference/query-languages/esql.md) for details.
 ::::
 
 
 ## Permissions [data-views-read-only-access]
 
 * Creating and managing data views requires [a role](../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) with the following permissions:
-  - `Data View Management` {{kib}} privilege.
-  - `view_index_metadata` {{es}} privilege.
+  - `Data View Management` {{product.kibana}} privilege.
+  - `view_index_metadata` {{product.elasticsearch}} privilege.
 * If a read-only indicator appears, you have insufficient privileges to create or save {{data-sources}}. In addition, the buttons to create {{data-sources}} or save existing {{data-sources}} are not visible.
 * {applies_to}`stack: ga 9.2` Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can [duplicate it](#duplicate-managed-data-view) and edit that new copy as needed.
 
 
 ## Create a data view [settings-create-pattern]
 
-If you collected data using one of the {{kib}} [ingest options](../../manage-data/ingest.md), uploaded a file, or added sample data, you get a {{data-source}} created automatically, and can start exploring your data. If you loaded your own data, follow these steps to create a {{data-source}}.
+If you collected data using one of the {{product.kibana}} [ingest options](../../manage-data/ingest.md), uploaded a file, or added sample data, you get a {{data-source}} created automatically, and can start exploring your data. If you loaded your own data, follow these steps to create a {{data-source}}.
 
 1. Open **Lens** or **Discover**, and then open the data view menu.
 
@@ -57,7 +57,7 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 
 2. Click **Create a {{data-source}}**.
 3. Give your {{data-source}} a name.
-4. Start typing in the **Index pattern** field, and {{kib}} looks for the names of indices, data streams, and aliases that match your input. You can view all available sources or only the sources that the data view targets.
+4. Start typing in the **Index pattern** field, and {{product.kibana}} looks for the names of indices, data streams, and aliases that match your input. You can view all available sources or only the sources that the data view targets.
    ![Create data view](/explore-analyze/images/kibana-create-data-view.png "")
 
     * To match multiple sources, use a wildcard (*). `filebeat-*` matches `filebeat-apache-a`, `filebeat-apache-b`, and so on.
@@ -72,9 +72,9 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 6. Click **Show advanced settings** to:
 
     * Display hidden and system indices.
-    * Specify your own {{data-source}} name. For example, enter your {{es}} index alias name.
+    * Specify your own {{data-source}} name. For example, enter your {{product.elasticsearch}} index alias name.
 
-7. $$$reload-fields$$$ Click **Save {{data-source}} to {{kib}}**.
+7. $$$reload-fields$$$ Click **Save {{data-source}} to {{product.kibana}}**.
 
     You can manage your data views from the **Management** menu.
 
@@ -82,7 +82,7 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 
 ### Create a temporary {{data-source}} [_create_a_temporary_data_source]
 
-Want to explore your data or create a visualization without saving it as a data view? Select **Use without saving** in the **Create {{data-source}}** form in **Discover** or **Lens**. With a temporary {{data-source}}, you can add fields and create an {{es}} query alert, just like you would a regular {{data-source}}.  Your work won’t be visible to others in your space.
+Want to explore your data or create a visualization without saving it as a data view? Select **Use without saving** in the **Create {{data-source}}** form in **Discover** or **Lens**. With a temporary {{data-source}}, you can add fields and create an {{product.elasticsearch}} query alert, just like you would a regular {{data-source}}.  Your work won’t be visible to others in your space.
 
 A temporary {{data-source}} remains in your space until you change apps, or until you save it.
 
@@ -125,13 +125,13 @@ serverless: unavailable
 stack: ga
 ```
 
-If your {{es}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
+If your {{product.elasticsearch}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
 
 ```ts
 <remote_cluster_name>:<target>
 ```
 
-To query {{ls}} indices across two {{es}} clusters that you set up for {{ccs}}, named `cluster_one` and `cluster_two`:
+To query {{ls}} indices across two {{product.elasticsearch}} clusters that you set up for {{ccs}}, named `cluster_one` and `cluster_two`:
 
 ```ts
  cluster_one:logstash-*,cluster_two:logstash-*
@@ -143,7 +143,7 @@ Use wildcards in your cluster names to match any number of clusters. To search {
 cluster_*:logstash-*
 ```
 
-To query across all {{es}} clusters that have been configured for {{ccs}}, use a standalone wildcard for your cluster name:
+To query across all {{product.elasticsearch}} clusters that have been configured for {{ccs}}, use a standalone wildcard for your cluster name:
 
 ```ts
 *:logstash-*
@@ -161,14 +161,14 @@ Excluding a cluster avoids sending any network calls to that cluster. To exclude
 cluster_*:logstash-*,-cluster_one:*
 ```
 
-Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and aggregations using that {{data-source}} in {{kib}} take advantage of {{ccs}}.
+Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and aggregations using that {{data-source}} in {{product.kibana}} take advantage of {{ccs}}.
 
 For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../solutions/search/cross-cluster-search.md#exclude-problematic-clusters).
 
 
 ## Delete a {{data-source}} [delete-data-view]
 
-When you delete a {{data-source}}, you cannot recover the associated field formatters, runtime fields, source filters, and field popularity data. Deleting a {{data-source}} does not remove any indices or data documents from {{es}}.
+When you delete a {{data-source}}, you cannot recover the associated field formatters, runtime fields, source filters, and field popularity data. Deleting a {{data-source}} does not remove any indices or data documents from {{product.elasticsearch}}.
 
 ::::{warning}
 Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, and other saved objects that reference the data view.
@@ -181,13 +181,13 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 
 ## {{data-source}} field cache [data-view-field-cache]
 
-The browser caches {{data-source}} field lists for increased performance. This is particularly impactful for {{data-sources}} with a high field count that span a large number of indices and clusters. The field list is updated every couple of minutes in typical {{kib}} usage. Alternatively, use the refresh button on the {{data-source}} management detail page to get an updated field list. A force reload of {{kib}} has the same effect.
+The browser caches {{data-source}} field lists for increased performance. This is particularly impactful for {{data-sources}} with a high field count that span a large number of indices and clusters. The field list is updated every couple of minutes in typical {{product.kibana}} usage. Alternatively, use the refresh button on the {{data-source}} management detail page to get an updated field list. A force reload of {{product.kibana}} has the same effect.
 
 The field list may be impacted by changes in indices and user permissions.
 
 ## Manage data views [managing-data-views]
 
-To customize the data fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data fields.
+To customize the data fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{product.kibana}} displays the data fields.
 
 
 ### Explore your data with runtime fields [runtime-fields]
@@ -202,11 +202,11 @@ With runtime fields, you can:
 * Add fields to existing documents without reindexing your data.
 
 ::::{warning}
-Runtime fields can impact {{kib}} performance. When you run a query, {{es}} uses the fields you index first to shorten the response time. Index the fields that you commonly search for and filter on, such as `timestamp`, then use runtime fields to limit the number of fields {{es}} uses to calculate values.
+Runtime fields can impact {{product.kibana}} performance. When you run a query, {{product.elasticsearch}} uses the fields you index first to shorten the response time. Index the fields that you commonly search for and filter on, such as `timestamp`, then use runtime fields to limit the number of fields {{product.elasticsearch}} uses to calculate values.
 ::::
 
 
-For detailed information on how to use runtime fields with {{es}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md).
+For detailed information on how to use runtime fields with {{product.elasticsearch}}, refer to [Runtime fields](../../manage-data/data-store/mapping/runtime-fields.md).
 
 
 #### Add runtime fields [create-runtime-fields]
@@ -227,7 +227,7 @@ To add runtime fields to your data views, open the data view you want to change,
 7. Click **Create field**.
 
 :::{warning}
-Runtime fields created against a data view are not applied to the underlying index mapping in {{es}}.
+Runtime fields created against a data view are not applied to the underlying index mapping in {{product.elasticsearch}}.
 :::
 
 
@@ -332,14 +332,14 @@ Use [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) ins
 ::::
 
 
-Scripted fields compute data on the fly from the data in your {{es}} indices. The data is shown on the Discover tab as part of the document data, and you can use scripted fields in your visualizations. You query scripted fields with the [{{kib}} query language](../../explore-analyze/query-filter/languages/kql.md), and can filter them using the filter bar. The scripted field values are computed at query time, so they aren’t indexed and cannot be searched using the {{kib}} default query language.
+Scripted fields compute data on the fly from the data in your {{product.elasticsearch}} indices. The data is shown on the Discover tab as part of the document data, and you can use scripted fields in your visualizations. You query scripted fields with the [{{product.kibana}} query language](../../explore-analyze/query-filter/languages/kql.md), and can filter them using the filter bar. The scripted field values are computed at query time, so they aren’t indexed and cannot be searched using the {{product.kibana}} default query language.
 
 ::::{warning}
-Computing data on the fly with scripted fields can be very resource intensive and can have a direct impact on {{kib}} performance. Keep in mind that there’s no built-in validation of a scripted field. If your scripts are buggy, you’ll get exceptions whenever you try to view the dynamically generated data.
+Computing data on the fly with scripted fields can be very resource intensive and can have a direct impact on {{product.kibana}} performance. Keep in mind that there’s no built-in validation of a scripted field. If your scripts are buggy, you’ll get exceptions whenever you try to view the dynamically generated data.
 ::::
 
 
-When you define a scripted field in {{kib}}, you have a choice of the [Lucene expressions](../../explore-analyze/scripting/modules-scripting-expression.md) or the [Painless](../../explore-analyze/scripting/modules-scripting-painless.md) scripting language.
+When you define a scripted field in {{product.kibana}}, you have a choice of the [Lucene expressions](../../explore-analyze/scripting/modules-scripting-expression.md) or the [Painless](../../explore-analyze/scripting/modules-scripting-painless.md) scripting language.
 
 You can reference any single value numeric field in your expressions, for example:
 
@@ -347,7 +347,7 @@ You can reference any single value numeric field in your expressions, for exampl
 doc['field_name'].value
 ```
 
-For more information on scripted fields and additional examples, refer to [Using Painless in {{kib}} scripted fields](https://www.elastic.co/blog/using-painless-kibana-scripted-fields)
+For more information on scripted fields and additional examples, refer to [Using Painless in {{product.kibana}} scripted fields](https://www.elastic.co/blog/using-painless-kibana-scripted-fields)
 
 
 #### Migrate to runtime fields or ES|QL queries [migrate-off-scripted-fields]
@@ -458,7 +458,7 @@ The ability to create new scripted fields has been removed from the **Data Views
 2. Select the data view that contains the scripted field you want to manage.
 3. Select the **Scripted fields** tab, then open the scripted field edit options or delete the scripted field.
 
-For more information about scripted fields in {{es}}, refer to [Scripting](../../explore-analyze/scripting.md).
+For more information about scripted fields in {{product.elasticsearch}}, refer to [Scripting](../../explore-analyze/scripting.md).
 
 ::::{warning}
 Built-in validation is unsupported for scripted fields. When your scripts contain errors, you receive exceptions when you view the dynamically generated data.
@@ -468,7 +468,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 ### Format data fields [managing-fields]
 
-{{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data fields, use the formatting options.
+{{product.kibana}} uses the same field types as {{product.elasticsearch}}, however, some {{product.elasticsearch}} field types are unsupported in {{product.kibana}}. To customize how {{product.kibana}} displays data fields, use the formatting options.
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
@@ -612,7 +612,7 @@ Supported transformations include:
 
 Numeric fields support **Bytes and Bits**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, **String**, and **Url** formatters.
 
-The **Bytes and Bits**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
+The **Bytes and Bits**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{product.kibana}} maintains.
 
 The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes and Bits**, **Number**, or **Percentage** format to aggregated data.
 
@@ -689,7 +689,7 @@ stack: ga 9.2
 
 Some data views are exclusively configured and **managed** by Elastic. You can view and use these managed data views, but you can't edit them. If you'd like to use a modified version of a managed data view, you can duplicate it and edit that new copy as needed. To do this:
 
-1. Open the {{kib}} application where you want to use the data view. For example, **Discover** or **Lens**.
+1. Open the {{product.kibana}} application where you want to use the data view. For example, **Discover** or **Lens**.
    :::{note}
    The duplication operation isn't available from the **Data Views** management page.
    :::
@@ -702,4 +702,4 @@ Some data views are exclusively configured and **managed** by Elastic. You can v
 
 4. Select **Duplicate**. A Similar flyout opens where you can adjust the settings of the new copy of the managed data view.
 
-5. Finalize your edits, then select **Save data view to Kibana** or **Use without saving**, depending on your needs. By saving it to {{kib}}, you can retrieve it and use it again later.
+5. Finalize your edits, then select **Save data view to Kibana** or **Use without saving**, depending on your needs. By saving it to {{product.kibana}}, you can retrieve it and use it again later.

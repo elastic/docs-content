@@ -79,7 +79,7 @@ From the list of background searches, you can reopen and edit any searches, but 
      :::{tip}
      From **Discover**, you can only view Discover background searches. And from **Dashboards**, you can only see Dashboards background searches.
      :::
-   - Open the **Background Search** management page in {{kib}}.
+   - Open the **Background Search** management page in {{product.kibana}}.
 
 1. Find the background search that you want to interact with using the search or status filter options.
    - To open it to view its results and continue your explorations, select its name. Relative dates are converted to absolute dates.

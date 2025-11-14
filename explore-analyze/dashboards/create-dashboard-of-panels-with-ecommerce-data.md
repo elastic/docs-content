@@ -17,7 +17,7 @@ The tutorial uses ecommerce sample data, but you can apply these techniques to a
 
 **Prerequisites:**
 
-- Access to {{kib}} (version 8.0 or later)
+- Access to {{product.kibana}} (version 8.0 or later)
 - Ecommerce sample data installed (instructions below)
 
 :::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png

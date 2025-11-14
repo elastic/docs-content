@@ -11,19 +11,19 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-Automate report generation to share dashboards, visualizations, and data exports on a regular schedule. You can use {{watcher}} or scripts to trigger report generation through a POST URL, or set up recurring schedules directly in {{kib}} to generate and email reports automatically.
+Automate report generation to share dashboards, visualizations, and data exports on a regular schedule. You can use {{watcher}} or scripts to trigger report generation through a POST URL, or set up recurring schedules directly in {{product.kibana}} to generate and email reports automatically.
 
-Three approaches are available for automating reports:
+Several approaches are available for automating reports:
 
 * **{{watcher}}**: Configure watches that generate and email reports based on schedules or conditions
 * **Scripts**: Use HTTP POST requests to programmatically generate reports on demand
-* **Scheduled exports**: {applies_to}`stack: preview 9.1, serverless: preview` Set up recurring tasks in {{kib}} that automatically generate and share reports by email
+* **Scheduled exports**: {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview` Set up recurring tasks in {{product.kibana}} that automatically generate and share reports by email
 
 **Prerequisites:**
 
-* Appropriate {{kib}} privileges to create reports
+* Appropriate {{product.kibana}} privileges to create reports
 * {applies_to}`stack: ga` API key or user credentials with reporting permissions
-* {applies_to}`stack: preview 9.1, serverless: preview` For scheduled email sharing, a configured email connector
+* {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview` For scheduled email sharing, a configured email connector
 
 :::{note}
 :applies_to: {stack: ga, serverless: unavailable}
@@ -101,7 +101,7 @@ PUT _watcher/watch/error_report
 2. An example POST URL. You can copy and paste the URL for any report.
 3. Optional, default is `40`.
 4. Optional, default is `15s`.
-5. User credentials for a user with permission to access {{kib}} and the {{report-features}}. For more information, refer to [Configure reporting](../report-and-share.md).
+5. User credentials for a user with permission to access {{product.kibana}} and the {{report-features}}. For more information, refer to [Configure reporting](../report-and-share.md).
 
 
 ::::{note}
@@ -130,8 +130,8 @@ curl \
 ```
 
 1. The required `POST` method.
-2. The user credentials for a user with permission to access {{kib}} and {{report-features}}.
-3. The required `kbn-xsrf` header for all `POST` requests to {{kib}}. For more information, refer to [API Request Headers](https://www.elastic.co/docs/api/doc/kibana/).
+2. The user credentials for a user with permission to access {{product.kibana}} and {{report-features}}.
+3. The required `kbn-xsrf` header for all `POST` requests to {{product.kibana}}. For more information, refer to [API Request Headers](https://www.elastic.co/docs/api/doc/kibana/).
 4. The POST URL. You can copy and paste the URL for any report.
 
 
@@ -152,7 +152,7 @@ An example response for a successfully queued report:
 }
 ```
 
-1. The relative path on the {{kib}} host for downloading the report.
+1. The relative path on the {{product.kibana}} host for downloading the report.
 2. (Not included in the example) Internal representation of the reporting job, as found in the `.reporting-*` storage.
 
 
@@ -174,14 +174,14 @@ The response payload of a request to generate a report includes the path to down
 
 ## Deprecated report URLs [deprecated-report-urls]
 
-If you experience issues with the deprecated report URLs after you upgrade {{kib}}, regenerate the POST URL for your reports.
+If you experience issues with the deprecated report URLs after you upgrade {{product.kibana}}, regenerate the POST URL for your reports.
 
 * **Dashboard** reports:  `/api/reporting/generate/dashboard/<dashboard-id>`
 * **Visualize Library** reports:  `/api/reporting/generate/visualization/<visualization-id>`
 * **Discover** reports: `/api/reporting/generate/search/<discover-session-id>`
 
 :::{important}
-In earlier {{kib}} versions, you could use the `&sync` parameter to append to report URLs that held the request open until the document was fully generated. The `&sync` parameter is now unsupported. If you use the `&sync` parameter in Watcher, you must update the parameter.
+In earlier {{product.kibana}} versions, you could use the `&sync` parameter to append to report URLs that held the request open until the document was fully generated. The `&sync` parameter is now unsupported. If you use the `&sync` parameter in Watcher, you must update the parameter.
 :::
 
 ## Schedule and share reports [schedule-report-generation]
@@ -195,23 +195,23 @@ Save time by setting up a recurring task that automatically generates reports an
 
 ### Prerequisites [scheduled-reports-reqs]
 
-* To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
+* To generate PDF and PNG reports, your {{product.kibana}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
-* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
-* Sharing reports outside of {{kib}} requires a default preconfigured email connector.
+* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{product.kibana}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
+* Sharing reports outside of {{product.kibana}} requires a default preconfigured email connector.
 
    * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
-   * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{kib}}. To do this:
+   * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{product.kibana}}. To do this:
      
      1. Open your `kibana.yml` file.
-     2. Add the `xpack.actions.preconfigured` {{kib}} setting. This setting specifies configuration details for the preconfigured connector that you're defining. 
+     2. Add the `xpack.actions.preconfigured` {{product.kibana}} setting. This setting specifies configuration details for the preconfigured connector that you're defining. 
      3. Under the `xpack.actions.preconfigured` setting, define the email connector. Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirements for different email services and providers.
 
          :::{note} 
-         You must define preconfigured email connector details in the `kibana.yml` file. You cannot create a preconfigured email connector from the {{kib}} UI. 
+         You must define preconfigured email connector details in the `kibana.yml` file. You cannot create a preconfigured email connector from the {{product.kibana}} UI. 
          :::
 
-     4. Add the `notifications.connectors.default.email` {{kib}} setting, and provide the name of your email connector. The `notifications.connectors.default.email` setting specifies the default email connector to use when sending notifications. This is especially useful if you have multiple email connectors and want to set a default one. 
+     4. Add the `notifications.connectors.default.email` {{product.kibana}} setting, and provide the name of your email connector. The `notifications.connectors.default.email` setting specifies the default email connector to use when sending notifications. This is especially useful if you have multiple email connectors and want to set a default one. 
 
      The following example shows a modified `kibana.yml` file with a preconfigured email connector that's set as the default connector for email notifications:
 
@@ -234,7 +234,7 @@ Save time by setting up a recurring task that automatically generates reports an
         notifications.connectors.default.email: my-email
      ```
 
-* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
+* (Optional) To control who can receive email notifications from {{product.kibana}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
 
 ### Create a schedule [create-scheduled-report]
 
@@ -268,8 +268,8 @@ To stop a scheduled report, you can take the following actions from the **Schedu
 
 The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Issues with report generation and sharing are likely to happen in the following scenarios:
 
-* The limit for email attachments is 10 MB. {{kib}} might fail to attach reports that are larger than this size.
-* Scheduling too many reports at the same time might cause reports to be shared late or at an inconsistent schedule. {{kib}} Task Manager runs reporting tasks one at a time.
+* The limit for email attachments is 10 MB. {{product.kibana}} might fail to attach reports that are larger than this size.
+* Scheduling too many reports at the same time might cause reports to be shared late or at an inconsistent schedule. {{product.kibana}} Task Manager runs reporting tasks one at a time.
 * If your cluster is running many tasks in general, reports may be delayed.
 * Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode. 
 * Scheduling CSV reports of Lens visualizations is not supported. 

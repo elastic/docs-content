@@ -13,7 +13,7 @@ products:
 
 These step-by-step tutorials walk you through building complete dashboards from start to finish. Each tutorial demonstrates specific visualization techniques and analytical workflows that you can apply to your own data.
 
-While the tutorials use {{kib}} sample data sets for convenience, the techniques and approaches work with any compatible data source. Choose a tutorial based on the type of analysis you want to perform.
+While the tutorials use {{product.kibana}} sample data sets for convenience, the techniques and approaches work with any compatible data source. Choose a tutorial based on the type of analysis you want to perform.
 
 
 

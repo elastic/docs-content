@@ -11,7 +11,7 @@ products:
 
 # Map custom regions with reverse geocoding [reverse-geocoding-tutorial]
 
-In this tutorial, you'll learn how to map custom geographic regions when your data contains coordinates but not region identifiers. You'll explore uploading custom region boundaries, using {{es}} enrich processors for reverse geocoding, and visualizing metrics by region. By the end, you'll understand how to assign region identifiers to data based on geographic location.
+In this tutorial, you'll learn how to map custom geographic regions when your data contains coordinates but not region identifiers. You'll explore uploading custom region boundaries, using {{product.elasticsearch}} enrich processors for reverse geocoding, and visualizing metrics by region. By the end, you'll understand how to assign region identifiers to data based on geographic location.
 
 Reverse geocoding converts coordinates into region identifiers by determining which region boundary contains each point. This tutorial demonstrates the technique using US Census Bureau Combined Statistical Areas, but it applies to any custom regional boundaries.
 
@@ -20,7 +20,7 @@ In this tutorial, you’ll use reverse geocoding to visualize United States Cens
 You’ll learn to:
 
 * Upload custom regions.
-* Reverse geocode with the {{es}} [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md).
+* Reverse geocode with the {{product.elasticsearch}} [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md).
 * Create a map and visualize CSA regions by web traffic.
 
 When you complete this tutorial, you’ll have a map that looks like this:
@@ -78,7 +78,7 @@ Looking at the map, you get a sense of what constitutes a metro area in the eyes
 
 ## Step 3: Reverse geocoding [_step_3_reverse_geocoding]
 
-To visualize CSA regions by web log traffic, the web log traffic must contain a CSA region identifier. You’ll use {{es}} [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) to add CSA region identifiers to the web logs sample data set. You can skip this step if your source data already contains region identifiers.
+To visualize CSA regions by web log traffic, the web log traffic must contain a CSA region identifier. You’ll use {{product.elasticsearch}} [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) to add CSA region identifiers to the web logs sample data set. You can skip this step if your source data already contains region identifiers.
 
 1. Go to **Developer tools** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Console**, create a [geo_match enrichment policy](../../../manage-data/ingest/transform-enrich/example-enrich-data-based-on-geolocation.md):

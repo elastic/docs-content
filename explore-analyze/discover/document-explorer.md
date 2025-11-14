@@ -98,7 +98,7 @@ To sort by multiple fields:
 
 ### Edit a field [document-explorer-edit-field]
 
-Change how {{kib}} displays a field.
+Change how {{product.kibana}} displays a field.
 
 1. Click the column header for the field, and then select **Edit {{data-source}} field.**
 2. In the **Edit field** form, change the field name and format.

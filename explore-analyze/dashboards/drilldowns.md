@@ -114,13 +114,13 @@ For example, if you have a dashboard that shows data from a Github repository, y
 
     1. Give the drilldown a name. For example, `Show on Github`.
     2. For the **Trigger**, select **Single click**.
-    3. To navigate to the {{kib}} repository Github issues, enter the following in the **Enter URL** field:
+    3. To navigate to the {{product.kibana}} repository Github issues, enter the following in the **Enter URL** field:
 
         ```bash
         https://github.com/elastic/kibana/issues?q=is:issue+is:open+{{event.value}}
         ```
 
-        {{kib}} substitutes `{{event.value}}` with a value associated with the selected pie slice.
+        {{product.kibana}} substitutes `{{event.value}}` with a value associated with the selected pie slice.
 
     4. Click **Create drilldown**.
 
@@ -129,7 +129,7 @@ For example, if you have a dashboard that shows data from a Github repository, y
 
     ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png "")
 
-9. In the list of {{kib}} repository issues, verify that the slice value appears.
+9. In the list of {{product.kibana}} repository issues, verify that the slice value appears.
 
     ![Open ios issues in the elastic/kibana repository on Github](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png "")
 
@@ -213,7 +213,7 @@ Example:
 
 **rison**
 
-Serialize variables in [rison](https://github.com/w33ble/rison-node) format. Rison is a common format for {{kib}} apps for storing state in the URL.
+Serialize variables in [rison](https://github.com/w33ble/rison-node) format. Rison is a common format for {{product.kibana}} apps for storing state in the URL.
 
 Example:
 
@@ -347,11 +347,11 @@ To ensure that the configured URL drilldown works as expected with your data, yo
 
 | Source | Variable | Description |
 | --- | --- | --- |
-| **Global** | kibanaUrl | {{kib}} base URL. Useful for creating URL drilldowns that navigate within {{kib}}. |
+| **Global** | kibanaUrl | {{product.kibana}} base URL. Useful for creating URL drilldowns that navigate within {{product.kibana}}. |
 | **Context** | context.panel | Context provided by current dashboard panel. |
 |  | context.panel.id | ID of a panel. |
 |  | context.panel.title | Title of a panel. |
-|  | context.panel.filters | List of {{kib}} filters applied to a panel.<br>Tip: Use in combination with [rison](#helpers) helper forinternal {{kib}} navigations with carrying over current filters. |
+|  | context.panel.filters | List of {{product.kibana}} filters applied to a panel.<br>Tip: Use in combination with [rison](#helpers) helper forinternal {{product.kibana}} navigations with carrying over current filters. |
 |  | context.panel.query.query | Current query string. |
 |  | context.panel.query.language | Current query language. |
 |  | context.panel.timeRange.from<br>context.panel.timeRange.to | Current time picker values.<br>Tip: Use in combination with [date](#helpers) helper to format date. |

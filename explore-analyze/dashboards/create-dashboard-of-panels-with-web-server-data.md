@@ -11,13 +11,13 @@ products:
 
 # Create a dashboard to monitor website logs [create-a-dashboard-of-panels-with-web-server-data]
 
-In this tutorial, you'll learn the most common visualization patterns for creating dashboards in {{kib}}. You'll explore how to build metric panels, line charts, tables, pie charts, and other visualizations using Lens, the default visualization editor. By the end, you'll understand the fundamental workflows for transforming raw data into meaningful dashboards.
+In this tutorial, you'll learn the most common visualization patterns for creating dashboards in {{product.kibana}}. You'll explore how to build metric panels, line charts, tables, pie charts, and other visualizations using Lens, the default visualization editor. By the end, you'll understand the fundamental workflows for transforming raw data into meaningful dashboards.
 
 The tutorial uses web server log data from the analyst perspective, but these techniques apply to any data set.
 
 **Prerequisites:**
 
-- Access to {{kib}} (version 8.0 or later)
+- Access to {{product.kibana}} (version 8.0 or later)
 - Web logs sample data installed (instructions below)
 
 :::{image} /explore-analyze/images/kibana-lens_logsDashboard_8.4.0.png
@@ -44,7 +44,7 @@ Open the visualization editor, then make sure the correct fields appear.
    * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
    * {applies_to}`stack: ga 9.0` Click **Create visualization**.
 
-2. Make sure the **{{kib}} Sample Data Logs** {{data-source}} appears.
+2. Make sure the **{{product.kibana}} Sample Data Logs** {{data-source}} appears.
 
    :::{image} /explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png
    :alt: Data view dropdown

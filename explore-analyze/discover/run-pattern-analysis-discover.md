@@ -23,7 +23,7 @@ When troubleshooting with unstructured log data, manually identifying patterns i
 * This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data
 
 1. Go to **Discover**.
-2. Expand the {{data-source}} dropdown, and select **{{kib}} Sample Data Logs**.
+2. Expand the {{data-source}} dropdown, and select **{{product.kibana}} Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
 4. Click the **Patterns** tab next to **Documents** and **Field statistics**. The pattern analysis starts. The results are displayed under the chart. You can change the analyzed field by using the field selector. In the **Pattern analysis menu**, you can change the **Minimum time range**. This option enables you to widen the time range for calculating patterns which improves accuracy. The patterns, however, are still displayed by the time range you selected in step 3.
 

@@ -14,9 +14,9 @@ description: Manage saved objects including dashboards, visualizations, and data
 
 # Saved objects [saved-objects]
 
-Saved objects in {{kib}} include dashboards, visualizations, {{data-sources}}, searches, maps, and other reusable assets. You can organize saved objects with names and tags, import and export them between {{kib}} instances, and copy them between spaces to share with different teams.
+Saved objects in {{product.kibana}} include dashboards, visualizations, {{data-sources}}, searches, maps, and other reusable assets. You can organize saved objects with names and tags, import and export them between {{product.kibana}} instances, and copy them between spaces to share with different teams.
 
-This guide covers managing, importing, exporting, and understanding saved object IDs across {{kib}} versions.
+This guide covers managing, importing, exporting, and understanding saved object IDs across {{product.kibana}} versions.
 
 $$$managing-saved-objects-copy-to-space$$$
 
@@ -46,10 +46,10 @@ You can find the **Saved Objects** page using the navigation menu or the [global
 
 ## Permissions [_required_permissions_5]
 
-To access **Saved Objects**, you must have a role with the `Saved Objects Management` {{kib}} privilege.
+To access **Saved Objects**, you must have a role with the `Saved Objects Management` {{product.kibana}} privilege.
 
 ::::{note}
-Granting access to `Saved Objects Management` authorizes users to manage all saved objects in {{kib}}, including objects that are managed by applications they may not otherwise be authorized to access.
+Granting access to `Saved Objects Management` authorizes users to manage all saved objects in {{product.kibana}}, including objects that are managed by applications they may not otherwise be authorized to access.
 ::::
 
 
@@ -62,9 +62,9 @@ Granting access to `Saved Objects Management` authorizes users to manage all sav
 
 ## Import and export [saved-objects-import-and-export]
 
-Use import and export to move objects between different {{kib}} instances. These actions are useful when you have multiple environments for development and production. Import and export also work well when you have a large number of objects to update and want to batch the process.
+Use import and export to move objects between different {{product.kibana}} instances. These actions are useful when you have multiple environments for development and production. Import and export also work well when you have a large number of objects to update and want to batch the process.
 
-{{kib}} also provides import and export saved objects APIs for your [Elastic Stack deployments](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) and [serverless projects](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-saved-objects) to automate this process.
+{{product.kibana}} also provides import and export saved objects APIs for your [Elastic Stack deployments](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) and [serverless projects](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-saved-objects) to automate this process.
 
 
 ### Import [saved-objects-import]
@@ -73,7 +73,7 @@ Import multiple objects in a single operation.
 
 1. In the toolbar, click **Import**.
 2. Select the NDJSON file that includes the objects you want to import.
-3. Select the import options. By default, saved objects already in {{kib}} are overwritten.
+3. Select the import options. By default, saved objects already in {{product.kibana}} are overwritten.
 4. Click **Import**.
 
 ::::{note}
@@ -88,7 +88,7 @@ Export objects by selection or type.
 * To export specific objects, select them in the table, and then click **Export**.
 * To export objects by type, click **Export objects** in the toolbar.
 
-{{kib}} creates an NDJSON with all your saved objects. By default, the NDJSON includes child objects related to the saved objects. Exported dashboards include their associated {{data-sources}}.
+{{product.kibana}} creates an NDJSON with all your saved objects. By default, the NDJSON includes child objects related to the saved objects. Exported dashboards include their associated {{data-sources}}.
 
 ::::{note}
 The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportexportsize) configuration setting limits the number of saved objects that you can export.
@@ -109,9 +109,9 @@ The copy operation automatically includes child objects that are related to the 
 
 ## Compatibility across versions [_compatibility_across_versions]
 
-With each release, {{kib}} introduces changes to the way saved objects are stored. When importing a saved object, {{kib}} runs the necessary migrations to ensure that the imported saved objects are compatible with the current version.
+With each release, {{product.kibana}} introduces changes to the way saved objects are stored. When importing a saved object, {{product.kibana}} runs the necessary migrations to ensure that the imported saved objects are compatible with the current version.
 
-However, saved objects can only be imported into the same version, a newer minor on the same major, or the next major. Exported saved objects are not backward compatible and cannot be imported into an older version of {{kib}}. For example:
+However, saved objects can only be imported into the same version, a newer minor on the same major, or the next major. Exported saved objects are not backward compatible and cannot be imported into an older version of {{product.kibana}}. For example:
 
 | Exporting version | Importing version | Compatible? |
 | --- | --- | --- |
@@ -126,42 +126,42 @@ However, saved objects can only be imported into the same version, a newer minor
 stack:
 ```
 
-In the past, many saved object types could have the same ID in different [spaces](/deploy-manage/manage-spaces.md). For example, if you copied dashboard "123" from the one space to another space, the second dashboard would also have an ID of "123". While the saved object ID is not something that users would interact with directly, many aspects of {{kib}} rely on it, notably URLs. If you have a "deep link" URL to a saved dashboard, that URL includes the saved object ID.
+In the past, many saved object types could have the same ID in different [spaces](/deploy-manage/manage-spaces.md). For example, if you copied dashboard "123" from the one space to another space, the second dashboard would also have an ID of "123". While the saved object ID is not something that users would interact with directly, many aspects of {{product.kibana}} rely on it, notably URLs. If you have a "deep link" URL to a saved dashboard, that URL includes the saved object ID.
 
-**Since version 8.0**, {{kib}} requires most saved objects to have *globally unique* IDs. This is a change that we needed to make to support sharing saved objects to multiple spaces. Most saved objects cannot be shared to multiple spaces *yet*, but we needed to start enforcing globally unique object IDs first.
+**Since version 8.0**, {{product.kibana}} requires most saved objects to have *globally unique* IDs. This is a change that we needed to make to support sharing saved objects to multiple spaces. Most saved objects cannot be shared to multiple spaces *yet*, but we needed to start enforcing globally unique object IDs first.
 
 We have made several enhancements to minimize the impact, and this document describes what you need to know about the changes and how it will affect you.
 
 ### Impact upon upgrading to version 8.x or later [saved-object-ids-impact-upon-upgrading]
 
-Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/deployment-or-cluster/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
+Every time you upgrade {{product.kibana}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/deployment-or-cluster/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
 
 In practical terms, **any old saved objects that exist in a custom space will have their IDs changed to a new UUID**, while saved objects in the Default space will be unchanged. This is how we can ensure that every saved object ID is unique. For example: if you had dashboard "123" in the Default space and dashboard "123" in Another space, after the upgrade you would have dashboard "123" in the Default space and dashboard "456" in Another space.
 
 
 ### Impact when using version 8.x or later [saved-object-ids-impact-when-using]
 
-After you upgrade, or if you set up a new {{kib}} instance using version 8.x or later, there are a few more things that behave differently.
+After you upgrade, or if you set up a new {{product.kibana}} instance using version 8.x or later, there are a few more things that behave differently.
 
 #### Accessing saved objects using old URLs [saved-object-ids-impact-when-using-legacy-urls]
 
-When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](kibana://extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
+When you upgrade {{product.kibana}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](kibana://extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
 
 
 #### Importing and copying saved objects [saved-object-ids-impact-when-using-import-and-copy]
 
-When you [copy a saved object to another space](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces), {{kib}} effectively [exports it and imports it into that space](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export). In this way, copying a saved object has always behaved like an import. In this document when we say "import", it applies to both features.
+When you [copy a saved object to another space](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces), {{product.kibana}} effectively [exports it and imports it into that space](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export). In this way, copying a saved object has always behaved like an import. In this document when we say "import", it applies to both features.
 
-Historically, whether you imported or copied a saved object, {{kib}} would create *at most* one copy of a saved object in that space. If you imported the saved object multiple times, {{kib}} would overwrite the existing object, because it used the same ID. Since saved object IDs are now globally unique, {{kib}} maintains this functionality by tracking each saved object’s *origin*. When you import an object in version 8.x or later, {{kib}} uses either the saved object ID *or* the origin to determine its destination.
+Historically, whether you imported or copied a saved object, {{product.kibana}} would create *at most* one copy of a saved object in that space. If you imported the saved object multiple times, {{product.kibana}} would overwrite the existing object, because it used the same ID. Since saved object IDs are now globally unique, {{product.kibana}} maintains this functionality by tracking each saved object’s *origin*. When you import an object in version 8.x or later, {{product.kibana}} uses either the saved object ID *or* the origin to determine its destination.
 
-If you import a saved object using the "Check for existing objects" option, {{kib}} will take the following steps:
+If you import a saved object using the "Check for existing objects" option, {{product.kibana}} will take the following steps:
 
-1. If {{kib}} finds a matching saved object with the exact same ID in the target space, that will be the import destination — you can **overwrite** that destination or **skip** it.
-2. Otherwise, if {{kib}} finds a matching saved object with a *different* ID that has the same origin, that will be the import destination — again, you can **overwrite** that destination or **skip** it.
-3. Otherwise, if a saved object with the exact same ID exists in a *different* space, then {{kib}} will generate a random ID for the import destination, preserving the saved object’s origin.
-4. Otherwise, {{kib}} creates the saved object with the given ID.
+1. If {{product.kibana}} finds a matching saved object with the exact same ID in the target space, that will be the import destination — you can **overwrite** that destination or **skip** it.
+2. Otherwise, if {{product.kibana}} finds a matching saved object with a *different* ID that has the same origin, that will be the import destination — again, you can **overwrite** that destination or **skip** it.
+3. Otherwise, if a saved object with the exact same ID exists in a *different* space, then {{product.kibana}} will generate a random ID for the import destination, preserving the saved object’s origin.
+4. Otherwise, {{product.kibana}} creates the saved object with the given ID.
 
-For example, you have a saved object in an `export.ndjson` file, and you set up a brand new {{kib}} instance. You attempt to import the saved object using the "Check for existing objects" and "Automatically overwrite conflicts" options. The first time you import the saved object, {{kib}} will create a new object with the same ID (step 4 above). If you import it again, {{kib}} will find that object and overwrite it (step 1 above). If you then create a *different* space and import it there, {{kib}} will create a new object with a random ID (step 3 above). Finally, if you import it into the second space again, {{kib}} will find the second object with a matching origin and overwrite it (step 2 above).
+For example, you have a saved object in an `export.ndjson` file, and you set up a brand new {{product.kibana}} instance. You attempt to import the saved object using the "Check for existing objects" and "Automatically overwrite conflicts" options. The first time you import the saved object, {{product.kibana}} will create a new object with the same ID (step 4 above). If you import it again, {{product.kibana}} will find that object and overwrite it (step 1 above). If you then create a *different* space and import it there, {{product.kibana}} will create a new object with a random ID (step 3 above). Finally, if you import it into the second space again, {{product.kibana}} will find the second object with a matching origin and overwrite it (step 2 above).
 
 ::::{warning}
 When you import a saved object and it is created with a different ID, if 1. it contains weak links to other saved objects (such as a dashboard with a Markdown URL to navigate to another dashboard) and 2. the object’s ID has changed (step 3 above), those weak links will be broken. For more information, refer to [the changelog](https://www.elastic.co/guide/en/kibana/8.0/release-notes-8.0.0.html#known-issue-8.0.0).

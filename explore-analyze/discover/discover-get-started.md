@@ -11,17 +11,17 @@ description: Explore Elasticsearch data with Kibana Discover. Select data views,
 
 # Get started with Discover [discover-get-started]
 
-Discover is your starting point for exploring data in {{es}}. Whether you're investigating an issue, learning about your data's structure, or building insights, Discover provides an interactive environment to search, filter, and analyze documents. This tutorial helps you learn the essential workflows and features that make data exploration effective.
+Discover is your starting point for exploring data in {{product.elasticsearch}}. Whether you're investigating an issue, learning about your data's structure, or building insights, Discover provides an interactive environment to search, filter, and analyze documents. This tutorial helps you learn the essential workflows and features that make data exploration effective.
 
 **Prerequisites:**
 
-* If you don't already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on {{ecloud}}.
-* You must have data in {{es}}. The examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
-* You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
+* If you don't already have {{product.kibana}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on {{ecloud}}.
+* You must have data in {{product.elasticsearch}}. The examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
+* You should have an understanding of [{{product.elasticsearch}} documents and indices](../../manage-data/data-store/index-basics.md).
 
 ## Context-aware data exploration [context-aware-discover]
 
-**Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:
+**Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{product.kibana}} solution views:
 
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
@@ -56,9 +56,9 @@ Select the data you want to explore, and then specify the time range in which to
 1. Find **Discover** in the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the data you want to explore.
    ::::{tip}
-   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
+   By default, {{product.kibana}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{product.elasticsearch}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
-   You can also [try {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
+   You can also [try {{esql}}](try-esql.md), that lets you query any data you have in {{product.elasticsearch}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -154,14 +154,14 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 
 ### Visualize aggregated fields [_visualize_aggregated_fields]
 
-If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
+If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{product.kibana}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
 
    ![Top values for the day_of_week field](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
 
 2. In the popup, click **Visualize**.
-   {{kib}} creates a **Lens** visualization best suited for this field.
+   {{product.kibana}} creates a **Lens** visualization best suited for this field.
 
 3. In **Lens**, from the **Available fields** list, drag and drop more fields to refine the visualization. In this example, we’re adding the `manufacturer.keyword` field onto the workspace, which automatically adds a breakdown of the top values to the visualization.
    ![Visualization that opens from Discover based on your data](/explore-analyze/images/kibana-discover-from-visualize.png "")
@@ -371,7 +371,7 @@ From **Discover**, you can create a rule to periodically check when data goes ab
 1. Ensure that your data view, query, and filters fetch the data for which you want an alert.
 2. In the application menu bar, click **Alerts > Create search threshold rule**.
 
-    The **Create rule** form is pre-filled with the latest query sent to {{es}}.
+    The **Create rule** form is pre-filled with the latest query sent to {{product.elasticsearch}}.
 
 3. [Configure your query](../alerts-cases/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
 4. Click **Save**.
@@ -393,5 +393,5 @@ This section references common questions and issues encountered when using Disco
 
 This can happen in several cases:
 
-* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) setting used when indexing the data into {{es}}.
+* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) setting used when indexing the data into {{product.elasticsearch}}.
 * Due to the structure of nested fields, a leaf field added to the table as a column will not contain values in any of its cells. Instead, add the root field as a column to view a JSON representation of its values. Learn more in [this blog post](https://www.elastic.co/de/blog/discover-uses-fields-api-in-7-12).

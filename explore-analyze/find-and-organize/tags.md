@@ -34,7 +34,7 @@ To create tags, you must meet the minimum requirements.
 * The `write` privilege allows to create, edit, and delete tags.
 
 ::::{note}
-Having the `Tag Management` {{kib}} privilege is not required to view tags assigned on objects you have `read` access to, or to filter objects by tags from the global search.
+Having the `Tag Management` {{product.kibana}} privilege is not required to view tags assigned on objects you have `read` access to, or to filter objects by tags from the global search.
 ::::
 
 

@@ -14,7 +14,7 @@ products:
 
 # PDF/PNG [reporting-troubleshooting-pdf]
 
-PDF and PNG reporting in {{kib}} uses a headless Chromium browser to capture screenshots of dashboards and visualizations. Issues can occur due to missing system dependencies, sandbox restrictions, font problems, or resource constraints. This page helps you diagnose and resolve common PDF and PNG export problems.
+PDF and PNG reporting in {{product.kibana}} uses a headless Chromium browser to capture screenshots of dashboards and visualizations. Issues can occur due to missing system dependencies, sandbox restrictions, font problems, or resource constraints. This page helps you diagnose and resolve common PDF and PNG export problems.
 
 Common issues include:
 
@@ -31,14 +31,14 @@ For general troubleshooting guidance, refer to [Troubleshooting](reporting-troub
 ::::{note}
 PDF and PNG reports work best with moderate amounts of visual data. The feature provides high-level export capability but is not intended for bulk export. If you need to export several pages of image data, use multiple report jobs to export a small number of pages at a time. If exported dashboard screenshots contain a large number of pixels, split large dashboards into smaller artifacts to reduce memory and CPU usage.
 
-For the most reliable configuration of PDF/PNG {{report-features}}, install {{kib}} using [Docker](../../deploy-manage/deploy/self-managed/install-kibana-with-docker.md) or use [{{ecloud}}](https://cloud.elastic.co).
+For the most reliable configuration of PDF/PNG {{report-features}}, install {{product.kibana}} using [Docker](../../deploy-manage/deploy/self-managed/install-kibana-with-docker.md) or use [{{ecloud}}](https://cloud.elastic.co).
 
 ::::
 
 
 ## Reporting diagnostics [reporting-diagnostics]
 
-Reporting comes with a built-in utility to try to automatically find common issues. When {{kib}} is running, navigate to the **Report Listing** page, and click **Run reporting diagnostics**. This will open up a diagnostic tool that checks various parts of the {{kib}} deployment and comes up with any relevant recommendations.
+Reporting comes with a built-in utility to try to automatically find common issues. When {{product.kibana}} is running, navigate to the **Report Listing** page, and click **Run reporting diagnostics**. This will open up a diagnostic tool that checks various parts of the {{product.kibana}} deployment and comes up with any relevant recommendations.
 
 If the diagnostic information doesn’t reveal the problem, you can troubleshoot further by starting the Kibana server with an environment variable for revealing additional debugging logs. Refer to [Puppeteer debug logs](#reporting-troubleshooting-puppeteer-debug-logs).
 
@@ -85,7 +85,7 @@ The Chromium binary is located in the Kibana installation directory as `data/hea
 
 ## Puppeteer debug logs [reporting-troubleshooting-puppeteer-debug-logs]
 
-The Chromium browser that {{kib}} launches on the server is driven by a NodeJS library for Chromium called Puppeteer. The Puppeteer library has its own command-line method to generate its own debug logs, which can sometimes be helpful, particularly to figure out if a problem is caused by Kibana or Chromium. Learn more [debugging tips](https://github.com/GoogleChrome/puppeteer/blob/v1.19.0/README.md#debugging-tips).
+The Chromium browser that {{product.kibana}} launches on the server is driven by a NodeJS library for Chromium called Puppeteer. The Puppeteer library has its own command-line method to generate its own debug logs, which can sometimes be helpful, particularly to figure out if a problem is caused by Kibana or Chromium. Learn more [debugging tips](https://github.com/GoogleChrome/puppeteer/blob/v1.19.0/README.md#debugging-tips).
 
 Using Puppeteer’s debug method when launching Kibana would look like:
 
@@ -100,30 +100,30 @@ The Puppeteer logs are very verbose and could possibly contain sensitive informa
 
 ## System requirements [reporting-troubleshooting-system-requirements]
 
-In Elastic Cloud, the {{kib}} instances that most configurations provide by default is for 1GB of RAM for the instance. That is enough for {{kib}} {{report-features}} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
+In Elastic Cloud, the {{product.kibana}} instances that most configurations provide by default is for 1GB of RAM for the instance. That is enough for {{product.kibana}} {{report-features}} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
 
-If the {{kib}} instance doesn’t have enough memory to run the report, the report fails with an error such as `Error: Page crashed!`. In this case, try increasing the memory for the {{kib}} instance to 2GB.
+If the {{product.kibana}} instance doesn’t have enough memory to run the report, the report fails with an error such as `Error: Page crashed!`. In this case, try increasing the memory for the {{product.kibana}} instance to 2GB.
 
 
 ## Unable to connect to Elastic Maps Service [reporting-troubleshooting-maps-ems]
 
-[Elastic Maps Service ({{ems-init}})](https://www.elastic.co/elastic-maps-service) is a service that hosts tile layers and vector shapes of administrative boundaries. If a report contains a map with a missing basemap layer or administrative boundary, the {{kib}} server does not have access to {{ems-init}}. Refer to [*Connect to Elastic Maps Service*](../visualize/maps/maps-connect-to-ems.md) for information about how to connect your {{kib}} server to {{ems-init}}.
+[Elastic Maps Service ({{ems-init}})](https://www.elastic.co/elastic-maps-service) is a service that hosts tile layers and vector shapes of administrative boundaries. If a report contains a map with a missing basemap layer or administrative boundary, the {{product.kibana}} server does not have access to {{ems-init}}. Refer to [*Connect to Elastic Maps Service*](../visualize/maps/maps-connect-to-ems.md) for information about how to connect your {{product.kibana}} server to {{ems-init}}.
 
 
 ## Manually install the Chromium browser for Darwin [reporting-manual-chromium-install]
 
-Chromium is not embedded into {{kib}} for the Darwin (Mac OS) architecture. When running {{kib}} on Darwin, {{report-features}} will download Chromium into the proper area of the {{kib}} installation path the first time the server starts. If the server does not have access to the internet, you must download the Chromium browser and install it into the {{kib}} installation path.
+Chromium is not embedded into {{product.kibana}} for the Darwin (Mac OS) architecture. When running {{product.kibana}} on Darwin, {{report-features}} will download Chromium into the proper area of the {{product.kibana}} installation path the first time the server starts. If the server does not have access to the internet, you must download the Chromium browser and install it into the {{product.kibana}} installation path.
 
 1. Download the Chromium zip file:
 
     * For [x64](https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/901912/chrome-mac.zip) systems
     * For [ARM](https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac_Arm/901913/chrome-mac.zip) systems
 
-2. Copy the zip file into the holding area. Relative to the root directory of {{kib}}, the path is:
+2. Copy the zip file into the holding area. Relative to the root directory of {{product.kibana}}, the path is:
 
     * `.chromium/x64` for x64 systems
     * `.chromium/arm64` for ARM systems
 
 
-When {{kib}} starts, it will automatically extract the browser from the zip file and is then ready for PNG and PDF reports.
+When {{product.kibana}} starts, it will automatically extract the browser from the zip file and is then ready for PNG and PDF reports.
 

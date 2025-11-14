@@ -23,7 +23,7 @@ Tile layers typically serve as the background for your map, providing geographic
 To add a tile layer to your map, click **Add layer**, then select one of the following:
 
 **Configured Tile Map Service**
-:   Tile map service configured in kibana.yml. See map.tilemap.url in [*Configure {{kib}}*](kibana://reference/configuration-reference/general-settings.md) for details.
+:   Tile map service configured in kibana.yml. See map.tilemap.url in [*Configure {{product.kibana}}*](kibana://reference/configuration-reference/general-settings.md) for details.
 
 **EMS Basemaps**
 :   Tile map service from [Elastic Maps Service](https://www.elastic.co/elastic-maps-service).

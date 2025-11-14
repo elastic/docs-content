@@ -13,13 +13,13 @@ products:
 
 When viewing a dashboard, you can refine what data appears by applying filters, adjusting time ranges, and using interactive controls. These techniques help you drill down into specific data patterns, compare different time periods, or isolate particular segments of your data set.
 
-This guide shows you how to filter dashboard data with {{kib}} Query Language queries, create and manage filter pills, adjust time ranges globally or per panel, use control elements, and inspect the underlying data behind visualizations.
+This guide shows you how to filter dashboard data with {{product.kibana}} Query Language queries, create and manage filter pills, adjust time ranges globally or per panel, use control elements, and inspect the underlying data behind visualizations.
 
 
 
 ## Search and filter your dashboard data [search-or-filter-your-data]
 
-{{kib}} supports several ways to explore the data displayed in a dashboard more in depth:
+{{product.kibana}} supports several ways to explore the data displayed in a dashboard more in depth:
 
 * The **query bar**, using KQL expressions by default.
 * The **time range**, that allows you to display data only for the period that you want to focus on. You can set a global time range for the entire dashboard, or specify a custom time range for each panel.
@@ -27,11 +27,11 @@ This guide shows you how to filter dashboard data with {{kib}} Query Language qu
 * **Filter pills**, that you can add and combine by clicking on specific parts of the dashboard visualizations, or by defining conditions manually from the filter editor. The filter editor is a good alternative if you’re not comfortable with using KQL expressions in the main query bar.
 * View the data of a panel and the requests used to build it.
 
-This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
+This section shows the most common ways for you to filter dashboard data. For more information about {{product.kibana}} and {{product.elasticsearch}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
-The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
+The query bar lets you build filters using [{{product.kibana}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
 
 You can use KQL to create complex queries that filter your dashboard data. For example:
 - `status:error` to show only error records
@@ -80,7 +80,7 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
-The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
+The query bar lets you build filters using [{{product.kibana}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-kql.png
 :alt: KQL filter dynamically suggesting values
@@ -95,7 +95,7 @@ The data visible in a dashboard highly depends on the time range that is applied
 
 #### Apply a global time range to an entire dashboard [_apply_a_global_time_range_to_an_entire_dashboard]
 
-The global time range menu is located right next to the query bar, in the dashboard’s header. With this menu, you can select the time range to apply, and set the frequency for refreshing the dashboard data. Setting the time range is a common action in {{kib}}. Refer to [Set the time range](../query-filter/filtering.md) for more details.
+The global time range menu is located right next to the query bar, in the dashboard’s header. With this menu, you can select the time range to apply, and set the frequency for refreshing the dashboard data. Setting the time range is a common action in {{product.kibana}}. Refer to [Set the time range](../query-filter/filtering.md) for more details.
 
 :::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
 :alt: Time range menu with multiple time range suggestions
@@ -230,7 +230,7 @@ When viewing a dashboard with read-only permissions, certain visualization panel
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
 
-You can display dashboards in full screen mode to gain visual space and view or show visualizations without the rest of the {{kib}} interface.
+You can display dashboards in full screen mode to gain visual space and view or show visualizations without the rest of the {{product.kibana}} interface.
 
 :::{image} /explore-analyze/images/kibana-dashboard-full-screen.png
 :alt: A dashboard in full screen mode

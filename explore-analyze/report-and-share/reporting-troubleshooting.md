@@ -12,9 +12,9 @@ products:
 
 
 
-# Troubleshoot report errors and logs in {{kib}} [reporting-troubleshooting]
+# Troubleshoot report errors and logs in {{product.kibana}} [reporting-troubleshooting]
 
-{{report-features}} in {{kib}} are designed for simple data exports and visualizations, not bulk data export or large-scale operations. When you encounter issues generating reports, understanding common error messages and enabling verbose logging can help you diagnose and resolve problems quickly.
+{{report-features}} in {{product.kibana}} are designed for simple data exports and visualizations, not bulk data export or large-scale operations. When you encounter issues generating reports, understanding common error messages and enabling verbose logging can help you diagnose and resolve problems quickly.
 
 Common issues include:
 
@@ -32,7 +32,7 @@ There are some common solutions for error messages that you might encounter in {
 
 ### Version conflict engine exceptions [reporting-troubleshooting-version-conflict-exception]
 
-If you are running multiple instances of {{kib}} in a cluster, the instances share the work of running report jobs to evenly distribute the workload. Each instance searches the reporting index for "pending" jobs that the user has requested. It is possible for multiple instances to find the same job in these searches. Only the instance that successfully updated the job status to "processing" will actually run the report job. The other instances that unsuccessfully tried to make the same update will log something similar to this:
+If you are running multiple instances of {{product.kibana}} in a cluster, the instances share the work of running report jobs to evenly distribute the workload. Each instance searches the reporting index for "pending" jobs that the user has requested. It is possible for multiple instances to find the same job in these searches. Only the instance that successfully updated the job status to "processing" will actually run the report job. The other instances that unsuccessfully tried to make the same update will log something similar to this:
 
 ```text
 StatusCodeError: [version_conflict_engine_exception] [...]: version conflict, required seqNo [6124], primary term [1]. current document has seqNo [6125] and primary term [1], with { ... }
@@ -64,7 +64,7 @@ Create a Markdown visualization and then create a PDF report. If this succeeds, 
 
 ## Verbose logging [reporting-troubleshooting-verbose-logs]
 
-{{kib}} server logs have a lot of useful information for troubleshooting and understanding how things work. The full logs from {{report-features}} are a good place to look when you encounter problems. In [`kibana.yml`](/deploy-manage/stack-settings.md):
+{{product.kibana}} server logs have a lot of useful information for troubleshooting and understanding how things work. The full logs from {{report-features}} are a good place to look when you encounter problems. In [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 logging.root.level: all

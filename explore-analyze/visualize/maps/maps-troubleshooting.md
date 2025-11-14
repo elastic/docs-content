@@ -14,14 +14,14 @@ products:
 
 # Troubleshoot Maps [maps-troubleshooting]
 
-When Maps displays unexpected results or encounters errors, inspecting {{es}} requests and understanding common configuration issues helps identify root causes. The Maps inspector shows both vector tile and search API requests, revealing how layers query data and why certain features might not display.
+When Maps displays unexpected results or encounters errors, inspecting {{product.elasticsearch}} requests and understanding common configuration issues helps identify root causes. The Maps inspector shows both vector tile and search API requests, revealing how layers query data and why certain features might not display.
 
-This guide covers inspecting {{es}} requests, troubleshooting missing or incorrect polygon displays, and resolving common layer configuration problems.
+This guide covers inspecting {{product.elasticsearch}} requests, troubleshooting missing or incorrect polygon displays, and resolving common layer configuration problems.
 
 
 ## Inspect Elasticsearch requests [_inspect_elasticsearch_requests]
 
-Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) and the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. Use **Vector tiles** inspector to view {{es}} vector tile search API requests. Use **Requests** inspector to view {{es}} search API requests.
+Maps uses the [{{product.elasticsearch}} vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) and the [{{product.elasticsearch}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{product.elasticsearch}}. Use **Vector tiles** inspector to view {{product.elasticsearch}} vector tile search API requests. Use **Requests** inspector to view {{product.elasticsearch}} search API requests.
 
 :::{image} /explore-analyze/images/kibana-vector_tile_inspector.png
 :alt: vector tile inspector
@@ -56,7 +56,7 @@ Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/do
 
 ### Features are not displayed [_features_are_not_displayed]
 
-* Use Inspector to view {{es}} responses. Ensure the response is not empty.
+* Use Inspector to view {{product.elasticsearch}} responses. Ensure the response is not empty.
 * Ensure geometry uses the correct latitude and longitude ordering.
 
     * Geo-points expressed as strings are ordered as `"latitude,longitude"`. Geo-points expressed as arrays are ordered as the reverse: `[longitude, latitude]`.
@@ -72,6 +72,6 @@ Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/do
 
 ### Custom tiles are not displayed [_custom_tiles_are_not_displayed]
 
-* When using a custom tile service, ensure your tile server has configured [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) so tile requests from your {{kib}} domain have permission to access your tile server domain.
+* When using a custom tile service, ensure your tile server has configured [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) so tile requests from your {{product.kibana}} domain have permission to access your tile server domain.
 * Ensure custom vector and tile services have the required coordinate system. Vector data must use EPSG:4326 and tiles must use EPSG:3857.
 

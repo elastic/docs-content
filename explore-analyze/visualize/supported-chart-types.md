@@ -11,7 +11,7 @@ products:
 
 # Supported chart types [chart-types]
 
-{{kib}} offers multiple visualization editors, each with different capabilities and supported chart types. Use this reference to compare which visualization types, features, and aggregations are available in Lens, TSVB, aggregation-based editors, Vega, and Timelion.
+{{product.kibana}} offers multiple visualization editors, each with different capabilities and supported chart types. Use this reference to compare which visualization types, features, and aggregations are available in Lens, TSVB, aggregation-based editors, Vega, and Timelion.
 
 Choose your editor based on which features you need for your specific use case. Lens provides the broadest support for standard chart types with an intuitive drag-and-drop interface, while Vega offers maximum flexibility for custom visualizations.
 
@@ -52,7 +52,7 @@ $$$aggregation-reference$$$
 | Math across indices |  |  | &check; | &check; |
 | Visualize two indices | &check; | &check; | &check; | &check; |
 | Time shift | &check; | &check; | &check; | &check; |
-| Custom {{es}} queries |  |  | &check; |  |
+| Custom {{product.elasticsearch}} queries |  |  | &check; |  |
 | Normalize by time | &check; | &check; |  |  |
 | Automatically generated suggestions | &check; |  |  |  |
 | Annotations | &check; | &check; |  |  |
@@ -96,7 +96,7 @@ Metric aggregations are calculated from the values in the aggregated documents. 
 | Value count | &check; |  | &check; | &check; |
 | Variance | &check; | &check; |  | &check; |
 
-For information about {{es}} metrics aggregations, refer to [Metrics aggregations](elasticsearch://reference/aggregations/metrics.md).
+For information about {{product.elasticsearch}} metrics aggregations, refer to [Metrics aggregations](elasticsearch://reference/aggregations/metrics.md).
 
 
 ## Bucket aggregations [bucket-aggregations]
@@ -117,7 +117,7 @@ Bucket aggregations group, or bucket, documents based on the aggregation type. T
 | Terms | &check; | &check; | &check; | &check; |
 | Significant terms | &check; |  | &check; | &check; |
 
-For information about {{es}} bucket aggregations, refer to [Bucket aggregations](elasticsearch://reference/aggregations/bucket.md).
+For information about {{product.elasticsearch}} bucket aggregations, refer to [Bucket aggregations](elasticsearch://reference/aggregations/bucket.md).
 
 
 ## Pipeline aggregations [pipeline-aggregations]
@@ -137,5 +137,5 @@ Pipeline aggregations are dependent on the outputs calculated from other aggrega
 | Bucket selector |  |  |  | &check; |
 | Serial differencing |  | &check; | &check; | &check; |
 
-For information about {{es}} pipeline aggregations, refer to [Pipeline aggregations](elasticsearch://reference/aggregations/pipeline.md).
+For information about {{product.elasticsearch}} pipeline aggregations, refer to [Pipeline aggregations](elasticsearch://reference/aggregations/pipeline.md).
 

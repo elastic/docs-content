@@ -15,12 +15,12 @@ description: Query Elasticsearch data with ES|QL in Discover to explore any indi
 
 **Prerequisites:**
 
-* You need access to {{kib}} (version 8.11 or later for {{esql}} support)
-* The `enableESQL` setting must be enabled from {{kib}}'s **Advanced Settings**. It is enabled by default.
+* You need access to {{product.kibana}} (version 8.11 or later for {{esql}} support)
+* The `enableESQL` setting must be enabled from {{product.kibana}}'s **Advanced Settings**. It is enabled by default.
 * The examples use the [sample web logs data](../index.md#gs-get-data-into-kibana). Install it or use your own data.
 
 ::::{tip}
-For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in {{kib}}](../query-filter/languages/esql-kibana.md).
+For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{product.kibana}}, refer to [Use {{esql}} in {{product.kibana}}](../query-filter/languages/esql-kibana.md).
 ::::
 
 
@@ -140,7 +140,7 @@ In **Discover**, LOOKUP JOIN commands include interactive options that let you c
 
 You can create a lookup index directly from the ES|QL editor. To populate this index, you can type in data manually or upload a CSV file up to 500 MB.
 
-To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege on the corresponding pattern.
+To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{product.elasticsearch}} privilege on the corresponding pattern.
 
 1. In your {{esql}} query, add a `LOOKUP JOIN` command. For example:
    ```esql
@@ -171,8 +171,8 @@ Your new index is automatically added to your query. You can then specify the fi
 #### View or edit a lookup index from the editor
 
 You can view and modify existing lookup indices referenced in an {{esql}} query directly from the editor, depending on your privileges:
-- To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
-- To view lookup indices in read-only mode, you need the [`view_index_metadata`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
+- To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{product.elasticsearch}} privilege.
+- To view lookup indices in read-only mode, you need the [`view_index_metadata`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{product.elasticsearch}} privilege.
 
 To view or edit an index:
 

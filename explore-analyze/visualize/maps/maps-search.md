@@ -11,7 +11,7 @@ products:
 
 # Search geographic data [maps-search]
 
-Global search and time filters in Maps narrow data across all {{es}}-backed layers simultaneously. You can use KQL queries for field-based searches, combine multiple filters, and set time ranges to focus on specific data subsets.
+Global search and time filters in Maps narrow data across all {{product.elasticsearch}}-backed layers simultaneously. You can use KQL queries for field-based searches, combine multiple filters, and set time ranges to focus on specific data subsets.
 
 This guide covers global search behavior, layer-specific search options, and strategies for controlling which layers respond to search criteria.
 
@@ -22,7 +22,7 @@ This image shows an example of global search and global time narrowing results.
 :screenshot:
 :::
 
-Only layers requesting data from {{es}} are narrowed by global search and global time. To add a layer that requests data from {{es}} to your map, click **Add layer**, then select one of the following:
+Only layers requesting data from {{product.elasticsearch}} are narrowed by global search and global time. To add a layer that requests data from {{product.elasticsearch}} to your map, click **Add layer**, then select one of the following:
 
 * Documents
 * Choropleth
@@ -35,7 +35,7 @@ Only layers requesting data from {{es}} are narrowed by global search and global
 
 ## Narrow layers by global search [maps-narrow-layer-by-global-search]
 
-Layers that request data from {{es}} are narrowed when you submit a search. Layers narrowed by semi-structured search and filters contain the filter icon ![filter icon](/explore-analyze/images/kibana-filter_icon.png "") next to the layer name in the legend.
+Layers that request data from {{product.elasticsearch}} are narrowed when you submit a search. Layers narrowed by semi-structured search and filters contain the filter icon ![filter icon](/explore-analyze/images/kibana-filter_icon.png "") next to the layer name in the legend.
 
 To prevent the global search from applying to a layer, configure the following:
 
@@ -45,7 +45,7 @@ To prevent the global search from applying to a layer, configure the following:
 
 ## Narrow layers by global time [maps-narrow-layer-by-global-time]
 
-Layers that request data from {{es}} using a [data view](../../find-and-organize/data-views.md) with a configured time field are narrowed by the [global time](../../query-filter/filtering.md). These layers contain the clock icon ![clock icon](/explore-analyze/images/kibana-clock_icon.png "") next to the layer name in the legend.
+Layers that request data from {{product.elasticsearch}} using a [data view](../../find-and-organize/data-views.md) with a configured time field are narrowed by the [global time](../../query-filter/filtering.md). These layers contain the clock icon ![clock icon](/explore-analyze/images/kibana-clock_icon.png "") next to the layer name in the legend.
 
 Use the time slider to quickly select time slices within the global time range:
 
@@ -61,7 +61,7 @@ To prevent the global time filter from applying to a layer, configure the follow
 
 ## Refresh layer data [maps-refresh-layer]
 
-Layers that request data from {{es}} re-fetch data when [automatic refresh](../../query-filter/filtering.md) fires and when you click **Refresh**.
+Layers that request data from {{product.elasticsearch}} re-fetch data when [automatic refresh](../../query-filter/filtering.md) fires and when you click **Refresh**.
 
 To prevent refreshing layer data, configure the following:
 

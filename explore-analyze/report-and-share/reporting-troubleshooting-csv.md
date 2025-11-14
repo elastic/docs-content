@@ -14,7 +14,7 @@ products:
 
 # CSV [reporting-troubleshooting-csv]
 
-CSV export in {{kib}} queries {{es}} and formats the results as downloadable CSV files. While this works well for moderate data exports, issues can occur with large datasets, slow storage, network latency, or authentication timeouts. This page helps you diagnose and resolve common CSV export problems.
+CSV export in {{product.kibana}} queries {{product.elasticsearch}} and formats the results as downloadable CSV files. While this works well for moderate data exports, issues can occur with large datasets, slow storage, network latency, or authentication timeouts. This page helps you diagnose and resolve common CSV export problems.
 
 Common issues include:
 
@@ -26,7 +26,7 @@ Common issues include:
 For general troubleshooting guidance, refer to [Troubleshooting](reporting-troubleshooting.md).
 
 ::::{note}
-CSV export is designed for moderate data amounts only. It enables data analysis in external tools but is not intended for bulk export or {{es}} backups. Report timeout and incomplete data issues are likely when exporting data where:
+CSV export is designed for moderate data amounts only. It enables data analysis in external tools but is not intended for bulk export or {{product.elasticsearch}} backups. Report timeout and incomplete data issues are likely when exporting data where:
 
 * More than 250 MB of data is being exported
 * Data is stored on slow storage tiers
@@ -35,7 +35,7 @@ CSV export is designed for moderate data amounts only. It enables data analysis 
 * {{ccs}} is used
 * {{esql}} is used and result row count exceeds the limits of {{esql}} queries
 
-To work around these limitations, use filters to create multiple smaller reports, or extract data directly with {{es}} APIs. For information on using {{es}} APIs directly, refer to [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [{{esql}}](elasticsearch://reference/query-languages/esql/esql-rest.md), or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. Consider using an official {{es}} client: refer to [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
+To work around these limitations, use filters to create multiple smaller reports, or extract data directly with {{product.elasticsearch}} APIs. For information on using {{product.elasticsearch}} APIs directly, refer to [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [{{esql}}](elasticsearch://reference/query-languages/esql/esql-rest.md), or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. Consider using an official {{product.elasticsearch}} client: refer to [{{product.elasticsearch}} Client documentation](/reference/elasticsearch-clients/index.md).
 
 You can adjust [Reporting parameters](kibana://reference/configuration-reference/reporting-settings.md) to overcome some limiting scenarios. Results depend on data size, availability, and latency factors and are not guaranteed.
 
@@ -105,4 +105,4 @@ You can use the following workarounds for this error:
 
 * Create smaller reports. Instead of creating one report that covers a large time range, create multiple reports that cover segmented time ranges.
 * Increase `xpack.security.authc.token.timeout`, which is set to `20m` by default.
-* To avoid token expirations completely, use a type of authentication that doesn’t expire (such as Basic auth), or run the export using scripts that query {{es}} directly.
+* To avoid token expirations completely, use a type of authentication that doesn’t expire (such as Basic auth), or run the export using scripts that query {{product.elasticsearch}} directly.

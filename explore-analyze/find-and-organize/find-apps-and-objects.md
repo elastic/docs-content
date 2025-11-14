@@ -11,7 +11,7 @@ description: Find apps and saved objects quickly using the global search field. 
 
 # Find apps and objects [kibana-navigation-search]
 
-The global search field in the {{kib}} header provides instant access to applications, dashboards, visualizations, and other saved objects. As you type, search suggestions appear with deep links that take you directly to specific views or objects.
+The global search field in the {{product.kibana}} header provides instant access to applications, dashboards, visualizations, and other saved objects. As you type, search suggestions appear with deep links that take you directly to specific views or objects.
 
 Use advanced search syntax to filter by object type or tag, and keyboard shortcuts to access search without using your mouse.
 

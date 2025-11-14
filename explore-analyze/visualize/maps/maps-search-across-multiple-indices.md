@@ -11,7 +11,7 @@ products:
 
 # Search across multiple indices [maps-search-across-multiple-indices]
 
-When maps contain layers from different {{es}} indices, global searches may produce unexpected results or empty layers. This occurs when search queries reference fields that exist in some indices but not others.
+When maps contain layers from different {{product.elasticsearch}} indices, global searches may produce unexpected results or empty layers. This occurs when search queries reference fields that exist in some indices but not others.
 
 Understanding how to handle multi-index scenarios helps you avoid empty layers and create effective search strategies across diverse data sources.
 

@@ -11,7 +11,7 @@ description: Sort Discover results with relevance scoring to surface documents t
 
 # Sort Discover results by relevance score [discover-search-for-relevance]
 
-When searching large datasets, you want the most relevant documents to appear first. {{es}} assigns a relevance score to each document based on how well it matches your query. This guide shows you how to sort results by relevance score in Discover to surface the most pertinent matches.
+When searching large datasets, you want the most relevant documents to appear first. {{product.elasticsearch}} assigns a relevance score to each document based on how well it matches your query. This guide shows you how to sort results by relevance score in Discover to surface the most pertinent matches.
 
 **Technical summary**: Add the `_score` meta field to your document table, clear the default time-based sort, and sort by `_score` in descending order to show most relevant results first.
 

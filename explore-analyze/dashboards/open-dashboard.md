@@ -17,7 +17,7 @@ This guide shows you how to open a dashboard for editing, make modifications, an
 
 To edit a dashboard:
 
-1. Open the **Dashboards** page in {{kib}}.
+1. Open the **Dashboards** page in {{product.kibana}}.
 2. Locate the dashboard you want to edit.
 
    ::::{tip}

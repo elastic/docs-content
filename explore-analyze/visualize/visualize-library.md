@@ -12,7 +12,7 @@ products:
 
 # Visualize Library [visualize-library]
 
-The Visualize Library serves as a centralized repository for managing reusable visualization assets in {{kib}}. When you save a panel to the library, you can add it to multiple dashboards, and any updates to the library version automatically propagate to all dashboards using that panel.
+The Visualize Library serves as a centralized repository for managing reusable visualization assets in {{product.kibana}}. When you save a panel to the library, you can add it to multiple dashboards, and any updates to the library version automatically propagate to all dashboards using that panel.
 
 The library contains two main sections: **Visualizations** for charts and data panels, and **Annotation groups** for reusable annotations that mark events or milestones across time series visualizations.
 
