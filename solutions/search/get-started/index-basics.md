@@ -37,95 +37,38 @@ Create a new index named `books`:
 
 :::{tab-item} Console
 :sync: console
-```console
-PUT /books
-```
+
+:::{include} _snippets/index-basics/example1-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X PUT "$ELASTICSEARCH_URL/books" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY"
-```
+
+:::{include} _snippets/index-basics/example1-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-import os
-from elasticsearch import Elasticsearch
 
-client = Elasticsearch(
-    hosts=[os.getenv("ELASTICSEARCH_URL")],
-    api_key=os.getenv("ELASTIC_API_KEY"),
-)
-
-resp = client.indices.create(
-    index="books",
-)
-
-```
+:::{include} _snippets/index-basics/example1-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const { Client } = require("@elastic/elasticsearch");
 
-const client = new Client({
-  nodes: [process.env["ELASTICSEARCH_URL"]],
-  auth: {
-    apiKey: process.env["ELASTIC_API_KEY"],
-  },
-});
-
-async function run() {
-  const response = await client.indices.create({
-    index: "books",
-  });
-}
-
-run();
-```
+:::{include} _snippets/index-basics/example1-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-<?php
 
-require(__DIR__ . "/vendor/autoload.php");
-
-use Elastic\Elasticsearch\ClientBuilder;
-
-$client = ClientBuilder::create()
-    ->setHosts([getenv("ELASTICSEARCH_URL")])
-    ->setApiKey(getenv("ELASTIC_API_KEY"))
-    ->build();
-
-$resp = $client->indices()->create([
-    "index" => "books",
-]);
-
-```
+:::{include} _snippets/index-basics/example1-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-require "elasticsearch"
 
-client = Elasticsearch::Client.new(
-  host: ENV["ELASTICSEARCH_URL"],
-  api_key: ENV["ELASTIC_API_KEY"]
-)
-
-response = client.indices.create(
-  index: "books"
-)
-
-```
+:::{include} _snippets/index-basics/example1-ruby.md
 :::
 
 ::::
@@ -154,88 +97,38 @@ If the index doesn't already exist, this request will automatically create it.
 
 :::{tab-item} Console
 :sync: console
-```console
-POST books/_doc
-{
-  "name": "Snow Crash",
-  "author": "Neal Stephenson",
-  "release_date": "1992-06-01",
-  "page_count": 470
-}
-```
+
+:::{include} _snippets/index-basics/example2-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X POST "$ELASTICSEARCH_URL/books/_doc" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Snow Crash","author":"Neal Stephenson","release_date":"1992-06-01","page_count":470}'
-```
+
+:::{include} _snippets/index-basics/example2-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.index(
-    index="books",
-    document={
-        "name": "Snow Crash",
-        "author": "Neal Stephenson",
-        "release_date": "1992-06-01",
-        "page_count": 470
-    },
-)
 
-```
+:::{include} _snippets/index-basics/example2-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.index({
-  index: "books",
-  document: {
-    name: "Snow Crash",
-    author: "Neal Stephenson",
-    release_date: "1992-06-01",
-    page_count: 470,
-  },
-});
-```
+
+:::{include} _snippets/index-basics/example2-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->index([
-    "index" => "books",
-    "body" => [
-        "name" => "Snow Crash",
-        "author" => "Neal Stephenson",
-        "release_date" => "1992-06-01",
-        "page_count" => 470,
-    ],
-]);
 
-```
+:::{include} _snippets/index-basics/example2-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.index(
-  index: "books",
-  body: {
-    "name": "Snow Crash",
-    "author": "Neal Stephenson",
-    "release_date": "1992-06-01",
-    "page_count": 470
-  }
-)
 
-```
+:::{include} _snippets/index-basics/example2-ruby.md
 :::
 
 ::::
@@ -282,301 +175,38 @@ Bulk data must be formatted as newline-delimited JSON (NDJSON).
 
 :::{tab-item} Console
 :sync: console
-```console
-POST /_bulk
-{ "index" : { "_index" : "books" } }
-{"name": "Revelation Space", "author": "Alastair Reynolds", "release_date": "2000-03-15", "page_count": 585}
-{ "index" : { "_index" : "books" } }
-{"name": "1984", "author": "George Orwell", "release_date": "1985-06-01", "page_count": 328}
-{ "index" : { "_index" : "books" } }
-{"name": "Fahrenheit 451", "author": "Ray Bradbury", "release_date": "1953-10-15", "page_count": 227}
-{ "index" : { "_index" : "books" } }
-{"name": "Brave New World", "author": "Aldous Huxley", "release_date": "1932-06-01", "page_count": 268}
-{ "index" : { "_index" : "books" } }
-{"name": "The Handmaids Tale", "author": "Margaret Atwood", "release_date": "1985-06-01", "page_count": 311}
-```
+
+:::{include} _snippets/index-basics/example3-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X POST "$ELASTICSEARCH_URL/_bulk" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d $'{"index":{"_index":"books"}}
-{"name":"Revelation Space","author":"Alastair Reynolds","release_date":"2000-03-15","page_count":585}
-{"index":{"_index":"books"}}
-{"name":"1984","author":"George Orwell","release_date":"1985-06-01","page_count":328}
-{"index":{"_index":"books"}}
-{"name":"Fahrenheit 451","author":"Ray Bradbury","release_date":"1953-10-15","page_count":227}
-{"index":{"_index":"books"}}
-{"name":"Brave New World","author":"Aldous Huxley","release_date":"1932-06-01","page_count":268}
-{"index":{"_index":"books"}}
-{"name":"The Handmaids Tale","author":"Margaret Atwood","release_date":"1985-06-01","page_count":311}\n'
-```
+
+:::{include} _snippets/index-basics/example3-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.bulk(
-    operations=[
-        {
-            "index": {
-                "_index": "books"
-            }
-        },
-        {
-            "name": "Revelation Space",
-            "author": "Alastair Reynolds",
-            "release_date": "2000-03-15",
-            "page_count": 585
-        },
-        {
-            "index": {
-                "_index": "books"
-            }
-        },
-        {
-            "name": "1984",
-            "author": "George Orwell",
-            "release_date": "1985-06-01",
-            "page_count": 328
-        },
-        {
-            "index": {
-                "_index": "books"
-            }
-        },
-        {
-            "name": "Fahrenheit 451",
-            "author": "Ray Bradbury",
-            "release_date": "1953-10-15",
-            "page_count": 227
-        },
-        {
-            "index": {
-                "_index": "books"
-            }
-        },
-        {
-            "name": "Brave New World",
-            "author": "Aldous Huxley",
-            "release_date": "1932-06-01",
-            "page_count": 268
-        },
-        {
-            "index": {
-                "_index": "books"
-            }
-        },
-        {
-            "name": "The Handmaids Tale",
-            "author": "Margaret Atwood",
-            "release_date": "1985-06-01",
-            "page_count": 311
-        }
-    ],
-)
 
-```
+:::{include} _snippets/index-basics/example3-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.bulk({
-  operations: [
-    {
-      index: {
-        _index: "books",
-      },
-    },
-    {
-      name: "Revelation Space",
-      author: "Alastair Reynolds",
-      release_date: "2000-03-15",
-      page_count: 585,
-    },
-    {
-      index: {
-        _index: "books",
-      },
-    },
-    {
-      name: "1984",
-      author: "George Orwell",
-      release_date: "1985-06-01",
-      page_count: 328,
-    },
-    {
-      index: {
-        _index: "books",
-      },
-    },
-    {
-      name: "Fahrenheit 451",
-      author: "Ray Bradbury",
-      release_date: "1953-10-15",
-      page_count: 227,
-    },
-    {
-      index: {
-        _index: "books",
-      },
-    },
-    {
-      name: "Brave New World",
-      author: "Aldous Huxley",
-      release_date: "1932-06-01",
-      page_count: 268,
-    },
-    {
-      index: {
-        _index: "books",
-      },
-    },
-    {
-      name: "The Handmaids Tale",
-      author: "Margaret Atwood",
-      release_date: "1985-06-01",
-      page_count: 311,
-    },
-  ],
-});
-```
+
+:::{include} _snippets/index-basics/example3-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->bulk([
-    "body" => array(
-        [
-            "index" => [
-                "_index" => "books",
-            ],
-        ],
-        [
-            "name" => "Revelation Space",
-            "author" => "Alastair Reynolds",
-            "release_date" => "2000-03-15",
-            "page_count" => 585,
-        ],
-        [
-            "index" => [
-                "_index" => "books",
-            ],
-        ],
-        [
-            "name" => "1984",
-            "author" => "George Orwell",
-            "release_date" => "1985-06-01",
-            "page_count" => 328,
-        ],
-        [
-            "index" => [
-                "_index" => "books",
-            ],
-        ],
-        [
-            "name" => "Fahrenheit 451",
-            "author" => "Ray Bradbury",
-            "release_date" => "1953-10-15",
-            "page_count" => 227,
-        ],
-        [
-            "index" => [
-                "_index" => "books",
-            ],
-        ],
-        [
-            "name" => "Brave New World",
-            "author" => "Aldous Huxley",
-            "release_date" => "1932-06-01",
-            "page_count" => 268,
-        ],
-        [
-            "index" => [
-                "_index" => "books",
-            ],
-        ],
-        [
-            "name" => "The Handmaids Tale",
-            "author" => "Margaret Atwood",
-            "release_date" => "1985-06-01",
-            "page_count" => 311,
-        ],
-    ),
-]);
 
-```
+:::{include} _snippets/index-basics/example3-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.bulk(
-  body: [
-    {
-      "index": {
-        "_index": "books"
-      }
-    },
-    {
-      "name": "Revelation Space",
-      "author": "Alastair Reynolds",
-      "release_date": "2000-03-15",
-      "page_count": 585
-    },
-    {
-      "index": {
-        "_index": "books"
-      }
-    },
-    {
-      "name": "1984",
-      "author": "George Orwell",
-      "release_date": "1985-06-01",
-      "page_count": 328
-    },
-    {
-      "index": {
-        "_index": "books"
-      }
-    },
-    {
-      "name": "Fahrenheit 451",
-      "author": "Ray Bradbury",
-      "release_date": "1953-10-15",
-      "page_count": 227
-    },
-    {
-      "index": {
-        "_index": "books"
-      }
-    },
-    {
-      "name": "Brave New World",
-      "author": "Aldous Huxley",
-      "release_date": "1932-06-01",
-      "page_count": 268
-    },
-    {
-      "index": {
-        "_index": "books"
-      }
-    },
-    {
-      "name": "The Handmaids Tale",
-      "author": "Margaret Atwood",
-      "release_date": "1985-06-01",
-      "page_count": 311
-    }
-  ]
-)
 
-```
+:::{include} _snippets/index-basics/example3-ruby.md
 :::
 
 ::::
@@ -690,94 +320,38 @@ To see how dynamic mapping works, add a new document to the `books` index with a
 
 :::{tab-item} Console
 :sync: console
-```console
-POST /books/_doc
-{
-  "name": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "release_date": "1925-04-10",
-  "page_count": 180,
-  "language": "EN" <1>
-}
-```
-1. The new field.
+
+:::{include} _snippets/index-basics/example4-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X POST "$ELASTICSEARCH_URL/books/_doc" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"The Great Gatsby","author":"F. Scott Fitzgerald","release_date":"1925-04-10","page_count":180,"language":"EN"}'
-```
+
+:::{include} _snippets/index-basics/example4-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.index(
-    index="books",
-    document={
-        "name": "The Great Gatsby",
-        "author": "F. Scott Fitzgerald",
-        "release_date": "1925-04-10",
-        "page_count": 180,
-        "language": "EN"
-    },
-)
 
-```
+:::{include} _snippets/index-basics/example4-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.index({
-  index: "books",
-  document: {
-    name: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    release_date: "1925-04-10",
-    page_count: 180,
-    language: "EN",
-  },
-});
-```
+
+:::{include} _snippets/index-basics/example4-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->index([
-    "index" => "books",
-    "body" => [
-        "name" => "The Great Gatsby",
-        "author" => "F. Scott Fitzgerald",
-        "release_date" => "1925-04-10",
-        "page_count" => 180,
-        "language" => "EN",
-    ],
-]);
 
-```
+:::{include} _snippets/index-basics/example4-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.index(
-  index: "books",
-  body: {
-    "name": "The Great Gatsby",
-    "author": "F. Scott Fitzgerald",
-    "release_date": "1925-04-10",
-    "page_count": 180,
-    "language": "EN"
-  }
-)
 
-```
+:::{include} _snippets/index-basics/example4-ruby.md
 :::
 
 ::::
@@ -790,56 +364,38 @@ The new field `language` has been added to the mapping with a `text` data type.
 
 :::{tab-item} Console
 :sync: console
-```console
-GET /books/_mapping
-```
+
+:::{include} _snippets/index-basics/example5-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X GET "$ELASTICSEARCH_URL/books/_mapping" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY"
-```
+
+:::{include} _snippets/index-basics/example5-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.indices.get_mapping(
-    index="books",
-)
 
-```
+:::{include} _snippets/index-basics/example5-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.indices.getMapping({
-  index: "books",
-});
-```
+
+:::{include} _snippets/index-basics/example5-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->indices()->getMapping([
-    "index" => "books",
-]);
 
-```
+:::{include} _snippets/index-basics/example5-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.indices.get_mapping(
-  index: "books"
-)
 
-```
+:::{include} _snippets/index-basics/example5-ruby.md
 :::
 
 ::::
@@ -903,147 +459,38 @@ This object should contain the [field data type](elasticsearch://reference/elast
 
 :::{tab-item} Console
 :sync: console
-```console
-PUT /my-explicit-mappings-books
-{
-  "mappings": {
-    "dynamic": false,  <1>
-    "properties": {  <2>
-      "name": { "type": "text" },
-      "author": { "type": "text" },
-      "release_date": { "type": "date", "format": "yyyy-MM-dd" },
-      "page_count": { "type": "integer" }
-    }
-  }
-}
-```
-1. `dynamic`: Turns off dynamic mapping for the index. If you don't define fields in the mapping, they'll still be stored in the document's `_source` field, but you can't index or search them.
-2. `properties`: Defines the fields and their corresponding data types.
+
+:::{include} _snippets/index-basics/example6-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X PUT "$ELASTICSEARCH_URL/my-explicit-mappings-books" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"mappings":{"dynamic":false,"properties":{"name":{"type":"text"},"author":{"type":"text"},"release_date":{"type":"date","format":"yyyy-MM-dd"},"page_count":{"type":"integer"}}}}'
-```
+
+:::{include} _snippets/index-basics/example6-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.indices.create(
-    index="my-explicit-mappings-books",
-    mappings={
-        "dynamic": False,
-        "properties": {
-            "name": {
-                "type": "text"
-            },
-            "author": {
-                "type": "text"
-            },
-            "release_date": {
-                "type": "date",
-                "format": "yyyy-MM-dd"
-            },
-            "page_count": {
-                "type": "integer"
-            }
-        }
-    },
-)
 
-```
+:::{include} _snippets/index-basics/example6-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.indices.create({
-  index: "my-explicit-mappings-books",
-  mappings: {
-    dynamic: false,
-    properties: {
-      name: {
-        type: "text",
-      },
-      author: {
-        type: "text",
-      },
-      release_date: {
-        type: "date",
-        format: "yyyy-MM-dd",
-      },
-      page_count: {
-        type: "integer",
-      },
-    },
-  },
-});
-```
+
+:::{include} _snippets/index-basics/example6-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->indices()->create([
-    "index" => "my-explicit-mappings-books",
-    "body" => [
-        "mappings" => [
-            "dynamic" => false,
-            "properties" => [
-                "name" => [
-                    "type" => "text",
-                ],
-                "author" => [
-                    "type" => "text",
-                ],
-                "release_date" => [
-                    "type" => "date",
-                    "format" => "yyyy-MM-dd",
-                ],
-                "page_count" => [
-                    "type" => "integer",
-                ],
-            ],
-        ],
-    ],
-]);
 
-```
+:::{include} _snippets/index-basics/example6-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.indices.create(
-  index: "my-explicit-mappings-books",
-  body: {
-    "mappings": {
-      "dynamic": false,
-      "properties": {
-        "name": {
-          "type": "text"
-        },
-        "author": {
-          "type": "text"
-        },
-        "release_date": {
-          "type": "date",
-          "format": "yyyy-MM-dd"
-        },
-        "page_count": {
-          "type": "integer"
-        }
-      }
-    }
-  }
-)
 
-```
+:::{include} _snippets/index-basics/example6-ruby.md
 :::
 
 ::::
@@ -1080,56 +527,38 @@ Use the following request to search all documents in the `books` index:
 
 :::{tab-item} Console
 :sync: console
-```console
-GET books/_search
-```
+
+:::{include} _snippets/index-basics/example7-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X GET "$ELASTICSEARCH_URL/books/_search" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY"
-```
+
+:::{include} _snippets/index-basics/example7-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.search(
-    index="books",
-)
 
-```
+:::{include} _snippets/index-basics/example7-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.search({
-  index: "books",
-});
-```
+
+:::{include} _snippets/index-basics/example7-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->search([
-    "index" => "books",
-]);
 
-```
+:::{include} _snippets/index-basics/example7-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.search(
-  index: "books"
-)
 
-```
+:::{include} _snippets/index-basics/example7-ruby.md
 :::
 
 ::::
@@ -1193,89 +622,38 @@ Use the following request to search the `books` index for documents containing `
 
 :::{tab-item} Console
 :sync: console
-```console
-GET books/_search
-{
-  "query": {
-    "match": {
-      "name": "brave"
-    }
-  }
-}
-```
+
+:::{include} _snippets/index-basics/example8-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X GET "$ELASTICSEARCH_URL/books/_search" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"query":{"match":{"name":"brave"}}}'
-```
+
+:::{include} _snippets/index-basics/example8-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.search(
-    index="books",
-    query={
-        "match": {
-            "name": "brave"
-        }
-    },
-)
 
-```
+:::{include} _snippets/index-basics/example8-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.search({
-  index: "books",
-  query: {
-    match: {
-      name: "brave",
-    },
-  },
-});
-```
+
+:::{include} _snippets/index-basics/example8-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->search([
-    "index" => "books",
-    "body" => [
-        "query" => [
-            "match" => [
-                "name" => "brave",
-            ],
-        ],
-    ],
-]);
 
-```
+:::{include} _snippets/index-basics/example8-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.search(
-  index: "books",
-  body: {
-    "query": {
-      "match": {
-        "name": "brave"
-      }
-    }
-  }
-)
 
-```
+:::{include} _snippets/index-basics/example8-ruby.md
 :::
 
 ::::
@@ -1334,75 +712,38 @@ For example, use the following request to delete the indices created in this qui
 
 :::{tab-item} Console
 :sync: console
-```console
-DELETE /books
-DELETE /my-explicit-mappings-books
-```
+
+:::{include} _snippets/index-basics/example9-console.md
 :::
 
 :::{tab-item} curl
 :sync: curl
-```bash
-curl -X DELETE "$ELASTICSEARCH_URL/books" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY"
-curl -X DELETE "$ELASTICSEARCH_URL/my-explicit-mappings-books" \
-  -H "Authorization: ApiKey $ELASTIC_API_KEY"
-```
+
+:::{include} _snippets/index-basics/example9-curl.md
 :::
 
 :::{tab-item} Python
 :sync: python
-```python
-resp = client.indices.delete(
-    index="books",
-)
 
-resp1 = client.indices.delete(
-    index="my-explicit-mappings-books",
-)
-
-```
+:::{include} _snippets/index-basics/example9-python.md
 :::
 
 :::{tab-item} JavaScript
 :sync: js
-```js
-const response = await client.indices.delete({
-  index: "books",
-});
 
-const response1 = await client.indices.delete({
-  index: "my-explicit-mappings-books",
-});
-```
+:::{include} _snippets/index-basics/example9-js.md
 :::
 
 :::{tab-item} PHP
 :sync: php
-```php
-$resp = $client->indices()->delete([
-    "index" => "books",
-]);
 
-$resp1 = $client->indices()->delete([
-    "index" => "my-explicit-mappings-books",
-]);
-
-```
+:::{include} _snippets/index-basics/example9-php.md
 :::
 
 :::{tab-item} Ruby
 :sync: ruby
-```ruby
-response = client.indices.delete(
-  index: "books"
-)
 
-response1 = client.indices.delete(
-  index: "my-explicit-mappings-books"
-)
-
-```
+:::{include} _snippets/index-basics/example9-ruby.md
 :::
 
 ::::
