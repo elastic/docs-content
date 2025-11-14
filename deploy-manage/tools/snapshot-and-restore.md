@@ -105,15 +105,26 @@ Snapshots don’t contain or back up:
 
 ### Feature states [feature-state]
 
-A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **{{es}} security** or **Kibana**.
+A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **{{es}} security** or **Kibana**. To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 
-::::{note}
-To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
-::::
+```console
+GET /_features
+```
 
 A feature state typically includes one or more [system indices or system data streams](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices). It may also include regular indices and data streams used by the feature. For example, a feature state may include a regular index that contains the feature’s execution history. Storing this history in a regular index lets you more easily search it.
 
-In {{es}} 8.0 and later versions, feature states are the only way to back up and restore system indices and system data streams.
+Starting with {{es}} 8.0 and later versions, feature states are the only way to back up and restore system indices and system data streams. Attempting to restore a system index or data stream outside its feature state is not permitted and will result in the following error:
+
+```
+requested system indices [.example], but system indices can only be restored as part of a feature state
+```
+
+Restoring system indices and data streams will require temporary elevated permissions to edit restricted indices. For more information, refer to [File-based access recovery](/troubleshoot/elasticsearch/file-based-recovery.md). Attempting to restore a system index or data stream without the required temporary elevated permissions will result in the following error:
+
+```
+Indices [.example] use and access is reserved for system operations
+```
+
 
 ## How snapshots work
 
