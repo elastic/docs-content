@@ -97,11 +97,6 @@ serverless: unavailable
 
 
 ## Provision projects and deployments with Terraform
-```{applies_to}
-deployment:
-  ess: ga
-serverless: ga
-```
 
 :::{include} /deploy-manage/deploy/_snippets/tpec.md
 :::
