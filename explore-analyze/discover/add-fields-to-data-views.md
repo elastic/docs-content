@@ -14,6 +14,8 @@ description: Create runtime fields in Discover to extend your data views without
 
 Create [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) directly from **Discover** to extend your {{data-source}} without reindexing your data. Runtime fields are computed on the fly from your source data, allowing you to combine existing fields, extract new values, or perform calculations without modifying your indices.
 
+**Technical summary**: In **Discover**, click **Add a field** from the fields sidebar, select the field type, write a {{product.painless}} script using `emit(value)` to compute the field value from source data, and save to the {{data-source}}. Runtime fields are stored in the {{data-source}} definition and computed at query time.
+
 Use runtime fields when you need to add missing fields, combine data from multiple fields, or create calculated values for analysis and visualization.
 
 ## Prerequisites

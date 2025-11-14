@@ -14,6 +14,8 @@ description: Create alerting rules from Discover searches to monitor data condit
 
 Create alerting rules directly from **Discover** to monitor your data automatically. Set up rules that check your data at regular intervals and send notifications when values exceed thresholds, match specific conditions, or deviate from expected patterns.
 
+**Technical summary**: From **Discover** with your query configured, select **Alerts > Create search threshold rule**, configure threshold conditions and time window, select a connector (email, Slack, PagerDuty, {{webhook}}), and save the rule. Manage rules in **{{stack-manage-app}} > {{rules-ui}}**.
+
 ## Prerequisites
 
 * You must have the appropriate privileges to create rules. Refer to [Alerting setup](../alerts-cases/alerts/alerting-setup.md).
