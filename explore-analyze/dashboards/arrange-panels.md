@@ -32,7 +32,7 @@ To add a collapsible section:
    :::{tip}
    The section must be expanded in order to place panels into it.
    :::
-5. Just like any other panel, you can drag and drop the collapsible section to a different position in the dashboard.
+5. Like any other panel, you can drag and drop the collapsible section to a different position in the dashboard.
 6. Save the dashboard. 
 
 Users viewing the dashboard will find the section in the same state as when you saved the dashboard. If you saved it with the section collapsed, then it will also be collapsed by default for users.

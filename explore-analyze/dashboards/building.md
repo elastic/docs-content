@@ -18,7 +18,7 @@ This section covers the key concepts and requirements for building dashboards. T
 $$$dashboard-minimum-requirements$$$
 To create or edit dashboards, you first need to:
 
-* have [data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and a [data view](../find-and-organize/data-views.md). A data view is a subset of your {{product.elasticsearch}} data, and allows you to load just the right data when building a visualization or exploring it.
+* have [data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and a [data view](../find-and-organize/data-views.md). A data view is a subset of your {{product.elasticsearch}} data, and allows you to load the right data when building a visualization or exploring it.
 
   ::::{tip}
   If you don’t have data at hand and still want to explore dashboards, you can import one of the [sample data sets](../../manage-data/ingest/sample-data.md) available.
