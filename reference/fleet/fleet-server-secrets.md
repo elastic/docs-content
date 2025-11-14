@@ -22,7 +22,7 @@ Stand-alone {{fleet-server}} is under active development.
 
 The following secret values may be used when configuring {{fleet-server}}.
 
-Note that the configuration fragments shown below are specified either in the UI as part of the output specification or as part of the {{fleet-server}} integration settings.
+The configuration fragments shown below are specified either in the UI as part of the output specification or as part of the {{fleet-server}} integration settings.
 
 `service_token`
 :   The `service_token` is used to communicate with {{es}}.

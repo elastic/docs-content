@@ -138,7 +138,7 @@ A {{fleet-server}} is an {{agent}} that is enrolled in a {{fleet-server}} policy
 ::::{tip}
 If you already have a {{fleet}} policy with the {{fleet-server}} integration, you know its ID, and you know how to generate an [{{es}} service token](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) for the {{fleet-server}}, skip directly to [{{fleet-server}} installation](#add-fleet-server-kubernetes-install).
 
-Also note that the `service token` required by the {{fleet-server}} is different from the `enrollment tokens` used by {{agent}}s to enroll to {{fleet}}.
+The `service token` required by the {{fleet-server}} is different from the `enrollment tokens` used by {{agent}}s to enroll to {{fleet}}.
 
 ::::
 

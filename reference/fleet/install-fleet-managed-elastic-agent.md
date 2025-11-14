@@ -24,7 +24,7 @@ To get up and running quickly, read one of our end-to-end guides:
 
 Looking for upgrade info? Refer to [Upgrade {{agent}}s](/reference/fleet/upgrade-elastic-agent.md).
 
-Just want to learn how to install {{agent}}? Continue reading this page.
+Want to learn how to install {{agent}}? Continue reading this page.
 
 
 ## Prerequisites [elastic-agent-prereqs]
@@ -64,7 +64,7 @@ To install an {{agent}} and enroll it in {{fleet}}:
     ::::
 
 3. Make sure **Enroll in Fleet** is selected.
-4. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step. Note that the commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
+4. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step. The commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
 
     1. If you are enrolling the agent in a {{fleet-server}} that uses your organization’s certificate you *must* add the `--certificate-authorities` option to the command provided in the in-product instructions. If you do not include the certificate, you will see the following error: "x509: certificate signed by unknown authority".
 

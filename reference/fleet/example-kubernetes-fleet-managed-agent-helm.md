@@ -110,7 +110,7 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     * `--version <version>`: Installs a specific version of the Helm chart and {{agent}}. Refer to [Preparations](#preparations) to check available versions.
     * `--set agent.version=<version>`: Installs a specific version of {{agent}}. By default, the chart installs the agent version that matches its own.
     * `--set-file agent.fleet.ca.value=/local-path/to/fleet-ca.crt`: Provides the CA certificate used by the {{fleet}} Server. This is typically needed when the server uses a certificate signed by a private CA. Not required for {{fleet}} Servers running on {{ecloud}}.
-    * `--set agent.fleet.insecure=true`: Use this option to skip the {{fleet}} certificate verification if your {{fleet}} Server uses a self-signed certificate, such as when installed in quickstart mode. Not required for {{fleet}} Servers running on {{ecloud}}. Note that this option is not recommended for production environments.
+    * `--set agent.fleet.insecure=true`: Use this option to skip the {{fleet}} certificate verification if your {{fleet}} Server uses a self-signed certificate, such as when installed in quickstart mode. Not required for {{fleet}} Servers running on {{ecloud}}. This option is not recommended for production environments.
     * `--set kube-state-metrics.enabled=false`: In case you already have KSM installed in your cluster, and you don't want to install a second instance.
     * `--set kube-state-metrics.fullnameOverride=ksm`: If you want to deploy KSM with a different release name (it defaults to `kube-state-metrics`). This can be useful if you have already a default installation of KSM and you want a second one.
     ::::

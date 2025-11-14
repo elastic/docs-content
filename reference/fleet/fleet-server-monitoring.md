@@ -46,4 +46,4 @@ The following dashboard shows data for the query `data_stream.namespace: "fleets
 :screenshot:
 :::
 
-Note that as an alternative to running the query, you can hide all metrics except `fleet_server` in the dashboard.
+As an alternative to running the query, you can hide all metrics except `fleet_server` in the dashboard.
