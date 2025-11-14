@@ -7,7 +7,7 @@ Use this template to help us efficiently review your contribution.
 Briefly describe what your PR changes or improves.  
 If your contribution fixes an issue, please link it here.
 
-### Contribution checklist
+### Checklist
 
 Before you submit your PR, please confirm the following:
 
