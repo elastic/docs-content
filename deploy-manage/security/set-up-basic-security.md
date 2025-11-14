@@ -41,7 +41,7 @@ For the transport layer, we recommend using a separate, dedicated CA instead of 
 When you manually set up transport TLS, you can choose from the following CA options: 
 
 * [Use the `elasticsearch-certutil` tool to generate a CA unique to your cluster](#generate-certificates) (recommended)
-* [Provide certificates from a private or third-party CA](#private-3p)
+* [Provide certificates from an external CA](#external-ca)
 
 ### Generate the certificate authority using `elasticsearch-certutil`  [generate-certificates]
 
@@ -71,9 +71,9 @@ You can use the `elasticsearch-certutil` tool to generate a CA for your cluster.
             The output file is a keystore named `elastic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
 
 
-### Provide certificates from a private or third-party CA [private-3p]
+### Provide certificates from an external CA [external-ca]
 
-You might choose to use a private or third-party CA to generate transport certificates for node-to-node connections.
+You might choose to use an external CA to generate transport certificates for node-to-node connections. An external CA is any CA that is not managed using `elasticsearch-certutil`.
 
 Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with unencrypted node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
 
@@ -86,7 +86,7 @@ The transport networking layer is used for internal communication between nodes 
 
 Now that you’ve obtained your certificates, you’ll update your cluster to use these files.
 
-These steps assume that you [generated a CA and certificates](#generate-certificates) using `elasticsearch-certutil`. The `xpack.security.transport.ssl` settings that you need to set differ if you're using a certificate generated with a private or third-party CA. Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) full list of available settings.
+These steps assume that you [generated a CA and certificates](#generate-certificates) using `elasticsearch-certutil`. The `xpack.security.transport.ssl` settings that you need to set differ if you're using a certificate generated with an external CA. Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) full list of available settings.
 
 ::::{note}
 {{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds.
