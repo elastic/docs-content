@@ -27,7 +27,7 @@ For more information, check [#14627](https://github.com/elastic/security-team/is
 
 **Workaround**<br> 
 
-To work around this issue, update the default CloudFormation template by replacing the `space` in the `ElasticAgentVersion` oarameter with a `+`.
+To work around this issue, update the default CloudFormation template by replacing the `space` in the `ElasticAgentVersion` parameter with a `+`.
 
 **Resolved**<br>
 
