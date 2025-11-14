@@ -100,7 +100,7 @@ serverless: unavailable
 ```{applies_to}
 deployment:
   ess: ga
-serverless: unavailable
+  serverless: ga
 ```
 
 :::{include} /deploy-manage/deploy/_snippets/tpec.md
