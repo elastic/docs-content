@@ -9,9 +9,11 @@ products:
 navigation_title: Private or 3P CA considerations
 ---
 
-# Considerations for using an private or third-party CA for transport layer security
+# Considerations for using a private or third-party CA for transport layer security
 
 By default, {{es}} uses mutual TLS (mTLS) to secure node-to-node transport connections. Mutual TLS means that data is encrypted in transit, ensuring confidentiality and integrity, and also that both nodes in a connection must present a valid certificate to the other node when establishing the connection. Each node requires that certificates be issued by a trusted certificate authority, ensuring that only authorized nodes can connect. Configure trusted certificate authorities using settings in the [`xpack.security.transport.ssl.*`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) namespace, such as `xpack.security.transport.ssl.certificate_authorities` and `xpack.security.transport.ssl.truststore.path`. 
+
+{{es}} comes with a built-in tool called [`elasticsearch-certutil`](/deploy-manage/security/set-up-basic-security.md), which you can use to create and manage a dedicated certificate authority for each of your clusters, and to issue TLS certificates from this certificate authority. If you prefer not to use `elasticsearch-certutil`, then you must obtain the certificates from another certificate authority using standard TLS tools. This page explains the requirements and best practices to ensure that these certificates work correctly and protect your cluster properly.
 
 ::::{warning}
 Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with unencrypted node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.

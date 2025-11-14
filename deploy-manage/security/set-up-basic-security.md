@@ -40,18 +40,8 @@ For the transport layer, we recommend using a separate, dedicated CA instead of 
 
 When you manually set up transport TLS, you can choose from the following CA options: 
 
+* [Use the `elasticsearch-certutil` tool to generate a CA unique to your cluster](#generate-certificates) (recommended)
 * [Provide certificates from a private or third-party CA](#private-3p)
-* [Use the `elasticsearch-certutil` tool to generate a CA unique to your cluster](#generate-certificates)
-
-### Provide certificates from a private or third-party CA [private-3p]
-
-You might choose to use a private or third-party CA to generate transport certificates for node-to-node connections.
-
-Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with unencrypted node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
-
-Carefully review [](/deploy-manage/security/self-tls-considerations.md) to ensure that the certificates that you provide meet the security requirements for transport connections.
-
-After you obtain your certificate, place the certificate file in the `$ES_PATH_CONF` directory on **every** node in your cluster. 
 
 ### Generate the certificate authority using `elasticsearch-certutil`  [generate-certificates]
 
@@ -80,7 +70,14 @@ You can use the `elasticsearch-certutil` tool to generate a CA for your cluster.
 
             The output file is a keystore named `elastSic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
 
-3. On **every** node in your cluster, copy the `elastic-certificates.p12` file to the `$ES_PATH_CONF` directory.
+
+### Provide certificates from a private or third-party CA [private-3p]
+
+You might choose to use a private or third-party CA to generate transport certificates for node-to-node connections.
+
+Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with unencrypted node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
+
+Carefully review [](/deploy-manage/security/self-tls-considerations.md) to ensure that the certificates that you provide meet the security requirements for transport connections.
 
 
 ## Encrypt internode communications with TLS [encrypt-internode-communication]
@@ -98,7 +95,9 @@ These steps assume that you [generated a CA and certificates](#generate-certific
 
 Complete the following steps **for each node in your cluster**. To join the same cluster, all nodes must share the same `cluster.name` value.
 
-1. Open the `$ES_PATH_CONF/elasticsearch.yml` file and make the following changes:
+1. Place the certificate or keystore file that you obtained in the `$ES_PATH_CONF` directory on **every** node in your cluster. If you generated a CA using `elasticsearch-certutil`, then this file is named `elastic-certificates.p12`.
+
+2. Open the `$ES_PATH_CONF/elasticsearch.yml` file and make the following changes:
 
     1. Add the [`cluster-name`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting and enter a name for your cluster:
 
@@ -126,7 +125,7 @@ Complete the following steps **for each node in your cluster**. To join the same
 
         1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
 
-2. If you entered a password when creating the node certificate, run the following commands to store the password in the {{es}} keystore:
+3. If you entered a password when creating the node certificate, run the following commands to store the password in the {{es}} keystore:
 
     ```shell
     ./bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
@@ -136,8 +135,8 @@ Complete the following steps **for each node in your cluster**. To join the same
     ./bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
     ```
 
-3. Complete the previous steps for each node in your cluster.
-4. On **every** node in your cluster, start {{es}}. The method for [starting](../maintenance/start-stop-services/start-stop-elasticsearch.md) and [stopping](../maintenance/start-stop-services/start-stop-elasticsearch.md) {{es}} varies depending on how you installed it.
+4. Complete the previous steps for each node in your cluster.
+5. On **every** node in your cluster, start {{es}}. The method for [starting](../maintenance/start-stop-services/start-stop-elasticsearch.md) and [stopping](../maintenance/start-stop-services/start-stop-elasticsearch.md) {{es}} varies depending on how you installed it.
 
     For example, if you installed {{es}} with an archive distribution (`tar.gz` or `.zip`), you can enter `Ctrl+C` on the command line to stop {{es}}.
 
