@@ -19,7 +19,8 @@ products:
 The **Shards** view allows you to manage and monitor shards allocated to each node, ensuring optimal performance and reliability of your search and indexing operations.
 
 :::{image} /deploy-manage/images/cloud-autoops-shard-view.png
-:alt: The Shards view
+:screenshot:
+:alt: Screenshot showing the Shards view in AutoOps
 :::
 
 The **Shards** view provides:

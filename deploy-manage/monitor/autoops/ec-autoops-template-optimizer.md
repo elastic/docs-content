@@ -19,7 +19,8 @@ products:
 The **Template Optimizer** view offers detailed recommendations for optimizing templates.
 
 :::{image} /deploy-manage/images/cloud-autoops-template-optimizer.png
-:alt: The Template Optimizer view
+:screenshot:
+:alt: Screenshot showing the Template Optimizer view in AutoOps
 :::
 
 When AutoOps identifies a recommended change, it logs the template separately, allowing you to track past impactful changes. You can navigate between different deployments/clusters to view all template recommendations.

@@ -19,7 +19,8 @@ products:
 The **Overview** page displays the current status of customer deployments and clusters that are linked to the same Elastic organization.
 
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
-:alt: The Overview page
+:screenshot:
+:alt: Screenshot showing the Overview in AutoOps
 :::
 
 ::::{note}

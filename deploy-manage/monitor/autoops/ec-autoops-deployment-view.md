@@ -40,7 +40,8 @@ The **Events History** panel lists events that happened at some point and that h
 The **Resources** panel provides a quick overview of {{es}} cluster resource usage. The resources are presented based on their respective data tiers and include JVM memory usage, CPU usage, and storage usage over time. You can view essential cluster information such as the {{es}} version, total number of nodes, total number of shards, and total volume of used storage.
 
 :::{image} /deploy-manage/images/cloud-autoops-deployment-resources.png
-:alt: The AutoOps Resources panel
+:screenshot:
+:alt: Screenshot showing the Resources panel in the AutoOps Deployment or Cluster view
 :::
 
 
@@ -49,7 +50,8 @@ The **Resources** panel provides a quick overview of {{es}} cluster resource usa
 The **Performance** panel shows key performance metrics, aggregated at both the cluster level and the selected tier levels:
 
 :::{image} /deploy-manage/images/cloud-autoops-deployment-performance.png
-:alt: The AutoOps Deployment Performance
+:screenshot:
+:alt: Screenshot showing the Performance panel in the AutoOps Deployment or Cluster view
 :::
 
 * **Search rate**: The number of search requests executed per second across all shards in the deployment or cluster, as well as within the selected data tiers.

@@ -19,7 +19,8 @@ products:
 The **Indices** view provides detailed statistics for each {{es}} index in your deployment.
 
 :::{image} /deploy-manage/images/cloud-autoops-index-view.png
-:alt: The Indices view
+:screenshot:
+:alt: Screenshot showing the Indices view in AutoOps
 :::
 
 The **Indices** view is essential for monitoring {{es}} indices, and offers comprehensive insights at a glance by displaying a clear and informative table about the following metrics:
