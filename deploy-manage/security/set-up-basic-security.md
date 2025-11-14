@@ -68,7 +68,7 @@ You can use the `elasticsearch-certutil` tool to generate a CA for your cluster.
         1. Enter the password for your CA, or press **Enter** if you did not configure one in the previous step.
         2. Create a password for the certificate and accept the default file name.
 
-            The output file is a keystore named `elastSic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
+            The output file is a keystore named `elastic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
 
 
 ### Provide certificates from a private or third-party CA [private-3p]
