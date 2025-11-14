@@ -588,6 +588,10 @@ toc:
               - file: security/detect-and-alert/rule-types/custom-query.md
               - file: security/detect-and-alert/rule-types/machine-learning.md
               - file: security/detect-and-alert/rule-types/threshold.md
+              - file: security/detect-and-alert/rule-types/event-correlation.md
+              - file: security/detect-and-alert/rule-types/indicator-match.md
+              - file: security/detect-and-alert/rule-types/new-terms.md
+              - file: security/detect-and-alert/rule-types/esql.md
               - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
               - file: security/detect-and-alert/launch-timeline-from-investigation-guides.md
               - file: security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md

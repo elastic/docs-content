@@ -105,10 +105,10 @@ Select a rule type below for detailed instructions:
 * [**Custom query rule**](/solutions/security/detect-and-alert/rule-types/custom-query.md) - Detect single events matching specific criteria (most common, ~90% of use cases)
 * [**Machine learning rule**](/solutions/security/detect-and-alert/rule-types/machine-learning.md) - Detect anomalous behavior using ML-powered baseline analysis
 * [**Threshold rule**](/solutions/security/detect-and-alert/rule-types/threshold.md) - Detect patterns based on frequency or volume (count-based detection)
-* [Event correlation rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-eql-rule) - Detect sequences of related events
-* [Indicator match rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule) - Match events against threat intelligence feeds
-* [New terms rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-new-terms-rule) - Detect first-time occurrence of field values
-* [ES|QL rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule) - Use ES|QL for complex data transformations
+* [**Event correlation rule**](/solutions/security/detect-and-alert/rule-types/event-correlation.md) - Detect sequences of related events
+* [**Indicator match rule**](/solutions/security/detect-and-alert/rule-types/indicator-match.md) - Match events against threat intelligence feeds
+* [**New terms rule**](/solutions/security/detect-and-alert/rule-types/new-terms.md) - Detect first-time occurrence of field values
+* [**ES|QL rule**](/solutions/security/detect-and-alert/rule-types/esql.md) - Use ES|QL for complex data transformations
 
 ### Quick reference: When to use each rule type
 
@@ -392,6 +392,12 @@ Detailed instructions for creating threshold rules have been moved to a [dedicat
 
 ## Create an event correlation rule [create-eql-rule]
 
+::::{note}
+Detailed instructions for creating event correlation rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/event-correlation.md).
+::::
+
+**Quick summary**: Event correlation rules use EQL (Event Query Language) to detect sequences of related events or correlate events across different data sources.
+
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
 2. To create an event correlation rule using EQL, select **Event Correlation** on the **Create new rule** page, then:
 
@@ -454,6 +460,12 @@ Detailed instructions for creating threshold rules have been moved to a [dedicat
 
 
 ## Create an indicator match rule [create-indicator-rule]
+
+::::{note}
+Detailed instructions for creating indicator match rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/indicator-match.md), including guidance on using value lists with indicator match rules.
+::::
+
+**Quick summary**: Indicator match rules continually compare your security source events with threat intelligence indicators and generate alerts when matches are found.
 
 ::::{note}
 {{elastic-sec}} provides [limited support](/solutions/security/detect-and-alert.md#support-indicator-rules) for indicator match rules.
@@ -558,6 +570,12 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 ## Create a new terms rule [create-new-terms-rule]
 
+::::{note}
+Detailed instructions for creating new terms rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/new-terms.md).
+::::
+
+**Quick summary**: New terms rules generate alerts for each new term detected in source documents within a specified time range.
+
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
 2. To create a rule that searches for each new term detected in source documents, select **New Terms** on the **Create new rule** page, then:
 
@@ -594,6 +612,12 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 ## Create an {{esql}} rule [create-esql-rule]
 
+::::{note}
+Detailed instructions for creating ES|QL rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/esql.md), including comprehensive coverage of aggregating vs. non-aggregating queries, query design considerations, and alert deduplication.
+::::
+
+**Quick summary**: ES|QL rules use the Elasticsearch Query Language to query source events and aggregate event data. Query results are returned in a table format where each row becomes an alert.
+
 Use [{{esql}}](elasticsearch://reference/query-languages/esql.md) to query your source events and aggregate event data. Query results are returned in a table with rows and columns. Each row becomes an alert.
 
 To create an {{esql}} rule:
@@ -602,7 +626,7 @@ To create an {{esql}} rule:
 2. Select **{{esql}}**, then write a query.
 
     ::::{note}
-    Refer to the sections below to learn more about [{{esql}} query types](/solutions/security/detect-and-alert/create-detection-rule.md#esql-rule-query-types), [query design considerations](/solutions/security/detect-and-alert/create-detection-rule.md#esql-query-design), and [rule limitations](/solutions/security/detect-and-alert/create-detection-rule.md#esql-rule-limitations).
+    Refer to the [dedicated ES|QL rule page](/solutions/security/detect-and-alert/rule-types/esql.md) to learn more about [{{esql}} query types](/solutions/security/detect-and-alert/rule-types/esql.md#esql-rule-query-types), [query design considerations](/solutions/security/detect-and-alert/rule-types/esql.md#esql-query-design), and [rule limitations](/solutions/security/detect-and-alert/rule-types/esql.md#esql-rule-limitations).
     ::::
 
 
@@ -675,7 +699,7 @@ FROM logs-* METADATA _id, _index, _version
 | LIMIT 10
 ```
 
-* This query starts by querying logs from indices that match the pattern `logs-*`. The `METADATA _id, _index, _version` operator allows [alert deduplication](/solutions/security/detect-and-alert/create-detection-rule.md#esql-non-agg-query-dedupe).
+* This query starts by querying logs from indices that match the pattern `logs-*`. The `METADATA _id, _index, _version` operator allows [alert deduplication](/solutions/security/detect-and-alert/rule-types/esql.md#esql-non-agg-query-dedupe).
 * Next, the query filters events where the `event.category` is a process and the `event.id` is `8a4f500d`.
 * Then, it limits the output to the top 10 results.
 
