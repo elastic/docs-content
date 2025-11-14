@@ -25,7 +25,7 @@ Value lists are lists of items with the same {{es}} [data type](elasticsearch://
 After creating value lists, you can use `is in list` and `is not in list` operators to [define exceptions](add-manage-exceptions.md).
 
 ::::{tip}
-You can also use a value list as the [indicator match index](solutions/security/detect-and-alert/rule-types/indicator-match.md#indicator-value-lists) when creating an indicator match rule.
+You can also use a value list as the [indicator match index](/solutions/security/detect-and-alert/rule-types/indicator-match.md#indicator-value-lists) when creating an indicator match rule.
 ::::
 
 ## Create value lists [create-value-lists]

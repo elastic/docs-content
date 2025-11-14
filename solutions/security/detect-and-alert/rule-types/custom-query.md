@@ -96,7 +96,7 @@ Custom query rules search for events matching a KQL or Lucene query and create a
 **Configuration**:
 * **Index patterns**: `packetbeat-*,logs-network-*`
 * **Custom query**:
-  ```kql
+  ```console
   host.name: (web-server-* OR dmz-*) AND network.direction: outbound AND NOT destination.ip: (10.0.0.0/8 OR 172.16.0.0/12 OR 192.168.0.0/16) AND NOT destination.port: (80 OR 443 OR 53 OR 123)
   ```
 
