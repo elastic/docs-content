@@ -166,6 +166,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## October 15, 2025 [serverless-changelog-10152025]
 * {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London)
+* Adds PR-based benchmarks
+* Adds tags to PR-based benchmarks [#136185](https://github.com/elastic/elasticsearch/pull/136185)
 
 
 ## October 13, 2025 [serverless-changelog-10132025]
@@ -263,6 +265,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
 * Adds in-product documentation for the {{esql}} `FORK` command [#236494]({{kib-pull}}236494)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
+* Optimizes `dotCount` in the expanding dot parser [#135263](https://github.com/elastic/elasticsearch/pull/135263)
 
 ### Fixes [serverless-changelog-09292025-fixes]
 
