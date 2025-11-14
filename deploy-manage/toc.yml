@@ -488,6 +488,7 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
+              - file: security/self-tls-considerations.md
           - file: security/network-security.md
             children:
               - file: security/network-security-policies.md

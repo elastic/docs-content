@@ -57,35 +57,42 @@ Securing this layer prevents unauthorized nodes from joining your cluster and pr
 
 The way that transport layer security is managed depends on your deployment type:
 
-::::{tab-set}
+:::::{tab-set}
 :group: deployments
 
-:::{tab-item} ECH and Serverless
+::::{tab-item} ECH and Serverless
 :sync: ech
 {{es}} transport security is fully managed by Elastic, and no configuration is required.
-:::
+::::
 
-:::{tab-item} ECE
+::::{admonition}{tab-item} ECE
 :sync: ece
 {{es}} transport security is fully managed by {{ece}} platform, and no configuration is required.
-:::
+::::
 
-:::{tab-item} ECK
+::::{tab-item} ECK
 :sync: eck
 
 :::{include} ./_snippets/eck-transport.md
 :::
 
+:::{include} ./_snippets/own-ca-warning.md
 :::
 
-:::{tab-item} Self-managed
+::::
+
+::::{tab-item} Self-managed
 :sync: self
 {{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [](set-up-basic-security.md).
 
 For additional TLS configuration options, refer to [](./self-tls.md).
+
+:::{include} ./_snippets/own-ca-warning.md
 :::
 
 ::::
+
+:::::
 
 ### HTTP layer security [encrypt-http-communication]
 
