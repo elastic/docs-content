@@ -1,0 +1,6 @@
+```js
+const response = await client.search({
+  index: "books",
+});
+console.log(response);
+```
