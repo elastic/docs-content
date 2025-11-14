@@ -13,13 +13,6 @@ products:
 
 # Connect to Google Vertex
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/connect-to-vertex.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-connect-to-google-vertex.md
-
 This page provides step-by-step instructions for setting up a Google Vertex AI connector for the first time. This connector type enables you to leverage Vertex AI’s large language models (LLMs) within {{elastic-sec}}. You’ll first need to enable Vertex AI, then generate a key, and finally configure the connector in your {{elastic-sec}} project.
 
 ::::{important}
