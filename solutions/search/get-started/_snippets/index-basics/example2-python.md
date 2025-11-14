@@ -1,0 +1,13 @@
+```python
+resp = client.index(
+    index="books",
+    document={
+        "name": "Snow Crash",
+        "author": "Neal Stephenson",
+        "release_date": "1992-06-01",
+        "page_count": 470
+    },
+)
+print(resp)
+
+```

@@ -1,0 +1,11 @@
+```js
+const response = await client.search({
+  index: "books",
+  query: {
+    match: {
+      name: "brave",
+    },
+  },
+});
+console.log(response);
+```
