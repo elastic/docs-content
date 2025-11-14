@@ -42,6 +42,62 @@ To create detection rules, you must have:
 Additional configuration is required for detection rules using cross-cluster search. Refer to [Cross-cluster search and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md).
 ::::
 
+## Resource planning and performance considerations [rule-resource-planning]
+
+Before creating detection rules at scale, understand their resource impact on your {{es}} cluster and {{kib}} instances.
+
+### Resource requirements by rule type
+
+Different rule types have different performance characteristics:
+
+* **Custom query**: Low resource usage (~50-100ms per execution). Suitable for high-frequency execution (every 5 minutes).
+* **Threshold**: Medium resource usage (~200-500ms per execution). Uses aggregations which consume more memory. Consider running every 10+ minutes if using high-cardinality fields.
+* **Event Correlation (EQL)**: Medium resource usage (~200-400ms per execution). Sequence queries are efficient but complex sequences take longer.
+* **Machine Learning**: Low rule execution overhead (~50ms) but ML jobs require dedicated resources. Each ML job needs approximately 2GB RAM. Consider using dedicated ML nodes in production.
+* **Indicator Match**: High resource usage (~500ms-2s per execution). Runs two queries (indicator index + source indices). Limit to 15-minute intervals or longer. Keep indicator count under 10,000 for best performance.
+* **New Terms**: Medium resource usage (~300ms per execution). Maintains history of seen terms in memory.
+* **ES|QL**: Variable performance depending on query complexity. Test with Preview before deploying.
+
+### Capacity planning
+
+When running multiple rules, consider:
+
+* **Total execution load**: For 50 rules running every 5 minutes, that's ~10 rule executions per minute. Ensure your {{kib}} task manager can handle this load.
+* **Stagger rule activation**: When enabling many rules, activate them in batches of 10-15, waiting 1-2 minutes between batches. This prevents all rules from executing simultaneously.
+* **Monitor task manager**: Use **Stack Monitoring → {{kib}} → Task Manager** to view rule execution queue depth. If consistently above 50, consider adding {{kib}} instances or reducing rule frequency.
+
+### Preventing circuit breaker errors
+
+Threshold and indicator match rules can trigger {{es}} circuit breakers if they process too much data:
+
+* **Field data circuit breaker**: Triggered when aggregating high-cardinality fields (fields with many unique values). Set `indices.breaker.fielddata.limit` to at least 40% of JVM heap.
+* **Request circuit breaker**: Triggered when query results are too large. Use more specific queries or increase `indices.breaker.request.limit`.
+
+**Testing before production**: Always use the [rule preview feature](/solutions/security/detect-and-alert/create-detection-rule.md#preview-rules) with a representative time range to verify resource usage and alert volume before enabling a rule.
+
+## Understanding rule types [understanding-rule-types]
+
+Detection rules process data differently based on their type. Choose the appropriate type for your detection use case:
+
+| Rule Type | When to Use | Query Language | Typical Performance |
+|-----------|------------|----------------|---------------------|
+| **Custom query** | Detect single events matching criteria | KQL (recommended) or Lucene | Fast (~50-100ms) |
+| **Threshold** | Count-based detection (e.g., "5+ failed logins from same IP") | KQL or Lucene | Medium (~200-500ms) |
+| **Event Correlation (EQL)** | Detect sequences of events (e.g., "process start THEN network connection") | EQL only | Medium (~200-400ms) |
+| **Machine Learning** | Detect anomalous behavior using ML models | None (uses ML job results) | Fast (~50ms) |
+| **Indicator Match** | Match events against threat intelligence feeds | KQL or Lucene (two queries) | Slow (~500ms-2s) |
+| **New Terms** | Detect first-time occurrence of field values | KQL or Lucene | Medium (~300ms) |
+| **ES\|QL** | Complex data aggregations and transformations | ES\|QL only | Varies |
+
+**Query Language Quick Guide**:
+
+* **KQL (Kibana Query Language)**: Recommended for most users. Simple syntax: `field:value AND other_field:*`. Best for straightforward field matching.
+* **Lucene**: More powerful but complex. Use for advanced pattern matching with wildcards and regex.
+* **EQL (Event Query Language)**: Specialized for detecting event sequences and correlations. Required for Event Correlation rules.
+* **ES|QL**: New query language for complex analytics. Use when you need to aggregate and transform data in ways not possible with other query languages.
+
+**Not sure which rule type to use?** Start with **Custom query + KQL** - this covers approximately 90% of detection use cases.
+
 ## Create a custom query rule [create-custom-rule]
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
@@ -85,6 +141,57 @@ Additional configuration is required for detection rules using cross-cluster sea
 
 6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
+### Example: Detect failed SSH login attempts
+
+**Use case**: Alert when an IP address attempts SSH authentication more than 10 times in 10 minutes.
+
+**Prerequisites**:
+* {{filebeat}} system module OR {{auditbeat}} installed and collecting auth logs
+* Field `system.auth.ssh.event` must exist in your data
+
+**Configuration**:
+* **Index patterns**: `filebeat-*,auditbeat-*`
+* **Custom query**: `system.auth.ssh.event: "Failed" AND source.ip: *`
+
+**Testing**: Before creating the rule, verify the query returns results in **Discover**. If you get zero results, check that:
+* {{filebeat}} system module is enabled: `filebeat modules list`
+* Auth logs are being collected (check `/var/log/auth.log` on Ubuntu or `/var/log/secure` on RHEL)
+* Data is reaching {{es}}: Look for `system.auth` indices in **Index Management**
+
+**Expected behavior**: Rule creates one alert per execution when matches are found. For threshold-based counting (e.g., "10+ failures from same IP"), use a Threshold rule instead.
+
+**Tuning**:
+* Add exceptions for known security scanners: `source.ip is not <scanner-ip>`
+* If receiving too many alerts, increase threshold or add more specific filters
+
+### Example: Detect unusual outbound network connections
+
+**Use case**: Alert when servers in your DMZ or web tier make unexpected outbound connections to public IPs.
+
+**Prerequisites**:
+* {{packetbeat}} or {{filebeat}} with network logs
+* Field `network.direction` must exist
+
+**Configuration**:
+* **Index patterns**: `packetbeat-*,logs-network-*`
+* **Custom query**:
+  ```kql
+  host.name: (web-server-* OR dmz-*) AND network.direction: outbound AND NOT destination.ip: (10.0.0.0/8 OR 172.16.0.0/12 OR 192.168.0.0/16) AND NOT destination.port: (80 OR 443 OR 53 OR 123)
+  ```
+
+**Query explanation**:
+* Matches servers with specific naming patterns (adjust `host.name` to match your environment)
+* Only outbound connections
+* Excludes private IP ranges (RFC1918)
+* Excludes common legitimate services: HTTP (80), HTTPS (443), DNS (53), NTP (123)
+
+**Expected alert volume**: 0-10 per day initially. Tune with exceptions as you identify legitimate outbound connections (package updates, monitoring agents, backup systems).
+
+**Common false positives**:
+* Package managers (apt, yum) connecting to update repositories: Add exception for specific `process.name`
+* Monitoring agents: Add exception for known monitoring service destinations
+* Time synchronization: Add exception for `destination.port: 123` if using public NTP servers
+
 ## Create a machine learning rule [create-ml-rule]
 
 ::::{admonition} Requirements
@@ -104,9 +211,20 @@ For an overview of using {{ml}} with {{elastic-sec}}, refer to [Anomaly detectio
 
     1. The required {{ml}} jobs.
 
-        ::::{note}
-        If a required job isn’t currently running, it will automatically start when you finish configuring and enable the rule.
-        ::::
+    ::::{note}
+    If a required job isn't currently running, it will automatically start when you finish configuring and enable the rule.
+    ::::
+
+    ::::{warning}
+    **{{ml-cap}} job startup considerations**:
+
+    * **Startup time**: {{ml}} jobs take 30-60 seconds to fully start. Your rule may show a "Failed" status during the first few executions while the job initializes. This is normal behavior.
+    * **Resource requirements**: Each {{ml}} job requires approximately 2GB RAM. Ensure you have dedicated ML nodes or sufficient memory on data nodes. In production environments, dedicated ML nodes are recommended.
+    * **Baseline period**: Newly started {{ml}} jobs need 7-14 days to establish a baseline of normal behavior. Expect a higher volume of alerts initially as the job "learns" what is normal in your environment.
+    * **Shared jobs**: If multiple rules use the same {{ml}} job, only one instance of the job runs. Stopping the job will cause all dependent rules to fail.
+
+    **Best practice**: Start {{ml}} jobs manually in **Machine Learning → Anomaly Detection** and verify they're running before enabling {{ml}} detection rules in production.
+    ::::
 
     2. The anomaly score threshold above which alerts are created.
 
@@ -139,12 +257,61 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         You can use {{kib}} saved queries (![Saved query menu](/solutions/images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold’s value.
+    3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold's value.
 
         ::::{note}
         Consider the following when using the **Group by** field:
-        - Nested fields are not supported.
+        - Nested fields are not supported. Nested fields are fields defined with `"type": "nested"` in your {{es}} mapping. Regular object fields like `host.name` or `user.name` ARE supported.
         - High cardinality in the fields or a high number of matching documents can result in a rule timeout or a circuit breaker error from {{es}}.
+
+        **Understanding cardinality limits**:
+
+        Cardinality refers to the number of unique values in a field. {{es}} must track each unique value in memory during aggregation.
+
+        **Risk levels**:
+        * **Low risk** (<10,000 unique values): Fields like `user.name`, `host.name` in typical environments
+        * **Medium risk** (10,000-100,000 unique values): Fields like `process.name` across large server fleets
+        * **High risk** (>100,000 unique values): Fields like `source.ip`, `url.full`, or `user_agent.original` in high-traffic environments
+
+        **Testing cardinality before creating the rule**:
+
+        Run this query in **Dev Tools** to check cardinality:
+
+        ```json
+        GET your-index-pattern/_search
+        {
+          "size": 0,
+          "query": {
+            "bool": {
+              "must": [
+                { "range": { "@timestamp": { "gte": "now-1h" } } }
+              ]
+            }
+          },
+          "aggs": {
+            "cardinality_check": {
+              "cardinality": {
+                "field": "your-field-name"
+              }
+            }
+          }
+        }
+        ```
+
+        If the returned `value` exceeds 50,000, consider:
+        * Using a different field with lower cardinality
+        * Adding more filters to your rule query to reduce the number of matched documents
+        * Increasing the {{es}} heap size and circuit breaker limits
+
+        **Circuit breaker error message**:
+
+        If you encounter a circuit breaker error, you'll see: `Data too large, data for [fielddata] would be [X/Xgb], which is larger than the limit of [Y/Ygb]`
+
+        To resolve:
+        1. Narrow your rule query to match fewer documents
+        2. Choose a field with lower cardinality
+        3. Increase the field data circuit breaker limit: Set `indices.breaker.fielddata.limit` to at least 40% of JVM heap in `elasticsearch.yml`
+        4. Increase {{es}} JVM heap size if system resources allow
         ::::
 
     4. Use the **Count** field to limit alerts by cardinality of a certain field.
@@ -603,6 +770,33 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
     10. **Building block** (optional): Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [About building block rules](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
     11. **Max alerts per run** (optional): Specify the maximum number of alerts the rule can create each time it runs. Default is 100.
 
+        **Understanding the alert limit**:
+
+        When a rule reaches this limit during execution, it STOPS processing remaining matches. Alerts beyond this number are not created for that execution. The next rule execution starts fresh with a new counter.
+
+        **Detecting when the limit is reached**:
+        * A warning appears on the rule details page: "This rule reached the maximum alert limit for the rule execution"
+        * Check the **Execution results** tab to see execution history with warnings
+        * Review alerts to determine if the limit indicates a legitimate incident or an overly broad query
+
+        **Performance impact**:
+        * 100 alerts: +100ms to rule execution time
+        * 1,000 alerts: +1s to rule execution time
+        * 10,000 alerts: +10s to rule execution time
+
+        **Choosing an appropriate value**:
+        1. Use **Preview** to check expected alert volume during normal conditions
+        2. If preview shows you're close to 100 alerts, either:
+           * Increase the limit to accommodate legitimate alert volume
+           * Narrow your query with additional filters to reduce false positives
+           * Consider using a Threshold rule or alert suppression instead
+        3. If you consistently hit the limit, investigate whether your rule is too broadly scoped
+
+        **Red flag scenario**: If a rule regularly hits the maximum alert limit, it may indicate:
+        * Query is too broad (add more specific filters)
+        * Legitimate security incident in progress (temporarily increase limit and investigate)
+        * Wrong rule type (consider Threshold rule for count-based detection)
+
         ::::{note}
         This setting can be superseded by the [{{kib}} configuration setting](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) `xpack.alerting.rules.run.alerts.max`, which determines the maximum alerts generated by *any* rule in the {{kib}} alerting framework. For example, if `xpack.alerting.rules.run.alerts.max` is set to `1000`, the rule can generate no more than 1000 alerts even if **Max alerts per run** is set higher.
         ::::
@@ -637,20 +831,73 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 3. Continue with [setting the rule’s schedule](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule).
 
 
-## Set the rule’s schedule [rule-schedule]
+## Set the rule's schedule [rule-schedule]
 
-1. Select how often the rule runs.
-2. Optionally, add `Additional look-back time` to the rule. When defined, the rule searches indices with the additional time.
+### Rule interval
 
-    For example, if you set a rule to run every 5 minutes with an additional look-back time of 1 minute, the rule runs every 5 minutes but analyzes the documents added to indices during the last 6 minutes.
+Select how often the rule runs. Choose based on detection urgency, data volume, and rule complexity:
 
-    ::::{important}
-    It is recommended to set the `Additional look-back time` to at least 1 minute. This ensures there are no missing alerts when a rule does not run exactly at its scheduled time.
+* **1 minute**: Only for critical security events requiring immediate detection. Rarely needed and increases system load.
+* **5 minutes**: Standard interval for most security rules. Default for Elastic prebuilt rules.
+* **10-15 minutes**: Recommended for resource-intensive rules (threshold rules with high cardinality, indicator match rules).
+* **1 hour**: For low-priority detection, analytics rules, or very expensive queries.
 
-    {{elastic-sec}} prevents duplication. Any duplicate alerts that are discovered during the `Additional look-back time` are *not* created.
+**Scheduling strategy for multiple rules**:
 
-    ::::
+If you're enabling many rules (50+), stagger their activation to distribute system load:
 
+1. Enable rules in batches of 10-15
+2. Wait 1-2 minutes between batches
+3. Mix intervals (5min, 7min, 10min) to prevent all rules from executing simultaneously at :00, :05, :10, etc.
+
+**Example distribution for 50 rules**:
+* 20 lightweight custom query rules: 5 minutes
+* 20 medium threshold rules: 10 minutes
+* 10 resource-intensive indicator match rules: 15 minutes
+
+**Monitoring**: Use **Stack Monitoring → {{kib}} → Task Manager** to view rule execution queue depth. If consistently above 50, consider adding {{kib}} instances or increasing rule intervals.
+
+### Additional look-back time (Critical for reliability)
+
+Add `Additional look-back time` to extend the search window backwards from the current time. **This is critical for production deployments**, not optional.
+
+**How it works**:
+
+* Rule interval: Every 5 minutes
+* Additional look-back: 1 minute
+* **Without look-back**: Searches 00:00-00:05, 00:05-00:10, 00:10-00:15 (exact boundaries)
+* **With look-back**: Searches 23:59-00:05, 00:04-00:10, 00:09-00:15 (1-minute overlap)
+
+**Why you need this** (three critical scenarios):
+
+1. **Rule execution delay**: Rules don't run exactly on schedule due to {{kib}} task queue processing. A rule scheduled for 10:05:00 might actually execute at 10:05:03. Without look-back, events from 10:05:00-10:05:03 would be missed.
+
+2. **Ingestion pipeline delay**: Events aren't indexed immediately after they occur:
+   * Event timestamp: 10:05:00 (when event actually happened)
+   * Received by {{filebeat}}/{{logstash}}: 10:05:05 (5-second network delay)
+   * Indexed in {{es}}: 10:05:10 (5-second processing delay)
+   * Rule executes: 10:06:00 (looking back to 10:01:00)
+   * Without adequate look-back, events with indexing delays could be missed
+
+3. **{{kib}} restarts or task manager delays**: When {{kib}} restarts or task manager is overloaded, rules may not execute at their exact scheduled times.
+
+**Recommended values**:
+* **Minimum**: 1 minute (covers typical execution delays)
+* **High ingestion latency**: 5 minutes (if your logs have significant network or processing delays)
+* **Custom environments**: Set to your P95 ingestion latency. Check {{filebeat}} monitoring metrics to determine typical delays.
+
+**Important**: {{elastic-sec}} automatically prevents duplicate alerts. Events processed multiple times due to look-back overlap will only create one alert.
+
+**Troubleshooting gaps**: If you see "Gaps" in the Rule Monitoring table despite setting look-back time, your rule interval + look-back time is shorter than actual execution time. Either increase the interval or optimize the rule query.
+
+::::{important}
+For production environments, **always set Additional look-back time to at least 1 minute**. This ensures reliable alert generation even when rules don't execute exactly on schedule.
+::::
+
+### Finalize schedule configuration
+
+1. Set the rule interval based on detection urgency and resource requirements
+2. Set Additional look-back time to at least 1 minute (or higher if you have ingestion delays)
 3. Click **Continue**. The **Rule actions** pane is displayed.
 4. Do either of the following:
 
@@ -661,12 +908,49 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 
 ## Set up rule actions (optional) [rule-notifications]
 
-Use actions to set up notifications sent via other systems when alerts are generated.
+Use actions to send notifications via external systems when alerts are generated.
 
-::::{note}
-To use actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions). For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
-::::
+### Licensing requirements
 
+**What you need**:
+* **{{stack}}**: Gold subscription or higher for alert notifications
+* **{{serverless-short}}**: Included in Security Analytics project tier and above
+* **Self-managed Community Edition**: Rules run but cannot send notifications
+
+**Check your license**: Run `GET /_license` in **Dev Tools**.
+
+### Choosing notification channels
+
+You can configure multiple actions per rule. Common patterns:
+
+**Pattern 1: Severity-based routing**
+* Critical alerts → PagerDuty (immediate on-call response)
+* High alerts → Slack + Email
+* Medium alerts → Email only (daily summary)
+
+Configure this using the **If alert matches query** condition with `kibana.alert.severity: "critical"`.
+
+**Pattern 2: On-call integration**
+* All alerts → PagerDuty (handles on-call scheduling and routing)
+* Backup channel → Email to security team mailing list
+
+**Pattern 3: ChatOps workflow**
+* All alerts → Slack channel dedicated to security alerts
+* Use Slack workflow automation for acknowledgment and escalation
+
+### Action reliability and failure handling
+
+**What happens if a connector fails?**
+
+If an action fails (e.g., Slack is down), the alert is still created in {{es}}. {{kib}} automatically retries failed notifications:
+* 1st retry: After 1 minute
+* 2nd retry: After 5 minutes
+* 3rd retry: After 15 minutes
+* After 3 failures: Notification is dropped, but the alert persists in the system
+
+**Viewing failed notifications**: Go to **Stack Management → Alerts and Insights → Rules**, select your rule, then check the **Execution history** tab for action failures.
+
+### Configure actions
 
 1. Select a connector type to determine how notifications are sent. For example, if you select the {{jira}} connector, notifications are sent to your {{jira}} system.
 
@@ -813,8 +1097,68 @@ Use response actions to set up additional functionality that will run whenever a
 * **Osquery**: Include live Osquery queries with a custom query rule. When an alert is generated, Osquery automatically collects data on the system related to the alert. Refer to [Add Osquery Response Actions](/solutions/security/investigate/add-osquery-response-actions.md) to learn more.
 * **{{elastic-defend}}**: Automatically run response actions on an endpoint when rule conditions are met. For example, you can automatically isolate a host or terminate a process when specific activities or events are detected on the host. Refer to [Automated response actions](/solutions/security/endpoint-response-actions/automated-response-actions.md) to learn more.
 
-::::{important}
-Host isolation involves quarantining a host from the network to prevent further spread of threats and limit potential damage. Be aware that automatic host isolation can cause unintended consequences, such as disrupting legitimate user activities or blocking critical business processes.
+::::{warning}
+**Automated response actions: Production hazards**
+
+Automatically isolating hosts or killing processes can cause severe production disruptions. Use extreme caution when enabling automated responses.
+
+**Real-world failure scenarios**:
+
+1. **False positive terminates critical process**:
+   * Rule detects unusual process behavior on database server
+   * Automated response kills the process
+   * Process was a legitimate batch job
+   * Result: Database outage, application downtime
+
+2. **Mass isolation breaks cluster communication**:
+   * Rule triggers on anomalous network activity across multiple nodes
+   * Automated response isolates 20 Kubernetes nodes simultaneously
+   * Nodes lose cluster membership
+   * Result: Cascading failure, production outage
+
+3. **Automation prevents remediation**:
+   * Broad rule triggers on 50 hosts
+   * All get isolated from network
+   * Operations team cannot SSH to investigate or fix
+   * Result: Requires data center physical access to recover
+
+**Safe deployment process**:
+
+1. **Phase 1: Notifications only** (1-2 weeks)
+   * Enable rule with notifications to Slack or PagerDuty
+   * Monitor alert volume and false positive rate
+   * Tune rule with exceptions until false positive rate is below 5%
+
+2. **Phase 2: Manual response** (1-2 weeks)
+   * Security team manually takes response actions when alerted
+   * Document which alerts required which responses
+   * Build confidence in rule accuracy
+
+3. **Phase 3: Limited automation** (ongoing)
+   * Enable automated response ONLY for:
+     * Non-production systems first
+     * Rules with zero false positives in Phase 1
+     * Actions that are easily reversible
+   * Maintain manual override capability
+
+**Never automate response for**:
+* Production database servers
+* Load balancers, proxies, or network infrastructure
+* Kubernetes master nodes or critical cluster components
+* CI/CD systems
+* Newly created or untuned rules
+
+**Required safeguards**:
+* Limit automated responses to specific host tags (e.g., `environment:development`)
+* Set maximum simultaneous automated actions (e.g., 5 hosts per hour)
+* Require manual approval for critical system categories
+* Maintain comprehensive audit logging of all automated actions
+
+**Emergency rollback procedure**:
+1. Go to rule details → **Actions** tab
+2. Remove or disable the response action (notifications remain active)
+3. Manually un-isolate affected hosts via {{elastic-defend}} management interface
+4. Investigate root cause before re-enabling automation
 ::::
 
 
@@ -875,5 +1219,130 @@ To learn more about your rule’s {{es}} queries, preview its results and do the
     * The first two {{es}} queries that the rule submits to indices containing events that are used during the rule execution
 
         ::::{tip}
-        Run the queries in [Console](/explore-analyze/query-filter/tools/console.md) to determine if your rule is retrieving the expected data. For example, to test your rule’s exceptions, run the rule’s {{es}} queries, which will also contain exceptions added to the rule. If your rule’s exceptions are working as intended, the query will not return events that should be ignored.
+        Run the queries in [Console](/explore-analyze/query-filter/tools/console.md) to determine if your rule is retrieving the expected data. For example, to test your rule's exceptions, run the rule's {{es}} queries, which will also contain exceptions added to the rule. If your rule's exceptions are working as intended, the query will not return events that should be ignored.
         ::::
+
+## Common issues after creating rules [common-issues-troubleshooting]
+
+This section covers issues you may encounter after creating and enabling detection rules.
+
+### Rule shows "Warning" status
+
+**Symptom**: Rule appears to run but has a "Warning" status instead of "Succeeded".
+
+**Common causes**:
+1. **Index pattern matches no indices**: The specified index pattern doesn't match any existing indices.
+2. **Missing fields**: Rule references fields that don't exist in the matched indices.
+3. **Partial permissions issue**: You can read some indices in the pattern but not all.
+
+**Diagnosis**:
+1. Click the rule name to open **Rule details**
+2. Scroll to **Last response** section
+3. Click **View details** to see the specific error message
+
+**Solutions**:
+* **Wrong index pattern**: Update the pattern to match actual indices. Verify in **Discover** that the pattern returns results.
+* **Missing fields**: Either add the field to your index mapping, or add an exception to the rule to ignore documents without this field.
+* **Permissions**: Grant your user account `read` permission on all indices matching the pattern. Check with: `GET /_security/user/_has_privileges`
+
+### Rule creates zero alerts despite matching data existing
+
+**Symptom**: You know matching events exist, but the rule generates no alerts.
+
+**Diagnosis steps**:
+1. In **Discover**, manually verify matching documents exist using the rule's query and time range
+2. Check if alert suppression is configured too broadly (suppressing all alerts)
+3. Verify rule schedule aligns with data timestamps
+4. For {{ml}} rules, confirm the job is running AND has completed its baseline learning period (7-14 days)
+
+**Common cause - timestamp skew**:
+* Events have `@timestamp` from application time (which may be incorrect)
+* Rule searches "last 5 minutes" based on {{es}} server clock
+* Events' timestamps are in the past or future relative to when rule runs
+
+**Solution**: Use **Timestamp override** in Advanced Settings → set to `event.ingested` to use ingestion time instead of event time.
+
+### Too many alerts (hundreds or thousands per execution)
+
+**Symptom**: Rule hits the "max alerts per run" limit and creates excessive noise.
+
+**Diagnosis**: Click **Preview** on the rule and check alert count over a representative time window.
+
+**If preview shows 100+ alerts**:
+* **Query too broad**: Add more specific filters to narrow the scope
+  * Before: `event.action: "login_failed"` → 500 alerts
+  * After: `event.action: "login_failed" AND system.auth.ssh.event: "Failed"` → 20 alerts
+* **Threshold too low**: For threshold rules, increase the threshold value (e.g., from 5 to 10)
+* **Wrong rule type**: Consider using a Threshold rule instead of Custom Query, or enable alert suppression
+
+**Solution**: Narrow your query, adjust thresholds, or add exceptions for known noisy sources.
+
+### Gaps in rule execution
+
+**Symptom**: "Gaps" column shows values in the Rule Monitoring table, indicating the rule didn't run for some time periods.
+
+**Immediate fix**:
+1. Edit the rule
+2. Go to **Schedule** section
+3. Increase "Additional look-back time" to 2-5 minutes
+4. Save and monitor for 24 hours
+
+**Long-term fixes if gaps persist**:
+* **Too many rules running simultaneously**: Stagger rule activation times as described in [Scheduling strategy](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule)
+* **Rule execution exceeds interval**: The rule takes longer to execute than its run interval. Increase the interval (e.g., from 5 to 10 minutes) or optimize the query.
+* **{{kib}} under-resourced**: Add more {{kib}} instances or increase memory allocation.
+* **High task manager queue**: Check **Stack Monitoring → {{kib}} → Task Manager** for queue depth.
+
+**Prevention**: Always set Additional look-back time to at least 1 minute for all production rules.
+
+### Rule actions (notifications) not sending
+
+**Symptom**: Alerts are created in {{es}}, but no Slack/email/PagerDuty notifications are received.
+
+**Diagnosis checklist**:
+1. **Rule details → Actions tab**: Verify actions are configured
+2. **Rule details → Execution history**: Look for action failures (red X indicators)
+3. **Stack Management → Connectors**: Test the connector independently
+4. Check if actions are snoozed (bell icon shows snooze status)
+5. Verify license level supports actions (Gold+ required for most notification types)
+
+**Common causes**:
+* **Expired credentials**: Connector credentials have expired (Slack webhook revoked, PagerDuty key rotated, API token expired)
+* **Network connectivity**: {{kib}} cannot reach external service due to firewall or proxy configuration
+* **License expired or insufficient**: Notifications require specific license tiers
+* **Action conditions not met**: "If alert matches query" condition doesn't match any generated alerts
+
+**Solution**: Test the connector outside of the rule first to isolate the issue:
+1. Go to **Stack Management → Connectors**
+2. Select your connector
+3. Click **Test** to send a test notification
+4. Fix connector configuration if test fails
+
+### Rule performance degradation over time
+
+**Symptom**: Rule that previously ran quickly now times out or runs slowly.
+
+**Common causes**:
+* **Data volume growth**: Your indices have grown significantly since the rule was created
+* **Increased cardinality**: More unique values in fields used for aggregations (threshold rules)
+* **Index pattern matching more indices**: Rule initially matched 10 indices, now matches 100
+
+**Diagnosis**:
+1. Check the rule's **Execution history** for execution duration trends
+2. Run a cardinality check (see [Threshold rule section](/solutions/security/detect-and-alert/create-detection-rule.md#create-threshold-rule)) on aggregated fields
+3. Check how many indices match your pattern: `GET _cat/indices/your-pattern-* | wc -l`
+
+**Solutions**:
+* Narrow the index pattern to only actively queried indices
+* Add time-based filters to limit data volume
+* For threshold rules, choose fields with lower cardinality
+* Increase rule interval to allow more time for execution
+* Archive or delete old indices no longer needed for detection
+
+### Additional troubleshooting resources
+
+For more detailed troubleshooting guides, including {{ml}} job issues, indicator match rule performance, and alert investigation workflows, see:
+
+* [Troubleshoot detection rules](/troubleshoot/security/detection-rules.md) - Comprehensive troubleshooting guide
+* [Monitor rule executions](/solutions/security/detect-and-alert/monitor-rule-executions.md) - Understanding rule execution metrics
+* [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) - Reduce false positives and optimize performance
