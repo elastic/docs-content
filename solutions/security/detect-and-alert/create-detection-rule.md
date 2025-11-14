@@ -98,7 +98,35 @@ Detection rules process data differently based on their type. Choose the appropr
 
 **Not sure which rule type to use?** Start with **Custom query + KQL** - this covers approximately 90% of detection use cases.
 
+## Create rules by type
+
+Select a rule type below for detailed instructions:
+
+* [**Custom query rule**](/solutions/security/detect-and-alert/rule-types/custom-query.md) - Detect single events matching specific criteria (most common, ~90% of use cases)
+* [**Machine learning rule**](/solutions/security/detect-and-alert/rule-types/machine-learning.md) - Detect anomalous behavior using ML-powered baseline analysis
+* [**Threshold rule**](/solutions/security/detect-and-alert/rule-types/threshold.md) - Detect patterns based on frequency or volume (count-based detection)
+* [Event correlation rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-eql-rule) - Detect sequences of related events
+* [Indicator match rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule) - Match events against threat intelligence feeds
+* [New terms rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-new-terms-rule) - Detect first-time occurrence of field values
+* [ES|QL rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule) - Use ES|QL for complex data transformations
+
+### Quick reference: When to use each rule type
+
+* **Single event matching criteria** → Custom query (e.g., "process X executed", "failed login occurred")
+* **Count/frequency based** → Threshold (e.g., "5+ failed logins from same IP")
+* **Unusual behavior** → Machine learning (e.g., "rare process for this host", "abnormal network volume")
+* **Sequence of events** → Event correlation (e.g., "process start THEN network connection")
+* **Match against threat intel** → Indicator match (e.g., "IP in known bad actor list")
+* **Never seen before** → New terms (e.g., "first time seeing this user/host combination")
+* **Complex analytics** → ES|QL (e.g., "aggregate and transform data beyond other query types")
+
 ## Create a custom query rule [create-custom-rule]
+
+::::{note}
+Detailed instructions for creating custom query rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/custom-query.md).
+::::
+
+**Quick summary**: Custom query rules search for events matching a KQL or Lucene query and create alerts when matches are found.
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
 2. To create a rule based on a KQL or Lucene query, select **Custom query** on the **Create new rule** page, then:
@@ -194,6 +222,12 @@ Detection rules process data differently based on their type. Choose the appropr
 
 ## Create a machine learning rule [create-ml-rule]
 
+::::{note}
+Detailed instructions for creating machine learning rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/machine-learning.md).
+::::
+
+**Quick summary**: Machine learning rules create alerts when a {{ml}} job discovers an anomaly above a defined threshold.
+
 ::::{admonition} Requirements
 To create or edit {{ml}} rules, you need:
 * The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
@@ -246,6 +280,12 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 ::::
 
 ## Create a threshold rule [create-threshold-rule]
+
+::::{note}
+Detailed instructions for creating threshold rules have been moved to a [dedicated page](/solutions/security/detect-and-alert/rule-types/threshold.md), including comprehensive guidance on cardinality limits and circuit breaker troubleshooting.
+::::
+
+**Quick summary**: Threshold rules create alerts when the number of times a specified field's value appears meets or exceeds a defined threshold.
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
 2. To create a rule based on a source event field threshold, select **Threshold**, then:
