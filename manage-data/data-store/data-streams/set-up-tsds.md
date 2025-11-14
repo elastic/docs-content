@@ -63,7 +63,6 @@ PUT _ilm/policy/my-weather-sensor-lifecycle-policy
         }
       }
       // Additional phases (warm, cold, delete) as needed
-      }
     }
   }
 }
