@@ -16,6 +16,25 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
+Applies to: 9.2.0 and 9.2.1
+
+**Impact**<br> 
+New deployments of integrations such as Asset Discovery and Cloud Security Posture Management that collect data from cloud service providers do not work when deployed to AWS using the AWS CloudFormation deployment option. The problem results from a malformed CloudFormation parameter: `ElasticAgentVersion`. The default value for `ElasticAgentVersion` has a `space` instead of a `+`. This produces an invalid agent version value.
+
+For more information, check [#14627](https://github.com/elastic/security-team/issues/14627).
+
+
+**Workaround**<br> 
+
+To work around this issue, update the default CloudFormation template by replacing the `space` in the `ElasticAgentVersion` oarameter with a `+`.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.2.
+
+:::
+
 :::{dropdown} Entity store transform is unavailable 
 
 Applies to: 9.2.0
