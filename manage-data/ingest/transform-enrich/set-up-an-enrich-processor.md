@@ -140,7 +140,7 @@ The `enrich` processor has node settings for enrich coordinator and enrich polic
 The enrich coordinator supports the following node settings:
 
 `enrich.cache_size`
-:   Maximum size of the cache that caches searches for enriching documents. The size can be specified in three units: the raw number of cached searches (e.g. `1000`), an absolute size in bytes (e.g. `100Mb`), or a percentage of the max heap space of the node (e.g. `1%`). Both for the absolute byte size and the percentage of heap space, {{es}} does not guarantee that the enrich cache size will adhere exactly to that maximum, as {{es}} uses the byte size of the serialized search response which is is a good representation of the used space on the heap, but not an exact match. Defaults to `1%`. There is a single cache for all enrich processors in the cluster.
+:   Maximum size of the cache that caches searches for enriching documents. The size can be specified in three units: the raw number of cached searches (for example, `1000`), an absolute size in bytes (for example, `100Mb`), or a percentage of the max heap space of the node (for example, `1%`). Both for the absolute byte size and the percentage of heap space, {{es}} does not guarantee that the enrich cache size will adhere exactly to that maximum, as {{es}} uses the byte size of the serialized search response which is is a good representation of the used space on the heap, but not an exact match. Defaults to `1%`. There is a single cache for all enrich processors in the cluster.
 
 `enrich.coordinator_proxy.max_concurrent_requests`
 :   Maximum number of concurrent [multi-search requests](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) to run when enriching documents. Defaults to `8`.

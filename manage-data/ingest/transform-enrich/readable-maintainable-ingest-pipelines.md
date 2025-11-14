@@ -366,7 +366,7 @@ POST _ingest/pipeline/_simulate
 ```
 
 :::{tip}
-After storing values as bytes, you can use Kibana's field formatting to display them in a human-friendly format (KB, MB, GB, etc.) without changing the underlying data.
+After storing values as bytes, you can use Kibana's field formatting to display them in a human-friendly format (KB, MB, GB, and so on) without changing the underlying data.
 :::
 
 ## Rename fields

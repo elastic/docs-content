@@ -30,7 +30,7 @@ products:
 % - [x] https://www.elastic.co/customer-success/data-ingestion
 % - [x] https://github.com/elastic/ingest-docs/pull/1373
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+% Internal links rely on the following IDs being on this page (for example, as a heading ID, paragraph ID, and so on):
 % These IDs are from content that I'm not including on this current page. I've resolved them by changing the internal links to anchor links where needed. - Wajiha
 
 $$$supported-outputs-beats-and-agent$$$
