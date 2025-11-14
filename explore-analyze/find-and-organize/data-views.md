@@ -208,7 +208,7 @@ For detailed information on how to use runtime fields with {{es}}, refer to [Run
 
 #### Add runtime fields [create-runtime-fields]
 
-To add runtime fields to your data views, open the data view you want to change, then define the field values by emitting a single value using the [Painless scripting language](../../explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](../../explore-analyze/discover/discover-get-started.md#add-field-in-discover) and [**Lens**](../../explore-analyze/visualize/lens.md#change-the-fields).
+To add runtime fields to your data views, open the data view you want to change, then define the field values by emitting a single value using the [Painless scripting language](../../explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](../../explore-analyze/discover/add-fields-to-data-views.md) and [**Lens**](../../explore-analyze/visualize/lens.md#change-the-fields).
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that you want to add the runtime field to, then click **Add field**.

@@ -14,7 +14,7 @@ description: Customize the Discover interface to optimize your data exploration.
 Adjust the **Discover** interface to match your workflow and data exploration needs. Customize table columns, density, and row height to display your data effectively. Configure sample sizes, sorting, and layout to focus on the information that matters most.
 
 :::{tip}
-**Discover** provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to your data type. You can further customize these views to suit your specific needs.
+**Discover** provides default [context-aware experiences](context-aware-discover.md) tailored to your data type. You can further customize these views to suit your specific needs.
 :::
 
 :::{image} /explore-analyze/images/kibana-hello-field.png
@@ -112,7 +112,7 @@ Narrow your results to a subset of documents so you're comparing the data of int
    :::
 
 
-You can also compare individual field values using the [**Compare selected** option](discover-get-started.md#compare-documents-in-discover).
+You can also compare individual field values using the [**Compare selected** option](compare-documents.md).
 
 
 ### Set the number of results per page [document-explorer-configure-table]
