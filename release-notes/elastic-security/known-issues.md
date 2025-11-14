@@ -20,7 +20,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 Applies to: 9.2.0
 
-**Details**
+**Impact**
 
 A new feature introduced to the entity store in 9.2.0 caused the transform to scan for nonexistent indices.
 
@@ -54,6 +54,11 @@ Two workarounds are available:
     3. Your agent-based integration deployments will work as expected.
 2. Use agentless deployment. 
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.1
+
 ::::
 
 
