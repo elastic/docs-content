@@ -874,7 +874,7 @@ Add `Additional look-back time` to extend the search window backwards from the c
 
 2. **Ingestion pipeline delay**: Events aren't indexed immediately after they occur:
    * Event timestamp: 10:05:00 (when event actually happened)
-   * Received by {{filebeat}}/{{logstash}}: 10:05:05 (5-second network delay)
+   * Received by {{filebeat}}/{{ls}}: 10:05:05 (5-second network delay)
    * Indexed in {{es}}: 10:05:10 (5-second processing delay)
    * Rule executes: 10:06:00 (looking back to 10:01:00)
    * Without adequate look-back, events with indexing delays could be missed
