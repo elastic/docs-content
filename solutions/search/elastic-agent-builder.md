@@ -66,6 +66,12 @@ These interfaces enable you to build integrations with other applications and ex
 
 [**Learn more about programmatic access**](agent-builder/programmatic-access.md)
 
+## Permissions and access control
+
+Configure security roles and API keys to control who can use agents, which tools they can access, and what data they can query.
+
+[**Learn more about permissions and access control**](agent-builder/permissions.md)
+
 ## Limitations and known issues
 
 {{agent-builder}} is in technical preview.

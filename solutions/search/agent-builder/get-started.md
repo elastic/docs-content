@@ -52,6 +52,10 @@ Find **Agents** in the navigation menu to begin using the feature, or search for
 
 ::::
 
+:::{note}
+To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
+:::
+
 :::::
 
 ::::{step} Ingest some data
