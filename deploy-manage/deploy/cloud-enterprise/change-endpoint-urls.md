@@ -20,7 +20,7 @@ https://<CLUSTER_ID.LOCAL_HOST_IP>.ip.es.io:9243
 ```
 
 ::::{important}
-If your application does not support HTTPS, you can connect to the HTTP endpoint on port 9200. However, for security reasons, it is recommended to use **HTTPS (9243)** whenever possible.
+For security reasons, it is recommended to use **HTTPS (9243)** whenever possible.
 ::::
 
 To change endpoints in the Cloud UI:
@@ -42,4 +42,8 @@ If you have an App Search instance, after specifying a new deployment domain nam
 
 ::::{note}
 The built-in Proxy Certificate only validates against the default endpoint format described on this page. Once you change it, it is necessary to upload a new Proxy Certificate as described in [Manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For test only, clients can be configured with hostname verification disabled until the new certificate is uploaded.
+::::
+
+::::{note}
+If you do not use wildcard certificates, you must configure SAN entries for each component of the deployment (for example, {{es}} or {{kib}}) and repeat this process for every deployment. Review [Wildcard DNS record and certificates](./ece-wildcard-dns.md) for more guidance.
 ::::

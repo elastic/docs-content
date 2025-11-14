@@ -3,11 +3,11 @@ This snippet is in use in the following locations:
 - ece-remote-cluster-self-managed.md
 - ec-remote-cluster-self-managed.md
 -->
-To configure a self-managed cluster as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
+To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
 * `Remote cluster alias`: When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI as **Remote cluster name**.
 * `mode`: `proxy`
-* `proxy_address`: Enter the endpoint of the remote self-managed cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
+* `proxy_address`: Enter the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
 
   Make sure you use the correct port for your authentication method:
   * **API keys**: Use the port configured in the remote cluster interface of the remote cluster (defaults to `9443`).  
@@ -27,8 +27,8 @@ PUT /_cluster/settings
       "remote": {
         "alias-for-my-remote-cluster": { // Align the alias with the remote cluster name used when adding the API key.
           "mode":"proxy",
-          "proxy_address": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io:9400",
-          "server_name": "a542184a7a7d45b88b83f95392f450ab.192.168.44.10.ip.es.io"
+          "proxy_address": "<REMOTE_CLUSTER_ADDRESS>:9443",
+          "server_name": "<REMOTE_CLUSTER_SERVER_NAME>"
         }
       }
     }

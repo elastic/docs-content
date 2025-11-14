@@ -47,7 +47,7 @@ To load the sample data:
     | KEEP machine.os, machine.ram <2>
     ```
 
-    1. We’re specifically looking for data from the sample web logs we just installed.
+    1. We're specifically looking for data from the sample web logs we installed.
     2. We’re only keeping the `machine.os` and `machine.ram` fields in the results table.
    
    ::::{note}
@@ -190,7 +190,7 @@ To view or edit an index:
 
 4. If you made changes, select **Save** before closing the flyout.
 
-### Add variable controls to your Discover queries [add-variable-control-discover]
+### Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
@@ -202,25 +202,26 @@ Variable controls help you make your queries more dynamic instead of having to m
 
 You can add them from your Discover {{esql}} query.
 
-1. While editing your {{esql}} query, the autocomplete menu suggests adding a control when relevant or when typing `?` in the query. Select **Create control**.
-
-2. A menu opens to let you configure the control. This is where you can specify:
-
-   :::{include} ../_snippets/variable-control-form.md
-   :::
-
-3. Save the control.
-
-The variable is inserted into your query, and the control appears in the query editor.
+:::{include} ../_snippets/variable-control-procedure.md
+:::
 
 :::{include} ../_snippets/variable-control-examples.md
+:::
+
+#### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+:::{include} ../_snippets/multi-value-esql-controls.md
 :::
 
 #### Edit a variable control
 
 Once a control is active for your query, you can still edit it by hovering over it and by selecting the {icon}`pencil` **Edit** option that appears.
 
-You can edit all of the options described in [](#add-variable-control-discover).
+You can edit all of the options described in [](#add-variable-control).
 
 When you save your edits, the control is updated for your query.
 

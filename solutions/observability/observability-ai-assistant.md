@@ -18,17 +18,17 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 * **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
 * **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
-The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
+The AI Assistant integrates with your large language model (LLM) provider through our [supported {{stack}} connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [{{obs-ai-assistant}} LLM performance matrix](./llm-performance-matrix.md) for supported third-party LLM providers and their performance ratings.
 
 ## Use cases
 
 The {{obs-ai-assistant}} helps you:
 
-* **Decode error messages**: Interpret stack traces and error logs to pinpoint root causes
-* **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in Elasticsearch
-* **Generate reports**: Create alert summaries and incident timelines with key metrics
-* **Build and execute queries**: Build Elasticsearch queries from natural language, convert Query DSL to ES|QL syntax, and execute queries directly from the chat interface
-* **Visualize data**: Create time-series charts and distribution graphs from your Elasticsearch data
+* **Decode error messages**: Interpret stack traces and error logs to pinpoint root causes.
+* **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in {{es}}.
+* **Generate reports**: Create alert summaries and incident timelines with key metrics.
+* **Build and execute queries**: Build {{es}} queries from natural language, convert Query DSL to {{esql}} syntax, and execute queries directly from the chat interface.
+* **Visualize data**: Create time-series charts and distribution graphs from your {{es}} data.
 
 ## Requirements [obs-ai-requirements]
 
@@ -36,7 +36,7 @@ The AI assistant requires the following:
 
 - An **Elastic deployment**:
 
-  - For **Observability**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
+  - For **{{observability}}**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
 
   - For **Search**: {{stack}}  version **8.16.0** or later, or **{{serverless-short}} {{es}} project**.
 
@@ -46,12 +46,25 @@ The AI assistant requires the following:
 
   - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
 
-    Refer to the [documentation](/deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
+    Refer to the [documentation](kibana://reference/connectors-kibana/gen-ai-connectors.md) for your provider to learn about supported and default models.
 
 * The knowledge base requires a 4 GB {{ml}} node.
   - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
 
-* A self-deployed connector service if [content connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
+* A self-deployed connector service if you're using [content connectors](elasticsearch://reference/search-connectors/index.md) to populate external data into the knowledge base.
+
+## Manage access to AI Assistant
+
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
+
+- Manage which AI connectors are available in your environment.
+- Enable or disable AI Assistant and other AI-powered features in your environment.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for {{observability}} and Search` and the `AI Assistant for Security` appear.
 
 ## Your data and the AI Assistant [data-information]
 
@@ -85,11 +98,11 @@ The AI Assistant connects to one of these supported LLM providers:
 
 **Setup steps**:
 
-1. **Create authentication credentials** with your chosen provider using the links above.
+1. **Create authentication credentials** with your chosen provider using the links in the previous table.
 2. **Create an LLM connector** for your chosen provider by going to the **Connectors** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. **Authenticate the connection** by entering:
-   - The provider's API endpoint URL
-   - Your authentication key or secret
+   - The provider's API endpoint URL.
+   - Your authentication key or secret.
 
 ::::{admonition} Recommended models
 While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/llm-performance-matrix.md) to select models that perform well with your desired use cases.
