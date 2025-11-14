@@ -98,4 +98,4 @@ In response to a potential credential compromise, immediately:
 **Step 5: Document Your Findings**
 1. From AI Assistant, click **Add to case** on key messages.
 2. Go to **Cases**, add your case notes.
-3. Update alert status.
+3. Go back to the alert and change its status to `Acknowledged`.
