@@ -171,7 +171,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.1.6-fixes]
 * Fixes {{elastic-endpoint}} artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
-* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin. [#237796]({{kib-pull}}237796).
+* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin [#237796]({{kib-pull}}237796).
+* Prioritizes connector `defaultModel` over stored conversation model [#237947]({{kib-pull}}237947).
 
 
 ## 9.1.5 [elastic-security-9.1.5-release-notes]
