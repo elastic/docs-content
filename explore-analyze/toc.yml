@@ -171,13 +171,21 @@ toc:
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
-      - file: discover/document-explorer.md
-      - file: discover/discover-search-for-relevance.md
-      - file: discover/save-open-search.md
-      - file: discover/show-field-statistics.md
-      - file: discover/run-pattern-analysis-discover.md
-      - file: discover/background-search.md
       - file: discover/try-esql.md
+      - file: discover/search-and-filter.md
+      - file: discover/document-explorer.md
+      - file: discover/save-open-search.md
+      - file: discover/discover-advanced-guides.md
+        children:
+          - file: discover/compare-documents.md
+          - file: discover/add-fields-to-data-views.md
+          - file: discover/work-with-tabs.md
+          - file: discover/context-aware-discover.md
+          - file: discover/background-search.md
+          - file: discover/generate-alerts-from-discover.md
+          - file: discover/show-field-statistics.md
+          - file: discover/run-pattern-analysis-discover.md
+          - file: discover/discover-search-for-relevance.md
   - file: dashboards.md
     children:
       - file: dashboards/using.md

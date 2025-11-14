@@ -6,18 +6,19 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Run pattern analysis on log data in Discover to find patterns in unstructured messages. Categorize logs, view distribution charts, and filter by pattern.
 ---
 
-# Run a pattern analysis on your log data [run-pattern-analysis-discover]
+# Run pattern analysis on log data in Discover [run-pattern-analysis-discover]
 
-Log pattern analysis helps you to find patterns in unstructured log messages and makes it easier to examine your data. It performs categorization analysis on a selected field of a {{data-source}}, creates categories based on the data and displays them together with a chart that shows the distribution of each category and an example document that matches the category.
+Use log pattern analysis in **Discover** to find patterns in unstructured log messages automatically. Pattern analysis categorizes your log data, shows the distribution of each category, and provides example documents for each pattern, making it easier to identify trends and troubleshoot issues.
 
 Log pattern analysis works on every text field.
 
 This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**.
-2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
+2. Expand the {{data-source}} dropdown, and select **{{kib}} Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
 4. Click the **Patterns** tab next to **Documents** and **Field statistics**. The pattern analysis starts. The results are displayed under the chart. You can change the analyzed field by using the field selector. In the **Pattern analysis menu**, you can change the **Minimum time range**. This option enables you to widen the time range for calculating patterns which improves accuracy. The patterns, however, are still displayed by the time range you selected in step 3.
 
