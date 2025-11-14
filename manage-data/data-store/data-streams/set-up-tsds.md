@@ -85,7 +85,7 @@ The structure of a time series data stream is defined by an index template. Crea
         - To define dimensions dynamically, you can use a pass-through object. For details, refer to [Defining sub-fields as time series dimensions](elasticsearch://reference/elasticsearch/mapping-reference/passthrough.md#passthrough-dimensions).
     - **Metrics:** To define a metric, use the `time_series_metric` mapping parameter. For details, refer to [Metrics](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-metric).
     - **Timestamp** (optional): Define a `date` or `date_nanos` mapping for the `@timestamp` field. If you don't specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
-    - {applies_to}`serverless: unavailable` {applies_to}`stack: ga` **Lifecycle management**: If you're using {{product.elastic-stack}}, define a lifecycle to enable automatic rollover and prevent indices from growing too large.
+    - {applies_to}`serverless: unavailable` {applies_to}`stack: ga` **Lifecycle management**: If you're using {{stack}}, define a lifecycle to enable automatic rollover and prevent indices from growing too large.
         - Add a `lifecycle` object and specify `"enabled": true`. 
         - If you created an ILM policy in [step 1](#tsds-ilm-policy), reference it in the settings with `index.lifecycle.name`.
     - **Settings** (optional): Define any relevant index settings, such as [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas), for the data stream's backing indices.
