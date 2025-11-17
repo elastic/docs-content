@@ -7,11 +7,6 @@ applies_to:
 
 This quickstart provides a hands-on introduction to the fundamental concepts of {{es}}: [indices, documents, and field type mappings](../../../manage-data/data-store/index-basics.md). You'll learn how to create an index, add documents, work with dynamic and explicit mappings, and perform your first basic searches.
 
-:::::{tip}
-The code examples are in [Console](/explore-analyze/query-filter/tools/console.md) syntax by default.
-You can [convert into other programming languages](/explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
-:::::
-
 ## Requirements [getting-started-requirements]
 
 You can follow this guide using any {{es}} deployment.
