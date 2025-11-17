@@ -173,7 +173,7 @@ Elastic Synthetics uses a default action and navigation timeout of 50 seconds. Y
 
 :::{note}
 Browser-based journeys have a timeout limit of 15 minutes.
-When `retry` is enabled (enabled by default), the journey runs a second time if the first run times out. This allows for a maximum total runtime of 30 minutes: 15 minutes for the first run and up to 15 minutes for the retry.
+When `retry` is enabled (enabled by default), the journey attempts a second run if the first run times out. This allows for a maximum total runtime of 30 minutes: 15 minutes for the first run and up to 15 minutes for the retry.
 :::
 
 ### Timezones and locales [synthetics-configuration-playwright-options-timezones]
