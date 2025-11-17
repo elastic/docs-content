@@ -67,9 +67,9 @@ The way that transport layer security is managed depends on your deployment type
 {{es}} transport security is fully managed by Elastic, and no configuration is required.
 ::::
 
-::::{admonition}{tab-item} ECE
+::::{tab-item} ECE
 :sync: ece
-{{es}} transport security is fully managed by {{ece}} platform, and no configuration is required.
+{{es}} transport security is fully managed by the {{ece}} platform, and no configuration is required.
 ::::
 
 ::::{tab-item} ECK
