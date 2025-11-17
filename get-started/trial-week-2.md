@@ -12,11 +12,11 @@ description: Week 2 of your Elastic trial. Expand your PoC, refine dashboards, m
 
 # Week 2: Expand and evaluate
 
-In Week 2, you'll build on your foundation by expanding data sources, refining visualizations, and measuring success metrics. By the end of this week, you'll have a compelling PoC ready to demonstrate to stakeholders.
+In Week 2, you will build on your foundation by expanding data sources, refining visualizations, and measuring success metrics. By the end of this week, you will have a compelling proof of concept (PoC) ready to demonstrate to stakeholders.
 
 ## Week 2 goals
 
-By the end of this week, you'll have:
+By the end of this week, you will have:
 
 - Added 1-2 additional data sources.
 - Created polished dashboards for stakeholders.
@@ -282,7 +282,7 @@ Demonstrate Elastic's powerful capabilities with advanced features.
 
 1. **Service-level objectives (SLOs)**:
    - Go to **Observability** → **SLOs**.
-   - Define SLOs for critical services (e.g., "99.9% uptime", "p95 latency < 200ms").
+   - Define SLOs for critical services (for example, "99.9% uptime", "p95 latency < 200ms").
    - Track SLO compliance over time.
 2. **Anomaly detection**:
    - Go to **Observability** → **AIOps** → **Anomaly detection**.
@@ -335,7 +335,7 @@ Quantify the value of your PoC with concrete metrics.
 
 ### Define success metrics
 
-Refer to your [PoC framework](/get-started/trial-poc-framework.md) for the success criteria you defined. Now it's time to measure them.
+Review the success criteria you defined at the start of your trial. Now it's time to measure them.
 
 ### Common metrics by use case
 
@@ -418,7 +418,7 @@ Create a summary document with:
 
 :::::{step} Prepare your PoC presentation
 
-You've built a compelling PoC — now it's time to present it effectively.
+You've built a compelling PoC—now it's time to present it effectively.
 
 ### Create a presentation structure
 
@@ -505,7 +505,7 @@ Before completing your trial, ensure you've:
 - Prepared a presentation or demo.
 - Identified next steps and expansion plans.
 
-## Congratulations!
+## Congratulations
 
 You've completed a comprehensive Elastic trial and built a meaningful proof of concept. You now have:
 
@@ -517,12 +517,11 @@ You've completed a comprehensive Elastic trial and built a meaningful proof of c
 
 ## Additional resources
 
-- **[PoC framework](/get-started/trial-poc-framework.md)**: Review your success criteria and evaluation approach.
 - **[Solutions documentation](/solutions/index.md)**: Dive deeper into your chosen use case.
 - **[Community forums](https://discuss.elastic.co/)**: Connect with other Elastic users.
 - **[Elastic training](https://www.elastic.co/training)**: Continue learning with courses and certifications.
 
-## Need help?
+## Need help
 
 If you have questions or need assistance:
 

@@ -13,32 +13,32 @@ navigation_title: Get started with Elastic
 
 # Get started with your Elastic trial
 
-Welcome to Elastic! You've started your free trial, and now it's time to explore what Elastic can do for your organization. This guide provides a structured path to help you make the most of your trial period, understand Elastic's capabilities, and build a meaningful proof of concept (PoC) that demonstrates value to your team.
+Welcome to Elastic. You've started your free trial, and now it's time to explore what Elastic can do for your organization. This guide provides a structured path to help you make the most of your trial period, understand Elastic's capabilities, and build a meaningful proof of concept (PoC) that demonstrates value to your team.
 
-By following this guide, you'll:
+By following this guide, you will:
 
 - Set up your Elastic environment in minutes.
 - Choose the right use case for your organization (search, observability, or security).
 - Ingest real data from your systems.
 - Build a working PoC that solves a real problem.
-- Define and measure success metrics to demonstrate ROI.
+- Define and measure success metrics to demonstrate return on investment (ROI).
 - Identify next steps for expanding your implementation.
 
 ## Before you begin
 
-You'll need the following to complete this tutorial:
+You need the following to complete this tutorial:
 
 - Access to your Elastic trial (if you haven't signed up yet, start at [elastic.co/cloud/trial](https://www.elastic.co/cloud/elasticsearch-service/signup)).
 - Basic familiarity with your chosen use case domain (searching data, monitoring systems, or security analysis).
 - Access to data sources you want to connect (applications, logs, metrics, or security events).
 
 :::{tip}
-Set aside focused time blocks to work through this tutorial. You'll get the most value by following the week-by-week structure rather than rushing through everything at once.
+Set aside focused time blocks to work through this tutorial. You get the most value by following the week-by-week structure rather than rushing through everything at once.
 :::
 
 ## Your trial roadmap
 
-This tutorial is designed to fit within your trial period, with clear milestones for each week.
+This tutorial fits within your trial period, with clear milestones for each week.
 
 ### Week 1: Foundation and first use case
 
@@ -58,15 +58,13 @@ Build on your foundation by expanding your PoC and preparing for team evaluation
 
 ## Building your proof of concept
 
-A successful proof of concept (PoC) demonstrates clear value and helps you make an informed decision about adopting Elastic.
-
-**[Proof of concept framework](/get-started/trial-poc-framework.md)**: Learn how to define success criteria, identify key stakeholders, and measure results that matter to your organization.
+A successful proof of concept (PoC) demonstrates clear value and helps you make an informed decision about adopting Elastic. Throughout this tutorial, you'll learn how to define success criteria, identify key stakeholders, and measure results that matter to your organization.
 
 ## Choosing your use case
 
 Not sure which use case is right for you? Refer to **[Choose your use case](/get-started/trial-choose-use-case.md)** to understand the differences between search, observability, and security solutions, and select the best starting point for your needs.
 
-## Need help?
+## Need help
 
 Throughout your trial, you have access to the following resources:
 

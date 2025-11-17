@@ -6,7 +6,6 @@ toc:
       - file: trial-choose-use-case.md
       - file: trial-week-1.md
       - file: trial-week-2.md
-      - file: trial-poc-framework.md
   - file: introduction.md
     children:
       - file: the-stack.md

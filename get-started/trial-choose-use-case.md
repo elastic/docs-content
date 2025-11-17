@@ -28,7 +28,7 @@ Answer these questions to identify your primary use case:
 
 ## Solution overview
 
-### Elasticsearch (Search)
+### Elasticsearch (search)
 
 **Best for**: Building search experiences, analyzing business data, and gaining insights from large datasets.
 
@@ -46,11 +46,11 @@ Answer these questions to identify your primary use case:
 - You're building an application that requires fast, relevant search.
 - You want to create custom analytics dashboards for business data.
 
-**What you'll build in your trial**:
+**What you will build in your trial**:
 - A searchable index of your data (documents, products, or events).
 - Custom search queries with filters and relevance tuning.
 - Basic analytics and visualizations.
-- A simple search interface or dashboard.
+- An efficient search interface or dashboard.
 
 **Time to value**: See search results within 1-2 hours of ingesting data.
 
@@ -69,11 +69,11 @@ Answer these questions to identify your primary use case:
 **Your organization might need this if**:
 - Applications are slow or experiencing errors.
 - You have limited visibility into system performance.
-- Logs are scattered across multiple systems.
-- You need to meet SLAs or track system uptime.
+- Logs exist across multiple systems.
+- You need to meet service-level agreements (SLAs) or track system uptime.
 - Troubleshooting incidents takes too long.
 
-**What you'll build in your trial**:
+**What you will build in your trial**:
 - Monitoring for 2-3 key services or hosts.
 - Log aggregation from critical applications.
 - Performance dashboards and health metrics.
@@ -101,7 +101,7 @@ Answer these questions to identify your primary use case:
 - Compliance requires security event tracking.
 - Incident response is manual and time-consuming.
 
-**What you'll build in your trial**:
+**What you will build in your trial**:
 - Security data ingestion from key systems (endpoints, network, cloud).
 - Detection rules for common threats.
 - Security dashboards and timelines.
@@ -133,15 +133,13 @@ After you've selected your use case:
 
 2. Continue to Week 1: [Week 1: Foundation and first use case](/get-started/trial-week-1.md) to start building your PoC.
 
-3. Set success criteria: Visit [Proof of concept framework](/get-started/trial-poc-framework.md) to define what success looks like for your organization.
-
 :::{tip}
 You can always expand to additional use cases after your initial PoC. Many successful Elastic implementations start with one solution and grow into comprehensive platforms that address multiple needs.
 :::
 
-## Need more guidance?
+## Need more guidance
 
 - [Solutions overview](/get-started/introduction.md): Detailed comparison of all three solutions.
-- [Customer success stories](https://www.elastic.co/customers/success-stories): See how other organizations use Elastic.
+- [Customer success stories](https://www.elastic.co/customers/success-stories): Learn how other organizations use Elastic.
 - [Contact sales](https://www.elastic.co/contact): Speak with a specialist about your specific needs.
 

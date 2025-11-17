@@ -12,11 +12,11 @@ description: Week 1 of your Elastic trial. Set up your deployment, connect your 
 
 # Week 1: Foundation and first use case
 
-Week 1 focuses on getting your Elastic environment up and running quickly and demonstrating initial value with your chosen use case. By the end of this week, you'll have data flowing into Elastic and be able to search, visualize, or monitor it effectively.
+Week 1 focuses on getting your Elastic environment up and running quickly and demonstrating initial value with your chosen use case. By the end of this week, you will have data flowing into Elastic and be able to search, visualize, or monitor it effectively.
 
 ## Week 1 goals
 
-By the end of this week, you'll have:
+By the end of this week, you will have:
 
 - Set up your Elastic deployment.
 - Connect your first data source.
@@ -154,7 +154,7 @@ Best for: Aggregating logs from applications or services.
 1. Go to **Management** → **Integrations**.
 2. Search for your log source:
    - **Custom logs** for generic log files
-   - Specific integrations for Apache, nginx, MySQL, PostgreSQL, etc.
+   - Specific integrations for Apache, nginx, MySQL, PostgreSQL, and so on.
 3. Select **Add** and configure the log file paths.
 4. Install or configure Elastic Agent to collect the logs.
 5. Go to **Observability** → **Logs** → **Stream** to see incoming logs.
@@ -165,7 +165,7 @@ Best for: Understanding application performance and errors.
 
 1. Go to **Observability** → **Applications** → **APM**.
 2. Select **Add data**.
-3. Select your application language (Java, Node.js, Python, .NET, etc.).
+3. Select your application language (Java, Node.js, Python, .NET, and so on).
 4. Follow the instrumentation instructions to add the APM agent to your application code.
 5. Restart your application.
 6. Generate some traffic to your application.
@@ -353,9 +353,9 @@ Alerts help you stay informed about important events or conditions.
 1. Go to **Management** → **Stack Management** → **Rules**.
 2. Click **Create rule**.
 3. Select **Elasticsearch query** rule type.
-4. Define your query (e.g., `error:true`).
-5. Set threshold conditions (e.g., "more than 10 matches in 5 minutes").
-6. Configure actions (e.g., send an email or Slack message).
+4. Define your query (for example, `error:true`).
+5. Set threshold conditions (for example, "more than 10 matches in 5 minutes").
+6. Configure actions (for example, send an email or Slack message).
 7. Save and enable the rule.
 
 Refer to [alerting documentation](/solutions/observability/incident-management/alerting.md) for more options.
@@ -384,7 +384,7 @@ Refer to [observability alerting](/solutions/observability/incident-management/a
 2. Click **Detection rules (SIEM)**.
 3. **Enable prebuilt rules**:
    - Browse the rules library.
-   - Enable 3-5 rules relevant to your environment (e.g., "Unusual Login Activity", "Suspicious Process Execution").
+   - Enable 3-5 rules relevant to your environment (for example, "Unusual Login Activity", "Suspicious Process Execution").
 4. Go back to **Alerts** to see any triggered alerts.
 
 You can also create custom rules:
@@ -430,11 +430,11 @@ Before moving to Week 2, ensure you've completed:
 
 ## Next steps
 
-Great work! You've established your foundation. Now it's time to expand your PoC and demonstrate deeper value.
+Great work. You've established your foundation. Now it's time to expand your PoC and demonstrate deeper value.
 
 **Continue to [Week 2](/get-started/trial-week-2.md)** to add more data sources, refine your dashboards, and prepare for stakeholder evaluation.
 
-## Need help?
+## Need help
 
 If you encountered issues during Week 1:
 
