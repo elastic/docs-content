@@ -6,31 +6,10 @@ navigation_title: Tools
 
 These tools help you write documentation more efficiently, reduce context-switching, and catch errors before you commit.
 
-## VS Code extension
+## Elastic Docs Utilities extension
 
-The [Elastic Docs Utilities extension](https://marketplace.visualstudio.com/items?itemName=Elastic.elastic-docs-v3-utilities) simplifies authoring with autocompletion, catches syntax errors with real-time validation, and enables you to preview variables inline.
+The [Elastic Docs Utilities extension](vscode-extension.md) for Visual Studio Code and compatible IDEs provides autocompletion for directives, frontmatter, and inline roles, along with real-time validation and variable previews. It works in the Visual Studio Code desktop application and browser-based editors.
 
-:::{image} images/elastic-docs-vscode.gif
-:screenshot:
-:alt: Elastic Docs VS Code extension demo
-:width: 800px
-:::
+## Vale linter
 
-### Availability
-
-The extension is available in VS Code whether you're:
-
-- Working [locally](locally.md) in the VS Code desktop application
-- Working [in the browser](on-the-web.md) in VS Code web editors ([GitHub Codespaces](https://github.com/features/codespaces), [github.dev](https://github.dev))
-
-### Key capabilities
-
-- Autocompletion for directives, frontmatter, and inline roles
-- Real-time validation of syntax and structure
-- Variable previews and substitution support
-
-### Installation
-
-You can install the extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Elastic.elastic-docs-v3-utilities).
-
-% TODO: Add Vale and LLM sections when ready.
+The [Vale ruleset](vale-linter.md) allows the Vale linter to check your documentation against Elastic style guide rules. It integrates with your editor and CI/CD pipeline to catch style issues before they reach production.
