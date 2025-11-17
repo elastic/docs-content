@@ -1,10 +1,19 @@
 project: 'Get started'
 toc:
   - file: index.md
-  - file: introduction.md
-  - file: the-stack.md
-  - file: deployment-options.md
-  - file: versioning-availability.md
+  - title: Get started with Elastic's trial
+    items:
+      - file: trial-getting-started.md
+      - file: trial-choose-use-case.md
+      - file: trial-week-1.md
+      - file: trial-week-2.md
+      - file: trial-poc-framework.md
+  - title: Elastic fundamentals
+    items:
+      - file: introduction.md
+      - file: the-stack.md
+      - file: deployment-options.md
+      - file: versioning-availability.md
   - file: howto-use-the-docs.md
   - title: Glossary
     crosslink: docs-content://reference/glossary/index.md
