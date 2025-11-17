@@ -198,6 +198,37 @@ The [set security user processor](elasticsearch://reference/enrich-processor/ing
 For more information, see [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](elasticsearch://reference/enrich-processor/ingest-node-set-security-user-processor.md).
 
 
+### Configuring document-level security in {{serverless-short}} [document-level-serverless]
+```{applies_to}
+serverless: ga
+```
+
+As an administrator, you can create custom roles that enable users to access data and project features. When you create a custom role, you can assign {{es}} [cluster](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-cluster-privileges) and [index](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-index-privileges) privileges and [{{kib}}](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) privileges.
+
+To configure document-level security (DLS), you create a custom role where you define the documents that this role grants access to, using the [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax:
+
+1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select **Create role**.
+1. Give your custom role a meaningful name and description.
+1. In the **Index privileges** area, specify the data stream pattern, For example, enter `events-*`.
+1. Enable the **Grant read privileges to specific documents** toggle and add your query using the QueryDSL syntax.
+    * For example, to allow read access only to documents that belong to the click category within all the events-* data streams, enter the following query:
+      ```
+      {
+        "match" : { "category" : “click” }
+      }
+      ```
+    * To allow read access only to the documents whose `department_id` equals 12, enter the following query:
+      ```
+      {
+        "term" : { "department_id" : 12 }
+      }
+      ```
+      
+1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
+1.  Select **Create role** to save your custom role.
+
+
 ## Field level security [field-level-security]
 
 To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)).
