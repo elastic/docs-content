@@ -14,9 +14,9 @@ products:
 # Same CA [update-node-certs-same]
 
 
-This procedure assumes that the you have access to the CA certificate and key that was originally generated (or otherwise held by your organization) and used to sign the node certificates currently in use. It also assumes that the clients connecting to {{es}} on the HTTP layer are configured to trust the CA certificate.
+This procedure assumes that the you have access to the certificate and key that was originally generated (or otherwise held by your organization) and used to sign the node certificates currently in use. It also assumes that the clients connecting to {{es}} on the HTTP layer are configured to trust the certificate.
 
-If you have access to the CA used to sign your existing certificates, you only need to replace the certificates and keys for each node in your cluster. If you replace your existing certificates and keys on each node and use the same filenames, {{es}} reloads the files starts using the new certificates and keys.
+If you have access to the certificate authority (CA) used to sign your existing certificates, you only need to replace the certificates and keys for each node in your cluster. If you replace your existing certificates and keys on each node and use the same filenames, {{es}} reloads the files starts using the new certificates and keys.
 
 You don’t have to restart each node, but doing so forces new TLS connections and is [a recommended practice](updating-certificates.md#use-rolling-restarts) when updating certificates. Therefore, the following steps include a node restart after updating each certificate.
 
