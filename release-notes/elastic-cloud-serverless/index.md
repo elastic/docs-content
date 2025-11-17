@@ -9,6 +9,38 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## November 17, 2025 [serverless-changelog-11172025]
+
+### Features and enhancements [serverless-changelog-11172025-features-enhancements]
+
+* Enables the following HTTP request methods for the webhook connector: POST(default), PUT, PATCH, GET, and DELETE [#238072]({{kib-pull}}238072)
+* Persists filter state for {{fleet}} agent table during navigation [#228875]({{kib-pull}}228875)
+* Displays inline suggestions in the {{esql}} editor [#235162]({{kib-pull}}235162)
+* Improves Attack Discovery prompts [#241346]({{kib-pull}}241346)
+* Fixes grouping in the Alerts table [#237911]({{kib-pull}}237911)
+* Collects cloud connector telemetry for the Cloud Asset Inventory interation [#240272]({{kib-pull}}240272)
+* Syncs time picker recently used date ranges across browser tabs [#242467]({{kib-pull}}242467)
+* Adds `drop_document` processor to Streamlang [#242161]({{kib-pull}}242161)
+
+
+### Fixes [serverless-changelog-11172025-fixes]
+
+* Fixes a bug that caused the alerts tables pagination to hang on Rule pages [#242275]({{kib-pull}}242275)
+* Fixes an error that occurred when deselecting a (blank) option from an options list [#242036]({{kib-pull}}242036)
+* Fixes 'sync colors' and 'sync tooltips' must be ON by default [#242442]({{kib-pull}}242442)
+* Fixes package icons loading [#242406]({{kib-pull}}242406)
+* Fixes the docker image reference in the **Add agent** flyout's Kubernetes manifest [#242691]({{kib-pull}}242691)
+* Fixes text truncation in tables [#241440]({{kib-pull}}241440)
+* Fixes charts not filtering by `host.name` [#242673]({{kib-pull}}242673)
+* Reverts show transform errors accross all SLO pages [#243013]({{kib-pull}}243013)
+* Adds encoding of `cloudFormation` URL parameters [#242365]({{kib-pull}}242365)
+* Changes `must_not` risk scoring filter to `must` [#242171]({{kib-pull}}242171)
+* Fixes rule link in timeline flyout [#242313]({{kib-pull}}242313)
+* Fixes the data frame analytics wizard for data views with runtime fields [#242557]({{kib-pull}}242557)
+* Updates the default semantic text endpoint when adding semantic text field mappings to ELSER in EIS [#242436]({{kib-pull}}242436)
+* Fixes auto extraction in event bulk actions [#242325]({{kib-pull}}242325)
+
+
 ## November 10, 2025 [serverless-changelog-11102025]
 
 ### Features and enhancements [serverless-changelog-11102025-features-enhancements]
