@@ -117,7 +117,7 @@ curl -X POST "https://your-deployment.elastic.cloud:9200/your-index/_doc" \
   }'
 ```
 
-3. Refer to the [Elasticsearch index API documentation](/manage-data/data-store/index-your-data/index-documents.md) for more options.
+3. Refer to the [Elasticsearch index API documentation](/manage-data/data-store/index-basics.md) for more options.
 
 ### Verify your data
 
@@ -171,7 +171,7 @@ Best for: Understanding application performance and errors.
 6. Generate some traffic to your application.
 7. Return to **Applications** in Kibana to view traces and metrics.
 
-Refer to [APM documentation](/solutions/observability/apm/apm.md) for detailed setup instructions.
+Refer to [APM documentation](/solutions/observability/apm/index.md) for detailed setup instructions.
 
 ### Verify your data
 
@@ -358,7 +358,7 @@ Alerts help you stay informed about important events or conditions.
 6. Configure actions (e.g., send an email or Slack message).
 7. Save and enable the rule.
 
-Refer to [alerting documentation](/explore-analyze/alerts-cases/alerting/alerting.md) for more options.
+Refer to [alerting documentation](/solutions/observability/incident-management/alerting.md) for more options.
 
 :::
 
@@ -374,7 +374,7 @@ Refer to [alerting documentation](/explore-analyze/alerts-cases/alerting/alertin
 5. Configure connectors (email, Slack, PagerDuty).
 6. Save and enable the rule.
 
-Refer to [observability alerting](/explore-analyze/alerts-cases/alerting/alerting.md) for detailed configuration.
+Refer to [observability alerting](/solutions/observability/incident-management/alerting.md) for detailed configuration.
 
 :::
 
@@ -395,7 +395,7 @@ You can also create custom rules:
 4. Set severity and risk scores.
 5. Enable the rule.
 
-Refer to [security detection rules](/solutions/security/detect/detection-rules/detection-rules.md) for more information.
+Refer to [security detection rules](/solutions/security/detect-and-alert/about-detection-rules.md) for more information.
 
 :::
 ::::

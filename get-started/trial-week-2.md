@@ -66,7 +66,7 @@ Select data sources that:
 - Content management: Add user profiles alongside documents.
 - Log analysis: Add application metrics alongside log data.
 
-Refer to [data ingestion documentation](/manage-data/ingest/index.md) for advanced techniques.
+Refer to [data ingestion documentation](/manage-data/ingest.md) for advanced techniques.
 
 :::
 
@@ -93,7 +93,7 @@ Refer to [data ingestion documentation](/manage-data/ingest/index.md) for advanc
 - Combine infrastructure metrics with application traces.
 - Add cloud service metrics (AWS CloudWatch, Azure Monitor).
 
-Refer to [observability integrations](/solutions/observability/integrations.md) for more options.
+Refer to [observability get started](/solutions/observability/get-started.md) for more options.
 
 :::
 
@@ -120,7 +120,7 @@ Refer to [observability integrations](/solutions/observability/integrations.md) 
 - Add authentication logs (Okta, Azure AD) for identity monitoring.
 - Include firewall logs for network threat detection.
 
-Refer to [security data sources](/solutions/security/detect/detection-rules/data-sources.md) for integration options.
+Refer to [security detection and alerting](/solutions/security/detect-and-alert.md) for integration options.
 
 :::
 ::::
@@ -245,7 +245,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
 4. **Set refresh intervals**: Auto-refresh dashboards for live monitoring.
 5. **Apply consistent styling**: Use the same color schemes and fonts.
 
-Refer to [dashboard documentation](/explore-analyze/dashboards/dashboards.md) for advanced features.
+Refer to [dashboard documentation](/explore-analyze/dashboards.md) for advanced features.
 
 :::::
 
@@ -266,10 +266,10 @@ Demonstrate Elastic's powerful capabilities with advanced features.
    - Test different analyzer configurations.
 2. **Search suggestions (autocomplete)**:
    - Add completion suggesters to your index mapping.
-   - Refer to [suggesters documentation](/manage-data/data-store/search-your-data/search-suggesters.md).
+   - Refer to the Elasticsearch documentation for suggesters.
 3. **Semantic search** (if on Elastic 8.8+):
    - Enable vector search for AI-powered semantic matching.
-   - Refer to [semantic search documentation](/solutions/search/semantic-search/semantic-search.md).
+   - Refer to [semantic search documentation](/solutions/search/semantic-search.md).
 4. **Saved searches**:
    - Create and save complex search queries for reuse.
    - Share searches with team members.
@@ -296,7 +296,7 @@ Demonstrate Elastic's powerful capabilities with advanced features.
    - Link logs to traces and metrics for full context.
    - Use correlation IDs to track requests across services.
 
-Refer to [observability features](/solutions/observability/index.md) for detailed guides.
+Refer to [observability features](/solutions/observability.md) for detailed guides.
 
 :::
 
@@ -322,7 +322,7 @@ Refer to [observability features](/solutions/observability/index.md) for detaile
    - Go to **Security** → **Explore** → **Threat Intelligence**.
    - Import threat intel feeds to identify known bad indicators.
 
-Refer to [security capabilities](/solutions/security/index.md) for more features.
+Refer to [security capabilities](/solutions/security.md) for more features.
 
 :::
 ::::
@@ -487,8 +487,7 @@ Create a plan for moving forward:
 
 ### Getting help with production planning
 
-- **[Deployment architecture](/deploy-manage/production-guidance/production-guidance.md)**: Best practices for production deployments.
-- **[Sizing guidance](/deploy-manage/production-guidance/deployment-sizing-guidelines.md)**: Estimate resource requirements.
+- **[Production guidance](/deploy-manage/production-guidance.md)**: Best practices for production deployments and sizing.
 - **[Contact sales](https://www.elastic.co/contact)**: Discuss licensing and support options.
 
 :::::

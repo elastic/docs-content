@@ -1,16 +1,14 @@
 project: 'Get started'
 toc:
   - file: index.md
-  - title: Get started with Elastic's trial
-    items:
-      - file: trial-getting-started.md
+  - file: trial-getting-started.md
+    children:
       - file: trial-choose-use-case.md
       - file: trial-week-1.md
       - file: trial-week-2.md
       - file: trial-poc-framework.md
-  - title: Elastic fundamentals
-    items:
-      - file: introduction.md
+  - file: introduction.md
+    children:
       - file: the-stack.md
       - file: deployment-options.md
       - file: versioning-availability.md

@@ -437,7 +437,7 @@ Enable full-text search across 100,000 products to reduce time-to-find from an a
 - **[Trial getting started guide](/get-started/trial-getting-started.md)**: Overview of your trial journey.
 - **[Week 1 guide](/get-started/trial-week-1.md)**: Set up and initial implementation.
 - **[Week 2 guide](/get-started/trial-week-2.md)**: Expansion and evaluation.
-- **[Production guidance](/deploy-manage/production-guidance/production-guidance.md)**: Planning for production deployment.
+- **[Production guidance](/deploy-manage/production-guidance.md)**: Planning for production deployment.
 
 ## Need help?
 
