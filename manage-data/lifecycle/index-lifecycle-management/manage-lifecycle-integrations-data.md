@@ -27,7 +27,7 @@ To find the data stream associated with a visualization in a {{kib}}:
 
     ![Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
 
-1. In the document details, note that there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
+1. In the document details, there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
 
     You can also see the data stream's current backing index, as well as other information such as the document timestamp and details about the agent that ingested the data.
 

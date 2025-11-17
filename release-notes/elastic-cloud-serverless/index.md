@@ -143,7 +143,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses `runWithCache` for bulk {{fleet}} operations [#238326]({{kib-pull}}238326)
 * Fixes error when Observability AI Assistant was disabled [#238811]({{kib-pull}}238811)
 * Removes unecessary `_source` field from queries [#239205]({{kib-pull}}239205)
-* Makes the rule condition chart parser replace metric names inside filter values (e.g., A in "Accounts") [#238849]({{kib-pull}}238849)
+* Makes the rule condition chart parser replace metric names inside filter values (for example, A in "Accounts") [#238849]({{kib-pull}}238849)
 * Fixes recover alert while monitor is down [#237479]({{kib-pull}}237479)
 * Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418)
 * Adds missing aria-label to BetaBadge component [#239400]({{kib-pull}}239400)
@@ -277,9 +277,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes integrations RAG [#234211]({{kib-pull}}234211)
 * Ensures the data view picker icon is always vertically centered [#236379]({{kib-pull}}236379)
 * Fixes browser fields cache [#234381]({{kib-pull}}234381)
-* Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067)
+* Fixes the URL passed to detection rule actions using the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067)
 * Refactors `nav_control_popover` [#235780]({{kib-pull}}235780)
-* Allows `xpack.spaces.defaultSolution` to be configured via docker [#236570]({{kib-pull}}236570)
+* Allows `xpack.spaces.defaultSolution` to be configured using docker [#236570]({{kib-pull}}236570)
 * Fixes the Job details fly-out on the Analytics Map page [#236131]({{kib-pull}}236131)
 * Limits `msearch` usage for log rate analysis [#235611]({{kib-pull}}235611)
 * Fixes display of alerts from anomaly detection rules in [#236289]({{kib-pull}}236289)
@@ -590,7 +590,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Displays function license availability in Discover inline docs [#229961]({{kib-pull}}229961)
 * Fixes incorrect filtering logic when removing a comment field in Discover [#230116]({{kib-pull}}230116)
 * Modifies title generation to be scope-aware in Elastic Observability Serverless [#227434]({{kib-pull}}227434)
-* Prevents destructive actions via the Elasticsearch tool in Elastic Observability Serverless [#229497]({{kib-pull}}229497)
+* Prevents destructive actions using the Elasticsearch tool in Elastic Observability Serverless [#229497]({{kib-pull}}229497)
 * Replaces `EuiErrorBoundary` with `KibanaErrorBoundary` in Elastic Observability Serverless [#229710]({{kib-pull}}229710)
 * Fixes keyboard accessibility for the Waterfall flyout in Elastic Observability Serverless [#229926]({{kib-pull}}229926)
 * Allows knowledge base UI to work offline in Elastic Observability Serverless [#229874]({{kib-pull}}229874)
@@ -925,7 +925,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates time based charts to use the multi-layer time axis by default, providing a better time window context and improved label positioning. [#210579]({{kib-pull}}210579).
 * Adds an integration flyout to Agent policy details in {{fleet}} [#220229]({{kib-pull}}220229).
 * Enables the `enableSyncIntegrationsOnRemote` feature flag in {{fleet}} [#220215]({{kib-pull}}220215).
-* Enables migration of a single agent to another cluster via the actions menu in {{fleet}}. [#222111]({{kib-pull}}222111).
+* Enables migration of a single agent to another cluster using the actions menu in {{fleet}}. [#222111]({{kib-pull}}222111).
 * Adds a button allowing users to skip to the next section in the fields list in **Discover** [#221792]({{kib-pull}}221792).
 * Adds the **SLO Management** page to {{obs-serverless}}, allowing users to view definitions, delete SLOs, and purge SLI data without having to consider instances [#222238]({{kib-pull}}222238).
 * Adds a new APM dashboard for the Golang OpenTelemetry runtime metrics in {{obs-serverless}} [#220242]({{kib-pull}}220242).
@@ -1040,7 +1040,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows specifying an embedding model during onboarding for the Elastic Observability Serverless Knowledge Base [#218448]({{kib-pull}}218448)
 * Enables click actions for **Stacktrace** and **Degraded Fields** in **Discover** for Elastic Observability Serverless [#214413]({{kib-pull}}214413)
 * Shows **ELSER** in **EIS** only when available in Elastic Observability Serverless [#220096]({{kib-pull}}220096)
-* Adds the ability to create alert rules from **ES|QL** dashboard visualizations via context menu or right-clicking a data point [#217719]({{kib-pull}}217719)
+* Adds the ability to create alert rules from **ES|QL** dashboard visualizations through context menu or right-clicking a data point [#217719]({{kib-pull}}217719)
 * Enables the `enableAutomaticAgentUpgrades` feature flag for Fleet [#219932]({{kib-pull}}219932)
 * Adds Cloud Connectors support to Fleet for **CSPM** [#212200]({{kib-pull}}212200)
 * Ensures alerts created within **Maintenance Windows** trigger actions after the window expires [#219797]({{kib-pull}}219797)
@@ -1369,7 +1369,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds context-aware logic to Logs view in Discover [#211176]({{kib-pull}}211176)
 * Replaces the Alerts status filter with filter controls [#198495]({{kib-pull}}198495)
 * Adds SSL fields to agent binary source settings [#213211]({{kib-pull}}213211)
-* Allows users to create a snooze schedule for rules via API [#210584]({{kib-pull}}210584)
+* Allows users to create a snooze schedule for rules using API [#210584]({{kib-pull}}210584)
 * Splits up the top dependencies API for improved speed and response size [#211441]({{kib-pull}}211441)
 * Adds working default metrics dashboard for Python OTel [#213599]({{kib-pull}}213599)
 * Includes spaceID in SLI documents [#214278]({{kib-pull}}214278)

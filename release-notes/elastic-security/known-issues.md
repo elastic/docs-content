@@ -274,7 +274,7 @@ Resolved in {{elastic-defend}} 9.0.1
 
 Applies to: {{elastic-defend}} 9.0.0
 
-An unbounded kernel non-paged memory growth issue in {{elastic-defend}}'s kernel driver occurs during extremely high event load situations on Windows. Systems affected by this issue will slow down or become unresponsive until the triggering event load (for example, network activity) subsides. We are only aware of this issue occurring on very busy Windows Server systems running {{elastic-defend}} versions 8.16.0-8.16.6, 8.17.0-8.17.5, 8.18.0, and 9.0.0
+An unbounded kernel non-paged memory growth issue in {{elastic-defend}}'s kernel driver occurs during extremely high event load situations on Windows. Systems affected by this issue will slow down or become unresponsive until the triggering event load (for example, network activity) subsides. We are only aware of this issue occurring on busy Windows Server systems running {{elastic-defend}} versions 8.16.0-8.16.6, 8.17.0-8.17.5, 8.18.0, and 9.0.0
 
 **Workaround**<br>
 
@@ -283,7 +283,7 @@ If you can't upgrade, turn off the relevant event source at the kernel level usi
 * Network Events - Set the `windows.advanced.kernel.network` advanced setting to `false`.
 * Registry Events - Set the `windows.advanced.kernel.registry` advanced setting to `false`.
 
-Note that clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
+Clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
 
 **Resolved**<br>
 
