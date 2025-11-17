@@ -210,20 +210,29 @@ To configure document-level security (DLS), you create a custom role where you d
 1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Create role**.
 1. Give your custom role a meaningful name and description.
-1. In the **Index privileges** area, specify the data stream pattern, For example, enter `events-*`.
+1. In the **Index privileges** area, specify the data stream pattern and the privilege you want to grant. For example, enter `events-*` and `read`.
 1. Enable the **Grant read privileges to specific documents** toggle and add your query using the QueryDSL syntax.
-    * For example, to allow read access only to documents that belong to the click category within all the events-* data streams, enter the following query:
+    * For example, to allow read access only to documents that belong to the click category within all the `events-*` data streams, enter the following query:
       ```
       {
         "match" : { "category" : “click” }
       }
       ```
+
+      :::{image} /deploy-manage/images/serverless-custom-role-document-level-privileges-ex-1.png
+      :title: Configuring document-level security
+      :::
+
     * To allow read access only to the documents whose `department_id` equals 12, enter the following query:
       ```
       {
         "term" : { "department_id" : 12 }
       }
       ```
+
+      :::{image} /deploy-manage/images/serverless-custom-role-document-level-privileges-ex-2.png
+      :title: Configuring document-level security another example
+      :::
       
 1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
 1.  Select **Create role** to save your custom role.
@@ -420,6 +429,36 @@ The resulting permission is equal to:
 ::::{note}
 Field-level security should not be set on [`alias`](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
 ::::
+
+### Configuring field-level security in {{serverless-short}} [field-level-serverless]
+```{applies_to}
+serverless: ga
+```
+
+As an administrator, you can create custom roles that enable users to access data and project features. When you create a custom role, you can assign {{es}} [cluster](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-cluster-privileges) and [index](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-index-privileges) privileges and [{{kib}}](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) privileges.
+
+To configure field-level security (FLS), you create a custom role where you define the specific fields that this role grants or denies access to:
+
+1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select **Create role**.
+1. Give your custom role a meaningful name and description.
+1. In the **Index privileges** area, specify the data stream pattern and the privilege you want to grant. For example, enter `events-*` and `read`.
+1. Enable the **Grant access to specific fields** toggle.
+    * To grant access to specific fields within each document in all the `events-*` data streams, add the fields to the **Granted fields** list. For example, you can add `category`, `@timestamp`, and `message` as individual fields, or you can specify a field expression such as `event_*` that grants read access to all the fields that start with an `event_` prefix.
+    
+      :::{image} /deploy-manage/images/serverless-custom-role-grant-field-level-privileges.png
+      :title: Configuring field-level security by granting access to fields
+      :::
+
+    * To deny access to specific fields within each document, add the fields to the **Denied fields** list. For example, you can add the `customer.handle` field.
+    
+      :::{image} /deploy-manage/images/serverless-custom-role-deny-field-level-privileges.png
+      :title: Configuring field-level security by denying access to fields
+      :::
+      
+1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
+1.  Select **Create role** to save your custom role.
+
 
 ## Multiple roles with document and field level security [multiple-roles-dls-fls]
 
