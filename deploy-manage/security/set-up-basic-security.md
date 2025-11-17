@@ -77,7 +77,7 @@ You might choose to use an external CA to generate transport certificates for no
 
 Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with unencrypted node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
 
-Carefully review [](/deploy-manage/security/self-tls-considerations.md) to ensure that the certificates that you provide meet the security requirements for transport connections.
+Carefully review [](/deploy-manage/security/external-ca-transport.md) to ensure that the certificates that you provide meet the security requirements for transport connections.
 
 
 ## Encrypt internode communications with TLS [encrypt-internode-communication]
