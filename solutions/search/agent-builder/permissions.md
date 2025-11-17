@@ -8,7 +8,6 @@ applies_to:
 navigation_title: "Permissions & access control"
 ---
 
-
 # Permissions and access control in {{agent-builder}}
 
 Use this page to learn how to configure security roles and API keys for Agent Builder. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
@@ -33,7 +32,7 @@ Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-depl
 
 Agent Builder requires cluster-level privileges for AI-powered query generation:
 
-- `monitor_inference`: Required for agents to use AI-powered tools. The built-in tools `search` and `generate_esql`, as well as [index search tools](tools/index-search-tools.md), call the {{es}} Inference API to generate queries from natural language.
+- `monitor_inference`: Required when the agent uses an AI connector that calls the {{es}} Inference API (such as the Elastic default LLM or other AI connectors configured to use the Inference API). The built-in tools `search` and `generate_esql`, as well as [index search tools](tools/index-search-tools.md), use this API to generate queries from natural language. This privilege is not required when the agent uses other {{kib}} GenAI connectors.
 
 Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html#privileges-list-cluster).
 
@@ -49,6 +48,10 @@ Learn more about [index privileges](elasticsearch://reference/elasticsearch/secu
 ### Granting access with roles
 
 [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) are {{es}} security constructs that bundle together {{kib}} feature privileges and {{es}} privileges. To grant users access to Agent Builder, create a role that includes the required privileges.
+
+:::{note}
+When configuring roles in the {{kib}} UI, Agent Builder privileges are currently located under the **Analytics** section, not the {{es}} section.
+:::
 
 Example role for users who need full Agent Builder access:
 
