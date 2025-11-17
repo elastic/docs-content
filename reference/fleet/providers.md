@@ -23,7 +23,9 @@ How you use providers depends on whether you're running a standalone or a {{flee
 
 ### Using providers on standalone {{agent}} [using-providers-standalone-agent]
 
-On standalone {{agent}}, providers can be configured through the `providers` key in the `elastic-agent.yml` configuration file. You can enable, disable, and configure provider settings as needed. For more details, refer to [Provider configuration](#provider_configuration).
+On standalone {{agent}}, providers can be configured through the `providers` key in the `elastic-agent.yml` configuration file. By default, all providers are enabled, but {{agent}} runs them only if they are referenced in the configuration file or in an {{agent}} policy. Disabled providers are not run even if they are referenced.
+
+You can enable, disable, and configure provider settings as needed. For more details, refer to [Provider configuration](#provider_configuration).
 
 ### Using providers on {{fleet}}-managed {{agent}} [using-providers-fleet-managed-agent]
 
@@ -34,7 +36,9 @@ Some providers can be configured on {{k8s}} deployments using ConfigMaps. For mo
 
 ## Provider configuration [provider_configuration]
 
-On standalone {{agent}}, provider configuration is specified under the top-level `providers` key in the `elastic-agent.yml` configuration. All registered providers are enabled by default. If a provider cannot connect, no mappings are produced.
+On standalone {{agent}}, provider configuration is specified under the top-level `providers` key in the `elastic-agent.yml` configuration file. All registered providers are enabled by default but they are run by {{agent}} only if they are referenced. If a provider cannot connect, no mappings are produced.
+
+All providers are prefixed without name collisions. The name of the provider is in the key in the configuration.
 
 The following example shows two providers (`local` and `local_dynamic`) that supply custom keys on a standalone {{agent}}:
 
@@ -53,15 +57,15 @@ providers:
           item: key3
 ```
 
-Providers are enabled automatically if a provider is referenced in an {{agent}} policy. All providers are prefixed without name collisions. The name of the provider is in the key in the configuration.
-
-For example, to disable the Docker provider in a standalone {{agent}}:
+If a provider is referenced in an {{agent}} policy, it is turned on automatically unless it's explicitly disabled in the `elastic-agent.yml` configuration file. For example, to disable the Docker provider in a standalone {{agent}}, set:
 
 ```yaml
 providers:
   docker:
     enabled: false
 ```
+
+With this setting, {{agent}} will not run the Docker provider even if it's referenced in an {{agent}} policy.
 
 {{agent}} supports two broad types of providers: [context](#context-providers) and [dynamic](#dynamic-providers).
 
@@ -97,11 +101,11 @@ Dynamic providers give an array of multiple key-value mappings. Each key-value m
 
 ### Disabling providers by default [disable-providers-by-default]
 
-All registered providers are disabled by default until they are referenced in a policy.
+Registered providers are run by {{agent}} if they are referenced in the {{agent}} configuration or in a policy.
 
-On standalone {{agent}}, you can disable all providers even if they are referenced in a policy by setting `agent.providers.initial_default: false`.
+On standalone {{agent}}, you can disable all providers by setting `agent.providers.initial_default: false`, preventing them from running even if they are referenced.
 
-The following configuration disables all providers from running except for the docker provider, if it becomes referenced in the policy:
+The following configuration disables all providers with the exception of the Docker provider, which is run when it's referenced in the policy:
 
 ```yaml
 agent.providers.initial_default: false
