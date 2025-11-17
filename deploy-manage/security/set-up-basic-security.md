@@ -47,28 +47,28 @@ When you manually set up transport TLS, you can choose from the following CA opt
 
 You can use the `elasticsearch-certutil` tool to generate a CA for your cluster. Using `elasticsearch-certutil` guarantees that your certificates meet {{es}} certificate requirements and security best practices. 
 
-1. Before starting {{es}}, use the `elasticsearch-certutil` tool on any single node to generate a CA for your cluster.
+1. Before starting {{es}}, generate the CA: 
+   1. Use the `elasticsearch-certutil` tool on any single node to generate a CA for your cluster.
 
     ```shell
     ./bin/elasticsearch-certutil ca
     ```
 
-    1. When prompted, accept the default file name, which is `elastic-stack-ca.p12`. This file contains the public certificate for your CA and the private key used to sign certificates for each node.
-    2. Enter a password for your CA. You can choose to leave the password blank if you’re not deploying to a production environment.
+   2. When prompted, accept the default file name, which is `elastic-stack-ca.p12`. This file contains the public certificate for your CA and the private key used to sign certificates for each node.
+   3. Enter a password for your CA. You can choose to leave the password blank if you’re not deploying to a production environment.
 
-2. On any single node, generate a certificate and private key for the nodes in your cluster. You include the `elastic-stack-ca.p12` output file that you generated in the previous step.
+2. Generate the certificate:
+   1. On any single node, generate a certificate and private key for the nodes in your cluster. Include the `elastic-stack-ca.p12` output file that you generated in the previous step.
 
-    ```shell
-    ./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
-    ```
+        ```shell
+        ./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12 <1>
+        ```
+        1. The `--ca` flag must contain the name of the CA file used to sign your certificates. The default file name from the `elasticsearch-certutil` tool is `elastic-stack-ca.p12`.
 
-    `--ca <ca_file>`
-    :   Name of the CA file used to sign your certificates. The default file name from the `elasticsearch-certutil` tool is `elastic-stack-ca.p12`.
+    2. Enter the password for your CA, or press **Enter** if you did not configure one in the previous step.
+    3. Create a password for the certificate and accept the default file name.
 
-        1. Enter the password for your CA, or press **Enter** if you did not configure one in the previous step.
-        2. Create a password for the certificate and accept the default file name.
-
-            The output file is a keystore named `elastic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
+         The output file is a keystore named `elastic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
 
 
 ### Provide certificates from an external CA [external-ca]
@@ -86,7 +86,7 @@ The transport networking layer is used for internal communication between nodes 
 
 Now that you’ve obtained your certificates, you’ll update your cluster to use these files.
 
-These steps assume that you [generated a CA and certificates](#generate-certificates) using `elasticsearch-certutil`. The `xpack.security.transport.ssl` settings that you need to set differ if you're using a certificate generated with an external CA. Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) full list of available settings.
+These steps assume that you [generated a CA and certificates](#generate-certificates) using `elasticsearch-certutil`. The `xpack.security.transport.ssl` settings that you need to set differ if you're using a certificate generated with an external CA. Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for a full list of available settings.
 
 ::::{note}
 {{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds.

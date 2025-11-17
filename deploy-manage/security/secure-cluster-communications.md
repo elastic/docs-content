@@ -4,10 +4,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
 applies_to:
+  serverless:
   deployment:
     self:
     eck:
     ece:
+    ess:
 products:
   - id: elasticsearch
   - id: kibana
