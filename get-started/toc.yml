@@ -7,10 +7,9 @@ toc:
       - file: trial-week-1.md
       - file: trial-week-2.md
   - file: introduction.md
-    children:
-      - file: the-stack.md
-      - file: deployment-options.md
-      - file: versioning-availability.md
+  - file: the-stack.md
+  - file: deployment-options.md
+  - file: versioning-availability.md
   - file: howto-use-the-docs.md
   - title: Glossary
     crosslink: docs-content://reference/glossary/index.md

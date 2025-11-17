@@ -14,8 +14,6 @@ description: Week 2 of your Elastic trial. Expand your PoC, refine dashboards, m
 
 In Week 2, you will build on your foundation by expanding data sources, refining visualizations, and measuring success metrics. By the end of this week, you will have a compelling proof of concept (PoC) ready to demonstrate to stakeholders.
 
-## Week 2 goals
-
 By the end of this week, you will have:
 
 - Added 1-2 additional data sources.
@@ -27,9 +25,7 @@ By the end of this week, you will have:
 
 **Estimated time**: 3-5 hours total.
 
-::::::{stepper}
-
-:::::{step} Expand your data sources
+## Expand your data sources
 
 Now that you're comfortable with Elastic, add more data to demonstrate broader capabilities.
 
@@ -47,7 +43,7 @@ Select data sources that:
 ::::{tab-set}
 :::{tab-item} Search
 
-**Expand your search capabilities**:
+#### Expand your search capabilities
 
 1. **Add another data type**:
    - If you started with documents, add product catalogs or user data.
@@ -72,7 +68,7 @@ Refer to [data ingestion documentation](/manage-data/ingest.md) for advanced tec
 
 :::{tab-item} Observability
 
-**Expand your observability coverage**:
+#### Expand your observability coverage
 
 1. **Add more hosts or services**:
    - Install Elastic Agent on 2-3 additional critical hosts.
@@ -99,7 +95,7 @@ Refer to [observability get started](/solutions/observability/get-started.md) fo
 
 :::{tab-item} Security
 
-**Expand your security coverage**:
+#### Expand your security coverage
 
 1. **Add more endpoints**:
    - Deploy Elastic Defend to additional critical hosts.
@@ -125,26 +121,16 @@ Refer to [security detection and alerting](/solutions/security/detect-and-alert.
 :::
 ::::
 
-:::::
-
-:::::{step} Refine dashboards and visualizations
+## Refine dashboards and visualizations
 
 Create polished, stakeholder-ready dashboards that tell a compelling story.
-
-### Design principles for effective dashboards
-
-- **Focus on outcomes**: Show business impact, not just technical metrics.
-- **Use clear titles**: Make it obvious what each panel shows.
-- **Highlight key metrics**: Use metric visualizations for important KPIs.
-- **Show trends**: Include time-series charts to demonstrate changes.
-- **Enable interactivity**: Add filters so viewers can explore.
 
 ### Create stakeholder dashboards
 
 ::::{tab-set}
 :::{tab-item} Search
 
-**Search performance dashboard**:
+#### Search performance dashboard
 
 1. Go to **Analytics** → **Dashboards** → **Create dashboard**.
 2. Add visualizations that show:
@@ -156,7 +142,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
 3. Add markdown panels to provide context and insights.
 4. Save as "Search Performance Overview".
 
-**Business value dashboard**:
+#### Business value dashboard
 
 1. Create a dashboard focused on business outcomes:
    - User engagement metrics
@@ -169,7 +155,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
 
 :::{tab-item} Observability
 
-**Service health dashboard**:
+#### Service health dashboard
 
 1. Go to **Analytics** → **Dashboards** → **Create dashboard**.
 2. Add visualizations that show:
@@ -181,7 +167,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
 3. Use color coding: green for healthy, yellow for warning, red for critical.
 4. Save as "Service Health Overview".
 
-**Incident response dashboard**:
+#### Incident response dashboard
 
 1. Create a dashboard for troubleshooting:
    - Recent errors and warnings (data table)
@@ -190,7 +176,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
    - APM transaction traces (if available)
 2. Add time controls to easily adjust timeframes during incidents.
 
-**Business value dashboard**:
+#### Business value dashboard
 
 1. Create a dashboard showing:
    - Mean time to detect (MTTD) improvements
@@ -202,7 +188,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
 
 :::{tab-item} Security
 
-**Security operations dashboard**:
+#### Security operations dashboard
 
 1. Go to **Analytics** → **Dashboards** → **Create dashboard**.
 2. Add visualizations that show:
@@ -213,7 +199,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
    - **Security event timeline** (area chart by event type)
 3. Save as "Security Operations Overview".
 
-**Threat detection dashboard**:
+#### Threat detection dashboard
 
 1. Create a dashboard focused on threats:
    - Recent high-severity alerts
@@ -222,7 +208,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
    - Failed authentication attempts
    - Malware detections
 
-**Compliance dashboard**:
+#### Compliance dashboard
 
 1. Create a dashboard for compliance reporting:
    - Security events by type
@@ -234,22 +220,7 @@ Create polished, stakeholder-ready dashboards that tell a compelling story.
 :::
 ::::
 
-### Dashboard best practices
-
-1. **Use Elastic's visualize options**:
-   - **Lens**: Intuitive drag-and-drop for most visualizations.
-   - **TSVB**: Time-series data with advanced calculations.
-   - **Markdown**: Add explanatory text and links.
-2. **Add filters**: Let viewers filter by time, host, service, or other dimensions.
-3. **Use drill-downs**: Link visualizations to detailed views.
-4. **Set refresh intervals**: Auto-refresh dashboards for live monitoring.
-5. **Apply consistent styling**: Use the same color schemes and fonts.
-
-Refer to [dashboard documentation](/explore-analyze/dashboards.md) for advanced features.
-
-:::::
-
-:::::{step} Implement advanced features
+## Implement advanced features
 
 Demonstrate Elastic's powerful capabilities with advanced features.
 
@@ -258,7 +229,7 @@ Demonstrate Elastic's powerful capabilities with advanced features.
 ::::{tab-set}
 :::{tab-item} Search
 
-**Implement these advanced search features**:
+#### Implement these advanced search features
 
 1. **Relevance tuning**:
    - Go to **Search** → **Content** → **Elasticsearch indices**.
@@ -278,7 +249,7 @@ Demonstrate Elastic's powerful capabilities with advanced features.
 
 :::{tab-item} Observability
 
-**Implement these advanced observability features**:
+#### Implement these advanced observability features
 
 1. **Service-level objectives (SLOs)**:
    - Go to **Observability** → **SLOs**.
@@ -302,7 +273,7 @@ Refer to [observability features](/solutions/observability.md) for detailed guid
 
 :::{tab-item} Security
 
-**Implement these advanced security features**:
+#### Implement these advanced security features
 
 1. **Entity analytics**:
    - Go to **Security** → **Manage** → **Entity risk score**.
@@ -327,9 +298,7 @@ Refer to [security capabilities](/solutions/security.md) for more features.
 :::
 ::::
 
-:::::
-
-:::::{step} Measure and document success metrics
+## Measure and document success metrics
 
 Quantify the value of your PoC with concrete metrics.
 
@@ -414,55 +383,7 @@ Create a summary document with:
 4. **Problems solved**: Specific issues that Elastic helped you address.
 5. **Time and cost savings**: Quantify business value.
 
-:::::
-
-:::::{step} Prepare your PoC presentation
-
-You've built a compelling PoC—now it's time to present it effectively.
-
-### Create a presentation structure
-
-1. **Executive summary** (1-2 slides):
-   - Problem statement
-   - Solution overview
-   - Key results and ROI
-2. **Use case overview** (2-3 slides):
-   - Which Elastic solution you evaluated
-   - Data sources connected
-   - Timeline of implementation
-3. **Live demo** (5-10 minutes):
-   - Show your dashboards in action
-   - Demonstrate key features
-   - Walk through a real-world scenario
-4. **Results and metrics** (2-3 slides):
-   - Success criteria met
-   - Quantitative results
-   - Qualitative benefits
-5. **Next steps and recommendations** (1-2 slides):
-   - Expansion opportunities
-   - Pricing and licensing options
-   - Implementation timeline
-
-### Tips for an effective demo
-
-- **Tell a story**: Walk through a real problem and how Elastic solves it.
-- **Keep it focused**: Show 2-3 key capabilities, not everything.
-- **Use real data**: Demonstrate with your actual data, not samples.
-- **Prepare for questions**: Anticipate technical and business questions.
-- **Have a backup plan**: Record a video in case of technical issues.
-
-### Presenting to different audiences
-
-| Audience | Focus on |
-|----------|----------|
-| **Executives** | ROI, cost savings, business impact, time to value |
-| **IT leadership** | Scalability, integration, security, operational efficiency |
-| **Technical teams** | Features, APIs, ease of use, troubleshooting capabilities |
-| **Security teams** | Threat detection, compliance, incident response |
-
-:::::
-
-:::::{step} Plan your expansion
+## Plan your expansion
 
 Identify what comes next after your successful PoC.
 
@@ -478,23 +399,19 @@ Identify what comes next after your successful PoC.
 
 Create a plan for moving forward:
 
-- [ ] Determine production data volume and retention needs
-- [ ] Estimate licensing costs based on usage
-- [ ] Identify team members who need training
-- [ ] Plan data source migration and onboarding
-- [ ] Set up production deployment architecture
-- [ ] Define ongoing maintenance and support processes
+- Determine production data volume and retention needs.
+- Estimate licensing costs based on usage.
+- Identify team members who need training.
+- Plan data source migration and onboarding.
+- Set up production deployment architecture.
+- Define ongoing maintenance and support processes.
 
 ### Getting help with production planning
 
 - **[Production guidance](/deploy-manage/production-guidance.md)**: Best practices for production deployments and sizing.
 - **[Contact sales](https://www.elastic.co/contact)**: Discuss licensing and support options.
 
-:::::
-
-::::::
-
-## Week 2 checklist
+## Checklist
 
 Before completing your trial, ensure you've:
 
@@ -505,7 +422,7 @@ Before completing your trial, ensure you've:
 - Prepared a presentation or demo.
 - Identified next steps and expansion plans.
 
-## Congratulations
+## Congratulations!
 
 You've completed a comprehensive Elastic trial and built a meaningful proof of concept. You now have:
 

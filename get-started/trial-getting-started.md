@@ -8,7 +8,7 @@ applies_to:
   serverless:
   stack:
 description: Start your Elastic trial with confidence. This step-by-step guide helps you set up your environment, choose a use case, and build a proof of concept within your trial period.
-navigation_title: Get started with Elastic
+navigation_title: Get started with the Elastic trial
 ---
 
 # Get started with your Elastic trial

@@ -14,8 +14,6 @@ description: Week 1 of your Elastic trial. Set up your deployment, connect your 
 
 Week 1 focuses on getting your Elastic environment up and running quickly and demonstrating initial value with your chosen use case. By the end of this week, you will have data flowing into Elastic and be able to search, visualize, or monitor it effectively.
 
-## Week 1 goals
-
 By the end of this week, you will have:
 
 - Set up your Elastic deployment.
@@ -26,11 +24,11 @@ By the end of this week, you will have:
 
 **Estimated time**: 2-4 hours total.
 
+## Set up your deployment
+
 ::::::{stepper}
 
-:::::{step} Set up your deployment
-
-### Choose your deployment type
+:::::{step} Choose your deployment type
 
 When you start your trial, select a deployment type:
 
@@ -41,7 +39,9 @@ When you start your trial, select a deployment type:
 For most trials, {{serverless-short}} provides the fastest path to value with minimal configuration overhead.
 :::
 
-### Create your deployment
+:::::
+
+:::::{step} Create your deployment
 
 Create your deployment by following these steps:
 
@@ -56,7 +56,9 @@ Create your deployment by following these steps:
 
 Your deployment will be ready in 1-2 minutes. **Save your credentials** when prompted.
 
-### Access Kibana
+:::::
+
+:::::{step} Access Kibana
 
 Once your deployment is ready:
 
@@ -68,8 +70,9 @@ Bookmark your Kibana URL for easy access throughout your trial.
 :::
 
 :::::
+::::::
 
-:::::{step} Connect your first data source
+## Connect your first data source
 
 Choose the path based on your use case:
 
@@ -78,7 +81,7 @@ Choose the path based on your use case:
 
 Your goal is to index data that you want to search and analyze. Choose one method:
 
-**Option A: Upload a file (Quickest start)**
+#### Option A: Upload a file (Quickest start)
 
 Best for: CSV, JSON, or log files you have on hand.
 
@@ -90,7 +93,7 @@ Best for: CSV, JSON, or log files you have on hand.
 
 If you don't have data ready, Kibana includes sample datasets. Go to **Home** → **Try sample data** and add the "Sample web logs" or "Sample eCommerce orders" dataset.
 
-**Option B: Use an integration**
+#### Option B: Use an integration
 
 Best for: Connecting to existing systems (databases, APIs, applications).
 
@@ -99,7 +102,7 @@ Best for: Connecting to existing systems (databases, APIs, applications).
 3. Select **Add** and follow the configuration steps.
 4. Verify data is flowing by checking the integration status.
 
-**Option C: Use the API**
+#### Option C: Use the API
 
 Best for: Custom applications or programmatic data ingestion.
 
@@ -119,7 +122,7 @@ curl -X POST "https://your-deployment.elastic.cloud:9200/your-index/_doc" \
 
 3. Refer to the [Elasticsearch index API documentation](/manage-data/data-store/index-basics.md) for more options.
 
-### Verify your data
+#### Verify your data
 
 1. Go to **Analytics** → **Discover** in Kibana.
 2. Select your index or data view.
@@ -133,7 +136,7 @@ If you don't find your data, check your integration status or indexing logs.
 
 Your goal is to collect logs, metrics, and traces from your systems. Choose one method:
 
-**Option A: Monitor infrastructure (Easiest)**
+#### Option A: Monitor infrastructure (Easiest)
 
 Best for: Getting started quickly with system metrics.
 
@@ -147,7 +150,7 @@ Best for: Getting started quickly with system metrics.
 5. Wait 1-2 minutes for data to appear.
 6. Go to **Observability** → **Infrastructure** to see your host.
 
-**Option B: Collect application logs**
+#### Option B: Collect application logs
 
 Best for: Aggregating logs from applications or services.
 
@@ -159,7 +162,7 @@ Best for: Aggregating logs from applications or services.
 4. Install or configure Elastic Agent to collect the logs.
 5. Go to **Observability** → **Logs** → **Stream** to see incoming logs.
 
-**Option C: Monitor an application (APM)**
+#### Option C: Monitor an application (APM)
 
 Best for: Understanding application performance and errors.
 
@@ -173,7 +176,7 @@ Best for: Understanding application performance and errors.
 
 Refer to [APM documentation](/solutions/observability/apm/index.md) for detailed setup instructions.
 
-### Verify your data
+#### Verify your data
 
 1. Go to **Observability** → **Overview**.
 2. You should see metrics, logs, or traces depending on what you configured.
@@ -183,11 +186,9 @@ Refer to [APM documentation](/solutions/observability/apm/index.md) for detailed
 
 :::{tab-item} Security
 
-### Ingest security data
-
 Your goal is to collect security events from endpoints, networks, and cloud services. Choose your starting point:
 
-**Option A: Monitor endpoints (Recommended)**
+#### Option A: Monitor endpoints (Recommended)
 
 Best for: Detecting threats on laptops, desktops, and servers.
 
@@ -202,7 +203,7 @@ Best for: Detecting threats on laptops, desktops, and servers.
 6. Wait 1-2 minutes for the endpoint to appear in Kibana.
 7. Go to **Security** → **Manage** → **Endpoints** to see protected hosts.
 
-**Option B: Collect security logs**
+#### Option B: Collect security logs
 
 Best for: Ingesting logs from firewalls, cloud providers, or security tools.
 
@@ -214,7 +215,7 @@ Best for: Ingesting logs from firewalls, cloud providers, or security tools.
 3. Selec **Add** and follow the configuration steps for your provider.
 4. Verify data is flowing by checking the integration status.
 
-**Option C: Collect network traffic**
+#### Option C: Collect network traffic
 
 Best for: Monitoring network activity for threats.
 
@@ -224,7 +225,7 @@ Best for: Monitoring network activity for threats.
 4. Configure network interfaces to monitor.
 5. Go to **Security** → **Network** to see network flows.
 
-### Verify your data
+#### Verify your data
 
 1. Go to **Security** → **Overview**.
 2. You should see security events and alerts.
@@ -233,16 +234,14 @@ Best for: Monitoring network activity for threats.
 :::
 ::::
 
-:::::
-
-:::::{step} Explore your data
+## Explore your data
 
 Now that data is flowing, let's explore it in Kibana.
 
 ::::{tab-set}
 :::{tab-item} Search
 
-### Explore with Discover
+#### Explore with Discover
 
 1. Go to **Analytics** → **Discover**.
 2. Select your index pattern or data view.
@@ -267,7 +266,7 @@ Now that data is flowing, let's explore it in Kibana.
 
 :::{tab-item} Observability
 
-### Explore logs
+#### Explore logs
 
 1. Go to **Observability** → **Logs** → **Stream**.
 2. **Filter logs**:
@@ -275,21 +274,21 @@ Now that data is flowing, let's explore it in Kibana.
    - Filter by host, service, or log level.
 3. **View log details**: Select a log entry to see all fields and context.
 
-### Explore metrics
+#### Explore metrics
 
 1. Go to **Observability** → **Infrastructure**.
 2. View your hosts with CPU, memory, and disk metrics.
 3. Select a host to view detailed metrics.
 4. Switch views to view containers, Kubernetes pods, or services.
 
-### Explore APM (if configured)
+#### Explore APM (if configured)
 
 1. Go to **Observability** → **Applications**.
 2. Select your service.
 3. View latency, throughput, and error rates.
 4. Select a transaction to view traces and spans.
 
-### Create an observability dashboard
+#### Create an observability dashboard
 
 1. Go to **Analytics** → **Dashboards**.
 2. Click **Create dashboard**.
@@ -305,7 +304,7 @@ Now that data is flowing, let's explore it in Kibana.
 
 :::{tab-item} Security
 
-### Explore security events
+#### Explore security events
 
 1. Go to **Security** → **Explore** → **Events**.
 2. **Filter events**:
@@ -313,13 +312,13 @@ Now that data is flowing, let's explore it in Kibana.
    - Filter by host, user, process, or event type.
 3. **Analyze an event**: Click on an event to see all details.
 
-### View alerts
+#### View alerts
 
 1. Go to **Security** → **Alerts**.
 2. Review any alerts that have been generated by default detection rules.
 3. Click on an alert to investigate further.
 
-### Explore the security dashboard
+#### Explore the security dashboard
 
 1. Go to **Security** → **Overview**.
 2. View the pre-built security dashboards showing:
@@ -328,10 +327,10 @@ Now that data is flowing, let's explore it in Kibana.
    - Network connections
    - Top threats and events
 
-### Create a custom security query
+#### Create a custom security query
 
 1. Go to **Security** → **Timelines**.
-2. Click **Create timeline**.
+2. Select **Create timeline**.
 3. Add filters and queries to hunt for specific activity:
    - Example: `process.name: "powershell.exe" AND event.action: "network-connection"`
 4. Save your timeline for future investigations.
@@ -339,9 +338,7 @@ Now that data is flowing, let's explore it in Kibana.
 :::
 ::::
 
-:::::
-
-:::::{step} Set up alerting (Optional)
+## Set up alerting (Optional)
 
 Alerts help you stay informed about important events or conditions.
 
@@ -400,9 +397,7 @@ Refer to [security detection rules](/solutions/security/detect-and-alert/about-d
 :::
 ::::
 
-:::::
-
-:::::{step} Document your progress
+## Document your progress
 
 At the end of Week 1, take a moment to document:
 
@@ -412,13 +407,9 @@ At the end of Week 1, take a moment to document:
 - **Alerts configured**: What conditions are you monitoring?
 - **Challenges encountered**: Note any issues for follow-up.
 
-This documentation will be valuable when presenting your PoC to stakeholders.
+This documentation might be valuable when presenting your PoC to stakeholders.
 
-:::::
-
-::::::
-
-## Week 1 checklist
+## Checklist
 
 Before moving to Week 2, ensure you've completed:
 
