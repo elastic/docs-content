@@ -67,35 +67,45 @@ This section shows an example workflow for triaging a specific alert.
 
 **Scenario:** You are investigating an alert: "Multiple Failed Logins Followed by Success - user: jsmith"
 
-**Step 1: Open Alert and Generate Initial Analysis**
+:::::{stepper}
+
+::::{step} Open Alert and Generate Initial Analysis
 1. From the **Alerts** table, click **View details**. 
 2. Click **Chat** to open AI Assistant. The alert information is automatically attached.
 3. Click the **Alert summarization** quick prompt. AI Assistant shared an initial alert assessment.
+::::
 
-**Step 2: Assess Criticality and Context**
+::::{step} Assess Criticality and Context
 Ask AI Assistant:
+
 - "Is user jsmith typically logging in from [this IP/location]?"
 - "Are there other suspicious activities from this user in the last 24 hours?"
 - "What's the risk score for the source IP?"
+::::
 
-**Step 3: Investigate Related Activity**
+::::{step} Investigate Related Activity
 If AI Assistant flags concerns, investigate further. Ask AI Assistant to:
+
 - "Generate an {{esql}} query to find all recent activity from user jsmith".
 - "Generate an {{esql}} query to find other users logging in from this IP".
+::::
 
-**Step 4: Make a Determination**
+::::{step} Make a Determination
 Based on your initial AI-assisted analysis, determine whether you're dealing with a potential threat:
 
 - **False Positive**: User was traveling, this is expected behavior.
   - Immediate action: Add note to alert, close as false positive.
   - Future action: Add a rule exception to prevent similar alerts.
-  
-- **True Positive**: Behavior indicates a potential attack.
-In response to a potential credential compromise, immediately:
+
+- **True Positive**: Behavior indicates a potential attack. In response:
   - Escalate according to your organization's incident response plan.
   - Create a case to track the investigation.
+::::
 
-**Step 5: Document Your Findings**
+::::{step} Document Your Findings
 1. From AI Assistant, click **Add to case** on key messages.
 2. Go to **Cases**, add your case notes.
 3. Go back to the alert and change its status to `Acknowledged`.
+::::
+
+:::::
