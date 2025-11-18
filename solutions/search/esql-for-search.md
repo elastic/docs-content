@@ -126,7 +126,7 @@ Use `TEXT_EMBEDDING` to generate query vectors for KNN searches against your vec
 
 In {{esql}}, you can perform semantic searches on [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field types using the same match syntax as full-text search.
 
-Refer to [semantic search with semantic_text](/solutions/search/semantic-search/semantic-search-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
+Refer to [semantic search with semantic_text](/solutions/search/semantic-search/semantic-search-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
 
 ### Hybrid search
 
