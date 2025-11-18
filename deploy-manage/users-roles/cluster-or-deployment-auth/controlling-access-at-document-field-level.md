@@ -35,11 +35,13 @@ The examples on this page use the [Role management API](https://www.elastic.co/d
 
 
 :::{{admonition}} Document and field level security in {{serverless-full}}
-This topic explains how to apply document and field level security in {{stack}}. You can also apply document and field level security in {{serverless-full}} projects.
+This topic explains how to apply document and field level security in {{stack}} and includes steps for achieving similar tasks in {{serverless-full}} projects.
 
-In {{serverless-full}}, you can only manage document and field level security using the {{ecloud}} console. However, document level security is still managed using queries, and you can use the queries on this page as a guideline.
+In {{serverless-full}}, you can only manage document and field level security using the {{ecloud}} console. However, document-level security is still managed using queries, and you can use the queries on this page as a guideline.
 
-[Learn more](/deploy-manage/users-roles/serverless-custom-roles.md#document-level-and-field-level-security).
+As an administrator, you can create custom roles in the console that define exactly what data users can access by assigning {{es}} [cluster](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-cluster-privileges) and [index](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-index-privileges) privileges and [{{kib}}](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) privileges.
+
+[Learn more](/deploy-manage/users-roles/serverless-custom-roles.md#document-level-and-field-level-security)
 :::
 
 ## Document level security [document-level-security]
@@ -59,6 +61,9 @@ Omitting the `query` parameter entirely disables document level security for the
 
 ### Basic examples
 
+:::::{tab-set}
+
+::::{tab-item} {{stack}}
 The following role definition grants read access only to documents that belong to the `click` category within all the `events-*` data streams and indices:
 
 ```console
@@ -109,6 +114,43 @@ POST /_security/role/dept_role
   ]
 }
 ```
+:::: 
+
+::::{tab-item} {{serverless-short}}
+To configure document-level security (DLS), you create a custom role where you define the documents that this role grants access to, using the [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax:
+
+1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select **Create role**.
+1. Give your custom role a meaningful name and description.
+1. In the **Index privileges** area, specify the data stream pattern and the privilege you want to grant. For example, enter `events-*` and `read`.
+1. Enable the **Grant read privileges to specific documents** toggle and add your query using the QueryDSL syntax.
+
+    * For example, to allow read access only to documents that belong to the click category within all the `events-*` data streams, enter the following query:
+        ```
+        {
+          "match" : { "category" : “click” }
+        }
+        ```
+
+        :::{image} /deploy-manage/images/serverless-custom-role-document-level-privileges-ex-1.png
+        :title: Configuring document-level security
+        :::
+        
+    * To allow read access only to the documents whose `department_id` equals 12, enter the following query:
+        ```
+        {
+          "term" : { "department_id" : 12 }
+        }
+        ```
+
+        ![Configuring document-level security another example](/deploy-manage/images/serverless-custom-role-document-level-privileges-ex-2.png)
+        
+1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
+1. Select **Create role** to save your custom role.
+::::
+
+:::::
+
 
 ### Templating a role query [templating-role-query]
 
@@ -198,50 +240,13 @@ The [set security user processor](elasticsearch://reference/enrich-processor/ing
 For more information, see [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](elasticsearch://reference/enrich-processor/ingest-node-set-security-user-processor.md).
 
 
-### Configuring document-level security in {{serverless-short}} [document-level-serverless]
-```{applies_to}
-serverless: ga
-```
-
-As an administrator, you can create custom roles that enable users to access data and project features. When you create a custom role, you can assign {{es}} [cluster](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-cluster-privileges) and [index](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-index-privileges) privileges and [{{kib}}](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) privileges.
-
-To configure document-level security (DLS), you create a custom role where you define the documents that this role grants access to, using the [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax:
-
-1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Select **Create role**.
-1. Give your custom role a meaningful name and description.
-1. In the **Index privileges** area, specify the data stream pattern and the privilege you want to grant. For example, enter `events-*` and `read`.
-1. Enable the **Grant read privileges to specific documents** toggle and add your query using the QueryDSL syntax.
-    * For example, to allow read access only to documents that belong to the click category within all the `events-*` data streams, enter the following query:
-      ```
-      {
-        "match" : { "category" : “click” }
-      }
-      ```
-
-      :::{image} /deploy-manage/images/serverless-custom-role-document-level-privileges-ex-1.png
-      :title: Configuring document-level security
-      :::
-
-    * To allow read access only to the documents whose `department_id` equals 12, enter the following query:
-      ```
-      {
-        "term" : { "department_id" : 12 }
-      }
-      ```
-
-      :::{image} /deploy-manage/images/serverless-custom-role-document-level-privileges-ex-2.png
-      :title: Configuring document-level security another example
-      :::
-      
-1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
-1.  Select **Create role** to save your custom role.
-
-
 ## Field level security [field-level-security]
 
 To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)).
 
+:::::{tab-set}
+
+::::{tab-item} {{stack}}
 The following role definition grants read access only to the `category`, `@timestamp`, and `message` fields in all the `events-*` data streams and indices.
 
 ```console
@@ -261,9 +266,9 @@ POST /_security/role/test_role1
 
 Access to the following metadata fields is always allowed: `_id`, `_type`, `_parent`, `_routing`, `_timestamp`, `_ttl`, `_size` and `_index`. If you specify an empty list of fields, only these metadata fields are accessible.
 
-::::{note}
+:::{note}
 Omitting the fields entry entirely disables field level security.
-::::
+:::
 
 
 You can also specify field expressions. For example, the following example grants read access to all fields that start with an `event_` prefix:
@@ -426,16 +431,9 @@ The resulting permission is equal to:
 }
 ```
 
-::::{note}
-Field-level security should not be set on [`alias`](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
 ::::
 
-### Configuring field-level security in {{serverless-short}} [field-level-serverless]
-```{applies_to}
-serverless: ga
-```
-
-As an administrator, you can create custom roles that enable users to access data and project features. When you create a custom role, you can assign {{es}} [cluster](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-cluster-privileges) and [index](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-index-privileges) privileges and [{{kib}}](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) privileges.
+::::{tab-item} {{serverless-short}}
 
 To configure field-level security (FLS), you create a custom role where you define the specific fields that this role grants or denies access to:
 
@@ -457,7 +455,15 @@ To configure field-level security (FLS), you create a custom role where you defi
       :::
       
 1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
-1.  Select **Create role** to save your custom role.
+1. Select **Create role** to save your custom role.
+
+:::: 
+
+:::::
+
+:::{note}
+Field-level security should not be set on [`alias`](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
+:::
 
 
 ## Multiple roles with document and field level security [multiple-roles-dls-fls]
@@ -475,6 +481,9 @@ If you need to restrict access to both documents and fields, consider splitting 
 ::::
 
 ## Field and document level security with Cross-cluster API keys [ccx-apikeys-dls-fls]
+```{applies_to}
+serverless: unavailable
+```
 
 [Cross-cluster API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) can be used to authenticate requests to a remote cluster. The `search` parameter defines permissions for cross-cluster search. The `replication` parameter defines permissions for cross-cluster replication.
 
