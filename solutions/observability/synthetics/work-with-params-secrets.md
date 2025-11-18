@@ -161,7 +161,7 @@ This method allows you to keep sensitive values out of the Kibana UI. It require
 When starting your Private Location (Elastic Agent) using Docker, use the `--env` flag to pass your variables. 
 
 ::::{warning}
-Note, these variables will be accessible to **all** monitors running on this specific Private Location.
+These variables will be accessible to **all** monitors running on **this specific** Private Location.
 
 ::::
 
