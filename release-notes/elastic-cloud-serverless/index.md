@@ -21,6 +21,50 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Collects cloud connector telemetry for the Cloud Asset Discovery integration [#240272]({{kib-pull}}240272)
 * Syncs recently used date ranges in the time picker across browser tabs [#242467]({{kib-pull}}242467)
 * Adds `drop_document` processor to Streamlang [#242161]({{kib-pull}}242161)
+* Extracts `AbstractGeoIpDownloader` to share concurrency logic across GeoIP downloaders [#137660]({{es-pull}}137660)
+* Iterates directly over `RoutingNode` contents to reduce allocation overhead [#137694]({{es-pull}}137694)
+* Speeds up sorts that use secondary sort fields [#137533]({{es-pull}}137533)
+* Updates HDFS version references in the documentation [#137576]({{es-pull}}137576)
+* Reduces worst-case Inference API latency by removing an additional 50 ms delay for non–rate-limited requests [#136167]({{es-pull}}136167)
+* Updates {{esql}} documentation to cover newly supported data types [#137726]({{es-pull}}137726)
+* Uses the `DEFAULT_UNSORTABLE` topN encoder for `TSID_DATA_TYPE` in {{esql}} to improve sorting behavior [#137706]({{es-pull}}137706)
+* Transitions Elastic Indexing Service auth polling to a single-node persistent task for improved reliability [#136713]({{es-pull}}136713)
+* Documents {{esql}} decay functions using the `math` directive [#137369]({{es-pull}}137369)
+* Adds an `applies_to` label to the logsdb message default sort setting [#137767]({{es-pull}}137767)
+* Makes {{esql}} field fusion generic so it can be reused across more field types [#137382]({{es-pull}}137382)
+* Releases the {{esql}} `decay` function [#137830]({{es-pull}}137830)
+* Adds release notes for search connectors `9.1.7` and `9.2.1` [#137800]({{es-pull}}137800)
+* Adds release notes for the `9.1.7` stack release [#137836]({{es-pull}}137836)
+* Adds release notes for the `9.2.1` stack release [#137834]({{es-pull}}137834)
+* Adds additional APM attributes to coordinator-phase duration metrics for richer tracing [#137409]({{es-pull}}137409)
+* Adds telemetry to track CPS usage [#137705]({{es-pull}}137705)
+* Introduces simple bulk loading for binary doc values to improve indexing throughput [#137860]({{es-pull}}137860)
+* Uses IVF_PQ for GPU-based index builds on large datasets to improve vector indexing performance [#137126]({{es-pull}}137126)
+* Updates `semantic_text` documentation to link to the authoritative chunking settings guide [#137963]({{es-pull}}137963)
+* Refines `semantic_text` documentation based on user feedback [#137970]({{es-pull}}137970)
+* Aligns match-phase shard APM metrics with the originating search request context [#137196]({{es-pull}}137196)
+* Improves {{serverless-short}} filtering behavior when creating resources from existing configurations [#137850]({{es-pull}}137850)
+* Refactors model field parsing in `AnthropicChatCompletionStreamingProcessor` to better handle model variants [#137926]({{es-pull}}137926)
+* Adds balancer-round summary metrics to shard allocation to aid tuning and diagnostics [#136043]({{es-pull}}136043)
+* Adds merge support to `ES93BloomFilterStoredFieldsFormat` [#137622]({{es-pull}}137622)
+* Adds additional DEBUG-level logging for authentication failures [#137941]({{es-pull}}137941)
+* Adds support for an extra output field in the {{esql}} `TOP` function [#135434]({{es-pull}}135434)
+* Introduces the `INDEX_SHARD_COUNT_FORMAT` setting for index shard count formatting [#137210]({{es-pull}}137210)
+* Documents RCS Strong Verification configuration and usage [#137822]({{es-pull}}137822)
+* Implements an OpenShift AI integration for chat completion, embeddings, and reranking workloads [#136624]({{es-pull}}136624)
+* Adds `first()` and `last()` aggregation functions to {{esql}} [#137408]({{es-pull}}137408)
+* Adds support for the `project_routing` parameter on `_search` and `_async_search` requests [#137566]({{es-pull}}137566)
+* Adds a daily maintenance task to manage `.ml-state` indices in Machine Learning [#137653]({{es-pull}}137653)
+* Adds an `es812` postings format index setting for advanced indexing control [#137857]({{es-pull}}137857)
+* Adds centroid filtering support to DiskBBQ for more restrictive filters [#137959]({{es-pull}}137959)
+* Adds timezone support to {{esql}} `DATE_TRUNC`, `BUCKET`, and `TBUCKET` functions [#137450]({{es-pull}}137450)
+* Further improves bulk loading performance for binary doc values [#137995]({{es-pull}}137995)
+* Updates the Gradle wrapper to version `9.2.0`
+* Adds a synthetics test pipeline for UIAM
+* Improves resolution of the authenticating SAML realm in UIAM
+* Improves logging for the sampled metrics provider
+* Updates `BlobCacheIndexInput` to use `sliceDescription` as the resource description when available, improving diagnostics
+* Switches APM trace detection to use `hasApmTraceContext` and its variant APIs
 
 
 ### Fixes [serverless-changelog-11172025-fixes]
@@ -39,7 +83,23 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the data frame analytics wizard for data views with runtime fields [#242557]({{kib-pull}}242557)
 * Updates the default semantic text endpoint when adding semantic text field mappings to ELSER in EIS [#242436]({{kib-pull}}242436)
 * Fixes auto extraction in event bulk actions [#242325]({{kib-pull}}242325)
-
+* Fixes extraction of the current JDK major version [#137779]({{es-pull}}137779)
+* Fixes OTLP responses to return the correct response type for partial successes [#137718]({{es-pull}}137718)
+* Fixes the get data stream API when a data stream's index mode has been changed to `time_series` [#137852]({{es-pull}}137852)
+* Ensures `include_execution_metadata` in {{esql}} always returns data, including for local-only queries [#137641]({{es-pull}}137641)
+* Fixes the DiskBBQ example in the release highlights documentation [#137960]({{es-pull}}137960)
+* Fixes a {{esql}} vector similarity concurrency issue affecting byte vectors [#137883]({{es-pull}}137883)
+* Reverts a previous change to `statsByShard` that regressed performance for very large shard counts [#137984]({{es-pull}}137984)
+* Fixes scalability issues when updating Machine Learning calendar events [#136886]({{es-pull}}136886)
+* Prevents {{esql}} queries from failing when an index is deleted during query execution [#137702]({{es-pull}}137702)
+* Fixes `GET /_migration/deprecations` not reporting node deprecations when the disk low watermark is exceeded and improves reporting of node-level failures [#137964]({{es-pull}}137964)
+* Fixes `GET /_migration/deprecations` incorrectly checking deprecated affix index settings [#137976]({{es-pull}}137976)
+* Prevents passing an ingest pipeline with a logs stream index request, avoiding invalid configurations [#137992]({{es-pull}}137992)
+* Removes vectors from `_source` documents in {{esql}} when appropriate to reduce payload size [#138013]({{es-pull}}138013)
+* Prevents the delete index API from failing if an index is removed while the request is in progress [#138015]({{es-pull}}138015)
+* Prevents renaming a field into `timestamp` in {{esql}} before its implicit use, avoiding type errors [#137713]({{es-pull}}137713)
+* Fixes `KDE.evaluate()` to return the correct `ValueAndMagnitude` object [#128602]({{es-pull}}128602)
+* Fixes file settings handling in the Restore API [#137585]({{es-pull}}137585)
 
 ## November 10, 2025 [serverless-changelog-11102025]
 
