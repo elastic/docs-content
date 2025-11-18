@@ -43,7 +43,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 
 **Collected metrics and data in AutoOps for self-managed clusters**
-* [Where are metrics stored in AutoOps for self-managed clusters?](#autoops-metrics-storage)
+* [Where are metrics stored in AutoOps for self-managed clusters?](#sm-autoops-metrics-storage)
 * [What information does {{agent}} gather from my cluster?](#extracted-info)
 * [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
 * [Can I view the data gathered by {{agent}}?](#data-viewing-config)
@@ -91,7 +91,7 @@ $$$additional-payment$$$ **Does AutoOps for self-managed clusters incur addition
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
 
-    You can [choose the CSP region where your data is stored](/deploy-manage/monitor/autoops/ec-autoops-regions.md#autoops-for-self-managed-clusters-regions).
+    You can [choose the CSP region where your data is stored](#sm-autoops-metrics-storage).
 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
@@ -117,7 +117,7 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 
 ### Collected metrics and data in AutoOps for self-managed clusters
 
-$$$autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for self-managed clusters?**
+$$$sm-autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for self-managed clusters?**
 :   You can choose where to store your metrics from the following AWS regions:
 
     :::{include} ../_snippets/autoops-cc-regions.md
