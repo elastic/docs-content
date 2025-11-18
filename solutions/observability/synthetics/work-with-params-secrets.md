@@ -137,6 +137,8 @@ Params are viewable in plain-text by administrators and other users with `all` p
 
 ::::
 
+### Use environment variables in Synthetics Projects
+
 If you are managing monitors with a Synthetics project, you can use environment variables in your `synthetics.config.ts` or `synthetics.config.js` file.
 
 The example below uses `process.env.MY_URL` to reference a variable named `MY_URL` defined in the environment and assigns its value to a param. That param can then be used in both lightweight and browser monitors that are managed in the Synthetics project:
@@ -147,4 +149,40 @@ export default {
     my_url: process.env.MY_URL
   }
 };
+```
+
+### Use environment variables with Private Locations
+
+If you are using Kibana-managed monitors and running them on a Private Location, you can inject environment variables directly into the agent's runtime environment.
+
+This method allows you to keep sensitive values out of the Kibana UI. It requires access to the infrastructure hosting the Elastic Agent.
+
+#### 1. Pass variables to the Private Location
+When starting your Private Location (Elastic Agent) using Docker, use the `--env` flag to pass your variables. 
+
+::::{warning}
+Note, these variables will be accessible to **all** monitors running on this specific Private Location.
+
+::::
+
+```bash
+docker run \
+  --env FLEET_ENROLL=1 \
+  --env FLEET_URL=<fleet server> \
+  --env FLEET_ENROLLMENT_TOKEN=<token> \
+  --env MY_URL=<secret value> \
+  --cap-add=NET_RAW \
+  --cap-add=SETUID \
+  -d --restart=unless-stopped \
+docker.elastic.co/elastic-agent/elastic-agent-complete:X.X.X
+```
+
+#### 2. Reference variables in the inline script
+In the Synthetics Monitor editor in Kibana, you can now access these variables using `process.env`.
+
+```js
+step('navigate to secure url', async () => {
+  // The script reads the environment variable from the container
+  await page.goto(process.env.MY_URL);
+});
 ```
