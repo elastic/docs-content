@@ -168,9 +168,9 @@ These variables will be accessible to **all** monitors running on **this specifi
 ```bash
 docker run \
   --env FLEET_ENROLL=1 \
-  --env FLEET_URL=<fleet server> \
-  --env FLEET_ENROLLMENT_TOKEN=<token> \
-  --env MY_URL=<secret value> \
+  --env FLEET_URL={fleet_server_host_url} \
+  --env FLEET_ENROLLMENT_TOKEN={enrollment_token} \
+  --env MY_URL={secret_value} \
   --cap-add=NET_RAW \
   --cap-add=SETUID \
   -d --restart=unless-stopped \
