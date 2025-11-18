@@ -342,7 +342,7 @@ Main functions:
 :   Call {{kib}} APIs on your behalf.
 
 ::::::{important}
-For self‑managed (non‑cloud) deployments, configure [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in your `kibana.yml`. This setting is required to use the `kibana` function.
+For self‑managed (non‑cloud) deployments, it is required to configure [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in your `kibana.yml` to use the `kibana` function.
 ::::::
 
 `query`
