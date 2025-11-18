@@ -30,12 +30,13 @@ To ingest, parse, and correlate plaintext logs:
 
 Send application logs to {{es}} using one of the following shipping tools:
 
-:::{tip}
-We recommend using the [{{edot}} Collector](/solutions/observability/logs/stream-any-log-file-using-edot-collector.md) as the preferred way to collect application logs. You can also use:
-
 * [{{filebeat}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) A lightweight data shipper that sends log data to {{es}}.
 * [{{agent}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) A single agent for logs, metrics, security data, and threat prevention. Combined with {{fleet}}, you can centrally manage {{agent}} policies and lifecycles directly from {{kib}}.
+
+:::{tip}
+We recommend using the [{{edot}} Collector](/solutions/observability/logs/stream-any-log-file-using-edot-collector.md) as the preferred way to collect application logs.
 :::
+
 
 ### Ingest logs with {{filebeat}} [ingest-plaintext-logs-with-filebeat]
 
