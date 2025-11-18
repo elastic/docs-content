@@ -341,6 +341,10 @@ Main functions:
 `kibana`
 :   Call {{kib}} APIs on your behalf.
 
+::::::{important}
+For self‑managed (non‑cloud) deployments, configure [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in your `kibana.yml`. This setting is required to use the `kibana` function.
+::::::
+
 `query`
 :   Generate, execute, and visualize queries based on your request.
 
