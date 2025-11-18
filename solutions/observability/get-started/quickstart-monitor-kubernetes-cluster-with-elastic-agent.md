@@ -9,7 +9,6 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-collector
 ---
 
 # Quickstart: Monitor your Kubernetes cluster with {{agent}} [monitor-k8s-logs-metrics-with-elastic-agent]
@@ -17,7 +16,7 @@ products:
 In this quickstart guide, you'll learn how to create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
 
 :::{tip}
-You can also use the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) to collect Kubernetes logs, metrics, and application traces using OpenTelemetry.
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) as the preferred way to collect Kubernetes logs, metrics, and application traces using OpenTelemetry.
 :::
 
 :::{note}

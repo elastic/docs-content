@@ -6,7 +6,6 @@ applies_to:
 products:
   - id: observability
   - id: apm
-  - id: edot-sdk
 ---
 
 # Mobile service overview [apm-mobile-service-overview]

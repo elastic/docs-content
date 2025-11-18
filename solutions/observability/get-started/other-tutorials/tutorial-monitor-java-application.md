@@ -22,7 +22,7 @@ You’ll learn how to:
 * Instrument your application using the [Elastic APM Java agent](apm-agent-java://reference/index.md).
 
 :::{tip}
-You can also instrument your Java application using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as an alternative to the Elastic APM Java agent. The EDOT Java SDK provides OpenTelemetry-based instrumentation and can send telemetry data to Elastic.
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application. The EDOT Java SDK provides OpenTelemetry-based instrumentation and can send telemetry data to Elastic.
 :::
 
 * Monitor your services using {{heartbeat}} and view your uptime data in {{kib}}.
@@ -1415,7 +1415,7 @@ The third piece of {{observability}} is Application Performance Management (APM)
 The agent has two tasks: instrumenting the Java application to extract application performance information and sending that data to the APM Server.
 
 :::{note}
-This tutorial uses the Elastic APM Java agent. As an alternative, you can use the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) for OpenTelemetry-based instrumentation. Refer to the [EDOT Java SDK setup guide](elastic-otel-java://reference/edot-java/setup/index.md) for instructions.
+This tutorial uses the Elastic APM Java agent. We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application with OpenTelemetry-based instrumentation. Refer to the [EDOT Java SDK setup guide](elastic-otel-java://reference/edot-java/setup/index.md) for instructions.
 :::
 
 One of the APM’s core ideas is the ability to follow the flow of a user session across your whole stack, regardless of whether you have dozens of microservices or a monolith answering your user requests. This implies the ability to tag a request across your entire stack.
