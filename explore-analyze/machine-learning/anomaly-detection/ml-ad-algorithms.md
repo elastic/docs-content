@@ -10,7 +10,7 @@ products:
 
 # Anomaly detection algorithms [ml-ad-algorithms]
 
-The {{anomaly-detect}} {{ml-features}} use a bespoke amalgamation of different techniques such as clustering, various types of time series decomposition, Bayesian distribution modeling, and correlation analysis. These analytics provide sophisticated real-time automated {{anomaly-detect}} for time series data.
+The {{anomaly-detect}} {{ml-features}} use a combination of advanced techniques such as clustering, various types of time series decomposition, Bayesian distribution modeling, and correlation analysis. These analytics provide sophisticated real-time automated {{anomaly-detect}} for time series data.
 
 The {{ml}} analytics statistically model the time-based characteristics of your data by observing historical behavior and adapting to new data. The model represents a baseline of normal behavior and can therefore be used to determine how anomalous new events are.
 
