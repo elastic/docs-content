@@ -18,11 +18,34 @@ To learn about enabling and disabling these features in your deployment, refer t
 
 For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 
-## Requirements 
+## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate license and feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
 - Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 
+## AI-powered features on the Elastic platform
+
+### Elastic {{infer-cap}}
+```{applies_to}
+stack:
+serverless:
+```
+
+[Elastic {{infer-cap}}](/explore-analyze/elastic-inference.md) enables you to use {{ml}} or AI models to make predictions or enact operations — such as text embedding, or reranking - on your data.
+
+To learn more, refer to:
+
+- [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md): a managed service that runs {{infer}} outside your cluster resources.
+- [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md): a general-purpose API that enables you to run {{infer}} using EIS, your own models, or third-party services.
+
+### Natural language processing
+```{applies_to}
+stack:
+serverless:
+```
+Natural Language Processing (NLP) enables you to analyze natural language data and make predictions.
+
+Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md). You can also [deploy custom models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
 ## AI-powered features in {{es}}
 
@@ -35,9 +58,9 @@ serverless:
   security: unavailable
 ```
 
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your Elasticsearch data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
-### AI assistant
+### AI assistant for {{es}}
 ```{applies_to}
 stack:
 serverless:
@@ -45,45 +68,25 @@ serverless:
 
 [](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
-### Elastic inference
-```{applies_to}
-stack:
-serverless:
-```
-[Elastic Inference](/explore-analyze/elastic-inference.md) helps you use machine learning models to make predictions or enact operations — such as text embedding, or reranking - on your data.
-
-To learn more, refer to:
-
-- [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md): a managed service that runs inference outside your cluster resources.
-- [The inference API](/explore-analyze/elastic-inference/inference-api.md): a general-purpose API that enables you to run inference using EIS, your own models, or third-party services.
-
-### Natural language processing
-```{applies_to}
-stack:
-serverless:
-```
-Natural Language Processing (NLP) allows you to analyze natural language data and make predictions.
-
-Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md). You can also [deploy custom models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
-
 ### AI-powered search
 ```{applies_to}
 stack:
 serverless:
 ```
 
-[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses machine learning models to capture meaning in content.  
+[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.  
 
-Depending on your team's technical expertise and requirements, you can choose from two broad paths:  
+Depending on your team's technical expertise and requirements, you can choose from two broad paths:
 
-- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text) 
-- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) 
+- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text) which is the recommended way to perform semantic search.
+- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector).
 
 ### Hybrid search
 ```{applies_to}
 stack:
 serverless:
 ```
+
 [Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with AI-powered search for more powerful search experiences that serve a wider range of user needs.
 
 ### Playground
@@ -102,10 +105,9 @@ serverless:
 
 The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
 
-
 ## AI-powered features in {{observability}}
 
-### AI assistant
+### AI assistant for {{observability}}
 ```{applies_to}
 stack:
 serverless:
