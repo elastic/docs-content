@@ -14,7 +14,9 @@ products:
 
 Observability allows you to visualize infrastructure metrics to help diagnose problematic spikes, identify high resource utilization, automatically discover and track pods, and unify your metrics with logs and APM data.
 
-Using {{agent}} integrations, you can ingest and analyze metrics from servers, Docker containers, Kubernetes orchestrations, explore and analyze application telemetry, and more.
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect infrastructure metrics. You can also use {{agent}} integrations to ingest and analyze metrics from servers, Docker containers, Kubernetes orchestrations, and more.
+:::
 
 For more information, refer to the following links:
 

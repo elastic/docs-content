@@ -2,6 +2,8 @@
 navigation_title: CI/CD
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/ci-cd-observability.html
+applies_to:
+  stack: ga
 products:
   - id: observability
 ---
@@ -18,14 +20,18 @@ To provide monitoring dashboards, alerting, and root cause analysis on pipelines
 
 ## CI/CD observability architectures [ci-cd-architecture]
 
-Using the APM Server, connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
+:::{tip}
+We recommend using the [{{edot}} Collector](opentelemetry://reference/index.md) as the preferred way to collect CI/CD observability data. You can also use the {{apm-server}} to connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
+:::
+
+Using the {{apm-server}}, connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
 
 :::{image} /solutions/images/observability-simple-arch-observability.png
 :alt: Simple architecture of CI/CD observability with Elastic
 :title: Architecture of CI/CD observability with Elastic
 :::
 
-A more advanced CI/CD observability architecture includes an OpenTelemetry Collector deployed on the edge, next to the CI/CD tools. This architecture provides the following:
+A more advanced CI/CD observability architecture includes an [{{edot}} Collector](opentelemetry://reference/index.md) deployed on the edge, next to the CI/CD tools. This architecture provides the following:
 
 * Low latency between the CI/CD tools and the collector is particularly beneficial to ephemeral tools like the otel-cli.
 * The ability to route the observability signals to multiple backends in addition to Elastic {{observability}}.

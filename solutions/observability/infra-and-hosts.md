@@ -17,6 +17,10 @@ products:
 
 Explore the topics in this section to learn how to observe and monitor hosts and other systems running in your environment.
 
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect infrastructure metrics and logs. You can also use the [Elastic Agent](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md) with integrations for infrastructure monitoring.
+:::
+
 |     |     |
 | --- | --- |
 | [Analyze infrastructure and host metrics](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) | Visualize infrastructure metrics to help diagnose problematic spikes, identify high resource utilization, automatically discover and track pods, and unify your metrics with other observability data. |
