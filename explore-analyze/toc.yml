@@ -165,7 +165,6 @@ toc:
           - file: scripting/painless-lab.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
-      - file: scripting/painless-lab.md
   - file: ai-features/ai-features.md
     children:
       - file: ai-features/ai-assistant.md
