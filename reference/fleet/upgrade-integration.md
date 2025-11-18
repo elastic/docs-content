@@ -2,6 +2,9 @@
 navigation_title: Upgrade an integration
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -48,6 +51,10 @@ In larger deployments, you should test integration upgrades on a sample {{agent}
 You must upgrade standalone agents separately. If you used {{kib}} to create and download your standalone agent policy, see [Upgrade standalone agent policies after upgrading an integration](/reference/fleet/create-standalone-agent-policy.md#update-standalone-policies).
 ::::
 
+::::{tip}
+:applies_to: stack: ga 9.3
+If you encounter issues after upgrading an integration and your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **integration rollback**, you can [roll back the integration to the previously installed version](/reference/fleet/roll-back-integration.md).
+::::
 
 
 ## Keep integration policies up to date automatically [upgrade-integration-policies-automatically]
@@ -62,7 +69,7 @@ The following integrations are installed automatically when you select certain o
 
 The [Elastic Defend](integration-docs://reference/endpoint/index.md) integration also has an option to upgrade installation policies automatically.
 
-Note that for the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be disabled.
+For the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be disabled.
 
 * [Elastic APM](integration-docs://reference/apm/index.md)
 * [Cloud Security Posture Management](integration-docs://reference/cloud_security_posture/index.md#cloud-security-posture-management-cspm)
