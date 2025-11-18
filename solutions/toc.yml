@@ -77,6 +77,7 @@ toc:
               - file: search/agent-builder/kibana-api.md
               - file: search/agent-builder/a2a-server.md
               - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/permissions.md
           - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
@@ -525,7 +526,6 @@ toc:
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
-      - file: security/elastic-security-serverless.md
       - file: security/get-started.md
         children:
           - file: security/get-started/quickstarts.md
@@ -534,7 +534,6 @@ toc:
               - file: security/get-started/get-started-endpoint-security.md
               - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
-          - file: security/get-started/create-security-project.md
           - file: security/get-started/elastic-security-ui.md
           - file: security/get-started/ingest-data-to-elastic-security.md
             children:
@@ -560,7 +559,6 @@ toc:
           - file: security/ai/ease/ease-intro.md
             children:
               - file: security/ai/ease/ease-alerts.md
-              - file: security/ai/ease/ease-value-report.md
               - file: security/ai/ease/ease-upgrade.md
           - file: security/ai/ai-assistant.md
             children:
@@ -580,6 +578,7 @@ toc:
               - file: security/ai/triage-alerts.md
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
+          - file: security/ai/ease/ease-value-report.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/detections-requirements.md

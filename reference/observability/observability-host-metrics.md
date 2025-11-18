@@ -93,9 +93,9 @@ Refer to the following sections for host metrics and field calculation formulas 
 
 ### Legacy metrics [legacy-metrics]
 
-Over time, we may change the formula used to calculate a specific metric. To avoid affecting your existing rules, instead of changing the actual metric definition, we create a new metric and refer to the old one as "legacy."
+Over time, we may change the formula used to calculate a specific metric. To avoid affecting your existing rules, instead of changing the actual metric definition, we create a new metric and refer to the old one as "legacy".
 
-The UI and any new rules you create will use the new metric definition. However, any alerts that use the old definition will refer to the metric as "legacy."
+The UI and any new rules you create will use the new metric definition. However, any alerts that use the old definition will refer to the metric as "legacy".
 
 | Metric | Description |
 | --- | --- |

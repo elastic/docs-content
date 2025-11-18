@@ -16,20 +16,18 @@ Known issues are significant defects or limitations that may impact your impleme
 
 ## Active
 
-:::{dropdown} Entity store transform is unavailable 
+:::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
+New deployments of integrations that collect data from cloud service providers, such as Asset Discovery and Cloud Security Posture Management, do not work when deployed to AWS using agent-based deployment and the AWS CloudFormation deployment option. The problem results from a malformed CloudFormation parameter: `ElasticAgentVersion`. The default value for `ElasticAgentVersion` has a space instead of a `+`. This produces an invalid agent version value.
 
-**Details**
+For more information, check [#14627](https://github.com/elastic/kibana/pull/242365).
 
-A new feature introduced to the entity store caused the transform to scan for nonexistent indices.
 
-**Workaround** 
+**Workaround**<br> 
 
-Restart the entity store:
-1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. On the **Entity Store** page, turn the toggle off.
-3. Turn the toggle back on.
+To work around this issue, update the default CloudFormation template by replacing the space in the `ElasticAgentVersion` parameter with a `+`.
 
-::::
+:::
+
 
 ::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1
 
@@ -44,6 +42,25 @@ Set the alert delay value to 1 or turn on **Alert flapping detection**.
 ::::
 
 ## Resolved
+
+:::{dropdown} Entity store transform is unavailable 
+
+**Details**
+
+A new feature introduced to the entity store caused the transform to scan for nonexistent indices.
+
+**Workaround** 
+
+Restart the entity store:
+1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Entity Store** page, turn the toggle off.
+3. Turn the toggle back on.
+
+**Resolved** 
+
+This was resolved on November 4, 2025.
+
+::::
 
 :::{dropdown} CSPM and Asset Management integrations don't ingest data when deployed using agent-based technology if {{kib}} is hosted on AWS
 Applies to: {{serverless-short}} deployments hosted on AWS
