@@ -49,6 +49,12 @@ Learn more about [index privileges](elasticsearch://reference/elasticsearch/secu
 
 ## Grant access
 
+You can grant users access to Agent Builder using these methods:
+
+- [Roles](#grant-access-with-roles) to bundle privileges for users.
+- [API keys](#grant-access-with-api-keys) for programmatic access.
+- [Spaces](#working-with-spaces) to scope access to specific environments.
+
 ### Grant access with roles
 
 [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) are {{es}} security constructs that bundle together {{kib}} feature privileges and {{es}} privileges. To grant users access to Agent Builder, create a role that includes the required privileges.
