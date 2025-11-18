@@ -182,7 +182,7 @@ In the Synthetics Monitor editor in Kibana, you can now access these variables u
 
 ```js
 step('navigate to secure url', async () => {
-  // The script reads the environment variable from the container
+  // The script reads the environment variable from the private location elastic agent container
   await page.goto(process.env.MY_URL);
 });
 ```
