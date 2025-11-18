@@ -43,7 +43,7 @@ To set up or use AI assistant, you need the following:
 * (Optional) To use [knowledge base](#obs-ai-add-data): 
   - A 4 GB {{ml}} node.
     :::{note}
-    In {{ecloud}} or {{ece}}, if you have {{ml}} autoscaling enabled, {{ml}} nodes will be started when using the knowledge base and AI Assistant. Therefore using these features incurs additional costs.
+    In {{ecloud}} or {{ece}}, if you have {{ml}} autoscaling enabled, {{ml}} nodes automatically start when using the knowledge base and AI Assistant. Therefore using these features incurs additional costs.
     :::
   - If you want to use [content connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service.
 
