@@ -134,9 +134,7 @@ To configure document-level security (DLS), you create a custom role where you d
         }
         ```
 
-        :::{image} /deploy-manage/images/serverless-custom-role-document-level-privileges-ex-1.png
-        :title: Configuring document-level security
-        :::
+        ![Configuring document-level security](/deploy-manage/images/serverless-custom-role-document-level-privileges-ex-1.png)
         
     * To allow read access only to the documents whose `department_id` equals 12, enter the following query:
         ```
@@ -447,9 +445,7 @@ To configure field-level security (FLS), you create a custom role where you defi
 1. Enable the **Grant access to specific fields** toggle.
     * To grant access to specific fields within each document in all the `events-*` data streams, add the fields to the **Granted fields** list. For example, you can add `category`, `@timestamp`, and `message` as individual fields, or you can specify a field expression such as `event_*` that grants read access to all the fields that start with an `event_` prefix.
     
-      :::{image} /deploy-manage/images/serverless-custom-role-grant-field-level-privileges.png
-      :title: Configuring field-level security by granting access to fields
-      :::
+      ![Configuring field-level security by granting access to fields](/deploy-manage/images/serverless-custom-role-grant-field-level-privileges.png)
 
     * To deny access to specific fields within each document, add the fields to the **Denied fields** list. For example, you can add the `customer.handle` field.
     
