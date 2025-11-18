@@ -25,7 +25,7 @@ With mutual TLS the following authentication and certification verification occu
 
 * **Client Authentication**: The client presents its digital certificate to the server during the TLS handshake. This certificate is issued by a trusted Certificate Authority (CA) and contains the client’s public key.
 * **Server Authentication**: The server also presents its digital certificate to the client, proving its identity and sharing its public key. The server’s certificate is also issued by a trusted CA.
-* **Certificate Verification**: Both the client and server verify each other's certificates by checking the digital signatures against the CAs' public key (the client and server need not use the same CA).
+* **Certificate Verification**: Both the client and server verify each other's certificates by checking the digital signatures against the CAs' public key. The client and server need not use the same CA.
 
 {{fleet}}-managed {{agent}} has two main connections to ensure correct operations:
 
