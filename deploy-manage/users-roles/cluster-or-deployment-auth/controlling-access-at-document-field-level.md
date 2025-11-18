@@ -62,8 +62,9 @@ Omitting the `query` parameter entirely disables document level security for the
 ### Basic examples
 
 :::::{tab-set}
-
+:group: field-document
 ::::{tab-item} {{stack}}
+:sync: stack
 The following role definition grants read access only to documents that belong to the `click` category within all the `events-*` data streams and indices:
 
 ```console
@@ -117,6 +118,7 @@ POST /_security/role/dept_role
 :::: 
 
 ::::{tab-item} {{serverless-short}}
+:sync: serverless
 To configure document-level security (DLS), you create a custom role where you define the documents that this role grants access to, using the [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax:
 
 1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -245,8 +247,9 @@ For more information, see [Ingest pipelines](/manage-data/ingest/transform-enric
 To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)).
 
 :::::{tab-set}
-
+:group: field-document
 ::::{tab-item} {{stack}}
+:sync: stack
 The following role definition grants read access only to the `category`, `@timestamp`, and `message` fields in all the `events-*` data streams and indices.
 
 ```console
@@ -434,7 +437,7 @@ The resulting permission is equal to:
 ::::
 
 ::::{tab-item} {{serverless-short}}
-
+:sync: serverless
 To configure field-level security (FLS), you create a custom role where you define the specific fields that this role grants or denies access to:
 
 1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -450,10 +453,8 @@ To configure field-level security (FLS), you create a custom role where you defi
 
     * To deny access to specific fields within each document, add the fields to the **Denied fields** list. For example, you can add the `customer.handle` field.
     
-      :::{image} /deploy-manage/images/serverless-custom-role-deny-field-level-privileges.png
-      :title: Configuring field-level security by denying access to fields
-      :::
-      
+      ![Configuring field-level security by denying access to fields](/deploy-manage/images/serverless-custom-role-deny-field-level-privileges.png)
+
 1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
 1. Select **Create role** to save your custom role.
 
