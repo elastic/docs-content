@@ -189,10 +189,10 @@ If you’d like to run {{agent}} in a Docker container on a read-only file syste
 For example:
 
 ```bash subs=true
-docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
+docker run --rm --mount source=$(pwd)/state,destination=/state -e STATE_PATH=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
 ```
 
-1. Where `{STATE_PATH}` is the path to a stateful directory to mount where {{agent}} application data can be stored.
+1. Where `STATE_PATH` is the path to a stateful directory to mount where {{agent}} application data can be stored.
 
 You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destination=/state...`) to specify a temporary file storage location. This should be done with caution as it can cause data duplication, particularly for logs, when the container is restarted, as no state data is persisted.
 

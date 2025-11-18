@@ -224,7 +224,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `elastic-agent-cert-key`
             :   The path to the private key to use as for {{agent}}'s connections to {{fleet-server}}.
 
-            `elastic-agent-cert-key`
+            `elastic-agent-cert-key-passphrase`
             :   The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}}. The file must only contain the characters of the passphrase, no newline or extra non-printing characters. This option is only used if the `elastic-agent-cert-key` is encrypted and requires a passphrase to use.
 
             `fleet-server-es-cert`

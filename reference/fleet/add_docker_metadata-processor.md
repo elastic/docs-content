@@ -52,7 +52,7 @@ If the Docker daemon is restarted, the mounted socket will become invalid, and m
       #match_source: true
       #match_source_index: 4
       #match_short_id: true
-      #cleanup_timeout: 60
+      #cleanup_timeout: 60s
       #labels.dedot: false
       # To connect to Docker over TLS you must specify a client and CA certificate.
       #ssl:
