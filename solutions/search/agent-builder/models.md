@@ -63,6 +63,14 @@ The following models are known to work well with {{agent-builder}}:
 - **Anthropic**: Claude Sonnet 4.5, Claude Sonnet 4, Claude Sonnet 3.7
 - **Google**: Gemini 2.5 Pro
 
+## Incompatible models
+
+The following models are not compatible with {{agent-builder}}:
+
+- **OpenAI**: GPT-5-chat
+
+Learn more about [incompatible LLMs](/solutions/search/agent-builder/limitations-known-issues.md#incompatible-llms).
+
 ### Why model quality matters
 
 Agent Builder relies on advanced LLM capabilities including:

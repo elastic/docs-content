@@ -13,7 +13,7 @@ When a document is stored in {{es}}, it is indexed and fully searchable in *near
 
 Lucene, the Java libraries on which {{es}} is based, introduced the concept of per-segment search. A *segment* is similar to an inverted index, but the word *index* in Lucene means "a collection of segments plus a commit point". After a commit, a new segment is added to the commit point and the buffer is cleared.
 
-Sitting between {{es}} and the disk is the filesystem cache. Documents in the in-memory indexing buffer ([Figure 1](#img-pre-refresh)) are written to a new segment ([Figure 2](#img-post-refresh)). The new segment is written to the filesystem cache first (which is cheap) and only later is it flushed to disk (which is expensive). However, after a file is in the cache, it can be opened and read just like any other file.
+Sitting between {{es}} and the disk is the filesystem cache. Documents in the in-memory indexing buffer ([Figure 1](#img-pre-refresh)) are written to a new segment ([Figure 2](#img-post-refresh)). The new segment is written to the filesystem cache first (which is cheap) and only later is it flushed to disk (which is expensive). However, after a file is in the cache, it can be opened and read like any other file.
 
 :::{image} /manage-data/images/elasticsearch-reference-lucene-in-memory-buffer.png
 :alt: A Lucene index with new documents in the in-memory buffer
