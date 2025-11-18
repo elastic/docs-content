@@ -38,7 +38,7 @@ To set up or use AI assistant, you need the following:
 
 * The `Observability AI Assistant: All` {{kib}} privilege.
 
-* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm).
+* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 
 * To use knowledge base: a 4 GB {{ml}} node.
   - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
