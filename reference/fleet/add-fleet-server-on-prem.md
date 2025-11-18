@@ -116,7 +116,7 @@ To add a {{fleet-server}}:
             If you are providing your own certificates:
 
             * Before running the `install` command, make sure you replace the values in angle brackets.
-            * Note that the URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
+            * The URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
 
             ::::
 
