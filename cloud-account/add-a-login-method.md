@@ -19,7 +19,7 @@ When you create your account, you can choose one of the the following methods to
 
 After your account is created, you and can an additional login method. You can’t remove a login method after it’s added.
 
-:::{caution}
+:::{warning}
 When you have both a password-based login and a social login like Google or Microsoft set up, logging in with Google or Microsoft will unset your password-based login password. The next time you use password-based login, you'll be forced to reset your password.
 :::
 
