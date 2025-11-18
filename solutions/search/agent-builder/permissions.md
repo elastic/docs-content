@@ -12,10 +12,12 @@ navigation_title: "Permissions & access control"
 
 Use this page to learn how to configure security roles and API keys for Agent Builder. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
 
+## Required privileges
+
 Agent Builder requires privileges at three levels:
 
 - [{{kib}} feature access](#kib-privileges)
-- [{{es}} cluster access](#es-cluster-privileges)      
+- [{{es}} cluster access](#es-cluster-privileges)
 - [{{es}} index access](#es-index-privileges)
 
 ### {{kib}} privileges
@@ -45,7 +47,9 @@ Tools execute queries against {{es}} indices as the current user. Required privi
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
-### Granting access with roles
+## Grant access
+
+### Grant access with roles
 
 [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) are {{es}} security constructs that bundle together {{kib}} feature privileges and {{es}} privileges. To grant users access to Agent Builder, create a role that includes the required privileges.
 
@@ -82,7 +86,7 @@ POST /_security/role/agent-builder-full
 For read-only access, use `feature_agentBuilder.read` instead of `feature_agentBuilder.all`.
 :::
 
-### API keys for programmatic access
+### Grant access with API keys
 
 When using the Agent Builder APIs programmatically, authenticate with an API key that includes the required privileges.
 
@@ -94,7 +98,7 @@ Refer to these pages for API key configuration examples:
 
 Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
-### Spaces
+### Working with Spaces
 
 Agent Builder respects {{kib}} Spaces when enabled. All conversations, custom agents, and custom tools are scoped to the current Space.
 
