@@ -34,16 +34,18 @@ The {{obs-ai-assistant}} helps you:
 
 To set up or use AI assistant, you need the following:
 
-* An appropriate [Elastic license](https://www.elastic.co/subscriptions).
+* An appropriate [Elastic subscription](https://www.elastic.co/subscriptions)
 
-* The `Observability AI Assistant: All` {{kib}} privilege.
+* The `Observability AI Assistant: All` {{kib}} privilege
 
-* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md)
 
-* To use knowledge base: a 4 GB {{ml}} node.
-  - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
-
-* To use [content connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service.
+* (Optional) To use [knowledge base](#obs-ai-add-data): 
+  - A 4 GB {{ml}} node.
+    :::{note}
+    In {{ecloud}} or {{ece}}, if you have {{ml}} autoscaling enabled, {{ml}} nodes will be started when using the knowledge base and AI Assistant. Therefore using these features incurs additional costs.
+    :::
+  - If you want to use [content connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service.
 
 ## Manage access to AI Assistant
 
