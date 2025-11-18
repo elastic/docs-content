@@ -10,9 +10,11 @@ description: Instructions and best practices for building metric charts with Kib
 
 Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs such as error rates or SLOs for example, and for making them understandable at a glance with dynamic coloring or trend indicators.
 
-They work with any numeric data: plain numbers, percentages, or calculations like a count, sum, or average. You can get this numeric data from numeric fields stored in your {{es}} documents, or from aggregation functions and formulas that you can apply to any type of field.
+They work with any numeric data: plain numbers, percentages, or calculations like a count, sum, or average. You can get this numeric data from numeric fields stored in your {{es}} documents, or from aggregation functions and formulas that you can apply to any type of field. <br>
+You can also display strings by using the `Last value` aggregation function that picks up the last document, sorted by timestamp, in the current tine frame.
 
-The best way to create metric charts in {{kib}} is with **Lens**.
+
+To create metric charts in {{kib}}, you must use **Lens**.
 
 ![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
@@ -38,9 +40,9 @@ Using the dropdown indicating **Bar**, select **Metric**.
 1. Select the {{data-source}} that contains your data.
 2. Define the **Primary metric** by dragging a field from the fields list to the chart. {{kib}} automatically selects an appropriate aggregation function like Sum, Average, or Count based on the field type. This is the only setting that your metric chart requires to display something.
 3. Optionally:
-    - Add a secondary metric. You can use this secondary metric as a comparison value or as a trend indicator to show how the primary metric evolves over time.
-    - Specify a maximum value.
-    - Break down the metric into multiple tiles based on another dimension. 
+    - Add a [secondary metric](#secondary-metric-options). You can use this secondary metric as a comparison value or as a trend indicator to show how the primary metric evolves over time.
+    - Specify a [maximum value](#max-value-options).
+    - [Break down](#breakdown-options) the metric into multiple tiles based on another dimension. 
 
 Refer to [](#settings) to find all data configuration options for your metric chart.
 ::::
@@ -49,7 +51,7 @@ Refer to [](#settings) to find all data configuration options for your metric ch
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
 **Use color wisely**
-:   Assign colors that match your users' expectations. Red typically means problems, yellow means caution, and green means good. But consider your specific context: for costs, lower might be better (green), while for revenue, higher is better (green).
+:   Assign colors that match your users' expectations and consider your specific context: for costs, lower might be better, while for revenue, higher is better.
 
 **Format for readability**
 :   Round to appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics. But show more precision when small changes matter.
@@ -91,7 +93,7 @@ To add trend indicators to your metric visualization:
 
 3. In the secondary metric configuration, look for the **Color by value** option. The possible choices are:
    * **None**: No trend indicators (default)
-   * **Static**: Shows the secondary metric as a badge with a single color that you select
+   * **Static**: Shows the secondary metric as a badge with a fixed color that you select
    * **Dynamic**: Enables both color coding and directional icons based on the comparison
 
 4. Select **Dynamic** coloring. More options appear.
@@ -107,7 +109,7 @@ To add trend indicators to your metric visualization:
 
 7. The secondary metric does not automatically compare with the primary metric. Define the value to **Compare to**:
    * **Static value**: Compares against a fixed baseline value that you specify
-   * **Primary metric**: Compares the secondary metric directly against the primary metric. This option is only available when the primary metric is numeric. 
+   * **Primary metric**: Compares the secondary metric directly against the primary metric by displaying the result of `Primary metric - Secondary metric`. This option is only available when the primary metric is numeric. 
    
      When you select this option, the secondary metric is automatically updated:
 
@@ -264,7 +266,7 @@ The following examples show various configuration options that you can use for b
 :   This example builds on the previous one to display the percentage of successful requests for the 10 countries with the most incoming requests on a monitoring dashboard:
 
     * **Title**: "Successful requests (2xx)"
-    * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
+    * **Primary metric**: `count(kql='response.code >= 200 and response.code < 300') / count(response.code)`
       * **Value format**: `Percent`
       * **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
       * **Supporting visualization:** "Line" to show evolution over time
