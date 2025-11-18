@@ -32,26 +32,18 @@ The {{obs-ai-assistant}} helps you:
 
 ## Requirements [obs-ai-requirements]
 
-The AI assistant requires the following:
+To set up or use AI assistant, you need the following:
 
-- An **Elastic deployment**:
+* An appropriate [Elastic license](https://www.elastic.co/subscriptions).
 
-  - For **{{observability}}**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
+* The `Observability AI Assistant: All` {{kib}} privilege.
 
-  - For **Search**: {{stack}}  version **8.16.0** or later, or **{{serverless-short}} {{es}} project**.
+* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm).
 
-    - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
-
-- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure [AI Assistant settings](../../solutions/observability/observability-ai-assistant.md#obs-ai-settings) to simulate function calling, but this might affect performance.
-
-  - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
-
-    Refer to the [documentation](kibana://reference/connectors-kibana/gen-ai-connectors.md) for your provider to learn about supported and default models.
-
-* The knowledge base requires a 4 GB {{ml}} node.
+* To use knowledge base: a 4 GB {{ml}} node.
   - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
 
-* A self-deployed connector service if you're using [content connectors](elasticsearch://reference/search-connectors/index.md) to populate external data into the knowledge base.
+* To use [content connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service.
 
 ## Manage access to AI Assistant
 
