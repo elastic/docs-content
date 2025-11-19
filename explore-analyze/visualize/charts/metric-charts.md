@@ -51,7 +51,7 @@ Refer to [](#settings) to find all data configuration options for your metric ch
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
 **Use color wisely**
-:   Assign colors that match your users' expectations and consider your specific context: for costs, lower might be better, while for revenue, higher is better.
+:   Assign colors that match your users' expectations and consider your specific context.
 
 **Format for readability**
 :   Round to an appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics, but use more precision when small changes matter.
