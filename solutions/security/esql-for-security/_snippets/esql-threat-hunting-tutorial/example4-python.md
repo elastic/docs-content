@@ -1,3 +1,7 @@
+% WARNING: This snippet is auto-generated. Do not edit directly.
+
+% See https://github.com/leemthompo/python-console-converter/blob/main/README.md
+
 ```python
 resp = client.bulk(
     refresh="wait_for",
@@ -74,7 +78,7 @@ resp = client.bulk(
             "@timestamp": "2025-05-20T02:35:00Z",
             "process": {
                 "name": "ntdsutil.exe",
-                "command_line": "ntdsutil \"ac i ntds\" \"ifm\" \"create full c:\\temp\\ntds\"",
+                "command_line": "ntdsutil \"ac i ntds\" \"ifm\" \"create full c:\temp\ntds\"",
                 "parent": {
                     "name": "cmd.exe"
                 }
@@ -95,7 +99,7 @@ resp = client.bulk(
             "@timestamp": "2025-05-20T12:15:00Z",
             "process": {
                 "name": "schtasks.exe",
-                "command_line": "schtasks.exe /create /tn UpdateCheck /tr c:\\windows\\temp\\update.exe /sc daily",
+                "command_line": "schtasks.exe /create /tn UpdateCheck /tr c:\windows\temp\update.exe /sc daily",
                 "parent": {
                     "name": "cmd.exe"
                 }
@@ -137,7 +141,7 @@ resp = client.bulk(
             "@timestamp": "2025-05-20T13:15:00Z",
             "process": {
                 "name": "sc.exe",
-                "command_line": "sc.exe create RemoteService binPath= c:\\windows\\temp\\remote.exe",
+                "command_line": "sc.exe create RemoteService binPath= c:\windows\temp\remote.exe",
                 "parent": {
                     "name": "cmd.exe"
                 }
@@ -158,7 +162,7 @@ resp = client.bulk(
             "@timestamp": "2025-05-20T13:20:00Z",
             "process": {
                 "name": "sc.exe",
-                "command_line": "sc.exe create BackdoorService binPath= c:\\programdata\\svc.exe",
+                "command_line": "sc.exe create BackdoorService binPath= c:\programdata\svc.exe",
                 "parent": {
                     "name": "powershell.exe"
                 }
@@ -179,7 +183,7 @@ resp = client.bulk(
             "@timestamp": "2025-05-20T13:25:00Z",
             "process": {
                 "name": "sc.exe",
-                "command_line": "sc.exe create PersistenceService binPath= c:\\windows\\system32\\malicious.exe",
+                "command_line": "sc.exe create PersistenceService binPath= c:\windows\system32\malicious.exe",
                 "parent": {
                     "name": "cmd.exe"
                 }

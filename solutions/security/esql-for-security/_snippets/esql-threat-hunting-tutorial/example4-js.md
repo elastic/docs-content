@@ -1,3 +1,7 @@
+% WARNING: This snippet is auto-generated. Do not edit directly.
+
+% See https://github.com/leemthompo/python-console-converter/blob/main/README.md
+
 ```js
 const response = await client.bulk({
   refresh: "wait_for",
@@ -75,7 +79,7 @@ const response = await client.bulk({
       "@timestamp": "2025-05-20T02:35:00Z",
       process: {
         name: "ntdsutil.exe",
-        command_line: 'ntdsutil "ac i ntds" "ifm" "create full c:\\temp\\ntds"',
+        command_line: 'ntdsutil "ac i ntds" "ifm" "create full c:\temp\ntds"',
         parent: {
           name: "cmd.exe",
         },
@@ -97,7 +101,7 @@ const response = await client.bulk({
       process: {
         name: "schtasks.exe",
         command_line:
-          "schtasks.exe /create /tn UpdateCheck /tr c:\\windows\\temp\\update.exe /sc daily",
+          "schtasks.exe /create /tn UpdateCheck /tr c:\windows\temp\update.exe /sc daily",
         parent: {
           name: "cmd.exe",
         },
@@ -141,7 +145,7 @@ const response = await client.bulk({
       process: {
         name: "sc.exe",
         command_line:
-          "sc.exe create RemoteService binPath= c:\\windows\\temp\\remote.exe",
+          "sc.exe create RemoteService binPath= c:\windows\temp\remote.exe",
         parent: {
           name: "cmd.exe",
         },
@@ -163,7 +167,7 @@ const response = await client.bulk({
       process: {
         name: "sc.exe",
         command_line:
-          "sc.exe create BackdoorService binPath= c:\\programdata\\svc.exe",
+          "sc.exe create BackdoorService binPath= c:\programdata\svc.exe",
         parent: {
           name: "powershell.exe",
         },
@@ -185,7 +189,7 @@ const response = await client.bulk({
       process: {
         name: "sc.exe",
         command_line:
-          "sc.exe create PersistenceService binPath= c:\\windows\\system32\\malicious.exe",
+          "sc.exe create PersistenceService binPath= c:\windows\system32\malicious.exe",
         parent: {
           name: "cmd.exe",
         },

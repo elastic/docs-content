@@ -1,12 +1,7 @@
-% WARNING: This snippet is auto-generated. Do not edit directly.
-
-% See https://github.com/leemthompo/python-console-converter/blob/main/README.md
-
-```js
-const response = await client.esql.query({
-  format: "txt",
-  query:
-    '
+```console
+POST /_query?format=txt
+{
+  "query": """
 FROM process-logs
 | WHERE process.name == "schtasks.exe" AND process.command_line:"/create"
 | LOOKUP JOIN asset-inventory ON host.name
@@ -23,7 +18,6 @@ BY user.name, host.name, asset.criticality
   )
 | SORT task_creations DESC
 | LIMIT 1000
-  ',
-});
-console.log(response);
+  """
+}
 ```
