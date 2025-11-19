@@ -54,7 +54,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Assign colors that match your users' expectations and consider your specific context: for costs, lower might be better, while for revenue, higher is better.
 
 **Format for readability**
-:   Round to appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics. But show more precision when small changes matter.
+:   Round to an appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics, but use more precision when small changes matter.
 
 **Provide context**
 :   Use titles and subtitles to explain what the metric shows. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
