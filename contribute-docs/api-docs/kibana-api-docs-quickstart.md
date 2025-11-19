@@ -233,7 +233,7 @@ node scripts/capture_oas_snapshot \
   --update
 ```
 
-For faster iteration**, you can capture the specific paths you're working on, though this minimized output should not be included in your pull request.
+For faster iteration, you can capture the specific paths you're working on, though this minimized output should not be included in your pull request.
 For example:
 
 ```bash
