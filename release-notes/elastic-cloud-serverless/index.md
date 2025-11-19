@@ -58,7 +58,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Further improves bulk loading performance for binary doc values [#137995]({{es-pull}}137995)
 * Updates the Gradle wrapper to version `9.2.0`
 * Adds a synthetics test pipeline for UIAM
-* Improves resolution of the authenticating SAML realm in UIAM
+* Improves the resolution for authenticating SAML realm in UIAM
 * Improves logging for the sampled metrics provider
 * Updates `BlobCacheIndexInput` to use `sliceDescription` as the resource description when available, improving diagnostics
 * Switches APM trace detection to use `hasApmTraceContext` and its variant APIs
@@ -80,7 +80,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the data frame analytics wizard for data views with runtime fields [#242557]({{kib-pull}}242557)
 * Updates the default semantic text endpoint when adding semantic text field mappings to ELSER in EIS [#242436]({{kib-pull}}242436)
 * Fixes auto extraction in event bulk actions [#242325]({{kib-pull}}242325)
-* Fixes extraction of the current JDK major version [#137779]({{es-pull}}137779)
+* Fixes the extraction of the current JDK major version [#137779]({{es-pull}}137779)
 * Fixes OTLP responses to return the correct response type for partial successes [#137718]({{es-pull}}137718)
 * Fixes the get data stream API when a data stream's index mode has been changed to `time_series` [#137852]({{es-pull}}137852)
 * Ensures `include_execution_metadata` in {{esql}} always returns data, including for local-only queries [#137641]({{es-pull}}137641)
@@ -89,7 +89,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reverts a previous change to `statsByShard` that regressed performance for very large shard counts [#137984]({{es-pull}}137984)
 * Fixes scalability issues when updating {{ml}} calendar events [#136886]({{es-pull}}136886)
 * Prevents {{esql}} queries from failing when an index is deleted during query execution [#137702]({{es-pull}}137702)
-* Fixes `GET /_migration/deprecations` not reporting node deprecations when the disk low watermark is exceeded and improves reporting of node-level failures [#137964]({{es-pull}}137964)
+* Fixes `GET /_migration/deprecations` not reporting node deprecations when the disk low watermark is exceeded, and improves reporting of node-level failures [#137964]({{es-pull}}137964)
 * Fixes `GET /_migration/deprecations` incorrectly checking deprecated affix index settings [#137976]({{es-pull}}137976)
 * Prevents passing an ingest pipeline with a logs stream index request, avoiding invalid configurations [#137992]({{es-pull}}137992)
 * Removes vectors from `_source` documents in {{esql}} when appropriate to reduce payload size [#138013]({{es-pull}}138013)
