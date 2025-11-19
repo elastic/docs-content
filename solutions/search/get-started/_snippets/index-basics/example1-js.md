@@ -1,3 +1,7 @@
+% WARNING: This snippet is auto-generated. Do not edit directly.
+
+% See https://github.com/leemthompo/python-console-converter/blob/main/README.md
+
 ```js
 const { Client } = require("@elastic/elasticsearch");
 
@@ -17,6 +21,3 @@ async function run() {
 
 run();
 ```
-
-% WARNING: This snippet is auto-generated. Do not edit directly.
-% See https://github.com/leemthompo/python-console-converter/blob/main/README.md

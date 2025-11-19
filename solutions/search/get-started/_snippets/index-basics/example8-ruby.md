@@ -1,3 +1,7 @@
+% WARNING: This snippet is auto-generated. Do not edit directly.
+
+% See https://github.com/leemthompo/python-console-converter/blob/main/README.md
+
 ```ruby
 response = client.search(
   index: "books",
@@ -12,6 +16,3 @@ response = client.search(
 print(resp)
 
 ```
-
-% WARNING: This snippet is auto-generated. Do not edit directly.
-% See https://github.com/leemthompo/python-console-converter/blob/main/README.md
