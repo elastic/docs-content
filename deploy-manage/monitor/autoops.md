@@ -20,7 +20,7 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
 :screenshot:
-:alt: The Overview page
+:alt: Screenshot showing the Overview page in AutoOps
 :::
 
 ## Key features in AutoOps [ec_autoops_key_features]

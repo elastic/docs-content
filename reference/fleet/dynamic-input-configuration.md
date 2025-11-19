@@ -202,7 +202,7 @@ inputs:
       - add_fields:
           fields:
             platform: ${host.platform}
-          to: host
+          target: host
         condition: ${host.platform} != 'windows'
 ```
 
