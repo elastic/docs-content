@@ -14,7 +14,7 @@ products:
 
 AI is built into many parts of the {{stack}}. This page describes Elastic's AI-powered features, organized by solution, and provides links to more detailed information about each of them.
 
-To learn about enabling and disabling these features in your deployment, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+To learn about enabling and disabling these features in your deployment, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
 For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 
@@ -74,7 +74,7 @@ stack:
 serverless:
 ```
 
-[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.  
+[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.
 
 Depending on your team's technical expertise and requirements, you can choose from two broad paths:
 
@@ -115,41 +115,18 @@ serverless:
 
 [](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
-### Streams 
+### Streams
 ```{applies_to}
 serverless: ga
 stack: preview 9.1, ga 9.2
 ```
 
-[Streams](/solutions/observability/streams/streams.md) provides a single, centralized UI within Kibana that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying Elasticsearch components. Streams incorporates AI in the following ways:
+[Streams](/solutions/observability/streams/streams.md) is an AI-assisted centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data. Streams incorporates AI in the following features:
 
-#### Generate significant events with AI
-```{applies_to}
-serverless: ga
-stack: preview 9.1, ga 9.2
-```
-[Significant Events](/solutions/observability/streams/management/significant-events.md) periodically runs a query on your stream to find important events. These can include error messages, exceptions, and other relevant log messages. You can use AI to suggest queries based on your data.
-
-#### Generate Grok patterns
-```{applies_to}
-serverless: ga
-stack: preview 9.1, ga 9.2
-```
-You can [generate Grok patterns](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns) to parse your data using AI instead of writing them by hand. 
-
-#### Generate partition suggestions
-```{applies_to}
-serverless: preview
-stack: preview 9.2
-```
-[Partitioning](/solutions/observability/streams/management/partitioning.md) helps you organize log data into meaningful child streams within a wired stream. You can let AI suggest logical groupings based on your data, which you can review and accept.
-
-#### Generate stream descriptions and feature identification
-```{applies_to}
-serverless: ga
-stack: preview 9.1, ga 9.2
-```
-On the Streams [advanced settings](/solutions/observability/streams/management/advanced.md) tab, you can use AI to generate your [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that AI features like significant events use when generating suggestions.
+* [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
+* [Grok processing](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
+* [Partitioning](/solutions/observability/streams/management/partitioning.md): {applies_to}`stack: preview 9.2` Use AI to suggest logical groupings and child streams based on your data when using wired streams.
+* [advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features, like significant events, use when generating suggestions.
 
 ## AI-powered features in {{elastic-sec}}
 
@@ -185,7 +162,7 @@ serverless:
   security: ga
 ```
 
-[Automatic Import](/solutions/security/get-started/automatic-import.md) helps you quickly parse, ingest, and create ECS mappings for data from sources that don’t yet have prebuilt Elastic integrations. This can accelerate your migration to {{elastic-sec}}, and help you quickly add new data sources to an existing SIEM solution in {{elastic-sec}}. 
+[Automatic Import](/solutions/security/get-started/automatic-import.md) helps you quickly parse, ingest, and create ECS mappings for data from sources that don’t yet have prebuilt Elastic integrations. This can accelerate your migration to {{elastic-sec}}, and help you quickly add new data sources to an existing SIEM solution in {{elastic-sec}}.
 
 ### Automatic Troubleshooting
 ```{applies_to}
