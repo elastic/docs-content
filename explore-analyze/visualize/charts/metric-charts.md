@@ -26,8 +26,8 @@ To build a metric chart:
 
 ::::{step} Access Lens
 **Lens** is {{kib}}'s main visualization editor. You can access it:
-- By adding a new visualization to a dashboard. To do that, go to the **Dashboards** page and open or create the dashboard where you'd like to add a metric chart.
-- By creating a visualization from the **Visualize library** page.
+- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a metric chart, then add a new visualization.
+- From the **Visualize library** page by creating a new visualization..
 ::::
 
 ::::{step} Set the visualization to Metric
