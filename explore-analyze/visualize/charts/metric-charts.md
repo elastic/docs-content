@@ -198,7 +198,11 @@ Customize your metric chart to display exactly the information you need, formatt
 ### Maximum value settings [max-value-options]
 
 **Value**
-:   An optional reference value that defines the upper bound for your metric. When you specify a maximum, you can show a progress bar by setting the primary metric's **Supporting visualization** option to **Bar**. This is useful for showing progress toward goals or capacity limits.
+:   An optional reference value that defines the upper bound for your metric. Specifying a maximum lets you show a progress bar in your metric chart. The progress is represented by your primary metric's value on a scale of 0 to the defined maximum value. This option is useful for showing progress toward goals or capacity limits.
+
+    :::{note}
+    If a progress bar doesn't show after setting a maximum value, manually set the primary metric's **Supporting visualization** option to **Bar**.
+    :::
 
     :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
