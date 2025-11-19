@@ -202,7 +202,7 @@ responses:
 :sync: code-generated
 
 :::{note}
-**This step is optional.** CI will automatically capture the snapshot when you push your `.ts` changes. Running this locally is useful for validating changes before pushing or debugging issues. See [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh) for the full list of paths captured in CI.
+**This step is optional.** CI will automatically capture the snapshot when you push your `.ts` changes. Running this locally is useful for validating changes before pushing or debugging issues.
 :::
 
 This step captures the OpenAPI specification that {{kib}} generates at runtime from your route definitions. It spins up a local {{es}} and {{kib}} cluster with your code changes. This generates the following output files in the `oas_docs` directory:
@@ -214,13 +214,27 @@ This step captures the OpenAPI specification that {{kib}} generates at runtime f
 - [Docker](https://docs.docker.com/get-docker/) must be running
 - If you're an Elastician, ensure you're logged into Docker with your Elastic account
 
-**Capture all API paths** (recommended):
+To capture all the documented API paths, copy the command from [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh). For example:
 
 ```bash
-node scripts/capture_oas_snapshot --update
+node scripts/capture_oas_snapshot \
+  --include-path /api/status \
+  --include-path /api/alerting/rule/ \
+  --include-path /api/alerting/rules \
+  --include-path /api/actions \
+  --include-path /api/security/role \
+  --include-path /api/spaces \
+  --include-path /api/streams \
+  --include-path /api/fleet \
+  --include-path /api/saved_objects/_import \
+  --include-path /api/saved_objects/_export \
+  --include-path /api/maintenance_window \
+  --include-path /api/agent_builder
+  --update
 ```
 
-**For faster iteration**, capture the specific paths you're working on:
+For faster iteration**, you can capture the specific paths you're working on, though this minimized output should not be included in your pull request.
+For example:
 
 ```bash
 node scripts/capture_oas_snapshot --update --include-path /api/your/specific/path
