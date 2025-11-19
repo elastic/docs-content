@@ -24,7 +24,7 @@ For a demo, refer to the following video (click to view).
 
 You need the `Attack Discovery: All` privileges to use Attack Discovery.
 
-{applies_to}`serverless: ` You need the `Rules: All` privileges to use Attack Discovery.
+{applies_to}`serverless: ` You need the `Rules: Read` privilege at a minimum to use Attack Discovery.
 
 ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "=65%")
 
