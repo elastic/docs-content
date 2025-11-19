@@ -8,10 +8,10 @@ description: Instructions and best practices for building metric charts with Kib
 
 # Build metric charts with {{kib}}
 
-Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs such as error rates or SLOs for example, and for making them understandable at a glance with dynamic coloring or trend indicators.
+Metric charts make important single values stand out on a dashboard. They're perfect for highlighting KPIs such as error rates or SLOs, and for making them understandable at a glance with dynamic coloring or trend indicators.
 
 They work with any numeric data: plain numbers, percentages, or calculations like a count, sum, or average. You can get this numeric data from numeric fields stored in your {{es}} documents, or from aggregation functions and formulas that you can apply to any type of field. <br>
-You can also display strings by using the `Last value` aggregation function that picks up the last document, sorted by timestamp, in the current tine frame.
+You can also display strings by using the `Last value` aggregation function that picks up the last document, sorted by timestamp, in the current time frame.
 
 
 To create metric charts in {{kib}}, you must use [**Lens**](../lens.md)
@@ -47,7 +47,7 @@ Using the dropdown indicating **Bar**, select **Metric**.
 Refer to [](#settings) to find all data configuration options for your metric chart.
 ::::
 
-::::{step} Customize the chart with best practices
+::::{step} Customize the chart to follow best practices
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
 **Use color wisely**
@@ -57,7 +57,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Round to appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics. But show more precision when small changes matter.
 
 **Provide context**
-:   Use titles and subtitles to explain what the metric means. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
+:   Use titles and subtitles to explain what the metric shows. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
 
 Refer to [](#settings) for a complete list of options.
 ::::
@@ -107,7 +107,7 @@ To add trend indicators to your metric visualization:
    * **Value**: Shows only the secondary metric value
    * **Both**: Shows both the icon and value (default)
 
-7. The secondary metric does not automatically compare with the primary metric. Define the value to **Compare to**:
+7. The secondary metric does not automatically compare with the primary metric. Define the value for **Compare to**:
    * **Static value**: Compares against a fixed baseline value that you specify
    * **Primary metric**: Compares the secondary metric directly against the primary metric by displaying the result of `Primary metric - Secondary metric`. This option is only available when the primary metric is numeric. 
    
@@ -165,7 +165,7 @@ Customize your metric chart to display exactly the information you need, formatt
 
 **Appearance**
 :   Define the formatting of the primary metric, including:
-    - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a readable title.
+    - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Color by value**: Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
       - **Static**: Pick a color and its opacity. That color always remains the same and is independent from the metric's value.
@@ -188,7 +188,7 @@ Customize your metric chart to display exactly the information you need, formatt
 
 **Appearance**
 :   Define the formatting of the secondary metric, including:
-    - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a readable title.
+    - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Label**: Define the label displayed next to the secondary metric. By default, the **Name** shows. You can instead show a **Custom** value or hide it by selecting **None**.
     - **Label position**: Choose to show the label **Before** or **After** the metric.
@@ -221,7 +221,7 @@ Customize your metric chart to display exactly the information you need, formatt
 
 **Appearance**
 :   Define the formatting of the broken down view of the metric, including:
-    - **Name**: It's a best practice to customize this with a readable title.
+    - **Name**: It's a best practice to customize this with a meaningful title.
     - **Layout columns**: The number of columns used to lay out the various tiles of your metric chart.
 
 
@@ -254,7 +254,7 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Successful requests (2xx)"
     * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
       * **Value format**: `Percent`
-      * **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
+      * **Color by value**: `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
       * **Supporting visualization:** "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Value format**: `Percent`
