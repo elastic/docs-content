@@ -3,10 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-source-map-how-to.html
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: observability
   - id: apm
 ---
+::::{note}
+Elastic APM RUM and source maps are *not* compatible with [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md).
 
 # Create and upload source maps (RUM) [apm-source-map-how-to]
 
@@ -119,7 +122,10 @@ curl -X POST "http://localhost:5601/api/apm/sourcemaps" \
 ```
 
 1. This example uses the version from `package.json`
-2. The API key used here needs to have appropriate privileges. Refer to the [{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-sourcemaps) API documentation.
+2. The API key used here needs to have appropriate privileges. Refer to the [{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) API documentation.
+
+::::{note}
+Source maps (RUM) API documentation is *not* compatible with [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md).
 
 ### Upload via a custom app [apm-source-map-custom-app]
 
