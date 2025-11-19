@@ -14,7 +14,7 @@ They work with any numeric data: plain numbers, percentages, or calculations lik
 You can also display strings by using the `Last value` aggregation function that picks up the last document, sorted by timestamp, in the current time frame.
 
 
-To create metric charts in {{kib}}, you must use [**Lens**](../lens.md)
+You can create metric charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
