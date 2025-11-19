@@ -28,7 +28,7 @@ The **Deployment** or **Cluster** view shows the following panels.
 
 ### Events over time [ec-autoops-events-over-time]
 
-The **Events Over Time** panel lists all the recent events the {{es}} cluster has triggered, ordered by criticality. It also gives a color-coded heat map to help understand when and how often a particular event happened. Click on any mosaic to get details about a particular event, such as the specific node, index, or shard affected, event time and duration, and a detailed description of the actions you can take to mitigate that event.
+The **Events Over Time** panel lists all the recent events the {{es}} cluster has triggered, ordered by criticality. It also displays a color-coded heat map to help understand when and how often a particular event happened. Click on any mosaic to get details about a particular event, such as the specific node, index, or shard affected, event time and duration, and a detailed description of the actions you can take to mitigate that event.
 
 Refer to [AutoOps events](ec-autoops-events.md) for more details.
 

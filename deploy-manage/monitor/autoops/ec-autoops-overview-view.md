@@ -41,7 +41,7 @@ The **Deployments** table lists all active deployments as well as inactive deplo
 
 ### {{es}} Info [ec-autoops-es-info]
 
-Th **{{es}} Info** panel shows the number of active deployments, the number of nodes, and a summary of used resources, such as total disk size used and total memory connected for all clusters.
+The **{{es}} Info** panel shows the number of active deployments, the number of nodes, and a summary of used resources, such as total disk size used and total memory connected for all clusters.
 
 ### Top Events [ec-autoops-top-events]
 
