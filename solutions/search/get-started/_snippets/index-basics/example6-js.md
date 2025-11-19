@@ -22,3 +22,6 @@ const response = await client.indices.create({
 });
 console.log(response);
 ```
+
+% WARNING: This snippet is auto-generated. Do not edit directly.
+% See https://github.com/leemthompo/python-console-converter/blob/main/README.md

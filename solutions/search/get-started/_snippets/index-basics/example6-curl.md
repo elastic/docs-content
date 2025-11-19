@@ -4,3 +4,6 @@ curl -X PUT "$ELASTICSEARCH_URL/my-explicit-mappings-books" \
   -H "Content-Type: application/json" \
   -d '{"mappings":{"dynamic":false,"properties":{"name":{"type":"text"},"author":{"type":"text"},"release_date":{"type":"date","format":"yyyy-MM-dd"},"page_count":{"type":"integer"}}}}'
 ```
+
+% WARNING: This snippet is auto-generated. Do not edit directly.
+% See https://github.com/leemthompo/python-console-converter/blob/main/README.md
