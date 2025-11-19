@@ -39,7 +39,7 @@ The previous pattern can then be used in the processor.
 
 ## Generate patterns [streams-grok-patterns]
 :::{note}
-This feature requires an [LLM connector](../../../../security/ai/set-up-connectors-for-large-language-models-llm.md).
+This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
 Instead of writing the Grok patterns by hand, you can use the **Generate Patterns** button to generate the patterns for you.

@@ -27,7 +27,7 @@ To find the data stream associated with a visualization in a {{kib}}:
 
     ![Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
 
-1. In the document details, note that there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
+1. In the document details, there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
 
     You can also see the data stream's current backing index, as well as other information such as the document timestamp and details about the agent that ingested the data.
 
@@ -61,5 +61,5 @@ For any data stream that you're interested in, you can [view its current lifecyc
 
 After you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
 
-* For a general guide about configuring a custom ILM policy for any managed data stream, try out our [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
+* For steps to customize an {{ilm-init}} policy for a data stream, try out the [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
 * For the steps to customize an ILM policy for a set of data streams, such as all logs or metrics data streams across all namespaces, across only a selected namespace, and others, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.

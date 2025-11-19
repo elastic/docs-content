@@ -20,7 +20,7 @@ On managed Kubernetes solutions like GKE, {{agent}} has no access to several dat
 
 ## Autopilot GKE [_autopilot_gke]
 
-Although autopilot removes many administration challenges (like workload management, deployment automation etc. of kubernetes clusters), additionally restricts access to specific namespaces (i.e. `kube-system`) and host paths which is the reason that default Elastic Agent manifests would not work.
+Although autopilot removes many administration challenges (such as workload management or deployment automation of kubernetes clusters), it additionally restricts access to specific namespaces (that is, `kube-system`) and host paths which is the reason that default Elastic Agent manifests would not work.
 
 Specific manifests are provided to cover [Autopilot environments](https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-gke-autopilot.md).
 

@@ -119,7 +119,9 @@ This table compares Observability capabilities between {{ech}} deployments and O
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
 | [**Custom roles for Kibana Spaces**](/deploy-manage/manage-spaces.md#spaces-control-user-access) | ✅ | ✅ | |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
-| [**EDOT Cloud Forwarder**](opentelemetry://reference/edot-cloud-forwarder/index.md) | ❌ | ✅ | |
+| [**EDOT Central Configuration**](opentelemetry://reference/central-configuration.md) | ✅ | ❌ | |
+| [**EDOT Cloud Forwarder**](opentelemetry://reference/edot-cloud-forwarder/index.md) | ✅ | ✅ | |
+| [**EDOT Tail-based sampling**](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) | ✅ | ✅ | |
 | **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
 | **[Elastic Synthetics Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
@@ -129,6 +131,7 @@ This table compares Observability capabilities between {{ech}} deployments and O
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](opentelemetry:///reference/motlp.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
 | [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |

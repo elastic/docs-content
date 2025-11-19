@@ -9,7 +9,7 @@ applies_to:
 Ingest pipelines in Elasticsearch are powerful tools for transforming and enriching data before indexing. However, errors can occur during processing. This guide outlines strategies for handling such errors effectively.
 
 :::{important}
-Ingest pipelines are executed before the document is indexed by Elasticsearch. You can handle the errors occurring while processing the document (i.e. transforming the json object) but not the errors triggered while indexing like mapping conflict. For this is the Elasticsearch Failure Store.
+Ingest pipelines are executed before the document is indexed by Elasticsearch. You can handle the errors occurring while processing the document (that is, transforming the json object) but not the errors triggered while indexing like mapping conflict. For this is the Elasticsearch Failure Store.
 :::
 
 Errors in ingest pipelines typically fall into the following categories:
@@ -23,7 +23,7 @@ Create an `error-handling-pipeline` that sets `event.kind` to `pipeline_error` a
 
 The `on_failure` parameter can be defined either for individual processors or at the pipeline level to catch exceptions that may occur during document processing. The `ignore_failure` option allows a specific processor to silently skip errors without affecting the rest of the pipeline.
 
-## Global vs. processor-specific
+## Global versus processor-specific
 
 The following example demonstrates how to use the `on_failure` handler at the pipeline level rather than within individual processors. While this approach ensures the pipeline exits gracefully on failure, it also means that processing stops at the point of error.
 

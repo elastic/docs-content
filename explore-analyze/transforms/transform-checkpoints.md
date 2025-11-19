@@ -27,7 +27,7 @@ To create a checkpoint, the {{ctransform}}:
 
     If changes are found a checkpoint is created.
 
-2. Identifies which entities and/or time buckets have changed.
+2. Identifies which entities or time buckets have changed.
 
     The {{transform}} searches to see which entities or time buckets have changed between the last and the new checkpoint. The {{transform}} uses the values to synchronize the source and destination indices with fewer operations than a full re-run.
 
@@ -45,7 +45,7 @@ If the cluster experiences unsuitable performance degradation due to the {{trans
 
 In most cases, it is strongly recommended to use the ingest timestamp of the source indices for syncing the {{transform}}. This is the most optimal way for {{transforms}} to be able to identify new changes. If your data source follows the [ECS standard](ecs://reference/index.md), you might already have an [`event.ingested`](ecs://reference/ecs-event.md#field-event-ingested) field. In this case, use `event.ingested` as the `sync`.`time`.`field` property of your {{transform}}.
 
-If you don’t have a `event.ingested` field or it isn’t populated, you can set it by using an ingest pipeline. Create an ingest pipeline either using the [ingest pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) (like the example below) or via {{kib}}'s **Ingest Pipelines** management page. Use a [`set` processor](elasticsearch://reference/enrich-processor/set-processor.md) to set the field and associate it with the value of the ingest timestamp.
+If you don't have a `event.ingested` field or it isn't populated, you can set it by using an ingest pipeline. Create an ingest pipeline either using the [ingest pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) (like the example below) or through {{kib}}'s **Ingest Pipelines** management page. Use a [`set` processor](elasticsearch://reference/enrich-processor/set-processor.md) to set the field and associate it with the value of the ingest timestamp.
 
 ```console
 PUT _ingest/pipeline/set_ingest_time
