@@ -35,11 +35,11 @@ At its core, the most important benefit of runtime fields is the ability to add 
 
 ## Incentives [runtime-incentives]
 
-Runtime fields can replace many of the ways you can use scripting with the `_search` API. How you use a runtime field is impacted by the number of documents that the included script runs against. For example, if you’re using the `fields` parameter on the `_search` API to [retrieve the values of a runtime field](retrieve-runtime-field.md), the script runs only against the top hits just like script fields do.
+Runtime fields can replace many of the ways you can use scripting with the `_search` API. How you use a runtime field is impacted by the number of documents that the included script runs against. For example, if you're using the `fields` parameter on the `_search` API to [retrieve the values of a runtime field](retrieve-runtime-field.md), the script runs only against the top hits, similar to script fields.
 
 You can use [script fields](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) to access values in `_source` and return calculated values based on a script valuation. Runtime fields have the same capabilities, but provide greater flexibility because you can query and aggregate on runtime fields in a search request. Script fields can only fetch values.
 
-Similarly, you could write a [script query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md) that filters documents in a search request based on a script. Runtime fields provide a very similar feature that is more flexible. You write a script to create field values and they are available everywhere, such as [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md), [all queries](../../../explore-analyze/query-filter/languages/querydsl.md), and [aggregations](../../../explore-analyze/query-filter/aggregations.md).
+Similarly, you could write a [script query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md) that filters documents in a search request based on a script. Runtime fields provide a similar feature that is more flexible. You write a script to create field values and they are available everywhere, such as [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md), [all queries](../../../explore-analyze/query-filter/languages/querydsl.md), and [aggregations](../../../explore-analyze/query-filter/aggregations.md).
 
 You can also use scripts to [sort search results](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md#script-based-sorting), but that same script works exactly the same in a runtime field.
 

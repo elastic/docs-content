@@ -20,7 +20,7 @@ The rollover feature is an important part of how [index lifecycle](../index-life
 * **Optimized performance** - keeps shard sizes within [recommended limits](/deploy-manage/production-guidance/optimize-performance/size-shards.md) (10-50 GB)
 * **Queries run faster** - improves search performance
 
-Rollover can be triggered via the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
+Rollover can be triggered using the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
 
 :::{tip}
 The following tutorials are available to help you configure rollover for your indices, for three different scenarios:
@@ -83,7 +83,7 @@ Each data stream requires an [index template](../../data-store/templates.md) tha
 For more information about this approach, refer to the [](../index-lifecycle-management/tutorial-time-series-with-data-streams.md) tutorial.
 
 :::{tip}
-Data streams are designed for append-only data, where the data stream name can be used as the operations (read, write, rollover, shrink etc.) target. If your use case requires data to be updated in place, you can perform [update or delete operations directly on the backing indices](../../data-store/data-streams/use-data-stream.md#update-delete-docs-in-a-backing-index).
+Data streams are designed for append-only data, where the data stream name can be used as the operations (read, write, rollover, shrink, and so on) target. If your use case requires data to be updated in place, you can perform [update or delete operations directly on the backing indices](../../data-store/data-streams/use-data-stream.md#update-delete-docs-in-a-backing-index).
 :::
 
 **Data streams naming pattern**<br>

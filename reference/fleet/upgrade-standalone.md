@@ -25,7 +25,7 @@ This command upgrades the binary. Your agent policy should continue to work, but
 
 For more command-line options, see the help for the [`upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command.
 
-## Upgrading standalone {{agent}} in an air-gapped environmment [upgrade-standalone-air-gapped]
+## Upgrading standalone {{agent}} in an air-gapped environment [upgrade-standalone-air-gapped]
 
 The basic upgrade scenario should work for most use cases. However, in an air-gapped environment {{agent}} is not able to access the {{artifact-registry}} at `artifacts.elastic.co` directly.
 
@@ -41,7 +41,7 @@ Refer to [Air-gapped environments](/reference/fleet/air-gapped.md) for more deta
 
 ## Verifying {{agent}} package signatures [upgrade-standalone-verify-package]
 
-Standalone {{agent}} verifies each package that it downloads using publically available SHA hash and .asc PGP signature files. The SHA file is used to verify that the package has not been modified, and the .asc file is used to verify that the package was released by Elastic. For this purpose, the Elastic public GPG key is embedded in {{agent}} itself.
+Standalone {{agent}} verifies each package that it downloads using publicly available SHA hash and .asc PGP signature files. The SHA file is used to verify that the package has not been modified, and the .asc file is used to verify that the package was released by Elastic. For this purpose, the Elastic public GPG key is embedded in {{agent}} itself.
 
 At times, the Elastic private GPG key may need to be rotated, either due to the key expiry or due to the private key having been exposed. In this case, standalone {{agent}} upgrades can fail because the embedded public key no longer works.
 

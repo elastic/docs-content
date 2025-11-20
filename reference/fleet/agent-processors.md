@@ -86,7 +86,7 @@ Processors have the following limitations.
 * Cannot enrich events with data from {{es}} or other custom data sources.
 * Cannot process data after it’s been converted to the Elastic Common Schema (ECS) because the conversion is performed by {{es}} ingest pipelines. This means that your processor configuration cannot refer to fields that are created by ingest pipelines or {{ls}} because those fields are created *after* the processor runs, not before.
 * May break integration ingest pipelines in {{es}} if the user-defined processing removes or alters fields expected by ingest pipelines.
-* If you create new fields via processors, you are responsible for setting up field mappings in the `*-@custom` component template and making sure the new mappings are aligned with ECS.
+* If you create new fields using processors, you are responsible for setting up field mappings in the `*-@custom` component template and making sure the new mappings are aligned with ECS.
 
 
 ## What other options are available for processing data? [processing-options]
