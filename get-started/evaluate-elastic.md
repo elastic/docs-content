@@ -14,7 +14,7 @@ description: Build a successful proof of concept during your Elastic trial. Lear
 
 If you're evaluating Elastic during a trial, this guide helps you build a meaningful proof of concept (PoC) that demonstrates clear value to your organization. Rather than prescribing specific technical steps, this guide focuses on the evaluation process itself, helping you make strategic decisions and measure success.
 
-## What's included
+## What's included in your trial
 
 Your Elastic trial gives you full access to explore our platform's capabilities:
 
@@ -51,18 +51,26 @@ Two foundational decisions shape your evaluation: which deployment type to use a
 
 Elastic offers two primary deployment options on {{ecloud}}. For most evaluations, we recommend starting with one approach and focusing your PoC there.
 
-**{{serverless-short}} (Recommended for evaluations)**:
+::::{tab-set}
+
+:::{tab-item} Elastic Cloud Serverless
 
 - Fully managed with automatic scaling.
 - Simplified configuration and maintenance.
 - Project-based organization.
 - Ideal for focusing on capabilities rather than infrastructure management.
 
-**{{ech}}**:
+:::
+
+:::{tab-item} Elastic Cloud Hosted
 
 - More control over cluster configuration and sizing.
 - Traditional {{es}} architecture.
 - Ideal for evaluating specific infrastructure requirements or migrating from self-managed deployments.
+
+:::
+
+::::
 
 For detailed comparisons:
 
@@ -105,22 +113,35 @@ Before starting technical work, establish what success looks like for your organ
 - What metrics matter most to your organization?
 - What would make this evaluation successful in the eyes of decision-makers?
 
-### Example success criteria by use case
+### Example success criteria by use case
 
-For **Search**:
+::::{tab-set}
+
+:::{tab-item} Search
+
 - Reduce time to find information by X%.
 - Index and search Y documents with sub-second response times.
 - Demonstrate relevance tuning for domain-specific searches.
 
-For **Observability**:
+:::
+
+:::{tab-item} Observability
+
 - Reduce mean time to detect (MTTD) incidents by X minutes.
 - Gain visibility into application performance across Y services.
 - Centralize logs from Z disparate systems.
 
-For **Security**:
+:::
+
+:::{tab-item} Security
+
 - Detect X types of threats that current tools miss.
 - Reduce investigation time by Y%.
 - Demonstrate compliance reporting for Z requirements.
+
+:::
+
+::::
 
 ### Suggested evaluation timeline
 
@@ -128,65 +149,62 @@ Most trials run for two weeks. Here's a suggested approach to maximize your eval
 
 #### Week 1: Foundation and initial value
 
-**Goals**:
+For the first week, focus on the following activities:
+
 - Set up your deployment.
 - Connect your first data sources.
 - Demonstrate basic capabilities.
 - Validate that Elastic can address your use case.
 
-**Getting started by use case**:
+The following activities are recommended for each use case:
 
-For **Search**:
+::::{tab-set}
+
+:::{tab-item} Search
+
 1. Review [Search getting started guide](/solutions/search/get-started.md).
 2. Ingest sample data or connect a data source.
 3. Build basic search queries and test relevance.
 4. Create simple visualizations of your data.
 
-For **Observability**:
+:::
+
+:::{tab-item} Observability
+
 1. Review [Observability getting started guide](/solutions/observability/get-started.md).
 2. Deploy Elastic Agent to monitor 1-2 hosts or services.
 3. Collect logs from a critical application.
 4. Explore metrics and logs in Kibana.
 
-For **Security**:
+:::
+
+:::{tab-item} Security
+
 1. Review [Security getting started guide](/solutions/security/get-started.md).
 2. [Ingest security data](/solutions/security/get-started/ingest-data-to-elastic-security.md) from your environment.
 3. Deploy Elastic Defend to protect critical endpoints.
 4. Enable prebuilt detection rules.
 5. Investigate sample security events.
 
-**Documentation paths**:
+:::
+
+::::
+
+The following resources are recommended for all use cases:
+
 - [Data ingestion overview](/manage-data/ingest.md): Learn how to bring data into Elastic.
 - [Fleet and Elastic Agent](/reference/fleet/index.md): Learn about Elastic Agent and integrations for connecting data sources.
 - [Discover data in Kibana](/explore-analyze/discover.md): Learn to explore and search your data.
 
 #### Week 2: Expansion and measurement
 
-**Goals**:
-- Add additional data sources.
-- Create stakeholder-ready dashboards.
-- Implement key features (alerts, ML, custom queries).
-- Measure against your success criteria.
-- Document results for decision-makers.
+For the second week, focus on the following activities:
 
-**Recommended activities**:
-
-**Expand your data coverage**:
-- Add 2-3 additional data sources relevant to your use case.
-- Refer to [Fleet integrations](/reference/fleet/manage-integrations.md) for available integrations.
-
-**Build compelling visualizations**:
-- Create dashboards that answer key stakeholder questions.
-- Refer to [Dashboard documentation](/explore-analyze/dashboards.md) for guidance.
-- Focus on metrics that demonstrate clear business value.
-
-**Implement alerting**:
-- Set up alerts for critical conditions or thresholds.
-- Refer to [Alerting documentation](/explore-analyze/alerts-cases.md) for configuration options.
-
-**Measure and document**:
+- Add 2-3 additional data sources relevant to your use case. Refer to [Fleet integrations](/reference/fleet/manage-integrations.md) for available integrations.
+- Create dashboards that answer key stakeholder questions. Refer to [Create a dashboard](/explore-analyze/dashboards/create-dashboard.md) for guidance.
+- Focus on metrics that demonstrate clear business value. Use [Lens visualizations](/explore-analyze/visualize/lens.md) to highlight KPIs.
+- Set up alerts for critical conditions or thresholds. Refer to [Alerting](/explore-analyze/alerts-cases.md) for configuration options.
 - Compare results against your success criteria.
-- Capture screenshots and examples.
 - Quantify time savings, efficiency gains, or risk reduction.
 
 ### Administrative considerations for evaluations
