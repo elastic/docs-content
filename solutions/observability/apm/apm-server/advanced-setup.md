@@ -11,7 +11,11 @@ products:
 
 # APM Server advanced setup [apm-setting-up-and-running]
 
-Before reading this section, refer to [](/solutions/observability/apm/apm-server/setup.md) for basic installation and running instructions.
+Before reading this section, refer to [](/solutions/observability/apm/apm-server/setup.md) for basic installation and deployment instructions.
+
+:::{note}
+This section covers {{apm-server}} setup. We recommend using the [{{edot}} Collector](opentelemetry://reference/index.md) as the preferred way to collect application telemetry data using OpenTelemetry.
+:::
 
 This section includes additional information on how to set up and run APM Server, including:
 
