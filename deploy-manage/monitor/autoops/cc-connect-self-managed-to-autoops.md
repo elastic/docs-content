@@ -102,6 +102,10 @@ Select one of the following methods to install {{agent}}:
 * **Windows**
 -->
 
+:::{note}
+macOS is not a supported platform for installing {{agent}} to connect to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
+:::
+
 :::{important} 
 Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
 :::
