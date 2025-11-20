@@ -29,7 +29,7 @@ How you can configure and use {{agent}} providers depends on whether you're runn
 
 ### Context providers [context-providers]
 
-Context providers supply the current context of the running {{agent}} such as agent information (ID, version), host information (hostname, IP address), and environment information (environment variables).
+Context providers supply the current context of the running {{agent}} such as agent information (ID, version), host information (hostname, IP addresses), and environment information (environment variables).
 
 These providers supply only a single key-value mapping. They are generally static, although this is not required. If the key's value changes, the entire configuration is re-evaluated.
 
@@ -37,12 +37,12 @@ To ensure consistency and clarity across documentation and projects, context pro
 
 {{agent}} supports the following context providers:
 
-* [Local provider](/reference/fleet/local-provider.md)
-* [Agent provider](/reference/fleet/agent-provider.md)
-* [Host provider](/reference/fleet/host-provider.md)
-* [Env provider](/reference/fleet/env-provider.md)
-* [Kubernetes Secrets provider](/reference/fleet/kubernetes_secrets-provider.md)
-* [Kubernetes LeaderElection provider](/reference/fleet/kubernetes_leaderelection-provider.md)
+* [Local provider](/reference/fleet/local-provider.md) - Provides custom keys to use as variables.
+* [Agent provider](/reference/fleet/agent-provider.md) - Provides information about the {{agent}} such as ID, version, and build details.
+* [Host provider](/reference/fleet/host-provider.md) - Provides information about the current host such as hostname, IP addresses, platform, and architecture.
+* [Env provider](/reference/fleet/env-provider.md) - Provides access to environment variables as key-value pairs.
+* [{{k8s}} Secrets provider](/reference/fleet/kubernetes_secrets-provider.md) - Provides access to the {{k8s}} Secrets API.
+* [{{k8s}} LeaderElection provider](/reference/fleet/kubernetes_leaderelection-provider.md) - Enables leader election between {{agent}} instances running on {{k8s}} to ensure only one agent holds the leader lock.
 
 
 ### Dynamic providers [dynamic-providers]
@@ -51,9 +51,9 @@ Dynamic providers supply an array of multiple key-value mappings. Each key-value
 
 {{agent}} supports the following dynamic providers:
 
-* [Local dynamic provider](/reference/fleet/local-dynamic-provider.md)
-* [Docker provider](/reference/fleet/docker-provider.md)
-* [Kubernetes provider](/reference/fleet/kubernetes-provider.md)
+* [Local dynamic provider](/reference/fleet/local-dynamic-provider.md) - Defines multiple key-value pairs to generate multiple configurations.
+* [Docker provider](/reference/fleet/docker-provider.md) - Provides Docker container metadata such as ID, name, image, and labels.
+* [{{k8s}} provider](/reference/fleet/kubernetes-provider.md) - Provides metadata from {{k8s}} resources such as pods, nodes, and services.
 
 
 ## Configure providers on standalone {{agent}} [configure-providers-standalone-agent]
