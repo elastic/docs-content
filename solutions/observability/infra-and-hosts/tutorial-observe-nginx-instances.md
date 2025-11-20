@@ -10,7 +10,7 @@ products:
 # Tutorial: Observe your nginx instances [monitor-nginx]
 
 ::::{note}
-**New to Elastic?** Follow the steps in our [getting started guide](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
+**New to Elastic?** Refer to our [getting started guide](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
 
 ::::
 
