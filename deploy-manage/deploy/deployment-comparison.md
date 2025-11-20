@@ -18,7 +18,7 @@ For more details about feature availability in Serverless, check [](elastic-clou
 
 | Feature/capability | Self-managed | {{ech}} | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| Hosting | Any infrastructure | {{ecloud}} through AWS, Azure, or GCP | {{ecloud}} through AWS, Azure or GCP |
+| Hosting | Any infrastructure | {{ecloud}} through AWS, Azure, or GCP | {{ecloud}} through AWS, Azure, or GCP |
 | Hardware configuration | Full control | Limited control | Managed by Elastic |
 | Autoscaling | No | Available | Automatic |
 | Data tiers management | Through ILM policies | Available | No data tiers |
