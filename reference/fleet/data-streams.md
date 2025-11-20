@@ -94,7 +94,7 @@ When you install an integration, {{fleet}} creates two default `@custom` compone
 * A `@custom` component template allowing customization across all documents of a given data stream type, named following the pattern: `<data_stream_type>@custom`.
 * A `@custom` component template for each data stream, named following the pattern: `<name_of_data_stream>@custom`.
 
-The `@custom` component template specific to a datastream has higher precedence over the data stream type `@custom` component template.
+The `@custom` component template specific to a data stream has higher precedence over the data stream type `@custom` component template.
 
 You can edit a `@custom` component template to customize your {{es}} indices:
 
