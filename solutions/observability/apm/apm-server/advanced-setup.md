@@ -14,7 +14,7 @@ products:
 Before reading this section, refer to [](/solutions/observability/apm/apm-server/setup.md) for basic installation and deployment instructions.
 
 :::{note}
-This section covers {{apm-server}} setup. We recommend using the [{{edot}} Collector](opentelemetry://reference/index.md) as the preferred way to collect application telemetry data using OpenTelemetry. For mobile applications, we recommend using the [EDOT Android SDK](apm-agent-android://reference/edot-android/index.md) or [EDOT iOS SDK](apm-agent-ios://reference/edot-ios/index.md).
+This section covers {{apm-server}} setup. We recommend using the [{{edot}} Collector](opentelemetry://reference/index.md) as the preferred way to collect application telemetry data using OpenTelemetry.
 :::
 
 This section includes additional information on how to set up and run APM Server, including:
