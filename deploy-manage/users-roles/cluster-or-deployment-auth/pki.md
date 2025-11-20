@@ -63,6 +63,21 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     If the regex is too restrictive and does not match the Subject DN of the client’s certificate, then the realm does not authenticate the certificate.
     ::::
 
+    Alternatively, username can be extracted from a specific RDN attribute in the Subject DN by using [username_rdn_name](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) or [username_rdn_oid](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings). When an RDN attribute configuration is provided, it supersedes `username_pattern`.
+
+    For example, to extract the username from the `CN` RDN attribute:
+
+    ```yaml
+    xpack:
+      security:
+        authc:
+          realms:
+            pki:
+              pki1:
+                order: 1
+                username_rdn_name: "CN"
+    ```
+
 3. Optional: If you want the same users to also be authenticated using certificates when they connect to {{kib}}, you must configure the {{es}} PKI realm to allow delegation. See [PKI authentication for clients connecting to {{kib}}](#pki-realm-for-proxied-clients).
 4. Restart {{es}} because realm configuration is not reloaded automatically. If you’re following through with the next steps, you might wish to hold the restart for last.
 5. If you're using a self-managed cluster, then [enable SSL/TLS](../../security/secure-cluster-communications.md#encrypt-internode-communication).
