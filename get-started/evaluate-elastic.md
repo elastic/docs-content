@@ -211,7 +211,9 @@ For the second week, focus on the following activities:
 
 Beyond technical capabilities, consider these operational and business aspects during your evaluation.
 
-#### Understanding costs
+::::{tab-set}
+
+:::{tab-item} Understanding costs
 
 Familiarize yourself with Elastic's pricing and billing model:
 
@@ -224,7 +226,9 @@ Consider:
 - How many users will need access?
 - What retention requirements do you have?
 
-#### User and access management
+:::
+
+:::{tab-item} User and access management
 
 If you're building a PoC to share with stakeholders:
 
@@ -232,13 +236,19 @@ If you're building a PoC to share with stakeholders:
 - Create demo accounts for stakeholders with appropriate permissions.
 - Consider role-based access for different organizational needs.
 
-#### Planning for production
+:::
+
+:::{tab-item} Planning for production
 
 Even during evaluation, think ahead to production requirements:
 
 - [Production guidance](/deploy-manage/production-guidance.md): Best practices for production deployments.
 - [High availability and disaster recovery](/deploy-manage/distributed-architecture.md): Understand resilience options.
 - [Security best practices](/deploy-manage/security.md): Plan for secure production deployment.
+
+:::
+
+::::
 
 ## Measuring success
 
@@ -248,20 +258,33 @@ Document your results to demonstrate value to decision-makers.
 
 Capture concrete numbers that demonstrate impact:
 
-**Performance metrics**:
+::::{tab-set}
+
+:::{tab-item} Performance metrics
+
 - Response times (search queries, dashboard load times).
 - Data ingestion rates and volumes.
 - Query performance at scale.
 
-**Operational metrics**:
+:::
+
+:::{tab-item} Operational metrics
+
 - Time saved on common tasks.
 - Reduction in mean time to detect (MTTD) or mean time to respond (MTTR).
 - Number of systems or data sources consolidated.
 
-**Business impact metrics**:
+:::
+
+:::{tab-item} Business impact metrics
+
 - Cost savings from operational efficiency.
 - Risk reduction from improved visibility or security.
 - Productivity improvements from better search or monitoring.
+
+:::
+
+::::
 
 ### Qualitative assessment
 
