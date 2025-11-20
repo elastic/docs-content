@@ -30,7 +30,7 @@ Deployment capacity typically constitutes the majority of your bill, and is the 
 
 ### How can I control the deployment capacity cost? [ec_how_can_i_control_the_deployment_capacity_cost] 
 
-Deployment capacity is purely a function of your current deployment configuration and time.  To reduce this cost, you must [configure your deployment](../../deploy/elastic-cloud/configure.md) to use fewer resources.  To determine how much a particular deployment configuration will cost, try our [pricing calculator](https://cloud.elastic.co/pricing).
+Deployment capacity is purely a function of your current deployment configuration and time.  To reduce this cost, you must [configure your deployment](../../deploy/elastic-cloud/configure.md) to use fewer resources.  To determine how much a particular deployment configuration will cost, try our elastic cloud hosted [pricing calculator](https://cloud.elastic.co/pricing).
 
 
 ## Data Transfer [data-transfer] 
