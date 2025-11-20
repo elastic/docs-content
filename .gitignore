@@ -13,3 +13,6 @@ AGENTS.md
 CLAUDE.md
 GEMINI.md
 .cursor
+.claude
+.claude-flow
+.hive-mind
