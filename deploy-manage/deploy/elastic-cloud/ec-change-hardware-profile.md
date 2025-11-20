@@ -71,7 +71,7 @@ When the current hardware profile of your deployment isn’t the most optimal on
 3. Select **Update** to apply the change.
 
 ::::{note}
-If your deployment is configured for high availability, the hardware profile change does not impact your ability to read and write from the deployment as the change is rolled out instance by instance. Refer to [Plan for production](cloud-hosted.md) to learn about high availability (HA) and how to configure your deployment as HA.
+If your deployment is configured for high availability, the hardware profile change does not impact your ability to read and write from the deployment as the change is rolled out instance by instance. Refer to [Plan for production](elastic-cloud-hosted-planning.md) to learn about high availability (HA) and how to configure your deployment as HA.
 ::::
 
 
