@@ -6,7 +6,7 @@ To restart {{ilm-init}} and resume executing policies, use the [{{ilm-init}} sta
 POST _ilm/start
 ```
 
-The response will look like this:
+The response looks like this:
 
 ```console-result
 {
@@ -20,7 +20,7 @@ Verify that {{ilm}} is now running:
 GET _ilm/status
 ```
 
-The response will look like this:
+The response looks like this:
 
 ```console-result
 {

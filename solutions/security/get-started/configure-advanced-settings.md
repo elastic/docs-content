@@ -223,6 +223,10 @@ The `securitySolution:alertTags` field determines which options display in the a
 
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
+```yaml {applies_to}
+stack: removed 9.1
+serverless: removed
+```
 
 The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 10000.
 
@@ -252,3 +256,9 @@ serverless: ga
 
 The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
 
+## Turn off {{esql}}-based risk scoring
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+By default, [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) calculations are based on {{esql}} queries. Turn off `securitySolution:enableEsqlRiskScoring` to use scripted metrics instead.

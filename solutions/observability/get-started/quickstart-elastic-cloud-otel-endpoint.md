@@ -3,10 +3,10 @@ description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send lo
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
-  serverless:
+  serverless: ga
   deployment:
-    ess:
-  stack: preview 9.2
+    ess: preview
+    self: unavailable
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
@@ -51,8 +51,6 @@ Alternatively, you can retrieve the endpoint from the **Manage project** page an
 1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
 2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.
-
-Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
 ::::
 
@@ -162,7 +160,10 @@ You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"`
 
 ### Error: too many requests
 
-The Managed OTLP endpoint has per-project rate limits in place. If you reach this limit, reach out to our [support team](https://support.elastic.co). Refer to [Rate limiting](opentelemetry://reference/motlp.md#rate-limiting) for more information.
+If you see HTTP `429 Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP Endpoint (mOTLP) endpoint, your project might be hitting ingest rate limits.
+
+Refer to the dedicated [429 errors when using the Elastic Cloud Managed OTLP Endpoint](/troubleshoot/ingest/opentelemetry/429-errors-motlp.md) troubleshooting guide for details on causes, rate limits, and solutions.
+
 
 ## Provide feedback
 

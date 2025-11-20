@@ -4,13 +4,9 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # Tools in {{agent-builder}}
 
@@ -44,13 +40,13 @@ Each tool is an atomic operation with a defined signature - accepting typed para
 
 Key built-in tools include:
 
-- **`.execute_esql`**: Executes an {{esql}} query and returns the results in a tabular format
-- **`.generate_esql`**: Generates an {{esql}} query from a natural language query
-- **`.get_document_by_id`**: Retrieves the full content of an {{es}} document based on its ID and index name
-- **`.get_index_mapping`**: Retrieves mappings for the specified index or indices
-- **`.index_explorer`**: Lists relevant indices and corresponding mappings based on a natural language query
-- **`.list_indices`**: Lists the indices in the {{es}} cluster the current user has access to
-- **`.search`**: A powerful tool for searching and analyzing data within a specific {{es}} index
+- `.execute_esql`: Executes an {{esql}} query and returns the results in a tabular format
+- `.generate_esql`: Generates an {{esql}} query from a natural language query
+- `.get_document_by_id`: Retrieves the full content of an {{es}} document based on its ID and index name
+- `.get_index_mapping`: Retrieves mappings for the specified index or indices
+- `.index_explorer`: Lists relevant indices and corresponding mappings based on a natural language query
+- `.list_indices`: Lists the indices in the {{es}} cluster the current user has access to
+- `.search`: Searches and analyzes data within a specific {{es}} index
 
 Built-in tools serve as building blocks for more complex interactions and provide the foundation for agent capabilities.
 
@@ -197,9 +193,9 @@ Note that built-in tools cannot be modified or deleted.
 
 For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools).
 
-### Serverless API reference
+### API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-tools).
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools).
 
 ## Copy your MCP server URL
 
@@ -210,6 +206,10 @@ The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
 :::{image} images/copy-mcp-server-url-button.png
 :alt: Copy MCP server URL button for easy configuration of external clients
 :width: 250px
+:::
+
+:::{important}
+There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.
 :::
 
 For detailed MCP server configuration, refer to [MCP server](mcp-server.md).

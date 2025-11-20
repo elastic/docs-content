@@ -56,8 +56,8 @@ To add an ILM policy to an {{es}} cluster:
 
 1. Specify a name for the lifecycle policy. Later on, when you create an index template to define how indices are created, you'll use this name to assign the lifecycle policy to each index.
 
-1. In the **Hot phase**, by default an ILM-managed index [rolls over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) when either:
-    * It reaches 30 days of age.
+1. In the **Hot phase**, a [rollover index lifecycle action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) is executed by default when either:
+    * The index reaches 30 days of age.
     * One or more primary shards reach 50 GB in size.
 
     Disable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
@@ -72,7 +72,9 @@ To add an ILM policy to an {{es}} cluster:
 
     ![Create policy page](/manage-data/images/elasticsearch-reference-create-policy-downsample.png "")
 
-    Note that for each phase after the hot phase, you have the option to move the data into the next phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
+    ::::{note}
+    For each phase after the hot phase, you have the option to move the data into the next phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
+    ::::
 
 
 1. For the final phase that's enabled, choose to either keep the data in the phase forever or delete the data after a specified period of time.
@@ -218,7 +220,7 @@ The name of the index must match the pattern defined in the index template and e
 This step is required only when you're planning to use {{ilm-init}} with rolling indices. It is not required when you're using data streams, where the initial managed index is created automatically.
 
 ::::{important}
-When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}} {{es}} output plugins, the necessary policies and configuration changes are applied automatically. If you'd like to create a specialized ILM policy for any data stream, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}} {{es}} output plugins, the necessary policies and configuration changes are applied automatically. If you'd like to create a specialized ILM policy for any data stream, refer to our tutorial [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
 ::::
 
 ::::{tab-set}

@@ -70,7 +70,8 @@ If you don’t have an existing {{ecloud}} account:
 :sync: existing
 
 If you already have an {{ecloud}} account:
-1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to [{{ecloud}}](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services).
+    - The link provided should take you directly to the **Connect your self-managed cluster** page
 2. On your home page, in the **Connected clusters** section, select **Connect self-managed cluster**. 
 3. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
 4. Go through the installation wizard as detailed in the following sections.
@@ -101,11 +102,15 @@ Select one of the following methods to install {{agent}}:
 * **Windows**
 -->
 
+:::{note}
+macOS is not a supported platform for installing {{agent}} to connect to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
+:::
+
 :::{important} 
 Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
 :::
 
-To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md#data-gathering).
+To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#data-gathering).
 
 ### Configure agent
 
@@ -157,8 +162,7 @@ With this authentication method, you need to create an API key to grant access t
 
 ```
 5. Select **Create API key**.
-6. When prompted to copy the key, select **Beats** from the dropdown.
-7. Copy the key and save it for later. You will need it when you [install the agent](#install-agent). 
+6. Copy the key and save it for later. You will need it when you [install the agent](#install-agent).
 
 ::::
 
@@ -211,7 +215,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available AWS regions.
+* **Metrics storage location**: Select where to store your metrics data from the list of available AWS regions:
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::

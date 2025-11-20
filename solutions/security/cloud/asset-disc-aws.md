@@ -13,7 +13,7 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 ## Requirements
 * The user who gives the Cloud Asset Discovery integration AWS permissions must be an AWS account `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing).
 * The Cloud Asset Discovery integration supports only the AWS commercial cloud platform. AWS GovCloud is not supported. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 
@@ -25,8 +25,8 @@ You can set up Cloud Asset Discovery for AWS either by enrolling a single cloud 
 
 Two deployment technologies are available: agentless and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* [Agentless deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 ## Agentless deployment [cad-aws-agentless]
 
@@ -319,5 +319,5 @@ If you want to monitor an AWS account or organization where you have not yet dep
 If you want to monitor an AWS account or organization where you have already deployed {{agent}}:
 
 * Select **Existing hosts**.
-* Select an agent policy that applies the AWS account you want to monitor.
+* Select an {{agent}} policy that applies the AWS account you want to monitor.
 * Click **Save and continue**.

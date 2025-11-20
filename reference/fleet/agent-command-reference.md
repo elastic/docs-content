@@ -464,7 +464,7 @@ elastic-agent inspect components [--show-config]
     :   Use to display the configuration in all units.
 
     `--show-spec`
-    :   Use to get input/output runtime spectification for a component.
+    :   Use to get input/output runtime specification for a component.
 
 
 `--help`
@@ -501,7 +501,7 @@ elastic-agent privileged
 Install {{agent}} permanently on the system and manage it by using the system’s service manager. The agent will start automatically after installation is complete. On Linux (tar package), this command requires a system and service manager like systemd.
 
 ::::{important}
-If you installed {{agent}} from a DEB or RPM package, the `install` command will skip the installation itself and function as an alias of the [`enroll` command](#elastic-agent-enroll-command) instead. Note that after an upgrade of the {{agent}} using DEB or RPM the {{agent}} service needs to be restarted.
+If you installed {{agent}} from a DEB or RPM package, the `install` command will skip the installation itself and function as an alias of the [`enroll` command](#elastic-agent-enroll-command) instead. After an upgrade of the {{agent}} using DEB or RPM the {{agent}} service needs to be restarted.
 ::::
 
 
@@ -734,7 +734,7 @@ See the `--unprivileged` option and [Run {{agent}} without administrative privil
 `--unprivileged`
 :   Run {{agent}} without full superuser privileges. This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems. For details and limitations for running {{agent}} in this mode, refer to [Run {{agent}} without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md).
 
-    Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
+    Changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
 
     {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
 
@@ -827,7 +827,7 @@ You can also run the `./otelcol` command, which calls `./elastic-agent otel` and
 ### Flags [_flags]
 
 `--config=file:/path/to/first --config=file:path/to/second`
-:   Locations to the config file(s). Note that only a single location can be set per flag entry, for example `--config=file:/path/to/first --config=file:path/to/second`.
+:   Locations to the config file(s). Only a single location can be set per flag entry, for example `--config=file:/path/to/first --config=file:path/to/second`.
 
 `--feature-gates flag`
 :   Comma-delimited list of feature gate identifiers. Prefix with `-` to disable the feature. Prefixing with `+` or no prefix will enable the feature.
@@ -1062,7 +1062,7 @@ elastic-agent uninstall
 
 Run {{agent}} without full superuser privileges. This is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems. For details and limitations for running {{agent}} in this mode, refer to [Run {{agent}} without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md).
 
-Note that changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
+Changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
 
 {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 

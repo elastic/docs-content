@@ -72,13 +72,13 @@ For example, if you are indexing metrics data from a fleet of ATMs into Elastics
 
 ## Create and manage {{ilm-init}} policies
 
-You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
+You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs]({{es-apis}}group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
 
 * [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
 * [Update or switch a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
 * [Restore a managed data stream or index](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
-* [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
+* [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
 
 Default {{ilm}} policies are created automatically when you install an [Elastic Integration](integration-docs://reference/index.md), or when you use {{agent}}, {{beats}}, or the {{ls}} {{es}} output plugin to send data to the {{stack}}.
 
