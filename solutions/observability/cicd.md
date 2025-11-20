@@ -20,10 +20,10 @@ To provide monitoring dashboards, alerting, and root cause analysis on pipelines
 
 ## CI/CD observability architectures [ci-cd-architecture]
 
-Using the {{apm-server}}, connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
+Use the {{apm-server}} to connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
 
 :::{tip}
-We recommend using the [{{edot}} Collector](opentelemetry://reference/index.md) as the preferred way to collect CI/CD observability data.
+We recommend using the [{{edot}} Collector](opentelemetry://reference/index.md) to collect CI/CD observability data.
 :::
 
 :::{image} /solutions/images/observability-simple-arch-observability.png
