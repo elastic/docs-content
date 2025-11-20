@@ -11,34 +11,56 @@ products:
 
 # {{agent}} providers [providers]
 
+Providers supply key-value pairs for variable substitution and conditional logic. In other words, they define dynamic values {{agent}} can use when building configurations.
 
-Providers supply the key-value pairs that are used for variable substitution and conditionals. Each provider's keys are automatically prefixed with the name of the provider in the context of the {{agent}}.
+Each provider’s keys are automatically grouped under the provider name within the {{agent}} context. For example, if the `foo` provider supplies `{"key1": "value1", "key2": "value2"}`, {{agent}} stores these key-value pairs as `{"foo": {"key1": "value1", "key2": "value2"}}`.
+You can then reference the values using the `${foo.key1}` and `${foo.key2}` variables.
 
-For example, if a provider named `foo` provides `{"key1": "value1", "key2": "value2"}`, the key-value pairs are placed in `{"foo" : {"key1": "value1", "key2": "value2"}}`. To reference the keys, use the variables `${foo.key1}` and `${foo.key2}`.
+How you can configure and use {{agent}} providers depends on whether you're running a standalone or a {{fleet}}-managed {{agent}}. For more information, refer to:
 
-
-## Provider usage by deployment model [provider_usage_by_deployment_model]
-
-How you use providers depends on whether you're running a standalone or a {{fleet}}-managed {{agent}}.
-
-### Using providers on standalone {{agent}} [using-providers-standalone-agent]
-
-On standalone {{agent}}, providers can be configured through the `providers` key in the `elastic-agent.yml` configuration file. By default, all providers are enabled, but {{agent}} runs them only if they are referenced in the configuration file or in an {{agent}} policy. Disabled providers are not run even if they are referenced.
-
-You can enable, disable, and configure provider settings as needed. For more details, refer to [Provider configuration](#provider_configuration).
-
-### Using providers on {{fleet}}-managed {{agent}} [using-providers-fleet-managed-agent]
-
-On {{fleet}}-managed {{agent}}, you can use provider variables in integration policy settings (for example, `${host.name}`, `${env.foo}`, `${agent.id}`), but you cannot add a `providers` configuration block directly through the {{fleet}} UI.
-
-Some providers can be configured on {{k8s}} deployments using ConfigMaps. For more details, refer to [Advanced {{agent}} configuration managed by {{fleet}}](/reference/fleet/advanced-kubernetes-managed-by-fleet.md).
+* [Configure providers on standalone {{agent}}](#configure-providers-standalone-agent)
+* [Using providers on {{fleet}}-managed {{agent}}](#using-providers-fleet-managed-agent)
 
 
-## Provider configuration [provider_configuration]
+## Provider types
 
-On standalone {{agent}}, provider configuration is specified under the top-level `providers` key in the `elastic-agent.yml` configuration file. All registered providers are enabled by default but they are run by {{agent}} only if they are referenced. If a provider cannot connect, no mappings are produced.
+{{agent}} supports two types of providers: [context](#context-providers) and [dynamic](#dynamic-providers).
 
-All providers are prefixed without name collisions. The name of the provider is in the key in the configuration.
+
+### Context providers [context-providers]
+
+Context providers supply the current context of the running {{agent}} such as agent information (ID, version), host information (hostname, IP address), and environment information (environment variables).
+
+These providers supply only a single key-value mapping. They are generally static, although this is not required. If the key's value changes, the entire configuration is re-evaluated.
+
+To ensure consistency and clarity across documentation and projects, context providers use the {{product.ecs}} naming conventions.
+
+{{agent}} supports the following context providers:
+
+* [Local provider](/reference/fleet/local-provider.md)
+* [Agent provider](/reference/fleet/agent-provider.md)
+* [Host provider](/reference/fleet/host-provider.md)
+* [Env provider](/reference/fleet/env-provider.md)
+* [Kubernetes Secrets provider](/reference/fleet/kubernetes_secrets-provider.md)
+* [Kubernetes LeaderElection provider](/reference/fleet/kubernetes_leaderelection-provider.md)
+
+
+### Dynamic providers [dynamic-providers]
+
+Dynamic providers supply an array of multiple key-value mappings. Each key-value mapping is combined with the previous context provider’s key and value mapping which provides a new unique mapping that is used to generate a configuration.
+
+{{agent}} supports the following dynamic providers:
+
+* [Local dynamic provider](/reference/fleet/local-dynamic-provider.md)
+* [Docker provider](/reference/fleet/docker-provider.md)
+* [Kubernetes provider](/reference/fleet/kubernetes-provider.md)
+
+
+## Configure providers on standalone {{agent}} [configure-providers-standalone-agent]
+
+On standalone {{agent}}, providers can be configured through the top-level `providers` key in the `elastic-agent.yml` configuration file. By default, all providers are enabled, but {{agent}} runs them only if they are referenced in the configuration file or in an {{agent}} policy. Disabled providers are not run even if they are referenced. If a provider cannot connect, no mappings are produced.
+
+You can enable, disable, and configure provider settings as needed. All providers are prefixed without name collisions. In the configuration, the name of the provider is in the key.
 
 The following example shows two providers (`local` and `local_dynamic`) that supply custom keys on a standalone {{agent}}:
 
@@ -57,7 +79,12 @@ providers:
           item: key3
 ```
 
-If a provider is referenced in an {{agent}} policy, it is turned on automatically unless it's explicitly disabled in the `elastic-agent.yml` configuration file. For example, to disable the Docker provider in a standalone {{agent}}, set:
+If a provider is referenced in an {{agent}} policy, it is turned on automatically unless it's explicitly disabled in the `elastic-agent.yml` configuration file.
+
+
+### Disable providers [disable-providers-by-default]
+
+On standalone {{agent}}, you can disable a specific provider, so it cannot be run even if it is referenced. For example, to disable the Docker provider on a standalone {{agent}}, set:
 
 ```yaml
 providers:
@@ -67,45 +94,7 @@ providers:
 
 With this setting, {{agent}} will not run the Docker provider even if it's referenced in an {{agent}} policy.
 
-{{agent}} supports two broad types of providers: [context](#context-providers) and [dynamic](#dynamic-providers).
-
-
-### Context providers [context-providers]
-
-Context providers give the current context of the running {{agent}}, for example, agent information (ID, version), host information (hostname, IP addresses), and environment information (environment variables).
-
-They can only provide a single key-value mapping. Think of them as singletons; an update of a key-value mapping results in a re-evaluation of the entire configuration. These providers are normally very static, but not required. A value can change which results in re-evaluation.
-
-Context providers use the {{product.ecs}} naming to ensure consistency and understanding throughout documentation and projects.
-
-{{agent}} supports the following context providers:
-
-* [Local provider](/reference/fleet/local-provider.md)
-* [Agent provider](/reference/fleet/agent-provider.md)
-* [Host provider](/reference/fleet/host-provider.md)
-* [Env provider](/reference/fleet/env-provider.md)
-* [Kubernetes Secrets provider](/reference/fleet/kubernetes_secrets-provider.md)
-* [Kubernetes LeaderElection provider](/reference/fleet/kubernetes_leaderelection-provider.md)
-
-
-### Dynamic providers [dynamic-providers]
-
-Dynamic providers give an array of multiple key-value mappings. Each key-value mapping is combined with the previous context provider’s key and value mapping which provides a new unique mapping that is used to generate a configuration.
-
-{{agent}} supports the following context providers:
-
-* [Local dynamic provider](/reference/fleet/local-dynamic-provider.md)
-* [Docker provider](/reference/fleet/docker-provider.md)
-* [Kubernetes provider](/reference/fleet/kubernetes-provider.md)
-
-
-### Disabling providers by default [disable-providers-by-default]
-
-Registered providers are run by {{agent}} if they are referenced in the {{agent}} configuration or in a policy.
-
-On standalone {{agent}}, you can disable all providers by setting `agent.providers.initial_default: false`, preventing them from running even if they are referenced.
-
-The following configuration disables all providers with the exception of the Docker provider, which is run when it's referenced in the policy:
+You can also disable all providers by setting `agent.providers.initial_default: false`. The following configuration disables all providers with the exception of the Docker provider, which is run when it's referenced in the policy:
 
 ```yaml
 agent.providers.initial_default: false
@@ -113,3 +102,10 @@ providers:
   docker:
     enabled: true
 ```
+
+
+## Using providers on {{fleet}}-managed {{agent}} [using-providers-fleet-managed-agent]
+
+On {{fleet}}-managed {{agent}}, you can use provider variables in integration policy settings (for example, `${host.name}`, `${env.foo}`, `${agent.id}`), but you cannot add a `providers` configuration block directly through the {{fleet}} UI.
+
+Some providers can be configured on {{k8s}} deployments using ConfigMaps. For more details, refer to [Advanced {{agent}} configuration managed by {{fleet}}](/reference/fleet/advanced-kubernetes-managed-by-fleet.md).
