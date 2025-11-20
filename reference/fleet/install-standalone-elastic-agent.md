@@ -84,7 +84,7 @@ To install and run {{agent}} standalone:
     ```
 
     :::::{note}
-    If you need to uninstall an {{agent}} package on Debian Linux, note that the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
+    If you need to uninstall an {{agent}} package on Debian Linux, the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
     :::::
 
     ::::::
@@ -148,7 +148,7 @@ To install and run {{agent}} standalone:
 5. From the agent directory, run the following commands to install {{agent}} and start it as a service.
 
     ::::{note}
-    On macOS, Linux (tar package), and Windows, run the `install` command to install {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, so just enable then start the service.
+    On macOS, Linux (tar package), and Windows, run the `install` command to install {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, so enable then start the service.
     ::::
 
     :::::{tab-set}

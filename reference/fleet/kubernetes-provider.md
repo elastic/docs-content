@@ -141,7 +141,7 @@ These are the fields available within config templating. The `kubernetes.*` fiel
 ::::
 
 
-Note that not all of these fields are available by default and special configuration options are needed in order to include them.
+Not all of these fields are available by default and special configuration options are needed in order to include them.
 
 For example, if the Kubernetes provider provides the following inventory:
 
@@ -213,7 +213,7 @@ providers.kubernetes:
       enabled: true
 ```
 
-Note that this resource is only available with `scope: cluster` setting and `node` cannot be used as scope.
+This resource is only available with `scope: cluster` setting and `node` cannot be used as scope.
 
 The available keys are:
 

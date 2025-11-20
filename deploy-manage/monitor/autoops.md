@@ -19,7 +19,8 @@ products:
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
-:alt: The Overview page
+:screenshot:
+:alt: Screenshot showing the Overview page in AutoOps
 :::
 
 
