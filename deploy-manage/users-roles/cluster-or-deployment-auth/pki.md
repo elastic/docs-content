@@ -44,39 +44,51 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
     ::::
 
-2. Optional: The username is defined by the [username_pattern](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings). If you want to use something other than the CN of the Subject DN as the username, you can specify a regex to extract the desired username. The regex is applied on the Subject DN.
+2. Optional: The username is defined by the [username_pattern](https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/elasticsearch/configuration-reference/security-settings#ref-pki-settings). If you want to use something other than the CN of the Subject DN as the username, you can use one of the following methods to extract the username:
 
-    For example, the regex in the following configuration extracts the email address from the Subject DN:
+    * {applies_to}`stack: ga 9.1` Extract the username from a specific RDN attribute in the Subject DN.
+	* Specify a regex to extract the desired username. The regex is applied on the Subject DN.
 
-    ```yaml
-    xpack:
-      security:
-        authc:
-          realms:
-            pki:
-              pki1:
-                order: 1
-                username_pattern: "EMAILADDRESS=(.*?)(?:,|$)"
-    ```
+	:::::{tab-set}
 
-    ::::{note}
-    If the regex is too restrictive and does not match the Subject DN of the client’s certificate, then the realm does not authenticate the certificate.
-    ::::
+   ::::{tab-item} Specific RDN attribute
+   The username can be extracted from a specific RDN attribute in the Subject DN by using [username_rdn_name](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) or [username_rdn_oid](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings). When an RDN attribute configuration is provided, it supersedes `username_pattern`.
 
-    Alternatively, username can be extracted from a specific RDN attribute in the Subject DN by using [username_rdn_name](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) or [username_rdn_oid](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings). When an RDN attribute configuration is provided, it supersedes `username_pattern`.
+   For example, to extract the username from the `CN` RDN attribute:
 
-    For example, to extract the username from the `CN` RDN attribute:
+   ```yaml
+   xpack:
+     security:
+       authc:
+         realms:
+           pki:
+             pki1:
+               order: 1
+               username_rdn_name: "CN"
+   ```
+   ::::
 
-    ```yaml
-    xpack:
-      security:
-        authc:
-          realms:
-            pki:
-              pki1:
-                order: 1
-                username_rdn_name: "CN"
-    ```
+	::::{tab-item} Regex
+	Specify a regex to extract the desired username. The regex is applied on the Subject DN.
+	
+	For example, the regex in the following configuration extracts the email address from the Subject DN:
+	
+	```yaml
+	xpack:
+	  security:
+	    authc:
+	      realms:
+	        pki:
+	          pki1:
+	            order: 1
+	            username_pattern: "EMAILADDRESS=(.*?)(?:,|$)"
+	```
+	:::{note}
+	If the regex is too restrictive and does not match the Subject DN of the client’s certificate, then the realm does not authenticate the certificate.
+	:::
+	::::
+	
+	:::::
 
 3. Optional: If you want the same users to also be authenticated using certificates when they connect to {{kib}}, you must configure the {{es}} PKI realm to allow delegation. See [PKI authentication for clients connecting to {{kib}}](#pki-realm-for-proxied-clients).
 4. Restart {{es}} because realm configuration is not reloaded automatically. If you’re following through with the next steps, you might wish to hold the restart for last.
