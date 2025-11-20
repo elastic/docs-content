@@ -1,15 +1,11 @@
-project: 'Get started'
+project: 'Elastic Fundamentals'
 toc:
   - file: index.md
-  - file: trial-getting-started.md
-    children:
-      - file: trial-choose-use-case.md
-      - file: trial-week-1.md
-      - file: trial-week-2.md
   - file: introduction.md
   - file: the-stack.md
   - file: deployment-options.md
   - file: versioning-availability.md
+  - file: evaluate-elastic.md
   - file: howto-use-the-docs.md
   - title: Glossary
     crosslink: docs-content://reference/glossary/index.md

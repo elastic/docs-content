@@ -19,17 +19,13 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 # Get started
 
-Welcome! Whether you're starting a trial or exploring what Elastic has to offer, this section helps you understand our platform and get the most value from your experience.
+Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
 
-## On a trial? Start here
+:::{tip} Evaluating Elastic?
+If you're on a trial and need guidance on building a proof of concept, refer to [Evaluate Elastic](/get-started/evaluate-elastic.md).
+:::
 
-If you've started an Elastic trial and want a guided, hands-on experience to build a proof of concept:
-
-**[Get started with your Elastic trial](/get-started/trial-getting-started.md)**: Follow our step-by-step tutorial designed specifically for trial users. Set up your environment, select a use case, connect data sources, and build a proof of concept.
-
-## Elastic fundamentals
-
-In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together. 
+In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together.
 
 You'll also find other helpful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology.
 
