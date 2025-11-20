@@ -19,7 +19,7 @@ Use this page for a quick overview of your options for deploying Elastic.
 
 Your deployment type significantly impacts the capabilities available across your Elastic environment and the amount of manual work required to set up and maintain it. Some deployment types provide automated orchestration that handles scaling, upgrades, and monitoring across multiple clusters, while others require you to manage these operational tasks manually. 
 
-The choice you make determines how much time you'll spend on infrastructure management versus focusing on using Elastic's features to solve your business problems.
+The choice you make determines how much time you spend on infrastructure management versus focusing on using Elastic's features to solve your business problems.
 
 ## Quick start options
 
