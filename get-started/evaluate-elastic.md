@@ -87,20 +87,13 @@ Choose one use case to focus your initial evaluation. You can always expand to a
 
 | Your challenge | Primary use case |
 |----------------|-----------------|
-| Users struggle to find relevant information across systems | **Search** |
-| Need to build fast, relevant search experiences for applications or websites | **Search** |
-| Limited visibility into application performance or system health | **Observability** |
-| Slow incident response and troubleshooting | **Observability** |
-| Need to detect and respond to security threats | **Security** |
-| Security logs are difficult to analyze or correlate | **Security** |
-| Compliance requires centralized security monitoring | **Security** |
-
-To learn more about each solution, refer to the following sections:
-
-- [Solutions overview](/solutions/index.md): Learn about the different solutions and use cases.
-- [Search solutions](/solutions/search.md): Enterprise search, website search, and search-powered applications.
-- [Observability solutions](/solutions/observability.md): APM, infrastructure monitoring, log management, and synthetic monitoring.
-- [Security solutions](/solutions/security.md): SIEM, endpoint security, threat detection, and incident response.
+| Users struggle to find relevant information across systems | [Search](/solutions/search.md) |
+| Need to build fast, relevant search experiences for applications or websites | [Search](/solutions/search.md) |
+| Limited visibility into application performance or system health | [Observability](/solutions/observability.md) |
+| Slow incident response and troubleshooting | [Observability](/solutions/observability.md) |
+| Need to detect and respond to security threats | [Security](/solutions/security.md) |
+| Security logs are difficult to analyze or correlate | [Security](/solutions/security.md) |
+| Compliance requires centralized security monitoring | [Security](/solutions/security.md) |
 
 ## Build your proof of concept
 
