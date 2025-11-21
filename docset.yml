@@ -131,7 +131,6 @@ subs:
   index-manage-app:   "Index Management"
   rules-app:   "Rules"
   saved-objects-app:   "Saved Objects"
-  api-keys-app:   "API keys"
   connectors-app:   "Connectors"
   reports-app:   "Reports"
   app-search-crawler:   "App Search web crawler"
