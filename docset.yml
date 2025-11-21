@@ -129,7 +129,6 @@ subs:
   project-settings:   "Project settings"
   manage-app:   "Management"
   index-manage-app:   "Index Management"
-  rules-app:   "Rules"
   saved-objects-app:   "Saved Objects"
   reports-app:   "Reports"
   app-search-crawler:   "App Search web crawler"
