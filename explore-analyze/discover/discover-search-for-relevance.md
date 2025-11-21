@@ -6,17 +6,18 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Sort Discover results by relevance score to find the most relevant documents for your query. Learn how to use the _score field to rank search results.
 ---
 
-# Search for relevance [discover-search-for-relevance]
+# Sort results by relevance score in Discover [discover-search-for-relevance]
 
-{{es}} assigns a relevancy, or score to each document, so you can can narrow your search to the documents with the most relevant results. The higher the score, the better it matches your query.
+{{es}} assigns a relevance score to each document based on how well it matches your search query. Sort documents by their `_score` field in **Discover** to display the most relevant results first, helping you quickly find the information that best matches your search criteria.
 
 This example shows how to use **Discover** to list your documents from most relevant to least relevant. This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. In **Discover**, open the {{data-source}} dropdown, and select the data that you want to work with.
 
-    For the sample flights data, set the {{data-source}} to **Kibana Sample Data Flights**.
+    For the sample flights data, set the {{data-source}} to **{{kib}} Sample Data Flights**.
 
 2. Run your search.  For the sample data, try:
 

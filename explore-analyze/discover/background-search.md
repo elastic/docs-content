@@ -20,6 +20,8 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 
 Sometimes you might need to search through large amounts of data, no matter how long the search takes. Consider a threat hunting scenario, where you need to search through years of data. 
 
+**Technical summary**: Enable by setting `data.search.sessions.enabled: true` in `kibana.yml`. From **Discover** or **Dashboards**, click **Send to background** to run long queries asynchronously. Monitor status and restore results using the background searches toolbar button.
+
 You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work. 
 
 You can access your list of background searches at any time to check their status and manage them from the {icon}`background_task` **Background searches** button in the toolbar.
