@@ -2,6 +2,8 @@
 navigation_title: add_host_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_host_metadata-processor.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
