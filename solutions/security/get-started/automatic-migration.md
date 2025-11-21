@@ -18,6 +18,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ::::{admonition} Requirements
 * The `SIEM migrations: All` Security sub-feature privilege.
+* {applies_to}`serverless: ` The `Rules: All` Security sub-feature privilege.
 * A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
