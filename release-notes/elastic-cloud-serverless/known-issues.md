@@ -16,6 +16,17 @@ Known issues are significant defects or limitations that may impact your impleme
 
 ## Active
 
+:::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
+New deployments of integrations that collect data from cloud service providers, such as Asset Discovery and Cloud Security Posture Management, do not work when deployed to AWS using agent-based deployment and the AWS CloudFormation deployment option. The problem results from a malformed CloudFormation parameter: `ElasticAgentVersion`. The default value for `ElasticAgentVersion` has a space instead of a `+`. This produces an invalid agent version value.
+
+For more information, check [#14627](https://github.com/elastic/kibana/pull/242365).
+
+
+**Workaround**<br> 
+
+To work around this issue, update the default CloudFormation template by replacing the space in the `ElasticAgentVersion` parameter with a `+`.
+
+:::
 
 
 ::::{dropdown} Alerts aren't generated for rules with alert flapping off and an alert delay higher than 1

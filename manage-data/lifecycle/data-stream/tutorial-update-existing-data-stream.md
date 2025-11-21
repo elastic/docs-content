@@ -16,7 +16,7 @@ Follow these steps to configure or remove data stream lifecycle settings for an 
 - [Remove the lifecycle for a data stream](#delete-lifecycle)
 - [Manage data retention on the Streams page](#data-retention-streams)
 
-Note that these steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
+These steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
 ## Set a data stream’s lifecycle [set-lifecycle]
 
@@ -40,7 +40,7 @@ To change the data retention settings for a data stream:
     - Choose to **Keep data indefinitely**, so that your data will not be deleted. Your data stream is still managed but the data will never be deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
     - Disable **Enable data retention** to turn off data stream lifecycle management for your data stream.
 
-    Note that if the data stream is already managed by [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management.md), to edit the data retention settings you must edit the associated {{ilm-init}} policy.
+    If the data stream is already managed by [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management.md), to edit the data retention settings you must edit the associated {{ilm-init}} policy.
 
 
 :::
@@ -85,7 +85,7 @@ To check the data retention settings for a data stream:
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
-1. Select the data stream to view its details. The flyout shows the data retention settings for the data stream. Note that if the data stream is currently managed by an [{{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management.md), the **Effective data retention** may differ from the retention value that you've set in the data stream, as indicated by the **Data retention**.
+1. Select the data stream to view its details. The flyout shows the data retention settings for the data stream. If the data stream is currently managed by an [{{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management.md), the **Effective data retention** may differ from the retention value that you've set in the data stream, as indicated by the **Data retention**.
 
   :::{image} /manage-data/images/elasticsearch-reference-lifecycle-status.png
   :alt: Index lifecycle status page

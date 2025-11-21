@@ -19,7 +19,7 @@ products:
 
 Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
 
-Our ingest tools are flexible, and support a wide range of scenarios. We can help you with everything from popular and straightforward use cases, all the way to advanced use cases that require additional processing in order to modify or reshape your data before it goes to {{es}}.
+Our ingest tools are flexible, and support a wide range of scenarios. We can help you with everything from popular and straightforward use cases, all the way to advanced use cases that require additional processing to modify or reshape your data before it goes to {{es}}.
 
 You can ingest:
 
@@ -42,10 +42,10 @@ If you would like to try things out before you add your own data, try using our 
 
 ## Ingesting time series data [ingest-time-series]
 
-::::{admonition} What’s the best approach for ingesting time series data?
+::::{admonition} What's the best approach for ingesting time series data?
 The best approach for ingesting data is the *simplest option* that *meets your needs* and *satisfies your use case*.
 
-In most cases, the *simplest option* for ingesting time series data is using {{agent}} paired with an Elastic integration.
+Usually, the *simplest option* for ingesting time series data is using {{agent}} paired with an Elastic integration.
 
 * Install [Elastic Agent](/reference/fleet/index.md) on the computer(s) from which you want to collect data.
 * Add the [Elastic integration](https://docs.elastic.co/en/integrations) for the data source to your deployment.
