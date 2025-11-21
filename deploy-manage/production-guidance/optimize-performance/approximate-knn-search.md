@@ -50,7 +50,7 @@ Another option is to use  [synthetic `_source`](elasticsearch://reference/elasti
 
 HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures.
 
-DiskBBQ is a clustering algorithm which can scale effeciently on a fraction of the total memory. You can start with enough RAM to hold the vector data and index structures but it's likely you will be able to use signifigantly less than this and still maintain good performance. In testing we find this will be between 1-5% of the index structure size (centroids and quantized vector data) per unique query where unique queries access non-overlapping clusters.  
+DiskBBQ is a clustering algorithm which can scale effeciently often on less memory than HNSW.  Where HNSW will typically experience poor performance without sufficient memory to fit the entire structure in RAM instead DiskBBQ will scale linearly when using less available memory than the total index size. You can start with enough RAM to hold the vector data and index structures but it's likely you will be able to use less than this and still maintain good performance. In testing we find this will be between 1-5% of the index structure size (centroids and quantized vector data) per unique query where unique queries access non-overlapping clusters.  
 
 To check the size of the vector data, you can use the [Analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) API.
 
@@ -65,7 +65,7 @@ Here are estimates for different element types and quantization levels:
 
 If utilizing HNSW, the graph must also be in memory, to estimate the required bytes use `num_vectors * 4 * HNSW.m`. The default value for `HNSW.m` is 16, so by default `num_vectors * 4 * 16`.
 
-If utilizing DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes we compute the cost of the centroids as `num_clusters * num_dimensions * 2 * 4 + num_clusters * (num_dimensions + 14)` plus the cost of the quantized vectors within the clusters as `num_vectors * ((num_dimensions/8 + 14 + 2) * 2)` where `num_clusters` is defined as `num_vectors / vectors_per_cluster` which by default will be `num_vectors / 384`
+If utilizing DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes we compute the cost of the centroids as `num_clusters * num_dimensions * 4 + num_clusters * (num_dimensions + 14)` plus the cost of the quantized vectors within the clusters as `num_vectors * ((num_dimensions/8 + 14 + 2) * 2)` where `num_clusters` is defined as `num_vectors / vectors_per_cluster` which by default will be `num_vectors / 384`
 
 Note that the required RAM is for the filesystem cache, which is separate from the Java heap.
 
