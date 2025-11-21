@@ -142,7 +142,6 @@ subs:
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
   stack:   "Elastic Stack"
-  xpack:   "X-Pack"
   es:   "Elasticsearch"
   kib:   "Kibana"
   ls:   "Logstash"

@@ -14,7 +14,7 @@ products:
 :::{include} _snippets/legacy-warning.md
 :::
 
-Collectors, as their name implies, collect things. Each collector runs once for each collection interval to obtain data from the public APIs in {{es}} and {{xpack}} that it chooses to monitor. When the data collection is finished, the data is handed in bulk to the [exporters](es-monitoring-exporters.md) to be sent to the monitoring clusters. Regardless of the number of exporters, each collector only runs once per collection interval.
+Collectors, as their name implies, collect things. Each collector runs once for each collection interval to obtain data from the public APIs in {{es}} and X-Pack that it chooses to monitor. When the data collection is finished, the data is handed in bulk to the [exporters](es-monitoring-exporters.md) to be sent to the monitoring clusters. Regardless of the number of exporters, each collector only runs once per collection interval.
 
 There is only one collector per data type gathered. In other words, for any monitoring document that is created, it comes from a single collector rather than being merged from multiple collectors. The {{es}} {{monitor-features}} currently have a few collectors because the goal is to minimize overlap between them for optimal performance.
 
