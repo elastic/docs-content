@@ -4,7 +4,7 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: {{agent}} not recognizing SSL certificate
+navigation_title: Elastic agent not recognizing SSL certificate
 products:
   - id: cloud-kubernetes
   - id: cloud-enterprise
