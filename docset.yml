@@ -174,7 +174,6 @@ subs:
   webhook-cm:   "Webhook - Case Management"
   opsgenie:   "Opsgenie"
   hive:   "TheHive"
-  monitoring:   "X-Pack monitoring"
   monitor-features:   "monitoring features"
   stack-monitor-features:   "Elastic Stack monitoring features"
   watcher:   "Watcher"

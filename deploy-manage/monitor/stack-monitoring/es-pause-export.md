@@ -14,7 +14,7 @@ products:
 :::{include} _snippets/legacy-warning.md
 :::
 
-To stop generating {{monitoring}} data in {{es}}, disable data collection:
+To stop generating X-Pack monitoring data in {{es}}, disable data collection:
 
 ```yaml
 xpack.monitoring.collection.enabled: false
@@ -43,7 +43,7 @@ xpack.monitoring.exporters.my_http_exporter:
 1. Disable the named exporter. If the same name as an existing exporter is not used, then this will create a completely new exporter that is completely ignored. This value can be set dynamically by using cluster settings.
 
 
-::::{note} 
+::::{note}
 Defining a disabled exporter prevents the default exporter from being created.
 ::::
 
