@@ -150,11 +150,12 @@ For example, if the Kubernetes provider provides the following inventory:
     {
        "id": "1",
        "mapping:": {"namespace": "kube-system", "pod": {"name": "kube-controllermanger"}},
-       "processors": {"add_fields": {"kuberentes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-controllermanger"}}
+       "processors": {"add_fields": {"kuberentes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-controllermanger"}}}
+    },
     {
         "id": "2",
         "mapping:": {"namespace": "kube-system", "pod": {"name": "kube-scheduler"}},
-        "processors": {"add_fields": {"kubernetes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-scheduler"}}
+        "processors": {"add_fields": {"kubernetes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-scheduler"}}}
     }
 ]
 ```
@@ -163,8 +164,8 @@ For example, if the Kubernetes provider provides the following inventory:
 
 ```json
 [
-    {"kubernetes": {"id": "1", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-controllermanger"}},
-    {"kubernetes": {"id": "2", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-scheduler"}},
+    {"kubernetes": {"id": "1", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-controllermanger"}}},
+    {"kubernetes": {"id": "2", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-scheduler"}}}
 ]
 ```
 
