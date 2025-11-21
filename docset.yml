@@ -155,7 +155,6 @@ subs:
   packetbeat:   "Packetbeat"
   winlogbeat:   "Winlogbeat"
   esql:   "ES|QL"
-  elastic-agent:   "Elastic Agent"
   k8s:   "Kubernetes"
   security-features:   "security features"
   operator-feature:   "operator privileges feature"
