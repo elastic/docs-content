@@ -43,10 +43,10 @@ PUT _index_template/my-index-template
 ```
 
 1. The index mode setting.
-2. The index template priority. By default, Elasticsearch ships with a `logs-*-*` index template with a priority of 100. To make sure your index template takes priority over the default `logs-*-*` template, set its `priority` to a number higher than 100. For more information, see [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).
+2. The index template priority. By default, Elasticsearch ships with a `logs-*-*` index template with a priority of 100. To make sure your index template takes priority over the default `logs-*-*` template, set its `priority` to a number higher than 100. For more information, refer to [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).
 
 
-After the index template is created, new indices that use the template will be configured as a logs data stream. You can start indexing data and [using the data stream](use-data-stream.md).
+After the index template is created, new indices that use the template are configured as a logs data stream. You can start indexing data and [using the data stream](use-data-stream.md).
 
 You can also set the index mode and adjust other template settings in [the Elastic UI](/manage-data/data-store/index-basics.md#index-management-manage-index-templates).
 
@@ -74,7 +74,7 @@ In `logsdb` index mode, indices are sorted by the fields `host.name` and `@times
 
 * To prioritize the latest data, `host.name` is sorted in ascending order and `@timestamp` is sorted in descending order.
 
-You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, see [*Index Sorting*](elasticsearch://reference/elasticsearch/index-settings/sorting.md).
+You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For details, refer to [*Index Sorting*](elasticsearch://reference/elasticsearch/index-settings/sorting.md).
 
 To modify the sort configuration of an existing data stream, update the data stream’s component templates, and then perform or wait for a [rollover](../data-streams.md#data-streams-rollover).
 
@@ -112,14 +112,14 @@ To configure a routing optimization:
 * [Configure index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) with two or more fields, in addition to `@timestamp`.
 * Make sure the [`_id`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-id-field.md) field is not populated in ingested documents. It should be auto-generated instead.
 
-A custom sort configuration is required, to improve storage efficiency and to minimize hotspots from logging spikes that may route documents to a single shard. For best results, use a few sort fields that have a relatively low cardinality and don’t co-vary (for example, `host.name` and `host.id` are not optimal).
+A custom sort configuration is required, to improve storage efficiency and to minimize hotspots from logging spikes that might route documents to a single shard. For best results, use a few sort fields that have a relatively low cardinality and don’t co-vary (for example, `host.name` and `host.id` are not optimal).
 
 
 ## Specialized codecs [logsdb-specialized-codecs]
 
 By default, `logsdb` index mode uses the `best_compression` [codec](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-codec), which applies [ZSTD](https://en.wikipedia.org/wiki/Zstd) compression to stored fields. You can switch to the `default` codec for faster compression with a slightly larger storage footprint.
 
-The `logsdb` index mode also automatically applies specialized codecs for numeric doc values, in order to optimize storage usage. Numeric fields are encoded using the following sequence of codecs:
+The `logsdb` index mode also automatically applies specialized codecs for numeric doc values, to optimize storage usage. Numeric fields are encoded using the following sequence of codecs:
 
 * **Delta encoding**: Stores the difference between consecutive values instead of the actual values.
 * **Offset encoding**: Stores the difference from a base value rather than between consecutive values.
@@ -164,7 +164,7 @@ When automatically injected, `host.name` and `@timestamp` count toward the limit
 
 ## Fields without `doc_values` [logsdb-nodocvalue-fields]
 
-When the `logsdb` index mode uses synthetic `_source` and `doc_values` are disabled for a field in the mapping, {{es}} might set the `store` setting to `true` for that field. This ensures that the field’s data remains accessible for reconstructing the document’s source when using [synthetic source](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
+When the `logsdb` index mode uses synthetic `_source` and `doc_values` are unavailable for a field in the mapping, {{es}} might set the `store` setting to `true` for that field. This ensures that the field’s data remains accessible for reconstructing the document’s source when using [synthetic source](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
 For example, this adjustment occurs with text fields when `store` is `false` and no suitable multi-field is available for reconstructing the original value.
 
