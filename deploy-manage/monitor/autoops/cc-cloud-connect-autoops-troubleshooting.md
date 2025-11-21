@@ -168,7 +168,7 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
     :::
 
 $$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize my SSL certificate.**
-:   If {{agent}} is failing to connect to your self-managed cluster because it doesn't recognize your SSL certificate, refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-custom-certification.md). 
+:   If {{agent}} is failing to connect your self-managed cluster to AutoOps because it doesn't recognize your SSL certificate, refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-custom-certification.md). 
 
 ## Potential errors
 
