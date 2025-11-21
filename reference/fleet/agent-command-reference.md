@@ -464,7 +464,7 @@ elastic-agent inspect components [--show-config]
     :   Use to display the configuration in all units.
 
     `--show-spec`
-    :   Use to get input/output runtime spectification for a component.
+    :   Use to get input/output runtime specification for a component.
 
 
 `--help`
