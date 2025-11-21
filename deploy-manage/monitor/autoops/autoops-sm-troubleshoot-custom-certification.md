@@ -12,9 +12,9 @@ products:
 
 # Troubleshoot {{agent}} not recognizing custom SSL certificate 
 
-If {{agent}} is failing to connect your self-managed cluster to AutoOps because it doesn't recognize your SSL certificate, this may be because your certificate is signed by a custom or internal Certificate Authority (CA). 
+If {{agent}} is failing to connect your self-managed cluster to AutoOps because it doesn't recognize your SSL certificate, this might be because your certificate is signed by a custom or internal Certificate Authority (CA). 
 
-You may encounter an error like the following:
+You might encounter an error like the following:
 
 ```sh
 ... x509: certificate signed by unknown authority ...
@@ -33,7 +33,7 @@ Complete the following steps:
 1. On the host machine, open the `elastic-agent.yml` file. \
   The default location is `/opt/Elastic/Agent/elastic-agent.yml`.
 2. In the `elastic-agent.yml` file, locate the `receivers.metricbeatreceiver.metricbeat.modules` section. 
-3. In this section, there will be two modules configured for `autoops_es`, one for metrics and one for templates. \
+3. In this section, there are two modules configured for `autoops_es`, one for metrics and one for templates. \
   Add the `ss.certificate_authorities` setting to both these modules using one of the following options:
 
     :::::{tab-set}
@@ -110,7 +110,7 @@ Complete the following steps:
 6. Check the agent logs again to confirm that the error is gone and that {{agent}} has successfully connected your self-managed cluster to AutoOps. 
 
     :::{note}
-    If you encounter the following error in the agent logs, there may be a formatting issue in the `elastic-agent.yml` file.
+    If you encounter the following error in the agent logs, there might be a formatting issue in the `elastic-agent.yml` file.
     ```sh
     ... can not convert 'object' into 'string' ... ssl.certificate_authorities ...
     ```
