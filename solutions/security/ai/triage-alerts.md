@@ -45,7 +45,6 @@ Once you have chosen an alert to investigate:
 
 5. (Optional) Ask AI Assistant follow-up questions, provide additional information for further analysis, and request clarification. The response is not a static report.
 
-
 ## Generate triage reports [ai-triage-reportgen]
 
 Elastic AI Assistant can streamline the documentation and report generation process by providing clear records of security incidents, their scope and impact, and your remediation efforts. You can use AI Assistant to create summaries or reports for stakeholders that include key event details, findings, and diagrams. Once AI Assistant has finished analyzing one or more alerts, you can generate reports by using prompts such as:
@@ -60,3 +59,53 @@ After you review the report, click **Add to existing case** at the top of AI Ass
 :alt: An AI Assistant dialogue with the add to existing case button highlighted
 :screenshot:
 :::
+
+
+## Example alert triage workflow
+
+This section shows an example workflow for triaging a specific alert.
+
+**Scenario:** You are investigating an alert: "Multiple Failed Logins Followed by Success - user: jsmith"
+
+:::::{stepper}
+
+::::{step} Open Alert and Generate Initial Analysis
+1. From the **Alerts** table, click **View details**. 
+2. Click **Chat** to open AI Assistant. The alert information is automatically attached.
+3. Click the **Alert summarization** quick prompt. AI Assistant shared an initial alert assessment.
+::::
+
+::::{step} Assess Criticality and Context
+Ask AI Assistant:
+
+- "Is user jsmith typically logging in from [this IP/location]?"
+- "Are there other suspicious activities from this user in the last 24 hours?"
+- "What's the risk score for the source IP?"
+::::
+
+::::{step} Investigate Related Activity
+If AI Assistant flags concerns, investigate further. Ask AI Assistant to:
+
+- "Generate an {{esql}} query to find all recent activity from user jsmith".
+- "Generate an {{esql}} query to find other users logging in from this IP".
+::::
+
+::::{step} Make a Determination
+Based on your initial AI-assisted analysis, determine whether you're dealing with a potential threat:
+
+- **False Positive**: User was traveling, this is expected behavior.
+  - Immediate action: Add note to alert, close as false positive.
+  - Future action: Add a rule exception to prevent similar alerts.
+
+- **True Positive**: Behavior indicates a potential attack. In response:
+  - Escalate according to your organization's incident response plan.
+  - Create a case to track the investigation.
+::::
+
+::::{step} Document Your Findings
+1. From AI Assistant, click **Add to case** on key messages.
+2. Go to **Cases**, add your case notes.
+3. Go back to the alert and change its status to `Acknowledged`.
+::::
+
+:::::

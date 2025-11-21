@@ -535,6 +535,8 @@ These options can vary depending on the type of chart.
 ```{applies_to}
 stack: ga 9.2
 ```
+When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
+
 **Primary metric**
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
 

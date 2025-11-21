@@ -7,7 +7,7 @@ products:
 
 # Manage time series data without data streams [manage-time-series-data-without-data-streams]
 
-Even though [data streams](../../data-store/data-streams.md) are a convenient way to scale and manage time series data, they are designed to be append-only. We recognise there might be use-cases where data needs to be updated or deleted in place and the data streams don’t support delete and update requests directly, so the index APIs would need to be used directly on the data stream’s backing indices. In these cases we still recommend using a data stream.
+Even though [data streams](../../data-store/data-streams.md) are a convenient way to scale and manage time series data, they are designed to be append-only. We recognize there might be use-cases where data needs to be updated or deleted in place and the data streams don't support delete and update requests directly, so the index APIs would need to be used directly on the data stream's backing indices. In these cases we still recommend using a data stream.
 
 If you frequently send multiple documents using the same `_id` expecting last-write-wins, you can use an index alias instead of a data stream to manage indices containing the time series data and periodically roll over to a new index.
 

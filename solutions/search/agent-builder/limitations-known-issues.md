@@ -40,6 +40,8 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
+$$$conversation-length-exceeded$$$
+
 ### {{esql}} limitations
 
 {{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
@@ -67,4 +69,16 @@ This results in parsing errors like this:
 ]
 ```
 
-    
+### MCP server URL copy button omits space name
+
+:::{note}
+Fixed on serverless and 9.3.
+:::
+
+On 9.2 deployments, the **Copy your MCP server URL** button does not include the space name when used from a custom {{kib}} Space.
+
+**Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+
+For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#working-with-spaces).
+
+

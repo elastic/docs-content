@@ -141,7 +141,7 @@ These are the fields available within config templating. The `kubernetes.*` fiel
 ::::
 
 
-Note that not all of these fields are available by default and special configuration options are needed in order to include them.
+Not all of these fields are available by default and special configuration options are needed in order to include them.
 
 For example, if the Kubernetes provider provides the following inventory:
 
@@ -150,11 +150,12 @@ For example, if the Kubernetes provider provides the following inventory:
     {
        "id": "1",
        "mapping:": {"namespace": "kube-system", "pod": {"name": "kube-controllermanger"}},
-       "processors": {"add_fields": {"kuberentes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-controllermanger"}}
+       "processors": {"add_fields": {"kuberentes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-controllermanger"}}}
+    },
     {
         "id": "2",
         "mapping:": {"namespace": "kube-system", "pod": {"name": "kube-scheduler"}},
-        "processors": {"add_fields": {"kubernetes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-scheduler"}}
+        "processors": {"add_fields": {"kubernetes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-scheduler"}}}
     }
 ]
 ```
@@ -163,8 +164,8 @@ For example, if the Kubernetes provider provides the following inventory:
 
 ```json
 [
-    {"kubernetes": {"id": "1", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-controllermanger"}},
-    {"kubernetes": {"id": "2", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-scheduler"}},
+    {"kubernetes": {"id": "1", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-controllermanger"}}},
+    {"kubernetes": {"id": "2", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-scheduler"}}}
 ]
 ```
 
@@ -212,7 +213,7 @@ providers.kubernetes:
       enabled: true
 ```
 
-Note that this resource is only available with `scope: cluster` setting and `node` cannot be used as scope.
+This resource is only available with `scope: cluster` setting and `node` cannot be used as scope.
 
 The available keys are:
 
