@@ -23,6 +23,7 @@ Use this guide to troubleshoot any issues you may encounter.
 * [My cluster was disconnected from {{ecloud}} and I want to reconnect it.](#disconnected-cluster)
 * [After running the installation command, I can't move on to the next steps.](#next-steps)
 * [My organization's firewall may be preventing {{agent}} from collecting and sending metrics.](#firewall)
+* [{{agent}} is failing to connect because it doesn't recognize my SSL certificate.](#custom-cert)
 
 $$$single-cloud-org$$$**I’m trying to create a Cloud organization, but I’m already part of a different one.**
 :   :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
@@ -165,6 +166,9 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
     :::{note}
     If you are using Docker, you may need to complete this configuration directly via the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
     :::
+
+$$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize my SSL certificate.**
+:   If {{agent}} is failing to connect to your self-managed cluster because it doesn't recognize your SSL certificate, refer to [](/deploy-manage/monitor/autoops/autoops-sm-troubleshoot-custom-certification.md). 
 
 ## Potential errors
 
