@@ -40,7 +40,16 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
-$$$conversation-length-exceeded$$$
+### Context length exceeded error [conversation-length-exceeded]
+
+This error occurs when a conversation exceeds the maximum context length supported by the LLM. This typically happens when tools return large responses that consume the available token budget.
+
+To mitigate this issue, consider the following strategies:
+
+- **Optimize queries**: Narrow your questions to reduce the scope of data retrieval
+- **Start a new conversation**: Begin a fresh conversation, optionally providing a summary of the previous context
+- **Refine tool descriptions**: Update tool descriptions and agent instructions to guide the agent toward requesting only essential data
+- **Limit tool response size**: Create custom tools that filter or paginate data to return smaller, focused datasets
 
 ### {{esql}} limitations
 
