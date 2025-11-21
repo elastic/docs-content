@@ -40,6 +40,8 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
+$$$conversation-length-exceeded$$$
+
 ### {{esql}} limitations
 
 {{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).

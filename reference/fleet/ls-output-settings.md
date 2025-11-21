@@ -38,7 +38,6 @@ output {
   elasticsearch {
     hosts => ["http://localhost:9200"] <2>
     # cloud_id => "..."
-    data_stream => "true"
     api_key => "<api_key>" <3>
     data_stream => true
     ssl_enabled => true

@@ -106,12 +106,12 @@ To install and run {{agent}} standalone:
     You can use either of the two command formats to set the `ELASTIC_AGENT_FLAVOR` environment variable:
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
     sudo ELASTIC_AGENT_FLAVOR=servers rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
     ELASTIC_AGENT_FLAVOR=servers sudo -E rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
@@ -163,7 +163,7 @@ To install and run {{agent}} standalone:
     sudo ./elastic-agent install
     ```
 
-    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--install-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 
     ::::
 
@@ -177,7 +177,7 @@ To install and run {{agent}} standalone:
     sudo ./elastic-agent install
     ```
 
-    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--install-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 
     ::::
 
@@ -191,7 +191,7 @@ To install and run {{agent}} standalone:
     .\elastic-agent.exe install
     ```
 
-    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--install-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 
     ::::
 
