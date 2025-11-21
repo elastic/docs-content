@@ -14,7 +14,7 @@ products:
 :::{include} _snippets/legacy-warning.md
 :::
 
-To stop generating X-Pack monitoring data in {{es}}, disable data collection:
+To stop generating monitoring data in {{es}}, disable data collection:
 
 ```yaml
 xpack.monitoring.collection.enabled: false
