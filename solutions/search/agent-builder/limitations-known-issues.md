@@ -42,7 +42,7 @@ Error executing agent: No tool calls found in the response.
 
 ### Context length exceeded error [conversation-length-exceeded]
 
-This error occurs when a conversation exceeds the maximum context length supported by the LLM. This typically happens when tools return very large responses that consume the available token budget.
+This error occurs when a conversation exceeds the maximum context length supported by the LLM. This typically happens when tools return large responses that consume the available token budget.
 
 To mitigate this issue, consider the following strategies:
 
