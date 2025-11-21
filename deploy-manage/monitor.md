@@ -24,7 +24,7 @@ Depending on your deployment type, you can use a variety of solutions for monito
 
 You have several options for monitoring your cluster or deployment.
 
-Use [AutoOps](/deploy-manage/monitor/autoops.md) in your {{ech}}, ECE, ECK, or self-managed deployments. AutoOps is a monitoring tool that simplifies cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. 
+Use [](/deploy-manage/monitor/autoops.md) to simplify cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. 
 
 Alternatively, you can use [Stack Monitoring](/deploy-manage/monitor/stack-monitoring.md) to monitor logs and metrics across the {{stack}}.
 
@@ -47,7 +47,8 @@ deployment:
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
-In the [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and [{{serverless-full}} projects](/deploy-manage/monitor/autoops/autoops-for-serverless.md), and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
+:::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
+:::
 
 ### Stack monitoring
 
