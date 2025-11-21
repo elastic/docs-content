@@ -184,7 +184,8 @@ inputs:
   - id: unique-system-metrics-id
     type: system/metrics
     streams:
-      - metricset: load
+      - metricsets:
+          - load
         data_stream.dataset: system.cpu
         condition: ${host.platform} != 'windows'
 ```
@@ -196,7 +197,8 @@ inputs:
   - id: unique-system-metrics-id
     type: system/metrics
     streams:
-      - metricset: load
+      - metricsets:
+          - load
         data_stream.dataset: system.cpu
     processors:
       - add_fields:
