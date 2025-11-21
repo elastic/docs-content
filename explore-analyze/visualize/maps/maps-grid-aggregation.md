@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-grid-aggregation.html
+description: Visualize data with grid aggregations in Maps using geohash, geotile, or geohex grids. Group documents into geographic buckets for density analysis.
 applies_to:
   stack: ga
   serverless: ga
@@ -8,9 +9,11 @@ products:
   - id: kibana
 ---
 
-# Clusters [maps-grid-aggregation]
+# Clusters and grid aggregations [maps-grid-aggregation]
 
-Clusters use [Geotile grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) or [Geohex grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) to group your documents into grids. You can calculate metrics for each gridded cell.
+Grid aggregations group documents into geographic cells and calculate metrics for each cell, enabling efficient visualization of large data sets. Maps supports geotile and geohex grid aggregations, which you can visualize as cluster symbols, bounding box grids, or heat maps.
+
+Grid aggregations work well for density analysis, identifying geographic patterns, and displaying summary statistics across geographic areas.
 
 Symbolize cluster metrics as:
 

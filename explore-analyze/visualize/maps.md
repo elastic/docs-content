@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps.html
   - https://www.elastic.co/guide/en/serverless/current/maps.html
   - https://www.elastic.co/guide/en/kibana/current/maps-visualizations.html
+description: Create geospatial visualizations in Kibana Maps with multi-layer mapping, animations, and GeoJSON uploads. Visualize location data with custom styling and dashboard embedding.
 applies_to:
   stack: ga
   serverless: ga
@@ -13,14 +14,9 @@ products:
 
 # Maps [maps]
 
-Create beautiful maps from your geographical data. With **Maps**, you can:
+Maps visualizes geospatial data from {{es}} indices, uploaded files, or external sources. You can combine multiple data layers, animate temporal changes, apply custom styling based on data values, and embed maps in dashboards alongside other visualizations.
 
-* Build maps with multiple layers and indices.
-* Animate spatial temporal data.
-* Upload GeoJSON files and shapefiles.
-* Embed your map in dashboards.
-* Symbolize features using data values.
-* Focus on only the data that’s important to you.
+Maps supports various data sources including {{es}} documents with geo fields, GeoJSON files, shapefiles, tile services, and web mapping services. Use Maps to display location data, analyze spatial patterns, track assets in real time, or create choropleth visualizations.
 
 ## Build maps with multiple layers and indices [_build_maps_with_multiple_layers_and_indices]
 

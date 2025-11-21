@@ -2,6 +2,7 @@
 navigation_title: ES|QL
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
+description: Create visualizations with ES|QL queries from Discover or dashboards. Generate charts dynamically from query results with automatic visualization type suggestions.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,7 +12,9 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
-You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
+{{esql}} visualizations let you create charts directly from {{esql}} queries without needing to configure {{data-sources}} or aggregations. The visualization type is automatically determined based on your query results, and you can customize the appearance and chart type as needed.
+
+You can create {{esql}} visualizations from Discover by writing queries and saving the results, or start from a dashboard and build the query and visualization together. This approach works well when you need query flexibility beyond what {{data-sources}} provide.
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
@@ -85,7 +88,7 @@ serverless:
    security: unavailable
 ```
 
-Once you've created an {{esql}} panel, you can create an {{es}} threshold rule directly from the visualization panel, based on the data it displays. When you do this, the rule query is automatically generated and either describes the data and sets a specific threshold, or describes the data without setting a specific threshold.
+Once you've created an {{esql}} panel, you can create an {{product.elasticsearch}} threshold rule directly from the visualization panel, based on the data it displays. When you do this, the rule query is automatically generated and either describes the data and sets a specific threshold, or describes the data without setting a specific threshold.
 
 ::::{note}
 {{elastic-sec}} rule types are not supported.
@@ -93,11 +96,11 @@ Once you've created an {{esql}} panel, you can create an {{es}} threshold rule d
 To create a rule with the threshold pre-specified:
 
 - Right-click a data point in the visualization and click **Add alert rule**. This opens the **Create rule** flyout. The generated query will define a threshold that corresponds to the data point you selected.
-- [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{es}} rule.
+- [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{product.elasticsearch}} rule.
 
 To create a rule without the threshold pre-specified:
 
 - Open the **More actions** (three dots) menu in the upper right of the panel and select **Add alert rule**. This opens the **Create rule** flyout. The generated query will define a threshold that corresponds to the data point you selected.
-- [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{es}} rule.
+- [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{product.elasticsearch}} rule.
 
 

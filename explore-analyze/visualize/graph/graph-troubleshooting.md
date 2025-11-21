@@ -2,6 +2,7 @@
 navigation_title: Troubleshooting and limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-troubleshooting.html
+description: Troubleshooting guide for Graph API issues including missing results, slow performance, and noisy connections. Understand sampling strategies and limitations.
 applies_to:
   stack: ga
   serverless: unavailable
@@ -12,6 +13,10 @@ products:
 
 
 # Troubleshooting and limitations of the Graph API [graph-troubleshooting]
+
+When Graph exploration returns unexpected results, performance issues, or missing connections, understanding the underlying sampling and filtering strategies helps you adjust settings appropriately. Graph uses statistical significance and sampling to filter noise from large data sets, but these defaults can sometimes exclude relevant details.
+
+This guide explains common issues like missing results, slow performance, and noisy connections, plus the limitations of multi-index exploration. Use these troubleshooting steps to balance performance with the level of detail you need.
 
 ## Why are results missing? [_why_are_results_missing]
 

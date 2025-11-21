@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-image.html
+description: Personalize dashboards with image panels for logos and graphics. Upload images from computer, reuse uploaded files, or add images from external URLs.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,11 +11,10 @@ products:
 
 # Image panels [add-image]
 
-To personalize your dashboards, add your own logos and graphics with the **Image** panel.
+Image panels let you add logos, diagrams, and other graphics to dashboards for branding or visual context. You can upload images directly from your computer, select from previously uploaded files, or link to images hosted at external URLs.
 
 ::::{important}
-Image uploads are limited to 10 MiB.
-
+Image uploads are limited to 10 MiB. Uploaded images are stored in {{kib}} and can be reused across multiple dashboards.
 ::::
 
 

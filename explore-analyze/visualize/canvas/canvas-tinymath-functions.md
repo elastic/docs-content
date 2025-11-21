@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tinymath-functions.html
+description: Complete reference of TinyMath functions for complex math calculations in Canvas expressions. Perform array operations and apply JavaScript Math methods to data.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,9 +11,9 @@ products:
 
 # TinyMath functions [canvas-tinymath-functions]
 
-TinyMath provides a set of functions that can be used with the Canvas expression language to perform complex math calculations. Read on for detailed information about the functions available in TinyMath, including what parameters each function accepts, the return value of that function, and examples of how each function behaves.
+TinyMath functions enable complex mathematical calculations within Canvas expressions. These functions operate on numbers and arrays, applying standard JavaScript Math methods element-wise to array inputs. When multiple arrays are provided, calculations occur index by index.
 
-Most of the functions accept arrays and apply JavaScript Math methods to each element of that array. For the functions that accept multiple arrays as parameters, the function generally does the calculation index by index.
+This reference provides detailed documentation for each TinyMath function, including parameters, return values, and practical examples. Functions can be nested, with inner function return types matching the parameter types expected by outer functions.
 
 Any function can be wrapped by another function as long as the return type of the inner function matches the acceptable parameter type of the outer function.
 

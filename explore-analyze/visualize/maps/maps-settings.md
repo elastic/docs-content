@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-settings.html
+description: Configure Maps display settings for auto-fit bounds, browser location, initial view, and tooltip behavior. Customize map interaction and default appearance.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,9 @@ products:
 
 # Configure map settings [maps-settings]
 
-Maps offers settings that let you configure how a map is displayed. To access these settings, click **Settings** in the application toolbar.
+Map settings control display behavior, initial view positioning, tooltip preferences, and custom icon management. These settings determine how maps appear when opened and how users interact with layers and features.
+
+This reference covers all available map configuration options, including background colors, zoom behavior, browser location access, and custom icon management.
 
 
 ## Custom icons [maps-settings-custom-icons]

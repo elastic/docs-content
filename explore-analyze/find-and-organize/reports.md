@@ -5,16 +5,16 @@ applies_to:
   stack: ga
   serverless: ga
 products:
+  - id: kibana
   - id: cloud-serverless
+description: View and manage generated reports for saved searches, dashboards, and visualizations. Download CSV reports from Discover and track reporting history.
 ---
 
 # Reports [reports]
 
-{{kib}} provides you with several options to share saved searches, dashboards, and visualizations.
+The {{reports-app}} management page displays a history of generated reports from Discover searches, dashboards, and visualizations. From this page, you can download completed reports, view report details, or remove old reports to manage storage.
 
-For example, in **Discover**, you can create and download comma-separated values (CSV) reports for saved searches.
-
-To view and manage reports, go to **Management** > **Reporting**.
+Reports are typically generated as CSV files for Discover searches or PDFs for dashboards and visualizations. The management interface shows report status, creation time, and file size.
 
 :::{image} /explore-analyze/images/serverless-reports-management.png
 :alt: {{reports-app}}

@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/vector-layer.html
+description: Add vector layers to Maps for displaying points, lines, and polygons from Elasticsearch data. Visualize documents, clusters, and geospatial features.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,9 @@ products:
 
 # Vector layer [vector-layer]
 
-Vector layers display points, lines, and polygons.
+Vector layers display geographic features as points, lines, and polygons from your {{product.elasticsearch}} data. These layers support various visualization modes including individual documents, clustered aggregations, choropleth maps for statistical comparisons, and custom-drawn shapes.
+
+Vector layers are the primary way to visualize your data on maps, offering flexible scaling options to handle data sets of any size.
 
 :::{image} /explore-analyze/images/kibana-vector_layer.png
 :alt: vector layer

@@ -12,7 +12,7 @@ AGENTS.md
 .github/instructions/**.instructions.md
 CLAUDE.md
 GEMINI.md
-.cursor
 
-# VS code settings
+# Editor settings
+.cursor
 .vscode
