@@ -17,7 +17,7 @@ products:
 
 You will be redirected to the duplicated dashboard.
 
-To duplicate a managed dashboard, follow the instructions above or click the **Managed** badge in the toolbar. Then click **Duplicate** in the dialogue that appears.
+To duplicate a managed dashboard, follow the instructions above or click the **Managed** badge in the toolbar. Then click **Duplicate** in the dialog that appears.
 
 :::{image} /explore-analyze/images/kibana-managed-dashboard-popover-8.16.0.png
 :alt: Managed badge dialog with Duplicate button

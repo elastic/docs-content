@@ -18,7 +18,7 @@ You might want to consider using {{transforms}} instead of aggregations when:
 
 * You need a complete *feature index* rather than a top-N set of items.
 
-    In {{ml}}, you often need a complete set of behavioral features rather just the top-N. For example, if you are predicting customer churn, you might look at features such as the number of website visits in the last week, the total number of sales, or the number of emails sent. The {{stack}} {{ml-features}} create models based on this multi-dimensional feature space, so they benefit from the full feature indices that are created by {{transforms}}.
+    In {{ml}}, you often need a complete set of behavioral features rather than the top-N. For example, if you are predicting customer churn, you might look at features such as the number of website visits in the last week, the total number of sales, or the number of emails sent. The {{stack}} {{ml-features}} create models based on this multi-dimensional feature space, so they benefit from the full feature indices that are created by {{transforms}}.
 
     This scenario also applies when you are trying to search across the results of an aggregation or multiple aggregations. Aggregation results can be ordered or filtered, but there are [limitations to ordering](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md#search-aggregations-bucket-terms-aggregation-order) and [filtering by bucket selector](elasticsearch://reference/aggregations/search-aggregations-pipeline-bucket-selector-aggregation.md) is constrained by the maximum number of buckets returned. If you want to search all aggregation results, you need to create the complete {{dataframe}}. If you need to sort or filter the aggregation results by multiple fields, {{transforms}} are particularly useful.
 
@@ -28,7 +28,7 @@ You might want to consider using {{transforms}} instead of aggregations when:
 
 * You want to create summary tables to optimize queries.
 
-    For example, if you have a high level dashboard that is accessed by a large number of users and it uses a complex aggregation over a large dataset, it may be more efficient to create a {{transform}} to cache results. Thus, each user doesn’t need to run the aggregation query.
+    For example, if you have a high level dashboard that is accessed by a large number of users and it uses a complex aggregation over a large dataset, it may be more efficient to create a {{transform}} to cache results. Therefore, each user doesn't need to run the aggregation query.
 
 * You need to account for late-arriving data.
 

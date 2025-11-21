@@ -364,6 +364,19 @@ $$$monitor-fields$$$
     fields.team: synthetics
     ```
 
+$$$monitor-namespace$$$
+
+**`namespace`**
+:   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
+
+    Assign the monitor to a specific datastream namespace. Defaults to Kibana's namespace.
+
+    **Examples**:
+
+    ```yaml
+    namespace: custom-namespace
+    ```
+
 ### HTTP options [synthetics-lightweight-http]
 
 The options described here configure Synthetics to connect via HTTP and optionally verify that the host returns the expected response.

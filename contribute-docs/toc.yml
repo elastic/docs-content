@@ -1,5 +1,22 @@
 toc:
   - file: index.md
+  - file: on-the-web.md
+  - file: locally.md
+  - file: syntax-quick-reference.md
+  - folder: how-to
+    children:
+      - file: index.md
+      - folder: cumulative-docs
+        children:
+          - file: index.md
+          - file: guidelines.md
+          - file: badge-placement.md
+          - file: example-scenarios.md
+          - file: reference.md
+  - file: tools.md
+    children:
+      - file: vscode-extension.md
+      - file: vale-linter.md
   - folder: api-docs
     children:
       - file: index.md
@@ -13,3 +30,4 @@ toc:
           - file: kibana-api-docs-quickstart.md
       - file: workflows.md
       - file: help.md
+  - file: asciidoc-guide.md

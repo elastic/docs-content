@@ -41,6 +41,8 @@ toc:
   - file: elastic-inference.md
     children:
       - file: elastic-inference/eis.md
+        children:
+          - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -138,20 +140,32 @@ toc:
   - file: scripting.md
     children:
       - file: scripting/modules-scripting-painless.md
-      - file: scripting/modules-scripting-using.md
         children:
-          - file: scripting/scripts-search-speed.md
-          - file: scripting/dissect.md
-          - file: scripting/grok.md
-      - file: scripting/script-fields-api.md
-      - file: scripting/common-script-uses.md
-        children:
-          - file: scripting/scripting-field-extraction.md
-      - file: scripting/modules-scripting-fields.md
-      - file: scripting/modules-scripting-security.md
+          - file: scripting/modules-scripting-using.md
+            children:
+              - file: scripting/modules-scripting-write-first-script.md
+              - file: scripting/modules-scripting-use-parameters.md
+              - file: scripting/modules-scripting-shorten-script.md
+              - file: scripting/modules-scripting-store-and-retrieve.md
+              - file: scripting/modules-scripting-update-documents.md
+          - file: scripting/common-script-uses.md
+            children:
+              - file: scripting/modules-scripting-fields.md
+              - file: scripting/script-fields-api.md
+              - file: scripting/modules-scripting-type-casting-tutorial.md 
+              - file: scripting/dissect.md
+              - file: scripting/scripting-field-extraction.md
+              - file: scripting/grok.md
+              - file: scripting/scripts-search-speed.md
+              - file: scripting/modules-scripting-document-update-tutorial.md
+              - file: scripting/modules-scripting-regular-expressions-tutorial.md
+              - file: scripting/modules-scripting-datetime-tutorial.md
+          - file: scripting/painless-syntax-context-bridge.md
+          - file: scripting/modules-scripting-security.md
+          - file: scripting/painless-lab.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
-      - file: scripting/painless-lab.md
+
   - file: ai-assistant.md
   - file: manage-access-to-ai-assistant.md
   - file: discover.md
@@ -188,6 +202,8 @@ toc:
       - file: visualize/visualize-library.md
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
+        children:
+          - hidden: visualize/charts/metric-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
