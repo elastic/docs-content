@@ -11,10 +11,9 @@ products:
 
 # {{agent}} providers [providers]
 
-Providers supply key-value pairs for variable substitution and conditional logic. In other words, they define dynamic values {{agent}} can use when building configurations.
+Providers supply key-value pairs for variable substitution and conditional logic. They define dynamic values that {{agent}} uses when building configurations.
 
-Each provider’s keys are automatically grouped under the provider name within the {{agent}} context. For example, if the `foo` provider supplies `{"key1": "value1", "key2": "value2"}`, {{agent}} stores these key-value pairs as `{"foo": {"key1": "value1", "key2": "value2"}}`.
-You can then reference the values using the `${foo.key1}` and `${foo.key2}` variables.
+{{agent}} uses two kinds of providers: [context providers](#context-providers) and [dynamic providers](#dynamic-providers). Each provider’s keys are automatically grouped under the provider name in the {{agent}} context. For example, if the `foo` provider supplies `{"key1": "value1", "key2": "value2"}`, {{agent}} stores these key-value pairs as `{"foo": {"key1": "value1", "key2": "value2"}}`. You can then reference the values using the `${foo.key1}` and `${foo.key2}` variables.
 
 How you can configure and use {{agent}} providers depends on whether you're running a standalone or a {{fleet}}-managed {{agent}}. For more information, refer to:
 
@@ -24,14 +23,12 @@ How you can configure and use {{agent}} providers depends on whether you're runn
 
 ## Provider types
 
-{{agent}} supports two types of providers: [context](#context-providers) and [dynamic](#dynamic-providers).
+{{agent}} supports two types of providers: [context providers](#context-providers) and [dynamic providers](#dynamic-providers).
 
 
 ### Context providers [context-providers]
 
-Context providers supply the current context of the running {{agent}} such as agent information (ID, version), host information (hostname, IP addresses), and environment information (environment variables).
-
-These providers supply only a single key-value mapping. They are generally static, although this is not required. If the key's value changes, the entire configuration is re-evaluated.
+Context providers supply a single key-value mapping that describes the current environment where {{agent}} is running, such as agent information (ID, version), host information (hostname, IP addresses), and environment information (environment variables). When the underlying context changes, {{agent}} updates this mapping and re-evaluates the configuration.
 
 To ensure consistency and clarity across documentation and projects, context providers use the {{product.ecs}} naming conventions.
 
@@ -47,7 +44,7 @@ To ensure consistency and clarity across documentation and projects, context pro
 
 ### Dynamic providers [dynamic-providers]
 
-Dynamic providers supply an array of multiple key-value mappings. Each key-value mapping is combined with the previous context provider’s key and value mapping which provides a new unique mapping that is used to generate a configuration.
+Dynamic providers supply multiple key-value mappings where each mapping represents a separate item or resource (such as a container or pod). When rendering configurations, {{agent}} combines each mapping with the values from context providers, and for every mapping that matches a configuration template or condition, it creates a separate configuration instance and substitutes any dynamic variables (for example, `${docker.container.id}` or `${kubernetes.pod.ip}`) with values from that mapping. This allows {{agent}} to automatically add, update, or remove inputs as your environment changes.
 
 {{agent}} supports the following dynamic providers:
 
@@ -58,7 +55,7 @@ Dynamic providers supply an array of multiple key-value mappings. Each key-value
 
 ## Configure providers on standalone {{agent}} [configure-providers-standalone-agent]
 
-On standalone {{agent}}, providers can be configured through the top-level `providers` key in the `elastic-agent.yml` configuration file. By default, all providers are enabled, but {{agent}} runs them only if they are referenced in the configuration file or in an {{agent}} policy. Disabled providers are not run even if they are referenced. If a provider cannot connect, no mappings are produced.
+On standalone {{agent}}, providers can be configured through the top-level `providers` key in the `elastic-agent.yml` configuration file. All registered providers are enabled by default, but {{agent}} runs them only if they are referenced in the configuration file or in an {{agent}} policy. Disabled providers are not run even if they are referenced. If a provider cannot connect, no mappings are produced.
 
 You can enable, disable, and configure provider settings as needed. All providers are prefixed without name collisions. In the configuration, the name of the provider is in the key.
 
