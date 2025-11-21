@@ -264,6 +264,26 @@ $$$glossary-elastic-security-indices$$$ {{elastic-sec}} indices
 $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
 
+$$$glossary-elasticsearch$$$ {{es}}
+:   The open source search and analytics engine, data store, and vector database which is the core of the [{{stack}}](#glossary-elastic-stack) and powers the Elastic platform.
+:::{admonition} Disambiguation
+The term "{{es}}" has several meanings depending on the context in which it is used.
+
+**The standalone software**
+- The [`elasticsearch` open source project](https://github.com/elastic/elasticsearch) is a standalone piece of software. Pre-built artifacts are available for download and installation from [elastic.co](https://www.elastic.co/downloads/elasticsearch), or you can build from source. Learn more about [deploying a self-managed cluster](/deploy-manage/deploy/self-managed.md).
+- An `elasticsearch` [node](#glossary-node) is a running instance of the software, which can be part of a [cluster](#glossary-cluster) and exposes REST API endpoints. Refer to the [reference documentation](elasticsearch://reference/elasticsearch/index.md) for usage details.
+
+<br>
+**The project type / solution view**
+- {{es}} is the name of a [project type (or solution view)](/solutions/search.md) that includes UI features tailored for search use cases:
+  - {{es}} is a **project** type on {{serverless-full}}.
+  - {{es}} is a **solution** in {{stack}} deployments. Each [space](/deploy-manage/manage-spaces.md) has its own navigation or "solution view".
+
+<br>
+**The platform**
+- The {{es}} [platform](https://www.elastic.co/platform) (also known as the Elastic platform or Search AI Platform) refers to various {{stack}} components deployed together with additional management affordances to power Elastic's managed services.
+:::
+
 $$$glossary-elasticsearch-service$$$ Elasticsearch Service
 :   The former name of {{ech}}, which is the official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.
 
@@ -543,7 +563,7 @@ $$$glossary-no-op$$$ no-op
 :   In {{ecloud}}, the application of a rolling update on your deployment without actually applying any configuration changes. This type of update can be useful to resolve certain health warnings.
 
 $$$glossary-node$$$ node
-:   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
+:   1. A single [{{es}}](#glossary-elasticsearch) server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 2. In {{eck}}, it can refer to either an [Elasticsearch Node](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
 
 $$$NodeSet$$$NodeSet
