@@ -148,7 +148,7 @@ If there are additional requirements such as installing the Windows System Monit
 
 ## Security: Elastic Integrations [security-integrations-jobs]
 
-[Elastic Integrations](integration-docs://reference/index.md) are a streamlined way to add Elastic assets to your environment, such as data ingestion, {{transforms}}, and in this case, {{ml}} capabilities for Security.
+[Elastic Integrations](integration-docs://reference/index.md) are a streamlined way to add Elastic assets to your environment, such as data ingestion, transforms, and in this case, {{ml}} capabilities for Security.
 
 The following Integrations use {{ml}} to analyze patterns of user and entity behavior, and help detect and alert when there is related suspicious activity in your environment.
 

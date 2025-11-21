@@ -9,9 +9,9 @@ products:
   - id: elasticsearch
 ---
 
-# {{transforms-cap}} examples [transform-examples]
+# Transforms examples [transform-examples]
 
-These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](/explore-analyze/index.md). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
+These examples demonstrate how to use transforms to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](/explore-analyze/index.md). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
 
 * [Finding your best customers](#example-best-customers)
 * [Finding air carriers with the most delays](#example-airline)
@@ -22,14 +22,14 @@ These examples demonstrate how to use {{transforms}} to derive useful insights f
 
 ## Finding your best customers [example-best-customers]
 
-This example uses the eCommerce orders sample data set to find the customers who spent the most in a hypothetical webshop. Let’s use the `pivot` type of {{transform}} such that the destination index contains the number of orders, the total price of the orders, the amount of unique products and the average price per order, and the total amount of ordered products for each customer.
+This example uses the eCommerce orders sample data set to find the customers who spent the most in a hypothetical webshop. Let’s use the `pivot` type of transform such that the destination index contains the number of orders, the total price of the orders, the amount of unique products and the average price per order, and the total amount of ordered products for each customer.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-transform-ex1-1.jpg
-:alt: Finding your best customers with {{transforms}} in {{kib}}
+:alt: Finding your best customers with transforms in {{kib}}
 :screenshot:
 :::
 
-Alternatively, you can use the [preview {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
+Alternatively, you can use the [preview transform](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
 
 :::::{dropdown} API example
 ```console
@@ -57,14 +57,14 @@ POST _transform/_preview
 }
 ```
 
-1. The destination index for the {{transform}}. It is ignored by `_preview`.
-2. Two `group_by` fields is selected. This means the {{transform}} contains a unique row per `user` and `customer_id` combination. Within this data set, both these fields are unique. By including both in the {{transform}}, it gives more context to the final results.
+1. The destination index for the transform. It is ignored by `_preview`.
+2. Two `group_by` fields is selected. This means the transform contains a unique row per `user` and `customer_id` combination. Within this data set, both these fields are unique. By including both in the transform, it gives more context to the final results.
 
 ::::{note}
 In the example above, condensed JSON formatting is used for easier readability of the pivot object.
 ::::
 
-The preview {{transforms}} API enables you to see the layout of the {{transform}} in advance, populated with some sample values. For example:
+The preview transforms API enables you to see the layout of the transform in advance, populated with some sample values. For example:
 
 ```js
 {
@@ -85,14 +85,14 @@ The preview {{transforms}} API enables you to see the layout of the {{transform}
 
 :::::
 
-This {{transform}} makes it easier to answer questions such as:
+This transform makes it easier to answer questions such as:
 
 * Which customers spend the most?
 * Which customers spend the most per order?
 * Which customers order most often?
 * Which customers ordered the least number of different products?
 
-It’s possible to answer these questions using aggregations alone, however {{transforms}} allow us to persist this data as a customer centric index. This enables us to analyze data at scale and gives more flexibility to explore and navigate data from a customer centric perspective. In some cases, it can even make creating visualizations much simpler.
+It’s possible to answer these questions using aggregations alone, however transforms allow us to persist this data as a customer centric index. This enables us to analyze data at scale and gives more flexibility to explore and navigate data from a customer centric perspective. In some cases, it can even make creating visualizations much simpler.
 
 ## Finding air carriers with the most delays [example-airline]
 
@@ -137,7 +137,7 @@ POST _transform/_preview
 ```
 
 1. Filter the source data to select only flights that are not cancelled.
-2. The destination index for the {{transform}}. It is ignored by `_preview`.
+2. The destination index for the transform. It is ignored by `_preview`.
 3. The data is grouped by the `Carrier` field which contains the airline name.
 4. This `bucket_script` performs calculations on the results that are returned by the aggregation. In this particular example, it calculates what percentage of travel time was taken up by delays.
 
@@ -158,7 +158,7 @@ The preview shows you that the new index would contain data like this for each c
 }
 ```
 
-This {{transform}} makes it easier to answer questions such as:
+This transform makes it easier to answer questions such as:
 
 * Which air carrier has the most delays as a percentage of flight time?
 
@@ -224,13 +224,13 @@ PUT _transform/suspicious_client_ips
 }
 ```
 
-1. The destination index for the {{transform}}.
-2. Configures the {{transform}} to run continuously. It uses the `timestamp` field to synchronize the source and destination indices. The worst case ingestion delay is 60 seconds.
+1. The destination index for the transform.
+2. Configures the transform to run continuously. It uses the `timestamp` field to synchronize the source and destination indices. The worst case ingestion delay is 60 seconds.
 3. The data is grouped by the `clientip` field.
 4. Filter aggregation that counts the occurrences of successful (`200`) responses in the `response` field. The following two aggregations (`error404` and `error5xx`) count the error responses by error codes, matching an exact value or a range of response codes.
 5. This `bucket_script` calculates the duration of the `clientip` access based on the results of the aggregation.
 
-After you create the {{transform}}, you must start it:
+After you create the transform, you must start it:
 
 ```console
 POST _transform/suspicious_client_ips/_start
@@ -279,7 +279,7 @@ The search result shows you data like this for each client IP:
 Like other Kibana sample data sets, the web log sample dataset contains timestamps relative to when you installed it, including timestamps in the future. The {{ctransform}} will pick up the data points once they are in the past. If you installed the web log sample dataset some time ago, you can uninstall and reinstall it and the timestamps will change.
 ::::
 
-This {{transform}} makes it easier to answer questions such as:
+This transform makes it easier to answer questions such as:
 
 * Which client IPs are transferring the most amounts of data?
 * Which client IPs are interacting with a high number of different URLs?
@@ -288,23 +288,23 @@ This {{transform}} makes it easier to answer questions such as:
 
 ## Finding the last log event for each IP address [example-last-log]
 
-This example uses the web log sample data set to find the last log from an IP address. Let’s use the `latest` type of {{transform}} in continuous mode. It copies the most recent document for each unique key from the source index to the destination index and updates the destination index as new data comes into the source index.
+This example uses the web log sample data set to find the last log from an IP address. Let’s use the `latest` type of transform in continuous mode. It copies the most recent document for each unique key from the source index to the destination index and updates the destination index as new data comes into the source index.
 
 Pick the `clientip` field as the unique key; the data is grouped by this field. Select `timestamp` as the date field that sorts the data chronologically. For continuous mode, specify a date field that is used to identify new documents, and an interval between checks for changes in the source index.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-transform-ex4-1.jpg
-:alt: Finding the last log event for each IP address with {{transforms}} in {{kib}}
+:alt: Finding the last log event for each IP address with transforms in {{kib}}
 :screenshot:
 :::
 
 Let’s assume that we’re interested in retaining documents only for IP addresses that appeared recently in the log. You can define a retention policy and specify a date field that is used to calculate the age of a document. This example uses the same date field that is used to sort the data. Then set the maximum age of a document; documents that are older than the value you set will be removed from the destination index.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-transform-ex4-2.jpg
-:alt: Defining retention policy for {{transforms}} in {{kib}}
+:alt: Defining retention policy for transforms in {{kib}}
 :screenshot:
 :::
 
-This {{transform}} creates the destination index that contains the latest login date for each client IP. As the {{transform}} runs in continuous mode, the destination index will be updated as new data that comes into the source index. Finally, every document that is older than 30 days will be removed from the destination index due to the applied retention policy.
+This transform creates the destination index that contains the latest login date for each client IP. As the transform runs in continuous mode, the destination index will be updated as new data that comes into the source index. Finally, every document that is older than 30 days will be removed from the destination index due to the applied retention policy.
 
 ::::{dropdown} API example
 ```console
@@ -345,11 +345,11 @@ PUT _transform/last-log-from-clientip
 
 1. Specifies the field for grouping the data.
 2. Specifies the date field that is used for sorting the data.
-3. Sets the interval for the {{transform}} to check for changes in the source index.
+3. Sets the interval for the transform to check for changes in the source index.
 4. Contains the time field and delay settings used to synchronize the source and destination indices.
 5. Specifies the retention policy for the transform. Documents that are older than the configured value will be removed from the destination index.
 
-After you create the {{transform}}, start it:
+After you create the transform, start it:
 
 ```console
 POST _transform/last-log-from-clientip/_start
@@ -357,7 +357,7 @@ POST _transform/last-log-from-clientip/_start
 
 ::::
 
-After the {{transform}} processes the data, search the destination index:
+After the transform processes the data, search the destination index:
 
 ```console
 GET last-log-from-clientip/_search
@@ -411,15 +411,15 @@ The search result shows you data like this for each client IP:
 }
 ```
 
-This {{transform}} makes it easier to answer questions such as:
+This transform makes it easier to answer questions such as:
 
 * What was the most recent log event associated with a specific IP address?
 
 ## Finding client IPs that sent the most bytes to the server [example-bytes]
 
-This example uses the web log sample data set to find the client IP that sent the most bytes to the server in every hour. The example uses a `pivot` {{transform}} with a [`top_metrics`](elasticsearch://reference/aggregations/search-aggregations-metrics-top-metrics.md) aggregation.
+This example uses the web log sample data set to find the client IP that sent the most bytes to the server in every hour. The example uses a `pivot` transform with a [`top_metrics`](elasticsearch://reference/aggregations/search-aggregations-metrics-top-metrics.md) aggregation.
 
-Group the data by a [date histogram](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md#_date_histogram) on the time field with an interval of one hour. Use a [max aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-max-aggregation.md) on the `bytes` field to get the maximum amount of data that is sent to the server. Without the `max` aggregation, the API call still returns the client IP that sent the most bytes, however, the amount of bytes that it sent is not returned. In the `top_metrics` property, specify `clientip` and `geo.src`, then sort them by the `bytes` field in descending order. The {{transform}} returns the client IP that sent the biggest amount of data and the 2-letter ISO code of the corresponding location.
+Group the data by a [date histogram](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md#_date_histogram) on the time field with an interval of one hour. Use a [max aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-max-aggregation.md) on the `bytes` field to get the maximum amount of data that is sent to the server. Without the `max` aggregation, the API call still returns the client IP that sent the most bytes, however, the amount of bytes that it sent is not returned. In the `top_metrics` property, specify `clientip` and `geo.src`, then sort them by the `bytes` field in descending order. The transform returns the client IP that sent the biggest amount of data and the 2-letter ISO code of the corresponding location.
 
 ```console
 POST _transform/_preview

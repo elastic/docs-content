@@ -119,7 +119,7 @@ If it is not possible to increase the size per zone or the number of availabilit
     himrst
     ```
 
-    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [{{api-query-parms-title}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
+    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [Query parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
 
 4. [Decrease](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
 
@@ -197,7 +197,7 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
     himrst
     ```
 
-    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [{{api-query-parms-title}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
+    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [Query parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
 
 3. [Decrease](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
 

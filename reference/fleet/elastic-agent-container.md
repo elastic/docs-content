@@ -10,7 +10,7 @@ products:
 
 You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
-Running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don't currently provide {{agent}} container images for Windows.
+Running {{agent}} in a container is supported only in Linux environments. For this reason we don't currently provide {{agent}} container images for Windows.
 
 In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have been changed to Red Hat UBI (Universal Base Image) minimal based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. Refer to [#6427]({{agent-pull}}6427) for details.
 

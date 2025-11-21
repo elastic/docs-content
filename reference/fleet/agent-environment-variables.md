@@ -73,7 +73,7 @@ Settings used to bootstrap {{fleet-server}} on this {{agent}}. At least one {{fl
 | $$$env-bootstrap-fleet-fleet-server-cert-key-passphrase$$$<br>`FLEET_SERVER_CERT_KEY_PASSPHRASE`<br> | (string) The path to the private key passphrase for an encrypted private key file.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-client-auth$$$<br>`FLEET_SERVER_CLIENT_AUTH`<br> | (string) One of `none`, `optional`, or `required`. {{fleet-server}}'s client authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs.<br><br>**Default:** `none`<br> |
 | $$$env-bootstrap-fleet-fleet-server-es-ca-trusted-fingerprint$$$<br>`FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT`<br> | (string) The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint is used to verify self-signed certificates presented by {{fleet-server}} and any inputs started by {{agent}} for communication. This flag is required when using self-signed certificates with {{es}}.<br><br>**Default:** `""`<br> |
-| $$$env-bootstrap-fleet-fleet-daemon-timeout$$$<br>`FLEET_DAEMON_TIMEOUT`<br> | (duration) Set to indicate how long {{fleet-server}} will wait during the bootstrap process for {{elastic-agent}}.<br> |
+| $$$env-bootstrap-fleet-fleet-daemon-timeout$$$<br>`FLEET_DAEMON_TIMEOUT`<br> | (duration) Set to indicate how long {{fleet-server}} will wait during the bootstrap process for {{agent}}.<br> |
 | $$$env-bootstrap-fleet-fleet-server-timeout$$$<br>`FLEET_SERVER_TIMEOUT`<br> | (duration) Set to indicate how long {{agent}} will wait for {{fleet-server}} to check in as healthy.<br> |
 
 

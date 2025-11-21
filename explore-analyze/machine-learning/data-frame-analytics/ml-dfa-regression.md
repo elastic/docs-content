@@ -32,7 +32,7 @@ Before you can use the {{stack-ml-features}}, there are some configuration requi
 
 {{regression-cap}} is a supervised {{ml}} method, which means you need to supply a labeled training data set. This data set must have values for the {{feature-vars}} and the {{depvar}} which are used to train the model. This information is used during training to identify relationships among the various characteristics of the data and the predicted value. This labeled data set also plays a critical role in model evaluation.
 
-You might also need to [{{transform}}](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{regression}}.
+You might also need to [transform](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{regression}}.
 
 To learn more about how to prepare your data, refer to [the relevant section](ml-dfa-overview.md#prepare-transform-data) of the supervised learning overview.
 
@@ -234,16 +234,16 @@ To predict the number of minutes delayed for each flight:
       3. Optionally improve the quality of the analysis by adding a query that removes erroneous data. In this case, we omit flights with a distance of 0 kilometers or less.
       4. Choose `FlightDelayMin` as the {{depvar}}, which is the field that we want to predict.
       5. Add `Cancelled`, `FlightDelay`, and `FlightDelayType` to the list of excluded fields. These fields will be excluded from the analysis. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
-         
+
          The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the chart. You can use this matrix to help you decide which fields to include or exclude from the analysis.
-     
+
      :::{image} /explore-analyze/images/machine-learning-flightdata-regression-scatterplot.png
      :alt: A scatterplot matrix for three fields in {{kib}}
      :screenshot:
      :::
 
          If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
-      
+
       6. Choose a training percent of `90` which means it randomly selects 90% of the source data for training.
       7. If you want to experiment with [{{feat-imp}}](ml-feature-importance.md), specify a value in the advanced configuration options. In this example, we choose to return a maximum of 5 {{feat-imp}} values per document. This option affects the speed of the analysis, so by default it is disabled.
       8. Use a model memory limit of at least 50 MB. If the job requires more than this amount of memory, it fails to start. If the available memory on the node is limited, this setting makes it possible to prevent job execution.

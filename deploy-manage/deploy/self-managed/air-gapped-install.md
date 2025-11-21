@@ -243,7 +243,7 @@ WantedBy=default.target
 
 ## {{artifact-registry}} [air-gapped-elastic-artifact-registry]
 
-Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](/reference/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
+Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](/reference/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{agent}} Guide.
 
 ::::{note}
 When setting up own web server, such as NGINX, to function as the {{artifact-registry}}, it is recommended not to use TLS as there are, currently, no direct ways to establish certificate trust between {{agents}} and this service.

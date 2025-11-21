@@ -80,7 +80,7 @@ You specify these settings in the X-Pack monitoring section of the `apm-server.y
 
 ### `monitoring.enabled` [_monitoring_enabled]
 
-The `monitoring.enabled` config is a boolean setting to enable or disable {{monitoring}}. If set to `true`, monitoring is enabled.
+The `monitoring.enabled` config is a boolean setting to enable or disable {{monitor-features}}. If set to `true`, monitoring is enabled.
 
 The default value is `false`.
 
