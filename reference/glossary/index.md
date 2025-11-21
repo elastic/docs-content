@@ -275,7 +275,7 @@ The term "{{es}}" has several meanings depending on the context in which it is u
 
 <br>
 **The project type / solution view**
-- {{es}} is the name of a [project type (or solution view)](/solutions/search.md) that includes UI features tailored for search use cases:
+- {{es}} is the name of a [project type (or solution view)](/solutions/search.md) that includes UI features tailored for general-purpose search use cases:
   - {{es}} is the name of a **project** type on {{serverless-full}}.
   - {{es}} is the name of a **solution** in {{stack}} deployments. Each [space](#glossary-space) has its own navigation or "solution view".
 
