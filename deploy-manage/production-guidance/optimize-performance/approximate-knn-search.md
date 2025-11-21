@@ -46,7 +46,13 @@ Another option is to use  [synthetic `_source`](elasticsearch://reference/elasti
 
 ## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory]
 
-{{es}} uses the [HNSW](https://arxiv.org/abs/1603.09320) algorithm for approximate kNN search. HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures. To check the size of the vector data, you can use the [Analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) API.
+{{es}} uses either the [HNSW](https://arxiv.org/abs/1603.09320) algorithm or the [DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction) algorithm for approximate kNN search. 
+
+HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures.
+
+DiskBBQ is a clustering algorithm which can scale effeciently on a fraction of the total memory. You can start with enough RAM to hold the vector data and index structures but it's likely you will be able to use signifigantly less than this and still maintain good performance. In testing we find this will be between 1-5% of the index structure size (centroids and quantized vector data) per unique query where unique queries access non-overlapping clusters.  
+
+To check the size of the vector data, you can use the [Analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) API.
 
 Here are estimates for different element types and quantization levels:
 
@@ -58,6 +64,8 @@ Here are estimates for different element types and quantization levels:
 * `element_type: bit`: `num_vectors * (num_dimensions/8)`
 
 If utilizing HNSW, the graph must also be in memory, to estimate the required bytes use `num_vectors * 4 * HNSW.m`. The default value for `HNSW.m` is 16, so by default `num_vectors * 4 * 16`.
+
+If utilizing DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes we compute the cost of the centroids as `num_clusters * num_dimensions * 2 * 4 + num_clusters * (num_dimensions + 14)` plus the cost of the quantized vectors within the clusters as `num_vectors * ((num_dimensions/8 + 14 + 2) * 2)` where `num_clusters` is defined as `num_vectors / vectors_per_cluster` which by default will be `num_vectors / 384`
 
 Note that the required RAM is for the filesystem cache, which is separate from the Java heap.
 
@@ -72,16 +80,53 @@ If the machine running {{es}} is restarted, the filesystem cache will be empty, 
 Loading data into the filesystem cache eagerly on too many indices or too many files will make search *slower* if the filesystem cache is not large enough to hold all the data. Use with caution.
 ::::
 
-
 The following file extensions are used for the approximate kNN search: Each extension is broken down by the quantization types.
 
+* {applies_to}`stack: ga 9.3` `cenivf` for DiskBBQ to store centroids
+* {applies_to}`stack: ga 9.3` `clivf` for DiskBBQ to store clusters of quantized vectors
 * `vex` for the HNSW graph
 * `vec` for all non-quantized vector values. This includes all element types: `float`, `byte`, and `bit`.
 * `veq` for quantized vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `int4` or `int8`
 * `veb` for binary vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `bbq`
 * `vem`, `vemf`, `vemq`, and `vemb` for metadata, usually small and not a concern for preloading
 
-Generally, if you are using a quantized index, you should only preload the relevant quantized values and the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive.
+Generally, if you are using a quantized index, you should only preload the relevant quantized values and index structures such as the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive.
+
+Additional detail can be gleened on the specific files by using the [stats endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats) which will display information about the index and fields for example for DiskBBQ you might see something like this:
+
+[source,console]
+----
+GET my_index/_stats?filter_path=indices.my_index.primaries.dense_vector
+
+Example Response:
+{
+    "indices": {
+        "my_index": {
+            "primaries": {
+                "dense_vector": {
+                    "value_count": 3,
+                    "off_heap": {
+                        "total_size_bytes": 249,
+                        "total_veb_size_bytes": 0,
+                        "total_vec_size_bytes": 36,
+                        "total_veq_size_bytes": 0,
+                        "total_vex_size_bytes": 0,
+                        "total_cenivf_size_bytes": 111,
+                        "total_clivf_size_bytes": 102,
+                        "fielddata": {
+                            "my_vector": {
+                                "cenivf_size_bytes": 111,
+                                "clivf_size_bytes": 102,
+                                "vec_size_bytes": 36
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+----
 
 
 ## Reduce the number of index segments [_reduce_the_number_of_index_segments]

@@ -61,7 +61,7 @@ Approximate kNN offers low latency and good accuracy, while exact kNN guarantees
 ## Approximate kNN search [approximate-knn]
 
 ::::{warning}
-Approximate kNN search has specific resource requirements. All vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
+Approximate kNN search has specific resource requirements. For instance, for HNSW all vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
 ::::
 
 To run an approximate kNN search:
@@ -132,9 +132,10 @@ Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_
 
 ### Indexing considerations for approximate kNN search [knn-indexing-considerations]
 
-For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Building HNSW graphs is compute-intensive, so indexing vectors can take time; you may need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search performance.
 
-In addition to search-time parameters, HNSW exposes index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
+For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320) or per segment as clusters using [DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction). Building these approximate kNN structures is compute-intensive, so indexing vectors can take time; you may need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search performance.
+
+In addition to search-time parameters, HNSW and DiskBBQ expose index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
 
 ```console
 PUT image-index
@@ -155,6 +156,10 @@ PUT image-index
   }
 }
 ```
+
+::::{note}
+Support for DisKBBQ was introduced in version 9.2.0
+::::
 
 ### Tune approximate kNN for speed or accuracy [tune-approximate-knn-for-speed-accuracy]
 
