@@ -56,7 +56,7 @@ When defining actions in a rule, you specify:
 * An action frequency
 * A mapping of rule values to properties exposed for that type of action
 
-Each action uses a connector, which provides connection information for a {{kib}} service or third party integration, depending on where you want to send the notifications. The specific list of connectors that you can use in your rule vary by project type. Refer to [{{connectors-app}}](../../deploy-manage/manage-connectors.md).
+Each action uses a connector, which provides connection information for a {{kib}} service or third party integration, depending on where you want to send the notifications. The specific list of connectors that you can use in your rule vary by project type. Refer to [{{connectors-ui}}](../../deploy-manage/manage-connectors.md).
 
 After you select a connector, set the *action frequency*. If you want to reduce the number of notifications you receive without affecting their timeliness, some rule types support alert summaries. For example, if you create an {{es}} query rule, you can set the action frequency such that you receive summaries of the new, ongoing, and recovered alerts on a custom interval:
 

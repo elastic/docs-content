@@ -131,7 +131,6 @@ subs:
   index-manage-app:   "Index Management"
   rules-app:   "Rules"
   saved-objects-app:   "Saved Objects"
-  connectors-app:   "Connectors"
   reports-app:   "Reports"
   app-search-crawler:   "App Search web crawler"
   agent:   "Elastic Agent"
