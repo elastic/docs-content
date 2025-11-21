@@ -244,9 +244,9 @@ You can access the health status of {{fleet}}-managed {{agents}} and other {{fle
 
 This functionality allows you to effectively track an agent’s status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
 
-The following datastreams and fields are available.
+The following data streams and fields are available.
 
-Datastream
+Data stream
 :   `metrics-fleet_server.agent_status-default`
 
     This data stream publishes the number of {{agents}} in various states.
@@ -268,7 +268,7 @@ Datastream
     ::::
 
 
-Datastream
+Data stream
 :   `metrics-fleet_server.agent_versions-default`
 
     This index publishes a separate document for each version number and a count of enrolled agents only.
