@@ -272,7 +272,6 @@ subs:
   esh:   "ES-Hadoop"
   observability:   "Observability"
   api-query-parms-title:   "Query parameters"
-  api-examples-title:   "Examples"
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
   es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
