@@ -22,5 +22,5 @@ In this section, you'll find the following information:
 * What [events](/deploy-manage/monitor/autoops/ec-autoops-events.md) are and how you can configure [event settings](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) and [notifications](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md).
 
 :::{tip}
-Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md) for answers to commonly asked questions about AutoOps.
+Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md) for answers to frequently asked questions about AutoOps.
 :::

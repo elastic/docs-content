@@ -40,5 +40,5 @@ In this section, you'll find the following information:
 * A [troubleshooting guide](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md) to help you with any issues you may encounter
 
 :::{tip}
-Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#questions-about-autoops-for-self-managed-clusters) for answers to commonly asked questions about AutoOps for self-managed clusters.
+Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#questions-about-autoops-for-self-managed-clusters) for answers to frequently asked questions about AutoOps for self-managed clusters.
 :::

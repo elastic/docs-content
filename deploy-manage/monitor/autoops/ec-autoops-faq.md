@@ -106,8 +106,8 @@ $$$cc-autoops-ech$$$ **Can I use Cloud Connect to connect my {{ech}} clusters to
 :   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
-$$$macos-install$$$ **Can I use macOS to set up AutoOps for my self-managed clusters?**
-:   No, macOS is not a supported platform for setting up and connecting to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
+$$$macos-install$$$ **Can I use macOS to install {{agent}} to connect my self-managed cluster to AutoOps?**
+:   No, macOS is not a supported platform for installing {{agent}} and connecting a self-managed cluster to AutoOps. Refer to [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) for a list of supported platforms. You can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 
 $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?**
 :   You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
