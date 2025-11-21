@@ -14,17 +14,6 @@ description: Create and manage data views to access Elasticsearch data in Kibana
 
 # Data views [data-views]
 
-$$$field-formatters-numeric$$$
-
-$$$managing-fields$$$
-
-$$$runtime-fields$$$
-
-$$$management-cross-cluster-search$$$
-
-$$$data-views-read-only-access$$$
-
-
 {{data-sources-cap}} define which {{product.elasticsearch}} indices, data streams, or index aliases are accessible to {{product.kibana}} analytics features like Discover, Lens, and Maps. A {{data-source}} can target a single index or use patterns to match multiple indices, allowing you to analyze data across related sources.
 
 Each {{data-source}} includes field definitions, formatting options, and a timestamp field for time-based filtering. You can also add runtime fields that calculate values on the fly without modifying your indexed data.
@@ -179,7 +168,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](/explore-analyze/images/kibana-delete.png "") in the **Actions** column.
 
 
-## {{data-source}} field cache [data-view-field-cache]
+## Data view field cache [data-view-field-cache]
 
 The browser caches {{data-source}} field lists for increased performance. This is particularly impactful for {{data-sources}} with a high field count that span a large number of indices and clusters. The field list is updated every couple of minutes in typical {{product.kibana}} usage. Alternatively, use the refresh button on the {{data-source}} management detail page to get an updated field list. A force reload of {{product.kibana}} has the same effect.
 
@@ -187,7 +176,7 @@ The field list may be impacted by changes in indices and user permissions.
 
 ## Manage data views [managing-data-views]
 
-To customize the data fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{product.kibana}} displays the data fields.
+To customize the fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{product.kibana}} displays the data view fields.
 
 
 ### Explore your data with runtime fields [runtime-fields]
@@ -350,9 +339,9 @@ doc['field_name'].value
 For more information on scripted fields and additional examples, refer to [Using Painless in {{product.kibana}} scripted fields](https://www.elastic.co/blog/using-painless-kibana-scripted-fields)
 
 
-#### Migrate to runtime fields or ES|QL queries [migrate-off-scripted-fields]
+#### Migrate to runtime fields or {{esql}} queries [migrate-off-scripted-fields]
 
-The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an ES|QL query, highlighting the differences between each approach.
+The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an {{esql}} query, highlighting the differences between each approach.
 
 
 ##### Scripted field [scripted-field-example]
@@ -466,9 +455,9 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 
 
-### Format data fields [managing-fields]
+### Format data view fields [managing-fields]
 
-{{product.kibana}} uses the same field types as {{product.elasticsearch}}, however, some {{product.elasticsearch}} field types are unsupported in {{product.kibana}}. To customize how {{product.kibana}} displays data fields, use the formatting options.
+{{product.kibana}} uses the same field types as {{product.elasticsearch}}. However, some {{product.elasticsearch}} field types are unsupported in {{product.kibana}}. To customize how {{product.kibana}} displays data view fields, use the formatting options.
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
@@ -477,7 +466,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields, the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 
