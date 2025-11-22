@@ -18,7 +18,7 @@ Its core components (also known as ELK or the [{{stack}}](https://www.elastic.co
 
 - [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine that handles indexing, querying, and analytics.
 - [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools.
-- [{{beats}}](#stack-components-beats): Lightweight data shippers that collect and forward data to {{es}}.
+- [{{agent}}](#stack-components-agent): A lightweight data shipper that collects and forwards data to {{es}}.
 - [{{ls}}](#stack-components-logstash): The data ingestion and transformation engine, often used for more complex ETL (extract, transform, load) pipelines.
 
 You have many options for deploying the {{search-platform}}, which are summarized in [](/get-started/deployment-options.md).
@@ -35,34 +35,44 @@ Continue reading to learn how these components work together.
 ## Ingest [_ingest]
 
 There are multiple methods for ingesting data in the {{search-platform}}.
-For example, you can collect and ship logs, metrics, and other types of data with {{agent}} or collect detailed performance information with Elastic APM.
+The best approach depends on the kind of data you're ingesting and your specific use case.
+For example, you can collect and ship logs, metrics, and other types of data with {{agent}} or collect detailed performance information with {{product.apm}}.
 If you want to transform and enrich data before it's stored, you can use {{es}} ingest pipelines or {{ls}}.
 
 Trying to decide which ingest components to use? Refer to [](/manage-data/ingest.md) and [](/manage-data/ingest/tools.md).
 
-### {{fleet}} and {{agent}} [stack-components-agent]
+### {{agent}} and {{integrations}}[stack-components-agent]
 
 {{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host.
-It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more.
-Each agent has a single policy to which you can add integrations for new data sources, security protections, and more.
+It can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware.
+Each agent has a single policy to which you can add [integrations](integration-docs://reference/index.md) for new data sources, security protections, and more.
+You can also use [{{agent}} processors](/reference/fleet/agent-processors.md) to sanitize or enrich your data.
 
 {{fleet}} enables you to centrally manage {{agents}} and their policies.
 Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
-[Learn more about {{fleet}} and {{agent}}](/reference/fleet/index.md).
+[Learn more about {{agent}}](/reference/fleet/index.md).
 
-### APM [stack-components-apm]
+### {{product.apm}} [stack-components-apm]
 
-Elastic APM is an application performance monitoring system.
-It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more.
+{{product.apm}} is an application performance monitoring system.
+It allows you to monitor software services and applications in real-time by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more.
 This makes it easy to pinpoint and fix performance problems quickly.
 
-[Learn more about APM](/solutions/observability/apm/index.md).
+[Learn more about {{product.apm}}](/solutions/observability/apm/index.md).
+
+### OpenTelemetry collectors [stack-components-otel]
+
+[OpenTelemetry](https://opentelemetry.io/docs)(OTel) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project.
+
+In addition to supporting upstream OTel development, Elastic provides Elastic Distributions of OpenTelemetry (EDOT), specifically designed to work with {{product.observability}}.
+
+[Learn more about EDOT collectors](opentelemetry://reference/index.md).
 
 ### {{beats}} [stack-components-beats]
 
-{{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}.
-{{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs.
+:::{include} /manage-data/_snippets/beats.md
+:::
 
 [Learn more about {{beats}}](beats://reference/index.md).
 

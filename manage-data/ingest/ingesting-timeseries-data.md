@@ -29,12 +29,10 @@ Use {{agent}} with one of hundreds of [Elastic integrations](https://docs.elasti
 
 Ready to try [{{agent}}](/reference/fleet/index.md)? Check out the [installation instructions](/reference/fleet/install-elastic-agents.md).
 
-
 ## {{beats}} [ingest-beats]
 
-[Beats](beats://reference/index.md) are the original Elastic lightweight data shippers, and their capabilities live on in Elastic Agent. When you use Elastic Agent, you’re getting core Beats functionality, but with more added features.
-
-Beats require that you install a separate Beat for each type of data you want to collect. A single Elastic Agent installed on a host can collect and transport multiple types of data.
+:::{include} /manage-data/_snippets/beats.md
+:::
 
 **Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/reference/fleet/beats-agent-comparison.md) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
 
