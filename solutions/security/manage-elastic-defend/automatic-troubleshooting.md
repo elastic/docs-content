@@ -12,12 +12,12 @@ products:
 
 # Automatic troubleshooting
 
-Automatic troubleshooting helps you identify and resolve issues that could prevent {{elastic-defend}} from working as intended. This feature provides actionable insights into the following common problem areas:
+Automatic troubleshooting helps you identify and resolve issues that could prevent {{elastic-defend}} from working as intended. It provides actionable insights into the following common problem areas:
 
 * {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` **Policy responses**: Detect warnings or failures in {{elastic-defend}}’s integration policies.
 * **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that may conflict with {{elastic-defend}}.
 
-With these checks, you can resolve configuration errors, address incompatibilities, and ensure that your hosts remain protected.
+This helps you resolve configuration errors, address incompatibilities, and ensure that your hosts remain protected.
 
 ::::{admonition} Requirements
 To use this feature, you need:
