@@ -17,18 +17,18 @@ Configuring TLS between nodes is the basic security setup to prevent unauthorize
 
 This document focuses on the **manual configuration** of TLS for [{{es}} transport protocol](./secure-cluster-communications.md#encrypt-internode-communication) in self-managed environments. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration. Alternatively, {{es}} can [automatically generate and configure HTTPS certificates](./self-auto-setup.md) for you.
 
-::::{note}
-For other deployment types, such as {{ech}}, {{ece}}, or {{eck}}, refer to [](./secure-cluster-communications.md).
-::::
-
 In this guide, you will learn how to:
 
-* [Generate a Certificate Authority (CA) and a server certificate using the `elasticsearch-certutil` tool](#generate-certificates).
+* [Generate or provide security certificates](#obtain-certificates).
 * [Configure your {{es}} nodes to use the generated certificate for the transport layer](#encrypt-internode-communication).
 
 Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for the complete list of available settings in {{es}}.
 
-## Generate the certificate authority [generate-certificates]
+::::{note}
+For other deployment types, such as {{ech}}, {{ece}}, or {{eck}}, refer to [](./secure-cluster-communications.md).
+::::
+
+## Obtain certificates
 
 You can add as many nodes as you want in a cluster but they must be able to communicate with each other. The communication between nodes in a cluster is handled by the transport module. To secure your cluster, you must ensure that internode communications are encrypted and verified, which is achieved with mutual TLS.
 
@@ -36,39 +36,57 @@ In a secured cluster, {{es}} nodes use certificates to identify themselves when 
 
 The cluster must validate the authenticity of these certificates. The recommended approach is to trust a specific certificate authority (CA). When nodes are added to your cluster they must use a certificate signed by the same CA.
 
-For the transport layer, we recommend using a separate, dedicated CA instead of an existing, possibly shared CA so that node membership is tightly controlled. Use the `elasticsearch-certutil` tool to generate a CA for your cluster.
+For the transport layer, we recommend using a separate, dedicated CA instead of an existing, possibly shared CA so that node membership is tightly controlled.
 
-1. Before starting {{es}}, use the `elasticsearch-certutil` tool on any single node to generate a CA for your cluster.
+When you manually set up transport TLS, you can choose from the following CA options: 
+
+* [Use the `elasticsearch-certutil` tool to generate a CA unique to your cluster](#generate-certificates) (recommended)
+* [Provide certificates from an external CA](#external-ca)
+
+### Generate the certificate authority using `elasticsearch-certutil`  [generate-certificates]
+
+You can use the `elasticsearch-certutil` tool to generate a CA for your cluster. Using `elasticsearch-certutil` guarantees that your certificates meet {{es}} certificate requirements and security best practices. 
+
+1. Before starting {{es}}, generate the CA: 
+   1. Use the `elasticsearch-certutil` tool on any single node to generate a CA for your cluster.
 
     ```shell
     ./bin/elasticsearch-certutil ca
     ```
 
-    1. When prompted, accept the default file name, which is `elastic-stack-ca.p12`. This file contains the public certificate for your CA and the private key used to sign certificates for each node.
-    2. Enter a password for your CA. You can choose to leave the password blank if you’re not deploying to a production environment.
+   2. When prompted, accept the default file name, which is `elastic-stack-ca.p12`. This file contains the public certificate for your CA and the private key used to sign certificates for each node.
+   3. Enter a password for your CA. You can choose to leave the password blank if you’re not deploying to a production environment.
 
-2. On any single node, generate a certificate and private key for the nodes in your cluster. You include the `elastic-stack-ca.p12` output file that you generated in the previous step.
+2. Generate the certificate:
+   1. On any single node, generate a certificate and private key for the nodes in your cluster. Include the `elastic-stack-ca.p12` output file that you generated in the previous step.
 
-    ```shell
-    ./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
-    ```
+        ```shell
+        ./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12 <1>
+        ```
+        1. The `--ca` flag must contain the name of the CA file used to sign your certificates. The default file name from the `elasticsearch-certutil` tool is `elastic-stack-ca.p12`.
 
-    `--ca <ca_file>`
-    :   Name of the CA file used to sign your certificates. The default file name from the `elasticsearch-certutil` tool is `elastic-stack-ca.p12`.
+    2. Enter the password for your CA, or press **Enter** if you did not configure one in the previous step.
+    3. Create a password for the certificate and accept the default file name.
 
-        1. Enter the password for your CA, or press **Enter** if you did not configure one in the previous step.
-        2. Create a password for the certificate and accept the default file name.
+         The output file is a keystore named `elastic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
 
-            The output file is a keystore named `elastic-certificates.p12`. This file contains a node certificate, node key, and CA certificate.
 
-3. On **every** node in your cluster, copy the `elastic-certificates.p12` file to the `$ES_PATH_CONF` directory.
+### Provide certificates from an external CA [external-ca]
+
+You might choose to use an external CA to generate transport certificates for node-to-node connections. An external CA is any CA that is not managed using `elasticsearch-certutil`.
+
+Transport connections between {{es}} nodes are security-critical and you must protect them carefully. Malicious actors who can observe or interfere with unencrypted node-to-node transport traffic can read or modify cluster data. A malicious actor who can establish a transport connection might be able to invoke system-internal APIs, including APIs that read or modify cluster data.
+
+Carefully review [](/deploy-manage/security/external-ca-transport.md) to ensure that your certificates meet the security requirements for transport connections.
 
 
 ## Encrypt internode communications with TLS [encrypt-internode-communication]
 
 The transport networking layer is used for internal communication between nodes in a cluster. When security features are enabled, you must use TLS to ensure that communication between the nodes is encrypted.
 
-Now that you’ve generated a certificate authority and certificates, you’ll update your cluster to use these files.
+Now that you’ve obtained your certificates, you’ll update your cluster to use these files.
+
+These steps assume that you [generated a CA and certificates](#generate-certificates) using `elasticsearch-certutil`. The `xpack.security.transport.ssl` settings that you need to set differ if you're using a certificate generated with an external CA. Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for a full list of available settings.
 
 ::::{note}
 {{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds.
@@ -77,7 +95,9 @@ Now that you’ve generated a certificate authority and certificates, you’ll u
 
 Complete the following steps **for each node in your cluster**. To join the same cluster, all nodes must share the same `cluster.name` value.
 
-1. Open the `$ES_PATH_CONF/elasticsearch.yml` file and make the following changes:
+1. Place the certificate or keystore file that you obtained in the `$ES_PATH_CONF` directory on **every** node in your cluster. If you generated a CA using `elasticsearch-certutil`, then this file is named `elastic-certificates.p12`.
+
+2. Open the `$ES_PATH_CONF/elasticsearch.yml` file and make the following changes:
 
     1. Add the [`cluster-name`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting and enter a name for your cluster:
 
@@ -105,7 +125,7 @@ Complete the following steps **for each node in your cluster**. To join the same
 
         1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
 
-2. If you entered a password when creating the node certificate, run the following commands to store the password in the {{es}} keystore:
+3. If you entered a password when creating the node certificate, run the following commands to store the password in the {{es}} keystore:
 
     ```shell
     ./bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
@@ -115,8 +135,8 @@ Complete the following steps **for each node in your cluster**. To join the same
     ./bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
     ```
 
-3. Complete the previous steps for each node in your cluster.
-4. On **every** node in your cluster, start {{es}}. The method for [starting](../maintenance/start-stop-services/start-stop-elasticsearch.md) and [stopping](../maintenance/start-stop-services/start-stop-elasticsearch.md) {{es}} varies depending on how you installed it.
+4. Complete the previous steps for each node in your cluster.
+5. On **every** node in your cluster, start {{es}}. The method for [starting](../maintenance/start-stop-services/start-stop-elasticsearch.md) and [stopping](../maintenance/start-stop-services/start-stop-elasticsearch.md) {{es}} varies depending on how you installed it.
 
     For example, if you installed {{es}} with an archive distribution (`tar.gz` or `.zip`), you can enter `Ctrl+C` on the command line to stop {{es}}.
 
