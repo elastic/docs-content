@@ -1,12 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/env-provider.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Env Provider [env-provider]
+# Env provider [env-provider]
 
 Provides access to the environment variables as key-value pairs.
 
