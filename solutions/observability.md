@@ -23,7 +23,7 @@ products:
 
 The {{observability}} reference documentation is available in the [Elastic reference documentation](/reference/observability/index.md).
 
-You can also browse reference documentation for the following components:
+You can also browse reference documentation for the following components!
 
 - [Elastic Distributions of OpenTelemetry (EDOT)](opentelemetry://reference/index.md)
 - [Fleet and Elastic Agent](/reference/fleet/index.md)
