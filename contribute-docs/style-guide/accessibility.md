@@ -12,7 +12,7 @@ These guidelines are intended for all content authors and contains common tips a
 **Accessibility** for content means ensuring that all of our users can understand the content we publish—all of it—independently of how they choose or have to interact with it.
 
 Our users and readers are diverse, with different abilities and disabilities. 
-They also interact with our content in different ways: screen readers, mobile devices, Braille, etc. The list is long and constantly evolving. 
+They also interact with our content in different ways, such as screen readers, mobile devices, and Braille. The list is long and constantly evolving. 
 
 As content authors, it is our responsibility to provide them with [perceivable, operable, understandable, and robust content](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head).
 
