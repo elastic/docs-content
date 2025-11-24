@@ -130,7 +130,7 @@ Use commas:
 
 :::{dropdown} Examples
 * A case can have multiple connectors, but only one connector can be selected at a time.
-      * Click **Add events**, and follow the links for the types of data you want to collect.
+* Click **Add events**, and follow the links for the types of data you want to collect.
 :::
 
 * When an adverbial dependent clause comes before an independent clause.
