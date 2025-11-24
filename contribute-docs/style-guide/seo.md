@@ -177,7 +177,7 @@ Best practices:
 
 * Use structured data (e.g., [schema.org](https://schema.org/) markup) to add semantic meaning.  
 * Structured data can help search engines display your documentation in rich results, such as FAQs or How-To snippets.  
-  Consult Docs engineering for existing capabilities or implementation guidance. Functionality may be built into your template.
+  Check with the documentation team for existing capabilities or implementation guidance.
 
 ### Content length
 
@@ -314,7 +314,7 @@ Best practices:
 **Consider structured data**
 
 * Where applicable, use structured data (e.g., VideoObject, ImageObject) to help search engines understand and display multimedia in rich results.  
-* Consult Docs engineering for existing capabilities or implementation guidance.
+* Check with the documentation team for existing capabilities or implementation guidance. If you're an external contributor, open a GitHub issue to discuss implementation options.
 
 ## URLs
 
@@ -371,8 +371,7 @@ Best practices:
 **Redirects**
 
 * If removing or merging pages, set up appropriate redirects to preserve SEO value and user experience.  
-  * If a page is being moved, submit a request to Docs engineering to 301 redirect to the new URL version (all /docs/ pages).  
-  * If a /guide/ page needs a redirect route the request to the Web team.
+  * If a page is being moved, submit a redirect request for the old URL to the new URL. For internal contributors, contact the documentation team. For external contributors, include redirect information in your pull request or open a GitHub issue.
 
 **User feedback**
 
@@ -392,7 +391,7 @@ Best practices:
 
 * Use legible font sizes and sufficient line spacing for mobile screens.  
 * Do not deviate from template styles.  
-* If new functionality is needed, discuss with the Docs Team before implementing.
+* If new functionality is needed, discuss with the documentation team before implementing. External contributors should open a GitHub issue to propose new functionality.
 
 **Accessible interactions**
 
@@ -442,7 +441,7 @@ Best practices:
 **Hreflang tag support required**
 
 * Hreflang tags signal language and region to search engines in order to surface and index them within respective search results.  
-* Consult with Technical SEO lead & Docs engineering for implementation.
+* Consult with the documentation team for implementation guidance. External contributors should open a GitHub issue to discuss hreflang implementation.
 
 ## Elastic Docs SEO checklist
 

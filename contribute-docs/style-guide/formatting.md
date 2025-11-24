@@ -483,13 +483,3 @@ For more information, refer to:
     * [RFC5737 - IPv4 Address Blocks Reserved for Documentation](https://datatracker.ietf.org/doc/html/rfc5737)
     * [RFC3849 - IPv6 Address Blocks Reserved for Documentation](https://datatracker.ietf.org/doc/html/rfc3849)
 
-### What to do if highly sensitive data is exposed in Elastic docs
-
-If you discover that highly sensitive data, such as a password or SSH key, has
-been exposed in our end-user docs:
-
-1. Review the exposed secret to determine if it's valid.
-2. If it's valid, revoke it, then report it to InfoSec at security@elastic.co.
-4. [Remove the sensitive data from the repository](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
-
-![Flow diagram that shows steps to resolve a sensitive data exposure](./images/secrets-exposure.png)
