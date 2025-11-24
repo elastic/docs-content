@@ -61,7 +61,7 @@ Approximate kNN offers low latency and good accuracy, while exact kNN guarantees
 ## Approximate kNN search [approximate-knn]
 
 ::::{warning}
-Approximate kNN search has specific resource requirements. For instance, for HNSW all vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
+Approximate kNN search has specific resource requirements. For instance, for HNSW, all vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
 ::::
 
 To run an approximate kNN search:
