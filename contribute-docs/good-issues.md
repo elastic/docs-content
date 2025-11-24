@@ -72,11 +72,6 @@ Ideally, each ticket must represent a single, isolated problem or feature, or a 
 
 If your request is for a large project with many parts, reach out to the docs team to determine the scope and see how it’s best to chunk work.
 
-## What's next
-
-* Open an issue in [elastic/docs-content](https://github.com/elastic/docs-content/issues/new/choose). Internal contributors can also use [elastic/docs-content-internal](https://github.com/elastic/docs-content-internal/issues/new/choose) for sensitive content.
-* Refer to [Docs Issue Triage](/processes/issue-triage.md) to learn what happens once you've opened an issue.
-
 ## Closing issues
 
 In general, we will ask for clarification if the issue has problems. **If our feedback is not addressed in a reasonable time, we might close the issue**. You can always reopen it after editing it.
