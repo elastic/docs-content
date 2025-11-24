@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate with {{ls}}
+navigation_title: {{ech}} data to {{serverless-full}} with {{ls}}
 applies_to:
   stack: ga
   deployment:
@@ -13,26 +13,19 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Migrate data with {{ls}} [migrate-with-ls]
+# Migrate {{ech}} data to {{serverless-full}} with {{ls}} [migrate-with-ls]
 
 You can use {{ls}} to migrate data from an {{ech}} deployment to an {{serverless-full}} project. 
-
-The Logstash input has cursor like-functionality that keeps your place. 
-
-[Tracking a field's value across runs](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch)
-
 Familiarity with {{ech}}, {{es}}, and {{ls}} is helpful, but not required. 
 
-:::{note}
-This guide focuses on data migration. Dashboards, visualizations, pipelines, templates, and other {{kib}} assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
+:::{admonition} Basic migration
+This guide focuses on a basic data migration scenario for moving static data from an {{ech}} deployment to a {{serverless-full}} project. Dashboards, visualizations, pipelines, templates, and other {{kib}} assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
 :::
 
 ## Prerequisites [migrate-prereqs]
 
-Ensure that you have:
-
 - {{ech}} deployment with data to migrate
-- {{serverless-full}} project configured and running
+- [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) project configured and running
 - {{ls}} [installed](https://www.elastic.co/downloads/logstash) on your local machine or server 
 - API keys in {{ls}} format for authentication with both deployments
 
@@ -43,9 +36,8 @@ Ensure that you have:
 * [Verify data migration](#verify-migration)
 
 
-
 ## Step 1: Configure {{ls}} [configure-ls]
-Create a new {{ls}} configuration file (migration.conf) with these settings:
+Create a new {{ls}} [pipeline configuration file](logstash://reference/creating-logstash-pipeline.md) (_migration.conf_) with these settings:
 
 ```
 input {
@@ -62,15 +54,20 @@ output {
     hosts       => [ "https://<SERVERLESS_HOST_URL>:443" ] # URL for your Serverless project URL, set port as 443
     api_key     => "<SERVERLESS_API_KEY>"                  # API key (in Logstash format) for your Serverless project
     ssl_enabled => true
-    index       => "%{[@metadata][input][elasticsearch][_index]}" # Retain original index names
+    index       => "%{[@metadata][input][elasticsearch][_index]}" # Instruction to retain original index names
   }
 
   stdout { codec => rubydebug { metadata => true } }
 }
 ```
 
-When you create an API key for Logstash, be sure to select **Logstash** from the **API key** format dropdown. This option formats the API key in the correct `id:api_key` format required by Logstash.
+:::{admonition} Tips
 
+- When you create an [API key for {{ls}}](logstash://reference/connecting-to-serverless.md#api-key), be sure to select **Logstash** from the **API key** format dropdown. This option formats the API key in the correct `id:api_key` format required by {{ls}}.
+
+- To migrate multiple indexes at the same time, use a wildcard in the index name. 
+For example, `index => "logs-*"` migrates all indices starting with `logs-`.
+:::
 
 ## Step 2: Run {{ls}} [run-ls]
  
@@ -88,27 +85,11 @@ After running {{ls}}, verify that the data has been successfully migrated:
 2. Navigate to Index Management and select the index.
 3. Verify that the migrated data is visible.
 
+<br>
+:::{admonition} Advanced migration
+:applies_to: stack: preview
 
+{{ls}} can handle more advanced migrations with field tracking settings in the elasticsearch input. The field tracking feature adds "cursor-like" functionality that can support more complex migrations and ongoing data migration over time.
 
-
-
-:::{tip}
-To migrate multiple indexes at the same time, use a wildcard in the index name. 
-For example, `index => "logs-*"` migrates all indices starting with `logs-`.
+More information is available in the Elasticsearch input plugin documentation: [Tracking a field's value across runs](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch#plugins-inputs-elasticsearch-cursor).
 :::
-
-
-
-## More resources [more-resources]
-* https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch
-* https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch#plugins-inputs-elasticsearch-cursor
-* [API key in LS format](https://www.elastic.co/docs/reference/logstash/connecting-to-serverless#api-key)
-
-
-
-
-## FAQ 
-
-ToDo @karenzone:  Continue with FAQ
-
-
