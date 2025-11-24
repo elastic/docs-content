@@ -70,7 +70,7 @@ Examples:
 
 ❌Deploy
 
-### H3s, H4s, H5s, and etc: Subheadings
+### Subheadings
 
 H3 and greater subheadings further divide section content into more specific topics or steps. These headings help organize detailed information and can target long-tail keywords.
 
