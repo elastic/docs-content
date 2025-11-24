@@ -41,7 +41,7 @@ test each step locally. Test your instructions for multiple use cases (and poten
 ## UI icons 
 
 UI icons can be helpful to include when describing a procedure that requires the user to interact with the UI, for example, if they need to click a button or another UI element. Follow these guidelines:
-- Use the approved list of [EUI icons](https://eui.elastic.co/#/display/icons). 
+- Use the approved list of [EUI icons](https://eui.elastic.co/docs/components/display/icons/). 
 - Include the tooltip text, image, and alt-text for optimal accessibility. 
 - Avoid using parentheses before and after the UI icon image, which can disrupt screen readers' speech and braille outputs. 
 :::{dropdown} Example
