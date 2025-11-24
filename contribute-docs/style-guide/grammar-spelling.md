@@ -115,7 +115,7 @@ Use commas:
 * Before the conjunction in a list of three or more items (also known as Oxford comma).
 
 :::{dropdown} Examples
-    * Supported providers are OpenAI, Azure OpenAI Service, and Amazon Bedrock.
+* Supported providers are OpenAI, Azure OpenAI Service, and Amazon Bedrock.
     * Follow the onboarding instructions in the getting started guides for AWS, GCP, or Azure.
 :::
 
