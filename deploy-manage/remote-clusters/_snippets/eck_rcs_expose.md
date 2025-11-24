@@ -22,9 +22,7 @@ kubectl expose service quickstart-es-remote-cluster \
 
 :::{applies-item} eck: ga 3.3
 
-Starting in ECK 3.3, you can customize the service used for the remote cluster interface directly in the {{es}} resource. This allows you to choose the `Service` type or apply any supported `spec` fields without creating a separate Kubernetes Service.
-
-For example, the manifest below configures the remote cluster service as a `LoadBalancer`:
+Starting in ECK 3.3, you can expose the remote cluster service (defaults to port 9443) directly from the {{es}} resource manifest:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -45,8 +43,6 @@ spec:
       ...
 ```
 1. On cloud providers that support external load balancers, setting the type to `LoadBalancer` provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-remote-cluster` through one of the Kubernetes Ingress controllers that support TCP services.
-
-You can also configure other service types (such as `NodePort`) or attach annotations required by your environment.
 :::
 ::::
 
