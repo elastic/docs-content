@@ -519,7 +519,7 @@ Best practices:
 
 - [ ] URL is short, descriptive, & reflects the page’s topic  
 - [ ] Uses lowercase letters & hyphens (no spaces, underscores, or special characters)  
-- [ ] URL structure mirrors the documentation hierarchy (e.g., /docs/section/topic/)  
+- [ ] URL structure mirrors the documentation hierarchy (`/docs/section/topic/`)  
 - [ ] Each child page has a valid parent page  
 - [ ] URL matches the H1 & page focus  
 - [ ] Canonical tag is set to the preferred URL
