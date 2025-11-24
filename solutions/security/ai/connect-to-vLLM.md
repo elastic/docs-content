@@ -56,14 +56,14 @@ To pull and run your chosen vLLM image:
 2. Run the following terminal command to start the vLLM server, download the model, and expose it on port 8000:
 
 ```bash
-docker run --name Mistral-Small-3.2-24B --gpus all \
+docker run --name [YOUR_MODEL_ID] --gpus all \
 -v /root/.cache/huggingface:/root/.cache/huggingface \
 --env HUGGING_FACE_HUB_TOKEN=xxxx \
 --env VLLM_API_KEY=xxxx \
 -p 8000:8000 \
 --ipc=host \
 vllm/vllm-openai:v0.9.1 \
---model mistralai/Mistral-Small-3.2-24B-Instruct-2506 \
+--model mistralai/[YOUR_MODEL_ID] \
 --tool-call-parser mistral \
 --tokenizer-mode mistral \
 --config-format mistral \
@@ -84,7 +84,7 @@ For an explanation of each of the command's parameters, refer to the following l
 `-p 8000:8000`: Maps port 8000 on the host to port 8000 in the container.
 `–ipc=host`: Enables sharing memory between host and container.
 `vllm/vllm-openai:v0.9.1`: Specifies the official vLLM OpenAI-compatible image, version 0.9.1. This is the version of vLLM we recommend.
-`--model`: ID of the Hugging Face model you wish to serve. In this example it represents the `Mistral-Small-3.2-24B` model.
+`--model`: ID of the Hugging Face model you wish to serve. 
 `--tool-call-parser mistral \`, `--tokenizer-mode mistral \`, `--config-format mistral \`, and `--load-format mistral`: Mistral specific parameters, refer to the Hugging Face model card for recommended values.
 `-enable-auto-tool-choice`: Enables automatic function calling.
 `--gpu-memory-utilization 0.90`: Limits max GPU used by vLLM (may vary depending on the machine resources available).
@@ -140,12 +140,17 @@ Finally, create the connector within your Elastic deployment to link it to your 
 4. In **Connector settings**, configure the following:
   * For **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**.
   * For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
-5. For **Default Model**, enter `mistralai/Mistral-Small-3.2-24B-Instruct-2506` or the model ID you used during setup.
+5. For **Default Model**, enter `mistralai/[YOUR_MODEL_ID]`.
 6. For **Authentication**, configure the following:
   * For **API key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
   * If your chosen model supports tool use, then turn on **Enable native function calling**.
 7. Click **Save**
-8. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+8. Add the following to your `config/kibana.yml` file:
+  ```
+  feature_flags.overrides:  
+       securitySolution.inferenceChatModelDisabled: true  
+  ```
+9. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
   * On the **Conversations** tab, turn off **Streaming**.
   * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
   
@@ -163,5 +168,7 @@ Setup is now complete. The model served by your vLLM container can now power Ela
 
 
 :::{note}
-To run a different model, stop the current container and run a new one with an updated `--model` parameter.
+To run a different model: s
+* Stop the current container and run a new one with an updated `--model` parameter.
+* Update your {{kib}} connector's **Default model** parameter to match the new model name.
 :::
