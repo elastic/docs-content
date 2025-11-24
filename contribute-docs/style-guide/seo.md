@@ -174,7 +174,7 @@ Best practices:
 **Leverage structured data, where applicable**
 
 Use structured data (for example, [schema.org](https://schema.org/) markup) to add semantic meaning.  
-* Structured data can help search engines display your documentation in rich results, such as FAQs or How-To snippets.  
+Structured data can help search engines display your documentation in rich results, such as FAQs or How-To snippets.  
   Check with the documentation team for existing capabilities or implementation guidance.
 
 ### Content length
