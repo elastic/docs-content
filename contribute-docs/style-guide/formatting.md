@@ -72,7 +72,7 @@ Use monospace text formatting to emphasize technical elements to help users diff
 | Parameter names | The query requires the `type` and `id` parameters. |
 | Process names | Verify the `autodetect` process is running. |
 | Property names | The following example uses the `DROP` command to omit the `_id` property from the results table. |
-| Role names | * The `kibana_system` role is required.        * The `elastic` superuser. |
+| Role names | The `kibana_system` role is required.  |
 | User input | In the command line, enter `hello world`. |
 | Variables | Access the original source for a field as `ctx._source.<field_name>`. |
 
