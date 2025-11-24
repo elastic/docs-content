@@ -5,9 +5,9 @@ description: Guidelines for using correct grammar and spelling in your writing.
  
 # Grammar and spelling
 
-## Pronouns do's and don'ts 
+## Pronouns do's and don'ts
 
-### Be unambiguous 
+### Be unambiguous
 
 In order to make your sentences as clear as possible when using pronouns, they should always be unambiguous.
 
@@ -23,9 +23,9 @@ And while we're at it, let's remove the *in order* since it doesn't really add a
 
 ### Use second-person pronouns (*you*, *your*, *yours*)
 
-In general, write in the second person to establish a friendly, casual tone with the reader as though you're speaking to them. Writing in the second person also helps you avoid using passive voice. However, don't overuse *your* when referring to user interaction. 
+In general, write in the second person to establish a friendly, casual tone with the reader as though you're speaking to them. Writing in the second person also helps you avoid using passive voice. However, don't overuse *your* when referring to user interaction.
 
-For example: *Your Elastic Agents* can feel overly familiar if used too many times. However, *your environment* as opposed to *the environment* sounds more casual. It can be tricky when deciding word choice, but when in doubt, try replacing the pronoun with *the* to see if it's an appropriate substitute.    
+For example: *Your Elastic Agents* can feel overly familiar if used too many times. However, *your environment* as opposed to *the environment* sounds more casual. It can be tricky when deciding word choice, but when in doubt, try replacing the pronoun with *the* to see if it's an appropriate substitute.
 
 :::{dropdown} Examples
   * Log in to your account to display the settings. 
@@ -34,40 +34,40 @@ For example: *Your Elastic Agents* can feel overly familiar if used too many tim
 
 ### Use singular first-person pronouns sparingly (*I*, *me*, *my*, *mine*)
 
-Typically, you should never write in the first person. You can, however, use first-person pronouns if they appear in the product UI. 
+Typically, you should never write in the first person. You can, however, use first-person pronouns if they appear in the product UI.
 
 :::{dropdown} Example
-Select the checkbox that says, "Confirm my selection." 
+Select the checkbox that says, "Confirm my selection."
 :::
 
-### Use plural first-person pronouns wisely (*we*, *us*, *our*, *our*) 
+### Use plural first-person pronouns wisely (*we*, *us*, *our*, *our*)
 
-First-person plural pronouns can sometimes convey a stuffy and serious tone—the opposite of Elastic's more casual tone. In some instances, however, it's okay to use these sparingly. For example, it's perfectly acceptable to say *we recommend*, and in fact is preferable over *it is recommended* since that uses passive voice. 
+First-person plural pronouns can sometimes convey a stuffy and serious tone—the opposite of Elastic's more casual tone. In some instances, however, it's okay to use these sparingly. For example, it's perfectly acceptable to say *we recommend*, and in fact is preferable over *it is recommended* since that uses passive voice.
 
 ### Avoid gendered pronouns
 
 Use gender-neutral pronouns as appropriate. Avoid using *he*, *him*, *his*, *she*, and *her*. Instead, try replacing it with a form of *user*. Also, avoid using combination pronouns such as *he/she* or *(s)he*. Use *they* or *them* instead.
 
-## Verb tense 
+## Verb tense
 
 Avoid temporal words like *currently*, *now*, or *will* and conditional words like *should* or *could*. Write in the present tense to describe the state of the product as it is now. You may need to use the past tense occasionally, but try to change it to the present tense to see if that's a better fit.
 
 :::{dropdown} Example
   ❌ **Don't**: If you didn't select all the required permissions, an error message will appear.
 
-  ✔️ **Do**: If you don't select all the required permissions, an error message appears. 
+  ✔️ **Do**: If you don't select all the required permissions, an error message appears.
 :::
 
 ## Contraction do's and dont's
 
-Use contractions: they're (an acceptable contraction, by the way) conversational and don't require a lot of thought because we use them in everyday language. However, don't mix contractions and their spelled-out equivalents. For example, don't use *don't* and *do not* in the same context unless you absolutely need the latter for emphasis. 
+Use contractions: they're (an acceptable contraction, by the way) conversational and don't require a lot of thought because we use them in everyday language. However, don't mix contractions and their spelled-out equivalents. For example, don't use *don't* and *do not* in the same context unless you absolutely need the latter for emphasis.
 
-Don't use Elastic references as a contraction to replace *Elastic is*. 
+Don't use Elastic references as a contraction to replace *Elastic is*.
 
 :::{dropdown} Example
   ❌ **Don't**: Elastic's excited to release this new feature.
 
-  ✔️ **Do**: Elastic's new feature helps you find information fast. 
+  ✔️ **Do**: Elastic's new feature helps you find information fast.
 :::
 
 Avoid ambiguous or awkward contractions, such as *there'd*, *it'll*, and *they'd*.
@@ -96,7 +96,7 @@ Avoid gerunds in prepositional phrases—this will make your instructions easier
   ✔️ **Do**: Refer to instructions on how to configure the Elastic Agent.
 :::
 
-## Punctuation 
+## Punctuation
 
 ### Colons
 
@@ -184,17 +184,19 @@ Use a hyphen:
 * When a prefixed word has two vowels together.
 
 :::{dropdown} Examples
-    * Re-enable
-    * Pre-approve
+
+* Re-enable
+* Pre-approve
 :::
 
 * When two or more words modify the following noun, making a compound adjective.
 
 :::{dropdown} Examples
-    * Real-time results
-    * AI-generated text
-    * User-defined values
-    * Up-to-date environment
+
+* Real-time results
+* AI-generated text
+* User-defined values
+* Up-to-date environment
 :::
 
 * Whenever the prefix is `self-`, `ex-`, or `all-`.
@@ -206,7 +208,8 @@ Use a hyphen:
 * For a minus sign and to indicate negative numbers. In formulas and equations, add spacing between the numbers and arithmetic operators. For negative numbers, don't add spacing between the minus and the number.
 
 :::{dropdown} Examples
-    * 12 - 3 = 9
+
+* 12 - 3 = 9
 * -79
 :::
 
