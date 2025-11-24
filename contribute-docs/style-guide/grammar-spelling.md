@@ -244,7 +244,7 @@ Use an en dash:
 
 :::{dropdown} Examples
 * Windows 10–compatible products
-    * AI Assistant–generated content 
+* AI Assistant–generated content 
 :::
 
 * To indicate a range of numbers, such as inclusive values or dates.
