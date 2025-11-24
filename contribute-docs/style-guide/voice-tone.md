@@ -58,29 +58,26 @@ During the users' journey with Elastic, there are times for excitement and disco
 
 :::::{tab-set}
 ::::{tab-item} Attributes
-    We're proud to show new and cool stuff. Be:
+We're proud to show new and cool stuff. Be:
 
- - Motivational
-    - Excited
-    - Enthusiastic
-  <br/>
-    
-    When using this tone, you may:
-    - Use exclamation marks, but sparingly.
-    - Help the user understand how the feature benefits them or helps them to achieve their goals.
-    - Use visuals to support your text, like GIFs or videos.
+- Motivational
+- Excited
+- Enthusiastic
 
+When using this tone, you may:
+
+- Use exclamation marks, but sparingly.
+- Help the user understand how the feature benefits them or helps them to achieve their goals.
+- Use visuals to support your text, like GIFs or videos.
 
 ::::
 ::::{tab-item} Cases
-    Although it can be very visible because of the way it's written, the **stimulating** tone is used **quite rarely** overall. 
-    
-    We use it when we want to show new things to users, especially in:
+Although it can be very visible because of the way it's written, the **stimulating** tone is used **quite rarely** overall. 
 
-    - Getting started guides
-    - Release highlights
+We use it when we want to show new things to users, especially in:
 
-
+- Getting started guides
+- Release highlights
 ::::
 ::::{tab-item} Examples
   Let’s start exploring what’s happening in your environment. After installing Elastic Defend, you’ll see the following page.
@@ -96,29 +93,25 @@ During the users' journey with Elastic, there are times for excitement and disco
 
 :::::{tab-set}
 ::::{tab-item} Attributes
-    All's fine, we'll help you find your way. Be:
+All's fine, we'll help you find your way. Be:
 
-    - Calm
-    - Positive
-    - Confident
-  <br/>
-    
-    When using this tone, you may:
-    - Use slightly more casual terminology.
-    - Explain what's missing or what's happening.
-    - Provide actions or clearly state when no action is needed.
+- Calm
+- Positive
+- Confident
 
+When using this tone, you may:
 
+- Use slightly more casual terminology.
+- Explain what's missing or what's happening.
+- Provide actions or clearly state when no action is needed.
 ::::
 ::::{tab-item} Cases
-    The **friendly** tone is used **sparingly** overall. 
-    
-    We use it when trying to orient users in performing their next action or learning different things they could do, especially in:
+The **friendly** tone is used **sparingly** overall.
 
-    - Quick starts
-    - Tutorials
+We use it when trying to orient users in performing their next action or learning different things they could do, especially in:
 
-
+- Quick starts
+- Tutorials
 ::::
 ::::{tab-item} Examples
   Got everything working as you want it? Roll out your agent policies to other hosts by deploying Elastic Agents across your infrastructure!
@@ -132,47 +125,42 @@ During the users' journey with Elastic, there are times for excitement and disco
 
 :::::{tab-set}
 ::::{tab-item} Attributes
-    E=MC². Be:
+E=MC². Be:
 
-    - Direct
-    - Straight to the point
-    - Neutral
-  <br/>
-    
-    When using this tone:
-    - Use a minimum of words.
-    - Write for scanning and help users quickly locate what matters to them.
-    - Use action verbs to: 
-        - Label selection controls
-        - Describe what settings do or what to do with a setting
-    - Use clear nouns for menus and form field names. 
+- Direct
+- Straight to the point
+- Neutral
 
+When using this tone:
 
+- Use a minimum of words.
+- Write for scanning and help users quickly locate what matters to them.
+- Use action verbs to:
+  - Label selection controls
+  - Describe what settings do or what to do with a setting
+- Use clear nouns for menus and form field names.
 ::::
 ::::{tab-item} Cases
-    The **informational** tone is the **most used** one. It's everywhere in the docs, and sometimes seems so normal that we forget about it. Yet, it's very important! 
-    
-    We use it for naming and describing things:
+The **informational** tone is the **most used** one. It's everywhere in the docs, and sometimes seems so normal that we forget about it. Yet, it's very important!
 
-    - Reference content
-    - Concepts
-    - How-tos
-    - Event logs
-    - Troubleshooting
+We use it for naming and describing things:
 
-
+- Reference content
+- Concepts
+- How-tos
+- Event logs
+- Troubleshooting
 ::::
 ::::{tab-item} Examples
-    Mapping is the process of defining how a document, and the fields it contains, are stored and indexed. Each document is a collection of fields, which each have their own data type. When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes metadata fields, like the `_source` field, which customize how a document’s associated metadata is handled.
+Mapping is the process of defining how a document, and the fields it contains, are stored and indexed. Each document is a collection of fields, which each have their own data type. When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes metadata fields, like the `_source` field, which customize how a document’s associated metadata is handled.
 
-    An Elastic Cloud deployment offers you all of the features of the Elastic Stack as a hosted service. To test drive your first deployment, sign up for a free Elastic Cloud trial:
+An Elastic Cloud deployment offers you all of the features of the Elastic Stack as a hosted service. To test drive your first deployment, sign up for a free Elastic Cloud trial:
 
-    1. Go to our Elastic Cloud Trial page.
-    1. Enter your email address and a password.
-    1. After you’ve logged in, you can create a deployment. Give your deployment a name and select **Create deployment**.
+1. Go to our Elastic Cloud Trial page.
+1. Enter your email address and a password.
+1. After you’ve logged in, you can create a deployment. Give your deployment a name and select **Create deployment**.
 
-    <br/>
-    If you receive the following rule failure: `"Bulk Indexing of signals failed: [parent] Data too large"`, this indicates that the alerts payload was too large to process. This can be caused by bad indicator data, a misconfigured rule, or too many event matches. Review your indicator data or rule query. If nothing obvious is misconfigured, try executing the rule against a subset of the original data and continue diagnosis.
+If you receive the following rule failure: `"Bulk Indexing of signals failed: [parent] Data too large"`, this indicates that the alerts payload was too large to process. This can be caused by bad indicator data, a misconfigured rule, or too many event matches. Review your indicator data or rule query. If nothing obvious is misconfigured, try executing the rule against a subset of the original data and continue diagnosis.
 ::::
 :::::
 
@@ -180,38 +168,33 @@ During the users' journey with Elastic, there are times for excitement and disco
 
 :::::{tab-set}
 ::::{tab-item} Attributes
-    Something might be wrong or unexpected and requires attention. Let us help you. Be:
+Something might be wrong or unexpected and requires attention. Let us help you. Be:
 
-    - Reassuring
-    - Professional
-    - Precise
-    <br/>
-    
-    When using this tone, you may:
-    - Be more action-oriented than usual to offer direct paths to users.
+- Reassuring
+- Professional
+- Precise
 
+When using this tone, you may:
 
+- Be more action-oriented than usual to offer direct paths to users.
 ::::
 ::::{tab-item} Cases
-    The **empathetic** tone is used **sparingly** overall and usually becomes visible in forms that draw the user's attention. 
-    
-    We use it when notifying users of things that are not immediately critical but still require attention, especially in:
+The **empathetic** tone is used **sparingly** overall and usually becomes visible in forms that draw the user's attention.
 
-    - Warnings and cautions
-    - Upgrade and deprecation notices
+We use it when notifying users of things that are not immediately critical but still require attention, especially in:
 
-
+- Warnings and cautions
+- Upgrade and deprecation notices
 ::::
 ::::{tab-item} Examples
-    The kNN search API is deprecated in favor of the new _knn_ option inside the search API. The knn option is now the recommended way of running ANN search.
-    
-    The indicator index query of the prebuilt rule is misconfigured and will prevent the rule from generating alerts. To resolve this, duplicate the rule and update its settings:
+The kNN search API is deprecated in favor of the new _knn_ option inside the search API. The knn option is now the recommended way of running ANN search.
 
-    1. Go to the Rules table (**Detect** → **Rules**).
-    1. Locate the Threat Intel Filebeat Module (v8.x) Indicator Match prebuilt rule.
-    1. Click the rule to view the rule details.
-    1. Click the actions menu, then click **Duplicate rule**.
-    
+The indicator index query of the prebuilt rule is misconfigured and will prevent the rule from generating alerts. To resolve this, duplicate the rule and update its settings:
+
+1. Go to the Rules table (**Detect** → **Rules**).
+1. Locate the Threat Intel Filebeat Module (v8.x) Indicator Match prebuilt rule.
+1. Click the rule to view the rule details.
+1. Click the actions menu, then click **Duplicate rule**.
 ::::
 :::::
 
@@ -219,30 +202,27 @@ During the users' journey with Elastic, there are times for excitement and disco
 
 :::::{tab-set}
 ::::{tab-item} Attributes
-    Something is definitely wrong. Here's why, and how to fix it. Be:
+Something is definitely wrong. Here's why, and how to fix it. Be:
 
-    - Serious
-    - Concerned
-    - Urgent
-   <br/> 
-    
-    When using this tone, you may:
-    - Focus on what went wrong. Don't be apologetic.
-    - Help users learn how something happened, how to prevent it, how to fix it.
-    - Provide clear actions, or clearly state if there's no action needed.
+- Serious
+- Concerned
+- Urgent
 
+When using this tone, you may:
+
+- Focus on what went wrong. Don't be apologetic.
+- Help users learn how something happened, how to prevent it, how to fix it.
+- Provide clear actions, or clearly state if there's no action needed.
 
 ::::
 ::::{tab-item} Cases
-     The **supportive** tone is used **sparingly**. It usually becomes visible in forms that draw the user's attention, for example, through callouts or notifications. 
-    
-    We use it when the immediate attention of the user is required, especially in:
+The **supportive** tone is used **sparingly**. It usually becomes visible in forms that draw the user's attention, for example, through callouts or notifications.
 
-    - Errors
-    - Licensing or billing-related content
-    - Vulnerability and remediation content
+We use it when the immediate attention of the user is required, especially in:
 
-
+- Errors
+- Licensing or billing-related content
+- Vulnerability and remediation content
 ::::
 ::::{tab-item} Examples
     **NOTE:** To suspend a process on a host running Elastic Defend, you must have the **Process Operations** privilege and at least an Enterprise license to perform this action.
@@ -257,25 +237,21 @@ During the users' journey with Elastic, there are times for excitement and disco
 ::::{tab-item} Attributes
 We don't advise this action and there might be significant implications. Be:
 
-    - Deterring
-    - Heavy with caution
-    - Advisory
-  <br/>
-    
-    When using this tone, you may:
-    - Use stronger words that highlight possible negative effects.
-    - Format the content in a way that make the risks stand out.
+- Deterring
+- Heavy with caution
+- Advisory
 
+When using this tone, you may:
 
+- Use stronger words that highlight possible negative effects.
+- Format the content in a way that make the risks stand out.
 ::::
 ::::{tab-item} Cases
-    The **stern** tone is **rarely** used. Reserve it for very specific cases, and for advanced or administrative features.
-    
-    We use it when insisting on the high risks an action could pose, especially in:
+The **stern** tone is **rarely** used. Reserve it for very specific cases, and for advanced or administrative features.
 
-    - Danger type of warnings
+We use it when insisting on the high risks an action could pose, especially in:
 
-
+- Danger type of warnings
 ::::
 ::::{tab-item} Examples
     The following changes in Elasticsearch 8.0 might affect your applications and prevent them from operating normally. Before upgrading to 8.0, review these changes and take the described steps to mitigate the impact.
