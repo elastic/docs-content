@@ -23,5 +23,5 @@ To access AutoOps from your {{ecloud}} console, follow these steps:
 
 :::{image} /deploy-manage/images/cloud-autoops-how-to-access.png
 :screenshot:
-:alt: Screenshot showing the Open AutoOps button
+:alt: Screenshot showing the Open AutoOps button on the deployment overview page
 :::
