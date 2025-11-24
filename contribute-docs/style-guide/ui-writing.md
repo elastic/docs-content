@@ -88,7 +88,7 @@ to set the window's viewport.
 - Include only the essential UI components. The main menu, 
   breadcrumbs, header, toolbar, and search bar often change, so we generally
   exclude them. 
-- If needed, wrap a 1px border around the screenshot to give it definition and ensure it's not "floating" against a white background. 
+- Add a border around the screenshot to give it definition and ensure it's not "floating" against a white background. Refer to [Screenshots](https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree/main/syntax/images#screenshots) for details about the `:screenshot:` attribute.
 - If you need to draw attention to a specific part of the screenshot, you can draw a border or use an annotation, such as an arrow. If you do, keep these in mind:
   - Use Elastic's [brand colors](https://eui.elastic.co/#/theming/colors/values) for the annotation. We recommend the pink accent color, hex `#F04E98`.   
   - Ensure your annotations are no more than 3px in thickness. 
