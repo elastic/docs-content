@@ -66,7 +66,7 @@ For internal contributors, if your request stems from internal tickets or discus
 
 The issue templates are there to help you provide the right information. You can always add more context if you want or modify the structure to suit your needs.
 
-### One Issue = One Single, Testable Problem
+### One issue = one single, testable problem
 
 Ideally, each ticket must represent a single, isolated problem or feature, or a bundle of closely related items. **Do not combine multiple bugs or requests into one ticket.**
 
