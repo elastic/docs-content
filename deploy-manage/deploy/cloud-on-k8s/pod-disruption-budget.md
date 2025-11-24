@@ -39,6 +39,10 @@ In Elasticsearch clusters managed by ECK and licensed with an Enterprise license
 
 Single-node clusters are not considered highly available and can always be disrupted regardless of license type.
 
+:::{note}
+Multiple `nodeSets` that share the same type (ex: master) will be combined into a single Pod Disruption Budget.
+:::
+
 ## Default rules (Basic license) [default-pdb-rules]
 :::{note}
 In {{eck}} 3.1 and earlier, all clusters follow this behavior regardless of license type.
