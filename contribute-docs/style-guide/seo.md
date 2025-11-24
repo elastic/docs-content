@@ -101,7 +101,7 @@ Best practices:
 
 **⚠️Note:** Within the context of the "introductory paragraph", the first and/or second sentence is used in the meta description tag, up to the first 150-160 characters. This tag appears on the search engines results page and impacts CTR. It is not directly user-facing otherwise.
 
-When a page starts with a note, image, table, or other component, the meta description is *not* impacted by the component content. Only the first paragraph content nested within the first line(s) of the opening paragraph tags \<p\>\</p\>) impact the meta description.
+When a page starts with a note, image, table, or other component, the meta description is *not* impacted by the component content. Only the first paragraph content nested within the first lines of the opening paragraph tags \<p\>\</p\>) impact the meta description.
 
 Below is an example of a page with one sentence and no introductory paragraph.  
 ![Screenshot of a documentation page displaying only a single sentence without an introductory paragraph. The page shows a heading at the top, followed by the sentence: Pulse Connect Secure integration enables you to collect, monitor, and analyze VPN and remote access logs from Pulse Connect Secure appliances in Elastic. The layout is minimal and lacks additional context or descriptive content, creating a sparse and utilitarian tone.](./images/onesentence.png) 
