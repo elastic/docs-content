@@ -6,14 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: View field statistics in Discover to analyze field distributions, top values, and data patterns. Explore numeric, text, date, and geographic fields with charts and summaries.
 ---
 
-# View field statistics [show-field-statistics]
+# View field statistics in Discover [show-field-statistics]
 
-Explore the fields in your data with the **Field statistics** view in **Discover** and answer such questions as:
-
-* What does the latency look like when one of the containers is down on a Sunday?
-* Is the field type and format in the data view appropriate for the data and its cardinality?
+Use the **Field statistics** view in **Discover** to analyze your data fields with statistical summaries and visualizations. View distributions, top values, minimum and maximum values, and patterns across your data to understand field characteristics and identify trends.
 
 :::{note}
 Field statistics aren't available when **Discover** is in {{esql}} mode.
@@ -22,7 +20,7 @@ Field statistics aren't available when **Discover** is in {{esql}} mode.
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**.
-2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
+2. Expand the {{data-source}} dropdown, and select **{{kib}} Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 7 days**.
 4. Click **Field statistics**.
    The table summarizes how many documents in the sample contain each field for the selected time period the number of distinct values, and the distribution.
