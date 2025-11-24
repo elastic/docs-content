@@ -20,18 +20,15 @@ You might encounter an error like the following:
 ... x509: certificate signed by unknown authority ...
 ```
 
-This error occurs because the machine where you have installed {{agent}} does not trust your custom or internal CA. To fix this error, you need to configure the agent with your custom certificate by providing its certificate file so that the machine trusts your CA.
-
-This following section provides the steps to configure {{agent}} with a custom SSL certificate so that the agent can successfully connect your self-managed cluster to AutoOps.
+This error occurs because the machine where you have installed {{agent}} does not trust your custom or internal CA. To fix this error, follow the steps on this page to configure the agent with your custom SSL certificate by providing its certificate file.
 
 ## Configure AutoOps {{agent}} with a custom SSL certificate
 
-To configure {{agent}} with your custom SSL certificate, you must edit the `elastic-agent.yml` file on the agent's host machine to add the path to your certificate. The host machine is the machine where you have installed the agent. 
+To configure {{agent}} with your custom SSL certificate, add the path to your certificate to the [`elastic-agent.yml`](/reference/fleet/configure-standalone-elastic-agents.md) policy file on the host machine where the agent is installed. 
 
 Complete the following steps:
 
-1. On the host machine, open the `elastic-agent.yml` file. \
-  The default location is `/opt/Elastic/Agent/elastic-agent.yml`.
+1. On the host machine, open the `elastic-agent.yml` file. The default location is `/opt/Elastic/Agent/elastic-agent.yml`.
 2. In the `elastic-agent.yml` file, locate the `receivers.metricbeatreceiver.metricbeat.modules` section. 
 3. In this section, there are two modules configured for `autoops_es`, one for metrics and one for templates. \
   Add the `ss.certificate_authorities` setting to both these modules using one of the following options:
@@ -62,12 +59,7 @@ Complete the following steps:
     ssl.certificate_authorities:
       - "/path/to/your/ca.crt"
     ```
-
-    ::::
-
-    :::::
-
-    $$$step-3-example$$$The following codeblock shows what your final configuration should look like. This example uses the second option, hardcoding the file path.
+    The following codeblock shows what your final configuration should look like when you use the hardcode method.
 
     ```yaml
     receivers:
@@ -101,6 +93,11 @@ Complete the following steps:
               ssl.certificate_authorities:
                 - "/path/to/your/ca.crt"
     ```
+
+    ::::
+
+    :::::
+
 4. Save your changes to the `elastic-agent.yml` file.
 5. Restart {{agent}} so that the new settings can take effect.\
     In most systemd-based Linux environments, you can use the following command to restart the agent:
@@ -114,5 +111,5 @@ Complete the following steps:
     ```sh
     ... can not convert 'object' into 'string' ... ssl.certificate_authorities ...
     ```
-    To fix this error, ensure your configuration matches the [example codeblock](#step-3-example) provided in step 3. The `ss.certificate_authorities` setting must be a list item (indicated by the `-`) containing one or more strings (the respective path to your certification files).
+    To fix this error, ensure your configuration is correctly formatted. The `ss.certificate_authorities` setting must be a list item (indicated by the `-`) containing one or more strings (the respective path to your certification files).
     :::
