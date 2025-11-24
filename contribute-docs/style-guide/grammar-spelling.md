@@ -250,7 +250,7 @@ Use an en dash:
 * To indicate a range of numbers, such as inclusive values or dates.
 
 :::{dropdown} Examples
-    * The field must contain 1–3 values.
+* The field must contain 1–3 values.
     * Upgrade from v. 7.17 to v. 8.5–8.10.
 :::
 
