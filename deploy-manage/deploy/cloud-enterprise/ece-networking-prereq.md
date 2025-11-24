@@ -16,7 +16,7 @@ For versions 2.4.0 and 2.4.1, IPv6 should remain enabled on any host with the Pr
 
 * [Inbound traffic](#ece-inbound)
 * [Outbound traffic](#ece-outbound)
-* [Container communication on the same host](#ece-container-communication)
+* [Container communication on the same host](#ece-container-communication-on-same-host)
 * [Hosts in multiple data centers](#ece-multiple-data-centers)
 
 ## Inbound traffic [ece-inbound]
