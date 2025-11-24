@@ -60,7 +60,7 @@ During the users' journey with Elastic, there are times for excitement and disco
 ::::{tab-item} Attributes
     We're proud to show new and cool stuff. Be:
 
-    - Motivational
+ - Motivational
     - Excited
     - Enthusiastic
   <br/>
