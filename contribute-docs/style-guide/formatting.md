@@ -64,7 +64,7 @@ Use monospace text formatting to emphasize technical elements to help users diff
 | Data types | The example uses a strongly typed `int`. |
 | Directory names and paths | The example harvests all files in the `/var/log/*.log` path. |
 | Environment variables | Set the `ES_PATH_CONF` environment variable. |
-| Error and validation messages | When you receive `Bulk Indexing of signals failed: [parent] Data too large`, the alerts payload is too large to process. |
+| Error and validation messages | After you start Logstash, wait until you see `Pipeline main started`.  |
 | Field names | Filter by the `rule.section` field. |
 | Function and method names | Date fields are exposed as `ReadableDateTime`, so they support methods like `getYear`. |
 | Index names | The `.ml-notifications` index. |
