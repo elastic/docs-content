@@ -24,7 +24,7 @@ Whenever possible, use the alternate suggestion, or a more specific term.
 | **add** | 🟢 Preferred | Use for establishing a new relationship.  Often used in create-then-add scenarios: _Create a dashboard, then add a visualization_. _Remove_ is the correct opposite. |
 | **app**, **application**| 🟠 Use with caution | Use only when needed for clarity.  Otherwise, a Kibana app name can stand alone.  _App_ is a well-known abbreviation for _application_ and is preferred. |
 | **begin** | 🟠 Use with caution | Similar to _start_, using _begin_ depends on the context. _Begin a procedure,_ _begin an analysis,_ or _begin an installation_ are common phrases. Similarly, _start a program,_ _start an engine,_ or _start a timer_ are frequently used.  _Start_ is considered less formal than _begin_. _End_ is the correct opposite of _begin_.|
-| **below** | 🟠 Use with caution | Don’t use to refer to a position. Directional language does not meet accessibility requirements.|
+| **below** | 🟠 Use with caution | Don't use to refer to a position. Directional language does not meet accessibility requirements.|
 | **blacklist** | 🔴 Avoid | This word has roots in racism. Use _blocklist_ instead. |
 | **boot** | 🔴 Avoid | Use _start_ or _run_ instead. |
 | **can** | 🟢 Preferred | Use to convey permission. |

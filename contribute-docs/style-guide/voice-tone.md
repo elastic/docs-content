@@ -43,12 +43,11 @@ Through our content, we empower users to do more and to dive into their next act
 | Confident       | Pretentious, controlling   | Be definite and trustworthy. Delete unnecessary wording. Don't oversell.           |
 | Forward-looking | Hand-holding, prescriptive | Help users connect the dots and see the big picture, while giving them the choice. |
 
-
 ## Tone
 
 Our products and solutions are very technical, data-oriented, and they're used globally by people from different cultures and personalities. 
-These considerations, amongst others, limit the spectrum of tones we use to some extent, but not entirely. 
- 
+These considerations, amongst others, limit the spectrum of tones we use to some extent, but not entirely.
+
 During the users' journey with Elastic, there are times for excitement and discovery, but also times for help, support, and empathy.
 
 **Our tone scale**
@@ -72,7 +71,7 @@ When using this tone, you may:
 
 ::::
 ::::{tab-item} Cases
-Although it can be very visible because of the way it's written, the **stimulating** tone is used **quite rarely** overall. 
+Although it can be very visible because of the way it's written, the **stimulating** tone is used **quite rarely** overall.
 
 We use it when we want to show new things to users, especially in:
 
@@ -80,7 +79,7 @@ We use it when we want to show new things to users, especially in:
 - Release highlights
 ::::
 ::::{tab-item} Examples
-  Let’s start exploring what’s happening in your environment. After installing Elastic Defend, you’ll see the following page.
+  Let's start exploring what's happening in your environment. After installing Elastic Defend, you'll see the following page.
   
   Attack discovery is a new AI-powered tool that identifies potential attacks and maps connections between alerts to the MITRE ATT&CK® matrix, helping you to fight alert fatigue and reduce your mean time to respond.
 
@@ -152,13 +151,13 @@ We use it for naming and describing things:
 - Troubleshooting
 ::::
 ::::{tab-item} Examples
-Mapping is the process of defining how a document, and the fields it contains, are stored and indexed. Each document is a collection of fields, which each have their own data type. When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes metadata fields, like the `_source` field, which customize how a document’s associated metadata is handled.
+Mapping is the process of defining how a document, and the fields it contains, are stored and indexed. Each document is a collection of fields, which each have their own data type. When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes metadata fields, like the `_source` field, which customize how a document's associated metadata is handled.
 
 An Elastic Cloud deployment offers you all of the features of the Elastic Stack as a hosted service. To test drive your first deployment, sign up for a free Elastic Cloud trial:
 
 1. Go to our Elastic Cloud Trial page.
 1. Enter your email address and a password.
-1. After you’ve logged in, you can create a deployment. Give your deployment a name and select **Create deployment**.
+1. After you've logged in, you can create a deployment. Give your deployment a name and select **Create deployment**.
 
 If you receive the following rule failure: `"Bulk Indexing of signals failed: [parent] Data too large"`, this indicates that the alerts payload was too large to process. This can be caused by bad indicator data, a misconfigured rule, or too many event matches. Review your indicator data or rule query. If nothing obvious is misconfigured, try executing the rule against a subset of the original data and continue diagnosis.
 ::::
@@ -256,15 +255,15 @@ We use it when insisting on the high risks an action could pose, especially in:
 ::::{tab-item} Examples
     The following changes in Elasticsearch 8.0 might affect your applications and prevent them from operating normally. Before upgrading to 8.0, review these changes and take the described steps to mitigate the impact.
 
-    We strongly recommend performing the following steps on a non-production deployment first to address any potential issues before upgrading your production deployments. If you’re using a cross-cluster search environment, upgrade your remote deployments first.
+    We strongly recommend performing the following steps on a non-production deployment first to address any potential issues before upgrading your production deployments. If you're using a cross-cluster search environment, upgrade your remote deployments first.
 ::::
 :::::
 
 ## Sentence structure and clarity
 
-### Write like a minimalist 
+### Write like a minimalist
 
-Concise, clear sentences not only save space, but are easy to understand. Use simple words with precise meanings, and remove words that don’t add substance. Long and convoluted sentences take longer to parse and are more difficult to comprehend. This may especially affect our readers who are non-native English speakers, or neurodivergent. At the same time, keep Elastic’s friendly, casual tone in mind and use your best judgment so you don’t sound too stoic or unfriendly. 
+Concise, clear sentences not only save space, but are easy to understand. Use simple words with precise meanings, and remove words that don't add substance. Long and convoluted sentences take longer to parse and are more difficult to comprehend. This may especially affect our readers who are non-native English speakers, or neurodivergent. At the same time, keep Elastic's friendly, casual tone in mind and use your best judgment so you don't sound too stoic or unfriendly.
 
 To see if your sentence is too long, one tip is to check the number of conjunctions it has. If your sentence has more than two conjunctions, consider dividing it into two:
 
@@ -293,7 +292,6 @@ Finally, find any words that are redundant or aren't contributing anything, and 
 | provides the opportunity | allows, enables you to |
 | there are a number of | there are several |
 
-
 ### Don't confuse nouns with verbs
 
 Many English words can be used both as nouns and as verbs. We can have a `login` or we can `log in`. We can `produce an insult` or we can `insult the produce`.
@@ -304,7 +302,7 @@ A few words that show up in our documentation frequently are `backup`, `login`, 
 
 So, you can back up a backup, set up a setup, or start up your very own startup. 
 
-### Please avoid please, please! 
+### Please avoid please, please!
 
 In most cases, saying "please" is unnecessary in documentation. This doesn't mean we're not polite. We don't ask our users for favors, we instruct them on how to use our products.  
 
@@ -312,30 +310,29 @@ In most cases, saying "please" is unnecessary in documentation. This doesn't mea
 --- | ---
 | Please click **Save** before continuing to the next step. | Click **Save** before continuing to the next step. | 
 
-### Avoid ambiguity 
+### Avoid ambiguity
 
-Many English words have more than one meaning, so whenever possible, choose words that have _one_ clear meaning. 
+Many English words have more than one meaning, so whenever possible, choose words that have _one_ clear meaning.
 
 | Avoid      | Use instead     |
 --- | ---
 | Since | Because |
-| The minute you | When you | 
+| The minute you | When you |
 | Watch the following clip | Watch the following tutorial |
-| Don't fall into the habit | We recommend, we encourage | 
+| Don't fall into the habit | We recommend, we encourage |
 
-### Active and passive voice 
+### Active and passive voice
 
 Voice is either active or passive. Keep it active whenever you can.
 
 In active voice, the subject of the sentence performs the action. In passive voice, the subject is the receiver of the action.
 
-However, if the sentence written in active voice sounds too awkward, you can use passive voice. 
+However, if the sentence written in active voice sounds too awkward, you can use passive voice.
 
 | Avoid      | Use instead     |
 --- | ---
 | The settings can be configured using the actions menu. | You can configure settings using the actions menu. |
 
-
 ### Write with consistency
 
-Consistency ensures that we present information clearly and logically. It allows our readers to easily follow the content without any confusion or misunderstanding, so we don't disrupt the readability of our docs. Using consistent terminology and formatting helps readers understand concepts and instructions more effectively. Consistency is also important in maintaining a unified, professional brand and company image. 
+Consistency ensures that we present information clearly and logically. It allows our readers to easily follow the content without any confusion or misunderstanding, so we don't disrupt the readability of our docs. Using consistent terminology and formatting helps readers understand concepts and instructions more effectively. Consistency is also important in maintaining a unified, professional brand and company image.

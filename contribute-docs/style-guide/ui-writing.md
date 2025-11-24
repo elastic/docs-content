@@ -68,7 +68,7 @@ The following table can help you decide whether a screenshot is right for your d
 | ----------- | --------------------- |
 | Is this part of the UI complicated enough that it would be difficult to explain with words? | If there are only a few simple actions, then it's not a good candidate for a screen capture.      |
 | Am I capturing just what is pertinent to the task?   | You don't want to capture the whole screen, just the area in question and enough of the surrounding area to find it.        |
-| Does this contain any confidential information, like user names or IP addresses? | If an IP address, email, or component ID is a part of the capture, it's always a good practice to anonymize it. If the information isn’t important, you could blur it or Photoshop over the characters.
+| Does this contain any confidential information, like user names or IP addresses? | If an IP address, email, or component ID is a part of the capture, it's always a good practice to anonymize it. If the information isn't important, you could blur it or Photoshop over the characters.
 | When making animated GIFs, are they longer than 10-15 seconds? | For documentation, a shorter gif works best. Ensure that it's trimmed enough to show the visual and nothing else.
 
 ### Aspect ratio, resolution

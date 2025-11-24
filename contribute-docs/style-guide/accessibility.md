@@ -154,7 +154,7 @@ Our content must take that into account.
   * **Plain language**: Active voice, present tense, using examples, and so on.
   Some of these guidelines might already look familiar. Several countries have [plain language initiatives](https://www.plainlanguage.gov/guidelines/) to promote clearer communication.
   Do your best to embrace these guidelines and focus on the message.
-  We’re not going for Scrabble high scores, and no one is carrying a thesaurus to read our docs.
+  We're not going for Scrabble high scores, and no one is carrying a thesaurus to read our docs.
   Well, maybe the writers...
 
   * **Negation**: It is generally easier for everyone to say what something IS versus what it is NOT.
