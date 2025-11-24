@@ -170,5 +170,5 @@ Setup is now complete. The model served by your vLLM container can now power Ela
 :::{note}
 To run a different model: s
 * Stop the current container and run a new one with an updated `--model` parameter.
-* Update your {{kib}} connector's **Default model** parameter to match the new model name.
+* Update your {{kib}} connector's **Default model** parameter to match the new model ID.
 :::
