@@ -4,25 +4,23 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: Elastic agent not recognizing SSL certificate
+navigation_title: Configure Elastic agent with custom certificate
 products:
   - id: cloud-kubernetes
   - id: cloud-enterprise
 ---
 
-# Troubleshoot {{agent}} not recognizing custom SSL certificate 
+# Configure AutoOps {{agent}} with a custom SSL certificate 
 
-If {{agent}} is failing to connect your self-managed cluster to AutoOps because it doesn't recognize your SSL certificate, this might be because your certificate is signed by a custom or internal Certificate Authority (CA). 
-
-You might encounter an error like the following:
+{{agent}} might not recognize your SSL certificate if it is signed by a custom or internal Certificate Authority (CA). In this case, {{agent}} will fail to connect your self-managed cluster to AutoOps and you might encounter an error like the following:
 
 ```sh
 ... x509: certificate signed by unknown authority ...
 ```
 
-This error occurs because the machine where you have installed {{agent}} does not trust your custom or internal CA. To fix this error, follow the steps on this page to configure the agent with your custom SSL certificate by providing its certificate file.
+This error occurs because the machine where you have installed {{agent}} does not trust your custom or internal CA. To fix this error, follow the steps on this page to configure the agent with your custom SSL certificate.
 
-## Configure AutoOps {{agent}} with a custom SSL certificate
+## Add custom certificate path to the `elastic-agent.yml` file
 
 To configure {{agent}} with your custom SSL certificate, add the path to your certificate to the [`elastic-agent.yml`](/reference/fleet/configure-standalone-elastic-agents.md) policy file on the host machine where the agent is installed. 
 
