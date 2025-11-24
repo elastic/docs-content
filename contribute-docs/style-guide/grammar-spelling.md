@@ -143,7 +143,7 @@ Use commas:
 * To set off non-defining relative clauses (also known as non-restrictive or parenthetical clauses).
 
 :::{dropdown} Examples
-    * Missing fields get a `null` value, which is used to group and suppress alerts.
+* Missing fields get a `null` value, which is used to group and suppress alerts.
     * The risk scoring engine calculates the user risk score for `User_A`, whose asset criticality level is **Extreme impact**.
 :::
 
