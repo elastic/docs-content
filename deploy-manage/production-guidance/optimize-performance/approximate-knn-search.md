@@ -92,7 +92,9 @@ The following file extensions are used for the approximate kNN search: Each exte
 
 Generally, if you are using a quantized index, you should only preload the relevant quantized values and index structures such as the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive.
 
-Additional detail can be gleened on the specific files by using the [stats endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats) which will display information about the index and fields for example for DiskBBQ you might see something like this:
+Additional detail can be gathered about the specific files by using the [stats endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats), which will display information about the index and fields.
+
+For example, for DiskBBQ, you might see something like this:
 
 ```console
 GET my_index/_stats?filter_path=indices.my_index.primaries.dense_vector
