@@ -70,7 +70,7 @@ Outbound traffic must also permit connections to the [snapshot repositories](../
 
 ## Container communication on the same host [ece-container-communication-on-same-host]
 
-The following ports need to be open for containers communicating with the host and/or with each other on the same host:
+The following ports need to be open for containers communicating with the host or with each other on the same host:
 
 | Port(s) | Purpose | Host role |
 | --- | --- | --- |
@@ -78,7 +78,7 @@ The following ports need to be open for containers communicating with the host a
 | 2180 | ZooKeeper admin port | All roles |
 | 2375 | Docker admin port | All roles |
 | 2191-2199 | Debug ports | Director |
-| 5000-5010 | JVM/debug ports | All roles |
+| 5000-5010 | Java Virtual Machine (JVM)/debug ports | All roles |
 | 8080-8084 | Health/monitoring ports | All roles |
 | 9000, 9043 | Internal proxy use | Proxy |
 | 9244 | Internal proxy port | All roles |
