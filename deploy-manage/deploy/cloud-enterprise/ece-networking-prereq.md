@@ -16,8 +16,8 @@ For versions 2.4.0 and 2.4.1, IPv6 should remain enabled on any host with the Pr
 
 * [Inbound traffic](#ece-inbound)
 * [Outbound traffic](#ece-outbound)
+* [Container communication on the same host](#ece-container-communication)
 * [Hosts in multiple data centers](#ece-multiple-data-centers)
-
 
 ## Inbound traffic [ece-inbound]
 
@@ -67,6 +67,21 @@ Open these ports for outbound traffic:
 Outbound traffic must also permit connections to the [snapshot repositories](../../tools/snapshot-and-restore/cloud-enterprise.md) you intend to use. Ports depend on the snapshot repository type. Refer to the external supported providers to confirm the exact list of ports.
 ::::
 
+
+## Container communication on the same host [ece-container-communication-on-same-host]
+
+The following ports need to be open for containers communicating with the host and/or with each other on the same host:
+
+| Port(s) | Purpose | Host role |
+| --- | --- | --- |
+| 53 | DNS resolver | All roles |
+| 2180 | ZooKeeper admin port | All roles |
+| 2375 | Docker admin port | All roles |
+| 2191-2199 | Debug ports | Director |
+| 5000-5010 | JVM/debug ports | All roles |
+| 8080-8084 | Health/monitoring ports | All roles |
+| 9000, 9043 | Internal proxy use | Proxy |
+| 9244 | Internal proxy port | All roles |
 
 
 ## Hosts in multiple data centers [ece-multiple-data-centers]
