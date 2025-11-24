@@ -7,8 +7,6 @@ description: Guidelines for writing accessible and inclusive content.
 
 These guidelines are intended for all content authors and contains common tips and tricks for writing accessible content. It is not exhaustive and does not replace the official [WCAG 2.0 guidelines](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#guidelines).
 
-### What is accessible content
-
 **Accessibility** for content means ensuring that all of our users can understand the content we publish—all of it—independently of how they choose or have to interact with it.
 
 Our users and readers are diverse, with different abilities and disabilities. 
@@ -16,18 +14,18 @@ They also interact with our content in different ways, such as screen readers, m
 
 As content authors, it is our responsibility to provide them with [perceivable, operable, understandable, and robust content](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head).
 
-### Guidelines
+## Guidelines [accessibility-guidelines]
 
 ✔️ **Make your content quickly scannable.** A clear structure and meaningful words will tell users if the content is relevant to them within seconds. Use unique headings, and put the most important information first.
 
 ✔️ **Add alt text for all images, icons, and media files.** Screen readers, Braille output devices, and search engines love concise, accurate alt text that describes what cannot always be displayed, viewed, or heard on screen. 
 
 :::{dropdown} Examples
-  ✔️ **Do:** 
+✔️ **Do:**
 
-  ```html
-  <img src="signup.png" alt="Signup page for Elastic Cloud" />
-  ```
+```md
+![Signup page for Elastic Cloud](signup.png)
+```
 
 Note: Do not use special characters, such as backticks (`), in alt text. They are known to cause
   formatting issues when building pages.
@@ -45,32 +43,34 @@ Note: Do not use special characters, such as backticks (`), in alt text. They ar
 ✔️ **Use parallel writing structures for similar things.** For example, don't use a combination of verbs and noun phrases to start each item in a list. Choose one or the other.
 
 :::{dropdown} Examples
-  ❌ **Don't:** 
-    * Navigate Elastic Security's various tools and interfaces.
-    * Use Elastic Security's detection engine with custom and prebuilt rules.
-    * System requirements, workspaces, configuration, and data ingestion.
-    
-  ✔️ **Do:** 
-    * Navigate Elastic Security's various tools and interfaces.
-    * Use Elastic Security's detection engine with custom and prebuilt rules.
-    * Learn about system requirements, workspaces, configuration, and data ingestion.
+❌ **Don't:** 
+
+* Navigate Elastic Security's various tools and interfaces.
+* Use Elastic Security's detection engine with custom and prebuilt rules.
+* System requirements, workspaces, configuration, and data ingestion.
+
+✔️ **Do:** 
+
+* Navigate Elastic Security's various tools and interfaces.
+* Use Elastic Security's detection engine with custom and prebuilt rules.
+* Learn about system requirements, workspaces, configuration, and data ingestion.
 
 :::
 
 ✔️ **Use meaningful link text.** Descriptive text instead of "click here", "read more", or even a raw URL for a link makes it easier for users to understand what to expect when they open it. Screen
 readers jump between links by generating a list of them, and spell out URLs.
 :::{dropdown} Examples
-  ❌ **Don't:** "[Click here](https://www.elastic.co) and make search your best ally."
-    
-  ✔️ **Do:** "Visit [Elastic.co](https://www.elastic.co) and make search your best ally."
+❌ **Don't:** "[Click here](https://www.elastic.co) and make search your best ally."
+
+✔️ **Do:** "Visit [Elastic.co](https://www.elastic.co) and make search your best ally."
 
 :::
 
 ✔️ **Use device-agnostic language when possible.** Users can access content and products in many ways. We do not know if they use a mouse, keyboard, tablet, or another device. 
 :::{dropdown} Examples
-  ❌ **Don't:** "Enter a description and click the **Next** button."
-    
-  ✔️ **Do:** "Enter a description and select **Next**."
+❌ **Don't:** "Enter a description and click the **Next** button."
+
+✔️ **Do:** "Enter a description and select **Next**."
 
 :::
 
@@ -84,7 +84,7 @@ readers jump between links by generating a list of them, and spell out URLs.
 
 :::
 
-### Terms
+## Terms
 
 | Avoid | Use instead |
 | ----- | ----------- |
@@ -94,8 +94,7 @@ readers jump between links by generating a list of them, and spell out URLs.
 | See | Check, refer to |
 | Hear (hear about) | Learn |
 
-
-### Testing content for accessibility
+## Testing content for accessibility
 
 Test as early and often as possible. It is always a good exercise to spot improvements early and develop good habits. 
 Here are a few methods that you can use to test content:
@@ -110,17 +109,12 @@ your website using mobile devices, and when doing so, be sure to check for acces
 You don't need an actual phone to do this. The Chrome dev tools, for example, are a precious ally to test various layouts.
 
 **Try a screen reader** to understand how users navigate websites using one of the screen
-reader/browser combinations listed in the
-<DocLink
-  id="techWritingGuidelinesAccessibility"
-  section="assistive-technologies"
-  text="Assistive technologies"
-/> section.
+reader/browser combinations listed in the [Assistive technologies](#assistive-technologies) section.
 
 **Turn off speakers and microphones** to ensure the website experience is the same with
 or without sound.
 
-#### Assistive technologies
+## Assistive technologies
 
 Assistive technology allows individuals with disabilities to access
 information technology and perform functions that might be otherwise impossible, like
@@ -142,14 +136,12 @@ users with motor control difficulties.
 These guidelines are intended for all content authors, whether you are a developer, designer, or writer. 
 This page is not exhaustive but provides some guidelines to write inclusive content for product content and technical documentation.
 
-### What is inclusive content, and why does it matter?
+**Inclusivity** for content means ensuring that the content we provide reflects the diversity of our community, respects it, and promotes positive change.
 
-**Inclusivity** for content means ensuring that the content we provide reflects the diversity of our community, respects it, and promotes positive change. 
+### Guidelines [inclusivity-guidelines]
 
-### Guidelines
+### Write for an international audience
 
-#### Write for an international audience
- 
 Our products and documentation use American English (en_US) as a standard for written content. 
 Yet they are used and read by people all around the globe, for whom English is not always their primary language.
 Our content must take that into account.
@@ -159,26 +151,20 @@ Our content must take that into account.
 
   * **Short sentences**: They leave less space for interpretation. They are easier to scan, read, and translate.
 
-  * **Plain language**: Active voice, present tense, using examples, and so on. 
-  Some of these guidelines might already look familiar. Several countries have 
-  [plain language initiatives](https://www.plainlanguage.gov/guidelines/) to 
-  promote clearer communication. Do your 
-  best to embrace these guidelines and focus on the message. We’re not going for 
-  Scrabble high scores, and no one is carrying a thesaurus to read our docs. 
+  * **Plain language**: Active voice, present tense, using examples, and so on.
+  Some of these guidelines might already look familiar. Several countries have [plain language initiatives](https://www.plainlanguage.gov/guidelines/) to promote clearer communication.
+  Do your best to embrace these guidelines and focus on the message.
+  We’re not going for Scrabble high scores, and no one is carrying a thesaurus to read our docs.
   Well, maybe the writers...
 
-  * **Negation**: It is generally easier for everyone to say what something IS 
-  versus what it is NOT. When you add a negative construction, it takes the 
-  reader longer to parse the meaning of the phrase. Instead of saying, "You 
-  cannot access the content without signing up", it's much easier to
-  read, "Sign up to access the content."
+  * **Negation**: It is generally easier for everyone to say what something IS versus what it is NOT.
+  When you add a negative construction, it takes the reader longer to parse the meaning of the phrase.
+  Instead of saying, "You cannot access the content without signing up", it's much easier to read, "Sign up to access the content."
 
   * **Words with multiple meanings**: 
-  Don't skip helper words if they make the sentence clearer or easier to read. 
-  We try to be as literal and unambiguous as possible in our docs to ensure that 
-  our readers from around the globe can consume them. One way to
-  achieve that is to choose words with fewer meanings, especially when a 
-  word's intended meaning is not its primary meaning.
+  Don't skip helper words if they make the sentence clearer or easier to read.
+  We try to be as literal and unambiguous as possible in our docs to ensure that our readers from around the globe can consume them.
+  One way to achieve that is to choose words with fewer meanings, especially when a word's intended meaning is not its primary meaning.
 
 :::{dropdown} Example
     You may have noticed the rather poetic use of _consume_ in the 
@@ -199,7 +185,8 @@ Our content must take that into account.
 :::
 
 ✔️ **Be aware of differences and diversity in content and examples.** 
-Different people are used to different names, currencies, date and time formats, different measurement units (such as for temperature, distance, speed), and so much more. 
+Different people are used to different names, currencies, date and time formats, different measurement units (such as for temperature, distance, speed), and so much more.
+
 * Avoid ambiguous values, like `04/05/06` for a date. Is it May 4 or April 5, and which year? `11/17/1987` leaves less room for interpretation if the exact format is not specified nearby. 
 * If there is no obvious example standard (RFC) to follow, try to be diverse to represent our audience.
 
@@ -239,7 +226,7 @@ Writing gender-neutral mainly consists of avoiding gender bias and word choices 
 ✔️ **Pronouns.** In technical documentation, you can avoid this most of the time by addressing users directly.
 When it's not possible, use *they*/*their*, even for singular. There's more than one gender, and it's not binary, either.
 
-✔️ **Biased words and expressions.** Guys, mankind, policeman...these are all words we use and are used to hearing. But the default is not male. 
+✔️ **Biased words and expressions.** Guys, mankind, policeman...these are all words we use and are used to hearing. But the default is not male.
 Most expressions and words that perpetuate this bias (that exists in many cultures and languages!) can be replaced with neutral alternatives or synonyms: Folks, humanity, police officer...
 
 #### Avoid violent, offensive, ableist terminology
