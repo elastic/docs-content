@@ -404,7 +404,7 @@ For languages that don't support comments natively, such as JSON, you can add ex
 ```json
 {
   "_tags": [
-    "endpoint", [^1]
+    "endpoint",  <1>
     "os:windows" <2>
   ],
   "comments": [],
