@@ -15,7 +15,7 @@ kubectl expose service quickstart-es-remote-cluster \
   --port=9443 --target-port=9443
 ```
 
-1. On cloud providers which support external load balancers, setting the type to LoadBalancer provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-remote-cluster` through one of the Kubernetes Ingress controllers that support TCP services.
+1. On cloud providers that support external load balancers, setting the type to `LoadBalancer` provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-remote-cluster` through one of the Kubernetes Ingress controllers that support TCP services.
 
 
 :::{admonition} About exposing the service and TLS certificates
@@ -23,7 +23,7 @@ When exposing the remote cluster service, determine which TLS certificate will b
 
 * **{{es}} TLS termination**
 
-  If the connection reaches the {{es}} Pods without intermediate TLS termination, the {{es}} nodes present their transport certificates managed by ECK. The local cluster must therefore trust these certificates by including the ECK-managed transport CA, which you can retrieve in the next section.
+  If the connection reaches the {{es}} Pods without intermediate TLS termination, the {{es}} nodes present transport certificates managed by ECK. The local cluster must therefore trust these certificates by including the ECK-managed transport CA, which you can retrieve in the next section.
 
   This setup is typical when using standard `LoadBalancer` services provided by most cloud providers.
 
