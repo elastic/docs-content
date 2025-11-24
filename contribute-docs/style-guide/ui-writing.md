@@ -45,7 +45,7 @@ UI icons can be helpful to include when describing a procedure that requires the
 - Include the tooltip text, image, and alt-text for optimal accessibility. 
 - Avoid using parentheses before and after the UI icon image, which can disrupt screen readers' speech and braille outputs. 
 :::{dropdown} Example
-    ❌ **Don't**: To display the table in fullscreen mode, click the fullscreen icon ().
+    ❌ **Don't**: To display the table in fullscreen mode, click the fullscreen icon ({icon}`full_screen`).
     
     ✔️ **Do**: To display the table in fullscreen mode, click the fullscreen icon {icon}`full_screen`. 
 :::
