@@ -502,7 +502,7 @@ Best practices:
 - [ ] Links are not excessive or distracting  
 - [ ] Link text is visually distinguishable & accessible
 
-**Multimedia (images, video, etc.)**
+**Multimedia (images and video)**
 
 - [ ] Visuals (images, diagrams, videos) directly support the content  
 - [ ] Images are unique, high-quality, & not stock photos  
