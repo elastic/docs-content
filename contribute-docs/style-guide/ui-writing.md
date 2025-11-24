@@ -130,34 +130,34 @@ the UI element itself.
 | Number | Definition |
 |--------|------------|
 |  1.    | **main menu** <br> The hamburger menu that opens the top-level navigation for Kibana. <br> Avoid using _sidebar_, _navigation bar_, _side nav_, _left-hand nav_, _toolbar_. For example, _Open the main menu, then click [app name]_. <br>**apps** <br> The items you access from the main menu. Render app names in **bold** and match the capitalization in the UI. <br> Avoid using _applications_, _tabs_, _pages_, or _UI_. For example, _Open the main menu, then click **Dashboard**_.  |
-|  2.    | **spaces** <br /> Opens the **Change current space** popup, where you can select a different space, or manage existing spaces. |
-|  3.    | **breadcrumb** <br /> The path that shows where you are in the app hierarchy.  |
-|  4.    | **search field** <br /> Enables you to search for applications and objects, such as dashboards and visualizations.  |
-|  5.    | **toolbar** <br />  Options that enable you to share, cancel unsaved changes, apply design options, save, and more. The options in the toolbar depend on the app you are using.  |
-|  6.    | **Help** <br /> Opens the **Help** popup, where you can access the documentation, ask a question, provide feedback, and open Github issues.  |
-|  7.    | **What's new at Elastic** <br /> Opens the **What's new at Elastic** popup, where you can access blogs.  |
-|  8.    | **user menu** <br /> Opens the user menu, where you can access your **Profile**, **Account & Billing**, **Preferences**, or log out.  |
-|  9.    | **filters** <br /> Specifies the filters you want to apply to the data. <br /> Avoid referring to the collection of filters as the _filter bar_.  |
-| 10.    | **query bar** <br /> A text field that allows you to combine free-text search with field-based search using the Kibana Query Language (KQL). <br /> Avoid using _query box_, _query field_, _query input_, and _search bar_. For example, _In the KQL query bar, enter..._.  |
-| 11.    | **time filter** <br /> Specifies the data you want to display within a specified time range.   |
-| 12.    | **Refresh** <br /> Refreshes the data that is displayed.  |
+|  2.    | **spaces** <br> Opens the **Change current space** popup, where you can select a different space, or manage existing spaces. |
+|  3.    | **breadcrumb** <br> The path that shows where you are in the app hierarchy.  |
+|  4.    | **search field** <br> Enables you to search for applications and objects, such as dashboards and visualizations.  |
+|  5.    | **toolbar** <br>  Options that enable you to share, cancel unsaved changes, apply design options, save, and more. The options in the toolbar depend on the app you are using.  |
+|  6.    | **Help** <br> Opens the **Help** popup, where you can access the documentation, ask a question, provide feedback, and open Github issues.  |
+|  7.    | **What's new at Elastic** <br> Opens the **What's new at Elastic** popup, where you can access blogs.  |
+|  8.    | **user menu** <br> Opens the user menu, where you can access your **Profile**, **Account & Billing**, **Preferences**, or log out.  |
+|  9.    | **filters** <br> Specifies the filters you want to apply to the data. <br> Avoid referring to the collection of filters as the _filter bar_.  |
+| 10.    | **query bar** <br> A text field that allows you to combine free-text search with field-based search using the Kibana Query Language (KQL). <br> Avoid using _query box_, _query field_, _query input_, and _search bar_. For example, _In the KQL query bar, enter..._.  |
+| 11.    | **time filter** <br> Specifies the data you want to display within a specified time range.   |
+| 12.    | **Refresh** <br> Refreshes the data that is displayed.  |
 
 ![Kibana with labels](./images/namingKibana02.png)
 
 | Number | Definition |
 |--------|------------|
-|  1.    | **fields list** <br /> The list of data fields that are available based on your index pattern and the time filter. <br /> When referring to individual lists, use: <br /> &bull; **Available fields** list <br /> &bull; **Empty fields** list <br /> &bull; **Meta fields** list <br /> When referring to the action of adding fields, use `drag x to the x…`. For example, _from the **Available fields** list, drag **agent.keyword** to the workspace_.  |
-|  2.    | **Filter by type dropdown** <br /> Specifies the filters you want to apply to the fields list.  |
-|  3.    | **Index pattern dropdown** <br /> Opens the **Index pattern** dropdown, where you can select a different index pattern. <br /> In general, refer to all dropdown menus in Kibana as a _dropdown_.  |
-|  4.    | **action menu (…)** <br /> Opens a menu that allows you to add fields to the index pattern, and manage index pattern fields. <br /> For example, _open the action menu (…) next to the Index pattern dropdown_.  |
-|  5.    | **Visualization type dropdown** <br /> Opens the Visualization type dropdown, where you can select a different visualization.  |
-|  6.    | **editor toolbar menus** <br /> Opens menus that allows you to customize the visualization. <br /> For example, _in the editor toolbar, open the **Legend** menu_.  |
-|  7.    | **workspace** <br /> The space where you drag fields and create visualizations. <br /> To describe how you add data fields to the workspace, use _drag_ instead of _drag and drop_. For example, _from the **Available fields** list, drag bytes to the workspace_. <br /> To describe how you zoom in on a data set, never use _brush_. Instead, use _click and drag your cursor_. For example, _to zoom in on the data you want to view, click and drag your cursor across the bars_.  |
-|  8.    | **Chart type menu** <br /> Opens the **Chart type** menu, where you can click a different chart type for the layer. Available only for area, line, and bar charts.  |
-|  9.    | **layer pane** <br /> The layer configuration options, such as fields, functions, formula, colors, and more.  |
-| 10.    | **Index pattern dropdown** <br /> Opens the **Index pattern dropdown**, where you can select a different index pattern for the layer.  |
-| 11.    | **Horizontal axis, Vertical axis, Break down by, etc.** <br /> Refers to the field groups. <br /> To be generic, use _drag fields to the layer pane_.  |
-| 12.    | **Suggestions** <br /> The alternative visualizations that **Lens** creates for your data.  |
+|  1.    | **fields list** <br> The list of data fields that are available based on your index pattern and the time filter. <br> When referring to individual lists, use: <br> &bull; **Available fields** list <br> &bull; **Empty fields** list <br> &bull; **Meta fields** list <br> When referring to the action of adding fields, use `drag x to the x…`. For example, _from the **Available fields** list, drag **agent.keyword** to the workspace_.  |
+|  2.    | **Filter by type dropdown** <br> Specifies the filters you want to apply to the fields list.  |
+|  3.    | **Index pattern dropdown** <br> Opens the **Index pattern** dropdown, where you can select a different index pattern. <br> In general, refer to all dropdown menus in Kibana as a _dropdown_.  |
+|  4.    | **action menu (…)** <br> Opens a menu that allows you to add fields to the index pattern, and manage index pattern fields. <br> For example, _open the action menu (…) next to the Index pattern dropdown_.  |
+|  5.    | **Visualization type dropdown** <br> Opens the Visualization type dropdown, where you can select a different visualization.  |
+|  6.    | **editor toolbar menus** <br> Opens menus that allows you to customize the visualization. <br> For example, _in the editor toolbar, open the **Legend** menu_.  |
+|  7.    | **workspace** <br> The space where you drag fields and create visualizations. <br> To describe how you add data fields to the workspace, use _drag_ instead of _drag and drop_. For example, _from the **Available fields** list, drag bytes to the workspace_. <br> To describe how you zoom in on a data set, never use _brush_. Instead, use _click and drag your cursor_. For example, _to zoom in on the data you want to view, click and drag your cursor across the bars_.  |
+|  8.    | **Chart type menu** <br> Opens the **Chart type** menu, where you can click a different chart type for the layer. Available only for area, line, and bar charts.  |
+|  9.    | **layer pane** <br> The layer configuration options, such as fields, functions, formula, colors, and more.  |
+| 10.    | **Index pattern dropdown** <br> Opens the **Index pattern dropdown**, where you can select a different index pattern for the layer.  |
+| 11.    | **Horizontal axis, Vertical axis, Break down by, etc.** <br> Refers to the field groups. <br> To be generic, use _drag fields to the layer pane_.  |
+| 12.    | **Suggestions** <br> The alternative visualizations that **Lens** creates for your data.  |
 
 
 ### Cloud, labeled
@@ -242,7 +242,7 @@ Follow these guidelines when setting up your procedure.
 ## Choosing the right word
 
 Looking for the right word? Here you'll find which words to use when writing 
-about the UI. You can also refer to <DocLink id="techWritingGuidelinesWordChoice" text="word choice"/> and our <DocLink id="techWritingGuidelinesAccessibility" text="accessibility guidelines"/> for specific words and use cases. 
+about the UI. You can also refer to [Word choice](word-choice.md) and our [Accessibility guidelines](accessibility.md) for specific words and use cases. 
 
 ### Components
 
@@ -250,13 +250,13 @@ Use the language in this table when writing about UI components.
 
 | Component  | Example |
 |------------|---------|
-| **Buttons** <br /> A button is a UI element that is interactive by definition: when users click it, it responds to it by performing an action. <br /> Use "click" and refer to a button by its label.    | ✔️ Do: Click **New**. <br /> ❌ Don't: Click the "New" button.  |
-| **Checkbox and radio button** <br /> Checkbox is one word. <br /> Use "select" and  "clear" over "check" and "uncheck". <br /> Avoid naming the component unless it adds clarity (for example in a complex UI).  | ✔️ Do: Select all index checkboxes. <br /> ✔️ Do: Select **Logs**. <br /> ✔️ Do: Clear **Metrics**.  |
-| **Icon buttons** <br /> Include the icon inline to reinforce what the user is interacting with. For the name, use the tooltip text. If the icon doesn't have a name, give it one and make it sentence case.  | ✔️ Do: Click **Apply changes**. <br /> ❌ Don't: Click the icon. |
-| **Key** <br /> Use "press" followed by key name, or "the _Key_ key" if it adds clarity. For a key combination, use "Modifier+Key".  | ✔️ Do: In the query bar, enter your search criteria and press Enter. <br /> ✔️ Do: Press Command+Alt+L to expand and collapse the current scope.  |
-| **Menus** <br /> Use arrows (→) to tell the user where to find the command. <br /> A menu always has action items.  | Select **Manage index → Add lifecycle policy**.  |
-| **Text field** <br /> Use "enter" for the action and code font for user input.   | ✔️ Do: In the **Name** field, enter a unique identifier for this rollup job. <br /> ✔️ Do: In **Index pattern**, enter shakes*.   |
-| **Toggle ([Switch in EUI](https://elastic.github.io/eui/#/forms/form-controls#switch))** <br /> Refer to the UI element as a "toggle". <br /> Name it only if it adds clarity for the reader. If the UI is clear enough, stay minimalist and focus on the action. <br /> Use "toggle" as a noun rather than a verb. <br /> Prefer using "turn on", "turn off" as a verb over "enable" or "disable".  | ✔️ Do: Turn on **Malware protection**. <br /> ✔️ Do: Turn off the **Malware protection** toggle in the **Preferences** window. <br /> ❌ Don't: Toggle **Malware protection** in the **Preferences** window.  |
+| **Buttons** <br> A button is a UI element that is interactive by definition: when users click it, it responds to it by performing an action. <br> Use "click" and refer to a button by its label.    | ✔️ Do: Click **New**. <br> ❌ Don't: Click the "New" button.  |
+| **Checkbox and radio button** <br> Checkbox is one word. <br> Use "select" and  "clear" over "check" and "uncheck". <br> Avoid naming the component unless it adds clarity (for example in a complex UI).  | ✔️ Do: Select all index checkboxes. <br> ✔️ Do: Select **Logs**. <br> ✔️ Do: Clear **Metrics**.  |
+| **Icon buttons** <br> Include the icon inline to reinforce what the user is interacting with. For the name, use the tooltip text. If the icon doesn't have a name, give it one and make it sentence case.  | ✔️ Do: Click **Apply changes**. <br> ❌ Don't: Click the icon. |
+| **Key** <br> Use "press" followed by key name, or "the _Key_ key" if it adds clarity. For a key combination, use "Modifier+Key".  | ✔️ Do: In the query bar, enter your search criteria and press Enter. <br> ✔️ Do: Press Command+Alt+L to expand and collapse the current scope.  |
+| **Menus** <br> Use arrows (→) to tell the user where to find the command. <br> A menu always has action items.  | Select **Manage index → Add lifecycle policy**.  |
+| **Text field** <br> Use "enter" for the action and code font for user input.   | ✔️ Do: In the **Name** field, enter a unique identifier for this rollup job. <br> ✔️ Do: In **Index pattern**, enter shakes*.   |
+| **Toggle ([Switch in EUI](https://elastic.github.io/eui/#/forms/form-controls#switch))** <br> Refer to the UI element as a "toggle". <br> Name it only if it adds clarity for the reader. If the UI is clear enough, stay minimalist and focus on the action. <br> Use "toggle" as a noun rather than a verb. <br> Prefer using "turn on", "turn off" as a verb over "enable" or "disable".  | ✔️ Do: Turn on **Malware protection**. <br> ✔️ Do: Turn off the **Malware protection** toggle in the **Preferences** window. <br> ❌ Don't: Toggle **Malware protection** in the **Preferences** window.  |
 
 ### Menus 
 
