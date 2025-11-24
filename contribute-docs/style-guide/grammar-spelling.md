@@ -251,7 +251,7 @@ Use an en dash:
 
 :::{dropdown} Examples
 * The field must contain 1–3 values.
-    * Upgrade from v. 7.17 to v. 8.5–8.10.
+* Upgrade from v. 7.17 to v. 8.5–8.10.
 :::
 
 #### Em dashes
