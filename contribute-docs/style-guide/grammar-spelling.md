@@ -129,7 +129,7 @@ Use commas:
 * To join independent clauses with a coordinating conjunction (*and*, *but*, *or*, *nor*, *fo*r, *so*, or *yet*).
 
 :::{dropdown} Examples
-      * A case can have multiple connectors, but only one connector can be selected at a time.
+* A case can have multiple connectors, but only one connector can be selected at a time.
       * Click **Add events**, and follow the links for the types of data you want to collect.
 :::
 
