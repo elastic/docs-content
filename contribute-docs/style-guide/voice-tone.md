@@ -255,7 +255,7 @@ During the users' journey with Elastic, there are times for excitement and disco
 
 :::::{tab-set}
 ::::{tab-item} Attributes
-    We don't advise this action, but you're the master of your destiny. Be:
+We don't advise this action and there might be significant implications. Be:
 
     - Deterring
     - Heavy with caution
