@@ -246,7 +246,7 @@ Best practices:
 
 **Use descriptive anchor text**
 
-* Make link text meaningful (e.g., "Monitor Configuration Reference" instead of "click here").  
+* Make link text meaningful (for example, "Monitor configuration reference" instead of "click here").  
 * Avoid vague phrases; anchor text should describe the destination or resource.
 
 **Prioritize internal linking**
