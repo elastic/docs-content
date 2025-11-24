@@ -108,7 +108,7 @@ In Kibana, there are multiple ways for users to navigate to apps and pages. Depe
 
 When referring to apps or pages in the Docs, and especially in tasks and tutorials, it's important that you remain as close as possible to the user's truth. For that, use one of the following solution-agnostic patterns:
 
-- The app is directly available in the main menu: `Find <APP> in the main menu or use the <<kibana-navigation-search,global search field>>.`
+- The app is directly available in the main menu: `Find <APP> in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
 - The app or page is accessible through only the global search field: `To open **APP or PAGE**, find **PARENT** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
