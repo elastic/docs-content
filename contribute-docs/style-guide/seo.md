@@ -287,7 +287,7 @@ Best practices:
 
 Multimedia is important because it can improve user experience, site performance, and ranking signals. It can boost user engagement and retention by providing different ways to consume information.
 
-By adding things like image alt tags, and structured data, search engines can also pick up assets to serve them within organic search results, or use them to enhance your listing within organic search results.
+By adding things like image alt tags and structured data, search engines can also pick up assets to serve them within organic search results, or use them to enhance your listing within organic search results.
 
 Multimedia content can include images, videos, podcasts, infographics, and more. Multimedia elements enhance understanding and engagement but must be used thoughtfully for accessibility and SEO.
 
