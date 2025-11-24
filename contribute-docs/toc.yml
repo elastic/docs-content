@@ -13,6 +13,16 @@ toc:
           - file: badge-placement.md
           - file: example-scenarios.md
           - file: reference.md
+  - folder: style-guide
+    children:
+    - file: index.md
+    - file: voice-tone.md
+    - file: accessibility.md
+    - file: grammar-spelling.md
+    - file: word-choice.md
+    - file: formatting.md
+    - file: ui-writing.md
+    - file: seo.md
   - file: tools.md
     children:
       - file: vscode-extension.md
