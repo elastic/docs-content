@@ -182,7 +182,8 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 
 `--maintenance-windows Array<string>`
 :   A list of maintenance window IDs used to associate every monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). This argument accepts a variable number of values as shown in the example.
-    Example: `--maintenance-windows "maintenance-window-ID-1" "maintenance-window-ID-2`
+
+        Example: `--maintenance-windows "maintenance-window-ID-1" "maintenance-window-ID-2`
 
     This can also be set in the configuration file using [the `monitor.fields` option](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
