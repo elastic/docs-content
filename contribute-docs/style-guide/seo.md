@@ -263,7 +263,7 @@ Best practices:
 
 **Maintain link accessibility**
 
-* Ensure link text is distinguishable (via color, underline, etc.).  
+* Ensure link text is distinguishable (for example, by using color and underline).  
 * Avoid Overlinking  
 * Don’t overload paragraphs with multiple links—prioritize the most relevant ones.
 
