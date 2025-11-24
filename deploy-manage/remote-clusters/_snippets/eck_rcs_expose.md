@@ -1,12 +1,14 @@
-When the remote cluster server is enabled, ECK automatically creates a Kubernetes service named `<cluster-name>-es-remote-cluster` that exposes the server internally on port `9443`:
+When the remote cluster server is enabled, ECK automatically creates a Kubernetes service named `<cluster-name>-es-remote-cluster` that exposes the server internally on port `9443`.
 
-```sh
-quickstart-es-remote-cluster       ClusterIP      None             <none>         9443/TCP            4h13m
-```
+To allow clusters running outside your Kubernetes environment to connect to this {{es}} cluster, you must expose this service externally. The way to expose this service depends on your ECK version.
 
-To allow other clusters running outside your Kubernetes environment to connect, you must expose this service externally. As of ECK {{version.eck}}, you cannot customize the service that ECK generates for the remote cluster interface, but you can create your own `LoadBalancer` service, `Ingress` object, or use another method available in your environment.
+::::{applies-switch}
 
-For example, the following command creates a service named `quickstart-es-remote-cluster-lb`, similar to the managed `quickstart-es-remote-cluster` but of type `LoadBalancer`.
+:::{applies-item} eck: ga 3.0
+
+In ECK 3.2 and earlier you cannot customize the service that ECK generates for the remote cluster interface, but you can create your own `LoadBalancer` service, `Ingress` object, or use another method available in your environment.
+
+For example, for a cluster named `quickstart`, the following command creates a separate `LoadBalancer` service named `quickstart-es-remote-cluster-lb`, pointing to the ECK-managed service `quickstart-es-remote-cluster`:
 
 ```sh
 kubectl expose service quickstart-es-remote-cluster \
@@ -14,23 +16,37 @@ kubectl expose service quickstart-es-remote-cluster \
   --type=LoadBalancer \ <1>
   --port=9443 --target-port=9443
 ```
-
 1. On cloud providers that support external load balancers, setting the type to `LoadBalancer` provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-remote-cluster` through one of the Kubernetes Ingress controllers that support TCP services.
 
-
-:::{admonition} About exposing the service and TLS certificates
-When exposing the remote cluster service, determine which TLS certificate will be presented to clients and whether a certificate authority (CA) is required to establish trust. This depends on how traffic to port `9443` is routed in your environment and which component terminates the TLS connection:
-
-* **{{es}} TLS termination**
-
-  If the connection reaches the {{es}} Pods without intermediate TLS termination, the {{es}} nodes present transport certificates managed by ECK. The local cluster must therefore trust these certificates by including the ECK-managed transport CA, which you can retrieve in the next section.
-
-  This setup is typical when using standard `LoadBalancer` services provided by most cloud providers.
-
-* **External TLS termination**
-
-  If the connection to port `9443` of your {{es}} cluster is handled by an external load balancer, Ingress controller, or another proxy that performs SSL termination with its own certificates, use the CA associated with that component if it's signed by a private CA.
-  
-  If the external TLS termination uses a publicly trusted certificate, no additional CA is needed.
 :::
+
+:::{applies-item} eck: ga 3.3
+
+Starting in ECK 3.3, you can customize the service used for the remote cluster interface directly in the {{es}} resource. This allows you to choose the `Service` type or apply any supported `spec` fields without creating a separate Kubernetes Service.
+
+For example, the manifest below configures the remote cluster service as a `LoadBalancer`:
+
+```yaml
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: <cluster-name>
+  namespace: <namespace>
+spec:
+  version: 9.2.1
+  remoteClusterServer:
+    enabled: true
+    service:
+      type: LoadBalancer <1>
+  nodeSets:
+    - name: default
+      count: 3
+      ...
+      ...
+```
+1. On cloud providers that support external load balancers, setting the type to `LoadBalancer` provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-remote-cluster` through one of the Kubernetes Ingress controllers that support TCP services.
+
+You can also configure other service types (such as `NodePort`) or attach annotations required by your environment.
+:::
+::::
 
