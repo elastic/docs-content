@@ -405,7 +405,7 @@ For languages that don't support comments natively, such as JSON, you can add ex
 {
   "_tags": [
     "endpoint", [^1]
-    "os:windows" [^2]
+    "os:windows" <2>
   ],
   "comments": [],
   "description": "File exception for Windows",
