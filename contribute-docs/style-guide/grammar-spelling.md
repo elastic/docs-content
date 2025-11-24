@@ -207,7 +207,7 @@ Use a hyphen:
 
 :::{dropdown} Examples
     * 12 - 3 = 9
-    * -79
+* -79
 :::
 
 ❌ Don't use a hyphen:
