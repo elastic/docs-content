@@ -122,7 +122,7 @@ Use commas:
 * After an introductory word or phrase.
 
 :::{dropdown} Examples
-    * Generally, the monitoring cluster and the clusters being monitored should be running the same version.
+* Generally, the monitoring cluster and the clusters being monitored should be running the same version.
     * For additional context, alert events are stored in hidden Elasticsearch indices.
 :::
 
