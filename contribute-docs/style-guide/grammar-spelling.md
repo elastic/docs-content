@@ -136,7 +136,7 @@ Use commas:
 * When an adverbial dependent clause comes before an independent clause.
 
 :::{dropdown} Examples
-      * When creating exceptions, you can assign them to individual rules or to multiple rules.
+* When creating exceptions, you can assign them to individual rules or to multiple rules.
       * After rules have started running, you can monitor their executions to verify they are functioning correctly.
 :::
 
