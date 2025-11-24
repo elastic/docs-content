@@ -420,7 +420,7 @@ For languages that don't support comments natively, such as JSON, you can add ex
   "item_id": "trusted-windows-file",
   "list_id": "endpoint-exception-container",
   "name": "Trusted Windows file",
-  "namespace_type": "agnostic", [^3]
+  "namespace_type": "agnostic", <3>
   "tags": [],
   "type": "simple"
 }
