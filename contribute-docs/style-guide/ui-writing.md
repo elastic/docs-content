@@ -177,7 +177,7 @@ the UI element itself.
 |  user menu   | Location of the dark mode setting and user logout.   |
 
 
-### Security Alert Details Flyout
+### Security alert details flyout
 
 ![Security Alert Details Flyout](./images/securityAlertDetailsFlyout.png)
 
