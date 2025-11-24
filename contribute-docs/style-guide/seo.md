@@ -45,10 +45,10 @@ The meta title, and in turn, the page title, is very broad. A more descriptive t
 Best practices:
 
 * The meta title should be concise, descriptive, and include the main keyword or topic of the page.  
-* It’s important that the H1 accurately reflects the page’s content and purpose, as this will be shown in the search results.  
+* It's important that the H1 accurately reflects the page's content and purpose, as this will be shown in the search results.  
 * Avoid duplicating meta titles across different pages. Each should be unique.  
-* If the H1 is too long, the CMS will trim it to fit the recommended length (typically 50–60 characters), so make sure the most important information is at the beginning.  
-* The meta title is not directly visible to users on the page itself, but it’s critical for search visibility and user engagement in search results.
+* Keep the H1 to a recommended length of 50–60 characters, and make sure the most important information is at the beginning.  
+* The meta title is not directly visible to users on the page itself, but it's critical for search visibility and user engagement in search results.
 
 ### H2: Secondary headings
 
@@ -109,8 +109,6 @@ Below is an example of a page with one sentence and no introductory paragraph.
 If the page had more content, which is required, a good introductory paragraph within the context of this example could be something like "The Pulse Connect Secure integration enables you to collect, monitor, and analyze VPN and remote access logs from Pulse Connect Secure appliances in Elastic. Use this integration to gain visibility into user activity, detect security events, and streamline compliance reporting within Kibana. Compatible with Elastic Stack version 8.13.0 and higher, this integration supports both Security and Observability use cases".
 
 In turn, the meta description would be more descriptive, for example, "The Pulse Connect Secure integration enables you to collect, monitor, and analyze VPN and remote access logs from Pulse Connect Secure appliances in Elastic".
-
-Don’t feel pressure to meet the character limits. The CMS will automatically trim it. Just make sure the sentence is front-loaded with the context.
 
 Examples:  
 **Overview**

@@ -15,8 +15,6 @@ Make sure you are using the term correctly.
 - **Avoid**: This term might be offensive or non-inclusive.
 Whenever possible, use the alternate suggestion, or a more specific term.
 
-For questions, or to add a new term, feel free to open a GitHub issue in [tech-writing-guidelines](https://github.com/elastic/tech-writing-guidelines/issues), or tag our alias `@style-guide-writers` in the #docs Slack channel.
-
 ---
 
 | Word | Status | Usage notes |

@@ -2,6 +2,7 @@ toc:
   - file: index.md
   - file: on-the-web.md
   - file: locally.md
+  - file: good-issues.md
   - file: syntax-quick-reference.md
   - folder: how-to
     children:
