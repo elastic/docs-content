@@ -144,7 +144,7 @@ Use commas:
 
 :::{dropdown} Examples
 * Missing fields get a `null` value, which is used to group and suppress alerts.
-    * The risk scoring engine calculates the user risk score for `User_A`, whose asset criticality level is **Extreme impact**.
+* The risk scoring engine calculates the user risk score for `User_A`, whose asset criticality level is **Extreme impact**.
 :::
 
 ❌ Don't use commas:
