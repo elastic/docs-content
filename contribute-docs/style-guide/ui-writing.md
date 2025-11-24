@@ -110,7 +110,7 @@ When referring to apps or pages in the Docs, and especially in tasks and tutoria
 
 - The app is directly available in the main menu: `Find <APP> in the main menu or use the <<kibana-navigation-search,global search field>>.`
 
-- The app or page is accessible through only the global search field: `To open **APP or PAGE**, find **PARENT** in the main menu or use the <<kibana-navigation-search,global search field>>.`
+- The app or page is accessible through only the global search field: `To open **APP or PAGE**, find **PARENT** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
 You can adapt these patterns and the link to the search bar documentation to match your context and scenario. 
 
