@@ -47,7 +47,7 @@ UI icons can be helpful to include when describing a procedure that requires the
 :::{dropdown} Example
     ❌ **Don't**: To display the table in fullscreen mode, click the fullscreen icon ().
     
-    ✔️ **Do**: To display the table in fullscreen mode, click the fullscreen icon . 
+    ✔️ **Do**: To display the table in fullscreen mode, click the fullscreen icon {icon}`full_screen`. 
 :::
   
 ## Screenshots
