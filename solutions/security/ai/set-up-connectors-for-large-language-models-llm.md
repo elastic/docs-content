@@ -35,8 +35,10 @@ Follow these guides to connect to one or more third-party LLM providers:
 
 ## Connect to a self-managed LLM
 
-- You can [connect to LM Studio](/solutions/security/ai/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
-- For air-gapped environments, you can [connect to vLLM](/solutions/security/ai/connect-to-vLLM.md).
+The following guides describe how to connect to a custom LLM deployed and managed by you:
+
+- For production environments or air-gapped environments, you can [connect to vLLM](/solutions/security/ai/connect-to-vLLM.md).
+- For experimental deployments, you can [connect to LM Studio](/solutions/security/ai/connect-to-own-local-llm.md).
 
 ## Preconfigured connectors
 
