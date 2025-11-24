@@ -425,7 +425,7 @@ For languages that don't support comments natively, such as JSON, you can add ex
   "type": "simple"
 }
 ```
-[^1]: Indicates this item is for endpoint rules.
+1. Indicates this item is for endpoint rules.
 [^2]: Relevant OS.
 [^3]: Item accessible from all Kibana spaces.
 
