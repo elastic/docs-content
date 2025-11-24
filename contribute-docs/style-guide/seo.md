@@ -1,4 +1,4 @@
-# SEO guidelines for Elastic Docs
+# SEO guidelines
 
 Learn how to structure content for search visibility, craft clear and user-focused copy, and apply techniques that improve discoverability and usability. To deliver value to users, search engines and AI-powered tools—including Large Language Models (LLMs), use the SEO guidelines to ensure your documentation is easy to find, understand, and maintain.
 

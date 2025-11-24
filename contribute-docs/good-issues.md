@@ -1,5 +1,5 @@
 ---
-navigation_title: How to create good docs issues
+navigation_title: Create good issues
 ---
 
 # How to create good docs issues

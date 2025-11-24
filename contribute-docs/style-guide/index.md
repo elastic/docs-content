@@ -1,5 +1,5 @@
 ---
-navigation_title: Technical writing style guide
+navigation_title: Style guide
 ---
 
 # Technical writing style guide
