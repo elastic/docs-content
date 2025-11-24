@@ -2,11 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-authorization-delegation.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---

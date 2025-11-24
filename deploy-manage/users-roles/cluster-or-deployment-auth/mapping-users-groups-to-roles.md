@@ -4,11 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html
   - https://www.elastic.co/guide/en/kibana/current/role-mappings.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
+  serverless: unavailable
 products:
   - id: elasticsearch
   - id: kibana

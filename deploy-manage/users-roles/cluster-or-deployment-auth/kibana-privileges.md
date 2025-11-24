@@ -2,11 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-privileges.html
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
+  serverless: unavailable
 products:
   - id: kibana
 ---

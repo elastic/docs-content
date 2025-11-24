@@ -2,11 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/authorization.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
+  serverless: all
 products:
   - id: elasticsearch
 ---
@@ -66,12 +63,20 @@ A role has a unique name and identifies a set of permissions that translate to p
 
 Review these topics to learn how to configure RBAC in your cluster or deployment:
 
-* Learn about [built-in roles](elasticsearch://reference/elasticsearch/roles.md)
-* [Define your own roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
+* Learn about [built-in roles](elasticsearch://reference/elasticsearch/roles.md) {applies_to}`serverless: unavailable`
+* [Define your own roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) {applies_to}`serverless: unavailable`
 * Learn about the [Elasticsearch](elasticsearch://reference/elasticsearch/security-privileges.md) and [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges you can assign to roles
 * Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
+:::{tip}
+This topic describes built-in roles in {{stack}} clusters and deployments and explains how to create custom ones. You can also learn about [organization-level](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) roles and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) in {{serverless-full}}.
+To create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
+:::
+
 ### Assign roles to users
+```{applies_to}
+serverless: unavailable
+```
 
 The way that you assign roles to users depends on your authentication realm:
 
@@ -83,7 +88,16 @@ The way that you assign roles to users depends on your authentication realm:
   * In ECK: As part of a [basic authentication secret](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)
 * [External realms](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md): By [mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 
+:::{tip}
+This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with Elasticsearch and Kibana.
+
+You can also manage authentication and identity integration at the [Elastic Cloud organization](/deploy-manage/users-roles/cloud-organization/manage-users.md) level.
+:::
+
 ### Advanced topics
+```{applies_to}
+serverless: unavailable
+```
 
 * Learn how to [delegate authorization to another realm](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-delegation.md)
 * Learn how to [build a custom authorization plugin](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-plugins.md) for unsupported systems or advanced applications
@@ -95,6 +109,9 @@ User roles are also used to control access to [{{kib}} spaces](/deploy-manage/ma
 ::::
 
 ## Attribute-based access control [attributes]
+```{applies_to}
+serverless: unavailable
+```
 
 Attribute-based access control (ABAC) enables you to use attributes to restrict access to documents in search queries and aggregations. For example, you can assign attributes to users and documents, then implement an access policy in a role definition. Users with that role can read a specific document only if they have all the required attributes.
 

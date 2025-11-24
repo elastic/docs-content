@@ -3,11 +3,8 @@ navigation_title: Submit requests on behalf of other users
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---
