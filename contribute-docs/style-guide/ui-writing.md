@@ -3,7 +3,7 @@ navigation_title: Writing about the UI
 description: Guidelines for writing about the user interfaces of our Elastic products.
 ---
 
-# UI Writing
+# UI writing
  
 This topic covers how to write about the UI, the best verbs and prepositions to use, what to call parts of the UI, and how to guide the user through tasks.
 
