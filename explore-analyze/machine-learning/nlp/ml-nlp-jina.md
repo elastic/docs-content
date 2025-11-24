@@ -22,7 +22,7 @@ serverless: preview
 
 The [`jina-embeddings-v3`](https://jina.ai/models/jina-embeddings-v3/) is a multilingual dense vector embedding model that you can use through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 It provides long-context embeddings across a wide range of languages without requiring you to configure, download, or deploy any model artifacts yourself.
-As the model runs on EIS–Elastic's own infrastructure–no ML node scaling and configuration is required to use it.
+As the model runs on EIS, Elastic's own infrastructure, no ML node scaling and configuration is required to use it.
 
 The `jina-embedings-v3` model supports input lengths of up to 8192 tokens and produces 1024-dimension embeddings by default. It uses task-specific adapters to optimize embeddings for different use cases (such as retrieval or classification), and includes support for Matryoshka Representation Learning, which allows you to truncate embeddings to fewer dimensions with minimal loss in quality.
 
@@ -49,7 +49,7 @@ PUT _inference/text_embedding/eis-jina-embeddings-v3
 ```
 
 The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in text_embedding {{infer}} tasks or search queries.
-For example, the following API request will ingest the input text and produce embeddings.
+For example, the following API request ingests the input text and produce embeddings.
 
 ```console
 POST _inference/text_embedding/eis-jina-embeddings-v3
