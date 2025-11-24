@@ -106,7 +106,7 @@ If the screen is very complex, it might help to add callouts:
 
 In Kibana, there are multiple ways for users to navigate to apps and pages. Depending on the environment and initial setup, users can be served with different navigations where the structure, interactions, and visible features differ.
 
-When referring to apps or pages in the Docs, and especially in tasks and tutorials, it's important that you remain as close as possible to the user's truth. For that, use one of the following solution-agnostic patterns:
+When referring to apps or pages in the docs, and especially in tasks and tutorials, it's important that you remain as close as possible to the user's truth. For that, use one of the following solution-agnostic patterns:
 
 - The app is directly available in the main menu: `Find <APP> in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
