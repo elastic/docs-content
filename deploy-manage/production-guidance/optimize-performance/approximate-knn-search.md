@@ -125,7 +125,7 @@ Example Response:
         }
     }
 }
-----
+```
 
 
 ## Reduce the number of index segments [_reduce_the_number_of_index_segments]
