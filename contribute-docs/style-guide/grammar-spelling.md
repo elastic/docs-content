@@ -137,7 +137,7 @@ Use commas:
 
 :::{dropdown} Examples
 * When creating exceptions, you can assign them to individual rules or to multiple rules.
-      * After rules have started running, you can monitor their executions to verify they are functioning correctly.
+* After rules have started running, you can monitor their executions to verify they are functioning correctly.
 :::
 
 * To set off non-defining relative clauses (also known as non-restrictive or parenthetical clauses).
