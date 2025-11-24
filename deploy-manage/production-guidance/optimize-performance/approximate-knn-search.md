@@ -99,7 +99,6 @@ For example, for DiskBBQ, you might see something like this:
 ```console
 GET my_index/_stats?filter_path=indices.my_index.primaries.dense_vector
 
-Example Response:
 {
     "indices": {
         "my_index": {
