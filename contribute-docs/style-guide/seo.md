@@ -151,7 +151,7 @@ Best practices:
 
 **Organize with headings and subheadings**
 
-* Break content into logical sections using descriptive headings (H2, H3, etc.).  
+* Break content into logical sections using descriptive headings (H2, H3, and so on).  
 * Headings help users scan for relevant information and assist search engines in understanding content hierarchy.  
 * Each heading should accurately reflect the content that follows.
 
