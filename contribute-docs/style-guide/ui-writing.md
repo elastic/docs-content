@@ -129,7 +129,7 @@ the UI element itself.
 
 | Number | Definition |
 |--------|------------|
-|  1.    | **main menu** <br /> The hamburger menu that opens the top-level navigation for Kibana. <br /> Avoid using _sidebar_, _navigation bar_, _side nav_, _left-hand nav_, _toolbar_. For example, _Open the main menu, then click [app name]_. <br /> **apps** <br /> The items you access from the main menu. Render app names in **bold** and match the capitalization in the UI. <br /> Avoid using _applications_, _tabs_, _pages_, or _UI_. For example, _Open the main menu, then click **Dashboard**_.  |
+|  1.    | **main menu** <br> The hamburger menu that opens the top-level navigation for Kibana. <br> Avoid using _sidebar_, _navigation bar_, _side nav_, _left-hand nav_, _toolbar_. For example, _Open the main menu, then click [app name]_. <br>**apps** <br> The items you access from the main menu. Render app names in **bold** and match the capitalization in the UI. <br> Avoid using _applications_, _tabs_, _pages_, or _UI_. For example, _Open the main menu, then click **Dashboard**_.  |
 |  2.    | **spaces** <br /> Opens the **Change current space** popup, where you can select a different space, or manage existing spaces. |
 |  3.    | **breadcrumb** <br /> The path that shows where you are in the app hierarchy.  |
 |  4.    | **search field** <br /> Enables you to search for applications and objects, such as dashboards and visualizations.  |
