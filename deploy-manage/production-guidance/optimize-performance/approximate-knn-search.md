@@ -94,8 +94,7 @@ Generally, if you are using a quantized index, you should only preload the relev
 
 Additional detail can be gleened on the specific files by using the [stats endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats) which will display information about the index and fields for example for DiskBBQ you might see something like this:
 
-[source,console]
-----
+```console
 GET my_index/_stats?filter_path=indices.my_index.primaries.dense_vector
 
 Example Response:
