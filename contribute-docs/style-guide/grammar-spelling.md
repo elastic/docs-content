@@ -123,7 +123,7 @@ Use commas:
 
 :::{dropdown} Examples
 * Generally, the monitoring cluster and the clusters being monitored should be running the same version.
-    * For additional context, alert events are stored in hidden Elasticsearch indices.
+* For additional context, alert events are stored in hidden Elasticsearch indices.
 :::
 
 * To join independent clauses with a coordinating conjunction (*and*, *but*, *or*, *nor*, *fo*r, *so*, or *yet*).
