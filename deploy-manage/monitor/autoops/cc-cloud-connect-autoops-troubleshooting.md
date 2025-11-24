@@ -38,7 +38,7 @@ $$$next-steps$$$**After running the installation command, I can't move on to the
 :   If an error appears on the screen, follow the suggestion in the error message and try to run the command again. If the issue is not resolved, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
 $$$firewall$$$**My organization's firewall may be preventing {{agent}} from collecting and sending metrics.**
-:   If you suspect that a corporate firewall is hindering {{agent}}, complete the following steps to test each component of the connection and implement an appropriate solution. 
+:   If you're having issues with connecting your self-managed cluster to AutoOps and you suspect that a firewall may be the reason, complete the following steps to test each component of the connection and implement an appropriate solution. 
 
     :::{tip}
     Run the following tests within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the container, and so on. 

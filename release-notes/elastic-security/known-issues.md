@@ -16,11 +16,30 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
+Applies to: 9.2.0 and 9.2.1
+
+**Impact**<br> 
+New deployments of integrations that collect data from cloud service providers, such as Asset Discovery and Cloud Security Posture Management, do not work when deployed to AWS using agent-based deployment and the AWS CloudFormation deployment option. The problem results from a malformed CloudFormation parameter: `ElasticAgentVersion`. The default value for `ElasticAgentVersion` has a space instead of a `+`. This produces an invalid agent version value.
+
+For more information, check [#14627](https://github.com/elastic/kibana/pull/242365).
+
+
+**Workaround**<br> 
+
+To work around this issue, update the default CloudFormation template by replacing the space in the `ElasticAgentVersion` parameter with a `+`.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.2.
+
+:::
+
 :::{dropdown} Entity store transform is unavailable 
 
 Applies to: 9.2.0
 
-**Details**
+**Impact**
 
 A new feature introduced to the entity store in 9.2.0 caused the transform to scan for nonexistent indices.
 
@@ -30,6 +49,10 @@ Restart the entity store:
 1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Entity Store** page, turn the toggle off.
 3. Turn the toggle back on.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.1
 
 ::::
 
@@ -50,6 +73,11 @@ Two workarounds are available:
     3. Your agent-based integration deployments will work as expected.
 2. Use agentless deployment. 
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.1
+
 ::::
 
 
@@ -265,7 +293,7 @@ Resolved in {{elastic-defend}} 9.0.1
 
 Applies to: {{elastic-defend}} 9.0.0
 
-An unbounded kernel non-paged memory growth issue in {{elastic-defend}}'s kernel driver occurs during extremely high event load situations on Windows. Systems affected by this issue will slow down or become unresponsive until the triggering event load (for example, network activity) subsides. We are only aware of this issue occurring on very busy Windows Server systems running {{elastic-defend}} versions 8.16.0-8.16.6, 8.17.0-8.17.5, 8.18.0, and 9.0.0
+An unbounded kernel non-paged memory growth issue in {{elastic-defend}}'s kernel driver occurs during extremely high event load situations on Windows. Systems affected by this issue will slow down or become unresponsive until the triggering event load (for example, network activity) subsides. We are only aware of this issue occurring on busy Windows Server systems running {{elastic-defend}} versions 8.16.0-8.16.6, 8.17.0-8.17.5, 8.18.0, and 9.0.0
 
 **Workaround**<br>
 
@@ -274,7 +302,7 @@ If you can't upgrade, turn off the relevant event source at the kernel level usi
 * Network Events - Set the `windows.advanced.kernel.network` advanced setting to `false`.
 * Registry Events - Set the `windows.advanced.kernel.registry` advanced setting to `false`.
 
-Note that clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
+Clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
 
 **Resolved**<br>
 

@@ -11,11 +11,11 @@ products:
 
 # {{transforms-cap}} limitations [transform-limitations]
 
-The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{transform}} feature. The limitations are grouped into the following categories:
+The following limitations and known problems apply to the Elastic {{transform}} feature. The limitations are grouped into the following categories:
 
 * [Configuration limitations](#transform-config-limitations) apply to the configuration process of the {{transforms}}.
 * [Operational limitations](#transform-operational-limitations) affect the behavior of the {{transforms}} that are running.
-* [Limitations in {{kib}}](#transform-ui-limitations) only apply to {{transforms}} managed via the user interface.
+* [Limitations in {{kib}}](#transform-ui-limitations) only apply to {{transforms}} managed through the user interface.
 
 ## Configuration limitations [transform-config-limitations]
 
@@ -45,7 +45,7 @@ If a {{transform}} contains Painless scripts that use deprecated syntax, depreca
 
 ### {{ctransform-cap}} scheduling limitations [transform-scheduling-limitations]
 
-A {{ctransform}} periodically checks for changes to source data. The functionality of the scheduler is currently limited to a basic periodic timer which can be within the `frequency` range from 1s to 1h. The default is 1m. This is designed to run little and often. When choosing a `frequency` for this timer consider your ingest rate along with the impact that the {{transform}} search/index operations has other users in your cluster. Also note that retries occur at `frequency` interval.
+A {{ctransform}} periodically checks for changes to source data. The functionality of the scheduler is currently limited to a basic periodic timer which can be within the `frequency` range from 1s to 1h. The default is 1m. This is designed to run little and often. When choosing a `frequency` for this timer consider your ingest rate along with the impact that the {{transform}} search/index operations has other users in your cluster. Also, retries occur at `frequency` interval.
 
 ## Operational limitations [transform-operational-limitations]
 
@@ -103,11 +103,11 @@ When using the API to delete a failed {{transform}}, first stop it using `_stop?
 
 ### {{ctransforms-cap}} may give incorrect results if documents are not yet available to search [transform-availability-limitations]
 
-After a document is indexed, there is a very small delay until it is available to search.
+After a document is indexed, there is a small delay until it is available to search.
 
 A {{ctransform}} periodically checks for changed entities between the time since it last checked and `now` minus `sync.time.delay`. This time window moves without overlapping. If the timestamp of a recently indexed document falls within this time window but this document is not yet available to search then this entity will not be updated.
 
-If using a `sync.time.field` that represents the data ingest time and using a zero second or very small `sync.time.delay`, then it is more likely that this issue will occur.
+If using a `sync.time.field` that represents the data ingest time and using a zero second or small `sync.time.delay`, then it is more likely that this issue will occur.
 
 ### Support for date nanoseconds data type [transform-date-nanos]
 
@@ -184,4 +184,4 @@ The {{transforms}} management page in {{kib}} lists up to 1000 {{transforms}}.
 
 ### {{kib}} might not support every {{transform}} configuration option [transform-ui-support]
 
-There might be configuration options available via the {{transform}} APIs that are not supported in {{kib}}. For an exhaustive list of configuration options, refer to the [documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-transform).
+There might be configuration options available through the {{transform}} APIs that are not supported in {{kib}}. For an exhaustive list of configuration options, refer to the [documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-transform).

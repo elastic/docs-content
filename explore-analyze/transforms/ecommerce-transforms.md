@@ -94,7 +94,7 @@ products:
 
 4. When you are satisfied with what you see in the preview, create the {{transform}}.
    1. Supply a {{transform}} ID, the name of the destination index and optionally a description. If the destination index does not exist, it will be created automatically when you start the {{transform}}.
-   2. Decide whether you want the {{transform}} to run once or continuously. Since this sample data index is unchanging, let’s use the default behavior and just run the {{transform}} once. If you want to try it out, however, go ahead and click on **Continuous mode**. You must choose a field that the {{transform}} can use to check which entities have changed. In general, it’s a good idea to use the ingest timestamp field. In this example, however, you can use the `order_date` field.
+   2. Decide whether you want the {{transform}} to run once or continuously. Since this sample data index is unchanging, let's use the default behavior and run the {{transform}} once. If you want to try it out, however, go ahead and click on **Continuous mode**. You must choose a field that the {{transform}} can use to check which entities have changed. In general, it's a good idea to use the ingest timestamp field. In this example, however, you can use the `order_date` field.
    3. Optionally, you can configure a retention policy that applies to your {{transform}}. Select a date field that is used to identify old documents in the destination index and provide a maximum age. Documents that are older than the configured value are removed from the destination index.
    :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-pivot3.png
    :alt: Adding transfrom ID and retention policy to a {{transform}} in {{kib}}
@@ -303,7 +303,7 @@ products:
 
    Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform), [stop {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform) and [reset {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform) APIs.
 
-   If you reset a {{transform}}, all checkpoints, states, and the destination index (if it was created by the {{transform}}) are deleted. The {{transform}} is ready to start again as if it had just been created.
+   If you reset a {{transform}}, all checkpoints, states, and the destination index (if it was created by the {{transform}}) are deleted. The {{transform}} is ready to start again as if it were newly created.
 
    ::::{dropdown} API example
    ```console

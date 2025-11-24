@@ -18,7 +18,7 @@ The `inputs` section of the `elastic-agent.yml` file specifies how {{agent}} loc
 
 ## Sample metrics input configuration [elastic-agent-input-configuration-sample-metrics]
 
-By default {{agent}} collects system metrics, such as CPU, memory, network, and file system metrics, and sends them to the default output. For example, to define datastreams for `cpu`, `memory`, `network` and `filesystem` metrics, this is the configuration:
+By default {{agent}} collects system metrics, such as CPU, memory, network, and file system metrics, and sends them to the default output. For example, to define data streams for `cpu`, `memory`, `network` and `filesystem` metrics, this is the configuration:
 
 ```yaml
 - type: system/metrics <1>
