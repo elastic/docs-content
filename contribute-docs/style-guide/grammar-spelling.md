@@ -116,7 +116,7 @@ Use commas:
 
 :::{dropdown} Examples
 * Supported providers are OpenAI, Azure OpenAI Service, and Amazon Bedrock.
-    * Follow the onboarding instructions in the getting started guides for AWS, GCP, or Azure.
+* Follow the onboarding instructions in the getting started guides for AWS, GCP, or Azure.
 :::
 
 * After an introductory word or phrase.
