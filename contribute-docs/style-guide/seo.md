@@ -8,7 +8,7 @@ Use these guidelines to ensure your documentation is easy to find, understand, a
 
 ## Headings
 
-Headings provide a clear structure to your documentation, making it easier to scan and understand. For SEO, headings (H1, H2, H3, etc.) signal the hierarchy and main topics of your content, helping search engines, LLMs (Large Language Models) determine the relevance of your page to specific queries. For users, well-structured headings improve readability, accessibility, and navigation, especially for long or complex pages.
+Headings provide a clear structure to your documentation, making it easier to scan and understand. For SEO, headings (H1, H2, H3, and so on) signal the hierarchy and main topics of your content, helping search engines, LLMs (Large Language Models) determine the relevance of your page to specific queries. For users, well-structured headings improve readability, accessibility, and navigation, especially for long or complex pages.
 
 Use headings in order, maintaining [W3C standards](https://www.w3.org/standards/). Accurately reflect the content that follows each heading. Avoid vague headings like "Introduction" or "Overview", and use specific headings like "Introduction to using Elasticsearch". Make heading text unique, especially for headings higher in the hierarchy.
 
