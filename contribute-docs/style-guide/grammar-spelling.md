@@ -243,7 +243,7 @@ Use an en dash:
 * When one of the elements in a compound adjective is an open compound (made up of two words with a space between them).
 
 :::{dropdown} Examples
-    * Windows 10–compatible products
+* Windows 10–compatible products
     * AI Assistant–generated content 
 :::
 
