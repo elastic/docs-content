@@ -59,7 +59,7 @@ Use monospace text formatting to emphasize technical elements to help users diff
 | Class names | Date fields are exposed as `ReadableDateTime`, so they support methods like `getYear`. |
 | Code blocks | ```sh       GET _tasks       GET _tasks?nodes=nodeId1,nodeId2       GET _tasks?nodes=nodeId1,nodeId2&actions=cluster:*       ``` |
 | Command invocations | To create the basic files for your metricset, run `make create-metricset`. |
-| Command names | After you start Logstash, wait until you see `Pipeline main started`. |
+| Command names |  The `elasticsearch-certutil` command simplifies the creation of certificates. |
 | Configuration file settings | For example, set `action.auto_create_index` to `+aaa*,-bbb*,+ccc*,-*`. |
 | Data types | The example uses a strongly typed `int`. |
 | Directory names and paths | The example harvests all files in the `/var/log/*.log` path. |
