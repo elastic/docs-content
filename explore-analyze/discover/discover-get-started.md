@@ -6,21 +6,18 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Step-by-step tutorial for exploring data with Discover by selecting data views, filtering documents, analyzing fields, and creating visualizations using sample or your own data.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
 
-Learn how to use **Discover** to:
+**Discover** provides a flexible interface for exploring your {{product.elasticsearch}} data. Learn how to select and filter data, explore field structures and document content, and present your findings in visualizations. This tutorial walks you through the core workflows for analyzing data in **Discover**, from loading data to creating and saving visualizations.
 
-* **Select** and **filter** your {{es}} data.
-* **Explore** the fields and content of your data in depth.
-* **Present** your findings in a visualization.
+## Prerequisites
 
-**Prerequisites:**
-
-* If you don’t already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
-* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
-* You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
+* Access to {{product.kibana}}. If you don't already have {{product.kibana}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
+* Data in {{product.elasticsearch}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
+* Understanding of [{{product.elasticsearch}} documents and indices](../../manage-data/data-store/index-basics.md).
 
 ## Context-aware data exploration [context-aware-discover]
 

@@ -6,15 +6,20 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Detect patterns in unstructured logs with pattern analysis in Discover. Categorize log messages, identify common structures, and filter noise during troubleshooting.
 ---
 
 # Run a pattern analysis on your log data [run-pattern-analysis-discover]
 
-Log pattern analysis helps you to find patterns in unstructured log messages and makes it easier to examine your data. It performs categorization analysis on a selected field of a {{data-source}}, creates categories based on the data and displays them together with a chart that shows the distribution of each category and an example document that matches the category.
+Pattern analysis in **Discover** helps you find patterns in unstructured log messages by performing categorization analysis on text fields. It creates categories based on message structures, displays their distribution in a chart, and provides example documents for each pattern. This makes it easier to identify common log patterns, filter out noise, and focus on anomalous messages during troubleshooting.
 
-Log pattern analysis works on every text field.
+## Requirements
 
-This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
+- Access to {{product.kibana}}
+- A {{data-source}} with log data containing text fields
+- Understanding of basic log analysis concepts
+
+Pattern analysis works on any text field. This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**.
 2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.

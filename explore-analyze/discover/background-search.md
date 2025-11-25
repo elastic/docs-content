@@ -7,10 +7,10 @@ applies_to:
   serverless: unavailable
 products:
   - id: kibana
-description: Send your long-running queries to run in the background with background searches and search sessions, and focus on your other tasks while they complete.
+description: Send long-running queries to run in the background with background searches from Discover and Dashboards. Continue working while queries complete and access results later.
 ---
 
-# Run Discover and Dashboards queries in the background
+# Run Discover and Dashboards queries in the background [background-search]
 
 ::::{important} - Background search replaces Search sessions
 
@@ -18,9 +18,9 @@ Background search is a feature introduced in version 9.2. It replaces the deprec
 If you have been using search sessions and upgrade to 9.2, your search sessions aren't lost and become background searches.
 ::::
 
-Sometimes you might need to search through large amounts of data, no matter how long the search takes. Consider a threat hunting scenario, where you need to search through years of data. 
+Sometimes you might need to search through large amounts of data, no matter how long the search takes. Consider a threat hunting scenario, where you need to search through years of data.
 
-You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work. 
+You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work.
 
 You can access your list of background searches at any time to check their status and manage them from the {icon}`background_task` **Background searches** button in the toolbar.
 
