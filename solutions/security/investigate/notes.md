@@ -16,7 +16,8 @@ products:
 Incorporate notes into your investigative workflows to coordinate responses, conduct threat hunting, and share investigative findings. You can attach notes to alerts, events, and Timelines and manage them from the **Notes** page.
 
 ::::{note}
-Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#max-notes-alerts-events) to specify the maximum number of notes that you can attach to alerts and events.
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can attach up to 100 notes to alerts and events. The number of notes you can attach to Timelines is unlimited.
+* {applies_to}`stack: removed 9.1` {applies_to}`serverless: removed` Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#max-notes-alerts-events) to specify the maximum number of notes that you can attach to alerts and events.
 ::::
 
 ## Grant access to notes [notes-privileges]

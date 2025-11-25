@@ -98,7 +98,7 @@ For the steps in this section, imagine you have the following files:
 | `ca.crt` | The CA certificate to use to connect to {{fleet-server}}. This is the CA used to [generate a certificate and key](#generate-fleet-server-certs) for {{fleet-server}}. |
 | `fleet-server.crt` | The certificate you generated for {{fleet-server}}. |
 | `fleet-server.key` | The private key you generated for {{fleet-server}}.<br>If the `fleet-server.key` file is encrypted with a passphrase, the passphrase will need to be specified through a file. |
-| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generate certs for {{es}} (see [Prerequisites](#prereqs)).<br>Note that the CA certificate’s SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
+| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generate certs for {{es}} (see [Prerequisites](#prereqs)).<br>The CA certificate's SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
 
 To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
@@ -224,7 +224,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `elastic-agent-cert-key`
             :   The path to the private key to use as for {{agent}}'s connections to {{fleet-server}}.
 
-            `elastic-agent-cert-key`
+            `elastic-agent-cert-key-passphrase`
             :   The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}}. The file must only contain the characters of the passphrase, no newline or extra non-printing characters. This option is only used if the `elastic-agent-cert-key` is encrypted and requires a passphrase to use.
 
             `fleet-server-es-cert`
@@ -236,7 +236,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `fleet-server-client-auth`
             :   One of `none`, `optional`, or `required`. Defaults to `none`. {{fleet-server}}'s client_authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs specified in the `--certificate-authorities` flag.
 
-            Note that additionally an optional passphrase for the private key may be specified with:
+            Additionally an optional passphrase for the private key may be specified with:
 
             `fleet-server-cert-key-passphrase`
             :   Passphrase file used to decrypt {{fleet-server}}'s private key.
