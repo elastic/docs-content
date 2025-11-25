@@ -34,7 +34,7 @@ The following table compares features available in each feature tier:
 | **Out of the box [dashboards](/solutions/security/dashboards.md)** | ✅ | ✅ | ❌ |
 | **Prebuilt and custom [detection rules](/solutions/security/detect-and-alert.md)** | ✅ | ✅ | ❌ |
 | **[Machine learning](/solutions/security/advanced-entity-analytics/anomaly-detection.md)** | ✅ | ✅ | ❌ |
-| **Triage, investigation, and hunting** | ✅ | ✅ | ❌ |
+| **[Triage](/solutions/security/detect-and-alert/manage-detection-alerts.md), [investigation](/solutions/security/investigate.md), and [hunting](https://www.elastic.co/security/threat-hunting)** | ✅ | ✅ | ❌ |
 | **[Threat intelligence integration](/solutions/security/get-started/enable-threat-intelligence-integrations.md)** | ✅ | ✅ | ❌ |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md) with custom knowledge support** | ✅ | ❌ | ✅ |
 | **[Attack Discovery](/solutions/security/ai/attack-discovery.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
@@ -51,19 +51,19 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 **Endpoint protection add-on:**
 | Feature Name | Complete | Essentials |
 | :--- | :---: | :---: |
-| **Elastic Defend for malware prevention** | ✅ | ✅ |
-| **Ransomware protection** | ✅ | ✅ |
-| **Memory and behavior prevention** | ✅ | ✅ |
-| **Endpoint response actions** | ✅ | ❌ |
-| **Advanced endpoint policy management** | ✅ | ❌ |
+| **[Malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection)** | ✅ | ✅ |
+| **[Ransomware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#ransomware-protection)** | ✅ | ✅ |
+| **[Memory](/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) and [behavior prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection)** | ✅ | ✅ |
+| **[Endpoint response actions](/solutions/security/endpoint-response-actions.md)** | ✅ | ❌ |
+| **Advanced [endpoint policy management](/solutions/security/manage-elastic-defend/endpoints.md)** | ✅ | ❌ |
 
 **Cloud protection add-on:**
 | Feature Name | Complete | Essentials |
 | :--- | :---: | :---: |
-| **Workload runtime protection** | ✅ | ✅ |
-| **Cloud native posture management for Kubernetes, AWS, GCP & more** | ✅ | ✅ |
+| **[Workload runtime protection](/solutions/security/cloud/cloud-workload-protection-for-vms.md)** | ✅ | ✅ |
+| **[Cloud native posture management](/solutions/security/cloud/security-posture-management-overview.md) for Kubernetes, AWS, GCP & more** | ✅ | ✅ |
 | **Drift protection for containers** | ✅ | ❌ |
-| **Response actions** | ✅ | ❌ |
+| **[Response actions](solutions/security/endpoint-response-actions.md)** | ✅ | ❌ |
 
 
 ## Upgrade to a higher feature tier [sec-subscription-upgrade]
