@@ -251,7 +251,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 In certain cases you may want to install {{agent}} in `unprivileged` mode, with the agent running as a pre-existing user or as part of a pre-existing group. For example, on a Windows system you may have a service account in Active Directory and you’d like {{agent}} to run under that account.
 
 ::::{note}
-On Windows, the `--password parameter` is required when specifying a custom user account.
+On Windows, the `--password` parameter is required when specifying a custom user account.
 
 On Linux and macOS, the `--user` and `--group` parameters are optional:
 * If you omit `--user`, {{agent}} uses (or creates) the default unprivileged user (`elastic-agent-user`).
