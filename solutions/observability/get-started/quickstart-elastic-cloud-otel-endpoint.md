@@ -51,8 +51,6 @@ Alternatively, you can retrieve the endpoint from the **Manage project** page an
 1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
 2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.
-
-Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
 ::::
 

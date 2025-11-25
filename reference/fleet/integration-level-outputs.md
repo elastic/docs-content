@@ -8,9 +8,9 @@ products:
 
 # Set integration-level outputs [integration-level-outputs]
 
-If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} data to be sent to different outputs for different integration policies. Note that the output clusters that you send data to must also be on the same subscription level.
+If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} data to be sent to different outputs for different integration policies. The output clusters that you send data to must also be on the same subscription level.
 
-Integration-level outputs are very useful for certain scenarios. For example:
+Integration-level outputs are useful for certain scenarios. For example:
 
 * You may want to send security logs monitored by an {{agent}} to one {{ls}} output, while informational logs are sent to another {{ls}} output.
 * If you operate multiple {{beats}} on a system and want to migrate these to {{agent}}, integration-level outputs enable you to maintain the distinct outputs that are currently used by each Beat.

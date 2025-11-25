@@ -16,7 +16,7 @@ Ingest model
 :   {{agent}} to {{ls}} persistent queue to {{es}}
 
 Use when
-:   Your data flow may encounter network issues, bursts of events, and/or downstream unavailability and you need the ability to buffer the data before ingestion.
+:   Your data flow may encounter network issues, bursts of events, or downstream unavailability, and you need the ability to buffer the data before ingestion.
 
 
 ## Resources [lspq-resources]

@@ -42,7 +42,7 @@ For the three following packages, you can create a working directory to install 
     npm install @elastic/ecs-winston-format
     ```
 
-* [Got](https://www.npmjs.com/package/got): Got is a "Human-friendly and powerful HTTP request library for Node.js." - this plugin can be used to query the sample web server used in the tutorial. To install the Got package, run the following command in your working directory:
+* [Got](https://www.npmjs.com/package/got): Got is a "Human-friendly and powerful HTTP request library for Node.js" - this plugin can be used to query the sample web server used in the tutorial. To install the Got package, run the following command in your working directory:
 
     ```sh
     npm install got
