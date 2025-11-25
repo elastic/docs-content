@@ -93,7 +93,9 @@ docker run \
 15. Limits max GPU used by vLLM (may vary depending on the machine resources available).
 16. This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems.
 
+:::{important} 
 Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
+:::
 
 ::::
 
