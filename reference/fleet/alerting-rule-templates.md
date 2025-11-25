@@ -30,7 +30,7 @@ Alerting rule templates come with recommended, pre-populated values. To use them
 1. Select a template to open a prefilled Create rule form.
 1. Review and (optionally) customize the prefilled settings, then save and enable the rule.
 
-When you click a template, you get a prefilled rule creation form. You can use the template to create your own custom alerting rule by adjusting values, setting up connectors, and defining rule actions.
+When you click a template, you get a prefilled **Create Rules** form. You can use the template to create your own custom alerting rule by adjusting values, setting up connectors, and defining rule actions.
 
 The preconfigured defaults typically include:
 
