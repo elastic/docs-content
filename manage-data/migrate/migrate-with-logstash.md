@@ -1,5 +1,5 @@
 ---
-navigation_title: {{ech}} data to {{serverless-full}} with {{ls}}
+navigation_title: Migrate Elastic Cloud Hosted data to Serverless with Logstash
 applies_to:
   stack: ga
   deployment:
@@ -42,8 +42,8 @@ Create a new {{ls}} [pipeline configuration file](logstash://reference/creating-
 ```
 input {
   elasticsearch {
-    cloud_id => "<HOSTED_DEPLOYMENT_CLOUD_ID>"  # Your Hosted Deployment's Cloud ID
-    api_key  => "<HOSTED_API_KEY>"              # Your Hosted Deployment API key
+    cloud_id => "<HOSTED_DEPLOYMENT_CLOUD_ID>"  # Your Hosted deployment's Cloud ID
+    api_key  => "<HOSTED_API_KEY>"              # Your Hosted deployment API key
     index    => "index_pattern*"                # Your index or pattern (such as logs-*,metrics-*)
     docinfo  => true
   }
@@ -89,7 +89,7 @@ After running {{ls}}, verify that the data has been successfully migrated:
 :::{admonition} Advanced migration
 :applies_to: stack: preview
 
-{{ls}} can handle more advanced migrations with field tracking settings in the elasticsearch input. The field tracking feature adds "cursor-like" functionality that can support more complex migrations and ongoing data migration over time.
+{{ls}} can handle more advanced migrations with field tracking settings in the [Elasticsearch input](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch) plugin. The field tracking feature adds cursor-like pagination functionality that can support more complex migrations and ongoing data migration over time.
 
 More information is available in the Elasticsearch input plugin documentation: [Tracking a field's value across runs](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch#plugins-inputs-elasticsearch-cursor).
 :::
