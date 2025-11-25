@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-controls.html
+description: Add interactive filter controls to your Kibana dashboards to help users explore data with options lists, range sliders, and time sliders.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,17 @@ products:
 
 # Add filter controls [add-controls]
 
-**Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore quicker. Controls apply to all relevant panels in a dashboard.
+**Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore more quickly. Controls apply filtering conditions across all relevant panels in a dashboard, making it easier for users to focus on specific data segments without writing complex queries.
+
+## Requirements [add-controls-requirements]
+
+To add controls to a dashboard, you need:
+
+* **Edit** permissions for the **Dashboard** feature in {{product.kibana}}
+* An existing dashboard open in **Edit** mode
+* A [data view](../find-and-organize/data-views.md) configured with fields available for filtering
+
+## Control types [control-types]
 
 There are three types of controls:
 

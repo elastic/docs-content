@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
+description: Open and edit an existing Kibana dashboard to modify its panels, settings, and controls.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,11 +11,26 @@ products:
 
 # Edit a dashboard [open-the-dashboard]
 
-1. Open the **Dashboards** page in {{kib}}.
+Open an existing dashboard in {{product.kibana}} to modify its visualizations, add or remove panels, adjust settings, or change filtering controls. When you have the appropriate permissions, dashboards automatically open in **Edit** mode, allowing you to make changes immediately.
+
+## Requirements [edit-dashboard-requirements]
+
+To edit a dashboard, you need:
+
+* **Edit** permissions for the **Dashboard** feature in {{product.kibana}}
+* An existing dashboard to modify
+
+::::{note}
+Managed dashboards created by integrations can't be edited directly, but you can [duplicate](duplicate-dashboards.md) them and edit these duplicates.
+::::
+
+## Edit an existing dashboard [edit-dashboard-steps]
+
+1. Open the **Dashboards** page in {{product.kibana}}.
 2. Locate the dashboard you want to edit.
 
    ::::{tip}
-   When looking for a specific dashboard, you can filter them by tag or by creator, or search the list based on their name and description. The creator information is only available for dashboards created on or after version 8.14.
+   When looking for a specific dashboard, you can filter them by tag or by creator, or search the list based on their name and description.
    ::::
 
 3. Click the dashboard name you want to open.
@@ -27,10 +43,6 @@ products:
     * [Change the available controls](add-controls.md)
 
 6. **Save** the dashboard.
-
-::::{note}
-Managed dashboards can’t be edited directly, but you can [duplicate](duplicate-dashboards.md) them and edit these duplicates.
-::::
 
 ## Reset dashboard changes [reset-the-dashboard]
 

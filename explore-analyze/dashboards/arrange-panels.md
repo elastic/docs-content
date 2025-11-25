@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/arrange-panels.html
+description: Organize and arrange dashboard panels using collapsible sections, resizing, positioning, and duplication to improve readability and performance.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,14 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
-Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, it makes your dashboard easier to read, faster to load, and helps its viewers locate important information quicker.
+Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, your dashboard becomes easier to read, faster to load, and helps viewers locate important information more quickly.
+
+## Requirements [arrange-panels-requirements]
+
+To organize dashboard panels, you need:
+
+* **Edit** permissions for the **Dashboard** feature in {{product.kibana}}
+* An existing dashboard with at least one panel
 
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
