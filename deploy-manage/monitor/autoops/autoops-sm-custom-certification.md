@@ -53,6 +53,8 @@ Complete the following steps:
 
     Use this method to specify the path directly. This method is often simpler for fixed or test environments.
 
+    Edit the following line with the path to your CA and add it to both `autoops_es` modules:
+
     ```yaml
     ssl.certificate_authorities:
       - "/path/to/your/ca.crt"

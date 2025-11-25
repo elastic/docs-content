@@ -188,3 +188,4 @@ The following table shows the errors you might encounter if something goes wrong
 | `VERSION_MISMATCH` | {{es}} version is unsupported | Upgrade your cluster to a [supported version](https://www.elastic.co/support/eol). |
 | `UNKNOWN_ERROR` | Installation failed | {{agent}} couldn't be installed due to an unknown issue. Consult the troubleshooting guide or contact [Elastic support](https://support.elastic.co/) for more help. |
 | | Failed to register Cloud Connected Mode: cluster license type is not supported | The cluster you are trying to connect doesn't have the required license to connect to AutoOps. For more information, refer to the [prerequisites](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites). |
+| `x509` | Certificate signed by unknown authority | {{agent}} couldn't connect. SSL certificate signed by unknown authority. |
