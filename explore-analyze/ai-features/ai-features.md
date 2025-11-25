@@ -137,7 +137,7 @@ serverless:
   security: all
 ```
 
-[Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps.
 
 ### Attack Discovery
 ```{applies_to}
@@ -146,11 +146,11 @@ serverless:
   security: ga
 ```
 
-[Attack Discovery](/solutions/security/ai/attack-discovery.md) leverages large language models (LLMs) to analyze alerts in your environment and identify threats. Each "discovery" represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. This can help make the most of each security analyst’s time, fight alert fatigue, and reduce your mean time to respond.
+[Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to identify potential threats. Each "discovery" represents a potential attack and describes relationships among multiple alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors. 
 
 ### Automatic Migration
 
-[Automatic Migration](/solutions/security/get-started/automatic-migration.md) helps you quickly migrate Splunk assets to {{elastic-sec}}. The following asset types are supported:
+[Automatic Migration](/solutions/security/get-started/automatic-migration.md) helps you quickly migrate Splunk assets to {{elastic-sec}}. It supports the following asset types:
 
 * {applies_to}`stack: preview 9.0, ga 9.1` {applies_to}`serverless: ga` Splunk rules
 * {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Splunk dashboards
@@ -162,7 +162,7 @@ serverless:
   security: ga
 ```
 
-[Automatic Import](/solutions/security/get-started/automatic-import.md) helps you quickly parse, ingest, and create ECS mappings for data from sources that don’t yet have prebuilt Elastic integrations. This can accelerate your migration to {{elastic-sec}}, and help you quickly add new data sources to an existing SIEM solution in {{elastic-sec}}.
+[Automatic Import](/solutions/security/get-started/automatic-import.md) helps you quickly parse, ingest, and create ECS mappings for data from sources without prebuilt Elastic integrations. 
 
 ### Automatic Troubleshooting
 ```{applies_to}
@@ -173,6 +173,4 @@ serverless:
 [Automatic troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md) helps you identify and resolve issues that could prevent {{elastic-defend}} from working as intended. It provides actionable insights into the following common problem areas:
 
 * {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` **Policy responses**: Detect warnings or failures in {{elastic-defend}}’s integration policies.
-* **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that may conflict with {{elastic-defend}}.
-
-This helps you resolve configuration errors, address incompatibilities, and ensure that your hosts remain protected.
+* **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that might conflict with {{elastic-defend}}.
