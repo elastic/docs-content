@@ -767,4 +767,5 @@ toc:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
               - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
       - file: security/asset-management.md
+      - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md
