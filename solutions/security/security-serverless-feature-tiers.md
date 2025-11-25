@@ -53,7 +53,7 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 | :--- | :---: | :---: |
 | **[Malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection)** | ✅ | ✅ |
 | **[Ransomware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#ransomware-protection)** | ✅ | ✅ |
-| **[Memory](/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) and [behavior prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection)** | ✅ | ✅ |
+| **[Memory](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) and [behavior prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection)** | ✅ | ✅ |
 | **[Endpoint response actions](/solutions/security/endpoint-response-actions.md)** | ✅ | ❌ |
 | **Advanced [endpoint policy management](/solutions/security/manage-elastic-defend/endpoints.md)** | ✅ | ❌ |
 
