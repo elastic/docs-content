@@ -16,7 +16,7 @@ Alerting rule templates are out-of-the-box, preconfigured rule definitions maint
 	
 - Install or upgrade to the latest version of the integration that includes alerting rule templates.
 - Ensure the relevant data stream is enabled and ingesting data for the template you plan to use.
-- {{stack}} 9.3 or later.
+- {{stack}} 9.2.1 or later.
 - Appropriate {{kib}} role privileges to create and manage rules in the current space.
 - Optional: One or more connectors (for example, email, Slack, webhook) to route alert notifications.
 
