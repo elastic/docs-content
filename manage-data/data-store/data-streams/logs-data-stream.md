@@ -8,22 +8,22 @@ products:
   - id: elasticsearch
 ---
 
-# Logs data stream [logs-data-stream]
+# Logs data streams [logs-data-stream]
 
 ::::{important}
-The {{es}} `logsdb` index mode is generally available in Elastic Cloud Hosted and self-managed Elasticsearch as of version 8.17, and is enabled by default for logs in [{{serverless-full}}](https://www.elastic.co/elasticsearch/serverless).
+The {{es}} `logsdb` index mode is generally available in {{ech}} and self-managed {{es}} as of version 8.17, and is enabled by default for logs in [{{serverless-full}}](https://www.elastic.co/elasticsearch/serverless).
 ::::
 
 
 A logs data stream is a data stream type that stores log data more efficiently.
 
-In benchmarks, log data stored in a logs data stream used ~2.5 times less disk space than a regular data stream, at a small (10-20%) penalty in indexing performance. The exact impact varies by data set and Elasticsearch version.
+In benchmarks, log data stored in a logs data stream used ~2.5 times less disk space than a regular data stream, at a small (10-20%) penalty in indexing performance. The exact impact varies by data set and {{es}} version.
 
 
 ## Create a logs data stream [how-to-use-logsds]
 
 ::::{important}
-Fleet integrations use [index templates](../templates.md) managed by Elastic. To modify these backing templates, update their [composite `custom` templates](/solutions/observability/logs/logs-index-template-reference.md##custom-logs-template-edit).
+To enable `logsdb` for integrations using custom component templates, refer to [](/manage-data/data-store/data-streams/logs-data-stream-integrations.md).
 ::::
 
 To create a logs data stream, set your [template](../templates.md) `index.mode` to `logsdb`:
