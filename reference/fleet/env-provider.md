@@ -24,8 +24,6 @@ Use the env provider when you want to:
 
 The env provider is enabled by default and requires no configuration. Define environment variables in your operating system, service definition, or container platform, and reference them in the {{agent}} configuration or {{fleet}} policy using the `${env.VAR_NAME}` syntax.
 
-For example:
-
 :::::{tab-set}
 
 ::::{tab-item} Standalone {{agent}}
