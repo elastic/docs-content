@@ -424,7 +424,7 @@ Best practices:
 
 ## Content localization and SEO
 
-Localization is not currently in scope for all Documentation content. If localization is needed there are SEO considerations that should be followed.
+Localization is not currently in scope for Elastic documentation. If localization is needed there are SEO considerations that should be followed.
 
 Best practices:
 
@@ -509,8 +509,6 @@ Best practices:
 - [ ] List items are concise, parallel, & consistent  
 - [ ] Lead-in sentence introduces each list  
 - [ ] Lists are not excessively long or nested  
-- [ ] Semantic HTML is used for lists  
-- [ ] Keywords are included naturally
 
 ### Interlinking (internal and external links) [checklist-interlink]
 
@@ -553,7 +551,6 @@ Best practices:
 
 - [ ] Content is reviewed regularly for accuracy & relevance  
 - [ ] Versioning is clearly indicated where applicable  
-- [ ] Change log or last-updated date is included  
 - [ ] Redirects are set up for removed or merged pages  
 - [ ] User feedback is reviewed & acted on
 

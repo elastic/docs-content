@@ -35,12 +35,10 @@ Use bold text formatting to emphasize the names of UI elements so that users can
 | Tables | In the **Value lists** table, click the value list you want to edit. |
 | Tabs | The **Overview** tab provides an overview of the alert and shows relevant threat intelligence details. |
 
-:::::{note}
 If the name of the UI element isn't explicitly shown in the UI, then don't bold it.
 ::::{dropdown} Example
 The risk summary table shows the category, score, and number of risk inputs that determine the host risk score.
 ::::
-:::::
 
 ### Italic / emphasis
 
