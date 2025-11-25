@@ -689,6 +689,7 @@ toc:
             children: 
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
+              - file: monitor/autoops/autoops-sm-custom-certification.md
               - file: monitor/autoops/cc-manage-users.md
               - file: monitor/autoops/use-autoops-in-sm-cluster.md
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
