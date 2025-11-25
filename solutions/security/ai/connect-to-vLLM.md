@@ -9,35 +9,10 @@ products:
 ---
 
 # Connect to your own LLM using vLLM (air gapped environments)
-This page provides an example of how to connect to a self-hosted, open-source large language model (LLM) using the [vLLM inference engine](https://docs.vllm.ai/en/latest/) running in a Docker or Podman container. 
+This guide shows you how to run an OpenAI-compatible large language model with [vLLM](https://docs.vllm.ai/en/latest/) and connect it to Elastic. The setup runs inside Docker or Podman, is served through an Nginx reverse proxy, and does not require any outbound network access. This makes it a safe option for air-gapped environments or deployments with strict network controls.
 
-Using this approach, you can power elastic's AI features with an LLM of your choice deployed and managed on infrastructure you control without granting external network access, which is particularly useful for air-gapped environments and organizations with strict network security policies. 
+The steps below show one example configuration, but you can use any model supported by vLLM, including private and gated models on Hugging Face.
 
-## Requirements
-
-* Docker or Podman.
-* Necessary GPU drivers.
-
-## Server used in this example
-
-This example uses a GCP server configured as follows:
-
-* Operating system: Ubuntu 24.10
-* Machine type: a2-ultragpu-2g
-* vCPU: 24 (12 cores)
-* Architecture: x86/64
-* CPU Platform: Intel Cascade Lake
-* Memory: 340GB
-* Accelerator: 2 x NVIDIA A100 80GB GPUs
-* Reverse Proxy: Nginx
-
-## Outline
-The process involves four main steps:
-
-1. Configure your host server with the necessary GPU resources.
-2. Run the desired model in a vLLM container.
-3. Use a reverse proxy like Nginx to securely expose the endpoint to {{ecloud}}.
-4. Configure the OpenAI connector in your Elastic deployment.
 
 ## Step 1: Configure your host server
 
@@ -45,7 +20,7 @@ The process involves four main steps:
   1. Log in to your Hugging Face account.
   2. Navigate to **Settings > Access Tokens**.
   3. Create a new token with at least `read` permissions. Save it in a secure location.
-2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between {{ecloud}} and your Nginx reverse proxy.
+2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between {{ecloud}} and your reverse proxy.
 3. Install any necessary GPU drivers. 
 
 ## Step 2: Run your vLLM container
@@ -56,47 +31,57 @@ To pull and run your chosen vLLM image:
 2. Run the following terminal command to start the vLLM server, download the model, and expose it on port 8000:
 
 ```bash
-docker run --name [YOUR_MODEL_ID] --gpus all \
--v /root/.cache/huggingface:/root/.cache/huggingface \
---env HUGGING_FACE_HUB_TOKEN=xxxx \
---env VLLM_API_KEY=xxxx \
--p 8000:8000 \
---ipc=host \
-vllm/vllm-openai:v0.9.1 \
---model mistralai/[YOUR_MODEL_ID] \
---tool-call-parser mistral \
---tokenizer-mode mistral \
---config-format mistral \
---load-format mistral \
---enable-auto-tool-choice \
---gpu-memory-utilization 0.90 \
---tensor-parallel-size 2
+docker run \
+  --name [YOUR_MODEL_ID] \ <1>
+  --gpus all \ <2>
+  -v /root/.cache/huggingface:/root/.cache/huggingface \ <3>
+  --env HUGGING_FACE_HUB_TOKEN=xxxx \ <4>
+  --env VLLM_API_KEY=xxxx \ <5>
+  -p 8000:8000 \ <6>
+  --ipc=host \ <7>
+  vllm/vllm-openai:v0.9.1 \ <8>
+  --model mistralai/[YOUR_MODEL_ID] \ <9>
+  --tool-call-parser mistral \ <10>
+  --tokenizer-mode mistral \ <11>
+  --config-format mistral \ <12>
+  --load-format mistral \ <13>
+  --enable-auto-tool-choice \ <14>
+  --gpu-memory-utilization 0.90 \ <15>
+  --tensor-parallel-size 2 <16>
 ```
+1. Defines a name for the container.
+2. Exposes all available GPUs to the container.
+3. Sets the Hugging Face cache directory (optional if used with `HUGGING_FACE_HUB_TOKEN`).
+4. Sets the environment variable for your Hugging Face token (only required for gated models).
+5. vLLM API key used for authentication between {{ecloud}} and vLLM.
+6. Maps port 8000 on the host to port 8000 in the container.
+7. Enables sharing memory between host and container.
+8. Specifies the official vLLM OpenAI-compatible image, version 0.9.1. This is the version of vLLM we recommend.
+9. ID of the Hugging Face model you wish to serve.
+10. Mistral-specific tool call parser. Refer to the Hugging Face model card for recommended values.
+11. Mistral-specific tokenizer mode. Refer to the Hugging Face model card for recommended values.
+12. Mistral-specific configuration format. Refer to the Hugging Face model card for recommended values.
+13. Mistral-specific load format. Refer to the Hugging Face model card for recommended values.
+14. Enables automatic function calling.
+15. Limits max GPU used by vLLM (may vary depending on the machine resources available).
+16. This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems.
 
-For an explanation of each of the command's parameters, refer to the following list:
+To support this use case, you need a powerful server. For example, we tested a server with the following specifications:
 
-```
-`--gpus all`: Exposes all available GPUs to the container.
-`--name`: Defines a name for the container.
-`-v /root/.cache/huggingface:/root/.cache/huggingface`: Hugging Face cache directory (optional if used with `HUGGING_FACE_HUB_TOKEN`).
-`-e HUGGING_FACE_HUB_TOKEN`: Sets the environment variable for your Hugging Face token (only required for gated models).
-`--env VLLM_API_KEY`: vLLM API Key used for authentication between {{ecloud}} and vLLM.
-`-p 8000:8000`: Maps port 8000 on the host to port 8000 in the container.
-`–ipc=host`: Enables sharing memory between host and container.
-`vllm/vllm-openai:v0.9.1`: Specifies the official vLLM OpenAI-compatible image, version 0.9.1. This is the version of vLLM we recommend.
-`--model`: ID of the Hugging Face model you wish to serve. 
-`--tool-call-parser mistral \`, `--tokenizer-mode mistral \`, `--config-format mistral \`, and `--load-format mistral`: Mistral specific parameters, refer to the Hugging Face model card for recommended values.
-`-enable-auto-tool-choice`: Enables automatic function calling.
-`--gpu-memory-utilization 0.90`: Limits max GPU used by vLLM (may vary depending on the machine resources available).
-`--tensor-parallel-size 2`: This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems. 
-```
-
+* Operating system: Ubuntu 24.10
+* Machine type: a2-ultragpu-2g
+* vCPU: 24 (12 cores)
+* Architecture: x86/64
+* CPU Platform: Intel Cascade Lake
+* Memory: 340GB
+* Accelerator: 2 x NVIDIA A100 80GB GPUs
+* Reverse Proxy: Nginx
 
 3. Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
 
 ## Step 3: Expose the API with a reverse proxy
 
-This example uses Nginx to create a reverse proxy. This improves stability and enables monitoring by means of Elastic's native Nginx integration. The following example configuration forwards traffic to the vLLM container and uses a secret token for authentication.
+Using a reverse proxy improves stability for this use case. The following example uses Nginx, which supports monitoring by means of Elastic's native Nginx integration. The example Nginx configuration forwards traffic to the vLLM container and uses a secret token for authentication.
 
 1. Install Nginx on your server.
 2. Create a configuration file, for example at `/etc/nginx/sites-available/default`. Give it the following content:
@@ -130,27 +115,26 @@ server {
 For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to Nginx, but it is not recommended for production use.
 :::
 
-## Step 4: Configure the connector in your elastic deployment
+## Step 4: Configure the connector in your Elastic deployment
 
 Finally, create the connector within your Elastic deployment to link it to your vLLM instance.
 
-1. Log in to {{kib}}.
-2. Navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
-3. Give the connector a descriptive name, such as `vLLM - Mistral Small 3.2`.
-4. In **Connector settings**, configure the following:
+1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
+2. Give the connector a descriptive name, such as `vLLM - Mistral Small 3.2`.
+3. In **Connector settings**, configure the following:
   * For **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**.
   * For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
-5. For **Default Model**, enter `mistralai/[YOUR_MODEL_ID]`.
-6. For **Authentication**, configure the following:
+4. For **Default Model**, enter `mistralai/[YOUR_MODEL_ID]`.
+5. For **Authentication**, configure the following:
   * For **API key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
   * If your chosen model supports tool use, then turn on **Enable native function calling**.
-7. Click **Save**
-8. To enable the connector to work with AI Assistant for Security, add the following to your `config/kibana.yml` file:
+6. Click **Save**
+7. To enable the connector to work with AI Assistant for Security, add the following to your `config/kibana.yml` file:
   ```
   feature_flags.overrides:  
        securitySolution.inferenceChatModelDisabled: true  
   ```
-9. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+8. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
   * On the **Conversations** tab, turn off **Streaming**.
   * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
   
