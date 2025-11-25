@@ -61,7 +61,7 @@ This makes it easy to pinpoint and fix performance problems quickly.
 
 [Learn more about {{product.apm}}](/solutions/observability/apm/index.md).
 
-### OpenTelemetry collectors [stack-components-otel]
+### OpenTelemetry Collector [stack-components-otel]
 
 [OpenTelemetry](https://opentelemetry.io/docs)(OTel) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project.
 
