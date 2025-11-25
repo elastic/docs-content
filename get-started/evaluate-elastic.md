@@ -10,7 +10,7 @@ applies_to:
 description: Build a successful proof of concept during your Elastic trial. Learn how to define success criteria, choose the right deployment and use case, measure results, and prepare for production.
 ---
 
-# Evaluate Elastic
+# Evaluate Elastic during a trial
 
 If you're evaluating Elastic during a trial, this guide helps you build a meaningful proof of concept (PoC) that demonstrates clear value to your organization. Rather than prescribing specific technical steps, this guide focuses on the evaluation process itself, helping you make strategic decisions and measure success.
 
