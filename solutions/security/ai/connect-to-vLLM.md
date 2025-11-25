@@ -137,7 +137,7 @@ For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to 
 
 ::::{step} Configure the connector in your Elastic deployment
 
-Finally, create the connector within your Elastic deployment to link it to your vLLM instance.
+Create the connector within your Elastic deployment to link it to your vLLM instance.
 
 1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
 2. Give the connector a descriptive name, such as `vLLM - Mistral Small 3.2`.
@@ -177,3 +177,8 @@ To run a different model:
 * Stop the current container and run a new one with an updated `--model` parameter.
 * Update your {{kib}} connector's **Default model** parameter to match the new model ID.
 :::
+
+## Next steps
+
+With your vLLM connector set up, you can use it to power various features, including:
+
