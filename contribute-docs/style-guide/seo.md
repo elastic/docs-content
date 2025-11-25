@@ -109,7 +109,9 @@ Best practices:
 * Keep it actionable
   * If the page is a how-to or guide, indicate the action or outcome.
 
-**⚠️Note:** Within the context of the "introductory paragraph", the first and/or second sentence is used in the meta description tag, up to the first 150-160 characters. This tag appears on the search engines results page and impacts CTR. It is not directly user-facing otherwise.
+:::{note} 
+If the description is missing in the frontmatter, the first sentences of the page are used in the meta description tag, up to the first 150-160 characters. This tag appears on the search engines results page and impacts CTR. It is not directly user-facing otherwise.
+:::
 
 When a page starts with a note, image, table, or other component, the meta description is *not* impacted by the component content. Only the first paragraph content nested within the first lines of the opening paragraph tags `<p\>\</p\>`) impact the meta description.
 
@@ -459,111 +461,3 @@ Best practices:
 
   * Hreflang tags signal language and region to search engines in order to surface and index them within respective search results.  
   * Consult with the documentation team for implementation guidance. External contributors should open a GitHub issue to discuss hreflang implementation.
-
-## Elastic Docs SEO checklist
-
-### Headings [checklist-headings]
-
-- [ ] H1 is unique, concise, & clearly states the page's main topic or purpose  
-- [ ] Only one H1 is used per page  
-- [ ] H1 includes the primary keyword & matches the page focus  
-- [ ] H2s break content into logical, descriptive sections  
-- [ ] H2s & H3s are unique, not vague or duplicative  
-- [ ] Headings use proper order & hierarchy  
-- [ ] Headings reflect the content that follows  
-- [ ] Headings are not used solely for styling
-
-### Introductory paragraph [checklist-intro]
-
-- [ ] First paragraph summarizes the page in 1–3 sentences  
-- [ ] States what users will learn or accomplish  
-- [ ] Naturally includes primary & secondary keywords  
-- [ ] Addresses user intent & context  
-- [ ] Uses clear, plain language (defines jargon if needed)  
-- [ ] First sentence is suitable for meta description (concise, relevant, actionable)
-
-### Body copy [checklist-body]
-
-- [ ] Uses accurate technical terminology; defines terms on first use  
-- [ ] Written clearly & concisely  
-- [ ] Uses active voice & direct instructions  
-- [ ] Keywords & related terms are incorporated naturally  
-- [ ] Content is organized with logical headings & subheadings  
-- [ ] Provides unique value (not thin or duplicate content)  
-- [ ] Includes examples, code snippets, or visuals where helpful  
-- [ ] Uses bullet points, numbered lists, & callouts for scannability  
-- [ ] Structured data is added where applicable (consult engineering if unsure)  
-- [ ] Links to related documentation or authoritative external sources  
-- [ ] Content is up-to-date & regularly reviewed
-
-### Content length and structure
-
-- [ ] Content fully answers the user's question or task (not padded or too brief)  
-- [ ] Long topics are broken into focused, navigable pages  
-- [ ] Paragraphs are short & easy to scan  
-- [ ] Visual breaks (callouts, asides) are used for emphasis, but not overused
-
-### Lists [checklist-lists]
-
-- [ ] Lists use the correct type (bulleted for unordered, numbered for steps)  
-- [ ] List items are concise, parallel, & consistent  
-- [ ] Lead-in sentence introduces each list  
-- [ ] Lists are not excessively long or nested  
-
-### Interlinking (internal and external links) [checklist-interlink]
-
-- [ ] Anchor text is descriptive & meaningful  
-- [ ] Internal links guide users to related or deeper documentation  
-- [ ] External links point to reputable, relevant sources & open in a new tab  
-- [ ] No broken or outdated links  
-- [ ] Links are not excessive or distracting  
-- [ ] Link text is visually distinguishable & accessible
-
-### Multimedia (images and video) [checklist-multimedia]
-
-- [ ] Visuals (images, diagrams, videos) directly support the content  
-- [ ] Images are unique, high-quality, & not stock photos  
-- [ ] Image file names are descriptive, lowercase, & use hyphens  
-- [ ] Images are compressed/optimized for web  
-- [ ] Alt text accurately describes each image's purpose  
-- [ ] No important text is embedded in images  
-- [ ] Videos are relevant, compressed, & include captions/transcripts  
-- [ ] Visuals are referenced in the body copy  
-- [ ] Third-party visuals are properly attributed  
-- [ ] Structured data is used for multimedia where possible
-
-### URLs [checklist-urls]
-
-- [ ] URL is short, descriptive, & reflects the page's topic  
-- [ ] Uses lowercase letters & hyphens (no spaces, underscores, or special characters)  
-- [ ] URL structure mirrors the documentation hierarchy (`/docs/section/topic/`)  
-- [ ] Each child page has a valid parent page  
-- [ ] URL matches the H1 & page focus  
-- [ ] Canonical tag is set to the preferred URL
-
-### Meta keywords tag [checklist-keywords]
-
-- [ ] No more than 5 unique, relevant keywords (comma-separated)  
-- [ ] No repetition or duplication  
-- [ ] Keywords are specific to the page topic
-
-### Content updates and maintenance [checklist-updates]
-
-- [ ] Content is reviewed regularly for accuracy & relevance  
-- [ ] Versioning is clearly indicated where applicable  
-- [ ] Redirects are set up for removed or merged pages  
-- [ ] User feedback is reviewed & acted on
-
-### Mobile performance and usability [checklist-mobile]
-
-- [ ] Pages are tested on various mobile devices  
-- [ ] All features, navigation, & media are visible & functional on mobile  
-- [ ] Text is readable & interactive elements are easy to tap  
-- [ ] Images & media are optimized for fast mobile loading  
-- [ ] No horizontal scrolling is required
-
-### Final content review [checklist-final]
-
-- [ ] Checklist items have been reviewed  
-- [ ] Content is written with the user in mind  
-- [ ] Content is enhanced for search engine "readability"

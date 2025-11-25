@@ -199,17 +199,6 @@ To separate staging and production APM data, we need to create six filtered alia
 | Error | `production-logs-apm` | `staging-logs-apm` |
 | Span/transaction | `production-traces-apm` | `staging-traces-apm` |
 | Metrics | `production-metrics-apm` | `staging-metrics-apm` |
- 
----
-
-Go to **Project Settings** to manage your connectors, data views, and other features.
-
-| API keys | Create and manage keys that can send requests on behalf of users. | * Elasticsearch       * Observability       * Security |
-| --- | --- | --- |
-| Asset criticality | Bulk assign asset criticality to multiple entities by importing a text file. | Security |
-| Connectors | Create and manage reusable connectors for triggering actions. | * Elasticsearch       * Observability       * Security |
-| Data views | Manage the fields in the data views that retrieve your data from ((es)). | * Elasticsearch       * Observability       * Security |
-
 
 :::
 

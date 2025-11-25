@@ -239,18 +239,5 @@ not its primary meaning. Other types of words and phrases best avoided are:
 * violent imagery (_crush the competition_)
 * non-specific superlatives (_unrivaled_, _unparalleled_, _world class_)
 
-Some words have nuances that fall into the above categories, which may cause 
-them to be misinterpreted. Here are some suggested alternatives:
-
-| Avoid | Use instead |
-| ----- | ------------|
-| Abort | Stop, cancel, end |
-| Boot | Start, run |
-| Execute | Run, complete |
-| Hack (noun) | Tip, workaround |
-| Hack (verb) | Configure, modify |
-| Hit (verb) | Click, press |
-| Hit (noun) | Visits (as in "website visits") |
-| Invalid | Not valid, incorrect |
-| Kill | Cancel, stop |
-| Terminate | Stop, exit |
+Some words have nuances that fall into the above categories, which might cause 
+them to be misinterpreted. For a full list, refer to [Word choice](word-choice.md).
