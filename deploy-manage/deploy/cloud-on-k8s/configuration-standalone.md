@@ -269,8 +269,20 @@ To deploy Elastic Agent in clusters with the Pod Security Policy admission contr
 
 In order to run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
 
+::::{applies-switch}
+
+:::{applies-item} { "Agent": "ga 8.16" } In Elastic Agent versions 8.16 and beyond:
+
+1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
+2. Run {{agent}} with a `hostPath` volume.
+
+:::
+
+:::{applies-item} { "Agent": "ga 8.15" } In Elastic Agent prior to 8.16:
+
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 2. Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user.
+
 
 In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `certificate_authorities.ssl` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
 
@@ -415,5 +427,6 @@ spec:
 2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.<YOUR-NAMESPACE>.svc:9200`
 3. Note that the correct path for {{es}} `certificate_authorities` is `/mnt/elastic-internal/elasticsearch-association/YOUR-NAMESPACE/ELASTICSEARCH-NAME/certs/ca.crt`
 
+:::
 
-
+::::
