@@ -152,10 +152,10 @@ Create the connector within your Elastic deployment to link it to your vLLM inst
     * If your chosen model supports tool use, then turn on **Enable native function calling**.
 6. Click **Save**
 7. To enable the connector to work with AI Assistant for Security, add the following to your `config/kibana.yml` file:
-  ```
-  feature_flags.overrides:  
-       securitySolution.inferenceChatModelDisabled: true  
-  ```
+    ```
+    feature_flags.overrides:  
+        securitySolution.inferenceChatModelDisabled: true  
+    ```
 8. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
     * On the **Conversations** tab, turn off **Streaming**.
     * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
