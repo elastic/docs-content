@@ -142,12 +142,12 @@ Create the connector within your Elastic deployment to link it to your vLLM inst
 1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
 2. Give the connector a descriptive name, such as `vLLM - Mistral Small 3.2`.
 3. In **Connector settings**, configure the following:
-  * For **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**.
-  * For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
+    * For **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**.
+    * For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
 4. For **Default Model**, enter `mistralai/[YOUR_MODEL_ID]`.
 5. For **Authentication**, configure the following:
-  * For **API key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
-  * If your chosen model supports tool use, then turn on **Enable native function calling**.
+    * For **API key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
+    * If your chosen model supports tool use, then turn on **Enable native function calling**.
 6. Click **Save**
 7. To enable the connector to work with AI Assistant for Security, add the following to your `config/kibana.yml` file:
   ```
@@ -155,18 +155,18 @@ Create the connector within your Elastic deployment to link it to your vLLM inst
        securitySolution.inferenceChatModelDisabled: true  
   ```
 8. Finally, open the **AI Assistant for Security** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
-  * On the **Conversations** tab, turn off **Streaming**.
-  * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
-  
-  ```
-  You are a model running under OpenAI-compatible tool calling mode.
-  
-  Rules:
-  1. When you want to invoke a tool, never describe the call in text.
-  2. Always return the invocation in the `tool_calls` field.
-  3. The `content` field must remain empty for any assistant message that performs a tool call.
-  4. Only use tool calls defined in the "tools" parameter.
-  ```
+    * On the **Conversations** tab, turn off **Streaming**.
+    * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
+    
+    ```
+    You are a model running under OpenAI-compatible tool calling mode.
+    
+    Rules:
+    1. When you want to invoke a tool, never describe the call in text.
+    2. Always return the invocation in the `tool_calls` field.
+    3. The `content` field must remain empty for any assistant message that performs a tool call.
+    4. Only use tool calls defined in the "tools" parameter.
+    ```
 ::::
 :::::
 
