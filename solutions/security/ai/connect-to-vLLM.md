@@ -13,7 +13,9 @@ This guide shows you how to run an OpenAI-compatible large language model with [
 
 The steps below show one example configuration, but you can use any model supported by vLLM, including private and gated models on Hugging Face.
 
-## Step 1: Configure your host server
+:::::{stepper}
+
+::::{step} Configure your host server
 
 To support this use case, you need a powerful server. For example, we tested a server with the following specifications:
 
@@ -27,26 +29,21 @@ To support this use case, you need a powerful server. For example, we tested a s
 
 Set up your server then install all necessary GPU drivers.
 
-## Step 2: Generate auth tokens
+::::
 
-:::::{stepper}
+::::{step} Generate auth tokens
 
-::::{step} Create a Hugging Face user token
-1. (Optional) If you plan to use a gated model (such as Llama 3.1) or a private model, create a [Hugging Face user access token](https://huggingface.co/docs/hub/en/security-tokens).
+
+1. (Optional) Create a Hugging Face user token. If you plan to use a gated model (such as Llama 3.1) or a private model, create a [Hugging Face user access token](https://huggingface.co/docs/hub/en/security-tokens).
   1. Log in to your Hugging Face account.
   2. Navigate to **Settings > Access Tokens**.
   3. Create a new token with at least `read` permissions. Save it in a secure location.
+ 
+2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between Elastic and your reverse proxy.
+
 ::::
 
-::::{step} Create an OpenAI-compatible secret token
-2. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between Elastic and your reverse proxy.
-::::
-
-:::::
-
-
-
-## Step 3: Run your vLLM container
+::::{step} Run your vLLM container
 
 To pull and run your chosen vLLM image:
 
@@ -91,7 +88,9 @@ docker run \
 
 3. Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
 
-## Step 4: Expose the API with a reverse proxy
+::::
+
+::::{step} Expose the API with a reverse proxy
 
 Using a reverse proxy improves stability for this use case. This example uses Nginx, which supports monitoring by means of Elastic's native Nginx integration. The example Nginx configuration forwards traffic to the vLLM container and uses a secret token for authentication.
 
@@ -127,7 +126,9 @@ server {
 For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to Nginx, but it is not recommended for production use.
 :::
 
-## Step 5: Configure the connector in your Elastic deployment
+::::
+
+::::{step} Configure the connector in your Elastic deployment
 
 Finally, create the connector within your Elastic deployment to link it to your vLLM instance.
 
@@ -160,11 +161,12 @@ Finally, create the connector within your Elastic deployment to link it to your 
   4. Only use tool calls defined in the "tools" parameter.
   ```
 
+:::::
+
 Setup is now complete. The model served by your vLLM container can now power Elastic's generative AI features.
 
-
 :::{note}
-To run a different model: s
+To run a different model:
 * Stop the current container and run a new one with an updated `--model` parameter.
 * Update your {{kib}} connector's **Default model** parameter to match the new model ID.
 :::
