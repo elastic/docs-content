@@ -124,7 +124,7 @@ spec:
 ```
 
 :::{note}
-If you change the service’s `port`, keep `targetPort` set to `9200`, which is the default {{es}} HTTP interface port. Otherwise Kubernetes uses the same value for both fields, resulting in failed connections.
+If you change the service’s `port`, set `targetPort` to `9200`, which is the default {{es}} HTTP interface port. Otherwise, Kubernetes uses the same value for both fields, resulting in failed connections.
 :::
 
 ## Specify a custom service in elasticsearchRef [k8s-traffic-splitting-with-service-name]

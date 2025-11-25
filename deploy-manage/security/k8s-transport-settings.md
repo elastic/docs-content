@@ -32,7 +32,7 @@ Check the [Kubernetes Publishing Services (ServiceTypes)](https://kubernetes.io/
 ::::{note}
 When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This will cause a short network disruption, but in most cases it should not affect existing connections as the transport module uses long-lived TCP connections.
 
-If you change the service’s `port`, keep `targetPort` set to `9300`, which is the default {{es}} transport port. Otherwise Kubernetes uses the same value for both fields, resulting in failed connections.
+If you change the service’s `port`, set `targetPort` to `9300`, which is the default {{es}} transport interface port. Otherwise, Kubernetes uses the same value for both, resulting in failed connections.
 ::::
 
 

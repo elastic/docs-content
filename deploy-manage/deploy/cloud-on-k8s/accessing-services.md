@@ -70,7 +70,7 @@ By default, the {{es}} service created by ECK is configured to route traffic to 
 ::::{warning}
 When you change the `clusterIP` setting of the service, ECK will delete and re-create the service as `clusterIP` is an immutable field. Depending on your client implementation, this might result in a short disruption until the service DNS entries refresh to point to the new endpoints.
 
-If you change the service’s `port`, set `targetPort` to the container’s default port. Otherwise Kubernetes uses the same value for both fields, resulting in failed connections. For reference, default ports are `9200` for the {{es}} HTTP interface, and `5601` for {{kib}}.
+If you change the service’s `port`, set `targetPort` to the container’s default listening port. Otherwise, Kubernetes uses the same value for both, resulting in failed connections. For reference, default ports are `9200` for the {{es}} HTTP interface, and `5601` for {{kib}}.
 ::::
 
 ```yaml subs=true
