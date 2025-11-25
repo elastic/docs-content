@@ -10,7 +10,7 @@ description: Instructions and best practices for building bar charts with Kibana
 
 Bar charts are one of the most versatile and widely used visualizations for comparing values across categories. They're perfect for showing distributions, rankings, and comparisons—making complex data understandable at a glance.
 
-They work with any type of data: numeric values, counts, averages, or calculations. You can compare sales by region, track errors by service, analyze user engagement by feature, or rank products by revenue. Bar charts can display data horizontally or vertically, be stacked to show part-to-whole relationships, or grouped to compare multiple metrics side by side.
+They work with any type of data: numeric values, counts, averages, or calculations. You can compare sales by region, track errors by service, analyze user engagement by feature, or rank products by revenue. Using bar charts, you can display data horizontally or vertically, stacked (to show part-to-whole relationships), or grouped (to compare multiple metrics side by side).
 
 You can create bar charts in {{kib}} using [**Lens**](../lens.md).
 
@@ -35,7 +35,7 @@ New visualizations default to creating **Bar** charts, so you don't need to chan
 ::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
 2. Set the **Horizontal axis** (for vertical bar charts) or the **Vertical axis** (for horizontal bar charts) to define categories for your data. This is typically a dimension like a category field, date histogram, or terms aggregation. This setting creates the individual bars.
-3. Set the **Vertical axis** (for vertical bar charts) or the **Horizontal axis** (for horizontal bar charts) to define the numerical values or quantities being measured. This metric determines the height (or length) of your bars. 
+3. Set the **Vertical axis** (for vertical bar charts) or the **Horizontal axis** (for horizontal bar charts) to define the numerical values or quantities being measured. This metric determines the height or length of your bars. 
 
 4. Optionally:
     - Add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked or grouped bar charts.
@@ -77,7 +77,7 @@ Refer to [](#settings) for a complete list of options.
 
 ### Create stacked bar charts [stacked-bars]
 
-Stacked bar charts show how different components contribute to a total value. Each bar is divided into colored segments representing different categories, allowing you to see both the total and the breakdown.
+Stacked bar charts show how different components contribute to a total value. Each bar is divided into colored segments representing different categories, allowing you to view both the total and the breakdown.
 
 To create a stacked bar chart:
 
@@ -102,11 +102,13 @@ Stacked bar charts work best when:
 
 ### Create grouped (side-by-side) bar charts [grouped-bars]
 
+% Don't think this is possible. However, it is possible to add a bar, area, or line chart on top of the current bar chart as a layer. This option is available as a layer type (Add layer -> Visualization). 
+
 Grouped bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
 
 To create a grouped bar chart:
 
-1. Create a **Bar** visualization with your first metric on the vertical axis.
+1. Create a **Bar** chart visualization with your first metric on the vertical axis.
 2. Add a dimension to the horizontal axis.
 3. Add a second dimension to **Break down by**.
 4. In the chart settings, select **Clustered** or **Side by side** under the layout options (instead of Stacked).
@@ -114,21 +116,21 @@ To create a grouped bar chart:
 ::::{tip}
 Use grouped bar charts when:
 - You need to compare 2-4 metrics across categories
-- Direct comparison between metrics is more important than seeing totals
+- Direct comparison between metrics is more important than viewing totals
 - The metrics have similar scales
 ::::
 
 ### Show trends with time-based bar charts [time-bars]
 
-Bar charts excel at showing trends over time when you need to compare specific time periods or see the distribution of values.
+Bar charts excel at showing trends over time when you need to compare specific time periods or view the distribution of values.
 
 To create a time-based bar chart:
 
-1. Create a **Bar vertical** visualization.
+1. Create a **Bar** chart visualization.
 2. Set the **Vertical axis** to your metric (like count, sum, or average).
 3. Set the **Horizontal axis** to a date field using the **Date histogram** function.
-4. Configure the time interval (auto, minute, hour, day, week, month, year).
-5. Optionally add a **Break down by** dimension to stack or group by category.
+4. Configure the minimal time interval (auto, millisecond, second, minute, hour, day, week, month, year).
+5. Optionally add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked or grouped bar charts.
 
 ::::{tip}
 Time-based bar charts are great for:
@@ -141,24 +143,23 @@ For continuous trends, consider using a line chart instead.
 ::::
 
 ### Add reference lines and annotations [reference-lines]
-```{applies_to}
-stack: ga 9.0
-serverless: ga
-```
 
-% Not sure why applies to tags were added to this section. From poking around, it looks like the Annotations featuer is in tech preview, so maybe it was an attempt to flag that? Also the instructions for these features don't seem entirely correct. For example, I could only find the Annotations and Reference lines features from adding a new layer to the bar chart. The instructions provided below don't work.
+% Need to write instructions for annotations. They were not auto-created.
 
 Reference lines help viewers understand context by showing thresholds, goals, or averages directly on your bar chart.
 
 To add a reference line:
 
-1. Create your bar chart visualization.
-2. Select the **Annotations** icon or access the reference line settings.
-3. Add a reference line with:
+1. Create a **Bar** chart visualization.
+2. Click **Add layer**, select the {{data-source}}, then select the **Reference lines** layer type.
+3. (Optional) Configure the vertical left axis.
+4. Add a reference line with:
    - **Value**: The Y-axis value where the line appears (can be static or calculated)
    - **Label**: Descriptive text like "Target" or "Average"
    - **Color**: Select a contrasting color
    - **Style**: Solid, dashed, or dotted line
+
+% Step 4 is wrong. The settings that need to be doc'd are pretty extensive. 
 
 Common reference line uses:
 - **Goals**: Show sales targets, SLA thresholds, or performance benchmarks
@@ -173,9 +174,10 @@ To enable percentage mode:
 
 1. Create a stacked bar chart with multiple categories.
 % How do users add multiple categories?
-2. In the **Vertical axis** settings, find the **Value format** option.
-3. Select **Percent** or enable **Percentage mode** in the chart settings.
-4. Each bar now shows segments as percentages of that bar's total (summing to 100%).
+2. In the **Vertical axis** appearance settings, find the **Value format** option.
+3. Select **Percent**. 
+
+Each bar now shows segments as percentages of that bar's total (summing to 100%).
 
 ::::{tip}
 Use percentage mode when:
@@ -188,9 +190,23 @@ Use percentage mode when:
 
 Customize your bar chart to display exactly the information you need, formatted the way you want.
 
+### Horizontal axis settings [horizontal-axis-options]
+
+**Data**
+:   The dimension that creates your individual bars. Common options include:
+    - **Date histogram**: Create time-based bars with configurable intervals
+    - **Filters**: Define custom categories using KQL queries
+    - **Intervals**: Group data into numerical ranges
+    - **Top values**: Specify fields for which to gather top values 
+
+**Appearance**
+:   Define the formatting of the horizontal axis, including:
+    - **Name**: Customize the axis label to describe what the bars represent.
+    - **Value format**: Select to display values as number, percent, bytes, bits, duration, or with a custom format.
+
 ### Vertical axis settings [vertical-axis-options]
 
-**Value**
+**Data**
 :   The metric that determines the height of your bars. When you drag a field onto the vertical axis, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Sum`, `Average`, `Count`, `Median`, `Min`, `Max`, and more, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
     :::{include} ../../_snippets/lens-value-advanced-settings.md
@@ -200,46 +216,18 @@ Customize your bar chart to display exactly the information you need, formatted 
 :   Define the formatting of the vertical axis, including:
     - **Name**: By default, the chart uses the function or formula as the axis label. It's a best practice to customize this with a meaningful title.
     - **Value format**: Select to display values as number, percent, bytes, bits, duration, or with a custom format.
-    - **Scale type**: Select between **Linear** (default) and **Log** (for data spanning multiple orders of magnitude).
-    % Scale type not an option
-    - **Axis bounds**: Set minimum and maximum values for the axis. Use **Data bounds** (default) to automatically fit the data, or **Custom** to define specific bounds.
-    % Axis bounds not an option in the right menu, but Axis side is. In the Left axis menu, this option is titled Axis scale.
-    - **Show gridlines**: Toggle gridlines on or off for better readability.
-    % Show gridlines is not an option in the right menu, but is in the Left axis menu.
+    - **Series color**: ?
+    - **Axis side**: Choose to display the veritical axis on the left or right side of the graph. By default, the axis displays on the left. 
 
-### Horizontal axis settings [horizontal-axis-options]
-
-**Data**
-:   The dimension that creates your individual bars. Common options include:
-    - **Terms**: Show top values from a categorical field (like product names, regions, or user types)
-    % Terms is not an option.
-    - **Date histogram**: Create time-based bars with configurable intervals
-    - **Histogram**: Create numeric ranges or buckets
-    % Histogram is no an option.
-    - **Filters**: Define custom categories using KQL queries
-    - **Intervals**: ?
-    - **Top values**: ?
-
-**Appearance**
-:   Define the formatting of the horizontal axis, including:
-    - **Name**: Customize the axis label to describe what the bars represent.
-    % None of the following options are available in the UI.
-    - **Number of values**: For terms aggregations, control how many bars to show (displays top N values by the selected metric).
-    - **Sort by**: Select what determines the order of bars—by the metric value, alphabetically, or by document count.
-    - **Sort direction**: Ascending or descending order.
-    - **Show labels**: Toggle category labels on or off.
-    - **Label rotation**: Rotate labels to prevent overlap when you have many categories or long names.
-    - **Show gridlines**: Toggle vertical gridlines on or off.
 
 ### Break down by settings [breakdown-options]
 
 **Data**
-:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions.
-
-    - **Number of values**: The number of segments or groups to show. If more values are available, they can be grouped as **Other**.
-    - **Rank by**: The dimension by which values are ranked.
-    - **Rank direction**: The direction to use for the ranking.
-    - **Collapse by**: Exclude this dimension from the visualization. All metric values sharing the same value for this dimension should be aggregated into a single number.
+:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common options include:
+    - **Date histogram**: Create time-based bars with configurable intervals
+    - **Filters**: Define custom categories using KQL queries
+    - **Intervals**: Group data into numerical ranges
+    - **Top values**: Specify fields for which to gather top values 
 
     :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
     :::
@@ -247,11 +235,8 @@ Customize your bar chart to display exactly the information you need, formatted 
 **Appearance**
 :   Define the formatting of the breakdown, including:
     - **Name**: Customize the legend label.
-    - **Colors**: Select a color palette or assign specific colors to categories.
-    - **Show legend**: Toggle the legend display on or off.
-    % Show legends not an option
-    - **Legend position**: Place the legend on the right, top, or bottom of the chart.
-    % Legend position not an option
+    - **Value format**: Select to display values as number, percent, bytes, bits, duration, or with a custom format.
+    - **Color mapping**: Select a color palette or assign specific colors to categories.
 
 ### General chart settings [appearance-options]
 
