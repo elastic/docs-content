@@ -45,6 +45,6 @@ The preconfigured defaults typically include:
 - **Alert delay (alert suppression)**
 :   The number of consecutive runs for which conditions must be met before an alert is created.
 
-For details about fields in the Create rule form and how the rule evaluates data, see the {{es}} query rule type (/explore-analyze/alerts-cases/alerts/rule-type-es-query.md).
+For details about fields in the Create rule form and how the rule evaluates data, refer to the [{{es}} query rule type](/explore-analyze/alerts-cases/alerts/rule-type-es-query.md).
 
 
