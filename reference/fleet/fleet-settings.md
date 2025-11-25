@@ -140,9 +140,9 @@ On the **{{fleet}}** > **Settings** page, you can also configure {{fleet}} to au
 
 ### Delete unenrolled agents [delete-unenrolled-agents-setting]
 
-After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained just in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically.
+After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically.
 
-Note that this option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the {{kib}} settings file.
+This option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the {{kib}} settings file.
 
 To enable automatic deletion of unenrolled agents:
 
@@ -163,4 +163,4 @@ To display agentless resources in the agent and agent policy lists:
 1. Go to **{{fleet}}** > **Settings**.
 2. In the **Advanced Settings** section, enable **Show agentless resources**.
 
-Note that you can view and request diagnostics for agentless agents, but you cannot upgrade, unenroll, or reassign them.
+You can view and request diagnostics for agentless agents, but you cannot upgrade, unenroll, or reassign them.

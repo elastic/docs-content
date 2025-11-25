@@ -27,7 +27,8 @@ You can view events on the **Deployment** page (for {{ECH}} deployments) or the 
 When you select an event, a flyout appears with insights and context for the detected issue.
 
 :::{image} /deploy-manage/images/cloud-autoops-events.png
-:alt: AutoOps events
+:screenshot:
+:alt: Screenshot showing an AutoOps event flyout
 :::
 
 The following table describes the sections in this flyout:
