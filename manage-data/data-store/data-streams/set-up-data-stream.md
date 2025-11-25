@@ -12,7 +12,7 @@ products:
 
 To set up a data stream, follow these steps:
 
-1. [Create an index lifecycle policy](#create-index-lifecycle-policy)
+1. [Create an index lifecycle policy](#create-index-lifecycle-policy) {applies_to}`serverless: unavailable`
 2. [Create component templates](#create-component-templates)
 3. [Create an index template](#create-index-template)
 4. [Create the data stream](#create-data-stream)
@@ -30,8 +30,11 @@ For {{fleet}} and {{agent}}, refer to [](/reference/fleet/data-streams.md). For 
 
 
 ## Create an index lifecycle policy [create-index-lifecycle-policy]
+```{applies_to}
+serverless: unavailable
+```
 
-While optional, we recommend using {{ilm-init}} to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
+While optional, we recommend using the index lifecycle management ({{ilm-init}}) capability to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
 
 To create an index lifecycle policy in {{kib}}:
 
@@ -90,6 +93,9 @@ PUT _ilm/policy/my-lifecycle-policy
 }
 ```
 
+:::{admonition} Simpler lifecycle management in {{serverless-short}} projects
+{{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data management option.
+:::
 
 ## Create component templates [create-component-templates]
 
@@ -112,10 +118,15 @@ To create a component template in {{kib}}:
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. In the **Index Templates** tab, click **Create component template**.
 
-You can also use the [create component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
+You can also use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API for {{stack}} or the [create or update a component template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template) API for {{serverless-full}}.
+
+::::{tab-set}
+
+:::{tab-item} {{stack}}
+:sync: stack
+To create a component template for mappings, use this query:
 
 ```console
-# Creates a component template for mappings
 PUT _component_template/my-mappings
 {
   "template": {
@@ -136,8 +147,11 @@ PUT _component_template/my-mappings
     "my-custom-meta-field": "More arbitrary metadata"
   }
 }
+```
 
-# Creates a component template for index settings
+To create a component template for index settings, use this query:
+
+```console
 PUT _component_template/my-settings
 {
   "template": {
@@ -152,6 +166,39 @@ PUT _component_template/my-settings
 }
 ```
 
+:::
+
+:::{tab-item} {{serverless-short}}
+:sync: serverless
+To create a component template, use this query:
+
+```console
+PUT _component_template/template_1
+{
+  "template": {
+    "settings": {
+      "number_of_shards": 1
+    },
+    "mappings": {
+      "_source": {
+        "enabled": false
+      },
+      "properties": {
+        "host_name": {
+          "type": "keyword"
+        },
+        "created_at": {
+          "type": "date",
+          "format": "EEE MMM dd HH:mm:ss Z yyyy"
+        }
+      }
+    }
+  }
+}
+```
+
+:::
+:::: 
 
 ## Create an index template [create-index-template]
 
@@ -220,6 +267,9 @@ For an example, see [Data stream privileges](../../../deploy-manage/users-roles/
 
 
 ## Convert an index alias to a data stream [convert-index-alias-to-data-stream]
+```{applies_to}
+serverless: unavailable
+```
 
 Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
 
