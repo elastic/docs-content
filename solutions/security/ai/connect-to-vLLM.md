@@ -160,7 +160,7 @@ Create the connector within your Elastic deployment to link it to your vLLM inst
     * On the **Conversations** tab, turn off **Streaming**.
     * If your model supports tool use, then on the **System prompts** page, create a new system prompt with a variation of the following prompt, to prevent your model from returning tool calls in AI Assistant conversations:
     
-    ```
+    ```markdown
     You are a model running under OpenAI-compatible tool calling mode.
     
     Rules:
