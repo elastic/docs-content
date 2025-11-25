@@ -154,15 +154,15 @@ export default {
 ### Use environment variables with Private Locations
 
 If you are using Kibana-managed monitors and running them on a Private Location, you can inject environment variables directly into the agent's runtime environment.
-This method allows you to keep sensitive values out of the Kibana UI. Instead, it requires access to the infrastructure hosting the Elastic Agent.
+This method allows you to keep sensitive values out of the {{kib}} UI. Instead, it stores those values on the infrastructure hosting the {{agent}}.
 
 ::::{warning}
-These variables will be accessible to **all** monitors running on **this specific** Private Location.
+These variables are accessible to all monitors running on this specific Private Location.
 
 ::::
 
 #### 1. Pass variables to the Private Location
-When starting your Private Location (Elastic Agent) using Docker, use the `--env` flag to pass your variables. 
+When starting your Private Location ({{agent}}) using Docker, use the `--env` flag to pass your variables. 
 
 
 
@@ -179,7 +179,7 @@ docker run \
 ```
 
 #### 2. Reference variables in the inline script
-In the Synthetics Monitor editor in Kibana, you can now access these variables using `process.env`.
+In the Synthetics **Monitors** editor in {{kib}}, you can now access these variables using `process.env`.
 
 ```js
 step('navigate to secure url', async () => {
