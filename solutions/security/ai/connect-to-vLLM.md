@@ -13,17 +13,40 @@ This guide shows you how to run an OpenAI-compatible large language model with [
 
 The steps below show one example configuration, but you can use any model supported by vLLM, including private and gated models on Hugging Face.
 
-
 ## Step 1: Configure your host server
 
+To support this use case, you need a powerful server. For example, we tested a server with the following specifications:
+
+* Operating system: Ubuntu 24.10
+* Machine type: a2-ultragpu-2g
+* vCPU: 24 (12 cores)
+* Architecture: x86/64
+* CPU Platform: Intel Cascade Lake
+* Memory: 340GB
+* Accelerator: 2 x NVIDIA A100 80GB GPUs
+
+Set up your server then install all necessary GPU drivers.
+
+## Step 2: Generate auth tokens
+
+:::::{stepper}
+
+::::{step} Create a Hugging Face user token
 1. (Optional) If you plan to use a gated model (such as Llama 3.1) or a private model, create a [Hugging Face user access token](https://huggingface.co/docs/hub/en/security-tokens).
   1. Log in to your Hugging Face account.
   2. Navigate to **Settings > Access Tokens**.
   3. Create a new token with at least `read` permissions. Save it in a secure location.
-2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between {{ecloud}} and your reverse proxy.
-3. Install any necessary GPU drivers. 
+::::
 
-## Step 2: Run your vLLM container
+::::{step} Create an OpenAI-compatible secret token
+2. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between Elastic and your reverse proxy.
+::::
+
+:::::
+
+
+
+## Step 3: Run your vLLM container
 
 To pull and run your chosen vLLM image:
 
@@ -66,22 +89,11 @@ docker run \
 15. Limits max GPU used by vLLM (may vary depending on the machine resources available).
 16. This value should match the number of available GPUs (in this case, 2). This is critical for performance on multi-GPU systems.
 
-To support this use case, you need a powerful server. For example, we tested a server with the following specifications:
-
-* Operating system: Ubuntu 24.10
-* Machine type: a2-ultragpu-2g
-* vCPU: 24 (12 cores)
-* Architecture: x86/64
-* CPU Platform: Intel Cascade Lake
-* Memory: 340GB
-* Accelerator: 2 x NVIDIA A100 80GB GPUs
-* Reverse Proxy: Nginx
-
 3. Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
 
-## Step 3: Expose the API with a reverse proxy
+## Step 4: Expose the API with a reverse proxy
 
-Using a reverse proxy improves stability for this use case. The following example uses Nginx, which supports monitoring by means of Elastic's native Nginx integration. The example Nginx configuration forwards traffic to the vLLM container and uses a secret token for authentication.
+Using a reverse proxy improves stability for this use case. This example uses Nginx, which supports monitoring by means of Elastic's native Nginx integration. The example Nginx configuration forwards traffic to the vLLM container and uses a secret token for authentication.
 
 1. Install Nginx on your server.
 2. Create a configuration file, for example at `/etc/nginx/sites-available/default`. Give it the following content:
@@ -115,7 +127,7 @@ server {
 For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to Nginx, but it is not recommended for production use.
 :::
 
-## Step 4: Configure the connector in your Elastic deployment
+## Step 5: Configure the connector in your Elastic deployment
 
 Finally, create the connector within your Elastic deployment to link it to your vLLM instance.
 
