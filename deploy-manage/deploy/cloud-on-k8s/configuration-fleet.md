@@ -93,7 +93,7 @@ spec:
               name: system
 ```
 
-* `xpack.fleet.agents.elasticsearch.hosts` must point to the {{es}} cluster where {{agents}} should send data. For ECK-managed {{es}} clusters ECK creates a Service accessible through `<ES_RESOURCE_NAME>-es-http.<ES_RESOURCE_NAMESPACE>.svc:9200` URL, where `ES_RESOURCE_NAME` is the name of {{es}} resource and `ES_RESOURCE_NAMESPACE` is the namespace it was deployed within. See [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for details on adjusting this field when running agent as non-root.
+* `xpack.fleet.agents.elasticsearch.hosts` must point to the {{es}} cluster where {{agents}} should send data. For ECK-managed {{es}} clusters ECK creates a Service accessible through `<ES_RESOURCE_NAME>-es-http.<ES_RESOURCE_NAMESPACE>.svc:9200` URL, where `ES_RESOURCE_NAME` is the name of {{es}} resource and `ES_RESOURCE_NAMESPACE` is the namespace it was deployed within. Refer to [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for details on adjusting this field when running agent as non-root.
 * `xpack.fleet.agents.fleet_server.hosts` must point to {{fleet-server}} that {{agents}} should connect to. For ECK-managed {{fleet-server}} instances, ECK creates a Service accessible through `<FS_RESOURCE_NAME>-agent-http.FS_RESOURCE_NAMESPACE.svc:8220` URL, where `FS_RESOURCE_NAME` is the name of {{agent}} resource with {{fleet-server}} enabled and `FS_RESOURCE_NAMESPACE` is the namespace it was deployed in.
 * `xpack.fleet.packages` are required packages to enable {{fleet-server}} and {{agents}} to enroll.
 * `xpack.fleet.agentPolicies` policies are needed for {{fleet-server}} and {{agents}} to enroll to, check https://www.elastic.co/guide/en/fleet/current/agent-policy.html for more information.
@@ -275,7 +275,7 @@ In order to run {{agent}} as a non-root user you must choose how you want to per
 
 :::
 
-:::{applies-item} { "Agent": "ga 8.15" } In Elastic Agent prior to 8.16:
+:::{applies-item} { "Agent": "ga 8.15" } In Elastic Agent before 8.16:
 
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 2. Run {{agent}} with a `hostPath` volume which has the advantage of persisting data between restarts of the {{agent}}.

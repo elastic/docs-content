@@ -51,7 +51,7 @@ Full configuration examples exist in  [Running as a non-root user](configuration
 
 :::
 
-:::{applies-item} { "Agent": "ga 8.15" } In Elastic Agent prior to 8.16:
+:::{applies-item} { "Agent": "ga 8.15" } In Elastic Agent before 8.16:
 
 1. If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
 
