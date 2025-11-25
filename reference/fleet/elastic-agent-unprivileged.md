@@ -46,6 +46,8 @@ sudo elastic-agent install \
 ::::{tab-item} Windows
 :sync: windows
 
+From PowerShell:
+
 ```shell
 elastic-agent install `
   --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 `
