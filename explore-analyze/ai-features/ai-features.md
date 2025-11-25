@@ -130,6 +130,8 @@ stack: preview 9.1, ga 9.2
 
 ## AI-powered features in {{elastic-sec}}
 
+{{elastic-sec}}'s AI-powered features all rely on [LLM connectors](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+
 ### AI Assistant for Security
 ```{applies_to}
 stack: all
