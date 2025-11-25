@@ -7,11 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-oidc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-oidc.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-enterprise

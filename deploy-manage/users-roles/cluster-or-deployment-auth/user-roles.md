@@ -65,7 +65,8 @@ Review these topics to learn how to configure RBAC in your cluster or deployment
 
 * Learn about [built-in roles](elasticsearch://reference/elasticsearch/roles.md) {applies_to}`serverless: unavailable`
 * [Define your own roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) {applies_to}`serverless: unavailable`
-* Learn about the [Elasticsearch](elasticsearch://reference/elasticsearch/security-privileges.md) and [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges you can assign to roles
+* Learn about the [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges you can assign to roles {applies_to}`serverless: unavailable`
+* Learn about the [Elasticsearch](elasticsearch://reference/elasticsearch/security-privileges.md) privileges you can assign to roles 
 * Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
 :::{tip}
