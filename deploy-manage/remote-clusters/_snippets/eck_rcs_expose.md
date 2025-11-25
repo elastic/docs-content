@@ -22,7 +22,7 @@ kubectl expose service quickstart-es-remote-cluster \
 
 :::{applies-item} eck: ga 3.3
 
-Starting in ECK 3.3, you can expose the remote cluster service (defaults to port 9443) directly from the {{es}} resource manifest:
+You can expose the remote cluster service directly from the {{es}} resource manifest. By default, this service is exposed on port 9443.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
