@@ -18,7 +18,6 @@ Alerting rule templates are out-of-the-box, preconfigured rule definitions maint
 - Ensure the relevant data stream is enabled and ingesting data for the template you plan to use.
 - {{stack}} 9.2.1 or later.
 - Appropriate {{kib}} role privileges to create and manage rules in the current space.
-- Optional: One or more connectors (for example, email, Slack, webhook) to route alert notifications.
 
 ## How to use the Alerting Rule Templates
 
@@ -28,6 +27,7 @@ Alerting rule templates come with recommended, pre-populated values. To use them
 1. Find and open the integration.
 1. On the integration page, open the **Assets** tab and expand **Alerting rule templates** to view all available templates for that integration.
 1. Select a template to open a prefilled Create rule form.
+1. Review and (optionally) customize the prefilled settings, then save and enable the rule.
 
 When you click a template, you get a prefilled **Create Rules** form. You can use the template to create your own custom alerting rule by adjusting values, setting up connectors, and defining rule actions.
 
