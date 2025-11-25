@@ -149,10 +149,10 @@ If `map_ecs_fields` is enabled then the following field mappings are also perfor
 | --- | --- | --- |
 | `event.code` | `winlog.event_id` |  |
 | `event.kind` | `"event"` |  |
-| `event.provider` | `<Event><System><Provider>` | `Name` attribute |
-| `event.action` | `<Event><RenderingInfo><Task>` |  |
-| `event.host.name` | `<Event><System><Computer>` |  |
+| `event.provider` | `winlog.provider_name` | `Name` attribute |
+| `event.action` | `winlog.task` |  |
 | `event.outcome` | `winlog.outcome` |  |
+| `host.name` | `winlog.computer_name` |  |
 | `log.level` | `winlog.level` |  |
 | `message` | `winlog.message` |  |
 | `error.code` | `winlog.error.code` |  |
