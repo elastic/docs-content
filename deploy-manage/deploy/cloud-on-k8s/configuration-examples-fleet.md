@@ -27,20 +27,6 @@ kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{versio
 Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {{integrations}} enabled. System integration collects syslog logs, auth logs and system metrics (for CPU, I/O, filesystem, memory, network, process and others). {{k8s}} {{integrations}} collects API server, Container, Event, Node, Pod, Volume and system metrics.
 
 
-## System and {{k8s}} {{integrations}} running as non-root [k8s_system_and_k8s_integrations_running_as_non_root]
-
-```sh subs=true
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/elastic-agent/fleet-kubernetes-integration-nonroot.yaml
-```
-
-The provided example is functionally identical to the previous section but runs the {{agent}} processes (both the {{agent}} running as the {{fleet}} server and the {{agent}} connected to {{fleet}}) as a non-root user by utilizing a DaemonSet to ensure directory and file permissions.
-
-::::{note}
-The DaemonSet itself must run as root to set up permissions and ECK >= 2.10.0 is required.
-::::
-
-
-
 ## Custom logs integration with autodiscover [k8s_custom_logs_integration_with_autodiscover]
 
 ```sh subs=true
