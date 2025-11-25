@@ -660,6 +660,10 @@ toc:
           - file: remote-clusters/remote-clusters-cert.md
           - file: remote-clusters/remote-clusters-migrate.md
       - file: remote-clusters/eck-remote-clusters.md
+        children:
+          - file: remote-clusters/eck-remote-clusters-same-eck.md
+          - file: remote-clusters/eck-remote-clusters-to-external.md
+          - file: remote-clusters/eck-remote-clusters-from-external.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
