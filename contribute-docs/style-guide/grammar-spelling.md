@@ -53,9 +53,9 @@ Use gender-neutral pronouns as appropriate. Avoid using *he*, *him*, *his*, *she
 Avoid temporal words like *currently*, *now*, or *will* and conditional words like *should* or *could*. Write in the present tense to describe the state of the product as it is now. You may need to use the past tense occasionally, but try to change it to the present tense to see if that's a better fit.
 
 :::{dropdown} Example
-  ❌ **Don't**: If you didn't select all the required permissions, an error message will appear.
+❌ **Don't**: If you didn't select all the required permissions, an error message will appear.
 
-  ✔️ **Do**: If you don't select all the required permissions, an error message appears.
+✔️ **Do**: If you don't select all the required permissions, an error message appears.
 :::
 
 ## Contraction do's and dont's
@@ -65,9 +65,9 @@ Use contractions: they're (an acceptable contraction, by the way) conversational
 Don't use Elastic references as a contraction to replace *Elastic is*.
 
 :::{dropdown} Example
-  ❌ **Don't**: Elastic's excited to release this new feature.
+❌ **Don't**: Elastic's excited to release this new feature.
 
-  ✔️ **Do**: Elastic's new feature helps you find information fast.
+✔️ **Do**: Elastic's new feature helps you find information fast.
 :::
 
 Avoid ambiguous or awkward contractions, such as *there'd*, *it'll*, and *they'd*.
@@ -91,9 +91,9 @@ Secure your cluster
 Avoid gerunds in prepositional phrases—this will make your instructions easier to understand. Also avoid gerunds in instructional/procedural sentences or headings. 
 
 :::{dropdown} Example
-  ❌ **Don't**: Refer to instructions on configuring the Elastic Agent.
-  
-  ✔️ **Do**: Refer to instructions on how to configure the Elastic Agent.
+❌ **Don't**: Refer to instructions on configuring the Elastic Agent.
+
+✔️ **Do**: Refer to instructions on how to configure the Elastic Agent.
 :::
 
 ## Punctuation
@@ -152,25 +152,25 @@ Use commas:
 * When an independent clause and a dependent clause are separated by a coordinating conjunction (*and*, *but*, *or*, *nor*, *fo*r, *so*, or *yet*).
 
 :::{dropdown} Examples
-    ❌ **Don't**: The rule runs every 5 minutes, but analyzes the documents added to indices during the last 6 minutes.
+❌ **Don't**: The rule runs every 5 minutes, but analyzes the documents added to indices during the last 6 minutes.
 
-    ✔️ **Do**: The rule runs every 5 minutes but analyzes the documents added to indices during the last 6 minutes.
+✔️ **Do**: The rule runs every 5 minutes but analyzes the documents added to indices during the last 6 minutes.
 
-    ❌ **Don't**: A custom query rule searches the defined indices, and creates an alert when a document matches the rule's KQL query.
+❌ **Don't**: A custom query rule searches the defined indices, and creates an alert when a document matches the rule's KQL query.
 
-    ✔️ **Do**: A custom query rule searches the defined indices and creates an alert when a document matches the rule's KQL query.
+✔️ **Do**: A custom query rule searches the defined indices and creates an alert when a document matches the rule's KQL query.
 :::
 
 * To set off defining relative clauses.
 
 :::{dropdown} Examples
-    ❌ **Don't**: You must use a data view, whose index pattern matches `servers-europe-*`.
+❌ **Don't**: You must use a data view, whose index pattern matches `servers-europe-*`.
 
-    ✔️ **Do**: You must use a data view whose index pattern matches `servers-europe-*`.
+✔️ **Do**: You must use a data view whose index pattern matches `servers-europe-*`.
 
-    ❌ **Don't**: To roll back, you must have a backup snapshot, that includes the `kibana` feature state.
+❌ **Don't**: To roll back, you must have a backup snapshot, that includes the `kibana` feature state.
 
-    ✔️ **Do**: To roll back, you must have a backup snapshot that includes the `kibana` feature state.
+✔️ **Do**: To roll back, you must have a backup snapshot that includes the `kibana` feature state.
 :::
 
 ### Dashes and hyphens
@@ -218,25 +218,25 @@ Use a hyphen:
 * For predicate adjectives (compound modifiers that come after the word they modify).
 
 :::{dropdown} Examples
-    ❌ **Don't**: Ensure your environment is up-to-date.
+❌ **Don't**: Ensure your environment is up-to-date.
 
-    ✔️ **Do**: Ensure your environment is up to date.
+✔️ **Do**: Ensure your environment is up to date.
 
-    ❌ **Don't**: The values are user-defined.
+❌ **Don't**: The values are user-defined.
 
-    ✔️ **Do**: The values are user defined.
+✔️ **Do**: The values are user defined.
 :::
 
 * For compounds with an adverb ending in `-ly`.
 
 :::{dropdown} Examples
-    ❌ **Don't**: Newly-installed Agent
+❌ **Don't**: Newly-installed Agent
 
-    ✔️ **Do**: Newly installed Agent
+✔️ **Do**: Newly installed Agent
 
-    ❌ **Don't**: Publicly-exposed storage buckets
+❌ **Don't**: Publicly-exposed storage buckets
 
-    ✔️ **Do**: Publicly exposed storage buckets
+✔️ **Do**: Publicly exposed storage buckets
 :::
 
 #### En dashes
@@ -262,8 +262,8 @@ Use an en dash:
 Use em dashes to indicate a break in the flow of a sentence. Don't add spaces around an em dash.
 
 :::{dropdown} Examples
-  * Consider adding exceptions—preferably with a combination of user agent and IP address conditions.
-  * Filter out endpoint events that you don't want to store—for example, high-volume events.
+* Consider adding exceptions—preferably with a combination of user agent and IP address conditions.
+* Filter out endpoint events that you don't want to store—for example, high-volume events.
 :::
 
 ### Parentheses
@@ -273,8 +273,8 @@ Before using parentheses, consider if you can replace them with dashes, semicolo
 Use parentheses for abbreviations and acronyms after spelling them out.
 
 :::{dropdown} Examples
-  * Monitor the security posture of your cloud assets using the Cloud Security Posture Management (CSPM) feature.
-  * Expand a risk level group (for example, **High**) or an asset criticality group (for example, **high_impact**).
+* Monitor the security posture of your cloud assets using the Cloud Security Posture Management (CSPM) feature.
+* Expand a risk level group (for example, **High**) or an asset criticality group (for example, **high_impact**).
 :::
 
 ### Semicolons
@@ -284,8 +284,8 @@ In general, try to simplify complex sentences to avoid using semicolons.
 Where necessary, use a semicolon to join two closely related independent clauses where a period or a comma is not as effective.
 
 :::{dropdown} Examples
-  * The endpoint is idempotent; therefore, it can safely be used to poll a given migration and, upon completion, finalize it.
-  * Multiple consecutive dashes in the value must be escaped; single dashes do not need to be escaped.
+* The endpoint is idempotent; therefore, it can safely be used to poll a given migration and, upon completion, finalize it.
+* Multiple consecutive dashes in the value must be escaped; single dashes do not need to be escaped.
 :::
 
 ## Spelling
@@ -360,17 +360,17 @@ Follow the standard capitalization rules for American English. In general, use s
 ❌ Don't capitalize the spelled-out form of an acronym unless it's a proper noun or is conventionally capitalized.
 
 :::{dropdown} Examples
-  ❌ **Don't**: This tab shows anomalies discovered by Machine Learning (ML) jobs.
+❌ **Don't**: This tab shows anomalies discovered by Machine Learning (ML) jobs.
 
-  ✔️ **Do**: This tab shows anomalies discovered by machine learning (ML) jobs.
+✔️ **Do**: This tab shows anomalies discovered by machine learning (ML) jobs.
 :::
 
 ❌ Don't capitalize API names.
 
 :::{dropdown} Examples
-  ❌ **Don't**: The Bulk API makes it possible to perform many index/delete operations in a single API call.
+❌ **Don't**: The Bulk API makes it possible to perform many index/delete operations in a single API call.
 
-  ✔️ **Do**: The bulk API makes it possible to perform many index/delete operations in a single API call.
+✔️ **Do**: The bulk API makes it possible to perform many index/delete operations in a single API call.
 :::
 
 ## Abbreviations and acronyms
@@ -382,11 +382,11 @@ In general, spell out abbreviations when a term is unlikely to be familiar to th
 Avoid using an abbreviation for the first time in a title or heading, unless you need to match the UI, for example. If the first use of the abbreviation is in a title or heading, introduce the abbreviation (in parentheses, following the spelled-out term) in the following body text.
 
 :::{dropdown} Examples
-  ❌ **Don't**: ECS field reference
+❌ **Don't**: ECS field reference
 
-  ✔️ **Do**: Elastic Common Schema field reference
+✔️ **Do**: Elastic Common Schema field reference
 
-  ✔️ **Do**: Create an ES|QL rule (OK to use abbreviation since this is how the rule type appears in the UI)
+✔️ **Do**: Create an ES|QL rule (OK to use abbreviation since this is how the rule type appears in the UI)
 :::
 
 ### Capitalization of abbreviations
@@ -394,9 +394,9 @@ Avoid using an abbreviation for the first time in a title or heading, unless you
 Capitalize the spelled-out version of the abbreviation only if it's a proper noun or is conventionally capitalized. That is, don't capitalize it only because the abbreviation includes capital letters.
 
 :::{dropdown} Examples
-  ❌ **Don't**: This setting determines whether Cross-Cluster Search (CCS) privilege warnings are displayed.
+❌ **Don't**: This setting determines whether Cross-Cluster Search (CCS) privilege warnings are displayed.
 
-  ✔️ **Do**: This setting determines whether cross-cluster search (CCS) privilege warnings are displayed.
+✔️ **Do**: This setting determines whether cross-cluster search (CCS) privilege warnings are displayed.
 :::
 
 ### Making abbreviations plural
@@ -406,9 +406,9 @@ When making them plural, treat abbreviations as regular words. Do not use an apo
 If the abbreviation ends in `-s`, `-sh`, `-ch`, or `-x`, then add `-es`.
 
 :::{dropdown} Examples
- ❌ **Don't**: API's, SDK's, OS'es
+❌ **Don't**: API's, SDK's, OS'es
 
- ✔️ **Do**: APIs, SDKs, OSes
+✔️ **Do**: APIs, SDKs, OSes
 :::
 
 ### Using the right article
@@ -416,9 +416,9 @@ If the abbreviation ends in `-s`, `-sh`, `-ch`, or `-x`, then add `-es`.
 The article (*a* or *an*) you use in front of an abbreviation depends on how the abbreviation is pronounced, not how it's spelled.
 
 :::{dropdown} Examples
- ❌ **Don't**: a HTML file, a SQL database
+❌ **Don't**: a HTML file, a SQL database
 
- ✔️ **Do**: an HTML file,  an SQL database
+✔️ **Do**: an HTML file,  an SQL database
 :::
 
 ### Latin abbreviations
@@ -426,9 +426,9 @@ The article (*a* or *an*) you use in front of an abbreviation depends on how the
 Avoid Latin abbreviations for common English phrases, unless space is limited.
 
 :::{dropdown} Examples
-  ❌ **Don't**: e.g.
-  
-  ✔️ **Do**: for example
+❌ **Don't**: e.g.
+
+✔️ **Do**: for example
 :::
 
 ## Glossary
