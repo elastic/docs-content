@@ -17,7 +17,7 @@ Saved Discover sessions preserve your queries, filters, column selections, and v
 ## Requirements
 
 - Access to {{product.kibana}}
-- Permissions to save {{product.kibana}} objects (see [Read-only access](#discover-read-only-access))
+- Permissions to save {{product.kibana}} objects. Refer to [Read-only access](#discover-read-only-access)
 - A configured view in **Discover** worth saving
 
 
