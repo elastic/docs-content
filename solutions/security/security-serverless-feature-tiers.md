@@ -63,7 +63,7 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 | **[Workload runtime protection](/solutions/security/cloud/cloud-workload-protection-for-vms.md)** | ✅ | ✅ |
 | **[Cloud native posture management](/solutions/security/cloud/security-posture-management-overview.md) for Kubernetes, AWS, GCP & more** | ✅ | ✅ |
 | **Drift protection for containers** | ✅ | ❌ |
-| **[Response actions](solutions/security/endpoint-response-actions.md)** | ✅ | ❌ |
+| **[Response actions](/solutions/security/endpoint-response-actions.md)** | ✅ | ❌ |
 
 
 ## Upgrade to a higher feature tier [sec-subscription-upgrade]
