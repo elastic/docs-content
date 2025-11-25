@@ -153,17 +153,55 @@ For any installed {{agent}} you can change the mode that it’s running in by ru
 
 Change mode from privileged to unprivileged:
 
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
+
 ```shell
 sudo elastic-agent unprivileged
 ```
+
+::::
+
+::::{tab-item} Windows
+:sync: windows
+
+```shell
+elastic-agent unprivileged
+```
+
+::::
+
+:::::
 
 Changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
 
 Change mode from unprivileged to privileged:
 
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
+
 ```shell
 sudo elastic-agent privileged
 ```
+
+::::
+
+::::{tab-item} Windows
+:sync: windows
+
+```shell
+elastic-agent privileged
+```
+
+::::
+
+:::::
 
 When an agent is running in `unprivileged` mode, if it doesn’t have the right level of privilege to read a data source, you can also adjust the agent’s privileges by adding `elastic-agent-user` to the user group that has privileges to read the data source.
 
@@ -189,25 +227,24 @@ This functionality is in technical preview and may be changed or removed in a fu
 In certain cases you may want to install {{agent}} in `unprivileged` mode, with the agent running as a pre-existing user or as part of a pre-existing group. For example, on a Windows system you may have a service account in Active Directory and you’d like {{agent}} to run under that account.
 
 ::::{note}
-The `--password` parameter is only required on Windows. On Linux and macOS, the `--user` and `--group` parameters are optional:
-
-* If you omit `--user`, {{agent}} uses (or creates) the default unprivileged user (`elastic-agent-user`).
-* If you specify only `--group`, the agent runs unprivileged under its default user but with the requested group.
+The `--password` parameter is only required on Windows. On Linux and macOS, the `--user` and `--group` parameters are optional. If you omit `--user`, {{agent}} uses (or creates) the default unprivileged user (`elastic-agent-user`). If you specify only `--group`, the agent runs unprivileged under its default user but with the requested group.
 ::::
 
 To install {{agent}} in `unprivileged` mode as a specific user or group, use the following commands:
 
 :::::{tab-set}
+:group: os
 
 ::::{tab-item} Linux/macOS
+:sync: linux
 
-To install with a specific user (optional—if omitted, the default `elastic-agent-user` is used):
+To install with a specific user:
 
 ```shell
 sudo elastic-agent install --unprivileged --user="username"
 ```
 
-To install with a specific group (the agent runs under its default user with the specified group):
+To install with a specific group:
 
 ```shell
 sudo elastic-agent install --unprivileged --group="groupname"
@@ -222,19 +259,26 @@ sudo elastic-agent install --unprivileged --user="username" --group="groupname"
 ::::
 
 ::::{tab-item} Windows
+:sync: windows
 
 On Windows, the `--password` parameter is required when specifying a custom user account.
 
 To install as a specific user:
 
 ```shell
-elastic-agent.exe install --unprivileged --user="my.domain\username" --password="mypassword"
+elastic-agent install --unprivileged --user="my.domain\username" --password="mypassword"
 ```
 
 To install as part of a specific group:
 
 ```shell
-elastic-agent.exe install --unprivileged --group="my.domain\groupname"
+elastic-agent install --unprivileged --group="my.domain\groupname"
+```
+
+To install with both a specific user and group:
+
+```shell
+elastic-agent install --unprivileged --user="my.domain\username" --group="my.domain\groupname" --password="mypassword"
 ```
 
 ::::
@@ -244,16 +288,18 @@ elastic-agent.exe install --unprivileged --group="my.domain\groupname"
 Alternatively, if you have {{agent}} already installed with administrative privileges, you can change the agent to use `unprivileged` mode and to run as a specific user or in a specific group.
 
 :::::{tab-set}
+:group: os
 
 ::::{tab-item} Linux/macOS
+:sync: linux
 
-To change to a specific user (optional—if omitted, the default `elastic-agent-user` is used):
+To change to a specific user:
 
 ```shell
 sudo elastic-agent unprivileged --user="username"
 ```
 
-To change to a specific group (the agent runs under its default user with the specified group):
+To change to a specific group:
 
 ```shell
 sudo elastic-agent unprivileged --group="groupname"
@@ -262,19 +308,20 @@ sudo elastic-agent unprivileged --group="groupname"
 ::::
 
 ::::{tab-item} Windows
+:sync: windows
 
 On Windows, the `--password` parameter is required when specifying a custom user account.
 
 To change to a specific user:
 
 ```shell
-elastic-agent.exe unprivileged --user="my.domain\username" --password="mypassword"
+elastic-agent unprivileged --user="my.domain\username" --password="mypassword"
 ```
 
 To change to a specific group:
 
 ```shell
-elastic-agent.exe unprivileged --group="my.domain\groupname"
+elastic-agent unprivileged --group="my.domain\groupname"
 ```
 
 ::::
