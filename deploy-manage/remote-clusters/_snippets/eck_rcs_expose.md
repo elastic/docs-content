@@ -18,7 +18,8 @@ spec:
   remoteClusterServer:
     enabled: true
     service:
-      type: LoadBalancer <1>
+      spec:
+        type: LoadBalancer <1>
   nodeSets:
     - name: default
       count: 3
