@@ -13,6 +13,13 @@ This guide shows you how to run an OpenAI-compatible large language model with [
 
 The steps below show one example configuration, but you can use any model supported by vLLM, including private and gated models on Hugging Face.
 
+## Prerequisites
+
+* To set up the necessary {{kib}} connector, the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).  
+* Admin access to a sufficiently powerful server.
+
+## Connect vLLM to {{kib}}
+
 :::::{stepper}
 
 ::::{step} Configure your host server
@@ -160,7 +167,7 @@ Finally, create the connector within your Elastic deployment to link it to your 
   3. The `content` field must remain empty for any assistant message that performs a tool call.
   4. Only use tool calls defined in the "tools" parameter.
   ```
-
+::::
 :::::
 
 Setup is now complete. The model served by your vLLM container can now power Elastic's generative AI features.
