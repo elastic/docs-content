@@ -38,48 +38,18 @@ $$$next-steps$$$**After running the installation command, I can't move on to the
 :   If an error appears on the screen, follow the suggestion in the error message and try to run the command again. If the issue is not resolved, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
 $$$firewall$$$**My organization's firewall may be preventing {{agent}} from collecting and sending metrics.**
-:   If you suspect that a corporate firewall is hindering {{agent}}, complete the following steps to test each component of the connection and implement an appropriate solution. 
+:   If you're having issues with connecting your self-managed cluster to AutoOps and you suspect that a firewall may be the reason, complete the following steps to test each component of the connection and implement an appropriate solution. 
 
     :::{tip}
     Run the following tests within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the container, and so on. 
     :::
 
-    There are three main components of {{agent}}'s connection with your system:
+    There are [three main components](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#how-your-self-managed-cluster-connects-to-autoops) of {{agent}}'s connection with your system:
 
-    1. {{agent}} registers your cluster with {{ecloud}}
-    2. {{agent}} connects to your cluster
-    3. {{agent}} sends metrics from your cluster to {{ecloud}}
-
-    If there is an issue with the first component, the agent will stop working and your logs might look like: 
-    
-    ```sh
-    ... failed to register Cloud Connected Mode: ... Post \"https://api.elastic-cloud.com/api/v1/cloud-connected/clusters\": ...
-    ```
-    
-    To test if your organization is not allowing the agent to register your cluster with {{ecloud}}, run the following command:
-
-    ```json
-    curl -XPOST -i \
-    https://api.elastic-cloud.com/api/v1/cloud-connected/clusters \
-    -H 'Content-Type: application/json' \
-    -d '{"self_managed_cluster": {"id": "my-cluster-uuid", "name": "my-cluster-name", "version": "9.1.0"}, "license": {"uid": "my-license-id", "type": "basic"}}'
-    ```
-    
-    The command should return an HTTP 401 response similar to: 
-
-    ```json
-          {"UnauthorizedMessages":["Invalid credential headers"],"Cause":null}
-    ```
-    If you do not receive a similar response, configure your HTTP proxy to allow it to reach the URL (with headers and a JSON body):
-    
-    ```json
-          POST https://api.elastic-cloud.com/api/v1/cloud-connected/clusters
-    ```
-    :::{note}
-    If you are using Docker, you may need to complete this configuration directly via the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
+    :::{include} /deploy-manage/monitor/_snippets/autoops-cc-components.md
     :::
 
-    If there is an issue with the second component, {{agent}} cannot connect to your cluster. To test if your organization is not allowing this connection, run the following command depending on your chosen authentication method:
+    If there is an issue with the first component, {{agent}} cannot connect to your cluster. To test if your organization is not allowing this connection, run the following command depending on your chosen authentication method:
 
     :::::{tab-set}
     :group: api-key-or-basic
@@ -138,6 +108,34 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
     | You are using a custom SSL/TLS configuration with {{es}} | Disable SSL/TLS verification so that your system trusts all certificates. We do not recommend disabling verification in production environments. <br><br> If you are using API key authentication, run the following command: <br><br>`curl -XGET --insecure -i $AUTOOPS_ES_URL \ -H "Authorization: ApiKey $AUTOOPS_ES_API_KEY"`. <br><br> If you are using username/password authentication, run the following command: <br><br> `curl -XGET --insecure -i $AUTOOPS_ES_URL \ -u $AUTOOPS_ES_USERNAME` <br><br> If the issue is resolved, you need to configure your custom SSL/TLS settings with {{agent}}. If the issue persists, contact [Elastic support](https://support.elastic.co/).| 
     | You are connecting a local development cluster using Docker without specifying `--network host` | - Make sure you are following all the steps to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md#connect-your-local-development-cluster-to-autoops). <br> - In the [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) step, make sure you are replacing `docker run -d \` with `docker run -d --network host \`. |
 
+    If there is an issue with the second component, the agent will stop working and your logs might look like: 
+    
+    ```sh
+    ... failed to register Cloud Connected Mode: ... Post \"https://api.elastic-cloud.com/api/v1/cloud-connected/clusters\": ...
+    ```
+    
+    To test if your organization is not allowing the agent to register your cluster with {{ecloud}}, run the following command:
+
+    ```json
+    curl -XPOST -i \
+    https://api.elastic-cloud.com/api/v1/cloud-connected/clusters \
+    -H 'Content-Type: application/json' \
+    -d '{"self_managed_cluster": {"id": "my-cluster-uuid", "name": "my-cluster-name", "version": "9.1.0"}, "license": {"uid": "my-license-id", "type": "basic"}}'
+    ```
+    
+    The command should return an HTTP 401 response similar to: 
+
+    ```json
+          {"UnauthorizedMessages":["Invalid credential headers"],"Cause":null}
+    ```
+    If you do not receive a similar response, configure your HTTP proxy to allow it to reach the URL (with headers and a JSON body):
+    
+    ```json
+          POST https://api.elastic-cloud.com/api/v1/cloud-connected/clusters
+    ```
+    :::{note}
+    If you are using Docker, you may need to complete this configuration directly via the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
+    :::
 
     If there is an issue with the third component, the agent will attempt to establish the connection and your logs might look like: 
         

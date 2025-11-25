@@ -64,7 +64,7 @@ elastic-agent install --url=https://your-fleet-server.elastic.co:443 \
 --certificate-authorities=/path/to/fleet-ca,/path/to/agent-ca \
 --elastic-agent-cert=/path/to/agent-cert \
 --elastic-agent-cert-key=/path/to/agent-cert-key \
---elastic-agent-cert-key=/path/to/agent-cert-key-passphrase \
+--elastic-agent-cert-key-passphrase=/path/to/agent-cert-key-passphrase \
 --fleet-server-es=https://es.elastic.com:443 \
 --fleet-server-es-ca=/path/to/es-ca \
 --fleet-server-es-cert=/path/to/fleet-es-cert \
@@ -91,7 +91,7 @@ To establish a mutual TLS connection, the agent presents its certificate, `agent
 :alt: Diagram of mutual TLS connection between Fleet Server and Elasticsearch
 :::
 
-Note that you can also configure mutual TLS for {{fleet-server}} and {{agent}} [using a proxy](/reference/fleet/mutual-tls.md#mutual-tls-cloud-proxy).
+You can also configure mutual TLS for {{fleet-server}} and {{agent}} [using a proxy](/reference/fleet/mutual-tls.md#mutual-tls-cloud-proxy).
 
 
 ### Relationship between components in a mutual TLS connection [_relationship_between_components_in_a_mutual_tls_connection]
