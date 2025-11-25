@@ -10,7 +10,7 @@ products:
 
 Beginning with {{stack}} version 8.15, {{agent}} is no longer required to be run by a user with superuser privileges. You can now run agents in an `unprivileged` mode that does not require `root` access on Linux or macOS, or `admin` access on Windows. Being able to run agents without full administrative privileges is often a requirement in organizations where this kind of access is often limited.
 
-In general, agents running without full administrative privileges will perform and behave exactly as those run by a superuser. There are certain integrations and datastreams that are not available, however. If an integration requires root access, this is [indicated on the integration main page](#unprivileged-integrations).
+In general, agents running without full administrative privileges will perform and behave exactly as those run by a superuser. There are certain integrations and data streams that are not available, however. If an integration requires root access, this is [indicated on the integration main page](#unprivileged-integrations).
 
 You can also [change the privilege mode](#unprivileged-change-mode) of an {{agent}} after it has been installed.
 

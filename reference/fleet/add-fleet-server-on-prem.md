@@ -55,7 +55,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 
 Before deploying, you need to:
 
-* Obtain or generate a Cerfiticate Authority (CA) certificate.
+* Obtain or generate a Certificate Authority (CA) certificate.
 * Ensure components have access to the ports needed for communication.
 
 

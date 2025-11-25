@@ -37,7 +37,7 @@ Enabling deployment and cronjob metadata enrichment leads to an increase of Elas
 
 As an alternative to keeping the feature enabled and using more memory resources for {{agent}}, users can make use of ingest pipelines to add the missing fields of `kubernetes.deployment.name` and `kubernetes.cronjob.name`.
 
-Navigate to `state_pod` datastream under: **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**.
+Navigate to `state_pod` data stream under: **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**.
 
 Create the following custom ingest pipeline with two processors:
 

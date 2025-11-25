@@ -49,7 +49,7 @@ The {{k8s}} {{observability}} is based on [Elastic {{k8s}} integration](integrat
     * apiserver
 
 
-Controller manager and Scheduler datastreams are being enabled only on the specific node that actually runs based on autodiscovery rules
+Controller manager and Scheduler data streams are being enabled only on the specific node that actually runs based on autodiscovery rules
 
 The default manifest provided deploys {{agent}} as DaemonSet which results in an {{agent}} being deployed on every node of the {{k8s}} cluster.
 
@@ -142,7 +142,7 @@ Tests have run until 10K pods per cluster. Scaling to bigger number of pods migh
 
 Setting the low priority to {{agent}} comparing to other pods might also result to {{agent}} being in Pending State.The scheduler tries to preempt (evict) lower priority Pods to make scheduling of the higher pending Pods possible.
 
-Trying to prioritise the agent installation before rest of application microservices, [PriorityClasses suggested](https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16)
+Trying to prioritize the agent installation before rest of application microservices, [PriorityClasses suggested](https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16)
 
 
 #### {{k8s}} Package configuration [_k8s_package_configuration]
@@ -156,18 +156,18 @@ Policy configuration of {{k8s}} package can heavily affect the amount of metrics
 * Disable {{k8s}} control plane datasets in Cloud managed {{k8s}} instances (see more info ** [Run {{agent}} on GKE managed by {{fleet}}](/reference/fleet/running-on-gke-managed-by-fleet.md), [Run {{agent}} on Amazon EKS managed by {{fleet}}](/reference/fleet/running-on-eks-managed-by-fleet.md), [Run {{agent}} on Azure AKS managed by {{fleet}}](/reference/fleet/running-on-aks-managed-by-fleet.md) pages)
 
 
-#### Dashboards and visualisations [_dashboards_and_visualisations]
+#### Dashboards and visualizations [_dashboards_and_visualisations]
 
 The [Dashboard Guidelines](https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md) document provides guidance on how to implement your dashboards and is constantly updated to track the needs of Observability at scale.
 
-User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashboards can contain multiple visualisations, the general consideration is to split visualisations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
+User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashboards can contain multiple visualizations, the general consideration is to split visualizations and group them according to the frequency of access. The less number of visualizations tends to improve user experience.
 
 
 #### Disabling indexing host.ip and host.mac fields [_disabling_indexing_host_ip_and_host_mac_fields]
 
-A new environemntal variable `ELASTIC_NETINFO: false` has been introduced to globally disable the indexing of `host.ip` and `host.mac` fields in your {{k8s}} integration. For more information see [Environment variables](/reference/fleet/agent-environment-variables.md).
+A new environmental variable `ELASTIC_NETINFO: false` has been introduced to globally disable the indexing of `host.ip` and `host.mac` fields in your {{k8s}} integration. For more information see [Environment variables](/reference/fleet/agent-environment-variables.md).
 
-Setting this to `false` is recommended for large scale setups where the `host.ip` and `host.mac` fields' index size increases. The number of IPs and MAC addresses reported increases significantly as a Kubenetes cluster grows. This leads to considerably increased indexing time, as well as the need for extra storage and additional overhead for visualization rendering.
+Setting this to `false` is recommended for large scale setups where the `host.ip` and `host.mac` fields' index size increases. The number of IPs and MAC addresses reported increases significantly as a Kubernetes cluster grows. This leads to considerably increased indexing time, as well as the need for extra storage and additional overhead for visualization rendering.
 
 
 #### Elastic Stack configuration [_elastic_stack_configuration]
@@ -186,7 +186,7 @@ After {{agent}} deployment, we need to verify that Agent services are healthy, n
 
 **For stability:**
 
-If {{agent}} is configured as managed, in {{kib}} you can observe under **Fleet>Agents**
+If {{agent}} is configured as managed, in {{kib}} you can observe under **Fleet** > **Agents**
 
 :::{image} images/kibana-fleet-agents.png
 :alt: {{agent}} Status
@@ -236,7 +236,7 @@ It is a common problem of lack of CPU/memory resources that agent process restar
 
 ```json
 kubectl logs -n kube-system elastic-agent-qw6f4 | grep "kubernetes/metrics"
-[ouptut truncated ...]
+[output truncated ...]
 
 (HEALTHY->STOPPED): Suppressing FAILED state due to restart for '46554' exited with code '-1'","log":{"source":"elastic-agent"},"component":{"id":"kubernetes/metrics-default","state":"STOPPED"},"unit":{"id":"kubernetes/metrics-default-kubernetes/metrics-kube-state-metrics-c6180794-70ce-4c0d-b775-b251571b6d78","type":"input","state":"STOPPED","old_state":"HEALTHY"},"ecs.version":"1.6.0"}
 {"log.level":"info","@timestamp":"2023-04-03T09:33:38.919Z","log.origin":{"file.name":"coordinator/coordinator.go","file.line":861},"message":"Unit state changed kubernetes/metrics-default-kubernetes/metrics-kube-apiserver-c6180794-70ce-4c0d-b775-b251571b6d78 (HEALTHY->STOPPED): Suppressing FAILED state due to restart for '46554' exited with code '-1'","log":{"source":"elastic-agent"}
@@ -275,7 +275,7 @@ Identify how many events have been sent to {{es}}:
 
 ```bash
 kubectl logs -n kube-system elastic-agent-h24hh -f | grep -i state_pod
-[ouptut truncated ...]
+[output truncated ...]
 
 "state_pod":{"events":2936,"success":2936}
 ```
@@ -286,9 +286,9 @@ For example, in a cluster with 798 pods, then 798 docs should be depicted in blo
 
 #### Define if {{es}} is the bottleneck of ingestion [_define_if_es_is_the_bottleneck_of_ingestion]
 
-In some cases maybe the {{es}} can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilisation, installation of an [{{stack}} monitoring cluster](/deploy-manage/monitor/stack-monitoring.md) is advised.
+In some cases maybe the {{es}} can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilization, installation of an [{{stack}} monitoring cluster](/deploy-manage/monitor/stack-monitoring.md) is advised.
 
-Additionally, in {{ecloud}} deployments you can navigate to **Manage Deployment > Deployments > Monitoring > Performance**. Corresponding dashboards for `CPU Usage`, `Index Response Times` and `Memory Pressure` can reveal possible problems and suggest vertical scaling of {{stack}} resources.
+Additionally, in {{ecloud}} deployments you can navigate to **Manage Deployment** > **Deployments** > **Monitoring** > **Performance**. Corresponding dashboards for `CPU Usage`, `Index Response Times` and `Memory Pressure` can reveal possible problems and suggest vertical scaling of {{stack}} resources.
 
 ## Relevant links [_relevant_links]
 

@@ -300,6 +300,9 @@ For information on configuring monitors individually, refer to:
 * [Configure individual browser monitors](/solutions/observability/synthetics/configure-individual-browser-monitors.md) for browser monitors
 * [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md) for lightweight monitors
 
+`maintenanceWindows` (`Array<string>`)
+:   A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+
 ## `proxy` [synthetics-configuration-proxy]
 
 `uri` (`string`)
