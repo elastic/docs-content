@@ -42,9 +42,9 @@ Set up your server then install all necessary GPU drivers.
 
 
 1. (Optional) Create a Hugging Face user token. If you plan to use a gated model (such as Llama 3.1) or a private model, create a [Hugging Face user access token](https://huggingface.co/docs/hub/en/security-tokens).
-  1. Log in to your Hugging Face account.
-  2. Navigate to **Settings > Access Tokens**.
-  3. Create a new token with at least `read` permissions. Save it in a secure location.
+    1. Log in to your Hugging Face account.
+    2. Navigate to **Settings > Access Tokens**.
+    3. Create a new token with at least `read` permissions. Save it in a secure location.
  
 2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between Elastic and your reverse proxy.
 
