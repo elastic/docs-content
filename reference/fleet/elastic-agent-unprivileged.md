@@ -188,24 +188,92 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 In certain cases you may want to install {{agent}} in `unprivileged` mode, with the agent running as a pre-existing user or as part of a pre-existing group. For example, on a Windows system you may have a service account in Active Directory and you’d like {{agent}} to run under that account.
 
-To install {{agent}} in `unprivileged` mode as a specific user, add the `--user` and `--password` parameters to the install command:
+::::{note}
+The `--password` parameter is only required on Windows. On Linux and macOS, specifying the `--user` and/or `--group` parameters is sufficient.
+::::
+
+To install {{agent}} in `unprivileged` mode as a specific user or group, use the following commands:
+
+:::::{tab-set}
+
+::::{tab-item} Linux/macOS
+
+To install as a specific user:
 
 ```shell
-elastic-agent install --unprivileged  --user="my.path\username" --password="mypassword"
+sudo elastic-agent install --unprivileged --user="username"
 ```
 
-To install {{agent}} in `unprivileged` mode as part of a specific group, add the `--group` and `--password` parameters to the install command:
+To install as part of a specific group:
 
 ```shell
-elastic-agent install --unprivileged  --group="my.path\groupname" --password="mypassword"
+sudo elastic-agent install --unprivileged --group="groupname"
 ```
 
-Alternatively, if you have {{agent}} already installed with administrative privileges, you can change the agent to use `unprivileged` mode and to run as a specific user or in a specific group. For example:
-
-```shell
-elastic-agent unprivileged --user="my.path\username" --password="mypassword"
-```
+To install as a specific user and group:
 
 ```shell
-elastic-agent unprivileged --group="my.path\groupname" --password="mypassword"
+sudo elastic-agent install --unprivileged --user="username" --group="groupname"
 ```
+
+::::
+
+::::{tab-item} Windows
+
+On Windows, the `--password` parameter is required when specifying a custom user account.
+
+To install as a specific user:
+
+```shell
+elastic-agent.exe install --unprivileged --user="my.domain\username" --password="mypassword"
+```
+
+To install as part of a specific group:
+
+```shell
+elastic-agent.exe install --unprivileged --group="my.domain\groupname"
+```
+
+::::
+
+:::::
+
+Alternatively, if you have {{agent}} already installed with administrative privileges, you can change the agent to use `unprivileged` mode and to run as a specific user or in a specific group.
+
+:::::{tab-set}
+
+::::{tab-item} Linux/macOS
+
+To change to a specific user:
+
+```shell
+sudo elastic-agent unprivileged --user="username"
+```
+
+To change to a specific group:
+
+```shell
+sudo elastic-agent unprivileged --group="groupname"
+```
+
+::::
+
+::::{tab-item} Windows
+
+On Windows, the `--password` parameter is required when specifying a custom user account.
+
+To change to a specific user:
+
+```shell
+elastic-agent.exe unprivileged --user="my.domain\username" --password="mypassword"
+```
+
+To change to a specific group:
+
+```shell
+elastic-agent.exe unprivileged --group="my.domain\groupname"
+```
+
+::::
+
+:::::
