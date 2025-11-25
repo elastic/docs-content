@@ -90,7 +90,7 @@ The following file extensions are used for the approximate kNN search: Each exte
 * `veb` for binary vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `bbq`
 * `vem`, `vemf`, `vemq`, and `vemb` for metadata, usually small and not a concern for preloading
 
-Generally, if you are using a quantized index, you should only preload the relevant quantized values and index structures such as the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive.
+Generally, if you are using a quantized index, you should only preload the relevant quantized values and index structures such as the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive as paging in the raw vectors may cause the OS to kick important index structures out of cache.
 
 Additional detail can be gathered about the specific files by using the [stats endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats), which will display information about the index and fields.
 
