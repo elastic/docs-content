@@ -67,7 +67,7 @@ This makes it easy to pinpoint and fix performance problems quickly.
 
 In addition to supporting upstream OTel development, Elastic provides Elastic Distributions of OpenTelemetry (EDOT), specifically designed to work with {{product.observability}}.
 
-[Learn more about EDOT collectors](opentelemetry://reference/index.md).
+[Learn more about EDOT](opentelemetry://reference/index.md).
 
 ### {{beats}} [stack-components-beats]
 
