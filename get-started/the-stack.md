@@ -99,7 +99,7 @@ You can use the {{es}} clients to access data directly by using common programmi
 ### {{es}} [stack-components-elasticsearch]
 
 {{es}} provides near real-time search and analytics for all types of data.
-Whether you have structured or unstructured text, numerical data, vectors, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches.
+Whether you have structured or unstructured text, time series (timestamped) data, vectors, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches.
 
 {{es}} is built to be a resilient and scalable distributed system.
 It runs as a cluster of one or more servers, called nodes.
