@@ -17,7 +17,7 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
   training resources to get started.
 ---
 
-# Get started
+# Elastic fundamentals
 
 Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
 

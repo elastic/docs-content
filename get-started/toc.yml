@@ -1,11 +1,11 @@
 project: 'Elastic Fundamentals'
 toc:
   - file: index.md
+  - file: evaluate-elastic.md
   - file: introduction.md
   - file: the-stack.md
   - file: deployment-options.md
   - file: versioning-availability.md
-  - file: evaluate-elastic.md
   - file: howto-use-the-docs.md
   - title: Glossary
     crosslink: docs-content://reference/glossary/index.md
