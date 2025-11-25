@@ -13,18 +13,49 @@ description: Use Discover to search and filter documents, analyze field structur
 
 **Discover** is the primary tool for exploring your {{product.elasticsearch}} data in {{product.kibana}}. Search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards. Whether investigating issues, analyzing trends, or validating data quality, **Discover** offers a flexible interface for understanding your data.
 
-Key capabilities:
-
-- Search with KQL, Lucene, or {{esql}} queries
-- Analyze field statistics and distributions
-- Create visualizations from your data
-- Save searches for reuse and sharing
-- Run pattern analysis on log data
-- Get Context-aware experiences for logs, metrics, and traces
-- Run Background search for long-running queries
-
 :::{image} /explore-analyze/images/kibana-hello-field.png
 :alt: A view of the Discover app
 :screenshot:
 :::
 
+## What you can do with Discover
+
+**Search and explore**
+: Search through your data using KQL, Lucene, or {{esql}}. Filter results to focus on what matters. Discover adapts its interface based on the type of data you're exploring, providing specialized experiences for logs, metrics, and other data types.
+
+**Analyze fields and documents**
+: View field statistics, examine individual documents, compare multiple documents side by side, and find patterns in your log data.
+
+**Visualize on the fly**
+: Create quick visualizations from aggregatable fields, or use {{esql}} to build charts directly from your queries.
+
+**Save and share**
+: Save your Discover sessions to reuse later, add them to dashboards, or share them with your team. You can also generate reports and create alerts based on your searches.
+
+## Get started
+
+New to Discover? Start with these resources:
+
+* **[Get started with Discover](discover/discover-get-started.md)** - A hands-on tutorial that walks you through exploring data, from loading data to filtering and visualizing your findings.
+* **[Using {{esql}}](discover/try-esql.md)** - Learn how to use the {{es}} Query Language for powerful data exploration.
+
+## Common tasks
+
+Once you're familiar with the basics, explore these guides for specific tasks:
+
+* **[Search and filter data](discover/discover-get-started.md)** - Build queries and apply filters to narrow down your results.
+* **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
+* **[Save a search for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
+
+## Advanced features
+
+Explore the **Discover** documentation to learn more about the following capabilities:
+
+* Compare documents side by side
+* Add runtime fields to your {{data-source}}
+* Work with multiple tabs
+* Understand context-aware experiences
+* Run queries in the background
+* Generate alerts
+* Analyze field statistics and patterns
+* Search for relevance
