@@ -28,12 +28,34 @@ Refer to [Agent and dashboard behaviors in unprivileged mode](#unprivileged-comm
 
 To run {{agent}} without administrative privileges you use exactly the same commands that you use for {{agent}} otherwise, with one exception. When you run the [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) command, add the `--unprivileged` flag. For example:
 
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
+
 ```shell
-elastic-agent install \
+sudo elastic-agent install \
   --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 \
   --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== \
   --unprivileged
 ```
+
+::::
+
+::::{tab-item} Windows
+:sync: windows
+
+```shell
+elastic-agent install `
+  --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 `
+  --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== `
+  --unprivileged
+```
+
+::::
+
+:::::
 
 ::::{important}
 Note the following current restrictions for running {{agent}} in `unprivileged` mode:
