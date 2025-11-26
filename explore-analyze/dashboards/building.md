@@ -30,4 +30,4 @@ To create or edit dashboards, you need:
   If you don't have data at hand and still want to explore dashboards, you can import one of the [sample data sets](../../manage-data/ingest/sample-data.md) available.
   ::::
 
-* Sufficient permissions on the **Dashboard** feature. If that's not the case, you might get a read-only indicator. A {{product.kibana}} administrator can [grant you the required privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* Sufficient privileges for the **Dashboard** feature. Without them, you might get a read-only indicator. A {{product.kibana}} administrator can [grant you the required privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).

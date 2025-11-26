@@ -11,7 +11,7 @@ products:
 
 # Add drilldowns [drilldowns]
 
-Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range or click a pie slice, a filter for the time range or pie slice is applied. **Drilldowns** let you customize and extend this interactive behavior by defining what happens when users click on data points, all while keeping the context of the interaction such as filters, time ranges, and selected values.
+Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range slider or click a pie chart slice, this applies a filter for the time range or pie slice. **Drilldowns** let you customize and extend this interactive behavior by defining what happens when you click on data points, while keeping interaction context such as filters, time ranges, and selected values.
 
 ## Requirements [drilldowns-requirements]
 

@@ -11,7 +11,7 @@ products:
 
 # Add filter controls [add-controls]
 
-**Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore more quickly. Controls apply filtering conditions across all relevant panels in a dashboard, making it easier for users to focus on specific data segments without writing complex queries.
+**Controls** are interactive options that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters across all relevant panels in a dashboard to focus on specific data segments without writing filtering queries.
 
 ## Requirements [add-controls-requirements]
 

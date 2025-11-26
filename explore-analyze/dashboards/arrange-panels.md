@@ -11,7 +11,7 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
-Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, your dashboard becomes easier to read, faster to load, and helps viewers locate important information more quickly.
+Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, your dashboard becomes easier to read, loads faster, and helps viewers locate important information more quickly.
 
 ## Requirements [arrange-panels-requirements]
 
