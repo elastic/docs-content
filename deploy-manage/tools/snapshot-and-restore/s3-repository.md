@@ -432,7 +432,7 @@ stack: ga 9.3
 
 From 9.3.0 onwards the linearizable register implementation for S3 repositories is based on [S3's conditional writes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html) using the `If-None-Match` and `If-Match` request headers.
 
-If your storage does not support conditional writes then it is not fully S3-compatible. However, if this is its only deviation in behaviour from AWS S3 then it will still work correctly with {{es}} as long as its multipart upload APIs have strongly consistent semantics, as described below. Future versions of {{es}} may remove this lenient behaviour and require your storage to support conditional writes. Please contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
+If your storage does not support conditional writes then it is not fully S3-compatible. However, if this is its only deviation in behavior from AWS S3 then it will work correctly with {{es}} as long as its multipart upload APIs have strongly consistent semantics, as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
 
 ### Multipart uploads
 
