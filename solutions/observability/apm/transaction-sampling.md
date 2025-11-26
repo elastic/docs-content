@@ -161,6 +161,8 @@ Terminology:
 * Event Ingestion Rate: The throughput from the APM agent to the APM Server using the Intake v2 protocol (the protocol used by Elastic APM agents), measured in events per second.
 * Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second. Note that it should roughly be equal to Event Ingestion Rate * Sampling Rate.
 * Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
+* TBS: Tail-based sampling.
+* IOPS: Input/Output Operations Per Second, which is a measure of disk performance.
 
 #### APM Server 9.2
 
