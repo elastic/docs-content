@@ -9,6 +9,53 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## November 24, 2025 [serverless-changelog-11242025]
+
+### Features and enhancements [serverless-changelog-11242025-features-enhancements]
+
+* Allows users to edit scheduled exports [#241928]({{kib-pull}}241928)
+* Uses `type@lifecycle` ILMs for new package installations [#241992]({{kib-pull}}241992)
+* Allows {{esql}} to support subqueries in the `FROM` command [#241921]({{kib-pull}}241921)
+* Suggests adding curly braces after the `WITH` keyword for Rerank and Completion [#243047]({{kib-pull}}243047)
+* Supports the new `exponential_histogram` {{es}} field type [#242748]({{kib-pull}}242748)
+* Wraps the fork subcommands inside the `parens` node [#242369]({{kib-pull}}242369)
+* Simplifies the search visor experience [#242123]({{kib-pull}}242123)
+* Auto-scrolls to the suggestions panel in Streams  [#242891]({{kib-pull}}242891)
+* Shows user-readable output for the MDE runscript response action [#242441]({{kib-pull}}242441)
+* Saves the selected prevalence time to local storage [#243543]({{kib-pull}}243543)
+* Saves the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571)
+* Adds custom header support for inference endpoint creation [#242187]({{kib-pull}}242187)
+* Adds the `replace` processor to Streamlang DSL for string patterns replacement using regular expressions [#242310]({{kib-pull}}242310)
+* Adds automatic dissect pattern generation capabilities to the Streams processing pipeline [#242377]({{kib-pull}}242377)
+* Adds a rows per page selector to the tools, agents, and agent tools selection views [#242207]({{kib-pull}}242207)
+
+### Fixes [serverless-changelog-11242025-fixes]
+
+* Uses the real dimensions when taking a screenshot of reports [#242127]({{kib-pull}}242127)
+* Fixes a print mode regression in Dashboards [#242780]({{kib-pull}}242780)
+* Fixes an issue where users could not save a dashboard after switching a dashboard link to an external URL [#243134]({{kib-pull}}243134)
+* Uses `max_value` instead of infinity for the default maximum height of a panel in Dashboards [#243572]({{kib-pull}}243572)
+* Adds retry behavior for `/api/fleet/agents` when transient issues with {{es}} are encountered [#243105]({{kib-pull}}243105)
+* Uses a long expiration time for upgrade agents [#243443]({{kib-pull}}243443)
+* Fixes retrying stuck agents in auto upgrade logic [#243326]({{kib-pull}}243326)
+* Fixes the CPU query in Pod details by changing the gap policy to include zeros [#239596]({{kib-pull}}239596)
+* Fixes the KPIs subtitle logic [#243217]({{kib-pull}}243217)
+* Fixes custom links clearing filter values when a new field is selected or deleted [#241164]({{kib-pull}}241164)
+* Updates the system prompt title for generic deployments [#243266]({{kib-pull}}243266)
+* Fixes the squished Apple icon on Auto Detect flow cards [#242452]({{kib-pull}}242452)
+* Handles the missing `error.id` when processing causes an error [#243638]({{kib-pull}}243638)
+* Removes the block that prevented saving a Timeline with an ad-hoc dataview [#240537]({{kib-pull}}240537)
+* Fixes the response actions API for {{elastic-defend}} agent types, not sending the action to more than 10 agents [#243387]({{kib-pull}}243387)
+* Fixes favicon CSS specificity issues [#243351]({{kib-pull}}243351)
+* Fixes infinite loading of roles on the Edit spaces screen [#242954]({{kib-pull}}242954)
+* Fixes import and improves validation for Anomaly Detection and Data Frame Analytics jobs [#242263]({{kib-pull}}242263)
+* Fixes keyboard focus getting trapped in pages using document preview [#243791]({{kib-pull}}243791)
+* Reverts "Fix issue where filters do not apply to overview stats" [#242978]({{kib-pull}}242978)
+* Disables custom suggestion on embedded console [#241516]({{kib-pull}}241516)
+* Shows the AI log assistant with fallback message fields [#243437]({{kib-pull}}243437)
+* Ignores `resource_already_exists_exception` for value list creation hook [#243642]({{kib-pull}}243642)
+* Prevents crashes on the Retention page for certain ILM policies [#243826]({{kib-pull}}243826)
+
 ## November 17, 2025 [serverless-changelog-11172025]
 
 ### Features and enhancements [serverless-changelog-11172025-features-enhancements]
