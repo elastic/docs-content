@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Reference for querying the event log index to diagnose rule execution and action performance.
 ---
 
 # Event log index [event-log-index]

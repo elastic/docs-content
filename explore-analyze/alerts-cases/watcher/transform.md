@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for transforms that process and modify watch payload data.
 ---
 
-# Transforms [transform]
+# Watch transforms [transform]
 
-A *{{watcher-transform}}* processes and changes the payload in the watch execution context to prepare it for the watch actions. {{watcher}} supports three types of {{watcher-transforms}}:
+A {{watcher-transform}} processes and changes the payload in the watch execution context to prepare it for the watch actions. You can define transforms at the watch level to apply to all actions, or per action for action-specific payload preparation. {{watcher}} supports three transform types: search, script, and chain.
 
 * [`search`](transform-search.md)
 * [`script`](transform-script.md)

@@ -10,9 +10,12 @@ products:
   - id: kibana
   - id: cloud-serverless
   - id: cloud-hosted
+description: Overview of alerts and rules for monitoring data and sending notifications when conditions are met.
 ---
 
-# Alerts
+# Alerts [alerts]
+
+Alerts enable you to monitor your data continuously and receive notifications when specific conditions are met. Using rules, you define what to detect, how often to check, and what actions to take—such as sending emails, creating Slack messages, or triggering webhooks. This proactive monitoring helps you identify and respond to issues quickly, whether you're tracking infrastructure health, security events, or business metrics.
 
 ## {{rules-app}} [rules]
 

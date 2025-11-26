@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Configuration instructions for setting up alerting, including prerequisites and production considerations.
 ---
 
-# Set up [alerting-setup]
+# Set up alerting [alerting-setup]
 
-{{kib}} {{alert-features}} are automatically enabled, but might require some additional configuration.
+{{kib}} {{alert-features}} are automatically enabled but might require additional configuration for encryption keys, email settings, and production deployments. This page covers prerequisites, required settings, and production considerations for running alerting at scale.
 
 ## Prerequisites [alerting-prerequisites]
 

@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the script condition that uses custom scripts to evaluate complex logic.
 ---
 
 # Script condition [condition-script]
 
-A watch [condition](condition.md) that evaluates a script. The default scripting language is `painless`. You can use any of the scripting languages supported by Elasticsearch as long as the language supports evaluating expressions to Boolean values. Note that the `mustache` and `expression` languages are too limited to be used by this condition. For more information, see [Scripting](../../scripting.md).
+Use the **script** condition to evaluate a script that determines whether to execute watch actions. The default scripting language is {{product.painless}}. You can use any scripting language supported by {{product.elasticsearch}} that can evaluate expressions to Boolean values, enabling complex conditional logic beyond simple comparisons.
 
 ## Using a script condition [_using_a_script_condition]
 

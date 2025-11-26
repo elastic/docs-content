@@ -6,13 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the logging action that writes watch information to Elasticsearch logs.
 ---
 
 # Logging action [actions-logging]
 
-Use the `logging` action to log text to the standard Elasticsearch logs. See [Logging action attributes](#logging-action-attributes) for the supported attributes.
-
-This action is primarily used during development and for debugging purposes.
+Use the **logging** action to write text to the standard {{product.elasticsearch}} logs when watch conditions are met. This action is primarily used during development and debugging to verify watch execution and inspect payload data.
 
 ## Configuring logging actions [configuring-logging-actions]
 

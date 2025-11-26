@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Reference for the Elasticsearch query rule type, which runs queries and triggers actions based on match thresholds.
 ---
 
-# Elasticsearch query [rule-type-es-query]
+# {{es}} query rule [rule-type-es-query]
 
-The {{es}} query rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
+The **{{es}} query** rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met. This rule type supports multiple query languages: {{es}} Query Domain Specific Language (Query DSL), {{es}} Query Language ({{esql}}), {{kib}} Query Language (KQL), and Lucene.
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
 

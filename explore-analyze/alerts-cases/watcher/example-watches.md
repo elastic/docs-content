@@ -5,11 +5,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Collection of example watches demonstrating common monitoring scenarios.
 ---
 
 # Example watches [example-watches]
 
-The following example shows how to set up a watch to:
+The following examples demonstrate how to create watches for common monitoring scenarios:
 
 * [Monitor the status of an Elasticsearch cluster](watch-cluster-status.md)
 

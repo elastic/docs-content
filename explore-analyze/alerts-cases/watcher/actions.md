@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for action types that execute when watch conditions are met.
 ---
 
-# Actions [actions]
+# Watch actions [actions]
 
-When a watch’s condition is met, its actions are executed unless it is being [throttled](#actions-ack-throttle). A watch can perform multiple actions. The actions are executed one at a time and each action executes independently. Any failures encountered while executing an action are recorded in the action result and in the watch history.
+When a watch's condition is met, its actions are executed unless throttled. A watch can perform multiple actions, executed sequentially and independently. Actions have access to the watch payload and can use it to customize their behavior, such as using payload data to populate an email template. {{watcher}} supports email, webhook, index, logging, Slack, PagerDuty, and Jira actions.
 
 ::::{note}
 If no actions are defined for a watch, no actions are executed. However, a `watch_record` is still written to the watch history.

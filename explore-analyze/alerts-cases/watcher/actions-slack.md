@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the Slack action that sends messages to Slack channels and users.
 ---
 
 # Slack action [actions-slack]
 
-Use the `slack` action to send messages to a [Slack](https://slack.com/) team’s channels or users. To send Slack messages, you need to [configure at least one Slack account](#configuring-slack) in `elasticsearch.yml`.
+Use the **Slack** action to send messages to Slack channels or users when watch conditions are met. You can format messages with Slack markdown, attach files, and customize message appearance to create effective team notifications.
 
 ## Configuring Slack actions [configuring-slack-actions]
 

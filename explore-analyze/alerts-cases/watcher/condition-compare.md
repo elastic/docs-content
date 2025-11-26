@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the compare condition that evaluates values using comparison operators.
 ---
 
 # Compare condition [condition-compare]
 
-Use the `compare` condition to perform a simple comparison against a value in the watch payload. You can use the `compare` condition without enabling dynamic scripting.
+Use the **compare** condition to perform a simple comparison against a value in the watch payload. You can use the compare condition without enabling dynamic scripting, making it a straightforward way to evaluate numeric, string, list, and object values.
 
 ## Compare condition operators [condition-compare-operators]
 

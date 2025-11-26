@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the PagerDuty action that creates incidents and events in PagerDuty.
 ---
 
 # PagerDuty action [actions-pagerduty]
 
-Use the PagerDuty action to create events in [ PagerDuty](https://pagerduty.com/). To create PagerDuty events, you must [configure at least one PagerDuty account](#configuring-pagerduty) in `elasticsearch.yml`.
+Use the **PagerDuty** action to create events in PagerDuty when watch conditions are met. This action enables you to trigger PagerDuty incidents, route alerts to on-call teams, and integrate {{watcher}} with your incident response workflows.
 
 ## Configuring PagerDuty actions [configuring-pagerduty-actions]
 

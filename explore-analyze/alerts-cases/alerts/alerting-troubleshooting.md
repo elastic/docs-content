@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Troubleshooting guide for diagnosing and resolving issues with alerting rules and connectors.
 ---
 
-# Troubleshooting and limitations of alerting in {{kib}} [alerting-troubleshooting]
+# Troubleshooting and limitations of alerting [alerting-troubleshooting]
 
-Alerting provides many options for diagnosing problems with rules and connectors.
+When issues occur with alerting rules or connectors, {{kib}} provides several diagnostic tools and logging capabilities to help identify and resolve problems. This page covers debugging tools, log analysis, and known limitations of the alerting framework.
 
 ## Check the {{kib}} log [alerting-kibana-log]
 

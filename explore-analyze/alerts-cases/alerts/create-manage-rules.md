@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Instructions for creating, editing, and managing alerting rules in Kibana.
 ---
 
-# Create and manage alerting rules with {{kib}} [create-and-manage-rules]
+# Create and manage alerting rules [create-and-manage-rules]
 
-The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
+The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting where you can create, edit, enable, disable, mute, and delete rules. Different {{kib}} apps like {{observability}}, **Security**, **Maps**, and the **{{ml-app}}** can offer their own rules, all manageable from this central location.
 
 You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rules** in {{kib}} or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 

@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Instructions for configuring case settings including closure options, custom fields, templates, and connectors.
 ---
 
-# Manage case settings in {{kib}} [manage-cases-settings]
+# Manage case settings [manage-cases-settings]
 
-To change case closure options and add custom fields, templates, and connectors for external incident management systems, go to **{{stack-manage-app}} > Cases** and click **Settings**.
+Configure case settings to customize how cases behave, including closure options, custom fields, templates for consistent case creation, and connectors for external incident management systems. Access case settings from **{{stack-manage-app}}** > **Cases** > **Settings**.
 
 To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case and connector features in {{kib}}.
 

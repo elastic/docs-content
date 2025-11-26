@@ -6,11 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Instructions for testing connectors to verify they work correctly before using them in rules.
 ---
 
 # Test connectors [testing-connectors]
 
-In **{{stack-manage-app}} > {{connectors-ui}}**, you can test a newly created connector by navigating to the Test tab of Connector Edit flyout or by clicking "Save & test" button on Create flyout:
+You can test connectors to verify they work correctly before using them in rules. In **{{stack-manage-app}}** > **{{connectors-ui}}**, navigate to the **Test** tab of the connector edit flyout or click **Save & test** when creating a new connector:
 
 :::{image} /explore-analyze/images/kibana-connector-save-and-test.png
 :alt: Rule management page with the errors banner

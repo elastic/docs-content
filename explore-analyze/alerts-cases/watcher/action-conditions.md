@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Instructions for adding per-action conditions to execute different actions based on specific criteria.
 ---
 
 # Adding conditions to actions [action-conditions]
 
-When a watch is triggered, its condition determines whether or not to execute the watch actions. Within each action, you can also add a condition per action. These additional conditions enable a single alert to execute different actions depending on a their respective conditions. The following watch would always send an email, when hits are found from the input search, but only trigger the `notify_pager` action when there are more than 5 hits in the search result.
+When a watch is triggered, its condition determines whether to execute the watch actions. You can also add a condition to each individual action, enabling a single watch to execute different actions based on their respective conditions. For example, a watch could always send an email when hits are found but only trigger a pager notification when there are more than 5 hits.
 
 ```console
 PUT _watcher/watch/log_event_watch

@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Instructions for configuring user privileges and access permissions for case management.
 ---
 
-# Configure access to cases in {{kib}} [setup-cases]
+# Configure access to cases [setup-cases]
 
-To access cases in **{{stack-manage-app}}**, you must have the appropriate {{kib}} privileges:
+To access and manage cases in **{{stack-manage-app}}**, users must have the appropriate {{kib}} feature privileges. You can grant full access to manage cases and settings, assignee access to work on cases, or read-only access to view cases.
 
 ## Give full access to manage cases and settings [_give_full_access_to_manage_cases_and_settings]
 

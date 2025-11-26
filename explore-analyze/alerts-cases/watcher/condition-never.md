@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the never condition that skips watch actions on every trigger.
 ---
 
 # Never condition [condition-never]
 
-Use the `never` condition to skip performing the watch actions whenever the watch is triggered. The watch input is processed, a record is added to the watch history, and watch execution ends. This condition is generally used for testing.
+Use the **never** condition to skip performing the watch actions whenever the watch is triggered. The watch input is processed and a record is added to the watch history, but watch execution ends without executing actions. This condition is generally used for testing.
 
 ## Using the never condition [_using_the_never_condition]
 

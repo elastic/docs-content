@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the Jira action that creates issues in Atlassian Jira Software.
 ---
 
 # Jira action [actions-jira]
 
-Use the `jira` action to create issues in [Atlassian’s Jira Software](https://www.atlassian.com/software/jira). To create issues you need to [configure at least one Jira account](#configuring-jira) in `elasticsearch.yml`.
+Use the **Jira** action to create issues in Atlassian Jira Software when watch conditions are met. This action enables you to automatically generate Jira tickets, track incidents, and integrate {{watcher}} with your project management workflows.
 
 ## Configuring Jira actions [configuring-jira-actions]
 

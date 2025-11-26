@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the search input type that loads Elasticsearch query results into watch execution context.
 ---
 
 # Search input [input-search]
 
-Use the `search` input to load the results of an Elasticsearch search request into the execution context when the watch is triggered. See [Search Input Attributes](#search-input-attributes) for all of the supported attributes.
+Use the **search** input to load the results of an {{product.elasticsearch}} search request into the execution context when the watch is triggered. The search request body supports the full {{product.elasticsearch}} Query DSL, enabling you to retrieve and analyze any data indexed in your cluster.
 
 In the search input’s `request` object, you specify:
 

@@ -5,11 +5,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Example watch that monitors Elasticsearch cluster health status.
 ---
 
-# Watching the status of an Elasticsearch cluster [watch-cluster-status]
+# Watching the status of an {{product.elasticsearch}} cluster [watch-cluster-status]
 
-You can easily configure a basic watch to monitor the health of your Elasticsearch cluster:
+You can configure a basic watch to monitor the health of your {{product.elasticsearch}} cluster and send notifications when the cluster status changes:
 
 * [Schedule the watch and define an input](#health-add-input) that gets the cluster health status.
 * [Add a condition](#health-add-condition) that evaluates the health status to determine if action is required.

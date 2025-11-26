@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Reference for the Tracking containment rule type for geospatial alerting on entity movements.
 ---
 
-# Tracking containment [geo-alerting]
+# Tracking containment rule [geo-alerting]
 
-The tracking containment rule alerts when an entity is contained or no longer contained within a boundary.
+The **Tracking containment** rule type monitors entity movements and triggers alerts when an entity enters or exits a defined geographical boundary. This rule type is useful for tracking assets, monitoring restricted zones, or detecting location-based events.
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Tracking containment** rule type then fill in the name and optional tags.
 

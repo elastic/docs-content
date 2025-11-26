@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the simple input type that loads static data into watch execution context.
 ---
 
 # Simple input [input-simple]
 
-Use the `simple` input to load static data into the execution context when the watch is triggered. This enables you to store the data centrally and reference it with templates.
+Use the **simple** input to load static data into the execution context when the watch is triggered. This input type enables you to store data centrally and reference it with templates, making it useful for configuration values, recipient lists, or other static information used by watch conditions and actions.
 
 You can define the static data as a string (`str`), numeric value (`num`), or an object (`obj`):
 

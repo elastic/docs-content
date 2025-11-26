@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the chain transform that executes multiple transforms sequentially.
 ---
 
 # Chain payload transform [transform-chain]
 
-A [{{watcher-transform}}](transform.md) that executes an ordered list of configured {{watcher-transforms}} in a chain, where the output of one transform serves as the input of the next transform in the chain. The payload that is accepted by this transform serves as the input of the first transform in the chain and the output of the last transform in the chain is the output of the `chain` transform as a whole.
+Use the **chain** {{watcher-transform}} to execute an ordered list of transforms sequentially, where the output of one transform serves as the input of the next. This transform enables you to build complex data processing pipelines by combining search, script, and other chain transforms.
 
 You can use chain {{watcher-transforms}} to build more complex transforms out of the other available transforms. For example, you can combine a [`search`](transform-search.md) {{watcher-transform}} and a [`script`](transform-script.md) {{watcher-transform}}, as shown in the following snippet:
 

@@ -5,9 +5,10 @@ applies_to:
   stack: ga
 products:
   - id: cloud-hosted
+description: Instructions for enabling and configuring Watcher on Elastic Cloud deployments.
 ---
 
-# Enable Watcher [enable-watcher]
+# Enable {{watcher}} [enable-watcher]
 
 ::::{note}
 If you are looking for Kibana alerting, check [Alerts and Cases](../../../explore-analyze/alerts-cases.md).

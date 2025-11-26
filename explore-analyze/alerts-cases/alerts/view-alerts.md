@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Instructions for viewing, filtering, and managing alerts in Kibana.
 ---
 
-# View and manage alerts in {{kib}} [view-alerts]
+# View and manage alerts [view-alerts]
 
-When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../alerts.md).
+When a rule's conditions are met, it creates an alert. If the rule has actions configured, they run at the defined frequency—for example, sending email notifications for each alert at a custom interval. You can view and manage all alerts in **{{stack-manage-app}}** > **Alerts**, or view alerts specific to a rule from the **{{rules-ui}}** page.
 
 You can manage the alerts for each rule in **{{stack-manage-app}}** > **{{rules-ui}}**. Alternatively, manage all your alerts in **{{stack-manage-app}}** > **Alerts**.
 

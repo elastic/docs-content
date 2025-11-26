@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the chain input type that loads data from multiple sources sequentially.
 ---
 
 # Chain input [input-chain]
 
-Use the `chain` input to load data from multiple sources into the watch execution context when the watch is triggered. The inputs in a chain are processed in order and the data loaded by an input can be accessed by the subsequent inputs in the chain.
+Use the **chain** input to load data from multiple sources into the watch execution context when the watch is triggered. The inputs in a chain are processed sequentially, and data loaded by one input can be accessed by subsequent inputs in the chain, enabling you to build on previous results or combine data from different sources.
 
 The `chain` input enables you to perform actions based on data from multiple sources. You can also use the data collected by one input to load data from another source.
 

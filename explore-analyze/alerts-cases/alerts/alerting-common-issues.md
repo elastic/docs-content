@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Troubleshooting guide for resolving common alerting issues including rule timing and execution problems.
 ---
 
-# Common issues with {{kib}} alerting [alerting-common-issues]
+# Common alerting issues [alerting-common-issues]
 
-This page describes how to resolve common problems you might encounter with Alerting.
+This page describes how to identify and resolve common problems you might encounter with alerting, including rules running late, inconsistent cadence, excessive executions, and action failures.
 
 ## Rules with small check intervals run late [rules-small-check-interval-run-late]
 

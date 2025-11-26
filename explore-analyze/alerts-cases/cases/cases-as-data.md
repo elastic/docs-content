@@ -2,11 +2,14 @@
 applies_to:
   stack: preview 9.2
   serverless: unavailable
+products:
+  - id: kibana
+description: Instructions for enabling and using the cases as data feature to visualize case metrics and trends.
 ---
 
 # Use cases as data [use-cases-as-data]
 
-The cases as data feature lets you visualize data about cases in your [space](/deploy-manage/manage-spaces.md). After turning it on, you can query case data from dedicated case analytics indices and build dashboards and visualizations to track case trends and operational metrics. This information is particularly useful when reporting on key performance indicators (KPIs) such as Mean Time To Respond (MTTR), case severity trends, and analyst workload.
+The cases as data feature enables you to visualize case data and build dashboards that track case trends and operational metrics. After turning it on, {{es}} automatically creates case analytics indices in each space with cases, which you can query to monitor key performance indicators (KPIs) such as Mean Time To Respond (MTTR), case severity trends, and analyst workload.
 
 ::::{admonition} Requirements
 To use cases as data, you must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
