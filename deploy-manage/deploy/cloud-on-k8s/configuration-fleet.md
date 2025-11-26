@@ -266,9 +266,9 @@ Note that the environment variables related to policy selection mentioned in the
 
 In order to run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
 
-::::{applies-switch}
+::::{tab-set}
 
-:::{applies-item} { "stack": "ga 8.16" } In Elastic Agent versions 8.16 and beyond:
+:::{tab-item} {{agent}} 8.16 and higher
 
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 2. Run {{agent}} with a `hostPath` volume.

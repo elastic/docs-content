@@ -49,9 +49,10 @@ Deploys two {{es}} clusters and two {{kib}} instances together with single Elast
 
 {{agent}} managed by ECK stores local state in a host path volume by default. This ensures that {{integrations}} run by the agent can continue their work without duplicating work that has already been done after the Pod has been recreated for example because of a Pod configuration change. Multiple replicas of an agent, for example {{fleet}} Servers, can not be deployed on the same underlying {{k8s}} node as they would try to use the same host path. There are 1 or 2 options for managing this feature depending on the version of Elastic Agent.
 
-::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 8.16" } In Elastic Agent versions 8.16 and beyond:
+::::{tab-set}
+
+:::{tab-item} {{agent}} 8.16 and higher
 
 1. If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
 2. If local state storage is still desired but running the Agent container as root is not allowed, then you can run a `DaemonSet` that adjusts the permissions for the Agent local state on each Node prior to running {{agent}}. Note that this `DaemonSet` must be `runAsUser: 0` and possibly `privileged: true`. Also note the {{kib}} changes required to trust the {{es}} CA when running in fleet mode.
@@ -60,7 +61,7 @@ Full configuration examples exist in  [Running as a non-root user](configuration
 
 :::
 
-:::{applies-item} { "stack": "ga 8.15" } In Elastic Agent before 8.16:
+:::{tab-item} {{agent}} 8.15 and before 
 
 1. If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
 
