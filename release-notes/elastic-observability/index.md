@@ -103,6 +103,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
 
+## 9.1.8 [elastic-observability-9.1.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.1.8-features-enhancements]
+* Adds new sub-feature privileges for Synthetics global parameters. [#243821]({{kib-pull}}243821).
+
+### Fixes [elastic-observability-9.1.8-fixes]
+* Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
+* Reverts the PR that introduced show transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Fixes issue with custom links clearing filter views when a new field is selected or deleted [#241164]({{kib-pull}}241164).
+* Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
+
 ## 9.1.7 [elastic-observability-9.1.7-release-notes]
 
 ### Fixes [elastic-observability-9.1.7-fixes]
