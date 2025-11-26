@@ -20,13 +20,6 @@ Background search is a feature introduced in version 9.2. It replaces the deprec
 If you have been using search sessions and upgrade to 9.2, your search sessions aren't lost and become background searches.
 ::::
 
-## Requirements [background-search-requirements]
-
-To use background searches, you need:
-
-* **Read** permissions for the **Discover** or **Dashboard** features in {{product.kibana}}
-* A {{data-source}} configured with data in {{product.elasticsearch}}
-
 ![Send search to background](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltee31dcf0d3917c75/68ecf412e5bae49d65a286ff/background-search.gif " =75%")
 
 

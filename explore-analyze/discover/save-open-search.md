@@ -19,7 +19,7 @@ Saved **Discover** sessions preserve your queries, filters, column selections, a
 To save searches, you need **Create** and **Edit** permissions for the {{saved-objects-app}} feature in {{product.kibana}}. If you don't have these permissions, the **Save** button won't be visible. For more information, refer to [Read-only access](#discover-read-only-access).
 
 
-## Read-only access [discover-read-only-access]
+### Read-only access [discover-read-only-access]
 
 If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 

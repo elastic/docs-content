@@ -13,12 +13,6 @@ description: Step-by-step tutorial for exploring data with Discover by selecting
 
 Learn how to explore your {{product.elasticsearch}} data using **Discover**. This tutorial walks you through selecting {{data-sources}}, filtering documents, analyzing field structures, and creating visualizations from your data.
 
-## Prerequisites [discover-get-started-prerequisites]
-
-* Access to {{product.kibana}}. If you don't already have {{product.kibana}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on {{ecloud}}.
-* Data indexed in {{product.elasticsearch}}. Examples use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
-* Basic understanding of [{{product.elasticsearch}} documents and indices](../../manage-data/data-store/index-basics.md).
-
 ## Context-aware data exploration [context-aware-discover]
 
 **Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:

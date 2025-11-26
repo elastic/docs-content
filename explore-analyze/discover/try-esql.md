@@ -17,9 +17,8 @@ Elasticsearch Query Language ({{esql}}) makes it easier to explore and analyze y
 
 - Access to {{product.kibana}}
 - The `enableESQL` setting enabled in **Advanced Settings** (enabled by default)
-- Sample data installed (optional but recommended for following examples)
-
-The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
+- Have data in {{product.elasticsearch}}.
+  The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
 ::::{tip}
 For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{product.kibana}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
