@@ -85,7 +85,7 @@ num\_clusters=\frac{num\_vectors}{vectors\_per\_cluster}=\frac{num\_vectors}{384
 ```{math}
 \begin{align*}
 estimated\ centroid\ bytes &= num\_clusters \times num\_dimensions \times 4 \\
-&+ num\_clusters \times (num\_dimensions + 14)
+& + num\_clusters \times (num\_dimensions + 14)
 \end{align*}
 ```
 
