@@ -11,12 +11,12 @@ products:
 description: Instructions for scheduling maintenance windows to suppress rule notifications during planned outages.
 ---
 
-# {{maint-windows-cap}} [maintenance-windows]
+# Maintenance windows [maintenance-windows]
 
 This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security.md)
 
 
-You can schedule single or recurring {{maint-windows}} to temporarily suppress rule notifications during planned outages or maintenance periods. Alerts continue to be generated, but notifications are suppressed according to the maintenance window schedule.
+You can schedule single or recurring maintenance windows to temporarily suppress rule notifications during planned outages or maintenance periods. Alerts continue to be generated, but notifications are suppressed according to the maintenance window schedule.
 
 By default, a maintenance window affects all rules in all {{kib}} apps within its space. You can refine the scope of a maintenance window by adding filters and rule categories.
 

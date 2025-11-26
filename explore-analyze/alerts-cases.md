@@ -23,9 +23,9 @@ Alerts are notifications generated when specific conditions are met. These notif
 
 Cases are a collaboration and tracking tool, which is particularly useful for incidents or issues that arise from alerts. You can group related alerts into a case for easier management, add notes and comments to provide context, track investigation progress, and assign cases to team members or link them to external systems. Cases ensure that teams have a central place to track and resolve alerts efficiently.
 
-## {{maint-windows-cap}} [maintenance-windows-overview]
+## Maintenance windows [maintenance-windows-overview]
 
-If you have a planned outage, {{maint-windows}} prevent rules from generating notifications in that period. Alerts still occur but their notifications are suppressed.
+If you have a planned outage, maintenance windows prevent rules from generating notifications in that period. Alerts still occur but their notifications are suppressed.
 
 ### Workflow example [workflow-example]
 
