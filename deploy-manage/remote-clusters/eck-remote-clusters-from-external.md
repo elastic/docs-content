@@ -1,7 +1,5 @@
 ---
 navigation_title: From a self-managed cluster
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
 applies_to:
   deployment:
     eck: ga
@@ -11,6 +9,8 @@ products:
 
 # Connect a self-managed {{es}} cluster to an ECK-managed cluster
 
+This guide explains how to configure remote cluster connections from an external {{es}} cluster to a cluster managed by ECK.
+
 (title update from the original "Connect from an Elasticsearch cluster running outside the Kubernetes cluster") --> This had ONLY TLS certs (deprecated)
 (existing use case with TLS certs, API key missing)
 
@@ -18,6 +18,7 @@ products:
 ::::
 
 
+(note and links to other possible use cases and landing page)
 Intro, if the external cluster is managed by a different ECK, refer to "to external".
 Intro: this doc assumes the local cluster is a self-managed cluster.
 

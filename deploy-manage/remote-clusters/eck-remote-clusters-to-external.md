@@ -1,7 +1,5 @@
 ---
 navigation_title: To an external cluster
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
 applies_to:
   deployment:
     eck: ga
@@ -12,8 +10,11 @@ products:
 # Connect an ECK-managed cluster to an external {{es}} cluster
 (Use case missing).
 
+This guide explains how to configure remote clusters when your ECK-managed cluster connects to a self-managed cluster, an ECE/ECH deployment, or a cluster managed by another ECK operator.
+
 ::::{include} _snippets/eck_rcs_intro.md
 ::::
+
 
 
 Intro, the external / remote cluster in this case could be ECH/ECE/self-managed or even an ECK-managed cluster managed by a different operator.

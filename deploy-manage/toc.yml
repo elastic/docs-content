@@ -659,9 +659,9 @@ toc:
           - file: remote-clusters/remote-clusters-api-key.md
           - file: remote-clusters/remote-clusters-cert.md
           - file: remote-clusters/remote-clusters-migrate.md
-      - file: remote-clusters/eck-remote-clusters.md
+      - file: remote-clusters/eck-remote-clusters-landing.md
         children:
-          - file: remote-clusters/eck-remote-clusters-same-eck.md
+          - file: remote-clusters/eck-remote-clusters.md
           - file: remote-clusters/eck-remote-clusters-to-external.md
           - file: remote-clusters/eck-remote-clusters-from-external.md
   - file: monitor.md

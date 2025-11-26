@@ -1,2 +1,1 @@
-The [remote clusters module](/deploy-manage/remote-clusters.md) in {{es}} enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
-
+The [remote clusters module](/deploy-manage/remote-clusters.md) in {{es}} enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication (CCR) and cross-cluster search (CCS).
