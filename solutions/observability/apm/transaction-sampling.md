@@ -168,29 +168,29 @@ Terminology:
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6gd.2xlarge      | TBS disabled                                   | 45120                           | 45120 (100% sampling)          | 0.95              | 0               |
-| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 17120                           | 1527                           | 1.48              | 11.3            |
-| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 19490                           | 1661                           | 1.48              | 12.3            |
-| c6gd.4xlarge      | TBS disabled                                   | 63460                           | 63460 (100% sampling)          | 1.45              | 0               |
-| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 26340                           | 2248                           | 2.09              | 17.8            |
-| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 36620                           | 3041                           | 2.22              | 21.8            |
-| c6gd.8xlarge      | TBS disabled                                   | 119800                          | 119800 (100% sampling)         | 1.44              | 0               |
-| c6gd.8xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 27620                           | 2485                           | 2.49              | 16.6            |
-| c6gd.8xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 46260                           | 3909                           | 2.43              | 25.8            |
+| c6gd.xlarge      | TBS disabled                                   | 45120                           | 45120 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 17120                           | 1527                           | 1.48              | 11.3            |
+| c6gd.xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 19490                           | 1661                           | 1.48              | 12.3            |
+| c6gd.2xlarge      | TBS disabled                                   | 63460                           | 63460 (100% sampling)          | 1.45              | 0               |
+| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 26340                           | 2248                           | 2.09              | 17.8            |
+| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 36620                           | 3041                           | 2.22              | 21.8            |
+| c6gd.4xlarge      | TBS disabled                                   | 119800                          | 119800 (100% sampling)         | 1.44              | 0               |
+| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 27620                           | 2485                           | 2.49              | 16.6            |
+| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 46260                           | 3909                           | 2.43              | 25.8            |
 
 #### APM Server 8.19
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6gd.2xlarge      | TBS disabled                                   | 45480                           | 45480 (100% sampling)          | 0.95              | 0               |
-| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11420                           | 11.55                          | 5.92              | 30.81           |
-| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 12630                           | 86.52                          | 5.82              | 27.70           |
-| c6gd.4xlarge      | TBS disabled                                   | 61900                           | 61900 (100% sampling)          | 1.45              | 0               |
-| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 12920                           | 37.31                          | 11.31             | 30.98           |
-| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 23300                           | 574                            | 13.31             | 50.99           |
-| c6gd.8xlarge      | TBS disabled                                   | 122800                          | 122800 (100% sampling)         | 1.45              | 0               |
-| c6gd.8xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 13280                           | 34.20                          | 22.61             | 32.01           |
-| c6gd.8xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 35810                           | 2480                           | 30.41             | 86.86           |
+| c6gd.xlarge      | TBS disabled                                   | 45480                           | 45480 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11420                           | 11.55                          | 5.92              | 30.81           |
+| c6gd.xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 12630                           | 86.52                          | 5.82              | 27.70           |
+| c6gd.2xlarge      | TBS disabled                                   | 61900                           | 61900 (100% sampling)          | 1.45              | 0               |
+| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 12920                           | 37.31                          | 11.31             | 30.98           |
+| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 23300                           | 574                            | 13.31             | 50.99           |
+| c6gd.4xlarge      | TBS disabled                                   | 122800                          | 122800 (100% sampling)         | 1.45              | 0               |
+| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 13280                           | 34.20                          | 22.61             | 32.01           |
+| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 35810                           | 2480                           | 30.41             | 86.86           |
 
 When interpreting these numbers, note that:
 
