@@ -39,11 +39,3 @@ You can find these rules in **Stack Management** > **Alerts and Insights** > **R
 
 **Connectors** are not added to rules automatically, but you can attach a connector to route alerts to your Slack, email, or other notification platforms.
 In addition, you can add filters for policies, tags, or hostnames to scope alerts to specific sets of agents.  
-
-## Alert template assets for integrations [alert-templates]
-
-Some integration packages include alerting rule template assets that provide pre-made definitions of alerting rules. You can use the templates to create your own custom alerting rules that you can enable and fine-tune. 
-
-When you click a template, you get a pre-filled rule creation form. You can define and adjust values, set up connectors, and define rule actions to create your custom alerting rule.
-
-You can see available templates in the **integrations/detail/<package>/assets** view. 
