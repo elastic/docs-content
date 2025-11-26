@@ -17,7 +17,7 @@ navigation_title: FAQ
 
 # AutoOps FAQ [ec-autoops-faq]
 
-Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monitor/autoops/autoops-for-cloud-hosted.md), [{{serverless-short}} project](/deploy-manage/monitor/autoops/autoops-for-serverless.md), or [self-managed cluster](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md), find answers to some common questions about it on this page.
+Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md), [{{serverless-short}} project](/deploy-manage/monitor/autoops/autoops-for-serverless.md), or [self-managed cluster](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md), find answers to some common questions about it on this page.
 
 **General AutoOps questions**
 * [What does AutoOps do?](#what-is-autoops)

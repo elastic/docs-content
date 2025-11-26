@@ -664,22 +664,7 @@ toc:
     children:
       - file: monitor/autoops.md
         children:
-          - file: monitor/autoops/autoops-for-cloud-hosted.md
-            children:
-              - file: monitor/autoops/ec-autoops-how-to-access.md
-              - file: monitor/autoops/views.md
-                children:
-                  - file: monitor/autoops/ec-autoops-overview-view.md
-                  - file: monitor/autoops/ec-autoops-deployment-view.md
-                  - file: monitor/autoops/ec-autoops-nodes-view.md
-                  - file: monitor/autoops/ec-autoops-index-view.md
-                  - file: monitor/autoops/ec-autoops-shards-view.md
-                  - file: monitor/autoops/ec-autoops-template-optimizer.md
-                  - hidden: monitor/autoops/ec-autoops-dismiss-event.md
-              - file: monitor/autoops/ec-autoops-events.md
-                children:
-                  - file: monitor/autoops/ec-autoops-event-settings.md
-                  - file: monitor/autoops/ec-autoops-notifications-settings.md
+          - file: monitor/autoops/ec-autoops-how-to-access.md
           - file: monitor/autoops/autoops-for-serverless.md
             children:
               - file: monitor/autoops/access-autoops-for-serverless.md
@@ -691,11 +676,23 @@ toc:
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
               - file: monitor/autoops/cc-manage-users.md
-              - file: monitor/autoops/use-autoops-in-sm-cluster.md
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
                 children:
                   - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
           - file: monitor/autoops/ec-autoops-regions.md
+          - file: monitor/autoops/views.md
+            children:
+              - file: monitor/autoops/ec-autoops-overview-view.md
+              - file: monitor/autoops/ec-autoops-deployment-view.md
+              - file: monitor/autoops/ec-autoops-nodes-view.md
+              - file: monitor/autoops/ec-autoops-index-view.md
+              - file: monitor/autoops/ec-autoops-shards-view.md
+              - file: monitor/autoops/ec-autoops-template-optimizer.md
+              - hidden: monitor/autoops/ec-autoops-dismiss-event.md
+          - file: monitor/autoops/ec-autoops-events.md
+            children:
+              - file: monitor/autoops/ec-autoops-event-settings.md
+              - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
