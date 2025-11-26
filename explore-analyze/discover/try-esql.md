@@ -6,14 +6,14 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Step-by-step tutorial for querying data with ES|QL in Discover using piped commands to filter, transform, and aggregate data with sample data and visualizations.
+description: Step-by-step tutorial for querying data with Elasticsearch Query Language (ES|QL) in Discover using piped commands to filter, transform, and aggregate data with sample data and visualizations.
 ---
 
 # Using ES|QL [try-esql]
 
 Elasticsearch Query Language ({{esql}}) makes it easier to explore and analyze your {{product.elasticsearch}} data directly in **Discover**. {{esql}} uses a piped syntax where you chain commands together to filter, transform, and aggregate data without needing to switch between different query interfaces. This tutorial walks you through querying sample data with {{esql}}, from basic field selection to complex filtering and visualization.
 
-## Prerequisites
+## Prerequisites [try-esql-prerequisites]
 
 - Access to {{product.kibana}}
 - The `enableESQL` setting enabled in **Advanced Settings** (enabled by default)

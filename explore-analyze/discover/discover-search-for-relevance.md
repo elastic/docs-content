@@ -13,12 +13,6 @@ description: Sort search results by relevance score in Discover to identify the 
 
 {{product.elasticsearch}} assigns a relevancy score to each document based on how well it matches your query. Sorting by this score helps you identify the most relevant results quickly. This guide shows how to use **Discover** to sort documents by relevance score, putting the best matches at the top of your results.
 
-## Requirements
-
-- Access to {{product.kibana}}
-- A {{data-source}} with searchable data
-- Understanding of basic search queries
-
 This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. In **Discover**, open the {{data-source}} dropdown, and select the data that you want to work with.

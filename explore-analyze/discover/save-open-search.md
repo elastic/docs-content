@@ -10,15 +10,13 @@ products:
 description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
 ---
 
-# Discover sessions: Save a search for reuse [save-open-search]
+# Save a search for reuse [save-open-search]
 
-Saved Discover sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, and manage Discover sessions.
+Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, and manage Discover sessions.
 
-## Requirements
+## Requirements [save-search-requirements]
 
-- Access to {{product.kibana}}
-- Permissions to save {{product.kibana}} objects. Refer to [Read-only access](#discover-read-only-access)
-- A configured view in **Discover** worth saving
+To save searches, you need **Create** and **Edit** permissions for the {{saved-objects-app}} feature in {{product.kibana}}. If you don't have these permissions, the **Save** button won't be visible. For more information, refer to [Read-only access](#discover-read-only-access).
 
 
 ## Read-only access [discover-read-only-access]
@@ -26,7 +24,7 @@ Saved Discover sessions preserve your queries, filters, column selections, and v
 If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
-:alt: Example of Discover's read only access indicator in Kibana's header
+:alt: Example of Discover's read only access indicator in the {{product.kibana}} header
 :screenshot:
 :::
 
