@@ -3,11 +3,7 @@ navigation_title: Users and roles
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-settings-access.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
   serverless: all
 products:
   - id: cloud-serverless
@@ -90,7 +86,7 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 serverless: all
 ```
 
-As an extension of the [predefined cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
+As an extension of the [predefined cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects. You can also use custom roles to apply [document and field-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) at the project level.
 
 [Learn more about custom roles for {{serverless-full}} projects](/deploy-manage/users-roles/serverless-custom-roles.md).
 
