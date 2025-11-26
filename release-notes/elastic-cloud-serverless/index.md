@@ -71,12 +71,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Extracts `AbstractGeoIpDownloader` to share concurrency logic across GeoIP downloaders [#137660]({{es-pull}}137660)
 * Iterates directly over `RoutingNode` contents to reduce allocation overhead [#137694]({{es-pull}}137694)
 * Speeds up sorts that use secondary sort fields [#137533]({{es-pull}}137533)
-* Updates HDFS version references in the documentation [#137576]({{es-pull}}137576)
 * Reduces worst-case Inference API latency by removing an additional 50 ms delay for non–rate-limited requests [#136167]({{es-pull}}136167)
-* Updates {{esql}} documentation to cover newly supported data types [#137726]({{es-pull}}137726)
 * Uses the `DEFAULT_UNSORTABLE` topN encoder for `TSID_DATA_TYPE` in {{esql}} to improve sorting behavior [#137706]({{es-pull}}137706)
 * Transitions Elastic Indexing Service auth polling to a single-node persistent task for improved reliability [#136713]({{es-pull}}136713)
-* Documents {{esql}} decay functions using the `math` directive [#137369]({{es-pull}}137369)
 * Makes {{esql}} field fusion generic so it can be reused across more field types [#137382]({{es-pull}}137382)
 * Releases the {{esql}} `decay` function [#137830]({{es-pull}}137830)
 * Adds additional APM attributes to coordinator-phase duration metrics for richer tracing [#137409]({{es-pull}}137409)
@@ -91,7 +88,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds additional DEBUG-level logging for authentication failures [#137941]({{es-pull}}137941)
 * Adds support for an extra output field in the {{esql}} `TOP` function [#135434]({{es-pull}}135434)
 * Introduces the `INDEX_SHARD_COUNT_FORMAT` setting for index shard count formatting [#137210]({{es-pull}}137210)
-* Documents RCS Strong Verification configuration and usage [#137822]({{es-pull}}137822)
 * Implements an OpenShift AI integration for chat completion, embeddings, and reranking workloads [#136624]({{es-pull}}136624)
 * Adds `first()` and `last()` aggregation functions to {{esql}} [#137408]({{es-pull}}137408)
 * Adds support for the `project_routing` parameter on `_search` and `_async_search` requests [#137566]({{es-pull}}137566)
@@ -101,8 +97,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds timezone support to {{esql}} `DATE_TRUNC`, `BUCKET`, and `TBUCKET` functions [#137450]({{es-pull}}137450)
 * Further improves bulk loading performance for binary doc values [#137995]({{es-pull}}137995)
 * Updates the Gradle wrapper to version `9.2.0`
-* Adds a synthetics test pipeline for UIAM
-* Improves the resolution for authenticating SAML realm in UIAM
 * Improves logging for the sampled metrics provider
 * Updates `BlobCacheIndexInput` to use `sliceDescription` as the resource description when available, improving diagnostics
 * Switches APM trace detection to use `hasApmTraceContext` and its variant APIs
@@ -454,7 +448,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Automatically copies source data into the alerts-as-data documents for other ES Query rule types [#230010]({{kib-pull}}230010)
 * Replaces the dashboard editor toolbar with the **Add** menu [#230324]({{kib-pull}}230324)
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
-* Adds in-product documentation for the {{esql}} `FORK` command [#236494]({{kib-pull}}236494)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
 
 ### Fixes [serverless-changelog-09292025-fixes]
