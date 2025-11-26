@@ -110,7 +110,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.1.8-fixes]
 * Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
-* Reverts the PR that introduced show transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Reverts the PR that introduced transform errors across all SLO pages [#243013]({{kib-pull}}243013).
 * Fixes issue with custom links clearing filter views when a new field is selected or deleted [#241164]({{kib-pull}}241164).
 * Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
 
