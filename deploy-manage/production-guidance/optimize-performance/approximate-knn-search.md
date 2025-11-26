@@ -79,12 +79,15 @@ If you're using DiskBBQ, a fraction of the clusters and centroids will need to b
 ```{math}
 \begin{align*}
 num\_clusters &= num\_vectors\ /\ vectors\_per\_cluster \\
- &= num\_vectors\ /\ 384
+&= num\_vectors\ /\ 384
 \end{align*}
 ```
 
 ```{math}
-estimated\ centroid\ bytes = num\_clusters \times num\_dimensions \times 4 + num\_clusters \times (num\_dimensions + 14)
+\begin{align*}
+estimated\ centroid\ bytes &= num\_clusters \times num\_dimensions \times 4 \\
+&+ num\_clusters \times (num\_dimensions + 14)
+\end{align*}
 ```
 
 ```{math}
