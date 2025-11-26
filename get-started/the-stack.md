@@ -129,10 +129,12 @@ It is also the home for the {{es}}, Elastic {{observability}} and {{elastic-sec}
 
 With {{kib}}, you can:
 
-* Use **Discover** to interactively search and filter your raw data.  
-* Build custom visualizations like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
-* Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.  
-* Analyze geospatial data using the powerful **Maps** application.
+- Use **Discover** to interactively search and filter your raw data.  
+- Build custom visualizations like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
+- Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.  
+- Analyze geospatial data using the powerful **Maps** application.
+
+There are features and interfaces that vary based on the solution or project type, such as built-in dashboards, connectors, and [](/explore-analyze/ai-assistant.md).
 
 It also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
