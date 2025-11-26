@@ -437,7 +437,7 @@ If your storage does not support conditional writes then it is not fully S3-comp
 ### Multipart uploads
 
 ```{applies_to}
-stack: ga 9.2
+stack: deprecated 9.3
 ```
 
 In versions before 9.3.0, or if your storage does not support conditional writes, the linearizable register implementation for S3 repositories is based on the strongly consistent semantics of the multipart upload APIs. {{es}} first creates a multipart upload to indicate its intention to perform a linearizable register operation. {{es}} then lists and cancels all other multipart uploads for the same register. {{es}} then attempts to complete the upload. If the upload completes successfully then the compare-and-exchange operation was atomic.
