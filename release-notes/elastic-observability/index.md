@@ -106,7 +106,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.1.8 [elastic-observability-9.1.8-release-notes]
 
 ### Features and enhancements [elastic-observability-9.1.8-features-enhancements]
-* Adds new sub-feature privileges for Synthetics global parameters. [#243821]({{kib-pull}}243821).
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
 
 ### Fixes [elastic-observability-9.1.8-fixes]
 * Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
