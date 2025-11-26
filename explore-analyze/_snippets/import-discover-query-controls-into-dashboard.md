@@ -20,7 +20,7 @@ A new panel appears on the dashboard with the results of the query along with an
 
 This method allows you to add the visualization of your Discover {{esql}} query to any dashboard.
 
-1. Next to Discover's visualization, select {icon}`save` **Save visualization**.
+1. Next to the Discover visualization, select {icon}`save` **Save visualization**.
 
    ![Importing Discover visualization with controls into a dashboard](/explore-analyze/images/save-discover-viz-to-dashboard.png " =70%")
 
