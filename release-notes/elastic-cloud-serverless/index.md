@@ -30,7 +30,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses the `DEFAULT_UNSORTABLE` topN encoder for `TSID_DATA_TYPE` in {{esql}} to improve sorting behavior [#137706]({{es-pull}}137706)
 * Transitions Elastic Indexing Service auth polling to a single-node persistent task for improved reliability [#136713]({{es-pull}}136713)
 * Documents {{esql}} decay functions using the `math` directive [#137369]({{es-pull}}137369)
-* Adds an `applies_to` label to the logsdb message default sort setting [#137767]({{es-pull}}137767)
 * Makes {{esql}} field fusion generic so it can be reused across more field types [#137382]({{es-pull}}137382)
 * Releases the {{esql}} `decay` function [#137830]({{es-pull}}137830)
 * Adds additional APM attributes to coordinator-phase duration metrics for richer tracing [#137409]({{es-pull}}137409)
