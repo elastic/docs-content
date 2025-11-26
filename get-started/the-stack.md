@@ -98,13 +98,19 @@ You can use the {{es}} clients to access data directly by using common programmi
 
 ### {{es}} [stack-components-elasticsearch]
 
-{{es}} provides near real-time search and analytics for all types of data.
+{{es}} is a data store and [vector database](https://www.elastic.co/elasticsearch/vector-database) that provides near real-time search and analytics for all types of data.
 Whether you have structured or unstructured text, time series (timestamped) data, vectors, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches.
 
 {{es}} is built to be a resilient and scalable distributed system.
 It runs as a cluster of one or more servers, called nodes.
 When you add data to an index, it's divided into pieces called shards, which are spread across the various nodes in the cluster.
 This architecture allows {{es}} to handle large volumes of data and ensures that your data remains available even if a node fails.
+If you use {{serverless-full}}, it has a unique [Search AI Lake cloud-native architecture](https://www.elastic.co/cloud/serverless/search-ai-lake), scales your workload, and automates the nodes, shards, and replicas for you.
+
+<!--
+{{es}} also includes generative AI features and built-in {{nlp}} (NLP) models that enable you to make predictions, run {{infer}}, and integrate with LLMs faster.
+% TO-DO: Link to AI-powered features summary
+-->
 
 Nearly every aspect of {{es}} can be configured and managed programmatically through its REST APIs.
 This allows you to automate repetitive tasks and integrate Elastic management into your existing operational workflows.
@@ -134,9 +140,9 @@ With {{kib}}, you can:
 - Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.  
 - Analyze geospatial data using the powerful **Maps** application.
 
-There are features and interfaces that vary based on the solution or project type, such as built-in dashboards, connectors, and [](/explore-analyze/ai-assistant.md).
+Each solution or project type provides unique features, such as built-in dashboards, connectors, and [](/explore-analyze/ai-assistant.md).
 
-It also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
+{{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
 
 [Learn more about {{kib}}](/explore-analyze/index.md).
