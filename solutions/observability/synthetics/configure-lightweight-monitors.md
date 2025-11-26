@@ -364,6 +364,32 @@ $$$monitor-fields$$$
     fields.team: synthetics
     ```
 
+$$$monitor-namespace$$$
+
+**`namespace`**
+:   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
+
+    Assign the monitor to a specific datastream namespace. Defaults to Kibana's namespace.
+
+    **Examples**:
+
+    ```yaml
+    namespace: custom-namespace
+    ```
+
+$$$monitor-maintenanceWindows$$$
+
+**`maintenance_windows`**
+:   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
+
+    A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+
+    **Examples**:
+
+    ```yaml
+    maintenance_windows: ["maintenance-window-ID-1", "maintenance-window-ID-2"]
+    ```
+
 ### HTTP options [synthetics-lightweight-http]
 
 The options described here configure Synthetics to connect via HTTP and optionally verify that the host returns the expected response.

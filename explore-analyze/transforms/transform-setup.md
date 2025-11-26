@@ -25,7 +25,7 @@ To use {{transforms}}, you must have:
 
 Assigning security privileges affects how users access {{transforms}}. Consider the two main categories:
 
-* **[{{es}} API user](#transform-es-security-privileges)**: uses an {{es}} client, cURL, or {{kib}} **{{dev-tools-app}}** to access {{transforms}} via {{es}} APIs. This scenario requires {{es}} security privileges.
+* **[{{es}} API user](#transform-es-security-privileges)**: uses an {{es}} client, cURL, or {{kib}} **{{dev-tools-app}}** to access {{transforms}} through {{es}} APIs. This scenario requires {{es}} security privileges.
 * **[{{kib}} user](#transform-kib-security-privileges)**: uses {{transforms}} in {{kib}}. This scenario requires {{kib}} feature privileges *and* {{es}} security privileges.
 
 ### {{es}} API user [transform-es-security-privileges]

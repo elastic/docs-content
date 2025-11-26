@@ -24,8 +24,7 @@ The following instructions show you how to prepare your hosts on Ubuntu.
 
 Install a compatible Docker version on Ubuntu.
 
-::::{important}
-Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 

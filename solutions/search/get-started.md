@@ -25,7 +25,7 @@ If you're looking for an introduction to the {{stack}} or the {{es}} product, go
 :::::{step} Choose your deployment type
 
 Elastic provides several self-managed and Elastic-managed options.
-For simplicity and speed, try out [{{es-serverless}}](/solutions/search.md#elasticsearch-serverless):
+For simplicity and speed, try out {{es-serverless}}:
 
 ::::{dropdown} Create an {{es-serverless}} project
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md

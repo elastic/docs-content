@@ -5,6 +5,7 @@ applies_to:
   stack: ga
 products:
   - id: observability
+  - id: edot-sdk
 ---
 
 # Tutorial: Monitor a Java application [monitor-java-app]
@@ -19,6 +20,11 @@ You’ll learn how to:
 * Ingest logs using {{filebeat}} and view your logs in {{kib}}.
 * Ingest metrics using the [Metricbeat Prometheus Module](beats://reference/metricbeat/metricbeat-module-prometheus.md) and view your metrics in {{kib}}.
 * Instrument your application using the [Elastic APM Java agent](apm-agent-java://reference/index.md).
+
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application. The EDOT Java SDK provides OpenTelemetry-based instrumentation and can send telemetry data to Elastic.
+:::
+
 * Monitor your services using {{heartbeat}} and view your uptime data in {{kib}}.
 
 ## Before you begin [_before_you_begin]
@@ -1408,6 +1414,10 @@ The third piece of {{observability}} is Application Performance Management (APM)
 
 The agent has two tasks: instrumenting the Java application to extract application performance information and sending that data to the APM Server.
 
+:::{note}
+This tutorial uses the Elastic APM Java agent. We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application with OpenTelemetry-based instrumentation. Refer to the [EDOT Java SDK setup guide](elastic-otel-java://reference/edot-java/setup/index.md) for instructions.
+:::
+
 One of the APM’s core ideas is the ability to follow the flow of a user session across your whole stack, regardless of whether you have dozens of microservices or a monolith answering your user requests. This implies the ability to tag a request across your entire stack.
 
 To fully capture user activity, you need to start in the browser of the user using Real User Monitoring (RUM) down to your application, which sends a SQL query to your database.
@@ -1912,5 +1922,5 @@ Do not underestimate the importance of this kind of monitoring. Also, consider t
 
 ## What’s next? [_whats_next]
 
-For more information about using  Elastic {{observability}}, see the [{{observability}} documentation](../what-is-elastic-observability.md).
+For more information about using  Elastic {{observability}}, refer to the [{{observability}} documentation](/solutions/observability.md).
 

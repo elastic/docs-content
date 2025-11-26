@@ -10,7 +10,7 @@ applies_to:
 
 # Work with {{agent-builder}} using the APIs
 
-This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} serverless API reference](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-agent-builder).
+This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
 These APIs allow you to programmatically work with the {{agent-builder}} abstractions.
 
@@ -63,7 +63,7 @@ Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automaticall
 
 **Example:** List all tools
 
-This example uses the [list tools API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-tools).
+This example uses the [list tools API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools).
 
 ::::{tab-set}
 :group: api-examples
@@ -89,7 +89,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 **Example:** Create a tool
 
-This example uses the [create a tool API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-post-agent-builder-tools).
+This example uses the [create a tool API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools).
 
 ::::{tab-set}
 :group: api-examples
@@ -155,7 +155,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 **Example:** Get a tool by ID
 
-This example uses the [get a tool by ID API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-tools-id).
+This example uses the [get a tool by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools-id).
 
 ::::{tab-set}
 :group: api-examples
@@ -181,7 +181,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
 
 **Example:** Delete a tool by ID
 
-This example uses the [delete a tool by ID API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-delete-agent-builder-tools-id).
+This example uses the [delete a tool by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-agent-builder-tools-id).
 
 ::::{tab-set}
 :group: api-examples
@@ -208,7 +208,7 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
 
 **Example:** Update a tool by ID
 
-This example uses the [update a tool API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-put-agent-builder-tools-toolid).
+This example uses the [update a tool API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-agent-builder-tools-toolid).
 
 ::::{tab-set}
 :group: api-examples
@@ -270,7 +270,7 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/tools/{toolId}" \
 
 **Example:** Run a tool
 
-This example uses the [execute a tool API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-post-agent-builder-tools-execute).
+This example uses the [execute a tool API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools-execute).
 
 ::::{tab-set}
 :group: api-examples
@@ -312,7 +312,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 **Example:** List all agents
 
-This example uses the [list agents API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-agents).
+This example uses the [list agents API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
 
 ::::{tab-set}
 :group: api-examples
@@ -338,7 +338,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents" \
 
 **Example:** Create an agent
 
-This example uses the [create an agent API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-post-agent-builder-agents).
+This example uses the [create an agent API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-agents).
 
 ::::{tab-set}
 :group: api-examples
@@ -408,7 +408,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/agents" \
 
 **Example:** Get an agent by ID
 
-This example uses the [get an agent by ID API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-agents-id).
+This example uses the [get an agent by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents-id).
 
 ::::{tab-set}
 :group: api-examples
@@ -434,7 +434,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 **Example:** Update an agent by ID
 
-This example uses the [update an agent API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-put-agent-builder-agents-id).
+This example uses the [update an agent API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-agent-builder-agents-id).
 
 ::::{tab-set}
 :group: api-examples
@@ -498,7 +498,7 @@ curl -X PUT "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 **Example:** Delete an agent by ID
 
-This example uses the [delete an agent by ID API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-delete-agent-builder-agents-id).
+This example uses the [delete an agent by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-agent-builder-agents-id).
 
 ::::{tab-set}
 :group: api-examples
@@ -527,7 +527,7 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 **Example:** Chat with an agent
 
-This example uses the [send chat message API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-post-agent-builder-converse).
+This example uses the [send chat message API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-converse).
 
 ::::{tab-set}
 :group: api-examples
@@ -562,7 +562,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Chat with an agent and stream events
 
-This example uses the [send chat message (streaming) API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-post-agent-builder-converse-async).
+This example uses the [send chat message (streaming) API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-converse-async).
 
 ::::{tab-set}
 :group: api-examples
@@ -600,7 +600,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/converse/async" \
 
 **Example:** List conversations
 
-This example uses the [list conversations API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-conversations).
+This example uses the [list conversations API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-conversations).
 
 ::::{tab-set}
 :group: api-examples
@@ -626,7 +626,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations" \
 
 **Example:** Get conversation by ID
 
-This example uses the [get conversation by ID API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-conversations-conversation-id).
+This example uses the [get conversation by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-conversations-conversation-id).
 
 ::::{tab-set}
 :group: api-examples
@@ -652,7 +652,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/conversations/{conversation
 
 **Example:** Delete conversation by ID
 
-This example uses the [delete conversation by ID API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-delete-agent-builder-conversations-conversation-id).
+This example uses the [delete conversation by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-agent-builder-conversations-conversation-id).
 
 ::::{tab-set}
 :group: api-examples
@@ -677,37 +677,14 @@ curl -X DELETE "https://${KIBANA_URL}/api/agent_builder/conversations/{conversat
 
 ::::
 
-### MCP server API
+### Get A2A agent card configuration
 
-Refer to [](mcp-server.md) for more information.
-
-Communicate with the MCP server using JSON-RPC 2.0.
-
-```bash
-curl -X POST "https://${KIBANA_URL}/api/agent_builder/mcp" \
-    -H "Authorization: ApiKey ${API_KEY}" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "kbn-xsrf: true" \
-    -d '{
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "tools/list"
-    }'
-```
-If you're using Spaces, you need to prefix `/api/agent_builder` with `/s/<space_name>`. Refer to [Working with Spaces](#working-with-spaces).
-
-:::{note}
-This endpoint uses the JSON-RPC protocol. The MCP server is used by AI clients like Claude Desktop, Cursor, and VS Code extensions to access your Elastic tools. Use this {{kib}} API endpoint for testing MCP connectivity or debugging protocol communication. This endpoint requires JSON-RPC formatting and does not work from the Dev Tools Console.
+:::{important}
+You shouldn't use the REST APIs to interact with the A2A endpoint, apart from getting the A2A agent card configuration.
+Refer to [](a2a-server.md) for more information about using the A2A protocol. 
 :::
 
-### A2A protocol
-
-Refer to [](a2a-server.md) for more information.
-
 **Example:** Get A2A agent card configuration
-
-This example uses the [get A2A agent card API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-agent-builder-a2a-agentid-json).
 
 ::::{tab-set}
 :group: api-examples
@@ -732,47 +709,6 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
 ::::
 
 
-% TODO: Execute A2A agent task section - commented out until ready
-% Execute A2A agent task
-% ::::{tab-set}
-% :group: api-examples
-% 
-% :::{tab-item} Console
-% :sync: console
-% :::{note}
-% This endpoint uses the JSON-RPC protocol, which cannot be executed in the Dev Tools Console.
-% Use curl or another HTTP client.
-% :::
-% 
-% :::{tab-item} curl
-% :sync: curl
-% ```bash
-% curl -X POST "https://${KIBANA_URL}/api/agent_builder/a2a/{agentId}" \
-%      -H "Authorization: ApiKey ${API_KEY}" \
-%      -H "kbn-xsrf: true" \
-%      -H "Content-Type: application/json" \
-%      -d '{
-%        "jsonrpc": "2.0",
-%        "method": "complete",
-%        "params": {
-%          "messages": [
-%            {
-%              "role": "user",
-%              "content": "Hello from A2A protocol"
-%            }
-%          ]
-%        },
-%        "id": "task-123"
-%      }'
-% ```
-% :::
-% 
-% ::::
-
-
-
-
-
 ## API reference
 
-For the full API documentation, refer to the [{{kib}} serverless API reference](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-agent-builder).
+For the full API documentation, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).

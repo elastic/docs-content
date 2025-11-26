@@ -49,7 +49,7 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 #### Batch size
 
 Batches are limited to a maximum of 16 documents.
-This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
+This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
 
 ## Pricing 
 
@@ -57,7 +57,25 @@ All models on EIS incur a charge per million tokens. The pricing details are at 
 
 Note that this pricing models differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed via VCUs consumed.
 
-## Rate Limits
+### Token-based billing
+
+EIS is billed per million tokens used:
+
+- For **chat** models, input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
+- For **embeddings** models, only input tokens are billed.
+
+Tokens are the fundamental units that language models process for both input and output. Tokenizers convert text into numerical data by segmenting it into subword units. A token may be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
+
+For example, the sentence "It was the best of times, it was the worst of times." contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
+
+### Monitor your token usage
+
+To track your token consumption:
+
+1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console
+2. Look for line items where the **Billing dimension** is set to "Inference"
+
+## Rate limits
 
 The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
 

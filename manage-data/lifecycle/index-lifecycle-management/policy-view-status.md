@@ -26,7 +26,7 @@ If you're investigating an {{ilm-init}}-related problem, refer to [Troubleshoot 
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Open the **Indices** tab.
-1. Enable **Include hidden indices** to view all indices, including those managed by ILM. Note that if you're using data streams, you can find the data stream associated with any index listed in the **Data stream** column.
+1. Enable **Include hidden indices** to view all indices, including those managed by ILM. If you're using data streams, you can find the data stream associated with any index listed in the **Data stream** column.
 1. Use the search tool to find the index you're looking for. You can also filter the results by lifecycle status and lifecycle phase.
 1. Select the index to view details.
 1. Open the **Index lifecycle** tab to view ILM details such as the current lifecycle phase, the ILM policy name, the current [index lifecycle action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md), and other details.
@@ -36,7 +36,7 @@ If you're investigating an {{ilm-init}}-related problem, refer to [Troubleshoot 
 :::{tip}
 {{es}} comes with many built-in ILM policies. For standard Observability or Security use cases, you will have two {{ilm-init}} policies configured automatically: `logs@lifecycle` for logs and `metrics@lifecycle` for metrics.
 
-To learn how to create a specialized ILM policy for any data stream, such as those created when you install an Elastic Integration, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+To learn how to create and adjust copies of built-in {{ilm-init}} policies for managed data streams, such as those created when you install an Elastic Integration, refer to our tutorial [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
 :::
 
 **To view the current lifecycle status for a datastream:**

@@ -10,10 +10,6 @@ applies_to:
 
 # Using different models in {{agent-builder}}
 
-:::{important}
-Due to phased rollout, the ability to use different models may not be immediately available in your project.
-:::
-
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making. By default, agents use the Elastic Managed LLM, but you can configure other models through Kibana connectors.
 
 ## Default model configuration
@@ -55,7 +51,7 @@ Refer to the [OpenAI connector documentation](kibana://reference/connectors-kiba
 
 ## Connectors API
 
-For programmatic access to connector management, refer to the [Connectors API documentation]({{kib-serverless-apis}}group/endpoint-connectors).
+For programmatic access to connector management, refer to the [Connectors API documentation]({{kib-apis}}group/endpoint-connectors).
 
 ## Recommended models
 
@@ -66,6 +62,14 @@ The following models are known to work well with {{agent-builder}}:
 - **OpenAI**: GPT-4.1, GPT-4o
 - **Anthropic**: Claude Sonnet 4.5, Claude Sonnet 4, Claude Sonnet 3.7
 - **Google**: Gemini 2.5 Pro
+
+## Incompatible models
+
+The following models are not compatible with {{agent-builder}}:
+
+- **OpenAI**: GPT-5-chat
+
+Learn more about [incompatible LLMs](/solutions/search/agent-builder/limitations-known-issues.md#incompatible-llms).
 
 ### Why model quality matters
 
