@@ -16,7 +16,7 @@ products:
 You can:
 
 * Create and assemble visualizations such as charts or maps, and enrich them with helpful legends containing key data
-* Extract and show key indicators and metrics to keep them visible and highlighted at all times
+* Extract and show key indicators and metrics to always keep them visible and highlighted
 * Add text, images, and links to help viewers make the most of your dashboard
 * Include additional controls to facilitate filtering and browsing the data
 
