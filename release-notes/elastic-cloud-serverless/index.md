@@ -81,7 +81,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes OTLP responses to return the correct response type for partial successes [#137718]({{es-pull}}137718)
 * Fixes the get data stream API when a data stream's index mode has been changed to `time_series` [#137852]({{es-pull}}137852)
 * Ensures `include_execution_metadata` in {{esql}} always returns data, including for local-only queries [#137641]({{es-pull}}137641)
-* Fixes the DiskBBQ example in the release highlights documentation [#137960]({{es-pull}}137960)
 * Fixes an {{esql}} vector similarity concurrency issue affecting byte vectors [#137883]({{es-pull}}137883)
 * Reverts a previous change to `statsByShard` that regressed performance for very large shard counts [#137984]({{es-pull}}137984)
 * Fixes scalability issues when updating {{ml}} calendar events [#136886]({{es-pull}}136886)
