@@ -49,13 +49,9 @@ Once you're familiar with the basics, explore these guides for specific tasks:
 
 ## Advanced features
 
-Explore the **Discover** documentation to learn more about the following capabilities:
+The following guides cover additional features you can use in Discover:
 
-* Compare documents side by side
-* Add runtime fields to your {{data-source}}
-* Work with multiple tabs
-* Understand context-aware experiences
-* Run queries in the background
-* Generate alerts
-* Analyze field statistics and patterns
-* Search for relevance
+* [Add runtime fields to your {{data-source}}](discover/discover-get-started.md#add-field-in-discover)
+* [Run queries in the background](discover/background-search.md)
+* [Analyze field statistics and patterns](discover/run-pattern-analysis-discover.md)
+* [Search for relevance](discover/discover-search-for-relevance.md)
