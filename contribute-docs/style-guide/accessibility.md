@@ -190,32 +190,31 @@ Different people are used to different names, currencies, date and time formats,
 * Avoid ambiguous values, like `04/05/06` for a date. Is it May 4 or April 5, and which year? `11/17/1987` leaves less room for interpretation if the exact format is not specified nearby. 
 * If there is no obvious example standard (RFC) to follow, try to be diverse to represent our audience.
 
-✔️ **Avoid idioms or expressions that are not commonly known, also known as regionalisms.** 
+✔️ **Avoid idioms or expressions that are not commonly known, also known as regionalisms.**
 
-In our Elastic documentation, we aim for a fun, friendly, and sometimes quirky 
-tone. To achieve that, it can help to use informal, playful language. However, 
-we also have to be careful that our text is as inclusive as possible, so we try 
-to avoid expressions that might be unknown or opaque to some readers. Here are 
-a few examples of what to avoid:
+In our Elastic documentation, we aim for a fun, friendly, and sometimes quirky tone.
+To achieve that, it can help to use informal, playful language.
+However, we also have to be careful that our text is as inclusive as possible, so we try to avoid expressions that might be unknown or opaque to some readers.
+Here are a few examples of what to avoid:
   
 * Idioms (for example, _It's a piece of cake_ or _So far so good_)
 * Regional expressions (for example, _G'day!_, _Y'all_, or _eh_)
 * Sports expressions (for example, _touched base_ or _threw a curve ball_)
 * Pop culture references (for example, _Elvis has left the building_ or _Same bat-time, same bat-channel_)
 
-We're all pretty good at avoiding these, but there's one problematic type of 
-expression that shows up frequently in docs reviews. Latin terms and 
-abbreviations are a common source of confusion, particularly for people whose 
-first language does not have Latin roots.
+We're all pretty good at avoiding these, but there's one problematic type of expression that shows up frequently in docs reviews.
+Latin terms and abbreviations are a common source of confusion, particularly for people whose first language does not have Latin roots.
 
 Here are some terms to avoid and suggested alternatives:
 
 | Avoid | Use instead |
 | ----- | ----------- |
-| e.g. (exempli gratia) | For example | 
+| e.g. (exempli gratia) | For example |
 | etc. (et cetera) | And more, and so on |
 | i.e. (id est) | That is |
 | via | By way of, by means of, through |
+
+For more examples, refer to [](/contribute-docs/style-guide/word-choice.md)
 
 ✔️ **Aim for readability.** Tools like the Hemingway App can help you make content simpler. Be conversational, but prioritize clarity.
 

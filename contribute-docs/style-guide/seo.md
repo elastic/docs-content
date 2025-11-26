@@ -191,7 +191,7 @@ Best practices:
 
   * Use structured data (for example, [schema.org](https://schema.org/) markup) to add semantic meaning.  
     Structured data can help search engines display your documentation in rich results, such as FAQs or How-To snippets.  
-    Check with the documentation team for existing capabilities or implementation guidance.
+    Check with the documentation team for existing capabilities or implementation guidance. If you're an external contributor, open a GitHub issue to discuss implementation options.
 
 ### Content length
 
@@ -253,7 +253,6 @@ Best practices:
 
 * Accessibility considerations
 
-  * Use semantic HTML (`<ul>`, `<ol>`, `<li>`) for lists.  
   * Avoid using lists for layout or decorative purposes.
 
 ### Interlinking
@@ -277,7 +276,6 @@ Best practices:
 * Use external links judiciously
 
   * Link to reputable, authoritative sources when necessary. For example, `https://www.python.org/doc/`.
-  * Ensure external links open in a new tab/window.
 
 * Maintain link accessibility
 
@@ -351,9 +349,7 @@ Best practices:
   * Avoid unnecessary words or parameters.  
   * Use hyphens (-) to separate words for clarity.
 
-* Use lowercase letters
-
-  * Always use lowercase to prevent duplicate content issues (e.g., /Guide/ vs. /guide/).
+* Always use lowercase to prevent duplicate content issues.
 
 * Avoid special characters
 

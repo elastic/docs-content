@@ -431,6 +431,8 @@ Avoid Latin abbreviations for common English phrases, unless space is limited.
 ✔️ **Do**: for example
 :::
 
+For more examples, refer to [](/contribute-docs/style-guide/word-choice.md)
+
 ## Glossary
 
 For a list of terms and abbreviations commonly used in our docs, refer to the [Glossary](/reference/glossary/index.md).
