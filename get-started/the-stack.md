@@ -11,10 +11,10 @@ applies_to:
   serverless:
   stack:
 ---
-# {{search-platform}}
+# {{stack}} and the {{search-platform}}
 
-The [{{search-platform}}](https://www.elastic.co/platform) is the open source foundation for Elastic solutions and for developers seeking to build generative AI powered applications.
-Its core components (also known as ELK or the [{{stack}}](https://www.elastic.co/elastic-stack)) are:
+The [{{search-platform}}](https://www.elastic.co/platform) is the foundation for Elastic solutions and for developers seeking to build generative AI powered applications.
+Its core open source components (also known as ELK or the [{{stack}}](https://www.elastic.co/elastic-stack)) are:
 
 - [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine that handles indexing, querying, and analytics.
 - [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools.
@@ -100,12 +100,13 @@ You can use the {{es}} clients to access data directly by using common programmi
 
 {{es}} is a data store and [vector database](https://www.elastic.co/elasticsearch/vector-database) that provides near real-time search and analytics for all types of data.
 Whether you have structured or unstructured text, time series (timestamped) data, vectors, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches.
+It also includes multiple query languages, aggregations, and robust features for [querying and filtering](/explore-analyze/query-filter.md) your data.
 
 {{es}} is built to be a resilient and scalable distributed system.
 It runs as a cluster of one or more servers, called nodes.
 When you add data to an index, it's divided into pieces called shards, which are spread across the various nodes in the cluster.
 This architecture allows {{es}} to handle large volumes of data and ensures that your data remains available even if a node fails.
-If you use {{serverless-full}}, it has a unique [Search AI Lake cloud-native architecture](https://www.elastic.co/cloud/serverless/search-ai-lake), scales your workload, and automates the nodes, shards, and replicas for you.
+If you use {{serverless-full}}, it has a unique [Search AI Lake cloud-native architecture](https://www.elastic.co/cloud/serverless/search-ai-lake) and automates the nodes, shards, and replicas for you.
 
 <!--
 {{es}} also includes generative AI features and built-in {{nlp}} (NLP) models that enable you to make predictions, run {{infer}}, and integrate with LLMs faster.
@@ -135,12 +136,13 @@ It is also the home for the {{es}}, Elastic {{observability}} and {{elastic-sec}
 
 With {{kib}}, you can:
 
-- Use **Discover** to interactively search and filter your raw data.  
+- Use **Discover** to interactively search and filter your raw data.
 - Build custom visualizations like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
-- Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.  
+- Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.
 - Analyze geospatial data using the powerful **Maps** application.
+- Manage resources such as processors, pipelines, data streams, trained models, and cases.
 
-Each solution or project type provides unique features, such as built-in dashboards, connectors, and [](/explore-analyze/ai-assistant.md).
+Each solution or project type provides unique features, such as built-in dashboards, connectors, alerting rules, and [](/explore-analyze/ai-assistant.md).
 
 {{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
