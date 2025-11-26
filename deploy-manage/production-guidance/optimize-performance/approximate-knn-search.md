@@ -63,7 +63,7 @@ Here are estimates for different element types and quantization levels:
 * `element_type: byte`: `num_vectors * num_dimensions`
 * `element_type: bit`: `num_vectors * (num_dimensions/8)`
 
-If utilizing HNSW, the graph must also be in memory, to estimate the required bytes use the equation below. The default value for the HNSW `m` parameter is `16`.
+If you're using HNSW, the graph must also be in memory. To estimate the required bytes, use the following formula below. The default value for the HNSW `m` parameter is `16`.
 
 ```{math}
 \begin{align*}
@@ -72,7 +72,7 @@ estimated\ bytes &= num\_vectors * 4 * m \\
 \end{align*}
 ```
 
-If utilizing DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes first compute the number of clusters, then we can compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.
+If you're using DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes first compute the number of clusters, then we can compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.
 
 ```{math}
 \begin{align*}
