@@ -9,6 +9,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+## November 24, 2025 [elastic-cloud-serverless-11242025-deprecations]
+* Shows a callout for deprecated, in-use ILM policies. For more information, check [#243416]({{kib-pull}}243416).
+
 ## October 13, 2025 [elastic-cloud-serverless-10132025-deprecations]
 * Filters endpoint exceptions from the detection engine's execution logic. For more information, check [#233289]({{kib-pull}}233289).
 
