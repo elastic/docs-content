@@ -140,9 +140,9 @@ With {{kib}}, you can:
 - Build custom visualizations like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
 - Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.
 - Analyze geospatial data using the powerful **Maps** application.
-- Manage resources such as processors, pipelines, data streams, trained models, and cases.
+- Manage resources such as processors, pipelines, data streams, trained models, and more.
 
-Each solution or project type provides unique features, such as built-in dashboards, connectors, alerting rules, and [](/explore-analyze/ai-assistant.md).
+Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [](/explore-analyze/ai-assistant.md).
 
 {{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
