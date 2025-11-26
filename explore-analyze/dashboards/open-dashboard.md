@@ -15,10 +15,7 @@ Open an existing dashboard in {{product.kibana}} to modify its visualizations, a
 
 ## Requirements [edit-dashboard-requirements]
 
-To edit a dashboard, you need:
-
-* **Edit** permissions for the **Dashboard** feature in {{product.kibana}}
-* An existing dashboard to modify
+To edit a dashboard, you need **Edit** permissions for the **Dashboard** feature in {{product.kibana}}.
 
 ::::{note}
 Managed dashboards created by integrations can't be edited directly, but you can [duplicate](duplicate-dashboards.md) them and edit these duplicates.
