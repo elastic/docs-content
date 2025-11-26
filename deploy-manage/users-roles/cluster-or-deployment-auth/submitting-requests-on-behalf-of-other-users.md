@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html
 applies_to:
   stack: all
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---

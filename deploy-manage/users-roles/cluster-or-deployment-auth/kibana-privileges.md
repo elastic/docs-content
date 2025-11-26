@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-privileges.html
 applies_to:
   stack: all
+  serverless: unavailable
 products:
   - id: kibana
 ---

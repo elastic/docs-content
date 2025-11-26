@@ -154,7 +154,7 @@ To configure document-level security (DLS), you create a custom role where you d
 
 ### Templating a role query [templating-role-query]
 
-When you create a role, you can specify a query that defines the [document level security permissions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security). You can optionally use Mustache templates in the role query to insert the username of the current authenticated user into the role. Like other places in {{es}} that support templating or scripting, you can specify inline, stored, or file-based templates and define custom parameters. You access the details for the current authenticated user through the `_user` parameter.
+When you create a role, you can specify a query that defines the [document level security permissions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md). You can optionally use Mustache templates in the role query to insert the username of the current authenticated user into the role. Like other places in {{es}} that support templating or scripting, you can specify inline, stored, or file-based templates and define custom parameters. You access the details for the current authenticated user through the `_user` parameter.
 
 For example, the following role query uses a template to insert the username of the current authenticated user:
 
@@ -242,7 +242,7 @@ For more information, see [Ingest pipelines](/manage-data/ingest/transform-enric
 
 ## Field level security [field-level-security]
 
-To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security)).
+To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)).
 
 :::::{tab-set}
 :group: field-document
@@ -486,7 +486,7 @@ serverless: unavailable
 
 `replication` does not support any field or document level security. `search` supports field and document level security.
 
-For reasons similar to those described in [Multiple roles with document and field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#multiple-roles-dls-fls), you can't create a single cross-cluster API key with both the `search` and `replication` parameters if the `search` parameter has document or field level security defined.
+For reasons similar to those described in [Multiple roles with document and field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#multiple-roles-dls-fls), you can’t create a single cross-cluster API key with both the `search` and `replication` parameters if the `search` parameter has document or field level security defined.
 
 If you need to use both of these parameters, and you need to define document or field level security for the `search` parameter, create two separate cross-cluster API keys, one using the `search` parameter, and one using the `replication` parameter. You will also need to set up two different remote connections to the same cluster, with each named connection using the appropriate cross-cluster API key.
 

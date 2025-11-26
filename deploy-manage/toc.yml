@@ -620,11 +620,8 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/role-mapping-resources.md
               - file: users-roles/cluster-or-deployment-auth/authorization-delegation.md
               - file: users-roles/cluster-or-deployment-auth/authorization-plugins.md
-              - title: "Control access at the document and field level"
-                crosslink: docs-content://deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
-              #- file: users-roles/controlling-access-at-document-field-level.md
+              - file: users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
               - file: users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md
-      - file: users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
   - file: manage-spaces.md
     children:
       - file: manage-spaces-fleet.md

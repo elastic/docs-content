@@ -246,7 +246,7 @@ When a user is authenticated via an LDAP realm, the following properties are pop
 
 This metadata is returned in the [authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate), and can be used with [templated queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) in roles.
 
-Additional fields can be included in the user's metadata by configuring the `metadata` setting on the LDAP realm. This metadata is available for use with the [role mapping API](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-api) or in [templated role queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query).
+Additional fields can be included in the user’s metadata by configuring the `metadata` setting on the LDAP realm. This metadata is available for use with the [role mapping API](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-api) or in [templated role queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query).
 
 The example below includes the user’s common name (`cn`) as an additional field in their metadata.
 

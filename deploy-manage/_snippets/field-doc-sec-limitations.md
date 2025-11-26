@@ -2,7 +2,7 @@ Field and document security is subject to the following limitations:
 
 ### Document level security limitations
 
-When a user's role enables [document level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for a data stream or index:
+When a user’s role enables [document level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for a data stream or index:
 
 * Document level security doesn’t affect global index statistics that relevancy scoring uses. This means that scores are computed without taking the role query into account. Documents that don’t match the role query are never returned.
 * The `has_child` and `has_parent` queries aren’t supported as query parameters in the role definition. The `has_child` and `has_parent` queries can be used in the search API with document level security enabled.
@@ -24,7 +24,7 @@ While document-level security prevents users from viewing restricted documents, 
 
 ### Field level security limitations
 
-When a user's role enables document or [field level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for a data stream or index:
+When a user’s role enables document or [field level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for a data stream or index:
 
 * The user cannot perform write operations:
 

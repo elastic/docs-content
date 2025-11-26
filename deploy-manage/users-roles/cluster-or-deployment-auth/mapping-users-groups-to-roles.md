@@ -5,6 +5,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/role-mappings.html
 applies_to:
   stack: all
+  serverless: unavailable
 products:
   - id: elasticsearch
   - id: kibana
