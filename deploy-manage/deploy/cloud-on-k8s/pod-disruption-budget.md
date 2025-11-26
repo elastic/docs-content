@@ -25,7 +25,7 @@ deployment:
   eck: ga 3.2
 ```
 
-In Elasticsearch clusters managed by ECK and licensed with an Enterprise license, PDBs are created based on Elasticsearch node roles, allowing Kubernetes upgrade or maintenance operations to be executed more quickly. Multiple `nodeSets` with the same roles, such as `master` or `ml`, are combined into a single PDB. Each PDB permits one Elasticsearch Pod to be disrupted at a time, provided the Elasticsearch cluster maintains the health status described in the following table.
+In {{es}} clusters managed by ECK and licensed with an Enterprise license, PDBs are created based on {{es}} node roles, allowing Kubernetes upgrade or maintenance operations to be executed more quickly. Multiple `nodeSets` with the same roles, such as `master` or `ml`, are combined into a single PDB. Each PDB permits one {{es}} Pod to be disrupted at a time, provided the {{es}} cluster maintains the health status described in the following table.
 
 | Role | Cluster health required | Notes |
 |------|------------------------|--------|
