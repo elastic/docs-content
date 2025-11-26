@@ -63,9 +63,31 @@ Here are estimates for different element types and quantization levels:
 * `element_type: byte`: `num_vectors * num_dimensions`
 * `element_type: bit`: `num_vectors * (num_dimensions/8)`
 
-If utilizing HNSW, the graph must also be in memory, to estimate the required bytes use `num_vectors * 4 * HNSW.m`. The default value for `HNSW.m` is 16, so by default `num_vectors * 4 * 16`.
+If utilizing HNSW, the graph must also be in memory, to estimate the required bytes use the equation below. The default value for the HNSW `m` parameter is `16`.
 
-If utilizing DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes we compute the cost of the centroids as `num_clusters * num_dimensions * 4 + num_clusters * (num_dimensions + 14)` plus the cost of the quantized vectors within the clusters as `num_vectors * ((num_dimensions/8 + 14 + 2) * 2)` where `num_clusters` is defined as `num_vectors / vectors_per_cluster` which by default will be `num_vectors / 384`
+```{math}
+\begin{align*}
+estimated\ bytes &= num\_vectors * 4 * m \\
+&= num\_vectors * 4 * 16
+\end{align*}
+```
+
+If utilizing DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes first compute the number of clusters, then we can compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.
+
+```{math}
+\begin{align}
+num\_clusters &= num\_vectors / vectors\_per\_cluster \\
+&= num\_vectors / 384
+\end{align}
+```
+
+```{math}
+estimated\ centroid\ bytes = num\_clusters * num\_dimensions * 4 + num\_clusters * (num\_dimensions + 14)
+```
+
+```{math}
+estimated\ quantized\ vector\ bytes = num\_vectors * ((num\_dimensions/8 + 14 + 2) * 2)
+```
 
 Note that the required RAM is for the filesystem cache, which is separate from the Java heap.
 
