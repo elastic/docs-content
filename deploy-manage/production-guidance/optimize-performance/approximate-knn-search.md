@@ -77,9 +77,9 @@ estimated\ bytes &= num\_vectors \times 4 \times m \\
 If you're using DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes first compute the number of clusters, then we can compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.  The default value for the number of `vectors_per_cluster` is `384`.
 
 ```{math}
-\begin{equation}
+\begin{align*}
 num\_clusters=\frac{num\_vectors}{vectors\_per\_cluster}=\frac{num\_vectors}{384}
-\end{equation}
+\end{align*}
 ```
 
 ```{math}
