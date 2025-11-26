@@ -55,7 +55,7 @@ Key tasks for managing user authorization include:
 * [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * Assigning [built-in roles](elasticsearch://reference/elasticsearch/roles.md) or your own roles to users
 * Creating [mappings of users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) for external authentication providers
-* [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) {applies_to}`stack: ga` {applies_to}`serverless: ga` 
+* [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
 You can also learn the basics of {{es}} authorization, and perform advanced tasks.
 
@@ -72,3 +72,6 @@ This topic describes built-in roles in {{stack}} clusters and deployments and ex
 To create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
 :::
 
+:::{admonition} Control access at the document and field level in {{serverless-short}}
+{{serverless-full}} centralizes user management with [Cloud organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). You can configure [document and field-level access control](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) in {{serverless-full}} projects by creating project-level custom roles assigned to Cloud organization users.
+:::

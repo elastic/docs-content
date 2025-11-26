@@ -65,11 +65,15 @@ Review these topics to learn how to configure RBAC in your cluster or deployment
 * Learn about [built-in roles](elasticsearch://reference/elasticsearch/roles.md)
 * [Define your own roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * Learn about the [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and [Elasticsearch](elasticsearch://reference/elasticsearch/security-privileges.md) privileges you can assign to roles
-* Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) {applies_to}`stack: all` {applies_to}`serverless: all`
+* Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
 :::{tip}
 This topic describes built-in roles in {{stack}} clusters and deployments and explains how to create custom ones. You can also learn about [organization-level](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) roles and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) in {{serverless-full}}.
 To create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
+:::
+
+:::{admonition} Control access at the document and field level in {{serverless-short}}
+{{serverless-full}} centralizes user management with [Cloud organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). You can configure [document and field-level access control](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) in {{serverless-full}} projects by creating project-level custom roles assigned to Cloud organization users.
 :::
 
 ### Assign roles to users
