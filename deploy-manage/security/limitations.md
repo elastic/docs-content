@@ -33,7 +33,7 @@ Multi get and multi term vectors API throw `IndexNotFoundException` when trying 
 
 ## Filtered index aliases [_filtered_index_aliases]
 
-Aliases containing filters are not a secure way to restrict access to individual documents, due to the limitations described in [Index and field names can be leaked when using aliases](#alias-limitations). The {{stack-security-features}} provide a secure way to restrict access to documents through the [document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) feature.
+Aliases containing filters are not a secure way to restrict access to individual documents, due to the limitations described in [Index and field names can be leaked when using aliases](#alias-limitations). The {{stack-security-features}} provide a secure way to restrict access to documents through the [document-level security](/deploy-manage/users-roles/controlling-access-at-document-field-level.md) feature.
 
 
 ## Field and document level security limitations [field-document-limitations]

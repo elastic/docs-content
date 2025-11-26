@@ -7,7 +7,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html
 applies_to:
   stack: all
-  serverless: unavailable
 products:
   - id: elasticsearch
   - id: cloud-kubernetes

@@ -73,7 +73,7 @@ Document-level and field-level security affords you even more granularity when i
 * With field-level security (FLS), you can instruct {{es}} to grant or deny access to specific fields within each document. List these fields in the **Granted fields** field.
 
 :::{{tip}}
-{{serverless-full}} and {{stack}} both use queries to specify the documents that a role can access. For additional query examples, refer to [Controlling access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security).
+{{serverless-full}} and {{stack}} both use queries to specify the documents that a role can access. For additional query examples, refer to [Controlling access at the document and field level](/deploy-manage/users-roles/controlling-access-at-document-field-level.md#document-level-security).
 :::
 
 

@@ -124,7 +124,7 @@ Key tasks for managing user authorization include:
 
 * Assigning [built-in roles](elasticsearch://reference/elasticsearch/roles.md) or [defining your own](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
-* [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
+* [Setting up field- and document-level security](/deploy-manage/users-roles/controlling-access-at-document-field-level.md)
 
 You can also learn the basics of {{es}} authorization, and perform advanced tasks.
 

@@ -70,7 +70,7 @@ You can [change your subscription level](/deploy-manage/cloud-organization/billi
 :   Make sure that there are no applications that use the SQL [JDBC](elasticsearch://reference/query-languages/sql/sql-jdbc.md) or [ODBC](elasticsearch://reference/query-languages/sql/sql-odbc.md) clients.
 
 `Field-level or document-level security`
-:   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the {{kib}} [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) page.
+:   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/controlling-access-at-document-field-level.md) or the {{kib}} [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) page.
 
 `ES|QL cross-cluster search`
 :   Discontinue all [ES|QL CCS queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) or upgrade license tier to Enterprise.

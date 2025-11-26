@@ -52,7 +52,7 @@ Document-level and field-level security affords you even more granularity when i
 
 ### Example: Grant read access to specific documents in indices that match the `filebeat-*` pattern [index_privilege_dls_example]
 
-[Document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) is a [subscription feature](https://www.elastic.co/subscriptions).
+[Document-level security](/deploy-manage/users-roles/controlling-access-at-document-field-level.md) is a [subscription feature](https://www.elastic.co/subscriptions).
 
 1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
 2. Click **Create role**.
