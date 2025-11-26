@@ -46,7 +46,7 @@ Another option is to use  [synthetic `_source`](elasticsearch://reference/elasti
 
 ## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory]
 
-{{es}} uses either the Hierarchical Navigable Small World([HNSW](https://arxiv.org/abs/1603.09320)) algorithm or the Disk Better Binary Quantization ([DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) algorithm for approximate kNN search. 
+{{es}} uses either the Hierarchical Navigable Small World ([HNSW](https://arxiv.org/abs/1603.09320)) algorithm or the Disk Better Binary Quantization ([DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) algorithm for approximate kNN search. 
 
 HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures.
 
