@@ -103,8 +103,7 @@ POST products/_doc
 
 ### Root cause
 
-A common cause of null pointer exceptions in Painless scripts is attempting to access document fields using incorrect access patterns for the specific [script context](elasticsearch://reference/scripting-languages/painless/painless-contexts.md). To learn more about the context-dependent field access methods in Painless, refer to Painless syntax-context bridge in the Explore and Analyze documentation. 
-% Link to come after E&A PR is merged.
+A common cause of null pointer exceptions in Painless scripts is attempting to access document fields using incorrect access patterns for the specific [script context](elasticsearch://reference/scripting-languages/painless/painless-contexts.md). To learn more about the context-dependent field access methods in Painless, refer to [Painless syntax-context bridge](/explore-analyze/scripting/painless-syntax-context-bridge.md).
 
 The error occurs because `params['_source']` is not available in script filter contexts. In script filters, field values must be accessed through `doc` values, not through the `params['_source']` map.
 
