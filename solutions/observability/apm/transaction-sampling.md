@@ -162,16 +162,19 @@ Terminology:
 * Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second. Note that it should roughly be equal to Event Ingestion Rate * Sampling Rate.
 * Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
 
-#### APM Server 9.0
+#### APM Server 9.2
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6id.2xlarge      | TBS disabled                                   | 47220                           | 47220 (100% sampling)          | 0.98              | 0               |
-| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 21310                           | 2360                           | 1.41              | 13.1            |
-| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 21210                           | 2460                           | 1.34              | 12.9            |
-| c6id.4xlarge      | TBS disabled                                   | 142200                          | 142200 (100% sampling)         | 1.12              | 0               |
-| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 32410                           | 3710                           | 1.71              | 19.4            |
-| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 37040                           | 4110                           | 1.73              | 23.6            |
+| c6gd.2xlarge      | TBS disabled                                   | 45120                           | 45120 (100% sampling)          | 0.95              | 0               |
+| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 17120                           | 1527                           | 1.48              | 11.3            |
+| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 19490                           | 1661                           | 1.48              | 12.3            |
+| c6gd.4xlarge      | TBS disabled                                   | 63460                           | 63460 (100% sampling)          | 1.45              | 0               |
+| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 26340                           | 2248                           | 2.09              | 17.8            |
+| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 36620                           | 3041                           | 2.22              | 21.8            |
+| c6gd.8xlarge      | TBS disabled                                   | 119800                          | 119800 (100% sampling)         | 1.44              | 0               |
+| c6gd.8xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 27620                           | 2485                           | 2.49              | 16.6            |
+| c6gd.8xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 46260                           | 3909                           | 2.43              | 25.8            |
 
 #### APM Server 8.18
 
