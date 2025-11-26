@@ -330,9 +330,9 @@ POST quantized-image-index/_search
 {applies_to}
 stack: ga 9.3
 ```
-Instead of storing raw vectors as 4-byte values, you can use `element_type: bfloat16` to store each dimension as a 2-byte value. This can be useful if your indexed vectors are at bfloat16 precision already, or if you wish to reduce the disk space required to store vector data. Elasticsearch will automatically truncate 4-byte float values to 2-byte bfloat16 values when indexing vectors.
+Instead of storing raw vectors as 4-byte values, you can use `element_type: bfloat16` to store each dimension as a 2-byte value. This can be useful if your indexed vectors are at bfloat16 precision already, or if you want to reduce the disk space required to store vector data. When this element type is used, {{es}} automatically truncates 4-byte float values to 2-byte bfloat16 values when indexing vectors.
 
-Due to the reduced precision of bfloat16, any vectors retrieved from the index may have slightly different values to those originally indexed.
+Due to the reduced precision of bfloat16, any vectors retrieved from the index might have slightly different values to those originally indexed.
 
 ### Filtered kNN search [knn-search-filter-example]
 
@@ -1242,9 +1242,9 @@ stack: preview 9.3
 serverless: unavailable
 ```
 
-By default, Elasticsearch will read raw vector data into memory to perform rescoring. This may have an effect on performance if the vector data is too large to all fit in off-heap memory at once. By specifying the `on_disk_rescore: true` index setting, Elasticsearch will read vector data from disk directly during rescoring.
+By default, {{es}} reads raw vector data into memory to perform rescoring. This can have an effect on performance if the vector data is too large to all fit in off-heap memory at once. When the `on_disk_rescore: true` index setting is set, {{es}} reads vector data directly from disk during rescoring.
 
-Note that this setting will only apply to newly indexed vectors; to apply the option to all vectors in the index, the vectors must be re-indexed or force-merged after changing the setting.
+This setting only applies to newly indexed vectors. To apply the option to all vectors in the index, the vectors must be re-indexed or force-merged after changing the setting.
 
 #### Additional rescoring techniques [dense-vector-knn-search-rescoring-rescore-additional]
 

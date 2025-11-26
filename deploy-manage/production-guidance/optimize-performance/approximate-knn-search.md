@@ -128,6 +128,6 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 stack: preview 9.3
 serverless: unavailable
 ```
-If you use quantized indices and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float vectors.
+If you use quantized indices and your nodes don't have enough off-heap RAM to store all vector data in memory, then you might experience high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float vectors.
 
-In these scenarios, on-disk rescoring can significantly reduce query latency. Enable it by setting the `on_disk_rescore: true` option on your vector indices. Note that your data will need to be re-indexed or force-merged to use the new setting in subsequent searches.
+In these scenarios, on-disk rescoring can significantly reduce query latency. Enable it by setting the `on_disk_rescore: true` option on your vector indices. Your data must be re-indexed or force-merged to use the new setting in subsequent searches.
