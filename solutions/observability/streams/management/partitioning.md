@@ -9,14 +9,14 @@ applies_to:
 The **Partitioning** tab and the ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::
 
-For [wired streams](../wired-streams.md), sthe `/logs` endpoint acts as the entry point for all your log data.
+For [wired streams](../wired-streams.md), the `/logs` endpoint acts as the entry point for all your log data.
 
 Once you've sent your data to the `/logs` endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
 
 - Route application logs to a `logs.myapp` child stream.
 - Route system logs to a `logs.system` child stream.
 
-For more on when to partition your data and how granular your partitioning should be, refer to [Partitioning recommendations](#streams-partitioning-rcommendations).
+For more on when to partition your data and how granular your partitioning should be, refer to [Partitioning recommendations](#streams-partitioning-recommendations).
 
 Create partitions using the following options:
 
@@ -25,22 +25,19 @@ Create partitions using the following options:
 
 ## Partitioning recommendations [streams-partitioning-recommendations]
 
-Partitioning helps manage your data when you have multiple systems sending logs to a single parent stream. Refer to the following sections for more on when you should and should not partition.
+Partitioning helps you manage your data when you have multiple systems sending logs to a single parent stream.
 
-### When you *should* partition [streams-should-partition]
+Focus on logical groupings like data by teams or overarching technologies. For example, partition web servers in one stream and custom application logs in another.
 
-You *should* keep partitions meaningful by focusing on logical groupings like data by teams or overarching technologies (for example, web servers in one stream, custom application logs in another).
-
-Don't partition by fields with high cardinality. Even partitioning on something as common as `service.name` usually creates too many partitions to manage effectively.
+Don't partition by fields with high cardinality. Even partitioning by common fields like `service.name` can create too many partitions to manage effectively.
 
 As a general rule, aim for tens of partitions, not hundreds. Each partition comes with a cost, as it creates a data stream in {{es}} under the hood. You can have many of them, but they're not unlimited.
 
 ### When you *need* to partition [streams-must-partition]
 
-You only *need* a partition when you want to control the lifecycle of a subset of your data separately from the rest of your data.
-For example, you might have a noisy firewall and a quiet custom application logging to the same stream. You wouldn't need to retain the firewall logs for as long, and they take up disk space.
+You only *need* a partition when you want a subset of your data to follow a different lifecycle than the rest.
 
-In this case, it makes sense to partition the stream and assign a different [{{ilm-init}} policy or retention setting](./retention.md) to each child stream:
+For example, suppose a noisy firewall and a quiet custom application send logs to the same stream. The firewall logs don't need to be retained as long and take up disk space. In this case, partition the stream and assign a different [{{ilm-init}} policy or retention setting](./retention.md) to each child stream:
 
 ```bash
 logs
