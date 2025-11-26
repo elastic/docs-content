@@ -168,9 +168,9 @@ Terminology:
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6gd.xlarge      | TBS disabled                                   | 45120                           | 45120 (100% sampling)          | 0.95              | 0               |
-| c6gd.xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 17120                           | 1527                           | 1.48              | 11.3            |
-| c6gd.xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 19490                           | 1661                           | 1.48              | 12.3            |
+| c6gd.xlarge       | TBS disabled                                   | 45120                           | 45120 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge       | TBS enabled, EBS gp3 volume with 3000 IOPS     | 17120                           | 1527                           | 1.48              | 11.3            |
+| c6gd.xlarge       | TBS enabled, local NVMe SSD from c6gd instance | 19490                           | 1661                           | 1.48              | 12.3            |
 | c6gd.2xlarge      | TBS disabled                                   | 63460                           | 63460 (100% sampling)          | 1.45              | 0               |
 | c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 26340                           | 2248                           | 2.09              | 17.8            |
 | c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 36620                           | 3041                           | 2.22              | 21.8            |
@@ -182,9 +182,9 @@ Terminology:
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6gd.xlarge      | TBS disabled                                   | 45480                           | 45480 (100% sampling)          | 0.95              | 0               |
-| c6gd.xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11420                           | 11.55                          | 5.92              | 30.81           |
-| c6gd.xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 12630                           | 86.52                          | 5.82              | 27.70           |
+| c6gd.xlarge       | TBS disabled                                   | 45480                           | 45480 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge       | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11420                           | 11.55                          | 5.92              | 30.81           |
+| c6gd.xlarge       | TBS enabled, local NVMe SSD from c6gd instance | 12630                           | 86.52                          | 5.82              | 27.70           |
 | c6gd.2xlarge      | TBS disabled                                   | 61900                           | 61900 (100% sampling)          | 1.45              | 0               |
 | c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 12920                           | 37.31                          | 11.31             | 30.98           |
 | c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 23300                           | 574                            | 13.31             | 50.99           |
