@@ -56,12 +56,14 @@ To check the size of the vector data, you can use the [Analyze index disk usage]
 
 Here are estimates for different element types and quantization levels:
 
-* `element_type: float`: `num_vectors * num_dimensions * 4`
-* `element_type: float` with `quantization: int8`: `num_vectors * (num_dimensions + 4)`
-* `element_type: float` with `quantization: int4`: `num_vectors * (num_dimensions/2 + 4)`
-* `element_type: float` with `quantization: bbq`: `num_vectors * (num_dimensions/8 + 14)`
-* `element_type: byte`: `num_vectors * num_dimensions`
-* `element_type: bit`: `num_vectors * (num_dimensions/8)`
+| `element_type` | `quantization` | Required RAM |
+| --- | --- | --- |
+| `float` | none | `num_vectors * num_dimensions * 4` | 
+| `float` | `int8` | `num_vectors * (num_dimensions + 4)` |
+| `float` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
+| `float ` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
+| `byte` | none |  `num_vectors * num_dimensions` |
+| `bit` | none | `num_vectors * (num_dimensions/8)` |
 
 If you're using HNSW, the graph must also be in memory. To estimate the required bytes, use the following formula below. The default value for the HNSW `m` parameter is `16`.
 
