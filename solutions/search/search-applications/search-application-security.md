@@ -208,8 +208,8 @@ If you are unable to enable CORS on {{es}}, you can proxy the request through a 
 ## Learn more [search-application-security-learn-more] 
 
 * [Role restrictions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/role-restriction.md)
-* [Document level security](../../../deploy-manage/users-roles/controlling-access-at-document-field-level.md)
-* [Field level security](../../../deploy-manage/users-roles/controlling-access-at-document-field-level.md)
+* [Document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
+* [Field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 * [APIs](search-application-api.md)
 
     * [PUT Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put)
