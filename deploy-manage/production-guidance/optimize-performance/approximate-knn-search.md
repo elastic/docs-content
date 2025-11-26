@@ -69,26 +69,26 @@ If you're using HNSW, the graph must also be in memory. To estimate the required
 
 ```{math}
 \begin{align*}
-estimated\ bytes &= num\_vectors * 4 * m \\
-&= num\_vectors * 4 * 16
+estimated\ bytes &= num\_vectors \times 4 \times m \\
+&= num\_vectors \times 4 \times 16
 \end{align*}
 ```
 
 If you're using DiskBBQ, a fraction of the clusters and centroids will need to be in memory.  When doing this estimation it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes first compute the number of clusters, then we can compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.
 
+$$
+\begin{aligned}
+num\_clusters &= num\_vectors\ /\ vectors\_per\_cluster \\
+&= num\_vectors\ /\ 384
+\end{aligned}
+$$
+
 ```{math}
-\begin{align*}
-num\_clusters &= num\_vectors / vectors\_per\_cluster \\
-&= num\_vectors / 384
-\end{align*}
+estimated\ centroid\ bytes = num\_clusters \times num\_dimensions \times 4 + num\_clusters \times (num\_dimensions + 14)
 ```
 
 ```{math}
-estimated\ centroid\ bytes = num\_clusters * num\_dimensions * 4 + num\_clusters * (num\_dimensions + 14)
-```
-
-```{math}
-estimated\ quantized\ vector\ bytes = num\_vectors * ((num\_dimensions/8 + 14 + 2) * 2)
+estimated\ quantized\ vector\ bytes = num\_vectors \times ((num\_dimensions/8 + 14 + 2) \times 2)
 ```
 
 Note that the required RAM is for the filesystem cache, which is separate from the Java heap.
