@@ -275,7 +275,7 @@ In order to run {{agent}} as a non-root user you must choose how you want to per
 
 :::
 
-:::{applies-item} { "stack": "ga 8.15" } In Elastic Agent before 8.16:
+:::{tab-item} {{agent}} 8.15 and before 
 
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 2. Run {{agent}} with a `hostPath` volume which has the advantage of persisting data between restarts of the {{agent}}.
