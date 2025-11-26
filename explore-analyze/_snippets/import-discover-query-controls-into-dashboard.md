@@ -24,7 +24,7 @@ This method allows you to add the visualization of your Discover {{esql}} query 
 
    ![Importing Discover visualization with controls into a dashboard](/explore-analyze/images/save-discover-viz-to-dashboard.png " =70%")
 
-1. Select the dashboard to add the visualization to and. You can choose to create one.
+1. Select the dashboard to add the visualization to. You can choose an existing dashboard or create one.
 
-You automatically navigate to the selected dashboard. A panel is added containing the visualization imported from Discover. Existing controls coming from the initial query in Discover are also added. You can find them at the top of the dashboard.
+The selected dashboard opens. It now includes a new panel that shows the visualization imported from Discover. Existing controls from the initial query in Discover are also added. You can find them at the top of the dashboard.
 
