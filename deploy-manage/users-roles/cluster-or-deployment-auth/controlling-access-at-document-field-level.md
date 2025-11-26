@@ -154,7 +154,7 @@ To configure document-level security (DLS), you create a custom role where you d
 
 ### Templating a role query [templating-role-query]
 
-When you create a role, you can specify a query that defines the [document level security permissions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md). You can optionally use Mustache templates in the role query to insert the username of the current authenticated user into the role. Like other places in {{es}} that support templating or scripting, you can specify inline, stored, or file-based templates and define custom parameters. You access the details for the current authenticated user through the `_user` parameter.
+When you create a role, you can specify a query that defines the [document level security permissions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security). You can optionally use Mustache templates in the role query to insert the username of the current authenticated user into the role. Like other places in {{es}} that support templating or scripting, you can specify inline, stored, or file-based templates and define custom parameters. You access the details for the current authenticated user through the `_user` parameter.
 
 For example, the following role query uses a template to insert the username of the current authenticated user:
 
@@ -242,7 +242,7 @@ For more information, see [Ingest pipelines](/manage-data/ingest/transform-enric
 
 ## Field level security [field-level-security]
 
-To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)).
+To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security)).
 
 :::::{tab-set}
 :group: field-document

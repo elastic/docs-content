@@ -72,6 +72,8 @@ This topic describes built-in roles in {{stack}} clusters and deployments and ex
 To create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
 :::
 
+### Assign roles to users
+
 The way that you assign roles to users depends on your authentication realm:
 
 * [Native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md): 
