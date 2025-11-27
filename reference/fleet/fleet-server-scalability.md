@@ -106,7 +106,7 @@ Deprecated: Use the `action_limit` settings instead.
 :   Number of transactions allowed for a burst, controlling oversubscription on outbound buffer.
 
 `artifact_limit.max_body_byte_size`
-:   Maximum size in bytes of the artficact API request body.
+:   Maximum size in bytes of the artifact API request body.
 
 `ack_limit.max`
 :   Maximum number of agents that can call the ack API concurrently. It allows the user to avoid overloading the {{fleet-server}} from Ack API calls.
@@ -139,7 +139,7 @@ Deprecated: Use the `action_limit` settings instead.
 :   How frequently agents can submit status requests to the Fleet Server.
 
 `status_limit.burst`
-:   Burst of status requests to accomodate before falling back to the rate defined by interval.
+:   Burst of status requests to accommodate before falling back to the rate defined by interval.
 
 `status_limit.max_body_byte_size`
 :   Maximum size in bytes of the status API request body.
@@ -151,7 +151,7 @@ Deprecated: Use the `action_limit` settings instead.
 :   How frequently agents can submit file start upload requests to the Fleet Server.
 
 `upload_start_limit.burst`
-:   Burst of file start upload requests to accomodate before falling back to the rate defined by interval.
+:   Burst of file start upload requests to accommodate before falling back to the rate defined by interval.
 
 `upload_start_limit.max_body_byte_size`
 :   Maximum size in bytes of the uploadStart API request body.
@@ -163,7 +163,7 @@ Deprecated: Use the `action_limit` settings instead.
 :   How frequently agents can submit file end upload requests to the Fleet Server.
 
 `upload_end_limit.burst`
-:   Burst of file end upload requests to accomodate before falling back to the rate defined by interval.
+:   Burst of file end upload requests to accommodate before falling back to the rate defined by interval.
 
 `upload_end_limit.max_body_byte_size`
 :   Maximum size in bytes of the uploadEnd API request body.
@@ -175,7 +175,7 @@ Deprecated: Use the `action_limit` settings instead.
 :   How frequently agents can submit file chunk upload requests to the Fleet Server.
 
 `upload_chunk_limit.burst`
-:   Burst of file chunk upload requests to accomodate before falling back to the rate defined by interval.
+:   Burst of file chunk upload requests to accommodate before falling back to the rate defined by interval.
 
 `upload_chunk_limit.max_body_byte_size`
 :   Maximum size in bytes of the uploadChunk API request body.
@@ -183,7 +183,7 @@ Deprecated: Use the `action_limit` settings instead.
 
 ## Scaling recommendations ({{ecloud}}) [scaling-recommendations]
 
-The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example: a 32GB RAM requirement can be satisfed with 16GB of RAM in 2 different zones).
+The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example: a 32GB RAM requirement can be satisfied with 16GB of RAM in 2 different zones).
 
 * [Resource requirements by number of agents](#resource-requirements-by-number-agents)
 

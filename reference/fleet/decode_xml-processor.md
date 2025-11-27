@@ -83,7 +83,7 @@ Will produce the following output:
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
 | `field` | Yes | `message` | Source field containing the XML. |
-| `target_field` | No |  | The field under which the decoded XML will be written. By default the decoded XML object replaces the field from which it was read. To merge the decoded XML fields into the root of the event, specify `target_field` with an empty string (`target_field: ""`). Note that the `null` value (`target_field:`) is treated as if the field was not set at all. |
+| `target_field` | No |  | The field under which the decoded XML will be written. By default the decoded XML object replaces the field from which it was read. To merge the decoded XML fields into the root of the event, specify `target_field` with an empty string (`target_field: ""`). The `null` value (`target_field:`) is treated as if the field was not set at all. |
 | `overwrite_keys` | No | `true` | Whether keys that already exist in the event are overwritten by keys from the decoded XML object. |
 | `to_lower` | No | `true` | Whether to convert all keys to lowercase. |
 | `document_id` | No |  | XML key to use as the document ID. If configured, the field will be removed from the original XML document and stored in `@metadata._id`. |
