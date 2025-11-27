@@ -185,7 +185,7 @@ Each signal configuration is independent of the others, meaning that you can con
 
 ### Set the configuration
 
-First, set the configuration options that to be used by all the signals and the instrumentation code. Also initialize the internal logger at the level defined in the configuration.
+First, set the configuration options that are to be used by all the signals and the instrumentation code. Also initialize the internal logger at the level defined in the configuration.
 
 For this part, you need to install the following dependencies:
 
