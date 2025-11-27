@@ -23,6 +23,7 @@ Use this guide to troubleshoot any issues you may encounter.
 * [My cluster was disconnected from {{ecloud}} and I want to reconnect it.](#disconnected-cluster)
 * [After running the installation command, I can't move on to the next steps.](#next-steps)
 * [My organization's firewall may be preventing {{agent}} from collecting and sending metrics.](#firewall)
+* [{{agent}} is failing to connect because it doesn't recognize my SSL certificate.](#custom-cert)
 
 $$$single-cloud-org$$$**I’m trying to create a Cloud organization, but I’m already part of a different one.**
 :   :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
@@ -38,7 +39,7 @@ $$$next-steps$$$**After running the installation command, I can't move on to the
 :   If an error appears on the screen, follow the suggestion in the error message and try to run the command again. If the issue is not resolved, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
 $$$firewall$$$**My organization's firewall may be preventing {{agent}} from collecting and sending metrics.**
-:   If you suspect that a corporate firewall is hindering {{agent}}, complete the following steps to test each component of the connection and implement an appropriate solution. 
+:   If you're having issues with connecting your self-managed cluster to AutoOps and you suspect that a firewall may be the reason, complete the following steps to test each component of the connection and implement an appropriate solution. 
 
     :::{tip}
     Run the following tests within the context of your execution environment. That is, if your chosen installation method is Kubernetes, run the commands from within the pod; for Docker, run the commands from within the container, and so on. 
@@ -166,6 +167,9 @@ $$$firewall$$$**My organization's firewall may be preventing {{agent}} from coll
     If you are using Docker, you may need to complete this configuration directly via the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
     :::
 
+$$$custom-cert$$$**{{agent}} is failing to connect because it doesn't recognize my SSL certificate.**
+:   If {{agent}} is failing to connect your self-managed cluster to AutoOps because it doesn't recognize your SSL certificate, refer to [](/deploy-manage/monitor/autoops/autoops-sm-custom-certification.md). 
+
 ## Potential errors
 
 The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps on your clusters.
@@ -184,3 +188,4 @@ The following table shows the errors you might encounter if something goes wrong
 | `VERSION_MISMATCH` | {{es}} version is unsupported | Upgrade your cluster to a [supported version](https://www.elastic.co/support/eol). |
 | `UNKNOWN_ERROR` | Installation failed | {{agent}} couldn't be installed due to an unknown issue. Consult the troubleshooting guide or contact [Elastic support](https://support.elastic.co/) for more help. |
 | | Failed to register Cloud Connected Mode: cluster license type is not supported | The cluster you are trying to connect doesn't have the required license to connect to AutoOps. For more information, refer to the [prerequisites](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#prerequisites). |
+| `x509` | Certificate signed by unknown authority | {{agent}} couldn't connect. SSL certificate signed by unknown authority. |

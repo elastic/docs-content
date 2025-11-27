@@ -160,25 +160,45 @@ APM Server produces metrics to monitor the performance and estimate the workload
 
 This metric tracks the number of dynamic services that the tail-based sampler is tracking per policy. Dynamic services are created for tail-based sampling policies that are defined without a `service.name`.
 
-This is a counter metric so, should be visualized with `counter_rate`.
+This is a counter metric, so it should be visualized with `counter_rate`.
 
 ### `apm-server.sampling.tail.events.processed` [sampling-tail-monitoring-events-processed-ref]
 
 This metric tracks the total number of events (including both transaction and span) processed by the tail-based sampler.
 
-This is a counter metric so, should be visualized with `counter_rate`.
+This is a counter metric, so it should be visualized with `counter_rate`.
 
 ### `apm-server.sampling.tail.events.stored` [sampling-tail-monitoring-events-stored-ref]
 
 This metric tracks the total number of events stored by the tail-based sampler in the database. Events are stored when the full trace is not yet available to make the sampling decision. This value is directly proportional to the storage required by the tail-based sampler to function.
 
-This is a counter metric so, should be visualized with `counter_rate`.
+This is a counter metric, so it should be visualized with `counter_rate`.
 
 ### `apm-server.sampling.tail.events.dropped` [sampling-tail-monitoring-events-dropped-ref]
 
 This metric tracks the total number of events dropped by the tail-based sampler. Only the events that are actually dropped by the tail-based sampler are reported as dropped. Additionally, any events that were stored by the processor but never indexed will not be counted by this metric.
 
-This is a counter metric so, should be visualized with `counter_rate`.
+This is a counter metric, so it should be visualized with `counter_rate`.
+
+### `apm-server.sampling.tail.events.failed_writes` [sampling-tail-monitoring-events-failed-writes-ref]
+
+This metric tracks the total number of events that failed to be written to the tail-based sampling storage. Failed writes typically occur when the storage limit is reached or when there are issues with the local sampling database.
+
+The value of this metric should be 0 if tail-based sampling is functioning properly. If it is consistently increasing, check for misconfigured [storage limit](#sampling-tail-storage_limit-ref).
+
+This is a counter metric, so it should be visualized with `counter_rate`.
+
+### `apm-server.sampling.tail.events.sampled` [sampling-tail-monitoring-events-sampled-ref]
+
+This metric tracks the total number of events that were sampled (kept) by the tail-based sampler after applying the configured policies and were selected for indexing. This includes all events that belong to traces that matched tail-based sampling policies.
+
+This is a counter metric, so it should be visualized with `counter_rate`.
+
+### `apm-server.sampling.tail.events.head_unsampled` [sampling-tail-monitoring-events-head-unsampled-ref]
+
+This metric tracks the total number of events that were already unsampled by head-based sampling before reaching the tail-based sampler. These events are processed by the tail-based sampler but are not stored or indexed because they were already filtered out by head-based sampling decisions.
+
+This is a counter metric, so it should be visualized with `counter_rate`.
 
 ### `apm-server.sampling.tail.storage.lsm_size` [sampling-tail-monitoring-storage-lsm-size-ref]
 

@@ -32,26 +32,20 @@ The {{obs-ai-assistant}} helps you:
 
 ## Requirements [obs-ai-requirements]
 
-The AI assistant requires the following:
+To set up or use AI assistant, you need the following:
 
-- An **Elastic deployment**:
+* An appropriate [Elastic subscription](https://www.elastic.co/subscriptions)
 
-  - For **{{observability}}**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
+* The `Observability AI Assistant: All` {{kib}} privilege
 
-  - For **Search**: {{stack}}  version **8.16.0** or later, or **{{serverless-short}} {{es}} project**.
+* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md)
 
-    - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
-
-- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure [AI Assistant settings](../../solutions/observability/observability-ai-assistant.md#obs-ai-settings) to simulate function calling, but this might affect performance.
-
-  - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
-
-    Refer to the [documentation](kibana://reference/connectors-kibana/gen-ai-connectors.md) for your provider to learn about supported and default models.
-
-* The knowledge base requires a 4 GB {{ml}} node.
-  - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
-
-* A self-deployed connector service if you're using [content connectors](elasticsearch://reference/search-connectors/index.md) to populate external data into the knowledge base.
+* (Optional) To use [knowledge base](#obs-ai-add-data):
+  - A 4 GB {{ml}} node
+    :::{note}
+    In {{ecloud}} or {{ece}}, if you have {{ml}} autoscaling enabled, {{ml}} nodes automatically start when using the knowledge base and AI Assistant. Therefore using these features incurs additional costs.
+    :::
+  - If you want to use [content connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service
 
 ## Manage access to AI Assistant
 
@@ -341,6 +335,11 @@ Main functions:
 `kibana`
 :   Call {{kib}} APIs on your behalf.
 
+::::::{important}
+:applies_to: self:
+For self‑managed deployments, you must configure [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in your `kibana.yml` to use the `kibana` function.
+::::::
+
 `query`
 :   Generate, execute, and visualize queries based on your request.
 
@@ -360,6 +359,38 @@ Additional functions are available when your cluster has APM data:
 
 `get_apm_services_list`
 :   Get the list of monitored services, their health statuses, and alerts.
+
+#### Share conversations
+
+Conversations that you start with AI Assistant are private by default and not visible to other users in the space. Sharing conversations lets everyone in the space see what you've already asked or learned, making it easier to collaborate.
+
+To change the visibility of a conversation:
+
+1. Select the **Private** / **Shared** badge next to the conversation's title
+1. Use the dropdown menu to define the conversation's visibility.
+
+:::{image} /solutions/images/obs-ai-assistant-shared-conversations.png
+:alt: AI Assistant chat with the sharing status dropdown open
+:screenshot:
+:::
+
+After sharing a conversation, you can copy its URL and send the link to your team:
+
+1. Open an AI Assistant chat.
+1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
+1. Select **Copy URL**.
+
+When someone shares a chat with you, you can view it, but you can't edit or continue the conversation. To continue the conversation where your colleague left off, duplicate the conversation.
+
+To duplicate a conversation:
+
+1. Open an AI Assistant chat.
+1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
+1. Select **Duplicate**.
+
+#### Archive conversations
+
+The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** ({icon}`boxes_vertical`) menu. Once archived, a conversation can't be continued or edited unless it is unarchived. Unarchive a conversation by selecting **Unarchive** from the **Conversation actions** ({icon}`boxes_vertical`) menu.
 
 ### Use contextual prompts [obs-ai-prompts]
 
@@ -413,10 +444,6 @@ When the alert fires, contextual details about the event—such as when the aler
 :alt: AI Assistant conversation created in response to an alert
 :screenshot:
 :::
-
-::::{important}
-Conversations created by the AI Assistant are public and accessible to every user with permissions to use the assistant.
-::::
 
 It might take a minute or two for the AI Assistant to process the message and create the conversation.
 
