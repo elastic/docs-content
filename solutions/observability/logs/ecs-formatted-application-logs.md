@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-ecs-application.html
   - https://www.elastic.co/guide/en/serverless/current/observability-ecs-application-logs.html
 applies_to:
-  stack: all
-  serverless: all
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -12,7 +12,11 @@ products:
 
 # ECS formatted application logs [logs-ecs-application]
 
-Logs formatted in Elastic Common Schema (ECS) don’t require manual parsing, and the configuration can be reused across applications. ECS-formatted logs, when paired with an {{apm-agent}}, allow you to correlate logs to easily view logs that belong to a particular trace.
+Logs formatted in {{product.ecs}} don't require manual parsing, and the same ingest configuration can be reused across applications. ECS-formatted logs, when paired with an {{apm-agent}} or [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), allow you to correlate logs to easily view logs that belong to a particular trace.
+
+:::{tip}
+We recommend using the [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md) to instrument your applications and collect ECS-formatted logs with automatic log correlation. You can also format your logs in ECS format.
+:::
 
 You can format your logs in ECS format the following ways:
 
