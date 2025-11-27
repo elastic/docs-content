@@ -13,7 +13,7 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 * Filters endpoint exceptions from the detection engine's execution logic. For more information, check [#233289]({{kib-pull}}233289).
 
 ## August 25, 2025 [elastic-cloud-serverless-08252025-deprecations]
-* Changes `reporting_user` role to leverage reserved Kibana privileges. For more information, check [#132766]({{kib-pull}}132766).
+* Changes `reporting_user` role to leverage reserved {{kib}} privileges. For more information, check [#132766]({{kib-pull}}132766).
 
 ## June 30, 2025 [elastic-cloud-serverless-06302025-deprecations]
 * Removes Default Quick Prompts from the Security AI Assistant. For more information, check [#225536]({{kib-pull}}225536).
