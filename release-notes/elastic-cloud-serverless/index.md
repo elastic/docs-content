@@ -277,7 +277,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Adds reload listener to SslProfile [#135244](https://github.com/elastic/elasticsearch/pull/135244)
 * Adds DLS stats to `_security/stats` [#135271](https://github.com/elastic/elasticsearch/pull/135271)
-* Adds trust configuration for cross cluster api keys [#134893](https://github.com/elastic/elasticsearch/pull/134893)
+* Adds trust configuration for cross cluster API keys [#134893](https://github.com/elastic/elasticsearch/pull/134893)
 
 ### Fixes [serverless-changelog-09292025-fixes]
 
