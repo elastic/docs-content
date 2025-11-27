@@ -360,13 +360,6 @@ Best practices:
   * Structure URLs to mirror the documentation's content hierarchy, nesting child pages under their logical parent directories (for example, `/docs/solutions/security/ai/ai-assistant`).  
   * Ensure each child page has a valid parent URL that leads to a parent page.
 
-## Meta keywords tag
-
-Meta keywords are not important for SEO on Google and Bing, as they have stated that they ignore this meta tag.
-However, some other search engines like Yandex may still use them as a low weight ranking factor.
-
-It's not necessary to add, but if needed, keywords should be kept to 5 keywords, separated by commas, while avoiding repetition, and duplication.
-
 ## Content updates and maintenance
 
 Keeping documentation accurate and up-to-date is critical for both users and SEO.
