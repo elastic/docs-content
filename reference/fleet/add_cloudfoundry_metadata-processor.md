@@ -64,5 +64,5 @@ For efficient annotation, application metadata retrieved by the Cloud Foundry cl
 | `client_secret` | Yes |  | Client Secret to authenticate with Cloud Foundry. |
 | `cache_duration` | No | `120s` | Maximum amount of time to cache an application’s metadata. |
 | `cache_retry_delay` | No | `20s` | Time to wait before trying to obtain an application’s metadata again in case of error. |
-| `ssl` | No |  | SSL configuration to use when connecting to Cloud Foundry. For a list ofavailable settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specificallythe settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options). |
+| `ssl` | No |  | SSL configuration to use when connecting to Cloud Foundry. For a list of available settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options). |
 

@@ -125,7 +125,7 @@ This mode maps the original VPC flow log fields into their associated Elastic Co
 
 ### ECS and Original [_ecs_and_original]
 
-This mode maps the fields into ECS and retains all the original fields. Below is an example document produced using `ecs_and_orignal` mode.
+This mode maps the fields into ECS and retains all the original fields. Below is an example document produced using `ecs_and_original` mode.
 
 ```json
 {

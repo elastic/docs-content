@@ -14,7 +14,7 @@ products:
 2. Locate the dashboard you want to edit.
 
    ::::{tip}
-   When looking for a specific dashboard, you can filter them by tag or by creator, or search the list based on their name and description. Note that the creator information is only available for dashboards created on or after version 8.14.
+   When looking for a specific dashboard, you can filter them by tag or by creator, or search the list based on their name and description. The creator information is only available for dashboards created on or after version 8.14.
    ::::
 
 3. Click the dashboard name you want to open.
