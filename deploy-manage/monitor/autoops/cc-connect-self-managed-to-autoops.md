@@ -276,19 +276,31 @@ Learn more about [AutoOps](/deploy-manage/monitor/autoops.md).
 
 ## Access AutoOps
 
-After you've completed the setup, you can access AutoOps for your cluster at any time.
+After completing the setup, you can access AutoOps for your cluster at any time.
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, locate the cluster you want to work on.
 3. In the **Services** column, select **AutoOps**.
 
-## Connect additional clusters
+## Manage connected clusters
 
-To connect more clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
+Perform the actions described in the following sections to manage your connected cluster(s). 
+
+### Add or edit cluster display name
+
+Add a name for your cluster or edit an existing name. You need admin privileges to perform this action.
+
+1. From the [{{ecloud}} home page](https://cloud.elastic.co/home), go to the **Connected clusters** section and select the cluster you want to work on.
+2. On the **Cluster details** page, select **Add** or **Edit** in the **Cluster display name** field.
+4. Enter the name in the field that appears and then select the {icon}`check` icon.
+
+### Connect additional clusters
+
+To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 
 You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}.
 
-## Disconnect a cluster
+### Disconnect a cluster
 
 Complete the following steps to disconnect your cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
 
