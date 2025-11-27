@@ -24,7 +24,7 @@ From 8.15.0 invoking the put job API in a cluster with no rollup usage will fail
 
 To use the Rollup feature, you need to create one or more "Rollup Jobs". These jobs run continuously in the background and rollup the index or indices that you specify, placing the rolled documents in a secondary index (also of your choosing).
 
-Imagine you have a series of daily indices that hold sensor data (`sensor-2017-01-01`, `sensor-2017-01-02`, etc). A sample document might look like this:
+Imagine you have a series of daily indices that hold sensor data (`sensor-2017-01-01`, `sensor-2017-01-02`, and so on). A sample document might look like this:
 
 ```js
 {
@@ -77,8 +77,8 @@ If instead the cron was configured to run once a day at midnight, the job would 
 
 Next, we define a set of `groups`. Essentially, we are defining the dimensions that we wish to pivot on at a later date when querying the data. The grouping in this job allows us to use `date_histogram` aggregations on the `timestamp` field, rolled up at hourly intervals. It also allows us to run terms aggregations on the `node` field.
 
-::::{admonition} Date histogram interval vs cron schedule
-You’ll note that the job’s cron is configured to run every 30 seconds, but the date_histogram is configured to rollup at 60 minute intervals. How do these relate?
+::::{admonition} Date histogram interval versus cron schedule
+The job's cron is configured to run every 30 seconds, but the date_histogram is configured to rollup at 60 minute intervals. How do these relate?
 
 The date_histogram controls the granularity of the saved data. Data will be rolled up into hourly intervals, and you will be unable to query with finer granularity. The cron simply controls when the process looks for new data to rollup. Every 30 seconds it will see if there is a new hour’s worth of data and roll it up. If not, the job goes back to sleep.
 
@@ -87,7 +87,7 @@ Often, it doesn’t make sense to define such a small cron (30s) on a large inte
 ::::
 
 
-After defining which groups should be generated for the data, you next configure which metrics should be collected. By default, only the `doc_counts` are collected for each group. To make rollup useful, you will often add metrics like averages, mins, maxes, etc. In this example, the metrics are fairly straightforward: we want to save the min/max/sum of the `temperature` field, and the average of the `voltage` field.
+After defining which groups should be generated for the data, you next configure which metrics should be collected. By default, only the `doc_counts` are collected for each group. To make rollup useful, you will often add metrics like averages, mins, maxes, and so on. In this example, the metrics are fairly straightforward: we want to save the min/max/sum of the `temperature` field, and the average of the `voltage` field.
 
 ::::{admonition} Averages aren’t composable?!
 If you’ve worked with rollups before, you may be cautious around averages. If an average is saved for a 10 minute interval, it usually isn’t useful for larger intervals. You cannot average six 10-minute averages to find a hourly average; the average of averages is not equal to the total average.
@@ -352,7 +352,7 @@ GET /sensor_rollup/_rollup_search
 % TESTRESPONSE[s/"took" : 102/"took" : $body.$_path/]
 % TESTRESPONSE[s/"_shards" : \.\.\. /"_shards" : $body.$_path/]
 
-The response follows the same structure as a standard query with aggregations: it includes metadata about the request (`took`, `_shards`, etc.), an empty hits section (as rollup searches do not return individual documents), and the aggregation results.
+The response follows the same structure as a standard query with aggregations: it includes metadata about the request (`took`, `_shards`, and so on), an empty hits section (as rollup searches do not return individual documents), and the aggregation results.
 
 Rollup searches are limited to the functionality defined in the {{rollup-job}} configuration. For example, if the `avg` metric was not configured for the `temperature` field, calculating the average temperature is not possible. Running such a query results in an error:
 

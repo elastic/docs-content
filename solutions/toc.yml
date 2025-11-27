@@ -77,6 +77,7 @@ toc:
               - file: search/agent-builder/kibana-api.md
               - file: search/agent-builder/a2a-server.md
               - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/permissions.md
           - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
@@ -558,7 +559,6 @@ toc:
           - file: security/ai/ease/ease-intro.md
             children:
               - file: security/ai/ease/ease-alerts.md
-              - file: security/ai/ease/ease-value-report.md
               - file: security/ai/ease/ease-upgrade.md
           - file: security/ai/ai-assistant.md
             children:
@@ -573,11 +573,13 @@ toc:
               - file: security/ai/connect-to-openai.md
               - file: security/ai/connect-to-google-vertex.md
               - file: security/ai/connect-to-own-local-llm.md
+              - file: security/ai/connect-to-vLLM.md
           - file: security/ai/use-cases.md
             children:
               - file: security/ai/triage-alerts.md
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
+          - file: security/ai/ease/ease-value-report.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/detections-requirements.md

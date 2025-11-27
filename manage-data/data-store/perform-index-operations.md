@@ -20,7 +20,7 @@ To perform index actions:
 
 ## Available index operations
 
-Several index operations are available from the **Manage index** menu. Note that some of the operations listed are unavailable in {{serverless-full}} since in that environment many data management tasks are handled automatically.
+Several index operations are available from the **Manage index** menu. Some of the operations listed are unavailable in {{serverless-full}} since in that environment many data management tasks are handled automatically.
 
 **Show index overview** {applies_to}`stack: ga` {applies_to}`serverless: ga`
 :   View an overview of the index, including its storage size, status, and aliases, as well as a sample API request to add new documents.

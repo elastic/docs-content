@@ -15,7 +15,7 @@ products:
 In this guide you can learn how to onboard system metrics data from a machine or server using {{fleet}}-managed {{agent}}.
 
 :::{tip}
-To get started quickly without {{fleet}}, follow the steps described in the [quickstarts](/solutions/observability/get-started/quickstarts.md).
+To get started quickly without {{fleet}}, follow the steps described in the [quickstarts](/solutions/observability/get-started/quickstarts.md). We recommend using the [{{edot}} Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect system metrics and logs.
 :::
 
 ## Prerequisites [logs-metrics-prereqs]
