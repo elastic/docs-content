@@ -973,7 +973,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Fixes unsupported privileges error message during role and API key crea… [#128858](https://github.com/elastic/elasticsearch/pull/128858)
 * Adds transport version support for IDP_CUSTOM_SAML_ATTRIBUTES_ADDED_8_19 [#128798](https://github.com/elastic/elasticsearch/pull/128798)
-* Granting `kibana_system` reserved role access to "all" privileges to `.adhoc.alerts*` and `.internal.adhoc.alerts*` indices [#127321](https://github.com/elastic/elasticsearch/pull/127321)
+* Grants `kibana_system` reserved role access to "all" privileges to `.adhoc.alerts*` and `.internal.adhoc.alerts*` indices [#127321](https://github.com/elastic/elasticsearch/pull/127321)
 * Checks TooComplex exception for HasPrivileges body [#128870](https://github.com/elastic/elasticsearch/pull/128870)
 * Adds "extension" attribute validation to IdP SPs [#128805](https://github.com/elastic/elasticsearch/pull/128805)
 
