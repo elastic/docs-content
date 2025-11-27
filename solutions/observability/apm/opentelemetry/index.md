@@ -16,6 +16,16 @@ products:
 
 OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. You can use OpenTelemetry to collect application performance data in Elastic APM, whether you’re running serverless, self-managed, or hybrid deployments.
 
+:::{important}
+:applies_to: {"stack": "ga 9.2", "serverless": "ga"}
+
+**Install OpenTelemetry integrations to view data**
+
+Native Elastic Observability user interfaces do not currently support native OpenTelemetry data. To view your data, you must install content-only integrations that provide compatible dashboards.
+
+In the Kibana Integrations UI, search for `otel` to find and install the relevant integrations, like **System OpenTelemetry Assets**, to access the dashboards.
+:::
+
 Elastic offers several distributions of OpenTelemetry. Each [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md) is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
 
 :::{include} /solutions/_snippets/edot-reference-arch.md
