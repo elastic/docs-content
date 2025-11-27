@@ -1,12 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kubernetes_secrets-provider.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Kubernetes Secrets Provider [kubernetes_secrets-provider]
+# Kubernetes Secrets provider [kubernetes_secrets-provider]
 
 Provides access to the Kubernetes Secrets API.
 
@@ -35,7 +37,7 @@ providers.kubernetes_secrets:
 :   (Optional) Configure additional options for the Kubernetes client. Supported options are `qps` and `burst`. If not set, the Kubernetes client’s default QPS and burst settings are used.
 
 `cache_disable`
-:   (Optional) Disables the cache for the secrets. When disabled, thus is set to `true`, code makes a request to the API Server to obtain the value. To continue using the cache, set the variable to `false`. Default is `false`.
+:   (Optional) Disables the cache for the secrets. When disabled (set to `true`), code makes a request to the API Server to obtain the value. To continue using the cache, set the variable to `false`. Default is `false`.
 
 `cache_refresh_interval`
 :   (Optional) Defines the period to update all secret values kept in the cache. Defaults to `60s`.

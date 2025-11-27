@@ -9,7 +9,10 @@
 # Add LLM/AI related files
 AGENTS.md
 .github/copilot-instructions.md
-.github/instructions/**.instructions.md
+.github/instructions
 CLAUDE.md
 GEMINI.md
 .cursor
+
+# VS code settings
+.vscode

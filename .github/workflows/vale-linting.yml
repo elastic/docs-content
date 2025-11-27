@@ -1,0 +1,22 @@
+name: Vale Documentation Linting
+
+on:
+  pull_request:
+    paths:
+      - '**.md'
+      - '**.adoc'
+
+permissions:
+  contents: read
+
+jobs:
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      
+      - name: Run Vale Linter
+        uses: elastic/vale-rules/lint@main
