@@ -17,6 +17,8 @@ products:
 OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. You can use OpenTelemetry to collect application performance data in Elastic APM, whether you’re running serverless, self-managed, or hybrid deployments.
 
 :::{important}
+:applies_to: {"stack": "ga 9.2", "serverless": "ga"}
+
 **Install OpenTelemetry integrations to view data**
 
 Native Elastic Observability user interfaces do not currently support native OpenTelemetry data. To view your data, you must install content-only integrations that provide compatible dashboards.
