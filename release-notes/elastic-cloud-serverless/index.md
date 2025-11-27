@@ -323,7 +323,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
 % Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
 
-* Adds new `/`_security`/stats` endpoint [#134835](https://github.com/elastic/elasticsearch/pull/134835)
+* Adds new `/_security/stats` endpoint [#134835](https://github.com/elastic/elasticsearch/pull/134835)
 ### Fixes [serverless-changelog-09222025-fixes]
 
 * Skips automatic scrolling when a panel is visible [#233226]({{kib-pull}}233226)
