@@ -34,7 +34,9 @@ The user who created or imported a dashboard is identified as the dashboard’s 
 
 Similarly, managed dashboards created by integrations are identified as created by Elastic.
 
-
+::::{note}
+The creator information is only available for dashboards created on or after version 8.14. For dashboards from previous versions, the creator is empty.
+::::
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-by-creator.png
 :alt: Option to filter the list of dashboards by creator
