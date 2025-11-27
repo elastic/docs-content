@@ -143,6 +143,22 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
 5. Click **Save and continue**.
 
+#### Using `Kubernetes` as deployment model for {{agent}} with the Universal Profiling Agent integration
+
+To deploy the {{agent}} with the Universal Profiling Agent integration using Kubernetes,
+please make sure that the following options are set in the manifest.
+
+```console
+hostPID: true
+securityContext:
+  readOnlyRootFilesystem: true
+  privileged: true
+  runAsUser: 0
+  runAsGroup: 0
+  capabilities:
+    add:
+      - SYS_ADMIN
+```
 
 ## Install the Universal Profiling Agent in standalone mode [profiling-install-agent-standalone]
 
