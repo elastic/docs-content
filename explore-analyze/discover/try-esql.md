@@ -15,7 +15,6 @@ Elasticsearch Query Language ({{esql}}) makes it easier to explore and analyze y
 
 ## Prerequisites [try-esql-prerequisites]
 
-- Access to {{product.kibana}}
 - The `enableESQL` setting enabled in **Advanced Settings** (enabled by default)
 - Have data in {{product.elasticsearch}}.
   The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
