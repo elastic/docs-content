@@ -33,7 +33,7 @@ stack: ga
 serverless: ga
 ```
 
-To downsample a time series via a [data stream lifecycle](/manage-data/lifecycle/data-stream.md), add a [downsampling](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) section to the data stream lifecycle (for existing data streams) or the index template (for new data streams).
+To downsample a time series using a [data stream lifecycle](/manage-data/lifecycle/data-stream.md), add a [downsampling](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) section to the data stream lifecycle (for existing data streams) or the index template (for new data streams).
 
 * Set `fixed_interval` to your preferred level of granularity. The original time series data will be aggregated at this interval.
 * Set `after` to the minimum time to wait after an index rollover, before running downsampling.

@@ -23,8 +23,8 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 2. Create or navigate to an empty directory for the project.
 3. Download and save the following files in the project directory:
 
-    * [`.env`](https://github.com/elastic/elasticsearch/blob/master/docs/reference/setup/install/docker/.env)
-    * [`docker-compose.yml`](https://github.com/elastic/elasticsearch/blob/master/docs/reference/setup/install/docker/docker-compose.yml)
+    * [`.env`](https://github.com/elastic/elasticsearch/blob/main/docs/reference/setup/install/docker/.env)
+    * [`docker-compose.yml`](https://github.com/elastic/elasticsearch/blob/main/docs/reference/setup/install/docker/docker-compose.yml)
 
 4. In the `.env` file, specify a password for the `ELASTIC_PASSWORD` and `KIBANA_PASSWORD` variables.
 
