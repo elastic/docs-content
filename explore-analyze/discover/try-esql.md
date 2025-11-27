@@ -11,7 +11,7 @@ description: Step-by-step tutorial for querying data with Elasticsearch Query La
 
 # Using ES|QL [try-esql]
 
-Elasticsearch Query Language ({{esql}}) makes it easier to explore and analyze your {{product.elasticsearch}} data directly in **Discover**. {{esql}} uses a piped syntax where you chain commands together to filter, transform, and aggregate data without needing to switch between different query interfaces. This tutorial walks you through querying sample data with {{esql}}, from basic field selection to complex filtering and visualization.
+Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{product.elasticsearch}} data directly in **Discover**, without a [data view](discover-get-started.md#find-the-data-you-want-to-use). {{esql}} uses a piped syntax where you chain commands together to filter, transform, and aggregate data without needing to switch between different query interfaces. This tutorial walks you through querying sample data with {{esql}}, from basic field selection to complex filtering and visualization.
 
 ## Prerequisites [try-esql-prerequisites]
 
