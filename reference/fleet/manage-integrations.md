@@ -25,7 +25,7 @@ Integrations are available for a wide array of popular services and platforms. T
 
 {applies_to}`stack: preview 9.2.0` {{fleet}} also supports installing {{agent}} integration packages for collecting and visualizing OpenTelemetry data. For more information, refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
 
-Note that the **Integrations** app in {{kib}} needs access to the public {{package-registry}} to discover integrations. If your deployment has network restrictions, you can [deploy your own self-managed {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr).
+The **Integrations** app in {{kib}} needs access to the public {{package-registry}} to discover integrations. If your deployment has network restrictions, you can [deploy your own self-managed {{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr).
 
 ::::{note}
 Some integrations may function differently across different spaces, with some working only in the default space. Review the documentation specific to your integration for any space-related considerations.
@@ -47,4 +47,4 @@ You can perform a variety of actions in the **Integrations** app in {{kib}}. Som
 
 ## Customize integrations [customize-integrations]
 
-After you've started using integrations to ingest data, you can customize how the data is managed over time. Refer to [Index lifecycle management](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.
+After you've started using integrations to ingest data, you can customize how the data is managed over time. Refer to [{{ilm-cap}}](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.
