@@ -110,7 +110,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures only valid queries are returned for significant events [#239501]({{kib-pull}}239501)
 * Hides filtering capabilities in Hosts Metrics [#239724]({{kib-pull}}239724)
 
-* Configurable HTTP read and connect timeouts for url based SAML metadata resolution [#136058](https://github.com/elastic/elasticsearch/pull/136058)
+* Adds configurable HTTP read and connect timeouts for URL-based SAML metadata resolution [#136058](https://github.com/elastic/elasticsearch/pull/136058)
 
 ## October 20, 2025 [serverless-changelog-10202025]
 
