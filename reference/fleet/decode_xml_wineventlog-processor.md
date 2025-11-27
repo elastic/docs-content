@@ -101,7 +101,7 @@ See [Conditions](/reference/fleet/dynamic-input-configuration.md#conditions) for
 | `field` | Yes | `message` | Source field containing the XML. |
 | `target_field` | Yes | `winlog` | The field under which the decoded XML will be written. To merge the decoded XML fields into the root of the event, specify `target_field` with an empty string (`target_field: ""`). |
 | `overwrite_keys` | No | `true` | Whether keys that already exist in the event are overwritten by keys from the decoded XML object. |
-| `map_ecs_fields` | No | `true` | Whether to map additional ECS fields when possible. Note that ECS field keys are placed outside of `target_field`. |
+| `map_ecs_fields` | No | `true` | Whether to map additional ECS fields when possible. ECS field keys are placed outside of `target_field`. |
 | `ignore_missing` | No | `false` | Whether to return an error if a specified field does not exist. |
 | `ignore_failure` | No | `false` | Whether to ignore all errors produced by the processor. |
 
@@ -149,10 +149,10 @@ If `map_ecs_fields` is enabled then the following field mappings are also perfor
 | --- | --- | --- |
 | `event.code` | `winlog.event_id` |  |
 | `event.kind` | `"event"` |  |
-| `event.provider` | `<Event><System><Provider>` | `Name` attribute |
-| `event.action` | `<Event><RenderingInfo><Task>` |  |
-| `event.host.name` | `<Event><System><Computer>` |  |
+| `event.provider` | `winlog.provider_name` | `Name` attribute |
+| `event.action` | `winlog.task` |  |
 | `event.outcome` | `winlog.outcome` |  |
+| `host.name` | `winlog.computer_name` |  |
 | `log.level` | `winlog.level` |  |
 | `message` | `winlog.message` |  |
 | `error.code` | `winlog.error.code` |  |

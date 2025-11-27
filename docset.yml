@@ -97,7 +97,6 @@ subs:
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
-  ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can try it for free: https://cloud.elastic.co/registration."
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"

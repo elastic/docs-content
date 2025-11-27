@@ -60,7 +60,7 @@ Download the manifest file, substituting `{agent_version}` with the version numb
 curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{agent_version}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
 ```
 
-For example, to download the manifest of the latest {{version.stack}} release:
+For example, to download the manifest of the latest release:
 
 ```sh subs=true
 curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.stack}}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml

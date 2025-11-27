@@ -74,7 +74,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Disables add-to-case functionality when all selected alerts are already added to a case [#231877]({{kib-pull}}231877).
 * Allows users to paste screenshots into markdown comment fields for cases [#226077]({{kib-pull}}226077).
 * Extracts case observables automatically when attaching alerts to a case [#233027]({{kib-pull}}233027).
-* Allows attaching any event to a case, not just alert events [#230970]({{kib-pull}}230970).
+* Allows attaching any event to a case, not only alert events [#230970]({{kib-pull}}230970).
 * Adds `opamp_polling_interval` and `sampling_rate` to central config for EDOT application agents [#231835]({{kib-pull}}231835).
 * Adds `kibana.alert.grouping` field to Synthetics monitor status rule [#230513]({{kib-pull}}230513).
 * Adds a public endpoint for manually testing synthetic monitors [#227760]({{kib-pull}}227760).
