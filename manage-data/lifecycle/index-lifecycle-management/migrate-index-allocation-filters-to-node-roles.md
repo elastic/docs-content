@@ -149,5 +149,5 @@ PUT my-index/_settings
 }
 ```
 
-This situation can occur in a system that defaults to data tiers when, e.g., an ILM policy that uses node attributes is restored and transitions the managed indices from the hot phase into the warm phase. In this case the node attribute configuration indicates the correct tier where the index should be allocated.
+This situation can occur in a system that defaults to data tiers when, for example, an ILM policy that uses node attributes is restored and transitions the managed indices from the hot phase into the warm phase. In this case the node attribute configuration indicates the correct tier where the index should be allocated.
 
