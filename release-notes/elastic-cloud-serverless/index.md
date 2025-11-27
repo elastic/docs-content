@@ -1138,7 +1138,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes **Discard** button state change logic for toggles [#223493]({{kib-pull}}223493)
 * Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
 
-* [Cloud Security Posture] fix ilm deletion step error permissions [#128634](https://github.com/elastic/elasticsearch/pull/128634)
+* Fixes ILM deletion step error permissions for cloud security posture [#128634](https://github.com/elastic/elasticsearch/pull/128634)
 
 ## June 17, 2025 [serverless-changelog-06172025]
 
