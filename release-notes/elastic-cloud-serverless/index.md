@@ -187,7 +187,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the global empty state redirect [#237612]({{kib-pull}}237612)
 * Replaces the existing document count chart with RED metrics [#236635]({{kib-pull}}236635)
 
-* Sends cross cluster api key signature as header [#135674](https://github.com/elastic/elasticsearch/pull/135674)
+* Sends cross cluster API key signature as header [#135674](https://github.com/elastic/elasticsearch/pull/135674)
 
 ### Fixes [serverless-changelog-10132025-fixes]
 
