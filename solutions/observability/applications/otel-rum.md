@@ -164,10 +164,7 @@ The following packages hold the necessary components to set up the base for your
 npm install @opentelemetry/api @opentelemetry/core @opentelemetry/resources @opentelemetry/sdk-trace-base @opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-http @opentelemetry/instrumentation
 ```
 
-You can then install the instrumentations that you're interested in. OpenTelemetry offers several instrumentations for browsers. For example:
-
-- **OTEL_EXPORTER_OTLP_ENDPOINT**: The full URL of an OpenTelemetry Collector where data is sent. When using {{product.observability}}, this is the {{motlp}} of an {{serverless-full}} project or the URL of a deployed [EDOT Collector](elastic-agent://reference/edot-collector/index.md). Refer to the [OTLP endpoint](#otlp-endpoint) section for more information on how to solve [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) issues.
-npm install @opentelemetry/instrumentation-document-load @opentelemetry/instrumentation-fetch @opentelemetry/instrumentation-xml-http-request @opentelemetry/instrumentation-long-task @opentelemetry/instrumentation-user-interaction
+You can then install the instrumentations that you're interested in.
 
 ## Basic configuration
 
