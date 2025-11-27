@@ -842,7 +842,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds entity store and asset criticality index privileges to built-in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
 * Organization IdP routes are now public in the OpenAPI specifications.
 
-* [Security] Add entity store and asset criticality index privileges to built in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
+* Adds entity store and asset criticality index privileges to built in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
 
 ### Fixes [serverless-changelog-08042025-fixes]
 * Fixes loading of saved queries in the Alerting rule definition [#229964]({{kib-pull}}229964)
