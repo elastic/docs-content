@@ -291,7 +291,7 @@ Perform the actions described in the following sections to manage your connected
 Add a name for your cluster or edit an existing name. You need admin privileges to perform this action.
 
 1. From the [{{ecloud}} home page](https://cloud.elastic.co/home), go to the **Connected clusters** section and select the cluster you want to work on.
-2. On the **Cluster details** page, select **Add** or **Edit** in the **Cluster display name** field.
+2. On the cluster details page, select **Add** or **Edit** in the **Cluster display name** field.
 4. Enter the name in the field that appears and then select the {icon}`check` icon.
 
 ### Connect additional clusters
