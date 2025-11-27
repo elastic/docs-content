@@ -32,7 +32,7 @@ Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {
 
 You have two main options for setting up an OTLP endpoint:
 
-1. **Use an existing OpenTelemetry Collector**: If you already have a Collector deployed in your infrastructure, you can configure it to accept telemetry from browsers. This requires configuring CORS headers either directly on the Collector (if it's publicly accessible) or through a reverse proxy.
+1. Use an existing OpenTelemetry Collector: If you already have a Collector deployed in your infrastructure, you can configure it to accept telemetry from browsers. This requires configuring CORS headers either directly on the Collector (if it's publicly accessible) or through a reverse proxy.
 
 2. **Start from scratch with {{ecloud}}**: If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). This approach requires a reverse proxy to handle CORS configuration.
 
@@ -587,6 +587,8 @@ This approach is recommended. The build tooling manages the dependencies and int
 
 For example, if you're using Webpack, you can import the code like this:
 
+:::{dropdown} Example: Import telemetry.js in your app
+
 ```javascript
 // file: app.(js|ts) entry point of your application
 import { initOpenTelemetry } from 'telemetry.js';
@@ -602,6 +604,8 @@ initOpenTelemetry({
 
 // Your app code
 ```
+
+:::
 
 ### Bundle in a file
 
@@ -718,3 +722,250 @@ If your website and Collector are hosted at a different origin, your browser mig
 - Some OpenTelemetry instrumentations for browsers are still experimental.
 - Performance impact on the browser should be monitored, especially when using multiple instrumentations.
 - Authentication using API keys requires special handling in the reverse proxy configuration.
+
+## Troubleshooting
+
+This section provides solutions to common issues you might encounter when setting up OpenTelemetry for RUM with {{product.observability}}.
+
+:::{dropdown} Module import or bundler errors
+
+If you see errors like "Cannot find module" or bundler-specific issues:
+
+1. Ensure all required packages are installed and listed in `package.json`.
+
+2. Different bundlers (Webpack, Rollup, Vite) may require specific configuration for OpenTelemetry packages.
+
+3. For Webpack, you may need to add polyfills for Node.js modules. Add to your webpack config:
+
+```javascript
+resolve: {
+  fallback: {
+    "process": require.resolve("process/browser"),
+    "buffer": require.resolve("buffer/")
+  }
+}
+```
+
+4. For Vite, add to your `vite.config.js`:
+
+```javascript
+optimizeDeps: {
+  include: ['@opentelemetry/api', '@opentelemetry/sdk-trace-web']
+}
+```
+
+5. If using TypeScript, ensure `tsconfig.json` has appropriate module resolution:
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}
+```
+
+:::
+
+:::{dropdown} Reverse proxy configuration issues
+
+If your reverse proxy is not forwarding requests correctly:
+
+1. Ensure the reverse proxy (NGINX, Apache, etc.) is running and accessible.
+
+2. Use curl to test the proxy endpoint directly:
+
+```bash
+curl -X POST https://your-proxy/v1/traces \
+  -H "Content-Type: application/json" \
+  -H "Origin: https://your-webapp.example.com" \
+  -d '{"test": "data"}' \
+  -v
+```
+
+3. Review proxy logs for errors or blocked requests.
+
+4. Ensure the proxy can reach the backend Collector or mOTLP endpoint.
+
+:::
+
+:::{dropdown} Configuration issues
+
+If your OpenTelemetry setup isn't initializing correctly:
+
+1. Ensure `OTEL_EXPORTER_OTLP_ENDPOINT` doesn't include the signal path (like `/v1/traces`). The SDK adds this automatically:
+
+```javascript
+// Correct
+const OTEL_EXPORTER_OTLP_ENDPOINT = 'https://collector.example.com:4318';
+
+// Incorrect
+const OTEL_EXPORTER_OTLP_ENDPOINT = 'https://collector.example.com:4318/v1/traces';
+```
+
+2. Verify `service.name` is set and doesn't contain special characters:
+
+```javascript
+const OTEL_RESOURCE_ATTRIBUTES = {
+  'service.name': 'my-web-app', // Required
+  'service.version': '1.0.0',
+};
+```
+
+3. Ensure providers are registered before instrumentations:
+
+```javascript
+// Correct order:
+// 1. Configure and register tracer provider
+trace.setGlobalTracerProvider(tracerProvider);
+// 2. Then register instrumentations
+registerInstrumentations({...});
+```
+
+:::
+
+:::{dropdown} Data not appearing in {{kib}}
+
+If you've instrumented your application but don't see data in {{kib}}, check the following:
+
+1. Ensure `OTEL_EXPORTER_OTLP_ENDPOINT` points to the correct endpoint. Test the endpoint connectivity using browser developer tools.
+
+2. Open your browser's developer console (F12) and look for network errors or OpenTelemetry-related error messages. Common issues include failed requests to the OTLP endpoint.
+
+3. Ensure `service.name` is set in your resource attributes. Without this attribute, data might not be properly categorized in {{kib}}.
+
+4. In {{kib}}, navigate to **{{stack-manage-app}}** > **{{index-manage-app}}** > **Data Streams** and verify that OpenTelemetry data streams are being created (for example, `traces-*`, `logs-*`, `metrics-*`).
+
+5. Set `OTEL_LOG_LEVEL` to `debug` to get detailed information about what's happening:
+
+```javascript
+const OTEL_LOG_LEVEL = 'debug';
+```
+
+:::
+
+:::{dropdown} CORS errors
+
+CORS errors are the most common issue with browser-based RUM. Symptoms include:
+
+- Network requests blocked in the browser console
+- Error messages like "Access to fetch at '...' from origin '...' has been blocked by CORS policy"
+
+1. Verify CORS configuration: If using a reverse proxy, ensure the CORS headers are correctly configured. The `Access-Control-Allow-Origin` header must match your web application's origin.
+
+2. Check allowed headers: Ensure all necessary headers are included in `Access-Control-Allow-Headers`, especially `Authorization` if using authentication.
+
+3. Verify preflight requests: CORS requires preflight OPTIONS requests. Ensure your reverse proxy or Collector handles these correctly with a 204 response.
+
+4. Test with a request: Try sending a test request using `curl` or a tool like Postman to verify the endpoint is accessible:
+
+```bash
+curl -X POST https://your-proxy-endpoint/v1/traces \
+  -H "Content-Type: application/json" \
+  -H "Origin: https://your-webapp.example.com" \
+  -v
+```
+
+:::
+
+:::{dropdown} Content Security Policy (CSP) violations
+
+If you get CSP violation errors in the browser console, your Content Security Policy is blocking connections to the OTLP endpoint.
+
+Add the Collector endpoint to your CSP `connect-src` directive:
+
+```text
+Content-Security-Policy: connect-src 'self' https://collector.example.com:4318
+```
+
+:::
+
+:::{dropdown} Authentication failures
+
+If using mOTLP or a Collector with authentication requirements:
+
+1. Ensure your authentication credentials are valid and not expired.
+
+2. If using a reverse proxy, verify it's correctly forwarding the `Authorization` header:
+
+```nginx
+proxy_set_header Authorization $http_authorization;
+```
+
+3. The `Authorization` header must be listed in `Access-Control-Allow-Headers` for preflight requests.
+
+:::
+
+:::{dropdown} Spans or traces not correlating correctly
+
+If you get disconnected spans or traces that should be related:
+
+1. Ensure you're using `startActiveSpan` correctly for creating parent-child span relationships.
+
+2. All spans in a trace should have the same resource attributes, especially `service.name`.
+
+3. Register instrumentations after configuring the tracer provider, not before.
+
+:::
+
+:::{dropdown} Instrumentation not capturing data
+
+If specific instrumentations aren't working:
+
+1. Ensure instrumentations are registered after the tracer provider is configured.
+
+2. Some instrumentations have specific browser requirements. Check the console for warnings.
+
+3. Register instrumentations one at a time to identify which ones are causing issues.
+
+:::
+
+:::{dropdown} Integration method issues
+
+If you're having issues with how you've integrated the telemetry code:
+
+1. Ensure the telemetry initialization happens before your application code:
+
+```javascript
+// Top of your entry file
+import { initOpenTelemetry } from './telemetry.js';
+initOpenTelemetry({...});
+
+// Then your app code
+import { MyApp } from './app.js';
+```
+
+2. Some bundlers may remove OpenTelemetry code if it appears unused. Use `/* @preserve */` comments or configure your bundler to keep it.
+
+3. Verify the script path is correct and the file is being served:
+
+```html
+<!-- Check browser network tab to verify this loads -->
+<script src="./js/telemetry-bundle.js"></script>
+```
+
+4. If `initOpenTelemetry` is not defined, ensure your bundler is exposing it globally. For Webpack:
+
+```javascript
+output: {
+  library: 'initOpenTelemetry',
+  libraryTarget: 'window',
+  libraryExport: 'default'
+}
+```
+
+:::
+
+If you continue to experience issues:
+
+1. Ensure your target browsers support the OpenTelemetry features you're using.
+2. Consult the [OpenTelemetry JavaScript documentation](https://opentelemetry.io/docs/languages/js/) for additional troubleshooting guidance.
+3. Set the log level to `verbose` for maximum detail:
+
+```javascript
+const OTEL_LOG_LEVEL = 'verbose';
+```
+
+4. Start with only traces (no metrics or logs) and one instrumentation to isolate the issue.
+5. Review the code examples throughout this guide and compare with your implementation.
