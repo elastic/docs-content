@@ -426,6 +426,14 @@ registerInstrumentations({
 
 All these pieces together give you a complete setup of all the signals for your web site or application. For convenience, it can be wrapped within a function that accepts the configuration as a parameter, allowing you to reuse the setup across different UIs.
 
+To install all the dependencies needed for the complete setup, run the following command:
+
+```bash
+npm install @opentelemetry/api @opentelemetry/core @opentelemetry/resources @opentelemetry/browser-detector @opentelemetry/sdk-trace-base @opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-http @opentelemetry/sdk-metrics @opentelemetry/exporter-metrics-otlp-http @opentelemetry/api-logs @opentelemetry/sdk-logs @opentelemetry/exporter-logs-otlp-http @opentelemetry/instrumentation @opentelemetry/instrumentation-document-load @opentelemetry/instrumentation-long-task @opentelemetry/instrumentation-fetch @opentelemetry/instrumentation-xml-http-request @opentelemetry/instrumentation-user-interaction
+```
+
+After the dependencies are installed, you can wrap the setup in a function with the following code:
+
 ```javascript
 // file: telemetry.js
 import { diag, DiagConsoleLogger, trace, metrics } from '@opentelemetry/api';
