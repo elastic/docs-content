@@ -425,6 +425,19 @@ Collect the {{es}} logs covering the time period of the failed analysis from all
 
 ## Linearizable register implementation [repository-s3-linearizable-registers]
 
-The linearizable register implementation for S3 repositories is based on the strongly consistent semantics of the multipart upload API. {{es}} first creates a multipart upload to indicate its intention to perform a linearizable register operation. {{es}} then lists and cancels all other multipart uploads for the same register. {{es}} then attempts to complete the upload. If the upload completes successfully then the compare-and-exchange operation was atomic.
+### Conditional writes
+```{applies_to}
+stack: ga 9.3
+```
 
+From 9.3.0 onwards the linearizable register implementation for S3 repositories is based on [S3's conditional writes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html) using the `If-None-Match` and `If-Match` request headers.
 
+If your storage does not support conditional writes then it is not fully S3-compatible. However, if this is its only deviation in behavior from AWS S3 then it will work correctly with {{es}} as long as its multipart upload APIs have strongly consistent semantics, as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
+
+### Multipart uploads
+
+```{applies_to}
+stack: deprecated 9.3
+```
+
+In versions before 9.3.0, or if your storage does not support conditional writes, the linearizable register implementation for S3 repositories is based on the strongly consistent semantics of the multipart upload APIs. {{es}} first creates a multipart upload to indicate its intention to perform a linearizable register operation. {{es}} then lists and cancels all other multipart uploads for the same register. {{es}} then attempts to complete the upload. If the upload completes successfully then the compare-and-exchange operation was atomic.
