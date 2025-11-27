@@ -258,7 +258,6 @@ After the dependencies are installed, define the resource for your instrumentati
 import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
 import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
 
-// Append this in the code section
 const detectedResources = detectResources({ detectors: [browserDetector] });
 let resource = resourceFromAttributes(OTEL_RESOURCE_ATTRIBUTES);
 resource = resource.merge(detectedResources);
