@@ -645,49 +645,6 @@ connect-src collector.example.com:4318/v1/traces
 
 If your website and Collector are hosted at a different origin, your browser might block the requests going out to your Collector. To solve this, you need to configure special headers for Cross-Origin Resource Sharing (CORS). This configuration depends on the solution you want to adopt and is described in the [OTLP endpoint](#otlp-endpoint) section.
 
-## Data ingestion
-
-The endpoint configured should belong to an OpenTelemetry Collector or a component that forwards data to one.
-
-### EDOT Collector in gateway mode
-
-In this approach, the Collector sends the data directly to the {{es}} database. For that purpose, use the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
-
-For CORS configuration, edit the OTLP HTTP receiver to add a `cors` object with the following properties:
-
-- **allowed_origins** (mandatory): A list of origins allowed to send requests to the receiver. An origin may contain a wildcard (`*`) to replace 0 or more characters (for example, `https://*.example.com`). Do not use a plain wildcard `["*"]`, as the Collector's CORS response includes `Access-Control-Allow-Credentials: true`, which makes browsers disallow a plain wildcard (this is a security standard). To allow any origin, you can specify at least the protocol, for example `["https://*", "http://*"]`. If no origins are listed, CORS will not be enabled.
-- **allowed_headers** (optional): Allow CORS requests to include headers outside the default safelist. By default, [safelist headers](https://developer.mozilla.org/en-US/docs/Glossary/CORS-safelisted_request_header) and `X-Requested-With` will be allowed. To allow any request header, set to `["*"]`.
-- **max_age** (optional): Sets the value of the `Access-Control-Max-Age` header, allowing clients to cache the response to CORS preflight requests. If not set, browsers use a default of 5 seconds.
-
-This is an example of how to configure CORS allowing requests from the origin `*.example.com`:
-
-```yaml
-receivers:
-  otlp:
-    protocols:
-      http:
-        include_metadata: true
-        cors:
-          allowed_origins:
-            - https://*.example.com
-          allowed_headers:
-            - Example-Header
-          max_age: 7200
-```
-
-### Proxy server
-
-Having a Collector available for your web application means the Collector should also be publicly available. Using a reverse proxy provides better control over security and access. Refer to the [Use an existing OpenTelemetry Collector](#use-an-existing-open-telemetry-collector) section for configuration examples.
-
-:::{note}
-The Managed OTLP endpoint and {{apm-server}} (ECH) are not ideal for RUM OpenTelemetry. The problem relies on CORS configuration:
-
-- mOTLP cannot be configured for CORS.
-- {{apm-server}} allows CORS configuration for requests to `/intake/v2/rum/events` but not for the OTLP endpoints.
-
-For these reasons, using a reverse proxy in front of the Collector or mOTLP endpoint is the recommended approach.
-:::
-
 ## Known limitations
 
 - The Managed OTLP endpoint (mOTLP) cannot be directly configured for CORS. A reverse proxy is required.
