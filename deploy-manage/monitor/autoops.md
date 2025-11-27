@@ -50,7 +50,7 @@ Depending on your deployment type, AutoOps has been rolled out across various [r
 :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
 :::
 
-AutoOps is currently not available for air-gapped environments since it is a cloud service and you need an internet connection to send metrics to {{ecloud}}. However, we plan to offer a locally deployable version in the future.
+AutoOps is currently not available for air-gapped environments because it's a cloud service and you need an internet connection to send metrics to {{ecloud}}. However, we plan to offer a locally deployable version in the future.
 
 ## How AutoOps is licensed
 
