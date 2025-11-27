@@ -545,7 +545,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the default port the from interactive setup cluster address form, unless specified [#230582]({{kib-pull}}230582)
 * Fixes positioning of the **Add rule** popover on the Role Mappings page [#231551]({{kib-pull}}231551)
 
-* [ExtraHop][Qualys GAV] - Fix Cannot execute ILM policy delete step [#132387](https://github.com/elastic/elasticsearch/pull/132387)
+* Fixes an ExtraHop Qualys GAV bug that prevented executing the ILM policy delete step [#132387](https://github.com/elastic/elasticsearch/pull/132387)
 
 ## August 11, 2025 [serverless-changelog-08112025]
 
