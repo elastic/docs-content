@@ -1172,7 +1172,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows you to customize the table tab [#218686](https://github.com/elastic/kibana/pull/218686)
 * Enables keyboard navigation for the create annotations form [#217918](https://github.com/elastic/kibana/pull/217918)
 
-* [Security Solution] Add `read` index privileges to `kibana_system` role for Microsoft Defender integration indexes [#126803](https://github.com/elastic/elasticsearch/pull/126803)
+* Adds `read` index privileges to `kibana_system` role for Microsoft Defender integration indexes [#126803](https://github.com/elastic/elasticsearch/pull/126803)
 
 
 ### Fixes [serverless-changelog-04282025-fixes]
