@@ -80,7 +80,7 @@ server {
 
 :::{tab-item} Public Collector with CORS
 
-If the Collector is publicly available, you can send the telemetry data directly to it. Your Collector should be available under a domain name, for example `collector.example.com:443`. Your web application should send data from its own origin `webapp.example.com` to a different one, and [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) should be configured so browsers allow sending data to a different origin.
+If the Collector is publicly available, you can send the telemetry data directly to it. Your Collector should be available under a domain name, for example `collector.example.com:4318` (4318 is the default port for the OTLP HTTP/JSON protocol). Your web application should send data from its own origin `webapp.example.com` to a different one, and [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) should be configured so browsers allow sending data to a different origin.
 
 To configure CORS in your collector, change the configuration in your HTTP receiver:
 
@@ -583,7 +583,7 @@ Assuming the JavaScript files reside in a folder named "js", the HTML file struc
 </html>
 ```
 
-## Extend your telemetry with the API
+## Manual instrumentation to extend your telemetry
 
 Automatic instrumentation provides a convenient baseline for web application telemetry, but often lacks the necessary depth to fully understand complex user journeys or correlate technical performance with business outcomes.
 
