@@ -23,7 +23,7 @@ OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the 
 
 To visualize data from OpenTelemetry receivers which is stored natively as OpenTelemetry semantic conventions, you must install content-only packs that provide dashboards compatible with OpenTelemetry data.
 
-In the Kibana Integrations UI, search for `otel` to find and install available integrations, like **System OpenTelemetry Assets**, to access the dashboards. We are adding more OpenTelemetry content packs every week, please reach out if what you are looking for is not available as an OTel content pack.
+In the Kibana Integrations UI, search for `otel` to find and install available integrations, like **System OpenTelemetry Assets**, to access the dashboards. We are adding more OpenTelemetry content packs every week, reach out by [opening an issue](https://github.com/elastic/integrations/issues) if what you are looking for is not available as an OTel content pack.
 
 Other Integrations which are beats-based include dashboards based on ECS data and are not compatible with OpenTelemetry semantic conventions.
 :::
