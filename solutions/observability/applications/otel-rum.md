@@ -20,13 +20,13 @@ This documentation outlines the process for instrumenting your web application w
 
 While this guide uses upstream OpenTelemetry instrumentation, you can also use the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) components as part of your data ingestion pipeline.
 
-:::{warning}
-Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
-:::
-
 ## Prerequisites
 
 This guide assumes you're using an {{product.observability}} deployment. You can use an existing one or set up a new one. If you're new to {{product.observability}}, follow the guidelines in [Get started with {{product.observability}}](/solutions/observability/get-started.md).
+
+:::{warning}
+Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 ### OTLP endpoint
 
@@ -45,6 +45,8 @@ If you already have an OpenTelemetry Collector in your infrastructure, you can r
 :::{tab-item} Reverse proxy (recommended)
 
 If your Collector is not publicly available or you want to control where the data is coming from, use a reverse proxy to forward data from the browsers through your web application. This is the recommended method.
+
+:::{dropdown} Example NGINX reverse proxy configuration
 
 The following snippet shows the configuration for an NGINX reverse proxy to forward all telemetry to the Collector located at `collector.example.com` from the origin `webapp.example.com`:
 
@@ -76,6 +78,8 @@ server {
     }
 }
 ```
+
+:::
 :::
 
 :::{tab-item} Public Collector with CORS
@@ -114,6 +118,8 @@ If you're new to {{observability}} or want to start from scratch, create a new {
 
 Both options come with a [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md). However, the mOTLP endpoint cannot be configured for CORS.
 
+:::{dropdown} Example NGINX reverse proxy configuration for mOTLP
+
 The following snippet shows the configuration for an NGINX reverse proxy to forward all telemetry to the mOTLP endpoint from the origin `webapp.example.com`:
 
 ```nginx
@@ -146,6 +152,8 @@ server {
 }
 ```
 
+:::
+
 ## Installation
 
 OpenTelemetry packages for web instrumentation are published to npm. You can install them with the package manager of your choice.
@@ -158,9 +166,8 @@ npm install @opentelemetry/api @opentelemetry/core @opentelemetry/resources @ope
 
 You can then install the instrumentations that you're interested in. OpenTelemetry offers several instrumentations for browsers. For example:
 
-```bash
+- **OTEL_EXPORTER_OTLP_ENDPOINT**: The full URL of an OpenTelemetry Collector where data is sent. When using {{product.observability}}, this is the {{motlp}} of an {{serverless-full}} project or the URL of a deployed [EDOT Collector](elastic-agent://reference/edot-collector/index.md). Refer to the [OTLP endpoint](#otlp-endpoint) section for more information on how to solve [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) issues.
 npm install @opentelemetry/instrumentation-document-load @opentelemetry/instrumentation-fetch @opentelemetry/instrumentation-xml-http-request @opentelemetry/instrumentation-long-task @opentelemetry/instrumentation-user-interaction
-```
 
 ## Basic configuration
 
@@ -183,7 +190,9 @@ The following start script is in plain JavaScript. If you are using TypeScript, 
 Each signal configuration is independent of the others, meaning that you can configure only what you need. The OpenTelemetry API defaults to no-op providers for traces, metrics, and logs.
 :::
 
-### Set the configuration
+::::::{stepper}
+
+:::::{step} Set the configuration
 
 First, set the configuration options that are to be used by all the signals and the instrumentation code. Also initialize the internal logger at the level defined in the configuration.
 
@@ -199,6 +208,8 @@ npm install @opentelemetry/api @opentelemetry/core
 ```
 
 After the dependencies are installed, configure the following options:
+
+:::{dropdown} Configuration example
 
 ```javascript
 import { diag, DiagConsoleLogger } from '@opentelemetry/api';
@@ -223,7 +234,11 @@ diag.setLogger(
 diag.info('OTEL bootstrap', config);
 ```
 
-### Define the resource
+:::
+
+:::::
+
+:::::{step} Define the resource
 
 A resource is an entity that generates telemetry, with its characteristics captured in resource attributes. An example is a web application operating within a browser that produces telemetry data. Further details are available in [OpenTelemetry Resources](https://opentelemetry.io/docs/concepts/resources/).
 
@@ -254,7 +269,9 @@ resource = resource.merge(detectedResources);
 
 Having this information on spans and errors is useful in diagnostic situations for identifying application and dependency compatibility issues with certain browsers.
 
-### Configure trace signal
+:::::
+
+:::::{step} Configure trace
 
 To enable instrumentations to transmit traces and allow for the creation of custom spans through the OpenTelemetry API, a [TracerProvider](https://opentelemetry.io/docs/concepts/signals/traces/#tracer-provider) must be configured. This provider necessitates the inclusion of several key components:
 
@@ -273,6 +290,8 @@ npm install @opentelemetry/sdk-trace-base @opentelemetry/sdk-trace-web @opentele
 ```
 
 Once the dependencies are installed, you can configure and register a tracer provider with the following code:
+
+:::{dropdown} Tracer provider configuration
 
 ```javascript
 import { trace } from '@opentelemetry/api';
@@ -295,9 +314,13 @@ const tracerProvider = new WebTracerProvider({
 trace.setGlobalTracerProvider(tracerProvider);
 ```
 
+:::
+
 Now you can use the OpenTelemetry API to get a tracer and start creating your own spans. Instrumentations can also do it after you register them.
 
-### Configure metrics signal
+:::::
+
+:::::{step} Configure metrics
 
 :::{note}
 Metrics from browser-based RUM are primarily used for aggregate analysis across many browser instances. The data becomes useful when processed in the Collector or backend. Consider whether browser-side metrics collection aligns with your observability goals before enabling this signal.
@@ -322,6 +345,8 @@ npm install @opentelemetry/sdk-metrics @opentelemetry/exporter-metrics-otlp-http
 
 After the dependencies are installed, configure and register a meter provider with the following code:
 
+:::{dropdown} Meter provider configuration
+
 ```javascript
 import { metrics } from '@opentelemetry/api';
 import { MeterProvider, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
@@ -343,7 +368,11 @@ const meterProvider = new MeterProvider({
 metrics.setGlobalMeterProvider(meterProvider);
 ```
 
-### Configure logs signal
+:::
+
+:::::
+
+:::::{step} Configure logs
 
 For RUM log management with OpenTelemetry JavaScript, configure the **Provider** for generation (instantiation, resource, logger creation) and the **Exporter** for transmission (endpoint, headers, interval/batching, registration).
 
@@ -360,6 +389,8 @@ npm install @opentelemetry/api-logs @opentelemetry/sdk-logs @opentelemetry/expor
 ```
 
 After the dependencies are installed, you can configure and register a logger provider with the following code:
+
+:::{dropdown} Logger provider configuration
 
 ```javascript
 import { logs, SeverityNumber } from '@opentelemetry/api-logs';
@@ -379,7 +410,11 @@ const loggerProvider = new LoggerProvider({
 logs.setGlobalLoggerProvider(loggerProvider);
 ```
 
-### Register instrumentations
+:::
+
+:::::
+
+:::::{step} Register instrumentations
 
 The final step for setting up Real User Monitoring (RUM) through OpenTelemetry is registering instrumentations. Instrumentations are modules that automatically capture telemetry data, like network requests or DOM interactions, by using the OpenTelemetry API.
 
@@ -402,6 +437,8 @@ npm install @opentelemetry/instrumentation @opentelemetry/instrumentation-docume
 
 After the dependencies are installed, you can configure and register instrumentations with the following code:
 
+:::{dropdown} Instrumentations registration
+
 ```javascript
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
@@ -422,7 +459,11 @@ registerInstrumentations({
 });
 ```
 
-### Complete setup script
+:::
+
+:::::
+
+:::::{step} Complete setup script
 
 All these pieces together give you a complete setup of all the signals for your web site or application. For convenience, it can be wrapped within a function that accepts the configuration as a parameter, allowing you to reuse the setup across different UIs.
 
@@ -433,6 +474,8 @@ npm install @opentelemetry/api @opentelemetry/core @opentelemetry/resources @ope
 ```
 
 After the dependencies are installed, you can wrap the setup in a function with the following code:
+
+:::{dropdown} Complete setup script example
 
 ```javascript
 // file: telemetry.js
@@ -524,6 +567,12 @@ export function initOpenTelemetry(config) {
 }
 ```
 
+:::
+
+:::::
+
+::::::
+
 ## Integrate with your application
 
 With the setup done, it's time to apply it to your web application. You can choose from two main approaches:
@@ -560,6 +609,8 @@ You can use a bundler to generate a separate JavaScript file. Place the file wit
 
 Assuming the JavaScript files reside in a folder named "js", the HTML file structure looks like this:
 
+:::{dropdown} HTML example
+
 ```html
 <!doctype html>
 <html>
@@ -583,6 +634,8 @@ Assuming the JavaScript files reside in a folder named "js", the HTML file struc
 </html>
 ```
 
+:::
+
 ## Manual instrumentation to extend your telemetry
 
 Automatic instrumentation provides a convenient baseline for web application telemetry, but often lacks the necessary depth to fully understand complex user journeys or correlate technical performance with business outcomes.
@@ -601,6 +654,8 @@ Your web application might initiate several HTTP requests to an associated API. 
 
 An example is a recurring task that updates the user interface at regular intervals to display various datasets that fluctuate over time. In this case, grouping all the API calls necessary for a single UI refresh into one trace allows you to view the overall performance and flow of the entire update cycle.
 
+:::{dropdown} Example: Group API calls in a trace
+
 ```javascript
 import { trace } from '@opentelemetry/api';
 const tracer = trace.getTracer('app-tracer');
@@ -616,6 +671,8 @@ setInterval(function () {
   });
 }, intervalTime)
 ```
+
+:::
 
 By using the `startActiveSpan` callback mechanism, you can wrap the asynchronous data fetching logic within a dedicated active trace. This technique accurately captures the execution flow and performance characteristics of operations that involve multiple steps or services. You get a single root span for the entire operation; this root span established by the callback acts as the primary container for the entire sequence of events. Contained within this root span are two distinct child spans that represent each request from the UI to the API.
 
