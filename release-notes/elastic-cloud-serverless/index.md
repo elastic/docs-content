@@ -1095,7 +1095,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables full-text search in `STATS ... WHERE` **ES|QL** queries [#220691]({{kib-pull}}220691)
 * Prevents downloading trained models that are already present in other spaces and displays a warning in Machine Learning [#220238]({{kib-pull}}220238)
 
-* Adds Microsoft Graph Delegated Authorization Realm Plugin [#127910](https://github.com/elastic/elasticsearch/pull/127910)
+* Adds Microsoft Graph Delegated Authorization Realm plugin [#127910](https://github.com/elastic/elasticsearch/pull/127910)
 
 ### Fixes [serverless-changelog-05192025-fixes]
 * Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
