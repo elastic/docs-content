@@ -118,12 +118,8 @@ To create a component template in {{kib}}:
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. In the **Index Templates** tab, click **Create component template**.
 
-You can also use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API for {{stack}} or the [create or update a component template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template) API for {{serverless-full}}.
+You can also use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
 
-::::{tab-set}
-
-:::{tab-item} {{stack}}
-:sync: stack
 To create a component template for mappings, use this query:
 
 ```console
@@ -166,39 +162,6 @@ PUT _component_template/my-settings
 }
 ```
 
-:::
-
-:::{tab-item} {{serverless-short}}
-:sync: serverless
-To create a component template, use this query:
-
-```console
-PUT _component_template/template_1
-{
-  "template": {
-    "settings": {
-      "number_of_shards": 1
-    },
-    "mappings": {
-      "_source": {
-        "enabled": false
-      },
-      "properties": {
-        "host_name": {
-          "type": "keyword"
-        },
-        "created_at": {
-          "type": "date",
-          "format": "EEE MMM dd HH:mm:ss Z yyyy"
-        }
-      }
-    }
-  }
-}
-```
-
-:::
-:::: 
 
 ## Create an index template [create-index-template]
 
@@ -267,13 +230,10 @@ For an example, see [Data stream privileges](../../../deploy-manage/users-roles/
 
 
 ## Convert an index alias to a data stream [convert-index-alias-to-data-stream]
-```{applies_to}
-serverless: unavailable
-```
 
 Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
 
-To convert an index alias with a write index to a data stream with the same name, use the [migrate to data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream). During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
+To convert an index alias with a write index to a data stream with the same name, use the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream) API for {{stack}} or the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-migrate-to-data-stream) API for {{serverless-full}}. During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
 
 ```console
 POST _data_stream/_migrate/my-time-series-data
