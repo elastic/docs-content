@@ -136,7 +136,7 @@ spec:
 
 ### {{agent}} Kubernetes secrets provider [_agent_kubernetes_secrets_provider]
 
-When you are running {{fleet-server}} under {{agent}} in {{k8s}}, you can use {{agent}}'s [Kubernetes Secrets Provider](/reference/fleet/kubernetes_secrets-provider.md) to insert a {{k8s}} secret directly into {{fleet-server}}'s configuration. Note that due to how {{fleet-server}} is bootstrapped only the APM secrets (API key or secret token) can be specified with this provider.
+When you are running {{fleet-server}} under {{agent}} in {{k8s}}, you can use {{agent}}'s [Kubernetes Secrets Provider](/reference/fleet/kubernetes_secrets-provider.md) to insert a {{k8s}} secret directly into {{fleet-server}}'s configuration. Due to how {{fleet-server}} is bootstrapped only the APM secrets (API key or secret token) can be specified with this provider.
 
 
 

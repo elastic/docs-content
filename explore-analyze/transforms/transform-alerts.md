@@ -71,7 +71,7 @@ There is a set of variables that you can use to customize the notification messa
 
 After you save the configurations, the rule appears in the **{{rules-ui}}** list where you can check its status and see the overview of its configuration information.
 
-The name of an alert is always the same as the {{transform}} ID of the associated {{transform}} that triggered it. You can mute the notifications for a particular {{transform}} on the page of the rule that lists the individual alerts. You can open it via **{{rules-ui}}** by selecting the rule name.
+The name of an alert is always the same as the {{transform}} ID of the associated {{transform}} that triggered it. You can mute the notifications for a particular {{transform}} on the page of the rule that lists the individual alerts. You can open it through **{{rules-ui}}** by selecting the rule name.
 
 ## Action variables [transform-action-variables]
 
