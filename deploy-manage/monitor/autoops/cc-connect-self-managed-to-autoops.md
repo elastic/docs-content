@@ -260,7 +260,7 @@ Complete the following steps to run the command:
 
 It might take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
 
-If the connection is unsuccessful, an error message will appear with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors).
+If the connection is unsuccessful, an error message will be displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors).
 
 Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
@@ -270,7 +270,7 @@ To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend
 
 If the connection is successful, AutoOps will start analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
 
-After the account is ready, the **Open AutoOps** button will appear in the wizard. Select it to launch AutoOps. 
+After the account is ready, the **Open AutoOps** button will be displayed in the wizard. Select it to launch AutoOps. 
 
 Learn more about [AutoOps](/deploy-manage/monitor/autoops.md).
 
@@ -292,7 +292,7 @@ Add a name for your cluster or edit an existing name. You need admin privileges 
 
 1. From the [{{ecloud}} home page](https://cloud.elastic.co/home), go to the **Connected clusters** section and select the cluster you want to work on.
 2. On the cluster details page, select **Add** or **Edit** in the **Cluster display name** field.
-4. Enter the name in the field that appears and then select the {icon}`check` icon.
+4. Enter the name in the field that is displayed and then select the checkmark icon.
 
 ### Connect additional clusters
 
@@ -308,7 +308,7 @@ Complete the following steps to disconnect your cluster from your Cloud organiza
 2. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 3. On the **Connected clusters** page or the **Connected clusters** section of the home page, locate the cluster you want to disconnect.
 4. From that cluster’s actions menu, select **Disconnect cluster**.
-5. Enter the cluster’s name in the field that appears and then select **Disconnect cluster**.
+5. Enter the cluster’s name in the field that is displayed and then select **Disconnect cluster**.
 
 :::{include} /deploy-manage/monitor/_snippets/disconnect-cluster.md
 :::
