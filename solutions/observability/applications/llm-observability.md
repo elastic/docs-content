@@ -11,20 +11,21 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
 - APM tracing for LLM Models (via [instrumentation](opentelemetry://reference/index.md))
 
-## LLM / Agent Platform Observability
+## LLM / Agentic Platform Observability
 
 Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which type of data -- log or metrics -- you can collect.
 
 | **LLM and Agentic Platform**  | **Metrics** | **Logs** | 
 |--------|------------|------------|
-| [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |  
 | [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |  
+| [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |  
+| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ | 
 | [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ | 
 | [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ | 
 | [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 | 
-| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ | 
 
-## LLM / Agent Application Observability with APM (distributed tracing)
+
+## LLM / Agentic Application Observability with APM (distributed tracing)
 
 Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging LLM models hosted on Amazon Bedrock, OpenAI, Azure OpenAI, and GCP Vertex AI, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your LLM-powered application.
 
