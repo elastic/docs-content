@@ -51,7 +51,7 @@ Complete the following steps:
     ```
     After adding this line to both modules, make sure the` AUTOOPS_CA_CERT` environment variable is set on the host machine and contains the full path to your certificate file (for example: `/etc/ssl/certs/my_internal_ca.crt`).
 
-    The following codeblock shows what your final configuration should look like when you use the environment variable method.
+    The following code block shows what your final configuration should look like when you use the environment variable method.
 
     ```yaml
     receivers:
@@ -97,7 +97,7 @@ Complete the following steps:
     ssl.certificate_authorities:
       - "/path/to/your/ca.crt"
     ```
-    The following codeblock shows what your final configuration should look like when you use the hardcode method.
+    The following code block shows what your final configuration should look like when you use the hardcode method.
 
     ```yaml
     receivers:
