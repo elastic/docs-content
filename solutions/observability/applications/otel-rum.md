@@ -30,7 +30,7 @@ Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {
 
 ### OTLP endpoint
 
-You should have an OTLP Collector to intake data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md).
+You need an OTLP Collector to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md).
 
 Depeding on whre the Collector is placed in your infrastructure you may have two setup options:
 
