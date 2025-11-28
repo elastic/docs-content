@@ -255,7 +255,7 @@ On Windows, the `--password` parameter is required when specifying a custom user
 
 On Linux and macOS, the `--user` and `--group` parameters are optional:
 * If you omit `--user`, {{agent}} uses (or creates) the default unprivileged user (`elastic-agent-user`).
-* If you specify only `--group`, the agent runs unprivileged with the requested group using the default user.
+* If you specify only `--group`, the agent runs unprivileged in the requested group using the default user.
 ::::
 
 To install {{agent}} in `unprivileged` mode as a specific user or group, use the following commands:
