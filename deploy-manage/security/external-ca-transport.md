@@ -37,6 +37,6 @@ HTTP certificates can come from public or organization-wide certificate authorit
 If your environment has some other way to prevent unauthorized node-to-node connections, you can disable mTLS by setting `xpack.security.transport.ssl.client_authentication: none`. You can still use non-mutual TLS to ensure the confidentiality and integrity of node-to-node traffic by setting `xpack.security.transport.ssl.enabled: true`. With non-mutual TLS, transport certificates don't require the `clientAuth` value in the Extended Key Usage extension.
 
 ::::{warning}
-Turning off mTLS by setting `xpack.security.transport.ssl.client_authentication` to `optional` or `none` allows anyone with network access to establish transport connections. Malicious actors can use these connections to invoke system-internal APIs that may read or modify cluster data. Use mTLS to 
+Turning off mTLS by setting `xpack.security.transport.ssl.client_authentication` to `optional` or `none` allows anyone with network access to establish transport connections. Malicious actors can use these connections to invoke system-internal APIs that might read or modify cluster data. Use mTLS to 
 protect your node-to-node transport connections unless you are absolutely certain that unauthorized network access to these nodes cannot occur.
 ::::
