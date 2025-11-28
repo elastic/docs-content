@@ -22,6 +22,10 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
+## Prerequisites
+
+To use the EDOT Collector chart, you need Helm version 3.0.0 up to and including {{helm-version}}.
+
 ## Manual installation
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
