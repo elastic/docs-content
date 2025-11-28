@@ -16,6 +16,8 @@ Templates help you start monitoring in minutes by providing curated {{esql}} que
 
 Once the integration is installed, these templates are automatically available in Kibana's alerting interface with a prefilled rule creation form that you can tailor to your needs.
 
+Although these templates are managed by Elastic, any alert created from them is owned by the customer and will not be modified by Elastic, even if the templates change.
+
 :::{important}
 Although the alerts can be used as provided, threshold values should always be evaluated in the context of your specific environment. Applying the predefined thresholds without adjustment may result in an excessive number of alerts.
 :::
