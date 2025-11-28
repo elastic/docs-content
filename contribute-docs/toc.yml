@@ -14,6 +14,9 @@ toc:
           - file: example-scenarios.md
           - file: reference.md
   - file: tools.md
+    children:
+      - file: vscode-extension.md
+      - file: vale-linter.md
   - folder: api-docs
     children:
       - file: index.md

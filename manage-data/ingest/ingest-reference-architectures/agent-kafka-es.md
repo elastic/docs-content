@@ -12,7 +12,7 @@ products:
 :::
 
 Ingest models
-:   [{{agent}} to {{ls}} to Kafka to {{ls}} to {{es}}: Kafka as middleware message queue](agent-kafka-ls.md).<br> {{ls}} reads data from Kafka and routes it to {{es}} clusters (and/or other destinations).
+:   [{{agent}} to {{ls}} to Kafka to {{ls}} to {{es}}: Kafka as middleware message queue](agent-kafka-ls.md).<br> {{ls}} reads data from Kafka and routes it to {{es}} clusters and other destinations.
 
     [{{agent}} to {{ls}} to Kafka to Kafka ES Sink to {{es}}: Kafka as middleware message queue](agent-kafka-essink.md).<br> Kafka ES sink connector reads from Kafka and writes to {{es}}.
 

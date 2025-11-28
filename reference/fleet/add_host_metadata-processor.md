@@ -95,5 +95,5 @@ If `host.*` fields already exist in the event, they are overwritten by default u
 | `geo.city_name` | No |  | Name of the city. |
 | `geo.country_iso_code` | No |  | ISO country code. |
 | `geo.region_iso_code` | No |  | ISO region code. |
-| `replace_fields` | No | `true` | Whether to replace original host fields from the event. If set `false`, original host fields from the event are not replaced by host fields from `add_host_metadata`. |
+| `replace_fields` | No | `true` | Whether to replace existing host fields in the event. If `true` (default), the processor always runs and overwrites any existing `host.*` fields with metadata from `add_host_metadata`. If `false`, the processor only adds metadata when no `host.*` fields exist in the event or when only `host.name` is present. If other host fields exist, the processor is skipped entirely. |
 
