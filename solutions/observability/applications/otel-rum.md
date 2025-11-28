@@ -34,7 +34,7 @@ You need an OTLP Collector to ingest data from the OpenTelemetry RUM instrumenta
 
 Depeding on where the collector is placed in your infrastructure you might have two setup options:
 
-1. Reverse proxy(recommended): this is the approach you must take if you're using {{motlp}} or if your Collector is not publicly available. For other scenarios we also recommend this approach. The reasons are explained in the section below.
+1. Reverse proxy (recommended): Take this approach if you're using {{motlp}} or if your collector is not publicly available. Refer to the next section for further information.
 
 2. Setup CORS: you can opt in for this setup if your Collector is public and you are able to modify its configuration.
 
