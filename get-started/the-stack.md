@@ -13,28 +13,31 @@ applies_to:
 ---
 # {{stack}} and the {{search-platform}}
 
-The [{{search-platform}}](https://www.elastic.co/platform) is the foundation for Elastic solutions and for developers seeking to build generative AI powered applications.
-Its core open source components (also known as ELK or the [{{stack}}](https://www.elastic.co/elastic-stack)) are:
+The [{{search-platform}}](https://www.elastic.co/platform) is the full suite of products and features available in [{{ecloud}}](https://www.elastic.co/cloud) including orchestration, autoscaling, and cloud-native features.
+
+The following products are the open source foundation of the {{search-platform}}:
 
 - [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine that handles indexing, querying, and analytics.
 - [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools.
+
+All [deployment options](/get-started/deployment-options.md) (such as {{ecloud}} and self-managed clusters) include {{es}}.
+{{kib}} is not required to use {{es}}, but is included by default when you use deployment methods such as {{serverless-full}}.
+
+Depending on your use case, you might need to install more products that work together with {{es}} and {{kib}} (referred to as the [{{stack}}](https://www.elastic.co/elastic-stack) or ELK). For example:
+
 - [{{agent}}](#stack-components-agent): A lightweight data shipper that collects and forwards data to {{es}}.
 - [{{ls}}](#stack-components-logstash): The data ingestion and transformation engine, often used for more complex ETL (extract, transform, load) pipelines.
 
-You have many options for deploying the {{search-platform}}, which are summarized in [](/get-started/deployment-options.md).
-All deployments include {{es}}.
-Although {{kib}} is not required to use {{es}}, it is included by default when you use deployment methods such as {{serverless-full}}.
-
 $$$stack-components$$$
-The {{search-platform}} has components for ingesting, storing, and exploring data at scale:
+The {{stack}} includes products for ingesting, storing, and exploring data at scale:
 
-![Components of the {{search-platform}}](/get-started/images/platform-components-diagram.svg)
+![Components of the {{stack}}](/get-started/images/platform-components-diagram.svg)
 
-Continue reading to learn how these components work together.
+Continue reading to learn how these products work together.
 
 ## Ingest [_ingest]
 
-There are multiple methods for ingesting data in the {{search-platform}}.
+There are multiple methods for ingesting data.
 The best approach depends on the kind of data you're ingesting and your specific use case.
 For example, you can collect and ship logs, metrics, and other types of data with {{agent}} or collect detailed performance information with {{product.apm}}.
 If you want to transform and enrich data before it's stored, you can use {{es}} ingest pipelines or {{ls}}.
@@ -93,7 +96,7 @@ It can dynamically unify data from disparate sources and normalize the data into
 
 ## Store, search, and analyze [_store]
 
-{{es}} is the distributed storage, search, and analytics engine at the heart of the {{search-platform}}.
+{{es}} is the distributed storage, search, and analytics engine.
 You can use the {{es}} clients to access data directly by using common programming languages.
 
 ### {{es}} [stack-components-elasticsearch]
@@ -129,7 +132,7 @@ Both official and community contributed clients are available.
 
 ## Explore and visualize [_consume]
 
-Use {{kib}} to explore and visualize the data that's stored in {{es}} and to manage the {{search-platform}}.
+Use {{kib}} to explore and visualize the data that's stored in {{es}} and to manage components of the {{stack}}.
 It is also the home for the {{es}}, Elastic {{observability}} and {{elastic-sec}} [solutions](/get-started/introduction.md).
 
 ### {{kib}} [stack-components-kibana]
