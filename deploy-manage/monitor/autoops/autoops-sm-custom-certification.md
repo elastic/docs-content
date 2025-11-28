@@ -20,6 +20,10 @@ products:
 
 This error occurs because the machine where you have installed {{agent}} does not trust your custom or internal CA. To fix this error, follow the steps on this page to configure the agent with your custom SSL certificate.
 
+:::{note}
+These instructions only apply to environments where [AutoOps {{agent}} is installed using Linux](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent).
+:::
+
 ## Add custom certificate path to the `elastic-agent.yml` file
 
 To configure {{agent}} with your custom SSL certificate, add the path to your certificate to the [`elastic-agent.yml`](/reference/fleet/configure-standalone-elastic-agents.md) policy file on the host machine where the agent is installed. 
@@ -46,6 +50,40 @@ Complete the following steps:
       - ${env:AUTOOPS_CA_CERT}
     ```
     After adding this line to both modules, make sure the` AUTOOPS_CA_CERT` environment variable is set on the host machine and contains the full path to your certificate file (for example: `/etc/ssl/certs/my_internal_ca.crt`).
+
+    The following codeblock shows what your final configuration should look like when you use the environment variable method.
+
+    ```yaml
+    receivers:
+      metricbeatreceiver:
+        metricbeat:
+          modules:
+            # Metrics
+            - module: autoops_es
+              hosts: ${env:AUTOOPS_ES_URL}
+              period: 10s
+              metricsets:
+                - cat_shards
+                - cluster_health
+                - cluster_settings
+                - license
+                - node_stats
+                - tasks_management
+              # --- ADD THIS LINE ---
+              ssl.certificate_authorities:
+                - ${env:AUTOOPS_CA_CERT}
+            # Templates
+            - module: autoops_es
+              hosts: ${env:AUTOOPS_ES_URL}
+              period: 24h
+              metricsets:
+                - cat_template
+                - component_template
+                - index_template
+              # --- ADD THIS LINE ---
+              ssl.certificate_authorities:
+                - ${env:AUTOOPS_CA_CERT}
+    ```
     ::::
 
     ::::{tab-item} Hardcode file path
@@ -106,7 +144,7 @@ Complete the following steps:
     ```
 6. Check the agent logs again to confirm that the error is gone and that {{agent}} has successfully connected your self-managed cluster to AutoOps. 
 
-    :::{note}
+    :::{tip}
     If you encounter the following error in the agent logs, there might be a formatting issue in the `elastic-agent.yml` file.
     ```sh
     ... can not convert 'object' into 'string' ... ssl.certificate_authorities ...
