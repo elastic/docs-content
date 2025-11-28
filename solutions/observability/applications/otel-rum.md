@@ -36,17 +36,17 @@ Depeding on where the collector is placed in your infrastructure you might have 
 
 1. Reverse proxy (recommended): Take this approach if you're using {{motlp}} or if your collector is not publicly available. Refer to the next section for further information.
 
-2. Setup CORS: you can opt in for this setup if your Collector is public and you are able to modify its configuration.
+2. Setup Cross-Origin Resource Sharing (CORS): You can opt in for this setup if your collector is public and you can modify its configuration.
 
 ::::{tab-set}
 
 :::{tab-item} Reverse proxy (recommended)
 
-The recomendation is to use a reverse proxy to redirect the requests from your web app to the Collector for several of reasons:
+Use a reverse proxy to redirect the requests from your web app to the collector for these reasons:
 
-- There is no option in {{motlp}} to configure [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) and without the porper configuration browsers will not send data to it.
-- Is not a good idea to have API keys or other autentication token in your web app since is visible to everyone. You can append the proper `Authorization` header in the proxied request keeping them valid and at the same time not leaking any secret into public.
-- You can apply rate limiting or any other mecanism to control traffic before it reaches the Collector.
+- There is no option in {{motlp}} to configure [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) and without the proper configuration browsers can't send data to it.
+- Don't expose API keys or other authentication tokens in your web app, because they would be visible. Append the proper `Authorization` header in the proxied request to keep them valid and at the same time not leaking any secret to the public.
+- You can apply rate limiting or any other mechanisms to control traffic before it reaches the collector.
 
 :::{dropdown} Example NGINX reverse proxy configuration
 
@@ -85,14 +85,14 @@ server {
 
 :::{tab-item} Configure Collector for CORS
 
-If the Collector is publicly available, you can send the telemetry data directly to it. Your Collector should be available under a domain name, for example `collector.example.com:4318` (4318 is the default port for the OTLP HTTP/JSON protocol). Your web application will be sending data from its own origin `webapp.example.com` to a different one, and [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) should be configured so browsers allow sending data to a different origin.
+If the collector is publicly available, you can send the telemetry data directly to it. Your collector must be available under a domain name, for example `collector.example.com:4318`, 4318 being the default port for the OTLP HTTP/JSON protocol). Your web application sends data from its own origin `webapp.example.com` to a different one, and [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) should be configured so browsers allow sending data to a different origin.
 
-Things to consider if doing this approach are:
+Take these aspects into consideration:
 
-- Anytime you add a new application you need to update the CORS configuration to add the new origin. Using a wildcard value like `https://*` is discouraged since you are practically allowing any website to be able to send data to the Collector. A more convenient configuration could be to have a wildcard per subdomains like `https://*.example.com`.
-- Your Collector requires an authorization header and the OpenTelemetry instrumentation will be sending data directly to it. This means you should add the required header with the API key value in the instrumentation script. Such script is visible to anyone that has access to the app.
+- Every time you add a new application, you need to update the CORS configuration to add the new origin. Using a wildcard value like `https://*` is discouraged because you are allowing any website to be able to send data to the collector. A more convenient configuration is to have a wildcard per subdomains like `https://*.example.com`.
+- Your collector requires an authorization header and the OpenTelemetry instrumentation is sending data directly to it. This means you should add the required header with the API key value in the instrumentation script. This script is visible to anyone that has access to the app.
 
-Find below a basic EDOT Collector configuration file that enables CORS.
+This is a basic EDOT Collector configuration file that activates CORS:
 
 ```yaml
 receivers:
