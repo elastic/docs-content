@@ -6,19 +6,22 @@ products:
   - id: security
 applies_to:
   serverless:
-  stack:
+  deployment:
+    ess: ga
 description: Build a successful proof of concept during your Elastic trial. Learn how to define success criteria, choose the right deployment and use case, measure results, and prepare for production.
 ---
 
 # Evaluate Elastic during a trial
 
-If you're evaluating Elastic during a trial, this guide helps you build a meaningful proof of concept (PoC) that demonstrates clear value to your organization. Rather than prescribing specific technical steps, this guide focuses on the evaluation process itself, helping you make strategic decisions and measure success.
+If you're evaluating Elastic during a trial, this guide helps you build a meaningful proof of concept (PoC) that demonstrates clear value to your organization.
+Rather than prescribing specific technical steps, this guide focuses on the evaluation process itself, helping you make strategic decisions and measure success.
+For an overview, check out [Explore Elastic Cloud with your 14‑day free trial](https://www.elastic.co/cloud/cloud-trial-overview).
 
 ## What's included in your trial
 
 Your Elastic trial gives you full access to explore our platform's capabilities:
 
-- All features available across [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions.
+- All features available across [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
 - Choice between {{serverless-full}} and {{ech}} deployment types.
 - Access to integrations, {{ml-features}}, and advanced analytics.
 - Support resources including documentation, community forums, and technical guidance.
@@ -58,7 +61,7 @@ Elastic offers two primary deployment options on {{ecloud}}. For most evaluation
 - Fully managed with automatic scaling.
 - Simplified configuration and maintenance.
 - Project-based organization.
-- Ideal for focusing on capabilities rather than infrastructure management.
+- Ideal for those who want to offload infrastructure management and scale flexibly based on demand.
 
 :::
 
@@ -66,7 +69,7 @@ Elastic offers two primary deployment options on {{ecloud}}. For most evaluation
 
 - More control over cluster configuration and sizing.
 - Traditional {{es}} architecture.
-- Ideal for evaluating specific infrastructure requirements or migrating from self-managed deployments.
+- Best for users seeking full control over the environment while utilizing managed services for maintenance and updates.
 
 :::
 
@@ -83,7 +86,10 @@ For most evaluations, {{serverless-short}} provides the fastest path to demonstr
 
 ### Identify your primary use case
 
-Choose one use case to focus your initial evaluation. You can always expand to additional use cases after establishing initial success.
+Choose a use case to focus your initial evaluation.
+In {{serverless-full}}, your use case indicates which type of project will serve your purposes.
+In {{ech}}, you have access to all solutions and use cases in a single hosted deployment, but you can get the most value from the trial by focusing your investigation.
+You can always expand to additional use cases after establishing initial success.
 
 | Your challenge | Primary use case |
 |----------------|-----------------|
@@ -302,7 +308,7 @@ Create a summary document or presentation that includes:
 
 When you're ready to move beyond evaluation:
 
-1.Based on your PoC, determine production sizing needs.
+1. Based on your PoC, determine production sizing needs.
 2. Review [license documentation](/deploy-manage/license.md) to choose the right tier.
 3. If moving from trial to production, plan data migration and configuration transfer.
 4. Discuss your evaluation results and production requirements with the Elastic team.
