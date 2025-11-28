@@ -31,8 +31,8 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 
 Two deployment technologies are available: agentless and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* [Agentless deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 ## Agentless deployment [cspm-aws-agentless]
 
