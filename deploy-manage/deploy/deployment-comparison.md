@@ -1,9 +1,9 @@
 
 # Detailed deployment comparison
 
-This reference provides detailed comparisons of features and capabilities across Elastic's deployment options: [fully self-managed clusters](/deploy-manage/deploy/self-managed.md), [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) (ECE), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) (ECK), [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) (ECH), and [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) ({{serverless-short}}). For a high-level overview of deployment types and guidance on choosing between them, refer to the [Deploy and manage overview](../deploy.md).
+This reference provides detailed comparisons of features and capabilities across Elastic's deployment options: [fully self-managed clusters](/deploy-manage/deploy/self-managed.md), [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) (ECE), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) (ECK), [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) (ECH), and [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md). For a high-level overview of deployment types and guidance on choosing between them, refer to the [Deploy and manage overview](../deploy.md).
 
-For more details about feature availability in {{serverless-short}}, refer to [](elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-{{serverless-short}}-feature-categories).
+For more details about feature availability in {{serverless-short}}, refer to [](elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-categories).
 
 ## Security
 
