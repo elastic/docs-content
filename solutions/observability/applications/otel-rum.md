@@ -32,7 +32,7 @@ Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {
 
 You need an OTLP Collector to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md).
 
-Depeding on whre the Collector is placed in your infrastructure you may have two setup options:
+Depeding on where the collector is placed in your infrastructure you might have two setup options:
 
 1. Reverse proxy(recommended): this is the approach you must take if you're using {{motlp}} or if your Collector is not publicly available. For other scenarios we also recommend this approach. The reasons are explained in the section below.
 
