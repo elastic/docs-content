@@ -1,8 +1,8 @@
 ---
-navigation_title: LLM Observability
+navigation_title: LLM and Agentic AI Observability
 ---
 
-# LLM Observability
+# LLM and Agentic AI Observability
 
 While LLMs hold incredible transformative potential, they also bring complex challenges in reliability, performance, and cost management. Traditional monitoring tools require an evolved set of observability capabilities to ensure these models operate efficiently and effectively.
 To keep your LLM-powered applications reliable, efficient, cost-effective, and easy to troubleshoot, Elastic provides a powerful LLM observability framework including key metrics, logs, and traces, along with pre-configured, out-of-the-box dashboards that deliver deep insights into model prompts and responses, performance, usage, and costs.
@@ -11,19 +11,20 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
 - APM tracing for LLM Models (via [instrumentation](opentelemetry://reference/index.md))
 
-## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
+## LLM / Agent Platform Observability
 
 Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which type of data -- log or metrics -- you can collect.
 
-| **LLM Provider**  | **Metrics** | **Logs** | 
+| **LLM and Agentic Platform**  | **Metrics** | **Logs** | 
 |--------|------------|------------|
+| [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |  
 | [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |  
 | [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ | 
 | [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ | 
 | [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 | 
 | [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ | 
 
-## APM tracing for LLM models (via instrumentation)
+## LLM / Agent Application Observability with APM (distributed tracing)
 
 Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging LLM models hosted on Amazon Bedrock, OpenAI, Azure OpenAI, and GCP Vertex AI, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your LLM-powered application.
 
