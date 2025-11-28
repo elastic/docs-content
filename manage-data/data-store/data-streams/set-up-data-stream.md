@@ -10,6 +10,8 @@ products:
 
 # Set up a data stream [set-up-a-data-stream]
 
+The process of setting up a data stream in {{stack}} and {{serverless-full}} is similar, making use of their respective APIs. However, because {{serverless-short}} provides a built-in [data stream lifecycle](/manage-data/lifecycle/data-stream.md) mechanism and retention settings, there's no need for configuring index lifecycle management ({{ilm-init}}) options as you would in an {{stack}} deployment.
+
 To set up a data stream, follow these steps:
 
 1. [Create an index lifecycle policy](#create-index-lifecycle-policy) {applies_to}`serverless: unavailable`
@@ -20,13 +22,12 @@ To set up a data stream, follow these steps:
 
 You can also [convert an index alias to a data stream](#convert-index-alias-to-data-stream).
 
-::::{important}
+:::{important}
 If you use {{fleet}}, {{agent}}, or {{ls}}, skip this tutorial. They all set up data streams for you.
 
 For {{fleet}} and {{agent}}, refer to [](/reference/fleet/data-streams.md). For {{ls}}, refer to the [data streams settings](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
 
-::::
-
+:::
 
 
 ## Create an index lifecycle policy [create-index-lifecycle-policy]
@@ -34,7 +35,11 @@ For {{fleet}} and {{agent}}, refer to [](/reference/fleet/data-streams.md). For 
 serverless: unavailable
 ```
 
-While optional, we recommend using the index lifecycle management ({{ilm-init}}) capability to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
+While optional, we recommend using the index lifecycle management ({{ilm-init}}) capability in {{stack}} deployments to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
+
+:::{admonition} Simpler lifecycle management in {{serverless-short}} projects
+{{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data management option.
+:::
 
 To create an index lifecycle policy in {{kib}}:
 
@@ -93,9 +98,6 @@ PUT _ilm/policy/my-lifecycle-policy
 }
 ```
 
-:::{admonition} Simpler lifecycle management in {{serverless-short}} projects
-{{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data management option.
-:::
 
 ## Create component templates [create-component-templates]
 
@@ -106,19 +108,28 @@ When creating your component templates, include:
 * A [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) mapping for the `@timestamp` field. If you don’t specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
 * Your lifecycle policy in the `index.lifecycle.name` index setting.
 
-::::{tip}
+:::{tip}
 Use the [Elastic Common Schema (ECS)](ecs://reference/index.md) when mapping your fields. ECS fields integrate with several {{stack}} features by default.
 
 If you’re unsure how to map your fields, use [runtime fields](../mapping/define-runtime-fields-in-search-request.md) to extract fields from [unstructured content](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#mapping-unstructured-content) at search time. For example, you can index a log message to a `wildcard` field and later extract IP addresses and other data from this field during a search.
+:::
 
-::::
-
+::::{tab-set}
+:group: set-up-ds
+:::{tab-item} {{kib}}
+:sync: kibana
 To create a component template in {{kib}}:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. In the **Index Templates** tab, click **Create component template**.
+::: 
 
-You can also use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API for {{es}} or the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template) API for {{serverless-full}}.
+:::{tab-item} API
+:sync: api
+Use an API to create a component template:
+
+* If you're on an {{stack}} deployment, use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
+* If you're on {{serverless-full}}, use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template) API.
 
 To create a component template for mappings, use this query:
 
@@ -162,6 +173,8 @@ PUT _component_template/my-settings
 }
 ```
 
+::: 
+::::
 
 ## Create an index template [create-index-template]
 
@@ -172,12 +185,25 @@ Use your component templates to create an index template. Specify:
 * Any component templates that contain your mappings and index settings.
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).
 
+::::{tab-set}
+:group: set-up-ds
+:::{tab-item} {{kib}}
+:sync: kibana
 To create an index template in {{kib}}:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. In the **Index Templates** tab, click **Create template**.
 
-You can also use the [create an index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API for {{es}} or [create an index template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-index-template) API for {{serverless-full}}. Include the `data_stream` object to enable data streams.
+::: 
+
+:::{tab-item} API
+:sync: api
+Use an API to create an index template:
+
+* If you're on an {{stack}} deployment, use the [create an index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API.
+* If you're on {{serverless-full}}, use the [create an index template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-index-template) API.
+
+Include the `data_stream` object to enable data streams:
 
 ```console
 PUT _index_template/my-index-template
@@ -193,6 +219,8 @@ PUT _index_template/my-index-template
 }
 ```
 
+:::
+::::
 
 ## Create the data stream [create-data-stream]
 
@@ -213,8 +241,10 @@ POST my-data-stream/_doc
   "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736"
 }
 ```
+You can also use an API to manually create the data stream:
 
-You can also manually create the stream using the [create data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) API for {{es}} or the [create a data stream](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create-data-stream) API for {{serverless-full}}. The stream’s name must still match one of your template’s index patterns.
+* If you're on an {{stack}} deployment, use the [create data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) API.
+* If you're on {{serverless-full}}, use the [create a data stream](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create-data-stream) API.
 
 ```console
 PUT _data_stream/my-data-stream
@@ -226,14 +256,19 @@ After it's been created, you can view and manage this and other data streams fro
 
 Use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
 
-For an example, see [Data stream privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
+For an example, refer to [Data stream privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
 
 ## Convert an index alias to a data stream [convert-index-alias-to-data-stream]
 
-Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
+Prior to {{es}} 7.9, you’d typically use an index alias with a write index to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
 
-To convert an index alias with a write index to a data stream with the same name, use the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream) API for {{es}} or the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-migrate-to-data-stream) API for {{serverless-full}}. During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
+You can convert an index alias with a write index to a data stream with the same name, using an API:
+
+* If you're on an {{stack}} deployment, use the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream) API.
+* If you're on {{serverless-full}}, use the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-migrate-to-data-stream) API.
+
+During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
 
 ```console
 POST _data_stream/_migrate/my-time-series-data
@@ -242,28 +277,64 @@ POST _data_stream/_migrate/my-time-series-data
 
 ## Get information about a data stream [get-info-about-data-stream]
 
+You can review metadata about each data stream via the {{kib}} UI or the API, depending if you prefer a visual overview or information in a raw JSON format.
+
+::::{tab-set}
+:group: set-up-ds
+:::{tab-item} {{kib}}
+:sync: kibana
 To get information about a data stream in {{kib}}:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. In the **Data Streams** tab, click the data stream’s name.
 
-You can also use the [get data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream) API for {{es}} or the [get data streams](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-data-stream) API for {{serverless-full}}.
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+Starting with {{es}} version 9.2, you can use the [**Streams**](/solutions/observability/streams/streams.md) page to view the details of a data stream. The **Streams** page provides a centralized interface for managing your data in {{kib}}. Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select a stream to view its details.
+:::
+
+:::
+
+:::{tab-item} API
+:sync: api
+You can also use an API to get this information:
+
+* If you're on an {{stack}} deployment, use the [get data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream) API.
+* If you're on {{serverless-full}}, use the [get data streams](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-data-stream) API.
 
 ```console
 GET _data_stream/my-data-stream
 ```
 
+:::
+::::
 
 ## Delete a data stream [delete-data-stream]
+
+You can delete a data stream and its backing indices via the {{kib}} UI or an API. You will require the `delete_index` [security privilege](elasticsearch://reference/elasticsearch/security-privileges.md) for the data stream to complete this action.
+
+::::{tab-set}
+:group: set-up-ds
+:::{tab-item} {{kib}}
+:sync: kibana
 
 To delete a data stream and its backing indices in {{kib}}:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](elasticsearch://reference/elasticsearch/security-privileges.md) for the data stream.
+1. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` security privilege for the data stream.
 
-You can also use the [delete data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream) API for {{es}} or the [delete data streams](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-delete-data-stream) API for {{serverless-full}}.
+::: 
+:::{tab-item} API
+:sync: api
+
+You can also use an API to delete a data stream:
+
+* If you're on an {{stack}} deployment, use the [delete data streams](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream) API.
+* If you're on {{serverless-full}}, use the [delete data streams](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-delete-data-stream) API.
 
 ```console
 DELETE _data_stream/my-data-stream
 ```
 
+:::
+::::
