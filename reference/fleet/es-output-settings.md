@@ -132,6 +132,10 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
     **Default:** `1`
 
+`status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
+:   (boolean) Whether status reporting is enabled for this output. When disabled, the output will not change it's health status if there is a connectivity problem.
+
+    **Default:** `true`
 
 ## Performance tuning settings [es-output-settings-performance-tuning-settings]
 
