@@ -8,7 +8,7 @@ products:
 navigation_title: Built-in alerts and templates
 ---
 
-# Built-in alerts and templates [built-in-alerts]
+# Elastic Agent built-in alerts [built-in-alerts]
 
 ## {{agent}} out-of-the-box alert rules [ea-alert-rules]
 
