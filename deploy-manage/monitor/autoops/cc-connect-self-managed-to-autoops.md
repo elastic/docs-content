@@ -12,7 +12,7 @@ products:
 
 # Connect your self-managed cluster to AutoOps
 
-To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
 Complete the steps in the following subsections to connect your cluster to AutoOps. The connection process takes about 10 minutes.
 
@@ -222,7 +222,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 ### Install agent
 
-The wizard will generate an installation command based on your configuration. Depending on your installation method, the following command formats are available:
+The wizard generates an installation command based on your configuration. Depending on your installation method, the following command formats are available:
 
 * Kubernetes
     * YAML
@@ -260,7 +260,7 @@ Complete the following steps to run the command:
 
 It might take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
 
-If the connection is unsuccessful, an error message will be displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors).
+If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors).
 
 Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
@@ -268,9 +268,9 @@ To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend
 
 ### Launch AutoOps
 
-If the connection is successful, AutoOps will start analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
+If the connection is successful, AutoOps starts analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
 
-After the account is ready, the **Open AutoOps** button will be displayed in the wizard. Select it to launch AutoOps. 
+After the account is ready, the **Open AutoOps** button is displayed in the wizard. Select it to launch AutoOps. 
 
 Learn more about [AutoOps](/deploy-manage/monitor/autoops.md).
 
