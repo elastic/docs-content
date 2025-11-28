@@ -16,6 +16,10 @@ Templates help you start monitoring in minutes by providing curated {{esql}} que
 
 Once the integration is installed, these templates are automatically available in Kibana's alerting interface with a prefilled rule creation form that you can tailor to your needs.
 
+:::{important}
+Although the alerts can be used as provided, threshold values should always be evaluated in the context of your specific environment. Applying the predefined thresholds without adjustment may result in an excessive number of alerts.
+:::
+
 ## Prerequisites
 	
 - Install or upgrade to the latest version of the integration that includes alerting rule templates.
