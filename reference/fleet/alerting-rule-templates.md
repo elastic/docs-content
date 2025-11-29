@@ -14,7 +14,7 @@ Alerting rule templates are out-of-the-box alert definitions that come bundled w
 
 Templates help you start monitoring in minutes by providing curated {{esql}} queries and recommended thresholds tailored to each integration. 
 
-Once the integration is installed, these templates are automatically available in Kibana's alerting interface with a prefilled rule creation form that you can tailor to your needs.
+After the integration is installed, these templates are automatically available in Kibana's alerting interface with a prefilled rule creation form that you can adapt to your needs.
 
 Although these templates are managed by Elastic, any alert created from them is owned by the customer and will not be modified by Elastic, even if the templates change.
 
