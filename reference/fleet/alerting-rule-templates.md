@@ -25,7 +25,7 @@ Although the alerts can be used as provided, threshold values should always be e
 ## Prerequisites
 	
 - Install or upgrade to the latest version of the integration that includes alerting rule templates.
-- Ensure the relevant data stream is enabled and ingesting data for the template you plan to use.
+- Ensure the data collection is enabled for the metrics or events that you plan to use.
 - {{stack}} 9.2.1 or later.
 - Appropriate {{kib}} role privileges to create and manage rules.
 
