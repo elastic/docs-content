@@ -440,7 +440,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces the German locale for Kibana in `beta` [#236903]({{kib-pull}}236903)
 * Adds an advanced option to disable filtering of file-backed volumes and CD-ROMs in the **Device Control** plugin [#236620]({{kib-pull}}236620)
 
-* Removes `index.dimensions` feature flag [#135402](https://github.com/elastic/elasticsearch/pull/135402)
+* Improves TSDB ingestion by hashing dimensions only once, using a new auto-populeted `index.dimensions` private index setting [#135402](https://github.com/elastic/elasticsearch/pull/135402)
 * Adds index setting that disables the `index.dimensions` based routing and `_tsid` creation strategy [#135673](https://github.com/elastic/elasticsearch/pull/135673)
 
 ### Fixes [serverless-changelog-10062025-fixes]
@@ -491,11 +491,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Implements `Delta` function for absolute change in gauges over time [#135035](https://github.com/elastic/elasticsearch/pull/135035)
 * Improves block loader for source only runtime date fields [#135373](https://github.com/elastic/elasticsearch/pull/135373)
-* Forbids metrics used in aggregations for timeseries [#135223](https://github.com/elastic/elasticsearch/pull/135223)
-* Improves block loader for source only runtime boolean fields [#135318](https://github.com/elastic/elasticsearch/pull/135318)
-* Removes OTLP feature flag [#135401](https://github.com/elastic/elasticsearch/pull/135401)
-* Removes `pattern_text` feature flag [#135370](https://github.com/elastic/elasticsearch/pull/135370)
-* Removes feature flag for coalesced ignored source [#135039](https://github.com/elastic/elasticsearch/pull/135039)
+* Adds an OTLP metrics endpoint (`_otlp/v1/metrics`) as tech preview [#135401](https://github.com/elastic/elasticsearch/pull/135401)
+* Adds `pattern_text` field mapper in tech preview [#135370](https://github.com/elastic/elasticsearch/pull/135370)
+* Uses optimized field visitor for ignored source queries [#135039](https://github.com/elastic/elasticsearch/pull/135039)
 * Improves block loader for source only runtime IP fields [#135393](https://github.com/elastic/elasticsearch/pull/135393)
 
 ### Fixes [serverless-changelog-09292025-fixes]
@@ -590,7 +588,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes expiration time in {{esql}} async [#135209](https://github.com/elastic/elasticsearch/pull/135209)
 
 * Fixes match only text block loader not working when a keyword multi field is present [#134582](https://github.com/elastic/elasticsearch/pull/134582)
-* Avoids holding references to SearchExecutionContext in SourceConfirmedTextQuery [#134887](https://github.com/elastic/elasticsearch/pull/134887)
+* Avoids holding references to `SearchExecutionContext` in `SourceConfirmedTextQuery` [#134887](https://github.com/elastic/elasticsearch/pull/134887)
 
 
   
@@ -623,9 +621,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Adds time series telemetry in xpack usage for downsampling [#134214](https://github.com/elastic/elasticsearch/pull/134214)
 * Skips null metrics in {{esql}} [#133087](https://github.com/elastic/elasticsearch/pull/133087)
-* Improves block loader for source only runtime fields of type long. [#134117](https://github.com/elastic/elasticsearch/pull/134117)
-* Improves block loader for source only runtime fields of type double. [#134629](https://github.com/elastic/elasticsearch/pull/134629)
-* Increases default limit for TS queries [#134501](https://github.com/elastic/elasticsearch/pull/134501)
+* Improves block loader for source only runtime fields of type long [#134117](https://github.com/elastic/elasticsearch/pull/134117)
+* Improves block loader for source only runtime fields of type double [#134629](https://github.com/elastic/elasticsearch/pull/134629)
 * Implements `idelta` function for {{esql}} [#134510](https://github.com/elastic/elasticsearch/pull/134510)
 
 ### Fixes [serverless-changelog-09152025-fixes]
@@ -810,7 +807,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the default port the from interactive setup cluster address form, unless specified [#230582]({{kib-pull}}230582)
 * Fixes positioning of the **Add rule** popover on the Role Mappings page [#231551]({{kib-pull}}231551)
 
-* Calculates text string length correctly for code points outside BMP [#132593](https://github.com/elastic/elasticsearch/pull/132593)
+* Strings outside BMP have 2 chars per code points [#132593](https://github.com/elastic/elasticsearch/pull/132593)
 
 ## August 11, 2025 [serverless-changelog-08112025]
 
@@ -1047,7 +1044,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds discernible text to the refresh button on the **Streams** > **Processing** page [#225816]({{kib-pull}}225816)
 * Fixes handling of context limit errors in Playground when using the Elastic Managed LLM [#225360]({{kib-pull}}225360)
 
-* Removes `tmp_fdt_no_mmap` feature flag [#130308](https://github.com/elastic/elasticsearch/pull/130308)
+* Forces `niofs` for `fdt tmp` file read access when flushing stored fields [#130308](https://github.com/elastic/elasticsearch/pull/130308)
 
 ## June 30, 2025 [serverless-changelog-06302025]
 
@@ -1282,8 +1279,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates the "Highlighted fields" button in the details flyout and enables the feature flag in {{sec-serverless}} [#221862]({{kib-pull}}221862)
 * Introduces new `empty` states for the Change Point Detection page in {{ml-cap}} [#219072]({{kib-pull}}219072)
 
-* Conditionally force sequential reading in LuceneSyntheticSourceChangesSnapshot [#128473](https://github.com/elastic/elasticsearch/pull/128473)
-* Skips indexing points for seq_no in tsdb and logsdb [#128139](https://github.com/elastic/elasticsearch/pull/128139)
+* Conditionally force sequential reading in `LuceneSyntheticSourceChangesSnapshot` [#128473](https://github.com/elastic/elasticsearch/pull/128473)
+* Skips indexing points for `seq_no` in tsdb and logsdb [#128139](https://github.com/elastic/elasticsearch/pull/128139)
 
 
 ### Fixes [serverless-changelog-06022025-fixes]
@@ -1324,7 +1321,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces a new endpoint scheme for SIEM migration [#219597]({{kib-pull}}219597)
 * Extends default log pattern on server side to include error information [#219940]({{kib-pull}}219940)
 
-* Refactors SourceProvider creation to consistently use MappingLookup [#128213](https://github.com/elastic/elasticsearch/pull/128213)
+* Refactors `SourceProvider` creation to consistently use `MappingLookup` [#128213](https://github.com/elastic/elasticsearch/pull/128213)
 
 
 ### Fixes [serverless-changelog-05262025-fixes]
@@ -1366,7 +1363,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables full-text search in `STATS ... WHERE` **ES|QL** queries [#220691]({{kib-pull}}220691)
 * Prevents downloading trained models that are already present in other spaces and displays a warning in Machine Learning [#220238]({{kib-pull}}220238)
 
-* Do not respect synthetic_source_keep=arrays if type parses arrays [#127796](https://github.com/elastic/elasticsearch/pull/127796)
+* Do not respect `synthetic_source_keep=arrays` if type parses arrays [#127796](https://github.com/elastic/elasticsearch/pull/127796)
 
 ### Fixes [serverless-changelog-05192025-fixes]
 * Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
@@ -1519,7 +1516,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reuses shared integration policies when duplicating agent policies in Fleet [#217872]({{kib-pull}}217872)
 * Enables adding badges to all list items in the side navigation except the section header [#217301]({{kib-pull}}217301)
 
-* Uses FallbackSyntheticSourceBlockLoader for text fields [#126237](https://github.com/elastic/elasticsearch/pull/126237)
+* Uses `FallbackSyntheticSourceBlockLoader` for text fields [#126237](https://github.com/elastic/elasticsearch/pull/126237)
 * Adds block loader from stored field and source for ip field [#126644](https://github.com/elastic/elasticsearch/pull/126644)
 
 ### Fixes [serverless-changelog-04142025-fixes]
@@ -1542,7 +1539,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Filters inference connectors that lack existing endpoints in **Connectors** [#217641]({{kib-pull}}217641)
 * Fixes focusability and keyboard access issues with the **Export** tab in the **Share this dashboard** modal [#217313]({{kib-pull}}217313)
 
-* Improves resiliency of UpdateTimeSeriesRangeService [#126637](https://github.com/elastic/elasticsearch/pull/126637)
+* Improves resiliency of `UpdateTimeSeriesRangeService` [#126637](https://github.com/elastic/elasticsearch/pull/126637)
 
 ## April 7, 2025 [serverless-changelog-04072025]
 
@@ -1565,7 +1562,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Voyage AI and DeepSeek icons for Machine Learning [#216651]({{kib-pull}}216651)
 * Moves rule settings to a flyout instead of a modal [#216162]({{kib-pull}}216162)
 
-* Uses FallbackSyntheticSourceBlockLoader for point and geo_point [#125816](https://github.com/elastic/elasticsearch/pull/125816)
+* Uses `FallbackSyntheticSourceBlockLoader` for point and geo_point [#125816](https://github.com/elastic/elasticsearch/pull/125816)
 
 
 ### Fixes [elastic-cloud-serverless-04072025-fixes]
@@ -1658,7 +1655,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds Mustache lambdas for alerting action [#213859]({{kib-pull}}213859)
 * Adds 'page reload' screen reader warning [#214822]({{kib-pull}}214822)
 
-* Uses FallbackSyntheticSourceBlockLoader for shape and geo_shape [#124927](https://github.com/elastic/elasticsearch/pull/124927)
+* Use `FallbackSyntheticSourceBlockLoader` for `shape` and `geo_shape` [#124927](https://github.com/elastic/elasticsearch/pull/124927)
 * Stores arrays offsets for numeric fields natively with synthetic source [#124594](https://github.com/elastic/elasticsearch/pull/124594)
 
 ### Fixes [elastic-cloud-serverless-03242025-fixes]
@@ -1710,7 +1707,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces GA support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type on {{serverless-full}}
 * Adds the ability for users to [customize prebuilt rules](https://github.com/elastic/kibana/issues/174168). Users can modify most rule parameters, export and import prebuilt rules — including customized ones — and upgrade prebuilt rules while retaining customization settings [#212761]({{kib-pull}}212761)
 
-* Improves downsample performance by buffering docids and do bulk processing. [#124477](https://github.com/elastic/elasticsearch/pull/124477)
+* Improves downsample performance by buffering docids and doing bulk processing [#124477](https://github.com/elastic/elasticsearch/pull/124477)
 * Improves rolling up metrics [#124739](https://github.com/elastic/elasticsearch/pull/124739)
 
 
@@ -1739,7 +1736,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes appearance of warnings in the {{esql}} editor [#213685]({{kib-pull}}213685)
 * Makes the Apply time range switch visible in the Job selection flyout when opened from the Anomaly Explorer [#213382]({{kib-pull}}213382)
 
-* Prevents enable docvalues skippers by default for the time being. [#124787](https://github.com/elastic/elasticsearch/pull/124787)
 * Avoids reading unnecessary dimension values when downsampling [#124451](https://github.com/elastic/elasticsearch/pull/124451)
 * Merges template mappings properly during validation [#124784](https://github.com/elastic/elasticsearch/pull/124784)
 
@@ -1758,8 +1754,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Registers a custom integrations search provider in Fleet [#213013]({{kib-pull}}213013)
 * Adds support for searchAfter and PIT (point-in-time) parameters in the Get Agents List API in Fleet [#213486]({{kib-pull}}213486)
 
-* Removes synthetic recovery source feature flag. [#122615](https://github.com/elastic/elasticsearch/pull/122615)
-* Uses FallbackSyntheticSourceBlockLoader for boolean and date fields [#124050](https://github.com/elastic/elasticsearch/pull/124050)
+* Enables synthetic recovery source by default when synthetic source is enabled.
+  Using synthetic recovery source significantly improves indexing performance compared  to regular recovery source [#122615](https://github.com/elastic/elasticsearch/pull/122615)
+* Uses `FallbackSyntheticSourceBlockLoader` for boolean and date fields [#124050](https://github.com/elastic/elasticsearch/pull/124050)
 
 ### Fixes [elastic-cloud-serverless-03102025-fixes]
 * Fixes an issue where Korean characters were split into two characters with a space in between when typing in the options list search input in Dashboards and visualizations [#213164]({{kib-pull}}213164)
@@ -1788,7 +1785,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates wording for options in the sortBy dropdown component [#206464]({{kib-pull}}206464)
 * Allows EU hooks hostname in the Torq connector for Elastic Security Serverless [#212563]({{kib-pull}}212563)
 
-* Avoids serializing empty _source fields in mappings. [#122606](https://github.com/elastic/elasticsearch/pull/122606)
+* Avoids serializing empty _source fields in mappings [#122606](https://github.com/elastic/elasticsearch/pull/122606)
 
 ## March 3, 2025 [serverless-changelog-03032025]
 
@@ -1827,7 +1824,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables `/api/streams/{id}/_group` endpoints for GroupStreams [#210114]({{kib-pull}}210114)
 
 * Stores arrays offsets for ip fields natively with synthetic source [#122999](https://github.com/elastic/elasticsearch/pull/122999)
-* Uses FallbackSyntheticSourceBlockLoader for unsigned_long and scaled_float fields [#122637](https://github.com/elastic/elasticsearch/pull/122637)
+* Uses `FallbackSyntheticSourceBlockLoader` for `unsigned_long` and `scaled_float` fields [#122637](https://github.com/elastic/elasticsearch/pull/122637)
 * Stores arrays offsets for keyword fields natively with synthetic source [#113757](https://github.com/elastic/elasticsearch/pull/113757)
 
 ### Fixes [elastic-cloud-serverless-02242025-fixes]
@@ -1869,8 +1866,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds the useCustomDragHandle property [#210463]({{kib-pull}}210463)
 * Upcoming removal of SMS multifactor authentication method. In October, we made multifactor authentication mandatory for all users. As an additional security measure, the SMS MFA method will be removed in April. If you’re still using SMS, you will be prompted to set up a more secure MFA method, and your registered SMS MFA devices will be automatically deleted from Elastic Cloud.
 
-* Uses FallbackSyntheticSourceBlockLoader for number fields [#122280](https://github.com/elastic/elasticsearch/pull/122280)
-* Enables the use of nested field type with index.mode=time_series [#122224](https://github.com/elastic/elasticsearch/pull/122224)
+* Uses `FallbackSyntheticSourceBlockLoader` for number fields [#122280](https://github.com/elastic/elasticsearch/pull/122280)
+* Enables the use of nested field type with `index.mode=time_series` [#122224](https://github.com/elastic/elasticsearch/pull/122224)
 
 ### Fixes [elastic-cloud-serverless-02172025-fixes]
 * Fixes an issue where clicking on the name badge for a synthetics monitor on an SLO details page would lead to a page that failed to load monitor details [#210695]({{kib-pull}}210695)
@@ -1908,7 +1905,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Provides a fallback view to recover from Stack Alerts page filters bar errors [#209559]({{kib-pull}}209559)
 
 * Fixes synthetic source bug that would mishandle nested dense_vector fields [#122425](https://github.com/elastic/elasticsearch/pull/122425)
-* Logsdb and source only snapshots. [#122199](https://github.com/elastic/elasticsearch/pull/122199)
+* Fix issues that prevents using search only snapshots for indices that use index sorting. This is includes Logsdb and time series indices [#122199](https://github.com/elastic/elasticsearch/pull/122199)
 
 ## February 10, 2025 [serverless-changelog-02102025]
 
