@@ -672,7 +672,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an empty tooltip issue when creating tags [#232853]({{kib-pull}}232853)
 * Fixes an issue where the **Create tag** modal wouldn't close properly [#233012]({{kib-pull}}233012)
 * Updates `DefBootstrap` to handle `Error` from `ClassValue` [#133604](https://github.com/elastic/elasticsearch/pull/133604)
-* Changes `GeneralScriptException` to 400 [#133659](https://github.com/elastic/elasticsearch/pull/133659)
+* Fixes `GeneralScriptException` to return 400 HTTP status code [#133659](https://github.com/elastic/elasticsearch/pull/133659)
 
 ## August 28, 2025 [serverless-changelog-08282025]
 
@@ -1263,7 +1263,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces a new endpoint scheme for SIEM migration [#219597]({{kib-pull}}219597)
 * Extends default log pattern on server side to include error information [#219940]({{kib-pull}}219940)
 
-* Ensures config reload on ..data symlink switch for `CSI` driver support [#127628](https://github.com/elastic/elasticsearch/pull/127628)
+* Ensures config reload on `..data` symlink switch for CSI driver support [#127628](https://github.com/elastic/elasticsearch/pull/127628)
 
 
 ### Fixes [serverless-changelog-05262025-fixes]
@@ -1284,7 +1284,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
 * Changes the AI Connector description [#221154]({{kib-pull}}221154)
 
-* Fixes `NPE` in `APMTracer` through `RestController` [#128314](https://github.com/elastic/elasticsearch/pull/128314)
+* Fixes null pointer exception in `APMTracer` through `RestController` [#128314](https://github.com/elastic/elasticsearch/pull/128314)
 
 ## May 19, 2025 [serverless-changelog-05192025]
 
@@ -1306,7 +1306,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds an **ES|QL** control option to the dashboard controls dropdown [#219495]({{kib-pull}}219495)
 * Enables full-text search in `STATS ... WHERE` **ES|QL** queries [#220691]({{kib-pull}}220691)
 * Prevents downloading trained models that are already present in other spaces and displays a warning in Machine Learning [#220238]({{kib-pull}}220238)
-* Creates and deletes per-project `objectstore`
+* Adds support for creating and deleting per-project object stores
 
 ### Fixes [serverless-changelog-05192025-fixes]
 * Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
@@ -1329,7 +1329,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes incorrect validation for names containing asterisks in **ES|QL** [#219832]({{kib-pull}}219832)
 * Fixes overridden SSL config in full agent policy advanced YAML for Fleet [#219902]({{kib-pull}}219902)
 
-* Avoids nested docs in `painless execute api` [#127991](https://github.com/elastic/elasticsearch/pull/127991)
+* Avoids nested docs in Painless execute API [#127991](https://github.com/elastic/elasticsearch/pull/127991)
 
 ## May 5, 2025 [serverless-changelog-050525]
 
@@ -1483,8 +1483,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Improves handling of empty response [#125562](https://github.com/elastic/elasticsearch/pull/125562)
 * Adds leniency to missing array values in mustache [#126550](https://github.com/elastic/elasticsearch/pull/126550)
-* Adds a custom toString to `DynamicMap` [#126562](https://github.com/elastic/elasticsearch/pull/126562)
-* Fixes painless return type cast for list shortcut [#126724](https://github.com/elastic/elasticsearch/pull/126724)
+* Adds a custom `toString` to `DynamicMap` [#126562](https://github.com/elastic/elasticsearch/pull/126562)
+* Fixes Painless return type cast for list shortcut [#126724](https://github.com/elastic/elasticsearch/pull/126724)
 
 ## April 7, 2025 [serverless-changelog-04072025]
 
@@ -1593,7 +1593,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates data feeds for anomaly detection jobs to exclude Elastic Agent and Beats processes [#213927]({{kib-pull}}213927)
 * Adds Mustache lambdas for alerting action [#213859]({{kib-pull}}213859)
 * Adds 'page reload' screen reader warning [#214822]({{kib-pull}}214822)
-* Supports `reserved state` to be spread across several files
+* Adds support for spreading a single reserved state across several files instead of a single file to enable projects to be created in one cluster state update instead of several.
 * Allows passing several `reserved state` chunks in single process call [#124574](https://github.com/elastic/elasticsearch/pull/124574)
 
 ### Fixes [elastic-cloud-serverless-03242025-fixes]
