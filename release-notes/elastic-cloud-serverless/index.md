@@ -264,7 +264,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
 * Performs query field validation for rerank task type [#137219](https://github.com/elastic/elasticsearch/pull/137219)
-* Preserve deployments with zero allocations during assignment planning [#137244](https://github.com/elastic/elasticsearch/pull/137244)
+* Preserves deployments with zero allocations during assignment planning [#137244](https://github.com/elastic/elasticsearch/pull/137244)
 * Skips dataframes when disabled [#137220](https://github.com/elastic/elasticsearch/pull/137220)
 * Refrains from creating an inference endpoint if ID is used in existing mappings [#137055](https://github.com/elastic/elasticsearch/pull/137055)
 
@@ -405,7 +405,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
 * Cohere service Model Id field is required [#136017](https://github.com/elastic/elasticsearch/pull/136017)
 * Ensures queued `AbstractRunnables` are notified when executor stops [#135966](https://github.com/elastic/elasticsearch/pull/135966)
-* Removes rate limit field from services API for `EIS` [#135838](https://github.com/elastic/elasticsearch/pull/135838)
+* Removes rate limit field from services API for EIS [#135838](https://github.com/elastic/elasticsearch/pull/135838)
 
 
 ## October 6, 2025 [serverless-changelog-10062025]
@@ -429,7 +429,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds triple-quote support to the Manual Ingest Pipeline Processor editor [#236595]({{kib-pull}}236595)
 * Introduces the German locale for Kibana in `beta` [#236903]({{kib-pull}}236903)
 * Adds an advanced option to disable filtering of file-backed volumes and CD-ROMs in the **Device Control** plugin [#236620]({{kib-pull}}236620)
-* Adds RerankRequestChunker [#130485](https://github.com/elastic/elasticsearch/pull/130485)
+* Adds `RerankRequestChunker` [#130485](https://github.com/elastic/elasticsearch/pull/130485)
 * Adds usage stats for semantic_text fields [#135262](https://github.com/elastic/elasticsearch/pull/135262)
 
 ### Fixes [serverless-changelog-10062025-fixes]
@@ -476,7 +476,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
 * Adds in-product documentation for the {{esql}} `FORK` command [#236494]({{kib-pull}}236494)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
-* Adds custom headers support for openai text embeddings [#134960](https://github.com/elastic/elasticsearch/pull/134960)
+* Adds custom headers support for OpenAI text embeddings [#134960](https://github.com/elastic/elasticsearch/pull/134960)
 * Adds ContextualAI inference service [#134933](https://github.com/elastic/elasticsearch/pull/134933)
 
 ### Fixes [serverless-changelog-09292025-fixes]
@@ -503,7 +503,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Validates {{ls}} pipeline IDs sent to Kibana APIs [#236347]({{kib-pull}}236347)
 * Adds `.reindexed-v7-ml-anomalies-*` to anomaly results template index pattern (#135270) [#135286](https://github.com/elastic/elasticsearch/pull/135286)
 * Tolerates mixed types in datafeed stats sort [#135096](https://github.com/elastic/elasticsearch/pull/135096)
-* Fixes a bug in the GET _transform API that incorrectly claims some transform configurations are missing [#134963](https://github.com/elastic/elasticsearch/pull/134963)
+* Fixes a bug in the get transform API that incorrectly claims some transform configurations are missing [#134963](https://github.com/elastic/elasticsearch/pull/134963)
 * Gracefully shuts down model deployment when node is removed from assignment routing [#134673](https://github.com/elastic/elasticsearch/pull/134673)
 
 
@@ -525,7 +525,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
 * Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
 * Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
-
 * Adds headers support for OpenAI chat completion [#134504](https://github.com/elastic/elasticsearch/pull/134504)
 % Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
 * Adds relevant attributes to search took time APM metrics [#134232](https://github.com/elastic/elasticsearch/pull/134232)
@@ -619,7 +618,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Returns 429 status when `RequestExecutorService` queue full [#134178](https://github.com/elastic/elasticsearch/pull/134178)
 * Fixes model assignment error handling and assignment explanation generation [#133916](https://github.com/elastic/elasticsearch/pull/133916)
-* Implements latency improvements for `EIS` integration [#133861](https://github.com/elastic/elasticsearch/pull/133861)
+* Implements latency improvements for EIS integration [#133861](https://github.com/elastic/elasticsearch/pull/133861)
 
 ## September 8, 2025 [serverless-changelog-09082025]
 
@@ -785,8 +784,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the default port the from interactive setup cluster address form, unless specified [#230582]({{kib-pull}}230582)
 * Fixes positioning of the **Add rule** popover on the Role Mappings page [#231551]({{kib-pull}}231551)
 
-* Updates `EIS` sparse and dense embedding max batch size to 16 [#132646](https://github.com/elastic/elasticsearch/pull/132646)
-* Improves `EIS` auth call logs and fix revocation bug [#132546](https://github.com/elastic/elasticsearch/pull/132546)
+* Updates EIS sparse and dense embedding max batch size to 16 [#132646](https://github.com/elastic/elasticsearch/pull/132646)
+* Improves `EIS` auth call logs and fixes revocation bug [#132546](https://github.com/elastic/elasticsearch/pull/132546)
 * Retries when failing to start indexer [#132048](https://github.com/elastic/elasticsearch/pull/132048)
 * Preserves lost thread context in node inference action [#132973](https://github.com/elastic/elasticsearch/pull/132973)
 
@@ -1266,7 +1265,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue with **Anomaly Explorer** where the selected Overall swimlane bucket is not respected for `viewBy jobId` in Machine Learning [#222845]({{kib-pull}}222845).
 * Fixes error handling when one or more connectors is deleted [#221958]({{kib-pull}}221958).
 
-* Fixes `NPE` when `date_buckets` aggregation is missing in the response [#128974](https://github.com/elastic/elasticsearch/pull/128974)
+* Fixes null pointer exception when `date_buckets` aggregation is missing in the response [#128974](https://github.com/elastic/elasticsearch/pull/128974)
 
 ## June 2, 2025 [serverless-changelog-06022025]
 
@@ -1734,9 +1733,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces GA support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type on {{serverless-full}}
 * Adds the ability for users to [customize prebuilt rules](https://github.com/elastic/kibana/issues/174168). Users can modify most rule parameters, export and import prebuilt rules — including customized ones — and upgrade prebuilt rules while retaining customization settings [#212761]({{kib-pull}}212761)
 
-* Propagates product use case http header to `EIS` [#124025](https://github.com/elastic/elasticsearch/pull/124025)
+* Propagates product use case HTTP header to EIS [#124025](https://github.com/elastic/elasticsearch/pull/124025)
 * Integrates with DeepSeek API [#122218](https://github.com/elastic/elasticsearch/pull/122218)
-* Adds `max.chunks` to `EmbeddingRequestChunker` to prevent `OOM` [#123150](https://github.com/elastic/elasticsearch/pull/123150)
+* Adds `max.chunks` to `EmbeddingRequestChunker` to prevent out of memory error [#123150](https://github.com/elastic/elasticsearch/pull/123150)
 * Upgrades AWS v2 SDK to 2.30.38 [#124738](https://github.com/elastic/elasticsearch/pull/124738)
 * Exposes `input_type` option at root level for `text_embedding` task type in the perform Inference API [#122638](https://github.com/elastic/elasticsearch/pull/122638)
 * Adds `ModelRegistryMetadata` to cluster state [#121106](https://github.com/elastic/elasticsearch/pull/121106)
@@ -1769,7 +1768,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Migrates `model_version` to `model_id` when parsing persistent elser inference endpoints [#124769](https://github.com/elastic/elasticsearch/pull/124769)
 * Avoids unnecessary calls to `Task#getDescription` in model download [#124527](https://github.com/elastic/elasticsearch/pull/124527)
-* Provides model_size_stats as soon as an anomaly detection job is opened [#124638](https://github.com/elastic/elasticsearch/pull/124638)
+* Provides `model_size_stats` as soon as an anomaly detection job is opened [#124638](https://github.com/elastic/elasticsearch/pull/124638)
 
 
 
@@ -1898,7 +1897,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds the useCustomDragHandle property [#210463]({{kib-pull}}210463)
 * Upcoming removal of SMS multifactor authentication method. In October, we made multifactor authentication mandatory for all users. As an additional security measure, the SMS MFA method will be removed in April. If you’re still using SMS, you will be prompted to set up a more secure MFA method, and your registered SMS MFA devices will be automatically deleted from Elastic Cloud.
 
-* Adds ELSER default endpoint for `EIS` [#122066](https://github.com/elastic/elasticsearch/pull/122066)
+* Adds ELSER default endpoint for EIS [#122066](https://github.com/elastic/elasticsearch/pull/122066)
 
 ### Fixes [elastic-cloud-serverless-02172025-fixes]
 * Fixes an issue where clicking on the name badge for a synthetics monitor on an SLO details page would lead to a page that failed to load monitor details [#210695]({{kib-pull}}210695)
