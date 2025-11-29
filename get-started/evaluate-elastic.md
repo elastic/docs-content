@@ -150,7 +150,7 @@ Most trials run for two weeks. Here's a suggested approach to maximize your eval
 
 For the first week, focus on the following activities:
 
-- Set up your deployment.
+- Set up your deployment or project.
 - Connect your first data sources.
 - Demonstrate basic capabilities.
 - Validate that Elastic can address your use case.
@@ -199,7 +199,7 @@ The following resources are recommended for all use cases:
 
 For the second week, focus on the following activities:
 
-- Add 2-3 additional data sources relevant to your use case. Refer to [Fleet integrations](/reference/fleet/manage-integrations.md) for available integrations.
+- Add a few additional data sources relevant to your use case. Refer to [Fleet integrations](/reference/fleet/manage-integrations.md) for available integrations.
 - Create dashboards that answer key stakeholder questions. Refer to [Create a dashboard](/explore-analyze/dashboards/create-dashboard.md) for guidance.
 - Focus on metrics that demonstrate clear business value. Use [Lens visualizations](/explore-analyze/visualize/lens.md) to highlight KPIs.
 - Set up alerts for critical conditions or thresholds. Refer to [Alerting](/explore-analyze/alerts-cases.md) for configuration options.

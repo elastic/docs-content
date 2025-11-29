@@ -21,7 +21,7 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
 
-:::{tip} Evaluating Elastic?
+:::{tip}
 If you're on a trial and need guidance on building a proof of concept, refer to [Evaluate Elastic](/get-started/evaluate-elastic.md).
 :::
 
