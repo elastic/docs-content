@@ -280,7 +280,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the AI Assistant Settings privilege [#239144]({{kib-pull}}239144)
 * Adds ingest pipeline processor template suggestions to the manual ingest pipeline processor editor [#236919]({{kib-pull}}236919)
 * Adds the `kibana.alert.index_pattern` field to all alerts [#239450]({{kib-pull}}239450)
-* Validates Certificate Identity provided in Cross Cluster API Key Certificate [#136299](https://github.com/elastic/elasticsearch/pull/136299)
+* Validates certificate identity from cross cluster credentials [#136299](https://github.com/elastic/elasticsearch/pull/136299)
 
 ### Fixes [elastic-security-10272025-fixes]
 * Fixes missing accessibility announcements in form rows [#240132]({{kib-pull}}240132)
@@ -593,7 +593,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures mapped fields are remembered across simulations [#233799]({{kib-pull}}233799)
 * Adds time series telemetry in xpack usage [#134214](https://github.com/elastic/elasticsearch/pull/134214)
 
-* Adds InMemoryClonedSecureSettings for keeping temporary secure settings loaded [#134349](https://github.com/elastic/elasticsearch/pull/134349)
+* Add `LoadedSecureSettings` for keeping temporary secure settings loaded [#134349](https://github.com/elastic/elasticsearch/pull/134349)
 
 ### Fixes [serverless-changelog-09152025-fixes]
 
@@ -777,7 +777,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes the default port the from interactive setup cluster address form, unless specified [#230582]({{kib-pull}}230582)
 * Fixes positioning of the **Add rule** popover on the Role Mappings page [#231551]({{kib-pull}}231551)
 
-* Fixes an ExtraHop Qualys GAV bug that prevented executing the ILM policy delete step [#132387](https://github.com/elastic/elasticsearch/pull/132387)
+* Adds `manage`, `create_index`, `read`, `index`, `write`, `delete`, permission for third party agent indices `kibana_system` [#132387](https://github.com/elastic/elasticsearch/pull/132387)
 
 ## August 11, 2025 [serverless-changelog-08112025]
 
@@ -1138,7 +1138,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes **Discard** button state change logic for toggles [#223493]({{kib-pull}}223493)
 * Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
 
-* Fixes ILM deletion step error permissions for cloud security posture [#128634](https://github.com/elastic/elasticsearch/pull/128634)
 
 ## June 17, 2025 [serverless-changelog-06172025]
 
@@ -1211,10 +1210,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Implements SAML custom attributes support in the Identity Provider plugin [#128176](https://github.com/elastic/elasticsearch/pull/128176)
 * Fixes unsupported privileges error message during role and API key creation [#128858](https://github.com/elastic/elasticsearch/pull/128858)
 
-* Fixes unsupported privileges error message during role and API key crea… [#128858](https://github.com/elastic/elasticsearch/pull/128858)
+* Fixes unsupported privileges error message during role and API key creation [#128858](https://github.com/elastic/elasticsearch/pull/128858)
 * Adds transport version support for IDP_CUSTOM_SAML_ATTRIBUTES_ADDED_8_19 [#128798](https://github.com/elastic/elasticsearch/pull/128798)
 * Grants `kibana_system` reserved role access to "all" privileges to `.adhoc.alerts*` and `.internal.adhoc.alerts*` indices [#127321](https://github.com/elastic/elasticsearch/pull/127321)
-* Checks TooComplex exception for HasPrivileges body [#128870](https://github.com/elastic/elasticsearch/pull/128870)
+* Checks `TooComplex` exception for `HasPrivileges` body [#128870](https://github.com/elastic/elasticsearch/pull/128870)
 * Adds "extension" attribute validation to IdP SPs [#128805](https://github.com/elastic/elasticsearch/pull/128805)
 
 ### Fixes [serverless-changelog-06092025-fixes]

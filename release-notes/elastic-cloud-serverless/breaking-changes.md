@@ -16,7 +16,17 @@ products:
 
 ## March 10, 2025 [serverless-changelog-03102025-breaking]
 
-* Drops `TLS_RSA` ciphers from default cipher suites for JDK 24 [#123600](https://github.com/elastic/elasticsearch/pull/123600)
+:::{dropdown} Drop `TLS_RSA` cipher support for JDK 24
+
+ This change removes `TLS_RSA` ciphers from the list of default supported ciphers, for {{es}} deployments running on JDK 24.
+ 
+ **Impact:**
+ 
+ The dropped ciphers are `TLS_RSA_WITH_AES_256_GCM_SHA384`, `TLS_RSA_WITH_AES_128_GCM_SHA256`, `TLS_RSA_WITH_AES_256_CBC_SHA256`, `TLS_RSA_WITH_AES_128_CBC_SHA256`, `TLS_RSA_WITH_AES_256_CBC_SHA`, and `TLS_RSA_WITH_AES_128_CBC_SHA`.
+TLS connections to {{es}} using these ciphers will no longer work.
+Configure your clients to use one of supported cipher suites.
+
+For more information, view [#123600](https://github.com/elastic/elasticsearch/pull/123600).
 
 ## June 23, 2025 [serverless-changelog-06232025]
 
