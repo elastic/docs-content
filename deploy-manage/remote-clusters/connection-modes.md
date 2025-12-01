@@ -19,9 +19,8 @@ Connection modes work independently of [security models](./security-models.md). 
 
 The choice between proxy and sniff mode depends on your network architecture and deployment type.  
 
-- **Self-managed clusters:** If direct connections on the publish addresses between {{es}} nodes in both clusters are possible, you can use sniff mode. If direct connectivity is difficult to implement—for example, when clusters are separated by NAT, firewalls, or containerized environments—you can place a reverse proxy or load balancer in front of the remote cluster and use proxy mode instead.  
-
-- **Managed environments ({{ece}}, {{ech}}, {{eck}}):** Direct node-to-node connectivity is generally not feasible, so these deployments always rely on the proxy connection mode.
+- **Self-managed clusters:** If the local cluster can reach the publish addresses of the remote cluster’s nodes, you can use sniff mode. If direct connectivity is difficult to implement—for example, when clusters are separated by NAT, firewalls, or in containerized environments—you can place a reverse proxy or load balancer in front of the remote cluster and use proxy mode instead.
+- **Managed environments ({{ece}}, {{ech}}, {{eck}}):** Because node publish addresses are not exposed externally in these platforms, they usually rely on the proxy connection mode when used as remote clusters.
 
 The following sections describe each method in more detail.
 
