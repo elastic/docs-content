@@ -72,7 +72,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Iterates directly over `RoutingNode` contents to reduce allocation overhead [#137694]({{es-pull}}137694)
 * Speeds up sorts that use secondary sort fields [#137533]({{es-pull}}137533)
 * Updates HDFS version references in the documentation [#137576]({{es-pull}}137576)
-* Reduces worst-case Inference API latency by removing an additional 50 ms delay for non–rate-limited requests [#136167]({{es-pull}}136167)
+* Reduces worst-case inference API latency by removing an additional 50 ms delay for non–rate-limited requests [#136167]({{es-pull}}136167)
 * Updates {{esql}} documentation to cover newly supported data types [#137726]({{es-pull}}137726)
 * Uses the `DEFAULT_UNSORTABLE` topN encoder for `TSID_DATA_TYPE` in {{esql}} to improve sorting behavior [#137706]({{es-pull}}137706)
 * Transitions Elastic Indexing Service auth polling to a single-node persistent task for improved reliability [#136713]({{es-pull}}136713)
@@ -300,7 +300,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue where operators couldn’t be removed after selection in the **Add rule exception** flyout [#236051]({{kib-pull}}236051)
 * Fixes `react-query` ID collision issues [#240517]({{kib-pull}}240517)
 * Updates GenAI Settings to reflect the selected `AI Assistants Visibility` value from the header selector on the Settings page [#239555]({{kib-pull}}239555)
-* Fixes the Inference endpoints UI to ensure the list loads correctly when the provider is custom [#240189]({{kib-pull}}240189)
+* Fixes the inference endpoints UI to ensure the list loads correctly when the provider is custom [#240189]({{kib-pull}}240189)
 * Fixes the URL in **Disk Usage** alerting rules [#240279]({{kib-pull}}240279)
 * Fixes data preview metadata pop-up display issues by adding a tooltip and copy button to handle long IDs [#239768]({{kib-pull}}239768)
 * Fixes the **Agents** and **Playground** icons in the side navigation to render correctly in dark mode [#240475]({{kib-pull}}240475)
@@ -424,7 +424,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds the ability to discover privileged users from the Entity Analytics Okta integration [#237129]({{kib-pull}}237129)
 * Allows you to select which AI Assistant to show in the Elastic header; moves the **AI Assistant visibility** setting to the **GenAI Settings** page [#233727]({{kib-pull}}233727)
 * Adds a new `update_all` endpoint for product documentation management [#231884]({{kib-pull}}231884)
-* Adds an icon for Contextual AI in the AI Connector and Inference endpoint creation UI [#236951]({{kib-pull}}236951)
+* Adds an icon for Contextual AI in the AI Connector and inference endpoint creation UI [#236951]({{kib-pull}}236951)
 * Enables the new background search experience for improved performance [#236818]({{kib-pull}}236818)
 * Adds triple-quote support to the Manual Ingest Pipeline Processor editor [#236595]({{kib-pull}}236595)
 * Introduces the German locale for Kibana in `beta` [#236903]({{kib-pull}}236903)
@@ -1353,7 +1353,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes inability to clear Document ID in data view field editor preview [#220891]({{kib-pull}}220891)
 * Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
 * Changes the AI Connector description [#221154]({{kib-pull}}221154)
-
 * Checks the transform update index against its alias during updates [#124825](https://github.com/elastic/elasticsearch/pull/124825)
 * Uses internal user for internal inference action [#128327](https://github.com/elastic/elasticsearch/pull/128327)
 
@@ -1537,7 +1536,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for Windows MSI commands for Fleet and Elastic Agent installations [#217217]({{kib-pull}}217217)
 * Reuses shared integration policies when duplicating agent policies in Fleet [#217872]({{kib-pull}}217872)
 * Enables adding badges to all list items in the side navigation except the section header [#217301]({{kib-pull}}217301)
-
 * Adds endpoint creation validation to `ElasticsearchInternalService` [#123044](https://github.com/elastic/elasticsearch/pull/123044)
 * Adds support for Amazon Bedrock Cohere task settings [#126493](https://github.com/elastic/elasticsearch/pull/126493)
 
@@ -1617,7 +1615,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes unenroll inactive agent tasks if the first set of agents returned is equal to `UNENROLLMENT_BATCH_SIZE` in Fleet [#216283]({{kib-pull}}216283)
 * Supports integrations having secrets with multiple values in Fleet [#216918]({{kib-pull}}216918)
 * Adds overlay to the add/edit integration page in Fleet [#217151]({{kib-pull}}217151)
-
 * Prevents get datafeeds stats API from returning an error when local tasks are slow to stop [#125477](https://github.com/elastic/elasticsearch/pull/125477)
 * Adds bounded window to inference models for rescoring to ensure a positive score range [#125694](https://github.com/elastic/elasticsearch/pull/125694)
 
@@ -1634,7 +1631,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates API key permissions for refreshing data view API for Elastic Security Serverless [#215738]({{kib-pull}}215738)
 * Adds the ability to limit notes per document instead of globally in Elastic Security Serverless [#214922]({{kib-pull}}214922)
 * Adds the ability to add badges to subitems in the side navigation [#214854]({{kib-pull}}214854)
-
 * Checks if the anomaly results index has been rolled over (#125404) [#125786](https://github.com/elastic/elasticsearch/pull/125786)
 * Adds common rerank options to the perform inference API [#125239](https://github.com/elastic/elasticsearch/pull/125239)
 
@@ -1664,7 +1660,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures proper permissions for viewing Machine Learning nodes [#215503]({{kib-pull}}215503)
 * Adds a custom link color option for the top banner [#214241]({{kib-pull}}214241)
 * Updates the task state version after execution [#215559]({{kib-pull}}215559)
-
 * Returns a conflict status code if the model deployment is stopped by a user [#125204](https://github.com/elastic/elasticsearch/pull/125204)
 
 
@@ -1710,7 +1705,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes regression that caused the cases actions to disappear from the detections engine alerts table bulk actions menu [#215111]({{kib-pull}}215111)
 * Changes "Close project" to "Log out" in nav menu in serverless mode [#211463]({{kib-pull}}211463)
 * Fixes search profiler index reset field when query is changed [#215420]({{kib-pull}}215420)
-
 * Fixes `AlibabaCloudSearchCompletionAction` not accepting `ChatCompletionInputs` [#125023](https://github.com/elastic/elasticsearch/pull/125023)
 * Sets default similarity for Cohere model to cosine [#125370](https://github.com/elastic/elasticsearch/pull/125370)
 
@@ -1737,7 +1731,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Integrates with DeepSeek API [#122218](https://github.com/elastic/elasticsearch/pull/122218)
 * Adds `max.chunks` to `EmbeddingRequestChunker` to prevent out of memory error [#123150](https://github.com/elastic/elasticsearch/pull/123150)
 * Upgrades AWS v2 SDK to 2.30.38 [#124738](https://github.com/elastic/elasticsearch/pull/124738)
-* Exposes `input_type` option at root level for `text_embedding` task type in the perform Inference API [#122638](https://github.com/elastic/elasticsearch/pull/122638)
+* Exposes `input_type` option at root level for `text_embedding` task type in the perform inference API [#122638](https://github.com/elastic/elasticsearch/pull/122638)
 * Adds `ModelRegistryMetadata` to cluster state [#121106](https://github.com/elastic/elasticsearch/pull/121106)
 
 
@@ -1765,7 +1759,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Supports `date_nanos` in `BUCKET` in the {{esql}} editor [#213319]({{kib-pull}}213319)
 * Fixes appearance of warnings in the {{esql}} editor [#213685]({{kib-pull}}213685)
 * Makes the Apply time range switch visible in the Job selection flyout when opened from the Anomaly Explorer [#213382]({{kib-pull}}213382)
-
 * Migrates `model_version` to `model_id` when parsing persistent elser inference endpoints [#124769](https://github.com/elastic/elasticsearch/pull/124769)
 * Avoids unnecessary calls to `Task#getDescription` in model download [#124527](https://github.com/elastic/elasticsearch/pull/124527)
 * Provides `model_size_stats` as soon as an anomaly detection job is opened [#124638](https://github.com/elastic/elasticsearch/pull/124638)
@@ -1784,7 +1777,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces globe projection for Dashboards and visualizations [#212437]({{kib-pull}}212437)
 * Registers a custom integrations search provider in Fleet [#213013]({{kib-pull}}213013)
 * Adds support for searchAfter and PIT (point-in-time) parameters in the Get Agents List API in Fleet [#213486]({{kib-pull}}213486)
-
 * Adds support for specifying embedding type to Jina AI service settings [#121548](https://github.com/elastic/elasticsearch/pull/121548)
 
 ### Fixes [elastic-cloud-serverless-03102025-fixes]
@@ -1813,7 +1805,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue in solution project navigation where panels sometimes failed to toggle closed [#211852]({{kib-pull}}211852)
 * Updates wording for options in the sortBy dropdown component [#206464]({{kib-pull}}206464)
 * Allows EU hooks hostname in the Torq connector for Elastic Security Serverless [#212563]({{kib-pull}}212563)
-
 * Retries on streaming errors [#123076](https://github.com/elastic/elasticsearch/pull/123076)
 * Fixes output stream ordering in `InferenceActionProxy` [#124225](https://github.com/elastic/elasticsearch/pull/124225)
 
@@ -1852,7 +1843,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Preserves user-made chart configurations when changing the query if the actions are compatible with the current chart, such as adding a "where" filter or switching compatible chart types [#210780]({{kib-pull}}210780)
 * Adds effects when clicking the **Favorite** button in the list of dashboards and {{esql}} queries, and adds the button to breadcrumb trails [#201596]({{kib-pull}}201596)
 * Enables `/api/streams/{id}/_group` endpoints for GroupStreams [#210114]({{kib-pull}}210114)
-
 * Adds endpoint creation validation to `ElasticInferenceService` [#117642](https://github.com/elastic/elasticsearch/pull/117642)
 * Adds integration for VoyageAI embeddings and rerank models [#122134](https://github.com/elastic/elasticsearch/pull/122134)
 
@@ -1872,7 +1862,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows deploying a model after a failed deployment in Machine Learning [#211459]({{kib-pull}}211459)
 * Ensures the members array is unique for GroupStreamDefinitions [#210089]({{kib-pull}}210089)
 * Improves function search for easier navigation and discovery [#210437]({{kib-pull}}210437)
-
 * Updates to allow using Cohere binary embedding response in semantic search queries [#121827](https://github.com/elastic/elasticsearch/pull/121827)
 * Adds enterprise license check to inference action for semantic text fields [#122293](https://github.com/elastic/elasticsearch/pull/122293)
 * Adds `ElasticInferenceServiceCompletionServiceSettings` [#123155](https://github.com/elastic/elasticsearch/pull/123155)
@@ -1896,7 +1885,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Trained models: Replaces the **Download** button by extending the deploy action [#205699]({{kib-pull}}205699)
 * Adds the useCustomDragHandle property [#210463]({{kib-pull}}210463)
 * Upcoming removal of SMS multifactor authentication method. In October, we made multifactor authentication mandatory for all users. As an additional security measure, the SMS MFA method will be removed in April. If you’re still using SMS, you will be prompted to set up a more secure MFA method, and your registered SMS MFA devices will be automatically deleted from Elastic Cloud.
-
 * Adds ELSER default endpoint for EIS [#122066](https://github.com/elastic/elasticsearch/pull/122066)
 
 ### Fixes [elastic-cloud-serverless-02172025-fixes]
@@ -1930,7 +1918,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates install snippets to include all platforms [#210249]({{kib-pull}}210249)
 * Updates component templates with deprecated setting [#210200]({{kib-pull}}210200)
 * Hides saved query controls in AIOps [#210556]({{kib-pull}}210556)
-* Fixes unattended Transforms in integration packages not automatically restarting after reauthorizing [#210217]({{kib-pull}}210217)
+* Fixes unattended transforms in integration packages not automatically restarting after reauthorizing [#210217]({{kib-pull}}210217)
 * Reinstates switch to support generating public URLs for embed when supported [#207383]({{kib-pull}}207383)
 * Provides a fallback view to recover from Stack Alerts page filters bar errors [#209559]({{kib-pull}}209559)
 
