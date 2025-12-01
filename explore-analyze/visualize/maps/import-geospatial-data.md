@@ -50,9 +50,8 @@ You can upload a file and import it into an {{es}} index with latitude and longi
 **Upload file** indexes GeoJSON features in {{es}}, creating a document for each feature.
 
 ::::{note}
-GeoJSON feature coordinates must be in EPSG:4326 coordinate reference system..
+GeoJSON feature coordinates must be in EPSG:4326 coordinate reference system. For data using other coordinate systems, refer to our [conversion instructions](/explore-analyze/visualize/maps/maps-clean-data.md#_convert_to_wgs84_coordinate_reference_system). 
 ::::
-
 
 1. [Create a new map](maps-getting-started.md#maps-create).
 2. Click **Add layer**.
