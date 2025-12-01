@@ -13,10 +13,9 @@ For more information, check the [{{ech}} documentation](/deploy-manage/deploy/el
 **Serverless projects**
 
 * You can have three active {{serverless-short}} projects at a time.
-* Search Power is limited to 100. This setting only exists in {{es-serverless}} projects
-* Search Boost Window is limited to 7 days. This setting only exists in {{es-serverless}} projects
+* Search Power is limited to 100 and Search Boost Window is limited to 7 days. These [settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings) apply only to {{es-serverless}} projects.
 * Scaling is limited for {{serverless-short}} projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
-* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
+* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials.
 
 **Remove limitations**
 
