@@ -668,7 +668,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes responsiveness issues in the Stream management code editor area [#232630]({{kib-pull}}232630)
 * Fixes an empty tooltip issue when creating tags [#232853]({{kib-pull}}232853)
 * Fixes an issue where the **Create tag** modal wouldn't close properly [#233012]({{kib-pull}}233012)
-* Fails early in pre-8.11 indices for `semantic_text` [#133080](https://github.com/elastic/elasticsearch/pull/133080)
+* Disallows creating `semantic_text` fields in indices created prior to 8.11.0 [#133080](https://github.com/elastic/elasticsearch/pull/133080)
 
 ## August 28, 2025 [serverless-changelog-08282025]
 
@@ -950,7 +950,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes time range handling in embedded anomaly swim lanes [#225803]({{kib-pull}}225803)
 * Adds discernible text to the **Refresh data preview** button [#225816]({{kib-pull}}225816)
 * Improves error handling in **Search Playground** when context limit is exceeded using Elastic Managed LLM [#225360]({{kib-pull}}225360)
-* Adds [synonym] return empty ruleset [#131032](https://github.com/elastic/elasticsearch/pull/131032)
+* Fixes `GET _synonyms` API to include rulesets with empty rules [#131032](https://github.com/elastic/elasticsearch/pull/131032)
 * Prevents field caps from using semantic queries as index filters [#131111](https://github.com/elastic/elasticsearch/pull/131111)
 
 ## July 7, 2025 [serverless-changelog-07072025]
@@ -1121,7 +1121,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds simplified linear retriever [#129200](https://github.com/elastic/elasticsearch/pull/129200)
 * Adds `index_options` to `semantic_text` field mappings [#119967](https://github.com/elastic/elasticsearch/pull/119967)
 * Adds simplified rrf retriever [#129659](https://github.com/elastic/elasticsearch/pull/129659)
-* Fixes simplified linear & rrf retrievers - return error on empty fields param [#129962](https://github.com/elastic/elasticsearch/pull/129962)
+* Simplified linear and RRF retrievers - Return error on empty fields param [#129962](https://github.com/elastic/elasticsearch/pull/129962)
 
 ## June 17, 2025 [serverless-changelog-06172025]
 
@@ -1212,7 +1212,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue with the OpenAI connector not using the action proxy configuration for all subactions in Machine Learning [#219617]({{kib-pull}}219617).
 * Fixes an issue with **Anomaly Explorer** where the selected Overall swimlane bucket is not respected for `viewBy jobId` in Machine Learning [#222845]({{kib-pull}}222845).
 * Fixes error handling when one or more connectors is deleted [#221958]({{kib-pull}}221958).
-* Adds semantic_text match_all with highlighter [#128702](https://github.com/elastic/elasticsearch/pull/128702)
+* Fix missing highlighting in `match_all` queries for `semantic_text` fields [#128702](https://github.com/elastic/elasticsearch/pull/128702)
 
 ## June 2, 2025 [serverless-changelog-06022025]
 
@@ -1289,7 +1289,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes inability to clear Document ID in data view field editor preview [#220891]({{kib-pull}}220891)
 * Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
 * Changes the AI Connector description [#221154]({{kib-pull}}221154)
-* Fixes named writeable for `rulequeryrankdoc` [#128153](https://github.com/elastic/elasticsearch/pull/128153)
+* Adds `NamedWriteable` for `RuleQueryRankDoc` [#128153](https://github.com/elastic/elasticsearch/pull/128153)
 
 ## May 19, 2025 [serverless-changelog-05192025]
 
@@ -1777,7 +1777,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Trained models: Replaces the **Download** button by extending the deploy action [#205699]({{kib-pull}}205699)
 * Adds the useCustomDragHandle property [#210463]({{kib-pull}}210463)
 * Upcoming removal of SMS multifactor authentication method. In October, we made multifactor authentication mandatory for all users. As an additional security measure, the SMS MFA method will be removed in April. If you’re still using SMS, you will be prompted to set up a more secure MFA method, and your registered SMS MFA devices will be automatically deleted from Elastic Cloud.
-* Adds [inference api] rename model_id prop to model in eis sparse inference request body [#122272](https://github.com/elastic/elasticsearch/pull/122272)
+* Renames `model_id` property to `model` in EIS sparse inference API request body [#122272](https://github.com/elastic/elasticsearch/pull/122272)
 
 ### Fixes [elastic-cloud-serverless-02172025-fixes]
 * Fixes an issue where clicking on the name badge for a synthetics monitor on an SLO details page would lead to a page that failed to load monitor details [#210695]({{kib-pull}}210695)
