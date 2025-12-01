@@ -1,4 +1,4 @@
-By default, the remote cluster server interface is deactivated on ECK-managed clusters. To use the API key–based security model for cross-cluster connections, you must first enable it on the remote {{es}} cluster:
+By default, the remote cluster server interface is deactivated on ECK-managed clusters. To use the API key–based security model for cross-cluster connections, you must first enable it on the remote {{es}} cluster by setting `spec.remoteClusterServer.enabled: true`:
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1

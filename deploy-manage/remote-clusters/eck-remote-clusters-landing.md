@@ -29,7 +29,7 @@ To use CCS or CCR, your {{es}} clusters must meet the following criteria:
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
 
-* Network connectivity between the clusters. Review the [connection modes](./remote-cluster-connection-modes.md) and the [security models](./security-models.md) to understand the connectivity requirements for your specific setup. Remote cluster connections can operate through Kubernetes services, load balancers, reverse proxies, or other intermediaries, as long as the local cluster can reach the remote cluster’s endpoint.
+* Network connectivity between the clusters. Review the [connection modes](./connection-modes.md) and the [security models](./security-models.md) to understand the connectivity requirements for your specific setup. Remote cluster connections can operate through Kubernetes services, load balancers, reverse proxies, or other intermediaries, as long as the local cluster can reach the remote cluster’s endpoint.
 
 * The remote clusters feature on ECK requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
 
@@ -39,7 +39,7 @@ Use one of the following guides depending on how the local and remote clusters a
 
 Connect from ECK-managed clusters:
 
-  - [Connect to {{es}} clusters in the same ECK environment](./eck-remote-clusters-same-eck.md)
+  - [Connect to {{es}} clusters in the same ECK environment](./eck-remote-clusters.md)
   - [Connect to external {{es}} clusters or deployments](./eck-remote-clusters-to-external.md)
 
 Connect to ECK-managed clusters from external clusters:
