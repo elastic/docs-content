@@ -144,7 +144,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.1.8-features-enhancements]
 * Improves the alert details flyout by saving the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571).
-* Improves the alert details flyout by saving the selected prevalence time to local storage [#243543]({{kib-pull}}243543).
+* Ignores `resource_already_exists_exception` for value list creation hook [#243642]({{kib-pull}}243642).
 
 ### Fixes [elastic-security-9.1.8-fixes]
 * Fixes an issue where the "Top <_n_>" popover stayed open after opening the create case flyout. It now closes automatically when the new case flyout opens [#242045]({{kib-pull}}242045).
