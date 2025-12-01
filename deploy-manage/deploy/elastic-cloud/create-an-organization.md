@@ -41,7 +41,7 @@ A deployment lets you explore Elastic solutions for Search, Observability, and S
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
-**Three {{serverless-short}} project**
+**Three {{serverless-short}} projects**
 
 {{serverless-short}} projects package {{stack}} features by type of solution:
 
@@ -62,6 +62,19 @@ For more information, check the [{{serverless-short}} documentation](serverless.
 
 Start by checking out some common approaches for [moving data into {{ecloud}}](/manage-data/ingest.md).
 
+### Remove trial limitations
+
+Subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md) for the following benefits:
+
+* Increased memory or storage for deployment components, such as {{es}} clusters, machine learning nodes, and APM server.
+* As many deployments and projects as you need.
+* Third availability zone for your deployments.
+* Access to additional features, such as {{ccs}} and {{ccr}}.
+
+You can subscribe to {{ecloud}} at any time during your trial.
+[Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) starts when you subscribe.
+To maximize the benefits of your trial, subscribe at the end of the free period.
+To monitor charges, anticipate future costs, and adjust your usage, check your [account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
 
 ### Maintain access to your trial projects and data [general-sign-up-trial-what-happens-at-the-end-of-the-trial]
 

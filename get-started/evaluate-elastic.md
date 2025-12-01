@@ -34,13 +34,13 @@ During the trial, deployments have size and capacity limitations. You can increa
 If you prefer to set up {{es}} and {{kib}} in Docker for local development or testing, refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). By default, new installations have a Basic license that never expires. To explore all the available solutions and features, start a 30-day free trial by following the instructions in [](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).  
 :::
 
-
 ## Trial limitations
 
 While your trial includes full feature access, be aware of these limitations:
 
 :::{include} ../deploy-manage/deploy/_snippets/trial-limitations.md
 :::
+
 For detailed information about features and licensing:
 
 - [License and support levels](/deploy-manage/license.md): Understand the different license tiers and what they include.
