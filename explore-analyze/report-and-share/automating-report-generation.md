@@ -242,7 +242,7 @@ Save time by setting up a recurring task that automatically generates reports an
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3`: (Optional) Enter additional details for email notifications:
 
-    * **Cc**: Enter one more more email addresses. Recipients will get a copy of the report, be included on all replies, and can view all other recipients' addresses.
+    * **Cc**: Enter one or more email addresses. Recipients will get a copy of the report, be included on all replies, and have view access to all other recipients' addresses.
     * **Bcc**: Enter one more more email addresses. Recipients will get a copy of the report, but won't be included on all replies and can't see the other recipients' addresses.
     * **Subject**: Keep the default email subject, or enter your own. 
     * **Message**: Keep the default email message, or enter your own. 
