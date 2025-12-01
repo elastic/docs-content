@@ -17,5 +17,3 @@ Unlike Elastic APM backend agents which monitor requests and responses, the RUM 
 
 You will be able to measure metrics such as "Time to First Byte", `domInteractive`, and `domComplete` which helps you discover performance issues within your client-side application as well as issues that relate to the latency of your server-side application.
 
-::::{note}
-Elastic APM RUM is *not* compatible with [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md).
