@@ -131,7 +131,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
 * Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output. This may have limited event throughput on extremely busy endpoints.
 * Improves the reliability of local {{elastic-defend}} administrative shell commands. In rare cases, a command could fail to execute due to issues with interprocess communication.
-* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{agent}} connectivity changes no longer alter the host isolation state.
 * Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
 * Fixes an issue which could cause {{elastic-defend}} to improperly report success when self-healing rollback attempted to terminate a process with an active debugger on Windows.
 * Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') was logged.
@@ -205,7 +205,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
 * Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
 * Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
-* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{agent}} connectivity changes no longer alter the host isolation state.
 * Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
 * Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') would be logged.
 
@@ -362,7 +362,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
 * Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
 * Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.
-* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{elastic-agent}} connectivity changes no longer alter the host isolation state.
+* Fixes an issue in {{elastic-defend}} where host isolation could auto-release incorrectly. Host isolation now only releases when {{elastic-endpoint}} becomes orphaned. Intermittent {{agent}} connectivity changes no longer alter the host isolation state.
 * Improves the reliability of local {{elastic-defend}} administrative shell commands. In rare cases, a command could fail to execute due to issue with interprocess communication.
 * Fixes an issue where {{elastic-defend}} would incorrectly calculate throughput capacity when sending documents to output.  This may have limited event throughput on extremely busy endpoints.
 * Fixes an issue in {{elastic-defend}} installation logging where only the first character of install paths (usually 'C') would be logged.
