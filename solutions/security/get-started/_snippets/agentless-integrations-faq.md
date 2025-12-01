@@ -77,3 +77,7 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 ## Can agentless integrations use a specific range of static IP addresses for configuring allow and deny rules for traffic?
 
 No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
+
+## Do I need an Elastic-hosted Fleet Server or Fleet Service in order to use agentless integrations
+
+Yes, Agentless integrations are available only on Elastic Cloud Hosted (and requires Fleet Server / Integration Server to be enabled) & Serverless. 
