@@ -1,5 +1,5 @@
 ---
-navigation_title: Run Elastic Agents in an air-gapped environment
+navigation_title: Air-gapped environments
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
 products:
