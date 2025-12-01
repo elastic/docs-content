@@ -21,8 +21,9 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 
 **General AutoOps questions**
 * [What does AutoOps do?](#what-is-autoops)
-* [Where is AutoOps available?](#autoops-deployment-types)
+* [Is AutoOps available in all deployment types?](#autoops-deployment-types)
 * [Why can't I see AutoOps in some deployments and projects?](#cant-see-autoops)
+* [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [How is AutoOps licensed?](#autoops-license)
 * [Does AutoOps monitor the entire {{stack}}?](#autoops-monitoring)
 * [Can AutoOps automatically resolve issues?](#autoops-issue-resolution)
@@ -38,12 +39,11 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 
 **Setting up AutoOps for self-managed clusters**
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
-* [Can I use AutoOps for my clusters if my environment is air-gapped?](#autoops-air-gapped)
-* [Can I use macOS to install {{agent}} for this feature?](#macos-install)
+* [Can I use macOS to set up AutoOps for my self-managed clusters?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 
 **Collected metrics and data in AutoOps for self-managed clusters**
-* [Where are metrics stored in AutoOps for self-managed clusters?](#autoops-metrics-storage)
+* [Where are metrics stored in AutoOps for self-managed clusters?](#sm-autoops-metrics-storage)
 * [What information does {{agent}} gather from my cluster?](#extracted-info)
 * [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
 * [Can I view the data gathered by {{agent}}?](#data-viewing-config)
@@ -53,11 +53,15 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 $$$what-is-autoops$$$**What does AutoOps do?**
 :   AutoOps for {{es}} simplifies cluster management by providing performance recommendations, resource utilization and cost insights, real-time issue detection, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps provides operational and monitoring recommendations that reduce administration time and hardware costs.
 
-$$$autoops-deployment-types$$$**Where is AutoOps available?**
-:   In the [regions](ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) through [Cloud Connect](/deploy-manage/cloud-connect.md). 
+$$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
+:   :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
+::: 
 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
-AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
+:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
+
+$$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
+:   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
 :   For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
@@ -91,7 +95,7 @@ $$$additional-payment$$$ **Does AutoOps for self-managed clusters incur addition
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
 
-    You can [choose the CSP region where your data is stored](/deploy-manage/monitor/autoops/ec-autoops-regions.md#autoops-for-self-managed-clusters-regions).
+    You can [choose the CSP region where your data is stored](#sm-autoops-metrics-storage).
 
 $$$deployment-types$$$ **Which deployment types can be connected to AutoOps through Cloud Connect?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment, both on-premise and in private cloud environments.
@@ -102,11 +106,8 @@ $$$cc-autoops-ech$$$ **Can I use Cloud Connect to connect my {{ech}} clusters to
 :   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
-$$$autoops-air-gapped$$$ **Can I use AutoOps for my clusters if my environment is air-gapped?**
-:   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
-
-$$$macos-install$$$ **Can I use macOS to install {{agent}} for this feature?**
-:   macOS is not a supported platform for installing {{agent}} and connecting your clusters to AutoOps.
+$$$macos-install$$$ **Can I use macOS to install {{agent}} to connect my self-managed cluster to AutoOps?**
+:   No, macOS is not a supported platform for installing {{agent}} and connecting a self-managed cluster to AutoOps. Refer to [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) for a list of supported platforms. You can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 
 $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?**
 :   You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
@@ -117,7 +118,7 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 
 ### Collected metrics and data in AutoOps for self-managed clusters
 
-$$$autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for self-managed clusters?**
+$$$sm-autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for self-managed clusters?**
 :   You can choose where to store your metrics from the following AWS regions:
 
     :::{include} ../_snippets/autoops-cc-regions.md

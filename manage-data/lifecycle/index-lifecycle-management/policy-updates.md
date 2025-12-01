@@ -54,7 +54,7 @@ To update a lifecycle policy:
 
 1. For the policy that you want to update, select the `edit` icon in the **Actions** menu.
 
-    Note that from the **Actions** menu you can also choose to add the ILM policy to any existing index templates.
+    From the **Actions** menu you can also choose to add the ILM policy to any existing index templates.
 
 1. On the **Edit policy** page, enable any {{ilm-init}} phases as needed, and expand **Advanced settings** to adjust the [index lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) configured for that phase.
 :::

@@ -94,7 +94,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds architecture of PE file in Windows malware alerts to {{elastic-defend}}.
 * Adds the `Endpoint.state.orphaned` indicator to {{elastic-defend}} policy response.
 * Adds {{elastic-defend}} support for cluster migration.
-* Adds firewall anti-tamper plug-in to protect {{elastic-endpoint}} processes against network blocking via Windows Firewall.
+* Adds firewall anti-tamper plug-in to protect {{elastic-endpoint}} processes against network blocking through Windows Firewall.
 * Includes `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields to {{elastic-defend}} by default to Windows image load and process events, if the information can be retrieved.
 * Improves {{elastic-defend}} by integrating a new Event Tracing for Windows (ETW) provider (Microsoft-Windows-Ldap-Client) to create new event types that prebuilt endpoint rules can use to detect malicious LDAP activity.
 * Improves reporting reliability and accuracy of {{elastic-defend}}'s {{es}} connection.
@@ -124,7 +124,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Simplifies the Cloud Security Posture Misconfigurations data view by removing redundancy in the index pattern definition [#227995]({{kib-pull}}227995).
 * Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin.
 * Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within Malware Protections to avoid invalid watchdog firings.
-* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on busy Windows systems.
 * Adds support in {{elastic-defend}} for installing eBPF event probes on Linux endpoints when cgroup2 is mounted in a non-standard location or not mounted at all.
 * Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
 * Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
@@ -156,7 +156,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes multiple issues searching installed rules by allowing partial matches on rule name and improving special character support [#237496]({{kib-pull}}237496).
 * Fixes an issue where rule exception operators could not be cleared when editing a rule exception [#236051]({{kib-pull}}236051).
 * Fixes an {{elastic-defend}} issue on Linux by preventing unnecessary locking within malware protection to avoid invalid watchdog firings.
-* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on very busy Windows systems.
+* Fixes issues that could sometimes cause crashes of the {{elastic-defend}} user-mode process on busy Windows systems.
 * Fixes multiple {{elastic-defend}} issues in malware protection for Linux where a deadlock could sometimes occur when containers and autofs were both active.
 * Fixes CVE-2025-37735 ([ESA-2025-23](https://discuss.elastic.co/t/elastic-defend-8-19-6-9-1-6-and-9-2-0-security-update-esa-2025-23/383272)) in {{elastic-defend}} on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
 * Fixes an {{elastic-defend}} bug in Linux event collection where some long-running processes were not enriched.
@@ -171,7 +171,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.1.6-fixes]
 * Fixes {{elastic-endpoint}} artifacts spaces migration to ensure all artifacts are processed [#238740]({{kib-pull}}238740).
-* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin. [#237796]({{kib-pull}}237796).
+* Fixes an issue causing "missing authentication credentials" warnings in `TelemetryConfigWatcher` and `PolicyWatcher`, reducing unnecessary warning log entries in the `securitySolution` plugin [#237796]({{kib-pull}}237796).
+* Prioritizes connector `defaultModel` over stored conversation model [#237947]({{kib-pull}}237947).
 
 
 ## 9.1.5 [elastic-security-9.1.5-release-notes]
@@ -184,7 +185,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.1.5-fixes]
 * Fixes browser fields caching to use the `dataView` ID instead of the index pattern [#234381]({{kib-pull}}234381).
 * Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
-* Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
+* Fixes the URL passed to detection rule actions using the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
 * Fixes system prompt updates from the Conversations tab in AI Assistant [#234812]({{kib-pull}}234812).
 * Fixes an issue in the Highlighted fields table in the alert details flyout [#234222]({{kib-pull}}234222).
 * Fixes an issue in rule exceptions to include the `matches` operator only for supported fields [#233127]({{kib-pull}}233127).
@@ -276,7 +277,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates the asset criticality status color map to match the new design [#222024]({{kib-pull}}222024).
 * Updates the highlighted fields button styling in the alert details flyout [#221862]({{kib-pull}}221862).
 * Adds support for content connectors in {{elastic-sec}} and {{observability}} [#221856]({{kib-pull}}221856).
-* Expands CVE ID search to all search parameters, not just names [#221099]({{kib-pull}}221099).
+* Expands CVE ID search to all search parameters, not only names [#221099]({{kib-pull}}221099).
 * Improves alert searching and filtering by including additional ECS data stream fields [#220447]({{kib-pull}}220447).
 * Updates default model IDs for Amazon Bedrock and OpenAI connectors [#220146]({{kib-pull}}220146).
 * Adds support for PKI (certificate-based) authentication for the OpenAI **Other** connector providers [#219984]({{kib-pull}}219984).
@@ -345,7 +346,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.0.8-fixes]
 * Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
-* Fixes the URL passed to detection rule actions via the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
+* Fixes the URL passed to detection rule actions using the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
 * Adds support in {{elastic-defend}} for installing eBPF probes on Linux endpoints when taskstats is compiled out of the kernel.
 * Fixes an issue in {{elastic-defend}} where Linux network events could have source and destination bytes swapped.
 * Removes `.process.thread.capabilities.permitted` and `.process.thread.capabilities.effective` from Linux network events in {{elastic-defend}}.

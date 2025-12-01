@@ -106,7 +106,7 @@ After deploying an {{agent}} to a host, view details about the agent and inspect
     :screenshot:
     :::
 
-4. Go to **Analytics > Discover** and examine the data streams. Note that documents indexed by {{agent}} match these patterns:
+4. Go to **Analytics > Discover** and examine the data streams. Documents indexed by {{agent}} match these patterns:
 
     * `logs-*`
     * `metrics-*`
@@ -284,7 +284,7 @@ These aliases must be added to both the index template and existing indices.
 ::::
 
 
-Note that custom dashboards will show duplicated data until you remove {{beats}} from your hosts.
+Custom dashboards will show duplicated data until you remove {{beats}} from your hosts.
 
 For more information, see the [Aliases documentation](/manage-data/data-store/aliases.md).
 
