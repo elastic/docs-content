@@ -13,7 +13,7 @@ products:
 :::{include} _snippets/legacy-warning.md
 :::
 
-The `local` exporter is the default exporter in {{monitoring}}. It routes data back into the same (local) cluster. In other words, it uses the production cluster as the monitoring cluster. For example:
+The `local` exporter is the default exporter in {{monitor-features}}. It routes data back into the same (local) cluster. In other words, it uses the production cluster as the monitoring cluster. For example:
 
 ```yaml
 xpack.monitoring.exporters.my_local_exporter: <1>
@@ -27,7 +27,7 @@ This exporter exists to provide a convenient option when hardware is simply not 
 
 * All indexing impacts the local cluster and the nodes that hold the monitoring indices' shards.
 * Most collectors run on the elected master node. Therefore most indexing occurs with the elected master node as the coordinating node, which is a bad practice.
-* Any usage of {{monitoring}} for {{kib}} uses the local cluster’s resources for searches and aggregations, which means that they might not be available for non-monitoring tasks.
+* Any usage of {{monitor-features}} for {{kib}} uses the local cluster’s resources for searches and aggregations, which means that they might not be available for non-monitoring tasks.
 * If the local cluster goes down, the monitoring cluster has inherently gone down with it (and vice versa), which generally defeats the purpose of monitoring.
 
 For the `local` exporter, all setup occurs only on the elected master node. This means that if you do not see any monitoring templates or ingest pipelines, the elected master node is having issues or it is not configured in the same way. Unlike the `http` exporter, the `local` exporter has the advantage of accessing the monitoring cluster’s up-to-date cluster state. It can therefore always check that the templates and ingest pipelines exist without a performance penalty. If the elected master node encounters errors while trying to create the monitoring resources, it logs errors, ignores that collection, and tries again after the next collection.
