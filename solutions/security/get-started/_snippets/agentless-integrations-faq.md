@@ -1,5 +1,8 @@
 Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless CSPM integration.
 
+## What deployment types support agentless integrations? {{fleet-server}} or {{fleet}} Service to use agentless integrations?
+
+Agentless integrations are available only on {{ech}}, {{sec-serverless}}, and {{obs-serverless}}.
 
 ## When I make a new integration, when will I see the agent appear on the Integration Policies page? [_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page]
 
@@ -78,6 +81,3 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 
 No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
 
-## Do I need an Elastic-hosted Fleet Server or Fleet Service in order to use agentless integrations
-
-Yes, Agentless integrations are available only on Elastic Cloud Hosted (and requires Fleet Server / Integration Server to be enabled) & Serverless. 
