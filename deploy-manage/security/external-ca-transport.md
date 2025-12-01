@@ -30,7 +30,7 @@ Certificates used for transport mTLS must either have no Extended Key Usage exte
 
 Transport certificates have different security requirements than [HTTP certificates](/deploy-manage/security/secure-cluster-communications.md#encrypt-http-communication). HTTP server certificates don't require the `clientAuth` Extended Key Usage extension because they are used solely for server authentication, regardless of whether mTLS is enabled. In practice, HTTP connections don't typically use mTLS because HTTP has its own authentication mechanisms. 
 
-HTTP certificates can come from public or organization-wide certificate authorities, while transport certificates should use a cluster-specific private CA. In most cases, you should not use the same CA or certificate for both HTTP and transport connections.
+HTTP certificates can come from public or organization-wide certificate authorities, while transport certificates should use a cluster-specific private CA. In most cases, you should not use the same certificate for both HTTP and transport connections.
 
 ## Turning off mTLS for transport connections [turn-off-mtls]
 
