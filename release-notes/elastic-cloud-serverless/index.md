@@ -511,7 +511,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
 * Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
 * Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
-
 * Better `max_age` rollover for tiny retentions in data lifecycle management [#134941](https://github.com/elastic/elasticsearch/pull/134941)
 * Removes ingest conditionals `_type` deprecation warning [#134851](https://github.com/elastic/elasticsearch/pull/134851)
 % Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
@@ -848,7 +847,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds `{created,modified}_date` in component templates [#131536](https://github.com/elastic/elasticsearch/pull/131536)
 * Adds `created_date` and `modified_date` in pipelines [#130847](https://github.com/elastic/elasticsearch/pull/130847)
 * Handles structured log messages [#131027](https://github.com/elastic/elasticsearch/pull/131027)
-* Enables `failure store` for log data streams [#131261](https://github.com/elastic/elasticsearch/pull/131261)
+* Enable failure store for new `logs-*-*` data streams [#131261](https://github.com/elastic/elasticsearch/pull/131261)
 
 ### Fixes [serverless-changelog-08042025-fixes]
 * Fixes loading of saved queries in the Alerting rule definition [#229964]({{kib-pull}}229964)
@@ -926,8 +925,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds the **Search AI Lake** view to AutoOps for {{serverless-full}} to provide storage usage insights
 * Fixes a semantic highlighting bug on flat quantized fields [#131525](https://github.com/elastic/elasticsearch/pull/131525)
 
-* Enables `failure store` for APM datastreams [#131296](https://github.com/elastic/elasticsearch/pull/131296)
-* Enables `failure store` for OTEL datastreams [#131395](https://github.com/elastic/elasticsearch/pull/131395)
+* Enables failure store for newly created APM datastreams [#131296](https://github.com/elastic/elasticsearch/pull/131296)
+* Enables failure store for newly created OTel data streams [#131395](https://github.com/elastic/elasticsearch/pull/131395)
 
 ### Fixes [serverless-changelog-07222025-fixes]
 
@@ -1829,7 +1828,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows deploying a model after a failed deployment in Machine Learning [#211459]({{kib-pull}}211459)
 * Ensures the members array is unique for GroupStreamDefinitions [#210089]({{kib-pull}}210089)
 * Improves function search for easier navigation and discovery [#210437]({{kib-pull}}210437)
-
 * Uses ordered maps for `PipelineConfiguration` xcontent deserialization [#123403](https://github.com/elastic/elasticsearch/pull/123403)
 * Fixes redact processor arraycopy bug [#122640](https://github.com/elastic/elasticsearch/pull/122640)
 * Adds `_metric_names_hash` field to OTel metric mappings [#120952](https://github.com/elastic/elasticsearch/pull/120952)

@@ -17,15 +17,15 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 
 ## October 7, 2025 [elastic-cloud-serverless-10072025-deprecations]
 
-:::{dropdown} Adds deprecation notice for `max_size` rollover condition
+:::{dropdown} Adds deprecation notice for max_size rollover condition
 
 We have deprecated the `max_size` rollover condition, in favour of `max_primary_shard_size`, when used in `PUT /_ilm/policy/{name}` and `POST /{index}/_rollover` endpoints.
 
  **Impact:**
- 
+
  Users can continue to use this condition however a warning will be issued via the response headers and in the server logs.
  The condition may be removed fully in a later version of {{es}}.
- 
+
 For more information, view [#135765](https://github.com/elastic/elasticsearch/pull/135765).
 :::
 
