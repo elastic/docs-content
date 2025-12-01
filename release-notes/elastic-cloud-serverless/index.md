@@ -219,7 +219,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
 * Default semantic_text fields to ELSER on EIS when available [#134708](https://github.com/elastic/elasticsearch/pull/134708)
-* Add chunk_rescorer usage to output of explain and profile for text_similarity_rank_retriever [#137249](https://github.com/elastic/elasticsearch/pull/137249)
+* Add `chunk_rescorer` usage to output of explain and profile for `text_similarity_rank_retriever` [#137249](https://github.com/elastic/elasticsearch/pull/137249)
 * Enables `score` function in release builds for {{esql}} [#136988](https://github.com/elastic/elasticsearch/pull/136988)
 * Adds `CHUNK` function to {{esql}} [#134320](https://github.com/elastic/elasticsearch/pull/134320)
 * Adds base64 indexing for vector values [#137072](https://github.com/elastic/elasticsearch/pull/137072)
@@ -302,7 +302,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Uses suppliers to get inference results in semantic queries [#136720](https://github.com/elastic/elasticsearch/pull/136720)
 * Pushes down eval expressions when they require data access for {{esql}} [#136610](https://github.com/elastic/elasticsearch/pull/136610)
-* Fixes bug when handling 1D literal vectors for {{esql}} [#136891](https://github.com/elastic/elasticsearch/pull/136891)
+* Fixes bug when handling 1-dimension literal vectors for {{esql}} [#136891](https://github.com/elastic/elasticsearch/pull/136891)
 * Disallows `dot_product` and `max_inner_product` for `int8_hnsw` GPU type [#136881](https://github.com/elastic/elasticsearch/pull/136881)
 
 ## October 20, 2025 [serverless-changelog-10202025]
@@ -403,7 +403,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
 * Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
 
-* Delays automaton creation in BinaryDvConfirmedQuery to avoid OOM on queries against WildCard fields [#136086](https://github.com/elastic/elasticsearch/pull/136086)
+* Delays automaton creation in BinaryDvConfirmedQuery to avoid out of memory (OOM) on queries against WildCard fields [#136086](https://github.com/elastic/elasticsearch/pull/136086)
 * Fixes inference fields handling on old indices [#136312](https://github.com/elastic/elasticsearch/pull/136312)
 
 
@@ -459,7 +459,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes missing minimum competitive similarity check on tail documents in DiskBBQ [#135851](https://github.com/elastic/elasticsearch/pull/135851)
 * Applies source excludes early when retrieving `_inference_fields` [#135897](https://github.com/elastic/elasticsearch/pull/135897)
 * Fixes `UnsupportedOperationException` when cardinality aggregator field type is vector [#135994](https://github.com/elastic/elasticsearch/pull/135994)
-* Defers semantic text failures on pre-8.11 indices [#135845](https://github.com/elastic/elasticsearch/pull/135845)
+* Fixes crash when creating semantic_text fields on pre-8.11 indices [#135845](https://github.com/elastic/elasticsearch/pull/135845)
 
 
 ## September 29, 2025 [serverless-changelog-09292025]
