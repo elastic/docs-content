@@ -64,7 +64,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
 3. **Attach the proxy to the output**
 
-    Similarly, if the data plane traffic to an output is to traverse via a proxy, that proxy definition would need to be added to the output defined in the Fleet.
+    Similarly, if the data plane traffic to an output is to traverse through a proxy, that proxy definition would need to be added to the output defined in the Fleet.
 
     1. In {{fleet}}, open the **Settings** tab.
     2. In the list of **Outputs**, choose an output and select the edit button to configure it.
