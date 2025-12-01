@@ -14,7 +14,9 @@ description: Build a successful proof of concept during your Elastic trial. Lear
 # Evaluate Elastic during a trial
 
 If you're evaluating Elastic during a trial, this guide helps you build a meaningful proof of concept (PoC) that demonstrates clear value to your organization.
+
 Rather than prescribing specific technical steps, this guide focuses on the evaluation process itself, helping you make strategic decisions and measure success.
+
 For an overview, check out [Explore Elastic Cloud with your 14‑day free trial](https://www.elastic.co/cloud/cloud-trial-overview).
 
 ## What's included in your trial
@@ -26,21 +28,19 @@ Your Elastic trial gives you full access to explore our platform's capabilities:
 - Access to integrations, {{ml-features}}, and advanced analytics.
 - Support resources including documentation, community forums, and technical guidance.
 
-:::{note}
 During the trial, deployments have size and capacity limitations. You can increase deployment size after adding billing details.
+
+:::{tip}
+If you prefer to set up {{es}} and {{kib}} in Docker for local development or testing, refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). By default, new installations have a Basic license that never expires. To explore all the available solutions and features, start a 30-day free trial by following the instructions in [](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).  
 :::
+
 
 ## Trial limitations
 
 While your trial includes full feature access, be aware of these limitations:
 
-- Trial duration varies by deployment type:
-  - {{serverless-short}} projects: 14-day free trial (refer to [trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial))
-  - Self-managed clusters: 30-day trial (refer to [license documentation](/deploy-manage/license.md))
-  - Cloud deployments through marketplaces may have different durations (refer to [subscribe from a marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md))
-- Data ingested during the trial remains accessible, but consider your evaluation timeline.
-- Trial deployments have size and capacity limitations compared to production environments.
-
+:::{include} ../deploy-manage/deploy/_snippets/trial-limitations.md
+:::
 For detailed information about features and licensing:
 
 - [License and support levels](/deploy-manage/license.md): Understand the different license tiers and what they include.
@@ -311,7 +311,11 @@ When you're ready to move beyond evaluation:
 1. Based on your PoC, determine production sizing needs.
 2. Review [license documentation](/deploy-manage/license.md) to choose the right tier.
 3. If moving from trial to production, plan data migration and configuration transfer.
-4. Discuss your evaluation results and production requirements with the Elastic team.
+4. Discuss your evaluation results and production requirements [with the Elastic team](https://www.elastic.co/contact).
+
+::::{note}
+Depending on your organization's needs, conventions, and preferences, you might want to evaluate different deployment options. Elastic offers multiple deployment types including {{ecloud}}, {{ece}}, and {{eck}}. Explore the [deployment options](/deploy-manage/deploy.md) to find the best fit for your infrastructure and requirements.
+::::
 
 ### Expanding your implementation
 
@@ -336,7 +340,7 @@ Resources available to support your evaluation and production planning:
 Continue exploring Elastic's capabilities:
 
 - **[Solutions overview](/solutions/index.md)**: Deep dive into Search, Observability, and Security capabilities.
-- **[Deploy and manage guide](/deploy-manage/index.md)**: Comprehensive deployment and operational guidance.
-- **[Manage data guide](/manage-data/index.md)**: Learn about data ingestion, storage, and lifecycle management.
-- **[Explore and analyze guide](/explore-analyze/index.md)**: Master Kibana's visualization and analysis tools.
+- **[Deploy and manage](/deploy-manage/index.md)**: Comprehensive deployment and operational guidance.
+- **[Manage data](/manage-data/index.md)**: Learn about data ingestion, storage, and lifecycle management.
+- **[Explore and analyze](/explore-analyze/index.md)**: Master Kibana's visualization and analysis tools.
 
