@@ -24,7 +24,7 @@ Use when
 
 ## Resources [airgapped-es-resources]
 
-For more information on air-gapped environments and running {{agent}} air-gapped, check:
+For more information on using Elastic in air-gapped environments, check:
 
 * [Install the {{stack}} in an air-gapped environment](/deploy-manage/deploy/self-managed/air-gapped-install.md)
 * [Install {{ece}} in an air-gapped environment](/deploy-manage/deploy/cloud-enterprise/air-gapped-install.md)
