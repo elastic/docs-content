@@ -228,8 +228,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for the `convert` processor in stream data processing [#240023]({{kib-pull}}240023)
 * Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
-* Field caps transport changes to return for each original expression what it was resolved to [#136632](https://github.com/elastic/elasticsearch/pull/136632)
-* Use DV rewrites where possible in Keyword queries [#137536](https://github.com/elastic/elasticsearch/pull/137536)
+* Updates field caps transport to return what each original expression was resolved to [#136632](https://github.com/elastic/elasticsearch/pull/136632)
+* Use DOC_VALUES_REWRITE rewrite method where possible in keyword queries [#137536](https://github.com/elastic/elasticsearch/pull/137536)
 
 ### Fixes [serverless-changelog-11032025-fixes]
 
@@ -599,7 +599,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an Anomaly Detection bug where custom URLs omitted generated fields in datafeed preview requests [#234709]({{kib-pull}}234709)
 * Ensures full tool traces are displayed in flyouts [#234654]({{kib-pull}}234654)
 
-* Uses inner query for equals/hashCode() in SourceConfirmedTextQuery [#134451](https://github.com/elastic/elasticsearch/pull/134451)
+* Uses inner query for `equals` and `hashCode` in `SourceConfirmedTextQuery` [#134451](https://github.com/elastic/elasticsearch/pull/134451)
 
 ## September 8, 2025 [serverless-changelog-09082025]
 
