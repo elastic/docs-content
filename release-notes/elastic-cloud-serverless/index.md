@@ -266,7 +266,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
 
-
 ## October 27, 2025 [serverless-changelog-10272025]
 
 ### Features and enhancements [elastic-security-10272025-features-enhancements]
@@ -397,9 +396,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
 * Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
 * Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
-
 * Initializes `TermsEnum` eagerly [#136279](https://github.com/elastic/elasticsearch/pull/136279)
-
 
 ## October 6, 2025 [serverless-changelog-10062025]
 
