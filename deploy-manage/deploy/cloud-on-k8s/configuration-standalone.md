@@ -274,7 +274,7 @@ In order to run {{agent}} as a non-root user you must choose how you want to per
 :::{tab-item} {{agent}} 8.16 and higher
 
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
-2. Run {{agent}} with a `hostPath` volume.
+2. Run {{agent}} with a `hostPath` volume. No additional configuration is required.
 
 :::
 

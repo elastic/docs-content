@@ -14,7 +14,7 @@ products:
 
 Until version 7.14.0 and ECK version 2.10.0, {{agent}} and {{fleet-server}} were required to run as root.
 
-As of {{stack}} version 7.14.0 and ECK version 2.10.0 it is also possible to run {{agent}} and {{fleet}} as a non-root user. See [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for instructions.
+As of {{stack}} version 7.14.0 and ECK version 2.10.0 it is also possible to run {{agent}} and {{fleet}} as a non-root user, and with {{agent}} version 8.16.0 running as a non-root user is further simplified. See [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for instructions.
 
 
 ## {{agent}} running in the same namespace as the {{stack}}. [k8s_agent_running_in_the_same_namespace_as_the_stack]
