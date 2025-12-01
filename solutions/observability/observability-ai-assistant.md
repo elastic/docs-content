@@ -18,40 +18,47 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 * **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
 * **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
-The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
+The AI Assistant integrates with your large language model (LLM) provider through our [supported {{stack}} connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [{{obs-ai-assistant}} LLM performance matrix](./llm-performance-matrix.md) for supported third-party LLM providers and their performance ratings.
 
 ## Use cases
 
 The {{obs-ai-assistant}} helps you:
 
-* **Decode error messages**: Interpret stack traces and error logs to pinpoint root causes
-* **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in Elasticsearch
-* **Generate reports**: Create alert summaries and incident timelines with key metrics
-* **Build and execute queries**: Build Elasticsearch queries from natural language, convert Query DSL to ES|QL syntax, and execute queries directly from the chat interface
-* **Visualize data**: Create time-series charts and distribution graphs from your Elasticsearch data
+* **Decode error messages**: Interpret stack traces and error logs to pinpoint root causes.
+* **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in {{es}}.
+* **Generate reports**: Create alert summaries and incident timelines with key metrics.
+* **Build and execute queries**: Build {{es}} queries from natural language, convert Query DSL to {{esql}} syntax, and execute queries directly from the chat interface.
+* **Visualize data**: Create time-series charts and distribution graphs from your {{es}} data.
 
 ## Requirements [obs-ai-requirements]
 
-The AI assistant requires the following:
+To set up or use AI assistant, you need the following:
 
-- An **Elastic deployment**:
+* An appropriate [Elastic subscription](https://www.elastic.co/subscriptions)
 
-  - For **Observability**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
+* The `Observability AI Assistant: All` {{kib}} privilege
 
-  - For **Search**: {{stack}}  version **8.16.0** or later, or **{{serverless-short}} {{es}} project**.
+* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md)
 
-    - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
+* (Optional) To use [knowledge base](#obs-ai-add-data):
+  - A 4 GB {{ml}} node
+    :::{note}
+    In {{ecloud}} or {{ece}}, if you have {{ml}} autoscaling enabled, {{ml}} nodes automatically start when using the knowledge base and AI Assistant. Therefore using these features incurs additional costs.
+    :::
+  - If you want to use [content connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service
 
-- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+## Manage access to AI Assistant
 
-  - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
 
-    Refer to the [documentation](/deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
+The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
 
-* The knowledge base requires a 4 GB {{ml}} node.
-  - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
-
-* A self-deployed connector service if [content connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
+- Manage which AI connectors are available in your environment.
+- Enable or disable AI Assistant and other AI-powered features in your environment.
+- {applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for {{observability}} and Search` and the `AI Assistant for Security` appear.
 
 ## Your data and the AI Assistant [data-information]
 
@@ -85,11 +92,11 @@ The AI Assistant connects to one of these supported LLM providers:
 
 **Setup steps**:
 
-1. **Create authentication credentials** with your chosen provider using the links above
-2. **Create an LLM connector** by navigating to **Stack Management → Connectors** to create an LLM connector for your chosen provider.
+1. **Create authentication credentials** with your chosen provider using the links in the previous table.
+2. **Create an LLM connector** for your chosen provider by going to the **Connectors** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. **Authenticate the connection** by entering:
-   - The provider's API endpoint URL
-   - Your authentication key or secret
+   - The provider's API endpoint URL.
+   - Your authentication key or secret.
 
 ::::{admonition} Recommended models
 While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/llm-performance-matrix.md) to select models that perform well with your desired use cases.
@@ -102,6 +109,10 @@ While the {{obs-ai-assistant}} is compatible with many different models, refer t
 :::
 
 ### Connect to a custom local LLM
+```{applies_to}
+serverless: ga
+stack: ga 9.2
+```
 
 [Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
@@ -324,6 +335,11 @@ Main functions:
 `kibana`
 :   Call {{kib}} APIs on your behalf.
 
+::::::{important}
+:applies_to: self:
+For self‑managed deployments, you must configure [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in your `kibana.yml` to use the `kibana` function.
+::::::
+
 `query`
 :   Generate, execute, and visualize queries based on your request.
 
@@ -343,6 +359,38 @@ Additional functions are available when your cluster has APM data:
 
 `get_apm_services_list`
 :   Get the list of monitored services, their health statuses, and alerts.
+
+#### Share conversations
+
+Conversations that you start with AI Assistant are private by default and not visible to other users in the space. Sharing conversations lets everyone in the space see what you've already asked or learned, making it easier to collaborate.
+
+To change the visibility of a conversation:
+
+1. Select the **Private** / **Shared** badge next to the conversation's title
+1. Use the dropdown menu to define the conversation's visibility.
+
+:::{image} /solutions/images/obs-ai-assistant-shared-conversations.png
+:alt: AI Assistant chat with the sharing status dropdown open
+:screenshot:
+:::
+
+After sharing a conversation, you can copy its URL and send the link to your team:
+
+1. Open an AI Assistant chat.
+1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
+1. Select **Copy URL**.
+
+When someone shares a chat with you, you can view it, but you can't edit or continue the conversation. To continue the conversation where your colleague left off, duplicate the conversation.
+
+To duplicate a conversation:
+
+1. Open an AI Assistant chat.
+1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
+1. Select **Duplicate**.
+
+#### Archive conversations
+
+The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** ({icon}`boxes_vertical`) menu. Once archived, a conversation can't be continued or edited unless it is unarchived. Unarchive a conversation by selecting **Unarchive** from the **Conversation actions** ({icon}`boxes_vertical`) menu.
 
 ### Use contextual prompts [obs-ai-prompts]
 
@@ -396,10 +444,6 @@ When the alert fires, contextual details about the event—such as when the aler
 :alt: AI Assistant conversation created in response to an alert
 :screenshot:
 :::
-
-::::{important}
-Conversations created by the AI Assistant are public and accessible to every user with permissions to use the assistant.
-::::
 
 It might take a minute or two for the AI Assistant to process the message and create the conversation.
 
@@ -524,6 +568,7 @@ Results for other languages or models may vary.
 ### Limitations [obs-ai-anonymization-limitations]
 Anonymization has the following limitations:
 
+* **Non-string fields**:  {applies_to}`stack: ga 9.1.3` Anonymization only applies to string values. Booleans, numbers, image types, and other non-string values are ignored.
 * **Performance (NER)**: Running an NER model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
 * **Structured JSON**: The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax.
 * **False negatives / positives**: No model or pattern is perfect. Model accuracy may vary depending on model and input.

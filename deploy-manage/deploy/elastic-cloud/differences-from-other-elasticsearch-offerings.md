@@ -86,7 +86,7 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
-| [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The maximum bulk request response time in {{serverless-short}} is 200ms |
+| [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1) |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
 | [**Cross-cluster search**](/solutions/search/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
@@ -103,9 +103,11 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | [**Watcher**](/explore-analyze/alerts-cases/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 | **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
 
+^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures data durability by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
+
 ### Observability
 
-This table compares Observability capabilities between {{ech}} deployments and Observability Complete Serverless projects. For more information on Observability Logs Essentials Serverless projects, refer to [Observability subscription tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
+This table compares Observability capabilities between {{ech}} deployments and Observability Complete Serverless projects. For more information on Observability Logs Essentials Serverless projects, refer to [Observability feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
 
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
@@ -117,7 +119,9 @@ This table compares Observability capabilities between {{ech}} deployments and O
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
 | [**Custom roles for Kibana Spaces**](/deploy-manage/manage-spaces.md#spaces-control-user-access) | ✅ | ✅ | |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
-| [**EDOT Cloud Forwarder**](opentelemetry://reference/edot-cloud-forwarder/index.md) | ❌ | ✅ | |
+| [**EDOT Central Configuration**](opentelemetry://reference/central-configuration.md) | ✅ | ❌ | |
+| [**EDOT Cloud Forwarder**](opentelemetry://reference/edot-cloud-forwarder/index.md) | ✅ | ✅ | |
+| [**EDOT Tail-based sampling**](elastic-agent://reference/edot-collector/config/tail-based-sampling.md) | ✅ | ✅ | |
 | **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
 | **[Elastic Synthetics Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
@@ -127,6 +131,7 @@ This table compares Observability capabilities between {{ech}} deployments and O
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](opentelemetry:///reference/motlp.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
 | [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |

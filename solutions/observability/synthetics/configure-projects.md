@@ -171,6 +171,11 @@ Playwright has two types of timeouts that are used in Elastic Synthetics: [actio
 
 Elastic Synthetics uses a default action and navigation timeout of 50 seconds. You can override this default using [`actionTimeout`](https://playwright.dev/docs/api/class-testoptions#test-options-action-timeout) and [`navigationTimeout`](https://playwright.dev/docs/api/class-testoptions#test-options-navigation-timeout) in `playwrightOptions`.
 
+:::{note}
+Browser-based journeys have a timeout limit of 15 minutes.
+When `retry` is enabled (enabled by default), the journey attempts a second run if the first run times out. This allows for a maximum total runtime of 30 minutes: 15 minutes for the first run and up to 15 minutes for the retry.
+:::
+
 ### Timezones and locales [synthetics-configuration-playwright-options-timezones]
 
 The Elastic global managed testing infrastructure does not currently set the timezone. For {{private-location}}s, the monitors will use the timezone of the host machine running the {{agent}}. This is not always desirable if you want to test how a web application behaves across different timezones. To specify what timezone to use when the monitor runs, you can use `playwrightOptions` on a per monitor or global basis.
@@ -243,7 +248,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     To list available locations you can:
 
     * Run the [`elastic-synthetics locations` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command).
-    * Find `Synthetics` in the [global search field](/get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. Locations will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. Locations will be listed in *Locations*.
 
 `privateLocations` (`Array<string>`)
 :   The [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
@@ -251,7 +256,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     To list available {{private-location}}s you can:
 
     * Run the [`elastic-synthetics locations` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command) with the URL for the Observability project or the {{kib}} URL for the deployment from which to fetch available locations.
-    * Find `Synthetics` in the [global search field](/get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
 
 `throttling` (`boolean` | [`ThrottlingOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L194-L198))
 :   Control the monitor’s download speeds, upload speeds, and latency to simulate your application’s behavior on slower or laggier networks. Set to `false` to disable throttling altogether.
@@ -281,7 +286,33 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     }
     ```
 
+`namespace` (`string`)
+:   Assign the monitor to a specific datastream namespace. Defaults to Kibana's namespace.
+
+    For example:
+
+    ```js
+    namespace: 'custom-namespace'
+    ```
+
 For information on configuring monitors individually, refer to:
 
 * [Configure individual browser monitors](/solutions/observability/synthetics/configure-individual-browser-monitors.md) for browser monitors
 * [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md) for lightweight monitors
+
+`maintenanceWindows` (`Array<string>`)
+:   A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+
+## `proxy` [synthetics-configuration-proxy]
+
+`uri` (`string`)
+:   The Proxy URL to be used when connecting to the deployment or Observability Serverless project.
+
+`token` (`string`)
+:   (Optional) The authentication token to be used when connecting to the proxy URL. Based on auth header format `Basic Asaaas==`
+
+`ca` (`string | Buffer`)
+:   (Optional) Override the trusted CA certificates for the proxy connection.
+
+`noVerify` (`boolean`)
+:   (Optional) Disable TLS verification for the proxy connection.

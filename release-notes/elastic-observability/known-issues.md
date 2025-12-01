@@ -91,7 +91,7 @@ The migration script does not handle this scenario and will indefinitely update 
 
 Because the document update involves semantic_text an ML node is kept warm further increasing the costs.
 
-The issue involves semantic_text field type (and thus the semantic_text migration which is causing this issue), introduced in the knowledge base feature in 8.17.
+The issue involves semantic_text field type (and the semantic_text migration which is causing this issue), introduced in the knowledge base feature in 8.17.
 
 **Workaround**
 
@@ -156,5 +156,38 @@ After upgrading a cluster, Collector and Symbolizer endpoints may not be configu
     DELETE kbn:/api/fleet/package_policies/<elastic-universal-profiling-symbolizer-id>?force=true
     ```
 
+::::
+
+:::{dropdown} Error when using the Opentelemetry onboarding flow using EDOT Collector
+Applies to: {{stack}} 9.1.6, 9.2.0
+
+**Details**
+
+Users trying to collect logs and host metrics using the Elastic distribution of the OTel collector will see error when using the OpenTelemetry quickstart onboarding flow:
+
+```
+> sudo ./otelcol --config otel.yml
+
+Starting in otel mode
+failed to get config: cannot unmarshal the configuration: decoding failed due to the following error(s):
+
+'exporters' error reading configuration for "otlp/ingest": decoding failed due to the following error(s):
+
+'sending_queue' decoding failed due to the following error(s):
+
+'batch' decoding failed due to the following error(s):
+
+'' has invalid keys: flush_interval
+
+```
+
+**Workaround**
+
+To work around this issue, manually update the configuration of the generated `otel.yaml` file to replace incorrect key `flush_interval` with the correct key `flush_timeout`.
+
+```yaml
+batch:
+  flush_timeout: 1s
+```
 
 ::::

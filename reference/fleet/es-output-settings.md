@@ -75,7 +75,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 `allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
-    Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
+    This setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
 
     **Default:** `true`
 
@@ -153,7 +153,7 @@ As mentioned, the `custom` preset allows you to input your own set of parameters
 
 These presets apply only to agents on version 8.12.0 or later.
 
-| worker | bulk_max_size | queue.mem_events | queue.mem.flush.min_events | queue.mem.flush.timeout | idle_connection_timeout | Relative EPS |
+| worker | bulk_max_size | queue.mem.events | queue.mem.flush.min_events | queue.mem.flush.timeout | idle_connection_timeout | Relative EPS |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 1600 | 3200 | 1600 | 5 | 15 | 1x |
 | 1 | 2048 | 4096 | 2048 | 5 | 15 | 1x |

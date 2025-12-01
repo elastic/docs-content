@@ -5,7 +5,7 @@ products:
   - id: elasticsearch
 ---
 
-# Use case: use Elasticsearch to manage time series data [use-elasticsearch-for-time-series-data]
+# Use case: Use Elasticsearch to manage time series data [use-elasticsearch-for-time-series-data]
 
 {{es}} offers features to help you store, manage, and search time series data, such as logs and metrics. Once in {{es}}, you can analyze and visualize your data using {{kib}} and other {{stack}} features.
 
@@ -61,7 +61,7 @@ We recommend you use dedicated nodes in the frozen tier. If needed, you can assi
 node.roles: [ data_content, data_hot, data_warm ]
 ```
 
-Assign your nodes any other roles needed for your cluster. For example, a small cluster may have nodes with multiple roles.
+Assign your nodes any other roles needed for your cluster. For example, a small cluster can have nodes with multiple roles.
 
 ```yaml
 node.roles: [ master, ingest, ml, data_hot, transform ]
@@ -97,7 +97,7 @@ Use any of the following repository types with searchable snapshots:
 * [Google Cloud Storage](../deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
 * [Azure Blob Storage](../deploy-manage/tools/snapshot-and-restore/azure-repository.md)
 * [Hadoop Distributed File Store (HDFS)](elasticsearch://reference/elasticsearch-plugins/repository-hdfs.md)
-* [Shared filesystems](../deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) such as NFS
+* [Shared filesystems](../deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) such as Network File System (NFS)
 * [Read-only HTTP and HTTPS repositories](../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md)
 
 You can also use alternative implementations of these repository types, for instance [MinIO](../deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-client), as long as they are fully compatible. Use the [Repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) API to analyze your repository’s suitability for use with searchable snapshots.
@@ -127,7 +127,10 @@ If you use {{fleet}} or {{agent}}, edit one of {{es}}'s built-in lifecycle polic
 
 You can customize these policies based on your performance, resilience, and retention requirements.
 
-To edit a policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click the policy you’d like to edit.
+To edit a policy in {{kib}}:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click the policy you’d like to edit.
 
 You can also use the [update lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
@@ -183,7 +186,10 @@ PUT _ilm/policy/logs
 ::::::
 
 ::::::{tab-item} Custom application
-To create a policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+To create a policy in {{kib}}:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click **Create policy**.
 
 You can also use the [update lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
@@ -247,7 +253,7 @@ If you use {{fleet}} or {{agent}}, skip to [Search and visualize your data](#sea
 ::::
 
 
-If you use a custom application, you need to set up your own data stream. A data stream requires a matching index template. In most cases, you compose this index template using one or more component templates. You typically use separate component templates for mappings and index settings. This lets you reuse the component templates in multiple index templates.
+If you use a custom application, you need to set up your own data stream. A data stream requires a matching index template. Usually, you compose this index template using one or more component templates. You typically use separate component templates for mappings and index settings. This lets you reuse the component templates in multiple index templates.
 
 When creating your component templates, include:
 
@@ -261,8 +267,10 @@ If you’re unsure how to map your fields, use [runtime fields](data-store/mappi
 
 ::::
 
+To create a component template in {{kib}}:
 
-To create a component template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create component template**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create component template**.
 
 You can also use the [create component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
 
@@ -312,9 +320,12 @@ Use your component templates to create an index template. Specify:
 * One or more index patterns that match the data stream’s name. We recommend using our [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * That the template is data stream enabled.
 * Any component templates that contain your mappings and index settings.
-* A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](data-store/templates.md#avoid-index-pattern-collisions).
+* A priority higher than `200` to avoid collisions with built-in templates. Refer to [Avoid index pattern collisions](data-store/templates.md#avoid-index-pattern-collisions).
 
-To create an index template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
+To create an index template in {{kib}}:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create template**.
 
 You can also use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template). Include the `data_stream` object to enable data streams.
 
@@ -356,9 +367,9 @@ POST my-data-stream/_doc
 
 ## Search and visualize your data [search-visualize-your-data]
 
-To explore and search your data in {{kib}}, open the main menu and select **Discover**. See {{kib}}'s [Discover documentation](../explore-analyze/discover.md).
+To explore and search your data in {{kib}}, open the main menu and select **Discover**. Refer to {{kib}}'s [Discover documentation](../explore-analyze/discover.md).
 
-Use {{kib}}'s **Dashboard** feature to visualize your data in a chart, table, map, and more. See {{kib}}'s [Dashboard documentation](../explore-analyze/dashboards.md).
+Use {{kib}}'s **Dashboard** feature to visualize your data in a chart, table, map, and more. Refer to {{kib}}'s [Dashboard documentation](../explore-analyze/dashboards.md).
 
 You can also search and aggregate your data using the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search). Use [runtime fields](data-store/mapping/define-runtime-fields-in-search-request.md) and [grok patterns](../explore-analyze/scripting/grok.md) to dynamically extract data from log messages and other unstructured content at search time.
 
@@ -411,7 +422,7 @@ GET my-data-stream/_search
 }
 ```
 
-{{es}} searches are synchronous by default. Searches across frozen data, long time ranges, or large datasets may take longer. Use the [async search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) to run searches in the background. For more search options, see [*The search API*](../solutions/search/querying-for-search.md).
+{{es}} searches are synchronous by default. Searches across frozen data, long time ranges, or large datasets can take longer. Use the [async search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) to run searches in the background. For more search options, refer to [*The search API*](../solutions/search/querying-for-search.md).
 
 ```console
 POST my-data-stream/_async_search

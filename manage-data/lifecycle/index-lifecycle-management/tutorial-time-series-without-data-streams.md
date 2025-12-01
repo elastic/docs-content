@@ -7,7 +7,7 @@ products:
 
 # Manage time series data without data streams [manage-time-series-data-without-data-streams]
 
-Even though [data streams](../../data-store/data-streams.md) are a convenient way to scale and manage time series data, they are designed to be append-only. We recognise there might be use-cases where data needs to be updated or deleted in place and the data streams don’t support delete and update requests directly, so the index APIs would need to be used directly on the data stream’s backing indices. In these cases we still recommend using a data stream.
+Even though [data streams](../../data-store/data-streams.md) are a convenient way to scale and manage time series data, they are designed to be append-only. We recognize there might be use-cases where data needs to be updated or deleted in place and the data streams don't support delete and update requests directly, so the index APIs would need to be used directly on the data stream's backing indices. In these cases we still recommend using a data stream.
 
 If you frequently send multiple documents using the same `_id` expecting last-write-wins, you can use an index alias instead of a data stream to manage indices containing the time series data and periodically roll over to a new index.
 
@@ -38,11 +38,15 @@ To enable automatic rollover, the template configures two {{ilm-init}} settings:
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To use the {{kib}} **Create template** wizard to add the template, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+
+To use the {{kib}} **Create template** wizard to add the template:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create template**.
 
 ![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard.png "")
 
-:::{tip} 
+:::{tip}
 For more information about the available index template options that you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
 :::
 :::

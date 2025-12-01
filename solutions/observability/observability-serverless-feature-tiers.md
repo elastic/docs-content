@@ -15,7 +15,7 @@ products:
 
 Refer to the [feature comparison table](#obs-subscription-features) for a more detailed comparison between the tiers.
 
-## Subscription tier pricing [obs-subscription-pricing]
+## Feature tier pricing [obs-subscription-pricing]
 
 For pricing information, refer to [Elastic Observability Serverless pricing](https://www.elastic.co/pricing/serverless-observability).
 
@@ -53,7 +53,7 @@ From the main navigation menu, select **Add data**. Select what you want to moni
 Upgrading from Observability Logs Essentials to Observability Complete is permanent and is not reversible.
 :::
 
-To access the additional features available in Observability Complete, upgrade your Observability Logs Essentials subscription by completing the following steps:
+To access the additional features available in Observability Complete, upgrade your Observability project feature tier by completing the following steps:
 
 1. From the [{{ecloud}} Console](https://cloud.elastic.co), select **Manage** next to the Observability Logs Essentials serverless project you want to upgrade.
 1. Next to **Project features**, select **Edit**.

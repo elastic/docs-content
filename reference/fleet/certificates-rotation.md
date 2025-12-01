@@ -8,11 +8,13 @@ products:
 
 # Rotate SSL/TLS CA certificates [certificates-rotation]
 
-In some scenarioes you may want to rotate your configured certificate authorities (CAs), for instance if your chosen CAs are due to expire. Refer to the following steps to rotate certificates between connected components:
+In some scenarios you may want to rotate your configured certificate authorities (CAs), for instance if your chosen CAs are due to expire. Refer to the following steps to rotate certificates between connected components:
 
 * [Rotating a {{fleet-server}} CA](#certificates-rotation-agent-fs)
 * [Rotating an {{es}} CA for connections from {{fleet-server}}](#certificates-rotation-fs-es)
 * [Rotating an {{es}} CA for connections from {{agent}}](#certificates-rotation-agent-es)
+
+For important notes about current limitations (such as restart requirements and unsupported features), refer to [Limitations](#limitations).
 
 
 ## Rotating a {{fleet-server}} CA [certificates-rotation-agent-fs]
@@ -57,7 +59,7 @@ Using this method, the {{agent}} with an old or expiring CA configured will be r
 
     The new CA (`new_CA`) on the agent installed in Step 1 will be used to authenticate the certificates used by {{fleet-server}}.
 
-    Note that if the original CA (`original CA`) was compromised, then it may need to be removed from the agent’s CA list. To achieve this you need to enroll the agent again:
+    If the original CA (`original CA`) was compromised, then it may need to be removed from the agent's CA list. To achieve this you need to enroll the agent again:
 
     ```shell
     elastic-agent enroll ...
@@ -105,7 +107,7 @@ To update the {{agent}} and {{fleet-server}} configurations:
     cat new_ca.pem >> CA.pem
     ```
 
-2. Restart the {{agents}}. Note that this is not a re-enrollment. Restarting will force the {{agents}} to reload the CAs.
+2. Restart the {{agents}}. This is not a re-enrollment–restarting will force the {{agents}} to reload the CAs.
 
     ```shell
     elastic-agent restart
@@ -165,7 +167,7 @@ To rotate a CA certificate on {{es}} for connections from {{fleet-server}}:
 
     {{es}} will use new certificates based on the new {{es}} CA. Since the {{fleet-server}} has the original and the new {{es}} CAs in a chain, it will accept original and new certificates from {{es}}.
 
-    Note that if the original {{es}} CA (`original_ES CA`) was compromised, then it may need to be removed from the {{fleet-server}}'s CA list. To achieve this you need to enroll the {{fleet-server}} agent again (if re-enrollment is a concern then use a file to hold the certificates and certificate-authority):
+    If the original {{es}} CA (`original_ES CA`) was compromised, then it may need to be removed from the {{fleet-server}}'s CA list. To achieve this you need to enroll the {{fleet-server}} agent again (if re-enrollment is a concern then use a file to hold the certificates and certificate-authority):
 
     ```shell
     elastic-agent enroll \
@@ -193,3 +195,23 @@ To rotate a CA certificate on {{es}} for connections from {{agent}}:
     :alt: Screen capture of the Edit Output UI: Elasticsearch CA trusted fingerprint
     :screenshot:
     :::
+
+## Limitations
+
+Keep the following in mind when rotating certificates and certificate authorities (CAs):
+
+* **Agent restart required**
+
+  {{agent}} does not support hot reloading of updated certificates or CA files. You must restart the agent to apply changes.
+
+* **Directory loading not supported**
+
+  Unlike {{beats}}, {{agent}} does not support passing a directory of CAs (for example, `--capath`) or monitoring a directory for changes. You must reference a specific file.
+
+* **Rotation without re-enrollment**
+
+  When rotating a CA, you can avoid agent re-enrollment by including both the old and new CAs in the configured CA file, restarting the agent, and then removing the old CA after the switch.
+
+* **Mutual TLS (`--fleet-server-client-auth=required`)**
+
+  If mTLS is enabled, you must apply the same overlap approach (adding a new CA before removing the old) on both client and server. The rotation process itself is otherwise unchanged.

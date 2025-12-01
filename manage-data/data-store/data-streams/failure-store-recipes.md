@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/failure-store-recipes.html
 applies_to:
   stack: ga 9.1
   serverless: ga
@@ -305,7 +307,7 @@ Without tags in place it would not be as clear where in the pipeline the indexin
 
 ## Alerting on failed ingestion [failure-store-examples-alerting]
 
-Since failure stores can be searched just like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerts-cases/alerts.md) in
+Since failure stores can be searched like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerts-cases/alerts.md) in
 {{kib}}. Here is a simple alerting example that is triggered when more than ten indexing failures have occurred in the last five minutes for a data stream:
 
 :::::{stepper}
@@ -380,7 +382,7 @@ We recommend a few best practices for remediating failure data.
 
 **Use an ingest pipeline to convert failure documents back into their original document.** Failure documents store failure information along with the document that failed ingestion. The first step for remediating documents should be to use an ingest pipeline to extract the original source from the failure document and then discard any other information about the failure.
 
-**Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure. The easiest way to simulate these changes is via the [pipeline simulate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) or the [simulate ingest API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-simulate-ingest).
+**Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure. The easiest way to simulate these changes is using the [pipeline simulate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) or the [simulate ingest API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-simulate-ingest).
 
 ### Remediating ingest node failures [failure-store-examples-remediation-ingest]
 
@@ -509,7 +511,7 @@ Because ingest pipeline failures need to be reprocessed by their original pipeli
 ```
 1. The `data.id` field is expected to be present. If it isn't present this pipeline will fail.
 
-Fixing a failure's root cause is a often a bespoke process. In this example, instead of discarding the data, we will make this identifier field optional.
+Fixing a failure's root cause is often a bespoke process. In this example, instead of discarding the data, we will make this identifier field optional.
 
 ```console
 PUT _ingest/pipeline/my-datastream-default-pipeline
@@ -656,7 +658,7 @@ POST _ingest/pipeline/_simulate
   ]
 }
 ```
-1. The index has been updated via the reroute processor.
+1. The index has been updated through the reroute processor.
 2. The document ID has stayed the same.
 3. The source should cleanly match the contents of the original document.
 
@@ -993,7 +995,7 @@ PUT _ingest/pipeline/my-datastream-remediation-pipeline
 2. Capture the source of the original document.
 3. Discard the `error` field since it wont be needed for the remediation.
 4. Also discard the `document` field.
-5. We extract all the fields from the original document's source back to the root of the document. The `@timestamp` field is not overwritten and thus will be present in the final document.
+5. We extract all the fields from the original document's source back to the root of the document. The `@timestamp` field is not overwritten and will be present in the final document.
 
 :::{important}
 Remember that a document that has failed during indexing has already been processed by the ingest processor! It shouldn't need to be processed again unless you made changes to your pipeline to fix the original problem. Make sure that any fixes applied to the ingest pipeline are reflected in the pipeline logic here.
@@ -1086,7 +1088,7 @@ Caused by: j.l.IllegalArgumentException: data stream timestamp field [@timestamp
   ]
 }
 ```
-1. The index has been updated via the script processor.
+1. The index has been updated through the script processor.
 2. The source should reflect any fixes and match the expected document shape for the final index.
 3. In this example case, we find that the failure timestamp has stayed in the source.
 

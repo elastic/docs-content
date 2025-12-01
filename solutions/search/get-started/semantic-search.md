@@ -42,8 +42,9 @@ This guide uses the [semantic text field type](elasticsearch://reference/elastic
 An index is a collection of documents uniquely identified by a name or an alias.
 You can follow the guided index workflow:
 
-- If you're using {{es-serverless}}, go to **{{es}} > Home**, select the semantic search workflow, and click **Create a semantic optimized index**.
-- If you're using {{ech}} or running {{es}} locally, go to **{{es}} > Home** and click **Create API index**. Select the semantic search workflow.
+- If you're using {{es-serverless}}, {{ech}}, or running {{es}} locally:
+  1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+  2. Select **Create index**, select **Semantic Search**, and follow the guided workflow.
 
 When you complete the workflow, you will have sample data and can skip to the steps related to exploring and searching it.
 Alternatively, run the following API request in [Console](/explore-analyze/query-filter/tools/console.md):

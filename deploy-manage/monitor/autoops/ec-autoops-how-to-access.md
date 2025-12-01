@@ -11,9 +11,9 @@ navigation_title: For {{ech}}
 
 # AutoOps for {{ech}}
 
-For {{ech}} deployments, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md#autoops-for-ech-regions). More regions are coming soon. 
+For [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) deployments, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md#autoops-for-ech-regions). More regions are coming soon. 
 
-## How to access AutoOps [ec-autoops-how-to-access]
+## How to access AutoOps in your deployment [ec-autoops-how-to-access]
 
 To access AutoOps from your {{ecloud}} console, follow these steps:
 
@@ -22,5 +22,10 @@ To access AutoOps from your {{ecloud}} console, follow these steps:
 4. On the deployment overview page, select **Open AutoOps**.
 
 :::{image} /deploy-manage/images/cloud-autoops-how-to-access.png
-:alt: How to access AutoOps
+:screenshot:
+:alt: Screenshot showing the Open AutoOps button on the deployment overview page
+:::
+
+:::{tip}
+Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md) for answers to frequently asked questions about AutoOps.
 :::

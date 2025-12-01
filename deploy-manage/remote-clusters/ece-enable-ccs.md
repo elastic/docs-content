@@ -19,6 +19,9 @@ You can configure an {{ece}} deployment to either connect to remote clusters or 
 * A deployment running on an {{eck}} installation
 * A self-managed installation
 
+::::{note}
+Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security) for details on how remote clusters interact with network security filters and the implications for your deployments.
+::::
 
 ## Prerequisites [ece-ccs-ccr-prerequisites]
 
@@ -29,8 +32,18 @@ To use CCS or CCR, your environment must meet the following criteria:
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
   
-* Proxies must answer TCP requests on the port 9400. Check the [prerequisites for the ports that must permit outbound or inbound traffic](../deploy/cloud-enterprise/ece-networking-prereq.md).
-* Load balancers must pass-through TCP requests on port 9400. Check the [configuration details](../deploy/cloud-enterprise/ece-load-balancers.md).
+* ECE proxies must answer TCP requests on the port used by the selected [security model](./security-models.md):
+  * `9400` when using TLS certificate–based authentication (deprecated).
+  * `9443` when using API key–based authentication.
+  
+  For details, refer to the [remote cluster security models](./security-models.md) documentation and [ECE networking prerequisites](/deploy-manage/deploy/cloud-enterprise/ece-networking-prereq.md).
+
+* Load balancers must pass through TCP requests on the port that corresponds to the security model:
+  * `9400` for TLS certificate–based authentication (deprecated).
+  * `9443` for API key–based authentication.
+
+  For configuration details, refer to the [ECE load balancer requirements](../deploy/cloud-enterprise/ece-load-balancers.md).
+
 * If your deployment was created before ECE version `2.9.0`, the Remote clusters page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
 
 ::::{note}
@@ -57,21 +70,6 @@ The steps, information, and authentication method required to configure CCS and 
     * [From a self-managed cluster](/deploy-manage/remote-clusters/remote-clusters-self-managed.md)
     * [From an ECK environment](ece-enable-ccs-for-eck.md)
 
-
 ## Remote clusters and network security [ece-ccs-ccr-network-security]
 
-::::{note}
-Network security isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
-::::
-
-
-For remote clusters configured using TLS certificate authentication, [network security](../security/network-security.md) can be enabled to restrict access to deployments that are used as a local or remote cluster without any impact to cross-cluster search or cross-cluster replication.
-
-Traffic filtering for remote clusters supports two methods:
-
-* [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-filtering-ece.md)
-* Filtering by Organization or {{es}} cluster ID with a Remote cluster type filter. You can configure this type of filter from the **Platform** > **Security** page of your environment or using the [{{ece}} API](https://www.elastic.co/docs/api/doc/cloud-enterprise) and apply it from each deployment’s **Security** page.
-
-::::{note}
-When setting up traffic filters for a remote connection to an {{ece}} environment, you also need to upload the region’s TLS certificate of the local cluster to the {{ece}} environment’s proxy. You can find that region’s TLS certificate in the **Security** page of any deployment of the environment initiating the remote connection. This is regardless of whether you are using API key or TLS Certificates (deprecated) to authenticate remote connections. This applies regardless of whether you are using API key or TLS Certificates (deprecated) to authenticate remote connections.
-::::
+If you have [network security policies](/deploy-manage/security/network-security-policies.md) applied to the remote cluster, you might need to take extra steps on the remote side to allow traffic from the local cluster. Some remote cluster configurations have limited compatibility with network security. To learn more, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).

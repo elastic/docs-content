@@ -13,7 +13,7 @@ products:
 
 # Visual event analyzer [security-visual-event-analyzer]
 
-{{elastic-sec}} allows any event detected by {{elastic-endpoint}} to be analyzed using a process-based visual analyzer, which shows a graphical timeline of processes that led up to the alert and the events that occurred immediately after. Examining events in the visual event analyzer is useful to determine the origin of potentially malicious activity and other areas in your environment that may be compromised. It also enables security analysts to drill down into all related hosts, processes, and other events to aid in their investigations.
+{{elastic-sec}} allows any event detected by {{elastic-endpoint}} or supported third-party integrations to be analyzed using a process-based visual analyzer, which shows a graphical timeline of processes that led up to the alert and the events that occurred immediately after. Examining events in the visual event analyzer is useful to determine the origin of potentially malicious activity and other areas in your environment that may be compromised. It also enables security analysts to drill down into all related hosts, processes, and other events to aid in their investigations.
 
 ::::{tip}
 If you’re experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries. This setting is only available for the {{stack}}.
@@ -27,8 +27,10 @@ You can visualize events from the following sources:
 
 * {{elastic-defend}} integration
 * Sysmon data collected through {{winlogbeat}}
-* [CrowdStrike integration](integration-docs://reference/crowdstrike.md) (Falcon logs collected through Event Stream or FDR)
-* [SentinelOne Cloud Funnel integration](integration-docs://reference/sentinel_one_cloud_funnel.md)
+* Third-party integrations:
+  * [CrowdStrike](integration-docs://reference/crowdstrike.md) (Falcon logs collected through Event Stream or FDR)
+  * [SentinelOne Cloud Funnel](integration-docs://reference/sentinel_one_cloud_funnel.md)
+  * {applies_to}`stack: ga 9.2` [Microsoft Defender for Endpoint](integration-docs://reference/microsoft_defender_endpoint.md)
 
 In KQL, this translates to any event with the `agent.type` set to:
 
@@ -36,6 +38,9 @@ In KQL, this translates to any event with the `agent.type` set to:
 * `winlogbeat` with `event.module` set to `sysmon`
 * `filebeat` with `event.module` set to `crowdstrike`
 * `filebeat` with `event.module` set to `sentinel_one_cloud_funnel`
+* {applies_to}`stack: ga 9.2` `filebeat` with `event.module` set to `microsoft_defender_endpoint`
+
+{applies_to}`stack: ga 9.2` The visual analyzer also supports analyzing `event.kind: "alert"` events from third-party integrations. To view these events, your role must have `read` privileges for the `alerts-security.alerts-*` indices.
 
 To find events that can be visually analyzed:
 
@@ -50,6 +55,12 @@ To find events that can be visually analyzed:
     * `agent.type:"winlogbeat" and event.module: "sysmon" and process.entity_id : *`
     * `agent.type:"filebeat" and event.module: "crowdstrike" and process.entity_id : *`
     * `agent.type:"filebeat" and event.module: "sentinel_one_cloud_funnel" and process.entity_id : *`
+    * {applies_to}`stack: ga 9.2` `agent.type:"filebeat" and event.module: "microsoft_defender_endpoint" and process.entity_id : *` 
+
+    ::::{note}
+    {applies_to}`stack: ga 9.2` To specifically filter for alert-kind events from third-party integrations, add `event.kind:"alert"`. For example:
+    `agent.type:"filebeat" and event.module:"microsoft_defender_endpoint" and event.kind:"alert" and process.entity_id:*`
+    ::::
 
 3. Events that can be visually analyzed are denoted by a cubical **Analyze event** icon. Select this option to open the event in the visual analyzer. The event analyzer is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout.
 
@@ -123,7 +134,7 @@ Access event details by selecting that event’s URL at the top of the process d
 When you select an `event.category` pill (for example, **_x_ file** or **_x_ registry**), all the events within that category are listed in the preview analyzer panel. To display more details about a specific event, select it from the list.
 
 ::::{note}
-- You must have the appropriate [{{stack}}](https://www.elastic.co/pricing) subscription or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to examine alerts associated with events.
+- You must have the appropriate [{{stack}}](https://www.elastic.co/pricing) subscription or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to examine alerts associated with events.
 - There is no limit to the number of events that can be associated with a process.
 ::::
 

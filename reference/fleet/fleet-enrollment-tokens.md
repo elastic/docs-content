@@ -8,19 +8,27 @@ products:
 
 # Fleet enrollment tokens [fleet-enrollment-tokens]
 
-A {{fleet}} enrollment token (referred to as an `enrollment API key` in the {{fleet}} API documentation) is an {{es}} API key that you use to enroll one or more {{agent}}s in {{fleet}}. The enrollment token enrolls the {{agent}} in a specific agent policy that defines the data to be collected by the agent. You can use the token as many times as required. It will remain valid until you revoke it.
+A {{fleet}} enrollment token (referred to as an `enrollment API key` in the {{fleet}} API documentation) is an {{es}} API key that you use to enroll one or more {{agent}}s in {{fleet}}. The enrollment token enrolls the {{agent}} in a specific agent policy that defines the data to be collected by the agent and which output to use. You can use the token as many times as needed. It will remain valid until you revoke it.
 
-The enrollment token is used for the initial communication between {{agent}} and {{fleet-server}}. After the initial connection request from the {{agent}}, the {{fleet-server}} passes two API keys to the {{agent}}:
+The enrollment token is used for the initial communication between {{agent}} and {{fleet-server}}. After the initial connection request from {{agent}}, {{fleet-server}} passes a communication API key to the agent. This API key includes only the necessary permissions to communicate with {{fleet-server}}. If the API key is invalid, {{fleet-server}} stops communicating with {{agent}}.
 
-* An output API key
+Depending on the output of the agent policy with which the enrollment token is associated, {{fleet-server}} also passes additional data to {{agent}}:
+    
+* For the {{es}} and remote {{es}} outputs, it passes an output API key.
+    
+    This API key is used to send data to {{es}}. It has the minimal permissions needed to ingest all the data specified by the agent policy. If the API key is invalid, {{agent}} stops ingesting data into {{es}}.
 
-    This API key is used to send data to {{es}}. It has the minimal permissions needed to ingest all the data specified by the agent policy. If the API key is invalid, the {{agent}} stops ingesting data into {{es}}.
+* For the Kafka output, it passes authentication parameters.
 
-* A communication API key
+    The authentication parameters are defined in the authentication settings of the Kafka output and are used by {{agent}} to authenticate with the Kafka cluster before sending data to it.
 
-    This API key is used to communicate with the {{fleet-server}}. It has only the permissions needed to communicate with the {{fleet-server}}. If the API key is invalid, {{fleet-server}} stops communicating with the {{agent}}.
+* For the {{ls}} output, it passes SSL/TLS configuration details.
 
+    The SSL/TLS configuration details such as the SSL certificate authority, the SSL certificate, and the SSL certificate key are defined during {{ls}} output creation. {{agent}} uses SSL/TLS client authentication to authenticate with the {{ls}} pipeline before sending data to it.
 
+:::{note}
+Although an API key is generated during {{ls}} output creation, this key is not passed to {{agent}} by {{fleet-server}}. If the {{ls}} pipeline uses the {{es}} output, this API key is used by {{ls}} to authenticate with the {{es}} cluster before sending data to it.
+:::
 
 ## Create enrollment tokens [create-fleet-enrollment-tokens]
 
@@ -36,7 +44,7 @@ To create an enrollment token:
 1. In {{kib}}, go to **Management → {{fleet}} → Enrollment tokens**.
 2. Click  **Create enrollment token**. Name your token and select an agent policy.
 
-    Note that the token name you specify must be unique so as to avoid conflict with any existing API keys.
+    The token name you specify must be unique so as to avoid conflict with any existing API keys.
 
     :::{image} images/create-token.png
     :alt: Enrollment tokens tab in {{fleet}}
@@ -81,7 +89,7 @@ To revoke an enrollment token:
     To re-enroll your {{agent}}s, use an active enrollment token.
 
 
-Note that when an enrollment token is revoked it is not immediately deleted. Deletion occurs automatically after the duration specified in the {{es}} [`xpack.security.authc.api_key.delete.retention_period`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings-delete-retention-period) setting has expired (see [Invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key) for details).
+When an enrollment token is revoked it is not immediately deleted. Deletion occurs automatically after the duration specified in the {{es}} [`xpack.security.authc.api_key.delete.retention_period`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings-delete-retention-period) setting has expired (see [Invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key) for details).
 
 Until the enrollment token has been deleted:
 

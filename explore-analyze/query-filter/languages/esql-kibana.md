@@ -83,18 +83,18 @@ FROM kibana_sample_data_logs | LIMIT 10
 
 ### Make your query readable [_make_your_query_readable]
 
-For readability, you can put each processing command on a new line. The following query is identical to the previous one:
+For readability, you can put each processing command on a new line and add indentation. The following query is identical to the previous one:
 
 ```esql
 FROM kibana_sample_data_logs
-| LIMIT 10
+  | LIMIT 10
 ```
 
-You can do that using the **Add line breaks on pipes** button from the query editor’s footer.
+You can do that automatically using the {icon}`pipeBreaks` **Prettify query** button from the query editor’s footer.
 
 :::{image} /explore-analyze/images/esql-line-breakdown.gif
-:alt: Automatic line breaks for ES|QL queries
-:width: 50%
+:alt: Automatic line breaks and indentation for ES|QL queries
+:width: 75%
 :::
 
 You can adjust the editor’s height by dragging its bottom border to your liking.
@@ -107,12 +107,21 @@ A query may result in warnings, for example when querying an unsupported field t
 
 ### Query history [esql-kibana-query-history]
 
-You can reuse your recent {{esql}} queries in the query bar. In the query bar, click **Show recent queries**.
+You can reuse your recent {{esql}} queries in the query bar. In the query bar, select **Show recent queries**.
 
-You can then scroll through your recent queries:
+You can then: 
+- scroll through your most recent queries
+- {applies_to}`stack: ga 9.2` search for specific queries of your history
 
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-history.png
+:::{image} /explore-analyze/images/esql-history.gif
 :alt: esql discover query history
+:width: 75%
+:::
+
+:::{note}
+The maximum number of queries in the history depends on the version you're using:
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` The query history can keep up to 50 KB of queries, which represents about 200 large queries, or about 300 short queries.
+- {applies_to}`stack: ga 9.0` The query history keeps your 20 most recent queries.
 :::
 
 ### Query help
@@ -215,12 +224,41 @@ FROM kibana_sample_data_logs
 | WHERE timestamp > NOW() - 15minutes
 ```
 
+
+### Create controls with {{esql}} variables [add-variable-control]
+
+{{esql}} variables help you add interactive controls to your queries and make them more dynamic.
+
+They're available for:
+* [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
+* [{{esql}} visualizations in dashboards](/explore-analyze/dashboards/add-controls.md#add-variable-control)
+
+:::{include} ../../_snippets/variable-control-procedure.md
+:::
+
+:::{include} ../../_snippets/variable-control-examples.md
+:::
+
+% Link from the product
+#### Allow multi-value selections for {{esql}}-based variable controls [esql-multi-values-controls]
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+:::{include} ../../_snippets/multi-value-esql-controls.md
+:::
+
+
 ### LOOKUP JOINs
 
 The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
+{applies_to}`stack: ga 9.2` You can also use lookup indices from your remote clusters.
+
 ![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
+In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
 
 ### Keyboard shortcuts
 
@@ -285,7 +323,7 @@ You can also edit the {{esql}} visualization from here. Click the options button
 :width: 50%
 :::
 
-You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-esql-control)
+You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-variable-control)
 
 
 ## Create an enrich policy [esql-kibana-enrich]

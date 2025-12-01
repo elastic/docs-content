@@ -248,7 +248,7 @@ Settings used to parse, filter, and transform data.
     ```yaml
     outputs:
       default:
-        type: elasticsearchoutput.elasticsearch:
+        type: elasticsearch
         hosts: ["http://localhost:9200"]
         pipeline: my_pipeline_id
     ```
@@ -258,7 +258,8 @@ Settings used to parse, filter, and transform data.
     ```yaml
     outputs:
       default:
-        type: elasticsearch  hosts: ["http://localhost:9200"]
+        type: elasticsearch
+        hosts: ["http://localhost:9200"]
         pipeline: "%{[fields.log_type]}_pipeline"
     ```
 

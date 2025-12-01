@@ -1,20 +1,16 @@
 ---
-navigation_title: "Agent Chat UI"
+navigation_title: "Chat"
 applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # {{agent-builder}}: Agent Chat
 
-**Agent Chat** is the synchronous chat interface for natural language conversations with your [agents](agent-builder-agents.md).
+**Agent Chat** is the chat interface for natural language conversations with your [agents](agent-builder-agents.md).
 
 The chat GUI and programmatic interfaces enable real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
@@ -70,11 +66,9 @@ The Agent Chat API provides programmatic access to chat functionality through RE
 
 For a quick overview of the REST API for conversations, refer to [Chat and conversations API](kibana-api.md#chat-and-conversations).
 
-### Serverless API reference
+### API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/). 
-
-
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-conversations).
 
 
 

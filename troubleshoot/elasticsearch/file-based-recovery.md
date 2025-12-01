@@ -53,7 +53,7 @@ Before granting a `file` realm user any roles, you need to ensure that those des
 * [Custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) defined under the {{stack}} {{security-features}}
 * Roles defined in [`roles.yml`](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file)
 
-{{es}} recommends following the industry's [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) when granting user permissions. {{es}} follows this guidance itself by [restricting system indices](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) by default, even from [`superuser` role](elasticsearch://reference/elasticsearch/roles.md#available-roles) administrators including the [`elastic` built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). 
+{{es}} recommends following the industry's [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) when granting user permissions. {{es}} follows this guidance itself by [restricting system indices](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) by default, even from [`superuser` role](elasticsearch://reference/elasticsearch/roles.md) administrators including the [`elastic` built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). 
 
 The main {{stack}} {{security-features}} rely on the `security` [feature state](/deploy-manage/tools/snapshot-and-restore.md) which is mostly composed of the `.security*` [system indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices). When recovering {{stack}} {{security-features}}, you will likely need to temporarily define a custom role with the [`allow_restricted_indices` setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) enabled.
 
@@ -236,4 +236,4 @@ You can confirm that the desired `superduperuser` role is applied to your `admin
 curl -X GET -sk -u "admin:changeme" "https://localhost:9200/_security/_authenticate?pretty=true" 
 ```
 
-Now that you have regained recovery access to the cluster, you can investigate and recover the {{stack}} {{security-features}} as needed.
+Now that you have regained recovery access to the cluster, you can investigate and recover the {{stack}} {{security-features}} as needed. For more information, refer to [Restore a feature state](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-feature-state).

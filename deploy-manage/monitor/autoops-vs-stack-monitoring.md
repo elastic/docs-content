@@ -48,7 +48,7 @@ AutoOps will be available for self-managed air-gapped environments (ECE, ECK, or
 :::
 
 #### Stack Monitoring [sm-setup]
-Stack Monitoring is a {{kib}} application that can be enabled on self-managed clusters on your premises, {{ech}} deployments, {{ece}} (ECE), and {{eck}} (ECK). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your Serverless projects.
+Stack Monitoring is a {{kib}} application that can be enabled on self-managed clusters on your premises, {{ech}} deployments, {{ece}} (ECE), and {{eck}} (ECK). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your {{serverless-short}} projects.
 
 Depending on your deployment model, there is [some setting up](/deploy-manage/monitor/stack-monitoring.md#configure-and-use-stack-monitoring) involved to enable Stack Monitoring. You need to configure an agent, specify which logs and metrics you want to collect from all your {{stack}} components, and where to send them.
 
@@ -69,7 +69,7 @@ You can store your Stack Monitoring logs and metrics in the following ways:
 ### Availability
 
 #### AutoOps [ao-availability]
-AutoOps lives in {{ecloud}}, so you need to have an {{ecloud}} account to access it. Once logged in, you can [access](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) AutoOps from your hosted deployments.
+AutoOps lives in {{ecloud}}, so you need to have an {{ecloud}} account to access it. Once logged in, you can access AutoOps from your [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md), [{{serverless-short}} projects](/deploy-manage/monitor/autoops/access-autoops-for-serverless.md), or [connect your self-managed clusters](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) to it.
 
 #### Stack Monitoring [sm-availability]
 Once setup is complete, you can access the Stack Monitoring UI inside {{kib}}, where you can monitor all your {{stack}} components.

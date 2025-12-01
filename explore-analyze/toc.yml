@@ -8,43 +8,6 @@ toc:
           - file: query-filter/languages/querydsl.md
           - file: query-filter/languages/esql-kibana.md
           - file: query-filter/languages/sql.md
-            children:
-              - file: query-filter/languages/sql-overview.md
-              - file: query-filter/languages/sql-getting-started.md
-              - file: query-filter/languages/sql-concepts.md
-              - file: query-filter/languages/sql-security.md
-              - file: query-filter/languages/sql-rest.md
-                children:
-                  - file: query-filter/languages/sql-rest-overview.md
-                  - file: query-filter/languages/sql-rest-format.md
-                  - file: query-filter/languages/sql-pagination.md
-                  - file: query-filter/languages/sql-rest-filtering.md
-                  - file: query-filter/languages/sql-rest-columnar.md
-                  - file: query-filter/languages/sql-rest-params.md
-                  - file: query-filter/languages/sql-runtime-fields.md
-                  - file: query-filter/languages/sql-async.md
-              - file: query-filter/languages/sql-translate.md
-              - file: query-filter/languages/sql-cli.md
-              - file: query-filter/languages/sql-jdbc.md
-                children:
-                  - file: query-filter/languages/sql-jdbc-api-usage.md
-              - file: query-filter/languages/sql-odbc.md
-                children:
-                  - file: query-filter/languages/sql-odbc-installation.md
-                  - file: query-filter/languages/sql-odbc-setup.md
-              - file: query-filter/languages/sql-client-apps.md
-                children:
-                  - file: query-filter/languages/sql-client-apps-dbeaver.md
-                  - file: query-filter/languages/sql-client-apps-dbvis.md
-                  - file: query-filter/languages/sql-client-apps-excel.md
-                  - file: query-filter/languages/sql-client-apps-powerbi.md
-                  - file: query-filter/languages/sql-client-apps-ps1.md
-                  - file: query-filter/languages/sql-client-apps-microstrat.md
-                  - file: query-filter/languages/sql-client-apps-qlik.md
-                  - file: query-filter/languages/sql-client-apps-squirrel.md
-                  - file: query-filter/languages/sql-client-apps-workbench.md
-                  - file: query-filter/languages/sql-client-apps-tableau-desktop.md
-                  - file: query-filter/languages/sql-client-apps-tableau-server.md
           - file: query-filter/languages/eql.md
             children:
               - file: query-filter/languages/example-detect-threats-with-eql.md
@@ -78,6 +41,8 @@ toc:
   - file: elastic-inference.md
     children:
       - file: elastic-inference/eis.md
+        children:
+          - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -175,21 +140,34 @@ toc:
   - file: scripting.md
     children:
       - file: scripting/modules-scripting-painless.md
-      - file: scripting/modules-scripting-using.md
         children:
-          - file: scripting/scripts-search-speed.md
-          - file: scripting/dissect.md
-          - file: scripting/grok.md
-      - file: scripting/script-fields-api.md
-      - file: scripting/common-script-uses.md
-        children:
-          - file: scripting/scripting-field-extraction.md
-      - file: scripting/modules-scripting-fields.md
-      - file: scripting/modules-scripting-security.md
+          - file: scripting/modules-scripting-using.md
+            children:
+              - file: scripting/modules-scripting-write-first-script.md
+              - file: scripting/modules-scripting-use-parameters.md
+              - file: scripting/modules-scripting-shorten-script.md
+              - file: scripting/modules-scripting-store-and-retrieve.md
+              - file: scripting/modules-scripting-update-documents.md
+          - file: scripting/common-script-uses.md
+            children:
+              - file: scripting/modules-scripting-fields.md
+              - file: scripting/script-fields-api.md
+              - file: scripting/modules-scripting-type-casting-tutorial.md 
+              - file: scripting/dissect.md
+              - file: scripting/scripting-field-extraction.md
+              - file: scripting/grok.md
+              - file: scripting/scripts-search-speed.md
+              - file: scripting/modules-scripting-document-update-tutorial.md
+              - file: scripting/modules-scripting-regular-expressions-tutorial.md
+              - file: scripting/modules-scripting-datetime-tutorial.md
+          - file: scripting/painless-syntax-context-bridge.md
+          - file: scripting/modules-scripting-security.md
+          - file: scripting/painless-lab.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
-      - file: scripting/painless-lab.md
+
   - file: ai-assistant.md
+  - file: manage-access-to-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
@@ -198,7 +176,7 @@ toc:
       - file: discover/save-open-search.md
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
-      - file: discover/search-sessions.md
+      - file: discover/background-search.md
       - file: discover/try-esql.md
   - file: dashboards.md
     children:
@@ -224,6 +202,8 @@ toc:
       - file: visualize/visualize-library.md
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
+        children:
+          - hidden: visualize/charts/metric-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
@@ -365,4 +345,5 @@ toc:
           - file: alerts-cases/cases/setup-cases.md
           - file: alerts-cases/cases/manage-cases.md
           - file: alerts-cases/cases/manage-cases-settings.md
+          - file: alerts-cases/cases/cases-as-data.md   
   - file: numeral-formatting.md
