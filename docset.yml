@@ -97,7 +97,6 @@ subs:
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
-  ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can try it for free: https://cloud.elastic.co/registration."
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"
@@ -285,6 +284,8 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.10.5
+  helm-version: 3.15.4
   ece-docker-images-8: 8.18.8
   ece-docker-images-9: 9.0.8
+
 
