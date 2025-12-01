@@ -314,6 +314,7 @@ When you're ready to move beyond evaluation:
 
 ::::{note}
 Depending on your organization's needs, conventions, and preferences, you might want to evaluate different deployment options. Elastic offers multiple deployment types including {{ecloud}}, {{ece}}, and {{eck}}. Explore the [deployment options](/deploy-manage/deploy.md) to find the best fit for your infrastructure and requirements.
+If you choose to retain your {{ecloud}} deployment, refer to [Remove trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#remove-trial-limitations) and [Maintain access to your trial projects and data](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-happens-at-the-end-of-the-trial).
 ::::
 
 ### Expanding your implementation
