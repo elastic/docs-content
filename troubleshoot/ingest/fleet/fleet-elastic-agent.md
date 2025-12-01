@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Troubleshoot {{fleet}} and {{elastic-agent}} [troubleshooting-intro]
+# Troubleshoot {{fleet}} and {{agent}} [troubleshooting-intro]
 
 This section provides an [FAQ](frequently-asked-questions.md) and [troubleshooting](common-problems.md) tips to help you resolve common problems with {{fleet}} and {{agent}}.
 
