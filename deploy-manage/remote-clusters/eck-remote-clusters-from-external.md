@@ -13,6 +13,8 @@ sub:
 
 # Connect a self-managed {{es}} cluster to an ECK-managed cluster [self-to-eck-remote-clusters]
 
+(this doc is a WIP)
+
 These steps describe how to configure remote clusters between a self-managed {{es}} cluster and an {{es}} cluster managed by [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 If the local deployment is on ECH or ECE, refer to:
@@ -44,10 +46,7 @@ Intro: this doc assumes the local cluster is a self-managed cluster.
 
 :::{include} _snippets/apikeys-prerequisites-limitations.md
 :::
-
-GPT:
-- You must have administrative access to the self-managed {{es}} cluster (API or filesystem access).
-- The self-managed cluster must be able to establish outbound TLS connections to the remote cluster server endpoint exposed by the ECK-managed cluster.
+- extra reqs to include?
 
 ### Enable the remote cluster server interface on the remote ECK cluster
 
