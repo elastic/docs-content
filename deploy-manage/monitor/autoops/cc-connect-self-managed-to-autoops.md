@@ -126,9 +126,9 @@ Depending on your selected installation method, you may have to provide the foll
 
 With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
-1. Open your self-managed cluster's Kibana
+1. Go to {{kib}} in your self-managed cluster.
 2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-3.  Select **Create API key**.
+3. Select **Create API key**.
 4. In the flyout, enter a name for your key and select **User API key**.
 5. Enable **Control security privileges** and enter the following script:
 ```json
@@ -171,7 +171,7 @@ With this authentication method, you need to create an API key to grant access t
 
 With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
 
-* (Recommended) Open your self-managed cluster's Kibana and go to **Developer tools**. In **Console**, run the following command:
+* (Recommended) Go to {{kib}} in your self-managed cluster and then go to **Developer tools**. In **Console**, run the following command:
 ```js
 POST /_security/role/autoops
 {
