@@ -14,7 +14,7 @@ In serverless projects, the following types of API keys exist:
 - **Personal** API keys, that you can create to allow external services to access your serverless project on behalf of a user.
 - **Managed** API keys, created and managed by {{kib}} to correctly run background tasks.
 
-You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-keys-app}}**:
+You can manage your keys in **{{project-settings}} → {{manage-app}} → API keys**:
 
 :::{image} /deploy-manage/images/serverless-api-key-management.png
 :alt: API keys UI
@@ -24,7 +24,7 @@ You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-
 
 ## Create an API key [api-keys-create-an-api-key]
 
-In **{{api-keys-app}}**, click **Create API key**:
+In **API keys**, click **Create API key**:
 
 :::{image} /deploy-manage/images/serverless-create-personal-api-key.png
 :alt: Create API key UI
@@ -77,11 +77,11 @@ For the `role_descriptors` object schema, check out the [`/_security/api_key` en
 
 ## Update an API key [api-keys-update-an-api-key]
 
-In **{{api-keys-app}}**, click on the name of the key. You can update only **Restrict privileges** and **Include metadata**.
+In **API keys**, click on the name of the key. You can update only **Restrict privileges** and **Include metadata**.
 
 
 ## View and delete API keys [api-keys-view-and-delete-api-keys]
 
-The **{{api-keys-app}}** app lists your API keys, including the name, date created, and status. When API keys expire, the status changes from `Active` to `Expired`.
+The **API keys** app lists your API keys, including the name, date created, and status. When API keys expire, the status changes from `Active` to `Expired`.
 
 You can delete API keys individually or in bulk.
