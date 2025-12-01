@@ -10,7 +10,7 @@ products:
 
 You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
-Note that running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don’t currently provide {{agent}} container images for Windows.
+Running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don't currently provide {{agent}} container images for Windows.
 
 In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have been changed to Red Hat UBI (Universal Base Image) minimal based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. Refer to [#6427]({{agent-pull}}6427) for details.
 
@@ -189,10 +189,10 @@ If you’d like to run {{agent}} in a Docker container on a read-only file syste
 For example:
 
 ```bash subs=true
-docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
+docker run --rm --mount source=$(pwd)/state,destination=/state -e STATE_PATH=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
 ```
 
-1. Where `{STATE_PATH}` is the path to a stateful directory to mount where {{agent}} application data can be stored.
+1. Where `STATE_PATH` is the path to a stateful directory to mount where {{agent}} application data can be stored.
 
 You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destination=/state...`) to specify a temporary file storage location. This should be done with caution as it can cause data duplication, particularly for logs, when the container is restarted, as no state data is persisted.
 

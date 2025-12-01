@@ -39,7 +39,8 @@ inputs:
     data_stream.namespace: default
     use_output: default
     streams:
-      - metricset: cpu
+      - metricsets:
+          - cpu
         data_stream.dataset: system.cpu
 ```
 

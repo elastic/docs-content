@@ -16,7 +16,7 @@ Elastic provides two main ways to send data to {{es}}:
 
 The method you use depends on your use case, which features you need, and whether you want to centrally manage your agents.
 
-{{beats}} and {{agent}} can both send data directly to {{es}} or via {{ls}}, where you can further process and enhance the data, before visualizing it in {{kib}}.
+{{beats}} and {{agent}} can both send data directly to {{es}} or through {{ls}}, where you can further process and enhance the data, before visualizing it in {{kib}}.
 
 This article summarizes the features and functionality you need to be aware of before adding new {{agent}}s or replacing your current {{beats}} with {{agent}}s. Starting in version 7.14.0, {{agent}} is generally available (GA).
 
@@ -66,11 +66,11 @@ The following table shows the outputs supported by the {{agent}} in 9.0.0-beta1:
 
 | {{beats}} configuration | {{agent}} support |
 | --- | --- |
-| [Modules](beats://reference/filebeat/configuration-filebeat-modules.md) | Supported via integrations. |
+| [Modules](beats://reference/filebeat/configuration-filebeat-modules.md) | Supported through integrations. |
 | [Input setting overrides](beats://reference/filebeat/advanced-settings.md) | Not configurable. Set to default values. |
 | [General settings](beats://reference/filebeat/configuration-general-options.md) | Many of these global settings are now internal to the agent and should not be modified. |
 | [Project paths](beats://reference/filebeat/configuration-path.md) | {{agent}} configures these paths to provide a simpler and more streamlined configuration experience. |
-| [External configuration file loading](beats://reference/filebeat/filebeat-configuration-reloading.md) | Config is distributed via policy. |
+| [External configuration file loading](beats://reference/filebeat/filebeat-configuration-reloading.md) | Config is distributed through policy. |
 | [Live reloading](beats://reference/filebeat/_live_reloading.md) | Related to the config file reload. |
 | [Outputs](beats://reference/filebeat/configuring-output.md) | Configured through {{fleet}}. See [Supported outputs](#supported-outputs-beats-and-agent). |
 | [SSL](beats://reference/filebeat/configuration-ssl.md) | Supported |
@@ -95,7 +95,7 @@ The following table shows a comparison of capabilities supported by {{beats}} an
 | --- |:---:|:---:|:---:| --- |
 | Single agent for all use cases | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | {{agent}} provides logs, metrics, and more. You’d need to install multiple {{beats}} for these use cases. |
 | Install integrations from web UI or API | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | {{agent}} integrations are installed with a convenient web UI or API, but {{beats}} modules are installed with a CLI. This installs {{es}} assets such as index templates and ingest pipelines, and {{kib}} assets such as dashboards. |
-| Configure from web UI or API | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "")<br>(optional) | {{fleet}}-managed {{agent}} integrations can be configured in the web UI or API. Standalone {{agent}} can use the web UI, API, or YAML. {{beats}} can only be configured via YAML files. |
+| Configure from web UI or API | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "")<br>(optional) | {{fleet}}-managed {{agent}} integrations can be configured in the web UI or API. Standalone {{agent}} can use the web UI, API, or YAML. {{beats}} can only be configured through YAML files. |
 | Central, remote agent policy management | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | {{agent}} policies can be centrally managed through {{fleet}}. You have to manage {{beats}} configuration yourself or with a third-party solution. |
 | Central, remote agent binary upgrades | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | {{agent}}s can be remotely upgraded through {{fleet}}. You have to upgrade {{beats}} yourself or with a third-party solution. |
 | Add {{kib}} and {{es}} assets for a single integration or module | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | {{agent}} integrations allow you to add {{kib}} and {{es}} assets for a single integration at a time. {{beats}} installs hundreds of assets for all modules at once. |
@@ -111,7 +111,7 @@ The following table shows a comparison of capabilities supported by {{beats}} an
 | Secret management | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | {{agent}} stores credentials in the agent policy. {{beats}} allows users to access credentials in a local [keystore](beats://reference/filebeat/keystore.md). |
 | Progressive or canary deployments | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "")<br>{applies_to}`stack: ga 9.1.0` | ![yes](images/green-check.svg "") | To upgrade {{fleet}}-managed {{agents}} progressively, you can [configure an automatic upgrade](upgrade-elastic-agent.md#auto-upgrade-agents) in the {{agent}} policy. {applies_to}`stack: ga 9.1.0`<br><br>With standalone {{agent}} and {{beats}} you can deploy configuration files progressively using third party solutions. |
 | Multiple configurations per host | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "")<br>(uses input conditions instead) | ![no](images/red-x.svg "")<br>(uses input conditions instead) | {{agent}} uses a single {{agent}} policy for configuration, and uses [variables and input conditions](dynamic-input-configuration.md) to adapt on a per-host basis. {{beats}} supports multiple configuration files per host, enabling third party solutions to deploy files hierarchically or in multiple groups, and enabling finer-grained access control to those files. |
-| Compatible with version control and infrastructure as code solutions | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "")<br>(only via API) | ![yes](images/green-check.svg "") | Agent policies created in the {{fleet}} UI can't be managed with external version control or infrastructure as code solutions. However, you could develop a solution that [uses the {{fleet}} API or adds a preconfigured policy to Kibana](/reference/fleet/create-policy-no-ui.md). {{beats}} and {{agent}} in standalone mode use a YAML file that is compatible with these solutions. |
+| Compatible with version control and infrastructure as code solutions | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "")<br>(only using API) | ![yes](images/green-check.svg "") | Agent policies created in the {{fleet}} UI can't be managed with external version control or infrastructure as code solutions. However, you could develop a solution that [uses the {{fleet}} API or adds a preconfigured policy to Kibana](/reference/fleet/create-policy-no-ui.md). {{beats}} and {{agent}} in standalone mode use a YAML file that is compatible with these solutions. |
 | Spooling data to local disk | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | This feature is currently being [considered for development](https://github.com/elastic/elastic-agent/issues/3490). |
 
 
