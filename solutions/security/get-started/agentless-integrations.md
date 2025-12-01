@@ -23,7 +23,7 @@ There is a limit of 5 agentless integrations per project.
 ## Requirements
 
 * Agentless integrations are supported only on {{ech}}, {{sec-serverless}}, and {{obs-serverless}} deployments.
-* On {{ech}}, agentless integrations require a working [{{fleet-server}}](/reference/fleet/fleet-server).
+* On {{ech}}, agentless integrations require a working [{{fleet-server}}](/reference/fleet/fleet-server.md).
 * To set up a new agentless integration, you need the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ## Generally available (GA) agentless integrations
