@@ -37,7 +37,7 @@ As a general rule, aim for tens of partitions, not hundreds. Each partition come
 
 You only *need* a partition when you want a subset of your data to follow a different lifecycle than the rest.
 
-For example, suppose a noisy firewall and a quiet custom application send logs to the same stream. The firewall logs don't need to be retained as long and take up disk space. In this case, partition the stream and assign a different [{{ilm-init}} policy or retention setting](./retention.md) to each child stream:
+For example, suppose you have a noisy firewall and a quiet custom application sending logs to the same stream. You don't need to retain the firewall logs for as long and they take up disk space. In this case, you can partition the stream and assign a different [{{ilm-init}} policy or retention setting](./retention.md) to each child stream:
 
 ```bash
 logs
