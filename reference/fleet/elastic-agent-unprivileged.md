@@ -59,26 +59,17 @@ elastic-agent install `
 
 :::::
 
-::::{important}
-Note the following current restrictions for running {{agent}} in `unprivileged` mode:
+## Limitations
 
-* On Linux systems, after {{agent}} has been installed with the `--unprivileged` flag, all {{agent}} commands can be run without being the root user.
+Note the following limitations for running {{agent}} in `unprivileged` mode:
 
-    The `sudo` option is still required for the `elastic-agent install` command. Only `root` can install new services. The installed service will not run as the root user.
+* On Linux systems, you must use `sudo` to run the `elastic-agent install` command because only the root user can install new services. However, if you install {{agent}} with the `--unprivileged` flag, the service does not run as root, and you can run all {{agent}} commands without being the root user.
+* When running {{agent}} in `unprivileged` mode, using `sudo` with {{agent}} commands can cause [an error](/troubleshoot/ingest/fleet/common-problems.md#agent-sudo-error) because the agent does not have the required privileges. To avoid this, run commands as the user that runs the {{agent}} service by using `sudo -u elastic-agent-user`.
+* For files that grant access to users in the `elastic-agent` group, you can also run commands as any user that belongs to that group. However, some commands are only available to the `elastic-agent-user` that runs the service. For example, `elastic-agent inspect` must be run as that user:
 
-* Using `sudo` without specifying an alternate non-root user with `sudo -u` in a command may result in [an error](/troubleshoot/ingest/fleet/common-problems.md#agent-sudo-error) due to the agent not having the required privileges.
-* Using `sudo -u elastic-agent-user` will run commands as the user running the {{agent}} service and will always work.
-* For files that allow users in the `elastic-agent` group access, using an alternate user that has been added to that group will also work. There are still some commands that are only accessible to the `elastic-agent-user` that runs the service.
-
-    For example, `elastic-agent inspect` requires you to prefix the command with `sudo -u elastic-agent-user`.
-
-    ```shell
-    sudo -u elastic-agent-user elastic-agent inspect
-    ```
-
-
-::::
-
+  ```shell
+  sudo -u elastic-agent-user elastic-agent inspect
+  ```
 
 
 ## Agent and dashboard behaviors in unprivileged mode [unprivileged-command-behaviors]
