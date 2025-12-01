@@ -3,7 +3,7 @@
 Learn how to make documentation updates directly in your browser without setting up a local development environment.
 
 :::{tip}
-If you're working in [GitHub Codespaces](https://github.com/features/codespaces) or [github.dev](https://github.dev), you can install the [VS Code extension](tools.md#vs-code-extension) to simplify the authoring experience.
+If you're working in [GitHub Codespaces](https://github.com/features/codespaces) or [github.dev](https://github.dev), you can install the [Elastic Docs Utilities extension](vscode-extension.md) to simplify the authoring experience.
 :::
 
 ## Suggesting quick edits

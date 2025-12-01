@@ -8,7 +8,7 @@ products:
 
 # Using a proxy server with Elastic Agent and Fleet [fleet-agent-proxy-support]
 
-Many enterprises secure their assets by placing a proxy server between them and the internet. The main role of the proxy server is to filter content and provide a single gateway through which all traffic traverses in and out of a data center. These proxy servers provide a various degree of functionality, security and privacy.
+Many enterprises secure their assets by placing a proxy server between them and the internet. The main role of the proxy server is to filter content and provide a single gateway through which all traffic traverses in and out of a data center. These proxy servers provide a various degree of functionality, security, and privacy.
 
 Your organization’s security strategy and other considerations may require you to use a proxy server between some components in your deployment. For example, you may have a firewall rule that prevents endpoints from connecting directly to {{es}}. In this scenario, you can set up the {{agent}} to connect to a proxy, then the proxy can connect to {{es}} through the firewall.
 
