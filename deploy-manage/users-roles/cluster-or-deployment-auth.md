@@ -73,5 +73,7 @@ To create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users
 :::
 
 :::{admonition} Control access at the document and field level in {{serverless-short}}
-{{serverless-full}} centralizes user management with [Cloud organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). You can configure [document and field-level access control](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) in {{serverless-full}} projects by creating project-level custom roles assigned to Cloud organization users.
+:::{include} /deploy-manage/_snippets/serverless-document-field-level-access-control.md
+:::
+
 :::

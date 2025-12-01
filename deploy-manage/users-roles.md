@@ -49,7 +49,8 @@ For {{ech}} deployments, you can configure SSO at the organization level, the de
 {{ech}} deployments can also use [cluster-level authentication and authorization](/deploy-manage/users-roles/cluster-or-deployment-auth.md). Cluster-level auth features are not available for {{serverless-full}}.
 
 :::{admonition} Granular data access control in {{serverless-short}}
-{{serverless-full}} centralizes user management with [Cloud organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). You can configure [document and field-level access control](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) in {{serverless-full}} projects by creating project-level custom roles assigned to Cloud organization users.
+:::{include} _snippets/serverless-document-field-level-access-control.md
+:::
 :::
 
 ## Orchestrator level
