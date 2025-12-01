@@ -74,7 +74,8 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        # Set the auth and proxy the request
+        # Set the Authorization header in the proxyed request. It's recommended to get it from a secrets manager
+        # instead of harcoding it here.
         proxy_set_header Authorization 'ApiKey ...your Elastic API key...';
         proxy_pass https://collector.example.com:4318;
     }
@@ -85,7 +86,7 @@ server {
 
 :::{tab-item} Configure Collector for CORS
 
-If the collector is publicly available, you can send the telemetry data directly to it. Your collector must be available under a domain name, for example `collector.example.com:4318`, 4318 being the default port for the OTLP HTTP/JSON protocol). Your web application sends data from its own origin `webapp.example.com` to a different one, and [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) should be configured so browsers allow sending data to a different origin.
+If the collector is publicly available, you can send the telemetry data directly to it. Your collector must be available under a domain name, for example `collector.example.com:4318` (4318 being the default port for the OTLP HTTP/JSON protocol). Your web application sends data from its own origin `webapp.example.com` to a different one, and [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) should be configured so browsers allow sending data to a different origin.
 
 Take these aspects into consideration:
 
@@ -107,9 +108,7 @@ receivers:
         endpoint: 0.0.0.0:4318 # Listen on all interfaces
         auth:
           authenticator: apikeyauth
-        # configure CORS for RUM
-        # ref: https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md#server-configuration
-        cors:
+        cors: # Configure CORS for RUM. ref: https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md#server-configuration
           allowed_origins:
             - http://*.example.com
             - https://*.example.com
