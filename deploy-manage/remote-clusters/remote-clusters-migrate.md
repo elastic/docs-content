@@ -109,7 +109,7 @@ On the remote cluster:
 
 On the local cluster, stop any persistent tasks that refer to the remote cluster:
 
-* Use the [Stop {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform) API to stop any transforms.
+* Use the [Stop transforms](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform) API to stop any transforms.
 * Use the [Close jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-close-job) API to close any anomaly detection jobs.
 * Use the [Pause auto-follow pattern](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-pause-auto-follow-pattern) API to pause any auto-follow {{ccr}}.
 * Use the [Pause follower](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-pause-follow) API to pause any manual {{ccr}} or existing indices that were created from the auto-follow pattern.
@@ -218,7 +218,7 @@ On the local cluster:
 
 Resume any persistent tasks that you stopped earlier. Tasks should be restarted by the same user or API key that created the task before the migration. Ensure the roles of this user or API key have been updated with the required `remote_indices` or `remote_cluster` privileges. For users, tasks capture the caller’s credentials when started and run in that user’s security context. For API keys, restarting a task will update the task with the updated API key.
 
-* Use the [Start {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform) API to start any transforms.
+* Use the [Start transform](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform) API to start any transforms.
 * Use the [Open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) API to open any anomaly detection jobs.
 * Use the [Resume follower](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-follow) API to resume any auto-follow {{ccr}}.
 * Use the [Resume auto-follow pattern](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-auto-follow-pattern) API to resume any manual {{ccr}} or existing indices that were created from the auto-follow pattern.
