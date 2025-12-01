@@ -1120,8 +1120,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
 * Adds simplified linear retriever [#129200](https://github.com/elastic/elasticsearch/pull/129200)
 * Adds `index_options` to `semantic_text` field mappings [#119967](https://github.com/elastic/elasticsearch/pull/119967)
-* Adds simplified rrf retriever [#129659](https://github.com/elastic/elasticsearch/pull/129659)
-* Simplified linear and RRF retrievers - Return error on empty fields param [#129962](https://github.com/elastic/elasticsearch/pull/129962)
+* Adds simplified RRF retriever [#129659](https://github.com/elastic/elasticsearch/pull/129659)
+* Simplified linear and RRF retrievers - Return error on empty fields parameter [#129962](https://github.com/elastic/elasticsearch/pull/129962)
 
 ## June 17, 2025 [serverless-changelog-06172025]
 
