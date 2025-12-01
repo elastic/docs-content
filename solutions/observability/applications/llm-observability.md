@@ -1,5 +1,5 @@
 ---
-navigation_title: LLM and Agentic AI Observability
+navigation_title: LLM and agentic AI observability
 ---
 
 # LLM and Agentic AI Observability
