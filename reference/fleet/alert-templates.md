@@ -5,7 +5,7 @@ applies_to:
 products:
   - id: fleet
   - id: elastic-agent
-navigation_title: Built-in alerts and templates
+navigation_title: Elastic Agent built-in alerts
 ---
 
 # Elastic Agent built-in alerts [built-in-alerts]

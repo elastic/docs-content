@@ -10,7 +10,7 @@ navigation_title: Alerting rule templates
 
 # Alerting rule templates [alerting-rule-templates]
 
-Alerting rule templates are out-of-the-box alert definitions that come bundled with [Elastic integrations](integration-docs://reference/index.md)), enabling users to quickly set up monitoring without writing queries from scratch. 
+Alerting rule templates are out-of-the-box alert definitions that come bundled with [Elastic integrations](integration-docs://reference/index.md), enabling users to quickly set up monitoring without writing queries from scratch. 
 
 Templates help you start monitoring in minutes by providing curated {{esql}} queries and recommended thresholds tailored to each integration. 
 
