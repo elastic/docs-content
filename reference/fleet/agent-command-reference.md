@@ -51,6 +51,7 @@ Gather diagnostics information from the {{agent}} and component/unit it’s runn
 * otel.yaml - the OpenTelemetry collector configuration file used with the `otel` sub-command
 * otel-merged.yaml - the final configuration file provided to the OpenTelemetry collector including any internally generated collector components.
 * variables.yaml - current variable contexts from providers
+* environment.yaml - current environment variables visible to the Elastic Agent process.
 * computed-config.yaml - configuration after variable substitution
 * components-expected.yaml - expected computed components model from the computed-config.yaml
 * components-actual.yaml - actual running components model as reported by the runtime manager
