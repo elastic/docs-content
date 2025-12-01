@@ -32,8 +32,8 @@ You can set up CSPM for GCP either by enrolling a single project, or by enrollin
 
 Two deployment technologies are available: agentless and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage an agent in the cloud project or projects you want to monitor.
+* [Agentless deployment](#cspm-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
+* [Agent-based deployment](#cspm-gcp-agent-based) requires you to deploy and manage an agent in the cloud project or projects you want to monitor.
 
 
 ## Agentless deployment [cspm-gcp-agentless]
