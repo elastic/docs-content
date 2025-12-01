@@ -31,8 +31,14 @@ Open a new case to keep track of issues and share their details with colleagues.
 
 4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](setup-cases.md).
 5. If you defined any [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section.
+6. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
 
-6. For the **External incident management system**, select a connector. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
+    ::::{note}
+    :applies_to:{stack: ga 9.2}
+    When specifying **Additional fields** for an {{ibm-r}} connector, custom fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
+    ::::
+
+
 7. After you’ve completed all of the required fields, click **Create case**.
 
 {applies_to}`stack: preview` {applies_to}`serverless: preview` Alternatively, you can configure your rules to automatically create cases by using [case actions](kibana://reference/connectors-kibana/cases-action-type.md). By default, the rule adds all of the alerts within a specified time window to a single case. You can optionally choose a field to group the alerts and create separate cases for each group. You can also choose whether you want the rule to reopen cases or open new ones when the time window elapses.
