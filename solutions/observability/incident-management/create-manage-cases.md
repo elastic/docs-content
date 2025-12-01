@@ -35,7 +35,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
     **For Elastic Stack**, You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
 
 6. If you defined [custom fields](/solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
-7. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](/solutions/observability/incident-management/configure-case-settings#cases-external-connectors).
+7. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](/solutions/observability/incident-management/configure-case-settings.md#cases-external-connectors).
 
     ::::{note}
     :applies_to:{stack: ga 9.3}
