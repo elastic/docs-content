@@ -13,7 +13,7 @@ products:
 
 # Controlling access at the document and field level [field-and-document-access-control]
 
-You can control access to data within a data stream or index by adding field and document level security permissions to a  role.
+You can control access to data within a data stream or index by adding field and document level security permissions to a role.
 
 **Field level security** restricts the fields that users have read access to. In particular, it restricts which fields can be accessed from document-based read APIs.
 
@@ -23,7 +23,7 @@ You can control access to data within a data stream or index by adding field and
 Document and field level security is currently meant to operate with read-only privileged accounts. Users with document and field level security enabled for a data stream or index should not perform write operations.
 ::::
 
-A role can define both field and document level permissions on a per-index basis. A role that doesn’t specify field level permissions grants access to ALL fields. Similarly, a role that doesn’t specify document level permissions grants access to ALL documents in the index.
+A role can define both field and document level permissions on a per-index basis. A role that doesn’t specify field-level permissions grants access to ALL fields. Similarly, a role that doesn’t specify document level permissions grants access to ALL documents in the index.
 
 On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security).
 
@@ -31,18 +31,10 @@ You'll also learn the following:
 * How [multiple roles with document and field level security](#multiple-roles-dls-fls) interact
 * Considerations for using document and field level security when [searching across clusters using cross-cluster API keys](#ccx-apikeys-dls-fls).
 
-The examples on this page use the [Role management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security). However, you can add document and field level security [anywhere you manage custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles).
+The examples on this page use the {{stack}} [Role management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security). However, you can add document and field level security [anywhere you manage cluster-level roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) and {{serverless-short}} project roles.
 
+In {{serverless-full}}, you can only manage document and field level security using the {{ecloud}} console. However, document-level security is still managed using queries, and you can use the queries on this page as a guideline. [Learn more about {{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
 
-:::{{admonition}} Document and field level security in {{serverless-full}}
-This topic explains how to apply document and field level security in {{stack}} and includes steps for achieving similar tasks in {{serverless-full}} projects.
-
-In {{serverless-full}}, you can only manage document and field level security using the {{ecloud}} console. However, document-level security is still managed using queries, and you can use the queries on this page as a guideline.
-
-As an administrator, you can create custom roles in the console that define exactly what data users can access by assigning {{es}} [cluster](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-cluster-privileges) and [index](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-es-index-privileges) privileges and [{{kib}}](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) privileges.
-
-[Learn more](/deploy-manage/users-roles/serverless-custom-roles.md#document-level-and-field-level-security)
-:::
 
 ## Document level security [document-level-security]
 
@@ -121,7 +113,7 @@ POST /_security/role/dept_role
 :sync: serverless
 To configure document-level security (DLS), you create a custom role where you define the documents that this role grants access to, using the [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax:
 
-1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In {{kib}}, go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Create role**.
 1. Give your custom role a meaningful name and description.
 1. In the **Index privileges** area, specify the data stream pattern and the privilege you want to grant. For example, enter `events-*` and `read`.
@@ -438,7 +430,7 @@ The resulting permission is equal to:
 :sync: serverless
 To configure field-level security (FLS), you create a custom role where you define the specific fields that this role grants or denies access to:
 
-1. Go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In {{kib}}, go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Create role**.
 1. Give your custom role a meaningful name and description.
 1. In the **Index privileges** area, specify the data stream pattern and the privilege you want to grant. For example, enter `events-*` and `read`.
