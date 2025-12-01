@@ -20,6 +20,12 @@ During technical preview, there are no additional costs associated with deployin
 There is a limit of 5 agentless integrations per project. 
 ::::
 
+## Requirements
+
+* Agentless integrations are supported only on {{ech}}, {{sec-serverless}}, and {{obs-serverless}} deployments.
+* On {{ech}}, agentless integrations require a working [{{fleet-server}}](/reference/fleet/fleet-server).
+* To set up a new agentless integration, you need the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+
 ## Generally available (GA) agentless integrations
 
 Elastic fully supports agentless deployment for the Cloud Security Posture Management (CSPM) integration. Using this integration’s agentless deployment option, you can enable Elastic’s CSPM capabilities just by providing the necessary credentials. Agentless CSPM deployments support AWS, Azure, and GCP accounts.

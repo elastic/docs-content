@@ -1,9 +1,5 @@
 Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless CSPM integration.
 
-## What deployment types support agentless integrations? {{fleet-server}} or {{fleet}} Service to use agentless integrations?
-
-Agentless integrations are available only on {{ech}}, {{sec-serverless}}, and {{obs-serverless}}.
-
 ## When I make a new integration, when will I see the agent appear on the Integration Policies page? [_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page]
 
 After you create a new agentless integration, the new integration policy may show a button that says **Add agent** instead of the associated agent for several minutes during agent enrollment. No action is needed other than refreshing the page once enrollment is complete.
