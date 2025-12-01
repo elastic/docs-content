@@ -34,7 +34,7 @@ Open a new case to keep track of issues and share their details with colleagues.
 6. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
 
     ::::{note}
-    :applies_to:{stack: ga 9.2}
+    :applies_to:{stack: ga 9.3}
     When specifying **Additional fields** for an {{ibm-r}} connector, custom fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
     ::::
 
