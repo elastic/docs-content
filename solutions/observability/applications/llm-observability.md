@@ -25,7 +25,7 @@ Elastic’s LLM integrations now support the most widely adopted models, includi
 | [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 | 
 
 
-## LLM / Agentic Application Observability with APM (distributed tracing)
+## LLM and agentic AI application observability with APM (distributed tracing)
 
 Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging LLM models hosted on Amazon Bedrock, OpenAI, Azure OpenAI, and GCP Vertex AI, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your LLM-powered application.
 
