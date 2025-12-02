@@ -286,13 +286,13 @@ After completing the setup, you can access AutoOps for your cluster at any time.
 
 Perform the actions described in the following sections to manage your connected cluster(s). 
 
-### Add a cluster display name
+### Add an alias to a cluster
 
-By default, each cluster has a display name made up of a string of characters. You can change this by completing the following steps to add a human-readable name for your cluster. You need admin privileges to perform this action.
+By default, each cluster has a name made up of a string of characters, but you can add a human-readable alias by completing the following steps. You need admin privileges to perform this action.
 
 1. From the [{{ecloud}} home page](https://cloud.elastic.co/home), go to the **Connected clusters** section and select the cluster you want to work on.
-2. On the cluster details page, select **Add** in the **Cluster display name** field.
-3. Enter the name in the field that is displayed and then select the checkmark icon.
+2. On the cluster details page, select **Edit** in the **Cluster display name** field.
+3. Enter the alias in the field that is displayed and then select the checkmark icon.
 
 ### Connect additional clusters
 
