@@ -2,7 +2,7 @@
 navigation_title: Connectivity issues
 description: Troubleshoot connectivity issues between EDOT SDKs, the EDOT Collector, and Elastic.
 applies_to:
-  serverless: all
+  serverless: ga
   product:
       edot_collector: ga  
 products:
@@ -82,7 +82,7 @@ Note: Some SDKs support setting a proxy directly (for example, using `HTTPS_PROX
 
 Application logs report failures when the SDK cannot send data to the Collector or directly to Elastic. These often appear as `connection refused` or `timeout` messages. If seen, verify that the Collector endpoint is reachable.
 
-For guidance on enabling logs in your SDK, see [Enable SDK debug logging](../opentelemetry/edot-sdks/enable-debug-logging.md).
+For guidance on enabling logs in your SDK, refer to [Enable SDK debug logging](../opentelemetry/edot-sdks/enable-debug-logging.md).
 
 Example (Java SDK):
 

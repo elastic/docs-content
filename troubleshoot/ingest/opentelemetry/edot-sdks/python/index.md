@@ -25,14 +25,14 @@ As a first step, review the [supported technologies](elastic-otel-python://refer
 
 Follow these recommended actions to make sure that EDOT Python is configured correctly.
 
-### EDOT Logging level 
+### EDOT logging level 
 
 ```{applies_to}
 product:
   edot_python: ga 1.9.0
 ```
 
-You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values.
+You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values. For more detailed debugging information, refer to [Enable debug logging for EDOT SDKs](enable-debug-logging.md).
 
 ### Log configuration
 
@@ -68,6 +68,8 @@ If only a subset of instrumentation are causing disruptions, turn them off using
 ## Missing logs
 
 Activating the Python logging module auto-instrumentation with `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true` calls the [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) method that makes your own application calls to it a no-op. The side effect of this is that you won't see your application logs in the console. If you are already shipping logs by other means, you don't need to turn this on.
+
+If you're not seeing telemetry data in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](missing-app-telemetry.md) for troubleshooting steps.
 
 ## Check stability of semantic conventions
 

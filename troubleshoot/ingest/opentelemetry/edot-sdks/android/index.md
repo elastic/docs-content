@@ -25,11 +25,11 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 The SDK creates logs that allow you to see what it's working on and what might have failed at some point. You can find the logs in [logcat](https://developer.android.com/studio/debug/logcat), filtered by the tag `ELASTIC_AGENT`.
 
-For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration.
+For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](../enable-debug-logging.md).
 
 ## Connectivity to the {{stack}}
 
-If after following the [getting started](apm-agent-android://reference/edot-android/getting-started.md) guide and configuring your {{stack}} [endpoint parameters](apm-agent-android://reference/edot-android/configuration.md#export-connectivity), you can't see your application's data in {{kib}}, you can follow the following tips to try and figure out what could be wrong.
+If after following the [getting started](apm-agent-android://reference/edot-android/getting-started.md) guide and configuring your {{stack}} [endpoint parameters](apm-agent-android://reference/edot-android/configuration.md#export-connectivity), you can't see your application's data in {{kib}}, you can follow the following tips to try and figure out what could be wrong. For more detailed connectivity troubleshooting, refer to [Connectivity issues](../../connectivity.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](../missing-app-telemetry.md) or [No data visible in {{kib}}](../../no-data-in-kibana.md).
 
 ### Check out the logs
 

@@ -2,7 +2,7 @@
 navigation_title: Export errors from the EDOT Collector
 description: Learn how to resolve export failures caused by `sending_queue` overflow and Elasticsearch exporter timeouts in the EDOT Collector.
 applies_to:
-  serverless: all
+  serverless: ga
   product:
     edot_collector: ga  
 products:

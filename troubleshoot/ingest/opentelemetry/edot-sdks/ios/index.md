@@ -24,7 +24,7 @@ When troubleshooting the EDOT iOS agent, ensure your app is compatible with the 
 
 ## SDK fails to export data
 
-If your app is running but no telemetry reaches Elastic, the SDK might be failing to send data to the configured endpoint.
+If your app is running but no telemetry reaches Elastic, the SDK might be failing to send data to the configured endpoint. For connectivity troubleshooting, refer to [Connectivity issues](../../connectivity.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](../missing-app-telemetry.md) or [No data visible in {{kib}}](../../no-data-in-kibana.md).
 
 ### Symptoms [symptoms-fail-to-export]
 

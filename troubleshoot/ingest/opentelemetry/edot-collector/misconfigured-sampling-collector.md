@@ -2,7 +2,7 @@
 navigation_title: Collector sampling issues
 description: Learn how to troubleshoot missing or incomplete traces in the EDOT Collector caused by sampling configuration.
 applies_to:
-  serverless: all
+  serverless: ga
   product:
     edot_collector: ga  
 products:
@@ -16,7 +16,7 @@ If traces or spans are missing in {{kib}}, the issue might be related to the Col
 
 {applies_to}`stack: ga 9.2` Tail-based sampling (TBS) allows the Collector to evaluate entire traces before deciding whether to keep them. If TBS policies are too strict or not aligned with your workloads, traces you expect to see may be dropped.
 
-Both Collector-based and SDK-level sampling can lead to gaps in telemetry if not configured correctly. See [Missing or incomplete traces due to SDK sampling](../edot-sdks/misconfigured-sampling-sdk.md) for more information.
+Both Collector-based and SDK-level sampling can lead to gaps in telemetry if not configured correctly. Refer to [Missing or incomplete traces due to SDK sampling](../edot-sdks/misconfigured-sampling-sdk.md) for more information.
 
 ## Symptoms
 

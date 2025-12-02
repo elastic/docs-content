@@ -2,9 +2,7 @@
 navigation_title: SDK sampling issues
 description: Learn how to troubleshoot missing or incomplete traces in EDOT SDKs caused by head sampling configuration.
 applies_to:
-  serverless: all
-  product:
-    elastic-otel-sdk: ga
+  serverless: ga
 products:
   - id: observability
   - id: edot-sdk
@@ -12,7 +10,7 @@ products:
 
 # Missing or incomplete traces due to SDK sampling
 
-If traces or spans are missing in Kibana, the issue might be related to SDK-level sampling configuration. By default, SDKs use head-based sampling, meaning the decision to record or drop a trace is made when the trace is first created.
+If traces or spans are missing in {{kib}}, the issue might be related to SDK-level sampling configuration. By default, SDKs use head-based sampling, meaning the decision to record or drop a trace is made when the trace is first created.
 
 Both SDK-level and Collector-based sampling can result in gaps in telemetry if misconfigured. Refer to [Missing or incomplete traces due to Collector sampling](../edot-collector/misconfigured-sampling-collector.md) for more details.
 
