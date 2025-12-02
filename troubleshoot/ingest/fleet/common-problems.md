@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Common problems with {{fleet}} and {{elastic-agent}} [fleet-troubleshooting]
+# Common problems with {{fleet}} and {{agent}} [fleet-troubleshooting]
 
 We have collected the most common known problems and listed them here. If your problem is not described here, review the open issues in the following GitHub repositories:
 
