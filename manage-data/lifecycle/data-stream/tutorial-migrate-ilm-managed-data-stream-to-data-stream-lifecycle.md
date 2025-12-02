@@ -8,10 +8,11 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Migrate ILM managed data stream to data stream lifecycle [tutorial-migrate-data-stream-from-ilm-to-dsl]
+# Migrating {{ilm-init}}-managed data streams to data stream lifecycle [tutorial-migrate-data-stream-from-ilm-to-dsl]
 
-In this tutorial we’ll look at migrating an existing data stream from [Index Lifecycle Management ({{ilm-init}})](../index-lifecycle-management.md) to [data stream lifecycle](../data-stream.md). The existing {{ilm-init}} managed backing indices will continue to be managed by {{ilm-init}} until they age out and get deleted by {{ilm-init}}; however, the new backing indices will be managed by data stream lifecycle. This way, a data stream is gradually migrated away from being managed by {{ilm-init}} to being managed by data stream lifecycle. As we’ll see, {{ilm-init}} and data stream lifecycle can co-manage a data stream; however, an index can only be managed by one system at a time.
+This tutorial describes how to migrate a data stream from [Index Lifecycle Management ({{ilm-init}})](../index-lifecycle-management.md) to the newer [data stream lifecycle](../data-stream.md). It explains migration steps, compatibility considerations, and validation best practices.
 
+The existing {{ilm-init}} managed backing indices will continue to be managed by {{ilm-init}} until they age out and get deleted by {{ilm-init}}; however, the new backing indices will be managed by data stream lifecycle. This way, a data stream is gradually migrated away from being managed by {{ilm-init}} to being managed by data stream lifecycle. As we’ll see, {{ilm-init}} and data stream lifecycle can co-manage a data stream; however, an index can only be managed by one system at a time.
 
 :::{admonition} Configure data retention policies for Streams
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
