@@ -555,7 +555,7 @@ toc:
       - file: users-roles/serverless-custom-roles.md
         children:
           - title: "Control access at the document and field level"
-            crosslink: docs-content://deploy-manage/users-roles/serverless-custom-roles/document-field-level-security.md
+            crosslink: docs-content://deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
       - file: users-roles/cluster-or-deployment-auth.md
         children:
           - file: users-roles/cluster-or-deployment-auth/quickstart.md
