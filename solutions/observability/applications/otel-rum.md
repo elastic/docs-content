@@ -13,26 +13,26 @@ products:
 # OpenTelemetry for Real User Monitoring (RUM)
 
 :::{important}
-Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in **Technical Preview**. This feature is provided as-is and has [limitations](#known-limitations). It should not be used in production environments. Elastic provides best-effort support for Technical Preview features and they are not covered under standard SLAs.
+Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in **Technical Preview**. This feature may be changed or removed in a future release and has [limitations](#known-limitations). It should not be used in production environments. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 :::
 
-This documentation outlines the process for instrumenting your web application with OpenTelemetry browser instrumentation, using {{product.observability}} as the backend. Unlike the [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md), this approach uses upstream OpenTelemetry JavaScript packages directly. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
+This documentation outlines the process for instrumenting your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. This approach uses upstream OpenTelemetry packages directly unlike the [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md). The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
 
-While this guide uses upstream OpenTelemetry instrumentation, you can also use the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) components as part of your data ingestion pipeline.
+While this guide uses upstream OpenTelemetry instrumentation, you can use the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) components as part of your data ingestion pipeline.
 
 ## Prerequisites
 
 This guide assumes you're using an {{product.observability}} deployment. You can use an existing one or set up a new one. If you're new to {{product.observability}}, follow the guidelines in [Get started with {{product.observability}}](/solutions/observability/get-started.md).
 
 :::{warning}
-Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using OTel RUM agent alongside any other {{apm-agent}}, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ### OTLP endpoint
 
-You need an OTLP Collector to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md).
+You need an OpenTelemetry Collector to receive data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md).
 
-Depeding on where the collector is placed in your infrastructure you might have two setup options:
+Depending on where the collector is placed in your infrastructure you might have two setup options:
 
 1. Reverse proxy (recommended): Take this approach if you're using {{motlp}} or if your collector is not publicly available. Refer to the next section for further information.
 
@@ -91,7 +91,7 @@ If the collector is publicly available, you can send the telemetry data directly
 Take these aspects into consideration:
 
 - Every time you add a new application, you need to update the CORS configuration to add the new origin. Using a wildcard value like `https://*` is discouraged because you are allowing any website to be able to send data to the collector. A more convenient configuration is to have a wildcard per subdomains like `https://*.example.com`.
-- Your collector requires an authorization header and the OpenTelemetry instrumentation is sending data directly to it. This means you should add the required header with the API key value in the instrumentation script. This script is visible to anyone that has access to the app.
+- Your collector requires an `Authorization` header and the OpenTelemetry instrumentation is sending data directly to it. This means you should add the required header with the API key value in the instrumentation script. This script is visible to anyone that has access to the app.
 
 This is a basic EDOT Collector configuration file that activates CORS:
 
