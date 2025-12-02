@@ -85,7 +85,7 @@ Accounts in the free trial period are subject to token limits that are considere
 
 - 50 requests per minute
 - No rate limit on tokens
-- Fair usage limit while account is in free trial: 100M input tokens in 24h or 5M output tokens in 24h
+- Fair usage limit while account is in free trial: 100 million input tokens in 24h or 5 million output tokens in 24h
 
 ### ELSER (Sparse Embeddings)
 
@@ -95,10 +95,10 @@ We limit on both requests per minute and tokens per minute (whichever limit is r
 
 - 6,000 request per minute
 - 6,000,000 tokens per minute
-- Fair usage limit while account is in free trial: 1B tokens in 24h
+- Fair usage limit while account is in free trial: 1 billion tokens in 24h
 
 #### Search
 
 - 6,000 requests per minute
 - 600,000 tokens per minute
-- Fair usage limit while account is in free trial: 1B tokens in 24h
+- Fair usage limit while account is in free trial: 1 billion tokens in 24h
