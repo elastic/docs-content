@@ -30,6 +30,7 @@ toc:
           - file: data-store/data-streams/logs-data-stream.md
             children:
               - file: data-store/data-streams/logs-data-stream-integrations.md
+              - file: data-store/data-streams/logs-data-stream-configure.md
           - file: data-store/data-streams/failure-store.md
             children:
               - file: data-store/data-streams/failure-store-recipes.md

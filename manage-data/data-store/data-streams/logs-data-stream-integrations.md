@@ -2,33 +2,51 @@
 applies_to:
   stack: ga
   serverless: ga
+  deployment:
+    ess: ga
 navigation_title: "Enable logsdb for integrations"
 products:
   - id: elasticsearch
 ---
 
-# Enable `logsdb` for existing Elastic integrations [enable-logsdb-integrations]
+# Enable `logsdb` mode for {{product.integrations}} [enable-logsdb-integrations]
 
-::::{tip}
-This section explains how to enable `logsdb` index mode on Elastic [integrations](reference://integrations.md) that are already installed. If you're creating a new logs data stream from scratch, refer to [Create a logs data stream](logs-data-stream.md#how-to-use-logsds).
+This page explains how to enable `logsdb` index mode for [{{product.integrations}}](integration-docs://reference/index.md) that are already installed. 
+
+:::{tip}
+If you're creating a new logs data stream from scratch, refer to [Create a logs data stream](logs-data-stream.md#how-to-use-logsds).
+:::
+
+% TODO better xrefs
+
+{{integrations}} use [index templates](../templates.md) managed by Elastic. To enable `logsdb` mode, create custom [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) that apply the setting to the integration's log data.
+
+:::::{stepper}
+
+::::{step} Find your installed integrations 
+
+% TODO check navigation patterns in integration docs
+% TODO package mainfest?
+
+Go to the **{{integrations}}** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Check the list of **Installed integrations** and note the name of the integration you want to modify (for example, `MySQL`).
+
+% TODO: add screenshot?
+
 ::::
 
-Integrations use [index templates](../templates.md) managed by Elastic. To enable `logsdb` mode for an existing integration, modify the integration's backing templates by applying custom component templates (`@custom`).
+::::{step} Confirm the integration collects logs
 
-Before enabling `logsdb` mode for a specific integration, confirm its name and data stream types:
+Not all integrations collect log data. To make sure your integration includes logs, run the following command, specifying your integration name and version:
 
-1. **Integration name**: The name of the integration in the package manifest. For example, the [MySQL integration](reference://integrations/mysql.md) is named `mysql`. If you're not sure which integration you need to modify, refer to [Find integrations with logs data streams](#find-integrations-logsdb).
-
-2. **Logs data streams**: Make sure the integration includes logs data streams  configured with `type: logs`. For example, the MySQL error integration has data streams named `mysql.error` and `mysql.slowlog`.
-
-To check for logs data streams using the command line:
+% TODO streamline with | .dataset ?
 
 ```bash
 curl -sL epr.elastic.co/package/mysql/1.28.1 | jq '.data_streams[] |
 select(.type == "logs") | {dataset, type}'
 ```
 
-Example output:
+If the integration collects logs, the command returns one or more dataset names:
+
 ```json
 {
   "dataset": "mysql.error",
@@ -40,87 +58,101 @@ Example output:
 }
 ```
 
-### Find integrations with logs data streams [find-integrations-logsdb]
+Note these dataset names for use in later steps.
 
-If you're not sure which integration you need to work with, follow these steps to find installed integrations with logs data streams (or to check the index mode):
+If the command returns nothing, the integration does not collect logs and `logsdb` mode does not apply.
 
-1. Navigate to **Stack Management** → **Index Management** → **Data Streams**.
-2. Search for the integration name, or browse the list.
-3. Check the **Index mode** column to confirm the current setting.
-
-### Enable logsdb mode with custom component templates [enable-logsdb-custom-templates]
-
-To enable logsdb mode by using custom component templates, follow the steps in this section.
-
-% TODO confirm placement
-
-::::{important}
-For index mode changes to take effect, the data stream must be [rolled over](/manage-data/data-store/data-streams#data-streams-rollover.md) (automatically or manually).
 ::::
 
-#### Step 1: Check for existing @custom component templates
 
-First, check whether `@custom` component templates already exist for the integration:
+::::{step} Create custom component templates
 
-1. Navigate to **Index Management** → **Component Templates**.
-2. Search for `@custom`.
+To enable `logsdb` mode, add the `index.mode: logsdb` setting to a custom component template for each log dataset.
 
-#### Step 2: Update or create custom component templates
+First, check whether custom component templates already exist for your integration:
 
-Depending on whether `@custom` templates already exist, choose one of the following options:
+% TODO confirm navigation patterns 
 
-% TODO this is not how we do options; fix it
+1. Go to the **Component Templates** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for the integration name, such as `mysql`. Look for templates ending in `@custom`, such as `logs-mysql.error@custom`.
 
-**Option A: Edit existing @custom component templates**
+If matching component templates exist, edit them to add the `logsdb` setting. Otherwise, create new component templates using one of the following methods:
 
-If the integration already has `@custom` component templates, edit them to add the `logsdb` index mode setting.
+::::{tab-set}
 
-% TODO expand
+:::{tab-item} All integration datasets
 
-**Option B: Create new custom component templates**
+You can use a single command to create component templates for all log datasets in an integration:
 
-If no `@custom` templates exist, create a new component template with the `logsdb` index mode setting.
+```bash
+curl -sL epr.elastic.co/package/mysql/1.28.1 | jq '.data_streams[] |
+select(.type == "logs") | .dataset' | xargs -I% curl -s -XPUT \
+-H'Authorization: ApiKey <API_KEY>' -H'Content-Type: application/json' \
+'<ES_URL>/_component_template/logs-%@custom' \
+-d'{"template": {"settings": {"index": {"mode": "logsdb"}}}}'
+```
 
-% TODO confirm this kind of branching in other docs; apply tabs?
+Replace `<API_KEY>` with your API key and `<ES_URL>` with your {{es}} endpoint, and replace the `mysql` example with your integration name.
 
-Using Dev Tools Console:
+:::
+
+:::{tab-item} Single dataset
+
+To create a component template for one dataset at a time, use {{dev-tools-app}} Console or the command line.
+
+The component template name must follow the pattern `logs-<dataset>@custom`. For example, for the `mysql.slowlog` dataset, the corresponding component template name is `logs-mysql.slowlog@custom`.
+
+% TODO confirm this kind of pair (dev tools + cli) in other docs
+
+% TODO validate examples
+
+**{{dev-tools-app}} Console:**
 
 ```console
 PUT _component_template/logs-mysql.slowlog@custom
 {
   "template": {
     "settings": {
-      "mode": "logsdb"
+      "index": {
+        "mode": "logsdb"
+      }
     }
   }
 }
 ```
 
-Using the command line:
+**Command line:**
 
 ```bash
-curl -s -XPOST -H'Authorization: ApiKey <API_KEY>' -H'Content-Type: application/json' \
+curl -s -XPUT -H'Authorization: ApiKey <API_KEY>' -H'Content-Type: application/json' \
 '<ES_URL>/_component_template/logs-mysql.slowlog@custom' \
--d'{"template": {"settings": {"mode":"logsdb"}}}'
+-d'{"template": {"settings": {"index": {"mode": "logsdb"}}}}'
 ```
 
+Repeat for each dataset you want to modify, such as `logs-mysql.error@custom`.
 
-### Enable `logsdb` mode for all data streams in an integration
-To create the required component templates for all logs data streams in a given integration at once:
+::: 
 
-```bash
-curl -sL epr.elastic.co/package/mysql/1.28.1 | jq '.data_streams[] |
-select(.type == "logs") | .dataset' | xargs -I% curl -s -XPOST \
--H'Authorization: ApiKey <API_KEY>' -H'Content-Type: application/json' \
-'<ES_API>/_component_template/logs-%@custom' -d'{"template": {"settings": {"mode":"logsdb"}}}'
-```
+:::: 
 
-### Enable `logsdb` mode for all logs in a cluster [enable-logsdb-cluster-wide]
+:::: 
 
-To enable `logsdb` mode for all logs data streams in a cluster (rather than for individual integrations), create or modify a component template named `logs@custom`. Add the  `mode:logsdb` setting.
+::::{step} Roll over and verify
 
-% TODO confirm placement/addition
+To apply your changes, [roll over](/manage-data/data-store/data-streams.md#data-streams-rollover) the data stream (automatically or manually).
 
-### Apply changes: Roll over data streams
+After rollover, verify that `logsdb` mode is enabled:
 
-For index mode changes to take effect, the data stream must be [rolled over](/manage-data/data-store/data-streams#data-streams-rollover.md) (automatically or manually).
+1. Go to the **Data Streams** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for your integration name (for example, `mysql`).
+3. Check the **Index mode** column.
+
+The index mode column should now show `LogsDB`.
+
+% TODO: add screenshot?
+::::
+
+:::::
+
+
+
