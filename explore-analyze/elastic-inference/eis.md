@@ -27,6 +27,14 @@ The request routing does not restrict the location of your deployments.
 
 ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure and GCP and more regions, we will automatically route requests to the same CSP and closest region the Elaticsearch cluster is hosted on. 
 
+## Model Lifecycle
+
+For the timeline of Claude 3.7:
+October 28, 2025: Legacy mode
+Public extended access:  January 27, 2026
+EOL: April 28, 2026
+From public extended access to EOL, pricing will be higher. After EOL: requests will fail.
+
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 ```{applies_to}
