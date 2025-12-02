@@ -277,7 +277,7 @@ POST _data_stream/_migrate/my-time-series-data
 
 ## Get information about a data stream [get-info-about-data-stream]
 
-You can review metadata about each data stream using the {{kib}} UI or the API, depending if you prefer a visual overview or information in a raw JSON format.
+You can review metadata about each data stream using the {{kib}} UI (visual overview) or the API (raw JSON).
 
 ::::{tab-set}
 :group: set-up-ds
