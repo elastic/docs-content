@@ -21,7 +21,7 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 ## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate license and feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Elastic Managed LLM is available by default if your license supports it. 
+- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Elastic Managed LLM is available by default if your license supports it.
 
 ## AI-powered features on the Elastic platform
 
@@ -107,6 +107,8 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 
 ## AI-powered features in {{observability}}
 
+{{observability}}'s AI-powered features all require an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+
 ### AI assistant for {{observability}}
 ```{applies_to}
 stack:
@@ -121,7 +123,7 @@ serverless: ga
 stack: preview 9.1, ga 9.2
 ```
 
-[Streams](/solutions/observability/streams/streams.md) is an AI-assisted centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data. Streams incorporates AI in the following features:
+[Streams](/solutions/observability/streams/streams.md) is an AI-assisted centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data. Streams leverages AI in the following features:
 
 * [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
 * [Grok processing](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
@@ -151,7 +153,7 @@ serverless:
   security: ga
 ```
 
-[Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors. 
+[Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
 
 This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 
