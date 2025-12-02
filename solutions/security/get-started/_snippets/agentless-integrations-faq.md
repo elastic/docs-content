@@ -1,6 +1,5 @@
 Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless CSPM integration.
 
-
 ## When I make a new integration, when will I see the agent appear on the Integration Policies page? [_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page]
 
 After you create a new agentless integration, the new integration policy may show a button that says **Add agent** instead of the associated agent for several minutes during agent enrollment. No action is needed other than refreshing the page once enrollment is complete.
@@ -37,8 +36,13 @@ To troubleshoot this issue:
 1. Find **{{fleet}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to the **Settings** tab.
 2. Under **{{fleet}} server hosts**, click the **Actions** button for the policy named `Default`. This opens the Edit {{fleet}} Server flyout. The policy named `Default` should have the **Make this {{fleet}} server the default one** setting enabled. If not, enable it, then delete your integration and create it again.
 
-::::{note}
 If the **Make this {{fleet}} server the default one** setting was already enabled but problems persist, it’s possible someone changed the default {{fleet}} server’s **URL** value. In this case, contact Elastic Support to find out what the original **URL** value was, update the settings to match this value, then delete your integration and create it again.
+
+::::{note}
+:applies_to: ess: ga
+In {{ech}} deployments on {{stack}} versions prior to 9.1.6, the connection between agentless integrations and {{fleet-server}} can break if the default {{fleet-server}} host URL value in {{fleet}} is modified or if a different host URL is set as the default.
+
+This issue is resolved in {{stack}} 9.1.6. In this and later versions, agentless integration policies are assigned to a default managed {{fleet-server}} host which cannot be modified.
 ::::
 
 ## Why can't I upgrade my agentless integration to a newer version?
@@ -54,7 +58,6 @@ On the **{{fleet}}** page, agents associated with agentless integrations have na
 2. In {{fleet}}, select the unhealthy agent. 
 3. From the **Actions** menu, select **Request diagnostics .zip**. 
 4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/common-problems.md#trb-collect-agent-diagnostics). Refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md) for more information.
-
 
 ## How do I delete an agentless integration? [_how_do_i_delete_an_agentless_integration]
 
@@ -73,3 +76,4 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 ## Can agentless integrations use a specific range of static IP addresses for configuring allow and deny rules for traffic?
 
 No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
+

@@ -20,7 +20,7 @@ $$$glossary-metadata$$$ @metadata
 
 $$$glossary-action$$$ action
 :   1. The rule-specific response that occurs when an alerting rule fires. A rule can have multiple actions. See [Connectors and actions](kibana://reference/connectors-kibana.md).
-2. In {{elastic-sec}}, actions send notifications via other systems when a detection alert is created, such as email, Slack, PagerDuty, and {{webhook}}.
+2. In {{elastic-sec}}, actions send notifications through other systems when a detection alert is created, such as email, Slack, PagerDuty, and {{webhook}}.
 
 
 $$$glossary-admin-console$$$ administration console
@@ -281,7 +281,7 @@ $$$glossary-eql$$$ Event Query Language (EQL)
 :   [Query](/reference/glossary/index.md#glossary-query) language for event-based time series data, such as logs, metrics, and traces. EQL supports matching for event sequences. See [EQL](/explore-analyze/query-filter/languages/eql.md).
 
 $$$glossary-event$$$ event
-:   A single unit of information, containing a timestamp plus additional data. An event arrives via an input, and is subsequently parsed, timestamped, and passed through the {{ls}} [pipeline](/reference/glossary/index.md#glossary-pipeline).
+:   A single unit of information, containing a timestamp plus additional data. An event arrives through an input, and is subsequently parsed, timestamped, and passed through the {{ls}} [pipeline](/reference/glossary/index.md#glossary-pipeline).
 
 $$$glossary-exception$$$ exception
 :   In {{elastic-sec}}, exceptions are added to rules to prevent specific source event field values from generating alerts.
@@ -313,7 +313,7 @@ $$$glossary-field$$$ field
 
 
 $$$glossary-filter-plugin$$$ filter plugin
-:   A {{ls}} [plugin](/reference/glossary/index.md#glossary-plugin) that performs intermediary processing on an [event](/reference/glossary/index.md#glossary-event). Typically, filters act upon event data after it has been ingested via inputs, by mutating, enriching, and/or modifying the data according to configuration rules. Filters are often applied conditionally depending on the characteristics of the event. Popular filter plugins include grok, mutate, drop, clone, and geoip. Filter stages are optional.
+:   A {{ls}} [plugin](/reference/glossary/index.md#glossary-plugin) that performs intermediary processing on an [event](/reference/glossary/index.md#glossary-event). Typically, filters act upon event data after it has been ingested through inputs, by mutating, enriching, or modifying the data according to configuration rules. Filters are often applied conditionally depending on the characteristics of the event. Popular filter plugins include grok, mutate, drop, clone, and geoip. Filter stages are optional.
 
 $$$glossary-filter$$$ filter
 :   [Query](/reference/glossary/index.md#glossary-query) that does not score matching documents. See [filter context](/explore-analyze/query-filter/languages/querydsl.md).
@@ -453,7 +453,7 @@ $$$glossary-integration-policy$$$ integration policy
 :   An instance of an [integration](/reference/glossary/index.md#glossary-integration) that is configured for a specific use case, such as collecting logs from a specific file.
 
 $$$glossary-integration$$$ integration
-:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—many with just a single click.
+:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—many with only a single click.
 
 
 ## J [j-glos]
@@ -582,7 +582,7 @@ $$$glossary-plan$$$ plan
 :   Specifies the configuration and topology of an {{es}} or {{kib}} cluster, such as capacity, availability, and {{es}} version, for example. When changing a plan, the [constructor](/reference/glossary/index.md#glossary-constructor) determines how to transform the existing cluster into the pending plan.
 
 $$$glossary-plugin-manager$$$ plugin manager
-:   Accessed via the `bin/logstash-plugin` script, the plugin manager enables you to manage the lifecycle of [plugins](/reference/glossary/index.md#glossary-plugin) in your {{ls}} deployment. You can install, remove, and upgrade plugins by using the plugin manager Command Line Interface (CLI).
+:   Accessed through the `bin/logstash-plugin` script, the plugin manager enables you to manage the lifecycle of [plugins](/reference/glossary/index.md#glossary-plugin) in your {{ls}} deployment. You can install, remove, and upgrade plugins by using the plugin manager Command Line Interface (CLI).
 
 $$$glossary-plugin$$$ plugin
 :   A self-contained software package that implements one of the stages in the {{ls}} event processing [pipeline](/reference/glossary/index.md#glossary-pipeline). The list of available plugins includes [input plugins](/reference/glossary/index.md#glossary-input-plugin), [output plugins](/reference/glossary/index.md#glossary-output-plugin), [codec plugins](/reference/glossary/index.md#glossary-codec-plugin), and [filter plugins](/reference/glossary/index.md#glossary-filter-plugin). The plugins are implemented as Ruby [gems](/reference/glossary/index.md#glossary-gem) and hosted on [RubyGems.org](https://rubygems.org). You define the stages of an event processing [pipeline](/reference/glossary/index.md#glossary-pipeline) by configuring plugins.
@@ -791,7 +791,7 @@ $$$glossary-upgrade-assistant$$$ Upgrade Assistant
 :   A tool that helps you prepare for an upgrade to the next major version of {{es}}. The assistant identifies the deprecated settings in your cluster and indices and guides you through resolving issues, including reindexing. See [Upgrade Assistant](/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md).
 
 $$$glossary-uptime$$$ Uptime
-:   A metric of system reliability used to monitor the status of network endpoints via HTTP/S, TCP, and ICMP.
+:   A metric of system reliability used to monitor the status of network endpoints through HTTP/S, TCP, and ICMP.
 
 
 ## V [v-glos]
@@ -806,7 +806,7 @@ $$$glossary-vega$$$ Vega
 :   A declarative language used to create interactive visualizations. See [Vega](/explore-analyze/dashboards.md).
 
 $$$glossary-visualization$$$ visualization
-:   A graphical representation of query results in {{kib}} (e.g., a histogram, line graph, pie chart, or heat map).
+:   A graphical representation of query results in {{kib}} (for example, a histogram, line graph, pie chart, or heat map).
 
 
 ## W [w-glos]

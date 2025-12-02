@@ -13,17 +13,6 @@ products:
 
 # Data views [data-views]
 
-$$$field-formatters-numeric$$$
-
-$$$managing-fields$$$
-
-$$$runtime-fields$$$
-
-$$$management-cross-cluster-search$$$
-
-$$$data-views-read-only-access$$$
-
-
 By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
@@ -176,7 +165,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](/explore-analyze/images/kibana-delete.png "") in the **Actions** column.
 
 
-## {{data-source}} field cache [data-view-field-cache]
+## Data view field cache [data-view-field-cache]
 
 The browser caches {{data-source}} field lists for increased performance. This is particularly impactful for {{data-sources}} with a high field count that span a large number of indices and clusters. The field list is updated every couple of minutes in typical {{kib}} usage. Alternatively, use the refresh button on the {{data-source}} management detail page to get an updated field list. A force reload of {{kib}} has the same effect.
 
@@ -184,7 +173,7 @@ The field list may be impacted by changes in indices and user permissions.
 
 ## Manage data views [managing-data-views]
 
-To customize the data fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data fields.
+To customize the fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data view fields.
 
 
 ### Explore your data with runtime fields [runtime-fields]
@@ -347,9 +336,9 @@ doc['field_name'].value
 For more information on scripted fields and additional examples, refer to [Using Painless in {{kib}} scripted fields](https://www.elastic.co/blog/using-painless-kibana-scripted-fields)
 
 
-#### Migrate to runtime fields or ES|QL queries [migrate-off-scripted-fields]
+#### Migrate to runtime fields or {{esql}} queries [migrate-off-scripted-fields]
 
-The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an ES|QL query, highlighting the differences between each approach.
+The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an {{esql}} query, highlighting the differences between each approach.
 
 
 ##### Scripted field [scripted-field-example]
@@ -463,9 +452,9 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 
 
-### Format data fields [managing-fields]
+### Format data view fields [managing-fields]
 
-{{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data fields, use the formatting options.
+{{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data view fields, use the formatting options.
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
@@ -474,7 +463,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields, the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 

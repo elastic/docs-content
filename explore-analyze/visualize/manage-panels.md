@@ -84,7 +84,7 @@ There are three types of **Discover** interactions you can add to dashboard pane
 
     To use series data interactions, click a data series in the panel.
 
-* **Discover session interactions** — Opens [saved Discover session](../discover.md#save-your-search) data in **Discover**.
+* **Discover session interactions** — Opens [saved Discover session](../discover/save-open-search.md) data in **Discover**.
 
     To use saved Discover session interactions, open the panel menu and click **View Discover session**.
 

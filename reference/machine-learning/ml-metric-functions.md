@@ -7,7 +7,7 @@ products:
 
 # Metric functions [ml-metric-functions]
 
-The metric functions include functions such as mean, min and max. These values are calculated for each bucket. Field values that cannot be converted to double precision floating point numbers are ignored.
+The metric functions include functions such as mean, min, and max. These values are calculated for each bucket. Field values that cannot be converted to double precision floating point numbers are ignored.
 
 The {{ml-features}} include the following metric functions:
 
@@ -97,7 +97,7 @@ The `median` function detects anomalies in the statistical median of a value. Th
 
 If you want to monitor unusually high median values, use the `high_median` function.
 
-If you are just interested in unusually low median values, use the `low_median` function.
+If you are only interested in unusually low median values, use the `low_median` function.
 
 These functions support the following properties:
 
@@ -125,7 +125,7 @@ The `mean` function detects anomalies in the arithmetic mean of a value. The mea
 
 If you want to monitor unusually high average values, use the `high_mean` function.
 
-If you are just interested in unusually low average values, use the `low_mean` function.
+If you are only interested in unusually low average values, use the `low_mean` function.
 
 These functions support the following properties:
 
@@ -199,7 +199,7 @@ The `varp` function detects anomalies in the variance of a value which is a meas
 
 If you want to monitor unusually high variance, use the `high_varp` function.
 
-If you are just interested in unusually low variance, use the `low_varp` function.
+If you are only interested in unusually low variance, use the `low_varp` function.
 
 These functions support the following properties:
 

@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
-  remote_type: Elastic Cloud Hosted deployment
+  remote_type: Elastic Cloud Hosted
 ---
 
 # Connect {{ece}} deployments to an {{ecloud}} organization [ece-remote-cluster-ece-ess]

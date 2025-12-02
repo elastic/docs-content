@@ -8,9 +8,9 @@ products:
 
 # Run Elastic Agent without administrative privileges [elastic-agent-unprivileged]
 
-Beginning with {{stack}} version 8.15, {{agent}} is no longer required to be run by a user with superuser privileges. You can now run agents in an `unprivileged` mode that does not require `root` access on Linux or macOS, or `admin` access on Windows. Being able to run agents without full administrative privileges is often a requirement in organizations where this kind of access is often very limited.
+Beginning with {{stack}} version 8.15, {{agent}} is no longer required to be run by a user with superuser privileges. You can now run agents in an `unprivileged` mode that does not require `root` access on Linux or macOS, or `admin` access on Windows. Being able to run agents without full administrative privileges is often a requirement in organizations where this kind of access is often limited.
 
-In general, agents running without full administrative privileges will perform and behave exactly as those run by a superuser. There are certain integrations and datastreams that are not available, however. If an integration requires root access, this is [indicated on the integration main page](#unprivileged-integrations).
+In general, agents running without full administrative privileges will perform and behave exactly as those run by a superuser. There are certain integrations and data streams that are not available, however. If an integration requires root access, this is [indicated on the integration main page](#unprivileged-integrations).
 
 You can also [change the privilege mode](#unprivileged-change-mode) of an {{agent}} after it has been installed.
 
@@ -28,33 +28,48 @@ Refer to [Agent and dashboard behaviors in unprivileged mode](#unprivileged-comm
 
 To run {{agent}} without administrative privileges you use exactly the same commands that you use for {{agent}} otherwise, with one exception. When you run the [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) command, add the `--unprivileged` flag. For example:
 
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
+
 ```shell
-elastic-agent install \
+sudo elastic-agent install \
   --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 \
   --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== \
   --unprivileged
 ```
 
-::::{important}
-Note the following current restrictions for running {{agent}} in `unprivileged` mode:
+::::
 
-* On Linux systems, after {{agent}} has been installed with the `--unprivileged` flag, all {{agent}} commands can be run without being the root user.
+::::{tab-item} Windows
+:sync: windows
 
-    * The `sudo` option is still required for the `elastic-agent install` command. Only `root` can install new services. The installed service will not run as the root user.
+From PowerShell:
 
-* Using `sudo` without specifying an alternate non-root user with `sudo -u` in a command may result in [an error](/troubleshoot/ingest/fleet/common-problems.md#agent-sudo-error) due to the agent not having the required privileges.
-* Using `sudo -u elastic-agent-user` will run commands as the user running the {{agent}} service and will always work.
-* For files that allow users in the `elastic-agent` group access, using an alternate user that has been added to that group will also work. There are still some commands that are only accessible to the `elastic-agent-user` that runs the service.
-
-    * For example, `elastic-agent inspect` requires you to prefix the command with `sudo -u elastic-agent-user`.
-
-        ```shell
-        sudo -u elastic-agent-user elastic-agent inspect
-        ```
-
+```shell
+elastic-agent install `
+  --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 `
+  --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== `
+  --unprivileged
+```
 
 ::::
 
+:::::
+
+### Considerations
+
+When running {{agent}} in `unprivileged` mode on Linux systems, consider the following:
+
+* You must use `sudo` to run the `elastic-agent install` command because only the root user can install new services. After {{agent}} is installed with the `--unprivileged` flag, the service does not run as root, and you can run {{agent}} commands without being the root user.
+* When the {{agent}} is in `unprivileged` mode, using `sudo` with {{agent}} commands can cause [an error](/troubleshoot/ingest/fleet/common-problems.md#agent-sudo-error) because the agent does not have the required privileges. To avoid this, run commands as the user that runs the {{agent}} service by using `sudo -u elastic-agent-user`.
+* For files that grant access to users in the `elastic-agent` group, you can also run commands as any user that belongs to that group. However, some commands are only available to the user that runs the service (`elastic-agent-user`). For example, `elastic-agent inspect` must be run as that user:
+
+  ```shell
+  sudo -u elastic-agent-user elastic-agent inspect
+  ```
 
 
 ## Agent and dashboard behaviors in unprivileged mode [unprivileged-command-behaviors]
@@ -65,15 +80,15 @@ In addition to the [integrations that are not available](#unprivileged-integrati
 | --- | --- | --- |
 | Run {{agent}} with the System integration | Log file error: `Unexpected file opening error: Failed opening /var/log/system.log: open /var/log/system.log: permission denied`. | Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix this error. |
 | Run {{agent}} with the System integration | On the `[Logs System] Syslog` dashboard, the `Syslog events by hostname`, `Syslog hostnames and processes` and `Syslog logs` visualizations are are missing data. | Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix the missing visualizations. |
-| Run {{agent}} with the System integration | On the `[Metrics System] Host overview` dashboard, only the processes run by the `elastic-agent-user` user are shown in the CPU and memory usage lists. | To fix the missing processes in the visualization lists you can add add the `elastic-agent-user` user to the system `admin` group. Note that while this mitigates the issue, it also grants `elastic-agent user` with more permissions than may be desired. |
-| Run {{agent}} and access the {{agent}} dashboards | On the `[Elastic Agent] Agents info` dashboard, visualizations including `Most Active Agents` and `Integrations per Agent` are missing data. | To fix the missing data in the visualizations you can add add the `elastic-agent-user` user to the system `admin` group. Note that while this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
-| Run {{agent}} and access the {{agent}} dashboards | On the `[Elastic Agent] Integrations` dashboard, visualizations including `Integration Errors Table`, `Events per integration` and `Integration Errors` are missing data. | To fix the missing data in the visualizations you can add add the `elastic-agent-user` user to the system `admin` group. Note that while this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
+| Run {{agent}} with the System integration | On the `[Metrics System] Host overview` dashboard, only the processes run by the `elastic-agent-user` user are shown in the CPU and memory usage lists. | To fix the missing processes in the visualization lists you can add add the `elastic-agent-user` user to the system `admin` group. While this mitigates the issue, it also grants `elastic-agent user` with more permissions than may be desired. |
+| Run {{agent}} and access the {{agent}} dashboards | On the `[Elastic Agent] Agents info` dashboard, visualizations including `Most Active Agents` and `Integrations per Agent` are missing data. | To fix the missing data in the visualizations you can add add the `elastic-agent-user` user to the system `admin` group. While this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
+| Run {{agent}} and access the {{agent}} dashboards | On the `[Elastic Agent] Integrations` dashboard, visualizations including `Integration Errors Table`, `Events per integration` and `Integration Errors` are missing data. | To fix the missing data in the visualizations you can add add the `elastic-agent-user` user to the system `admin` group. While this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
 
 | Action | Behavior in unprivileged mode | Resolution |
 | --- | --- | --- |
-| Run {{agent}} with the System integration | Log file error: `[elastic_agent.filebeat][error] Harvester could not be started on new file: /var/log/auth.log.1, Err: error setting up harvester: Harvester setup failed. Unexpected file opening error: Failed opening /var/log/auth.log.1: open /var/log/auth.log.1: permission denied` | To avoid the error you can add add the `elastic-agent-user` user to the `adm` group. Note that while this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
-| Run {{agent}} with the System integration | Log file error: `[elastic_agent.metricbeat][error] error getting filesystem usage for /run/user/1000/gvfs: error in Statfs syscall: permission denied` | To avoid the error you can add add the `elastic-agent-user` user to the `adm` group. Note that while this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
-| Run {{agent}} with the System integration | On the `[Logs System] Syslog` dashboard, the `Syslog events by hostname`, `Syslog hostnames and processes` and `Syslog logs` visualizations are are missing data. | To fix the missing data in the visualizations you can add add the `elastic-agent-user` user to the `adm` group. Note that while this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
+| Run {{agent}} with the System integration | Log file error: `[elastic_agent.filebeat][error] Harvester could not be started on new file: /var/log/auth.log.1, Err: error setting up harvester: Harvester setup failed. Unexpected file opening error: Failed opening /var/log/auth.log.1: open /var/log/auth.log.1: permission denied` | To avoid the error you can add add the `elastic-agent-user` user to the `adm` group. While this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
+| Run {{agent}} with the System integration | Log file error: `[elastic_agent.metricbeat][error] error getting filesystem usage for /run/user/1000/gvfs: error in Statfs syscall: permission denied` | To avoid the error you can add add the `elastic-agent-user` user to the `adm` group. While this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
+| Run {{agent}} with the System integration | On the `[Logs System] Syslog` dashboard, the `Syslog events by hostname`, `Syslog hostnames and processes` and `Syslog logs` visualizations are are missing data. | To fix the missing data in the visualizations you can add add the `elastic-agent-user` user to the `adm` group. While this mitigates the issue it also grants `elastic-agent user` with more permissions than may be desired. |
 | Run {{agent}} and access the {{agent}} dashboards | On the `[Elastic Agent] Agents info` dashboard, visualizations including `Most Active Agents` and `Integrations per Agent` are missing data. | Giving read permission to the `elastic-agent` group for the `/var/log/system.log` file will partially fix the visualizations, but errors may still occur because the `elastic-agent-user` does not have read access to files in the `/run/user/1000/` directory. |
 | Run {{agent}} and access the {{agent}} dashboards | On the `[Elastic Agent] Integrations` dashboard, visualizations including `Integration Errors Table`, `Events per integration` and `Integration Errors` are missing data. | Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix the missing visualizations. |
 
@@ -81,7 +96,7 @@ In addition to the [integrations that are not available](#unprivileged-integrati
 | --- | --- | --- |
 | Run {{agent}} with the System integration | Log file error: `failed to open Windows Event Log channel "Security": Access is denied` | Add the `elastic-agent-user` user to the `Event Log Users` group to fix this error. |
 | Run {{agent}} with the System integration | Log file error: `cannot open new key in the registry in order to enable the performance counters: Access is denied` | Update the permissions for the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PartMgr` registry to fix this error. |
-| Run {{agent}} with the System integration | Most of the System and {{agent}} dashboard visualizations are missing all data. | Add the `elastic-agent-user` user to the `Event Log Users` group and update the permissions for the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PartMgr` registry to fix the missing visualizations.<br>Note that the `elastic-agent-user` user may still not have access to all processes, so the lists in the `Top processes by CPU usage` and `Top processes by memory usage` visualizations may be incomplete. |
+| Run {{agent}} with the System integration | Most of the System and {{agent}} dashboard visualizations are missing all data. | Add the `elastic-agent-user` user to the `Event Log Users` group and update the permissions for the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PartMgr` registry to fix the missing visualizations.<br>The `elastic-agent-user` user may still not have access to all processes, so the lists in the `Top processes by CPU usage` and `Top processes by memory usage` visualizations may be incomplete. |
 | Run {{agent}} with the System integration | On the `[Metrics System] Host overview` dashboard, the `Disk usage` visualizations are missing data. | This occurs because direct access to the disk or a volume is restricted and not available to users without administrative privileges. Refer to [Running with Special Privileges](https://learn.microsoft.com/en-us/windows/win32/secbp/running-with-special-privileges) in the Microsoft documentation for details. |
 
 
@@ -153,17 +168,55 @@ For any installed {{agent}} you can change the mode that it’s running in by ru
 
 Change mode from privileged to unprivileged:
 
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
+
 ```shell
 sudo elastic-agent unprivileged
 ```
 
-Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
+::::
+
+::::{tab-item} Windows
+:sync: windows
+
+```shell
+elastic-agent unprivileged
+```
+
+::::
+
+:::::
+
+Changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
 
 Change mode from unprivileged to privileged:
+
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
 
 ```shell
 sudo elastic-agent privileged
 ```
+
+::::
+
+::::{tab-item} Windows
+:sync: windows
+
+```shell
+elastic-agent privileged
+```
+
+::::
+
+:::::
 
 When an agent is running in `unprivileged` mode, if it doesn’t have the right level of privilege to read a data source, you can also adjust the agent’s privileges by adding `elastic-agent-user` to the user group that has privileges to read the data source.
 
@@ -188,24 +241,104 @@ Whilst this functionality is GA, interfacing with Active Directory to determine 
 
 In certain cases you may want to install {{agent}} in `unprivileged` mode, with the agent running as a pre-existing user or as part of a pre-existing group. For example, on a Windows system you may have a service account in Active Directory and you’d like {{agent}} to run under that account.
 
-To install {{agent}} in `unprivileged` mode as a specific user, add the `--user` and `--password` parameters to the install command:
+::::{note}
+On Windows, the `--password` parameter is required when specifying a custom user account.
+
+On Linux and macOS, the `--user` and `--group` parameters are optional:
+* If you omit `--user`, {{agent}} uses (or creates) the default unprivileged user (`elastic-agent-user`).
+* If you specify only `--group`, the agent runs unprivileged in the requested group using the default user.
+::::
+
+To install {{agent}} in `unprivileged` mode as a specific user or group, use the following commands:
+
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
+
+To install with a specific user:
 
 ```shell
-elastic-agent install --unprivileged  --user="my.path\username" --password="mypassword"
+sudo elastic-agent install --unprivileged --user="username"
 ```
 
-To install {{agent}} in `unprivileged` mode as part of a specific group, add the `--group` and `--password` parameters to the install command:
+To install with a specific group:
 
 ```shell
-elastic-agent install --unprivileged  --group="my.path\groupname" --password="mypassword"
+sudo elastic-agent install --unprivileged --group="groupname"
 ```
 
-Alternatively, if you have {{agent}} already installed with administrative privileges, you can change the agent to use `unprivileged` mode and to run as a specific user or in a specific group. For example:
-
-```shell
-elastic-agent unprivileged --user="my.path\username" --password="mypassword"
-```
+To install with both a specific user and group:
 
 ```shell
-elastic-agent unprivileged --group="my.path\groupname" --password="mypassword"
+sudo elastic-agent install --unprivileged --user="username" --group="groupname"
 ```
+
+::::
+
+::::{tab-item} Windows
+:sync: windows
+
+To install as a specific user:
+
+```shell
+elastic-agent install --unprivileged --user="my.domain\username" --password="mypassword"
+```
+
+To install as part of a specific group:
+
+```shell
+elastic-agent install --unprivileged --group="my.domain\groupname"
+```
+
+To install with both a specific user and group:
+
+```shell
+elastic-agent install --unprivileged --user="my.domain\username" --password="mypassword" --group="my.domain\groupname"
+```
+
+::::
+
+:::::
+
+Alternatively, if you have {{agent}} already installed with administrative privileges, you can change the agent to use `unprivileged` mode and to run as a specific user or in a specific group.
+
+:::::{tab-set}
+:group: os
+
+::::{tab-item} Linux/macOS
+:sync: linux
+
+To change to a specific user:
+
+```shell
+sudo elastic-agent unprivileged --user="username"
+```
+
+To change to a specific group:
+
+```shell
+sudo elastic-agent unprivileged --group="groupname"
+```
+
+::::
+
+::::{tab-item} Windows
+:sync: windows
+
+To change to a specific user:
+
+```shell
+elastic-agent unprivileged --user="my.domain\username" --password="mypassword"
+```
+
+To change to a specific group:
+
+```shell
+elastic-agent unprivileged --group="my.domain\groupname"
+```
+
+::::
+
+:::::

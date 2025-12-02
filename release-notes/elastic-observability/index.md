@@ -21,6 +21,31 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.2.2 [elastic-observability-9.2.2-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.2-features-enhancements]
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
+
+### Fixes [elastic-observability-9.2.2-fixes]
+* Fixes issue with the `Authorization` header when  making calls through the {{kib}} tool [#244017]({{kib-pull}}244017).
+* Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
+* Updates system prompt title for generic deployments [#243266]({{kib-pull}}243266).
+* Fixes KPIs subtitle logic [#243217]({{kib-pull}}243217).
+* Reverts the PR that introduced transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Reverts the "Fix issue where filters do not apply to overview stats" PR [#242978]({{kib-pull}}242978).
+* Fixes charts not filtering by `host.name` [#242673]({{kib-pull}}242673).
+* Fixes issue with custom links clearing filter views when a new field is selected or deleted [#241164]({{kib-pull}}241164).
+* Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
+
+## 9.2.1 [elastic-observability-9.2.1-release-notes]
+
+### Fixes [elastic-observability-9.2.1-fixes]
+* Fixes simulation of geo points in Streams [#241824]({{kib-pull}}241824).
+* Speeds up field simulation in Streams [#241313]({{kib-pull}}241313).
+* Fixes the incorrectly formatted **Values** dropdown in Storybook [#241812]({{kib-pull}}241812).
+* Escapes special characters when creating ESQL query for Lens charts [#241662]({{kib-pull}}241662).
+
+
 ## 9.2.0 [elastic-observability-9.2.0-release-notes]
 
 ### Features and enhancements[elastic-observability-9.2.0-features]
@@ -65,7 +90,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Disables add-to-case functionality when all selected alerts are already added to a case [#231877]({{kib-pull}}231877).
 * Allows users to paste screenshots into markdown comment fields for cases [#226077]({{kib-pull}}226077).
 * Extracts case observables automatically when attaching alerts to a case [#233027]({{kib-pull}}233027).
-* Allows attaching any event to a case, not just alert events [#230970]({{kib-pull}}230970).
+* Allows attaching any event to a case, not only alert events [#230970]({{kib-pull}}230970).
 * Adds `opamp_polling_interval` and `sampling_rate` to central config for EDOT application agents [#231835]({{kib-pull}}231835).
 * Adds `kibana.alert.grouping` field to Synthetics monitor status rule [#230513]({{kib-pull}}230513).
 * Adds a public endpoint for manually testing synthetic monitors [#227760]({{kib-pull}}227760).
@@ -93,6 +118,25 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes multiselect issue in Discover toolbar [#236091]({{kib-pull}}236091).
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
+
+## 9.1.8 [elastic-observability-9.1.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.1.8-features-enhancements]
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
+
+### Fixes [elastic-observability-9.1.8-fixes]
+* Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
+* Reverts the PR that introduced transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Fixes issue with custom links clearing filter views when a new field is selected or deleted [#241164]({{kib-pull}}241164).
+* Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
+
+## 9.1.7 [elastic-observability-9.1.7-release-notes]
+
+### Fixes [elastic-observability-9.1.7-fixes]
+* Adds missing transaction action links [#241336]({{kib-pull}}241336).
+* Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
+* Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
+* Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
 
 ## 9.1.6 [elastic-observability-9.1.6-release-notes]
 

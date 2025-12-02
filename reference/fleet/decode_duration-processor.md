@@ -27,8 +27,8 @@ processors:
 
 ## Configuration settings [_configuration_settings_21]
 
-| Name | Required | Default | Description |  |
-| --- | --- | --- | --- | --- |
-| `field` | yes |  | Which field of event needs to be decoded as `time.Duration` |  |
-| `format` | yes | `milliseconds` | Supported formats: `milliseconds`/`seconds`/`minutes`/`hours` |  |
+| Name | Required | Default | Description |
+| --- | --- | --- | --- |
+| `field` | yes |  | Which field of event needs to be decoded as `time.Duration` |
+| `format` | yes | `milliseconds` | Supported formats: `milliseconds`/`seconds`/`minutes`/`hours` |
 
