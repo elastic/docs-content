@@ -27,11 +27,11 @@ Create partitions using the following options:
 
 Partitioning helps you manage your data when you have multiple systems sending logs to a single parent stream.
 
-Focus on logical groupings like data by teams or overarching technologies. For example, partition web servers in one stream and custom application logs in another.
+Focus on logical groupings for data such as by team or overarching technology. For example, partition web server logs in one stream and custom application logs in another.
 
 Don't partition by fields with high cardinality. Even partitioning by common fields like `service.name` can create too many partitions to manage effectively.
 
-As a general rule, aim for tens of partitions, not hundreds. Each partition comes with a cost, as it creates a data stream in {{es}} under the hood. You can have many of them, but they're not unlimited.
+As a general rule, aim for tens of partitions, not hundreds. Each partition comes with a cost, as it creates a data stream in {{es}} under the hood. You can have many of them, but not an unlimited amount.
 
 ### When you *need* to partition [streams-must-partition]
 
