@@ -13,7 +13,7 @@ sub:
 # Connect an ECK-managed cluster to an external cluster or deployment
 
 % process described here: https://github.com/elastic/cloud-on-k8s/issues/8502#issuecomment-2753674140 (for ECH)
-These steps describe how to configure remote clusters between an {{es}} cluster managed by {{eck}} (ECK) and an external {{es}} cluster, using the [API key based](./security-models.md) security model. The remote cluster can be self-managed, part of an {{ech}} (ECH) or {{ece}} (ECE) deployment, or managed by a different ECK operator.
+These steps describe how to configure a remote cluster connection from an {{es}} cluster managed by {{eck}} (ECK) to an external {{es}} cluster, where external refers to any cluster not managed by the same ECK operator. The remote cluster can be self-managed, part of an {{ech}} (ECH) or {{ece}} (ECE) deployment, or managed by a different ECK operator.
 
 Once the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
@@ -23,6 +23,13 @@ Once the connection is established, you’ll be able to [run CCS queries from {{
 In this scenario, most of the configuration must be performed manually, as {{eck}} cannot orchestrate the setup across both clusters. For fully automated configuration between ECK-managed clusters, refer to [Connect to {{es}} clusters in the same ECK environment](./eck-remote-clusters.md).
 
 For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md#eck-rcs-setup).
+
+% refine this note
+:::{note}
+This guide uses API key authentication as the [security model](./security-models.md), which is the recommended option and replaces the deprecated TLS certificate–based model.  
+
+If you need to configure TLS certificate authentication for this scenario, refer to the steps in [Connect from an external cluster](./eck-remote-clusters-from-external.md) and create the remote in the opposite direction. The mutual-TLS trust setup steps the similar.
+:::
 
 ## Allow the remote connection [ec_allow_the_remote_connection_4]
 
@@ -34,16 +41,16 @@ For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](.
 
 Follow the steps corresponding to the deployment type of your remote cluster:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} ECH
+::::::{applies-item} ess:
 If the remote cluster is part of an {{ech}} deployment, the remote cluster server is enabled by default and it uses a publicly trusted certificate provided by the platform proxies. Therefore, you can skip this step.
 ::::::
 
-::::::{tab-item} ECE
+::::::{applies-item} ece:
 If the remote cluster is part of an {{ece}} deployment, the remote cluster server is enabled by default, and secured with TLS certificates.
 
-Depending on the type of certificates used by the ECE proxies or load-balancing layer, the CA certificate may be needed by the local cluster to establish trust:
+Depending on the type of certificate used by the ECE proxies or load-balancing layer, the local cluster requires the associated certificate authority (CA) to establish trust:
 
 * If your ECE proxies use publicly trusted certificates, no additional CA is required.
 
@@ -58,8 +65,8 @@ Depending on the type of certificates used by the ECE proxies or load-balancing 
   4. Save the file as `.crt`, and keep it available for the trust configuration on the local cluster.
 ::::::
 
-::::::{tab-item} ECK
-If the remote cluster is managed by a different ECK environment, it must be prepared to accept incoming connections.
+::::::{applies-item} eck:
+If the remote cluster is managed by a different ECK operator, it must be prepared to accept incoming connections.
 
 1. **Enable the remote cluster server**
 
@@ -77,9 +84,9 @@ If the remote cluster is managed by a different ECK environment, it must be prep
     :::
 
 ::::::
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 
-1. **Enable the remote cluster server**
+1. **Enable and secure the remote cluster server**
 
     :::{include} _snippets/self_rcs_enable.md
     :::
@@ -231,22 +238,22 @@ If you intend to use `sniff` mode, configure it through the [{{es}} API](#using-
 
     * **Remote address**: Identify the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port:
         
-      :::::::{tab-set}
+      :::::::{applies-switch}
 
-      ::::::{tab-item} ECH
+      ::::::{applies-item} ess:
       Obtain the endpoint from the **Security** page of the ECH deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section, and replace its port with `9443`, which is the port used by the remote cluster server interface.
 
       ::::::
 
-      ::::::{tab-item} ECE
+      ::::::{applies-item} ece:
       Obtain the endpoint from the **Security** page of the ECE deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters**, and replace its port with `9443`, which is the port used by the remote cluster server interface.
       ::::::
 
-      ::::::{tab-item} ECK
+      ::::::{applies-item} eck:
       Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs).
       ::::::
 
-      ::::::{tab-item} Self-managed
+      ::::::{applies-item} self:
       Use the address of a TCP (layer 4) reverse proxy configured in your environment to route connections to one or more nodes of the cluster on port `9443`.
 
       If you intend to configure `sniff` mode with a list of {{es}} node addresses as `seeds` , use the [{{es}} API](#using-api) instead.
@@ -269,31 +276,29 @@ If you intend to use `sniff` mode, configure it through the [{{es}} API](#using-
 
 To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
-* `Remote cluster alias`: The cluster alias must match the one you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
-* `mode`: Use `proxy` mode in almost all cases. `sniff` mode is only applicable for self-managed remote clusters where the local cluster can reach the nodes’ publish addresses directly.
-* `proxy_address` (or `seeds` if sniff mode is used):
+* **Remote cluster alias**: The cluster alias must match the one you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
+* **mode**: Use `proxy` mode in almost all cases. `sniff` mode is only applicable when the remote cluster is self-managed and the local cluster can reach the nodes’ publish addresses directly.
+* **proxy_address**: Identify the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
 
-  Identify the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
+  :::::::{applies-switch}
 
-  :::::::{tab-set}
-
-  ::::::{tab-item} ECH
+  ::::::{applies-item} ess:
   Obtain the endpoint from the **Security** page of the ECH deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section, and replace its port with `9443`, which is the port used by the remote cluster server interface.
 
   ::::::
 
-  ::::::{tab-item} ECE 
+  ::::::{applies-item} ece:
   Obtain the endpoint from the **Security** page of the ECE deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters**, and replace its port with `9443`, which is the port used by the remote cluster server interface.
   ::::::
 
-  ::::::{tab-item} ECK
+  ::::::{applies-item} eck:
   Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs).  
   ::::::
 
-  ::::::{tab-item} Self-managed
-  The endpoint depends on your network architecture and the selected connection mode (`sniff` or `proxy`). It can be one or more {{es}} nodes, or a load balancer or reverse proxy in front of the cluster, as long as the local cluster can reach them over port `9443`.
-  
-  Refer to the [connection modes](./connection-modes.md) documentation for details and connectivity requirements of each mode.
+  ::::::{applies-item} self:
+  The endpoint depends on your network architecture and the selected connection mode (`sniff` or `proxy`). It can be one or more {{es}} nodes, or a TCP (layer 4) load balancer or reverse proxy in front of the cluster, as long as the local cluster can reach them over port `9443`.
+
+  If you are configuring `sniff` mode, set the **seeds** parameter instead of **proxy_address**. Refer to the [connection modes](./connection-modes.md) documentation for details and connectivity requirements of each mode.
   ::::::
   :::::::
 
@@ -320,17 +325,18 @@ PUT /_cluster/settings
 }
 ```
 
-For a full list of available client connection settings in proxy mode, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-proxy-settings).
+For a full list of available client connection settings, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md).
 
 ## Verify remote cluster connection
 
-In the local cluster, check the status of the connection to the remote cluster. If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
+From the local cluster, check the status of the connection to the remote cluster. If you encounter issues, refer to the [Troubleshooting guide](/troubleshoot/elasticsearch/remote-clusters.md).
 
 ```console
 GET _remote/info
 ```
 
-In the response, look for the `connected` value:
+In the response, verify that connected is `true`:
+
 ```
 {
   "<remote-alias>": {
