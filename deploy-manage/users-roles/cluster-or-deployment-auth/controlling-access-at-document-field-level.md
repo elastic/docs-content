@@ -150,6 +150,11 @@ When you create a role, you can specify a query that defines the [document level
 
 For example, the following role query uses a template to insert the username of the current authenticated user:
 
+:::::{tab-set}
+:group: field-document
+::::{tab-item} {{stack}}
+:sync: stack
+
 ```console
 POST /_security/role/example1
 {
@@ -169,6 +174,24 @@ POST /_security/role/example1
 }
 ```
 
+::::
+
+::::{tab-item} {{serverless-short}}
+:sync: serverless
+
+```JSON
+{
+  "template" : {
+    "source" : {
+      "term" : { "acl.username" : "{{_user.username}}" }
+    }
+  }
+}
+```
+
+::::
+:::::
+
 You can access the following information through the `_user` variable:
 
 | Property | Description |
@@ -180,6 +203,11 @@ You can access the following information through the `_user` variable:
 | `_user.metadata` | If specified, a hash holding custom metadata of the current authenticated user. |
 
 You can also access custom user metadata. For example, if you maintain a `group_id` in your user metadata, you can apply document level security based on the `group.id` field in your documents:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} {{stack}}
+:sync: stack
 
 ```console
 POST /_security/role/example2
@@ -199,8 +227,30 @@ POST /_security/role/example2
   ]
 }
 ```
+::::
+
+::::{tab-item} {{serverless-short}}
+:sync: serverless
+
+```JSON
+{
+  "template" : {
+    "source" : {
+      "term" : { "group.id" : "{{_user.metadata.group_id}}" }
+    }
+  }
+}
+```
+
+::::
+:::::
+
 
 If your metadata field contains an object or array, you can access it using the `{{#toJson}}parameter{{/toJson}}` function.
+:::::{tab-set}
+:group: field-document
+::::{tab-item} {{stack}}
+:sync: stack
 
 ```console
 POST /_security/role/example3
@@ -218,6 +268,23 @@ POST /_security/role/example3
   ]
 }
 ```
+::::
+
+::::{tab-item} {{serverless-short}}
+:sync: serverless
+
+```JSON
+{
+  "template" : {
+    "source" : { 
+      "terms" : { "group.statuses" : {{#toJson}}_user.metadata.statuses{{/toJson}} }
+    }
+  }
+}
+```
+
+::::
+:::::
 
 ### Pre-processing documents to add security details [set-security-user-processor]
 
