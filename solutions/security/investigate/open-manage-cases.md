@@ -42,7 +42,7 @@ Open a new case to keep track of security issues and share their details with co
 
     ::::{note}
     :applies_to:{stack: ga 9.3}
-    When specifying **Additional fields** for an {{ibm-r}} connector, custom fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
+    When specifying **Additional fields** for an {{ibm-r}} connector, fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
     ::::
 
 9. Click **Create case**.
