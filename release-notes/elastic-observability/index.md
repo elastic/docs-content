@@ -21,6 +21,22 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.2.2 [elastic-observability-9.2.2-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.2-features-enhancements]
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
+
+### Fixes [elastic-observability-9.2.2-fixes]
+* Fixes issue with the `Authorization` header when  making calls through the {{kib}} tool [#244017]({{kib-pull}}244017).
+* Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
+* Updates system prompt title for generic deployments [#243266]({{kib-pull}}243266).
+* Fixes KPIs subtitle logic [#243217]({{kib-pull}}243217).
+* Reverts the PR that introduced transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Reverts the "Fix issue where filters do not apply to overview stats" PR [#242978]({{kib-pull}}242978).
+* Fixes charts not filtering by `host.name` [#242673]({{kib-pull}}242673).
+* Fixes issue with custom links clearing filter views when a new field is selected or deleted [#241164]({{kib-pull}}241164).
+* Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
+
 ## 9.2.1 [elastic-observability-9.2.1-release-notes]
 
 ### Fixes [elastic-observability-9.2.1-fixes]
