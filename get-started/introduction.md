@@ -27,7 +27,9 @@ Check out our [customer success stories](https://www.elastic.co/customers/succes
 
 Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
 
-If you're new to Elastic, you can find quickstarts and introductory steps for each solution within [](/solutions/index.md).
+If you're new to Elastic, you can find quickstarts and introductory steps for each solution within [](/solutions/index.md)!
+
+This is a test! The future will be like this. Utilize the words.
 
 <!--
 ## {{es}}
