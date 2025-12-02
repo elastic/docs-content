@@ -19,14 +19,14 @@ toc:
               - file: data-store/data-streams/set-up-tsds.md
               - file: data-store/data-streams/downsampling-time-series-data-stream.md
                 children:
-                 - file: data-store/data-streams/downsampling-concepts.md
-                 - file: data-store/data-streams/run-downsampling.md
-                 - file: data-store/data-streams/query-downsampled-data.md
+                  - file: data-store/data-streams/downsampling-concepts.md
+                  - file: data-store/data-streams/run-downsampling.md
+                  - file: data-store/data-streams/query-downsampled-data.md
               - file: data-store/data-streams/advanced-topics-tsds.md
                 children:
-                 - file: data-store/data-streams/time-bound-tsds.md
-                 - file: data-store/data-streams/reindex-tsds.md
-                 - file: data-store/data-streams/tsds-ingest-otlp.md
+                  - file: data-store/data-streams/time-bound-tsds.md
+                  - file: data-store/data-streams/reindex-tsds.md
+                  - file: data-store/data-streams/tsds-ingest-otlp.md
           - file: data-store/data-streams/logs-data-stream.md
             children:
               - file: data-store/data-streams/logs-data-stream-integrations.md
