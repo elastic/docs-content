@@ -141,9 +141,8 @@ serverless:
 
 [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps.
 
-:::{note}
 This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-:::
+
 
 ### Attack Discovery
 ```{applies_to}
@@ -154,9 +153,8 @@ serverless:
 
 [Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors. 
 
-:::{note}
 This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-:::
+
 
 ### Automatic Migration
 
@@ -165,9 +163,8 @@ This feature requires an [LLM connector](/solutions/security/ai/set-up-connector
 * {applies_to}`stack: preview 9.0, ga 9.1` {applies_to}`serverless: ga` Splunk rules
 * {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Splunk dashboards
 
-:::{note}
 This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-:::
+
 
 ### Automatic Import
 ```{applies_to}
@@ -178,9 +175,8 @@ serverless:
 
 [Automatic Import](/solutions/security/get-started/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
 
-:::{note}
 This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-:::
+
 
 ### Automatic Troubleshooting
 ```{applies_to}
@@ -193,6 +189,4 @@ serverless:
 * {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` **Policy responses**: Detect warnings or failures in {{elastic-defend}}’s integration policies.
 * **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that might conflict with {{elastic-defend}}.
 
-:::{note}
 This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-:::
