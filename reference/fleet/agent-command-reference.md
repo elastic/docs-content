@@ -67,7 +67,7 @@ Gather diagnostics information from the {{agent}} and component/unit it’s runn
     * Typically one directory per input-output pair representing a supervised process containing:
       * *.pprof.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
       * *_metrics.json - metrics snapshots captured from running Beat processes
-* edot/ directory - the output of the elasticsdiagnostics collector extension:
+* edot/ directory - the output of Elastic's collector diagnostics extension:
     * otel-merged-actual.yaml - the current configuration of the running collector, which should match the otel-merged.yaml file described previously
     * *.profile.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
 
