@@ -46,17 +46,17 @@ Note the following restrictions for running {{agent}} commands:
 Gather diagnostics information from the {{agent}} and component/unit it’s running. This command produces an archive that contains:
 
 * version.txt - version information
-* agent-info.yaml - Contains the agent local metadata that is also sent to Fleet.
+* agent-info.yaml - contains the agent local metadata that is also sent to Fleet
 * pre-config.yaml - pre-configuration before variable substitution - this is the elastic-agent.yaml from disk or from Fleet
 * otel.yaml - the OpenTelemetry collector configuration file used with the `otel` sub-command
-* otel-merged.yaml - the final configuration file provided to the OpenTelemetry collector including any internally generated collector components.
+* otel-merged.yaml - the final configuration file provided to the OpenTelemetry collector, including any internally generated collector components
 * variables.yaml - current variable contexts from providers
-* environment.yaml - current environment variables visible to the Elastic Agent process.
+* environment.yaml - current environment variables visible to the Elastic Agent process
 * computed-config.yaml - configuration after variable substitution
 * components-expected.yaml - expected computed components model from the computed-config.yaml
 * components-actual.yaml - actual running components model as reported by the runtime manager
 * state.yaml - current state information of all running components
-* *.pprof.gz files from the running elastic-agent process for analysis with `go tool pprof`:
+* *.pprof.gz files from the running `elastic-agent` process for analysis with `go tool pprof`:
     * goroutine.pprof.gz - goroutine dump
     * heap.pprof.gz - memory allocation of live objects
     * allocs.pprof.gz - sampling past memory allocations
@@ -65,11 +65,11 @@ Gather diagnostics information from the {{agent}} and component/unit it’s runn
     * mutex.pprof.gz - stack traces of holders of contended mutexes
 * components/ directory - diagnostic information from each running component process:
     * Typically one directory per input-output pair representing a supervised process containing:
-      * *.pprof.gz - profiles for analysis with `go tool pprof` see descriptions above
+      * *.pprof.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
       * *_metrics.json - metrics snapshots captured from running Beat processes
 * edot/ directory - the output of the elasticsdiagnostics collector extension:
-    * otel-merged-actual.yaml - the configuration the collector is currently running with which should match otel-merged.yaml above
-    * *.profile.gz - profiles for analysis with `go tool pprof` see descriptions above
+    * otel-merged-actual.yaml - the current configuration of the running collector, which should match the otel-merged.yaml file described previously
+    * *.profile.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
 
 Note that **credentials may not be redacted** in the archive; they may appear in plain text in the configuration or policy files inside the archive.
 

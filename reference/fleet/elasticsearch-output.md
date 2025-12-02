@@ -233,7 +233,7 @@ The service principal name for the {{es}} instance is constructed from these opt
     **Default:** `true`
 
 `status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
-:   (boolean) Whether status reporting is enabled for this output. When disabled, the output will not change it's health status if there is a connectivity problem.
+:   (boolean) Whether status reporting is enabled for this output. When disabled, the output does not change its health status if there is a connectivity problem.
 
     **Default:** `true`
 
