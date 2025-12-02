@@ -28,11 +28,11 @@ The `jina-embedings-v3` model supports input lengths of up to 8192 tokens and pr
 
 ### Dense vector embeddings
 
-Dense vector embeddings are fixed-length numerical representations of text. When you send text to an EIS {{infer}} endpoint that uses `jina-embeddings-v3`, the model returns a vector of floating-point numbers (for example, 1024 values). Texts that are semantically similar have embeddings that are close to each other in this vector space. {{es}} stores these vectors in `dense_vector` fields or through the `semantic_text` type and uses vector similarity search to retrieve the most relevant documents for a given query. Unlike [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), which expands text into sparse token-weight vectors, this model produces compact dense vectors that are well suited for multilingual and cross-domain use cases.
+Dense vector embeddings are fixed-length numerical representations of text. When you send text to an EIS {{infer}} endpoint that uses `jina-embeddings-v3`, the model returns a vector of floating-point numbers (for example, 1024 values). Texts that are semantically similar have embeddings that are close to each other in this vector space. {{es}} stores these vectors in [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields or through the [`semantic_text`]((elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md)) type and uses vector similarity search to retrieve the most relevant documents for a given query. Unlike [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), which expands text into sparse token-weight vectors, this model produces compact dense vectors that are well suited for multilingual and cross-domain use cases.
 
 ### Requirements [jina-embeddings-v3-req]
 
-To use `jina-embeddings-v3`, you must have the [appropriate subscription](https://www.elastic.co/subscriptions) level for semantic search or the trial period activated.
+To use `jina-embeddings-v3`, you must have the [appropriate subscription](https://www.elastic.co/subscriptions) level or the trial period activated.
 
 ### Getting started with `jina-embeddings-v3` via the Elastic {{infer-cap}} Service
 
