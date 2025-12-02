@@ -311,7 +311,7 @@ GET _data_stream/my-data-stream
 
 ## Delete a data stream [delete-data-stream]
 
-You can delete a data stream and its backing indices via the {{kib}} UI or an API. You will require the `delete_index` [security privilege](elasticsearch://reference/elasticsearch/security-privileges.md) for the data stream to complete this action.
+You can delete a data stream and its backing indices via the {{kib}} UI or an API. To complete this action, you need the `delete_index` [security privilege](elasticsearch://reference/elasticsearch/security-privileges.md) for the data stream.
 
 ::::{tab-set}
 :group: set-up-ds
