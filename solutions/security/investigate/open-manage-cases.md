@@ -76,6 +76,8 @@ When you subsequently add assignees to cases, they receive an email.
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
 
+{applies_to}`stack: 9.3` In addition, you use the date time picker in the Cases table to find cases that were created during a specified time range. By default, cases created during the last 30 days is displayed. Clicking **Show all cases** in the date time picker restores the Cases table to this default state.
+
 To explore a case, click on its name. You can then:
 
 * [Review the case summary](/solutions/security/investigate/open-manage-cases.md#cases-summary)

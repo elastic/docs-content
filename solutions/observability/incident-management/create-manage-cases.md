@@ -85,6 +85,8 @@ For more information about configuring connections to external incident manageme
 
 You can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes.
 
+{applies_to}`stack: 9.3` In addition, you use the date time picker in the Cases table to find cases that were created during a specified time range. By default, cases created during the last 30 days is displayed. Clicking **Show all cases** in the date time picker restores the Cases table to this default state.
+
 To view a case, click on its name. You can then:
 
 * Add a new comment.
