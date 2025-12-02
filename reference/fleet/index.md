@@ -6,6 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-overview.html
   - https://www.elastic.co/guide/en/fleet/current/index.html
 navigation_title: Fleet and Elastic Agent
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: fleet
