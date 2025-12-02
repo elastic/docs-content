@@ -64,9 +64,6 @@ POST _inference/text_embedding/eis-jina-embeddings-v3
 * `jina-embeddings-v3` works best on small, medium or large sized fields that contain natural language.
 For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
 Although `jina-embeddings-v3` has a context window of 8192 tokens, for optimal performance it's best to limit the input to 2048-4096 tokens.
-For larger fields that exceed this limit - for example, body_content on web crawler documents - consider "chunking" the content into multiple values, where each chunk can be under 4096 tokens.
-* Larger documents take longer at ingestion time, and inference time per document also increases the more fields in a document that need to be processed.
-* The more fields your pipeline has to perform inference on, the longer it takes per document to ingest.
-
-To learn more about `jina-embeddings-v3` performance, refer to the Benchmark information.
-
+For larger fields that exceed this limit - for example, `body_content` on web crawler documents - consider chunking the content into multiple values, where each chunk can be under 4096 tokens.
+* Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
+* The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
