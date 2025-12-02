@@ -59,7 +59,7 @@ elastic-agent install `
 
 :::::
 
-### Considerations for running {{agent}} in `unprivileged` mode
+### Considerations
 
 When running {{agent}} in `unprivileged` mode on Linux systems, consider the following:
 
