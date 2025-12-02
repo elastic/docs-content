@@ -15,10 +15,6 @@ Currently, the following models are available as built-in models:
 * [`jina-embeddings-v3`](#jina-embeddings-v3)
 
 ## `jina-embeddings-v3` [jina-embeddings-v3]
-```{applies_to}
-stack: preview 9.3
-serverless: preview
-```
 
 The [`jina-embeddings-v3`](https://jina.ai/models/jina-embeddings-v3/) is a multilingual dense vector embedding model that you can use through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 It provides long-context embeddings across a wide range of languages without requiring you to configure, download, or deploy any model artifacts yourself.
@@ -63,7 +59,7 @@ POST _inference/text_embedding/eis-jina-embeddings-v3
 
 * `jina-embeddings-v3` works best on small, medium or large sized fields that contain natural language.
 For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
-Although `jina-embeddings-v3` has a context window of 8192 tokens, for optimal performance it's best to limit the input to 2048-4096 tokens.
+Although `jina-embeddings-v3` has a context window of 8192 tokens, it's best to limit the input to 2048-4096 tokens for optimal performance.
 For larger fields that exceed this limit - for example, `body_content` on web crawler documents - consider chunking the content into multiple values, where each chunk can be under 4096 tokens.
 * Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
 * The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
