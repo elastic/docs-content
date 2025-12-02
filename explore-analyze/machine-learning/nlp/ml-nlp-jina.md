@@ -15,10 +15,6 @@ Currently, the following models are available as built-in models:
 * [`jina-embeddings-v3`](#jina-embeddings-v3)
 
 ## `jina-embeddings-v3` [jina-embeddings-v3]
-```{applies_to}
-stack: preview 9.3
-serverless: preview
-```
 
 The [`jina-embeddings-v3`](https://jina.ai/models/jina-embeddings-v3/) is a multilingual dense vector embedding model that you can use through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 It provides long-context embeddings across a wide range of languages without requiring you to configure, download, or deploy any model artifacts yourself.
