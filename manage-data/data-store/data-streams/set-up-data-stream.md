@@ -38,7 +38,7 @@ serverless: unavailable
 While optional, we recommend using the {{ilm}} ({{ilm-init}}) capability in {{stack}} deployments to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
 
 :::{admonition} Simpler lifecycle management in {{serverless-short}} projects
-{{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data management option.
+{{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}}, where  performance optimizations are automatic. Instead, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data management option.
 :::
 
 To create an index lifecycle policy in {{kib}}:
