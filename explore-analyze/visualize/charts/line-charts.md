@@ -40,7 +40,7 @@ Using the visualization type dropdown, select **Line**.
 3. Drag a numeric field (for example, `response_time`) to the **Y-axis**. {{kib}} suggests a function like `Average`, `Count`, or `Counter rate`. You can change it or use a [formula](../lens.md#lens-formulas).
 4. Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field (for example, `geo.country`) to **Break down by** to split the series.
-   - Add a [reference line](../lens.md#reference-lines) to mark targets or SLOs.
+   - Add a [reference line](../lens.md#add-reference-lines) to mark targets or SLOs.
    - Adjust axes, legends, and series styles from the chart settings.
 
 Refer to [](#settings) for line chart configuration options.
