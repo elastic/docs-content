@@ -131,7 +131,7 @@ Use an API to create a component template:
 * In an {{stack}} deployment, use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
 * In {{serverless-full}}, use the [create component template](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template) API.
 
-To create a component template for mappings, use this query:
+To create a component template for mappings, use this request:
 
 ```console
 PUT _component_template/my-mappings
@@ -156,7 +156,7 @@ PUT _component_template/my-mappings
 }
 ```
 
-To create a component template for index settings, use this query:
+To create a component template for index settings, use this request:
 
 ```console
 PUT _component_template/my-settings
@@ -243,7 +243,7 @@ POST my-data-stream/_doc
 ```
 You can also use an API to manually create the data stream:
 
-* In an {{stack}} deployment, use the [create data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) API.
+* In an {{stack}} deployment, use the [create a data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) API.
 * In {{serverless-full}}, use the [create a data stream](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create-data-stream) API.
 
 ```console
@@ -268,7 +268,7 @@ You can convert an index alias with a write index to a data stream with the same
 * In an {{stack}} deployment, use the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream) API.
 * In {{serverless-full}}, use the [convert an index alias to a data stream](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-migrate-to-data-stream) API.
 
-During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
+During conversion, the alias's indices become hidden backing indices for the stream. The alias's write index becomes the stream's write index. The stream still requires a matching index template with data stream enabled.
 
 ```console
 POST _data_stream/_migrate/my-time-series-data
@@ -290,7 +290,7 @@ To get information about a data stream in {{kib}}:
 
 :::{tip}
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
-Starting with {{es}} version 9.2, you can use the [**Streams**](/solutions/observability/streams/streams.md) page to view the details of a data stream. The **Streams** page provides a centralized interface for managing your data in {{kib}}. Locate the data stream on the **Streams** page where a stream maps directly to a data stream. Select a stream to view its details.
+Starting with {{es}} version 9.2, you can use the [**Streams**](/solutions/observability/streams/streams.md) page to view the details of a data stream. The **Streams** page provides a centralized interface for managing your data in {{kib}}.Select a stream to view its details.
 :::
 
 :::
