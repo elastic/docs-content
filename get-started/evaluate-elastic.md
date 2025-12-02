@@ -24,7 +24,7 @@ For an overview, check out [Explore Elastic Cloud with your 14‑day free trial]
 Your Elastic trial gives you full access to explore our platform's capabilities:
 
 - All features available across [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
-- Choice between {{serverless-full}} and {{ech}} deployment types.
+- A choice between {{serverless-full}} and {{ech}} deployment types.
 - Access to integrations, {{ml-features}}, and advanced analytics.
 - Support resources including documentation, community forums, and technical guidance.
 
@@ -40,8 +40,7 @@ While your trial includes full feature access, be aware of these limitations:
 
 :::{include} ../deploy-manage/deploy/_snippets/trial-limitations.md
 :::
-
-For detailed information about features and licensing:
+For detailed information about features and licensing, refer to the following:
 
 - [License and support levels](/deploy-manage/license.md): Understand the different license tiers and what they include.
 - [Billing documentation](/deploy-manage/cloud-organization/billing.md): Learn how billing works when moving from trial to production.
@@ -75,7 +74,7 @@ Elastic offers two primary deployment options on {{ecloud}}. For most evaluation
 
 ::::
 
-For detailed comparisons:
+For detailed comparisons, check out:
 
 - [Deployment comparison](/deploy-manage/deploy/deployment-comparison.md): Side-by-side feature and capability comparison.
 - [Differences from other {{es}} offerings](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md): Understand how {{ecloud}} differs from self-managed deployments.
@@ -155,13 +154,13 @@ For the first week, focus on the following activities:
 - Demonstrate basic capabilities.
 - Validate that Elastic can address your use case.
 
-The following activities are recommended for each use case:
+We recommend the following activities for each use case:
 
 ::::{tab-set}
 
 :::{tab-item} Search
 
-1. Review [Search getting started guide](/solutions/search/get-started.md).
+1. Review the [Search getting started guide](/solutions/search/get-started.md).
 2. Ingest sample data or connect a data source.
 3. Build basic search queries and test relevance.
 4. Create simple visualizations of your data.
@@ -170,7 +169,7 @@ The following activities are recommended for each use case:
 
 :::{tab-item} Observability
 
-1. Review [Observability getting started guide](/solutions/observability/get-started.md).
+1. Review the [Observability getting started guide](/solutions/observability/get-started.md).
 2. Deploy Elastic Agent to monitor 1-2 hosts or services.
 3. Collect logs from a critical application.
 4. Explore metrics and logs in Kibana.
@@ -179,7 +178,7 @@ The following activities are recommended for each use case:
 
 :::{tab-item} Security
 
-1. Review [Security getting started guide](/solutions/security/get-started.md).
+1. Review the [Security getting started guide](/solutions/security/get-started.md).
 2. [Ingest security data](/solutions/security/get-started/ingest-data-to-elastic-security.md) from your environment.
 3. Deploy Elastic Defend to protect critical endpoints.
 4. Enable prebuilt detection rules.
@@ -315,6 +314,7 @@ When you're ready to move beyond evaluation:
 
 ::::{note}
 Depending on your organization's needs, conventions, and preferences, you might want to evaluate different deployment options. Elastic offers multiple deployment types including {{ecloud}}, {{ece}}, and {{eck}}. Explore the [deployment options](/deploy-manage/deploy.md) to find the best fit for your infrastructure and requirements.
+If you choose to retain your {{ecloud}} deployment, refer to [Remove trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#remove-trial-limitations) and [Maintain access to your trial projects and data](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-happens-at-the-end-of-the-trial).
 ::::
 
 ### Expanding your implementation
@@ -323,7 +323,7 @@ After proving value with one use case:
 
 - Consider adding complementary solutions (for example, Observability + Security).
 - Expand data sources and integrations.
-- Implement advanced features (ML, custom applications, APIs).
+- Implement advanced features ({{ml-cap}}, custom applications, APIs).
 - Onboard additional teams and users.
 
 ### Getting help
@@ -342,5 +342,5 @@ Continue exploring Elastic's capabilities:
 - **[Solutions overview](/solutions/index.md)**: Deep dive into Search, Observability, and Security capabilities.
 - **[Deploy and manage](/deploy-manage/index.md)**: Comprehensive deployment and operational guidance.
 - **[Manage data](/manage-data/index.md)**: Learn about data ingestion, storage, and lifecycle management.
-- **[Explore and analyze](/explore-analyze/index.md)**: Master Kibana's visualization and analysis tools.
+- **[Explore and analyze](/explore-analyze/index.md)**: Master {{kib}}'s visualization and analysis tools.
 
