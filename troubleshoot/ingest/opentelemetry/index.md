@@ -17,21 +17,21 @@ Find solutions to common issues in EDOT components and SDKs.
 
 ## Component troubleshooting
 
-* [EDOT Collector troubleshooting](edot-collector/index.md): Troubleshoot issues with the EDOT Collector, including resource problems, configuration errors, and connectivity issues.
+* [EDOT Collector troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md): Troubleshoot issues with the EDOT Collector, including resource problems, configuration errors, and connectivity issues.
 
-* [EDOT SDKs troubleshooting](edot-sdks/index.md): Troubleshoot issues with EDOT SDKs for Android, .NET, iOS, Java, Node.js, PHP, and Python.
+* [EDOT SDKs troubleshooting](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md): Troubleshoot issues with EDOT SDKs for Android, .NET, iOS, Java, Node.js, PHP, and Python.
 
 ## Common troubleshooting topics
 
 These guides apply to both the Collector and SDKs:
 
-* [Connectivity issues](connectivity.md): Resolve connection problems between EDOT components and Elastic, including firewall, proxy, and network configuration issues.
+* [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md): Resolve connection problems between EDOT components and Elastic, including firewall, proxy, and network configuration issues.
 
-* [No data visible in Kibana](no-data-in-kibana.md): Diagnose why telemetry data (logs, metrics, traces) doesn't appear in Kibana after setting up EDOT.
+* [No data visible in Kibana](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md): Diagnose why telemetry data (logs, metrics, traces) doesn't appear in Kibana after setting up EDOT.
 
-* [429 errors when using the mOTLP endpoint](429-errors-motlp.md): Resolve HTTP 429 `Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP endpoint.
+* [429 errors when using the mOTLP endpoint](/troubleshoot/ingest/opentelemetry/429-errors-motlp.md): Resolve HTTP 429 `Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP endpoint.
 
-* [Contact support](contact-support.md): Learn how to contact Elastic Support and what information to include to help resolve issues faster.
+* [Contact support](/troubleshoot/ingest/opentelemetry/contact-support.md): Learn how to contact Elastic Support and what information to include to help resolve issues faster.
 
 ## Additional resources
 
