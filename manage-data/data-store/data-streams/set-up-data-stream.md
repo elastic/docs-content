@@ -321,7 +321,7 @@ You can delete a data stream and its backing indices via the {{kib}} UI or an AP
 To delete a data stream and its backing indices in {{kib}}:
 
 1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` security privilege for the data stream.
+1. In the **Data Streams** view, click the trash can icon. The icon only displays if you have the `delete_index` security privilege for the data stream.
 
 ::: 
 :::{tab-item} API
