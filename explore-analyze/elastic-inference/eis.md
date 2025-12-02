@@ -79,7 +79,7 @@ To track your token consumption:
 
 The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
 
-Accounts in the free trial period are subject to token limits that are considered "fair usage". Access to some models might be paused temporarily if this limit is exceeded.
+Accounts in the free trial period are subject to token limits that are considered "fair usage". Access to some models may be paused temporarily if this limit is exceeded.
 
 ### Elastic Managed LLM
 
