@@ -40,7 +40,7 @@ To learn more, refer to:
 - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md):
 :::{include} explore-analyze/_snippets/eis-intro.md
 :::
-- [Elastic Managed LLM connector](kibana://docs/reference/connectors-kibana/elastic-managed-llm.md):
+- [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md):
 This connector enables you to use built-in LLMs vetted for GenAI product features across the platform.
 - [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md):
 This general-purpose API enables you to perform {{infer}} operations using EIS, your own models, or third-party services.
