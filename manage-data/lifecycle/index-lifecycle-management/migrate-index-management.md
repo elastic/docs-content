@@ -15,8 +15,6 @@ products:
 
 # Migrate to {{ilm}} ({{ilm-init}}) on {{ech}} or {{ece}} deployments
 
-is migrated by
-
 ::::{important}
 Index curation is deprecated. Any deployments using index curation are prompted to migrate to ILM.
 ::::

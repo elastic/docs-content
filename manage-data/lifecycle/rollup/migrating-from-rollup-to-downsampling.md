@@ -11,12 +11,12 @@ products:
 
 
 
-# Migrating from Rollup to downsampling [rollup-migrating-to-downsampling]
+# Migrating from rollups to downsampling in {{es}} [rollup-migrating-to-downsampling]
 
 
-Rollup and downsampling are two different features that allow historical metrics to be rolled up. From a high level rollup is more flexible compared to downsampling, but downsampling is a more robust and easier feature to downsample metrics.
+Understand how to transition from legacy rollup jobs to {{es}} downsampling. This documentation explains key differences between the two and migration steps.
 
-The following aspects of downsampling are easier or more robust:
+The following aspects of downsampling are easier or more robust than using rollup jobs:
 
 * No need to schedule jobs. Downsampling is integrated with Index Lifecycle Management (ILM) and Data Stream Lifecycle (DSL).
 * No separate search API. Downsampled indices can be accessed using the search API and {{esql}}.
