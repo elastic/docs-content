@@ -80,13 +80,13 @@ When using TLS certificate–based authentication, the first step is to establis
 * The local cluster’s transport CA must be added as a trusted CA in the remote cluster.
 
 ::::{note}
-While it is technically possible to configure remote cluster connections using older versions of {{es}}, this guide only covers the setup for {{es}} 7.6 and later. The setup process is significantly simplified in {{es}} 7.6 due to improved support for the indirection of Kubernetes services.
+While it is technically possible to configure remote cluster connections using earlier versions of {{es}}, this guide only covers the setup for {{es}} 7.6 and later. The setup process is significantly simplified in {{es}} 7.6 due to improved support for the indirection of Kubernetes services.
 ::::
 
 Consider the following example:
 
 * `remote-cluster` resides inside Kubernetes and is managed by ECK
-* `local-cluster` is not hosted inside the same Kubernetes cluster as `remote-cluster` and may not even be managed by ECK
+* `local-cluster` is not hosted inside the same Kubernetes cluster as `remote-cluster` and might not even be managed by ECK
 
 To allow mutual TLS authentication between the clusters:
 
@@ -111,7 +111,7 @@ To allow mutual TLS authentication between the clusters:
 
     If `local-cluster` is also managed by an ECK instance, proceed as follows:
 
-    1. Create a config map with the CA certificate you just extracted:
+    1. Create a config map with the CA certificate you extracted previously:
 
         ```sh
         kubectl create configmap remote-certs --from-file=ca.crt=remote.ca.crt

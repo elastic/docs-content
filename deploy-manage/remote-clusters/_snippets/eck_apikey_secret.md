@@ -1,4 +1,4 @@
-The following command creates a secret with the API key encoded value obtained in the previous step:
+The following command creates a secret containing the encoded API key obtained earlier:
 
 ```sh
 cat <<EOF | kubectl apply -f -
