@@ -62,7 +62,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Format for readability**
 :   Round to an appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics, but use more precision when small changes matter.
 
-Refer to the [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/) and the [Line chart settings](#settings) for moreconfiguration options.
+For layout, hierarchy, and color guidance on dashboards, check the EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
+For more chart configuration options, visit the [Line chart settings](#settings) section.
 :::::
 
 :::::{step} Save the chart
@@ -231,6 +232,6 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
 
 ---
 
-For layout, hierarchy, and color guidance on dashboards, see EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/).
+
 
 
