@@ -36,35 +36,33 @@ Using the visualization type dropdown, select **Line**.
 
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Drag a time field (for example, `@timestamp`) to the **X-axis** to create a `Date histogram` (recommended for time series).
+2. Drag a time field (for example, `order_date`) to the **X-axis** to create a `Date histogram` (recommended for time series).
 
 :::{note}
 You might need to extend the time range and set the time filter to Last 30 days.
 :::
 
-3. Drag a numeric field (for example, `response_time`) to the **Y-axis**. {{kib}} suggests a function like `Average`, `Count`, or `Counter rate`. You can change it or use a [formula](../lens.md#lens-formulas).
-4. Optionally:
-   - Add more numeric fields to create additional series, or drag a categorical field (for example, `geo.country`) to **Break down by** to split the series.
+3. Drag a numeric field (for example, `products_quantity`) to the **Y-axis**.
+
+Optionally:
+   - Add more numeric fields to create additional series, or drag a categorical field (for example, `geoip.city_name`) to **Break down by** to split the series.
    - Add a [reference line](../lens.md#add-reference-lines) to mark targets or SLOs.
    - Adjust axes, legends, and series styles from the chart settings.
-
-Refer to [](#settings) for line chart configuration options.
 :::::
 
 :::::{step} Customize the chart to follow best practices
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
-**Reduce cognitive load**
-:   Keep the number of concurrent series manageable. If you need many series, use filters, small multiples, or focus on top N.
+**Use color wisely**
+:   Assign colors that match your users' expectations and consider your specific context.
 
-**Use color consistently**
-:   Use consistent palettes for related series. Prefer EUI visualization palettes for accessibility and consistency. See [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/).
+**Provide context**
+:   Add descriptive axis titles and units to explain what the chart shows.
 
-**Label clearly**
-:   Add descriptive axis titles and units. Format values (for example, milliseconds, percent) for readability.
+**Format for readability**
+:   Round to an appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics, but use more precision when small changes matter.
 
-**Structure dashboards for quick scanning**
-:   Place high-level KPIs at the top and detailed breakdowns below. Group related charts in rows and align legends consistently. See [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/).
+Refer to the [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/) and the [Line chart settings](#settings) for moreconfiguration options.
 :::::
 
 :::::{step} Save the chart
