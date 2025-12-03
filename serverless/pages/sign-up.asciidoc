@@ -57,10 +57,7 @@ To learn more about Elastic Cloud Hosted, check our https://www.elastic.co/guide
 
 **Inference tokens**
 
-* You can use these models hosted by the Elastic {infer-cap} Service with the following limits:
-  * **Elastic Managed LLM:** 100 million input tokens in a 24-hour period or 5 million output tokens in a 24-hour period
-  * **ELSER**: 1 billion tokens in a 24-hour period
-* Access to some models may be paused temporarily if either of these limits are exceeded
+* TBD
 
 **Remove limitations**
 
