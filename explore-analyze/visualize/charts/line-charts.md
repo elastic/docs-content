@@ -10,7 +10,7 @@ description: Instructions and best practices for building line charts with Kiban
 
 Line charts are ideal for visualizing how metrics evolve over time, spotting seasonal patterns, and detecting spikes or regressions at a glance. Use them for KPIs like response time, error rate, throughput, or utilization, and compare multiple series or previous periods on the same chart.
 
-You can create line charts from any numeric data using aggregations (for example, `Average`, `Percentile`, `Counter rate`) or with custom [formulas](../lens.md#lens-formulas). Line charts typically use a date histogram on the x-axis, but they can also plot over numeric or ordinal buckets.
+You can create line charts from any numeric data using aggregations (for example, `Average`, `Percentile`, `Counter rate`) or with custom [formulas](../lens.md#lens-formulas). Line charts usually show time on the x-axis, but they can also display data grouped by numbers or categories.
 
 You can create line charts in {{kib}} using [**Lens**](../lens.md).
 
@@ -37,6 +37,11 @@ Using the visualization type dropdown, select **Line**.
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
 2. Drag a time field (for example, `@timestamp`) to the **X-axis** to create a `Date histogram` (recommended for time series).
+
+:::{note}
+You might need to extend the time range and set the time filter to Last 30 days.
+:::
+
 3. Drag a numeric field (for example, `response_time`) to the **Y-axis**. {{kib}} suggests a function like `Average`, `Count`, or `Counter rate`. You can change it or use a [formula](../lens.md#lens-formulas).
 4. Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field (for example, `geo.country`) to **Break down by** to split the series.
