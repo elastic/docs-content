@@ -31,13 +31,13 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
 |-------------------|-------------------------------|---------|----------------------|
 | [Deployment health monitoring](/deploy-manage/monitor.md) | AutoOps or monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
-| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-features-replaced)) |
+| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](explore-analyze/alerts-cases.md#watcher)) |
 
 ## Data lifecycle
 
 | Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
 |-------------------|-------------------------------|---------|----------------------|
-| [Data lifecycle management](/manage-data/lifecycle.md) | ILM, data tiers, data stream lifecycle | ILM, data tiers, data stream lifecycle | Data stream lifecycle ([why?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-features-replaced)) |
+| [Data lifecycle management](/manage-data/lifecycle.md) | ILM, data tiers, data stream lifecycle | ILM, data tiers, data stream lifecycle | Data stream lifecycle ([why?](/manage-data/lifecycle.md#ilm)) |
 | [Snapshot management](/deploy-manage/tools/snapshot-and-restore.md) | Custom | Available | Managed by Elastic |
 
 ## Integrations and extensions

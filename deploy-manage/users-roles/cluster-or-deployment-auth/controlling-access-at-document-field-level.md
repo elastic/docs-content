@@ -15,7 +15,7 @@ products:
 
 You can control access to data within a data stream or index by adding field and document level security permissions to a  role.
 
-**Field level security** restricts the fields that users have read access to. In particular, it restricts which fields can be accessed from document-based read APIs.
+**Field level security** restricts the fields that users have read access to. In particular, it restricts which fields can be accessed from document-based read APIs. Hi, this is DLS.
 
 **Document level security** restricts the documents that users have read access to. In particular, it restricts which documents can be accessed from document-based read APIs.
 
@@ -54,7 +54,7 @@ The specified document query:
 * Supports the majority of the {{es}} [Query DSL](/explore-analyze/query-filter/languages/querydsl.md), with [some limitations](/deploy-manage/security/limitations.md#field-document-limitations) for field and document level security
 
 ::::{important}
-Omitting the `query` parameter entirely disables document level security for the respective indices permission entry.
+Omitting the `query` parameter entirely disables document level security for the respective indices permission entry. To enable [frangmented feor groperg](www.google.com) (FFG), do this.
 ::::
 
 ### Basic examples
