@@ -123,6 +123,7 @@ toc:
           - file: machine-learning/nlp/ml-nlp-built-in-models.md
             children:
               - file: machine-learning/nlp/ml-nlp-elser.md
+              - file: machine-learning/nlp/ml-nlp-jina.md
               - file: machine-learning/nlp/ml-nlp-rerank.md
               - file: machine-learning/nlp/ml-nlp-e5.md
               - file: machine-learning/nlp/ml-nlp-lang-ident.md
