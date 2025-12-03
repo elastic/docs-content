@@ -38,7 +38,7 @@ serverless:
 To learn more, refer to:
 
 - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md):
-:::{include} explore-analyze/_snippets/eis-intro.md
+:::{include} _snippets/eis-intro.md
 :::
 - [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md):
 This connector enables you to use built-in LLMs vetted for GenAI product features across the platform.
