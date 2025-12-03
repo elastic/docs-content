@@ -616,7 +616,7 @@ Add a `<script>` tag to load the bundle and use the initOpenTelemetry global fun
 :::
 :::{tab-item} Asynchronous / Non-Blocking Pattern
 
-Loading the script asynchronously ensures the agent script will not block other resources on the page, however, it will still block browsers onload event.
+Loading the script asynchronously ensures the agent script does not block other resources on the page, however, it still blocks browsers onload event.
 
 ```html
 <script>
@@ -638,7 +638,7 @@ Loading the script asynchronously ensures the agent script will not block other 
 </script>
 ```
 
-Even though this is the recommended pattern, there is a caveat to be aware of. Because the downloading and initializing of the instrumentations happens asynchronously, distributed tracing will not work for requests that occur before the agent is initialized.
+Even though this is the recommended pattern, there is a caveat to be aware of. Because the downloading and initializing of the instrumentations happens asynchronously, distributed tracing does not work for requests that occur before the agent is initialized.
 :::
 ::::
 
@@ -715,12 +715,11 @@ connect-src collector.example.com:4318/v1/traces
 
 ### Cross-Origin Resource Sharing (CORS)
 
-If your website and Collector are hosted at a different origin, your browser might block the requests going out to your Collector. To solve this, you need to configure special headers for Cross-Origin Resource Sharing (CORS). This configuration depends on the solution you want to adopt and is described in the [OTLP endpoint](#otlp-endpoint) section.
+If your website and the configured endpoing have a differene origin your browser might block the export requests. If you have followed the instructions in the [OTLP endpoint](#otlp-endpoint) section you've already done the necessary setup for CORS. Otherwise you need to configure special headers for Cross-Origin Resource Sharing (CORS) in te receiveng endpoint.
+
 
 ## Known limitations
 
-- The Managed OTLP endpoint (mOTLP) cannot be directly configured for CORS. A reverse proxy is required.
-- {{apm-server}} does not support CORS configuration for OTLP endpoints.
 - Metrics from browser-based RUM might have limited utility compared to backend metrics.
 - Some OpenTelemetry instrumentations for browsers are still experimental.
 - Performance impact on the browser should be monitored, especially when using multiple instrumentations.
@@ -789,7 +788,7 @@ curl -X POST https://your-proxy/v1/traces \
 
 3. Review proxy logs for errors or blocked requests.
 
-4. Ensure the proxy can reach the backend Collector or mOTLP endpoint.
+4. Ensure the proxy can reach the backend EDOT Collector or mOTLP endpoint.
 
 :::
 
@@ -797,7 +796,7 @@ curl -X POST https://your-proxy/v1/traces \
 
 If your OpenTelemetry setup isn't initializing correctly:
 
-1. Ensure `OTEL_EXPORTER_OTLP_ENDPOINT` doesn't include the signal path (like `/v1/traces`). The SDK adds this automatically:
+1. Ensure `OTEL_EXPORTER_OTLP_ENDPOINT` doesn't include the signal path (like `/v1/traces`). The script provided adds this automatically:
 
 ```javascript
 // Correct
@@ -886,14 +885,14 @@ Content-Security-Policy: connect-src 'self' https://collector.example.com:4318
 
 :::{dropdown} Authentication failures
 
-If using mOTLP or a Collector with authentication requirements:
+If using mOTLP or an EDOT Collector with authentication requirements:
 
 1. Ensure your authentication credentials are valid and not expired.
 
 2. If using a reverse proxy, verify it's correctly forwarding the `Authorization` header:
 
 ```nginx
-proxy_set_header Authorization $http_authorization;
+proxy_set_header Authorization 'ApiKey _elastic_api_key_';
 ```
 
 3. The `Authorization` header must be listed in `Access-Control-Allow-Headers` for preflight requests.
@@ -945,7 +944,7 @@ import { MyApp } from './app.js';
 
 ```html
 <!-- Check browser network tab to verify this loads -->
-<script src="./js/telemetry-bundle.js"></script>
+<script src="./js/telemetry.umd.js"></script>
 ```
 
 4. If `initOpenTelemetry` is not defined, ensure your bundler is exposing it globally. For Webpack:
