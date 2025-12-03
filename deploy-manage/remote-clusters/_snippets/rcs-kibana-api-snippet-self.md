@@ -4,6 +4,7 @@ This snippet is in use in the following locations:
 - ec-remote-cluster-self-managed.md
 - ece-enable-ccs-for-eck.md
 - ec-enable-ccs-for-eck.md
+- eck-remote-clusters-from-external.md
 -->
 1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Add a remote cluster**.
@@ -13,7 +14,7 @@ This snippet is in use in the following locations:
 
     * **Remote cluster name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
 
-      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key.
     * **Remote address**: Enter the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port.
 
       Make sure you use the correct port for your authentication method:

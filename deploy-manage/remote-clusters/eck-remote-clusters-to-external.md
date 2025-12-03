@@ -12,7 +12,6 @@ sub:
 
 # Connect an ECK-managed cluster to an external cluster or deployment
 
-% process described here: https://github.com/elastic/cloud-on-k8s/issues/8502#issuecomment-2753674140 (for ECH)
 These steps describe how to configure a remote cluster connection from an {{es}} cluster managed by {{eck}} (ECK) to an external {{es}} cluster, where external refers to any cluster not managed by the same ECK operator. The remote cluster can be self-managed, part of an {{ech}} (ECH) or {{ece}} (ECE) deployment, or managed by a different ECK operator.
 
 Once the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
@@ -126,8 +125,8 @@ If the remote cluster is part of an {{ech}} deployment, follow the **The CA is p
 2. **Configure the {{es}} resource**
 
     Update the {{es}} manifest to:
-    * Load the API key using `secureSettings`
-    * Enable the remote-cluster SSL client in the `config` section of each `nodeSet`
+    * Load the API key from the previously created secret using [`secureSettings`](/deploy-manage/security/k8s-secure-settings.md)
+    * Enable the remote cluster SSL client in the `config` section of each `nodeSet`
 
     ```yaml subs=true
     apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -161,9 +160,7 @@ If the remote cluster is part of an {{ech}} deployment, follow the **The CA is p
 
 2. **Store the CA certificate in a ConfigMap or Secret**
 
-    Store the CA certificate [retrieved earlier](#enable-rcs) in a ConfigMap or Secret, making it available to mount [as a custom file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret) in the {{es}} Pods.
-
-    The following example creates a ConfigMap named `remote-ca` that stores the content of a local file (`my-ca.crt`) under the `remote-cluster-ca.crt` key:
+    Store the CA certificate [retrieved earlier](#enable-rcs) in a ConfigMap or Secret. The following example creates a ConfigMap named `remote-ca` that stores the content of a local file (`my-ca.crt`) under the `remote-cluster-ca.crt` key:
 
     ```sh
     kubectl create configmap remote-ca -n <namespace> --from-file=remote-cluster-ca.crt=my-ca.crt
@@ -172,9 +169,10 @@ If the remote cluster is part of an {{ech}} deployment, follow the **The CA is p
 3. **Configure the {{es}} resource**
 
     Update the {{es}} manifest to:
-    * Load the API key from the secret using `secureSettings`.
-    * Mount the CA certificate from the ConfigMap in each `nodeSet`.
-    * Enable and configure the remote-cluster SSL client in the `config` section of each `nodeSet`.
+
+    * Load the API key from the previously created secret using [`secureSettings`](/deploy-manage/security/k8s-secure-settings.md)
+    * Mount the CA certificate from the previously created ConfigMap [as a custom file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret) in the {{es}} Pods
+    * Enable and configure the remote cluster SSL client in the `config` section of each `nodeSet`
 
     ```yaml subs=true
     apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -271,9 +269,6 @@ If you intend to use `sniff` mode, configure it through the [{{es}} API](#using-
 
 ### Using the {{es}} API [using-api]
 
-% :::{include} _snippets/rcs-elasticsearch-api-snippet-self.md
-% :::
-
 To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
 * **Remote cluster alias**: The cluster alias must match the one you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
@@ -304,7 +299,7 @@ To add a remote cluster, use the [cluster update settings API](https://www.elast
 
   When using an IPv6 address, enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
 
-* `server_name`: Specify a value if the certificate presented by the remote cluster is signed for a different name than the proxy_address.
+* **server_name**: Specify a value if the certificate presented by the remote cluster is signed for a different name than the proxy_address.
 
 This is an example of the API call to add or update a remote cluster:
 

@@ -50,21 +50,21 @@ Once the remote cluster server is enabled and running on the remote cluster, you
 
 Permissions have to be included under the `apiKey` field. The API model of the {{es}} resource is compatible with the [{{es}} Cross-Cluster API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) model. Fine-grained permissions can therefore be configured in both the `search` and `replication` fields.
 
-The following example shows how to reference `cluster-two` as a remote cluster in `cluster-one` and specify the cross-cluster permissions under the `apiKey` field.
+The following example shows how to connect a local cluster to a remote cluster and specify the cross-cluster permissions under the `apiKey` field. This configuration is applied to the local cluster manifest:
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: cluster-one
-  namespace: ns-one
+  name: <local-cluster-name>
+  namespace: <ns-local>
 spec:
   version: {{version.stack}}
   remoteClusters:
-  - name: cluster-two
+  - name: <remote-cluster-name>
     elasticsearchRef:
-      name: cluster-two <1>
-      namespace: ns-two <2>
+      name: <remote-cluster-name> <1>
+      namespace: <ns-remote> <2>
     apiKey:
       access:
         search:
@@ -76,40 +76,40 @@ spec:
   nodeSets:
   - count: 3
     name: default
+  ...
+  ...
 ```
 1. The name and namespace of the remote {{es}} cluster you are connecting to.
 2. The namespace declaration can be omitted if both clusters reside in the same namespace.
 3. This example requires the [{{kib}} sample data](/explore-analyze/index.md#gs-get-data-into-kibana).
 
-
 You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/remoteclusters).
-
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
-The following example describes how to configure `cluster-two` as a remote cluster in `cluster-one` using the certificate security model:
+The following example shows how to connect a local cluster to a remote cluster using the certificate-based security model. The configuration is applied to the local cluster manifest:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: cluster-one
-  namespace: ns-one
+  name: <local-cluster-name>
+  namespace: <ns-local>
 spec:
+  version: 8.16.1
+  remoteClusters:
+  - name: <remote-cluster-name>
+    elasticsearchRef:
+      name: <remote-cluster-name> <1>
+      namespace: <ns-remote> <2>
   nodeSets:
   - count: 3
     name: default
-  remoteClusters:
-  - name: cluster-two
-    elasticsearchRef:
-      name: cluster-two <1>
-      namespace: ns-two <2>
-  version: 8.16.1
+  ...
+  ...
 ```
 1. The name and namespace of the remote {{es}} cluster you are connecting to.
 2. The namespace declaration can be omitted if both clusters reside in the same namespace.
-
-
 ::::::
 :::::::
 
