@@ -536,9 +536,9 @@ initOpenTelemetry({
 
 If you're using a framework there are some suitable places for it depending on which one you're using:
 
-- React: You can create a component which initializes the instrumentation when mounted. The component should be added as child of the `<App/>` component.
-- VueJs: You can create a plugin which doesn the initialization when installed in the app. Check how to create plugins in [VueJS docs](https://vuejs.org/guide/reusability/plugins.html).
-- Angular: You can add the initialiation snipped in `./src/main.ts` which is the entry point of the application. More details in [Angular docs](https://v17.angular.io/guide/file-structure#application-source-files).
+- **React**: You can create a component which initializes the instrumentation when mounted. The component should be added as child of the `<App/>` component.
+- **VueJs**: You can create a plugin which doesn the initialization when installed in the app. Check how to create plugins in [VueJS docs](https://vuejs.org/guide/reusability/plugins.html).
+- **Angular**: You can add the initialiation snipped in `./src/main.ts` which is the entry point of the application. More details in [Angular docs](https://v17.angular.io/guide/file-structure#application-source-files).
 
 
 ### Bundle in a file
@@ -548,7 +548,6 @@ You can use a bundler like webpack, rollup or vite to generate a separate JavaSc
 ::::{tab-set}
 
 :::{tab-item} Wepack
-
 
 This is an exmaple of a `webpack.config.js` to author a library as described in [the docs](https://webpack.js.org/guides/author-libraries/) in UMD format.
 ```javascript
@@ -593,36 +592,56 @@ export default defineConfig({
 ::::
 
 
-Place the file within the application's assets folder and include it in the `<head>` section of the HTML page. 
+Place the file within the application's assets folder and include it in the `<head>` section of the HTML page. Assuming the JavaScript files reside in a folder named "js" you can load the telemetry file in a sync or async way.
 
-Assuming the JavaScript files reside in a folder named "js", the HTML file structure looks like this:
+::::{tab-set}
 
-:::{dropdown} HTML example
+:::{tab-item} Synchronous / Blocking pattern
+
+Add a `<script>` tag to load the bundle and use the initOpenTelemetry global function to initialize the agent:
 
 ```html
-<!doctype html>
-<html>
-  <head>
-    <script src="./js/telemetry.umd.js"></script>
-    <script>
-      initOpenTelemetry({
-        logLevel: 'info',
-        endpoint: 'https://proxy.example.com',
-        resourceAttributes: {
-          'service.name': 'my-web-app',
-          'service.version': '1',
-        }
-      });
-    </script>
-    …
-  </head>
-  <body>
-    <!-- app HTML content -->
-  </body>
-</html>
+<script src="./js/telemetry.umd.js"></script>
+<script>
+  initOpenTelemetry({
+    logLevel: 'info',
+    endpoint: 'https://proxy.example.com',
+    resourceAttributes: {
+      'service.name': 'my-web-app',
+      'service.version': '1',
+    }
+  });
+</script>
+```
+:::
+:::{tab-item} Asynchronous / Non-Blocking Pattern
+
+Loading the script asynchronously ensures the agent script will not block other resources on the page, however, it will still block browsers onload event.
+
+```html
+<script>
+  ;(function(d, s, c) {
+    var j = d.createElement(s),
+      t = d.getElementsByTagName(s)[0]
+
+    j.src = './js/telemetry.umd.js'
+    j.onload = function() {elasticApm.init(c)}
+    t.parentNode.insertBefore(j, t)
+  })(
+    document,
+    'script',
+    {
+      logLevel: 'info',
+      endpoint: 'https://proxy.example.com',
+      resourceAttributes: {'service.name': 'my-web-app', 'service.version': '1'} }
+  )
+</script>
 ```
 
+Even though this is the recommended pattern, there is a caveat to be aware of. Because the downloading and initializing of the instrumentations happens asynchronously, distributed tracing will not work for requests that occur before the agent is initialized.
 :::
+::::
+
 
 ## Manual instrumentation to extend your telemetry
 
