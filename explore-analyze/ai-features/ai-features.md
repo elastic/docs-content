@@ -70,7 +70,7 @@ serverless:
 
 ## AI-powered features in the {{es}} solution/project type
 
-The [{{es}}](/solutions/search.md) solution view (or project type in {{cloud-serverless}}) includes certain AI-powered features beyond the core {{es}} capabilities available on the Elastic platform.
+The [{{es}}](/solutions/search.md) solution view (or project type in {{serverless-short}}) includes certain AI-powered features beyond the core {{es}} capabilities available on the Elastic platform.
 
 ### Agent Builder
 
