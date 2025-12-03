@@ -526,14 +526,13 @@ With the setup placed in a file, it's time to apply it to your web application. 
 
 ### Import the code
 
-This approach is recommended. The build tooling manages the dependencies and integrates the code into the application bundle. This might increase the size of your application bundle.
+This approach is recommended and specially if you're using a web framemork. The build tooling manages the dependencies and integrates the code into the application bundle. This approach increases the size of your application bundle.
 
 For example, if you're using Webpack, you can import the code like this:
 
 :::{dropdown} Example: Import telemetry.js in your app
 
 ```javascript
-// file: app.(js|ts) entry point of your application
 import { initOpenTelemetry } from 'telemetry.js';
 
 initOpenTelemetry({
@@ -544,15 +543,69 @@ initOpenTelemetry({
     'service.version': '1',
   }
 });
-
-// Your app code
 ```
-
 :::
+
+If you're using a framework there are some suitable places for it depending on which one you're using:
+
+- React: You can create a component which initializes the instrumentation when mounted. The component should be added as child of the `<App/>` component.
+- VueJs: You can create a plugin which doesn the initialization when installed in the app. Check how to create plugins in [VueJS docs](https://vuejs.org/guide/reusability/plugins.html).
+- Angular: You can add the initialiation snipped in `./src/main.ts` which is the entry point of the application. More details in [Angular docs](https://v17.angular.io/guide/file-structure#application-source-files).
+
 
 ### Bundle in a file
 
-You can use a bundler to generate a separate JavaScript file. Place the file within the application's assets folder and include it in the `<head>` section of the HTML page. 
+You can use a bundler like webpack, rollup or vite to generate a separate JavaScript file. 
+
+::::{tab-set}
+
+:::{tab-item} Wepack
+
+
+This is an exmaple of a `webpack.config.js` to author a library as described in [the docs](https://webpack.js.org/guides/author-libraries/) in UMD format.
+```javascript
+const path = require('path');
+
+module.exports = {
+  entry: './path/to/telemetry.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'telemetry.umd.js',
+    library: {
+      type: 'umd'
+    }
+  },
+};
+```
+:::
+
+:::{tab-item} Vite
+This is an exmaple of a `vite.config.js` file in [library mode](https://vite.dev/guide/build#library-mode) to get a bundle in UMD format.
+```javascript
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { defineConfig } from 'vite';
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+export default defineConfig({
+  build: {
+    lib: {
+        entry: resolve(__dirname, './path/to/telemetry.js'),
+        formats: ['umd'],
+        name: 'telemetry',
+        fileName: (format) => `telemetry.${format}.js`
+    },
+    sourcemap: true,
+  }
+});
+
+```
+:::
+
+::::
+
+
+Place the file within the application's assets folder and include it in the `<head>` section of the HTML page. 
 
 Assuming the JavaScript files reside in a folder named "js", the HTML file structure looks like this:
 
@@ -562,11 +615,11 @@ Assuming the JavaScript files reside in a folder named "js", the HTML file struc
 <!doctype html>
 <html>
   <head>
-    <script src="./js/telemetry-bundle.js"></script>
+    <script src="./js/telemetry.umd.js"></script>
     <script>
       initOpenTelemetry({
         logLevel: 'info',
-        endpoint: 'https://host:port/',
+        endpoint: 'https://proxy.example.com',
         resourceAttributes: {
           'service.name': 'my-web-app',
           'service.version': '1',
