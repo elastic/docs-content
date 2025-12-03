@@ -145,7 +145,7 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
 #### Deploy {{agent}} using `Kubernetes` with the Universal Profiling Agent integration
 
-To deploy the {{agent}} with the Universal Profiling Agent integration using Kubernetes,
+To deploy {{agent}} with the Universal Profiling Agent integration using Kubernetes,
 make sure that the following options are set in the manifest.
 
 ```console
