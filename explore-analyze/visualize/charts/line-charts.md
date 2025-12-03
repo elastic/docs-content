@@ -47,11 +47,10 @@ You might need to extend the time range and set the time filter to Last 30 days.
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field (for example, `geoip.city_name`) to **Break down by** to split the series.
    - Add a [reference line](../lens.md#add-reference-lines) to mark targets or SLOs.
-   - Adjust axes, legends, and series styles from the chart settings.
 :::::
 
 :::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+You can tweak the appearance of your chart by adjusting axes, legends, and series styles from the chart settings. Consider the following best practices:
 
 **Use color wisely**
 :   Assign colors that match your users' expectations and consider your specific context.
@@ -59,11 +58,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Provide context**
 :   Add descriptive axis titles and units to explain what the chart shows.
 
-**Format for readability**
-:   Round to an appropriate precision. Showing 1.2M is clearer than 1,234,567.89 for high-level metrics, but use more precision when small changes matter.
-
 For layout, hierarchy, and color guidance on dashboards, check the EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
-For more chart configuration options, visit the [Line chart settings](#settings) section.
+For more chart configuration options, go to the [Line chart settings](#settings) section.
 :::::
 
 :::::{step} Save the chart
