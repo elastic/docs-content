@@ -12,7 +12,7 @@ products:
 
 # AI-powered features
 
-AI is a core part of the {{stack}}. It augments features and helps you analyze your data more effectively. This page lists the AI-powered capabilities and features available to you in each solution, and provides links to more detailed information about each of them.
+AI is a core part of the Elastic platform. It augments features and helps you analyze your data more effectively. This page lists the AI-powered capabilities and features available to you in each solution, and provides links to more detailed information about each of them.
 
 To learn about enabling and disabling these features in your deployment, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
@@ -25,6 +25,8 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 
 ## AI-powered features on the Elastic platform
 
+The following AI-powered features are available across the Elastic platform. These are core {{es}} capabilities that you can use regardless of your chosen solution or project type.
+
 ### Elastic {{infer-cap}}
 ```{applies_to}
 stack:
@@ -35,17 +37,20 @@ serverless:
 
 To learn more, refer to:
 
-- [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md): a managed service that runs {{infer}} outside your cluster resources.
-- [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md): a general-purpose API that enables you to run {{infer}} using EIS, your own models, or third-party services.
+- [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md):
+:::{include} explore-analyze/_snippets/eis-intro.md
+:::
+- [Elastic Managed LLM connector](kibana://docs/reference/connectors-kibana/elastic-managed-llm.md):
+This connector enables you to use built-in LLMs vetted for GenAI product features across the platform.
+- [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md):
+This general-purpose API enables you to perform {{infer}} operations using EIS, your own models, or third-party services.
 
-### Natural language processing
+### Natural language processing models
 ```{applies_to}
 stack:
 serverless:
 ```
-Natural Language Processing (NLP) enables you to analyze natural language data and make predictions.
-
-Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md). You can also [deploy custom models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
+Natural Language Processing (NLP) enables you to analyze natural language data and make predictions.  Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) or [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md). You can also [deploy custom NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
 ### AI-powered search
 ```{applies_to}
