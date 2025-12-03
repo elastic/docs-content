@@ -31,7 +31,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
 |-------------------|-------------------------------|---------|----------------------|
 | [Deployment health monitoring](/deploy-manage/monitor.md) | AutoOps or monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
-| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](explore-analyze/alerts-cases.md#watcher)) |
+| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/explore-analyze/alerts-cases.md#watcher)) |
 
 ## Data lifecycle
 
