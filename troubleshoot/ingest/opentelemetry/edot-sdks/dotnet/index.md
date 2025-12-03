@@ -21,7 +21,7 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 ## Obtain EDOT .NET diagnostic logs
 
-For most problems, such as when you don't see data in your Elastic Observability backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Trace` to investigate further.
+For most problems, such as when you don't see data in your {{product.observability}} backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Trace` to investigate further. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
 The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the contrib OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
 
@@ -74,7 +74,7 @@ In the preceding code, you have filtered `Elastic.OpenTelemetry` to only emit lo
 
 ## Enable global file logging
 
-Integrated logging is helpful because it requires little to no setup. The logging infrastructure is not present by default in some application types, such as console applications. EDOT .NET also offers a global file logging feature, which is the easiest way for you to get diagnostics and debug information. You must enable file logging when you work with Elastic support, as trace logs will be requested.
+Integrated logging is helpful because it requires little to no setup. The logging infrastructure is not present by default in some application types, such as console applications. EDOT .NET also offers a global file logging feature, which is the easiest way for you to get diagnostics and debug information. You must enable file logging when you work with Elastic support, as trace logs will be requested. For more details, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 Specify at least one of the following environment variables to make sure that EDOT .NET logs into a file.
 

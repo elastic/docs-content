@@ -1,6 +1,5 @@
 Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless CSPM integration.
 
-
 ## When I make a new integration, when will I see the agent appear on the Integration Policies page? [_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page]
 
 After you create a new agentless integration, the new integration policy may show a button that says **Add agent** instead of the associated agent for several minutes during agent enrollment. No action is needed other than refreshing the page once enrollment is complete.
@@ -77,3 +76,4 @@ When you create a new agentless CSPM integration, a new agent policy appears wit
 ## Can agentless integrations use a specific range of static IP addresses for configuring allow and deny rules for traffic?
 
 No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
+
