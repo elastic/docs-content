@@ -1,4 +1,5 @@
 ---
+navigation_title: Index lifecycle managment
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
@@ -12,9 +13,12 @@ products:
   - id: elasticsearch
 ---
 
-# Index lifecycle management
+# {{ilm-cap}} ({{ilm-init}}) in {{es}}
 
-{{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage your time series data. You can configure {{ilm-init}} policies to automatically manage indices according to your performance, resiliency, and retention requirements. For example, you could use {{ilm-init}} to:
+
+{{ilm}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
+
+For example, you can use {{ilm-init}} to:
 
 * Spin up a new index when an index reaches a certain size or number of documents
 * Create a new index each day, week, or month and archive previous ones

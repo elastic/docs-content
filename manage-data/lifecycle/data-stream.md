@@ -1,4 +1,5 @@
 ---
+navigation_title: Data stream lifecycle
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle.html
 applies_to:
@@ -8,19 +9,21 @@ products:
   - id: elasticsearch
 ---
 
-# Data stream lifecycle [data-stream-lifecycle]
+# Data stream lifecycle in {{es}} [data-stream-lifecycle]
 
-A data stream lifecycle is the built-in mechanism [data streams](/manage-data/data-store/data-streams.md) use to manage their lifecycle. It enables you to easily automate the management of your data streams according to your retention requirements. For example, you could configure the lifecycle to:
+A data stream lifecycle in {{es}} is a built-in automation mechanism for managing data retention, performance, and storage optimization. By configuring rollover, retention, and downsampling rules for your [data streams](/manage-data/data-store/data-streams.md), you can ensure that time-series data is efficiently maintained and that older data is removed when no longer needed. This page explains how the lifecycle works, its key features, and how to configure it for both new and existing data streams.
 
-* Ensure that data indexed in the data stream will be kept at least for the retention time you defined.
-* Ensure that data older than the retention period will be deleted automatically by {{es}} at a later time.
+Data stream lifecycle manages your data streams according to your retention requirements. For example, you can configure the lifecycle to:
 
-To achieve that, it supports:
+* Ensure that data indexed in the data stream is kept at least for the retention time you defined.
+* Ensure that data older than the retention period is deleted automatically by {{es}} at a later time.
+
+To achieve these, data stream lifecycle supports:
 
 * Automatic [rollover](index-lifecycle-management/rollover.md), which chunks your incoming data in smaller pieces to facilitate better performance and backwards incompatible mapping changes.
 * Configurable retention, which allows you to configure the time period for which your data is guaranteed to be stored. {{es}} is allowed at a later time to delete data older than this time period. Retention can be configured on the data stream level or on a global level. Read more about the different options in this [tutorial](data-stream/tutorial-data-stream-retention.md).
 
-A data stream lifecycle also supports downsampling the data stream backing indices. See [the downsampling example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for more details.
+Data stream lifecycle also supports downsampling the data stream backing indices. Refer to [the downsampling example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for more details.
 
 ## Data stream lifecycle availability
 
