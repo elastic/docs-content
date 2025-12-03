@@ -55,16 +55,16 @@ Refer to [](#settings) for line chart configuration options.
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
 **Reduce cognitive load**
-::   Keep the number of concurrent series manageable. If you need many series, use filters, small multiples, or focus on top N.
+:   Keep the number of concurrent series manageable. If you need many series, use filters, small multiples, or focus on top N.
 
 **Use color consistently**
-::   Use consistent palettes for related series. Prefer EUI visualization palettes for accessibility and consistency. See [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/).
+:   Use consistent palettes for related series. Prefer EUI visualization palettes for accessibility and consistency. See [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/).
 
 **Label clearly**
-::   Add descriptive axis titles and units. Format values (for example, milliseconds, percent) for readability.
+:   Add descriptive axis titles and units. Format values (for example, milliseconds, percent) for readability.
 
 **Structure dashboards for quick scanning**
-::   Place high-level KPIs at the top and detailed breakdowns below. Group related charts in rows and align legends consistently. See [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/).
+:   Place high-level KPIs at the top and detailed breakdowns below. Group related charts in rows and align legends consistently. See [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/).
 :::::
 
 :::::{step} Save the chart
@@ -132,13 +132,13 @@ Customize your line chart to display exactly the information you need, formatted
 ### Y-axis series [y-axis-series]
 
 **Value**
-::   The metric to plot. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Average`, `Sum`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
+:   The metric to plot. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Average`, `Sum`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
     :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
 **Appearance**
-::   Define the series style, including:
+:   Define the series style, including:
    - **Name**: Customize the legend label with a descriptive name.
    - **Series type**: Line or area variants, with optional stacking for area.
    - **Line/marker style**: Toggle lines, points, or both; adjust line width.
