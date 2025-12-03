@@ -470,6 +470,7 @@ redirects:
   'deploy-manage/deploy/self-managed/networkaddress-cache-ttl.md': 'deploy-manage/deploy/self-managed/important-settings-configuration.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3230
+  'extend/contribute/index.md': 'contribute-docs/index.md'
   'extend/contribute-docs/index.md': 'contribute-docs/index.md'
   'extend/contribute/api-docs/index.md': 'contribute-docs/api-docs/index.md'
   'extend/contribute/api-docs/overview.md': 'contribute-docs/api-docs/overview.md'
