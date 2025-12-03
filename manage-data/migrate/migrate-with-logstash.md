@@ -22,6 +22,14 @@ Familiarity with {{ech}}, {{es}}, and {{ls}} is helpful, but not required.
 This guide focuses on a basic data migration scenario for moving static data from an {{ech}} deployment to a {{serverless-full}} project. Dashboards, visualizations, pipelines, templates, and other {{kib}} assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
 :::
 
+:::{admonition} Advanced migration
+:applies_to: stack: preview
+
+{{ls}} can handle more advanced migrations with field tracking settings in the [Elasticsearch input](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch) plugin. The field tracking feature adds cursor-like pagination functionality that can support more complex migrations and ongoing data migration over time.
+
+More information is available in the Elasticsearch input plugin documentation: [Tracking a field's value across runs](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch#plugins-inputs-elasticsearch-cursor).
+:::
+
 ## Prerequisites [migrate-prereqs]
 
 - {{ech}} deployment with data to migrate
@@ -85,11 +93,3 @@ After running {{ls}}, verify that the data has been successfully migrated:
 2. Navigate to Index Management and select the index.
 3. Verify that the migrated data is visible.
 
-<br>
-:::{admonition} Advanced migration
-:applies_to: stack: preview
-
-{{ls}} can handle more advanced migrations with field tracking settings in the [Elasticsearch input](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch) plugin. The field tracking feature adds cursor-like pagination functionality that can support more complex migrations and ongoing data migration over time.
-
-More information is available in the Elasticsearch input plugin documentation: [Tracking a field's value across runs](https://www.elastic.co/docs/reference/logstash/plugins/plugins-inputs-elasticsearch#plugins-inputs-elasticsearch-cursor).
-:::
