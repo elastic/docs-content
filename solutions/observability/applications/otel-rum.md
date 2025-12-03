@@ -13,19 +13,19 @@ products:
 # OpenTelemetry for Real User Monitoring (RUM)
 
 :::{important}
-Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in **Technical Preview**. This feature is provided as-is and has [limitations](#known-limitations). It should not be used in production environments. Elastic provides best-effort support for Technical Preview features and they are not covered under standard SLAs.
+Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in **Technical Preview**. This feature may be changed or removed in a future release and has [limitations](#known-limitations). It should not be used in production environments. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 :::
 
-This documentation outlines the process for instrumenting your web application with OpenTelemetry browser instrumentation, using {{product.observability}} as the backend. Unlike the [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md), this approach uses upstream OpenTelemetry JavaScript packages directly. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
+This documentation outlines the process for instrumenting your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. This approach uses upstream OpenTelemetry packages directly unlike the [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md). The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
 
-While this guide uses upstream OpenTelemetry instrumentation, you can also use the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) components as part of your data ingestion pipeline.
+While this guide uses upstream OpenTelemetry instrumentation, you can use the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) components as part of your data ingestion pipeline.
 
 ## Prerequisites
 
 This guide assumes you're using an {{product.observability}} deployment. You can use an existing one or set up a new one. If you're new to {{product.observability}}, follow the guidelines in [Get started with {{product.observability}}](/solutions/observability/get-started.md).
 
 :::{warning}
-Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using OTel RUM agent alongside any other {{apm-agent}}, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ### OTLP endpoint
@@ -68,18 +68,6 @@ server {
     }
 }
 ```
-
-## Installation
-
-OpenTelemetry packages for web instrumentation are published to npm. You can install them with the package manager of your choice.
-
-The following packages hold the necessary components to set up the base for your instrumentations:
-
-```bash
-npm install @opentelemetry/api @opentelemetry/core @opentelemetry/resources @opentelemetry/sdk-trace-base @opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-http @opentelemetry/instrumentation
-```
-
-You can then install the instrumentations that you're interested in.
 
 ## Basic configuration
 
