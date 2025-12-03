@@ -97,7 +97,7 @@ Complete the following steps:
     ssl.certificate_authorities:
       - "/path/to/your/ca.crt"
     ```
-    The following code block shows what your final configuration should look like when you use the hardcode method.
+    The following code shows what your final configuration should look like when you use the hardcode method.
 
     ```yaml
     receivers:
