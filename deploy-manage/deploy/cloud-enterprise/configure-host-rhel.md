@@ -353,30 +353,14 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     root             soft    memlock        unlimited
     ```
 
-29. NOTE: This step is optional if the Docker registry doesn’t require authentication.
-
-    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
-
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
-
-    ```text
-    {
-     "auths": {
-       "docker.elastic.co": {
-         "auth": "<auth-token>"
-       }
-     }
-    }
-    ```
-
-30. Restart the podman service by running this command:
+29. Restart the podman service by running this command:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-31. Reboot the RHEL host
+30. Reboot the RHEL host
 
     ```sh
     sudo reboot
