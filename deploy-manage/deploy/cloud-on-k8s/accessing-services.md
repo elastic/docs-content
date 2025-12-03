@@ -71,7 +71,7 @@ Consider the following when customizing the Kubernetes services handled by ECK:
 
 * When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. Depending on your client implementation, this might result in a short disruption until the service DNS entries refresh to point to the new endpoints.
 
-* If you change the service’s `port`, set `targetPort` to the container’s default listening port. Otherwise, Kubernetes uses the same value for both, resulting in failed connections. For example, default ports are `9200` for the {{es}} HTTP interface, and `5601` for {{kib}}.
+* If you change the service’s `port` to expose a different port externally, set `targetPort` to the container’s default listening port. Otherwise, Kubernetes uses the same value for both, resulting in failed connections. For example, default ports are `9200` for the {{es}} HTTP interface, and `5601` for {{kib}}.
 
 ```yaml subs=true
 apiVersion: <kind>.k8s.elastic.co/v1
