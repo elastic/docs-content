@@ -360,7 +360,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo systemctl restart podman
     ```
 
-30. Reboot the RHEL host
+30. Reboot the RHEL host.
 
     ```sh
     sudo reboot
