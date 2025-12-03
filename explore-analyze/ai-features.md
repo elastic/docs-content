@@ -29,7 +29,7 @@ The following AI-powered features are available across the Elastic platform. The
 
 ### Elastic {{infer-cap}}
 
-[Elastic {{infer-cap}}](/explore-analyze/elastic-inference.md) enables you to use {{ml}} or AI models to make predictions or enact operations—such as text embedding, or reranking-on your data.
+[Elastic {{infer-cap}}](/explore-analyze/elastic-inference.md) enables you to use {{ml}} models to perform operations such as text embedding or reranking on your data.
 
 To learn more, refer to:
 
