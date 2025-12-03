@@ -55,6 +55,10 @@ To learn more about Elastic Cloud Hosted, check our https://www.elastic.co/guide
 * Search Boost Window is limited to 7 days. This setting only exists in {es-serverless} projects
 * Scaling is limited for serverless projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
 
+**Inference tokens**
+
+* TBD
+
 **Remove limitations**
 
 Subscribe to https://www.elastic.co/guide/en/cloud/current/ec-billing-details.html[Elastic Cloud] for the following benefits:
