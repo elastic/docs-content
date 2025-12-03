@@ -30,27 +30,16 @@ Avoid using OpenTelemetry alongside any other {{apm-agent}}, including Elastic {
 
 ### OTLP endpoint
 
-You need an OTLP Collector to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md).
+You need a OTLP endpoint in order to ingest data from the OpenTelemetry RUM instrumentation. Also if you want to get the most of {{product.observability}} such endpoint should belong to an [EDOT Collector](elastic-agent://reference/edot-collector/index.md) in gateway mode. If you're setting up a new deployment, you can create an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self hosted stack or your deployment does not have the {{motlp}} you should configure an [EDOT Collector in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
 
-Depeding on where the collector is placed in your infrastructure you might have two setup options:
+Once you have your OTLP endpoint ready the recommendation is to set up a reverse proxy to forward the telemetry from your web application origin to the collector. The primary reasons for having such set up are:
 
-1. Reverse proxy (recommended): Take this approach if you're using {{motlp}} or if your collector is not publicly available. Refer to the next section for further information.
+- EDOT Collector requires an `Authorization` header with an ApiKey in order to accept OTLP exports. Setting up the required key in a web application makes it publicly available and its not advised to have this kind of secrets available to anyone with a browser.
+- You can apply rate limiting or any other mechanisms to control traffic before it reaches the EDOT Collector.
+- If you have set up your own EDOT Collector it's likely to have a different origin than your web application. In this scenario you will have to set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for the web application in EDOT Collector configuration file. This procerdure can be cumbersome if you have to manage a large numned of applications.
 
-2. Setup Cross-Origin Resource Sharing (CORS): You can opt in for this setup if your collector is public and you can modify its configuration.
 
-::::{tab-set}
-
-:::{tab-item} Reverse proxy (recommended)
-
-Use a reverse proxy to redirect the requests from your web app to the collector for these reasons:
-
-- There is no option in {{motlp}} to configure [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) and without the proper configuration browsers can't send data to it.
-- Don't expose API keys or other authentication tokens in your web app, because they would be visible. Append the proper `Authorization` header in the proxied request to keep them valid and at the same time not leaking any secret to the public.
-- You can apply rate limiting or any other mechanisms to control traffic before it reaches the collector.
-
-:::{dropdown} Example NGINX reverse proxy configuration
-
-The following snippet shows the configuration for an NGINX reverse proxy to forward all telemetry to the Collector located at `collector.example.com` from the origin `webapp.example.com`:
+The following snippet shows the configuration for an NGINX reverse proxy to forward all telemetry to the EDOT Collector located at `collector.example.com` from the origin `webapp.example.com`:
 
 ```nginx
 server {
@@ -59,7 +48,7 @@ server {
         # Take care of preflight requests
         if ($request_method = 'OPTIONS') {
             add_header 'Access-Control-Max-Age' 1728000;
-            add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always;
+            add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always; # Set te allowed origins
             add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Authorization,Content-Language,Content-Type' always;
             add_header 'Access-Control-Allow-Credentials' 'true' always;
             add_header 'Content-Type' 'text/plain charset=UTF-8';
@@ -67,117 +56,18 @@ server {
             return 204;
         }
 
-        add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always;
+        add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always; # Set te allowed origins
         add_header 'Access-Control-Allow-Credentials' 'true' always;
         add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Authorization,Content-Language,Content-Type' always;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        # Set the Authorization header in the proxyed request. It's recommended to get it from a secrets manager
-        # instead of harcoding it here.
-        proxy_set_header Authorization 'ApiKey ...your Elastic API key...';
+        proxy_set_header Authorization 'ApiKey ...your Elastic API key...'; # Set the auth header here. It's recommended to get it from a secrets manager.
         proxy_pass https://collector.example.com:4318;
     }
 }
 ```
-:::
-:::
-
-:::{tab-item} Configure Collector for CORS
-
-If the collector is publicly available, you can send the telemetry data directly to it. Your collector must be available under a domain name, for example `collector.example.com:4318` (4318 being the default port for the OTLP HTTP/JSON protocol). Your web application sends data from its own origin `webapp.example.com` to a different one, and [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) should be configured so browsers allow sending data to a different origin.
-
-Take these aspects into consideration:
-
-- Every time you add a new application, you need to update the CORS configuration to add the new origin. Using a wildcard value like `https://*` is discouraged because you are allowing any website to be able to send data to the collector. A more convenient configuration is to have a wildcard per subdomains like `https://*.example.com`.
-- Your collector requires an authorization header and the OpenTelemetry instrumentation is sending data directly to it. This means you should add the required header with the API key value in the instrumentation script. This script is visible to anyone that has access to the app.
-
-This is a basic EDOT Collector configuration file that activates CORS:
-
-```yaml
-receivers:
-  # Receives data from other Collectors in Agent mode or OTEL SDKs
-  otlp:
-    protocols:
-      grpc:
-        endpoint: 0.0.0.0:4317 # Listen on all interfaces
-        auth:
-          authenticator: apikeyauth
-      http:
-        endpoint: 0.0.0.0:4318 # Listen on all interfaces
-        auth:
-          authenticator: apikeyauth
-        cors: # Configure CORS for RUM. ref: https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md#server-configuration
-          allowed_origins:
-            - http://*.example.com
-            - https://*.example.com
-connectors:
-  elasticapm: {} # Elastic APM Connector
-
-processors:
-  batch:
-    send_batch_size: 1000
-    timeout: 1s
-    send_batch_max_size: 1500
-  batch/metrics:
-    send_batch_max_size: 0 # Explicitly set to 0 to avoid splitting metrics requests
-    timeout: 1s
-  elastictrace: {} # Elastic Trace Processor
-
-exporters:
-  debug: {}
-  elasticsearch/otel:
-    endpoints:
-      - http://elasticsearch:9200
-    user: elastic
-    password: ${ES_LOCAL_PASSWORD}
-    tls:
-      insecure_skip_verify: true
-    mapping:
-      mode: otel
-
-service:
-  pipelines:
-    metrics:
-      receivers: [otlp]
-      processors: [batch/metrics]
-      exporters: [debug, elasticsearch/otel]
-    logs:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [debug, elasticapm, elasticsearch/otel]
-    traces:
-      receivers: [otlp]
-      processors: [batch, elastictrace]
-      exporters: [debug, elasticapm, elasticsearch/otel]
-    metrics/aggregated-otel-metrics:
-      receivers:
-        - elasticapm
-      processors: [] # No processors defined in the original for this pipeline
-      exporters:
-        - debug
-        - elasticsearch/otel
-  extensions: [apikeyauth] # Enable auth extension
-
-extensions:
-  # Auth via Elastic API key
-  # ref: https://www.elastic.co/docs/reference/edot-collector/config/authentication-methods
-  apikeyauth:
-    endpoint: "http://elasticsearch:9200"
-    application_privileges:
-      - application: "apm"
-        privileges: ["config_agent:read"]
-        resources: ["*"]
-    cache:
-      capacity: 1000
-      ttl: "5m"
-      pbkdf2_iterations: 10000
-      key_headers: []
-```
-
-:::
-::::
 
 ## Installation
 
@@ -195,7 +85,7 @@ You can then install the instrumentations that you're interested in.
 
 The minimal configuration you need to instrument your web application with OpenTelemetry includes:
 
-- **OTEL_EXPORTER_OTLP_ENDPOINT**: The full URL of an OpenTelemetry Collector where data is sent. When using {{product.observability}}, this is the ingest endpoint of an {{serverless-full}} project or the URL of a deployed [EDOT Collector](elastic-agent://reference/edot-collector/index.md). It is likely that the Collector endpoint is of a different origin. If that's the case, you will encounter [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) issues. Refer to the [OTLP endpoint](#otlp-endpoint) section for more information on how to solve it with different approaches.
+- **OTEL_EXPORTER_OTLP_ENDPOINT**: The full URL of the proxy you have configured in the [OTLP endpoint](#otlp-endpoint) section.
 - **OTEL_RESOURCE_ATTRIBUTES**: A JavaScript object that will be used to define the resource. The most important attributes to define are:
   - `service.name` (string): Name of the application you're instrumenting.
   - `service.version` (string, optional): A string representing the version or build of your app.
@@ -239,7 +129,7 @@ import { diagLogLevelFromString } from '@opentelemetry/core';
 
 // Set the configuration options
 const OTEL_LOG_LEVEL = 'info'; // Possible values: error, warn, info, debug, verbose
-const OTEL_EXPORTER_OTLP_ENDPOINT = 'https://host:port';
+const OTEL_EXPORTER_OTLP_ENDPOINT = 'https://proxy.example.com'; // Point to your reverse proxy configured in the section above
 const OTEL_RESOURCE_ATTRIBUTES = {
   'service.name': 'my-web-app',
   'service.version': '1.2.3',
@@ -299,15 +189,20 @@ To enable instrumentations to transmit traces and allow for the creation of cust
 - **Resource**: The resource to be associated with the spans created by the tracers (previously defined).
 - **Span Processor**: A component that manages the spans generated by the tracers and forwards them to a [SpanExporter](https://opentelemetry.io/docs/specs/otel/trace/sdk/#span-exporter). The exporter should be configured to direct data to an endpoint designated for traces.
 - **Span Exporter**: Manages the transmission of spans to the Collector.
+- **Context Manager**: A crucial mechanism for managing the active Span context across asynchronous operations and threads. It ensures that when a new Span is created, it correctly identifies its parent Span, thereby maintaining the integrity of the trace structure.
 
 For this part, you need to install the following dependencies:
 
 - `@opentelemetry/sdk-trace-base`: This package contains all the core components to set up tracing regardless of the runtime they're running in (Node.js or browser).
 - `@opentelemetry/sdk-trace-web`: This package contains a tracer provider that runs in web browsers.
 - `@opentelemetry/exporter-trace-otlp-http`: This package contains the exporter for the HTTP/JSON protocol.
+- `@opentelemetry/context-zone`: This package contains a context manager which uses on [zone.js](https://www.npmjs.com/package/zone.js) library.
 
 ```bash
-npm install @opentelemetry/sdk-trace-base @opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-http
+npm install @opentelemetry/sdk-trace-base\
+      @opentelemetry/sdk-trace-web\
+      @opentelemetry/exporter-trace-otlp-http\
+      @opentelemetry/context-zone
 ```
 
 Once the dependencies are installed, you can configure and register a tracer provider with the following code:
@@ -316,6 +211,7 @@ Once the dependencies are installed, you can configure and register a tracer pro
 
 ```javascript
 import { trace } from '@opentelemetry/api';
+import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
@@ -332,7 +228,7 @@ const tracerProvider = new WebTracerProvider({
     })),
   ],
 });
-trace.setGlobalTracerProvider(tracerProvider);
+tracerProvider.register({ contextManager: new ZoneContextManager() });
 ```
 
 :::
@@ -342,10 +238,6 @@ Now you can use the OpenTelemetry API to get a tracer and start creating your ow
 :::::
 
 :::::{step} Configure metrics
-
-:::{note}
-Metrics from browser-based RUM are primarily used for aggregate analysis across many browser instances. The data becomes useful when processed in the Collector or backend. Consider whether browser-side metrics collection aligns with your observability goals before enabling this signal.
-:::
 
 Similar to traces, you should configure a [MeterProvider](https://opentelemetry.io/docs/concepts/signals/metrics/#meter-provider) for metrics. This provider necessitates the inclusion of several key components:
 
@@ -395,7 +287,13 @@ metrics.setGlobalMeterProvider(meterProvider);
 
 :::::{step} Configure logs
 
-For RUM log management with OpenTelemetry JavaScript, configure the **Provider** for generation (instantiation, resource, logger creation) and the **Exporter** for transmission (endpoint, headers, interval/batching, registration).
+Like traces and metrics you need to configure a [LoggerProvider](https://opentelemetry.io/docs/specs/otel/logs/sdk/#loggerprovider) if you want to record relevant events that are happening in your application via API or instrumenations. This provider necessitates the inclusion of several key components:
+
+- **Resource**: The resource to be associated with the log records created by the loggers.
+- **LogRecord Processor**: A component that manages the log records generated by the loggers and forwards them to a [LogExporter](https://opentelemetry.io/docs/specs/otel/logs/sdk/#logrecordexporter). The exporter should be configured to direct data to an endpoint designated for logs.
+- **Log Exporter**: Manages the transmission of log records to the Collector.
+
+
 
 For this part, you need to install the following dependencies:
 
@@ -453,7 +351,12 @@ Install the following dependencies:
 To install the dependencies, run the following command:
 
 ```bash
-npm install @opentelemetry/instrumentation @opentelemetry/instrumentation-document-load @opentelemetry/instrumentation-long-task @opentelemetry/instrumentation-fetch @opentelemetry/instrumentation-xml-http-request @opentelemetry/instrumentation-user-interaction
+npm install @opentelemetry/instrumentation\
+      @opentelemetry/instrumentation-document-load\
+      @opentelemetry/instrumentation-long-task\
+      @opentelemetry/instrumentation-fetch\
+      @opentelemetry/instrumentation-xml-http-request\
+      @opentelemetry/instrumentation-user-interaction
 ```
 
 After the dependencies are installed, you can configure and register instrumentations with the following code:
@@ -486,12 +389,30 @@ registerInstrumentations({
 
 :::::{step} Complete setup script
 
-All these pieces together give you a complete setup of all the signals for your web site or application. For convenience, it can be wrapped within a function that accepts the configuration as a parameter, allowing you to reuse the setup across different UIs.
+All these pieces together give you a complete setup of all the signals for your web site or application. For conveninence its better to have it in a separate file which can be named `telemetry.js`. This file should export a function that accepts the configuration allowing you to reuse the setup across different UIs.
 
 To install all the dependencies needed for the complete setup, run the following command:
 
 ```bash
-npm install @opentelemetry/api @opentelemetry/core @opentelemetry/resources @opentelemetry/browser-detector @opentelemetry/sdk-trace-base @opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-http @opentelemetry/sdk-metrics @opentelemetry/exporter-metrics-otlp-http @opentelemetry/api-logs @opentelemetry/sdk-logs @opentelemetry/exporter-logs-otlp-http @opentelemetry/instrumentation @opentelemetry/instrumentation-document-load @opentelemetry/instrumentation-long-task @opentelemetry/instrumentation-fetch @opentelemetry/instrumentation-xml-http-request @opentelemetry/instrumentation-user-interaction
+npm install @opentelemetry/api\
+      @opentelemetry/core\
+      @opentelemetry/resources\
+      @opentelemetry/browser-detector\
+      @opentelemetry/sdk-trace-base\
+      @opentelemetry/sdk-trace-web\
+      @opentelemetry/context-zone\
+      @opentelemetry/exporter-trace-otlp-http\
+      @opentelemetry/sdk-metrics\
+      @opentelemetry/exporter-metrics-otlp-http\
+      @opentelemetry/api-logs\
+      @opentelemetry/sdk-logs\
+      @opentelemetry/exporter-logs-otlp-http\
+      @opentelemetry/instrumentation\
+      @opentelemetry/instrumentation-document-load\
+      @opentelemetry/instrumentation-long-task\
+      @opentelemetry/instrumentation-fetch\
+      @opentelemetry/instrumentation-xml-http-request\
+      @opentelemetry/instrumentation-user-interaction
 ```
 
 After the dependencies are installed, you can wrap the setup in a function with the following code:
@@ -504,6 +425,7 @@ import { diag, DiagConsoleLogger, trace, metrics } from '@opentelemetry/api';
 import { diagLogLevelFromString } from '@opentelemetry/core';
 import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
 import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
+import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
@@ -552,7 +474,7 @@ export function initOpenTelemetry(config) {
       })),
     ],
   });
-  trace.setGlobalTracerProvider(tracerProvider);
+  tracerProvider.register({ contextManager: new ZoneContextManager() })
 
   // Metrics signal setup
   const metricsEndpoint = `${config.endpoint}/v1/metrics`;
@@ -596,7 +518,7 @@ export function initOpenTelemetry(config) {
 
 ## Integrate with your application
 
-With the setup done, it's time to apply it to your web application. You can choose from two main approaches:
+With the setup placed in a file, it's time to apply it to your web application. You can choose from two main approaches:
 
 1. **Import the code**: Use your build tooling to manage the dependencies and integrate the code into the application bundle. This is the simplest option and is recommended, although it increases the size of your application bundle.
 
@@ -616,7 +538,7 @@ import { initOpenTelemetry } from 'telemetry.js';
 
 initOpenTelemetry({
   logLevel: 'info',
-  endpoint: 'https://host:port/',
+  endpoint: 'https://proxy.example.com',
   resourceAttributes: {
     'service.name': 'my-web-app',
     'service.version': '1',
