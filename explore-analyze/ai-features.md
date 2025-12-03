@@ -60,18 +60,34 @@ serverless:
 
 [AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.
 
-Depending on your team's technical expertise and requirements, you can choose from two broad paths:
-
-- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text).
-- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) manually.
-
-### Hybrid search
+#### Semantic and hybrid search
 ```{applies_to}
 stack:
 serverless:
 ```
 
+Depending on your team's technical expertise and requirements, you can choose from two broad paths for implementing semantic search:
+
+- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text).
+- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) manually.
+
 [Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with AI-powered search for more powerful search experiences that serve a wider range of user needs.
+
+### Semantic re-ranking
+```{applies_to}
+stack:
+serverless:
+```
+
+[Semantic re-ranking](ranking/semantic-reranking.md) involves using ML models to reorder search results based on semantic similarity to queries, using models hosted in {{es}} or via third-party inference endpoints.
+
+### Learning to Rank (LTR)
+```{applies_to}
+stack:
+serverless:
+```
+
+[Learning To Rank](ranking/learning-to-rank-ltr.md) is an advanced feature that involves using trained ML models to build custom ranking functions for search. Best suited for use cases with substantial training data and requirements for highly customized relevance tuning.
 
 ## AI-powered features in the {{es}} solution/project type
 
