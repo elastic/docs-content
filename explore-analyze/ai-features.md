@@ -33,7 +33,7 @@ stack:
 serverless:
 ```
 
-[Elastic {{infer-cap}}](/explore-analyze/elastic-inference.md) enables you to use {{ml}} or AI models to make predictions or enact operations — such as text embedding, or reranking - on your data.
+[Elastic {{infer-cap}}](/explore-analyze/elastic-inference.md) enables you to use {{ml}} or AI models to make predictions or enact operations—such as text embedding, or reranking-on your data.
 
 To learn more, refer to:
 
@@ -78,7 +78,7 @@ stack:
 serverless:
 ```
 
-[Semantic re-ranking](/solutions/search/ranking/semantic-reranking.md) involves using ML models to reorder search results based on semantic similarity to queries, using models hosted in {{es}} or via third-party inference endpoints.
+[Semantic re-ranking](/solutions/search/ranking/semantic-reranking.md) involves using ML models to reorder search results based on semantic similarity to queries, using models hosted in {{es}} or using third-party inference endpoints.
 
 ### Learning to Rank (LTR)
 ```{applies_to}
