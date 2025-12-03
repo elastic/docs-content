@@ -79,7 +79,7 @@ stack:
 serverless:
 ```
 
-[Semantic re-ranking](ranking/semantic-reranking.md) involves using ML models to reorder search results based on semantic similarity to queries, using models hosted in {{es}} or via third-party inference endpoints.
+[Semantic re-ranking](/solutions/search/ranking/semantic-reranking.md) involves using ML models to reorder search results based on semantic similarity to queries, using models hosted in {{es}} or via third-party inference endpoints.
 
 ### Learning to Rank (LTR)
 ```{applies_to}
@@ -87,7 +87,7 @@ stack:
 serverless:
 ```
 
-[Learning To Rank](ranking/learning-to-rank-ltr.md) is an advanced feature that involves using trained ML models to build custom ranking functions for search. Best suited for use cases with substantial training data and requirements for highly customized relevance tuning.
+[Learning To Rank](/solutions/search/ranking/learning-to-rank-ltr.md) is an advanced feature that involves using trained ML models to build custom ranking functions for search. Best suited for use cases with substantial training data and requirements for highly customized relevance tuning.
 
 ## AI-powered features in the {{es}} solution/project type
 
