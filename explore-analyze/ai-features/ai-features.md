@@ -47,9 +47,32 @@ Natural Language Processing (NLP) enables you to analyze natural language data a
 
 Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md). You can also [deploy custom models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
-## AI-powered features in {{es}}
+### AI-powered search
+```{applies_to}
+stack:
+serverless:
+```
 
-### Agent builder
+[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.
+
+Depending on your team's technical expertise and requirements, you can choose from two broad paths:
+
+- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text).
+- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) manually.
+
+### Hybrid search
+```{applies_to}
+stack:
+serverless:
+```
+
+[Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with AI-powered search for more powerful search experiences that serve a wider range of user needs.
+
+## AI-powered features in the {{es}} solution/project type
+
+The [{{es}}](/solutions/search.md) solution view (or project type in {{cloud-serverless}}) includes certain AI-powered features beyond the core {{es}} capabilities available on the Elastic platform.
+
+### Agent Builder
 
 ```{applies_to}
 serverless:
@@ -67,27 +90,6 @@ serverless:
 ```
 
 [](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
-
-### AI-powered search
-```{applies_to}
-stack:
-serverless:
-```
-
-[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.
-
-Depending on your team's technical expertise and requirements, you can choose from two broad paths:
-
-- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text) which is the recommended way to perform semantic search.
-- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector).
-
-### Hybrid search
-```{applies_to}
-stack:
-serverless:
-```
-
-[Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with AI-powered search for more powerful search experiences that serve a wider range of user needs.
 
 ### Playground
 ```{applies_to}
