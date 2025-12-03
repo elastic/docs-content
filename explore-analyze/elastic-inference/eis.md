@@ -9,7 +9,7 @@ applies_to:
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
 
-:::{include} _snippets/eis-intro.md
+:::{include} /explore-analyze/_snippets/eis-intro.md
 :::
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
