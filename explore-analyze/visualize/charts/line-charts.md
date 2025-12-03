@@ -148,15 +148,15 @@ Customize your line chart to display exactly the information you need, formatted
 ### X-axis buckets [x-axis-buckets]
 
 **Data**
-::   Buckets define the x-axis. Commonly a `Date histogram` on `@timestamp`, but you can also use numeric histograms or terms (for small category counts).
+:   Buckets define the x-axis. Commonly a `Date histogram` on `@timestamp`, but you can also use numeric histograms or terms (for small category counts).
 
 **Appearance**
-::   Axis title, tick density, and value formatting (for example, time format, numeric precision).
+:   Axis title, tick density, and value formatting (for example, time format, numeric precision).
 
 ### Breakdown (split series) [breakdown-options]
 
 **Data**
-::   Split the chart into multiple series based on a categorical field. Each unique value creates its own series. You can optionally specify the following options:
+:   Split the chart into multiple series based on a categorical field. Each unique value creates its own series. You can optionally specify the following options:
 
    - **Number of values**: Limit to top N.
    - **Rank by**: Choose the ranking metric.
@@ -166,7 +166,7 @@ Customize your line chart to display exactly the information you need, formatted
    :::
 
 **Appearance**
-::   Define how the series are displayed:
+:   Define how the series are displayed:
    - **Legend position**: Show legend and choose its placement.
    - **Color palette**: Ensure consistent colors across dashboards.
 
@@ -185,7 +185,7 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
 ## Line chart examples
 
 **Website response time (p95) with target**
-::   Monitor user experience and enforce SLO:
+:   Monitor user experience and enforce SLO:
 
    * **Title**: "Response time (p95)"
    * **X-axis**: `Date histogram` on `@timestamp`
@@ -196,7 +196,7 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
    ![Response time with SLO reference line](../../images/kibana-lens_referenceLine_7.16.png "=70%")
 
 **Requests throughput with moving average**
-::   Smooth per-minute variation while preserving overall trend:
+:   Smooth per-minute variation while preserving overall trend:
 
    * **Title**: "Requests per minute"
    * **X-axis**: `Date histogram`
@@ -207,7 +207,7 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
    ![Metric over time](../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png "=70%")
 
 **Error rate vs previous week**
-::   Quickly assess regressions:
+:   Quickly assess regressions:
 
    * **Title**: "Error rate (now vs previous week)"
    * **X-axis**: `Date histogram`
@@ -220,7 +220,7 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
    ![Multiple series comparison](../../images/kibana-lens_lineChartMultipleDataSeries_7.16.png "=70%")
 
 **Throughput by top countries**
-::   Break down by top N categories:
+:   Break down by top N categories:
 
    * **Title**: "Requests per minute by country"
    * **X-axis**: `Date histogram`
