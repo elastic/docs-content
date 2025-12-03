@@ -265,24 +265,11 @@ $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
 
 $$$glossary-elasticsearch$$$ {{es}}
-:   The open source search and analytics engine, data store, and vector database which is the core of the [{{stack}}](#glossary-elastic-stack) and powers the Elastic platform.
-:::{admonition} Disambiguation
-The term "{{es}}" has several meanings depending on the context in which it is used.
-
-**The standalone software**
-- The [`elasticsearch` open source project](https://github.com/elastic/elasticsearch) is a standalone piece of software. Pre-built artifacts are available for download and installation from [elastic.co](https://www.elastic.co/downloads/elasticsearch), or you can build from source. Learn more about [deploying a self-managed cluster](/deploy-manage/deploy/self-managed.md).
-- An `elasticsearch` [node](#glossary-node) is a running instance of the software, which can be part of a [cluster](#glossary-cluster) and exposes REST API endpoints. Refer to the [reference documentation](elasticsearch://reference/elasticsearch/index.md) for usage details.
-
-<br>
-**The project type / solution view**
-- {{es}} is the name of a [project type (or solution view)](/solutions/search.md) that includes UI features tailored for general-purpose search use cases:
-  - {{es}} is the name of a **project** type on {{serverless-full}}.
-  - {{es}} is the name of a **solution** in {{stack}} deployments. Each [space](#glossary-space) has its own navigation or "solution view".
-
-<br>
-**The platform**
-- The {{es}} [platform](https://www.elastic.co/platform) (also known as the Elastic platform or Search AI Platform) refers to various {{stack}} components deployed together with additional management affordances to power Elastic's managed services.
-:::
+:   The open source search and analytics engine, data store, and vector database which is the core of the [{{stack}}](#glossary-elastic-stack) and powers the Elastic platform. The term "{{es}}" has several meanings depending on the context in which it is used:
+  - [`elasticsearch`](https://github.com/elastic/elasticsearch) is a standalone piece of software that you can install and run on your own infrastructure.
+  - {{es}} is the name of a **project** type on {{serverless-full}}, tailored for general-purpose search use cases.
+  - {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own navigation or "solution view".
+  - The **{{es}} platform** (also known as the Elastic platform or Search AI Platform) is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the {{stack}}, extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
 
 $$$glossary-elasticsearch-service$$$ Elasticsearch Service
 :   The former name of {{ech}}, which is the official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.
