@@ -79,7 +79,7 @@ Compare the current value with a prior time range using time shift to quickly se
 
 1. Create a line series for the current value, for example: `average(response_time)`.
 2. Add a second series with a time shift, for example: `average(response_time, shift='1w')`.
-3. Use the legend labels to clarify “Current” vs “Previous (1w)”.
+3. Use the legend labels to clarify “Current” versus “Previous (1w)”.
 
 | Single series | With previous period |
 |---|---|
@@ -95,7 +95,7 @@ Noisy metrics (for example, per-minute throughput) can be smoothed:
 
 1. Add a series such as `sum(bytes)`.
 2. Add a second series using `moving_average(sum(bytes), window=5)`.
-3. Keep both series visible (raw vs smoothed) or show only the smoothed one.
+3. Keep both series visible (raw versus smoothed) or show only the smoothed one.
 
 ### Highlight thresholds with reference lines [line-reference-lines]
 Use reference lines to indicate SLOs or alert thresholds.
@@ -204,10 +204,10 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
 
    ![Metric over time](../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png "=70%")
 
-**Error rate vs previous week**
+**Error rate versus previous week**
 :   Quickly assess regressions:
 
-   * **Title**: "Error rate (now vs previous week)"
+   * **Title**: "Error rate (now versus previous week)"
    * **X-axis**: `Date histogram`
    * **Series A**: `count(kql='response.code >= 500') / count()`
      * **Format**: `Percent`
