@@ -23,7 +23,7 @@ This snippet is in use in the following locations:
         ./bin/elasticsearch-keystore add cluster.remote.ALIAS.credentials
         ```
 
-        Replace `ALIAS` with the same name that you will use to create the remote cluster entry later. When prompted, enter the encoded cross-cluster API key created on the remote cluster earlier.
+        Replace `ALIAS` with the same name that you intend to use to create the remote cluster entry later. When prompted, enter the encoded cross-cluster API key created on the remote cluster earlier.
 
 2. Restart the local cluster to load changes to the keystore and settings.
 
