@@ -158,7 +158,7 @@ PUT image-index
 ```
 
 ::::{note}
-Support for DisKBBQ was introduced in {{stack}} 9.2.
+Support for DiskBBQ was introduced in {{stack}} 9.2.
 ::::
 
 ### Tune approximate kNN for speed or accuracy [tune-approximate-knn-for-speed-accuracy]
