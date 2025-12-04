@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Get started with the rollups in {{kib}}
+# Get started with rollups in {{kib}}
 
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
@@ -17,7 +17,7 @@ products:
 Rollups are deprecated and will be removed in a future version. Use [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
-A rollup job is a periodic task that aggregates data from indices specified by an index pattern, and then rolls it into a new index. Rollup indices are a good way to compactly store months or years of historical data for use in visualizations and reports.
+A rollup job is a periodic task that aggregates data from indices specified by an index pattern, and then rolls it into a new index. Rollup indices are a good way to compactly store months or years of historical data for use in visualizations and reports. This documentation covers creating rollup jobs and visualizing rolled-up data.
 
 You can go to the **Rollup Jobs** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 

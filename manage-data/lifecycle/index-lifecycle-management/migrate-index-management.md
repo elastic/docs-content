@@ -12,7 +12,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Migrate to {{ilm-init}} on {{ech}} or {{ece}} deployments
+# Migrate to {{ilm}} ({{ilm-init}}) on {{ech}} or {{ece}} deployments
 
 ::::{important}
 Index curation is deprecated. Any deployments using index curation are prompted to migrate to ILM.
