@@ -55,8 +55,8 @@ Additional privileges will depend on the factors below.
 To restrict users assigned this role from using monitors hosted on Elastic’s global managed infrastructure:
 
 1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
-2. Toggle *Customize sub-feature privileges*.
-3. Uncheck *Elastic managed locations enabled*.
+2. Turn on **Customize sub-feature privileges**.
+3. Uncheck **Elastic managed locations enabled**.
 
 ### If using Private Locations [synthetics-role-write-private-locations]
 
@@ -79,3 +79,17 @@ If the user should be able to create and update monitors using [projects](/solut
 | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
 | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
 
+### To allow users to view global parameter values
+
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-parameters).
+
+To add the **Can read global parameter values** {{kib}} privilege to a role:
+
+1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
+2. Turn on **Customize sub-feature privileges**.
+3. Turn on **Can read global parameter values**.
