@@ -56,12 +56,12 @@ Attack Discovery is designed for use with alerts based on data that complies wit
 3.  Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**.
 4.  Check the `Update presets` box to add the allowed fields to the space's default anonymization settings.
 
-The selected fields can now be analyzed the next time you run Attack Discovery.
+The next time you run Attack Discovery it will be able to analyze the selected fields.
 :::
 
 ## Generate discoveries manually[attack-discovery-generate-discoveries]
 
-You’ll need to select an LLM connector before you can analyze alerts. Attack Discovery uses the same LLM connectors as [AI Assistant](/solutions/security/ai/ai-assistant.md). To get started:
+You’ll need to select an LLM connector before you can analyze alerts. To get started:
 
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
 2. Do one of the following:
