@@ -27,7 +27,7 @@ This Hot/Frozen – High Availability architecture is intended for organizations
 * Have a requirement for cost effective long term data storage (many months or years).
 * Provide insights and alerts using logs, metrics, traces, or various event types to ensure optimal performance and quick issue resolution for applications.
 * Apply [machine learning anomaly detection](/explore-analyze/machine-learning/anomaly-detection.md) to help detect patterns in time series data to find root cause and resolve problems faster.
-* Use an AI assistant ([Observability](/explore-analyze/ai-assistant.md), [Security](/solutions/security/ai/ai-assistant.md), or [Playground](/solutions/search/rag/playground.md)) for investigation, incident response, reporting, query generation, or query conversion from other languages using natural language.
+* Use an AI assistant ([Observability](/explore-analyze/ai-features/ai-assistant.md), [Security](/solutions/security/ai/ai-assistant.md), or [Playground](/solutions/search/rag/playground.md)) for investigation, incident response, reporting, query generation, or query conversion from other languages using natural language.
 * Deploy an architecture model that allows for maximum flexibility between storage cost and performance.
 
 ::::{important}
