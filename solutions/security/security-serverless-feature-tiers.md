@@ -20,7 +20,7 @@ Refer to the [feature comparison table](#sec-subscription-features) for a more d
 
 ## Feature tier pricing [sec-subscription-pricing]
 
-For pricing information, refer to [Elastic Observability Serverless pricing](https://www.elastic.co/pricing/serverless-security).
+For pricing information, refer to [Elastic Security Serverless pricing](https://www.elastic.co/pricing/serverless-security).
 
 ## Security Analytics feature comparison [sec-subscription-features]
 
