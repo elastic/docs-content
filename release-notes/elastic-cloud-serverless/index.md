@@ -26,7 +26,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows you to filter alerts using the KQL search bar [#240100]({{kib-pull}}240100)
 * Introduces the Attachments API for Streams [#243597]({{kib-pull}}243597)
 * Introduces new UI components for the Drop processor [#243131]({{kib-pull}}243131)
-* Adds SLO support for Streams attachments, migrates the UI to use the Attachments API for dashboards, rules, and SLOs, and removes deprecated API endpoints [#244092]({{kib-pull}}244092)
+* Adds service-level objective (SLO) support for Streams attachments, migrates the UI to use the Attachments API for dashboards, rules, and SLOs, and removes deprecated API endpoints [#244092]({{kib-pull}}244092)
 * Allows you to add custom descriptions for enrichment processors [#243998]({{kib-pull}}243998)
 * Prevents conflicting actions in the Partitioning tab [#244228]({{kib-pull}}244228)
 * Improves handling of missing streams [#244366]({{kib-pull}}244366)
