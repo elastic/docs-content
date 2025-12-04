@@ -114,59 +114,6 @@ When referring to apps or pages in the docs, and especially in tasks and tutoria
 
 You can adapt these patterns and the link to the search bar documentation to match your context and scenario. 
 
-## Writing helpful procedures
-
-You don't have to write a procedure for everything in the UI. Procedures are 
-good for getting started tutorials and complex procedures. You don't need a 
-procedure for tasks users can figure out themselves. Think minimalism.  
-
-### Thinking through your procedure
-
-Follow these guidelines when setting up your procedure.
-
-* Think about prerequisites. If your procedure has prerequisites, mention them 
-  before the procedure begins.
-* Aim for five to nine steps. If that's not possible, find 
-  logical groups of steps and make them substeps.
-* Limit each step to one action.
-* Give only the best way. Users can figure out the alternatives.
-
-### Writing steps 
-
-* State instructions in the correct sequence. Tell users where in the UI to perform the action, then tell them the 
-  action to perform. This is especially important when you're guiding users 
-  from one part of the UI to another, for example, when they change views. Once 
-  users are working in the same place in the UI, this isn't as necessary.
-:::{dropdown} Example
-    On the home page, click **Sample data**.
-:::
-  
-* Use arrows (→) to tell the user where to find a command.  
-:::{dropdown} Example
-    Go to **Management → Elasticsearch → Index lifecycle management**.
-:::
-    
-* In general, don't call out the type of component you're talking about – 
-  reference it by name. 
-:::{dropdown} Example
-    ❌ **Don't**: Click the **New button**.  
-    ✔️ **Do**: Click **New**.
-:::
-  
-* Bold the names of elements that you're directing the user to interact with.  
-:::{dropdown} Example
-    Click **Next step**.
-:::
-  
-  * Use the same labels and capitalization that appear in the UI.
-  If an element doesn't have a label or tooltip, use sentence case for the name 
-  you give it.   
-:::{dropdown} Example
-    In **Configure settings**, click **Create index pattern**.
-:::
-    
-* Align screenshots left or beneath the appropriate step.
-
 
 ## Choosing the right word
 
