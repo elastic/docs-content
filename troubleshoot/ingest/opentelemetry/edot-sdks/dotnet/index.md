@@ -241,3 +241,120 @@ With `SkipOtlpExporter` enabled, the exporter must be added to __each__ signal t
 this example, the OTLP exporter is manually added for logs, traces and metrics. Crucially, for traces, the
 exporter is registered after the custom `SpanRollupProcessor` to ensure that trace data is batched for export
 after the processor has completed.
+
+### Duplicate spans are visible in Elastic Observability
+
+EDOT .NET provides several APIs for registering OpenTelemetry instrumentation for your applications.
+For the majority of scenarios, we recommend using the `AddElasticOpenTelemetry` methods on the `HostApplicationBuilder`
+or `IServiceCollection`. 
+
+For advanced situations, we provide various `WithElastic...` methods on the specific
+signal builders intended to enable individual signals. Combining `AddElasticOpenTelemetry` and ``WithElastic...` methods
+is incorrect and indicates a misconfiguration. EDOT .NET attempts to ensure that the OpenTelemetry SDK is
+registered once per application in these situations, but it's not always possible to fully validate the user
+intent.
+
+When a misconfiguration occurs, exporters may be registered more than once per signal, resulting in
+duplication of each span sent to Elastic Observability.
+
+For example, the following code is incorrect:
+
+```csharp
+var options = new ElasticOpenTelemetryOptions
+{
+  SkipInstrumentationAssemblyScanning = true
+};
+
+builder.AddElasticOpenTelemetry(edotBuilder =>
+{
+  edotBuilder
+    .WithElasticDefaults(options)
+    .WithElasticLogging()
+    .WithElasticTracing(tracing =>
+    {
+      _ = tracing
+          .AddSource("CustomActivitySource")
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    })
+    .WithElasticMetrics(metrics =>
+    {
+      _ = metrics
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    });
+});
+```
+
+This code does not work as intended because `AddElasticOpenTelemetry` is being used
+which enables all EDOT defaults for all signals, but it's also being combined with `WithElasticDefaults`
+and the signal-specific methods `WithElasticTracing` and `WithElasticMetrics`.
+
+The corrected code is as follows:
+
+```csharp
+var options = new ElasticOpenTelemetryOptions
+{
+  SkipInstrumentationAssemblyScanning = true
+};
+
+builder.AddElasticOpenTelemetry(options, edotBuilder =>
+{
+  edotBuilder
+    .WithLogging()
+    .WithTracing(tracing =>
+    {
+      _ = tracing
+          .AddSource("CustomActivitySource")
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    })
+    .WithMetrics(metrics =>
+    {
+      _ = metrics
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    });
+});
+```
+
+This code uses the regular `WithLogging`, `WithTracing` and `WithMetrics` methods
+after calling `AddElasticOpenTelemetry` to avoid repeat registration of EDOT .NET
+defaults.
+
+Another example of incorrect code is:
+
+```csharp
+builder.Services.AddOpenTelemetry()
+  .WithElasticDefaults()
+  .WithTracing(t => t.WithElasticDefaults(t => t
+    .AddSource("CustomActivitySource")
+    .AddProcessor(new CustomProcessor())));
+```
+
+This uses `WithElasticDefaults` which is __not__ preferred when adding EDOT .NET
+to an `IServiceCollection`. Worse still, it combines `WithElasticDefaults` inside
+the delegate passed into `WithTracing`, which again, may register EDOT .NET twice.
+
+The corrected code should be:
+
+```csharp
+builder.Services.AddOpenTelemetry()
+  .WithElasticDefaults(t => t
+    .WithTracing(t => t
+      .AddSource("CustomActivitySource")
+      .AddProcessor(new CustomProcessor())));
+```
+
+This code calls `WithElasticDefaults` only once, which, in this case, enables EDOT .NET
+defaults for all signals.
+
+Better still, this should be rewritten to prefer `AddElasticOpenTelemetry`
+which can better integrate EDOT .NET with the other application services.
+
+```csharp
+builder.Services.AddElasticOpenTelemetry(t => t
+  .WithTracing(t => t
+    .AddSource("CustomActivitySource")
+    .AddProcessor(new CustomProcessor())));
+```
