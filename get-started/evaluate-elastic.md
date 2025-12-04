@@ -160,11 +160,14 @@ We recommend the following activities for each use case:
 
 :::{tab-item} Search
 
-1. Review the [Search getting started guide](/solutions/search/get-started.md).
-2. Ingest sample data or connect a data source.
-3. Build basic search queries and test relevance.
-4. Create simple visualizations of your data.
+Follow the steps in [](/solutions/search/get-started.md), which include:
+  
+  1. Identify your search goals.
+  2. Ingest sample data or connect a data source.
+  3. Build basic search queries and test relevance.
 
+For targeted learning paths, go to [](/solutions/search/get-started/quickstarts.md).
+In particular, [Index and search basics](/solutions/search/get-started/index-basics.md) and [Semantic search](/solutions/search/get-started/semantic-search.md).
 :::
 
 :::{tab-item} Observability
