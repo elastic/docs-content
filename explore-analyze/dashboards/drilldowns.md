@@ -17,7 +17,7 @@ Panels have built-in interactive capabilities that apply filters to the dashboar
 
 To add drilldowns to dashboard panels, you need:
 
-* **Edit** permissions for the **Dashboard** feature in {{product.kibana}}
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
 * An existing dashboard with at least one panel that supports drilldowns
 * For dashboard drilldowns: A target dashboard to navigate to
 * For URL drilldowns: A URL template that can include dynamic variables from the clicked data

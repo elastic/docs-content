@@ -17,7 +17,7 @@ products:
 
 To add controls to a dashboard, you need:
 
-* **Edit** permissions for the **Dashboard** feature in {{product.kibana}}
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
 * An existing dashboard open in **Edit** mode
 * A [data view](../find-and-organize/data-views.md) configured with fields available for filtering
 

@@ -22,8 +22,8 @@ A dashboard is composed of one or more **panels** that you arrange to tell your 
 
 New to dashboards? Start with these hands-on tutorials that walk you through creating your first dashboards using sample data:
 
-- [Create a simple dashboard to monitor website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns
-- [Create a dashboard with time series charts](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using ecommerce data
+- [Create a simple dashboard to monitor website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
+- [Create a dashboard with time series charts](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using ecommerce data.
 
 
 ## Work with dashboards [work-with-dashboards]
@@ -31,20 +31,20 @@ New to dashboards? Start with these hands-on tutorials that walk you through cre
 Once you understand the basics, explore these common tasks:
 
 **Build and customize dashboards**:
-- [Build dashboards](dashboards/building.md): Learn the fundamentals of creating and configuring dashboards
-- [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content
-- [Add filter controls](dashboards/add-controls.md): Enable interactive filtering with options lists, range sliders, and time sliders
-- [Add drilldowns](dashboards/drilldowns.md): Create interactive navigation between dashboards or to external URLs
-- [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning
+- [Build dashboards](dashboards/building.md): Learn the fundamentals of creating and configuring dashboards.
+- [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
+- [Add filter controls](dashboards/add-controls.md): Enable interactive filtering with options lists, range sliders, and time sliders.
+- [Add drilldowns](dashboards/drilldowns.md): Create interactive navigation between dashboards or to external URLs.
+- [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.
 
 **Explore and interact**:
-- [Explore dashboards](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights
+- [Explore dashboards](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
 
 **Manage and share**:
-- [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards
-- [Share dashboards](dashboards/sharing.md): Share with your team using links, embeds, or file exports
-- [Duplicate a dashboard](dashboards/duplicate-dashboards.md): Create customizable copies of existing dashboards
-- [Import a dashboard](dashboards/import-dashboards.md): Bring dashboards from other environments
+- [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards.
+- [Share dashboards](dashboards/sharing.md): Share with your team using links, embeds, or file exports.
+- [Duplicate a dashboard](dashboards/duplicate-dashboards.md): Create customizable copies of existing dashboards.
+- [Import a dashboard](dashboards/import-dashboards.md): Bring dashboards from other environments.
 
 ## About managed dashboards [managed-dashboards]
 

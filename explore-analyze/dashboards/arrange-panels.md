@@ -15,7 +15,7 @@ Customize your dashboard layout by arranging panels into logical groups and adju
 
 ## Requirements [arrange-panels-requirements]
 
-To organize dashboard panels, you need **Edit** permissions for the **Dashboard** feature in {{product.kibana}}.
+To organize dashboard panels, you need the **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}

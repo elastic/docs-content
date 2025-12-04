@@ -17,7 +17,7 @@ Import dashboards into {{product.kibana}} from NDJSON files exported from other 
 
 To import dashboards, you need:
 
-* **Create** and **Edit** permissions for the **Dashboard** and **Saved Objects** features in {{product.kibana}}
+* **All** privilege for the **Dashboard** and **Saved Objects Management** features in {{product.kibana}}
 * An NDJSON file containing the dashboard and its related objects
 * Access to **Stack Management** in {{product.kibana}}
 
