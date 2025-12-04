@@ -2,7 +2,7 @@
 navigation_title: Export errors from the EDOT Collector
 description: Learn how to resolve export failures caused by `sending_queue` overflow and Elasticsearch exporter timeouts in the EDOT Collector.
 applies_to:
-  serverless: all
+  serverless: ga
   product:
     edot_collector: ga  
 products:
@@ -13,6 +13,8 @@ products:
 # Export failures when sending telemetry data from the EDOT Collector
 
 During high traffic or load testing scenarios, the EDOT Collector might fail to export telemetry data (traces, metrics, or logs) to {{es}}. This typically happens when the internal queue for outgoing data fills up faster than it can be drained, resulting in timeouts and dropped data.
+
+If you're experiencing network connectivity issues, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). If no data appears in {{kib}}, refer to [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
 ## Symptoms
 
@@ -90,6 +92,8 @@ For a complete list of available metrics, refer to the upstream OpenTelemetry me
 
 * Ensure sufficient CPU and memory for the EDOT Collector.
 * Scale vertically (more resources) or horizontally (more replicas) as needed.
+
+For Kubernetes deployments, refer to [Insufficient resources in Kubernetes](/troubleshoot/ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md) for detailed resource configuration guidance.
 ::::
 
 ::::{step} Optimize Elasticsearch performance
@@ -104,6 +108,8 @@ Address indexing delays, rejected bulk requests, or shard imbalances that limit 
 Focus tuning efforts on {{es}} performance, Collector resource allocation, and queue sizing informed by the internal telemetry metrics above.
 :::
 
+
+For more detailed diagnostics, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) to troubleshoot export failures.
 
 ## Resources
 
