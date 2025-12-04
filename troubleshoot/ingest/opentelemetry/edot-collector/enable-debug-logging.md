@@ -88,4 +88,4 @@ Debug logging for the Collector is not currently configurable through {{fleet}}.
 
 ## Resources
 
-To learn how to enable debug logging for the EDOT SDKs, refer to [Enable debug logging for EDOT SDKs](../edot-sdks/enable-debug-logging.md).
+To learn how to enable debug logging for the EDOT SDKs, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
