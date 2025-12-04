@@ -36,13 +36,13 @@ Using the visualization type dropdown, select **Line**.
 
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Drag a time field (for example, `order_date`) to the **X-axis** to create a `Date histogram` (recommended for time series).
+2. Drag a time field (for example, `order_date`) to the **Horizontal axis** to create a `Date histogram` (recommended for time series).
 
 :::{note}
-You might need to extend the time range and set the time filter to Last 30 days.
+You might need to extend the time range and set the time filter to **Last 30 days**.
 :::
 
-3. Drag a numeric field (for example, `products_quantity`) to the **Y-axis**.
+3. Drag a numeric field (for example, `products_quantity`) to the **Vertical axis**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field (for example, `geoip.city_name`) to **Break down by** to split the series.
@@ -124,7 +124,7 @@ For multi-metric charts, make sure the scale communicates intent:
 
 Customize your line chart to display exactly the information you need, formatted the way you want.
 
-### Y-axis series [y-axis-series]
+### Vertical axis series [vertical-axis-series]
 
 **Value**
 :   The metric to plot. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Average`, `Sum`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
@@ -140,10 +140,10 @@ Customize your line chart to display exactly the information you need, formatted
    - **Missing values**: Choose how to display gaps (Off, Linear, Carry, Zero).
    - **Color**: Select a palette or specific color per series.
 
-### X-axis buckets [x-axis-buckets]
+### Horizontal axis buckets [horizontal-axis-buckets]
 
 **Data**
-:   Buckets define the x-axis. Commonly a `Date histogram` on `@timestamp`, but you can also use numeric histograms or terms (for small category counts).
+:   Buckets define the horizontal axis. Commonly a `Date histogram` on `@timestamp`, but you can also use numeric histograms or terms (only for categories with a continuous, linear relationship).
 
 **Appearance**
 :   Axis title, tick density, and value formatting (for example, time format, numeric precision).
