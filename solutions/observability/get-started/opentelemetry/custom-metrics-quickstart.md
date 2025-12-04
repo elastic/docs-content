@@ -133,4 +133,4 @@ You can expand your metrics collection setup in several ways:
 
 - Add more receivers to collect additional metrics
 - Configure the same Collector to send logs and traces alongside metrics
-- Learn more about the [Elastic Distribution of the OpenTelemetry Collector](/docs/solutions/observability/open-telemetry/)
+- Learn more about the [Elastic Distribution of the OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md)
