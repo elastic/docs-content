@@ -17,8 +17,7 @@ Create a copy of an existing dashboard in {{product.kibana}} to customize it ind
 
 To duplicate a dashboard, you need:
 
-* **Read** permissions for the source dashboard
-* **Create** permissions for the **Dashboard** feature in {{product.kibana}}
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
 
 ## Duplicate a dashboard [duplicate-dashboard-steps]
 
