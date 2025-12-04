@@ -9,7 +9,7 @@ applies_to:
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
 
-The Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as a service without deploying a model in your environment.
+Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as a service without deploying a model in your environment.
 With EIS, you don't need to manage the infrastructure and resources required for {{ml}} {{infer}} by adding, configuring, and scaling {{ml}} nodes.
 Instead, you can use {{ml}} models for ingest, search, and chat independently of your {{es}} infrastructure.
 
@@ -59,7 +59,7 @@ stack: preview 9.3
 serverless: preview
 ```
 
-You can use the `jina-embeddings-v3` model through the Elastic {{infer-cap}} Service. Running the model on EIS means that the you use the model on GPUs, without the need of managing infrastrucuture and model resources. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency.
+You can use the `jina-embeddings-v3` model through Elastic {{infer-cap}} Service. Running the model on EIS means that the you use the model on GPUs, without the need of managing infrastrucuture and model resources. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency.
 
 ### Get started with `jina-embeddings-v3` on EIS
 
