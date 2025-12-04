@@ -100,7 +100,7 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 * [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
 * [Grok processing](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
 * [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
-* [advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features, like significant events, use when generating suggestions.
+* [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features, like significant events, use when generating suggestions.
 
 ## AI-powered features in {{elastic-sec}}
 
