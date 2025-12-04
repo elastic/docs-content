@@ -79,7 +79,7 @@ The created {{infer}} endpoint uses the model for {{infer}} operations on the El
 
 ## Rate limits
 
-The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
+The service enforces rate limits on an ongoing basis. Exceeding a limit results in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
 
 | Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
@@ -100,7 +100,7 @@ EIS is billed per million tokens used:
 * For **chat** models, input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
 * For **embeddings** models, only input tokens are billed.
 
-Tokens are the fundamental units that language models process for both input and output. Tokenizers convert text into numerical data by segmenting it into subword units. A token may be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
+Tokens are the fundamental units that language models process for both input and output. Tokenizers convert text into numerical data by segmenting it into subword units. A token can be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
 
 For example, the sentence "It was the best of times, it was the worst of times." contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
 
@@ -110,4 +110,3 @@ To track your token consumption:
 
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console
 2. Look for line items where the **Billing dimension** is set to "Inference"
-
