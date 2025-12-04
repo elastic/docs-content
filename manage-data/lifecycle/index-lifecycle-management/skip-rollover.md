@@ -1,4 +1,5 @@
 ---
+navigation_title: Skip rollover
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/skipping-rollover.html
 applies_to:
@@ -7,16 +8,15 @@ products:
   - id: elasticsearch
 ---
 
-# Skip rollover [skipping-rollover]
+# Skip rollover in {{ilm}} ({{ilm-init}}) [skipping-rollover]
 
 You can use {{ilm}} to manage index lifecycle transitions without rolling over your indices. For example, when working with data that isn't continuously ingested, you might prefer to create a new index on a set schedule, such as the first Monday of each month. In this case, you can still use an {{ilm-init}} policy to automatically move indices through [lifecycle phases](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-transitions) as they age and control when new indices are created by disabling the rollover action.
 
 You can configure indices to skip rollover either as part of an {{ilm-init}} policy or manually by adjusting the index settings.
 
-
 ## Skip rollover through an {{ilm-init}} policy
 
-When you [configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) in {{kib}}, you can choose whether or not rollover is enabled.
+When you [configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) in {{kib}}, you can choose to enable or turn off rollover.
 
 To update the automatic rollover setting in an {{ilm-init}} policy:
 
