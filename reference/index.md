@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
 products:
   - id: elastic-stack
+description: Explore reference documentation for the Elastic Stack including APIs,
+  security schemas, configuration settings, query languages, scripting, ECS field
+  references, and more.
 ---
 
 # Reference [api-reference]
@@ -20,41 +23,41 @@ Explore the reference documentation for [Elastic APIs]({{apis}}).
 | APM | • [APM Server](/solutions/observability/apm/apm-server/api.md)<br>• [Observability intake Serverless]({{intake-apis}})<br> |
 | {{ecloud}} | • [{{ech}}]({{cloud-apis}})<br>• [{{ecloud}} Serverless]({{cloud-serverless-apis}})<br>• [{{ece}}]({{ece-apis}})<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br>• [{{ecloud}} billing]({{cloud-billing-apis}})<br> |
 
-## Security
-
-Access detailed reference documentation on field and object schemas as well as the different commands used to manage and troubleshoot Elastic Endpoint.
-
-**Learn more in [Security](security/index.md)**
-
-## Observability
-
-Access detailed reference documentation on field and object schemas as well as the Elastic Entity Model.
-
-**Learn more in [Observability](observability/index.md)**
-
 ## Elasticsearch and index management
 
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
 
 **Learn more in [Elasticsearch and index management](elasticsearch://reference/elasticsearch/index.md)**
 
-## Elastic Distributions of OpenTelemetry (EDOT)
-
-Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of OpenTelemetry distributions tailored to Elastic. They include a customized OpenTelemetry Collector and several OpenTelemetry Language SDKs.
-
-**Learn more in [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md)**
-
-## Ingestion tools
-
-Streamline data ingestion with tools like Fleet and Elastic Agent, APM, and Beats. Explore processor references and Logstash plugins to efficiently manage your data flow.
-
-**Learn more in [Ingestion tools](ingestion-tools/index.md)**
-
 ## Kibana
 
 Visualize and analyze your data with Kibana. Configure advanced settings, explore plugins, and utilize command line tools to enhance your data insights.
 
 **Learn more in [Kibana](kibana://reference/index.md)**
+
+## Cloud
+
+Leverage the power of the cloud with Elastic Cloud solutions. Explore Elastic Cloud on Kubernetes, Elastic Cloud Enterprise, and Elastic Cloud Hosted to scale your operations.
+
+**Learn more in [Cloud](cloud://reference/index.md)**
+
+## Elastic Security
+
+Access detailed reference documentation on field and object schemas as well as the different commands used to manage and troubleshoot Elastic Endpoint.
+
+**Learn more in [Security](security/index.md)**
+
+## Elastic Observability
+
+Access detailed reference documentation on field and object schemas as well as the Elastic Entity Model.
+
+**Learn more in [Observability](observability/index.md)**
+
+## Ingestion tools
+
+Streamline data ingestion with tools like Fleet and Elastic Agent, APM, Beats, and Elastic Distributions of OpenTelemetry. Explore processor references and Logstash plugins to efficiently manage your data flow.
+
+**Learn more in [Ingestion tools](ingestion-tools/index.md)**
 
 ## Elasticsearch plugins
 
@@ -68,9 +71,9 @@ Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL,
 
 **Learn more in [Query languages](elasticsearch://reference/query-languages/index.md)**
 
-## Scripting languages
+## Painless scripting language
 
-Access syntax references, function libraries, and best practices for Painless scripting.
+Access syntax reference, function libraries, and best practices for Painless scripting.
 
 **Learn more in [Painless scripting](elasticsearch://reference/scripting-languages/painless/painless.md)**
 
@@ -80,23 +83,16 @@ Standardize your data with ECS. Access logging libraries, field references, and 
 
 **Learn more in [ECS](ecs://reference/index.md)**
 
-## Data analysis
+## Machine learning
 
-Unlock insights with powerful data analysis tools. Utilize text analysis components, aggregations, and function references to derive meaningful conclusions from your data.
+Explore reference content for Elastic machine learning features. 
 
-**Learn more in [Data analysis](data-analysis/index.md)**
+**Learn more in [Machine learning](machine-learning/index.md)**
 
 ## Search UI library
 
 Explore reference content on the Search UI library and how you can develop fast, modern, and engaging search experiences.
 
 **Learn more in [Search UI](search-ui://reference/index.md)**
-
-## Cloud
-
-Leverage the power of the cloud with Elastic Cloud solutions. Explore Elastic Cloud on Kubernetes, Elastic Cloud Enterprise, and Elastic Cloud Hosted to scale your operations.
-
-**Learn more in [Cloud](cloud://reference/index.md)**
-
 
 

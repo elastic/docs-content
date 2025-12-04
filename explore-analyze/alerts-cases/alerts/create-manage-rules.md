@@ -61,7 +61,7 @@ You can add one or more actions to your rule to generate notifications when its 
 
 Each action uses a connector, which provides connection information for a {{kib}} service or third party integration, depending on where you want to send the notifications.
 
-[preview] Some connectors that perform actions within {{kib}}, such as the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), require less configuration. For example, you do not need to set the action frequency or variables.
+{applies_to}`stack: preview` {applies_to}`serverless: preview` Some connectors that perform actions within {{kib}}, such as the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), require less configuration. For example, you do not need to set the action frequency or variables.
 
 After you select a connector, set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you an choose to run actions for each alert (at each check interval, only when the alert status changes, or at a custom interval).
 
@@ -129,7 +129,7 @@ When you snooze a rule, the rule checks continue to run on a schedule but alerts
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-[preview] To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows.md).
+{applies_to}`stack: preview` {applies_to}`serverless: preview` To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows.md).
 
 ## View rule details [rule-details]
 

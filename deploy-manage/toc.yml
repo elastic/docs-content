@@ -181,6 +181,7 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-openshift-beats.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-agent.md
                   - file: deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md
+                  - file: deploy/cloud-on-k8s/eck-gdch.md
                   - file: deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md
               - file: deploy/cloud-on-k8s/air-gapped-install.md
               - file: deploy/cloud-on-k8s/configure.md
@@ -283,7 +284,6 @@ toc:
                   - file: deploy/self-managed/file-descriptors.md
                   - file: deploy/self-managed/vm-max-map-count.md
                   - file: deploy/self-managed/max-number-of-threads.md
-                  - file: deploy/self-managed/networkaddress-cache-ttl.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
                   - file: deploy/self-managed/bootstrap-checks.md
@@ -452,6 +452,7 @@ toc:
       - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
+  - file: cloud-connect.md
   - file: security.md
     children:
       - file: security/secure-hosting-environment.md
@@ -487,6 +488,7 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
+              - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:
               - file: security/network-security-policies.md
@@ -496,6 +498,7 @@ toc:
                   - file: security/ip-filtering-cloud.md
                   - file: security/ip-filtering-ece.md
                   - file: security/ip-filtering-basic.md
+              - file: security/remote-cluster-filtering.md
               - file: security/private-connectivity.md
                 children:
                   - file: security/private-connectivity-aws.md
@@ -632,6 +635,8 @@ toc:
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:
+      - file: remote-clusters/security-models.md
+      - file: remote-clusters/connection-modes.md
       - file: remote-clusters/ec-enable-ccs.md
         children:
           - file: remote-clusters/ec-remote-cluster-same-ess.md
@@ -655,18 +660,27 @@ toc:
           - file: remote-clusters/remote-clusters-api-key.md
           - file: remote-clusters/remote-clusters-cert.md
           - file: remote-clusters/remote-clusters-migrate.md
-          - file: remote-clusters/remote-clusters-settings.md
       - file: remote-clusters/eck-remote-clusters.md
-  - hidden: cloud-connect.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
-          - file: monitor/autoops/ec-autoops-events.md
+          - file: monitor/autoops/autoops-for-serverless.md
             children:
-              - file: monitor/autoops/ec-autoops-event-settings.md
-              - file: monitor/autoops/ec-autoops-notifications-settings.md
+              - file: monitor/autoops/access-autoops-for-serverless.md
+              - file: monitor/autoops/search-tier-view-autoops-serverless.md
+              - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
+          - file: monitor/autoops/cc-autoops-as-cloud-connected.md
+            children: 
+              - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+              - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
+              - file: monitor/autoops/autoops-sm-custom-certification.md
+              - file: monitor/autoops/cc-manage-users.md
+              - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
+                children:
+                  - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
+          - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/views.md
             children:
               - file: monitor/autoops/ec-autoops-overview-view.md
@@ -675,15 +689,12 @@ toc:
               - file: monitor/autoops/ec-autoops-index-view.md
               - file: monitor/autoops/ec-autoops-shards-view.md
               - file: monitor/autoops/ec-autoops-template-optimizer.md
-          - hidden: monitor/autoops/ec-autoops-dismiss-event.md
-          - file: monitor/autoops/ec-autoops-regions.md
+              - hidden: monitor/autoops/ec-autoops-dismiss-event.md
+          - file: monitor/autoops/ec-autoops-events.md
+            children:
+              - file: monitor/autoops/ec-autoops-event-settings.md
+              - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/ec-autoops-faq.md
-          - hidden: monitor/autoops/cc-autoops-as-cloud-connected.md
-          - hidden: monitor/autoops/cc-connect-self-managed-to-autoops.md
-          - hidden: monitor/autoops/cc-connect-local-dev-to-autoops.md
-          - hidden: monitor/autoops/cc-manage-users.md
-          - hidden: monitor/autoops/cc-cloud-connect-autoops-faq.md
-          - hidden: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
       - file: monitor/stack-monitoring.md
         children:
           - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
@@ -807,6 +818,7 @@ toc:
           - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
       - file: upgrade/deployment-or-cluster.md
         children:
+          - file: upgrade/deployment-or-cluster/upgrade-717.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ece.md
           - file: upgrade/deployment-or-cluster/upgrade-on-eck.md

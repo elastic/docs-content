@@ -30,10 +30,7 @@ When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, lifecy
 To set up a data stream, first create an index template to specify the lifecycle policy. Because the template is for a data stream, it must also include a `data_stream` definition.
 
 For example, you might create a template named `timeseries_template` and use it for a future data stream named `timeseries`.
-
-To enable {{ilm-init}} to manage the data stream, the template configures one {{ilm-init}} setting:
-
-* `index.lifecycle.name` specifies the name of the lifecycle policy that you want to apply to the data stream.
+To configure {{ilm-init}} to manage the data stream, you specify the name of the lifecycle policy that you want to apply to the data stream with the `index.lifecycle.name` setting.
 
 Use the {{kib}} **Create template** wizard to add a template or the [Create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to add a template and apply the lifecycle policy to indices matching the template.
 
@@ -41,13 +38,18 @@ Use the {{kib}} **Create template** wizard to add a template or the [Create or u
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To add an index template to a cluster using the wizard, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+To add an index template to a cluster using the wizard:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, click **Create template** and follow the instructions.
 
 ![Create template page](/manage-data/images/elasticsearch-reference-create-index-template.png "")
 
-This wizard invokes the create or update index template API to create the index template with the options you specify.
+You specify the name of the lifecycle policy that you want to apply to the data stream on the **Index settings** page.
 
-:::{tip} 
+![Create template page](/manage-data/images/elasticsearch-reference-tutorial-ilm-datastreams-tutorial-create-index-template.png "")
+
+:::{tip}
 To learn about which index template options you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
 :::
 :::
@@ -153,7 +155,7 @@ The following response shows the data stream’s first generation backing index 
 }
 ```
 
-1. The age of the index used for calculating when to rollover the index via the `max_age`
+1. The age of the index used for calculating when to rollover the index using the `max_age`
 2. The policy used to manage the index
 3. The age of the indexed used to transition to the next phase (in this case it is the same with the age of the index).
 4. The step {{ilm-init}} is performing on the index

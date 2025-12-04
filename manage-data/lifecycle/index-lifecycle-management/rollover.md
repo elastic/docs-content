@@ -7,7 +7,7 @@ products:
   - id: elasticsearch
 ---
 
-# Rollover [index-rollover]
+# About rollover [index-rollover]
 
 In {{es}}, the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) replaces your active write index with a new one whenever your index grows beyond a specified size, age, or number of documents.
 This is particularly useful for time-series data, such as logs or metrics where index growth is continuous, in order to meet performance and retention requirements.
@@ -17,10 +17,10 @@ Without rollover, a single index would continue to grow, causing search performa
 The rollover feature is an important part of how [index lifecycle](../index-lifecycle-management/index-lifecycle.md) ({{ilm-init}}) and [data stream lifecycles](../data-stream.md) ({{dlm-init}}) work to keep your indices fast and manageable. By switching the write target of an index, the rollover action provides the following benefits:
 
 * **Lifecycle** - works with lifecycle management ({{ilm-init}} or {{dlm-init}}) to transition the index through its lifecycle actions and allows for granular control over retention cycles
-* **Optimized performance** - keeps shard sizes within recommended limits (10-50 GB)
+* **Optimized performance** - keeps shard sizes within [recommended limits](/deploy-manage/production-guidance/optimize-performance/size-shards.md) (10-50 GB)
 * **Queries run faster** - improves search performance
 
-Rollover can be triggered via the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
+Rollover can be triggered using the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
 
 :::{tip}
 The following tutorials are available to help you configure rollover for your indices, for three different scenarios:
@@ -83,7 +83,7 @@ Each data stream requires an [index template](../../data-store/templates.md) tha
 For more information about this approach, refer to the [](../index-lifecycle-management/tutorial-time-series-with-data-streams.md) tutorial.
 
 :::{tip}
-Data streams are designed for append-only data, where the data stream name can be used as the operations (read, write, rollover, shrink etc.) target. If your use case requires data to be updated in place, you can perform [update or delete operations directly on the backing indices](../../data-store/data-streams/use-data-stream.md#update-delete-docs-in-a-backing-index).
+Data streams are designed for append-only data, where the data stream name can be used as the operations (read, write, rollover, shrink, and so on) target. If your use case requires data to be updated in place, you can perform [update or delete operations directly on the backing indices](../../data-store/data-streams/use-data-stream.md#update-delete-docs-in-a-backing-index).
 :::
 
 **Data streams naming pattern**<br>

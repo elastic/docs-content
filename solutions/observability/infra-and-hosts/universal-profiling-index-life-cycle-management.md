@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-index-lifecycle-management.html
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: observability
 ---
@@ -34,7 +35,7 @@ The [rollover condition blocks phase transitions](elasticsearch://reference/elas
 ::::
 
 
-To view the Universal Profiling index lifecycle policy in {{kib}}, navigate to **{{stack-manage-app}}** → **Index Lifecycle Management**, and search for `profiling`.
+To view the Universal Profiling index lifecycle policy in {{kib}}, open **Index Lifecycle Management** from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and search for `profiling`.
 
 ::::{tip}
 Default {{ilm-init}} policies can change between minor versions. This is not considered a breaking change as index management should continually improve and adapt to new features.
@@ -49,7 +50,7 @@ Complete the following steps to configure a custom index lifecycle policy.
 
 ### Step 1: Create an index lifecycle policy [profiling-ilm-custom-policy-create-policy]
 
-1. To open **Index Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the **Index Lifecycle Policies** management page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 3. Name your new policy, for example `custom-profiling-policy`.
 4. Customize the policy to your liking.

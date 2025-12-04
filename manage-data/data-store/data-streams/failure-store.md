@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/failure-store.html
 applies_to:
   stack: ga 9.1
   serverless: ga
@@ -60,7 +62,7 @@ After a matching data stream is created, its failure store will be enabled.
 
 ### Set up for existing data streams [set-up-failure-store-existing]
 
-Enabling the failure store via [index templates](../templates.md) can only affect data streams that are newly created. Existing data streams that use a template are not affected by changes to the template's `data_stream_options` field.
+Enabling the failure store using [index templates](../templates.md) can only affect data streams that are newly created. Existing data streams that use a template are not affected by changes to the template's `data_stream_options` field.
 To modify an existing data stream's options, use the [put data stream options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options) API:
 
 ```console
@@ -88,7 +90,13 @@ PUT _data_stream/my-datastream-existing/_options
 
 1. Redirecting failed documents into the failure store will now be disabled.
 
-### Enable failure store via cluster setting [set-up-failure-store-cluster-setting]
+:::{tip}
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+You can also enable the data stream failure store in {{kib}}. Locate the data stream on the **Streams** page, where a stream maps directly to a data stream. Select a stream to view its details and go to the **Retention** tab where you can find the **Enable failure store** option.
+:::
+
+### Enable failure store using cluster setting [set-up-failure-store-cluster-setting]
 
 If you have a large number of existing data streams you may want to enable their failure stores in one place. Instead of updating each of their options individually, set `data_streams.failure_store.enabled` to a list of index patterns in the [cluster settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Any data streams that match one of these patterns will operate with their failure store enabled.
 
@@ -249,7 +257,7 @@ If the document could have been redirected to a data stream's failure store but 
 3. The response status is `400 Bad Request` due to the mapping problem.
 
 
-If the document was redirected to a data stream's failure store but that failed document could not be stored (e.g. due to shard unavailability or a similar problem), then the `failure_store` field on the response will be `failed`, and the response will display the error for the original failure, as well as a suppressed error detailing why the failure could not be stored:
+If the document was redirected to a data stream's failure store but that failed document could not be stored (for example, due to shard unavailability or a similar problem), then the `failure_store` field on the response will be `failed`, and the response will display the error for the original failure, as well as a suppressed error detailing why the failure could not be stored:
 
 ```console-result
 {
@@ -298,7 +306,7 @@ Once you have accumulated some failures, the failure store can be searched much 
 :::{warning}
 Documents redirected to the failure store in the event of a failed ingest pipeline will be stored in their original, unprocessed form. If an ingest pipeline normally redacts sensitive information from a document, then failed documents in their original, unprocessed form may contain sensitive information.
 
-Furthermore, failed documents are likely to be structured differently than normal data in a data stream, and thus special care should be taken when making use of [document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security) or [field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#field-level-security). Any security policies that expect to utilize these features for both regular documents and failure documents should account for any differences in document structure between the two document types.
+Furthermore, failed documents are likely to be structured differently than normal data in a data stream, and special care should be taken when making use of [document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security) or [field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#field-level-security). Any security policies that expect to utilize these features for both regular documents and failure documents should account for any differences in document structure between the two document types.
 
 To limit visibility on potentially sensitive data, users require the [`read_failure_store`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) index privilege for a data stream in order to search that data stream's failure store data.
 :::
@@ -316,7 +324,7 @@ POST _query?format=txt
     "query": """FROM my-datastream::failures | DROP error.stack_trace | LIMIT 1""" <1>
 }
 ```
-1. We drop the `error.stack_trace` field here just to keep the example free of newlines.
+1. We drop the `error.stack_trace` field here to keep the example free of newlines.
 
 An example of a search result with the failed document present:
 
@@ -812,7 +820,7 @@ PUT _cluster/settings
 }
 ```
 
-You can also specify the failure store retention period for a data stream on its data stream options. These can be specified via the index template for new data streams, or via the [put data stream options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options) API for existing data streams.
+You can also specify the failure store retention period for a data stream on its data stream options. These can be specified using the index template for new data streams, or using the [put data stream options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options) API for existing data streams.
 
 ```console
 PUT _data_stream/my-datastream/_options
@@ -862,3 +870,8 @@ POST _data_stream/_modify
 
 This API gives you fine-grained control over the indices in your failure store, allowing you to manage backup and restoration operations as well as isolate failure data for later remediation.
 
+## Cross Cluster Search compatibility [ccs-compatibility]
+
+:::{important}
+Accessing the failure store across clusters using `::failures` is not yet supported.
+:::

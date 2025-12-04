@@ -4,37 +4,36 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-WIP
-
-These pages are hidden from the docs TOC and have `noindexed` meta headers.
-:::
 
 # {{agent-builder}}: Agents
 
-Agents engage in natural language conversations with users and interact with your {{es}} data through tools.
-Fundamentally, an agent is defined by its custom instructions and the set of tools it's assigned.
+Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
-Each agent manages the conversation flow, interprets user requests, and provides responses based on its configured tools, instructions, and behavior settings.
+An agent parses user requests to define a goal and then runs tools in a loop to achieve that goal. The agent provides responses based on its configured tools, instructions, and behavior settings.
 
 ## How agents work
 
-When you ask a question to an agent, it analyzes your request, selects the most appropriate tool, and determines the right arguments to use. After receiving results, the agent evaluates the information and decides whether to use additional tools or formulate a response. This iterative process of tool selection, execution, and analysis continues until the agent can provide a complete answer.
+When you ask a question to an agent, it analyzes your request to define a specific goal. It selects the most appropriate tools and determines the right arguments to use. The agent evaluates the information returned after each action and decides whether to use additional tools or formulate a response. This iterative process of tool selection, execution, and analysis continues until the agent can provide a complete answer.
 
 {{agent-builder}} includes a default agent (named `Elastic AI Agent`) with access to all built-in tools. You can create specialized agents with custom instructions and selected tools to address specific use cases or workflows.
+
+:::{note}
+The default `Elastic AI Agent` is immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning the default agent or creating a new one from scratch.
+:::
 
 ## Manage your agents
 
 The **Agents** page provides a centralized view of all your agents. From this page you can:
 
-- View all your agents with their names and labels
-- Search for specific agents using the search bar
-- Filter agents by labels using the **Labels** dropdown
-- Create new agents using the **+ New agent** button
-- Start chatting with an agent or perform other actions
-    - **Elastic AI Agent**: you can **chat** or **clone** the default agent using the chat or clone buttons.
+- View all your agents with their names and labels.
+- Search for specific agents using the search bar.
+- Filter agents by labels using the **Labels** dropdown.
+- Create new agents using the **+ New agent** button.
+- Start chatting with an agent or perform other actions:
+    - **Elastic AI Agent**: you can **chat** or **clone** the default agent using the chat or clone buttons. The default agent cannot be edited directly.
       :::{image} images/chat-and-clone-buttons.png
       :alt: Chat with agent and clone agent buttons
       :width: 120px
@@ -45,7 +44,7 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :width: 130px
       :::
 
-## How to create a new agent
+## Create a new agent in the GUI
 
 Follow these steps to create a new agent:
 
@@ -58,10 +57,10 @@ Navigate to the **Agents** page to access the agent management interface.
 
 ::::{step} Create a new agent
 
-Click the **New agent** button to start creating a new agent.
+Select the **New agent** button to being creating a new agent.
 
 :::{image} images/new-agent-button.png
-:alt: Click the New agent button to create a new agent
+:alt: Select the New agent button to create a new agent
 :width: 150px
 :::
 
@@ -73,13 +72,13 @@ Click the **New agent** button to start creating a new agent.
 Configure the essential agent settings in the **settings** tab:
 
 1. Enter an **Agent ID**, a unique identifier for reference in code.
-1. Add **Custom instructions**.<br><br>Custom instructions define the agent's personality and determine how it will interact with users and perform tasks.
+2. Add **Custom instructions**.<br><br>Custom instructions define the agent's personality and determine how it interacts with users and performs tasks.
 
     :::{note}
-    Your custom instructions are added to the system prompt to define the agent's behavior. The system prompt enables core features like visualization and citations.
+    Agent Builder adds your custom instructions to the system prompt to define the agent's behavior. The system prompt enables core features like visualization and citations.
     :::
-1. Set the **Display name** that users will see.
-1. Add a **Display description** to explain the agent's purpose
+3. Set the **Display name** for users.
+4. Add a **Display description** to explain the agent's purpose.
 
 ::::
 
@@ -95,14 +94,14 @@ Select the combination of built-in and custom tools available to the agent, base
 
 Optionally customize the agent's appearance and organization:
 
-- Add **Labels** to organize your agents
-- Choose an **Avatar color** and **Avatar symbol** to help visually distinguish the agent
+- Add **Labels** to organize your agents.
+- Select an **Avatar color** and **Avatar symbol** to help visually distinguish the agent.
 
 ::::
 
 ::::{step} Save your changes
 
-Click **Save** to create your agent, or **Save and chat** to create the agent and immediately start a conversation with it.
+Select **Save** to create your agent, or **Save and chat** to create the agent and immediately begin a conversation with it.
 
 :::{image} images/save-and-chat-buttons.png
 :alt: Save and Save and chat buttons
@@ -111,3 +110,15 @@ Click **Save** to create your agent, or **Save and chat** to create the agent an
 
 ::::
 :::::
+
+## Agents API
+
+The Agents API enables programmatic access to agent creation and management actions.
+
+### Quick overview
+
+For an overview, refer to [Agents API](kibana-api.md#agents).
+
+### API reference
+
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).

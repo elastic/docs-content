@@ -50,7 +50,7 @@ You can push {{elastic-sec}} cases to these third-party systems:
 To push cases, you need to create a connector, which stores the information required to interact with an external system. After you have created a connector, you can set {{elastic-sec}} cases to automatically close when they are sent to external systems.
 
 ::::{important}
-To create connectors and send cases to external systems, ensure you have the appropriate role privileges and [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). For more information, refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+To create connectors and send cases to external systems, ensure you have the appropriate role privileges and [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). For more information, refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
 ::::
 
 
@@ -138,7 +138,7 @@ If you update or delete templates, existing cases are unaffected.
 ## Observable types [cases-observable-types]
 
 ::::{admonition} Requirements
-Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 

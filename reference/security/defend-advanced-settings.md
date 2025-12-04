@@ -18,7 +18,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *How long to wait for agent connectivity before sending first policy reply, in seconds. Default: `60`.*
 
-    {{elastic-endpoint}} applies a cached configuration from disk immediately on start up. However, before generating a policy response document, {{elastic-endpoint}} waits to first establish a connection to {{elastic-agent}} to see if there are configuration updates. Use this setting to specify how long that delay should be. Regardless of this setting, {{elastic-endpoint}} will periodically attempt to (re)connect to {{elastic-agent}} if it isn't connected.
+    {{elastic-endpoint}} applies a cached configuration from disk immediately on start up. However, before generating a policy response document, {{elastic-endpoint}} waits to first establish a connection to {{agent}} to see if there are configuration updates. Use this setting to specify how long that delay should be. Regardless of this setting, {{elastic-endpoint}} will periodically attempt to (re)connect to {{agent}} if it isn't connected.
 
 
 `[mac,windows].advanced.alerts.cloud_lookup`
@@ -56,19 +56,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable self-healing by erasing attack artifacts when prevention alerts are triggered. Warning: data loss can occur. Default: `false`.*
 
     When a prevention alert is generated, {{elastic-endpoint}} can [roll back](/solutions/security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md) recent filesystem changes likely associated with the attack. Use this setting to enable the self-healing rollback feature.
-    
-    ::::{warning}
-    This feature can cause permanent data loss.
-    ::::
 
-
-`windows.advanced.alerts.rollback.self_healing.registry_enabled`
-:   Added in 8.8.0.
-
-    *Enable self-healing of registry based malware artifacts when prevention alerts are triggered. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`.*
-
-    As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can roll back recent registry changes when an attack occurs. Use this setting to enable this feature.
-    
     ::::{warning}
     This feature can cause permanent data loss.
     ::::
@@ -80,6 +68,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable automatic removal of malware processes when a related prevention alert fires, including processes which were not directly involved in the alert. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`.*
 
     As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can terminate recently spawned processes when an attack occurs. Use this setting to enable this feature.
+
+    ::::{warning}
+    This feature can cause permanent data loss.
+    ::::
+
+
+`windows.advanced.alerts.rollback.self_healing.registry_enabled`
+:   Added in 8.8.0.
+
+    *Enable self-healing of registry based malware artifacts when prevention alerts are triggered. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`.*
+
+    As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can roll back recent registry changes when an attack occurs. Use this setting to enable this feature.
 
     ::::{warning}
     This feature can cause permanent data loss.
@@ -175,7 +175,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Provide an additional PEM-encoded certificate for {{fleet}} Server SSL/TLS verification. Default: none.*
 
-    Specifies the certificate used to verify the SSL/TLS connection to the {{fleet}} Server. We typically recommend configuring this at the {{fleet}} level, so it applies consistently across {{elastic-agent}} and all integrations, rather than setting it specifically for {{elastic-endpoint}}.
+    Specifies the certificate used to verify the SSL/TLS connection to the {{fleet}} Server. We typically recommend configuring this at the {{fleet}} level, so it applies consistently across {{agent}} and all integrations, rather than setting it specifically for {{elastic-endpoint}}.
 
 
 `[linux,mac,windows].advanced.artifacts.user.proxy_disable`
@@ -191,7 +191,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Override all other proxy settings for use when downloading user artifact updates from {{fleet}} Server. Default: none.*
 
-    Use this setting to configure a proxy server when communicating with the {{fleet}} Server. We typically recommend [configuring proxy settings at the {{elastic-agent}} level](/reference/fleet/fleet-agent-proxy-support.md) to ensure consistent and centralized proxy handling.
+    Use this setting to configure a proxy server when communicating with the {{fleet}} Server. We typically recommend [configuring proxy settings at the {{agent}} level](/reference/fleet/fleet-agent-proxy-support.md) to ensure consistent and centralized proxy handling.
 
 
 `[linux,mac,windows].advanced.capture_command_line`
@@ -210,17 +210,23 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to include a limited number of environment variables in process `create` events.
 
 
+`[mac,windows].advanced.device_control.filter_images`
+:   Added in 9.2.0.
+
+    *Filter out file  backed images and CD-ROM volumes from consideration by device control. Default: `true`.*
+
+
 `[linux,mac,windows].advanced.diagnostic.enabled`
 :   Added in 7.11.0 (Windows), 7.12.0 (macOS and Linux).
 
     *Enable diagnostic features. Default: `true`.*
 
-    Use this setting to disable diagnostic mode, which tests new protections and rules to ensure low false positive rates upon production release. The results of this testing are only collected if telemetry is enabled. 
-    
+    Use this setting to disable diagnostic mode, which tests new protections and rules to ensure low false positive rates upon production release. The results of this testing are only collected if telemetry is enabled.
+
     ::::{note}
     We recommend keeping diagnostic mode enabled to help improve product quality and ensure new protections perform effectively in your environment before they’re released.
     ::::
-  
+
 
 `windows.advanced.diagnostic.rollback_telemetry_enabled`
 :   Added in 8.1.0.
@@ -235,9 +241,9 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Provide a comma-delimited set of key=value pairs of values to add into all documents. Each key must begin with `Custom`. An example is `Custom.key=value1,Custom.key2=value2`. Default: none.*
 
-    Use this setting to add custom key/value pairs into all {{elastic-endpoint}} documents. It works similarly to the [**Custom fields** {{elastic-agent}} policy configuration](/reference/fleet/agent-policy.md#add-custom-fields), which {{elastic-endpoint}} doesn't support.
+    Use this setting to add custom key/value pairs into all {{elastic-endpoint}} documents. It works similarly to the [**Custom fields** {{agent}} policy configuration](/reference/fleet/agent-policy.md#add-custom-fields), which {{elastic-endpoint}} doesn't support.
 
-    
+
 `[linux,mac,windows].advanced.elasticsearch.delay`
 :   Added in 7.9.0.
 
@@ -308,7 +314,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable ETW API events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable API event collection, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling API event collection may break other {{elastic-endpoint}} features.
     :::
@@ -435,6 +441,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to enable reporting of process capabilities on Linux. {{elastic-endpoint}} began reporting these capabilities in 8.11.0, but this was disabled by default in 8.14.0 due to data volume concerns. This setting must be enabled for some SIEM detection rules, but all malicious behavior detection rules running within {{elastic-defend}} work regardless of its status.
 
 
+`windows.advanced.events.enforce_registry_filters`
+:   Added in 8.15.0.
+
+    *Reduce data volume by filtering out registry events which are not relevant to behavioral protections. Default: `true`.*
+
+
 `windows.advanced.events.event_on_access.file_paths`
 :   Added in 8.15.0.
 
@@ -454,6 +466,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     ::::{note}
     Enabling file hashing may increase CPU and IO use, decrease system responsiveness, and interfere with malicious behavior and ransomware protections.
     ::::
+
+
+`windows.advanced.events.file.origin_info_collection`
+:   Added in 8.19.0.
+
+    *Include `file.origin_url`, `file.origin_referrer_url`, and `file.Ext.windows.zone_identifier` in file events. These fields show the details of file's Mark of the Web. Default: `true`.*
 
 
 `[linux,mac,windows].advanced.events.hash.md5`
@@ -485,11 +503,17 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable kernel image load events. `false` disables them even if they are needed by other features. Default: `true`.*
 
-    Use this setting to disable image load events, even if other {{elastic-endpoint}} features require them. 
+    Use this setting to disable image load events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
     Disabling image load events may break other {{elastic-endpoint}} features.
     :::
+
+
+`windows.advanced.events.image_load.origin_info_collection`
+:   Added in 8.19.0.
+
+    *Include `dll.origin_url`, `dll.origin_referrer_url`, and `dll.Ext.windows.zone_identifier` in image load events. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
 
 
 `windows.advanced.events.memory_scan`
@@ -500,14 +524,6 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Additional memory scanning of behavior alerts provides more context for responders analyzing alerts. Use this setting to disable this feature.
 
 
-`windows.advanced.events.process.creation_flags`
-:   Added in 8.13.0.
-
-    *Enrich process events with process creation flags. Only use this setting to troubleshoot if process events are not functioning as expected. Default: `true`.*
-
-    Use this setting to control whether {{elastic-endpoint}} captures process creation flags, such as `CREATE_SUSPENDED`, in process events.
-
-
 `[linux,mac,windows].advanced.events.process_ancestry_length`
 :   Added in 8.15.0.
 
@@ -516,10 +532,30 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Prior to 8.15, this field contained the last 20 ancestor processes; starting with 8.15, it was reduced to the last 5, to limit data volume.
 
 
-`windows.advanced.events.enforce_registry_filters`
-:   Added in 8.15.0.
+`windows.advanced.events.process.creation_flags`
+:   Added in 8.13.0.
 
-    *Reduce data volume by filtering out registry events which are not relevant to behavioral protections. Default: `true`.*
+    *Enrich process events with process creation flags. Only use this setting to troubleshoot if process events are not functioning as expected. Default: `true`.*
+
+    Use this setting to control whether {{elastic-endpoint}} captures process creation flags, such as `CREATE_SUSPENDED`, in process events.
+
+
+`windows.advanced.events.process.origin_info_collection`
+:   Added in 8.19.0.
+
+    *Include `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier` in process events. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
+
+
+`windows.advanced.events.security.event_disabled`
+:   Added in 9.2.0.
+
+    *Provide a comma-separated list of security event IDs to selectively disable. An example is `4624,4800,4801`. Default: none.*
+
+
+`windows.advanced.events.security.provider_etw`
+:   Added in 8.19.0.
+
+    *Enable the Microsoft-Windows-Security-Auditing ETW provider for security events collection. Default: `true`.*
 
 
 `linux.advanced.fanotify.ignore_unknown_filesystems`
@@ -543,7 +579,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Provide a comma-separated list of additional filesystems for fanotify subsystem to monitor. Names should be as they appear in `/proc/filesystems`, for example `jfs,ufs,ramfs`. When `ignore_unknown_filesystems` is `false`, this option is ignored. Warning: it's recommended to avoid network backed filesystems. Default: none.*
 
-    Use this setting to specify filesystems for fanotify to monitor for malware. Filesystems that aren't monitored won't generate malware alerts. 
+    Use this setting to specify filesystems for fanotify to monitor for malware. Filesystems that aren't monitored won't generate malware alerts.
 
 
 `linux.advanced.fanotify.seccomp_restricted`
@@ -560,6 +596,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Elastic caches information about recently read files in memory. Use this setting to control the number of recent file entries to cache.
 
 
+`windows.advanced.firewall_anti_tamper`
+:   Added in 9.2.0.
+
+    *Enable firewall anti tamper prevention or detection. Tamper protetion must also be enabled. Allowed values are `prevent`, `detect`, and `off`. Default: `prevent`.*
+
+
 `[linux,mac,windows].advanced.flags`
 :   Added in 8.13.0 (Windows), 8.16.0 (macOS and Linux).
 
@@ -571,7 +613,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable self-protection hardening on macOS. Default: `true`.*
 
-    Use this setting to enable self-protection on macOS. This hardens {{elastic-endpoint}} and {{elastic-agent}} processes, files, and services against basic tampering attempts. This is distinct from [tamper protection](https://www.elastic.co/docs/solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation).
+    Use this setting to enable self-protection on macOS. This hardens {{elastic-endpoint}} and {{agent}} processes, files, and services against basic tampering attempts. This is distinct from [tamper protection](https://www.elastic.co/docs/solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation).
 
 
 `linux.advanced.host_isolation.allowed`
@@ -586,7 +628,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 :   Added in 8.11.0.
 
     *Collect and send image load events to {{es}}. Warning: this can lead to very high data volumes; use of event filters to drop unwanted events is strongly recommended. Default: `false`.*
-    
+
     If malicious behavior protection is enabled, {{elastic-endpoint}} by default monitors for image load events, but doesn't emit them to {{es}} due to high data volume. Use this setting to allow those events to be emitted to {{es}}, regardless of whether malicious behavior protection is enabled.
 
 
@@ -615,7 +657,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Control whether to connect to the kernel driver. Warning: disabling this will break most features. Default: `true`.*
 
-    On macOS, {{elastic-endpoint}} uses a system extension, and on Windows, a kernel driver. Use this setting to disable {{elastic-endpoint}}'s attempt to connect to those subsystems. 
+    On macOS, {{elastic-endpoint}} uses a system extension, and on Windows, a kernel driver. Use this setting to disable {{elastic-endpoint}}'s attempt to connect to those subsystems.
 
     :::{warning}
     Disabling the connection will break many {{elastic-endpoint}} features.
@@ -658,7 +700,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel file write events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable kernel file write events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling file write events may break other {{elastic-endpoint}} features.
     :::
@@ -682,7 +724,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel network events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable kernel network events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling network events may break other {{elastic-endpoint}} features.
     :::
@@ -694,7 +736,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable the network content filter, which will enable network eventing. Warning: host isolation will fail if this is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network content filter.
-    
+
     :::{warning}
     Disabling the network content filter will break other {{elastic-endpoint}} features.
     :::
@@ -706,7 +748,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable the network packet filter. Warning: host isolation will fail if this is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network packet filter.
-    
+
     :::{warning}
     Disabling the network packet filter will break other {{elastic-endpoint}} features.
     :::
@@ -742,7 +784,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel process events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable kernel process events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling process events may break other {{elastic-endpoint}} features.
     :::
@@ -754,7 +796,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable process and thread handle events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable process and thread handle events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling process and thread handle events may break other {{elastic-endpoint}} features.
     :::
@@ -766,7 +808,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel registry events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable registry modification events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling registry modification events may break other {{elastic-endpoint}} features.
     :::
@@ -784,7 +826,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Enable kernel sync image load events. `false` disables them even if they are needed by other features. Default: `true`.*
 
     Use this setting to disable synchronous image load events, even if other {{elastic-endpoint}} features require them.
-    
+
     :::{warning}
     Disabling synchronous image load events may break other {{elastic-endpoint}} features.
     :::
@@ -863,7 +905,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable scanning for malicious memory regions as a part of memory protection. Default: `true`.*
 
-    Use this setting to disable memory scanning using YARA rules, even if Memory Threat protection is enabled. On Windows, Memory Threat protection will remain effective even without this scan. On macOS and Linux, disabling this scan will effectively disable Memory Threat protection. 
+    Use this setting to disable memory scanning using YARA rules, even if Memory Threat protection is enabled. On Windows, Memory Threat protection will remain effective even without this scan. On macOS and Linux, disabling this scan will effectively disable Memory Threat protection.
 
 
 `[linux,mac,windows].advanced.memory_protection.memory_scan_collect_sample`
@@ -872,6 +914,24 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Collect 4MB of memory surrounding detected malicious memory regions. Warning: enabling this value may significantly increase the amount of data stored in {{es}}. Default: `false`.*
 
     Use this setting to collect memory surrounding detected malicious regions when Memory Threat alerts are triggered by YARA rule scanning.
+
+
+`windows.advanced.memory_protection.scan_on_api_event`
+:   Added in 8.17.6.
+
+    *Scan for memory threats in response to API events. Default: `true`.*
+
+
+`[linux,mac,windows].advanced.memory_protection.scan_on_image_load_event`
+:   Added in 8.17.6.
+
+    *Scan for memory threats in response to image loads. Default: `true`.*
+
+
+`[linux,mac,windows].advanced.memory_protection.scan_on_network_event`
+:   Added in 8.17.6.
+
+    *Scan for memory threats in response to network activity. Default: `true`.*
 
 
 `windows.advanced.memory_protection.shellcode`
@@ -918,6 +978,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable ransomware detection based on canary files, even if ransomware protection is enabled. Ransomware protection will remain effective even when this ransomware detection is disabled.
 
 
+`mac.advanced.ransomware.diagnostic`
+:   Added in 9.2.0.
+
+    *Enable diagnostic ransomware protection. Default: `true`.*
+
+
+`windows.advanced.ransomware.dump_process`
+:   Added in 8.11.0.
+
+    *Enable the generation of a memory dump of the ransomware process. This is ignored if the canary protection is off. Default: `true`.*
+
+
 `windows.advanced.ransomware.mbr`
 :   Added in 7.12.0.
 
@@ -956,7 +1028,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 :   Added in 8.3.0.
 
     *The percentage of the aggregate system CPU to which Endpoint is restricted. The range is `20`-`100%`. Values under `20` are ignored and trigger a policy warning. Default: `50`.*
- 
+
     :::{important}
     Setting the limit too low will impact system performance, since {{elastic-endpoint}} pauses application loads during malware scans.
     :::
@@ -966,27 +1038,3 @@ Advanced settings are not recommended for most users. Use them only if you have 
 :   Added in 8.12.0.
 
     *Control how much memory (in MB) should be kept resident in RAM. This setting affects Private Working Set but does not affect the amount of virtual memory requested from the OS (Private Bytes or Commit Charge). If plenty of unused RAM is available, Windows may give {{elastic-endpoint}} more RAM than requested to reduce unnecessary paging and improve performance. If the current {{elastic-defend}} configuration requires regularly touching more than the requested amount of memory, then the Private Working Set will be higher than requested here. The minimum value is 50. Default: `200`.*
-
-
-`windows.advanced.events.image_load.origin_info_collection`
-:   Added in 8.19.0.
-
-    *Include `dll.origin_url`, `dll.origin_referrer_url`, and `dll.Ext.windows.zone_identifier` in image load events. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
-
-
-`windows.advanced.events.process.origin_info_collection`
-:   Added in 8.19.0.
-
-    *Include `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier` in process events. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
-
-
-`windows.advanced.events.file.origin_info_collection`
-:   Added in 8.19.0.
-
-    *Include `file.origin_url`, `file.origin_referrer_url`, and `file.Ext.windows.zone_identifier` in file events. These fields show the details of file's Mark of the Web. Default: `true`.*
-
-
-`windows.advanced.events.security.provider_etw`
-:   Added in 8.19.0.
-
-    *Enable the Microsoft-Windows-Security-Auditing ETW provider for security events collection. Default: `true`.*

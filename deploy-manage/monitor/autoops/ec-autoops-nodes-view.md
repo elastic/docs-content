@@ -5,21 +5,41 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    self:
+    ece:
+    eck:
 products:
   - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
 ---
 
 # Nodes view in AutoOps [ec-autoops-nodes-view]
 
-The **Nodes** view provides a thorough overview on the essential metrics for all monitored deployment nodes. You can delve into specific nodes to observe metrics over extended periods. This includes data on the indexing rate and latency, search rate and latency, as well as details concerning thread pools, data, circuit breakers, network, disk, and additional elements.
+The **Nodes** view provides a thorough look into essential metrics for all monitored nodes. With this view, you can gain deeper insight into your cluster's health on a per-node basis and observe each metric over extended periods of time.
+
+To get to the **Nodes** view, go to AutoOps in your deployment or cluster and select **Nodes** from the side navigation.
 
 :::{image} /deploy-manage/images/cloud-autoops-node-view.png
-:alt: The Node view
+:screenshot:
+:alt: Screenshot showing the Nodes view in AutoOps
 :::
 
-Similar to the **Deployment** view, the list of open events is sorted by severity and open time.
+## Panels in the Nodes view
 
-The following table lists all the nodes used by the Deployment {{es}} cluster, presenting node name, role and status. The elected master node will be marked with a start sign.
+The **Nodes** view shows the following panels.
+
+### Nodes
+
+The **Nodes** table lists all the nodes used by the {{es}} cluster, along with their name, role, and status. The elected master node is marked with a star.
+
+### Open Events
+
+The **Open Events** panel lists open events sorted by severity and time. When the conditions that triggered the event no longer exist, the event is automatically set to close and appear in the **Events History** panel. Closing an event does not necessarily indicate that the customer resolved the issue, but rather that AutoOps no longer detects it.
+
+### Panels covering other monitoring areas
+
+The following table lists all the other panels in the **Nodes** view that drill down into specific monitoring areas, along with the names and descriptions of metrics they present. 
 
 | Area | Metrics name | Metrics description | 
 | --- | --- | --- | 

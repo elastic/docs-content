@@ -22,6 +22,10 @@ To scan your host, you’ll run an auto-detection script that downloads and inst
 
 The script also generates an {{agent}} configuration file that you can use with your existing Infrastructure-as-Code tooling.
 
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect system metrics and logs using OpenTelemetry.
+:::
+
 
 ## Prerequisites [_prerequisites]
 
@@ -178,4 +182,8 @@ For host monitoring, the following capabilities and features are recommended:
     * [Detect change points](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
-Refer to the [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+Refer to the [Observability overview](/solutions/observability.md) for a description of other useful features.
+
+## Manage your data [_manage_your_data]
+
+Now that you're ingesting data and using it gather insights, learn how to manage your [data lifecycle](/manage-data/lifecycle.md). These features in {{es}} allow you to govern how long your {{agent}} data is retained, and to tune performance by configuring background operations that optimize how your data is stored.

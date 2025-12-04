@@ -23,13 +23,13 @@ Organize your dashboard panels into collapsible sections to improve readability 
 To add a collapsible section:
 
 1. Open the dashboard and make sure that you are in **Edit** mode.
-2. Select **Add panel** and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
+2. Add a new panel and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
 3. Optionally, edit the label of the section.
 4. Drag and drop any panels you want into the section.
    :::{tip}
    The section must be expanded in order to place panels into it.
    :::
-5. Just like any other panel, you can drag and drop the collapsible section to a different position in the dashboard.
+5. Like any other panel, you can drag and drop the collapsible section to a different position in the dashboard.
 6. Save the dashboard. 
 
 Users viewing the dashboard will find the section in the same state as when you saved the dashboard. If you saved it with the section collapsed, then it will also be collapsed by default for users.

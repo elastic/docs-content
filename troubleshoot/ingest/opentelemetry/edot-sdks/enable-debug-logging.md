@@ -27,7 +27,8 @@ Enabling debug logging can help surface common problems such as:
 
 ## Verify you're looking at the right logs
 
-* Ensure you’re checking logs for the same process that starts your app (systemd service, container entrypoint, IIS worker, etc.).
+Ensure you’re checking logs for the same process that starts your app (systemd service, container entrypoint, IIS worker, and so on):
+
 * For containerized environments such as Kubernetes/Docker:  
   * `kubectl logs <pod> -c <container>` (correct container name matters if there are sidecars)  
   * Check the new Pod after a rollout, as old Pods may show stale environment without your debug flags.
@@ -188,4 +189,4 @@ Disable diagnostic collection when you're done by unsetting the variable or rest
 
 ## Resources
 
-To learn how to enable debug logging for the EDOT Collector, refer to [Enable debug logging for EDOT Collector](../edot-collector/enable-debug-logging.md).
+To learn how to enable debug logging for the EDOT Collector, refer to [Enable debug logging for EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).

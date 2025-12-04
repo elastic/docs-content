@@ -193,7 +193,7 @@ The `match_pattern` parameter adjusts the behavior of the `match` parameter to s
   "match": "^profit_\d+$"
 ```
 
-The following example matches all `string` fields whose name starts with `long_` (except for those which end with `_text`) and maps them as `long` fields:
+The following example matches all `string` fields whose name starts with `long_` (except for those that end with `_text`) and maps them as `long` fields:
 
 ```console
 PUT my-index-000001
@@ -247,7 +247,7 @@ PUT my-index-000001
   }
 }
 
-PUT my-index/_doc/1
+PUT my-index-000001/_doc/1
 {
   "one_ip":   "will not match", <1>
   "ip_two":   "will not match", <2>
@@ -265,7 +265,7 @@ PUT my-index/_doc/1
 
 ## `path_match` and `path_unmatch` [path-match-unmatch]
 
-The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, e.g. `some_object.*.some_field`.
+The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, for example, `some_object.*.some_field`.
 
 This example copies the values of any fields in the `name` object to the top-level `full_name` field, except for the `middle` field:
 
@@ -342,7 +342,7 @@ PUT my-index-000001/_doc/2
 }
 ```
 
-Note that the `path_match` and `path_unmatch` parameters match on object paths in addition to leaf fields. As an example, indexing the following document will result in an error because the `path_match` setting also matches the object field `name.title`, which can’t be mapped as text:
+The `path_match` and `path_unmatch` parameters match on object paths in addition to leaf fields. As an example, indexing the following document will result in an error because the `path_match` setting also matches the object field `name.title`, which can't be mapped as text:
 
 ```console
 PUT my-index-000001/_doc/2

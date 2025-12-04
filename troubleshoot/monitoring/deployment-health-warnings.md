@@ -32,8 +32,7 @@ If multiple health warnings appear for one of your deployments, or if your deplo
 
 If the warning refers to a system change, check the deployment’s [Activity](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) page.
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Additional resources

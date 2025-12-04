@@ -30,7 +30,7 @@ Within an {{agent}} policy is a set of individual integration policies. These in
 * Maintain flexibility in large-scale deployments by quickly testing changes before rolling them out.
 * Provide a way to group and manage larger swaths of your infrastructure landscape.
 
-For example, it might make sense to create a policy per operating system type: Windows, macOS, and Linux hosts. Or, organize policies by functional groupings of how the hosts are used: IT email servers, Linux servers, user work-stations, etc. Or perhaps by user categories: engineering department, marketing department, etc.
+For example, it might make sense to create a policy per operating system type: Windows, macOS, and Linux hosts. Or, organize policies by functional groupings of how the hosts are used: IT email servers, Linux servers, user work-stations, and so on. Or perhaps by user categories: engineering department, marketing department, and so on.
 
 
 ## Policy types [agent-policy-types]
@@ -100,7 +100,7 @@ To add a new integration to one or more {{agent}} policies:
 6. In Step 2 on the page, you have two options:
 
     1. If you’d like to create a new policy for your {{agent}}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics. Collecting logs and metrics will add the System integration to the new agent policy.
-    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you’d like to add the integration to. Note that this feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
+    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you'd like to add the integration to. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 7. Click **Save and continue** to confirm your settings.
 
@@ -200,7 +200,7 @@ To edit a custom field:
 2. Click the **Settings** tab and scroll to **Custom fields**. Any custom fields that have been configured are shown.
 3. Click the edit icon to update a field or click the delete icon to remove it.
 
-Note that adding custom tags is not supported for a small set of inputs:
+Adding custom tags is not supported for a small set of inputs:
 
 * `apm`
 * `cloudbeat` and all `cloudbeat/*` inputs
@@ -426,3 +426,7 @@ After you set an unenrollment timeout, any inactive agents are unenrolled automa
 A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If more policies are configured, UI performance might be impacted. The maximum number of policies is not affected by the number of spaces in which the policies are used.
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
+
+## Scaling limitations of integration package policies [integration-policies-scale-limitations]
+
+A single {{agent}} policy supports a maximum of 10,000 integration package policies.

@@ -1,13 +1,13 @@
 
 # Detailed deployment comparison
 
-This reference provides detailed comparisons of features and capabilities across Elastic's deployment options: self-managed deployments, {{ech}}, and Serverless. For a high-level overview of deployment types and guidance on choosing between them, see the [overview](../deploy.md).
+This reference provides detailed comparisons of features and capabilities across Elastic's deployment options: [fully self-managed clusters](/deploy-manage/deploy/self-managed.md), [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) (ECE), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) (ECK), [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) (ECH), and [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md). For a high-level overview of deployment types and guidance on choosing between them, refer to the [Deploy and manage overview](../deploy.md).
 
-For more details about feature availability in Serverless, check [](elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-categories).
+For more details about feature availability in {{serverless-short}}, refer to [](elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-categories).
 
 ## Security
 
-| Feature/capability | Self-managed | {{ech}} | Serverless |
+| Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
 |-------------------|-------------|--------------------------------|-------------------------|
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
 | [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through {{ecloud}} only |
@@ -16,44 +16,44 @@ For more details about feature availability in Serverless, check [](elastic-clou
 
 ## Infrastructure and cluster management
 
-| Feature/capability | Self-managed | {{ech}} | Serverless |
-|-------------------|-------------|--------------------------------|-------------------------|
-| Hosting | Any infrastructure | {{ecloud}} through AWS, Azure, or GCP | {{ecloud}} through AWS or Azure |
-| Hardware configuration | Full control | Limited control | Managed by Elastic |
-| Autoscaling | No | Available | Automatic |
-| Data tiers management | Through ILM policies | Available | No data tiers |
-| Snapshot management | Custom | Available | Managed by Elastic |
-| High availability and disaster recovery | Available | Available | Managed by Elastic |
-| Shard management and replicas | Available | Available | Managed by Elastic |
+| Feature/capability | Fully self-managed | ECE | ECK | ECH | {{serverless-short}} |
+|--------------------|--------------------|---------|---------|-----------------|-------------------------|
+| Hosting | Any infrastructure | Any infrastructure | Any infrastructure | {{ecloud}} through AWS, Azure, or GCP | {{ecloud}} through AWS, Azure, or GCP |
+| Hardware configuration | Full control | Full control | Full control | Limited control | Managed by Elastic |
+| [Autoscaling](/deploy-manage/autoscaling.md) | No |  Available | Available | Available | Automatic |
+| [Data tier](/manage-data/lifecycle/data-tiers.md) management | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Available | No data tiers |
+| [Snapshot management](/deploy-manage/tools/snapshot-and-restore.md) | Custom | Custom | Available | Available | Managed by Elastic |
+| [High availability and disaster recovery](/deploy-manage/production-guidance/availability-and-resilience.md) | Available | Available | Available | Available | Managed by Elastic |
+| [Shard management and replicas](/deploy-manage/distributed-architecture/clusters-nodes-shards.md) | Available | Available | Available | Available | Managed by Elastic |
 
 ## Monitoring
 
-| Feature/capability | Self-managed | {{ech}} | Serverless |
-|-------------------|-------------|--------------------------------|-------------------------|
-| [Deployment health monitoring](/deploy-manage/monitor.md) | Monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
-| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-features-replaced)) |
+| Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
+|-------------------|-------------------------------|---------|----------------------|
+| [Deployment health monitoring](/deploy-manage/monitor.md) | AutoOps or monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
+| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/explore-analyze/alerts-cases.md#watcher)) |
 
 ## Data lifecycle
 
-| Feature/capability | Self-managed | {{ech}} | Serverless |
-|-------------------|-------------|--------------------------------|-------------------------|
-| [Data lifecycle management](/manage-data/lifecycle.md) | ILM, data tiers, data stream lifecycle | ILM, data tiers, data stream lifecycle | Data stream lifecycle ([why?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-features-replaced)) |
+| Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
+|-------------------|-------------------------------|---------|----------------------|
+| [Data lifecycle management](/manage-data/lifecycle.md) | ILM, data tiers, data stream lifecycle | ILM, data tiers, data stream lifecycle | Data stream lifecycle ([why?](/manage-data/lifecycle.md#ilm)) |
 | [Snapshot management](/deploy-manage/tools/snapshot-and-restore.md) | Custom | Available | Managed by Elastic |
 
 ## Integrations and extensions
 
-| Feature/capability | Self-managed | {{ech}} | Serverless |
-|-------------------|-------------|--------------------------------|-------------------------|
+| Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
+|-------------------|-------------------------------|---------|----------------------|
 | Custom plugins and bundles | Available | Available | No |
-| Self-managed connectors | Available | Limited | Limited |
-| Elasticsearch-Hadoop integration | Available | Available | No |
-| Cross cluster search (CCS) | Available | Available | [Planned](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-planned) |
-| Cross cluster replication | Available | Available | [Planned](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-planned) |
+| [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) | Available | Limited | Limited |
+| [{{es}}-Hadoop integration](elasticsearch-hadoop://reference/index.md) | Available | Available | No |
+| [Cross cluster search (CCS)](/solutions/search/cross-cluster-search.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) (as cross project search) |
+| [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) |
 
 ## Development and testing features
 
-| Feature/capability | Self-managed | {{ech}} | Serverless |
-|-------------------|-------------|--------------------------------|-------------------------|
+| Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
+|-------------------|-------------------------------|---------|----------------------|
 | Advanced testing and development | Available | No | No |
 | Java (JVM) customization | Available | No | No |
 

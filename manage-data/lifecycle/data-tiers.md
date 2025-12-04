@@ -85,7 +85,7 @@ Alternatively, you can use the cold tier to store regular indices with replicas 
 
 Once data is no longer being queried, or being queried rarely, it may move from the cold tier to the frozen tier where it stays for the rest of its life.
 
-The frozen tier requires a snapshot repository. The frozen tier uses [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) to store and load data from a snapshot repository. This reduces local storage and operating costs while still letting you search frozen data. Because {{es}} must sometimes fetch frozen data from the snapshot repository, searches on the frozen tier are typically slower than on the cold tier.
+We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-frozen-node) in the frozen tier. The frozen tier requires a snapshot repository and uses [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) to store and load data from the snapshot repository. This reduces local storage and operating costs while still letting you search frozen data. Because {{es}} must sometimes fetch frozen data from the snapshot repository, searches on the frozen tier are typically slower than on the cold tier.
 
 ## Configure data tiers [configure-data-tiers]
 
@@ -145,7 +145,7 @@ GET /_cat/indices/partial-*
 
 ##### Non-searchable snapshot data tier [ece-disable-non-searchable-snapshot-data-tier]
 
-{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (e.g., hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
+{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (for example, hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
 
 To learn more about ILM, or shard allocation filtering, check the following documentation:
 
@@ -205,7 +205,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
     GET /_cat/shards
     ```
 
-    Parse the output, looking for shards allocated to the nodes to be removed from the cluster. Note that `Instance #2` is shown as `instance-0000000002` in the output.
+    Parse the output, looking for shards allocated to the nodes to be removed from the cluster. `Instance #2` is shown as `instance-0000000002` in the output.
 
     :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filtered-cat-shards.png
     :alt: A screenshot showing a filtered shard list
@@ -418,7 +418,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 6. Repeat steps 4 and 5 until all snapshots are restored to regular indices.
 7. Once all snapshots are restored, use `GET _cat/indices/<index-pattern>?v=true` to check that the restored indices are `green` and are correctly reflecting the expected `doc` and `store.size` counts.
 
-    If you are using data stream, you may need to use `GET _data_stream/<data-stream-name>` to get the list of the backing indices, and then specify them by using `GET _cat/indices/<backing-index-name>?v=true` to check.
+    If you are using data stream, you may need to use `GET _data_stream/<data-stream-name>` to get the list of the backing indices, and then specify them by using `GET _cat/indices/<backing-index-name>?v=true` to check. When you restore the backing indices of a data stream, some [considerations](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#considerations) apply, and you might need to manually add the restored indices into your data stream or recreate your data stream.
 
 8. Once your data has completed restoration from searchable snapshots to the target data tier, `DELETE` searchable snapshot indices using the prefix from step 2.
 
@@ -428,7 +428,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 9. Delete the searchable snapshots by following these steps:
 
-    1. Open Kibana and navigate to Management > Data > Snapshot and Restore > Snapshots (or go to `<kibana-endpoint>/app/management/data/snapshot_restore/snapshots`)
+    1. Open Kibana, go to the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and go to the **Snapshots** tab. (Alternatively, go to `<kibana-endpoint>/app/management/data/snapshot_restore/snapshots`.)
     2. Search for `*<ilm-policy-name>*`
     3. Bulk select the snapshots and delete them
 
@@ -475,7 +475,7 @@ You can override this setting after index creation by [updating the index settin
 
 This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if there are no nodes in the cluster for the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
 
-To remove the data tier preference setting, set the `_tier_preference` value to `null`. This allows the index to allocate to any data node within the cluster. Setting the `_tier_preference` to `null` does not restore the default value. Note that, in the case of managed indices, a [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action might apply a new value in its place.
+To remove the data tier preference setting, set the `_tier_preference` value to `null`. This allows the index to allocate to any data node within the cluster. Setting the `_tier_preference` to `null` does not restore the default value. In the case of managed indices, a [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action might apply a new value in its place.
 
 ### Determine the current data tier preference [data-tier-allocation-value]
 
@@ -494,7 +494,7 @@ This setting will not unallocate a currently allocated shard, but might prevent 
 
 ### Automatic data tier migration [data-tier-migration]
 
-{{ilm-init}} automatically transitions managed indices through the available data tiers using the [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action. By default, this action is automatically injected in every phase. 
+{{ilm-init}} automatically transitions managed indices through the available data tiers using the [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action. By default, this action is automatically injected in every phase.
 
 ### Disable data tier allocation [data-tier-allocation]
 You can explicitly disable data allocation for  data tier migration in an ILM policy with the following setting:
@@ -520,7 +520,7 @@ For example:
       },
 ```
 
-Defining the `migrate` action with `"enabled": false` for a data tier [disables automatic {{ilm-init}} shard migration](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex). This is useful if, for example, you’re using the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.          
+Defining the `migrate` action with `"enabled": false` for a data tier [disables automatic {{ilm-init}} shard migration](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex). This is useful if, for example, you’re using the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.
 
-#### Important Note: 
+#### Important Note:
 Do not disable automatic {{ilm-init}} migration without manually defining {{ilm-init}} allocation rules. If data migration is disabled without allocation rules defined, this can prevent data from moving to the specified data tier, even though the data has successfully moved through the {{ilm-init}} policy with a status of `complete`.

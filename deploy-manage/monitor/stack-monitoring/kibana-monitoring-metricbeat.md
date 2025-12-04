@@ -14,7 +14,7 @@ products:
 # Collect monitoring data with Metricbeat [monitoring-metricbeat]
 
 
-Yu can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster.
+You can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster.
 
 To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
@@ -72,7 +72,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
         For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [the Cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
 4. [Install {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md) on the same server as {{kib}}.
-5. Enable the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
+5. Enable the {{kib}} X-Pack module in {{metricbeat}}.<br>
 
     For example, to enable the default configuration in the `modules.d` directory, run the following command:
 
@@ -82,7 +82,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
     For more information, see [Specify which modules to run](beats://reference/metricbeat/configuration-metricbeat.md) and [{{kib}} module](beats://reference/metricbeat/metricbeat-module-kibana.md).
 
-6. Configure the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
+6. Configure the {{kib}} X-Pack module in {{metricbeat}}.<br>
 
     The `modules.d/kibana-xpack.yml` file contains the following settings:
 

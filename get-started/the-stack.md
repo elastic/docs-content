@@ -8,6 +8,8 @@ mapped_pages:
 products:
   - id: elastic-stack
   - id: kibana
+applies_to:
+  stack:
 ---
 
 # The {{stack}}

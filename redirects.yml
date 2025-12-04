@@ -206,7 +206,7 @@ redirects:
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/logging.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/net.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-ruby-api/ruby.md': 'troubleshoot/elasticsearch/clients.md'
-  'solutions/observability/get-started/add-data-from-splunk.md': 'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md'
+  'solutions/observability/get-started/add-data-from-splunk.md': 'solutions/observability/get-started.md'
   'solutions/observability/get-started/create-an-observability-project.md': 'solutions/observability/get-started.md'
   'solutions/observability/get-started/get-started-with-dashboards.md': 'solutions/observability/get-started.md'
 # Related to https://github.com/elastic/docs-content/pull/1329
@@ -466,3 +466,137 @@ redirects:
   'solutions/observability/apm/collect-application-data.md': 'solutions/observability/apm/ingest/index.md'
   'solutions/observability/apm/jaeger.md': 'solutions/observability/apm/ingest/jaeger.md'
   'solutions/observability/apm/monitor-aws-lambda-functions.md': 'solutions/observability/apm/ingest/monitor-aws-lambda-functions.md'
+# Related to https://github.com/elastic/docs-content/pull/3142
+  'deploy-manage/deploy/self-managed/networkaddress-cache-ttl.md': 'deploy-manage/deploy/self-managed/important-settings-configuration.md'
+
+# Related to https://github.com/elastic/docs-content/pull/3230
+  'extend/contribute/index.md': 'contribute-docs/index.md'
+  'extend/contribute-docs/index.md': 'contribute-docs/index.md'
+  'extend/contribute/api-docs/index.md': 'contribute-docs/api-docs/index.md'
+  'extend/contribute/api-docs/overview.md': 'contribute-docs/api-docs/overview.md'
+  'extend/contribute/api-docs/checklist.md': 'contribute-docs/api-docs/checklist.md'
+  'extend/contribute/api-docs/guidelines.md': 'contribute-docs/api-docs/guidelines.md'
+  'extend/contribute/api-docs/organize-annotate.md': 'contribute-docs/api-docs/organize-annotate.md'
+  'extend/contribute/api-docs/quickstart.md': 'contribute-docs/api-docs/quickstart.md'
+  'extend/contribute/api-docs/workflows.md': 'contribute-docs/api-docs/workflows.md'
+  'extend/contribute/api-docs/help.md': 'contribute-docs/api-docs/help.md'
+# Move all content for SQL under Explore & Analyze-> SQL to Reference content: related to https://github.com/elastic/docs-content/pull/3270
+  'explore-analyze/query-filter/languages/sql-overview.md': 'elasticsearch://reference/query-languages/sql.md'
+  'explore-analyze/query-filter/languages/sql-getting-started.md': 'elasticsearch://reference/query-languages/sql/sql-getting-started.md  '
+  'explore-analyze/query-filter/languages/sql-concepts.md': 'elasticsearch://reference/query-languages/sql/sql-concepts.md'
+  'explore-analyze/query-filter/languages/sql-security.md': 'elasticsearch://reference/query-languages/sql/sql-security.md'
+  'explore-analyze/query-filter/languages/sql-rest.md': 'elasticsearch://reference/query-languages/sql/sql-rest.md'
+  'explore-analyze/query-filter/languages/sql-rest-overview.md': 'elasticsearch://reference/query-languages/sql/sql-rest-overview.md'
+  'explore-analyze/query-filter/languages/sql-rest-format.md': 'elasticsearch://reference/query-languages/sql/sql-rest-format.md'
+  'explore-analyze/query-filter/languages/sql-pagination.md': 'elasticsearch://reference/query-languages/sql/sql-pagination.md'
+  'explore-analyze/query-filter/languages/sql-rest-filtering.md': 'elasticsearch://reference/query-languages/sql/sql-rest-filtering.md'
+  'explore-analyze/query-filter/languages/sql-rest-columnar.md': 'elasticsearch://reference/query-languages/sql/sql-rest-columnar.md'
+  'explore-analyze/query-filter/languages/sql-rest-params.md': 'elasticsearch://reference/query-languages/sql/sql-rest-params.md'
+  'explore-analyze/query-filter/languages/sql-runtime-fields.md': 'elasticsearch://reference/query-languages/sql/sql-runtime-fields.md'
+  'explore-analyze/query-filter/languages/sql-async.md': 'elasticsearch://reference/query-languages/sql/sql-async.md'
+  'explore-analyze/query-filter/languages/sql-translate.md': 'elasticsearch://reference/query-languages/sql/sql-translate.md'
+  'explore-analyze/query-filter/languages/sql-cli.md': 'elasticsearch://reference/query-languages/sql/sql-cli.md'
+  'explore-analyze/query-filter/languages/sql-jdbc.md': 'elasticsearch://reference/query-languages/sql/sql-jdbc.md'
+  'explore-analyze/query-filter/languages/sql-jdbc-api-usage.md': 'elasticsearch://reference/query-languages/sql/sql-jdbc-api-usage.md'
+  'explore-analyze/query-filter/languages/sql-odbc.md': 'elasticsearch://reference/query-languages/sql/sql-odbc.md'
+  'explore-analyze/query-filter/languages/sql-odbc-installation.md': 'elasticsearch://reference/query-languages/sql/sql-odbc-installation.md'
+  'explore-analyze/query-filter/languages/sql-odbc-setup.md': 'elasticsearch://reference/query-languages/sql/sql-odbc-setup.md'
+  'explore-analyze/query-filter/languages/sql-client-apps.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-dbeaver.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-dbeaver.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-dbvis.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-dbvis.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-excel.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-excel.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-powerbi.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-powerbi.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-ps1.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-ps1.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-microstrat.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-microstrat.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-qlik.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-qlik.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-squirrel.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-squirrel.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-workbench.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-workbench.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-tableau-desktop.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-desktop.md'
+  'explore-analyze/query-filter/languages/sql-client-apps-tableau-server.md': 'elasticsearch://reference/query-languages/sql/sql-client-apps-tableau-server.md'
+
+# Related to https://github.com/elastic/docs-content/pull/3318
+  'solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md': 'solutions/security/manage-elastic-defend/automatic-troubleshooting.md'
+
+# Related to https://github.com/elastic/docs-content/pull/3461
+  'manage-data/data-store/data-streams/time-series-data-stream-tsds.md': 
+    to: 'manage-data/data-store/data-streams/time-series-data-stream-tsds.md'
+    anchors:
+      'when-to-use-tsds': 'when-to-use-tsds'
+      'time-series': 'time-series'
+      'time-series-dimension': 'time-series-dimension'
+      'time-series-metric': 'time-series-metric'
+      'tsid': 'tsid'
+      'differences-from-regular-data-stream': 'differences-from-regular-data-stream'
+      'tsds-whats-next': 'tsds-whats-next'
+      'time-series-mode':
+      'tsds-look-ahead-time':
+      'tsds-look-back-time':
+      'time-bound-indices':
+      'dimension-based-routing':
+      'tsds-accepted-time-range':
+      
+# Search sessions becoming background search
+  'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+
+# Related to https://github.com/elastic/docs-content/pull/3493
+  'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/cloud/integrations/ingest-third-party-cloud-security-data.md'
+  'solutions/security/cloud/ingest-cncf-falco-data.md': 'solutions/security/cloud/integrations/cncf-falco.md'
+  'solutions/security/cloud/ingest-wiz-data.md': 'solutions/security/cloud/integrations/wiz.md'
+  'solutions/security/cloud/integration-tenablevm.md': 'solutions/security/cloud/integrations/tenablevm.md'
+  'solutions/security/cloud/integration-rapid7.md': 'solutions/security/cloud/integrations/rapid7.md'
+  'solutions/security/cloud/integration-qualys.md': 'solutions/security/cloud/integrations/qualys.md'
+  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/cloud/integrations/aws-security-hub.md'
+  'solutions/security/cloud/aws-config-integration.md': 'solutions/security/cloud/integrations/aws-config.md'
+  
+# Deduplicate canvas function reference
+  'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
+  'reference/data-analysis/kibana/tinymath-functions.md': 'explore-analyze/visualize/canvas/canvas-tinymath-functions.md'
+
+# Related to data-analysis restructure - moved observability metrics to reference/observability
+  'reference/data-analysis/observability/index.md': 'reference/observability/metrics-reference.md'
+  'reference/data-analysis/observability/observability-host-metrics.md': 'reference/observability/observability-host-metrics.md'
+  'reference/data-analysis/observability/observability-container-metrics.md': 'reference/observability/observability-container-metrics.md'
+  'reference/data-analysis/observability/observability-kubernetes-pod-metrics.md': 'reference/observability/observability-kubernetes-pod-metrics.md'
+  'reference/data-analysis/observability/observability-aws-metrics.md': 'reference/observability/observability-aws-metrics.md'
+
+# Renamed data-analysis to machine-learning
+  'reference/data-analysis/index.md': 'reference/machine-learning/index.md'
+  'reference/data-analysis/machine-learning/supplied-anomaly-detection-configurations.md': 'reference/machine-learning/supplied-anomaly-detection-configurations.md'
+  'reference/data-analysis/machine-learning/machine-learning-functions.md': 'reference/machine-learning/machine-learning-functions.md'
+  'reference/data-analysis/machine-learning/ml-count-functions.md': 'reference/machine-learning/ml-count-functions.md'
+  'reference/data-analysis/machine-learning/ml-geo-functions.md': 'reference/machine-learning/ml-geo-functions.md'
+  'reference/data-analysis/machine-learning/ml-info-functions.md': 'reference/machine-learning/ml-info-functions.md'
+  'reference/data-analysis/machine-learning/ml-metric-functions.md': 'reference/machine-learning/ml-metric-functions.md'
+  'reference/data-analysis/machine-learning/ml-rare-functions.md': 'reference/machine-learning/ml-rare-functions.md'
+  'reference/data-analysis/machine-learning/ml-sum-functions.md': 'reference/machine-learning/ml-sum-functions.md'
+  'reference/data-analysis/machine-learning/ml-time-functions.md': 'reference/machine-learning/ml-time-functions.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md': 'reference/machine-learning/ootb-ml-jobs-apache.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-apm.md': 'reference/machine-learning/ootb-ml-jobs-apm.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-auditbeat.md': 'reference/machine-learning/ootb-ml-jobs-auditbeat.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-logs-ui.md': 'reference/machine-learning/ootb-ml-jobs-logs-ui.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-metricbeat.md': 'reference/machine-learning/ootb-ml-jobs-metricbeat.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-metrics-ui.md': 'reference/machine-learning/ootb-ml-jobs-metrics-ui.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md': 'reference/machine-learning/ootb-ml-jobs-nginx.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md': 'reference/machine-learning/ootb-ml-jobs-siem.md'
+  'reference/data-analysis/machine-learning/ootb-ml-jobs-uptime.md': 'reference/machine-learning/ootb-ml-jobs-uptime.md'
+
+# Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
+  'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
+
+# Moved explore-analyze AI assistant content into a subfolder (docs-content-internal/issues/455)
+  'explore-analyze/manage-access-to-ai-assistant.md': 'explore-analyze/ai-features/manage-access-to-ai-assistant.md'
+  'explore-analyze/ai-assistant.md': 'explore-analyze/ai-features/ai-assistant.md'
+
+# Related to https://github.com/elastic/docs-content/pull/3685
+  'deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md': 'deploy-manage/monitor/autoops/ec-autoops-faq.md'
+
+# Related to https://github.com/elastic/docs-team/issues/104
+  'solutions/observability/get-started/what-is-elastic-observability': 'solutions/observability.md'
+  'solutions/security/get-started/create-security-project.md': 
+    to: 'solutions/security/get-started.md'
+    anchors:
+      'create-sec-serverless-project':
+  'solutions/security/elastic-security-serverless.md': 'solutions/security.md'
+
+# Related to https://github.com/elastic/docs-content/pull/3808
+  'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'

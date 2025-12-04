@@ -26,6 +26,13 @@ This feature is available only for certain subscription levels. For more informa
 * Remote clusters must be running the same {{es}} version as the management cluster, or a newer version that supports {{ccr}}.
 * To install integrations, remote clusters require access to the [{{package-registry}}](/reference/fleet/index.md#package-registry-intro).
 
+## Limitations
+
+These limitations apply when using the automatic integrations synchronization feature:
+
+- [Index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) (ILM) policies and enrich policies referenced in custom component templates are not automatically synchronized. Synchronizing custom assets that include references to ILM or enrich policies may cause custom component templates to break.
+- Integrations installed on the management cluster are synchronized to the remote cluster regardless of the space they are installed in. On the remote cluster, the synchronized integrations are always installed in the default space.
+
 ## Configure {{ccr}} on the remote cluster
 
 In your remote cluster:
@@ -140,7 +147,7 @@ If the integration syncing reports connection errors or fails to report the sync
       2. In the **Outputs** section, check that the remote {{es}} output is healthy. In particular, check that the remote {{es}} output's host URL matches the host URL of an {{es}} output on the remote cluster.
       3. Edit the remote {{es}} output, and check if the remote {{kib}} URL is correct, as well as the validity and privileges of the remote {{kib}} API key.
       
-          Note that an incorrect value in either of these fields does not cause the output to become unhealthy, but it affects the integration synchronization.
+          An incorrect value in either of these fields does not cause the output to become unhealthy, but it affects the integration synchronization.
       ::::
 
 ### Integrations are not installed on the remote cluster
