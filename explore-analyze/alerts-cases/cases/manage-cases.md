@@ -125,7 +125,7 @@ After a visualization has been added to a case, you can modify or interact with 
 
 In **Management > {{stack-manage-app}} > Cases**, you can search cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. 
 
-{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific range of time, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{stack-manage-app}} case in your space. The action also adjusts the starting time range to the date of when the first case was created. 
+{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{stack-manage-app}} case in your space. The action also adjusts the starting time range to the date of when the first case was created. 
 
 To view a case, click on its name. You can then:
 
