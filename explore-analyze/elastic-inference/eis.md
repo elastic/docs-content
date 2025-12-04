@@ -15,19 +15,20 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with a default [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm). This connector is used in the AI Assistant, Attack Discovery, Automatic Import and Search Playground.
+* Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default `General Purpose LLM`. This connector is used in the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentiation.
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview 9.1, ga 9.2` {applies_to}`serverless: ga`
+
+* You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
 
 ## Region and hosting [eis-regions]
 
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
+ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure and GCP and more regions, we will automatically route requests to the same CSP and closest region the Elaticsearch cluster is hosted on.
 
-ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure and GCP and more regions, we will automatically route requests to the same CSP and closest region the Elaticsearch cluster is hosted on. 
-
-## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
+## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 ```{applies_to}
 stack: preview 9.1, ga 9.2
@@ -44,16 +45,51 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
 
-### Limitations 
+### Limitations
 
 #### Batch size
 
 Batches are limited to a maximum of 16 documents.
 This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
 
-## Pricing 
+## `jina-embeddings-v3` through Elastic {{infer-cap}} Service [jina-embeddings-on-eis]
 
-All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search) for the Elastic Managed LLM and ELSER.
+```{applies_to}
+stack: preview 9.3
+serverless: preview
+```
+
+You can use the `jina-embeddings-v3` model through the Elastic {{infer-cap}} Service. Running the model on EIS means that the you use the model on GPUs, without the need of managing infrastrucuture and model resources. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency.
+
+### Get started with `jina-embeddings-v3` on EIS
+
+Create an {{infer}} endpoint that references the `jina-embeddings-v3` model in the `model_id` field.
+
+```console
+PUT _inference/text_embedding/eis-jina-embeddings-v3
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v3"
+  }
+}
+```
+
+The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, text_embedding {{infer}} tasks, or search queries.
+
+## Rate limits
+
+The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
+
+| Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
+|-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
+| General Purpose LLM   | 50              | -                       | -                       | No rete limit on tokens  |
+| ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| `jina-embeddings-v3`  | 500             | 3,000,000               | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+
+## Pricing
+
+All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search).
 
 Note that this pricing models differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed via VCUs consumed.
 
@@ -61,8 +97,8 @@ Note that this pricing models differs from the existing [Machine Learning Nodes]
 
 EIS is billed per million tokens used:
 
-- For **chat** models, input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
-- For **embeddings** models, only input tokens are billed.
+* For **chat** models, input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
+* For **embeddings** models, only input tokens are billed.
 
 Tokens are the fundamental units that language models process for both input and output. Tokenizers convert text into numerical data by segmenting it into subword units. A token may be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
 
@@ -75,25 +111,3 @@ To track your token consumption:
 1. Navigate to [**Billing and subscriptions > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console
 2. Look for line items where the **Billing dimension** is set to "Inference"
 
-## Rate limits
-
-The service enforces rate limits on an ongoing basis. Exceeding a limit will result in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
-
-### Elastic Managed LLM
-
-- 50 requests per minute
-- No rate limit on tokens
-
-### ELSER (Sparse Embeddings)
-
-We limit on both requests per minute and tokens per minute (whichever limit is reached first).
-
-#### Ingest 
-
-- 6,000 request per minute
-- 6,000,000 tokens per minute
-
-#### Search
-
-- 6,000 requests per minute
-- 600,000 tokens per minute
