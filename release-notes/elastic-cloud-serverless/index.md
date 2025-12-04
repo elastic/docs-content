@@ -36,6 +36,30 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds targeted Elastic Inference Service (EIS) callouts and dismissible guided tours to {{kib}} for {{ech}} and {{serverless-full}} users [#244626]({{kib-pull}}244626)
 * Redesigns the Lens configuration flyout to show layers as tabs instead of vertically stacked panels [#235372]({{kib-pull}}235372)
 * Consolidates attachments into a single Attachments tab with sub-tab navigation [#243708]({{kib-pull}}243708)
+* Adds the {{esql}} `CHUNK` function in technical preview [#138621]({{es-pull}}138621)
+* Improves support for the `first()` and `last()` aggregation functions in {{esql}} by disabling vector dispatch for blocks [#138390]({{es-pull}}138390)
+* Adds informative timestamps to async {{esql}} query results [#137957]({{es-pull}}137957)
+* Add Groq as a chat completion inference service for {{ml}} [#138251]({{es-pull}}138251)
+* Adds the node-scoped `vectors.indexing.use_gpu` setting to control GPU usage for vector indexing [#138738]({{es-pull}}138738)
+* Adds routing support to the `_project/tags` endpoint
+* Allows point-in-time (PIT) searches to span multiple projects [#137966]({{es-pull}}137966)
+* Excludes synthetic `_id` postings from disk usage statistics [#138745]({{es-pull}}138745)
+* Allows `project_routing` to be specified as a query parameter in EQL requests [#138559]({{es-pull}}138559)
+* Avoids retrieving unnecessary fields  during the node-reduce phase in {{esql}} queries [#137920]({{es-pull}}137920)
+* Updates `KNN` function options in {{esql}} to align with the latest vector search behavior [#138372]({{es-pull}}138372)
+* Updates the {{esql}} `CHUNK` function to support `chunking_settings` as an optional argument [#138123]({{es-pull}}138123)
+* Pushes down `COUNT(*) BY DATE_TRUNC` aggregations in {{esql}} to improve performance [#138023]({{es-pull}}138023)
+* Adds support for parameters to `LIKE` and `RLIKE` operators in {{esql}} [#138051]({{es-pull}}138051)
+* Adds support for the `time_zone` request parameter to `KQL` and `QSTR` functions in {{esql}} [#138695]({{es-pull}}138695)
+* Adds timezone support to the {{esql}} `DateDiff` function [#138316]({{es-pull}}138316)
+* Fuses the `MV_MIN` and `MV_MAX` functions in {{esql}} and documents the fusion process [#138029]({{es-pull}}138029)
+* Adds `GROUP BY ALL` support in {{esql}} [#137367]({{es-pull}}137367)
+* Extends `GROUP BY ALL` in {{esql}} to support the dimensions output [#138595]({{es-pull}}138595)
+* Extends the field capabilities API to support `project_routing` in the request body [#138681]({{es-pull}}138681)
+* Improves security migration resilience by handling version conflicts more robustly [#137558]({{es-pull}}137558)
+* Adds dynamic template parameters in bulk requests so OTLP metric units can be stored in index mappings [#134709]({{es-pull}}134709)
+* Adds the `project_routing` option to SQL requests [#138718]({{es-pull}}138718)
+* Uses a doc values skipper for `_tsid` when resolving synthetic `_id` values to skip unnecessary documents [#138568]({{es-pull}}138568)
 
 ### Fixes [serverless-changelog-12022025-fixes]
 
@@ -55,6 +79,25 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows file paths containing spaces to be used in Observables [#244350]({{kib-pull}}244350)
 * Fixes the serialization of `meta.error` in JSON layouts [#244364]({{kib-pull}}244364)
 * Fixes an issue that could cause an infinite loading state after submitting the case creation form [#244543]({{kib-pull}}244543)
+* Adds supprot for pruning columns when using `FORK` branches in {{esql}} [#137907]({{es-pull}}137907)
+* Fixes an Inference API issue to support correct type identification during deserialization [#138484]({{es-pull}}138484)
+* Fixes `chunkedInfer()` to correctly handle empty inputs [#138632]({{es-pull}}138632)
+* Ensures the circuit breaker limit is honored when building global ordinals by accounting their memory usage and breaking when the limit is exceeded [#108875]({{es-pull}}108875)
+* Changes `DatabaseNodeService` error logs to warnings to reduce noise [#138438]({{es-pull}}138438)
+* Avoids using `MIN` or `MAX` as `TOP`'s surrogate when an `outputField` is defined [#138380]({{es-pull}}138380)
+* Uses the correct minimum transport version when resolving {{esql}} `ENRICH` and `LOOKUP JOIN` types [#137431]({{es-pull}}137431)
+* Fixes `SearchContext` circuit breaker memory accounting [#138002]({{es-pull}}138002)
+* Adds missing `vector_similarity_support` flags in `InferenceFeatures` [#138644]({{es-pull}}138644)
+* Extends the semantic text highlighter to improve the handling of vector-based queries [#138140]({{es-pull}}138140)
+* Handles individual document parsing failures in bulk requests with ingest pipelines without failing the entire request [#138624]({{es-pull}}138624)
+* Handles search timeouts that occur during collector initialization in `QueryPhase` by returning partial results instead of shard-level failures [#138084]({{es-pull}}138084)
+* Fixes serialization of `null` blocks in `AggregateMetricDoubleBlock` [#138539]({{es-pull}}138539)
+* Ensures filters are correctly applied to kNN queries [#138457]({{es-pull}}138457)
+* Ensures filter queries, including semantic queries, are correctly rewritten and applied to kNN searches during coordinator-side inference [#138457]({{es-pull}}138457)
+* Speeds up `LeafCollector#setScorer` in `TopHitsAggregator` [#138883]({{es-pull}}138883)\
+* Reduces `LeafCollector#setScorer` overhead in `TopHitsAggregator` for multi-bucket aggregations by sharing a single `Scorable` instance across buckets [#138883]({{es-pull}}138883)
+* Updates the `jts` dependency to version `1.20.0` [#138351]({{es-pull}}138351)
+* Moves the `CrossProjectRoutingResolver` functionality to {{serverless-short}}
 
 ## November 24, 2025 [serverless-changelog-11242025]
 
