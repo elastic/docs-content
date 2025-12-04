@@ -59,6 +59,7 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 | **Advanced [endpoint policy management](/solutions/security/manage-elastic-defend/endpoints.md)** | ✅ | ❌ |
 
 **Cloud protection add-on:**
+
 | Feature Name | Complete | Essentials |
 | :--- | :---: | :---: |
 | **[Workload runtime protection](/solutions/security/cloud/cloud-workload-protection-for-vms.md)** | ✅ | ✅ |
