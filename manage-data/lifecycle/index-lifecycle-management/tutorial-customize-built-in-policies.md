@@ -1,4 +1,5 @@
 ---
+navigation_title: Customize built-in {{ilm-init}} policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/example-using-index-lifecycle-policy.html
 applies_to:
@@ -7,11 +8,12 @@ products:
   - id: elasticsearch
 ---
 
-# Customize duplicates of built-in {{ilm-init}} policies
+# Customize built-in {{ilm-init}} policies in {{es}}
 
-{{es}} includes a set of built-in {{ilm-init}} policies that define how managed indices transition across [data tiers](/manage-data/lifecycle/data-tiers.md) and what [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), such as rollover, downsampling, or shrinking, are performed at each phase.
 
-This tutorial demonstrates how to create a customized copy of a built-in {{ilm-init}} policy to better fit your data retention, performance, or storage requirements. You should never edit managed policies directly, because updates to {{es}} or Elastic integrations might overwrite those changes. Instead, you can duplicate a built-in policy, modify the duplicate, and assign it to your index or component templates.
+{{es}} includes several built-in {{ilm}} (ilm-init) policies to help manage your logs and metrics efficiently. This tutorial shows you how to safely duplicate and customize these policies to optimize [rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md) and other [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), control resource usage across hot and warm [data tiers](/manage-data/lifecycle/data-tiers.md), and enforce retention rules for your indices.
+
+Follow these steps to create a customized copy of a built-in {{ilm-init}} policy. You should never edit managed policies directly, because updates to {{es}} or Elastic integrations might overwrite those changes. Instead, you can duplicate a built-in policy, modify the duplicate, and assign it to your index or component templates.
 
 While this tutorial uses [{{agent}}](/reference/fleet/index.md) and its built-in `logs@lifecycle` policy as an example, the same process can be applied to any built-in policies. Common examples include:
 
