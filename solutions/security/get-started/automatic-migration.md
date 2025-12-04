@@ -14,7 +14,7 @@ Automatic Migration helps you quickly migrate Splunk assets to {{elastic-sec}}. 
 
 For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
-You can ingest your data before migrating your assets, or migrate your assets first in which case the tool will recommend which data sources you need to power your migrated rules.
+You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
 ::::{admonition} Requirements
 * The `SIEM migrations: All` Security sub-feature privilege.
@@ -23,7 +23,11 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
-* For Splunk dashboard migration: only classic Splunk dashboards (v1.1) are supported. Attempting to translate unsupported dashboards will result in an `Unsupported Splunk XML` error and a `Not translated` status.
+::::
+
+::::{admonition} Dashboard migration limitations
+* Only classic Splunk dashboards (v1.1) are supported. Attempting to translate unsupported dashboards will result in an `Unsupported Splunk XML` error and a `Not translated` status.
+* Not all Splunk dashboard panels are supported. You can still migrate a dashboard that contains unsupported panels, but those panels will not appear in the migrated dashboard. The following panel types are supported: `vizualization`, `chart`, `table`, `single value (Metric)`. The following panel types are _not_ supported: `map`, `event`, `html`.
 ::::
 
 ## Get started with Automatic Migration
