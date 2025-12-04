@@ -23,6 +23,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+* For Splunk dashboard migration: only classic Splunk dashboards (v1.1) are supported. Attempting to translate unsupported dashboards will result in an `Unsupported Splunk XML` error and a `Not translated` status.
 ::::
 
 ## Get started with Automatic Migration
@@ -173,13 +174,13 @@ The table's fields are as follows:
 * **Tags:** The dashboard's tags, which identify its source application, and can be used to identify it on the **Dashboards** page.
 * **Actions:** To view an `Installed` dashboard, click **View**. To install a `Translated` dashboard, click **Install**. To reprocess a `Failed` dashboard, click **Reprocess**.
 
-::::{note}
-To view an explanation of the logic behind how each dashboard was translated, click a dashboard's name to open the dashboard details flyout. 
-::::
+### View dashboard migration details
+For an explanation of a dashboard's translation, click its name to open the dashboard details flyout and view an AI Chat that explains the reasoning behind each panel's translation. 
+
 
 ### Finalize translated dashboards
 
-Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you will need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
+Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
 
 ## Frequently asked questions (FAQ)
 
