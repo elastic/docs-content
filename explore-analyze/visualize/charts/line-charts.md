@@ -36,13 +36,13 @@ Using the visualization type dropdown, select **Line**.
 
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Drag a time field (for example, `order_date`) to the **Horizontal axis** to create a `Date histogram` (recommended for time series).
+2. Drag a time field (for example, `@timestamp`) to the **Horizontal axis** to create a `Date histogram` (recommended for time series).
 
-:::{note}
-You might need to extend the time range and set the time filter to **Last 30 days**.
-:::
+  :::{note}
+  You might need to extend the time range and set the time filter to **Last 30 days**.
+  :::
 
-3. Drag a numeric field (for example, `products_quantity`) to the **Vertical axis**.
+3. Drag a numeric field (for example, `machine.ram`) to the **Vertical axis**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field (for example, `geoip.city_name`) to **Break down by** to split the series.
@@ -87,13 +87,6 @@ You can also compute the relative change as a separate series using a formula, f
 `(average(response_time) - average(response_time, shift='1w')) / average(response_time, shift='1w')`
 :::: 
 
-### Smooth noisy series with moving average [line-moving-average]
-Noisy metrics (for example, per-minute throughput) can be smoothed:
-
-1. Add a series such as `sum(bytes)`.
-2. Add a second series using `moving_average(sum(bytes), window=5)`.
-3. Keep both series visible (raw versus smoothed) or show only the smoothed one.
-
 ### Highlight thresholds with reference lines [line-reference-lines]
 Use reference lines to indicate SLOs or alert thresholds.
 
@@ -101,14 +94,6 @@ Use reference lines to indicate SLOs or alert thresholds.
 2. Give it a label (for example, `Target` or `SLO`), choose a color, and optionally a band.
 
 ![Reference line](../../images/kibana-lens_referenceLine_7.16.png "title =70%")
-
-### Handle gaps and missing data [line-fit-missing]
-Irregular data or sparse sampling can create breaks. Use “fit missing values” to interpolate or extend:
-
-1. Open the series settings.
-2. Set **Missing values** to `Linear`, `Carry`, or `Zero`, depending on the use case.
-
-![Fill gaps with linear fit](../../images/charts-gaps-fill-linear.png "title =70%")
 
 ### Choose the right axis and scale [line-axis]
 For multi-metric charts, make sure the scale communicates intent:
