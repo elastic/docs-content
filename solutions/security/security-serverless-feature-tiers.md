@@ -49,6 +49,7 @@ The following table compares features available in each feature tier:
 Both the **Security Analytics Complete** and **Security Analytics Essentials** feature tiers optional add-ons for **Endpoint protection** and **Cloud protection**. The features included in each add on vary by feature tier, as follows:
 
 **Endpoint protection add-on:**
+
 | Feature Name | Complete | Essentials |
 | :--- | :---: | :---: |
 | **[Malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection)** | ✅ | ✅ |
