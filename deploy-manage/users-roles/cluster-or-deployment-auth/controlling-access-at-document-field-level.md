@@ -96,12 +96,12 @@ The following role grants read access only to the documents whose `department_id
 ```console
 POST /_security/role/dept_role
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "query" : {
-        "term" : { "department_id" : 12 }
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "query": {
+        "term": { "department_id": 12 }
       }
     }
   ]
@@ -122,7 +122,7 @@ To configure document-level security (DLS), you create a custom role where you d
     * For example, to allow read access only to documents that belong to the click category within all the `events-*` data streams, enter the following query:
         ```
         {
-          "match" : { "category" : “click” }
+          "match": { "category": “click” }
         }
         ```
 
@@ -131,7 +131,7 @@ To configure document-level security (DLS), you create a custom role where you d
     * To allow read access only to the documents whose `department_id` equals 12, enter the following query:
         ```
         {
-          "term" : { "department_id" : 12 }
+          "term": { "department_id": 12 }
         }
         ```
 
@@ -160,12 +160,12 @@ POST /_security/role/example1
 {
   "indices" : [
     {
-      "names" : [ "my-index-000001" ],
-      "privileges" : [ "read" ],
-      "query" : {
-        "template" : {
-          "source" : {
-            "term" : { "acl.username" : "{{_user.username}}" }
+      "names": [ "my-index-000001" ],
+      "privileges": [ "read" ],
+      "query": {
+        "template": {
+          "source": {
+            "term": { "acl.username": "{{_user.username}}" }
           }
         }
       }
@@ -181,9 +181,9 @@ POST /_security/role/example1
 
 ```JSON
 {
-  "template" : {
-    "source" : {
-      "term" : { "acl.username" : "{{_user.username}}" }
+  "template": {
+    "source": {
+      "term": { "acl.username": "{{_user.username}}" }
     }
   }
 }
@@ -212,14 +212,14 @@ You can also access custom user metadata. For example, if you maintain a `group_
 ```console
 POST /_security/role/example2
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "my-index-000001" ],
-      "privileges" : [ "read" ],
-      "query" : {
-        "template" : {
-          "source" : {
-            "term" : { "group.id" : "{{_user.metadata.group_id}}" }
+      "names": [ "my-index-000001" ],
+      "privileges": [ "read" ],
+      "query": {
+        "template": {
+          "source": {
+            "term": { "group.id": "{{_user.metadata.group_id}}" }
           }
         }
       }
@@ -234,9 +234,9 @@ POST /_security/role/example2
 
 ```JSON
 {
-  "template" : {
-    "source" : {
-      "term" : { "group.id" : "{{_user.metadata.group_id}}" }
+  "template": {
+    "source": {
+      "term": { "group.id": "{{_user.metadata.group_id}}" }
     }
   }
 }
@@ -255,13 +255,13 @@ If your metadata field contains an object or array, you can access it using the 
 ```console
 POST /_security/role/example3
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "my-index-000001" ],
-      "privileges" : [ "read" ],
-      "query" : {
-        "template" : {
-          "source" : "{ \"terms\": { \"group.statuses\": {{#toJson}}_user.metadata.statuses{{/toJson}} }}"
+      "names": [ "my-index-000001" ],
+      "privileges": [ "read" ],
+      "query": {
+        "template": {
+          "source": "{ \"terms\": { \"group.statuses\": {{#toJson}}_user.metadata.statuses{{/toJson}} }}"
         }
       }
     }
@@ -275,9 +275,9 @@ POST /_security/role/example3
 
 ```JSON
 {
-  "template" : {
-    "source" : { 
-      "terms" : { "group.statuses" : {{#toJson}}_user.metadata.statuses{{/toJson}} }
+  "template": {
+    "source": { 
+      "terms": { "group.statuses": {{#toJson}}_user.metadata.statuses{{/toJson}} }
     }
   }
 }
@@ -316,8 +316,8 @@ POST /_security/role/test_role1
     {
       "names": [ "events-*" ],
       "privileges": [ "read" ],
-      "field_security" : {
-        "grant" : [ "category", "@timestamp", "message" ]
+      "field_security": {
+        "grant": [ "category", "@timestamp", "message" ]
       }
     }
   ]
@@ -338,10 +338,10 @@ POST /_security/role/test_role2
 {
   "indices" : [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
-        "grant" : [ "event_*" ]
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "event_*" ]
       }
     }
   ]
@@ -365,12 +365,12 @@ The following role definition enables only read access to the customer `handle` 
 ```console
 POST /_security/role/test_role3
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
-        "grant" : [ "customer.handle" ]
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "customer.handle" ]
       }
     }
   ]
@@ -382,12 +382,12 @@ This is where wildcard support shines. For example, use `customer.*` to enable o
 ```console
 POST /_security/role/test_role4
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
-        "grant" : [ "customer.*" ]
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "customer.*" ]
       }
     }
   ]
@@ -399,12 +399,12 @@ You can deny permission to access fields with the following syntax:
 ```console
 POST /_security/role/test_role5
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
-        "grant" : [ "*"],
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "*"],
         "except": [ "customer.handle" ]
       }
     }
@@ -423,13 +423,13 @@ For example:
 ```console
 POST /_security/role/test_role6
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
         "except": [ "customer.handle" ],
-        "grant" : [ "customer.*" ]
+        "grant": [ "customer.*" ]
       }
     }
   ]
@@ -445,13 +445,13 @@ When a user has several roles that specify field level permissions, the resultin
 ```console
 POST /_security/role/test_role7
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
         "grant": [ "a.*" ],
-        "except" : [ "a.b*" ]
+        "except": [ "a.b*" ]
       }
     }
   ]
@@ -459,13 +459,13 @@ POST /_security/role/test_role7
 
 POST /_security/role/test_role8
 {
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
         "grant": [ "a.b*" ],
-        "except" : [ "a.b.c*" ]
+        "except": [ "a.b.c*" ]
       }
     }
   ]
@@ -478,13 +478,13 @@ The resulting permission is equal to:
 {
   // role 1 + role 2
   ...
-  "indices" : [
+  "indices": [
     {
-      "names" : [ "*" ],
-      "privileges" : [ "read" ],
-      "field_security" : {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
         "grant": [ "a.*" ],
-        "except" : [ "a.b.c*" ]
+        "except": [ "a.b.c*" ]
       }
     }
   ]
@@ -528,7 +528,7 @@ A user can have many roles and each role can define different permissions on the
 
 **Document level security** takes into account each role held by the user and combines each document level security query for a given data stream or index with an "OR". This means that only one of the role queries must match for a document to be returned. For example, if a role grants access to an index without document level security and another grants access with document level security, document level security is not applied; the user with both roles has access to all of the documents in the index.
 
-**Field level security** takes into account each role the user has and combines all of the fields listed into a single set for each data stream or index. For example, if a role grants access to an index without field level security and another grants access with field level security, field level security is not be applied for that index; the user with both roles has access to all of the fields in the index.
+**Field level security** takes into account each role the user has and combines all of the fields listed into a single set for each data stream or index. For example, if a role grants access to an index without field level security and another grants access with field level security, field level security is not applied for that index; the user with both roles has access to all of the fields in the index.
 
 For example, let’s say `role_a` grants access to only the `address` field of the documents in `index1`; it doesn’t specify any document restrictions. Conversely, `role_b` limits access to a subset of the documents in `index1`; it doesn’t specify any field restrictions. If you assign a user both roles, `role_a` gives the user access to all documents and `role_b` gives the user access to all fields.
 
