@@ -15,7 +15,7 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default `General Purpose LLM`. This connector is used in the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentiation.
+* Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default `General Purpose LLM`. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview 9.1, ga 9.2` {applies_to}`serverless: ga`
 
@@ -26,7 +26,7 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure and GCP and more regions, we will automatically route requests to the same CSP and closest region the Elaticsearch cluster is hosted on.
+ELSER requests are managed by Elastic's own EIS infrastructure and are also hosted in AWS US regions, beginning with `us-east-1`. All Elastic Cloud hosted deployments and serverless projects in any CSP and region can access the endpoint. As we expand the service to Azure, GCP, and more regions, we will automatically route requests to the same CSP and the closest region where the {{es}} cluster is hosted.
 
 ## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
@@ -52,7 +52,7 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 Batches are limited to a maximum of 16 documents.
 This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
 
-## `jina-embeddings-v3` through Elastic {{infer-cap}} Service [jina-embeddings-on-eis]
+## `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
 
 ```{applies_to}
 stack: preview 9.3
@@ -89,7 +89,7 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 ## Pricing
 
-All models on EIS incur a charge per million tokens. The pricing details are at our [Pricing page](https://www.elastic.co/pricing/serverless-search).
+All models on EIS incur a charge per million tokens. The pricing details are available on our [Pricing page](https://www.elastic.co/pricing/serverless-search).
 
 This pricing models differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed via VCUs consumed.
 
