@@ -19,11 +19,13 @@ OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the 
 :::{important}
 :applies_to: {"stack": "ga 9.2", "serverless": "ga"}
 
-**Install OpenTelemetry integrations to view data**
+**Install OpenTelemetry content packs to work with OpenTelemetry data**
 
-Native Elastic Observability user interfaces do not currently support native OpenTelemetry data. To view your data, you must install content-only integrations that provide compatible dashboards.
+To visualize data from OpenTelemetry receivers which is stored natively as OpenTelemetry semantic conventions, you must install content-only packs that provide dashboards compatible with OpenTelemetry data.
 
-In the Kibana Integrations UI, search for `otel` to find and install the relevant integrations, like **System OpenTelemetry Assets**, to access the dashboards.
+In the Kibana Integrations UI, search for `otel` to find and install available integrations, like **System OpenTelemetry Assets**, to access the dashboards. We are adding more OpenTelemetry content packs every week, reach out by [opening an issue](https://github.com/elastic/integrations/issues) if what you are looking for is not available as an OTel content pack.
+
+Other Integrations which are beats-based include dashboards based on ECS data and are not compatible with OpenTelemetry semantic conventions.
 :::
 
 Elastic offers several distributions of OpenTelemetry. Each [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md) is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
