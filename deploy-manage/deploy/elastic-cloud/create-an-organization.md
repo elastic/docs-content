@@ -76,6 +76,13 @@ For more information, check the [{{ech}} documentation](cloud-hosted.md).
 * Scaling is limited for {{serverless-short}} projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
 * We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
 
+**Inference tokens**
+
+* You can use these models hosted by the Elastic {{infer-cap}} Service with the following limits:
+  * **Elastic Managed LLM:** 100 million input tokens in a 24-hour period or 5 million output tokens in a 24-hour period
+  * **ELSER**: 1 billion tokens in a 24-hour period
+* Access to some models may be paused temporarily if either of these limits are exceeded
+
 **Remove limitations**
 
 Subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md) for the following benefits:
