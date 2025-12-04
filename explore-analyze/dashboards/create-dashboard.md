@@ -18,7 +18,7 @@ Create a new dashboard in {{product.kibana}} to start visualizing and monitoring
 Before creating a dashboard, ensure you have:
 
 * [Data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and at least one [data view](../find-and-organize/data-views.md) configured
-* **Edit** permissions for the **Dashboard** feature in {{product.kibana}}
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
 
 ## Create a new dashboard [create-dashboard-steps]
 
