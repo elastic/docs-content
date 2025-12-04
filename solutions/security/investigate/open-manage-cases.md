@@ -76,7 +76,7 @@ When you subsequently add assignees to cases, they receive an email.
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
 
-{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific range of time, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** from the date time picker restores this default range.
+{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific range of time, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{elastic-sec}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
 
 To explore a case, click on its name. You can then:
 
