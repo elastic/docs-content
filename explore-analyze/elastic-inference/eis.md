@@ -59,7 +59,7 @@ stack: preview 9.3
 serverless: preview
 ```
 
-You can use the `jina-embeddings-v3` model through Elastic {{infer-cap}} Service. Running the model on EIS means that the you use the model on GPUs, without the need of managing infrastrucuture and model resources. We expect better performance for ingest throughput than ML nodes and equivalent performance for search latency.
+You can use the `jina-embeddings-v3` model through Elastic {{infer-cap}} Service. Running the model on EIS means that you use the model on GPUs, without the need of managing infrastrucuture and model resources.
 
 ### Get started with `jina-embeddings-v3` on EIS
 
