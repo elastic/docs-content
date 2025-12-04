@@ -596,3 +596,6 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/3808
   'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
+
+# Related to move-jobs.md deletion - content moved to setting-up-machine-learning.md
+  'explore-analyze/machine-learning/anomaly-detection/move-jobs.md': 'explore-analyze/machine-learning/setting-up-machine-learning.md'
