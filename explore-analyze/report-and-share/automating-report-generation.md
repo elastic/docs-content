@@ -14,7 +14,7 @@ To automatically generate PDF and CSV reports, generate a POST URL, then submit 
 
 :::{note}
 :applies_to: {stack: ga 9.1, serverless: unavailable}
-API keys are used to authenticate requests to generate reports. If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the leader index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+API keys are used to authenticate requests to generate reports. If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, instead of the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
 :::
 
 ## Create a POST URL [create-a-post-url]
