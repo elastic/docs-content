@@ -18,7 +18,7 @@ A dashboard is composed of one or more **panels** that you arrange to tell your 
 
 ![Example dashboard](/explore-analyze/images/kibana-dashboard-overview.png "")
 
-## Get started with dashboards [get-started]
+## Get started with dashboards [get-started-with-dashboards]
 
 New to dashboards? Start with these hands-on tutorials that walk you through creating your first dashboards using sample data:
 
