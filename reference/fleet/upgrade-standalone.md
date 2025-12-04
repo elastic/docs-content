@@ -13,12 +13,58 @@ To upgrade a standalone agent running on an edge node:
 1. Make sure the `elastic-agent` service is running.
 2. From the directory where {{agent}} is installed, run the `upgrade` command to upgrade to a new version. Not sure where the agent is installed? Refer to [Installation layout](/reference/fleet/installation-layout.md).
 
-    For example, on macOS, to upgrade the agent from version 8.8.0 to 8.8.1, you would run:
+    For example, to upgrade the agent from version 8.8.0 to 8.8.1, you would run:
+
+    :::::{tab-set}
+
+    ::::{tab-item} macOS
 
     ```shell
     cd /Library/Elastic/Agent/
     sudo elastic-agent upgrade 8.8.1
     ```
+
+    ::::
+
+    ::::{tab-item} Linux
+
+    ```shell
+    cd /opt/Elastic/Agent/
+    sudo elastic-agent upgrade 8.8.1
+    ```
+
+    ::::
+
+    ::::{tab-item} Windows
+
+    Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
+
+    From the PowerShell prompt, change to the directory where you installed {{agent}}, and run:
+
+    ```shell
+    cd "C:\Program Files\Elastic\Agent"
+    .\elastic-agent.exe upgrade 8.8.1
+    ```
+
+    ::::
+
+    ::::{tab-item} DEB
+
+    ```shell
+    sudo elastic-agent upgrade 8.8.1
+    ```
+
+    ::::
+
+    ::::{tab-item} RPM
+
+    ```shell
+    sudo elastic-agent upgrade 8.8.1
+    ```
+
+    ::::
+
+    :::::
 
 
 This command upgrades the binary. Your agent policy should continue to work, but you might need to upgrade it to use new features and capabilities.
