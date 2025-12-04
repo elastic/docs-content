@@ -9,6 +9,9 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## December 16, 2025 [serverless-changelog-10152025]
+* {{serverless-full}} is now available in four new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP Singapore (`asia-southeast1`), GCP London (`europe-west2`), GCP Frankfurt (`europe-west3`), and GCP Netherlands (`europe-west4`)
+
 ## November 24, 2025 [serverless-changelog-11242025]
 
 ### Features and enhancements [serverless-changelog-11242025-features-enhancements]
