@@ -22,7 +22,7 @@ The pricing plan update enables us to align with market trends and adapt to chan
 
 ## Who is affected in November 2025 [ec_who_is_affected-nov-2025]
 
-These price changes will apply to customers who are currently paying for Azure Marketplace services CHF, DKK, EUR, GBP, or SEK. If you are paying in USD or any other currency, your pricing and billing will remain unchanged.
+These price changes will apply to customers who are currently paying for Azure Marketplace services in CHF, DKK, EUR, GBP, SEK, or TWD. If you are paying in USD or any other currency, your pricing and billing will remain unchanged.
 Note that if you are using a private plan, your price is not affected.
 
 | Currency | Price | Elastic Billing Units for Azure† |
