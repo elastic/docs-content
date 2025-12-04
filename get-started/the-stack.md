@@ -66,7 +66,7 @@ Learn more about [the {{es}} data store](/manage-data/data-store.md), its [distr
 
 ### {{es}} clients [stack-components-elasticsearch-clients]
 
-The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others.
+The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, and Python.
 Both official and community contributed clients are available.
 
 [Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
