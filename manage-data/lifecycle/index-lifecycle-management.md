@@ -80,7 +80,7 @@ You can create and manage index lifecycle policies through {{kib}}'s [Index Mana
 
 * [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
-* [Update or switch a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
+* [Update or switch an index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
 * [Restore a managed data stream or index](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
 * [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
 
@@ -106,4 +106,4 @@ For existing hot-warm deployments that are currently using index curation, migra
 * [Migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
 * [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)
 
-You can also set up {{ilm-init}} to manage an existing set of indices that do not already have a managed lifecycle. The {{ilm-init}} policy that you apply should not contain a rollover action, because the policy won't be carried forward when the rollover action creates a new index. Refer to [Manually apply a lifecycle policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to learn more.
+You can also set up {{ilm-init}} to manage an existing set of indices that do not already have a managed lifecycle. The {{ilm-init}} policy that you apply should not contain a rollover action, because the policy won't be carried forward when the rollover action creates a new index. Refer to [Apply an index lifecycle policy to an existing {{es}} index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to learn more.

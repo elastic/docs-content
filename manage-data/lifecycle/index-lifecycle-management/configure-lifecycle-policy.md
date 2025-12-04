@@ -1,5 +1,5 @@
 ---
-navigation_title: Create an index lifecycle management policy
+navigation_title: Create an {{ilm-init}} policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
 applies_to:
@@ -10,7 +10,7 @@ products:
 
 # Create an index lifecycle management policy in {{es}} [set-up-lifecycle-policy]
 
-An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how indices transition through different phases over time. This guide explains how to create a new {{ilm-init}} policy with configurable rollover, retention, and deletion rules, and apply the policy using an index template. 
+An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how indices transition through different phases over time. This guide explains how to create a new {{ilm-init}} policy with configurable rollover, retention, and deletion rules, and then apply the policy using an index template. 
 
 You can use {{ilm-init}} to manage both indices and [data streams](/manage-data/data-store/data-streams.md). There are fewer configuration steps required to set up ILM with data streams. In comparison, configuring ILM with indices requires you to create an initial managed index and alias in addition to defining a policy and creating a template to apply it. This page describes the steps to configure an {{ilm-init}} lifecycle policy for both scenarios.
 
