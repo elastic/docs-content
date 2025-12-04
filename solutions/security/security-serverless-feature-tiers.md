@@ -14,7 +14,7 @@ products:
 * **Security Analytics Essentials**: Everything most organizations need to operationalize traditional SIEM.
 * **Security Analytics Complete**: All the capabilities included in **Security Analytics Essentials**, plus additional features that provide a more complete toolset.
 
-Both the **Security Analytics** tiers have **Add-on options** for endpoint protection and cloud protection.
+Both of the **Security Analytics** tiers have **Add-on options** for endpoint protection and cloud protection.
 
 Refer to the [feature comparison table](#sec-subscription-features) for a more detailed comparison between the tiers.
 
