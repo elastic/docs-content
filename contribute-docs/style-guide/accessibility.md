@@ -14,6 +14,10 @@ They also interact with our content in different ways, such as screen readers, m
 
 As content authors, it is our responsibility to provide them with [perceivable, operable, understandable, and robust content](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head).
 
+:::{tip}
+Use the [Vale linter](/contribute-docs/vale-linter.md) to check for style issues while writing documentation. Vale automatically flags common style guide violations, so you can catch and fix issues before publishing.
+:::
+
 ## Guidelines [accessibility-guidelines]
 
 ✔️ **Make your content quickly scannable.** A clear structure and meaningful words will tell users if the content is relevant to them within seconds. Use unique headings, and put the most important information first.

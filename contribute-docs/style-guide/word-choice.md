@@ -15,6 +15,10 @@ Make sure you are using the term correctly.
 - **Avoid**: This term might be offensive or non-inclusive.
 Whenever possible, use the alternate suggestion, or a more specific term.
 
+:::{tip}
+Use the [Vale linter](/contribute-docs/vale-linter.md) to check for style issues while writing documentation. Vale automatically flags common style guide violations, so you can catch and fix issues before publishing.
+:::
+
 ---
 
 | Word | Status | Usage notes |

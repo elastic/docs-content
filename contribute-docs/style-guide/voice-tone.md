@@ -7,6 +7,10 @@ description: Guidelines for maintaining a consistent voice and tone across Elast
 
 In technical documentation, **voice** represents the personality of the product. Its main traits. These are constant. **Tone** represents the various ways we can use that voice to address users.
 
+:::{tip}
+Use the [Vale linter](/contribute-docs/vale-linter.md) to check for style issues while writing documentation. Vale automatically flags common style guide violations, so you can catch and fix issues before publishing.
+:::
+
 ## Voice
 
 We articulate our voice around a few main principles.

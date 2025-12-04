@@ -5,6 +5,12 @@ description: Guidelines for using correct grammar and spelling in your writing.
  
 # Grammar and spelling
 
+Correct grammar and consistent spelling reduce ambiguity and help readers focus on the content rather than stumbling over errors. These conventions also support localization and translation efforts.
+
+:::{tip}
+Use the [Vale linter](/contribute-docs/vale-linter.md) to check for style issues while writing documentation. Vale automatically flags common style guide violations, so you can catch and fix issues before publishing.
+:::
+
 ## Pronouns do's and don'ts
 
 ### Be unambiguous

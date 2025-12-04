@@ -7,6 +7,7 @@ toc:
     children:
       - file: index.md
       - file: good-issues.md
+      - file: seo.md
       - folder: cumulative-docs
         children:
           - file: index.md
@@ -23,7 +24,6 @@ toc:
     - file: word-choice.md
     - file: formatting.md
     - file: ui-writing.md
-    - file: seo.md
   - file: tools.md
     children:
       - file: vscode-extension.md

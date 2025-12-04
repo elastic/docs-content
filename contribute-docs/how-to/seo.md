@@ -1,8 +1,8 @@
-# SEO guidelines
+# Make your docs findable
 
 Learn how to structure content for search visibility, craft clear and user-focused copy, and apply techniques that improve discoverability and usability. To deliver value to users, search engines and AI-powered tools—including large language models (LLMs), use the SEO guidelines to ensure your documentation is easy to find, understand, and maintain.
 
-As AI-powered assistants and LLMs become more common, documentation is increasingly consumed by both humans and AI tools. Following these best practices ensures your content is discoverable, understandable, and actionable—not just for search engines and users, but also for AI-driven platforms that rely on clear structure and context to provide accurate answers and guidance.
+As AI-powered assistants and LLMs become more common, documentation is increasingly consumed by both humans and AI tools. Following these best practices ensures your content is discoverable, understandable, and actionable not only for search engines and users, but also for AI-driven platforms that rely on clear structure and context to provide accurate answers and guidance.
 
 Use these guidelines to ensure your documentation is easy to find, understand, and maintain—delivering value to users and search engines alike.
 
@@ -39,7 +39,7 @@ Best practices:
 ⚠️**Note:** The primary H1 header tag, sometimes called the page title, is what is used to populate the meta title tag, which appears on the search engines results page and impacts the Click-Through Rate (CTR).
 
 :::{dropdown} Examples
-![Screenshot of a documentation page showing the meta title field in a content management system. The meta title field is populated with Elasticsearch Documentation. The interface includes form fields and labels in a clean, minimal layout. The tone is neutral and instructional, focusing on how the meta title is set for a documentation page.](./images/metatitleexample.png)
+![Screenshot of a documentation page showing the meta title field in a content management system. The meta title field is populated with Elasticsearch Documentation. The interface includes form fields and labels in a clean, minimal layout. The tone is neutral and instructional, focusing on how the meta title is set for a documentation page.](../style-guide/images/metatitleexample.png)
 
 The meta title, and in turn, the page title, is very broad. A more descriptive title could be "Data ingestion with Elasticsearch".
 :::
@@ -118,7 +118,7 @@ When a page starts with a note, image, table, or other component, the meta descr
 :::{dropdown} Examples
 The following example is a page with one sentence and no introductory paragraph:
 
-![Screenshot of a documentation page displaying only a single sentence without an introductory paragraph. The page shows a heading at the top, followed by the sentence: Pulse Connect Secure integration enables you to collect, monitor, and analyze VPN and remote access logs from Pulse Connect Secure appliances in Elastic. The layout is minimal and lacks additional context or descriptive content, creating a sparse and utilitarian tone.](./images/onesentence.png) 
+![Screenshot of a documentation page displaying only a single sentence without an introductory paragraph. The page shows a heading at the top, followed by the sentence: Pulse Connect Secure integration enables you to collect, monitor, and analyze VPN and remote access logs from Pulse Connect Secure appliances in Elastic. The layout is minimal and lacks additional context or descriptive content, creating a sparse and utilitarian tone.](../style-guide/images/onesentence.png) 
 
 If the page had more content, which is required, a good introductory paragraph within the context of this example could be something like "The Pulse Connect Secure integration enables you to collect, monitor, and analyze VPN and remote access logs from Pulse Connect Secure appliances in Elastic. Use this integration to gain visibility into user activity, detect security events, and streamline compliance reporting within Kibana. Compatible with Elastic Stack version 8.13.0 and higher, this integration supports both Security and Observability use cases".
 
@@ -219,41 +219,7 @@ Best practices:
 
 Lists are powerful tools for organizing information in a clear, scannable format. Lists help make your content easier to read and scan, they can increase user engagement and retention, improve your content's structure and layout, and much more.
 
-Best practices:
-
-* Choose the right list type
-
-  * Use bulleted lists for unordered items, features, or options.  
-  * Use numbered lists for sequential steps, processes, or instructions.
-
-* Keep items concise and parallel
-
-  * Write list items as short, clear phrases or sentences.  
-  * Avoid using too many or too few list items.  
-  * Avoid nesting lists within lists unless necessary.  
-  * Use parallel structure (start each item with the same part of speech).
-
-* Introduce lists clearly
-
-  * Use a lead-in sentence or phrase to explain what the list covers.
-
-* Use lists to improve scannability
-
-  * Break up long paragraphs with lists to make content easier to scan.  
-  * Limit lists to 5–7 items when possible; split longer lists into logical groups.
-
-* Naturally incorporate keywords
-
-  * Where appropriate, use relevant keywords in list items to reinforce page relevance.
-
-* Maintain consistency
-
-  * Use consistent punctuation and capitalization for all list items.  
-  * Avoid mixing full sentences and fragments within the same list.
-
-* Accessibility considerations
-
-  * Avoid using lists for layout or decorative purposes.
+Refer to the [Formatting](/contribute-docs/style-guide/formatting.md#lists-and-tables) section for more information on lists and tables.
 
 ### Interlinking
 
@@ -385,9 +351,7 @@ Best practices:
 
 ## Mobile performance and usability
 
-Search engines prioritize mobile usability, and "reference" the mobile viewport for all content on the web.
-Prior to publishing ensure that all elements on-page are visible to users and search engines.
-If content is visible on desktop and not mobile, search engines will ignore that content, which could cause it to miss out on critical information that can help the page get picked up, understood, and indexed within organic search.
+Search engines prioritize mobile usability, and "reference" the mobile viewport for all content on the web. Before publishing ensure that all elements on-page are visible to users and search engines. If content is visible on desktop and not mobile, search engines ignore that content, which could cause it to miss out on critical information that can help the page get picked up, understood, and indexed within organic search.
 
 Best practices:
 
@@ -421,7 +385,7 @@ Best practices:
 
 * Write in clear, simple language
 
-  * Avoid idioms, slang, or cultural references that may not translate well.  
+  * Avoid idioms, slang, or cultural references that might not translate well.  
   * Ensure that content is translated by an expert of that language.
 
 * Consistent terminology
@@ -448,5 +412,5 @@ Best practices:
 
 * Hreflang tag support required
 
-  * Hreflang tags signal language and region to search engines in order to surface and index them within respective search results.  
+  * Hreflang tags signal language and region to search engines to surface and index them within respective search results.  
   * Consult with the documentation team for implementation guidance. External contributors should open a GitHub issue to discuss hreflang implementation.
