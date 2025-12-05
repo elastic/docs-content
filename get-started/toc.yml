@@ -1,6 +1,7 @@
-project: 'Get started'
+project: 'Elastic Fundamentals'
 toc:
   - file: index.md
+  - file: evaluate-elastic.md
   - file: introduction.md
   - file: the-stack.md
   - file: deployment-options.md
