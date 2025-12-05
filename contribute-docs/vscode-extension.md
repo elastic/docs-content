@@ -2,7 +2,7 @@
 navigation_title: Elastic Docs Utilities extension
 ---
 
-# Elastic Docs Utilities extension
+# Elastic Docs Utilities
 
 The Elastic Docs Utilities extension for Visual Studio Code and compatible IDEs provides autocompletion for Elastic Docs' Markdown, along with other features for authoring Elastic documentation.
 
@@ -17,11 +17,11 @@ The Elastic Docs Utilities extension for Visual Studio Code and compatible IDEs 
 To install the extension:
 
 1. Open the Visual Studio Marketplace or the **Extensions** view in your editor.
-2. Search for `Elastic Docs Utilities` or go to the [extension page](https://marketplace.visualstudio.com/items?itemName=elastic.elastic-docs-v3-utilities).
+2. Search for `Elastic Docs Utilities`.
 3. Select **Install** to add the extension to your editor.
 
 :::{tip}
-The extension is also available for other editors that support the Open VSX Registry.
+The extension is also available for editors that support the Open VSX Registry, like Cursor.
 :::
 
 ## Availability
