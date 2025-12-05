@@ -5,11 +5,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the APIs used to create, update, activate, deactivate, and delete watches.
 ---
 
 # Managing watches [managing-watches]
 
-{{watcher}} provides as set of APIs you can use to manage your watches:
+{{watcher}} provides a set of APIs you can use to manage your watches, including operations to create, update, retrieve, activate, deactivate, acknowledge, and delete watches. You can also list watches by querying the `.watches` index.
 
 * Use the [create or update watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-put-watch) to add or update watches
 * Use the [get watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-watch) to retrieve watches

@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the always condition that executes watch actions on every trigger.
 ---
 
 # Always condition [condition-always]
 
-Use the `always` condition to perform the watch actions whenever the watch is triggered, unless they are [throttled](actions.md#actions-ack-throttle).
+Use the **always** condition to perform the watch actions whenever the watch is triggered, unless they are throttled. This condition is useful for executing actions on a fixed schedule, such as sending a weekly status report email.
 
 The `always` condition enables you to perform watch actions on a fixed schedule, such as, *"Every Friday at noon, send a status report email to `sys.admin@example.com`"*
 

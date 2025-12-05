@@ -1,11 +1,14 @@
 ---
 applies_to:
   stack: ga
+products:
+  - id: kibana
+description: Instructions for using the Watcher UI to create, manage, and monitor watches.
 ---
 
-# Watcher UI [watcher-ui]
+# {{watcher}} UI [watcher-ui]
 
-Go to the **Watcher** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). With this UI, you can:
+Access the **{{watcher}}** page from the navigation menu or the global search field to create, manage, and monitor your watches. The UI provides tools for creating threshold watches, viewing watch history and action status, and managing watch lifecycle.
 
 * [Create a simple threshold watch](#watcher-create-threshold-alert)
 * [View your watch history and action status](#watcher-getting-started)

@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the webhook action that sends HTTP/HTTPS requests to external web services.
 ---
 
 # Webhook action [actions-webhook]
 
-Use the `webhook` action to send a request to any web service. The webhook action supports both HTTP and HTTPS connections. See [Webhook action attributes](#webhook-action-attributes) for the supported attributes.
+Use the **webhook** action to send HTTP or HTTPS requests to any web service when watch conditions are met. This action enables integration with external systems, APIs, and custom endpoints that can receive and process watch payload data.
 
 ## Configuring webhook actions [configuring-webook-actions]
 

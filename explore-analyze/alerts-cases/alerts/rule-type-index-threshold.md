@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Reference for the Index threshold rule type, which aggregates field values and triggers actions when thresholds are met.
 ---
 
-# Index threshold [rule-type-index-threshold]
+# Index threshold rule [rule-type-index-threshold]
 
-The index threshold rule type runs an {{es}} query. It aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met.
+The **Index threshold** rule type runs an {{es}} query that aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met. This rule type is useful for monitoring metrics like average response times, document counts, or summed values that cross defined limits.
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Index threshold** rule type then fill in the name and optional tags.
 

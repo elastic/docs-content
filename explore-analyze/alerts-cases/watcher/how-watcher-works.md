@@ -5,15 +5,14 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Explanation of watch components, execution flow, and how the watch payload works.
 ---
 
-# How Watcher works [how-watcher-works]
+# How {{watcher}} works [how-watcher-works]
 
-You [add watches](#watch-definition) to automatically perform an action when certain conditions are met. The conditions are generally based on data you’ve loaded into the watch, also known as the *Watch Payload*. This payload can be loaded from different sources - from Elasticsearch, an external HTTP service, or even a combination of the two.
+{{watcher}} automatically performs actions when certain conditions are met. Watches consist of a trigger, input, condition, and actions that work together to monitor data and respond to events. The watch payload—loaded from {{product.elasticsearch}}, an external HTTP service, or a combination of sources—provides the data evaluated by the condition.
 
 For example, you could configure a watch to send an email to the sysadmin when a search in the logs data indicates that there are too many 503 errors in the last 5 minutes.
-
-This topic describes the elements of a watch and how watches operate.
 
 
 ## Watch definition [watch-definition]

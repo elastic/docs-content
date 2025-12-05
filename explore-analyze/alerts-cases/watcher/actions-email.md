@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the email action that sends email notifications when watch conditions are met.
 ---
 
 # Email action [actions-email]
 
-Use the `email` action to send email notifications. To send email, you must [configure at least one email account](#configuring-email) in `elasticsearch.yml`.
+Use the **email** action to send email notifications when watch conditions are met. Email notifications can be plain text or HTML-styled, include information from the watch payload using templates, and attach the watch payload as a file.
 
 Email notifications can be plain text or styled using HTML. You can include information from the watch execution payload using [templates](how-watcher-works.md#templates) and attach the entire watch payload to the message.
 

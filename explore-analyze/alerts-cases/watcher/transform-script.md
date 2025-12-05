@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the script transform that uses custom scripts to modify payload data.
 ---
 
 # Script payload transform [transform-script]
 
-A [{{watcher-transform}}](transform.md) that executes a script on the current payload in the watch execution context and replaces it with a newly generated one. The following snippet shows how a simple script {{watcher-transform}} can be defined on the watch level:
+Use the **script** {{watcher-transform}} to execute a script that modifies the current payload in the watch execution context. This transform enables you to extract specific fields, calculate derived values, or restructure data before actions are executed.
 
 ::::{tip}
 The `script` {{watcher-transform}} is often useful when used in combination with the [`search`](transform-search.md) {{watcher-transform}}, where the script can extract only the significant data from a search result, and by that, keep the payload minimal. This can be achieved with the [`chain`](transform-chain.md) {{watcher-transform}}.

@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for condition types that determine whether watch actions are executed.
 ---
 
-# Conditions [condition]
+# Watch conditions [condition]
 
-When a watch is triggered, its condition determines whether or not to execute the watch actions. {{watcher}} supports the following condition types:
+When a watch is triggered, its condition determines whether to execute the watch actions. Conditions have full access to the watch execution context, including the watch payload, enabling you to evaluate data before taking action. {{watcher}} supports five condition types: always, never, compare, array_compare, and script.
 
 * [`always`](condition-always.md): The condition always evaluates to `true`, so the watch actions are always performed.
 * [`never`](condition-never.md): The condition always evaluates to `false`, so the watch actions are never executed.

@@ -5,11 +5,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Instructions for using the foreach field to execute an action for each array element.
 ---
 
 # Running an action for each element in an array [action-foreach]
 
-You can use the `foreach` field in an action to trigger the configured action for every element within that array.
+You can use the `foreach` field in an action to trigger the configured action for every element within an array. To protect from long-running watches, you can use the `max_iterations` field to limit the maximum number of executions, which defaults to one hundred.
 
 In order to protect from long running watches, you can use the `max_iterations` field to limit the maximum amount of runs that each watch executes. If this limit is reached, the execution is gracefully stopped. If not set, this field defaults to one hundred.
 

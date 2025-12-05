@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the HTTP input type that loads data from HTTP endpoints into watch execution context.
 ---
 
 # HTTP input [input-http]
 
-Use the `http` input to submit a request to an HTTP endpoint and load the response into the watch execution context when the watch is triggered. See [HTTP input attributes](#http-input-attributes) for all of the supported attributes.
+Use the **HTTP** input to submit a request to an HTTP endpoint and load the response into the watch execution context when the watch is triggered. This input type enables you to query external {{product.elasticsearch}} clusters, access {{product.elasticsearch}} APIs beyond search, and retrieve data from any web service that exposes an HTTP endpoint.
 
 With the `http` input, you can:
 
