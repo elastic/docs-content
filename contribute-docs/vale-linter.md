@@ -1,5 +1,5 @@
 ---
-navigation_title: Vale linter
+navigation_title: Vale style checker
 ---
 
 # Elastic style guide for Vale
@@ -137,10 +137,6 @@ If Vale incorrectly flags a product or feature name, suggest adding it to the ap
 ## Report issues or suggest improvements [report-issues-or-suggest-improvements]
 
 You can report issues or suggest improvements to the Elastic style guide by creating an issue in the [Elastic Vale rules repository](https://github.com/elastic/vale-rules/issues).
-
-:::{tip}
-You can also suggest improvements by creating a pull request to the [Elastic Vale rules repository](https://github.com/elastic/vale-rules/pulls).
-:::
 
 ## Additional resources [additional-resources]
 

@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic Docs Utilities extension
+navigation_title: Elastic Docs Utilities
 ---
 
 # Elastic Docs Utilities
