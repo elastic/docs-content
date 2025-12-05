@@ -4,10 +4,11 @@ This snippet is in use in the following locations:
 - ec-remote-cluster-self-managed.md
 - ece-enable-ccs-for-eck.md
 - ec-enable-ccs-for-eck.md
+- eck-remote-clusters-from-external.md
 -->
 To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
-* `Remote cluster alias`: When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI as **Remote cluster name**.
+* `Remote cluster alias`: When using API key authentication, the cluster alias must match the one you configured when adding the API key.
 * `mode`: `proxy`
 * `proxy_address`: Enter the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
 

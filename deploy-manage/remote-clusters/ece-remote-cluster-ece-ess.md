@@ -9,6 +9,8 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Hosted
 ---
 

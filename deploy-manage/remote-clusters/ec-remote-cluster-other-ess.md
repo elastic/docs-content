@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Hosted
 ---
 
