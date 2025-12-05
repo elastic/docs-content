@@ -469,8 +469,9 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/3142
   'deploy-manage/deploy/self-managed/networkaddress-cache-ttl.md': 'deploy-manage/deploy/self-managed/important-settings-configuration.md'
 
-# Related to Related to https://github.com/elastic/docs-content/pull/3230
+# Related to https://github.com/elastic/docs-content/pull/3230
   'extend/contribute/index.md': 'contribute-docs/index.md'
+  'extend/contribute-docs/index.md': 'contribute-docs/index.md'
   'extend/contribute/api-docs/index.md': 'contribute-docs/api-docs/index.md'
   'extend/contribute/api-docs/overview.md': 'contribute-docs/api-docs/overview.md'
   'extend/contribute/api-docs/checklist.md': 'contribute-docs/api-docs/checklist.md'
@@ -581,6 +582,10 @@ redirects:
 
 # Remote cluster settings moved to reference: https://github.com/elastic/docs-content/issues/579
   'deploy-manage/remote-clusters/remote-clusters-settings.md': 'elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md'
+
+# Moved explore-analyze AI assistant content into a subfolder (docs-content-internal/issues/455)
+  'explore-analyze/manage-access-to-ai-assistant.md': 'explore-analyze/ai-features/manage-access-to-ai-assistant.md'
+  'explore-analyze/ai-assistant.md': 'explore-analyze/ai-features/ai-assistant.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3685
   'deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md': 'deploy-manage/monitor/autoops/ec-autoops-faq.md'
