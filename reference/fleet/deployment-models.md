@@ -2,11 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-deployment-models.html
 applies_to:
-  deployment:
-    ece: ga
-    eck: ga
-    self: ga
-    ess: ga
+  stack: ga
   serverless: ga
 products:
   - id: fleet

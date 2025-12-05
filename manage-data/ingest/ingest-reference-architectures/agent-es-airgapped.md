@@ -2,7 +2,6 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-es-airgapped.html
 applies_to:
-  stack: ga
   deployment:
     self: ga
 products:
