@@ -9,6 +9,143 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## December 2, 2025 [serverless-changelog-12022025]
+
+### Features and enhancements [serverless-changelog-12022025-features-enhancements]
+
+* Adds the **Read global parameters** sub-feature privilege which allows you to read the values of synthetics global parameters [#243821]({{kib-pull}}243821)
+* Adds Cc, Bcc, Subject, and Message fields with Mustache templating support to the Schedule exports flyout for email notifications [#242922]({{kib-pull}}242922)
+* Allows users to enable scheduled reports [#244202]({{kib-pull}}244202)
+* Adds a background {{fleet}} policy revisions cleanup task to automatically remove excess policy revisions from the `.fleet-policies` index [#242612]({{kib-pull}}242612)
+* Automatically migrates component template ILM policies during setup [#243333]({{kib-pull}}243333)
+* Improves suggestion ordering using categorization to provide more relevant results [#243312]({{kib-pull}}243312)
+* Allows you to select a column type in the lookup index editor [#241637]({{kib-pull}}241637)
+* Ensures that infrastructure inventory UIs accurately reflect supported schemas [#244481]({{kib-pull}}244481)
+* Adds a warning when deleting API keys currently in use by alerting rules [#243353]({{kib-pull}}243353)
+* Removes the median line length check in the categorization anomaly detection job [#243827]({{kib-pull}}243827)
+* Allows you to filter alerts using the KQL search bar [#240100]({{kib-pull}}240100)
+* Introduces the Attachments API for streams [#243597]({{kib-pull}}243597)
+* Introduces new UI components for the Drop processor [#243131]({{kib-pull}}243131)
+* Adds service-level objective (SLO) support for streams attachments, migrates the UI to use the Attachments API for dashboards, rules, and SLOs, and removes deprecated API endpoints [#244092]({{kib-pull}}244092)
+* Allows you to add custom descriptions for enrichment processors [#243998]({{kib-pull}}243998)
+* Prevents conflicting actions in the Partitioning tab [#244228]({{kib-pull}}244228)
+* Improves handling of missing streams [#244366]({{kib-pull}}244366)
+* Allows you to configure the visibility of the Streams app per space [#244285]({{kib-pull}}244285)
+* Improves error messaging when expensive queries are turned off in the Streams schema editor [#243406]({{kib-pull}}243406)
+* Improves the Console UI to make key actions more intuitive [#242487]({{kib-pull}}242487)
+* Adds targeted Elastic Inference Service (EIS) callouts and dismissible guided tours to {{kib}} for {{ech}} and {{serverless-full}} users [#244626]({{kib-pull}}244626)
+* Redesigns the Lens configuration flyout to show layers as tabs instead of vertically stacked panels [#235372]({{kib-pull}}235372)
+* Consolidates attachments into a single Attachments tab with sub-tab navigation [#243708]({{kib-pull}}243708)
+* Adds the {{esql}} `CHUNK` function in technical preview [#138621]({{es-pull}}138621)
+* Improves support for the `first()` and `last()` aggregation functions in {{esql}} by disabling vector dispatch for blocks [#138390]({{es-pull}}138390)
+* Adds informative timestamps to async {{esql}} query results [#137957]({{es-pull}}137957)
+* Add Groq as a chat completion inference service for {{ml}} [#138251]({{es-pull}}138251)
+* Adds the node-scoped `vectors.indexing.use_gpu` setting to control GPU usage for vector indexing [#138738]({{es-pull}}138738)
+* Adds routing support to the `_project/tags` endpoint
+* Allows point-in-time (PIT) searches to span multiple projects [#137966]({{es-pull}}137966)
+* Excludes synthetic `_id` postings from disk usage statistics [#138745]({{es-pull}}138745)
+* Allows `project_routing` to be specified as a query parameter in EQL requests [#138559]({{es-pull}}138559)
+* Avoids retrieving unnecessary fields during the node-reduce phase in {{esql}} queries [#137920]({{es-pull}}137920)
+* Updates `KNN` function options in {{esql}} to align with the latest vector search behavior [#138372]({{es-pull}}138372)
+* Updates the {{esql}} `CHUNK` function to support `chunking_settings` as an optional argument [#138123]({{es-pull}}138123)
+* Pushes down `COUNT(*) BY DATE_TRUNC` aggregations in {{esql}} to improve performance [#138023]({{es-pull}}138023)
+* Adds support for parameters to `LIKE` and `RLIKE` operators in {{esql}} [#138051]({{es-pull}}138051)
+* Adds support for the `time_zone` request parameter to `KQL` and `QSTR` functions in {{esql}} [#138695]({{es-pull}}138695)
+* Adds timezone support to the {{esql}} `DateDiff` function [#138316]({{es-pull}}138316)
+* Fuses the `MV_MIN` and `MV_MAX` functions in {{esql}} and documents the fusion process [#138029]({{es-pull}}138029)
+* Adds `GROUP BY ALL` support in {{esql}} [#137367]({{es-pull}}137367)
+* Extends `GROUP BY ALL` in {{esql}} to support the dimensions output [#138595]({{es-pull}}138595)
+* Extends the field capabilities API to support `project_routing` in the request body [#138681]({{es-pull}}138681)
+* Improves security migration resilience by handling version conflicts more robustly [#137558]({{es-pull}}137558)
+* Adds dynamic template parameters in bulk requests so OTLP metric units can be stored in index mappings [#134709]({{es-pull}}134709)
+* Adds the `project_routing` option to SQL requests [#138718]({{es-pull}}138718)
+* Uses a doc values skipper for `_tsid` when resolving synthetic `_id` values to skip unnecessary documents [#138568]({{es-pull}}138568)
+
+### Fixes [serverless-changelog-12022025-fixes]
+
+* Verifies an alert exists before muting it [#242847]({{kib-pull}}242847)
+* Prevents URL restore errors in Discover and Dashboards [#242788]({{kib-pull}}242788)
+* Adds an authentication header to {{kib}} tool requests [#244017]({{kib-pull}}244017)
+* Fixes an issue where the dashboard selector did not return results when trying to link dashboards to a rule [#243496]({{kib-pull}}243496)
+* Fixes a validation error when creating custom threshold rules with data view objects [#244134]({{kib-pull}}244134)
+* Ensures deleted text in form fields is not sent as an empty string during Inference endpoint and LLM Connector creation [#244059]({{kib-pull}}244059)
+* Prevents cell selection from being cleared after you dismiss the alerts table popover in Anomaly Explorer [#244183]({{kib-pull}}244183)
+* Fixes an issue where cell actions on empty cells populated the condition value with `undefined` [#243766]({{kib-pull}}243766)
+* Removes references to Mustache template snippets from the UI form fields and descriptions for the Set processor [#243656]({{kib-pull}}243656)
+* Fixes a screen-reader text mismatch on the Index management page [#243802]({{kib-pull}}243802)
+* Fixes a sizing issue in the flyout for API key creation [#244072]({{kib-pull}}244072)
+* Improves the error message that appears when the IBM Resilient connector fails [#244012]({{kib-pull}}244012)
+* Catches connector errors without interrupting the case creation flow [#244188]({{kib-pull}}244188)
+* Allows file paths containing spaces to be used in Observables [#244350]({{kib-pull}}244350)
+* Fixes the serialization of `meta.error` in JSON layouts [#244364]({{kib-pull}}244364)
+* Fixes an issue that could cause an infinite loading state after submitting the case creation form [#244543]({{kib-pull}}244543)
+* Adds supprot for pruning columns when using `FORK` branches in {{esql}} [#137907]({{es-pull}}137907)
+* Fixes an Inference API issue to support correct type identification during deserialization [#138484]({{es-pull}}138484)
+* Fixes `chunkedInfer()` to correctly handle empty inputs [#138632]({{es-pull}}138632)
+* Ensures the circuit breaker limit is honored when building global ordinals by accounting their memory usage and breaking when the limit is exceeded [#108875]({{es-pull}}108875)
+* Changes `DatabaseNodeService` error logs to warnings to reduce noise [#138438]({{es-pull}}138438)
+* Avoids using `MIN` or `MAX` as `TOP`'s surrogate when an `outputField` is defined [#138380]({{es-pull}}138380)
+* Uses the correct minimum transport version when resolving {{esql}} `ENRICH` and `LOOKUP JOIN` types [#137431]({{es-pull}}137431)
+* Fixes `SearchContext` circuit breaker memory accounting [#138002]({{es-pull}}138002)
+* Adds missing `vector_similarity_support` flags in `InferenceFeatures` [#138644]({{es-pull}}138644)
+* Extends the semantic text highlighter to improve the handling of vector-based queries [#138140]({{es-pull}}138140)
+* Handles individual document parsing failures in bulk requests with ingest pipelines without failing the entire request [#138624]({{es-pull}}138624)
+* Handles search timeouts that occur during collector initialization in `QueryPhase` by returning partial results instead of shard-level failures [#138084]({{es-pull}}138084)
+* Fixes serialization of `null` blocks in `AggregateMetricDoubleBlock` [#138539]({{es-pull}}138539)
+* Ensures filters are correctly applied to kNN queries [#138457]({{es-pull}}138457)
+* Ensures filter queries, including semantic queries, are correctly rewritten and applied to kNN searches during coordinator-side inference [#138457]({{es-pull}}138457)
+* Speeds up `LeafCollector#setScorer` in `TopHitsAggregator` [#138883]({{es-pull}}138883)\
+* Reduces `LeafCollector#setScorer` overhead in `TopHitsAggregator` for multi-bucket aggregations by sharing a single `Scorable` instance across buckets [#138883]({{es-pull}}138883)
+* Updates the `jts` dependency to version `1.20.0` [#138351]({{es-pull}}138351)
+* Moves the `CrossProjectRoutingResolver` functionality to {{serverless-short}}
+
+## November 24, 2025 [serverless-changelog-11242025]
+
+### Features and enhancements [serverless-changelog-11242025-features-enhancements]
+
+* Allows users to edit scheduled exports [#241928]({{kib-pull}}241928)
+* Uses `type@lifecycle` ILMs for new package installations [#241992]({{kib-pull}}241992)
+* Allows {{esql}} to support subqueries in the `FROM` command [#241921]({{kib-pull}}241921)
+* Suggests adding curly braces after the `WITH` keyword for Rerank and Completion [#243047]({{kib-pull}}243047)
+* Supports the new `exponential_histogram` {{es}} field type [#242748]({{kib-pull}}242748)
+* Wraps the fork subcommands inside the `parens` node [#242369]({{kib-pull}}242369)
+* Simplifies the search visor experience [#242123]({{kib-pull}}242123)
+* Auto-scrolls to the suggestions panel in Streams  [#242891]({{kib-pull}}242891)
+* Shows user-readable output for the MDE runscript response action [#242441]({{kib-pull}}242441)
+* Saves the selected prevalence time to local storage [#243543]({{kib-pull}}243543)
+* Saves the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571)
+* Adds custom header support for inference endpoint creation [#242187]({{kib-pull}}242187)
+* Adds the `replace` processor to Streamlang DSL for string patterns replacement using regular expressions [#242310]({{kib-pull}}242310)
+* Adds automatic dissect pattern generation capabilities to the Streams processing pipeline [#242377]({{kib-pull}}242377)
+* Adds a rows per page selector to the tools, agents, and agent tools selection views [#242207]({{kib-pull}}242207)
+
+### Fixes [serverless-changelog-11242025-fixes]
+
+* Uses the real dimensions when taking a screenshot of reports [#242127]({{kib-pull}}242127)
+* Fixes a print mode regression in Dashboards [#242780]({{kib-pull}}242780)
+* Fixes an issue where users could not save a dashboard after switching a dashboard link to an external URL [#243134]({{kib-pull}}243134)
+* Uses `max_value` instead of infinity for the default maximum height of a panel in Dashboards [#243572]({{kib-pull}}243572)
+* Adds retry behavior for `/api/fleet/agents` when transient issues with {{es}} are encountered [#243105]({{kib-pull}}243105)
+* Uses a long expiration time for upgrade agents [#243443]({{kib-pull}}243443)
+* Fixes retrying stuck agents in auto upgrade logic [#243326]({{kib-pull}}243326)
+* Fixes the CPU query in Pod details by changing the gap policy to include zeros [#239596]({{kib-pull}}239596)
+* Fixes the KPIs subtitle logic [#243217]({{kib-pull}}243217)
+* Fixes custom links clearing filter values when a new field is selected or deleted [#241164]({{kib-pull}}241164)
+* Updates the system prompt title for generic deployments [#243266]({{kib-pull}}243266)
+* Fixes the squished Apple icon on Auto Detect flow cards [#242452]({{kib-pull}}242452)
+* Handles the missing `error.id` when processing causes an error [#243638]({{kib-pull}}243638)
+* Removes the block that prevented saving a Timeline with an ad-hoc dataview [#240537]({{kib-pull}}240537)
+* Fixes the response actions API for {{elastic-defend}} agent types, not sending the action to more than 10 agents [#243387]({{kib-pull}}243387)
+* Fixes favicon CSS specificity issues [#243351]({{kib-pull}}243351)
+* Fixes infinite loading of roles on the Edit spaces screen [#242954]({{kib-pull}}242954)
+* Fixes import and improves validation for Anomaly Detection and Data Frame Analytics jobs [#242263]({{kib-pull}}242263)
+* Fixes keyboard focus getting trapped in pages using document preview [#243791]({{kib-pull}}243791)
+* Reverts "Fix issue where filters do not apply to overview stats" [#242978]({{kib-pull}}242978)
+* Disables custom suggestion on embedded console [#241516]({{kib-pull}}241516)
+* Shows the AI log assistant with fallback message fields [#243437]({{kib-pull}}243437)
+* Ignores `resource_already_exists_exception` for value list creation hook [#243642]({{kib-pull}}243642)
+* Prevents crashes on the Retention page for certain ILM policies [#243826]({{kib-pull}}243826)
+
 ## November 17, 2025 [serverless-changelog-11172025]
 
 ### Features and enhancements [serverless-changelog-11172025-features-enhancements]
@@ -21,6 +158,38 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Collects cloud connector telemetry for the Cloud Asset Discovery integration [#240272]({{kib-pull}}240272)
 * Syncs recently used date ranges in the time picker across browser tabs [#242467]({{kib-pull}}242467)
 * Adds `drop_document` processor to Streamlang [#242161]({{kib-pull}}242161)
+* Extracts `AbstractGeoIpDownloader` to share concurrency logic across GeoIP downloaders [#137660]({{es-pull}}137660)
+* Iterates directly over `RoutingNode` contents to reduce allocation overhead [#137694]({{es-pull}}137694)
+* Speeds up sorts that use secondary sort fields [#137533]({{es-pull}}137533)
+* Reduces worst-case Inference API latency by removing an additional 50 ms delay for non–rate-limited requests [#136167]({{es-pull}}136167)
+* Uses the `DEFAULT_UNSORTABLE` topN encoder for `TSID_DATA_TYPE` in {{esql}} to improve sorting behavior [#137706]({{es-pull}}137706)
+* Transitions Elastic Indexing Service auth polling to a single-node persistent task for improved reliability [#136713]({{es-pull}}136713)
+* Makes {{esql}} field fusion generic so it can be reused across more field types [#137382]({{es-pull}}137382)
+* Releases the {{esql}} `decay` function [#137830]({{es-pull}}137830)
+* Adds additional APM attributes to coordinator-phase duration metrics for richer tracing [#137409]({{es-pull}}137409)
+* Adds telemetry to track CPS usage [#137705]({{es-pull}}137705)
+* Introduces simple bulk loading for binary doc values to improve indexing throughput [#137860]({{es-pull}}137860)
+* Uses IVF_PQ for GPU-based index builds on large datasets to improve vector indexing performance [#137126]({{es-pull}}137126)
+* Aligns match-phase shard APM metrics with the originating search request context [#137196]({{es-pull}}137196)
+* Improves {{serverless-short}} filtering behavior when creating resources from existing configurations [#137850]({{es-pull}}137850)
+* Refactors model field parsing in `AnthropicChatCompletionStreamingProcessor` to better handle model variants [#137926]({{es-pull}}137926)
+* Adds balancer-round summary metrics to shard allocation to aid tuning and diagnostics [#136043]({{es-pull}}136043)
+* Adds merge support to `ES93BloomFilterStoredFieldsFormat` [#137622]({{es-pull}}137622)
+* Adds additional DEBUG-level logging for authentication failures [#137941]({{es-pull}}137941)
+* Adds support for an extra output field in the {{esql}} `TOP` function [#135434]({{es-pull}}135434)
+* Introduces the `INDEX_SHARD_COUNT_FORMAT` setting for index shard count formatting [#137210]({{es-pull}}137210)
+* Implements an OpenShift AI integration for chat completion, embeddings, and reranking workloads [#136624]({{es-pull}}136624)
+* Adds `first()` and `last()` aggregation functions to {{esql}} [#137408]({{es-pull}}137408)
+* Adds support for the `project_routing` parameter on `_search` and `_async_search` requests [#137566]({{es-pull}}137566)
+* Adds a daily maintenance task to manage `.ml-state` indices in {{ml}} [#137653]({{es-pull}}137653)
+* Adds an `es812` postings format index setting for advanced indexing control [#137857]({{es-pull}}137857)
+* Adds centroid filtering support to DiskBBQ for more restrictive filters [#137959]({{es-pull}}137959)
+* Adds timezone support to {{esql}} `DATE_TRUNC`, `BUCKET`, and `TBUCKET` functions [#137450]({{es-pull}}137450)
+* Further improves bulk loading performance for binary doc values [#137995]({{es-pull}}137995)
+* Updates the Gradle wrapper to version `9.2.0`
+* Improves logging for the sampled metrics provider
+* Updates `BlobCacheIndexInput` to use `sliceDescription` as the resource description when available, improving diagnostics
+* Switches APM trace detection to use `hasApmTraceContext` and its variant APIs
 
 
 ### Fixes [serverless-changelog-11172025-fixes]
@@ -39,7 +208,22 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the data frame analytics wizard for data views with runtime fields [#242557]({{kib-pull}}242557)
 * Updates the default semantic text endpoint when adding semantic text field mappings to ELSER in EIS [#242436]({{kib-pull}}242436)
 * Fixes auto extraction in event bulk actions [#242325]({{kib-pull}}242325)
-
+* Fixes the extraction of the current JDK major version [#137779]({{es-pull}}137779)
+* Fixes OTLP responses to return the correct response type for partial successes [#137718]({{es-pull}}137718)
+* Fixes the get data stream API when a data stream's index mode has been changed to `time_series` [#137852]({{es-pull}}137852)
+* Ensures `include_execution_metadata` in {{esql}} always returns data, including for local-only queries [#137641]({{es-pull}}137641)
+* Fixes an {{esql}} vector similarity concurrency issue affecting byte vectors [#137883]({{es-pull}}137883)
+* Reverts a previous change to `statsByShard` that regressed performance for very large shard counts [#137984]({{es-pull}}137984)
+* Fixes scalability issues when updating {{ml}} calendar events [#136886]({{es-pull}}136886)
+* Prevents {{esql}} queries from failing when an index is deleted during query execution [#137702]({{es-pull}}137702)
+* Fixes `GET /_migration/deprecations` not reporting node deprecations when the disk low watermark is exceeded, and improves reporting of node-level failures [#137964]({{es-pull}}137964)
+* Fixes `GET /_migration/deprecations` incorrectly checking deprecated affix index settings [#137976]({{es-pull}}137976)
+* Prevents passing an ingest pipeline with a logs stream index request, avoiding invalid configurations [#137992]({{es-pull}}137992)
+* Removes vectors from `_source` documents in {{esql}} when appropriate to reduce payload size [#138013]({{es-pull}}138013)
+* Prevents the delete index API from failing if an index is removed while the request is in progress [#138015]({{es-pull}}138015)
+* Prevents renaming a field to `timestamp` in {{esql}} before its implicit use, avoiding type errors [#137713]({{es-pull}}137713)
+* Fixes `KDE.evaluate()` to return the correct `ValueAndMagnitude` object [#128602]({{es-pull}}128602)
+* Fixes file settings handling in the Restore API [#137585]({{es-pull}}137585)
 
 ## November 10, 2025 [serverless-changelog-11102025]
 
@@ -354,7 +538,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Automatically copies source data into the alerts-as-data documents for other ES Query rule types [#230010]({{kib-pull}}230010)
 * Replaces the dashboard editor toolbar with the **Add** menu [#230324]({{kib-pull}}230324)
 * Adds support for package spec v3.5 [#235942]({{kib-pull}}235942)
-* Adds in-product documentation for the {{esql}} `FORK` command [#236494]({{kib-pull}}236494)
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
 
 ### Fixes [serverless-changelog-09292025-fixes]
@@ -400,6 +583,24 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
 * Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
 % Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
+* Adds relevant attributes to search took time APM metrics [#134232](https://github.com/elastic/elasticsearch/pull/134232)
+* Adds headers support for OpenAI chat completion [#134504](https://github.com/elastic/elasticsearch/pull/134504)
+* Extends `kibana-system` permissions to manage security entities [#133968](https://github.com/elastic/elasticsearch/pull/133968)
+* Tracks `shardStarted` events for simulation in `DesiredBalanceComputer` [#133630](https://github.com/elastic/elasticsearch/pull/133630)
+* Adds file extension metadata to cache miss counter when it’s updated by `SharedBlobCacheService` [#134374](https://github.com/elastic/elasticsearch/pull/134374)
+* Removes the `_type` deprecation warning in ingest conditional scripts [#134851](https://github.com/elastic/elasticsearch/pull/134851)
+* Allows including semantic field embeddings in `_source` [#134717](https://github.com/elastic/elasticsearch/pull/134717)
+* Integrates weights into simplified RRF retriever syntax [#132680](https://github.com/elastic/elasticsearch/pull/132680)
+* Adjusts rollover criteria to have a better `max_age` rollover for tiny retentions [#134941](https://github.com/elastic/elasticsearch/pull/134941)
+* Adds support for the `include_execution_metadata` parameter in {{esql}} [#134446](https://github.com/elastic/elasticsearch/pull/134446)
+* Adds telemetry support for Lookup Join On Expression in {{esql}} [#134942](https://github.com/elastic/elasticsearch/pull/134942)
+* Improves block loader for source-only runtime fields of type keyword [#135026](https://github.com/elastic/elasticsearch/pull/135026)
+* Optimizes `BytesArray::indexOf` used in ndjson parsing [#135087](https://github.com/elastic/elasticsearch/pull/135087)
+* Modifies `SecureString` methods (`equals`, `startsWith` and `regionMatches`) to operate in constant time relative to the length of the comparison string [#135053](https://github.com/elastic/elasticsearch/pull/135053)
+* Updates URL encoding in {{esql}} [#134503](https://github.com/elastic/elasticsearch/pull/134503)
+* Adds new `/_security/stats` endpoint [#134835](https://github.com/elastic/elasticsearch/pull/134835)
+* Makes the last source shard completely remove reshard metadata
+* Adds a monitor for estimated heap usage 
 
 ### Fixes [serverless-changelog-09222025-fixes]
 
@@ -411,8 +612,23 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the autocomplete configuration for the `pinned` retriever by removing the `match_criteria` field [#234903]({{kib-pull}}234903)
 * Fixes a bug by allowing the use of `cmd + /` for comment toggling in the Monaco editor [#235334]({{kib-pull}}235334)
 * Adds a check for all privileges for {{sec-serverless}} when creating lists [#234602]({{kib-pull}}234602)
+* Fixes a bug to correctly update SLM stats when the master node is shut down after an SLM-triggered snapshot is completed [#134152](https://github.com/elastic/elasticsearch/pull/134152)
+* Fixes a bug to facilitate second retrieval of the same value [#134790](https://github.com/elastic/elasticsearch/pull/134790)
+* Avoids holding references to `SearchExecutionContext` in `SourceConfirmedTextQuery` [#134887](https://github.com/elastic/elasticsearch/pull/134887)
+* Adds an exception for perform embedding inference requests which include a query [#131641](https://github.com/elastic/elasticsearch/pull/131641)
+* Fixes a bug where the match only text block loader was not working correctly when a keyword multi-field was present [#134582](https://github.com/elastic/elasticsearch/pull/134582)
+* Fixes conditional processor mutability bugs [#134936](https://github.com/elastic/elasticsearch/pull/134936)
+* Fixes a bug where transforms did not wait for PITs to close [#134955](https://github.com/elastic/elasticsearch/pull/134955)
+* Bypasses MMap arena grouping which caused issues with too many regions being mapped [#135012](https://github.com/elastic/elasticsearch/pull/135012)
+* Fixes a deadlock in `ThreadPoolMergeScheduler` when a failing merge closes the `IndexWriter` [#134656](https://github.com/elastic/elasticsearch/pull/134656)
+* Fixes `countDistinctWithConditions` in csv-spec tests [#135097](https://github.com/elastic/elasticsearch/pull/135097)
+* Fixes a bug where `CentroidCalculator` did not return negative summation weights [#135176](https://github.com/elastic/elasticsearch/pull/135176)
+* Limits the `topn` operations pushed to Lucene to 10,000 [#134497](https://github.com/elastic/elasticsearch/pull/134497)
+* Bans `LIMIT` and `MV_EXPAND` before remote `ENRICH` [#135051](https://github.com/elastic/elasticsearch/pull/135051)
+* Fixes expiration time in {{esql}} async [#135209](https://github.com/elastic/elasticsearch/pull/135209)
 
 
+  
 ## September 19, 2025 [serverless-changelog-09192025]
 
 ### Features and enhancements [serverless-changelog-09192025-features-enhancements]
@@ -438,6 +654,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Restricts access to the Value report page to `admin` and `soc_manager` roles in complete tier [#234377]({{kib-pull}}234377)
 * Ensures the **Tech Preview** badge is shown for the default inference endpoint for e5 on the inference endpoints UI [#234811]({{kib-pull}}234811)
 * Ensures mapped fields are remembered across simulations [#233799]({{kib-pull}}233799)
+* Adds time series telemetry in xpack usage [#134214](https://github.com/elastic/elasticsearch/pull/134214)
 
 ### Fixes [serverless-changelog-09152025-fixes]
 
@@ -551,6 +768,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds a check to confirm that uploaded files are indexed and searchable in {{ml-cap}} [#231614]({{kib-pull}}231614)
 * Updates sections and improves field handling in {{ml-cap}} [#231037]({{kib-pull}}231037)
 * Improves the layout of the custom URLs list in {{ml-cap}} [#231751]({{kib-pull}}231751)
+* Returns 429 status code instead of 500 for timeout handlers [#133111](https://github.com/elastic/elasticsearch/pull/133111)
+* Allows configuring SAML private attributes [#133154](https://github.com/elastic/elasticsearch/pull/133154)
 
 ### Fixes [serverless-changelog-08252025-fixes]
 * Fixes a rendering issue that affected progress elements in Canvas [#232432]({{kib-pull}}232432)
@@ -569,7 +788,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes a broken link in the **Build** breadcrumb that incorrectly pointed to the search indices page in {{es-serverless}} [#232504]({{kib-pull}}232504)
 * Fixes inconsistencies in case activity statistics [#231948]({{kib-pull}}231948)
 * Adds support for a `reporting_user` role with a reserved set of privileges [#231533]({{kib-pull}}231533)
-
+* Fixes a bug where search failed when the bottom doc could not be formatted [#133188](https://github.com/elastic/elasticsearch/pull/133188)
 
 
 ## August 18, 2025 [serverless-changelog-08182025]
@@ -586,7 +805,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds inline markdown visualization [#229191]({{kib-pull}}229191)
 * Adds an `AI` section to the `Stack Management` menu [#227289]({{kib-pull}}227289)
 * Sets the default retention period for Logs anomaly detection to 120 days [#231080]({{kib-pull}}231080)
-
+* Restricts indexing to child streams when streams mode is enabled [#132011](https://github.com/elastic/elasticsearch/pull/132011)
+* Adds support for passing the `dimensions` field in the Google Vertex AI request [#132689](https://github.com/elastic/elasticsearch/pull/132689)
 
 ### Fixes [serverless-changelog-08182025-fixes]
 
@@ -670,6 +890,10 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves rate limiter UX [#227678]({{kib-pull}}227678)
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
+* Skips search shards with `INDEX_REFRESH_BLOCK`
+* Adds the `created_date` and `modified_date` system-managed properties to pipelines #130847](https://github.com/elastic/elasticsearch/pull/130847)
+* Adds the `created_date` and `modified_date` system-managed properties to component templates [#131536](https://github.com/elastic/elasticsearch/pull/131536)
+* Adds entity store and asset criticality index privileges to built-in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
 * Organization IdP routes are now public in the OpenAPI specifications.
 
 ### Fixes [serverless-changelog-08042025-fixes]
@@ -722,7 +946,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures the Gemini Vertex AI documentation link is available in the AI Connector [#228348]({{kib-pull}}228348)
 * Fixes a skipped autocomplete test in the console [#229274]({{kib-pull}}229274)
 * Ignores missing filters in rule parameters instead of causing errors [#229422]({{kib-pull}}229422)
-
+* Fixes memory usage estimation for ELSER models [#131630](https://github.com/elastic/elasticsearch/pull/131630)
 
 ## July 22, 2025 [serverless-changelog-07222025]
 
@@ -742,6 +966,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Allows submitting case comments by pressing **⌘+Enter** (or **Ctrl+Enter**) [#228473]({{kib-pull}}228473)
 * Increases the number of supported **Group by** fields in threshold rules from 3 to 5 [#227465]({{kib-pull}}227465)
 * Adds the **Search AI Lake** view to AutoOps for {{serverless-full}} to provide storage usage insights
+* Fixes a semantic highlighting bug on flat quantized fields [#131525](https://github.com/elastic/elasticsearch/pull/131525)
 
 ### Fixes [serverless-changelog-07222025-fixes]
 
@@ -938,7 +1163,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Implements navigation UI for the **Overview Page** in **Entity Analytics** [#221748]({{kib-pull}}221748)
 * Adds support for partial result handling in **ES|QL** [#223198]({{kib-pull}}223198)
 * Adds an **Executable Name** tab to the TopN view [#224291]({{kib-pull}}224291)
-
+* Upgrades the Lucene version to 10.2.2 [#129546](https://github.com/elastic/elasticsearch/pull/129546)
+* Adds a simplified syntax for the `linear` retriever [#129200](https://github.com/elastic/elasticsearch/pull/129200)
 
 ### Fixes [serverless-changelog-06232025-fixes]
 
@@ -1030,6 +1256,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates the risk severity colors to the Borealis theme in {{sec-serverless}} [#222061]({{kib-pull}}222061).
 * Enables **Content Connectors** in the **Stack Management** menu in {{sec-serverless}} [#221856]({{kib-pull}}221856).
 * Implements PKI authentication support for the `.gen-ai` connector’s `OpenAI Other` provider [#219984]({{kib-pull}}219984).
+* Implements SAML custom attributes support in the Identity Provider plugin [#128176](https://github.com/elastic/elasticsearch/pull/128176)
+* Fixes unsupported privileges error message during role and API key creation [#128858](https://github.com/elastic/elasticsearch/pull/128858)
 
 ### Fixes [serverless-changelog-06092025-fixes]
 
@@ -1219,7 +1447,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Removes metrics and logs from the `get_service_stats` API [#218346](https://github.com/elastic/kibana/pull/218346)
 * Allows you to customize the table tab [#218686](https://github.com/elastic/kibana/pull/218686)
 * Enables keyboard navigation for the create annotations form [#217918](https://github.com/elastic/kibana/pull/217918)
-
+* Updates tika to 2.9.3 [#127353](https://github.com/elastic/elasticsearch/pull/127353)
 
 ### Fixes [serverless-changelog-04282025-fixes]
 

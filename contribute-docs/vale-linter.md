@@ -1,16 +1,40 @@
 ---
-navigation_title: Vale linter
+navigation_title: Vale style checker
 ---
 
 # Elastic style guide for Vale
 
-[Vale](https://github.com/errata-ai/vale) is an open source prose linter that checks the content of documents in several formats against style guide rules. The goal of a prose linter is automating style guide checks in docs-as-code environments, so that style issues are detected before deploy or while editing documentation in a code editor.
+[Vale](https://github.com/errata-ai/vale) is a prose linter that checks documentation in Markdown format against the [Elastic style guide](/contribute-docs/style-guide/index.md). The documentation is checked when you commit changes to a pull request.
 
-The Elastic Vale package contains a set of linting rules based on the Elastic style guide and recommendations.
+Follow the instructions on this page to:
 
-## Get started
+- [Use the Vale action for GitHub](/contribute-docs/vale-linter.md#vale-checks-in-pull-requests) to check for style issues when you commit changes to a pull request.
+- [Use the Vale linter in your IDE](/contribute-docs/vale-linter.md#use-the-vale-linter-locally) to check for style issues while writing documentation.
 
-Run these commands to install the Elastic style guide locally:
+## Vale checks in pull requests [vale-checks-in-pull-requests]
+
+The Vale action for GitHub runs Vale checks on pull requests that include documentation changes. The action reports any style issues found in modified lines in the form of a sticky comment.
+
+:::{image} ./images/vale-sticky-comment.png
+:alt: Vale comment in pull request
+:screenshot:
+:width: 85%
+:::
+
+Issues are reported in the form of errors, warnings, and suggestions. You can expand each category to browse the specific issues. The report updates every time you commit changes.
+
+:::{important}
+Make an effort to fix all warnings and suggestions reported by the Vale linter. This helps ensure your docs read well and are easier to understand.
+:::
+
+## Use the Vale linter locally [use-the-vale-linter-locally]
+
+You can use the Vale linter locally to check for style issues while writing documentation.
+
+::::::{stepper}
+
+:::::{step} Install Vale and the Elastic style
+Run these commands to install the Elastic style guide locally. If Vale isn't installed, the commands install it for you or suggest how to do it.
 
 ::::{tab-set}
 
@@ -40,123 +64,81 @@ powershell -ExecutionPolicy Bypass -File .\install-windows.ps1
 :::
 ::::
 
-:::{warning}
-The installation script might overwrite your existing global Vale configuration. Install the style manually if you're using styles other than Elastic.
+:::{tip}
+To update the Elastic style guide to the latest rules, rerun the installation script.
 :::
+:::::
 
-### Install the Visual Studio Code extension
+:::::{step} Install the IDE extension
+Install the [Vale VSCode](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode) extension. The extension is also available for other editors that support the Open VSX Registry, like Cursor.
+:::::
 
-Install the [Vale VSCode](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode) extension to view Vale checks when saving a document. The extension is also available for other editors that support the Open VSX Registry.
+:::::{step} Open any Markdown file
+The extension automatically runs Vale checks when you save a document. Issues are reported both in the Problems tab and in the editor itself.
 
-## Add the Vale action to your repo
+:::{image} ./images/vale-ide.png
+:alt: Vale comment in pull request
+:screenshot:
+:width: 100%
+:::
+:::::
 
-Add the Elastic Vale linter to your repository's CI/CD pipeline using a two-workflow setup that supports fork PRs:
+::::::
 
-```yaml
-# .github/workflows/vale-lint.yml
-name: Vale Documentation Linting
+## Style rules reference [elastic-style-rules-reference]
 
-on:
-  pull_request:
-    paths:
-      - '**.md'
-      - '**.adoc'
+The following table lists all the rules included in the [Elastic Vale style package](https://github.com/elastic/vale-rules/tree/main/styles/Elastic):
 
-permissions:
-  contents: read
+| Rule        | Description |
+|-------------|-------------|
+| [Accessibility](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Accessibility.yml) | Flags ableist language that defines people by their disability. Refer to [Avoid violent, offensive, ableist terminology](./style-guide/accessibility.md#avoid-violent-offensive-ableist-terminology). |
+| [Acronyms](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Acronyms.yml) | Checks that acronyms are defined before being used (unless they're common exceptions). Refer to [Abbreviations and acronyms](./style-guide/grammar-spelling.md#abbreviations-and-acronyms). |
+| [Articles](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Articles.yml) | Ensures correct article usage ("a" vs "an") based on pronunciation, not spelling. Refer to [Using the right article](./style-guide/grammar-spelling.md#using-the-right-article). |
+| [BritishSpellings](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/BritishSpellings.yml) | Suggests American English spellings instead of British English variants. Refer to [American English](./style-guide/grammar-spelling.md#american-english). |
+| [Capitalization](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Capitalization.yml) | Checks that headings use sentence-style capitalization. Refer to [Capitalization](./style-guide/grammar-spelling.md#capitalization). |
+| [ConflictMarkers](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/ConflictMarkers.yml) | Detects Git merge conflict markers in source code. |
+| [DeviceAgnosticism](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/DeviceAgnosticism.yml) | Suggests device-agnostic language (for example, "select" instead of "tap"). Refer to [Use device-agnostic language](./style-guide/accessibility.md#accessibility-guidelines). |
+| [Dimensions](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Dimensions.yml) | Suggests using "MxN" format instead of "M X N" for dimensions. Refer to [Dimensions](./style-guide/formatting.md#dimensions). |
+| [DontUse](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/DontUse.yml) | Flags words and phrases that shouldn't be used (for example, "please", "just", "aka"). Refer to [Word choice](./style-guide/word-choice.md). |
+| [Ellipses](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Ellipses.yml) | Discourages the use of ellipses. Refer to [Write like a minimalist](./style-guide/voice-tone.md#write-like-a-minimalist). |
+| [EmDashes](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/EmDashes.yml) | Checks that em dashes don't have spaces before or after. Refer to [Em dashes](./style-guide/grammar-spelling.md#em-dashes). |
+| [EndPuntuaction](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/EndPuntuaction.yml) | Flags headings that end with punctuation. Refer to [Capitalization](./style-guide/grammar-spelling.md#capitalization). |
+| [Exclamation](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Exclamation.yml) | Encourages sparing use of exclamation points. Refer to [Tone](./style-guide/voice-tone.md#tone). |
+| [FirstPerson](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/FirstPerson.yml) | Discourages first-person pronouns (I, me, my, mine). Refer to [Use singular first-person pronouns sparingly](./style-guide/grammar-spelling.md#use-singular-first-person-pronouns-sparingly-i-me-my-mine). |
+| [FutureTense](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/FutureTense.yml) | Encourages writing in present tense instead of future tense. Refer to [Verb tense](./style-guide/grammar-spelling.md#verb-tense). |
+| [Gender](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Gender.yml) | Flags gender-specific compound pronouns like "he/she" or "s/he". Refer to [Use gender-neutral language](./style-guide/accessibility.md#use-gender-neutral-language). |
+| [GenderBias](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/GenderBias.yml) | Suggests gender-neutral alternatives for gendered terms. Refer to [Use gender-neutral language](./style-guide/accessibility.md#use-gender-neutral-language). |
+| [HeadingColons](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/HeadingColons.yml) | Checks that text after colons in headings is capitalized. Refer to [Colons](./style-guide/grammar-spelling.md#colons). |
+| [Latinisms](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Latinisms.yml) | Suggests plain English alternatives to Latin terms (for example, "for example" instead of "e.g."). Refer to [Latin abbreviations](./style-guide/grammar-spelling.md#latin-abbreviations). |
+| [MeaningfulCTAs](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/MeaningfulCTAs.yml) | Flags non-descriptive link text like "click here". Refer to [Use meaningful link text](./style-guide/accessibility.md#accessibility-guidelines). |
+| [Negations](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Negations.yml) | Suggests rephrasing negative constructions to positive ones. Refer to [Write for an international audience](./style-guide/accessibility.md#write-for-an-international-audience). |
+| [OxfordComma](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/OxfordComma.yml) | Enforces the use of the Oxford comma in lists. Refer to [Commas](./style-guide/grammar-spelling.md#commas). |
+| [PluralAbbreviations](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/PluralAbbreviations.yml) | Flags apostrophes in plural abbreviations (use "APIs" instead of "API's"). Refer to [Making abbreviations plural](./style-guide/grammar-spelling.md#making-abbreviations-plural). |
+| [QuotesPunctuation](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/QuotesPunctuation.yml) | Ensures punctuation is placed outside quotation marks. Refer to [Punctuation](./style-guide/grammar-spelling.md#punctuation). |
+| [Repetition](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Repetition.yml) | Detects repeated words. Refer to [Write like a minimalist](./style-guide/voice-tone.md#write-like-a-minimalist). |
+| [Semicolons](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Semicolons.yml) | Encourages judicious use of semicolons. Refer to [Semicolons](./style-guide/grammar-spelling.md#semicolons). |
+| [Versions](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Versions.yml) | Suggests "later" or "earlier" instead of "newer", "older", "higher", or "lower" for versions. |
+| [WordChoice](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/WordChoice.yml) | Suggests preferred word choices (for example, "stop" instead of "abort", "allowlist" instead of "whitelist"). Refer to [Word choice](./style-guide/word-choice.md). |
+| [Wordiness](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Wordiness.yml) | Suggests concise alternatives to wordy phrases. Refer to [Write like a minimalist](./style-guide/voice-tone.md#write-like-a-minimalist). |
 
-jobs:
-  vale:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-      
-      - name: Run Vale Linter
-        uses: elastic/vale-rules/lint@main
-```
+## Vocabularies [elastic-vocabularies]
 
-```yaml
-# .github/workflows/vale-report.yml
-name: Vale Report
+The Elastic Vale style uses [Vale vocabularies](https://vale.sh/docs/keys/vocab) to recognize product and feature names. Vocabularies help Vale avoid false positives when checking capitalization and spelling rules.
 
-on:
-  workflow_run:
-    workflows: ["Vale Documentation Linting"]
-    types:
-      - completed
+The Elastic style includes these vocabularies:
 
-permissions:
-  pull-requests: read
-
-jobs:
-  report:
-    runs-on: ubuntu-latest
-    if: github.event.workflow_run.event == 'pull_request'
-    permissions:
-      pull-requests: write
-    
-    steps:
-      - name: Post Vale Results
-        uses: elastic/vale-rules/report@main
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-```
-
-For detailed documentation and examples, refer to [ACTION_USAGE.md](https://github.com/elastic/vale-rules/blob/main/ACTION_USAGE.md).
-
-## Exclude content from linting
-
-You can use HTML comments in your Markdown files to control Vale's behavior for specific sections of content. This is useful when you need to temporarily turn off checks or exclude certain content from linting.
-
-### Turn off all Vale checks
-
-To exclude a section of content from linting, wrap it with `vale off` and `vale on` comments:
-
-```markdown
-<!-- vale off -->
-
-This entire section will be ignored by Vale.
-
-<!-- vale on -->
-```
-
-### Turn off a specific rule
-
-To turn off a specific Elastic style rule for a section, use the rule name with `= NO` and `= YES` to turn it back on:
-
-```markdown
-<!-- vale Elastic.RuleName = NO -->
-
-This content will ignore only the specified rule.
-
-<!-- vale Elastic.RuleName = YES -->
-```
-
-For example, to turn off the `Elastic.WordChoice` rule:
-
-```markdown
-<!-- vale Elastic.WordChoice = NO -->
-
-This section can contain mispellings without triggering warnings.
-
-<!-- vale Elastic.WordChoice = YES -->
-```
+- [**ElasticTerms**](https://github.com/elastic/vale-rules/blob/main/styles/config/vocabularies/ElasticTerms/accept.txt): Contains Elastic product and feature names (for example, Elasticsearch, Kibana, Elastic Agent).
+- [**ThirdPartyProducts**](https://github.com/elastic/vale-rules/blob/main/styles/config/vocabularies/ThirdPartyProducts/accept.txt): Contains non-Elastic product names (for example, Kubernetes, AWS, Docker).
 
 :::{tip}
-You can find the exact rule names in the [Elastic Vale rules repository](https://github.com/elastic/vale-rules/tree/main/styles/Elastic). Each rule is defined in a separate `.yml` file, and the filename (without the extension) is the rule name you use in comments.
+If Vale incorrectly flags a product or feature name, suggest adding it to the appropriate vocabulary by creating a pull request or issue in the [Elastic Vale rules repository](https://github.com/elastic/vale-rules).
 :::
 
-For more information about comment-based configuration, refer to the [Vale Markdown documentation](https://vale.sh/docs/formats/markdown#comments).
+## Report issues or suggest improvements [report-issues-or-suggest-improvements]
 
-## Update the style guide
+You can report issues or suggest improvements to the Elastic style guide by creating an issue in the [Elastic Vale rules repository](https://github.com/elastic/vale-rules/issues).
 
-To update the Elastic style guide to the latest rules, rerun the installation script.
-
-## Resources
+## Additional resources [additional-resources]
 
 - [Vale's official documentation](https://vale.sh/docs/vale-cli/overview/)
 - [Elastic Vale rules repository](https://github.com/elastic/vale-rules)
-
