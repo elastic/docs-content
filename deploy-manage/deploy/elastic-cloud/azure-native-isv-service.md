@@ -71,6 +71,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
     * [Does {{ecloud}} Azure Native ISV Service support recently introduced {{ecloud}} RBAC capability?](#azure-integration-azure-rbac)
     * [I already have an {{ecloud}} account, can I use this service?](#azure-integration-prior-cloud-account)
     * [Can I sign up for an {{ecloud}} trial account and then convert to the {{ecloud}} Azure Native ISV Service?](#azure-integration-convert-trial)
+    * [Can I sign up for an Azure trial directly from the Azure marketplace?](#azure-integration-native-trials)
     * [Does {{es}} get deployed into my tenant in Azure?](#azure-integration-azure-tenant)
     * [What Azure tenant information does Elastic have access to?](#azure-integration-azure-tenant-info)
     * [What other methods are available to deploy {{es}}?](#azure-integration-cli-api)
@@ -82,6 +83,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
 
     * [Which Azure Subscription will be billed for my Elastic resources?](#azure-integration-billing-which-subscription)
     * [How do I get different Elastic resources (deployments) charges to different Azure Subscriptions?](#azure-integration-billing-different-deployments)
+    * [How can I resubscribe to an Azure subscription](#azure-resubscribe-flow)
     * [Why can’t I see Elastic resources costs in Azure Cost Explorer?](#azure-integration-billing-elastic-costs)
     * [Why don’t I see my individual Elastic resources (deployments) in the Azure Marketplace Invoice?](#azure-integration-billing-deployments)
     * [Why can’t I find Instance ID and Instance Name values from Azure Marketplace Invoice in the Azure Portal?](#azure-integration-billing-instance-values)
@@ -169,6 +171,7 @@ $$$azure-integration-change-subscription$$$How can I change my {{ecloud}} subscr
         :alt: The Update Subscription page showing Standard
         :::
 
+If you are in a subscribed state and want to switch to a different subscription, or if you encounter any issues during this process, please contact support@elastic.co and we will guide you with the necessary steps.
 
 $$$azure-integration-existing-email$$$Can I subscribe using an email address from another Elastic account?
 :   Your email address is associated with only one Elastic account. For a workaround, check [Sign up using an email address from another Cloud account](create-an-organization.md).
@@ -198,6 +201,13 @@ $$$azure-integration-convert-trial$$$Can I sign up for an {{ecloud}} trial accou
     * To convert your trial to the Azure marketplace you need to create a deployment in the Azure console. Just delete the new deployment if you don’t need it. After you create the new deployment your marketplace subscription is ready.
     * Any deployments created during your trial won’t show up in the Azure console, since they weren’t created in Azure, but they are still accessible through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and you are billed for their usage.
 
+$$$azure-integration-native-trials$$$Can I sign up for an Azure trial directly from the Azure marketplace?
+:   Yes. We now support a 7-day trial for the Azure Native ISV offering. You can start a trial by creating a deployment through the Azure Marketplace. Please note the following:
+
+    * The email associated with the Azure account used to create the deployment must not already be linked to an existing Elastic organization.
+    * During the 7-day trial period, there are limits on the number of deployments or serverless projects you can create. If you want to convert to a paid subscription early and use full Elastic features, please contact `support@elastic.co`.
+    * After 7 days, the trial will automatically convert to a paid offering. You may contact Elastic Support to unsubscribe, but doing so may result in your resources being deleted after a grace period.
+    * The trial is available only once per user account. After it expires, you cannot start another trial. If you need a trial extension, please reach out to Elastic Support.
 
 $$$azure-integration-azure-tenant$$$Does {{es}} get deployed into my tenant in Azure?
 :   No. {{es}} resources deployed in an Azure tenant are managed by Elastic. The management capabilities associated with this tenant are the same as used to run Elastic’s managed service, which also allows users to deploy on Azure.
@@ -272,6 +282,17 @@ $$$azure-integration-billing-which-subscription$$$Which Azure Subscription will 
 
 $$$azure-integration-billing-different-deployments$$$How do I get different Elastic deployment/resources charges to different Azure Subscriptions?
 :   See [Integrated billing](#ec-azure-integration-billing-summary). To have different Elastic deployment/resources costs reported to different Azure subscriptions, they need to be in separate {{ecloud}} organizations. To create a separate {{ecloud}} organization from an Azure subscription, you will need to subscribe as a user who is not already part of an existing {{ecloud}} organization.
+
+$$$azure-resubscribe-flow$$$How can I resubscribe to an Azure subscription?
+:   If your organization is currently unsubscribed from the Azure Marketplace, you can resubscribe through any of your existing Azure deployments in the Azure Portal:
+
+    1. Open one of your deployments to view its overview page.
+    2. From the left navigation pane, select **Connected Elastic Cloud Resources**.
+        :::{image} /deploy-manage/images/azure-reconnect-window.png
+        :alt: The resubscription illustration
+        :::
+    3. Click **Resubscribe**. A new window should appear.
+    4. Choose the subscription you want to resubscribe to and confirm.
 
 $$$azure-integration-billing-elastic-costs$$$Why can’t I see Elastic resources costs in Azure Cost Explorer?
 :   The costs associated with Elastic resources (deployments) are reported under unassigned in the Azure Portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resources/deployments costs. For granular Elastic resources costs, refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md).
