@@ -88,7 +88,7 @@ The extension automatically runs Vale checks when you save a document. Issues ar
 ::::::
 
 ## Style rules reference [elastic-style-rules-reference]
-<!-- vale off -->
+
 The following table lists all the rules included in the [Elastic Vale style package](https://github.com/elastic/vale-rules/tree/main/styles/Elastic):
 
 | Rule        | Description |
@@ -123,7 +123,6 @@ The following table lists all the rules included in the [Elastic Vale style pack
 | [WordChoice](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/WordChoice.yml) | Suggests preferred word choices (for example, "stop" instead of "abort", "allowlist" instead of "whitelist"). Refer to [Word choice](./style-guide/word-choice.md). |
 | [Wordiness](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Wordiness.yml) | Suggests concise alternatives to wordy phrases. Refer to [Write like a minimalist](./style-guide/voice-tone.md#write-like-a-minimalist). |
 
-<!-- vale on -->
 ## Vocabularies [elastic-vocabularies]
 
 The Elastic Vale style uses [Vale vocabularies](https://vale.sh/docs/keys/vocab) to recognize product and feature names. Vocabularies help Vale avoid false positives when checking capitalization and spelling rules.
@@ -136,50 +135,6 @@ The Elastic style includes these vocabularies:
 :::{tip}
 If Vale incorrectly flags a product or feature name, suggest adding it to the appropriate vocabulary by creating a pull request or issue in the [Elastic Vale rules repository](https://github.com/elastic/vale-rules).
 :::
-
-## Exclude content from linting [exclude-content-from-linting]
-
-You can use HTML comments in your Markdown files to control Vale's behavior for specific sections of content. This is useful when you need to temporarily turn off checks or exclude certain content from linting.
-
-To exclude a section of content from linting, wrap it with `vale off` and `vale on` comments.
-
-:::{dropdown} Exclude a section from all Vale checks
-```markdown
-<!-- vale off -->
-
-This entire section will be ignored by Vale.
-
-<!-- vale on -->
-```
-:::
-
-To turn off a specific Elastic style rule for a section, use the rule name with `= NO` and `= YES` to turn it back on.
-
-:::{dropdown} Syntax for disabling a specific rule
-```markdown
-<!-- vale Elastic.RuleName = NO -->
-
-This content will ignore only the specified rule.
-
-<!-- vale Elastic.RuleName = YES -->
-```
-:::
-
-For example, to turn off the `Elastic.WordChoice` rule:
-
-:::{dropdown} Disable the WordChoice rule
-```markdown
-<!-- vale Elastic.WordChoice = NO -->
-
-This section can contain mispellings without triggering warnings.
-
-<!-- vale Elastic.WordChoice = YES -->
-```
-:::
-
-You can find the exact rule names in the preceding table. Each rule is defined in a separate `.yml` file, and the filename (without the extension) is the rule name you use in comments.
-
-For more information about comment-based configuration, refer to the [Vale Markdown documentation](https://vale.sh/docs/formats/markdown#comments).
 
 ## Report issues or suggest improvements [report-issues-or-suggest-improvements]
 
