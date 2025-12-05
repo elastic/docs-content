@@ -84,8 +84,6 @@ Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use t
 
 The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
 
-Whitelist
-
 ## Version compatibility
 ```{applies_to}
 deployment:
