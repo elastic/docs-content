@@ -10,7 +10,7 @@ products:
 
 # Enable large language model (LLM) access
 
-{{elastic-sec}} uses large language model (LLM) connectors to power it's [AI features](/explore-analyze/ai-features/ai-features.md#ai-powered-features-in-elastic-sec). To use these features, you can use Elastic Managed LLM, configure a third-party LLM connector, or a custom local LLM.
+{{elastic-sec}} uses large language model (LLM) connectors to power it's [AI features](/explore-analyze/ai-features.md#ai-powered-features-in-elastic-sec). To use these features, you can use Elastic Managed LLM, configure a third-party LLM connector, or a custom local LLM.
 
 :::{important}
 Different LLMs have varying performance when used to power different features and use-cases. For more information about how various models perform on different tasks in {{elastic-sec}}, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
