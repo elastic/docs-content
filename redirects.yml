@@ -600,3 +600,10 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/3808
   'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
+
+
+# Related to https://github.com/elastic/docs-content/pull/4224
+  'solutions/security/ai/connect-to-amazon-bedrock.md': 'explore-analyze/ai-features/llm-guides/connect-to-amazon-bedrock.md'
+  'solutions/security/ai/connect-to-azure-openai.md': 'explore-analyze/ai-features/llm-guides/connect-to-azure-openai.md'
+  'solutions/security/ai/connect-to-google-vertex.md': 'explore-analyze/ai-features/llm-guides/connect-to-google-vertex.md'
+  'solutions/security/ai/connect-to-openai.md': 'explore-analyze/ai-features/llm-guides/connect-to-openai.md'
