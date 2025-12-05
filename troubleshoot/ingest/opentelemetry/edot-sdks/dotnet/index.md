@@ -245,16 +245,16 @@ after the processor has completed.
 ### Duplicate spans are visible in Elastic Observability
 
 EDOT .NET provides several APIs for registering OpenTelemetry instrumentation for your applications.
-For the majority of scenarios, we recommend using the `AddElasticOpenTelemetry` methods on the `HostApplicationBuilder`
+For the majority of scenarios, we recommend using the `AddElasticOpenTelemetry` methods on the `IHostApplicationBuilder`
 or `IServiceCollection`. 
 
 For advanced situations, we provide various `WithElastic...` methods on the specific
-signal builders intended to enable individual signals. Combining `AddElasticOpenTelemetry` and ``WithElastic...` methods
+signal builders intended to enable individual signals. Combining `AddElasticOpenTelemetry` and `WithElastic...` methods
 is incorrect and indicates a misconfiguration. EDOT .NET attempts to ensure that the OpenTelemetry SDK is
 registered once per application in these situations, but it's not always possible to fully validate the user
 intent.
 
-When a misconfiguration occurs, exporters may be registered more than once per signal, resulting in
+When a misconfiguration occurs, exporters can be registered more than once per signal, resulting in
 duplication of each span sent to Elastic Observability.
 
 For example, the following code is incorrect:
