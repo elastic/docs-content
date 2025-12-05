@@ -93,8 +93,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
 
 ## Getting started [ec-azure-integration-getting-started]
 
-$$$azure-integration-get-started$$$
-### Overview, prerequisites, and regions
+$$$azure-integration-get-started$$$Overview, prerequisites, and regions
 
 {{ecloud}} is available as an offering through the Azure console and can be created directly from the [list of {{ecloud}} deployments in the Azure portal](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Elastic%2Fmonitors) by selecting `Create`.
 
@@ -112,8 +111,7 @@ The list of supported Azure regions for {{ecloud}} is available here:
 
 <a id="azure-integration-regions"></a>
 
-$$$azure-integration-pricing$$$
-### Pricing and subscription options
+$$$azure-integration-pricing$$$Pricing and subscription options
 
 The Azure Native ISV Service uses a pay-as-you-go hourly pricing model for each {{ecloud}} deployment. There is no free trial period for this specific offering. Charges are applied to your Azure bill at the end of the month.
 
@@ -146,8 +144,7 @@ You can change your subscription level from the billing page in the {{ecloud}} c
 <a id="azure-integration-subscription-levels"></a>
 <a id="azure-integration-change-subscription"></a>
 
-$$$azure-integration-existing-email$$$
-### Accounts and identity management
+$$$azure-integration-existing-email$$$Accounts and identity management
 
 Your email address can be associated with only one Elastic account. If you need to use an email address that is already tied to another {{ecloud}} account, see [Sign up using an email address from another Cloud account](create-an-organization.md) for a suggested workaround.
 
@@ -169,8 +166,7 @@ If you already have an {{ecloud}} account with the same email address as your Az
 <a id="azure-integration-azure-rbac"></a>
 <a id="azure-integration-prior-cloud-account"></a>
 
-$$$azure-integration-convert-trial$$$
-### Trial conversion and tenant model
+$$$azure-integration-convert-trial$$$Trial conversion and tenant model
 
 You can start a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and later convert your account to use the Azure Native ISV Service.
 
@@ -200,8 +196,7 @@ Elastic can also access data from {{ecloud}} Azure Native ISV Service features, 
 <a id="azure-integration-azure-tenant"></a>
 <a id="azure-integration-azure-tenant-info"></a>
 
-$$$azure-integration-cli-api$$$
-### Deployment methods and migration
+$$$azure-integration-cli-api$$$Deployment methods and migration
 
 You can deploy {{es}} using a variety of methods:
 
@@ -240,8 +235,7 @@ To migrate your data from the classic Azure marketplace account to the Azure Nat
 
 <a id="azure-integration-migrate"></a>
 
-$$$azure-integration-multiple-users$$$
-### Organization membership scenarios
+$$$azure-integration-multiple-users$$$Organization membership scenarios
 
 Multiple Azure users can deploy resources into the same {{ecloud}} organization. Before another user creates a native resource from the Azure Portal, invite them to your {{ecloud}} organization at [https://cloud.elastic.co/account/members](https://cloud.elastic.co/account/members). When they create the resource, it is added to the existing organization instead of creating a new one. This allows you to benefit from consolidated billing, RBAC, and other organization-level capabilities.
 
@@ -251,8 +245,7 @@ You can also add Azure users as members of your organization even if they don’
 
 ## Billing [ec-azure-integration-billing-faq]
 
-$$$azure-integration-billing-which-subscription$$$
-### Azure subscription billing and cost allocation
+$$$azure-integration-billing-which-subscription$$$Azure subscription billing and cost allocation
 
 The Azure Native ISV Service posts all Elastic deployment costs for an {{ecloud}} organization to **the Azure subscription used to create the first Azure-native deployment**, regardless of where later deployments are created.
 
@@ -260,8 +253,7 @@ To charge different Azure subscriptions, deployments must belong to **different 
 
 ---
 
-$$$azure-integration-billing-elastic-costs$$$
-### Cost visibility in Azure and Elastic
+$$$azure-integration-billing-elastic-costs$$$Cost visibility in Azure and Elastic
 
 Azure Marketplace shows Elastic costs as **Marketplace charges**, sometimes grouped under **Unassigned**.  
 For detailed per-deployment usage, use the Elastic Cloud Console:
@@ -270,8 +262,7 @@ For detailed per-deployment usage, use the Elastic Cloud Console:
 
 ---
 
-$$$azure-integration-billing-instance-values$$$
-### Invoice details and instance identifiers
+$$$azure-integration-billing-instance-values$$$Invoice details and instance identifiers
 
 Azure invoices display a single **SaaS resource identifier** that corresponds to the {{ecloud}} organization.  
 This is expected: Azure does not list Elastic deployments individually in Marketplace invoices.
@@ -280,8 +271,7 @@ Use Elastic’s usage reporting for detailed cost breakdowns.
 
 ## Managing your {{ecloud}} deployment
 
-$$$azure-integration-whats-included$$$
-### Deployment components and access options
+$$$azure-integration-whats-included$$$Deployment components and access options
 
 Each {{ecloud}} deployment includes:
 * an {{es}} cluster
@@ -295,8 +285,7 @@ From the Azure deployment overview page, you can open:
 
 ---
 
-$$$azure-integration-modify-deployment$$$
-### Lifecycle operations: modify and delete
+$$$azure-integration-modify-deployment$$$Lifecycle operations: modify and delete
 
 All scaling, upgrades, and configuration changes happen in the {{ecloud}} console.
 
@@ -304,8 +293,7 @@ Deleting a deployment in Azure triggers full cleanup in Elastic Cloud and stops 
 
 ---
 
-$$$azure-integration-delete-resource-group$$$
-### Resource groups and deletion behavior
+$$$azure-integration-delete-resource-group$$$Resource groups and deletion behavior
 
 Deleting an Azure Resource Group also deletes its {{ecloud}} resources.
 
@@ -315,8 +303,7 @@ To stop billing, delete deployments individually before removing the Resource Gr
 
 ## Configuring logs and metrics
 
-$$$azure-integration-monitor$$$
-### Monitoring existing Azure services
+$$$azure-integration-monitor$$$Monitoring existing Azure services
 
 The {{ecloud}} Azure Native ISV Service simplifies logging for Azure services with the {{stack}}. This integration supports:
 
@@ -372,15 +359,13 @@ To check which of your Azure resources are currently being monitored, navigate t
 * *Failed* - Logs are configured but failed to ship. For help resolving this problem you can [contact Support](#azure-integration-support).
 * *Region not supported* - The Azure resource must be in one of the [supported regions](#ec-supported-regions).
 
-$$$azure-integration-ingest-metrics$$$
-### Ingesting metrics from Azure services
+$$$azure-integration-ingest-metrics$$$Ingesting metrics from Azure services
 
 Metrics are not supported as part of the current {{ecloud}} Azure Native ISV Service. This will be added in a future release.
 
 Metrics can still be collected from all Azure services using Metricbeat. For details, check [Ingest other Azure metrics using the Metricbeat Azure module](../../../solutions/observability/cloud/monitor-microsoft-azure-with-beats.md#azure-step-four).
 
-$$$azure-integration-vm-extensions$$$
-### Monitoring Azure virtual machines
+$$$azure-integration-vm-extensions$$$Monitoring Azure virtual machines
 
 You can monitor Azure virtual machines by installing the Elastic Agent VM extension. Once enabled:
 
@@ -411,8 +396,7 @@ To enable or disable a VM extension:
 
 This section describes some scenarios that you may experience onboarding to {{ecloud}} through the Azure console. If you’re running into issues you can always [get support](#azure-integration-support).
 
-$$$azure-integration-authorization-access$$$
-### Authorization errors related to required access
+$$$azure-integration-authorization-access$$$Authorization errors related to required access
 
 When trying to access {{ecloud}} resources, you may get an error message indicating that *the user must have the required authorization.*
 
@@ -422,8 +406,7 @@ When trying to access {{ecloud}} resources, you may get an error message indicat
 
 Elastic is not currently integrated with Azure user management, so sharing deployment resources through the Cloud console with other Azure users is not possible. However, sharing direct access to these resources is possible. For details, check [Is the {{ecloud}} Azure Native ISV Service connected with Azure user management?](#azure-integration-azure-user-management).
 
-$$$azure-integration-deployment-failed-network-security$$$
-### Deployment creation failures related to network security policies
+$$$azure-integration-deployment-failed-network-security$$$Deployment creation failures related to network security policies
 
 When creating a new {{ecloud}} deployment, the deployment creation may fail with a `Your deployment failed` error. The process can result in:
 
@@ -460,7 +443,7 @@ This blocks required traffic and prevents the Azure Native ISV Service component
 If the deployment continues to fail, contact Elastic Support.
 
 
-### Single sign-on (SSO) failures $$$azure-integration-failed-sso$$$
+$$$azure-integration-failed-sso$$$Single sign-on (SSO) failures
 
 If SSO into your {{ecloud}} deployment fails, required Azure permissions may be missing.
 
@@ -470,7 +453,7 @@ https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/configure-us
 Contact your Azure Administrator to adjust permissions.
 
 
-### Deployments visible in Elastic Cloud but not in the Azure Portal  $$$azure-integration-cant-see-deployment$$$
+$$$azure-integration-cant-see-deployment$$$Deployments visible in Elastic Cloud but not in the Azure Portal
 
 Deployments created using:
 
@@ -483,7 +466,7 @@ Deployments created using:
 NOTE: Adding Azure-native metadata manually (such as copying tags) will **break deletion from Elastic Cloud**.
 
 
-### Log ingestion issues  $$$azure-integration-logs-not-ingested$$$
+$$$azure-integration-logs-not-ingested$$$Log ingestion issues
 
 Log ingestion may fail if:
 
@@ -499,7 +482,7 @@ If issues persist, contact Elastic Support.
 
 ## Getting support [ec-getting-support]
 
-### Getting support  $$$azure-integration-support$$$
+$$$azure-integration-support$$$Getting support
 
 Support is provided by Elastic.
 
@@ -518,7 +501,7 @@ If you cannot access the Elastic support interface (for example, your deployment
 support@elastic.co
 
 
-### Changing subscription or support level  $$$azure-integration-change-level$$$
+$$$azure-integration-change-level$$$Changing subscription or support level
 
 Your support level is determined by your Elastic subscription level.
 
