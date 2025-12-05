@@ -36,13 +36,11 @@ Ready to try [{{agent}}](/reference/fleet/index.md)? Check out the [installation
 
 **Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/reference/fleet/beats-agent-comparison.md) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
 
-
 ## OpenTelemetry (OTel) collectors [ingest-otel]
 
-[OpenTelemetry](https://opentelemetry.io/docs) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project.
-
-In addition to supporting upstream OTel development, Elastic provides [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md), specifically designed to work with Elastic Observability. We’re also expanding [{{agent}}](/reference/fleet/index.md) to use OTel collection.
-
+:::{include} /manage-data/_snippets/otel.md
+:::
+We’re also expanding [{{agent}}](/reference/fleet/index.md) to use OTel collection.
 
 ## Logstash [ingest-logstash]
 

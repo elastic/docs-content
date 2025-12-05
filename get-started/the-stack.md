@@ -86,7 +86,7 @@ With {{kib}}, you can:
 - Analyze geospatial data using the powerful **Maps** application.
 - Manage resources such as processors, pipelines, data streams, trained models, and more.
 
-Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [](/explore-analyze/ai-assistant.md).
+Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [AI assistants](explore-analyze/ai-features/ai-assistant.md).
 
 {{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
@@ -124,11 +124,10 @@ This makes it easy to pinpoint and fix performance problems quickly.
 
 ### OpenTelemetry Collector [stack-components-otel]
 
-[OpenTelemetry](https://opentelemetry.io/docs)(OTel) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project.
+:::{include} /manage-data/_snippets/otel.md
+:::
 
-In addition to supporting upstream OTel development, Elastic provides Elastic Distributions of OpenTelemetry (EDOT), specifically designed to work with {{product.observability}}.
-
-[Learn more about EDOT](opentelemetry://reference/index.md).
+With EDOT, you can use vendor-neutral instrumentation and stream native OTel data such as standardized traces, metrics, and logs without proprietary agents.
 
 ### {{beats}} [stack-components-beats]
 
