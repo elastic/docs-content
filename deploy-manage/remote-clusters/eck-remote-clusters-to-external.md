@@ -14,12 +14,12 @@ sub:
 
 These steps describe how to configure a remote cluster connection from an {{es}} cluster managed by {{eck}} (ECK) to an external {{es}} cluster, where external refers to any cluster not managed by the same ECK operator. The remote cluster can be self-managed, part of an {{ech}} (ECH) or {{ece}} (ECE) deployment, or managed by a different ECK operator.
 
-Once the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+After the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 :::{include} _snippets/terminology.md
 :::
 
-In this scenario, most of the configuration must be performed manually, as {{eck}} cannot orchestrate the setup across both clusters. For fully automated configuration between ECK-managed clusters, refer to [Connect to {{es}} clusters in the same ECK environment](./eck-remote-clusters.md).
+In this scenario, most of the configuration must be performed manually, as {{eck}} cannot orchestrate the setup across both clusters. For fully automated configuration between ECK-managed clusters, refer to [](./eck-remote-clusters.md).
 
 For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md#eck-rcs-setup).
 
@@ -279,7 +279,7 @@ PUT /_cluster/settings
 
 For a full list of available client connection settings, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md).
 
-## Verify remote cluster connection
+## Verify the remote cluster connection
 
 From the local cluster, check the status of the connection to the remote cluster. If you encounter issues, refer to the [Troubleshooting guide](/troubleshoot/elasticsearch/remote-clusters.md).
 

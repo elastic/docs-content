@@ -11,7 +11,9 @@ products:
 
 # Connect to {{es}} clusters in the same ECK environment [k8s-remote-clusters-connect-internal]
 
-These steps describe how to configure remote clusters between two {{es}} clusters that are managed by the same {{eck}} (ECK) operator. Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md). For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md).
+These steps describe how to configure remote clusters between two {{es}} clusters that are managed by the same {{eck}} (ECK) operator. 
+
+After the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md). For other remote cluster scenarios with ECK, refer to [](./eck-remote-clusters-landing.md).
 
 ::::{note}
 The remote clusters feature requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
@@ -20,7 +22,7 @@ The remote clusters feature requires a valid Enterprise license or Enterprise tr
 ::::{include} _snippets/terminology.md
 ::::
 
-To create a remote cluster connection to another {{es}} cluster deployed in the same ECK environmnt, specify the `remoteClusters` attribute in your {{es}} spec.
+To create a remote cluster connection to another {{es}} cluster deployed in the same ECK environment, specify the `remoteClusters` attribute in your {{es}} spec.
 
 ## Security models [k8s_security_models]
 
@@ -83,7 +85,7 @@ spec:
 2. The namespace declaration can be omitted if both clusters reside in the same namespace.
 3. This example requires the [{{kib}} sample data](/explore-analyze/index.md#gs-get-data-into-kibana).
 
-You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/remoteclusters).
+You can find a complete example in the [{{eck}} repository's recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/remoteclusters).
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)

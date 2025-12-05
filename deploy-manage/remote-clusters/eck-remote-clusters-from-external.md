@@ -98,7 +98,7 @@ To allow mutual TLS authentication between the clusters:
     ```
 
     ::::{note}
-    Beware of copying the source secret as-is into a different namespace. Check [Common Problems: Owner References](../../troubleshoot/deployments/cloud-on-k8s/common-problems.md#k8s-common-problems-owner-refs) for more information.
+    Beware of copying the source secret as-is into a different namespace. Refer to [Copying secrets with Owner References](../../troubleshoot/deployments/cloud-on-k8s/common-problems.md#k8s-common-problems-owner-refs) for more information.
     ::::
 
     ::::{note}

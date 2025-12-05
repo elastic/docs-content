@@ -4,7 +4,7 @@
     2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic can be bound to the local interface, and remote clusters running on other machines can't connect.
     3. Optionally, configure the remote server port using [`remote_cluster.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (defaults to `9443`).
 
-2. Next, generate a certificate authority (CA) and a server certificate/key pair. On one of the nodes of the remote cluster, from the directory where {{es}} has been installed:
+2. Generate a certificate authority (CA) and a server certificate/key pair. On one of the nodes of the remote cluster, from the directory where {{es}} has been installed:
 
     1. Create a CA, if you don't have a CA already:
 
@@ -33,12 +33,12 @@
         * Use the `--dns` option to specify the relevant DNS name for the certificate. You can specify it multiple times for multiple DNS.
         * Use the `--ip` option to specify the relevant IP address for the certificate. You can specify it multiple times for multiple IP addresses.
 
-    4. If the remote cluster has multiple nodes, you can either:
+    4. If the remote cluster has multiple nodes, you can do one of the following:
 
-        * create a single wildcard certificate for all nodes;
-        * or, create separate certificates for each node either manually or in batch with the [silent mode](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md#certutil-silent).
+        * Create a single wildcard certificate for all nodes.
+        * Create separate certificates for each node either manually or in batch with the [silent mode](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md#certutil-silent).
 
-3. On every node of the remote cluster:
+3. On every node of the remote cluster, do the following:
 
     1. Copy the `cross-cluster.p12` file from the earlier step to the `config` directory. If you didn't create a wildcard certificate, make sure you copy the correct node-specific p12 file.
     2. Add following configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
