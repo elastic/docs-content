@@ -288,7 +288,7 @@ To add a remote cluster, use the [cluster update settings API](https://www.elast
   ::::::
 
   ::::::{applies-item} eck:
-  Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs).
+  Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs) on port `9443`.
 
   If your environment presents the ECK-managed certificates during the TLS handshake, configure the **server_name** field as `<cluster-name>-es-remote-cluster.<namespace>.svc`. Otherwise, the local cluster cannot establish the connection due to SSL trust errors.
   ::::::
