@@ -69,9 +69,12 @@ docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{{version.stack}
 
 ### Complete flavor
 
-To run {{agent}} as a Synthetic Private Location using only lightweight monitors, use the `elastic-agent` (and the `wolfi` variant).
+The Docker image you should use to run {{agent}} as a Synthetic Private Location depends on the types of monitors that will run in that location:
 
-To run {{agent}} as a Synthetic Private Location using both lightweight and browser monitors, run the following docker pull command to fetch the `elastic-agent-complete` image:
+* If running _only_ lightweight monitors, use the `elastic-agent` image (and the `wolfi` variant).
+* If running _any_ browser monitors, use the `elastic-agent-complete` image.
+
+Run the following docker pull command to fetch the `elastic-agent-complete` image:
 
 ```terminal subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
