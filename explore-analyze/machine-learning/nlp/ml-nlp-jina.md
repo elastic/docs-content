@@ -101,3 +101,5 @@ POST _inference/rerank/eis-jina-reranker-v2
   "query": "star wars main character"
 }
 ```
+
+### Performance considerations
