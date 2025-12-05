@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-cloud.html
+applies_to:
+  deployment:
+    ess: ga
+    ece: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent

@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
+applies_to:
+  deployment:
+    ess: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -209,8 +213,6 @@ A series of scale performance tests are regularly executed in order to verify th
 **{{agent}} policies**
 
 A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If more policies are configured, UI performance might be impacted. The maximum number of policies is not affected by the number of spaces in which the policies are used.
-
-If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
 **{{agents}}**
 

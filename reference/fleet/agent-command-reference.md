@@ -2,6 +2,9 @@
 navigation_title: Command reference
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -21,6 +24,11 @@ Note the following restrictions for running {{agent}} commands:
 * Running {{agent}} commands using the Windows PowerShell ISE is not supported.
 
 ::::
+
+:::{admonition} Command options for {{fleet-server}}
+:applies_to: serverless: unavailable
+Because self-managed {{fleet-server}} is not supported on {{serverless-full}}, the `elastic-agent enroll` and `elastic-agent install` options that configure {{fleet-server}} are not available on {{serverless-short}}.
+:::
 
 
 * [diagnostics](#elastic-agent-diagnostics-command)

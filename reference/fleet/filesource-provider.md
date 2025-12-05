@@ -1,6 +1,7 @@
 ---
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

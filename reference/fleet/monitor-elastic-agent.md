@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html
 applies_to:
-  stack: ga 
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
