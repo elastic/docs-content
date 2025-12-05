@@ -2,7 +2,7 @@
 navigation_title: Connectivity issues
 description: Troubleshoot connectivity issues between EDOT SDKs, the EDOT Collector, and Elastic.
 applies_to:
-  serverless: all
+  serverless: ga
   product:
       edot_collector: ga  
 products:
@@ -75,14 +75,14 @@ Connectivity errors usually trace back to one of the following issues:
 Errors can look similar whether they come from an SDK or the Collector. Identifying the source helps you isolate the problem.
 
 :::{note}
-Note: Some SDKs support setting a proxy directly (for example, using `HTTPS_PROXY`). Refer to [Proxy settings for EDOT SDKs](../opentelemetry/edot-sdks/proxy.md) for details.
+Note: Some SDKs support setting a proxy directly (for example, using `HTTPS_PROXY`). Refer to [Proxy settings for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md) for details.
 :::
 
 #### SDK
 
 Application logs report failures when the SDK cannot send data to the Collector or directly to Elastic. These often appear as `connection refused` or `timeout` messages. If seen, verify that the Collector endpoint is reachable.
 
-For guidance on enabling logs in your SDK, see [Enable SDK debug logging](../opentelemetry/edot-sdks/enable-debug-logging.md).
+For guidance on enabling logs in your SDK, refer to [Enable SDK debug logging](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 Example (Java SDK):
 
@@ -154,6 +154,6 @@ If basic checks and configuration look correct but issues persist, collect more 
 
 * Review proxy settings. For more information, refer to [Proxy settings](opentelemetry://reference/edot-collector/config/proxy.md).
 
-* If ports are confirmed open but errors persist, [enable debug logging in the SDK](../opentelemetry/edot-sdks/enable-debug-logging.md) or [in the Collector](../opentelemetry/edot-collector/enable-debug-logging.md) for more detail.
+* If ports are confirmed open but errors persist, [enable debug logging in the SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) or [in the Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) for more detail.
 
 * Contact your network administrator with test results if you suspect firewall restrictions.
