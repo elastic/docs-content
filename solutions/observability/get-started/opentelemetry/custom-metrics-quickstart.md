@@ -36,16 +36,16 @@ If you don’t have a metrics source, you can use the Collector’s built-in `pr
 
 ::::{step} Create an Elastic API key
 
-In {{product.observability}}:
+In your {{product.observability}} deployment:
 
-1. Go to **{{manage-app}}** > **API keys**.
+1. Go to **{{manage-app}}** > **Stack Management** > **API keys**.
 2. Create a new API key and copy the value.
 3. Note your deployment's OTLP ingest endpoint.
 ::::
 
 ::::{step} Run the EDOT Collector with a minimal metrics pipeline
 
-Use the following Collector configuration to receive OTLP metrics and export them to Elastic:
+Update the `collector-config.yaml` file with the following Collector configuration to receive OTLP metrics and export them to Elastic:
 
 ```yaml
 receivers:
@@ -58,25 +58,53 @@ processors:
   batch: {}
 
 exporters:
-  elastic:
-    endpoints: ["<OTLP_ENDPOINT>"]
-    api_key: "<YOUR_API_KEY>"
+ elasticsearch:
+   endpoints: ["<OTLP_ENDPOINT>"]
+   api_key: "<YOUR_API_KEY>"
+   mapping:
+     mode: otel
+   metrics_dynamic_index:
+     enabled: true
 
 service:
-  pipelines:
-    metrics:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [elastic]
+ pipelines:
+   metrics:
+     receivers: [otlp]
+     processors: [batch]
+     exporters: [elasticsearch]
 ```
 
-Alternatively, you can run with Docker:
+Run the configuration with Docker:
 
 ```bash
 docker run --rm \
   -v $(pwd)/collector-config.yaml:/etc/otel/config.yaml \
   -p 4317:4317 -p 4318:4318 \
   docker.elastic.co/observability/otel-collector:latest
+```
+::::
+
+::::{step} Optional: Port conflict handling
+
+If you encounter a port conflict error like:
+
+```bash
+bind: address already in use
+```
+
+Add the following to the `service` section:
+
+```yaml
+service:
+ telemetry:
+   metrics:
+     address: localhost:8889  # Using different port if 8888 is already in use
+```
+
+You can also verify if the Collector is listening on the correct ports:
+
+```bash
+lsof -i :4318 -i :4317
 ```
 ::::
 
@@ -110,7 +138,7 @@ input("Sending metrics periodically... press Enter to stop")
 
 In {{kib}}:
 
-1. Go to **Metrics** > **Explorer**.
+1. Go to **Infrastructure** > **Metrics Explorer**.
 2. Search for `custom.temperature`.
 3. Visualize or aggregate the metric data.
 ::::
@@ -133,4 +161,5 @@ You can expand your metrics collection setup in several ways:
 
 - Add more receivers to collect additional metrics
 - Configure the same Collector to send logs and traces alongside metrics
-- Learn more about the [Elastic Distribution of the OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md)
+
+To learn more, refer to the [Elastic Distribution of the OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) documentation.
