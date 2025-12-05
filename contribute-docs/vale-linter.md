@@ -88,7 +88,7 @@ The extension automatically runs Vale checks when you save a document. Issues ar
 ::::::
 
 ## Style rules reference [elastic-style-rules-reference]
-
+<!-- vale off -->
 The following table lists all the rules included in the [Elastic Vale style package](https://github.com/elastic/vale-rules/tree/main/styles/Elastic):
 
 | Rule        | Description |
@@ -123,6 +123,7 @@ The following table lists all the rules included in the [Elastic Vale style pack
 | [WordChoice](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/WordChoice.yml) | Suggests preferred word choices (for example, "stop" instead of "abort", "allowlist" instead of "whitelist"). Refer to [Word choice](./style-guide/word-choice.md). |
 | [Wordiness](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Wordiness.yml) | Suggests concise alternatives to wordy phrases. Refer to [Write like a minimalist](./style-guide/voice-tone.md#write-like-a-minimalist). |
 
+<!-- vale on -->
 ## Vocabularies [elastic-vocabularies]
 
 The Elastic Vale style uses [Vale vocabularies](https://vale.sh/docs/keys/vocab) to recognize product and feature names. Vocabularies help Vale avoid false positives when checking capitalization and spelling rules.
