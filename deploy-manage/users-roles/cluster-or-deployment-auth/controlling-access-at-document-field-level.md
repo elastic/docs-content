@@ -28,12 +28,18 @@ A role can define both field and document level permissions on a per-index basis
 On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security).
 
 You'll also learn the following:
-* How [multiple roles with document and field level security](#multiple-roles-dls-fls) interact
+* How [multiple roles with document and field level security](#multiple-roles-dls-fls) interact.
 * Considerations for using document and field level security when [searching across clusters using cross-cluster API keys](#ccx-apikeys-dls-fls).
 
-The examples on this page use the {{stack}} [Role management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security). However, you can add document and field level security [anywhere you manage cluster-level roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) and {{serverless-short}} project roles.
+You can use an API to manage roles:
+* In an {{stack}} deployment, use the [security](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
+* In {{serverless-full}}, use the [security](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-put-role) API.
 
-In {{serverless-full}}, you can only manage document and field level security using the {{ecloud}} console. However, document-level security is still managed using queries, and you can use the queries on this page as a guideline. [Learn more about {{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
+The examples on this page include API requests and equivalent {{kib}} steps where applicable.
+
+In {{serverless-full}}, you can manage document and field level security using the {{ecloud}} console or the API. [Learn more about {{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
+
+In {{ECK}} and self-managed deployments, you can also [manage custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) using local files. Although this option is not described on this page, document-level security is still managed using queries, and you can use the queries on this page as a guideline.
 
 
 ## Document level security [document-level-security]
@@ -55,8 +61,8 @@ Omitting the `query` parameter entirely disables document level security for the
 
 :::::{tab-set}
 :group: field-document
-::::{tab-item} {{stack}}
-:sync: stack
+::::{tab-item} API
+:sync: api
 The following role definition grants read access only to documents that belong to the `click` category within all the `events-*` data streams and indices:
 
 ```console
@@ -109,8 +115,8 @@ POST /_security/role/dept_role
 ```
 :::: 
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{tab-item} {{kib}}
+:sync: kibana
 To configure document-level security (DLS), you create a custom role where you define the documents that this role grants access to, using the [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax:
 
 1. In {{kib}}, go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -152,8 +158,8 @@ For example, the following role query uses a template to insert the username of 
 
 :::::{tab-set}
 :group: field-document
-::::{tab-item} {{stack}}
-:sync: stack
+::::{tab-item} API
+:sync: api
 
 ```console
 POST /_security/role/example1
@@ -176,8 +182,8 @@ POST /_security/role/example1
 
 ::::
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{tab-item} {{kib}}
+:sync: kibana
 
 ```JSON
 {
@@ -206,8 +212,8 @@ You can also access custom user metadata. For example, if you maintain a `group_
 
 :::::{tab-set}
 :group: field-document
-::::{tab-item} {{stack}}
-:sync: stack
+::::{tab-item} API
+:sync: api
 
 ```console
 POST /_security/role/example2
@@ -229,8 +235,8 @@ POST /_security/role/example2
 ```
 ::::
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{tab-item} {{kib}}
+:sync: kibana
 
 ```JSON
 {
@@ -249,8 +255,8 @@ POST /_security/role/example2
 If your metadata field contains an object or array, you can access it using the `{{#toJson}}parameter{{/toJson}}` function.
 :::::{tab-set}
 :group: field-document
-::::{tab-item} {{stack}}
-:sync: stack
+::::{tab-item} API
+:sync: api
 
 ```console
 POST /_security/role/example3
@@ -270,8 +276,8 @@ POST /_security/role/example3
 ```
 ::::
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{tab-item} {{kib}}
+:sync: kibana
 
 ```JSON
 {
@@ -305,8 +311,8 @@ To enable field level security, specify the fields that each role can access as 
 
 :::::{tab-set}
 :group: field-document
-::::{tab-item} {{stack}}
-:sync: stack
+::::{tab-item} API
+:sync: api
 The following role definition grants read access only to the `category`, `@timestamp`, and `message` fields in all the `events-*` data streams and indices.
 
 ```console
@@ -493,8 +499,8 @@ The resulting permission is equal to:
 
 ::::
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{tab-item} {{kib}}
+:sync: kibana
 To configure field-level security (FLS), you create a custom role where you define the specific fields that this role grants or denies access to:
 
 1. In {{kib}}, go to the **Custom Roles** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
