@@ -71,10 +71,19 @@ Here are estimates for different element types and quantization levels:
 
 If you're using HNSW, the graph must also be in memory. To estimate the required bytes, use the following formula below. The default value for the HNSW `m` parameter is `16`.
 
+For `element_type: float`:
 ```{math}
 \begin{align*}
 estimated\ bytes &= num\_vectors \times 4 \times m \\
 &= num\_vectors \times 4 \times 16
+\end{align*}
+```
+
+For `element_type: bfloat16`:
+```{math}
+\begin{align*}
+estimated\ bytes &= num\_vectors \times 2 \times m \\
+&= num\_vectors \times 2 \times 16
 \end{align*}
 ```
 

@@ -327,8 +327,7 @@ POST quantized-image-index/_search
 ```
 
 ### BFloat16 vector encoding [knn-search-bfloat16]
-```
-{applies_to}
+```{applies_to}
 stack: ga 9.3
 ```
 Instead of storing raw vectors as 4-byte values, you can use `element_type: bfloat16` to store each dimension as a 2-byte value. This can be useful if your indexed vectors are at bfloat16 precision already, or if you want to reduce the disk space required to store vector data. When this element type is used, {{es}} automatically rounds 4-byte float values to 2-byte bfloat16 values when indexing vectors.
