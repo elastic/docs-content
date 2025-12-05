@@ -23,7 +23,7 @@ As the model runs on EIS, Elastic's own infrastructure, no ML node scaling and c
 
 The `jina-embedings-v3` model supports input lengths of up to 8192 tokens and produces 1024-dimension embeddings by default. It uses task-specific adapters to optimize embeddings for different use cases (such as retrieval or classification), and includes support for Matryoshka Representation Learning, which allows you to truncate embeddings to fewer dimensions with minimal loss in quality.
 
-For more info, refer to the [model card](https://huggingface.co/jinaai/jina-embeddings-v3) on Hugging Face.
+For more information about the model, refer to the [model card](https://huggingface.co/jinaai/jina-embeddings-v3) on Hugging Face.
 
 ### Dense vector embeddings
 
@@ -69,7 +69,9 @@ For larger fields that exceed this limit - for example, `body_content` on web cr
 
 ## `jina-reranker-v2` [jina-reranker-v2]
 
-[`jina-reranker-v2`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) is a multilingual cross-encoder model helps you to improve search releavence across over 100 languages and various data types. The model significantly improve information retrieval in multilingual environments. `jina-reranker-v2` is available out-of-the-box in supporting Elastic deployments using the {{es}} Inference API. You can use the model to improve existing search applications like hybrid semantic search, retrieval augmented generation (RAG), and more. You can use the model through Elastic {{infer-cap}} Service (EIS), Elastic's own infrastructure, without the need of managing infrastructure and model resources. For more information about the model, refer to the [model card](https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual) on Hugging Face.
+[`jina-reranker-v2`](https://jina.ai/models/jina-reranker-v2-base-multilingual/) is a multilingual cross-encoder model helps you to improve search releavence across over 100 languages and various data types. The model significantly improve information retrieval in multilingual environments. `jina-reranker-v2` is available out-of-the-box in supporting Elastic deployments using the {{es}} Inference API. You can use the model to improve existing search applications like hybrid semantic search, retrieval augmented generation (RAG), and more. You can use the model through Elastic {{infer-cap}} Service (EIS), Elastic's own infrastructure, without the need of managing infrastructure and model resources.
+
+For more information about the model, refer to the [model card](https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual) on Hugging Face.
 
 ### Requirements [jina-reranker-v2-req]
 
