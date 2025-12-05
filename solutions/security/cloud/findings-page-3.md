@@ -14,7 +14,7 @@ products:
 
 # View and manage CNVM vulnerabilities in Findings [security-vuln-management-findings]
 
-The **Vulnerabilities** tab on the **Findings** page displays the vulnerabilities detected by the [CNVM integration](cloud-native-vulnerability-management.md), as well as those detected by [third-party integrations](integrations/ingest-third-party-cloud-security-data.md).
+The **Vulnerabilities** tab on the **Findings** page displays the vulnerabilities detected by the [CNVM integration](cloud-native-vulnerability-management.md), as well as those detected by [third-party integrations](integrations/ingest-third-party-security-data.md).
 
 :::{image} /solutions/images/serverless--cloud-native-security-cnvm-findings-page.png
 :alt: The Vulnerabilities tab of the Findings page
