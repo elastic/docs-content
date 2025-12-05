@@ -36,7 +36,7 @@ If you have a planned outage, maintenance windows prevent rules from generating 
 
 By combining these tools, {{product.elasticsearch}} and {{product.kibana}} enable incident response workflows, helping teams to detect, investigate, and resolve issues efficiently.
 
-## {{watcher}} [watcher-overview]
+## {{watcher}} [watcher]
 ```{applies_to}
 serverless: unavailable
 ```
