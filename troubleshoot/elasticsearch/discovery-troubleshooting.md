@@ -25,6 +25,33 @@ If the cluster has no elected master node for more than a few seconds, the maste
 
 The following sections describe some common discovery and election problems.
 
+## First-time cluster formation issues [discovery-bootstrap]
+
+If your cluster has never successfully formed before and you see this message in the logs:
+
+`Master node not discovered yet this node has not previously joined a bootstrapped cluster`
+
+This usually indicates a misconfiguration in your initial cluster settings. Note this is for self-hosted instances. In this case, verify the following:
+
+1. The `discovery.seed_hosts` setting must contain the IP addresses or hostnames of other nodes in the cluster. At least one of these hosts must be reachable for discovery to work.
+```sh
+    discovery.seed_hosts:
+      - 192.168.1.1:9300
+      - 192.168.1.2
+      - nodes.mycluster.com
+```
+2. For the first cluster startup, you must also configure `cluster.initial_master_nodes` with the node names (not IPs) of the initial set of master-eligible nodes. This setting is required when bootstrapping a new cluster and is ignored on subsequent starts.
+```sh
+    cluster.initial_master_nodes:
+      - master-node-name1
+      - master-node-name2
+      - master-node-name3
+```
+If this setting is omitted during the first cluster formation, no master election can occur.
+
+Only nodes with `node.master: true` are eligible to become master nodes and participate in elections. Make sure the nodes listed in `cluster.initial_master_nodes` are properly configured as master-eligible. Nodes with `node.voting_only: true` can participate in voting but cannot become master themselves. See [this guide](/deploy-manage/distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md) for more information.
+
+An {{es}} cluster requires a quorum of master-eligible nodes to elect a master. A quorum is defined as `(N/2 + 1)`, where N is the number of master-eligible nodes. If fewer than this number are available, the cluster will not elect a master and will not form. This quorum mechanism helps prevent split-brain scenarios where multiple nodes mistakenly believe they are the master. For more details, see [Quorum-based decision making](../../deploy-manage/distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md).
 
 ## No master is elected [discovery-no-master]
 
@@ -51,7 +78,7 @@ If the logs suggest that discovery or master elections are failing due to timeou
 
     The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There may also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. See [Networking threading model](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-threading-model) for more information.
 
-
+If your cluster has recently lost one or more master-eligible nodes and the logs indicate that no master can be elected, verify that a quorum still exists. A master election requires a majority of the master-eligible nodes to be available (for example, 2 out of 3, or 3 out of 5). If the quorum cannot be met, the cluster will remain unformed until enough nodes are restored. This quorum mechanism is essential for ensuring consistency and preventing split-brain conditions.
 
 ## Master is elected but unstable [discovery-master-unstable]
 
@@ -61,6 +88,10 @@ When a node wins the master election, it logs a message containing `elected-as-m
 * VM pauses also affect other processes on the same host. A VM pause also typically causes a discontinuity in the system clock, which {{es}} will report in its logs. If you see evidence of other processes pausing at the same time, or unexpected clock discontinuities, investigate the infrastructure on which you are running {{es}}.
 * Packet captures will reveal system-level and network-level faults, especially if you capture the network traffic simultaneously at all relevant nodes and analyse it alongside the {{es}} logs from those nodes. You should be able to observe any retransmissions, packet loss, or other delays on the connections between the nodes.
 * Long waits for particular threads to be available can be identified by taking stack dumps of the main {{es}} process (for example, using `jstack`) or a profiling trace (for example, using Java Flight Recorder) in the few seconds leading up to the relevant log message.
+
+If your master node is also acting as a data node under heavy indexing or search load, this can cause instability. In clusters under high demand, it is recommended to use [dedicated master nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards.md/node-roles#dedicated-master-node)—nodes configured with `node.master: true` and `node.data: false`-to reduce load and improve election reliability.
+
+Additionally, ensure that the master node is not affected by resource contention from other applications. This is especially important when running in containers (e.g., Docker or Kubernetes), where CPU throttling, memory limits, or pod evictions can disrupt stability. Ensure adequate resource allocation and isolate master nodes from other workloads whenever possible.
 
     The [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you’re trying to diagnose. `jstack` is much more reliable since it doesn’t require any JVM threads.
 
