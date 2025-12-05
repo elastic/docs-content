@@ -4,7 +4,7 @@ navigation_title: Vale linter
 
 # Elastic style guide for Vale
 
-[Vale](https://github.com/errata-ai/vale) is a prose linter that checks documentation in Markdown format against the [Elastic style guide](/contribute-docs/style-guide/index.md). The Elastic documentation is checked against the style guide when you commit changes to a pull request.
+[Vale](https://github.com/errata-ai/vale) is a prose linter that checks documentation in Markdown format against the [Elastic style guide](/contribute-docs/style-guide/index.md). The documentation is checked when you commit changes to a pull request.
 
 Follow the instructions on this page to:
 
@@ -13,7 +13,7 @@ Follow the instructions on this page to:
 
 ## Vale checks in pull requests [vale-checks-in-pull-requests]
 
-The Vale action for GitHub runs Vale checks on pull requests that include documentation changes. The action report any style issues found in modified lines in the form of a sticky comment.
+The Vale action for GitHub runs Vale checks on pull requests that include documentation changes. The action reports any style issues found in modified lines in the form of a sticky comment.
 
 :::{image} ./images/vale-sticky-comment.png
 :alt: Vale comment in pull request
@@ -70,9 +70,7 @@ To update the Elastic style guide to the latest rules, rerun the installation sc
 :::::
 
 :::::{step} Install the IDE extension
-Install the [Vale VSCode](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode) extension to view Vale checks when saving a document. 
-
-The extension is also available for other editors that support the Open VSX Registry, like Cursor.
+Install the [Vale VSCode](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode) extension. The extension is also available for other editors that support the Open VSX Registry, like Cursor.
 :::::
 
 :::::{step} Open any Markdown file
