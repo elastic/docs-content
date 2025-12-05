@@ -218,53 +218,27 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 This guide uses the `proxy` connection mode, which is the only practical option when connecting to {{ech}}, {{ece}}, or {{eck}} clusters from outside their Kubernetes environment.
 
 If the remote cluster is self-managed (or another ECK cluster within the same Kubernetes network) and the local cluster can reach the remote nodes’ publish addresses directly, you can use `sniff` mode instead. Refer to [connection modes](./connection-modes.md) documentation for details on each mode and their connectivity requirements.
-
-If you intend to use `sniff` mode, configure it through the [{{es}} API](#using-api). {{kib}} UI only supports `proxy` mode.
 :::
 
 ### Using {{kib}} [using-kibana]
 
+% ECK and self-managed clusters present a different Kibana UI when adding remote clusters than ECE/ECH deployments
+
 1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Add a remote cluster**.
 3. In **Select connection type**, choose the **API keys** authentication mechanism and click **Next**.
+4. Set the **Remote cluster name**: This name must match the `<remote-cluster-name>` you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
 
-4. In **Add connection information**, fill in the following fields:
+5. In **Connection mode**, select **Manually enter proxy address and server name** to enable the proxy mode and fill in the following fields:
 
-    * **Remote cluster name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
-
-      This alias must match the **Remote cluster name** you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
-
-    * **Remote address**: Identify the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port:
+    * **Proxy address**: Identify the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port:
         
-      :::::::{applies-switch}
-
-      ::::::{applies-item} ess:
-      Obtain the endpoint from the **Security** page of the ECH deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section, and replace its port with `9443`, which is the port used by the remote cluster server interface.
-
-      ::::::
-
-      ::::::{applies-item} ece:
-      Obtain the endpoint from the **Security** page of the ECE deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters**, and replace its port with `9443`, which is the port used by the remote cluster server interface.
-      ::::::
-
-      ::::::{applies-item} eck:
-      Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs).
-
-      If your environment presents the ECK-managed certificates during the TLS handshake, configure the **TLS server name** advanced option as `<cluster-name>-es-remote-cluster.<namespace>.svc`. Otherwise, the local cluster cannot establish the connection due to SSL trust errors.
-      ::::::
-
-      ::::::{applies-item} self:
-      Use the address of a TCP (layer 4) reverse proxy configured in your environment to route connections to one or more nodes of the cluster on port `9443`.
-
-      If you intend to configure `sniff` mode with a list of {{es}} node addresses as `seeds` , use the [{{es}} API](#using-api) instead.
-      ::::::
-      :::::::
+      :::{include} _snippets/eck_rcs_external_endpoint_switch.md
+      :::
 
       Starting with {{kib}} 9.2, this field also supports IPv6 addresses. When using an IPv6 address, enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
 
-    * **Configure advanced options** (optional): Expand this section if you need to customize additional settings.
-      * **TLS server name**: Specify a value if the certificate presented by the remote cluster is signed for a different name than the remote address.
-      * **Socket connections**: Define the number of connections to open with the remote cluster.
+    * **Server name (optional)**: Specify a value if the TLS certificate presented by the remote cluster is signed for a different name than the remote address.
 
 5. Click **Next**.
 6. In **Confirm setup**, click **Add remote cluster** (you have already established trust in a previous step).
@@ -273,32 +247,12 @@ If you intend to use `sniff` mode, configure it through the [{{es}} API](#using-
 
 To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
-* **Remote cluster alias**: The cluster alias must match the one you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
+* **Remote cluster alias**: The cluster alias must match the `<remote-cluster-name>` you configured when [adding the API key in the local cluster's keystore](#configure-local-cluster).
 * **mode**: Use `proxy` mode in almost all cases. `sniff` mode is only applicable when the remote cluster is self-managed and the local cluster can reach the nodes’ publish addresses directly.
 * **proxy_address**: Identify the endpoint of the remote cluster, including the hostname, FQDN, or IP address, and the port. Both IPv4 and IPv6 addresses are supported.
 
-  :::::::{applies-switch}
-
-  ::::::{applies-item} ess:
-  Obtain the endpoint from the **Security** page of the ECH deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section, and replace its port with `9443`, which is the port used by the remote cluster server interface.
-  ::::::
-
-  ::::::{applies-item} ece:
-  Obtain the endpoint from the **Security** page of the ECE deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters**, and replace its port with `9443`, which is the port used by the remote cluster server interface.
-  ::::::
-
-  ::::::{applies-item} eck:
-  Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs) on port `9443`.
-
-  If your environment presents the ECK-managed certificates during the TLS handshake, configure the **server_name** field as `<cluster-name>-es-remote-cluster.<namespace>.svc`. Otherwise, the local cluster cannot establish the connection due to SSL trust errors.
-  ::::::
-
-  ::::::{applies-item} self:
-  The endpoint depends on your network architecture and the selected connection mode (`sniff` or `proxy`). It can be one or more {{es}} nodes, or a TCP (layer 4) load balancer or reverse proxy in front of the cluster, as long as the local cluster can reach them over port `9443`.
-
-  If you are configuring `sniff` mode, set the **seeds** parameter instead of **proxy_address**. Refer to the [connection modes](./connection-modes.md) documentation for details and connectivity requirements of each mode.
-  ::::::
-  :::::::
+  :::{include} _snippets/eck_rcs_external_endpoint_switch.md
+  :::
 
   When using an IPv6 address, enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
 
