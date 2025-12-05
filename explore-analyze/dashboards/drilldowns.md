@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/drilldowns.html
+description: Add drilldowns to Kibana dashboard panels to navigate to other dashboards, external URLs, or Discover while preserving context and filters.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,18 @@ products:
 
 # Add drilldowns [drilldowns]
 
-Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range or click a pie slice, a filter for the time range or pie slice is applied. Drilldowns let you customize the interactive behavior while keeping the context of the interaction.
+Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range slider or click a pie chart slice, this applies a filter for the time range or pie slice. **Drilldowns** let you customize and extend this interactive behavior by defining what happens when you click on data points, while keeping interaction context such as filters, time ranges, and selected values.
+
+## Requirements [drilldowns-requirements]
+
+To add drilldowns to dashboard panels, you need:
+
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
+* An existing dashboard with at least one panel that supports drilldowns
+* For dashboard drilldowns: A target dashboard to navigate to
+* For URL drilldowns: A URL template that can include dynamic variables from the clicked data
+
+## Drilldown types [drilldown-types]
 
 There are three types of drilldowns you can add to dashboards:
 
