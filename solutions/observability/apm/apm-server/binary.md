@@ -981,3 +981,16 @@ apm-server hard nofile 524287 <1>
 
 1. Replace `apm-server` with the username you will run APM Server process with.
 
+To update the `nofile` ulimit of a running process you need to know the PID
+
+```sh
+pgrep -f apm-server
+```
+
+Then apply the new limits:
+
+```sh
+prlimit --pid PID --nofile=524287:524287 <1>
+```
+1. Replace `PID` with your APM Server process PID.
+
