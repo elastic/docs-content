@@ -20,9 +20,6 @@ The open source foundation of the {{search-platform}} consists of:
 - [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine that handles indexing, querying, and analytics.
 - [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools.
 
-All deployment options (such as {{ecloud}} or self-managed clusters) include {{es}}.
-{{kib}} is not required to use {{es}}, but is included by default in {{serverless-full}}.
-
 Depending on your use case, you might need to install more products that work together with {{es}} and {{kib}} (referred to as the [{{stack}}](https://www.elastic.co/elastic-stack) or ELK). For example:
 
 - [{{agent}}](#stack-components-agent): A lightweight data shipper that collects and forwards data to {{es}}.
@@ -37,7 +34,8 @@ Continue reading to learn how these products work together.
 
 ## Store, search, and analyze [_store]
 
-{{es}} is the distributed storage, search, and analytics engine.
+All deployments include {{es}}.
+{{es}} is the distributed search and analytics engine, scalable data store, and vector database at the heart of all Elastic deployments and solutions.
 You can use the {{es}} clients to access data directly by using common programming languages.
 
 ### {{es}} [stack-components-elasticsearch]
@@ -74,9 +72,12 @@ Both official and community contributed clients are available.
 ## Explore and visualize [_consume]
 
 Use {{kib}} to explore and visualize the data that's stored in {{es}} and to manage components of the {{stack}}.
-It is also the home for the {{es}}, Elastic {{observability}} and {{elastic-sec}} [solutions](/get-started/introduction.md).
 
 ### {{kib}} [stack-components-kibana]
+
+{{kib}} provides the user interface for all Elastic [solutions](/get-started/introduction.md) and {{serverless-short}} projects.
+It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the {{stack}}.
+Although you can use {{es}} without it, {{kib}} is required for most use cases and is included by default when you deploy {{serverless-full}}.
 
 With {{kib}}, you can:
 
