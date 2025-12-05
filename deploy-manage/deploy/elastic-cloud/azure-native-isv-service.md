@@ -171,8 +171,6 @@ $$$azure-integration-change-subscription$$$How can I change my {{ecloud}} subscr
         :alt: The Update Subscription page showing Standard
         :::
 
-If you are in a subscribed state and want to switch to a different subscription, or if you encounter any issues during this process, please contact support@elastic.co and we will guide you with the necessary steps.
-
 $$$azure-integration-existing-email$$$Can I subscribe using an email address from another Elastic account?
 :   Your email address is associated with only one Elastic account. For a workaround, check [Sign up using an email address from another Cloud account](create-an-organization.md).
 
@@ -293,6 +291,8 @@ $$$azure-resubscribe-flow$$$How can I resubscribe to an Azure subscription?
         :::
     3. Click **Resubscribe**. A new window should appear.
     4. Choose the subscription you want to resubscribe to and confirm.
+
+    If you are in a subscribed state and want to switch to a different subscription, or if you encounter any issues during this process, please contact support@elastic.co and we will guide you with the necessary steps.
 
 $$$azure-integration-billing-elastic-costs$$$Why can’t I see Elastic resources costs in Azure Cost Explorer?
 :   The costs associated with Elastic resources (deployments) are reported under unassigned in the Azure Portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resources/deployments costs. For granular Elastic resources costs, refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md).
