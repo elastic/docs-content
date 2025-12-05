@@ -266,4 +266,23 @@ If you are using Red Hat OpenShift, you need to specify additional settings in t
 
 Refer to [Kubernetes autodiscovery with {{agent}}](/reference/fleet/elastic-agent-kubernetes-autodiscovery.md) for more information.
 
+## Logging Considerations
 
+Altering the default logging in a standalone container has a few considerations. By default the {{agent}} will log to `stderr` and an internal destination so that diagnostics can be properly collected.
+
+In order to log to a custom filepath, the following changes to the manifest file are needed:
+- {{agent}} logging must be configured in the configmap for `agent.yml`:
+```yaml
+agent:
+  logging:
+    level: info
+    to_files: true  # Log to a custom filepath
+    to_stderr: true # Also log to stderr so that commands such as kubectl logs works as intended
+    files:
+      path: ${LOGS_PATH} # Use the env var to determine the logging path.
+```
+- The `LOGS_PATH` environment variable must be defined as a part of the Daeomonset's container specification.
+- The default Dameonset container args must be changed to remove the `-e` option:
+```yaml
+args: ["-c", "/etc/elastic-agent/agent.yml"]
+```
