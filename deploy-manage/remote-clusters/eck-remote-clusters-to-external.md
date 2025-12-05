@@ -249,6 +249,8 @@ If you intend to use `sniff` mode, configure it through the [{{es}} API](#using-
 
       ::::::{applies-item} eck:
       Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs).
+
+      If your environment presents the ECK-managed certificates during the TLS handshake, configure the **TLS server name** advanced option as `<cluster-name>-es-remote-cluster.<namespace>.svc`. Otherwise, the local cluster cannot establish the connection due to SSL trust errors.
       ::::::
 
       ::::::{applies-item} self:
@@ -279,7 +281,6 @@ To add a remote cluster, use the [cluster update settings API](https://www.elast
 
   ::::::{applies-item} ess:
   Obtain the endpoint from the **Security** page of the ECH deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section, and replace its port with `9443`, which is the port used by the remote cluster server interface.
-
   ::::::
 
   ::::::{applies-item} ece:
@@ -287,7 +288,9 @@ To add a remote cluster, use the [cluster update settings API](https://www.elast
   ::::::
 
   ::::::{applies-item} eck:
-  Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs).  
+  Use the FQDN or IP address of the LoadBalancer service, or similar resource, you created to [expose the remote cluster server interface](#enable-rcs).
+
+  If your environment presents the ECK-managed certificates during the TLS handshake, configure the **server_name** field as `<cluster-name>-es-remote-cluster.<namespace>.svc`. Otherwise, the local cluster cannot establish the connection due to SSL trust errors.
   ::::::
 
   ::::::{applies-item} self:
