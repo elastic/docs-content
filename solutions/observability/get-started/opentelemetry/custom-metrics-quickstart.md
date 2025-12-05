@@ -28,17 +28,13 @@ You’ll install a lightweight EDOT Collector, configure a minimal OTLP metrics 
 - A system to run the EDOT Collector (Docker, host, or VM)
 - Optional: An application that emits OpenTelemetry metrics
 
-:::{tip}
-If you don’t have a metrics source, you can use the Collector’s built-in `prometheusreceiver` to generate example metrics.
-:::
-
 :::::{stepper}
 
 ::::{step} Create an Elastic API key
 
 In your {{product.observability}} deployment:
 
-1. Go to **{{manage-app}}** > **Stack Management** > **API keys**.
+1. Go to **{{manage-app}}** > **{{stack-manage-app}}** > **API keys**.
 2. Create a new API key and copy the value.
 3. Note your deployment's OTLP ingest endpoint.
 ::::
@@ -162,4 +158,4 @@ You can expand your metrics collection setup in several ways:
 - Add more receivers to collect additional metrics
 - Configure the same Collector to send logs and traces alongside metrics
 
-To learn more, refer to the [Elastic Distribution of the OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) documentation.
+To learn more, refer to the [Elastic Distribution of the OpenTelemetry Collector documentation](elastic-agent://reference/edot-collector/index.md).
