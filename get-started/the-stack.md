@@ -86,7 +86,7 @@ With {{kib}}, you can:
 - Analyze geospatial data using the powerful **Maps** application.
 - Manage resources such as processors, pipelines, data streams, trained models, and more.
 
-Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [AI assistants](explore-analyze/ai-features/ai-assistant.md).
+Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [AI assistants](/explore-analyze/ai-features/ai-assistant.md).
 
 {{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
