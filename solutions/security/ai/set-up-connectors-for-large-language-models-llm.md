@@ -1,7 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/llm-connector-guides.html
-  - https://www.elastic.co/guide/en/serverless/current/security-llm-connector-guides.html
 applies_to:
   stack: all
   serverless:
@@ -13,7 +10,7 @@ products:
 
 # Enable large language model (LLM) access
 
-{{elastic-sec}} uses large language models (LLMs) for some of its advanced analytics features. To enable these features, you can connect a third-party LLM provider or a custom local LLM.
+{{elastic-sec}} uses large language model (LLM) connectors to power it's [AI features](/explore-analyze/ai-features/ai-features.md#ai-powered-features-in-elastic-sec). To use these features, you can use Elastic Managed LLM, configure a third-party LLM connector, or a custom local LLM.
 
 :::{important}
 Different LLMs have varying performance when used to power different features and use-cases. For more information about how various models perform on different tasks in {{elastic-sec}}, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
@@ -28,10 +25,10 @@ Different LLMs have varying performance when used to power different features an
 
 Follow these guides to connect to one or more third-party LLM providers:
 
-* [Azure OpenAI](/solutions/security/ai/connect-to-azure-openai.md)
-* [Amazon Bedrock](/solutions/security/ai/connect-to-amazon-bedrock.md)
-* [OpenAI](/solutions/security/ai/connect-to-openai.md)
-* [Google Vertex](/solutions/security/ai/connect-to-google-vertex.md)
+* [Azure OpenAI](/explore-analyze/ai-features/llm-guides/connect-to-azure-openai.md)
+* [Amazon Bedrock](/explore-analyze/ai-features/llm-guides/connect-to-amazon-bedrock.md)
+* [OpenAI](/explore-analyze/ai-features/llm-guides/connect-to-openai.md)
+* [Google Vertex](/explore-analyze/ai-features/llm-guides/connect-to-google-vertex.md)
 
 ## Connect to a self-managed LLM
 
