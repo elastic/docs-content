@@ -21,7 +21,7 @@ Elastic uses large language model (LLM) connectors to power it's [AI features](/
 
 ## Elastic Managed LLM
 
-:::{include} ../../_snippets/elastic-managed-llm.md
+:::{include} ../../solutions/_snippets/elastic-managed-llm.md
 :::
 
 ## Connect to a third-party LLM
