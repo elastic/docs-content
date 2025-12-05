@@ -36,7 +36,7 @@ Once you have your OTLP endpoint ready the recommendation is to set up a reverse
 
 - EDOT Collector requires an `Authorization` header with an ApiKey to accept OTLP exports. Setting up the required key in a web application makes it publicly available and its not advised to have this kind of secrets available to anyone with a browser.
 - You can apply rate limiting or any other mechanisms to control traffic before it reaches the EDOT Collector.
-- If you have set up your own EDOT Collector it's likely to have a different origin than your web application. In this scenario you have to set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for the web application in EDOT Collector configuration file. This procerdure can be cumbersome if you have to manage a large numned of applications.
+- If you have set up your own EDOT Collector it's likely to have a different origin than your web application. In this scenario you have to set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for the web application in EDOT Collector configuration file. This procerdure can be cumbersome if you have to manage a large number of applications.
 
 
 The following snippet shows the configuration for an NGINX reverse proxy to forward all telemetry to the EDOT Collector located at `collector.example.com` from the origin `webapp.example.com`:
@@ -48,7 +48,7 @@ server {
         # Take care of preflight requests
         if ($request_method = 'OPTIONS') {
             add_header 'Access-Control-Max-Age' 1728000;
-            add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always; # Set te allowed origins
+            add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always; # Set the allowed origins for preflight requests
             add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Authorization,Content-Language,Content-Type' always;
             add_header 'Access-Control-Allow-Credentials' 'true' always;
             add_header 'Content-Type' 'text/plain charset=UTF-8';
@@ -56,7 +56,7 @@ server {
             return 204;
         }
 
-        add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always; # Set te allowed origins
+        add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always; # Set the allowed origins for requests
         add_header 'Access-Control-Allow-Credentials' 'true' always;
         add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Authorization,Content-Language,Content-Type' always;
         proxy_http_version 1.1;
