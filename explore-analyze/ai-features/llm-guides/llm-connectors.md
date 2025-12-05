@@ -17,7 +17,7 @@ products:
 
 # Enable large language model (LLM) access
 
-Elastic uses large language model (LLM) connectors to power it's [AI features](/explore-analyze/ai-features.md#ai-powered-features-in-elastic-sec). To use these features, you can use Elastic Managed LLM or configure a third-party LLM connector.
+Elastic uses large language model (LLM) connectors to power its [AI features](/explore-analyze/ai-features.md#ai-powered-features-in-elastic-sec). These features with the out-of-the-box Elastic Managed LLM or by configuring a third-party LLM connector.
 
 ## Elastic Managed LLM
 
@@ -36,13 +36,13 @@ Follow these guides to connect to one or more third-party LLM providers:
 ## Preconfigured connectors
 
 ```{applies_to}
-stack: ga 9.0
+stack: ga
 serverless: unavailable
 ```
 
 You can also use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up a third-party LLM connector. 
 
-If you use a preconfigured connector for your LLM connector we recommend you add the `exposeConfig: true` parameter within the `xpack.actions.preconfigured` section of the `kibana.yml` config file. This parameter makes debugging easier by adding configuration information to the debug logs, including which large language model the connector uses.
+If you use a preconfigured connector for your LLM connector, we recommend adding the `exposeConfig: true` parameter to the `xpack.actions.preconfigured` section of the `kibana.yml` config file. This parameter makes debugging easier by adding configuration information to the debug logs, including which LLM the connector uses.
 
 
 
