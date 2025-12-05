@@ -50,10 +50,7 @@ When you add data to an index, it's divided into pieces called shards, which are
 This architecture allows {{es}} to handle large volumes of data and ensures that your data remains available even if a node fails.
 If you use {{serverless-full}}, it has a unique [Search AI Lake cloud-native architecture](https://www.elastic.co/cloud/serverless/search-ai-lake) and automates the nodes, shards, and replicas for you.
 
-<!--
-{{es}} also includes generative AI features and built-in {{nlp}} (NLP) models that enable you to make predictions, run {{infer}}, and integrate with LLMs faster.
-% TO-DO: Link to AI-powered features summary
--->
+{{es}} also includes [AI-powered features](/explore-analyze/ai-features.md) and built-in {{nlp}} (NLP) models that enable you to make predictions, run {{infer}}, and integrate with LLMs faster.
 
 Nearly every aspect of {{es}} can be configured and managed programmatically through its REST APIs.
 This allows you to automate repetitive tasks and integrate Elastic management into your existing operational workflows.
@@ -71,20 +68,21 @@ Both official and community contributed clients are available.
 
 ## Explore and visualize [_consume]
 
-Use {{kib}} to explore and visualize the data that's stored in {{es}} and to manage components of the {{stack}}.
+Use {{kib}} to explore, manage, and visualize the data that's stored in {{es}} and to manage components of the {{stack}}.
 
 ### {{kib}} [stack-components-kibana]
 
 {{kib}} provides the user interface for all Elastic [solutions](/get-started/introduction.md) and {{serverless-short}} projects.
-It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the {{stack}}.
+It's a powerful tool for visualizing and analyzing your data and for managing and monitoring the {{stack}}.
 Although you can use {{es}} without it, {{kib}} is required for most use cases and is included by default when you deploy {{serverless-full}}.
 
 With {{kib}}, you can:
 
-- Use **Discover** to interactively search and filter your raw data.
-- Build custom visualizations like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
-- Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.
-- Analyze geospatial data using the powerful **Maps** application.
+- Use [Discover](/explore-analyze/discover.md) to interactively search and filter your raw data.
+- Build custom [visualizations](/explore-analyze/visualize.md) like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
+- Assemble your visualizations into interactive [dashboards](/explore-analyze/dashboards.md) to get a comprehensive overview of your information.
+- Perform [geospatial analysis](/explore-analyze/geospatial-analysis.md) and add maps to your dashboards.
+- Configure notifications for significant data events and track incidents with [alerts and cases](/explore-analyze/alerts-cases.md).
 - Manage resources such as processors, pipelines, data streams, trained models, and more.
 
 Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [AI assistants](/explore-analyze/ai-features/ai-assistant.md).
@@ -92,7 +90,7 @@ Each solution or project type provides access to customized features in {{kib}} 
 {{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
 
-[Learn more about {{kib}}](/explore-analyze/index.md).
+Learn more in [](/explore-analyze/index.md).
 
 ## Ingest [_ingest]
 
