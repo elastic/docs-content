@@ -154,7 +154,7 @@ To configure document-level security (DLS), you create a custom role where you d
 
 When you create a role, you can specify a query that defines the [document level security permissions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md). You can optionally use Mustache templates in the role query to insert the username of the current authenticated user into the role. Like other places in {{es}} that support templating or scripting, you can specify inline, stored, or file-based templates and define custom parameters. You access the details for the current authenticated user through the `_user` parameter.
 
-For example, the following role query uses a template to insert the username of the current authenticated user:
+For example, the following role query uses a template to insert the username of the current authenticated user.
 
 :::::{tab-set}
 :group: field-document
@@ -184,16 +184,18 @@ POST /_security/role/example1
 
 ::::{tab-item} {{kib}}
 :sync: kibana
+1. When creating a new role or editing an existing role in {{kib}}, enable the **Grant read privileges to specific documents** toggle.
+1. To use a template to insert the username of the current authenticated user, add the following query in the **Granted documents query** field:
 
-```JSON
-{
-  "template": {
-    "source": {
-      "term": { "acl.username": "{{_user.username}}" }
+    ```JSON
+    {
+      "template": {
+        "source": {
+          "term": { "acl.username": "{{_user.username}}" }
+        }
+      }
     }
-  }
-}
-```
+    ```
 
 ::::
 :::::
@@ -237,6 +239,7 @@ POST /_security/role/example2
 
 ::::{tab-item} {{kib}}
 :sync: kibana
+Add the following query in the **Granted documents query** field:
 
 ```JSON
 {
@@ -278,6 +281,7 @@ POST /_security/role/example3
 
 ::::{tab-item} {{kib}}
 :sync: kibana
+Add the following query in the **Granted documents query** field:
 
 ```JSON
 {
@@ -330,174 +334,7 @@ POST /_security/role/test_role1
 }
 ```
 
-Access to the following metadata fields is always allowed: `_id`, `_type`, `_parent`, `_routing`, `_timestamp`, `_ttl`, `_size` and `_index`. If you specify an empty list of fields, only these metadata fields are accessible.
-
-:::{note}
-Omitting the fields entry entirely disables field level security.
-:::
-
-
-You can also specify field expressions. For example, the following example grants read access to all fields that start with an `event_` prefix:
-
-```console
-POST /_security/role/test_role2
-{
-  "indices" : [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "grant": [ "event_*" ]
-      }
-    }
-  ]
-}
-```
-
-Use the dot notations to refer to nested fields in more complex documents. For example, assuming the following document:
-
-```js
-{
-  "customer": {
-    "handle": "Jim",
-    "email": "jim@mycompany.com",
-    "phone": "555-555-5555"
-  }
-}
-```
-
-The following role definition enables only read access to the customer `handle` field:
-
-```console
-POST /_security/role/test_role3
-{
-  "indices": [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "grant": [ "customer.handle" ]
-      }
-    }
-  ]
-}
-```
-
-This is where wildcard support shines. For example, use `customer.*` to enable only read access to the `customer` data:
-
-```console
-POST /_security/role/test_role4
-{
-  "indices": [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "grant": [ "customer.*" ]
-      }
-    }
-  ]
-}
-```
-
-You can deny permission to access fields with the following syntax:
-
-```console
-POST /_security/role/test_role5
-{
-  "indices": [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "grant": [ "*"],
-        "except": [ "customer.handle" ]
-      }
-    }
-  ]
-}
-```
-
-The following rules apply:
-
-* The absence of `field_security` in a role is equivalent to * access.
-* If permission has been granted explicitly to some fields, you can specify denied fields. The denied fields must be a subset of the fields to which permissions were granted.
-* Defining denied and granted fields implies access to all granted fields except those which match the pattern in the denied fields.
-
-For example:
-
-```console
-POST /_security/role/test_role6
-{
-  "indices": [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "except": [ "customer.handle" ],
-        "grant": [ "customer.*" ]
-      }
-    }
-  ]
-}
-```
-
-In the above example, users can read all fields with the prefix "customer." except for "customer.handle".
-
-An empty array for `grant` (for example, `"grant" : []`) means that access has not been granted to any fields.
-
-When a user has several roles that specify field level permissions, the resulting field level permissions per data stream or index are the union of the individual role permissions. For example, if these two roles are merged:
-
-```console
-POST /_security/role/test_role7
-{
-  "indices": [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "grant": [ "a.*" ],
-        "except": [ "a.b*" ]
-      }
-    }
-  ]
-}
-
-POST /_security/role/test_role8
-{
-  "indices": [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "grant": [ "a.b*" ],
-        "except": [ "a.b.c*" ]
-      }
-    }
-  ]
-}
-```
-
-The resulting permission is equal to:
-
-```js
-{
-  // role 1 + role 2
-  ...
-  "indices": [
-    {
-      "names": [ "*" ],
-      "privileges": [ "read" ],
-      "field_security": {
-        "grant": [ "a.*" ],
-        "except": [ "a.b.c*" ]
-      }
-    }
-  ]
-}
-```
-
-::::
+:::: 
 
 ::::{tab-item} {{kib}}
 :sync: kibana
@@ -518,10 +355,260 @@ To configure field-level security (FLS), you create a custom role where you defi
 
 1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
 1. Select **Create role** to save your custom role.
-
-:::: 
-
+::::
 :::::
+
+Access to the following metadata fields is always allowed: `_id`, `_type`, `_parent`, `_routing`, `_timestamp`, `_ttl`, `_size` and `_index`. If you specify an empty list of fields, only these metadata fields are accessible.
+
+:::{note}
+Omitting the fields entry entirely disables field level security.
+:::
+
+
+You can also specify field expressions. For example, the following example grants read access to all fields that start with an `event_` prefix:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/test_role2
+{
+  "indices" : [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "event_*" ]
+      }
+    }
+  ]
+}
+```
+
+::::
+::::{tab-item} {{kib}}
+:sync: kibana
+
+Specify the `event_*` field expression in the **Granted fields** list.
+::::
+:::::
+
+Use the dot notations to refer to nested fields in more complex documents. For example, assuming the following document:
+
+```js
+{
+  "customer": {
+    "handle": "Jim",
+    "email": "jim@mycompany.com",
+    "phone": "555-555-5555"
+  }
+}
+```
+
+The following role definition enables read access only to the `customer.handle` field:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/test_role3
+{
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "customer.handle" ]
+      }
+    }
+  ]
+}
+```
+::::
+::::{tab-item} {{kib}}
+:sync: kibana
+
+Specify the `customer.handle` field in the **Granted fields** list.
+::::
+:::::
+
+You can also use wildcards. For example, use `customer.*` to enable read access to the `customer` data:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/test_role4
+{
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "customer.*" ]
+      }
+    }
+  ]
+}
+```
+
+::::
+::::{tab-item} {{kib}}
+:sync: kibana
+
+Specify the `customer.*` field in the **Granted fields** list.
+::::
+:::::
+
+You can deny permission to access the `customer.handle` field, while allowing access to all other fields (`*`) with the following syntax:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/test_role5
+{
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "*"],
+        "except": [ "customer.handle" ]
+      }
+    }
+  ]
+}
+```
+
+::::
+::::{tab-item} {{kib}}
+:sync: kibana
+
+Specify the `*` wildcard in the **Granted fields** list and `customer.handle` in the **Denied fields** list.
+::::
+:::::
+
+The following rules apply:
+
+* The absence of `field_security` in a role is equivalent to `*` access.
+* If permission has been granted explicitly to some fields, you can specify denied fields. The denied fields must be a subset of the fields to which permissions were granted.
+* Defining denied and granted fields implies access to all granted fields except those which match the pattern in the denied fields.
+
+For more granular access, you can allow access to all `customer.*` fields (which is a subset of `*` all possible fields) except `customer.handle`:
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/test_role6
+{
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "except": [ "customer.handle" ],
+        "grant": [ "customer.*" ]
+      }
+    }
+  ]
+}
+```
+
+In this example, users can read all fields with the `customer.` prefix, except for the `customer.handle` field.
+
+::::
+::::{tab-item} {{kib}}
+:sync: kibana
+
+Specify the `customer.*` field in the **Granted fields** list and `customer.handle` in the **Denied fields** list.
+
+In this example, users can read all fields with the `customer.` prefix, except for the `customer.handle` field.
+::::
+:::::
+
+
+When you specify an empty array for `grant` (for example, `"grant" : []`) in your API request, no access is granted to any fields.
+
+When a user has several roles that specify field level permissions, the resulting field level permissions per data stream or index are the union of the individual role permissions. For example, if these two roles are merged:
+
+:::::{tab-set}
+:group: field-document
+::::{tab-item} API
+:sync: api
+
+```console
+POST /_security/role/test_role7
+{
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "a.*" ],
+        "except": [ "a.b*" ]
+      }
+    }
+  ]
+}
+```
+
+```console
+POST /_security/role/test_role8
+{
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "a.b*" ],
+        "except": [ "a.b.c*" ]
+      }
+    }
+  ]
+}
+```
+
+::::
+::::{tab-item} {{kib}}
+:sync: kibana
+
+* For the `test_role7` role, specify the `a.*` field in the **Granted fields** list and `a.b*` in the **Denied fields** list.
+* For the `test_role8` role, specify the `a.b*` field in the **Granted fields** list and `a.b.c*` in the **Denied fields** list.
+
+::::
+:::::
+
+The resulting permission amounts to granted access to all `a.*` fields except the `a.b.c*` fields.
+
+```js
+{
+  // role 1 + role 2
+  ...
+  "indices": [
+    {
+      "names": [ "*" ],
+      "privileges": [ "read" ],
+      "field_security": {
+        "grant": [ "a.*" ],
+        "except": [ "a.b.c*" ]
+      }
+    }
+  ]
+}
+```
+
+
 
 :::{note}
 Field-level security should not be set on [`alias`](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
