@@ -287,5 +287,6 @@ subs:
   helm-version: 3.15.4
   ece-docker-images-8: 8.18.8
   ece-docker-images-9: 9.0.8
+  search-platform: "Search AI Platform"
 
 
