@@ -3,11 +3,7 @@ navigation_title: With Microsoft Entra ID
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-saml-azure.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: cloud-hosted
 ---

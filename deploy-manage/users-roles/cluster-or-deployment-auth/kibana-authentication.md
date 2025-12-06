@@ -1,11 +1,7 @@
 ---
 navigation_title: "{{kib}} authentication"
 applies_to:
-  deployment:
-    ess:
-    ece:
-    eck:
-    self:
+  stack: all
 ---
 
 # Authentication in {{kib}} [kibana-authentication]

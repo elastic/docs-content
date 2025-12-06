@@ -13,11 +13,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-enterprise

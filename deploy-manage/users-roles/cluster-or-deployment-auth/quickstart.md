@@ -3,11 +3,7 @@ navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
 products:
   - id: kibana
 ---
