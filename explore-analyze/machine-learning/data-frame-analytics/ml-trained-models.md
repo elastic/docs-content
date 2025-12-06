@@ -113,7 +113,7 @@ A few observations:
 
 ::::
 
-If you also want to copy the {{dfanalytics-job}} to the new cluster, you can export and import jobs in the **{{stack-manage-app}}** app in {{kib}}. Refer to [Exporting and importing {{ml}} jobs](../anomaly-detection/move-jobs.md).
+If you also want to copy the {{dfanalytics-job}} to the new cluster, you can export and import jobs in the **{{stack-manage-app}}** app in {{kib}}. Refer to [Exporting and importing {{ml}} jobs](../setting-up-machine-learning.md#move-jobs).
 
 ## Importing an external model to the {{stack}} [import-external-model-to-es]
 
