@@ -124,24 +124,7 @@ Customize your line chart to display exactly the information you need, formatted
 
 ### Breakdown (split series) [breakdown-options]
 
-**Data**
-:   Split the chart into multiple series based on a categorical field. Each unique value creates its own series. You can optionally specify the following options:
-
-   - **Number of values**: Limit to top N.
-   - **Rank by**: Choose the ranking metric.
-   - **Rank direction**: Ascending or descending.
-
-   :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
-   :::
-
-**Appearance**
-:   Define how the series are displayed:
-   - **Legend position**: Show legend and choose its placement.
-   - **Color palette**: Ensure consistent colors across dashboards.
-
-### Reference lines [reference-line-settings]
-Add horizontal or vertical markers for targets, limits, or thresholds. Configure:
-- **Value** (static or formula), **Label**, **Color**, and optional bands.
+The Breakdown bucket lets you compare trends across different categories within the same visualization.
 
 ### General layout [appearance-options]
 When creating or editing a visualization, open the {icon}`brush` panel to adjust:
