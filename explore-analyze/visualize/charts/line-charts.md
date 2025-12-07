@@ -10,7 +10,7 @@ description: Instructions and best practices for building line charts with Kiban
 
 Line charts are ideal for visualizing how metrics evolve over time, spotting seasonal patterns, and detecting spikes or regressions at a glance. Use them for KPIs like response time, error rate, throughput, or utilization, and compare multiple series or previous periods on the same chart.
 
-You can create line charts from any numeric data using aggregations (for example, `Average`, `Percentile`, `Counter rate`) or with custom [formulas](../lens.md#lens-formulas). Line charts usually show time on the x-axis, but they can also display data grouped by numbers or categories.
+You can create line charts from any numeric data using aggregations (for example, `Average`, `Percentile`, `Counter rate`) or with custom [formulas](../lens.md#lens-formulas).
 
 You can create line charts in {{kib}} using [**Lens**](../lens.md).
 
@@ -38,10 +38,6 @@ Using the visualization type dropdown, select **Line**.
 1. Select the {{data-source}} that contains your data.
 2. Drag a time field to the **Horizontal axis** and a numeric field to the **Vertical axis**. {{kib}} automatically selects an appropriate aggregation function compatible with the selected field.
 
-  :::{note}
-  You might need to extend the time range and set the time filter to **Last 30 days**.
-  :::
-
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
    - Add a [reference line](../lens.md#add-reference-lines) to mark targets or SLOs.
@@ -54,7 +50,7 @@ You can tweak the appearance of your chart by adjusting axes, legends, and serie
 :   Assign colors that match your users' expectations and consider your specific context.
 
 **Provide context**
-:   Add descriptive axis titles and units to explain what the chart shows.
+:   Add descriptive axis titles or remove them for obvious axes.
 
 For layout, hierarchy, and color guidance on dashboards, check the EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
 For more chart configuration options, go to the [Line chart settings](#settings) section.
@@ -102,7 +98,7 @@ Customize your line chart to display exactly the information you need, formatted
 **Data**
 :   **Functions**: Allow you to group your data. For example, you can use `Date histogram` to group data points into time-based buckets, or `Intervals` to group values along specific numeric ranges.
 :   **Fields**: Determine which field from your data will be used for the horizontal axis.
-:   **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
+:   **Number of values**: Control how many distinct values or data points are displayed along the horizontal axis.
 :   **Rank by**: Choose which metric determines the order of your data.
 :   **Rank direction**: Sort values from highest to lowest.
 
@@ -112,15 +108,14 @@ Customize your line chart to display exactly the information you need, formatted
 ### Vertical axis settings [vertical-axis-settings]
 
 **Data**
-:   Represents the metrics or values you want to visualize. You can use quick functions like `Average`, `Count`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
+:   To represent the metrics or values you want to visualize, you can use quick functions like `Average`, `Count`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
     :::{include} ../../_snippets/line-vertical-axis-advanced-settings.md
     :::
 
 **Appearance**
-:   Define the series style, including:
    - **Name**: Customize the legend label with a descriptive name.
-   - **Value format**: Line or area variants, with optional stacking for area.
+   - **Value format**: Control how numeric values are displayed on the vertical axis of your visualization.
    - **Series color**: Select a palette or specific color per series.
    - **Axis side**: Control where axis labels and tick marks appear.
 
