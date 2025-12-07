@@ -95,16 +95,6 @@ Use reference lines to indicate SLOs or alert thresholds.
 
 ![Reference line](../../images/kibana-lens_referenceLine_7.16.png "title =70%")
 
-### Choose the right axis and scale [line-axis]
-For multi-metric charts, make sure the scale communicates intent:
-
-- Use the **Left** axis for primary series, and enable a **Right** axis only when needed for different units.
-- Use **log** scale for heavy-tailed distributions, or **percentage** mode for normalization.
-
-| Left axis | Bottom axis |
-|---|---|
-| ![Left axis labeling](../../images/kibana-line-chart-left-axis-8.16.0.png "title =70%") | ![Bottom axis labeling](../../images/kibana-line-chart-bottom-axis-8.16.0.png "title =70%") |
-
 ## Line chart settings [settings]
 
 Customize your line chart to display exactly the information you need, formatted the way you want.
