@@ -109,19 +109,18 @@ Customize your line chart to display exactly the information you need, formatted
 
 ### Vertical axis settings [vertical-axis-settings]
 
-**Value**
-:   The metric to plot. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Average`, `Sum`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
+**Data**
+:   Represents the metrics or values you want to visualize. You can use quick functions like `Average`, `Count`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
-    :::{include} ../../_snippets/lens-value-advanced-settings.md
+    :::{include} ../../_snippets/line-vertical-axis-advanced-settings.md
     :::
 
 **Appearance**
 :   Define the series style, including:
    - **Name**: Customize the legend label with a descriptive name.
-   - **Series type**: Line or area variants, with optional stacking for area.
-   - **Line/marker style**: Toggle lines, points, or both; adjust line width.
-   - **Missing values**: Choose how to display gaps (Off, Linear, Carry, Zero).
-   - **Color**: Select a palette or specific color per series.
+   - **Value format**: Line or area variants, with optional stacking for area.
+   - **Series color**: Select a palette or specific color per series.
+   - **Axis side**: Control where axis labels and tick marks appear.
 
 ### Breakdown (split series) [breakdown-options]
 
