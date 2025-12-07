@@ -101,8 +101,10 @@ Customize your line chart to display exactly the information you need, formatted
 
 **Data**
 :   **Functions**: Allow you to group your data. For example, you can use `Date histogram` to group data points into time-based buckets, or `Intervals` to group values along specific numeric ranges.
-:   **Field**: Determines which field from your data will be used for the horizontal axis.
-:   **Minimum interval**: Controls the granularity of your time buckets.
+:   **Fields**: Determine which field from your data will be used for the horizontal axis.
+:   **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
+:   **Rank by**: Choose which metric determines the order of your data.
+:   **Rank direction**: Sort values from highest to lowest.
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
@@ -122,7 +124,7 @@ Customize your line chart to display exactly the information you need, formatted
    - **Series color**: Select a palette or specific color per series.
    - **Axis side**: Control where axis labels and tick marks appear.
 
-### Breakdown (split series) [breakdown-options]
+### Breakdown settings [breakdown-settings]
 
 The Breakdown bucket lets you compare trends across different categories within the same visualization.
 
