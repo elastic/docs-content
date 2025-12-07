@@ -36,16 +36,14 @@ Using the visualization type dropdown, select **Line**.
 
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Drag a time field (for example, `@timestamp`) to the **Horizontal axis** to create a `Date histogram` (recommended for time series).
+2. Drag a time field to the **Horizontal axis** and a numeric field to the **Vertical axis**. {{kib}} automatically selects an appropriate aggregation function compatible with the selected field.
 
   :::{note}
   You might need to extend the time range and set the time filter to **Last 30 days**.
   :::
 
-3. Drag a numeric field (for example, `machine.ram`) to the **Vertical axis**.
-
 Optionally:
-   - Add more numeric fields to create additional series, or drag a categorical field (for example, `geoip.city_name`) to **Break down by** to split the series.
+   - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
    - Add a [reference line](../lens.md#add-reference-lines) to mark targets or SLOs.
 :::::
 
@@ -64,7 +62,7 @@ For more chart configuration options, go to the [Line chart settings](#settings)
 
 :::::{step} Save the chart
 - If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library.
-- If you accessed Lens from the Visualize library, select **Save**. The Save menu lets you also add the visualization to a dashboard and to the Visualize library.
+- If you accessed Lens from the Visualize library, select **Save**. The Save menu also lets you add the visualization to a dashboard and the Visualize library.
 :::::
 
 ::::::
@@ -99,7 +97,17 @@ Use reference lines to indicate SLOs or alert thresholds.
 
 Customize your line chart to display exactly the information you need, formatted the way you want.
 
-### Vertical axis series [vertical-axis-series]
+### Horizontal axis settings [horizontal-axis-settings]
+
+**Data**
+:   **Functions**: Allow you to group your data. For example, you can use `Date histogram` to group data points into time-based buckets, or `Intervals` to group values along specific numeric ranges.
+:   **Field**: Determines which field from your data will be used for the horizontal axis.
+:   **Minimum interval**: Controls the granularity of your time buckets.
+
+**Appearance**
+:   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
+
+### Vertical axis settings [vertical-axis-settings]
 
 **Value**
 :   The metric to plot. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can change it and use aggregation functions like `Average`, `Sum`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
@@ -114,14 +122,6 @@ Customize your line chart to display exactly the information you need, formatted
    - **Line/marker style**: Toggle lines, points, or both; adjust line width.
    - **Missing values**: Choose how to display gaps (Off, Linear, Carry, Zero).
    - **Color**: Select a palette or specific color per series.
-
-### Horizontal axis buckets [horizontal-axis-buckets]
-
-**Data**
-:   Buckets define the horizontal axis. Commonly a `Date histogram` on `@timestamp`, but you can also use numeric histograms or terms (only for categories with a continuous, linear relationship).
-
-**Appearance**
-:   Axis title, tick density, and value formatting (for example, time format, numeric precision).
 
 ### Breakdown (split series) [breakdown-options]
 
