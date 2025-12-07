@@ -22,6 +22,8 @@ As the model runs on EIS, Elastic's own infrastructure, no ML node scaling and c
 
 The `jina-embedings-v3` model supports input lengths of up to 8192 tokens and produces 1024-dimension embeddings by default. It uses task-specific adapters to optimize embeddings for different use cases (such as retrieval or classification), and includes support for Matryoshka Representation Learning, which allows you to truncate embeddings to fewer dimensions with minimal loss in quality.
 
+For more info, refer to the [model card](https://huggingface.co/jinaai/jina-embeddings-v3) on Hugging Face.
+
 ### Dense vector embeddings
 
 Dense vector embeddings are fixed-length numerical representations of text. When you send text to an EIS {{infer}} endpoint that uses `jina-embeddings-v3`, the model returns a vector of floating-point numbers (for example, 1024 values). Texts that are semantically similar have embeddings that are close to each other in this vector space. {{es}} stores these vectors in [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields or through the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) type and uses vector similarity search to retrieve the most relevant documents for a given query. Unlike [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), which expands text into sparse token-weight vectors, this model produces compact dense vectors that are well suited for multilingual and cross-domain use cases.
