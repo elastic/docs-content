@@ -148,3 +148,12 @@ It can dynamically unify data from disparate sources and normalize the data into
 {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process.
 
 [Learn more about {{ls}}](logstash://reference/index.md).
+
+## Installation details [version-compatibility]
+
+:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
+:::
+
+$$$installation-order$$$
+:::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::
