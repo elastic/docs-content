@@ -40,7 +40,7 @@ stack: ga
 serverless: unavailable
 ```
 
-You can also use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up a third-party LLM connector. 
+You can also use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up third-party LLM connectors by editing the `kibana.yml` file. This allows you enable a connector for multiple spaces at once, without performing set up in the {{kib}} UI for each space. 
 
 If you use a preconfigured connector for your LLM connector, we recommend adding the `exposeConfig: true` parameter to the `xpack.actions.preconfigured` section of the `kibana.yml` config file. This parameter makes debugging easier by adding configuration information to the debug logs, including which LLM the connector uses.
 
