@@ -51,12 +51,12 @@ To create an anomaly detection rule:
 
 7. Adjust the **Severity** to match the anomaly score that will trigger the action. The anomaly score indicates the significance of a given anomaly compared to previous anomalies. The default severity threshold is 75, which means every anomaly with an anomaly score of 75 or higher will trigger the associated action.
 8. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results if you want to be notified earlier about a potential anomaly even if it might be a false positive.
-9. {applies_to}`serverless: 9.3 ga`{applies_to}`serverless: ga` (Optional) To refine the list of anomalies that the rule checks for, add a KQL query to the **Anomaly filter** field. When the rule runs, it searches indices that store the anomaly detection results and creates an alert when a document matches anomaly filter query. This feature is only available for the Record and Influencer result types.
+9. {applies_to}`stack: 9.3 ga`{applies_to}`serverless: ga` (Optional) To refine the list of anomalies that the rule checks for, add a KQL query to the **Anomaly filter** field. When the rule runs, it searches indices that store the anomaly detection results and creates an alert when a document matches anomaly filter query. This feature is only available for the Record and Influencer result types.
 
     When building the KQL query, you're given suggestions for the most relevant fields to filter by. You can also set up conditions that: 
 
-    - Specify to only generate alerts if partitioning fields (`partition_field`, `by_field`, or `over_field`) or influencer fields in the anomalies match.
-    - Compare actual or typical values (`>`, `<`, or `=`) to anomaly detection results.
+        - Specify to only generate alerts if partitioning fields (`partition_field`, `by_field`, or `over_field`) or influencer fields in the anomalies match.
+        - Compare actual or typical values (`>`, `<`, or `=`) to anomaly detection results.
 
 10. (Optional) Expand and change **Advanced settings**:
 
