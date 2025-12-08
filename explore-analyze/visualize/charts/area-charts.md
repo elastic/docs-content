@@ -8,11 +8,11 @@ description: Instructions and best practices for building area charts with Kiban
 
 # Build area charts with {{kib}}
 
-Area charts are ideal for visualizing how values change over time and how multiple categories contribute to a total. They add filled areas under lines, making patterns and proportions easier to compare. Use them for time series like traffic, CPU, revenue, or error rates, and stack them to highlight composition.
-
-Area charts work with numeric metrics over an X-axis (typically time). You can use aggregation functions and formulas to compute the metric, and optionally break down the data by a categorical field to create multiple series.
+Area charts are line charts with the area below the line filled in with a certain colour or texture. Area charts work with numeric metrics over the horizontal axis (typically time) and are ideal to display quantitative values over an interval or time period, to show trends for time series like traffic, CPU, revenue, or error rates.
 
 You can create area charts in {{kib}} using [**Lens**](../lens.md).
+
+![Example Lens area chart](../../images/kibana-area-chart.png)
 
 ## Build an area chart
 
@@ -34,36 +34,28 @@ Using the **Visualization type** dropdown, select **Area**.
 
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Define the **Y-axis** (metric):
-   - Drag a numeric field (for example, `bytes`, `transaction.duration.us`, `system.cpu.total.pct`) to the chart. {{kib}} suggests a function like `Average`, `Sum`, `Count`, or `Percentile` based on the field type.
-   - Optionally switch to **Formula** to compute derived metrics. See [Use formulas to perform math](../lens.md#lens-formulas).
-3. Define the **X-axis**:
-   - For time series, drag a time field (for example, `@timestamp`) and set it to **Date histogram**.
-   - For other use cases, use **Histogram** or **Top values** as appropriate.
-4. Optionally:
-   - [Break down](#breakdown-options) the series by a categorical field (for example, `service.name`, `response.status_code`, `geo.country_iso_code`).
-   - Add additional series (metrics or formulas) to compare multiple values on the same chart.
-   - Use KQL filters on series or layers to include/exclude subsets of data. See [Apply filters](../lens.md#filter-the-data).
 
-Refer to [](#settings) to find all configuration options for your area chart.
+2. Drag a time-based field to the **Horizontal axis** and numeric field to the **Vertical axis**. You can use aggregation functions like `Date histograms` and `Filters`, or create custom calculations with [formulas](../lens.md#lens-formulas).
+
+Optionally, you can add more numeric fields to create additional series, or drag a categorical field to **Break down** to split the series.
 :::::
 
 :::::{step} Customize the chart to follow best practices
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
 **Choose the right stack mode**
-::   Use **Stacked** to show contribution to a whole; **100%** for normalized share; **None** when absolute trends matter more than composition.
+:   Use **Stacked** to show contribution to a whole, **Percentage** for normalized share, or **Unstacked** when absolute trends matter more than composition.
 
 **Handle gaps and noise**
-::   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. See [Visualization appearance options](../lens.md#customize-visualization-appearance).
+:   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. See [Visualization appearance options](../lens.md#customize-visualization-appearance).
 
-**Use color with intention**
-::   Assign consistent colors to key categories. See [Assign colors to terms](../lens.md#assign-colors-to-terms).
+**Use color purposefully**
+:   Apply colors to highlight important data or patterns. Avoid using too many colors that might distract from the data. You can also assign [consistent colors to key categories](../lens.md#assign-colors-to-terms).
 
 **Label clearly**
-::   Provide a descriptive title and axis labels so users can interpret trends quickly.
+:   Provide a descriptive title and axis labels so users can interpret trends quickly.
 
-Refer to [](#settings) for a complete list of options.
+Refer to [Area chart settings](#settings) to find all configuration options for your area chart.
 :::::
 
 :::::{step} Save the chart
