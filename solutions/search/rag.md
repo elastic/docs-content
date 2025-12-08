@@ -68,7 +68,9 @@ Start building RAG applications quickly with Playground, which seamlessly integr
 
 Playground automatically selects the best retrieval methods for your data, while providing full control over the final {{es}} queries and language model instructions. You can also download the underlying Python code to integrate with your existing applications.
 
-Learn more in the [Playground documentation](rag/playground.md) and try the [interactive lab](https://www.elastic.co/demo-gallery/ai-playground) for hands-on experience.
+::::{note}
+Playground is available as part of the {{es}} solution and serverless project type. Learn more in the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md) and try the [interactive lab](https://www.elastic.co/demo-gallery/ai-playground) for hands-on experience.
+::::
 
 
 ## Learn more [rag-elasticsearch-learn-more]

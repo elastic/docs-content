@@ -1,24 +1,24 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html
-  - https://www.elastic.co/guide/en/serverless/current/what-is-elasticsearch-serverless.html
-  - https://www.elastic.co/guide/en/kibana/current/search-space.html
 applies_to:
   stack:
   serverless:
 products:
   - id: elasticsearch
   - id: cloud-serverless
-  - id: kibana
-navigation_title: Elasticsearch
+navigation_title: Search use case
 ---
 
-# Elasticsearch solution overview
+# Search use case
 
-The {{es}} solution and serverless project type enable you to build your own applications on top of the {{es}} platform's scalable data store, search engine, and vector database capabilities.
+Build powerful search experiences using {{es}}'s universal search capabilities. Whether you're running a self-managed cluster, {{ech}}, or an {{es}} serverless project, these search primitives are available across all deployment types.
 
-{{es}} is a distributed datastore that can ingest, index, and manage various types of data in near real-time, making them both searchable and analyzable.
-With specialized user interfaces and tools, it provides the flexibility to create, deploy, and run a wide range of applications, from search to analytics to AI-driven solutions.
+{{es}} is a distributed datastore that can ingest, index, and manage various types of data in near real-time, making them both searchable and analyzable. This documentation covers the core search capabilities and techniques that work universally across all {{es}} deployments.
+
+::::{tip}
+Using the {{es}} solution or serverless project type? Check out the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for exclusive UI tools like Agent Builder, Playground, and Search Applications that complement these universal search capabilities.
+::::
 
 ## Use cases
 
@@ -34,7 +34,7 @@ Here are a few common real-world applications:
 | **Chatbots/RAG**                     | Enable natural conversations, provide context, maintain knowledge  | Vector search, ML models, knowledge base integration          |
 | **Geospatial search**                | Process location queries, sort by proximity, filter by area        | Geo-mapping, spatial indexing, distance calculations          |
 
-If you're new to {{es}} and want to try out some simple search use cases, go to [](/solutions/search/get-started.md) and [](/solutions/search/get-started/quickstarts.md).
+If you're new to {{es}} and want to try out some simple search use cases, refer to [Get started with search](/solutions/search/get-started.md).
 
 ## Core concepts [search-concepts]
 
