@@ -326,13 +326,13 @@ redirects:
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2245/
-  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
+  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/elasticsearch-solution-project/get-started/index-basics.md'
 
 # Related to https://github.com/elastic/elasticsearch/pull/133362
   'solutions/search/querydsl-full-text-filter-tutorial.md': 'elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2719
-  'solutions/search/api-quickstarts.md': 'solutions/search/get-started/quickstarts.md'
+  'solutions/search/api-quickstarts.md': 'solutions/elasticsearch-solution-project/get-started/quickstarts.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
@@ -355,7 +355,7 @@ redirects:
   'troubleshoot/observability/apm-agent-swift/apm-ios-agent.md': 'troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2843
-  'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/search/get-started.md'
+  'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/elasticsearch-solution-project/get-started.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3032
   'manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md': 'manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md'
