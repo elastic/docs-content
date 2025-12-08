@@ -15,7 +15,7 @@ Need help choosing or structuring a new page? Reach out to the docs team using t
 
 ## Mixing different content types
 
-Some documentation pages may combine multiple content types.
+Some documentation pages combine multiple content types.
 
 Mixing different types is fine as long as each section is clearly delineated and serves a distinct purpose. For example, a page about configuring authentication might include:
 
