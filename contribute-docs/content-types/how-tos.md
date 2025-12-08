@@ -43,7 +43,7 @@ The following elements are required in every how-to guide:
 - A consistent **filename:** Use action verb patterns like `create-*.md`, `configure-*.md`, or `troubleshoot-*.md`.
   - For example: `run-elasticsearch-docker.md`
 - Appropriate **[frontmatter](https://elastic.github.io/docs-builder/syntax/frontmatter/):**
-  - `applies_to:` [Tags](https://elastic.github.io/docs-builder/syntax/applies) for versioning/availability info per the [cumulative docs guidelines](how-to/cumulative-docs/index.md)
+  - `applies_to:` [Tags](https://elastic.github.io/docs-builder/syntax/applies) for versioning/availability info per the [cumulative docs guidelines](/contribute-docs/how-to/cumulative-docs/index.md)
   - `description`: A brief summary of the page fit for search results and tooltips
   - `product`: The relevant Elastic product(s) used in the how-to
 % TODO once we have structured types  - The `type` field set to `how-to`
