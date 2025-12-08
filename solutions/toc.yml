@@ -6,11 +6,9 @@ toc:
       - file: search/get-started.md
         children:
           - file: search/search-connection-details.md
-          - file: search/get-started/quickstarts.md
-            children:
-              - file: search/get-started/index-basics.md
-              - file: search/get-started/keyword-search-python.md
-              - file: search/get-started/semantic-search.md
+          - file: search/get-started/index-basics.md
+          - file: search/get-started/keyword-search-python.md
+          - file: search/get-started/semantic-search.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -19,9 +17,6 @@ toc:
           - file: search/full-text.md
             children:
               - file: search/full-text/how-full-text-works.md
-              - file: search/full-text/search-with-synonyms.md
-                children:
-                  - file: search/full-text/create-update-synonyms-api-example.md
               - file: search/full-text/text-analysis-during-search.md
               - file: search/full-text/search-relevance.md
                 children:
@@ -62,46 +57,57 @@ toc:
           - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
           - file: search/search-templates.md
-      - file: search/elastic-agent-builder.md
-        children:
-          - file: search/agent-builder/get-started.md
-          - file: search/agent-builder/models.md
-          - file: search/agent-builder/chat.md
-          - file: search/agent-builder/agent-builder-agents.md
-          - file: search/agent-builder/tools.md
-            children:
-              - file: search/agent-builder/tools/esql-tools.md
-              - file: search/agent-builder/tools/index-search-tools.md
-          - file: search/agent-builder/programmatic-access.md
-            children:
-              - file: search/agent-builder/kibana-api.md
-              - file: search/agent-builder/a2a-server.md
-              - file: search/agent-builder/mcp-server.md
-          - file: search/agent-builder/permissions.md
-          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
-        children:
-          - file: search/rag/playground.md
-            children:
-              - file: search/rag/playground-context.md
-              - file: search/rag/playground-query.md
-              - file: search/rag/playground-troubleshooting.md
-          - file: search/mcp.md
       - file: search/site-or-app.md
         children:
           - file: search/site-or-app/clients.md
           - file: search/site-or-app/search-ui.md
-          - file: search/search-applications.md
-            children:
-              - file: search/search-applications/search-application-api.md
-              - file: search/search-applications/search-application-security.md
-              - file: search/search-applications/search-application-client.md
       - file: search/cross-cluster-search.md
         children:
           - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
       - file: search/apis-and-tools.md
-      - file: search/ai-assistant.md
-      - file: search/query-rules-ui.md
+  - file: elasticsearch-solution-project.md
+    children:
+      - file: elasticsearch-solution-project/get-started.md
+        children:
+          - file: elasticsearch-solution-project/get-started/quickstarts.md
+            children:
+              - file: elasticsearch-solution-project/get-started/index-basics.md
+              - file: elasticsearch-solution-project/get-started/keyword-search-python.md
+              - file: elasticsearch-solution-project/get-started/semantic-search.md
+      - file: elasticsearch-solution-project/elastic-agent-builder.md
+        children:
+          - file: elasticsearch-solution-project/agent-builder/get-started.md
+          - file: elasticsearch-solution-project/agent-builder/models.md
+          - file: elasticsearch-solution-project/agent-builder/chat.md
+          - file: elasticsearch-solution-project/agent-builder/agent-builder-agents.md
+          - file: elasticsearch-solution-project/agent-builder/tools.md
+            children:
+              - file: elasticsearch-solution-project/agent-builder/tools/esql-tools.md
+              - file: elasticsearch-solution-project/agent-builder/tools/index-search-tools.md
+          - file: elasticsearch-solution-project/agent-builder/programmatic-access.md
+            children:
+              - file: elasticsearch-solution-project/agent-builder/kibana-api.md
+              - file: elasticsearch-solution-project/agent-builder/a2a-server.md
+              - file: elasticsearch-solution-project/agent-builder/mcp-server.md
+          - file: elasticsearch-solution-project/agent-builder/permissions.md
+          - file: elasticsearch-solution-project/agent-builder/limitations-known-issues.md
+      - file: elasticsearch-solution-project/playground.md
+        children:
+          - file: elasticsearch-solution-project/playground-context.md
+          - file: elasticsearch-solution-project/playground-query.md
+          - file: elasticsearch-solution-project/playground-troubleshooting.md
+      - file: elasticsearch-solution-project/mcp.md
+      - file: elasticsearch-solution-project/search-applications.md
+        children:
+          - file: elasticsearch-solution-project/search-applications/search-application-api.md
+          - file: elasticsearch-solution-project/search-applications/search-application-security.md
+          - file: elasticsearch-solution-project/search-applications/search-application-client.md
+      - file: elasticsearch-solution-project/full-text/search-with-synonyms.md
+        children:
+          - file: elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md
+      - file: elasticsearch-solution-project/ai-assistant.md
+      - file: elasticsearch-solution-project/query-rules-ui.md
   - file: observability.md
     children:
       - file: observability/get-started.md
