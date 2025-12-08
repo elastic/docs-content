@@ -40,11 +40,22 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
+### Context length exceeded error [conversation-length-exceeded]
+
+This error occurs when a conversation exceeds the maximum context length supported by the LLM. This typically happens when tools return large responses that consume the available token budget.
+
+To mitigate this issue, consider the following strategies:
+
+- **Optimize queries**: Narrow your questions to reduce the scope of data retrieval
+- **Start a new conversation**: Begin a fresh conversation, optionally providing a summary of the previous context
+- **Refine tool descriptions**: Update tool descriptions and agent instructions to guide the agent toward requesting only essential data
+- **Limit tool response size**: Create custom tools that filter or paginate data to return smaller, focused datasets
+
 ### {{esql}} limitations
 
-{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself.
 
-For non-serverless deployments, ensure your cluster supports the {{esql}} features you intend to use.
+For non-serverless deployments, ensure your cluster version supports the {{esql}} features you intend to use.
 
 For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 

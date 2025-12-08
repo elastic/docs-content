@@ -77,7 +77,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Logs and diagnostics
 
-* Recent Collector logs with relevant errors or warning messages
+* Recent Collector logs with relevant errors or warning messages. For guidance on enabling debug logging, refer to [Enable debug logging for the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 * Output from:
 
   ```bash
@@ -92,7 +92,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Data and UI symptoms
 
-* Are traces, metrics, or logs missing from the UI?
+* Are traces, metrics, or logs missing from the UI? For troubleshooting steps, refer to [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md) or [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 * Are you using the [Elastic Managed OTLP endpoint](https://www.elastic.co/docs/observability/apm/otel/managed-otel-ingest/)?
 * If data is missing or incomplete, consider enabling the [debug exporter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md) to inspect the raw signal data emitted by the Collector. 
 

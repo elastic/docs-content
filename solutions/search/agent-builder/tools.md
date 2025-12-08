@@ -193,7 +193,7 @@ Note that built-in tools cannot be modified or deleted.
 
 For a quick overview of how to work programmatically with tools, refer to [Tools API](kibana-api.md#tools).
 
-### Serverless API reference
+### API reference
 
 For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools).
 
