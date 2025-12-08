@@ -56,12 +56,18 @@ To set up an {{anomaly-detect}} alert rule:
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
 anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
-6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To refine the list of anomalies that the rule checks for, add a KQL query to the **Anomaly filter** field. When the rule runs, it searches indices that store the anomaly detection results and creates an alert when a document matches anomaly filter query. This feature is only available for the Record and Influencer result types.
+6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule monitors, add an **Anomaly filter**. This filtering capability uses KQL and is only available for the Record and Influencer result types. 
+    
+    In the **Anomaly filter** field, enter a KQL query that specifies to only alert on one or both of the following:
+    
+    * When certain partitioning and influencers fields in the anomaly results
+    * When the actual or typical scores in the anomalies match certain conditions
 
-    When building the KQL query, you're given suggestions for the most relevant fields to filter by. You can also set up conditions that: 
+    For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with ``partition_field_value: "404"`.
 
-    * Specify to only generate alerts if partitioning fields (`partition_field`, `by_field`, or `over_field`) or influencer fields in the anomalies match.
-    * Compare actual or typical values (`>`, `<`, or `=`) to anomaly detection results.
+    ::::{note}
+    When creating the KQL query, you're given suggestions for the most relevant fields to filter by. To compare actual and typical values, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
+    ::::
 
 7. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
     - Include interim results if you 
