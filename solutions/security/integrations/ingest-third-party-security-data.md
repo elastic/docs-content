@@ -37,7 +37,7 @@ You can ingest third-party data into {{elastic-sec}} to review and investigate i
 Data from third-party integrations does not appear on the [CNVM dashboard](/solutions/security/cloud/cnvm-dashboard.md) or the [Cloud Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md).
 ::::
 
-Data from each of the following integrations can feed into at least some of these workflows:
+Data from the following integrations can feed into your {{elastic-sec}} workflows:
 
 * [AWS Config](/solutions/security/integrations/aws-config.md)
 * [AWS Inspector](/solutions/security/integrations/aws-inspector.md)
