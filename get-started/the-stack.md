@@ -108,8 +108,7 @@ It can also protect hosts from security threats, query data from operating syste
 Each agent has a single policy to which you can add [integrations](integration-docs://reference/index.md) for new data sources, security protections, and more.
 You can also use [{{agent}} processors](/reference/fleet/agent-processors.md) to sanitize or enrich your data.
 
-{{fleet}} enables you to centrally manage {{agents}} and their policies.
-Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
+To monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations, refer to [Central management in {{fleet}}](/reference/fleet/index.md#central-management).
 
 [Learn more about {{agent}}](/reference/fleet/index.md).
 
