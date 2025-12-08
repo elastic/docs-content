@@ -56,19 +56,26 @@ To set up an {{anomaly-detect}} alert rule:
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
 anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
-6. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
+6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To refine the list of anomalies that the rule checks for, add a KQL query to the **Anomaly filter** field. When the rule runs, it searches indices that store the anomaly detection results and creates an alert when a document matches anomaly filter query. This feature is only available for the Record and Influencer result types.
+
+    When building the KQL query, you're given suggestions for the most relevant fields to filter by. You can also set up conditions that: 
+
+    * Specify to only generate alerts if partitioning fields (`partition_field`, `by_field`, or `over_field`) or influencer fields in the anomalies match.
+    * Compare actual or typical values (`>`, `<`, or `=`) to anomaly detection results.
+
+7. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
     - Include interim results if you 
 want to be notified earlier about a potential anomaly even if it might be a 
 false positive. 
     - Don't include interim results if you want to get notified only about anomalies of fully 
 processed buckets.
 
-:::{image} /explore-analyze/images/ml-anomaly-alert.jpg
+:::{image} /explore-analyze/images/ml-anomaly-alert.png
 :alt: Selecting result type, severity, and interim results
 :screenshot:
 :::
 
-7. (Optional) Configure **Advanced settings**:
+8. (Optional) Configure **Advanced settings**:
    - Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.
    - Configure the _Number of latest buckets_ to specify how many buckets to check to obtain the highest anomaly score found during the _Lookback interval_. The alert is created based on the highest scoring anomaly from the most anomalous bucket.
 
@@ -86,8 +93,8 @@ You can preview how the rule would perform on existing data:
 :screenshot:
 :::
 
-8. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
-9. (Optional) Configure **Advanced options**:
+9. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
+10. (Optional) Configure **Advanced options**:
    - Define the number of consecutive matches required before an alert is triggered under **Alert delay**.
    - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts. You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
 
