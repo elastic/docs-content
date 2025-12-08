@@ -53,7 +53,7 @@ Backing up Zookeeper data directory is also recommended. Refer to [rebuilding a 
 
 ## External resources accessibility
 
-If you’re using a [private Docker registry server](ece-install-offline-with-registry.md) or hosting any [custom bundles and plugins](../../../solutions/search/full-text/search-with-synonyms.md) on a web server, make sure these resources are accessible from all ECE allocators, so they can continue to be accessed in the event of a network partition or zone outage.
+If you're using a [private Docker registry server](ece-install-offline-with-registry.md) or hosting any [custom bundles and plugins](/solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md) on a web server, make sure these resources are accessible from all ECE allocators, so they can continue to be accessed in the event of a network partition or zone outage.
 
 ## Other recommendations
 
