@@ -28,9 +28,9 @@ To follow along with this guide, you'll need:
 
 Choose a quickstart based on your use case:
 
-- [**Index basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform basic searches using the {{es}} APIs.
-- [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build a keyword search application using the Python client.
-- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search using vector embeddings.
+- [**Index basics**](/solutions/elasticsearch-solution-project/get-started/index-basics.md): Learn how to create indices, add documents, and perform basic searches using the {{es}} APIs.
+- [**Keyword search with Python**](/solutions/elasticsearch-solution-project/get-started/keyword-search-python.md): Build a keyword search application using the Python client.
+- [**Semantic search**](/solutions/elasticsearch-solution-project/get-started/semantic-search.md): Implement semantic search using vector embeddings.
 
 ## Explore search approaches
 

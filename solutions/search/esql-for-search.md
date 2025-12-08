@@ -61,7 +61,7 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 - Text queries where some results are more relevant than others
 - Finding documents similar to a search phrase
 - Any scenario where you want the "best" matches first
-- You want to use [analyzers](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) or [synonyms](/solutions/search/full-text/search-with-synonyms.md) 
+- You want to use [analyzers](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) or [synonyms](/solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md) 
 
 {{esql}}'s search functions address several key limitations that existed for text filtering: they work directly on multivalued fields, leverage analyzers for proper text analysis, and use optimized Lucene index structures for better performance.
 
