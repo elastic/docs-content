@@ -11,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Connect to your own local LLM
+# Connect to your own local LLM using LM Studio
 
 This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within {{elastic-sec}}. You’ll first need to set up a reverse proxy to communicate with {{elastic-sec}}, then set up LM Studio on a server, and finally configure the connector in your Elastic deployment. [Learn more about the benefits of using a local LLM](https://www.elastic.co/blog/ai-assistant-locally-hosted-models).
 
