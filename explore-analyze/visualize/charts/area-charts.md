@@ -117,41 +117,34 @@ Add context with thresholds and events.
 
 Customize your area chart to match the information you need and how you want it displayed.
 
-### Y-axis metric [y-axis-options]
+### Horizontal axis settings [horizontal-axis-settings]
 
-**Value**
-::   The numeric aggregation or formula plotted as the filled line. Common choices include `Sum`, `Average`, `Percentile`, `Count`, `Rate`, or a **Formula** combining multiple aggregations. See [Use formulas to perform math](../lens.md#lens-formulas).
+**Data**
+:   **Functions**: Allow you to group your data. For example, you can use `Date histogram` to group data points into time-based buckets, or `Filters` to divide values into predefined subsets.
+:   **Fields**: Determine which field from your data will be used for the horizontal axis.
+:   **Minimum interval**: Determine the smallest time bucket that your data will be grouped into (for example, seconds, minutes, hours, days).
 
 **Appearance**
-::   Configure series-level options, including:
+:   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
+
+### Vertical axis settings [vertical-axis-settings]
+
+**Data**
+:   To represent the metrics or values you want to visualize, you can use quick functions like `Average`, `Count`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
+
+    :::{include} ../../_snippets/area-vertical-axis-advanced-settings.md
+    :::
+
+**Appearance**
+:   Configure series-level options, including:
    - **Name**: Customize the series label.
-   - **Color by value**: Apply static or dynamic coloring. When using breakdowns, consider [Assign colors to terms](../lens.md#assign-colors-to-terms).
-   - **Stacking**: Choose **None**, **Stacked**, or **Percentage (100%)**.
-   - **Line interpolation**: **Straight**, **Smooth**, or **Step**.
-   - **Missing values**: **Hide**, **Zero**, **Linear**, **Last**, **Next**. See [Visualization appearance options](../lens.md#customize-visualization-appearance).
-   - **Area opacity**: Set the fill transparency to balance readability across overlapping series.
+   - **Value format**: Control how numeric values are displayed on your vertical axis and in tooltips.
+   - **Series color**: Determine the color of your data series in the visualization.
+   - **Axis side**: Determine which side of the chart the vertical axis appears on.
 
-### X-axis settings [x-axis-options]
+### Breakdown settings [breakdown-settings]
 
-**Data**
-::   The horizontal axis, commonly a **Date histogram** over `@timestamp`. You can change the time interval or normalize by unit when needed. See [Frequently asked questions](../lens.md#lens-faq).
-
-**Appearance**
-::   Configure axis title, bounds, tick labels, and orientation in the toolbar. See [Customize the visualization display](../lens.md#configure-the-visualization-components).
-
-### Breakdown settings [breakdown-options]
-
-**Data**
-::   Split your series by a categorical field to create multiple stacked or overlapping areas (for example, per service, status code, or region). You can optionally specify:
-   - **Number of values**: Limit the number of categories shown; extra categories can be grouped as **Other**.
-   - **Order by** and **Direction**: Control ranking and display order.
-   - **Collapse by**: Aggregate values across categories when needed.
-
-   :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
-   :::
-
-**Appearance**
-::   Define legend behavior and label truncation. See [Customize the visualization legend](../lens.md#customize-visualization-legend).
+You can optionally split your series by a categorical field to create multiple stacked or overlapping areas. 
 
 ## Area chart examples
 
