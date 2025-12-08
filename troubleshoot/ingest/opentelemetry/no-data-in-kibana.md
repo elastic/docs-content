@@ -77,7 +77,7 @@ Also look for:
 * TLS handshake failures
 * Invalid character errors, which may indicate proxy or HTML redirect instead of JSON
 
-Increase verbosity using `--log-level=debug` for deeper insights. <!--Refer to [Enable debug logging] for more information.-->
+Increase verbosity using `--log-level=debug` for deeper insights. For more information, refer to [Enable debug logging for the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) or [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 ### Test network connectivity
 
@@ -87,11 +87,11 @@ You can validate connectivity using `curl`:
 curl -v https://<endpoint> -H "Authorization: ApiKey <your-key>"
 ```
 
-Or use `telnet` or `nc` to verify port 443 is reachable.
+Or use `telnet` or `nc` to verify port 443 is reachable. For detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
 <!--### Check proxy environment variables
 
-Ensure environment variables are correctly set in your deployment. Refer to [EDOT proxy settings] for more information relevant to your configuration.
+Ensure environment variables are correctly set in your deployment. Refer to [Proxy settings for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md) for more information relevant to your configuration.
 
 In Kubernetes or container environments, pass these as `env:` entries.
 -->
@@ -110,3 +110,5 @@ service:
 ```
 
 If only logs are configured, metrics and traces will not be sent.
+
+If you're using EDOT SDKs and not seeing application-level telemetry, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) for SDK-specific troubleshooting.

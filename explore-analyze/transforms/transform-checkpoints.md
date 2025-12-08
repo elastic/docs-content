@@ -19,7 +19,7 @@ To create a checkpoint, the {{ctransform}}:
 
 1. Checks for changes to source indices.
 
-    Using a simple periodic timer, the transform checks for changes to the source indices. This check is done based on the interval defined in the transform’s `frequency` property.
+    Using a simple periodic timer, the transform checks for changes to the source indices. This check is done based on the interval defined in the transform’s `frequency` property. If an earlier transform check is in progress, the current check will abort to try again on next `frequency` interval.
 
     If new data is ingested with a slight delay, it might not be immediately available when the transform runs. To prevent missing documents, you can use the `delay` parameter in the `sync` configuration. This shifts the search window backward, ensuring that late-arriving data is included before a checkpoint processes it. Adjusting this value based on your data ingestion patterns can help ensure completeness.
 
