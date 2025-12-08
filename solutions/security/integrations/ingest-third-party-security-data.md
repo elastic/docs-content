@@ -26,7 +26,9 @@ This page lists only third-party integrations that collect data that can directl
 
 You can ingest third-party security alerts into {{elastic-sec}} to view them on the [Alerts page](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#alerts-page) and incorporate them into your triage and threat hunting workflows.
 
-* Learn to [ingest alerts from Sysdig Falco](/solutions/security/integrations/cncf-falco.md).
+Ingest alerts from the following integrations:
+
+* [Sysdig Falco](/solutions/security/integrations/cncf-falco.md).
 
 
 ## Ingest third-party security posture and vulnerability data [_ingest_third_party_security_posture_and_vulnerability_data]
