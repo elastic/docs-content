@@ -10,7 +10,7 @@ Before you start drafting a new docs page, identify the appropriate content type
 Use these guidelines as a framework, not a rulebook. You should adapt structure and syntax where necessary to best serve users, but you should rarely need to deviate from the key _principles_.
 
 :::{tip}
-Need help choosing or structuring a new page? Reach out to the docs team using the `@elastic/docs` handle in GitHub or post in the [#docs](https://elastic.slack.com/archives/C0JF80CJZ) Slack channel.
+Need help choosing a content type or structuring a new page? Reach out to the docs team using the `@elastic/docs` handle in GitHub or post in the [#docs](https://elastic.slack.com/archives/C0JF80CJZ) Slack channel.
 :::
 
 ## Mixing different content types
