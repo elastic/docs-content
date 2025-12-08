@@ -6,7 +6,7 @@ Each content type has its own guidelines and best practices. We also provide tem
 
 ## Using guidelines and templates
 
-When writing documentation, start by identifying the appropriate content type for your page.
+Before you start drafting a new docs page, identify the appropriate content type for your page.
 Use these guidelines as a framework, not a rulebook. You should adapt structure and syntax where necessary to best serve users, but you should rarely need to deviate from the key _principles_.
 
 :::{tip}
