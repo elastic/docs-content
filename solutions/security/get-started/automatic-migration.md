@@ -27,7 +27,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ::::{admonition} Dashboard migration limitations
 * Only classic Splunk dashboards (v1.1) are supported. Attempting to translate unsupported dashboards will result in an `Unsupported Splunk XML` error and a `Not translated` status.
-* Not all Splunk dashboard panels are supported. You can still migrate a dashboard that contains unsupported panels, but those panels will not appear in the migrated dashboard. The following panel types are supported: `vizualization`, `chart`, `table`, `single value (Metric)`. The following panel types are _not_ supported: `map`, `event`, `html`.
+* Elastic only supports `vizualization`, `chart`, `table`, `single value (Metric)` Splunk dashboard panels, and does not support `map`, `event`, `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels will not appear in the migrated dashboard.
 ::::
 
 ## Get started with Automatic Migration
@@ -179,7 +179,7 @@ The table's fields are as follows:
 * **Actions:** To view an `Installed` dashboard, click **View**. To install a `Translated` dashboard, click **Install**. To reprocess a `Failed` dashboard, click **Reprocess**.
 
 ### View dashboard migration details
-For an explanation of a dashboard's translation, click its name to open the dashboard details flyout and view an AI Chat that explains the reasoning behind each panel's translation. 
+For an explanation of a dashboard's translation, click its name to open the dashboard details flyout and view an AI chat that explains the reasoning behind each panel's translation. 
 
 
 ### Finalize translated dashboards
