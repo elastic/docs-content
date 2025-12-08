@@ -50,12 +50,12 @@ To create an anomaly detection rule:
     | **Influencer** | The most unusual entities in a time range |
 
 7. Adjust the **Severity** to match the anomaly score that will trigger the action. The anomaly score indicates the significance of a given anomaly compared to previous anomalies. The default severity threshold is 75, which means every anomaly with an anomaly score of 75 or higher will trigger the associated action.
-8. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule monitors, add an **Anomaly filter**. This filtering capability uses KQL and is only available for the Record and Influencer result types. 
+8. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule monitors for, add an **Anomaly filter**. This filtering capability uses KQL and is only available for the Record and Influencer result types. 
     
-    In the **Anomaly filter** field, enter a KQL query that specifies to only alert on one or both of the following:
+    In the **Anomaly filter** field, enter a KQL query that specifies to only alert when either or both happen:
     
-    * When certain partitioning and influencers fields in the anomaly results
-    * When the actual or typical scores in the anomalies match certain conditions
+    * Certain partitioning or influencers fields in the anomaly results match specified conditions
+    * The actual or typical scores in the anomalies match specified conditions
 
     For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with ``partition_field_value: "404"`.
 
