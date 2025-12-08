@@ -2,6 +2,10 @@
 
 Find practical guides for common documentation tasks.
 
+## Write good issues
+
+Learn how to [write good issues](good-issues.md) for documentation.
+
 ## Write cumulative documentation
 
 :::{note}
