@@ -10,12 +10,11 @@ products:
 applies_to:
   serverless:
   stack:
+description: The {{stack}} are products that work together to securely store, search, analyze, and visualize your data.
 ---
-# {{stack}} and the {{search-platform}}
+# The {{stack}}
 
-The [{{search-platform}}](https://www.elastic.co/platform) is the full suite of products and features available in {{ecloud}} including its unique orchestration, autoscaling, and cloud-native features.
-
-The open source foundation of the {{search-platform}} consists of:
+All Elastic [deployments and projects](deployment-options.md) share the same open source foundation:
 
 - [{{es}}](#stack-components-elasticsearch): The distributed data store and search engine that handles indexing, querying, and analytics.
 - [{{kib}}](#stack-components-kibana): The user interface with dashboards, visualizations, and management tools.
@@ -26,7 +25,7 @@ Depending on your use case, you might need to install more products that work to
 - [{{ls}}](#stack-components-logstash): The data ingestion and transformation engine, often used for more complex ETL (extract, transform, load) pipelines.
 
 $$$stack-components$$$
-The {{stack}} includes products for ingesting, storing, and exploring data at scale:
+The {{stack}} includes products for [ingesting](#_ingest), [storing](#_store), and [exploring](#_consume) data at scale:
 
 ![Components of the {{stack}}](/get-started/images/platform-components-diagram.svg)
 

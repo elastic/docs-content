@@ -2,8 +2,8 @@ project: 'Get started'
 toc:
   - file: index.md
   - file: introduction.md
-  - file: the-stack.md
   - file: deployment-options.md
+  - file: the-stack.md
   - file: versioning-availability.md
   - file: howto-use-the-docs.md
   - title: Glossary
