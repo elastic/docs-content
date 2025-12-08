@@ -54,7 +54,7 @@ input {
     cloud_id => "<HOSTED_DEPLOYMENT_CLOUD_ID>"   # Connects Logstash to your Elastic Cloud Hosted deployment using its Cloud ID.
     api_key  => "<HOSTED_API_KEY>"               # API key for authenticating the connection.
     index    => "index_pattern*"                 # The index or index pattern (such as logs-*,metrics-*).
-    docinfo  => true                             # Includes metadata about each document, such as its original index name or doc ID. This setting preserves index names on the destination cluster. 
+    docinfo  => true                             # Includes metadata about each document, such as its original index name or doc ID. This metadata can be used to preserve index information on the destination cluster. 
   }
 }
 ```
