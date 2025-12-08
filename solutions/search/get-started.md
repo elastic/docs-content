@@ -22,7 +22,7 @@ Using the {{es}} solution or serverless project type? Check out the [{{es}} solu
 To follow along with this guide, you'll need:
 
 - An {{es}} cluster or serverless project. [Create a deployment](/get-started/start-building.md) if you don't have one yet.
-- Connection details for your cluster. Refer to [Connection details](/solutions/search/search-connection-details.md) for more information.
+- Connection details for your cluster. Refer to [Connection details](/solutions/elasticsearch-solution-project/search-connection-details.md) for more information.
 
 ## Quickstarts
 

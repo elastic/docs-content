@@ -37,7 +37,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools" \
 ```
 :::{tip}
 To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-[Learn more](https://www.elastic.co/docs/solutions/search/search-connection-details).
+[Learn more](/solutions/elasticsearch-solution-project/search-connection-details.md).
 :::
 
 ### Working with Spaces

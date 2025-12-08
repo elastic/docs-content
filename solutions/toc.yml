@@ -4,8 +4,6 @@ toc:
   - file: search.md
     children:
       - file: search/get-started.md
-        children:
-          - file: search/search-connection-details.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -67,6 +65,7 @@ toc:
     children:
       - file: elasticsearch-solution-project/get-started.md
         children:
+          - file: elasticsearch-solution-project/search-connection-details.md
           - file: elasticsearch-solution-project/get-started/quickstarts.md
             children:
               - file: elasticsearch-solution-project/get-started/index-basics.md

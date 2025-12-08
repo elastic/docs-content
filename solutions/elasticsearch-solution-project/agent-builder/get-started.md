@@ -68,7 +68,7 @@ For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 :::{tip}
 If you're not ready to add your own data, you can:
 - Use the Elastic [sample data](/manage-data/ingest/sample-data.md).
-- Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/search/search-connection-details.md)).
+- Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-).  (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
 
 % TODO: we can link to a an agent builder tutorial if we add one in the docs
 :::

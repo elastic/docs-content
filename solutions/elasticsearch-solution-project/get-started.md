@@ -25,7 +25,7 @@ To use the {{es}} solution, you'll need:
 
 - An {{es}} solution deployment on {{ech}} or an {{es}} serverless project
 - Access to {{kib}} for using the UI tools
-- Connection details for your cluster. Refer to [Connection details](/solutions/search/search-connection-details.md) for more information.
+- Connection details for your cluster. Refer to [Connection details](/solutions/elasticsearch-solution-project/search-connection-details.md) for more information.
 
 ## Quickstarts
 

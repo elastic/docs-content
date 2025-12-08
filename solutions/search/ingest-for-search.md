@@ -39,7 +39,7 @@ If you just want to do a quick test, you can load [sample data](/manage-data/ing
 You can use the [`_bulk` API]({{es-apis}}group/endpoint-document) to add data to your {{es}} indices, using any HTTP client, including the [{{es}} client libraries](/solutions/search/site-or-app/clients.md).
 
 ::::{tip}
-To connect to an {{es-serverless}} project, you must [find the connection details](/solutions/search/search-connection-details.md).
+To connect to an {{es-serverless}} project, you must [find the connection details](/solutions/elasticsearch-solution-project/search-connection-details.md).
 ::::
 
 While the {{es}} APIs can be used for any data type, Elastic provides specialized tools that optimize ingestion for specific use cases.
