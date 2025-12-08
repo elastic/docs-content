@@ -16,18 +16,19 @@ AutoOps collects data from your self-managed cluster with the help of {{agent}} 
 
 If you don't want the agent to access certain types of data, you can disable the collection of related metrics by editing your configuration file as described in the following section.
 
+:::{warning}
+Disable data collection only when necessary, as it limits the insights that AutoOps can provide. For example, disabling the collection of cluster health metrics prevents you from receiving critical warnings and diagnostics about your cluster's health.
+:::
+
 ## Edit your AutoOps configuration file
 
 To disable the collection of certain types of data from your environment, delete the lines related to that data from your `autoops_es.yml` file.
 
 Complete the following steps:
 
-1. On your host machine, open the `autoops_es.yml` file. The default location is ``.
+1. On your host machine, open the `autoops_es.yml` file.
 2. In the `autoops_es.yml` file, locate the metric or module related to the data that you want AutoOps to stop collecting. 
-3. Delete the related lines from the file. For example,
-    * to disable the collection of task-related data, delete the `tasks_management` line 
-    * to disable the collection of template-related data, delete the `Templates` module 
-    The following code demonstrates these examples:
+3. Delete the related metricsets or module lines from the file.
 
     ```yaml
     receivers:
@@ -44,11 +45,9 @@ Complete the following steps:
                 - cluster_settings
                 - license
                 - node_stats
-                # --- DELETE THIS LINE ---
-                - tasks_management
-            # --- DELETE THIS MODULE ---
+                - tasks_management <1>
             # Templates
-            - module: autoops_es
+            - module: autoops_es <2>
               hosts: ${env:AUTOOPS_ES_URL}
               period: 24h
               metricsets:
@@ -56,6 +55,9 @@ Complete the following steps:
                 - component_template
                 - index_template
     ```
+    For example, 
+    1. to disable the collection of task-related data, delete the `tasks_management` line
+    2. to disable the collection of template-related data, delete all the lines in the `Templates` section
 4. Save your changes to the `autoops_es.yml` file.
 5. Restart {{agent}} so that the new settings can take effect.\
     In most systemd-based Linux environments, you can use the following command to restart the agent:
