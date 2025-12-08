@@ -93,8 +93,9 @@ Learn more in [](/explore-analyze/index.md).
 
 ## Ingest [_ingest]
 
+Before you can search it, visualize it, and use it for insights, you must get your data into {{es}}.
 There are multiple methods for ingesting data.
-The best approach depends on the kind of data you're ingesting and your specific use case.
+The best approach depends on the type of data and your specific use case.
 For example, you can collect and ship logs, metrics, and other types of data with {{agent}} or collect detailed performance information with {{product.apm}}.
 If you want to transform and enrich data before it's stored, you can use {{es}} ingest pipelines or {{ls}}.
 
