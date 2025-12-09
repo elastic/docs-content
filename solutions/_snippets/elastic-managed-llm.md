@@ -5,5 +5,5 @@ Elastic Managed LLM is available out-of-the box; it does not require manual conf
 To learn more about security and data privacy, refer to [Elastic Managed LLM](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) and [download the model card](https://raw.githubusercontent.com/elastic/kibana/refs/heads/main/docs/reference/resources/Elastic_Managed_LLM_model_card.pdf).
 
 :::{important}
-Using Elastic Managed LLM incurs additional costs. Refer to [{{ecloud}} pricing](https://www.elastic.co/pricing/serverless-search) for more information.
+Using Elastic Managed LLMs incurs additional costs. Refer to [{{ecloud}} pricing](https://www.elastic.co/pricing/serverless-search) for more information.
 :::
