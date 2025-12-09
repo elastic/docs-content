@@ -36,6 +36,8 @@ When you create how-to guides, follow these best practices:
 
 To help users quickly find and follow instructions, how-to guides use a consistent structure. A predictable format improves clarity, reduces confusion, and makes the guide easier to use.
 
+### Required elements
+
 The following elements are required in how-to guides:
 
 - A consistent **filename:** Use action verb patterns like `create-*.md`, `configure-*.md`, or `troubleshoot-*.md`.
