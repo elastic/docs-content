@@ -4,13 +4,10 @@ applies_to:
   stack: ga
   deployment:
     ess: ga
-    ece: ga
 products:
   - id: elasticsearch
   - id: logstash
   - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
 ---
 
 # Migrate {{ech}} data to {{serverless-full}} with {{ls}} [migrate-with-ls]
@@ -70,7 +67,6 @@ output {
   elasticsearch {
     hosts       => [ "https://<SERVERLESS_HOST_URL>:443" ] # URL for your Serverless project URL, set port as 443
     api_key     => "<SERVERLESS_API_KEY>"                  # API key (in Logstash format) for your Serverless project
-    ssl_enabled => true
     index       => "%{[@metadata][input][elasticsearch][_index]}" # Instruction to retain original index names
   }
 
