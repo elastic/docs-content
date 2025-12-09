@@ -83,7 +83,7 @@ Nodes typically leave the cluster with reason `disconnected` when they shut down
 
 The connections from the elected master node to every other node in the cluster are particularly important. The elected master never spontaneously closes its outbound connections to other nodes. Similarly, once an inbound connection is fully established, a node never spontaneously closes it unless the node is shutting down.
 
-To determine whether the node which left the cluster with the `disconnected` reason did so because it was shutting down, look for the message from the `NodeJoinExecutor` logged when the node rejoined the cluster again as described [above](#troubleshooting-unstable-cluster). This message will indicate whether the node restarted or not. If the node did not restart, the disconnect is unexpected and indicates that something other than {{es}} caused the connection to close. See [Diagnosing network disconnections](#troubleshooting-unstable-cluster-network) for further information about troubleshooting network disconnections.
+To determine whether the node which left the cluster with the `disconnected` reason did so because it was shutting down, look for the message from the `NodeJoinExecutor` logged when the node rejoined the cluster again as described in the previous section. This message will indicate whether the node restarted or not. If the node did not restart, the disconnect is unexpected and indicates that something other than {{es}} caused the connection to close. See [Diagnosing network disconnections](#troubleshooting-unstable-cluster-network) for further information about troubleshooting network disconnections.
 
 ## Diagnosing `lagging` nodes [troubleshooting-unstable-cluster-lagging]
 
