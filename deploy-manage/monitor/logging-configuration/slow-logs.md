@@ -8,10 +8,12 @@ applies_to:
 
 # Slow query and index logging
 
-The slow log records database search and indexing events that exceed time thresholds you define.
-Use slow logs to investigate, analyze or audit heavy operations, or troubleshoot your cluster’s historical search and indexing performance.
+The slow log records database search and indexing operations that exceed time thresholds you define.
+You can use slow logs to investigate, analyze or audit heavy operations, or troubleshoot your cluster’s historical search and indexing performance.
 
 Slow logs report task duration at the **shard level** for searches, and at the **index level** for indexing, but might not encompass the full task execution time observed on the client. For example, slow logs don’t surface HTTP network delays or the impact of [task queues](/troubleshoot/elasticsearch/task-queue-backlog.md). For more information about the higher-level operations affecting response times, refer to [Reading and writing documents](/deploy-manage/distributed-architecture/reading-and-writing-documents.md).
+
+**Finding slow logs**
 
 Events that meet the specified threshold are emitted into [{{es}} logging](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) under the `fileset.name` of `slowlog`. These logs can be viewed in the following locations:
 
@@ -24,15 +26,26 @@ See this [this video](https://www.youtube.com/watch?v=ulUPJshB5bU) for a walkthr
 Because logging everything can be high volume, slow logs are disabled by default (all thresholds are equal to `-1`). Activate only when needed.
 
 
+## What's logged [slow-log-format]
 
-## Slow log format [slow-log-format]
-
-The following is an example of a search event in the slow log:
+Depending on the settings you configure, slow logs can record:
+* the operation (searching or indexing)
+* phase for searches (query or fetch)
+* how long the operation took
+* number of hits
+* which shard or index is affected
+* optional metadata (such as the `_source` request body or `user.*` fields)
 
 ::::{tip}
 If a call was initiated with an `X-Opaque-ID` header, then the ID is automatically included in Search slow logs in the **elasticsearch.slowlog.id** field. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
 ::::
 
+The following are examples of a search event and an indexing event in the slow log:
+
+::::{tab-set}
+:group: slow-logs
+:::{tab-item} Search event
+:sync: search
 
 ```js
 {
@@ -64,7 +77,10 @@ If a call was initiated with an `X-Opaque-ID` header, then the ID is automatical
 ```
 % NOTCONSOLE
 
-The following is an example of an indexing event in the slow log:
+:::
+
+:::{tab-item} Indexing event
+:sync: index
 
 ```js
 {
@@ -90,6 +106,60 @@ The following is an example of an indexing event in the slow log:
 }
 ```
 % NOTCONSOLE
+
+:::
+::::
+
+
+## When to use slow logging [troubleshoot-slow-log]
+
+Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) cluster. 
+
+To reduce the impact of slow logs, consider the following:
+
+* Enable slow logs against specific indices rather than across all indices.
+* Set high thresholds to reduce the number of logged events.
+* Enable slow logs only when troubleshooting.
+
+If you aren’t sure how to start investigating traffic issues, consider enabling the `warn` threshold with a high `30s` threshold at the index level using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API:
+
+::::{tab-set}
+:group: slow-logs
+:::{tab-item} Search requests
+:sync: search
+
+```console
+PUT /*/_settings
+{
+  "index.search.slowlog.include.user": true,
+  "index.search.slowlog.threshold.fetch.warn": "30s",
+  "index.search.slowlog.threshold.query.warn": "30s"
+}
+```
+
+:::
+:::{tab-item} Indexing requests
+:sync: index
+
+```console
+PUT /*/_settings
+{
+  "index.indexing.slowlog.include.user": true,
+  "index.indexing.slowlog.threshold.index.warn": "30s"
+}
+```
+
+:::
+::::
+
+
+Slow log thresholds being met does not guarantee cluster performance issues. Slow logs can provide helpful data to diagnose upstream traffic patterns or sources to resolve client-side issues. For example, you can use data included in `X-Opaque-ID`, the `_source` request body, or `user.*` fields to identify the source of your issue. This is similar to troubleshooting [live expensive tasks](/troubleshoot/elasticsearch/task-queue-backlog.md).
+
+If you’re experiencing search performance issues, then you might want to consider investigating searches flagged for their query durations using the [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](/explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
+
+Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md). If you suspect circuit breaker errors, then you should also consider enabling [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md), which logs events before they are executed.
+
+
 
 ## Enable slow logging [enable-slow-log]
 
@@ -190,47 +260,6 @@ PUT /my-index-000001/_settings
 By default, {{es}} logs the first 1000 characters of the `_source` in the slow log. You can adjust how `_source` is logged using the `index.indexing.slowlog.source` setting. Set `index.indexing.slowlog.source` to `false` or `0` to skip logging the source entirely. Set `index.indexing.slowlog.source` to `true` to log the entire source regardless of size.
 
 The original `_source` is reformatted by default to make sure that it fits on a single log line. If preserving the original document format is important, then you can turn off reformatting by setting `index.indexing.slowlog.reformat` to `false`. This causes source to be logged with the original formatting intact, potentially spanning multiple log lines.
-
-
-## Best practices for slow logging [troubleshoot-slow-log]
-
-Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) cluster. To reduce the impact of slow logs, consider the following:
-
-* Enable slow logs against specific indices rather than across all indices.
-* Set high thresholds to reduce the number of logged events.
-* Enable slow logs only when troubleshooting.
-
-If you aren’t sure how to start investigating traffic issues, consider enabling the `warn` threshold with a high `30s` threshold at the index level using the [update indices settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings):
-
-* Enable for search requests:
-
-    ```console
-    PUT /*/_settings
-    {
-      "index.search.slowlog.include.user": true,
-      "index.search.slowlog.threshold.fetch.warn": "30s",
-      "index.search.slowlog.threshold.query.warn": "30s"
-    }
-    ```
-    % TEST[setup:my_index]
-
-* Enable for indexing requests:
-
-    ```console
-    PUT /*/_settings
-    {
-      "index.indexing.slowlog.include.user": true,
-      "index.indexing.slowlog.threshold.index.warn": "30s"
-    }
-    ```
-    % TEST[setup:my_index]
-
-
-Slow log thresholds being met does not guarantee cluster performance issues. In the event that symptoms are noticed, slow logs can provide helpful data to diagnose upstream traffic patterns or sources to resolve client-side issues. For example, you can use data included in `X-Opaque-ID`, the `_source` request body, or `user.*` fields to identify the source of your issue. This is similar to troubleshooting [live expensive tasks](/troubleshoot/elasticsearch/task-queue-backlog.md).
-
-If you’re experiencing search performance issues, then you might also consider investigating searches flagged for their query durations using the [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](/explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
-
-Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md). If suspect circuit breaker errors, then you should also consider enabling [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md), which logs events before they are executed.
 
 
 ## Learn more [_learn_more]
