@@ -8,8 +8,6 @@ During the free 14-day trial, Elastic provides access to one hosted deployment a
 * Custom {{es}} plugins are not enabled.
 * We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you, then remove access to the LLM. This is in accordance with our fair use policy for trials. 
 
-For more information, check the [{{ech}} documentation](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
-
 **Serverless projects**
 
 * You can have three active {{serverless-short}} projects at a time.
