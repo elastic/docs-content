@@ -8,14 +8,14 @@ This page provides guidelines for writing effective how-to guides in Elastic doc
 
 ## What is a how-to guide?
 
-A how-to guide contains a short set of instructions to be carried out, in sequence, to accomplish a specific task. You can think of it like a cooking recipe.
+How-to guides contain a short set of instructions to be carried out, in sequence, to accomplish a specific task. You can think of it like a cooking recipe.
 
-It has two essential components:
+How-to guides include two essential components:
 
 - A set of **requirements**
-- A sequence of **steps** to follow
+- A sequence of **steps** to follow to accomplish a specific task
 
-This focus on a self-contained task is what defines a how-to guide and sets it apart from longer procedural guides, such as quickstarts or tutorials.
+How-to guides focus on a single, self-contained task. For longer procedural content, use a tutorial.
 
 % TODO: Add eventual snippet that disambiguates how-tos, tutorials, and quickstarts -->
 
@@ -23,22 +23,22 @@ This focus on a self-contained task is what defines a how-to guide and sets it a
 
 There are a few key principles to keep in mind when drafting how-to guides:
 
-- **Focus on the user's goal:** Structure content around what users want to accomplish, not what the tool can do.
-- **Write recipes, not lessons:** Don't define concepts or explain why things work, unless required for the task at hand. Add useful context to a "Related pages" or "Learn more" section instead.
-- **Keep it focused:** A how-to guide should be scoped to a single, well-defined task. As a rule of thumb, if you need more than 10 overall steps, consider breaking it into multiple how-to guides or use the tutorial format.
+- **Focus on the user goal:** Organize the content around what users need to accomplish, rather than the tool capabilities.
+- **Write recipes, not lessons:** Explain only the information users need to complete the task. Avoid defining concepts or describing why something works unless it’s essential. Add useful context to a "Related pages" or "Learn more" section instead.
+- **Keep it focused:** A how-to guide should be scoped to a single, well-defined task. As a rule of thumb, if you need more than 10 overall steps, use the tutorial format.
 - **Show alternative approaches:** When multiple valid solutions exist, show the options users might choose. For example:
   - If the same step can be carried out in the UI or with an API, use [tabs](https://elastic.github.io/docs-builder/syntax/tabs/#tab-groups) to show both options.
   - If instructions differ per deployment type or version, use an [applies-switch](https://elastic.github.io/docs-builder/syntax/applies-switch/) to show the variations.
 - **Skip edge cases:** Focus on the typical, primary use case, and avoid documenting rare or non-standard variations.
-- **Test your steps:** Authors and reviewers should follow the instructions end to end, to catch errors, missing steps, and language issues.
+- **Test your steps:** Authors and reviewers should follow the instructions from start to finish to identify errors, missing steps, or unclear language.
 
 ## Structure of a how-to guide
 
-How-to guides follow a consistent structure. The following sections outline the required, recommended, and optional elements.
+To help users quickly find and follow instructions, how-to guides use a consistent structure. A predictable format improves clarity, reduces confusion, and makes the guide easier to use.
 
 ### Required elements
 
-The following elements are required in every how-to guide:
+The following elements are required in how-to guides:
 
 - A consistent **filename:** Use action verb patterns like `create-*.md`, `configure-*.md`, or `troubleshoot-*.md`.
   - For example: `run-elasticsearch-docker.md`
@@ -49,7 +49,7 @@ The following elements are required in every how-to guide:
 % TODO once we have structured types  - The `type` field set to `how-to`
 - A clear **title:** A precise description of the task using an action verb
   - For example, "How to run {{es}} in Docker"
-- An **introduction:** A brief summary of what the guide accomplishes and what the user will achieve.
+- An **introduction:** Briefly explain what the guide helps the user accomplish and the outcome they can expect.
 - A **Before you begin** section: List any special permissions or data/configuration needed. Assume basic feature access. You can also link to background knowledge or highlight known pitfalls.
 - A set of **steps:** Numbered instructions that begin with imperative verb phrases. Keep each step focused on a single action.
   :::{tip}
@@ -61,7 +61,7 @@ The following elements are required in every how-to guide:
 Include the following sections in most how-to guides:
 
 - **Next steps:** Suggestions for what users can do next after completing the task.
-- **Related pages:** Links to related documentation such as conceptual topics, reference material, or other how-to guides.
+- **Related pages:** Links to related documentation such as conceptual topics, reference material, troubleshooting, or other how-to guides.
 
 ### Optional elements
 
@@ -74,7 +74,7 @@ Consider including the following when they add value:
 
 ## Template
 
-You can use the [how-to template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md) to get started writing your how-to guide.
+To get started on writing your how-to guide, use the [how-to template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md).
 
 ## Examples
 
