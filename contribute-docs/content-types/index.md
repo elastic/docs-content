@@ -5,9 +5,7 @@ description: "Overview of guidelines for choosing the appropriate content types 
 
 # Elastic Docs content types
 
-This page provides an overview of the different content types used in the Elastic documentation and guidelines for choosing the appropriate type when creating new docs pages.
-
-Content types ensure the Elastic Docs are well-structured, consistent and complete. When we use the right content type, we make it easier for users to find the information they need and efficiently complete tasks. 
+Content types ensure the Elastic Docs are well-structured, consistent and, complete. When we use the right content type, we make it easier for users to find the information they need and efficiently complete tasks. 
 
 To help you quickly get started, each content type includes its own guidelines, best practices, and templates.
 
@@ -15,7 +13,7 @@ Before you start drafting a new docs page, identify the appropriate content type
 Use these guidelines as a framework, not a rulebook. You should adapt structure and syntax where necessary to best serve users, but you should rarely need to deviate from the best practices.
 
 :::{tip}
-Need help choosing a content type or structuring a new page? Reach out to the docs team using the `@elastic/docs` handle in GitHub or post in the [#docs](https://elastic.slack.com/archives/C0JF80CJZ) Slack channel.
+Need help choosing a content type or structuring a new page? Reach out to the docs team using the `@elastic/docs` handle in GitHub or post in the [community docs channel](https://elasticstack.slack.com/archives/C09EUND5612). (Elasticians can also use the internal [#docs](https://elastic.slack.com/archives/C0JF80CJZ) Slack channel.)
 :::
 
 ## Mixing different content types

@@ -1,5 +1,5 @@
 ---
-description: "A nice summary of the page fit for search results and tooltips."
+description: "A concise summary of the page highlighting what the task accomplishes, fit for search results and tooltips."
 applies_to:
   stack:
   serverless:
@@ -18,7 +18,7 @@ For complete guidance, refer to [the how-to guide](https://www.elastic.co/docs/c
 
 A precise description of the task using an action verb 
 
-Example: How to run Elasticsearch in Docker
+Example: Run Elasticsearch in Docker
 -->
 
 <!-- REQUIRED
@@ -39,7 +39,8 @@ REQUIRED
 - [Required data or configuration]
 - [Link to background knowledge if helpful]
 
-## Steps
+## Task name
+
 <!--
 REQUIRED
 

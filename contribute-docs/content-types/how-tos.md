@@ -1,9 +1,8 @@
 ---
-navigation_title: "How-to guides"
 description: "Guidelines for writing effective how-to guides in the Elastic documentation."
 ---
 
-# How to write how-to guides
+# How-to guides
 
 This page provides guidelines for writing effective how-to guides in the Elastic docs.
 
@@ -47,7 +46,7 @@ The following elements are required in how-to guides:
   - `product`: The relevant Elastic product(s) used in the how-to
 % TODO once we have structured types  - The `type` field set to `how-to`
 - A clear **title:** A precise description of the task using an action verb
-  - For example, "How to run {{es}} in Docker"
+  - For example, "Run {{es}} in Docker"
 - An **introduction:** Briefly explain what the guide helps the user accomplish and the outcome they can expect.
 - A **Before you begin** section: List any special permissions or data/configuration needed. Assume basic feature access. You can also link to background knowledge or highlight known pitfalls.
 - A set of **steps:** Numbered instructions that begin with imperative verb phrases. Keep each step focused on a single action.
@@ -75,9 +74,9 @@ Consider including the following when they add value:
 
 To get started on writing your how-to guide, use the [how-to template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md).
 
-## Examples
+% ## Examples
 
-Here are some examples of well-structured how-to guides in the Elastic documentation:
+% Here are some examples of well-structured how-to guides in the Elastic documentation:
 
 % TODO: Add links to 2-3 exemplary how-to guides in the docs
 
