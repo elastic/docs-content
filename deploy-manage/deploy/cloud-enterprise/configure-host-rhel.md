@@ -99,26 +99,26 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
     * For Podman 5
 
-        * Install the latest available version of Podman `5.2.2` using dnf.
+        * Install the latest available version `5.*` using dnf.
 
             :::{note}
-            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later build of `5.2.2`, such as `5.2.2-16` or newer. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
+            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later version. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
             :::
 
             ```sh
-            sudo dnf install podman-5.2.2 podman-remote-5.2.2
+            sudo dnf install podman-5.* podman-remote-5.*
             ```
-        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2`.
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `5.*` while still allowing minor and patch updates.
 
             ```sh
             ## Install versionlock
             sudo dnf install 'dnf-command(versionlock)'
 
             ## Lock major version
-            sudo dnf versionlock add --raw 'podman-5.2.2'
-            sudo dnf versionlock add --raw 'podman-remote-5.2.2'
+            sudo dnf versionlock add --raw 'podman-5.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.*'
 
-            ## Verify that podman-5.2.2 and podman-remote-5.2.2 appear in the output
+            ## Verify that podman-5.* and podman-remote-5.* appear in the output
             sudo dnf versionlock list
             ```
 
@@ -353,30 +353,14 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     root             soft    memlock        unlimited
     ```
 
-29. NOTE: This step is optional if the Docker registry doesn’t require authentication.
-
-    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
-
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
-
-    ```text
-    {
-     "auths": {
-       "docker.elastic.co": {
-         "auth": "<auth-token>"
-       }
-     }
-    }
-    ```
-
-30. Restart the podman service by running this command:
+29. Restart the podman service by running this command:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-31. Reboot the RHEL host
+30. Reboot the RHEL host.
 
     ```sh
     sudo reboot

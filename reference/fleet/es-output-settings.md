@@ -75,7 +75,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 `allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
-    Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
+    This setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
 
     **Default:** `true`
 
@@ -132,6 +132,10 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
     **Default:** `1`
 
+`status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
+:   (boolean) Whether status reporting is enabled for this output. When disabled, the output does not change its health status if there is a connectivity problem.
+
+    **Default:** `true`
 
 ## Performance tuning settings [es-output-settings-performance-tuning-settings]
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Air-gapped environments
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
 products:
@@ -6,16 +7,16 @@ products:
   - id: elastic-agent
 ---
 
-# Air-gapped environments [air-gapped]
+# Run {{agents}} in an air-gapped environment [air-gapped]
 
 When running {{agent}}s in a restricted or closed network, you need to take extra steps to make sure:
 
 * {{kib}} is able to reach the {{package-registry}} to download package metadata and content.
 * {{agent}}s are able to download binaries during upgrades from the {{artifact-registry}}.
 
-The {{package-registry}} must therefore be accessible from {{kib}} via an HTTP Proxy and/or self-hosted.
+The {{package-registry}} must therefore be accessible from {{kib}} through an HTTP Proxy or self-hosted.
 
-The {{artifact-registry}} must therefore be accessible from {{kib}} via an HTTP Proxy and/or self-hosted.
+The {{artifact-registry}} must therefore be accessible from {{kib}} through an HTTP Proxy or self-hosted.
 
 ::::{tip}
 See the {{elastic-sec}} Solution documentation for air-gapped [offline endpoints](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md).
@@ -110,8 +111,8 @@ There are different distributions available:
 
 * {{version.stack}} (recommended): *docker.elastic.co/package-registry/distribution:{{version.stack}}* - Selection of packages from the production repository released with {{stack}} {{version.stack}}.
 * lite-{{version.stack}}: *docker.elastic.co/package-registry/distribution:lite-{{version.stack}}* - Subset of the most commonly used packages from the production repository released with {{stack}} {{version.stack}}. This image is a good candidate to start using {{fleet}} in air-gapped environments.
-* production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Note that this image is updated every time a new version of a package gets published.
-* lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Note that this image is updated every time a new version of a package gets published.
+* production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
+* lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 
 
 To update the distribution image, re-pull the image and then restart the docker container.
