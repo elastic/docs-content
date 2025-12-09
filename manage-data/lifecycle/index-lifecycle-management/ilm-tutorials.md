@@ -1,12 +1,12 @@
 ---
-navigation_title: {{ilm-init}} automation tutorials
+navigation_title: ILM automation tutorials
 applies_to:
   stack: ga
 products:
   - id: elasticsearch
 ---
 
-# {{ilm-cap}} automation tutorials
+# ILM automation tutorials
 
 A collection of tutorials is available to help you control the lifecycle of your data using {{ilm}}.
 
