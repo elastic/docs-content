@@ -15,7 +15,7 @@ To [restore](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operati
 
 A restored index’s `min_age` is relative to when it was originally created or rolled over, not its restoration time. Policy actions are performed on the same schedule irrespective of whether an index has been restored from a snapshot. If you restore an index that was accidentally deleted half way through its month long lifecycle, it proceeds normally through the last two weeks of its lifecycle.
 
-You might want to prevent {{ilm-init}} from immediately executing its policy on a restored index. For example, if you are restoring an older snapshot you might want to prevent it from rapidly progressing through all of its lifecycle phases. You might want to add or update documents before it’s marked read-only or shrunk, or prevent the index from being immediately deleted.
+You might want to prevent {{ilm-init}} from immediately executing its policy on a restored index. For example, if you are restoring an older snapshot you might want to prevent it from rapidly progressing through all its lifecycle phases. You might want to add or update documents before it’s marked read-only or shrunk, or prevent the index from being immediately deleted.
 
 To prevent {{ilm-init}} from executing a restored index’s policy:
 

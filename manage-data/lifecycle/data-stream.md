@@ -57,7 +57,7 @@ Since the lifecycle is configured on the data stream level, the process to confi
 
 Four tutorials are available to help you set up and manage data streams with data stream lifecycle:
 
-* To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. See [](data-stream/tutorial-create-data-stream-with-lifecycle.md) for the detailed steps. When a write operation with the name of your data stream reaches {{es}} then the data stream is created with the respective data stream lifecycle.
+* To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. Refer to [](data-stream/tutorial-create-data-stream-with-lifecycle.md) for the detailed steps. When a write operation with the name of your data stream reaches {{es}} then the data stream is created with the respective data stream lifecycle.
 * To update the lifecycle settings for an individual, existing data stream, use the [data stream lifecycle APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream). Refer to [](data-stream/tutorial-update-existing-data-stream.md) for details.
 * Retention settings for data streams can be configured both individually, at the data stream level, and globally, for all data streams in a cluster. To learn more, refer to [](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 * To migrate an existing {{ilm-init}} managed data stream to data stream lifecycle, follow the steps in [](data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md).

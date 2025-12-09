@@ -10,9 +10,6 @@ products:
 
 # {{ilm-cap}} phases and actions [ilm-index-lifecycle]
 
-
-
-
 {{ilm-cap}} ({{ilm-init}}) in {{es}} defines how indices transition through different phases—hot, warm, cold, frozen, and delete—based on age and usage. Each phase supports specific actions, from rollover and force merge to searchable snapshots and delete. This guide explains the purpose of each phase, the timing of transitions, and the actions available to manage index performance and storage efficiently.
 
 [{{ilm-cap}}](../index-lifecycle-management.md) ({{ilm-init}}) defines five index lifecycle *phases*:
