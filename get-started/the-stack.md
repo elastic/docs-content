@@ -151,6 +151,10 @@ It can dynamically unify data from disparate sources and normalize the data into
 
 ## Installation details [version-compatibility]
 
+```{applies_to}
+serverless: unavailable
+```
+
 :::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
 :::
 
