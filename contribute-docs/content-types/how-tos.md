@@ -22,7 +22,7 @@ How-to guides focus on a single, self-contained task. For longer procedural cont
 
 ## Best practices
 
-When you create how-to guides, use the following best practices:
+When you create how-to guides, follow these best practices:
 
 - **Focus on the user goal:** Organize the content around what users need to accomplish, rather than the tool capabilities.
 - **Write recipes, not lessons:** Explain only the information users need to complete the task. Avoid defining concepts or describing why something works unless it’s essential. Add useful context to a "Related pages" or "Learn more" section instead.
