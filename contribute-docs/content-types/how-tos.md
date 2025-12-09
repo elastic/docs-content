@@ -54,6 +54,7 @@ The following elements are required in how-to guides:
   :::{tip}
   Use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/) for longer how-tos or those with complex steps.
   :::
+- **Success checkpoints:** Include confirmation steps that show users whether critical actions succeeded before moving on.
 
 ### Recommended sections
 
@@ -68,7 +69,6 @@ Consider including the following when they add value:
 
 - **[Code annotations](https://elastic.github.io/docs-builder/syntax/code/#code-callouts):** Annotate important lines within code blocks.
 - **[Screenshots](https://elastic.github.io/docs-builder/syntax/images/#screenshots):** Add visual aids for UI tasks when context is hard to describe in words. Use screenshots sparingly as they're hard to maintain.
-- **Success checkpoints:** Include confirmation steps that show users whether critical actions succeeded before moving on.
 - **Error handling:** Mention common errors and how to resolve them.
 
 ## Template
