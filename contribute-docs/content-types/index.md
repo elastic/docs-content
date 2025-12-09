@@ -1,4 +1,11 @@
+---
+navigation_title: "Content types"
+description: "Overview of guidelines for choosing the appropriate content types in the Elastic documentation."
+---
+
 # Elastic Docs content types
+
+This page provides an overview of the different content types used in the Elastic documentation and guidelines for choosing the appropriate type for your docs page.
 
 Content types ensure the Elastic Docs are structured, consistent, and easy for users to follow. When we use the right content type, we make it easy for users to find the information they need and efficiently complete tasks. 
 
