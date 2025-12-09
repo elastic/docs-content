@@ -4,7 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
 applies_to:
-  stack: ga
   deployment:
     ece: ga
     ess: ga
