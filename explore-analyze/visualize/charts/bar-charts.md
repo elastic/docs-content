@@ -128,7 +128,7 @@ To create a time-based bar chart:
 2. Set the **Vertical axis** to your metric (like count, sum, or average).
 3. Set the **Horizontal axis** to a date field using the **Date histogram** function.
 4. Configure the minimal time interval (auto, millisecond, second, minute, hour, day, week, month, year).
-5. Optionally add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked or grouped bar charts.
+5. Optionally add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked bar charts.
 
 ::::{tip}
 Time-based bar charts are great for:
