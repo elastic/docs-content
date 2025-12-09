@@ -29,7 +29,6 @@ The following table compares features available in each feature tier:
 | **Feature Name** | **Security Analytics Complete** | **Security Analytics Essentials** | **EASE** |
 | :--- | :---: | :---: | :---: |
 | **[Cases](/solutions/security/investigate/cases.md) (collect and share information)** | ✅ | ✅ | ✅ |
-| **Collaboration workflows** | ✅ | ✅ | ✅ |
 | **[Native integrations](https://www.elastic.co/docs/reference/integrations) with third-party SIEM and EDR platforms** | ✅ | ✅ | ✅ |
 | **Out of the box [dashboards](/solutions/security/dashboards.md)** | ✅ | ✅ | ❌ |
 | **Prebuilt and custom [detection rules](/solutions/security/detect-and-alert.md)** | ✅ | ✅ | ❌ |
@@ -46,7 +45,7 @@ The following table compares features available in each feature tier:
 
 ## Add-on options
 
-Both the **Security Analytics Complete** and **Security Analytics Essentials** feature tiers optional add-ons for **Endpoint protection** and **Cloud protection**. The features included in each add on vary by feature tier, as follows:
+Both the **Security Analytics Complete** and **Security Analytics Essentials** feature tiers have optional add-ons for **Endpoint protection** and **Cloud protection**. The features included in each add on vary by feature tier, as follows:
 
 **Endpoint protection add-on:**
 
