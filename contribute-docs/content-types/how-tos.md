@@ -19,9 +19,9 @@ How-to guides focus on a single, self-contained task. For longer procedural cont
 
 % TODO: Add eventual snippet that disambiguates how-tos, tutorials, and quickstarts -->
 
-## Key principles
+## Best practices
 
-There are a few key principles to keep in mind when drafting how-to guides:
+When you create how-to guides, use the following best practices:
 
 - **Focus on the user goal:** Organize the content around what users need to accomplish, rather than the tool capabilities.
 - **Write recipes, not lessons:** Explain only the information users need to complete the task. Avoid defining concepts or describing why something works unless it’s essential. Add useful context to a "Related pages" or "Learn more" section instead.
@@ -35,8 +35,6 @@ There are a few key principles to keep in mind when drafting how-to guides:
 ## Structure of a how-to guide
 
 To help users quickly find and follow instructions, how-to guides use a consistent structure. A predictable format improves clarity, reduces confusion, and makes the guide easier to use.
-
-### Required elements
 
 The following elements are required in how-to guides:
 

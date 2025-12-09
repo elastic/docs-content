@@ -4,8 +4,6 @@ Content types ensure the Elastic Docs are structured, consistent, and easy for u
 
 To help you quickly get started, each content type includes its own guidelines, best practices, and templates.
 
-## Using guidelines and templates
-
 Before you start drafting a new docs page, identify the appropriate content type for your page.
 Use these guidelines as a framework, not a rulebook. You should adapt structure and syntax where necessary to best serve users, but you should rarely need to deviate from the best practices.
 
