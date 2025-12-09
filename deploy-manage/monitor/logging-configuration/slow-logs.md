@@ -30,7 +30,7 @@ Because logging everything can be high volume, slow logs are disabled by default
 The following is an example of a search event in the slow log:
 
 ::::{tip}
-If a call was initiated with an `X-Opaque-ID` header, then the ID is automatically included in Search slow logs in the **elasticsearch.slowlog.id** field. See [X-Opaque-Id HTTP header](/reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
+If a call was initiated with an `X-Opaque-ID` header, then the ID is automatically included in Search slow logs in the **elasticsearch.slowlog.id** field. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
 ::::
 
 
@@ -228,7 +228,7 @@ If you aren’t sure how to start investigating traffic issues, consider enablin
 
 Slow log thresholds being met does not guarantee cluster performance issues. In the event that symptoms are noticed, slow logs can provide helpful data to diagnose upstream traffic patterns or sources to resolve client-side issues. For example, you can use data included in `X-Opaque-ID`, the `_source` request body, or `user.*` fields to identify the source of your issue. This is similar to troubleshooting [live expensive tasks](/troubleshoot/elasticsearch/task-queue-backlog.md).
 
-If you’re experiencing search performance issues, then you might also consider investigating searches flagged for their query durations using the [profile API](/reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](/explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
+If you’re experiencing search performance issues, then you might also consider investigating searches flagged for their query durations using the [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](/explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
 
 Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md). If suspect circuit breaker errors, then you should also consider enabling [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md), which logs events before they are executed.
 
