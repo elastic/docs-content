@@ -10,7 +10,7 @@ products:
 
 # Project settings
 
-Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic manages many things for you, you can customize the following aspects of your project:
+Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
 - **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
