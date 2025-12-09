@@ -4,7 +4,7 @@ navigation_title: "How-to guides"
 
 # How to write how-to guides
 
-This page provides guidelines for writing effective how-to guides in Elastic documentation. To learn about other content types, refer to [](index.md).
+This page provides guidelines for writing effective how-to guides in Elastic documentation.
 
 ## What is a how-to guide?
 
