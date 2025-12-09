@@ -37,7 +37,7 @@ To upgrade a standalone agent running on an edge node:
 
     ::::{tab-item} Windows
 
-    Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
+    Open a PowerShell prompt as an Administrator.
 
     From the PowerShell prompt, change to the directory where you installed {{agent}}, and run:
 
