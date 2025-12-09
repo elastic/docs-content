@@ -61,7 +61,7 @@ curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{versio
 tar xzvf apm-server-{{version.stack}}-linux-x86_64.tar.gz
 ```
 
-Refer to [modifying the `nofile` ulimit](#modifying-nofile-ulimit).
+Refer to [modifying the `nofile` ulimit](#modify-nofile-ulimit).
 
 $$$apm-mac$$$
 **Mac:**

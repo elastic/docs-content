@@ -21,7 +21,7 @@ Enhanced privileges are required to use tail-based sampling. For more informatio
 ::::
 
 ::::{note}
-If you are manually configuring systemd `LimitNOFILE` or `LimitNOFILESoft` when using Tail Based Sampling and it affects the APM Server process, this can result in a `too many open files` error. Refert to [configuring the NOFILE limit](/solutions/observability/apm/systemd.md#configurin-nofile-limit) for further instructions.
+If you are manually configuring systemd `LimitNOFILE` or `LimitNOFILESoft` when using Tail Based Sampling and it affects the APM Server process, this can result in a `too many open files` error. Refert to [configuring the NOFILE limit](/solutions/observability/apm/apm-server/systemd.md#configurin-nofile-limit) for further instructions.
 ::::
 
 ::::{note}
