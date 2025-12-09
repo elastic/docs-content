@@ -47,7 +47,7 @@ server {
     location / {
         # Take care of preflight requests
         if ($request_method = 'OPTIONS') {
-            add_header 'Access-Control-Max-Age' 1728000;
+            add_header 'Access-Control-Max-Age' 1728000; # 20 days in seconds
             add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always; # Set the allowed origins for preflight requests
             add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Authorization,Content-Language,Content-Type' always;
             add_header 'Access-Control-Allow-Credentials' 'true' always;
