@@ -71,6 +71,9 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
     5. Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.
     When you create an {{agent}} policy using this output, the output will use the balanced preset options except with the higher compression level, as specified.
 
+**Write to logs streams** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
+:   When this setting is on, `logs` and `logs.*` are added to the output streams configuration in the agent policy using this output. This setting is part of the process for allowing {{agent}} to send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). For additional steps, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+
 ## Advanced YAML configuration [es-output-settings-yaml-config]
 
 `allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
