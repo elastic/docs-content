@@ -56,7 +56,7 @@ To set up an {{anomaly-detect}} alert rule:
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
 anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
-6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule monitors for, add an **Anomaly filter**. This filtering capability uses KQL and is only available for the Record and Influencer result types. 
+6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule looks for, add an **Anomaly filter**. This feature uses KQL and is only available for the Record and Influencer result types. 
     
     In the **Anomaly filter** field, enter a KQL query that specifies to only alert when either or both happen:
     
