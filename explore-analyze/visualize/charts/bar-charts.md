@@ -151,7 +151,7 @@ Reference lines help viewers understand context by showing thresholds, goals, or
 To add a reference line:
 
 1. Create a **Bar** chart visualization.
-2. Click **Add layer**, select the {{data-source}}, then select the **Reference lines** layer type.
+2. Click **Add layer** select the **Reference lines** layer type, then choose the {{data-source}}.
 3. (Optional) Configure the vertical left axis.
 4. Add a reference line with:
    - **Value**: The Y-axis value where the line appears (can be static or calculated)
