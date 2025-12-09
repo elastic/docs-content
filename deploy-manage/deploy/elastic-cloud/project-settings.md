@@ -142,7 +142,7 @@ You can also manage your project tags through the [{{serverless-full}} API]({{cl
 
 You can manage project tags using the `POST` or `PATCH` project endpoints for your project type:
 
-* Elasticsearch: [POST]({{cloud-serverless-apis}}/operation/operation-createelasticsearchproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchelasticsearchproject)
+* {{es}}: [POST]({{cloud-serverless-apis}}/operation/operation-createelasticsearchproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchelasticsearchproject)
 * Observability: [POST]({{cloud-serverless-apis}}/operation/operation-createobservabilityproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchobservabilityproject)
 * Security: [POST]({{cloud-serverless-apis}}/operation/operation-createsecurityproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchsecurityproject)
 
@@ -184,7 +184,7 @@ PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
 
 After you've added tags to your project, you can query your projects by their tags by adding the desired tags as query parameters:
 
-* [Elasticsearch]({{cloud-serverless-apis}}/operation/operation-listelasticsearchprojects)
+* [{{es}}]({{cloud-serverless-apis}}/operation/operation-listelasticsearchprojects)
 * [Observability]({{cloud-serverless-apis}}/operation/operation-listobservabilityprojects)
 * [Security]({{cloud-serverless-apis}}/operation/operation-listsecurityprojects)
 
@@ -192,7 +192,7 @@ After you've added tags to your project, you can query your projects by their ta
 GET /api/v1/serverless/projects/{type}?tag[key1]=value1&tag[key2]=value2
 ```
 
-For example, to query for all Elasticsearch projects that are staging environments belonging to support_eng: 
+For example, to query for all {{es}} projects that are staging environments belonging to support_eng: 
 
 ```console
 GET /api/v1/serverless/projects/elasticsearch?tag[env]=staging&tag[dept]=support_eng
