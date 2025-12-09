@@ -14,7 +14,7 @@ products:
 # Search API and templates [search-application-api]
 
 
-Your [search applications](../search-applications.md) use [search templates](../search-templates.md) to perform searches. Templates help reduce complexity by exposing only template parameters, while using the full power of {{es}}'s query DSL to formulate queries. Templates may be set when creating or updating a search application, and can be customized. This template can be edited or updated at any time using the [Put Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) API call.
+Your [search applications](../search-applications.md) use [search templates](/solutions/search/search-templates.md) to perform searches. Templates help reduce complexity by exposing only template parameters, while using the full power of {{es}}'s query DSL to formulate queries. Templates may be set when creating or updating a search application, and can be customized. This template can be edited or updated at any time using the [Put Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) API call.
 
 In a nutshell, you create search templates with parameters instead of specific hardcoded search values. At search time, you pass in the actual values for these parameters, enabling customized searches without rewriting the entire query structure. Search Application templates:
 
@@ -27,7 +27,7 @@ This document provides information and sample templates to get you started using
 ::::{tip}
 Search templates use the [Mustache](https://mustache.github.io/) templating language. Mustache variables are typically enclosed in double curly brackets like this: `{{my-var}}`.
 
-Learn more by reading about [search templates](../search-templates.md).
+Learn more by reading about [search templates](/solutions/search/search-templates.md).
 
 ::::
 
@@ -603,7 +603,7 @@ POST _application/search_application/my_search_application/_search
 
 ### kNN search [search-applications-knn-template]
 
-This example supports [k-nearest neighbor (kNN) search](../vector/knn.md).
+This example supports [k-nearest neighbor (kNN) search](/solutions/search/vector/knn.md).
 
 A template supporting exact kNN search will look like the following example:
 

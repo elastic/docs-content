@@ -102,7 +102,7 @@ To use Playground, you’ll need the following:
 
 You can also use locally hosted LLMs that are compatible with the OpenAI SDK. Once you’ve set up your LLM, you can connect to it using the OpenAI connector. Refer to the following for examples:
 
-* [Using LM Studio](../../security/ai/connect-to-own-local-llm.md)
+* [Using LM Studio](/solutions/security/ai/connect-to-own-local-llm.md)
 * [LocalAI with `docker-compose`](https://www.elastic.co/search-labs/blog/localai-for-text-embeddings)
 
 ::::
@@ -116,7 +116,7 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 
 ### Connect to LLM provider [playground-getting-started-connect]
 
-To get started with Playground, you need to create a [connector](../../../deploy-manage/manage-connectors.md) for your LLM provider. By default, an Elastic Managed LLM is connected. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
+To get started with Playground, you need to create a [connector](/deploy-manage/manage-connectors.md) for your LLM provider. By default, an Elastic Managed LLM is connected. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
 
 To connect to an LLM provider, use the following steps on the Playground landing page:
 

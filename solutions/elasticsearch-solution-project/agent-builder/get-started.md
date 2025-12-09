@@ -15,7 +15,7 @@ Learn how to get started by enabling the {{agent-builder}} features and begin ch
 ::::::{stepper}
 ::::{step} Set up an Elastic deployment
 
-If you don't already have an Elastic deployment, refer to [Select your deployment type](/solutions/search/get-started.md#choose-your-deployment-type).
+If you don't already have an Elastic deployment, refer to [Get started with search](/solutions/search/get-started.md).
 
 :::{note}
 For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation.

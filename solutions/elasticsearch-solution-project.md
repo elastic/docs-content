@@ -25,7 +25,7 @@ Not sure which deployment type is right for you? Use the following resources to 
 
 The {{es}} solution and serverless project type provide specialized UI tools and interfaces that help you build search applications on top of the {{es}} platform.
 
-These UI affordances are exclusive to the {{es}} **solution** (on non-serverless deployments) and the {{es}} serverless **project type**. They complement the core [search primitives]((/solutions/search.md)) available across all Elastic deployments.
+These UI affordances are exclusive to the {{es}} **solution** (on non-serverless deployments) and the {{es}} serverless **project type**. They complement the core [search primitives](/solutions/search.md) available across all Elastic deployments.
 
 ## Features and tools
 

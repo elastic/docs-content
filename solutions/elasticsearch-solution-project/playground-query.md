@@ -40,7 +40,7 @@ Remember that the next step in the workflow is to send the retrieved documents t
 [Troubleshooting](playground-troubleshooting.md) provides tips on how to diagnose and fix relevance issues.
 
 ::::{note}
-Playground uses the [`retriever`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) syntax for {{es}} queries. Retrievers make it easier to compose and test different retrieval strategies in your search pipelines. Refer to [documentation](../querying-for-search.md) for a high level overview of retrievers.
+Playground uses the [`retriever`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) syntax for {{es}} queries. Retrievers make it easier to compose and test different retrieval strategies in your search pipelines. Refer to [documentation](/solutions/search/querying-for-search.md) for a high level overview of retrievers.
 
 ::::
 
