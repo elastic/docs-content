@@ -221,7 +221,7 @@ tracerProvider.register({ contextManager: new ZoneContextManager() });
 
 :::
 
-Now you can use the OpenTelemetry API to get a tracer and start creating your own spans. Instrumentations can also do it after you register them.
+Now you can use the OpenTelemetry API to get a tracer and start creating your own spans. Instrumentations are also using OpenTelemetry API to get tracers and send telemetry data. Registering intrumentations after having the tracer provider set up ensures they will have the right tracers when requested to the API.
 
 :::::
 
@@ -330,21 +330,20 @@ With the OpenTelemetry SDK, resource attributes, and exporters already configure
 Install the following dependencies:
 
 - `@opentelemetry/instrumentation`: This package contains the core components of instrumentations along with some utilities.
-- `@opentelemetry/instrumentation-document-load`: This instrumentation package measures the time it took the document to load and also the load timings of its resources. More info at [instrumentation-document-load](https://www.npmjs.com/package/@opentelemetry/instrumentation-document-load).
-- `@opentelemetry/instrumentation-long-task`: This instrumentation gathers information about long tasks being executed in your browser, helping to spot issues like unresponsive UI in your web application. More info at [instrumentation-long-task](https://www.npmjs.com/package/@opentelemetry/instrumentation-long-task).
-- `@opentelemetry/instrumentation-fetch`: This instrumentation keeps track of your web application requests made through the Fetch API. More info at [instrumentation-fetch](https://www.npmjs.com/package/@opentelemetry/instrumentation-fetch).
-- `@opentelemetry/instrumentation-xml-http-request`: This instrumentation keeps track of your web application requests made through the XMLHttpRequest API. More info at [instrumentation-xml-http-request](https://www.npmjs.com/package/@opentelemetry/instrumentation-xml-http-request).
-- `@opentelemetry/instrumentation-user-interaction`: This instrumentation measures user interactions in your web application. More info at [instrumentation-user-interaction](https://www.npmjs.com/package/@opentelemetry/instrumentation-user-interaction).
+- `@opentelemetry/auto-instrumentations-web`: This package contains the more common instrumentations for web apps. Which are:
+  - `@opentelemetry/instrumentation-document-load`: This instrumentation package measures the time it took the document to load and also the load timings of its resources. More info at [instrumentation-document-load](https://www.npmjs.com/package/@opentelemetry/instrumentation-document-load).
+  - `@opentelemetry/instrumentation-fetch`: This instrumentation keeps track of your web application requests made through the Fetch API. More info at [instrumentation-fetch](https://www.npmjs.com/package/@opentelemetry/instrumentation-fetch).
+  - `@opentelemetry/instrumentation-xml-http-request`: This instrumentation keeps track of your web application requests made through the XMLHttpRequest API. More info at [instrumentation-xml-http-request](https://www.npmjs.com/package/@opentelemetry/instrumentation-xml-http-request).
+  - `@opentelemetry/instrumentation-user-interaction`: This instrumentation measures user interactions in your web application. More info at [instrumentation-user-interaction](https://www.npmjs.com/package/@opentelemetry/instrumentation-user-interaction).
+- `@opentelemetry/instrumentation-long-task`: This instrumentation is not part of the auto instrumentations package. It gathers information about long tasks being executed in your browser, helping to spot issues like unresponsive UI in your web application. More info at [instrumentation-long-task](https://www.npmjs.com/package/@opentelemetry/instrumentation-long-task).
+  
 
 To install the dependencies, run the following command:
 
 ```bash
 npm install @opentelemetry/instrumentation\
-      @opentelemetry/instrumentation-document-load\
-      @opentelemetry/instrumentation-long-task\
-      @opentelemetry/instrumentation-fetch\
-      @opentelemetry/instrumentation-xml-http-request\
-      @opentelemetry/instrumentation-user-interaction
+      @opentelemetry/auto-instrumentations-web\
+      @opentelemetry/instrumentation-long-task
 ```
 
 After the dependencies are installed, you can configure and register instrumentations with the following code:
@@ -353,20 +352,15 @@ After the dependencies are installed, you can configure and register instrumenta
 
 ```javascript
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
-import { FetchInstrumentation } from '@opentelemetry/instrumentation-fetch';
+import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { LongTaskInstrumentation } from '@opentelemetry/instrumentation-long-task';
-import { UserInteractionInstrumentation } from '@opentelemetry/instrumentation-user-interaction'
-import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
+
 
 // Register instrumentations
 registerInstrumentations({
   instrumentations: [
-    new DocumentLoadInstrumentation(),
+    getWebAutoInstrumentations(),
     new LongTaskInstrumentation(),
-    new FetchInstrumentation(),
-    new XMLHttpRequestInstrumentation(),
-    new UserInteractionInstrumentation(),
   ],
 });
 ```
@@ -396,11 +390,8 @@ npm install @opentelemetry/api\
       @opentelemetry/sdk-logs\
       @opentelemetry/exporter-logs-otlp-http\
       @opentelemetry/instrumentation\
-      @opentelemetry/instrumentation-document-load\
-      @opentelemetry/instrumentation-long-task\
-      @opentelemetry/instrumentation-fetch\
-      @opentelemetry/instrumentation-xml-http-request\
-      @opentelemetry/instrumentation-user-interaction
+      @opentelemetry/auto-instrumentations-web\
+      @opentelemetry/instrumentation-long-task
 ```
 
 After the dependencies are installed, you can wrap the setup in a function with the following code:
@@ -423,11 +414,8 @@ import { logs, SeverityNumber } from '@opentelemetry/api-logs';
 import { BatchLogRecordProcessor, LoggerProvider } from '@opentelemetry/sdk-logs';
 import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
-import { FetchInstrumentation } from '@opentelemetry/instrumentation-fetch';
+import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { LongTaskInstrumentation } from '@opentelemetry/instrumentation-long-task';
-import { UserInteractionInstrumentation } from '@opentelemetry/instrumentation-user-interaction';
-import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
 
 const initDone = Symbol('OTEL initialized');
 
@@ -488,11 +476,8 @@ export function initOpenTelemetry(config) {
   // Register instrumentations
   registerInstrumentations({
     instrumentations: [
-      new DocumentLoadInstrumentation(),
+      getWebAutoInstrumentations(),
       new LongTaskInstrumentation(),
-      new FetchInstrumentation(),
-      new XMLHttpRequestInstrumentation(),
-      new UserInteractionInstrumentation(),
     ],
   });
 }
