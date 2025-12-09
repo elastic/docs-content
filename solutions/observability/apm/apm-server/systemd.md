@@ -94,9 +94,9 @@ It is recommended that you use a configuration management tool to include drop-i
 There should be no need to manually configure this limit when running APM Server.
 ::::
 
-In systemd the `LimitNOFILE` defaults are set to `1024` (soft) and `524288` (hard) and most Linux systems with systemd will not change these values or reduce them drastically. Golang since 1.19 (see [golang/go#46279](https://github.com/golang/go/issues/46279)) automatically bump the process limit up to the available hard limit. This means that by default APM Server runs with the limit set to the hard limit value by the Operating System is being run on, generally `524287` on a recent system. There should be no reason to change this limit, as back-pressure from too many open files will happen from memory usage.
+In systemd the `LimitNOFILE` defaults are set to `1024` (soft) and `524288` (hard) and most Linux systems with systemd do not change these values or reduce them drastically. Golang, starting from version 1.19 (refer to [golang/go#46279](https://github.com/golang/go/issues/46279)), automatically bump the process limit up to the available hard limit. This means that by default APM Server runs with the limit set to the hard limit value by the Operating System is being run on, generally `524287` on a recent system. There should be no reason to change this limit, as back-pressure from too many open files happens through memory usage.
 
-For guidelines on the value to set this value to see [Modifying the `nofile` ulimit](/solutions/observability/apm/apm-server/binary.md#modify-nofile-ulimit).
+For guidelines on the value to set this value to refer to [modifying the `nofile` ulimit](/solutions/observability/apm/apm-server/binary.md#modify-nofile-ulimit).
 
 #### Configuration file ownership [apm-config-file-ownership]
 
