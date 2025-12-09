@@ -3,11 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/llm-connector-guides.html
   - https://www.elastic.co/guide/en/serverless/current/security-llm-connector-guides.html
 applies_to:
-  stack: all
-  serverless:
-    security: all
-    observability: all
-    elasticsearch: all
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: elasticsearch
