@@ -19,7 +19,7 @@ Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monito
 
 ## Add data from the UI
 
-You can quickly add data from hosts, {{k8s}}, applications, and cloud services from the {{observability}}.
+You can quickly add data from hosts, {{k8s}}, applications, and cloud services from the {{observability}} UI.
 
 1. Open {{product.observability}}.
 2. Go to **Add data**.
@@ -28,7 +28,7 @@ You can quickly add data from hosts, {{k8s}}, applications, and cloud services f
 
 ## Manual installation guides
 
-The guides cover how to install the EDOT Collector, turn on auto-instrumentation, and configure data collection for metrics, logs, and traces in {{product.observability}}.
+These guides cover how to install the EDOT Collector, turn on auto-instrumentation, and configure data collection for metrics, logs, and traces in {{product.observability}}.
 
 Select a guide based on the environment of your target system and your Elastic deployment model.
 
@@ -37,8 +37,7 @@ Select a guide based on the environment of your target system and your Elastic d
 | {{product.self}} Stack | [{{k8s}} on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts or VMs on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
 | {{serverless-full}}  | [{{k8s}} on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)     | [Docker on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)     | [Hosts or VMs on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)     |
 | {{ech}}      | [{{k8s}} on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md)               | [Docker on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md)               | [Hosts or VMs on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md)               |
-
-[Ingest custom metrics with EDOT](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md) - This guide works across deployment models. It shows you how to send custom application or service metrics to Elastic using the EDOT Collector and OTLP.
+| Multiple      | [Ingest custom metrics with EDOT](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md) | [Ingest custom metrics with EDOT](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md) | [Ingest custom metrics with EDOT](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md) |
 
 ## Troubleshooting
 

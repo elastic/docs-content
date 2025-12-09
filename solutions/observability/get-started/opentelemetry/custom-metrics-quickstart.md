@@ -18,11 +18,11 @@ products:
 
 Use this quickstart to send custom metrics to Elastic using the Elastic Distribution of the OpenTelemetry Collector (EDOT).
 
-You’ll install a lightweight EDOT Collector, configure a minimal OTLP metrics pipeline, and verify the data in {{product.observability}}.
+You’ll install a lightweight EDOT Collector, configure a minimal Open Telemetry Protocol (OTLP) metrics pipeline, and verify the data in {{product.observability}}.
 
 ## Prerequisites
 
-- An Elastic deployment ({{serverless-short}}, Cloud Hosted, or self-managed)
+- An Elastic deployment ({{serverless-short}}, {{ech}}, or self-managed)
 - An {{observability}} project {{kib}} instance
 - Permissions to create API keys
 - A system to run the EDOT Collector (Docker, host, or VM)
@@ -70,7 +70,7 @@ service:
      exporters: [elasticsearch]
 ```
 
-Run the configuration with Docker:
+Run the configuration, for example with Docker:
 
 ```bash
 docker run --rm \
