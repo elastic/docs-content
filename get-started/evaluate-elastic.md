@@ -13,19 +13,24 @@ description: Build a successful proof of concept during your Elastic trial. Lear
 
 # Evaluate Elastic during a trial
 
-If you're evaluating Elastic during a trial, this guide helps you build a meaningful proof of concept (PoC) that demonstrates clear value to your organization.
+To make the most of your free 14-day {{ecloud}} trial, set up high-value use cases, explore the most powerful Elastic features, and gather the evidence you need to determine whether Elastic is the right choice for your organization.
 
-Rather than prescribing specific technical steps, this guide focuses on the evaluation process itself, helping you make strategic decisions and measure success.
+You have 14 days to get the most value from your trial, so don’t just click around. Ingest real data, focus on your highest priority use case, and validate the capabilities that will save you time, reduce costs, and prevent operational challenges in production.
 
-For an overview, check out [Explore Elastic Cloud with your 14‑day free trial](https://www.elastic.co/cloud/cloud-trial-overview).
+By the end of this guide, you'll know how to structure your evaluation, make strategic Elastic product decisions, and measure success so you can build a meaningful proof of concept (PoC).
+
+For a quick intro, start with learning more about [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md).
 
 ## What's included in your trial
 
-Your Elastic trial gives you full access to explore our platform's capabilities:
+Your {{ecloud}} trial gives you full access to explore the following features and capabilities:
 
 - All features available across [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
 - A choice between {{serverless-full}} and {{ech}} deployment types.
-- Access to integrations, {{ml-features}}, and advanced analytics.
+- Access to the following: 
+  - Integrations so you can ingest your data using the simplest method that meets your use case.
+  - {{ml-cap}} features to evaluate anomaly detection results, search relevance, and explore visualization tools from our trained models.
+  - Advanced analytics so you can test {{es}} as a vector database for building modern GenAI and semantic search applications.
 - Support resources including documentation, community forums, and technical guidance.
 
 During the trial, deployments have size and capacity limitations. You can increase deployment size after adding billing details.
@@ -85,8 +90,8 @@ For most evaluations, {{serverless-short}} provides the fastest path to demonstr
 
 ### Identify your primary use case
 
-Choose a use case to focus your initial evaluation.
-In {{serverless-full}}, your use case indicates which type of project will serve your purposes.
+Elastic can support many workloads, but a focused evaluation generates clearer results.
+In {{serverless-full}}, your use case indicates which type of project will support your needs.
 In {{ech}}, you have access to all solutions and use cases in a single hosted deployment, but you can get the most value from the trial by focusing your investigation.
 You can always expand to additional use cases after establishing initial success.
 
