@@ -16,7 +16,7 @@ You can configure indices to skip rollover either as part of an {{ilm-init}} pol
 
 ## Skip rollover through an {{ilm-init}} policy
 
-When you [configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) in {{kib}}, you can choose to enable or turn off rollover.
+When you [create a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) in {{kib}}, you can choose to enable or disable rollover.
 
 To update the automatic rollover setting in an {{ilm-init}} policy:
 

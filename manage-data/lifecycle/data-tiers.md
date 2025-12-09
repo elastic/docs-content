@@ -471,7 +471,7 @@ When {{es}} creates an index as part of a [data stream](/manage-data/data-store/
 
 At the time of index creation, you can override the default setting by explicitly setting the preferred value in one of two ways:
 
-* Using an [index template](/manage-data/data-store/templates.md). Refer to [Automate rollover with ILM](/manage-data/lifecycle/index-lifecycle-management.md) for details.
+* Using an [index template](/manage-data/data-store/templates.md). Refer to [](/manage-data/lifecycle/index-lifecycle-management.md) for details.
 * Within the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request body.
 
 You can override this setting after index creation by [updating the index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to the preferred value.

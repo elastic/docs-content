@@ -17,7 +17,7 @@ products:
 Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
-Learn about the search constraints when querying rolled-up data. While we feel the Rollup function is extremely flexible, the nature of summarizing data means there are some limitations. Once live data is thrown away, you will always lose some flexibility.
+Learn about the search constraints when querying rolled-up data. While the rollup function is flexible, the nature of summarizing data means there are some limitations. Once live data is discarded, some loss of flexibility is inevitable.
 
 This page highlights the major limitations so that you are aware of them.
 

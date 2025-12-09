@@ -8,7 +8,7 @@ products:
 
 # Managing lifecycle polices for integrations data [ilm-manage-lifecycle-policy-integrations-data]
 
-Learn to apply and manage lifecycle policies for integrations data stored in Elasticsearch. This documentation covers default policies for Elastic integrations, how to override them, and how to align retention rules with your requirements.
+Learn to apply and manage lifecycle policies for integrations data stored in {{es}}. This documentation covers default policies for Elastic integrations, how to override them, and how to align retention rules with your requirements.
 
 An Elastic integration is a pre-packaged collection of assets that provides an effective, simplified way to monitor a product, system, or service, with minimal required setup. Most integrations rely on {{agent}} as an ingest mechanism, and the policies used to govern installed integrations are managed in {{fleet}}.
 

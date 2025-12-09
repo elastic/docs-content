@@ -26,8 +26,7 @@ To migrate a data stream from {{ilm-init}} to data stream lifecycle using APIs y
 1. Update the index template that’s backing the data stream to set [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.
 2. Configure the data stream lifecycle for the *existing* data stream using the [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
-For more details see the [migrate to data stream lifecycle](#migrate-from-ilm-to-dsl) section.
-
+For more details refer to [Migrate to data stream lifecycle](#migrate-from-ilm-to-dsl).
 
 ## Setup ILM managed data stream [setup-test-data]
 

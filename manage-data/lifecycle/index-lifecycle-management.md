@@ -15,7 +15,6 @@ products:
 
 # {{ilm-cap}} ({{ilm-init}}) in {{es}}
 
-
 {{ilm}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
 
 For example, you can use {{ilm-init}} to:
@@ -78,10 +77,10 @@ For example, if you are indexing metrics data from a fleet of ATMs into Elastics
 
 You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs]({{es-apis}}group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
 
-* [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
-* [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
-* [Update or switch an index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
-* [Restore a managed data stream or index](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
+* [Create an {{ilm}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
+* [Check the {{ilm-init}} status of {{es}} indices and data streams](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
+* [Update or switch an {{es}} index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
+* [Restore managed indices and manage {{ilm-init}} actions](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
 * [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
 
 Default {{ilm}} policies are created automatically when you install an [Elastic Integration](integration-docs://reference/index.md), or when you use {{agent}}, {{beats}}, or the {{ls}} {{es}} output plugin to send data to the {{stack}}.
@@ -94,7 +93,7 @@ To automatically back up your indices and manage snapshots, use [snapshot lifecy
 
 ## Pausing and troubleshooting {{ilm-init}}
 
-In case you want to temporarily pause the {{ilm-init}} service while you perform maintenance, make other changes to your cluster, or do any troubleshooting, refer to [Start and stop {{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md).
+In case you want to temporarily pause the {{ilm-init}} service while you perform maintenance, make other changes to your cluster, or do any troubleshooting, refer to [](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md).
 
 In the event of any issues running {{ilm-init}}, refer to [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) for detailed troubleshooting guidance. 
 
@@ -102,8 +101,8 @@ In the event of any issues running {{ilm-init}}, refer to [Fix index lifecycle m
 
 For existing hot-warm deployments that are currently using index curation, migrating to ILM gives you more fine-grained control over the lifecycle of each index. Read more in:
 
-* [Manage existing indices](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
-* [Migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
-* [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)
+* [](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
+* [](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
+* [](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)
 
-You can also set up {{ilm-init}} to manage an existing set of indices that do not already have a managed lifecycle. The {{ilm-init}} policy that you apply should not contain a rollover action, because the policy won't be carried forward when the rollover action creates a new index. Refer to [Apply an index lifecycle policy to an existing {{es}} index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to learn more.
+You can also set up {{ilm-init}} to manage an existing set of indices that do not already have a managed lifecycle. The {{ilm-init}} policy that you apply should not contain a rollover action, because the policy won't be carried forward when the rollover action creates a new index. Refer to [](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to learn more.

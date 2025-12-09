@@ -111,4 +111,4 @@ When an alias or data stream is rolled over, the previous write index’s rollov
 ::::
 
 **Alias-based naming pattern**<br>
-When configured correctly, the newly created write index has a similar name to one that's been rolled over, however the six-digit, zero-padded suffix is incremented. For example before rollover, the write index was called `my-index-000001` and after rollover, the newly created index becomes `my-index-000002` and also becomes the new write index. The alias typically shares the base name which in this example is `my-index`.
+When configured correctly, the newly created write index has a similar name to one that's been rolled over, however the six-digit, zero-padded suffix is incremented. For example, before rollover the write index was named `my-index-000001`, and after rollover the newly created index is named `my-index-000002` and also becomes the new write index. The alias typically shares the base name which in this example is `my-index`.

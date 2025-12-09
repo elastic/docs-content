@@ -17,7 +17,7 @@ While index templates are typically used to automatically apply {{ilm}} ({{ilm-i
 :::{warning}
 Consider the following before manually applying a policy to an index:
 
-* If an index is currently managed by an ILM policy you must first remove that policy before applying a new one. To remove or make changes to an {{ilm-init}} policy currently applied to one or more indices, or to switch indices to use a different policy, refer to [Update or switch an index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md).
+* If an index is currently managed by an {{ilm-init}} policy you must first remove that policy before applying a new one. To remove or make changes to an {{ilm-init}} policy currently applied to one or more indices, or to switch indices to use a different policy, refer to [Update or switch an {{es}} index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md).
 * Do not manually apply a policy that uses the rollover action. Policies that use rollover must be applied by the [index template](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template). Otherwise, the policy is not carried forward when the rollover action creates a new index. For an approach to migrating existing indices that supports rollover, refer to [](/manage-data/lifecycle/index-lifecycle-management/migrate-ilm.md).
 :::
 
