@@ -6,7 +6,7 @@ products:
   - id: elastic-agent
 ---
 
-# Deploy Fleet Server on-premises and Elasticsearch on Cloud [add-fleet-server-mixed]
+# Deploy {{fleet-server}} on-premises and {{es}} on {{ecloud}} [add-fleet-server-mixed]
 
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
@@ -44,7 +44,6 @@ To deploy a self-managed {{fleet-server}} on-premises to work with an {{ech}} de
     For more information about hosting {{fleet-server}} on {{ece}}, refer to [](/deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md).
 
 
-
 ## Prerequisites [add-fleet-server-mixed-prereq]
 
 Before deploying, you need to:
@@ -64,24 +63,22 @@ This is not required when testing and iterating using the **Quick start** option
 ::::
 
 
-
 ### Default port assignments [default-port-assignments-mixed]
 
 When {{es}} or {{fleet-server}} are deployed, components communicate over well-defined, pre-allocated ports. You may need to allow access to these ports. See the following table for default port assignments:
 
 | Component communication | Default port |
 | --- | --- |
-| Elastic Agent → {{fleet-server}} | 8220 |
-| Elastic Agent → {{es}} | 443 |
-| Elastic Agent → Logstash | 5044 |
-| Elastic Agent → {{kib}} ({{fleet}}) | 443 |
+| {{agent}} → {{fleet-server}} | 8220 |
+| {{agent}} → {{es}} | 443 |
+| {{agent}} → {{ls}} | 5044 |
+| {{agent}} → {{kib}} ({{fleet}}) | 443 |
 | {{fleet-server}} → {{kib}} ({{fleet}}) | 443 |
 | {{fleet-server}} → {{es}} | 443 |
 
 ::::{note}
 If you do not specify the port for {{es}} as 443, the {{agent}} defaults to 9200.
 ::::
-
 
 
 ## Create a {{fleet-server}} policy [fleet-server-create-policy]
@@ -103,7 +100,6 @@ To create a {{fleet-server}} policy:
 
     1. Expand **Change default**. Because you are deploying this {{fleet-server}} on-premises, you need to enter the *Host* address and *Port* number, `8220`. (In our example the {{fleet-server}} will be installed on the host `10.128.0.46`.)
     2. It’s recommended that you also enter the *Max agents* you intend to support with this {{fleet-server}}. This can also be modified at a later stage. This will allow the {{fleet-server}} to handle the load and frequency of updates being sent to the agent and ensure a smooth operation in a bursty environment.
-
 
 
 ## Add {{fleet-server}}s [fleet-server-add-server]
