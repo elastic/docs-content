@@ -12,7 +12,7 @@ products:
 
 # Disable certain types of data collection by AutoOps 
 
-AutoOps collects data from your self-managed cluster with the help of {{agent}} and analyzes related metrics to diagnose issues and provide performance recommendations. 
+AutoOps collects data from your self-managed cluster with the help of {{agent}} and analyzes it to diagnose issues and provide performance recommendations. 
 
 If you don't want the agent to access certain types of data, you can disable the collection of related metrics by editing your configuration file as described in the following section.
 
@@ -22,13 +22,13 @@ Disable data collection only when necessary, as it limits the insights that Auto
 
 ## Edit your AutoOps configuration file
 
-To disable the collection of certain types of data from your environment, delete the lines related to that data from your `autoops_es.yml` file.
+To disable the collection of certain types of data from your environment, delete the lines related to that data from your `autoops_es.yml` file on the host machine where {{agent}} is installed.
 
 Complete the following steps:
 
 1. On your host machine, open the `autoops_es.yml` file.
-2. In the `autoops_es.yml` file, locate the metric or module related to the data that you want AutoOps to stop collecting. 
-3. Delete the related metricsets or module lines from the file.
+2. In the `autoops_es.yml` file, locate the metricset or section related to the data that you want AutoOps to stop collecting. 
+3. Delete the related lines from the file.
 
     ```yaml
     receivers:
@@ -59,8 +59,4 @@ Complete the following steps:
     1. to disable the collection of task-related data, delete the `tasks_management` line
     2. to disable the collection of template-related data, delete all the lines in the `Templates` section
 4. Save your changes to the `autoops_es.yml` file.
-5. Restart {{agent}} so that the new settings can take effect.\
-    In most systemd-based Linux environments, you can use the following command to restart the agent:
-    ```bash
-    sudo systemctl restart elastic-agent
-    ```
+5. Restart {{agent}} for the new settings to take effect.

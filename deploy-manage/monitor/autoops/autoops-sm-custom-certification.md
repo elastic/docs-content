@@ -118,7 +118,6 @@ Complete the following steps:
               # --- ADD THIS LINE ---
               ssl.certificate_authorities:
                 - "/path/to/your/ca.crt"
-
             # Templates
             - module: autoops_es
               hosts: ${env:AUTOOPS_ES_URL}
