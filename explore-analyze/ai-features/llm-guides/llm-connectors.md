@@ -14,9 +14,9 @@ products:
 
 # Enable large language model (LLM) access
 
-Elastic uses large language model (LLM) connectors to power its [AI features](/explore-analyze/ai-features.md#ai-powered-features-in-elastic-sec). These features with the out-of-the-box Elastic Managed LLM or by configuring a third-party LLM connector.
+Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-the-box Elastic Managed LLMs or with third-party LLMs configured using one of the available connectors.
 
-## Elastic Managed LLM
+## Elastic Managed LLMs
 
 :::{include} ../../../solutions/_snippets/elastic-managed-llm.md
 :::
