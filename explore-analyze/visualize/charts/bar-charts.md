@@ -100,25 +100,23 @@ Stacked bar charts work best when:
 |--------|-------|
 | ![Bar chart without stacking](../../images/kibana-bar.png "title =70%") | ![Bar chart with stacking showing breakdown](../../images/kibana-bar.png "title =70%") |
 
-### Create grouped (side-by-side) bar charts [grouped-bars]
+% ### Create grouped (side-by-side) bar charts [grouped-bars]
 
-% Don't think this is possible. However, it is possible to add a bar, area, or line chart on top of the current bar chart as a layer. This option is available as a layer type (Add layer -> Visualization). 
+% Grouped bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
 
-Grouped bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
+% To create a grouped bar chart:
 
-To create a grouped bar chart:
+% 1. Create a **Bar** chart visualization with your first metric on the vertical axis.
+% 2. Add a dimension to the horizontal axis.
+% 3. Add a second dimension to **Break down by**.
+% 4. In the chart settings, select **Clustered** or **Side by side** under the layout options (instead of Stacked).
 
-1. Create a **Bar** chart visualization with your first metric on the vertical axis.
-2. Add a dimension to the horizontal axis.
-3. Add a second dimension to **Break down by**.
-4. In the chart settings, select **Clustered** or **Side by side** under the layout options (instead of Stacked).
-
-::::{tip}
-Use grouped bar charts when:
-- You need to compare 2-4 metrics across categories
-- Direct comparison between metrics is more important than viewing totals
-- The metrics have similar scales
-::::
+% ::::{tip}
+% Use grouped bar charts when:
+% - You need to compare 2-4 metrics across categories
+% - Direct comparison between metrics is more important than viewing totals
+% - The metrics have similar scales
+% ::::
 
 ### Show trends with time-based bar charts [time-bars]
 
@@ -152,14 +150,15 @@ To add a reference line:
 
 1. Create a **Bar** chart visualization.
 2. Click **Add layer** select the **Reference lines** layer type, then choose the {{data-source}}.
-3. (Optional) Configure the vertical left axis.
-4. Add a reference line with:
-   - **Value**: The Y-axis value where the line appears (can be static or calculated)
-   - **Label**: Descriptive text like "Target" or "Average"
-   - **Color**: Select a contrasting color
-   - **Style**: Solid, dashed, or dotted line
-
-% Step 4 is wrong. The settings that need to be doc'd are pretty extensive. 
+3. (Optional) Configure the vertical left axis. By default, **Static value** is selected and a reference line is placed at a fixed coordinate on the chart’s vertical left axis. You can also configure the **Reference line value**, which sets the numeric position of the x-axis line. To have the value computed instead, select **Quick function** or **Formula**.
+4. Configure the refernece line's appearance:
+   - **Name**: The name of the reference line that you're creating  
+   - **Value format**: Controls how any label for the line is displayed (default formatting or other available numeric/date formats)
+   - **Text decoration**: Selects whether the label shows nothing or the line’s name
+   - **Icon decoration**: Allows adding a glyph next to the label
+   - **Line**: Sets stroke width (1 px) plus pattern (solid or dashed)
+   - **Fill**: Decides whether to shade the area above or below the reference line. None leaves the area unfilled
+   - **Color**: Sets the line (and fill) color
 
 Common reference line uses:
 - **Goals**: Show sales targets, SLA thresholds, or performance benchmarks
