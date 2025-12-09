@@ -25,7 +25,7 @@ For a quick intro, start with learning more about [{{ecloud}}](/deploy-manage/de
 
 Your {{ecloud}} trial gives you full access to explore the following features and capabilities:
 
-- All features available across [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
+- All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
 - A choice between {{serverless-full}} and {{ech}} deployment types.
 - Access to the following: 
   - Integrations so you can ingest your data using the simplest method that meets your use case.
@@ -98,7 +98,7 @@ You can always expand to additional use cases after establishing initial success
 | Your challenge | Primary use case |
 |----------------|-----------------|
 | Users struggle to find relevant information across systems | [Search](/solutions/search.md) |
-| Need to build fast, relevant search experiences for applications or websites | [Search](/solutions/search.md) |
+| Build your first search application | [Search](/solutions/search.md) |
 | Limited visibility into application performance or system health | [Observability](/solutions/observability.md) |
 | Slow incident response and troubleshooting | [Observability](/solutions/observability.md) |
 | Need to detect and respond to security threats | [Security](/solutions/security.md) |
@@ -215,13 +215,13 @@ For the second week, focus on the following activities:
 
 ### Administrative considerations for evaluations
 
-Beyond technical capabilities, consider these operational and business aspects during your evaluation.
+During your trial, document the operational and business factors that can help you decide if Elastic is the right fit. 
 
 ::::{tab-set}
 
 :::{tab-item} Understanding costs
 
-Familiarize yourself with Elastic's pricing and billing model:
+Familiarize yourself with the Elastic pricing and billing model:
 
 - [Billing documentation](/deploy-manage/cloud-organization/billing.md): Understand how Elastic Cloud billing works.
 - [Deployment sizing](/deploy-manage/production-guidance.md): Learn about capacity planning for production.
@@ -236,7 +236,7 @@ Consider:
 
 :::{tab-item} User and access management
 
-If you're building a PoC to share with stakeholders:
+If you're building a PoC to share with stakeholders, create demo accounts for them with configurable permissions:
 
 - [Users and roles documentation](/deploy-manage/users-roles.md): Set up appropriate access controls.
 - Create demo accounts for stakeholders with appropriate permissions.
@@ -246,7 +246,7 @@ If you're building a PoC to share with stakeholders:
 
 :::{tab-item} Planning for production
 
-Even during evaluation, think ahead to production requirements:
+Review the requirements for a successful move to production.
 
 - [Production guidance](/deploy-manage/production-guidance.md): Best practices for production deployments.
 - [High availability and disaster recovery](/deploy-manage/distributed-architecture.md): Understand resilience options.
@@ -329,14 +329,14 @@ If you choose to retain your {{ecloud}} deployment, refer to [Remove trial limit
 
 After proving value with one use case:
 
-- Consider adding complementary solutions (for example, Observability + Security).
-- Expand data sources and integrations.
-- Implement advanced features ({{ml-cap}}, custom applications, APIs).
-- Onboard additional teams and users.
+- Consider additional solutions, such as Observability + Security.
+- Add data sources and integrations.
+- Implement additional features, such as ({{ml-cap}}, custom applications, and so on.
+- Onboard additional users in your organization.
 
 ### Getting help
 
-Resources available to support your evaluation and production planning:
+To support your evaluation and production planning, review the available Elastic resources.
 
 - **[Elastic Community forums](https://discuss.elastic.co/)**: Ask questions and learn from other users.
 - **[Elastic training and certification](https://www.elastic.co/training)**: Develop team expertise with official courses.
