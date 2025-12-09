@@ -9,12 +9,12 @@ products:
   - id: cloud-serverless
 ---
 
-# Get started with search
+# Get started with search primitives
 
-This guide helps you get started with search using {{es}}, regardless of your deployment type. Whether you're using a self-managed cluster, {{ech}}, or an {{es}} serverless project, these universal search capabilities are available to you.
+This guide helps you get started with search use cases using {{es}}, regardless of your deployment type. Whether you're using a self-managed cluster, {{ech}}, or an {{es}} serverless project, these core search primitives are available to you.
 
 ::::{tip}
-Using the {{es}} solution or serverless project type? Check out the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for UI tools like Agent Builder, Playground, and Search Applications that complement these universal capabilities.
+Using the {{es}} solution or serverless project type? Check out the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for UI tools like Agent Builder, Playground, and Search Applications that complement these core search primitives.
 ::::
 
 ## Before you begin

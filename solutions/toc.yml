@@ -18,6 +18,9 @@ toc:
                   - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
                   - file: search/full-text/search-relevance/consistent-scoring.md
                   - file: search/full-text/search-relevance/static-scoring-signals.md
+              - file: search/full-text/search-with-synonyms.md
+                children:
+                  - file: search/full-text/create-update-synonyms-api-example.md
           - file: search/ai-search/ai-search.md
             children:
               - file: search/vector.md
@@ -66,11 +69,11 @@ toc:
       - file: elasticsearch-solution-project/get-started.md
         children:
           - file: elasticsearch-solution-project/search-connection-details.md
-          - file: elasticsearch-solution-project/get-started/quickstarts.md
-            children:
-              - file: elasticsearch-solution-project/get-started/index-basics.md
-              - file: elasticsearch-solution-project/get-started/keyword-search-python.md
-              - file: elasticsearch-solution-project/get-started/semantic-search.md
+      - file: elasticsearch-solution-project/get-started/quickstarts.md
+        children:
+          - file: elasticsearch-solution-project/get-started/index-basics.md
+          - file: elasticsearch-solution-project/get-started/keyword-search-python.md
+          - file: elasticsearch-solution-project/get-started/semantic-search.md
       - file: elasticsearch-solution-project/elastic-agent-builder.md
         children:
           - file: elasticsearch-solution-project/agent-builder/get-started.md
@@ -99,9 +102,6 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
-      - file: elasticsearch-solution-project/full-text/search-with-synonyms.md
-        children:
-          - file: elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md
       - file: elasticsearch-solution-project/ai-assistant.md
       - file: elasticsearch-solution-project/query-rules-ui.md
   - file: observability.md

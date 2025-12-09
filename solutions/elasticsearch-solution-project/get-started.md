@@ -53,7 +53,7 @@ Manage and deploy search-powered applications with pre-built templates. Refer to
 
 ### UI tools for search optimization
 
-- [**Search with synonyms**](/solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md): Manage synonym sets through the UI
+- [**Search with synonyms**](/solutions/search/full-text/search-with-synonyms.md): Manage synonym sets through the UI
 - [**Query Rules UI**](/solutions/elasticsearch-solution-project/query-rules-ui.md): Create rules to modify search behavior
 - [**AI Assistant**](/solutions/elasticsearch-solution-project/ai-assistant.md): Get intelligent assistance across the platform
 

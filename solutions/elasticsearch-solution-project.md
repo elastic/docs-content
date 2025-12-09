@@ -9,18 +9,23 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
   - id: kibana
-navigation_title: Elasticsearch
+navigation_title: Elasticsearch solution
 ---
 
-# {{es}} solution overview
+# {{es}} solution & project type overview
+
+::::{tip}
+Not sure which deployment type is right for you? Use the following resources to help you decide:
+
+- Read the Elastic [deployment types overview](/deploy-manage/deploy.md)
+- Compare [serverless and {{ech}}](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md)
+  - Compare pricing models between [Elastic Cloud](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) and [Serverless](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
+::::
+
 
 The {{es}} solution and serverless project type provide specialized UI tools and interfaces that help you build search applications on top of the {{es}} platform.
 
-These UI affordances are exclusive to the {{es}} solution (on {{ech}}) and the {{es}} serverless project type. They complement the universal search capabilities available across all {{es}} deployments.
-
-::::{tip}
-Looking for general search capabilities that work across all {{es}} deployments? Check out the [Search use case](/solutions/search.md) documentation, which covers universal {{es}} search primitives including full-text search, vector search, semantic search, and hybrid search.
-::::
+These UI affordances are exclusive to the {{es}} **solution** (on non-serverless deployments) and the {{es}} serverless **project type**. They complement the core [search primitives]((/solutions/search.md)) available across all Elastic deployments.
 
 ## Features and tools
 
@@ -40,7 +45,7 @@ The {{es}} solution provides the following specialized UI tools:
 
 ### Synonyms UI
 
-The [Search with synonyms](/solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md) interface provides a dedicated UI for managing synonym sets directly within {{kib}}, making it easier to improve search relevance without editing configuration files.
+The [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md) interface provides a dedicated UI for managing synonym sets directly within {{kib}}, making it easier to improve search relevance without editing configuration files.
 
 ### Query Rules UI
 
@@ -66,12 +71,3 @@ For a deeper understanding of search concepts and techniques, refer to the [Sear
 * [Content connectors](elasticsearch://reference/search-connectors/index.md)
 * [{{es}} API documentation]({{es-apis}})
 * [Search use case documentation](/solutions/search.md)
-
-::::{tip}
-Not sure whether {{es}} on {{serverless-full}} is the right deployment choice for you?
-
-Check out the following resources to help you decide:
-
-- [What's different?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md): Understand the differences between {{serverless-full}} and other deployment types.
-- [Billing](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md): Learn about the billing model for {{es}} on {{serverless-full}}.
-::::
