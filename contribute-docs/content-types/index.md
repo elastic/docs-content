@@ -5,7 +5,7 @@ description: "Overview of guidelines for choosing the appropriate content types 
 
 # Elastic Docs content types
 
-Content types ensure the Elastic Docs are well-structured, consistent and, complete. When we use the right content type, we make it easier for users to find the information they need and efficiently complete tasks. 
+Content types ensure the Elastic Docs are well-structured, consistent, and complete. When we use the right content type, we make it easier for users to find the information they need and efficiently complete tasks. 
 
 To help you quickly get started, each content type includes its own guidelines, best practices, and templates.
 
