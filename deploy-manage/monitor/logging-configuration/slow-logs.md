@@ -95,7 +95,7 @@ The following is an example of an indexing event in the slow log:
 
 You can enable slow logging at two levels:
 
-* For all indices under the [{{es}} `log4j2.properties` configuration file](docs-content://deploy-manage/deploy/self-managed/configure-elasticsearch.md). This method requires a node restart.
+* For all indices under the [{{es}} `log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). This method requires a node restart.
 * At the index level, using the [update indices settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings)
 
 By default, all thresholds are set to `-1`, which results in no events being logged.
@@ -115,7 +115,7 @@ Search slow logs emit per shard. They must be enabled separately for the shard�
 
 You can use the `index.search.slowlog.include.user` setting to append `user.*` and `auth.type` fields to slow log entries. These fields contain information about the user who triggered the request.
 
-The following snippet adjusts all available search slow log settings across all indices using the [`log4j2.properties` configuration file](docs-content://deploy-manage/deploy/self-managed/configure-elasticsearch.md):
+The following snippet adjusts all available search slow log settings across all indices using the [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
 
 ```yaml
 index.search.slowlog.threshold.query.warn: 10s
@@ -155,7 +155,7 @@ Indexing slow logs emit per index document.
 
 You can use the `index.indexing.slowlog.include.user` setting to append `user.*` and `auth.type` fields to slow log entries. These fields contain information about the user who triggered the request.
 
-The following snippet adjusts all available indexing slow log settings across all indices using the [`log4j2.properties` configuration file](docs-content://deploy-manage/deploy/self-managed/configure-elasticsearch.md):
+The following snippet adjusts all available indexing slow log settings across all indices using the [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
 
 ```yaml
 index.indexing.slowlog.threshold.index.warn: 10s
@@ -194,7 +194,7 @@ The original `_source` is reformatted by default to make sure that it fits on a 
 
 ## Best practices for slow logging [troubleshoot-slow-log]
 
-Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](docs-content://deploy-manage/monitor/stack-monitoring.md) cluster. To reduce the impact of slow logs, consider the following:
+Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) cluster. To reduce the impact of slow logs, consider the following:
 
 * Enable slow logs against specific indices rather than across all indices.
 * Set high thresholds to reduce the number of logged events.
@@ -226,13 +226,13 @@ If you aren’t sure how to start investigating traffic issues, consider enablin
     % TEST[setup:my_index]
 
 
-Slow log thresholds being met does not guarantee cluster performance issues. In the event that symptoms are noticed, slow logs can provide helpful data to diagnose upstream traffic patterns or sources to resolve client-side issues. For example, you can use data included in `X-Opaque-ID`, the `_source` request body, or `user.*` fields to identify the source of your issue. This is similar to troubleshooting [live expensive tasks](docs-content://troubleshoot/elasticsearch/task-queue-backlog.md).
+Slow log thresholds being met does not guarantee cluster performance issues. In the event that symptoms are noticed, slow logs can provide helpful data to diagnose upstream traffic patterns or sources to resolve client-side issues. For example, you can use data included in `X-Opaque-ID`, the `_source` request body, or `user.*` fields to identify the source of your issue. This is similar to troubleshooting [live expensive tasks](/troubleshoot/elasticsearch/task-queue-backlog.md).
 
-If you’re experiencing search performance issues, then you might also consider investigating searches flagged for their query durations using the [profile API](/reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](docs-content://explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
+If you’re experiencing search performance issues, then you might also consider investigating searches flagged for their query durations using the [profile API](/reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](/explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
 
-Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](docs-content://troubleshoot/elasticsearch/circuit-breaker-errors.md). If suspect circuit breaker errors, then you should also consider enabling [audit logging](docs-content://deploy-manage/security/logging-configuration/enabling-audit-logs.md), which logs events before they are executed.
+Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md). If suspect circuit breaker errors, then you should also consider enabling [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md), which logs events before they are executed.
 
 
 ## Learn more [_learn_more]
 
-To learn about other ways to optimize your search and indexing requests, refer to [tune for search speed](docs-content://deploy-manage/production-guidance/optimize-performance/search-speed.md) and [tune for indexing speed](docs-content://deploy-manage/production-guidance/optimize-performance/indexing-speed.md).
+To learn about other ways to optimize your search and indexing requests, refer to [tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md) and [tune for indexing speed](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md).
