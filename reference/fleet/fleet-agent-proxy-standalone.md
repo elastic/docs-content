@@ -14,7 +14,7 @@ The following proxy settings are valid in the agent policy:
 
 | Setting | Description |
 | --- | --- |
-| `proxy_url` | (string) URL of the proxy server. If set, the configured URL is used as a proxy for all connection attempts by the component. The value may be either a complete URL or a `host[:port]`, in which case the `http` scheme is assumed. Ifa value is not specified through the configuration, then proxy environment variables are used. The URL accepts optional `username` and `password` settings for authenticating with the proxy. For example: `http://<username>:<password>@<proxy host>/`. |
+| `proxy_url` | (string) URL of the proxy server. If set, the configured URL is used as a proxy for all connection attempts by the component. The value can be either a complete URL or a `host[:port]`, in which case the `http` scheme is assumed. Ifa value is not specified through the configuration, then proxy environment variables are used. The URL accepts optional `username` and `password` settings for authenticating with the proxy. For example: `http://<username>:<password>@<proxy host>/`. |
 | `proxy_headers` | (string) Additional headers to send to the proxy during CONNECT requests. You can use this setting to pass keys/tokens required for authenticating with the proxy. |
 | `proxy_disable` | (boolean) If set to `true`, all proxy settings, including the `HTTP_PROXY` and`HTTPS_PROXY` environment variables, are ignored. |
 

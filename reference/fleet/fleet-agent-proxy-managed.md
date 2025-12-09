@@ -59,7 +59,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
 3. **Attach the proxy to the output**
 
-    Similarly, if the data plane traffic to an output is to traverse through a proxy, that proxy definition would need to be added to the output defined in the {{fleet}}.
+    Similarly, if the data plane traffic to an output is to traverse through a proxy, that proxy definition would need to be added to the output defined in {{fleet}}.
 
     1. In {{fleet}}, open the **Settings** tab.
     2. In the list of **Outputs**, choose an output and select the edit button to configure it.
@@ -122,7 +122,7 @@ The `enroll` and `install` commands accept the following flags:
 
 | CLI flag | Description |
 | --- | --- |
-| `--proxy-url <url>` | URL of the proxy server. The value may be either a complete URL or a`host[:port]`, in which case the `http` scheme is assumed.  The URL accepts optional username and password settings for authenticating with the proxy. For example:`http://<username>:<password>@<proxy host>/`. |
+| `--proxy-url <url>` | URL of the proxy server. The value can be either a complete URL or a`host[:port]`, in which case the `http` scheme is assumed.  The URL accepts optional username and password settings for authenticating with the proxy. For example:`http://<username>:<password>@<proxy host>/`. |
 | `--proxy-disabled` | If specified, all proxy settings, including the `HTTP_PROXY` and `HTTPS_PROXY`environment variables, are ignored. |
 | `--proxy-header <header name>=<value>` | Additional header to send to the proxy during CONNECT requests. Use the`--proxy-header` flag multiple times to add additional headers. You can use this setting to pass keys/tokens required for authenticating with the proxy. |
 
@@ -161,15 +161,15 @@ When {{agent}} runs, the `fleet.yml` file gets encrypted and renamed to `fleet.e
 
 ## {{agent}} connectivity using a secure proxy gateway [fleet-agent-proxy-server-secure-gateway]
 
-Many secure proxy gateways are configured to perform mutual TLS and expect all connections to present their certificate. In these instances the Client (in this case the {{agent}}) would need to present a certificate and key to the Server (the secure proxy). In return the client expects to see a certificate authority chain from the server to ensure it is also communicating to a trusted entity.
+Many secure proxy gateways are configured to perform mutual TLS and expect all connections to present their certificate. In these instances, the Client (in this case, the {{agent}}) would need to present a certificate and key to the Server (the secure proxy). In return, the client expects to receive a certificate authority chain from the server to ensure it is also communicating to a trusted entity.
 
 :::{image} images/elastic-agent-proxy-gateway-secure.png
 :alt: Image showing data flow between the proxy server and the Certificate Authority
 :::
 
-If mTLs is a requirement when connecting to your proxy server, then you have the option to add the Client certificate and Client certificate key to the proxy. Once configured, all the {{agents}} in a policy that connect to this secure proxy (via an output or {{fleet-server}}), will use the nominated certificates to establish connections to the proxy server.
+If mTLs is a requirement when connecting to your proxy server, then you have the option to add the Client certificate and Client certificate key to the proxy. Once configured, all the {{agents}} in a policy that connect to this secure proxy (via an output or {{fleet-server}}) use the nominated certificates to establish connections to the proxy server.
 
-It should be noted that the user can define a local path to the certificate and key as in many common scenarios the certificate and key will be unique for each {{agent}}.
+You can define a local path to the certificate and key as, in many common scenarios, the certificate and key are unique for each {{agent}}.
 
 Equally important is the Certificate Authority that the agents need to use to validate the certificate they are receiving from the secure proxy server. This can also be added when creating the proxy definition in the {{fleet}} settings.
 
