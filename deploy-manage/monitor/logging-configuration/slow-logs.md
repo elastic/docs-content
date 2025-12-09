@@ -1,7 +1,6 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html
-navigation_title: Slow log
 applies_to:
   stack: all
 ---
@@ -13,6 +12,15 @@ You can use slow logs to investigate, analyze or audit heavy operations, or trou
 
 Slow logs report task duration at the **shard level** for searches, and at the **index level** for indexing, but might not encompass the full task execution time observed on the client. For example, slow logs don’t surface HTTP network delays or the impact of [task queues](/troubleshoot/elasticsearch/task-queue-backlog.md). For more information about the higher-level operations affecting response times, refer to [Reading and writing documents](/deploy-manage/distributed-architecture/reading-and-writing-documents.md).
 
+Slow log thresholds can be enabled for these logging levels (in order of increasing verbosity): 
+
+* `WARN`
+* `INFO`
+* `DEBUG`
+* `TRACE`
+
+You can mimic setting log level thresholds by disabling more verbose levels.
+
 **Finding slow logs**
 
 Events that meet the specified threshold are emitted into [{{es}} logging](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) under the `fileset.name` of `slowlog`. These logs can be viewed in the following locations:
@@ -22,11 +30,13 @@ Events that meet the specified threshold are emitted into [{{es}} logging](/depl
 
 Refer to [this video](https://www.youtube.com/watch?v=ulUPJshB5bU) for a walkthrough of setting and reviewing slow logs.
 
+**Default behavior**
 
-Because logging everything can be high volume, slow logs are deactivated by default (all thresholds are equal to `-1`). Activate only when needed.
+Because logging every event or operation generates a high volume of log entries, slow logs are deactivated by default (all thresholds are set to `-1`). Activate only when needed and avoid setting very low thresholds in production.
 
 
-## What's logged [slow-log-format]
+
+## What's included in slow logs [slow-log-format]
 
 Depending on the settings you configure, slow logs can record:
 * the operation (searching or indexing)
@@ -40,11 +50,11 @@ Depending on the settings you configure, slow logs can record:
 If a call was initiated with an `X-Opaque-ID` header, then the ID is automatically included in Search slow logs in the **elasticsearch.slowlog.id** field. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
 ::::
 
-The following are examples of a search event and an indexing event in the slow log:
+The following are examples of a search and an indexing operation in the slow log respectively:
 
 ::::{tab-set}
 :group: slow-logs
-:::{tab-item} Search event
+:::{tab-item} Search operations
 :sync: search
 
 ```js
@@ -79,7 +89,7 @@ The following are examples of a search event and an indexing event in the slow l
 
 :::
 
-:::{tab-item} Indexing event
+:::{tab-item} Indexing operations
 :sync: index
 
 ```js
@@ -111,21 +121,138 @@ The following are examples of a search event and an indexing event in the slow l
 ::::
 
 
-## When to use slow logging [troubleshoot-slow-log]
+## Enabling slow logs [enable-slow-log]
+
+You enable slow logs by configuring thresholds. Thresholds can be aggressive, such as `0ms` to log everything, or conservative, such as `5s`.
+
+You can enable slow logging at the following levels:
+
+* At the index level, using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
+* For all indices (cluster-wide) under the [{{es}} `log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). This method requires a node restart.
+
+To view the current slow log settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API:
+
+```console
+GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog
+```
+
+To enable slow logging for a single index, use the [update indices settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings):
+
+::::{tab-set}
+:group: slow-logs
+:::{tab-item} Search operations
+:sync: search
+Search slow logs emit per shard. They must be enabled separately for the shard’s [query and fetch search phases](https://www.elastic.co/blog/understanding-query-then-fetch-vs-dfs-query-then-fetch).
+
+```console
+PUT /my-index-000001/_settings
+{
+  "index.search.slowlog.threshold.query.warn": "10s",
+  "index.search.slowlog.threshold.query.info": "5s",
+  "index.search.slowlog.threshold.query.debug": "2s",
+  "index.search.slowlog.threshold.query.trace": "500ms",
+  "index.search.slowlog.threshold.fetch.warn": "1s",
+  "index.search.slowlog.threshold.fetch.info": "800ms",
+  "index.search.slowlog.threshold.fetch.debug": "500ms",
+  "index.search.slowlog.threshold.fetch.trace": "200ms",
+  "index.search.slowlog.include.user": true <1>
+}
+```
+
+1. You can use the `index.search.slowlog.include.user` setting for search operations or the `index.indexing.slowlog.include.user` setting for indexing operations to append `user.*` and `auth.type` fields to slow log entries. These fields contain information about the user who triggered the request.
+
+For more information about slow log settings, refer to [slow log settings](elasticsearch://reference/elasticsearch/index-settings/slow-log.md).
+
+:::
+
+:::
+:::{tab-item} Indexing operations
+:sync: index
+
+Indexing slow logs emit per index document.
+
+```console
+PUT /my-index-000001/_settings
+{
+  "index.indexing.slowlog.threshold.index.warn": "10s",
+  "index.indexing.slowlog.threshold.index.info": "5s",
+  "index.indexing.slowlog.threshold.index.debug": "2s",
+  "index.indexing.slowlog.threshold.index.trace": "500ms",
+  "index.indexing.slowlog.source": "1000", <2>
+  "index.indexing.slowlog.reformat": true,
+  "index.indexing.slowlog.include.user": true <1>
+}
+```
+
+1. You can use the `index.search.slowlog.include.user` setting for search operations or the `index.indexing.slowlog.include.user` setting for indexing operations to append `user.*` and `auth.type` fields to slow log entries. These fields contain information about the user who triggered the request. 
+
+2. Slow logs can record the `_source` of documents involved in slow queries. Use this setting only while actively troubleshooting as it can significantly increase log size and might expose sensitive data.
+
+For more information about slow log settings, refer to [slow log settings](elasticsearch://reference/elasticsearch/index-settings/slow-log.md).
+
+:::
+::::
+
+
+
+
+To adjust slow log settings across all indices (cluster-wide) using the [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md), use the following snippet:
+
+::::{tab-set}
+:group: slow-logs
+:::{tab-item} Search operations
+:sync: search
+
+```yaml
+index.search.slowlog.threshold.query.warn: 10s
+index.search.slowlog.threshold.query.info: 5s
+index.search.slowlog.threshold.query.debug: 2s
+index.search.slowlog.threshold.query.trace: 500ms
+
+index.search.slowlog.threshold.fetch.warn: 1s
+index.search.slowlog.threshold.fetch.info: 800ms
+index.search.slowlog.threshold.fetch.debug: 500ms
+index.search.slowlog.threshold.fetch.trace: 200ms
+
+index.search.slowlog.include.user: true
+```
+
+:::
+:::
+:::{tab-item} Indexing operations
+:sync: index
+
+```yaml
+index.indexing.slowlog.threshold.index.warn: 10s
+index.indexing.slowlog.threshold.index.info: 5s
+index.indexing.slowlog.threshold.index.debug: 2s
+index.indexing.slowlog.threshold.index.trace: 500ms
+
+index.indexing.slowlog.source: 1000
+index.indexing.slowlog.reformat: true
+
+index.indexing.slowlog.include.user: true
+```
+
+:::
+::::
+
+
+## When (and how) to use slow logs [troubleshoot-slow-log]
 
 Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) cluster. 
 
 To reduce the impact of slow logs, consider the following:
 
+* Enable slow logs only when troubleshooting.
 * Enable slow logs against specific indices rather than across all indices.
 * Set high thresholds to reduce the number of logged events.
-* Enable slow logs only when troubleshooting.
 
 If you aren’t sure how to start investigating traffic issues, consider enabling the `warn` threshold with a high `30s` threshold at the index level using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API:
 
 ::::{tab-set}
 :group: slow-logs
-:::{tab-item} Search requests
+:::{tab-item} Search operations
 :sync: search
 
 ```console
@@ -138,7 +265,7 @@ PUT /*/_settings
 ```
 
 :::
-:::{tab-item} Indexing requests
+:::{tab-item} Indexing operations
 :sync: index
 
 ```console
@@ -158,120 +285,6 @@ Slow log thresholds being met does not guarantee cluster performance issues. Slo
 If you’re experiencing search performance issues, then you might want to consider investigating searches flagged for their query durations using the [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](/explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
 
 Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md). If you suspect circuit breaker errors, then you should also consider enabling [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md), which logs events before they are executed.
-
-
-
-## Enable slow logging [enable-slow-log]
-
-You can enable slow logging at the following levels:
-
-* At the index level, using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
-* For all indices (cluster-wide) under the [{{es}} `log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). This method requires a node restart.
-
-By default, all thresholds are set to `-1`, which results in no events being logged.
-
-Slow log thresholds can be enabled for these logging levels (in order of increasing verbosity): 
-
-* `WARN`
-* `INFO`
-* `DEBUG`
-* `TRACE`
-
-You can mimic setting log level thresholds by disabling more verbose levels.
-
-To view the current slow log settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API:
-
-```console
-GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog
-```
-
-
-### Enable slow logging for search events [search-slow-log]
-
-Search slow logs emit per shard. They must be enabled separately for the shard’s [query and fetch search phases](https://www.elastic.co/blog/understanding-query-then-fetch-vs-dfs-query-then-fetch).
-
-The following snippet adjusts the same settings for a single index using the [update indices settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings):
-
-```console
-PUT /my-index-000001/_settings
-{
-  "index.search.slowlog.threshold.query.warn": "10s",
-  "index.search.slowlog.threshold.query.info": "5s",
-  "index.search.slowlog.threshold.query.debug": "2s",
-  "index.search.slowlog.threshold.query.trace": "500ms",
-  "index.search.slowlog.threshold.fetch.warn": "1s",
-  "index.search.slowlog.threshold.fetch.info": "800ms",
-  "index.search.slowlog.threshold.fetch.debug": "500ms",
-  "index.search.slowlog.threshold.fetch.trace": "200ms",
-  "index.search.slowlog.include.user": true
-}
-```
-
-
-You can use the `index.search.slowlog.include.user` setting to append `user.*` and `auth.type` fields to slow log entries. These fields contain information about the user who triggered the request.
-
-The following snippet adjusts all available search slow log settings across all indices using the [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
-
-```yaml
-index.search.slowlog.threshold.query.warn: 10s
-index.search.slowlog.threshold.query.info: 5s
-index.search.slowlog.threshold.query.debug: 2s
-index.search.slowlog.threshold.query.trace: 500ms
-
-index.search.slowlog.threshold.fetch.warn: 1s
-index.search.slowlog.threshold.fetch.info: 800ms
-index.search.slowlog.threshold.fetch.debug: 500ms
-index.search.slowlog.threshold.fetch.trace: 200ms
-
-index.search.slowlog.include.user: true
-```
-
-
-
-### Enable slow logging for indexing events [index-slow-log]
-
-Indexing slow logs emit per index document.
-
-You can use the `index.indexing.slowlog.include.user` setting to append `user.*` and `auth.type` fields to slow log entries. These fields contain information about the user who triggered the request.
-
-The following snippet adjusts the same settings for a single index using the [update indices settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings):
-
-```console
-PUT /my-index-000001/_settings
-{
-  "index.indexing.slowlog.threshold.index.warn": "10s",
-  "index.indexing.slowlog.threshold.index.info": "5s",
-  "index.indexing.slowlog.threshold.index.debug": "2s",
-  "index.indexing.slowlog.threshold.index.trace": "500ms",
-  "index.indexing.slowlog.source": "1000",
-  "index.indexing.slowlog.reformat": true,
-  "index.indexing.slowlog.include.user": true
-}
-```
-
-
-The following snippet adjusts all available indexing slow log settings across all indices using the [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
-
-```yaml
-index.indexing.slowlog.threshold.index.warn: 10s
-index.indexing.slowlog.threshold.index.info: 5s
-index.indexing.slowlog.threshold.index.debug: 2s
-index.indexing.slowlog.threshold.index.trace: 500ms
-
-index.indexing.slowlog.source: 1000
-index.indexing.slowlog.reformat: true
-
-index.indexing.slowlog.include.user: true
-```
-
-
-
-#### Logging the `_source` field [_logging_the_source_field]
-
-By default, {{es}} logs the first 1000 characters of the `_source` in the slow log. You can adjust how `_source` is logged using the `index.indexing.slowlog.source` setting. Set `index.indexing.slowlog.source` to `false` or `0` to skip logging the source entirely. Set `index.indexing.slowlog.source` to `true` to log the entire source regardless of size.
-
-The original `_source` is reformatted by default to make sure that it fits on a single log line. If preserving the original document format is important, then you can turn off reformatting by setting `index.indexing.slowlog.reformat` to `false`. This causes source to be logged with the original formatting intact, potentially spanning multiple log lines.
-
 
 ## Learn more [_learn_more]
 
