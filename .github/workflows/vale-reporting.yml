@@ -1,0 +1,23 @@
+name: Vale Report
+
+on:
+  workflow_run:
+    workflows: ["Vale Documentation Linting"]
+    types:
+      - completed
+
+permissions:
+  pull-requests: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.event == 'pull_request'
+    permissions:
+      pull-requests: write
+    
+    steps:
+      - name: Post Vale Results
+        uses: elastic/vale-rules/report@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

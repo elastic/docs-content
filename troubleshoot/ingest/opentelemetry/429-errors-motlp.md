@@ -51,7 +51,7 @@ A 429 status means that the rate of requests sent to the Managed OTLP endpoint h
     Refer to the [Rate limiting section](opentelemetry://reference/motlp.md#rate-limiting) in the mOTLP reference documentation for details.
 
 * In {{ech}}, the {{es}} capacity for your deployment might be underscaled for the current ingest rate.
-* In {{serverless-full}}, rate limiting should not result from {{es}} capacity, since the platform automatically scales ingest capacity. If you suspect a scaling issue, [contact Elastic Support](contact-support.md).
+* In {{serverless-full}}, rate limiting should not result from {{es}} capacity, since the platform automatically scales ingest capacity. If you suspect a scaling issue, [contact Elastic Support](/troubleshoot/ingest/opentelemetry/contact-support.md).
 * Multiple Collectors or SDKs are sending data concurrently without load balancing or backoff mechanisms.
 
 ## Resolution
@@ -62,7 +62,7 @@ To resolve 429 errors, identify whether the bottleneck is caused by ingest limit
 
 If you’ve confirmed that your ingest configuration is stable but still encounter 429 errors:
 
-* {{serverless-full}}: [Contact Elastic Support](contact-support.md) to request an increase in ingest limits.
+* {{serverless-full}}: [Contact Elastic Support](/troubleshoot/ingest/opentelemetry/contact-support.md) to request an increase in ingest limits.
 * {{ech}} (ECH): Increase your {{es}} capacity by scaling or resizing your deployment:
   * [Scaling considerations](../../../deploy-manage/production-guidance/scaling-considerations.md)
   * [Resize deployment](../../../deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
@@ -106,7 +106,7 @@ exporters:
       enabled: true
 ```
 
-This ensures the Collector buffers data locally while waiting for the ingest endpoint to recover from throttling.
+This ensures the Collector buffers data locally while waiting for the ingest endpoint to recover from throttling. For more information on export failures and queue configuration, refer to [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/trace-export-errors.md).
 
 ## Best practices
 

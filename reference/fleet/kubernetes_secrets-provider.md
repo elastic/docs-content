@@ -1,12 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kubernetes_secrets-provider.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Kubernetes Secrets Provider [kubernetes_secrets-provider]
+# Kubernetes Secrets provider [kubernetes_secrets-provider]
 
 Provides access to the Kubernetes Secrets API.
 

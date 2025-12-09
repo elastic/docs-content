@@ -573,6 +573,7 @@ toc:
               - file: security/ai/connect-to-openai.md
               - file: security/ai/connect-to-google-vertex.md
               - file: security/ai/connect-to-own-local-llm.md
+              - file: security/ai/connect-to-vLLM.md
           - file: security/ai/use-cases.md
             children:
               - file: security/ai/triage-alerts.md
@@ -689,20 +690,20 @@ toc:
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
-          - file: security/cloud/integrations/ingest-third-party-cloud-security-data.md
-            children:
-              - file: security/cloud/integrations/cncf-falco.md
-              - file: security/cloud/integrations/aws-security-hub.md
-              - file: security/cloud/integrations/wiz.md
-              - file: security/cloud/integrations/qualys.md
-              - file: security/cloud/integrations/tenablevm.md
-              - file: security/cloud/integrations/rapid7.md
-              - file: security/cloud/integrations/aws-config.md
-              - file: security/cloud/integrations/aws-inspector.md
-              - file: security/cloud/integrations/microsoft-defender-for-cloud.md
-              - file: security/cloud/integrations/microsoft-defender-for-endpoint.md
-              - file: security/cloud/integrations/microsoft-defender-xdr.md
-              - file: security/cloud/integrations/google-security-command-center.md
+      - file: security/integrations/ingest-third-party-security-data.md
+        children:
+          - file: security/integrations/cncf-falco.md
+          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/wiz.md
+          - file: security/integrations/qualys.md
+          - file: security/integrations/tenablevm.md
+          - file: security/integrations/rapid7.md
+          - file: security/integrations/aws-config.md
+          - file: security/integrations/aws-inspector.md
+          - file: security/integrations/microsoft-defender-for-cloud.md
+          - file: security/integrations/microsoft-defender-for-endpoint.md
+          - file: security/integrations/microsoft-defender-xdr.md
+          - file: security/integrations/google-security-command-center.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
