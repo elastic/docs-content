@@ -16,13 +16,13 @@ products:
   - id: cloud-serverless
 ---
 
-# Service status
+# Service Status
 
 {{ech}} deployments and Serverless projects run on different cloud platforms, such as Amazon Web Services (AWS),  Google Cloud Platform (GCP), and Microsoft Azure. Like any service, it might undergo availability changes from time to time. When availability changes, Elastic makes sure to provide you with a current service status.
 
 To check current and past service availability, go to to the [Cloud Status](https://status.elastic.co/) page. Services are separated into {{ech}} services and [Serverless services](https://status.elastic.co/?section=serverless).
 
-## Subscribe to updates [ec_subscribe_to_updates]
+## Subscribe to Updates [ec_subscribe_to_updates]
 
 Don’t want to check the service status page manually? You can get notified about changes to the service status automatically.
 
@@ -37,7 +37,7 @@ To receive service status updates:
 
 After you subscribe to updates, you are notified whenever a service status update is posted.
 
-## Subscribe to individual regions or components
+## Subscribe to Individual Regions or Components
 
 If you want to know about specific status updates, rather than all of them, you can adjust your preferences by using the following steps. These steps apply to both new signups and adjustments to an existing subscription.
 
@@ -51,3 +51,8 @@ If you want a programmatic method of ingesting our service status updates, then 
 
 For more information and to get started, go to our [Service Status API](https://status.elastic.co/api/) page.
 
+## Service Status Support Limitations
+
+To ensure we can continue evolving our Status page to best serve our customers, we cannot guarantee consistency of API implementation or component API identifiers. However, we will communicate changes that may impact Status page subscribers on a best-effort basis.
+
+When a change may remove a component or modify an identifier, we will make our best effort to first schedule a maintenance window for that component, giving subscribers advance notice and time to prepare for the upcoming change.
