@@ -19,10 +19,8 @@ Familiarity with {{ech}}, {{es}}, and {{ls}} is helpful, but not required.
 :::{admonition} Basic migration
 This guide focuses on a basic data migration scenario for moving static data from an {{ech}} deployment to a {{serverless-full}} project. 
 
-Dashboards, visualizations, pipelines, templates, and other {{kib}} assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
-:::
-
 The Elasticsearch input plugin offers [additional configuration options](#additional-config) that can support more advanced use cases and migrations. More information about those options is available near the end of this topic. 
+:::
 
 ## Prerequisites [migrate-prereqs]
 
@@ -31,6 +29,12 @@ The Elasticsearch input plugin offers [additional configuration options](#additi
 - {{ls}} [installed](https://www.elastic.co/downloads/logstash) on your local machine or server 
 - API keys in {{ls}} format for authentication with both deployments
 
+:::{important} 
+Kibana assets much be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually.
+Templates, data stream definitions, and ILM policies, must be in place _before_ you start data migration. 
+
+Visual components, such dashboard and visualizations, can be migrated after you have migrated the data.
+:::
 
 ## Process overview [migration-overview]
 * [Configure {{ls}}](#configure-ls)
