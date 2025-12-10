@@ -463,7 +463,7 @@ In the legend, click the field, then choose one of the following options:
 
 ## Customize the visualization display [configure-the-visualization-components]
 
-Each visualization type comes with a set of customization options. The following component menus are available:
+Each visualization offers various options that you can use to customize its appearance:
 
 * **Style** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
 * **Labels** — Specifies how to display the labels for donut charts, pie charts, and treemaps.
