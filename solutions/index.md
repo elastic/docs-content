@@ -27,7 +27,7 @@ The [Search use case](/solutions/search.md) documents core {{es}} search capabil
 
 ## Solutions and project types
 
-Solutions and project types provide pre-built UI tools and workflows for specific use cases. Rather than building everything through APIs, solutions give you prebuilt interfaces for common workflows and sensible defaults.
+Solutions and project types provide pre-built UI tools and workflows with sensible defaults for specific use cases.
 
 On {{ech}} and self-managed deployments, solutions are configured in your deployment settings. On {{serverless-full}}, you select a project type when creating your project.
 
