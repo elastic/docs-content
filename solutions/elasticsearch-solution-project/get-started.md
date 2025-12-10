@@ -85,7 +85,7 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 
 :::::{step} Explore solution features
 
-The {{es}} solution provides specialized UI tools to enhance your search experience:
+The {{es}} solution provides additional UI tools on top of the core {{es}} capabilities, to help you build search applications:
 
 - [**Agent Builder**](/solutions/elasticsearch-solution-project/elastic-agent-builder.md): Create AI agents that interact with your {{es}} data
 - [**Query Rules UI**](/solutions/elasticsearch-solution-project/query-rules-ui.md): Create rules to modify search behavior
