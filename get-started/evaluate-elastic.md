@@ -15,7 +15,7 @@ description: Build a successful proof of concept during your Elastic trial. Lear
 
 To make the most of your free 14-day {{ecloud}} trial, set up high-value use cases, explore the most powerful Elastic features, and gather the evidence you need to determine whether Elastic is the right choice for your organization.
 
-You have 14 days to get the most value from your trial, so don’t just click around. Ingest real data, focus on your highest priority use case, and validate the capabilities that will save you time, reduce costs, and prevent operational challenges in production.
+Ingest real data and validate the capabilities that will save you time, reduce costs, and prevent operational challenges in production.
 
 By the end of this guide, you'll know how to structure your trial, make strategic Elastic product decisions, and measure success so you can build a meaningful proof of concept (PoC).
 
