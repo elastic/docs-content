@@ -69,29 +69,24 @@ In Line charts, you can enable time shift to compare the current value with a pr
 
 ![Example Lens line chart current previous](../../images/kibana-line-current-previous.png)
 
-1. Create a line series for the current value, for example: `average(response_time)`.
-2. Add a second series with a time shift, for example: `average(response_time, shift='1w')`.
-3. Use the legend labels to clarify “Current” versus “Previous (1w)”.
-
-| Single series | With previous period |
-|---|---|
-| ![Metric over time](../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png "title =70%") | ![Multiple series with previous period](../../images/kibana-lens_lineChartMultipleDataSeries_7.16.png "title =70%") |
+1. Create a line visualization with a time-based **Horizontal axis** and your main metric on **Vertical axis**, for example: `bytes`.
+2. From the three-dot menu in the upper-left of the Layers panel, select **Duplicate layer**.  
+3. In the **Advanced** settings of the **Vertical axis**, add a second metric with a time shift, for example: `average(bytes, shift='1w')`.
+4. Update the legend to show “Current” and “Previous”.
 
 ::::{tip}
 You can also compute the relative change as a separate series using a formula, for example:  
-`(average(response_time) - average(response_time, shift='1w')) / average(response_time, shift='1w')`
+`(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
 :::: 
 
 ### Highlight thresholds with reference lines [line-reference-lines]
 
-Use reference lines to indicate SLOs or alert thresholds.
+Use reference lines to indicate important thresholds, such as SLOs or alert limits.
 
 ![Example Lens line chart reference lines](../../images/kibana-line-reference-lines.png)
 
-1. In the chart settings, add a **Reference line** (for example, `200` ms or `0.95`).
+1. In the chart settings, add a static value reference line to mark your target or threshold visually.
 2. Give it a label (for example, `Target` or `SLO`), choose a color, and optionally a band.
-
-![Reference line](../../images/kibana-lens_referenceLine_7.16.png "title =70%")
 
 ## Line chart settings [settings]
 
@@ -145,7 +140,7 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
    * **Minimum interval**: `Hour`
 2. Drag `machine.ram` to the **Vertical axis** and set the following settings:
    * **Functions**: : `Moving average`
-   * **Value format**: `Duration`
+   * **Value format**: `Bytes`
 3. In the **Breakdwon** panel, set the following settings:
    * **Functions**: `Top values`
    * **Number of values**: `4`
