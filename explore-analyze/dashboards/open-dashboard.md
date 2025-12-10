@@ -34,7 +34,7 @@ Managed dashboards can’t be edited directly, but you can [duplicate](duplicate
 
 ## Reset dashboard changes [reset-the-dashboard]
 
-When editing a dashboard, you can revert any changes you’ve made since the last save using the **Reset** button in the toolbar.
+When editing a dashboard, you can revert any changes you’ve made since the last save using the **Reset** button located next to **Save** in the toolbar.
 
 ::::{note}
 Once changes are saved, you can no longer revert them in one click, and instead have to edit the dashboard manually.
