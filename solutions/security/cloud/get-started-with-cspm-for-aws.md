@@ -20,14 +20,14 @@ This page explains how to start monitoring the security posture of your cloud as
 ## Requirements
 * Minimum privileges vary depending on whether you need to read, write, or manage CSPM data and integrations. Refer to [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md).
 * The CSPM integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing) level.
-* CSPM supports only the AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. AWS GovCloud is only supported for agent-based deployments — agentless deployments do not work on this platform. Other government cloud platforms are not supported. To request support for other platforms, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
+* CSPM supports only the AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. AWS GovCloud is only supported for agent-based deployments—agentless deployments do not work on this platform. Other government cloud platforms are not supported. To request support for other platforms, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 * The user who gives the CSPM integration AWS permissions must be an AWS account `admin`.
 
 
 
 ## Set up CSPM for AWS [cspm-setup]
 
-You can set up CSPM for AWS either by enrolling a single cloud account, or by enrolling an organization containing multiple accounts. Either way, first you will add the CSPM integration, then enable cloud account access. 
+You can set up CSPM for AWS either by enrolling a single cloud account, or by enrolling an organization containing multiple accounts. Either way, you must first add the CSPM integration, then enable cloud account access. 
 
 Two deployment technologies are available: agentless and agent-based. 
 
@@ -50,12 +50,9 @@ Two deployment technologies are available: agentless and agent-based.
 8. Next, you’ll need to authenticate to AWS. The following methods are available:
 
     * Option 1: Cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` 
-      * To use a pre-existing cloud connector for this deployment, select it under **Existing connection**. 
-      * To use a new cloud connector: under **New connection**, expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
+      * To use a pre-existing cloud connector for this deployment, select **Existing connection** then the cloud connector's name. 
+      * To use a new cloud connector: under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
 
-      ::::{important}
-      In order to use cloud connector for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
-      ::::
 
     * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the instructions to automatically create the necessary credentials using CloudFormation.
 
