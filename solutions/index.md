@@ -17,24 +17,25 @@ description: Learn about Elastic solutions for search, observability, and securi
 New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the {{stack}}, its components, and your deployment options.
 :::
 
-Elastic helps you build applications for three main use cases: search, observability, and security. You can use platform-level capabilities through APIs, pre-built solutions with integrated UIs, or combine both approaches.
+Elastic helps you build applications for three main use cases: search, observability, and security. You can work directly with platform capabilities through APIs, use pre-built solutions with integrated UIs, or combine both approaches.
+
+This section is organized into two parts:
+
+- [**Search use case**](#search-use-case): Core {{es}} features accessed through APIs and client libraries, available across all [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type). Use these when you need programmatic control or the flexibility to build custom applications.
+- [**Solutions and project types**](#solutions-and-project-types): Pre-built UI tools and workflows for specific use cases, available on {{serverless-full}} as project types or on other deployments as solutions. Use these to get started quickly with pre-configured workflows, sensible defaults, and tailored UI affordances.
 
 ## Search use case
 
-The [Search use case](/solutions/search.md) documents core {{es}} search capabilities. These capabilities work identically across all Elastic [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) and are accessed through {{es}} APIs and client libraries. You can build custom implementations using Elastic's APIs and features without using solutions.
+The [Search use case](/solutions/search.md) documents core {{es}} search capabilities available across all Elastic [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type).
 
 ## Solutions and project types
 
-Solutions are available as a fully managed Serverless project, a managed service on Elastic Cloud Hosted, or a self-managed deployment.
+Solutions provide integrated UI tools and workflows with sensible defaults, in addition to core platform capabilities. They help you get started quickly with common use cases.
 
-Solutions provide pre-built UI tools and workflows with sensible defaults for specific use cases, which build on top of the core platform capabilities. These help you get started quickly with common implementations and can be customized to meet your specific needs.
+On {{serverless-full}}, select a project type when creating a project. On {{ech}} or self-managed deployments, configure solutions in deployment settings.
 
-On {{serverless-full}}, you select a project type when creating your project.
-
-On non-serverless deployments, solutions are configured in your deployment settings. 
-
-| Solution/Project | Description | Get started |
-| --- | --- | --- |
-| **Elasticsearch** | UI tools for building search applications | [Elasticsearch solution](/solutions/elasticsearch-solution-project.md) |
-| **Observability** | Monitor and troubleshoot applications and infrastructure | [Observability solution](/solutions/observability.md) |
-| **Security** | Protect applications and infrastructure from threats | [Security solution](/solutions/security.md) |
+| Solution/Project | Description |
+| --- | --- |
+| [**Elasticsearch**](/solutions/elasticsearch-solution-project.md) | UI tools for building search applications: Agent Builder, Playground, Search Applications, Query Rules |
+| [**Observability**](/solutions/observability.md) | Monitor and troubleshoot applications and infrastructure |
+| [**Security**](/solutions/security.md) | Protect applications and infrastructure from threats |
