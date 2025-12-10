@@ -15,7 +15,7 @@ Tables work with any type of data: numeric values, strings, dates, and more. You
 You can create tables in {{kib}} using [**Lens**](../lens.md).
 
 
-![A table visualization in Kibana](/explore-analyze/images/table-charts.png)
+![A table visualization in {{kib}}](/explore-analyze/images/table-charts.png)
 
 ## Build a table
 
@@ -107,7 +107,7 @@ To add a formula to a table:
 3. Enter your formula using the available functions and fields.
 4. Customize the column name and formatting.
 
-Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula examples and the {icon}`documentation` **Formula reference** available from Lens.
+Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula examples, including time-shifting comparisons and mathematical operations, and the {icon}`documentation` **Formula reference** available from Lens.
 
 
 ## Table settings [settings]
@@ -262,4 +262,3 @@ The following examples show various configuration options you can use for buildi
          * **Value format**: `Percent`, 2 decimals
          * **Color by value**: Dynamic (green for positive growth, red for negative)
          * **Text alignment**: `Right`
-
