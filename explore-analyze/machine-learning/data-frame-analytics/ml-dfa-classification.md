@@ -38,7 +38,7 @@ Before you can use the {{stack-ml-features}}, there are some configuration requi
 
 If possible, prepare your input data such that it has less classes. A {{classanalysis}} with many classes takes more time to run than a binary {{classification}} job. The relationship between the number of classes and the runtime is roughly linear.
 
-You might also need to [{{transform}}](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{classification}}.
+You might also need to [transform](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{classification}}.
 
 To learn more about how to prepare your data, refer to [the relevant section](ml-dfa-overview.md#prepare-transform-data) of the supervised learning overview.
 

@@ -488,6 +488,7 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
+              - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:
               - file: security/network-security-policies.md
@@ -678,6 +679,7 @@ toc:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
+              - file: monitor/autoops/autoops-disable-metrics-collection.md
               - file: monitor/autoops/cc-manage-users.md
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
                 children:
