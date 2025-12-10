@@ -61,7 +61,7 @@ anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
     In the **Anomaly filter** field, enter a KQL query that specifies to only alert when either or both happen:
     
     * One or more partitioning or influencers fields in the anomaly results match the specified conditions
-    * The actual or typical scores in the anomalies match specified conditions
+    * The actual or typical scores in the anomalies match the specified conditions
 
     For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with `partition_field_value: "404"`.
 
