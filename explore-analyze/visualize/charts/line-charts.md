@@ -131,52 +131,26 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
 
 ## Line chart examples
 
-**Website response time (p95) with target**
-:   Monitor user experience and enforce SLO:
+**Average RAM per host**
+:   Monitoring the average of RAM over time for the first four hosts:
 
-   * **Title**: "Response time (p95)"
-   * **X-axis**: `Date histogram` on `@timestamp`
-   * **Y-axis**: `percentile(response_time, percentile=95)`
-     * **Format**: `Duration`
-   * **Reference line**: `200` ms labeled `SLO`
+1. Drag `@timestamp` to the **Horizontal axis** and set the following settings: 
+   * **Functions**: `Date histogram`
+   * **Minimum interval**: `Hour`
+2. Drag `machine.ram` to the **Vertical axis** and set the following settings:
+   * **Functions**: : `Moving average`
+   * **Value format**: `Duration`
+3. Save your chart.
 
-   ![Response time with SLO reference line](../../images/kibana-lens_referenceLine_7.16.png "=70%")
+![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
 
-**Requests throughput with moving average**
-:   Smooth per-minute variation while preserving overall trend:
+**Unique IPs over time**
+:   Visualizing unique IP sessions throughout the day:
 
-   * **Title**: "Requests per minute"
-   * **X-axis**: `Date histogram`
-   * **Y-axis (raw)**: `counter_rate(requests)`
-   * **Y-axis (smoothed)**: `moving_average(counter_rate(requests), window=5)`
-   * **Legend**: "Raw", "5-interval MA"
+   * **Horizontal axis**: `Date histogram`
+   * **Vertical axis**: `counter_rate(requests)`
 
-   ![Metric over time](../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png "=70%")
-
-**Error rate versus previous week**
-:   Quickly assess regressions:
-
-   * **Title**: "Error rate (now versus previous week)"
-   * **X-axis**: `Date histogram`
-   * **Series A**: `count(kql='response.code >= 500') / count()`
-     * **Format**: `Percent`
-   * **Series B**: `count(kql='response.code >= 500', shift='1w') / count(shift='1w')`
-     * **Format**: `Percent`
-   * **Legend**: "Current", "Previous (1w)"
-
-   ![Multiple series comparison](../../images/kibana-lens_lineChartMultipleDataSeries_7.16.png "=70%")
-
-**Throughput by top countries**
-:   Break down by top N categories:
-
-   * **Title**: "Requests per minute by country"
-   * **X-axis**: `Date histogram`
-   * **Y-axis**: `counter_rate(requests)`
-   * **Break down by**: `geo.country`
-     * **Number of values**: `10`
-     * **Rank by**: `Custom` > `Count` > `Records`
-
-   ![Multiple series by breakdown](../../images/kibana-lens_lineChartMultipleDataSeries_7.16.png "=70%")
+   ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
 
 ---
 
