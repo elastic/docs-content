@@ -46,7 +46,6 @@ In intervals configured by [`data_streams.lifecycle.poll_interval`](elasticsearc
 ::::{important}
 We use the `generation_time` instead of the creation time because this ensures that all data in the backing index have passed the retention period. As a result, the retention period is not the exact time data gets deleted, but the minimum time data will be stored.
 ::::
-å
 ::::{note}
 Steps `2-4` apply only to backing indices that are not already managed by {{ilm-init}}, meaning that these indices either do not have an {{ilm-init}} policy defined, or if they do, they have [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) set to `false`.
 ::::
