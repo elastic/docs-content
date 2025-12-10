@@ -16,7 +16,7 @@ It requires remote_type substitution to be defined
 
     * **Remote cluster name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
 
-      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when [adding the API key](#configure-local-cluster) in the Cloud UI.
 
     * **Remote address**: This value can be found on the **Security** page of the {{remote_type}} deployment you want to use as a remote. Copy the **Proxy address** from the **Remote cluster parameters** section.
 

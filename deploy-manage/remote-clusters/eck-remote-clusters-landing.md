@@ -40,7 +40,8 @@ Use one of the following guides depending on how the local and remote clusters a
 Connect from ECK-managed clusters:
 
   - [Connect to {{es}} clusters in the same ECK environment](./eck-remote-clusters.md)
-  - [Connect to external {{es}} clusters or deployments](./eck-remote-clusters-to-external.md)
+  - [Connect to a different ECK environment](./eck-remote-clusters-to-other-eck.md)
+  - [Connect to external clusters or deployments](./eck-remote-clusters-to-external.md)
 
 Connect to ECK-managed clusters from external clusters:
 

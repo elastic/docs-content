@@ -45,7 +45,7 @@ This section explains how to configure a deployment to connect remotely to self-
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Configure the local deployment [ece_configure_the_local_deployment_2]
+### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::

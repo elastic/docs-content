@@ -61,7 +61,7 @@ These steps describe how to configure remote clusters between an {{es}} cluster 
 :::
 
 
-### Configure the local deployment [ece_configure_the_local_deployment_2]
+### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::

@@ -47,7 +47,7 @@ If network security filters are applied to the remote cluster on ECE, the remote
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Configure the local deployment [ece_configure_the_local_deployment]
+### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::

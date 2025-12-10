@@ -48,7 +48,7 @@ If network security filters are applied to the remote cluster, the remote cluste
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Add the cross-cluster API key to the keystore of the local deployment [ece_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment]
+### Add the cross-cluster API key to the keystore of the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::

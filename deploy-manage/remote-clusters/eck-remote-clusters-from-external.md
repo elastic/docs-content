@@ -1,5 +1,5 @@
 ---
-navigation_title: From a self-managed cluster
+navigation_title: To {{eck}}
 applies_to:
   deployment:
     eck: ga
@@ -11,20 +11,21 @@ sub:
   remote_type: ECK-managed
 ---
 
-# Connect a self-managed {{es}} cluster to an ECK-managed cluster [self-to-eck-remote-clusters]
+# Connect self-managed clusters to {{eck}} clusters [self-to-eck-remote-clusters]
 
-These steps describe how to configure a remote cluster connection to an ECK-managed {{es}} cluster from another cluster running outside the Kubernetes cluster. Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+::::{include} _snippets/eck_rcs_intro.md
+::::
+
+These steps describe how to configure a remote cluster connection from a self-managed {{es}} cluster, to an ECK-managed cluster.
+
+Once that’s done, you’ll be able to [run {{ccs-init}} queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up {{ccr-init}}](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 :::{include} _snippets/terminology.md
 :::
 
-If the local cluster is part of an {{ech}} or {{ece}} deployment, and the remote cluster is managed by ECK, refer to:
-- [](./ec-enable-ccs-for-eck.md)
-- [](./ece-enable-ccs-for-eck.md)
+For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md#eck-rcs-setup).
 
-For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md).
-
-## Allow the remote connection [ec_allow_the_remote_connection_4]
+## Allow the remote connection
 
 :::{include} _snippets/allow-connection-intro.md
 :::
@@ -36,7 +37,7 @@ For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](.
 :::{include} _snippets/apikeys-intro.md
 :::
 
-#### Prerequisites and limitations [ec_prerequisites_and_limitations_4]
+#### Prerequisites and limitations
 
 :::{include} _snippets/apikeys-prerequisites-limitations.md
 :::
@@ -56,12 +57,12 @@ For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](.
 :::{include} _snippets/eck_rcs_retrieve_ca.md
 :::
 
-#### Create a cross-cluster API key on the remote cluster [ec_create_a_cross_cluster_api_key_on_the_remote_deployment_4]
+#### Create a cross-cluster API key on the remote cluster
 
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-#### Configure the local deployment [ec_configure_the_local_deployment_2]
+#### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
@@ -73,58 +74,50 @@ For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](.
 
 ::::::{tab-item} TLS certificate (deprecated)
 
-#### Make sure both clusters trust each other’s certificate authority [k8s_make_sure_both_clusters_trust_each_others_certificate_authority]
+:::{include} _snippets/tlscerts-intro.md
+:::
 
-When using TLS certificate–based authentication, the first step is to establish mutual trust between the clusters at the transport layer. This requires exchanging and trusting each cluster’s transport certificate authority (CA):
-* The CA of the remote (ECK-managed) cluster must be added as a trusted CA in the local cluster,
-* The local cluster’s transport CA must be added as a trusted CA in the remote cluster.
+#### Make sure both clusters trust each other's certificate authority [mtls-setup-eck]
 
-::::{note}
-While it is technically possible to configure remote cluster connections using earlier versions of {{es}}, this guide only covers the setup for {{es}} 7.6 and later. The setup process is significantly simplified in {{es}} 7.6 due to improved support for the indirection of Kubernetes services.
-::::
+:::{include} _snippets/eck_rcs_mtls_intro.md
+:::
 
-Consider the following example:
+In this example:
 
-* `remote-cluster` resides inside Kubernetes and is managed by ECK
-* `local-cluster` is not hosted inside the same Kubernetes cluster as `remote-cluster` and might not even be managed by ECK
+* The remote cluster resides inside Kubernetes and is managed by ECK
+* The local cluster is a self-managed cluster running outside of Kubernetes.
 
 To allow mutual TLS authentication between the clusters:
 
-1. The certificate authority (CA) used by ECK to issue certificates for the {{es}} transport layer is stored in a secret named `<cluster_name>-es-transport-certs-public`. Extract the certificate for `remote-cluster` as follows:
+1. Extract and save the transport CAs of both clusters:
 
-    ```sh
-    kubectl get secret remote-cluster-es-transport-certs-public \
-    -o go-template='{{index .data "ca.crt" | base64decode}}' > remote.ca.crt
-    ```
+    1. For the ECK-managed cluster:
 
-    ::::{note}
-    Beware of copying the source secret as-is into a different namespace. Check [Common Problems: Owner References](../../troubleshoot/deployments/cloud-on-k8s/common-problems.md#k8s-common-problems-owner-refs) for more information.
-    ::::
+        :::{include} _snippets/eck_rcs_certs_retrieve_ca.md
+        :::
 
-    ::::{note}
-    CA certificates are automatically rotated after one year by default. You can [configure](../deploy/cloud-on-k8s/configure-eck.md) this period. Make sure to keep the copy of the certificates secret up-to-date.
-    ::::
+    2. For the self-managed cluster (self-managed CA pending) take the transport CA from any of the nodes of the cluster. You can save it as `self-managed_ca.crt`.
 
-2. Configure `local-cluster` to trust the transport CA of the remote cluster:
+2. Configure the self-managed cluster to trust the transport CA of the ECK cluster, by adding the CA to the list of CAs in [`xpack.security.transport.ssl.certificate_authorities`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#_pem_encoded_files_3).
 
-    If `local-cluster` is hosted outside of Kubernetes, take the CA certificate that you extracted previously and add it to the list of CAs in [`xpack.security.transport.ssl.certificate_authorities`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#_pem_encoded_files_3).
-
-    If `local-cluster` is also managed by an ECK instance, proceed as follows:
+3. Configure the ECK managed cluster to trust the transport CA of the self-managed cluster:
 
     1. Create a config map with the CA certificate you extracted previously:
 
         ```sh
-        kubectl create configmap remote-certs --from-file=ca.crt=remote.ca.crt
+        kubectl create configmap remote-certs --from-file=ca.crt=<self-managed_ca.crt> <1>
         ```
+        1. Substitute `<self-managed_ca.crt>` with the name of the file containing the transport CA of the self-managed cluster.       
 
-    2. Use this config map to configure `remote-cluster`'s CA as a trusted CA in `local-cluster`:
+    2. Configure the {{es}} resource manifest to trust the config map's CA through the `spec.transport.tls.certificate_authorities` setting:
 
-        ```yaml
+        ```yaml subs=true
         apiVersion: elasticsearch.k8s.elastic.co/v1
         kind: Elasticsearch
         metadata:
-          name: local-cluster
+          name: <remote-cluster-name>
         spec:
+          version: {{version.stack}}
           transport:
             tls:
               certificateAuthorities:
@@ -132,10 +125,7 @@ To allow mutual TLS authentication between the clusters:
           nodeSets:
           - count: 3
             name: default
-          version: 8.16.1
         ```
-    
-3. Repeat the previous steps to configure `remote-cluster` to trust the CA of the local cluster.
 
 #### Configure external access to the transport interface of the remote cluster
 
@@ -150,9 +140,13 @@ To allow mutual TLS authentication between the clusters:
 :::{include} _snippets/eck_rcs_connect_intro.md
 :::
 
+:::{admonition} About connection modes
+This guide uses the `proxy` connection mode, connecting to the remote cluster through the Kubernetes service abstraction. Refer to [connection modes](./connection-modes.md) documentation for details on each mode and their connectivity requirements.
+:::
+
 ### Using {{kib}}
 
-:::{include} _snippets/rcs-kibana-api-snippet-self.md
+:::{include} _snippets/rcs-self-kibana-to-self.md
 :::
 
 ### Using the {{es}} API

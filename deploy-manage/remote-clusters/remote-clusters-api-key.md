@@ -51,6 +51,8 @@ If a remote cluster is part of an {{ech}} (ECH) deployment, the remote cluster s
 
 ### On the remote cluster [remote-clusters-security-api-key-remote-action]
 
+By default, the remote cluster server interface is not enabled on self-managed clusters. Follow the steps below to enable the interface and create an API key on the remote cluster.
+
 #### Enable and secure the remote cluster server interface
 
 :::{include} _snippets/self_rcs_enable.md

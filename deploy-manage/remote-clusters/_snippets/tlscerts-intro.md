@@ -1,0 +1,1 @@
+Follow these steps to configure the [TLS certificate security model](/deploy-manage/remote-clusters/security-models.md#tls-certificate-authentication) for remote clusters. If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).

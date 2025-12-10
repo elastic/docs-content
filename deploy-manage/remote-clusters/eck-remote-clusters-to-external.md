@@ -12,7 +12,7 @@ sub:
 
 # Connect an ECK-managed cluster to an external cluster or deployment
 
-These steps describe how to configure a remote cluster connection from an {{es}} cluster managed by {{eck}} (ECK) to an external {{es}} cluster, where external refers to any cluster not managed by the same ECK operator. The remote cluster can be self-managed, part of an {{ech}} (ECH) or {{ece}} (ECE) deployment, or managed by a different ECK operator.
+These steps describe how to configure a remote cluster connection from an {{es}} cluster managed by {{eck}} (ECK) to an external {{es}} cluster, not managed by ECK. The remote cluster can be self-managed, or part of an {{ech}} (ECH) or {{ece}} (ECE) deployment.
 
 Once the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
@@ -21,19 +21,21 @@ Once the connection is established, you’ll be able to [run CCS queries from {{
 
 In this scenario, most of the configuration must be performed manually, as {{eck}} cannot orchestrate the setup across both clusters. For fully automated configuration between ECK-managed clusters, refer to [Connect to {{es}} clusters in the same ECK environment](./eck-remote-clusters.md).
 
-For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md#eck-rcs-setup).
+For other remote cluster scenarios with ECK, such as connecting clusters in different ECK environments, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md#eck-rcs-setup).
 
-% refine this note
-:::{note}
-This guide uses API key authentication as the [security model](./security-models.md), which is the recommended option and replaces the deprecated TLS certificate–based model.  
+## Allow the remote connection
 
-If you need to configure TLS certificate authentication for this scenario, refer to the steps in [Connect from an external cluster](./eck-remote-clusters-from-external.md) and create the remote in the opposite direction. The mutual-TLS trust setup steps the similar.
+:::{include} _snippets/apikeys-intro.md
 :::
 
-## Allow the remote connection [ec_allow_the_remote_connection_4]
+:::{note}
+For the deprecated [TLS certificate–based authentication](./security-models.md#tls-certificate-authentication) model, the steps to allow the remote connection and establish mutual trust between clusters are effectively the same regardless of which cluster acts as the local or remote one. Once trust is established, remote connections can be configured in either direction.
 
-% consider replacing this intro
-:::{include} _snippets/apikeys-intro.md
+Because of this, if you want to configure TLS certificate–based authentication for any of the scenarios covered in this guide, refer to:
+
+* [](./ec-enable-ccs-for-eck.md)
+* [](./ece-enable-ccs-for-eck.md)
+* [](./eck-remote-clusters-from-external.md)
 :::
 
 ### Enable the remote cluster server interface on the remote cluster [enable-rcs]
@@ -64,42 +66,23 @@ Depending on the type of certificate used by the ECE proxies or load-balancing l
   4. Save the file as `.crt`, and keep it available for the trust configuration on the local cluster.
 ::::::
 
-::::::{applies-item} eck:
-If the remote cluster is managed by a different ECK operator, it must be prepared to accept incoming connections.
-
-1. **Enable the remote cluster server**
-
-    :::{include} _snippets/eck_rcs_enable.md
-    :::
-
-2. **Expose the remote cluster server interface**
-
-    :::{include} _snippets/eck_rcs_expose.md
-    :::
-
-3. **Retrieve the certificate authority (CA)**
-
-    :::{include} _snippets/eck_rcs_retrieve_ca.md
-    :::
-
-::::::
 ::::::{applies-item} self:
 
-1. **Enable and secure the remote cluster server**
+#### Enable and secure the remote cluster server
 
-    :::{include} _snippets/self_rcs_enable.md
-    :::
+By default, the remote cluster server interface is not enabled on self-managed clusters. Follow the steps below to enable the interface:
 
-2. **Retrieve the certificate authority (CA)**
+:::{include} _snippets/self_rcs_enable.md
+:::
+
+#### Retrieve the certificate authority (CA)
 
     If the remote cluster server is exposed with a certificate signed by private certificate authority (CA), save the corresponding `ca.crt` file. It is required when configuring trust on the local cluster.
 
 ::::::
 :::::::
 
-
-
-### Create a cross-cluster API key on the remote cluster [ec_create_a_cross_cluster_api_key_on_the_remote_deployment_4]
+### Create a cross-cluster API key on the remote cluster
 
 :::{include} _snippets/apikeys-create-key.md
 :::
@@ -210,7 +193,7 @@ If the remote cluster is part of an {{ech}} deployment, follow the **The CA is p
     3. Must match the name of the ConfigMap created previously.
 ::::
 
-## Connect to the remote cluster [ec_connect_to_the_remote_cluster_4]
+## Connect to the remote cluster
 
 On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
@@ -305,7 +288,7 @@ In the response, verify that connected is `true`:
 }
 ```
 
-## Configure roles and users [ec_configure_roles_and_users_4]
+## Configure roles and users
 
 :::{include} _snippets/configure-roles-and-users.md
 :::
