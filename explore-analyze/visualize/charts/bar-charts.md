@@ -140,30 +140,62 @@ Time-based bar charts are great for:
 For continuous trends, consider using a line chart instead.
 ::::
 
-### Add reference lines and annotations [reference-lines]
-
-% Need to write instructions for annotations. They were not auto-created.
+### Add reference lines [add-reference-lines]
 
 Reference lines help viewers understand context by showing thresholds, goals, or averages directly on your bar chart.
 
 To add a reference line:
 
 1. Create a **Bar** chart visualization.
-2. Click **Add layer** select the **Reference lines** layer type, then choose the {{data-source}}.
+2. Click **Add layer**, select the **Reference lines** layer type, then select the {{data-source}}.
 3. (Optional) Configure the vertical left axis. By default, **Static value** is selected and a reference line is placed at a fixed coordinate on the chart’s vertical left axis. You can also configure the **Reference line value**, which sets the numeric position of the x-axis line. To have the value computed instead, select **Quick function** or **Formula**.
-4. Configure the refernece line's appearance:
-   - **Name**: The name of the reference line that you're creating  
-   - **Value format**: Controls how any label for the line is displayed (default formatting or other available numeric/date formats)
-   - **Text decoration**: Selects whether the label shows nothing or the line’s name
-   - **Icon decoration**: Allows adding a glyph next to the label
-   - **Line**: Sets stroke width (1 px) plus pattern (solid or dashed)
-   - **Fill**: Decides whether to shade the area above or below the reference line. None leaves the area unfilled
-   - **Color**: Sets the line (and fill) color
+4. Configure the reference line's appearance:
+   - **Name**: The name of the reference line. 
+   - **Value format**: Controls how any label for the line is displayed (default formatting or other available numeric/date formats).
+   - **Text decoration**: Selects whether the label shows nothing or the line’s name.
+   - **Icon decoration**: Allows adding an icon next to the label.
+   - **Line**: Sets stroke width (1 px) plus pattern (solid or dashed).
+   - **Fill**: Decides whether to shade the area above or below the reference line. None leaves the area unfilled.
+   - **Color**: Sets the line (and fill) color.
 
 Common reference line uses:
 - **Goals**: Show sales targets, SLA thresholds, or performance benchmarks
 - **Averages**: Display mean or median values for comparison
 - **Limits**: Indicate maximum capacity or acceptable ranges
+
+### Add annotations [add-annotations]
+
+```{applies_to}
+stack: preview
+serverless: preview
+```
+
+Annotations are a powerful way to add context to your visualizations by marking important events directly on your charts, helping viewers understand the relationship between your data and real-world events. They appear as vertical lines or bands across your visualization, making it easy to correlate data patterns with known events.
+
+To add an annotation:
+
+1. Create a **Bar** chart visualization.
+2. Click **Add layer**, then select the **Annotations** layer type. Create a new annotation or select an existing one from your library.
+3. For new annotations, select a {{data-source}}. It can be any {{es}} index containing timestamp data.
+4. Click the newly-created annotation to edit it. 
+5. Select the annotation's placement. It can be a static date that you choose or a based on a custom query. Choose a static date if you want to manually mark a specific point on the bar chart. Choose a query-based annotation to dynamically mark events based on data. 
+6. Customize how the annotation appears:
+   - **Name**: The name of the annotation. 
+   - **Icon decoration**: Allows adding an icon next to the label.
+   - **Text decoration**: Selects whether the label shows nothing or the annotation's name.
+   - **Line**: Sets stroke width (1 px) plus pattern (solid or dashed).
+   - **Color**: Sets the line color.
+   - **Hid annotation**: Hides or displays the annotation. By default, this setting is turned off and the annotation is displayed.
+   - **Tooltip**: Adds additional fields to the annotation label. 
+6. Click **Close** to apply the configurations. Your bar chart will now display the annotations at the appropriate time points.
+
+To edit existing annotations click on them in the annotations list. If you no longer need an annotation, you can delete it.
+
+Common annotation uses:
+- Marking deployment events
+- Highlighting system maintenance windows
+- Indicating configuration changes
+- Marking business events that might impact metrics
 
 ### Use percentage mode for relative comparisons [percentage-mode]
 
