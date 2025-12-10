@@ -74,7 +74,7 @@ Consider including the following when they add value:
 
 ## Template
 
-To get started on writing your how-to guide, use the [how-to template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md).
+To get started writing your how-to guide, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md).
 
 % ## Examples
 
