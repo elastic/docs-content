@@ -38,6 +38,6 @@ Solutions are available as a fully managed {{serverless-short}} project, a manag
 
 | Solution/Project | Description |
 | --- | --- |
-| [**Elasticsearch**](/solutions/elasticsearch-solution-project.md) | UI tools for building search applications: Agent Builder, Playground, Search Applications, Query Rules |
+| [**Elasticsearch**](/solutions/elasticsearch-solution-project.md) | UI tools for building search applications |
 | [**Observability**](/solutions/observability.md) | Monitor and troubleshoot applications and infrastructure |
 | [**Security**](/solutions/security.md) | Protect applications and infrastructure from threats |
