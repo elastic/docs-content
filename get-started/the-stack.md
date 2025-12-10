@@ -45,7 +45,7 @@ It also includes multiple query languages, aggregations, and robust features for
 
 {{es}} is built to be a resilient and scalable distributed system.
 It runs as a cluster of one or more servers, called nodes.
-When you add data to an index, it's divided into pieces called shards, which are spread across the various nodes in the cluster.
+When you add data to an index, which is the fundamental unit of storage in {{es}}, it's divided into pieces called shards, which are spread across the various nodes in the cluster.
 This architecture allows {{es}} to handle large volumes of data and ensures that your data remains available even if a node fails.
 If you use {{serverless-full}}, it has a unique [Search AI Lake cloud-native architecture](https://www.elastic.co/cloud/serverless/search-ai-lake) and automates the nodes, shards, and replicas for you.
 
