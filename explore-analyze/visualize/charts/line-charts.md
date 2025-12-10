@@ -63,8 +63,11 @@ For more chart configuration options, go to the [Line chart settings](#settings)
 
 ## Advanced line scenarios
 
-### Compare with a previous period [line-previous-period]
-Compare the current value with a prior time range using time shift to quickly see deltas.
+### Compare trends between the current and previous periods [line-previous-period]
+
+In Line charts, you can enable time shift to compare the current value with a prior time range and identify deltas.
+
+![Example Lens line chart current previous](../../images/kibana-line-current-previous.png)
 
 1. Create a line series for the current value, for example: `average(response_time)`.
 2. Add a second series with a time shift, for example: `average(response_time, shift='1w')`.
@@ -80,7 +83,10 @@ You can also compute the relative change as a separate series using a formula, f
 :::: 
 
 ### Highlight thresholds with reference lines [line-reference-lines]
+
 Use reference lines to indicate SLOs or alert thresholds.
+
+![Example Lens line chart reference lines](../../images/kibana-line-reference-lines.png)
 
 1. In the chart settings, add a **Reference line** (for example, `200` ms or `0.95`).
 2. Give it a label (for example, `Target` or `SLO`), choose a color, and optionally a band.
@@ -140,15 +146,24 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
 2. Drag `machine.ram` to the **Vertical axis** and set the following settings:
    * **Functions**: : `Moving average`
    * **Value format**: `Duration`
-3. Save your chart.
+3. In the **Breakdwon** panel, set the following settings:
+   * **Functions**: `Top values`
+   * **Number of values**: `4`
+4. Save your chart.
 
 ![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
 
 **Unique IPs over time**
 :   Visualizing unique IP sessions throughout the day:
 
-   * **Horizontal axis**: `Date histogram`
-   * **Vertical axis**: `counter_rate(requests)`
+1. Drag `@timestamp` to the **Horizontal axis** and set the following settings: 
+   * **Functions**: `Date histogram`
+   * **Minimum interval**: `Hour`
+2. Drag `host.keyword` to the **Vertical axis** and set the following settings:
+   * **Functions**: : `Unique count`
+   * **Value format**: `Bytes (1024)`
+   * **Decimals**: `0`
+4. Save your chart.
 
    ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
 
