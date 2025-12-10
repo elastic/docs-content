@@ -14,7 +14,7 @@ sub:
 
 These steps describe how to configure a remote cluster connection between {{es}} clusters handled by different {{eck}} (ECK) operators.
 
-Once the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+After the connection is established, you’ll be able to [run {{ccs-init}} queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up {{ccr-init}}](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 :::{include} _snippets/terminology.md
 :::
