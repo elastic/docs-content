@@ -63,7 +63,6 @@ For a deeper understanding of search concepts and techniques, refer to the [Sear
 
 ## Related reference
 
-* [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
-* [Content connectors](elasticsearch://reference/search-connectors/index.md)
-* [{{es}} API documentation]({{es-apis}})
 * [Search use case documentation](/solutions/search.md)
+* [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
+* [{{es}} API documentation]({{es-apis}})
