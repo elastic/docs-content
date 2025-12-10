@@ -73,7 +73,7 @@ Use {{kib}} to explore, manage, and visualize the data that's stored in {{es}} a
 
 {{kib}} provides the user interface for all Elastic [solutions](/get-started/introduction.md) and {{serverless-short}} projects.
 It's a powerful tool for visualizing and analyzing your data and for managing and monitoring the {{stack}}.
-Although you can use {{es}} without it, {{kib}} is required for most use cases and is included by default when you deploy {{serverless-full}}.
+Although you can use {{es}} without it, {{kib}} is required for most use cases and is included by default when you deploy using some deployment types, including {{serverless-full}}.
 
 With {{kib}}, you can:
 
