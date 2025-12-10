@@ -25,7 +25,9 @@ The [Search use case](/solutions/search.md) documents core {{es}} search capabil
 
 ## Solutions and project types
 
-Solutions and project types provide pre-built UI tools and workflows with sensible defaults for specific use cases, which build on top of the core platform capabilities. These help you get started quickly with common implementations and can be customized to meet your specific needs.
+Solutions are available as a fully managed Serverless project, a managed service on Elastic Cloud Hosted, or a self-managed deployment.
+
+Solutions provide pre-built UI tools and workflows with sensible defaults for specific use cases, which build on top of the core platform capabilities. These help you get started quickly with common implementations and can be customized to meet your specific needs.
 
 On {{serverless-full}}, you select a project type when creating your project.
 
