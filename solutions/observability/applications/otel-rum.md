@@ -14,16 +14,16 @@ products:
 # OpenTelemetry for Real User Monitoring (RUM)
 
 :::{important}
-Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in **Technical Preview** and should not be used in production environments. This feature may be changed or removed in a future release and has [known limitations](#known-limitations). Features in preview are not subject to support SLAs like GA features.
+Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in technical preview and should not be used in production environments. This feature may be changed or removed in a future release and has [known limitations](#known-limitations). Features in preview are not subject to support SLAs like GA features.
 :::
 
 You can instrument your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
 
 ## Before you begin [before-you-begin]
 
-You need a OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure an [EDOT Collector in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
+You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure an [EDOT Collector in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
 
-After you have prepared the OTLP endpoint, set up a reverse proxy to forward the telemetry from your web application origin to the Collector. You need a reverse proxy for these reasons:
+After you have prepared the OTLP endpoint, set up a reverse proxy to forward the telemetry from your web application origin to the Collector. You need a reverse proxy for the following reasons:
 
 - EDOT Collector requires an `Authorization` header with an ApiKey to accept OTLP exports. Setting up the required key in a web application makes it publicly available, which is not advisable. A reverse proxy can help you manage this key securely.
 - If you have set up your own EDOT Collector, it's likely to have a different origin than your web application. In this scenario you have to set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for the web application in the EDOT Collector configuration file. This procedure can be cumbersome if you have to manage many applications.
@@ -87,7 +87,7 @@ To instrument your web application with OpenTelemetry in the browser, you need t
 The following starter script is in plain JavaScript. If you use TypeScript, you can adapt this script by changing the file extension to `.ts` and adding the necessary type definitions. OpenTelemetry packages are written in TypeScript, so they include the appropriate type definitions for TypeScript.
 
 :::{note}
-Each signal configuration is independent of the others and be configured independently. The OpenTelemetry API defaults to no-op providers for traces, metrics, and logs.
+Each signal configuration is independent of the others and has to be configured independently. The OpenTelemetry API defaults to no-op providers for traces, metrics, and logs.
 :::
 
 ::::::{stepper}
@@ -192,7 +192,7 @@ npm install @opentelemetry/sdk-trace-base\
       @opentelemetry/context-zone
 ```
 
-After the dependencies are installed, configure and register a tracer provider with the following code:
+After the dependencies are installed, configure and register a TracerProvider with the following code:
 
 :::{dropdown} Tracer provider configuration
 ```javascript
@@ -241,7 +241,7 @@ To install the dependencies, run the following command:
 npm install @opentelemetry/sdk-metrics @opentelemetry/exporter-metrics-otlp-http
 ```
 
-After the dependencies are installed, configure and register a meter provider with the following code:
+After the dependencies are installed, configure and register a MeterProvider with the following code:
 
 :::{dropdown} Meter provider configuration
 ```javascript
@@ -277,7 +277,7 @@ Like traces and metrics, configure a [LoggerProvider](https://opentelemetry.io/d
 
 For this step, you need the following dependencies:
 
-- `@opentelemetry/api-logs`: This package contains the logs API. This API is not included yet in the generic API package because logs are still experimental.
+- `@opentelemetry/api-logs`: This package contains the logs API. This API is not yet included in the generic API package because logs are still experimental.
 - `@opentelemetry/sdk-logs`: This package contains all the required components to set up logs.
 - `@opentelemetry/exporter-logs-otlp-http`: This package contains the exporter for the HTTP/JSON protocol.
 
@@ -287,7 +287,7 @@ To install the dependencies, run the following command:
 npm install @opentelemetry/api-logs @opentelemetry/sdk-logs @opentelemetry/exporter-logs-otlp-http
 ```
 
-After the dependencies are installed, configure and register a logger provider with the following code:
+After the dependencies are installed, configure and register a LoggerProvider with the following code:
 
 :::{dropdown} Logger provider configuration
 ```javascript
@@ -356,7 +356,7 @@ registerInstrumentations({
 
 :::::{step} Complete the setup script
 
-All these pieces together give you a complete setup of all the signals for your web site or application. For convenience, it's better to have it in a separate file which can be named `telemetry.js`. This file should export a function that accepts the configuration allowing you to reuse the setup across different UIs.
+All these pieces together give you a complete setup of all the signals for your web site or application. For convenience, it's better to have it in a separate file which can be named, for example, `telemetry.js`. This file should export a function that accepts the configuration allowing you to reuse the setup across different UIs.
 
 To install all the dependencies needed for the complete setup, run the following command:
 
@@ -482,7 +482,7 @@ With the setup script in a single file, you can now apply it to your web applica
 
 ### Import the code 
 
-This approach is recommended and specially if you're using a web framemork. The build tooling manages the dependencies and integrates the code into the application bundle. This approach increases the size of your application bundle.
+This approach is recommended, especially if you're using a web framework. The build tooling manages the dependencies and integrates the code into the application bundle. However, this approach increases the size of your application bundle.
 
 For example, if you're using Webpack, you can import the code like this:
 
@@ -502,7 +502,7 @@ initOpenTelemetry({
 ```
 :::
 
-If you're using a framework there are some suitable places for it depending on which one you're using:
+If you're using a framework, there are some suitable places for it, depending on which one you're using:
 
 | Framework | Method |
 |-----------|-------------|
@@ -564,7 +564,7 @@ export default defineConfig({
 Place the file within the application's assets folder and include it in the `<head>` section of the HTML page. Assuming the files are in a folder named `js` you can load the telemetry file in a synchronous or asynchronous way.
 
 ::::{dropdown} Example: Synchronous / Blocking pattern
-Add a `<script>` tag to load the bundle and use the initOpenTelemetry global function to initialize the agent:
+Add a `<script>` tag to load the bundle and use the `initOpenTelemetry` global function to initialize the agent:
 
 ```html
 <script src="./js/telemetry.umd.js"></script>
@@ -679,7 +679,7 @@ connect-src collector.example.com:4318/v1/traces
 
 ### Cross-origin resource sharing (CORS)
 
-If your website and the configured endpoing have a different origin, your browser might block the export requests. If you followed the instructions in the [OTLP endpoint](#before-you-begin) section, you already set up the necessary CORS headers. Otherwise you need to configure special headers for CORS in the receiving endpoint.
+If your website and the configured endpoint have a different origin, your browser might block the export requests. If you followed the instructions in the [OTLP endpoint](#before-you-begin) section, you already set up the necessary CORS headers. Otherwise you need to configure special headers for CORS in the receiving endpoint.
 
 ## Known limitations
 
@@ -702,7 +702,7 @@ If you see errors like "Cannot find module" or bundler-specific issues:
 
 2. Different bundlers (Webpack, Rollup, Vite) may require specific configuration for OpenTelemetry packages.
 
-3. For Webpack, you may need to add polyfills for Node.js modules. Add to your webpack config:
+3. For Webpack, you may need to add polyfills for Node.js modules. Add this to your Webpack config:
 
 ```javascript
 resolve: {
@@ -739,9 +739,9 @@ optimizeDeps: {
 
 If your reverse proxy is not forwarding requests correctly:
 
-1. Ensure the reverse proxy (NGINX, Apache, etc.) is running and accessible.
+1. Ensure the reverse proxy (NGINX, Apache, and so on) is running and accessible.
 
-2. Use curl to test the proxy endpoint directly:
+2. Use `curl` to test the proxy endpoint directly:
 
 ```bash
 curl -X POST https://your-proxy/v1/traces \
@@ -912,7 +912,7 @@ import { MyApp } from './app.js';
 <script src="./js/telemetry.umd.js"></script>
 ```
 
-4. If `initOpenTelemetry` is not defined, ensure your bundler is exposing it globally. For Webpack:
+4. If `initOpenTelemetry` is not defined, ensure your bundler is exposing it globally. For example, for Webpack:
 
 ```javascript
 output: {
