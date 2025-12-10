@@ -785,7 +785,7 @@ const OTEL_RESOURCE_ATTRIBUTES = {
 ```javascript
 // Correct order:
 // 1. Configure and register tracer provider
-trace.setGlobalTracerProvider(tracerProvider);
+tracerProvider.register({ contextManager: new ZoneContextManager() });
 // 2. Then register instrumentations
 registerInstrumentations({...});
 ```
