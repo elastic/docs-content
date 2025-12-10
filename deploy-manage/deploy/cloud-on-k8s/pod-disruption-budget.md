@@ -107,6 +107,17 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
+  name: master-nodes-pdb
+spec:
+  minAvailable: 2 <2>
+  selector:
+    matchLabels:
+      elasticsearch.k8s.elastic.co/cluster-name: quickstart <3>
+      elasticsearch.k8s.elastic.co/statefulset-name: quickstart-es-master <4>
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
   name: hot-nodes-pdb
 spec:
   minAvailable: 1 <5>
