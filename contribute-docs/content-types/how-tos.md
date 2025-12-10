@@ -53,7 +53,7 @@ The following elements are required in how-to guides:
 - A **Before you begin** section: List any special permissions or data/configuration needed. Assume basic feature access. You can also link to background knowledge or highlight known pitfalls.
 - A set of **steps:** Numbered instructions that begin with imperative verb phrases. Keep each step focused on a single action.
   :::{tip}
-  Use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/) for longer how-tos or those with complex steps.
+  Use an [ordered list](https://elastic.github.io/docs-builder/syntax/lists/#ordered-list) for simple, linear steps. For longer how-tos or those with complex steps, use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/).
   :::
 - **Success checkpoints:** Include confirmation steps that show users whether critical actions succeeded before moving on.
 
