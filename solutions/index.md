@@ -19,17 +19,17 @@ New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to unders
 
 Elastic helps you build applications for three main use cases: search, observability, and security. You can use platform-level capabilities through APIs, pre-built solutions with integrated UIs, or combine both approaches.
 
-The documentation is organized to distinguish between platform-level search capabilities available to all deployments and solution-specific features and workflows.
-
 ## Search use case
 
 The [Search use case](/solutions/search.md) documents core {{es}} search capabilities. These capabilities work identically across all Elastic [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) and are accessed through {{es}} APIs and client libraries. You can build custom implementations using Elastic's APIs and features without using solutions.
 
 ## Solutions and project types
 
-Solutions and project types provide pre-built UI tools and workflows with sensible defaults for specific use cases.
+Solutions and project types provide pre-built UI tools and workflows with sensible defaults for specific use cases, which build on top of the core platform capabilities. These help you get started quickly with common implementations and can be customized to meet your specific needs.
 
-On {{ech}} and self-managed deployments, solutions are configured in your deployment settings. On {{serverless-full}}, you select a project type when creating your project.
+On {{serverless-full}}, you select a project type when creating your project.
+
+On non-serverless deployments, solutions are configured in your deployment settings. 
 
 | Solution/Project | Description | Get started |
 | --- | --- | --- |
