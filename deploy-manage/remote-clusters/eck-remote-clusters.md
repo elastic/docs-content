@@ -13,7 +13,7 @@ products:
 
 These steps describe how to configure remote clusters between two {{es}} clusters that are managed by the same {{eck}} (ECK) operator.
 
-Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md). For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md).
+Once the connection is established, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 ::::{note}
 The remote clusters feature requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
@@ -23,6 +23,8 @@ The remote clusters feature requires a valid Enterprise license or Enterprise tr
 ::::
 
 To create a remote cluster connection to another {{es}} cluster deployed in the same ECK environment, specify the `remoteClusters` attribute in your {{es}} spec. In this scenario, the operator automatically orchestrates all required configuration across both clusters, based on the selected security model.
+
+For other remote cluster scenarios with ECK, refer to [Remote clusters on ECK](./eck-remote-clusters-landing.md#eck-rcs-setup).
 
 ## Security models [k8s_security_models]
 

@@ -47,6 +47,6 @@ kubectl expose service quickstart-es-remote-cluster \
 :::::
 
 :::{warning}
-If you change the service’s `port`, set `targetPort` explicitly to `9443`, which is the default remote cluster server listening port. Otherwise, Kubernetes uses the same value for both fields, resulting in failed connections.
+If you change the service’s `port` to expose a different port externally, set `targetPort` explicitly to `9443`, which is the default remote cluster server listening port. Otherwise, Kubernetes uses the same value for both fields, resulting in failed connections.
 :::
 
