@@ -200,7 +200,7 @@ When interpreting these numbers, note that:
 * Memory usage measurements differ between versions: version 9.x numbers reflect only the APM Server process RSS (excluding OS cache), while version 8.19 numbers include OS cache because the database is memory-mapped. Despite this measurement difference, version 9.0+ uses significantly less memory overall due to its much smaller database footprint.
 * Lower sampling rates result in higher event ingestion rates because less overhead is required for sampling decisions. For example, reducing the sampling rate from 10% to 5% in version 9.x increases event ingestion rate by 5-10% (data not shown in the tables above).
 
-The tail-based sampling implementation in version 9.0+ offers significantly better performance compared to version 8.x, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.x, as the database grows larger, the performance slowdown can become disproportionate.
+The tail-based sampling implementation in version 9.x offers significantly better performance compared to version 8.x, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.x, as the database grows larger, the performance slowdown can become disproportionate.
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
