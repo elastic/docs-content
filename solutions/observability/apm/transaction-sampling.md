@@ -150,7 +150,7 @@ In an APM Server implementation, the events are stored temporarily on disk inste
 
 It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
-To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load that is receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a **10% sample rate in the tail sampling policy**.
+To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load that is receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch, a **uniform 10% sample rate in the tail sampling policy**, events being sent from 1024 agents concurrently, and sufficient disk space.
 
 :::{important}
 These figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
@@ -161,35 +161,46 @@ Terminology:
 * Event Ingestion Rate: The throughput from the APM agent to the APM Server using the Intake v2 protocol (the protocol used by Elastic APM agents), measured in events per second.
 * Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second. Note that it should roughly be equal to Event Ingestion Rate * Sampling Rate.
 * Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
+* TBS: Tail-based sampling.
+* IOPS: Input/Output Operations Per Second, which is a measure of disk performance.
 
-#### APM Server 9.0
-
-| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
-|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6id.2xlarge      | TBS disabled                                   | 47220                           | 47220 (100% sampling)          | 0.98              | 0               |
-| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 21310                           | 2360                           | 1.41              | 13.1            |
-| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 21210                           | 2460                           | 1.34              | 12.9            |
-| c6id.4xlarge      | TBS disabled                                   | 142200                          | 142200 (100% sampling)         | 1.12              | 0               |
-| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 32410                           | 3710                           | 1.71              | 19.4            |
-| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 37040                           | 4110                           | 1.73              | 23.6            |
-
-#### APM Server 8.18
+#### APM Server 9.x
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| c6id.2xlarge      | TBS disabled                                   | 50260                           | 50270 (100% sampling)          | 0.98              | 0               |
-| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 10960                           | 50                             | 5.24              | 24.3            |
-| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 11450                           | 820                            | 7.19              | 30.6            |
-| c6id.4xlarge      | TBS disabled                                   | 149200                          | 149200 (100% sampling)         | 1.14              | 0               |
-| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11990                           | 530                            | 26.57             | 33.6            |
-| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 43550                           | 2940                           | 28.76             | 109.6           |
+| c6gd.xlarge       | TBS off                                        | 45120                           | 45120 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge       | TBS enabled, EBS gp3 volume with 3000 IOPS     | 17120                           | 1527                           | 1.48              | 11.3            |
+| c6gd.xlarge       | TBS enabled, local NVMe SSD from c6gd instance | 19490                           | 1661                           | 1.48              | 12.3            |
+| c6gd.2xlarge      | TBS off                                        | 63460                           | 63460 (100% sampling)          | 1.45              | 0               |
+| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 26340                           | 2248                           | 2.09              | 17.8            |
+| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 36620                           | 3041                           | 2.22              | 21.8            |
+| c6gd.4xlarge      | TBS off                                        | 119800                          | 119800 (100% sampling)         | 1.44              | 0               |
+| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 27620                           | 2485                           | 2.49              | 16.6            |
+| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 46260                           | 3909                           | 2.43              | 25.8            |
+
+#### APM Server 8.19
+
+| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
+|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
+| c6gd.xlarge       | TBS off                                        | 45480                           | 45480 (100% sampling)          | 0.95              | 0               |
+| c6gd.xlarge       | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11420                           | 11.55                          | 5.92              | 30.81           |
+| c6gd.xlarge       | TBS enabled, local NVMe SSD from c6gd instance | 12630                           | 86.52                          | 5.82              | 27.70           |
+| c6gd.2xlarge      | TBS off                                        | 61900                           | 61900 (100% sampling)          | 1.45              | 0               |
+| c6gd.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 12920                           | 37.31                          | 11.31             | 30.98           |
+| c6gd.2xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 23300                           | 574                            | 13.31             | 50.99           |
+| c6gd.4xlarge      | TBS off                                        | 122800                          | 122800 (100% sampling)         | 1.45              | 0               |
+| c6gd.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 13280                           | 34.20                          | 22.61             | 32.01           |
+| c6gd.4xlarge      | TBS enabled, local NVMe SSD from c6gd instance | 35810                           | 2480                           | 30.41             | 86.86           |
 
 When interpreting these numbers, note that:
 
+* APM Server 9.x performance data is based on version 9.2.2, which includes optimizations compared to 9.0 and represents typical 9.x series performance characteristics.
 * The metrics are inter-related. For example, it is reasonable to see higher memory usage and disk usage when the event ingestion rate is higher.
-* The event ingestion rate and event indexing rate competes for disk IO. This is why there is an outlier data point where APM Server version 8.18 with a 32GB NVMe SSD shows a higher ingest rate but a slower event indexing rate than in 9.0.
+* Under normal operation, the event indexing rate divided by the event ingestion rate should approximate the configured sampling rate (10% in this case). However, in the version 8.19 numbers above, as APM Server is under full load, sampling decision handling lags behind due to disk read operations that compete with ingest path writes for disk I/O resources, resulting in a significantly lower event indexing rate than expected.
+* Memory usage measurements differ between versions: version 9.x numbers reflect only the APM Server process RSS (excluding OS cache), while version 8.19 numbers include OS cache because the database is memory-mapped. Despite this measurement difference, version 9.0+ uses significantly less memory overall due to its much smaller database footprint.
+* Lower sampling rates result in higher event ingestion rates because less overhead is required for sampling decisions. For example, reducing the sampling rate from 10% to 5% in version 9.x increases event ingestion rate by 5-10% (data not shown in the tables above).
 
-The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.18, as the database grows larger, the performance slowdown can become disproportionate.
+The tail-based sampling implementation in version 9.x offers significantly better performance compared to version 8.x, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.x, as the database grows larger, the performance slowdown can become disproportionate.
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
