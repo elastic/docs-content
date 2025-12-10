@@ -17,23 +17,22 @@ description: Learn about Elastic solutions for search, observability, and securi
 New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the {{stack}}, its components, and your deployment options.
 :::
 
-Users reach for Elastic products, features, and tools for three main use cases: observability, security, and search.
+Elastic helps you build applications for three main use cases: search, observability, and security. You can use platform-level capabilities through APIs, pre-built solutions with integrated UIs, or combine both approaches.
 
-These use cases are supported by ready-to-use implementations that help you get started quickly:
+The documentation is organized to distinguish between platform-level search capabilities available to all deployments and solution-specific features and workflows.
 
-- As integrated solutions on [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) and [self-managed](/deploy-manage/deploy/self-managed.md) deployments
-- As project types on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)
+## Search use case
 
-While these solutions and project types provide pre-built components for common use cases, you can also build custom implementations using Elastic's features, APIs, and tools. This documentation guides you through:
+The [Search use case](/solutions/search.md) documents core {{es}} search capabilities. These capabilities work identically across all Elastic [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) and are accessed through {{es}} APIs and client libraries. You can build custom implementations using Elastic's APIs and features without using solutions.
 
-1. Evaluating if an Elastic solution fits your needs.
-2. Getting started with your chosen solution.
-3. Implementing specific features and capabilities.
+## Solutions and project types
 
-Learn more in the following sections:
+Solutions and project types provide pre-built UI tools and workflows for specific use cases. Rather than building everything through APIs, solutions give you prebuilt interfaces for common workflows and sensible defaults.
 
-| Solution | Use case | 
-| --- | --- | 
-| [Elasticsearch](search.md) | Build search experiences, or implement custom use cases with {{es}}
-| [Observability](observability.md) | Monitor and troubleshoot applications and infrastructure with {{product.observability}}
-| [Security](security.md) | Protect applications and infrastructure with {{elastic-sec}}
+On {{ech}} and self-managed deployments, solutions are configured in your deployment settings. On {{serverless-full}}, you select a project type when creating your project.
+
+| Solution/Project | Description | Get started |
+| --- | --- | --- |
+| **Elasticsearch** | UI tools for building search applications | [Elasticsearch solution](/solutions/elasticsearch-solution-project.md) |
+| **Observability** | Monitor and troubleshoot applications and infrastructure | [Observability solution](/solutions/observability.md) |
+| **Security** | Protect applications and infrastructure from threats | [Security solution](/solutions/security.md) |
