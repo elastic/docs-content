@@ -257,7 +257,7 @@ Create a data stream using the [_data_stream API](https://www.elastic.co/docs/ap
 PUT /_data_stream/movetods
 ```
 
-You can [view the lifecycle status of your data stream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy.
+You can [check the lifecycle status of your data stream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated {{ilm-init}} policy.
 
 ### Optional: Reindex your data with a data stream [manage-general-content-with-data-streams-reindex]
 

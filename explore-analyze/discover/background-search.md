@@ -7,22 +7,18 @@ applies_to:
   serverless: unavailable
 products:
   - id: kibana
-description: Send your long-running queries to run in the background with background searches and search sessions, and focus on your other tasks while they complete.
+description: Send long-running queries to run in the background with background searches from Discover and Dashboards. Continue working while queries complete and access results later.
 ---
 
-# Run Discover and Dashboards queries in the background
+# Run Discover and Dashboards queries in the background [background-search]
+
+Send long-running searches to run asynchronously while you continue working in {{product.kibana}}. Access your completed searches later from **Discover** or **Dashboards**, and manage all background searches from the toolbar.
 
 ::::{important} - Background search replaces Search sessions
 
 Background search is a feature introduced in version 9.2. It replaces the deprecated **Search sessions** feature.
 If you have been using search sessions and upgrade to 9.2, your search sessions aren't lost and become background searches.
 ::::
-
-Sometimes you might need to search through large amounts of data, no matter how long the search takes. Consider a threat hunting scenario, where you need to search through years of data. 
-
-You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work. 
-
-You can access your list of background searches at any time to check their status and manage them from the {icon}`background_task` **Background searches** button in the toolbar.
 
 ![Send search to background](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltee31dcf0d3917c75/68ecf412e5bae49d65a286ff/background-search.gif " =75%")
 
@@ -51,7 +47,7 @@ To send searches to the background, and to view and interact with the list of ba
 :sync: 91
 In versions 9.1 and earlier, this feature is named **Search sessions**.
 * To save a session, you must have permissions for **Discover** and **Dashboard**, and the [Search sessions subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
-* To view and restore a saved session, you must have access to **Stack Management**.
+* To view and restore a saved session, you must have access to {{stack-manage-app}}.
 ::::
 
 :::::

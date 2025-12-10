@@ -2,11 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html
 applies_to:
-  deployment:
-    ess:
-    ece:
-    eck:
-    self:
+  stack: all
 products:
   - id: elasticsearch
 ---

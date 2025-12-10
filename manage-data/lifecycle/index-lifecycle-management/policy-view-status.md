@@ -1,5 +1,5 @@
 ---
-navigation_title: View the lifecycle status of an index or data stream
+navigation_title: Check the {{ilm-init}} status of indices and data streams
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-lifecycle-policy.html
 applies_to:
@@ -8,11 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# View the lifecycle status of an index or data stream [view-lifecycle-status]
+# Check the {{ilm-init}} status of {{es}} indices and data streams [view-lifecycle-status]
 
-For any existing managed index or data stream in your cluster, you can access the {{ilm-init}} policy applied to it and its current status.
-
-You can view the lifecycle status of an index or data stream in {{kib}} or using the {{es}} API.
+{{ilm}} ({{ilm-init}}) automates the handling of index phases and data retention. You can check the current {{ilm-init}} policy applied to an index or data stream and see its lifecycle phase, actions, and other status details using {{kib}} or the {{ilm-init}} Explain API.
 
 :::{tip}
 If you're investigating an {{ilm-init}}-related problem, refer to [Troubleshoot index and snapshot lifecycle management](/troubleshoot/elasticsearch/start-ilm.md) and [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) in the {{es}} chapter of the **Troubleshoot** section.

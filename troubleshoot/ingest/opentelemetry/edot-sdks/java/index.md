@@ -25,7 +25,7 @@ Make you have set a service name, for example `-Dotel.service.name=Service1` or 
 
 ## Connectivity to endpoint
 
-Check from the host, VM, pod, container, or image running the app that connectivity is available to the Collector.
+Check from the host, VM, pod, container, or image running the app that connectivity is available to the Collector. For more detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
 The following examples use a default URL, `http://127.0.0.1:4318/, which you should replace with the endpoint you are using:
 
@@ -47,12 +47,14 @@ Determine if the issue is related to the agent by following these steps:
 
 ## Agent debug logging
 
-As debugging output is verbose and might produce noticeable overhead on the application, follow one of these strategies when you need logging:
+As debugging output is verbose and might produce noticeable overhead on the application, follow one of these strategies when you need logging: 
 
 - In case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging).
 - If you need details on the captured data, use [per-signal debugging](#per-signal-debugging).
 
-In case of missing data, check first that the technology used in the application is supported in [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](elastic-otel-java://reference/edot-java/supported-technologies.md).
+For more information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
+
+In case of missing data, check first that the technology used in the application is supported in [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](elastic-otel-java://reference/edot-java/supported-technologies.md). For more troubleshooting guidance, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
 ### Agent debugging
 
