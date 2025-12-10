@@ -21,7 +21,12 @@ Slow log thresholds can be enabled for these logging levels (in order of increas
 
 You can mimic setting log level thresholds by disabling more verbose levels.
 
-**Finding slow logs**
+Because logging every event or operation generates a high volume of log entries, slow logs are deactivated by default (all thresholds are set to `-1`). Activate only when needed and avoid setting very low thresholds in production.
+
+Refer to [slow log settings](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) to learn more about configuration options you can adjust to capture search and indexing details.
+
+
+## Finding slow logs [finding-slow-logs]
 
 Events that meet the specified threshold are emitted into [{{es}} logging](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) under the `fileset.name` of `slowlog`. These logs can be viewed in the following locations:
 
@@ -29,11 +34,6 @@ Events that meet the specified threshold are emitted into [{{es}} logging](/depl
 * From local {{es}} service logs directory. Slow log files have a suffix of `_index_search_slowlog.json` or `_index_indexing_slowlog.json`.
 
 Refer to [this video](https://www.youtube.com/watch?v=ulUPJshB5bU) for a walkthrough of setting and reviewing slow logs.
-
-**Default behavior**
-
-Because logging every event or operation generates a high volume of log entries, slow logs are deactivated by default (all thresholds are set to `-1`). Activate only when needed and avoid setting very low thresholds in production.
-
 
 
 ## What's included in slow logs [slow-log-format]
