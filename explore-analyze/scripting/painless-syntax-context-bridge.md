@@ -8,8 +8,7 @@ products:
 
 # Painless syntax-context bridge [painless-syntax-context-bridge]
 
-One of the most distinctive aspects of Painless scripting is how data access methods (`doc`, `ctx`, and `_source`) are directly tied to the context of use. Unlike other scripting languages where data access patterns remain consistent, Painless provides different access mechanisms that are optimized for specific use cases and contexts within {{es}}.  
-Understanding when and why to use each access method is crucial for writing efficient Painless scripts.
+One of the most distinctive aspects of Painless scripting is how data access methods (`doc`, `ctx`, and `_source`) are directly tied to the context of use. Unlike other scripting languages where data access patterns remain consistent, Painless provides different access mechanisms that are optimized for specific use cases and contexts within {{es}}. Understanding when and why to use each access method is crucial for writing efficient Painless scripts.
 
 :::{tip}
 If you're new to Painless contexts, refer to [Painless contexts](elasticsearch://reference/scripting-languages/painless/painless-contexts.md) in the Reference section for comprehensive context documentation. For hands-on examples of field access, refer to our set of [Painless script tutorials](/explore-analyze/scripting/common-script-uses.md).
