@@ -39,10 +39,6 @@ The {{es}} solution provides the following specialized UI tools:
 
 [Playground](/solutions/elasticsearch-solution-project/playground.md) lets you use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also useful for testing and debugging your {{es}} queries using the [retrievers](/solutions/search/retrievers-overview.md) syntax.
 
-### Search Applications
-
-[Search Applications](/solutions/elasticsearch-solution-project/search-applications.md) provide a simplified way to manage and access your search use cases through a unified interface. They enable you to create, configure, and manage search-powered applications with built-in templates and best practices.
-
 ### Synonyms UI
 
 The [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md) interface provides a dedicated UI for managing synonym sets directly within {{kib}}, making it easier to improve search relevance without editing configuration files.
