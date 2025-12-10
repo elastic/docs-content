@@ -19,7 +19,7 @@ Ingest real data and validate the capabilities that will save you time, reduce c
 
 By the end of this guide, you'll know how to structure your trial, make strategic Elastic product decisions, and measure success so you can build a meaningful proof of concept (PoC).
 
-For a quick intro, start with learning more about [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md).
+For a quick intro, start by learning more about [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md).
 
 ## What is included in your trial
 
@@ -27,9 +27,9 @@ Your {{ecloud}} trial gives you full access to explore the following features an
 
 - All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
 - Access to the following: 
-  - Integrations so you can ingest your data using the simplest method that meets your use case.
+  - Integrations to ingest your data using the simplest method that meets your use case.
   - {{ml-cap}} features to evaluate anomaly detection results, search relevance, and explore visualization tools from our trained models.
-  - Advanced analytics so you can test {{es}} as a vector database for building modern GenAI and semantic search applications.
+  - Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
 
 :::{tip}
 If you prefer to set up {{es}} and {{kib}} in Docker for local development or testing, refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). By default, new installations have a Basic license that never expires. To explore all the available solutions and features, start a 30-day free trial by following the instructions in [](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).  
@@ -59,7 +59,7 @@ Document your trial goal now. This clarity will guide your use case selection an
 
 ### Identify your primary use case
 
-With your trial goal in mind, identify which Elastic solution best addresses your challenge. Elastic can support many workloads, but a focused trial generates clearer results. You can always expand to additional use cases after establishing initial success.
+With your trial goal in mind, identify which Elastic solution best addresses your challenge. Elastic can support many workloads, but a focused trial generates more precise results. You can always expand to additional use cases after establishing initial success.
 
 | Your challenge | Primary use case |
 |----------------|-----------------|
@@ -194,9 +194,9 @@ Once data is flowing, use the trial to validate the features that will determine
 | Feature | Why it matters | How to try it |
 |---------|----------------|---------------|
 | Prebuilt detection rules | Detect threats without writing custom rules | [Enable detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md) |
-| SIEM dashboards | Visualize security posture and trends | [Security dashboards](/solutions/security/dashboards.md) |
+| Dashboards | Get useful visualizations of your environment, or create your own custom visualization | [Security dashboards](/solutions/security/dashboards.md) |
 | Endpoint protection | Prevent malware and ransomware | [Configure {{elastic-defend}}](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md) |
-| Timeline investigations | Investigate and document security events | [Investigate with Timeline](/solutions/security/investigate/timeline.md) |
+| Timeline | Investigate threats in chronological order in an interactive workspace | [Investigate with Timeline](/solutions/security/investigate/timeline.md) |
 | Threat intelligence | Enrich alerts with threat context | [Threat intelligence integrations](/solutions/security/get-started/enable-threat-intelligence-integrations.md) |
 
 :::
@@ -280,10 +280,11 @@ In particular, [Index and search basics](/solutions/search/get-started/index-bas
 
 1. Review the [Security getting started guide](/solutions/security/get-started.md).
 2. [Ingest security data](/solutions/security/get-started/ingest-data-to-elastic-security.md) from your environment.
-3. Deploy Elastic Defend to protect critical endpoints.
+3. Deploy {{elastic-defend}} to protect critical endpoints.
 4. Enable prebuilt detection rules.
-5. Investigate sample security events.
+5. Investigate sample security events or anomalous activity.
 
+For targeted learning paths, go to [](/solutions/security/get-started/quickstarts.md). 
 :::
 
 ::::
@@ -317,7 +318,7 @@ When you're ready to move beyond your trial into production:
 To retain your {{ech}} deployment or {{serverless-short}} project, refer to [Remove trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#remove-trial-limitations) and [Maintain access to your trial projects and data](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-happens-at-the-end-of-the-trial).
 
 ::::{tip}
-Depending on your organization's needs, you might want to evaluate different deployment options. Elastic offers multiple deployment types including {{ece}} and {{eck}}. Explore the [deployment options](/deploy-manage/deploy.md) to find the best fit for your infrastructure.
+Depending on your organization's needs, you might want to evaluate different deployment options. Elastic offers multiple deployment types, including {{ece}} and {{eck}}. Explore the [deployment options](/deploy-manage/deploy.md) to find the best fit for your infrastructure.
 ::::
 
 ### Expand your implementation
