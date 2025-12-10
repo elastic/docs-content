@@ -94,29 +94,27 @@ To create a stacked bar chart:
 3. Add a second dimension to **Break down by**. This splits each bar into stacked segments.
 4. In the chart settings, ensure **Stacked** is selected under the layout options.
 
-% Need to update the following images.
+### Create unstacked (side-by-side) bar charts [grouped-bars]
 
-| Basic bar chart | Stacked bar chart |
-|--------|-------|
-| ![Bar chart without stacking](../../images/kibana-bar.png "title =70%") | ![Bar chart with stacking showing breakdown](../../images/kibana-bar.png "title =70%") |
-
-### Create grouped (side-by-side) bar charts [grouped-bars]
-
-Grouped bar charts, also called unstacked bar charts, display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
+Unstacked bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
 
 ::::{tip}
-Use grouped bar charts when:
+Use unstacked bar charts when:
 - You need to compare 2-4 metrics across categories
 - Direct comparison between metrics is more important than viewing totals
 - The metrics have similar scales
 ::::
 
-To create a grouped bar chart:
+To create an unstacked bar chart:
 
 1. Create a **Bar** chart visualization with your first metric on the vertical axis.
 2. Add a dimension to the horizontal axis.
 3. Add a second dimension to **Break down by**. This splits each bar into grouped segments.
 4. In the chart settings, select **Unstacked** under the layout options.
+
+| Stacked bar chart | Unstacked bar chart |
+|--------|-------|-------|
+| ![Bar chart with stacking](../../images/stacked-bar-chart.png "title =70%") | ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "title =70%") |
 
 ### Show trends with time-based bar charts [time-bars]
 
@@ -220,6 +218,10 @@ To enable percentage mode:
 3. Select **Percent**. 
 
 Each bar now shows segments as percentages of that bar's total (summing to 100%).
+
+| Stacked bar chart | Percentage bar chart |
+|--------|-------|-------|
+| ![Bar chart with stacking](../../images/stacked-bar-chart.png "title =70%") | ![Bar chart with stacking showing percentage breakdown](../../images/percentage-bar-chart.png "title =70%") |
 
 ## Bar chart settings [settings]
 
@@ -333,8 +335,6 @@ The following examples show various configuration options that you can use for b
       * **Number of values**: `10`
     * **Layout**: Basic (unstacked)
 
-    ![Bar chart showing sales by product category](../../images/kibana-bar.png "=70%")
-
 **Monthly website traffic by source**
 :   Track website visits over time, broken down by traffic source:
 
@@ -348,9 +348,7 @@ The following examples show various configuration options that you can use for b
       * **Number of values**: `5`
       * **Colors**: Custom palette (Organic=green, Paid=blue, Social=purple, Direct=orange, Referral=teal)
     * **Layout**: `Stacked`
-    * **Legend**: Right side, showing traffic sources
-
-    ![Stacked bar chart showing monthly traffic by source](../../images/kibana-bar-chart-tutorial-3.png "=70%")
+    * **Legend**: Right side, showing traffic source
 
 **Error rate by service (with threshold)**
 :   Monitor error rates across microservices with a target threshold line:
@@ -424,4 +422,3 @@ The following examples show various configuration options that you can use for b
       * **Label**: "Target"
       * **Color**: Green, solid line
     * **Colors**: Promoter=green, Passive=yellow, Detractor=red
-
