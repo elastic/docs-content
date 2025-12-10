@@ -14,7 +14,7 @@ They work with any type of data: numeric values, counts, averages, or calculatio
 
 You can create bar charts in {{kib}} using [**Lens**](../lens.md).
 
-![Bar chart showing sales by category with different layouts](../../images/kibana-bar.png)
+![Bar chart showing sales by category with different layouts](../../images/bar-chart.png)
 
 ## Build a bar chart
 
@@ -94,6 +94,8 @@ To create a stacked bar chart:
 3. Add a second dimension to **Break down by**. This splits each bar into stacked segments.
 4. In the chart settings, ensure **Stacked** is selected under the layout options.
 
+![Bar chart with stacking](../../images/stacked-bar-chart.png "title =70%")
+
 ### Create unstacked (side-by-side) bar charts [grouped-bars]
 
 Unstacked bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
@@ -112,9 +114,27 @@ To create an unstacked bar chart:
 3. Add a second dimension to **Break down by**. This splits each bar into grouped segments.
 4. In the chart settings, select **Unstacked** under the layout options.
 
-| Stacked bar chart | Unstacked bar chart |
-|--------|-------|-------|
-| ![Bar chart with stacking](../../images/stacked-bar-chart.png "title =70%") | ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "title =70%") |
+![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "title =70%")
+
+### Use percentage mode for relative comparisons [percentage-mode]
+
+Percentage mode converts your bar values to percentages of the total, allowing you to compare proportions even when absolute values differ greatly.
+
+::::{tip}
+Use percentage mode when:
+- Relative proportions matter more than absolute values
+- You're comparing composition across categories with different totals
+- Showing market share, demographic breakdown, or category distribution
+::::
+
+To enable percentage mode:
+
+1. Create a stacked bar chart and breakdown the data.
+2. In the chart settings, select **Percentage** under the layout options.
+
+Each bar now shows segments as percentages of that bar's total (summing to 100%).
+
+![Bar chart with stacking showing percentage breakdown](../../images/percentage-bar-chart.png "title =70%") 
 
 ### Show trends with time-based bar charts [time-bars]
 
@@ -199,30 +219,6 @@ To add an annotation:
 
 To edit existing annotations click on them in the annotations list. If you no longer need an annotation, you can delete it.
 
-### Use percentage mode for relative comparisons [percentage-mode]
-
-Percentage mode converts your bar values to percentages of the total, allowing you to compare proportions even when absolute values differ greatly.
-
-::::{tip}
-Use percentage mode when:
-- Relative proportions matter more than absolute values
-- You're comparing composition across categories with different totals
-- Showing market share, demographic breakdown, or category distribution
-::::
-
-To enable percentage mode:
-
-1. Create a stacked bar chart with multiple categories.
-% How do users add multiple categories?
-2. In the **Vertical axis** appearance settings, find the **Value format** option.
-3. Select **Percent**. 
-
-Each bar now shows segments as percentages of that bar's total (summing to 100%).
-
-| Stacked bar chart | Percentage bar chart |
-|--------|-------|-------|
-| ![Bar chart with stacking](../../images/stacked-bar-chart.png "title =70%") | ![Bar chart with stacking showing percentage breakdown](../../images/percentage-bar-chart.png "title =70%") |
-
 ## Bar chart settings [settings]
 
 Customize your bar chart to display exactly the information you need, formatted the way you want.
@@ -253,7 +249,7 @@ Customize your bar chart to display exactly the information you need, formatted 
 :   Define the formatting of the vertical axis, including:
     - **Name**: By default, the chart uses the function or formula as the axis label. It's a best practice to customize this with a meaningful title.
     - **Value format**: Select to display values as number, percent, bytes, bits, duration, or with a custom format.
-    - **Series color**: ?
+    - **Series color**: Assign a specific color to bars.
     - **Axis side**: Choose to display the veritical axis on the left or right side of the graph. By default, the axis displays on the left. 
 
 
