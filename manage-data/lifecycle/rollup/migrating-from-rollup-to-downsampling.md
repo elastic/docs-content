@@ -14,7 +14,7 @@ products:
 # Migrating from rollups to downsampling in {{es}} [rollup-migrating-to-downsampling]
 
 
-Understand how to transition from legacy rollup jobs to {{es}} downsampling. This documentation explains key differences between the two and migration steps.
+Understand how to transition from legacy rollup jobs to {{es}} downsampling. This documentation explains key differences between the two and outlines migration steps.
 
 The following aspects of downsampling are easier or more robust than using rollup jobs:
 
