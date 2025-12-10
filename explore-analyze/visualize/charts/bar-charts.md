@@ -79,13 +79,6 @@ Refer to [](#settings) for a complete list of options.
 
 Stacked bar charts show how different components contribute to a total value. Each bar is divided into colored segments representing different categories, allowing you to view both the total and the breakdown.
 
-To create a stacked bar chart:
-
-1. Create a **Bar** visualization with your metric on the vertical axis.
-2. Add a dimension to the horizontal axis (this creates your bars).
-3. Add a second dimension to **Break down by**. This splits each bar into stacked segments.
-4. In the chart settings, ensure **Stacked** is selected under the layout options.
-
 ::::{tip}
 Stacked bar charts work best when:
 - You want to show part-to-whole relationships
@@ -94,41 +87,40 @@ Stacked bar charts work best when:
 - The segments don't vary wildly in size
 ::::
 
+To create a stacked bar chart:
+
+1. Create a **Bar** visualization with your metric on the vertical axis.
+2. Add a dimension to the horizontal axis (this creates your bars).
+3. Add a second dimension to **Break down by**. This splits each bar into stacked segments.
+4. In the chart settings, ensure **Stacked** is selected under the layout options.
+
 % Need to update the following images.
 
 | Basic bar chart | Stacked bar chart |
 |--------|-------|
 | ![Bar chart without stacking](../../images/kibana-bar.png "title =70%") | ![Bar chart with stacking showing breakdown](../../images/kibana-bar.png "title =70%") |
 
-% ### Create grouped (side-by-side) bar charts [grouped-bars]
+### Create grouped (side-by-side) bar charts [grouped-bars]
 
-% Grouped bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
+Grouped bar charts, also called unstacked bar charts, display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
 
-% To create a grouped bar chart:
+::::{tip}
+Use grouped bar charts when:
+- You need to compare 2-4 metrics across categories
+- Direct comparison between metrics is more important than viewing totals
+- The metrics have similar scales
+::::
 
-% 1. Create a **Bar** chart visualization with your first metric on the vertical axis.
-% 2. Add a dimension to the horizontal axis.
-% 3. Add a second dimension to **Break down by**.
-% 4. In the chart settings, select **Clustered** or **Side by side** under the layout options (instead of Stacked).
+To create a grouped bar chart:
 
-% ::::{tip}
-% Use grouped bar charts when:
-% - You need to compare 2-4 metrics across categories
-% - Direct comparison between metrics is more important than viewing totals
-% - The metrics have similar scales
-% ::::
+1. Create a **Bar** chart visualization with your first metric on the vertical axis.
+2. Add a dimension to the horizontal axis.
+3. Add a second dimension to **Break down by**. This splits each bar into grouped segments.
+4. In the chart settings, select **Unstacked** under the layout options.
 
 ### Show trends with time-based bar charts [time-bars]
 
 Bar charts excel at showing trends over time when you need to compare specific time periods or view the distribution of values.
-
-To create a time-based bar chart:
-
-1. Create a **Bar** chart visualization.
-2. Set the **Vertical axis** to your metric (like count, sum, or average).
-3. Set the **Horizontal axis** to a date field using the **Date histogram** function.
-4. Configure the minimal time interval (auto, millisecond, second, minute, hour, day, week, month, year).
-5. Optionally add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked bar charts.
 
 ::::{tip}
 Time-based bar charts are great for:
@@ -140,9 +132,24 @@ Time-based bar charts are great for:
 For continuous trends, consider using a line chart instead.
 ::::
 
+To create a time-based bar chart:
+
+1. Create a **Bar** chart visualization.
+2. Set the **Vertical axis** to your metric (like count, sum, or average).
+3. Set the **Horizontal axis** to a date field using the **Date histogram** function.
+4. Configure the minimal time interval (auto, millisecond, second, minute, hour, day, week, month, year).
+5. Optionally add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked bar charts.
+
 ### Add reference lines [add-reference-lines]
 
 Reference lines help viewers understand context by showing thresholds, goals, or averages directly on your bar chart.
+
+::::{tip}
+Reference line are great for:
+- Showing sales targets, SLA thresholds, or performance benchmarks
+- Displaying mean or median values for comparison
+- Indicating maximum capacity or acceptable ranges
+::::
 
 To add a reference line:
 
@@ -158,11 +165,6 @@ To add a reference line:
    - **Fill**: Decides whether to shade the area above or below the reference line. None leaves the area unfilled.
    - **Color**: Sets the line (and fill) color.
 
-Common reference line uses:
-- **Goals**: Show sales targets, SLA thresholds, or performance benchmarks
-- **Averages**: Display mean or median values for comparison
-- **Limits**: Indicate maximum capacity or acceptable ranges
-
 ### Add annotations [add-annotations]
 
 ```{applies_to}
@@ -171,6 +173,14 @@ serverless: preview
 ```
 
 Annotations are a powerful way to add context to your visualizations by marking important events directly on your charts, helping viewers understand the relationship between your data and real-world events. They appear as vertical lines or bands across your visualization, making it easy to correlate data patterns with known events.
+
+::::{tip}
+Annotations are great for:
+- Marking deployment events
+- Highlighting system maintenance windows
+- Indicating configuration changes
+- Marking business events that might impact metrics
+::::
 
 To add an annotation:
 
@@ -191,15 +201,16 @@ To add an annotation:
 
 To edit existing annotations click on them in the annotations list. If you no longer need an annotation, you can delete it.
 
-Common annotation uses:
-- Marking deployment events
-- Highlighting system maintenance windows
-- Indicating configuration changes
-- Marking business events that might impact metrics
-
 ### Use percentage mode for relative comparisons [percentage-mode]
 
 Percentage mode converts your bar values to percentages of the total, allowing you to compare proportions even when absolute values differ greatly.
+
+::::{tip}
+Use percentage mode when:
+- Relative proportions matter more than absolute values
+- You're comparing composition across categories with different totals
+- Showing market share, demographic breakdown, or category distribution
+::::
 
 To enable percentage mode:
 
@@ -209,13 +220,6 @@ To enable percentage mode:
 3. Select **Percent**. 
 
 Each bar now shows segments as percentages of that bar's total (summing to 100%).
-
-::::{tip}
-Use percentage mode when:
-- Relative proportions matter more than absolute values
-- You're comparing composition across categories with different totals
-- Showing market share, demographic breakdown, or category distribution
-::::
 
 ## Bar chart settings [settings]
 
