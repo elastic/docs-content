@@ -78,7 +78,7 @@ The minimal configuration you need to instrument your web application with OpenT
   - `service.name` (string): Name of the application you're instrumenting.
   - `service.version` (string, optional): A string representing the version or build of your app.
   - `deployment.environment.name` (string, optional): Name of the environment where the app runs (if applicable); for example, "prod", "dev", or "staging".
-- **OTEL_LOG_LEVEL**: Use this configuration to set the log level of the OpenTelemetry components you're going to use.
+- **OTEL_LOG_LEVEL**: Use this configuration to set the log level of the OpenTelemetry components you're going to use. Supported values are: `error`, `warn`, `info`, `debug`, `verbose`.
 
 ## Set up OpenTelemetry for the browser [otel-rum-set-up-open-telemetry-for-the-browser]
 
