@@ -77,7 +77,6 @@ toc:
               - file: machine-learning/anomaly-detection/mapping-anomalies.md
               - file: machine-learning/anomaly-detection/ml-configuring-url.md
               - file: machine-learning/anomaly-detection/ml-jobs-from-lens.md
-              - file: machine-learning/anomaly-detection/move-jobs.md
           - file: machine-learning/anomaly-detection/ml-ad-resources.md
             children:
               - file: machine-learning/anomaly-detection/ml-limitations.md
@@ -166,9 +165,10 @@ toc:
           - file: scripting/painless-lab.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
-
-  - file: ai-assistant.md
-  - file: manage-access-to-ai-assistant.md
+  - file: ai-features.md
+    children:
+      - file: ai-features/ai-assistant.md
+      - file: ai-features/manage-access-to-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
