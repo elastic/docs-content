@@ -10,7 +10,7 @@ products:
 applies_to:
   serverless:
   stack:
-description: The {{stack}} are products that work together to securely store, search, analyze, and visualize your data.
+description: The {{stack}} is a group of products that work together to securely store, search, analyze, and visualize your data.
 ---
 # The {{stack}}
 
