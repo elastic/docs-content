@@ -35,7 +35,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds an onboarding tour to the Streams UI to guide new users through core workflows [#244808]({{kib-pull}}244808)
 * Allows filtering of {{esql}} charts in dashboards [#243439]({{kib-pull}}243439)
 * Enables Value reports in {{ech}} and adds logic to export them using the share plugin [#243511]({{kib-pull}}243511)
-* Adds **Span links** badge to the unified trace waterfall view [#244389]({{kib-pull}}244389)
+* Adds a **Span links** badge to the unified trace waterfall view [#244389]({{kib-pull}}244389)
 * Adds dynamic form elements for the IBM Resilient connector fields, improving the configuration experience [#238869]({{kib-pull}}238869)
 * Adds a time range selector to the Cases page to simplify filtering by timeframe [#243409]({{kib-pull}}243409)
 
