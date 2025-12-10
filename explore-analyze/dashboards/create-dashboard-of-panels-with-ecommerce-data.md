@@ -70,7 +70,7 @@ To analyze the data with a custom time interval, create a bar chart that shows y
 
 To identify the 75th percentile of orders, add a reference line:
 
-1. In the layer pane, click **Add layer > Reference lines**.
+1. In the layer pane, click {icon}`plus_in_square` **Add layer > Reference lines**.
 2. Click **Static value**.
 
     1. Click **Quick function**, then click **Percentile**.
@@ -155,7 +155,7 @@ To analyze multiple visualization types, create an area chart that displays the 
 
 Add a layer to display the customer traffic:
 
-1. In the layer pane, click **Add layer > Visualization > Line**.
+1. In the layer pane, click {icon}`plus_in_square` **Add layer > Visualization > Line**.
 2. From the **Available fields** list, drag **customer_id** to the **Vertical Axis** field in the second layer.
 3. In the layer pane, click **Unique count of customer_id**.
 
