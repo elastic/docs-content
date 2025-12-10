@@ -6,11 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-kubernetes
@@ -26,6 +22,11 @@ In this section, you'll learn about the [data structure of a role](#role-structu
 You can also implement custom roles providers. If you need to integrate with another system to retrieve user roles, you can build a custom roles provider plugin. For more information, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-plugins.md).
 
 After you create your custom roles, you can [learn how to assign them to users](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md#assign-roles-to-users).
+
+:::{admonition} Defining custom roles in {{serverless-short}}
+This topic explains how to create custom roles in {{stack}} clusters and deployments. You can also learn about [organization-level](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) roles and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) in {{serverless-full}}.
+If you want to create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
+:::
 
 ## Role structure
 

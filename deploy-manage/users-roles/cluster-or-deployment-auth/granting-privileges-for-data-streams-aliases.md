@@ -3,11 +3,7 @@ navigation_title: For data streams and aliases
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/securing-aliases.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
 products:
   - id: elasticsearch
 ---

@@ -539,14 +539,14 @@ redirects:
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3493
-  'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/cloud/integrations/ingest-third-party-cloud-security-data.md'
-  'solutions/security/cloud/ingest-cncf-falco-data.md': 'solutions/security/cloud/integrations/cncf-falco.md'
-  'solutions/security/cloud/ingest-wiz-data.md': 'solutions/security/cloud/integrations/wiz.md'
-  'solutions/security/cloud/integration-tenablevm.md': 'solutions/security/cloud/integrations/tenablevm.md'
-  'solutions/security/cloud/integration-rapid7.md': 'solutions/security/cloud/integrations/rapid7.md'
-  'solutions/security/cloud/integration-qualys.md': 'solutions/security/cloud/integrations/qualys.md'
-  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/cloud/integrations/aws-security-hub.md'
-  'solutions/security/cloud/aws-config-integration.md': 'solutions/security/cloud/integrations/aws-config.md'
+  'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'
+  'solutions/security/cloud/ingest-cncf-falco-data.md': 'solutions/security/integrations/cncf-falco.md'
+  'solutions/security/cloud/ingest-wiz-data.md': 'solutions/security/integrations/wiz.md'
+  'solutions/security/cloud/integration-tenablevm.md': 'solutions/security/integrations/tenablevm.md'
+  'solutions/security/cloud/integration-rapid7.md': 'solutions/security/integrations/rapid7.md'
+  'solutions/security/cloud/integration-qualys.md': 'solutions/security/integrations/qualys.md'
+  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/aws-config-integration.md': 'solutions/security/integrations/aws-config.md'
   
 # Deduplicate canvas function reference
   'reference/data-analysis/kibana/canvas-functions.md': 'explore-analyze/visualize/canvas/canvas-function-reference.md'
@@ -600,3 +600,20 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/3808
   'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
+
+# Related to move-jobs.md deletion - content moved to setting-up-machine-learning.md
+  'explore-analyze/machine-learning/anomaly-detection/move-jobs.md': 'explore-analyze/machine-learning/setting-up-machine-learning.md'
+# Related to https://github.com/elastic/docs-content/issues/2662
+  'solutions/security/cloud/integrations/aws-config.md': 'solutions/security/integrations/aws-config.md'
+  'solutions/security/cloud/integrations/aws-inspector.md': 'solutions/security/integrations/aws-inspector.md'
+  'solutions/security/cloud/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/integrations/cncf-falco.md': 'solutions/security/integrations/cncf-falco.md'
+  'solutions/security/cloud/integrations/google-security-command-center.md': 'solutions/security/integrations/google-security-command-center.md'
+  'solutions/security/cloud/integrations/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'
+  'solutions/security/cloud/integrations/microsoft-defender-for-cloud.md': 'solutions/security/integrations/microsoft-defender-for-cloud.md'
+  'solutions/security/cloud/integrations/microsoft-defender-for-endpoint.md': 'solutions/security/integrations/microsoft-defender-for-endpoint.md'
+  'solutions/security/cloud/integrations/microsoft-defender-xdr.md': 'solutions/security/integrations/microsoft-defender-xdr.md'
+  'solutions/security/cloud/integrations/qualys.md': 'solutions/security/integrations/qualys.md'
+  'solutions/security/cloud/integrations/rapid7.md': 'solutions/security/integrations/rapid7.md'
+  'solutions/security/cloud/integrations/tenablevm.md': 'solutions/security/integrations/tenablevm.md'
+  'solutions/security/cloud/integrations/wiz.md': 'solutions/security/integrations/wiz.md'
