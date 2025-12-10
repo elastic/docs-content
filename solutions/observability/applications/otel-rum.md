@@ -63,7 +63,10 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Authorization 'ApiKey ...your Elastic API key...'; # Set the auth header here. It's recommended to get it from a secrets manager.
+        # Set the auth header here. It's recommended to get it from a secrets manager.
+        # ref for Docker: https://docs.docker.com/engine/swarm/secrets/#intermediate-example-use-secrets-with-a-nginx-service
+        # ref for K8s: https://kubernetes.io/docs/concepts/configuration/secret/
+        proxy_set_header Authorization 'ApiKey ...your Elastic API key...'; 
         proxy_pass https://collector.example.com:4318;
     }
 }
