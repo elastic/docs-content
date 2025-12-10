@@ -11,9 +11,9 @@ sub:
   remote_type: ECK-managed
 ---
 
-# Connect self-managed clusters to {{eck}} clusters [self-to-eck-remote-clusters]
+# Connect self-managed clusters to {{eck}} [self-to-eck-remote-clusters]
 
-These steps describe how to configure a remote cluster connection from a self-managed {{es}} cluster, to an ECK-managed cluster.
+These steps describe how to configure a remote cluster connection from a self-managed {{es}} cluster, to an {{eck}} (ECK) managed cluster.
 
 After the connection is established, you’ll be able to [run {{ccs-init}} queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up {{ccr-init}}](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 

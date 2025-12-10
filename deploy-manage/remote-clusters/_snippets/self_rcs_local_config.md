@@ -14,7 +14,7 @@ This snippet is in use in the following locations:
         ```
 
         ::::{tip}
-        If the remote cluster uses a publicly trusted certificate, don't include the `certificate_authorities` setting. This example assumes the remote is using the private certificates [created earlier](#remote-clusters-security-api-key-remote-action), which require the CA to be added.
+        If the remote cluster uses a publicly trusted certificate, don't include the `certificate_authorities` setting. This example assumes the remote is using certificates signed by a private certificate authority (CA), which require the CA to be added.
         ::::
 
     3. Add the cross-cluster API key, created on the remote cluster earlier, to the keystore:

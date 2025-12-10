@@ -9,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Connect to {{es}} clusters in the same ECK environment [k8s-remote-clusters-connect-internal]
+# Connect to {{es}} clusters in the same {{eck}} environment [k8s-remote-clusters-connect-internal]
 
 These steps describe how to configure remote clusters between two {{es}} clusters that are managed by the same {{eck}} (ECK) operator. 
 

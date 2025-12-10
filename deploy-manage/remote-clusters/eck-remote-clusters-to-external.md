@@ -10,7 +10,7 @@ sub:
   remote_type_generic: deployment or cluster
 ---
 
-# Connect an ECK-managed cluster to an external cluster or deployment
+# Connect to an external {{es}} cluster or deployment
 
 These steps describe how to configure a remote cluster connection from an {{es}} cluster managed by {{eck}} (ECK) to an external {{es}} cluster, not managed by ECK. The remote cluster can be self-managed, or part of an {{ech}} (ECH) or {{ece}} (ECE) deployment.
 

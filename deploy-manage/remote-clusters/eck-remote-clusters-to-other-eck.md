@@ -1,5 +1,5 @@
 ---
-navigation_title: To a a different ECK environment
+navigation_title: To a different ECK environment
 applies_to:
   deployment:
     eck: ga
@@ -10,7 +10,7 @@ sub:
   remote_type_generic: deployment or cluster
 ---
 
-# Connect an ECK-managed cluster to a different ECK cluster
+# Connect to {{es}} clusters in a different {{eck}} environment
 
 These steps describe how to configure a remote cluster connection between {{es}} clusters handled by different {{eck}} (ECK) operators.
 
