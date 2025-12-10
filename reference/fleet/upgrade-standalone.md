@@ -35,7 +35,7 @@ To upgrade a standalone agent running on an edge node:
 
     ::::{tab-item} Windows
 
-    As an Administrator and run:
+    As an Administrator, run:
 
     ```shell
     .\elastic-agent.exe upgrade 9.1.1
