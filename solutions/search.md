@@ -17,7 +17,7 @@ This section documents {{es}} search primitives. These capabilities that are ava
 Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search applications.
 
 ::::{tip}
-Using the {{es}} solution or serverless project type? The {{es}} solution documentation covers exclusive UI tools (Agent Builder, Playground, Search Applications) that complement these search primitives. Refer to [](/solutions/elasticsearch-solution-project.md) for more details.
+Using the {{es}} solution or serverless project type? The {{es}} solution documentation covers additional UI tools that complement these search primitives. Refer to [](/solutions/elasticsearch-solution-project.md) for more details.
 ::::
 
 ## What you can build
