@@ -20,7 +20,6 @@ To upgrade a standalone agent running on an edge node:
     ::::{tab-item} macOS
 
     ```shell
-    cd /Library/Elastic/Agent/
     sudo elastic-agent upgrade 9.1.1
     ```
 
@@ -29,7 +28,6 @@ To upgrade a standalone agent running on an edge node:
     ::::{tab-item} Linux
 
     ```shell
-    cd /opt/Elastic/Agent/
     sudo elastic-agent upgrade 9.1.1
     ```
 
@@ -40,7 +38,6 @@ To upgrade a standalone agent running on an edge node:
     Open a PowerShell prompt as an Administrator and run:
 
     ```shell
-    cd "C:\Program Files\Elastic\Agent"
     .\elastic-agent.exe upgrade 9.1.1
     ```
 
