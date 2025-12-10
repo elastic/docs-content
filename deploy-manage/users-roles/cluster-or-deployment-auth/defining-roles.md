@@ -24,8 +24,8 @@ You can also implement custom roles providers. If you need to integrate with ano
 After you create your custom roles, you can [learn how to assign them to users](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md#assign-roles-to-users).
 
 :::{admonition} Defining custom roles in {{serverless-short}}
-This topic how to create custom roles in {{stack}} clusters and deployments. You can also learn about [organization-level](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) roles and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) in {{serverless-full}}.
-If you want too create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
+This topic explains how to create custom roles in {{stack}} clusters and deployments. You can also learn about [organization-level](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) roles and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) in {{serverless-full}}.
+If you want to create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
 :::
 
 ## Role structure
