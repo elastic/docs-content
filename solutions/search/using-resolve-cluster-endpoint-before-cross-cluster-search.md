@@ -19,7 +19,7 @@ You may want to exclude a cluster or index from a search when:
 3. The index expression, combined with any query parameters you specify, might trigger exceptions. In these cases, the "error" field in the `_resolve/cluster` response will be present. This is also where security/permission errors will be shown.
 4. A remote cluster is running an older version that does not support features needed for your search.
 
-## {{api-examples-title}} [resolve-cluster-api-example]
+## Examples [resolve-cluster-api-example]
 
 ```console
 GET /_resolve/cluster/my-index*,clust*:my-index*
