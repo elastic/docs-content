@@ -164,7 +164,7 @@ Terminology:
 * TBS: Tail-based sampling.
 * IOPS: Input/Output Operations Per Second, which is a measure of disk performance.
 
-#### APM Server 9.2
+#### APM Server 9.x
 
 | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
@@ -194,10 +194,11 @@ Terminology:
 
 When interpreting these numbers, note that:
 
+* APM Server 9.x performance data is based on version 9.2.2, which includes optimizations compared to 9.0 and represents typical 9.x series performance characteristics.
 * The metrics are inter-related. For example, it is reasonable to see higher memory usage and disk usage when the event ingestion rate is higher.
 * Under normal operation, the event indexing rate divided by the event ingestion rate should approximate the configured sampling rate (10% in this case). However, in the version 8.19 numbers above, as APM Server is under full load, sampling decision handling lags behind due to disk read operations that compete with ingest path writes for disk I/O resources, resulting in a significantly lower event indexing rate than expected.
-* Memory usage measurements differ between versions: version 9.2 numbers reflect only the APM Server process RSS (excluding OS cache), while version 8.19 numbers include OS cache because the database is memory-mapped. Despite this measurement difference, version 9.0+ uses significantly less memory overall due to its much smaller database footprint.
-* Lower sampling rates result in higher event ingestion rates because less overhead is required for sampling decisions. For example, reducing the sampling rate from 10% to 5% in version 9.2 increases event ingestion rate by 5-10% (data not shown in the tables above).
+* Memory usage measurements differ between versions: version 9.x numbers reflect only the APM Server process RSS (excluding OS cache), while version 8.19 numbers include OS cache because the database is memory-mapped. Despite this measurement difference, version 9.0+ uses significantly less memory overall due to its much smaller database footprint.
+* Lower sampling rates result in higher event ingestion rates because less overhead is required for sampling decisions. For example, reducing the sampling rate from 10% to 5% in version 9.x increases event ingestion rate by 5-10% (data not shown in the tables above).
 
 The tail-based sampling implementation in version 9.0+ offers significantly better performance compared to version 8.x, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.x, as the database grows larger, the performance slowdown can become disproportionate.
 
