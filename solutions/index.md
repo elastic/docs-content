@@ -32,7 +32,9 @@ The [Search use case](/solutions/search.md) documents core {{es}} search capabil
 
 Solutions provide integrated UI tools and workflows with sensible defaults, in addition to core platform capabilities. They help you get started quickly with common use cases.
 
-On {{serverless-full}}, select a project type when creating a project. On {{ech}} or self-managed deployments, configure solutions in deployment settings.
+Solutions are available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment:
+- On {{serverless-full}}, you select a project type when creating your project.
+- On non-serverless deployments, solution views are configured per [space](/deploy-manage/manage-spaces.md).
 
 | Solution/Project | Description |
 | --- | --- |
