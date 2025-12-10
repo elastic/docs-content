@@ -22,14 +22,30 @@ Using the {{es}} solution or serverless project type? The {{es}} solution docume
 
 ## What you can build
 
-| Application type | Search technique | Key primitives | Documentation |
-|-----------------|------------------|----------------|---------------|
-| **Website/documentation search** | Text matching with relevance scoring | Full-text search, analyzers, scoring functions | [Full-text search](/solutions/search/full-text.md), [Ranking](/solutions/search/ranking.md) |
-| **Ecommerce product catalogs** | Text + filters + facets | Hybrid search, aggregations, boosting | [Hybrid search](/solutions/search/hybrid-search.md), [Ranking](/solutions/search/ranking.md) |
-| **Semantic/similarity search** | Embedding-based retrieval | Vector search, dense/sparse vectors, kNN | [Vector search](/solutions/search/vector.md), [Semantic search](/solutions/search/semantic-search.md) |
-| **RAG applications** | Retrieval for LLM context | Retrievers, embedding models, ranking, query methods | [RAG](/solutions/search/rag.md), [Querying](/solutions/search/querying-for-search.md), [Retrievers](/solutions/search/retrievers-overview.md), [Semantic search](/solutions/search/semantic-search.md), [Ranking](/solutions/search/ranking.md) |
-| **Geospatial applications** | Location-based queries | Geo-point, geo-shape fields, distance sorting | [Geospatial search](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) |
-| **Federated search** | Querying multiple clusters | Remote cluster connections, distributed queries | [Cross-cluster search](/solutions/search/cross-cluster-search.md) |
+Use {{es}} search primitives to build search applications including:
+
+- Website and documentation search
+- Ecommerce product catalogs
+- Content recommendation systems
+- RAG (Retrieval Augmented Generation) systems
+- Geospatial search applications
+- Question answering systems
+- Custom observability or cybersecurity search tools
+- Much more!
+
+## Topics
+
+The following topics are covered in this section:
+
+| Topic | Description |
+|-------|-------------|
+| [**Get started**](/solutions/search/get-started.md) | Create deployments, connect to {{es}}, and run your first searches |
+| [**Ingest data**](/solutions/search/ingest-for-search.md) | Options for getting data into {{es}} |
+| [**Search approaches**](/solutions/search/search-approaches.md) | Compare full-text, vector, semantic, and hybrid search techniques |
+| [**Build your queries**](/solutions/search/querying-for-search.md) | Implement your search approaches using specific query languages |
+| [**Ranking and reranking**](/solutions/search/ranking.md) | Control result ordering and relevance |
+| [**RAG**](/solutions/search/rag.md) | Learn about tools for retrieval augmented generation with {{es}}|
+| [**Building applications**](/solutions/search/site-or-app.md) | Integrate {{es}} into your websites or applications |
 
 ## Core concepts [search-concepts]
 
