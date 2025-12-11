@@ -71,7 +71,7 @@ Refer to [Area chart settings](#settings) to find all configuration options for 
 
 Use stacking to show how categories contribute to a total over time.
 
-1. Create an **Area** visualization with a time-based **Horizontal axis**.
+1. Create an area chart with a time-based **Horizontal axis**.
 2. Break down the series by a categorical field, for example, `agent.keyword`, `response.keyword`.
    You can set the area chart stack mode to:
    - **Stacked** — Show cumulative totals and category contributions.
@@ -90,7 +90,7 @@ In Area charts, you can enable time shift to compare different periods and ident
 
 ![Example Lens area chart compare periods](../../images/kibana-area-compare-periods.png)
 
-1. Create an **Area** visualization with a time-based **Horizontal axis** and your main metric on the **Vertical axis** (for example, `bytes`).
+1. Create an area chart with a time-based **Horizontal axis** and your main metric on the **Vertical axis** (for example, `bytes`).
 2. From the three-dot menu in the upper-left of the Layers panel, select **Duplicate layer**.
 3. From the duplicated layer, open the **Advanced** of the **Vertical axis** and set **Time shift** to `1w`. 
    Check also [Compare differences over time](../lens.md#compare-data-with-time-offsets) for more details.
