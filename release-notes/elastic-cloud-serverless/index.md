@@ -9,6 +9,47 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## December 8, 2025 [serverless-changelog-12082025]
+
+### Features and enhancements [serverless-changelog-12082025-features-enhancements]
+
+* Allows you to search scheduled reports by title and creator [#243841]({{kib-pull}}243841)
+* Updates the rule flapping schema to add an optional `enabled` field [#243855]({{kib-pull}}243855)
+* Improves suggestions for `LIKE` and `RLIKE` operators so they only suggest string-compatible options [#244903]({{kib-pull}}244903)
+* Redesigns the Lookup index editor with a new layout and controls [#244480]({{kib-pull}}244480)
+* Adds support for global custom ingest pipelines for service-level objectives (SLOs), allowing you to create a single pipeline that applies to all SLO rollup and summary documents [#245025]({{kib-pull}}245025)
+* Changes SLO rollup indexing to store service level indicator (SLI) data daily instead of monthly by default, with override support through a global custom ingest pipeline [#244978]({{kib-pull}}244978)
+* Adds ELSER in Elastic Inference Service (EIS) as a model option for the Observability AI Assistant knowledge base [#243298]({{kib-pull}}243298)
+* Adds an **Edit tags** action that lets you manually apply workflow tags to alerts [#243792]({{kib-pull}}243792)
+* Allows you to view and filter alerts by manually added workflow tags [#244251]({{kib-pull}}244251)
+* Adds a built-in product documentation tool to Agent Builder, available only when product documentation is installed [#242598]({{kib-pull}}242598)
+* Adds a platform cases tool and experimental security attachments and tools to Agent Builder to support existing **Ask AI Assistant** and **View in Agent Builder** workflows [#243574]({{kib-pull}}243574).
+* Adds an alerts search tool and two security agents (Alerts Agent and Entity Agent) to Agent Builder [#245205]({{kib-pull}}245205)
+* Updates the API keys management page to default to displaying personal API keys only [#245261]({{kib-pull}}245261)
+* Adds two new preconfigured connectors (General Purpose LLM v2 and General Purpose LLM v3) and renames the Elastic Managed LLM connector to General Purpose LLM v1 [#242791]({{kib-pull}}242791)
+* Adds the Groq icon to the providers list displayed during AI Connector and Inference endpoint creation [#244962]({{kib-pull}}244962)
+* Adds the **Suggest a pipeline** option in the Processing tab of streams to help generate ingest pipelines [#243950]({{kib-pull}}243950)
+* Adds support for `geo_point` fields in the schema editor for classic streams [#244356]({{kib-pull}}244356)
+* Enhances the Streams attachments feature with a details flyout, a better user experience, and better user feedback [#244880]({{kib-pull}}244880)
+* Adds validation for Streamlang DSL to enforce field namespacing in wired streams and detect type mismatches in processor configurations [#244221]({{kib-pull}}244221)
+* Adds an onboarding tour to the Streams UI to guide new users through core workflows [#244808]({{kib-pull}}244808)
+* Allows you to filter {{esql}} charts in dashboards [#243439]({{kib-pull}}243439)
+* Enables Value reports in {{ech}} and adds logic to export them using the share plugin [#243511]({{kib-pull}}243511)
+* Adds a **Span links** badge to the unified trace waterfall view [#244389]({{kib-pull}}244389)
+* Adds dynamic form elements for the IBM Resilient connector fields, improving the configuration experience [#238869]({{kib-pull}}238869)
+* Adds a time range selector to the Cases page to simplify filtering by timeframe [#243409]({{kib-pull}}243409)
+
+### Fixes [serverless-changelog-12082025-fixes]
+
+* Fixes an issue where `alert.consecutiveMatches` was missing in the action context for rule executions [#244997]({{kib-pull}}244997)
+* Fixes an issue where the Security alerts table did not update columns correctly when switching view mode [#245253]({{kib-pull}}245253)
+* Handles alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559)
+* Fixes an issue where the SLOs page could cause inconsistent browser back button behavior [#242761]({{kib-pull}}242761)
+* Standardizes error logging to make troubleshooting more consistent [#245030]({{kib-pull}}245030)
+* Fixes an issue that prevented IdP-initiated authentication when multiple OIDC providers were configured [#243869]({{kib-pull}}243869)
+* Improves UIAM reliability by increasing container health check timeouts and populating the UIAM shared secret in {{es}} [#245238]({{kib-pull}}245238)
+* Fixes CSP-agnostic regressions by removing cloud provider host checks, ensuring all cloud providers for {{ech}} deployments and {{serverless-short}} projects are supported [#242592]({{kib-pull}}242592)
+
 ## December 2, 2025 [serverless-changelog-12022025]
 
 ### Features and enhancements [serverless-changelog-12022025-features-enhancements]
