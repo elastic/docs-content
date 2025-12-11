@@ -128,10 +128,7 @@ subs:
   project-settings:   "Project settings"
   manage-app:   "Management"
   index-manage-app:   "Index Management"
-  rules-app:   "Rules"
   saved-objects-app:   "Saved Objects"
-  api-keys-app:   "API keys"
-  connectors-app:   "Connectors"
   reports-app:   "Reports"
   app-search-crawler:   "App Search web crawler"
   agent:   "Elastic Agent"
@@ -144,7 +141,6 @@ subs:
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
   stack:   "Elastic Stack"
-  xpack:   "X-Pack"
   es:   "Elasticsearch"
   kib:   "Kibana"
   ls:   "Logstash"
@@ -156,7 +152,6 @@ subs:
   packetbeat:   "Packetbeat"
   winlogbeat:   "Winlogbeat"
   esql:   "ES|QL"
-  elastic-agent:   "Elastic Agent"
   k8s:   "Kubernetes"
   security-features:   "security features"
   operator-feature:   "operator privileges feature"
@@ -177,7 +172,6 @@ subs:
   webhook-cm:   "Webhook - Case Management"
   opsgenie:   "Opsgenie"
   hive:   "TheHive"
-  monitoring:   "X-Pack monitoring"
   monitor-features:   "monitoring features"
   stack-monitor-features:   "Elastic Stack monitoring features"
   watcher:   "Watcher"
@@ -225,10 +219,6 @@ subs:
   watcher-transform:   "payload transform"
   watcher-transforms:   "payload transforms"
   watcher-transforms-cap:   "Payload transforms"
-  transform:   "transform"
-  transforms:   "transforms"
-  transform-cap:   "Transform"
-  transforms-cap:   "Transforms"
   dfanalytics-cap:   "Data frame analytics"
   dfanalytics:   "data frame analytics"
   dfanalytics-job:   "data frame analytics analytics job"
@@ -270,8 +260,6 @@ subs:
   private-locations:   "Private Locations"
   esh:   "ES-Hadoop"
   observability:   "Observability"
-  api-query-parms-title:   "Query parameters"
-  api-examples-title:   "Examples"
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
   es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
@@ -296,6 +284,9 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.10.5
+  helm-version: 3.15.4
   ece-docker-images-8: 8.18.8
   ece-docker-images-9: 9.0.8
+  search-platform: "Search AI Platform"
+
 
