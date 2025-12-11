@@ -17,6 +17,10 @@ products:
 
 Use the information on this page to troubleshoot issues using EDOT Python.
 
+:::{tip}
+If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, note that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) instead.
+:::
+
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
 As a first step, review the [supported technologies](elastic-otel-python://reference/edot-python/supported-technologies.md) to ensure your application is supported by the agent. Are you using a Python version that EDOT Python supports? Are the versions of your dependencies in the supported version range to be instrumented?

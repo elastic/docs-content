@@ -17,21 +17,29 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack
+:::{tab-item} {{stack}}
 :sync: stack
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
-* An Elastic Distribution of OpenTelemetry (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
+* An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
+
+:::{important}
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+:::
 
 :::
 
-:::{tab-item} Serverless
+:::{tab-item} {{serverless-short}}
 :sync: serverless
 
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-* An Elastic Distribution of OpenTelemetry (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
+* An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
+
+:::{important}
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+:::
 
 :::
 ::::
@@ -65,6 +73,10 @@ Follow these steps to collect application telemetry data using the EDOT SDKs:
    - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 4. Configure your EDOT SDK to send data to the APM endpoint. The **OpenTelemetry** tab provides the required configuration values.
 
+:::{important}
+Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
+:::
+
 :::{note}
 If your application runs on Kubernetes, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md).
 :::
@@ -86,6 +98,10 @@ If your application runs on Kubernetes, the OpenTelemetry operator automatically
    - [PHP](elastic-otel-php://reference/edot-php/setup/index.md)
    - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 4. Configure your EDOT SDK to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md). The **OpenTelemetry** tab provides the required configuration values.
+
+:::{important}
+Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
+:::
 5. (Optional) Activate Central Configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
 
 :::{note}

@@ -33,21 +33,29 @@ For a more detailed description of the components and advanced configuration, re
 :sync: stack
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A running Kubernetes cluster (v1.23 or newer).
+* A running {{k8s}} cluster (v1.23 or newer).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
+
+:::{important}
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+:::
 
 :::
 
-:::{tab-item} Serverless
+:::{tab-item} {{serverless-short}}
 :sync: serverless
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
-* A running Kubernetes cluster (v1.23 or newer).
+* A running {{k8s}} cluster (v1.23 or newer).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
+
+:::{important}
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+:::
 
 :::
 
@@ -85,9 +93,13 @@ For a more detailed description of the components and advanced configuration, re
     * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
     * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
 
+:::{important}
+Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
 :::
 
-:::{tab-item} Serverless
+:::
+
+:::{tab-item} {{serverless-short}}
 :sync: serverless
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
@@ -115,6 +127,9 @@ For a more detailed description of the components and advanced configuration, re
     * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
     * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
 
+:::{important}
+Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
+:::
 
 :::
 
