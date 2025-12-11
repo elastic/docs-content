@@ -20,7 +20,7 @@ AutoOps is currently not available in any region for GovCloud customers.
 
 ## AutoOps for {{ECH}} regions
 
-AutoOps for {{ECH}} is set up and enabled automatically in the following regions.
+AutoOps for {{ECH}} is set up and enabled automatically in the following regions for AWS and GCP. Regions for Azure are coming soon.
 
 ### AWS
 
@@ -53,8 +53,6 @@ AutoOps for {{ECH}} is set up and enabled automatically in the following regions
 | Region | Name |
 | --- | --- |
 | us-central-1 | US Central (Iowa) |
-
-Regions for Azure are coming soon.
 
 Learn how to [access](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) AutoOps in your {{ECH}} deployment.
 
