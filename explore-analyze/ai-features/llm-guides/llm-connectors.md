@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Enable large language model (LLM) access
+# Configure access to LLMs
 
 Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-the-box Elastic Managed LLMs or with third-party LLMs configured using one of the available connectors.
 
@@ -29,6 +29,19 @@ Follow these guides to connect to one or more third-party LLM providers:
 * [Amazon Bedrock](/explore-analyze/ai-features/llm-guides/connect-to-amazon-bedrock.md)
 * [OpenAI](/explore-analyze/ai-features/llm-guides/connect-to-openai.md)
 * [Google Vertex](/explore-analyze/ai-features/llm-guides/connect-to-google-vertex.md)
+
+## Connect to a self-managed LLM
+
+For {{elastic-sec}} and {{observability}}, you can also connect to a custom LLM deployed and managed by you.
+
+Self-managed LLMs for {{elastic-sec}}: 
+
+-- For production environments or air-gapped environments, you can [connect to vLLM](/explore-analyze/ai-features/llm-guides/connect-to-vllm.md).
+-- For experimental deployments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/solutions/security/ai/connect-to-lmstudio-security.md).
+
+Self-managed LLMs for {{observability}}:
+
+-- For experimental deployments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
 
 ## Preconfigured connectors
 

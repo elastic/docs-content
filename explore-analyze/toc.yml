@@ -176,6 +176,11 @@ toc:
           - file: ai-features/llm-guides/connect-to-amazon-bedrock.md
           - file: ai-features/llm-guides/connect-to-openai.md
           - file: ai-features/llm-guides/connect-to-google-vertex.md
+          - file: ai-features/llm-guides/local-llms-overview.md
+            children:
+              - file: ai-features/llm-guides/connect-to-lmstudio-observability.md
+              - file: ai-features/llm-guides/connect-to-lmstudio-security.md
+              - file: ai-features/llm-guides/connect-to-vllm.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md

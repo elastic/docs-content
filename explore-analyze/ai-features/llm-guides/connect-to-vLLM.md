@@ -1,4 +1,5 @@
 ---
+navigation_title: Connect to vLLM for {{elastic-sec}}
 applies_to:
   stack: all
   serverless:
@@ -189,4 +190,4 @@ With your vLLM connector set up, you can use it to power features including:
 * [Automatic import](/solutions/security/get-started/automatic-import.md): Use AI to create custom integrations for third-party data sources.
 * [AI Assistant for Observability and Search](/solutions/observability/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
 
-You can also learn how to [set up other types of LLM connectors](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+You can also learn how to [set up other types of LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md).

@@ -1,5 +1,5 @@
 ---
-navigation_title: Connect to a local LLM
+navigation_title: Connect to LM Studio for {{observability}}
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/connect-to-local-llm.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: observability
 ---
 
-# Connect to your own local LLM
+# Connect to a local LLM for {{observability}} using LM Studio
 
 :::{important}
 Elastic doesn’t support the setup and configuration of local LLMs. The example provided is for reference only.

@@ -21,7 +21,7 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 ## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate license and feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Elastic Managed LLM is available by default if your license supports it.
+-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLM is available by default if your license supports it.
 
 ## AI-powered features on the Elastic platform
 
@@ -87,7 +87,7 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 
 ## AI-powered features in {{observability}}
 
-{{observability}}'s AI-powered features all require an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
 
 ### AI assistant for {{observability}}
 
@@ -104,20 +104,20 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 
 ## AI-powered features in {{elastic-sec}}
 
-{{elastic-sec}}'s AI-powered features all require an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+{{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
 
 ### AI Assistant for Security
 
 [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps.
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 
 ### Attack Discovery
 
 [Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 
 ### Automatic Migration
@@ -127,14 +127,14 @@ This feature requires an [LLM connector](/solutions/security/ai/set-up-connector
 * Splunk rules
 * Splunk dashboards
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 
 ### Automatic Import
 
 [Automatic Import](/solutions/security/get-started/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 
 ### Automatic Troubleshooting
