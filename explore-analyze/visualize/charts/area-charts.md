@@ -68,50 +68,30 @@ Refer to [Area chart settings](#settings) to find all configuration options for 
 ## Advanced area scenarios
 
 ### Show composition with stacked and 100% stacked areas [area-stacking]
+
 Use stacking to show how categories contribute to a total over time.
 
-1. Create an **Area** visualization with a time-based **X-axis**.
-2. Break down the series by a categorical field (for example, `event.outcome`, `response.status_code`, or `service.name`).
-3. In the series appearance options, set **Stacking** to:
-   - **Stacked** — Shows cumulative totals and category contributions.
+1. Create an **Area** visualization with a time-based **Horizontal axis**.
+2. Break down the series by a categorical field, for example, `agent.keyword`, `response.keyword`.
+   You can set the area chart stack mode to:
+   - **Stacked** — Show cumulative totals and category contributions.
+
+     ![Example Lens area chart stacked mode](../../images/kibana-area-stacked.png)
+
    - **Percentage (100%)** — Normalizes each timestamp to 100% to emphasize shares rather than magnitudes.
-4. Optionally set **Order by** for the breakdown dimension to control stacking order.
+
+     ![Example Lens area chart percentage mode](../../images/kibana-area-percentage.png)
+
+4. Optionally set **Rank by** for the breakdown dimension to control stacking order.
 
 ### Compare current vs previous period with time shift [area-timeshift]
+
 Overlay a shifted series to compare different periods.
 
 1. Create an **Area** visualization with a time-based **X-axis** and your main metric on **Y-axis** (for example, `sum(bytes)` or `average(transaction.duration.us)`).
 2. Duplicate the series (Actions menu > **Duplicate**), or add a new series with the same metric.
 3. In the duplicated series, open **Advanced** and set **Time shift** to a value like `1w`, `1d`, or `1M`. See [Compare differences over time](../lens.md#compare-data-with-time-offsets).
 4. Use a distinct color and set **Stacking** to **None** so lines overlay rather than stack.
-
-### Smooth curves and handle missing values [area-missing-values]
-Configure how lines connect and how gaps are displayed to avoid misleading visuals.
-
-1. In the editor toolbar, open **Appearance**.
-2. Choose **Line interpolation**: **Straight** (default), **Smooth**, or **Step**.
-3. Configure **Missing values** to **Hide**, **Zero**, **Linear**, **Last**, or **Next**. See [Visualization appearance options](../lens.md#customize-visualization-appearance).
-4. Optionally enable **Show as dotted line** when filling gaps to distinguish inferred segments.
-
-### Create rolling metrics (moving average, cumulative sum) [area-rolling-metrics]
-Derive smoother or aggregated trends with formulas.
-
-- Moving average of a metric:
-  ```
-  moving_average(average(system.cpu.total.pct), window=5)
-  ```
-- Cumulative sum for a running total:
-  ```
-  cumulative_sum(sum(orders.count))
-  ```
-
-Add these as additional series or replace the base metric. Remember to set **Value format** appropriately (for example, `Percent`).
-
-### Highlight targets with reference lines and annotations [area-reference-annotations]
-Add context with thresholds and events.
-
-1. Add **Reference lines** for thresholds (for example, p75 latency SLO): see [Add reference lines](../lens.md#add-reference-lines).
-2. Add **Annotations** to mark deployments, incidents, or business events: see [Add annotations](../lens.md#add-annotations).
 
 ## Area chart settings [settings]
 
