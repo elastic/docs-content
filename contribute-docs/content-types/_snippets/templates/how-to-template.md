@@ -13,7 +13,7 @@ For complete guidance, refer to [the how-to guide](https://www.elastic.co/docs/c
 
 -->
 
-# How to [action verb describing the task]
+# [action verb describing the task]
 <!-- REQUIRED
 
 A precise description of the task using an action verb 
