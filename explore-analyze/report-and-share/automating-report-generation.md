@@ -250,7 +250,7 @@ Save time by setting up a recurring task that automatically generates reports an
     * **Message**: Keep the default email message, or enter your own. 
 
        ::::{note} 
-       In the subject and message, you can use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. 
+       In the subject and message, you can use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerts-cases/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
        ::::
 
 6. Click **Schedule exports** to save the schedule. 
