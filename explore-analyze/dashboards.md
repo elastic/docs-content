@@ -23,7 +23,7 @@ A dashboard is composed of one or more **panels** that you arrange to tell your 
 New to dashboards? Start with these hands-on tutorials that walk you through creating your first dashboards using sample data:
 
 - [Create a simple dashboard to monitor website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
-- [Create a dashboard with time series charts](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using ecommerce data.
+- [Create a dashboard with time series charts](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using eCommerce data.
 
 
 ## Work with dashboards [work-with-dashboards]
