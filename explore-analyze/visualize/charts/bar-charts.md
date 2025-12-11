@@ -261,9 +261,6 @@ Customize your bar chart to display exactly the information you need, formatted 
     - **Intervals**: Group data into numerical ranges
     - **Top values**: Specify fields for which to gather top values 
 
-    :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
-    :::
-
 **Appearance**
 :   Define the formatting of the breakdown, including:
     - **Name**: Customize the legend label.
