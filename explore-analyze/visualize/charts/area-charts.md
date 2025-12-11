@@ -82,16 +82,19 @@ Use stacking to show how categories contribute to a total over time.
 
      ![Example Lens area chart percentage mode](../../images/kibana-area-percentage.png)
 
-4. Optionally set **Rank by** for the breakdown dimension to control stacking order.
+4. Optionally, set **Rank by** for the breakdown dimension to control stacking order.
 
-### Compare current vs previous period with time shift [area-timeshift]
+### Compare current versus previous period with time shift [area-timeshift]
 
-Overlay a shifted series to compare different periods.
+In Area charts, you can enable time shift to compare different periods and identify deltas.
 
-1. Create an **Area** visualization with a time-based **X-axis** and your main metric on **Y-axis** (for example, `sum(bytes)` or `average(transaction.duration.us)`).
-2. Duplicate the series (Actions menu > **Duplicate**), or add a new series with the same metric.
-3. In the duplicated series, open **Advanced** and set **Time shift** to a value like `1w`, `1d`, or `1M`. See [Compare differences over time](../lens.md#compare-data-with-time-offsets).
-4. Use a distinct color and set **Stacking** to **None** so lines overlay rather than stack.
+![Example Lens area chart compare periods](../../images/kibana-area-compare-periods.png)
+
+1. Create an **Area** visualization with a time-based **Horizontal axis** and your main metric on the **Vertical axis** (for example, `bytes`).
+2. From the three-dot menu in the upper-left of the Layers panel, select **Duplicate layer**.
+3. From the duplicated layer, open the **Advanced** of the **Vertical axis** and set **Time shift** to `1w`. 
+   Check also [Compare differences over time](../lens.md#compare-data-with-time-offsets) for more details.
+4. Use a different color and set **Stacking** to **None** so areas overlay rather than stack.
 
 ## Area chart settings [settings]
 
