@@ -11,7 +11,7 @@ products:
 
 # Create a dashboard with time series charts [create-a-dashboard-of-panels-with-ecommerce-data]
 
-Learn how to create time series visualizations and build a dashboard that tracks trends over time. This tutorial uses ecommerce sample data to analyze sales patterns, but you can apply these techniques to any time-based data.
+Learn how to create time series visualizations and build a dashboard that tracks trends over time. This tutorial uses eCommerce sample data to analyze sales patterns, but you can apply these techniques to any time-based data.
 
 When you're done, you'll have a complete dashboard showing sales trends, revenue patterns, and customer behavior over time.
 
