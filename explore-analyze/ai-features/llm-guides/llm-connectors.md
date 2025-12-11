@@ -34,12 +34,12 @@ Follow these guides to connect to one or more third-party LLM providers:
 
 For {{elastic-sec}} and {{observability}}, you can also connect to a custom LLM deployed and managed by you.
 
-Self-managed LLMs for {{elastic-sec}}: 
+**Self-managed LLMs for {{elastic-sec}}:**
 
 -- For production environments or air-gapped environments, you can [connect to vLLM](/explore-analyze/ai-features/llm-guides/connect-to-vllm.md).
 -- For experimental deployments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/solutions/security/ai/connect-to-lmstudio-security.md).
 
-Self-managed LLMs for {{observability}}:
+**Self-managed LLMs for {{observability}}:**
 
 -- For experimental deployments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
 
