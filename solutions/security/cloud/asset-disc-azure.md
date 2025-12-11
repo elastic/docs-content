@@ -41,7 +41,7 @@ Two deployment technologies are available: agentless and agent-based.
 7. Next, you’ll need to authenticate to Azure. The following methods are available:
     
     * Option 1: Cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
-      Under **New connection**, expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
+      Under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
     
     * Option 2: Azure Client ID with Client Secret. Provide a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/asset-disc-azure.md#cad-azure-client-secret).
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
