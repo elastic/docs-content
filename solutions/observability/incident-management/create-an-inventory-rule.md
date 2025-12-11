@@ -48,7 +48,10 @@ In the following example, Kubernetes Pods is the selected inventory type. The co
 :::
 
 ### Supported data
-:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+```{applies_to}
+stack: ga 9.3
+serverless: ga
+```
 
 The inventory types only support data from the following sources:
 

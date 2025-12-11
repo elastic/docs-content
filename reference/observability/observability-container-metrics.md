@@ -19,6 +19,10 @@ Learn about key container metrics displayed in the Infrastructure UI:
 
 These are the key metrics displayed for Docker containers.
 
+:::{note}
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+The Infrastructure UI only supports Docker container metric data from the [Docker](integration-docs://reference/docker.md) integration.
+:::
 
 ### CPU usage metrics [key-metrics-docker-cpu]
 
@@ -50,9 +54,14 @@ These are the key metrics displayed for Docker containers.
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation:**  `counter_rate(max(docker.diskio.write.ops), kql='docker.diskio.write.ops: *')`<br> |
 
 
-## Kubernetes container metrics [key-metrics-kubernetes]
+## {{k8s}} container metrics [key-metrics-kubernetes]
 
-These are the key metrics displayed for Kubernetes (containerd) containers.
+These are the key metrics displayed for {{k8s}} (containerd) containers.
+
+:::{note}
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+The Infrastructure UI supports {{k8s}} container metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
+:::
 
 
 ### CPU usage metrics [key-metrics-kubernetes-cpu]

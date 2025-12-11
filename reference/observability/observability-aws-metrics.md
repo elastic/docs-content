@@ -20,6 +20,11 @@ Additional AWS charges for GetMetricData API requests are generated using this m
 
 To analyze EC2 instance metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
+:::{note}
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+The Infrastructure UI only supports EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
+:::
+
 |  |  |
 | --- | --- |
 | **CPU Usage** | Average of `aws.ec2.cpu.total.pct`. |
@@ -32,6 +37,11 @@ To analyze EC2 instance metrics, you can select view filters based on the follow
 ## Monitor S3 buckets [monitor-s3-buckets]
 
 To analyze S3 bucket metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+
+:::{note}
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+The Infrastructure UI only supports S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
+:::
 
 |  |  |
 | --- | --- |
@@ -46,6 +56,11 @@ To analyze S3 bucket metrics, you can select view filters based on the following
 
 To analyze SQS queue metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
+:::{note}
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+The Infrastructure UI only supports SQS metric data from the [SQS](integration-docs://reference/aws/ec2.md) integration.
+:::
+
 |  |  |
 | --- | --- |
 | **Messages Available** | Max of `aws.sqs.messages.visible`. |
@@ -58,6 +73,11 @@ To analyze SQS queue metrics, you can select view filters based on the following
 ## Monitor RDS databases [monitor-rds-databases]
 
 To analyze RDS database metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+
+:::{note}
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+The Infrastructure UI only supports RDS metric data from the [RDS](integration-docs://reference/aws/ec2.md) integration.
+:::
 
 |  |  |
 | --- | --- |
