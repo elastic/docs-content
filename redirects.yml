@@ -617,3 +617,7 @@ redirects:
   'solutions/security/cloud/integrations/rapid7.md': 'solutions/security/integrations/rapid7.md'
   'solutions/security/cloud/integrations/tenablevm.md': 'solutions/security/integrations/tenablevm.md'
   'solutions/security/cloud/integrations/wiz.md': 'solutions/security/integrations/wiz.md'
+
+  # Move CCS feature docs to explore-analyze
+  'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
+  'solutions/search/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'

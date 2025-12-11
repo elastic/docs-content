@@ -20,6 +20,7 @@
 /explore-analyze/query-filter/              @elastic/developer-docs @elastic/experience-docs
 /explore-analyze/report-and-share/          @elastic/experience-docs
 /explore-analyze/scripting/                 @elastic/admin-docs
+/explore-analyze/cross-cluster-search/      @elastic/developer-docs
 /explore-analyze/transforms/                @elastic/developer-docs
 /explore-analyze/visualize/                 @elastic/experience-docs
 

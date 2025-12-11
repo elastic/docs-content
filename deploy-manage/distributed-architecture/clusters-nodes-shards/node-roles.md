@@ -279,7 +279,7 @@ node.roles: [ ]
 
 ### Remote-eligible node [remote-node]
 
-A remote-eligible node acts as a cross-cluster client and connects to [remote clusters](../../remote-clusters.md). Once connected, you can search remote clusters using [{{ccs}}](../../../solutions/search/cross-cluster-search.md). You can also sync data between clusters using [{{ccr}}](../../tools/cross-cluster-replication.md).
+A remote-eligible node acts as a cross-cluster client and connects to [remote clusters](../../remote-clusters.md). Once connected, you can search remote clusters using [{{ccs}}](../../../explore-analyze/cross-cluster-search.md). You can also sync data between clusters using [{{ccr}}](../../tools/cross-cluster-replication.md).
 
 ```yaml
 node.roles: [ remote_cluster_client ]

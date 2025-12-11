@@ -112,7 +112,7 @@ You can use the following options to customize your searches.
 
 **Run an async search**<br> {{es}} searches are designed to run on large volumes of data quickly, often returning results in milliseconds. For this reason, searches are *synchronous* by default. The search request waits for complete results before returning a response.
 
-However, complete results can take longer for searches across large data sets or [multiple clusters](cross-cluster-search.md).
+However, complete results can take longer for searches across large data sets or [multiple clusters](/explore-analyze/cross-cluster-search.md).
 
 To avoid long waits, you can run an *asynchronous*, or *async*, search instead. An [async search](async-search-api.md) lets you retrieve partial results for a long-running search now and get complete results later.
 

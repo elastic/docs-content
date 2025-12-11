@@ -96,9 +96,7 @@ toc:
               - file: search/search-applications/search-application-api.md
               - file: search/search-applications/search-application-security.md
               - file: search/search-applications/search-application-client.md
-      - file: search/cross-cluster-search.md
-        children:
-          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
+
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
       - file: search/query-rules-ui.md

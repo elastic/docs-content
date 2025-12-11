@@ -1,7 +1,7 @@
 <!--
 This snippet is in use in the following locations:
 - /deploy-manage/remote-clusters/_snippets/remote-cluster-certificate-compatibility.md
-- /solutions/search/cross-cluster-search.md
+- /explore-analyze/cross-cluster-search.md
 -->
 |                       |                                                                      |
 |-----------------------|----------------------------------------------------------------------|

@@ -41,7 +41,7 @@ serverless:
 
 ## Known limitations
 
-* Currently, none of the privileged user monitoring visualizations support [cross-cluster search](/solutions/search/cross-cluster-search.md) as part of the data that they query from. 
+* Currently, none of the privileged user monitoring visualizations support [cross-cluster search](/explore-analyze/cross-cluster-search.md) as part of the data that they query from. 
 
 * You can define up to 10,000 privileged users per data source.
 
