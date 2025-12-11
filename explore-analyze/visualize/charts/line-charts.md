@@ -148,7 +148,7 @@ When creating or editing a visualization, open the {icon}`brush` panel to adjust
    * **Number of values**: `4`
 4. Save your chart.
 
-![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
+   ![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
 
 **Unique IPs over time**
 :   Visualizing unique IP sessions throughout the day:
