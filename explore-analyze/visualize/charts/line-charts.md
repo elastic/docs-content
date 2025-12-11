@@ -63,9 +63,9 @@ For more chart configuration options, go to the [Line chart settings](#settings)
 
 ## Advanced line scenarios
 
-### Compare trends between the current and previous periods [line-previous-period]
+### Compare current versus previous period with time shift [line-previous-period]
 
-In Line charts, you can enable time shift to compare the current value with a prior time range and identify deltas.
+In line charts, you can enable time shift to compare the current value with a prior time range and identify deltas.
 
 ![Example Lens line chart current previous](../../images/kibana-line-current-previous.png)
 
