@@ -12,7 +12,7 @@ Bar charts are one of the most versatile and widely used visualizations for comp
 
 They work with any type of data: numeric values, counts, averages, or calculations. You can compare sales by region, track errors by service, analyze user engagement by feature, or rank products by revenue. Using bar charts, you can display data horizontally or vertically, stacked (to show part-to-whole relationships), or grouped (to compare multiple metrics side by side).
 
-You can create bar charts in {{kib}} using [**Lens**](../lens.md).
+You can create bar charts in {{kib}} using [**Lens**](../lens.md "title =70%").
 
 ![Bar chart showing sales by category with different layouts](../../images/bar-chart.png)
 
@@ -213,7 +213,7 @@ To add an annotation:
    - **Text decoration**: Selects whether the label shows nothing or the annotation's name.
    - **Line**: Sets stroke width (1 px) plus pattern (solid or dashed).
    - **Color**: Sets the line color.
-   - **Hid annotation**: Hides or displays the annotation. By default, this setting is turned off and the annotation is displayed.
+   - **Hide annotation**: Hides or displays the annotation. By default, this setting is turned off and the annotation is displayed.
    - **Tooltip**: Adds additional fields to the annotation label. 
 6. Click **Close** to apply the configurations. Your bar chart will now display the annotations at the appropriate time points.
 
@@ -227,10 +227,10 @@ Customize your bar chart to display exactly the information you need, formatted 
 
 **Data**
 :   The dimension that creates your individual bars. Common options include:
-    - **Date histogram**: Create time-based bars with configurable intervals
-    - **Filters**: Define custom categories using KQL queries
-    - **Intervals**: Group data into numerical ranges
-    - **Top values**: Specify fields for which to gather top values 
+    - **Date histogram**: Create time-based bars with configurable intervals.
+    - **Filters**: Define custom categories using KQL queries.
+    - **Intervals**: Group data into numerical ranges.
+    - **Top values**: Specify fields for which to gather top values. 
 
 **Appearance**
 :   Define the formatting of the horizontal axis, including:
@@ -251,7 +251,6 @@ Customize your bar chart to display exactly the information you need, formatted 
     - **Value format**: Select to display values as number, percent, bytes, bits, duration, or with a custom format.
     - **Series color**: Assign a specific color to bars.
     - **Axis side**: Choose to display the veritical axis on the left or right side of the graph. By default, the axis displays on the left. 
-
 
 ### Break down by settings [breakdown-options]
 
@@ -276,10 +275,10 @@ Customize your bar chart to display exactly the information you need, formatted 
 When creating or editing a visualization, you can customize several appearance options. Use the toolbar above the chart to access these settings.
 
 **Appearance**
-:   Select the bar chart orientation. It can be **Horizontal** or **Vertical**. Click {icon}`brush` icon to access these settings.
+:   Select the bar chart orientation. It can be **Horizontal** or **Vertical**. Click the {icon}`brush` icon to access these settings.
 
 **Titles and text**
-:    Choose to hide or show bar values on bar charts:
+:    Specify to hide or show bar values on bar charts:
     - **Hide**: Removes the numeric value from the bars entirely; only the bar height represents the magnitude. 
     - **Show, if able**: Attempts to draw the value inside each bar, but the label will only render when there’s enough vertical space to keep text legible; crowded bars will not have labels. 
     
@@ -287,11 +286,11 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Bottom axis**
 :   Bottom-axis controls for Lens bar charts let you tune how the horizontal scale looks and behaves. Key options are:
-    - **Title**: Set the label that appears under the axis (e.g., “Date”); you can hide the label entirely if the layout is tight. 
+    - **Title**: Set the label that appears under the axis (for example), “Date”); you can hide the label entirely if the layout is tight. 
     - **Gridlines**: Toggles vertical guide lines across the chart, which help compare bar positions against the axis scale.
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
-    - **Orientation**: Choose whether the bottom axis title should be **Horizonta**, **Vertical**, or **Angled**.
-    - **Axis scale**: Choose linear (default), log, or square-root scaling. Even though this is the bottom axis, it matters for horizontal bar charts or numeric bucketed X-axes.
+    - **Orientation**: Set the placement of the bottom axis title. It can be **Horizonta**, **Vertical**, or **Angled**.
+    - **Axis scale**: Select linear (default), log, or square-root scaling. Even though this is the bottom axis, it matters for horizontal bar charts or numeric bucketed X-axes.
     - **Bounds & rounding**: Manually clamp the axis to a min/max or let Lens round to nice intervals; for numeric histograms this also controls whether “nice” bucket labels are used.
 
 **Left axis**
@@ -299,20 +298,17 @@ When creating or editing a visualization, you can customize several appearance o
     - **Title**: Set the label that appears under the axis (e.g., “Date”); you can hide the label entirely if the layout is tight. 
     - **Gridlines**: Toggles vertical guide lines across the chart, which help compare bar positions against the axis scale.
     - **Tick labels**: Show or hide the textual values beneath the ticks. When visible, the orientation picker lets you rotate them (horizontal, angled, vertical) to avoid overlap on dense timelines.
-    - **Orientation**: Choose whether the bottom axis title should be **Horizonta**, **Vertical**, or **Angled**.
+    - **Orientation**: Set the placement of the bottom axis title. It can be **Horizonta**, **Vertical**, or **Angled**.
     - **Partial data markers**: Highlights buckets at the edges of the time range that only contain partial data—useful for time-based bar charts so viewers know the first/last bucket might be incomplete.
     - **Current time marker**: Draws a vertical marker for “now” on time charts, so you can see how recent the latest bar is.
 
 **Legend**
 :   Configure elements of your bar chart's legend. Configurable options include:
-    - **Visiblity**: Select whether to automatically show the legend or hide it.
-    - **Position**: Choose to show the legend inside or outside the chart, then pick the side (left/right/top/bottom) and fine-tune alignment (vertical/horizontal) for grid-style layouts.
+    - **Visiblity**: Specify whether to automatically show the legend or hide it.
+    - **Position**: Choose to show the legend inside or outside the chart, then pick the side (left, right, top, or bottom) and fine-tune alignment (vertical/horizontal) for grid-style layouts.
     - **Width**: Set the width of the legend.
-    - **Statistics**: Choose one or more statistic to show (Average, Min, Max, Last value, etc.), Lens appends those numbers to every series label so you don’t have to hover over the chart to see headline figures.  
-    - **Label truncation**: Choose whether to truncate long series labels, and set a limit for how many lines render when it’s inside the chart
-
-    In practice: use Show + Outside + multiple columns for dashboards with many series, keep Auto + Inside when space is limited, and add legend stats only when those aggregates clarify the chart (e.g., show Range or Average on threshold comparisons).
-
+    - **Statistics**: Choose one or more statistic to show (for example, average, min, max, last value), Lens appends those numbers to every series label so you don’t have to hover over the chart to see headline figures.  
+    - **Label truncation**: Choose whether to truncate long series labels, and set a limit for how many lines render when it's inside the chart.
 
 ## Bar chart examples
 
