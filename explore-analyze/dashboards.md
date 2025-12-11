@@ -30,17 +30,17 @@ New to dashboards? Start with these hands-on tutorials that walk you through cre
 
 Once you understand the basics, explore these common tasks:
 
-**Build and customize dashboards**:
+**Explore and interact**
+- [Explore dashboards](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
+
+**Build and customize dashboards**
 - [Build dashboards](dashboards/building.md): Learn the fundamentals of creating and configuring dashboards.
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
 - [Add filter controls](dashboards/add-controls.md): Enable interactive filtering with options lists, range sliders, and time sliders.
 - [Add drilldowns](dashboards/drilldowns.md): Create interactive navigation between dashboards or to external URLs.
 - [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.
 
-**Explore and interact**:
-- [Explore dashboards](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
-
-**Manage and share**:
+**Manage and share**
 - [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards.
 - [Share dashboards](dashboards/sharing.md): Share with your team using links, embeds, or file exports.
 - [Duplicate a dashboard](dashboards/duplicate-dashboards.md): Create customizable copies of existing dashboards.
