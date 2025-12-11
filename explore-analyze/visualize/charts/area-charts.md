@@ -90,13 +90,19 @@ In Area charts, you can enable time shift to compare different periods and ident
 
 ![Example Lens area chart compare periods](../../images/kibana-area-compare-periods.png)
 
-1. Create an area chart with a time-based **Horizontal axis** and your main metric on the **Vertical axis** (for example, `bytes`).
-2. From the three-dot menu in the upper-left of the Layers panel, select **Duplicate layer**.
+1. Create an area chart with a time-based **Horizontal axis** and your main metric on the **Vertical axis**, for example, `bytes`.
+2. From the three-dot menu in the upper-left of the layer panel, select **Duplicate layer**.
 3. From the duplicated layer, open the **Advanced** of the **Vertical axis** and set **Time shift** to `1w`. 
    Check also [Compare differences over time](../lens.md#compare-data-with-time-offsets) for more details.
 4. Use a different color and set **Stacking** to **None** so areas overlay rather than stack.
+5. Update the legend to show “Current” and “Previous”.
 
-## Area chart settings [settings]
+::::{tip}
+You can also compute the relative change using a formula, for example:  
+`(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
+:::: 
+
+## Area chart settings [area-chart-settings]
 
 Customize your area chart to match the information you need and how you want it displayed.
 
