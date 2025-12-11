@@ -12,8 +12,11 @@ products:
 
 # Different CA [update-node-certs-different]
 
+If you have to trust a new CA from your organization, or you need to generate a new CA yourself, instruct your nodes to trust the new CA and then use this new CA to sign the new node certificates.
 
-If you have to trust a new CA from your organization, or you need to generate a new CA yourself, use this new CA to sign the new node certificates and instruct your nodes to trust the new CA.
+:::{include} ./_snippets/own-ca-warning.md
+:::
+
 
 ## Generate a new certificate for the transport layer [node-certs-different-transport]
 
