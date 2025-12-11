@@ -117,4 +117,6 @@ If you choose not to synchronize integrations automatically, you need to make su
 When you use a remote {{es}} output, {{fleet-server}} performs a test to ensure connectivity to the remote cluster. The result of that connectivity test is used to report whether the remote output is healthy or unhealthy, and is displayed on the **{{fleet}}** → **Settings** → **Outputs** page, in the **Status** column.
 
 In some cases, the remote {{es}} output used for {{agent}} data can be reached by the {{agent}}s but not by {{fleet-server}}. In those cases, you can ignore the resulting unhealthy state of the output and the associated `Unable to connect` error on the UI.
+
+In addition the fleetserver will also reach out to the remote cluster user the service token to generate APIKeys. This means for agents calling into the this fleetserver that should connect to the remote elasticsearch, have a hard requirement to allow the fleetserver to reach the remote elasticsearch cluster.
 ::::
