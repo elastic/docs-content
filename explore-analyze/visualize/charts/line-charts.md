@@ -69,13 +69,15 @@ In Line charts, you can enable time shift to compare the current value with a pr
 
 ![Example Lens line chart current previous](../../images/kibana-line-current-previous.png)
 
-1. Create a line visualization with a time-based **Horizontal axis** and your main metric on **Vertical axis**, for example: `bytes`.
-2. From the three-dot menu in the upper-left of the Layers panel, select **Duplicate layer**.  
-3. In the **Advanced** settings of the **Vertical axis**, add a second metric with a time shift, for example: `average(bytes, shift='1w')`.
-4. Update the legend to show “Current” and “Previous”.
+1. Create a line chart with a time-based **Horizontal axis** and your main metric on **Vertical axis**, for example: `bytes`.
+2. From the three-dot menu in the upper-left of the layer panel, select **Duplicate layer**.  
+3. From the duplicated layer, open the **Advanced** of the **Vertical axis** and set **Time shift** to `1w`.
+   Check also [Compare differences over time](../lens.md#compare-data-with-time-offsets) for more details.
+4. Use a different color and set **Stacking** to **None** so areas overlay rather than stack.
+5. Update the legend to show “Current” and “Previous”.
 
 ::::{tip}
-You can also compute the relative change as a separate series using a formula, for example:  
+You can also compute the relative change using a formula, for example:  
 `(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
 :::: 
 
