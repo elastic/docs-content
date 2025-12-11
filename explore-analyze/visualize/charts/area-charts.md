@@ -134,7 +134,7 @@ You can optionally split your series by a categorical field to create multiple s
 The following examples show practical configurations for common time series questions.
 
 **Website traffic with YoY comparison**
-::   Visualize weekly page views and compare to last year:
+:   Visualize weekly page views and compare to last year:
    - **Title**: "Weekly page views (YoY)"
    - **X-axis**: `@timestamp` (Date histogram, weekly)
    - **Y-axis**: `count()`
@@ -144,7 +144,7 @@ The following examples show practical configurations for common time series ques
    - Use legend statistics like **Max**, **Average**, and **Last value** for quick insights
 
 **CPU utilization by service (stacked)**
-::   Show how services contribute to overall CPU:
+:   Show how services contribute to overall CPU:
    - **Title**: "CPU utilization by service"
    - **X-axis**: `@timestamp` (Date histogram)
    - **Y-axis**: `average(system.cpu.total.pct)`; set **Value format** to `Percent`
@@ -153,7 +153,7 @@ The following examples show practical configurations for common time series ques
    - Configure **Missing values** to **Linear** to avoid visual gaps; consider **Smooth** lines
 
 **Error rate over time, stacked by outcome**
-::   Monitor error rate composition:
+:   Monitor error rate composition:
    - **Title**: "Error rate by outcome"
    - **X-axis**: `@timestamp` (Date histogram)
    - **Primary series (formula)**:
@@ -167,7 +167,7 @@ The following examples show practical configurations for common time series ques
    - Add a **Reference line** at `0.05` (5%) as target/SLO
 
 **95th percentile latency by service (overlapping series)**
-::   Compare high-percentile latency across services:
+:   Compare high-percentile latency across services:
    - **Title**: "p95 latency by service"
    - **X-axis**: `@timestamp`
    - Add one series per service (or use a breakdown on `service.name` with top N):
@@ -176,7 +176,7 @@ The following examples show practical configurations for common time series ques
    - Use **Legend** to show **Max**, **Median**, and **Last value**
 
 **Revenue vs forecast with cumulative totals**
-::   Track performance against plan:
+:   Track performance against plan:
    - **Title**: "Revenue vs forecast (MTD)"
    - **X-axis**: `@timestamp` (Date histogram, daily)
    - **Actuals series**:
@@ -191,7 +191,7 @@ The following examples show practical configurations for common time series ques
    - Consider **Step** interpolation for clarity and add **Annotations** for major promotions or releases
 
 **Inbound network rate (moving average)**
-::   Smooth short-term spikes:
+:   Smooth short-term spikes:
    - **Title**: "Inbound network rate (5m MA)"
    - **X-axis**: `@timestamp`
    - **Y-axis (formula)**:
