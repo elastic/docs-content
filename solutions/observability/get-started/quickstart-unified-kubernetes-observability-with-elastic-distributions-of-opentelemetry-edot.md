@@ -13,7 +13,7 @@ products:
 
 # Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT) [monitor-k8s-otel-edot]
 
-In this quickstart guide, you’ll learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
+In this quickstart guide, you’ll learn how to send {{k8s}} logs, metrics, and application traces to {{es}}, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
 
 All the components will be deployed through the [opentelemetry-kube-stack](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) helm chart. They include:
 
@@ -39,7 +39,7 @@ For a more detailed description of the components and advanced configuration, re
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
 
 :::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 :::
 
 :::
@@ -54,7 +54,7 @@ EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-ag
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
 
 :::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 :::
 
 :::
@@ -93,10 +93,6 @@ EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-ag
     * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
     * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
 
-:::{important}
-Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
-:::
-
 :::
 
 :::{tab-item} {{serverless-short}}
@@ -126,10 +122,6 @@ Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#e
     * Create a secret with an API Key and the {{es}} endpoint to be used by the collectors.
     * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
     * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
-
-:::{important}
-Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
-:::
 
 :::
 

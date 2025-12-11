@@ -25,7 +25,7 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 * An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
 
 :::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 :::
 
 :::
@@ -38,7 +38,7 @@ EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-ag
 * An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
 
 :::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 :::
 
 :::
@@ -73,12 +73,8 @@ Follow these steps to collect application telemetry data using the EDOT SDKs:
    - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 4. Configure your EDOT SDK to send data to the APM endpoint. The **OpenTelemetry** tab provides the required configuration values.
 
-:::{important}
-Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
-:::
-
 :::{note}
-If your application runs on Kubernetes, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md).
+If your application runs on {{k8s}}, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md).
 :::
 
 ::::
@@ -99,9 +95,6 @@ If your application runs on Kubernetes, the OpenTelemetry operator automatically
    - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 4. Configure your EDOT SDK to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md). The **OpenTelemetry** tab provides the required configuration values.
 
-:::{important}
-Use [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) for your OTLP endpoint configuration. Sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake is not supported.
-:::
 5. (Optional) Activate Central Configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
 
 :::{note}

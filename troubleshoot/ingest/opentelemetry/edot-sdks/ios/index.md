@@ -20,7 +20,7 @@ products:
 This page provides guidance for resolving common problems when instrumenting iOS applications with the {{edot}} (EDOT) SDK.
 
 :::{tip}
-If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, note that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel Intake](opentelemetry://reference/motlp.md) instead.
+If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, note that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
 :::
 
 When troubleshooting the EDOT iOS agent, ensure your app is compatible with the agent’s [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
