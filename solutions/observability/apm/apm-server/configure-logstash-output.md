@@ -309,7 +309,7 @@ To use SSL mutual authentication:
         input {
           beats {
             port => 5044
-            ssl_enabled=> true
+            ssl_enabled => true
             ssl_certificate_authorities => ["/etc/ca.crt"]
             ssl_certificate => "/etc/server.crt"
             ssl_key => "/etc/server.key"
