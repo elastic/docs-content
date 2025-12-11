@@ -58,7 +58,7 @@ To analyze SQS queue metrics, you can select view filters based on the following
 
 :::{note}
 :applies_to: {"stack": "ga 9.3", "serverless": "ga"}
-The Infrastructure UI only supports SQS metric data from the [SQS](integration-docs://reference/aws/ec2.md) integration.
+The Infrastructure UI only supports SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
 :::
 
 |  |  |
@@ -76,7 +76,7 @@ To analyze RDS database metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: {"stack": "ga 9.3", "serverless": "ga"}
-The Infrastructure UI only supports RDS metric data from the [RDS](integration-docs://reference/aws/ec2.md) integration.
+The Infrastructure UI only supports RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
 :::
 
 |  |  |
