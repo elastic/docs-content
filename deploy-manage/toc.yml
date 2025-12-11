@@ -554,6 +554,9 @@ toc:
               - file: users-roles/cloud-enterprise-orchestrator/saml.md
           - file: users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md
       - file: users-roles/serverless-custom-roles.md
+        children:
+          - title: "Control access at the document and field level"
+            crosslink: docs-content://deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
       - file: users-roles/cluster-or-deployment-auth.md
         children:
           - file: users-roles/cluster-or-deployment-auth/quickstart.md
@@ -676,6 +679,7 @@ toc:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
+              - file: monitor/autoops/autoops-disable-metrics-collection.md
               - file: monitor/autoops/cc-manage-users.md
               - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
                 children:
