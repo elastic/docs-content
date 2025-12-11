@@ -170,4 +170,5 @@ toc:
       - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-internal-indices.md
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
+      - file: migrate/migrate-with-logstash.md  
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

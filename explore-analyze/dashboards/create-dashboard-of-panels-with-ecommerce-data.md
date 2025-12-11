@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-ecommerce-data.html
+description: Step-by-step tutorial for creating a Kibana dashboard with time series visualizations to analyze eCommerce sales trends and patterns.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,9 +11,9 @@ products:
 
 # Create a dashboard with time series charts [create-a-dashboard-of-panels-with-ecommerce-data]
 
-In this tutorial, you’ll use the ecommerce sample data to analyze sales trends, but you can use any type of data to complete the tutorial.
+Learn how to create time series visualizations and build a dashboard that tracks trends over time. This tutorial uses eCommerce sample data to analyze sales patterns, but you can apply these techniques to any time-based data.
 
-When you’re done, you’ll have a complete overview of the sample web logs data.
+When you're done, you'll have a complete dashboard showing sales trends, revenue patterns, and customer behavior over time.
 
 :::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
 :alt: Final dashboard with eCommerce sample data

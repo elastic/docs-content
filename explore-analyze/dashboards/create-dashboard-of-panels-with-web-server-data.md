@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-web-server-data.html
+description: Step-by-step tutorial for creating a Kibana dashboard to monitor and analyze website log data using visualizations and panels.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,9 +11,9 @@ products:
 
 # Create a simple dashboard to monitor website logs [create-a-dashboard-of-panels-with-web-server-data]
 
-Learn the most common ways to create a dashboard from your own data. The tutorial will use sample data from the perspective of an analyst looking at website logs, but this type of dashboard works on any type of data.
+Learn the most common ways to create a dashboard from your own data. This tutorial uses sample web logs data from the perspective of an analyst monitoring website traffic, but you can apply these techniques to any type of data.
 
-When you’re done, you’ll have a complete overview of the sample web logs data.
+When you're done, you'll have a complete overview of the sample web logs data that tracks key metrics like visitor counts, traffic sources, response codes, and geographic distribution.
 
 :::{image} /explore-analyze/images/kibana-lens_logsDashboard_8.4.0.png
 :alt: Logs dashboard
