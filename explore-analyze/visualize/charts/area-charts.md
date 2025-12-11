@@ -76,11 +76,11 @@ Use stacking to show how categories contribute to a total over time.
    You can set the area chart stack mode to:
    - **Stacked** — Show cumulative totals and category contributions.
 
-     ![Example Lens area chart stacked mode](../../images/kibana-area-stacked.png)
+     ![Example Lens area chart stacked mode](../../images/kibana-area-stacked.png " =70%")
 
    - **Percentage (100%)** — Normalizes each timestamp to 100% to emphasize shares rather than magnitudes.
 
-     ![Example Lens area chart percentage mode](../../images/kibana-area-percentage.png)
+     ![Example Lens area chart percentage mode](../../images/kibana-area-percentage.png " =70%")
 
 4. Optionally, set **Rank by** for the breakdown dimension to control stacking order.
 
