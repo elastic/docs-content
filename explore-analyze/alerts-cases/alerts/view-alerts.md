@@ -13,7 +13,10 @@ products:
 
 When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../alerts.md).
 
-You can manage the alerts for each rule in **{{stack-manage-app}}** > **{{rules-ui}}**. Alternatively, manage all your alerts in **{{stack-manage-app}}** > **Alerts**.
+Manage alerts for rules from the:
+
+- **Rule's details page**: Find the **Rules** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) (**Alerts and Insights > Rules**). In the Rules table, click on a rule's name to open its details page. Scroll to the bottom of the page to find the Alerts table.
+- **Alerts management page**: In the **Classic** view, find the **Alerts** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) (**Stack Management > Alerts**). In the solution view, find the **Alerts** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) (**Alerts and Insights > Alerts**).
 
 :::{image} /explore-analyze/images/kibana-stack-management-alerts-page.png
 :alt: Alerts page with multiple alerts
