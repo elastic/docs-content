@@ -14,6 +14,17 @@ products:
 
 The **Infrastructure Inventory** page provides a metrics-driven view of your entire infrastructure grouped by the resources you are monitoring. All monitored resources emitting a core set of infrastructure metrics are displayed to give you a quick view of the overall health of your infrastructure.
 
+:::{note}
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+
+The [inventory views](#filter-resources) only support data from the following sources:
+
+* **Hosts**: OpenTelemetry and the Elastic [System](integration-docs://reference/system/index.md) integration
+* **{{k8s}} Pods**: [{{k8s}}](integration-docs://reference/kubernetes.md) integration
+* **Docker Containers**: [{{k8s}}](integration-docs://reference/kubernetes.md), [System](integration-docs://reference/system/index.md), and [Docker](integration-docs://reference/docker.md) integrations
+* **AWS**: [EC2](integration-docs://reference/aws/ec2.md), [S3](integration-docs://reference/aws/s3.md), [RDS](integration-docs://reference/aws/rds.md), and [SQS](integration-docs://reference/aws/sqs.md) integrations
+:::
+
 To open the **Infrastructure inventory** page in:
 - **Elastic Stack,** find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 - **Serverless,** go to **Infrastructure inventory** in your Observability Serverless project.
@@ -39,10 +50,10 @@ Need help getting started? Follow the steps in [Get started with system metrics]
 
 To get started with your analysis, select the type of resources you want to show in the high-level view. From the **Show** menu, select one of the following:
 
-* **Hosts** — the default
-* **Kubernetes Pods**
-* **Docker Containers** — shows *all* containers, not just Docker
-* **AWS** — includes EC2 instances, S3 buckets, RDS databases, and SQS queues
+* **Hosts**: Default view. {applies_to}`stack: ga 9.2`{applies_to}`serverless: ga` Supports data from the OpenTelemetry and the Elastic [System](integration-docs://reference/system/index.md) integration.
+* **{{k8s}} Pods**: {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` Supports data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
+* **Docker Containers** — Shows *all* container data (not only Docker). {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` Supports data from the [{{k8s}}](integration-docs://reference/kubernetes.md), [System](integration-docs://reference/system/index.md), and [Docker](integration-docs://reference/docker.md) integrations.
+* **{{aws}}** — Includes EC2 instances, S3 buckets, RDS databases, and SQS queues. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` Supports data from [EC2](integration-docs://reference/aws/ec2.md), [S3](integration-docs://reference/aws/s3.md), [RDS](integration-docs://reference/aws/rds.md), and [SQS](integration-docs://reference/aws/sqs.md) integrations.
 
 When you hover over each resource in the waffle map, the metrics specific to that resource are displayed.
 

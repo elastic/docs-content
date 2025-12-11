@@ -36,8 +36,8 @@ When you select **Create inventory alert**, the parameters you configured on the
 Conditions for each rule can be applied to specific metrics relating to the inventory type you select. You can choose the aggregation type, the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. When creating the rule, you can still get notified if no data is returned for the specific metric or if the rule fails to query {{es}}.
 
 :::{note}
-{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
-Most inventory types respect the default data collection method (for example, [Elastic system integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
+:applies_to: {"stack": "ga 9.2", "serverless": "ga"}`
+Most inventory types respect the default data collection method (for example, [Elastic System integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
 :::
 
 In the following example, Kubernetes Pods is the selected inventory type. The conditions state that you will receive a critical alert for any pods within the `ingress-nginx` namespace with a memory usage of 95% or above and a warning alert if memory usage is 90% or above. The chart shows the results of applying the rule to the last 20 minutes of data. Note that the chart time range is 20 times the value of the look-back window specified in the `FOR THE LAST` field.
@@ -46,6 +46,16 @@ In the following example, Kubernetes Pods is the selected inventory type. The co
 :alt: Inventory rule
 :screenshot:
 :::
+
+### Supported data
+:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+
+The inventory types only support data from the following sources:
+
+* **Hosts**: OpenTelemetry and the Elastic [System](integration-docs://reference/system/index.md) integration
+* **Kubernetes Pods**: [Kubernetes](integration-docs://reference/kubernetes.md) integration
+* **Docker Containers**: [Kubernetes](integration-docs://reference/kubernetes.md), [System](integration-docs://reference/system/index.md), and [Docker](integration-docs://reference/docker.md) integrations
+* **AWS**: [EC2](integration-docs://reference/aws/ec2.md), [S3](integration-docs://reference/aws/s3.md), [RDS](integration-docs://reference/aws/rds.md), and [SQS](integration-docs://reference/aws/sqs.md) integrations
 
 ## Add actions [action-types-infrastructure]
 
