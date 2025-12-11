@@ -1,7 +1,4 @@
 ---
-navigation_title: How to query alert indices
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/query-alerts.html
 applies_to:
   stack: ga
   serverless: ga
@@ -9,7 +6,7 @@ products:
   - id: kibana
 ---
 
-# How to query alert indices [view-alerts]
+# Query alert indices [how-to-query-alert-indices]
 
 ## Index Names
 
@@ -23,9 +20,6 @@ Then the `context`, `dataset`, `space-Id` and `version number` parts follow it.
 An index name template:<br>
 `.internal.alerts-{{context}}.{{dataset}}-{{space-id}}-{{version-number}}`
 
-<blockquote>
-<br>
-
 **context:** Usually the product group that the rule type belongs to. Such as Stack, Observability and Security.
 
 **dataset:** “alert” for the alert indices.
@@ -33,9 +27,6 @@ An index name template:<br>
 **space-id:** Only the security rules are space-specific. All the other rules write into default for all spaces.
 
 **version-number:** This starts from 000001 and gets increased by 1 as the index is rolled over
-<br><br>
-
-</blockquote>
 
 An example alert index name of the Elasticsearch Query rule:<br>
 **.internal.alerts-stack.alerts-default-000001**
@@ -53,8 +44,6 @@ An example alias for the Elasticsearch Query rule index:<br>
 `.alerts-stack.alerts-default`
 
 **Note:** Only the security rules are space-specific, other rule types use the `default` space.
-
-<hr>
 
 You can find the index names and aliases per rule type in the below table.
 
