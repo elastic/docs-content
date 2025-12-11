@@ -8,7 +8,7 @@ description: Instructions and best practices for building area charts with Kiban
 
 # Build area charts with {{kib}}
 
-Area charts are line charts with the area below the line filled in with a certain colour or texture. Area charts work with numeric metrics over the horizontal axis (typically time) and are ideal to display quantitative values over an interval or time period, to show trends for time series like traffic, CPU, revenue, or error rates.
+Area charts are line charts with the area below the line filled in with a certain color or texture. Area charts work with numeric metrics over the horizontal axis (typically time) and are ideal to display quantitative values over an interval or time period, to show trends for time series like traffic, CPU, revenue, or error rates.
 
 You can create area charts in {{kib}} using [**Lens**](../lens.md).
 
