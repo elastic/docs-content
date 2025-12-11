@@ -470,8 +470,6 @@ To prevent leaking sensitive information such as credentials and keys in logs, {
 
 Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. Refer to [Logging with the SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/logging-slf4j.html) for further information, including details about other loggers that can be used to obtain even more verbose logs, noting that {{es}} configures the AWS Java SDK to use the `ApacheHttpClient` synchronous HTTP client.
 
-::::
-
 :::::
 
 :::::{applies-item} { "stack": "ga 9.3" }
