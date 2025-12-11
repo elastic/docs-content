@@ -432,20 +432,20 @@ Collect the {{es}} logs covering the time period of the failed analysis from all
 In versions of {{es}} 9.1 prior to 9.1.9 it is not possible to obtain more detailed logs from the AWS Java SDK. Use the logs from the storage system itself, or upgrade to a newer version of {{es}}.
 ::::
 
-If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `com.amazonaws.request` logger to `DEBUG`:
+If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `software.amazon.awssdk.request` logger to `DEBUG`:
 
 ```console
 PUT /_cluster/settings
 {
   "persistent": {
-    "logger.com.amazonaws.request": "DEBUG"
+    "logger.software.amazon.awssdk.request": "DEBUG"
   }
 }
 ```
 
-To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is activated. To do so, you must explicitly configure it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
+To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
 
-Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. Refer to [Logging AWS SDK for Java Calls](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) for further information, including details about other loggers that can be used to obtain even more verbose logs.
+Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. Refer to [Logging with the SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/logging-slf4j.html) for further information, including details about other loggers that can be used to obtain even more verbose logs, noting that {{es}} configures the AWS Java SDK to use the `ApacheHttpClient` synchronous HTTP client.
 
 :::::
 
