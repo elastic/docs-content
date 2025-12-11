@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Get started with search primitives
+# Get started with search
 
 This guide helps you get started with search use cases using {{es}}, regardless of your deployment type. Whether you're using a self-managed cluster, {{ech}}, or an {{es}} serverless project, these core search primitives are available to you.
 
@@ -21,7 +21,7 @@ Using the {{es}} solution or serverless project type? Check out the [{{es}} solu
 
 To follow along with this guide, you'll need:
 
-- An {{es}} cluster or serverless project. [Create a deployment](/get-started/deployment-options.md) if you don't have one yet.
+- An {{es}} cluster, or any type of serverless project. [Create a deployment or project](/get-started/deployment-options.md) if you don't have one yet.
 - Connection details for your cluster. Refer to [Connection details](/solutions/elasticsearch-solution-project/search-connection-details.md) for more information.
 
 ## Quickstarts

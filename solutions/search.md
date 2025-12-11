@@ -12,7 +12,7 @@ navigation_title: Search use case
 
 # Search use case
 
-This section documents {{es}} search primitives. These capabilities that are available across all Elastic deployments.
+This section documents {{es}} search primitives. These capabilities are available across all Elastic deployments.
 
 Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search applications.
 
@@ -41,7 +41,7 @@ The following topics are covered in this section:
 |-------|-------------|
 | [**Get started**](/solutions/search/get-started.md) | Create deployments, connect to {{es}}, and run your first searches |
 | [**Ingest data**](/solutions/search/ingest-for-search.md) | Options for getting data into {{es}} |
-| [**Search approaches**](/solutions/search/search-approaches.md) | Compare full-text, vector, semantic, and hybrid search techniques |
+| [**Search approaches**](/solutions/search/search-approaches.md) | Compare search techniques available in {{es}}, including full-text, vector, semantic, and hybrid search |
 | [**Build your queries**](/solutions/search/querying-for-search.md) | Implement your search approaches using specific query languages |
 | [**Ranking and reranking**](/solutions/search/ranking.md) | Control result ordering and relevance |
 | [**RAG**](/solutions/search/rag.md) | Learn about tools for retrieval augmented generation with {{es}}|
