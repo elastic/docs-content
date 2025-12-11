@@ -7,7 +7,7 @@ applies_to:
 
 # Slow query and index logging
 
-The slow log records database search and indexing operations that exceed time thresholds you define.
+The slow log records search and indexing operations that exceed time thresholds you define.
 You can use slow logs to investigate, analyze or audit heavy operations, or troubleshoot your cluster’s historical search and indexing performance.
 
 Slow logs report task duration at the **shard level** for searches, and at the **index level** for indexing, but might not encompass the full task execution time observed on the client. For example, slow logs don’t surface HTTP network delays or the impact of [task queues](/troubleshoot/elasticsearch/task-queue-backlog.md). For more information about the higher-level operations affecting response times, refer to [Reading and writing documents](/deploy-manage/distributed-architecture/reading-and-writing-documents.md).
@@ -21,7 +21,7 @@ Slow log thresholds can be enabled for these logging levels (in order of increas
 
 You can mimic setting log level thresholds by disabling more verbose levels.
 
-Because logging every event or operation generates a high volume of log entries, slow logs are deactivated by default (all thresholds are set to `-1`). Activate only when needed and avoid setting very low thresholds in production.
+Because logging every event or operation generates a high volume of log entries, slow logs are deactivated by default (all thresholds are set to `-1`). Activate only when needed and avoid setting low thresholds in production.
 
 Refer to [slow log settings](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) to learn more about configuration options you can adjust to capture search and indexing details.
 
@@ -31,7 +31,7 @@ Refer to [slow log settings](elasticsearch://reference/elasticsearch/index-setti
 Events that meet the specified threshold are emitted into [{{es}} logging](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) under the `fileset.name` of `slowlog`. These logs can be viewed in the following locations:
 
 * If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). Slow log events have a `logger` value of `index.search.slowlog` or `index.indexing.slowlog`.
-* From local {{es}} service logs directory. Slow log files have a suffix of `_index_search_slowlog.json` or `_index_indexing_slowlog.json`.
+* From the local {{es}} service logs directory. Slow log files have a suffix of `_index_search_slowlog.json` or `_index_indexing_slowlog.json`.
 
 Refer to [this video](https://www.youtube.com/watch?v=ulUPJshB5bU) for a walkthrough of setting and reviewing slow logs.
 
@@ -196,7 +196,7 @@ For more information about slow log settings, refer to [slow log settings](elast
 
 
 
-To adjust slow log settings across all indices (cluster-wide) using the [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md), use the following snippet:
+To adjust slow log settings across all indices (cluster-wide), use the following settings in your [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
 
 ::::{tab-set}
 :group: slow-logs
@@ -238,7 +238,7 @@ index.indexing.slowlog.include.user: true
 ::::
 
 
-## When (and how) to use slow logs [troubleshoot-slow-log]
+## When and how to use slow logs [troubleshoot-slow-log]
 
 Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) cluster. 
 

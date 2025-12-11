@@ -31,7 +31,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 2. Identify which logs you want to monitor.
 
-    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
+    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md). For more information about the location of your {{es}} logs, refer to the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
 
     ::::{important}
     If there are both structured (`*.json`) and unstructured (plain text) versions of the logs, you must use the structured logs. Otherwise, they might not appear in the appropriate context in {{kib}}.
