@@ -235,7 +235,7 @@ For static settings, you need to create a new index with the correct settings. N
 
 ## Find slow queries [troubleshooting-slow-searches]
 
-[Slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+[Slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true
