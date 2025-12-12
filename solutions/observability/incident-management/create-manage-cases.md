@@ -35,7 +35,13 @@ Open a new case to keep track of issues and share the details with colleagues. T
     **For Elastic Stack**, You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
 
 6. If you defined [custom fields](/solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
-7. (Optional) Under External incident management system, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can [create one](/solutions/observability/incident-management/configure-case-settings.md).
+7. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](/solutions/observability/incident-management/configure-case-settings.md#cases-external-connectors).
+
+    ::::{note}
+    :applies_to:{stack: ga 9.3}
+    When specifying **Additional fields** for an {{ibm-r}} connector, fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
+    ::::
+
 8. After you’ve completed all of the required fields, click **Create case**.
 
 ::::{tip}
@@ -76,7 +82,7 @@ There is a 10 MiB size limit for images. For all other MIME types, the limit is 
 
 ## Send cases to external incident management systems [observability-create-a-new-case-send-cases-to-external-incident-management-systems]
 
-To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the *External incident management system* section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
+To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the **External incident management system** section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
 
 For more information about configuring connections to external incident management systems, refer to [](/solutions/observability/incident-management/configure-case-settings.md).
 
@@ -84,6 +90,8 @@ For more information about configuring connections to external incident manageme
 ## Manage existing cases [observability-create-a-new-case-manage-existing-cases]
 
 You can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes.
+
+{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{observability}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
 
 To view a case, click on its name. You can then:
 
