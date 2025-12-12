@@ -38,7 +38,13 @@ Open a new case to keep track of security issues and share their details with co
 5. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section.
 6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is turned on by default, but you can turn it off after creating the case.
 7. {applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case. This option is turned on by default. You can turn it off after creating the case by toggling **Auto-extract observables** on the case's **Observables** tab.
-8. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
+8. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations)
+
+    ::::{note}
+    :applies_to:{stack: ga 9.3}
+    When specifying **Additional fields** for an {{ibm-r}} connector, fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
+    ::::
+
 9. Click **Create case**.
 
     ::::{note}
@@ -75,6 +81,8 @@ When you subsequently add assignees to cases, they receive an email.
 ## Manage existing cases [cases-ui-manage]
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
+
+{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{elastic-sec}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
 
 To explore a case, click on its name. You can then:
 
