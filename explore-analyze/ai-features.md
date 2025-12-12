@@ -144,4 +144,4 @@ This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides
 * **Policy responses**: Detect warnings or failures in {{elastic-defend}}’s integration policies.
 * **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that might conflict with {{elastic-defend}}.
 
-This feature requires an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
