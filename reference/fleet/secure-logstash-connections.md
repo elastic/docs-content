@@ -124,7 +124,6 @@ output {
 
 1. Use the `cloud_id` shown on your deployment page in {{ecloud}}.
 2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
-3. {{ech}} uses standard publicly trusted certificates, so there’s no need specify other SSL settings here.
 
 
 Self-managed {{es}} cluster example:
