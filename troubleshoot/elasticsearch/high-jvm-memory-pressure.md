@@ -78,7 +78,7 @@ Every shard uses memory. In most cases, a small set of large shards uses fewer r
 $$$avoid-expensive-searches$$$
 **Avoid expensive searches**
 
-Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md).
+Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md).
 
 Expensive searches may have a large [`size` argument](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries). To prevent expensive searches, consider the following setting changes:
 

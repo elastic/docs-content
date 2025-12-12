@@ -64,7 +64,7 @@ when the target cluster is available you’ll need to adjust a few settings. Tak
 3. Open the {{fleet}} **Settings** tab.
 4. Examine the configurations captured there for {{fleet}}. These settings are copied from the snapshot of the source cluster and may not have a meaning in the target cluster, so they need to be modified accordingly.
 
-    In the following example, both the **Fleet Server hosts** and the **Outputs** settings are copied over from the source cluster:
+    In the following example, both the **Fleet server hosts** and the **Outputs** settings are copied over from the source cluster:
 
     :::{image} images/migrate-agent-host-output-settings.png
     :alt: Settings tab in Fleet showing source deployment host and output settings
