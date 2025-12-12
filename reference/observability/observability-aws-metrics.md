@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-aws-metrics.html
   - https://www.elastic.co/guide/en/observability/current/aws-metrics.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -14,11 +17,14 @@ Additional AWS charges for GetMetricData API requests are generated using this m
 
 ::::
 
-
-
 ## Monitor EC2 instances [monitor-ec2-instances]
 
 To analyze EC2 instance metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+
+:::{note}
+:applies_to: stack: ga 9.3
+The Infrastructure UI only supports EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
+:::
 
 |  |  |
 | --- | --- |
@@ -33,6 +39,11 @@ To analyze EC2 instance metrics, you can select view filters based on the follow
 
 To analyze S3 bucket metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
+:::{note}
+:applies_to: stack: ga 9.3
+The Infrastructure UI only supports S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
+:::
+
 |  |  |
 | --- | --- |
 | **Bucket Size** | Average of `aws.s3_daily_storage.bucket.size.bytes`. |
@@ -45,6 +56,11 @@ To analyze S3 bucket metrics, you can select view filters based on the following
 ## Monitor SQS queues [monitor-sqs-queues]
 
 To analyze SQS queue metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+
+:::{note}
+:applies_to: stack: ga 9.3
+The Infrastructure UI only supports SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
+:::
 
 |  |  |
 | --- | --- |
@@ -59,6 +75,11 @@ To analyze SQS queue metrics, you can select view filters based on the following
 
 To analyze RDS database metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
+:::{note}
+:applies_to: stack: ga 9.3
+The Infrastructure UI only supports RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
+:::
+
 |  |  |
 | --- | --- |
 | **CPU Usage** | Average of `aws.rds.cpu.total.pct`. |
@@ -68,3 +89,13 @@ To analyze RDS database metrics, you can select view filters based on the follow
 | **Latency** | Average of `aws.rds.latency.dml`. |
 
 For information about the fields used by the Infrastructure UI to display AWS services metrics, see the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).
+
+## Infrastructure UI filtering logic [aws-metrics-filtering]
+```{applies_to}
+stack: ga 9.3
+```
+
+The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
+
+* Inventory UI searches - {{aws}} EC2, RDS, S3, SQS: `event.module : aws`
+* Inventory Rule - {{aws}} EC2, RDS, S3, SQS: `event.module : aws`

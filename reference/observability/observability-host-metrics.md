@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-host-metrics.html
   - https://www.elastic.co/guide/en/observability/current/host-metrics.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -173,4 +176,13 @@ Refer to the following sections for host metrics and field calculation formulas 
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: write'))`<br> |
 | **Disk Write Throughput** | Average number of bytes written from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: write'))')`<br> |
 
+## Infrastructure UI filtering logic [host-metrics-filtering]
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
 
+The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
+
+* Inventory UI searches - Elastic System integration: event.module: 'system' OR metricset.module: 'system'
+* Inventory Rule - Elastic System integration: event.module: 'system' OR metricset.module: 'system'

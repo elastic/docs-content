@@ -39,10 +39,10 @@ Need help getting started? Follow the steps in [Get started with system metrics]
 
 To get started with your analysis, select the type of resources you want to show in the high-level view. From the **Show** menu, select one of the following:
 
-* **Hosts** — the default
-* **Kubernetes Pods**
-* **Docker Containers** — shows *all* containers, not just Docker
-* **AWS** — includes EC2 instances, S3 buckets, RDS databases, and SQS queues
+* **Hosts**: the default view. Refer to [Host metrics](../../../reference/observability/observability-host-metrics.md) for more on supported data types for this view.
+* **Kubernetes Pods**: Refer to [{{k8s}} pod metrics](../../../reference/observability/observability-kubernetes-pod-metrics.md) for more on supported data types for this view.
+* **Docker Containers**: shows *all* containers, not only Docker containers. Refer to [Container metrics](../../../reference/observability/observability-container-metrics.md) for more on supported data types for this view.
+* **AWS**: includes EC2 instances, S3 buckets, RDS databases, and SQS queues. Refer to [AWS metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
 
 When you hover over each resource in the waffle map, the metrics specific to that resource are displayed.
 

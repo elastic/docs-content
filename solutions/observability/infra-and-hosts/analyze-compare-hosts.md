@@ -163,6 +163,7 @@ serverless: ga
 
 The **Schema** menu shows the available data collection schemas for the current query. If host data from both the Elastic System integration and OpenTelemetry is available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see host data collected by the Elastic System integration.
 
+Refer to [Host metrics](../../../reference/observability/observability-host-metrics.md) for more on supported data types for OpenTelemetry and the Elastic System integration.
 
 ## View host details [view-host-details]
 

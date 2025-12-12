@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-container-metrics.html
   - https://www.elastic.co/guide/en/observability/current/container-metrics.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -19,6 +22,10 @@ Learn about key container metrics displayed in the Infrastructure UI:
 
 These are the key metrics displayed for Docker containers.
 
+:::{note}
+:applies_to: stack: ga 9.3
+The Infrastructure UI only supports Docker container metric data from the [Docker](integration-docs://reference/docker.md) integration.
+:::
 
 ### CPU usage metrics [key-metrics-docker-cpu]
 
@@ -50,9 +57,14 @@ These are the key metrics displayed for Docker containers.
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation:**  `counter_rate(max(docker.diskio.write.ops), kql='docker.diskio.write.ops: *')`<br> |
 
 
-## Kubernetes container metrics [key-metrics-kubernetes]
+## {{k8s}} container metrics [key-metrics-kubernetes]
 
-These are the key metrics displayed for Kubernetes (containerd) containers.
+These are the key metrics displayed for {{k8s}} (containerd) containers.
+
+:::{note}
+:applies_to: stack: ga 9.3
+The Infrastructure UI supports {{k8s}} container metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
+:::
 
 
 ### CPU usage metrics [key-metrics-kubernetes-cpu]
@@ -67,3 +79,13 @@ These are the key metrics displayed for Kubernetes (containerd) containers.
 | Metric | Description |
 | --- | --- |
 | **Memory Usage (%)** | Average memory usage for the container.<br><br>**Field Calculation:** `average(kubernetes.container.memory.usage.limit.pct)`<br> |
+
+## Infrastructure UI filtering logic [container-metrics-filtering]
+```{applies_to}
+stack: ga 9.3
+```
+
+The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
+
+* Inventory UI searches - Docker Containers: `event.module: 'docker'` OR `event.module: 'kubernetes'` OR `event.module: 'system'`
+* Inventory Rule - Docker Containers: `event.module: 'docker'` OR `event.module: 'kubernetes'` OR `event.module: 'system'`
