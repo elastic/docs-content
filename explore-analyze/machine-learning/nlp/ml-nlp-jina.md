@@ -92,7 +92,7 @@ PUT _inference/rerank/eis-jina-reranker-v2
 ```
 
 The created {{infer}} endpoint uses the model for {{infer}} operations on Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in `rerank` {{infer}} tasks.
-For example, the following API request ingests the input text and rank them by relevance:
+For example, the following API request ingests the input strings and ranks them by relevance:
 
 ```console
 POST _inference/rerank/eis-jina-reranker-v2
