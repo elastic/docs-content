@@ -283,7 +283,7 @@ To log to a custom filepath, make these changes to the manifest file:
           path: ${LOGS_PATH} # Use the env var to determine the logging path.
     ```
 - The `LOGS_PATH` environment variable must be defined as a part of the Daeomonset's container specification.
-- The default Dameonset container args must be changed to remove the `-e` option:
+- The default DaemonSet container args must be changed to remove the `-e` option:
     ```yaml
     args: ["-c", "/etc/elastic-agent/agent.yml"]
     ```
