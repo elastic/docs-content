@@ -172,7 +172,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.1.9-fixes]
 * Standardizes how to log errors [#245030]({{kib-pull}}245030).
 * Improves handling of the upgrade with Tamper Protection in {elastic-defend}.
-* For Linux {elastic-defend}, fixes a bug where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+* Fixes a bug for {elastic-defend} on Linux where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
 
 ## 9.1.8 [elastic-security-9.1.8-release-notes]
 
