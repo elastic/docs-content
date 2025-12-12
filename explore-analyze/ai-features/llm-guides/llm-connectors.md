@@ -21,7 +21,7 @@ Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-th
 :::{include} ../../../solutions/_snippets/elastic-managed-llm.md
 :::
 
-## Connect to a third-party LLM
+## Connect to a third-party or self-managed LLM
 
 Follow these guides to connect to one or more third-party LLM providers:
 
@@ -29,19 +29,8 @@ Follow these guides to connect to one or more third-party LLM providers:
 * [Amazon Bedrock](/explore-analyze/ai-features/llm-guides/connect-to-amazon-bedrock.md)
 * [OpenAI](/explore-analyze/ai-features/llm-guides/connect-to-openai.md)
 * [Google Vertex](/explore-analyze/ai-features/llm-guides/connect-to-google-vertex.md)
+* [Self-managed LLMs](/explore-analyze/ai-features/llm-guides/local-llms-overview.md)
 
-## Connect to a self-managed LLM
-
-For {{elastic-sec}} and {{observability}}, you can also connect to a custom LLM deployed and managed by you.
-
-**Self-managed LLMs for {{elastic-sec}}:**
-
--- For production environments or air-gapped environments, you can [connect to vLLM](/explore-analyze/ai-features/llm-guides/connect-to-vLLM.md).
--- For experimental deployments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-security.md).
-
-**Self-managed LLMs for {{observability}}:**
-
--- For experimental deployments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
 
 ## Preconfigured connectors
 

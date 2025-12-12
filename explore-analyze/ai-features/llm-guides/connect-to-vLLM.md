@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Connect to your own LLM using vLLM (air gapped environments)
+# Connect to your own LLM using vLLM (air-gapped environments)
 This guide shows you how to run an OpenAI-compatible large language model with [vLLM](https://docs.vllm.ai/en/latest/) and connect it to Elastic. The setup runs inside Docker or Podman, is served through an Nginx reverse proxy, and does not require any outbound network access. This makes it a safe option for air-gapped environments or deployments with strict network controls.
 
 The steps below show one example configuration, but you can use any model supported by vLLM, including private and gated models on Hugging Face.
