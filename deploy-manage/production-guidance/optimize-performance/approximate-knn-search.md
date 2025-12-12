@@ -78,7 +78,7 @@ estimated\ bytes &= num\_vectors \times 4 \times m \\
 \end{align*}
 ```
 
-Putting it all together, here is an example with HNSW indexed `element_type: float` with no quantization, `m` set to `16`, and `1,000,000` vectors of dimensions `1,024`:
+The following is an example of an estimate with the HNSW indexed `element_type: float` with no quantization, `m` set to `16`, and `1,000,000` vectors of `1024` dimensions:
 
 ```{math}
 \begin{align*}
