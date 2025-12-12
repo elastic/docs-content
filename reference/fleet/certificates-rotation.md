@@ -70,7 +70,7 @@ Using this method, the {{agent}} with an old or expiring CA configured will be r
     ```
 
 
-**Option 2: To renew an expiring CA certificate on {{es}} without {{agent}} re-enrollments**
+**Option 2: To renew an expiring CA certificate on {{fleet-server}} without {{agent}} re-enrollments**
 
 Option 1 results in multiple {{agent}} enrollments. Another option to avoid multiple enrollments is to overwrite the CA files with the new CA or certificate. This method uses a single file with multiple CAs that can be replaced.
 
