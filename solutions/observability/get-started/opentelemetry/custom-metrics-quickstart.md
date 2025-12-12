@@ -54,20 +54,17 @@ processors:
   batch: {}
 
 exporters:
- elasticsearch:
-   endpoints: ["<OTLP_ENDPOINT>"]
-   api_key: "<YOUR_API_KEY>"
-   mapping:
-     mode: otel
-   metrics_dynamic_index:
-     enabled: true
+ otlphttp:
+   endpoint: "<OTLP_ENDPOINT>"
+   headers:
+     Authorization: "ApiKey <YOUR_API_KEY>"
 
 service:
  pipelines:
    metrics:
      receivers: [otlp]
      processors: [batch]
-     exporters: [elasticsearch]
+     exporters: [otlphttp]
 ```
 
 Run the configuration, for example with Docker:
@@ -106,7 +103,7 @@ lsof -i :4318 -i :4317
 
 ::::{step} Send a custom metric
 
-In this Python example, you use an application that emits OTLP metrics:
+In this Python example, you use an application that emits OTLP metrics. For other languages, refer to the [contrib OpenTelemetry documentation](https://opentelemetry.io/docs/getting-started/dev/).
 
 ```python
 from opentelemetry import metrics
