@@ -74,14 +74,18 @@ The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearc
 
 ## Generative AI tools
 
+The following generative AI tools are available as part of the {{es}} solution and serverless project type:
+
 ### Agent Builder
 
-[Agent Builder](elastic-agent-builder.md) enables you to create AI agents that can interact with your Elasticsearch data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/solutions/elasticsearch-solution-project/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### Playground
 
-[Playground](rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also useful for testing and debugging your {{es}} queries using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
 
 ### Model Context Protocol (MCP)
 
-The [Model Context Protocol (MCP)](mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+The [Model Context Protocol (MCP)](/solutions/elasticsearch-solution-project/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+
+Refer to the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for more information about these UI tools.

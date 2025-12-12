@@ -139,7 +139,7 @@ The Search Playground builds Elasticsearch queries using the retriever abstracti
 
 You can use the Playground to experiment with different retriever configurations and see how they affect search results.
 
-Refer to the [Playground documentation](rag/playground.md) for more information.
+Refer to the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md) for more information.
 
 
 ## Reference docs and examples [retrievers-overview-api-reference]

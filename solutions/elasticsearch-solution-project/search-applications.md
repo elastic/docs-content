@@ -48,7 +48,7 @@ Managing search applications requires the `manage_search_application` cluster pr
 
 The {{es}} [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md) is powerful and flexible, but it comes with a steep learning curve. Complex queries are verbose and hard to understand for non-experts. We’ve designed search applications to be easier to search over, but with the flexibility of working with an {{es}} index.
 
-Search Applications use [search templates](search-templates.md) to simplify the process of building queries. Templates are defined when creating a search application, and can be customized according to your needs. Read [Search API and templates](search-applications/search-application-api.md) for the details.
+Search Applications use [search templates](/solutions/search/search-templates.md) to simplify the process of building queries. Templates are defined when creating a search application, and can be customized according to your needs. Read [Search API and templates](search-applications/search-application-api.md) for the details.
 
 
 ## Get started [search-application-overview-get-started] 

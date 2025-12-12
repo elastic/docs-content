@@ -1,88 +1,55 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
-  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-get-started.html
 applies_to:
   stack:
   serverless:
-    elasticsearch: all
 products:
   - id: elasticsearch
   - id: cloud-serverless
-navigation_title: Get started
-description: To try out an {{es}} project or solution, pick your deployment type, search goals, and ingestion method.
 ---
 
-# Get started with {{es}}
+# Get started with search
 
-New to {{es}}? Start building a search experience by setting up your first deployment, refining your search goals, and adding data.
+This guide helps you get started with search use cases using {{es}}, regardless of your deployment type. Whether you're using a self-managed cluster, {{ech}}, or an {{es}} serverless project, these core search primitives are available to you.
 
-:::{note}
-If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
-:::
-
-::::::{stepper}
-:::::{step} Choose your deployment type
-
-Elastic provides several self-managed and Elastic-managed options.
-For simplicity and speed, try out {{es-serverless}}:
-
-::::{dropdown} Create an {{es-serverless}} project
-:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
-:::
-
-Choose the {{es}} project type and provide a name.
-You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
-
-When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
+::::{tip}
+Using the {{es}} solution or serverless project type? Check out the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for UI tools like Agent Builder, Playground, and Search Applications that complement these core search primitives.
 ::::
 
-Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
+## Before you begin
 
-```sh
-curl -fsSL https://elastic.co/start-local | sh
-```
+To follow along with this guide, you'll need:
 
-Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
-:::::
+- An {{es}} cluster, or any type of serverless project. [Create a deployment or project](/get-started/deployment-options.md) if you don't have one yet.
+- Connection details for your cluster. Refer to [Connection details](/solutions/elasticsearch-solution-project/search-connection-details.md) for more information.
 
-:::::{step} Identify your search goals
-Depending on your use case, you can choose multiple [search approaches](search-approaches.md), for example full-text and semantic search.
-Each approach affects your options for storing and querying your data.
+## Quickstarts
 
-If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/semantic-search.md).
+Choose a quickstart based on your use case:
 
-If you prefer to ingest your data first and transform or reindex it as needed later, skip to the next step.
-:::::
-:::::{{step}} Ingest your data
+- [**Index basics**](/solutions/elasticsearch-solution-project/get-started/index-basics.md): Learn how to create indices, add documents, and perform basic searches using the {{es}} APIs.
+- [**Keyword search with Python**](/solutions/elasticsearch-solution-project/get-started/keyword-search-python.md): Build a keyword search application using the Python client.
+- [**Semantic search**](/solutions/elasticsearch-solution-project/get-started/semantic-search.md): Implement semantic search using vector embeddings.
 
-If your goals include vector or semantic AI-powered search, create vectorized data with built-in and third-party natural language processing (NLP) models and store it in an {{es}} vector database.
-The approach that requires the least configuration involves adding `semantic_text` fields when ingesting your data.
-This method is described in [](/solutions/search/semantic-search/semantic-search-semantic-text.md).
+## Explore search approaches
 
-To learn about adding data for other search goals, go to [](/solutions/search/ingest-for-search.md).
-For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
+Once you're comfortable with the basics, explore different search techniques:
 
-If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
+- [**Full-text search**](/solutions/search/full-text.md): Traditional text-based search with analysis and scoring.
+- [**Vector search**](/solutions/search/vector.md): Similarity search using dense or sparse vectors.
+- [**Semantic search**](/solutions/search/semantic-search.md): Context-aware search using machine learning models.
+- [**Hybrid search**](/solutions/search/hybrid-search.md): Combine multiple search techniques for better results.
 
-The {{es}} home page in the UI also provides workflow guides for creating indices and ready-to-use code examples for ingesting data by using REST APIs.
-:::::
-:::::{{step}} Build your search queries
+## Next steps
 
-Your next steps will be to choose a method to write queries and interact with {{es}}.
-You can pick a programming language [client](/reference/elasticsearch-clients/index.md) that matches your application and choose which [query languages](/solutions/search/querying-for-search.md) you will use to express your search logic.
-Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
-
-Not sure where to start exploring?
-Get an introduction to [index and search basics](/solutions/search/get-started/index-basics.md) or [build your first search query with Python](/solutions/search/get-started/keyword-search-python.md).
-:::::
-::::::
+- Learn about [ingestion and data preparation](/solutions/search/ingest-for-search.md)
+- Explore [querying options](/solutions/search/querying-for-search.md) including Query DSL, {{esql}}, and retrievers
+- Understand [ranking and relevance](/solutions/search/ranking.md) to improve search quality
+- Build [RAG (Retrieval Augmented Generation)](/solutions/search/rag.md) applications
 
 ## Related resources
 
-Use these resources to learn more about {{es}} or get started in a different way:
-
-- [](/deploy-manage/deploy/deployment-comparison.md)
-- [Get started with Query DSL search and filters](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
-- [Get started with ES|QL queries](elasticsearch://reference/query-languages/esql/esql-getting-started.md)
-- [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)
+- [{{es}} API documentation]({{es-apis}})
+- [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
+- [Query languages](/explore-analyze/query-filter/languages.md)

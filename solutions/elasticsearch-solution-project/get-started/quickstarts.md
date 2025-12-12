@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# {{es}} quickstarts
+# Quickstarts
 
 Quickstarts reduce your time-to-value by offering a fast path to learn about search strategies.
 Each quickstart provides:
@@ -18,9 +18,9 @@ Each quickstart provides:
 
 Follow the steps in these guides to get started quickly:
 
-- [](/solutions/search/get-started/index-basics.md)
-- [](/solutions/search/get-started/keyword-search-python.md)
-- [](/solutions/search/get-started/semantic-search.md)
+- [](/solutions/elasticsearch-solution-project/get-started/index-basics.md)
+- [](/solutions/elasticsearch-solution-project/get-started/keyword-search-python.md)
+- [](/solutions/elasticsearch-solution-project/get-started/semantic-search.md)
 
 ## Related resources
 

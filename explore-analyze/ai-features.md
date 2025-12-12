@@ -71,7 +71,7 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Agent Builder
 
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/solutions/elasticsearch-solution-project/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### AI assistant for {{es}}
 
@@ -79,11 +79,11 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Playground
 
-[Playground](/solutions/search/rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
 
 ### Model context protocol
 
-The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+The [Model Context Protocol (MCP)](/solutions/elasticsearch-solution-project/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
 
 ## AI-powered features in {{observability}}
 

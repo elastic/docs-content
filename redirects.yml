@@ -1,4 +1,14 @@
 redirects:
+  # Search primitives moved from ES solution to Search use case
+  'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
+  'solutions/elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md': 'solutions/search/full-text/create-update-synonyms-api-example.md'
+  # ES solution pages moved from Search to ES solution
+  'solutions/search/agent-builder/get-started.md': 'solutions/elasticsearch-solution-project/agent-builder/get-started.md'
+  'solutions/search/elastic-agent-builder.md': 'solutions/elasticsearch-solution-project/elastic-agent-builder.md'
+  'solutions/search/query-rules-ui.md': 'solutions/elasticsearch-solution-project/query-rules-ui.md'
+  'solutions/search/search-applications.md': 'solutions/elasticsearch-solution-project/search-applications.md'
+  'solutions/search/search-applications/search-application-client.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-client.md'
+  'solutions/search/search-connection-details.md': 'solutions/elasticsearch-solution-project/search-connection-details.md'
   'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
@@ -326,13 +336,13 @@ redirects:
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2245/
-  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
+  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/elasticsearch-solution-project/get-started/index-basics.md'
 
 # Related to https://github.com/elastic/elasticsearch/pull/133362
   'solutions/search/querydsl-full-text-filter-tutorial.md': 'elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2719
-  'solutions/search/api-quickstarts.md': 'solutions/search/get-started/quickstarts.md'
+  'solutions/search/api-quickstarts.md': 'solutions/elasticsearch-solution-project/get-started/quickstarts.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
@@ -355,7 +365,7 @@ redirects:
   'troubleshoot/observability/apm-agent-swift/apm-ios-agent.md': 'troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2843
-  'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/search/get-started.md'
+  'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/elasticsearch-solution-project/get-started.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3032
   'manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md': 'manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md'
