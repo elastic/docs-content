@@ -73,7 +73,7 @@ serverless: ga
 | Manage [notes](/solutions/security/investigate/notes.md) | N/A | N/A | `All` for the `Notes` feature |
 | Manage [cases](/solutions/security/investigate/cases.md) | N/A | N/A | `All` for the `Cases` feature |
 
-### Predefined roles [ers_roles]
+### Predefined {{serverless-full}} roles [predefined-serverless-roles-detections]
 ```yaml {applies_to}
 serverless: ga
 ```
