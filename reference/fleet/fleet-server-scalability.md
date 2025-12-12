@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -13,6 +16,13 @@ This page summarizes the resource and {{fleet-server}} configuration requirement
 ::::{tip}
 Refer to the [Scaling recommendations](#agent-policy-scaling-recommendations) section for specific recommendations about using {{fleet-server}} at scale.
 ::::
+
+## Scaling {{fleet-server}} on {{ech}}
+
+```{applies_to}
+deployment:
+  ess: ga
+```
 
 First modify your {{fleet}} deployment settings in {{ecloud}}:
 
@@ -49,6 +59,10 @@ Next modify the {{fleet-server}} configuration by editing the agent policy:
 
 
 ## Advanced {{fleet-server}} options [fleet-server-configuration]
+
+```{applies_to}
+stack: ga
+```
 
 The following advanced settings are available to fine tune your {{fleet-server}} deployment.
 
@@ -176,6 +190,11 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 
 ## Scaling recommendations ({{ecloud}}) [scaling-recommendations]
 
+```{applies_to}
+deployment:
+  ess: ga
+```
+
 The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example, a 32GB RAM requirement can be satisfied with 16GB of RAM in 2 different zones).
 
 
@@ -197,11 +216,14 @@ A series of scale performance tests are regularly executed in order to verify th
 
 ## Scaling recommendations [agent-policy-scaling-recommendations]
 
+```{applies_to}
+deployment:
+  self: ga
+```
+
 **{{agent}} policies**
 
 A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If more policies are configured, UI performance might be impacted. The maximum number of policies is not affected by the number of spaces in which the policies are used.
-
-If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
 **{{agents}}**
 

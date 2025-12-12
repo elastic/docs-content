@@ -5,10 +5,7 @@ mapped_pages:
 description: Remote ES output allows you to send agent data to a remote cluster, keeping data separate and independent from the deployment where you use Fleet.
 applies_to:
   stack: ga
-  deployment:
-    ess: ga
-    ece: ga
-    self: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -8,7 +11,7 @@ products:
 
 # Kibana Fleet APIs [fleet-api-docs]
 
-You can find details for all available {{fleet}} API endpoints in our generated [Kibana API docs](https://www.elastic.co/docs/api/doc/kibana).
+You can find details for all available {{fleet}} API endpoints in the [Kibana API docs](https://www.elastic.co/docs/api/doc/kibana). For {{serverless-full}} projects, check the [Kibana Serverless API docs](https://www.elastic.co/docs/api/doc/serverless).
 
 In this section, we provide examples of some commonly used {{fleet}} APIs.
 
