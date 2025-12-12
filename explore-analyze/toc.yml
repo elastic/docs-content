@@ -169,6 +169,7 @@ toc:
     children:
       - file: ai-features/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
+      - hidden: ai-features/ai-agent-or-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md

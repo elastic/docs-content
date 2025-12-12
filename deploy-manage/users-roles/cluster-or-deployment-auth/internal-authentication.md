@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
 ---
 
 # Internal authentication
