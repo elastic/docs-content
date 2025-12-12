@@ -3,7 +3,7 @@ applies_to:
   serverless:
   stack:
 ---
-# How to use the documentation
+# How to use the documentation?
 
 Our documentation is organized to guide you through your journey with Elastic, from learning the basics to deploying and managing complex solutions.
 
