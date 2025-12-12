@@ -179,7 +179,7 @@ toc:
             children:
               - file: ai-features/llm-guides/connect-to-lmstudio-observability.md
               - file: ai-features/llm-guides/connect-to-lmstudio-security.md
-              - file: ai-features/llm-guides/connect-to-vllm.md
+              - file: ai-features/llm-guides/connect-to-vLLM.md
       - hidden: ai-features/ai-agent-or-ai-assistant.md
   - file: discover.md
     children:
