@@ -553,7 +553,7 @@ To resolve the issue:
     * Issues with {{es}} authentication settings
 
 :::{admonition} Agents are no longer automatically unenrolled
-:applies_to: stack: ga 8.19.0, ga 9.1.0
+:applies_to: stack: ga 9.1.0
 
 The automatic unenrollment behavior is removed in {{agent}} versions 8.19.0 and 9.1.0. Starting with these versions, {{agents}} are no longer automatically unenrolled due to repeated 401 errors during check-in.
 :::
