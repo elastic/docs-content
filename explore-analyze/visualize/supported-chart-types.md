@@ -29,6 +29,8 @@ $$$aggregation-reference$$$
 
 ## Bar, line, and area chart features [xy-features]
 
+For step-by-step guidance on building area charts in Lens, see [Area charts](charts/area-charts.md).
+
 | Feature | **Lens** | **TSVB** | **Aggregation-based** | **Vega** | **Timelion** |
 | --- | --- | --- | --- | --- | --- |
 | Dense time series | Customizable | &check; | Customizable | &check; | &check; |
