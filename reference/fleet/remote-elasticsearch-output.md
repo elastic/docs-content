@@ -91,7 +91,7 @@ Select the [performance tuning settings](/reference/fleet/es-output-settings.md#
 
 ::::{step}
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
-Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). This feature requires additional steps. For more details, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
 ::::
 
 ::::{step}
