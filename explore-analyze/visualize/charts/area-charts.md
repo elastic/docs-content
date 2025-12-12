@@ -137,74 +137,32 @@ You can optionally split your series by a categorical field to create multiple s
 
 ## Area chart examples
 
-The following examples show practical configurations for common time series questions.
+**Traffic by geographic region**
+:   Visualizing which geographic regions generate the most traffic:
+   - **Horizontal axis**: `@timestamp` (Date histogram)
+   - **Vertical axis**: `records`
+   - **Breakdown**: `geo.dest`
+   
+   ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
-**Website traffic with YoY comparison**
-:   Visualize weekly page views and compare to last year:
-   - **Title**: "Weekly page views (YoY)"
-   - **X-axis**: `@timestamp` (Date histogram, weekly)
-   - **Y-axis**: `count()`
-   - Add a second series: `count(shift='1y')`
-   - Set **Stacking** to **None** for both series
-   - Set distinct colors; optionally choose **Smooth** interpolation
-   - Use legend statistics like **Max**, **Average**, and **Last value** for quick insights
+**Response code over time with annotations**
+:   Visualizing HTTP response codes over time, highlighting the proportion of success, client error, and server error responses, with annotations for key events:
+   - **Horizontal axis**: `@timestamp` (Date histogram)
+   - **Vertical axis**: `Count of records`
+   - **Breakdown**: 
+     - **Success/Redirection**`response.keyword >= 200 and response.keyword < 400`
+     - **Client Error**`response.keyword >= 400 and response.keyword < 500`
+     - **Server Error**`response.keyword >= 500`
+   - **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
+   - **Annotation Query**: `tags:error AND tags:security`
 
-**CPU utilization by service (stacked)**
-:   Show how services contribute to overall CPU:
-   - **Title**: "CPU utilization by service"
-   - **X-axis**: `@timestamp` (Date histogram)
-   - **Y-axis**: `average(system.cpu.total.pct)`; set **Value format** to `Percent`
-   - **Break down by**: `service.name`
-   - **Stacking**: **Stacked** or **Percentage (100%)** to show shares
-   - Configure **Missing values** to **Linear** to avoid visual gaps; consider **Smooth** lines
 
-**Error rate over time, stacked by outcome**
-:   Monitor error rate composition:
-   - **Title**: "Error rate by outcome"
-   - **X-axis**: `@timestamp` (Date histogram)
-   - **Primary series (formula)**:
-     ```
-     count(kql='event.dataset : \"apm*\" and event.outcome : failure') /
-     count(kql='event.dataset : \"apm*\"')
-     ```
-     Set **Value format** to `Percent`
-   - **Break down by**: `service.name` (to see which services contribute to failures)
-   - **Stacking**: **None** for pure error rate trend, or **Stacked** when breaking down the numerator by `event.outcome` (success/failure) for composition
-   - Add a **Reference line** at `0.05` (5%) as target/SLO
 
-**95th percentile latency by service (overlapping series)**
-:   Compare high-percentile latency across services:
-   - **Title**: "p95 latency by service"
-   - **X-axis**: `@timestamp`
-   - Add one series per service (or use a breakdown on `service.name` with top N):
-     - **Y-axis**: `percentile(transaction.duration.us, percentile=95)`
-   - **Stacking**: **None** (overlapping, not additive)
-   - Use **Legend** to show **Max**, **Median**, and **Last value**
 
-**Revenue vs forecast with cumulative totals**
-:   Track performance against plan:
-   - **Title**: "Revenue vs forecast (MTD)"
-   - **X-axis**: `@timestamp` (Date histogram, daily)
-   - **Actuals series**:
-     ```
-     cumulative_sum(sum(sales.revenue))
-     ```
-   - **Forecast series**:
-     ```
-     cumulative_sum(sum(sales.revenue_forecast))
-     ```
-   - **Stacking**: **None**
-   - Consider **Step** interpolation for clarity and add **Annotations** for major promotions or releases
 
-**Inbound network rate (moving average)**
-:   Smooth short-term spikes:
-   - **Title**: "Inbound network rate (5m MA)"
-   - **X-axis**: `@timestamp`
-   - **Y-axis (formula)**:
-     ```
-     moving_average(rate(sum(system.network.in.bytes))), window=5
-     ```
-   - Set **Value format** to `Bytes`
-   - **Stacking**: **None**
+
+
+
+     
 
 
