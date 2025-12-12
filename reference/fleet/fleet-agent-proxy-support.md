@@ -9,7 +9,7 @@ products:
   - id: elastic-agent
 ---
 
-# Using a proxy server with Elastic Agent and Fleet [fleet-agent-proxy-support]
+# Using a proxy server with {{agent}} and {{fleet}} [fleet-agent-proxy-support]
 
 Many enterprises secure their assets by placing a proxy server between them and the internet. The main role of the proxy server is to filter content and provide a single gateway through which all traffic traverses in and out of a data center. These proxy servers provide a various degree of functionality, security, and privacy.
 
@@ -21,15 +21,8 @@ Support is available in {{agent}} and {{fleet}} for connections through HTTP Con
 Some environments require users to authenticate with the proxy. There are no explicit settings for proxy authentication in {{agent}} or {{fleet}}, except the ability to pass credentials in the URL or as keys/tokens in headers, as described later.
 ::::
 
-
 Refer to [When to configure proxy settings](/reference/fleet/elastic-agent-proxy-config.md) for more detail, or jump into one of the following guides:
 
-* [Proxy Server connectivity using default host variables](/reference/fleet/host-proxy-env-vars.md)
-* [Fleet managed {{agent}} connectivity using a proxy server](/reference/fleet/fleet-agent-proxy-managed.md)
+* [Proxy server connectivity using default host variables](/reference/fleet/host-proxy-env-vars.md)
+* [{{fleet}}-managed {{agent}} connectivity using a proxy server](/reference/fleet/fleet-agent-proxy-managed.md)
 * [Standalone {{agent}} connectivity using a proxy server](/reference/fleet/fleet-agent-proxy-standalone.md)
-
-
-
-
-
-
