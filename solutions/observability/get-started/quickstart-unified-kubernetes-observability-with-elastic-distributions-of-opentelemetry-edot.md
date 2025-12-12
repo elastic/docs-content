@@ -33,7 +33,7 @@ For a more detailed description of the components and advanced configuration, re
 :sync: stack
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A running {{k8s}} cluster (v1.23 or newer).
+* A running {{k8s}} cluster (v1.23 or later).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
@@ -48,7 +48,7 @@ EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-ag
 :sync: serverless
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
-* A running {{k8s}} cluster (v1.23 or newer).
+* A running {{k8s}} cluster (v1.23 or later).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.

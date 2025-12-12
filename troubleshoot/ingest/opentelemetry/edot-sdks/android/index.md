@@ -20,7 +20,7 @@ mapped_pages:
 Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](apm-agent-android://reference/edot-android/getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
 
 :::{tip}
-If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, note that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
+If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, keep in mind that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
 :::
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/apm-agent-android/issues).
