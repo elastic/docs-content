@@ -294,7 +294,6 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
         ilm_enabled => false
         cloud_id => "<DeploymentName>:<ID>" <1>
         cloud_auth => "elastic:<Password>" <2>
-        ssl_enabled => true
         # api_key => "<myAPIid:myAPIkey>"
       }
     }
@@ -355,7 +354,6 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
           elasticsearch {
             index => "rdbms_idx"
             cloud_id => "<myDeployment>"
-            ssl_enabled => true
             ilm_enabled => false
             api_key => "2TBR42gBabmINotmvZjv:tV1dnfF-GHI59ykgv4N0U3"
             # user => "<Username>"

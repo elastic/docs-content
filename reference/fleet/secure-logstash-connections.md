@@ -118,7 +118,6 @@ output {
     cloud_id => "xxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxx=" <1>
     api_key => "xxxx:xxxx" <2>
     data_stream => true
-    ssl_enabled => true <3>
   }
 }
 ```
@@ -147,7 +146,6 @@ output {
     hosts => "https://xxxx:9200"
     api_key => "xxxx:xxxx"
     data_stream => true
-    ssl_enabled => true
     ssl_certificate_authorities => "/path/to/http_ca.crt" <1>
   }
 }
