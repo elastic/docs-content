@@ -22,7 +22,13 @@ Incorporate notes into your investigative workflows to coordinate responses, con
 
 ## Grant access to notes [notes-privileges]
 
-You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**. For more details on SIEM requirements, refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
+You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**. 
+
+::::{note}
+Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) to learn about other available SIEM features and how to give your role access to them.
+::::
+
+
 
 ## View and add notes to alerts and events [notes-alerts-events]
 
