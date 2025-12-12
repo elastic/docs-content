@@ -9,6 +9,137 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## December 8, 2025 [serverless-changelog-12082025]
+
+### Features and enhancements [serverless-changelog-12082025-features-enhancements]
+
+* Allows you to search scheduled reports by title and creator [#243841]({{kib-pull}}243841)
+* Updates the rule flapping schema to add an optional `enabled` field [#243855]({{kib-pull}}243855)
+* Improves suggestions for `LIKE` and `RLIKE` operators so they only suggest string-compatible options [#244903]({{kib-pull}}244903)
+* Redesigns the Lookup index editor with a new layout and controls [#244480]({{kib-pull}}244480)
+* Adds support for global custom ingest pipelines for service-level objectives (SLOs), allowing you to create a single pipeline that applies to all SLO rollup and summary documents [#245025]({{kib-pull}}245025)
+* Changes SLO rollup indexing to store service level indicator (SLI) data daily instead of monthly by default, with override support through a global custom ingest pipeline [#244978]({{kib-pull}}244978)
+* Adds ELSER in Elastic Inference Service (EIS) as a model option for the Observability AI Assistant knowledge base [#243298]({{kib-pull}}243298)
+* Adds an **Edit tags** action that lets you manually apply workflow tags to alerts [#243792]({{kib-pull}}243792)
+* Allows you to view and filter alerts by manually added workflow tags [#244251]({{kib-pull}}244251)
+* Adds a built-in product documentation tool to Agent Builder, available only when product documentation is installed [#242598]({{kib-pull}}242598)
+* Adds a platform cases tool and experimental security attachments and tools to Agent Builder to support existing **Ask AI Assistant** and **View in Agent Builder** workflows [#243574]({{kib-pull}}243574).
+* Adds an alerts search tool and two security agents (Alerts Agent and Entity Agent) to Agent Builder [#245205]({{kib-pull}}245205)
+* Updates the API keys management page to default to displaying personal API keys only [#245261]({{kib-pull}}245261)
+* Adds two new preconfigured connectors (General Purpose LLM v2 and General Purpose LLM v3) and renames the Elastic Managed LLM connector to General Purpose LLM v1 [#242791]({{kib-pull}}242791)
+* Adds the Groq icon to the providers list displayed during AI Connector and Inference endpoint creation [#244962]({{kib-pull}}244962)
+* Adds the **Suggest a pipeline** option in the Processing tab of streams to help generate ingest pipelines [#243950]({{kib-pull}}243950)
+* Adds support for `geo_point` fields in the schema editor for classic streams [#244356]({{kib-pull}}244356)
+* Enhances the Streams attachments feature with a details flyout, a better user experience, and better user feedback [#244880]({{kib-pull}}244880)
+* Adds validation for Streamlang DSL to enforce field namespacing in wired streams and detect type mismatches in processor configurations [#244221]({{kib-pull}}244221)
+* Adds an onboarding tour to the Streams UI to guide new users through core workflows [#244808]({{kib-pull}}244808)
+* Allows you to filter {{esql}} charts in dashboards [#243439]({{kib-pull}}243439)
+* Enables Value reports in {{ech}} and adds logic to export them using the share plugin [#243511]({{kib-pull}}243511)
+* Adds a **Span links** badge to the unified trace waterfall view [#244389]({{kib-pull}}244389)
+* Adds dynamic form elements for the IBM Resilient connector fields, improving the configuration experience [#238869]({{kib-pull}}238869)
+* Adds a time range selector to the Cases page to simplify filtering by timeframe [#243409]({{kib-pull}}243409)
+
+### Fixes [serverless-changelog-12082025-fixes]
+
+* Fixes an issue where `alert.consecutiveMatches` was missing in the action context for rule executions [#244997]({{kib-pull}}244997)
+* Fixes an issue where the Security alerts table did not update columns correctly when switching view mode [#245253]({{kib-pull}}245253)
+* Handles alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559)
+* Fixes an issue where the SLOs page could cause inconsistent browser back button behavior [#242761]({{kib-pull}}242761)
+* Standardizes error logging to make troubleshooting more consistent [#245030]({{kib-pull}}245030)
+* Fixes an issue that prevented IdP-initiated authentication when multiple OIDC providers were configured [#243869]({{kib-pull}}243869)
+* Improves UIAM reliability by increasing container health check timeouts and populating the UIAM shared secret in {{es}} [#245238]({{kib-pull}}245238)
+* Fixes CSP-agnostic regressions by removing cloud provider host checks, ensuring all cloud providers for {{ech}} deployments and {{serverless-short}} projects are supported [#242592]({{kib-pull}}242592)
+
+## December 2, 2025 [serverless-changelog-12022025]
+
+### Features and enhancements [serverless-changelog-12022025-features-enhancements]
+
+* Adds the **Read global parameters** sub-feature privilege which allows you to read the values of synthetics global parameters [#243821]({{kib-pull}}243821)
+* Adds Cc, Bcc, Subject, and Message fields with Mustache templating support to the Schedule exports flyout for email notifications [#242922]({{kib-pull}}242922)
+* Allows users to enable scheduled reports [#244202]({{kib-pull}}244202)
+* Adds a background {{fleet}} policy revisions cleanup task to automatically remove excess policy revisions from the `.fleet-policies` index [#242612]({{kib-pull}}242612)
+* Automatically migrates component template ILM policies during setup [#243333]({{kib-pull}}243333)
+* Improves suggestion ordering using categorization to provide more relevant results [#243312]({{kib-pull}}243312)
+* Allows you to select a column type in the lookup index editor [#241637]({{kib-pull}}241637)
+* Ensures that infrastructure inventory UIs accurately reflect supported schemas [#244481]({{kib-pull}}244481)
+* Adds a warning when deleting API keys currently in use by alerting rules [#243353]({{kib-pull}}243353)
+* Removes the median line length check in the categorization anomaly detection job [#243827]({{kib-pull}}243827)
+* Allows you to filter alerts using the KQL search bar [#240100]({{kib-pull}}240100)
+* Introduces the Attachments API for streams [#243597]({{kib-pull}}243597)
+* Introduces new UI components for the Drop processor [#243131]({{kib-pull}}243131)
+* Adds service-level objective (SLO) support for streams attachments, migrates the UI to use the Attachments API for dashboards, rules, and SLOs, and removes deprecated API endpoints [#244092]({{kib-pull}}244092)
+* Allows you to add custom descriptions for enrichment processors [#243998]({{kib-pull}}243998)
+* Prevents conflicting actions in the Partitioning tab [#244228]({{kib-pull}}244228)
+* Improves handling of missing streams [#244366]({{kib-pull}}244366)
+* Allows you to configure the visibility of the Streams app per space [#244285]({{kib-pull}}244285)
+* Improves error messaging when expensive queries are turned off in the Streams schema editor [#243406]({{kib-pull}}243406)
+* Improves the Console UI to make key actions more intuitive [#242487]({{kib-pull}}242487)
+* Adds targeted Elastic Inference Service (EIS) callouts and dismissible guided tours to {{kib}} for {{ech}} and {{serverless-full}} users [#244626]({{kib-pull}}244626)
+* Redesigns the Lens configuration flyout to show layers as tabs instead of vertically stacked panels [#235372]({{kib-pull}}235372)
+* Consolidates attachments into a single Attachments tab with sub-tab navigation [#243708]({{kib-pull}}243708)
+* Adds the {{esql}} `CHUNK` function in technical preview [#138621]({{es-pull}}138621)
+* Improves support for the `first()` and `last()` aggregation functions in {{esql}} by disabling vector dispatch for blocks [#138390]({{es-pull}}138390)
+* Adds informative timestamps to async {{esql}} query results [#137957]({{es-pull}}137957)
+* Add Groq as a chat completion inference service for {{ml}} [#138251]({{es-pull}}138251)
+* Adds the node-scoped `vectors.indexing.use_gpu` setting to control GPU usage for vector indexing [#138738]({{es-pull}}138738)
+* Adds routing support to the `_project/tags` endpoint
+* Allows point-in-time (PIT) searches to span multiple projects [#137966]({{es-pull}}137966)
+* Excludes synthetic `_id` postings from disk usage statistics [#138745]({{es-pull}}138745)
+* Allows `project_routing` to be specified as a query parameter in EQL requests [#138559]({{es-pull}}138559)
+* Avoids retrieving unnecessary fields during the node-reduce phase in {{esql}} queries [#137920]({{es-pull}}137920)
+* Updates `KNN` function options in {{esql}} to align with the latest vector search behavior [#138372]({{es-pull}}138372)
+* Updates the {{esql}} `CHUNK` function to support `chunking_settings` as an optional argument [#138123]({{es-pull}}138123)
+* Pushes down `COUNT(*) BY DATE_TRUNC` aggregations in {{esql}} to improve performance [#138023]({{es-pull}}138023)
+* Adds support for parameters to `LIKE` and `RLIKE` operators in {{esql}} [#138051]({{es-pull}}138051)
+* Adds support for the `time_zone` request parameter to `KQL` and `QSTR` functions in {{esql}} [#138695]({{es-pull}}138695)
+* Adds timezone support to the {{esql}} `DateDiff` function [#138316]({{es-pull}}138316)
+* Fuses the `MV_MIN` and `MV_MAX` functions in {{esql}} and documents the fusion process [#138029]({{es-pull}}138029)
+* Adds `GROUP BY ALL` support in {{esql}} [#137367]({{es-pull}}137367)
+* Extends `GROUP BY ALL` in {{esql}} to support the dimensions output [#138595]({{es-pull}}138595)
+* Extends the field capabilities API to support `project_routing` in the request body [#138681]({{es-pull}}138681)
+* Improves security migration resilience by handling version conflicts more robustly [#137558]({{es-pull}}137558)
+* Adds dynamic template parameters in bulk requests so OTLP metric units can be stored in index mappings [#134709]({{es-pull}}134709)
+* Adds the `project_routing` option to SQL requests [#138718]({{es-pull}}138718)
+* Uses a doc values skipper for `_tsid` when resolving synthetic `_id` values to skip unnecessary documents [#138568]({{es-pull}}138568)
+
+### Fixes [serverless-changelog-12022025-fixes]
+
+* Verifies an alert exists before muting it [#242847]({{kib-pull}}242847)
+* Prevents URL restore errors in Discover and Dashboards [#242788]({{kib-pull}}242788)
+* Adds an authentication header to {{kib}} tool requests [#244017]({{kib-pull}}244017)
+* Fixes an issue where the dashboard selector did not return results when trying to link dashboards to a rule [#243496]({{kib-pull}}243496)
+* Fixes a validation error when creating custom threshold rules with data view objects [#244134]({{kib-pull}}244134)
+* Ensures deleted text in form fields is not sent as an empty string during Inference endpoint and LLM Connector creation [#244059]({{kib-pull}}244059)
+* Prevents cell selection from being cleared after you dismiss the alerts table popover in Anomaly Explorer [#244183]({{kib-pull}}244183)
+* Fixes an issue where cell actions on empty cells populated the condition value with `undefined` [#243766]({{kib-pull}}243766)
+* Removes references to Mustache template snippets from the UI form fields and descriptions for the Set processor [#243656]({{kib-pull}}243656)
+* Fixes a screen-reader text mismatch on the Index management page [#243802]({{kib-pull}}243802)
+* Fixes a sizing issue in the flyout for API key creation [#244072]({{kib-pull}}244072)
+* Improves the error message that appears when the IBM Resilient connector fails [#244012]({{kib-pull}}244012)
+* Catches connector errors without interrupting the case creation flow [#244188]({{kib-pull}}244188)
+* Allows file paths containing spaces to be used in Observables [#244350]({{kib-pull}}244350)
+* Fixes the serialization of `meta.error` in JSON layouts [#244364]({{kib-pull}}244364)
+* Fixes an issue that could cause an infinite loading state after submitting the case creation form [#244543]({{kib-pull}}244543)
+* Adds supprot for pruning columns when using `FORK` branches in {{esql}} [#137907]({{es-pull}}137907)
+* Fixes an Inference API issue to support correct type identification during deserialization [#138484]({{es-pull}}138484)
+* Fixes `chunkedInfer()` to correctly handle empty inputs [#138632]({{es-pull}}138632)
+* Ensures the circuit breaker limit is honored when building global ordinals by accounting their memory usage and breaking when the limit is exceeded [#108875]({{es-pull}}108875)
+* Changes `DatabaseNodeService` error logs to warnings to reduce noise [#138438]({{es-pull}}138438)
+* Avoids using `MIN` or `MAX` as `TOP`'s surrogate when an `outputField` is defined [#138380]({{es-pull}}138380)
+* Uses the correct minimum transport version when resolving {{esql}} `ENRICH` and `LOOKUP JOIN` types [#137431]({{es-pull}}137431)
+* Fixes `SearchContext` circuit breaker memory accounting [#138002]({{es-pull}}138002)
+* Adds missing `vector_similarity_support` flags in `InferenceFeatures` [#138644]({{es-pull}}138644)
+* Extends the semantic text highlighter to improve the handling of vector-based queries [#138140]({{es-pull}}138140)
+* Handles individual document parsing failures in bulk requests with ingest pipelines without failing the entire request [#138624]({{es-pull}}138624)
+* Handles search timeouts that occur during collector initialization in `QueryPhase` by returning partial results instead of shard-level failures [#138084]({{es-pull}}138084)
+* Fixes serialization of `null` blocks in `AggregateMetricDoubleBlock` [#138539]({{es-pull}}138539)
+* Ensures filters are correctly applied to kNN queries [#138457]({{es-pull}}138457)
+* Ensures filter queries, including semantic queries, are correctly rewritten and applied to kNN searches during coordinator-side inference [#138457]({{es-pull}}138457)
+* Speeds up `LeafCollector#setScorer` in `TopHitsAggregator` [#138883]({{es-pull}}138883)\
+* Reduces `LeafCollector#setScorer` overhead in `TopHitsAggregator` for multi-bucket aggregations by sharing a single `Scorable` instance across buckets [#138883]({{es-pull}}138883)
+* Updates the `jts` dependency to version `1.20.0` [#138351]({{es-pull}}138351)
+* Moves the `CrossProjectRoutingResolver` functionality to {{serverless-short}}
+
 ## November 24, 2025 [serverless-changelog-11242025]
 
 ### Features and enhancements [serverless-changelog-11242025-features-enhancements]

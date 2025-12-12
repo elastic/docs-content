@@ -12,9 +12,9 @@ products:
 navigation_title: AI Assistant
 ---
 
-# AI Assistant for {{elastic-sec}}
+# Elastic AI Assistant for Security
 
-The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
+Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
@@ -23,7 +23,7 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 :::
 
 ::::{warning}
-The Elastic AI Assistant is designed to enhance your analysis with smart dialogues. Its capabilities are still developing. Users should exercise caution as the quality of its responses might vary. Your insights and feedback will help us improve this feature. Always cross-verify AI-generated advice for accuracy.
+The Elastic AI Assistant is designed to enhance your analysis with smart dialogues. Its capabilities are still developing. You should exercise caution as the quality of its responses might vary. Your insights and feedback will help us improve this feature. Always cross-verify AI-generated advice for accuracy.
 ::::
 
 ::::{admonition} Requirements
@@ -42,7 +42,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
+The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
 
 - Manage which AI connectors are available in your environment. 
 - Enable or disable AI Assistant and other AI-powered features in your environment.
