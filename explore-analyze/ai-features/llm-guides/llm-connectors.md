@@ -36,7 +36,7 @@ For {{elastic-sec}} and {{observability}}, you can also connect to a custom LLM 
 
 **Self-managed LLMs for {{elastic-sec}}:**
 
--- For production environments or air-gapped environments, you can [connect to vLLM](/explore-analyze/ai-features/llm-guides/connect-to-vllm.md).
+-- For production environments or air-gapped environments, you can [connect to vLLM](/explore-analyze/ai-features/llm-guides/connect-to-vLLM.md).
 -- For experimental deployments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-security.md).
 
 **Self-managed LLMs for {{observability}}:**
