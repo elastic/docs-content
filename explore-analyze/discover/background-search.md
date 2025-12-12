@@ -27,15 +27,15 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 
 :::::{applies-switch}
 
-::::{applies-item} serverless:
+::::{applies-item} serverless: ga
 This feature is already enabled by default.
 ::::
 
-::::{applies-item} stack: 9.3
+::::{applies-item} stack: ga 9.3
 This feature is already enabled by default.
 ::::
 
-::::{applies-item} stack: 9.2
+::::{applies-item} stack: ga 9.2
 This feature is disabled by default. You can enable background searches by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 
 :::{note} - Exception for search sessions users
@@ -43,7 +43,7 @@ If you upgrade to version 9.2 or later with search sessions enabled in the versi
 :::
 ::::
 
-::::{applies-item} stack: 9.0
+::::{applies-item} stack: ga 9.0
 This feature is named **Search sessions** and is disabled by default unless you upgraded from a previous version where you were already using the feature. You can enable search sessions by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 ::::
 
