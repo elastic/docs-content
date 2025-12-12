@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
+description: Create a new Kibana dashboard from scratch by adding visualizations, controls, and organizing panels to display your data insights.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,17 +11,28 @@ products:
 
 # Create a dashboard [create-dashboard]
 
-1. Open the **Dashboards** page in {{kib}}.
+Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data that meets your specific monitoring and analysis needs.
+
+## Requirements [create-dashboard-requirements]
+
+Before creating a dashboard, ensure you have:
+
+* [Data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and at least one [data view](../find-and-organize/data-views.md) configured
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
+
+## Create a new dashboard [create-dashboard-steps]
+
+1. Open the **Dashboards** page in {{product.kibana}}.
 2. Select **Create dashboard** to start with an empty dashboard.
 
     When you create a dashboard, you are automatically in edit mode and can make changes to the dashboard.
 
 3. Populate your dashboard with the content that you need. You can:
 
-    * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{kib}}, or other visualizations such as [Maps](../visualize/maps.md).
+    * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{product.kibana}}, or other visualizations such as [Maps](../visualize/maps.md).
     * [**Add existing content from the library**](../visualize/visualize-library.md). Select existing visualizations or Discover sessions that have already been configured and saved to the **Visualize Library**.
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
-    * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.  
+    * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
 
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
 5. Define the main settings of your dashboard from the **Settings** menu located in the toolbar.
