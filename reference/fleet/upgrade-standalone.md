@@ -13,12 +13,53 @@ To upgrade a standalone agent running on an edge node:
 1. Make sure the `elastic-agent` service is running.
 2. From the directory where {{agent}} is installed, run the `upgrade` command to upgrade to a new version. Not sure where the agent is installed? Refer to [Installation layout](/reference/fleet/installation-layout.md).
 
-    For example, on macOS, to upgrade the agent from version 8.8.0 to 8.8.1, you would run:
+    For example, to upgrade the agent from version 9.1.0 to 9.1.1, you would run:
+
+    :::::{tab-set}
+
+    ::::{tab-item} macOS
 
     ```shell
-    cd /Library/Elastic/Agent/
-    sudo elastic-agent upgrade 8.8.1
+    sudo elastic-agent upgrade 9.1.1
     ```
+
+    ::::
+
+    ::::{tab-item} Linux
+
+    ```shell
+    sudo elastic-agent upgrade 9.1.1
+    ```
+
+    ::::
+
+    ::::{tab-item} Windows
+
+    As an Administrator, run:
+
+    ```shell
+    .\elastic-agent.exe upgrade 9.1.1
+    ```
+
+    ::::
+
+    ::::{tab-item} DEB
+
+    ```shell
+    sudo elastic-agent upgrade 9.1.1
+    ```
+
+    ::::
+
+    ::::{tab-item} RPM
+
+    ```shell
+    sudo elastic-agent upgrade 9.1.1
+    ```
+
+    ::::
+
+    :::::
 
 
 This command upgrades the binary. Your agent policy should continue to work, but you might need to upgrade it to use new features and capabilities.
@@ -53,7 +94,7 @@ In the event of a private GPG key rotation, you can use the following options wi
     Example:
 
     ```yaml
-    ./elastic-agent upgrade 8.8.0 --skip-verify
+    ./elastic-agent upgrade 9.1.0 --skip-verify
     ```
 
 
@@ -63,7 +104,7 @@ In the event of a private GPG key rotation, you can use the following options wi
     Example:
 
     ```yaml
-    ./elastic-agent upgrade 8.8.0 --pgp-path /home/elastic-agent/GPG-KEY-elasticsearch
+    ./elastic-agent upgrade 9.1.0 --pgp-path /home/elastic-agent/GPG-KEY-elasticsearch
     ```
 
 

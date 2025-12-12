@@ -763,6 +763,7 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
           - file: monitor/logging-configuration/update-elasticsearch-logging-levels.md
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
+          - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
               - file: monitor/logging-configuration/kibana-log-levels.md
