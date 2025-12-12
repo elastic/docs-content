@@ -72,7 +72,7 @@ The following table describes the required privileges to access the Detections f
 
 ### Predefined roles [ers_roles]
 ```yaml {applies_to}
-serverless: all
+serverless: ga
 ```
 
 | Action | Predefined role |
