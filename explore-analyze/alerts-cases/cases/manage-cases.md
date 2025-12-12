@@ -31,8 +31,14 @@ Open a new case to keep track of issues and share their details with colleagues.
 
 4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](setup-cases.md).
 5. If you defined any [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section.
+6. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
 
-6. For the **External incident management system**, select a connector. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
+    ::::{note}
+    :applies_to:{stack: ga 9.3}
+    When specifying **Additional fields** for an {{ibm-r}} connector, fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
+    ::::
+
+
 7. After you’ve completed all of the required fields, click **Create case**.
 
 {applies_to}`stack: preview` {applies_to}`serverless: preview` Alternatively, you can configure your rules to automatically create cases by using [case actions](kibana://reference/connectors-kibana/cases-action-type.md). By default, the rule adds all of the alerts within a specified time window to a single case. You can optionally choose a field to group the alerts and create separate cases for each group. You can also choose whether you want the rule to reopen cases or open new ones when the time window elapses.
@@ -123,7 +129,9 @@ After a visualization has been added to a case, you can modify or interact with 
 
 ## Manage cases [manage-case]
 
-In **Management > {{stack-manage-app}} > Cases**, you can search cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes.
+In **Management > {{stack-manage-app}} > Cases**, you can search cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. 
+
+{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{stack-manage-app}} case in your space. The action also adjusts the starting time range to the date of when the first case was created. 
 
 To view a case, click on its name. You can then:
 
