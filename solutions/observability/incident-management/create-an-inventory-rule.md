@@ -47,18 +47,14 @@ In the following example, Kubernetes Pods is the selected inventory type. The co
 :screenshot:
 :::
 
-### Supported data
-```{applies_to}
-stack: ga 9.3
-serverless: ga
-```
+### Supported data by inventory type
 
-The inventory types only support data from the following sources:
+For more on the data supported by each inventory type, refer to the following references:
 
-* **Hosts**: OpenTelemetry and the Elastic [System](integration-docs://reference/system/index.md) integration
-* **Kubernetes Pods**: [Kubernetes](integration-docs://reference/kubernetes.md) integration
-* **Docker Containers**: [Kubernetes](integration-docs://reference/kubernetes.md), [System](integration-docs://reference/system/index.md), and [Docker](integration-docs://reference/docker.md) integrations
-* **AWS**: [EC2](integration-docs://reference/aws/ec2.md), [S3](integration-docs://reference/aws/s3.md), [RDS](integration-docs://reference/aws/rds.md), and [SQS](integration-docs://reference/aws/sqs.md) integrations
+* [Hosts](../../../reference/observability/observability-host-metrics.md)
+* [{{k8s}} Pods](../../../reference/observability/observability-kubernetes-pod-metrics.md)
+* [Docker Containers](../../../reference/observability/observability-container-metrics.md)
+* [AWS](../../../reference/observability/observability-aws-metrics.md)
 
 ## Add actions [action-types-infrastructure]
 

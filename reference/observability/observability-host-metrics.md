@@ -173,4 +173,13 @@ Refer to the following sections for host metrics and field calculation formulas 
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: write'))`<br> |
 | **Disk Write Throughput** | Average number of bytes written from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: write'))')`<br> |
 
+## Infrastructure UI filtering logic [host-metrics-filtering]
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
 
+Data without the following attributes will not work in the Infrastructure UIs:
+
+* Inventory UI searches - Elastic System integration: event.module: 'system' OR metricset.module: 'system'
+* Inventory Rule - Elastic System integration: event.module: 'system' OR metricset.module: 'system'

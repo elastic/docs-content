@@ -14,8 +14,6 @@ Additional AWS charges for GetMetricData API requests are generated using this m
 
 ::::
 
-
-
 ## Monitor EC2 instances [monitor-ec2-instances]
 
 To analyze EC2 instance metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
@@ -88,3 +86,14 @@ The Infrastructure UI only supports RDS metric data from the [RDS](integration-d
 | **Latency** | Average of `aws.rds.latency.dml`. |
 
 For information about the fields used by the Infrastructure UI to display AWS services metrics, see the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).
+
+## Infrastructure UI filtering logic [aws-metrics-filtering]
+```{applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
+
+* Inventory UI searches - {{aws}} EC2, RDS, S3, SQS: `event.module : aws`
+* Inventory Rule - {{aws}} EC2, RDS, S3, SQS: `event.module : aws`
