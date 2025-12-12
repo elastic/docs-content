@@ -78,13 +78,13 @@ estimated\ bytes &= num\_vectors \times 4 \times m \\
 \end{align*}
 ```
 
-So, to put it all together, here is an example with HNSW indexed `element_type: float` with no quantization and `m` set to `16`, and `1000000` vectors of dimensions `1024`:
+Putting it all together, here is an example with HNSW indexed `element_type: float` with no quantization, `m` set to `16`, and `1,000,000` vectors of dimensions `1,024`:
 
 ```{math}
 \begin{align*}
-estimated\ bytes &= (1000000 \times 4 \times 16) + (1000000 \times 4 \times 1024) \\
-&= 64000000 + 4096000000 \\
-&= 4160000000
+estimated\ bytes &= (1,000,000 \times 4 \times 16) + (1,000,000 \times 4 \times 1024) \\
+&= 64,000,000 + 4,096,000,000 \\
+&= 4,160,000,000 \\
 &= 3.87GB
 \end{align*}
 ```
