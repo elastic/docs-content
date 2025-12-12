@@ -18,7 +18,7 @@ spec:
         type: LoadBalancer <1>
 ```
 
-1. On cloud providers which support external load balancers, setting the type field to `LoadBalancer` provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-transport` through one of the Kubernetes Ingress controllers that support TCP services.
+1. On cloud providers which support external load balancers, setting the `type` field to `LoadBalancer` provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-transport` through one of the Kubernetes Ingress controllers that support TCP services.
 
 :::{note}
 If you change the service’s `port` to expose a different port externally, set `targetPort` explicitly to `9300`, which is the default transport service listening port. Otherwise, Kubernetes uses the same value for both fields, resulting in failed connections.

@@ -2,7 +2,4 @@ When using TLS certificate–based authentication, the first step is to establis
 * The transport CA of the remote cluster must be added as a trusted CA in the local cluster.
 * The local cluster’s transport CA must be added as a trusted CA in the remote cluster.
 
-::::{note}
-While it is technically possible to configure remote cluster connections using earlier versions of {{es}}, this guide only covers the setup for {{es}} 7.6 and later. The setup process is significantly simplified in {{es}} 7.6 due to improved support for the indirection of Kubernetes services.
-::::
 

@@ -19,7 +19,7 @@ This snippet is in use in the following locations:
         
       Make sure you use the correct port for your authentication method:
       * **API keys**: Use the port configured in the remote cluster interface of the remote cluster (defaults to `9443`).  
-      * **TLS Certificates**: Use the {{es}} transport port (defaults to `9300`).
+      * **TLS certificates**: Use the {{es}} transport port (defaults to `9300`).
 
       Starting with {{kib}} 9.2, this field also supports IPv6 addresses. When using an IPv6 address, enclose it in square brackets followed by the port number. For example: `[2001:db8::1]:9443`.
 

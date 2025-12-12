@@ -97,9 +97,9 @@ To allow mutual TLS authentication between the clusters:
 
 2. Configure the self-managed cluster to trust the transport CA of the ECK cluster, by adding the CA to the list of CAs in [`xpack.security.transport.ssl.certificate_authorities`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#_pem_encoded_files_3).
 
-3. Configure the ECK managed cluster to trust the transport CA of the self-managed cluster:
+3. Configure the ECK-managed cluster to trust the transport CA of the self-managed cluster:
 
-    1. Create a config map with the CA certificate you extracted previously:
+    1. Create a ConfigMap with the CA certificate you extracted previously:
 
         ```sh
         kubectl create configmap remote-certs --from-file=ca.crt=<self-managed_ca.crt> <1>
