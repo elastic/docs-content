@@ -9,8 +9,8 @@ on:
 jobs:
   preview:
     uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
-    enable-vale-linting: true
     with:
+      enable-vale-linting: true
       continue-on-error: false
       strict: true
     permissions:
