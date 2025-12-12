@@ -27,7 +27,7 @@ To use this feature, you need:
    :::{note}
    In {{stack}} 9.0.0, this privilege is called **Endpoint Insights**.
    :::
-* A working [LLM connector](../ai/set-up-connectors-for-large-language-models-llm.md) for AI Assistant.
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md) for AI Assistant.
 ::::
 
 ## Troubleshoot policy issues
@@ -46,7 +46,7 @@ To use this functionality, you need to enable [AI Assistant Knowledge Base](/sol
 
 1. Find **Endpoints** in the navigation menu or use the global search field.  
 2. Click on an endpoint to open its details flyout.  
-3. Under **Automatic Troubleshooting**, select an LLM connector, or [add](../ai/set-up-connectors-for-large-language-models-llm.md) a new one.
+3. Under **Automatic Troubleshooting**, select an LLM connector, or [add](/explore-analyze/ai-features/llm-guides/llm-connectors.md) a new one.
 4. If you don't already have AI Assistant Knowledge Base enabled, click **Setup Knowledge Base**. 
 5. Once Knowledge Base is enabled, click **Scan**. After a brief processing period, any detected warnings or failures in policy responses will appear under **Insights**.  
 
@@ -64,7 +64,7 @@ After you’ve installed {{elastic-defend}} on one or more hosts, you can use au
 
 1. Find **Endpoints** in the navigation menu or use the global search field.
 2. Click on an endpoint to open its details flyout.
-3. Under **Automatic Troubleshooting**, select an LLM connector, or [add](../ai/set-up-connectors-for-large-language-models-llm.md) a new one.
+3. Under **Automatic Troubleshooting**, select an LLM connector, or [add](/explore-analyze/ai-features/llm-guides/llm-connectors.md) a new one.
 4. Click **Scan**. After a brief processing period, any detected AV products will appear under **Insights**.
 
 ### Resolve incompatibilities [_resolve_incompatibilities]

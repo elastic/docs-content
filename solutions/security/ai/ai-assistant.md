@@ -31,7 +31,7 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 * {applies_to}`serverless: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To use AI Assistant, the **Elastic AI Assistant: All** Security [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and the **Actions and Connectors: Read** management [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
+* An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which AI Assistant uses to generate responses.
 * A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
@@ -62,7 +62,7 @@ Elastic can automatically anonymize event data that you provide to AI Assistant 
 
 ## Set up AI Assistant [set-up-ai-assistant]
 
-You must create a generative AI connector before you can use AI Assistant. AI Assistant can connect to multiple large language model (LLM) providers so you can select the best model for your needs. To set up a connector, refer to [LLM connector setup guides](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+You must create a generative AI connector before you can use AI Assistant. AI Assistant can connect to multiple large language model (LLM) providers so you can select the best model for your needs. To set up a connector, refer to [LLM connector setup guides](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 ::::{admonition} Recommended models
 While AI Assistant is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to select models that perform well with your desired use cases.

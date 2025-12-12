@@ -47,7 +47,7 @@ stack: preview 9.2
 serverless: preview
 ```
 
-Models you can [deploy and manage yourself](/solutions/observability/connect-to-own-local-llm.md).
+Models you can [deploy and manage yourself](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
 
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

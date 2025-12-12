@@ -38,7 +38,7 @@ AI Assistant requires specific privileges and a large language model (LLM) conne
 
 To learn more about configuring LLM connectors, refer to:
 
-- [Enable LLM access](../../solutions/security/ai/set-up-connectors-for-large-language-models-llm.md)
+- [Enable LLM access](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
 
 ## Prompt best practices [rag-for-esql]
 Elastic AI Assistant allows you to take full advantage of the Elastic platform to improve your operations. It can help you write an ES|QL query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
