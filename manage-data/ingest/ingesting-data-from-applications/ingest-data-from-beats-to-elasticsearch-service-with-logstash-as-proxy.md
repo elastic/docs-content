@@ -388,7 +388,6 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
         ilm_enabled => true
         cloud_id => "<DeploymentName>:<ID>" <1>
         cloud_auth => "elastic:<Password>" <2>
-        ssl_enabled => true
         # api_key => "<myAPIid:myAPIkey>"
       }
     }
