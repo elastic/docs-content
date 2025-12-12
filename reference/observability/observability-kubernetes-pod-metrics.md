@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-kubernetes-pod-metrics.html
   - https://www.elastic.co/guide/en/observability/current/kubernetes-pod-metrics.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -12,7 +15,7 @@ products:
 To analyze {{k8s}} pod metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 :::{note}
-:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+:applies_to: stack: ga 9.3
 The Infrastructure UI only supports {{k8s}} pod metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
 :::
 
@@ -29,7 +32,6 @@ For information about the fields used by the Infrastructure UI to display {{k8s}
 ## Infrastructure UI filtering logic [k8s-pod-metrics-filtering]
 ```{applies_to}
 stack: ga 9.3
-serverless: ga
 ```
 
 The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:

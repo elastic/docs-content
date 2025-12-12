@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-aws-metrics.html
   - https://www.elastic.co/guide/en/observability/current/aws-metrics.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -19,7 +22,7 @@ Additional AWS charges for GetMetricData API requests are generated using this m
 To analyze EC2 instance metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 :::{note}
-:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+:applies_to: stack: ga 9.3
 The Infrastructure UI only supports EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
 :::
 
@@ -37,7 +40,7 @@ The Infrastructure UI only supports EC2 metric data from the [EC2](integration-d
 To analyze S3 bucket metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 :::{note}
-:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+:applies_to: stack: ga 9.3
 The Infrastructure UI only supports S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
 :::
 
@@ -55,7 +58,7 @@ The Infrastructure UI only supports S3 metric data from the [S3](integration-doc
 To analyze SQS queue metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 :::{note}
-:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+:applies_to: stack: ga 9.3
 The Infrastructure UI only supports SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
 :::
 
@@ -73,7 +76,7 @@ The Infrastructure UI only supports SQS metric data from the [SQS](integration-d
 To analyze RDS database metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 :::{note}
-:applies_to: {"stack": "ga 9.3", "serverless": "ga"}
+:applies_to: stack: ga 9.3
 The Infrastructure UI only supports RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
 :::
 
@@ -90,7 +93,6 @@ For information about the fields used by the Infrastructure UI to display AWS se
 ## Infrastructure UI filtering logic [aws-metrics-filtering]
 ```{applies_to}
 stack: ga 9.3
-serverless: ga
 ```
 
 The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
