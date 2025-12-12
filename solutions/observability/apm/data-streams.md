@@ -35,6 +35,7 @@ Traces
 :   Traces are comprised of [spans and transactions](/solutions/observability/apm/data-types.md). Traces are stored in the following data streams:
 
     * Application traces: `traces-apm-<namespace>`
+    * Sampled application traces: `traces-apm.sampled-<namespace>`
     * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
 
 Metrics
