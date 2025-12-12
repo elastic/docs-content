@@ -13,7 +13,7 @@ products:
 
 :::{important}
 Elastic doesn’t support the setup and configuration of local LLMs. The example provided is for reference only.
-Before using a local LLM, evaluate its performance according to the [LLM performance matrix](./llm-performance-matrix.md#evaluate-your-own-model).
+Before using a local LLM, evaluate its performance according to the [LLM performance matrix](/solutions/observability/llm-performance-matrix.md#evaluate-your-own-model).
 :::
 
 This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally configure the connector in your Elastic deployment.
@@ -152,5 +152,5 @@ While local (open-weight) LLMs offer greater privacy and control, they generally
 
 Local LLMs in air-gapped environments have specific installation and configuration instructions for deploying ELSER and configuring product documentation. Refer to the following links for more information:
 
-- [Deploy ELSER in an air-gapped environment](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install)
+- [Deploy ELSER in an air-gapped environment](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install)
 - [Configure product documentation for air-gapped-environments](kibana://reference/configuration-reference/ai-assistant-settings.md#configuring-product-doc-for-airgap)
