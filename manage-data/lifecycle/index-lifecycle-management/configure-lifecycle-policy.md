@@ -1,5 +1,5 @@
 ---
-navigation_title: Configure a lifecycle policy
+navigation_title: Create an {{ilm-init}} policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
 applies_to:
@@ -8,15 +8,17 @@ products:
   - id: elasticsearch
 ---
 
-# Configure a lifecycle policy [set-up-lifecycle-policy]
+# Create an index lifecycle management policy in {{es}} [set-up-lifecycle-policy]
 
-An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how your indices are managed over time, automating when and how they transition as they age. You can use {{ilm-init}} to manage both indices and [data streams](/manage-data/data-store/data-streams.md). There are fewer configuration steps required to set up ILM with data streams. In comparison, configuring ILM with indices requires you to create an initial managed index and alias in addition to defining a policy and creating a template to apply it. This page describes the steps to configure an {{ilm-init}} lifecycle policy for both scenarios.
+An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how indices transition through different phases over time. This guide explains how to create a new {{ilm-init}} policy with configurable rollover, retention, and deletion rules, and then apply the policy using an index template. 
+
+You can use {{ilm-init}} to manage both indices and [data streams](/manage-data/data-store/data-streams.md). There are fewer configuration steps required to set up ILM with data streams. In comparison, configuring ILM with indices requires you to create an initial managed index and alias in addition to defining a policy and creating a template to apply it. This page describes the steps to configure an {{ilm-init}} lifecycle policy for both scenarios.
 
 :::{note}
 This page is specifically about using {{ilm-init}} with indices or data streams. If you're looking for a simpler data streams lifecycle management option that focuses on a data retention period, refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md). Check [Data lifecycle](/manage-data/lifecycle.md) to compare these lifecycle management options.
 :::
 
-**Consider these aspects when configuring an {{ilm-init}} policy:**
+**Consider these aspects when creating an {{ilm-init}} policy:**
 
 * To manage an index or data stream with {{ilm-init}}, you need to specify a valid policy in the `index.lifecycle.name` index setting.
 
