@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the index action that indexes watch data into Elasticsearch.
 ---
 
 # Index action [actions-index]
 
-Use the `index` action to index data into Elasticsearch. See [Index action attributes](#index-action-attributes) for the supported attributes.
+Use the **index** action to index data into {{product.elasticsearch}} when watch conditions are met. This action enables you to store watch execution results, create audit trails, or populate indices with processed watch payload data.
 
 ## Configuring index actions [_configuring_index_actions]
 

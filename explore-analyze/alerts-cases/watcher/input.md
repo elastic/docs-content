@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for watch input types that load data into the execution context.
 ---
 
-# Inputs [input]
+# Watch inputs [input]
 
-When a watch is triggered, its *input* loads data into the execution context. This payload is accessible during the subsequent watch execution phases. For example, you can base a watch’s condition on the data loaded by its input.
+When a watch is triggered, its input loads data into the execution context, making the payload accessible during subsequent watch execution phases. You can use this data to evaluate conditions and pass information to actions. {{watcher}} supports four input types: simple, search, HTTP, and chain.
 
 {{watcher}} supports four input types:
 

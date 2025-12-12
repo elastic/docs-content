@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for schedule triggers that define time-based watch execution.
 ---
 
 # Schedule trigger [trigger-schedule]
 
-Schedule [triggers](trigger.md) define when the watch execution should start based on date and time. All times are in UTC time unless a timezone is explicitly specified in the schedule.
+Schedule triggers define when watch execution should start based on date and time. All times are in UTC unless a timezone is explicitly specified in the schedule. {{watcher}} uses the system clock to determine the current time, so you should synchronize the clocks of all nodes in the cluster using a time service such as NTP.
 
 {{watcher}} uses the system clock to determine the current time. To ensure schedules are triggered when expected, you should synchronize the clocks of all nodes in the cluster using a time service such as [NTP](http://www.ntp.org/).
 

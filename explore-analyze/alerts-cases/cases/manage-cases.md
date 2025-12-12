@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Instructions for creating, updating, and managing cases to track incidents and issues.
 ---
 
-# Open and manage cases in {{kib}} [manage-cases]
+# Open and manage cases [manage-cases]
 
-To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case features in {{kib}}.
+You can create cases to track incidents and issues, add alerts and comments, assign team members, set severity and status, and send case information to external incident management systems. This page covers the core workflows for working with cases in **{{stack-manage-app}}**.
 
 ## Open a new case [open-case]
 

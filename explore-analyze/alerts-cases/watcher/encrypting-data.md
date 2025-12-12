@@ -5,11 +5,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Instructions for encrypting sensitive data like passwords and authentication credentials in watches.
 ---
 
-# Encrypting sensitive data in Watcher [encrypting-data]
+# Encrypting sensitive data in {{watcher}} [encrypting-data]
 
-Watches might have access to sensitive data such as HTTP basic authentication information or details about your SMTP email service. You can encrypt this data by generating a key and adding some secure settings on each node in your cluster.
+Watches might have access to sensitive data such as HTTP basic authentication information or details about your SMTP email service. You can encrypt this data by generating a system key and configuring secure settings on each node in your cluster. Once enabled, password fields in HTTP basic authentication blocks are stored encrypted rather than as plain text.
 
 Every `password` field that is used in your watch within an HTTP basic authentication block - for example within a webhook, an HTTP input or when using the reporting email attachment - will not be stored as plain text anymore. Also be aware, that there is no way to configure your own fields in a watch to be encrypted.
 

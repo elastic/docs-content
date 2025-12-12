@@ -6,11 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Reference for variables that can be used in rule actions using Mustache template syntax.
 ---
 
 # Rule action variables [rule-action-variables]
 
-Alerting rules can use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to pass values when the actions run.
+Alerting rules can use [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to pass dynamic values from the rule context to actions when they run. This enables you to include rule-specific details like alert names, threshold values, and matched documents in notifications.
 
 ## Common variables [common-rule-action-variables]
 

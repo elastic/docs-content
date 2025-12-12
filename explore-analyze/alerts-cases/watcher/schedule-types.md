@@ -5,11 +5,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for schedule types including hourly, daily, weekly, monthly, yearly, cron, and interval.
 ---
 
-# Schedule Types [_schedule_types]
+# Schedule types [_schedule_types]
 
-{{watcher}} provides several types of schedule triggers:
+{{watcher}} provides several types of schedule triggers for different time-based execution patterns. Choose the schedule type that best matches your monitoring needs, from simple hourly schedules to complex cron expressions.
 
 * [`hourly`](#schedule-hourly)
 * [`daily`](#schedule-daily)

@@ -7,11 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Overview of case management for tracking and collaborating on incidents and issues.
 ---
 
 # Cases in {{kib}} [cases]
 
-Cases are used to open and track issues directly in {{kib}}. You can add assignees and tags to your cases, set their severity and status, and add alerts, comments, and visualizations. You can create cases automatically when alerts occur or send cases to external incident management systems by configuring connectors.
+**Cases** provide a centralized workspace for tracking and collaborating on incidents and issues directly in {{kib}}. You can create cases manually or automatically from alerts, add assignees and tags, set severity and status, and attach alerts, comments, and visualizations. Cases integrate with external incident management systems through connectors, enabling seamless workflows for investigation and resolution.
 
 {applies_to}`stack: preview` {applies_to}`serverless: preview` You can also optionally add custom fields and case templates.
 

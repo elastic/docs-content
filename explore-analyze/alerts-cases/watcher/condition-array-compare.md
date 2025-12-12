@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the array compare condition that evaluates array elements against a value.
 ---
 
 # Array compare condition [condition-array-compare]
 
-Use `array_compare` to compare an array of values in the execution context to a given value. See [Table 84](condition-compare.md#condition-compare-operators) for the operators you can use.
+Use the **array_compare** condition to compare an array of values in the execution context to a given value. This condition is useful for evaluating aggregation results or any array data where you need to check if at least one element meets specific criteria.
 
 ## Using an array compare condition [_using_an_array_compare_condition]
 

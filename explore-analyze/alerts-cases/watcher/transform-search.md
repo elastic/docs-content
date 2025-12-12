@@ -6,11 +6,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Reference for the search transform that replaces payload with search results.
 ---
 
 # Search payload transform [transform-search]
 
-A [{{watcher-transform}}](transform.md) that executes a search on the cluster and replaces the current payload in the watch execution context with the returned search response. The following snippet shows how a simple search transform can be defined on the watch level:
+Use the **search** {{watcher-transform}} to execute a search on the cluster and replace the current payload in the watch execution context with the returned search response. This transform enables you to load additional data or refine existing data before actions are executed.
 
 ```js
 {

@@ -5,11 +5,12 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Step-by-step tutorial for creating your first watch with schedule, input, condition, and action.
 ---
 
-# Getting started with Watcher [watcher-getting-started]
+# Getting started with {{watcher}} [watcher-getting-started]
 
-To set up a watch to start sending alerts:
+To set up a watch that sends alerts when conditions are met, you define a schedule to check the data, an input to load the data, a condition to evaluate, and an action to execute. This tutorial walks through creating a basic watch that monitors log data for errors.
 
 * [Schedule the watch and define an input](#log-add-input).
 * [Add a condition](#log-add-condition) that checks to see if an alert needs to be sent.
