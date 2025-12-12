@@ -55,7 +55,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Label clearly**
 :   Provide a descriptive title and axis labels so users can interpret trends quickly.
 
-Refer to [Area chart settings](#settings) to find all configuration options for your area chart.
+Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.
 :::::
 
 :::::{step} Save the chart
