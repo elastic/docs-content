@@ -4,7 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/connect-to-local-llm.html
 applies_to:
   stack: ga 9.2
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: observability
 ---
