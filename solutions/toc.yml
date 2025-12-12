@@ -118,6 +118,7 @@ toc:
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
+              - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
               - file: observability/get-started/opentelemetry/quickstart/self-managed/index.md
                 children:
                   - file: observability/get-started/opentelemetry/quickstart/self-managed/k8s.md
