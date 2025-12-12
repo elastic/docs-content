@@ -156,7 +156,7 @@ You can optionally split your series by a categorical field to create multiple s
    - **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
    - **Annotation Query**: `tags:error AND tags:security`
 
-
+   ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
 
 
 
