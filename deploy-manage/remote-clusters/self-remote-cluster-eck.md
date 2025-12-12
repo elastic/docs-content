@@ -93,9 +93,11 @@ To allow mutual TLS authentication between the clusters:
         :::{include} _snippets/eck_rcs_certs_retrieve_ca.md
         :::
 
-    2. For the self-managed cluster (self-managed CA pending) take the transport CA from any of the nodes of the cluster. You can save it as `self-managed_ca.crt`.
+    2. For the self-managed cluster, retrieve the transport CA from any of the nodes of the cluster. You can save it as `self-managed_ca.crt`.
 
-2. Configure the self-managed cluster to trust the transport CA of the ECK cluster, by adding the CA to the list of CAs in [`xpack.security.transport.ssl.certificate_authorities`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#_pem_encoded_files_3).
+2. Configure the self-managed cluster to trust the transport CA of the ECK-managed cluster as follows:
+
+    Add the ECK-managed cluster’s CA to the list of CAs in [`xpack.security.transport.ssl.certificate_authorities`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#_pem_encoded_files_3).
 
 3. Configure the ECK-managed cluster to trust the transport CA of the self-managed cluster:
 
