@@ -159,6 +159,22 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
 * Fixes CVE-2025-37735 ([ESA-2025-23](https://discuss.elastic.co/t/elastic-defend-8-19-6-9-1-6-and-9-2-0-security-update-esa-2025-23/383272)) in {{elastic-defend}} on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
 
+## 9.1.9 [elastic-security-9.1.9-release-notes]
+
+### Features and enhancements [elastic-security-9.1.9-features-enhancements]
+* Shows session view in full height [#245888]({{kib-pull}}245888).
+* Shows analyzer in full height [#245857]({{kib-pull}}245857).
+* Adds for Bind Link requests mitigation for {elastic defend}.
+* Improves general system responsiveness while {elastic-defend} is installed.
+* Uses mandatory template {elastic-defend} which will be substituted with proper brand name, i.e Elastic Defend.
+* Improves general system responsiveness while {elastic-defend} is installed.
+* Reduces the number of I/O operations performed by {elastic-defend} for file event enrichment. This reduction is more pronounced when Ransomware Protection is not in use.
+
+### Fixes [elastic-security-9.1.9-fixes]
+* Standardizes how to log errors [#245030]({{kib-pull}}245030).
+* Improves handling of the upgrade with Tamper Protection in {elastic-defend}.
+* For Linux {elastic-defend}, fixes a bug where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+
 ## 9.1.8 [elastic-security-9.1.8-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.8-features-enhancements]
