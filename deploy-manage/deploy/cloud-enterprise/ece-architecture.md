@@ -90,7 +90,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 Each {{ece}} service runs as a dedicated container. These containers are automatically deployed based on the roles assigned to each ECE host. The following table lists the containers you’ll find on your ECE hosts:
 
-| Container                                          | Roles         | Description |
+| Container                                          | Host roles         | Description |
 |---|---|---|
 | `frc-beats-runners-beats-runner`                  | All roles     | Collects metrics from local containers for monitoring and health checks. |
 | `frc-client-forwarders-client-forwarder`          | All roles     | Manages communication between hosts and ZooKeeper. |
