@@ -1,10 +1,10 @@
 <!--
 This snippet is in use in the following locations:
 - eck-remote-clusters-to-other-eck.md
-- eck-remote-clusters-from-external.md
+- self-remote-cluster-eck.md
 -->
-
 % ECK and self-managed clusters present a different Kibana UI when adding remote clusters than ECE/ECH deployments
+To add a remote cluster in {{kib}}:
 
 1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Add a remote cluster**.

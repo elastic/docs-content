@@ -1,7 +1,7 @@
 <!--
 This snippet is in use in the following locations:
 - remote-clusters-api-key.md
-- eck-remote-clusters-from-external.md
+- self-remote-cluster-eck.md
 -->
 1. On every node of the local cluster:
 

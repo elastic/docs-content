@@ -47,4 +47,4 @@ Connect to ECK-managed clusters from external clusters:
 
   - [](./ec-enable-ccs-for-eck.md)
   - [](./ece-enable-ccs-for-eck.md)
-  - [Connect self-managed {{es}} clusters to ECK](./eck-remote-clusters-from-external.md)
+  - [Connect self-managed {{es}} clusters to ECK](./self-remote-cluster-eck.md)

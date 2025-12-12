@@ -35,7 +35,7 @@ Because of this, if you want to configure TLS certificate–based authentication
 
 * [](./ec-enable-ccs-for-eck.md)
 * [](./ece-enable-ccs-for-eck.md)
-* [](./eck-remote-clusters-from-external.md)
+* [](./self-remote-cluster-eck.md)
 :::
 
 ### Enable the remote cluster server interface on the remote cluster [enable-rcs]

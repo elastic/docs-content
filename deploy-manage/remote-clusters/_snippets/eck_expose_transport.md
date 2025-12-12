@@ -1,6 +1,6 @@
 <!--
 This snippet is in use in the following locations:
-- eck-remote-clusters-from-external.md
+- self-remote-cluster-eck.md
 - ec-enable-ccs-for-eck.md
 - ece-enable-ccs-for-eck.md
 -->

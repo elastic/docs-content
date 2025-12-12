@@ -662,7 +662,7 @@ toc:
         children:
           - file: remote-clusters/remote-clusters-api-key.md
           - file: remote-clusters/remote-clusters-cert.md
-          - file: remote-clusters/eck-remote-clusters-from-external.md
+          - file: remote-clusters/self-remote-cluster-eck.md
           - file: remote-clusters/remote-clusters-migrate.md
       - file: remote-clusters/eck-remote-clusters-landing.md
         children:

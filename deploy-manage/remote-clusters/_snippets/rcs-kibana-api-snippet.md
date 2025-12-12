@@ -9,6 +9,8 @@ This snippet is in use in the following locations:
 
 It requires remote_type substitution to be defined
 -->
+To add a remote cluster in {{kib}}:
+
 1. Go to the **Remote Clusters** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Add a remote cluster**.
 2. In **Select connection type**, choose the authentication mechanism you prepared earlier (**API keys** or **Certificates**), and then click **Next**.
