@@ -179,7 +179,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Data without the following attributes will not work in the Infrastructure UIs:
+The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
 
 * Inventory UI searches - Elastic System integration: event.module: 'system' OR metricset.module: 'system'
 * Inventory Rule - Elastic System integration: event.module: 'system' OR metricset.module: 'system'
