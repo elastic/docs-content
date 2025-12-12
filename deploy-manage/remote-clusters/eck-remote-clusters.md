@@ -50,9 +50,9 @@ Based on the selected security model, use one of the following setup procedures.
 
 ### Configure the local cluster
 
-Once the remote cluster server is enabled and running on the remote cluster, you can configure the {{es}} reference on the local cluster and include the desired permissions for cross-cluster search and cross-cluster replication under the `spec.remoteClusters` field.
+Once the remote cluster server is enabled and running on the remote cluster, you can configure the {{es}} reference on the local cluster and include the desired permissions for {{ccs}} and {{ccr}} under the `spec.remoteClusters` field.
 
-Permissions have to be included under the `apiKey` field. The API model of the {{es}} resource is compatible with the [{{es}} Cross-Cluster API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) model. Fine-grained permissions can therefore be configured in both the `search` and `replication` fields.
+Permissions have to be included under the `apiKey` field. The API model of the {{es}} resource is compatible with the [{{es}} cross-cluster API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) model. Fine-grained permissions can therefore be configured in both the `search` and `replication` fields.
 
 The following example shows how to connect a local cluster to a remote cluster and specify the cross-cluster permissions under the `apiKey` field. This configuration is applied to the local cluster manifest:
 

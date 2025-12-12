@@ -322,7 +322,7 @@ cluster.remote.signing.certificate_authorities: "path/to/signing/certificate_aut
 ```
 
 When creating a cross-cluster API key on the remote cluster, specify a `certificate_identity` pattern that matches the Distinguished
-Name (DN) of the local cluster's certificate. Use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API:
+Name (DN) of the local cluster's certificate. Use the [Create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API:
 
 ```console
 POST /_security/cross_cluster/api_key
