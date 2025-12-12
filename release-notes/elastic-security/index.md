@@ -36,7 +36,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds `process.group_leader.pid` and `process.session_leader.pid` for MacOS process exec events.
 * Improves general system responsiveness while {elastic-defend} is installed.
 * Use mandatory template {elastic-defend} which will be substituted with proper brand name, which is {elastic-defend}.
-* Improves general system responsiveness while {elastic-defend} is installed.
 * Reduces the number of I/O operations performed by {elastic-defend} for file event enrichment.  This reduction is more pronounced when Ransomware Protection is not in use.
 
 ### Fixes [elastic-security-9.2.3-fixes]
