@@ -9,9 +9,9 @@ applies_to:
   stack:
 ---
 
-# Deployment options
+# Deployment options?
 
-You can run Elastic on any infrastructure, allowing you to choose the model that best fits your operational needs.
+You can run Elastic on any infrastructure, allowing you to choose the model that best fits your operational needs!
 
 Use this page for a quick overview of your options for deploying Elastic.
 
