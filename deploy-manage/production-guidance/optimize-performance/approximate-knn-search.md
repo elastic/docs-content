@@ -61,7 +61,11 @@ Here are estimates for different element types and quantization levels:
 | `float` | none | `num_vectors * num_dimensions * 4` | 
 | `float` | `int8` | `num_vectors * (num_dimensions + 4)` |
 | `float` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
-| `float ` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
+| `float` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
+| `bfloat16` | none | `num_vectors * num_dimensions * 2` |
+| `bfloat16` | `int8` | `num_vectors * (num_dimensions + 4)` |
+| `bfloat16` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
+| `bfloat16` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
 | `byte` | none |  `num_vectors * num_dimensions` |
 | `bit` | none | `num_vectors * (num_dimensions/8)` |
 
@@ -71,6 +75,17 @@ If you're using HNSW, the graph must also be in memory. To estimate the required
 \begin{align*}
 estimated\ bytes &= num\_vectors \times 4 \times m \\
 &= num\_vectors \times 4 \times 16
+\end{align*}
+```
+
+The following is an example of an estimate with the HNSW indexed `element_type: float` with no quantization, `m` set to `16`, and `1,000,000` vectors of `1024` dimensions:
+
+```{math}
+\begin{align*}
+estimated\ bytes &= (1,000,000 \times 4 \times 16) + (1,000,000 \times 4 \times 1024) \\
+&= 64,000,000 + 4,096,000,000 \\
+&= 4,160,000,000 \\
+&= 3.87GB
 \end{align*}
 ```
 
@@ -195,13 +210,11 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 ::::
 
 
-## Use Direct IO when the vector data does not fit in RAM
+## Use on-disk rescoring when the vector data does not fit in RAM
 ```{applies_to}
-stack: preview 9.1
+stack: preview 9.3
 serverless: unavailable
 ```
-If your indices are of type `bbq_hnsw` and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float32 vectors.
+If you use quantized indices and your nodes don't have enough off-heap RAM to store all vector data in memory, then you might experience high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float vectors.
 
-In these scenarios, direct IO can significantly reduce query latency. Enable it by setting the JVM option `vector.rescoring.directio=true` on all vector search nodes in your cluster.
-
-Only use this option if you're experiencing very high query latencies on indices of type `bbq_hnsw`. Otherwise, enabling direct IO may increase your query latencies.
+In these scenarios, on-disk rescoring can significantly reduce query latency. Enable it by setting the `on_disk_rescore: true` option on your vector indices. Your data must be re-indexed or force-merged to use the new setting in subsequent searches.
