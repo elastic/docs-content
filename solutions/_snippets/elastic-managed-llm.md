@@ -1,4 +1,4 @@
-[Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) are preconfigured AI connectors available in {{kib}} projects with an Elastic [subscription](https://www.elastic.co/pricing) that includes AI features. {{serverless-short}} projects also need the appropriate feature tier They provide immediate access to generative AI features without requiring any setup or external model integration.  
+[Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) are preconfigured AI connectors available in {{kib}} deployments and serverless projects with an appropriate [subscription or feature tier](https://www.elastic.co/pricing). They provide immediate access to generative AI features without requiring any setup or external model integration.  
 
 Elastic Managed LLMs are available out-of-the box; they do not require manual configuration or API key management. Alternatively, you can configure and use third-party LLM connectors, such as OpenAI, Azure, or Amazon Bedrock.
 
