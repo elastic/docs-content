@@ -2,8 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
 applies_to:
-  deployment:
-    ess: ga
+  stack: ga
   serverless: unavailable
 products:
   - id: fleet
@@ -17,6 +16,13 @@ This page summarizes the resource and {{fleet-server}} configuration requirement
 ::::{tip}
 Refer to the [Scaling recommendations](#agent-policy-scaling-recommendations) section for specific recommendations about using {{fleet-server}} at scale.
 ::::
+
+## Scaling {{fleet-server}} on {{ech}}
+
+```{applies_to}
+deployment:
+  ess: ga
+```
 
 First modify your {{fleet}} deployment settings in {{ecloud}}:
 
@@ -53,6 +59,10 @@ Next modify the {{fleet-server}} configuration by editing the agent policy:
 
 
 ## Advanced {{fleet-server}} options [fleet-server-configuration]
+
+```{applies_to}
+stack: ga
+```
 
 The following advanced settings are available to fine tune your {{fleet-server}} deployment.
 
@@ -180,6 +190,11 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 
 ## Scaling recommendations ({{ecloud}}) [scaling-recommendations]
 
+```{applies_to}
+deployment:
+  ess: ga
+```
+
 The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example, a 32GB RAM requirement can be satisfied with 16GB of RAM in 2 different zones).
 
 
@@ -200,6 +215,11 @@ A series of scale performance tests are regularly executed in order to verify th
 
 
 ## Scaling recommendations [agent-policy-scaling-recommendations]
+
+```{applies_to}
+deployment:
+  self: ga
+```
 
 **{{agent}} policies**
 

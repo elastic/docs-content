@@ -47,6 +47,10 @@ If everything checks out, proceed to the next step. Otherwise, you might want to
 
 ## Set up {{fleet-server}} (self-managed deployments only) [_set_up_fleet_server_self_managed_deployments_only]
 
+```{applies_to}
+serverless: unavailable
+```
+
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
 If you’re using {{ecloud}}, you can skip this step because {{ecloud}} runs a hosted version of {{fleet-server}}.
@@ -294,6 +298,10 @@ For more information, see the [Aliases documentation](/manage-data/data-store/al
 
 
 ## Migrate index lifecycle policies [_migrate_index_lifecycle_policies]
+
+```{applies_to}
+serverless: unavailable
+```
 
 {{ilm-cap}} ({{ilm}}) policies in {{es}} enable you to manage indices according to your performance, resiliency, and retention requirements. To learn more about {{ilm}}, refer to the [{{ilm}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 

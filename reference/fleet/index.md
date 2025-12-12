@@ -128,9 +128,9 @@ For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/
 For more information, refer to [](/reference/fleet/fleet-server.md).
 
 :::{admonition} {{fleet-server}} with {{serverless-full}}
-On-premises {{fleet-server}} is not currently available for use with
-{{serverless-full}} projects. In a {{serverless-short}}
-environment we recommend using {{fleet-server}} on {{ecloud}}.
+:applies_to: serverless: unavailable
+
+On-premises {{fleet-server}} is not currently available for use in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {{observability}} and Security projects.
 :::
 
 ## {{es}} as the communication layer [fleet-communication-layer]
