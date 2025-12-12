@@ -55,7 +55,10 @@ For instructions about using {{ml}} jobs and rules, refer to [Machine learning j
 
 
 ### Custom role privileges [security-detections-requirements-custom-role-privileges]
-The following table describes the required privileges to access the Detections feature, including rules, alerts, and exceptions. For more information on {{kib}} privileges, refer to [Feature access based on user privileges](/deploy-manage/manage-spaces.md#spaces-control-user-access).
+
+```yaml {applies_to}
+stack: ga
+serverless: ga
 
 | Action | Cluster Privileges | Index Privileges | Kibana Privileges |
 | --- | --- | --- | --- |
