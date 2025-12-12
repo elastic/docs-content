@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
 applies_to:
   stack: preview 9.2
-  serverless: unavailable
+  serverless: preview
 products:
   - id: kibana
 description: Send long-running queries to run in the background with background searches from Discover and Dashboards. Continue working while queries complete and access results later.
@@ -25,11 +25,31 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 
 ## Enable background searches
 
-This feature is disabled by default. You can enable background searches in versions 9.2 and later, or search sessions in versions 9.1 and earlier, by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
+:::::{applies-switch}
+
+::::{applies-item} serverless:
+This feature is already enabled by default.
+::::
+
+::::{applies-item} stack: 9.3
+This feature is already enabled by default.
+::::
+
+::::{applies-item} stack: 9.2
+This feature is disabled by default. You can enable background searches by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 
 :::{note} - Exception for search sessions users
 If you upgrade to version 9.2 or later with search sessions enabled in the version you upgrade from, background searches are automatically enabled.
 :::
+::::
+
+::::{applies-item} stack: 9.0
+This feature is named **Search sessions** and is disabled by default unless you upgraded from a previous version where you were already using the feature. You can enable search sessions by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
+::::
+
+
+:::::
+
 
 ## Usage requirements [_requirements]
 
