@@ -52,9 +52,10 @@ For instructions about using {{ml}} jobs and rules, refer to [Machine learning j
 
 ### Custom role privileges [security-detections-requirements-custom-role-privileges]
 
-````yaml {applies_to}
+```yaml {applies_to}
 stack: ga
 serverless: ga
+```
 
 | Action | Cluster Privileges | Index Privileges | Kibana Privileges |
 | --- | --- | --- | --- |
@@ -69,7 +70,7 @@ serverless: ga
 ### Predefined {{serverless-full}} roles [predefined-serverless-roles-detections]
 ```yaml {applies_to}
 serverless: ga
-````
+```
 
 | Action                               | Predefined role                                                                                                                                                            |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
