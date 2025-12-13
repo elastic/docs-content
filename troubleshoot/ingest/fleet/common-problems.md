@@ -54,6 +54,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 * [{{agent}} fails with `Agent process is not root/admin or validation failed` message](#process-not-root)
 * [Integration policy upgrade has too many conflicts](#upgrading-integration-too-many-conflicts)
 * [{{agent}} hangs while unenrolling](#agent-hangs-while-unenrolling)
+* [{{agent}} is automatically unenrolled after failed check-ins with 401 errors](#agent-auto-unenroll-401)
 * [On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1`](#ca-cert-testing)
 * [Uninstalling {{elastic-endpoint}} fails](#endpoint-not-uninstalled-with-agent)
 * [API key is unauthorized to send telemetry to `.logs-endpoint.diagnostic.collection-*` indices](#endpoint-unauthorized)
@@ -530,6 +531,32 @@ You can unenroll an agent to invalidate all API keys related to the agent and ch
 2. Under Agents, choose **Unenroll agent** from the **Actions** menu next to the agent you want to unenroll.
 3. Click **Force unenroll**.
 
+
+## {{agent}} is automatically unenrolled after failed check-ins with 401 errors [agent-auto-unenroll-401]
+
+In {{agent}} versions prior to 8.19.0 and 9.1.0, if an agent receives a 401 (Unauthorized) error on more than seven consecutive check-ins with {{fleet-server}}, the agent is automatically unenrolled.
+
+To resolve the issue:
+
+1. Re-enroll the agent that has been automatically unenrolled from {{fleet}}:
+
+     1. If the agent is still installed on the host, uninstall it completely. Refer to [Uninstall {{agents}} from edge hosts](/reference/fleet/uninstall-elastic-agent.md) for detailed instructions.
+
+     2. Reinstall and enroll the agent with a new enrollment token. Refer to [Install {{agents}}](/reference/fleet/install-elastic-agents.md) for detailed instructions.
+
+2. Investigate the cause of the 401 errors, and resolve the underlying issues to ensure proper agent functionality.
+
+    401 errors during check-in typically indicate authentication or authorization problems. Common causes include:
+
+    * Expired or revoked API keys
+    * Incorrect {{fleet-server}} configuration
+    * Issues with {{es}} authentication settings
+
+:::{admonition} Agents are no longer automatically unenrolled
+:applies_to: stack: ga 9.1.0
+
+The automatic unenrollment behavior is removed in {{agent}} versions 8.19.0 and 9.1.0. Starting with these versions, {{agents}} are no longer automatically unenrolled due to repeated 401 errors during check-in.
+:::
 
 ## On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1` [ca-cert-testing]
 
