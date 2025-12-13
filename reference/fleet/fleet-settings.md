@@ -142,7 +142,7 @@ On the **{{fleet}}** > **Settings** page, you can also configure {{fleet}} to au
 
 After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically.
 
-This option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the [{{kib}} settings file](/get-started/the-stack.md).
+This option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the [{{kib}} settings file](/deploy-manage/stack-settings.md#kib-settings).
 
 To enable automatic deletion of unenrolled agents:
 
