@@ -282,6 +282,7 @@ toc:
           - file: alerts-cases/alerts/alerting-setup.md
           - file: alerts-cases/alerts/create-manage-rules.md
           - file: alerts-cases/alerts/view-alerts.md
+          - file: alerts-cases/alerts/query-alerts.md
           - file: alerts-cases/alerts/rule-types.md
             children:
               - file: alerts-cases/alerts/rule-type-index-threshold.md
