@@ -17,6 +17,16 @@ A data stream acts as a layer of abstraction over a set of indices that are opti
 
 You can submit indexing and search requests directly to a data stream. The stream automatically routes the request to backing indices that store the stream’s data. You can use [{{ilm}} ({{ilm-init}})](../lifecycle/index-lifecycle-management.md) to automate the management of these backing indices. For example, you can use {{ilm-init}} to automatically move older backing indices to less expensive hardware and delete unneeded indices. {{ilm-init}} can help you reduce costs and overhead as your data grows.
 
+You can also use a [data stream lifecycle](../lifecycle/data-stream.md) to automate lifecycle management according to your retention requirements.
+
+:::{admonition} Managing data streams with Streams
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
+
+For more information, refer to [Manage data streams on the Streams page](/manage-data/data-store/data-streams/manage-data-stream.md#manage-data-streams-with-streams).
+
+:::
 
 ## Should you use a data stream? [should-you-use-a-data-stream]
 
@@ -96,7 +106,7 @@ When a backing index is created, the index is named using the following conventi
 
 Some operations, such as a [shrink](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md), can change a backing index’s name. These name changes do not remove a backing index from its data stream.
 
-The generation of the data stream can change without a new index being added to the data stream (e.g. when an existing backing index is shrunk). This means the backing indices for some generations will never exist. You should not derive any intelligence from the backing indices names.
+The generation of the data stream can change without a new index being added to the data stream (for example, when an existing backing index is shrunk). This means the backing indices for some generations will never exist. You should not derive any intelligence from the backing indices names.
 
 
 ## Append-only (mostly) [data-streams-append-only]

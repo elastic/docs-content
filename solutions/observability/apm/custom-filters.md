@@ -74,7 +74,7 @@ To obfuscate the passwords stored in the request body, you can use a series of [
 ### Create a pipeline [_create_a_pipeline]
 
 ::::{tip}
-This tutorial uses the [Ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. In Kibana, go to **Stack Management** → **Ingest Pipelines** → **Create pipeline** → **New pipeline** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+This tutorial uses the [Ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. Open the **Ingest Pipelines** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create pipeline** → **New pipeline**.
 ::::
 
 To start, create a pipeline with a simple description and an empty array of processors:

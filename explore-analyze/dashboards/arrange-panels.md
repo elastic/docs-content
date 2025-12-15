@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/arrange-panels.html
+description: Organize and arrange dashboard panels using collapsible sections, resizing, positioning, and duplication to improve readability and performance.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,11 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
-Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, it makes your dashboard easier to read, faster to load, and helps its viewers locate important information quicker.
+Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, your dashboard becomes easier to read, loads faster, and helps viewers locate important information more quickly.
+
+## Requirements [arrange-panels-requirements]
+
+To organize dashboard panels, you need the **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
@@ -23,13 +28,13 @@ Organize your dashboard panels into collapsible sections to improve readability 
 To add a collapsible section:
 
 1. Open the dashboard and make sure that you are in **Edit** mode.
-2. Select **Add panel** and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
+2. Add a new panel and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
 3. Optionally, edit the label of the section.
 4. Drag and drop any panels you want into the section.
    :::{tip}
    The section must be expanded in order to place panels into it.
    :::
-5. Just like any other panel, you can drag and drop the collapsible section to a different position in the dashboard.
+5. Like any other panel, you can drag and drop the collapsible section to a different position in the dashboard.
 6. Save the dashboard. 
 
 Users viewing the dashboard will find the section in the same state as when you saved the dashboard. If you saved it with the section collapsed, then it will also be collapsed by default for users.

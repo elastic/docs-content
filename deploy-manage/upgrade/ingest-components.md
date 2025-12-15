@@ -1,12 +1,7 @@
 ---
 applies_to:
-  stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
-  serverless:
+  stack: ga
+  serverless: ga
 ---
 # Upgrade your ingest components
 

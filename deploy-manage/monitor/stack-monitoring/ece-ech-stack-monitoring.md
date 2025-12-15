@@ -32,16 +32,13 @@ Monitoring consists of two components:
 
 With logging and monitoring enabled for a deployment, metrics are collected for {{es}}, {{kib}}, and APM with Fleet Server.
 
-:::{admonition} Simplify monitoring with AutoOps
-If you’re using {{ech}}, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths.
-
-For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Before you begin [logging-and-monitoring-limitations]
 
 * Some limitations apply when you use monitoring on ECH or ECE. To learn more, check the monitoring [restrictions and limitations](#restrictions-monitoring).
-* Enabling logs and monitoring consumes extra resources on a deployment. For production systems, we recommend sizing deployments with logs and monitoring enabled to at least 4 GB of RAM on each {{es}} instance.
+* Enabling logs and monitoring requires additional resources. For production systems where these features are enabled, we recommend allocating at least 4 GB of RAM per {{es}} instance. Review [Minimum size recommendations for production use](../../deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 
 ## Monitoring for production use [logging-and-monitoring-production]
 
@@ -60,7 +57,7 @@ Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may 
 
 ## Retention of logging and monitoring indices [logging-and-monitoring-retention]
 
-When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, open {{kib}} **Stack management > Data > Index Lifecycle Policies**.
+When sending monitoring and logging data to a deployment, an ILM policy is pre-configured to control data retention. To view or edit the policies, Go to the **Index Lifecycle Policiess** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 For monitoring indices, the retention period is configured in the `.monitoring-8-ilm-policy` index lifecycle policy.
 
@@ -120,7 +117,7 @@ When shipping logs to a monitoring deployment there are more logging features av
 ### For {{es}} [extra-logging-features-elasticsearch]
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
+* [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
 After you’ve enabled log delivery on your deployment, you can [add the {{es}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.

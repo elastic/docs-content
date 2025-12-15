@@ -35,6 +35,7 @@ Traces
 :   Traces are comprised of [spans and transactions](/solutions/observability/apm/data-types.md). Traces are stored in the following data streams:
 
     * Application traces: `traces-apm-<namespace>`
+    * Sampled application traces: `traces-apm.sampled-<namespace>`
     * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
 
 Metrics
@@ -87,7 +88,7 @@ For example, consider traces that would originally be indexed to `traces-apm-def
 ]
 ```
 
-To find other ingest pipelines from the {{es}} apm-data plugin that are called by default, go to **Stack management** → **Ingest pipelines** [in Kibana](/deploy-manage/index.md) and search for `apm`. Default APM ingest pipelines will follow the pattern `*-apm*@default-pipeline`.
+To find other ingest pipelines from the {{es}} apm-data plugin that are called by default, go to the **Ingest Pipelines** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and search for `apm`. Default APM ingest pipelines will follow the pattern `*-apm*@default-pipeline`.
 
 For more custom APM ingest pipeline guides, see [parse data using ingest pipelines](/solutions/observability/apm/parse-data-using-ingest-pipelines.md).
 

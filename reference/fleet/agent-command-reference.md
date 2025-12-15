@@ -46,22 +46,30 @@ Note the following restrictions for running {{agent}} commands:
 Gather diagnostics information from the {{agent}} and component/unit it’s running. This command produces an archive that contains:
 
 * version.txt - version information
-* pre-config.yaml - pre-configuration before variable substitution
+* agent-info.yaml - contains the agent local metadata that is also sent to Fleet
+* pre-config.yaml - pre-configuration before variable substitution - this is the elastic-agent.yaml from disk or from Fleet
+* otel.yaml - the OpenTelemetry collector configuration file used with the `otel` sub-command
+* otel-merged.yaml - the final configuration file provided to the OpenTelemetry collector, including any internally generated collector components
 * variables.yaml - current variable contexts from providers
+* environment.yaml - current environment variables visible to the Elastic Agent process
 * computed-config.yaml - configuration after variable substitution
 * components-expected.yaml - expected computed components model from the computed-config.yaml
 * components-actual.yaml - actual running components model as reported by the runtime manager
 * state.yaml - current state information of all running components
-* Components Directory - diagnostic information from each running component:
-
-    * goroutine.txt - goroutine dump
-    * heap.txt - memory allocation of live objects
-    * allocs.txt - sampling past memory allocations
-    * threadcreate.txt - traces led to creation of new OS threads
-    * block.txt - stack traces that led to blocking on synchronization primitives
-    * mutex.txt - stack traces of holders of contended mutexes
-    * Unit Directory - If a given unit provides specific diagnostics, it will be placed here.
-
+* *.pprof.gz files from the running `elastic-agent` process for analysis with `go tool pprof`:
+    * goroutine.pprof.gz - goroutine dump
+    * heap.pprof.gz - memory allocation of live objects
+    * allocs.pprof.gz - sampling past memory allocations
+    * threadcreate.pprof.gz - traces led to creation of new OS threads
+    * block.pprof.gz - stack traces that led to blocking on synchronization primitives
+    * mutex.pprof.gz - stack traces of holders of contended mutexes
+* components/ directory - diagnostic information from each running component process:
+    * Typically one directory per input-output pair representing a supervised process containing:
+      * *.pprof.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
+      * *_metrics.json - metrics snapshots captured from running Beat processes
+* edot/ directory - the output of Elastic's collector diagnostics extension:
+    * otel-merged-actual.yaml - the current configuration of the running collector, which should match the otel-merged.yaml file described previously
+    * *.profile.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
 
 Note that **credentials may not be redacted** in the archive; they may appear in plain text in the configuration or policy files inside the archive.
 
@@ -146,10 +154,12 @@ elastic-agent enroll --url <string>
                      [--force]
                      [--header <strings>]
                      [--help]
+                     [--id <string>]
                      [--insecure ]
                      [--proxy-disabled]
                      [--proxy-header <strings>]
                      [--proxy-url <string>]
+                     [--replace-token <string>]
                      [--staging <string>]
                      [--tag <string>]
                      [global-flags]
@@ -298,6 +308,13 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 `--help`
 :   Show help for the `enroll` command.
 
+`--id <string>`
+:   Specifies the unique identifier (agent ID) to use when enrolling the {{agent}} with {{fleet-server}}. This setting is useful when restoring a previously enrolled agent or in stateless environments where the agent cannot persist enrollment data between redeployments.
+
+    :::{note}
+    If an agent with the same ID is already enrolled in {{fleet}}, enrollment will fail unless a valid replacement token is provided using the `--replace-token` flag.
+    :::
+
 `--insecure`
 :   Allow the {{agent}} to connect to {{fleet-server}} over insecure connections. This setting is required in the following situations:
 
@@ -316,6 +333,13 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 
 `--proxy-url <string>`
 :   Configures the proxy URL.
+
+`--replace-token <string>`
+:   Specifies a token that can be used to replace the {{agent}} after its enrollment in {{fleet-server}}. The token must be provided when enrolling an agent with a specific agent ID for the first time. Subsequently, the agent can be replaced by enrolling another agent using the same agent ID and replacement token. Once replaced, the original agent can no longer communicate with {{fleet}}.
+
+    :::{note}
+    If an {{agent}} is enrolled without a replacement token, it cannot be replaced by another agent with the same ID. This mechanism prevents accidental or malicious takeovers by requiring the replacement token to match the hashed token stored in {{fleet}}.
+    :::
 
 `--staging <string>`
 :   Configures agent to download artifacts from a staging build.
@@ -380,6 +404,16 @@ elastic-agent enroll --url=https://fleet-server:8220 \
   --certificate-authorities=/path/to/ca.crt
 ```
 
+Replace an {{agent}} enrolled in {{fleet-server}} with a specific agent ID and a replacement token:
+
+```shell
+elastic-agent enroll \
+  --url=https://fleet-server:8220 \
+  --enrollment-token=ENROLLMENT_TOKEN_HASH \
+  --id=MY_AGENT_ID \
+  --replace-token=REPLACEMENT_TOKEN_HASH
+```
+
 
 ## elastic-agent help [elastic-agent-help-command]
 
@@ -438,7 +472,7 @@ elastic-agent inspect components [--show-config]
     :   Use to display the configuration in all units.
 
     `--show-spec`
-    :   Use to get input/output runtime spectification for a component.
+    :   Use to get input/output runtime specification for a component.
 
 
 `--help`
@@ -475,7 +509,7 @@ elastic-agent privileged
 Install {{agent}} permanently on the system and manage it by using the system’s service manager. The agent will start automatically after installation is complete. On Linux (tar package), this command requires a system and service manager like systemd.
 
 ::::{important}
-If you installed {{agent}} from a DEB or RPM package, the `install` command will skip the installation itself and function as an alias of the [`enroll` command](#elastic-agent-enroll-command) instead. Note that after an upgrade of the {{agent}} using DEB or RPM the {{agent}} service needs to be restarted.
+If you installed {{agent}} from a DEB or RPM package, the `install` command will skip the installation itself and function as an alias of the [`enroll` command](#elastic-agent-enroll-command) instead. After an upgrade of the {{agent}} using DEB or RPM the {{agent}} service needs to be restarted.
 ::::
 
 
@@ -708,7 +742,7 @@ See the `--unprivileged` option and [Run {{agent}} without administrative privil
 `--unprivileged`
 :   Run {{agent}} without full superuser privileges. This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems. For details and limitations for running {{agent}} in this mode, refer to [Run {{agent}} without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md).
 
-    Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
+    Changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
 
     {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
 
@@ -801,7 +835,7 @@ You can also run the `./otelcol` command, which calls `./elastic-agent otel` and
 ### Flags [_flags]
 
 `--config=file:/path/to/first --config=file:path/to/second`
-:   Locations to the config file(s). Note that only a single location can be set per flag entry, for example `--config=file:/path/to/first --config=file:path/to/second`.
+:   Locations to the config file(s). Only a single location can be set per flag entry, for example `--config=file:/path/to/first --config=file:path/to/second`.
 
 `--feature-gates flag`
 :   Comma-delimited list of feature gate identifiers. Prefix with `-` to disable the feature. Prefixing with `+` or no prefix will enable the feature.
@@ -1036,7 +1070,7 @@ elastic-agent uninstall
 
 Run {{agent}} without full superuser privileges. This is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems. For details and limitations for running {{agent}} in this mode, refer to [Run {{agent}} without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md).
 
-Note that changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
+Changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
 
 {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 

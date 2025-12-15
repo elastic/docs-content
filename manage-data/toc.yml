@@ -4,6 +4,8 @@ toc:
   - file: data-store.md
     children:
       - file: data-store/index-basics.md
+        children:
+          - file: data-store/perform-index-operations.md
       - file: data-store/near-real-time-search.md
       - file: data-store/data-streams.md
         children:
@@ -20,7 +22,11 @@ toc:
                 - file: data-store/data-streams/downsampling-concepts.md
                 - file: data-store/data-streams/run-downsampling.md
                 - file: data-store/data-streams/query-downsampled-data.md
-              - file: data-store/data-streams/reindex-tsds.md
+              - file: data-store/data-streams/advanced-topics-tsds.md
+                children:
+                - file: data-store/data-streams/time-bound-tsds.md
+                - file: data-store/data-streams/reindex-tsds.md
+                - file: data-store/data-streams/tsds-ingest-otlp.md
           - file: data-store/data-streams/logs-data-stream.md
           - file: data-store/data-streams/failure-store.md
             children:
@@ -164,4 +170,5 @@ toc:
       - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-internal-indices.md
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
+      - file: migrate/migrate-with-logstash.md  
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

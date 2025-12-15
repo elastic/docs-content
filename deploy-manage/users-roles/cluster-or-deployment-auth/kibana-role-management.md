@@ -3,11 +3,7 @@ navigation_title: Using Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
 products:
   - id: kibana
 ---
@@ -16,7 +12,10 @@ products:
 
 Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Users are not directly granted privileges, but are instead assigned one or more roles that describe the desired level of access. When you assign a user multiple roles, the user receives a union of the roles’ privileges. This means that you cannot reduce the privileges of a user by assigning them an additional role. You must instead remove or edit one of their existing roles.
 
-To create a role, open the menu, then click **Stack Management > Roles** and click **Create role**.
+To create a role:
+
+1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+2. Click **Create role**.
 
 ## Required permissions [_required_permissions_7]
 
@@ -38,8 +37,9 @@ Document-level and field-level security affords you even more granularity when i
 
 ### Example: Grant access to indices that match the `filebeat-*` pattern [index_privilege_example_1]
 
-1. Go to **Stack Management > Roles**, and then click **Create role**.
-2. In **Index privileges**, enter:
+1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+2. Click **Create role**.
+3. In **Index privileges**, enter:
 
     1. `filebeat-*` in the **Index** field.
     2. `read` and `view_index_metadata` in the **Privileges** field.
@@ -54,14 +54,15 @@ Document-level and field-level security affords you even more granularity when i
 
 [Document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) is a [subscription feature](https://www.elastic.co/subscriptions).
 
-1. Go to **Stack Management > Roles**, and then click **Create role**.
-2. In **Index privileges**, enter:
+1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+2. Click **Create role**.
+3. In **Index privileges**, enter:
 
     1. `filebeat-*` in the **Indices** field.
     2. `read` and `view_index_metadata` in the **Privileges** field.
 
-3. Select **Grant read privileges to specific documents**.
-4. Enter an {{es}} query that matches the documents your users should access. This example writes a query that allows access to documents that have a `category` field equal to `click`:
+4. Select **Grant read privileges to specific documents**.
+5. Enter an {{es}} query that matches the documents your users should access. This example writes a query that allows access to documents that have a `category` field equal to `click`:
 
     ```sh
     {
@@ -91,8 +92,9 @@ You can assign the same privileges, document-level, and field-level as for [loca
 
 ### Example: Grant access to indices in remote clusters [remote_index_privilege_example_1]
 
-1. Go to **Stack Management > Roles**, and then click **Create role**.
-2. In **Remote index privileges**, enter:
+1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+2. Click **Create role**.
+3. In **Remote index privileges**, enter:
 
     1. The name of your remote cluster in the **Remote clusters** field.
     2. The name of the index in your remote cluster in the **Remote indices** field.

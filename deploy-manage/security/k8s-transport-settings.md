@@ -10,7 +10,10 @@ products:
 
 # Manage transport certificates on ECK [k8s-transport-settings]
 
-The transport module in {{es}} is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [{{es}} documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Access services](../deploy/cloud-on-k8s/accessing-services.md) and [HTTP TLS certificates](./k8s-https-settings.md).
+The transport module in {{es}} is used for internal communication between nodes within the cluster as well as communication between remote clusters. For more information, refer to [Networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md). For customization options of the HTTP layer, refer to [Access services](../deploy/cloud-on-k8s/accessing-services.md) and [HTTP TLS certificates](./k8s-https-settings.md).
+
+:::{include} ./_snippets/own-ca-warning.md
+:::
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 
@@ -29,10 +32,11 @@ spec:
 
 Check the [Kubernetes Publishing Services (ServiceTypes)](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) that are currently available.
 
-::::{note}
-When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This will cause a short network disruption, but in most cases it should not affect existing connections as the transport module uses long-lived TCP connections.
-::::
+Consider the following when customizing the Kubernetes services handled by ECK:
 
+* When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This causes a short network disruption, but it should not affect existing connections as the transport module uses long-lived TCP connections.
+
+* If you change the service’s `port` to expose a different port externally, set `targetPort` to `9300`, which is the default {{es}} transport interface port. Otherwise, Kubernetes uses the same value for both, resulting in failed connections.
 
 ## Configure a custom Certificate Authority [k8s-transport-ca]
 

@@ -6,7 +6,9 @@ products:
   - id: elasticsearch
 ---
 
-# Manage the lifecycle policy for integrations data [ilm-manage-lifecycle-policy-integrations-data]
+# Managing lifecycle polices for integrations data [ilm-manage-lifecycle-policy-integrations-data]
+
+Learn to apply and manage lifecycle policies for integrations data stored in {{es}}. This documentation covers default policies for Elastic integrations, how to override them, and how to align retention rules with your requirements.
 
 An Elastic integration is a pre-packaged collection of assets that provides an effective, simplified way to monitor a product, system, or service, with minimal required setup. Most integrations rely on {{agent}} as an ingest mechanism, and the policies used to govern installed integrations are managed in {{fleet}}.
 
@@ -27,7 +29,7 @@ To find the data stream associated with a visualization in a {{kib}}:
 
     ![Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
 
-1. In the document details, note that there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
+1. In the document details, there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
 
     You can also see the data stream's current backing index, as well as other information such as the document timestamp and details about the agent that ingested the data.
 
@@ -49,16 +51,17 @@ To find the data streams associated with an installed integration:
 ::::{dropdown} Find the data streams managed in {{fleet}}
 To find all of the data streams that are managed in {{fleet}}:
 
-1. In {{kib}} go to **Management > {{fleet}}** and select the **Data streams** tab.
+1. In {{kib}}, go to the **{{fleet}}** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select the **Data streams** tab.
 
 1. Use the search field and dropdown menus to filter the list. You can filter by the data stream type, dataset, namespace, or by the integration that the data stream belongs to.
 
     ![Integration assets](/manage-data/images/ilm-fleet-data-streams.png "")
 ::::
 
-For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy. 
+For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy.
 
 After you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
 
-* For a general guide about configuring a custom ILM policy for any managed data stream, try out our [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
+* For steps to customize an {{ilm-init}} policy for a data stream, try out the [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
 * For the steps to customize an ILM policy for a set of data streams, such as all logs or metrics data streams across all namespaces, across only a selected namespace, and others, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.

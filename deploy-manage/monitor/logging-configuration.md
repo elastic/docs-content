@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
 ---
 # Logging
 
@@ -19,7 +15,7 @@ The following logging features are available:
   You can [configure the log level for {{es}}](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md), and, in self-managed clusters, [configure underlying Log4j settings](/deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) to customize logging behavior.
 * [Deprecation logging](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md): Deprecation logs record a message to the {{es}} log directory when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
-* [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md): Helps find and debug slow queries and indexing.
+* [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md): Helps find and debug slow queries and indexing.
 
 ## For {{kib}} [extra-logging-features-kibana]
 
@@ -98,7 +94,7 @@ Files in `$ES_HOME` risk deletion during an upgrade. In production, we strongly 
 ::::::{tab-item} Windows .zip
 For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%ES_HOME%\logs`.
 
-Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `%ES_HOME%``. See [Path settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings).
+Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `%ES_HOME%`. See [Path settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings).
 ::::::
 
 :::::::

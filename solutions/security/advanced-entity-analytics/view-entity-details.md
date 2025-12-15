@@ -47,6 +47,8 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 
 If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
+
 :::{image} /solutions/images/security-host-risk-inputs.png
 :alt: Host risk inputs
 :screenshot:

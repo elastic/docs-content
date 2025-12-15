@@ -4,13 +4,9 @@ applies_to:
   stack: preview 9.2
   serverless:
     elasticsearch: preview
+    observability: unavailable
+    security: unavailable
 ---
-
-:::{warning}
-These pages are currently hidden from the docs TOC and have `noindexed` meta headers.
-
-**Go to the docs [landing page](/solutions/search/elastic-agent-builder.md).**
-:::
 
 # {{agent-builder}}: Agents
 
@@ -32,11 +28,11 @@ The default `Elastic AI Agent` is immutable and cannot be edited. To customize a
 
 The **Agents** page provides a centralized view of all your agents. From this page you can:
 
-- View all your agents with their names and labels
-- Search for specific agents using the search bar
-- Filter agents by labels using the **Labels** dropdown
-- Create new agents using the **+ New agent** button
-- Start chatting with an agent or perform other actions
+- View all your agents with their names and labels.
+- Search for specific agents using the search bar.
+- Filter agents by labels using the **Labels** dropdown.
+- Create new agents using the **+ New agent** button.
+- Start chatting with an agent or perform other actions:
     - **Elastic AI Agent**: you can **chat** or **clone** the default agent using the chat or clone buttons. The default agent cannot be edited directly.
       :::{image} images/chat-and-clone-buttons.png
       :alt: Chat with agent and clone agent buttons
@@ -76,13 +72,13 @@ Select the **New agent** button to being creating a new agent.
 Configure the essential agent settings in the **settings** tab:
 
 1. Enter an **Agent ID**, a unique identifier for reference in code.
-1. Add **Custom instructions**.<br><br>Custom instructions define the agent's personality and determine how it interacts with users and perform tasks.
+2. Add **Custom instructions**.<br><br>Custom instructions define the agent's personality and determine how it interacts with users and performs tasks.
 
     :::{note}
     Agent Builder adds your custom instructions to the system prompt to define the agent's behavior. The system prompt enables core features like visualization and citations.
     :::
-1. Set the **Display name** for users.
-1. Add a **Display description** to explain the agent's purpose.
+3. Set the **Display name** for users.
+4. Add a **Display description** to explain the agent's purpose.
 
 ::::
 
@@ -98,8 +94,8 @@ Select the combination of built-in and custom tools available to the agent, base
 
 Optionally customize the agent's appearance and organization:
 
-- Add **Labels** to organize your agents
-- Select an **Avatar color** and **Avatar symbol** to help visually distinguish the agent
+- Add **Labels** to organize your agents.
+- Select an **Avatar color** and **Avatar symbol** to help visually distinguish the agent.
 
 ::::
 
@@ -123,6 +119,6 @@ The Agents API enables programmatic access to agent creation and management acti
 
 For an overview, refer to [Agents API](kibana-api.md#agents).
 
-### Serverless API reference
+### API reference
 
-For the complete API reference, refer to the [Kibana serverless API reference](https://www.elastic.co/docs/api/doc/serverless/).
+For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).

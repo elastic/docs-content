@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/drilldowns.html
+description: Add drilldowns to Kibana dashboard panels to navigate to other dashboards, external URLs, or Discover while preserving context and filters.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,7 +11,18 @@ products:
 
 # Add drilldowns [drilldowns]
 
-Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range or click a pie slice, a filter for the time range or pie slice is applied. Drilldowns let you customize the interactive behavior while keeping the context of the interaction.
+Panels have built-in interactive capabilities that apply filters to the dashboard data. For example, when you drag a time range slider or click a pie chart slice, this applies a filter for the time range or pie slice. **Drilldowns** let you customize and extend this interactive behavior by defining what happens when you click on data points, while keeping interaction context such as filters, time ranges, and selected values.
+
+## Requirements [drilldowns-requirements]
+
+To add drilldowns to dashboard panels, you need:
+
+* **All** privilege for the **Dashboard** feature in {{product.kibana}}
+* An existing dashboard with at least one panel that supports drilldowns
+* For dashboard drilldowns: A target dashboard to navigate to
+* For URL drilldowns: A URL template that can include dynamic variables from the clicked data
+
+## Drilldown types [drilldown-types]
 
 There are three types of drilldowns you can add to dashboards:
 
@@ -45,18 +57,20 @@ The panels you create using the following editors support dashboard drilldowns:
 Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to create a dashboard and add panels, then set a search and filter on the **[Logs] Web Traffic** dashboard.
 
 1. Add the **Sample web logs** data.
-2. Create a new dashboard, click **Add from Library**, then add the following panels:
+2. Create a new dashboard.
 
-    * **[Logs] Response Codes Over Time + Annotations**
+    * {applies_to}`stack: ga 9.2` Select **Add** > **From library** in the toolbar.
+    * {applies_to}`stack: ga 9.0` Click **Add from library** in the dashboard toolbar.
+
+3. Add the following panel:
+
     * **[Logs] Visits**
 
-3. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**.
-4. Save the dashboard. In the **Title** field, enter `Detailed logs`.
-5. Open the **[Logs] Web Traffic** dashboard, then set a search and filter.
+4. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**.
+5. Save the dashboard. In the **Title** field, enter `Detailed logs`.
+6. Open the **[Logs] Web Traffic** dashboard, then set a search and filter.
 
     Search: `extension.keyword: ("gz" or "css" or "deb")`<br> Filter: `geo.src: US`
-
-
 
 ### Create the dashboard drilldown [_create_the_dashboard_drilldown]
 
@@ -77,8 +91,6 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
    :screenshot:
    :::
 
-
-
 ## Create URL drilldowns [create-url-drilldowns]
 
 URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](/explore-analyze/dashboards/drilldowns.md) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
@@ -92,7 +104,6 @@ Some panels support multiple interactions, also known as triggers. The [variable
 
 For example, **Single click** has `{{event.value}}` and **Range selection** has `{{event.from}}` and `{{event.to}}`.
 
-
 ### Create a URL drilldown [_create_a_url_drilldown]
 
 For example, if you have a dashboard that shows data from a Github repository, you can create a URL drilldown that opens Github from the dashboard panel.
@@ -100,14 +111,16 @@ For example, if you have a dashboard that shows data from a Github repository, y
 1. Add the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data.
 2. Open the **[Logs] Web Traffic** dashboard.
 3. In the toolbar, click **Edit**.
-4. Create a donut chart
+4. Create a pie chart.
 
-    1. Click **Create visualization**.
-    2. From the **Chart type** dropdown, select **Donut**.
-    3. From the **Available fields** list, drag **machine.os.keyword** to the workspace.
-    4. Click **Save and return**.
+    * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
+    * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
 
-5. Open the donut chart panel menu, then select **Create drilldown**.
+2. From the **Chart type** dropdown, select **Pie**.
+3. From the **Available fields** list, drag **machine.os.keyword** to the workspace.
+4. Click **Save and return**.
+
+5. Open the pie chart panel menu, then select **Create drilldown**.
 6. Click **Go to URL**.
 
     1. Give the drilldown a name. For example, `Show on Github`.
@@ -123,7 +136,7 @@ For example, if you have a dashboard that shows data from a Github repository, y
     4. Click **Create drilldown**.
 
 7. Save the dashboard.
-8. On the donut chart panel, click any chart slice, then select **Show on Github**.
+8. On the pie chart panel, click any chart slice, then select **Show on Github**.
 
     ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png "")
 
