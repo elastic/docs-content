@@ -30,7 +30,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Disk](#key-metrics-network)
 * [Legacy](#legacy-metrics)
 
-### System integration entity definition [monitor-rds-entity]
+### Entity definition [monitor-rds-entity]
 ```{applies_to}
 stack: ga 9.3
 ```
@@ -128,7 +128,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Network](#otel-metrics-network)
 * [Disk](#otel-metrics-network)
 
-### OpenTelemetry entity definition [monitor-rds-entity]
+### Entity definition [monitor-rds-entity]
 ```{applies_to}
 stack: ga 9.3
 ```
