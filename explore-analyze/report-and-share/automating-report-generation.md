@@ -24,6 +24,9 @@ If you have a cross-cluster search environment and want to generate reports from
 Create the POST URL that triggers a report to generate PDF and CSV reports.
 
 ### PDF and PNG reports [pdf-png-post-url]
+```{applies_to}
+serverless: unavailable
+```
 
 To create the POST URL for PDF reports:
 
