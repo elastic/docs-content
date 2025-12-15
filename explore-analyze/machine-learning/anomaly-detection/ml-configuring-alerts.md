@@ -61,7 +61,7 @@ anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
     For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with `partition_field_value: "404"`.
 
     ::::{note}
-    When creating the KQL query, you're given suggestions for the most relevant fields to filter by. To compare actual and typical values, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
+    When you edit the KQL query, suggested filter-by fields appear. To compare actual and typical values for any fields, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
     ::::
 
 7. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
