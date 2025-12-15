@@ -3,10 +3,10 @@ description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send lo
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
-  serverless:
+  serverless: ga
   deployment:
-    ess:
-  stack: preview 9.2
+    ess: preview
+    self: unavailable
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
@@ -51,8 +51,6 @@ Alternatively, you can retrieve the endpoint from the **Manage project** page an
 1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
 2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.
-
-Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
 ::::
 
