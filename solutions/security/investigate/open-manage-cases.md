@@ -165,8 +165,11 @@ You can find the **Files** tab in the following places:
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
 
 ::::{note}
-:applies_to: {"serverless": "ga"}
-Uploaded files are also accessible under **Project settings** → **Management** → **Files**. When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
+::::{important}
+When you export cases as [saved objects](../../find-and-organize/saved-objects.md), the attached case files are not exported.
 ::::
 
 ### Add a Lens visualization [cases-lens-visualization]
