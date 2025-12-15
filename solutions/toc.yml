@@ -356,6 +356,8 @@ toc:
               - file: observability/synthetics/support-matrix.md
               - file: observability/synthetics/encryption-security.md
           - file: observability/applications/user-experience.md
+            children: 
+              - file: observability/applications/otel-rum.md
           - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
             children:

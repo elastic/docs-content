@@ -64,19 +64,19 @@ PUT _cluster/settings
       "remote": {
         "cluster_one": {
           "seeds": [
-            "35.238.149.1:9300"
+            "35.238.149.1:9443"
           ],
           "skip_unavailable": true
         },
         "cluster_two": {
           "seeds": [
-            "35.238.149.2:9300"
+            "35.238.149.2:9443"
           ],
           "skip_unavailable": false
         },
         "cluster_three": {  <1>
           "seeds": [
-            "35.238.149.3:9300"
+            "35.238.149.3:9443"
           ]
         }
       }
@@ -775,7 +775,7 @@ Response:
               "index": null,
               "reason": {
                 "type": "node_disconnected_exception",   <3>
-                "reason": "[myhostname1][35.238.149.1:9300][indices:data/read/search] disconnected"
+                "reason": "[myhostname1][35.238.149.1:9443][indices:data/read/search] disconnected"
               }
             }
           ]
@@ -790,7 +790,7 @@ Response:
               "index": null,
               "reason": {
                 "type": "node_disconnected_exception",
-                "reason": "[myhostname2][35.238.149.2:9300][indices:data/read/search] disconnected"
+                "reason": "[myhostname2][35.238.149.2:9443][indices:data/read/search] disconnected"
               }
             }
           ]
@@ -805,7 +805,7 @@ Response:
     "reason": "error while executing search",
     "caused_by": {
       "type": "node_disconnected_exception",
-      "reason": "[myhostname2][35.238.149.2:9300][indices:data/read/search] disconnected"
+      "reason": "[myhostname2][35.238.149.2:9443][indices:data/read/search] disconnected"
     }
   }
 }
@@ -990,10 +990,10 @@ You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cl
 cluster:
     remote:
         cluster_one:
-            seeds: 35.238.149.1:9300
+            seeds: 35.238.149.1:9443
             skip_unavailable: false
         cluster_two:
-            seeds: 35.238.149.2:9300
+            seeds: 35.238.149.2:9443
             skip_unavailable: true
 ```
 

@@ -242,6 +242,17 @@ Save time by setting up a recurring task that automatically generates reports an
    If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
    ::::
 
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3`: (Optional) Enter additional details for email notifications:
+
+    * **Cc**: Enter one or more email addresses. Recipients will get a copy of the report, be included on all replies, and have view access to all other recipients' addresses.
+    * **Bcc**: Enter one or more email addresses. Recipients will get a copy of the report, but won't be included on all replies and won't have view access to the other recipients' addresses.
+    * **Subject**: Keep the default email subject, or enter your own. 
+    * **Message**: Keep the default email message, or enter your own. To format and structure your message text, use Markdown.
+
+       ::::{note} 
+       In the subject and message, you can also use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerts-cases/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
+       ::::
+
 6. Click **Schedule exports** to save the schedule. 
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
