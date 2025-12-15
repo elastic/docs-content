@@ -22,7 +22,7 @@ For more on wired streams, refer to:
 Wired streams store and process data in a normalized OpenTelemetry (OTel)–compatible format. This format aligns Elastic Common Schema (ECS) fields with OTel semantic conventions so all data is consistently structured and OTTL-expressible.
 
 When data is ingested into a wired stream, it’s automatically translated into this normalized format:
-- Standard ECS documents are converted to OTel fields (`message → body.text`, `severity_text → log.level`, `host.name → resource.attributes.host.name`, and so on).
+- Standard ECS documents are converted to OTel fields (`message → body.text`, `log.level → severity_text`, `host.name → resource.attributes.host.name`, and so on).
 - Custom fields are stored under `attributes.*`.
 
 To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.

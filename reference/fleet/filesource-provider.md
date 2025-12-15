@@ -1,3 +1,11 @@
+---
+applies_to:
+  stack: ga
+products:
+  - id: fleet
+  - id: elastic-agent
+---
+
 # Filesource provider [filesource-provider]
 
 Watches for changes of specified files and updates the values of the variables when the content of the files changes.

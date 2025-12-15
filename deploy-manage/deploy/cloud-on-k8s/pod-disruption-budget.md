@@ -19,12 +19,13 @@ In {{eck}} 3.1 and earlier, all clusters follow the [default PodDisruptionBudget
 :::
 
 ## Advanced rules (Enterprise license required)
+
 ```{applies_to}
 deployment:
   eck: ga 3.2
 ```
 
-In Elasticsearch clusters managed by ECK and licensed with an Enterprise license, a separate PDB is created for each type of `nodeSet` defined in the manifest. This setup allows Kubernetes upgrade or maintenance operations to be executed more quickly. Each PDB permits one Elasticsearch Pod per `nodeSet` to be disrupted at a time, provided the Elasticsearch cluster maintains the health status described in the following table:
+In {{es}} clusters managed by ECK and licensed with an Enterprise license, PDBs are created based on {{es}} node roles, allowing Kubernetes upgrade or maintenance operations to be executed more quickly. Multiple `nodeSets` with the same roles, such as `master` or `ml`, are combined into a single PDB. Each PDB permits one {{es}} Pod to be disrupted at a time, provided the {{es}} cluster maintains the health status described in the following table.
 
 | Role | Cluster health required | Notes |
 |------|------------------------|--------|
@@ -40,6 +41,7 @@ In Elasticsearch clusters managed by ECK and licensed with an Enterprise license
 Single-node clusters are not considered highly available and can always be disrupted regardless of license type.
 
 ## Default rules (Basic license) [default-pdb-rules]
+
 :::{note}
 In {{eck}} 3.1 and earlier, all clusters follow this behavior regardless of license type.
 :::
@@ -101,6 +103,17 @@ spec:
       config:
         node.roles: ["data_hot", "data_content", "ingest"]
         node.store.allow_mmap: false
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: master-nodes-pdb
+spec:
+  minAvailable: 2 <2>
+  selector:
+    matchLabels:
+      elasticsearch.k8s.elastic.co/cluster-name: quickstart <3>
+      elasticsearch.k8s.elastic.co/statefulset-name: quickstart-es-master <4>
 
 apiVersion: policy/v1
 kind: PodDisruptionBudget
