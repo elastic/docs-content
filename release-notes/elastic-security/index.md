@@ -40,6 +40,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.2.3-fixes]
 * Standardizes how to log errors [#245030]({{kib-pull}}245030).
 * Fixes a bug for {elastic-defend} on Linux, where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+* Adds process.group_leader.pid and process.session_leader.pid to {elastic-defend} macOS process exec events.
 
 ## 9.2.2 [elastic-security-9.2.2-release-notes]
 
