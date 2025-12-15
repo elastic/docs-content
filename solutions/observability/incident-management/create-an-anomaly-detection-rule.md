@@ -57,7 +57,7 @@ To create an anomaly detection rule:
     When creating the KQL query, you're given suggestions for the most relevant fields to filter by. To compare actual and typical values, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
     ::::
 
-9. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results if you want to be notified earlier about a potential anomaly even if it might be a false positive.
+9. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives.
 
 10. (Optional) Expand and change **Advanced settings**:
 
