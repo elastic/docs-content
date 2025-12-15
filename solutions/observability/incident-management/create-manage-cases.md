@@ -91,6 +91,8 @@ For more information about configuring connections to external incident manageme
 
 You can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes.
 
+{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{observability}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
+
 To view a case, click on its name. You can then:
 
 * Add a new comment.
