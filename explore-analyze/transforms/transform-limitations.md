@@ -25,7 +25,7 @@ If you use the `latest` type of transform and the source index has field names t
 
 ### Transforms support {{ccs}} if the remote cluster is configured properly [transforms-ccs-limitation]
 
-If you use [{{ccs}}](../../solutions/search/cross-cluster-search.md), the remote cluster must support the search and aggregations you use in your transforms. Transforms validate their configuration; if you use {{ccs}} and the validation fails, make sure that the remote cluster supports the query and aggregations you use.
+If you use [{{ccs}}](../../explore-analyze/cross-cluster-search.md), the remote cluster must support the search and aggregations you use in your transforms. Transforms validate their configuration; if you use {{ccs}} and the validation fails, make sure that the remote cluster supports the query and aggregations you use.
 
 ### Using scripts in transforms [transform-painless-limitation]
 
