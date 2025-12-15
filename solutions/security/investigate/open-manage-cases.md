@@ -16,6 +16,11 @@ products:
 
 You can create and manage cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 
+:::{note} 
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription or feature tier](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](/solutions/security/investigate/cases-requirements.md) for more information.
+:::
 
 ## Open a new case [cases-ui-open]
 

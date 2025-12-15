@@ -11,11 +11,17 @@ products:
 
 # Open and manage cases in {{kib}} [manage-cases]
 
-To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case features in {{kib}}.
+Open a new case to keep track of issues and share their details with colleagues. You can create and manage cases using the cases UI.
+
+:::{note} 
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription or feature tier](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../../../explore-analyze/alerts-cases/cases/setup-cases.md) for more information.
+:::
 
 ## Open a new case [open-case]
 
-Open a new case to keep track of issues and share their details with colleagues.
+To open a case:
 
 1. Go to **Management > {{stack-manage-app}} > Cases**, then click **Create case**.
    :::{image} /explore-analyze/images/kibana-cases-create.png
@@ -101,11 +107,11 @@ To download or delete the file or copy the file hash to your clipboard, open the
 When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
 
 ::::{note}
-Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../find-and-organize/find-apps-and-objects.md).
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
 
 ::::{important}
-When you export cases as [saved objects](../../find-and-organize/saved-objects.md), the attached case files are not exported.
+When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported.
 ::::
 
 ## Add visualizations [add-case-visualization]

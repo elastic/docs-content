@@ -13,20 +13,20 @@ applies_to:
 
 # Create and manage cases [observability-create-a-new-case]
 
-Open a new {{observability}} case to keep track of issues and share the details with colleagues. 
+Open a new {{observability}} case to keep track of issues and share the details with colleagues. You can create and manage cases using the cases UI.
 
 ::::{applies-switch}
 
 :::{applies-item} stack:
 **Requirements**
 
-To access and send cases to external systems, you need the [appropriate license](https://www.elastic.co/subscriptions), and your role must have the **Cases** {{kib}} privilege as a user for the **{{observability}}** feature. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
+To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
 :::
 
 :::{applies-item} serverless:
 **Requirements**
 
-For {{observability}} projects, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+For {{observability}} projects, you need the appropriate [feature tier](https://www.elastic.co/pricing), and your role must have the **Editor** role or higher to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 :::
 
 ::::
