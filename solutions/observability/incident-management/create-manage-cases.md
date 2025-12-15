@@ -76,40 +76,8 @@ You can also create a case from an alert or add an alert to an existing case. Fr
 
 ## Add files [observability-create-a-new-case-add-files]
 
-After you create a case, you can upload and manage files on the **Files** tab:
-
-:::{image} /solutions/images/serverless-cases-files-tab.png
-:alt: A list of files attached to a case
-:screenshot:
+:::{include} /solutions/_snippets/add-case-files.md
 :::
-
-You can find the **Files** tab in the following places:
-
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-
-To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
-
-::::{note}
-Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-::::
-
-::::{important}
-When you export cases as [saved objects](../../find-and-organize/saved-objects.md), the attached case files are not exported.
-::::
-
-
-You can add images and text, CSV, JSON, PDF, or ZIP files. For the complete list, check [`mime_types.ts`](https://github.com/elastic/kibana/blob/main/x-pack/plugins/cases/common/constants/mime_types.ts).
-
-::::{note}
-**File size limits**
-
-There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
-
-::::
-
 
 ## Send cases to external incident management systems [observability-create-a-new-case-send-cases-to-external-incident-management-systems]
 

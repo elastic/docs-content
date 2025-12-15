@@ -155,22 +155,8 @@ You can find the **Events** tab in the following places:
 
 ### Add files [cases-add-files]
 
-To upload files to a case, select the **Files** tab, then click **Add files**. You can add images and text, CSV, JSON, PDF, or ZIP files to cases. For the complete list, check [`mime_types.ts`](https://github.com/elastic/kibana/blob/main/x-pack/plugins/cases/common/constants/mime_types.ts).
-
-When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list. To download or delete the file or copy the file hash to your clipboard, open the action menu (…) from the **Files** tab. The available hash functions are MD5, SHA-1, and SHA-256.
-
-You can find the **Files** tab in the following places:
-
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-
-::::{note}
-Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-::::
-
-::::{important}
-When you export cases as [saved objects](../../find-and-organize/saved-objects.md), the attached case files are not exported.
-::::
+:::{include} /solutions/_snippets/add-case-files.md
+:::
 
 ### Add a Lens visualization [cases-lens-visualization]
 

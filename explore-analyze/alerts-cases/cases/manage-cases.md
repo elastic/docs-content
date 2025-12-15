@@ -86,7 +86,7 @@ When you subsequently add assignees to cases, they receive an email.
 
 After you create a case, you can upload and manage files on the **Files** tab:
 
-:::{image} /explore-analyze/images/kibana-cases-files.png
+:::{image} /solutions/images/cases-files-tab.png
 :alt: A list of files attached to a case
 :screenshot:
 :::
@@ -96,15 +96,12 @@ You can find the **Files** tab in the following places:
 - {applies_to}`stack: ga 9.0`: Go to the case's details page.  
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
 
+To download or delete the file or copy the file hash to your clipboard, open the action menu (**...**). The available hash functions are MD5, SHA-1, and SHA-256.
 
-The acceptable file types and sizes are affected by your [case settings](kibana://reference/configuration-reference/general-settings.md).
-
-To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you upload a file, a comment is added to the case activity log. To view images, click their name in the activity or file list.
+When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
 
 ::::{note}
-Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../find-and-organize/find-apps-and-objects.md).
 ::::
 
 ::::{important}
