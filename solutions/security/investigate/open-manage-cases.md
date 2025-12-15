@@ -212,8 +212,12 @@ Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/
 
 ::::
 
-
 An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case. 
+
+To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
+
+- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
 
 ::::{important}
 Each case can have a maximum of 50 observables.
@@ -221,13 +225,7 @@ Each case can have a maximum of 50 observables.
 
 To create an observable:
 
-1. Click the **Observables** tab, then click **Add observable**.
-
-    ::::{note}
-    :applies_to: {"stack": "ga 9.3"}
-    You can find the **Observables** tab under the **Attachments** tab.
-    ::::
-
+1. Click **Add observable** from the **Observables** tab.
 2. Provide the necessary details:
 
     * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/solutions/security/investigate/configure-case-settings.md#cases-observable-types).
