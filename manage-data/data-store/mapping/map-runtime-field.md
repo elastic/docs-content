@@ -53,7 +53,7 @@ The `runtime` section can be any of these data types:
 
 Runtime fields with a `type` of `date` can accept the [`format`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md) parameter exactly as the `date` field type.
 
-Runtime fields with a `type` of `lookup` allow retrieving fields from related indices. See [`retrieve fields from related indices`](retrieve-runtime-field.md#lookup-runtime-fields).
+Runtime fields with a `type` of `lookup` allow retrieving fields from related indices. See [retrieve fields from related indices](retrieve-runtime-field.md#lookup-runtime-fields).
 
 If [dynamic field mapping](dynamic-field-mapping.md) is enabled where the `dynamic` parameter is set to `runtime`, new fields are automatically added to the index mapping as runtime fields:
 
