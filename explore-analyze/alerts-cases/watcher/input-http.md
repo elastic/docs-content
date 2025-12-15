@@ -142,7 +142,7 @@ For example, the following snippet uses templates to specify what index to query
       "host" : "host.domain",
       "port" : 9200,
       "path" : "/{{ctx.watch_id}}/_search",
-      "body" : "{\"query\" : {\"range\": {\"@timestamp\" : {\"from\": \"{{ctx.trigger.triggered_time}}||-5m\",\"to\": \"{{ctx.trigger.triggered_time}}\"}}}}"
+      "body" : "{\"query\" : {\"range\": {\"@timestamp\" : {\"gte\": \"{{ctx.trigger.triggered_time}}||-5m\",\"lte\": \"{{ctx.trigger.triggered_time}}\"}}}}"
       }
     }
   }

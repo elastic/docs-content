@@ -22,7 +22,7 @@ For more on wired streams, refer to:
 Wired streams store and process data in a normalized OpenTelemetry (OTel)–compatible format. This format aligns Elastic Common Schema (ECS) fields with OTel semantic conventions so all data is consistently structured and OTTL-expressible.
 
 When data is ingested into a wired stream, it’s automatically translated into this normalized format:
-- Standard ECS documents are converted to OTel fields (`message → body.text`, `severity_text → log.level`, `host.name → resource.attributes.host.name`, and so on).
+- Standard ECS documents are converted to OTel fields (`message → body.text`, `log.level → severity_text`, `host.name → resource.attributes.host.name`, and so on).
 - Custom fields are stored under `attributes.*`.
 
 To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.
@@ -111,6 +111,19 @@ Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 1. Add the **Custom Logs (Filestream)** integration to an agent policy.
 1. Enable the **Use the "logs" data stream** setting in the integration configuration under **Change defaults**.
 1. Under **Where to add this integration**, select an agent policy that uses the output you configured in step 4.
+:::
+
+:::{tab-item} API
+
+Send data to the `/logs/` endpoint using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Refer to the following example for more information:
+
+```json
+POST /logs/_bulk
+{ "create": {} }
+{ "@timestamp": "2025-05-05T12:12:12", "body": { "text": "Hello world!" }, "resource": { "attributes": { "host.name": "my-host-name" } } }
+{ "create": {} }
+{ "@timestamp": "2025-05-05T12:12:12", "message": "Hello world!", "host.name": "my-host-name" }
+```
 :::
 
 ::::

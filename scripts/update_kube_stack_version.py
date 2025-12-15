@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-Script to update the kube-stack-version in docset.yml based on the latest version
-from the elastic-agent repository.
+Script to update the kube-stack-version and helm-version in docset.yml based on
+versions from the Kibana and Elastic Agent repositories.
 
 This script:
-1. Retrieves the latest semver from the elastic-agent repository
-2. Reads the k8s.go file from the elastic-agent repository
-3. Extracts the KubeStackChartVersion value
-4. Updates the kube-stack-version in docset.yml
+1. Retrieves the latest semver from the Kibana repository
+2. Reads the constants.ts file from that Kibana version
+3. Extracts the OTEL_KUBE_STACK_VERSION value
+4. Fetches the go.mod file from the Elastic Agent repository
+5. Extracts the Helm version from go.mod
+6. Updates both kube-stack-version and helm-version in docset.yml
 """
 
 import re
@@ -15,27 +17,26 @@ import sys
 import requests
 import time
 from pathlib import Path
-from typing import Optional
 
 
-def get_latest_elastic_agent_version() -> str:
+def get_latest_kibana_version() -> str:
     """
-    Retrieve the latest semantic version from the elastic-agent repository by fetching all tags
+    Retrieve the latest semantic version from the Kibana repository by fetching all tags
     and finding the highest version with retry logic.
     
     Returns:
-        str: The latest version tag (e.g., 'v8.12.0')
+        str: The latest version tag (e.g., 'v9.2.0')
         
     Raises:
         Exception: If unable to fetch version information after retries
     """
-    url = "https://api.github.com/repos/elastic/elastic-agent/tags"
+    url = "https://api.github.com/repos/elastic/kibana/tags"
     max_retries = 3
     retry_delay = 2  # seconds
     
     for attempt in range(max_retries):
         try:
-            print(f"Fetching elastic-agent tags (attempt {attempt + 1}/{max_retries})")
+            print(f"Fetching Kibana tags (attempt {attempt + 1}/{max_retries})")
             response = requests.get(url, timeout=30)
             response.raise_for_status()
             
@@ -62,7 +63,7 @@ def get_latest_elastic_agent_version() -> str:
             versions.sort(key=lambda x: (x[0], x[1], x[2]))
             latest_version = versions[-1][3]
             
-            print(f"Latest elastic-agent version: {latest_version}")
+            print(f"Latest Kibana version: {latest_version}")
             return latest_version
             
         except requests.RequestException as e:
@@ -83,30 +84,30 @@ def get_latest_elastic_agent_version() -> str:
                 raise Exception(f"Error retrieving version after {max_retries} attempts: {e}")
 
 
-def fetch_k8s_go_content(version: str) -> str:
+def fetch_constants_ts_content(version: str) -> str:
     """
-    Fetch the content of the k8s.go file from the elastic-agent repository with retry logic.
+    Fetch the content of the constants.ts file from the Kibana repository with retry logic.
     
     Args:
-        version (str): The version tag to fetch
-        
+        version (str): The version tag to fetch (e.g., 'v9.2.0')
+    
     Returns:
-        str: The content of the k8s.go file
+        str: The content of the constants.ts file
         
     Raises:
         Exception: If unable to fetch the file content after retries
     """
-    url = f"https://raw.githubusercontent.com/elastic/elastic-agent/{version}/testing/integration/k8s/k8s.go"
+    url = f"https://raw.githubusercontent.com/elastic/kibana/{version}/x-pack/solutions/observability/plugins/observability_onboarding/public/application/quickstart_flows/otel_kubernetes/constants.ts"
     max_retries = 3
     retry_delay = 2  # seconds
     
     for attempt in range(max_retries):
         try:
-            print(f"Fetching k8s.go from version {version} (attempt {attempt + 1}/{max_retries})")
+            print(f"Fetching constants.ts from Kibana {version} (attempt {attempt + 1}/{max_retries})")
             response = requests.get(url, timeout=30)
             response.raise_for_status()
             
-            print(f"Successfully fetched k8s.go from version {version}")
+            print(f"Successfully fetched constants.ts from Kibana {version}")
             return response.text
             
         except requests.RequestException as e:
@@ -116,31 +117,89 @@ def fetch_k8s_go_content(version: str) -> str:
                 time.sleep(retry_delay)
                 retry_delay *= 2  # Exponential backoff
             else:
-                raise Exception(f"Failed to fetch k8s.go file after {max_retries} attempts: {e}")
+                raise Exception(f"Failed to fetch constants.ts file after {max_retries} attempts: {e}")
 
 
 def extract_kube_stack_version(content: str) -> str:
     """
-    Extract the KubeStackChartVersion from the k8s.go file content.
+    Extract the OTEL_KUBE_STACK_VERSION from the constants.ts file content.
     
     Args:
-        content (str): The content of the k8s.go file
+        content (str): The content of the constants.ts file
         
     Returns:
-        str: The KubeStackChartVersion value
+        str: The OTEL_KUBE_STACK_VERSION value
         
     Raises:
         Exception: If the version pattern is not found
     """
-    # Pattern to match KubeStackChartVersion = "version"
-    pattern = r'KubeStackChartVersion\s*=\s*"([^"]+)"'
+    # Pattern to match OTEL_KUBE_STACK_VERSION = 'version' or "version"
+    pattern = r'OTEL_KUBE_STACK_VERSION\s*=\s*[\'"]([^\'"]+)[\'"]'
     
     match = re.search(pattern, content)
     if not match:
-        raise Exception("KubeStackChartVersion pattern not found in k8s.go file")
+        raise Exception("OTEL_KUBE_STACK_VERSION pattern not found in constants.ts file")
     
     version = match.group(1)
-    print(f"Extracted KubeStackChartVersion: {version}")
+    print(f"Extracted OTEL_KUBE_STACK_VERSION: {version}")
+    return version
+
+
+def fetch_elastic_agent_gomod() -> str:
+    """
+    Fetch the content of the go.mod file from the Elastic Agent repository with retry logic.
+    
+    Returns:
+        str: The content of the go.mod file
+        
+    Raises:
+        Exception: If unable to fetch the file content after retries
+    """
+    url = "https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/main/go.mod"
+    max_retries = 3
+    retry_delay = 2  # seconds
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Fetching go.mod from Elastic Agent repository (attempt {attempt + 1}/{max_retries})")
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            
+            print("Successfully fetched go.mod from Elastic Agent repository")
+            return response.text
+            
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                raise Exception(f"Failed to fetch go.mod file after {max_retries} attempts: {e}")
+
+
+def extract_helm_version(content: str) -> str:
+    """
+    Extract the Helm version from the go.mod file content.
+    
+    Args:
+        content (str): The content of the go.mod file
+        
+    Returns:
+        str: The Helm version (e.g., '3.15.4')
+        
+    Raises:
+        Exception: If the Helm version pattern is not found
+    """
+    # Pattern to match helm.sh/helm/v3 vX.Y.Z
+    pattern = r'helm\.sh/helm/v3\s+v([\d.]+)'
+    
+    match = re.search(pattern, content)
+    if not match:
+        raise Exception("Helm version pattern not found in go.mod file")
+    
+    version = match.group(1)
+    print(f"Extracted Helm version: {version}")
     return version
 
 
@@ -185,10 +244,51 @@ def update_docset_yml(kube_stack_version: str, docset_path: Path) -> None:
         raise Exception(f"Failed to update docset.yml: {e}")
 
 
+def update_helm_version(helm_version: str, docset_path: Path) -> None:
+    """
+    Update the helm-version in the docset.yml file.
+    
+    Args:
+        helm_version (str): The new version to set
+        docset_path (Path): Path to the docset.yml file
+        
+    Raises:
+        Exception: If unable to update the file
+    """
+    try:
+        # Read the current docset.yml content
+        with open(docset_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        
+        # Pattern to match helm-version: <value> (with 2 spaces at the beginning)
+        pattern = r'(  helm-version:\s*)([^\s\n]+)'
+        
+        # Replace the version
+        new_content = re.sub(pattern, rf'\g<1>{helm_version}', content)
+        
+        if new_content == content:
+            # Check if the version is already correct
+            current_match = re.search(pattern, content)
+            if current_match and current_match.group(2) == helm_version:
+                print(f"helm-version is already set to {helm_version}")
+                return
+            else:
+                raise Exception("helm-version pattern not found in docset.yml")
+        
+        # Write the updated content back to the file
+        with open(docset_path, 'w', encoding='utf-8') as file:
+            file.write(new_content)
+        
+        print(f"Successfully updated helm-version to {helm_version} in docset.yml")
+        
+    except Exception as e:
+        raise Exception(f"Failed to update docset.yml: {e}")
+
+
 def main():
     """Main function to orchestrate the update process."""
     try:
-        print("Starting kube-stack-version update process...")
+        print("Starting version update process...")
         
         # Get the script directory and project root
         script_dir = Path(__file__).parent
@@ -199,23 +299,37 @@ def main():
         if not docset_path.exists():
             raise Exception(f"docset.yml not found at {docset_path}")
         
-        # Step 1: Get latest elastic-agent version
-        print("\n1. Retrieving latest elastic-agent version...")
-        latest_version = get_latest_elastic_agent_version()
+        # Step 1: Get latest Kibana version
+        print("\n1. Retrieving latest Kibana version...")
+        latest_version = get_latest_kibana_version()
         
-        # Step 2: Fetch k8s.go content
-        print("\n2. Fetching k8s.go file content...")
-        k8s_content = fetch_k8s_go_content(latest_version)
+        # Step 2: Fetch constants.ts content
+        print("\n2. Fetching constants.ts file content from Kibana repository...")
+        constants_content = fetch_constants_ts_content(latest_version)
         
-        # Step 3: Extract KubeStackChartVersion
-        print("\n3. Extracting KubeStackChartVersion...")
-        kube_stack_version = extract_kube_stack_version(k8s_content)
+        # Step 3: Extract OTEL_KUBE_STACK_VERSION
+        print("\n3. Extracting OTEL_KUBE_STACK_VERSION...")
+        kube_stack_version = extract_kube_stack_version(constants_content)
         
-        # Step 4: Update docset.yml
-        print("\n4. Updating docset.yml...")
+        # Step 4: Fetch go.mod content from Elastic Agent repository
+        print("\n4. Fetching go.mod file content from Elastic Agent repository...")
+        gomod_content = fetch_elastic_agent_gomod()
+        
+        # Step 5: Extract Helm version
+        print("\n5. Extracting Helm version...")
+        helm_version = extract_helm_version(gomod_content)
+        
+        # Step 6: Update docset.yml with kube-stack-version
+        print("\n6. Updating kube-stack-version in docset.yml...")
         update_docset_yml(kube_stack_version, docset_path)
         
-        print(f"\n✅ Successfully updated kube-stack-version to {kube_stack_version}")
+        # Step 7: Update docset.yml with helm-version
+        print("\n7. Updating helm-version in docset.yml...")
+        update_helm_version(helm_version, docset_path)
+        
+        print(f"\n✅ Successfully updated:")
+        print(f"   - kube-stack-version to {kube_stack_version}")
+        print(f"   - helm-version to {helm_version}")
         
     except Exception as e:
         print(f"\n❌ Error: {e}")

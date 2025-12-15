@@ -10,7 +10,7 @@ products:
 # Scenario 2: Apply an ILM policy to specific data streams generated from Fleet integrations across all namespaces [data-streams-scenario2]
 
 
-Mappings and settings for data streams can be customized through the creation of `*@custom` component templates, which are referenced by the index templates created by the {{es}} apm-data plugin. The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
+Mappings and settings for data streams can be customized through the creation of `*@custom` component templates, which are referenced by the index templates created by each integration. The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
 
 This tutorial explains how to apply a custom index lifecycle policy to the `logs-system.auth` data stream.
 

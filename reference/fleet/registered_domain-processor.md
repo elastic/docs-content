@@ -22,7 +22,7 @@ This processor uses the Mozilla Public Suffix list to determine the value.
       field: dns.question.name
       target_field: dns.question.registered_domain
       target_etld_field: dns.question.top_level_domain
-      target_subdomain_field: dns.question.sudomain
+      target_subdomain_field: dns.question.subdomain
       ignore_missing: true
       ignore_failure: true
 ```

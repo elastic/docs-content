@@ -20,7 +20,7 @@ products:
 Serverless projects use the core components of the {{stack}}, such as {{es}} and {{kib}}, and are based on an architecture that decouples compute and storage. Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring a high level of performance.
 
 :::{note}
-There are differences between {{es-serverless}} and {{ech}}, for a list of differences between them, see [differences between {{ech}} and {{es-serverless}}](../elastic-cloud.md#general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud).
+There are differences between {{es-serverless}} and {{ech}}. Learn more in [Compare {{ech}} and {{es-serverless}}](../elastic-cloud.md#general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud).
 :::
 
 ## Get started
@@ -29,7 +29,7 @@ Elastic provides three serverless solutions available on {{ecloud}}. Follow thes
 
 * **[{{es-serverless}}](/solutions/search/get-started.md)**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
 * **[{{obs-serverless}}](../../../solutions/observability/get-started.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
-* **[{{sec-serverless}}](../../../solutions/security/get-started/create-security-project.md)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
+* **[{{sec-serverless}}](../../../solutions/security/get-started.md#create-sec-serverless-project)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 Afterwards, you can:
 
@@ -54,6 +54,9 @@ Afterwards, you can:
 **Data and performance control**. Control your project data and query performance against your project data.
   * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
   * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Monitor serverless status [general-serverless-status]
 

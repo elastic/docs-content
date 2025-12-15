@@ -1,0 +1,1 @@
+Follow these steps to configure the [API key security model](/deploy-manage/remote-clusters/security-models.md#api-key) for remote clusters. If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).

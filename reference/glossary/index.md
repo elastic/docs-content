@@ -20,7 +20,7 @@ $$$glossary-metadata$$$ @metadata
 
 $$$glossary-action$$$ action
 :   1. The rule-specific response that occurs when an alerting rule fires. A rule can have multiple actions. See [Connectors and actions](kibana://reference/connectors-kibana.md).
-2. In {{elastic-sec}}, actions send notifications via other systems when a detection alert is created, such as email, Slack, PagerDuty, and {{webhook}}.
+2. In {{elastic-sec}}, actions send notifications through other systems when a detection alert is created, such as email, Slack, PagerDuty, and {{webhook}}.
 
 
 $$$glossary-admin-console$$$ administration console
@@ -264,6 +264,14 @@ $$$glossary-elastic-security-indices$$$ {{elastic-sec}} indices
 $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
 
+$$$glossary-elasticsearch$$$ {{es}}
+:   The [open source](https://github.com/elastic/elasticsearch) search and analytics engine, data store, and vector database which powers the Elastic platform and is fundamental to every Elastic [deployment type](/deploy-manage/deploy.md).
+
+    The term "{{es}}" has several additional meanings depending on the context in which it is used:
+  - {{es}} is the name of a [**project** type](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) on {{serverless-full}}, tailored for general-purpose search use cases.
+  - {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own navigation or **solution view**.
+  - The **{{es}} platform** (also known as the Elastic platform or Search AI Platform) is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the {{stack}}, extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
+
 $$$glossary-elasticsearch-service$$$ Elasticsearch Service
 :   The former name of {{ech}}, which is the official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.
 
@@ -281,7 +289,7 @@ $$$glossary-eql$$$ Event Query Language (EQL)
 :   [Query](/reference/glossary/index.md#glossary-query) language for event-based time series data, such as logs, metrics, and traces. EQL supports matching for event sequences. See [EQL](/explore-analyze/query-filter/languages/eql.md).
 
 $$$glossary-event$$$ event
-:   A single unit of information, containing a timestamp plus additional data. An event arrives via an input, and is subsequently parsed, timestamped, and passed through the {{ls}} [pipeline](/reference/glossary/index.md#glossary-pipeline).
+:   A single unit of information, containing a timestamp plus additional data. An event arrives through an input, and is subsequently parsed, timestamped, and passed through the {{ls}} [pipeline](/reference/glossary/index.md#glossary-pipeline).
 
 $$$glossary-exception$$$ exception
 :   In {{elastic-sec}}, exceptions are added to rules to prevent specific source event field values from generating alerts.
@@ -313,7 +321,7 @@ $$$glossary-field$$$ field
 
 
 $$$glossary-filter-plugin$$$ filter plugin
-:   A {{ls}} [plugin](/reference/glossary/index.md#glossary-plugin) that performs intermediary processing on an [event](/reference/glossary/index.md#glossary-event). Typically, filters act upon event data after it has been ingested via inputs, by mutating, enriching, and/or modifying the data according to configuration rules. Filters are often applied conditionally depending on the characteristics of the event. Popular filter plugins include grok, mutate, drop, clone, and geoip. Filter stages are optional.
+:   A {{ls}} [plugin](/reference/glossary/index.md#glossary-plugin) that performs intermediary processing on an [event](/reference/glossary/index.md#glossary-event). Typically, filters act upon event data after it has been ingested through inputs, by mutating, enriching, or modifying the data according to configuration rules. Filters are often applied conditionally depending on the characteristics of the event. Popular filter plugins include grok, mutate, drop, clone, and geoip. Filter stages are optional.
 
 $$$glossary-filter$$$ filter
 :   [Query](/reference/glossary/index.md#glossary-query) that does not score matching documents. See [filter context](/explore-analyze/query-filter/languages/querydsl.md).
@@ -453,7 +461,7 @@ $$$glossary-integration-policy$$$ integration policy
 :   An instance of an [integration](/reference/glossary/index.md#glossary-integration) that is configured for a specific use case, such as collecting logs from a specific file.
 
 $$$glossary-integration$$$ integration
-:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—many with just a single click.
+:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—many with only a single click.
 
 
 ## J [j-glos]
@@ -543,7 +551,7 @@ $$$glossary-no-op$$$ no-op
 :   In {{ecloud}}, the application of a rolling update on your deployment without actually applying any configuration changes. This type of update can be useful to resolve certain health warnings.
 
 $$$glossary-node$$$ node
-:   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
+:   1. A single [{{es}}](#glossary-elasticsearch) server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 2. In {{eck}}, it can refer to either an [Elasticsearch Node](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
 
 $$$NodeSet$$$NodeSet
@@ -582,7 +590,7 @@ $$$glossary-plan$$$ plan
 :   Specifies the configuration and topology of an {{es}} or {{kib}} cluster, such as capacity, availability, and {{es}} version, for example. When changing a plan, the [constructor](/reference/glossary/index.md#glossary-constructor) determines how to transform the existing cluster into the pending plan.
 
 $$$glossary-plugin-manager$$$ plugin manager
-:   Accessed via the `bin/logstash-plugin` script, the plugin manager enables you to manage the lifecycle of [plugins](/reference/glossary/index.md#glossary-plugin) in your {{ls}} deployment. You can install, remove, and upgrade plugins by using the plugin manager Command Line Interface (CLI).
+:   Accessed through the `bin/logstash-plugin` script, the plugin manager enables you to manage the lifecycle of [plugins](/reference/glossary/index.md#glossary-plugin) in your {{ls}} deployment. You can install, remove, and upgrade plugins by using the plugin manager Command Line Interface (CLI).
 
 $$$glossary-plugin$$$ plugin
 :   A self-contained software package that implements one of the stages in the {{ls}} event processing [pipeline](/reference/glossary/index.md#glossary-pipeline). The list of available plugins includes [input plugins](/reference/glossary/index.md#glossary-input-plugin), [output plugins](/reference/glossary/index.md#glossary-output-plugin), [codec plugins](/reference/glossary/index.md#glossary-codec-plugin), and [filter plugins](/reference/glossary/index.md#glossary-filter-plugin). The plugins are implemented as Ruby [gems](/reference/glossary/index.md#glossary-gem) and hosted on [RubyGems.org](https://rubygems.org). You define the stages of an event processing [pipeline](/reference/glossary/index.md#glossary-pipeline) by configuring plugins.
@@ -791,7 +799,7 @@ $$$glossary-upgrade-assistant$$$ Upgrade Assistant
 :   A tool that helps you prepare for an upgrade to the next major version of {{es}}. The assistant identifies the deprecated settings in your cluster and indices and guides you through resolving issues, including reindexing. See [Upgrade Assistant](/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md).
 
 $$$glossary-uptime$$$ Uptime
-:   A metric of system reliability used to monitor the status of network endpoints via HTTP/S, TCP, and ICMP.
+:   A metric of system reliability used to monitor the status of network endpoints through HTTP/S, TCP, and ICMP.
 
 
 ## V [v-glos]
@@ -806,7 +814,7 @@ $$$glossary-vega$$$ Vega
 :   A declarative language used to create interactive visualizations. See [Vega](/explore-analyze/dashboards.md).
 
 $$$glossary-visualization$$$ visualization
-:   A graphical representation of query results in {{kib}} (e.g., a histogram, line graph, pie chart, or heat map).
+:   A graphical representation of query results in {{kib}} (for example, a histogram, line graph, pie chart, or heat map).
 
 
 ## W [w-glos]

@@ -91,7 +91,7 @@ The migration script does not handle this scenario and will indefinitely update 
 
 Because the document update involves semantic_text an ML node is kept warm further increasing the costs.
 
-The issue involves semantic_text field type (and thus the semantic_text migration which is causing this issue), introduced in the knowledge base feature in 8.17.
+The issue involves semantic_text field type (and the semantic_text migration which is causing this issue), introduced in the knowledge base feature in 8.17.
 
 **Workaround**
 
