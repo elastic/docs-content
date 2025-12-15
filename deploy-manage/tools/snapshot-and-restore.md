@@ -148,7 +148,7 @@ You can’t restore a snapshot to an earlier version of {{es}}. For example, you
 
 ### Index compatibility
 
-Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt will fail.
+Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt fails.
 
 | Index creation version | {{version.stack.base}}–{{version.stack}} | 8.3–8.19 | 8.0–8.2 | 7.2–7.17 | 7.0–7.1 | 6.8 | 
 |-----------------------| ----------------------------------------- |----------|---------|----------|---------|-----|
