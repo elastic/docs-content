@@ -24,7 +24,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.2.3 [elastic-observability-9.2.3-release-notes]
 
 ### Features and enhancements [elastic-observability-9.2.3-features-enhancements]
-* Adds a message to inform users when a stream is missing [#244366]({{kib-pull}}244366).
+* Adds a message to tell users when a stream is missing [#244366]({{kib-pull}}244366).
 * Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
 * Shows supported schemas in the Infrastructure inventory [#244481]({{kib-pull}}244481).
 
