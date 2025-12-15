@@ -23,7 +23,7 @@ To analyze EC2 instance metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
+For EC2 instances, The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metrics collected by the [EC2 integration](integration-docs://reference/aws/ec2.md).
 :::
 
 ### Entity definition [monitor-ec2-entity]
@@ -34,8 +34,8 @@ stack: ga 9.3
 |  |  |  |
 | --- | --- | --- |
 | **Filter** | `event.module : aws` | Used to filter relevant data. |
-| **Identifier** | `cloud.instance.id` | Used to identify each entity |
-| **Display value** | `cloud.instance.name` | Used as a display friendly value |
+| **Identifier** | `cloud.instance.id` | Used to identify each entity. |
+| **Display value** | `cloud.instance.name` | Used as a display friendly value. |
 
 ### Metrics [monitor-ec2-metrics]
 
@@ -54,7 +54,7 @@ To analyze S3 bucket metrics, you can select view filters based on the following
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
+For S3 buckets, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [S3 integration](integration-docs://reference/aws/s3.md).
 :::
 
 ### Entity definition [monitor-s3-entity]
@@ -65,8 +65,8 @@ stack: ga 9.3
 |  |  |
 | --- | --- |
 | **Filter** | `event.module : aws` | Used to filter relevant data. |
-| **Identifier** | `aws.s3.bucket.name` | Used to identify each entity |
-| **Display value** | `aws.s3.bucket.name` | Used as a display friendly value |
+| **Identifier** | `aws.s3.bucket.name` | Used to identify each entity. |
+| **Display value** | `aws.s3.bucket.name` | Used as a display friendly value. |
 
 ### Metrics [monitor-s3-metrics]
 
@@ -85,7 +85,7 @@ To analyze SQS queue metrics, you can select view filters based on the following
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
+For SQS queues, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [SQS integration](integration-docs://reference/aws/sqs.md).
 :::
 
 ### Entity definition [monitor-sqs-entity]
@@ -116,7 +116,7 @@ To analyze RDS database metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
+For RDS databases, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [RDS](integration-docs://reference/aws/rds.md) integration.
 :::
 
 ### Entity definition [monitor-rds-entity]
@@ -140,4 +140,4 @@ stack: ga 9.3
 | **Active Transactions** | Average of `aws.rds.transactions.active`. |
 | **Latency** | Average of `aws.rds.latency.dml`. |
 
-For information about the fields used by the Infrastructure UI to display AWS services metrics, see the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).
+For information about the fields used by the Infrastructure UI to display AWS services metrics, refer to the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).

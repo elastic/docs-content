@@ -37,7 +37,7 @@ Conditions for each rule can be applied to specific metrics relating to the inve
 
 :::{note}
 :applies_to: {"stack": "ga 9.2", "serverless": "ga"}`
-Most inventory types respect the default data collection method (for example, [Elastic System integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
+Most inventory types respect the default data collection method (for example, [Elastic System Integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
 :::
 
 In the following example, Kubernetes Pods is the selected inventory type. The conditions state that you will receive a critical alert for any pods within the `ingress-nginx` namespace with a memory usage of 95% or above and a warning alert if memory usage is 90% or above. The chart shows the results of applying the rule to the last 20 minutes of data. Note that the chart time range is 20 times the value of the look-back window specified in the `FOR THE LAST` field.
