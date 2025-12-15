@@ -33,7 +33,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Shows session view in full height [#245888]({{kib-pull}}245888).
 * Shows analyzer in full height [#245857]({{kib-pull}}245857).
 * Hardens {elastic defend} against cloud filter rebinding.
-* Adds `process.group_leader.pid` and `process.session_leader.pid` for MacOS process exec events.
+* Adds `process.group_leader.pid` and `process.session_leader.pid` to {elastic-defend} MacOS process exec events.
 * Improves general system responsiveness while {elastic-defend} is installed.
 * Reduces the number of I/O operations performed by {elastic-defend} for file event enrichment.  This reduction is more pronounced when Ransomware Protection is not in use.
 
