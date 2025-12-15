@@ -41,7 +41,7 @@ stack: ga 9.3
 | **Identifier** | `host.name` | Used to identify each entity. |
 | **Display value** | `host.name` | Used as a display friendly value. |
 
-### Hosts metrics [key-metrics-hosts]
+### Hosts count [key-metrics-hosts]
 
 | Metric | Description |
 | --- | --- |
@@ -139,13 +139,13 @@ stack: ga 9.3
 | **Identifier** | `host.name` | Used to identify each entity. |
 | **Display value** | `host.name` | Used as a display friendly value. |
 
-### OpenTelemetry hosts metrics [otel-metrics-hosts]
+### Hosts count [otel-metrics-hosts]
 
 | Metric | Description |
 | --- | --- |
 | **Hosts** | Number of hosts returned by your search criteria.<br><br>**Field Calculation**: `unique_count(host.name)`<br> |
 
-### OpenTelemetry CPU usage metrics [otel-metrics-cpu]
+### CPU usage metrics [otel-metrics-cpu]
 
 | Metric | Description |
 | --- | --- |
@@ -162,7 +162,7 @@ stack: ga 9.3
 | **Load (15m)** | 15 minute load average.<br><br>Load average gives an indication of the number of threads that are runnable (either busy running on CPU, waiting to run, or waiting for a blocking IO operation to complete).<br><br>**Field Calculation**: `average(metrics.system.cpu.load_average.15m)`<br> |
 | **Normalized Load** | 1 minute load average normalized by the number of CPU cores.<br><br>Load average gives an indication of the number of threads that are runnable (either busy running on CPU, waiting to run, or waiting for a blocking IO operation to complete).<br><br>100% means the 1 minute load average is equal to the number of CPU cores of the host.<br><br>Taking the example of a 32 CPU cores host, if the 1 minute load average is 32, the value reported here is 100%. If the 1 minute load average is 48, the value reported here is 150%.<br><br>**Field Calculation**: `average(metrics.system.cpu.load_average.1m) / max(metrics.system.cpu.logical.count)`<br> |
 
-### OpenTelemetry memory metrics [otel-metrics-memory]
+### Memory metrics [otel-metrics-memory]
 
 | Metric | Description |
 | --- | --- |
@@ -173,20 +173,20 @@ stack: ga 9.3
 | **Memory Usage (%)** | Percentage of main memory usage excluding page cache.<br><br>This includes resident memory for all processes plus memory used by the kernel structures and code apart from the page cache.<br><br>A high level indicates a situation of memory saturation for the host. For example, 100% means the main memory is entirely filled with memory that can’t be reclaimed, except by swapping out.<br><br>**Field Calculation**: `average(system.memory.utilization, kql='state: used') + average(system.memory.utilization, kql='state: buffered') + average(system.memory.utilization, kql='state: slab_reclaimable') + average(system.memory.utilization, kql='state: slab_unreclaimable')`<br> |
 | **Memory Used** | Main memory usage excluding page cache.<br><br>**Field Calculation**: `average(metrics.system.memory.usage, kql='state: used') + average(metrics.system.memory.usage, kql='state: buffered') + average(metrics.system.memory.usage, kql='state: slab_reclaimable') + average(metrics.system.memory.usage, kql='state: slab_unreclaimable')`<br> |
 
-### OpenTelemetry log metrics [otel-metrics-log]
+### Log metrics [otel-metrics-log]
 
 | Metric | Description |
 | --- | --- |
 | **Log Rate** | Derivative of the cumulative sum of the document count scaled to a 1 second rate. This metric relies on the same indices as the logs.<br><br>**Field Calculation**: `cumulative_sum(doc_count)`<br> |
 
-### OpenTelemetry network metrics [otel-metrics-network]
+### Network metrics [otel-metrics-network]
 
 | Metric | Description |
 | --- | --- |
 | **Network Inbound (RX)** | Number of bytes that have been received per second on the public interfaces of the hosts.<br><br>**Field Calculation**: `8 * counter_rate(max(metrics.system.network.io, kql='direction: receive')))`<br> |
 | **Network Outbound (TX)** | Number of bytes that have been sent per second on the public interfaces of the hosts.<br><br>**Field Calculation**: `8 * counter_rate(max(metrics.system.network.io, kql='direction: transmit'))`<br> |
 
-### OpenTelemetry disk metrics [otel-metrics-disk]
+### Disk metrics [otel-metrics-disk]
 
 | Metric | Description |
 | --- | --- |
