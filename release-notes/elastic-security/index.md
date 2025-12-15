@@ -164,7 +164,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.1.9-features-enhancements]
 * Shows session view in full height [#245888]({{kib-pull}}245888).
 * Shows analyzer in full height [#245857]({{kib-pull}}245857).
-* Adds for Bind Link requests mitigation for {elastic defend}.
+* Hardens {elastic defend} against cloud filter rebinding.
 * Improves general system responsiveness while {elastic-defend} is installed.
 * Uses mandatory template {elastic-defend} which will be substituted with proper brand name, which is {elastic-defend}.
 * Reduces the number of I/O operations performed by {elastic-defend} for file event enrichment. This reduction is more pronounced when Ransomware Protection is not in use.
