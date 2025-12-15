@@ -81,7 +81,7 @@ The results on this page might be different than the actual values you get when 
 
 The {{kib}} sample data sets include some pre-configured {{anomaly-jobs}} for you to play with. You can use either of the following methods to add the jobs:
 
-* [Load the sample web logs data set](#requirements-get-started-prereqs)
+* [Load the sample web logs data set](#get-started-prereqs)
 * In the Machine Learning app, when you select the `kibana_sample_data_logs` {{data-sources}} in the **Data Visualizer** or the **Anomaly Detection** job wizards, it recommends that you create a job using its known configuration. Select the **Kibana sample data web logs** configuration.
 * Accept the default values and click **Create Jobs**.
 
