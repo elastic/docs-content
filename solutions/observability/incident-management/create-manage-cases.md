@@ -31,7 +31,7 @@ For {{observability}} projects, you need the appropriate [feature tier](https://
 
 ::::
 
-## Create a a case [create-observability-case]
+## Create a case [create-observability-case]
 
 To create a case:
 
