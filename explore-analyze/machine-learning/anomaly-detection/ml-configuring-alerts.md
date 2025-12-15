@@ -45,20 +45,15 @@ To set up an {{anomaly-detect}} alert rule:
 1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **{{anomaly-detect-cap}}** rule type.
 
-:::{image} /explore-analyze/images/ml-anomaly-create-anomaly-detection.png
-:alt: Selecting Anomaly detection rule type
-:screenshot:
-:::
-
 3. Select the [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) that the rule applies to.
 4. Select a type of {{ml}} result. You can create rules based on bucket, record, or influencer results.
 5. (Optional) Configure the `anomaly_score` that triggers the action. 
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
 anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
-6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule looks for, add an **Anomaly filter**. This feature uses KQL and is only available for the Record and Influencer result types. 
+6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule looks for, add an **Anomaly filter**. This feature uses KQL and is only available for the Record and Influencer result types.
     
-    In the **Anomaly filter** field, enter a KQL query that specifies conditions to alert on. You can set up the following conditions:
+    In the **Anomaly filter** field, enter a KQL query that specifies fields or conditions to alert on. You can set up the following conditions:
     
     * One or more partitioning or influencers fields in the anomaly results match the specified conditions
     * The actual or typical scores in the anomalies match the specified conditions
@@ -75,11 +70,6 @@ want to be notified earlier about a potential anomaly even if it might be a
 false positive. 
     - Don't include interim results if you want to get notified only about anomalies of fully 
 processed buckets.
-
-:::{image} /explore-analyze/images/ml-anomaly-alert.png
-:alt: Selecting result type, severity, and interim results
-:screenshot:
-:::
 
 8. (Optional) Configure **Advanced settings**:
    - Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.
