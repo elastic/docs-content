@@ -170,6 +170,10 @@ We’ve also provided some Jupyter notebooks to easily ingest sample data into {
 
 ### Select {{es}} indices [playground-getting-started-index]
 
+::::{note}
+Playground does not support [data stream](/manage-data/data-store/data-streams.md) indices.
+::::
+
 Once you’ve connected to your LLM provider, it’s time to choose the data you want to search.
 
 1. Select **Add data sources**.
