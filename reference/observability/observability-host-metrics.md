@@ -128,7 +128,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Network](#otel-metrics-network)
 * [Disk](#otel-metrics-network)
 
-### Entity definition [monitor-rds-entity]
+### Entity definition [opentelemetry-host-entity]
 ```{applies_to}
 stack: ga 9.3
 ```
