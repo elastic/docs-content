@@ -165,6 +165,9 @@ toc:
           - file: scripting/painless-lab.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
+  - file: cross-cluster-search.md
+    children:
+      - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
   - file: ai-features.md
     children:
       - file: ai-features/ai-assistant.md
