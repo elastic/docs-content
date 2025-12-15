@@ -29,17 +29,7 @@ Need more context? Check out the [{{es}} introduction](/get-started/index.md) to
    ::::
 
 - Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
-- [Add the sample data sets that ship with {{kib}}](../../index.md#gs-get-data-into-kibana). In this tutorial, you’ll use the **Sample web logs**.
-
-   ::::{applies-switch}
-
-   :::{applies-item} stack:
-   Go to the {{kib}} home page, click **Other sample data sets**, then go to the sample web logs card in the expanded section and click **Add data**. 
-   :::
-
-   :::{applies-item} serverless:
-   Go to the **Integrations** page in the navigation menu or using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md), and search for "Sample Data".
-   :::
+- [Add the sample data sets that ship with {{kib}}](../../index.md#gs-get-data-into-kibana). In this tutorial, you’ll use the **Sample web logs**. To find the sample data, go to the **Integrations** page in the navigation menu or using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md), and search for "Sample Data".
 
 These data sets are now ready be analyzed in {{ml}} jobs in {{kib}}.
 
