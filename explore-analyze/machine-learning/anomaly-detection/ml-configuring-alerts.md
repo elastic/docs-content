@@ -64,12 +64,7 @@ anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
     When you edit the KQL query, suggested filter-by fields appear. To compare actual and typical values for any fields, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
     ::::
 
-7. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
-    - Include interim results if you 
-want to be notified earlier about a potential anomaly even if it might be a 
-false positive. 
-    - Don't include interim results if you want to get notified only about anomalies of fully 
-processed buckets.
+7. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives. Don't include interim results if you want to get notified only about anomalies of fully processed buckets.
 
 8. (Optional) Configure **Advanced settings**:
    - Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.

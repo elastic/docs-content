@@ -54,10 +54,10 @@ To create an anomaly detection rule:
     For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with `partition_field_value: "404"`.
 
     ::::{note}
-    When creating the KQL query, you're given suggestions for the most relevant fields to filter by. To compare actual and typical values, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
+    When you edit the KQL query, suggested filter-by fields appear. To compare actual and typical values for any fields, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
     ::::
 
-9. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives.
+9. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives. Don't include interim results if you want to get notified only about anomalies of fully processed buckets.
 
 10. (Optional) Expand and change **Advanced settings**:
 
