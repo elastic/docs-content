@@ -6,21 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Step-by-step tutorial for exploring data with Discover by selecting data views, filtering documents, analyzing fields, and creating visualizations using sample or your own data.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
 
-Learn how to use **Discover** to:
-
-* **Select** and **filter** your {{es}} data.
-* **Explore** the fields and content of your data in depth.
-* **Present** your findings in a visualization.
-
-**Prerequisites:**
-
-* If you don’t already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
-* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
-* You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
+Learn how to explore your {{product.elasticsearch}} data using **Discover**. This tutorial walks you through selecting {{data-sources}}, filtering documents, analyzing field structures, and creating visualizations from your data.
 
 ## Context-aware data exploration [context-aware-discover]
 
@@ -334,7 +325,7 @@ To manage and organize your tabs, you can:
   :::{tip}
   If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
   :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
 
 To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 

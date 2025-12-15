@@ -23,7 +23,7 @@ To send data from {{agent}} to {{ls}} securely, you need to configure Transport 
 You can use whatever process you typically use to generate PEM-formatted certificates. The examples shown here use the `certutil` tool provided by {{es}}.
 
 ::::{tip}
-The `certutil` tool is not available on {{ecloud}}, but you can still use it to generate certificates for {{agent}} to {{ls}} connections. Just [download an {{es}} package](https://www.elastic.co/downloads/elasticsearch), extract it to a local directory, and run the `elasticsearch-certutil` command. There’s no need to start {{es}}!
+The `certutil` tool is not available on {{ecloud}}, but you can still use it to generate certificates for {{agent}} to {{ls}} connections. [Download an {{es}} package](https://www.elastic.co/downloads/elasticsearch), extract it to a local directory, and run the `elasticsearch-certutil` command. There's no need to start {{es}}!
 ::::
 
 
@@ -97,7 +97,7 @@ In your {{ls}} configuration directory, open the `pipelines.yml` file and add th
   path.config: "/etc/path/to/elastic-agent-pipeline.conf"
 ```
 
-In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. Note that the configuration needed for {{ech}} is different from self-managed {{es}} clusters. If you copied the configuration shown in {{fleet}}, adjust it as needed.
+In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. The configuration needed for {{ech}} is different from self-managed {{es}} clusters. If you copied the configuration shown in {{fleet}}, adjust it as needed.
 
 {{ech}} example:
 
@@ -118,14 +118,12 @@ output {
     cloud_id => "xxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxx=" <1>
     api_key => "xxxx:xxxx" <2>
     data_stream => true
-    ssl => true <3>
   }
 }
 ```
 
 1. Use the `cloud_id` shown on your deployment page in {{ecloud}}.
 2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
-3. {{ech}} uses standard publicly trusted certificates, so there’s no need specify other SSL settings here.
 
 
 Self-managed {{es}} cluster example:
@@ -147,8 +145,7 @@ output {
     hosts => "https://xxxx:9200"
     api_key => "xxxx:xxxx"
     data_stream => true
-    ssl => true
-    cacert => "/path/to/http_ca.crt" <1>
+    ssl_certificate_authorities => "/path/to/http_ca.crt" <1>
   }
 }
 ```
@@ -208,7 +205,7 @@ When you’re done, save and apply the settings.
 
 3. Save your changes.
 
-Any {{agent}}s enrolled in the agent policy will begin sending data to {{es}} via {{ls}}. If you don’t have any installed {{agent}}s enrolled in the agent policy, do that now.
+Any {{agent}}s enrolled in the agent policy will begin sending data to {{es}} through {{ls}}. If you don't have any installed {{agent}}s enrolled in the agent policy, do that now.
 
 There might be a slight delay while the {{agent}}s update to the new policy and connect to {{ls}} over a secure connection.
 

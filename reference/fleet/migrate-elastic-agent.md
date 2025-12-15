@@ -62,9 +62,9 @@ when the target cluster is available you’ll need to adjust a few settings. Tak
     :::
 
 3. Open the {{fleet}} **Settings** tab.
-4. Examine the configurations captured there for {{fleet}}. Note that these settings are scopied from the snapshot of the source cluster and may not have a meaning in the target cluster, so they need to be modified accordingly.
+4. Examine the configurations captured there for {{fleet}}. These settings are copied from the snapshot of the source cluster and may not have a meaning in the target cluster, so they need to be modified accordingly.
 
-    In the following example, both the **Fleet Server hosts** and the **Outputs** settings are copied over from the source cluster:
+    In the following example, both the **Fleet server hosts** and the **Outputs** settings are copied over from the source cluster:
 
     :::{image} images/migrate-agent-host-output-settings.png
     :alt: Settings tab in Fleet showing source deployment host and output settings
@@ -102,7 +102,7 @@ You have now created an {{es}} output that agents can use to write data to the n
 
 ### Modify the {{fleet-server}} host [migrate-elastic-agent-fleet-host]
 
-Like the {{es}} host, the {{fleet-server}} host has also changed with the new target cluster. Note that if you’re deploying {{fleet-server}} on premise, the host has probably not changed address and this setting does not need to be modified. We still recommend that you ensure the agents are able to reach the the on-premise {{fleet-server}} host (which they should be able to as they were able to connect to it prior to the migration).
+Like the {{es}} host, the {{fleet-server}} host has also changed with the new target cluster. If you're deploying {{fleet-server}} on premise, the host has probably not changed address and this setting does not need to be modified. We still recommend that you ensure the agents are able to reach the the on-premise {{fleet-server}} host (which they should be able to as they were able to connect to it prior to the migration).
 
 The {{ecloud}} {{fleet-server}} host has a similar format to the {{es}} output:
 
@@ -137,7 +137,7 @@ The easiest way to find the `deployment-id` is from the deployment URL:
 
 ### Reset the {{ecloud}} policy [migrate-elastic-agent-reset-policy]
 
-On your target cluster, certain settings from the original {{ecloud}} {{agent}} policiy may still be retained, and need to be updated to reference the new cluster. For example, in the APM policy installed to the {{ecloud}} {{agent}} policy, the original and outdated APM URL is preserved. This can be fixed by running the `reset_preconfigured_agent_policies` API request. Note that when you reset the policy, all APM Integration settings are reset, including the secret key or any tail-based sampling.
+On your target cluster, certain settings from the original {{ecloud}} {{agent}} policiy may still be retained, and need to be updated to reference the new cluster. For example, in the APM policy installed to the {{ecloud}} {{agent}} policy, the original and outdated APM URL is preserved. This can be fixed by running the `reset_preconfigured_agent_policies` API request. When you reset the policy, all APM Integration settings are reset, including the secret key or any tail-based sampling.
 
 To reset the {{ecloud}} {{agent}} policy:
 

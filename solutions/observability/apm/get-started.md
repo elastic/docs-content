@@ -15,9 +15,9 @@ products:
 
 # Get started with traces and APM [apm-getting-started-apm-server]
 
-Elastic APM receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents.
+Elastic APM receives performance data from your APM agents or [Elastic Distributions of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md), validates and processes it, and then transforms the data into {{es}} documents.
 
-In this guide you’ll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
+In this guide you'll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
 
 ::::{note}
 For a general Elastic {{observability}} overview, refer to [Get started with observability](/solutions/observability/get-started.md).
