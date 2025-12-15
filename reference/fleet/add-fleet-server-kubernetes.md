@@ -1,5 +1,7 @@
 ---
 navigation_title: Deploy on Kubernetes
+applies_to:
+  stack: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-kubernetes.html
 products:
@@ -25,8 +27,8 @@ This guide assumes familiarity with Kubernetes concepts and resources, such as `
 
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
-::::{tip}
-For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
+::::{note}
+For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
 ::::
 
 You can deploy {{fleet-server}} on Kubernetes and manage it yourself. In this deployment model, you are responsible for high-availability, fault-tolerance, and lifecycle management of the {{fleet-server}}.

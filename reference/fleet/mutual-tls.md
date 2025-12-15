@@ -46,8 +46,7 @@ When mTLS is required, the secure setup between {{agent}}, {{fleet}}, and {{flee
 2. The initial mTLS connection between {{agent}} and {{fleet-server}} is configured when {{agent}} is enrolled, using the parameters passed through the `elastic-agent install` or `elastic-agent enroll` command.
 3. Once enrollment has completed, {{agent}} downloads the initial {{agent}} policy from {{fleet-server}}.
 
-    1. If the {{agent}} policy contains mTLS configuration settings, those settings will take precedence over those used during enrollment: This includes both the mTLS settings used for connectivity between {{agent}} and {{fleet-server}} (and the {{fleet}} application in {{kib}}, for {{fleet}}-managed {{agent}}), and the settings used between {{agent}} and it’s specified output.
-    2. If the {{agent}} policy does not contain any TLS, mTLS, or proxy configuration settings, these settings will remain as they were specified when {{agent}} enrolled. The initial TLS, mTLS, or proxy configuration settings can not be removed through the {{agent}} policy; they can only be updated.
+For information about policy and CLI precedence for mTLS configuration, refer to [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md#deploy-elastic-agent-policy-precedence) and [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md#deploy-fleet-server-policy-precedence).
 
 
 ::::{important}
@@ -76,8 +75,8 @@ During {{agent}} installation on premise use the following options:
 | `--elastic-agent-cert-key` | {{agent}} certificate key to present to {{fleet-server}} |
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
 
-::::{tip}
-For comprehensive information about all {{agent}} mTLS configuration options, including environment variables and policy vs CLI precedence, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
+::::{note}
+For comprehensive information about all {{agent}} mTLS configuration options, including environment variables and policy vs CLI precedence, refer to [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md).
 ::::
 
 
@@ -94,8 +93,8 @@ During {{fleet-server}} installation on-premise {{fleet-server}} authenticates w
 | `--fleet-server-cert` | {{fleet-server}} certificate to present to {{agents}} during authentication |
 | `--fleet-server-cert-key` | {{fleet-server}}'s private certificate key used to decrypt the certificate |
 
-::::{tip}
-For comprehensive information about all {{fleet-server}} mTLS configuration options, including environment variables and policy vs CLI precedence, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md).
+::::{note}
+For comprehensive information about all {{fleet-server}} mTLS configuration options, including environment variables and policy vs CLI precedence, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md).
 ::::
 
 
@@ -173,7 +172,7 @@ During {{agent}} installation on premise use the following options:
 | `--elastic-agent-cert-key` | {{agent}}'s private certificate key used to decrypt the certificate |
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
 
-::::{tip}
+::::{note}
 For comprehensive information about all {{agent}} mTLS configuration options, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
 ::::
 
@@ -206,7 +205,7 @@ During {{agent}} installation on premise use the following options, similar to [
 | `--elastic-agent-cert-key` | {{agent}}'s private certificate key used to decrypt the certificate |
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
 
-::::{tip}
+::::{note}
 For comprehensive information about all {{agent}} mTLS configuration options, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
 ::::
 

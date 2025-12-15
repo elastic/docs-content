@@ -2,6 +2,8 @@
 navigation_title: Deploy on-premises and self-managed
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -13,8 +15,8 @@ To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/f
 
 You can deploy {{fleet-server}} on-premises and manage it yourself. In this [deployment model](/reference/fleet/deployment-models.md), you are responsible for high-availability, fault-tolerance, and lifecycle management of {{fleet-server}}.
 
-::::{tip}
-For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
+::::{note}
+For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
 ::::
 
 This approach might be right for you if you would like to limit the control plane traffic out of your data center or have requirements for fully air-gapped operations. For example, you might take this approach if you need to satisfy data governance requirements or you want agents to only have access to a private segmented network.

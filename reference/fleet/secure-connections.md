@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure-connections.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -91,8 +93,8 @@ This section describes how to use the `certutil` tool provided by {{es}}, but yo
 
 Use the CLI to configure SSL or TLS when installing or enrolling {{fleet-server}}. This method gives you granular control over certificate paths, verification modes, and authentication behavior.
 
-::::{tip}
-For comprehensive information about all available CLI flags and environment variables organized by connection type, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md) and [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
+::::{note}
+For comprehensive information about all available CLI flags and environment variables organized by connection type, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md) and [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md).
 ::::
 
 ### Encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}} [_encrypt_traffic_between_agents_fleet_server_and_es]

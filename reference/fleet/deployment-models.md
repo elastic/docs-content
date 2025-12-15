@@ -25,7 +25,7 @@ The requirements for setting up {{fleet-server}} differ, depending on your parti
 {{ech}} with {{fleet-server}} on-premise
 :   When you use an {{ech}} deployment you may still choose to run {{fleet-server}} on-premise. For details about this deployment model and set up instructions, refer to [Deploy {{fleet-server}} on-premises and {{es}} on Cloud](/reference/fleet/add-fleet-server-mixed.md).
 
-Docker and Kubernetes
+Docker and {{k8s}}
 :   You can deploy {{fleet}}-managed {{agent}} in Docker or on Kubernetes. Refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md) or  [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/fleet/running-on-kubernetes-managed-by-fleet.md) for all of the configuration instructions. For a Kubernetes install we also have a [Helm chart](/reference/fleet/install-on-kubernetes-using-helm.md) available to simplify the installation. Details for configuring {{fleet-server}} are included with the {{agent}} install steps.
 
 {{eck}}

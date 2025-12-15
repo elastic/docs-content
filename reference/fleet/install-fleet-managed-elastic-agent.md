@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -13,7 +15,7 @@ products:
 
 ::::
 
-::::{tip}
+::::{note}
 For comprehensive information about {{agent}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md). This guide provides detailed configuration organized by connection type.
 ::::
 

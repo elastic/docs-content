@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-mixed.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -12,8 +14,8 @@ To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/f
 
 Another approach is to deploy a cluster of {{fleet-server}}s on-premises and connect them back to {{ecloud}} with access to {{es}} and {{kib}}. In this [deployment model](/reference/fleet/deployment-models.md), you are responsible for high-availability, fault-tolerance, and lifecycle management of {{fleet-server}}.
 
-::::{tip}
-For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
+::::{note}
+For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
 ::::
 
 This approach might be right for you if you would like to limit the control plane traffic out of your data center. For example, you might take this approach if you are a managed service provider or a larger enterprise that segregates its networks.
