@@ -31,6 +31,8 @@ For {{observability}} projects, you need the appropriate [feature tier](https://
 
 ::::
 
+## Create a a case [create-observability-case]
+
 To create a case:
 
 1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
