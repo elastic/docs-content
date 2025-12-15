@@ -166,7 +166,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Shows analyzer in full height [#245857]({{kib-pull}}245857).
 * Hardens {elastic defend} against cloud filter rebinding.
 * Improves general system responsiveness while {elastic-defend} is installed.
-* Reduces the number of I/O operations performed by {elastic-defend} for file event enrichment. This reduction is more pronounced when Ransomware Protection is not in use.
 
 ### Fixes [elastic-security-9.1.9-fixes]
 * Standardizes how to log errors [#245030]({{kib-pull}}245030).
