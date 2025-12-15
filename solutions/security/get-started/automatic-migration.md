@@ -16,14 +16,32 @@ For rule migrations, if comparable Elastic-authored rules exist, Automatic Migra
 
 You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
-::::{admonition} Requirements
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.0" }
+**Requirements**
+
 * The `SIEM migrations: All` Security sub-feature privilege.
-* {applies_to}`stack ga: 9.3` {applies_to}`serverless: ga`: The `Rules: All` Security sub-feature privilege.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+
+:::
+
+:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+**Requirements**
+
+* The `SIEM migrations: All` Security sub-feature privilege.
+* The `Rules: All` Security sub-feature privilege.
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
+
 ::::
 
 ::::{admonition} Dashboard migration limitations
