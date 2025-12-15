@@ -1175,7 +1175,7 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
-* When using kNN search in [{{ccs}}](../../../solutions/search/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../solutions/search/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
+* When using kNN search in [{{ccs}}](../../../explore-analyze/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../explore-analyze/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
 * {{es}} uses the [HNSW algorithm](https://arxiv.org/abs/1603.09320) for efficient kNN. Like most approximate methods, HNSW trades perfect accuracy for speed, so results aren’t always the true *k* closest neighbors.
 
 ::::{note}
