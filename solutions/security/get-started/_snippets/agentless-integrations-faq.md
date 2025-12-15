@@ -1,5 +1,4 @@
-Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless CSPM integration.
-
+Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agentless integrations.
 
 ## When I make a new integration, when will I see the agent appear on the Integration Policies page? [_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page]
 
@@ -17,12 +16,12 @@ Agentless agents (which run on Elastic's infrastructure to enable agentless inte
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.1
-Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
+:::{applies-item} { stack: ga 9.2, serverless: }
+Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and enable **Show agentless resources**.
 :::
 
-:::{applies-item} stack: ga 9.2
-Go to the **Settings** tab of the **Fleet** page. Navigate to the **Advanced Settings** section, and turn on the **Show agentless resources** toggle.
+:::{applies-item} stack: ga 9.1
+Add the following query to the end of the **Fleet** page's URL: `?showAgentless=true`. 
 :::
 
 ::::
@@ -37,8 +36,13 @@ To troubleshoot this issue:
 1. Find **{{fleet}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to the **Settings** tab.
 2. Under **{{fleet}} server hosts**, click the **Actions** button for the policy named `Default`. This opens the Edit {{fleet}} Server flyout. The policy named `Default` should have the **Make this {{fleet}} server the default one** setting enabled. If not, enable it, then delete your integration and create it again.
 
-::::{note}
 If the **Make this {{fleet}} server the default one** setting was already enabled but problems persist, it’s possible someone changed the default {{fleet}} server’s **URL** value. In this case, contact Elastic Support to find out what the original **URL** value was, update the settings to match this value, then delete your integration and create it again.
+
+::::{note}
+:applies_to: ess: ga
+In {{ech}} deployments on {{stack}} versions prior to 9.1.6, the connection between agentless integrations and {{fleet-server}} can break if the default {{fleet-server}} host URL value in {{fleet}} is modified or if a different host URL is set as the default.
+
+This issue is resolved in {{stack}} 9.1.6. In this and later versions, agentless integration policies are assigned to a default managed {{fleet-server}} host which cannot be modified.
 ::::
 
 ## Why can't I upgrade my agentless integration to a newer version?
@@ -55,7 +59,6 @@ On the **{{fleet}}** page, agents associated with agentless integrations have na
 3. From the **Actions** menu, select **Request diagnostics .zip**. 
 4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/common-problems.md#trb-collect-agent-diagnostics). Refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md) for more information.
 
-
 ## How do I delete an agentless integration? [_how_do_i_delete_an_agentless_integration]
 
 ::::{note}
@@ -63,13 +66,14 @@ Deleting your integration will remove all associated resources and stop data ing
 ::::
 
 
-When you create a new agentless CSPM integration, a new agent policy appears within the **Agent policies** tab on the **{{fleet}}** page, but you can’t use the **Delete integration** button on this page. Instead, you must delete the integration from the CSPM Integration’s **Integration policies** tab.
+When you create a new agentless integration, a new agent policy appears within the **Agent policies** tab on the **{{fleet}}** page, but you can’t use the **Delete integration** button on this page. Instead, you must delete the integration from the Integration’s **Integration policies** tab.
 
-1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then search for and select `CSPM`.
-2. Go to the CSPM Integration’s **Integration policies** tab.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then search for your integration.
+2. Go to the integration’s **Integration policies** tab.
 3. Find the integration policy for the integration you want to delete. Click **Actions**, then **Delete integration**.
 4. Confirm by clicking **Delete integration** again.
 
 ## Can agentless integrations use a specific range of static IP addresses for configuring allow and deny rules for traffic?
 
 No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
+

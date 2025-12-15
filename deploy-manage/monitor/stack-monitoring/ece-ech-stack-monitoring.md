@@ -117,7 +117,7 @@ When shipping logs to a monitoring deployment there are more logging features av
 ### For {{es}} [extra-logging-features-elasticsearch]
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
+* [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
 After you’ve enabled log delivery on your deployment, you can [add the {{es}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.

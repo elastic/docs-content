@@ -463,7 +463,7 @@ PUT _ingest/pipeline/my-pipeline
 
 ### Classic field access pattern [access-source-pattern-classic]
 
-The `classic` access pattern is the default access pattern that has been around since ingest node first released. Field paths given to processors (e.g. `event.tags.ingest.processed_by`) are split on the dot character (`.`). The processor then uses the resulting field names to traverse the document until a value is found. When writing a value to a document, if its parent fields do not exist in the source, the processor will create nested objects for the missing fields.
+The `classic` access pattern is the default access pattern that has been around since ingest node first released. Field paths given to processors (for example, `event.tags.ingest.processed_by`) are split on the dot character (`.`). The processor then uses the resulting field names to traverse the document until a value is found. When writing a value to a document, if its parent fields do not exist in the source, the processor will create nested objects for the missing fields.
 
 ```console
 POST /_ingest/pipeline/_simulate
@@ -937,7 +937,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-You can also specify a [stored script](../../../explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts) as the `if` condition.
+You can also specify a [stored script](../../../explore-analyze/scripting/modules-scripting-store-and-retrieve.md) as the `if` condition.
 
 ```console
 PUT _scripts/my-prod-tag-script

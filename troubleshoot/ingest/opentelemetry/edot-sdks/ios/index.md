@@ -24,7 +24,7 @@ When troubleshooting the EDOT iOS agent, ensure your app is compatible with the 
 
 ## SDK fails to export data
 
-If your app is running but no telemetry reaches Elastic, the SDK might be failing to send data to the configured endpoint.
+If your app is running but no telemetry reaches Elastic, the SDK might be failing to send data to the configured endpoint. For connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) or [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
 ### Symptoms [symptoms-fail-to-export]
 
@@ -157,7 +157,7 @@ If problems persist:
 
 * Review the [iOS SDK reference documentation](apm-agent-ios://reference/edot-ios/index.md).
 
-* [Enable debug logging for the Collector](../../edot-collector/enable-debug-logging.md) and [the SDKs](../enable-debug-logging.md).
+* [Enable debug logging for the Collector](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) and [the SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
   ::::{important}
   **Upload your complete debug logs** to a service like [GitHub Gist](https://gist.github.com) so that we can analyze the problem. Logs should include everything from when the application starts up until the first request executes.
