@@ -313,3 +313,6 @@ To import a case:
     ::::
 
 ## Search cases [search-security-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::

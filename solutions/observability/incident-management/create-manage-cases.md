@@ -109,3 +109,6 @@ To view a case, click on its name. You can then:
 * Reopen a closed case.
 
 ## Search cases [search-observability-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::
