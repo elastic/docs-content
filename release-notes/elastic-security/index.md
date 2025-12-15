@@ -170,7 +170,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.1.9-fixes]
 * Standardizes how to log errors [#245030]({{kib-pull}}245030).
 * Fixes an issue that could prevent {elastic-defend} from properly handling upgrades when Tamper Protection is enabled.
-* {elastic-defend} will no longer reload its policy if nothing has functionally changed from the previous policy.
+* {elastic-defend} no longer reloads its policy if nothing has functionally changed from the previous policy.
 * For Linux {elastic-defend}, fixes a bug where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
 
 ## 9.1.8 [elastic-security-9.1.8-release-notes]
