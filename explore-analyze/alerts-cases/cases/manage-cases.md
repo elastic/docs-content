@@ -148,9 +148,3 @@ To view a case, click on its name. You can then:
    * Alerts
    * Files
    * Observables
-
-   ::::{note}
-   :applies_to: {"stack": "ga 9.3"}
-   You can access the **Alerts**, **Files**, and **Observables** tabs from the **Attachments** tab. In earlier versions, they were on the case's details page.
-   ::::
-   

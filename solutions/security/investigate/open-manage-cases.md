@@ -99,17 +99,12 @@ To explore a case, click on its name. You can then:
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
-* Add the following items to the case and manage them:
-    * [Alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case)
+* Add and manage the following items:
+    * [Alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts)
+    * [Indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case)
     * {applies_to}`stack: ga 9.2.0` [Events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) 
     * [Files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
     * [Observables](/solutions/security/investigate/open-manage-cases.md#cases-add-observables)
-
-   ::::{note}
-   :applies_to: {"stack": "ga 9.3"}
-   You can access the **Alerts**, **Events**, **Files**, and **Observables** tabs from the **Attachments** tab. In earlier versions, they were on the case's details page.
-   ::::
-
 * [Manage connectors](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations) and send updates to external systems (if you’ve added a connector to the case)
 * [Copy the case UUID](/solutions/security/investigate/open-manage-cases.md#cases-copy-case-uuid)
 * Refresh the case to retrieve the latest updates

@@ -103,8 +103,3 @@ To view a case, click on its name. You can then:
 * Add and manage the following items:
    * Alerts
    * Files
-
-   ::::{note}
-   :applies_to: {"stack": "ga 9.3"}
-   You can access the **Alerts** and **Files** tabs from the **Attachments** tab. In earlier versions, they were on the case's details page.
-   ::::
