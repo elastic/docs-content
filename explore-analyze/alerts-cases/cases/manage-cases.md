@@ -107,7 +107,7 @@ To download or delete the file or copy the file hash to your clipboard, open the
 When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
 
 ::::{note}
-Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
 
 ::::{important}
