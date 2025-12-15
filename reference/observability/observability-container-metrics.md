@@ -17,15 +17,25 @@ Learn about key container metrics displayed in the Infrastructure UI:
 * [Docker](#key-metrics-docker)
 * [Kubernetes](#key-metrics-kubernetes)
 
-
 ## Docker container metrics [key-metrics-docker]
 
 These are the key metrics displayed for Docker containers.
 
 :::{note}
 :applies_to: stack: ga 9.3
-The Infrastructure UI only supports Docker container metric data from the [Docker](integration-docs://reference/docker.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support Docker container metric data from the [Docker](integration-docs://reference/docker.md) integration.
 :::
+
+### Entity definition [monitor-docker-container-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |  |
+| --- | --- | --- |
+| **Filter** | `event.module : "docker"` | Used to filter relevant data. |
+| **Identifier** | `container.id` | Used to identify each entity. |
+| **Display value** | `container.name` | Used as a display friendly value. |
 
 ### CPU usage metrics [key-metrics-docker-cpu]
 
@@ -63,9 +73,19 @@ These are the key metrics displayed for {{k8s}} (containerd) containers.
 
 :::{note}
 :applies_to: stack: ga 9.3
-The Infrastructure UI supports {{k8s}} container metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support {{k8s}} container metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
 :::
 
+### Entity definition [monitor-k8s-container-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |  |
+| --- | --- | --- |
+| **Filter** | `event.module : "kubernetes"` | Used to filter relevant data. |
+| **Identifier** | `container.id` | Used to identify each entity. |
+| **Display value** | `container.name` | Used as a display friendly value. |
 
 ### CPU usage metrics [key-metrics-kubernetes-cpu]
 

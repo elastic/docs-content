@@ -30,6 +30,17 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Disk](#key-metrics-network)
 * [Legacy](#legacy-metrics)
 
+### System integration entity definition [monitor-rds-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |
+| --- | --- |
+| **Filter** | `event.module: 'system'` or `metricset.module: 'system'` | Used to filter relevant data. |
+| **Identifier** | `host.name` | Used to identify each entity. |
+| **Display value** | `host.name` | Used as a display friendly value. |
+
 ### Hosts metrics [key-metrics-hosts]
 
 | Metric | Description |
@@ -116,6 +127,17 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Log](#otel-metrics-log)
 * [Network](#otel-metrics-network)
 * [Disk](#otel-metrics-network)
+
+### OpenTelemetry entity definition [monitor-rds-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |
+| --- | --- |
+| **Filter** | `data_stream.dataset: 'hostmetricsreceiver.otel'` | Used to filter relevant data. |
+| **Identifier** | `host.name` | Used to identify each entity. |
+| **Display value** | `host.name` | Used as a display friendly value. |
 
 ### OpenTelemetry hosts metrics [otel-metrics-hosts]
 

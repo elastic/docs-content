@@ -16,9 +16,21 @@ To analyze {{k8s}} pod metrics, you can select view filters based on the followi
 
 :::{note}
 :applies_to: stack: ga 9.3
-The Infrastructure UI only supports {{k8s}} pod metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support {{k8s}} pod metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
 :::
 
+## Entity definition [monitor-k8s-pods-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |  |
+| --- | --- | --- |
+| **Filter** | `event.module: "kubernetes"` | Used to filter relevant data. |
+| **Identifier** | `kubernetes.pod.uid` | Used to identify each entity. |
+| **Display value** | `kubernetes.pod.name` | Used as a display friendly value. |
+
+## Metrics [monitor-k8s-pods-metrics]
 
 |  |  |
 | --- | --- |
@@ -28,13 +40,3 @@ The Infrastructure UI only supports {{k8s}} pod metric data from the [{{k8s}}](i
 | **Outbound Traffic** | Derivative of the maximum of `kubernetes.pod.network.tx.bytes` scaled to a 1 second rate. |
 
 For information about the fields used by the Infrastructure UI to display {{k8s}} pod metrics, see the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).
-
-## Infrastructure UI filtering logic [k8s-pod-metrics-filtering]
-```{applies_to}
-stack: ga 9.3
-```
-
-The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
-
-* Inventory UI searches - Kubernetes Pods: `event.module : kubernetes`
-* Inventory Rule - Kubernetes Pods: `event.module : kubernetes`

@@ -23,8 +23,21 @@ To analyze EC2 instance metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: stack: ga 9.3
-The Infrastructure UI only supports EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
 :::
+
+### Entity definition [monitor-ec2-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |  |
+| --- | --- | --- |
+| **Filter** | `event.module : aws` | Used to filter relevant data. |
+| **Identifier** | `cloud.instance.id` | Used to identify each entity |
+| **Display value** | `cloud.instance.name` | Used as a display friendly value |
+
+### Metrics [monitor-ec2-metrics]
 
 |  |  |
 | --- | --- |
@@ -41,8 +54,21 @@ To analyze S3 bucket metrics, you can select view filters based on the following
 
 :::{note}
 :applies_to: stack: ga 9.3
-The Infrastructure UI only supports S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
 :::
+
+### Entity definition [monitor-s3-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |
+| --- | --- |
+| **Filter** | `event.module : aws` | Used to filter relevant data. |
+| **Identifier** | `aws.s3.bucket.name` | Used to identify each entity |
+| **Display value** | `aws.s3.bucket.name` | Used as a display friendly value |
+
+### Metrics [monitor-s3-metrics]
 
 |  |  |
 | --- | --- |
@@ -59,8 +85,21 @@ To analyze SQS queue metrics, you can select view filters based on the following
 
 :::{note}
 :applies_to: stack: ga 9.3
-The Infrastructure UI only supports SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
 :::
+
+### Entity definition [monitor-sqs-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |
+| --- | --- |
+| **Filter** | `event.module : aws` | Used to filter relevant data. |
+| **Identifier** | `aws.sqs.queue.name` | Used to identify each entity. |
+| **Display value** | `aws.sqs.queue.name` | Used as a display friendly value. |
+
+### Metrics [monitor-sqs-metrics]
 
 |  |  |
 | --- | --- |
@@ -77,8 +116,21 @@ To analyze RDS database metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: stack: ga 9.3
-The Infrastructure UI only supports RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
 :::
+
+### Entity definition [monitor-rds-entity]
+```{applies_to}
+stack: ga 9.3
+```
+
+|  |  |
+| --- | --- |
+| **Filter** | `event.module : aws` | Used to filter relevant data. |
+| **Identifier** | `aws.rds.db_instance.arn` | Used to identify each entity. |
+| **Display value** | `aws.rds.db_instance.identifier` | Used as a display friendly value. |
+
+### Metrics [monitor-rds-metrics]
 
 |  |  |
 | --- | --- |
@@ -89,13 +141,3 @@ The Infrastructure UI only supports RDS metric data from the [RDS](integration-d
 | **Latency** | Average of `aws.rds.latency.dml`. |
 
 For information about the fields used by the Infrastructure UI to display AWS services metrics, see the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).
-
-## Infrastructure UI filtering logic [aws-metrics-filtering]
-```{applies_to}
-stack: ga 9.3
-```
-
-The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
-
-* Inventory UI searches - {{aws}} EC2, RDS, S3, SQS: `event.module : aws`
-* Inventory Rule - {{aws}} EC2, RDS, S3, SQS: `event.module : aws`

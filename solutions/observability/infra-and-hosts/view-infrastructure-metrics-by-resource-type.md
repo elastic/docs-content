@@ -59,6 +59,10 @@ To examine the metrics for a specific time, use the time filter to select the da
 
 ## View host metrics [analyze-hosts-inventory]
 
+:::{note}
+Refer to [Host metrics](../../../reference/observability/observability-host-metrics.md) for more on supported data types for this view.
+:::
+
 By default the **Infrastructure Inventory** page displays a waffle map that shows the hosts you are monitoring and the current CPU usage for each host. Alternatively, you can click the **Table view** icon ![table view icon](/solutions/images/observability-table-view-icon.png "") to switch to a table view.
 
 Without leaving the **Infrastructure Inventory** page, you can view enhanced metrics relating to each host running in your infrastructure. On the waffle map, select a host to display the host details overlay.
@@ -262,6 +266,10 @@ These metrics are also available when viewing hosts on the **Hosts** page.
 
 ## View container metrics [analyze-containers-inventory]
 
+:::{note}
+Refer to [Container metrics](../../../reference/observability/observability-container-metrics.md) for more on supported data types for this view.
+:::
+
 When you select **Docker containers**, the **Infrastructure inventory** page displays a waffle map that shows the containers you are monitoring and the current CPU usage for each container. Alternatively, you can click the **Table view** icon ![Table view icon](/solutions/images/serverless-table-view-icon.png "") to switch to a table view.
 
 Without leaving the **Infrastructure inventory** page, you can view enhanced metrics relating to each container running in your infrastructure.
@@ -351,6 +359,10 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 
 ## View metrics for other resources [analyze-resource-metrics]
+
+:::{note}
+Refer to [{{k8s}} pod metrics](../../../reference/observability/observability-kubernetes-pod-metrics.md) and [AWS metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
+:::
 
 When you have searched and filtered for a specific resource, you can drill down to analyze the metrics relating to it. For example, when viewing Kubernetes Pods in the high-level view, click the Pod you want to analyze and select **Kubernetes Pod metrics** to see detailed metrics:
 
