@@ -23,7 +23,7 @@ To analyze EC2 instance metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: stack: ga 9.3
-For EC2 instances, The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metrics collected by the [EC2 integration](integration-docs://reference/aws/ec2.md).
+For EC2 instances, The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric collected by the [EC2 integration](integration-docs://reference/aws/ec2.md).
 :::
 
 ### Entity definition [monitor-ec2-entity]
