@@ -197,14 +197,3 @@ stack: ga 9.3
 | **Disk Usage - Used (%)** | Percentage of disk space used. <br><br>**Field Calculation**: `1 - sum(metrics.system.filesystem.usage, kql='state: free') / sum(metrics.system.filesystem.usage)`<br> |
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: write'))`<br> |
 | **Disk Write Throughput** | Average number of bytes written from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: write'))')`<br> |
-
-## Infrastructure UI filtering logic [host-metrics-filtering]
-```{applies_to}
-stack: ga 9.2
-serverless: ga
-```
-
-The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
-
-* Inventory UI searches - Elastic System integration: event.module: 'system' OR metricset.module: 'system'
-* Inventory Rule - Elastic System integration: event.module: 'system' OR metricset.module: 'system'

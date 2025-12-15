@@ -99,13 +99,3 @@ stack: ga 9.3
 | Metric | Description |
 | --- | --- |
 | **Memory Usage (%)** | Average memory usage for the container.<br><br>**Field Calculation:** `average(kubernetes.container.memory.usage.limit.pct)`<br> |
-
-## Infrastructure UI filtering logic [container-metrics-filtering]
-```{applies_to}
-stack: ga 9.3
-```
-
-The Infrastructure UI requires the following attributes to work correctly. Data that does not include them will not appear in these views:
-
-* Inventory UI searches - Docker Containers: `event.module: 'docker'` OR `event.module: 'kubernetes'` OR `event.module: 'system'`
-* Inventory Rule - Docker Containers: `event.module: 'docker'` OR `event.module: 'kubernetes'` OR `event.module: 'system'`
