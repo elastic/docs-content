@@ -23,7 +23,7 @@ These are the key metrics displayed for Docker containers.
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support Docker container metric data from the [Docker](integration-docs://reference/docker.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support Docker container metric data from the [Docker](integration-docs://reference/docker.md) integration.
 :::
 
 ### Entity definition [monitor-docker-container-entity]
@@ -73,7 +73,7 @@ These are the key metrics displayed for {{k8s}} (containerd) containers.
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support {{k8s}} container metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support {{k8s}} container metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
 :::
 
 ### Entity definition [monitor-k8s-container-entity]

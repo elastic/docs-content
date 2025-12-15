@@ -23,7 +23,7 @@ To analyze EC2 instance metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support EC2 metric data from the [EC2](integration-docs://reference/aws/ec2.md) integration.
 :::
 
 ### Entity definition [monitor-ec2-entity]
@@ -54,7 +54,7 @@ To analyze S3 bucket metrics, you can select view filters based on the following
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support S3 metric data from the [S3](integration-docs://reference/aws/s3.md) integration.
 :::
 
 ### Entity definition [monitor-s3-entity]
@@ -85,7 +85,7 @@ To analyze SQS queue metrics, you can select view filters based on the following
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support SQS metric data from the [SQS](integration-docs://reference/aws/sqs.md) integration.
 :::
 
 ### Entity definition [monitor-sqs-entity]
@@ -116,7 +116,7 @@ To analyze RDS database metrics, you can select view filters based on the follow
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support RDS metric data from the [RDS](integration-docs://reference/aws/rds.md) integration.
 :::
 
 ### Entity definition [monitor-rds-entity]

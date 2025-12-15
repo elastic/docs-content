@@ -16,7 +16,7 @@ To analyze {{k8s}} pod metrics, you can select view filters based on the followi
 
 :::{note}
 :applies_to: stack: ga 9.3
-The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and respective [Inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support {{k8s}} pod metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
+The [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support {{k8s}} pod metric data from the [{{k8s}}](integration-docs://reference/kubernetes.md) integration.
 :::
 
 ## Entity definition [monitor-k8s-pods-entity]
