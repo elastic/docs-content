@@ -130,12 +130,12 @@ To edit, delete, or quote a comment, select the appropriate option from the **Mo
 
 To explore the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
 
-:::{image} /solutions/images/security-cases-alert-tab.png
-:alt: Shows you the Alerts tab
-:screenshot:
-:::
+You can find the **Alerts** tab in the following places:
 
-::::{note}
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+
+::::{important}
 Each case can have a maximum of 1,000 alerts.
 ::::
 
@@ -144,23 +144,30 @@ Each case can have a maximum of 1,000 alerts.
 stack: ga 9.2
 ```
 
-After adding events to cases from the Events table (which you can access from the **Events** tab on the **Hosts**, **Network**, or **Users** pages) or from Timeline, you can examine them in the case's **Events** tab. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
+Escalate events and track them in a single place by attaching them to cases. You can add events from an investigation that you've opened in Timeline, or from the **Events** tab on the **Hosts**, **Network**, or **Users** pages.
+
+After adding events to a case, go to the **Events** tab to examine them. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
+
+You can find the **Events** tab in the following places:
+
+- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
 
 ### Add files [cases-add-files]
 
-To upload files to a case, select the **Files** tab, then click **Add files**. You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
+To upload files to a case, select the **Files** tab, then click **Add files**. You can add images and text, CSV, JSON, PDF, or ZIP files to cases. For the complete list, check [`mime_types.ts`](https://github.com/elastic/kibana/blob/main/x-pack/plugins/cases/common/constants/mime_types.ts).
 
-% Check with Lisa whether following note is only applicable to Serverless or if it's for ESS too.
+When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list. To download or delete the file or copy the file hash to your clipboard, open the action menu (…) from the **Files** tab. The available hash functions are MD5, SHA-1, and SHA-256.
+
+You can find the **Files** tab in the following places:
+
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
 
 ::::{note}
-There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
-
+:applies_to: {"serverless": "ga"}
+Uploaded files are also accessible under **Project settings** → **Management** → **Files**. When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
 ::::
-
-To download or delete the file, or copy the file hash to your clipboard, open the **Actions** menu (**…**). The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you add a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
-
 
 ### Add a Lens visualization [cases-lens-visualization]
 
@@ -212,14 +219,19 @@ Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/
 ::::
 
 
-An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case.
+An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case. 
+
+::::{important}
+Each case can have a maximum of 50 observables.
+::::
 
 To create an observable:
 
 1. Click the **Observables** tab, then click **Add observable**.
 
     ::::{note}
-    Each case can have a maximum of 50 observables.
+    :applies_to: {"stack": "ga 9.3"}
+    You can find the **Observables** tab under the **Attachments** tab.
     ::::
 
 2. Provide the necessary details:

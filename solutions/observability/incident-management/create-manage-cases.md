@@ -5,18 +5,33 @@ mapped_pages:
 products:
   - id: observability
   - id: cloud-serverless
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Create and manage cases [observability-create-a-new-case]
 
-::::{note}
+Open a new {{observability}} case to keep track of issues and share the details with colleagues. 
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+::::{applies-switch}
+
+:::{applies-item} stack:
+**Requirements**
+
+To access and send cases to external systems, you need the [appropriate license](https://www.elastic.co/subscriptions), and your role must have the **Cases** {{kib}} privilege as a user for the **{{observability}}** feature. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
+:::
+
+:::{applies-item} serverless:
+**Requirements**
+
+For {{observability}} projects, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+:::
 
 ::::
 
-
-Open a new case to keep track of issues and share the details with colleagues. To create a case in your Observability project:
+To create a case:
 
 1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create case**.
@@ -30,9 +45,17 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
 5. (Optional) Add a category, assignees, and tags.
 
-    **For Observability serverless projects**, you can add users who are assigned the Editor user role (or a more permissive role) for the project.
+    ::::{applies-switch}
 
-    **For Elastic Stack**, You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
+    :::{applies-item} stack:
+    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
+    :::
+
+    :::{applies-item} serverless:
+    You can add users who are assigned the **Editor** user role (or a more permissive role) for the project.
+    :::
+
+    ::::
 
 6. If you defined [custom fields](/solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
 7. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](/solutions/observability/incident-management/configure-case-settings.md#cases-external-connectors).
