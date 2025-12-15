@@ -140,14 +140,17 @@ In **Management > {{stack-manage-app}} > Cases**, you can search cases and filte
 
 To view a case, click on its name. You can then:
 
-* Add a new comment.
-* Edit existing comments and the description.
-* Add or remove assignees.
-* Add a connector.
+* Add and edit the case's description, comments, assignees, tags, status, severity, and category.
+* Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
-* Edit the category and tags.
 * Refresh the case to retrieve the latest updates.
-* Change the status.
-* Change the severity.
-* Close or delete the case.
-* Reopen a closed case.
+* Add and manage the following items:
+   * Alerts
+   * Files
+   * Observables
+
+   ::::{note}
+   :applies_to: {"stack": "ga 9.3"}
+   You can access the **Alerts**, **Files**, and **Observables** tabs from the **Attachments** tab. In earlier versions, they were on the case's details page.
+   ::::
+   

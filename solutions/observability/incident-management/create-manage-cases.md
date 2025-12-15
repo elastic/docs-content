@@ -92,19 +92,19 @@ For more information about configuring connections to external incident manageme
 
 You can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes.
 
-{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{observability}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
+{applies_to}`stack: ga 9.3` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{observability}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
 
 To view a case, click on its name. You can then:
 
-* Add a new comment.
-* Edit existing comments and the description.
-* Add or remove assignees.
+* Add and edit the case's description, comments, assignees, tags, status, severity, and category.
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
-* Edit the category and tags.
-* Change the status.
-* Change the severity.
-* Remove an alert.
 * Refresh the case to retrieve the latest updates.
-* Close the case.
-* Reopen a closed case.
+* Add and manage the following items:
+   * Alerts
+   * Files
+
+   ::::{note}
+   :applies_to: {"stack": "ga 9.3"}
+   You can access the **Alerts** and **Files** tabs from the **Attachments** tab. In earlier versions, they were on the case's details page.
+   ::::
