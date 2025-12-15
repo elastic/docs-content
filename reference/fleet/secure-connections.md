@@ -8,7 +8,11 @@ products:
 
 # Configure SSL/TLS for self-managed Fleet Servers [secure-connections]
 
-If you’re running a self-managed cluster, configure Transport Layer Security (TLS) to encrypt traffic between {{agent}}s, {{fleet-server}}, and other components in the {{stack}}.
+If you're running a self-managed cluster, configure Transport Layer Security (TLS) to encrypt traffic between {{agent}}s, {{fleet-server}}, and other components in the {{stack}}.
+
+For comprehensive deployment information including all configuration flags, environment variables, and mTLS setup organized by connection type, refer to:
+- [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md)
+- [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md)
 
 For the install settings specific to mutual TLS, as opposed to one-way TLS, refer to [{{agent}} deployment models with mutual TLS](/reference/fleet/mutual-tls.md).
 
@@ -86,6 +90,10 @@ This section describes how to use the `certutil` tool provided by {{es}}, but yo
 ## Configure SSL/TLS using CLI  [fleet-server-ssl-cli-settings]
 
 Use the CLI to configure SSL or TLS when installing or enrolling {{fleet-server}}. This method gives you granular control over certificate paths, verification modes, and authentication behavior.
+
+::::{tip}
+For comprehensive information about all available CLI flags and environment variables organized by connection type, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md) and [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
+::::
 
 ### Encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}} [_encrypt_traffic_between_agents_fleet_server_and_es]
 
@@ -192,54 +200,9 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
                --fleet-server-client-auth=required
             ```
 
-            Where:
-
-            `url`
-            :   {{fleet-server}} URL.
-
-            `fleet-server-es`
-            :   {{es}} URL
-
-            `fleet-server-service-token`
-            :   Service token to use to communicate with {{es}}.
-
-            `fleet-server-policy`
-            :   The specific policy that {{fleet-server}} will use.
-
-            `fleet-server-es-ca`
-            :   CA certificate that the current {{fleet-server}} uses to connect to {{es}}.
-
-            `certificate-authorities`
-            :   List of paths to PEM-encoded CA certificate files that should be trusted for the other {{agents}} to connect to this {{fleet-server}}
-
-            `fleet-server-cert`
-            :   The path for the PEM-encoded certificate (or certificate chain) which is associated with the fleet-server-cert-key to expose this {{fleet-server}} HTTPS endpoint to the other {{agents}}
-
-            `fleet-server-cert-key`
-            :   Private key to use to expose this {{fleet-server}} HTTPS endpoint to the other {{agents}}
-
-            `elastic-agent-cert`
-            :   The certificate to use as the client certificate for {{agent}}'s connections to {{fleet-server}}.
-
-            `elastic-agent-cert-key`
-            :   The path to the private key to use as for {{agent}}'s connections to {{fleet-server}}.
-
-            `elastic-agent-cert-key-passphrase`
-            :   The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}}. The file must only contain the characters of the passphrase, no newline or extra non-printing characters. This option is only used if the `elastic-agent-cert-key` is encrypted and requires a passphrase to use.
-
-            `fleet-server-es-cert`
-            :   The path to the client certificate that {{fleet-server}} will use when connecting to {{es}}.
-
-            `fleet-server-es-cert-key`
-            :   The path to the private key that {{fleet-server}} will use when connecting to {{es}}.
-
-            `fleet-server-client-auth`
-            :   One of `none`, `optional`, or `required`. Defaults to `none`. {{fleet-server}}'s client_authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs specified in the `--certificate-authorities` flag.
-
-            Additionally an optional passphrase for the private key may be specified with:
-
-            `fleet-server-cert-key-passphrase`
-            :   Passphrase file used to decrypt {{fleet-server}}'s private key.
+            ::::{tip}
+            For detailed information about all available CLI flags and their purposes, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides comprehensive configuration information organized by connection type (Fleet Server to Elasticsearch, Elastic Agent to Fleet Server).
+            ::::
 
             What happens if you enroll {{fleet-server}} without specifying certificates?
             If the certificates are managed by your organization and installed at the system level, they will be used to encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}.
@@ -259,18 +222,11 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
           --certificate-authorities=/path/to/ca.crt
         ```
 
-        Where:
+        ::::{tip}
+        For comprehensive information about all available CLI flags and environment variables for {{agent}} enrollment, including mTLS configuration, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
+        ::::
 
-        `url`
-        :   {{fleet-server}} URL to use to enroll the {{agent}} into {{fleet}}.
-
-        `enrollment-token`
-        :   The enrollment token for the policy that will be applied to the {{agent}}.
-
-        `certificate-authorities`
-        :   CA certificate to use to connect to {{fleet-server}}. This is the CA used to [generate a certificate and key](#generate-fleet-server-certs) for {{fleet-server}}.
-
-        Don’t have an enrollment token? On the **Agents** tab in {{fleet}}, select **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
+        Don't have an enrollment token? On the **Agents** tab in {{fleet}}, select **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
 
 
 ## Configure SSL/TLS using {{kib}} [fleet-server-ssl-ui-settings]

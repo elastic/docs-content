@@ -13,6 +13,10 @@ To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/f
 
 You can deploy {{fleet-server}} on-premises and manage it yourself. In this [deployment model](/reference/fleet/deployment-models.md), you are responsible for high-availability, fault-tolerance, and lifecycle management of {{fleet-server}}.
 
+::::{tip}
+For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
+::::
+
 This approach might be right for you if you would like to limit the control plane traffic out of your data center or have requirements for fully air-gapped operations. For example, you might take this approach if you need to satisfy data governance requirements or you want agents to only have access to a private segmented network.
 
 This approach might *not* be right for you if you don’t want to manage the life cycle of your Elastic environment and instead would like that to be handled by Elastic.
@@ -107,13 +111,14 @@ To add a {{fleet-server}}:
     * Use **Advanced** if you want to either:
 
         * **Use your own {{fleet-server}} policy.** {{fleet-server}} policies manage and configure the {{agent}} running on {{fleet-server}} hosts to launch a {{fleet-server}} process. You can create a new {{fleet-server}} policy or select an existing one. Alternatively you can [create a {{fleet-server}} policy without using the UI](/reference/fleet/create-policy-no-ui.md), and then select the policy here.
-        * **Use your own TLS certificates.** TLS certificates encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
+        * **Use your own TLS certificates.** TLS certificates encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md). For detailed information about configuring TLS and mTLS connections, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md).
 
             ::::{note}
             If you are providing your own certificates:
 
             * Before running the `install` command, make sure you replace the values in angle brackets.
             * The URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
+            * For comprehensive configuration details, including all available flags and environment variables, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md).
 
             ::::
 
@@ -127,8 +132,8 @@ To add a {{fleet-server}}:
 
     ::::{note}
     * The fields to configure {{fleet-server}} hosts are not available if the hosts are already configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
-    * When using the **Advanced** option, it’s recommended to generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, refer to [`elasticsearch-service-tokens`](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
-    * If you’ve configured a non-default port for {{fleet-server}} in the {{fleet-server}} integration, you need to include the `--fleet-server-host` and `--fleet-server-port` options in the `elastic-agent install` command. Refer to the [install command documentation](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) for details.
+    * When using the **Advanced** option, it's recommended to generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, refer to [`elasticsearch-service-tokens`](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
+    * If you've configured a non-default port for {{fleet-server}} in the {{fleet-server}} integration, you need to include the `--fleet-server-host` and `--fleet-server-port` options in the `elastic-agent install` command. For detailed information about all available configuration flags and environment variables, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md).
 
     ::::
 

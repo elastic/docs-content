@@ -13,6 +13,10 @@ To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/f
 
 {{fleet-server}} can be provisioned and hosted on {{ecloud}}. When the Cloud deployment is created, a highly available set of {{fleet-server}}s is provisioned automatically.
 
+::::{tip}
+For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
+::::
+
 This approach might be right for you if you want to reduce on-prem compute resources and you’d like Elastic to take care of provisioning and life cycle management of your deployment.
 
 With this approach, multiple {{fleet-server}}s are automatically provisioned to satisfy the chosen instance size (instance sizes are modified to satisfy the scale requirement). You can also choose the resources allocated to each {{fleet-server}} and whether you want each {{fleet-server}} to be deployed in multiple availability zones. If you choose multiple availability zones to address your fault-tolerance requirements, those instances are also utilized to balance the load.

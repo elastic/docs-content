@@ -13,6 +13,10 @@ products:
 
 ::::
 
+::::{tip}
+For comprehensive information about {{agent}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md). This guide provides detailed configuration organized by connection type.
+::::
+
 
 
 ## Where to start [get-started]
@@ -35,9 +39,9 @@ You will always need:
 * **[{{fleet-server}}](/reference/fleet/fleet-server.md) running in a location accessible to {{agent}}.** {{agent}} must have a direct network connection to {{fleet-server}} and {{es}}. If you’re using {{ecloud}}, {{fleet-server}} is already available as part of the {{integrations-server}}. For self-managed deployments, refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md).
 * **Internet connection for {{kib}} to download integration packages from the {{package-registry}}.** Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 
-If you are using a {{fleet-server}} that uses your organization’s certificate, you will also need:
+If you are using a {{fleet-server}} that uses your organization's certificate, you will also need:
 
-* **A Certificate Authority (CA) certificate to configure Transport Layer Security (TLS) to encrypt traffic.** If your organization already uses the {{stack}}, you may already have a CA certificate. If you do not have a CA certificate, you can read more about generating one in [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
+* **A Certificate Authority (CA) certificate to configure Transport Layer Security (TLS) to encrypt traffic.** If your organization already uses the {{stack}}, you may already have a CA certificate. If you do not have a CA certificate, you can read more about generating one in [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md). For detailed information about configuring TLS and mTLS connections for {{agent}}, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
 
 If you’re running {{agent}} 7.9 or earlier, stop the agent and manually remove it from your host.
 
@@ -66,7 +70,7 @@ To install an {{agent}} and enroll it in {{fleet}}:
 3. Make sure **Enroll in Fleet** is selected.
 4. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step. The commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
 
-    1. If you are enrolling the agent in a {{fleet-server}} that uses your organization’s certificate you *must* add the `--certificate-authorities` option to the command provided in the in-product instructions. If you do not include the certificate, you will see the following error: "x509: certificate signed by unknown authority".
+    1. If you are enrolling the agent in a {{fleet-server}} that uses your organization's certificate you *must* add the `--certificate-authorities` option to the command provided in the in-product instructions. If you do not include the certificate, you will see the following error: "x509: certificate signed by unknown authority". For comprehensive information about all available configuration flags and environment variables, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
 
     2. Beginning with version 9.0, {{agent}} packages are available in multiple flavors. The default, "basic" flavor contains the components required for most use data collection use cases. A "servers" flavor is also available with additional components. You can adjust the `elastic-agent install` command as required to choose a different flavor. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 

@@ -25,6 +25,10 @@ This guide assumes familiarity with Kubernetes concepts and resources, such as `
 
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
+::::{tip}
+For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
+::::
+
 You can deploy {{fleet-server}} on Kubernetes and manage it yourself. In this deployment model, you are responsible for high-availability, fault-tolerance, and lifecycle management of the {{fleet-server}}.
 
 To deploy a {{fleet-server}} on Kubernetes and register it into {{fleet}} you will need the following details:
@@ -72,7 +76,7 @@ Before deploying {{fleet-server}}, you need to:
 
 ### {{fleet-server}} and SSL/TLS certificates considerations [add-fleet-server-kubernetes-cert-prereq]
 
-This section shows the minimum requirements in terms of Transport Layer Security (TLS) certificates for the {{fleet-server}}, assuming no mutual TLS (mTLS) is needed. Refer to [One-way and mutual TLS certifications flow](/reference/fleet/tls-overview.md) and [{{agent}} deployment models with mutual TLS](/reference/fleet/mutual-tls.md) for more information about the configuration needs of both approaches.
+This section shows the minimum requirements in terms of Transport Layer Security (TLS) certificates for the {{fleet-server}}, assuming no mutual TLS (mTLS) is needed. Refer to [One-way and mutual TLS certifications flow](/reference/fleet/tls-overview.md) and [{{agent}} deployment models with mutual TLS](/reference/fleet/mutual-tls.md) for more information about the configuration needs of both approaches. For detailed configuration information organized by connection type, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md).
 
 There are two main traffic flows for {{fleet-server}}, each with different TLS requirements:
 
