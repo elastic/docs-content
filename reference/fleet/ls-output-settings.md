@@ -34,7 +34,7 @@ input {
     ssl_certificate_authorities => ["<ca_path>"]
     ssl_certificate => "<server_cert_path>"
     ssl_key => "<server_cert_key_in_pkcs8>"
-    ssl_verify_mode => "force_peer"
+    ssl_client_authentication => "required"
   }
 }
 output {
@@ -44,7 +44,7 @@ output {
     api_key => "<api_key>" <3>
     data_stream => true
     ssl_enabled => true
-    # cacert => "<elasticsearch_ca_path>"
+    ssl_certificate_authorities => "<elasticsearch_ca_path>"
   }
 }
 ```
