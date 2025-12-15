@@ -90,6 +90,6 @@ stack:
 
 For information on how to perform cross-cluster searches on {{elastic-sec}} indices, see:
 
-* [Search across cluster](/solutions/search/cross-cluster-search.md) (for self-managed {{stack}} deployments)
+* [Search across cluster](/explore-analyze/cross-cluster-search.md) (for self-managed {{stack}} deployments)
 * [Enable cross-cluster search](/deploy-manage/remote-clusters/ec-enable-ccs.md) (for hosted deployments)
 
