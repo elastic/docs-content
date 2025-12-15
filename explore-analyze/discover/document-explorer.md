@@ -6,11 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Customize the Discover view with flexible display options for the document table, chart, and sidebar. Adjust columns, density, row height, and field visibility for optimal exploration.
 ---
 
 # Customize the Discover view [document-explorer]
 
-Fine tune your explorations by customizing **Discover** to bring out the the best view of your documents.
+**Discover** offers flexible customization options to optimize your data exploration experience. Adjust the document table layout, modify column arrangements, control chart and sidebar visibility, and configure display density to focus on the data that matters most. These customizations persist across sessions and help you work more efficiently with your {{product.elasticsearch}} data.
 
 :::{tip}
 Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
@@ -100,7 +101,7 @@ Change how {{kib}} displays a field.
 
 ### Filter the documents [document-explorer-compare-data]
 
-Narrow your results to a subset of documents so you’re comparing just the data of interest.
+Narrow your results to a subset of documents so you're comparing the data of interest.
 
 1. Select the documents you want to compare.
 2. Click the **Selected** option, and then select **Show selected documents only**.

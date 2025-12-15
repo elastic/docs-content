@@ -109,7 +109,7 @@ For this example, let’s create a new database *es_db* with table *es_table*, a
 
     There are two possible ways to address this:
 
-    * You can use "soft deletes" in your source database. Essentially, a record is first marked for deletion through a boolean flag. Other programs that are currently using your source database would have to filter out "soft deletes" in their queries. The "soft deletes" are sent over to Elasticsearch, where they can be processed. After that, your source database and Elasticsearch must both remove these "soft deletes."
+    * You can use "soft deletes" in your source database. Essentially, a record is first marked for deletion through a boolean flag. Other programs that are currently using your source database would have to filter out "soft deletes" in their queries. The "soft deletes" are sent over to Elasticsearch, where they can be processed. After that, your source database and Elasticsearch must both remove these "soft deletes".
     * You can periodically clear the Elasticsearch indices that are based off of the database, and then refresh Elasticsearch with a fresh ingest of the contents of the database.
 
 3. Log in to your MySQL server and add three records to your new database:
@@ -122,7 +122,7 @@ For this example, let’s create a new database *es_db* with table *es_table*, a
     (3,"Stark");
     ```
 
-4. Verify your data with a SQL statement:
+4. Verify your data with an SQL statement:
 
     ```txt
     select * from es_table;
@@ -294,7 +294,6 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
         ilm_enabled => false
         cloud_id => "<DeploymentName>:<ID>" <1>
         cloud_auth => "elastic:<Password>" <2>
-        ssl => true
         # api_key => "<myAPIid:myAPIkey>"
       }
     }
@@ -355,7 +354,6 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
           elasticsearch {
             index => "rdbms_idx"
             cloud_id => "<myDeployment>"
-            ssl => true
             ilm_enabled => false
             api_key => "2TBR42gBabmINotmvZjv:tV1dnfF-GHI59ykgv4N0U3"
             # user => "<Username>"
@@ -364,7 +362,7 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
         }
         ```
 
-4. At this point, if you simply restart Logstash as is with your new output, then no MySQL data is sent to our Elasticsearch index.
+4. If you simply restart Logstash as is with your new output, then no MySQL data is sent to our Elasticsearch index.
 
     Why? Logstash retains the previous `sql_last_value` timestamp and sees that no new changes have occurred in the MySQL database since that time. Therefore, based on the SQL query that we configured, there’s no new data to send to Logstash.
 

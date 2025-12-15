@@ -21,7 +21,7 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 ## Obtain EDOT .NET diagnostic logs
 
-For most problems, such as when you don't see data in your Elastic Observability backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Trace` to investigate further.
+For most problems, such as when you don't see data in your {{product.observability}} backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Trace` to investigate further. For more information on enabling debug logging, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 
 The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the contrib OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
 
@@ -74,7 +74,7 @@ In the preceding code, you have filtered `Elastic.OpenTelemetry` to only emit lo
 
 ## Enable global file logging
 
-Integrated logging is helpful because it requires little to no setup. The logging infrastructure is not present by default in some application types, such as console applications. EDOT .NET also offers a global file logging feature, which is the easiest way for you to get diagnostics and debug information. You must enable file logging when you work with Elastic support, as trace logs will be requested.
+Integrated logging is helpful because it requires little to no setup. The logging infrastructure is not present by default in some application types, such as console applications. EDOT .NET also offers a global file logging feature, which is the easiest way for you to get diagnostics and debug information. You must enable file logging when you work with Elastic support, as trace logs will be requested. For more details, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 Specify at least one of the following environment variables to make sure that EDOT .NET logs into a file.
 
@@ -194,4 +194,167 @@ To avoid this scenario, make sure each placeholder uses a unique name. For examp
 
 ```csharp
 Logger.LogInformation("Eat your {fruit1} {fruit2} {fruit3}!", "apple", "banana", "mango");
+```
+
+### Custom processors are not applied to exported data
+
+When using custom processors, be aware that they may not run before data is exported unless explicitly configured.
+
+By default, EDOT .NET simplifies the getting started experience by applying [opinionated defaults](elastic-otel-dotnet://reference/edot-dotnet/setup/edot-defaults.md). These defaults include registering the OTLP exporter with the OpenTelemetry SDK so that telemetry data is exported automatically, without requiring additional code.
+
+In advanced scenarios, you might want to develop custom processors that enrich telemetry data before it passes through the rest of the processing pipeline. In such circumstances, you have to add the processor to the relevant signal provider builder. 
+
+For example, if you use the following code to register a custom processor for trace data using
+the `TracerProviderBuilder`, it won't work as intended:
+
+```csharp
+builder.AddElasticOpenTelemetry(b => b
+  .WithTracing(t => t.AddProcessor<SpanRollupProcessor>())
+  .WithMetrics(m => m.AddMeter("MyAppMeter")));
+```
+
+This code will not work as desired due to EDOT .NET registering the OTLP exporter before the processor,
+therefore running earlier in the pipeline than `SpanRollupProcessor`. The exact behaviour may vary or appear to
+work because trace data is exported in batches and the custom processor may partially apply to trace data before
+the batch is exported.
+
+To address this, you can disable the automatic OTLP exporter registration using the `SkipOtlpExporter` option. This allows you to manually register the exporter *after* registering your custom processor.
+
+Taking the prior example, the correct code should be as follows:
+
+```csharp
+builder.AddElasticOpenTelemetry(new ElasticOpenTelemetryOptions() { SkipOtlpExporter = true }, b => b
+  .WithLogging(l => l.AddOtlpExporter())
+  .WithTracing(t =>
+  {
+    t.AddProcessor<SpanRollupProcessor>();
+    t.AddOtlpExporter();
+  })
+  .WithMetrics(m => m
+    .AddMeter("MyAppMeter")
+    .AddOtlpExporter()));
+```
+
+In this example, `SkipOtlpExporter` is set to `true` using the `ElasticOpenTelemetryOptions` overload of `AddElasticOpenTelemetry`. If preferred, this can also be configured using the `appSettings.json` file.
+
+With `SkipOtlpExporter` enabled, the exporter must be added to __each__ signal that should be exported. In
+this example, the OTLP exporter is manually added for logs, traces and metrics. Crucially, for traces, the
+exporter is registered after the custom `SpanRollupProcessor` to ensure that trace data is batched for export
+after the processor has completed.
+
+### Duplicate spans are visible in Elastic Observability
+
+EDOT .NET provides several APIs for registering OpenTelemetry instrumentation for your applications.
+For the majority of scenarios, we recommend using the `AddElasticOpenTelemetry` methods on the `IHostApplicationBuilder`
+or `IServiceCollection`. 
+
+For advanced situations, we provide various `WithElastic...` methods on the specific
+signal builders intended to enable individual signals. Combining `AddElasticOpenTelemetry` and `WithElastic...` methods
+is incorrect and indicates a misconfiguration. EDOT .NET attempts to ensure that the OpenTelemetry SDK is
+registered once per application in these situations, but it's not always possible to fully validate the user
+intent.
+
+When a misconfiguration occurs, exporters can be registered more than once per signal, resulting in
+duplication of each span sent to Elastic Observability.
+
+For example, the following code is incorrect:
+
+```csharp
+var options = new ElasticOpenTelemetryOptions
+{
+  SkipInstrumentationAssemblyScanning = true
+};
+
+builder.AddElasticOpenTelemetry(edotBuilder =>
+{
+  edotBuilder
+    .WithElasticDefaults(options)
+    .WithElasticLogging()
+    .WithElasticTracing(tracing =>
+    {
+      _ = tracing
+          .AddSource("CustomActivitySource")
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    })
+    .WithElasticMetrics(metrics =>
+    {
+      _ = metrics
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    });
+});
+```
+
+This code does not work as intended because `AddElasticOpenTelemetry` is being used
+which enables all EDOT defaults for all signals, but it's also being combined with `WithElasticDefaults`
+and the signal-specific methods `WithElasticTracing` and `WithElasticMetrics`.
+
+The corrected code is as follows:
+
+```csharp
+var options = new ElasticOpenTelemetryOptions
+{
+  SkipInstrumentationAssemblyScanning = true
+};
+
+builder.AddElasticOpenTelemetry(options, edotBuilder =>
+{
+  edotBuilder
+    .WithLogging()
+    .WithTracing(tracing =>
+    {
+      _ = tracing
+          .AddSource("CustomActivitySource")
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    })
+    .WithMetrics(metrics =>
+    {
+      _ = metrics
+          .AddAspNetCoreInstrumentation()
+          .AddHttpClientInstrumentation();
+    });
+});
+```
+
+This code uses the regular `WithLogging`, `WithTracing` and `WithMetrics` methods
+after calling `AddElasticOpenTelemetry` to avoid repeat registration of EDOT .NET
+defaults.
+
+Another example of incorrect code is:
+
+```csharp
+builder.Services.AddOpenTelemetry()
+  .WithElasticDefaults()
+  .WithTracing(t => t.WithElasticDefaults(t => t
+    .AddSource("CustomActivitySource")
+    .AddProcessor(new CustomProcessor())));
+```
+
+This uses `WithElasticDefaults` which is __not__ preferred when adding EDOT .NET
+to an `IServiceCollection`. Worse still, it combines `WithElasticDefaults` inside
+the delegate passed into `WithTracing`, which again, may register EDOT .NET twice.
+
+The corrected code should be:
+
+```csharp
+builder.Services.AddOpenTelemetry()
+  .WithElasticDefaults(t => t
+    .WithTracing(t => t
+      .AddSource("CustomActivitySource")
+      .AddProcessor(new CustomProcessor())));
+```
+
+This code calls `WithElasticDefaults` only once, which, in this case, enables EDOT .NET
+defaults for all signals.
+
+Better still, this should be rewritten to prefer `AddElasticOpenTelemetry`
+which can better integrate EDOT .NET with the other application services.
+
+```csharp
+builder.Services.AddElasticOpenTelemetry(t => t
+  .WithTracing(t => t
+    .AddSource("CustomActivitySource")
+    .AddProcessor(new CustomProcessor())));
 ```

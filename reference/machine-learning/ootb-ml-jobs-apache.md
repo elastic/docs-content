@@ -14,7 +14,7 @@ These {{anomaly-job}} wizards appear in {{kib}} if you use the Apache integratio
 
 These {{anomaly-jobs}} find unusual activity in HTTP access logs.
 
-For more details, see the {{dfeed}} and job definitions in [GitHub](https://github.com/elastic/integrations/blob/main/packages/apache/kibana/ml_module/apache-Logs-ml.json). Note that these jobs are available in {{kib}} only if data exists that matches the query specified in the [manifest file](https://github.com/elastic/integrations/blob/main/packages/apache/kibana/ml_module/apache-Logs-ml.json#L11).
+For more details, see the {{dfeed}} and job definitions in [GitHub](https://github.com/elastic/integrations/blob/main/packages/apache/kibana/ml_module/apache-Logs-ml.json). These jobs are available in {{kib}} only if data exists that matches the query specified in the [manifest file](https://github.com/elastic/integrations/blob/main/packages/apache/kibana/ml_module/apache-Logs-ml.json#L11).
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |

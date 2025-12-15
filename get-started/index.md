@@ -19,11 +19,15 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 # Elastic fundamentals
 
-Welcome to Elastic fundamentals!
+Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
 
-In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together. 
+:::{tip}
+If you're on a trial and need guidance on building a proof of concept, refer to [Evaluate Elastic](/get-started/evaluate-elastic.md).
+:::
 
-You'll also find other helpful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology. Whether you're exercising your options and are curious about what Elastic can offer, are just getting started, or are looking to dive deeper, this is a great place to begin.
+In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together.
+
+You'll also find other helpful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology.
 
 ## What is Elastic? [what-is-es]
 
@@ -55,6 +59,9 @@ To explore particular, more granular facets of the {{stack}}, check out our [dem
 
 If you prefer a deep dive where you can learn at your own pace, check out our six-part [Beginner's Crash Course to {{stack}}](https://www.youtube.com/playlist?list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es) on YouTube.
 
-:::{tip}
-Read **[How to use the documentation](/get-started/howto-use-the-docs.md)** to discover how our documentation is organized, find the right version information for your products, and understand how to contribute to our community.
-:::
+## Other resources 
+Check out these additional resources to learn and explore other areas of Elastic: 
+
+* **[Deploy and manage](/deploy-manage/index.md)**: Learn how to deploy and manage all aspects of your Elastic environment.
+* **[Manage data](/manage-data/index.md)**: Learn how to ingest and manage data stored in {{es}}. 
+* **[How to use the documentation](/get-started/howto-use-the-docs.md)**: Understand how our documentation is organized, find the right version information for your products, and learn how to contribute.

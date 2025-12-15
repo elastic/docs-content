@@ -10,12 +10,16 @@ products:
 
 # Increase virtual memory [vm-max-map-count]
 
-{{es}} uses a [`mmapfs`](elasticsearch://reference/elasticsearch/index-settings/store.md#mmapfs) directory by default to store its indices. The default operating system limits on mmap counts is likely to be too low, which may result in out of memory exceptions.
+{{es}} uses a [`mmapfs`](elasticsearch://reference/elasticsearch/index-settings/store.md#mmapfs) directory by default to store its indices. The default operating system limits on mmap counts could be too low, which may result in out of memory exceptions.
+
+:::{admonition} Verify vm.max_map_count configuration
+If the operating system's default `vm.max_map_count` value is `1048576` or higher, no configuration change is necessary. If the default value is lower than `1048576`, configure the `vm.max_map_count` parameter to `1048576`.
+:::
 
 On Linux, you can increase the limits by running the following command as `root`:
 
 ```sh
-sysctl -w vm.max_map_count=262144
+sysctl -w vm.max_map_count=1048576
 ```
 
 To set this value permanently, update the `vm.max_map_count` setting in `/etc/sysctl.conf`. To verify after rebooting, run `sysctl vm.max_map_count`.
