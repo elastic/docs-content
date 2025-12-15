@@ -90,14 +90,7 @@ When you subsequently add assignees to cases, they receive an email.
 
 ## Add files [add-case-files]
 
-After you create a case, you can upload and manage files on the **Files** tab:
-
-:::{image} /solutions/images/cases-files-tab.png
-:alt: A list of files attached to a case
-:screenshot:
-:::
-
-You can find the **Files** tab in the following places:
+After you create a case, you can upload and manage files on the **Files** tab. To find the tab:
 
 - {applies_to}`stack: ga 9.0`: Go to the case's details page.  
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
