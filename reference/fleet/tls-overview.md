@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/tls-overview.html
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -20,6 +21,10 @@ You can also configure one-way and mutual TLS connections using {{kib}}. {applie
 
 
 ## Simple one-way TLS connection [one-way-tls-connection]
+
+```{applies_to}
+serverless: unavailable
+```
 
 The following `elastic-agent install` command configures a {{fleet-server}} with the required certificates and certificate authorities to enable one-way TLS connections between the components involved:
 
@@ -58,6 +63,10 @@ During the TLS connection setup, {{fleet-server}} presents its certificate `flee
 
 
 ## Mutual TLS connection [mutual-tls-connection]
+
+```{applies_to}
+serverless: unavailable
+```
 
 The following `elastic-agent install` command configures a {{fleet-server}} with the required certificates and certificate authorities to enable mutual TLS connections between the components involved:
 
@@ -103,13 +112,24 @@ You can also configure mutual TLS for {{fleet-server}} and {{agent}} [using a pr
 :::
 
 ## Configure TLS/mTLS settings in the Fleet UI [tls-ui-settings]
+
 ```{applies_to}
   stack: ga 9.1
 ```
 
-You can configure TLS and mutual TLS (mTLS) settings for {{fleet-server}} and outputs using the {{fleet}} UI.
+In self-managed and {{ech}} deployments, you can configure TLS and mutual TLS (mTLS) for {{fleet-server}} and outputs in the {{fleet}} UI. 
+
+:::{{note}}
+:applies_to: serverless: ga
+
+On {{serverless-short}}, the {{fleet-server}} settings are managed, but you can still configure TLS/mTLS for your outputs.
+:::
 
 ### Fleet Server SSL options
+
+```{applies_to}
+serverless: unavailable
+```
 
 To access these settings:
 

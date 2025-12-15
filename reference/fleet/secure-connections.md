@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure-connections.html
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -85,7 +86,7 @@ This section describes how to use the `certutil` tool provided by {{es}}, but yo
     Store the files in a secure location. You’ll need these files later to encrypt traffic between {{agent}}s and {{fleet-server}}.
 
 
-## Configure SSL/TLS using CLI  [fleet-server-ssl-cli-settings]
+## Configure SSL/TLS using CLI [fleet-server-ssl-cli-settings]
 
 Use the CLI to configure SSL or TLS when installing or enrolling {{fleet-server}}. This method gives you granular control over certificate paths, verification modes, and authentication behavior.
 
