@@ -16,15 +16,34 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Entity store transform is unavailable 
+:::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
+Applies to: 9.2.0 and 9.2.1
+
+**Impact**<br>
+New deployments of integrations that collect data from cloud service providers, such as Asset Discovery and Cloud Security Posture Management, do not work when deployed to AWS using agent-based deployment and the AWS CloudFormation deployment option. The problem results from a malformed CloudFormation parameter: `ElasticAgentVersion`. The default value for `ElasticAgentVersion` has a space instead of a `+`. This produces an invalid agent version value.
+
+For more information, check [#14627](https://github.com/elastic/kibana/pull/242365).
+
+
+**Workaround**<br>
+
+To work around this issue, update the default CloudFormation template by replacing the space in the `ElasticAgentVersion` parameter with a `+`.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.2.
+
+:::
+
+:::{dropdown} Entity store transform is unavailable
 
 Applies to: 9.2.0
 
-**Details**
+**Impact**
 
 A new feature introduced to the entity store in 9.2.0 caused the transform to scan for nonexistent indices.
 
-**Workaround** 
+**Workaround**
 
 Restart the entity store:
 1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -42,38 +61,43 @@ Applies to: ECH 9.2.0 deployments hosted on AWS
 
 **Impact**
 
-If your ECH deployment is hosted on AWS, new Cloud Security Posture Management (CSPM) and Asset Inventory integrations will fail to produce findings when deployed using agent-based deployment. ECH deployments hosted on GCP or Azure are not affected. Integrations that use agentless deployment are not affected. 
+If your ECH deployment is hosted on AWS, new Cloud Security Posture Management (CSPM) and Asset Inventory integrations will fail to produce findings when deployed using agent-based deployment. ECH deployments hosted on GCP or Azure are not affected. Integrations that use agentless deployment are not affected.
 
-**Workaround** 
+**Workaround**
 
 Two workarounds are available:
 
-1. Turn off the **Enable Cloud Connector** advanced setting. 
+1. Turn off the **Enable Cloud Connector** advanced setting.
     1. Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. In the **Security Solution** section, turn off the **Enable Cloud Connector** option.
     3. Your agent-based integration deployments will work as expected.
-2. Use agentless deployment. 
+2. Use agentless deployment.
     1. Instead of using agent-based deployment, use agentless deployment. Agentless deployment works as expected.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.2.1
+
 ::::
 
 
 ::::{dropdown} Filters may not apply correctly on the Alerts page
-Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3 
+Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3
 
 **Impact**
 
-After upgrading to 9.1.0 and later, some users may experience inconsistent results when applying filters to the Alerts page. 
+After upgrading to 9.1.0 and later, some users may experience inconsistent results when applying filters to the Alerts page.
 
 **Workaround**
 
-You can turn off the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings), which only applies to the current space. However, turning off this setting might prevent dashboards and visualizations with applied filters from displaying properly. If you have important dashboards that this will impact, you can temporarily move them to a new space by doing the following: 
+You can turn off the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings), which only applies to the current space. However, turning off this setting might prevent dashboards and visualizations with applied filters from displaying properly. If you have important dashboards that this will impact, you can temporarily move them to a new space by doing the following:
 
-1. Create a [new space](/deploy-manage/manage-spaces.md#spaces-managing). 
-2. Turn on the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings) so that filters  apply to visualizations only if the index contains the filtering field. 
-3. Use the [import saved objects tool](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) to move the dashboards or visualizations to the space you just created. 
+1. Create a [new space](/deploy-manage/manage-spaces.md#spaces-managing).
+2. Turn on the {{kib}} `courier:ignoreFilterIfFieldNotInIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings) so that filters  apply to visualizations only if the index contains the filtering field.
+3. Use the [import saved objects tool](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) to move the dashboards or visualizations to the space you just created.
 
 :::{note}
-Ensure you give any users who will need access to the new space the appropriate permissions. 
+Ensure you give any users who will need access to the new space the appropriate permissions.
 :::
 
 **Resolved**<br>
@@ -82,13 +106,13 @@ Resolved in {{stack}} 9.1.4
 
 ::::
 
-:::{dropdown} The {{elastic-agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
+:::{dropdown} The {{agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
 
 Applies to: 9.0.0
 
 **Impact**
 
-The {{elastic-agent}} image is not available from `docker.elastic.co/beats/elastic-agent:9.0.0`. The default manifests for integrations that run {{elastic-agent}} on Kubernetes—such as CSPM or CNVM—use this image location, resulting in an error.
+The {{agent}} image is not available from `docker.elastic.co/beats/elastic-agent:9.0.0`. The default manifests for integrations that run {{agent}} on Kubernetes—such as CSPM or CNVM—use this image location, resulting in an error.
 
 **Workaround**
 
@@ -269,7 +293,7 @@ Resolved in {{elastic-defend}} 9.0.1
 
 Applies to: {{elastic-defend}} 9.0.0
 
-An unbounded kernel non-paged memory growth issue in {{elastic-defend}}'s kernel driver occurs during extremely high event load situations on Windows. Systems affected by this issue will slow down or become unresponsive until the triggering event load (for example, network activity) subsides. We are only aware of this issue occurring on very busy Windows Server systems running {{elastic-defend}} versions 8.16.0-8.16.6, 8.17.0-8.17.5, 8.18.0, and 9.0.0
+An unbounded kernel non-paged memory growth issue in {{elastic-defend}}'s kernel driver occurs during extremely high event load situations on Windows. Systems affected by this issue will slow down or become unresponsive until the triggering event load (for example, network activity) subsides. We are only aware of this issue occurring on busy Windows Server systems running {{elastic-defend}} versions 8.16.0-8.16.6, 8.17.0-8.17.5, 8.18.0, and 9.0.0
 
 **Workaround**<br>
 
@@ -278,7 +302,7 @@ If you can't upgrade, turn off the relevant event source at the kernel level usi
 * Network Events - Set the `windows.advanced.kernel.network` advanced setting to `false`.
 * Registry Events - Set the `windows.advanced.kernel.registry` advanced setting to `false`.
 
-Note that clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
+Clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
 
 **Resolved**<br>
 
