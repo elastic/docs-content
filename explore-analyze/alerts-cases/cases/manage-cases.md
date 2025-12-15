@@ -146,3 +146,5 @@ To view a case, click on its name. You can then:
 * Change the severity.
 * Close or delete the case.
 * Reopen a closed case.
+
+## Search cases [search-stack-management-cases]

@@ -107,3 +107,5 @@ To view a case, click on its name. You can then:
 * Refresh the case to retrieve the latest updates.
 * Close the case.
 * Reopen a closed case.
+
+## Search cases [search-observability-cases]
