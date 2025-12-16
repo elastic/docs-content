@@ -74,13 +74,6 @@ You can also create a case from an alert or add an alert to an existing case. Fr
 
 ::::
 
-
-
-## Add files [observability-create-a-new-case-add-files]
-
-:::{include} /solutions/_snippets/add-case-files.md
-:::
-
 ## Send cases to external incident management systems [observability-create-a-new-case-send-cases-to-external-incident-management-systems]
 
 To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the **External incident management system** section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
@@ -100,6 +93,30 @@ To view a case, click on its name. You can then:
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.
-* Add and manage the following items:
-   * Alerts
-   * Files
+
+## Add context and supporting evidence [observability-create-a-new-case-add-context]
+
+Provide additional context for the case and helpful resources by adding the following items:
+* [Alerts](#observability-create-a-new-case-examine-alerts) 
+* [Files](#observability-create-a-new-case-add-files)
+
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific observable values, alert and event IDs, and file names.
+::::
+
+### Add alerts [observability-create-a-new-case-examine-alerts]
+
+Escalate alerts and track them in a single place by [adding them to cases](../../observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases).
+
+To examine the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
+
+You can find the **Alerts** tab in the following places:
+
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
+
+### Add files [observability-create-a-new-case-add-files]
+
+:::{include} /solutions/_snippets/add-case-files.md
+:::
