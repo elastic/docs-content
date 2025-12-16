@@ -22,18 +22,41 @@ For a demo, refer to the following video (click to view).
 
 ## Role-based access control (RBAC) for Attack Discovery [attack-discovery-rbac]
 
-You need the `Attack Discovery: All` privileges to use Attack Discovery.
+To use Attack Discovery, your role needs the following privileges:
 
-{applies_to}`serverless: ` You need the `Rules: Read` privilege at a minimum to use Attack Discovery.
+::::{applies-switch}
 
-![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "=65%")
+:::{applies-item} { "stack": "ga 9.0" }
+**Kibana privileges**: Go to **Security** and set **Attack Discovery** to `All`.
 
-{applies_to}`stack: ga 9.1` Your role must also have the following privileges:
+:::
+
+:::{applies-item} { "stack": "ga 9.1"}
+
+* **Kibana privileges**: Go to **Security** and set **Attack Discovery** to `All`.
+* **{{es}} privileges**: Give your role access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
 
 | Action | Indices | {{es}} privileges |
 |---------|---------|--------------------------|
 | Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
 | Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
+
+:::
+
+:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+
+* **Kibana privileges**: Go to **Security**, set **Attack Discovery** to `All`, and (at minimum) set **Rules** to `Read`.
+* **{{es}} privileges**: Give your role access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
+
+| Action | Indices | {{es}} privileges |
+|---------|---------|--------------------------|
+| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
+| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
+
+:::
+
+::::
+
 
 ## Set up Attack Discovery
 

@@ -22,7 +22,8 @@ Several steps are **only** required for **self-managed** {{stack}} deployments. 
 ## Configure self-managed {{stack}} deployments [detections-on-prem-requirements]
 
 ```yaml {applies_to}
-stack:
+  deployment:
+    self:
 ```
 
 These steps are only required for **self-managed** deployments:
@@ -44,6 +45,11 @@ After changing the `xpack.encryptedSavedObjects.encryptionKey` value and restart
 
 ## Enable and access detections [enable-detections-ui]
 
+```yaml {applies_to}
+stack: ga
+serverless: ga
+```
+
 To use the Detections feature, it must be enabled, your role must have access to rules and alerts, and your {{kib}} space must have **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md). If your role doesn’t have the cluster and index privileges needed to enable this feature, you can request someone who has these privileges to visit your {{kib}} space, which will turn it on for you.
 
 ::::{note}
@@ -51,11 +57,6 @@ For instructions about using {{ml}} jobs and rules, refer to [Machine learning j
 ::::
 
 ### Custom role privileges [security-detections-requirements-custom-role-privileges]
-
-```yaml {applies_to}
-stack: ga
-serverless: ga
-```
 
 | Action | Cluster Privileges | Index Privileges | Kibana Privileges |
 | --- | --- | --- | --- |
