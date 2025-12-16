@@ -1,6 +1,6 @@
 An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case. 
 
-To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
+View and manage observables from the **Observables** tab. You can find the tab in the following places:
 
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
 - {applies_to}`stack: ga 9.0`: Go to the case's details page.  
