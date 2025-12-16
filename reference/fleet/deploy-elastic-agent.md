@@ -55,12 +55,12 @@ The following CLI flags are available for configuring the connection from {{agen
 | `--elastic-agent-cert` | Client certificate for mTLS connection to {{fleet-server}} | Optional (mTLS only) | Yes - configured in {{fleet}} settings |
 | `--elastic-agent-cert-key` | Private key for mTLS client certificate | Optional (mTLS only) | Yes - configured in {{fleet}} settings |
 | `--elastic-agent-cert-key-passphrase` | Path to passphrase file for encrypted private key | Optional | Yes - configured in {{fleet}} settings |
-| `--insecure` | Disable certificate verification (not recommended) | No - not recommended | No - must be CLI or environment variable |
+| `--insecure` | Deactivate certificate verification (not recommended) | No - not recommended | No - must be CLI or environment variable |
 | `--id` | Unique agent identifier | Optional | No - must be CLI or environment variable |
 | `--replace-token` | Token to replace an existing agent with same ID | Optional | No - must be CLI or environment variable |
 | `--tag` | Comma-separated list of tags for the agent | Optional | No - must be CLI or environment variable |
 | `--proxy-url` | Proxy URL for {{fleet-server}} connections | Optional | Yes - configured in agent policy |
-| `--proxy-disabled` | Disable proxy support | Optional | No - must be CLI |
+| `--proxy-disabled` | Deactivate proxy support | Optional | No - must be CLI |
 | `--proxy-header` | Additional headers for proxy CONNECT requests | Optional | No - must be CLI |
 
 \* Required if {{fleet-server}} uses certificates signed by a private or intermediate CA not publicly trusted
@@ -77,7 +77,7 @@ You can also configure the connection using environment variables instead of CLI
 | `ELASTIC_AGENT_CERT` | Path to client certificate for mTLS | `--elastic-agent-cert` | Yes - configured in {{fleet}} settings |
 | `ELASTIC_AGENT_CERT_KEY` | Path to private key for mTLS | `--elastic-agent-cert-key` | Yes - configured in {{fleet}} settings |
 | `ELASTIC_AGENT_CERT_KEY_PASSPHRASE` | Path to passphrase file | `--elastic-agent-cert-key-passphrase` | Yes - configured in {{fleet}} settings |
-| `FLEET_INSECURE` | Disable certificate verification | `--insecure` | No - must be CLI or environment variable |
+| `FLEET_INSECURE` | Deactivate certificate verification | `--insecure` | No - must be CLI or environment variable |
 | `ELASTIC_AGENT_ID` | Unique agent identifier | `--id` | No - must be CLI or environment variable |
 | `FLEET_REPLACE_TOKEN` | Token to replace existing agent | `--replace-token` | No - must be CLI or environment variable |
 | `ELASTIC_AGENT_TAGS` | Comma-separated tags | `--tag` | No - must be CLI or environment variable |
@@ -231,7 +231,7 @@ The configuration precedence is as follows (highest to lowest):
 Settings provided using CLI or environment variables during enrollment are used for the initial connection to {{fleet-server}}. After enrollment, the {{agent}} downloads its policy from {{fleet-server}}, and policy settings take precedence for most configuration options (except those listed in the [Must be provided using CLI or environment variables](#deploy-elastic-agent-must-cli) section above).
 
 ::::{note}
-If the agent policy contains mTLS configuration settings, those settings will take precedence over those used during enrollment. This includes both the mTLS settings used for connectivity between {{agent}} and {{fleet-server}}, and the settings used between {{agent}} and its specified output.
+If the agent policy contains mTLS configuration settings, those settings take precedence over those used during enrollment. This includes both the mTLS settings used for connectivity between {{agent}} and {{fleet-server}}, and the settings used between {{agent}} and its specified output.
 
 The initial TLS, mTLS, or proxy configuration settings specified when {{agent}} is enrolled cannot be removed through the agent policy; they can only be updated.
 ::::

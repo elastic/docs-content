@@ -16,7 +16,7 @@ products:
 ::::
 
 ::::{note}
-For comprehensive information about {{agent}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md). This guide provides detailed configuration organized by connection type.
+For comprehensive information about {{agent}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy versus CLI precedence, refer to [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md). This guide provides detailed configuration organized by connection type.
 ::::
 
 

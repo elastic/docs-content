@@ -54,7 +54,7 @@ The following CLI flags are available for configuring the connection from {{flee
 | `--fleet-server-es-ca-trusted-fingerprint` | SHA-256 fingerprint of CA used to sign {{es}} certificates | Optional* | No - must be CLI |
 | `--fleet-server-es-cert` | Client certificate for mTLS connection to {{es}} | Optional (mTLS only) | Yes - configured in {{es}} output |
 | `--fleet-server-es-cert-key` | Private key for mTLS client certificate | Optional (mTLS only) | Yes - configured in {{es}} output |
-| `--fleet-server-es-insecure` | Disable certificate verification (not recommended) | No - not recommended | No - must be CLI |
+| `--fleet-server-es-insecure` | Deactivate certificate verification (not recommended) | No - not recommended | No - must be CLI |
 | `--fleet-server-service-token` | Service token for {{fleet-server}} to authenticate with {{es}} | Yes | No - must be CLI or environment variable |
 | `--fleet-server-service-token-path` | Path to file containing service token | Yes** | No - must be CLI or environment variable |
 
