@@ -173,7 +173,7 @@ You can find the **Events** tab in the following places:
 :::{include} /solutions/_snippets/add-case-observables.md
 :::
 
-{applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case. After creating a new case, you can turn it off by toggling **Auto-extract observables** on the case's **Observables** tab.
+{applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can use **Auto-extract observables** to instantly extract observables from alerts that you're adding to the case. After creating a new case, you have the option to turn it off by toggling **Auto-extract observables** on the case's **Observables** tab.
 
 ## Copy the case UUID [cases-copy-case-uuid]
 
