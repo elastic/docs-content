@@ -97,7 +97,7 @@ Each {{ece}} service runs as a dedicated container. These containers are automat
 | `frc-runners-runner`                              | All roles     | Runs on every ECE host and provides a supervisor service to deploy and manage containers based on the host's assigned roles, ensuring required containers are started at the proper version. |
 | `frc-services-forwarders-services-forwarder`      | All roles     | Routes internal service data across the ECE platform. |
 | `frc-allocator-metricbeats-allocator-metricbeat`  | Allocator     | Collects metrics from the {{stack}} containers running in the allocator. |
-| `frc-allocators-allocator`                        | Allocator     | Manages container lifecycle for {{stack}} applications. |
+| `frc-allocators-allocator`                        | Allocator     | Manages container lifecycle for {{stack}} application instances, such as {{es}} and {{kib}}. |
 | `frc-container-task-services-container-task-service` | Allocator  | Supports autoscaling and tracks feature usage. |
 | `frc-admin-consoles-admin-console`                | Controller    | Backend service for the ECE UI that handles API requests. |
 | `frc-cloud-uis-cloud-ui`                          | Controller    | Web frontend for the ECE UI, served to users in the browser. |
