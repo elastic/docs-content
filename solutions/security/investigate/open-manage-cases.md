@@ -177,7 +177,7 @@ You can find the **Events** tab in the following places:
 
 ## Copy the case UUID [cases-copy-case-uuid]
 
-Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the Cases page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
+Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the **Cases** page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
 
 :::{image} /solutions/images/security-cases-copy-case-id.png
 :alt: Copy Case ID option in More actions menu
