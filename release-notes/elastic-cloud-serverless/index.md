@@ -12,11 +12,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## December 16, 2025 [serverless-changelog-12162025]
 
-### Features and enhancements [serverless-changelog-12152025-features-enhancements]
+### Features and enhancements [serverless-changelog-12162025-features-enhancements]
 
 * Adds four new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}: GCP Singapore (`asia-southeast1`), GCP London (`europe-west2`), GCP Frankfurt (`europe-west3`), and GCP Netherlands (`europe-west4`)
 * Adds an integration knowledge opt-out UI setting and feature flag [#245080]({{kib-pull}}245080)
-* Redesigns the single and bulk agent actions menus in Fleet, organizing commonly used actions at the top level and grouping other actions into nested menus by use case [#245174]({{kib-pull}}245174)
+* Redesigns the single and bulk agent actions menus in {{fleet}}, organizing commonly used actions at the top level and grouping other actions into nested menus by use case [#245174]({{kib-pull}}245174)
 * Adds agent internal YAML settings [#245819]({{kib-pull}}245819)
 * Adds support for chain controls [#242909]({{kib-pull}}242909)
 * Improves validation and autocomplete for CASE [#244280]({{kib-pull}}244280)
@@ -50,7 +50,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables CCS tests for {{esql}} subqueries [#137776]({{es-pull}}137776)
 * Adds CCS support for the {{esql}} Inference command [#139244]({{es-pull}}139244)
 * Introduces usage limits for COMPLETION and RERANK [#139074]({{es-pull}}139074)
-* Adds privileges to the Kibana System role to manage internal indexes in support of Elastic Defend features [#138993]({{es-pull}}138993)
+* Adds privileges to the {{kib}} System role to manage internal indexes in support of {{elastic-defend}} features [#138993]({{es-pull}}138993)
 * Optimizes native bulk dot product scoring for Int7 [#139069]({{es-pull}}139069)
 * Adds Azure OpenAI chat completion support [#138726]({{es-pull}}138726)
 * Adds NVIDIA support to the Inference Plugin [#132388]({{es-pull}}132388)
@@ -61,9 +61,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Bumps jruby/joni to 2.2.6 [#139075]({{es-pull}}139075)
 * Enables bfloat16 and on-disk rescoring for dense vectors [#138492]({{es-pull}}138492)
 * Enables the new exponential histograms field type [#138968]({{es-pull}}138968)
-* Adds planning detailed timing to profile information in ESQL [#138564]({{es-pull}}138564)
-* Optimizes `GROUP BY ALL` in ESQL [#139130]({{es-pull}}139130)
-* Pulls `OrderBy` followed by `InlineJoin` on top of it in ESQL [#137648]({{es-pull}}137648)
+* Adds planning detailed timing to profile information in {{esql}} [#138564]({{es-pull}}138564)
+* Optimizes `GROUP BY ALL` in {{esql}} [#139130]({{es-pull}}139130)
+* Pulls `OrderBy` followed by `InlineJoin` on top of it in {{esql}} [#137648]({{es-pull}}137648)
 * Re-enables bfloat16 in semantic text [#139347]({{es-pull}}139347)
 * Adds count by trunc with filter [#138765]({{es-pull}}138765)
 * Restricts GPU indexing to FLOAT element types [#139084]({{es-pull}}139084)
@@ -79,9 +79,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses the new bulk scoring dot product for max inner product [#139409]({{es-pull}}139409)
 
 
-### Fixes [serverless-changelog-12152025-fixes]
+### Fixes [serverless-changelog-12162025-fixes]
 
-* Enables storing secrets in Fleet Server Host config if fleet-server is running at a minimum supported version [#237464]({{kib-pull}}237464)
+* Enables storing secrets in {{fleet}} Server Host config if {{fleet-server}} is running at a minimum supported version [#237464]({{kib-pull}}237464)
 * Fixes Discover tab initialization [#245752]({{kib-pull}}245752)
 * Improves error handling for tool responses [#241425]({{kib-pull}}241425)
 * Updates Gemini connector configuration [#245647]({{kib-pull}}245647)
@@ -108,8 +108,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures integer sorts are rewritten to long sorts for BWC indexes [#139293]({{es-pull}}139293)
 * Fixes `project_routing` in EQL [#139366]({{es-pull}}139366)
 * Changes `FUSE KEY BY` to accept a list of `qualifiedName` [#139071]({{es-pull}}139071)
-* Fixes metrics that took between 1 and 10 hours in ESQL [#139257]({{es-pull}}139257)
-* Prunes `InlineJoin` right aggregations by delegating to the child plan in ESQL [#139357]({{es-pull}}139357)
+* Fixes metrics that took between 1 and 10 hours in {{esql}} [#139257]({{es-pull}}139257)
+* Prunes `InlineJoin` right aggregations by delegating to the child plan in {{esql}} [#139357]({{es-pull}}139357)
 * Fixes downsampling with disabled subobjects [#138715]({{es-pull}}138715)
 * Fixes an offset maths bug in InetAddress parsing [#139420]({{es-pull}}139420)
 * Avoids `EsqlIllegalArgumentException` for invalid window values [#139470]({{es-pull}}139470)
