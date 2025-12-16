@@ -24,7 +24,7 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 
 ::::{admonition} Requirements
 
-* A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{serverless-short}} users: a project with the [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) feature tier.
 * A sample of the data you want to import.
@@ -68,7 +68,7 @@ Using Automatic Import allows users to create new third-party data integrations 
    :::
 
 3. Click **Create integration**.
-4. Select an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+4. Select an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 5. Define how your new integration will appear on the Integrations page by providing a **Title**, **Description**, and **Logo**.  Click **Next**.
 6. Define your integration’s package name, which will prefix the imported event fields.
 7. Define your **Data stream title**, **Data stream description**, and **Data stream name**. These fields appear on the integration’s configuration page to help identify the data stream it writes to.
