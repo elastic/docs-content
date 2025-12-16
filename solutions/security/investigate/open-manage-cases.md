@@ -219,7 +219,7 @@ An observable is a piece of information about an investigation, for example, a s
 To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
 
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
 
 ::::{important}
 Each case can have a maximum of 50 observables.
