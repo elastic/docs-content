@@ -28,11 +28,11 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 :::::{applies-switch}
 
 ::::{applies-item} serverless: ga
-This feature is already enabled by default.
+This feature is enabled by default.
 ::::
 
 ::::{applies-item} stack: ga 9.3
-This feature is already enabled by default.
+This feature is enabled by default.
 ::::
 
 ::::{applies-item} stack: ga 9.2
