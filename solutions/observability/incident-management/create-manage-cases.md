@@ -118,3 +118,8 @@ From the **Attachments** tab, you can search for specific alert IDs and file nam
 
 :::{include} /solutions/_snippets/add-case-files.md
 :::
+
+## Search cases [search-stack-management-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::

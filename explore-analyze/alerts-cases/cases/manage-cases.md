@@ -164,3 +164,8 @@ Uploaded files are also accessible from the **Files** management page, which you
 
 :::{include} ../../../solutions/_snippets/add-case-observables.md
 :::
+
+## Search cases [search-stack-management-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::

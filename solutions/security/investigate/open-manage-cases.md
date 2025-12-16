@@ -290,3 +290,8 @@ To import a case:
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
+
+## Search cases [search-security-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::
