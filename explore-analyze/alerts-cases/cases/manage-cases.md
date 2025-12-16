@@ -126,11 +126,9 @@ To view a case, click on its name. You can then:
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.
 
-## Add context and supporting evidence [add-case-context]
+## Add context and supporting materials [add-case-context]
 
-% Need to review this and add appropriate applies to tags
-
-Provide additional context for the case and helpful resources by adding the following items:
+Provide additional context and resources by adding the following to the case:
 * [Alerts](#add-case-alerts) 
 * [Files](#add-case-files)
 * [Observables](#add-case-observables)
@@ -142,35 +140,27 @@ From the **Attachments** tab, you can search for specific observable values, ale
 
 ### Add alerts [add-case-alerts]
 
-Escalate alerts and track them in a single place by [adding them to cases](../../../solutions/observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases).
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
 
-To examine the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To view alert details, click the **View details** button.
-
-You can find the **Alerts** tab in the following places:
-
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
-
+::::{note}
+Refer to [](../../../solutions/observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases) to learn how to add alerts to cases.
+::::
 
 ### Add files [add-case-files]
 
-After you create a case, you can upload and manage files on the **Files** tab. To find the tab:
-
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
-
-To download or delete the file or copy the file hash to your clipboard, open the action menu {icon}`boxes_horizontal`. The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
-
-::::{note}
-Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-::::
+:::{include} ../../../solutions/_snippets/add-case-files.md
+:::
 
 ::::{important}
 When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported.
 ::::
 
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
 ### Add observables [add-case-observables]
 
-% Add applies to tag and snippet
+:::{include} ../../../solutions/_snippets/add-case-observables.md
+:::

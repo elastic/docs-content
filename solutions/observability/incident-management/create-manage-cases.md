@@ -94,9 +94,9 @@ To view a case, click on its name. You can then:
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.
 
-## Add context and supporting evidence [observability-create-a-new-case-add-context]
+## Add context and supporting materials [observability-create-a-new-case-add-context]
 
-Provide additional context for the case and helpful resources by adding the following items:
+Provide additional context and resources by adding the following to the case:
 * [Alerts](#observability-create-a-new-case-examine-alerts) 
 * [Files](#observability-create-a-new-case-add-files)
 
@@ -107,14 +107,12 @@ From the **Attachments** tab, you can search for specific observable values, ale
 
 ### Add alerts [observability-create-a-new-case-examine-alerts]
 
-Escalate alerts and track them in a single place by [adding them to cases](../../observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases).
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
 
-To examine the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
-
-You can find the **Alerts** tab in the following places:
-
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
+::::{note}
+[Add alerts](../../observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases) to new and existing cases from the **Alerts** page.
+::::
 
 ### Add files [observability-create-a-new-case-add-files]
 

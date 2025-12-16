@@ -126,9 +126,9 @@ To edit, delete, or quote a comment, select the appropriate option from the **Mo
 :screenshot:
 :::
 
-## Add context and supporting evidence [cases-add-context]
+## Add context and supporting materials [cases-add-context]
 
-Provide additional context for the case and helpful resources by adding the following items:
+Provide additional context and resources by adding the following to the case:
 * [Alerts](#cases-examine-alerts)
 * [Indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case)
 * {applies_to}`stack: ga 9.2.0` [Events](#cases-examine-events) 
@@ -142,17 +142,11 @@ From the **Attachments** tab, you can search for specific observable values, ale
 
 ### Add alerts [cases-examine-alerts]
 
-Escalate alerts and track them in a single place by attaching them to cases. You can add alerts from an investigation that you've opened in Timeline, or from the **Alerts** page.
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
 
-To examine the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
-
-You can find the **Alerts** tab in the following places:
-
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.
-
-::::{important}
-Each case can have a maximum of 1,000 alerts.
+::::{note}
+Add alerts to new and existing cases from [Timeline](/solutions/security/investigate/timeline.md) or the [**Alerts** page](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md).
 ::::
 
 ### Add events [cases-examine-events]
@@ -167,7 +161,7 @@ After adding events to a case, go to the **Events** tab to examine them. Within 
 You can find the **Events** tab in the following places:
 
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.2`: Go to the case's details page.
 
 ### Add files [cases-add-files]
 
@@ -176,38 +170,10 @@ You can find the **Events** tab in the following places:
 
 ### Add observables [cases-add-observables]
 
-::::{admonition} Requirements
-Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+:::{include} /solutions/_snippets/add-case-observables.md
+:::
 
-::::
-
-An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case. 
-
-To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
-
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
-
-::::{important}
-Each case can have a maximum of 50 observables.
-::::
-
-To create an observable:
-
-1. Click **Add observable** from the **Observables** tab.
-2. Provide the necessary details:
-
-    * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/solutions/security/investigate/configure-case-settings.md#cases-observable-types).
-    * **Value**: Enter a value for the observable. The value must align with the type you select.
-    * **Description** (Optional): Provide additional information about the observable.
-
-3. Click **Add observable**.
-
-After adding an observable to a case, you can remove or edit it by using the **Actions** menu (**…**).
-
-::::{tip}
-Go to the **Similar cases** tab to access other cases with the same observables.
-::::
+{applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case. After creating a new case, you can turn it off by toggling **Auto-extract observables** on the case's **Observables** tab.
 
 ## Copy the case UUID [cases-copy-case-uuid]
 
