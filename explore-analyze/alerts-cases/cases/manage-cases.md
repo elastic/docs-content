@@ -135,7 +135,7 @@ Provide additional context and resources by adding the following to the case:
 
 ::::{tip}
 :applies_to: {stack: ga 9.3}
-From the **Attachments** tab, you can search for specific observable values, alert and event IDs, and file names.
+From the **Attachments** tab, you can search for specific observable values, alert IDs, and file names.
 ::::
 
 ### Add alerts [add-case-alerts]
