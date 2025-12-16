@@ -139,8 +139,8 @@ To explore the alerts attached to a case, click the **Alerts** tab. In the table
 
 You can find the **Alerts** tab in the following places:
 
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
 
 ::::{important}
 Each case can have a maximum of 1,000 alerts.
@@ -157,8 +157,8 @@ After adding events to a case, go to the **Events** tab to examine them. Within 
 
 You can find the **Events** tab in the following places:
 
-- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
 
 ### Add files [cases-add-files]
 
@@ -218,8 +218,8 @@ An observable is a piece of information about an investigation, for example, a s
 
 To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
 
-- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
 
 ::::{important}
 Each case can have a maximum of 50 observables.
