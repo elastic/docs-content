@@ -22,19 +22,25 @@ For a demo, refer to the following video (click to view).
 
 ## Role-based access control (RBAC) for Attack Discovery [attack-discovery-rbac]
 
-To use Attack Discovery, your role needs the following privileges:
+To use Attack Discovery, your role needs specific privileges.
 
 ::::{applies-switch}
 
 :::{applies-item} { "stack": "ga 9.0" }
-**Kibana privileges**: Go to **Security** and set **Attack Discovery** to `All`.
+
+Set **Attack Discovery** to `All`.
+
+![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
 :::
 
 :::{applies-item} { "stack": "ga 9.1"}
 
-* **Kibana privileges**: Go to **Security** and set **Attack Discovery** to `All`.
-* **{{es}} privileges**: Give your role access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
+* Set **Attack Discovery** to `All`.
+
+    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+
+* Set your role's access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
 
 | Action | Indices | {{es}} privileges |
 |---------|---------|--------------------------|
@@ -45,8 +51,11 @@ To use Attack Discovery, your role needs the following privileges:
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 
-* **Kibana privileges**: Go to **Security**, set **Attack Discovery** to `All`, and (at minimum) set **Rules** to `Read`.
-* **{{es}} privileges**: Give your role access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
+* Set **Attack Discovery** to `All` and (at minimum) **Rules** to `Read`.
+
+    ![attack-discovery-rules-rbac](/solutions/images/attack-discovery-rules-rbac.png "elasticsearch =60%x60%")
+
+* Set your role's access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
 
 | Action | Indices | {{es}} privileges |
 |---------|---------|--------------------------|
