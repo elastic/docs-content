@@ -85,7 +85,7 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
 | General Purpose LLM   | 50              | -                       | -                       | No rate limit on tokens  |
 | ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| `jina-embeddings-v3`  | 500             | 3,000,000               | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
 ## Pricing
 
