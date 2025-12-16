@@ -35,27 +35,27 @@ Using the **Visualization type** dropdown, select **Area**.
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
 
-2. Drag a time-based field to the **Horizontal axis** and numeric field to the **Vertical axis**. You can use aggregation functions like `Date histograms` and `Filters`, or create custom calculations with [formulas](../lens.md#lens-formulas).
+2. Drag a time-based field to the **Horizontal axis** and numeric field to the **Vertical axis**. Click the axes fields and check which functions Kibana suggests based on the field type. You can change it and use aggregation functions like Date histogram, Intervals, Filters, Top values, and more, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
-Optionally, you can add more numeric fields to create additional series, or drag a categorical field to **Break down** to split the series.
+3. Optionally, you can use the **Breakdown** settings to segment your data by a categorical field, creating multiple areas within the same chart. For example, to break down CPU usage by host, show request counts by service or endpoint, or visualize error rates by environment or region.
 :::::
 
 :::::{step} Customize the chart to follow best practices
 Tweak the appearance of the chart to your needs. Consider the following best practices:
 
 **Choose the right stack mode**
-:   Use **Stacked** to show contribution to a whole, **Percentage** for normalized share, or **Unstacked** when absolute trends matter more than composition.
+:   Use **Stacked** to show contribution to a whole, **Percentage** for normalized share, or **Unstacked** when absolute trends matter more than composition. For a practical use case, check how to [show composition with stacked and 100% stacked areas](#area-stacking).
 
 **Handle gaps and noise**
-:   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. See [Visualization appearance options](../lens.md#customize-visualization-appearance).
+:   For sparse data, configure **Missing values** and **Line interpolation** to avoid misleading gaps or sharp edges. Check the [Visualization appearance options](../lens.md#customize-visualization-appearance).
 
 **Use color purposefully**
 :   Apply colors to highlight important data or patterns. Avoid using too many colors that might distract from the data. You can also assign [consistent colors to key categories](../lens.md#assign-colors-to-terms).
 
 **Label clearly**
-:   Provide a descriptive title and axis labels so users can interpret trends quickly.
+:   Provide a descriptive title and axis labels that clearly communicate what the chart shows. For example, mention the metric being visualized ("Average Response Time") and reference the time period when relevant ("Dec 8-16, 2025").
 
-Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.
+Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.  
 :::::
 
 :::::{step} Save the chart
