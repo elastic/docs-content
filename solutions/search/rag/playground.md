@@ -102,7 +102,7 @@ To use Playground, you’ll need the following:
 
 You can also use locally hosted LLMs that are compatible with the OpenAI SDK. Once you’ve set up your LLM, you can connect to it using the OpenAI connector. Refer to the following for examples:
 
-* [Using LM Studio](../../security/ai/connect-to-own-local-llm.md)
+* [Using LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md)
 * [LocalAI with `docker-compose`](https://www.elastic.co/search-labs/blog/localai-for-text-embeddings)
 
 ::::
