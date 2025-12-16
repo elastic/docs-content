@@ -15,10 +15,6 @@ products:
 
 Use the topics in this section to troubleshoot issues with the EDOT Collector.
 
-:::{tip}
-If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, keep in mind that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
-:::
-
 If you're not sure where to start, review the Collector's logs for error messages and validate your configuration using the `--dry-run` option. For more detailed diagnostics, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md).
 
 ## Resource issues

@@ -24,10 +24,6 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 * An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
 
-:::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
-:::
-
 :::
 
 :::{tab-item} {{serverless-short}}
@@ -36,10 +32,6 @@ EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-ag
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
-
-:::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
-:::
 
 :::
 ::::

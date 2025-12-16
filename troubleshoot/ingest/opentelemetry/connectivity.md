@@ -15,11 +15,6 @@ products:
 
 Connectivity problems occur when the EDOT SDKs or the EDOT Collector can't reach Elastic. Even with correct proxy settings, network restrictions such as blocked ports or firewalls can prevent data from flowing.
 
-:::{tip}
-If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, keep in mind that this flow is not supported. Send data to an [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
-:::
-
-
 ## Symptoms
 
 You might see one or more of the following error messages:

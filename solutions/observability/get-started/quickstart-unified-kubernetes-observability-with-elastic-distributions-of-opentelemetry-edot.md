@@ -38,10 +38,6 @@ For a more detailed description of the components and advanced configuration, re
 * [Helm](https://helm.sh/docs/intro/install/).
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
 
-:::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
-:::
-
 :::
 
 :::{tab-item} {{serverless-short}}
@@ -53,12 +49,7 @@ EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-ag
 * [Helm](https://helm.sh/docs/intro/install/).
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
 
-:::{important}
-EDOT SDKs are tested and supported only with [EDOT Collector Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 :::
-
-:::
-
 ::::
 
 ## Collect your data [_collect_your_data_2]
