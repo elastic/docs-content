@@ -27,6 +27,20 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.2.3 [elastic-security-9.2.3-release-notes]
+
+### Features and enhancements [elastic-security-9.2.3-features-enhancements]
+* Shows session view in full height [#245888]({{kib-pull}}245888).
+* Shows analyzer in full height [#245857]({{kib-pull}}245857).
+* Hardens {elastic defend} against cloud filter rebinding.
+* Adds `process.group_leader.pid` and `process.session_leader.pid` to {elastic-defend} MacOS process exec events.
+* Improves general system responsiveness while {elastic-defend} is installed.
+* Reduces the number of I/O operations performed by {elastic-defend} for file event enrichment.  This reduction is more pronounced when Ransomware Protection is not in use.
+
+### Fixes [elastic-security-9.2.3-fixes]
+* Standardizes how to log errors [#245030]({{kib-pull}}245030).
+* Fixes a bug for {elastic-defend} on Linux, where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
+
 ## 9.2.2 [elastic-security-9.2.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.2.2-features-enhancements]
