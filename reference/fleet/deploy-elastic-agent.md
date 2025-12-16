@@ -323,5 +323,5 @@ After deploying {{agent}}, you can:
 
 * [Manage {{agent}}s in {{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md) to monitor and update agent configurations
 * [Monitor {{agent}}](/reference/fleet/monitor-elastic-agent.md) to ensure it's running correctly
-* [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md) to newer versions
+* [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md) to later versions
 * Review [{{agent}} environment variables](/reference/fleet/agent-environment-variables.md) (for containerized deployments)
