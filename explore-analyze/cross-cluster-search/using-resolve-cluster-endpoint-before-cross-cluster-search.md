@@ -14,7 +14,7 @@ You can use the [`_resolve/cluster`](https://www.elastic.co/docs/api/doc/elastic
 
 You may want to exclude a cluster or index from a search when:
 
-1. A remote cluster is unavailable and configured with `skip_unavailable`=`false`. Executing a {{ccs}} under those conditions will cause [the entire search to fail](/solutions/search/cross-cluster-search.md#cross-cluster-search-failures).
+1. A remote cluster is unavailable and configured with `skip_unavailable`=`false`. Executing a {{ccs}} under those conditions will cause [the entire search to fail](/explore-analyze/cross-cluster-search.md#cross-cluster-search-failures).
 2. A cluster has no matching indices, aliases or data streams for the index expression, or your user does not have permissions to search them. For example, if your index expression is `logs*,remote1:logs*` and the `remote1` cluster has no matching indices, that cluster will return no results if included in a {{ccs}}.
 3. The index expression, combined with any query parameters you specify, might trigger exceptions. In these cases, the "error" field in the `_resolve/cluster` response will be present. This is also where security/permission errors will be shown.
 4. A remote cluster is running an older version that does not support features needed for your search.
