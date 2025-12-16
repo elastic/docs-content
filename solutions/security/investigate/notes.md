@@ -22,7 +22,7 @@ Incorporate notes into your investigative workflows to coordinate responses, con
 
 ## Grant access to notes [notes-privileges]
 
-You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**. 
+You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**.
 
 ## View and add notes to alerts and events [notes-alerts-events]
 
