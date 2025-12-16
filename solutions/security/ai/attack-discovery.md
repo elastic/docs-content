@@ -28,7 +28,7 @@ To use Attack Discovery, your role needs specific privileges.
 
 :::{applies-item} { "stack": "ga 9.0" }
 
-Set **Attack Discovery** to `All`.
+Ensure your role has `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature.
 
 ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
@@ -36,11 +36,13 @@ Set **Attack Discovery** to `All`.
 
 :::{applies-item} { "stack": "ga 9.1"}
 
-* Set **Attack Discovery** to `All`.
+Ensure your role has:
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature.
 
     ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
-* Set your role's access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
+* The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
 
 | Action | Indices | {{es}} privileges |
 |---------|---------|--------------------------|
@@ -51,11 +53,13 @@ Set **Attack Discovery** to `All`.
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 
-* Set **Attack Discovery** to `All` and (at minimum) **Rules** to `Read`.
+Ensure your role has:
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature and at least `Read` for the **Security > Rules** {{kib}} feature .
 
     ![attack-discovery-rules-rbac](/solutions/images/attack-discovery-rules-rbac.png "elasticsearch =60%x60%")
 
-* Set your role's access to specific {{es}} indices, based on what you want to do with Attack Discovery alerts:
+* The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
 
 | Action | Indices | {{es}} privileges |
 |---------|---------|--------------------------|
