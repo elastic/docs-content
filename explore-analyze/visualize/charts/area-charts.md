@@ -82,7 +82,7 @@ Use stacking to show how categories contribute to a total over time.
 
      ![Example Lens area chart percentage mode](../../images/kibana-area-percentage.png " =70%")
 
-4. Optionally, set **Rank by** for the breakdown dimension to control stacking order.
+4. Optionally, in the **Beakdown** settings, you can set **Rank by** to specify the dimension the top values are ranked by.
 
 ### Compare current versus previous period with time shift [area-timeshift]
 
@@ -119,7 +119,7 @@ Customize your area chart to match the information you need and how you want it 
 ### Vertical axis settings [vertical-axis-settings]
 
 **Data**
-:   To represent the metrics or values you want to visualize, you can use quick functions like `Average`, `Count`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
+:   To represent the metrics or values you want to visualize, you can use quick functions like Average, Count, Percentile, Counter rate, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples.
 
     :::{include} ../../_snippets/area-vertical-axis-advanced-settings.md
     :::
@@ -146,15 +146,17 @@ You can optionally split your series by a categorical field to create multiple s
    ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
 **Response code over time with annotations**
-:   Visualizing HTTP response codes over time, highlighting the proportion of success, client error, and server error responses, with annotations for key events:
-   - **Horizontal axis**: `@timestamp` (Date histogram)
-   - **Vertical axis**: `Count of records`
-   - **Breakdown**: 
-     - **Success/Redirection**`response.keyword >= 200 and response.keyword < 400`
-     - **Client Error**`response.keyword >= 400 and response.keyword < 500`
-     - **Server Error**`response.keyword >= 500`
-   - **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
-   - **Annotation Query**: `tags:error AND tags:security`
+
+:   Visualizing HTTP response codes over time, highlighting the proportion of success, client error, and server error responses, with annotations for key events: 
+
+* **Horizontal axis**: `@timestamp` (Date histogram)
+* **Vertical axis**: `Count of records`
+  * **Breakdown**: 
+    * **Success/Redirection**`response.keyword >= 200 and response.keyword < 400`
+    * **Client Error**`response.keyword >= 400 and response.keyword < 500`
+    * **Server Error**`response.keyword >= 500`
+  * **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
+    * **Annotation Query**: `tags:error AND tags:security`
 
    ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
 
