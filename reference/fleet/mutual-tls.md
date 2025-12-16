@@ -75,10 +75,6 @@ During {{agent}} installation on premise use the following options:
 | `--elastic-agent-cert-key` | {{agent}} certificate key to present to {{fleet-server}} |
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
 
-::::{note}
-For comprehensive information about all {{agent}} mTLS configuration options, including environment variables and policy vs CLI precedence, refer to [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md).
-::::
-
 
 ### {{fleet-server}} settings [_fleet_server_settings]
 
@@ -92,10 +88,6 @@ During {{fleet-server}} installation on-premise {{fleet-server}} authenticates w
 | `--certificate-authorities` | List of CA certificates that are trusted when {{agent}} connects to {{fleet-server}} and when {{fleet-server}} validates the {{agent}} identity. |
 | `--fleet-server-cert` | {{fleet-server}} certificate to present to {{agents}} during authentication |
 | `--fleet-server-cert-key` | {{fleet-server}}'s private certificate key used to decrypt the certificate |
-
-::::{note}
-For comprehensive information about all {{fleet-server}} mTLS configuration options, including environment variables and policy vs CLI precedence, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md).
-::::
 
 
 ### {{fleet}} settings: [_fleet_settings]
@@ -172,10 +164,6 @@ During {{agent}} installation on premise use the following options:
 | `--elastic-agent-cert-key` | {{agent}}'s private certificate key used to decrypt the certificate |
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
 
-::::{note}
-For comprehensive information about all {{agent}} mTLS configuration options, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
-::::
-
 
 ## {{fleet-server}} on-premise and {{ech}} [mutual-tls-on-premise-hosted-es]
 
@@ -204,10 +192,6 @@ During {{agent}} installation on premise use the following options, similar to [
 | `--elastic-agent-cert` | {{agent}} certificate to present to {{fleet-server}} during authentication |
 | `--elastic-agent-cert-key` | {{agent}}'s private certificate key used to decrypt the certificate |
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
-
-::::{note}
-For comprehensive information about all {{agent}} mTLS configuration options, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
-::::
 
 
 ### {{fleet-server}} settings [_fleet_server_settings_2]

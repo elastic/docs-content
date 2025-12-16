@@ -178,11 +178,6 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
             The following command installs {{agent}} as a service, enrolls it in the {{fleet-server}} policy, and starts the service.
 
-            ::::{note}
-            If you’re using DEB or RPM, or already have the {{agent}} installed, use the `enroll` command along with the following options, then start the service as described in [Start {{agent}}](/reference/fleet/start-stop-elastic-agent.md#start-elastic-agent-service).
-            ::::
-
-
             ```shell
             sudo ./elastic-agent install \
                --url=https://192.0.2.1:8220 \
@@ -202,10 +197,6 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
                --fleet-server-client-auth=required
             ```
 
-            ::::{tip}
-            For detailed information about all available CLI flags and their purposes, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md). This guide provides comprehensive configuration information organized by connection type (Fleet Server to Elasticsearch, Elastic Agent to Fleet Server).
-            ::::
-
             What happens if you enroll {{fleet-server}} without specifying certificates?
             If the certificates are managed by your organization and installed at the system level, they will be used to encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}.
             If system-level certificates don’t exist, {{fleet-server}} automatically generates self-signed certificates. Traffic between {{fleet-server}} and {{agent}}s over HTTPS is encrypted, but the certificate chain cannot be verified. Any {{agent}}s enrolling in {{fleet-server}} will need to pass the `--insecure` flag to acknowledge that the certificate chain is not verified.
@@ -223,10 +214,6 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
           --enrollment-token=<string> \
           --certificate-authorities=/path/to/ca.crt
         ```
-
-        ::::{tip}
-        For comprehensive information about all available CLI flags and environment variables for {{agent}} enrollment, including mTLS configuration, refer to [How to deploy Elastic Agent](/reference/fleet/deploy-elastic-agent.md).
-        ::::
 
         Don't have an enrollment token? On the **Agents** tab in {{fleet}}, select **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
 
