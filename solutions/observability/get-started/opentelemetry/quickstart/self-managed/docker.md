@@ -48,7 +48,7 @@ DOCKER_SOCK=/var/run/docker.sock
 ELASTIC_AGENT_OTEL=true
 COLLECTOR_CONTRIB_IMAGE=elastic/elastic-agent:{{version.edot_collector}}
 ELASTIC_API_KEY=<your_api_key_here>
-ELASTIC_ENDPOINT=<your_endpoint_here>
+ELASTIC_OTLP_ENDPOINT=<your_endpoint_here>
 OTEL_COLLECTOR_CONFIG=/path/to/otel-collector-config.yml
    ```
 ::::
@@ -78,7 +78,7 @@ services:
       - HOST_FILESYSTEM
       - ELASTIC_AGENT_OTEL
       - ELASTIC_API_KEY
-      - ELASTIC_ENDPOINT
+      - ELASTIC_OTLP_ENDPOINT
       - STORAGE_DIR=/usr/share/elastic-agent
 ```
 ::::
