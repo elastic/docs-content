@@ -20,9 +20,7 @@ To configure email notifications for your {{ecloud}} billing:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From a deployment or project on the home page, select **Manage**.
 3. From the lower navigation menu, select **Billing and Subscription**.
-4. Follow the steps to set up or change the types of email notifications you'd like to receive:
-    * [Configure budget emails](#configure-budget-emails)
-    * [Configure usage summmary emails](#configure-usage-summary-emails)
+4. Follow the steps in [Configure budget emails](#configure-budget-emails) to set up the email notifications you'd like to receive.
 
 Note that [Credit consumption emails](#configure-credit-consumption-emails) are also shown on the **Billing and Subscription** page, but these notifications are not configurable.
 
@@ -32,10 +30,10 @@ Budget alerts can be sent when your organization's total monthly usage exceeds a
 
 To create a budget and configure budget emails:
 
-1. Open the **Notifications** page.
+1. Open the **Budgets and notifications** page.
 2. Select **Add budget** to specify your budget details:
     1. Give your budget a name.
-    1. Specify a target value in [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md) (ECU). The amount you spend will be tracked against this target.
+    1. Specify a target value in [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md) (ECU). The amount you spend is tracked against this target.
     
     The budget scope is automatically fixed to your entire {{ecloud}} organization. Alert emails are configured automatically based on the configured budget:
      - A warning email is sent when the organization's usage reaches 75% of the specified target amount.
@@ -44,18 +42,7 @@ To create a budget and configure budget emails:
 1. Click **Create budget** to confirm your settings.
 1. Enable **Budget email**.
 
-After creating a budget, you can navigate to the **Notifications** page at any time to view or update it, and to access the used versus total remaining ECU in your organization's budget.
-
-## Configure usage summmary emails [configure-usage-summary-emails]
-
-You can select to have a summary of your organization's usage sent on a biweekly basis. Notifications contain details about your organization's usage for the previous month as well as estimated costs.
-
-To configure usage summary emails:
-
-1. Open the **Notifications** page.
-1. Enable **Usage summary email**.
-
-The notifications are sent on the second Friday of each month.
+After creating a budget, you can navigate to the **Budgets and notifications** page at any time to view or update it, and to access the used versus total remaining ECU in your organization's budget.
 
 ## Credit consumption emails [configure-credit-consumption-emails]
 
