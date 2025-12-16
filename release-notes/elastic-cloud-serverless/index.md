@@ -51,7 +51,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds privileges to the {{kib}} System role to manage internal indexes in support of {{elastic-defend}} features [#138993]({{es-pull}}138993)
 * Optimizes native bulk dot product scoring for Int7 [#139069]({{es-pull}}139069)
 * Adds Azure OpenAI chat completion support [#138726]({{es-pull}}138726)
-* Adds NVIDIA support to the Inference Plugin [#132388]({{es-pull}}132388)
+* Adds NVIDIA support to the inference plugin [#132388]({{es-pull}}132388)
 * Adds TDigest histogram as a metric [#139247]({{es-pull}}139247)
 * Adds a `TOP_SNIPPETS` function to return the best snippets for a field [#138940]({{es-pull}}138940)
 * Takes `TOP_SNIPPETS` out of snapshot [#139272]({{es-pull}}139272)
