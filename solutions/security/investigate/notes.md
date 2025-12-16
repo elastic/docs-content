@@ -24,12 +24,6 @@ Incorporate notes into your investigative workflows to coordinate responses, con
 
 You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**. 
 
-::::{note}
-Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) to learn about other available SIEM features and how to give your role access to them.
-::::
-
-
-
 ## View and add notes to alerts and events [notes-alerts-events]
 
 Open the alert or event details flyout to access the **Notes** tab, where you can view existing notes and add new ones. To quickly open the tab, click the **Add note** action (![Add note action](/solutions/images/security-create-note-icon.png "title =20x20")) in the Alerts or Events table. Then, enter a note into the text box, and click **Add note** to create it.

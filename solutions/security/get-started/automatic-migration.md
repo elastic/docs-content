@@ -21,7 +21,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 :::{applies-item} { "stack": "ga 9.0" }
 **Requirements**
 
-* The `SIEM migrations: All` Security sub-feature privilege.
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
@@ -33,8 +33,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
 
-* The `SIEM migrations: All` Security sub-feature privilege.
-* The `Rules: All` Security sub-feature privilege.
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature and at least `Read` for the **Security > Rules** {{kib}} feature.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
