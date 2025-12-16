@@ -1,0 +1,68 @@
+---
+navigation_title: Upgrade Elasticsearch running on Docker
+applies_to:
+  deployment:
+    self: ga
+products:
+  - id: elasticsearch
+---
+
+# Upgrading the {{es}} version running on Docker
+
+You update {{es}} running in a Docker container by pulling the new Docker image and restarting the container with the new image.
+
+Docker images for {{es}} are available from the Elastic Docker registry. A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/elasticsearch/blob/master/distribution/docker).
+
+## Prepare to upgrade [prepare-to-upgrade]
+
+Upgrading your cluster can be disruptive. It is important that you [plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) and [take the necessary upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md).
+
+The following is a list of typical upgrade preparation tasks and best practices:
+
+* Always back up your data before performing an update, especially for production environments.
+* Review the {{es}} release notes for the new version to be aware of any breaking changes or required actions before or after the update.
+* If you're using custom plugins or configurations, ensure they are compatible with the new version and reapply them if necessary.
+* If you're running a cluster, you'll need to carefully plan the upgrade process to minimize downtime and ensure cluster stability. This often involves a rolling upgrade strategy.
+* When using a `docker-compose.yml` make sure to update the desired version in the configuration file or the environment variable.
+
+
+## Upgrade process [upgrade-process]
+
+1. Pull the new version of the {{es}} Docker image from Elastic's Docker registry using the `docker pull` command. Replace `<x.y.z>` with the version number you want to upgrade to.
+
+    ```shell
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:<x.y.z>
+    ```
+
+1. Stop the currently running {{es}} container. Replace `<container_name>` with the name or ID of your {{es}} container.
+
+    ```shell
+    docker stop <container_name>
+    ```
+
+1. After the container has stopped, remove it. Correctly mapping your data directory to a volume outside of the container ensures that your data is not deleted. Replace `<container_name>` with the name or ID of your {{es}} container.
+
+    ```shell
+    docker rm <container_name>
+    ```
+
+1. Start a new container using the new image. Use the same volume mappings and configuration settings as the old container to ensure that your data and configuration are preserved. Replace `<container_name>` with the name you want for your new container.
+
+    ```shell
+    docker run --name <container_name> -p 9200:9200 -p 9300:9300 \
+    -e "discovery.type=single-node" \
+    -v path_to_data_volume:/usr/share/elasticsearch/data \
+    -v path_to_config_volume:/usr/share/elasticsearch/config \
+    docker.elastic.co/elasticsearch/elasticsearch:<x.y.z>
+    ```
+
+    Adjust the `-p` flags for port mappings, `-e` for environment variables, and `-v` for volume mappings as needed based on your setup.
+
+1. After the new container starts, verify that {{es}} is running the new version by querying the root URL of your {{es}} instance. 
+
+    ```shell
+    curl http://localhost:9200
+    docker.elastic.co/elasticsearch/elasticsearch:<x.y.z>
+    ```
+
+    In the response, check that  `<x.y.z>` represents the {{es}} version number you have upgraded to.
