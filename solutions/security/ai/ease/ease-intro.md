@@ -79,5 +79,5 @@ To ingest third-party security data:
 
 ## Select a model
 
-EASE uses LLM connectors to enable its AI features such as Attack Discovery and AI Assistant. The Elastic Managed LLM is enabled by default. You can also [configure your own third-party LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks. 
+EASE uses LLM connectors to enable its AI features such as Attack Discovery and AI Assistant. The Elastic Managed LLM is enabled by default. You can also [configure your own third-party LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks. 
 

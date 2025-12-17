@@ -165,10 +165,25 @@ toc:
           - file: scripting/painless-lab.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
+  - file: cross-cluster-search.md
+    children:
+      - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
   - file: ai-features.md
     children:
       - file: ai-features/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
+      - file: ai-features/llm-guides/llm-connectors.md
+        children:
+          - file: ai-features/llm-guides/connect-to-azure-openai.md
+          - file: ai-features/llm-guides/connect-to-amazon-bedrock.md
+          - file: ai-features/llm-guides/connect-to-openai.md
+          - file: ai-features/llm-guides/connect-to-google-vertex.md
+          - file: ai-features/llm-guides/local-llms-overview.md
+            children:
+              - file: ai-features/llm-guides/connect-to-lmstudio-observability.md
+              - file: ai-features/llm-guides/connect-to-lmstudio-security.md
+              - file: ai-features/llm-guides/connect-to-vLLM.md
+      - hidden: ai-features/ai-agent-or-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
