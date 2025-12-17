@@ -88,7 +88,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 ## ECE service containers per host role(s) [ece-service-containers]
 
-Each {{ece}} service runs as a dedicated container. These containers are automatically deployed based on the roles assigned to each ECE host. The following table lists the containers on ECE hosts, along with the host roles that include each container.:
+Each {{ece}} service runs as a dedicated container. These containers are automatically deployed based on the roles assigned to each ECE host. The following table lists the containers on ECE hosts, along with the host roles that include each container:
 
 | Container                                         | Host roles    | Description |
 |---|---|---|
