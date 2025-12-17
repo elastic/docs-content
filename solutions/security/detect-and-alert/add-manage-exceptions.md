@@ -33,6 +33,39 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
 ::::
 
+## Requirements [exceptions-requirements]
+
+To use exceptions ensure your role has the appropriate access. 
+
+### Exceptions requirements
+
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.0" }
+
+**Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Security** feature. 
+
+:::
+
+:::{applies-item} { "stack": "ga 9.3" }
+
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Rules** {{kib}} feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` {{kib}} privileges for the **Security > Rules** {{kib}} feature.
+
+:::
+
+:::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
+
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Rules** {{kib}} feature and `Read` for the **Security > Rules > Exceptions** subfeature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs `All` {{kib}} privileges for the **Security > Rules** {{kib}} feature and `All` for the **Security > Rules > Exceptions** subfeature.
+:::
+
+::::
+
+### {{elastic-endpoint}} exceptions requirements 
+
+- **View only access**: To view {{elastic-endpoint}} exceptions, your role needs at least `Read` {{kib}} privileges for the **Security > Security > Endpoint Exceptions** subfeature. 
+- **Manage access**: To create and manage {{elastic-endpoint}} exceptions, your role needs `All` {{kib}} privileges for the **Security > Security > Endpoint Exceptions** subfeature. 
 
 
 ## Add exceptions to a rule [detection-rule-exceptions]
