@@ -9,7 +9,21 @@
 # The docs
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
+
 /explore-analyze/                           @elastic/core-docs @elastic/experience-docs
+/explore-analyze/alerts-cases/              @elastic/experience-docs
+/explore-analyze/dashboards/                @elastic/experience-docs
+/explore-analyze/discover/                  @elastic/experience-docs
+/explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/experience-docs
+/explore-analyze/find-and-organize/         @elastic/experience-docs
+/explore-analyze/machine-learning/          @elastic/developer-docs @elastic/experience-docs
+/explore-analyze/query-filter/              @elastic/developer-docs @elastic/experience-docs
+/explore-analyze/report-and-share/          @elastic/experience-docs
+/explore-analyze/scripting/                 @elastic/admin-docs
+/explore-analyze/cross-cluster-search/      @elastic/developer-docs
+/explore-analyze/transforms/                @elastic/developer-docs
+/explore-analyze/visualize/                 @elastic/experience-docs
+
 /extend/                                    @elastic/core-docs
 /get-started/                               @elastic/core-docs @elastic/project-docs
 
@@ -64,7 +78,7 @@
 /troubleshoot/security/                     @elastic/ski-docs
 
 # Raw migrated files
-/raw-migrated-files/                        @elastic/docs
+/raw-migrated-files/                        @elastic/admin-docs
 
 # Legacy serverless docs
 /serverless/                                @elastic/admin-docs

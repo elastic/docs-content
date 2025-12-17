@@ -42,13 +42,13 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 
     ```sh subs=true
     docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}} REGISTRY/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
-    docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.2 REGISTRY/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
-    docker tag docker.elastic.co/cloud-release/kibana-cloud:8.18.2 REGISTRY/cloud-release/kibana-cloud:{{ece-docker-images-8}}
-    docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.2 REGISTRY/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
-    docker tag docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.2 REGISTRY/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
-    docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.1 REGISTRY/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
-    docker tag docker.elastic.co/cloud-release/kibana-cloud:9.0.1 REGISTRY/cloud-release/kibana-cloud:{{ece-docker-images-9}}
-    docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.1 REGISTRY/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
+    docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}} REGISTRY/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-8}}
+    docker tag docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-8}} REGISTRY/cloud-release/kibana-cloud:{{ece-docker-images-8}}
+    docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}} REGISTRY/cloud-release/elastic-agent-cloud:{{ece-docker-images-8}}
+    docker tag docker.elastic.co/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}} REGISTRY/cloud-release/enterprise-search-cloud:{{ece-docker-images-8}}
+    docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}} REGISTRY/cloud-release/elasticsearch-cloud-ess:{{ece-docker-images-9}}
+    docker tag docker.elastic.co/cloud-release/kibana-cloud:{{ece-docker-images-9}} REGISTRY/cloud-release/kibana-cloud:{{ece-docker-images-9}}
+    docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}} REGISTRY/cloud-release/elastic-agent-cloud:{{ece-docker-images-9}}
     ```
 
 4. Push the Docker images to your private Docker registry, using the same tags from the previous step. Replace `REGISTRY` with your actual registry URL, for example `my.private.repo:5000`:

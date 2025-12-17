@@ -15,7 +15,7 @@ products:
 The examples that use the `scripted_metric` aggregation are not supported on {{es}} Serverless.
 ::::
 
-These examples demonstrate how to use Painless in {{transforms}}. You can learn more about the Painless scripting language in the [Painless guide](elasticsearch://reference/scripting-languages/painless/painless.md).
+These examples demonstrate how to use Painless in transforms. You can learn more about the Painless scripting language in the [Painless guide](elasticsearch://reference/scripting-languages/painless/painless.md).
 
 * [Getting top hits by using scripted metric aggregation](#painless-top-hits)
 * [Getting time features by using aggregations](#painless-time-features)
@@ -26,14 +26,14 @@ These examples demonstrate how to use Painless in {{transforms}}. You can learn 
 
 ::::{note}
 
-* While the context of the following examples is the {{transform}} use case, the Painless scripts in the snippets below can be used in other {{es}} search aggregations, too.
-* All the following examples use scripts, {{transforms}} cannot deduce mappings of output fields when the fields are created by a script. {{transforms-cap}} don’t create any mappings in the destination index for these fields, which means they get dynamically mapped. Create the destination index prior to starting the {{transform}} in case you want explicit mappings.
+* While the context of the following examples is the transform use case, the Painless scripts in the snippets below can be used in other {{es}} search aggregations, too.
+* All the following examples use scripts, transforms cannot deduce mappings of output fields when the fields are created by a script. Transforms don’t create any mappings in the destination index for these fields, which means they get dynamically mapped. Create the destination index prior to starting the transform in case you want explicit mappings.
 
 ::::
 
 ## Getting top hits by using scripted metric aggregation [painless-top-hits]
 
-This snippet shows how to find the latest document, in other words the document with the latest timestamp. From a technical perspective, it helps to achieve the function of a [Top hits](elasticsearch://reference/aggregations/search-aggregations-metrics-top-hits-aggregation.md) by using scripted metric aggregation in a {{transform}}, which provides a metric output.
+This snippet shows how to find the latest document, in other words the document with the latest timestamp. From a technical perspective, it helps to achieve the function of a [Top hits](elasticsearch://reference/aggregations/search-aggregations-metrics-top-hits-aggregation.md) by using scripted metric aggregation in a transform, which provides a metric output.
 
 ::::{important}
 This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.
@@ -178,7 +178,7 @@ You can also use the power of [stored scripts](https://www.elastic.co/docs/api/d
 
 ## Getting time features by using aggregations [painless-time-features]
 
-This snippet shows how to extract time based features by using Painless in a {{transform}}. The snippet uses an index where `@timestamp` is defined as a `date` type field.
+This snippet shows how to extract time based features by using Painless in a transform. The snippet uses an index where `@timestamp` is defined as a `date` type field.
 
 ```js
 "aggregations": {
@@ -264,7 +264,7 @@ PUT _transform/data_log
 
 ## Counting HTTP responses by using scripted metric aggregation [painless-count-http]
 
-You can count the different HTTP response types in a web log data set by using scripted metric aggregation as part of the {{transform}}. You can achieve a similar function with filter aggregations, check the [Finding suspicious client IPs](transform-examples.md#example-clientips) example for details.
+You can count the different HTTP response types in a web log data set by using scripted metric aggregation as part of the transform. You can achieve a similar function with filter aggregations, check the [Finding suspicious client IPs](transform-examples.md#example-clientips) example for details.
 
 The example below assumes that the HTTP response codes are stored as keywords in the `response` field of the documents.
 
@@ -303,7 +303,7 @@ This example uses a `scripted_metric` aggregation which is not supported on {{es
 }
 ```
 
-1. The `aggregations` object of the {{transform}} that contains all aggregations.
+1. The `aggregations` object of the transform that contains all aggregations.
 2. Object of the `scripted_metric` aggregation.
 3. This `scripted_metric` performs a distributed operation on the web log data to count specific types of HTTP responses (error, success, and other).
 4. The `init_script` creates a `responses` array in the `state` object with three properties (`error`, `success`, `other`) with long data type.
@@ -313,7 +313,7 @@ This example uses a `scripted_metric` aggregation which is not supported on {{es
 
 ## Comparing indices by using scripted metric aggregations [painless-compare]
 
-This example shows how to compare the content of two indices by a {{transform}} that uses a scripted metric aggregation.
+This example shows how to compare the content of two indices by a transform that uses a scripted metric aggregation.
 
 ::::{important}
 This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.

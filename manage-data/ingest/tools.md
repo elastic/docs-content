@@ -30,7 +30,7 @@ products:
 % - [x] https://www.elastic.co/customer-success/data-ingestion
 % - [x] https://github.com/elastic/ingest-docs/pull/1373
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+% Internal links rely on the following IDs being on this page (for example, as a heading ID, paragraph ID, and so on):
 % These IDs are from content that I'm not including on this current page. I've resolved them by changing the internal links to anchor links where needed. - Wajiha
 
 $$$supported-outputs-beats-and-agent$$$
@@ -48,8 +48,8 @@ Refer to our [Ingestion](/manage-data/ingest.md) overview for some guidelines to
 | Integrations | Ingest data using a variety of Elastic integrations. | [Elastic Integrations](integration-docs://reference/index.md) |
 | File upload | Upload data from a file and inspect it before importing it into {{es}}. | [Upload data files](/manage-data/ingest/upload-data-files.md) |
 | APIs  | Ingest data through code by using the APIs of one of the language clients or the {{es}} HTTP APIs. | [Document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document) |
-| OpenTelemetry | Collect and send your telemetry data to Elastic Observability | [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md). |
-| Fleet and Elastic Agent | Add monitoring for logs, metrics, and other types of data to a host using Elastic Agent, and centrally manage it using Fleet. | [Fleet and {{agent}} overview](/reference/fleet/index.md) <br> [{{fleet}} and {{agent}} restrictions (Serverless)](/reference/fleet/fleet-agent-serverless-restrictions.md) <br> [{{beats}} and {{agent}} capabilities](/reference/fleet/beats-agent-comparison.md)||
+| OpenTelemetry | Collect and send your telemetry data to Elastic Observability | [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) |
+| Fleet and Elastic Agent | Add monitoring for logs, metrics, and other types of data to a host using Elastic Agent, and centrally manage it using Fleet. | [Fleet and {{agent}} overview](/reference/fleet/index.md) <br> [{{fleet}} and {{agent}} restrictions (Serverless)](/reference/fleet/fleet-agent-serverless-restrictions.md) <br> [{{beats}} and {{agent}} capabilities](/reference/fleet/beats-agent-comparison.md)|
 | {{elastic-defend}} | {{elastic-defend}} provides organizations with prevention, detection, and response capabilities with deep visibility for EPP, EDR, SIEM, and Security Analytics use cases across Windows, macOS, and Linux operating systems running on both traditional endpoints and public cloud environments. | [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md) |
 | {{ls}} | Dynamically unify data from a wide variety of data sources and normalize it into destinations of your choice with {{ls}}. | [Logstash](logstash://reference/index.md) |
 | {{beats}} | Use {{beats}} data shippers to send operational data to Elasticsearch directly or through Logstash. | [{{beats}}](beats://reference/index.md) |

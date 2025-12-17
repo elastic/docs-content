@@ -110,7 +110,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 * Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
 ::::
 
 ::::{tab-item} {{stack}}
@@ -131,7 +131,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 * Enable **Include hidden indices** to view the full set of indices, including backing indices for [data streams](/manage-data/data-store/data-streams.md).
 
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) or a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps).
 ::::
 :::::
 
@@ -152,6 +152,12 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
 * To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is not managed by an ILM policy.
 * To view more information about a data stream including it's lifecycle settings, click the stream's name.
+
+:::{admonition} Streams
+:applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
+
+Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for common data management tasks in {{kib}}, including tasks such as [modifying data retention](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#data-retention-streams) values.
+:::
 
 ### Manage index templates [index-management-manage-index-templates]
 

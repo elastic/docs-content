@@ -59,7 +59,7 @@ The monitoring cluster should be running the same version, or a newer one, than 
 ::::
 
 ::::{step} Upgrade remote clusters first
-If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
+If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../explore-analyze/cross-cluster-search.md).
 
 If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
@@ -148,6 +148,12 @@ If you have `.ml-anomalies-*` anomaly detection result indices created in {{es}}
 
 ::::{step} Manage old transform indices
 If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.x. For more information, refer to [Migrate transform destination indices](#transform-migration).
+::::
+
+::::{step} Migrate Enterprise Search functionality
+In {{stack}} 9.0.0 and later, Enterprise Search is no longer available, and it must be removed before upgrading from 8.x.
+
+If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
 ::::
 
 :::::

@@ -12,11 +12,21 @@ products:
 
 To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1 and Serverless, you can use {{kib}} to generate reports on a recurring schedule and share them with a list of emails that you specify.
 
+:::{note}
+:applies_to: {stack: ga 9.1, serverless: unavailable}
+Report generation requests are authenticated by API keys instead of session cookies. There are several key differences between the authentication methods. API keys capture your role privileges, whereas session cookie are based on your user credentials. API keys are also longer-lived, compared to session cookies, which have a shorter lifespan.
+
+If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+:::
+
 ## Create a POST URL [create-a-post-url]
 
 Create the POST URL that triggers a report to generate PDF and CSV reports.
 
 ### PDF and PNG reports [pdf-png-post-url]
+```{applies_to}
+serverless: unavailable
+```
 
 To create the POST URL for PDF reports:
 
@@ -177,7 +187,7 @@ Save time by setting up a recurring task that automatically generates reports an
 
 ### Prerequisites [scheduled-reports-reqs]
 
-* To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
+* {applies_to}`serverless: unavailable` To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
@@ -235,13 +245,27 @@ Save time by setting up a recurring task that automatically generates reports an
    If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
    ::::
 
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3`: (Optional) Enter additional details for email notifications:
+
+    * **Cc**: Enter one or more email addresses. Recipients will get a copy of the report, be included on all replies, and have view access to all other recipients' addresses.
+    * **Bcc**: Enter one or more email addresses. Recipients will get a copy of the report, but won't be included on all replies and won't have view access to the other recipients' addresses.
+    * **Subject**: Keep the default email subject, or enter your own. 
+    * **Message**: Keep the default email message, or enter your own. To format and structure your message text, use Markdown.
+
+       ::::{note} 
+       In the subject and message, you can also use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerts-cases/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
+       ::::
+
 6. Click **Schedule exports** to save the schedule. 
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-::::{important} 
-Note that you cannot edit or delete a schedule after you create it. To stop the schedule from running, you must disable it. Disabling a schedule permanently stops it from running. To restart it, you must create a new schedule. 
-::::
+### Stop scheduled reports [stop-scheduled-reports]
+
+To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
+
+- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
+- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 

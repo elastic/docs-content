@@ -15,48 +15,70 @@ toc:
         children:
           - file: search/search-pipelines.md
       - file: search/search-approaches.md
-      - file: search/full-text.md
         children:
-          - file: search/full-text/how-full-text-works.md
-          - file: search/full-text/search-with-synonyms.md
+          - file: search/full-text.md
             children:
-              - file: search/full-text/create-update-synonyms-api-example.md
-          - file: search/full-text/text-analysis-during-search.md
-          - file: search/full-text/search-relevance.md
-            children:
-              - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
-              - file: search/full-text/search-relevance/consistent-scoring.md
-              - file: search/full-text/search-relevance/static-scoring-signals.md
-      - file: search/ai-search/ai-search.md
-        children:
-          - file: search/vector.md
-            children:
-              - file: search/vector/dense-vector.md
+              - file: search/full-text/how-full-text-works.md
+              - file: search/full-text/search-with-synonyms.md
                 children:
-                  - file: search/vector/knn.md
-                  - file: search/vector/bring-own-vectors.md
-              - file: search/vector/sparse-vector.md
-              - file: search/vector/dense-versus-sparse-ingest-pipelines.md
-          - file: search/semantic-search.md
+                  - file: search/full-text/create-update-synonyms-api-example.md
+              - file: search/full-text/text-analysis-during-search.md
+              - file: search/full-text/search-relevance.md
+                children:
+                  - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
+                  - file: search/full-text/search-relevance/consistent-scoring.md
+                  - file: search/full-text/search-relevance/static-scoring-signals.md
+          - file: search/ai-search/ai-search.md
             children:
-              - file: search/semantic-search/semantic-search-semantic-text.md
-              - file: search/semantic-search/semantic-search-inference.md
-              - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
-              - file: search/semantic-search/cohere-es.md
-          - file: search/using-openai-compatible-models.md
-      - hidden: search/elastic-agent-builder.md
-      - hidden: search/agent-builder/get-started.md
-      - hidden: search/agent-builder/models.md
-      - hidden: search/agent-builder/chat.md
-      - hidden: search/agent-builder/agent-builder-agents.md
-      - hidden: search/agent-builder/tools.md
-      - hidden: search/agent-builder/tools/esql-tools.md
-      - hidden: search/agent-builder/tools/index-search-tools.md
-      - hidden: search/agent-builder/programmatic-access.md
-      - hidden: search/agent-builder/kibana-api.md
-      - hidden: search/agent-builder/mcp-server.md
-      - hidden: search/agent-builder/a2a-server.md
-      - hidden: search/agent-builder/limitations-known-issues.md
+              - file: search/vector.md
+                children:
+                  - file: search/vector/dense-vector.md
+                    children:
+                      - file: search/vector/knn.md
+                      - file: search/vector/bring-own-vectors.md
+                  - file: search/vector/sparse-vector.md
+                  - file: search/vector/dense-versus-sparse-ingest-pipelines.md
+              - file: search/semantic-search.md
+                children:
+                  - file: search/semantic-search/semantic-search-semantic-text.md
+                  - file: search/semantic-search/semantic-search-inference.md
+                  - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
+                  - file: search/semantic-search/cohere-es.md
+              - file: search/using-openai-compatible-models.md
+          - file: search/hybrid-search.md
+            children:
+              - file: search/hybrid-semantic-text.md
+          - file: search/ranking.md
+            children:
+              - file: search/ranking/semantic-reranking.md
+              - file: search/ranking/learning-to-rank-ltr.md
+                children:
+                  - file: search/ranking/learning-to-rank-model-training.md
+                  - file: search/ranking/learning-to-rank-search-usage.md
+      - file: search/querying-for-search.md
+        children:
+          - file: search/the-search-api.md
+          - file: search/async-search-api.md
+          - file: search/esql-for-search.md
+          - file: search/retrievers-overview.md
+          - file: search/search-templates.md
+      - file: search/elastic-agent-builder.md
+        children:
+          - file: search/agent-builder/get-started.md
+          - file: search/agent-builder/models.md
+          - file: search/agent-builder/chat.md
+          - file: search/agent-builder/agent-builder-agents.md
+          - file: search/agent-builder/tools.md
+            children:
+              - file: search/agent-builder/tools/esql-tools.md
+              - file: search/agent-builder/tools/index-search-tools.md
+          - file: search/agent-builder/programmatic-access.md
+            children:
+              - file: search/agent-builder/kibana-api.md
+              - file: search/agent-builder/a2a-server.md
+              - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/permissions.md
+          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
@@ -65,26 +87,6 @@ toc:
               - file: search/rag/playground-query.md
               - file: search/rag/playground-troubleshooting.md
           - file: search/mcp.md
-      - file: search/hybrid-search.md
-        children:
-          - file: search/hybrid-semantic-text.md
-      - file: search/ranking.md
-        children:
-          - file: search/ranking/semantic-reranking.md
-          - file: search/ranking/learning-to-rank-ltr.md
-            children:
-              - file: search/ranking/learning-to-rank-model-training.md
-              - file: search/ranking/learning-to-rank-search-usage.md
-      - file: search/cross-cluster-search.md
-        children:
-          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
-      - file: search/querying-for-search.md
-        children:
-          - file: search/the-search-api.md
-          - file: search/async-search-api.md
-          - file: search/esql-for-search.md
-          - file: search/retrievers-overview.md
-          - file: search/search-templates.md
       - file: search/site-or-app.md
         children:
           - file: search/site-or-app/clients.md
@@ -94,6 +96,7 @@ toc:
               - file: search/search-applications/search-application-api.md
               - file: search/search-applications/search-application-security.md
               - file: search/search-applications/search-application-client.md
+
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
       - file: search/query-rules-ui.md
@@ -101,7 +104,6 @@ toc:
     children:
       - file: observability/get-started.md
         children:
-          - file: observability/get-started/what-is-elastic-observability.md
           - file: observability/get-started/quickstarts.md
             children:
               - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
@@ -143,7 +145,6 @@ toc:
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
-              - file: observability/get-started/other-tutorials/add-data-from-splunk.md
           - file: observability/get-started/logs-essentials.md
       - file: observability/applications/index.md
         children:
@@ -355,6 +356,8 @@ toc:
               - file: observability/synthetics/support-matrix.md
               - file: observability/synthetics/encryption-security.md
           - file: observability/applications/user-experience.md
+            children: 
+              - file: observability/applications/otel-rum.md
           - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
             children:
@@ -402,6 +405,7 @@ toc:
             children:
               - file: observability/infra-and-hosts/get-started-with-system-metrics.md
               - file: observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md
+              - file: observability/infra-and-hosts/discover-metrics.md
               - file: observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md
               - file: observability/infra-and-hosts/analyze-compare-hosts.md
               - file: observability/infra-and-hosts/detect-metric-anomalies.md
@@ -458,15 +462,24 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
-          - file: observability/streams/streams.md
-            children:
-              - file: observability/streams/management/extract.md
-                children:
-                  - file: observability/streams/management/extract/date.md
-                  - file: observability/streams/management/extract/dissect.md
-                  - file: observability/streams/management/extract/grok.md
-              - file: observability/streams/management/retention.md
-              - file: observability/streams/management/advanced.md
+      - file: observability/streams/streams.md
+        children:
+        - file: observability/streams/management/retention.md
+        - file: observability/streams/management/extract.md
+          children:
+            - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/dissect.md
+            - file: observability/streams/management/extract/grok.md
+            - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/rename.md
+            - file: observability/streams/management/extract/append.md
+            - file: observability/streams/management/extract/manual-pipeline-configuration.md
+        - file: observability/streams/management/partitioning.md
+        - file: observability/streams/management/schema.md
+        - file: observability/streams/management/data-quality.md
+        - file: observability/streams/management/significant-events.md
+        - file: observability/streams/management/advanced.md
+        - file: observability/streams/wired-streams.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -480,6 +493,7 @@ toc:
                   - file: observability/incident-management/create-an-elasticsearch-query-rule.md
                   - file: observability/incident-management/create-an-error-count-threshold-rule.md
                   - file: observability/incident-management/create-failed-transaction-rate-threshold-rule.md
+                  - file: observability/incident-management/create-a-failed-docs-rule.md
                   - file: observability/incident-management/create-an-inventory-rule.md
                   - file: observability/incident-management/create-latency-threshold-rule.md
                   - file: observability/incident-management/create-log-threshold-rule.md
@@ -507,13 +521,10 @@ toc:
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
         children:
-          - file: observability/connect-to-own-local-llm.md
           - file: observability/llm-performance-matrix.md
-      - hidden: observability/streams/wired-streams.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
-      - file: security/elastic-security-serverless.md
       - file: security/get-started.md
         children:
           - file: security/get-started/quickstarts.md
@@ -522,7 +533,6 @@ toc:
               - file: security/get-started/get-started-endpoint-security.md
               - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
-          - file: security/get-started/create-security-project.md
           - file: security/get-started/elastic-security-ui.md
           - file: security/get-started/ingest-data-to-elastic-security.md
             children:
@@ -531,7 +541,9 @@ toc:
               - file: security/get-started/automatic-import.md
               - file: security/get-started/content-connectors.md
               - file: security/get-started/agentless-integrations.md
-              - file: security/get-started/agentless-integrations-faq.md
+                children:
+                  - file: security/get-started/cloud-connector-deployment.md
+                  - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
             children:
               - file: security/get-started/spaces-defend-faq.md
@@ -546,26 +558,19 @@ toc:
           - file: security/ai/ease/ease-intro.md
             children:
               - file: security/ai/ease/ease-alerts.md
-              - file: security/ai/ease/ease-value-report.md
               - file: security/ai/ease/ease-upgrade.md
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery.md
-          - file: security/ai/set-up-connectors-for-large-language-models-llm.md
-            children:
-              - file: security/ai/large-language-model-performance-matrix.md
-              - file: security/ai/connect-to-azure-openai.md
-              - file: security/ai/connect-to-amazon-bedrock.md
-              - file: security/ai/connect-to-openai.md
-              - file: security/ai/connect-to-google-vertex.md
-              - file: security/ai/connect-to-own-local-llm.md
+          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
             children:
               - file: security/ai/triage-alerts.md
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
+          - file: security/ai/ease/ease-value-report.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/detections-requirements.md
@@ -623,6 +628,7 @@ toc:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
           - file: security/manage-elastic-defend/trusted-applications.md
+          - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md
@@ -675,19 +681,20 @@ toc:
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
-          - file: security/cloud/ingest-third-party-cloud-security-data.md
-            children:
-              - file: security/cloud/ingest-cncf-falco-data.md
-              - file: security/cloud/ingest-aws-security-hub-data.md
-              - file: security/cloud/ingest-wiz-data.md
-              - file: security/cloud/integration-qualys.md
-              - file: security/cloud/integration-tenablevm.md
-              - file: security/cloud/integration-rapid7.md
-              - file: security/cloud/integrations/aws-config-integration.md
-              - file: security/cloud/integrations/microsoft-defender-for-cloud.md
-              - file: security/cloud/integrations/microsoft-defender-for-endpoint.md
-              - file: security/cloud/integrations/microsoft-defender-xdr.md
-              - file: security/cloud/integrations/google-security-command-center.md
+      - file: security/integrations/ingest-third-party-security-data.md
+        children:
+          - file: security/integrations/cncf-falco.md
+          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/wiz.md
+          - file: security/integrations/qualys.md
+          - file: security/integrations/tenablevm.md
+          - file: security/integrations/rapid7.md
+          - file: security/integrations/aws-config.md
+          - file: security/integrations/aws-inspector.md
+          - file: security/integrations/microsoft-defender-for-cloud.md
+          - file: security/integrations/microsoft-defender-for-endpoint.md
+          - file: security/integrations/microsoft-defender-xdr.md
+          - file: security/integrations/google-security-command-center.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
@@ -720,6 +727,7 @@ toc:
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
           - file: security/dashboards/detection-rule-monitoring-dashboard.md
+          - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/explore.md
         children:
           - file: security/explore/hosts-page.md

@@ -181,6 +181,7 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-openshift-beats.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-agent.md
                   - file: deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md
+                  - file: deploy/cloud-on-k8s/eck-gdch.md
                   - file: deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md
               - file: deploy/cloud-on-k8s/air-gapped-install.md
               - file: deploy/cloud-on-k8s/configure.md
@@ -487,6 +488,7 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
+              - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:
               - file: security/network-security-policies.md
@@ -552,6 +554,9 @@ toc:
               - file: users-roles/cloud-enterprise-orchestrator/saml.md
           - file: users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md
       - file: users-roles/serverless-custom-roles.md
+        children:
+          - title: "Control access at the document and field level"
+            crosslink: docs-content://deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
       - file: users-roles/cluster-or-deployment-auth.md
         children:
           - file: users-roles/cluster-or-deployment-auth/quickstart.md
@@ -633,6 +638,8 @@ toc:
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:
+      - file: remote-clusters/security-models.md
+      - file: remote-clusters/connection-modes.md
       - file: remote-clusters/ec-enable-ccs.md
         children:
           - file: remote-clusters/ec-remote-cluster-same-ess.md
@@ -662,18 +669,22 @@ toc:
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
+          - file: monitor/autoops/autoops-for-serverless.md
+            children:
+              - file: monitor/autoops/access-autoops-for-serverless.md
+              - file: monitor/autoops/search-tier-view-autoops-serverless.md
+              - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children: 
-            - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
-            - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
-            - file: monitor/autoops/cc-manage-users.md
-            - file: monitor/autoops/cc-cloud-connect-autoops-faq.md
-            - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
+              - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+              - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
+              - file: monitor/autoops/autoops-sm-custom-certification.md
+              - file: monitor/autoops/autoops-disable-metrics-collection.md
+              - file: monitor/autoops/cc-manage-users.md
+              - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
+                children:
+                  - file: monitor/autoops/autoops-sm-troubleshoot-firewalls.md
           - file: monitor/autoops/ec-autoops-regions.md
-          - file: monitor/autoops/ec-autoops-events.md
-            children:
-              - file: monitor/autoops/ec-autoops-event-settings.md
-              - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/views.md
             children:
               - file: monitor/autoops/ec-autoops-overview-view.md
@@ -682,7 +693,11 @@ toc:
               - file: monitor/autoops/ec-autoops-index-view.md
               - file: monitor/autoops/ec-autoops-shards-view.md
               - file: monitor/autoops/ec-autoops-template-optimizer.md
-          - hidden: monitor/autoops/ec-autoops-dismiss-event.md
+              - hidden: monitor/autoops/ec-autoops-dismiss-event.md
+          - file: monitor/autoops/ec-autoops-events.md
+            children:
+              - file: monitor/autoops/ec-autoops-event-settings.md
+              - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
@@ -743,6 +758,7 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
           - file: monitor/logging-configuration/update-elasticsearch-logging-levels.md
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
+          - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
               - file: monitor/logging-configuration/kibana-log-levels.md
@@ -763,6 +779,7 @@ toc:
           - file: cloud-organization/billing/billing-models.md
           - file: cloud-organization/billing/add-billing-details.md
           - file: cloud-organization/billing/view-billing-history.md
+          - file: cloud-organization/billing/manage-billing-notifications.md
           - file: cloud-organization/billing/manage-subscription.md
           - file: cloud-organization/billing/monitor-analyze-usage.md
           - file: cloud-organization/billing/ecu.md
@@ -807,7 +824,7 @@ toc:
           - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
       - file: upgrade/deployment-or-cluster.md
         children:
-          - hidden: upgrade/deployment-or-cluster/upgrade-717.md
+          - file: upgrade/deployment-or-cluster/upgrade-717.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
           - file: upgrade/deployment-or-cluster/upgrade-on-ece.md
           - file: upgrade/deployment-or-cluster/upgrade-on-eck.md

@@ -6,31 +6,22 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Step-by-step tutorial for exploring data with Discover by selecting data views, filtering documents, analyzing fields, and creating visualizations using sample or your own data.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
 
-Learn how to use **Discover** to:
-
-* **Select** and **filter** your {{es}} data.
-* **Explore** the fields and content of your data in depth.
-* **Present** your findings in a visualization.
-
-**Prerequisites:**
-
-* If you don’t already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
-* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
-* You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
+Learn how to explore your {{product.elasticsearch}} data using **Discover**. This tutorial walks you through selecting {{data-sources}}, filtering documents, analyzing field structures, and creating visualizations from your data.
 
 ## Context-aware data exploration [context-aware-discover]
 
 **Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:
 
 * Observability:
-  * **[Logs exploration](/solutions/observability/logs/explore-logs.md)**
+  * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
+  * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
 % LINK/PAGE TBD  * **Traces exploration**
-% LINK/PAGE TBD  * **Metrics exploration**
-% * Security: 
+% * Security:
 % LINK/PAGE TBD  * **Security data exploration**
 
 This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
@@ -39,7 +30,7 @@ When you access **Discover** outside of a specific solution context, or when wor
 
 ### Context-awareness with multiple data types
 
-Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context. 
+Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context.
 
 In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
 
@@ -87,7 +78,7 @@ You can later filter the data that shows in the chart and in the table by specif
 
 **Discover** provides utilities designed to help you make sense of your data:
 
-1. In the sidebar, check the available fields. It’s very common to have hundreds of fields. Use the search at the top of that sidebar to look for specific terms in the field names.
+1. In the sidebar, check the available fields. It's common to have hundreds of fields. Use the search at the top of that sidebar to look for specific terms in the field names.
    In this example, we’ve entered `ma` in the search field to find the `manufacturer` field.
    ![Fields list that displays the top five search results](/explore-analyze/images/kibana-discover-sidebar-available-fields.png "title =40%")
    ::::{tip}
@@ -237,7 +228,7 @@ Dive into an individual document to view its fields and the documents that occur
    * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
 
    ::::{tip}
-   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
+   You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
 3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
@@ -297,7 +288,7 @@ You can use **Discover** with the Elasticsearch Query Language, ES|QL. When usin
 You can switch to the ES|QL mode of Discover from the application menu bar.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
-Note that in ES|QL mode, the **Documents** tab is named **Results**.
+In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
 {applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
@@ -325,16 +316,16 @@ You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
-To manage and organize your tabs, you can: 
+To manage and organize your tabs, you can:
 - Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
 - Reorder them: Drag and drop a tab to move it.
 - Close them: Hover over a tab and select the {icon}`cross` icon.
 - Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
 
   :::{tip}
-  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost. 
+  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
   :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs bar menu** icon located at the end of the tab bar.
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
 
 To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 

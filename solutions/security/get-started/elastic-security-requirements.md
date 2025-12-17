@@ -25,7 +25,7 @@ stack:
 
 {{ecloud}} offers all of the features of {{es}}, {{kib}}, and {{elastic-sec}} as a hosted service available on AWS, GCP, and Azure. To get started, sign up for a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
-For information about installing and managing the {{stack}} yourself, see [Installing the {{stack}}](/get-started/the-stack.md).
+For information about installing and managing the {{stack}} yourself, refer to [](/deploy-manage/deploy/self-managed.md).
 
 ### Node role requirements [node-role-requirements]
 
@@ -90,6 +90,6 @@ stack:
 
 For information on how to perform cross-cluster searches on {{elastic-sec}} indices, see:
 
-* [Search across cluster](/solutions/search/cross-cluster-search.md) (for self-managed {{stack}} deployments)
+* [Search across cluster](/explore-analyze/cross-cluster-search.md) (for self-managed {{stack}} deployments)
 * [Enable cross-cluster search](/deploy-manage/remote-clusters/ec-enable-ccs.md) (for hosted deployments)
 

@@ -61,7 +61,7 @@ Approximate kNN offers low latency and good accuracy, while exact kNN guarantees
 ## Approximate kNN search [approximate-knn]
 
 ::::{warning}
-Approximate kNN search has specific resource requirements. All vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
+Approximate kNN search has specific resource requirements. For instance, for HNSW, all vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
 ::::
 
 To run an approximate kNN search:
@@ -132,9 +132,10 @@ Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_
 
 ### Indexing considerations for approximate kNN search [knn-indexing-considerations]
 
-For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Building HNSW graphs is compute-intensive, so indexing vectors can take time; you may need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search performance.
 
-In addition to search-time parameters, HNSW exposes index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
+For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320) or per segment as clusters using [DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction). Building these approximate kNN structures is compute-intensive, which means indexing vectors can be time-consuming. As a result, you might need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search performance.
+
+{applies_to}`stack: ga 9.2` In addition to search-time parameters, HNSW and DiskBBQ expose index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
 
 ```console
 PUT image-index
@@ -324,6 +325,14 @@ POST quantized-image-index/_search
   }
 }
 ```
+
+### BFloat16 vector encoding [knn-search-bfloat16]
+```{applies_to}
+stack: ga 9.3
+```
+Instead of storing raw vectors as 4-byte values, you can use `element_type: bfloat16` to store each dimension as a 2-byte value. This can be useful if your indexed vectors are at bfloat16 precision already, or if you want to reduce the disk space required to store vector data. When this element type is used, {{es}} automatically rounds 4-byte float values to 2-byte bfloat16 values when indexing vectors.
+
+Due to the reduced precision of bfloat16, any vectors retrieved from the index might have slightly different values to those originally indexed.
 
 ### Filtered kNN search [knn-search-filter-example]
 
@@ -1166,7 +1175,7 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
-* When using kNN search in [{{ccs}}](../../../solutions/search/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../solutions/search/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
+* When using kNN search in [{{ccs}}](../../../explore-analyze/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../explore-analyze/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
 * {{es}} uses the [HNSW algorithm](https://arxiv.org/abs/1603.09320) for efficient kNN. Like most approximate methods, HNSW trades perfect accuracy for speed, so results aren’t always the true *k* closest neighbors.
 
 ::::{note}
@@ -1226,6 +1235,16 @@ This example will:
 * Rescore the top 20 candidates (`oversample * k`) per shard using the original, non quantized vectors.
 * Return the top 10 (`k`) rescored candidates.
 * Merge the rescored candidates from all shards, and return the top 10 (`k`) results.
+
+#### The `on_disk_rescore` option
+```{applies_to}
+stack: preview 9.3
+serverless: unavailable
+```
+
+By default, {{es}} reads raw vector data into memory to perform rescoring. This can have an effect on performance if the vector data is too large to all fit in off-heap memory at once. When the `on_disk_rescore: true` index setting is set, {{es}} reads vector data directly from disk during rescoring.
+
+This setting only applies to newly indexed vectors. To apply the option to all vectors in the index, the vectors must be re-indexed or force-merged after changing the setting.
 
 #### Additional rescoring techniques [dense-vector-knn-search-rescoring-rescore-additional]
 

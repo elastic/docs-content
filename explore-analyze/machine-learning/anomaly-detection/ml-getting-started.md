@@ -21,18 +21,15 @@ At the end of this tutorial, you should have a good idea of what {{ml}} is and w
 
 Need more context? Check out the [{{es}} introduction](/get-started/index.md) to learn the lingo and understand the basics of how {{es}} works.
 
-## Try it out [get-started-prereqs]
+## Requirements [get-started-prereqs]
 
-1. Before you can play with the {{ml-features}}, you must install {{es}} and {{kib}}. {{es}} stores the data and the analysis results. {{kib}} provides a helpful user interface for creating and viewing jobs.
+- Before you can play with the {{ml-features}}, you must install {{es}} and {{kib}}. {{es}} stores the data and the analysis results. {{kib}} provides a helpful user interface for creating and viewing jobs.
    ::::{tip}
    You can run {{es}} and {{kib}} on your own hardware or on [{{ecloud}}](https://www.elastic.co/cloud/). [Try out {{ecloud}} for free](https://cloud.elastic.co/registration?elektra=en-ess-sign-up-page).
    ::::
 
-2. Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
-3. [Add the sample data sets that ship with {{kib}}](../../index.md#gs-get-data-into-kibana).
-
-    1. From the {{kib}} home page, click **Try sample data**, then open the **Other sample data sets** section.
-    2. Pick a data set. In this tutorial, you’ll use the **Sample web logs**. While you’re here, feel free to click **Add data** on all of the available sample data sets.
+- Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
+- [Add the sample data sets that ship with {{kib}}](../../index.md#gs-get-data-into-kibana). In this tutorial, you’ll use the **Sample web logs**.
 
 These data sets are now ready be analyzed in {{ml}} jobs in {{kib}}.
 
@@ -84,7 +81,7 @@ The results on this page might be different than the actual values you get when 
 
 The {{kib}} sample data sets include some pre-configured {{anomaly-jobs}} for you to play with. You can use either of the following methods to add the jobs:
 
-* After you load the sample web logs data set on the {{kib}} home page, click **View data** > **ML jobs**.
+* After you load the [sample web logs data set](../../index.md#gs-get-data-into-kibana), click **View data** > **ML jobs**.
 * In the Machine Learning app, when you select the `kibana_sample_data_logs` {{data-sources}} in the **Data Visualizer** or the **Anomaly Detection** job wizards, it recommends that you create a job using its known configuration. Select the **Kibana sample data web logs** configuration.
 * Accept the default values and click **Create Jobs**.
 
@@ -101,7 +98,7 @@ For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [
 
 ::::
 
-If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Stack Management** > **Anomaly Detection Jobs** page. Alternatively, you can see the configuration files in [GitHub](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
+If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Stack Management** > **Anomaly Detection Jobs** page, which you can access from the navigation menu or using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). Alternatively, you can see the configuration files in [GitHub](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
 
 * `low_request_rate` uses the `low_count` function to find unusually low request rates
 * `response_code_rates` uses the `count` function and partitions the analysis by `response.keyword` values to find unusual event rates by HTTP response code
@@ -315,6 +312,6 @@ If you’re now thinking about where {{anomaly-detect}} can be most impactful fo
 
 In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](/explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md).
 
-If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
+If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
 
 If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).

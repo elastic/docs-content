@@ -27,6 +27,16 @@ This tutorial uses the `elasticsearch` service for demonstration, which is creat
 
 The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
 
+You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own ML-nodes. The following examples show you both scenarios.
+
+:::::::{tab-set}
+
+::::::{tab-item} Using EIS on Serverless
+
+```{applies_to}
+serverless: ga
+```
+
 ```console
 PUT semantic-embeddings
 {
@@ -41,7 +51,61 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elasticsearch` for the `elasticsearch` service is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elastic` for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+
+::::::
+
+::::::{tab-item} Using EIS in Cloud
+
+```{applies_to}
+stack: ga
+deployment:
+  self: unavailable
+```
+
+```console
+PUT semantic-embeddings
+{
+  "mappings": {
+    "properties": {
+      "content": { <1>
+        "type": "semantic_text", <2>
+        "inference_id": ".elser-v2-elastic" <3>
+      }
+    }
+  }
+}
+```
+
+1. The name of the field to contain the generated embeddings.
+2. The field to contain the embeddings is a `semantic_text` field.
+3. The `.elser-v2-elastic` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+
+::::::
+
+::::::{tab-item} Using ML-nodes
+
+```console
+PUT semantic-embeddings
+{
+  "mappings": {
+    "properties": {
+      "content": { <1>
+        "type": "semantic_text", <2>
+        "inference_id": ".elser-2-elasticsearch" <3>
+      }
+    }
+  }
+}
+```
+
+1. The name of the field to contain the generated embeddings.
+2. The field to contain the embeddings is a `semantic_text` field.
+3. The `.elser-2-elasticsearch` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
+
+::::::
+
+:::::::
 
 To try the ELSER model on the Elastic Inference Service, explicitly set the `inference_id` to `.elser-2-elastic`. For instructions, refer to [Using `semantic_text` with ELSER on EIS](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis). 
 
@@ -49,8 +113,6 @@ To try the ELSER model on the Elastic Inference Service, explicitly set the `inf
 If you’re using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
 
 ::::
-
-
 
 ## Load data [semantic-text-load-data]
 
@@ -60,7 +122,6 @@ Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS 
 
 Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names**, assign `id` to the first column and `content` to the second. Click **Apply**, then **Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
-
 ## Reindex the data [semantic-text-reindex-data]
 
 Create the embeddings from the text by reindexing the data from the `test-data` index to the `semantic-embeddings` index. The data in the `content` field will be reindexed into the `content` semantic text field of the destination index. The reindexed data will be processed by the {{infer}} endpoint associated with the `content` semantic text field.
@@ -69,7 +130,6 @@ Create the embeddings from the text by reindexing the data from the `test-data` 
 This step uses the reindex API to simulate data ingestion. If you are working with data that has already been indexed, rather than using the test-data set, reindexing is required to ensure that the data is processed by the {{infer}} endpoint and the necessary embeddings are generated.
 
 ::::
-
 
 ```console
 POST _reindex?wait_for_completion=false
@@ -86,7 +146,6 @@ POST _reindex?wait_for_completion=false
 
 1. The default batch size for reindexing is 1000. Reducing size to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
-
 The call returns a task ID to monitor the progress:
 
 ```console
@@ -99,7 +158,6 @@ Reindexing large datasets can take a long time. You can test this workflow using
 POST _tasks/<task_id>/_cancel
 ```
 
-
 ## Semantic search [semantic-text-semantic-search]
 
 After the data has been indexed with the embeddings, you can query the data using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax to execute the query.
@@ -110,15 +168,16 @@ After the data has been indexed with the embeddings, you can query the data usin
 :::{tab-item} Query DSL
 :sync: dsl
 
-The Query DSL approach uses the `semantic` query type with the `semantic_text` field:
+The Query DSL approach uses the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) type with the `semantic_text` field:
 
 ```esql
 GET semantic-embeddings/_search
 {
   "query": {
-    "semantic": {
-      "field": "content", <1>
-      "query": "What causes muscle soreness after running?" <2>
+    "match": {
+      "content": { <1>
+        "query": "What causes muscle soreness after running?" <2>
+      }
     }
   }
 }
