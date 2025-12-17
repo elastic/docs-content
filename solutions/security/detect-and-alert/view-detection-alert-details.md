@@ -20,18 +20,18 @@ Use the alert details flyout to begin an investigation, open a case, or plan a r
 
 ## Alert details flyout UI [alert-details-flyout-ui]
 
-The alert details flyout has a right panel, a preview panel, and a left panel. Each panel provides a different perspective of the alert.
+The alert details flyout has a right panel, a preview panel, and a left panel. Each panel provides different information about the alert.
 
 
 ### Right panel [right-panel]
 
-The right panel provides an overview of the alert. Expand any of the collapsed sections to learn more about the alert. You can also hover over fields on the **Overview** and **Table** tabs to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions).
+The right panel provides an overview. Expand any of the collapsed sections to learn more about the alert. You can also hover over fields on the **Overview** and **Table** tabs to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions).
 
 From the right panel, you can also:
 
 * Click **Expand details** to open the [left panel](/solutions/security/detect-and-alert/view-detection-alert-details.md#left-panel), which shows more information about sections in the right panel.
 * Click the history icon (![History icon](/solutions/images/security-history-icon.png "title =15x15")) to display a list of places that you visited from the alert's details flyout, for example, flyouts for other alerts or users. The list can contain up to 10 unique entries. Click any list entry to quickly access the item's details.
-* Click the **Chat** icon (![AI assistant chat icon](/solutions/images/security-ai-assistant-chat.png "title =20x20")) to access the [AI Assistant](/solutions/security/ai/ai-assistant.md).
+* Click the **Chat** icon (![AI assistant chat icon](/solutions/images/security-ai-assistant-chat.png "title =20x20")) to open [AI Assistant](/solutions/security/ai/ai-assistant.md).
 * Click the **Share alert** icon (![Share alert icon](/solutions/images/security-share-alert.png "title =20x20")) to get a shareable alert URL. We *do not* recommend copying the URL from your browser’s address bar, which can lead to inconsistent results if you’ve set up filters or relative time ranges for the Alerts page.
 
     ::::{note}
@@ -44,7 +44,9 @@ From the right panel, you can also:
     If you’ve enabled grouping on the Alerts page, the alert details flyout won’t open until you expand a collapsed group and select an individual alert.
     ::::
 
-* Click the **Flyout settings** icon (![Flyout settings icon](/solutions/images/security-flyout-settings.png "title =20x20")) to access options for displaying the alert details flyout. The **Overlay** option (which displays the flyout over the Alerts table) is selected by default. Select **Push** to display the flyout to the side of the table instead. In either display, you can resize the flyout panels to your liking. Clicking **Reset size** reverts the flyout to its default dimensions.
+* Click the **Flyout settings** button (![Flyout settings icon](/solutions/images/security-flyout-settings.png "title =20x20")) to configure the flyout's appearance. 
+  ![alert flyout settings menu](/solutions/images/security-alerts-flyout-settings-menu.png "")
+  The **Overlay** option (which displays the flyout over the Alerts table) is selected by default. The **Push** option displays the flyout next to the table instead. In either display, you can resize the flyout panels to your liking. Clicking **Reset size** reverts the flyout to its default dimensions.
 * Find basic details about the alert, such as the:
 
     * Associated rule
@@ -53,8 +55,16 @@ From the right panel, you can also:
     * Users assigned to the alert (click the **Assign alert** ![Assign alert](/solutions/images/security-assign-alert.png "title =20x20") icon to assign more users)
     * Notes attached to the alert (click the **Add note** ![Add note](/solutions/images/security-add-note-icon.png "title =20x20") icon to create a new note)
 
-* Click the **Table** or **JSON** tabs to display the alert details in table or JSON format. In table format, alert details are displayed as field-value pairs.
+* Click the **Table** or **JSON** tabs to display the alert details in table or JSON format. 
+  * The **Table** tab shows alert data as field-value pairs. Click the **Pin** button to the left of a field's name to pin the field to the top of the table. Click the **Table settings** button (![Flyout settings icon](/solutions/images/security-flyout-settings.png "title =20x20")) to view additional options:
 
+    * **Show highlighted fields only:** Hide all fields other than highlighted fields. To learn more about highlighted fields, refer to [Investigation](#investigation-section).
+    * **Hide empty fields:** Hide all fields that do not have values.
+    * **Hide {{kib}} alert fields:** Hides fields that start with `kibana.alert` or `signal`. These fields provide metadata about the alert's lifecycle and operational context. You can hide them to help focus on the fields most relevant to your investigation. 
+    ![alert flyout table settings menu](/solutions/images/security-alerts-flyout-table.png "")
+
+
+  * The **JSON** tab shows alert data in raw JSON format. You can click **Copy to clipboard** to easily export it. 
 
 ### Preview panel [preview-panel]
 
@@ -69,7 +79,7 @@ The left panel provides an expanded view of what’s shown in the right panel. T
 
 ## About [about-section]
 
-The About section is located on the **Overview** tab in the right panel. It provides a brief description of the rule that’s related to the alert and an explanation of what generated the alert.
+The About section appears on the **Overview** tab in the right panel. It provides a brief description of the rule that’s related to the alert and an explanation of what generated the alert.
 
 The About section has the following information:
 
