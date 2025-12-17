@@ -22,6 +22,10 @@ Before you start the upgrade, [plan your upgrade](/deploy-manage/upgrade/plan-up
 
 In this example, we’re modifying the version to {{version.stack}}.
 
+:::{important}
+For production use, configure `vm.max_map_count` to `1048576` in {{es}} version 8.16 and onwards, or `262144` in other verions.
+:::
+
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
