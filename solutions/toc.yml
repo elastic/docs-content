@@ -4,6 +4,12 @@ toc:
   - file: search.md
     children:
       - file: search/get-started.md
+        children:
+          - file: search/get-started/quickstarts.md
+            children:
+              - file: search/get-started/index-basics.md
+              - file: search/get-started/keyword-search-python.md
+              - file: search/get-started/semantic-search.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -69,11 +75,6 @@ toc:
       - file: elasticsearch-solution-project/get-started.md
         children:
           - file: elasticsearch-solution-project/search-connection-details.md
-      - file: elasticsearch-solution-project/get-started/quickstarts.md
-        children:
-          - file: elasticsearch-solution-project/get-started/index-basics.md
-          - file: elasticsearch-solution-project/get-started/keyword-search-python.md
-          - file: elasticsearch-solution-project/get-started/semantic-search.md
       - file: elasticsearch-solution-project/elastic-agent-builder.md
         children:
           - file: elasticsearch-solution-project/agent-builder/get-started.md

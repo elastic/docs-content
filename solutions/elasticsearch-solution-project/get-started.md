@@ -50,16 +50,16 @@ Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-
 
 Get hands-on experience with {{es}} using guided tutorials that walk you through common search scenarios:
 
-- [**Index and search basics**](/solutions/elasticsearch-solution-project/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
-- [**Keyword search with Python**](/solutions/elasticsearch-solution-project/get-started/keyword-search-python.md): Build your first search query with Python
-- [**Semantic search**](/solutions/elasticsearch-solution-project/get-started/semantic-search.md): Implement semantic search using embeddings
+- [**Index and search basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
+- [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build your first search query with Python
+- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search using embeddings
 :::::
 
 :::::{step} Identify your search goals
 Depending on your use case, you can choose multiple [search approaches](/solutions/search/search-approaches.md), for example full-text and semantic search.
 Each approach affects your options for storing and querying your data.
 
-If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/elasticsearch-solution-project/get-started/semantic-search.md).
+If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/semantic-search.md).
 
 If you prefer to ingest your data first and transform or reindex it as needed later, skip to the next step.
 :::::
@@ -72,7 +72,7 @@ This method is described in [](/solutions/search/semantic-search/semantic-search
 To learn about adding data for other search goals, go to [](/solutions/search/ingest-for-search.md).
 For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
-If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/elasticsearch-solution-project/get-started/quickstarts.md).
+If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
 
 The {{es}} home page in the UI also provides workflow guides for creating indices and ready-to-use code examples for ingesting data by using REST APIs.
 :::::

@@ -27,7 +27,7 @@ You’ll use a combination of an API endpoint and a query language to interact w
 
 - A number of [tools](/explore-analyze/query-filter/tools.md) are available for you to save, debug, and optimize your queries.
 
-If you're just getting started with {{es}}, try the hands-on [](/solutions/elasticsearch-solution-project/get-started/index-basics.md) to learn how to add data and run basic searches using Query DSL and the `_search` endpoint.
+If you're just getting started with {{es}}, try the hands-on [](/solutions/search/get-started/index-basics.md) to learn how to add data and run basic searches using Query DSL and the `_search` endpoint.
 
 ## Filtering
 

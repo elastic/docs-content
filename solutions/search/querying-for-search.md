@@ -34,5 +34,5 @@ You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticse
 ::::
 
 ::::{tip}
-Try our hands-on [quickstart guides](/solutions/elasticsearch-solution-project/get-started/quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
+Try our hands-on [quickstart guides](/solutions/search/get-started/quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
 ::::
