@@ -538,24 +538,45 @@ In {{agent}} versions prior to 8.19.0 and 9.1.0, if an agent receives a 401 (Una
 
 To resolve the issue:
 
-1. Re-enroll the agent that has been automatically unenrolled from {{fleet}}:
+:::::{stepper}
 
-     1. If the agent is still installed on the host, uninstall it completely. Refer to [Uninstall {{agents}} from edge hosts](/reference/fleet/uninstall-elastic-agent.md) for detailed instructions.
+::::{step} Re-enroll the agent
 
-     2. Reinstall and enroll the agent with a new enrollment token. Refer to [Install {{agents}}](/reference/fleet/install-elastic-agents.md) for detailed instructions.
+* If the agent is still installed on the host, re-enroll it in {{fleet}} with a new enrollment token to keep the agent's existing state, including any previously ingested data:
 
-2. Investigate the cause of the 401 errors, and resolve the underlying issues to ensure proper agent functionality.
+   1. In {{fleet}}, create a new enrollment token for the policy in which you want to re-enroll the agent. Refer to [Create enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) for detailed instructions.
+   2. Open the **Agents** tab, then click **Add agent**.
+   3. In the **Add agent** flyout, select the agent policy in which to re-enroll the agent. The new enrollment token is automatically selected in the **Authentication settings** section.
+   4. Make sure **Enroll in Fleet** is selected.
+   5. Select the appropriate platform, then copy the `elastic-agent install` command from the UI, and replace `install` with `enroll`.
+   6. Run the modified command with elevated privileges from the directory where the agent is installed. Refer to the [command reference](/reference/fleet/agent-command-reference.md#elastic-agent-enroll-command) for details about the available options.
 
-    401 errors during check-in typically indicate authentication or authorization problems. Common causes include:
+     For example:
 
-    * Expired or revoked API keys
-    * Incorrect {{fleet-server}} configuration
-    * Issues with {{es}} authentication settings
+     ```bash
+     sudo ./elastic-agent enroll --url=<fleet-server-url> --enrollment-token=<token>
+     ```
+
+* If the agent is no longer installed on the host, reinstall and enroll it in {{fleet}} with a new enrollment token. Refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md) for detailed instructions.
+::::
+
+::::{step} Resolve the underlying issues
+
+Investigate the cause of the 401 errors and resolve the underlying issues to ensure proper agent functionality.
+
+401 errors during check-in typically indicate authentication or authorization problems. Common causes include:
+
+* Expired or revoked API keys
+* Incorrect {{fleet-server}} configuration
+* Issues with {{es}} authentication settings
+::::
+
+:::::
 
 :::{admonition} Agents are no longer automatically unenrolled
 :applies_to: stack: ga 9.1.0
 
-The automatic unenrollment behavior is removed in {{agent}} versions 8.19.0 and 9.1.0. Starting with these versions, {{agents}} are no longer automatically unenrolled due to repeated 401 errors during check-in.
+The automatic unenrollment behavior is removed in {{agent}} versions 8.19.0 and 9.1.0. Starting with these versions, {{agents}} are no longer automatically unenrolled due to repeated 401 errors during check-in. When the issue causing the errors is resolved, the agents automatically reconnect to {{fleet}} and resume ingesting data.
 :::
 
 ## On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1` [ca-cert-testing]
