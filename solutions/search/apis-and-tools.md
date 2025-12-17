@@ -74,7 +74,7 @@ The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearc
 
 ## Generative AI tools
 
-The following generative AI tools are available as part of the {{es}} solution and serverless project type:
+The following generative AI tools are available as part of the {{es}} solution and serverless project type. They enable you to build AI-powered search applications on top of the core {{es}} features, including retrieval augmented generation (RAG) systems and agentic workflows.
 
 ### Agent Builder
 
