@@ -90,6 +90,15 @@ This step covers upgrading your deployment from 7.17.x to 8.19.x, following the 
 
 It's highly recommended to start this upgrade from the latest 7.17.x patch release to ensure that you’re using the most recent version of the Elastic Upgrade Assistant. You should also upgrade to the latest available 8.19.x patch release so that the same benefits apply when you later upgrade to 9.x.
 
+:::::{note}
+If you use the [{{elastic-sec}} solution](/solutions/security.md), read the full [Upgrade {{elastic-sec}} from 7.17 to 8.x](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html) guide when planning the upgrade.
+
+In particular:
+- Export all custom detection rules as a backup before upgrading, in case there are issues with the detection engine after the upgrade.
+- Review [alert schema changes](https://www.elastic.co/guide/en/security/8.19/alert-schema.html) if alerts are forwarded to an external SOAR.
+- Plan for the [post-upgrade steps](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html#_post_upgrade_steps), such as re-enabling disabled rules after the upgrade.
+:::::
+
 ### 8.19 upgrade preparations
 
 The [upgrade preparation steps from 7.x](https://www.elastic.co/guide/en/elastic-stack/8.19/upgrading-elastic-stack.html#prepare-to-upgrade) are designed to prevent upgrade failures by detecting and addressing internal incompatibilities, including deprecated settings that are no longer supported in the next release.
