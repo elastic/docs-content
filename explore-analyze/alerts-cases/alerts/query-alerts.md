@@ -7,9 +7,9 @@ products:
   - id: kibana
 ---
 
-# Query alert indices [how-to-query-alert-indices]
+# Query your alerts [query-your-alerts]
 
-This page explains how to query alert indices, which you can use while building rule queries, custom dashboards, or visualizations. It also breaks down the components of alert index and alias names, lists alerts indices and aliases for each rule type, and provides sample queries for common use cases. 
+This page explains how to query your alerts, which you might use when building rule queries, custom dashboards, or visualizations. It also breaks down the components of alert index and alias names, lists the alert indices and aliases that you can query for each rule type, and provides sample queries for common use cases. 
 
 ::::{note} 
 On **self-managed** {{stack}} deployments and {{ech}}, alerts are stored in {{es}} indices. On {{serverless-short}}, they are stored in [data streams](../../../manage-data/data-store/data-streams.md).
