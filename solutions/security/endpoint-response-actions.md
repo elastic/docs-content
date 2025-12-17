@@ -165,7 +165,8 @@ Required privilege (in {{stack}}) or custom role privilege (in {{serverless-shor
 Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
 
 ::::{note}
-{applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` The maximum file size that can be retrieved using `get-file` is `104857600` bytes, or 100 MB.
+:applies_to: {"stack": "removed 9.3", "serverless": "removed"}
+The maximum file size that can be retrieved using `get-file` is `104857600` bytes, or 100 MB.
 ::::
 
 ::::{tip}
