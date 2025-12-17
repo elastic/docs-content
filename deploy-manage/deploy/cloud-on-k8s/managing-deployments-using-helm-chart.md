@@ -152,13 +152,9 @@ By default, upgrading the Helm chart also upgrades the {{stack}} components to t
 
 ### Upgrade to specific {{stack}} version
 
-If for example you want to upgrade the {{stack}} components to a newer version that is not the default for the Helm chart, you can explicitly set the component versions using Helm values or `--set` options.
+If for example you want to upgrade the {{stack}} components to a later version that is not the default for the Helm chart, you can explicitly set the component versions using Helm values or `--set` options.
 
 The following examples show both ways to upgrade the release to the latest available version of the Helm chart and all {{stack}} components to version {{version.stack}}.
-
-::::{note}
-To avoid the Helm chart to be upgraded to the latest release you can use `--version` option on the Helm upgrade command. To know the chart version associated with your installed release, refer to [check chart versions](#show-versions).
-::::
 
 #### Using the `--set` option
 
