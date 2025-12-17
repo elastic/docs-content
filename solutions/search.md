@@ -12,17 +12,17 @@ navigation_title: Search use case
 
 # Search use case
 
-This section documents {{es}} search primitives. These capabilities are available across all Elastic deployments.
+This section documents core {{es}} search capabilities. These capabilities are available across all Elastic deployments, solutions, and project types.
 
 Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search applications.
 
 ::::{tip}
-Using the {{es}} solution or serverless project type? The {{es}} solution documentation covers additional UI tools that complement these search primitives. Refer to [](/solutions/elasticsearch-solution-project.md) for more details.
+Using the {{es}} solution or serverless project type? The [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) covers additional UI tools available if you are using the solution or project type.
 ::::
 
 ## What you can build
 
-Use {{es}} search primitives to build search applications including:
+Use {{es}} search capabilities to build search applications including:
 
 - Website and documentation search
 - Ecommerce product catalogs
@@ -33,14 +33,14 @@ Use {{es}} search primitives to build search applications including:
 - Custom observability or cybersecurity search tools
 - Much more!
 
-## Topics
+## Search use case documentation
 
-The following topics are covered in this section:
+The following subjects are covered in this section:
 
 | Topic | Description |
 |-------|-------------|
 | [**Get started**](/solutions/search/get-started.md) | Create deployments, connect to {{es}}, and run your first searches |
-| [**Ingest data**](/solutions/search/ingest-for-search.md) | Options for getting data into {{es}} |
+| [**Ingest data**](/solutions/search/ingest-for-search.md) |  Learn about options for getting data into {{es}} for search use cases | 
 | [**Search approaches**](/solutions/search/search-approaches.md) | Compare search techniques available in {{es}}, including full-text, vector, semantic, and hybrid search |
 | [**Build your queries**](/solutions/search/querying-for-search.md) | Implement your search approaches using specific query languages |
 | [**Ranking and reranking**](/solutions/search/ranking.md) | Control result ordering and relevance |

@@ -11,10 +11,10 @@ products:
 
 # Get started with search
 
-This guide helps you get started with search use cases using {{es}}, regardless of your deployment type. Whether you're using a self-managed cluster, {{ech}}, or an {{es}} serverless project, these core search primitives are available to you.
+This guide helps you get started with search use cases using {{es}}, regardless of your deployment type, solution, or project type. Whether you're using a self-managed cluster, {{ech}}, or any type of serverless project, these core search capabilities are available to you.
 
 ::::{tip}
-Using the {{es}} solution or serverless project type? Check out the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for UI tools like Agent Builder, Playground, and Search Applications that complement these core search primitives.
+Using the {{es}} solution or serverless project type? Check out the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for UI tools like Agent Builder, Playground, and Search Applications that complement these core search capabilities.
 ::::
 
 ## Before you begin
@@ -28,9 +28,9 @@ To follow along with this guide, you'll need:
 
 Choose a quickstart based on your use case:
 
-- [**Index basics**](/solutions/elasticsearch-solution-project/get-started/index-basics.md): Learn how to create indices, add documents, and perform basic searches using the {{es}} APIs.
-- [**Keyword search with Python**](/solutions/elasticsearch-solution-project/get-started/keyword-search-python.md): Build a keyword search application using the Python client.
-- [**Semantic search**](/solutions/elasticsearch-solution-project/get-started/semantic-search.md): Implement semantic search using vector embeddings.
+- [**Index basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform basic searches using the {{es}} APIs.
+- [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build a keyword search application using the Python client.
+- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search using vector embeddings.
 
 ## Explore search approaches
 

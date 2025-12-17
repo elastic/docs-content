@@ -17,27 +17,18 @@ description: Learn about Elastic solutions for search, observability, and securi
 New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the {{stack}}, its components, and your deployment options.
 :::
 
-Elastic helps you build applications for three main use cases: search, observability, and security. You can work directly with platform capabilities through APIs, use pre-built solutions with integrated UIs, or combine both approaches.
+Elastic helps you build applications for three main use cases: search, observability, and security.
 
-This section is organized into two parts:
+## Choose your path
 
-- [**Search use case**](#search-use-case): Core {{es}} features accessed through APIs and client libraries, available across all [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type). Use these when you need programmatic control or the flexibility to build custom applications.
-- [**Solutions and project types**](#solutions-and-project-types): Pre-built UI tools and workflows for specific use cases, available on {{serverless-full}} as project types or on other deployments as solutions. Use these to get started quickly with pre-configured workflows, sensible defaults, and tailored UI affordances.
+| Your use case | What to use | Description |
+| --- | --- | --- |
+| Building search applications | 1. [Core search capabilities](/solutions/search.md)<br><br> 2. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md) | - Core {{es}} search features available across all deployment types, solutions, and project types<br><br>- Additional UI tools that complement the core search features |
+| Monitoring applications or infrastructure | [Observability solution](/solutions/observability.md) | Monitor and troubleshoot with logs, metrics, and traces |
+| Protecting against threats | [Security solution](/solutions/security.md) | Detect and respond to security threats |
 
-## Search use case
+::::{tip}
+If you're not sure which solution to use, the {{es}} solution is a good starting point for general-purpose search use cases.
+::::
 
-The [Search use case](/solutions/search.md) documents core {{es}} search capabilities available across all Elastic [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type).
-
-## Solutions and project types
-
-Solutions provide integrated UI tools and workflows with sensible defaults, in addition to core platform capabilities. They help you get started quickly with common use cases.
-
-Solutions are available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment:
-- On {{serverless-full}}, you select a project type when creating your project.
-- On non-serverless deployments, solution views are configured per [space](/deploy-manage/manage-spaces.md).
-
-| Solution/Project | Description |
-| --- | --- |
-| [**Elasticsearch**](/solutions/elasticsearch-solution-project.md) | UI tools for building search applications |
-| [**Observability**](/solutions/observability.md) | Monitor and troubleshoot applications and infrastructure |
-| [**Security**](/solutions/security.md) | Protect applications and infrastructure from threats |
+**About solutions and project types:** Solutions are available as project types on {{serverless-full}} (select one when creating a project) or as solution views on {{ech}} and self-managed deployments (select a default solution view when creating a deployment, or configure per [space](/deploy-manage/manage-spaces.md)).
