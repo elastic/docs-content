@@ -17,7 +17,7 @@ description: Learn about Elastic solutions for search, observability, and securi
 New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the {{stack}}, its components, and your deployment options.
 :::
 
-Elastic helps you build applications for three main use cases: search, observability, and security.
+Elastic helps you build applications for three main use cases: search, observability, and security. You can work directly with platform capabilities through APIs, use pre-built solutions with integrated UIs, or combine both approaches.
 
 ## Choose your path
 
