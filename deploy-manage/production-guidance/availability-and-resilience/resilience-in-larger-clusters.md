@@ -30,7 +30,7 @@ If you’ve divided your cluster into zones, the network connections within each
 $$$high-availability-cluster-design-min-network-perf$$$
 There is no specific minimum network performance required to run a healthy {{es}} cluster. In theory, a cluster will work correctly even if the round-trip latency between nodes is several hundred milliseconds. In practice, if your network is that slow then the cluster performance will be very poor. In addition, slow networks are often unreliable enough to cause network partitions that lead to periods of unavailability.
 
-If you want your data to be available in multiple data centers that are further apart or not well connected, deploy a separate cluster in each data center and use [{{ccs}}](../../../solutions/search/cross-cluster-search.md) or [{{ccr}}](../../tools/cross-cluster-replication.md) to link the clusters together. These features are designed to perform well even if the cluster-to-cluster connections are less reliable or performant than the network within each cluster.
+If you want your data to be available in multiple data centers that are further apart or not well connected, deploy a separate cluster in each data center and use [{{ccs}}](../../../explore-analyze/cross-cluster-search.md) or [{{ccr}}](../../tools/cross-cluster-replication.md) to link the clusters together. These features are designed to perform well even if the cluster-to-cluster connections are less reliable or performant than the network within each cluster.
 
 After losing a whole zone’s worth of nodes, a properly-designed cluster may be functional but running with significantly reduced capacity. You may need to provision extra nodes to restore acceptable performance in your cluster when handling such a failure.
 

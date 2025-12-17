@@ -74,8 +74,6 @@ jobs:
           This is an automated update. Please review the changes before merging.
         branch: update-kube-stack-version
         delete-branch: true
-        team-reviewers: |
-          ingest-docs
         labels: |
           automated
           chore
