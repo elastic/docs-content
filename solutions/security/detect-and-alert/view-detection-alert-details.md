@@ -56,7 +56,8 @@ From the right panel, you can also:
     * Notes attached to the alert (click the **Add note** ![Add note](/solutions/images/security-add-note-icon.png "title =20x20") icon to create a new note)
 
 * Click the **Table** or **JSON** tabs to display the alert details in table or JSON format. 
-  * The **Table** tab shows alert data as field-value pairs. Click the **Pin** button to the left of a field's name to pin the field to the top of the table. Click the **Table settings** button (![Flyout settings icon](/solutions/images/security-flyout-settings.png "title =20x20")) to view additional options:
+  * The **Table** tab shows alert data as field-value pairs. 
+  * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1.0` Click the **Pin** button to the left of a field's name to pin the field to the top of the table. Click the **Table settings** button (![Flyout settings icon](/solutions/images/security-flyout-settings.png "title =20x20")) to view additional options:
 
     * **Show highlighted fields only:** Hide all fields other than highlighted fields. To learn more about highlighted fields, refer to [Investigation](#investigation-section).
     * **Hide empty fields:** Hide all fields that do not have values.
