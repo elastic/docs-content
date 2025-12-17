@@ -23,7 +23,7 @@ Before you start the upgrade, [plan your upgrade](/deploy-manage/upgrade/plan-up
 In this example, we’re modifying the version to {{version.stack}}.
 
 :::{important}
-For production use, configure `vm.max_map_count` to `1048576` in {{es}} version 8.16 and onwards, or `262144` in other verions.
+For production use, for {{es}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{es}} version 8.15 and earlier, set `vm.max_map_count` to `262144`.
 :::
 
 ```yaml subs=true
