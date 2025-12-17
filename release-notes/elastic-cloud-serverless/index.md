@@ -397,7 +397,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
 * Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
 * Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
-* Fixes logsdb settings provider mapping filters [#136119](https://github.com/elastic/elasticsearch/pull/136119)
+* Fixes LogsDB settings provider mapping filters [#136119](https://github.com/elastic/elasticsearch/pull/136119)
 * Provides defaults for index sort settings [#135886](https://github.com/elastic/elasticsearch/pull/135886)
 * Stores full path in `_ignored` when ignoring dynamic array field [#136315](https://github.com/elastic/elasticsearch/pull/136315)
 * Removes null from `syntheticSourceFallbackFieldName` [#136344](https://github.com/elastic/elasticsearch/pull/136344)
@@ -473,11 +473,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds **View in discover** button in alert details page for SLO burn rate and ES query rules [#233855]({{kib-pull}}233855)
 
 * Implements `Delta` function for absolute change in gauges over time [#135035](https://github.com/elastic/elasticsearch/pull/135035)
-* Improves block loader for source only runtime date fields [#135373](https://github.com/elastic/elasticsearch/pull/135373)
+* Improves the block loader for source-only runtime date fields [#135373](https://github.com/elastic/elasticsearch/pull/135373)
 * Adds an OTLP metrics endpoint (`_otlp/v1/metrics`) as tech preview [#135401](https://github.com/elastic/elasticsearch/pull/135401)
 * Adds `pattern_text` field mapper in tech preview [#135370](https://github.com/elastic/elasticsearch/pull/135370)
 * Uses optimized field visitor for ignored source queries [#135039](https://github.com/elastic/elasticsearch/pull/135039)
-* Improves block loader for source only runtime IP fields [#135393](https://github.com/elastic/elasticsearch/pull/135393)
+* Improves the block loader for source-only runtime IP fields [#135393](https://github.com/elastic/elasticsearch/pull/135393)
 
 ### Fixes [serverless-changelog-09292025-fixes]
 
@@ -522,7 +522,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
 * Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
 * Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
-* Improves block loader for source only runtime fields of type keyword [#135026](https://github.com/elastic/elasticsearch/pull/135026)
+* Improves the block loader for source-only runtime fields with keyword scripts [#135026](https://github.com/elastic/elasticsearch/pull/135026)
 % Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
 * Adds relevant attributes to search took time APM metrics [#134232](https://github.com/elastic/elasticsearch/pull/134232)
 * Adds headers support for OpenAI chat completion [#134504](https://github.com/elastic/elasticsearch/pull/134504)
@@ -721,7 +721,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves the layout of the custom URLs list in {{ml-cap}} [#231751]({{kib-pull}}231751)
 * Returns 429 status code instead of 500 for timeout handlers [#133111](https://github.com/elastic/elasticsearch/pull/133111)
 * Allows configuring SAML private attributes [#133154](https://github.com/elastic/elasticsearch/pull/133154)
-* Adds ordinal range encode for tsid [#133018](https://github.com/elastic/elasticsearch/pull/133018)
+* Adds ordinal range encode for TSID (Time Series Identifier) [#133018](https://github.com/elastic/elasticsearch/pull/133018)
 
 ### Fixes [serverless-changelog-08252025-fixes]
 * Fixes a rendering issue that affected progress elements in Canvas [#232432]({{kib-pull}}232432)
@@ -1612,7 +1612,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Updates data feeds for anomaly detection jobs to exclude Elastic Agent and Beats processes [#213927]({{kib-pull}}213927)
 * Adds Mustache lambdas for alerting action [#213859]({{kib-pull}}213859)
 * Adds 'page reload' screen reader warning [#214822]({{kib-pull}}214822)
-* Use `FallbackSyntheticSourceBlockLoader` for `shape` and `geo_shape` [#124927](https://github.com/elastic/elasticsearch/pull/124927)
+* Uses `FallbackSyntheticSourceBlockLoader` for `shape` and `geo_shape` [#124927](https://github.com/elastic/elasticsearch/pull/124927)
 * Stores arrays offsets for numeric fields natively with synthetic source [#124594](https://github.com/elastic/elasticsearch/pull/124594)
 
 ### Fixes [elastic-cloud-serverless-03242025-fixes]
@@ -1852,7 +1852,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Reinstates switch to support generating public URLs for embed when supported [#207383]({{kib-pull}}207383)
 * Provides a fallback view to recover from Stack Alerts page filters bar errors [#209559]({{kib-pull}}209559)
 * Fixes synthetic source bug that would mishandle nested dense_vector fields [#122425](https://github.com/elastic/elasticsearch/pull/122425)
-* Fix issues that prevents using search only snapshots for indices that use index sorting. This includes Logsdb and time series indices [#122199](https://github.com/elastic/elasticsearch/pull/122199)
+* Fixes issues that prevent using search-only snapshots for indices that use index sorting. This includes LogsDB and time series indices [#122199](https://github.com/elastic/elasticsearch/pull/122199)
 
 ## February 10, 2025 [serverless-changelog-02102025]
 

@@ -39,7 +39,7 @@ For more information, view [#125060](https://github.com/elastic/elasticsearch/pu
 
 :::{dropdown} Don't enable norms for fields of type text when the index mode is LogsDB or TSDB
 
-This changes the default behavior for norms on `text` fields in logsdb and tsdb indices.
+This changes the default behavior for norms on `text` fields in LogsDB and TSDB indices.
 Prior to this change, norms were enabled by default, with the option to disable them via manual configurations.
 After this change, norms will be disabled by default.
 Note, because we dont support enabling norms from a disabled state, users will not be able to enable norms on `text` fields in logsdb and tsdb indices.
