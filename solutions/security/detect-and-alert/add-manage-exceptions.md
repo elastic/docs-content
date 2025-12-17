@@ -35,7 +35,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
 ## Requirements [exceptions-requirements]
 
-To use exceptions ensure your role has the appropriate access. 
+To use exceptions ensure your role has the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/detections-requirements.md).
 
 ### Exceptions requirements
 
@@ -66,7 +66,6 @@ To use exceptions ensure your role has the appropriate access.
 
 - **View only access**: To view {{elastic-endpoint}} exceptions, your role needs at least `Read` {{kib}} privileges for the **Security > Security > Endpoint Exceptions** subfeature. 
 - **Manage access**: To create and manage {{elastic-endpoint}} exceptions, your role needs `All` {{kib}} privileges for the **Security > Security > Endpoint Exceptions** subfeature. 
-
 
 ## Add exceptions to a rule [detection-rule-exceptions]
 
