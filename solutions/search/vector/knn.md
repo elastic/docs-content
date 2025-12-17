@@ -326,6 +326,14 @@ POST quantized-image-index/_search
 }
 ```
 
+### BFloat16 vector encoding [knn-search-bfloat16]
+```{applies_to}
+stack: ga 9.3
+```
+Instead of storing raw vectors as 4-byte values, you can use `element_type: bfloat16` to store each dimension as a 2-byte value. This can be useful if your indexed vectors are at bfloat16 precision already, or if you want to reduce the disk space required to store vector data. When this element type is used, {{es}} automatically rounds 4-byte float values to 2-byte bfloat16 values when indexing vectors.
+
+Due to the reduced precision of bfloat16, any vectors retrieved from the index might have slightly different values to those originally indexed.
+
 ### Filtered kNN search [knn-search-filter-example]
 
 The kNN search API supports restricting vector similarity search with a filter. The request returns the top `k` nearest neighbors that also satisfy the filter query, enabling targeted, pre-filtered approximate kNN in {{es}}.
@@ -1167,7 +1175,7 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
-* When using kNN search in [{{ccs}}](../../../solutions/search/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../solutions/search/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
+* When using kNN search in [{{ccs}}](../../../explore-analyze/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../explore-analyze/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
 * {{es}} uses the [HNSW algorithm](https://arxiv.org/abs/1603.09320) for efficient kNN. Like most approximate methods, HNSW trades perfect accuracy for speed, so results aren’t always the true *k* closest neighbors.
 
 ::::{note}
@@ -1227,6 +1235,16 @@ This example will:
 * Rescore the top 20 candidates (`oversample * k`) per shard using the original, non quantized vectors.
 * Return the top 10 (`k`) rescored candidates.
 * Merge the rescored candidates from all shards, and return the top 10 (`k`) results.
+
+#### The `on_disk_rescore` option
+```{applies_to}
+stack: preview 9.3
+serverless: unavailable
+```
+
+By default, {{es}} reads raw vector data into memory to perform rescoring. This can have an effect on performance if the vector data is too large to all fit in off-heap memory at once. When the `on_disk_rescore: true` index setting is set, {{es}} reads vector data directly from disk during rescoring.
+
+This setting only applies to newly indexed vectors. To apply the option to all vectors in the index, the vectors must be re-indexed or force-merged after changing the setting.
 
 #### Additional rescoring techniques [dense-vector-knn-search-rescoring-rescore-additional]
 
