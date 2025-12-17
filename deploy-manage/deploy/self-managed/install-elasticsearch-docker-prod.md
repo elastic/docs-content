@@ -11,9 +11,9 @@ The following requirements and recommendations apply when running {{es}} in Dock
 
 The following requirements and recommendations apply when running {{es}} in Docker in production.
 
-## Set `vm.max_map_count` to `1048576` [_set_vm_max_map_count_to_1048576]
+## Set `vm.max_map_count` [_set_vm_max_map_count]
 
-The `vm.max_map_count` kernel setting must be set to `1048576` for production use.
+For production use, the `vm.max_map_count` kernel setting must be set to `1048576` in {{es}} version 8.16 and onwards, or `262144` in other verions.
 
 How you set `vm.max_map_count` depends on your platform.
 
