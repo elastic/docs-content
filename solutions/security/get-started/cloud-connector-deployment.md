@@ -10,7 +10,7 @@ applies_to:
 
 Cloud connector authentication for agentless integrations reduces the administrative burden of authentating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud security providers. 
 
-## Where is cloud connector authentication supported?
+## Integrations that support cloud connector deployment
 
 Cloud connector authentication currently supports deployments of Elastic's Cloud Security Posture Management (CSPM) and Asset Discovery integrations to AWS and Azure. For deployment instructions, refer to:
 
@@ -20,3 +20,19 @@ Cloud connector authentication currently supports deployments of Elastic's Cloud
 ::::{important}
 {applies_to}`stack: removed 9.3` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
 ::::
+
+## Cloud connector names
+```{applies_to}
+stack: 9.3 preview
+serverless: preview
+```
+Cloud connector names help you keep track of each connector's purpose and reuse it appropriately. For example, you could name two AWS connectors `aws-prod` and `aws-testing`. 
+
+When you create a new cloud connector you must name it. When you're deploying an integration with a cloud connector, if you select **Existing connection** a dropdown menu with the names of existing cloud connectors appears. 
+
+To rename a connector, go to the **Existing connection** dropdown menu and click the **Edit** button next to its name, then enter a new name.
+
+Because cloud connector names were introduced with {{stack}} version 9.3, cloud connectors created in earlier versions have default names:
+
+  - For AWS cloud connectors: `Cloud Connector RoleARN`.
+  - For Azure cloud connectors: `Cloud Connector ID`. 

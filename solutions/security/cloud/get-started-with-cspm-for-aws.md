@@ -49,7 +49,7 @@ Two deployment technologies are available: agentless and agent-based.
 7. In **Deployment options** select **Agentless**.
 8. Next, you’ll need to authenticate to AWS. The following methods are available:
 
-    * Option 1: Cloud connector (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` 
+    * Option 1: [Cloud connector](/solutions/security/get-started/cloud-connector-deployment.md) (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` 
       * To use a pre-existing cloud connector for this deployment, select **Existing connection** then the cloud connector's name. 
       * To use a new cloud connector: under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
       ::::{important}
