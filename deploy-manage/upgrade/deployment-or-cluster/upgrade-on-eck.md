@@ -69,7 +69,7 @@ spec:
         - name: sysctl
           securityContext:
             privileged: true
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576']
         containers:
         - name: elasticsearch
           resources:
@@ -103,7 +103,7 @@ spec:
         - name: sysctl
           securityContext:
             privileged: true
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576']
         containers:
         - name: elasticsearch
           resources:
