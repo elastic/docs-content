@@ -84,8 +84,9 @@ To add a trusted application:
    Define more complex conditions, such as trusting specific file paths or remote IP addresses.
 
     1. `Select operating system`: Select the appropriate operating system from the drop-down.
-    2. `Field`: Select a field to identify the trusted application.
-    3. `Operator`: Select an operator to define the condition:
+    2. (Optional) Turn on the `Process Descendants` toggle to make your exception apply to processes that are descendants of your new trusted application.
+    3. `Field`: Select a field to identify the trusted application.
+    4. `Operator`: Select an operator to define the condition:
        * `is`
        * `is not`
        * `is one of`
@@ -100,8 +101,8 @@ To add a trusted application:
           Using wildcards can impact performance. To create a more efficient trusted application using wildcards, use multiple conditions and make them as specific as possible. For example, adding conditions using `process.name` or `file.name` can help limit the scope of wildcard matching.
           ::::
 
-    4. `Value`: Enter the value associated with the `Field`. To enter multiple values (when using `is one of` or `is not one of`), enter each value, then press **Return**. 
-    5. To define multiple conditions, click `AND` and configure a new condition. You can also add nested conditions by selecting `Add nested condition`.
+    5. `Value`: Enter the value associated with the `Field`. To enter multiple values (when using `is one of` or `is not one of`), enter each value, then press **Return**. 
+    6. To define multiple conditions, click `AND` and configure a new condition. You can also add nested conditions by selecting `Add nested condition`.
 
    :::::
 
