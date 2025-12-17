@@ -103,3 +103,8 @@ To view a case, click on its name. You can then:
 * Add and manage the following items:
    * Alerts
    * Files
+
+## Search cases [search-observability-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::

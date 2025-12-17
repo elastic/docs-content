@@ -148,3 +148,8 @@ To view a case, click on its name. You can then:
    * Alerts
    * Files
    * Observables
+
+## Search cases [search-stack-management-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::
