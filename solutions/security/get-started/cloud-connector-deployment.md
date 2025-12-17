@@ -18,12 +18,12 @@ Cloud connector authentication currently supports deployments of Elastic's Cloud
 - CSPM: [CSPM on Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md); [CSPM on AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md)
 
 ::::{important}
-{applies_to}`stack: removed 9.3` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+{applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
 ::::
 
 ## Cloud connector names
 ```{applies_to}
-stack: 9.3 preview
+stack: preview 9.3
 serverless: preview
 ```
 Cloud connector names help you keep track of each connector's purpose and reuse it appropriately. For example, you could name two AWS connectors `aws-prod` and `aws-testing`. 

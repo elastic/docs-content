@@ -53,7 +53,7 @@ Two deployment technologies are available: agentless and agent-based.
       * To use a pre-existing cloud connector for this deployment, select **Existing connection** then the cloud connector's name. 
       * To use a new cloud connector: under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
       ::::{important}
-      {applies_to}`stack: removed 9.3` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
       ::::
 
 
