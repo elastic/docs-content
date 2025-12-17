@@ -146,14 +146,24 @@ Customize your table to display exactly the information you need, formatted the 
         - **Number of values**: How many top values to display
         - **Rank by**: Which metric to use for ranking
         - **Rank direction**: Ascending or descending order
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
-      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets.
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
+      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the intervals granularity or specify custom ranges.
+        :::{dropdown} How does interval granularity work?
+        Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
+        
+        The size of the interval is a "nice" value. When the granularity of the slider changes, the interval stays the same when the “nice” interval is the same. The minimum granularity is 1, and the maximum value is histogram:maxBars. To change the maximum granularity, go to Advanced settings.
+        
+        Intervals are incremented by 10, 5 or 2. For example, an interval can be `100` or `0.2`.
+        :::
       - **Filters**: Define custom KQL filters to create specific row groups. Each filter creates one row in the table.
 
     - **Collapse by**: Aggregate rows that share the same value for this field into a single row, combining their metrics (for example, sum or average for each group). This is useful when you want to display a consolidated result for grouped values instead of individual rows.
 
-    :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
-    :::
+    
 
 **Appearance**
 :   - **Name**: Customize the column header label for the row dimension.
@@ -166,13 +176,25 @@ Customize your table to display exactly the information you need, formatted the 
 **Data**
 :   Optionally split your metrics into separate columns based on a categorical field. This creates a pivot table view where each unique value of the split field becomes its own column. This is useful for comparing the same metric across different categories side by side.
 
-    You can configure:
-    - **Number of values**: How many columns to create
-    - **Rank by**: Which metric determines the top values
-    - **Rank direction**: Sort order for selecting top values
-
-    :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
-    :::
+    - **Functions**:
+      - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
+        - **Number of values**: How many top values to display
+        - **Rank by**: Which metric to use for ranking
+        - **Rank direction**: Ascending or descending order
+        :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+        :::
+      - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
+        :::{include} ../../_snippets/lens-histogram-settings.md
+        :::
+      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the intervals granularity or specify custom ranges.
+        :::{dropdown} How does interval granularity work?
+        Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
+        
+        The size of the interval is a "nice" value. When the granularity of the slider changes, the interval stays the same when the “nice” interval is the same. The minimum granularity is 1, and the maximum value is histogram:maxBars. To change the maximum granularity, go to Advanced settings.
+        
+        Intervals are incremented by 10, 5 or 2. For example, an interval can be `100` or `0.2`.
+        :::
+      - **Filters**: Define custom KQL filters to create specific row groups. Each filter creates one row in the table. 
 
 **Appearance**
 :   - **Name**: Customize the split dimension. This name is not used on the table.
