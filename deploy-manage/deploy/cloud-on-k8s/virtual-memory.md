@@ -15,7 +15,7 @@ By default, {{es}} uses memory mapping (`mmap`) to efficiently access indices. D
 The kernel setting `vm.max_map_count=1048576` can be set on the host directly, by a dedicated init container which must be privileged, or a dedicated Daemonset.
 
 :::{important}
-For production use, configure `vm.max_map_count` to `1048576` in {{es}} version 8.16 and onwards, or `262144` in other verions.
+For {{es}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{es}} version 8.15 and earlier, set `vm.max_map_count` to `262144`.
 :::
 
 For more information, check the {{es}} documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).
