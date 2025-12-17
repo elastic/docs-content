@@ -95,8 +95,8 @@ If you use the [{{elastic-sec}} solution](/solutions/security.md), read the full
 
 In particular:
 - Export all custom detection rules as a backup before upgrading, in case there are issues with the detection engine after the upgrade.
-- Review [alert schema changes](https://www.elastic.co/guide/en/security/8.19/alert-schema.html) if alerts are forwarded to an external SOAR.
-- Plan for the [post-upgrade steps](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html#_post_upgrade_steps), such as re-enabling disabled rules after the upgrade.
+- Review [alert schema changes](https://www.elastic.co/guide/en/security/8.19/alert-schema.html) if alerts are forwarded to an external SOAR, or if you directly query alert data in custom dashboards or tools.
+- Plan for the [post-upgrade steps](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html#_post_upgrade_steps), such as re-enabling and verifying rules after the upgrade.
 :::::
 
 ### 8.19 upgrade preparations
