@@ -94,9 +94,9 @@ It's highly recommended to start this upgrade from the latest 7.17.x patch relea
 If you use the [{{elastic-sec}} solution](/solutions/security.md), read the full [Upgrade {{elastic-sec}} from 7.17 to 8.x](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html) guide when planning the upgrade.
 
 In particular:
-- Export all custom detection rules as a backup before upgrading, in case there are issues with the detection engine after the upgrade.
-- Review [alert schema changes](https://www.elastic.co/guide/en/security/8.19/alert-schema.html) if alerts are forwarded to an external SOAR, or if you directly query alert data in custom dashboards or tools.
-- Plan for the [post-upgrade steps](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html#_post_upgrade_steps), such as re-enabling and verifying rules after the upgrade.
+* Export all custom detection rules as a backup before upgrading, in case there are issues with the detection engine after the upgrade.
+* Review [alert schema changes](https://www.elastic.co/guide/en/security/8.19/alert-schema.html) if alerts are forwarded to an external SOAR, or if you directly query alert data in custom dashboards or tools.
+* Plan for the [post-upgrade steps](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html#_post_upgrade_steps), such as re-enabling and verifying rules after the upgrade.
 :::::
 
 ### 8.19 upgrade preparations
