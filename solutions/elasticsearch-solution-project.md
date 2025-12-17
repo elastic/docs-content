@@ -12,7 +12,11 @@ products:
 navigation_title: Elasticsearch solution
 ---
 
-# {{es}} solution & project type overview
+# {{es}} solution overview
+
+The {{es}} solution and serverless project type provide specialized UI tools that help you build search applications faster. The solution is an optional complement to the core {{es}} [search capabilities](/solutions/search.md) which are available through APIs across all deployment types, solutions, and project types.[^api-note]
+
+These UI affordances are exclusive to the {{es}} solution (on non-serverless deployments) and the {{es}} serverless project type.
 
 ::::{tip}
 Not sure which deployment type is right for you? Use the following resources to help you decide:
@@ -23,13 +27,9 @@ Not sure which deployment type is right for you? Use the following resources to 
 ::::
 
 
-The {{es}} solution and serverless project type provide specialized UI tools and interfaces that help you build search applications on top of the {{es}} platform.
-
-These UI affordances are exclusive to the {{es}} **solution** (on non-serverless deployments) and the {{es}} serverless **project type**. They complement the core [search primitives](/solutions/search.md) available across all Elastic deployments.
-
 ## Features and tools
 
-The {{es}} solution provides the following specialized UI tools:
+The {{es}} solution provides the following specialized UI tools and features to help you build search applications faster:
 
 ### Agent Builder
 
@@ -41,15 +41,11 @@ The {{es}} solution provides the following specialized UI tools:
 
 ### Synonyms UI
 
-The [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md) interface provides a dedicated UI for managing synonym sets directly within {{kib}}, making it easier to improve search relevance without editing configuration files.
+The [synonyms UI](/solutions/search/full-text/search-with-synonyms.md#method-1-kib-ui) enables managing synonym sets directly within {{kib}}. This makes it easier to improve search relevance without editing configuration files.
 
 ### Query Rules UI
 
-[Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md) enables you to create and manage query rules that modify search behavior based on specific conditions, helping you deliver more relevant results for common queries.
-
-### AI Assistant
-
-The [AI Assistant](/solutions/elasticsearch-solution-project/ai-assistant.md) provides intelligent assistance and insights across the Elastic platform, helping you understand your data and workflows more effectively.
+The [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md) enables you to create and manage query rules that modify search behavior based on specific conditions, helping you deliver more relevant results for common queries.
 
 ### Model Context Protocol (MCP)
 
@@ -66,3 +62,5 @@ For a deeper understanding of search concepts and techniques, refer to the [Sear
 * [Search use case documentation](/solutions/search.md)
 * [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
 * [{{es}} API documentation]({{es-apis}})
+
+[^api-note]: Certain APIs are not available on serverless deployments because they are fully managed by Elastic. Refer to [Available Elasticsearch APIs](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-apis-availability) for details.

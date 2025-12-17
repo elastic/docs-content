@@ -12,9 +12,7 @@ products:
 
 ::::{admonition} 🍿 Prefer a video introduction?
 Check out [this short video](https://www.youtube.com/watch?v=OS4ZefUPAks) from the Elastic Snackable Series.
-
 ::::
-
 
 Retrieval Augmented Generation (RAG) is a technique for improving language model responses by grounding the model with additional, verifiable sources of information. It works by first retrieving relevant context from an external datastore, which is then added to the model’s context window.
 
@@ -57,20 +55,29 @@ The workflow is as follows:
 
 ::::{tip}
 A more advanced setup might include query rewriting between steps 1 and 2. This intermediate step could use one or more additional language models with different instructions to reformulate queries for more specific and detailed responses.
-
 ::::
 
+## Building RAG applications [rag-elasticsearch-getting-started]
 
+You can build RAG applications with {{es}} by retrieving relevant context from your indices and passing it to a language model. The basic approach works across all deployment types, solutions, and project types:
 
-## Getting started [rag-elasticsearch-getting-started]
+1. Use {{es}} search capabilities (full-text, vector, semantic, or hybrid search) to retrieve relevant documents
+2. Pass the retrieved content as context to your language model
+3. The language model generates a response grounded in your data
 
-Start building RAG applications quickly with Playground, which seamlessly integrates {{es}} with language model providers. The Playground UI enables you to build, test, and deploy RAG interfaces on top of your {{es}} indices.
+### Core search options
 
-Playground automatically selects the best retrieval methods for your data, while providing full control over the final {{es}} queries and language model instructions. You can also download the underlying Python code to integrate with your existing applications.
+**{{esql}} `COMPLETION` command:** Use the [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) command to send prompts and context directly to language models within your {{esql}} queries.
 
-::::{note}
-Playground is available as part of the {{es}} solution and serverless project type. Learn more in the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md) and try the [interactive lab](https://www.elastic.co/demo-gallery/ai-playground) for hands-on experience.
-::::
+**Agent Builder:** Create AI agents that can search your {{es}} indices, use tools, and maintain conversational context. Agent Builder provides a complete framework for building stateful RAG applications. Learn more in the [Agent Builder documentation](/solutions/elasticsearch-solution-project/elastic-agent-builder.md).
+
+**Custom implementation:** Retrieve documents using any {{es}} [search approach](/solutions/search/search-approaches.md) (Query DSL, {{esql}}, or retrievers), then integrate with your choice of language model provider in your applications code using their APIs or SDKs.
+
+### {{es}} solution UI tools
+
+If you're using the {{es}} solution or serverless project type, these additional tools provide enable RAG workflows:
+
+**Playground:** Build, test, and deploy RAG interfaces with a UI that automatically selects retrieval methods and provides full control over queries and model instructions. Download Python code to integrate with your applications. Learn more in the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md).
 
 
 ## Learn more [rag-elasticsearch-learn-more]

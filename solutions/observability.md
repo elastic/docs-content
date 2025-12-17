@@ -14,7 +14,7 @@ products:
   - id: edot-collector
 ---
 
-# Elastic Observability  solution & project type overview
+# Elastic Observability solution overview
 
 :::{include} ../get-started/_snippets/observability-overview.md
 :::
