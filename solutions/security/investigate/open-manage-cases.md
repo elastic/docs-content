@@ -168,6 +168,14 @@ You can find the **Events** tab in the following places:
 :::{include} /solutions/_snippets/add-case-files.md
 :::
 
+::::{important}
+When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported. 
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
 ### Add observables [cases-add-observables]
 
 :::{include} /solutions/_snippets/add-case-observables.md

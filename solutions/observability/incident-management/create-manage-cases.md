@@ -119,6 +119,14 @@ From the **Attachments** tab, you can search for specific alert IDs and file nam
 :::{include} /solutions/_snippets/add-case-files.md
 :::
 
+::::{important}
+When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported. 
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
 ## Search cases [search-stack-management-cases]
 
 :::{include} /solutions/_snippets/search-cases.md
