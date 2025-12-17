@@ -219,7 +219,7 @@ An observable is a piece of information about an investigation, for example, a s
 To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
 
 - {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
 
 ::::{important}
 Each case can have a maximum of 50 observables.
@@ -317,3 +317,8 @@ To import a case:
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
+
+## Search cases [search-security-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::
