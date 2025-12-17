@@ -470,7 +470,7 @@ Deleting an index permanently deletes its documents, shards, and metadata.
 ## Next steps
 
 This quickstart introduced the basics of creating indices, adding data, and performing basic searches with {{es}}.
-To try out similar steps from the {{es}} Python client, go to [](/solutions/elasticsearch-solution-project/get-started/keyword-search-python.md).
+To try out similar steps from the {{es}} Python client, go to [](/solutions/search/get-started/keyword-search-python.md).
 The following resources will help you understand {{es}} concepts better and dive into the basics of query languages for searching data:
 
 * [Fundamentals of Elasticsearch](/manage-data/data-store.md)

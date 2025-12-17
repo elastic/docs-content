@@ -66,12 +66,6 @@ toc:
         children:
           - file: search/site-or-app/clients.md
           - file: search/site-or-app/search-ui.md
-          - file: search/search-applications.md
-            children:
-              - file: search/search-applications/search-application-api.md
-              - file: search/search-applications/search-application-security.md
-              - file: search/search-applications/search-application-client.md
-
       - file: search/apis-and-tools.md
   - file: elasticsearch-solution-project.md
     children:
