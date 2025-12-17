@@ -7,8 +7,6 @@ applies_to:
 
 # APM agents
 
-% TO-DO: Add links to "APM basics"%
-
 This section contains reference information for APM Agents features, including:
 
 * [APM .NET agent](apm-agent-dotnet://reference/index.md)
