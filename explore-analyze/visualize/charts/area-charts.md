@@ -35,7 +35,7 @@ Using the **Visualization type** dropdown, select **Area**.
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
 
-2. Drag a time-based field to the **Horizontal axis** and numeric field to the **Vertical axis**. Click the axes fields and check which functions Kibana suggests based on the field type. You can change it and use aggregation functions like Date histogram, Intervals, Filters, Top values, and more, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
+2. Drag a time-based field to the **Horizontal axis** and numeric field to the **Vertical axis**. Click each axis field to see the functions Kibana recommends based on the field type. You can use aggregation options like Date histogram Intervals, Filters, Top values, and more, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
 3. Optionally, you can use the **Breakdown** settings to segment your data by a categorical field, creating multiple areas within the same chart. For example, to break down CPU usage by host, show request counts by service or endpoint, or visualize error rates by environment or region.
 :::::
