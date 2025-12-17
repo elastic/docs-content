@@ -26,12 +26,45 @@ The following is a list of typical upgrade preparation tasks and best practices:
 * When using a `docker-compose.yml` make sure to update the desired version in the configuration file or the environment variable.
 
 
-## Upgrade process [upgrade-process]
+## Hardened Docker images [docker-wolfi-images]
+
+You can also use the hardened [Wolfi](https://wolfi.dev/) image for additional security. Using Wolfi images requires Docker version 20.10.10 or higher.
+
+To use the Wolfi image, append `-wolfi` to the image tag in the Docker command.
+
+For example:
+
+```sh subs=true
+docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:<x.y.z>
+```
+
+Replace `<x.y.z>` with the version number you want to upgrade to.
+
+
+## Upgrade {{es}} running on Docker [upgrade-process]
 
 1. Pull the new version of the {{es}} Docker image from Elastic's Docker registry using the `docker pull` command. Replace `<x.y.z>` with the version number you want to upgrade to.
 
     ```shell
     docker pull docker.elastic.co/elasticsearch/elasticsearch:<x.y.z>
+    ```
+
+1. Optional: Install [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
+Replace `<x.y.z>` with the version of the Docker image you downloaded.
+
+    ```sh subs=true
+    wget https://artifacts.elastic.co/cosign.pub
+    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<x.y.z>
+    ```
+
+    The `cosign` command prints the check results and the signature payload in JSON format:
+
+    ```sh subs=true
+    Verification for docker.elastic.co/elasticsearch/elasticsearch:<x.y.z> --
+    The following checks were performed on each of these signatures:
+      - The cosign claims were validated
+      - Existence of the claims in the transparency log was verified offline
+      - The signatures were verified against the specified public key
     ```
 
 1. Stop the currently running {{es}} container. Replace `<container_name>` with the name or ID of your {{es}} container.
