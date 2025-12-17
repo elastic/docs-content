@@ -13,7 +13,7 @@ The following requirements and recommendations apply when running {{es}} in Dock
 
 ## Set `vm.max_map_count` [_set_vm_max_map_count]
 
-For production use, the `vm.max_map_count` kernel setting must be set to `1048576` in {{es}} version 8.16 and onwards, or `262144` in other verions.
+The `vm.max_map_count` kernel setting must be set to `1048576`.
 
 How you set `vm.max_map_count` depends on your platform.
 
