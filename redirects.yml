@@ -611,6 +611,16 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/3808
   'solutions/observability/get-started/other-tutorials/add-data-from-splunk.md': 'solutions/observability/get-started.md'
 
+
+# Related to https://github.com/elastic/docs-content/pull/4224
+  'solutions/security/ai/connect-to-amazon-bedrock.md': 'explore-analyze/ai-features/llm-guides/connect-to-amazon-bedrock.md'
+  'solutions/security/ai/connect-to-azure-openai.md': 'explore-analyze/ai-features/llm-guides/connect-to-azure-openai.md'
+  'solutions/security/ai/connect-to-google-vertex.md': 'explore-analyze/ai-features/llm-guides/connect-to-google-vertex.md'
+  'solutions/security/ai/connect-to-openai.md': 'explore-analyze/ai-features/llm-guides/connect-to-openai.md'
+  'solutions/security/ai/set-up-connectors-for-large-language-models-llm.md': 'explore-analyze/ai-features/llm-guides/llm-connectors.md'
+  'solutions/observability/connect-to-own-local-llm.md': 'explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md'
+  'solutions/security/ai/connect-to-own-local-llm.md': 'explore-analyze/ai-features/llm-guides/connect-to-lmstudio-security.md'
+  'solutions/security/ai/connect-to-vLLM.md': 'explore-analyze/ai-features/llm-guides/connect-to-vLLM.md'
 # Related to move-jobs.md deletion - content moved to setting-up-machine-learning.md
   'explore-analyze/machine-learning/anomaly-detection/move-jobs.md': 'explore-analyze/machine-learning/setting-up-machine-learning.md'
 # Related to https://github.com/elastic/docs-content/issues/2662
@@ -627,3 +637,7 @@ redirects:
   'solutions/security/cloud/integrations/rapid7.md': 'solutions/security/integrations/rapid7.md'
   'solutions/security/cloud/integrations/tenablevm.md': 'solutions/security/integrations/tenablevm.md'
   'solutions/security/cloud/integrations/wiz.md': 'solutions/security/integrations/wiz.md'
+
+  # Move CCS feature docs to explore-analyze
+  'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
+  'solutions/search/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
