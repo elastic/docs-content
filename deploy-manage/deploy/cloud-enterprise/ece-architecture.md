@@ -86,7 +86,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
     Docker containers communicate securely with one another through Transport Layer Security, provided by [Stunnel](https://www.stunnel.org/) (as not all of the services or components support TLS natively). Tunneling all traffic between containers makes sure that it is not possible to eavesdrop, even when someone else has access to the underlying cloud or network infrastructure.
 
-## ECE service containers per host role(s) [ece-service-containers]
+## ECE service containers by host role [ece-service-containers]
 
 Each {{ece}} service runs as a dedicated container. These containers are automatically deployed based on the roles assigned to each ECE host. The following table lists the containers on ECE hosts, along with the host roles that include each container:
 
