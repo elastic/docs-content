@@ -284,8 +284,9 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.10.5
-  helm-version: 3.15.4
+  helm-version: 3.19.3
   ece-docker-images-8: 8.18.8
   ece-docker-images-9: 9.0.8
+  search-platform: "Search AI Platform"
 
 
