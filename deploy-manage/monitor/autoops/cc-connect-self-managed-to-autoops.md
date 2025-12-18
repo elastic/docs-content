@@ -221,6 +221,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
 
+$$$firewall-allowlist$$$
 :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
 :::
 
