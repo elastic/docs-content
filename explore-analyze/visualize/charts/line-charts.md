@@ -124,7 +124,7 @@ Customize your line chart to display exactly the information you need, formatted
 The Breakdown bucket lets you compare trends across different categories within the same visualization.
 
 ### General layout [appearance-options]
-When creating or editing a visualization, open the {icon}`brush` panel to adjust:
+When creating or editing a visualization, open the {icon}`brush` **Style** panel to adjust:
 
 - **Title and subtitle**: Add context like “Last 24 hours”.
 - **Axes**: Set titles, units, scale (linear/log/percentage), and grid lines.
