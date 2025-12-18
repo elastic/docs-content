@@ -63,7 +63,7 @@ The panel has the following:
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 The panel has the following:
-* **Rules with gaps:** Tells you the number of rules with unfilled gaps (left metric) and the number of rules with gaps being filled (right metric) within the selected time range.
+* **Rules with gaps:** Tells you the number of rules with gaps (left metric) and the number of rules with gaps that are being filled (right metric). The metric shows data from the last 90 days.
 :::
 
 ::::
@@ -73,7 +73,12 @@ Within the Rules table, several columns provide additional gap data:
 
 * **Last Gap (if any)**: Shows how long the most recent gap for a particular rule lasted.
 * **Unfilled gaps duration**: Shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the selected time range. If a rule has no gaps, the columns display a dash (`––`). 
-* {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga`**Gap fill status**: Shows...
+* {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga`**Gap fill status**: Shows the status of the rule's gaps. If a rule has any unfilled gaps, the gap status is `Unfilled`. If the rule has any gaps that are being filled, the status is `In progress`. Once all gaps have been filled, the status is `Filled`. 
+
+    ::::{tip}
+    :applies_to:{stack: ga 9.3, serverless: ga}
+    Use the **Gap fill status** filter in the Rules table to find rules with the gap status you specify. 
+    ::::
 
 To fill gaps for multiple rules, use the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) from the Rule's table. For a more detailed view of a rule's gaps, click the rule name to open its details, then go to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table) on the rule's **Execution results** tab. 
 
