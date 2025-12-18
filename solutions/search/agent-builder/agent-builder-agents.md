@@ -18,6 +18,10 @@ An agent parses user requests to define a goal and then runs tools in a loop to 
 
 When you ask a question to an agent, it analyzes your request to define a specific goal. It selects the most appropriate tools and determines the right arguments to use. The agent evaluates the information returned after each action and decides whether to use additional tools or formulate a response. This iterative process of tool selection, execution, and analysis continues until the agent can provide a complete answer.
 
+:::{note}
+This iterative process consumes tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md#token-usage-in-elastic-agent-builder).
+:::
+
 {{agent-builder}} includes a default agent (named `Elastic AI Agent`) with access to all built-in tools. You can create specialized agents with custom instructions and selected tools to address specific use cases or workflows.
 
 :::{note}

@@ -34,6 +34,10 @@ Tools enable agents to work with {{es}} data. When an agent receives a natural l
 
 Each tool is an atomic operation with a defined signature - accepting typed parameters and returning structured results in a format the agent can parse, transform, and incorporate into its response generation.
 
+:::{note}
+Tool execution and result processing consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md#token-usage-in-elastic-agent-builder).
+:::
+
 ## Built-in tools
 
 {{agent-builder}} ships with a comprehensive set of built-in tools that provide core capabilities for working with your {{es}} data. These tools are ready to use. They cannot be modified or deleted.
