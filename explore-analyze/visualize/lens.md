@@ -261,7 +261,7 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 ### Use formulas to perform math [lens-formulas]
 
-When you're defining the fields and data to show in a visualization, formulas allow you to perform math on aggregated data. For examlpe, you can use formulas to divide two values and produce a percent value.
+When you're defining the fields and data to show in a visualization, formulas allow you to perform math on aggregated data. For example, you can use formulas to divide two values and produce a percent value.
 
 1. Add a field to your visualization and select it to open its data and appearance settings.
 2. Select **Formula**, then enter the formula.
