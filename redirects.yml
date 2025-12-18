@@ -610,7 +610,7 @@ redirects:
   'solutions/security/ai/set-up-connectors-for-large-language-models-llm.md': 'explore-analyze/ai-features/llm-guides/llm-connectors.md'
   'solutions/observability/connect-to-own-local-llm.md': 'explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md'
   'solutions/security/ai/connect-to-own-local-llm.md': 'explore-analyze/ai-features/llm-guides/connect-to-lmstudio-security.md'
-  'solutions/security/ai/connect-to-vllm.md': 'explore-analyze/ai-features/llm-guides/connect-to-vllm.md'
+  'solutions/security/ai/connect-to-vLLM.md': 'explore-analyze/ai-features/llm-guides/connect-to-vLLM.md'
 # Related to move-jobs.md deletion - content moved to setting-up-machine-learning.md
   'explore-analyze/machine-learning/anomaly-detection/move-jobs.md': 'explore-analyze/machine-learning/setting-up-machine-learning.md'
 # Related to https://github.com/elastic/docs-content/issues/2662

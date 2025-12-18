@@ -132,6 +132,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
 
+## 9.1.9 [elastic-observability-9.1.9-release-notes]
+
+### Features and enhancements [elastic-observability-9.1.9-features-enhancements]
+*  Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
+
+### Fixes [elastic-observability-9.1.9-fixes]
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+
 ## 9.1.8 [elastic-observability-9.1.8-release-notes]
 
 ### Features and enhancements [elastic-observability-9.1.8-features-enhancements]

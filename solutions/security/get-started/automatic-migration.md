@@ -16,13 +16,31 @@ For rule migrations, if comparable Elastic-authored rules exist, Automatic Migra
 
 You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
-::::{admonition} Requirements
-* The `SIEM migrations: All` Security sub-feature privilege.
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.0" }
+**Requirements**
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+
+:::
+
+:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+**Requirements**
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature and at least `Read` privileges for the **Security > Rules** {{kib}} feature.
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
+
 ::::
 
 ::::{admonition} Dashboard migration limitations
