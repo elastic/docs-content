@@ -123,7 +123,24 @@ Customize your line chart to display exactly the information you need, formatted
 
 ### Breakdown settings [breakdown-settings]
 
-The Breakdown bucket lets you compare trends across different categories within the same visualization.
+Breakdown functions segment your data into multiple lines on the same chart, with each line representing a different value of a categorical field. You can specify the following options:
+
+**Data**
+:   
+    - **Functions**:
+      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+      - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
+      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
+      - **Top values**: Create separate lines for the most common values in a field.
+
+Depending on the function and type of field that you select, you can specify more advanced settings.
+
+**Appearance**
+:   Allow you to customize how your breakdown data is displayed in line charts, including:
+
+    - **Name**: It's a best practice to customize this with a meaningful title.
+    - **Value format**: Control how numeric values are displayed in your visualization.
+    - **Color mapping**: Determine how colors are assigned to your breakdown series.
 
 ### General layout [appearance-options]
 When creating or editing a visualization, open the {icon}`brush` **Style** panel to adjust:
