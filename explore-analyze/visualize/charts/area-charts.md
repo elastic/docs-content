@@ -82,7 +82,7 @@ Use stacking to show how categories contribute to a total over time.
 
      ![Example Lens area chart percentage mode](../../images/kibana-area-percentage.png " =70%")
 
-4. Optionally, in the **Beakdown** settings, you can set **Rank by** to specify the dimension the top values are ranked by.
+4. Optionally, in the **Breakdown** settings, you can set **Rank by** to specify the dimension the top values are ranked by.
 
 ### Compare current versus previous period with time shift [area-timeshift]
 
