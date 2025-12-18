@@ -31,14 +31,13 @@ This Hot/Frozen – High Availability architecture is intended for organizations
 * Deploy an architecture model that allows for maximum flexibility between storage cost and performance.
 
 ::::{important}
-**Automated operations that frequently read large data volumes require both high availability (replicas) and predictable low latency (hot, warm or cold tier).**
+Automated operations that frequently read large data volumes require both high availability (replicas) and predictable low latency (local compute and storage).
 
 * Common examples of these tasks include look-back windows on security detection/alert rules, transforms, machine learning jobs, or watches; and long running scroll queries or external extract processes.
-* These operations should be completed before moving the data into a frozen tier.
+
+* If these operations will use a frozen tier, the ([‘replicate_for’](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot#ilm-searchable-snapshot-options) option needs to be used to keep local shard replicas in the frozen tier for the duration required for all automated processes to run.
 
 ::::
-
-
 
 ## Architecture [hot-frozen-architecture-diagram]
 
@@ -71,7 +70,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 | ![Hot data node](/deploy-manage/images/reference-architectures-hot.png "") | c6gd | f32sv2 | N2 | 16-32 vCPU<br>64 GB RAM<br>2-6 TB NVMe SSD |
 | ![Frozen data node](/deploy-manage/images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
 | ![Machine learning node](/deploy-manage/images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |
-| ![Master node](/deploy-manage/images/reference-architectures-master.png "") | c5d | f16sv2 | N2 | 8 vCPU<br>16 GB RAM<br>256 GB SSD |
+| ![Master node](/deploy-manage/images/reference-architectures-master.png "") | c5d | f16sv2 | N2 | 4 vCPU<br>16 GB RAM<br>256 GB SSD |
 | ![{{kib}} node](/deploy-manage/images/reference-architectures-kibana.png "") | c6gd | f16sv2 | N2 | 8-16 vCPU<br>8 GB RAM<br>256 GB SSD |
 
 
@@ -88,6 +87,13 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 **Shard management:**
 
 * The most important foundational step to maintaining performance as you scale is proper shard management. This includes even shard distribution amongst nodes, shard size, and shard count. For a complete understanding of what shards are and how they should be used, refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
+* Distributed systems are only as fast as the slowest node shard/node. Example: 10 data nodes + 11 primary shards = one node holds 2 primaries = that node does 2× ingest work = overall ingest can be ~2× slower (everyone waits on the hot node).
+
+* Hot-tier shard rule (time series): primary_shards = floor((hot_nodes − 1) / 2) with 1 replica (balances ingest vs search + fault tolerance). Adjust templates as hot nodes scale. Apply only to the top ~10 EPS indices.
+
+* Ops targets: rollover at 30–40 GB per shard; avoid empty/low-volume shards; cap at ≤100k shards/cluster.
+
+* Non–time series: pick a 12–24 month target state, overshard early, then split as needed.
 
 **Snapshots:**
 
