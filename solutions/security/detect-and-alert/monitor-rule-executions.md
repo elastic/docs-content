@@ -37,24 +37,48 @@ On the **Rule Monitoring** tab, you can [sort and filter rules](../detect-and-al
 To sort the rules list, click any column header. To sort in descending order, click the column header again.
 ::::
 
-
 For detailed information on a rule, the alerts it generated, and associated errors, click on its name in the table. This also allows you to perform the same actions that are available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
 
-For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The panel contains the following:
+### Find rule execution gaps [rule-monitoring-tab-gaps]
 
-* **Time filter**: Allows you to select a time range for viewing gap data. 
-* **Total rules with gaps:** Provides metrics for rules with gaps:
-  
-  * {applies_to}`stack: ga 9.0` Tells you how many rules have unfilled or partially filled gaps within the selected time range. 
-  * {applies_to}`stack: ga 9.1` Tells you the number of rules with unfilled gaps (left metric) and the number of rules with gaps being filled (right metric). 
-  
-* {applies_to}`stack: ga 9.0` **Only rules with gaps**: Filters the Rules table to only display rules with unfilled or partially filled gaps.
-* {applies_to}`stack: ga 9.1` **Only rules with unfilled gaps**: Filters the Rules table to only display rules with unfilled gaps. Note that the filter excludes rules with gaps that are being filled. 
+Gaps in rule executions are periods of time where a rule didn’t run. They can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
 
-Within the Rules table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`). 
+The **Rule Monitoring** tab provides a starting point to begin understanding and remediating gaps. From the tab, you can quickly understand details such as the total number of rules with gaps, which rules have gaps, and more.
 
-::::{tip}
-For a detailed view of a rule's gaps, go to the **Execution results** tab and check the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
+The total number of rules with gaps is tracked in the panel above the Rules table. The information and functionality that the panel provides depends on the version of {{elastic-sec}} that you're using.
+
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.0" }
+The panel contains the following fields and filters:
+* **Time filter**: Allows you to select a time range for viewing gap data.
+* **Total rules with gaps:** Tells you how many rules have unfilled or partially filled gaps within the selected time range.
+* **Only rules with gaps**: Filters the Rules table to only display rules with unfilled or partially filled gaps.
+:::
+
+:::{applies-item} { "stack": "ga 9.1" }
+The panel contains the following fields and filters:
+* **Time filter**: Allows you to select a time range for viewing gap data.
+* **Total rules with gaps:** Tells you the number of rules with unfilled gaps (left metric) and the number of rules with gaps being filled (right metric) within the selected time range.
+* **Only rules with unfilled gaps**: Filters the Rules table to only display rules with unfilled gaps. Note that the filter excludes rules with gaps that are being filled.
+:::
+
+:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+The panel contains the following fields:
+* **Rules with gaps:** Tells you the number of rules with unfilled gaps (left metric) and the number of rules with gaps being filled (right metric) within the selected time range.
+:::
+
+::::
+
+
+Within the Rules table, several columns provide additional data on gaps:
+
+* **Last Gap (if any)**: Conveys how long the most recent gap for a particular rule lasted.
+* **Unfilled gaps duration**: Shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the selected time range. If a rule has no gaps, the columns display a dash (`––`). 
+* {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga`**Gap fill status**: Shows...
+
+::::{note}
+For a more detailed view of a rule's gaps, go to the rule's **Execution results** tab, and find the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
 ::::
 
 ## Execution results tab [rule-execution-logs]
@@ -97,13 +121,11 @@ Use these controls to filter what’s included in the logs table:
    stack: preview 9.0, ga 9.1
 ```
 
-Gaps in rule executions are periods of time where a rule didn’t run. They can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
+Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. In {{stack}} 9.1 and Serverless, fill all gaps for the current rule by clicking **Fill all gaps** in the Gaps table. 
 
 ::::{tip}
 Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
 ::::
-
-Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. In {{stack}} 9.1 and Serverless, fill all gaps for the current rule by clicking **Fill all gaps** in the Gaps table. 
 
 ::::{note}
 {applies_to}`stack: ga 9.1` From the Rules table, fill gaps for multiple rules with the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules).
