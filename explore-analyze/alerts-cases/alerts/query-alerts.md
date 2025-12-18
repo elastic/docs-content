@@ -130,6 +130,7 @@ GET /.internal.alerts-*/_search
  },
  "size": 100
 }
+```
 
 The following sample request retrieves 100 active alerts:
 
