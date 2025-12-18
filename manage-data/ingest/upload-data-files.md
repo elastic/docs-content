@@ -12,46 +12,65 @@ products:
 
 # Upload data files [upload-data-kibana]
 
-% What needs to be done: Align serverless/stateful
+You can upload files, analyze their fields and metrics, and import their data into an {{es}} index using the Data Visualizer.
 
-% Use migrated content from existing pages that map to this page:
+1. Open the **Integrations** page using the global search field, then search for **Upload a file** using the integrations search field.
 
-% - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-ingest-data-file-upload.md
-% - [x] ./raw-migrated-files/kibana/kibana/connect-to-elasticsearch.md
+2. Click **Upload a file** to open the Data Visualizer UI.
 
-% Note from David: I've removed the ID $$$upload-data-kibana$$$ from manage-data/ingest.md as those links should instead point to this page. So, ensure that the following ID is included on this page. I've added it beside the title.
+3. Depending on your version and deployment:
 
-You can upload files, view their fields and metrics, and optionally import them to {{es}} with the Data Visualizer.
+    ::::{applies-switch}
 
-To use the Data Visualizer, click **Upload a file** on the {{es}} **Getting Started** page or navigate to the **Integrations** view and search for **Upload a file**. Clicking **Upload a file** opens the Data Visualizer UI.
+    :::{applies-item} stack: ga 9.0.0-9.1.8
 
-:::{image} /manage-data/images/serverless-file-uploader-UI.png
-:alt: File upload UI
-:screenshot:
-:::
+    1. Drag a file into the upload area or click **Select or drag and drop a file** to choose a file from your computer.
 
-Drag a file into the upload area or click **Select or drag and drop a file** to choose a file from your computer.
+        You can upload different file formats for analysis with the Data Visualizer.
 
-You can upload different file formats for analysis with the Data Visualizer:
+        The supported file formats are:
+          * CSV, TSV, NDJSON, log files (up to 500 MB)
+          * PDF, TXT, RTF, ODF, Microsoft Office files (up to 60 MB)
 
-File formats supported up to 500 MB:
+        After you upload a file, you can inspect its data and make any necessary changes before importing it.
 
-* CSV
-* TSV
-* NDJSON
-* Log files
+    2. Click **Import**.
 
-File formats supported up to 60 MB:
+    3. Enter a name for the index where the data will be stored, then click **Import** again to complete the process.
 
-* PDF
-* Microsoft Office files (Word, Excel, PowerPoint)
-* Plain Text (TXT)
-* Rich Text (RTF)
-* Open Document Format (ODF)
+    :::
 
-The Data Visualizer displays the first 1000 rows of the file. You can inspect the data and make any necessary changes before importing it. Click **Import** continue the process.
+    :::{applies-item} stack: ga 9.2
 
-This process will create an index and import the data into {{es}}. Once your data is in {{es}}, you can start exploring it, see [Explore and analyze](/explore-analyze/index.md) for more information.
+    1. Choose whether to import the data to a new index or to an existing one.
+    2. Enter a name for the new index or select an existing index from the dropdown.
+    3. Drag one or more files into the upload area or click **Select or drag and drop a file** to choose files from your computer.
+
+       The supported file formats are PDF, TXT, CSV, log files and NDJSON.
+
+       After you upload your files, you can inspect the data and make any necessary changes before importing it.
+
+    4. Click **Import** to complete the process.
+
+    :::
+
+    :::{applies-item} serverless: ga
+
+    1. Choose whether to import the data to a new index or to an existing one.
+    2. Enter a name for the new index or select an existing index from the dropdown.
+    3. Drag one or more files into the upload area or click **Select or drag and drop a file** to choose files from your computer.
+
+       The supported file formats are PDF, TXT, CSV, log files and NDJSON.
+
+       After you upload your files, you can inspect the data and make any necessary changes before importing it.
+
+    4. Click **Import** to complete the process.
+
+    :::
+
+    ::::
+
+After the uploaded data is imported into the specified {{es}} index, you can start exploring it. For more details, refer to [Explore and analyze](/explore-analyze/index.md).
 
 ::::{important}
 The upload feature is not intended for use as part of a repeated production process, but rather for the initial exploration of your data.
