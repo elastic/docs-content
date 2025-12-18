@@ -128,7 +128,7 @@ serverless:
   security: unavailable
 ```
 
-You can customize the {{kib}} landing page on a per-space basis to create a tailored experience for users. For example, you can direct users to a specific dashboard, application, or saved object. Users navigate to the custom landing page when: 
+Customize the {{kib}} landing page on a per-space basis to create a tailored experience for users. For example, you can direct users to a specific dashboard, application, or saved object. Users navigate to the custom landing page when: 
 - They enter the space.
 - {applies_to}`stack: ga 9.3` They select the {icon}`logo_elastic` logo in the header.
 
