@@ -38,7 +38,7 @@ Using the visualization type dropdown, select **Line**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
-   - Add a [reference line](../lens.md#add-reference-lines) to mark targets or SLOs.
+   - Add layers to your chart to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 :::::
 
 :::::{step} Customize the chart to follow best practices
