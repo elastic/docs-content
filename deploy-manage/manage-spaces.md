@@ -128,8 +128,8 @@ serverless:
   security: unavailable
 ```
 
-You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object for example. Spaces users navigate to the custom landing page when: 
-- They enter a space.
+You can customize the {{kib}} landing page on a per-space basis to create a tailored experience for users. For example, you can direct users to a specific dashboard, application, or saved object. Users navigate to the custom landing page when: 
+- They enter the space.
 - {applies_to}`stack: ga 9.3` They select the {icon}`logo_elastic` logo in the header.
 
 To configure the landing page, use the default route setting in the [{{kib}} advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
