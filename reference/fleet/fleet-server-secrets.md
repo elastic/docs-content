@@ -6,7 +6,7 @@ products:
   - id: elastic-agent
 ---
 
-# Fleet Server Secrets [fleet-server-secrets]
+# {{fleet-server}} secrets [fleet-server-secrets]
 
 {{fleet-server}} configuration can contain secret values. You may specify these values directly in the configuration or through secret files. You can use command line arguments to pass the values or file paths when you are running under {{agent}}, or you can use environment variables if {{agent}} is running in a container.
 
@@ -15,7 +15,6 @@ For examples of how to deploy secret files, refer to our [Secret files guide](/r
 ::::{note}
 Stand-alone {{fleet-server}} is under active development.
 ::::
-
 
 
 ## Secret values [_secret_values]
@@ -129,6 +128,3 @@ APM secret token
     ```
 
     You may also specify the token by value using the environment variable `ELASTIC_APM_SECRET_TOKEN`.
-
-
-

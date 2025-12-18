@@ -16,6 +16,11 @@ products:
 
 You can create and manage cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 
+:::{note} 
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription or feature tier](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](/solutions/security/investigate/cases-requirements.md) for more information.
+:::
 
 ## Open a new case [cases-ui-open]
 
@@ -82,21 +87,25 @@ When you subsequently add assignees to cases, they receive an email.
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
 
+{applies_to}`stack: ga 9.3.0` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{elastic-sec}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
+
 To explore a case, click on its name. You can then:
 
 * [Review the case summary](/solutions/security/investigate/open-manage-cases.md#cases-summary)
-* [Add and manage comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments)
+* Modify the case’s description, assignees, category, severity, status, and tags.
+* Add and manage [comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments) and [lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
 
     ::::{tip}
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
-* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and {applies_to}`stack: ga 9.2.0` [events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) attached to the case
-* [Add files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
-* [Add a Lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
-* Modify the case’s description, assignees, category, severity, status, and tags.
+* Add and manage the following items:
+    * [Alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts)
+    * [Indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case)
+    * {applies_to}`stack: ga 9.2.0` [Events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) 
+    * [Files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
+    * [Observables](/solutions/security/investigate/open-manage-cases.md#cases-add-observables)
 * [Manage connectors](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations) and send updates to external systems (if you’ve added a connector to the case)
-* [Add observables](/solutions/security/investigate/open-manage-cases.md#cases-add-observables)
 * [Copy the case UUID](/solutions/security/investigate/open-manage-cases.md#cases-copy-case-uuid)
 * Refresh the case to retrieve the latest updates
 
@@ -128,12 +137,12 @@ To edit, delete, or quote a comment, select the appropriate option from the **Mo
 
 To explore the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
 
-:::{image} /solutions/images/security-cases-alert-tab.png
-:alt: Shows you the Alerts tab
-:screenshot:
-:::
+You can find the **Alerts** tab in the following places:
 
-::::{note}
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
+
+::::{important}
 Each case can have a maximum of 1,000 alerts.
 ::::
 
@@ -142,23 +151,19 @@ Each case can have a maximum of 1,000 alerts.
 stack: ga 9.2
 ```
 
-After adding events to cases from the Events table (which you can access from the **Events** tab on the **Hosts**, **Network**, or **Users** pages) or from Timeline, you can examine them in the case's **Events** tab. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
+Escalate events and track them in a single place by attaching them to cases. You can add events from an investigation that you've opened in Timeline, or from the **Events** tab on the **Hosts**, **Network**, or **Users** pages.
+
+After adding events to a case, go to the **Events** tab to examine them. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
+
+You can find the **Events** tab in the following places:
+
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.2`: Go to the case's details page.  
 
 ### Add files [cases-add-files]
 
-To upload files to a case, select the **Files** tab, then click **Add files**. You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
-
-% Check with Lisa whether following note is only applicable to Serverless or if it's for ESS too.
-
-::::{note}
-There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
-
-::::
-
-To download or delete the file, or copy the file hash to your clipboard, open the **Actions** menu (**…**). The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you add a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
-
+:::{include} /solutions/_snippets/add-case-files.md
+:::
 
 ### Add a Lens visualization [cases-lens-visualization]
 
@@ -209,17 +214,20 @@ Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/
 
 ::::
 
+An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case. 
 
-An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case.
+To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
+
+- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
+
+::::{important}
+Each case can have a maximum of 50 observables.
+::::
 
 To create an observable:
 
-1. Click the **Observables** tab, then click **Add observable**.
-
-    ::::{note}
-    Each case can have a maximum of 50 observables.
-    ::::
-
+1. Click **Add observable** from the **Observables** tab.
 2. Provide the necessary details:
 
     * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/solutions/security/investigate/configure-case-settings.md#cases-observable-types).
@@ -309,3 +317,8 @@ To import a case:
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
+
+## Search cases [search-security-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::
