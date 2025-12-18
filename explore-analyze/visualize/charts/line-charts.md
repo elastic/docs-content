@@ -78,7 +78,7 @@ In line charts, you can enable time shift to compare the current value with a pr
 4. Optionally, customize the appearance of the layer to adjust how it looks on the chart. When you duplicate a layer, {{kib}} automatically assigns a different **Series color** to the new layer. You can for example change this color, or adjust the layer's name and axis position. This name is used for the chart's legend.
 
 ::::{tip}
-You can also compute the relative change using a formula, for example:  
+You can also compute the relative change by defining the axis data with a [formula](/explore-analyze/visualize/lens.md#lens-formulas), for example:  
 `(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
 :::: 
 
