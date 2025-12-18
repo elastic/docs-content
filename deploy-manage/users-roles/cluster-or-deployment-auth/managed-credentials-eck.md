@@ -74,8 +74,7 @@ The following command regenerates auto-generated credentials of **all** {{stack}
 
 ::::{applies-switch}
 
-:::{applies-item} { "eck": "ga 3.2" }
-In ECK versions 3.2 and beyond:
+:::{applies-item} eck: ga 3.2
 
 ```sh
 kubectl delete secret -l eck.k8s.elastic.co/credentials=true
@@ -83,8 +82,7 @@ kubectl delete secret -l eck.k8s.elastic.co/credentials=true
 
 :::
 
-:::{applies-item} { "eck": "ga 3.1" }
-In ECK versions prior to 3.2:
+:::{applies-item} eck: ga 3.0-3.1
 
 ```sh
 kubectl delete secret -l eck.k8s.elastic.co/credentials=true,common.k8s.elastic.co/type!=kibana
@@ -95,7 +93,6 @@ kubectl delete secret -l eck.k8s.elastic.co/credentials=true,common.k8s.elastic.
 ::::
 
 ### Control the length of auto-generated passwords
-
 ```{applies_to}
   eck: ga 3.2
 ```
