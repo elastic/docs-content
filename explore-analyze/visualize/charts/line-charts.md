@@ -70,7 +70,9 @@ In line charts, you can enable time shift to compare the current value with a pr
 ![Example Lens line chart current previous](../../images/kibana-line-current-previous.png)
 
 1. Create a line chart with a time-based **Horizontal axis** and your main metric on **Vertical axis**, for example: `bytes`.
-2. From the three-dot menu in the upper-left of the layer panel, select **Duplicate layer**.  
+2. Duplicate the layer:
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`copy` **Duplicate layer** from the visualization editor.
+    * {applies_to}`stack: ga 9.0-9.2` Open the {icon}`boxes_vertical` contextual menu of the visualization editor and select {icon}`copy` **Duplicate layer**.
 3. From the duplicated layer settings, select the field defined as vertical axis to open its details. Expand its **Advanced** options and set **Time shift** to `1w` or to the time value of your choice.
    Check [Compare differences over time](../lens.md#compare-data-with-time-offsets) for more details.
 4. Use a different color and set **Stacking** to **None** so areas overlay rather than stack.
