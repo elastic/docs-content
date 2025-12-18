@@ -45,13 +45,6 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
 
-### Limitations
-
-#### Batch size
-
-Batches are limited to a maximum of 16 documents.
-This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
-
 ## `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
 
 ```{applies_to}
