@@ -99,7 +99,7 @@ Customize your line chart to display exactly the information you need, formatted
 
 **Data**
 :   **Functions**: Allow you to group your data. For example, you can use `Date histogram` to group data points into time-based buckets, or `Intervals` to group values along specific numeric ranges.
-:   **Fields**: Determine which field from your data will be used for the horizontal axis.
+:   **Fields**: Select which field from your data to use as horizontal axis.
 :   **Number of values**: Control how many distinct values or data points are displayed along the horizontal axis.
 :   **Rank by**: Choose which metric determines the order of your data.
 :   **Rank direction**: Sort values in ascending or descending order.
