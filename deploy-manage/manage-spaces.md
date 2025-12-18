@@ -119,17 +119,20 @@ When a role is assigned to *All Spaces*, you can’t remove its access from the 
 To move saved objects between spaces, you can [copy objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), or [export and import objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects).
 
 
-## Configure a space-level landing page [spaces-default-route]
+## Customize {{kib}}'s home page [spaces-default-route]
 ```{applies_to}
 stack: ga
-serverless: unavailable
+serverless:
+  observability: ga
+  elasticsearch: unavailable
+  security: unavailable
 ```
 
-You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object as they enter each space.
+You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object when they enter a space or click the {icon}`logo_elastic` logo in the header.
 
 To configure the landing page, use the default route setting in the [{{kib}} advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
 
-You can access the **Advanced Settings** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+You can access the **Advanced Settings** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
 
 :::{image} /deploy-manage/images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page
