@@ -102,7 +102,7 @@ Customize your line chart to display exactly the information you need, formatted
 :   **Fields**: Determine which field from your data will be used for the horizontal axis.
 :   **Number of values**: Control how many distinct values or data points are displayed along the horizontal axis.
 :   **Rank by**: Choose which metric determines the order of your data.
-:   **Rank direction**: Sort values from highest to lowest.
+:   **Rank direction**: Sort values in ascending or descending order.
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
