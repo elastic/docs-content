@@ -107,7 +107,9 @@ macOS is not a supported platform for installing {{agent}} to connect to AutoOps
 :::
 
 :::{important} 
-Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
+Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install the agent even if you already have an existing one for other purposes.
+
+You only need to install the agent once per cluster. 
 :::
 
 To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#data-gathering).

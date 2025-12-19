@@ -41,6 +41,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
 * [Can I use macOS to set up AutoOps for my self-managed clusters?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
+* [Do I have to install {{agent}} separately for each node in my cluster?](#agent-nodes)
 
 **Collected metrics and data in AutoOps for self-managed clusters**
 * [Where are metrics stored in AutoOps for self-managed clusters?](#sm-autoops-metrics-storage)
@@ -115,6 +116,9 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
     To enable IP ranges, {{ecloud}} offers a selection of static IP addresses. All traffic directed to {{ecloud}} deployments, whether originating from the public internet, your private cloud network through the public internet, or your on-premise network through the public internet utilizes Ingress Static IPs as the network destination. 
 
 :   For more information, refer to [](/deploy-manage/security/elastic-cloud-static-ips.md).
+
+$$$agent-nodes$$$ **Do I have to install {{agent}} separately for each node in my cluster?**
+:    No, to run AutoOps in your self-managed environment, you only have to install the agent once per cluster.
 
 ### Collected metrics and data in AutoOps for self-managed clusters
 
