@@ -74,7 +74,7 @@ The following command regenerates auto-generated credentials of **all** {{stack}
 
 ::::{applies-switch}
 
-:::{applies-item} eck: ga 3.2
+:::{applies-item} eck: ga 3.2+
 
 ```sh
 kubectl delete secret -l eck.k8s.elastic.co/credentials=true
