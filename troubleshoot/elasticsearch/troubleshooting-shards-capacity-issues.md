@@ -29,9 +29,9 @@ This symptom indicates that action should be taken, otherwise, either the creati
 
 If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings):
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -139,7 +139,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
     ```
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 Check the current status of the cluster according the shards capacity indicator:
 
 ```console
@@ -239,9 +239,9 @@ This symptom indicates that action should be taken, otherwise, either the creati
 
 If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings):
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -348,7 +348,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
     ```
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 Check the current status of the cluster according the shards capacity indicator:
 
 ```console

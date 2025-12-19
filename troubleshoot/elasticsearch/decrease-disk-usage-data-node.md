@@ -22,9 +22,9 @@ Reducing the replicas of an index can potentially reduce search throughput and d
 ::::
 
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -51,7 +51,7 @@ Reducing the replicas of an index can potentially reduce search throughput and d
 6. Continue this process until the cluster is healthy again.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to estimate how many replicas need to be removed, first you need to estimate the amount of disk space that needs to be released.
 
 1. First, retrieve the relevant disk thresholds that will indicate how much space should be released. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:

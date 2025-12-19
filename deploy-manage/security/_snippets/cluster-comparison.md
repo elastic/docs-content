@@ -9,11 +9,9 @@ Security feature availability varies by deployment type, with each feature havin
 
 Select your deployment type below to see what's available and how implementation responsibilities are distributed:
 
-::::{tab-set}
-:group: deployment-type
+::::{applies-switch}
 
-:::{tab-item} ECH
-:sync: cloud-hosted
+:::{applies-item} ess:
 
 | Category | Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
@@ -29,8 +27,7 @@ Select your deployment type below to see what's available and how implementation
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
@@ -46,8 +43,7 @@ Select your deployment type below to see what's available and how implementation
 
 :::
 
-:::{tab-item} ECE
-:sync: ece
+:::{applies-item} ece:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
@@ -63,8 +59,7 @@ Select your deployment type below to see what's available and how implementation
 
 :::
 
-:::{tab-item} ECK
-:sync: eck
+:::{applies-item} eck:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
@@ -81,8 +76,7 @@ Select your deployment type below to see what's available and how implementation
 :::
 
 
-:::{tab-item} Self-managed
-:sync: self-managed
+:::{applies-item} self:
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|

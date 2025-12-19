@@ -20,11 +20,9 @@ Continue with this guide for instructions on manual configuration.
 
 ## Prerequisites [logs-stream-prereq]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 To follow the steps in this guide, you need an {{stack}} deployment that includes:
 
@@ -38,8 +36,7 @@ To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 The **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

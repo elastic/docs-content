@@ -16,11 +16,10 @@ Synthetic tests support the configuration of dynamic parameters that can be used
 
 Create a `synthetics.config.js` or `synthetics.config.ts` file in the root of the Synthetics project and specify the options. For example:
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
+
 ```ts
 import type { SyntheticsConfig } from '@elastic/synthetics';
 
@@ -59,8 +58,7 @@ export default env => {
 ```
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 ```ts
 import type { SyntheticsConfig } from '@elastic/synthetics';

@@ -19,9 +19,9 @@ products:
 
 {{es}} is using master nodes to coordinate the cluster. If the master or any master eligible nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) reports that your master node is out of space you need to increase the disk capacity of your master nodes.
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
 3. Go to `Actions > Edit deployment` and then go to the `Master instances` section:
@@ -34,7 +34,7 @@ products:
 4. Choose a larger than the pre-selected capacity configuration from the drop-down menu and click `save`. Wait for the plan to be applied and the problem should be resolved.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to increase the disk capacity of a master node, you will need to replace **all** the master nodes with master nodes of higher disk capacity.
 
 1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:

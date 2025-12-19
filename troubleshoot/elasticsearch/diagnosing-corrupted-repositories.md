@@ -17,9 +17,9 @@ products:
 
 Multiple {{es}} deployments are writing to the same snapshot repository. {{es}} doesn’t support this configuration and only one cluster is allowed to write to the same repository. See [Repository contents](../../deploy-manage/tools/snapshot-and-restore.md#snapshot-repository-contents) for potential side-effects of corruption of the repository contents, which may not be resolved by the following guide. To remedy the situation mark the repository as read-only or remove it from all the other deployments, and re-add (recreate) the repository in the current deployment:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 Fixing the corrupted repository will entail making changes in multiple deployments that write to the same snapshot repository. Only one deployment must be writing to a repository. The deployment that will keep writing to the repository will be called the "primary" deployment (the current cluster), and the other one(s) where we’ll mark the repository read-only as the "secondary" deployments.
 
 First mark the repository as read-only on the secondary deployments:
@@ -56,7 +56,7 @@ Note that we’re now configuring the primary (current) deployment.
 2. Click on the pencil icon at the right side of the repository. On the Edit page that opened scroll down and click "Save", without making any changes to the existing settings.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 Fixing the corrupted repository will entail making changes in multiple clusters that write to the same snapshot repository. Only one cluster must be writing to a repository. Let’s call the cluster we want to keep writing to the repository the "primary" cluster (the current cluster), and the other one(s) where we’ll mark the repository as read-only the "secondary" clusters.
 
 Let’s first work on the secondary clusters:

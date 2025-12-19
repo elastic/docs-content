@@ -76,9 +76,9 @@ With your trial goal in mind, identify which Elastic solution best addresses you
 
 Once you know what you want to evaluate, choose the deployment option that best supports your goals. Elastic offers two primary deployment options on {{ecloud}}.
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{serverless-full}}
+:::{applies-item} serverless:
 
 - Fully managed with automatic scaling.
 - Simplified configuration and maintenance.
@@ -87,7 +87,7 @@ Once you know what you want to evaluate, choose the deployment option that best 
 
 :::
 
-:::{tab-item} {{ech}}
+:::{applies-item} ess:
 
 - Access to all solutions in a single deployment.
 - More control over cluster configuration and sizing.

@@ -422,7 +422,7 @@ By default, {{es}} will sign *all* outgoing SAML messages if a signing certifica
 :::
 
 ::::{tab-set}
-:::{tab-item} PEM formatted keys
+:::{tab-item} PEM-formatted keys
 
 If you want to use **PEM formatted** keys and certificates for signing, then you should configure the following settings on the SAML realm:
 
@@ -540,13 +540,13 @@ deployment:
   eck:
 ```
 
-::::{tab-set}
-::: {tab-item} Self-managed
+::::{applies-switch}
+:::{applies-item} self:
 ```sh
 bin/elasticsearch-saml-metadata --realm saml1
 ```
 :::
-::: {tab-item} ECK
+:::{applies-item} eck:
 To generate the Service Provider metadata using the `elasticsearch-saml-metadata` command in {{eck}}, you need to run the command using `kubectl`, and then copy the generated metadata file to your local machine. For example:
 
 ```sh

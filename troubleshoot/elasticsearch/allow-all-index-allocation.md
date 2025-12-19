@@ -24,9 +24,9 @@ Forgetting to re-allow all data allocation can lead to unassigned shards.
 
 In order to (re)allow all data to be allocated follow these steps:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 In order to get the shards assigned we’ll need to change the value of the [configuration](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-routing-allocation-enable-setting) that restricts the assignemnt of the shards to `all`.
 
 **Use {{kib}}**
@@ -79,7 +79,7 @@ In order to get the shards assigned we’ll need to change the value of the [con
     1. The new value for the `allocation.enable` configuration for the `my-index-000001` index is changed to allow all the shards to be allocated.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to get the shards assigned we’ll need to change the value of the [configuration](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-routing-allocation-enable-setting) that restricts the assignemnt of the shards to `all`.
 
 1. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
