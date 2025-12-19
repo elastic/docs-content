@@ -61,7 +61,7 @@ The instructions below cover how to manage {{es}} keystore settings for each dep
 
 :::::{applies-switch}
 
-::::{applies-item} { "ess":, "ece"}
+::::{applies-item} { "ess":, "ece":}
 
 % ### ECE and ECH
 You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the {{ecloud}} Console or ECE Cloud UI.
