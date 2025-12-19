@@ -76,6 +76,7 @@ Ensure your role has:
 By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the settings icon next to the **Run** button.
 
 :::{note}
+:applies_to: stack: ga =9.0
 In {{stack}} 9.0.0 and earlier, the **Run** button is called **Generate**.
 :::
 
@@ -103,8 +104,8 @@ You’ll need to select an LLM connector before you can analyze alerts. To get s
 
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
 2. Do one of the following:
-   - {applies_to}`stack: ga 9.1` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
-   - {applies_to}`stack: ga 9.0` Select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`stack: ga 9.1+` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`stack: ga =9.0` Select an existing connector from the dropdown menu, or add a new one.
 
    :::{admonition} Recommended models
    While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
@@ -117,8 +118,8 @@ You’ll need to select an LLM connector before you can analyze alerts. To get s
     :::
 
 3. Once you’ve selected a connector, do one of the following to start the analysis:
-   - {applies_to}`stack: ga 9.1` Click **Save and run**.
-   - {applies_to}`stack: ga 9.0` Click **Generate**.
+   - {applies_to}`stack: ga 9.1+` Click **Save and run**.
+   - {applies_to}`stack: ga =9.0` Click **Generate**.
    
 It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one’s title to expand or collapse it. Click **Run** at any time to start the Attack Discovery process again with the selected alerts.
 
