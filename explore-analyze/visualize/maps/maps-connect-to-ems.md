@@ -465,7 +465,7 @@ X-Firefox-Spdy: h2
 
 ## Disable Elastic Maps Service [disable-ems]
 
-You might experience EMS connection issues if your Kibana server or browser are on a private network or behind a firewall. If this happens, you can disable the EMS connection to avoid unnecessary EMS requests.
+You might experience EMS connection issues if your {{kib}} browser is on a private network or behind a firewall. If this happens, you can disable the EMS connection to avoid unnecessary EMS requests.
 
 To disable EMS, change your [kibana.yml](kibana://reference/configuration-reference/general-settings.md) file.
 
