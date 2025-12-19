@@ -21,9 +21,9 @@ Forgetting to re-allow all data allocations can lead to unassigned shards.
 
 In order to (re)allow all data to be allocated follow these steps:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 In order to get the shards assigned we’ll need to change the value of the [configuration](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) that restricts the assignemnt of the shards to allow all shards to be allocated.
 
 We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) and changing the configured value to `all`.
@@ -77,7 +77,7 @@ We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.e
     1. The new value for the `allocation.enable` system-wide configuration is changed to allow all the shards to be allocated.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to get the shards assigned we’ll need to change the value of the [configuration](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) that restricts the assignemnt of the shards to allow all shards to be allocated.
 
 We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) and changing the configured value to `all`.

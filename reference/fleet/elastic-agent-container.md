@@ -25,13 +25,13 @@ Considerations:
 * [Docker installed](https://docs.docker.com/get-docker/).
 * {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it.
 
-   ::::{tab-set}
+   ::::{applies-switch}
 
-   :::{tab-item} {{ech}}
+   :::{applies-item} ess:
    To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
    :::
 
-   :::{tab-item} Self-managed
+   :::{applies-item} self:
    To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
    :::
 
@@ -127,9 +127,9 @@ docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} 
 ## Step 4: Run the Elastic Agent image [_step_4_run_the_elastic_agent_image]
 
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} Elastic Cloud
+:::{applies-item} { "serverless":, "ess": }
 
 ```terminal subs=true
 docker run \
@@ -146,7 +146,7 @@ docker run \
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
 
-:::{tab-item} Self-managed
+:::{applies-item} self:
 
 If you’re running a self-managed cluster and want to run your own {{fleet-server}}, run the following command, which will spin up both {{agent}} and {{fleet-server}} in a container:
 
@@ -206,14 +206,14 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 
 1. Launch {{kib}}:
 
-   ::::{tab-set}
+   ::::{applies-switch}
 
-   :::{tab-item} {{ech}}
+   :::{applies-item} ess:
    1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
    2. Navigate to the {{kib}} endpoint in your deployment.
    :::
 
-   :::{tab-item} Self-managed
+   :::{applies-item} self:
    Point your browser to [http://localhost:5601](http://localhost:5601), replacing `localhost` with the name of the {{kib}} host.
    :::
 

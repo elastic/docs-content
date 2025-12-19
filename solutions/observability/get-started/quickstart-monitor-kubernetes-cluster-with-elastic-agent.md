@@ -25,11 +25,9 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 
 ## Prerequisites [_prerequisites_2]
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{applies-item} serverless:
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher (required to onboard system logs and metrics). To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
@@ -37,8 +35,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 * [Helm](https://helm.sh/docs/)
 ::::
 
-::::{tab-item} {{stack}} 9.2 and later
-:sync: stack-9.2
+::::{applies-item} stack: ga 9.2+
 
 * A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
@@ -53,8 +50,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 * [Helm](https://helm.sh/docs/)
 ::::
 
-::::{tab-item} {{stack}} 9.0-9.1
-:sync: stack-9.0-9.1
+::::{applies-item} stack: ga 9.0-9.1
 
 * A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
@@ -82,11 +78,9 @@ The installation command provided by the UI during the quickstart cannot be used
 
 ## Collect your data [_collect_your_data_2]
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{applies-item} serverless:
 
 1. Go to your [{{obs-serverless}}](/solutions/observability/get-started.md) project, then go to **Add data**.
 2. In the **What do you want to monitor?** section, select **Kubernetes**, and then select **Elastic Agent: Logs & Metrics**.
@@ -124,8 +118,7 @@ The installation command provided by the UI during the quickstart cannot be used
 
 ::::
 
-::::{tab-item} {{stack}} 9.2 and later
-:sync: stack-9.2
+::::{applies-item} stack: ga 9.2+
 
 1. In {{kib}}, go to the **Observability** overview page, and click **Add Data**.
 2. In the **What do you want to monitor?** section, select **Kubernetes**, and then select **Elastic Agent: Logs & Metrics**.
@@ -163,8 +156,7 @@ The installation command provided by the UI during the quickstart cannot be used
 
 ::::
 
-::::{tab-item} {{stack}} 9.0-9.1
-:sync: stack-9.0-9.1
+::::{applies-item} stack: ga 9.0-9.1
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. In the **What do you want to monitor?** section, select **Kubernetes**, and then select **Elastic Agent: Logs & Metrics**.
@@ -198,11 +190,9 @@ Refer to [Observability overview](/solutions/observability.md) for a description
 
 ## Uninstall {{agent}} from the Kubernetes cluster [monitor-k8s-with-agent-delete-agent]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} {{serverless-short}}
-:sync: serverless
+:::{applies-item} serverless:
 
 To uninstall {{agent}} and the Kubernetes resources installed with Helm, run:
 
@@ -218,8 +208,7 @@ helm uninstall elastic-agent -n kube-system
 ```
 :::
 
-:::{tab-item} {{stack}} 9.2 and later
-:sync: stack-9.2
+:::{applies-item} stack: ga 9.2+
 
 To uninstall {{agent}} and the Kubernetes resources installed with Helm, run:
 
@@ -235,8 +224,7 @@ helm uninstall elastic-agent -n kube-system
 ```
 :::
 
-:::{tab-item} {{stack}} 9.0-9.1
-:sync: stack-9.0-9.1
+:::{applies-item} stack: ga 9.0-9.1
 
 To uninstall {{agent}} and the Kubernetes resources installed with `kubectl`:
 

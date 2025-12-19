@@ -114,9 +114,9 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { "ess":, "ece": }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -128,7 +128,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
@@ -142,9 +142,9 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 #### Adaptive resources disabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { "ess":, "ece": }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -164,9 +164,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { "ess":, "ece": }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -178,7 +178,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
@@ -192,9 +192,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources disabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { "ess":, "ece": }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |

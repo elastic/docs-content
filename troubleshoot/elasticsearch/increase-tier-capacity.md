@@ -21,9 +21,9 @@ If a warning is encountered with not enough nodes to allocate all shard replicas
 
 To accomplish this, complete the following steps:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 One way to get the replica shards assigned is to add an availability zone. This will increase the number of data nodes in the {{es}} cluster so that the replica shards can be assigned. This can be done by editing your deployment. But first you need to discover which tier an index is targeting for assignment. Do this using {{kib}}.
 
 **Use {{kib}}**
@@ -135,7 +135,7 @@ If it is not possible to increase the size per zone or the number of availabilit
     1. The new value for the `index.number_of_replicas` index configuration is decreased from the previous value of `2` to `1`. It can be set as low as 0 but configuring it to 0 for indices other than [searchable snapshot indices](../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) may lead to temporary availability loss during node restarts or permanent data loss in case of data corruption.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to get the replica shards assigned you can add more nodes to your {{es}} cluster and assign the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
 
 To inspect which tier an index is targeting for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:

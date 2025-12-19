@@ -23,9 +23,9 @@ You might want to influence this data distribution by configuring the [`cluster.
 
 To fix this issue, complete the following steps:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 In order to get the shards assigned we’ll need to increase the number of shards that can be collocated on a node in the cluster. We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.total_shards_per_node` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) and increasing the configured value.
 
 **Use {{kib}}**
@@ -77,7 +77,7 @@ In order to get the shards assigned we’ll need to increase the number of shard
     1. The new value for the system-wide `total_shards_per_node` configuration is increased from the previous value of `300` to `400`. The `total_shards_per_node` configuration can also be set to `null`, which represents no upper bound with regards to how many shards can be collocated on one node in the system.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to get the shards assigned you can add more nodes to your {{es}} cluster and assign the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
 
 To inspect which tier is an index targeting for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:

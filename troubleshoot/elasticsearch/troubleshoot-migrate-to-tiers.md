@@ -23,9 +23,9 @@ This could lead to unassigned shards or shards not transitioning to the desired 
 
 In order to fix this follow the next steps:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 In order to get the shards assigned we need to call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API which will resolve the conflicting routing configurations towards using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This will also future-proof the system by migrating the index templates and ILM policies if needed.
 
 **Use {{kib}}**
@@ -112,7 +112,7 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
     ```
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to get the shards assigned we need to make sure the deployment is using the [data tiers](../../manage-data/lifecycle/data-tiers.md) node roles and then call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API which will resolve the conflicting routing configurations towards using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This will also future-proof the system by migrating the index templates and ILM policies if needed.
 
 1. In case your deployment is not yet using [data tiers](../../manage-data/lifecycle/data-tiers.md) [assign data nodes](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the appropriate data tier. Configure the appropriate roles for each data node to assign it to one or more data tiers: `data_hot`, `data_content`, `data_warm`, `data_cold`, or `data_frozen`. For example, the following setting configures a node to be a data-only node in the hot and content tiers.

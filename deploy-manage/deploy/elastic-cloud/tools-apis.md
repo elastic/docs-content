@@ -46,10 +46,9 @@ Note that some [restrictions](/deploy-manage/deploy/elastic-cloud/restrictions-k
 Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md) to learn about headers, request body conventions, and examples for {{es-serverless}} and {{es}} REST APIs.
 :::
 
-:::::{tab-set}
-:group: serverless-hosted
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+:::::{applies-switch}
+
+::::{applies-item} serverless:
 
 The following APIs are available for {{es-serverless}} users:
 
@@ -59,8 +58,7 @@ The following APIs are available for {{es-serverless}} users:
 - [{{kib}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/serverless): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
 ::::
 
-::::{tab-item} {{ech}}
-:sync: hosted
+::::{applies-item} ech:
 
 The following APIs are available for {{ech}} users:
 

@@ -21,9 +21,9 @@ Elasticsearch keeps track of the number of repeated failures when executing auto
 
 In the event that an automated {{slm}} policy execution is experiencing repeated failures, follow these steps to get more information about the problem:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 In order to check the status of failing {{slm}} policies we need to go to Kibana and retrieve the [Snapshot Lifecycle Policy information](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle).
 
 **Use {{kib}}**
@@ -108,7 +108,7 @@ One common failure scenario is repository corruption. This occurs most often whe
 In the event that snapshots are failing for other reasons check the logs on the elected master node during the snapshot execution period for more information.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) the {{slm}} policy:
 
 ```console

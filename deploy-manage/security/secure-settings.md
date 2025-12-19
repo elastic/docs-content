@@ -59,11 +59,10 @@ For example, you can search for `secure_bind_password` in the [security settings
 
 The instructions below cover how to manage {{es}} keystore settings for each deployment type.
 
-:::::{tab-set}
-:group: deployment-type
+:::::{applies-switch}
 
-::::{tab-item} ECH and ECE
-:sync: cloud
+::::{applies-item} { "ess":, "ece"}
+
 % ### ECE and ECH
 You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the {{ecloud}} Console or ECE Cloud UI.
 
@@ -111,16 +110,16 @@ When your secure settings are no longer needed, delete them from the keystore.
 5. On the **Confirm to delete** window, select **Confirm**.
 ::::
 
-::::{tab-item} ECK
-:sync: eck
+::::{applies-item} eck:
+
 % ### ECK
 In ECK, the operator simplifies secure settings configuration by relying on Kubernetes secrets.
 
 Refer to [Configure secure settings on ECK](./k8s-secure-settings.md) for details and examples.
 ::::
 
-::::{tab-item} Self-managed
-:sync: self-managed
+::::{applies-item} self
+
 % ### Self-managed
 In self-managed deployments, you're responsible for configuring and maintaining the {{es}} keystore on each node individually.
 

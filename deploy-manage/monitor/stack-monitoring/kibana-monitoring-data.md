@@ -62,8 +62,8 @@ deployment:
 
 ## View monitoring data in {{kib}} [view-monitoring-data-in-kibana]
 
-:::::{tab-set}
-::::{tab-item} In ECK and self-managed
+:::::{applies-switch}
+::::{applies-item} { "eck":, "self": }
 
 1. Open the {{kib}} monitoring instance in your web browser.
 
@@ -79,7 +79,7 @@ deployment:
 If you are using a separate monitoring cluster, you do not need to turn on data collection. The dashboards appear when there is data in the monitoring cluster.
 :::
 ::::
-::::{tab-item} In ECH and ECE
+::::{applies-item} { "ess":, "ece": }
 :::{include} /deploy-manage/monitor/stack-monitoring/_snippets/cloud-monitoring-access.md
 :::
 ::::

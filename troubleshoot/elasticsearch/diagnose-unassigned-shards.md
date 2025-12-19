@@ -24,9 +24,9 @@ There are multiple reasons why shards might get unassigned, ranging from misconf
 
 In order to diagnose the unassigned shards in your deployment use the following steps:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} ess:
 In order to diagnose the unassigned shards, follow the next steps:
 
 **Use {{kib}}**
@@ -142,7 +142,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status), see [these examples](https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples), or contact [Elastic Support](https://support.elastic.co).
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 In order to diagnose the unassigned shards follow the next steps:
 
 1. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).

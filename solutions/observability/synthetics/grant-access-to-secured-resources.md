@@ -14,11 +14,9 @@ products:
 
 You can use role-based access control to grant users access to secured resources. The roles that you set up depend on your organization’s security requirements and the minimum privileges required to use specific features.
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 Typically you need the create the following separate roles:
 
@@ -36,8 +34,7 @@ In general, these are types of privileges you’ll work with:
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 * **Viewer**:
 

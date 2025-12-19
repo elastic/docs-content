@@ -64,11 +64,9 @@ npx @elastic/synthetics init synthetic-project-test
 
 Then, follow the prompts on screen to set up the correct default variables for your Synthetics project. When complete, set the `SYNTHETICS_API_KEY` environment variable in your terminal, which is used to connect to your Observability project:
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 1. To generate an API key:
 
@@ -109,8 +107,7 @@ Then, take a look at key files and directories inside your Synthetics project:
 * `.github` contains sample workflow files to use with GitHub Actions.
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. To generate an API key:
 
@@ -196,11 +193,9 @@ For more details on writing journeys and configuring browser monitors, refer to 
 
 ## Test and connect to your Observability project or Elastic Stack deployment[synthetics-get-started-project-test-and-connect-to-your-observability-project]
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} Elastic Stack
-:sync: stack
+::::{applies-item} stack:
 
 While inside the project directory you can do two things with the `npx @elastic/synthetics` command:
 
@@ -227,8 +222,7 @@ To list available {{private-location}}s, run the [`elastic-synthetics locations`
 
 ::::
 
-::::{tab-item} Serverless
-:sync: serverless
+::::{applies-item} serverless:
 
 While inside the Synthetics project directory you can do two things with the `npx @elastic/synthetics` command:
 

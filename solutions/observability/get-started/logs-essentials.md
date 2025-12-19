@@ -89,6 +89,7 @@ Elastic {{observability}} can collect logs from cloud services through Elastic i
 3. Select the integration you want to add.
 4. Select **Add**.
 :::
+::::
 
 :::::
 
