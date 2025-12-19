@@ -2,6 +2,9 @@
 navigation_title: decode_cef
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_cef-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
