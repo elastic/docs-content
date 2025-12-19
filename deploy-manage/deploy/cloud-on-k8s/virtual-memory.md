@@ -10,9 +10,13 @@ products:
 
 # Virtual memory [k8s-virtual-memory]
 
-By default, {{es}} uses memory mapping (`mmap`) to efficiently access indices. Usually, default values for virtual address space on Linux distributions are too low for {{es}} to work properly, which may result in out-of-memory exceptions. This is why [the quickstart example](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) disables `mmap` through the `node.store.allow_mmap: false` setting. For production workloads, it is strongly recommended to increase the kernel setting `vm.max_map_count` to `262144` and leave `node.store.allow_mmap` unset.
+By default, {{es}} uses memory mapping (`mmap`) to efficiently access indices. Default values for virtual address space on Linux distributions can be too low for {{es}} to work properly, which may result in out-of-memory exceptions. This is why [the quickstart example](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) disables `mmap` through the `node.store.allow_mmap: false` setting. For production workloads, we recommended you increase the kernel setting `vm.max_map_count` to `1048576` and leave `node.store.allow_mmap` unset.
 
-The kernel setting `vm.max_map_count=262144` can be set on the host directly, by a dedicated init container which must be privileged, or a dedicated Daemonset.
+The kernel setting `vm.max_map_count=1048576` can be set on the host directly, by a dedicated init container which must be privileged, or a dedicated Daemonset.
+
+:::{important}
+For {{es}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{es}} version 8.15 and earlier, set `vm.max_map_count` to `262144`.
+:::
 
 For more information, check the {{es}} documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).
 
@@ -49,7 +53,7 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576']
 EOF
 ```
 

@@ -9,4 +9,4 @@
 | ap-northeast-1 | Asia Pacific (Tokyo) |
 | ap-southeast-1 | Asia Pacific (Singapore) |
 
-More regions are coming soon.
+More cloud service providers and regions are coming soon.
