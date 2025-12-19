@@ -103,11 +103,11 @@ You can edit files and secrets that contain `users` and `users_roles` manually, 
 
 ::::{applies-switch}
 
-:::{tab-item} self:
+:::{applies-item} self:
 In a self-managed cluster, you can edit the contents of `ES_PATH_CONF/users` and `ES_PATH_CONF/users_roles` directly.
 :::
 
-:::{tab-item} eck:
+:::{applies-item} eck:
 You can pass `users` and `user_roles` files to {{eck}} using a file realm secret:
 
 ```yaml subs=true
