@@ -146,7 +146,7 @@ A standardized set of attributes is specified in [Browser resource semantic conv
 
 To define the resource, you need the following dependencies:
 
-- `@opentelemetry/resources`: This package provides info about the SDK that should be placed in the resource. This information will help Kibana to identify better the serivce type and the SDK that generated the telemetry.
+- `@opentelemetry/resources`: This package provides information about the SDK to be placed in the resource. This information helps {{kib}} identify the service type and the SDK that generated the telemetry.
 - `@opentelemetry/resources`: This package helps you to define and work with resources because a Resource is not a plain object and has some properties (like immutability) and constraints.
 - `@opentelemetry/browser-detector`: Detectors help you to define a resource by querying the runtime and environment and resolving some attributes. In this case, the browser detector resolves the language, brands, and mobile attributes of the browser namespace.
 
