@@ -542,22 +542,27 @@ To resolve the issue:
 
 ::::{step} Re-enroll the agent
 
-* If the agent is still installed on the host, re-enroll it in {{fleet}} with a new enrollment token to keep the agent's existing state, including any previously ingested data:
+* If the agent is still installed on the host, re-enroll it in {{fleet}} to keep the agent's existing state, including any previously ingested data:
 
-   1. In {{fleet}}, create a new enrollment token for the policy in which you want to re-enroll the agent. Refer to [Create enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) for detailed instructions.
-   2. Open the **Agents** tab, then click **Add agent**.
-   3. In the **Add agent** flyout, select the agent policy in which to re-enroll the agent. The new enrollment token is automatically selected in the **Authentication settings** section.
+   1. Open the **Agents** tab, then click **Add agent**.
+   2. In the **Add agent** flyout, select the agent policy in which to re-enroll the agent. 
+   3. In the **Authentication settings** section, select an enrollment token:
+
+      * If one or more active enrollment tokens exist for your agent policy, select one from the dropdown.
+      * If no active tokens exist, click **Create enrollment token**. For detailed instructions, refer to [Create enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens).
+   
    4. Make sure **Enroll in Fleet** is selected.
    5. Select the appropriate platform, then copy the `elastic-agent install` command from the UI, and replace `install` with `enroll`.
-   6. Run the modified command with elevated privileges from the directory where the agent is installed. Refer to the [command reference](/reference/fleet/agent-command-reference.md#elastic-agent-enroll-command) for details about the available options.
-
-     For example:
+   6. Run the modified command with elevated privileges from the directory where the agent is installed. For example:
 
      ```bash
      sudo ./elastic-agent enroll --url=<fleet-server-url> --enrollment-token=<token>
      ```
 
-* If the agent is no longer installed on the host, reinstall and enroll it in {{fleet}} with a new enrollment token. Refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md) for detailed instructions.
+     Refer to the [command reference](/reference/fleet/agent-command-reference.md#elastic-agent-enroll-command) for details about the available options.
+
+* If the agent is no longer installed on the host, reinstall and enroll it in {{fleet}}. Refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md) for detailed instructions.
+
 ::::
 
 ::::{step} Resolve the underlying issues
@@ -569,6 +574,7 @@ Investigate the cause of the 401 errors and resolve the underlying issues to ens
 * Expired or revoked API keys
 * Incorrect {{fleet-server}} configuration
 * Issues with {{es}} authentication settings
+
 ::::
 
 :::::
