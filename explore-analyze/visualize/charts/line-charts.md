@@ -114,7 +114,7 @@ Customize your line chart to display exactly the information you need, formatted
 **Data**
 :   To represent the metrics or values you want to visualize, you can use quick functions like `Average`, `Count`, `Percentile`, `Counter rate`, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples, or to the {icon}`documentation` **Formula reference** available from Lens.
 
-    :::{include} ../../_snippets/line-vertical-axis-advanced-settings.md
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
 **Appearance**
