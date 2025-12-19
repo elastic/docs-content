@@ -150,7 +150,6 @@ To enable automatic deletion of unenrolled agents:
 2. In the **Advanced Settings** section, enable the **Delete unenrolled agents** option.
 
 ### Show agentless resources [show-agentless-resources-setting]
-
 ```{applies_to}
 stack: ga 9.1.6
 serverless: ga
