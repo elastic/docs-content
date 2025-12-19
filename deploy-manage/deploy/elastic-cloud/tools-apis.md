@@ -58,7 +58,7 @@ The following APIs are available for {{es-serverless}} users:
 - [{{kib}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/serverless): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
 ::::
 
-::::{applies-item} ech:
+::::{applies-item} ess:
 
 The following APIs are available for {{ech}} users:
 
