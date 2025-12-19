@@ -91,7 +91,7 @@ Use reference lines to indicate important thresholds, such as SLOs or alert limi
 ![Example Lens line chart reference lines](../../images/kibana-line-reference-lines.png)
 
 1. In the chart settings, add a static value reference line to mark your target or threshold visually.
-2. Give it a label (for example, `Target` or `SLO`), choose a color, and optionally a band.
+2. Use the **Text decoration** setting to provide a name, for example, `Target` or `SLO`, choose a color, and optionally a band.
 
 ## Line chart settings [settings]
 
