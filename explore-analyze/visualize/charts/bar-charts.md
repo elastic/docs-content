@@ -312,18 +312,6 @@ When creating or editing a visualization, you can customize several appearance o
 
 The following examples show various configuration options that you can use for building impactful bar charts.
 
-**Sales by product category**
-:   Display total sales broken down by product category to identify top performers:
-
-    * **Title**: "Total Sales by Product Category"
-    * **Vertical axis**: `sum(sales_amount)`
-      * **Name**: "Total Sales"
-      * **Value format**: `Currency` with `$` prefix
-      * **Sort by**: `Value` in descending order
-    * **Horizontal axis**: `terms(product_category)`
-      * **Name**: "Product Category"
-      * **Number of values**: `10`
-    * **Layout**: Basic (unstacked)
 
 **Monthly website traffic by source**
 :   Track website visits over time, broken down by traffic source:
