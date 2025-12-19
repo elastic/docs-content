@@ -447,33 +447,65 @@ elastic-agent help enroll
 
 ## elastic-agent inspect [elastic-agent-inspect-command]
 
-Show the current {{agent}} configuration.
+Show the current {{agent}} configuration. Use this command to verify and troubleshoot the configuration that {{agent}} is using, including variable substitution and the computed components model. 
 
-If no parameters are specified, shows the full {{agent}} configuration.
+If no flags are specified, the command shows the full {{agent}} configuration. By default, variable substitution is not performed, and the raw configuration is displayed. 
+
+Use the `--variables` flag to enable variable substitution. The first set of computed variables are used when only the `--variables` flag is defined. This can prevent some of the dynamic providers like {{k8s}} and Docker from providing all the possible variables they could have discovered if given more time. Use the `--variables-wait` flag to specify an amount of time to wait for variable discovery before using the variables for the configuration.
+
+Use the `components` subcommand to view the components model. Components represent individual processes running underneath {{agent}}, such as {{filebeat}} or {{endpoint-sec}}. Units represent discrete configuration units within a component, such as {{filebeat}} inputs or {{metricbeat}} modules.
 
 
 ### Synopsis [_synopsis_4]
 
 ```shell
-elastic-agent inspect [--help]
+elastic-agent inspect [--variables]
+                      [--monitoring]
+                      [--variables-wait <duration>]
+                      [--help]
+                      [global-flags]
 elastic-agent inspect components [--show-config]
-                             [--show-spec]
-                             [--help]
-                             [id]
+                                 [--show-spec]
+                                 [--variables-wait <duration>]
+                                 [--help]
+                                 [<component_id>]
+                                 [<component_id>/<unit_id>]
 ```
+
+
+### Available commands [_available_commands_inspect]
+
+`components`
+:   Display the generated components model for the current configuration. Variable substitution is always performed when computing the components model and cannot be disabled. By default, only the first set of computed variables are used. Use the `--variables-wait` flag to allow more time for dynamic providers to discover variables.
+
+    This command accepts the following arguments and flags:
+
+    `<component_id>`
+    :   Select a specific component by its ID. Only that component and all its units are returned. Use `elastic-agent inspect components` without an ID to see all available component IDs. Configuration for units is not shown by default; use `--show-config` to display it.
+
+    `<component_id>/<unit_id>`
+    :   Select a specific unit inside a component by specifying both the component ID and unit ID separated by a forward slash. In this mode, the unit configuration is shown by default.
+
+    `--show-config`
+    :   Display the configuration for all units. By default, unit configuration is hidden unless you select a specific unit using the `<component_id>/<unit_id>` format.
+
+    `--show-spec`
+    :   Display the input/output runtime specification for a component. By default, the runtime specification is hidden.
+
+    `--variables-wait <duration>`
+    :   Wait the specified amount of time for variable discovery before computing the components model. This is useful when using dynamic providers like {{k8s}} or Docker that may need additional time to discover all available variables.
 
 
 ### Options [_options_4]
 
-`components`
-:   Display the current configuration for the component. This command accepts additional flags:
+`--variables`
+:   Render the configuration with variables substituted. When not specified, the raw configuration is displayed without variable substitution.
 
-    `--show-config`
-    :   Use to display the configuration in all units.
+`--monitoring`
+:   Include the monitoring configuration in the output. This option implies `--variables`, as the monitoring configuration requires variable substitution.
 
-    `--show-spec`
-    :   Use to get input/output runtime specification for a component.
-
+`--variables-wait <duration>`
+:   Wait the specified amount of time for variable discovery before performing substitution. This is useful when using dynamic providers like {{k8s}} or Docker that may need additional time to discover all available variables. Implies `--variables`. For example, `--variables-wait 30s`.
 
 `--help`
 :   Show help for the `inspect` command.
@@ -483,10 +515,64 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 
 ### Examples [_examples_12]
 
+Show the raw {{agent}} configuration without variable substitution:
+
 ```shell
 elastic-agent inspect
+```
+
+Show the configuration with variables substituted:
+
+```shell
+elastic-agent inspect --variables
+```
+
+Show the configuration with variables substituted, waiting 30 seconds for dynamic providers to discover variables:
+
+```shell
+elastic-agent inspect --variables-wait 30s
+```
+
+Show the configuration including monitoring settings:
+
+```shell
+elastic-agent inspect --monitoring
+```
+
+Display all components:
+
+```shell
+elastic-agent inspect components
+```
+
+Display all components with their unit configurations:
+
+```shell
 elastic-agent inspect components --show-config
+```
+
+Display a specific component by ID:
+
+```shell
 elastic-agent inspect components log-default
+```
+
+Display a specific component with its runtime specification:
+
+```shell
+elastic-agent inspect components log-default --show-spec
+```
+
+Display a specific unit inside a component:
+
+```shell
+elastic-agent inspect components log-default/log-default
+```
+
+Wait 30 seconds for dynamic providers before computing components:
+
+```shell
+elastic-agent inspect components --variables-wait 30s
 ```
 
 
