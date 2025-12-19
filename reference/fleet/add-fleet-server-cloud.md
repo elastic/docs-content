@@ -2,6 +2,8 @@
 navigation_title: Deploy on Elastic Cloud
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-cloud.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -12,6 +14,10 @@ products:
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
 {{fleet-server}} can be provisioned and hosted on {{ecloud}}. When the Cloud deployment is created, a highly available set of {{fleet-server}}s is provisioned automatically.
+
+::::{note}
+For comprehensive information about {{fleet-server}} configuration flags, environment variables, mutual TLS (mTLS) setup, and policy vs CLI precedence, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md). This guide provides detailed configuration organized by connection type.
+::::
 
 This approach might be right for you if you want to reduce on-prem compute resources and you’d like Elastic to take care of provisioning and life cycle management of your deployment.
 

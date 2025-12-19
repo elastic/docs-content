@@ -8,6 +8,7 @@ toc:
   - file: deployment-models.md
     children:
       - file: fleet-server.md
+      - file: deploy-fleet-server.md
       - file: add-fleet-server-cloud.md
       - file: add-fleet-server-on-prem.md
       - file: add-fleet-server-mixed.md
@@ -20,6 +21,7 @@ toc:
   - file: install-elastic-agents.md
     children:
       - file: fleet-agent-release-process.md
+      - file: deploy-elastic-agent.md
       - file: install-fleet-managed-elastic-agent.md
       - file: install-standalone-elastic-agent.md
         children:
