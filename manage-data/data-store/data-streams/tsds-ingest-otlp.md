@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# OTLP/HTTP endpoint
+# OTLP/HTTP endpoint [otlp-http-endpoint]
 
 In addition to the ingestion of metrics data through the bulk API,
 {{es}} offers an alternative way to ingest data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
@@ -117,6 +117,9 @@ PUT /_cluster/settings
 ```
 
 Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
+
+Note that this setting only applies to metrics ingested via the [Elasticsearch OTLP endpoint](#otlp-http-endpoint).
+Documents ingested via other APIs (e.g. using the Elasticsearch exporter for the OpenTelemetry Collector) are not affected.
 
 ## Limitations
 
