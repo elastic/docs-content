@@ -32,7 +32,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher (required to onboard system logs and metrics). To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * A running Kubernetes cluster with internet access
-* [Helm](https://helm.sh/docs/)
+* Helm version 3.9+ up to and including {{helm-version}}.
 ::::
 
 ::::{applies-item} stack: ga 9.2+
@@ -47,7 +47,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 :::
 
 * A running Kubernetes cluster with internet access
-* [Helm](https://helm.sh/docs/)
+* Helm version 3.9+ up to and including {{helm-version}}.
 ::::
 
 ::::{applies-item} stack: ga 9.0-9.1
@@ -62,7 +62,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 :::
 
 * A running Kubernetes cluster with internet access
-* [Kubectl](https://kubernetes.io/docs/reference/kubectl/)
+* [Kubectl](https://kubernetes.io/docs/reference/kubectl/) or Helm version 3.9+ up to and including {{helm-version}}
 ::::
 
 :::::
