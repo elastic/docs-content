@@ -42,6 +42,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Can I use macOS to set up AutoOps for my self-managed clusters?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 * [Do I have to install {{agent}} separately for each node in my cluster?](#agent-nodes)
+* [Do I have to go through the whole installation wizard to connect more clusters?](#connect-more-clusters)
 
 **Collected metrics and data in AutoOps for self-managed clusters**
 * [Where are metrics stored in AutoOps for self-managed clusters?](#sm-autoops-metrics-storage)
@@ -119,6 +120,9 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 
 $$$agent-nodes$$$ **Do I have to install {{agent}} separately for each node in my cluster?**
 :    No, to run AutoOps in your self-managed environment, you only have to install the agent once per cluster.
+
+$$$connect-more-clusters$$$Do I have to go through the whole installation wizard to connect more clusters?
+:   Not necessarily. Refer to [Connect additional clusters](../autoops/cc-connect-self-managed-to-autoops.md#connect-additional-clusters) for more information.
 
 ### Collected metrics and data in AutoOps for self-managed clusters
 

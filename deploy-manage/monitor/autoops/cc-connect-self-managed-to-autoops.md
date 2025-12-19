@@ -107,7 +107,7 @@ macOS is not a supported platform for installing {{agent}} to connect to AutoOps
 :::
 
 :::{important} 
-Every cluster that you want to connect requires a new, dedicated {{agent}}. You must install the agent even if you already have an existing one for other purposes.
+Each cluster that you want to connect requires a new, dedicated {{agent}}. You must install the agent even if you already have an existing one for other purposes.
 
 You only need to install the agent once per cluster. 
 :::
@@ -267,9 +267,7 @@ Complete the following steps to run the command:
 
 It might take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
 
-If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors).
-
-Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
+If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors). Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
 To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md).
 
@@ -305,7 +303,9 @@ By default, each cluster has a name made up of a string of characters, but you c
 
 To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 
-You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}. You only need to install the agent once per cluster. 
+Or, if you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command to connect them.
+
+Remember that you must run the command to install a separate, dedicated {{agent}} for each cluster. You only need to install the agent once per cluster. 
 
 ### Disconnect a cluster
 
