@@ -167,6 +167,7 @@ POST _search
   }
 }
 ```
+::::
 
 ## Learn more [semantic-reranking-learn-more]
 
