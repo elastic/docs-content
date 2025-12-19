@@ -53,7 +53,7 @@ You can create a new cluster based on the snapshot taken in the previous step, a
 
 ## Update settings in the target cluster [migrate-elastic-agent-target-settings]
 
-when the target cluster is available you’ll need to adjust a few settings. Take some time to examine the {{fleet}} setup in the new cluster.
+When the target cluster is available you’ll need to adjust a few settings. Take some time to examine the {{fleet}} setup in the new cluster.
 
 1. Open the {{kib}} menu and select **Fleet**.
 2. On the **Agents** tab, your agents should visible, however they’ll appear as `Offline`. This is because these agents have not yet enrolled in the new, target cluster, and are still enrolled in the original, source cluster.

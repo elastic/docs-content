@@ -19,6 +19,10 @@ To ingest data into {{es}}, use the *simplest option that meets your needs* and 
 You can host {{es}} on your own hardware or send your data to {{es}} on {{ecloud}}. For most users, {{agent}} writing directly to {{es}} on {{ecloud}} provides the easiest and fastest time to value. {{ech}} is available on {{aws}}, GCP, and Azure, and you can [try it for free](https://cloud.elastic.co/registration).
 ::::
 
+::::{admonition} Elastic Cloud Serverless architectural differences
+The architecture diagrams below show {{es}} and {{kib}} as separate components. In {{serverless-full}}, they are combined into a single integrated architecture: {{es-serverless}}.
+::::
+
 **Decision tree**
 
 [Data ingestion](../ingest.md)

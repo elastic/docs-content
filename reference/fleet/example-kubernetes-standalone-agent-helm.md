@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-kubernetes-standalone-agent-helm.html
 applies_to:
-  stack: ga 8.18
+  stack: ga
   serverless: ga
 products:
   - id: fleet
