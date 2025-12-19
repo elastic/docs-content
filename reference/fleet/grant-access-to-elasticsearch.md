@@ -13,11 +13,9 @@ products:
 
 You can use either API keys (recommended) or user credentials to grant standalone {{agents}} access to {{es}} resources.
 
-::::{note}
-In {{serverless-full}}, API key authentication is required; username/password credentials are not supported for authenticating {{agents}}.
-
-We recommend that you use API keys for {{stack}} deployments to avoid exposing usernames and passwords in configuration files.
-:::: 
+::::{important}
+API key authentication is required for {{serverless-full}}. API key authentication is recommended for {{stack}} deployments in order to avoid exposing usernames and passwords in configuration files.
+::::
 
 The following minimal permissions are required to send logs, metrics, traces, and synthetics to {{es}}:
 
