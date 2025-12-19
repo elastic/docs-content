@@ -22,6 +22,7 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+* An APM agent key for authenticating your EDOT SDKs. To create one, refer to [Create APM agent key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
 * An Elastic Distribution of OpenTelemetry (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
 
 :::
@@ -31,6 +32,7 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+* An APM agent key for authenticating your EDOT SDKs. To create one, refer to [Create APM agent key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
 * An Elastic Distribution of OpenTelemetry (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
 
 :::
