@@ -31,7 +31,7 @@ ELSER requests are managed by Elastic's own EIS infrastructure and are also host
 ## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 ```{applies_to}
-stack: preview 9.1, ga 9.2
+stack: preview =9.1, ga 9.2+
 serverless: ga
 ```
 

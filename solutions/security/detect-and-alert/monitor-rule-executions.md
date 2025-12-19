@@ -92,9 +92,8 @@ Use these controls to filter what’s included in the logs table:
 
 
 ### Gaps table [gaps-table]
-
 ```{applies_to}
-   stack: preview 9.0, ga 9.1
+stack: preview =9.0, ga 9.1+
 ```
 
 Gaps in rule executions are periods of time where a rule didn’t run. They can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.

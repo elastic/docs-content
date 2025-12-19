@@ -2,7 +2,7 @@
 navigation_title: Manage data retention
 applies_to:
   serverless: ga
-  stack: preview 9.1, ga 9.2
+  stack: preview =9.1, ga 9.2+
 ---
 
 # Manage data retention for Streams [streams-data-retention]
@@ -63,7 +63,7 @@ To define a global default retention policy, refer to [project settings](../../.
 ### Follow an ILM policy [streams-retention-ilm]
 ```{applies_to}
 serverless: unavailable
-stack: preview 9.1, ga 9.2
+stack: preview =9.1, ga 9.2+
 ```
 [ILM policies](../../../../manage-data/lifecycle/index-lifecycle-management.md) let you automate and standardize data retention across Streams and other data streams.
 

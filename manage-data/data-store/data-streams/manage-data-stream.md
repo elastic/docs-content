@@ -26,7 +26,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 ## Manage data streams on the Streams page [manage-data-streams-with-streams]
 ```{applies_to}
 serverless: ga
-stack: preview 9.1, ga 9.2
+stack: preview =9.1, ga 9.2+
 ```
 The [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
 

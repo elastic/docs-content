@@ -304,7 +304,7 @@ applies_to:
 ### Assign colors to terms [assign-colors-to-terms]
 
 ```{applies_to}
-stack: ga 9.1, preview 9.0,
+stack: ga 9.1+, preview =9.0,
 serverless: ga
 ```
 
