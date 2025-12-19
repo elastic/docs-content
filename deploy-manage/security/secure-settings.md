@@ -118,7 +118,7 @@ In ECK, the operator simplifies secure settings configuration by relying on Kube
 Refer to [Configure secure settings on ECK](./k8s-secure-settings.md) for details and examples.
 ::::
 
-::::{applies-item} self
+::::{applies-item} self:
 
 % ### Self-managed
 In self-managed deployments, you're responsible for configuring and maintaining the {{es}} keystore on each node individually.

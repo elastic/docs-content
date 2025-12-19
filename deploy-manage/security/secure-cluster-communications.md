@@ -150,7 +150,7 @@ Managing certificates is critical for secure communications. Certificates have l
 
 ::::{applies-switch}
 
-:::{applies-item} { "serverless":, "ess": }
+:::{applies-item} { serverless:, ess: }
 
 Certificate lifecycle is fully managed by Elastic, including renewal and rotation.
 :::
