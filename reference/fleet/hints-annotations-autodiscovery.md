@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/hints-annotations-autodiscovery.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: beta
+  serverless: beta
 products:
   - id: fleet
   - id: elastic-agent

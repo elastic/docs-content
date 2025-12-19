@@ -11,14 +11,18 @@ products:
 
 # Grant standalone Elastic Agents access to Elasticsearch [grant-access-to-elasticsearch]
 
-You can use either API keys or user credentials to grant standalone {{agent}}s access to {{es}} resources. The following minimal permissions are required to send logs, metrics, traces, and synthetics to {{es}}:
+You can use either API keys (recommended) or user credentials to grant standalone {{agents}} access to {{es}} resources.
+
+::::{note}
+In {{serverless-full}}, API key authentication is required; username/password credentials are not supported for authenticating {{agents}}.
+
+We recommend that you use API keys for {{stack}} deployments to avoid exposing usernames and passwords in configuration files.
+:::: 
+
+The following minimal permissions are required to send logs, metrics, traces, and synthetics to {{es}}:
 
 * `monitor` cluster privilege
 * `auto_configure` and `create_doc` index privileges on `logs-*-*`, `metrics-*-*`, `traces-*-*`, and `synthetics-*-*`.
-
-It’s recommended that you use API keys to avoid exposing usernames and passwords in configuration files.
-
-If you’re using {{fleet}}, refer to [{{fleet}} enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md).
 
 
 ## Create API keys for standalone agents [create-api-key-standalone-agent]
