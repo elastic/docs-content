@@ -96,9 +96,7 @@ toc:
               - file: search/search-applications/search-application-api.md
               - file: search/search-applications/search-application-security.md
               - file: search/search-applications/search-application-client.md
-      - file: search/cross-cluster-search.md
-        children:
-          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
+
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
       - file: search/query-rules-ui.md
@@ -118,6 +116,7 @@ toc:
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
+              - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
               - file: observability/get-started/opentelemetry/quickstart/self-managed/index.md
                 children:
                   - file: observability/get-started/opentelemetry/quickstart/self-managed/k8s.md
@@ -523,7 +522,6 @@ toc:
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
         children:
-          - file: observability/connect-to-own-local-llm.md
           - file: observability/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
@@ -567,15 +565,7 @@ toc:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery.md
-          - file: security/ai/set-up-connectors-for-large-language-models-llm.md
-            children:
-              - file: security/ai/large-language-model-performance-matrix.md
-              - file: security/ai/connect-to-azure-openai.md
-              - file: security/ai/connect-to-amazon-bedrock.md
-              - file: security/ai/connect-to-openai.md
-              - file: security/ai/connect-to-google-vertex.md
-              - file: security/ai/connect-to-own-local-llm.md
-              - file: security/ai/connect-to-vLLM.md
+          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
             children:
               - file: security/ai/triage-alerts.md

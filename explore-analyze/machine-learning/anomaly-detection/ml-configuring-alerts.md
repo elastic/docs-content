@@ -45,30 +45,28 @@ To set up an {{anomaly-detect}} alert rule:
 1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **{{anomaly-detect-cap}}** rule type.
 
-:::{image} /explore-analyze/images/ml-anomaly-create-anomaly-detection.png
-:alt: Selecting Anomaly detection rule type
-:screenshot:
-:::
-
 3. Select the [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) that the rule applies to.
 4. Select a type of {{ml}} result. You can create rules based on bucket, record, or influencer results.
 5. (Optional) Configure the `anomaly_score` that triggers the action. 
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
 anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
-6. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
-    - Include interim results if you 
-want to be notified earlier about a potential anomaly even if it might be a 
-false positive. 
-    - Don't include interim results if you want to get notified only about anomalies of fully 
-processed buckets.
+6. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule looks for, add an **Anomaly filter**. This feature uses KQL and is only available for the Record and Influencer result types.
+    
+    In the **Anomaly filter** field, enter a KQL query that specifies fields or conditions to alert on. You can set up the following conditions:
+    
+    * One or more partitioning or influencers fields in the anomaly results match the specified conditions
+    * The actual or typical scores in the anomalies match the specified conditions
 
-:::{image} /explore-analyze/images/ml-anomaly-alert.jpg
-:alt: Selecting result type, severity, and interim results
-:screenshot:
-:::
+    For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with `partition_field_value: "404"`.
 
-7. (Optional) Configure **Advanced settings**:
+    ::::{note}
+    When you edit the KQL query, suggested filter-by fields appear. To compare actual and typical values for any fields, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
+    ::::
+
+7. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives. Don't include interim results if you want to get notified only about anomalies of fully processed buckets.
+
+8. (Optional) Configure **Advanced settings**:
    - Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.
    - Configure the _Number of latest buckets_ to specify how many buckets to check to obtain the highest anomaly score found during the _Lookback interval_. The alert is created based on the highest scoring anomaly from the most anomalous bucket.
 
@@ -86,8 +84,8 @@ You can preview how the rule would perform on existing data:
 :screenshot:
 :::
 
-8. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
-9. (Optional) Configure **Advanced options**:
+9. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
+10. (Optional) Configure **Advanced options**:
    - Define the number of consecutive matches required before an alert is triggered under **Alert delay**.
    - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts. You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
 
