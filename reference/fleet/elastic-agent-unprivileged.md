@@ -10,6 +10,10 @@ products:
 
 Beginning with {{stack}} version 8.15, {{agent}} is no longer required to be run by a user with superuser privileges. You can now run agents in an `unprivileged` mode that does not require `root` access on Linux or macOS, or `admin` access on Windows. Being able to run agents without full administrative privileges is often a requirement in organizations where this kind of access is often limited.
 
+:::{note}
+Unprivileged mode is not supported for {{agent}} installed using RPM or DEB packages. To use unprivileged mode on Linux, you must install {{agent}} using the tarball (`.tar.gz`) distribution.
+:::
+
 In general, agents running without full administrative privileges will perform and behave exactly as those run by a superuser. There are certain integrations and data streams that are not available, however. If an integration requires root access, this is [indicated on the integration main page](#unprivileged-integrations).
 
 You can also [change the privilege mode](#unprivileged-change-mode) of an {{agent}} after it has been installed.
@@ -60,6 +64,8 @@ elastic-agent install `
 :::::
 
 ### Considerations
+
+If you installed {{agent}} using an RPM or DEB package, the commands related to unprivileged mode will not work. To use unprivileged mode on Linux, you must install {{agent}} using the tarball (`.tar.gz`) distribution.
 
 When running {{agent}} in `unprivileged` mode on Linux systems, consider the following:
 
@@ -164,7 +170,11 @@ In the event that the {{agent}} policy has integrations installed that require r
 
 ## Changing an {{agent}}'s privilege mode [unprivileged-change-mode]
 
-For any installed {{agent}} you can change the mode that it’s running in by running the `privileged` or `unprivileged` subcommand.
+For any installed {{agent}} you can change the mode that it's running in by running the `privileged` or `unprivileged` subcommand.
+
+:::{note}
+Changing privilege modes is not supported for {{agent}} installed using RPM or DEB packages.
+:::
 
 Change mode from privileged to unprivileged:
 
@@ -235,6 +245,10 @@ For example:
 ## Using `unprivileged` mode with a pre-existing user and group [unprivileged-preexisting-user]
 
 In certain cases you may want to install {{agent}} in `unprivileged` mode, with the agent running as a pre-existing user or as part of a pre-existing group. For example, on a Windows system you may have a service account in Active Directory and you'd like {{agent}} to run under that account.
+
+:::{note}
+This functionality is not supported for {{agent}} installed using RPM or DEB packages.
+:::
 
 :::{admonition} Active Directory to determine user group
 :applies_to: stack: preview
