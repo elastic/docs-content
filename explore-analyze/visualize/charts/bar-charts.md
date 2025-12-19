@@ -40,7 +40,8 @@ New visualizations default to creating **Bar** charts, so you don't need to chan
 4. Optionally:
     - Add a [**Break down by**](#breakdown-options) dimension to split each bar into segments, creating stacked or grouped bar charts.
     - Add multiple metrics to compare different measures side by side.
-    - Configure the axis [settings](#settings) to customize scale, labels, and gridlines.
+    - Add layers to your chart to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+    - Configure the axis settings to customize scale, labels, and gridlines.
 
 Refer [](#settings) for all data configuration options for your bar chart.
 ::::
