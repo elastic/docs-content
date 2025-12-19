@@ -116,7 +116,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ::::{applies-switch}
 
-:::{applies-item} { "ess":, "ece": }
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -144,7 +144,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ::::{applies-switch}
 
-:::{applies-item} { "ess":, "ece": }
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -166,7 +166,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{applies-switch}
 
-:::{applies-item} { "ess":, "ece": }
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -194,7 +194,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{applies-switch}
 
-:::{applies-item} { "ess":, "ece": }
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |

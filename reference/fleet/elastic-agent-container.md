@@ -129,7 +129,7 @@ docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} 
 
 ::::{applies-switch}
 
-:::{applies-item} { "serverless":, "ess": }
+:::{applies-item} { serverless:, ess: }
 
 ```terminal subs=true
 docker run \

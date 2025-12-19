@@ -65,7 +65,7 @@ The way that you configure your {{stack}} settings is determined by your deploym
 
 :::::{applies-switch}
 
-::::{applies-item} { "ess":,"ece": }
+::::{applies-item} { ess:, ece: }
 
 For {{ech}} and {{ece}} deployments, you edit {{stack}} settings through the {{ecloud}} Console or ECE Cloud UI. These settings are internally mapped to the appropriate YAML configuration files, such as `elasticsearch.yml` and `kibana.yml`, and they affect all users of that cluster.
 

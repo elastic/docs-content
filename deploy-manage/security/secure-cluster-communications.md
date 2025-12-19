@@ -61,7 +61,7 @@ The way that transport layer security is managed depends on your deployment type
 
 :::::{applies-switch}
 
-::::{applies-item} { "serverless":, "ess": }
+::::{applies-item} { serverless:, ess: }
 
 {{es}} transport security is fully managed by Elastic, and no configuration is required.
 ::::
@@ -104,7 +104,7 @@ The way that HTTP layer security is managed depends on your deployment type:
 
 :::::{applies-switch}
 
-::::{applies-item} { "serverless":, "ess": }
+::::{applies-item} { serverless:, ess: }
 
 HTTP TLS for {{es}} and {{kib}} is fully managed by Elastic. No configuration is required.
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.

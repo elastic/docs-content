@@ -164,7 +164,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 4. Restart {{es}}.
 ::::
 
-::::{applies-item} { "ess":, "ece":}
+::::{applies-item} { ess:, ece: }
 
 1. Create a [custom bundle](elasticsearch://reference/elasticsearch-plugins/plugin-management.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
 
