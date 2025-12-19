@@ -65,7 +65,8 @@ Before starting the upgrade process, check which of the following recommendation
 
 
 * We strongly recommend that you routinely update your ECE installation to the most current version so that any bugs and security issues are fixed promptly. If you need to upgrade but are currently experiencing any issues with your platform, note that as long as ZooKeeper is running and healthy you should be able to upgrade (you can use the [get runners API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-runners) to easily verify the health of the runners on the [ECE allocators](../../../deploy-manage/deploy/cloud-enterprise/ece-architecture.md#ece-architecture-allocators)). That is, healthy system deployments are not required in order to perform an upgrade successfully.
-* Before upgrading to {{ece}} 4.0, refer to the [lists of removals](cloud://release-notes/cloud-enterprise/breaking-changes.md) to find out about features and API endpoints that are no longer supported.
+* Review the [known issues](cloud://release-notes/cloud-enterprise/known-issues.md) to find out about limitations and known problems, to ensure a smoother upgrade experience.
+* Review the [lists of removals](cloud://release-notes/cloud-enterprise/breaking-changes.md) to find out about features and API endpoints that are no longer supported.
 * We strongly recommend that you do not attempt to perform certain actions during the upgrade process, such as:
 
     * Creating or changing {{es}} clusters and {{kib}} instances
@@ -77,8 +78,6 @@ Before starting the upgrade process, check which of the following recommendation
 ## Requirements [ece-upgrade-prereqs]
 
 Before starting the upgrade process, verify that your setup meets the following requirements:
-
-- **Review [known issues](cloud://release-notes/cloud-enterprise/known-issues.md) prior to upgrading.** This will provide you with guidance on limitations and known problems, ensuring a smoother upgrade experience.
 
 - **XFS with quotas enabled on all allocators.** You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly. To enable XFS quotas, modify the entry for the XFS volume in the `/etc/fstab file` to add pquota and `prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
