@@ -47,6 +47,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [What information does {{agent}} gather from my cluster?](#extracted-info)
 * [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
 * [Can I view the data gathered by {{agent}}?](#data-viewing-config)
+* [Can I stop {{agent}} from gathering certain types of data from my cluster?](#disable-metrics)
 
 ## General AutoOps questions
 
@@ -171,4 +172,5 @@ $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
 
     A sample of the data gathered by the agent will be downloaded to your machine.
 
-
+$$$disable-metrics$$$**Can I stop {{agent}} from gathering certain types of data from my cluster?**
+:   Yes, you can configure the agent to not collect certain types of data. Learn more in [](../autoops/autoops-disable-metrics-collection.md).
