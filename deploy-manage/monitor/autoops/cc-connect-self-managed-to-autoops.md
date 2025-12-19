@@ -107,7 +107,7 @@ macOS is not a supported platform for installing {{agent}} to connect to AutoOps
 :::
 
 :::{important} 
-Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install the agent even if you already have an existing one for other purposes.
+Every cluster that you want to connect requires a new, dedicated {{agent}}. You must install the agent even if you already have an existing one for other purposes.
 
 You only need to install the agent once per cluster. 
 :::
@@ -305,7 +305,7 @@ By default, each cluster has a name made up of a string of characters, but you c
 
 To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 
-You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}.
+You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}. You only need to install the agent once per cluster. 
 
 ### Disconnect a cluster
 
