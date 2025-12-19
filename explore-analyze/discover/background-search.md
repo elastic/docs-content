@@ -69,7 +69,7 @@ To send searches to the background, and to view and interact with the list of ba
 
 ::::{applies-item} stack: ga 9.0-9.1
 
-In thee versions, this feature is named **Search sessions**.
+In these versions, this feature is named **Search sessions**.
 * To save a session, you must have permissions for **Discover** and **Dashboard**, and the [Search sessions subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 * To view and restore a saved session, you must have access to {{stack-manage-app}}.
 ::::
