@@ -17,4 +17,31 @@ AI Agent is built on Elastic's [Agent Builder](/solutions/search/elastic-agent-b
 
 ## Enable AI Agent
 
-While AI Agent is in technical preview, the existing AI Assistants remain the default chat experiences for Observability and Security.
+While AI Agent is in technical preview, depending which solution you're using you may have to opt in to enable it:
+
+- **{{observability}} and {{elastic-sec}}:** The existing AI Assistants remain the default chat experiences for Elastic. 
+- **{{es}}:** AI Agent is the default chat experience.
+
+To enable AI Agent, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+
+## Feature differences between AI Agent and AI Assistant
+
+Some of the functionality supported by Elastic's AI Assistants is not supported by AI Agents. The differences vary by solution.
+
+### Feature differences in {{elastic-sec}}
+
+AI Agent for {{elastic-sec}} provides a similar experience to AI Assistant for Security at a high level, but with a number of differences.
+
+The following AI Assistant for Security features are not supported in AI Agent:
+
+- **Knowledge Base** 
+- **Data anonymization**
+- **Time awareness**
+- **Chat sharing**
+- **Citations**
+- **Audit logging**
+- **Quick prompts**
+
+In addition, AI Agent chats won't show a preview of data you attach to a message, such as Alerts and Attacks.
+
+### Feature differences in Elastic {{observability}}

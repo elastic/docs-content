@@ -171,6 +171,7 @@ toc:
   - file: ai-features.md
     children:
       - file: ai-features/ai-assistant.md
+      - file: ai-features/ai-chat-experiences/switch-to-ai-agent.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
