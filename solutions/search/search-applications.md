@@ -11,7 +11,6 @@ products:
 
 # Search applications [search-application-overview]
 
-
 *Search Applications* enable users to build search-powered applications that leverage the full power of {{es}} and its Query DSL, with a simplified user experience. Create search applications based on your {{es}} indices, build queries using search templates, and easily preview your results directly in the {{kib}} Search UI.
 
 You can also interact with your search applications using the [Search Application APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search_application). Search Applications are designed to simplify building unified search experiences across a range of enterprise search use cases, using the Elastic platform.
@@ -31,9 +30,8 @@ Documentation for the Search Applications feature lives in two places:
 The Search Applications feature was introduced in Elastic version **8.8.0**.
 
 ::::{note} 
-Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features. Elastic plans to promote this feature to GA in a future release.
+Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
 ::::
-
 
 This feature is available to all **{{ech}}** deployments.
 
@@ -43,7 +41,7 @@ For Serverless users, this is an API-only feature. You can create and manage sea
 
 Your deployment must include the {{es}} and {{kib}} services.
 
-Managing search applications requires the `manage_search_application` cluster privilege, and also requires the `manage` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) on all indices associated with the search application.
+Managing search applications requires the `manage_search_application` cluster privilege, and also requires the `manage` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) on all indices associated with the search application.
 
 
 ## Overview [search-application-overview-summary] 
@@ -55,12 +53,16 @@ Search Applications use [search templates](search-templates.md) to simplify the 
 
 ## Get started [search-application-overview-get-started] 
 
-
 ### Option 1: Get started in the UI [search-application-overview-get-started-ui] 
 
 ```{applies_to}
-serverless: unavailable
+serverless: unavailable 
 ```
+:::{warning}
+:applies_to: {"stack": "unavailable 9.2.0"}
+This feature is unavailable for new users and is hidden from the navigation menu. It remains accessible for users who started using the feature before 9.2.
+::::
+
 
 You can create build, and manage your search applications directly in the {{kib}} UI under **Search**. Make sure you have at least one {{es}} index to work with on your deployment. The indices underlying your search application are searched together, similar to how an [alias](../../manage-data/data-store/aliases.md) searches over multiple indices.
 

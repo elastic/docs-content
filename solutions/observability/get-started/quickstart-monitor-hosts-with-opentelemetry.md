@@ -1,10 +1,11 @@
 ---
+description: Learn how to monitor hosts using the Elastic Distribution of OpenTelemetry (EDOT) Collector and gain deeper insights into your observability data.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-otel.html
   - https://www.elastic.co/guide/en/serverless/current/quickstart-monitor-hosts-with-otel.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -12,13 +13,7 @@ products:
 
 # Quickstart: Monitor hosts with OpenTelemetry [quickstart-monitor-hosts-with-otel]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 In this quickstart guide, you’ll learn how to monitor your hosts using the Elastic Distribution of OpenTelemetry (EDOT) Collector. You’ll also learn how to use {{observability}} features to gain deeper insight into your observability data after collecting it.
-
 
 ## Prerequisites [_prerequisites]
 
@@ -41,7 +36,7 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * This quickstart is only available for Linux and MacOS systems.
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the OpenTelemetry collector because of these components:
@@ -97,7 +92,7 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 ::::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. To open the quickstart, go to **Add Data**.
 3. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
 4. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
@@ -120,13 +115,9 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 
 :::::
 
-
-Under **Visualize your data**, you’ll see links to **Discover** to view your logs and **Hosts** to view your host metrics.
-
-
 ## Gain deeper insight into your host data  [_get_value_out_of_your_data]
 
-After using the Hosts page and Discover to confirm you’ve ingested all the host logs and metrics you want to monitor, use Elastic {{observability}} to gain deeper insight into your host data with the following capabilities and features:
+After using the **Hosts** page and **Discover** to confirm you’ve ingested all the host logs and metrics you want to monitor, use Elastic {{observability}} to gain deeper insight into your host data with the following capabilities and features:
 
 * In the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md), analyze and compare data collected from your hosts. You can also:
 
@@ -147,3 +138,4 @@ After using the Hosts page and Discover to confirm you’ve ingested all the hos
 
 
 Refer to the [Elastic Observability](/solutions/observability.md) for a description of other useful features.
+

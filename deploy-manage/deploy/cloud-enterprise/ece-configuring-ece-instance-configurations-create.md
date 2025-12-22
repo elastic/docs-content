@@ -60,7 +60,7 @@ Before you start creating your own instance configurations, you should have [tag
 1. Obtain the existing instance configurations to get some examples of what the required JSON looks like. You can take the JSON for one of the existing configurations and modify it to create a new instance configuration, similar to what gets shown in the next step.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/platform/configuration/instances
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/instances
     ```
 
 2. Post the JSON for your new instance configuration.
@@ -68,7 +68,7 @@ Before you start creating your own instance configurations, you should have [tag
     The following examples creates an instance configuration for machine learning with size increments that start at the recommended minimum of 16 GB of memory. To make sure that machine learning nodes get deployed only on the right allocators, this instance configuration also filters for [allocator tags from our earlier example](ece-configuring-ece-tag-allocators.md) to match only allocators with high CPU resources and SSD storage.
 
     ```sh
-    curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/platform/configuration/instances -H 'content-type: application/json' -d '{
+    curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/instances -H 'content-type: application/json' -d '{
      "name": "Machine Learning Only",
       "description": "Custom machine learning instance configuration",
       "storage_multiplier": 32.0,

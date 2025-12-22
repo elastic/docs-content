@@ -16,7 +16,7 @@ Access to the [Logstash Monitoring APIs](logstash://reference/monitoring-logstas
 
 You can further secure the {{ls}} Monitoring APIs by requiring HTTP Basic authentication by setting `api.auth.type: basic`, and providing the relevant credentials `api.auth.basic.username` and `api.auth.basic.password`:
 
-```yaml
+```yaml subs=true
 apiVersion: v1
 kind: Secret
 metadata:
@@ -30,7 +30,7 @@ kind: Logstash
 metadata:
   name: logstash-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   config:
     api.auth.type: basic
@@ -62,14 +62,14 @@ The variable substitution in `config` does not support the default value syntax.
 
 The TLS Keystore is automatically generated and includes a certificate and a private key, with default password protection set to `changeit`. This password can be modified by configuring the `api.ssl.keystore.password` value.
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: logstash-sample
 spec:
   count: 1
-  version: 8.16.1
+  version: {{version.stack}}
   config:
     api.ssl.keystore.password: "${SSL_KEYSTORE_PASSWORD}"
 ```
@@ -79,13 +79,13 @@ spec:
 
 If you want to use your own certificate, the required configuration is similar to {{es}}. Configure the certificate in `api` Service. Check [Custom HTTP certificate](../../security/secure-cluster-communications.md).
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: logstash-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: "elasticsearch-sample"
@@ -104,13 +104,13 @@ spec:
 
 You can disable TLS by disabling the generation of the self-signed certificate in the API service definition
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: logstash-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: "elasticsearch-sample"

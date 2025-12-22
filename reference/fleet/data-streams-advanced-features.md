@@ -2,6 +2,9 @@
 navigation_title: Advanced data stream features
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-advanced-features.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -15,7 +18,7 @@ products:
 * [Time series data streams (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
 * [Synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source)
 
-These features can be enabled and disabled for {{fleet}}-managed data streams by using the index template API and a few key settings. Note that in versions 8.17.0 and later, Synthetic `_source` requires an Enterprise license.
+These features can be enabled and disabled for {{fleet}}-managed data streams by using the index template API and a few key settings. In versions 8.17.0 and later, synthetic `_source` is available only for certain [Elastic subscription levels](https://www.elastic.co/subscriptions).
 
 ::::{note}
 If you are already making use of `@custom` component templates for ingest or retention customization (as shown for example in [Tutorial: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md)), exercise care to ensure you don’t overwrite your customizations when making these requests.

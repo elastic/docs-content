@@ -30,7 +30,7 @@ Deployment capacity typically constitutes the majority of your bill, and is the 
 
 ### How can I control the deployment capacity cost? [ec_how_can_i_control_the_deployment_capacity_cost] 
 
-Deployment capacity is purely a function of your current deployment configuration and time.  To reduce this cost, you must [configure your deployment](../../deploy/elastic-cloud/configure.md) to use fewer resources.  To determine how much a particular deployment configuration will cost, try our [pricing calculator](https://cloud.elastic.co/pricing).
+Deployment capacity is purely a function of your current deployment configuration and time.  To reduce this cost, you must [configure your deployment](../../deploy/elastic-cloud/configure.md) to use fewer resources.  To determine how much a particular deployment configuration will cost, try our {{ech}} [pricing calculator](https://cloud.elastic.co/pricing).
 
 
 ## Data Transfer [data-transfer] 
@@ -39,16 +39,19 @@ Data Transfer accounts for the volume of data (payload) going into, out of, and 
 
 We meter and bill data transfer using three dimensions:
 
-1. Data in (free)
-:   *Data in* accounts for all of the traffic going into the deployment. It includes index requests with data payload, as well as queries sent to the deployment (although the byte size of the latter is typically much smaller).
+1. **Data in (free)**
+   
+   *Data in* accounts for all of the traffic going into the deployment. It includes index requests with data payload, as well as queries sent to the deployment (although the byte size of the latter is typically much smaller).
 
-2. Data out
-:   *Data out* accounts for all of the traffic coming out of the deployment. This includes search results, as well as monitoring data sent from the deployment. The same rate applies regardless of the destination of the data, whether to the internet, to another region, or to a cloud provider account in the same region. Data coming out of the deployment through AWS PrivateLink, GCP Private Service Connect, or Azure Private Link, is also considered *Data out*.
+2. **Data out**
+   
+   *Data out* accounts for all of the traffic coming out of the deployment. This includes search results, as well as monitoring data sent from the deployment. The same rate applies regardless of the destination of the data, whether to the internet, to another region, or to a cloud provider account in the same region. Data coming out of the deployment through AWS PrivateLink, GCP Private Service Connect, or Azure Private Link, is also considered *Data out*.
 
-3. Data inter-node
-:   *Data inter-node* accounts for all of the traffic sent between the components of the deployment. This includes the data sync between nodes of a cluster which is managed automatically by {{es}} cluster sharding. It also includes data related to search queries executed across multiple nodes of a cluster. Note that single-node {{es}} clusters typically have lower charges, but may still incur inter-node charges accounting for data exchanged with {{kib}} nodes or other nodes, such as machine learning or APM.
-
-We provide a free allowance of 100GB per month, which includes the sum of *data out* and *data inter-node*, across all deployments in the account. Once this threshold is passed, a charge is applied for any data transfer used in excess of the 100GB monthly free allowance.
+3. **Data inter-node**
+   
+   *Data inter-node* accounts for all of the traffic sent between the components of the deployment. This includes the data sync between nodes of a cluster which is managed automatically by {{es}} cluster sharding. It also includes data related to search queries executed across multiple nodes of a cluster. Note that single-node {{es}} clusters typically have lower charges, but may still incur inter-node charges accounting for data exchanged with {{kib}} nodes or other nodes, such as machine learning or APM.
+   
+   We provide a free allowance of 100GB per month, which includes the sum of *data out* and *data inter-node*, across all deployments in the account. Once this threshold is passed, a charge is applied for any data transfer used in excess of the 100GB monthly free allowance.
 
 ::::{note} 
 Data inter-node charges are currently waived for Azure deployments.
@@ -71,22 +74,24 @@ Storage costs are tied to the cost of storing the backup snapshots in the underl
 
 As is common with Cloud providers, we meter and bill snapshot storage using two dimensions:
 
-1. Storage size (GB/month)
-:   This is calculated by metering the storage space (GBs) occupied by all snapshots of all deployments tied to an account. The same unit price applies to all regions. To calculate the due charges, we meter the amount of storage on an hourly basis and produce an average size (in GB) for a given month. The average amount is then used to bill the account for the GB/month used within a billing cycle (a calendar month).
+1. **Storage size (GB/month)**
+   
+   This is calculated by metering the storage space (GBs) occupied by all snapshots of all deployments tied to an account. The same unit price applies to all regions. To calculate the due charges, we meter the amount of storage on an hourly basis and produce an average size (in GB) for a given month. The average amount is then used to bill the account for the GB/month used within a billing cycle (a calendar month).
+    
+   For example, if the storage used in April 2019 was 100GB for 10 days, and then 130GB for the remaining 20 days of the month, the average storage would be 120 GB/month, calculated as `(100*10 + 130*20)/30`.
+   
+   We provide a free allowance of 100 GB/month to all accounts across all the account deployments. Any metered storage usage below that amount will not be billed. Whenever the 100 GB/month threshold is crossed, we bill for the storage used in excess of the 100GB/month free allowance.
 
-    For example, if the storage used in April 2019 was 100GB for 10 days, and then 130GB for the remaining 20 days of the month, the average storage would be 120 GB/month, calculated as (100*10 + 130*20)/30.
 
-    We provide a free allowance of 100 GB/month to all accounts across all the account deployments. Any metered storage usage below that amount will not be billed. Whenever the 100 GB/month threshold is crossed, we bill for the storage used in excess of the 100GB/month free allowance.
-
-
-2. Storage API requests (1K Requests/month)
-:   These costs are calculated by counting the total number of calls to backup or restore snapshots made by all deployments associated with an account. Unlike storage size, this dimension is cumulative, summed up across the billing cycle, and is billed at a price of 1,000 requests.
-
-    We provide a free allowance of 100,000 API requests to all accounts each month across all the account deployments. Once this threshold is passed, we bill only for the use of API requests in excess of the free allowance.
-
-    ::::{note} 
-    A single snapshot operation does not equal a single API call. There could be thousands of API calls associated with a single snapshot operation, as different files are written, deleted, and modified. The price we list is per 1000 API calls, so a rate of $0.0018 for 1000 API calls would cost $1.80 for a million calls.
-    ::::
+2. **Storage API requests (1K Requests/month)**
+   
+   These costs are calculated by counting the total number of calls to backup or restore snapshots made by all deployments associated with an account. Unlike storage size, this dimension is cumulative, summed up across the billing cycle, and is billed at a price of 1,000 requests.
+   
+   We provide a free allowance of 100,000 API requests to all accounts each month across all the account deployments. Once this threshold is passed, we bill only for the use of API requests in excess of the free allowance.
+   
+   ::::{note} 
+   A single snapshot operation does not equal a single API call. There could be thousands of API calls associated with a single snapshot operation, as different files are written, deleted, and modified. The price we list is per 1000 API calls, so a rate of $0.0018 for 1000 API calls would cost $1.80 for a million calls.
+   ::::
 
 
 

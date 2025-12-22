@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-ecs-application.html
   - https://www.elastic.co/guide/en/serverless/current/observability-ecs-application-logs.html
 applies_to:
-  stack: all
-  serverless: all
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -12,7 +12,11 @@ products:
 
 # ECS formatted application logs [logs-ecs-application]
 
-Logs formatted in Elastic Common Schema (ECS) don’t require manual parsing, and the configuration can be reused across applications. ECS-formatted logs, when paired with an {{apm-agent}}, allow you to correlate logs to easily view logs that belong to a particular trace.
+Logs formatted in {{product.ecs}} don't require manual parsing, and the same ingest configuration can be reused across applications. ECS-formatted logs, when paired with an {{apm-agent}} or [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), allow you to correlate logs to easily view logs that belong to a particular trace.
+
+:::{tip}
+We recommend using the [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md) to instrument your applications and collect ECS-formatted logs with automatic log correlation. You can also format your logs in ECS format.
+:::
 
 You can format your logs in ECS format the following ways:
 
@@ -79,36 +83,36 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
-sudo dpkg -i filebeat-{{version}}-amd64.deb
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-amd64.deb
+sudo dpkg -i filebeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
-sudo rpm -vi filebeat-{{version}}-x86_64.rpm
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} macOS
 ```sh subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
-tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```sh subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
-tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [{{filebeat}} Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip).
+1. Download the [{{filebeat}} Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-windows-x86_64.zip).
 2. Extract the contents of the zip file into `C:\Program Files`.
-3. Rename the _filebeat-{{version}}-windows-x86\_64_ directory to _Filebeat_:
+3. Rename the _filebeat-{{version.stack}}-windows-x86\_64_ directory to _Filebeat_:
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 5. From the PowerShell prompt, run the following commands to install {{filebeat}} as a Windows service:
 

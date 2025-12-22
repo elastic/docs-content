@@ -1,5 +1,5 @@
 ---
-navigation_title: Configure a policy
+navigation_title: Create an {{ilm-init}} policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
 applies_to:
@@ -8,32 +8,84 @@ products:
   - id: elasticsearch
 ---
 
-# Configure a lifecycle policy [set-up-lifecycle-policy]
+# Create an index lifecycle management policy in {{es}} [set-up-lifecycle-policy]
 
-For {{ilm-init}} to manage an index, a valid policy must be specified in the `index.lifecycle.name` index setting.
+An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how indices transition through different phases over time. This guide explains how to create a new {{ilm-init}} policy with configurable rollover, retention, and deletion rules, and then apply the policy using an index template. 
 
-To configure a lifecycle policy for [rolling indices](rollover.md), you create the policy and add it to the [index template](../../data-store/templates.md).
+You can use {{ilm-init}} to manage both indices and [data streams](/manage-data/data-store/data-streams.md). There are fewer configuration steps required to set up ILM with data streams. In comparison, configuring ILM with indices requires you to create an initial managed index and alias in addition to defining a policy and creating a template to apply it. This page describes the steps to configure an {{ilm-init}} lifecycle policy for both scenarios.
 
-To use a policy to manage an index that doesn’t roll over, you can specify a lifecycle policy when you create the index, or apply a policy directly to an existing index.
+:::{note}
+This page is specifically about using {{ilm-init}} with indices or data streams. If you're looking for a simpler data streams lifecycle management option that focuses on a data retention period, refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md). Check [Data lifecycle](/manage-data/lifecycle.md) to compare these lifecycle management options.
+:::
 
-{{ilm-init}} policies are stored in the global cluster state and can be included in snapshots by setting `include_global_state` to `true` when you [take the snapshot](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md). When the snapshot is restored, all of the policies in the global state are restored and any local policies with the same names are overwritten.
+**Consider these aspects when creating an {{ilm-init}} policy:**
 
-::::{important}
-When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
-::::
+* To manage an index or data stream with {{ilm-init}}, you need to specify a valid policy in the `index.lifecycle.name` index setting.
+
+* To configure a lifecycle policy for [rolling indices](rollover.md) or data streams, you create the policy and add it to the [index template](../../data-store/templates.md). Data streams are generally recommended in favor of rolling indices due to the lesser amount of manual configuration required. When you use {{ilm-init}} with rolling indices, you must, additionally, create an initial managed index (ensuring that it is named appropriately) and assign an alias to it. This additional process is described in [Step 3](#create-initial-index) on this page.
+
+* To use a policy to manage a single index, you can specify a lifecycle policy when you create the index, or apply a policy directly to an existing index.
+
+* {{ilm-init}} policies are stored in the global cluster state and can be included in snapshots by setting `include_global_state` to `true` when you [take the snapshot](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md). When the snapshot is restored, all of the policies in the global state are restored and any local policies with the same names are overwritten.
+
+## Overview [ilm-configure-overview]
+
+To set up ILM to manage one or more indices, the general procedure is as follows:
+
+1. [Create a lifecycle policy](#ilm-create-policy)
+2. [Create an index template to apply the lifecycle policy](#apply-policy-template)
+
+If you're configuring ILM for rolling indices and not using [data streams](../../data-store/data-streams.md), you additionally need to:
+
+3. [Create an initial managed index and alias](#create-initial-index)
+
+You can perform these actions in {{kib}} or using the {{es}} API.
+
+## Create a lifecycle policy [ilm-create-policy]
+
+A lifecycle policy defines a set of index lifecycle phases and the actions to perform on the managed indices in each phase.
+
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To add an ILM policy to an {{es}} cluster:
+
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select **Create policy**.
+
+    ![Create policy page](/manage-data/images/elasticsearch-reference-create-policy.png "")
+
+1. Specify a name for the lifecycle policy. Later on, when you create an index template to define how indices are created, you'll use this name to assign the lifecycle policy to each index.
+
+1. In the **Hot phase**, a [rollover index lifecycle action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) is executed by default when either:
+    * The index reaches 30 days of age.
+    * One or more primary shards reach 50 GB in size.
+
+    Disable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
+
+    ::::{important}
+    The rollover action implicitly rolls over a data stream or alias if one or more shards contain 200,000,000 or more documents. Typically, a shard will reach 50GB before it reaches 200M documents, however, this isn’t the case for space efficient data sets. This built-in limit exists to avoid Search performance loss if a shard contains more than 200M documents. For more information about recommended limits, refer to [](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
+    ::::
+
+1. By default, only the hot index lifecycle phase is enabled. Enable each additional lifecycle phase that you'd like, and for each choose any [index lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) to perform on indices when they enter that phase.
+
+    For example, you could choose the action to [downsample](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) the index, which aggregates the time series data into statistical summaries, reducing the data storage size.
+
+    ![Create policy page](/manage-data/images/elasticsearch-reference-create-policy-downsample.png "")
+
+    ::::{note}
+    For each phase after the hot phase, you have the option to move the data into the next phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
+    ::::
 
 
-## Create lifecycle policy [ilm-create-policy]
+1. For the final phase that's enabled, choose to either keep the data in the phase forever or delete the data after a specified period of time.
+:::
 
-To create a lifecycle policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+:::{tab-item} API
+:sync: api
+Use the [Create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API to add an ILM policy to the {{es}} cluster:
 
-![Create policy page](/manage-data/images/elasticsearch-reference-create-policy.png "")
-
-You specify the lifecycle phases for the policy and the actions to perform in each phase.
-
-The [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API is invoked to add the policy to the {{es}} cluster.
-
-::::{dropdown} API example
 ```console
 PUT _ilm/policy/my_policy
 {
@@ -57,35 +109,85 @@ PUT _ilm/policy/my_policy
 }
 ```
 
-1. Roll over the index when it reaches 25GB in size
+1. Roll over the index when one or more primary shards reach 25GB in size.
 2. Delete the index 30 days after rollover
 
-
-::::
-
-
 ::::{important}
-The rollover action implicitly always rolls over a data stream or alias if one or more shards contain 200000000 or more documents. Normally a shard will reach 25GB long before it reaches 200M documents, but this isn’t the case for space efficient data sets. Search performance will very likely suffer if a shard contains more than 200M documents. This is the reason of the builtin limit.
+The rollover action implicitly rolls over a data stream or alias if one or more shards contain 200,000,000 or more documents. Typically, a shard will reach 50GB before it reaches 200M documents, however, this isn’t the case for space efficient data sets. This built-in limit exists to avoid Search performance loss if a shard contains more than 200M documents.
+:::
 ::::
 
+## Create an index template to apply the lifecycle policy [apply-policy-template]
+
+To use a lifecycle policy that triggers a rollover action, you need to configure the policy in the index template used to create each new index. You specify the name of the policy and the alias used to reference the rolling indices.
+
+:::{tip}
+If you already have an index template to which you'd like to add an {{ilm-init}} policy, you can do this from the **Index Lifecycle Policies** management page. Search for and select the policy you want, and from the **Actions** menu, select **Add to index template**.
+:::
+
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To add an index template to a cluster and apply the lifecycle policy to indices matching the template:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Index Templates** tab, select **Create template**.
+
+    ![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard-my_template.png "")
+
+1. On the **Logistics** page:
+    1. Specify a name for the template.
+    1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `my-index-*`.
+    1. If you're storing continuously generated, append-only data, you can opt to create [data streams](/manage-data/data-store/data-streams.md) instead of indices for more efficient storage.
+
+        :::{note}
+        When you enable the data stream option, an option to set **Data retention** also becomes available. Since you're creating an index lifecycle policy to manage indices, the  **Data retention** option must remain disabled. Data retention is applicable only if you're using a data stream lifecycle, which is an alternative to ILM. Refer to the [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) to learn more.
+        :::
 
 
-## Apply lifecycle policy with an index template [apply-policy-template]
+    1. Configure any other options you'd like, including:
+        * The [index mode](elasticsearch://reference/elasticsearch/index-settings/time-series.md) to use for the created indices.
+        * The template priority, version, and any metadata.
+        * Whether or not to overwrite the `action.auto_create_index` cluster setting.
 
-To use a policy that triggers the rollover action, you need to configure the policy in the index template used to create each new index. You specify the name of the policy and the alias used to reference the rolling indices.
+        Refer to the [Create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) documentation for details about these options.
 
-::::{tip}
-An `index.lifecycle.rollover_alias` setting is only required if using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/data-streams.md).
-::::
+1. On the **Component templates** page, use the search and filter tools to select any [component templates](/manage-data/data-store/templates.md#component-templates) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
 
+1. On the **Index settings** page:
+    1. Configure ILM by specifying the [ILM settings](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md) to apply to the indices:
+        * `index.lifecycle.name` - The lifecycle policy to manage the created indices.
+        * `index.lifecycle.rollover_alias` - The index [alias](/manage-data/data-store/aliases.md) used for querying and managing the set of indices associated with a lifecycle policy that contains a rollover action.
 
-You can use the {{kib}} Create template wizard to create a template. To access the wizard, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+            :::{tip}
+            The `index.lifecycle.rollover_alias` setting is required only if you're using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/data-streams.md).
+            :::
 
-![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard-my_template.png "")
+    1. Optional: Add any additional [index settings](elasticsearch://reference/elasticsearch/index-settings/index.md), that should be applied to the indices as they're created. For example, you can set the number of shards and replicas for each index:
 
-The wizard invokes the [create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to add templates to a cluster.
+        ```json
+        {
+          "index.lifecycle.name": "my_policy",
+          "index.lifecycle.rollover_alias": "test-alias",
+          "number_of_shards": 1,
+          "number_of_replicas": 1
+        }
+        ```
 
-::::{dropdown} API example
+1. Optional: On the **Mappings** page, customize the fields and data types used when documents are indexed into {{es}}. Refer to [Mapping](/manage-data/data-store/mapping.md) for details.
+
+1. Optional: On the **Aliases** page, specify an [alias](/manage-data/data-store/aliases.md) for each created index. This isn't required when configuring ILM, which instead uses the `index.lifecycle.rollover_alias` setting to access rolling indices.
+
+1. On the **Review** page, confirm your selections. You can check your selected options, as well as both the format of the index template that will be created and the associated API request.
+
+The newly created index template will be used for all new indices with names that match the specified pattern, and for each of these, the specified ILM policy will be applied.
+:::
+
+:::{tab-item} API
+:sync: api
+Use the [Create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to add an index template to a cluster and apply the lifecycle policy to indices matching the template:
+
 ```console
 PUT _index_template/my_template
 {
@@ -101,27 +203,63 @@ PUT _index_template/my_template
 }
 ```
 
-1. Use this template for all new indices whose names begin with `test-`
-2. Apply `my_policy` to new indices created with this template
-3. Define an index alias for referencing indices managed by `my_policy`
+1. Use this template for all new indices with names that begin with `test-`.
+2. Apply `my_policy` to new indices created with this template.
+3. Define an index alias for referencing indices managed by `my_policy`.
 
-
+    :::{tip}
+    The `index.lifecycle.rollover_alias` setting is required only if you're using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/data-streams.md).
+    :::
+:::
 ::::
 
+## Create an initial managed index and alias [create-initial-index]
 
-
-### Create an initial managed index [create-initial-index]
-
-When you set up policies for your own rolling indices, if you are not using the recommended [data streams](../../data-store/data-streams.md), you need to manually create the first index managed by a policy and designate it as the write index.
-
-::::{important}
-When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
-::::
-
+When you set up policies for your own rolling indices and are not using the recommended [data streams](../../data-store/data-streams.md), you must manually create the first index managed by a policy and designate it as the write index.
 
 The name of the index must match the pattern defined in the index template and end with a number. This number is incremented to generate the name of indices created by the rollover action.
 
-For example, the following request creates the `test-00001` index. Because it matches the index pattern specified in `my_template`, {{es}} automatically applies the settings from that template.
+This step is required only when you're planning to use {{ilm-init}} with rolling indices. It is not required when you're using data streams, where the initial managed index is created automatically.
+
+::::{important}
+When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}} {{es}} output plugins, the necessary policies and configuration changes are applied automatically. If you'd like to create a specialized ILM policy for any data stream, refer to our tutorial [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+::::
+
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To create the initial managed index:
+
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Indices** tab, select **Create index**.
+1. Specify a name for the index that matches the index template pattern and that ends with a number. For example, `test-000001`.
+1. Leave the **Index mode** set to the default **Standard**.
+
+Create an alias for the index:
+
+1. Open **Dev tools**.
+2. Send the following request:
+
+```console
+POST /_aliases
+{
+  "actions" : [
+    { "add" : { "index" : "my-index", "alias" : "my-alias" } } <1>
+  ]
+}
+```
+
+1. Replace `my-index` with the name of the initial managed index that you created previously and set `my-alias` to the rollover alias specified by `index.lifecycle.rollover_alias` in the index template.
+
+Now you can start indexing data to the rollover alias specified in the lifecycle policy. With the sample `my_policy` policy, the rollover action is triggered once the initial index exceeds 50GB. {{ilm-init}} then creates a new index that becomes the write index for the `test-alias`.
+:::
+
+:::{tab-item} API
+:sync: api
+Use the [Create an index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) to create the initial managed index.
+
+The following request creates the `test-000001` index, with the alias `test-alias`. Because the index name matches the index pattern specified in `my_template`, {{es}} automatically applies the settings from that template.
 
 ```console
 PUT test-000001
@@ -136,106 +274,7 @@ PUT test-000001
 
 1. Set this initial index to be the write index for this alias.
 
-
 Now you can start indexing data to the rollover alias specified in the lifecycle policy. With the sample `my_policy` policy, the rollover action is triggered once the initial index exceeds 25GB. {{ilm-init}} then creates a new index that becomes the write index for the `test-alias`.
-
-
-## Apply lifecycle policy manually [apply-policy-manually]
-
-You can specify a policy when you create an index or apply a policy to an existing index through {{kib}} Management or the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). When you apply a policy, {{ilm-init}} immediately starts managing the index.
-
-::::{important}
-Do not manually apply a policy that uses the rollover action. Policies that use rollover must be applied by the [index template](#apply-policy-template). Otherwise, the policy is not carried forward when the rollover action creates a new index.
+:::
 ::::
-
-
-The `index.lifecycle.name` setting specifies an index’s policy.
-
-::::{dropdown} API example
-```console
-PUT test-index
-{
-  "settings": {
-    "number_of_shards": 1,
-    "number_of_replicas": 1,
-    "index.lifecycle.name": "my_policy" <1>
-  }
-}
-```
-
-1. Sets the lifecycle policy for the index.
-
-
-::::
-
-
-
-### Apply a policy to multiple indices [apply-policy-multiple]
-
-You can apply the same policy to multiple indices by using wildcards in the index name when you call the [update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
-
-::::{warning}
-Be careful that you don’t inadvertently match indices that you don’t want to modify.
-::::
-
-
-```console
-PUT mylogs-pre-ilm*/_settings <1>
-{
-  "index": {
-    "lifecycle": {
-      "name": "mylogs_policy_existing"
-    }
-  }
-}
-```
-
-1. Updates all indices with names that start with `mylogs-pre-ilm`
-
-
-
-### Switch lifecycle policies [switch-lifecycle-policies]
-
-To switch an index’s lifecycle policy, follow these steps:
-
-1. Remove the existing policy using the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy). Target a data stream or alias to remove the policies of all its indices.
-
-    ```console
-    POST logs-my_app-default/_ilm/remove
-    ```
-
-2. The remove policy API removes all {{ilm-init}} metadata from the index and doesn’t consider the index’s lifecycle status. This can leave indices in an undesired state.
-
-    For example, the [`forcemerge`](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
-
-    After policy removal, use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to check an index’s state . Target a data stream or alias to get the state of all its indices.
-
-    ```console
-    GET logs-my_app-default
-    ```
-
-    You can then change the index as needed. For example, you can re-open any closed indices using the [open index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open).
-
-    ```console
-    POST logs-my_app-default/_open
-    ```
-
-3. Assign a new policy using the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Target a data stream or alias to assign a policy to all its indices.
-
-    ::::{warning}
-    Don’t assign a new policy without first removing the existing policy. This can cause [phase execution](index-lifecycle.md#ilm-phase-execution) to silently fail.
-    ::::
-
-
-    ```console
-    PUT logs-my_app-default/_settings
-    {
-      "index": {
-        "lifecycle": {
-          "name": "new-lifecycle-policy"
-        }
-      }
-    }
-    ```
-
 

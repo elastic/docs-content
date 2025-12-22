@@ -62,7 +62,7 @@ elasticsearch.ssl.certificateAuthorities: ["path/to/ca.crt"]
 Use `curl` to test the connection to each host in `elasticsearch.hosts`:
 
 ```bash
-curl http://es01:9200/
+curl <ELASTICSEARCH_HOST_URL>:9200/
 ```
 
 If you're using TLS, try one of the following:

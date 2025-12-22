@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/mutual-tls.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -25,7 +28,7 @@ With mutual TLS the following authentication and certification verification occu
 
 * **Client Authentication**: The client presents its digital certificate to the server during the TLS handshake. This certificate is issued by a trusted Certificate Authority (CA) and contains the client’s public key.
 * **Server Authentication**: The server also presents its digital certificate to the client, proving its identity and sharing its public key. The server’s certificate is also issued by a trusted CA.
-* **Certificate Verification**: Both the client and server verify each other’s certificates by checking the digital signatures against the CAs' public key (note that the client and server need not use the same CA).
+* **Certificate Verification**: Both the client and server verify each other's certificates by checking the digital signatures against the CAs' public key. The client and server need not use the same CA.
 
 {{fleet}}-managed {{agent}} has two main connections to ensure correct operations:
 
@@ -41,7 +44,7 @@ When mTLS is required, the secure setup between {{agent}}, {{fleet}}, and {{flee
 3. Once enrollment has completed, {{agent}} downloads the initial {{agent}} policy from {{fleet-server}}.
 
     1. If the {{agent}} policy contains mTLS configuration settings, those settings will take precedence over those used during enrollment: This includes both the mTLS settings used for connectivity between {{agent}} and {{fleet-server}} (and the {{fleet}} application in {{kib}}, for {{fleet}}-managed {{agent}}), and the settings used between {{agent}} and it’s specified output.
-    2. If the {{agent}} policy does not contain any TLS, mTLS, or proxy configuration settings, these settings will remain as they were specified when {{agent}} enrolled. Note that the initial TLS, mTLS, or proxy configuration settings can not be removed through the {{agent}} policy; they can only be updated.
+    2. If the {{agent}} policy does not contain any TLS, mTLS, or proxy configuration settings, these settings will remain as they were specified when {{agent}} enrolled. The initial TLS, mTLS, or proxy configuration settings can not be removed through the {{agent}} policy; they can only be updated.
 
 
 ::::{important}
@@ -51,6 +54,12 @@ When you run {{agent}} with the {{elastic-defend}} integration, the [TLS certifi
 
 
 ## On-premise deployments [mutual-tls-on-premise]
+
+```{applies_to}
+deployment:
+  self: ga
+  ece: ga
+```
 
 :::{image} images/mutual-tls-on-prem.png
 :alt: Diagram of mutual TLS on premise deployment model
@@ -130,6 +139,12 @@ ssl.key: /path/to/cert_key
 
 ## {{fleet-server}} on {{ecloud}} [mutual-tls-cloud]
 
+```{applies_to}
+serverless: ga
+deployment:
+  ess: ga
+```
+
 In this deployment model, all traffic ingress into {{ecloud}} has its TLS connection terminated at the {{ecloud}} boundary. Since this termination is not handled on a per-tenant basis, a client-specific certificate can NOT be used at this point.
 
 :::{image} images/mutual-tls-cloud.png
@@ -140,6 +155,12 @@ We currently don’t support mTLS in this deployment model. An alternate deploym
 
 
 ## {{fleet-server}} on {{ecloud}} using a proxy [mutual-tls-cloud-proxy]
+
+```{applies_to}
+deployment:
+  ess: ga
+serverless: ga
+```
 
 In this scenario, where you have access to the proxy, you can configure mTLS between the agent and your proxy.
 
@@ -161,6 +182,11 @@ During {{agent}} installation on premise use the following options:
 
 
 ## {{fleet-server}} on-premise and {{ech}} [mutual-tls-on-premise-hosted-es]
+
+```{applies_to}
+deployment:
+  ess: ga
+```
 
 In some scenarios you may want to deploy {{fleet-server}} on your own premises. In this case, you’re able to provide your own certificates and certificate authority to enable mTLS between {{fleet-server}} and {{agent}}.
 
@@ -195,7 +221,7 @@ During {{fleet-server}} installation on-premise use the following options so tha
 
 |     |     |
 | --- | --- |
-| `--fleet-server-es-ca` | CA to use for the {{es}} connection, via secure proxy. This CA is used to authenticate the TLS connection from a secure proxy |
+| `--fleet-server-es-ca` | CA to use for the {{es}} connection, through secure proxy. This CA is used to authenticate the TLS connection from a secure proxy |
 | `--certificate-authorities` | List of CA certificates that are trusted when {{agent}} connects to {{fleet-server}} |
 | `--fleet-server-cert` | {{fleet-server}} certificate to present to {{agents}} during authentication |
 | `--fleet-server-cert-key` | {{fleet-server}}'s private certificate key used to decrypt the certificate |

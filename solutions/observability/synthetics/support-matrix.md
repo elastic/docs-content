@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-support-matrix.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
@@ -41,7 +41,11 @@ There are various components that make up the Synthetics solution, which are sup
 
         * Any *inline* or *Zip URL* monitors configured with the beta Synthetics integration prior to 1.0.0, are not supported and will stop running in the future
 
-    * Shipped as the `elastic-agent-complete` Docker image
+    * Shipped as multiple `elastic-agent` variants:
+
+        * `elastic-agent-complete`, exclusively provided as a Docker image which includes all dependencies required to run browser, TCP, HTTP, and ICMP monitors.
+        * `elastic-agent` which only supports TCP, HTTP, and ICMP monitors. 
+
     * Must have a direct connection to {{es}}
 
         * Do not configure any ingest pipelines or Logstash output

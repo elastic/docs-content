@@ -25,7 +25,7 @@ Some rule types are subscription features, while others are free features. For a
 | --- | --- |
 | [{{es}} query](rule-type-es-query.md) | Run a user-configured {{es}} query, compare the number of matches to a configured threshold, and schedule actions to run when the threshold condition is met. |
 | [Index threshold](rule-type-index-threshold.md) | Aggregate field values from documents using {{es}} queries, compare them to threshold values, and schedule actions to run when the thresholds are met. |
-| [{{transform-cap}} rules](../../transforms/transform-alerts.md) | [beta] Run scheduled checks on a {{ctransform}} to check its health. If a {{ctransform}} meets the conditions, an alert is created and the associated action is triggered. |
+| [Transform rules](../../transforms/transform-alerts.md) | {applies_to}`stack: beta` {applies_to}`serverless: beta` Run scheduled checks on a {{ctransform}} to check its health. If a {{ctransform}} meets the conditions, an alert is created and the associated action is triggered. |
 | [Tracking containment](geo-alerting.md) | Run an {{es}} query to determine if any documents are currently contained in any boundaries from a specified boundary index and generate alerts when a rule’s conditions are met. |
 
 ## {{observability}} rules [observability-rules]
@@ -38,8 +38,12 @@ If you create a rule in the {{observability}} app, its alerts are not visible in
 ::::
 
 ## Machine learning rules [ml-rules]
+```{applies_to}
+stack: beta
+serverless: beta
+```
 
-[beta] [{{ml-cap}} rules](../../machine-learning/anomaly-detection/ml-configuring-alerts.md) run scheduled checks on an {{anomaly-job}} to detect anomalies with certain conditions. If an anomaly meets the conditions, an alert is created and the associated action is triggered.
+[{{ml-cap}} rules](../../machine-learning/anomaly-detection/ml-configuring-alerts.md) run scheduled checks on an {{anomaly-job}} to detect anomalies with certain conditions. If an anomaly meets the conditions, an alert is created and the associated action is triggered.
 
 ## Security rules [security-rules]
 

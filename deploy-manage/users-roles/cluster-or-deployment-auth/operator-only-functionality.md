@@ -35,7 +35,7 @@ Operator privileges provide protection for APIs and dynamic cluster settings. An
 
 ## Operator-only dynamic cluster settings [operator-only-dynamic-cluster-settings]
 
-* All [IP filtering](../../security/ip-traffic-filtering.md) settings
+* All [IP filtering](../../security/ip-filtering.md) settings
 * The following dynamic [machine learning settings](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md):
 
     * `xpack.ml.node_concurrent_job_allocations`

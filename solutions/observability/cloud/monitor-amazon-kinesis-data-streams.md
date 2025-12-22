@@ -3,7 +3,8 @@ navigation_title: Kinesis data streams
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-kinesis.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
 ---

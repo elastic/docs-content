@@ -2,6 +2,9 @@
 navigation_title: Install and uninstall integration assets
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-uninstall-integration-assets.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -19,14 +22,21 @@ products:
 2. Click the **Settings** tab.
 3. Click **Install <integration> assets** to set up the {{kib}} and {{es}} assets.
 
-Note that it’s currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
+It's currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
 
-::::{admonition} Current limitations with integrations and {{kib}} spaces
-:class: important
+::::{admonition} Spaces support for integration assets
 
-{{agent}} integration assets can be installed only on a single {{kib}} [space](/deploy-manage/manage-spaces.md). If you want to access assets in a different space, you can [copy them](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space). However, many integrations include markdown panels with dynamically generated links to other dashboards. When assets are copied between spaces, these links may not behave as expected and can result in a 404 `Dashboard not found` error. Refer to known issue [#175072](https://github.com/elastic/kibana/issues/175072) for details.
+Elastic Agent integrations and associated assets, such as dashboards, visualizations, and saved searches, behave differently depending on your {{stack}} version:
 
-These limitations and future plans for {{fleet}}'s integrations support in multi-space environments are currently being discussed in [#175831](https://github.com/elastic/kibana/issues/175831). Feedback is very welcome. For now, we recommend reviewing the specific integration documentation for any space-related considerations.
+* {applies_to}`stack: ga 9.1` Fleet uses a space-aware data model for {{agent}} policies and integrations. Agent policies can now span multiple spaces, while integration assets remain space-specific. 
+  
+  Integration assets are still installed per space, but can be managed and reinstalled independently in each space.
+  
+  If you upgraded from an earlier version, enable space awareness in Fleet before managing integrations across spaces.
+  
+  For more details, refer to [Using Spaces with Fleet](../../deploy-manage/manage-spaces-fleet.md).
+
+* {applies_to}`stack: ga 9.0` In versions earlier than {{stack}} 9.1, integration assets can be installed in only one {{kib}} space. You can manually [copy them](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space) to other spaces. However, many integrations include markdown panels with dynamically generated links to other dashboards. When copied between spaces, these links might not behave as expected and can result in a `Dashboard not found` (404) error. Refer to known issue [#175072](https://github.com/elastic/kibana/issues/175072) for details.
 
 ::::
 

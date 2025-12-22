@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-exploring-es-data.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -18,7 +18,7 @@ Elastic APM data is stored in [Data streams](/solutions/observability/apm/data-s
 
 The following examples enable you to interact with {{es}}'s REST API. One possible way to do this is using {{kib}}'s [{{dev-tools-app}} console](/explore-analyze/query-filter/tools/console.md).
 
-Data streams, templates, and index-level operations can also be manged via {{kib}}'s [Index management](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) panel.
+Data streams, templates, and index-level operations can also be manged via {{kib}}'s [Index management](/manage-data/data-store/index-basics.md#index-management) UI.
 
 To see an overview of existing data streams, run:
 

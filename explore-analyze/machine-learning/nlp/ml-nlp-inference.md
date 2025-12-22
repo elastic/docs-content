@@ -19,10 +19,10 @@ After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you
 
 ## Add an {{infer}} processor to an ingest pipeline [ml-nlp-inference-processor]
 
-In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+In {{kib}}, you can create and edit pipelines from the **Ingest Pipelines** management page. You can find this page in the main menu or using the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/machine-learning-ml-nlp-pipeline-lang.png
-:alt: Creating a pipeline in the Stack Management app
+:alt: Creating a pipeline
 :screenshot:
 :::
 
@@ -193,7 +193,7 @@ To learn more about ingest pipelines and all of the other processors that you ca
 
 If you encounter problems while using your trained model in an ingest pipeline, check the following possible causes:
 
-1. The trained model is not deployed in your cluster. You can view its status in **{{ml-app}}** > **Model Management** or use the [get trained models statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models-stats). Unless you are using the built-in `lang_ident_model_1` model, you must ensure your model is successfully deployed. Refer to [Deploy the model in your cluster](ml-nlp-deploy-model.md).
+1. The trained model is not deployed in your cluster. You can view its status by navigating to the **Trained models** page in the main menu, or using the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. Alternatively, use the [get trained models statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models-stats). Unless you are using the built-in `lang_ident_model_1` model, you must ensure your model is successfully deployed. Refer to [Deploy the model in your cluster](ml-nlp-deploy-model.md).
 2. The default input field name expected by your trained model is not present in your source document. Use the **Field Map** option in your {{infer}} processor to set the appropriate field name.
 3. There are too many requests. If you are using bulk ingest, reduce the number of documents in the bulk request. If you are reindexing, use the `size` parameter to decrease the number of documents processed in each batch.
 

@@ -6,11 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies_to:
-  deployment:
-    self: all
-    ess: all
-    ece: all
-    eck: all
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-kubernetes
@@ -67,11 +63,13 @@ You can configure a `native` realm in the `xpack.security.authc.realms.native` n
 
 ## Manage native users using {{kib}} [managing-native-users]
 
-Elastic enables you to easily manage users in {{kib}} on the **Stack Management > Security > Users** page. From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.
+Elastic enables you to easily manage users in {{kib}}. To manage users in {{kib}}, go to the **Users** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.
 
 ### Example: Create a user [_create_a_user]
 
-1. Navigate to **Stack Management**, and under **Security**, select **Users**.
+1. Go to the **Users** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create user**.
 3. Give the user a descriptive username, and choose a secure password.
 4. Optional: assign [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) to the user.

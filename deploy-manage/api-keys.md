@@ -6,9 +6,10 @@ applies_to:
     ece: ga
     self: ga
   serverless: ga
+navigation_title: API keys
 ---
 
-# API keys
+# Elastic API keys
 
 API keys are security mechanisms used to authenticate and authorize access to your deployments and {{es}} resources. 
 

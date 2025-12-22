@@ -17,13 +17,14 @@ You use [auto-follow patterns](manage-auto-follow-patterns.md) to automatically 
 
 An auto-follow pattern specifies the remote cluster you want to replicate from, and one or more index patterns that specify the rolling time series indices you want to replicate.
 
-To create an auto-follow pattern from Stack Management in {{kib}}:
+To create an auto-follow pattern from in {{kib}}:
 
-1. Select **Cross Cluster Replication** in the side navigation and choose the **Auto-follow patterns** tab.
-2. Enter a name for the auto-follow pattern, such as `beats`.
-3. Choose the remote cluster that contains the index you want to replicate, which in the example scenario is Cluster A.
-4. Enter one or more index patterns that identify the indices you want to replicate from the remote cluster. For example, enter `metricbeat-* packetbeat-*` to automatically create followers for {{metricbeat}} and {{packetbeat}} indices.
-5. Enter **follower-** as the prefix to apply to the names of the follower indices so you can more easily identify replicated indices.
+1. Go to the **Cross Cluster Replication** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Choose the **Auto-follow patterns** tab.
+3. Enter a name for the auto-follow pattern, such as `beats`.
+4. Choose the remote cluster that contains the index you want to replicate, which in the example scenario is Cluster A.
+5. Enter one or more index patterns that identify the indices you want to replicate from the remote cluster. For example, enter `metricbeat-* packetbeat-*` to automatically create followers for {{metricbeat}} and {{packetbeat}} indices.
+6. Enter **follower-** as the prefix to apply to the names of the follower indices so you can more easily identify replicated indices.
 
 As new indices matching these patterns are created on the remote, {{es}} automatically replicates them to local follower indices.
 

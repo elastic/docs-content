@@ -13,7 +13,7 @@ products:
 
 # CSPM privilege requirements
 
-This page lists required privileges for {{elastic-sec}}'s CSPM features. There are three access levels: read, write, and manage. Each access level and its requirements are described below.
+This page lists required privileges for {{elastic-sec}}'s CSPM features. There are three access levels: read, write, and manage. Each access level and its requirements are described next on this page.
 
 
 ## Read [_read]
@@ -27,6 +27,7 @@ Users with these minimum permissions can view data on the **Findings** page and 
 
 * `logs-cloud_security_posture.findings_latest-*`
 * `logs-cloud_security_posture.scores-*`
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
 
 
 ### {{kib}} privileges [_kib_privileges]
@@ -45,6 +46,8 @@ Users with these minimum permissions can view data on the **Findings** page and 
 
 * `logs-cloud_security_posture.findings_latest-*`
 * `logs-cloud_security_posture.scores-*`
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
+
 
 
 ### {{kib}} privileges [_kib_privileges_2]
@@ -63,6 +66,8 @@ Users with these minimum permissions can view data on the **Findings** page and 
 
 * `logs-cloud_security_posture.findings_latest-*`
 * `logs-cloud_security_posture.scores-*`
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` `security_solution-cloud_security_posture.misconfiguration_latest*`
+
 
 
 ### {{kib}} privileges [_kib_privileges_3]

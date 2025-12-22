@@ -27,28 +27,23 @@ Models from third-party LLM providers.
 
 | **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Model** | **Claude 3.7: Sonnet**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Claude 3.5: Sonnet v2**   | Excellent | Excellent | Excellent | Excellent | Great     | Excellent
-|           | **Claude 3.5: Sonnet**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Claude 3.5: Haiku**       | Excellent | Excellent | Excellent | Excellent | Poor      | Poor
-|           | **Claude 3: Haiku**         | Excellent | Excellent | Excellent | Excellent | Poor      | Poor
-|           | **GPT-4o**                  | Excellent | Excellent | Excellent | Excellent | Great     | Great
-|           | **GPT-4o-mini**             | Excellent | Great     | Great     | Great     | Poor      | Good
+| **Model** | **Claude Opus 4**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
+|           | **Claude Sonnet 4**        | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
+|           | **Claude Sonnet 3.7**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **GPT-4.1**                 | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Gemini 1.5 Pro 002**      | Excellent | Excellent | Excellent | Excellent | Excellent | Great
-|           | **Gemini 1.5 Flash 002**    | Excellent | Poor      | Good      | Excellent | Poor      | Excellent
 |           | **Gemini 2.0 Flash 001**    | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **Gemini 2.5 Pro**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 
 
 ## Open-source models [_open_source_models]
 
-Models you can [deploy yourself](/solutions/security/ai/connect-to-own-local-llm.md).
+Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md).
 
 | **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration**
 | --- | --- | --- | --- | --- | --- | --- |
-| **Model** | **Mistral Nemo**   | Good | Good  | Great | Good | Poor | Poor |
-|           | **Mistral-Small-3.1-24B-Instruct-2503** | Excellent | Poor | Excellent | Excellent | Good | N/A
+| **Model** | **Mistral‑Small‑3.2‑24B‑Instruct‑2506** | Excellent | Good | Excellent | Excellent | Good | N/A
+|           | **Mistral-Small-3.1-24B-Instruct-2503** | Excellent | Good | Excellent | Excellent | Good | N/A
+|           | **Mistral Nemo**   | Good | Good  | Great | Good | Poor | Poor |
 |           | **LLama 3.2**      | Good | Poor  | Good  | Poor | Poor | Good |
 |           | **LLama 3.1 405b** | Good | Great | Good  | Good | Poor | Poor |
 |           | **LLama 3.1 70b**  | Good | Good  | Poor  | Poor | Poor | Good |

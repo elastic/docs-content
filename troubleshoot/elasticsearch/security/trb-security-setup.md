@@ -58,7 +58,7 @@ The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsea
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at
-    https://elasticsearch.example.com:9200/_security/_authenticate?pretty.
+    <ELASTICSEARCH_HOST_URL>:9200/_security/_authenticate?pretty.
     ```
 
 

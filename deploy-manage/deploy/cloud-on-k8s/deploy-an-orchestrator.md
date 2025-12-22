@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Deploy an orchestrator
 ---
 
-# Deploy an orchestrator [k8s-quickstart]
+# Deploy an {{eck}} orchestrator [k8s-quickstart]
 
 With {{eck}} (ECK), you can extend the basic Kubernetes orchestration capabilities to easily deploy, secure, upgrade your {{es}} cluster, along with other Elastic applications.
 

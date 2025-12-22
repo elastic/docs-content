@@ -1,12 +1,13 @@
 ---
+description: Learn how to scan your host to detect and collect logs and metrics using Elastic Agent, and analyze your observability data with dashboards.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-elastic-agent.html
   - https://www.elastic.co/guide/en/serverless/current/observability-quickstarts-monitor-hosts-with-elastic-agent.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -21,6 +22,10 @@ To scan your host, you’ll run an auto-detection script that downloads and inst
 
 The script also generates an {{agent}} configuration file that you can use with your existing Infrastructure-as-Code tooling.
 
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) as the preferred way to collect system metrics and logs using OpenTelemetry.
+:::
+
 
 ## Prerequisites [_prerequisites]
 
@@ -31,11 +36,11 @@ The script also generates an {{agent}} configuration file that you can use with 
 :sync: stack
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A user with the `superuser` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
+* A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
-    * [**Cluster**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
-    * [**Index**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
+    * [**Cluster**](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
+    * [**Index**](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
     * [**Kibana**](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md): `{ spaces: ['*'], feature: { fleet: ['all'], fleetv2: ['all'] } }`
 
     ::::
@@ -47,7 +52,8 @@ The script also generates an {{agent}} configuration file that you can use with 
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
+* An Elastic deployment. If you don’t have one yet, go to [cloud.elastic.co](https://cloud.elastic.co/). Within **Hosted deployments**, select **Create hosted deployment**.
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the auto-detection script used in this quickstart.
 
@@ -60,7 +66,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
 * The auto-detection script works on Linux and MacOS only. Support for the `lsof` command is also required if you want to detect custom log files.
 * If you’ve installed Apache or Nginx in a non-standard location, you’ll need to specify log file paths manually when you run the scan.
-* Because Docker Desktop runs in a VM, its logs are not auto-detected.
+* Because Docker Desktop runs in a VM, its host-level logs and metrics are not auto-detected.
 
 
 ## Collect your data [_collect_your_data]
@@ -74,14 +80,17 @@ The script also generates an {{agent}} configuration file that you can use with 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} /solutions/images/observability-quickstart-monitor-hosts-entry-point.png
-    :alt: Host monitoring entry point
-    :screenshot:
-    :::
-
 3. Copy the install command.
 
     You’ll run this command to download the auto-detection script, scan your system for observability data, and install {{agent}}.
+
+    :::{tip}
+    If you've previously installed {{agent}}, you may need to uninstall it first:
+
+    `sudo elastic-agent uninstall`
+
+    If uninstalling fails or the agent is stuck, rerun the install with the `--force` flag.
+    :::
 
 4. Open a terminal on the host you want to scan, and run the command.
 5. Review the list of log files:
@@ -94,18 +103,20 @@ The script also generates an {{agent}} configuration file that you can use with 
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
-
-    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-entry-point.png
-    :alt: Host monitoring entry point
-    :screenshot:
-    :::
-
 4. Copy the install command.
 
     You’ll run this command to download the auto-detection script, scan your system for observability data, and install {{agent}}.
+
+    :::{tip}
+    If you've previously installed {{agent}}, you may need to uninstall it first:
+
+    `sudo elastic-agent uninstall`
+
+    If uninstalling fails or the agent is stuck, rerun the install with the `--force` flag.
+    :::
 
 5. Open a terminal on the host you want to scan, and run the command.
 6. Review the list of log files:
@@ -147,12 +158,6 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 For example, you can navigate the **Host overview** dashboard to explore detailed metrics about system usage and throughput. Metrics that indicate a possible problem are highlighted in red.
 
-:::{image} /solutions/images/observability-quickstart-host-overview.png
-:alt: Host overview dashboard
-:screenshot:
-:::
-
-
 ## Get value out of your data [_get_value_out_of_your_data]
 
 After using the dashboards to examine your data and confirm you’ve ingested all the host logs and metrics you want to monitor, you can use Elastic {{observability}} to gain deeper insight into your data.
@@ -177,4 +182,8 @@ For host monitoring, the following capabilities and features are recommended:
     * [Detect change points](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
-Refer to the [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+Refer to the [Observability overview](/solutions/observability.md) for a description of other useful features.
+
+## Manage your data [_manage_your_data]
+
+Now that you're ingesting data and using it gather insights, learn how to manage your [data lifecycle](/manage-data/lifecycle.md). These features in {{es}} allow you to govern how long your {{agent}} data is retained, and to tune performance by configuring background operations that optimize how your data is stored.

@@ -2,11 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/authorization.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: all
 products:
   - id: elasticsearch
 ---
@@ -39,7 +35,7 @@ The authorization process revolves around the following constructs:
 :   A resource to which access is restricted. Indices, aliases, documents, fields, users, and the {{es}} cluster itself are all examples of secured objects.
 
 *Privilege*
-:   A named group of one or more actions that a user may execute against a secured resource. Each secured resource has its own sets of available privileges. For example, `read` is an index privilege that represents all actions that enable reading the indexed/stored data. For a complete list of available privileges, see [{{es}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+:   A named group of one or more actions that a user may execute against a secured resource. Each secured resource has its own sets of available privileges. For example, `read` is an index privilege that represents all actions that enable reading the indexed/stored data. For a complete list of available privileges, see [{{es}} privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 
 *Permissions*
 :   A set of one or more privileges against a secured resource. Permissions can easily be described in words, here are few examples:
@@ -66,10 +62,21 @@ A role has a unique name and identifies a set of permissions that translate to p
 
 Review these topics to learn how to configure RBAC in your cluster or deployment:
 
-* Learn about [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md)
+* Learn about [built-in roles](elasticsearch://reference/elasticsearch/roles.md)
 * [Define your own roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
-* Learn about the [Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) and [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges you can assign to roles
+* Learn about the [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and [Elasticsearch](elasticsearch://reference/elasticsearch/security-privileges.md) privileges you can assign to roles
 * Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
+
+:::{tip}
+This topic describes built-in roles in {{stack}} clusters and deployments and explains how to create custom ones. You can also learn about [organization-level](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) roles and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) in {{serverless-full}}.
+To create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users-roles/serverless-custom-roles.md).
+:::
+
+:::{admonition} Control access at the document and field level in {{serverless-short}}
+:::{include} ../../_snippets/serverless-document-field-level-access-control.md
+:::
+
+:::
 
 ### Assign roles to users
 
@@ -77,11 +84,17 @@ The way that you assign roles to users depends on your authentication realm:
 
 * [Native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md): 
   * Using {{es}} API [`_security` endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security)
-  * [In {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users), using the **Stack Management > Security > Users** page
+  * [In {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users), from the **Users** management page. Find the page in the navigation menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * [File realm](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md): 
   * Using a [`user_roles` file](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)
   * In ECK: As part of a [basic authentication secret](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)
 * [External realms](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md): By [mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
+
+:::{tip}
+This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with Elasticsearch and Kibana.
+
+You can also manage authentication and identity integration at the [Elastic Cloud organization](/deploy-manage/users-roles/cloud-organization/manage-users.md) level.
+:::
 
 ### Advanced topics
 

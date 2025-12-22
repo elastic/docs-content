@@ -31,7 +31,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 2. Identify which logs you want to monitor.
 
-    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
+    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md). For more information about the location of your {{es}} logs, refer to the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
 
     ::::{important}
     If there are both structured (`*.json`) and unstructured (plain text) versions of the logs, you must use the structured logs. Otherwise, they might not appear in the appropriate context in {{kib}}.
@@ -45,7 +45,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon-2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"
@@ -85,7 +85,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
     If {{security-features}} are enabled, you must provide a valid user ID and password so that {{filebeat}} can connect to {{kib}}:
 
-    1. Create a user on the monitoring cluster that has the [`kibana_admin` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md) or equivalent privileges.
+    1. Create a user on the monitoring cluster that has the [`kibana_admin` built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-kibana-admin) or equivalent privileges.
     2. Add the `username` and `password` settings to the {{es}} output information in the {{filebeat}} configuration file. The example shows a hard-coded password, but you should store sensitive values in the [secrets keystore](beats://reference/filebeat/keystore.md).
 
     See [Configure the {{kib}} endpoint](beats://reference/filebeat/setup-kibana-endpoint.md).

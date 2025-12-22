@@ -103,7 +103,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
 * **Troubleshooting**
 
     * [I receive an error message about not having required authorization.](#azure-integration-authorization-access)
-    * [My {{ecloud}} deployment creation failed.](#azure-integration-deployment-failed-traffic-filter)
+    * [My {{ecloud}} deployment creation failed.](#azure-integration-deployment-failed-network-security)
     * [I can’t SSO into my {{ecloud}} deployment.](#azure-integration-failed-sso)
     * [I see some deployments in the {{ecloud}} console but not in the Azure Portal.](#azure-integration-cant-see-deployment)
     * [My {{ecloud}} Azure Native ISV Service logs are not being ingested.](#azure-integration-logs-not-ingested)
@@ -274,10 +274,10 @@ $$$azure-integration-billing-different-deployments$$$How do I get different Elas
 :   See [Integrated billing](#ec-azure-integration-billing-summary). To have different Elastic deployment/resources costs reported to different Azure subscriptions, they need to be in separate {{ecloud}} organizations. To create a separate {{ecloud}} organization from an Azure subscription, you will need to subscribe as a user who is not already part of an existing {{ecloud}} organization.
 
 $$$azure-integration-billing-elastic-costs$$$Why can’t I see Elastic resources costs in Azure Cost Explorer?
-:   The costs associated with Elastic resources (deployments) are reported under unassigned in the Azure Portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resources/deployments costs. For granular Elastic resources costs, refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md).
+:   The costs associated with Elastic resources (deployments) are reported under unassigned in the Azure Portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resources/deployments costs. For granular Elastic resources costs, refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md).
 
 $$$azure-integration-billing-deployments$$$Why don’t I see my individual Elastic resources (deployments) in the Azure Marketplace Invoice?
-:   The way Azure Marketplace Billing Integration works today, the costs for Elastic resources (deployments) are reported for an {{ecloud}} organization as a single line item, reported against the Marketplace SaaS ID. This includes the Elastic deployments created using the Azure Portal, API, SDK, or CLI, and also the Elastic deployments created directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) in the respective {{ecloud}} organization. For granular Elastic resources costs refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md). As well, for more detail refer to [Integrated billing](#ec-azure-integration-billing-summary).
+:   The way Azure Marketplace Billing Integration works today, the costs for Elastic resources (deployments) are reported for an {{ecloud}} organization as a single line item, reported against the Marketplace SaaS ID. This includes the Elastic deployments created using the Azure Portal, API, SDK, or CLI, and also the Elastic deployments created directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) in the respective {{ecloud}} organization. For granular Elastic resources costs refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md). As well, for more detail refer to [Integrated billing](#ec-azure-integration-billing-summary).
 
     :::{image} /deploy-manage/images/cloud-ec-azure-billing-example.png
     :alt: Example billing report in the {{ecloud}} console
@@ -289,7 +289,7 @@ $$$azure-integration-billing-instance-values$$$Why can’t I find Instance ID an
 
     For instance: Elastic Organization `Org1` is associated with a Marketplace SaaS (Microsoft.SaaS) asset `AzureElastic_GUID_NAME`. The Elastic resources (`Microsoft.Elastic`) `E1`, `E2`, and `E3` within `Org1` are all mapped to `AzureElastic_GUID_NAME`.
 
-    `Microsoft.SaaS` (Instance name) asset is shown in the Azure Marketplace invoice and represents costs related to an {{ecloud}} organization and not individual Elastic resources (deployments). To see the cost breakdown for individual Elastic resources (deployments), refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md).
+    `Microsoft.SaaS` (Instance name) asset is shown in the Azure Marketplace invoice and represents costs related to an {{ecloud}} organization and not individual Elastic resources (deployments). To see the cost breakdown for individual Elastic resources (deployments), refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md).
 
     :::{image} /deploy-manage/images/cloud-ec-azure-missing-instance-id.png
     :alt: Instance ID not found error in Azure console
@@ -319,18 +319,7 @@ $$$azure-integration-how-to-access$$$How can I access my {{ecloud}} deployment?
 
 
 $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployment?
-:   Modify your {{ecloud}} deployment in the {{ecloud}} console, which is accessed from the Azure UI through the **Advanced Settings** link on the deployment overview page. In the {{ecloud}} console you can perform a number of actions against your deployment, including:
-
-    * [Re-size](ec-customize-deployment-components.md) to increase or decrease the amount of RAM, CPU, and storage available to your deployment, or to add additional availability zones.
-    * [Upgrade](../../upgrade/deployment-or-cluster.md) your deployment to a new {{stack}} version.
-    * Enable or disable individual {{stack}} components such as APM and Machine Learning.
-    * [Update {{stack}} user settings](edit-stack-settings.md) in the component YML files.
-    * [Add or remove custom plugins](add-plugins-extensions.md).
-    * [Configure IP filtering](../../security/traffic-filtering.md).
-    * [Monitor your {{ecloud}} deployment](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) to ensure it remains healthy.
-    * Add or remove API keys to use the [REST API](cloud://reference/cloud-hosted/ec-api-restful.md).
-    * [And more](cloud-hosted.md)
-
+:   Modify your {{ecloud}} deployment in the {{ecloud}} console, which is accessed from the Azure UI through the **Advanced Settings** link on the deployment overview page. In the {{ecloud}} console you can perform [a number of actions against your deployment](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#ec_how_to_operate_elasticsearch_service).
 
 $$$azure-integration-delete-deployment$$$How can I delete my {{ecloud}} deployment?
 :   Delete the deployment directly from the Azure console. The delete operation performs clean-up activities in the Elastic console to ensure any running components are removed, so that no additional charges occur.
@@ -349,7 +338,7 @@ $$$azure-integration-monitor$$$How do I monitor my existing Azure services?
 
 
 ::::{note}
-If you want to send platform logs to a deployment that has [IP or Private Link traffic filters](../../security/traffic-filtering.md) enabled, then you need to contact [the Elastic Support Team](#azure-integration-support) to perform additional configurations. Refer support to the article [Azure++ Resource Logs blocked by Traffic Filters](https://support.elastic.co/knowledge/18603788).
+If you want to send platform logs to a deployment that has [network security policies](/deploy-manage/security/network-security.md) applied, then you need to contact [the Elastic Support Team](#azure-integration-support) to perform additional configurations. Refer support to the article [Azure++ Resource Logs blocked by Traffic Filters](https://support.elastic.co/knowledge/18603788).
 
 ::::
 
@@ -462,7 +451,7 @@ $$$azure-integration-authorization-access$$$I receive an error message about not
     Elastic is not currently integrated with Azure user management, so sharing deployment resources through the Cloud console with other Azure users is not possible. However, sharing direct access to these resources is possible. For details, check [Is the {{ecloud}} Azure Native ISV Service connected with Azure user management?](#azure-integration-azure-user-management).
 
 
-$$$azure-integration-deployment-failed-traffic-filter$$$My {{ecloud}} deployment creation failed.
+$$$azure-integration-deployment-failed-network-security$$$My {{ecloud}} deployment creation failed.
 :   When creating a new {{ecloud}} deployment, the deployment creation may fail with a `Your deployment failed` error. The process results with a status message such as:
 
     ```txt
@@ -477,20 +466,15 @@ $$$azure-integration-deployment-failed-traffic-filter$$$My {{ecloud}} deployment
       ]
     ```
 
-    One possible cause of a deployment creation failure is the default traffic filtering rules. Deployments fail to create if a previously created traffic filter has enabled the **Include by default** option. When this option is enabled, traffic to the deployment is blocked, including traffic that is part of the {{ecloud}} Azure Native ISV Service. As a result, some of the integration components are not successfully provisioned and the deployment creation fails.
+    One possible cause of a deployment creation failure is the default network security policies. Deployments fail to create if a previously created network security policy has enabled the **Include by default** option. When this option is enabled, traffic to the deployment is blocked, including traffic that is part of the {{ecloud}} Azure Native ISV Service. As a result, some of the integration components are not successfully provisioned and the deployment creation fails.
 
     Follow these steps to resolve the problem:
 
     1. Login to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Go to the [Traffic filters page](https://cloud.elastic.co/deployment-features/traffic-filters).
+    2. Go to the [Network security page](https://cloud.elastic.co/deployment-features/traffic-filters).
     3. Edit the traffic filter and disable the **Include by default** option.
-
-        :::{image} /deploy-manage/images/cloud-ec-marketplace-azure-traffic-filter-option.png
-        :alt: The Include by default option under Add to Deployments on the Traffic Filter page
-        :::
-
     4. In Azure, create a new {{ecloud}} deployment.
-    5. After the deployment has been created successfully, go back to the [Traffic filters page](https://cloud.elastic.co/deployment-features/traffic-filters) in {{ecloud}} and re-enable the **Include by default** option.
+    5. After the deployment has been created successfully, go back to the [Network security page](https://cloud.elastic.co/deployment-features/traffic-filters) in {{ecloud}} and re-enable the **Include by default** option.
 
 
 If your deployment still does not create successfully, [contact the Elastic Support Team](#azure-integration-support) for assistance.
@@ -511,7 +495,7 @@ Mimicking this metadata by manually adding tags to an {{ecloud}} deployment will
 
 $$$azure-integration-logs-not-ingested$$$My {{ecloud}} Azure Native ISV Service logs are not being ingested.
 :   * When you set up monitoring for your Azure services, if your Azure and Elastic resources are in different subscriptions, you need to make sure that the `Microsoft.Elastic` resource provider is registered in the subscription in which the Azure resources exist. Check [How do I monitor my existing Azure services?](#azure-integration-monitor) for details.
-* If you are using [IP or Private Link traffic filters](../../security/traffic-filtering.md), reach out to [the Elastic Support Team](#azure-integration-support).
+* If you are using [network security policies](/deploy-manage/security/network-security.md), reach out to [the Elastic Support Team](#azure-integration-support).
 
 
 

@@ -16,9 +16,9 @@ By default, the readiness probe checks that the Pod responds to HTTP requests wi
 
 This example describes how to increase the API call timeout to ten seconds and the overall check time to twelve seconds:
 
-```yaml
+```yaml subs=true
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: default
       count: 1
@@ -42,12 +42,12 @@ spec:
               value: "10"
 ```
 
-Note that this requires restarting the Pods.
+:::{note} 
+Updating this value requires restarting the Pods.
+:::
 
 ## {{es}} versions 8.2.0 and later [k8s_elasticsearch_versions_8_2_0_and_later]
 
-% this feature might have disappeared, we will need to investigate this a bit more, as the link below doesn't work anymore but it does for 8.15 for example.
-
-We do not recommend overriding the default readiness probe on {{es}} 8.2.0 and later. ECK configures a socket based readiness probe using the {{es}} [readiness port feature](elasticsearch://reference/elasticsearch/jvm-settings.md#readiness-tcp-port) which is not influenced by the load on the {{es}} cluster.
+We do not recommend overriding the default readiness probe on {{es}} 8.2.0 and later. ECK configures a socket-based readiness probe using the {{es}} [readiness port feature](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#tcp-readiness-port) which is not influenced by the load on the {{es}} cluster.
 
 

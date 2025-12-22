@@ -10,9 +10,9 @@ exclude:
 
 cross_links:
   - apm-agent-android
+  - apm-agent-ios
   - apm-agent-dotnet
   - apm-agent-go
-  - apm-agent-ios
   - apm-agent-java
   - apm-agent-nodejs
   - apm-agent-php
@@ -27,18 +27,27 @@ cross_links:
   - cloud-on-k8s
   - curator
   - detection-rules
+  - docs-content
   - ecctl
   - ecs
   - ecs-dotnet
   - ecs-logging
   - ecs-logging-go-zap
+  - ecs-logging-go-zerolog
+  - ecs-logging-go-logrus
   - ecs-logging-java
   - ecs-logging-nodejs
   - ecs-logging-php
   - ecs-logging-python
   - ecs-logging-ruby
   - eland
+  - elastic-agent
   - elastic-serverless-forwarder
+  - elastic-otel-dotnet
+  - elastic-otel-java
+  - elastic-otel-node
+  - elastic-otel-php
+  - elastic-otel-python
   - elasticsearch
   - elasticsearch-hadoop
   - elasticsearch-java
@@ -48,6 +57,7 @@ cross_links:
   - elasticsearch-py
   - elasticsearch-rs
   - elasticsearch-ruby
+  - fleet-server
   - go-elasticsearch
   - integration-docs
   - integrations
@@ -68,8 +78,10 @@ toc:
   - toc: troubleshoot
   - toc: release-notes
   - toc: reference
+  - toc: contribute-docs
   - toc: extend
   - file: archive.md
+  - file: versions.md
   - hidden: 404.md
 
 subs:
@@ -79,12 +91,12 @@ subs:
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
   edot:  "Elastic Distribution of OpenTelemetry"
+  motlp: "Elastic Cloud Managed OTLP Endpoint"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
-  ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can try it for free: https://cloud.elastic.co/registration."
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"
@@ -104,7 +116,6 @@ subs:
   ems-init:   "EMS"
   hosted-ems:   "Elastic Maps Server"
   ipm-app:   "Index Pattern Management"
-  ingest-pipelines-app:   "Ingest Pipelines"
   ls-pipelines-app:   "Logstash Pipelines"
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
@@ -117,10 +128,7 @@ subs:
   project-settings:   "Project settings"
   manage-app:   "Management"
   index-manage-app:   "Index Management"
-  rules-app:   "Rules"
   saved-objects-app:   "Saved Objects"
-  api-keys-app:   "API keys"
-  connectors-app:   "Connectors"
   reports-app:   "Reports"
   app-search-crawler:   "App Search web crawler"
   agent:   "Elastic Agent"
@@ -133,7 +141,6 @@ subs:
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
   stack:   "Elastic Stack"
-  xpack:   "X-Pack"
   es:   "Elasticsearch"
   kib:   "Kibana"
   ls:   "Logstash"
@@ -145,7 +152,6 @@ subs:
   packetbeat:   "Packetbeat"
   winlogbeat:   "Winlogbeat"
   esql:   "ES|QL"
-  elastic-agent:   "Elastic Agent"
   k8s:   "Kubernetes"
   security-features:   "security features"
   operator-feature:   "operator privileges feature"
@@ -166,18 +172,15 @@ subs:
   webhook-cm:   "Webhook - Case Management"
   opsgenie:   "Opsgenie"
   hive:   "TheHive"
-  monitoring:   "X-Pack monitoring"
   monitor-features:   "monitoring features"
   stack-monitor-features:   "Elastic Stack monitoring features"
   watcher:   "Watcher"
   alert-features:   "alerting features"
-  reporting:   "X-Pack reporting"
   report-features:   "reporting features"
   graph-features:   "graph analytics features"
   searchprofiler:   "Search Profiler"
   ml:   "machine learning"
   ml-cap:   "Machine learning"
-  ml-init:   "ML"
   ml-features:   "machine learning features"
   stack-ml-features:   "Elastic Stack machine learning features"
   ccr:   "cross-cluster replication"
@@ -189,6 +192,7 @@ subs:
   ilm:   "index lifecycle management"
   ilm-cap:   "Index lifecycle management"
   ilm-init:   "ILM"
+  dlm-init:   "DLM"
   search-snap:   "searchable snapshot"
   search-snaps:   "searchable snapshots"
   search-snaps-cap:   "Searchable snapshots"
@@ -215,10 +219,6 @@ subs:
   watcher-transform:   "payload transform"
   watcher-transforms:   "payload transforms"
   watcher-transforms-cap:   "Payload transforms"
-  transform:   "transform"
-  transforms:   "transforms"
-  transform-cap:   "Transform"
-  transforms-cap:   "Transforms"
   dfanalytics-cap:   "Data frame analytics"
   dfanalytics:   "data frame analytics"
   dfanalytics-job:   "data frame analytics analytics job"
@@ -260,29 +260,15 @@ subs:
   private-locations:   "Private Locations"
   esh:   "ES-Hadoop"
   observability:   "Observability"
-  api-request-title:   "Request"
-  api-prereq-title:   "Prerequisites"
-  api-description-title:   "Description"
-  api-path-parms-title:   "Path parameters"
-  api-query-parms-title:   "Query parameters"
-  api-request-body-title:   "Request body"
-  api-examples-title:   "Examples"
-  agent-issue:   "https://github.com/elastic/elastic-agent/issues/"
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
-  fleet-server-issue:   "https://github.com/elastic/fleet-server/issues/"
-  fleet-server-pull:   "https://github.com/elastic/fleet-server/pull/"
+  es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
-  stack-version: "9.0.0"
-  eck_version: "3.0.0"
-  eck_release_branch: "3.0"
-  eck_helm_minimum_version: "3.2.0"
+  eck_helm_minimum_version: 3.2.0
   eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   eck_resources_list_short: "APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
-  apm_server_version: "9.0.0"
-  version: "9.0.0"
-  release-date: "2-April-2025"
   heroku: "Elasticsearch Add-on for Heroku"
   obs-ai-assistant: "Elastic AI Assistant for Observability and Search"
+  apm-server: "APM Server"
   apm-server-or-mis: "APM Server or the managed intake service"
   apis: https://www.elastic.co/docs/api/
   es-apis: https://www.elastic.co/docs/api/doc/elasticsearch/
@@ -295,3 +281,12 @@ subs:
   cloud-serverless-apis: https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/
   ece-apis: https://www.elastic.co/docs/api/doc/cloud-enterprise/
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
+  models-app: "Trained Models"
+  agent-builder: "Elastic Agent Builder"
+  kube-stack-version: 0.10.5
+  helm-version: 3.19.3
+  ece-docker-images-8: 8.18.8
+  ece-docker-images-9: 9.0.8
+  search-platform: "Search AI Platform"
+
+

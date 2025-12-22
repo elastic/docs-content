@@ -1,9 +1,12 @@
 ---
 navigation_title: Upgrade on {{ece}}
 applies_to:
-  stack:
   deployment:
-    ece:
+    ece: ga
+products:
+  - id: kibana
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # Upgrade your deployment on {{ece}} (ECE)
@@ -12,10 +15,8 @@ A single click in the {{ecloud}} console can upgrade a deployment running on ECE
 
 Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), do the following: 
 
-% Note: Add a link once confirmed where prepare to upgrade will reside in TOC. 
-
 1. Ensure your current ECE and Docker or Podman versions are [compatible](https://www.elastic.co/support/matrix/#elastic-cloud-enterprise) with the {{stack}} version you're upgrading to. For example, if you're upgrading to 9.0.0, the minimum required version is ECE 4.0. If you don’t have a compatible version installed, [upgrade your orchestrator](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md).  
-2. Download the most recent [stack pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs) for the version you’re upgrading to, then [add the stack pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece-manage-elastic-stack-add) to your installation using the Cloud UI. 
+2. Download the most recent [stack pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs) for the version you’re upgrading to, then [add the stack pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece-manage-elastic-stack-add) to your ECE installation using the Cloud UI.
 3. If not configured already, [assign a snapshots repository](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) to your deployment to enable snapshots and back up your data. Although this is optional, we recommend this step.
  
 ## Perform the upgrade 

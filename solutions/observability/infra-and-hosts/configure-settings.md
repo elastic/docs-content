@@ -5,9 +5,10 @@ mapped_pages:
 products:
   - id: observability
   - id: cloud-serverless
+navigation_title: Configure settings
 ---
 
-# Configure settings [observability-configure-intra-settings]
+# Configure infrastructure and host metrics settings [observability-configure-intra-settings]
 
 ::::{note}
 
@@ -16,7 +17,7 @@ The **Editor** role or higher is required to configure settings. To learn more, 
 ::::
 
 
-From the main menu, go to **Infrastructure** → **Infrastructure inventory** or **Hosts**, and click the **Settings** link at the top of the page. The following settings are available:
+From the navigation menu, go to **Infrastructure** → **Infrastructure inventory** or **Hosts**, and click the **Settings** link at the top of the page. The following settings are available:
 
 | Setting | Description |
 | --- | --- |
@@ -28,7 +29,7 @@ From the main menu, go to **Infrastructure** → **Infrastructure inventory** or
 Click **Apply** to save your changes.
 
 ::::{note}
-The patterns used to match log sources are configured in {{kib}} advanced settings. The default setting is `logs-*-*,logs-*,filebeat-*`. To change the default, go to **Log sources** at **Stack Management** → **Advanced settings** under **Observability**.
+The patterns used to match log sources are configured in {{kib}} advanced settings. The default setting is `logs-*-*,logs-*,filebeat-*`. To change the default, go to **Log sources** [advanced setting](kibana://reference/advanced-settings.md#kibana-search-settings).
 ::::
 
 

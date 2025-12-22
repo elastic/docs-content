@@ -24,8 +24,7 @@ The following instructions show you how to prepare your hosts on Ubuntu.
 
 Install a compatible Docker version on Ubuntu.
 
-::::{important}
-Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 
@@ -53,7 +52,7 @@ Make sure to use a supported combination of Linux distribution and container eng
 4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker 27.0. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
 
     ```sh
-    sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
+    sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
     ```
 
 
@@ -130,7 +129,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.

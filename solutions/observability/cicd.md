@@ -2,6 +2,8 @@
 navigation_title: CI/CD
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/ci-cd-observability.html
+applies_to:
+  stack: ga
 products:
   - id: observability
 ---
@@ -18,14 +20,18 @@ To provide monitoring dashboards, alerting, and root cause analysis on pipelines
 
 ## CI/CD observability architectures [ci-cd-architecture]
 
-Using the APM Server, connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
+Use the {{apm-server}} to connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
+
+:::{tip}
+We recommend using the [{{edot}} Collector](opentelemetry://reference/index.md) to collect CI/CD observability data.
+:::
 
 :::{image} /solutions/images/observability-simple-arch-observability.png
 :alt: Simple architecture of CI/CD observability with Elastic
 :title: Architecture of CI/CD observability with Elastic
 :::
 
-A more advanced CI/CD observability architecture includes an OpenTelemetry Collector deployed on the edge, next to the CI/CD tools. This architecture provides the following:
+A more advanced CI/CD observability architecture includes an [{{edot}} Collector](opentelemetry://reference/index.md) deployed on the edge, next to the CI/CD tools. This architecture provides the following:
 
 * Low latency between the CI/CD tools and the collector is particularly beneficial to ephemeral tools like the otel-cli.
 * The ability to route the observability signals to multiple backends in addition to Elastic {{observability}}.
@@ -285,7 +291,7 @@ To learn more about the integration of Jenkins with Elastic {{observability}}, s
 
 There are out of the box {{kib}} dashboards that help visualize some metrics for the CI/CD platform.
 
-Using the [Import API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) or the {{kib}} UI, you can [install dashboards](https://github.com/jenkinsci/opentelemetry-plugin/blob/master/docs/DASHBOARDS.md#elastic) that are compatible with version 7.12 or higher.
+Using the [Import saved objects API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-saved-objects-import) or the {{kib}} UI, you can [install dashboards](https://github.com/jenkinsci/opentelemetry-plugin/blob/master/docs/DASHBOARDS.md#elastic) that are compatible with version 7.12 or higher.
 
 For instance, you can follow the below steps:
 

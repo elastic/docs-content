@@ -15,8 +15,8 @@ To access the Cloud UI in a web browser:
 1. Connect to one of the URLs provided at the end of the installation process on your first host, replacing `FIRST_HOST` with the correct IP address or DNS hostname.
 
     ```sh
-    http://FIRST_HOST:12400
-    https://FIRST_HOST:12443
+    http://<FIRST_HOST>:12400
+    https://<FIRST_HOST>:12443
     ```
 
     Secure access through the HTTPS protocol is available with certificates generated during the installation of {{ece}}, but will prompt you with a warning in your browser. To avoid this warning, you can add [your own TLS/SSL security certificates](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). If you are on AWS and can’t access the Cloud UI, [check if the URL points to a private IP address](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).

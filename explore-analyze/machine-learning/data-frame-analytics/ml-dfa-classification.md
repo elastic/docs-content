@@ -38,7 +38,7 @@ Before you can use the {{stack-ml-features}}, there are some configuration requi
 
 If possible, prepare your input data such that it has less classes. A {{classanalysis}} with many classes takes more time to run than a binary {{classification}} job. The relationship between the number of classes and the runtime is roughly linear.
 
-You might also need to [{{transform}}](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{classification}}.
+You might also need to [transform](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for {{classification}}.
 
 To learn more about how to prepare your data, refer to [the relevant section](ml-dfa-overview.md#prepare-transform-data) of the supervised learning overview.
 
@@ -160,7 +160,7 @@ To learn more about choosing the class assignment objective that fits your goal,
 
 The model that you created is stored as {{es}} documents in internal indices. In other words, the characteristics of your trained model are saved and ready to be deployed and used as functions.
 
-1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
+1. To deploy {{dfanalytics}} model in a pipeline, navigate to the **Trained models** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
    :::{image} /explore-analyze/images/machine-learning-ml-dfa-trained-models-ui.png
    :alt: The trained models UI in {{kib}}

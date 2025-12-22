@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/filter-agent-list-by-tags.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -49,7 +52,7 @@ To manage tags in {{fleet}}:
     | Create a new tag | Type the tag name and click **Create new tag…**. Notice the tag name hasa check mark to show that the tag has been added to the selected agents. |
     | Rename a tag | Hover over the tag name and click the ellipsis button. Type a new name and press Enter.The tag will be renamed in all agents that use it, even agents that are notselected. |
     | Delete a tag | Hover over the tag name and click the ellipsis button. Click **Delete tag**.The tag will be deleted from all agents, even agents that are not selected. |
-    | Add or remove a tag from an agent | Click the tag name to add or clear the check mark. In the **Tags** column,notice that the tags are added or removed. Note that the menu only showstags that are common to all selected agents. |
+    | Add or remove a tag from an agent | Click the tag name to add or clear the check mark. In the **Tags** column,notice that the tags are added or removed. The menu only showstags that are common to all selected agents. |
 
 
 
@@ -76,7 +79,7 @@ docker run \
   --env FLEET_URL=<Fleet Server host URL> \
   --env FLEET_ENROLLMENT_TOKEN=<enrollment token> \
   --env ELASTIC_AGENT_TAGS=docker,dev
-  --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
 ```
 
 For more information about running on containers, refer to the guides under [Install {{agent}}s in a containerized environment](/reference/fleet/install-elastic-agents-in-containers.md).

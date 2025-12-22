@@ -24,15 +24,15 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 
 ::::{admonition} Requirements
 
-* A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
-* {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* {{serverless-short}} users: a project with the [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) feature tier.
 * A sample of the data you want to import.
 
 ::::
 
 ::::{admonition} Notes on sample data
-To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Any structured or unstructured format is acceptable, including but not limited to JSON, NDJSON, CSV, Syslog.**
+To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Automatic Import supports the following sample formats: JSON, NDJSON, CSV, and syslog (structured and unstructured).**
 
 * You can upload a sample of arbitrary size. The LLM will detect its format and select up to 100 documents for detailed analysis.
 * The more variety in your sample, the more accurate the pipeline will be. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
@@ -68,7 +68,7 @@ Using Automatic Import allows users to create new third-party data integrations 
    :::
 
 3. Click **Create integration**.
-4. Select an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+4. Select an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 5. Define how your new integration will appear on the Integrations page by providing a **Title**, **Description**, and **Logo**.  Click **Next**.
 6. Define your integration’s package name, which will prefix the imported event fields.
 7. Define your **Data stream title**, **Data stream description**, and **Data stream name**. These fields appear on the integration’s configuration page to help identify the data stream it writes to.
@@ -108,7 +108,7 @@ Using Automatic Import allows users to create new third-party data integrations 
     :::
 
 14. Click **Add to an agent** to deploy your new integration and start collecting data, or click **View integration** to view detailed information about your new integration.
-15. (Optional) Once you’ve added an integration, you can edit the ingest pipeline by going to **Project Settings → Stack Management → Ingest Pipelines**.
+15. (Optional) Once you’ve added an integration, you can edit the ingest pipeline by going to the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{tip}
 You can use the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) to check the health of your data ingest pipelines and field mappings.

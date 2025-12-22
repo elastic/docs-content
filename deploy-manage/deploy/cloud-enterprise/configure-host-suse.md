@@ -28,8 +28,7 @@ Regardless of which approach you take, the steps in this section need to be perf
 
 ## Install Docker on SLES [ece-install-docker-sles12]
 
-::::{important}
-Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 
@@ -157,7 +156,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.

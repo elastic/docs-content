@@ -191,6 +191,22 @@ To change an alert’s status, do one of the following:
     ::::
 * In an alert’s details flyout, click **Take action** and select a status.
 
+#### Set an alert's closing reason
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+You can specify a reason for closing an alert by selecting one of the following options:
+
+* **Close without reason**: Close the alert without specifying a reason.
+* **Duplicate**: The alert is a duplicate of another alert.
+* **False positive**: The alert was triggered by normal activity and doesn't indicate a security issue.
+* **True positive**: The alert represents a real security incident that has been resolved.
+* **Benign positive**: The alert correctly identified the activity, but the activity is acceptable or not actionable.
+* **Other**: Any other reason not covered by the predefined categories.
+
+When you select a closing reason, the alert document is populated with a new field called `kibana.alert.workflow_reason`. You can use this field to filter and sort alerts on the **Alerts** page. If you later reopen the alert, the field is removed from the document.
 
 ### Apply and filter alert tags [apply-alert-tags]
 
@@ -299,3 +315,12 @@ This Timeline template uses the `host.name: "{host.name}"` dropzone filter in th
 ::::{note}
 Refer to [Timeline](/solutions/security/investigate/timeline.md) for information on creating Timelines and Timeline templates. For information on how to add Timeline templates to rules, refer to [Create a detection rule](/solutions/security/detect-and-alert/create-detection-rule.md).
 ::::
+
+## Clean up alerts [clean-up-alerts-sec]
+
+```{applies_to}
+stack: preview 9.1 
+serverless: preview
+```
+
+Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerts-cases/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.

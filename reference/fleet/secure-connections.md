@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure-connections.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -40,7 +43,6 @@ Key passwords are not currently supported.
 ::::{important}
 When you run {{agent}} with the {{elastic-defend}} integration, the [TLS certificates](https://en.wikipedia.org/wiki/X.509) used to connect to {{fleet-server}} and {{es}} need to be generated using [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). For a full list of available algorithms to use when configuring TLS or mTLS, see [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md). These settings are available for both standalone and {{fleet}}-managed {{agent}}.
 ::::
-
 
 
 ## Generate a custom certificate and private key for {{fleet-server}} [generate-fleet-server-certs]
@@ -84,8 +86,11 @@ This section describes how to use the `certutil` tool provided by {{es}}, but yo
     Store the files in a secure location. You’ll need these files later to encrypt traffic between {{agent}}s and {{fleet-server}}.
 
 
+## Configure SSL/TLS using CLI [fleet-server-ssl-cli-settings]
 
-## Encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}} [_encrypt_traffic_between_agents_fleet_server_and_es]
+Use the CLI to configure SSL or TLS when installing or enrolling {{fleet-server}}. This method gives you granular control over certificate paths, verification modes, and authentication behavior.
+
+### Encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}} [_encrypt_traffic_between_agents_fleet_server_and_es]
 
 {{fleet-server}} needs a CA certificate or the CA fingerprint to connect securely to {{es}}. It also needs to expose a {{fleet-server}} certificate so other {{agent}}s can connect to it securely.
 
@@ -96,12 +101,12 @@ For the steps in this section, imagine you have the following files:
 | `ca.crt` | The CA certificate to use to connect to {{fleet-server}}. This is the CA used to [generate a certificate and key](#generate-fleet-server-certs) for {{fleet-server}}. |
 | `fleet-server.crt` | The certificate you generated for {{fleet-server}}. |
 | `fleet-server.key` | The private key you generated for {{fleet-server}}.<br>If the `fleet-server.key` file is encrypted with a passphrase, the passphrase will need to be specified through a file. |
-| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generate certs for {{es}} (see [Prerequisites](#prereqs)).<br>Note that the CA certificate’s SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
+| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generate certs for {{es}} (see [Prerequisites](#prereqs)).<br>The CA certificate's SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
 
 To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
 1. Configure {{fleet}} settings. These settings are applied to all {{fleet}}-managed {{agent}}s.
-2. In {{kib}}, open the main menu, then click **Management > {{fleet}} > Settings**.
+2. In {{kib}}, open the main menu, then select **Management > {{fleet}} > Settings**.
 
     1. Under **{{fleet-server}} hosts**, specify the URLs {{agent}}s will use to connect to {{fleet-server}}. For example, [https://192.0.2.1:8220](https://192.0.2.1:8220), where 192.0.2.1 is the host IP where you will install {{fleet-server}}.
 
@@ -109,7 +114,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
         For host settings, use the `https` protocol. DNS-based names are also allowed.
         ::::
 
-    2. Under **Outputs**, search for the default output, then click the **Edit** icon in the **Action** column.
+    2. Under **Outputs**, search for the default output, then select the **Edit** icon in the **Action** column.
     3. In the **Hosts** field, specify the {{es}} URLs where {{agent}}s will send data. For example, [https://192.0.2.0:9200](https://192.0.2.0:9200).
     4. Specify either a CA certificate or CA fingerprint to connect securely {{es}}:
 
@@ -156,7 +161,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
     1. Install an {{agent}} as a {{fleet-server}} on the host and configure it to use TLS:
 
-        1. If you don’t already have a {{fleet-server}} service token, click the **Agents** tab in {{fleet}} and follow the instructions to generate the service token now.
+        1. If you don’t already have a {{fleet-server}} service token, select the **Agents** tab in {{fleet}} and follow the instructions to generate the service token now.
 
             ::::{tip}
             The in-product installation steps are incomplete. Before running the `install` command, add the settings shown in the next step.
@@ -222,7 +227,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `elastic-agent-cert-key`
             :   The path to the private key to use as for {{agent}}'s connections to {{fleet-server}}.
 
-            `elastic-agent-cert-key`
+            `elastic-agent-cert-key-passphrase`
             :   The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}}. The file must only contain the characters of the passphrase, no newline or extra non-printing characters. This option is only used if the `elastic-agent-cert-key` is encrypted and requires a passphrase to use.
 
             `fleet-server-es-cert`
@@ -234,7 +239,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `fleet-server-client-auth`
             :   One of `none`, `optional`, or `required`. Defaults to `none`. {{fleet-server}}'s client_authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs specified in the `--certificate-authorities` flag.
 
-            Note that additionally an optional passphrase for the private key may be specified with:
+            Additionally an optional passphrase for the private key may be specified with:
 
             `fleet-server-cert-key-passphrase`
             :   Passphrase file used to decrypt {{fleet-server}}'s private key.
@@ -268,6 +273,40 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
         `certificate-authorities`
         :   CA certificate to use to connect to {{fleet-server}}. This is the CA used to [generate a certificate and key](#generate-fleet-server-certs) for {{fleet-server}}.
 
-        Don’t have an enrollment token? On the **Agents** tab in {{fleet}}, click **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
+        Don’t have an enrollment token? On the **Agents** tab in {{fleet}}, select **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
 
 
+## Configure SSL/TLS using {{kib}} [fleet-server-ssl-ui-settings]
+```{applies_to}
+  stack: ga 9.1
+```
+
+You can configure SSL/TLS settings for {{fleet-server}} hosts directly in the {{fleet}} UI, without relying on CLI flags or policy overrides.
+
+To access these settings:
+
+1. In **Kibana**, go to **Management > {{fleet}} > Settings**.
+2. Under **{{fleet-server}} hosts**, select **Add host** or edit an existing host.
+3. Expand the **SSL options** section.
+
+### SSL options
+
+These are the available UI fields and their CLI equivalents:
+
+The following table shows the available UI fields and their CLI equivalents:
+
+| **UI Field**                          | **CLI Flag**                 | **Purpose**                                                          |
+| ------------------------------------- | ---------------------------- | -------------------------------------------------------------------- |
+| Server SSL certificate authorities    | `--certificate-authorities`  | CA to validate agent certificates (Fleet Server authenticates agent) |
+| Client SSL certificate                | `--fleet-server-cert`        | TLS certificate Fleet Server presents to agent (agent validates it)  |
+| Client SSL certificate key            | `--fleet-server-cert-key`    | Key paired with the Fleet Server client certificate                  |
+| Elasticsearch certificate authorities | `--fleet-server-es-ca`       | CA Fleet Server uses to validate Elasticsearch cert                  |
+| SSL certificate for Elasticsearch     | `--fleet-server-es-cert`     | Fleet Server’s mTLS certificate for Elasticsearch                    |
+| SSL certificate key for Elasticsearch | `--fleet-server-es-cert-key` | Key paired with the Fleet Server’s Elasticsearch certificate         |
+| Enable client authentication          | `--fleet-server-client-auth` | Require agents to present client certificates (mTLS only)                 |
+
+:::{warning}
+Editing SSL or proxy settings for an existing {{fleet-server}} might cause agents to lose connectivity. After changing client certificate settings, you might need to re-enroll the affected agents.
+:::
+
+To configure a mutual TLS connection from {{fleet-server}} to {{es}}, use the {{es}} output settings. For more information, refer to [Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).

@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-get-started-project.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-get-started-project.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -50,7 +50,7 @@ You should also decide where you want to run the monitors before getting started
 % Stateful only for following note?
 
 ::::{note}
-If you are setting up Synthetics for a deployment configured with [traffic filters](/deploy-manage/security/traffic-filtering.md), connections into {{es}} are restricted and results will not be able to be written back into {{es}} unless granted. For more details, refer to [Use Synthetics with traffic filters](/solutions/observability/synthetics/traffic-filters.md).
+If you are setting up Synthetics for a deployment configured with [network security](/deploy-manage/security/network-security.md), connections into {{es}} are restricted and results will not be able to be written back into {{es}} unless granted. For more details, refer to [Use Synthetics with network security](/solutions/observability/synthetics/network-security.md).
 
 ::::
 

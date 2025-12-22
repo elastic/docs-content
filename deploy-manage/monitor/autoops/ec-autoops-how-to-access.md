@@ -6,22 +6,26 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
+navigation_title: For {{ech}}
 ---
 
-# How to access AutoOps [ec-autoops-how-to-access]
+# AutoOps for {{ech}}
 
-::::{note}
-AutoOps supports {{es}} versions according to the [supported {{stack}} versions](https://www.elastic.co/support/eol).
-::::
+For [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) deployments, AutoOps is set up and enabled automatically in all supported [regions](ec-autoops-regions.md#autoops-for-ech-regions). More regions are coming soon. 
 
+## How to access AutoOps in your deployment [ec-autoops-how-to-access]
 
 To access AutoOps from your {{ecloud}} console, follow these steps:
 
-1. Log in to your {{ech}} account. Use your credentials to access your {{ecloud}} dashboard.
-2. Navigate through your list of deployments and locate the one you want to manage.
-3. Click **Manage** on the right side of the selected deployment.
-4. On the deployment details page, click **Open AutoOps**.
+1. Log in to your {{ech}} account.
+2. Locate the deployment you want to work on and select **Manage**.
+4. On the deployment overview page, select **Open AutoOps**.
 
 :::{image} /deploy-manage/images/cloud-autoops-how-to-access.png
-:alt: How to access AutoOps
+:screenshot:
+:alt: Screenshot showing the Open AutoOps button on the deployment overview page
+:::
+
+:::{tip}
+Refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md) for answers to frequently asked questions about AutoOps.
 :::

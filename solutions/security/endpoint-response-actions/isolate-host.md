@@ -19,7 +19,7 @@ Host isolation allows you to isolate hosts from your network, blocking communica
 Isolated hosts, however, can still send data to {{elastic-sec}}. You can also create [host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md) for specific IP addresses that isolated hosts are still allowed to communicate with, even when blocked from the rest of your network.
 
 ::::{admonition} Requirements
-* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Hosts must have {{agent}} installed with the {{elastic-defend}} integration.
 * For {{stack}} versions >= 7.15.0 and {{serverless-short}}, host isolation is supported for endpoints running Windows, macOS, and these Linux distributions:
 
@@ -49,9 +49,9 @@ All actions executed on a host are tracked in the host’s response actions hist
 
 ## Isolate a host [isolate-a-host]
 
-::::{dropdown} Isolate a host from an event (Serverless only) or a detection alert
-1. Open an event ({{serverless-short}} only) or a detection alert:
-    * From the event analyzer view: Click an event. ({{serverless-short}} only)
+::::{dropdown} Isolate a host from an event or a detection alert
+1. Do one of the following:
+    * {applies_to}`stack: ga 9.1` From the event analyzer view: Click an event. 
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
@@ -74,7 +74,7 @@ All actions executed on a host are tracked in the host’s response actions hist
 
 :::::{dropdown} Isolate a host from the response console
 ::::{note}
-The response console requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+The response console requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 
@@ -89,7 +89,7 @@ The response console requires the appropriate [subscription](https://www.elastic
 
 :::::{dropdown} Automatically isolate a host using a rule’s endpoint response action
 ::::{note}
-The host isolation endpoint response action requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+The host isolation endpoint response action requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 
@@ -120,9 +120,9 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 
 ## Release a host [release-a-host]
 
-::::{dropdown} Release a host from an event (Serverless only) or detection alert
-1. Open an event ({{serverless-short}} only) or a detection alert:
-    * From the event analyzer view: Click an event. ({{serverless-short}} only)
+::::{dropdown} Release a host from an event or detection alert
+1. Do one of the following:
+    * {applies_to}`stack: ga 9.1` From the event analyzer view: Click an event.
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
@@ -145,7 +145,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 
 :::::{dropdown} Release a host from the response console
 ::::{note}
-The response console requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+The response console requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 

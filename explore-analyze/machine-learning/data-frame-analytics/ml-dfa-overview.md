@@ -9,7 +9,7 @@ products:
   - id: machine-learning
 ---
 
-# Overview [ml-dfa-overview]
+# Overview of data frame analytics with Elastic machine learning [ml-dfa-overview]
 
 {{dfanalytics-cap}} enable you to perform different analyses of your data and annotate it with the results. By doing this, it provides additional insights into the data. [{{oldetection-cap}}](ml-dfa-finding-outliers.md) identifies unusual data points in the data set. [{{regression-cap}}](ml-dfa-regression.md) makes predictions on your data after it determines certain relationships among your data points. [{{classification-cap}}](ml-dfa-classification.md) predicts the class or category of a given data point in a data set. {{infer-cap}} enables you to use trained {{ml}} models against incoming data in a continuous fashion.
 
@@ -58,7 +58,7 @@ An important requirement is a data set that is large enough to train a model. Fo
 
 Before you train the model, consider preprocessing the data. In practice, the type of preprocessing depends on the nature of the data set. Preprocessing can include, but is not limited to, mitigating redundancy, reducing biases, applying standards and/or conventions, data normalization, and so on.
 
-{{regression-cap}} and {{classification}} require specifically structured source data: a two dimensional tabular data structure. For this reason, you might need to [{{transform}}](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for these types of {{dfanalytics}}.
+{{regression-cap}} and {{classification}} require specifically structured source data: a two dimensional tabular data structure. For this reason, you might need to [transform](../../transforms.md) your data to create a {{dataframe}} which can be used as the source for these types of {{dfanalytics}}.
 
 ### Train, test, iterate [train-test-iterate]
 
@@ -76,7 +76,7 @@ Once the model is trained, you can evaluate how well it predicts previously unse
 
 You have trained the model and are satisfied with the performance. The last step is to deploy your trained model and start using it on new data.
 
-The Elastic {{ml}} feature called {{infer}} enables you to make predictions for new data either by using it as a processor in an ingest pipeline, in a continuous {{transform}} or as an aggregation at search time. When new data comes into your ingest pipeline or you run a search on your data with an {{infer}} aggregation, the model is used to infer against the data and make predictions on it.
+The Elastic {{ml}} feature called {{infer}} enables you to make predictions for new data either by using it as a processor in an ingest pipeline, in a continuous transform or as an aggregation at search time. When new data comes into your ingest pipeline or you run a search on your data with an {{infer}} aggregation, the model is used to infer against the data and make predictions on it.
 
 ### Next steps [next-steps]
 

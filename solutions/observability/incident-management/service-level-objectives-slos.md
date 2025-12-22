@@ -95,10 +95,6 @@ Available SLO panels include:
 :screenshot:
 :::
 
-To learn more about Dashboards, see [Dashboards](/solutions/observability/get-started/get-started-with-dashboards.md).
-
-% Stateful only for upgrade.
-
 ## Upgrade from beta to GA [slo-upgrade-to-ga]
 
 Starting in version 8.12.0, SLOs are generally available (GA). If you’re upgrading from a beta version of SLOs (available in 8.11.0 and earlier), you must migrate your SLO definitions to a new format.

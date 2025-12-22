@@ -14,7 +14,7 @@ In serverless projects, the following types of API keys exist:
 - **Personal** API keys, that you can create to allow external services to access your serverless project on behalf of a user.
 - **Managed** API keys, created and managed by {{kib}} to correctly run background tasks.
 
-You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-keys-app}}**:
+You can manage your keys in **{{project-settings}} → {{manage-app}} → API keys**:
 
 :::{image} /deploy-manage/images/serverless-api-key-management.png
 :alt: API keys UI
@@ -24,7 +24,7 @@ You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-
 
 ## Create an API key [api-keys-create-an-api-key]
 
-In **{{api-keys-app}}**, click **Create API key**:
+In **API keys**, click **Create API key**:
 
 :::{image} /deploy-manage/images/serverless-create-personal-api-key.png
 :alt: Create API key UI
@@ -46,9 +46,9 @@ API keys are intended for programmatic access. Don’t use API keys to authentic
 
 
 
-### Restrict privileges [api-keys-restrict-privileges]
+### Control security privileges [api-keys-restrict-privileges]
 
-When you create or update an API key, use **Restrict privileges** to limit the permissions. Define the permissions using a JSON `role_descriptors` object, where you specify one or more roles and the associated privileges.
+When you create or update an API key, use **Control security privileges** to configure access to specific {{es}} APIs and resources. Define the permissions using a JSON `role_descriptors` object, where you specify one or more roles and the associated privileges.
 
 For example, the following `role_descriptors` object defines a `books-read-only` role that limits the API key to `read` privileges on the `books` index.
 
@@ -72,16 +72,16 @@ For example, the following `role_descriptors` object defines a `books-read-only`
 }
 ```
 
-For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices).
+For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
 
 ## Update an API key [api-keys-update-an-api-key]
 
-In **{{api-keys-app}}**, click on the name of the key. You can update only **Restrict privileges** and **Include metadata**.
+In **API keys**, click on the name of the key. You can update only **Restrict privileges** and **Include metadata**.
 
 
 ## View and delete API keys [api-keys-view-and-delete-api-keys]
 
-The **{{api-keys-app}}** app lists your API keys, including the name, date created, and status. When API keys expire, the status changes from `Active` to `Expired`.
+The **API keys** app lists your API keys, including the name, date created, and status. When API keys expire, the status changes from `Active` to `Expired`.
 
 You can delete API keys individually or in bulk.

@@ -1,7 +1,6 @@
 ---
 applies_to:
   stack: ga
-  serverless: ga
 ---
 
 # Watcher UI [watcher-ui]
@@ -31,7 +30,7 @@ To use Watcher in {{kib}}, you must have the built-in `kibana_admin` role and ei
 To manage roles, go to the **Roles** management page, or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles). Watches are shared between all users with the same role.
 
 ::::{note}
-If you are creating a threshold watch, you must also have the `view_index_metadata` index privilege. See [Index management](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) for detailed information.
+If you are creating a threshold watch, you must also have the `view_index_metadata` index privilege. See [Index management](/manage-data/data-store/index-basics.md#index-management) for detailed information.
 ::::
 
 ## Create a threshold alert [watcher-create-threshold-alert]

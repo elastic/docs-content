@@ -1,16 +1,17 @@
 ---
+navigation_title: Manage data retention
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-manage-retention.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-manage-retention.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Manage data retention [synthetics-manage-retention]
+# Manage data retention for Synthetics [synthetics-manage-retention]
 
 When you set up a synthetic monitor, data from the monitor is saved in [{{es}} data streams](/manage-data/data-store/data-streams.md), an append-only structure in {{es}}.
 
@@ -43,7 +44,7 @@ To find Synthetics data streams:
 :::{tab-item} Elastic Stack
 :sync: stack
 
-1. Navigate to [{{kib}} index management](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md).
+1. In {{kib}}, navigate to [Index Management](/manage-data/data-store/index-basics.md#index-management).
 2. Filter the list of data streams for those containing the term `synthetics`.
 
     1. In the UI there will be three types of browser data streams: `synthetics-browser-*`, `synthetics-browser.network-*`, and `synthetics-browser.screenshot-*`.

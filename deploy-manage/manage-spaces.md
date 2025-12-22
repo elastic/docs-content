@@ -15,7 +15,7 @@ products:
 **Spaces** let you organize your content and users according to your needs.
 
 - Each space has its own saved objects.
-- Users can only access the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
+- Users can access only the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
 - In {{stack}} deployments on version 8.16 and later, each space has its own navigation, called solution view.
 
 {{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the top menu.
@@ -25,8 +25,16 @@ products:
 :screenshot:
 :::
 
-To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+You can find the **Spaces** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+For more info on working with spaces, check out: 
+- [Create a space](#spaces-managing)
+- [Define access to a space](#spaces-control-user-access)
+- [Move saved objects between spaces](#spaces-moving-objects)
+- [Configure a space-level landing page](#spaces-default-route)
+- [Delete a space](#_delete_a_space)
+
+Check out [Using Spaces with Fleet](/deploy-manage/manage-spaces-fleet.md) for info on using spaces with {{fleet}} in a space-aware data model.
 
 ## Required permissions [_required_privileges_3]
 
@@ -74,7 +82,7 @@ To create a space:
 3. If you selected the **Classic** solution view, you can customize the **Feature visibility** as you need it to be for that space.
 
    :::{note}
-   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](elasticsearch://reference/elasticsearch/roles.md).
    :::
 
 4. Customize the avatar of the space to your liking.
@@ -92,13 +100,6 @@ Elastic also allows you to manage spaces using APIs:
 
 
 ## Define access to a space [spaces-control-user-access]
-```{applies_to}
-stack: ga
-serverless:
-  elasticsearch: ga
-  security: ga
-  observability: unavailable
-```
 
 Users can access spaces based on the roles that they have.
 
@@ -113,28 +114,34 @@ If you're managing an {{stack}} deployment, then you can also assign roles and d
 When a role is assigned to *All Spaces*, you can’t remove its access from the space settings. You must instead edit the role to give it more granular access to individual spaces.
 
 
-
-## Delete a space [_delete_a_space]
-
-Deleting a space permanently removes the space and all of its contents. Find the space on the **Spaces** overview page and click the trash icon in the Actions column. You can’t delete the default space, but you can customize it to your liking.
-
-
 ## Move saved objects between spaces [spaces-moving-objects]
 
 To move saved objects between spaces, you can [copy objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), or [export and import objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects).
 
 
-## Configure a space-level landing page [spaces-default-route]
+## Customize {{kib}}'s home page [spaces-default-route]
 ```{applies_to}
 stack: ga
-serverless: unavailable
+serverless:
+  observability: ga
+  elasticsearch: unavailable
+  security: unavailable
 ```
 
-You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object as they enter each space.
+Customize the {{kib}} landing page on a per-space basis to create a tailored experience for users. For example, you can direct users to a specific dashboard, application, or saved object. Users navigate to the custom landing page when: 
+- They enter the space.
+- {applies_to}`stack: ga 9.3` They select the {icon}`logo_elastic` logo in the header.
 
-To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+To configure the landing page, use the default route setting in the [{{kib}} advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+
+You can access the **Advanced Settings** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
 
 :::{image} /deploy-manage/images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page
 :screenshot:
 :::
+
+
+## Delete a space [_delete_a_space]
+
+Deleting a space permanently removes the space and all of its contents. Find the space on the **Spaces** overview page and click the trash icon in the Actions column. You can’t delete the default space, but you can customize it to your liking.

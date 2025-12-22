@@ -161,7 +161,7 @@ kind: Secret
 metadata:
   name: monitoring-metrics-es-ref
 stringData:
-  url: https://mon1.es.abcd-42.xyz.elastic-cloud.com:9243
+  url: <ELASTIC_CLOUD_URL>:9243
   username: monitoring-user
   password: <password>
 ```

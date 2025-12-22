@@ -10,10 +10,11 @@ jobs:
   preview:
     uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
     with:
+      enable-vale-linting: true
       continue-on-error: false
       strict: true
     permissions:
       deployments: write
       id-token: write
       contents: read
-      pull-requests: read
+      pull-requests: write

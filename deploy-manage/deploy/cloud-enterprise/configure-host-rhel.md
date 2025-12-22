@@ -25,8 +25,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-::::{important}
-Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 ## Install Podman and configure the host [ece-configure-hosts-rhel8-podman]
@@ -100,30 +99,26 @@ Make sure to use a supported combination of Linux distribution and container eng
 
     * For Podman 5
 
-        * Install version `5.2.2-13.*` using dnf.
+        * Install the latest available version `5.*` using dnf.
 
             :::{note}
-            As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2-13` since this is the latest supported version.
-
-            If you decide to install a previous Podman 5 version, make sure to replace `5.2.2-13` with the desired version in the commands below.
-
-            The version lock is still required for previous versions, to prevent automatic in-place updates that may be affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
+            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later version. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
             :::
 
             ```sh
-            sudo dnf install podman-5.2.2-13.* podman-remote-5.2.2-13.*
+            sudo dnf install podman-5.* podman-remote-5.*
             ```
-        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2-13.*`.
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `5.*` while still allowing minor and patch updates.
 
             ```sh
             ## Install versionlock
             sudo dnf install 'dnf-command(versionlock)'
 
             ## Lock major version
-            sudo dnf versionlock add --raw 'podman-5.2.2-13.*'
-            sudo dnf versionlock add --raw 'podman-remote-5.2.2-13.*'
+            sudo dnf versionlock add --raw 'podman-5.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.*'
 
-            ## Verify that podman-5.2.2-13.* and podman-remote-5.2.2-13.* appear in the output
+            ## Verify that podman-5.* and podman-remote-5.* appear in the output
             sudo dnf versionlock list
             ```
 
@@ -148,7 +143,7 @@ Make sure to use a supported combination of Linux distribution and container eng
 
     ```text
     [engine]
-    env = ["HTTP_PROXY=http://{proxy-ip}:{proxy-port}", "HTTPS_PROXY=http://{proxy-ip}:{proxy-port}"]
+    env = ["HTTP_PROXY=http://<PROXY_IP>:<PROXY_PORT>", "HTTPS_PROXY=http://<PROXY_IP>:<PROXY_PORT>"]
     ```
 
 7. Reload systemd configuration
@@ -322,7 +317,7 @@ Make sure to use a supported combination of Linux distribution and container eng
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
@@ -358,30 +353,14 @@ Make sure to use a supported combination of Linux distribution and container eng
     root             soft    memlock        unlimited
     ```
 
-29. NOTE: This step is optional if the Docker registry doesn’t require authentication.
-
-    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
-
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
-
-    ```text
-    {
-     "auths": {
-       "docker.elastic.co": {
-         "auth": "<auth-token>"
-       }
-     }
-    }
-    ```
-
-30. Restart the podman service by running this command:
+29. Restart the podman service by running this command:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-31. Reboot the RHEL host
+30. Reboot the RHEL host.
 
     ```sh
     sudo reboot

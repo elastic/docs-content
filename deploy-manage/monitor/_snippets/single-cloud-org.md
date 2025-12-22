@@ -1,0 +1,1 @@
+Users can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must [leave the previous one](/cloud-account/join-or-leave-an-organization.md#ec-leave-organization) or use a different email address.

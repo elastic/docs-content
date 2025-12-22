@@ -4,11 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html
   - https://www.elastic.co/guide/en/kibana/current/role-mappings.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
 products:
   - id: elasticsearch
   - id: kibana
@@ -40,7 +36,7 @@ The native and file realms assign roles directly to users. Native realms use [us
 
 ## Role sources
 
-Before you use role mappings to assign roles to users, the roles must exist. You can assign [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md), or [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) defined through [the UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md), [the API](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-api), or [a roles file](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).
+Before you use role mappings to assign roles to users, the roles must exist. You can assign [built-in roles](elasticsearch://reference/elasticsearch/roles.md), or [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) defined through [the UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md), [the API](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-api), or [a roles file](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).
 
 Any role mapping method can use any role management method. For example, when you use the role mapping API, you are able to map users to both API-managed roles (added using the UI or directly using the API) and file-managed roles. The same applies to file-based role-mappings.
 

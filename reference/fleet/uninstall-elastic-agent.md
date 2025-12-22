@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/uninstall-elastic-agent.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -62,7 +65,7 @@ C:\"Program Files"\Elastic\Agent\elastic-agent.exe uninstall
 :::::::
 Follow the prompts to confirm that you want to uninstall {{agent}}. The command stops and uninstalls any managed programs, such as {{beats}} and {{elastic-endpoint}}, before it stops and uninstalls {{agent}}.
 
-If you run into problems, refer to [Troubleshoot common problems](/troubleshoot/ingest/fleet/common-problems.md).
+If you run into problems, refer to [](/troubleshoot/ingest/fleet/common-problems.md).
 
 If you are using DEB or RPM, you can use the package manager to remove the installed package.
 

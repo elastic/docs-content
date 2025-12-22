@@ -20,22 +20,22 @@ These features augment [AutoOps](/deploy-manage/monitor/autoops.md) and [stack m
 
 Health is reported based on the following areas: Shard availability, master node health, Snapshot Lifecycle Management (SLM), Index Lifecycle Management (ILM), and repository integrity.
 
-The deployment **Health** page provides detailed information on health issues, impacted areas, and troubleshooting support.
+The deployment **Monitoring** page provides detailed information on health issues, impacted areas, and troubleshooting support.
 
 To view the health for a deployment:
 
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Health**.
+4. From the navigation menu, select **Monitoring**.
 
-The **Health** page provides the following information:
+The **Monitoring** page provides the following information:
 
 * Health issues for {{kib}}, Enterprise Search, APM, and plan changes are reported in the health banner.
-* Health issues for {{es}} clusters are broken down into a table with more details on Severity, Description and Affected capabilities.
+* Health issues for {{es}} clusters are broken down into a table with more details.
 
-:::{image} /deploy-manage/images/cloud-es-health-page.png
-:alt: {{es}} Health page
+:::{image} /deploy-manage/images/cloud-es-monitoring-page.png
+:alt: {{es}} Monitoring page
 :::
 
 * **Severity**: A critical issue impacts operations such as search and ingest and should be addressed as soon as possible. Warnings don’t impact the cluster immediately but might lead to more critical issues over time such as a corrupted repository might lead to no backups being available in the future. |
@@ -44,8 +44,8 @@ The **Health** page provides the following information:
 
 You can also search and filter the table based on affected resources, such as indices, repositories, nodes, or SLM policies. Individual issues can be further expanded to get more details and guided troubleshooting.
 
-:::{image} /deploy-manage/images/cloud-es-health-page-table.png
-:alt: {{es}} Health page with details and troubleshooting
+:::{image} /deploy-manage/images/cloud-es-monitoring-page-table.png
+:alt: {{es}} Expanded health issue with details and troubleshooting
 :::
 
 For more information about specific errors, refer to [](/troubleshoot/elasticsearch.md). You can also [contact us](/troubleshoot/index.md#contact-us) if you need more help.
@@ -79,7 +79,7 @@ deployment:
 
 {{ech}} deployments offer an additional **Performance** page to get further information about your cluster performance.
 
-If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability.
+If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Monitoring** page, unless they are related to shard health or master node availability.
 
 The **Performance** page and the out-of-the-box logs allow you to monitor your cluster performance, but for production applications we strongly recommend setting up a dedicated monitoring cluster. Refer to [Understanding deployment health](#ec-health-best-practices), for more guidelines on how to monitor you cluster performance.
 

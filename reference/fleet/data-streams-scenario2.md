@@ -2,6 +2,9 @@
 navigation_title: Scenario 2
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario2.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -10,14 +13,14 @@ products:
 # Scenario 2: Apply an ILM policy to specific data streams generated from Fleet integrations across all namespaces [data-streams-scenario2]
 
 
-Mappings and settings for data streams can be customized through the creation of `*@custom` component templates, which are referenced by the index templates created by the {{es}} apm-data plugin. The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
+Mappings and settings for data streams can be customized through the creation of `*@custom` component templates, which are referenced by the index templates created by each integration. The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
 
 This tutorial explains how to apply a custom index lifecycle policy to the `logs-system.auth` data stream.
 
 
 ## Step 1: Create an index lifecycle policy [data-streams-scenario2-step1]
 
-1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Index Lifecycle Policies** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 
 Name your new policy. For this tutorial, you can use `my-ilm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.
@@ -27,7 +30,7 @@ Name your new policy. For this tutorial, you can use `my-ilm-policy`. Customize 
 
 The **Index Templates** view in {{kib}} shows you all of the index templates available to automatically apply settings, mappings, and aliases to indices:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.
 3. Search for `system` to see all index templates associated with the System integration.
 4. Select the index template that matches the data stream for which you want to set up an ILM policy. For this example, you can select the `logs-system.auth` index template.

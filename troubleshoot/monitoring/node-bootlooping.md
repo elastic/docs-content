@@ -40,10 +40,9 @@ Following are some frequent causes of a failed configuration change:
 4. [Existing index](/troubleshoot/monitoring/node-bootlooping.md#ec-config-change-errors-existing-index)
 5. [Insufficient Storage](/troubleshoot/monitoring/node-bootlooping.md#ec-config-change-errors-insufficient-storage)
 
-If you’re unable to remediate the failing plan’s root cause, you can attempt to reset the deployment to the latest successful {{es}} configuration by performing a [no-op plan](/troubleshoot/monitoring/deployment-health-warnings.md). For an example, see this [video walkthrough](https://www.youtube.com/watch?v=8MnXZ9egBbQ).
+If you’re unable to remediate the failing plan’s root cause, you can attempt to reset the deployment to the latest successful {{es}} configuration by performing a [no-op plan](/troubleshoot/monitoring/deployment-health-warnings.md). For an example, watch this [video walkthrough](https://www.youtube.com/watch?v=8MnXZ9egBbQ).
 
-:::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
 ## Secure settings [ec-config-change-errors-secure-settings]
@@ -135,13 +134,13 @@ Noting in example that the bundle’s expiration `X-Amz-Date=20241016T133214Z` i
 
 To view any added plugins or bundles:
 
-1. Go to the **Features** page and open the **Extensions** tab.
+1. From your deployment's lower navigation menu, select **Extensions**.
 2. Select any extension and then choose **Update extension** to renew it. No other changes are needed, and any associated configuration change failures should now be able to succeed.
 
 
 ## OOM errors [ec-config-change-errors-oom-errors]
 
-Configuration change errors can occur when there is insufficient RAM configured for a data tier. In this case, the cluster typically also shows OOM (out of memory) errors. To resolve these, you need to increase the amount of heap memory, which is half of the amount of memory allocated to a cluster. You might also detect OOM in plan changes via their [related exit codes](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#fatal-errors) `127`, `137`, and `158`.
+Configuration change errors can occur when there is insufficient RAM configured for a data tier. In this case, the cluster typically also shows OOM (out of memory) errors. To resolve these, you need to increase the amount of heap memory. For instances up to 64 GB of RAM, heap memory is half of the total memory allocated. For instances larger than 64 GB, the heap size is capped at 32 GB. You might also detect OOM in plan changes via their [related exit codes](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#fatal-errors) `127`, `137`, and `158`.
 
 Check the [{{es}} cluster size](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md) documentation to learn more.
 

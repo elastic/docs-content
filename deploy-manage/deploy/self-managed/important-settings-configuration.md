@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/networkaddress-cache-ttl.html
 applies_to:
   deployment:
     self:
@@ -13,16 +14,17 @@ products:
 {{es}} requires very little configuration to get started, but there are a number of items which **must** be considered before using your cluster in production:
 
 * [Path settings](#path-settings)
-* [Cluster name setting](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name)
+* [Cluster name setting](#_cluster_name_setting)
 * [Node name setting](#node-name)
 * [Network host settings](#network.host)
 * [Discovery settings](#discovery-settings)
 * [Heap size settings](#heap-size-settings)
 * [JVM heap dump path setting](#heap-dump-path)
-* [GC logging settings](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging)
+* [GC logging settings](#_gc_logging_settings)
 * [Temporary directory settings](#es-tmpdir)
-* [JVM fatal error log setting](elasticsearch://reference/elasticsearch/jvm-settings.md#error-file-path)
+* [JVM fatal error log setting](#_jvm_fatal_error_log_setting)
 * [Cluster backups](#important-settings-backups)
+* [DNS cache settings](#networkaddress-cache-ttl)
 
 ## Path settings [path-settings]
 
@@ -241,3 +243,7 @@ In a disaster, [snapshots](../../tools/snapshot-and-restore.md) can prevent perm
 **Taking a snapshot is the only reliable and supported way to back up a cluster.** You cannot back up an {{es}} cluster by making copies of the data directories of its nodes. There are no supported methods to restore any data from a file system-level backup. If you try to restore a cluster from such a backup, it may fail with reports of corruption or missing files or other data inconsistencies, or it may appear to have succeeded having silently lost some of your data.
 
 ::::
+
+## DNS cache settings [networkaddress-cache-ttl]
+
+{{es}} runs with a security manager in place. With a security manager in place, the JVM defaults to caching positive hostname resolutions indefinitely and defaults to caching negative hostname resolutions for ten seconds. {{es}} overrides this behavior with default values to cache positive lookups for sixty seconds, and to cache negative lookups for ten seconds. These values should be suitable for most environments, including environments where DNS resolutions vary with time. If not, you can edit the values `es.networkaddress.cache.ttl` and `es.networkaddress.cache.negative.ttl` in the [JVM options](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options). Note that the values [`networkaddress.cache.ttl=<timeout>`](https://docs.oracle.com/javase/8/docs/technotes/guides/net/properties.md) and [`networkaddress.cache.negative.ttl=<timeout>`](https://docs.oracle.com/javase/8/docs/technotes/guides/net/properties.md) in the [Java security policy](https://docs.oracle.com/javase/8/docs/technotes/guides/security/PolicyFiles.md) are ignored by {{es}} unless you remove the settings for `es.networkaddress.cache.ttl` and `es.networkaddress.cache.negative.ttl`.

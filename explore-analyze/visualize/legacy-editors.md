@@ -12,6 +12,10 @@ products:
 
 Legacy editors are still available but have been replaced by better alternatives. Consider using one of the [modern editors](../visualize.md) offered in Elastic such as **Lens**.
 
+:::{note}
+Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
+:::
+
 The legacy editors are:
 
 - [Aggregation-based](legacy-editors/aggregation-based.md)

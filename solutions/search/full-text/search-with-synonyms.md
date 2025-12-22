@@ -8,13 +8,12 @@ products:
   - id: elasticsearch
 ---
 
-# Search with synonyms
+# Search with synonyms [search-with-synonyms]
 
 $$$ece-add-custom-bundle-example-synonyms$$$
 ::::{note}
-Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your {{ece}} deployment.
+Learn about [adding custom synonym bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) to your {{ece}} deployment.
 ::::
-
 
 % TODO: these bundle links do not belong here
 
@@ -26,43 +25,105 @@ $$$ece-add-custom-bundle-example-cacerts$$$
 
 $$$ece-add-custom-bundle-example-LDAP$$$
 
-# Search with synonyms [search-with-synonyms]
+Synonyms are words or phrases that share the same or similar meaning. Searching using synonyms allows you to:
 
-Synonyms are words or phrases that have the same or similar meaning. They are an important aspect of search, as they can improve the search experience and increase the scope of search results.
+* Improve search relevance by finding relevant documents that use different terms to express the same concept.
+* Make domain-specific vocabulary more user-friendly.
+* Define misspellings and typos to transparently handle common mistakes.
 
-Synonyms allow you to:
+## How synonyms work in Elasticsearch
 
-* **Improve search relevance** by finding relevant documents that use different terms to express the same concept.
-* Make **domain-specific vocabulary** more user-friendly, allowing users to use search terms they are more familiar with.
-* **Define common misspellings and typos** to transparently handle common mistakes.
+To use synonyms in {{es}}, follow this workflow:
 
-Synonyms are grouped together using **synonyms sets**. You can have as many synonyms sets as you need.
+1. **Create synonym sets and rules**: Define which terms are equivalent and where to store your synonym sets.
+2. **Configure analyzers**: Configure your token filters and analyzers to use them.
+3. **Test and apply**: Verify your configuration works correctly.
 
-In order to use synonyms sets in {{es}}, you need to:
+## Synonym rule formats
 
-* [Store your synonyms set](#synonyms-store-synonyms)
-* [Configure synonyms token filters and analyzers](#synonyms-synonym-token-filters)
+Synonym rules define which terms should be treated as equivalent during search and indexing.
 
+There are two main formats for synonym rules: explicit mappings and equivalent mappings.
 
-## Store your synonyms set [synonyms-store-synonyms]
+#### Explicit mappings
 
-Your synonyms sets need to be stored in {{es}} so your analyzers can refer to them. There are three ways to store your synonyms sets:
+Explicit mappings use `=>` to specify exact replacements:
 
+```
+i-pod, i pod => ipod
+sea biscuit, sea biscit => seabiscuit
+```
 
-### Synonyms API [synonyms-store-synonyms-api]
+With explicit mappings, the relationship is one-way. In the previous examples:
+- `i-pod` and `i pod` will be replaced with `ipod`, but `ipod` will not be replaced with `i-pod` or `i pod`
+- `sea biscuit` and `sea biscit` will be replaced with `seabiscuit`, but `seabiscuit` will not be replaced with `sea biscuit` or `sea biscit`
 
-You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets.
+This is different from equivalent synonyms, which can create bidirectional relationships when `expand=true`.
+
+#### Equivalent mappings
+
+Equivalent synonyms use commas to group interchangeable terms:
+
+```
+ipod, i-pod, i pod
+foozball, foosball
+universe, cosmos
+lol, laughing out loud
+```
+
+The behavior of equivalent synonyms depends on the `expand` parameter in your token filter configuration:
+- If `expand=true`: `ipod, i-pod, i pod` creates bidirectional mappings:
+  - `ipod` ↔ `i-pod`
+  - `ipod` ↔ `i pod` 
+  - `i-pod` ↔ `i pod`
+- If `expand=false`: `ipod, i-pod, i pod` maps all terms to the first term as canonical:
+  - `ipod` → `ipod`
+  - `i-pod` → `ipod`
+  - `i pod` → `ipod`
+
+## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
+
+You have multiple options for creating synonym sets and rules.
+
+### Method 1: {{kib}} UI
+
+```yaml {applies_to}
+serverless: 
+  elasticsearch:
+```
+
+You can create and manage synonym sets and synonym rules using the {{kib}} user interface.
+
+To create a synonym set using the UI:
+
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Synonyms, then select **Synonyms / Synonyms** from the results.
+2. Select **Get started**.
+3. Enter a name for your synonym set.
+4. Add your synonym rules in the editor by adding terms to match against:
+   - Add **Equivalent rules** by adding multiple equivalent terms. For example: `ipod, i-pod, i pod`
+   - Add **Explicit rules** by adding multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
+5. Select **Save** to save your rules.
+
+The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI will automatically reload the associated analyzers.
+
+### Method 2: REST API [synonyms-store-synonyms-api]
+
+You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets. For examples of how to 
+create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
 
+### Method 3: File-based [synonyms-store-synonyms-file]
 
-### Synonyms File [synonyms-store-synonyms-file]
+```{applies_to}
+serverless: unavailable
+```
 
 You can store your synonyms set in a file.
 
-A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you’re using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+Make sure you upload a synonyms set file for all your cluster nodes, to the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
-An example synonyms file:
+An example of a synonyms file:
 
 ```markdown
 # Blank lines and lines starting with pound are comments.
@@ -80,8 +141,8 @@ sea biscuit, sea biscit => seabiscuit
 # This allows the same synonym file to be used in different synonym handling strategies.
 # Examples:
 ipod, i-pod, i pod
-foozball , foosball
-universe , cosmos
+foozball, foosball
+universe, cosmos
 lol, laughing out loud
 
 # If expand==true in the synonym token filter configuration,
@@ -104,27 +165,28 @@ When a synonyms set is updated, search analyzers that use it need to be refreshe
 
 This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
 
-
-### Inline [synonyms-store-synonyms-inline]
+### Method 4: Inline [synonyms-store-synonyms-inline]
 
 You can test your synonyms by adding them directly inline in your token filter definition.
 
 ::::{warning}
 Inline synonyms are not recommended for production usage. A large number of inline synonyms increases cluster size unnecessarily and can lead to performance issues.
-
 ::::
 
-
-
-### Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
+## Step 2: Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
 
 Once your synonyms sets are created, you can start configuring your token filters and analyzers to use them.
 
 ::::{warning}
 Synonyms sets must exist before they can be added to indices. If an index is created referencing a nonexistent synonyms set, the index will remain in a partially created and inoperable state. The only way to recover from this scenario is to ensure the synonyms set exists then either delete and re-create the index, or close and re-open the index.
-
 ::::
 
+{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
+
+* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Recommended as it can correctly handle multi-word synonyms.
+* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
+
+Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 
 ::::{warning}
 Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.
@@ -134,19 +196,9 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 * A node containing the index starts
 * The index is opened from a closed state
 * A node restart occurs (which reopens the node assigned shards)
-
 ::::
 
-
-{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
-
-* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
-* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
-
-Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
-
-
-### Test your analyzer [synonyms-test-analyzer]
+## Step 3: Test your analyzer [synonyms-test-analyzer]
 
 You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) to test your analyzer chain:
 
@@ -165,17 +217,17 @@ GET /_analyze
 }
 ```
 
-
-### Apply synonyms at index or search time [synonyms-apply-synonyms]
+## Step 4: Apply synonyms at index or search time [synonyms-apply-synonyms]
 
 Analyzers can be applied at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md).
 
 You need to decide when to apply your synonyms:
 
-* Index time: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
-* Search time: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn’t require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
-
-Synonyms sets created using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api) can only be used at search time.
+* **Index time**: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+* **Search time**: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn't require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
+  :::{note}
+  Synonyms sets created using the synonyms API or the UI can only be used at search time.
+  :::
 
 You can specify the analyzer that contains your synonyms set as a [search time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-search-analyzer) or as an [index time analyzer](../../../manage-data/data-store/text-analysis/specify-an-analyzer.md#specify-index-time-analyzer).
 

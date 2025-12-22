@@ -68,23 +68,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.all.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 `alerts.new.count`
 :   The count of new alerts.
@@ -94,23 +94,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.new.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 `alerts.ongoing.count`
 :   The count of ongoing alerts.
@@ -120,23 +120,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.ongoing.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 `alerts.recovered.count`
 :   The count of recovered alerts.
@@ -146,23 +146,23 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     **Properties of the alerts.recovered.data objects**:
 
-    `kibana.alert.end`
-    :   Datetime stamp of alert end. [preview]
+    `kibana.alert.end` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert end.
 
-    `kibana.alert.flapping`
-    :   A flag on the alert that indicates whether the alert status is changing repeatedly. [preview]
+    `kibana.alert.flapping` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   A flag on the alert that indicates whether the alert status is changing repeatedly.
 
-    `kibana.alert.instance.id`
-    :   ID of the source that generates the alert. [preview]
+    `kibana.alert.instance.id` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   ID of the source that generates the alert.
 
-    `kibana.alert.reason`
-    :   The reason of the alert (generated with the rule conditions). [preview]
+    `kibana.alert.reason` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   The reason of the alert (generated with the rule conditions).
 
-    `kibana.alert.start`
-    :   Datetime stamp of alert start. [preview]
+    `kibana.alert.start` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Datetime stamp of alert start.
 
-    `kibana.alert.status`
-    :   Alert status (for example, active or OK). [preview]
+    `kibana.alert.status` {applies_to}`stack: preview` {applies_to}`serverless: preview`
+    :   Alert status (for example, active or OK).
 
 ### Action frequency: For each alert [alert-action-variables]
 
@@ -187,7 +187,7 @@ If the rule’s action frequency is not a summary of alerts, it passes the follo
 :   The ID of the alert that scheduled the action.
 
 `alert.uuid`
-:   A universally unique identifier for the alert. While the alert is active, the UUID value remains unchanged each time the rule runs. [preview]
+:   A universally unique identifier for the alert. While the alert is active, the UUID value remains unchanged each time the rule runs.
 
 #### Context [defining-rules-actions-variable-context]
 
@@ -434,3 +434,106 @@ You can create the following Mustache template in the email action for your rule
 When rendered into Markdown and then HTML and viewed in an email client, it looks like this:
 
 ![Email template rendered in an email client](/explore-analyze/images/kibana-email-mustache-template-rendered.png "")
+
+## Debugging rule variables [debugging-rule-action-variables]
+For diagnostic or exploratory purposes, you can list all available variables and their content. To do this, use the `{{{.}}}` triple-brace Mustache tag in your connector's body. For example, in an email message or a webhook payload.
+
+This tag renders the entire variable context as a JSON object in the action's output. Reviewing this output helps you understand the data structure and identify the correct variable paths to use in your templates, such as `{{context.reason}}` or `{{rule.name}}`.
+
+The following block is an example of the JSON output you can get using this method:
+```json
+{
+    "alertId": "40db4e2e-9f33-4b4c-8562-1b60408cdd57",
+    "alertName": "Custom threshold rule deactivate",
+    "spaceId": "default",
+    "tags": [],
+    "alertInstanceId": "*",
+    "alertActionGroup": "custom_threshold.fired",
+    "alertActionGroupName": "Alert",
+    "context": {
+        "alertDetailsUrl": "https://....",
+        "reason": "Document count is 4,656, above the threshold of 1. (duration: 1 min, data view: Metrics)",
+        "timestamp": "2025-10-29T08:40:59.208Z",
+        "value": [
+            "4,656"
+        ],
+        "viewInAppUrl": "https://.....",
+        "tags": []
+    },
+    "date": "2025-10-29T08:41:00.229Z",
+    "state": {
+        "start": "2025-10-29T08:40:59.208Z",
+        "duration": "0"
+    },
+    "kibanaBaseUrl": "https://.....",
+    "params": {
+        "criteria": [
+            {
+                "comparator": ">",
+                "metrics": [
+                    {
+                        "name": "A",
+                        "aggType": "count"
+                    }
+                ],
+                "threshold": [
+                    1
+                ],
+                "timeSize": 1,
+                "timeUnit": "m"
+            }
+        ],
+        "alertOnNoData": false,
+        "alertOnGroupDisappear": false,
+        "searchConfiguration": {
+            "query": {
+                "query": "",
+                "language": "kuery"
+            },
+            "index": "52756a9e-48d7-4d49-8e50-357fda22adf9"
+        }
+    },
+    "rule": {
+        "params": {
+            "criteria": [
+                {
+                    "comparator": ">",
+                    "metrics": [
+                        {
+                            "name": "A",
+                            "aggType": "count"
+                        }
+                    ],
+                    "threshold": [
+                        1
+                    ],
+                    "timeSize": 1,
+                    "timeUnit": "m"
+                }
+            ],
+            "alertOnNoData": false,
+            "alertOnGroupDisappear": false,
+            "searchConfiguration": {
+                "query": {
+                    "query": "",
+                    "language": "kuery"
+                },
+                "index": "52756a9e-48d7-4d49-8e50-357fda22adf9"
+            }
+        },
+        "id": "40db4e2e-9f33-4b4c-8562-1b60408cdd57",
+        "name": "Custom threshold rule deactivate",
+        "type": "observability.rules.custom_threshold",
+        "spaceId": "default",
+        "tags": [],
+        "url": "https://.../app/observability/alerts/rules/40db4e2e-9f33-4b4c-8562-1b60408cdd57"
+    },
+    "alert": {
+        "id": "*",
+        "uuid": "2b96fa25-3f6d-482d-8787-4df902e5c315",
+        "actionGroup": "custom_threshold.fired",
+        "actionGroupName": "Alert",
+        "flapping": false
+    }
+}
+```

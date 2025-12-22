@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maintenance-windows.html
   - https://www.elastic.co/guide/en/serverless/current/maintenance-windows.html
 applies_to:
-  stack: ga
+  stack: preview 9.0, ga 9.2
   serverless: ga
 products:
   - id: kibana
@@ -12,12 +12,8 @@ products:
 
 # Maintenance windows
 
-This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security.md)
 
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
 
 You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
 
@@ -39,7 +35,9 @@ For more details, refer to [{{kib}} privileges](../../../deploy-manage/users-rol
 
 ## Create and manange maintenance windows [manage-maintenance-windows]
 
-In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-settings}} > {{manage-app}} > {{maint-windows-app}}** in Serverless, you can create, edit, and archive maintenance windows.
+In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-settings}} > {{manage-app}} > {{maint-windows-app}}** in Serverless, you can create, edit, cancel, and archive maintenance windows. 
+
+{applies_to}`stack: ga 9.1` In {{stack}} 9.1.0 and later, you can also delete maintenance windows that are running, canceled, or archived. Be aware that you can't recover maintenance windows once you delete them.
 
 When you create a maintenance window, you must provide a name and a schedule. You can optionally configure it to repeat daily, monthly, yearly, or on a custom interval.
 
@@ -50,6 +48,15 @@ When you create a maintenance window, you must provide a name and a schedule. Yo
 
 By default, maintenance windows affect all categories of rules. The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
 
+::::{note}
+
+{applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` The option to specify rule categories for a maintenance window is no longer available. Maintenance windows apply to all rule types.
+
+Note that existing maintenance windows are still applied to rule categories that were specified. However, if you edit a maintenance window after upgrading or using the latest version of {{serverless-short}}, specified rule categories are removed and the maintenance window will be applied to all rules types.
+
+
+::::
+
 If you turn on **Filter alerts**, you can use KQL to filter the alerts affected by the maintenance window:
 
 :::{image} /explore-analyze/images/kibana-create-maintenance-window-filter.png
@@ -59,7 +66,7 @@ If you turn on **Filter alerts**, you can use KQL to filter the alerts affected 
 
 ::::{note}
 
-* You can select only a single category when you turn on filters.
+* {applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` You can select only a single category when you turn on filters.
 * Some rules are not affected by maintenance window filters because their alerts do not contain requisite data. In particular, [{{stack-monitor-app}}](../../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md), [tracking containment](../../../explore-analyze/alerts-cases/alerts/geo-alerting.md), [{{anomaly-jobs}} health](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md), and [transform health](../../../explore-analyze/transforms/transform-alerts.md) rules are not affected by the filters.
 
 ::::

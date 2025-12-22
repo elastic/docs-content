@@ -23,13 +23,15 @@ You can create and manage ingest pipelines using {{kib}}'s **Ingest Pipelines** 
 ## Prerequisites [ingest-prerequisites]
 
 * Nodes with the [`ingest`](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#node-ingest-node) node role handle pipeline processing. To use ingest pipelines, your cluster must have at least one node with the `ingest` role. For heavy ingest loads, we recommend creating [dedicated ingest nodes](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#node-ingest-node).
-* If the {{es}} security features are enabled, you must have the `manage_pipeline` [cluster privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) to manage ingest pipelines. To use {{kib}}'s **Ingest Pipelines** feature, you also need the `cluster:monitor/nodes/info` cluster privileges.
+* If the {{es}} security features are enabled, you must have the `manage_pipeline` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) to manage ingest pipelines. To use {{kib}}'s **Ingest Pipelines** feature, you also need the `cluster:monitor/nodes/info` cluster privileges.
 * Pipelines including the `enrich` processor require additional setup. See [*Enrich your data*](data-enrichment.md).
 
 
 ## Create and manage pipelines [create-manage-ingest-pipelines]
 
-In {{kib}}, open the main menu and click **Stack Management > Ingest Pipelines**. From the list view, you can:
+In {{kib}}, go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+From the list view, you can:
 
 * View a list of your pipelines and drill down into details
 * Edit or clone existing pipelines
@@ -270,7 +272,7 @@ $$$pipeline-custom-logs-index-template$$$
 
 2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
 
-    You can create this template using {{kib}}'s [**Index Management**](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
+    You can create this template using {{kib}}'s [**Index Management**](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
     For example, the following request creates a template matching `logs-my_app-*`. The template uses a component template that contains the `index.default_pipeline` index setting.
 
@@ -388,7 +390,7 @@ PUT _ingest/pipeline/my-pipeline
 Use dot notation to access object fields.
 
 ::::{important}
-If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them first. Other ingest processors cannot access flattened objects.
+If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them. If you wish to maintain your document structure, use the [`flexible`](ingest-pipelines.md#access-source-pattern-flexible) access pattern in your pipeline definition. Otherwise Ingest processors cannot access dotted field names.
 ::::
 
 
@@ -431,6 +433,232 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
+## Ingest field access pattern [access-source-pattern]
+```{applies_to}
+serverless: ga
+stack: ga 9.2
+```
+
+The default ingest pipeline access pattern does not recognize dotted field names in documents. Retrieving flattened and dotted field names from an ingest document requires a different field retrieval algorithm that does not have this limitation. We know that some pipelines have come to rely on these dotted field name limitations in their logic. In order to continue supporting the original behavior while still adding support for dotted field names, ingest pipelines now support configuring an access pattern to use for all processors in the pipeline.
+
+The `field_access_pattern` property on an ingest pipeline defines how ingest document fields are read and written for all processors in the current pipeline. It accepts two values: `classic` (which is the default) and `flexible`.
+
+```console
+PUT _ingest/pipeline/my-pipeline
+{
+  "field_access_pattern": "classic", <1>
+  "processors": [
+    {
+      "set": {
+        "description": "Set some searchable tags in our document's flattened field",
+        "field": "event.tags.ingest.processed_by", <2>
+        "value": "my-pipeline"
+      }
+    }
+  ]
+}
+```
+1. All processors in this pipeline will use the `classic` access pattern.
+2. The logic for resolving field paths used by processors to read and write values to ingest documents is based on the access pattern.
+
+### Classic field access pattern [access-source-pattern-classic]
+
+The `classic` access pattern is the default access pattern that has been around since ingest node first released. Field paths given to processors (for example, `event.tags.ingest.processed_by`) are split on the dot character (`.`). The processor then uses the resulting field names to traverse the document until a value is found. When writing a value to a document, if its parent fields do not exist in the source, the processor will create nested objects for the missing fields.
+
+```console
+POST /_ingest/pipeline/_simulate
+{
+  "pipeline" : {
+    "description": "example pipeline",
+    "field_access_pattern": "classic", <1>
+    "processors": [
+      {
+        "set" : {
+          "description" : "Copy the foo.bar field into the a.b.c.d field if it exists",
+          "copy_from" : "foo.bar", <2>
+          "field" : "a.b.c.d", <3>
+          "ignore_empty_value": true
+        }
+      }
+    ]
+  },
+  "docs": [
+    {
+      "_index": "index",
+      "_id": "id",
+      "_source": {
+        "foo": {
+          "bar": "baz" <4>
+        }
+      }
+    },
+    {
+      "_index": "index",
+      "_id": "id",
+      "_source": {
+        "foo.bar": "baz" <5>
+      }
+    }
+  ]
+}
+```
+1. Explicitly declaring to use the `classic` access pattern in the pipeline. This is the default value.
+2. We are reading a value from the field `foo.bar`.
+3. We are writing its value to the field `a.b.c.d`.
+4. This document uses nested json objects in its structure.
+5. This document uses dotted field names in its structure.
+
+```console-result
+{
+   "docs": [
+      {
+         "doc": {
+            "_id": "id",
+            "_index": "index",
+            "_version": "-3",
+            "_source": {
+              "foo": {
+                "bar": "baz" <1>
+              },
+              "a": {
+                "b": {
+                  "c": {
+                    "d": "baz" <2>
+                  }
+                }
+              }
+            },
+            "_ingest": {
+               "timestamp": "2017-05-04T22:30:03.187Z"
+            }
+         }
+      },
+      {
+         "doc": {
+            "_id": "id",
+            "_index": "index",
+            "_version": "-3",
+            "_source": {
+               "foo.bar": "baz" <3>
+            },
+            "_ingest": {
+               "timestamp": "2017-05-04T22:30:03.188Z"
+            }
+         }
+      }
+   ]
+}
+```
+1. The first document's `foo.bar` field is located, because it uses nested json. The processor looks for a `foo` field, and then a `bar` field.
+2. The value from the `foo.bar` field is written to a nested json structure at field `a.b.c.d`. The processor creates objects for each field in the path.
+3. The second document uses a dotted field name for `foo.bar`. The `classic` access pattern does not recognize dotted field names, and so nothing is copied.
+
+If the documents you are ingesting contain dotted field names, to read them with the `classic` access pattern, you must use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor. This approach is not always reasonable though. Consider the following document:
+
+```json
+{
+  "event": {
+    "tags": {
+      "http.host": "localhost:9200",
+      "http.host.name": "localhost",
+      "http.host.port": 9200
+    }
+  }
+}
+```
+If the `event.tags` field was processed with the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor, the field values would collide. The `http.host` field cannot be a text value and an object value at the same time.
+
+### Flexible field access pattern [access-source-pattern-flexible]
+
+The `flexible` access pattern allows for ingest pipelines to access both nested and dotted field names without using the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor. Additionally, when writing a value to a field that does not exist, any parent fields that are missing are concatenated to the start of the new key. Use the `flexible` access pattern if your documents have dotted field names, and also if you prefer to write missing fields to the document with dotted names.
+
+```console
+POST /_ingest/pipeline/_simulate
+{
+  "pipeline" : {
+    "description": "example pipeline",
+    "field_access_pattern": "flexible", <1>
+    "processors": [
+      {
+        "set" : {
+          "description" : "Copy the foo.bar field into the a.b.c.d field if it exists",
+          "copy_from" : "foo.bar", <2>
+          "field" : "a.b.c.d", <3>
+          "ignore_empty_value": true
+        }
+      }
+    ]
+  },
+  "docs": [
+    {
+      "_index": "index",
+      "_id": "id",
+      "_source": {
+        "foo": {
+          "bar": "baz" <4>
+        },
+        "a": {} <5>
+      }
+    },
+    {
+      "_index": "index",
+      "_id": "id",
+      "_source": {
+        "foo.bar": "baz", <6>
+      }
+    }
+  ]
+}
+```
+1. Using the `flexible` access pattern in the pipeline.
+2. We are reading a value from the field `foo.bar`.
+3. We are writing its value to the field `a.b.c.d`.
+4. The first document uses nested json objects in its structure.
+5. The first document has an existing `a` field in the root.
+6. The second document uses a dotted field name.
+
+```console-result
+{
+   "docs": [
+      {
+         "doc": {
+            "_id": "id",
+            "_index": "index",
+            "_version": "-3",
+            "_source": {
+              "foo": {
+                "bar": "baz" <1>
+              },
+              "a": {
+                "b.c.d": "baz" <2>
+              }
+            },
+            "_ingest": {
+               "timestamp": "2017-05-04T22:30:03.187Z"
+            }
+         }
+      },
+      {
+         "doc": {
+            "_id": "id",
+            "_index": "index",
+            "_version": "-3",
+            "_source": {
+               "foo.bar": "baz", <3>
+               "a.b.c.d": "baz" <4>
+            },
+            "_ingest": {
+               "timestamp": "2017-05-04T22:30:03.188Z"
+            }
+         }
+      }
+   ]
+}
+```
+1. The `flexible` access pattern supports nested object fields. The processor looks for a `foo` field, and then a `bar` field.
+2. The value from the `foo.bar` field is written to the dotted field name `b.c.d` underneath the field `a`. The processor concatenates the missing field names together as a prefix on the key.
+3. The `flexible` access pattern also supports dotted field names. The processor looks for a field named `foo`, and after not finding it, looks for a field named `foo.bar`.
+4. The value from the `foo.bar` field is written to the dotted field name `a.b.c.d`. Since none of those fields exist in the document yet, they are concatenated together into a dotted field name.
 
 ## Access metadata fields in a processor [access-metadata-fields]
 
@@ -709,7 +937,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-You can also specify a [stored script](../../../explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts) as the `if` condition.
+You can also specify a [stored script](../../../explore-analyze/scripting/modules-scripting-store-and-retrieve.md) as the `if` condition.
 
 ```console
 PUT _scripts/my-prod-tag-script

@@ -2,6 +2,9 @@
 navigation_title: decode_duration
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_duration-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -27,8 +30,8 @@ processors:
 
 ## Configuration settings [_configuration_settings_21]
 
-| Name | Required | Default | Description |  |
-| --- | --- | --- | --- | --- |
-| `field` | yes |  | Which field of event needs to be decoded as `time.Duration` |  |
-| `format` | yes | `milliseconds` | Supported formats: `milliseconds`/`seconds`/`minutes`/`hours` |  |
+| Name | Required | Default | Description |
+| --- | --- | --- | --- |
+| `field` | yes |  | Which field of event needs to be decoded as `time.Duration` |
+| `format` | yes | `milliseconds` | Supported formats: `milliseconds`/`seconds`/`minutes`/`hours` |
 

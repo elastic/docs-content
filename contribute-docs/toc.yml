@@ -1,0 +1,48 @@
+toc:
+  - file: index.md
+  - file: on-the-web.md
+  - file: locally.md
+  - file: syntax-quick-reference.md
+  - folder: content-types
+    children:
+      - file: index.md
+      - file: how-tos.md
+  - folder: how-to
+    children:
+      - file: index.md
+      - file: good-issues.md
+      - file: seo.md
+      - folder: cumulative-docs
+        children:
+          - file: index.md
+          - file: guidelines.md
+          - file: badge-placement.md
+          - file: example-scenarios.md
+          - file: reference.md
+  - folder: style-guide
+    children:
+    - file: index.md
+    - file: voice-tone.md
+    - file: accessibility.md
+    - file: grammar-spelling.md
+    - file: word-choice.md
+    - file: formatting.md
+    - file: ui-writing.md
+  - file: tools.md
+    children:
+      - file: vscode-extension.md
+      - file: vale-linter.md
+  - folder: api-docs
+    children:
+      - file: index.md
+      - file: overview.md
+      - file: checklist.md
+      - file: guidelines.md
+      - file: organize-annotate.md
+      - file: quickstart.md
+        children:
+          - file: elasticsearch-api-docs-quickstart.md
+          - file: kibana-api-docs-quickstart.md
+      - file: workflows.md
+      - file: help.md
+  - file: asciidoc-guide.md

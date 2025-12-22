@@ -1,40 +1,33 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-podman-5-migration.html
 applies_to:
   deployment:
     ece: all
 ---
 # Migrating to Podman 5
 
-Following are the supported upgrade paths for Podman 5 in {{ece}}.
+This guide describes the supported ways to upgrade or migrate your {{ece}} (ECE) hosts to Podman 5. There are two primary methods:
 
-| **From ↓** ...       **To →**           | Podman 5.2.2-9 | Podman 5.2.2-11 | Podman 5.2.2-13 | Podman 5.2.3 |
-|-----------------------------------------|----------------|-----------------|-----------------|--------------|
-| **<vanilla Linux installation> (grow)** | ✓ ^*^          | ✓ ^*^           | ✓               | X            |
-| **Docker (grow-and-shrink)**            | ✓ ^*^          | ✓ ^*^           | ✓               | X            |
-| **Podman 4.9.4 (grow-and-shrink)**      | ✓ ^*^          | ✓ ^*^           | ✓               | X            |
-| **Podman 4.9.4 (in-place)**             | ✓              | X               | X               | X            |
-| **Podman 5.2.2-9 (in-place)**           | -              | X               | X               | X            |
+* **In-place upgrade**: Update Podman directly on existing ECE hosts without replacing them. In-place upgrades to Podman 5 are only supported from existing Podman-based hosts.
 
+* **Grow-and-shrink upgrade**: [Add new hosts](./install-ece-on-additional-hosts.md) running the desired Podman version to your ECE installation, then [remove the old ones](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md). This method is safer and preferred, as it avoids potential risks associated with upgrading the container engine or the operating system in place.
 
+ECE supports Podman 5, regardless of your upgrade method. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for details on supported versions.
 
+:::{important}
+Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this issue, use a later Podman version. 
+:::
 
-^*^ *Supported but not recommended given that a newer version (Podman `5.2.2-13`) is available.*
+The following table summarizes the supported upgrade paths to Podman 5 in ECE.
 
-Podman `5.2.2-13` is only supported when conducting a **fresh {{ece}} installation** or performing a **grow-and-shrink update** from Docker or Podman 4.
+| **From ↓** ...       **To →**           | Podman 5 |
+|-----------------------------------------|-----------------|
+| **<vanilla Linux installation> (grow)** | ✓               |
+| **Docker (grow-and-shrink)**            | ✓               |
+| **Podman 4.9.4 (grow-and-shrink)**      | ✓               |
+| **Podman 4.9.4 (in-place)**             | ✓               |
+| **Podman 5.2.2 (grow-and-shrink)**      | ✓               |
+| **Podman 5.2.2 (in-place)**             | ✓               |
 
-For **in-place updates**, it is recommended to use Podman `5.2.2-9`, since upgrades to versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
-When performing an in-place update, make sure to configure the Podman version to be locked at version `5.2.2-9.*`, by following the instructions below.
-
-```sh
-## Install versionlock
-sudo dnf install 'dnf-command(versionlock)'
-
-## Lock major version
-sudo dnf versionlock add --raw 'podman-5.2.2-9.*'
-sudo dnf versionlock add --raw 'podman-remote-5.2.2-9.*'
-
-## Verify that podman-5.2.2-9.* and podman-remote-5.2.2-9.* appear in the output
-sudo dnf versionlock list
-```
-
-Podman versions `5.2.3` and higher are not supported.
+As shown in the table above, [migrations from Docker](./migrate-ece-to-podman-hosts.md) are only supported using the grow-and-shrink method.

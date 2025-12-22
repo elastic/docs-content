@@ -26,3 +26,6 @@ Use the topics in this section to troubleshoot {{ecloud}}:
 * [](/troubleshoot/monitoring/node-moves-outages.md)
 * [](/troubleshoot/monitoring/deployment-health-warnings.md)
 * [](/troubleshoot/monitoring/node-bootlooping.md)
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::

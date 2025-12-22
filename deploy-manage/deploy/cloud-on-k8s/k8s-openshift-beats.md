@@ -14,8 +14,8 @@ Deploying Beats on Openshift may require some privileged permissions. This secti
 
 The following example assumes that Beats is deployed in the Namespace `elastic` with the ServiceAccount `heartbeat`. You can replace these values according to your environment.
 
-::::{note} 
-If you used the examples from the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/recipes/beats), the ServiceAccount may already exist.
+::::{note}
+If you used the examples from the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/beats), the ServiceAccount may already exist.
 ::::
 
 
@@ -33,14 +33,14 @@ If you used the examples from the [recipes directory](https://github.com/elastic
 
 3. Update the Beat manifest to use the new ServiceAccount, for example:
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: beat.k8s.elastic.co/v1beta1
     kind: Beat
     metadata:
       name: heartbeat
     spec:
       type: heartbeat
-      version: 8.16.1
+      version: {{version.stack}}
       elasticsearchRef:
         name: elasticsearch
       config:
@@ -105,5 +105,5 @@ spec:
             path: /var/lib/docker/containers
 ```
 
-Check the complete examples in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/recipes/beats).
+Check the complete examples in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/beats).
 

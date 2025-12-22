@@ -6,9 +6,10 @@ applies_to:
     ece: all
 products:
   - id: cloud-enterprise
+navigation_title: Custom endpoint aliases
 ---
 
-# Custom endpoint aliases [ece-regional-deployment-aliases]
+# Configure custom endpoint aliases on {{ece}} [ece-regional-deployment-aliases]
 
 Custom aliases for your deployment endpoints on {{ece}} allow you to have predictable, human-readable URLs that can be shared easily.
 

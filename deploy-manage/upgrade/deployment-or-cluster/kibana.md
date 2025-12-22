@@ -1,21 +1,22 @@
 ---
 applies_to:
-  stack:
   deployment:
-    self: all
+    self: ga
+products:
+  - id: kibana
 ---
 
 # Upgrade {{kib}} [upgrade-kibana]
 
 When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-sec}} solutions, which use {{kib}} as their main interface.
 
+{{kib}} must always be upgraded after {{es}}, and to the same version. Version mismatches or upgrading in the wrong order can result in failures or unexpected behavior.
+
 ::::{warning}
 {{kib}} automatically runs saved object migrations when required. To roll back to an earlier version in case of an upgrade failure, you **must** have a [backup snapshot](../../tools/snapshot-and-restore.md) that includes the `kibana` feature state. Snapshots include this feature state by default.
 
 For more information, refer to [Migrate saved objects](saved-object-migrations.md).
-
 ::::
-
 
 ## Upgrading multiple {{kib}} instances [_upgrading_multiple_kib_instances]
 
@@ -27,8 +28,7 @@ For large deployments with more than 10 {{kib}} instances, and more than 10,000 
 
 ## Preparing for upgrading [preventing-migration-failures]
 
-Before you start, ensure you [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready to upgrade.
-
+Before you start, ensure that you’ve followed the [Plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) guidelines, completed the [upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md), and [upgraded the {{es}} cluster](./elasticsearch.md).
 
 ### Ensure your {{es}} cluster is healthy [_ensure_your_es_cluster_is_healthy]
 
@@ -53,21 +53,20 @@ To upgrade {{kib}}:
 
 1. Shut down all {{kib}} instances. {{kib}} does not support rolling upgrades. **Upgrading while older {{kib}} instances are running can cause data loss or upgrade failures.**
 2. To install the `deb` or `rpm` package:
-
-    a. Use `rpm` or `dpkg`. This installs all files in their proper locations and will not overwrite the config files.
-    b. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    1. Use `rpm` or `dpkg`. This installs all files in their proper locations and will not overwrite the config files.
+    2. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 3. To install from a `zip` or `tar.gz` archive:
 
-    a. **Extract the archive to a new directory** to be sure that you don’t overwrite the `config` or `data` directories.
-    b. Copy the files from the `config` directory from your old installation to your new installation.
-    c. Copy the files from the `data` directory from your old installation to your new installation.
+    1. **Extract the archive to a new directory** to be sure that you don’t overwrite the `config` or `data` directories.
+    2. Copy the files from the `config` directory from your old installation to your new installation.
+    3. Copy the files from the `data` directory from your old installation to your new installation.
 
     ::::{important}
     If you use {{monitor-features}}, you must re-use the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
     ::::
 
-    d. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    4. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 4. Start {{kib}}.
 

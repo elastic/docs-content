@@ -1,4 +1,5 @@
 ---
+navigation_title: Common problems
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-troubleshooting.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Common problems [fleet-troubleshooting]
+# Common problems with {{fleet}} and {{agent}} [fleet-troubleshooting]
 
 We have collected the most common known problems and listed them here. If your problem is not described here, review the open issues in the following GitHub repositories:
 
@@ -20,7 +21,7 @@ We have collected the most common known problems and listed them here. If your p
 | [elastic/beats](https://github.com/elastic/beats/issues) | {{beats}} shippers |
 | [elastic/fleet-server](https://github.com/elastic/fleet-server/issues) | {{fleet-server}} |
 | [elastic/package-registry](https://github.com/elastic/package-registry/issues) | {{package-registry}} |
-| [elastic/observability-docs](https://github.com/elastic/observability-docs/issues) | Documentation issues |
+| [elastic/docs-content](https://github.com/elastic/docs-content/issues) | Documentation issues |
 
 Have a question? Read our [FAQ](frequently-asked-questions.md), or contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is valuable to us.
 
@@ -53,12 +54,14 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 * [{{agent}} fails with `Agent process is not root/admin or validation failed` message](#process-not-root)
 * [Integration policy upgrade has too many conflicts](#upgrading-integration-too-many-conflicts)
 * [{{agent}} hangs while unenrolling](#agent-hangs-while-unenrolling)
+* [{{agent}} is automatically unenrolled after failed check-ins with 401 errors](#agent-auto-unenroll-401)
 * [On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1`](#ca-cert-testing)
 * [Uninstalling {{elastic-endpoint}} fails](#endpoint-not-uninstalled-with-agent)
 * [API key is unauthorized to send telemetry to `.logs-endpoint.diagnostic.collection-*` indices](#endpoint-unauthorized)
 * [Hosted {{agent}} is offline](#hosted-agent-offline)
 * [APM & {{fleet}} fails to upgrade to 8.x on {{ecloud}}](#hosted-agent-8-x-upgrade-fail)
 * [Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key](#pgp-key-download-fail)
+* [{{agent}} upgrade fails on Windows with exit status `0xc0000142`](#agent-upgrade-fail-windows)
 * [{{agents}} are unable to connect after removing the {{fleet-server}} integration](#fleet-server-integration-removed)
 * [{{agent}} Out of Memory errors on Kubernetes](#agent-oom-k8s)
 * [Error when running {{agent}} commands with `sudo`](#agent-sudo-error)
@@ -361,7 +364,7 @@ The ZIP archive containing diagnostics information will include the raw events o
 
 **Get the diagnostics bundle using the CLI**
 
-Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
+Run the [`diagnostics` command](/reference/fleet/agent-command-reference.md#elastic-agent-diagnostics-command) to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases:
 
 ```shell
 elastic-agent diagnostics
@@ -529,6 +532,59 @@ You can unenroll an agent to invalidate all API keys related to the agent and ch
 3. Click **Force unenroll**.
 
 
+## {{agent}} is automatically unenrolled after failed check-ins with 401 errors [agent-auto-unenroll-401]
+
+In {{agent}} versions prior to 8.19.0 and 9.1.0, if an agent receives a 401 (Unauthorized) error on more than seven consecutive check-ins with {{fleet-server}}, the agent is automatically unenrolled.
+
+To resolve the issue:
+
+:::::{stepper}
+
+::::{step} Re-enroll the agent
+
+* If the agent is still installed on the host, re-enroll it in {{fleet}} to keep the agent's existing state, including any previously ingested data:
+
+   1. Open the **Agents** tab, then click **Add agent**.
+   2. In the **Add agent** flyout, select the agent policy in which to re-enroll the agent. 
+   3. In the **Authentication settings** section, select an enrollment token:
+
+      * If one or more active enrollment tokens exist for your agent policy, select one from the dropdown.
+      * If no active tokens exist, click **Create enrollment token**. For detailed instructions, refer to [Create enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens).
+   
+   4. Make sure **Enroll in Fleet** is selected.
+   5. Select the appropriate platform, then copy the `elastic-agent install` command from the UI, and replace `install` with `enroll`.
+   6. Run the modified command with elevated privileges from the directory where the agent is installed. For example:
+
+     ```bash
+     sudo ./elastic-agent enroll --url=<fleet-server-url> --enrollment-token=<token>
+     ```
+
+     Refer to the [command reference](/reference/fleet/agent-command-reference.md#elastic-agent-enroll-command) for details about the available options.
+
+* If the agent is no longer installed on the host, reinstall and enroll it in {{fleet}}. Refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md) for detailed instructions.
+
+::::
+
+::::{step} Resolve the underlying issues
+
+Investigate the cause of the 401 errors and resolve the underlying issues to ensure proper agent functionality.
+
+401 errors during check-in typically indicate authentication or authorization problems. Common causes include:
+
+* Expired or revoked API keys
+* Incorrect {{fleet-server}} configuration
+* Issues with {{es}} authentication settings
+
+::::
+
+:::::
+
+:::{admonition} Agents are no longer automatically unenrolled
+:applies_to: stack: ga 9.1.0
+
+The automatic unenrollment behavior is removed in {{agent}} versions 8.19.0 and 9.1.0. Starting with these versions, {{agents}} are no longer automatically unenrolled due to repeated 401 errors during check-in. When the issue causing the errors is resolved, the agents automatically reconnect to {{fleet}} and resume ingesting data.
+:::
+
 ## On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1` [ca-cert-testing]
 
 You may see this error message for a number of different reasons. A common reason is when attempting production-like usage and the ca.crt file passed in cannot be found.  To verify if this is the problem, bootstrap {{fleet-server}} without passing a ca.crt file. This implies you would test any subsequent {{agent}} installs temporarily with {{fleet-server}}'s own self-signed cert.
@@ -650,6 +706,50 @@ curl -u elastic:<password> --request POST \
 ## Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key [pgp-key-download-fail]
 
 In versions 8.9 and above, an {{agent}} upgrade may fail when the upgrader can’t access a PGP key required to verify the binary signature. For details and a workaround, refer to the [PGP key download fails in an air-gapped environment](https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375) known issue in the version 8.9.0 Release Notes or to the [workaround documentation](https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md) in the elastic-agent GitHub repository.
+
+
+## {{agent}} upgrade fails on Windows with exit status `0xc0000142` [agent-upgrade-fail-windows]
+
+During an {{agent}} upgrade on Windows, {{agent}} spawns a "watcher" process that monitors the upgrade process. Windows attempts to create a temporary console for this process. If Windows can't create this console, the watcher process initialization fails with error code `0xc0000142` (`STATUS_DLL_INIT_FAILED`), resulting in an upgrade failure. {{agent}} logs this error at the `info` level.
+
+The error is caused by Windows [desktop heap exhaustion](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory). When {{agent}} runs as a [Windows service application](https://learn.microsoft.com/en-us/dotnet/framework/windows-services/introduction-to-windows-service-applications), it uses the service desktop, and shares the desktop heap with other running services. If a service process is using windowing resources, but is failing to release them, this may exhaust the desktop heap and affect {{agent}}.
+
+:::{note}
+Interactively-run instances of `elastic-agent.exe` are not subject to this limitation. Only instances running as a service are potentially affected.
+:::
+
+To resolve the issue, you can try the following:
+
+- **Update {{agent}} immediately after a system reboot**
+
+    A system reboot destroys and recreates the desktop heap, resolving any prior exhaustion.
+    Because many memory leaks are gradual, updating {{agent}} immediately after a system reboot may allow {{agent}} to upgrade before the memory leaking application exhausts the desktop heap.
+
+    :::{tip}
+    A [cold startup](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/distinguishing-fast-startup-from-wake-from-hibernation) resets kernel memory, but a fast startup or a wake from hibernation does not.
+    A regular reboot (for example, `shutdown /r /t 0`) results in a cold startup, and resets the desktop heap.
+    :::
+
+- **Update third-party service applications**
+
+    As standard Windows tools such as Task Manager and Process Explorer do not attribute desktop heap usage by application, you have to consider updating all third-party processes that are running as a service. To list these applications, use the following PowerShell command:
+
+    ```powershell
+    PS C:\> Get-Process | Where {$_.SI -eq 0} | Where {$_.MainModule.FileVersionInfo.ProductName -and (-not (($_.MainModule.FileVersionInfo.CompanyName -eq "Microsoft Corporation") -and ($_.MainModule.FileVersionInfo.ProductName -like "*Windows*"))) } | ForEach-Object { $_.MainModule.FileVersionInfo.ProductName + ' - ' + $_.Path }
+    ```
+
+    You can then install any updates from the listed applications' manufacturers.
+
+- **Terminate or uninstall third-party service applications**
+
+    You can try terminating or uninstalling non-critical third-party service applications before updating {{agent}}.
+    Terminating a process releases its desktop heap resources.
+
+    Note that the {{agent}} update process does not require a significant amount of desktop heap resources, so a successful {{agent}} update following the termination or uninstallation of a service application does not necessarily mean that the application was exhausting the desktop heap.
+
+- **Resize the desktop heap**
+
+    As a short-term solution, follow the steps described in the [Microsoft guide](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/desktop-heap-limitation-out-of-memory) to increase the size of the desktop heap. Note that if a service application is causing a memory leak, increasing the size of the desktop heap may only postpone the desktop heap exhaustion.
 
 
 ## {{agents}} are unable to connect after removing the {{fleet-server}} integration [fleet-server-integration-removed]

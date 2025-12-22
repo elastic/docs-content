@@ -2,6 +2,9 @@
 navigation_title: Scenario 3
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario3.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -26,7 +29,7 @@ In this scenario, you have {{agent}}s collecting system metrics with the System 
 
 The **Data Streams** view in {{kib}} shows you the data streams, index templates, and {{ilm-init}} policies associated with a given integration.
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Data Streams**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Data Streams** tab.
 2. Search for `system` to see all data streams associated with the System integration.
 3. Select the `metrics-system.network-{{namespace}}` data stream to view its associated index template and {{ilm-init}} policy. As you can see, the data stream follows the [Data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme) and starts with its type, `metrics-`.
 
@@ -51,18 +54,18 @@ For example, to create custom index settings for the `system.network` data strea
 metrics-system.network-production@custom
 ```
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Component Templates**
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Component Templates** tab.
 2. Click **Create component template**.
 3. Use the template above to set the name—in this case, `metrics-system.network-production@custom`. Click **Next**.
 4. Under **Index settings**, set the {{ilm-init}} policy name under the `lifecycle.name` key:
 
-    ```json
-    {
-      "lifecycle": {
-        "name": "90-days-default"
-      }
-    }
-    ```
+   ```json
+   {
+     "lifecycle": {
+       "name": "90-days-default"
+     }
+   }
+   ```
 
 5. Continue to **Review** and ensure your request looks similar to the image below. If it does, click **Create component template**.
 
@@ -78,14 +81,14 @@ metrics-system.network-production@custom
 Now that you’ve created a component template, you need to create an index template to apply the changes to the correct data stream. The easiest way to do this is to duplicate and modify the integration’s existing index template.
 
 ::::{warning}
-Note the following: * When duplicating the index template, do not change or remove any managed properties. This may result in problems when upgrading. Cloning the index template of an integration package involves some risk as any changes made to the original index template when it is upgraded will not be propagated to the cloned version. * These steps assume that you want to have a namespace specific ILM policy, which requires index template cloning. Cloning the index template of an integration package involves some risk because any changes made to the original index template as part of package upgrades are not propagated to the cloned version. See [Cloning the index template of an integration package](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template) for details.
-
-+ If you want to change the ILM Policy, the number of shards, or other settings for the datastreams of one or more integrations, but **the changes do not need to be specific to a given namespace**, it’s strongly recommended to use a `@custom` component template, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md), so as to avoid the problems mentioned above. See the [ILM](/reference/fleet/data-streams.md#data-streams-ilm) section for details.
+* If you duplicate an index template, do not change or remove any managed properties. This may result in problems when upgrading. Cloning the index template of an integration package involves some risk as any changes made to the original index template are not propagated to the cloned version when you upgrade versions. 
+* These steps assume that you want to have a namespace specific ILM policy, which requires index template cloning. Cloning the index template of an integration package involves some risk because any changes made to the original index template as part of package upgrades are not propagated to the cloned version. Check out [Cloning the index template of an integration package](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template) for details.
+* If you want to change the ILM policy, the number of shards, or other settings for the data streams of one or more integrations, but **the changes do not need to be specific to a given namespace**, use a `@custom` component template, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md), to avoid the problems mentioned earlier. Check out the [ILM](/reference/fleet/data-streams.md#data-streams-ilm) section for details.
 
 ::::
 
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Index Templates**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you want to clone. The index template will have the `<type>` and `<dataset>` in its name, but not the `<namespace>`. In this case, it’s `metrics-system.network`.
 3. Select **Actions** > **Clone**.
 4. Set the name of the new index template to `metrics-system.network-production`.
@@ -143,7 +146,7 @@ If you cloned an index template to customize the data retention policy on an {{e
 
 To update the cloned index template:
 
-1. Navigate to **{{stack-manage-app}}** > **Index Management** > **Index Templates**.
+1. Go to the **Index Management** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and open the **Index Templates** tab.
 2. Find the index template you cloned. The index template will have the `<type>` and `<dataset>` in its name.
 3. Select **Manage** > **Edit**.
 4. Select **(2) Component templates**

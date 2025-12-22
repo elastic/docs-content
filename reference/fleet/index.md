@@ -5,13 +5,17 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/fleet.html
   - https://www.elastic.co/guide/en/fleet/current/fleet-overview.html
   - https://www.elastic.co/guide/en/fleet/current/index.html
+navigation_title: Fleet and Elastic Agent
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: fleet
   - id: kibana
 ---
 
-# Fleet and Elastic Agent [fleet-and-elastic-agent]
+# {{fleet}} and {{agent}} overview [fleet-and-elastic-agent]
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 $$$package-registry-intro$$$
@@ -84,7 +88,7 @@ You can see the state of all your {{agents}} in {{fleet}}. On the **Agents** pag
 :alt: Agents page
 :::
 
-{{fleet}} in {{kib}} enables you to manage {{elastic-agent}} installations in standalone or {{fleet}} mode.
+{{fleet}} in {{kib}} enables you to manage {{agent}} installations in standalone or {{fleet}} mode.
 
 Standalone mode requires you to manually configure and manage the agent locally. It is recommended for advanced users only.
 
@@ -109,7 +113,7 @@ When you're ready to upgrade your {{agent}} binaries or integrations, you can in
 
 Some subscription levels support bulk select operations, including:
 
-* Selective binary updates
+* Selective agent binary updates
 * Selective agent policy reassignment
 * Selective agent unenrollment
 
@@ -124,9 +128,9 @@ For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/
 For more information, refer to [](/reference/fleet/fleet-server.md).
 
 :::{admonition} {{fleet-server}} with {{serverless-full}}
-On-premises {{fleet-server}} is not currently available for use with
-{{serverless-full}} projects. In a {{serverless-short}}
-environment we recommend using {{fleet-server}} on {{ecloud}}.
+:applies_to: serverless: unavailable
+
+On-premises {{fleet-server}} is not currently available for use in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {{observability}} and Security projects.
 :::
 
 ## {{es}} as the communication layer [fleet-communication-layer]

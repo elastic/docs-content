@@ -7,10 +7,10 @@ applies_to:
 
 # View entity details
 
-You can lean more about an entity (host, user, or service) from the entity details flyout, which is available throughout the {{elastic-sec}} app. To access this flyout, click on an entity name in places such as:
+You can learn more about an entity (host, user, or service) from the entity details flyout, which is available throughout the {{elastic-sec}} app. To access this flyout, click on an entity name in places such as:
 
 * The Alerts table
-* The Entity Analytics dashboard
+* The Entity Analytics overview
 * The **Users** and user details pages
 * The **Hosts** and host details pages
 
@@ -46,6 +46,8 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score.
 
 If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
+
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
 
 :::{image} /solutions/images/security-host-risk-inputs.png
 :alt: Host risk inputs

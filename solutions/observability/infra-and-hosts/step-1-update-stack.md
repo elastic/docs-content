@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-updating.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: unavailable
 products:
   - id: observability
 ---
@@ -16,14 +17,14 @@ To install the Universal Profiling backend, you need to be running the minimum s
 * [Kubernetes](#profiling-self-managed-updating-k8s)
 
 
-## ECE [profiling-self-managed-updating-ece] 
+## ECE [profiling-self-managed-updating-ece]
 
 Update ECE to version 3.7.0 or higher, following the [installations instructions](https://www.elastic.co/downloads/enterprise).
 
 
-## Self-managed Elastic stack [profiling-self-managed-updating-self-managed] 
+## Self-managed Elastic stack [profiling-self-managed-updating-self-managed]
 
-::::{warning} 
+::::{warning}
 We don’t currently support running the backend applications through Elastic Agent.
 ::::
 
@@ -32,7 +33,7 @@ We don’t currently support running the backend applications through Elastic Ag
 2. Ensure the machines hosting the Universal Profiling backend run a Linux kernel version 4.x or higher.
 
 
-## Kubernetes [profiling-self-managed-updating-k8s] 
+## Kubernetes [profiling-self-managed-updating-k8s]
 
 We don’t currently support running the *backend* applications through ECK, but, if you’re running an Elastic stack through ECK, you can still connect the Universal Profiling backend applications to it.
 

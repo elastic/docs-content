@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/application-and-service-monitoring.html
   - https://www.elastic.co/guide/en/observability/current/application-and-service-monitoring.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -25,4 +25,3 @@ Explore the topics in this section to learn how to observe and monitor software 
 | [Synthetic monitoring](/solutions/observability/synthetics/index.md) | Monitor the availability of network endpoints and services. |
 | [Real user monitoring](/solutions/observability/applications/user-experience.md) | Quantify and analyze the perceived performance of your web application using real-world user experiences. |
 | [Uptime monitoring (deprecated)](/solutions/observability/uptime/index.md) | Periodically check the status of your services and applications. |
-| [Tutorial: Monitor a Java application](/solutions/observability/applications/tutorial-monitor-java-application.md) | Monitor a Java application using Elastic Observability: Logs, Infrastructure metrics, APM, and Uptime. |

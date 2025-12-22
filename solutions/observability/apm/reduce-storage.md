@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-reduce-apm-storage.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-reduce-your-data-usage.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -38,7 +38,7 @@ Stack trace collection settings are managed in each APM agent. You can enable an
 ## Delete data [delete_data]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -75,14 +75,14 @@ POST /.ds-*-apm*/_delete_by_query
 
 ### Delete data with {{kib}} Index Management [apm-delete-data-in-kibana]
 
-{{kib}}'s [Index Management](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) allows you to manage your cluster’s indices, data streams, index templates, and much more.
+{{kib}}'s [Index management](/manage-data/data-store/index-basics.md#index-management) UI allows you to manage your cluster’s indices, data streams, index templates, and much more.
 
-To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Data Streams**. Select the data streams you want to delete, and click **Delete data streams**.
+Open **Index Management** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Data Streams**. Select the data streams you want to delete, and click **Delete data streams**.
 
 ## Update existing data [apm-update-data]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 

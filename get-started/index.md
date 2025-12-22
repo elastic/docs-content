@@ -7,45 +7,61 @@ mapped_pages:
 products:
   - id: elasticsearch
   - id: elastic-stack
+  - id: observability
+  - id: security
+applies_to:
+  serverless:
+  stack:
+description: Learn the fundamentals of Elastic. Discover what Elastic offers, explore
+  core concepts of the Elastic Stack, understand deployment options, and access
+  training resources to get started.
 ---
-# Get started
 
-## Overview [what-is-es]
+# Elastic fundamentals
 
-[{{es}}](https://github.com/elastic/elasticsearch) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time. [{{kib}}](https://github.com/elastic/kibana) is the graphical user interface for {{es}}. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the Elastic Stack.
-
-{{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with {{kib}}, it powers these Elastic solutions and use cases:
-
-* **[Elasticsearch](/solutions/search.md)**: Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.
-* **[Observability](/solutions/observability.md)**: Resolve problems with open, flexible, and unified observability powered by advanced machine learning and analytics.
-* **[Security](/solutions/security.md)**: Detect, investigate, and respond to threats with AI-driven security analytics to protect your organization at scale.
+Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
 
 :::{tip}
-Refer to our [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples of how Elastic is used in real-world scenarios.
+If you're on a trial and need guidance on building a proof of concept, refer to [Evaluate Elastic](/get-started/evaluate-elastic.md).
 :::
 
-## Choose your deployment type
+In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together.
 
-:::{include} /deploy-manage/_snippets/deployment-options-overview.md
+You'll also find other helpful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology.
+
+## What is Elastic? [what-is-es]
+
+:::{image} /get-started/images/elastic-platform.png
+:alt: The Elastic platform
 :::
 
-## Explore the solutions
+Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Search AI platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value.
 
-Elasticsearch supports diverse use cases. Select a solution and follow its dedicated getting-started guide:
+## Explore the fundamentals
 
-|     |     |
-| --- | --- |
-| ![elasticsearch](images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =50%") | **Elasticsearch**<br> Create seamless search experiences for apps, websites, or workplaces.<br><br>[**Get started →**](../solutions/search/get-started.md)<br> |
-| ![observability](images/64x64_Color_observability-logo-color-64px.png "observability =50%") | **Observability**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/observability/get-started.md)<br> |
-| ![security](images/64x64_Color_security-logo-color-64px.png "security =50%") | **Security**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/security/get-started.md)<br> |
+Continue your journey with these essential guides that will help you understand and work with Elastic:
 
-## Next steps
+* **[](/get-started/introduction.md)**: Get an introduction to the {{es}}, Elastic {{observability}}, and {{elastic-sec}} solutions and projects.
 
-To learn more about our products and solutions, check out:
+* **[](/get-started/the-stack.md)**: Dive deeper into how the {{stack}}—our suite of open-source tools, including {{es}}, {{kib}}, {{beats}}, and {{ls}}—components work together. Learn about data ingestion methods and understand the core concepts of storing, visualizing, and querying your data.
 
-- [{{es}} and {{kib}}](introduction.md), the core components of the {{stack}}.
-  - [The stack](/get-started/the-stack.md) to understand the relationship between core and optional components of an Elastic deployment.
-- [The out-of-the-box solutions and use cases](/solutions/index.md) that Elastic supports.
-- [Deploying Elastic](./deployment-options.md) for your use case.
-- [Versioning and availability](./versioning-availability.md) in Elastic deployments.
+* **[](/get-started/deployment-options.md)**: Explore the different ways you can deploy Elastic, from fully managed serverless solutions to self-managed installations, and choose the approach that best fits your operational needs.
 
+* **[](/get-started/versioning-availability.md)**: Learn how Elastic handles versioning, understand feature availability across different deployment types, and navigate our continuously updated documentation with confidence.
+
+## Training resources
+
+Whether you are just getting started with Elastic, an expert, or simply want to expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
+
+Ready to dive in? Check out [https://www.elastic.co/training](https://www.elastic.co/training) to browse our virtual and on-demand training courses. If you're unsure where to start, check out the [Elasticsearch Engineer](https://www.elastic.co/training/elasticsearch-engineer) course. 
+
+To explore particular, more granular facets of the {{stack}}, check out our [demo gallery](https://www.elastic.co/demo-gallery). You can filter by solution or subject area and choose the training style that best suits you. 
+
+If you prefer a deep dive where you can learn at your own pace, check out our six-part [Beginner's Crash Course to {{stack}}](https://www.youtube.com/playlist?list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es) on YouTube.
+
+## Other resources 
+Check out these additional resources to learn and explore other areas of Elastic: 
+
+* **[Deploy and manage](/deploy-manage/index.md)**: Learn how to deploy and manage all aspects of your Elastic environment.
+* **[Manage data](/manage-data/index.md)**: Learn how to ingest and manage data stored in {{es}}. 
+* **[How to use the documentation](/get-started/howto-use-the-docs.md)**: Understand how our documentation is organized, find the right version information for your products, and learn how to contribute.

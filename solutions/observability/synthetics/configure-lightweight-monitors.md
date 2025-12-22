@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-lightweight.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-lightweight.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -364,6 +364,32 @@ $$$monitor-fields$$$
     fields.team: synthetics
     ```
 
+$$$monitor-namespace$$$
+
+**`namespace`**
+:   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
+
+    Assign the monitor to a specific datastream namespace. Defaults to Kibana's namespace.
+
+    **Examples**:
+
+    ```yaml
+    namespace: custom-namespace
+    ```
+
+$$$monitor-maintenanceWindows$$$
+
+**`maintenance_windows`**
+:   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)  
+
+    A list of maintenance window IDs used to associate this monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+
+    **Examples**:
+
+    ```yaml
+    maintenance_windows: ["maintenance-window-ID-1", "maintenance-window-ID-2"]
+    ```
+
 ### HTTP options [synthetics-lightweight-http]
 
 The options described here configure Synthetics to connect via HTTP and optionally verify that the host returns the expected response.
@@ -403,7 +429,7 @@ $$$monitor-http-proxy_url$$$
     **Example**:
 
     ```yaml
-    http://proxy.mydomain.com:3128
+    http://proxy.example.com:3128
     ```
 
 $$$monitor-http-username$$$
@@ -496,7 +522,7 @@ check.request:
   headers:
     'Content-Type': 'application/x-www-form-urlencoded'
   # urlencode the body:
-  body: "name=first&email=someemail%40someemailprovider.com"
+  body: "name=first&email=someemail%40example.com"
 ```
 
 **`response`**

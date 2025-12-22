@@ -1,5 +1,5 @@
 ---
-navigation_title: Access fields in a document
+navigation_title: Accessing fields in a document
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/script-fields-api.html
 applies_to:
@@ -11,7 +11,7 @@ products:
 
 
 
-# Access fields in a document [script-fields-api]
+# Accessing fields in a document [script-fields-api]
 
 
 ::::{warning} 
@@ -23,6 +23,12 @@ Use the `field` API to access document fields:
 
 ```painless
 field('my_field').get(<default_value>)
+```
+
+Alternatively use the shortcut of `$` to get a field.
+
+```painless
+$('my_field', <default_value>)
 ```
 
 This API fundamentally changes how you access documents in Painless. Previously, you had to access the `doc` map with the field name that you wanted to access:
@@ -77,7 +83,6 @@ ZonedDateTime end = field('end').get(null);
 return start == null || end == null ? -1 : ChronoUnit.MILLIS.between(start, end)
 ```
 
-
 ## Supported mapped field types [_supported_mapped_field_types] 
 
 The following table indicates the mapped field types that the `field` API supports. For each supported type, values are listed that are returned by the `field` API (from the `get` and `as<Type>` methods) and the `doc` map (from the `getValue` and `get` methods).
@@ -112,3 +117,20 @@ The `fields` API currently doesn’t support some fields, but you can still acce
 | `wildcard` | `String` | - | `String` | `String` |
 | `flattened` | `String` | - | `String` | `String` |
 
+## Manipulation of the fields data
+
+The field API provides a `set(<value>)` operation that will take the field name and create the necessary structure. Calling this inside an ingest pipelines script processor context:
+
+```painless
+field("foo.bar").set("abc")
+```
+
+leads to the generation of this JSON representation.
+
+```json
+{
+  "foo": {
+    "bar": "abc"
+  }
+}
+```

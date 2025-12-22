@@ -28,7 +28,7 @@ Let’s assume that the self-managed cluster that uses a self-signed certificate
 2. Test `cecert.pem` you have just created with `curl`, this should return a successful response:
 
     ```text
-    curl -XGET https://$SOURCE_SERVER:$PORT -u <username>:<password> --cacert cacert.pem
+    curl -XGET https://<SOURCE_SERVER>:<PORT> -u <username>:<password> --cacert cacert.pem
     ```
 
 3. Create the folder `my_source_ca` to store the file `cacert.pem`, and compress the folder to `my_source_ca.zip`.
@@ -80,7 +80,7 @@ POST _reindex
 {
   "source": {
     "remote": {
-      "host": "https://$SOURCE_SERVER:$PORT",
+      "host": "https://<SOURCE_SERVER>:<PORT>",
       "username": "username",
       "password": "xxx"
     },

@@ -2,7 +2,7 @@
 navigation_title: Breaking changes
 ---
 # {{elastic-sec}} breaking changes [elastic-security-breaking-changes]
-Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
+Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [](/deploy-manage/upgrade.md).
 
 % ## Next version [elastic-security-X.X.X-breaking-changes]
 
@@ -14,6 +14,29 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
+
+## 9.2.0 [elastic-security-920-breaking-changes]
+::::{dropdown} Changes invalid category for Gatekeeper
+
+Changes `event.category` from `security` to `configuration` for Gatekeeper on macOS.
+
+**Impact**<br> Gatekeeper events on macOS are now labeled as `event.category == configuration`.
+
+**Action**<br> If you're deploying custom rules using `event.category == security` on macOS, change the query to `event.category == configuration`.
+
+::::
+
+## 9.0.7 [elastic-security-907-breaking-changes]
+::::{dropdown} Changes invalid category for Gatekeeper
+
+Changes `event.category` from `security` to `configuration` for Gatekeeper on macOS.
+
+**Impact**<br> Gatekeeper events on macOS are now labeled as `event.category == configuration`.
+
+**Action**<br> If you're deploying custom rules using `event.category == security` on macOS, change the query to `event.category == configuration`.
+
+::::
+
 
 ## 9.0.0 [elastic-security-900-breaking-changes]
 

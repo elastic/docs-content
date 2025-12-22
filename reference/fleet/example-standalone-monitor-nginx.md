@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-standalone-monitor-nginx.html
+applies_to:
+  deployment:
+    ess: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -114,7 +117,7 @@ Elastic integrations are a streamlined way to connect your data from popular ser
     :alt: The nginx-policy UI with integrations tab selected
     :::
 
-2. Note that the System integration (`system-1`) is included because you opted earlier to collect system logs and metrics.
+2. The System integration (`system-1`) is included because you opted earlier to collect system logs and metrics.
 3. Click **Add integration**.
 4. On the Integrations page search for "nginx".
 
@@ -155,7 +158,7 @@ Rather than opt for {{fleet}} to centrally manage {{agent}}, you’ll configure 
 
 4. For the **Configure the agent** step, choose **Download Policy**. Save the `elastic-agent.yml` file to a directory on the host where you’ll install nginx for monitoring.
 
-    Have a look inside the policy file and notice that it contains all of the input, output, and other settings for the Nginx and System integrations. If you already have a standalone agent installed on a host with an existing {{agent}} policy, you can use the method described here to add a new integration. Just add the settings from the **Configure the agent** step to your existing `elastic-agent.yml` file.
+    Have a look inside the policy file and notice that it contains all of the input, output, and other settings for the Nginx and System integrations. If you already have a standalone agent installed on a host with an existing {{agent}} policy, you can use the method described here to add a new integration. Add the settings from the **Configure the agent** step to your existing `elastic-agent.yml` file.
 
 5. For the **Install {{agent}} on your host** step, select the tab for your host operating system and run the commands on your host.
 
@@ -314,3 +317,4 @@ Congratulations! You have successfully set up monitoring for nginx using standal
 
 * Learn more about [{{fleet}} and {{agent}}](/reference/fleet/index.md).
 * Learn more about [{{integrations}}](integration-docs://reference/index.md).
+* Learn how to manage your [data lifecycle](/manage-data/lifecycle.md).

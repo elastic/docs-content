@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-private-location.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-private-location.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -56,35 +56,79 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 
 After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your Observability Serverless project and enroll an {{agent}} in {{fleet}}.
 
-Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. For monitors running on {{private-location}}s, you *must* use the `elastic-agent-complete` Docker image to create a self-hosted {{agent}} node. The standard {{ecloud}} or self-hosted {{agent}} will not work.
-
+Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. Additional installation methods can be found on the [{{agent}} installation guide](/reference/fleet/install-elastic-agents.md). 
 ::::{important}
-The `elastic-agent-complete` Docker image is the only way to have all available options that you see in the UI.
+For running browser monitors on {{private-location}}s, you *must* use one of the `elastic-agent-complete` Docker image variants in a containerized environment. The standard {{agent}} variant only supports TCP, ICMP, and HTTP monitors.
 
 ::::
 
 To pull the Docker image run:
 
-```sh
-docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:8.16.1
+::::{tab-set}
+:group: docker
+:::{tab-item} elastic-agent-complete
+:sync: specific
+
+```sh subs=true
+# Supports all monitor types: TCP, ICMP, HTTP and Browser
+docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
+
+:::
+
+:::{tab-item} elastic-agent
+:sync: latest
+
+```shell subs=true
+# Supports TCP, ICMP and HTTP monitors
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
+```
+
+:::
+
+::::
+
+You can download and install a specific version of the {{stack}} by replacing `{{version.stack}}` with the version number you want. For example, you can replace `{{version.stack}}` with {{version.stack.base}}.
 
 Then enroll and run an {{agent}}. You’ll need an enrollment token and the URL of the {{fleet-server}}. You can use the default enrollment token for your policy or create new policies and [enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md) as needed.
 
 For more information on running {{agent}} with Docker, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 
-```sh
+::::{tab-set}
+:group: docker
+:::{tab-item} elastic-agent-complete
+:sync: specific
+
+```shell subs=true
 docker run \
   --env FLEET_ENROLL=1 \
   --env FLEET_URL={fleet_server_host_url} \
   --env FLEET_ENROLLMENT_TOKEN={enrollment_token} \
   --cap-add=NET_RAW \
   --cap-add=SETUID \
-  --rm docker.elastic.co/elastic-agent/elastic-agent-complete:8.16.1
+  --rm docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 
-::::{important}
-The `elastic-agent-complete` Docker image requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+The `elastic-agent-complete` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+
+:::
+
+:::{tab-item} elastic-agent
+:sync: latest
+
+```shell subs=true
+docker run \
+  --env FLEET_ENROLL=1 \
+  --env FLEET_URL={fleet_server_host_url} \
+  --env FLEET_ENROLLMENT_TOKEN={enrollment_token} \
+  --cap-add=NET_RAW \
+  --cap-add=SETUID \
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
+```
+
+The `elastic-agent` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+
+:::
 
 ::::
 
@@ -115,9 +159,21 @@ It is not currently possible to use custom CAs for synthetics browser tests in p
 
 By default {{private-location}}s are configured to allow two simultaneous browser tests, and an unlimited number of lightweight checks. These limits can be set via the environment variables `SYNTHETICS_LIMIT_{{TYPE}}`, where `{{TYPE}}` is one of `BROWSER`, `HTTP`, `TCP`, and `ICMP` for the container running the {{agent}} docker image.
 
-It is critical to allocate enough memory and CPU capacity to handle configured limits. Start by allocating at least 2 GiB of memory and two cores per browser instance to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed. Resource requirements will vary depending on workload. Much less memory is needed for lightweight monitors. Start by allocating at least 512MiB of memory and two cores for lightweight checks. Then increase allocated memory and CPU based on observed usage patterns.
+### CPU and RAM requirements
 
-These limits are for simultaneous tests, not total tests. For example, if 60 browser tests were scheduled to run once per hour and each took 1 minute to run, that would fully occupy one execution slot. However, it is a good practice to set up execution slots with extra capacity. A good starting point would be to over-allocate by a factor of 5. In the previous example that would mean allocating 5 slots.
+It is critical to allocate enough memory and CPU capacity to handle configured limits. Resource requirements will vary depending on simultaneous workload and monitor complexity:
+
+**For browser monitors**: Start by allocating at least 2 GiB of memory and two cores _per browser instance_ to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed.
+**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run a large number of lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
+
+Example: For a private location expected to run 2 concurrent browser monitors and 100 HTTP checks, the recommended allocation is 2 * (2 GiB + 2 vCPU) + (512 MiB + 2 vCPU) => 4,5 GiB + 6 vCPU.
+
+### Known limitations on vertical scaling
+
+- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
+- Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached.
+
+If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each alloted a portion of the original location monitors.
 
 ## Next steps [synthetics-private-location-next]
 

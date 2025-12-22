@@ -11,9 +11,9 @@ products:
   - id: elasticsearch
 ---
 
-# Create snapshots [snapshots-take-snapshot]
+# Create, monitor and delete snapshots [snapshots-take-snapshot]
 
-This guide shows you how to take snapshots of a running cluster. You can later [restore a snapshot](restore-snapshot.md) to recover or transfer its data.
+This guide shows you how to create, monitor and delete snapshots of a running cluster. You can later [restore a snapshot](restore-snapshot.md) to recover or transfer its data.
 
 In this guide, you’ll learn how to:
 
@@ -30,8 +30,8 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 
 * To use {{kib}}'s **Snapshot and Restore** feature, you must have the following permissions:
 
-    * [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-    * [Index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the `monitor` index
+    * [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
+    * [Index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `all` on the `monitor` index
 
 * You can only take a snapshot from a running cluster with an elected [master node](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role).
 * A snapshot repository must be [registered](self-managed.md) and available to the cluster.
@@ -63,7 +63,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 
 ### {{slm-init}} security [slm-security]
 
-The following [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {{security-features}} are enabled:
+The following [cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {{security-features}} are enabled:
 
 `manage_slm`
 :   Allows a user to perform all {{slm-init}} actions, including creating and updating policies and starting and stopping {{slm-init}}.
@@ -113,7 +113,11 @@ POST _security/role/slm-read-only
 
 ### Create an {{slm-init}} policy [create-slm-policy]
 
-To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**. To create a policy, click **Create policy**.
+To manage {{slm-init}} in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Policies** tab. 
+3. To create a policy, click **Create policy**.
 
 You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle).
 
@@ -187,6 +191,24 @@ We recommend you include retention rules in your {{slm-init}} policy to delete s
 
 A snapshot repository can safely scale to thousands of snapshots. However, to manage its metadata, a large repository requires more memory on the master node. Retention rules ensure a repository’s metadata doesn’t grow to a size that could destabilize the master node.
 
+### Update an existing {{slm-init}} policy [update-slm-policy]
+
+You can update an existing {{slm-init}} policy after it's created. To manage {{slm-init}} in {{kib}}:
+
+1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Policies** tab. 
+3. On the policy that you want to edit, click **Edit** `✎`, and make the desired change. 
+
+For example, you can change the schedule, or snapshot retention-related configurations.
+
+
+![change schedule](/deploy-manage/images/elasticsearch-reference-change-slm-schedule.png)
+
+![change snapshot retention](/deploy-manage/images/elasticsearch-reference-change-slm-snapshot-retention.png)
+
+
+You can also update an {{slm-init}} policy using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm), as described in [Create an {{slm-init}} policy](#create-slm-policy).
+
 
 ## Manually create a snapshot [manually-create-snapshot]
 
@@ -242,7 +264,11 @@ GET _slm/policy/nightly-snapshots
 
 ## Delete or cancel a snapshot [delete-snapshot]
 
-To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the trash icon under the **Actions** column. You can also use the [delete snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-delete).
+To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the trash icon under the **Actions** column. To delete multiple snapshots at once, select the snapshots from the list and then click **Delete snaphshots**. 
+
+![delete snapshot](/deploy-manage/images/elasticsearch-reference-delete-snapshots.png)
+
+You can also use the [delete snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-delete).
 
 ```console
 DELETE _snapshot/my_repository/my_snapshot_2099.05.06

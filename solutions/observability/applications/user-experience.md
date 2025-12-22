@@ -27,7 +27,7 @@ Search engines are placing increasing importance on user experience when organic
 
 {{user-experience}} metrics are powered by the [APM Real User Monitoring (RUM) agent](apm-agent-rum-js://reference/index.md). The RUM agent uses browser timing APIs, like [Navigation Timing](https://w3c.github.io/navigation-timing/), [Resource Timing](https://w3c.github.io/resource-timing/), [Paint Timing](https://w3c.github.io/paint-timing/), and [User Timing](https://w3c.github.io/user-timing/), to capture {{user-experience}} metrics every time a user hits one of your pages. This data is stored in {{es}}, where it can be visualized using {{kib}}.
 
-The RUM agent can be installed as a dependency to your application, or with just a few lines of JavaScript. It only takes a few minutes to [get started](/solutions/observability/apm/real-user-monitoring-rum.md).
+The RUM agent can be installed as a dependency to your application, or with just a few lines of JavaScript. It only takes a few minutes to [get started](/solutions/observability/apm/apm-agents/real-user-monitoring-rum.md).
 
 ## {{user-experience}} in {{kib}} [user-experience-tab]
 
