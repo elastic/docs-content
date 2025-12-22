@@ -13,6 +13,9 @@ products:
 
 # Search API and templates [search-application-api]
 
+::::{important}
+Search Applications is a beta feature and is not recommended for new users in {{es}} 9.x. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
+::::
 
 Your [search applications](../search-applications.md) use [search templates](/solutions/search/search-templates.md) to perform searches. Templates help reduce complexity by exposing only template parameters, while using the full power of {{es}}'s query DSL to formulate queries. Templates may be set when creating or updating a search application, and can be customized. This template can be edited or updated at any time using the [Put Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) API call.
 

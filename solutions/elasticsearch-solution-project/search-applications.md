@@ -11,6 +11,10 @@ products:
 
 # Search applications [search-application-overview]
 
+::::{important}
+Search Applications is a beta feature and is not recommended for new users in {{es}} 9.x. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
+::::
+
 *Search Applications* enable users to build search-powered applications that leverage the full power of {{es}} and its Query DSL, with a simplified user experience. Create search applications based on your {{es}} indices, build queries using search templates, and easily preview your results directly in the {{kib}} Search UI.
 
 You can also interact with your search applications using the [Search Application APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search_application). Search Applications are designed to simplify building unified search experiences across a range of enterprise search use cases, using the Elastic platform.
@@ -28,10 +32,6 @@ Documentation for the Search Applications feature lives in two places:
 ## Availability and prerequisites [search-application-overview-prerequisites] 
 
 The Search Applications feature was introduced in Elastic version **8.8.0**.
-
-::::{note} 
-Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
-::::
 
 This feature is available to all **{{ech}}** deployments.
 

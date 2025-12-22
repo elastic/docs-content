@@ -13,6 +13,9 @@ products:
 
 # Search Application client guide [search-application-client]
 
+::::{important}
+Search Applications is a beta feature and is not recommended for new users in {{es}} 9.x. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
+::::
 
 This document is a how-to guide to building a search experience with a [search application](../search-applications.md), using the [Search Application client](https://github.com/elastic/search-application-client). The client is a JavaScript library designed to be used in the browser. You’ll integrate this library into your web app to simplify querying your search application.
 
