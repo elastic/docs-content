@@ -18,7 +18,7 @@ The UI enables you to:
 - Organize rules into rulesets and set execution priority
 - Test rules against sample queries before publishing
 
-## UI vs. API: What's the difference?
+## UI versus API: What's the difference?
 
 The Query Rules UI provides the same functionality as the API with one key difference:
 

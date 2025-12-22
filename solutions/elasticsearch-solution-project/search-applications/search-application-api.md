@@ -86,7 +86,7 @@ In this case, the response would be:
 }
 ```
 
-The default template is very minimal:
+The default template is minimal:
 
 ```console-result
 {
@@ -187,7 +187,7 @@ Try some of the other examples in this document to experiment with specific use 
 
 ### Template search [search-application-api-searching-templates]
 
-The simplest way to interact with a search application is to use the search template that’s created and stored with it. Each search application has a single template associated with it, which defines search criteria, parameters and defaults.
+The simplest way to interact with a search application is to use the search template that's created and stored with it. Each search application has a single template associated with it, which defines search criteria, parameters, and defaults.
 
 You send search requests to a search application using the [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search).
 

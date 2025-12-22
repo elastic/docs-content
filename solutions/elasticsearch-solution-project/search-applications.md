@@ -111,7 +111,7 @@ PUT /_application/search_application/my_search_application
 
 ### Search templates [search-application-overview-get-started-templates] 
 
-Search templates are the heart of your search applications. The [default template](search-applications/search-application-api.md#search-application-api-default-template) created for a search application is very minimal, and you’ll want to customize it to suit your needs. [Search API and templates](search-applications/search-application-api.md) contains a number of examples to get you started, including the default template, as well as templates for text search, semantic search and hybrid search.
+Search templates are the heart of your search applications. The [default template](search-applications/search-application-api.md#search-application-api-default-template) created for a search application is minimal, and you'll want to customize it to suit your needs. [Search API and templates](search-applications/search-application-api.md) contains a number of examples to get you started, including the default template, as well as templates for text search, semantic search and hybrid search.
 
 
 
