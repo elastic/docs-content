@@ -47,10 +47,6 @@ The [synonyms UI](/solutions/search/full-text/search-with-synonyms.md#method-1-k
 
 The [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md) enables you to create and manage query rules that modify search behavior based on specific conditions, helping you deliver more relevant results for common queries.
 
-### Model Context Protocol (MCP)
-
-The [Model Context Protocol (MCP)](search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
-
 ## Get started
 
 Ready to start using the {{es}} solution? Refer to [Get started](/solutions/elasticsearch-solution-project/get-started.md) for setup instructions and quickstart guides.
