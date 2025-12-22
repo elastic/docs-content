@@ -6,6 +6,10 @@ redirects:
   'solutions/search/search-applications.md': 'solutions/elasticsearch-solution-project/search-applications.md'
   'solutions/search/search-applications/search-application-client.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-client.md'
   'solutions/search/search-connection-details.md': 'solutions/elasticsearch-solution-project/search-connection-details.md'
+  'solutions/search/mcp.md':
+    to: 'explore-analyze/ai-features.md'
+    anchors:
+      '': 'model-context-protocol-mcp-servers'
   'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
