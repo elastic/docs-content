@@ -67,6 +67,7 @@ toc:
           - file: search/site-or-app/clients.md
           - file: search/site-or-app/search-ui.md
       - file: search/apis-and-tools.md
+      - file: search/mcp.md
       - file: search/elastic-agent-builder.md
         children:
           - file: search/agent-builder/get-started.md
@@ -94,7 +95,6 @@ toc:
           - file: elasticsearch-solution-project/playground-context.md
           - file: elasticsearch-solution-project/playground-query.md
           - file: elasticsearch-solution-project/playground-troubleshooting.md
-      - file: elasticsearch-solution-project/mcp.md
       - file: elasticsearch-solution-project/search-applications.md
         children:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md

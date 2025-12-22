@@ -83,7 +83,7 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Model context protocol
 
-The [Model Context Protocol (MCP)](/solutions/elasticsearch-solution-project/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+The [Model Context Protocol (MCP)](../solutions/search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
 
 ## AI-powered features in {{observability}}
 

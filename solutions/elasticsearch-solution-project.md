@@ -49,7 +49,7 @@ The [Query Rules UI](/solutions/elasticsearch-solution-project/query-rules-ui.md
 
 ### Model Context Protocol (MCP)
 
-The [Model Context Protocol (MCP)](/solutions/elasticsearch-solution-project/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+The [Model Context Protocol (MCP)](search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
 
 ## Get started
 

@@ -86,6 +86,6 @@ The following generative AI tools are available as part of the {{es}} solution a
 
 ### Model Context Protocol (MCP)
 
-The [Model Context Protocol (MCP)](/solutions/elasticsearch-solution-project/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+The [Model Context Protocol (MCP)](mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
 
 Refer to the [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) for more information about these UI tools.
