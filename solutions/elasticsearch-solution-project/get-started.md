@@ -78,8 +78,8 @@ The {{es}} home page in the UI also provides workflow guides for creating indice
 :::::
 :::::{step} Build your search queries
 
-Your next steps will be to choose a method to write queries and interact with {{es}}.
-You can pick a programming language [client](/reference/elasticsearch-clients/index.md) that matches your application and choose which [query languages](/solutions/search/querying-for-search.md) you will use to express your search logic.
+Your next steps are to choose a method to write queries and interact with {{es}}.
+You can pick a programming language [client](/reference/elasticsearch-clients/index.md) that matches your application and choose which [query languages](/solutions/search/querying-for-search.md) you use to express your search logic.
 Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
 :::::
 

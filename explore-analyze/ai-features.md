@@ -98,7 +98,7 @@ stack: deprecated 9.2
 serverless: deprecated
 ```
 
-If you're running older versions of Elasticsearch without Agent Builder, you can use [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server). This MCP server enables connecting agents to your {{es}} data and allows you to interact with your {{es}} indices through natural language conversations, though with a more limited tool set compared to the Agent Builder MCP server.
+If you're running earlier versions of Elasticsearch without Agent Builder, you can use [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server). This MCP server enables connecting agents to your {{es}} data and allows you to interact with your {{es}} indices through natural language conversations, though with a more limited tool set compared to the Agent Builder MCP server.
 
 ## AI-powered features in {{observability}}
 

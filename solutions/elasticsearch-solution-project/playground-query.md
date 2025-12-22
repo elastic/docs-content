@@ -10,7 +10,7 @@ products:
 
 # View and modify queries [playground-query]
 
-Once you’ve set up your chat interface, you can start chatting with the model. Playground will automatically generate {{es}} queries based on your questions, and retrieve the most relevant documents from your {{es}} indices. The Playground UI enables you to view and modify these queries.
+Once you've set up your chat interface, you can start chatting with the model. Playground automatically generates {{es}} queries based on your questions, and retrieves the most relevant documents from your {{es}} indices. The Playground UI enables you to view and modify these queries.
 
 * Select the **Query** tab to open the visual query editor.
 * Modify the query by selecting fields to query per index.
@@ -21,14 +21,14 @@ The `{{query}}` variable represents the user’s question, rewritten as an {{es}
 ::::
 
 
-The following screenshot shows the query editor in the Playground UI. In this simple example, the `books` index has two fields: `author` and `name`. Selecting a field adds it to the `fields` array in the query.
+The following screenshot shows the query editor in the Playground UI. In this basic example, the `books` index has two fields: `author` and `name`. Selecting a field adds it to the `fields` array in the query.
 
 :::{image} /solutions/images/kibana-query-interface.png
 :alt: View and modify queries
 :screenshot:
 :::
 
-Certain fields in your documents may be hidden. Learn more about [hidden fields](#playground-hidden-fields).
+Certain fields in your documents might be hidden. Learn more about [hidden fields](#playground-hidden-fields).
 
 
 ## Improving relevance [playground-query-relevance]

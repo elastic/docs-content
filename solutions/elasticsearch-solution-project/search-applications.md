@@ -83,7 +83,7 @@ Once created, you can explore the documents in your search application under **S
 
 Use the {{es}} [Put Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) to create a search application.
 
-The following example creates a search application named `my_search_application` that searches over the `my_search_index1` and `my_search_index2` indices, along with defining a simple search template (Refer to [Default template example](search-applications/search-application-api.md#search-application-api-default-template)).
+The following example creates a search application named `my_search_application` that searches over the `my_search_index1` and `my_search_index2` indices, along with defining a basic search template (Refer to [Default template example](search-applications/search-application-api.md#search-application-api-default-template)).
 
 ```console
 PUT /_application/search_application/my_search_application
