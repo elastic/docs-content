@@ -22,7 +22,7 @@ When building a frontend application for search use cases, there are two main ap
 1. The client (user’s browser) makes API requests to the application backend, which in turn makes a request to {{es}}. The {{es}} cluster is not exposed to the end user.
 2. **The client (user’s browser) makes API requests directly to the search service - in this case the {{es}} cluster is reachable to the client.**
 
-This guide describes best practices when taking the second approach. Specifically, we will explain how to use search applications with frontend apps that make direct requests to the [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search).
+This guide describes best practices when taking the second approach. Specifically, we explain how to use search applications with frontend apps that make direct requests to the [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search).
 
 This approach has a few advantages:
 
@@ -30,7 +30,7 @@ This approach has a few advantages:
 * Direct requests to {{es}} result in faster response times
 * Query configuration is managed in one place: your search application configuration in {{es}}
 
-We will cover:
+We cover:
 
 * [Using {{es}} API keys with role restrictions](#search-application-security-key-restrictions)
 * [Parameter validation in the Search Application Search API](#search-application-security-parameter-validation)
@@ -39,7 +39,7 @@ We will cover:
 
 ## Using {{es}} API keys with role restrictions [search-application-security-key-restrictions] 
 
-When frontend applications can make direct API requests to {{es}}, it’s important to limit the operations they can perform. In our case, frontend applications should only be able to call the Search Application **Search API**. To ensure this, we will create {{es}} API keys with [role restrictions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/role-restriction.md). A role restriction is used to specify under what conditions a role should be effective.
+When frontend applications can make direct API requests to {{es}}, it’s important to limit the operations they can perform. In our case, frontend applications should only be able to call the Search Application **Search API**. To ensure this, we create {{es}} API keys with [role restrictions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/role-restriction.md). A role restriction is used to specify under what conditions a role should be effective.
 
 The following {{es}} API key has access to the `website-product-search` search application, only through the Search Application Search API:
 
@@ -74,7 +74,7 @@ It is crucial to specify the workflow restriction. Without this the {{es}} API k
 ::::
 
 
-The response will look like this:
+The response looks like this:
 
 ```console-result
 {
@@ -182,7 +182,7 @@ Using that definition, the Search Application Search API performs the following 
 
 ## Working with CORS [search-application-security-cors] 
 
-Using this approach means that your user’s browser will make requests to the {{es}} API directly. {{es}} supports [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), but this feature is disabled by default. Therefore the browser will block these requests.
+Using this approach means that your user’s browser can make requests to the {{es}} API directly. {{es}} supports [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), but this feature is disabled by default. Therefore the browser blocks these requests.
 
 There are two workarounds for this:
 

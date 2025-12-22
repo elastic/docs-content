@@ -209,7 +209,7 @@ PUT _application/search_application/my-example-app
 }
 ```
 
-This will allow you to add any template parameters you need to your template and then provide the values in your client request. Use `addParameter` to inject actual values into your template parameters.
+This allows you to add any template parameters you need to your template and then provide the values in your client request. Use `addParameter` to inject actual values into your template parameters.
 
 For example, pass in values for `search_fields` like this:
 
@@ -223,7 +223,7 @@ const results = await request()
 
 ### Example template [search-application-client-client-template-example]
 
-We recommend getting started with the [boilerplate template](https://github.com/elastic/search-application-client#boilerplate-template) provided in the client repository. [View this script](https://github.com/elastic/search-application-client/blob/main/bin/boilerplate_template.js) to see how this is used. The `dictionary` parameter is used to pass in a JSON schema definition that describes structure and validation rules for the request object. This schema is important, because it restricts the use of certain features in the {{es}} query. [View the schema](https://github.com/elastic/search-application-client/blob/main/bin/request_schema.json).
+We recommend getting started with the [boilerplate template](https://github.com/elastic/search-application-client#boilerplate-template) provided in the client repository. For an example how this is used, [view this script](https://github.com/elastic/search-application-client/blob/main/bin/boilerplate_template.js). The `dictionary` parameter is used to pass in a JSON schema definition that describes structure and validation rules for the request object. This schema is important, because it restricts the use of certain features in the {{es}} query. [View the schema](https://github.com/elastic/search-application-client/blob/main/bin/request_schema.json).
 
 Each search functionality in this guide requires a feature included in this template. These features require specific parameters to be present in the template:
 
@@ -236,7 +236,7 @@ Each search functionality in this guide requires a feature included in this temp
 
 ## Search features [search-application-client-client-features]
 
-We will explore all the essential basics you’ll need for a search experience. You’ll learn how to implement them using your search application and query them using the client.
+Here, we explore all the essential basics you need for a search experience. Learn how to implement them using your search application and query them using the client.
 
 ::::{tip}
 Refer to the [client repo](https://github.com/elastic/search-application-client#api-reference) for information on the available methods and their parameters.
@@ -247,7 +247,7 @@ Refer to the [client repo](https://github.com/elastic/search-application-client#
 
 ### Customizing relevance [search-application-client-client-features-relevance]
 
-Our simple template uses `query_string` searching across all fields, but this may not suit your use case. You can update the template to provide better relevance recall.
+Our basic template uses `query_string` searching across all fields, but this might not suit your use case. You can update the template to provide better relevance recall.
 
 In the below example, we’re using a `multi-match` query against our template, with `best_fields` and `phrase_prefix` queries targeting different search fields.
 
@@ -377,7 +377,7 @@ Highlighting support is straightforward to add to the template. With the [highli
 
 In the following example, we specify `title` and `plot` as the highlighted fields. `title` typically has a short value length, compared to `plot` which is variable and tends to be longer.
 
-We specify the title to be `fragment_size` of `0` to return all of the text when there is a highlight. We specify the plot to be `fragment_size` of `200`, where each highlighted fragment will be up to 200 characters long.
+We specify the title to be `fragment_size` of `0` to return all the text when there is a highlight. We specify the plot to be `fragment_size` of `200`, where each highlighted fragment can be up to 200 characters long.
 
 ```console
 PUT _application/search_application/my-example-app
@@ -430,7 +430,7 @@ PUT _application/search_application/my-example-app
 }
 ```
 
-If a match was found, this will return the results with a highlight field. For example:
+If a match was found, this returns the results with a highlight field. For example:
 
 ```js
 {
@@ -458,7 +458,7 @@ If a match was found, this will return the results with a highlight field. For e
 
 #### Highlighting helper [search-application-client-client-features-highlight-helpers]
 
-When displaying the fields in the frontend, you will need to first determine if the field has a highlight. To simplify this, we provide a helper.
+When displaying the fields in the frontend, you need to first determine if the field has a highlight. To simplify this, we provide a helper.
 
 ```js
 import Client, { Highlight } from '@elastic/search-application-client'
@@ -498,9 +498,9 @@ const results = await request()
 
 ## Sorting [search-application-client-client-features-sorting]
 
-To use sorting, specify the field name and the sort order or `pass _score` to sort by relevance. Requires the `_es_sort_fields_fields` param in the search template. Refer to our [example template](#search-application-client-client-template-example) to see where this is used.
+To use sorting, specify the field name and the sort order or `pass _score` to sort by relevance. Requires the `_es_sort_fields_fields` param in the search template. Refer to our [example template](#search-application-client-client-template-example).
 
-By default, the results will be sorted in order of score. If you need to sort on a field other than the score, use the `setSort` method with an array of objects.
+By default, the results are sorted in order of score. If you need to sort on a field other than the score, use the `setSort` method with an array of objects.
 
 ```js
 const results = await request()
@@ -516,10 +516,10 @@ The Search application client also supports filters and facets. To use these, yo
 * `_es_filters`
 * `_es_aggs`
 
-Refer to our [example template](#search-application-client-client-template-example) to see where these are used.
+Refer to our [example template](#search-application-client-client-template-example).
 
 
-#### Base Filtering [search-application-client-client-features-filter-base]
+#### Base filtering [search-application-client-client-features-filter-base]
 
 With a template that’s configured to use filters, use the `setFilter` method to add filters to your query.
 

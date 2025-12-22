@@ -82,7 +82,7 @@ stack: preview 9.2
 elasticsearch: preview
 ```
 
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure, including an [MCP server](/solutions/search/agent-builder/mcp-server.md).
+[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure, including an [MCP server](/solutions/search/agent-builder/mcp-server.md).
 
 ### Playground
 ```{applies_to}

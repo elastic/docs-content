@@ -142,7 +142,7 @@ elasticsearch: beta
 
 Playground builds Elasticsearch queries using the retriever abstraction. It automatically detects the fields and types in your index and builds a retriever tree based on your selections.
 
-You can use the Playground to experiment with different retriever configurations and see how they affect search results.
+You can use the Playground to experiment with different retriever configurations and observe how they affect search results.
 
 Refer to the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md) for more information.
 
