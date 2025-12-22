@@ -78,7 +78,7 @@ The following generative AI tools are available as part of the {{es}} solution a
 
 ### Agent Builder
 
-[Agent Builder](/solutions/elasticsearch-solution-project/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### Playground
 

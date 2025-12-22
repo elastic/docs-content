@@ -2,9 +2,6 @@ redirects:
   # Search primitives moved from ES solution to Search use case
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
   'solutions/elasticsearch-solution-project/full-text/create-update-synonyms-api-example.md': 'solutions/search/full-text/create-update-synonyms-api-example.md'
-  # ES solution pages moved from Search to ES solution
-  'solutions/search/agent-builder/get-started.md': 'solutions/elasticsearch-solution-project/agent-builder/get-started.md'
-  'solutions/search/elastic-agent-builder.md': 'solutions/elasticsearch-solution-project/elastic-agent-builder.md'
   'solutions/search/query-rules-ui.md': 'solutions/elasticsearch-solution-project/query-rules-ui.md'
   'solutions/search/search-applications.md': 'solutions/elasticsearch-solution-project/search-applications.md'
   'solutions/search/search-applications/search-application-client.md': 'solutions/elasticsearch-solution-project/search-applications/search-application-client.md'

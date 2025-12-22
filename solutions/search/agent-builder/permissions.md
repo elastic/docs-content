@@ -34,7 +34,7 @@ Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-depl
 
 {{agent-builder}} requires cluster-level privileges for AI-powered query generation:
 
-- `monitor_inference`: Required when the agent uses an AI connector that calls the {{es}} Inference API (such as the Elastic default LLM or other AI connectors configured to use the Inference API). The built-in tools `search` and `generate_esql`, as well as [index search tools](tools/index-search-tools.md), use this API to generate queries from natural language. This privilege is not required when the agent uses other {{kib}} GenAI connectors.
+- `monitor_inference`: Required when the agent uses an AI connector that calls the {{es}} Inference API (such as the Elastic default LLM or other AI connectors configured to use the Inference API). The built-in tools `search` and `generate_esql`, as well as [index search tools](../../elasticsearch-solution-project/agent-builder/tools/index-search-tools.md), use this API to generate queries from natural language. This privilege is not required when the agent uses other {{kib}} GenAI connectors.
 
 Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html#privileges-list-cluster).
 
@@ -43,7 +43,7 @@ Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsea
 Tools execute queries against {{es}} indices as the current user. Required privileges depend on which indices the tools access:
 
 - `read`: Required for tools that query data.
-- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](tools/index-search-tools.md), which may use index exploration capabilities internally.
+- `view_index_metadata`: Required for tools that inspect index structure. Also required for the built-in `search` tool and [index search tools](../../elasticsearch-solution-project/agent-builder/tools/index-search-tools.md), which may use index exploration capabilities internally.
 
 Learn more about [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 

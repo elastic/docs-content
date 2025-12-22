@@ -33,7 +33,7 @@ The {{es}} solution provides the following specialized UI tools and features to 
 
 ### Agent Builder
 
-[Agent Builder](/solutions/elasticsearch-solution-project/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### Playground
 

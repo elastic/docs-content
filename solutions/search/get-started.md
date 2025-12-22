@@ -6,12 +6,12 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 navigation_title: Get started
-description: Get started with search using Elasticsearch. Go from deployment to your first working search query in minutes.
+description: Get started with the search use case using the core Elasticsearch search features available on any deployment type.
 ---
 
-# Get started with search 
+# Get started with search
 
-New to search with {{es}}? Start building a search experience by setting up your first deployment, refining your search goals, and adding data.
+New to search with {{es}}? Start building a search experience by setting up your first deployment, refining your search goals, and adding data. These core search capabilities are available to you regardless of your deployment type, solution, or project type.
 
 :::{note}
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).

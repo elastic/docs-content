@@ -67,28 +67,28 @@ toc:
           - file: search/site-or-app/clients.md
           - file: search/site-or-app/search-ui.md
       - file: search/apis-and-tools.md
+      - file: search/elastic-agent-builder.md
+        children:
+          - file: search/agent-builder/get-started.md
+          - file: search/agent-builder/models.md
+          - file: search/agent-builder/chat.md
+          - file: search/agent-builder/agent-builder-agents.md
+          - file: search/agent-builder/tools.md
+            children:
+              - file: search/agent-builder/tools/esql-tools.md
+              - file: search/agent-builder/tools/index-search-tools.md
+          - file: search/agent-builder/programmatic-access.md
+            children:
+              - file: search/agent-builder/kibana-api.md
+              - file: search/agent-builder/a2a-server.md
+              - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/permissions.md
+          - file: search/agent-builder/limitations-known-issues.md
   - file: elasticsearch-solution-project.md
     children:
       - file: elasticsearch-solution-project/get-started.md
         children:
           - file: elasticsearch-solution-project/search-connection-details.md
-      - file: elasticsearch-solution-project/elastic-agent-builder.md
-        children:
-          - file: elasticsearch-solution-project/agent-builder/get-started.md
-          - file: elasticsearch-solution-project/agent-builder/models.md
-          - file: elasticsearch-solution-project/agent-builder/chat.md
-          - file: elasticsearch-solution-project/agent-builder/agent-builder-agents.md
-          - file: elasticsearch-solution-project/agent-builder/tools.md
-            children:
-              - file: elasticsearch-solution-project/agent-builder/tools/esql-tools.md
-              - file: elasticsearch-solution-project/agent-builder/tools/index-search-tools.md
-          - file: elasticsearch-solution-project/agent-builder/programmatic-access.md
-            children:
-              - file: elasticsearch-solution-project/agent-builder/kibana-api.md
-              - file: elasticsearch-solution-project/agent-builder/a2a-server.md
-              - file: elasticsearch-solution-project/agent-builder/mcp-server.md
-          - file: elasticsearch-solution-project/agent-builder/permissions.md
-          - file: elasticsearch-solution-project/agent-builder/limitations-known-issues.md
       - file: elasticsearch-solution-project/playground.md
         children:
           - file: elasticsearch-solution-project/playground-context.md

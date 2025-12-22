@@ -64,8 +64,8 @@ Tool namespacing helps organize and identify tools by their source. Built-in too
 
 You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data:
 
-- **[Index search tools](tools/index-search-tools.md)**: Define tools that are scoped to a specific index or pattern, allowing the LLM to decide how to query those indices based on the user's request.
-- **[ES|QL tools](tools/esql-tools.md)**: Define tools with explicit {{esql}} queries for precise, pre-defined data retrieval operations.
+- **[Index search tools](../../elasticsearch-solution-project/agent-builder/tools/index-search-tools.md)**: Define tools that are scoped to a specific index or pattern, allowing the LLM to decide how to query those indices based on the user's request.
+- **[ES|QL tools](../../elasticsearch-solution-project/agent-builder/tools/esql-tools.md)**: Define tools with explicit {{esql}} queries for precise, pre-defined data retrieval operations.
 
 
 This flexibility allows you to create tools that match your specific use cases and data access patterns.
@@ -107,7 +107,7 @@ You can create custom tools to help agents interact with your data in specific w
 4. Fill in the required fields:
    - **Name**: Enter a descriptive name for your tool.
    - **Description**: Write a clear explanation of what the tool does and when it should be used.
-   - **Tool type**: Choose either **[{{esql}}](tools/esql-tools.md)** or **[Index search](tools/index-search-tools.md).**
+   - **Tool type**: Choose either **[{{esql}}](../../elasticsearch-solution-project/agent-builder/tools/esql-tools.md)** or **[Index search](../../elasticsearch-solution-project/agent-builder/tools/index-search-tools.md).**
    - **Parameters**: For tools with {{esql}} queries, define any parameters your query needs.
    - **Tags**: (Optional) Add labels to categorize and organize your tools.
 5. Choose how to save your tool:

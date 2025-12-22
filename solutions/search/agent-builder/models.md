@@ -69,7 +69,7 @@ The following models are not compatible with {{agent-builder}}:
 
 - **OpenAI**: GPT-5-chat
 
-Learn more about [incompatible LLMs](/solutions/elasticsearch-solution-project/agent-builder/limitations-known-issues.md#incompatible-llms).
+Learn more about [incompatible LLMs](/solutions/search/agent-builder/limitations-known-issues.md#incompatible-llms).
 
 ### Why model quality matters
 

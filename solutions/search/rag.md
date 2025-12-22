@@ -69,7 +69,7 @@ You can build RAG applications with {{es}} by retrieving relevant context from y
 
 **{{esql}} `COMPLETION` command:** Use the [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) command to send prompts and context directly to language models within your {{esql}} queries.
 
-**Agent Builder:** Create AI agents that can search your {{es}} indices, use tools, and maintain conversational context. Agent Builder provides a complete framework for building stateful RAG applications. Learn more in the [Agent Builder documentation](/solutions/elasticsearch-solution-project/elastic-agent-builder.md).
+**Agent Builder:** Create AI agents that can search your {{es}} indices, use tools, and maintain conversational context. Agent Builder provides a complete framework for building stateful RAG applications. Learn more in the [Agent Builder documentation](/solutions/search/elastic-agent-builder.md).
 
 **Custom implementation:** Retrieve documents using any {{es}} [search approach](/solutions/search/search-approaches.md) (Query DSL, {{esql}}, or retrievers), then integrate with your choice of language model provider in your applications code using their APIs or SDKs.
 
