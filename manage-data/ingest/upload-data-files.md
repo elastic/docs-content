@@ -40,21 +40,7 @@ You can upload files, analyze their fields and metrics, and import their data in
 
     :::
 
-    :::{applies-item} stack: ga 9.2
-
-    1. Choose whether to import the data to a new index or to an existing one.
-    2. Enter a name for the new index or select an existing index from the dropdown.
-    3. Drag one or more files into the upload area or click **Select or drag and drop a file** to choose files from your computer.
-
-       The supported file formats are PDF, TXT, CSV, log files and NDJSON.
-
-       After you upload your files, you can inspect the data and make any necessary changes before importing it.
-
-    4. Click **Import** to complete the process.
-
-    :::
-
-    :::{applies-item} serverless: ga
+    :::{applies-item} { "stack": "ga 9.2", "serverless": "ga" }
 
     1. Choose whether to import the data to a new index or to an existing one.
     2. Enter a name for the new index or select an existing index from the dropdown.
