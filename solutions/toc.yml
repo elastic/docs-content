@@ -94,13 +94,13 @@ toc:
           - file: elasticsearch-solution-project/playground-context.md
           - file: elasticsearch-solution-project/playground-query.md
           - file: elasticsearch-solution-project/playground-troubleshooting.md
+      - file: elasticsearch-solution-project/ai-assistant.md
+      - file: elasticsearch-solution-project/query-rules-ui.md
       - file: elasticsearch-solution-project/search-applications.md
         children:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
-      - file: elasticsearch-solution-project/ai-assistant.md
-      - file: elasticsearch-solution-project/query-rules-ui.md
   - file: observability.md
     children:
       - file: observability/get-started.md
