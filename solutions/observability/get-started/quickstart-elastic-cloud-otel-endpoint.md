@@ -23,8 +23,8 @@ The {{motlp}} is designed for the following use cases:
 Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
 
 :::{note}
-:applies_to: { ess:, stack: preview 9.2 }
-The Managed OTLP endpoint might not be available in all {{ech}} regions during the Technical Preview.
+:applies_to: ess: preview
+On {{ech}}, the Managed OTLP endpoint requires a deployment version 9.2 or later and might not be available in all {{ech}} regions during the Technical Preview.
 :::
 
 ## Send data to Elastic
@@ -46,8 +46,8 @@ To retrieve your {{motlp}} endpoint address and API key, follow these steps:
 Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
 :::
 
-:::{applies-item} ess:
-{applies_to}`stack: preview 9.2`
+:::{applies-item} ess: preview
+You need an {{ech}} deployment version 9.2 or later.
 1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
 2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.

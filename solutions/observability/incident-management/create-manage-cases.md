@@ -17,16 +17,16 @@ Open a new {{observability}} case to keep track of issues and share the details 
 
 ::::{applies-switch}
 
-:::{applies-item} stack:
-**Requirements**
-
-To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
-:::
-
 :::{applies-item} serverless:
 **Requirements**
 
 For {{observability}} projects, you need the appropriate [feature tier](https://www.elastic.co/pricing), and your role must have the **Editor** role or higher to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+:::
+
+:::{applies-item} stack:
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
 :::
 
 ::::
@@ -49,12 +49,12 @@ To create a case:
 
     ::::{applies-switch}
 
-    :::{applies-item} stack:
-    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
-    :::
-
     :::{applies-item} serverless:
     You can add users who are assigned the **Editor** user role (or a more permissive role) for the project.
+    :::
+
+    :::{applies-item} stack:
+    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
     :::
 
     ::::

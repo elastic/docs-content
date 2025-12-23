@@ -29,9 +29,9 @@ spec:
 1. On cloud providers that support external load balancers, setting the type to `LoadBalancer` provisions a load balancer for your service. Alternatively, expose the service `<cluster-name>-es-remote-cluster` through one of the Kubernetes Ingress controllers that support TCP services.
 ::::
 
-::::{applies-item} eck: ga 3.0
+::::{applies-item} eck: ga 3.0-3.2
 
-In ECK 3.2 and earlier, you can't customize the service that ECK generates for the remote cluster interface, but you can create your own `LoadBalancer` service, `Ingress` object, or use another method available in your environment.
+You can't customize the service that ECK generates for the remote cluster interface, but you can create your own `LoadBalancer` service, `Ingress` object, or use another method available in your environment.
 
 For example, for a cluster named `quickstart`, the following command creates a separate `LoadBalancer` service named `quickstart-es-remote-cluster-lb`, pointing to the ECK-managed service `quickstart-es-remote-cluster`:
 
