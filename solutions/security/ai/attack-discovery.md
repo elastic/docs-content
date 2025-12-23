@@ -77,7 +77,7 @@ By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, b
 
 :::{note}
 :applies_to: stack: ga =9.0
-In {{stack}} 9.0.0 and earlier, the **Run** button is called **Generate**.
+In {{stack}} 9.0.0, the **Run** button is called **Generate**.
 :::
 
 ::::{image} /solutions/images/security-attack-discovery-settings.png
