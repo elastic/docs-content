@@ -10,7 +10,7 @@ applies_to:
 Automatic Migration helps you quickly migrate Splunk assets to {{elastic-sec}}. The following asset types are supported:
 
 * {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Classic Splunk dashboards (v1.1)
-* {applies_to}`stack: preview 9.0-9.1` {applies_to}`serverless: ga` Splunk rules
+* {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
 
 For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
