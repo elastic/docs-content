@@ -74,13 +74,6 @@ You can also create a case from an alert or add an alert to an existing case. Fr
 
 ::::
 
-
-
-## Add files [observability-create-a-new-case-add-files]
-
-:::{include} /solutions/_snippets/add-case-files.md
-:::
-
 ## Send cases to external incident management systems [observability-create-a-new-case-send-cases-to-external-incident-management-systems]
 
 To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the **External incident management system** section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
@@ -100,11 +93,41 @@ To view a case, click on its name. You can then:
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.
-* Add and manage the following items:
-   * Alerts
-   * Files
 
-## Search cases [search-observability-cases]
+## Add context and supporting materials [observability-create-a-new-case-add-context]
+
+Provide additional context and resources by adding the following to the case:
+* [Alerts](#observability-create-a-new-case-examine-alerts) 
+* [Files](#observability-create-a-new-case-add-files)
+
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific alert IDs and file names.
+::::
+
+### Add alerts [observability-create-a-new-case-examine-alerts]
+
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
+
+::::{note}
+[Add alerts](../../observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases) to new and existing cases from the **Alerts** page.
+::::
+
+### Add files [observability-create-a-new-case-add-files]
+
+:::{include} /solutions/_snippets/add-case-files.md
+:::
+
+::::{important}
+When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported. 
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
+## Search cases [search-stack-management-cases]
 
 :::{include} /solutions/_snippets/search-cases.md
 :::
