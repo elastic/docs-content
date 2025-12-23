@@ -43,8 +43,9 @@ A tutorial should always be a standalone page, meaning it should have only one c
 ## Guidelines per content type
 
 - [How-to guides](how-tos.md)
+- [Overviews](overviews.md)
 % - [Tutorial](tutorials.md)
 
 ## Templates per content type
 
-Refer to [our templates](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md) for each content type to get started quickly.
+Refer to [our templates](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/) for each content type to get started quickly.
