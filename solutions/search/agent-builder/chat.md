@@ -35,6 +35,10 @@ This takes you to the chat GUI:
 
 Use the text input area to chat with an agent in real time. By default, you chat with the built-in Elastic AI Agent.
 
+:::{note}
+Conversations with agents consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
+:::
+
 :::{image} images/agent-builder-chat-input.png
 :alt: Text input area for chatting with agents
 :width: 850px
