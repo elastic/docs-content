@@ -2,17 +2,13 @@
 applies_to:
   stack: ga
   serverless: ga
-  deployment:
-    ess: ga
 products:
   - id: elasticsearch
 ---
 
-# Configure logs data streams
+# Configure a logs data stream
 
-% TODO improve intro 
-
-Use the concepts and settings on this page to optimize a [logs data stream](/manage-data/data-store/data-streams/logs-data-stream.md). 
+These concepts and settings can help you optimize a [logs data stream](/manage-data/data-store/data-streams/logs-data-stream.md). 
 
 ## Synthetic source [logsdb-synthetic-source]
 
