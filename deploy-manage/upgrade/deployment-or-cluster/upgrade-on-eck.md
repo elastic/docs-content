@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elastic-stack/current/upgrade-on-eck.html
 navigation_title: Upgrade on {{eck}}
 applies_to:
   deployment:
