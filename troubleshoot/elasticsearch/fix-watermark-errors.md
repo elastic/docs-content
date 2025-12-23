@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-watermark-errors.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -50,7 +45,7 @@ GET _cluster/allocation/explain
 ```
 
 
-## Temporary Relief [fix-watermark-errors-temporary]
+## Temporary relief [fix-watermark-errors-temporary]
 
 To immediately restore write operations, you can temporarily increase [disk watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) and remove the [write block](elasticsearch://reference/elasticsearch/index-settings/index-block.md).
 
@@ -104,7 +99,7 @@ To resolve watermark errors permanently, perform one of the following actions:
 * update related [ILM policy](../../manage-data/lifecycle/index-lifecycle-management.md) to push indices through to later [data tiers](../../manage-data/lifecycle/data-tiers.md)
 
 ::::{tip}
-On {{ech}} and {{ece}}, indices may need to be temporarily deleted via its [Elasticsearch API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow on {{ech}}, kindly reach out to [Elastic Support](https://support.elastic.co) for assistance.
+On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow, reach out to [Elastic Support](https://support.elastic.co) for assistance.
 ::::
 
 

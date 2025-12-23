@@ -4,30 +4,25 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-corrupted-repositories.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
 
 # Diagnose corrupted repositories [diagnosing-corrupted-repositories]
 
-Multiple {{es}} deployments are writing to the same snapshot repository. {{es}} doesn’t support this configuration and only one cluster is allowed to write to the same repository. See [Repository contents](../../deploy-manage/tools/snapshot-and-restore.md#snapshot-repository-contents) for potential side-effects of corruption of the repository contents, which may not be resolved by the following guide. To remedy the situation mark the repository as read-only or remove it from all the other deployments, and re-add (recreate) the repository in the current deployment:
+Multiple {{es}} deployments are writing to the same snapshot repository. {{es}} doesn’t support this configuration and only one cluster is allowed to write to the same repository. Refer to [Repository contents](../../deploy-manage/tools/snapshot-and-restore.md#snapshot-repository-contents) for potential side-effects of corruption of the repository contents, which might not be resolved by the following guide. To remedy the situation mark the repository as read-only or remove it from all the other deployments, and re-add (recreate) the repository in the current deployment:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
-Fixing the corrupted repository will entail making changes in multiple deployments that write to the same snapshot repository. Only one deployment must be writing to a repository. The deployment that will keep writing to the repository will be called the "primary" deployment (the current cluster), and the other one(s) where we’ll mark the repository read-only as the "secondary" deployments.
+::::::{applies-item} { ece:, ess: }
+Fixing the corrupted repository requires making changes in multiple deployments that write to the same snapshot repository. Only one deployment must be writing to a repository. In these instructions, the deployment that continues writing to the repository will be referred to as the "primary" deployment (the current cluster), and the other one(s) where we’ll mark the repository read-only as the "secondary" deployments.
 
-First mark the repository as read-only on the secondary deployments:
+First, mark the repository as read-only on the secondary deployments:
 
 **Use {{kib}}**
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the name of your deployment.
+1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or ECE Cloud UI.
+2. On the home page, click the name of your deployment.
 
     ::::{note}
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
@@ -44,7 +39,7 @@ First mark the repository as read-only on the secondary deployments:
 
 At this point, it’s only the primary (current) deployment that has the repository marked as writeable. {{es}} sees it as corrupt, so the repository needs to be removed and added back so that {{es}} can resume using it:
 
-Note that we’re now configuring the primary (current) deployment.
+On the primary (current) deployment:
 
 1. Open the primary deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Snapshot and Restore > Repositories**. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -56,10 +51,10 @@ Note that we’re now configuring the primary (current) deployment.
 2. Click on the pencil icon at the right side of the repository. On the Edit page that opened scroll down and click "Save", without making any changes to the existing settings.
 ::::::
 
-::::::{tab-item} Self-managed
-Fixing the corrupted repository will entail making changes in multiple clusters that write to the same snapshot repository. Only one cluster must be writing to a repository. Let’s call the cluster we want to keep writing to the repository the "primary" cluster (the current cluster), and the other one(s) where we’ll mark the repository as read-only the "secondary" clusters.
+::::::{applies-item} { eck:, self: }
+Fixing the corrupted repository requires making changes in multiple clusters that write to the same snapshot repository. Only one cluster must be writing to a repository. Let’s call the cluster we want to keep writing to the repository the "primary" cluster (the current cluster), and the other one(s) where we’ll mark the repository as read-only the "secondary" clusters.
 
-Let’s first work on the secondary clusters:
+First, work on the secondary clusters:
 
 1. Get the configuration of the repository:
 
@@ -67,7 +62,7 @@ Let’s first work on the secondary clusters:
     GET _snapshot/my-repo
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     {
@@ -107,7 +102,7 @@ Let’s first work on the secondary clusters:
     DELETE _snapshot/my-repo
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     {
@@ -116,7 +111,9 @@ Let’s first work on the secondary clusters:
     ```
 
 
-At this point, it’s only the primary (current) cluster that has the repository marked as writeable. {{es}} sees it as corrupt though so let’s recreate it so that {{es}} can resume using it. Note that now we’re configuring the primary (current) cluster:
+At this point, it’s only the primary (current) cluster that has the repository marked as writeable. {{es}} sees it as corrupt though so let’s recreate it so that {{es}} can resume using it. 
+
+On the primary (current) cluster:
 
 1. Get the configuration of the repository and save its configuration as we’ll use it to recreate the repository:
 
@@ -138,7 +135,7 @@ At this point, it’s only the primary (current) cluster that has the repository
     }
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     {
