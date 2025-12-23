@@ -269,6 +269,62 @@ To deploy Elastic Agent in clusters with the Pod Security Policy admission contr
 
 In order to run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
 
+::::{tab-set}
+
+:::{tab-item} {{agent}} 8.16 and higher
+
+1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
+2. Run {{agent}} with a `hostPath` volume. No additional configuration is required.
+
+To run {{agent}} with an `emptyDir` volume.
+
+```yaml
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: fleet-server
+spec:
+  deployment:
+    podTemplate:
+      spec:
+        securityContext: <1>
+          fsGroup: 1000
+        volumes:
+        - name: agent-data
+          emptyDir: {}
+...
+```
+
+1. Gid 1000 is the default group at which the Agent container runs. Adjust as necessary if `runAsGroup` has been modified.
+
+
+To run {{agent}} with a `hostPath` volume.
+
+```yaml
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: fleet-server-sample
+  namespace: elastic-apps
+spec:
+  mode: fleet
+  fleetServerEnabled: true
+  deployment: {}
+...
+---
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: elastic-agent-sample
+  namespace: elastic-apps
+spec:
+  daemonSet: {}
+...
+```
+:::
+
+:::{tab-item} {{agent}} 8.15 and before 
+
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 2. Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user.
 
@@ -415,5 +471,6 @@ spec:
 2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.<YOUR-NAMESPACE>.svc:9200`
 3. Note that the correct path for {{es}} `certificate_authorities` is `/mnt/elastic-internal/elasticsearch-association/YOUR-NAMESPACE/ELASTICSEARCH-NAME/certs/ca.crt`
 
+:::
 
-
+::::
