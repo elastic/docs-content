@@ -76,7 +76,7 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 
 ## Limitations
 
-{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For more information, refer to [{{esql}} tool limitations](../limitations-known-issues.md#esql-limitations).
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For more information, refer to [{{esql}} tool limitations](../../../search/agent-builder/limitations-known-issues.md#esql-limitations).
 
 ## {{esql}} documentation
 

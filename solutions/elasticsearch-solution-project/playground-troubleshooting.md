@@ -21,7 +21,7 @@ LLM credentials not working
 :   Under **LLM settings**, use the {icon}`wrench` button to edit your GenAI connector settings.
 
 Poor answer quality
-:   Check the retrieved documents to see if they are valid. Adjust your {{es}} queries to improve the relevance of the documents retrieved. Refer to [View and modify queries](playground-query.md).
+:   Check the retrieved documents to verify if they are valid. Adjust your {{es}} queries to improve the relevance of the documents retrieved. Refer to [View and modify queries](playground-query.md).
 
     You can update the initial instructions to be more detailed. This is called *prompt engineering*. Refer to this [OpenAI guide](https://platform.openai.com/docs/guides/prompt-engineering) for more information.
 
