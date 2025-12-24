@@ -1202,7 +1202,7 @@ All quantization introduces some accuracy loss, and higher compression generally
 
 #### The `rescore_vector` option
 ```{applies_to}
-stack: preview 9.0, ga 9.1
+stack: preview =9.0, ga 9.1+
 ```
 
 Use `rescore_vector` to automatically perform reranking. When you specify an `oversample` value, approximate kNN will:

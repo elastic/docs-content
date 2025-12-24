@@ -32,8 +32,9 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 1. When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group alerts for alert suppression:
 
     * **All rule types except the threshold rule:** In **Suppress alerts by**, enter 1 or more field names to group alerts by the fields' values. The maximum limit of fields that you can enter is as follows:
-       * {applies_to}`stack: ga 9.0.0, ga 9.1.0` Enter up to 3 fields.
-       * {applies_to}`stack: ga 9.2.0`: Enter up to 5 fields.
+       * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Enter up to 5 fields.
+       * {applies_to}`stack: ga 9.0-9.1` Enter up to 3 fields.
+
 
     * **Threshold rule only:** In **Group by**, enter up to 3 field names to group events by the fields' values, or leave the setting empty to group all qualifying events together. 
 

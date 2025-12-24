@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maintenance-windows.html
   - https://www.elastic.co/guide/en/serverless/current/maintenance-windows.html
 applies_to:
-  stack: preview 9.0, ga 9.2
+  stack: preview 9.0-9.1, ga 9.2+
   serverless: ga
 products:
   - id: kibana
