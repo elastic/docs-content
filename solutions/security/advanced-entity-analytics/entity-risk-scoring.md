@@ -28,6 +28,7 @@ Entity risk scores are determined by the following risk inputs:
 | --- | --- |
 | [Alerts](../detect-and-alert/manage-detection-alerts.md) | `.alerts-security.alerts-<space-id>` index alias |
 | [Asset criticality level](asset-criticality.md) | `.asset-criticality.asset-criticality-<space-id>` index alias |
+| [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` | `.entity_analytics.monitoring.users-<space-id>` index alias |
 
 The resulting entity risk scores are stored in the `risk-score.risk-score-<space-id>` data stream alias, and the latest score for each entity is stored in `risk-score.risk-score-latest-<space-id>`.
 
@@ -46,22 +47,31 @@ Entities without any alerts, or with only `Closed` alerts, are not assigned a ri
     When [turning on the risk engine](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts in risk scoring calculations.
     ::::
 
-2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity’s [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
-3. The engine then verifies the entity’s [asset criticality level](asset-criticality.md). If there is no asset criticality assigned, the entity risk score remains equal to the aggregated score from the **Alerts** category. If a criticality level is assigned, the engine calculates the risk score based on the default risk weight for each criticality level. The asset criticality risk input is assigned to the **Asset Criticality** category in the entity’s risk summary.
+2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
 
-    | Asset criticality level | Default risk weight |
-    | --- | --- |
-    | Low impact | 0.5 |
-    | Medium impact | 1 |
-    | High impact | 1.5 |
-    | Extreme impact | 2 |
+3. The engine then updates the score based on the folliowing risk inputs:
+   
+   - **[Asset criticality](asset-criticality.md)**: If there is no asset criticality assigned, the entity risk score remains equal to the aggregated score from the **Alerts** category. If a criticality level is assigned, the engine calculates the risk score based on the default risk weight for each criticality level. This risk input is assigned to the **Asset Criticality** category in the entity’s risk summary.
 
-    ::::{note}
-    Asset criticality levels and default risk weights are subject to change.
+      | Asset criticality level | Default risk weight |
+      | --- | --- |
+      | Low impact | 0.5 |
+      | Medium impact | 1 |
+      | High impact | 1.5 |
+      | Extreme impact | 2 |
 
-    ::::
+      ::::{note}
+      Asset criticality levels and default risk weights are subject to change.
+      ::::
 
-4. Based on the two risk inputs, the risk scoring engine generates a single entity risk score of 0-100. It assigns a risk level by mapping the risk score to one of these levels:
+   - {applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` **[Privileged user status](privileged-user-monitoring.md)**: If a user has privileged user status, it increases the risk score based on the default risk weight. This risk input is assigned to the **Privileged User** category in the entity's risk summary.
+
+      | Privileged user status | Default risk weight |
+      | --- | --- |
+      | Yes | 2 |
+ 
+
+4. Based on all risk inputs, the risk scoring engine generates a single entity risk score of 0-100. It assigns a risk level by mapping the risk score to one of these levels:
 
     | Risk level | Risk score |
     | --- | --- |
@@ -80,7 +90,7 @@ In some cases, entities can retain a residual risk score:
 * If all alerts for an entity are closed
 * If all of the entity’s open alerts fall outside of the configured date and time range
 
-{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` By default, in these scenarios, entity risk scores are reset to zero if there are no new inputs. If, instead, you want entities to retain their last calculated risk score, select the **Retain previously calculated risk scores** checkbox on the [Entity risk score page](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` By default, in these scenarios, entity risk scores are reset to zero if there are no new inputs. If, instead, you want entities to retain their last calculated risk score, select the **Retain last calculated risk scores** checkbox on the [Entity risk score page](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
 
 :::{note}
 In versions 9.1 and earlier, residual risk scores are retained by default. This means that each entity keeps its last computed risk score until a new alert triggers a recalculation.
