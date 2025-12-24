@@ -155,4 +155,4 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 ## Service status [ec-service-status]
 
-* To ensure we can continue evolving our status page to best serve our customers, we cannot guarantee consistency of API implementation or component API identifiers. However, we communicate changes which might impact status page subscribers on a best-effort basis. Review [Service status](../../cloud-organization/service-status.md) for more guidance.
+* To ensure we can continue evolving our status page to best serve our customers, we cannot guarantee consistency of API implementation or component API identifiers. However, we communicate changes which might impact status page subscribers on a best-effort basis. Review [Service status](../../cloud-organization/service-status.md#service-status-support-limitations) for more guidance.
