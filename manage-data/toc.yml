@@ -28,6 +28,9 @@ toc:
                 - file: data-store/data-streams/reindex-tsds.md
                 - file: data-store/data-streams/tsds-ingest-otlp.md
           - file: data-store/data-streams/logs-data-stream.md
+            children:
+              - file: data-store/data-streams/logs-data-stream-configure.md
+              - file: data-store/data-streams/logs-data-stream-existing.md
           - file: data-store/data-streams/failure-store.md
             children:
               - file: data-store/data-streams/failure-store-recipes.md
