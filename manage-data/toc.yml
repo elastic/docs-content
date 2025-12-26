@@ -19,18 +19,15 @@ toc:
               - file: data-store/data-streams/set-up-tsds.md
               - file: data-store/data-streams/downsampling-time-series-data-stream.md
                 children:
-                  - file: data-store/data-streams/downsampling-concepts.md
-                  - file: data-store/data-streams/run-downsampling.md
-                  - file: data-store/data-streams/query-downsampled-data.md
+                - file: data-store/data-streams/downsampling-concepts.md
+                - file: data-store/data-streams/run-downsampling.md
+                - file: data-store/data-streams/query-downsampled-data.md
               - file: data-store/data-streams/advanced-topics-tsds.md
                 children:
-                  - file: data-store/data-streams/time-bound-tsds.md
-                  - file: data-store/data-streams/reindex-tsds.md
-                  - file: data-store/data-streams/tsds-ingest-otlp.md
+                - file: data-store/data-streams/time-bound-tsds.md
+                - file: data-store/data-streams/reindex-tsds.md
+                - file: data-store/data-streams/tsds-ingest-otlp.md
           - file: data-store/data-streams/logs-data-stream.md
-            children:
-              - file: data-store/data-streams/logs-data-stream-configure.md
-              - file: data-store/data-streams/logs-data-stream-existing.md
           - file: data-store/data-streams/failure-store.md
             children:
               - file: data-store/data-streams/failure-store-recipes.md
@@ -173,4 +170,5 @@ toc:
       - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-internal-indices.md
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
+      - file: migrate/migrate-with-logstash.md  
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md
