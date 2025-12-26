@@ -3,11 +3,8 @@ navigation_title: Unknown repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-unknown-repositories.html
 applies_to:
-  stack:
   deployment:
     eck:
-    ess:
-    ece:
     self:
 products:
   - id: elasticsearch
@@ -20,4 +17,14 @@ When a snapshot repository is marked as "unknown", it means that an {{es}} node 
 1. Retrieve the affected nodes from the affected resources section of the health report.
 2. Use the [nodes info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-info) to retrieve the plugins installed on each node.
 3. Cross reference this with a node that works correctly to find out which plugins are missing and install the missing plugins.
+
+Learn more about snapshot and restore plugins: 
+
+* [Available plugins](/docs/reference/elasticsearch/plugins/plugin-management.md)
+* [Installing plugins in self-managed clusters](elasticsearch:///reference/elasticsearch/plugins/plugin-management.md)
+* [Installing plugins on {{eck}}](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md#k8s-install-plugin)
+
+:::{tip}
+{{ech}} and {{ece}} only support specific repository types, which can't be extended using plugins. [Learn more](/deploy-manage/tools/snapshot-and-restore.md).
+:::
 
