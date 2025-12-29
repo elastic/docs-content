@@ -1,2 +1,2 @@
 * The local and remote deployments must be on {{stack}} 8.14 or later.
-* Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
+* Unlike the certificate-based security model, the API key model does not require mutual trust between clusters; only the local cluster is required to trust the remote cluster’s certificate.
