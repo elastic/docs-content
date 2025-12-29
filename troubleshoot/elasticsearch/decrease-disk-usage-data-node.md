@@ -38,7 +38,7 @@ Reducing the replicas of an index can potentially reduce search throughput and d
 ::::::
 
 ::::::{tab-item} Using the {{es}} API
-In order to estimate how many replicas need to be removed, first you need to estimate the amount of disk space that needs to be released.
+To estimate how many replicas need to be removed, first you need to estimate the amount of disk space that needs to be released.
 
 1. First, retrieve the relevant disk thresholds to determine how much space should be released. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so you can retrieve only the high watermark:
 
@@ -82,7 +82,7 @@ In order to estimate how many replicas need to be removed, first you need to est
     instance-0000000000           91     4.6gb       35gb    31.1gb       29.9gb    111
     ```
 
-3. The high watermark configuration indicates that the disk usage needs to drop below 90%. Consider allowing some padding, so the node won't go over the threshold in the near future. In this example, let’s release approximately 7GB.
+3. The high watermark configuration indicates that the disk usage needs to drop below 90%. Consider padding the amount of disk space you make available, so the node doesn't immediately exceed the threshold again. In this example, let’s release approximately 7GB.
 4. The next step is to list all the indices and choose which replicas to reduce.
 
     ::::{note}

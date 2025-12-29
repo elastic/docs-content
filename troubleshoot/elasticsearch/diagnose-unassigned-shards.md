@@ -17,7 +17,7 @@ products:
 
 There are multiple reasons why shards might get unassigned, ranging from misconfigured allocation settings to lack of disk space.
 
-In order to diagnose the unassigned shards in your deployment, use the following steps.
+To diagnose the unassigned shards in your deployment, use the following steps.
 
 You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [Elasticsearch API](/reference/elasticsearch/rest-apis.md) calls.
 

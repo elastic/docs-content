@@ -86,7 +86,7 @@ To increase the disk capacity of a master node, you will need to replace **all**
     instance-0000000002 *      m                    50.02    1.9gb     2.1gb       4gb
     ```
 
-3. The goal is to reduce disk usage below the relevant threshold, in our example 90%. Consider adding some padding so that usage does not exceed the threshold again soon. If you have multiple master nodes you need to ensure that **all** master nodes will have this capacity. Assuming you have the new nodes ready, follow the next three steps for every master node.
+3. The goal is to reduce disk usage below the relevant threshold, in our example 90%. Consider adding some padding so that usage doesn't immediately exceed the threshold again. If you have multiple master nodes you need to ensure that **all** master nodes will have this capacity. Assuming you have the new nodes ready, follow the next three steps for every master node.
 4. Bring down one of the master nodes.
 5. Start up one of the new master nodes and wait for it to join the cluster. You can check this using the following API call:
 

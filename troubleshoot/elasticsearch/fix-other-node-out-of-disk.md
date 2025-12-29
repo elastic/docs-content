@@ -78,7 +78,7 @@ To increase the disk capacity of any other node, you need to replace the instanc
     instance-0000000000     l                 85.31    3.4gb     500mb       4gb
     ```
 
-3. The goal is to reduce disk usage below the relevant threshold, in our example 90%. Consider adding some padding so that usage does not exceed the threshold again soon. Assuming you have the new node ready, add this node to the cluster.
+3. The goal is to reduce disk usage below the relevant threshold, in our example 90%. Consider adding some padding so that usage doesn't immediately exceed the threshold again. Assuming you have the new node ready, add this node to the cluster.
 4. Verify that the new node has joined the cluster:
 
     ```console

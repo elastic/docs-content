@@ -10,9 +10,9 @@ products:
 
 # Troubleshoot discovery [discovery-troubleshooting]
 
-In most cases, the [discovery and election](/deploy-manage/distributed-architecture/discovery-cluster-formation.md) process completes quickly, and the master node remains elected for a long period of time.
+Usually, the [discovery and election](/deploy-manage/distributed-architecture/discovery-cluster-formation.md) process completes quickly, and the master node remains elected for a long period of time.
 
-If your cluster doesn't have a stable master, many of its features won't work correctly and {{es}} reports errors to clients and in its logs. You must fix the master node's instability before addressing these other issues. It isn't possible to solve any other issues while there is no elected master node or the elected master node is unstable.
+If your cluster doesn't have a stable master, many of its features don't work correctly and {{es}} reports errors to clients and in its logs. You must fix the master node's instability before addressing these other issues. It isn't possible to solve any other issues while there is no elected master node or the elected master node is unstable.
 
 If your cluster has a stable master but some nodes can't discover or join it, these nodes report errors to clients and in their logs. You must address the obstacles preventing these nodes from joining the cluster before addressing other issues. It isn't possible to solve any other issues reported by these nodes while they are unable to join the cluster.
 
@@ -39,7 +39,7 @@ When a node wins the master election, it logs a message containing `elected-as-m
 
 If there is no elected master node and no node can win an election, all nodes repeatedly log messages about the problem using a logger called `org.elasticsearch.cluster.coordination.ClusterFormationFailureHelper`. By default, this happens every 10 seconds.
 
-Master elections only involve master-eligible nodes, so focus your attention on the master-eligible nodes in this situation. These nodes' logs indicate the requirements for a master election, such as the discovery of a certain set of nodes. The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) API on these nodes will also provide useful information about the situation.
+Master elections only involve master-eligible nodes, so focus your attention on the master-eligible nodes in this situation. These nodes' logs indicate the requirements for a master election, such as the discovery of a certain set of nodes. The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) API on these nodes also provides useful information about the situation.
 
 If the logs or the health report indicate that {{es}} can't discover enough nodes to form a quorum, you must address the reasons preventing {{es}} from discovering the missing nodes. The missing nodes are needed to reconstruct the cluster metadata. Without the cluster metadata, the data in your cluster is meaningless. The cluster metadata is stored on a subset of the master-eligible nodes in the cluster. If a quorum can't be discovered, the missing nodes were the ones holding the cluster metadata.
 
@@ -66,7 +66,7 @@ If the logs suggest that the node cannot discover or join the cluster due to tim
 
 ## Node joins cluster and leaves again [discovery-node-leaves]
 
-If a node joins the cluster but {{es}} determines it to be faulty then it will be removed from the cluster again. See [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for more information.
+If a node joins the cluster but {{es}} determines it to be faulty, it is removed from the cluster again. Refer to [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for more information.
 
 
 ## Investigate timeout and network issues [investigate-timeout-and-network-issues]
@@ -75,7 +75,7 @@ If logs suggest that discovery, master elections, or cluster joining are failing
 
 * **GC pauses**: GC pauses are recorded in the GC logs that {{es}} emits by default, and also usually by the `JvmMonitorService` in the main node logs. Use these logs to confirm whether the node is experiencing high heap usage with long GC pauses. If so, [the troubleshooting guide for high heap usage](high-jvm-memory-pressure.md) has some suggestions for further investigation, but typically you need to capture a heap dump and the [garbage collector logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging) during a time of high heap usage to fully understand the problem.
 
-* **VM pauses**: VM pauses also affect other processes on the same host. A VM pause also typically causes a discontinuity in the system clock, which {{es}} reports in its logs. If you see evidence of other processes pausing at the same time, or unexpected clock discontinuities, investigate the infrastructure on which you are running {{es}}.
+* **VM pauses**: VM pauses also affect other processes on the same host. A VM pause also typically causes a discontinuity in the system clock, which {{es}} reports in its logs. If you notice evidence of other processes pausing at the same time, or unexpected clock discontinuities, investigate the infrastructure on which you are running {{es}}.
 
 * **Packet captures**: Packet captures reveal system-level and network-level faults, especially if you capture the network traffic simultaneously at all relevant nodes and analyze it alongside the {{es}} logs from those nodes. You should be able to observe any retransmissions, packet loss, or other delays on the connections between the nodes.
 
