@@ -111,9 +111,9 @@ This example installs {{es}} by deploying the `eck-elasticsearch` chart on its o
 helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-namespace
 ```
 
-## Upgrade or change {{stack}} configuration with Helm [k8s-upgrade-modify-helm]
+## Upgrade or change your {{stack}} configuration with Helm [k8s-upgrade-modify-helm]
 
-Whether you want to upgrade your {{stack}} components to a new version or modify the configuration of your existing installation (known as a `release`), you use the [`helm upgrade`](https://helm.sh/docs/helm/helm_upgrade/) command. The key principle is to use the same options and values you used during installation, along with any changes you want to apply.
+To upgrade your {{stack}} components to a new version or modify the configuration of your existing installation (known as a `release`), use the [`helm upgrade`](https://helm.sh/docs/helm/helm_upgrade/) command. The key principle is to use the same options and values you used during installation, along with any changes you want to apply.
 
 The `helm upgrade` command requires the following arguments:
 - The name of the release to update, which must match the name used with `helm install`.
@@ -129,11 +129,11 @@ By default, `helm upgrade` uses the latest available version of the chart unless
 There is an important distinction between the Helm chart version and the {{stack}} component version:
 
 - **Chart version**: The version of the Helm chart itself (for example, `eck-stack` version 0.17.0). You can specify this using the `--version` flag in your Helm `install` or `upgrade` commands.
-- **Component version**: The version of a {{stack}} component (for example, {{es}} 8.15.0 or {{kib}} 8.15.0). You can specify this in your values file or by using `--set` parameters.
+- **Component version**: The version of a {{stack}} component (for example, {{es}} {{version.stack}} or {{kib}} {{version.stack}}). You can specify this in your values file or by using `--set` parameters.
 
 Each chart version defines default {{stack}} component versions. Unless explicitly overridden, installing or upgrading the chart deploys those default versions.
 
-% When available we can tell users how to check the default {{stack}} version associated with each chart release. That's not feasible today and users are a bit blind on this regard.
+% When available we can tell users how to check the default {{stack}} version associated with each chart release. That's not feasible today.
 ::::
 
 All examples in this section assume that your release was installed using the `eck-stack` Helm chart. Adapt the examples if you deployed the [individual charts](#individual-chart) directly.
@@ -152,7 +152,7 @@ By default, upgrading the Helm chart also upgrades the {{stack}} components to t
 
 ### Upgrade to specific {{stack}} version
 
-If for example you want to upgrade the {{stack}} components to a later version that is not the default for the Helm chart, you can explicitly set the component versions using Helm values or `--set` options.
+If you want to upgrade the {{stack}} components to a later version that is not the default for the Helm chart, or you want to update your Helm chart without upgrading the {{stack}}, you can explicitly set the component versions using Helm values or `--set` options.
 
 The following examples show both ways to upgrade the release to the latest available version of the Helm chart and all {{stack}} components to version {{version.stack}}.
 
@@ -160,7 +160,7 @@ The following examples show both ways to upgrade the release to the latest avail
 
 Use `--set` options to override the component versions directly from the command line:
 
-```sh
+```sh subs=true
 helm repo update <1>
 helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack \
   --set eck-elasticsearch.version={{version.stack}} \ <2>
@@ -197,33 +197,33 @@ For example, if you installed the [quickstart release](#k8s-install-elasticsearc
 
 1. Create a values file with the desired configuration, and save it as `custom-values.yaml`:
 
-```yaml
-eck-elasticsearch:
-  nodeSets:
-  - name: default
-    count: 3
+   ```yaml
+   eck-elasticsearch:
+     nodeSets:
+     - name: default
+       count: 3
 
-eck-kibana:
-  http:
-    service:
-      spec:
-        # This deploys a load balancer in a cloud service provider, where supported.
-        type: LoadBalancer
-```
+   eck-kibana:
+     http:
+       service:
+         spec:
+           # This deploys a load balancer in a cloud service provider, where supported.
+           type: LoadBalancer
+   ```
 
 2. Apply the configuration using `helm upgrade`:
 
-```sh
-helm upgrade es-kb-quickstart elastic/eck-stack \
-  -n elastic-stack \
-  -f custom-values.yaml
-```
+   ```sh
+   helm upgrade es-kb-quickstart elastic/eck-stack \
+     -n elastic-stack \
+     -f custom-values.yaml
+   ```
 
 ::::{warning}
-The previous example also upgrades the {{stack}} components if a newer Helm chart version is available. To avoid this, [identify the chart version](#show-versions) currently used by your release and include the `--version` option when running `helm upgrade`.
+This example also upgrades the {{stack}} components if a newer Helm chart version is available. To avoid this, [identify the chart version](#show-versions) currently used by your release and include the `--version` option when running `helm upgrade`.
 ::::
 
-## Adding Ingress to the {{stack}} [k8s-eck-stack-ingress]
+## Add Ingress to the {{stack}} [k8s-eck-stack-ingress]
 
 :::{admonition} Support scope for Ingress Controllers
 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is a standard Kubernetes concept. While ECK-managed workloads can be publicly exposed using ingress resources, and we provide [example configurations](/deploy-manage/deploy/cloud-on-k8s/recipes.md), setting up an Ingress controller requires in-house Kubernetes expertise.
@@ -314,13 +314,12 @@ helm show values elastic/eck-logstash
 
 ## View available chart versions [show-versions]
 
-To view the available versions of a Helm chart, update the local chart cache and use the `helm repo search` command with `--versions` option:
+To view the available versions of a Helm chart, update the local chart cache and use the `helm repo search` command with `--versions` option. You can use this flag with `eck-stack` or [individual charts](#k8s-eck-stack-individual-components).
 
 ```sh
 helm repo update
-helm repo search elastic/eck-stack --versions <1>
+helm repo search elastic/eck-stack --versions
 ```
-1. Applicable to `eck-stack` or the [individual charts](#k8s-eck-stack-individual-components)
 
 To view the version associated with an installed release, check the **CHART** column of the `helm list` command output. For example:
 
