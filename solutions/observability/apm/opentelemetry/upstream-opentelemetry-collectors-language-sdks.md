@@ -21,7 +21,7 @@ The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means lo
 To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/opentelemetry/index.md).
 
 ::::{important}
-The Elastic Distribution of OpenTelemetry Collector (EDOT Collector) include additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to contrib OpenTelemetry](opentelemetry:///reference/compatibility/edot-vs-upstream.md) for a comparison.
+The Elastic Distribution of OpenTelemetry Collector (EDOT Collector) include additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md) for a comparison.
 ::::
 
 ## Send data from a contrib OpenTelemetry Collector [apm-connect-open-telemetry-collector]

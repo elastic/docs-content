@@ -9,10 +9,10 @@ products:
 
 # Cross-cluster search and detection rules [rules-cross-cluster-search]
 
-[Cross-cluster search](../../search/cross-cluster-search.md) is an {{es}} feature that allows one cluster (the *local* cluster) to query data in a separate cluster (the *remote* cluster). {{elastic-sec}}'s detection rules can perform a cross-cluster search to query data in remote clusters.
+[Cross-cluster search](/explore-analyze/cross-cluster-search.md) is an {{es}} feature that allows one cluster (the *local* cluster) to query data in a separate cluster (the *remote* cluster). {{elastic-sec}}'s detection rules can perform a cross-cluster search to query data in remote clusters.
 
 ::::{admonition} Requirements
-* To learn about the requirements for using cross-cluster search in the {{stack}}, refer to [Cross-cluster search](../../search/cross-cluster-search.md). 
+* To learn about the requirements for using cross-cluster search in the {{stack}}, refer to [Cross-cluster search](/explore-analyze/cross-cluster-search.md). 
 * Using cross-cluster search for {{esql}} rules in the {{stack}} requires an [Enterprise subscription](https://www.elastic.co/pricing). 
 
 ::::

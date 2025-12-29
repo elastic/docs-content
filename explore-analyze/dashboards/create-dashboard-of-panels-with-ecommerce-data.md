@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-ecommerce-data.html
+description: Step-by-step tutorial for creating a Kibana dashboard with time series visualizations to analyze eCommerce sales trends and patterns.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,9 +11,9 @@ products:
 
 # Create a dashboard with time series charts [create-a-dashboard-of-panels-with-ecommerce-data]
 
-In this tutorial, you’ll use the ecommerce sample data to analyze sales trends, but you can use any type of data to complete the tutorial.
+Learn how to create time series visualizations and build a dashboard that tracks trends over time. This tutorial uses eCommerce sample data to analyze sales patterns, but you can apply these techniques to any time-based data.
 
-When you’re done, you’ll have a complete overview of the sample web logs data.
+When you're done, you'll have a complete dashboard showing sales trends, revenue patterns, and customer behavior over time.
 
 :::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
 :alt: Final dashboard with eCommerce sample data
@@ -70,7 +71,7 @@ To analyze the data with a custom time interval, create a bar chart that shows y
 
 To identify the 75th percentile of orders, add a reference line:
 
-1. In the layer pane, click **Add layer > Reference lines**.
+1. In the layer pane, click {icon}`plus_in_square` **Add layer > Reference lines**.
 2. Click **Static value**.
 
     1. Click **Quick function**, then click **Percentile**.
@@ -155,7 +156,7 @@ To analyze multiple visualization types, create an area chart that displays the 
 
 Add a layer to display the customer traffic:
 
-1. In the layer pane, click **Add layer > Visualization > Line**.
+1. In the layer pane, click {icon}`plus_in_square` **Add layer > Visualization > Line**.
 2. From the **Available fields** list, drag **customer_id** to the **Vertical Axis** field in the second layer.
 3. In the layer pane, click **Unique count of customer_id**.
 

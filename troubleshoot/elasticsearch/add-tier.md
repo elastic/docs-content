@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-tier.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -25,10 +20,9 @@ In order to allow indices to be allocated, follow these steps to add the [data t
 
 :::::::{tab-set}
 
-::::::{tab-item} {{ech}}
+::::::{tab-item} {{kib}}
 In order to get the shards assigned we need enable a new tier in the deployment.
 
-**Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** panel, click the name of your deployment.
@@ -70,7 +64,7 @@ In order to get the shards assigned we need enable a new tier in the deployment.
 8. Navigate to the bottom of the page and click the **Save** button.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{tab-item} API
 In order to get the shards assigned you can add more nodes to your {{es}} cluster and assign the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
 
 To determine which tier an index requires for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
