@@ -24,7 +24,7 @@ You can run the following steps using either [API console](/explore-analyze/quer
 To learn how to assign tiers to your data nodes, refer to [](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md).
 :::
 
-To get the shards assigned, call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API, which will resolve the conflicting routing configurations towards using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This also future-proofs the system by migrating the index templates and ILM policies if needed.
+To get the shards assigned, call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API, which resolves the conflicting routing configurations to using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This also future-proofs the system by migrating the index templates and ILM policies if needed.
 
 1. [Stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {{ilm}}
 
