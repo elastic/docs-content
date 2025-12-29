@@ -11,7 +11,7 @@ products:
 
 # View and manage SLOs in {{product.observability}}
 
-Manage your service level objectives (SLOs) from the **SLO Management** page. View SLO definitions, monitor the health of your SLOs, and perform actions such as editing, cloning, purging data, and deleting SLOs.
+Manage your service level objectives (SLOs) from the **SLO Management** page. View SLO definitions, monitor the health of your SLOs, and perform actions such as purging data, checking SLO health, and deleting SLOs.
 
 To open the **SLO management** page:
 
@@ -31,6 +31,8 @@ The **Health** column of the SLO management table shows the following:
 
 * **Healthy**: the SLO transforms are operating as expected.
 * **Needs attention**: the SLO transforms are not operating as expected and needs attention.
+
+For SLOs that have issues with their transforms, select **Needs attention** to inspect the transforms with issues.
 
 For more on SLO transforms and troubleshooting SLO health, refer to [Understanding SLO internals](../../../troubleshoot/observability/troubleshoot-service-level-objectives-slos.md#slo-understanding-slos).
 
