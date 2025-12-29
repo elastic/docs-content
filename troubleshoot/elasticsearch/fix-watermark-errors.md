@@ -28,7 +28,7 @@ To prevent a full disk, when a node reaches this watermark, {{es}} [blocks write
 :::
 
 
-## Monitor rebalancing [fix-watermark-errors-rebalance]
+## Monitor rebalancin [fix-watermark-errors-rebalance]
 
 To verify that shards are moving off the affected node until it falls below high watermark., use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) and [cat recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery):
 
