@@ -5,9 +5,6 @@ mapped_pages:
 applies_to:
   stack:
   deployment:
-    eck:
-    ess:
-    ece:
     self:
 products:
   - id: elasticsearch
