@@ -17,7 +17,8 @@ How-to guides include two essential components:
 
 How-to guides focus on a single, self-contained task. For longer procedural content, use a tutorial.
 
-% TODO: Add eventual snippet that disambiguates how-tos, tutorials, and quickstarts -->
+::::{include} /contribute-docs/content-types/_snippets/how-to-tutorial-disambiguation-note.md
+::::
 
 ## Best practices
 
