@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/allow-all-index-allocation.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -22,14 +17,14 @@ The allocation of data can be controlled using the [enable allocation configurat
 
 Forgetting to re-allow all data allocation can lead to unassigned shards.
 
+In order to get the shards assigned we’ll need to change the value of the [configuration](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-routing-allocation-enable-setting) that restricts the assignment of the shards to `all`.
+
 In order to (re)allow all data to be allocated follow these steps:
 
 :::::::{tab-set}
 
-::::::{tab-item} {{ech}}
-In order to get the shards assigned we’ll need to change the value of the [configuration](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-routing-allocation-enable-setting) that restricts the assignemnt of the shards to `all`.
+::::::{tab-item} Using {{kib}}
 
-**Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** panel, click the name of your deployment.
@@ -79,8 +74,7 @@ In order to get the shards assigned we’ll need to change the value of the [con
     1. The new value for the `allocation.enable` configuration for the `my-index-000001` index is changed to allow all the shards to be allocated.
 ::::::
 
-::::::{tab-item} Self-managed
-In order to get the shards assigned we’ll need to change the value of the [configuration](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-routing-allocation-enable-setting) that restricts the assignemnt of the shards to `all`.
+::::::{tab-item} Using the {{es}} API
 
 1. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
 
