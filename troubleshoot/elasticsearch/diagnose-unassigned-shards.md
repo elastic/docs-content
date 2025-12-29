@@ -19,7 +19,7 @@ There are multiple reasons why shards might get unassigned, ranging from misconf
 
 To diagnose the unassigned shards in your deployment, use the following steps.
 
-You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [Elasticsearch API](/reference/elasticsearch/rest-apis/index.md) calls.
+You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 1. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
