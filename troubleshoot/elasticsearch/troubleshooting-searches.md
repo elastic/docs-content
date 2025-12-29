@@ -5,11 +5,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  serverless:
 products:
   - id: elasticsearch
   - id: cloud-serverless
@@ -17,12 +13,12 @@ products:
 
 # Troubleshoot searches [troubleshooting-searches]
 
-When you query your data, Elasticsearch may return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
+When you query your data, {{es}} may return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
 
 
 ## Ensure the data stream, index, or alias exists [troubleshooting-searches-exists]
 
-Elasticsearch returns an `index_not_found_exception` when the data stream, index or alias you try to query does not exist. This can happen when you misspell the name or when the data has been indexed to a different data stream or index.
+{{es}} returns an `index_not_found_exception` when the data stream, index or alias you try to query does not exist. This can happen when you misspell the name or when the data has been indexed to a different data stream or index.
 
 Use the [exists API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-exists) to check whether a data stream, index, or alias exists:
 
@@ -183,9 +179,9 @@ GET my-index-000001/_search?sort=@timestamp:desc&size=1
 
 ## Validate, explain, and profile queries [troubleshooting-searches-validate-explain-profile]
 
-When a query returns unexpected results, Elasticsearch offers several tools to investigate why.
+When a query returns unexpected results, {{es}} offers several tools to investigate why.
 
-The [validate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-validate-query) enables you to validate a query. Use the `rewrite` parameter to return the Lucene query an Elasticsearch query is rewritten into:
+The [validate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-validate-query) enables you to validate a query. Use the `rewrite` parameter to return the Lucene query an {{es}} query is rewritten into:
 
 ```console
 GET /my-index-000001/_validate/query?rewrite=true
@@ -234,6 +230,9 @@ For static settings, you need to create a new index with the correct settings. N
 
 
 ## Find slow queries [troubleshooting-slow-searches]
+```{applies_to}
+stack:
+```
 
 [Slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
