@@ -1,7 +1,7 @@
 ---
 navigation_title: View and manage SLOs
 applies_to:
-  stack: ga
+  stack: ga 9.1
   serverless:
     observability: ga
 products:
@@ -35,6 +35,9 @@ The **Health** column of the SLO management table shows the following:
 For more on SLO transforms and troubleshooting SLO health, refer to [Understanding SLO internals](../../../troubleshoot/observability/troubleshoot-service-level-objectives-slos.md#slo-understanding-slos).
 
 ## Purge stale SLO instances
+```{applies_to}
+stack: ga 9.3
+```
 
 A stale SLO instance hasn't received new data within the **Stale SLOs threshold**, which you can set in the **SLOs Settings**.
 
@@ -43,9 +46,6 @@ From the **Overview** on the **SLOs** page, you can see the number of **Stale** 
 Occasionally, you might want to delete these stale instances. To purge your stale SLO instances:
 
 ### Purge all stale SLO instances
-```{applies_to}
-stack: ga 9.3
-```
 
 1. From the **SLO management** page, select **Actions** → **Purge stale instances**.
 1. If you don't want to delete stale instances according to the predefined **Stale SLOs threshold** setting, you can update the **Stale threshold**.
@@ -59,13 +59,13 @@ stack: ga 9.3
 1. Select **Purge**.
 
 ## Purge SLO {{rollup}} data
+```{applies_to}
+stack: ga 9.1
+```
 
 Rollup functionality summarizes old, high-granularity data into a reduced granularity format for long-term storage. Occasionally, you might want to delete this {{rollup}} data. To purge your {{rollup}} data:
 
 **Bulk purge SLO {{rollup}} data**
-```{applies_to}
-stack: ga 9.3
-```
 
 1. From the **SLO management** page, select the checkbox next to the SLOs from which you want to purge {{rollup}} data.
 1. From the **Selected [number] SLO** menu, select **Purge {{rollup}} data**.
