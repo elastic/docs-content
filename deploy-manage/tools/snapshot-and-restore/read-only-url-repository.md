@@ -66,3 +66,4 @@ PUT _snapshot/my_read_only_url_repository
     URLs using the `file` protocol must point to the location of a shared filesystem accessible to all master and data nodes in the cluster. This location must be registered in the `path.repo` setting, in the same way as when configuring a [shared filesystem repository](./shared-file-system-repository.md), and it must contain the snapshot data. You don’t need to set `path.repo` when using URLs with the `ftp`, `http`, `https`, or `jar` protocols.
 
 
+
