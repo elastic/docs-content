@@ -6,7 +6,7 @@ description: "Guidelines for writing effective tutorials in the Elastic document
 
 This page provides guidelines for writing effective tutorials in the Elastic docs.
 
-## What is a tutorial?
+## What is a tutorial
 
 A tutorial is a comprehensive, hands-on learning experience that guides users through completing a meaningful task from start to finish. You can think of a tutorial as a chain of related [how-to guides](/contribute-docs/content-types/how-tos.md), with additional explanatory context to help users learn as they work.
 
@@ -29,9 +29,9 @@ When you create tutorials, follow these best practices:
 - **Choose your tutorial approach:** Tutorials can be feature-focused or scenario-driven. Both are valid. Refer to [examples](#examples) for inspiration.
   - **Feature-focused:** Explore features or functionality (useful for deep dives into specific feature sets)
   - **Scenario-driven:** Work through a real-world use case (useful for demonstrating end-to-end solutions)
-- **Gradually introduce complexity:** Start with simple concepts and use progressive disclosure. Each step should build on previous steps.
+- **Gradually introduce complexity:** Start with simple concepts and use progressive disclosure. Each step should build on the previous steps.
 - **Provide context when needed:** Unlike how-to guides, tutorials benefit from explanations of *why* something works or why a particular approach is recommended. That said, it's important to keep the tutorial as concise and focused as possible. Err on the side of brevity.
-- **Use realistic examples:** Create examples that mirror real-world scenarios users will encounter where possible.
+- **Use realistic examples:** Create examples that mirror real-world scenarios users will meet where possible.
 - **Guide the learner:** Assume users are new to the feature or workflow. Provide encouragement and explain what they're accomplishing at key milestones.
 - **Include checkpoints:** Add verification steps throughout so users can confirm they're on the right track before continuing.
 - **Test your tutorial:** Authors and reviewers should complete the entire tutorial from scratch to identify gaps, errors, or unclear instructions.
@@ -70,7 +70,7 @@ The following elements are required in tutorials:
   Use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/) for visual flow, or add subheadings to break complex steps into subsections.
   :::
 - **Checkpoints and results:** After significant steps, show users what they should see or what state their system should be in.
-- **[Code annotations](https://elastic.github.io/docs-builder/syntax/code/#code-callouts):** Explain important lines within code blocks to help users understand the code. Annotations can help reduce the need for additional text in the body of the tutorial, keeping the tutorial concise and focused. It's also easier for a reader to skip reading annotations if they want to work through the tutorial quickly.
+- **[Code annotations](https://elastic.github.io/docs-builder/syntax/code/#code-callouts):** Explain important lines within code blocks to help users understand the code. Annotations can help reduce the need for extra text in the body of the tutorial, keeping the tutorial concise and focused. This makes it easier for a reader to simply run through the steps in a hurry.
 - **Next steps:** Suggest follow-up tutorials, related features to explore, or ways to expand on what they built.
 - **Related pages:** Links to related documentation such as conceptual topics, reference material, how-to guides, or troubleshooting resources.
 
@@ -79,7 +79,7 @@ The following elements are required in tutorials:
 Include the following when they add value:
 
 - **[Screenshots](https://elastic.github.io/docs-builder/syntax/images/#screenshots):** Add visual aids for UI-based steps when they improve clarity. Use screenshots sparingly as they require maintenance.
-- **Explanatory callouts:** Use [admonitions](https://elastic.github.io/docs-builder/syntax/admonitions/) to provide additional context, tips, or explanations without interrupting the main flow.
+- **Explanatory callouts:** Use [admonitions](https://elastic.github.io/docs-builder/syntax/admonitions/) to provide extra context, tips, or explanations without interrupting the main flow.
 - **Troubleshooting tips:** Mention common issues learners might encounter and how to resolve them.
 - **Time estimates:** Indicate how long each major section or the overall tutorial takes to complete.
 - A **summary:** Recap what users learned and accomplished in the tutorial. Reinforce the key learning objectives.
