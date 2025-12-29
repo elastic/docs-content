@@ -90,7 +90,7 @@ This step covers upgrading your deployment from 7.17.x to 8.19.x, following the 
 
 It's highly recommended to start this upgrade from the latest 7.17.x patch release to ensure that you’re using the most recent version of the Elastic Upgrade Assistant. You should also upgrade to the latest available 8.19.x patch release so that the same benefits apply when you later upgrade to 9.x.
 
-:::::{note}
+:::::{warning}
 If you use the [{{elastic-sec}} solution](/solutions/security.md), then you need to perform additional steps as part of the upgrade process. Review [Upgrade {{elastic-sec}} from 7.17 to 8.x](https://www.elastic.co/guide/en/security/8.19/upgrade-7.17-8x.html) before you begin your upgrade.
 
 In particular:
