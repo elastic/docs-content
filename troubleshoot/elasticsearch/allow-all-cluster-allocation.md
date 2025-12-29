@@ -22,7 +22,7 @@ To (re)allow all data to be allocated, follow these steps:
 
 :::::::{tab-set}
 
-::::::{tab-item} {{kib}}
+::::::{tab-item} Using {{kib}}
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** panel, click the name of your deployment.
@@ -71,7 +71,7 @@ To (re)allow all data to be allocated, follow these steps:
     1. The new value for the `allocation.enable` system-wide configuration is changed to allow all the shards to be allocated.
 ::::::
 
-::::::{tab-item} API
+::::::{tab-item} Using the {{es}} API
 
 1. Inspect the `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
 
