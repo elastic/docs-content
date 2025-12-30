@@ -22,6 +22,13 @@ To open the **SLO management** page:
 1. Navigate to the **SLOs** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Manage SLOs**.
 
+## Permissions
+
+Actions like deleting SLOs and purging SLO data and require the **SLO editor** role. Users with the **SLO viewer** role can use the SLO Management page to find unhealthy SLOs that need attention.
+
+Refer to [Configure SLO access](./configure-service-level-objective-slo-access.md) for more information on creating SLO roles.
+
+
 ## Filter SLOs
 
 From the SLO Management page, use the search bar to find SLOs by name. Use the **Filter tags** menu to include or exclude SLOs from the view based on the defined tags.
