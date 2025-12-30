@@ -73,7 +73,7 @@ Support for optional parameters with default values in {{esql}} tools is an API-
 
 Optional parameters must have default values that are automatically applied when the agent doesn't provide a value. This ensures valid query syntax and consistent behavior.
 
-When an agent calls a tool without specifying parameters, it will automatically use the defaults.
+When an agent calls a tool without specifying parameters, it automatically uses the defaults.
 When the agent provides a value, it overrides the default.
 
 Refer to the [API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools) for details about the {{esql}} tools API.
