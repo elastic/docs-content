@@ -1,9 +1,9 @@
 ---
 navigation_title: Set up privileged user monitoring
 applies_to:
-  stack: preview 9.1
+  stack: ga 9.3, preview 9.1
   serverless:
-    security: preview
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
