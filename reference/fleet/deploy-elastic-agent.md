@@ -7,11 +7,14 @@ applies_to:
 products:
   - id: fleet
   - id: elastic-agent
+sub:
+  component_name: "Elastic Agent"
+  component_ref: "{{agent}}"
 ---
 
 # How to deploy {{agent}} [deploy-elastic-agent]
 
-This guide provides comprehensive information about deploying {{agent}}, including configuration flags, environment variables, mutual TLS (mTLS) setup, and best practices for managing configuration through policies versus command-line interface (CLI).
+This guide covers deploying {{agent}}, including configuration flags, environment variables, mutual TLS (mTLS) setup, and best practices for managing configuration through policies and CLI.
 
 For platform-specific installation instructions, refer to:
 - [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md)
@@ -106,9 +109,7 @@ elastic-agent install \
   --elastic-agent-cert-key=/path/to/agent-client.key
 ```
 
-::::{note}
-When using mTLS between {{agent}} and {{fleet-server}}, the {{fleet-server}} must be configured with `--fleet-server-client-auth=required` (or `optional`) and the corresponding CA certificates. For more information, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md).
-::::
+When using mTLS between {{agent}} and {{fleet-server}}, {{fleet-server}} must be configured with `--fleet-server-client-auth=required` (or `optional`) and the corresponding CA certificates. For more information, refer to [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md).
 
 ## {{agent}} to {{es}}, {{ls}} or other outputs [deploy-elastic-agent-ea-to-outputs]
 
@@ -130,11 +131,9 @@ The following environment variables can be used for output configuration:
 | `ELASTICSEARCH_API_KEY` | API key for authentication | Yes - configured in {{es}} output |
 | `ELASTICSEARCH_CA` | Path to CA certificate | Yes - configured in {{es}} output |
 
-::::{note}
 Environment variables are typically used for containerized deployments or when using the [env provider](/reference/fleet/env-provider.md) to reference values in policies.
 
 For standalone {{agent}}s, output configuration is done in the `elastic-agent.yml` file. For more information, refer to [Configure outputs for standalone {{agent}}s](/reference/fleet/elastic-agent-output-configuration.md).
-::::
 
 ### One-way TLS configuration [deploy-elastic-agent-ea-to-outputs-one-way]
 
@@ -168,13 +167,11 @@ ssl.certificate: /path/to/agent-client.crt
 ssl.key: /path/to/agent-client.key
 ```
 
-::::{important}
 When configuring mTLS for {{agent}} to {{es}} connections:
-* The certificate and key paths must be available on all hosts running {{agent}}s. Alternatively, you can embed the certificates directly in the YAML configuration.
+* The certificate and key paths must be available on all hosts running {{agent}}s. Alternatively, embed the certificates directly in the YAML configuration.
 * The CA used to sign the agent certificate must be trusted by {{es}}.
 
 For more information, refer to [Mutual TLS connection](/reference/fleet/mutual-tls.md#mutual-tls-on-premise) and [Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
-::::
 
 ### {{ls}} output configuration [deploy-elastic-agent-ea-to-outputs-logstash]
 
@@ -194,7 +191,8 @@ For more information, refer to [Configure {{ls}} output](/reference/fleet/ls-out
 
 ## Policy and CLI precedence [deploy-elastic-agent-policy-precedence]
 
-Understanding what can be configured using policy and what must be provided using CLI or environment variables is crucial for managing {{agent}} deployments.
+:::{include} /reference/fleet/_snippets/policy-cli-precedence-intro.md
+:::
 
 ### Must be provided using CLI or environment variables [deploy-elastic-agent-must-cli]
 
@@ -222,19 +220,12 @@ The following settings can be set using CLI during enrollment, but can also be u
 
 ### Configuration hierarchy [deploy-elastic-agent-config-hierarchy]
 
-The configuration precedence is as follows (highest to lowest):
+:::{include} /reference/fleet/_snippets/config-hierarchy.md
+:::
 
-1. CLI flags (during installation/enrollment)
-2. Environment variables (during installation/enrollment)
-3. Policy configuration (after enrollment, downloaded from {{fleet-server}})
-
-Settings provided using CLI or environment variables during enrollment are used for the initial connection to {{fleet-server}}. After enrollment, the {{agent}} downloads its policy from {{fleet-server}}, and policy settings take precedence for most configuration options (except those listed in the [Must be provided using CLI or environment variables](#deploy-elastic-agent-must-cli) section above).
-
-::::{note}
 If the agent policy contains mTLS configuration settings, those settings take precedence over those used during enrollment. This includes both the mTLS settings used for connectivity between {{agent}} and {{fleet-server}}, and the settings used between {{agent}} and its specified output.
 
 The initial TLS, mTLS, or proxy configuration settings specified when {{agent}} is enrolled cannot be removed through the agent policy; they can only be updated.
-::::
 
 ## Mutual TLS (mTLS) configuration [deploy-elastic-agent-mtls]
 
@@ -280,42 +271,24 @@ Configure the following settings:
    * Configure the output to require client certificates
    * Ensure the CA used to sign agent certificates is trusted by the output
 
-::::{note}
 For {{es}} outputs, mTLS configuration is done in the output settings. For {{ls}} outputs, mTLS configuration is also done in the output settings, but you might also need to configure {{ls}} itself to require client certificates.
 
 For more information, refer to [Mutual TLS connection](/reference/fleet/mutual-tls.md#mutual-tls-on-premise) and [Secure {{ls}} connections](/reference/fleet/secure-logstash-connections.md).
-::::
 
 ## Best practices [deploy-elastic-agent-best-practices]
 
 The following sections provide best practices for deploying and managing {{agent}}:
 
-### Certificate management [deploy-elastic-agent-best-practices-certs]
+:::{include} /reference/fleet/_snippets/best-practices-certificates.md
+:::
 
-Follow these best practices for managing certificates:
-
-* Never use self-signed certificates in production. Generate certificates using a trusted CA or your organization's CA.
-* When generating certificates, include all hostnames and IP addresses that will be used in the certificate's Subject Alternative Name (SAN) list.
-* Store private keys securely and use appropriate file permissions. Consider using encrypted keys with passphrases.
-* Plan for certificate rotation. For more information, refer to [Certificate rotation](/reference/fleet/certificates-rotation.md).
-
-### Configuration management [deploy-elastic-agent-best-practices-config]
-
-Follow these best practices for managing configuration:
-
-* After initial enrollment, manage most settings through {{fleet}} policies rather than CLI flags.
-* Document your configuration to keep track of which settings are configured using CLI, environment variables, and policies.
-* Test policy changes in a non-production environment before applying to production.
-* For containerized {{agent}}s, use environment variables to provide host-specific settings while keeping policies generic.
+:::{include} /reference/fleet/_snippets/best-practices-config-management.md
+:::
 
 ### Security considerations [deploy-elastic-agent-best-practices-security]
 
-Follow these security best practices:
-
-* Use mutual TLS for both {{agent}} to {{fleet-server}} and {{fleet-server}} to {{agent}} to output connections in high-security environments.
-* Prefer API keys or service tokens over basic authentication for output connections.
-* Consider network segmentation to limit which hosts can connect to {{fleet-server}} and outputs.
-* Keep {{agent}} versions up to date to benefit from security patches.
+:::{include} /reference/fleet/_snippets/security-considerations-common.md
+:::
 
 ## Next steps [deploy-elastic-agent-next]
 

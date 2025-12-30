@@ -5,10 +5,11 @@ toc:
   - file: migrate-from-beats-to-elastic-agent.md
     children:
       - file: migrate-auditbeat-to-agent.md
+  - file: deploy-fleet-server.md
+  - file: deploy-elastic-agent.md
   - file: deployment-models.md
     children:
       - file: fleet-server.md
-      - file: deploy-fleet-server.md
       - file: add-fleet-server-cloud.md
       - file: add-fleet-server-on-prem.md
       - file: add-fleet-server-mixed.md

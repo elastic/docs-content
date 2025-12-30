@@ -7,11 +7,14 @@ applies_to:
 products:
   - id: fleet
   - id: elastic-agent
+sub:
+  component_name: "Fleet Server"
+  component_ref: "{{fleet-server}}"
 ---
 
 # How to deploy {{fleet-server}} [deploy-fleet-server]
 
-This guide provides comprehensive information about deploying {{fleet-server}}, including configuration flags, environment variables, mutual TLS (mTLS) setup, and best practices for managing configuration through policies and command-line interface (CLI).
+This guide covers deploying {{fleet-server}}, including configuration flags, environment variables, mutual TLS (mTLS) setup, and best practices for managing configuration through policies and CLI.
 
 For platform-specific deployment instructions, refer to:
 * [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md)
@@ -74,11 +77,9 @@ You can also configure the connection using environment variables instead of CLI
 | `FLEET_SERVER_SERVICE_TOKEN` | Service token value | `--fleet-server-service-token` | No - must be CLI or environment variable |
 | `FLEET_SERVER_SERVICE_TOKEN_PATH` | Path to service token file | `--fleet-server-service-token-path` | No - must be CLI or environment variable |
 
-::::{important}
-The {{es}} host URL and CA information must be configured in both the {{es}} output associated with the {{fleet-server}} policy AND in the environment variables or CLI flags provided during {{fleet-server}} installation. The environment variables are only used during the bootstrap process. After bootstrap, the {{fleet-server}} uses the configuration from the policy's {{es}} output.
+The {{es}} host URL and CA information must be configured in both the {{es}} output associated with the {{fleet-server}} policy and in the environment variables or CLI flags provided during installation. Environment variables are only used during the bootstrap process. After bootstrap, {{fleet-server}} uses the configuration from the policy's {{es}} output.
 
-If the URL that {{fleet-server}} will use to access {{es}} is different from the {{es}} URL used by other clients, create a dedicated {{es}} output for {{fleet-server}}.
-::::
+If the URL that {{fleet-server}} uses to access {{es}} differs from the {{es}} URL used by other clients, create a dedicated {{es}} output for {{fleet-server}}.
 
 ### One-way TLS configuration [deploy-fleet-server-fs-to-es-one-way]
 
@@ -106,9 +107,7 @@ elastic-agent install \
   --fleet-server-es-cert-key=/path/to/fleet-server-es-client.key
 ```
 
-::::{note}
-When configuring mTLS for {{fleet-server}} to {{es}}, you must also configure the corresponding settings in the {{es}} output in {{fleet}} settings. For more information, refer to [Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
-::::
+When configuring mTLS for {{fleet-server}} to {{es}}, also configure the corresponding settings in the {{es}} output in {{fleet}} settings. For more information, refer to [Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
 
 ## {{agent}} to {{fleet-server}} [deploy-fleet-server-ea-to-fs]
 
@@ -147,9 +146,7 @@ You can also configure these settings using environment variables instead of CLI
 | `FLEET_SERVER_TIMEOUT` | Timeout for {{fleet-server}} readiness | `--fleet-server-timeout` | No - must be CLI or environment variable |
 | `FLEET_URL` | URL that {{fleet-server}} uses to access itself during bootstrap | N/A | No - must be CLI or environment variable |
 
-::::{important}
-The `FLEET_URL` environment variable is used by {{fleet-server}} during its bootstrap process to access its own endpoint. This URL must match the hostname used in the {{fleet-server}} certificate's Subject Alternative Name (SAN) list. In {{k8s}} environments, if the service is not immediately available, you might need to use `https://localhost:8220` and ensure `localhost` is included in the certificate's SAN.
-::::
+The `FLEET_URL` environment variable is used by {{fleet-server}} during bootstrap to access its own endpoint. This URL must match the hostname in the {{fleet-server}} certificate's Subject Alternative Name (SAN) list. In {{k8s}} environments, if the service is not immediately available, use `https://localhost:8220` and ensure `localhost` is included in the certificate's SAN.
 
 ### One-way TLS configuration [deploy-fleet-server-ea-to-fs-oneway]
 
@@ -180,13 +177,12 @@ elastic-agent install \
   --fleet-server-client-auth=required
 ```
 
-::::{note}
-When `--fleet-server-client-auth` is set to `optional` or `required`, {{fleet-server}} will verify client certificates presented by {{agent}}s using the CA certificates specified in `--certificate-authorities`. The {{agent}}s must be enrolled with the corresponding client certificates using `--elastic-agent-cert` and `--elastic-agent-cert-key` flags. For more information, refer to [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md).
-::::
+When `--fleet-server-client-auth` is set to `optional` or `required`, {{fleet-server}} verifies client certificates presented by {{agent}}s using the CA certificates specified in `--certificate-authorities`. {{agent}}s must be enrolled with the corresponding client certificates using `--elastic-agent-cert` and `--elastic-agent-cert-key` flags. For more information, refer to [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md).
 
 ## Policy and CLI precedence [deploy-fleet-server-policy-precedence]
 
-Understanding what can be configured using policy versus what must be provided using CLI or environment variables is crucial for managing {{fleet-server}} deployments.
+:::{include} /reference/fleet/_snippets/policy-cli-precedence-intro.md
+:::
 
 ### Must be provided using CLI or environment variables [deploy-fleet-server-must-cli]
 
@@ -215,13 +211,8 @@ The following settings can be set using CLI during installation, but can also be
 
 ### Configuration hierarchy [deploy-fleet-server-config-hierarchy]
 
-The configuration precedence is as follows (highest to lowest):
-
-1. CLI flags (during installation/enrollment)
-2. Environment variables (during installation/enrollment)
-3. Policy configuration (after enrollment, downloaded from {{fleet}})
-
-Settings provided using CLI or environment variables during installation are used for the initial bootstrap. After enrollment, the {{fleet-server}} downloads its policy from {{fleet}}, and policy settings take precedence for most configuration options (except those listed in the [Must be provided using CLI or environment variables](#deploy-fleet-server-must-cli) section above).
+:::{include} /reference/fleet/_snippets/config-hierarchy.md
+:::
 
 ## Mutual TLS (mTLS) configuration [deploy-fleet-server-mtls]
 
@@ -274,32 +265,18 @@ For more information, refer to [Mutual TLS connection](/reference/fleet/mutual-t
 
 The following sections provide best practices for deploying and managing {{fleet-server}}:
 
-### Certificate management [deploy-fleet-server-best-practices-certs]
+:::{include} /reference/fleet/_snippets/best-practices-certificates.md
+:::
 
-Follow these best practices for managing certificates:
+:::{include} /reference/fleet/_snippets/best-practices-config-management.md
+:::
 
-* Never use self-signed certificates in production. Generate certificates using a trusted CA or your organization's CA.
-* When generating {{fleet-server}} certificates, include all hostnames and IP addresses that {{agent}}s will use to connect in the certificate's Subject Alternative Name (SAN) list.
-* Store private keys securely and use appropriate file permissions. Consider using encrypted keys with passphrases.
-* Plan for certificate rotation. For more information, refer to [Certificate rotation](/reference/fleet/certificates-rotation.md).
-
-### Configuration management [deploy-fleet-server-best-practices-config]
-
-Follow these best practices for managing configuration:
-
-* After initial installation, manage most settings through {{fleet}} policies rather than CLI flags.
-* Document your configuration to keep track of which settings are configured using CLI, environment variables, and policies.
-* Test policy changes in a non-production environment before applying to production.
-* If {{fleet-server}} needs different {{es}} connection settings than other agents, create a dedicated {{es}} output for {{fleet-server}}.
+If {{fleet-server}} needs different {{es}} connection settings than other agents, create a dedicated {{es}} output for {{fleet-server}}.
 
 ### Security considerations [deploy-fleet-server-best-practices-security]
 
-Follow these security best practices:
-
-* Use mutual TLS for both {{fleet-server}} to {{es}} and {{agent}} to {{fleet-server}} connections in high-security environments.
-* Always use service tokens for {{fleet-server}} authentication with {{es}}. Never use basic authentication credentials.
-* Consider network segmentation to limit which hosts can connect to {{fleet-server}}.
-* Keep {{fleet-server}} and {{agent}} versions up to date to benefit from security patches.
+:::{include} /reference/fleet/_snippets/security-considerations-common.md
+:::
 
 ## Next steps [deploy-fleet-server-next]
 
