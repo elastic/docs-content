@@ -3,7 +3,10 @@ navigation_title: Deploy on-premises and self-managed
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html
 applies_to:
-  stack: ga
+  deployment:
+    ece: ga
+    self: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
