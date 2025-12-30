@@ -37,7 +37,7 @@ GET _cluster/health?filter_path=status,*_shards
 A healthy cluster has a green `status` and zero `unassigned_shards`. A yellow status means only replicas are unassigned. A red status means one or more primary shards are unassigned.
 
 :::{tip}
-:applies_to: {ece:, ech:}
+:applies_to: {ece:, ess:}
 For {{ece}} and {{ech}} deployments, you can also check cluster health from the deployment's **Monitoring** page in the {{ecloud}} Console or ECE Cloud UI. The Monitoring page provides detailed information on health issues, impacted areas, and troubleshooting support. Refer to [Cloud deployment health](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health) for more information.
 :::
 
