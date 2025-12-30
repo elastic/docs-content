@@ -13,7 +13,7 @@ products:
 :::::::{applies-switch}
 
 ::::::{applies-item} { ess: }
-In order to increase the disk capacity of the data nodes in your cluster:
+To increase the disk capacity of the data nodes in your cluster:
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** panel, select the gear under the **Manage deployment** column that corresponds to the name of your deployment.
@@ -47,7 +47,7 @@ In order to increase the disk capacity of the data nodes in your cluster:
 ::::::
 
 ::::::{applies-item} { self: }
-In order to increase the data node capacity in your cluster, you will need to calculate the amount of extra disk space needed.
+To increase the data node capacity in your cluster, you need to calculate the amount of extra disk space needed.
 
 1. First, retrieve the relevant disk thresholds that will indicate how much space should be available. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
 
