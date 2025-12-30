@@ -31,6 +31,7 @@ At the end of each round, the total token usage is displayed after the agent res
 :::{image} images/token-usage.png
 :screenshot:
 :width: 800px
+:alt: Screenshot of the token usage display, showing input and output token counts
 :::
 
 To view the raw JSON response including detailed token information, click the **View JSON** button. This opens a modal with the complete, raw response data:
@@ -38,4 +39,5 @@ To view the raw JSON response including detailed token information, click the **
 :::{image} images/token-usage-json-raw-response.png
 :screenshot:
 :width: 900px
+:alt: Screenshot of the JSON raw response modal
 :::
