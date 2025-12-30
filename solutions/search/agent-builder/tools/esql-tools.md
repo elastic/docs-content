@@ -99,6 +99,10 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 :alt: Creating an ES|QL tool with a parameterized query
 :::
 
+:::{note}
+For API examples, refer to [](/solutions/search/agent-builder/kibana-api.md#tools)
+:::
+
 ## Best practices
 
 - **Include [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) clauses**: Prevent returning excessive results by setting reasonable limits

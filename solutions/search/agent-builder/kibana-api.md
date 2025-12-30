@@ -151,7 +151,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 ::::
 
-**Example:** Create a tool with default values for optional parameters {applies_to}`stack: ga 9.3`
+**Example:** Create a tool with [default values](/solutions/search/agent-builder/tools/esql-tools.md#default-values-for-optional-parameters) for optional parameters {applies_to}`stack: ga 9.3`
 
 This example creates an ES|QL tool with optional parameters that have default values, which are automatically used when the agent doesn't provide them.
 
