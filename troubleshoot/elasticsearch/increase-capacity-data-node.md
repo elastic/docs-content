@@ -4,32 +4,27 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-capacity-data-node.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
 
 # Increase the disk capacity of data nodes [increase-capacity-data-node]
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} { ess: }
 In order to increase the disk capacity of the data nodes in your cluster:
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
-3. If autoscaling is available but not enabled, enable it. You can do this by clicking the button `Enable autoscaling` on a banner like the one below:
+2. On the **Hosted deployments** panel, select the gear under the **Manage deployment** column that corresponds to the name of your deployment.
+3. If autoscaling is available but not enabled, enable it by clicking the **Enable autoscaling** button in a banner like the one below:
 
     :::{image} /troubleshoot/images/elasticsearch-reference-autoscaling_banner.png
     :alt: Autoscaling banner
     :screenshot:
     :::
 
-    Or you can go to `Actions > Edit deployment`, check the checkbox `Autoscale` and click `save` at the bottom of the page.
+    Or you can go to **Actions > Edit deployment**, check the checkbox **Autoscale** and select **Save** from the bottom of the page.
 
     :::{image} /troubleshoot/images/elasticsearch-reference-enable_autoscaling.png
     :alt: Enabling autoscaling
@@ -43,17 +38,15 @@ In order to increase the disk capacity of the data nodes in your cluster:
     :screenshot:
     :::
 
-    or you can go to `Actions > Edit deployment` and look for the label `LIMIT REACHED` as shown below:
+    Alternatively, you can go to **Actions > Edit deployment** and look for the label `LIMIT REACHED` as shown below:
 
-    :::{image} /troubleshoot/images/elasticsearch-reference-reached_autoscaling_limits.png
-    :alt: Autoscaling limits reached
-    :screenshot:
-    :::
+    ![Autoscaling limits](/troubleshoot/images/elasticsearch-reference-reached_autoscaling_limits.png "Autoscaling limits reached")
 
-    If you are seeing the banner click `Update autoscaling settings` to go to the `Edit` page. Otherwise, you are already in the `Edit` page, click `Edit settings` to increase the autoscaling limits. After you perform the change click `save` at the bottom of the page.
+
+    If you are seeing the banner, click **Update autoscaling settings** to go to the **Edit** page. Otherwise, if you are already on the **Edit** page, click **Edit settings** to increase the autoscaling limits. After you perform the change select **Save** from the bottom of the page.
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} { self: }
 In order to increase the data node capacity in your cluster, you will need to calculate the amount of extra disk space needed.
 
 1. First, retrieve the relevant disk thresholds that will indicate how much space should be available. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
