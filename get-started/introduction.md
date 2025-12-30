@@ -17,7 +17,7 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
-| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/search.md)<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
+| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/search.md)[^search-note]<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
 | Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 
@@ -28,6 +28,8 @@ Check out our [customer success stories](https://www.elastic.co/customers/succes
 Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
 
 If you're new to Elastic, you can find quickstarts and introductory steps for each solution within [](/solutions/index.md).
+
+[^search-note]: The core [{{es}} search capabilities](/solutions/search.md) are available across all deployment types, solutions, and project types through APIs and client libraries. The [{{es}} solution](/solutions/elasticsearch-solution-project.md) adds UI tools on top of these capabilities to help you build search applications faster.
 
 <!--
 ## {{es}}

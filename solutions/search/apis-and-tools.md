@@ -74,14 +74,21 @@ The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearc
 
 ## Generative AI tools
 
-### Agent Builder
+The following generative AI tools are available as part of the {{es}} solution and serverless project type. They enable you to build AI-powered search applications on top of the core {{es}} features, including retrieval augmented generation (RAG) systems and agentic workflows.
 
-[Agent Builder](elastic-agent-builder.md) enables you to create AI agents that can interact with your Elasticsearch data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+### Agent Builder
+```{applies_to}
+stack: preview 9.2
+elasticsearch: preview
+```
+
+[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure, including an [MCP server](/solutions/search/agent-builder/mcp-server.md).
 
 ### Playground
+```{applies_to}
+stack: beta
+elasticsearch: beta
+```
 
-[Playground](rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also useful for testing and debugging your {{es}} queries using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
 
-### Model Context Protocol (MCP)
-
-The [Model Context Protocol (MCP)](mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
