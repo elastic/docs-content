@@ -12,7 +12,7 @@ applies_to:
 
 This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
-These APIs allow you to programmatically work with the {{agent-builder}} abstractions.
+These APIs enable you to programmatically work with the {{agent-builder}} abstractions.
 
 ## Using the APIs
 
@@ -147,6 +147,94 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
        }
      }'
 ```
+:::
+
+::::
+
+**Example:** Create a tool with default values for optional parameters {applies_to}`stack: ga 9.3`
+
+This example creates an ES|QL tool with optional parameters that have default values, which are automatically used when the agent doesn't provide them.
+
+::::{tab-set}
+:group: api-examples-defaults
+
+:::{tab-item} Console
+:sync: console-defaults
+```console
+POST kbn://api/agent_builder/tools
+{
+  "id": "sales-analysis-tool",
+  "type": "esql",
+  "description": "Analyze sales data with optional time filtering and automatic defaults for unspecified parameters",
+  "tags": ["analytics", "sales"],
+  "configuration": {
+    "query": "FROM sales | WHERE timestamp >= ?start_date AND region == ?region | STATS total_sales=SUM(amount) BY product | LIMIT ?limit",
+    "params": {
+      "start_date": {
+        "type": "date",
+        "description": "Start date for analysis. When not provided by the agent, defaults to '2024-01-01T00:00:00Z'",
+        "optional": true,
+        "defaultValue": "2024-01-01T00:00:00Z"
+      },
+      "region": {
+        "type": "keyword",
+        "description": "Sales region to filter by. If omitted, defaults to 'ALL' to include all regions",
+        "optional": true,
+        "defaultValue": "ALL"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum results to return. When not specified, automatically limits to 50 results",
+        "optional": true,
+        "defaultValue": 50
+      }
+    }
+  }
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl-defaults
+```bash
+curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "id": "sales-analysis-tool",
+       "type": "esql",
+       "description": "Analyze sales data with optional time filtering and automatic defaults for unspecified parameters",
+       "tags": ["analytics", "sales"],
+       "configuration": {
+         "query": "FROM sales | WHERE timestamp >= ?start_date AND region == ?region | STATS total_sales=SUM(amount) BY product | LIMIT ?limit",
+         "params": {
+           "start_date": {
+             "type": "date",
+             "description": "Start date for analysis. When not provided by the agent, defaults to \"2024-01-01T00:00:00Z\"",
+             "optional": true,
+             "defaultValue": "2024-01-01T00:00:00Z"
+           },
+           "region": {
+             "type": "keyword",
+             "description": "Sales region to filter by. If omitted, defaults to \"ALL\" to include all regions",
+             "optional": true,
+             "defaultValue": "ALL"
+           },
+           "limit": {
+             "type": "integer",
+             "description": "Maximum results to return. When not specified, automatically limits to 50 results",
+             "optional": true,
+             "defaultValue": 50
+           }
+         }
+       }
+     }'
+```
+:::
+
+::::
+
 :::{include} _snippets/spaces-api-note.md
 :::
 :::

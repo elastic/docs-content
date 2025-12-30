@@ -8,8 +8,6 @@ applies_to:
     security: unavailable
 ---
 
-
-
 # {{esql}} tools
 
 {{esql}} query tools enable you to create parameterized queries that execute directly against your {{es}} data. These custom tools provide precise control over data retrieval through templated [{{esql}}](elasticsearch://reference/query-languages/esql.md) statements.
@@ -43,8 +41,42 @@ Use custom **{{esql}} tools** when:
 
 Parameters can be configured as:
 
-* **Required**: Must be provided by the agent when calling the tool
-* **Optional**: Can be omitted; uses `null` if no default is specified
+* **Required**: The agent must provide a value when calling the tool
+* **Optional**: The agent doesn't need to provide a value when calling the tool
+
+  ::::{applies-switch}
+
+  :::{applies-item} { "stack": "ga 9.3" }
+
+  * You must specify a [default value](#default-values-for-optional-parameters) for optional parameters to prevent query errors when agents don't provide them
+
+  :::
+
+  :::{applies-item} { "stack": "preview 9.2" }
+
+  * You don't need to specify a default value, the agent uses `null` when not provided
+
+  :::
+
+  ::::
+
+
+
+### Default values for optional parameters
+```{applies_to}
+stack: ga 9.3
+```
+
+:::{important}
+Support for optional parameters with default values in {{esql}} tools is an API-only feature initially. Default values are required for all optional parameters to prevent query syntax errors.
+:::
+
+Optional parameters must have default values that are automatically applied when the agent doesn't provide a value. This ensures valid query syntax and consistent behavior.
+
+When an agent calls a tool without specifying parameters, it will automatically use the defaults.
+When the agent provides a value, it overrides the default.
+
+Refer to the [API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-tools) for details about the {{esql}} tools API.
 
 ## Query syntax
 
@@ -70,9 +102,10 @@ You can ask the LLM to infer the parameters for the query or add them manually.
 ## Best practices
 
 - **Include [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) clauses**: Prevent returning excessive results by setting reasonable limits
-- **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents (e.g., `start_date` instead of `date1`)
+- **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents (for example, `start_date` instead of `date1`)
 - **Define parameter types**: Ensure parameters have the correct type to avoid runtime errors
 - **Provide clear descriptions**: Help agents understand when and how to use each parameter
+- **Use [default values](#default-values-for-optional-parameters)** for optional parameters: Set sensible defaults for optional parameters to reduce complexity for agents and ensure consistent behavior when parameters are omitted {applies_to}`stack: ga 9.3`
 
 ## Limitations
 
