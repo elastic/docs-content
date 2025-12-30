@@ -22,3 +22,20 @@ Each conversation round includes all previous rounds as context. This means toke
 :::
 
 For more information on billing and token costs, refer to [Elastic pricing](https://www.elastic.co/pricing).
+
+
+## How to view token usage
+
+At the end of each round, the total token usage is displayed at the bottom of the agent response:
+
+:::{image} images/token-usage.png
+:screenshot:
+:width: 800px
+:::
+
+To view the raw JSON response including detailed token information, click the **View JSON** button. This opens a modal with the complete, raw response data:
+
+:::{image} images/token-usage-json-raw-response.png
+:screenshot:
+:width: 900px
+:::
