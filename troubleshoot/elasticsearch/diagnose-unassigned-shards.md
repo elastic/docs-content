@@ -15,11 +15,16 @@ products:
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-There are multiple reasons why shards might get unassigned, ranging from misconfigured allocation settings to lack of disk space.
+An unassigned shard is a shard that exists in the cluster metadata but is not currently allocated to any node, which means its data is unavailable for both search and indexing operations.
 
-To diagnose the unassigned shards in your deployment, use the following steps.
+Shards can become unassigned for many reasons, such as node failures, cluster or indices configuration, insufficient resources, or allocation rules that prevent {{es}} from placing the shard on any available node.
 
-You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
+Unassigned shards directly affects the cluster health status:
+
+* If at least one replica shard is unassigned, the cluster health becomes yellow. The cluster can still serve all data, but redundancy is reduced.
+* If at least one primary shard is unassigned, the cluster health becomes red. In this state, some data is unavailable, and affected indices cannot fully operate.
+
+To diagnose the unassigned shards in your deployment, use the following steps. You can use either [API console](/explore-analyze/query-filter/tools/console.md), or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 1. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
@@ -132,7 +137,11 @@ View [this video](https://www.youtube.com/watch?v=5z3n2VgusLE) for a walkthrough
 
 When {{es}} is unable to allocate a shard, it attempts to retry allocation up to the maximum number of retries allowed.
 After this, {{es}} stops attempting to allocate the shard to prevent infinite retries, which might impact cluster performance.
-You can use an API to [reroute the cluster]({{es-apis}}operation/operation-cluster-reroute), which allocates the shard if the issue preventing allocation has been resolved.
+You can use an API to [reroute the cluster]({{es-apis}}operation/operation-cluster-reroute), which allocates the shard if the issue preventing allocation has been resolved. For example:
+
+```console
+POST _cluster/reroute?retry_failed
+```
 
 ### No valid shard copy [no-shard-copy]
 

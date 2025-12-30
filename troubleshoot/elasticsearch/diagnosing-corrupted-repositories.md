@@ -10,9 +10,9 @@ products:
 
 # Diagnose corrupted repositories [diagnosing-corrupted-repositories]
 
-Multiple {{es}} deployments are writing to the same snapshot repository. {{es}} doesn’t support this configuration and only one cluster is allowed to write to the same repository. Refer to [Repository contents](../../deploy-manage/tools/snapshot-and-restore.md#snapshot-repository-contents) for potential side-effects of corruption of the repository contents, which might not be resolved by the following guide. To remedy the situation mark the repository as read-only or remove it from all the other deployments, and re-add (recreate) the repository in the current deployment.
+If {{es}} detects a corrupted repository, this might indicate that multiple {{es}} deployments are writing to the same snapshot repository. {{es}} doesn’t support this configuration and only one cluster is allowed to write to the same repository. Refer to [Repository contents](/deploy-manage/tools/snapshot-and-restore.md#snapshot-repository-contents) for potential side-effects of corruption of the repository contents, which might not be resolved by the following steps. To remedy the situation, mark the repository as read-only or remove it from all the other deployments, and re-add (recreate) the repository in the current deployment.
 
-Fixing the corrupted repository requires making changes in multiple deployments that write to the same snapshot repository. Only one deployment must be writing to a repository. In these instructions, the deployment that continues writing to the repository is referred to as the "primary" deployment (the current cluster), and the other one(s) where we’ll mark the repository read-only as the "secondary" deployments.
+Fixing the corrupted repository requires making changes in multiple deployments that write to the same snapshot repository. Only one deployment must be writing to a repository. In these instructions, the deployment that continues writing to the repository is referred to as the "primary" deployment (the current cluster), and the other ones where we’ll mark the repository read-only as the "secondary" deployments.
 
 :::::::{tab-set}
 
@@ -136,3 +136,5 @@ On the primary (current) cluster:
 ::::::
 
 :::::::
+
+If the repository is still marked as corrupted or broken after applying these fixes, then contact Elastic Support.

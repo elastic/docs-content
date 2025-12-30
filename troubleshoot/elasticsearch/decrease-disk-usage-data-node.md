@@ -14,6 +14,11 @@ To decrease the disk usage in your cluster without losing any data, you can try 
 
 ::::{note}
 Reducing the replicas of an index can potentially reduce search throughput and data redundancy. However, it can quickly give the cluster breathing room until a more permanent solution is in place.
+
+Some permanent solutions you can investigate are: 
+* Storing less frequently accessed data in [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), which require less disk space
+* Increasing available disk space by [scaling up your cluster](/deploy-manage/production-guidance/scaling-considerations.md#how-to-scale)
+* Deleting data that is no longer needed
 ::::
 
 
