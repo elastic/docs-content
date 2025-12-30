@@ -3,12 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-jvm-memory-pressure.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
-products:
   - id: elasticsearch
 ---
 
@@ -25,9 +19,9 @@ High JVM memory usage can degrade cluster performance and trigger [circuit break
 
 **Check JVM memory pressure**
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
+::::::{applies-item} { ess:, ece: }
 From your deployment menu, click **Elasticsearch**. Under **Instances**, each instance displays a **JVM memory pressure** indicator. When the JVM memory pressure reaches 75%, the indicator turns red.
 
 You can also use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
@@ -41,7 +35,7 @@ Use the response to calculate memory pressure as follows:
 JVM Memory Pressure = `used_in_bytes` / `max_in_bytes`
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} { self:, eck }
 To calculate the current JVM memory pressure for each node, use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
