@@ -1,5 +1,5 @@
 ---
-navigation_title: Active Directory
+navigation_title: Active Directory account lockout
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trouble-shoot-active-directory.html
 applies_to:
@@ -11,7 +11,7 @@ products:
   - id: elasticsearch
 ---
 
-# Troubleshoot Active Directory lockouts [trouble-shoot-active-directory]
+# Troubleshoot Active Directory account lockout [trouble-shoot-active-directory]
 
 **Symptoms:**
 

@@ -13,7 +13,7 @@ products:
 
 # Troubleshoot searches [troubleshooting-searches]
 
-When you query your data, {{es}} may return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
+When you query your data, {{es}} might return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
 
 
 ## Ensure the data stream, index, or alias exists [troubleshooting-searches-exists]
