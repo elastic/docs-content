@@ -3,7 +3,10 @@ navigation_title: Data corruption
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/corruption-troubleshooting.html
 applies_to:
-  stack:
+  deployment:
+    eck:
+    ece:
+    self:
 products:
   - id: elasticsearch
 ---
