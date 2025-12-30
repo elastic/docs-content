@@ -21,7 +21,7 @@ In {{es}}, per-index settings allow you to control the allocation of shards to n
 * [Data tier allocation](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md): Controls the allocation of indices to [data tiers](../../../manage-data/lifecycle/data-tiers.md).
 
 :::{tip}
-:applies_to: {ece: ga, ech: ga}
+:applies_to: {ece: ga, ess: ga}
 For {{ece}} and {{ech}} deployments, you can't set custom node attributes, so index-level shard allocation filtering is less effective. Use [data tier allocation](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md) with the `_tier` attribute instead, which works with node roles to manage data across tiers.
 :::
 
