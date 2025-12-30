@@ -13,6 +13,11 @@ products:
 
 Manage your service level objectives (SLOs) from the **SLO Management** page. View SLO definitions, monitor the health of your SLOs, and perform actions such as purging data, checking SLO health, and deleting SLOs.
 
+:::{image} /solutions/images/observability-slo-management.png
+:alt: Screenshot of the SLO Management user interface
+:screenshot:
+:::
+
 To open the **SLO management** page:
 
 1. Navigate to the **SLOs** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
