@@ -10,7 +10,7 @@ This page provides guidelines for writing effective tutorials in the Elastic doc
 
 A tutorial is a comprehensive, hands-on learning experience that guides users through completing a meaningful task from start to finish. You can think of a tutorial as a chain of related [how-to guides](/contribute-docs/content-types/how-tos.md), with additional explanatory context to help users learn as they work.
 
-Ideally, users can complete a tutorial without needing to jump to other guides. Of course, this is more of an art than a science, and it's important to balance the need for background context with overall readability.
+Ideally, users can complete a tutorial without needing to jump to other guides. Of course, this is more of an art than a science, and it's important to balance the need for background context with overall readability. If you find yourself needing to write a lot of background context, consider writing multiple, more focused tutorials.
 
 Tutorials include three essential components:
 
@@ -79,15 +79,14 @@ The following elements are required in tutorials:
 Include the following when they add value:
 
 - **[Screenshots](https://elastic.github.io/docs-builder/syntax/images/#screenshots):** Add visual aids for UI-based steps when they improve clarity. Use screenshots sparingly as they require maintenance.
-- **Explanatory callouts:** Use [admonitions](https://elastic.github.io/docs-builder/syntax/admonitions/) to provide extra context, tips, or explanations without interrupting the main flow.
-- **Troubleshooting tips:** Mention common issues learners might encounter and how to resolve them.
+- **Explanatory callouts:** Use [admonitions](https://elastic.github.io/docs-builder/syntax/admonitions/) to provide extra context, troubleshooting tips, or explanations without interrupting the main flow.
 - **Time estimates:** Indicate how long each major section or the overall tutorial takes to complete.
 - A **summary:** Recap what users learned and accomplished in the tutorial. Reinforce the key learning objectives.
-% I've made the summary optional, because if the overview already lists learning objectives clearly, a summary that just repeats them feels redundant. The tutorial's value is in the journey, not bookending it with the same information. 🤺
+% TODO: reviewer I've made the summary optional, because if the overview already lists learning objectives clearly, a summary that just repeats them feels redundant. The tutorial's value is in the journey, not bookending it with the repetive information. 🤺
 
 ## Template
 
-To get started on writing your tutorial, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/tutorial-template.md).
+To get started writing your tutorial, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/tutorial-template.md).
 
 ## Examples
 
