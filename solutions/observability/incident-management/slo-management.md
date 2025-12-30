@@ -2,8 +2,7 @@
 navigation_title: View and manage SLOs
 applies_to:
   stack: ga 9.1
-  serverless:
-    observability: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
