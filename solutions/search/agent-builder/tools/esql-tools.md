@@ -48,7 +48,7 @@ Parameters can be configured as:
 
   :::{applies-item} { "stack": "ga 9.3" }
 
-  * You must specify a [default value](#default-values-for-optional-parameters) for optional parameters to prevent query errors when agents don't provide them
+  * You can specify a [default value](#default-values-for-optional-parameters) for optional parameters to prevent query errors when agents don't provide them
 
   :::
 
@@ -68,10 +68,10 @@ stack: ga 9.3
 ```
 
 :::{important}
-Support for optional parameters with default values in {{esql}} tools is an API-only feature initially. Default values are required for all optional parameters to prevent query syntax errors.
+Support for optional parameters with default values in {{esql}} tools is an API-only feature initially. While default values are not required by the API, they are strongly recommended for all optional parameters to prevent query syntax errors.
 :::
 
-Optional parameters must have default values that are automatically applied when the agent doesn't provide a value. This ensures valid query syntax and consistent behavior.
+Optional parameters can have default values that are automatically applied when the agent doesn't provide a value. This ensures valid query syntax and consistent behavior.
 
 When an agent calls a tool without specifying parameters, it automatically uses the defaults.
 When the agent provides a value, it overrides the default.
