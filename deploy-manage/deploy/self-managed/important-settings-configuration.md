@@ -34,6 +34,10 @@ For [macOS `.tar.gz`](install-elasticsearch-from-archive-on-linux-macos.md), [Li
 
 In production, we strongly recommend you set the `path.data` and `path.logs` in [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) to locations outside of `$ES_HOME`. [Docker](install-elasticsearch-with-docker.md), [Debian](install-elasticsearch-with-debian-package.md), and [RPM](install-elasticsearch-with-rpm.md) installations write data and log to locations outside of `$ES_HOME` by default.
 
+::::{note}
+{{es}} also supports the `path.repo` setting, which is used to register shared filesystem locations for snapshot repositories. For more information, refer to [Shared filesystem repository](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md).
+::::
+
 Supported `path.data` and `path.logs` values vary by platform:
 
 :::::::{tab-set}
@@ -68,7 +72,6 @@ path:
 * Don’t attempt to take filesystem backups of the data directory; there is no supported way to restore such a backup. Instead, use [Snapshot and restore](../../tools/snapshot-and-restore.md) to take backups safely.
 * Don’t run virus scanners on the data directory. A virus scanner can prevent {{es}} from working correctly and may modify the contents of the data directory. The data directory contains no executables so a virus scan will only find false positives.
 ::::
-
 
 ## Cluster name setting [_cluster_name_setting]
 
