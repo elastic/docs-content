@@ -77,6 +77,7 @@ toc:
               - file: search/agent-builder/kibana-api.md
               - file: search/agent-builder/a2a-server.md
               - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/monitor-usage.md
           - file: search/agent-builder/permissions.md
           - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
