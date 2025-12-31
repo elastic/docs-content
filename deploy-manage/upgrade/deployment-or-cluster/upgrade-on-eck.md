@@ -8,7 +8,6 @@ products:
   - id: cloud-kubernetes
   - id: elasticsearch
 ---
-
 # Upgrade your deployment on {{eck}} (ECK)
 
 The ECK orchestrator can safely perform upgrades to newer versions of the {{stack}}.
@@ -19,6 +18,10 @@ Before you start the upgrade, [plan your upgrade](/deploy-manage/upgrade/plan-up
 
 1. In the resource spec file, modify the `version` field for the desired {{stack}} version.
 2. Save your changes. The orchestrator will start the upgrade process automatically.
+
+::::{note}
+If you deploy your {{stack}} resources using our Helm chart, refer to [](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md#k8s-upgrade-modify-helm) for details on how to perform upgrades with Helm.
+::::
 
 In this example, we’re modifying the version to {{version.stack}}.
 
