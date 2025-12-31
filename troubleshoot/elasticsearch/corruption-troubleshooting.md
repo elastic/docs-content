@@ -13,6 +13,10 @@ products:
 
 # Troubleshoot data corruption [corruption-troubleshooting]
 
+:::{note}
+While this troubleshooting section applies to self-managed deployment types, {{ech}} and {{serverless-full}} deployments are designed to minimize the risk of data corruption through managed infrastructure and automated operations. If you encounter any of these issues in a managed Elastic Cloud environment, contact support.
+:::
+
 {{es}} expects that the data it reads from disk is exactly the data it previously wrote. If it detects that the data on disk is different from what it wrote then it will report some kind of exception such as:
 
 * `org.apache.lucene.index.CorruptIndexException`

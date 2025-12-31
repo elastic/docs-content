@@ -25,7 +25,7 @@ To get the shards assigned, you need to enable a new tier in the deployment.
 
 You can run the following step using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
-1. Determine which tier an index requires to be assigned to. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) the configured value for the `index.routing.allocation.include._tier_preference` setting:
+1. Determine which tiers an index's shards can be allocated to. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) the configured value for the `index.routing.allocation.include._tier_preference` setting:
 
     ```console
     GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
@@ -55,7 +55,7 @@ You can run the following step using either [API console](/explore-analyze/query
 
 To get the shards assigned, add more nodes to your {{es}} cluster and assign the index’s target tier [node role](/manage-data/lifecycle/data-tiers.md#configure-data-tiers-on-premise) to the new nodes.
 
-To determine which tier an index requires to be assigned to, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
+To determine which tiers an index's shards can be allocated to, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
 
 ```console
 GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
