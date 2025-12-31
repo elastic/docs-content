@@ -15,7 +15,9 @@ By default, {{es}} uses memory mapping (`mmap`) to efficiently access indices. D
 The kernel setting `vm.max_map_count=1048576` can be set on the host directly, by a dedicated init container which must be privileged, or a dedicated Daemonset.
 
 :::{important}
-For {{es}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{es}} version 8.15 and earlier, set `vm.max_map_count` to `262144`.
+For {{es}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{es}} version 8.15 and earlier, set `vm.max_map_count` to `262144`. 
+
+The exception is in GKE Autopilot environments, where `vm.max_map_count` must always be set to `262144`.
 :::
 
 For more information, check the {{es}} documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).
@@ -53,9 +55,10 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576'] <1>
 EOF
 ```
+1. In GKE Autopilot environments, `vm.max_map_count` must be set to 262144.
 
 Note that this requires the ability to run privileged containers, which is likely not the case on many secure clusters.
 
@@ -91,13 +94,14 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['/usr/local/bin/bash', '-e', '-c', 'echo 262144 > /proc/sys/vm/max_map_count']
+          command: ['/usr/local/bin/bash', '-e', '-c', 'echo 1048576 > /proc/sys/vm/max_map_count'] <1>
       containers:
         - name: sleep
           image: docker.io/bash:5.2.21
           command: ['sleep', 'infinity']
 EOF
 ```
+1. In GKE Autopilot environments, `vm.max_map_count` must be set to 262144.
 
 To run an {{es}} instance that waits for the kernel setting to be in place:
 
@@ -122,8 +126,10 @@ spec:
         # Do not use this if setting config.node.store.allow_mmap: false
         initContainers:
         - name: max-map-count-check
-          command: ['sh', '-c', "while true; do mmc=$(cat /proc/sys/vm/max_map_count); if [ ${mmc} -eq 262144 ]; then exit 0; fi; sleep 1; done"]
+          command: ['sh', '-c', "while true; do mmc=$(cat /proc/sys/vm/max_map_count); if [ ${mmc} -eq 262144 ]; then exit 0; fi; sleep 1; done"] <1>
 EOF
 ```
+
+1. In GKE Autopilot environments, `vm.max_map_count` must be set to 262144.
 
 
