@@ -2,11 +2,6 @@
 navigation_title: Ingest Pipelines
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
