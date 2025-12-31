@@ -14,6 +14,7 @@ products:
 # Troubleshoot data corruption [corruption-troubleshooting]
 
 :::{note}
+:applies_to: {"serverless": "ga", "ess": "ga", }
 While this troubleshooting section applies to self-managed deployment types, {{ech}} and {{serverless-full}} deployments are designed to minimize the risk of data corruption through managed infrastructure and automated operations. If you encounter any of these issues in a managed Elastic Cloud environment, contact support.
 :::
 
