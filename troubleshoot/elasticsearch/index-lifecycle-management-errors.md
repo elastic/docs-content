@@ -4,16 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-error-handling.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
 
-% TODO restructure ILM and SLM dtopics
+% TODO restructure ILM and SLM topics
 % TODO dropdowns or break it up
 
 # Fix index lifecycle management errors [index-lifecycle-error-handling]

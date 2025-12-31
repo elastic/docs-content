@@ -1,11 +1,6 @@
 ---
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 navigation_title: "Error: Token invalid or expired"
 ---
 
