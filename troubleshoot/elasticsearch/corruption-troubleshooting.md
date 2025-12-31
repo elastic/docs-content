@@ -15,7 +15,7 @@ products:
 
 :::{note}
 :applies_to: {"serverless": "ga", "ess": "ga", }
-While this troubleshooting section applies to self-managed deployment types, {{ech}} and {{serverless-full}} deployments are designed to minimize the risk of data corruption through managed infrastructure and automated operations. If you encounter any of these issues in a managed Elastic Cloud environment, contact support.
+While this section applies to troubleshooting  fully self-managed {{es}} clusters, {{ech}} and {{serverless-full}} deployments are designed to minimize the risk of data corruption through managed infrastructure and automated operations. If you encounter any of these issues in a managed Elastic Cloud environment, contact support.
 :::
 
 {{es}} expects that the data it reads from disk is exactly the data it previously wrote. If it detects that the data on disk is different from what it wrote then it will report some kind of exception such as:
