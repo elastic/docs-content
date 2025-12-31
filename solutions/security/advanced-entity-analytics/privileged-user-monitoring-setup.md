@@ -15,7 +15,7 @@ products:
 To use privileged user monitoring, you must:
 
 * Have the appropriate user role or privileges
-* Turn on the required advanced setting
+* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` Turn on the required advanced setting
 
 For more information, refer to [Privileged user monitoring requirements](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-requirements.md).
 :::
