@@ -36,7 +36,7 @@ Use the response to calculate memory pressure as follows:
 JVM Memory Pressure = `used_in_bytes` / `max_in_bytes`
 ::::::
 
-::::::{applies-item} { self:, eck }
+::::::{applies-item} { self:, eck: }
 To calculate the current JVM memory pressure for each node, use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
