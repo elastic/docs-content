@@ -68,7 +68,7 @@ Add more nodes to your {{es}} cluster and assign the index’s target tier [node
 
 
 ::::::{applies-item} { eck: }
-Add more nodes to your {{es}} cluster and assign the index’s target tier [node role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md/#change-node-role) to the new nodes, by adjusting the [node configuration](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md) in the `spec` section of your {{es}} resource manifest. 
+Add more nodes to your {{es}} cluster and assign the index’s target tier [node role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#change-node-role) to the new nodes, by adjusting the [node configuration](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md) in the `spec` section of your {{es}} resource manifest. 
 
 ::::::
 
