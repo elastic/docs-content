@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-shard-limit.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -23,28 +18,14 @@ You might want to influence this data distribution by configuring the [index.rou
 
 To fix this issue, complete the following steps:
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
-In order to get the shards assigned we’ll need to increase the number of shards that can be collocated on a node. We’ll achieve this by inspecting the configuration for the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and increasing the configured value for the indices that have shards unassigned.
+::::::{applies-item} { ess: }
+To get the shards assigned, you need to increase the number of shards that can be collocated on a node. You achieve this by inspecting the configuration for the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and increasing the configured value for the indices that have shards unassigned.
 
-**Use {{kib}}**
+You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the name of your deployment.
-
-    ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-    ::::
-
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
-
-    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
-    :alt: {{kib}} Console
-    :screenshot:
-    :::
-
-4. Inspect the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
+1. Inspect the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
 
     ```console
     GET /my-index-000001/_settings/index.routing.allocation.total_shards_per_node?flat_settings
@@ -64,7 +45,7 @@ In order to get the shards assigned we’ll need to increase the number of shard
 
     1. Represents the current configured value for the total number of shards that can reside on one node for the `my-index-000001` index.
 
-5. [Increase](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the value for the total number of shards that can be assigned on one node to a higher value:
+1. [Increase](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the value for the total number of shards that can be assigned on one node to a higher value:
 
     ```console
     PUT /my-index-000001/_settings
@@ -78,8 +59,8 @@ In order to get the shards assigned we’ll need to increase the number of shard
     1. The new value for the `total_shards_per_node` configuration for the `my-index-000001` index is increased from the previous value of `1` to `2`. The `total_shards_per_node` configuration can also be set to `-1`, which represents no upper bound with regards to how many shards of the same index can reside on one node.
 ::::::
 
-::::::{tab-item} Self-managed
-In order to get the shards assigned you can add more nodes to your {{es}} cluster and assing the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
+::::::{applies-item} { self: }
+To get the shards assigned, you can add more nodes to your {{es}} cluster and assing the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
 
 To inspect which tier is an index targeting for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
 
