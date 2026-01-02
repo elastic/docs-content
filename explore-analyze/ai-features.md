@@ -145,3 +145,14 @@ This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides
 * **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that might conflict with {{elastic-defend}}.
 
 This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+
+
+### Entity summary
+```yaml {applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+[Entity summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-summary), available in the entity details flyout, uses AI to generate a summary of a user's or host's security context. It aggregates information such as risk scores, asset criticality, vulnerabilities, and {{ml}} anomalies to provide a consolidated view of the entity's security posture. The summary helps you prioritize investigations and identify recommended next steps.
+
+This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
