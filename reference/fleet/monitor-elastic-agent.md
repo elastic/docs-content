@@ -244,7 +244,7 @@ To do so, follow the steps in [Remote {{es}} output](/reference/fleet/remote-ela
 :::{admonition} Built-in alert rules for {{agent}}
 :applies_to: stack: ga 9.2.0
 
-As of 9.2.0, {{agent}} provides out-of-the-box alert rules to help you simplify monitoring the health of agents.
+As of 9.2.0, {{agent}} provides out-of-the-box alert rules to simplify monitoring the health of agents.
 Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.  
 
 Check out [Elastic Agent out-of-the-box alert rules](/reference/fleet/alert-templates.md) for more information. 
