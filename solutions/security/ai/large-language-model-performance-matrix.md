@@ -13,7 +13,7 @@ products:
 
 # Large language model performance matrix
 
-This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [AI-Powered features](/explore-analyze/ai-features.md#security-features)
+This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [AI-Powered features](/explore-analyze/ai-features.md#security-features).
 
 ::::{important}
 Higher scores indicate better performance. A score of 100 on a task means the model met or exceeded all task-specific benchmarks.
@@ -24,7 +24,7 @@ Higher scores indicate better performance. A score of 100 on a task means the mo
 
 Models from third-party LLM providers.
 
-| **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration - Translated Rules** | **Average Score** |
+| **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration** | **Average Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **GPT 5 Chat** | 91 | 92 | 100 | 85 | 92 | 51.50 | 92 |
 | **Gemini 2.5 Pro** | 89 | 86 | 100 | 87 | 90 | 32.50 | 90 |
