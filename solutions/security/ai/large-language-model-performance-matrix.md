@@ -13,19 +13,18 @@ products:
 
 # Large language model performance matrix
 
-This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [Attack discovery](/solutions/security/ai/attack-discovery.md) or [AI Assistant](/solutions/security/ai/ai-assistant.md).
+This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [AI-Powered features](/explore-analyze/ai-features.md#security-features)
 
 ::::{important}
-`Excellent` is the best rating, followed by `Great`, then by `Good`, and finally by `Poor`. Models rated `Excellent` or `Great` should produce quality results. Models rated `Good` or `Poor` are not recommended for that use case.
+Higher scores indicate better performance. A score of 100 on a task means the model met or exceeded all task-specific benchmarks.
 ::::
-
 
 
 ## Proprietary models [_proprietary_models]
 
 Models from third-party LLM providers.
 
-| **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | A**ttack Discovery** | **General Security** | **Automatic Migration - Translated Rules** | **Overall Score** |
+| **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration - Translated Rules** | **Average Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **GPT 5 Chat** | 91 | 92 | 100 | 85 | 92 | 51.50 | 92 |
 | **Gemini 2.5 Pro** | 89 | 86 | 100 | 87 | 90 | 32.50 | 90 |
@@ -36,28 +35,13 @@ Models from third-party LLM providers.
 | **GPT 4.1** | 87 | 88 | 100 | 80 | 88 | 16.00 | 89 |
 | **Sonnet 4** | 89 | 92 | 100 | 70 | 88 | 39.00 | 88 |
 | **Elastic Managed LLM** | 89 | 90 | 100 | 70 | 90 | 50.50 | 88 |
-| **Gemini 2.5 Flash** | 87 | 90 | Not Recommended | Not Recommended | 90 | 0.00 | 53 |
-| **Haiku 4.5** | 84 | 80 | Not Recommended | Not Recommended | 88 | 0.00 | 50 |
-
-| **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| **Model** | **Claude Opus 4**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Claude Sonnet 4**        | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Claude Sonnet 3.7**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **GPT-4.1**                 | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Gemini 2.0 Flash 001**    | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Gemini 2.5 Pro**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-
+| **Gemini 2.5 Flash** | 87 | 90 | Not recommended | Not recommended | 90 | Not recommended | N/A |
+| **Haiku 4.5** | 84 | 80 | Not recommended | Not recommended | 88 | Not recommended | N/A |
 
 ## Open-source models [_open_source_models]
 
 Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md).
 
-| **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration**
-| --- | --- | --- | --- | --- | --- | --- |
-| **Model** | **Mistral‑Small‑3.2‑24B‑Instruct‑2506** | Excellent | Good | Excellent | Excellent | Good | N/A
-|           | **Mistral-Small-3.1-24B-Instruct-2503** | Excellent | Good | Excellent | Excellent | Good | N/A
-|           | **Mistral Nemo**   | Good | Good  | Great | Good | Poor | Poor |
-|           | **LLama 3.2**      | Good | Poor  | Good  | Poor | Poor | Good |
-|           | **LLama 3.1 405b** | Good | Great | Good  | Good | Poor | Poor |
-|           | **LLama 3.1 70b**  | Good | Good  | Poor  | Poor | Poor | Good |
+| **Model** | **Alerts** | **ES\|QL Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration** | **Overall Score** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **GPT OSS 20b** | 82 | 25 | Not recommended | Not recommended | 10 | Not recommended | N/A |
