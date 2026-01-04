@@ -25,6 +25,20 @@ This page describes the performance of various large language models (LLMs) for 
 
 Models from third-party LLM providers.
 
+| **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | A**ttack Discovery** | **General Security** | **Automatic Migration - Translated Rules** | **Overall Score** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **GPT 5 Chat** | 91 | 92 | 100 | 85 | 92 | 51.50 | 92 |
+| **Gemini 2.5 Pro** | 89 | 86 | 100 | 87 | 90 | 32.50 | 90 |
+| **Sonnet 4.5** | 90 | 90 | 100 | 80 | 90 | 52.00 | 90 |
+| **GPT 5.1** | 93 | 95 | 100 | 95 | 65 | 51.00 | 90 |
+| **Opus 4.5** | 86 | 86 | 100 | 85 | 90 | 38.00 | 89 |
+| **Opus 4.1** | 92 | 93 | 100 | 70 | 90 | 36.50 | 89 |
+| **GPT 4.1** | 87 | 88 | 100 | 80 | 88 | 16.00 | 89 |
+| **Sonnet 4** | 89 | 92 | 100 | 70 | 88 | 39.00 | 88 |
+| **Elastic Managed LLM** | 89 | 90 | 100 | 70 | 90 | 50.50 | 88 |
+| **Gemini 2.5 Flash** | 87 | 90 | Not Recommended | Not Recommended | 90 | 0.00 | 53 |
+| **Haiku 4.5** | 84 | 80 | Not Recommended | Not Recommended | 88 | 0.00 | 50 |
+
 | **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **Model** | **Claude Opus 4**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
