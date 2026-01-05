@@ -194,7 +194,7 @@ stack: ga 9.3
 | **Disk Read IOPS** | Average count of read operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: read'))`<br> |
 | **Disk Read Throughput** | Average number of bytes read from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: read'))`<br> |
 | **Disk Usage - Available (%)** | Percentage of disk space available.<br><br>**Field Calculation**: `average(system.filesystem.usage, kql='state: free')`<br> |
-| {applies_to}`stack: ga 9.0`<br> **Disk Usage - Used (%)** | Percentage of disk space used. <br><br>**Field Calculation**: `1 - sum(metrics.system.filesystem.usage, kql='state: free') / sum(metrics.system.filesystem.usage)`<br> |
-| {applies_to}`stack: ga 9.3`<br> **Disk Usage - Max (%)** | Percentage of disk space used. <br><br>**Field Calculation**: `max(metrics.system.filesystem.utilization)`<br> |
+| **Disk Usage - Used (%)** | {applies_to}`stack: ga 9.0` Percentage of disk space used. <br><br>**Field Calculation**: `1 - sum(metrics.system.filesystem.usage, kql='state: free') / sum(metrics.system.filesystem.usage)`<br> |
+| **Disk Usage - Max (%)** | {applies_to}`stack: ga 9.3` Percentage of disk space used. <br><br>**Field Calculation**: `max(metrics.system.filesystem.utilization)`<br> |
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.operations, kql='attributes.direction: write'))`<br> |
 | **Disk Write Throughput** | Average number of bytes written from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.disk.io, kql='attributes.direction: write'))')`<br> |
