@@ -2,8 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/d4c-get-started.html
 applies_to:
-  - stack: beta 9.3
-  - serverless: beta
+  stack: beta 9.3
+  serverless:
+    security: beta
 ---
 
 # Get started with Defend for Containers for Kubernetes [d4c-get-started]

@@ -2,8 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/d4c-overview.html
 applies_to:
-  - stack: beta 9.3
-  - serverless: beta
+  stack: beta 9.3
+  serverless:
+    security: beta
 ---
 
 # Cloud workload protection for Kubernetes [d4c-overview]
