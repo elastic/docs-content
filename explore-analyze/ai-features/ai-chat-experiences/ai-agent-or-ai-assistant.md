@@ -9,30 +9,37 @@ products:
   - id: cloud-serverless
 ---
 
-# Compare AI Agent and AI Assistant
+# Compare Agent Builder and AI Assistant
+You can use either AI Assistant (default) or Agent Builder to enable chat experiences throughout {{kib}}. This page explains their differences and how to opt-in to Agent Builder.
 
-AI Agent is a technical preview chat experience designed to replace Elastic Assistant for {{observability}} & Search and Elastic Assistant for Security. 
+::::{admonition} Requirements
+- To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
+::::
 
-AI Agent uses Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) platform. It lets you design your own purpose-built agents and enables a more cohesive AI chat experience across all Elastic's products. You can create specific agents for use in different workflows, and give them precise access to the tools and data they need. 
+## Enable Agent Builder
 
-## Enable AI Agent
+Agent Builder uses Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) platform to provide a cohesive AI chat experience across all Elastic's products. It lets you design your own purpose-built agents for use in different workflows, and give them precise access to the tools and data they need.
 
-While AI Agent is in technical preview, you may have to opt in to enable it. This behavior varies by solution:
+While Agent Builder is in technical preview, you must manually enable it. This behavior varies by solution:
 
 - **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant remains the default chat experience. 
-- **{{es}}:** AI Agent is the default chat experience.
+- **{{es}}:** Agent Builder is the default chat experience.
 
-To enable AI Agent, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+To enable Agent Builder, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
 
-## Feature differences between AI Agent and AI Assistant
+## Feature differences between Agent Builder and AI Assistant
 
-Some functionality supported by Elastic's AI Assistants is not supported by AI Agents. The differences vary by solution.
+Some functionality supported by Elastic's AI Assistants is not supported by Agent Builder. The differences vary by solution.
 
-### AI Agent features in {{elastic-sec}}
+Agent Builder provides a similar experience to AI Assistant at a high level, but with a number of differences. 
 
-AI Agent for {{elastic-sec}} provides a similar experience to AI Assistant for Security at a high level, but with a number of differences.
+The following AI Assistant chat features are not supported by Agent Builder:
 
-The following AI Assistant for Security features are not supported in AI Agent:
+::::{tab-set}
+:group: example-group
+
+:::{tab-item} {{elastic-sec}}
+:sync: tab1
 
 - **Knowledge Base** 
 - **Data anonymization**
@@ -43,7 +50,23 @@ The following AI Assistant for Security features are not supported in AI Agent:
 - **Quick prompts**
 
 Also, AI Agent chats do not show previews of data you attach to a message, such as Alerts and Attacks.
+:::
 
-### AI Agent features in Elastic {{observability}}
+:::{tab-item} Elastic {{observability}}
+:sync: tab2
+- Multilingual Knowledge base
+- Data anonymization
+- Chat sharing
+- Chat duplication
+- Chat archiving
+- Screen context (unavailable for some use cases)
+- AI insights (unavailable for some use cases)
+- Alerting Rule connector action
+:::
 
-### AI Agent features in {{es}}
+::::
+
+
+### Agent Builder features in Elastic {{observability}}
+
+### Agent Builder features in 
