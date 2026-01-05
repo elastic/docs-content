@@ -1,7 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-beats-to-agent.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
+  - id: beats
   - id: fleet
   - id: elastic-agent
 ---
@@ -27,7 +31,7 @@ There are currently some limitations and requirements to be aware of before migr
 
 * **No support for configuring the {{beats}} internal queue.** Each Beat has an internal queue that stores events before batching and publishing them to the output. To improve data throughput, {{beats}} users can set [configuration options](beats://reference/filebeat/configuring-internal-queue.md) to tune the performance of the internal queue. However, the endless fine tuning required to configure the queue is cumbersome and not always fruitful. Instead of expecting users to configure the internal queue, {{agent}} uses sensible defaults. This means you won’t be able to migrate internal queue configurations to {{agent}}.
 
-For more information about {{agent}} limitations, see [*{{beats}} and {{agent}} capabilities*](beats-agent-comparison.md).
+For more information about {{agent}} limitations, see [{{beats}} and {{agent}} capabilities](beats-agent-comparison.md).
 
 
 ## Prepare for the migration [prepare-for-migration]
@@ -36,12 +40,16 @@ Before you begin:
 
 1. Review your existing {{beats}} configurations and make a list of the integrations that are required. For example, if your existing implementation collects logs and metrics from Nginx, add Nginx to your list.
 2. Make a note of any processors or custom configurations you want to migrate. Some of these customizations may no longer be needed or possible in {{agent}}.
-3. Decide if it’s the right time to migrate to {{agent}}. Review the information under [*{{beats}} and {{agent}} capabilities*](beats-agent-comparison.md). Make sure the integrations you need are supported and Generally Available, and that the output and features you require are also supported.
+3. Decide if it’s the right time to migrate to {{agent}}. Review the information under [{{beats}} and {{agent}} capabilities](beats-agent-comparison.md). Make sure the integrations you need are supported and Generally Available, and that the output and features you require are also supported.
 
 If everything checks out, proceed to the next step. Otherwise, you might want to continue using {{beats}} and possibly deploy {{agent}} alongside {{beats}} to use features like endpoint protection.
 
 
 ## Set up {{fleet-server}} (self-managed deployments only) [_set_up_fleet_server_self_managed_deployments_only]
+
+```{applies_to}
+serverless: unavailable
+```
 
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
@@ -290,6 +298,10 @@ For more information, see the [Aliases documentation](/manage-data/data-store/al
 
 
 ## Migrate index lifecycle policies [_migrate_index_lifecycle_policies]
+
+```{applies_to}
+serverless: unavailable
+```
 
 {{ilm-cap}} ({{ilm}}) policies in {{es}} enable you to manage indices according to your performance, resiliency, and retention requirements. To learn more about {{ilm}}, refer to the [{{ilm}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 

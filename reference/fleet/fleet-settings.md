@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-settings.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -140,7 +143,7 @@ On the **{{fleet}}** > **Settings** page, you can also configure {{fleet}} to au
 
 ### Delete unenrolled agents [delete-unenrolled-agents-setting]
 
-After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically.
+After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically. The cleanup is performed every hour.
 
 This option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the [{{kib}} settings file](/deploy-manage/stack-settings.md#kib-settings).
 
