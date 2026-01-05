@@ -44,7 +44,7 @@ The **Entity summary** section allows you to generate an AI-powered summary of t
 
 * Risk scores and risk inputs
 * Asset criticality levels
-* Vulnerabilities and misconfigurations
+* Vulnerabilities
 * {{ml-cap}} anomalies associated with the entity
 
 The summary provides a consolidated view of the entity's security posture, helping you quickly assess its significance and prioritize investigations. It includes information such as:
