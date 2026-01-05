@@ -340,6 +340,36 @@ Required role or privilege: `cancel` doesn't have its own required role or privi
 
 Example: `cancel --action="copy.sh" --comment="Canceled because it is stuck"`
 
+### `memory-dump` [memory-dump]
+```yaml {applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+Trigger a virtual process or kernel system memory dump on a Windows endpoint. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
+
+::::{note}
+This response action is supported only for Windows endpoints.
+::::
+
+The memory dump is stored on the endpoint's local disk. After running `memory-dump`, you must use the [`get-file`](#get-file) response action to download the dump from the endpoint.
+
+Use one of the following parameters to specify the type of memory dump:
+
+* `--kernel` : Generate a kernel-level memory dump. No other arguments are required when using this parameter.
+* `--process` : Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
+    * `--pid` : The process ID (PID) of the process to dump.
+    * `--entityId` : The entity ID of the process to dump.
+
+Predefined role (in {{serverless-short}}): TBD
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Example: `memory-dump --process --entityId="jshks0fhksh"`
+
+Example: `memory-dump --kernel --comment "Dumping kernel memory for investigation"`
+
+
 ## Supporting commands and parameters [supporting-commands-parameters]
 
 
