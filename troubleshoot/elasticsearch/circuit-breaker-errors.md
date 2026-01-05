@@ -24,7 +24,7 @@ See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough 
 
 **Error messages**
 
-If a request triggers a circuit breaker, {{es}} returns an error with a `429` HTTP status code.
+A circuit breaker trips when it prevents a request from executing in order to protect the node's stability. When a request triggers a circuit breaker, {{es}} returns an error with a `429` HTTP status code.
 
 ```js
 {
@@ -44,6 +44,20 @@ If a request triggers a circuit breaker, {{es}} returns an error with a `429` HT
 ```txt
 Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] Data too large, data for [<transport_request>] would be [num/numGB], which is larger than the limit of [num/numGB], usages [request=0/0b, fielddata=num/numKB, in_flight_requests=num/numGB, accounting=num/numGB]
 ```
+
+**Check circuit breaker statistics**
+
+You can use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to get statistics about the circuit breaker per node.
+
+```console
+GET _nodes/stats?filter_path=nodes.*.breakers
+```
+
+This will show you:
+- Estimated memory used, in bytes, for the operation.
+- Memmory limit for the circuit breaker.
+- Total number of times the circuit breaker has been triggered and prevented an out of memory error.
+- And an overhead which is a constant that all estimates for the circuit breaker are multiplied with to calculate a final estimate.
 
 **Check JVM memory usage**
 
