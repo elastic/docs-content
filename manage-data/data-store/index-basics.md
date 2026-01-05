@@ -329,10 +329,6 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 
 You must execute a new enrich policy before you can use it with an enrich processor or {{esql}} query. When executed, an enrich policy uses enrich data from the policy's source indices to create a streamlined system index called the enrich index. The policy uses this index to match and enrich incoming documents.
 
-When creating an enrich policy, the UI walks you through the configuration setup and selecting the fields. Before you can use the policy with an enrich processor or {{esql}} query, you must execute the policy.
-
-When executed, an enrich policy uses enrich data from the policy’s source indices to create a streamlined system index called the enrich index. The policy uses this index to match and enrich incoming documents.
-
 Check out these examples:
 
 * [Example: Enrich your data based on geolocation](/manage-data/ingest/transform-enrich/example-enrich-data-based-on-geolocation.md)
