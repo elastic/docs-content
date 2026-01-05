@@ -16,7 +16,9 @@ products:
 This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [AI-Powered features](/explore-analyze/ai-features.md#security-features).
 
 ::::{important}
-Higher scores indicate better performance. A score of 100 on a task means the model met or exceeded all task-specific benchmarks.
+Higher scores indicate better performance. A score of 100 on a task means the model met or exceeded all task-specific benchmarks. 
+
+Models with a score of "Not recommended" failed testing. This could be due to various issues, including context window constraints.
 ::::
 
 
