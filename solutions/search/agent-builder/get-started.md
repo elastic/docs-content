@@ -12,6 +12,10 @@ applies_to:
 
 Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 
+:::{important}
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license).
+:::
+
 ::::::{stepper}
 ::::{step} Set up an Elastic deployment
 

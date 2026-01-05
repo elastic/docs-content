@@ -12,6 +12,10 @@ applies_to:
 
 ## Limitations
 
+:::{important}
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license).
+:::
+
 ### Feature availability
 
 #### Non-serverless deployments
@@ -25,6 +29,10 @@ However, it must be enabled for non-serverless deployments {applies_to}`stack: p
 In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
 
 ## Known issues
+
+### API key authentication returns 403 Forbidden
+
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license).
 
 ### Incompatible LLMs
 
