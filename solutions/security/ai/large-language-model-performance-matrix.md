@@ -26,17 +26,18 @@ Models from third-party LLM providers.
 
 | **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration** | **Average Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **GPT 5 Chat** | 91 | 92 | 100 | 85 | 92 | 51.50 | 92 |
-| **Gemini 2.5 Pro** | 89 | 86 | 100 | 87 | 90 | 32.50 | 90 |
-| **Sonnet 4.5** | 90 | 90 | 100 | 80 | 90 | 52.00 | 90 |
-| **GPT 5.1** | 93 | 95 | 100 | 95 | 65 | 51.00 | 90 |
-| **Opus 4.5** | 86 | 86 | 100 | 85 | 90 | 38.00 | 89 |
-| **Opus 4.1** | 92 | 93 | 100 | 70 | 90 | 36.50 | 89 |
-| **GPT 4.1** | 87 | 88 | 100 | 80 | 88 | 16.00 | 89 |
-| **Sonnet 4** | 89 | 92 | 100 | 70 | 88 | 39.00 | 88 |
-| **Elastic Managed LLM** | 89 | 90 | 100 | 70 | 90 | 50.50 | 88 |
-| **Gemini 2.5 Flash** | 87 | 90 | Not recommended | Not recommended | 90 | Not recommended | N/A |
-| **Haiku 4.5** | 84 | 80 | Not recommended | Not recommended | 88 | Not recommended | N/A |
+| **GPT 5 Chat** | 91 | 92 | 100 | 85 | 92 | 99 | 93 |
+| **Sonnet 4.5** | 90 | 90 | 100 | 80 | 90 | 100 | 92 |
+| **GPT 5.1** | 93 | 95 | 100 | 95 | 65 | 98 | 91 |
+| **Sonnet 3.7** | 89 | 90 | 100 | 70 | 90 | 97 | 89 |
+| **Opus 4.5** | 86 | 86 | 100 | 85 | 90 | 73 | 87 |
+| **Gemini 2.5 Pro** | 89 | 86 | 100 | 87 | 90 | 63 | 86 |
+| **Opus 4.1** | 92 | 93 | 100 | 70 | 90 | 70 | 86 |
+| **Sonnet 4** | 89 | 92 | 100 | 70 | 88 | 60 | 83 |
+| **GPT 4.1** | 87 | 88 | 100 | 80 | 88 | 31 | 79 |
+| **Gemini 3.0 Pro** | 30 | 10 | 100 | 90 | 85 | 29 | 57 |
+| **Gemini 2.5 Flash** | 87 | 90 | 0 | 0 | 90 | 0 | 45 |
+| **Haiku 4.5** | 84 | 80 | 0 | 0 | 88 | 0 | 42 |
 
 ## Open-source models [_open_source_models]
 
