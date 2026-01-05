@@ -57,7 +57,7 @@ Use the **SLO Managment** page to delete multiple SLOs at once. To bulk delete S
 stack: ga 9.3
 ```
 
-A stale SLO instance hasn't received new data within the **Stale SLOs threshold**, which you can set in the **SLOs Settings**.
+A stale SLO instance hasn't received new data within the **Stale SLOs threshold** period, which you can set in the SLOs **Settings** page.
 
 From the **Overview** on the **SLOs** page, you can see the number of **Stale** SLOs. Select the number to show your stale SLOs.
 
