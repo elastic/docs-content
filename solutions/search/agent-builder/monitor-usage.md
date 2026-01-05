@@ -1,5 +1,5 @@
 ---
-navigation_title: "Monitor usage"
+navigation_title: "Monitor token usage"
 applies_to:
   stack: preview 9.2
   serverless:
