@@ -1,7 +1,7 @@
 
 The Kubernetes dashboard provides insight into Linux process data from your Kubernetes clusters. It shows sessions in detail and in the context of your monitored infrastructure.
 
-:::{image} solutions/security/images/security-kubernetes-dashboard.png
+:::{image} solutions/images/security-kubernetes-dashboard.png
 :alt: The Kubernetes dashboard
 :::
 
@@ -23,7 +23,7 @@ From the sessions table’s Actions column, you can take the following investiga
 
 Session View displays Kubernetes metadata under the **Metadata** tab of the Detail panel:
 
-:::{image} solutions/security/images/security-d4c-metadata-tab.png
+:::{image} solutions/images/security-d4c-metadata-tab.png
 :alt: The Detail panel's metadata tab
 :::
 

@@ -23,7 +23,7 @@ The default D4C integration policy includes two selector-response pairs. It is d
 * **Threat Detection:** The first selector-response pair is designed to stream process telemetry data to your {{es}} cluster so {{elastic-sec}} can evaluate it to detect threats. Both the selector and response are named `allProcesses`. The selector selects all fork and exec events. The associated response specifies that selected events should be logged.
 * **Drift Detection & Prevention:** The second selector-response pair is designed to create alerts when container drift is detected. Both the selector and response are named `executableChanges`. The selector selects all `createExecutable` and `modifyExecutable` events. The associated response specifies that the selected events should create alerts, which will be sent to your {{es}} cluster. You can modify the response to block drift operations by setting it to block.
 
-:::{image} ../../../images/security-d4c-policy-editor.png
+:::{image} /solutions/images/security-d4c-policy-editor.png
 :alt: The defend for containers policy editor with the default policies
 :::
 

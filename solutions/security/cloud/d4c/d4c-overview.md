@@ -26,7 +26,7 @@ D4C for Kubernetes sends system events from your containers to {{es}}. {{elastic
 
 ### Drift detection & prevention [_drift_detection_prevention] 
 
-Cloud-native containers should be immutable, meaning that their file systems should not change during normal operations. By leveraging this principle, security teams can detect unusual system behavior with a high degree of accuracy — without relying on more resource-intensive techniques like memory scanning or attack signature detection. Elastic’s Drift Detection mechanism has a low rate of false positives, so you can deploy it in most environments without worrying about creating excessive alerts.
+Cloud-native containers should be immutable, meaning that their file systems should not change during normal operations. By leveraging this principle, security teams can detect unusual system behavior with a high degree of accuracy, without relying on more resource-intensive techniques like memory scanning or attack signature detection. Elastic’s Drift Detection mechanism has a low rate of false positives, so you can deploy it in most environments without worrying about creating excessive alerts.
 
 
 ### Workload protection policies [_workload_protection_policies] 
