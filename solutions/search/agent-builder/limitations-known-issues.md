@@ -13,7 +13,7 @@ applies_to:
 ## Limitations
 
 :::{important}
-{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license).
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
 :::
 
 ### Feature availability
@@ -32,7 +32,7 @@ In the first release of {{agent-builder}} on serverless, the feature is **only a
 
 ### API key authentication returns 403 Forbidden
 
-{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license).
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
 
 ### Incompatible LLMs
 
