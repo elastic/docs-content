@@ -35,8 +35,8 @@ Models from third-party LLM providers.
 | **Opus 4.1** | 92 | 93 | 100 | 70 | 90 | 70 | 86 |
 | **Sonnet 4** | 89 | 92 | 100 | 70 | 88 | 60 | 83 |
 | **GPT 4.1** | 87 | 88 | 100 | 80 | 88 | 31 | 79 |
-| **Gemini 2.5 Flash** | 87 | 90 | 0 | 0 | 90 | 0 | 45 |
-| **Haiku 4.5** | 84 | 80 | 0 | 0 | 88 | 0 | 42 |
+| **Gemini 2.5 Flash** | 87 | 90 | Not recommended | Not recommended | 90 | Not recommended | N/A |
+| **Haiku 4.5** | 84 | 80 | Not recommended | Not recommended | 88 | Not recommended | N/A |
 
 ## Open-source models [_open_source_models]
 
