@@ -10,7 +10,7 @@ applies_to:
 
 # Token usage in Elastic Agent Builder
 
-When using {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} utilizes an agentic framework, a single user request often triggers multiple model calls (rounds) to process reasoning steps, run tools, and interpret results.
+When working with {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} uses an agentic framework, a single user request often triggers multiple model calls to process reasoning steps, run tools, and interpret results.
 
 Token counts include:
 
