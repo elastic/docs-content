@@ -24,14 +24,12 @@ To open the **SLO management** page:
 
 ## Permissions
 
-Actions like deleting SLOs and purging SLO data and require the **SLO editor** role. Users with the **SLO viewer** role can use the SLO Management page to find unhealthy SLOs that need attention.
-
-Refer to [Configure SLO access](./configure-service-level-objective-slo-access.md) for more information on creating SLO roles.
+Actions like deleting SLOs and purging SLO data require [a role with edit privileges for SLOs](./configure-service-level-objective-slo-access.md##slo-all-access). Users with [read-only privileges](./configure-service-level-objective-slo-access.md##slo-read-access) can use the SLO Management page to find unhealthy SLOs that need attention.
 
 
 ## Filter SLOs
 
-From the SLO Management page, use the search bar to find SLOs by name. Use the **Filter tags** menu to include or exclude SLOs from the view based on the defined tags.
+From the **SLO Management** page, use the search bar to find SLOs by name. Use the **Filter tags** menu to include or exclude SLOs from the view based on the defined tags.
 
 ## Monitor SLO health
 ```{applies_to}
@@ -41,16 +39,16 @@ stack: ga 9.3
 The **Health** column of the SLO management table shows the following:
 
 * **Healthy**: the SLO transforms are operating as expected.
-* **Needs attention**: the SLO transforms are not operating as expected and needs attention.
+* **Needs attention**: the SLO transforms are not operating as expected and need attention.
 
-For SLOs that have issues with their transforms, select **Needs attention** to inspect the transforms with issues.
+Select **Needs attention** to inspect the transforms with issues.
 
 For more on SLO transforms and troubleshooting SLO health, refer to [Understanding SLO internals](../../../troubleshoot/observability/troubleshoot-service-level-objectives-slos.md#slo-understanding-slos).
 
 ## Bulk delete SLOs
-Use the SLO Managment page to delete multiple SLOs at once. To bulk delete SLOs:
+Use the **SLO Managment** page to delete multiple SLOs at once. To bulk delete SLOs:
 
-1. From the **SLO management** page, select the checkbox next to the SLOs from which you want to purge stale instances.
+1. From the **SLO Management** page, select the checkbox next to the SLOs you want to delete.
 1. From the **Selected [number] SLO** menu, select **Delete**.
 1. Select **Delete**.
 
@@ -69,7 +67,7 @@ Occasionally, you might want to delete these stale instances. You can either pur
 
 To pure all stale SLO instances:
 
-1. From the **SLO management** page, select **Actions** → **Purge stale instances**.
+1. From the **SLO Management** page, select **Actions** → **Purge stale instances**.
 1. If you don't want to delete stale instances according to the predefined **Stale SLOs threshold** setting, you can update the **Stale threshold**.
 1. Select **Purge**.
 
@@ -77,8 +75,8 @@ To pure all stale SLO instances:
 
 To purge stale instances from individual or multiple SLOs:
 
-1. From the **SLO management** page, select the checkbox next to the SLOs from which you want to purge stale instances.
-1. From the **Selected [number] SLO** menu, select **Purge stale instances**.
+1. From the **SLO Management** page, select the checkbox next to the SLOs from which you want to purge stale instances.
+1. From the **Selected [number] SLOs** menu, select **Purge stale instances**.
 1. If you don't want to delete stale instances according to the predefined **Stale SLOs threshold** setting, you can update the **Stale threshold**.
 1. Select **Purge**.
 
@@ -87,14 +85,14 @@ To purge stale instances from individual or multiple SLOs:
 stack: ga 9.1
 ```
 
-Rollup functionality summarizes old, high-granularity data into a reduced granularity format for long-term storage. Occasionally, you might want to delete this {{rollup}} data. To purge your {{rollup}} data:
+Rollup functionality summarizes old, high-granularity data into a reduced granularity format for long-term storage. Occasionally, you might want to delete this {{rollup}} data.
 
 ### Bulk purge SLO {{rollup}} data
 
 To bulk purge SLO {{rollup}} data:
 
-1. From the **SLO management** page, select the checkbox next to the SLOs from which you want to purge {{rollup}} data.
-1. From the **Selected [number] SLO** menu, select **Purge {{rollup}} data**.
+1. From the **SLO Management** page, select the checkbox next to the SLOs from which you want to purge {{rollup}} data.
+1. From the **Selected [number] SLOs** menu, select **Purge {{rollup}} data**.
 1. Define which data to purge.
 1. Select **Purge**.
 
