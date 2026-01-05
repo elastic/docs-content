@@ -1,7 +1,7 @@
 
 The Kubernetes dashboard provides insight into Linux process data from your Kubernetes clusters. It shows sessions in detail and in the context of your monitored infrastructure.
 
-:::{image} ../../../images/security-kubernetes-dashboard.png
+:::{image} solutions/security/images/security-kubernetes-dashboard.png
 :alt: The Kubernetes dashboard
 :::
 
@@ -16,14 +16,14 @@ You can filter the data using the KQL search bar and date picker at the top of t
 From the sessions table’s Actions column, you can take the following investigative actions:
 
 * View details
-* [Open in Timeline](../investigate/timeline.md)
-* [Run Osquery](../investigate/run-osquery-from-alerts.md)
-* [Analyze event](../investigate/visual-event-analyzer.md)
-* [Open Session View](../investigate/session-view.md)
+* [Open in Timeline](/solutions/security/investigate/timeline.md)
+* [Run Osquery](/solutions/security/investigate/run-osquery-from-alerts.md)
+* [Analyze event](/solutions/security/investigate/visual-event-analyzer.md)
+* [Open Session View](/solutions/security/investigate/session-view.md)
 
 Session View displays Kubernetes metadata under the **Metadata** tab of the Detail panel:
 
-:::{image} ../../../images/security-metadata-tab.png
+:::{image} solutions/security/images/security-d4c-metadata-tab.png
 :alt: The Detail panel's metadata tab
 :::
 
@@ -37,7 +37,7 @@ The **Metadata** tab is organized into these expandable sections:
 
 ## Setup [_setup]
 
-To get data for this dashboard, set up [Cloud Workload Protection for Kubernetes](/solutions/security/cloud/get-started-with-d4c.md) for the clusters you want to display on the dashboard.
+To get data for this dashboard, set up [Cloud Workload Protection for Kubernetes](/solutions/security/cloud/d4c/get-started-with-d4c.md) for the clusters you want to display on the dashboard.
 
 ::::{admonition} Requirements
 * Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
