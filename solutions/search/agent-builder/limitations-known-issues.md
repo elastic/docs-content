@@ -24,6 +24,10 @@ However, it must be enabled for non-serverless deployments {applies_to}`stack: p
 
 In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
 
+### A2A streaming not supported
+
+The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+
 ## Known issues
 
 ### Incompatible LLMs
