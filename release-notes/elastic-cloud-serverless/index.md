@@ -9,6 +9,15 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## February 17, 2026 [serverless-changelog-02172026]
+
+### Features and enhancements [serverless-changelog-02172026-features-enhancements]
+
+Adds four new Microsoft Azure [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}: 
+* East US 2 (`eastus2`) located in Virginia
+* Germany West Central (`germanywestcentral`) located in Frankfurt
+* Southeast Asia (`southeastasia`) located in Singapore
+* Spain Central (`spaincentral`) located in Madrid
 
 ## December 16, 2025 [serverless-changelog-12162025]
 
