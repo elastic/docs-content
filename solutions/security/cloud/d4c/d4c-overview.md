@@ -57,7 +57,7 @@ Your D4C integration policy determines which system behaviors (for example, proc
 The default D4C policy sends data about all running processes to your {{es}} cluster. This data is used by {{elastic-sec}}'s prebuilt detection rules to detect malicious behavior in container workloads.
 
 ::::{important} 
-To learn more about D4C policies, including how to create your own, refer to the [D4C policies guide](container-workload-protection-policies.md).
+To learn more about D4C policies, including how to create your own, refer to the [D4C policies guide](d4c-policies.md).
 ::::
 
 

@@ -29,7 +29,7 @@ First, you’ll need to deploy Elastic’s Defend for Containers integration to 
 
 1. Find **Container Workload Security** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Add D4C Integration**.
 2. Name the integration. The default name, which you can change, is `cloud_defend-1`.
-3. Optional: make any desired changes to the integration’s policy by adjusting the **Selectors** and **Responses** sections. (For more information, refer to [Defend for Containers policy](container-workload-protection-policies.md)). You can also change these later.
+3. Optional: make any desired changes to the integration’s policy by adjusting the **Selectors** and **Responses** sections. (For more information, refer to [Defend for Containers policy](d4c-policies.md)). You can also change these later.
 4. Under **Where to add this integration**, select an existing or new agent policy.
 5. Click **Save & Continue**, then **Add {{agent}} to your hosts**.
 6. On the {{agent}} policy page, click **Add agent** to open the Add agent flyout.
@@ -51,7 +51,7 @@ First, you’ll need to deploy Elastic’s Defend for Containers integration to 
 
 ## Get started with threat detection [d4c-get-started-threat]
 
-One of the [default D4C policies](container-workload-protection-policies.md#d4c-default-policies) sends process telemetry events (`fork` and `exec`) to {{es}}.
+One of the [default D4C policies](d4c-policies.md#d4c-default-policies) sends process telemetry events (`fork` and `exec`) to {{es}}.
 
 In order to detect threats using this data, you’ll need active [detection rules](../detect-and-alert.md). Elastic has prebuilt detection rules designed for this data. (You can also create your own [custom rules](../detect-and-alert/create-detection-rule.md).)
 
@@ -70,7 +70,7 @@ To install and enable the prebuilt rules:
 
 To enable drift detection, you can use the default D4C policy:
 
-1. Make sure the [default D4C policy](container-workload-protection-policies.md#d4c-default-policies) is active.
+1. Make sure the [default D4C policy](d4c-policies.md#d4c-default-policies) is active.
 2. Make sure you enabled at least the "Container Workload Protection" rule, by following the steps to install prebuilt rules, above.
 
 To enable drift prevention, create a new policy:
