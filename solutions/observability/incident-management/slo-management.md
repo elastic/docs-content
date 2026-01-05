@@ -65,7 +65,7 @@ Occasionally, you might want to delete these stale instances. You can either pur
 
 ### Purge all stale SLO instances
 
-To pure all stale SLO instances:
+To purge all stale SLO instances:
 
 1. From the **SLO Management** page, select **Actions** → **Purge stale instances**.
 1. If you don't want to delete stale instances according to the predefined **Stale SLOs threshold** setting, you can update the **Stale threshold**.
