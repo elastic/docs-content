@@ -7,5 +7,5 @@ applies_to:
     security: beta
 ---
 
-:::{include} _snippets/kubernetes-dashboard.md
+:::{include} /solutions/security/cloud/_snippets/kubernetes-dashboard.md
 :::
