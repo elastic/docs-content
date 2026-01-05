@@ -55,7 +55,7 @@ List all prerequisites including:
 - Estimated time to complete (optional but helpful)
 -->
 
-You'll need:
+To follow this tutorial, you need the following:
 
 - [Software or access requirement 1]
 - [Software or access requirement 2]
