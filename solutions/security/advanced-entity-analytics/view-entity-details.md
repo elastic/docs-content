@@ -55,7 +55,7 @@ The summary provides a consolidated view of the entity's security posture, helpi
 * Recommended next steps based on the entity's security posture, such as updating vulnerable packages, investigating specific alerts, or implementing additional security controls
 
 ::::{tip}
-If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can select **More actions** ({icon}`boxes_vertical`) → **Ask AI Assistant** to continue the conversation about the entity in AI Assistant.
+If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Agent Builder](/solutions/search/elastic-agent-builder.md) set up, you can select **More actions** ({icon}`boxes_vertical`) → **Ask AI Assistant** or **Add to chat** to continue the conversation about the entity in AI Assistant or Agent Builder.
 ::::
 
 :::{image} /solutions/images/security-entity-summary.png
