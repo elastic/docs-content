@@ -1,6 +1,5 @@
 | Region | Name |
 | --- | --- | 
-| us-east-1 | US East (N. Virginia) |
 | us-east-2 | US East (Ohio) |
 | us-west-2 | US West (Oregon) |
 | eu-west-1 | EU (Ireland) |
