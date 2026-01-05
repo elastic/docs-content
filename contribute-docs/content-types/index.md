@@ -1,6 +1,9 @@
 ---
 navigation_title: "Content types"
 description: "Overview of guidelines for choosing the appropriate content types in the Elastic documentation."
+applies_to:
+  stack: 
+  serverless: 
 ---
 
 # Elastic Docs content types
@@ -43,6 +46,7 @@ A tutorial should always be a standalone page, meaning it should have only one c
 ## Guidelines per content type
 
 - [How-to guides](how-tos.md)
+- [Troubleshooting](troubleshooting.md)
 % - [Tutorial](tutorials.md)
 
 ## Templates per content type
