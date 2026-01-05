@@ -7,5 +7,7 @@ applies_to:
     security: beta
 ---
 
+# Kubernetes dashboard [cloud-nat-sec-kubernetes-dashboard]
+
 :::{include} /solutions/security/cloud/_snippets/kubernetes-dashboard.md
 :::

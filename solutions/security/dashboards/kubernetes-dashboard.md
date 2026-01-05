@@ -5,5 +5,7 @@ applies_to:
     security: beta
 ---
 
+# Kubernetes dashboard
+
 :::{include} _snippets/kubernetes-dashboard.md
 :::

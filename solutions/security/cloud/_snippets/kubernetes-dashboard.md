@@ -1,4 +1,3 @@
-# Kubernetes dashboard [cloud-nat-sec-kubernetes-dashboard]
 
 The Kubernetes dashboard provides insight into Linux process data from your Kubernetes clusters. It shows sessions in detail and in the context of your monitored infrastructure.
 
