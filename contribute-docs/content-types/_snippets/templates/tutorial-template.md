@@ -1,5 +1,5 @@
 ---
-description: "A brief summary of what users will learn in this tutorial, fit for search results and tooltips."
+description: "A brief summary of what users learn in this tutorial, fit for search results and tooltips."
 applies_to:
   stack:
   serverless:
@@ -13,10 +13,10 @@ For complete guidance, refer to [the tutorial guide](https://www.elastic.co/docs
 
 -->
 
-# [Descriptive title indicating what users will learn]
+# [Descriptive title indicating what users learn]
 <!-- REQUIRED
 
-A clear, descriptive title that indicates what users will learn or accomplish.
+A clear, descriptive title that indicates what users learn or accomplish.
 
 Examples:
 - Build an ingest pipeline with processors
@@ -29,17 +29,17 @@ Examples:
 
 Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
 
-- A brief description of what users will learn
+- A brief description of what this tutorial teaches
 - The intended audience and their expected skill level
 - Learning objectives as a bulleted list
 -->
 
-In this tutorial, you'll learn how to [brief description of the main task]. This tutorial is intended for [target audience]. It assumes you have basic knowledge of:
+In this tutorial, you learn how to [brief description of the main task]. This tutorial is intended for [target audience]. It assumes you have basic knowledge of:
 
 - [Prerequisite concept 1]
 - [Prerequisite concept 2]
 
-By the end of this tutorial, you'll be able to:
+By the end of this tutorial, you can:
 
 - [Learning objective 1 — clear, achievable, and relevant to real-world tasks]
 - [Learning objective 2]
