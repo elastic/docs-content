@@ -37,8 +37,8 @@ Models from third-party LLM providers.
 | **Opus 4.1** | 92 | 93 | 100 | 70 | 90 | 70 | 86 |
 | **Sonnet 4** | 89 | 92 | 100 | 70 | 88 | 60 | 83 |
 | **GPT 4.1** | 87 | 88 | 100 | 80 | 88 | 31 | 79 |
-| **Gemini 2.5 Flash** | 87 | 90 | Not recommended | Not recommended | 90 | Not recommended | N/A |
-| **Haiku 4.5** | 84 | 80 | Not recommended | Not recommended | 88 | Not recommended | N/A |
+| **Gemini 2.5 Flash** | 87 | 90 | Not recommended | Not recommended | 90 | Not recommended | 45 |
+| **Haiku 4.5** | 84 | 80 | Not recommended | Not recommended | 88 | Not recommended | 42 |
 
 ## Open-source models [_open_source_models]
 
@@ -46,4 +46,4 @@ Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-l
 
 | **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration** | **Overall Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **GPT OSS 20b** | 82 | 25 | Not recommended | Not recommended | 10 | Not recommended | N/A |
+| **GPT OSS 20b** | 82 | 25 | Not recommended | Not recommended | 10 | Not recommended | 23 |
