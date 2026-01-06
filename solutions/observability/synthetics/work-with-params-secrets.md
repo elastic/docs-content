@@ -18,7 +18,7 @@ For more information about security-sensitive use cases, refer to [Working with 
 
 ## Define params [synthetics-params-secrets-define]
 
-Param values can be declared by any of the following methods:
+You can declare param values any of the following ways:
 
 * In the *Global parameters* tab of the [Synthetics Settings page in an Observability project](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-global-parameters).
 * Declaring a default value for the parameter in a [configuration file](/solutions/observability/synthetics/work-with-params-secrets.md#synthetics-dynamic-configs).
@@ -47,6 +47,26 @@ From any page in the Synthetics UI:
 :alt: Global parameters tab on the Synthetics Settings page
 :screenshot:
 :::
+
+### Allow users to view global parameter values
+
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} sub-feature privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-parameters) or by selecting the {icon}`eye` icon.
+
+To add the **Can read global parameter values** {{kib}} privilege to a role:
+
+1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Edit an existing role or select **Create role**.
+1. From the **Kibana** section, select **Add Kibana privilege**.
+1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
+2. Turn on **Customize sub-feature privileges**.
+3. Turn on **Can read global parameter values**.
+
+Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for more on creating custom roles.
 
 ### Synthetics project config file [synthetics-dynamic-configs]
 
@@ -130,11 +150,10 @@ To use a param in a browser monitor that is created in the Synthetics UI, add `p
 
 ## Working with secrets and sensitive values [synthetics-secrets-sensitive]
 
-Your synthetics scripts may require the use of passwords or other sensitive secrets that are not known until runtime.
+Your synthetics scripts might require the use of passwords or other sensitive secrets that are not known until runtime.
 
 ::::{warning}
-Params are viewable in plain-text by administrators and other users with `all` privileges for the Synthetics app. Also note that synthetics scripts have no limitations on accessing these values, and a malicious script author could write a synthetics journey that exfiltrates `params` and other data at runtime. Do **not** use truly sensitive passwords (for example, an admin password or a real credit card) in **any** synthetics tools. Instead, set up limited demo accounts, or fake credit cards with limited functionality. If you want to limit access to parameters, ensure that users who are not supposed to access those values do not have `all` privileges for the Synthetics app, and that any scripts that use those values do not leak them in network requests or screenshots.
-
+{applies_to}`serverless: ga`{applies_to}`stack: ga 9.1` Params are viewable by administrators and users with the **Can read global parameter values** {{kib}} privilege. Also, synthetics scripts have no limitations on accessing these values, and a malicious script author could write a synthetics journey that exfiltrates `params` and other data at runtime. Do **not** use truly sensitive passwords (for example, an admin password or a real credit card) in **any** synthetics tools. Instead, set up limited demo accounts, or fake credit cards with limited functionality. If you want to limit access to parameters, ensure that users who are not supposed to access those values do not have the **Can read global parameter values** {{kib}} privilege, and that any scripts that use those values do not leak them in network requests or screenshots.
 ::::
 
 ### Use environment variables in Synthetics Projects
@@ -162,7 +181,7 @@ These variables are accessible to all monitors running on this specific Private 
 ::::
 
 #### 1. Pass variables to the Private Location
-When starting your Private Location ({{agent}}) using Docker, use the `--env` flag to pass your variables. 
+When starting your Private Location ({{agent}}) using Docker, use the `--env` flag to pass your variables.
 
 
 

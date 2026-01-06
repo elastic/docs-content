@@ -45,13 +45,6 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
 
-### Limitations
-
-#### Batch size
-
-Batches are limited to a maximum of 16 documents.
-This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
-
 ## `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
 
 ```{applies_to}
@@ -83,9 +76,10 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 | Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
-| General Purpose LLM   | 50              | -                       | -                       | No rate limit on tokens  |
+| Claude Sonnet 3.7     | 400             | -                       | -                       | No rate limit on tokens  |
+| Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
 | ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| `jina-embeddings-v3`  | 500             | 3,000,000               | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
 ## Pricing
 
