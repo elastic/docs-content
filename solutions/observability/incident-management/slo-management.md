@@ -17,14 +17,14 @@ Manage your service level objectives (SLOs) from the **SLO Management** page. Vi
 :screenshot:
 :::
 
-To open the **SLO management** page:
+To open the **SLO Management** page:
 
 1. Navigate to the **SLOs** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select **Manage SLOs**.
 
 ## Permissions
 
-Actions like deleting SLOs and purging SLO data require [a role with edit privileges for SLOs](./configure-service-level-objective-slo-access.md##slo-all-access). Users with [read-only privileges](./configure-service-level-objective-slo-access.md##slo-read-access) can use the SLO Management page to find unhealthy SLOs that need attention.
+Actions like deleting SLOs and purging SLO data require [a role with edit privileges for SLOs](./configure-service-level-objective-slo-access.md##slo-all-access). Users with [read-only privileges](./configure-service-level-objective-slo-access.md##slo-read-access) can use the **SLO Management** page to find unhealthy SLOs that need attention.
 
 
 ## Filter SLOs
