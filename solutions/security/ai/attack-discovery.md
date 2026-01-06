@@ -43,7 +43,7 @@ Ensure your role has:
 
 :::
 
-:::{applies-item} stack: ga =9.1
+:::{applies-item} stack: ga 9.1-9.2
 
 Ensure your role has:
 
