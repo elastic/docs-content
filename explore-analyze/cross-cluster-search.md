@@ -1084,7 +1084,7 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
 4. The coordinating node sends a search request to each shard, including those in its own cluster. Each shard performs the search request independently.
 
     ::::{warning}
-    When network roundtrips aren’t minimized, the search is executed as if all data were in the coordinating node’s cluster. We recommend updating cluster-level settings that limit searches, such as `action.search.shard_count.limit`, `pre_filter_shard_size`, and `max_concurrent_shard_requests`, to account for this. If these limits are too low, the search may be rejected.
+    When network roundtrips aren’t minimized, the search is executed as if all data were in the coordinating node’s cluster. We recommend updating cluster-level settings or search request parameters that limit searches, such as `action.search.shard_count.limit`, `pre_filter_shard_size`, and `max_concurrent_shard_requests`, to account for this. If these limits are too low, the search may be rejected.
 
     ::::
 

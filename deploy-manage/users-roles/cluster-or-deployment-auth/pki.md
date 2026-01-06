@@ -4,7 +4,6 @@ mapped_pages:
 applies_to:
   deployment:
     self:
-    ece:
     eck:
 products:
   - id: elasticsearch
@@ -13,7 +12,7 @@ products:
 # PKI [pki-realm]
 
 :::{{warning}}
-This type of user authentication cannot be configured on {{ech}} deployments.
+This type of user authentication cannot be configured on {{ech}} or {{ece}} deployments.
 :::
 
 You can configure {{es}} to use Public Key Infrastructure (PKI) certificates to authenticate users. In this scenario, clients connecting directly to {{es}} must present X.509 certificates. First, the certificates must be accepted for authentication on the SSL/TLS layer on {{es}}. Then they are optionally further validated by a PKI realm. See [PKI authentication for clients connecting directly to {{es}}](#pki-realm-for-direct-clients).
@@ -128,8 +127,6 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
       ```
 
       :::{tip}
-      If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
-
       If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
       If you're using a self-managed cluster, then the file must be present on each node.
@@ -175,8 +172,6 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     2. The distinguished name (DN) of a PKI user.
 
     :::{tip}
-    If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
-
     If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
     If you're using a self-managed cluster, then the file must be present on each node.

@@ -13,7 +13,7 @@ products:
 
 # Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT) [monitor-k8s-otel-edot]
 
-In this quickstart guide, you’ll learn how to send {{k8s}} logs, metrics, and application traces to Elasticsearch, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
+In this quickstart guide, you’ll learn how to send {{k8s}} logs, metrics, and application traces to {{es}}, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
 
 All the components are deployed through the [opentelemetry-kube-stack](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) helm chart. They include:
 
@@ -33,24 +33,23 @@ For a more detailed description of the components and advanced configuration, re
 :sync: stack
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A running Kubernetes cluster (v1.23 or newer).
+* A running {{k8s}} cluster (v1.23 or later).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * Helm version 3.9+ up to and including {{helm-version}}.
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
 
 :::
 
-:::{tab-item} Serverless
+:::{tab-item} {{serverless-short}}
 :sync: serverless
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
-* A running Kubernetes cluster (v1.23 or newer).
+* A running {{k8s}} cluster (v1.23 or later).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * Helm version 3.9+ up to and including {{helm-version}}.
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
 
 :::
-
 ::::
 
 ## Collect your data [_collect_your_data_2]
@@ -87,7 +86,7 @@ For a more detailed description of the components and advanced configuration, re
 
 :::
 
-:::{tab-item} Serverless
+:::{tab-item} {{serverless-short}}
 :sync: serverless
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
@@ -114,7 +113,6 @@ For a more detailed description of the components and advanced configuration, re
     * Create a secret with an API Key and the {{es}} endpoint to be used by the collectors.
     * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
     * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
-
 
 :::
 
