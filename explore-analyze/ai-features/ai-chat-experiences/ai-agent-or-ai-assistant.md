@@ -52,21 +52,16 @@ The following AI Assistant chat features are not supported by Agent Builder:
 Also, AI Agent chats do not show previews of data you attach to a message, such as Alerts and Attacks.
 :::
 
-:::{tab-item} Elastic {{observability}}
+:::{tab-item} Elastic {{observability}} and Search
 :sync: tab2
-- Knowledge Base
-- Data anonymization
-- Chat sharing
-- Chat duplication
-- Chat archiving
-- Screen context (unavailable for some use cases)
-- AI insights (unavailable for some use cases)
-- Alerting Rule connector action
+- **Knowledge Base**
+- **Data anonymization**
+- **Chat sharing**
+- **Chat duplication**
+- **Chat archiving**
+- **Screen context (unavailable for some use cases)**
+- **AI insights (unavailable for some use cases)**
+- **Alerting Rule connector action**
 :::
 
 ::::
-
-
-### Agent Builder features in Elastic {{observability}}
-
-### Agent Builder features in 
