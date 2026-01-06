@@ -758,6 +758,7 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
           - file: monitor/logging-configuration/update-elasticsearch-logging-levels.md
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
+          - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
               - file: monitor/logging-configuration/kibana-log-levels.md
@@ -778,6 +779,7 @@ toc:
           - file: cloud-organization/billing/billing-models.md
           - file: cloud-organization/billing/add-billing-details.md
           - file: cloud-organization/billing/view-billing-history.md
+          - file: cloud-organization/billing/manage-billing-notifications.md
           - file: cloud-organization/billing/manage-subscription.md
           - file: cloud-organization/billing/monitor-analyze-usage.md
           - file: cloud-organization/billing/ecu.md
