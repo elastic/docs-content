@@ -23,5 +23,4 @@ In order for Prisma Cloud data to appear in these workflows:
 * Ensure you have `read` privileges for the following indices: `security_solution-*.misconfiguration_latest`, `security_solution-*.vulnerability_latest`.
 
 
-Your Prisma Cloud data should now appear throughout {{elastic-sec}}.
 
