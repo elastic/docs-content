@@ -3,10 +3,7 @@ navigation_title: Automatic integrations synchronization
 description: The automatic integrations sync feature keeps integrations and custom assets synced between your management Elasticsearch cluster and one or more remote clusters.
 applies_to:
   stack: ga 9.1
-  deployment:
-    ess: ga
-    ece: ga
-    self: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent

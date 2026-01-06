@@ -77,6 +77,7 @@ toc:
               - file: search/agent-builder/kibana-api.md
               - file: search/agent-builder/a2a-server.md
               - file: search/agent-builder/mcp-server.md
+          - file: search/agent-builder/monitor-usage.md
           - file: search/agent-builder/permissions.md
           - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
@@ -116,6 +117,7 @@ toc:
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
+              - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
               - file: observability/get-started/opentelemetry/quickstart/self-managed/index.md
                 children:
                   - file: observability/get-started/opentelemetry/quickstart/self-managed/k8s.md
@@ -356,7 +358,7 @@ toc:
               - file: observability/synthetics/support-matrix.md
               - file: observability/synthetics/encryption-security.md
           - file: observability/applications/user-experience.md
-            children: 
+            children:
               - file: observability/applications/otel-rum.md
           - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
@@ -518,6 +520,7 @@ toc:
             children:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
+              - file: observability/incident-management/slo-management.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
         children:
@@ -759,4 +762,5 @@ toc:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
               - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
       - file: security/asset-management.md
+      - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md
