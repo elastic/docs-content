@@ -18,8 +18,6 @@ See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough 
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-
-
 ## Diagnose circuit breaker errors [diagnose-circuit-breaker-errors]
 
 **Error messages**
@@ -54,7 +52,7 @@ GET _nodes/stats?filter_path=nodes.*.breakers
 ```
 
 This will show you:
-- Estimated memory used, in bytes, for the operation.
+- Estimated memory used for the operation.
 - Memmory limit for the circuit breaker.
 - Total number of times the circuit breaker has been triggered and prevented an out of memory error.
 - And an overhead which is a constant that all estimates for the circuit breaker are multiplied with to calculate a final estimate.
@@ -75,7 +73,6 @@ To get the JVM memory usage for each circuit breaker, use the [node stats API](h
 GET _nodes/stats/breaker
 ```
 
-
 ## Prevent circuit breaker errors [prevent-circuit-breaker-errors]
 
 **Reduce JVM memory pressure**
@@ -93,3 +90,25 @@ If you’ve triggered the fielddata circuit breaker and can’t disable fielddat
 ```console
 POST _cache/clear?fielddata=true
 ```
+
+## Circuit Breaker Types
+
+[Circuit breaker types](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) are manually defined for known expensive code paths with a sum-up [parent circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). Breakers need to be resolved per breaker type; common examples:
+
+- `accounting`: Lucene segments and their overhead. Commonly indicates need to [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or [fix large shards](elasticsearch://deploy-manage/production-guidance/optimize-performance/size-shards.md).
+- `fielddata`: [field data] and [global ordinals]
+- `eql_sequence`: [eql sequences]
+- `request`: API request bodies. Commonly for [Bulk] sizes too large
+- `inflight_requests`: total API network bytes
+- `script`: [scripts]
+- `regex`: [regex]
+
+**Memory evaluation**
+
+Circuit breakers may either directly evaluate memory usage estimates or indirectly limit operations that are likely to cause excessive memory consumption. For example, the `script` circuit breaker checks memory indirectly by rate-limiting Painless/Mustache script compilations. However, even with circuit breakers in place, nodes can still encounter out-of-memory (OOM) conditions. This can occur, for example, because:
+
+- Circuit breaker relies on point-in-time memory usage estimations.
+- Parallel operations may still heap DOS-attack the node even with `parent` circuit breakers.
+- Certain dynamic operations can quickly consume substantial memory. For example [aggregations](elasticsearch://explore-analyze/query-filter/aggregations.md) and [complex queries](elasticsearch://reference/query-languages/query-dsl/compound-queries).
+Circuit breakers protect JVM heap memory, but if OOM occurs due to non-heap memory; for example JVM for complication (code cache) or thread stacks.
+
