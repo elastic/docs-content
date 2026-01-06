@@ -13,25 +13,7 @@ products:
 
 If the automatic [{{slm}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) ({{slm-init}}) or [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) service is not operating as expected, you might need to check its lifecycle status, stop, or restart the service. You may also want to halt services during routine maintenance.
 
-All of the procedures on this page use the {{es}} APIs. To run these steps using {{kib}}:
-
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the name of your deployment.
-
-    ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-    ::::
-
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
-
-    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
-    :alt: {{kib}} Console
-    :screenshot:
-    :::
-
-4. Use the Dev Tools Console to run the API requests as described.
-
-
+You can perform the following procedures using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 ## Check status, stop, and restart {{slm-init}} [check-stop-start-slm]
 
