@@ -1,6 +1,5 @@
 | Region | Name |
 | --- | --- | 
-| us-east-1 | US East (N. Virginia) |
 | us-east-2 | US East (Ohio) |
 | us-west-2 | US West (Oregon) |
 | eu-west-1 | EU (Ireland) |
@@ -9,4 +8,4 @@
 | ap-northeast-1 | Asia Pacific (Tokyo) |
 | ap-southeast-1 | Asia Pacific (Singapore) |
 
-More regions are coming soon.
+More cloud service providers and regions are coming soon.
