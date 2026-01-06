@@ -18,7 +18,7 @@ This page explains how to make data from the Prisma Cloud integration appear in 
 
 In order for Prisma Cloud data to appear in these workflows:
 
-* Follow the steps to [set up the Prisma Cloud integration](https://docs.elastic.co/en/integrations/prisma cloud).
+* Follow the steps to [set up the Prisma Cloud integration](https://docs.elastic.co/en/integrations/prisma_cloud).
 * Make sure the integration version is at least 4.0.0.
 * Ensure you have `read` privileges for the following indices: `security_solution-*.misconfiguration_latest`, `security_solution-*.vulnerability_latest`.
 
