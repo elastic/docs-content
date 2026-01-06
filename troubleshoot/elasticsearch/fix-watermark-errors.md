@@ -60,7 +60,7 @@ Watermark errors occur when a node’s disk usage exceeds the configured thresho
 
 * Sudden ingestion of large volumes of data, often referred to as large indexing bursts, can quickly consume disk space, especially if the cluster is not sized for peak loads. Refer to [Indexing performance considerations](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md) for guidance.  
 * Inefficient index settings, unnecessary stored fields, and suboptimal document structures can increase disk consumption. See [Tune for disk usage](/deploy-manage/production-guidance/optimize-performance/disk-usage.md) for guidance on reducing storage requirements.  
-* A high number of replicas can quickly multiply storage requirements, as each replica consumes the same disk space as the primary shard. See [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) for details.  
+* A high number of replicas can quickly multiply storage requirements, as each replica consumes the same disk space as the primary shard. Refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) for details.  
 * Oversized shards can make disk usage spikes more likely and slow down recovery and rebalancing. Learn more in [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md). 
 
 
@@ -125,7 +125,7 @@ To reduce the likelihood of watermark errors:
 * Implement more restrictive ILM policies to delete or move data sooner, helping keep disk usage under control. Refer to [Index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
 * Enable [Autoscaling](/deploy-manage/autoscaling.md) to automatically adjust resources based on storage and performance needs.
 * Configure [Stack monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) and enable [disk usage monitoring alerts](/solutions/observability/incident-management/alerting.md) to track disk usage trends and identify increases before watermark thresholds are exceeded.
-* Optimize shard sizes to balance disk usage (and performance), avoiding a mix of overly large and small shards. See [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
+* Optimize shard sizes to balance disk usage (and performance), avoiding a mix of overly large and small shards. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
 
 ::::{tip}
 On {{ech}} and {{ece}}, indices may need to be temporarily deleted using the its [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which blocks [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow, reach out to [Elastic Support](https://support.elastic.co) for assistance.
