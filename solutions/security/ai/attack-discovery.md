@@ -26,7 +26,7 @@ To use Attack Discovery, your role needs specific privileges.
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.3+", "serverless": "ga" }
 
 Ensure your role has:
 
