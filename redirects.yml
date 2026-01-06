@@ -616,7 +616,7 @@ redirects:
 # Related to https://github.com/elastic/docs-content/issues/2662
   'solutions/security/cloud/integrations/aws-config.md': 'solutions/security/integrations/aws-config.md'
   'solutions/security/cloud/integrations/aws-inspector.md': 'solutions/security/integrations/aws-inspector.md'
-  'solutions/security/cloud/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/security/cloud/integrations/cncf-falco.md': 'solutions/security/integrations/cncf-falco.md'
   'solutions/security/cloud/integrations/google-security-command-center.md': 'solutions/security/integrations/google-security-command-center.md'
   'solutions/security/cloud/integrations/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'
