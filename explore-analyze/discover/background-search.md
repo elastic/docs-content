@@ -59,7 +59,7 @@ The background searches that you run are personal and only visible by you. To us
 
 ::::{applies-item} serverless: ga
 
-To send searches to the background, and to view and interact with the list of background searches from **Discover** and **Dashboards** apps, you must have permissions for **Discover** and **Dashboard**, and for the [Background search subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+To send searches to the background, and to view and interact with the list of background searches from the **Discover** and **Dashboards** apps, you need permissions for **Discover** and **Dashboard**, and for the [Background search subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 ::::
 
 ::::{applies-item} stack: ga 9.2
