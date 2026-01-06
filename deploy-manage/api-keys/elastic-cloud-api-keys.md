@@ -30,7 +30,8 @@ These keys provides access to the API that enables you to manage your deployment
 3. On the **API keys** tab of the **Organization** page, click **Create API key**.
 4. On the **Create API key** flyout, you can configure your new key by adding a name, set expiration, or assign [roles](../users-roles/cloud-organization/user-roles.md).
 
-    By default, API keys expire after three months. You can set the expiration to a different preset value or to a specific date, up to one year. If you need the key to work indefinitely, you can also set its expiration to Never. In this case, the key won’t expire. Each user is allowed to create up to 64 API keys.
+    By default, API keys expire after three months. You can set the expiration to a different preset value or to a specific date, up to one year. If you need the key to work indefinitely, you can also set its expiration to Never. In this case, the key won’t expire.
+    Each organization can have up to 500 active API keys.
 
     ::::{note}
     When an API key is nearing expiration, Elastic sends an email to the creator of the API key and each of the operational contacts. When you use an API key to authenticate, the API response header `X-Elastic-Api-Key-Expiration` indicates the key’s expiration date. You can log this value to detect API keys that are nearing expiration.

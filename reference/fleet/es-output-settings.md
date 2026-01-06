@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/es-output-settings.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -71,6 +74,9 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
     5. Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.
     When you create an {{agent}} policy using this output, the output will use the balanced preset options except with the higher compression level, as specified.
 
+**Write to logs streams** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
+:   When this setting is on, `logs` and `logs.*` are added to the output streams configuration in the agent policy using this output. Enabling this setting is only part of the process for allowing {{agent}} to send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). For additional required steps, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+
 ## Advanced YAML configuration [es-output-settings-yaml-config]
 
 `allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
@@ -132,6 +138,10 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
     **Default:** `1`
 
+`status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
+:   (boolean) Whether status reporting is enabled for this output. When disabled, the output does not change its health status if there is a connectivity problem.
+
+    **Default:** `true`
 
 ## Performance tuning settings [es-output-settings-performance-tuning-settings]
 

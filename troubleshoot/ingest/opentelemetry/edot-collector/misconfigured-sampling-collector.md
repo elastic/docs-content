@@ -2,7 +2,7 @@
 navigation_title: Collector sampling issues
 description: Learn how to troubleshoot missing or incomplete traces in the EDOT Collector caused by sampling configuration.
 applies_to:
-  serverless: all
+  serverless: ga
   product:
     edot_collector: ga  
 products:
@@ -12,11 +12,11 @@ products:
 
 # Missing or incomplete traces due to Collector sampling
 
-If traces or spans are missing in {{kib}}, the issue might be related to the Collector’s sampling configuration. 
+If traces or spans are missing in {{kib}}, the issue might be related to the Collector's sampling configuration. For general troubleshooting when no data appears in {{kib}}, refer to [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md). 
 
 {applies_to}`stack: ga 9.2` Tail-based sampling (TBS) allows the Collector to evaluate entire traces before deciding whether to keep them. If TBS policies are too strict or not aligned with your workloads, traces you expect to see may be dropped.
 
-Both Collector-based and SDK-level sampling can lead to gaps in telemetry if not configured correctly. See [Missing or incomplete traces due to SDK sampling](../edot-sdks/misconfigured-sampling-sdk.md) for more information.
+Both Collector-based and SDK-level sampling can lead to gaps in telemetry if not configured correctly. Refer to [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md) for more information.
 
 ## Symptoms
 
@@ -79,4 +79,4 @@ Follow these steps to resolve sampling configuration issues:
 
 - [Tail sampling processor (Collector)](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 - [OpenTelemetry sampling concepts - contrib documentation](https://opentelemetry.io/docs/concepts/sampling/) 
-- [Missing or incomplete traces due to SDK sampling](../edot-sdks/misconfigured-sampling-sdk.md)
+- [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md)

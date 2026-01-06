@@ -77,7 +77,6 @@ toc:
               - file: machine-learning/anomaly-detection/mapping-anomalies.md
               - file: machine-learning/anomaly-detection/ml-configuring-url.md
               - file: machine-learning/anomaly-detection/ml-jobs-from-lens.md
-              - file: machine-learning/anomaly-detection/move-jobs.md
           - file: machine-learning/anomaly-detection/ml-ad-resources.md
             children:
               - file: machine-learning/anomaly-detection/ml-limitations.md
@@ -123,6 +122,7 @@ toc:
           - file: machine-learning/nlp/ml-nlp-built-in-models.md
             children:
               - file: machine-learning/nlp/ml-nlp-elser.md
+              - file: machine-learning/nlp/ml-nlp-jina.md
               - file: machine-learning/nlp/ml-nlp-rerank.md
               - file: machine-learning/nlp/ml-nlp-e5.md
               - file: machine-learning/nlp/ml-nlp-lang-ident.md
@@ -165,9 +165,25 @@ toc:
           - file: scripting/painless-lab.md
       - file: scripting/modules-scripting-expression.md
       - file: scripting/modules-scripting-engine.md
-
-  - file: ai-assistant.md
-  - file: manage-access-to-ai-assistant.md
+  - file: cross-cluster-search.md
+    children:
+      - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
+  - file: ai-features.md
+    children:
+      - file: ai-features/ai-assistant.md
+      - file: ai-features/manage-access-to-ai-assistant.md
+      - file: ai-features/llm-guides/llm-connectors.md
+        children:
+          - file: ai-features/llm-guides/connect-to-azure-openai.md
+          - file: ai-features/llm-guides/connect-to-amazon-bedrock.md
+          - file: ai-features/llm-guides/connect-to-openai.md
+          - file: ai-features/llm-guides/connect-to-google-vertex.md
+          - file: ai-features/llm-guides/local-llms-overview.md
+            children:
+              - file: ai-features/llm-guides/connect-to-lmstudio-observability.md
+              - file: ai-features/llm-guides/connect-to-lmstudio-security.md
+              - file: ai-features/llm-guides/connect-to-vLLM.md
+      - hidden: ai-features/ai-agent-or-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md

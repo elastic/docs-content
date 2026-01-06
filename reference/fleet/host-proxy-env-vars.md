@@ -1,12 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/host-proxy-env-vars.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Proxy Server connectivity using default host variables [host-proxy-env-vars]
+# Proxy server connectivity using default host variables [host-proxy-env-vars]
 
 Set environment variables on the host to configure default proxy settings. The {{agent}} uses host environment settings by default if no proxy settings are specified elsewhere. You can override host proxy settings later when you configure the {{agent}} and {{fleet}} settings. The following environment variables are available on the host:
 
@@ -65,11 +68,8 @@ The location where you set these environment variables is platform-specific and 
         HTTP_PROXY=http://my.proxy:8080
         ```
 
-
 After adding environment variables, restart the service.
 
 ::::{note}
 If you use a proxy server to download new agent versions from `artifacts.elastic.co` for upgrading, configure [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings).
 ::::
-
-
