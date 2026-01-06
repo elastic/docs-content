@@ -132,21 +132,30 @@ To edit, delete, or quote a comment, select the appropriate option from the **Mo
 :screenshot:
 :::
 
+## Add context and supporting materials [cases-add-context]
 
-### Examine alerts attached to a case [cases-examine-alerts]
+Provide additional context and resources by adding the following to the case:
+* [Alerts](#cases-examine-alerts)
+* [Indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case)
+* {applies_to}`stack: ga 9.2.0` [Events](#cases-examine-events) 
+* [Files](#cases-add-files)
+* [Observables](#cases-add-observables)
 
-To explore the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
-
-You can find the **Alerts** tab in the following places:
-
-- {applies_to}`serverless:` {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
-
-::::{important}
-Each case can have a maximum of 1,000 alerts.
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific observable values, alert and event IDs, and file names.
 ::::
 
-### Examine events attached to a case [cases-examine-events]
+### Add alerts [cases-examine-alerts]
+
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
+
+::::{note}
+Add alerts to new and existing cases from [Timeline](/solutions/security/investigate/timeline.md) or the [**Alerts** page](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md).
+::::
+
+### Add events [cases-examine-events]
 ```{applies_to}
 stack: ga 9.2
 ```
@@ -165,7 +174,32 @@ You can find the **Events** tab in the following places:
 :::{include} /solutions/_snippets/add-case-files.md
 :::
 
-### Add a Lens visualization [cases-lens-visualization]
+::::{important}
+When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported. 
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
+### Add observables [cases-add-observables]
+
+:::{include} /solutions/_snippets/add-case-observables.md
+:::
+
+{applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can use **Auto-extract observables** to instantly extract observables from alerts that you're adding to the case. After creating a new case, you have the option to turn it off by toggling **Auto-extract observables** on the case's **Observables** tab.
+
+## Copy the case UUID [cases-copy-case-uuid]
+
+Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the **Cases** page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
+
+:::{image} /solutions/images/security-cases-copy-case-id.png
+:alt: Copy Case ID option in More actions menu
+:width: 250px
+:screenshot:
+:::
+
+## Add a Lens visualization [cases-lens-visualization]
 
 ::::{warning}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
@@ -205,53 +239,6 @@ After a visualization has been added to a case, you can modify or interact with 
 :alt: Shows where the Open Visualization option is
 :screenshot:
 :::
-
-
-### Add observables [cases-add-observables]
-
-::::{admonition} Requirements
-Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-
-::::
-
-An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case. 
-
-To view and manage observables, go to the **Observables** tab. You can find the tab in the following places:
-
-- {applies_to}`serverless:` {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0-9.2`: Go to the case's details page.  
-
-::::{important}
-Each case can have a maximum of 50 observables.
-::::
-
-To create an observable:
-
-1. Click **Add observable** from the **Observables** tab.
-2. Provide the necessary details:
-
-    * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/solutions/security/investigate/configure-case-settings.md#cases-observable-types).
-    * **Value**: Enter a value for the observable. The value must align with the type you select.
-    * **Description** (Optional): Provide additional information about the observable.
-
-3. Click **Add observable**.
-
-After adding an observable to a case, you can remove or edit it by using the **Actions** menu (**…**).
-
-::::{tip}
-Go to the **Similar cases** tab to access other cases with the same observables.
-::::
-
-### Copy the case UUID [cases-copy-case-uuid]
-
-Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the Cases page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
-
-:::{image} /solutions/images/security-cases-copy-case-id.png
-:alt: Copy Case ID option in More actions menu
-:width: 250px
-:screenshot:
-:::
-
 
 ## Export and import cases [cases-export-import]
 
