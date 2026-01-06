@@ -7,6 +7,8 @@ products:
   - id: elasticsearch
 ---
 
+
+
 # Circuit breaker errors [circuit-breaker-errors]
 
 {{es}} uses [circuit breakers](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) to prevent nodes from running out of JVM heap memory. If Elasticsearch estimates an operation would exceed a circuit breaker, it stops the operation and returns an error.
@@ -72,6 +74,7 @@ To get the JVM memory usage for each circuit breaker, use the [node stats API](h
 ```console
 GET _nodes/stats/breaker
 ```
+
 
 ## Prevent circuit breaker errors [prevent-circuit-breaker-errors]
 
