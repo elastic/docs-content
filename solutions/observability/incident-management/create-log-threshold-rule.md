@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-threshold-alert.html
 applies_to:
   stack: ga
+  serverless: unavailable 
 products:
   - id: observability
 ---
