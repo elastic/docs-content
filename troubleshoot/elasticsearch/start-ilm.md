@@ -13,7 +13,7 @@ products:
 
 If the automatic [{{slm}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) ({{slm-init}}) or [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) service is not operating as expected, you might need to check its lifecycle status, stop, or restart the service. You may also want to halt services during routine maintenance.
 
-You can perform the following procedures using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
+You can perform the following procedures using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 ## Check status, stop, and restart {{slm-init}} [check-stop-start-slm]
 

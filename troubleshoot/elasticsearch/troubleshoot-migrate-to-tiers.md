@@ -18,7 +18,7 @@ This could lead to unassigned shards or shards not transitioning to the desired 
 
 To fix this issue, use the following steps.
 
-You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
+You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 :::{tip}
 To learn how to assign tiers to your data nodes, refer to [](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md).
