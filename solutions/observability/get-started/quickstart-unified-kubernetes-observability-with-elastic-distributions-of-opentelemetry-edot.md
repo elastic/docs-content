@@ -13,7 +13,7 @@ products:
 
 # Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT) [monitor-k8s-otel-edot]
 
-In this quickstart guide, you’ll learn how to send {{k8s}} logs, metrics, and application traces to Elasticsearch, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
+In this quickstart guide, you’ll learn how to send {{k8s}} logs, metrics, and application traces to {{es}}, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
 
 All the components are deployed through the [opentelemetry-kube-stack](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) helm chart. They include:
 
@@ -28,20 +28,20 @@ For a more detailed description of the components and advanced configuration, re
 
 ::::{applies-switch}
 
-:::{applies-item} stack:
+:::{applies-item} serverless:
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A running Kubernetes cluster (v1.23 or newer).
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
+* A running {{k8s}} cluster (v1.23 or later).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * Helm version 3.9+ up to and including {{helm-version}}.
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
 
 :::
 
-:::{applies-item} serverless:
+:::{applies-item} stack:
 
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
-* A running Kubernetes cluster (v1.23 or newer).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* A running {{k8s}} cluster (v1.23 or later).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * Helm version 3.9+ up to and including {{helm-version}}.
 * (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
@@ -53,34 +53,6 @@ For a more detailed description of the components and advanced configuration, re
 ## Collect your data [_collect_your_data_2]
 
 ::::{applies-switch}
-
-:::{applies-item} stack:
-
-1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
-2. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
-
-    :::{image} /solutions/images/observability-quickstart-k8s-otel-entry-point.png
-    :alt: Kubernetes-OTel entry point
-    :screenshot:
-    :::
-
-3. Follow the on-screen instructions to install all needed components.
-
-    ::::{note}
-    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
-
-    ::::
-
-
-    Deploy the OpenTelemetry Operator and EDOT Collectors using the kube-stack Helm chart with the provided `values.yaml` file. You will run a few commands to:
-
-    * Add the helm chart repository needed for the installation.
-    * Create a namespace.
-    * Create a secret with an API Key and the {{es}} endpoint to be used by the collectors.
-    * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
-    * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
-
-:::
 
 :::{applies-item} serverless:
 
@@ -109,6 +81,33 @@ For a more detailed description of the components and advanced configuration, re
     * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
     * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
 
+:::
+
+:::{applies-item} stack:
+
+1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
+2. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
+
+    :::{image} /solutions/images/observability-quickstart-k8s-otel-entry-point.png
+    :alt: Kubernetes-OTel entry point
+    :screenshot:
+    :::
+
+3. Follow the on-screen instructions to install all needed components.
+
+    ::::{note}
+    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
+
+    ::::
+
+
+    Deploy the OpenTelemetry Operator and EDOT Collectors using the kube-stack Helm chart with the provided `values.yaml` file. You will run a few commands to:
+
+    * Add the helm chart repository needed for the installation.
+    * Create a namespace.
+    * Create a secret with an API Key and the {{es}} endpoint to be used by the collectors.
+    * Install the `opentelemetry-kube-stack` helm chart with the provided `values.yaml`.
+    * Optionally, for instrumenting applications, apply the corresponding `annotations` as shown in {{kib}}.
 
 :::
 

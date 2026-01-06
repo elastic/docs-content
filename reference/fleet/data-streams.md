@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -134,6 +137,10 @@ Changes to component templates are not applied retroactively to existing indices
 
 
 ## Index lifecycle management ({{ilm-init}}) [data-streams-ilm]
+
+```{applies_to}
+serverless: unavailable
+```
 
 Use the [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) feature in {{es}} to manage your {{agent}} data stream indices as they age. For example, create a new index after a certain period of time, or delete stale indices to enforce data retention standards.
 

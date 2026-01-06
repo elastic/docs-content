@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-cpu-usage.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -40,7 +35,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 
 :::::::{applies-switch}
 
-::::::{applies-item} ess:
+::::::{applies-item} { ess:, ece: }
 * (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
     You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
@@ -54,13 +49,14 @@ To track CPU usage over time, we recommend enabling monitoring:
 {{ech}} grants [CPU credits](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
 ::::::
 
-::::::{applies-item} self:
+::::::{applies-item} { self:, eck: }
 * Enable [{{es}} monitoring](../../deploy-manage/monitor/stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
     You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 ::::::
 
 :::::::
+
 ### Check hot threads [check-hot-threads]
 
 If a node has high CPU usage, use the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) to check for resource-intensive threads running on the node.

@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-other-node-out-of-disk.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -21,10 +16,15 @@ products:
 
 :::::::{applies-switch}
 
-::::::{applies-item} ess:
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
-3. Go to `Actions > Edit deployment` and then go to the `Coordinating instances` or the `Machine Learning instances` section depending on the roles listed in the diagnosis:
+::::::{applies-item} { ece:, ess: }
+:::{warning}
+:applies_to: ece:
+In ECE, resizing is limited by your [allocator capacity](/deploy-manage/deploy/cloud-enterprise/ece-manage-capacity.md).
+:::
+
+1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or ECE Cloud UI.
+2. On the home page, find your deployment and select **Manage**.
+3. Go to **Actions** > **Edit deployment** and then go to the **Coordinating instances** or the **Machine Learning instances** section depending on the roles listed in the diagnosis:
 
     :::{image} /troubleshoot/images/elasticsearch-reference-increase-disk-capacity-other-node.png
     :alt: Increase disk capacity of other nodes
@@ -34,16 +34,16 @@ products:
 4. Choose a larger than the pre-selected capacity configuration from the drop-down menu and click `save`. Wait for the plan to be applied and the problem should be resolved.
 ::::::
 
-::::::{applies-item} self:
-In order to increase the disk capacity of any other node, you will need to replace the instance that has run out of space with one of higher disk capacity.
+::::::{applies-item} { eck:, self: }
+To increase the disk capacity of any other node, you need to replace the instance that has run out of space with one of higher disk capacity.
 
-1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:
+1. First, retrieve the disk threshold that indicates how much disk space is needed. The relevant threshold is the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved using the following command:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     {
@@ -63,29 +63,29 @@ In order to increase the disk capacity of any other node, you will need to repla
       }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
+    This response means that, to resolve the disk shortage, you need to either drop our disk usage below the 90% or have more than 150GB available. [Read more how this threshold works](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
-2. The next step is to find out the current disk usage, this will allow to calculate how much extra space is needed. In the following example, we show only a machine learning node for readability purposes:
+2. The next step is to find out the current disk usage. This information allows you to calculate how much extra space is needed. In the following example, we show only a machine learning node for readability purposes:
 
     ```console
     GET /_cat/nodes?v&h=name,node.role,disk.used_percent,disk.used,disk.avail,disk.total
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     name                node.role disk.used_percent disk.used disk.avail disk.total
     instance-0000000000     l                 85.31    3.4gb     500mb       4gb
     ```
 
-3. The desired situation is to drop the disk usage below the relevant threshold, in our example 90%. Consider adding some padding, so it will not go over the threshold soon. Assuming you have the new node ready, add this node to the cluster.
+3. The goal is to reduce disk usage below the relevant threshold, in our example 90%. Consider adding some padding so that usage doesn't immediately exceed the threshold again. Assuming you have the new node ready, add this node to the cluster.
 4. Verify that the new node has joined the cluster:
 
     ```console
     GET /_cat/nodes?v&h=name,node.role,disk.used_percent,disk.used,disk.avail,disk.total
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     name                node.role disk.used_percent disk.used disk.avail disk.total
