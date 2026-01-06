@@ -5,12 +5,16 @@ applies_to:
     elasticsearch: preview
     observability: unavailable
     security: unavailable
-navigation_title: "Permissions & access control"
+navigation_title: "Permissions"
 ---
 
 # Permissions and access control in {{agent-builder}}
 
 Use this page to learn how to configure security roles and API keys for {{agent-builder}}. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
+
+:::{important}
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+:::
 
 ## Required privileges
 
