@@ -1561,7 +1561,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Supports integrations having secrets with multiple values in Fleet [#216918]({{kib-pull}}216918)
 * Adds overlay to the add/edit integration page in Fleet [#217151]({{kib-pull}}217151)
 
-* [Failure Store] Authorization denial messages
 
 
 ## March 31, 2025 [serverless-changelog-03312025]
@@ -1647,8 +1646,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes regression that caused the cases actions to disappear from the detections engine alerts table bulk actions menu [#215111]({{kib-pull}}215111)
 * Changes "Close project" to "Log out" in nav menu in serverless mode [#211463]({{kib-pull}}211463)
 * Fixes search profiler index reset field when query is changed [#215420]({{kib-pull}}215420)
-* Adds ``manage_failure_store`` index privilege
-* [Failure Store] Feature-flag failure store privileges
 
 
 ## March 17, 2025 [serverless-changelog-03172025]
