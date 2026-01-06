@@ -631,3 +631,6 @@ redirects:
   # Move CCS feature docs to explore-analyze
   'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
   'solutions/search/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
+
+  # Rename AWS Security Hub integration's name to AWS Security Hub CSPM
+  'solutions/security/integrations/aws-security-hub.md': 'solutions/security/integrations/aws-security-hub-cspm.md'

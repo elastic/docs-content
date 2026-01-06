@@ -43,7 +43,8 @@ Data from the following integrations can feed into your {{elastic-sec}} workflow
 
 * [AWS Config](/solutions/security/integrations/aws-config.md)
 * [AWS Inspector](/solutions/security/integrations/aws-inspector.md)
-* [AWS Security Hub](/solutions/security/integrations/aws-security-hub.md)
+* [AWS Security Hub](/solutions/security/intergrations/aws-sec-hub.md)
+* [AWS Security Hub CSPM](/solutions/security/integrations/aws-security-hub-cspm.md)
 * [Google Security Command Center](/solutions/security/integrations/google-security-command-center.md)
 * [Microsoft Defender for Cloud](/solutions/security/integrations/microsoft-defender-for-cloud.md)
 * [Microsoft Defender for Endpoint](/solutions/security/integrations/microsoft-defender-for-endpoint.md)
