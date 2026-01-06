@@ -24,7 +24,7 @@ See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough 
 
 **Error messages**
 
-A circuit breaker trips when it prevents a request from executing in order to protect the node's stability. When a request triggers a circuit breaker, {{es}} returns an error with a `429` HTTP status code.
+A circuit breaker trips to prevent a request from executing in order to protect the node's stability. When a request triggers a circuit breaker, {{es}} [rejects the request](/troubleshoot/elasticsearch/rejected-requests.md) with a `429` HTTP status code error.
 
 ```js
 {
@@ -53,10 +53,10 @@ You can use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsear
 GET _nodes/stats?filter_path=nodes.*.breakers
 ```
 
-This will show you:
+The response provides the following information:
 - Estimated memory used for the operation.
 - Memmory limit for the circuit breaker.
-- Total number of times the circuit breaker has been triggered and prevented an out of memory error.
+- Total number of times the circuit breaker has been triggered and prevented an out of memory error since node uptime.
 - And an overhead which is a constant that all estimates for the circuit breaker are multiplied with to calculate a final estimate.
 
 **Check JVM memory usage**
@@ -94,11 +94,11 @@ If you’ve triggered the fielddata circuit breaker and can’t disable fielddat
 POST _cache/clear?fielddata=true
 ```
 
-## Circuit Breaker Types
+## Circuit breaker types
 
 [Circuit breaker types](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) are manually defined for known expensive code paths with a sum-up [parent circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). Breakers need to be resolved per breaker type; common examples:
 
-- `accounting`: Lucene segments and their overhead. Commonly indicates need to [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or [fix large shards](elasticsearch://deploy-manage/production-guidance/optimize-performance/size-shards.md).
+- `accounting`: Lucene segments and their overhead. Commonly indicates need to [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or [fix large shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
 - `fielddata`: [field data] and [global ordinals]
 - `eql_sequence`: [eql sequences]
 - `request`: API request bodies. Commonly for [Bulk] sizes too large
@@ -112,6 +112,6 @@ Circuit breakers may either directly evaluate memory usage estimates or indirect
 
 - Circuit breaker relies on point-in-time memory usage estimations.
 - Parallel operations may still heap DOS-attack the node even with `parent` circuit breakers.
-- Certain dynamic operations can quickly consume substantial memory. For example [aggregations](elasticsearch://explore-analyze/query-filter/aggregations.md) and [complex queries](elasticsearch://reference/query-languages/query-dsl/compound-queries).
-Circuit breakers protect JVM heap memory, but if OOM occurs due to non-heap memory; for example JVM for complication (code cache) or thread stacks.
+- Certain dynamic operations can quickly consume substantial memory. For example [aggregations](/explore-analyze/query-filter/aggregations.md) and [complex queries](elasticsearch://reference/query-languages/query-dsl/compound-queries.md).
+Circuit breakers protect the node's JVM heap. OOM can still trigger due to non-heap memory, for example within the compilation or thread stacks.
 
