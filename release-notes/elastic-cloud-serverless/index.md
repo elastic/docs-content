@@ -538,6 +538,8 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for the `convert` processor in stream data processing [#240023]({{kib-pull}}240023)
 * Improves message feedback in collapsed Processors/Conditions sections [#240778]({{kib-pull}}240778)
 * Optimizes workflow output in Agent Builder tools by removing workflow execution details from tool calls, reducing LLM token consumption and improving agent performance and reliability [#241040]({{kib-pull}}241040)
+* Updates field caps transport to return what each original expression was resolved to [#136632](https://github.com/elastic/elasticsearch/pull/136632)
+* Uses `DOC_VALUES_REWRITE` rewrite method where possible in keyword queries [#137536](https://github.com/elastic/elasticsearch/pull/137536)
 * Adds `ES93BloomFilterStoredFieldsFormat` for efficient field existence checks [#137331](https://github.com/elastic/elasticsearch/pull/137331)
 
 ### Fixes [serverless-changelog-11032025-fixes]
@@ -717,6 +719,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an accessibility issue where resetting changes or removing all terms in the Synonyms panel was not announced by screen readers [#237877]({{kib-pull}}237877)
 * Fixes an issue in the RAG Playground where invalid fields were highlighted but no error message appeared [#238284]({{kib-pull}}238284)
 * Improves the performance of the clustering algorithm [#238394]({{kib-pull}}238394)
+* Initializes `TermsEnum` eagerly [#136279](https://github.com/elastic/elasticsearch/pull/136279)
 * Fixes LogsDB settings provider mapping filters [#136119](https://github.com/elastic/elasticsearch/pull/136119)
 * Provides defaults for index sort settings [#135886](https://github.com/elastic/elasticsearch/pull/135886)
 * Stores full path in `_ignored` when ignoring dynamic array field [#136315](https://github.com/elastic/elasticsearch/pull/136315)
@@ -744,6 +747,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds triple-quote support to the Manual Ingest Pipeline Processor editor [#236595]({{kib-pull}}236595)
 * Introduces the German locale for Kibana in `beta` [#236903]({{kib-pull}}236903)
 * Adds an advanced option to disable filtering of file-backed volumes and CD-ROMs in the **Device Control** plugin [#236620]({{kib-pull}}236620)
+* Upgrades to Lucene 10.3.0
 
 * Improves TSDB ingestion by hashing dimensions only once, using a new auto-populeted `index.dimensions` private index setting [#135402](https://github.com/elastic/elasticsearch/pull/135402)
 * Adds index setting that disables the `index.dimensions` based routing and `_tsid` creation strategy [#135673](https://github.com/elastic/elasticsearch/pull/135673)
@@ -940,6 +944,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue on the API Keys Management page that occurred when loading API keys with null names [#234083]({{kib-pull}}234083)
 * Fixes an Anomaly Detection bug where custom URLs omitted generated fields in datafeed preview requests [#234709]({{kib-pull}}234709)
 * Ensures full tool traces are displayed in flyouts [#234654]({{kib-pull}}234654)
+* Uses inner query for `equals` and `hashCode` in `SourceConfirmedTextQuery` [#134451](https://github.com/elastic/elasticsearch/pull/134451)
 * Fixes a bug where text fields in LogsDB indices did not use their keyword multi fields for block loading [#134253](https://github.com/elastic/elasticsearch/pull/134253)
 
 ## September 8, 2025 [serverless-changelog-09082025]
@@ -1192,6 +1197,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes product docs install logic when the target version is higher than the current version for Machine Learning [#229704]({{kib-pull}}229704)
 * Adds support for the `name` attribute in create and update actions for saved objects [#228464]({{kib-pull}}228464)
 * Fixes missing data view [#229467]({{kib-pull}}229467)
+* Fixes default missing index sort value of `data_nanos` pre 7.14 [#132162](https://github.com/elastic/elasticsearch/pull/132162)
 * Implements support for weighted RRF [#130658](https://github.com/elastic/elasticsearch/pull/130658)
 * Adds sparse vector index options settings to semantic text fields [#131058](https://github.com/elastic/elasticsearch/pull/131058)
 * Fixes decoding of non-ascii field names in ignored source [#132018](https://github.com/elastic/elasticsearch/pull/132018)
@@ -1564,6 +1570,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue with the OpenAI connector not using the action proxy configuration for all subactions in Machine Learning [#219617]({{kib-pull}}219617).
 * Fixes an issue with **Anomaly Explorer** where the selected Overall swimlane bucket is not respected for `viewBy jobId` in Machine Learning [#222845]({{kib-pull}}222845).
 * Fixes error handling when one or more connectors is deleted [#221958]({{kib-pull}}221958).
+* Fixes minmax normalizer handling of single-doc result sets [#128689](https://github.com/elastic/elasticsearch/pull/128689)
 * Fix missing highlighting in `match_all` queries for `semantic_text` fields [#128702](https://github.com/elastic/elasticsearch/pull/128702)
 
 ## June 2, 2025 [serverless-changelog-06022025]
@@ -1759,6 +1766,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves anomaly charts object safety [#217552](https://github.com/elastic/kibana/pull/217552)
 * Fixes title announcements in the details step of the anomaly detection job wizard [#218570](https://github.com/elastic/kibana/pull/218570)
 * Fixes incorrect optimization for endpoint artifacts [#216437](https://github.com/elastic/kibana/pull/216437)
+* Bypasses competitive iteration in single filter bucket case [#127267](https://github.com/elastic/elasticsearch/pull/127267)
 
 
 ## April 21, 2025 [serverless-changelog-04212025]
@@ -1815,6 +1823,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for Windows MSI commands for Fleet and Elastic Agent installations [#217217]({{kib-pull}}217217)
 * Reuses shared integration policies when duplicating agent policies in Fleet [#217872]({{kib-pull}}217872)
 * Enables adding badges to all list items in the side navigation except the section header [#217301]({{kib-pull}}217301)
+* Upgrades to Lucene 10.2.0 [#126594](https://github.com/elastic/elasticsearch/pull/126594)
 * Uses `FallbackSyntheticSourceBlockLoader` for text fields [#126237](https://github.com/elastic/elasticsearch/pull/126237)
 * Adds block loader from stored field and source for ip field [#126644](https://github.com/elastic/elasticsearch/pull/126644)
 
