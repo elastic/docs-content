@@ -38,7 +38,7 @@ To set up or use AI assistant, you need the following:
 
 * The `Observability AI Assistant: All` {{kib}} privilege
 
-* An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md)
+* An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
 
 * (Optional) To use [knowledge base](#obs-ai-add-data):
   - A 4 GB {{ml}} node
@@ -54,7 +54,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings**](/explore-analyze/manage-access-to-ai-assistant.md) page allows you to:
+The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
 
 - Manage which AI connectors are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
@@ -114,7 +114,7 @@ serverless: ga
 stack: ga 9.2
 ```
 
-[Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
+[Connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md) to use a custom LLM deployed and managed by you.
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-es-airgapped.html
+applies_to:
+  deployment:
+    self: ga
 products:
   - id: elastic-agent
 ---
@@ -24,8 +27,10 @@ Use when
 
 ## Resources [airgapped-es-resources]
 
-Info for air-gapped environments:
+For more information on using Elastic in air-gapped environments, check:
 
-* [Installing the {{stack}} in an air-gapped environment](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md)
+* [Install the {{stack}} in an air-gapped environment](/deploy-manage/deploy/self-managed/air-gapped-install.md)
+* [Install {{ece}} in an air-gapped environment](/deploy-manage/deploy/cloud-enterprise/air-gapped-install.md)
+* [Run {{agents}} in an air-gapped environment](/reference/fleet/air-gapped.md)
 * [Using a proxy server with Elastic Agent and Fleet](/reference/fleet/fleet-agent-proxy-support.md)
 

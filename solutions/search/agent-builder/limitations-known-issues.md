@@ -1,5 +1,5 @@
 ---
-navigation_title: "Limitations & known issues"
+navigation_title: "Limitations"
 applies_to:
   stack: preview 9.2
   serverless:
@@ -11,6 +11,10 @@ applies_to:
 # Limitations and known issues in {{agent-builder}}
 
 ## Limitations
+
+:::{important}
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+:::
 
 ### Feature availability
 
@@ -24,7 +28,15 @@ However, it must be enabled for non-serverless deployments {applies_to}`stack: p
 
 In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
 
+### A2A streaming not supported
+
+The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+
 ## Known issues
+
+### API key authentication returns 403 Forbidden
+
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
 
 ### Incompatible LLMs
 
@@ -53,9 +65,9 @@ To mitigate this issue, consider the following strategies:
 
 ### {{esql}} limitations
 
-{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself.
 
-For non-serverless deployments, ensure your cluster supports the {{esql}} features you intend to use.
+For non-serverless deployments, ensure your cluster version supports the {{esql}} features you intend to use.
 
 For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
