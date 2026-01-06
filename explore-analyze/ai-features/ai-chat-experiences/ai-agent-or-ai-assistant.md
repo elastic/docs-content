@@ -54,7 +54,7 @@ Also, AI Agent chats do not show previews of data you attach to a message, such 
 
 :::{tab-item} Elastic {{observability}}
 :sync: tab2
-- Multilingual Knowledge base
+- Knowledge Base
 - Data anonymization
 - Chat sharing
 - Chat duplication
