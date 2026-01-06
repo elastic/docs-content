@@ -4,7 +4,15 @@ description: "Guidelines for writing effective tutorials in the Elastic document
 
 # Tutorials
 
-This page provides guidelines for writing effective tutorials in the Elastic docs.
+This page provides guidelines for writing effective tutorials in the Elastic docs. This page and its associated template can be used by humans and LLMs to draft new tutorials, or to evaluate existing pages.
+
+Use this page to:
+
+- Draft a new tutorial by copying and pasting the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/tutorial-template.md)
+- Understand the structure and best practices for tutorials before you write one
+- Evaluate existing tutorials or drafts against the standards outlined here
+
+Whether you're a regular contributor or reviewing someone else's work, these guidelines help ensure consistency, completeness, and quality across the Elastic documentation.
 
 ## What is a tutorial
 
@@ -20,6 +28,60 @@ Tutorials include three essential components:
 
 ::::{include} /contribute-docs/content-types/_snippets/how-to-tutorial-disambiguation-note.md
 ::::
+
+## Structure of a tutorial
+
+To help users successfully complete the learning experience, tutorials use a consistent structure. A predictable format helps users understand what they'll learn, what's required, and what they'll achieve.
+
+### Required elements
+
+Every tutorial must include the following elements:
+
+1. A consistent **filename:** Use descriptive patterns like `*-tutorial.md`.
+   - For example: `ingest-pipeline-tutorial.md`
+
+2. Appropriate **[frontmatter](https://elastic.github.io/docs-builder/syntax/frontmatter/):**
+   - `applies_to:` [Tags](https://elastic.github.io/docs-builder/syntax/applies) for versioning/availability info per the [cumulative docs guidelines](/contribute-docs/how-to/cumulative-docs/index.md)
+   - `description`: A brief summary of what users will learn
+   - `product`: The relevant Elastic product(s) used in the tutorial
+% TODO once we have structured types     - The `type` field set to `tutorial`
+
+3. A clear **title:** A descriptive title that indicates what users will learn or accomplish
+   - For example, "Build an ingest pipeline with processors"
+
+4. An **overview:** Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
+   - A brief description of what users will learn
+   - The intended audience and their expected skill level
+   - Learning objectives as a bulleted list
+
+5. A **before you begin** section: List all prerequisites including:
+   - Required prior knowledge or skills
+   - Software, hardware, or access requirements
+   - Data sets or environments to set up
+   - Estimated time to complete (optional but helpful)
+
+6. **Instructional steps:** Organize the tutorial into logical sections, each with a descriptive heading. Use numbered steps that begin with imperative verbs.
+   :::{tip}
+   Use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/) for visual flow, or add subheadings to break complex steps into subsections.
+   :::
+
+7. **Checkpoints and results:** After significant steps, show users what they should see or what state their system should be in.
+
+8. **[Code annotations](https://elastic.github.io/docs-builder/syntax/code/#code-callouts):** Explain important lines within code blocks to help users understand the code. Annotations can help reduce the need for extra text in the body of the tutorial, keeping the tutorial concise and focused. This makes it easier for a reader to simply run through the steps in a hurry.
+
+9. **Next steps:** Suggest follow-up tutorials, related features to explore, or ways to expand on what they built.
+
+10. **Related pages:** Links to related documentation such as conceptual topics, reference material, how-to guides, or troubleshooting resources.
+
+### Optional elements
+
+Include the following when they add value:
+
+- **[Screenshots](https://elastic.github.io/docs-builder/syntax/images/#screenshots):** Add visual aids for UI-based steps when they improve clarity. Use screenshots sparingly as they require maintenance.
+- **Explanatory callouts:** Use [admonitions](https://elastic.github.io/docs-builder/syntax/admonitions/) to provide extra context, troubleshooting tips, or explanations without interrupting the main flow.
+- **Time estimates:** Indicate how long each major section or the overall tutorial takes to complete.
+- A **summary:** Recap what users learned and accomplished in the tutorial. Reinforce the key learning objectives.
+% TODO: reviewer I've made the summary optional, because if the overview already lists learning objectives clearly, a summary that just repeats them feels redundant. The tutorial's value is in the journey, not bookending it with the repetive information. 🤺
 
 ## Best practices
 
@@ -39,54 +101,9 @@ When you create tutorials, follow these best practices:
   Have someone unfamiliar with the feature try your tutorial. They'll find every gap and unclear step!
   :::
 
-## Structure of a tutorial
-
-To help users successfully complete the learning experience, tutorials use a consistent structure. A predictable format helps users understand what they'll learn, what's required, and what they'll achieve.
-
-### Required elements
-
-The following elements are required in tutorials:
-
-- A consistent **filename:** Use descriptive patterns like `*-tutorial.md`.
-  - For example: `ingest-pipeline-tutorial.md`
-- Appropriate **[frontmatter](https://elastic.github.io/docs-builder/syntax/frontmatter/):**
-  - `applies_to:` [Tags](https://elastic.github.io/docs-builder/syntax/applies) for versioning/availability info per the [cumulative docs guidelines](/contribute-docs/how-to/cumulative-docs/index.md)
-  - `description`: A brief summary of what users will learn
-  - `product`: The relevant Elastic product(s) used in the tutorial
-% TODO once we have structured types  - The `type` field set to `tutorial`
-- A clear **title:** A descriptive title that indicates what users will learn or accomplish
-  - For example, "Build an ingest pipeline with processors"
-- An **overview:** Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
-  - A brief description of what users will learn
-  - The intended audience and their expected skill level
-  - Learning objectives as a bulleted list
-- A **before you begin** section: List all prerequisites including:
-  - Required prior knowledge or skills
-  - Software, hardware, or access requirements
-  - Data sets or environments to set up
-  - Estimated time to complete (optional but helpful)
-- **Instructional steps:** Organize the tutorial into logical sections, each with a descriptive heading. Use numbered steps that begin with imperative verbs.
-  :::{tip}
-  Use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/) for visual flow, or add subheadings to break complex steps into subsections.
-  :::
-- **Checkpoints and results:** After significant steps, show users what they should see or what state their system should be in.
-- **[Code annotations](https://elastic.github.io/docs-builder/syntax/code/#code-callouts):** Explain important lines within code blocks to help users understand the code. Annotations can help reduce the need for extra text in the body of the tutorial, keeping the tutorial concise and focused. This makes it easier for a reader to simply run through the steps in a hurry.
-- **Next steps:** Suggest follow-up tutorials, related features to explore, or ways to expand on what they built.
-- **Related pages:** Links to related documentation such as conceptual topics, reference material, how-to guides, or troubleshooting resources.
-
-### Optional elements
-
-Include the following when they add value:
-
-- **[Screenshots](https://elastic.github.io/docs-builder/syntax/images/#screenshots):** Add visual aids for UI-based steps when they improve clarity. Use screenshots sparingly as they require maintenance.
-- **Explanatory callouts:** Use [admonitions](https://elastic.github.io/docs-builder/syntax/admonitions/) to provide extra context, troubleshooting tips, or explanations without interrupting the main flow.
-- **Time estimates:** Indicate how long each major section or the overall tutorial takes to complete.
-- A **summary:** Recap what users learned and accomplished in the tutorial. Reinforce the key learning objectives.
-% TODO: reviewer I've made the summary optional, because if the overview already lists learning objectives clearly, a summary that just repeats them feels redundant. The tutorial's value is in the journey, not bookending it with the repetive information. 🤺
-
 ## Template
 
-To get started writing your tutorial, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/tutorial-template.md).
+To get started writing a new tutorial, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/tutorial-template.md).
 
 ## Examples
 
