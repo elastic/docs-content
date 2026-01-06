@@ -10,22 +10,22 @@ products:
 ---
 
 # Compare Agent Builder and AI Assistant
-You can use either AI Assistant (default) or Agent Builder to enable chat experiences throughout {{kib}}. This page explains their differences and how to opt-in to Agent Builder.
+You can use either AI Assistant (default) or AI Agent chat experiences throughout {{kib}}. This page explains their differences and how to opt-in to AI Agent.
 
 ::::{admonition} Requirements
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
 ::::
 
-## Enable Agent Builder
+## Switch between chat options
 
-Agent Builder uses Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) platform to provide a cohesive AI chat experience across all Elastic's products. It lets you design your own purpose-built agents for use in different workflows, and give them precise access to the tools and data they need.
+AI Agent uses Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) platform to provide a cohesive AI chat experience across all Elastic's products. It lets you design your own purpose-built agents for use in different workflows, and give them precise access to the tools and data they need.
 
 While Agent Builder is in technical preview, you may need to manually enable it. This behavior varies by solution:
 
 - **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant remains the default chat experience. 
 - **{{es}}:** Agent Builder is the default chat experience.
 
-To enable Agent Builder, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+To enable or disable Agent Builder, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
 
 ## Feature differences between Agent Builder and AI Assistant
 
