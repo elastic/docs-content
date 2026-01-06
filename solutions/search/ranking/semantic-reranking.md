@@ -37,11 +37,10 @@ Semantic re-ranking enables a variety of use cases:
 * **Semantic retrieval results re-ranking**
 
     * Improves results from semantic retrievers using ELSER sparse vector embeddings or dense vector embeddings by using more powerful models.
-    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md).
+    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) or linear combination using the [linear retriever](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrievers/linear-retriever)
 
 * **General applications**
 
-    * Supports automatic and transparent chunking, eliminating the need for pre-chunking at index time.
     * Provides explicit control over document relevance in retrieval-augmented generation (RAG) uses cases or other scenarios involving language model (LLM) inputs.
 
 
@@ -90,10 +89,11 @@ To use semantic re-ranking in {{es}}, you need to:
 
 1. **Select and configure a re-ranking model**. You have the following options:
 
-    1. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [inference API's {{es}} service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch).
-    2. Use the [Cohere Rerank inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-cohere) to create a `rerank` endpoint.
-    3. Use the [Google Vertex AI inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googlevertexai) to create a `rerank` endpoint.
-    4. Upload a model to {{es}} from Hugging Face with [Eland](eland://reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) with the `rerank` endpoint type.
+    1. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [{{infer}} API's {{es}} service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch).
+    2. Use the [Jina AI Rerank {{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-jinaai) to create a `rerank` endpoint.
+    3. Use the [Cohere Rerank {{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-cohere) to create a `rerank` endpoint.
+    4. Use the [Google Vertex AI inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googlevertexai) to create a `rerank` endpoint.
+    5. Upload a model to {{es}} from Hugging Face with [Eland](eland://reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) with the `rerank` endpoint type.
 
         Refer to [the Elastic NLP model reference](../../../explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md#ml-nlp-model-ref-text-similarity) for a list of third party text similarity models supported by {{es}} for semantic re-ranking.
 
@@ -129,7 +129,45 @@ POST _search
 
 ::::
 
+### Handling long documents
 
+A limitation of many cross-encoder models is that they do not perform well when used on corpi with long documents.
+This is because many models truncate input to the length of their token window, which can potentially cut off the most relevant part of the document before it is sent to the reranker. The preconfigured `.rerank-v1-elasticsearch` endpoint truncates in this manner.
+
+The `chunk_rescorer` in the `text_similarity_reranker` retriever allows explicit control over how much content is sent to the reranker. This addresses the long document problem and also allows control of inference costs by sending fewer tokens into the reranker.
+
+::::{warning}
+Reranking on scored chunks is an expert feature that can negatively impact relevance if used with models that don't perform truncation.
+::::
+
+::::{dropdown} Example search request with semantic reranker using chunk rescoring
+The following example shows the semantic reranker using the `chunk_rescorer` to control chunk sizes using default settings.
+
+```console
+POST _search
+{
+  "retriever": {
+    "text_similarity_reranker": {
+      "retriever": {
+        "standard": {
+          "query": {
+            "match": {
+              "text": "How often does the moon hide the sun?"
+            }
+          }
+        }
+      },
+      "field": "text",
+      "inference_id": "elastic-rerank",
+      "inference_text": "How often does the moon hide the sun?",
+      "chunk_rescorer": {},
+      "rank_window_size": 100,
+      "min_score": 0.5
+    }
+  }
+}
+```
+::::
 
 ## Learn more [semantic-reranking-learn-more]
 
@@ -137,4 +175,3 @@ POST _search
 * Learn more about the [retrievers](../querying-for-search.md) abstraction
 * Learn more about the Elastic [Inference APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference)
 * Check out our [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb) for using Cohere with {{es}}
-

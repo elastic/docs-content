@@ -99,7 +99,7 @@ The [Osquery version](https://github.com/osquery/osquery/releases) available on 
 
 ## Debug issues [_debug_issues]
 
-If you encounter issues with **Osquery Manager**, find the relevant logs for {{elastic-agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](/reference/fleet/installation-layout.md) to find the log file location for your OS.
+If you encounter issues with **Osquery Manager**, find the relevant logs for {{agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](/reference/fleet/installation-layout.md) to find the log file location for your OS.
 
 ```ts
 ../data/elastic-agent-*/logs/elastic-agent-json.log-*

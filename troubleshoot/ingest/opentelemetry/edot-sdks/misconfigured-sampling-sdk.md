@@ -2,9 +2,7 @@
 navigation_title: SDK sampling issues
 description: Learn how to troubleshoot missing or incomplete traces in EDOT SDKs caused by head sampling configuration.
 applies_to:
-  serverless: all
-  product:
-    elastic-otel-sdk: ga
+  serverless: ga
 products:
   - id: observability
   - id: edot-sdk
@@ -12,9 +10,9 @@ products:
 
 # Missing or incomplete traces due to SDK sampling
 
-If traces or spans are missing in Kibana, the issue might be related to SDK-level sampling configuration. By default, SDKs use head-based sampling, meaning the decision to record or drop a trace is made when the trace is first created.
+If traces or spans are missing in {{kib}}, the issue might be related to SDK-level sampling configuration. By default, SDKs use head-based sampling, meaning the decision to record or drop a trace is made when the trace is first created. For general troubleshooting when no data appears in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) or [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
-Both SDK-level and Collector-based sampling can result in gaps in telemetry if misconfigured. Refer to [Missing or incomplete traces due to Collector sampling](../edot-collector/misconfigured-sampling-collector.md) for more details.
+Both SDK-level and Collector-based sampling can result in gaps in telemetry if misconfigured. Refer to [Missing or incomplete traces due to Collector sampling](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md) for more details.
 
 ## Symptoms
 
@@ -73,7 +71,7 @@ Follow these steps to resolve SDK sampling configuration issues:
 - Head sampling can't evaluate the full trace context before making a decision.
 - For more control (for example "keep all errors, sample 10% of successes"), use Collector tail sampling.
 
-    For more information, refer to [Missing or incomplete traces due to Collector sampling](../edot-collector/misconfigured-sampling-collector.md).
+    For more information, refer to [Missing or incomplete traces due to Collector sampling](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md).
 :::
 
 ::::
@@ -82,4 +80,4 @@ Follow these steps to resolve SDK sampling configuration issues:
 
 - [OTEL_TRACES_SAMPLER environment variable specifications](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#otel_traces_sampler)
 - [OpenTelemetry sampling concepts - contrib documentation](https://opentelemetry.io/docs/concepts/sampling/)
-- [Missing or incomplete traces due to Collector sampling](../edot-collector/misconfigured-sampling-collector.md)
+- [Missing or incomplete traces due to Collector sampling](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md)
