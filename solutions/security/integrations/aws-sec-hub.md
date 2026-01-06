@@ -16,10 +16,9 @@ This integration uses the AWS Security Hub API to ingest vulnerability findings 
 
 In order for AWS Security Hub data to appear in these workflows:
 
-* Follow the steps to [set up the AWS Security Hub integration](https://docs.elastic.co/en/integrations/aws/securityhub).
-DRAFT DRAFT DRAFT * Make sure the integration version is at least 2.31.1.
+* Follow the steps to [set up the AWS Security Hub integration](https://docs.elastic.co/en/integrations/aws/securityhub link invalid).
 * Ensure you have `read` privileges for the `security_solution-*.vulnerabilities_latest` index.
-* While configuring the AWS Security Hub integration, turn on **Collect AWS Security Hub Findings from AWS**. We recommend you also set the **Initial Interval** value to `2160h` (equivalent to 90 days) to ingest existing logs.
+DRAFT? * While configuring the AWS Security Hub integration, turn on **Collect AWS Security Hub Findings from AWS**. We recommend you also set the **Initial Interval** value to `2160h` (equivalent to 90 days) to ingest existing logs.
 
 ::::{note}
 You can ingest data from the AWS Security Hub integration for other purposes without following these steps.
