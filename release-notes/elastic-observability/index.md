@@ -21,6 +21,35 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.2.3 [elastic-observability-9.2.3-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.3-features-enhancements]
+* Adds a message to tell users when a stream is missing [#244366]({{kib-pull}}244366).
+* Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
+* Shows supported schemas in the Infrastructure inventory [#244481]({{kib-pull}}244481).
+
+
+### Fixes [elastic-observability-9.2.3-fixes]
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+* Adds managed field to `dataViewSpecSchema` [#244134]({{kib-pull}}244134).
+* Removes mentions of template snippets from descriptions [#243656]({{kib-pull}}243656).
+
+## 9.2.2 [elastic-observability-9.2.2-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.2-features-enhancements]
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
+
+### Fixes [elastic-observability-9.2.2-fixes]
+* Fixes issue with the `Authorization` header when  making calls through the {{kib}} tool [#244017]({{kib-pull}}244017).
+* Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
+* Updates system prompt title for generic deployments [#243266]({{kib-pull}}243266).
+* Fixes KPIs subtitle logic [#243217]({{kib-pull}}243217).
+* Reverts the PR that introduced transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Reverts the "Fix issue where filters do not apply to overview stats" PR [#242978]({{kib-pull}}242978).
+* Fixes charts not filtering by `host.name` [#242673]({{kib-pull}}242673).
+* Fixes issue with custom links clearing filter views when a new field is selected or deleted [#241164]({{kib-pull}}241164).
+* Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
+
 ## 9.2.1 [elastic-observability-9.2.1-release-notes]
 
 ### Fixes [elastic-observability-9.2.1-fixes]
@@ -103,6 +132,25 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
 
+## 9.1.9 [elastic-observability-9.1.9-release-notes]
+
+### Features and enhancements [elastic-observability-9.1.9-features-enhancements]
+*  Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
+
+### Fixes [elastic-observability-9.1.9-fixes]
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+
+## 9.1.8 [elastic-observability-9.1.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.1.8-features-enhancements]
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
+
+### Fixes [elastic-observability-9.1.8-fixes]
+* Stops UI from breaking when the `error.id` field is missing [#243638]({{kib-pull}}243638).
+* Reverts the PR that introduced transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Fixes issue with custom links clearing filter views when a new field is selected or deleted [#241164]({{kib-pull}}241164).
+* Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
+
 ## 9.1.7 [elastic-observability-9.1.7-release-notes]
 
 ### Fixes [elastic-observability-9.1.7-fixes]
@@ -110,6 +158,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
 * Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
 * Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
+* Hides non-trace services from APM service inventory [#241080]({{kib-pull}}241080).
 
 ## 9.1.6 [elastic-observability-9.1.6-release-notes]
 

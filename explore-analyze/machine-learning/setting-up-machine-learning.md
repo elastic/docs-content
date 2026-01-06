@@ -63,7 +63,7 @@ The `machine_learning_admin` and `machine_learning_user` built-in roles give acc
 ### {{kib}} security [kib-security]
 
 ::::{important}
-Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also grant the role the equivalent feature privileges to certain types of {{kib}} saved objects, namely index patterns, dashboards, saved searches, and visualizations as well as {{ml}} job, trained model and module saved objects.
+Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also grant the role the equivalent feature privileges to certain types of {{kib}} saved objects, namely data views, dashboards, discover sessions, and visualizations as well as {{ml}} job, trained model and module saved objects.
 ::::
 
 #### Feature visibility in Spaces [kib-visibility-spaces]
@@ -121,3 +121,61 @@ Within a {{kib}} space, to upload and import files in the **{{data-viz}}**, you 
 * `create`, `create_index`, `manage` and `read` index privileges for destination indices
 
 For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+
+## Export and import {{ml-jobs}} [move-jobs]
+
+Export and import [{{anomaly-detect}} jobs](#move-anomaly-detection-jobs) and [{{dfanalytics}} jobs](#move-dataframe-analytics-jobs) to transfer them between clusters or environments, for example, from a test environment to production.
+
+:::::{note}
+The exported files contain configuration details only; they do not contain the {{ml}} models.
+:::::
+
+### Export and import {{anomaly-detect}} jobs [move-anomaly-detection-jobs]
+
+#### Prerequisites
+
+- If your {{anomaly-jobs}} use [custom rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md) with filter lists, the filter lists must exist; otherwise, the import fails. To create filter lists, use {{kib}} or the [create filters API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-filter)
+- If your {{anomaly-jobs}} were associated with [calendars](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-calendars), you must create the calendar in the new environment and add your imported jobs to the calendar. Use {{kib}} or the [create calendars](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-calendar), [add events to calendar](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-calendar-events), and [add jobs to calendar](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-calendar-job) APIs.
+
+#### Export {{anomaly-detect}} jobs
+
+1. To navigate to **{{anomaly-jobs-cap}}**, use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Click **Export jobs**.
+3. Select the jobs, then click **Export** to download the job definition file.
+
+#### Import {{anomaly-detect}} jobs
+
+1. To navigate to **{{anomaly-jobs-cap}}**, use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Click **Import jobs**.
+3. Upload the file that defines the {{anomaly-job}}.
+4. Enter a job ID and click **Import**.
+
+:::::{important}
+{{anomaly-jobs-cap}} can be imported even if their {{data-sources}} or underlying indices are missing. In these cases, warnings are displayed, but the import is still allowed. Any issues raised by these warnings can be resolved later by adding the missing {{data-sources}}.
+:::::
+
+After importing an {{anomaly-job}}, you must run it so that it can learn from your current data and build a model that reflects the new environment.
+
+### Export and import {{dfanalytics}} jobs [move-dataframe-analytics-jobs]
+
+:::::{note}
+For {{dfanalytics}}, trained models are portable and can be transferred between clusters as described in [Exporting and importing models](/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models.md#export-import).
+:::::
+
+#### Prerequisites
+
+- {{dfanalytics-cap}} jobs require their source index to exist before they can be imported. If the source index is missing, the import fails.
+
+#### Export {{dfanalytics}} jobs
+
+1. To navigate to **{{dfanalytics-cap}}**, use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Click **Export jobs**.
+3. Select the jobs, then click **Export** to download the job definition file.
+
+#### Import {{dfanalytics}} jobs
+
+1. To navigate to **{{dfanalytics-cap}}**, use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Click **Import jobs**.
+3. Select the file that defines the {{dfanalytics}} job.
+4. Enter a job ID and a destination index, then click **Import**.
+
