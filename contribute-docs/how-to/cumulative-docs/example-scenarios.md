@@ -575,7 +575,7 @@ Sometimes, features and enhancements slip through into patch versions, and the s
 
 - **Standard case**: Our docs are aligned with the latest patch of any given minor version. That means that in most cases, we don't need to call out the exact patch version that introduced a change (that's for the release notes).
 
-- **Exceptions**: In rare cases, it can happen that the change is important enough to be explicitly called out in the docs with a precise patch-level information. In that case, use two `applies_to` badges with the `!` extra symbol so that users can see clearly the versions in which the functionality is introduced. Order the `applies_to` badges starting with the latest version, and ending with the earliest version. (Automatic ordering for multiple badges is not currently supported.)
+- **Exceptions**: In rare cases, it can happen that the change is important enough to be explicitly called out in the docs with a precise patch-level information. In that case, you can add a callout and indicate patch-level versions using plain text to explain the change.
 
 For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time.
 
