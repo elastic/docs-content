@@ -83,7 +83,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
 
     * [Which Azure Subscription will be billed for my Elastic resources?](#azure-integration-billing-which-subscription)
     * [How do I get different Elastic resources (deployments) charges to different Azure Subscriptions?](#azure-integration-billing-different-deployments)
-    * [How can I resubscribe to an {{ecloud}} subscription](#azure-resubscribe-flow)
+    * [How can I resubscribe to an {{ecloud}} Azure subscription](#azure-resubscribe-flow)
     * [Why can’t I see Elastic resources costs in Azure Cost Explorer?](#azure-integration-billing-elastic-costs)
     * [Why don’t I see my individual Elastic resources (deployments) in the Azure Marketplace Invoice?](#azure-integration-billing-deployments)
     * [Why can’t I find Instance ID and Instance Name values from Azure Marketplace Invoice in the Azure Portal?](#azure-integration-billing-instance-values)
@@ -281,15 +281,15 @@ $$$azure-integration-billing-which-subscription$$$Which Azure Subscription will 
 $$$azure-integration-billing-different-deployments$$$How do I get different Elastic deployment/resources charges to different Azure Subscriptions?
 :   See [Integrated billing](#ec-azure-integration-billing-summary). To have different Elastic deployment/resources costs reported to different Azure subscriptions, they need to be in separate {{ecloud}} organizations. To create a separate {{ecloud}} organization from an Azure subscription, you will need to subscribe as a user who is not already part of an existing {{ecloud}} organization.
 
-$$$azure-resubscribe-flow$$$How can I resubscribe to an {{ecloud}} subscription?
+$$$azure-resubscribe-flow$$$How can I resubscribe to an {{ecloud}} Azure subscription?
 :   If your organization is currently unsubscribed from the Azure Marketplace, you can resubscribe through any of your existing Azure deployments in the Azure Portal:
 
     1. Open one of your deployments to view its overview page.
     2. From the left navigation pane, select **Connected Elastic Cloud Resources**.
 
-        :::{image} /deploy-manage/images/azure-reconnect-window.png
-        :alt: The resubscription illustration
-        :::
+    :::{image} /deploy-manage/images/azure-reconnect-window.png
+    :alt: The resubscription illustration
+    :::
 
     3. Click **Resubscribe**. A new window should appear.
     4. Choose the subscription you want to resubscribe to and confirm.
