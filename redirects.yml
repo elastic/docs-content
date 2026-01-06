@@ -545,7 +545,7 @@ redirects:
   'solutions/security/cloud/integration-tenablevm.md': 'solutions/security/integrations/tenablevm.md'
   'solutions/security/cloud/integration-rapid7.md': 'solutions/security/integrations/rapid7.md'
   'solutions/security/cloud/integration-qualys.md': 'solutions/security/integrations/qualys.md'
-  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub.md'
+  'solutions/security/cloud/ingest-aws-security-hub-data.md': 'solutions/security/integrations/aws-security-hub-cspm.md'
   'solutions/security/cloud/aws-config-integration.md': 'solutions/security/integrations/aws-config.md'
   
 # Deduplicate canvas function reference
