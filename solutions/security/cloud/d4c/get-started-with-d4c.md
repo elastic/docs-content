@@ -43,6 +43,7 @@ First, you’ll need to deploy Elastic’s Defend for Containers integration to 
     #    - BPF # (since Linux 5.8) allows loading of BPF programs, create most map types, load BTF, iterate programs and maps.
     #    - PERFMON # (since Linux 5.8) allows attaching of BPF programs used for performance metrics and observability operations.
     #    - SYS_RESOURCE # Allow use of special resources or raising of resource limits. Used by 'Defend for Containers' to modify 'rlimit_memlock'
+    #    - SYS_ADMIN # Required if using Defend for Containers on Azure Kubernetes Service (AKS)
     ```
 
 10. From the directory where you saved the manifest, run the command `kubectl apply -f elastic-agent-managed-kubernetes.yml`.

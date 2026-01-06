@@ -41,7 +41,7 @@ To get data for this dashboard, set up [Cloud Workload Protection for Kubernetes
 
 ::::{admonition} Requirements
 * Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
-* {{stack}} version 8.8 or higher.
+* {{stack}} users: {{stack}} version 9.3 or higher.
 
 ::::
 
