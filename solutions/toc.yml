@@ -358,7 +358,7 @@ toc:
               - file: observability/synthetics/support-matrix.md
               - file: observability/synthetics/encryption-security.md
           - file: observability/applications/user-experience.md
-            children: 
+            children:
               - file: observability/applications/otel-rum.md
           - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
@@ -520,6 +520,7 @@ toc:
             children:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
+              - file: observability/incident-management/slo-management.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
         children:
