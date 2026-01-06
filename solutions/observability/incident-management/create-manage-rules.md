@@ -104,7 +104,7 @@ Rules are disabled on export. You are prompted to re-enable the rule on successf
 
 ## Add resources for investigating alerts [observability-create-manage-rules-add-investigation-resources]
 ```{applies_to}
-stack: ga 9.1
+stack: ga 9.1+
 ```
 
 When creating or editing a rule, add the following resources to help you get started with investigating alerts:
