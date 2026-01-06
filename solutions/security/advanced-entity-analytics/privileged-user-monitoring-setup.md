@@ -42,9 +42,46 @@ serverless: preview
 ```
 
 1. On the **Privileged user monitoring** page, select an integration. The supported integrations are:
-   * [Active Directory Entity Analytics](integration-docs://reference/entityanalytics_ad.md). Users in the following security groups will be automatically assigned as privileged:
+   * [Active Directory Entity Analytics](integration-docs://reference/entityanalytics_ad.md). 
+
+      :::::{applies-switch}
+
+      ::::{applies-item} { stack: ga 9.3, serverless: ga }
+      Privileged users are identified by matching the `entityanalytics_ad.user.privileged.group_member` field against privileged Active Directory groups based on [security identifier (SID) group codes](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers#well-known-sids). Users in the following Active Directory groups are automatically assigned as privileged:
+
+      * `512`: Domain Admins
+      * `516`: Domain Controllers
+      * `518`: Schema Admins
+      * `519`: Enterprise Admins
+      * `520`: Group Policy Creator Owners
+      * `525`: Protected Users
+      * `526`: Key Admins
+      * `527`: Enterprise Key Admins
+      * `544`: Administrators
+      * `548`: Account Operators
+      * `549`: Server Operators
+      * `551`: Backup Operators
+
+      :::{note}
+      If you already have privileged user monitoring configured, you must delete and re-add your integration data source to use SID-based group matching.
+      :::
+      
+      ::::
+
+      ::::{applies-item} stack: preview 9.2
+      Users in the following Active Directory groups are automatically assigned as privileged:
+
       * Domain Admins
       * Enterprise Admins
+
+      :::{important}
+      Privileged users are identified by matching the `user.group.name` field against the literal strings `Domain Admins` and `Enterprise Admins`. If your Active Directory uses localized group names (for example, `Domänen-Admins` instead of `Domain Admins`), these users won't be assigned as privileged.
+      :::
+
+      ::::
+
+      :::::
+
    * [Okta Entity Analytics](integration-docs://reference/entityanalytics_okta.md). Refer to [Standard administrator roles and permissions](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm) for a list of Okta roles that will be automatically assigned as privileged users.
 2. Follow the steps to install the integration. 
 
