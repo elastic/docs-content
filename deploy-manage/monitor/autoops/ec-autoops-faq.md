@@ -21,7 +21,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 
 **General AutoOps questions**
 * [What does AutoOps do?](#what-is-autoops)
-* [Where is AutoOps available?](#autoops-deployment-types)
+* [Is AutoOps available in all deployment types?](#autoops-deployment-types)
 * [Why can't I see AutoOps in some deployments and projects?](#cant-see-autoops)
 * [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [How is AutoOps licensed?](#autoops-license)
@@ -53,11 +53,12 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 $$$what-is-autoops$$$**What does AutoOps do?**
 :   AutoOps for {{es}} simplifies cluster management by providing performance recommendations, resource utilization and cost insights, real-time issue detection, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps provides operational and monitoring recommendations that reduce administration time and hardware costs.
 
-$$$autoops-deployment-types$$$**Where is AutoOps available?**
-:   In the [regions](ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) through [Cloud Connect](/deploy-manage/cloud-connect.md). 
+$$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
+:   :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
+::: 
 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
-AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
+:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you may not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure and GCP.
 
 $$$autoops-air-gapped$$$ **Can I use AutoOps if my environment is air-gapped?**
 :   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
@@ -105,8 +106,8 @@ $$$cc-autoops-ech$$$ **Can I use Cloud Connect to connect my {{ech}} clusters to
 :   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
-$$$macos-install$$$ **Can I use macOS to set up AutoOps for my self-managed clusters?**
-:   No, macOS is not a supported platform for setting up and connecting to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
+$$$macos-install$$$ **Can I use macOS to install {{agent}} to connect my self-managed cluster to AutoOps?**
+:   No, macOS is not a supported platform for installing {{agent}} and connecting a self-managed cluster to AutoOps. Refer to [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) for a list of supported platforms. You can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 
 $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?**
 :   You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
@@ -151,5 +152,23 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     | HTTP |  Basic cluster information from the `/` endpoint <br><br> License information from the `/_license` endpoint | **443**: standard HTTPS port | Uses an {{ecloud}} API key which is limited for use with Cloud Connect only. |
     | OTLP over HTTP | Operational information | **443**: standard HTTPS port | Uses an AutoOps token which is functionally equivalent to an API key. |
 
+    :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
+    :::
+
 $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
-:   You can use the `autoops_es_debug.yaml` config file to export and review a sample of the data gathered from your cluster and sent to Elastic Cloud.
+:   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yaml` configuration file, which you can use to export and view a sample of the data gathered from your cluster and sent to Elastic Cloud.
+
+    Complete the following steps to export this data locally:
+
+    1. Follow the steps to [connect to AutoOps](cc-connect-self-managed-to-autoops.md) until you reach the [Install agent](cc-connect-self-managed-to-autoops.md#install-agent) step.
+    2. In the **Install agent** step, edit the installation command to replace `autoops_es.yml` with `autoops_es_debug.yml` as shown in the following code block. The chosen installation method in this example is Docker.
+    ```json
+        --restart on-failure --name autoops-otel-agent
+        docker.elastic.co/elastic-agent/elastic-otel-collector-wolfi:9.1.4
+        --config otel_samples/autoops_es_debug.yml \
+    ```
+    3. Run the command.
+
+    A sample of the data gathered by the agent will be downloaded to your machine.
+
+
