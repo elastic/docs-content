@@ -89,7 +89,7 @@ You can select which alerts Attack Discovery will process by filtering based on 
 :::{admonition} How to add non-ECS fields to Attack Discovery
 Attack Discovery is designed for use with alerts based on data that complies with ECS, and by default only analyses ECS-compliant fields. However, you can enable Attack Discovery to review additional fields by following these steps:
 
-1.  Select an alert with some of the non-ECS fields you want to analyze, and go to its details flyout. From here, use the **Ask AI Assistant** button to open AI Assistant.
+1.  Select an alert with some of the non-ECS fields you want to analyze, and go to its details flyout. From here, use the **Ask AI Assistant** or **Add to chat** button to open an AI chat.
 2.  At the bottom of the chat window, the alert's information appears. Click **Edit** to open the anonymization window to this alert's fields.
 3.  Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**.
 4.  Check the `Update presets` box to add the allowed fields to the space's default anonymization settings.
@@ -148,7 +148,7 @@ There are several ways you can incorporate discoveries into your {{elastic-sec}}
 * Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
 * Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/cases.md). This makes it easy to share the information with your team and other stakeholders.
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
-* Click **View in AI Assistant** to attach the discovery to a conversation with AI Assistant. You can then ask follow-up questions about the discovery or associated alerts.
+* Click **View in AI Assistant** or **Add to chat** to attach the discovery to a conversation. You can then ask follow-up questions about the discovery or associated alerts.
 
 :::{image} /solutions/images/security-add-discovery-to-assistant.gif
 :alt: Attack Discovery view in AI Assistant
