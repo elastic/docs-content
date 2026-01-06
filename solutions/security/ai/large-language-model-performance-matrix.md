@@ -45,6 +45,6 @@ Models from third-party LLM providers.
 
 Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md).
 
-| **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration** | **Overall Score** |
+| **Model** | **Alerts** | **{{esql}} Query Generation** | **Knowledge Base Retrieval** | **Attack Discovery** | **General Security** | **Automatic Migration** | **Average Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **GPT OSS 20b** | 82 | 25 | Not recommended | Not recommended | 10 | Not recommended | **20** |
