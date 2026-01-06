@@ -687,7 +687,8 @@ toc:
       - file: security/integrations/ingest-third-party-security-data.md
         children:
           - file: security/integrations/cncf-falco.md
-          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/aws-sec-hub.md
+          - file: security/integrations/aws-security-hub-cspm.md
           - file: security/integrations/wiz.md
           - file: security/integrations/qualys.md
           - file: security/integrations/tenablevm.md
