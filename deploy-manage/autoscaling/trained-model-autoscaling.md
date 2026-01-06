@@ -141,11 +141,11 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 ::::
 
 #### Adaptive resources disabled
-
-::::{applies-switch}
-
-:::{applies-item} { ess:, ece: }
-
+```{applies_to}
+deployment:
+  ess:
+  ece:
+```
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
 | Low | 2 if available, otherwise 1, statically | 1 | 2 if available |
@@ -154,9 +154,6 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-:::
-
-::::
 
 ### Search optimized
 

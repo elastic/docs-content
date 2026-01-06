@@ -38,16 +38,16 @@ Check out [Using Spaces with Fleet](/deploy-manage/manage-spaces-fleet.md) for i
 
 ## Required permissions [_required_privileges_3]
 
-* **Serverless projects:** `Admin` role or equivalent
-* **{{stack}} deployments:** `kibana_admin` or equivalent
+* {applies_to}`serverless:` `Admin` role or equivalent
+* {applies_to}`stack:` `kibana_admin` or equivalent
 
 
 ## Create a space [spaces-managing]
 
 The maximum number of spaces that you can have differs by deployment type:
 
-* **Serverless projects:** Maximum of 100 spaces.
-* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the [full list of Space settings](kibana://reference/configuration-reference/spaces-settings.md).
+* {applies_to}`serverless:` Maximum of 100 spaces.
+* {applies_to}`stack:` Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the [full list of Space settings](kibana://reference/configuration-reference/spaces-settings.md).
 
 To create a space:
 
@@ -92,7 +92,7 @@ You can edit all of the space settings you just defined at any time, except for 
 
 Elastic also allows you to manage spaces using APIs:
 
-* {applies_to}`serverless:` [Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
+* {applies_to}`serverless:` [Serverless Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
 * {applies_to}`stack:` [Spaces API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-spaces-copy-saved-objects)
 
 

@@ -79,37 +79,6 @@ Send a request like the following to create an IP filter ingress policy or rule 
 
 ::::{applies-switch}
 
-:::{applies-item} ess:
-
-```json
-curl \
--H "Authorization: ApiKey $API_KEY" \
--H 'content-type: application/json' \
-https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
--d '
-{
-  "name": "My ingress IP filter policy",
-  "region": "azure-japaneast", <1>
-  "description": "",
-  "type": "ip", <2>
-  "rules": [
-    {
-      "description": "Allow inbound traffic from IP address 192.168.131.0",
-      "source": "192.168.131.0"
-    },
-    {
-      "description": "Allow inbound traffic within CIDR block 192.168.132.6/22",
-      "source": "192.168.132.6/22"
-    }
-  ],
-  "include_by_default": false
-}
-'
-```
-
-1. The region is always the same region as the deployment you want to associate with an IP filter policy. For details, check the [list of available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md).
-2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, we support `ip`, `egress_firewall`, `vpce` (AWS Private Link), `azure_private_endpoint` and `gcp_private_service_connect_endpoint`. These are described in further detail below.
-:::
 :::{applies-item} serverless:
 
 ```json
@@ -142,6 +111,39 @@ https://api.elastic-cloud.com/api/v1/serverless/traffic-filters \
 
 2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, only `ip` is supported.
 :::
+
+:::{applies-item} ess:
+
+```json
+curl \
+-H "Authorization: ApiKey $API_KEY" \
+-H 'content-type: application/json' \
+https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
+-d '
+{
+  "name": "My ingress IP filter policy",
+  "region": "azure-japaneast", <1>
+  "description": "",
+  "type": "ip", <2>
+  "rules": [
+    {
+      "description": "Allow inbound traffic from IP address 192.168.131.0",
+      "source": "192.168.131.0"
+    },
+    {
+      "description": "Allow inbound traffic within CIDR block 192.168.132.6/22",
+      "source": "192.168.132.6/22"
+    }
+  ],
+  "include_by_default": false
+}
+'
+```
+
+1. The region is always the same region as the deployment you want to associate with an IP filter policy. For details, check the [list of available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md).
+2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, we support `ip`, `egress_firewall`, `vpce` (AWS Private Link), `azure_private_endpoint` and `gcp_private_service_connect_endpoint`. These are described in further detail below.
+:::
+
 :::{applies-item} ece:
 
 ```json

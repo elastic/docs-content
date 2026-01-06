@@ -531,14 +531,13 @@ curl -u user_name:password  -X GET http://localhost:9200/_security/saml/metadata
 ```
 
 ### Using the `elasticsearch-saml-metadata` command
-
-You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
-
 ```{applies_to}
 deployment:
   self:
   eck:
 ```
+
+You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
 
 ::::{applies-switch}
 :::{applies-item} self:
