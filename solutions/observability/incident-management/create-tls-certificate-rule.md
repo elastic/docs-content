@@ -2,6 +2,8 @@
 navigation_title: TLS certificate
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/tls-certificate-alert.html
+applies_to:
+  stack: ga
 products:
   - id: observability
 ---

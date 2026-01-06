@@ -2,6 +2,8 @@
 navigation_title: Metric threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/metrics-threshold-alert.html
+applies_to:
+  stack: ga
 products:
   - id: observability
 ---
@@ -50,8 +52,8 @@ The **Filters** control the scope of the rule. If used, the rule will only evalu
 ::::{note}
 If you've made a rule with the [create rule API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-alerting-rule-id) and added Query DSL filters using the `filterQuery` parameter, the filters won't appear in the UI for editing a rule. As a workaround, manually re-add the filters through the UI and save the rule. As you're modifying the rule's filters from the UI, be mindful of the following:
 
-- The **Filter** field only accepts KQL syntax, meaning you may need to manually convert your Query DSL filters to KQL. 
-- After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.  
+- The **Filter** field only accepts KQL syntax, meaning you may need to manually convert your Query DSL filters to KQL.
+- After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.
 ::::
 
 The **Group alerts by** creates an instance of the alert for every unique value of the `field` added. For example, you can create a rule per host or every mount point of each host. You can also add multiple fields. In this example, the rule will individually track the status of each `host.name` in your infrastructure. You will only receive an alert about `host-1`, if `host.name: host-1` passes the threshold, but `host-2` and `host-3` do not.
