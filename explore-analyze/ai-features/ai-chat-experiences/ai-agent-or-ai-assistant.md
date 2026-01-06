@@ -41,13 +41,18 @@ The following AI Assistant chat features are not supported by Agent Builder:
 :::{tab-item} {{elastic-sec}}
 :sync: tab1
 
-- **Knowledge Base** 
-- **Data anonymization**
-- **Time awareness**
-- **Chat sharing**
-- **Citations**
-- **Audit logging**
-- **Quick prompts**
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Time awareness** | ❌ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Citations** | ❌ | ✅ |
+| **Audit logging** | ❌ | ✅ |
+| **Quick prompts** | ❌ | ✅ |
+| **Use-case specific agents** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
 
 Also, AI Agent chats do not show previews of data you attach to a message, such as Alerts and Attacks.
 :::
