@@ -71,7 +71,7 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 ## Upgrade to a higher feature tier [sec-subscription-upgrade]
 
 :::{warning}
-Upgrading a project to a higher feature tier is permanent.
+Upgrading a project to a higher feature tier cannot always be efficiently reversed: downgrading to a lower tier immediately makes some features unavailable, and data associated with those features can be permanently deleted.
 :::
 
 To access the additional features available in a higher feature tier:
