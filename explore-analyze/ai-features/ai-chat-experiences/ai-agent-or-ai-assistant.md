@@ -20,7 +20,7 @@ You can use either AI Assistant (default) or Agent Builder to enable chat experi
 
 Agent Builder uses Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) platform to provide a cohesive AI chat experience across all Elastic's products. It lets you design your own purpose-built agents for use in different workflows, and give them precise access to the tools and data they need.
 
-While Agent Builder is in technical preview, you must manually enable it. This behavior varies by solution:
+While Agent Builder is in technical preview, you may need to manually enable it. This behavior varies by solution:
 
 - **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant remains the default chat experience. 
 - **{{es}}:** Agent Builder is the default chat experience.
