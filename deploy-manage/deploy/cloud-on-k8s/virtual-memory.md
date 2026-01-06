@@ -57,7 +57,7 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576'] <1>
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=1048576']
 EOF
 ```
 
@@ -130,7 +130,6 @@ spec:
           command: ['sh', '-c', "while true; do mmc=$(cat /proc/sys/vm/max_map_count); if [ ${mmc} -eq 262144 ]; then exit 0; fi; sleep 1; done"] <1>
 EOF
 ```
-
 1. In GKE Autopilot environments, `vm.max_map_count` must be set to 262144 when using a DaemonSet.
 
 
