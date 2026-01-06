@@ -98,7 +98,7 @@ In the following dashboard, the shareable container is highlighted:
     Tips for generating PDF reports:
 
     * If you are creating dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
-    * {applies_to}`stack: ga 9.0+` If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
+    * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
     
     ::::
 
