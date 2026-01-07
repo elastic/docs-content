@@ -631,3 +631,20 @@ redirects:
   # Move CCS feature docs to explore-analyze
   'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
   'solutions/search/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
+
+  # Related to agent builder restructure - moved agent builder docs to explore-analyze/
+  'solutions/search/elastic-agent-builder.md': 'explore-analyze/elastic-agent-builder.md'
+  'solutions/search/agent-builder/tools/esql-tools.md': 'explore-analyze/agent-builder/tools/esql-tools.md'
+  'solutions/search/agent-builder/tools/index-search-tools.md': 'explore-analyze/agent-builder/tools/index-search-tools.md'
+  'solutions/search/agent-builder/a2a-server.md': 'explore-analyze/agent-builder/a2a-server.md'
+  'solutions/search/agent-builder/agent-builder-agents.md': 'explore-analyze/agent-builder/agent-builder-agents.md'
+  'solutions/search/agent-builder/chat.md': 'explore-analyze/agent-builder/chat.md'
+  'solutions/search/agent-builder/get-started.md': 'explore-analyze/agent-builder/get-started.md'
+  'solutions/search/agent-builder/kibana-api.md': 'explore-analyze/agent-builder/kibana-api.md'
+  'solutions/search/agent-builder/limitations-known-issues.md': 'explore-analyze/agent-builder/limitations-known-issues.md'
+  'solutions/search/agent-builder/mcp-server.md': 'explore-analyze/agent-builder/mcp-server.md'
+  'solutions/search/agent-builder/models.md': 'explore-analyze/agent-builder/models.md'
+  'solutions/search/agent-builder/monitor-usage.md': 'explore-analyze/agent-builder/monitor-usage.md'
+  'solutions/search/agent-builder/permissions.md': 'explore-analyze/agent-builder/permissions.md'
+  'solutions/search/agent-builder/programmatic-access.md': 'explore-analyze/agent-builder/programmatic-access.md'
+  'solutions/search/agent-builder/tools.md': 'explore-analyze/agent-builder/tools.md'
