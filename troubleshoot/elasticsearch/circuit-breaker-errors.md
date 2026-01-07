@@ -47,10 +47,17 @@ Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] D
 
 **Check circuit breaker statistics**
 
-You can use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to get statistics about the circuit breaker per node.
+To get statistics about the circuit breaker per node. You can use:
+
+The [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats):
 
 ```console
 GET _nodes/stats?filter_path=nodes.*.breakers
+```
+
+{applies_to}`stack: ga 9.3` Or [/_cat/circuit_breaker](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API:
+```console
+GET /_cat/circuit_breaker/
 ```
 
 The response provides the following information:
