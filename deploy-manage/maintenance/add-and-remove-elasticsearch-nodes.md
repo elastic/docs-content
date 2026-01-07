@@ -110,3 +110,72 @@ DELETE /_cluster/voting_config_exclusions
 # to return to the voting configuration in the future.
 DELETE /_cluster/voting_config_exclusions?wait_for_removal=false
 ```
+
+## Remove a node from an {{es}} cluster
+
+When you need to remove a node from an {{es}} cluster, the process consists of first emptying the node by relocating all its shards to other nodes in the cluster, and then stopping the {{es}} process on that node. This ensures that no data is lost and the cluster continues to operate normally during the removal process.
+
+:::::{stepper}
+
+::::{step} Stop indexing and perform a synced flush (optional)
+If you can afford to stop indexing for a short period, it is recommended to perform a synced flush. This operation helps speed up the recovery process when the cluster restarts after a node is removed. To perform a synced flush, execute the following command:
+
+```console
+POST /_flush/synced
+```
+
+:::{note}
+This step is optional and can be skipped if stopping indexing is not feasible.
+:::
+::::
+
+::::{step} Retrieve the node name
+You need to know the node name in order to remove it from the cluster. You can retrieve the node name by executing the following command:
+
+```console
+GET /_cat/nodes?v
+```
+
+This command returns a list of nodes in the cluster along with their node names. Identify the node you want to remove and note down its node name.
+::::
+
+::::{step} Remove the node from the cluster
+After you've determined the node name, you can remove the node from the cluster. To remove the node from the cluster, update the cluster settings to exclude the node using its node name. Execute the following command, replacing `<node_name>` with the node name you retrieved in the previous step:
+
+```console
+PUT /_cluster/settings
+{
+  "persistent": {
+    "cluster.routing.allocation.exclude._name": "<node_name>"
+  }
+}
+```
+
+This command instructs {{es}} to move all shards from the specified node to other nodes in the cluster. You can monitor the progress of shard relocation by executing the following command:
+
+```console
+GET /_cat/shards?v
+```
+
+Wait for the shard relocation process to complete before proceeding to the next step.
+::::
+
+::::{step} Stop the {{es}} process on the node
+After all shards have relocated to the other nodes, you can safely stop the {{es}} process on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can execute the following command:
+
+```console
+sudo systemctl stop elasticsearch
+```
+::::
+
+::::{step} Verify the cluster health
+Finally, verify the health of the cluster by executing the following command:
+
+```console
+GET /_cluster/health
+```
+
+Ensure that the cluster status is "green" (meaning that all shards are properly allocated) and the number of nodes in the cluster has been reduced by one.
+::::
+
+:::::
