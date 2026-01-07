@@ -60,7 +60,7 @@ The following elements are required in overview pages:
   - `product`: The relevant Elastic product(s) the page relates to
 - A clear **title:** A brief description of the problem, written from the user’s perspective.
   - For example: "EDOT Collector doesn't propagate client metadata", "No application-level telemetry visible in {{kib}}", or "Logs are missing after upgrading {{agent}}"
-- A **Symptoms** section: Describe what users observe when the problem occurs.
+- A **Symptoms** section: Describe what users can observe when the problem occurs.
   - Focus only on user-visible behavior
   - Do not explain causes
   - Use bullet points
@@ -69,7 +69,7 @@ The following elements are required in overview pages:
   - Use numbered steps
   - Be prescriptive and opinionated
   - Include minimal configuration examples when relevant
-  - Assume the reader's situation matches the "Symptoms" section
+  - Assume the reader's situation matches the **Symptoms** section
   - Avoid speculative or diagnostic language
 
 ### Optional elements
