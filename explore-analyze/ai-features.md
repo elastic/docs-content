@@ -110,14 +110,10 @@ The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI
 
 [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps.
 
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
-
 
 ### Attack Discovery
 
 [Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
-
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 
 ### Automatic Migration
@@ -127,14 +123,10 @@ This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides
 * Splunk rules
 * Splunk dashboards
 
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
-
 
 ### Automatic Import
 
 [Automatic Import](/solutions/security/get-started/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
-
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 
 ### Automatic Troubleshooting
@@ -144,4 +136,11 @@ This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides
 * **Policy responses**: Detect warnings or failures in {{elastic-defend}}’s integration policies.
 * **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that might conflict with {{elastic-defend}}.
 
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+
+### Entity summary
+```yaml {applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+[Entity summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-summary), available in the entity details flyout, uses AI to generate a summary of a user's or host's security context. It aggregates information such as risk scores, asset criticality, vulnerabilities, and {{ml}} anomalies to provide a consolidated view of the entity's security posture. The summary helps you prioritize investigations and identify recommended next steps.
