@@ -24,7 +24,7 @@ Mapping explosion may surface as the following performance symptoms:
 * Discover’s **Available fields** taking a long time to compile Javascript in the browser’s Developer Tools Performance tab. This may potentially escalate to temporary browser page unresponsiveness.
 * Kibana’s [alerting](../../explore-analyze/alerts-cases/alerts.md) or [security rules](../../solutions/security/detect-and-alert.md) may error `The content length (X) is bigger than the maximum allowed string (Y)` where `X` is attempted payload and `Y` is {{kib}}'s [`server-maxPayload`](kibana://reference/configuration-reference/general-settings.md#server-maxpayload).
 * Long {{es}} start-up durations.
-* Kibana's Dashboard visualization erroring with the message `Maximum call stack size exceeded`
+* Kibana Javascript erring within browser while loading a Dashboard or Discover with message `Maximum call stack size exceeded`.
 
 
 ## Prevent or prepare [prevent]
