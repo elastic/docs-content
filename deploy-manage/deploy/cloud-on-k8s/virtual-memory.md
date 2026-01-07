@@ -17,9 +17,9 @@ The kernel setting `vm.max_map_count=1048576` can be set on the host directly, b
 :::{important}
 For {{es}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{es}} version 8.15 and earlier, set `vm.max_map_count` to `262144`. 
 
-The exception is in GKE Autopilot environments:
-* {applies_to}`eck: ga 3.0-3.1` `vm.max_map_count` must be set to `262144`.
-* {applies_to}`eck: ga 3.2+` Use a custom `ComputeClass`, rather than a `DaemonSet`, to override the kernel setting.
+The exception is in GKE Autopilot environments. Your options depend on your GKE version:
+* **GKE 1.30.3-gke.1451000+**: Use a custom `ComputeClass`, rather than a `DaemonSet`, to override the kernel setting.
+* **Earlier versions**: `vm.max_map_count` must be set to `262144`.
 :::
 
 For more information, check the {{es}} documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).

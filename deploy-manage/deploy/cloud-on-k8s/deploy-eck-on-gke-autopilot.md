@@ -23,14 +23,14 @@ This page shows how to run ECK on GKE Autopilot.
 
 ## Ensuring virtual memory kernel settings [k8s-autopilot-setting-virtual-memory]
 
-If you are intending to run production workloads on GKE Autopilot then `vm.max_map_count` should be set. The recommended way to set this kernel setting on the Autopilot hosts depends on your ECK version:
+If you are intending to run production workloads on GKE Autopilot then `vm.max_map_count` should be set. The recommended way to set this kernel setting on the Autopilot hosts depends on your GKE version:
 
-* {applies_to}`eck: ga 3.0-3.1` [Use a DaemonSet](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md#k8s_using_a_daemonset_to_set_virtual_memory). You must be running at least version 1.25 when on the `regular` channel or using the `rapid` channel, which currently runs version 1.27.
+* **GKE 1.30.3-gke.1451000**: [Use a custom ComputeClass](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md#k8s_using_a_computeclass_to_set_virtual_memory). Using a custom ComputeClass allows you to set a higher value for `vm.max_map_count` due to limitations on the `DaemonSet`.
+* **Earlier versions**: [Use a DaemonSet](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md#k8s_using_a_daemonset_to_set_virtual_memory). You must be running at least version 1.25 when on the `regular` channel or using the `rapid` channel, which currently runs version 1.27.
   
   ::::{warning}
-  Use the provided `Daemonset` exactly as specified, with a `max_map_count` value of `262144`, or it could be rejected by the Autopilot control plane.
+  Use the provided `Daemonset` exactly as specified, with a `vm.max_map_count` value of `262144`, or it could be rejected by the Autopilot control plane.
   ::::
-* {applies_to}`eck: ga 3.2+` [Use a custom ComputeClass](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md#k8s_using_a_computeclass_to_set_virtual_memory). Using a custom ComputeClass allows you to set a higher value for `max_map_count` due to limitations on the `DaemonSet`.
 
 ## Install the ECK Operator [k8s-autopilot-deploy-the-operator]
 
@@ -43,7 +43,7 @@ Create an {{es}} cluster. The information that you need to provide in your spec 
 ::::{tab-set}
 
 :::{tab-item} Using a custom ComputeClass
-If you used a custom ComputeClass to set `max_map_count`, then you need to reference the custom ComputeClass as part of your template spec.
+If you used a custom ComputeClass to set `vm.max_map_count`, then you need to reference the custom ComputeClass as part of your template spec.
 
 ```yaml subs=true
 cat <<EOF | kubectl apply -f -
