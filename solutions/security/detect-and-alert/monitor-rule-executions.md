@@ -122,7 +122,9 @@ Use these controls to filter what’s included in the logs table:
    stack: preview 9.0, ga 9.1
 ```
 
-Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. {applies_to}`stack: ga 9.3` Fill all gaps for the rule by clicking **Fill all gaps**.
+Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
+
+{applies_to}`stack: ga 9.3` Fill all gaps for the rule by clicking **Fill all gaps**.
 
 ::::{tip}
 Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
