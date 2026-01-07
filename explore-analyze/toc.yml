@@ -184,6 +184,24 @@ toc:
               - file: ai-features/llm-guides/connect-to-lmstudio-security.md
               - file: ai-features/llm-guides/connect-to-vLLM.md
       - hidden: ai-features/ai-agent-or-ai-assistant.md
+  - file: elastic-agent-builder.md
+    children:
+      - file: agent-builder/get-started.md
+      - file: agent-builder/models.md
+      - file: agent-builder/chat.md
+      - file: agent-builder/agent-builder-agents.md
+      - file: agent-builder/tools.md
+        children:
+          - file: agent-builder/tools/esql-tools.md
+          - file: agent-builder/tools/index-search-tools.md
+      - file: agent-builder/programmatic-access.md
+        children:
+          - file: agent-builder/kibana-api.md
+          - file: agent-builder/a2a-server.md
+          - file: agent-builder/mcp-server.md
+      - file: agent-builder/monitor-usage.md
+      - file: agent-builder/permissions.md
+      - file: agent-builder/limitations-known-issues.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
@@ -363,21 +381,3 @@ toc:
           - file: alerts-cases/cases/manage-cases-settings.md
           - file: alerts-cases/cases/cases-as-data.md   
   - file: numeral-formatting.md
-  - file: elastic-agent-builder.md
-    children:
-      - file: agent-builder/get-started.md
-      - file: agent-builder/models.md
-      - file: agent-builder/chat.md
-      - file: agent-builder/agent-builder-agents.md
-      - file: agent-builder/tools.md
-        children:
-          - file: agent-builder/tools/esql-tools.md
-          - file: agent-builder/tools/index-search-tools.md
-      - file: agent-builder/programmatic-access.md
-        children:
-          - file: agent-builder/kibana-api.md
-          - file: agent-builder/a2a-server.md
-          - file: agent-builder/mcp-server.md
-      - file: agent-builder/monitor-usage.md
-      - file: agent-builder/permissions.md
-      - file: agent-builder/limitations-known-issues.md
