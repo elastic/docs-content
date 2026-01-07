@@ -30,8 +30,8 @@ Considerations:
 
    ::::{applies-switch}
 
-   :::{applies-item} ess:
-   To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+   :::{applies-item} { serverless:, ess: }
+   To get started quickly, use [{{ecloud}}](https://cloud.elastic.co/).
    :::
 
    :::{applies-item} self:
