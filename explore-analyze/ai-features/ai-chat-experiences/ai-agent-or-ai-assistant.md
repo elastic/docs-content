@@ -10,30 +10,39 @@ products:
 ---
 
 # Compare Agent Builder and AI Assistant
-You can use either AI Assistant (default) or AI Agent chat experiences throughout {{kib}}. This page explains their differences and how to opt-in to AI Agent.
 
 ::::{admonition} Requirements
-- To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
+{{agent-builder}} requires an **Enterprise [license](/deploy-manage/license.md)**.
 ::::
 
-## Switch between chat options
+Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools and workflows. Agent Builder was introduced in the {{es}} solution and project type in 9.2.
 
-AI Agent uses Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) platform to provide a cohesive AI chat experience across all Elastic's products. It lets you design your own purpose-built agents for use in different workflows, and give them precise access to the tools and data they need.
+The primary interface to Agent Builder is its chat experience. Agent Builder comes with built-in agents and tools for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
 
-While Agent Builder is in technical preview, you may need to manually enable it. This behavior varies by solution:
+Currently, Agent Builder is available as an opt-in feature for Security and {{observability}} users. When you opt in, it replaces the AI Assistant chat experience. While Agent Builder offers expanded functionalities, a number of AI Assistant convenience features are not yet available. Users who rely on those AI Assistant features may not want to migrate immediately. For this reason, we've made it easy to try out Agent Builder and switch back to AI Assistant at any time.
 
-- **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant remains the default chat experience. 
-- **{{es}}:** Agent Builder is the default chat experience.
+Use this page to learn about:
 
-To enable or disable Agent Builder, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+- [How to switch](#switch-between-chat-experiences)
+- [Feature differences](#feature-differences-between-agent-builder-and-ai-assistant)
+- [The two Agent Builder GUI modes](#agent-builder-gui-interfaces)
+
+## Switch between chat experiences
+
+:::{important}
+Agent Builder will not have access to your chats, prompts, or knowledge base entries from AI Assistant. However, this data remains accessible if you switch back to the AI Assistant chat experience.
+:::
+
+You will be prompted to switch to the Agent Builder chat experience on supporting Elastic deployments. You can opt-in from this prompt immediately.
+
+You can also switch chat experiences at any time:
+
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+2. Toggle between the two experiences under **Chat Experience**.
 
 ## Feature differences between Agent Builder and AI Assistant
 
-Some functionality supported by Elastic's AI Assistants is not supported by Agent Builder. The differences vary by solution.
-
-Agent Builder provides a similar experience to AI Assistant at a high level, but with a number of differences. 
-
-The following AI Assistant chat features are not supported by Agent Builder:
+Agent Builder doesn't yet support all AI Assistant features. The specific differences vary by solution:
 
 ::::{tab-set}
 :group: example-group
@@ -70,3 +79,19 @@ Also, AI Agent chats do not show previews of data you attach to a message, such 
 :::
 
 ::::
+
+## Agent Builder GUI interfaces
+
+% TODO: Maybe this doesn't even belong here, food for thought, will need to be duplicated in main AB docs in any case
+
+Agent Builder UI functionality is available in two modes:
+
+- Standalone experience {applies_to}`stack: preview 9.2, ga 9.3`
+- A flyout experience (referred to as **AI Agent** in the UI) that replaces the AI Assistant chat experience {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview 9.3`
+
+% TODO: Link to /solutions/search/agent-builder/chat once that page is updated with two modes
+
+This behavior varies by solution:
+
+- **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant remains the default chat experience. You must [opt in to Agent Builder](#switch-between-chat-experiences) to enable both the standalone and flyout experiences.
+- **{{es}}:** Agent Builder is the default chat experience. You must opt out of Agent Builder to use the AI Assistant flyout experience.
