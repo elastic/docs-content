@@ -55,7 +55,7 @@ The following sections describe how to find your Cloud ID and create API keys in
     :::
 
 3. Enter the API key details, and select **Create API key**.
-4. Copy and securely store the API key, since it won't appear again.
+4. Copy and securely store the API key, because it only appears once.
 
 
 ## Serverless deployments [_serverless_deployments]
@@ -87,7 +87,7 @@ The **Cloud ID** is also available in the **Connection Details** section. Toggle
     :::
 
 4. Enter the API key details, and select **Create API key**.
-5. Copy and securely store the API key, since it won't appear again.
+5. Copy and securely store the API key, because it only appears once.
 
 ### Test connection [elasticsearch-get-started-test-connection]
 
