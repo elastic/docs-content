@@ -76,7 +76,7 @@ The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearc
 
 ### Agent Builder
 
-[Agent Builder](/explore-analyze/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, execute queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### Playground
 
