@@ -47,7 +47,7 @@ Ensure your role has:
 
 Ensure your role has:
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
 
     ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
