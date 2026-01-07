@@ -53,11 +53,6 @@ You can use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsear
 GET _nodes/stats?filter_path=nodes.*.breakers
 ```
 
-**Since version 9.3.0**, you can use [`_cat/circuit_breaker`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API
-```console
-GET /_cat/circuit_breaker
-```
-
 The response provides the following information:
 - Estimated memory used for the operation.
 - Memmory limit for the circuit breaker.
