@@ -41,7 +41,11 @@ stack: ga 9.3, preview 9.2
 serverless: ga
 ```
 
-1. On the **Privileged user monitoring** page, select an integration. The supported integrations are:
+:::::{stepper}
+
+::::{step} Select an integration
+
+On the **Privileged user monitoring** page, select an integration. The supported integrations are:
    * [Active Directory Entity Analytics](integration-docs://reference/entityanalytics_ad.md). 
 
       :::::{applies-switch}
@@ -67,6 +71,7 @@ serverless: ga
       :::
       
       ::::
+      % closes applies-item 1
 
       ::::{applies-item} stack: preview 9.2
       Users in the following Active Directory groups are automatically assigned as privileged:
@@ -79,11 +84,23 @@ serverless: ga
       :::
 
       ::::
+      % closes applies-item 2
 
       :::::
+      % closes applies-switch
 
    * [Okta Entity Analytics](integration-docs://reference/entityanalytics_okta.md). Refer to [Standard administrator roles and permissions](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm) for a list of Okta roles that will be automatically assigned as privileged users.
-2. Follow the steps to install the integration. 
+
+::::
+% closes step 1
+
+::::{step} Install the integration
+Follow the steps to install the integration. 
+::::
+% closes step 2
+
+:::::
+% closes stepper
 
 ### Select or create an index [privmon-index]
 
