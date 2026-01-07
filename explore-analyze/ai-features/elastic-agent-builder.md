@@ -8,11 +8,15 @@ applies_to:
     security: unavailable
 ---
 
-# {{agent-builder}} 
+# {{agent-builder}}
 
 {{agent-builder}} is a set of AI-powered capabilities for developing and interacting with agents that work with your {{es}} data. Agent Builder simplifies building data-driven agents with intuitive UI and programmatic interfaces, so you don't have to compose the different pieces separately.
 
 You can use the built-in agent for natural language conversations with any {{es}} data or instance, or work programmatically with tools, agents, and conversations using Elastic APIs, MCP, and A2A.
+
+:::{important}
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+:::
 
 ## Key capabilities
 
@@ -71,6 +75,12 @@ These interfaces enable you to build integrations with other applications and ex
 Configure security roles and API keys to control who can use agents, which tools they can access, and what data they can query.
 
 [**Learn more about permissions and access control**](agent-builder/permissions.md)
+
+## Monitor usage
+
+Understand how tokens are calculated and accumulated during agent execution to predict the impact on your usage and costs.
+
+[**Learn more about token usage**](agent-builder/monitor-usage.md)
 
 ## Limitations and known issues
 

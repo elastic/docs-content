@@ -88,25 +88,6 @@ For self-managed {{kib}}:
 
 When you subsequently add assignees to cases, they receive an email.
 
-## Add files [add-case-files]
-
-After you create a case, you can upload and manage files on the **Files** tab. To find the tab:
-
-- {applies_to}`stack: ga 9.3`: Go to the case's details page, then select the **Attachments** tab.
-- {applies_to}`stack: ga 9.0`: Go to the case's details page.  
-
-To download or delete the file or copy the file hash to your clipboard, open the action menu {icon}`boxes_horizontal`. The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
-
-::::{note}
-Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-::::
-
-::::{important}
-When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported.
-::::
-
 ## Add visualizations [add-case-visualization]
 
 You can also optionally add visualizations. For example, you can portray event and alert data through charts and graphs.
@@ -144,7 +125,47 @@ To view a case, click on its name. You can then:
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
 * Refresh the case to retrieve the latest updates.
-* Add and manage the following items:
-   * Alerts
-   * Files
-   * Observables
+
+## Add context and supporting materials [add-case-context]
+
+Provide additional context and resources by adding the following to the case:
+* [Alerts](#add-case-alerts) 
+* [Files](#add-case-files)
+* [Observables](#add-case-observables)
+
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific observable values, alert IDs, and file names.
+::::
+
+### Add alerts [add-case-alerts]
+
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
+
+::::{note}
+Refer to [](../../../solutions/observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases) to learn how to add alerts to cases.
+::::
+
+### Add files [add-case-files]
+
+:::{include} ../../../solutions/_snippets/add-case-files.md
+:::
+
+::::{important}
+When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported.
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
+### Add observables [add-case-observables]
+
+:::{include} ../../../solutions/_snippets/add-case-observables.md
+:::
+
+## Search cases [search-stack-management-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::
