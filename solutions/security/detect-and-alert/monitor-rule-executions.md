@@ -77,7 +77,7 @@ Within the Rules table, several columns provide additional gap data:
 
     ::::{tip}
     :applies_to:{stack: ga 9.3, serverless: ga}
-    Use the **Gap fill status** filter in the Rules table to find rules with the gap status you specify. 
+    Use the **Gap fill status** filter in the Rules table to find rules with the specified gap status. 
     ::::
 
 To fill gaps for multiple rules, use the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) from the Rule's table. For a more detailed view of a rule's gaps, click the rule name to open its details, then go to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table) on the rule's **Execution results** tab. 
