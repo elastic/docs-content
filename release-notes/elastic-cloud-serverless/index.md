@@ -629,7 +629,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-10202025-features-enhancements]
 
-* [Agent Builder](/solutions/search/elastic-agent-builder.md) is now available in technical preview and is enabled by default on {{serverless-full}}
+* [Agent Builder](/explore-analyze/elastic-agent-builder.md) is now available in technical preview and is enabled by default on {{serverless-full}}
 * Lets you remove root privileges from {{fleet}} managed agents [#237790]({{kib-pull}}237790)
 * Adds the `xpack.fleet.experimentalFeatures` setting [#238840]({{kib-pull}}238840)
 * Supports expression suggestions within function parameters [#236343]({{kib-pull}}236343)

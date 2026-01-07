@@ -71,7 +71,7 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Agent Builder
 
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/explore-analyze/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### AI assistant for {{es}}
 
