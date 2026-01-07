@@ -12,7 +12,7 @@ products:
 
 Disk capacity pressures may cause index failures, unassigned shards, and cluster instability. 
 
-{{es}} uses [disk-based shard allocation watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to manage disk space on nodes, which can block allocation or indexing when nodes run low on disk space.
+{{es}} uses [disk-based shard allocation watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to manage disk space on nodes, which can block allocation or indexing when nodes run low on disk space. Refer to [](/troubleshoot/elasticsearch/fix-watermark-errors.md) for additional details on how to address this situation.
 
 To increase the disk capacity of the data nodes in your cluster, complete these steps:
 
@@ -22,7 +22,9 @@ To increase the disk capacity of the data nodes in your cluster, complete these 
 
 ## Estimate the amount of required disk capacity [estimate-required-capacity]
 
-1. Retrieve the relevant disk thresholds that indicate how much space should be available. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
+The following steps explain how to retrieve the current disk watermark configuration of the cluster and how to check the current disk usage on the nodes.
+
+1. Retrieve the relevant disk thresholds that indicate how much space should be available. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so only the high watermark is retrieved:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
@@ -71,17 +73,17 @@ In this scenario, the high watermark configuration indicates that the disk usage
 
 Here are the most common ways to increase disk capacity:
 
-* You can expand the disk space of the current nodes (by replacing your nodes with ones with higher capacity).
-* You can add extra data nodes to your cluster (to increase capacity for the data tier that might be short of disk).
+* You can expand the disk space of the existing nodes. This is typically achieved by replacing your nodes with ones with higher capacity.
+* You can add additional data nodes to the data tier that is short of disk space, increasing the overall capacity of that tier and potentially improving performance by distributing data and workload across more resources.
 
 When you add another data node, the cluster doesn't recover immediately and it might take some time until shards are relocated to the new node. 
-You can check the progress here:
+You can check the progress with the following API call:
 
 ```console
 GET /_cat/shards?v&h=state,node&s=state
 ```
 
-If in the response the shards' state is `RELOCATING`, it means that shards are still moving. Wait until all shards turn to `STARTED` or until the health disk indicator turns to `green`.
+If in the response the shards' state is `RELOCATING`, it means that shards are still moving. Wait until all shards turn to `STARTED`.
 
 :::::::{applies-switch}
 
