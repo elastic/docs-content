@@ -32,7 +32,7 @@ You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md
 
 ## Configuring MCP clients
 
-Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar configuration patterns. To connect to your Elastic instance, you need to provide your Kibana URL and API key in the client's configuration file, typically in the following format:
+Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar configuration patterns. To connect to your Elastic instance, you need to provide your {{kib}} URL and API key in the client's configuration file, typically in the following format:
 
 ```json
 {

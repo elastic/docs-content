@@ -634,3 +634,20 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/4438
   'explore-analyze/ai-features/ai-agent-or-ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md'
+  
+  # Related to agent builder restructure - moved agent builder docs to explore-analyze/
+  'solutions/search/elastic-agent-builder.md': 'explore-analyze/ai-features/elastic-agent-builder.md'
+  'solutions/search/agent-builder/tools/esql-tools.md': 'explore-analyze/ai-features/agent-builder/tools/esql-tools.md'
+  'solutions/search/agent-builder/tools/index-search-tools.md': 'explore-analyze/ai-features/agent-builder/tools/index-search-tools.md'
+  'solutions/search/agent-builder/a2a-server.md': 'explore-analyze/ai-features/agent-builder/a2a-server.md'
+  'solutions/search/agent-builder/agent-builder-agents.md': 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
+  'solutions/search/agent-builder/chat.md': 'explore-analyze/ai-features/agent-builder/chat.md'
+  'solutions/search/agent-builder/get-started.md': 'explore-analyze/ai-features/agent-builder/get-started.md'
+  'solutions/search/agent-builder/kibana-api.md': 'explore-analyze/ai-features/agent-builder/kibana-api.md'
+  'solutions/search/agent-builder/limitations-known-issues.md': 'explore-analyze/ai-features/agent-builder/limitations-known-issues.md'
+  'solutions/search/agent-builder/mcp-server.md': 'explore-analyze/ai-features/agent-builder/mcp-server.md'
+  'solutions/search/agent-builder/models.md': 'explore-analyze/ai-features/agent-builder/models.md'
+  'solutions/search/agent-builder/monitor-usage.md': 'explore-analyze/ai-features/agent-builder/monitor-usage.md'
+  'solutions/search/agent-builder/permissions.md': 'explore-analyze/ai-features/agent-builder/permissions.md'
+  'solutions/search/agent-builder/programmatic-access.md': 'explore-analyze/ai-features/agent-builder/programmatic-access.md'
+  'solutions/search/agent-builder/tools.md': 'explore-analyze/ai-features/agent-builder/tools.md'
