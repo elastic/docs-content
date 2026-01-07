@@ -12,7 +12,17 @@ products:
 
 In Elasticsearch, a mapping or [mapped field](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) defines the fields in an index and their data types, such as text for full-text search, keyword for exact filtering, or boolean for true/false values. Think of it as a schema that tells Elasticsearch how to interpret and store each piece of data. When the total number of mapped fields across an index grows excessively large, the cluster can experience performance degradation such as slower searches, high heap usage, and prolonged startup times. 
 
-To protect itself, Elasticsearch enforces a default field limit of `1000` and can reject ingestion for that specific index once the threshold is reached. This condition of runaway field growth is called a mapping explosion, and it typically signals an upstream data formatting issue that should be addressed at the source as [described in this blog](https://www.elastic.co/blog/3-ways-to-prevent-mapping-explosion-in-elasticsearch).
+By default, {{es}} allows for [dynamic mappings](/manage-data/data-store/mapping/dynamic-mapping.md) which allows on-the-fly creation of fields. Runaway field growth is colloquially called "mapping explosion". Excessively mapped fields within or across indices can cause the cluster to experience performance degradation such as slower searches, [high JVM memory pressure](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md), and prolonged startup times.
+
+To guard against mapping explosion, {{es}} default enforces field limit of `1000` by way of its [`index.mapping.total_fields.limit`](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) setting. {{es}} will reject ingestion requests which would induce further mapped fields for any specific index once its limit threshold is reached with error
+
+```text
+Limit of total fields [<index.mapping.total_fields.limit>] has been exceeded while adding new fields [<count>]
+```
+
+Advanced users may choose to bypass this rejection with [`index.mapping.total_fields.ignore_dynamic_beyond_limit`](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) setting after weighing its effects against their use case.
+
+Mapping explosion typically signals an upstream data formatting issue that should be addressed client-side as [described in this blog](https://www.elastic.co/blog/3-ways-to-prevent-mapping-explosion-in-elasticsearch).
 
 Mapping explosion may surface as the following performance symptoms:
 
