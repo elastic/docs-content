@@ -140,7 +140,7 @@ This command returns a list of nodes in the cluster along with their node names.
 ::::
 
 ::::{step} Remove the node from the cluster
-After you've determined the node name, you can remove the node from the cluster. To remove the node from the cluster, update the cluster settings to exclude the node using its node name. Execute the following command, replacing `<node_name>` with the node name you retrieved in the previous step:
+After you've determined the node name, you can begin removing the node from the cluster by excluding it from shard allocation. This tells {{es}} to stop allocating shards to the node and to relocate any existing shards to other nodes in the cluster. If the node does not hold data (for example, a dedicated master or coordinating-only node), this step can be skipped. To exclude the node from shard allocation, update the cluster settings using its node name. Run the following command, replacing `<node_name>` with the node name you retrieved in the previous step:
 
 ```console
 PUT /_cluster/settings
@@ -166,6 +166,8 @@ After all shards have relocated to the other nodes, you can safely [stop the {{e
 ```console
 sudo systemctl stop elasticsearch
 ```
+
+When the process stops, the node disconnects from the cluster and no longer appears as part of the cluster.
 ::::
 
 ::::{step} Verify the cluster health
