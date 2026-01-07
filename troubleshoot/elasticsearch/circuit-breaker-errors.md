@@ -47,18 +47,26 @@ Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] D
 
 **Check circuit breaker statistics**
 
-To get statistics about the circuit breaker per node. You can use:
+To get statistics about the circuit breaker per node. Use one of the following:
 
-The [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats):
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga" }
+Use the [get node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) API:
 
 ```console
 GET _nodes/stats?filter_path=nodes.*.breakers
 ```
+:::
 
-{applies_to}`stack: ga 9.3` Or [/_cat/circuit_breaker](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API:
+:::{applies-item} { "stack": "ga 9.3" }
+Use the [get circuit breakers statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API:
 ```console
 GET /_cat/circuit_breaker/
 ```
+:::
+
+::::
 
 The response provides the following information:
 - Estimated memory used for the operation.
