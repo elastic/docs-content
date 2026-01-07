@@ -15,7 +15,7 @@ products:
 
 The response console allows you to perform response actions on an endpoint using a terminal-like interface. You can enter action commands and get near-instant feedback on them. Actions are also recorded in the endpoint’s [response actions history](/solutions/security/endpoint-response-actions.md#actions-log) for reference.
 
-Response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
+Unless otherwise specified, response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
 
 ::::{admonition} Requirements
 * Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
