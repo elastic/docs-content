@@ -47,11 +47,9 @@ From the **Rule Monitoring** tab, you can get an overview of existing gaps and t
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.0" }
+:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 The panel has the following:
-* **Time filter**: Allows you to select a time range for viewing gap data.
-* **Total rules with gaps:** Tells you how many rules have unfilled or partially filled gaps within the selected time range.
-* **Only rules with gaps**: Filters the Rules table to only display rules with unfilled or partially filled gaps.
+* **Rules with gaps:** Tells you the number of rules with gaps (left metric) and the number of rules with all gaps being filled (right metric). The metric shows data from the last 90 days.
 :::
 
 :::{applies-item} { "stack": "ga 9.1" }
@@ -61,13 +59,14 @@ The panel has the following:
 * **Only rules with unfilled gaps**: Filters the Rules table to only display rules with unfilled gaps. Note that the filter excludes rules with gaps that are being filled.
 :::
 
-:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.0" }
 The panel has the following:
-* **Rules with gaps:** Tells you the number of rules with gaps (left metric) and the number of rules with all gaps being filled (right metric). The metric shows data from the last 90 days.
+* **Time filter**: Allows you to select a time range for viewing gap data.
+* **Total rules with gaps:** Tells you how many rules have unfilled or partially filled gaps within the selected time range.
+* **Only rules with gaps**: Filters the Rules table to only display rules with unfilled or partially filled gaps.
 :::
 
 ::::
-
 
 Within the Rules table, several columns provide additional gap data:
 
