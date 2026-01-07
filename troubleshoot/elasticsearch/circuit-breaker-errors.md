@@ -53,6 +53,11 @@ You can use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsear
 GET _nodes/stats?filter_path=nodes.*.breakers
 ```
 
+**Since version 9.3.0**, you can use [`_cat/circuit_breaker`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API
+```console
+GET /_cat/circuit_breaker
+```
+
 The response provides the following information:
 - Estimated memory used for the operation.
 - Memmory limit for the circuit breaker.
@@ -94,7 +99,7 @@ If you’ve triggered the fielddata circuit breaker and can’t disable fielddat
 POST _cache/clear?fielddata=true
 ```
 
-**Memory evaluation**
+## Memory evaluation
 
 Circuit breakers may either directly evaluate memory usage estimates or indirectly limit operations that are likely to cause excessive memory consumption. For example, the `script` circuit breaker checks memory indirectly by rate-limiting Painless/Mustache script compilations. However, even with circuit breakers in place, nodes can still encounter out-of-memory (OOM) conditions. This can occur, for example, because:
 
