@@ -118,7 +118,7 @@ When you need to remove a node from an {{es}} cluster, the process consists of f
 :::::{stepper}
 
 ::::{step} Stop indexing and perform a synced flush (optional)
-If you can afford to stop indexing for a short period, it is recommended to perform a synced flush. This operation helps speed up the recovery process when the cluster restarts after a node is removed. To perform a synced flush, execute the following command:
+If you can afford to stop indexing for a short period, it is recommended to perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
 
 ```console
 POST /_flush/synced
@@ -130,7 +130,7 @@ This step is optional and can be skipped if stopping indexing is not feasible.
 ::::
 
 ::::{step} Retrieve the node name
-You need to know the node name in order to remove it from the cluster. You can retrieve the node name by executing the following command:
+You need to know the node name to remove it from the cluster. You can retrieve the node name by running the following command:
 
 ```console
 GET /_cat/nodes?v
@@ -151,7 +151,7 @@ PUT /_cluster/settings
 }
 ```
 
-This command instructs {{es}} to move all shards from the specified node to other nodes in the cluster. You can monitor the progress of shard relocation by executing the following command:
+This command instructs {{es}} to move all shards from the specified node to other nodes in the cluster. You can monitor the progress of shard relocation by running the following command:
 
 ```console
 GET /_cat/shards?v
@@ -161,7 +161,7 @@ Wait for the shard relocation process to complete before proceeding to the next 
 ::::
 
 ::::{step} Stop the {{es}} process on the node
-After all shards have relocated to the other nodes, you can safely stop the {{es}} process on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can execute the following command:
+After all shards have relocated to the other nodes, you can safely [stop the {{es}} process](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#stopping-elasticsearch) on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can run the following command:
 
 ```console
 sudo systemctl stop elasticsearch
@@ -169,7 +169,7 @@ sudo systemctl stop elasticsearch
 ::::
 
 ::::{step} Verify the cluster health
-Finally, verify the health of the cluster by executing the following command:
+Finally, verify the health of the cluster by running the following command:
 
 ```console
 GET /_cluster/health
