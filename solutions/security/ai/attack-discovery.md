@@ -62,7 +62,7 @@ Ensure your role has:
 
 :::{applies-item} stack: ga =9.0
 
-Ensure your role has `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature.
+Ensure your role has `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature.
 
 ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
