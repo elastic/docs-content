@@ -5,18 +5,35 @@ mapped_pages:
 products:
   - id: observability
   - id: cloud-serverless
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Create and manage cases [observability-create-a-new-case]
 
-::::{note}
+Open a new {{observability}} case to keep track of issues and share the details with colleagues. You can create and manage cases using the cases UI.
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+::::{applies-switch}
+
+:::{applies-item} stack:
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../incident-management/configure-access-to-cases.md) for more information.
+:::
+
+:::{applies-item} serverless:
+**Requirements**
+
+For {{observability}} projects, you need the appropriate [feature tier](https://www.elastic.co/pricing), and your role must have the **Editor** role or higher to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+:::
 
 ::::
 
+## Create a case [create-observability-case]
 
-Open a new case to keep track of issues and share the details with colleagues. To create a case in your Observability project:
+To create a case:
 
 1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create case**.
@@ -24,18 +41,32 @@ Open a new case to keep track of issues and share the details with colleagues. T
 4. Give the case a name, severity, and description.
 
     ::::{tip}
-    In the `Description` area, you can use [Markdown](https://www.markdownguide.org/cheat-sheet) syntax to create formatted text.
+    In the **Description**, you can use [Markdown](https://www.markdownguide.org/cheat-sheet) syntax to format text.
 
     ::::
 
 5. (Optional) Add a category, assignees, and tags.
 
-    **For Observability serverless projects**, you can add users who are assigned the Editor user role (or a more permissive role) for the project.
+    ::::{applies-switch}
 
-    **For Elastic Stack**, You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
+    :::{applies-item} stack:
+    You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
+    :::
+
+    :::{applies-item} serverless:
+    You can add users who are assigned the **Editor** user role (or a more permissive role) for the project.
+    :::
+
+    ::::
 
 6. If you defined [custom fields](/solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
-7. (Optional) Under External incident management system, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can [create one](/solutions/observability/incident-management/configure-case-settings.md).
+7. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](/solutions/observability/incident-management/configure-case-settings.md#cases-external-connectors).
+
+    ::::{note}
+    :applies_to:{stack: ga 9.3}
+    When specifying **Additional fields** for an {{ibm-r}} connector, fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
+    ::::
+
 8. After you’ve completed all of the required fields, click **Create case**.
 
 ::::{tip}
@@ -43,40 +74,9 @@ You can also create a case from an alert or add an alert to an existing case. Fr
 
 ::::
 
-
-
-## Add files [observability-create-a-new-case-add-files]
-
-After you create a case, you can upload and manage files on the **Files** tab:
-
-:::{image} /solutions/images/serverless-cases-files-tab.png
-:alt: A list of files attached to a case
-:screenshot:
-:::
-
-To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
-
-::::{note}
-Uploaded files are also accessible under **Project settings** → **Management** → **Files**. When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
-
-::::
-
-
-You can add images and text, CSV, JSON, PDF, or ZIP files. For the complete list, check [`mime_types.ts`](https://github.com/elastic/kibana/blob/main/x-pack/plugins/cases/common/constants/mime_types.ts).
-
-::::{note}
-**File size limits**
-
-There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
-
-::::
-
-
 ## Send cases to external incident management systems [observability-create-a-new-case-send-cases-to-external-incident-management-systems]
 
-To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the *External incident management system* section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
+To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the **External incident management system** section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
 
 For more information about configuring connections to external incident management systems, refer to [](/solutions/observability/incident-management/configure-case-settings.md).
 
@@ -85,17 +85,49 @@ For more information about configuring connections to external incident manageme
 
 You can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes.
 
+{applies_to}`stack: ga 9.3` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{observability}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
+
 To view a case, click on its name. You can then:
 
-* Add a new comment.
-* Edit existing comments and the description.
-* Add or remove assignees.
+* Add and edit the case's description, comments, assignees, tags, status, severity, and category.
 * Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
-* Edit the category and tags.
-* Change the status.
-* Change the severity.
-* Remove an alert.
 * Refresh the case to retrieve the latest updates.
-* Close the case.
-* Reopen a closed case.
+
+## Add context and supporting materials [observability-create-a-new-case-add-context]
+
+Provide additional context and resources by adding the following to the case:
+* [Alerts](#observability-create-a-new-case-examine-alerts) 
+* [Files](#observability-create-a-new-case-add-files)
+
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific alert IDs and file names.
+::::
+
+### Add alerts [observability-create-a-new-case-examine-alerts]
+
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
+
+::::{note}
+[Add alerts](../../observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases) to new and existing cases from the **Alerts** page.
+::::
+
+### Add files [observability-create-a-new-case-add-files]
+
+:::{include} /solutions/_snippets/add-case-files.md
+:::
+
+::::{important}
+When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported. 
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
+## Search cases [search-stack-management-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::

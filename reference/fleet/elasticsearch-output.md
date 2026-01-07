@@ -2,6 +2,9 @@
 navigation_title: "{{es}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -232,6 +235,10 @@ The service principal name for the {{es}} instance is constructed from these opt
 
     **Default:** `true`
 
+`status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
+:   (boolean) Whether status reporting is enabled for this output. When disabled, the output does not change its health status if there is a connectivity problem.
+
+    **Default:** `true`
 
 ### Data parsing, filtering, and manipulation settings [output-elasticsearch-data-parsing-settings]
 
@@ -248,7 +255,7 @@ Settings used to parse, filter, and transform data.
     ```yaml
     outputs:
       default:
-        type: elasticsearchoutput.elasticsearch:
+        type: elasticsearch
         hosts: ["http://localhost:9200"]
         pipeline: my_pipeline_id
     ```

@@ -2,6 +2,9 @@
 navigation_title: SSL/TLS
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-ssl-configuration.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -33,7 +36,7 @@ $$$common-ssl-options$$$
 
 
 `ssl.cipher_suites` $$$ssl.cipher_suites-common-setting$$$
-:   (list) The list of cipher suites to use. The first entry has the highest priority. If this option is omitted, the Go crypto library’s [default suites](https://golang.org/pkg/crypto/tls/) are used (recommended). Note that TLS 1.3 cipher suites are not individually configurable in Go, so they are not included in this list.
+:   (list) The list of cipher suites to use. The first entry has the highest priority. If this option is omitted, the Go crypto library's [default suites](https://golang.org/pkg/crypto/tls/) are used (recommended). TLS 1.3 cipher suites are not individually configurable in Go, so they are not included in this list.
 
     The following cipher suites are available:
 

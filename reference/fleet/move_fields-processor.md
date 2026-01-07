@@ -2,6 +2,9 @@
 navigation_title: move_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/move_fields-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -84,11 +87,11 @@ Your final event will be:
 
 ## Configuration settings [_configuration_settings_32]
 
-| Name | Required | Default | Description |  |
-| --- | --- | --- | --- | --- |
-| `from` | no |  | Which field you want extract. This field and any nested fields will be moved into `to` unless they are filtered out. If empty, indicates event root. |  |
-| `fields` | no |  | Which fields to extract from `from` and move to `to`. An empty list indicates all fields. |  |
-| `ignore_missing` | no | false | Ignore "not found" errors when extracting fields. |  |
-| `exclude` | no |  | A list of fields to exclude and not move. |  |
-| `to` | yes |  | These fields extract from `from` destination field prefix the `to` will base on fields root. |  |
+| Name | Required | Default | Description |
+| --- | --- | --- | --- |
+| `from` | no |  | Which field you want extract. This field and any nested fields will be moved into `to` unless they are filtered out. If empty, indicates event root. |
+| `fields` | no |  | Which fields to extract from `from` and move to `to`. An empty list indicates all fields. |
+| `ignore_missing` | no | false | Ignore "not found" errors when extracting fields. |
+| `exclude` | no |  | A list of fields to exclude and not move. |
+| `to` | yes |  | These fields extract from `from` destination field prefix the `to` will base on fields root. |
 

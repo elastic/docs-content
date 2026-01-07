@@ -14,7 +14,7 @@ description: View field statistics in Discover to analyze field distributions, t
 Use the **Field statistics** view in **Discover** to analyze your data fields with statistical summaries and visualizations. View distributions, top values, minimum and maximum values, and patterns across your data to understand field characteristics and identify trends.
 
 :::{note}
-Field statistics aren't available when **Discover** is in {{esql}} mode.
+Field statistics are only available when **Discover** is in default mode, not in {{esql}} mode.
 :::
 
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.

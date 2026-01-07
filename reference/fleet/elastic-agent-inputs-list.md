@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-inputs-list.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -19,7 +22,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | --- | --- | --- |
 | `audit/auditd` | Receives audit events from the Linux Audit Framework that is a part of the Linux kernel. | [Auditd Module](beats://reference/auditbeat/auditbeat-module-auditd.md) ({{auditbeat}} docs) |
 | `audit/file_integrity` | Sends events when a file is changed (created, updated, or deleted) on disk. The events contain file metadata and hashes. | [File Integrity Module](beats://reference/auditbeat/auditbeat-module-file_integrity.md) ({{auditbeat}} docs) |
-| `audit/system` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Collects various security related information about a system. All datasets send both periodic state information (e.g. all currently running processes) and real-time changes (e.g. when a new process starts or stops). | [System Module](beats://reference/auditbeat/auditbeat-module-system.md) ({{auditbeat}} docs) |
+| `audit/system` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Collects various security related information about a system. All datasets send both periodic state information (for example, all currently running processes) and real-time changes (for example, when a new process starts or stops). | [System Module](beats://reference/auditbeat/auditbeat-module-system.md) ({{auditbeat}} docs) |
 
 ::::
 

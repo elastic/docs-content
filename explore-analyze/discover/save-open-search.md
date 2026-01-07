@@ -14,8 +14,12 @@ description: Save Discover sessions to reuse searches, share with your team, add
 
 Save your **Discover** sessions to preserve your queries, filters, and view configurations for later use. Saved sessions let you quickly return to important searches, share explorations with your team, add search results to dashboards, or use them as a starting point for creating visualizations.
 
+## Requirements [save-search-requirements]
 
-## Read-only access [discover-read-only-access]
+To save searches, you need **Create** and **Edit** permissions for the {{saved-objects-app}} feature in {{product.kibana}}. If you don't have these permissions, the **Save** button won't be visible. For more information, refer to [Read-only access](#discover-read-only-access).
+
+
+### Read-only access [discover-read-only-access]
 
 If you don't have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 

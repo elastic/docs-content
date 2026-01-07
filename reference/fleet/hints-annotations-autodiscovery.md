@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/hints-annotations-autodiscovery.html
+applies_to:
+  stack: beta
+  serverless: beta
 products:
   - id: fleet
   - id: elastic-agent
@@ -144,7 +147,7 @@ co.elastic.hints/processors.dissect.tokenizer: "%{key2} %{key1}"
 In the above sample the processor definition tagged with `1` would be executed first.
 
 ::::{important}
-Processor configuration is not supported on the datastream level, so annotations like `co.elastic.hints/<datastream>.processors` are ignored.
+Processor configuration is not supported on the data stream level, so annotations like `co.elastic.hints/<datastream>.processors` are ignored.
 ::::
 
 

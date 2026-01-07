@@ -13,9 +13,7 @@ description: Run pattern analysis on log data in Discover to find patterns in un
 
 Use log pattern analysis in **Discover** to find patterns in unstructured log messages automatically. Pattern analysis categorizes your log data, shows the distribution of each category, and provides example documents for each pattern, making it easier to identify trends and troubleshoot issues.
 
-Log pattern analysis works on every text field.
-
-This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
+Pattern analysis works on any text field. This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own log data.
 
 1. Go to **Discover**.
 2. Expand the {{data-source}} dropdown, and select **{{kib}} Sample Data Logs**.

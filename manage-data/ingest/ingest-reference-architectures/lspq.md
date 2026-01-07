@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/lspq.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: elastic-agent
   - id: logstash
@@ -16,7 +19,7 @@ Ingest model
 :   {{agent}} to {{ls}} persistent queue to {{es}}
 
 Use when
-:   Your data flow may encounter network issues, bursts of events, and/or downstream unavailability and you need the ability to buffer the data before ingestion.
+:   Your data flow may encounter network issues, bursts of events, or downstream unavailability, and you need the ability to buffer the data before ingestion.
 
 
 ## Resources [lspq-resources]

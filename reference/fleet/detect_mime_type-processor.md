@@ -2,6 +2,9 @@
 navigation_title: detect_mime_type
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/detect_mime_type-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -34,7 +37,7 @@ In this example, `http.request.body.content` is used as the source, and `http.re
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
 | `field` | Yes |  | Field used as the data source. |
-| `target` | Yes |  | Field to populate with the detected type. You can use the `@metadata.` prefixto set the value in the event metadata instead of fields. |
+| `target` | Yes |  | Field to populate with the detected type. You can use the `@metadata.` prefix to set the value in the event metadata instead of fields. |
 
 See [Conditions](/reference/fleet/dynamic-input-configuration.md#conditions) for a list of supported conditions.
 

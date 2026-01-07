@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Common problems with {{fleet}} and {{elastic-agent}} [fleet-troubleshooting]
+# Common problems with {{fleet}} and {{agent}} [fleet-troubleshooting]
 
 We have collected the most common known problems and listed them here. If your problem is not described here, review the open issues in the following GitHub repositories:
 
@@ -54,6 +54,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 * [{{agent}} fails with `Agent process is not root/admin or validation failed` message](#process-not-root)
 * [Integration policy upgrade has too many conflicts](#upgrading-integration-too-many-conflicts)
 * [{{agent}} hangs while unenrolling](#agent-hangs-while-unenrolling)
+* [{{agent}} is automatically unenrolled after failed check-ins with 401 errors](#agent-auto-unenroll-401)
 * [On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1`](#ca-cert-testing)
 * [Uninstalling {{elastic-endpoint}} fails](#endpoint-not-uninstalled-with-agent)
 * [API key is unauthorized to send telemetry to `.logs-endpoint.diagnostic.collection-*` indices](#endpoint-unauthorized)
@@ -530,6 +531,59 @@ You can unenroll an agent to invalidate all API keys related to the agent and ch
 2. Under Agents, choose **Unenroll agent** from the **Actions** menu next to the agent you want to unenroll.
 3. Click **Force unenroll**.
 
+
+## {{agent}} is automatically unenrolled after failed check-ins with 401 errors [agent-auto-unenroll-401]
+
+In {{agent}} versions prior to 8.19.0 and 9.1.0, if an agent receives a 401 (Unauthorized) error on more than seven consecutive check-ins with {{fleet-server}}, the agent is automatically unenrolled.
+
+To resolve the issue:
+
+:::::{stepper}
+
+::::{step} Re-enroll the agent
+
+* If the agent is still installed on the host, re-enroll it in {{fleet}} to keep the agent's existing state, including any previously ingested data:
+
+   1. Open the **Agents** tab, then click **Add agent**.
+   2. In the **Add agent** flyout, select the agent policy in which to re-enroll the agent. 
+   3. In the **Authentication settings** section, select an enrollment token:
+
+      * If one or more active enrollment tokens exist for your agent policy, select one from the dropdown.
+      * If no active tokens exist, click **Create enrollment token**. For detailed instructions, refer to [Create enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens).
+   
+   4. Make sure **Enroll in Fleet** is selected.
+   5. Select the appropriate platform, then copy the `elastic-agent install` command from the UI, and replace `install` with `enroll`.
+   6. Run the modified command with elevated privileges from the directory where the agent is installed. For example:
+
+     ```bash
+     sudo ./elastic-agent enroll --url=<fleet-server-url> --enrollment-token=<token>
+     ```
+
+     Refer to the [command reference](/reference/fleet/agent-command-reference.md#elastic-agent-enroll-command) for details about the available options.
+
+* If the agent is no longer installed on the host, reinstall and enroll it in {{fleet}}. Refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md) for detailed instructions.
+
+::::
+
+::::{step} Resolve the underlying issues
+
+Investigate the cause of the 401 errors and resolve the underlying issues to ensure proper agent functionality.
+
+401 errors during check-in typically indicate authentication or authorization problems. Common causes include:
+
+* Expired or revoked API keys
+* Incorrect {{fleet-server}} configuration
+* Issues with {{es}} authentication settings
+
+::::
+
+:::::
+
+:::{admonition} Agents are no longer automatically unenrolled
+:applies_to: stack: ga 9.1.0
+
+The automatic unenrollment behavior is removed in {{agent}} versions 8.19.0 and 9.1.0. Starting with these versions, {{agents}} are no longer automatically unenrolled due to repeated 401 errors during check-in. When the issue causing the errors is resolved, the agents automatically reconnect to {{fleet}} and resume ingesting data.
+:::
 
 ## On {{fleet-server}} startup, ERROR seen with `State changed to CRASHED: exited with code: 1` [ca-cert-testing]
 

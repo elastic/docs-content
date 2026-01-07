@@ -1,5 +1,5 @@
 ---
-navigation_title: "Limitations & known issues"
+navigation_title: "Limitations"
 applies_to:
   stack: preview 9.2
   serverless:
@@ -11,6 +11,10 @@ applies_to:
 # Limitations and known issues in {{agent-builder}}
 
 ## Limitations
+
+:::{important}
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+:::
 
 ### Feature availability
 
@@ -24,7 +28,15 @@ However, it must be enabled for non-serverless deployments {applies_to}`stack: p
 
 In the first release of {{agent-builder}} on serverless, the feature is **only available on {{es}} projects**.
 
+### A2A streaming not supported
+
+The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+
 ## Known issues
+
+### API key authentication returns 403 Forbidden
+
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
 
 ### Incompatible LLMs
 
@@ -40,11 +52,22 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
+### Context length exceeded error [conversation-length-exceeded]
+
+This error occurs when a conversation exceeds the maximum context length supported by the LLM. This typically happens when tools return large responses that consume the available token budget.
+
+To mitigate this issue, consider the following strategies:
+
+- **Optimize queries**: Narrow your questions to reduce the scope of data retrieval
+- **Start a new conversation**: Begin a fresh conversation, optionally providing a summary of the previous context
+- **Refine tool descriptions**: Update tool descriptions and agent instructions to guide the agent toward requesting only essential data
+- **Limit tool response size**: Create custom tools that filter or paginate data to return smaller, focused datasets
+
 ### {{esql}} limitations
 
-{{esql}} tools are subject to the current limitations of the {{esql}} language itself. For example, [named parameters](elasticsearch://reference/query-languages/esql/esql-syntax.md#esql-function-named-params) (`?parameter_name`) do not currently work with the `LIKE` and `RLIKE` operators ([issue #131356](https://github.com/elastic/elasticsearch/issues/131356)).
+{{esql}} tools are subject to the current limitations of the {{esql}} language itself.
 
-For non-serverless deployments, ensure your cluster supports the {{esql}} features you intend to use.
+For non-serverless deployments, ensure your cluster version supports the {{esql}} features you intend to use.
 
 For a complete list of {{esql}} limitations, refer to the the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
@@ -67,4 +90,16 @@ This results in parsing errors like this:
 ]
 ```
 
-    
+### MCP server URL copy button omits space name
+
+:::{note}
+Fixed on serverless and 9.3.
+:::
+
+On 9.2 deployments, the **Copy your MCP server URL** button does not include the space name when used from a custom {{kib}} Space.
+
+**Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+
+For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#working-with-spaces).
+
+

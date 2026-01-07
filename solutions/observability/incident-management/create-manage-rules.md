@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts-rules.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-manage-rules.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -66,7 +69,7 @@ From the action menu you can also:
 
 ## View rule details [observability-create-manage-rules-view-rule-details]
 
-Click on an individual rule on the **{{rules-app}}** page to view details including the rule name, status, definition, execution history, related alerts, and more.
+Click on an individual rule on the **{{rules-ui}}** page to view details including the rule name, status, definition, execution history, related alerts, and more.
 
 :::{image} /solutions/images/serverless-alerts-detail-apm-anomaly.png
 :alt: Rule details (APM anomaly)
@@ -106,7 +109,7 @@ Rules are disabled on export. You are prompted to re-enable the rule on successf
 
 When creating or editing a rule, add the following resources to help you get started with investigating alerts:
 
-* {applies_to}`stack: ga 9.1` **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page. 
+* {applies_to}`stack: ga 9.1` **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page.
 
     ::::{tip}
     Use Markdown to format and structure text in your investigation guide.

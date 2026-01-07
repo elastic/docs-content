@@ -12,7 +12,7 @@ products:
 
 # Connect your self-managed cluster to AutoOps
 
-To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
 Complete the steps in the following subsections to connect your cluster to AutoOps. The connection process takes about 10 minutes.
 
@@ -102,8 +102,14 @@ Select one of the following methods to install {{agent}}:
 * **Windows**
 -->
 
+:::{note}
+macOS is not a supported platform for installing {{agent}} to connect to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
+:::
+
 :::{important} 
-Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
+Each cluster that you want to connect requires a new, dedicated {{agent}}. You must install the agent even if you already have an existing one for other purposes.
+
+You only need to install the agent once per cluster. 
 :::
 
 To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#data-gathering).
@@ -122,9 +128,9 @@ Depending on your selected installation method, you may have to provide the foll
 
 With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
-1. Open your self-managed cluster's Kibana
+1. Go to {{kib}} in your self-managed cluster.
 2. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-3.  Select **Create API key**.
+3. Select **Create API key**.
 4. In the flyout, enter a name for your key and select **User API key**.
 5. Enable **Control security privileges** and enter the following script:
 ```json
@@ -167,7 +173,7 @@ With this authentication method, you need to create an API key to grant access t
 
 With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
 
-* (Recommended) Open your self-managed cluster's Kibana and go to **Developer tools**. In **Console**, run the following command:
+* (Recommended) Go to {{kib}} in your self-managed cluster and then go to **Developer tools**. In **Console**, run the following command:
 ```js
 POST /_security/role/autoops
 {
@@ -211,14 +217,19 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available AWS regions:
+* $$$storage-location$$$**Storage location**: Select where to store your metrics data.\
+ In the **Cloud provider** field, select **Amazon Web Services**. In the **Region** field, select from the list of available AWS regions:
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
 
+$$$firewall-allowlist$$$
+:::{include} ../_snippets/autoops-allowlist-port-and-urls.md
+:::
+
 ### Install agent
 
-The wizard will generate an installation command based on your configuration. Depending on your installation method, the following command formats are available:
+The wizard generates an installation command based on your configuration. Depending on your installation method, the following command formats are available:
 
 * Kubernetes
     * YAML
@@ -256,35 +267,47 @@ Complete the following steps to run the command:
 
 It might take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
 
-If the connection is unsuccessful, an error message will appear with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors).
-
-Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
+If the connection is unsuccessful, an error message is displayed with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors). Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
 To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md).
 
 ### Launch AutoOps
 
-If the connection is successful, AutoOps will start analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
+If the connection is successful, AutoOps starts analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
 
-After the account is ready, the **Open AutoOps** button will appear in the wizard. Select it to launch AutoOps. 
+After the account is ready, the **Open AutoOps** button is displayed in the wizard. Select it to launch AutoOps. 
 
 Learn more about [AutoOps](/deploy-manage/monitor/autoops.md).
 
 ## Access AutoOps
 
-After you've completed the setup, you can access AutoOps for your cluster at any time.
+After completing the setup, you can access AutoOps for your cluster at any time.
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, locate the cluster you want to work on.
 3. In the **Services** column, select **AutoOps**.
 
-## Connect additional clusters
+## Manage connected clusters
 
-To connect more clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
+Perform the actions described in the following sections to manage your connected cluster(s). 
 
-You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}.
+### Add an alias to a cluster
 
-## Disconnect a cluster
+By default, each cluster has a name made up of a string of characters, but you can add a human-readable alias by completing the following steps. You need admin privileges to perform this action.
+
+1. From the [{{ecloud}} home page](https://cloud.elastic.co/home), go to the **Connected clusters** section and select the cluster you want to work on.
+2. On the cluster details page, select **Edit** in the **Cluster display name** field.
+3. Enter the alias in the field that is displayed and then select the checkmark icon.
+
+### Connect additional clusters
+
+To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
+
+Or, if you don't need to change any of your [configuration settings](#configure-agent) for the additional clusters, you can skip ahead and reuse the same installation command to connect them.
+
+Remember that you must run the command to install a separate, dedicated {{agent}} for each cluster. You only need to install the agent once per cluster. 
+
+### Disconnect a cluster
 
 Complete the following steps to disconnect your cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
 
@@ -292,7 +315,7 @@ Complete the following steps to disconnect your cluster from your Cloud organiza
 2. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 3. On the **Connected clusters** page or the **Connected clusters** section of the home page, locate the cluster you want to disconnect.
 4. From that cluster’s actions menu, select **Disconnect cluster**.
-5. Enter the cluster’s name in the field that appears and then select **Disconnect cluster**.
+5. Enter the cluster’s name in the field that is displayed and then select **Disconnect cluster**.
 
 :::{include} /deploy-manage/monitor/_snippets/disconnect-cluster.md
 :::

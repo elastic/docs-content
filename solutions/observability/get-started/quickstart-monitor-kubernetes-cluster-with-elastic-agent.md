@@ -13,7 +13,11 @@ products:
 
 # Quickstart: Monitor your Kubernetes cluster with {{agent}} [monitor-k8s-logs-metrics-with-elastic-agent]
 
-In this quickstart guide, you’ll learn how to create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
+In this quickstart guide, you'll learn how to create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
+
+:::{tip}
+We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) as the preferred way to collect Kubernetes logs, metrics, and application traces using OpenTelemetry.
+:::
 
 :::{note}
 In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kubernetes.io/docs/reference/kubectl/) to install {{agent}} in a Kubernetes cluster. However, these versions also support using [Helm](https://helm.sh/docs/) charts, which is now the preferred method for installing {{agent}} on Kubernetes. If your cluster is on version 9.0 or 9.1, we recommend that you follow the [Install Elastic Agent on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md) guide to deploy {{agent}}.
@@ -30,7 +34,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher (required to onboard system logs and metrics). To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * A running Kubernetes cluster with internet access
-* [Helm](https://helm.sh/docs/)
+* Helm version 3.9+ up to and including {{helm-version}}.
 ::::
 
 ::::{tab-item} {{stack}} 9.2 and later
@@ -46,7 +50,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 :::
 
 * A running Kubernetes cluster with internet access
-* [Helm](https://helm.sh/docs/)
+* Helm version 3.9+ up to and including {{helm-version}}.
 ::::
 
 ::::{tab-item} {{stack}} 9.0-9.1
@@ -62,7 +66,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 :::
 
 * A running Kubernetes cluster with internet access
-* [Kubectl](https://kubernetes.io/docs/reference/kubectl/)
+* [Kubectl](https://kubernetes.io/docs/reference/kubectl/) or Helm version 3.9+ up to and including {{helm-version}}
 ::::
 
 :::::

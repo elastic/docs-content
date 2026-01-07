@@ -6,7 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Learn how to explore and analyze data in Discover. Select data sources, explore fields, create visualizations, and save your exploration sessions.
+description: Step-by-step tutorial for exploring data with Discover by selecting data views, filtering documents, analyzing fields, and creating visualizations using sample or your own data.
 ---
 
 # Get started with Discover [discover-get-started]
@@ -22,6 +22,22 @@ You'll learn how to:
 * Save your work for later use
 
 ## Prerequisites
+Learn how to explore your {{product.elasticsearch}} data using **Discover**. This tutorial walks you through selecting {{data-sources}}, filtering documents, analyzing field structures, and creating visualizations from your data.
+
+## Context-aware data exploration [context-aware-discover]
+
+**Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:
+
+* Observability:
+  * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
+  * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+% LINK/PAGE TBD  * **Traces exploration**
+% * Security:
+% LINK/PAGE TBD  * **Security data exploration**
+
+This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
+
+When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
 
 * If you don't already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on {{ecloud}}.
 * You must have data in {{es}}. This tutorial uses the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
@@ -181,6 +197,40 @@ Save your Discover session so you can return to it later or share it with others
 1. Click **Save** in the toolbar.
 2. Give your session a meaningful name like "US ecommerce purchases".
 3. Optionally add a description and [tags](../find-and-organize/tags.md).
+To manage and organize your tabs, you can:
+- Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
+- Reorder them: Drag and drop a tab to move it.
+- Close them: Hover over a tab and select the {icon}`cross` icon.
+- Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
+
+  :::{tip}
+  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
+  :::
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
+
+To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
+
+### Inspect your Discover queries
+
+:::{include} ../_snippets/inspect-request.md
+:::
+
+### Run long-running queries in the background
+```{applies_to}
+stack: ga 9.2
+serverless: unavailable
+```
+
+You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
+
+
+### Save your Discover session for later use [save-discover-search]
+
+Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
+
+1. In the application menu bar, click **Save**.
+2. Give your session a title and a description.
+3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
 4. Click **Save**.
 
 Your session is now saved with all your settings: the query, filters, selected fields, time range, and {{data-source}}. You can reopen it anytime by clicking **Open** in the toolbar.

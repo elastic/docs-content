@@ -1,12 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-monitoring.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Monitor a self-managed Fleet Server [fleet-server-monitoring]
+# Monitor a self-managed {{fleet-server}} [fleet-server-monitoring]
 
 For self-managed {{fleet-server}}s, monitoring is key because the operation of the {{fleet-server}} is paramount to the health of the deployed agents and the services they offer. When {{fleet-server}} is not operating correctly, it may lead to delayed check-ins, status information, and updates for the agents it manages. The monitoring data will tell you when to add capacity for {{fleet-server}}, and provide error logs and information to troubleshoot other issues.
 
@@ -46,4 +49,4 @@ The following dashboard shows data for the query `data_stream.namespace: "fleets
 :screenshot:
 :::
 
-Note that as an alternative to running the query, you can hide all metrics except `fleet_server` in the dashboard.
+As an alternative to running the query, you can hide all metrics except `fleet_server` in the dashboard.

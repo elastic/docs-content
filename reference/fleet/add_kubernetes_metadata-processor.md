@@ -2,6 +2,9 @@
 navigation_title: add_kubernetes_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_kubernetes_metadata-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -63,7 +66,7 @@ This configuration enables the processor on an {{agent}} running as a process on
       host: <hostname>
       # If kube_config is not set, KUBECONFIG environment variable will be checked
       # and if not present it will fall back to InCluster
-      kube_config: ${fleet} and {agent} Guide/.kube/config
+      kube_config: ~/.kube/config
       # Defining indexers and matchers manually is required for {beatname_lc}, for instance:
       #indexers:
       #  - ip_port:

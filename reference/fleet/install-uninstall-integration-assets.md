@@ -2,6 +2,9 @@
 navigation_title: Install and uninstall integration assets
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-uninstall-integration-assets.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -19,7 +22,7 @@ products:
 2. Click the **Settings** tab.
 3. Click **Install <integration> assets** to set up the {{kib}} and {{es}} assets.
 
-Note that it’s currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
+It's currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
 
 ::::{admonition} Spaces support for integration assets
 

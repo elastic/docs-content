@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-standalone-elastic-agent.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -84,7 +87,7 @@ To install and run {{agent}} standalone:
     ```
 
     :::::{note}
-    If you need to uninstall an {{agent}} package on Debian Linux, note that the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
+    If you need to uninstall an {{agent}} package on Debian Linux, the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
     :::::
 
     ::::::
@@ -106,12 +109,12 @@ To install and run {{agent}} standalone:
     You can use either of the two command formats to set the `ELASTIC_AGENT_FLAVOR` environment variable:
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
     sudo ELASTIC_AGENT_FLAVOR=servers rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
     ELASTIC_AGENT_FLAVOR=servers sudo -E rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
@@ -148,7 +151,7 @@ To install and run {{agent}} standalone:
 5. From the agent directory, run the following commands to install {{agent}} and start it as a service.
 
     ::::{note}
-    On macOS, Linux (tar package), and Windows, run the `install` command to install {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, so just enable then start the service.
+    On macOS, Linux (tar package), and Windows, run the `install` command to install {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, so enable then start the service.
     ::::
 
     :::::{tab-set}
@@ -163,7 +166,7 @@ To install and run {{agent}} standalone:
     sudo ./elastic-agent install
     ```
 
-    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--install-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 
     ::::
 
@@ -177,7 +180,7 @@ To install and run {{agent}} standalone:
     sudo ./elastic-agent install
     ```
 
-    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--install-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 
     ::::
 
@@ -191,7 +194,7 @@ To install and run {{agent}} standalone:
     .\elastic-agent.exe install
     ```
 
-    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--install-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 
     ::::
 

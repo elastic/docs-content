@@ -1,12 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/docker-provider.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Docker Provider [docker-provider]
+# Docker provider [docker-provider]
 
 Provides inventory information from Docker. The available dynamic variables are:
 

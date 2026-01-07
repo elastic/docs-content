@@ -12,6 +12,10 @@ applies_to:
 
 Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 
+:::{important}
+{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+:::
+
 ::::::{stepper}
 ::::{step} Set up an Elastic deployment
 
@@ -51,6 +55,10 @@ Find **Agents** in the navigation menu to begin using the feature, or search for
 :::
 
 ::::
+
+:::{note}
+To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
+:::
 
 :::::
 

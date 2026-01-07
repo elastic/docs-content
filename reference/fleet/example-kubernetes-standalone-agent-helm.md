@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-kubernetes-standalone-agent-helm.html
 applies_to:
-  stack: ga 8.18
-  serverless: all
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -292,7 +292,7 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     elastic+         543  0.0  0.0   5480  2360 pts/0    R+   22:47   0:00 ps aux
     ```
 
-4. In the command output, note that {{agent}} is currently running as the `elastic` user:
+4. In the command output, {{agent}} is currently running as the `elastic` user:
 
     ```sh
     elastic+          10  0.2  1.3 2555252 132804 ?      Sl   21:04   0:13 elastic-agent container -c /etc/elastic-agent/agent.yml -e

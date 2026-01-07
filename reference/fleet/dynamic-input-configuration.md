@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/dynamic-input-configuration.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -184,7 +187,8 @@ inputs:
   - id: unique-system-metrics-id
     type: system/metrics
     streams:
-      - metricset: load
+      - metricsets:
+          - load
         data_stream.dataset: system.cpu
         condition: ${host.platform} != 'windows'
 ```
@@ -196,13 +200,14 @@ inputs:
   - id: unique-system-metrics-id
     type: system/metrics
     streams:
-      - metricset: load
+      - metricsets:
+          - load
         data_stream.dataset: system.cpu
     processors:
       - add_fields:
           fields:
             platform: ${host.platform}
-          to: host
+          target: host
         condition: ${host.platform} != 'windows'
 ```
 

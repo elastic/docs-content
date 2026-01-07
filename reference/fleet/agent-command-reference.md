@@ -2,6 +2,9 @@
 navigation_title: Command reference
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -21,6 +24,11 @@ Note the following restrictions for running {{agent}} commands:
 * Running {{agent}} commands using the Windows PowerShell ISE is not supported.
 
 ::::
+
+:::{admonition} Command options for {{fleet-server}}
+:applies_to: serverless: unavailable
+Because self-managed {{fleet-server}} is not supported on {{serverless-full}}, the `elastic-agent enroll` and `elastic-agent install` options that configure {{fleet-server}} are not available on {{serverless-short}}.
+:::
 
 
 * [diagnostics](#elastic-agent-diagnostics-command)
@@ -46,22 +54,30 @@ Note the following restrictions for running {{agent}} commands:
 Gather diagnostics information from the {{agent}} and component/unit it’s running. This command produces an archive that contains:
 
 * version.txt - version information
-* pre-config.yaml - pre-configuration before variable substitution
+* agent-info.yaml - contains the agent local metadata that is also sent to Fleet
+* pre-config.yaml - pre-configuration before variable substitution - this is the elastic-agent.yaml from disk or from Fleet
+* otel.yaml - the OpenTelemetry collector configuration file used with the `otel` sub-command
+* otel-merged.yaml - the final configuration file provided to the OpenTelemetry collector, including any internally generated collector components
 * variables.yaml - current variable contexts from providers
+* environment.yaml - current environment variables visible to the Elastic Agent process
 * computed-config.yaml - configuration after variable substitution
 * components-expected.yaml - expected computed components model from the computed-config.yaml
 * components-actual.yaml - actual running components model as reported by the runtime manager
 * state.yaml - current state information of all running components
-* Components Directory - diagnostic information from each running component:
-
-    * goroutine.txt - goroutine dump
-    * heap.txt - memory allocation of live objects
-    * allocs.txt - sampling past memory allocations
-    * threadcreate.txt - traces led to creation of new OS threads
-    * block.txt - stack traces that led to blocking on synchronization primitives
-    * mutex.txt - stack traces of holders of contended mutexes
-    * Unit Directory - If a given unit provides specific diagnostics, it will be placed here.
-
+* *.pprof.gz files from the running `elastic-agent` process for analysis with `go tool pprof`:
+    * goroutine.pprof.gz - goroutine dump
+    * heap.pprof.gz - memory allocation of live objects
+    * allocs.pprof.gz - sampling past memory allocations
+    * threadcreate.pprof.gz - traces led to creation of new OS threads
+    * block.pprof.gz - stack traces that led to blocking on synchronization primitives
+    * mutex.pprof.gz - stack traces of holders of contended mutexes
+* components/ directory - diagnostic information from each running component process:
+    * Typically one directory per input-output pair representing a supervised process containing:
+      * *.pprof.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
+      * *_metrics.json - metrics snapshots captured from running Beat processes
+* edot/ directory - the output of Elastic's collector diagnostics extension:
+    * otel-merged-actual.yaml - the current configuration of the running collector, which should match the otel-merged.yaml file described previously
+    * *.profile.gz - profiles for analysis with `go tool pprof`; refer to the previous descriptions
 
 Note that **credentials may not be redacted** in the archive; they may appear in plain text in the configuration or policy files inside the archive.
 
@@ -199,7 +215,6 @@ elastic-agent enroll --fleet-server-es <string>
 2. Required when using self-signed certificates with {{es}}.
 3. Required when enrolling in a {{fleet-server}} with custom certificates. The URL must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
 
-
 For more information about custom certificates, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
 
 
@@ -232,34 +247,34 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 `--enrollment-token <string>`
 :   Enrollment token to use to enroll {{agent}} into {{fleet}}. You can use the same enrollment token for multiple agents.
 
-`--fleet-server-cert <string>`
+`--fleet-server-cert <string>` {applies_to}`serverless: unavailable`
 :   Certificate to use for exposed {{fleet-server}} HTTPS endpoint.
 
-`--fleet-server-cert-key <string>`
+`--fleet-server-cert-key <string>` {applies_to}`serverless: unavailable`
 :   Private key to use for exposed {{fleet-server}} HTTPS endpoint.
 
-`--fleet-server-cert-key-passphrase <string>`
+`--fleet-server-cert-key-passphrase <string>` {applies_to}`serverless: unavailable`
 :   Path to passphrase file for decrypting {{fleet-server}}'s private key if an encrypted private key is used.
 
-`--fleet-server-client-auth <string>`
+`--fleet-server-client-auth <string>` {applies_to}`serverless: unavailable`
 :   One of `none`, `optional`, or `required`. Defaults to `none`. {{fleet-server}}'s `client_authentication` option for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified using CAs specified in the `--certificate-authorities` flag.
 
-`--fleet-server-es <string>`
+`--fleet-server-es <string>` {applies_to}`serverless: unavailable`
 :   Start a {{fleet-server}} process when {{agent}} is started, and connect to the specified {{es}} URL.
 
-`--fleet-server-es-ca <string>`
+`--fleet-server-es-ca <string>` {applies_to}`serverless: unavailable`
 :   Path to certificate authority to use to communicate with {{es}}.
 
-`--fleet-server-es-ca-trusted-fingerprint <string>`
+`--fleet-server-es-ca-trusted-fingerprint <string>` {applies_to}`serverless: unavailable`
 :   The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint will be used to verify self-signed certificates presented by {{fleet-server}} and any inputs started by {{agent}} for communication. This flag is required when using self-signed certificates with {{es}}.
 
-`--fleet-server-es-cert`
+`--fleet-server-es-cert` {applies_to}`serverless: unavailable`
 :   The path to the client certificate that {{fleet-server}} will use when connecting to {{es}}.
 
-`--fleet-server-es-cert-key`
+`--fleet-server-es-cert-key` {applies_to}`serverless: unavailable`
 :   The path to the private key that {{fleet-server}} will use when connecting to {{es}}.
 
-`--fleet-server-es-insecure`
+`--fleet-server-es-insecure` {applies_to}`serverless: unavailable`
 :   Allows fleet server to connect to {{es}} in the following situations:
 
     * When connecting to an HTTP server.
@@ -268,22 +283,22 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
     When this flag is used the certificate verification is disabled.
 
 
-`--fleet-server-host <string>`
+`--fleet-server-host <string>` {applies_to}`serverless: unavailable`
 :   {{fleet-server}} HTTP binding host (overrides the policy).
 
-`--fleet-server-policy <string>`
+`--fleet-server-policy <string>` {applies_to}`serverless: unavailable`
 :   Used when starting a self-managed {{fleet-server}} to allow a specific policy to be used.
 
-`--fleet-server-port <uint16>`
+`--fleet-server-port <uint16>` {applies_to}`serverless: unavailable`
 :   {{fleet-server}} HTTP binding port (overrides the policy).
 
-`--fleet-server-service-token <string>`
+`--fleet-server-service-token <string>` {applies_to}`serverless: unavailable`
 :   Service token to use for communication with {{es}}. Mutually exclusive with `--fleet-server-service-token-path`.
 
-`--fleet-server-service-token-path <string>`
+`--fleet-server-service-token-path <string>` {applies_to}`serverless: unavailable`
 :   Service token file to use for communication with {{es}}. Mutually exclusive with `--fleet-server-service-token`.
 
-`--fleet-server-timeout <duration>`
+`--fleet-server-timeout <duration>` {applies_to}`serverless: unavailable`
 :   Timeout waiting for {{fleet-server}} to be ready to start enrollment.
 
 `--force`
@@ -439,33 +454,65 @@ elastic-agent help enroll
 
 ## elastic-agent inspect [elastic-agent-inspect-command]
 
-Show the current {{agent}} configuration.
+Show the current {{agent}} configuration. Use this command to verify and troubleshoot the configuration that {{agent}} is using, including variable substitution and the computed components model. 
 
-If no parameters are specified, shows the full {{agent}} configuration.
+If no flags are specified, the command shows the full {{agent}} configuration. By default, variable substitution is not performed, and the raw configuration is displayed. 
+
+Use the `--variables` flag to enable variable substitution. The first set of computed variables are used when only the `--variables` flag is defined. This can prevent some of the dynamic providers like {{k8s}} and Docker from providing all the possible variables they could have discovered if given more time. Use the `--variables-wait` flag to specify an amount of time to wait for variable discovery before using the variables for the configuration.
+
+Use the `components` subcommand to view the components model. Components represent individual processes running underneath {{agent}}, such as {{filebeat}} or {{endpoint-sec}}. Units represent discrete configuration units within a component, such as {{filebeat}} inputs or {{metricbeat}} modules.
 
 
 ### Synopsis [_synopsis_4]
 
 ```shell
-elastic-agent inspect [--help]
+elastic-agent inspect [--variables]
+                      [--monitoring]
+                      [--variables-wait <duration>]
+                      [--help]
+                      [global-flags]
 elastic-agent inspect components [--show-config]
-                             [--show-spec]
-                             [--help]
-                             [id]
+                                 [--show-spec]
+                                 [--variables-wait <duration>]
+                                 [--help]
+                                 [<component_id>]
+                                 [<component_id>/<unit_id>]
 ```
+
+
+### Available commands [_available_commands_inspect]
+
+`components`
+:   Display the generated components model for the current configuration. Variable substitution is always performed when computing the components model and cannot be disabled. By default, only the first set of computed variables are used. Use the `--variables-wait` flag to allow more time for dynamic providers to discover variables.
+
+    This command accepts the following arguments and flags:
+
+    `<component_id>`
+    :   Select a specific component by its ID. Only that component and all its units are returned. Use `elastic-agent inspect components` without an ID to see all available component IDs. Configuration for units is not shown by default; use `--show-config` to display it.
+
+    `<component_id>/<unit_id>`
+    :   Select a specific unit inside a component by specifying both the component ID and unit ID separated by a forward slash. In this mode, the unit configuration is shown by default.
+
+    `--show-config`
+    :   Display the configuration for all units. By default, unit configuration is hidden unless you select a specific unit using the `<component_id>/<unit_id>` format.
+
+    `--show-spec`
+    :   Display the input/output runtime specification for a component. By default, the runtime specification is hidden.
+
+    `--variables-wait <duration>`
+    :   Wait the specified amount of time for variable discovery before computing the components model. This is useful when using dynamic providers like {{k8s}} or Docker that may need additional time to discover all available variables.
 
 
 ### Options [_options_4]
 
-`components`
-:   Display the current configuration for the component. This command accepts additional flags:
+`--variables`
+:   Render the configuration with variables substituted. When not specified, the raw configuration is displayed without variable substitution.
 
-    `--show-config`
-    :   Use to display the configuration in all units.
+`--monitoring`
+:   Include the monitoring configuration in the output. This option implies `--variables`, as the monitoring configuration requires variable substitution.
 
-    `--show-spec`
-    :   Use to get input/output runtime spectification for a component.
-
+`--variables-wait <duration>`
+:   Wait the specified amount of time for variable discovery before performing substitution. This is useful when using dynamic providers like {{k8s}} or Docker that may need additional time to discover all available variables. Implies `--variables`. For example, `--variables-wait 30s`.
 
 `--help`
 :   Show help for the `inspect` command.
@@ -475,10 +522,64 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 
 ### Examples [_examples_12]
 
+Show the raw {{agent}} configuration without variable substitution:
+
 ```shell
 elastic-agent inspect
+```
+
+Show the configuration with variables substituted:
+
+```shell
+elastic-agent inspect --variables
+```
+
+Show the configuration with variables substituted, waiting 30 seconds for dynamic providers to discover variables:
+
+```shell
+elastic-agent inspect --variables-wait 30s
+```
+
+Show the configuration including monitoring settings:
+
+```shell
+elastic-agent inspect --monitoring
+```
+
+Display all components:
+
+```shell
+elastic-agent inspect components
+```
+
+Display all components with their unit configurations:
+
+```shell
 elastic-agent inspect components --show-config
+```
+
+Display a specific component by ID:
+
+```shell
 elastic-agent inspect components log-default
+```
+
+Display a specific component with its runtime specification:
+
+```shell
+elastic-agent inspect components log-default --show-spec
+```
+
+Display a specific unit inside a component:
+
+```shell
+elastic-agent inspect components log-default/log-default
+```
+
+Wait 30 seconds for dynamic providers before computing components:
+
+```shell
+elastic-agent inspect components --variables-wait 30s
 ```
 
 
@@ -501,7 +602,7 @@ elastic-agent privileged
 Install {{agent}} permanently on the system and manage it by using the system’s service manager. The agent will start automatically after installation is complete. On Linux (tar package), this command requires a system and service manager like systemd.
 
 ::::{important}
-If you installed {{agent}} from a DEB or RPM package, the `install` command will skip the installation itself and function as an alias of the [`enroll` command](#elastic-agent-enroll-command) instead. Note that after an upgrade of the {{agent}} using DEB or RPM the {{agent}} service needs to be restarted.
+If you installed {{agent}} from a DEB or RPM package, the `install` command will skip the installation itself and function as an alias of the [`enroll` command](#elastic-agent-enroll-command) instead. After an upgrade of the {{agent}} using DEB or RPM the {{agent}} service needs to be restarted.
 ::::
 
 
@@ -586,7 +687,6 @@ elastic-agent install --fleet-server-es <string>
 2. Required when using self-signed certificate on {{es}} side.
 3. Required when enrolling in a {{fleet-server}} with custom certificates. The URL must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
 
-
 For more information about custom certificates, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
 
 
@@ -625,34 +725,34 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 `--enrollment-token <string>`
 :   Enrollment token to use to enroll {{agent}} into {{fleet}}. You can use the same enrollment token for multiple agents.
 
-`--fleet-server-cert <string>`
+`--fleet-server-cert <string>` {applies_to}`serverless: unavailable`
 :   Certificate to use for exposed {{fleet-server}} HTTPS endpoint.
 
-`--fleet-server-cert-key <string>`
+`--fleet-server-cert-key <string>` {applies_to}`serverless: unavailable`
 :   Private key to use for exposed {{fleet-server}} HTTPS endpoint.
 
-`--fleet-server-cert-key-passphrase <string>`
+`--fleet-server-cert-key-passphrase <string>` {applies_to}`serverless: unavailable`
 :   Path to passphrase file for decrypting {{fleet-server}}'s private key if an encrypted private key is used.
 
-`--fleet-server-client-auth <string>`
+`--fleet-server-client-auth <string>` {applies_to}`serverless: unavailable`
 :   One of `none`, `optional`, or `required`. Defaults to `none`. {{fleet-server}}'s `client_authentication` option for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified using CAs specified in the `--certificate-authorities` flag.
 
-`--fleet-server-es <string>`
+`--fleet-server-es <string>` {applies_to}`serverless: unavailable`
 :   Start a {{fleet-server}} process when {{agent}} is started, and connect to the specified {{es}} URL.
 
-`--fleet-server-es-ca <string>`
+`--fleet-server-es-ca <string>` {applies_to}`serverless: unavailable`
 :   Path to certificate authority to use to communicate with {{es}}.
 
-`--fleet-server-es-ca-trusted-fingerprint <string>`
+`--fleet-server-es-ca-trusted-fingerprint <string>` {applies_to}`serverless: unavailable`
 :   The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint will be used to verify self-signed certificates presented by {{fleet-server}} and any inputs started by {{agent}} for communication. This flag is required when using self-signed certificates with {{es}}.
 
-`--fleet-server-es-cert`
+`--fleet-server-es-cert` {applies_to}`serverless: unavailable`
 :   The path to the client certificate that {{fleet-server}} will use when connecting to {{es}}.
 
-`--fleet-server-es-cert-key`
+`--fleet-server-es-cert-key` {applies_to}`serverless: unavailable`
 :   The path to the private key that {{fleet-server}} will use when connecting to {{es}}.
 
-`--fleet-server-es-insecure`
+`--fleet-server-es-insecure` {applies_to}`serverless: unavailable`
 :   Allows fleet server to connect to {{es}} in the following situations:
 
     * When connecting to an HTTP server.
@@ -661,22 +761,22 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
     When this flag is used the certificate verification is disabled.
 
 
-`--fleet-server-host <string>`
+`--fleet-server-host <string>` {applies_to}`serverless: unavailable`
 :   {{fleet-server}} HTTP binding host (overrides the policy).
 
-`--fleet-server-policy <string>`
+`--fleet-server-policy <string>` {applies_to}`serverless: unavailable`
 :   Used when starting a self-managed {{fleet-server}} to allow a specific policy to be used.
 
-`--fleet-server-port <uint16>`
+`--fleet-server-port <uint16>` {applies_to}`serverless: unavailable`
 :   {{fleet-server}} HTTP binding port (overrides the policy).
 
-`--fleet-server-service-token <string>`
+`--fleet-server-service-token <string>` {applies_to}`serverless: unavailable`
 :   Service token to use for communication with {{es}}. Mutually exclusive with `--fleet-server-service-token-path`.
 
-`--fleet-server-service-token-path <string>`
+`--fleet-server-service-token-path <string>` {applies_to}`serverless: unavailable`
 :   Service token file to use for communication with {{es}}. Mutually exclusive with `--fleet-server-service-token`.
 
-`--fleet-server-timeout <duration>`
+`--fleet-server-timeout <duration>` {applies_to}`serverless: unavailable`
 :   Timeout waiting for {{fleet-server}} to be ready to start enrollment.
 
 `--force`
@@ -734,7 +834,7 @@ See the `--unprivileged` option and [Run {{agent}} without administrative privil
 `--unprivileged`
 :   Run {{agent}} without full superuser privileges. This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems. For details and limitations for running {{agent}} in this mode, refer to [Run {{agent}} without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md).
 
-    Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
+    Changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {{elastic-defend}} integration.
 
     {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
 
@@ -827,7 +927,7 @@ You can also run the `./otelcol` command, which calls `./elastic-agent otel` and
 ### Flags [_flags]
 
 `--config=file:/path/to/first --config=file:path/to/second`
-:   Locations to the config file(s). Note that only a single location can be set per flag entry, for example `--config=file:/path/to/first --config=file:path/to/second`.
+:   Locations to the config file(s). Only a single location can be set per flag entry, for example `--config=file:/path/to/first --config=file:path/to/second`.
 
 `--feature-gates flag`
 :   Comma-delimited list of feature gate identifiers. Prefix with `-` to disable the feature. Prefixing with `+` or no prefix will enable the feature.
@@ -1062,7 +1162,7 @@ elastic-agent uninstall
 
 Run {{agent}} without full superuser privileges. This is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems. For details and limitations for running {{agent}} in this mode, refer to [Run {{agent}} without administrative privileges](/reference/fleet/elastic-agent-unprivileged.md).
 
-Note that changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
+Changing a running {{agent}} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {{elastic-defend}} integration.
 
 {applies_to}`stack: preview` {applies_to}`serverless: preview` To run {{agent}} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 

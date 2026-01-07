@@ -6,14 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Explore and analyze your Elasticsearch data with Discover in Kibana. Search, filter, visualize, and investigate documents to answer questions about your data.
+description: Use Discover to search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards.
 ---
 
 # Explore and analyze data with Discover [discover]
 
-**Discover** in {{kib}} is your primary tool for exploring and analyzing data stored in {{es}}. Use Discover to search and filter your data, investigate document structure and field values, create visualizations, and save your analysis for later use or sharing with your team.
-
-Discover helps you answer questions about your data: What pages on your website contain specific terms? What events occurred most recently? Which processes exceed performance thresholds? With flexible querying using KQL, Lucene, or {{esql}}, you can quickly find the information you need.
+**Discover** is the primary tool for exploring your {{product.elasticsearch}} data in {{product.kibana}}. Search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards. Whether investigating issues, analyzing trends, or validating data quality, **Discover** offers a flexible interface for understanding your data.
 
 :::{image} /explore-analyze/images/kibana-hello-field.png
 :alt: A view of the Discover app
