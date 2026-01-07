@@ -94,18 +94,6 @@ If you’ve triggered the fielddata circuit breaker and can’t disable fielddat
 POST _cache/clear?fielddata=true
 ```
 
-## Circuit breaker types
-
-[Circuit breaker types](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) are manually defined for known expensive code paths with a sum-up [parent circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). Breakers need to be resolved per breaker type; common examples:
-
-- `accounting`: Lucene segments and their overhead. Commonly indicates need to [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or [fix large shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
-- `fielddata`: [field data] and [global ordinals]
-- `eql_sequence`: [eql sequences]
-- `request`: API request bodies. Commonly for [Bulk] sizes too large
-- `inflight_requests`: total API network bytes
-- `script`: [scripts]
-- `regex`: [regex]
-
 **Memory evaluation**
 
 Circuit breakers may either directly evaluate memory usage estimates or indirectly limit operations that are likely to cause excessive memory consumption. For example, the `script` circuit breaker checks memory indirectly by rate-limiting Painless/Mustache script compilations. However, even with circuit breakers in place, nodes can still encounter out-of-memory (OOM) conditions. This can occur, for example, because:
