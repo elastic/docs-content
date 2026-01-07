@@ -68,14 +68,20 @@ Also, AI Agent chats do not show previews of data you attach to a message, such 
 
 :::{tab-item} Elastic {{observability}} and Search
 :sync: tab2
-- **Knowledge Base**
-- **Data anonymization**
-- **Chat sharing**
-- **Chat duplication**
-- **Chat archiving**
-- **Screen context (unavailable for some use cases)**
-- **AI insights (unavailable for some use cases)**
-- **Alerting Rule connector action**
+
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Chat duplication** | ❌ | ✅ |
+| **Chat archiving** | ❌ | ✅ |
+| **Alerting rule connector action** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
+| **Use-case specific agents** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
+
 :::
 
 ::::
