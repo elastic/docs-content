@@ -211,7 +211,7 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 
    ::::{applies-switch}
 
-   :::{applies-item} ess:
+   :::{applies-item} { serverless:, ess: }
    1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
    2. Navigate to the {{kib}} endpoint in your deployment.
    :::
