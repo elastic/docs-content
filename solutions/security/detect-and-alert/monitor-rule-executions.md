@@ -41,7 +41,7 @@ For detailed information on a rule, the alerts it generated, and associated erro
 
 ### Find rule execution gaps [rule-monitoring-tab-gaps]
 
-The **Rule Monitoring** tab provides a starting point for understanding and remediating gaps in rule executions, which are periods of time where a rule didn’t run. Gaps can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
+The **Rule Monitoring** tab provides a starting point for understanding and remediating gaps in rule executions, which are periods of time where a rule didn’t run. Gaps can be caused by various disruptions, including system updates or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
 
 From the **Rule Monitoring** tab, you can get an overview of existing gaps and their status. The total number of rules with gaps is tracked in the panel above the Rules table. The information and functionality in the panel depends on the version of {{elastic-sec}} that you're using.
 
