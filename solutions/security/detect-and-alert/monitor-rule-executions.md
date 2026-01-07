@@ -72,7 +72,7 @@ The panel has the following:
 Within the Rules table, several columns provide additional gap data:
 
 * **Last Gap (if any)**: Shows how long the most recent gap for a particular rule lasted.
-* **Unfilled gaps duration**: Shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the selected time range. If a rule has no gaps, the columns display a dash (`––`). 
+* **Unfilled gaps duration**: Shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select during the past 90 days (data on gaps that occurred past the last 90 days is not retained). If a rule has no gaps, the columns display a dash (`––`). 
 * {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga`**Gap fill status**: Shows the status of the rule's gaps. If a rule has any unfilled gaps, the gap status is `Unfilled`. If all gaps for the rule are being are being filled, the status is `In progress`. Once all gaps have been filled, the status changes `Filled`. 
 
     ::::{tip}
