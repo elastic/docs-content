@@ -183,24 +183,24 @@ toc:
               - file: ai-features/llm-guides/connect-to-lmstudio-observability.md
               - file: ai-features/llm-guides/connect-to-lmstudio-security.md
               - file: ai-features/llm-guides/connect-to-vLLM.md
-      - file: elastic-agent-builder.md
+      - file: ai-features/elastic-agent-builder.md
         children:
-          - file: agent-builder/get-started.md
-          - file: agent-builder/models.md
-          - file: agent-builder/chat.md
-          - file: agent-builder/agent-builder-agents.md
-          - file: agent-builder/tools.md
+          - file: ai-features/agent-builder/get-started.md
+          - file: ai-features/agent-builder/models.md
+          - file: ai-features/agent-builder/chat.md
+          - file: ai-features/agent-builder/agent-builder-agents.md
+          - file: ai-features/agent-builder/tools.md
             children:
-              - file: agent-builder/tools/esql-tools.md
-              - file: agent-builder/tools/index-search-tools.md
-          - file: agent-builder/programmatic-access.md
+              - file: ai-features/agent-builder/tools/esql-tools.md
+              - file: ai-features/agent-builder/tools/index-search-tools.md
+          - file: ai-features/agent-builder/programmatic-access.md
             children:
-               - file: agent-builder/kibana-api.md
-               - file: agent-builder/a2a-server.md
-               - file: agent-builder/mcp-server.md
-          - file: agent-builder/monitor-usage.md
-          - file: agent-builder/permissions.md
-          - file: agent-builder/limitations-known-issues.md
+               - file: ai-features/agent-builder/kibana-api.md
+               - file: ai-features/agent-builder/a2a-server.md
+               - file: ai-features/agent-builder/mcp-server.md
+          - file: ai-features/agent-builder/monitor-usage.md
+          - file: ai-features/agent-builder/permissions.md
+          - file: ai-features/agent-builder/limitations-known-issues.md
       - hidden: ai-features/ai-agent-or-ai-assistant.md
   - file: discover.md
     children:
