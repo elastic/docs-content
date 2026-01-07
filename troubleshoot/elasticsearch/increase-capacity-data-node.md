@@ -107,7 +107,7 @@ You can also add more capacity by adding more nodes to your cluster and targetin
 ::::::
 
 ::::::{applies-item} { self: }
-To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster.
+To increase the data node capacity in your cluster, you can [add more nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) to the cluster, or increase the disk capacity of existing nodes. Disk expansion procedures depend on your operating system and storage infrastructure and are outside the scope of Elastic support. In practice, this is often achieved by [removing a node from the cluster](https://www.elastic.co/search-labs/blog/elasticsearch-remove-node) and reinstalling it with a larger disk.
 
 ::::::
 
