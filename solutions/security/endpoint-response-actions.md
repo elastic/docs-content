@@ -365,9 +365,11 @@ Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operati
 
 Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
 
-Example: `memory-dump --process --entityId="jshks0fhksh"`
+Examples:
 
-Example: `memory-dump --kernel --comment "Dumping kernel memory for investigation"`
+`memory-dump --process --entityId="jshks0fhksh"`
+
+`memory-dump --kernel --comment "Dumping kernel memory for investigation"`
 
 
 ## Supporting commands and parameters [supporting-commands-parameters]
