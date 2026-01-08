@@ -19,7 +19,7 @@ Cloud workload protection for Kubernetes uses Elastic's Defend for Containers (D
 
 ### Threat detection & threat hunting [_threat_detection_threat_hunting] 
 
-D4C for Kubernetes sends system events from your containers to {{es}}. {{elastic-sec}}'s prebuilt security rules include many designed to detect malicious behavior in container runtimes. These can help you detect events that should never occur in containers, such as reverse shell executions, privilege escalation, container escape attempts, and more.
+D4C for Kubernetes sends system events from your containers to {{es}}. Many of {{elastic-sec}}'s prebuilt security rules are designed to detect malicious behavior in container runtimes. These can help you detect events that should never occur in containers, such as reverse shell executions, privilege escalation, container escape attempts, and more.
 
 
 ### Drift detection & prevention [_drift_detection_prevention] 
@@ -32,7 +32,7 @@ Cloud-native containers should be immutable, meaning that their file systems sho
 D4C for Kubernetes uses a flexible policy language to restrict container workloads to a set of allowlisted capabilities chosen by you. When employed with Drift and Threat Detection, this can provide multiple layers of defense.
 
 
-## Support matrix: [_support_matrix] 
+## Support matrix [_support_matrix] 
 
 |  | EKS 1.24-1.27 (AL2022) | GKE 1.24-1.27 (COS) |
 | --- | --- | --- |
@@ -52,10 +52,10 @@ When you set up the D4C integration, it gets deployed by {{agent}}. Specifically
 
 Your D4C integration policy determines which system behaviors (for example, process execution or file creation or deletion) will result in which actions. *Selectors* and *responses* define each policy. Selectors define the conditions which cause the associated responses to run. Responses are associated with one or more selectors, and specify one or more actions (such as `log`, `alert`, or `block`) that should occur when the conditions defined in an associated selector are met.
 
-The default D4C policy sends data about all running processes to your {{es}} cluster. This data is used by {{elastic-sec}}'s prebuilt detection rules to detect malicious behavior in container workloads.
+The default [D4C policy](d4c-policies.md) sends data about all running processes to your {{es}} cluster. This data is used by {{elastic-sec}}'s prebuilt detection rules to detect malicious behavior in container workloads.
 
-::::{important} 
-To learn more about D4C policies, including how to create your own, refer to the [D4C policies guide](d4c-policies.md).
+::::{note} 
+To learn how to set up Defend for Containers (D4C) for Kubernetes, refer to the [Get started with Defend for Containers for Kubernetes](get-started-with-d4c.md).
 ::::
 
 
