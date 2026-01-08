@@ -23,9 +23,8 @@ Currently, Agent Builder is available as an opt-in feature for Security and {{ob
 
 Use this page to learn about:
 
-- [How to switch](#switch-between-chat-experiences)
-- [Feature differences](#feature-differences-between-agent-builder-and-ai-assistant)
-- [The two Agent Builder GUI modes](#agent-builder-gui-interfaces)
+- [How to switch between AI Assistants and Agent Builder chat experiences](#switch-between-chat-experiences)
+- [Feature differences between AI Assistants and Agent Builder](#feature-differences-between-agent-builder-and-ai-assistant)
 
 ## Switch between chat experiences
 
