@@ -27,6 +27,31 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.2.4 [elastic-security-9.2.4-release-notes]
+
+### Features and enhancements [elastic-security-9.2.4-features-enhancements]
+* Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
+* Adds a server configuration setting that allows you to disable the automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
+* Persists the visual event analyzer's data view selection in local storage [#245002]({{kib-pull}}245002).
+* Improves general system responsiveness while {{elastic-defend}} is installed.
+
+### Fixes [elastic-security-9.2.4-fixes]
+* Fixes an issue where the Security AI Assistant API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
+* Fixes an issue in the notes filter where the `createdBy` field didn't use exact matching [#247351]({{kib-pull}}247351).
+* Fixes an issue where special characters in {{esql}} queries for risk scoring were not handled correctly [#247060]({{kib-pull}}247060).
+* Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
+* Fixes an issue where the **Integrations** section on the privileged user monitoring **Manage data sources** page always showed a "no data stream" warning [#246180]({{kib-pull}}246180).
+* Fixes an issue where Timeline actions appeared in the Alerts table bulk actions menu without proper privileges [#246150]({{kib-pull}}246150).
+* Fixes an issue where the visual event analyzer preview didn't use the same data view that was selected in the analyzer [#246081]({{kib-pull}}246081).
+* Fixes an issue where the visual event analyzer rendered before the data view was ready [#245712]({{kib-pull}}245712).
+* Fixes an issue where the **Threat intelligence** section in the alert details flyout didn't display multiple values [#245449]({{kib-pull}}245449).
+* Fixes an issue in {{elastic-defend}} Windows on-write malware scanning that could cause sharing violations when other applications attempted to open files.
+* Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
+* Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a CRLF or `\0`.
+* For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
+
+
 ## 9.2.3 [elastic-security-9.2.3-release-notes]
 
 ### Features and enhancements [elastic-security-9.2.3-features-enhancements]
