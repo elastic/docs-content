@@ -34,6 +34,10 @@ Tools enable agents to work with {{es}} data. When an agent receives a natural l
 
 Each tool is an atomic operation with a defined signature - accepting typed parameters and returning structured results in a format the agent can parse, transform, and incorporate into its response generation.
 
+:::{note}
+Tool execution and result processing consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
+:::
+
 ## Built-in tools
 
 {{agent-builder}} ships with a comprehensive set of built-in tools that provide core capabilities for working with your {{es}} data. These tools are ready to use. They cannot be modified or deleted.
@@ -187,7 +191,7 @@ Custom tools can be modified or removed as needed:
 2. Select the edit icon to update the tool or the delete icon to remove it.
 3. For updates, modify the tool properties and save your changes.
 
-Note that built-in tools cannot be modified or deleted.
+Built-in tools cannot be modified or deleted.
 
 ## Tools API
 
