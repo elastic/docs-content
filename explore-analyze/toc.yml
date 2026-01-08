@@ -175,6 +175,8 @@ toc:
           - file: ai-features/agent-builder/get-started.md
           - file: ai-features/agent-builder/models.md
           - file: ai-features/agent-builder/chat.md
+            children:
+              - hidden: ai-features/agent-builder/standalone-and-flyout-modes.md
           - file: ai-features/agent-builder/agent-builder-agents.md
           - file: ai-features/agent-builder/tools.md
             children:
