@@ -113,20 +113,17 @@ DELETE /_cluster/voting_config_exclusions?wait_for_removal=false
 
 ## Remove a node from an {{es}} cluster
 
-When you need to remove a node from an {{es}} cluster, the process consists of first emptying the node by relocating all its shards to other nodes in the cluster, and then stopping the {{es}} process on that node. This ensures that no data is lost and the cluster continues to operate normally during the removal process.
+When you need to remove a node from an {{es}} cluster, you must first empty the node by relocating all its shards to other nodes in the cluster, and then stop the {{es}} process on that node. This ensures that no data is lost and the cluster continues to operate normally during the removal process.
 
 :::::{stepper}
 
-::::{step} Stop indexing and perform a synced flush (optional)
-If you can afford to stop indexing for a short period, it is recommended to perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
+::::{step} Optional: Stop indexing and perform a synced flush
+If you can afford to stop indexing for a short period, then you should perform a synced flush before removing the node from the cluster. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
 
 ```console
 POST /_flush/synced
 ```
 
-:::{note}
-This step is optional and can be skipped if stopping indexing is not feasible.
-:::
 ::::
 
 ::::{step} Retrieve the node name
@@ -136,11 +133,13 @@ You need to know the node name to remove it from the cluster. You can retrieve t
 GET /_cat/nodes?v
 ```
 
-This command returns a list of nodes in the cluster along with their node names. Identify the node you want to remove and note down its node name.
+This command returns a list of nodes in the cluster along with their node names. Identify the node you want to remove and make a note of its name.
 ::::
 
 ::::{step} Remove the node from the cluster
-After you've determined the node name, you can begin removing the node from the cluster by excluding it from shard allocation. This tells {{es}} to stop allocating shards to the node and to relocate any existing shards to other nodes in the cluster. If the node does not hold data (for example, a dedicated master or coordinating-only node), this step can be skipped. To exclude the node from shard allocation, update the cluster settings using its node name. Run the following command, replacing `<node_name>` with the node name you retrieved in the previous step:
+After you've determined the node name, you can begin removing the node from the cluster by excluding it from shard allocation. This tells {{es}} to stop allocating shards to the node and to relocate any existing shards to other nodes in the cluster. If the node does not hold data (for example, a dedicated master or coordinating-only node), this step can be skipped. 
+
+To exclude the node from shard allocation, update the cluster settings using its node name. Run the following command, replacing `<node_name>` with the node name you retrieved in the previous step. This command instructs {{es}} to move all shards from the specified node to other nodes in the cluster.
 
 ```console
 PUT /_cluster/settings
@@ -151,7 +150,7 @@ PUT /_cluster/settings
 }
 ```
 
-This command instructs {{es}} to move all shards from the specified node to other nodes in the cluster. You can monitor the progress of shard relocation by running the following command:
+Wait for the shard relocation process to complete before proceeding to the next step. You can monitor the progress of shard relocation by running the following command:
 
 ```console
 GET /_cat/shards?v
