@@ -155,7 +155,7 @@ curl -X POST "https://${KIBANA_URL}/api/agent_builder/tools" \
 
 **Example:** Get a tool by ID
 
-This example uses the [get a tool by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools-id).
+This example uses the [get a tool by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools-toolid).
 
 ::::{tab-set}
 :group: api-examples
@@ -181,7 +181,7 @@ curl -X GET "https://${KIBANA_URL}/api/agent_builder/tools/{id}" \
 
 **Example:** Delete a tool by ID
 
-This example uses the [delete a tool by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-agent-builder-tools-id).
+This example uses the [delete a tool by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-agent-builder-tools-toolid).
 
 ::::{tab-set}
 :group: api-examples
