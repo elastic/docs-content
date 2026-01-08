@@ -39,30 +39,35 @@ If you’re unsure about the visualization type you want to use, or how you want
 
 If you already know the visualization type you want to use, and how you want to display the data, use the following process.
 
-Choose the visualization type.
+:::::{stepper}
 
-1. Before you drag fields to the workspace, open the **Visualization type** dropdown, then select the visualization you want to use.
-2. To view more visualizations that **Lens** automatically created for the fields, click **Suggestions**. If one of the **Suggestions** meets your visualization needs, click **Save and return** to add it to the dashboard.
+::::{step} Choose the visualization type
 
-Choose the data you want to visualize.
+New visualizations default to creating **Bar** charts. Use the dropdown indicating **Bar** and select the visualization type you want.
+As you drag fields into the workspace or to the layer pane, Lens automatically generates alternative visualizations. To view them, click **Suggestions** at the bottom of the workspace. If a suggested visualization meets your needs, click **Save and return** to add it to the dashboard.
 
-1. Drag the fields directly to the layer pane. **Lens** automatically selects the aggregation function.
-2. If you want to learn more about the data a field contains, click the field.
-3. To visualize more than one {{data-source}}, select {icon}`plus_in_square` **Add layer**, choose the layer type, then select the {{data-source}}.
-
-Edit and delete.
-
-1. Hover over the panel and click ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") to edit the visualization. The **Edit visualization** flyout appears.
-2. To change the aggregation **Quick function**, click the field in the flyout.
-3. To delete a field, click ![Actions menu icon to delete a field](/explore-analyze/images/kibana-trash_can.png "kibana-trash_can =5%x5%") next to the field.
-4. To duplicate a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Duplicate layer**.
-5. To clear the layer configuration, click ![Actions menu to clear Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Clear layer**.
-6. Click **Apply and close**.
-
-::::{tip}
-Use the **Edit visualization** flyout to make edits without having to leave the dashboard, or click **Edit in Lens** in the flyout to make edits using the Lens application.
 ::::
 
+::::{step} Choose the data you want to visualize
+
+As you drag fields to the layer pane, Lens automatically selects the aggregation function, for example **Date histogram**, **Intervals**, or **Top values**. Click the field to learn more about the data a field contains, or to tweak its appearance.
+
+::::
+
+::::{step} Edit your visualization
+
+To edit a visualization directly on the dashboard, click the ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") icon on the panel. To edit a visualization in the Lens application, click **Edit in Lens** in the layer pane.
+
+::::
+
+::::{step} Add layers
+
+You can add multiple layers to a visualization, such as **Visualization**, **Annotations**, or **Reference lines**. Click {icon}`plus_in_square` **Add layer**, then choose the layer type and select the {{data-source}}. 
+To duplicate or delete a layer, click the ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
+
+::::
+
+:::::
 
 
 ### Change the fields list [change-the-fields]
