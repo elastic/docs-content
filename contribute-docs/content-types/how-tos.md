@@ -4,7 +4,15 @@ description: "Guidelines for writing effective how-to guides in the Elastic docu
 
 # How-to guides
 
-This page provides guidelines for writing effective how-to guides in the Elastic docs.
+This page provides guidelines for writing effective how-to guides in the Elastic docs. This page and its associated template can be used by humans and LLMs to draft new how-to guides, or to evaluate existing pages.
+
+Use this page to:
+
+- Help you draft a new how-to guide by copying and pasting the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md)
+- Understand the structure and best practices for how-to guides before you write one
+- Evaluate existing how-to guides or drafts against the standards outlined here
+
+Whether you're a regular contributor or reviewing someone else's work, these guidelines help ensure consistency, completeness, and quality across the Elastic documentation.
 
 ## What is a how-to guide?
 
@@ -19,6 +27,52 @@ How-to guides focus on a single, self-contained task. For longer procedural cont
 
 % TODO: Add eventual snippet that disambiguates how-tos, tutorials, and quickstarts -->
 
+## Structure of a how-to guide
+
+To help users quickly find and follow instructions, how-to guides use a consistent structure. A predictable format improves clarity, reduces confusion, and makes the guide easier to use.
+
+### Required elements
+
+Every how-to guide must include the following elements:
+
+1. A consistent **filename:** Use action verb patterns like `create-*.md`, `configure-*.md`, or `troubleshoot-*.md`.
+   - For example: `run-elasticsearch-docker.md`
+
+2. Appropriate **[frontmatter](https://elastic.github.io/docs-builder/syntax/frontmatter/):**
+   - `applies_to:` [Tags](https://elastic.github.io/docs-builder/syntax/applies) for versioning/availability info per the [cumulative docs guidelines](/contribute-docs/how-to/cumulative-docs/index.md)
+   - `description`: A brief summary of the page fit for search results and tooltips
+   - `product`: The relevant Elastic product(s) used in the how-to
+% TODO once we have structured types     - The `type` field set to `how-to`
+
+3. A clear **title:** A precise description of the task using an action verb
+   - For example, "Run {{es}} in Docker"
+
+4. An **introduction:** Briefly explain what the guide helps the user accomplish and the outcome they can expect.
+
+5. A **Before you begin** section: List any special permissions or data/configuration needed. Assume basic feature access. You can also link to background knowledge or highlight known pitfalls.
+
+6. A set of **steps:** Numbered instructions that begin with imperative verb phrases. Keep each step focused on a single action.
+   :::{tip}
+   Use an [ordered list](https://elastic.github.io/docs-builder/syntax/lists/#ordered-list) for simple, linear steps. For longer how-tos or those with complex steps, use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/).
+   :::
+
+7. **Success checkpoints:** Include confirmation steps that show users whether critical actions succeeded before moving on.
+
+### Recommended sections
+
+Include the following sections in most how-to guides:
+
+1. **Next steps:** Suggestions for what users can do next after completing the task.
+2. **Related pages:** Links to related documentation such as conceptual topics, reference material, troubleshooting, or other how-to guides.
+
+### Optional elements
+
+Consider including the following when they add value:
+
+- **[Code annotations](https://elastic.github.io/docs-builder/syntax/code/#code-callouts):** Annotate important lines within code blocks.
+- **[Screenshots](https://elastic.github.io/docs-builder/syntax/images/#screenshots):** Add visual aids for UI tasks when context is hard to describe in words. Use screenshots sparingly as they're hard to maintain.
+- **Error handling:** Mention common errors and how to resolve them.
+
 ## Best practices
 
 When you create how-to guides, follow these best practices:
@@ -32,49 +86,9 @@ When you create how-to guides, follow these best practices:
 - **Skip edge cases:** Focus on the typical, primary use case, and avoid documenting rare or non-standard variations.
 - **Test your steps:** Authors and reviewers should follow the instructions from start to finish to identify errors, missing steps, or unclear language.
 
-## Structure of a how-to guide
-
-To help users quickly find and follow instructions, how-to guides use a consistent structure. A predictable format improves clarity, reduces confusion, and makes the guide easier to use.
-
-### Required elements
-
-The following elements are required in how-to guides:
-
-- A consistent **filename:** Use action verb patterns like `create-*.md`, `configure-*.md`, or `troubleshoot-*.md`.
-  - For example: `run-elasticsearch-docker.md`
-- Appropriate **[frontmatter](https://elastic.github.io/docs-builder/syntax/frontmatter/):**
-  - `applies_to:` [Tags](https://elastic.github.io/docs-builder/syntax/applies) for versioning/availability info per the [cumulative docs guidelines](/contribute-docs/how-to/cumulative-docs/index.md)
-  - `description`: A brief summary of the page fit for search results and tooltips
-  - `product`: The relevant Elastic product(s) used in the how-to
-% TODO once we have structured types  - The `type` field set to `how-to`
-- A clear **title:** A precise description of the task using an action verb
-  - For example, "Run {{es}} in Docker"
-- An **introduction:** Briefly explain what the guide helps the user accomplish and the outcome they can expect.
-- A **Before you begin** section: List any special permissions or data/configuration needed. Assume basic feature access. You can also link to background knowledge or highlight known pitfalls.
-- A set of **steps:** Numbered instructions that begin with imperative verb phrases. Keep each step focused on a single action.
-  :::{tip}
-  Use an [ordered list](https://elastic.github.io/docs-builder/syntax/lists/#ordered-list) for simple, linear steps. For longer how-tos or those with complex steps, use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/).
-  :::
-- **Success checkpoints:** Include confirmation steps that show users whether critical actions succeeded before moving on.
-
-### Recommended sections
-
-Include the following sections in most how-to guides:
-
-- **Next steps:** Suggestions for what users can do next after completing the task.
-- **Related pages:** Links to related documentation such as conceptual topics, reference material, troubleshooting, or other how-to guides.
-
-### Optional elements
-
-Consider including the following when they add value:
-
-- **[Code annotations](https://elastic.github.io/docs-builder/syntax/code/#code-callouts):** Annotate important lines within code blocks.
-- **[Screenshots](https://elastic.github.io/docs-builder/syntax/images/#screenshots):** Add visual aids for UI tasks when context is hard to describe in words. Use screenshots sparingly as they're hard to maintain.
-- **Error handling:** Mention common errors and how to resolve them.
-
 ## Template
 
-To get started writing your how-to guide, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md).
+To get started writing a new how-to guide, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md).
 
 % ## Examples
 

@@ -62,24 +62,6 @@ toc:
           - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
           - file: search/search-templates.md
-      - file: search/elastic-agent-builder.md
-        children:
-          - file: search/agent-builder/get-started.md
-          - file: search/agent-builder/models.md
-          - file: search/agent-builder/chat.md
-          - file: search/agent-builder/agent-builder-agents.md
-          - file: search/agent-builder/tools.md
-            children:
-              - file: search/agent-builder/tools/esql-tools.md
-              - file: search/agent-builder/tools/index-search-tools.md
-          - file: search/agent-builder/programmatic-access.md
-            children:
-              - file: search/agent-builder/kibana-api.md
-              - file: search/agent-builder/a2a-server.md
-              - file: search/agent-builder/mcp-server.md
-          - file: search/agent-builder/monitor-usage.md
-          - file: search/agent-builder/permissions.md
-          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
@@ -762,4 +744,5 @@ toc:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
               - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
       - file: security/asset-management.md
+      - file: security/security-serverless-feature-tiers.md
       - file: security/apis.md
