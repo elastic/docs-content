@@ -86,7 +86,7 @@ Agentless integrations do not support traffic filtering.
 :::
 
 :::{applies-item} stack: ga 9.1+
-Agentless integrations support traffic filtering. 
+Agentless integrations support traffic filtering. No additional configuration is necessary.
 :::
 
 ::::
