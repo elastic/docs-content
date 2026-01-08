@@ -20,7 +20,7 @@ Use custom **Index search tools** when:
 
 * You want agents to handle diverse, exploratory queries
 * The search intent varies significantly across requests
-* Users need flexible, ad-hoc search functionality
+* Users need flexible, dynamic search functionality
 * You want to scope general search capabilities to specific indices
 
 ## Key characteristics
