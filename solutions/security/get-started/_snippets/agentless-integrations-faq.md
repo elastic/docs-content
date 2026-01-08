@@ -81,7 +81,7 @@ No, agentless integrations can not use a specific range of static IP addresses f
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: 9.2, serverless }
+:::{applies-item} serverless: ga
 Agentless integrations do not support traffic filtering.
 :::
 
