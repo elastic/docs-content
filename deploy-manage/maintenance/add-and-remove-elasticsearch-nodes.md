@@ -77,7 +77,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
 
 3. Remove the node from the cluster
 
-    After you've determined the node name, you can begin removing the node from the cluster by excluding it from shard allocation. This tells {{es}} to stop allocating shards to the node and to relocate any existing shards to other nodes in the cluster. If the node does not hold data (for example, a dedicated master or coordinating-only node), this step can be skipped.
+    After you've determined the node name, you can begin removing the node from the cluster by excluding it from shard allocation. This tells {{es}} to stop allocating shards to the node and to relocate any existing shards to other nodes in the cluster. This step can be skipped for nodes that do not hold data, such as dedicated master or coordinating-only nodes.
 
     To exclude the node from shard allocation, update the cluster settings using its node name. Run the following command, replacing `<node_name>` with the node name you retrieved in the previous step. This command instructs {{es}} to move all shards from the specified node to other nodes in the cluster.
 
