@@ -32,6 +32,7 @@ For more info on working with spaces, check out:
 - [Define access to a space](#spaces-control-user-access)
 - [Move saved objects between spaces](#spaces-moving-objects)
 - [Configure a space-level landing page](#spaces-default-route)
+- [Make API calls to a space](#spaces-api-requests)
 - [Delete a space](#_delete_a_space)
 
 Check out [Using Spaces with Fleet](/deploy-manage/manage-spaces-fleet.md) for info on using spaces with {{fleet}} in a space-aware data model.
