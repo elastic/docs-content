@@ -28,7 +28,7 @@ Streams calculates data quality as follows:
 
 * **Good**: Both the **Degraded documents** percentage and the **Failed documents** percentage are 0.
 * **Degraded**: Either the **Degraded documents** percentage or the **Failed documents** percentage are greater than 0 and less than or equal to 3.
-* **Poor**: Either the **Degraded documents** percentage or the **Failed documents** percentage are greater than 3%.
+* **Poor**: Either the **Degraded documents** percentage or the **Failed documents** percentage are greater than 3.
 
 ## Failure store [streams-data-quality-failure]
 
