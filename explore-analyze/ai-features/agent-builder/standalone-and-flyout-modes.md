@@ -53,7 +53,7 @@ You can resize the flyout by dragging its side edge. The flyout persists when yo
 
 The default chat experience varies by solution:
 
-- **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant is the default chat experience. You must opt in to Agent Builder (refer to [switch between chat experiences](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md)) to enable both the standalone and flyout experiences.
+- **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant is the default chat experience. You must [switch between chat experiences](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md) to enable Agent Builder.
   - Once enabled:
     - The flyout experience replaces the AI Assistant chat experience
     - The standalone experience is available through the **Agents** tab in the main navigation.
