@@ -47,32 +47,34 @@ Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] D
 
 **Check circuit breaker statistics**
 
-To get statistics about the circuit breaker per node. Use one of the following:
+To get statistics about the circuit breaker per node, use one of the following:
 
-::::{applies-switch}
+* You can use the [get node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) API:
 
-:::{applies-item} { "stack": "ga" }
-Use the [get node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) API:
+    ```console
+    GET _nodes/stats?filter_path=nodes.*.breakers
+    ```
 
-```console
-GET _nodes/stats?filter_path=nodes.*.breakers
-```
-:::
+    The response provides the following information:
+    - Estimated memory used for the operation.
+    - Memory limit for the circuit breaker.
+    - Total number of times the circuit breaker has been triggered and prevented an out of memory error since node uptime.
+    - And an overhead which is a constant that all estimates for the circuit breaker are multiplied with to calculate a final estimate.
+    
 
-:::{applies-item} { "stack": "ga 9.3" }
-Use the [get circuit breakers statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API:
-```console
-GET /_cat/circuit_breaker/
-```
-:::
+* {applies_to}`stack: ga 9.3` Starting with {{es}} version 9.3, you can use the [get circuit breakers statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-circuit-breaker) API:
 
-::::
+    ```console
+    GET /_cat/circuit_breaker/
+    ```
 
-The response provides the following information:
-- Estimated memory used for the operation.
-- Memmory limit for the circuit breaker.
-- Total number of times the circuit breaker has been triggered and prevented an out of memory error since node uptime.
-- And an overhead which is a constant that all estimates for the circuit breaker are multiplied with to calculate a final estimate.
+    This API provides a concise, human-readable tabular output that is useful for quick monitoring and troubleshooting. The response includes the following information for each circuit breaker:
+    - The circuit breaker name (for example, `request`, `fielddata`, `in_flight_requests`).
+    - The node ID where the circuit breaker is located.
+    - Estimated memory currently in use by the circuit breaker.
+    - Memory limit configured for the circuit breaker.
+    - Total number of times the circuit breaker has been triggered.
+    - Overhead factor applied to memory estimates.
 
 **Check JVM memory usage**
 
