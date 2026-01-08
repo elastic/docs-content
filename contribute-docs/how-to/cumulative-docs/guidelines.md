@@ -123,7 +123,7 @@ This means that badges will always appear to users from newest to oldest, which 
 
 For example:
 
-{applies_to}`stack: preview 9.0.5, beta 9.1, ga 9.2`
+{applies_to}`stack: preview =9.0, beta =9.1, ga 9.2+`
 
 ### Keys
 

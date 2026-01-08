@@ -26,36 +26,11 @@ To use Attack Discovery, your role needs specific privileges.
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.0" }
-
-Ensure your role has `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature.
-
-![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
-
-:::
-
-:::{applies-item} { "stack": "ga 9.1"}
+:::{applies-item} { "stack": "ga 9.3+", "serverless": "ga" }
 
 Ensure your role has:
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature.
-
-    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
-
-* The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
-
-| Action | Indices | {{es}} privileges |
-|---------|---------|--------------------------|
-| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
-| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
-
-:::
-
-:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
-
-Ensure your role has:
-
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack Discover** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules** {{kib}} feature.
 
     ![attack-discovery-rules-rbac](/solutions/images/attack-discovery-rules-rbac.png "elasticsearch =60%x60%")
 
@@ -68,6 +43,31 @@ Ensure your role has:
 
 :::
 
+:::{applies-item} stack: ga 9.1-9.2
+
+Ensure your role has:
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+
+    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+
+* The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
+
+| Action | Indices | {{es}} privileges |
+|---------|---------|--------------------------|
+| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
+| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
+
+:::
+
+:::{applies-item} stack: ga =9.0
+
+Ensure your role has `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature.
+
+![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+
+:::
+
 ::::
 
 
@@ -76,7 +76,8 @@ Ensure your role has:
 By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the settings icon next to the **Run** button.
 
 :::{note}
-In {{stack}} 9.0.0 and earlier, the **Run** button is called **Generate**.
+:applies_to: stack: ga =9.0
+In {{stack}} 9.0.0, the **Run** button is called **Generate**.
 :::
 
 ::::{image} /solutions/images/security-attack-discovery-settings.png
@@ -103,8 +104,8 @@ You’ll need to select an LLM connector before you can analyze alerts. To get s
 
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
 2. Do one of the following:
-   - {applies_to}`stack: ga 9.1` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
-   - {applies_to}`stack: ga 9.0` Select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`stack: ga 9.1+` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`stack: ga =9.0` Select an existing connector from the dropdown menu, or add a new one.
 
    :::{admonition} Recommended models
    While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
@@ -117,8 +118,8 @@ You’ll need to select an LLM connector before you can analyze alerts. To get s
     :::
 
 3. Once you’ve selected a connector, do one of the following to start the analysis:
-   - {applies_to}`stack: ga 9.1` Click **Save and run**.
-   - {applies_to}`stack: ga 9.0` Click **Generate**.
+   - {applies_to}`stack: ga 9.1+` Click **Save and run**.
+   - {applies_to}`stack: ga =9.0` Click **Generate**.
    
 It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one’s title to expand or collapse it. Click **Run** at any time to start the Attack Discovery process again with the selected alerts.
 

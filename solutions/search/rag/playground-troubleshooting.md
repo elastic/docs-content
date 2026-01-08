@@ -3,7 +3,7 @@ navigation_title: Troubleshooting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-troubleshooting.html
 applies_to:
-  stack: preview 9.0, beta 9.1
+  stack: preview =9.0, beta 9.1+
   serverless: beta
 products:
   - id: kibana
