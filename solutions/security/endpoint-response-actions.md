@@ -356,10 +356,10 @@ The memory dump is stored on the endpoint's local disk. After running `memory-du
 
 Use one of the following parameters to specify the type of memory dump:
 
-* `--kernel` : Generate a kernel-level memory dump. No other arguments are required when using this parameter.
-* `--process` : Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
-    * `--pid` : The process ID (PID) of the process to dump.
-    * `--entityId` : The entity ID of the process to dump.
+* `--kernel`: Generate a kernel-level memory dump. No other arguments are required when using this parameter.
+* `--process`: Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
+    * `--pid`: The process ID (PID) of the process to dump.
+    * `--entityId`: The entity ID of the process to dump.
 
 Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
 
