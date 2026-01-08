@@ -168,6 +168,7 @@ toc:
                     children:
                       - file: upstream-opentelemetry-collectors-language-sdks.md
                       - file: collect-metrics.md
+                      - file: create-apm-agent-key-for-edot-sdks.md
                       - file: edot-sdks-central-configuration.md
                       - file: limitations.md
                       - file: attributes.md
