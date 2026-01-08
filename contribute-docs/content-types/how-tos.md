@@ -94,6 +94,6 @@ To get started writing a new how-to guide, use the [template](https://github.com
 
 Here are some examples of well-structured how-to guides in the Elastic documentation:
 
-- [](/solutions/search/get-started/keyword-search-python)
-- [](/manage-data/data-store/data-streams/set-up-tsds)
+- [](/solutions/search/get-started/keyword-search-python.md)
+- [](/manage-data/data-store/data-streams/set-up-tsds.md)
 
