@@ -59,7 +59,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
 
 1. Optional: Stop indexing and perform a synced flush
 
-    If you can afford to stop indexing for a short period, then you should perform a synced flush before removing the node from the cluster. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
+    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
 
     ```console
     POST /_flush/synced
