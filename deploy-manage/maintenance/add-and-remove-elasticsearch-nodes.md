@@ -114,7 +114,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
     GET /_cluster/health
     ```
 
-    Ensure that the cluster status is "green" (meaning that all shards are properly allocated) and the number of nodes in the cluster has been reduced by one.
+    Ensure that the cluster status is green, meaning that all shards are properly allocated, and verify that the number of nodes in the cluster has been reduced by one.
 
 ## Master-eligible node considerations [add-elasticsearch-nodes-master-eligible]
 
