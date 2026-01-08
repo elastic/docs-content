@@ -144,7 +144,7 @@ You can access the **Advanced Settings** management page in the navigation menu 
 
 ## Make API calls to a space [spaces-api-requests]
 
-When you access resources in {{kib}} using the [{{kib}} APIs](https://www.elastic.co/docs/api/doc/kibana/), unless you specify otherwise, the API request is directed at the default space. To direct a request at a specific space, indicate that space by adding a `/<space>` element to the request path, directly after the {{kib}} URL.
+When you access resources in {{kib}} using the [{{kib}} APIs](https://www.elastic.co/docs/api/doc/kibana/), unless you specify otherwise the API request is directed at the default space. To direct a request at a specific space, indicate that space by adding a `/<space>` element to the request path, directly after the {{kib}} URL.
 
 For example, the following request retrieves a list of saved objects of type `dashboard` in the default {{kib}} space:
 
