@@ -139,7 +139,7 @@ deployment:
   eck: ga 3.2+
 ```
 
-If you're using GKE to run ECK, then you can use a custom ComputeClass, rather than a DaemonSet, to increase the `vm.max_map_count` setting. On [GKE Autopilot](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md) this allows you to set a higher value, which is not possible with a DaemonSet.
+If you're using GKE to run ECK, then you can use a [custom ComputeClass](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/about-custom-compute-classes), rather than a DaemonSet, to increase the `vm.max_map_count` setting. On [GKE Autopilot](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md) this allows you to set a higher value, which is not possible with a DaemonSet.
 
 1. Create a ComputeClass that changes the host kernel setting on all nodes:
 
