@@ -18,7 +18,7 @@ The kernel setting `vm.max_map_count=1048576` can be set on the host directly, b
 For {{es}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{es}} version 8.15 and earlier, set `vm.max_map_count` to `262144`. 
 
 The exception is in GKE Autopilot environments. Your options depend on your GKE version:
-* **GKE 1.30.3-gke.1451000+**: Use a custom `ComputeClass`, rather than a `DaemonSet`, to override the kernel setting.
+* **GKE 1.30.3-gke.1451000 or later**: Use a custom `ComputeClass`, rather than a `DaemonSet`, to override the kernel setting.
 * **Earlier versions**: `vm.max_map_count` must be set to `262144`.
 :::
 
@@ -139,7 +139,7 @@ deployment:
   eck: ga 3.2+
 ```
 
-If you're using [GKE Autopilot](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md) to run ECK, then you can use a custom ComputeClass, rather than a DaemonSet, to increase the `vm.max_map_count` setting. This allows you to set a higher value, which is not possible with a DaemonSet.
+If you're using GKE to run ECK, then you can use a custom ComputeClass, rather than a DaemonSet, to increase the `vm.max_map_count` setting. On [GKE Autopilot](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md) this allows you to set a higher value, which is not possible with a DaemonSet.
 
 1. Create a ComputeClass that changes the host kernel setting on all nodes:
 

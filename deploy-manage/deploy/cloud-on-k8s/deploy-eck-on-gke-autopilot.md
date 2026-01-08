@@ -25,7 +25,7 @@ This page shows how to run ECK on GKE Autopilot.
 
 If you are intending to run production workloads on GKE Autopilot then `vm.max_map_count` should be set. The recommended way to set this kernel setting on the Autopilot hosts depends on your GKE version:
 
-* **GKE 1.30.3-gke.1451000**: [Use a custom ComputeClass](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md#k8s_using_a_computeclass_to_set_virtual_memory). Using a custom ComputeClass allows you to set a higher value for `vm.max_map_count` due to limitations on the `DaemonSet`.
+* **GKE 1.30.3-gke.1451000 or later**: [Use a custom ComputeClass](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md#k8s_using_a_computeclass_to_set_virtual_memory). Using a custom ComputeClass allows you to set a higher value for `vm.max_map_count`, avoiding the limitations of the `DaemonSet` approach.
 * **Earlier versions**: [Use a DaemonSet](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md#k8s_using_a_daemonset_to_set_virtual_memory). You must be running at least version 1.25 when on the `regular` channel or using the `rapid` channel, which currently runs version 1.27.
   
   ::::{warning}
