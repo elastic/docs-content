@@ -78,7 +78,7 @@ To mark a field as a metric, use the `time_series_metric` mapping parameter. Thi
 :   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. A gauge is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md) and [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md) (for internal use during downsampling, rarely user-populated).
 
 `histogram` {applies_to}`stack: preview 9.3`
-:   A metric that tracks the distribution of numerical values (like request times or sizes) by grouping them into "buckets" allowing you to monitor the shape of the data alongside the total count. For example, response times. A histogram is supported by [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). 
+:   A metric that tracks the distribution of numerical values (like request times or sizes) by grouping them into "buckets" allowing you to monitor the shape of the data alongside the total count. A histogram is supported by [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). 
 
 #### `_tsid` metadata field [tsid]
 

@@ -58,7 +58,7 @@ Downsampling is applied to the individual backing indices of the TSDS. The downs
     * `counter` field type:
         * the last value is stored and the type is preserved.
     * `histogram` field type:
-        * all the individual histograms are merged to a single histogram which is stored and the type is preserved. The merging algorithm depends on the field type, [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) is used for `histogram` and `exponential_histogram` to an [exponential histogram](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md).
+        * all the individual histograms are merged to a single histogram which is stored and the type is preserved. In the case of the `histogram` field type, the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm is used.
 
 4. For all other fields, copies the most recent value to the target index.
 5. Replaces the original index with the downsampled index, then deletes the original index.
