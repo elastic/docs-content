@@ -40,6 +40,8 @@ You can also switch chat experiences at any time:
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
 2. Toggle between the two experiences under **Chat Experience**.
 
+% TODO: Link to /solutions/search/agent-builder/standalone-and-flyout-modes.md once that page exists
+
 ## Feature differences between Agent Builder and AI Assistant
 
 Agent Builder doesn't yet support all AI Assistant features. The specific differences vary by solution:
@@ -85,19 +87,3 @@ Also, AI Agent chats do not show previews of data you attach to a message, such 
 :::
 
 ::::
-
-## Agent Builder GUI interfaces
-
-% TODO: Maybe this doesn't even belong here, food for thought, will need to be duplicated in main AB docs in any case
-
-Agent Builder UI functionality is available in two modes:
-
-- Standalone experience {applies_to}`stack: preview 9.2, ga 9.3`
-- A flyout experience (referred to as **AI Agent** in the UI) that replaces the AI Assistant chat experience {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview 9.3`
-
-% TODO: Link to /solutions/search/agent-builder/chat once that page is updated with two modes
-
-This behavior varies by solution:
-
-- **{{observability}} and {{elastic-sec}}:** Each solution's classic AI Assistant remains the default chat experience. You must [opt in to Agent Builder](#switch-between-chat-experiences) to enable both the standalone and flyout experiences.
-- **{{es}}:** Agent Builder is the default chat experience. You must opt out of Agent Builder to use the AI Assistant flyout experience.
