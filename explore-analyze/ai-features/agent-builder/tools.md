@@ -191,7 +191,7 @@ Custom tools can be modified or removed as needed:
 2. Select the edit icon to update the tool or the delete icon to remove it.
 3. For updates, modify the tool properties and save your changes.
 
-Note that built-in tools cannot be modified or deleted.
+Built-in tools cannot be modified or deleted.
 
 ## Tools API
 
