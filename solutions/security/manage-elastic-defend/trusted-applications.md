@@ -88,7 +88,7 @@ To add a trusted application:
    Define more complex conditions, such as trusting specific file paths or remote IP addresses.
 
     1. `Select operating system`: Select the appropriate operating system from the drop-down.
-    2. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga`(Optional) Turn on the `Process Descendants` toggle to make your exception apply to processes that are descendants of your new trusted application.
+    2. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga`(Optional) Turn on the **Process Descendants** toggle to make your exception apply to processes that are descendants of your new trusted application.
     3. `Field`: Select a field to identify the trusted application.
     4. `Operator`: Select an operator to define the condition:
        * `is`
