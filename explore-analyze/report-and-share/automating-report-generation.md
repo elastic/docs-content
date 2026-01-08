@@ -179,8 +179,8 @@ In earlier {{kib}} versions, you could use the `&sync` parameter to append to re
 ## Schedule and share reports [schedule-report-generation]
 
 ```{applies_to}
-stack: preview 9.1
-serverless: preview
+stack: preview 9.1, ga 9.3
+serverless: ga
 ```
 
 Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
@@ -260,22 +260,24 @@ Save time by setting up a recurring task that automatically generates reports an
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
+{applies_to}`stack: ga 9.3` From the **Schedules** tab, use the search bar to quickly find schedules.
+
 ### Manage scheduled reports [manage-scheduled-reports]
 
 To manage a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page:
 
 ::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.3, serverless: ga}
+:::{applies-item} { stack: ga 9.3, serverless: ga}
 - **Disable schedule**: Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart a disabled schedule, select **Enable schedule**.
 - **Enable schedule**: Allows you to turn a disabled schedule back on.
 - **Edit schedule config**: Allows you to modify an existing schedule.
 - **Delete schedule**: Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
-::::
+:::
 
-::::{applies-item} stack: ga 9.1
+:::{applies-item} stack: preview 9.1
 - **Disable schedule**: Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. You cannot restart a disabled schedule. You must create a new one.
-::::
+:::
 
 ::::
 
