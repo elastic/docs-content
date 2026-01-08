@@ -57,7 +57,7 @@ When you need to remove a node from an {{es}} cluster, you must first empty the 
 If the node to remove is a master-eligible node, review the [master-eligible node considerations](#modules-discovery-removing-nodes) before proceeding and do not remove multiple master-eligible nodes at the same time.
 :::
 
-1. Optional: Stop indexing and perform a synced flush
+1. Optional: Stop indexing and perform a synced flush:
 
     If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
 
@@ -65,7 +65,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
     POST /_flush/synced
     ```
 
-2. Retrieve the node name
+2. Retrieve the node name:
 
     You need to know the node name to remove it from the cluster. You can retrieve the node name by running the following command:
 
@@ -75,7 +75,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
 
     This command returns a list of nodes in the cluster along with their node names. Identify the node you want to remove and make a note of its name.
 
-3. Remove the node from the cluster
+3. Remove the node from the cluster:
 
     After you've determined the node name, you can begin removing the node from the cluster by excluding it from shard allocation. This tells {{es}} to stop allocating shards to the node and to relocate any existing shards to other nodes in the cluster. This step can be skipped for nodes that do not hold data, such as dedicated master or coordinating-only nodes.
 
@@ -96,7 +96,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
     GET /_cat/shards?v
     ```
 
-4. Stop the {{es}} process on the node
+4. Stop the {{es}} process on the node:
 
     After all shards have relocated to the other nodes, you can safely [stop the {{es}} process](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#stopping-elasticsearch) on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can run the following command:
 
@@ -106,7 +106,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
 
     When the process stops, the node disconnects from the cluster and no longer appears as part of the cluster.
 
-5. Verify the cluster health
+5. Verify the cluster health:
 
     Finally, verify the health of the cluster by running the following command:
 
