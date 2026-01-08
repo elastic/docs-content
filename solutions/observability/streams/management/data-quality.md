@@ -11,12 +11,15 @@ From the **Streams** page, use the **Data quality** menu to filter your streams 
 Use the following components to monitor the health of your data and identify and fix issues:
 
 * **Degraded documents:** Documents from the last backing index of the stream with the `ignored` property, usually because of malformed fields or exceeding the limit of total fields when `ignore_above:false`. This component shows:
-  * the total number of degraded documents
-  * the percentage of degraded documents relative to the total document count from the stream's last backing
-  * the quality status (**Good**, **Degraded**, **Poor**).
-* **Failed documents:**: Documents that were rejected during ingestion because of mapping conflicts or pipeline failures. This component shows all documents in the failure store that correspond with this stream, within the time range specified in the date picker. For example, for a stream called `my-stream`, Streams fetches all documents from the `my-stream::failures` index within the specified time range. Refer to [Failure store](#streams-data-quality-failure) for more.
-* **Quality score:** Streams calculates the overall quality score (**Good**, **Degraded**, **Poor**) based on the percentage of degraded and failed documents. Refer to [Data quality calculation](#streams-data-quality-calculation) for more.
-* **Trends over time:** A time-series chart so you can track how degraded and failed documents are accumulating over time. Use the date picker to zoom into a specific range and understand when problems are spiking.
+  * Total number of degraded documents.
+  * Percentage of degraded documents relative to the total document count from the stream's last backing index.
+  * The data quality status (**Good**, **Degraded**, **Poor**).
+* **Failed documents:**: Documents that were rejected during ingestion because of mapping conflicts or pipeline failures. This component shows:
+  * Total number of failed documents that correspond with this stream from within the specified time range in the date picker. Refer to [Failure store](#streams-data-quality-failure) for more information.
+  * Percentage of failed documents relative to the total document count from the stream's last backing index.
+  * The data quality status (**Good**, **Degraded**, **Poor**).
+* **Quality score:** Streams calculates the overall quality score (**Good**, **Degraded**, **Poor**) based on the percentage of degraded and failed documents. Refer to [Data quality calculation](#streams-data-quality-calculation) for more information.
+* **Trends over time:** A time-series chart so you can track how degraded and failed documents are accumulating over time. Use the date picker to focus on a specific range and understand when problems are spiking.
 * **Issues:** {applies_to}`stack: preview 9.2`Find issues with specific fields, how often they've occurred, and when they've occurred.
 
 ## Data quality calculation [streams-data-quality-calculation]
@@ -30,6 +33,8 @@ Streams calculates data quality as follows:
 ## Failure store [streams-data-quality-failure]
 
 A [failure store](../../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents. Instead of losing documents that are rejected during ingestion, a failure store retains it in a `::failures` index, so you can review failed documents to understand what went wrong and how to fix it.
+
+For example, for a stream called `my-stream`, Streams fetches all documents from the `my-stream::failures` index from within the specified time range in the date picker.
 
 ### Required permissions
 To view and modify failure store in {{stack}}, you need the following data stream level privileges:
