@@ -15,7 +15,7 @@ products:
 {{agent-builder}} requires an **Enterprise [license](/deploy-manage/license.md)**.
 ::::
 
-[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/solutions/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
+[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
 
 Agent Builder powers the AI Agent chat experience. Currently, AI Agent is available by default for Search users, and as an opt-in feature for Security and {{observability}} users. When you opt in, it replaces the AI Assistant chat experience. While Agent Builder offers expanded functionality compared to AI Assistant, it does not yet support a number of AI Assistant features. Users who rely on those AI Assistant features may not want to opt in immediately. For this reason, we've made it easy to try out Agent Builder and switch back to AI Assistant at any time.
 

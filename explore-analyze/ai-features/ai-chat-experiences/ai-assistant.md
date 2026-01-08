@@ -57,5 +57,5 @@ Elastic does not control third-party tools, and assumes no responsibility or lia
 
 ## Elastic Managed LLM [elastic-managed-llm-ai-assistant]
 
-:::{include} ../../solutions/_snippets/elastic-managed-llm.md
+:::{include} /solutions/_snippets/elastic-managed-llm.md
 :::
