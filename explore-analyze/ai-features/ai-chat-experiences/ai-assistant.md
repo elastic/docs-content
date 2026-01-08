@@ -33,8 +33,8 @@ $$$token-limits$$$
 
 AI Assistant requires specific privileges and a large language model (LLM) connector. The capabilities and ways to interact with AI Assistant can differ for each solution. To learn more about how it works in each solution, refer to:
 
-- [{{obs-ai-assistant}}](../../solutions/observability/observability-ai-assistant.md)
-- [AI Assistant for Security](../../solutions/security/ai/ai-assistant.md)
+- [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md)
+- [AI Assistant for Security](/solutions/security/ai/ai-assistant.md)
 
 To learn more about configuring LLM connectors, refer to:
 
