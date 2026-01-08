@@ -12,6 +12,10 @@ applies_to:
 
 Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 
+:::{note}
+{{agent-builder}} is available in both standalone and flyout modes depending on your solution. For more information, refer to [Chat experiences](standalone-and-flyout-modes.md).
+:::
+
 :::{important}
 {{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
 :::
