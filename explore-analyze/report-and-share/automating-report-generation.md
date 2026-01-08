@@ -260,12 +260,24 @@ Save time by setting up a recurring task that automatically generates reports an
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-### Stop scheduled reports [stop-scheduled-reports]
+### Manage scheduled reports [manage-scheduled-reports]
 
-To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
+To manage a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page:
 
-- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
-- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.3, serverless: ga}
+- **Disable schedule**: Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart a disabled schedule, select **Enable schedule**.
+- **Enable schedule**: Allows you to turn a disabled schedule back on.
+- **Edit schedule config**: Allows you to modify an existing schedule.
+- **Delete schedule**: Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+::::
+
+::::{applies-item} stack: ga 9.1
+- **Disable schedule**: Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. You cannot restart a disabled schedule. You must create a new one.
+::::
+
+::::
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 
