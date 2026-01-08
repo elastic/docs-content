@@ -45,7 +45,7 @@ The **GenAI Settings** page has the following settings:
   - **Only in their solutions** (default): The Security AI Assistant appears in {{elastic-sec}}, and the {{obs-ai-assistant}} appears in {{es}} and {{observability}}.
   - **{{obs-ai-assistant}} in other apps**: The {{obs-ai-assistant}} appears throughout {{kib}} regardless of solution. The Security AI Assistant does not appear anywhere.
   - **Security AI Assistant in other apps**: The Security AI Assistant appears throughout {{kib}} regardless of solution. The {{obs-ai-assistant}} does not appear anywhere.
-  - **Hide all assistants**: Disables AI Assistant throughout {{kib}}.
+  - **Hide all assistants**: Turns off AI Assistant throughout {{kib}}.
 
 :::
 
