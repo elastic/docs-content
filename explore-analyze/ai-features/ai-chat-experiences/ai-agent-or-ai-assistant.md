@@ -15,9 +15,7 @@ products:
 {{agent-builder}} requires an **Enterprise [license](/deploy-manage/license.md)**.
 ::::
 
-Elastic's [Agent Builder](/solutions/search/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools and workflows. Agent Builder was introduced in the {{es}} solution and project type in 9.2.
-
-The primary interface to Agent Builder is its chat experience. Agent Builder comes with built-in agents and tools for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
+[{{agent-builder}}](/explore-analyze/ai-features/agent-builder/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools and workflows. Agent Builder comes with built-in agents and tools for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
 
 Currently, Agent Builder is available as an opt-in feature for Security and {{observability}} users. When you opt in, it replaces the AI Assistant chat experience. While Agent Builder offers expanded functionalities, a number of AI Assistant convenience features are not yet available. Users who rely on those AI Assistant features may not want to migrate immediately. For this reason, we've made it easy to try out Agent Builder and switch back to AI Assistant at any time.
 
