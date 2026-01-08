@@ -651,3 +651,6 @@ redirects:
   'solutions/search/agent-builder/permissions.md': 'explore-analyze/ai-features/agent-builder/permissions.md'
   'solutions/search/agent-builder/programmatic-access.md': 'explore-analyze/ai-features/agent-builder/programmatic-access.md'
   'solutions/search/agent-builder/tools.md': 'explore-analyze/ai-features/agent-builder/tools.md'
+
+# Related to https://github.com/elastic/docs-content/pull/4438
+  'explore-analyze/ai-features/ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md'

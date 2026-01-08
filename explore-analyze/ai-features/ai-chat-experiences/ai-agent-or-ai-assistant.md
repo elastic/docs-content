@@ -15,22 +15,22 @@ products:
 {{agent-builder}} requires an **Enterprise [license](/deploy-manage/license.md)**.
 ::::
 
-[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools and workflows. Agent Builder comes with built-in agents and tools for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
+[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/solutions/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
 
-Currently, Agent Builder is available as an opt-in feature for Security and {{observability}} users. When you opt in, it replaces the AI Assistant chat experience. While Agent Builder offers expanded functionalities, a number of AI Assistant convenience features are not yet available. Users who rely on those AI Assistant features may not want to migrate immediately. For this reason, we've made it easy to try out Agent Builder and switch back to AI Assistant at any time.
+Agent Builder powers the AI Agent chat experience. Currently, AI Agent is available by default for Search users, and as an opt-in feature for Security and {{observability}} users. When you opt in, it replaces the AI Assistant chat experience. While Agent Builder offers expanded functionality compared to AI Assistant, it does not yet support a number of AI Assistant features. Users who rely on those AI Assistant features may not want to opt in immediately. For this reason, we've made it easy to try out Agent Builder and switch back to AI Assistant at any time.
 
 Use this page to learn about:
 
-- [How to switch between AI Assistants and Agent Builder chat experiences](#switch-between-chat-experiences)
+- [How to switch between the AI Assistant and Agent Builder chat experiences](#switch-between-chat-experiences)
 - [Feature differences between AI Assistants and Agent Builder](#feature-differences-between-agent-builder-and-ai-assistant)
 
 ## Switch between chat experiences
 
 :::{important}
-Agent Builder will not have access to your chats, prompts, or knowledge base entries from AI Assistant. However, this data remains accessible if you switch back to the AI Assistant chat experience.
+Agent Builder cannot access your chats, prompts, or knowledge base entries from AI Assistant. However, this data remains accessible if you switch back to the AI Assistant chat experience.
 :::
 
-You will be prompted to switch to the Agent Builder chat experience on supporting Elastic deployments. You can opt-in from this prompt immediately.
+{{kib}} will prompt you to switch to the Agent Builder chat experience if your deployment supports it and you have sufficient privileges. You can opt-in from this prompt immediately.
 
 You can also switch chat experiences at any time:
 
@@ -62,7 +62,7 @@ Agent Builder doesn't yet support all AI Assistant features. The specific differ
 | **Custom agent creation** | ✅ | ❌ |
 | **Custom tool selection** | ✅ | ❌ |
 
-Also, AI Agent chats do not show previews of data you attach to a message, such as Alerts and Attacks.
+Also, Agent Builder chats do not show previews of data you attach to a message, such as Alerts and Attacks.
 :::
 
 :::{tab-item} Elastic {{observability}} and Search
@@ -84,3 +84,5 @@ Also, AI Agent chats do not show previews of data you attach to a message, such 
 :::
 
 ::::
+
+In addition, the APIs vary for [Agent Builder](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder), [AI Assistant for Security](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api), and [AI Assistant for Observability](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-observability_ai_assistant).
