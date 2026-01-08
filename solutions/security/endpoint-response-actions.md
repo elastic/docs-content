@@ -361,7 +361,7 @@ Use one of the following parameters to specify the type of memory dump:
     * `--pid` : The process ID (PID) of the process to dump.
     * `--entityId` : The entity ID of the process to dump.
 
-Predefined role (in {{serverless-short}}): TBD
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
 
 Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
 
