@@ -630,7 +630,7 @@ redirects:
 
   # Move CCS feature docs to explore-analyze
   'solutions/search/cross-cluster-search.md': 'explore-analyze/cross-cluster-search.md'
-  'solutions/search/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
+  'solutions/search/using-resolve-cluster-endpoint-before-cross-cluster-search.md': 'explore-analyze/cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md'
 
   # Related to https://github.com/elastic/docs-content/pull/4438
   'explore-analyze/ai-features/ai-agent-or-ai-assistant.md': 'explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md'
