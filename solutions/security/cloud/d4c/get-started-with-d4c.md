@@ -5,13 +5,11 @@ applies_to:
   stack: beta 9.3
   serverless:
     security: beta
+products:
+  - id: security
 ---
 
 # Get started with Defend for Containers for Kubernetes [d4c-get-started]
-
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
 
 This page describes how to set up Defend for Containers (D4C) for Kubernetes.
 

@@ -5,13 +5,11 @@ applies_to:
   stack: beta 9.3
   serverless:
     security: beta
+products:
+  - id: security
 ---
 
 # Cloud workload protection for Kubernetes [d4c-overview]
-
-::::{warning} 
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
 
 Cloud workload protection for Kubernetes uses Elastic's Defend for Containers (D4C) integration to provide cloud-native runtime protections for containerized environments by identifying and optionally blocking unexpected system behavior in Kubernetes containers.
 

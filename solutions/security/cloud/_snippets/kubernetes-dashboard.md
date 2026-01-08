@@ -1,6 +1,11 @@
 
 The Kubernetes dashboard provides insight into Linux process data from your Kubernetes clusters. It shows sessions in detail and in the context of your monitored infrastructure.
 
+## Requirements
+* Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
+* This feature is currently available on GKE and EKS using Linux hosts and Kubernetes versions that match [these](solutions/security/cloud/d4c/d4c-overview.md#_support_matrix) specifications.
+
+
 :::{image} /solutions/images/security-kubernetes-dashboard.png
 :alt: The Kubernetes dashboard
 :::
@@ -38,27 +43,6 @@ The **Metadata** tab is organized into these expandable sections:
 ## Setup [_setup]
 
 To get data for this dashboard, set up [Cloud Workload Protection for Kubernetes](/solutions/security/cloud/d4c/get-started-with-d4c.md) for the clusters you want to display on the dashboard.
-
-::::{admonition} Requirements
-* Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
-* {{stack}} users: {{stack}} version 9.3 or higher.
-
-::::
-
-
-**Support matrix**: This feature is currently available on GKE and EKS using Linux hosts and Kubernetes versions that match the following specifications:
-
-|     |     |     |
-| --- | --- | --- |
-|  | EKS 1.24-1.26 (AL2022) | GKE 1.24-1.26 (COS) |
-| Process event exports | ✓ | ✓ |
-| Network event exports | ✓ | ✓ |
-| File event exports | ✓ | ✓ |
-| File blocking | ✓ | ✓ |
-| Process blocking | ✓ | ✓ |
-| Network blocking | ✗ | ✗ |
-| Drift prevention | ✓ | ✓ |
-| Mount point awareness | ✓ | ✓ |
 
 ::::{important}
 This dashboard uses data from the `logs-*` index pattern, which is included by default in the [`securitySolution:defaultIndex` advanced setting](../../get-started/configure-advanced-settings.md). To collect data from multiple {{es}} clusters (as in a cross-cluster deployment), update `logs-*` to `*:logs-*`.

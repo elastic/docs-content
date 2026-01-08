@@ -5,6 +5,8 @@ applies_to:
   stack: beta 9.3
   serverless:
     security: beta
+products:
+  - id: security
 ---
 
 # Container workload protection policies [d4c-policy-guide]
