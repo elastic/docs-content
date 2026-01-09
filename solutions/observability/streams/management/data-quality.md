@@ -20,7 +20,7 @@ Use the following components to monitor the health of your data and identify and
   * The data quality status (**Good**, **Degraded**, **Poor**).
 * **Quality score:** Streams calculates the overall quality score (**Good**, **Degraded**, **Poor**) based on the percentage of degraded and failed documents. Refer to [Data quality calculation](#streams-data-quality-calculation) for more information.
 * **Trends over time:** A time-series chart so you can track how degraded and failed documents are accumulating over time. Use the date picker to focus on a specific range and understand when problems are spiking.
-* **Issues:** {applies_to}`stack: preview 9.2`Find issues with specific fields, how often they've occurred, and when they've occurred.
+* {applies_to}`stack: preview 9.2` **Issues:** Find issues with specific fields, how often they've occurred, and when they've occurred.
 
 ## Data quality calculation [streams-data-quality-calculation]
 
