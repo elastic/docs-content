@@ -1,16 +1,17 @@
 ---
+description: Learn about the standalone and flyout modes for the Elastic Agent Builder chat UI
 navigation_title: "Chat UI modes"
 applies_to:
-  stack: preview 9.2
+  stack: 
   serverless:
-    elasticsearch: preview
-    observability: unavailable
-    security: unavailable
+    elasticsearch:
+    observability:
+    security:
 ---
 
 # Standalone and flyout chat UI modes in {{agent-builder}}
 
-The {{agent-builder}} chat UI is available in two modes: 
+The {{agent-builder}} [chat UI](chat.md#agent-chat-gui) is available in two modes: 
 
 1. [Standalone experience](#standalone-experience)
 2. [Flyout experience](#flyout-experience)
@@ -68,3 +69,7 @@ with
 
 when that page is live 
 -->
+
+## Related pages
+
+- [Agent Builder chat UI](chat.md#agent-chat-gui)
