@@ -278,9 +278,11 @@ Serverless at the time Elastic Stack 9.0.0 was released.
 Then, the functionality became generally available in Elastic Stack in 9.1.0 and shortly before the
 Elastic Stack 9.1.0 release in Serverless.
 
-* For Elastic Stack, a versioned product, label the section with both lifecycles: `ga 9.1` and `preview 9.0`.
 * For Serverless, an unversioned product, update the section label from `serverless: preview` to `serverless: ga`.
   Do _not_ list both lifecycles.
+* For Elastic Stack, a versioned product, label the section with both lifecycles: `ga 9.1+` and `preview =9.0`.
+  The latest released version is rendered in the badge and other lifecycle/versions is included in the popover attached to the badge.
+  Hover over the badge to see the popover.
 
 :::::{tab-set}
 ::::{tab-item} Image
@@ -422,9 +424,10 @@ Using a code callout is the lightest-touch solution, but might not be sufficient
 
 :::::{tab-item} Code
 
-Connect your OpenTelemetry Collector instances to Elastic {{observability}} or {{obs-serverless}} using the OTLP exporter:
-
 ````
+Connect your OpenTelemetry Collector instances to Elastic {{observability}}
+or {{obs-serverless}} using the OTLP exporter:
+
 ::::{applies-switch}
 :::{applies-item} stack: ga
 
