@@ -14,7 +14,7 @@ sub:
 
 These steps describe how to configure a remote cluster connection from an {{es}} cluster managed by {{eck}} (ECK) to an external {{es}} cluster, not managed by ECK. The remote cluster can be self-managed, or part of an {{ech}} (ECH) or {{ece}} (ECE) deployment.
 
-After the connection is established, you’ll be able to [run {{ccs-init}} queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up {{ccr-init}}](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+After the connection is established, you’ll be able to [run {{ccs-init}} queries from {{es}}](/explore-analyze/cross-cluster-search.md) or [set up {{ccr-init}}](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 :::{include} _snippets/terminology.md
 :::

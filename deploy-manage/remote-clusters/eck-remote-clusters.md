@@ -13,7 +13,7 @@ products:
 
 These steps describe how to configure remote clusters between two {{es}} clusters that are managed by the same {{eck}} (ECK) operator. 
 
-After the connection is established, you’ll be able to [run {{ccs-init}} queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up {{ccr-init}}](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+After the connection is established, you’ll be able to [run {{ccs-init}} queries from {{es}}](/explore-analyze/cross-cluster-search.md) or [set up {{ccr-init}}](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 ::::{note}
 The remote clusters feature requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
