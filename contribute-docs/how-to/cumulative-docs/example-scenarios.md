@@ -639,15 +639,10 @@ _Work in progress._
 
 ## Functionality is added to multiple patch versions [multiple-patch]
 
-<<<<<<< Updated upstream
-Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time. 
+Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time.
 
 - **Standard case**: Our docs are aligned with the latest patch of any given minor version. That means that in most cases, we don't need to call out the exact patch version that introduced a change (that's for the release notes).
-
 - **Exceptions**: In rare cases, it can happen that the change is important enough to be explicitly called out in the docs with a precise patch-level information. In that case, you can add a callout and indicate patch-level versions using plain text to explain the change.
-=======
-Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time. In that case, use the earlier version. The `applies_to` popover states that the documentation corresponds to the _latest_ patch available for each minor version.
->>>>>>> Stashed changes
 
 For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time. Since the new functionality is available in the latest patch of both 9.0.x and 9.1.x, use the earlier version: 9.0.x.
 
@@ -662,11 +657,7 @@ For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beat
 ```markdown
 * `terminate`: exits the template without falling back to the default value
   and without causing an error. It takes a single string argument that is
-<<<<<<< Updated upstream
   logged in debug logging. {applies_to}`stack: ga 9.1.2+!` {applies_to}`stack: ga 9.0.6+!`
-=======
-  logged in debug logging. {applies_to}`stack: ga 9.0.6+`
->>>>>>> Stashed changes
 ```
 ::::
 :::::
