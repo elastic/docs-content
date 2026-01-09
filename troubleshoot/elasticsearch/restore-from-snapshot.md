@@ -21,9 +21,9 @@ Restoring the missing data requires you to have a backup of the affected indices
 ::::
 
 
-:::::::{applies-switch}
+:::::::{tab-set}
 
-::::::{applies-item} ess:
+::::::{tab-item} {{ech}}
 In order to restore the indices and data streams that are missing data:
 
 **Use {{kib}}**
@@ -227,7 +227,7 @@ In order to restore the indices and data streams that are missing data:
 For more guidance on creating and restoring snapshots see [this guide](../../deploy-manage/tools/snapshot-and-restore.md).
 ::::::
 
-::::::{applies-item} self:
+::::::{tab-item} Self-managed
 In order to restore the indices that are missing shards:
 
 1. View the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
