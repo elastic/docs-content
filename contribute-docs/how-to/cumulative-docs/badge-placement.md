@@ -3,7 +3,7 @@
 :::{note}
 This content is still in development.
 If you have questions about how to write cumulative documentation while contributing,
-reach out to **@elastic/docs** in the related GitHub issue or PR. 
+reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
 As you continue contributing to documentation and more versions are released,
@@ -25,7 +25,6 @@ version and deployment type differences in your docs:
 
 ## General placement principles
 
-% Source: Brandon's PR review comment
 At a high level, you should follow these badge placement principles:
 
 * Place badges where they're most visible but least disruptive to reading flow.

@@ -4,7 +4,7 @@ If a change is released in Serverless and will be released in a future version o
 ---
 applies_to:
   serverless: ga
-  stack: ga 9.2
+  stack: ga 9.2+
 ---
 ```
 
