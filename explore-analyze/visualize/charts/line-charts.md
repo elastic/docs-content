@@ -100,11 +100,12 @@ Customize your line chart to display exactly the information you need, formatted
 ### Horizontal axis settings [horizontal-axis-settings]
 
 **Data**
-:   **Functions**: Allow you to group your data. For example, you can use `Date histogram` to group data points into time-based buckets, or `Intervals` to group values along specific numeric ranges.
-:   **Fields**: Select which field from your data to use as horizontal axis.
-:   **Number of values**: Control how many distinct values or data points are displayed along the horizontal axis.
-:   **Rank by**: Choose which metric determines the order of your data.
-:   **Rank direction**: Sort values in ascending or descending order.
+:   
+    - **Functions**:
+      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
+      - **Intervals**: Determine the size of the time buckets in your date histogram. You can define the intervals granularity or specify custom ranges.
+      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
+      - **Top values**: Create separate lines for the most common values in a field.
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
