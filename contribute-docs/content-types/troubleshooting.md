@@ -22,12 +22,7 @@ Use the troubleshooting content type when:
 
 A page that doesn't describe a specific problem isn't troubleshooting content.
 
-Readers of troubleshooting content typically:
-
-- Are blocked or frustrated
-- Want a fast, reliable fix
-- Expect clear guidance and strong recommendations
-- Don't want background information or deep explanations
+Readers of troubleshooting content are typically blocked or frustrated and want a fast, reliable fix. They expect clear guidance and strong recommendations without requiring background information or deep explanations.
 
 ## Best practices
 
@@ -37,12 +32,7 @@ When you create troubleshooting pages, follow these best practices:
 - Be explicit about supported and unsupported setups
 - Optimize for fast resolution, not exhaustive coverage
 
-Do not use troubleshooting for:
-
-- Teaching users how to use a feature for the first time (use a tutorial)
-- Explaining how a system works (use an overview)
-- Listing configuration options or APIs (use reference documentation)
-- Describing general best practices
+Do not use troubleshooting for teaching users how to use a feature for the first time (use a tutorial), explaining how a system works (use an overview), listing configuration options or APIs (use reference documentation), or describing general best practices.
 
 ## Structure of a troubleshooting page
 
@@ -76,14 +66,8 @@ The following elements are required in overview pages:
 
 Consider including the following when they add value:
 
-- A **Best practices** section: Use this section to explain how users can avoid the issue in the future. This is the appropriate place to:
-  - Recommend supported or preferred patterns
-  - Clarify Elastic-specific guidance
-  - Call out known limitations or constraints
-  - Set expectations about scale, load, or deployment environments
-- A **Resources** section: Provide links to supplementary documentation for readers who want deeper context.
-  - Resources must not be required to fix the issue
-  - Prefer Elastic-owned documentation, but link to upstream or external docs when necessary
+- A **Best practices** section: Use this section to explain how users can avoid the issue in the future. This is the appropriate place to recommend supported or preferred patterns, clarify Elastic-specific guidance, call out known limitations or constraints, and set expectations about scale, load, or deployment environments.
+- A **Resources** section: Provide links to supplementary documentation for readers who want deeper context. Resources must not be required to fix the issue. Prefer Elastic-owned documentation, but link to upstream or external docs when necessary.
 
 ## Template
 
