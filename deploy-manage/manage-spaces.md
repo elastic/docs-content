@@ -38,24 +38,22 @@ Check out [Using Spaces with Fleet](/deploy-manage/manage-spaces-fleet.md) for i
 
 ## Required permissions [_required_privileges_3]
 
-* **Serverless projects:** `Admin` role or equivalent
-* **{{stack}} deployments:** `kibana_admin` or equivalent
+* {applies_to}`serverless:` `Admin` role or equivalent
+* {applies_to}`stack:` `kibana_admin` or equivalent
 
 
 ## Create a space [spaces-managing]
 
 The maximum number of spaces that you can have differs by deployment type:
 
-* **Serverless projects:** Maximum of 100 spaces.
-* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the [full list of Space settings](kibana://reference/configuration-reference/spaces-settings.md).
+* {applies_to}`serverless:` Maximum of 100 spaces.
+* {applies_to}`stack:` Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the [full list of Space settings](kibana://reference/configuration-reference/spaces-settings.md).
 
 To create a space:
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+::::{applies-item} serverless:
 
 1. Click **Create space** or select the space you want to edit.
 2. Provide:
@@ -67,8 +65,7 @@ To create a space:
 4. Save the space.
 ::::
 
-::::{tab-item} {{stack}}
-:sync: stack
+::::{applies-item} stack:
 
 1. Select **Create space** and provide a name, description, and URL identifier.
    The URL identifier is a short text string that becomes part of the {{kib}} URL when you are inside that space. {{kib}} suggests a URL identifier based on the name of your space, but you can customize the identifier to your liking. You cannot change the space identifier once you create the space.
@@ -95,8 +92,8 @@ You can edit all of the space settings you just defined at any time, except for 
 
 Elastic also allows you to manage spaces using APIs:
 
-* **Serverless projects:** [Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
-* **{{stack}} deployments:** [Spaces API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-spaces-copy-saved-objects)
+* {applies_to}`serverless:` [Serverless Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
+* {applies_to}`stack:` [Spaces API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-spaces-copy-saved-objects)
 
 
 ## Define access to a space [spaces-control-user-access]
@@ -105,8 +102,8 @@ Users can access spaces based on the roles that they have.
 
 * Certain reserved roles can view and access all spaces by default. You can’t prevent those roles from accessing a space. Instead, you can grant different roles to your users.
 * When creating or editing a role, you can define which existing spaces that role can access, and with which permissions. Role management differs between {{stack}} deployments and serverless projects.
-  - For Serverless projects, check [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md).
-  - For {{stack}} deployments, check [Creating or editing a role](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+  - {applies_to}`serverless:` Check [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+  - {applies_to}`stack:` Check [Creating or editing a role](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 
 If you're managing an {{stack}} deployment, then you can also assign roles and define permissions for a space from the **Permissions** tab of the space settings.
