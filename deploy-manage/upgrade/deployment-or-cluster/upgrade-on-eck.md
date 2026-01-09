@@ -22,7 +22,9 @@ Check out [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchest
 
 ## Perform the upgrade
 
-The following procedure is for users deploying {{stack}} resources using resource manifests. If you deploy your {{stack}} resources using our Helm chart, refer to [managing deployments using Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md#k8s-upgrade-modify-helm) for details on how to perform upgrades with Helm.
+The upgrade procedure depends on whether you are deploying the {{stack}} components using resource manifests or the [`eck-stack` Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md).
+
+### Upgrade using resource manifests
 
 1. In the resource spec file, modify the `version` field for the desired {{stack}} version.
 2. Save your changes. The orchestrator will start the upgrade process automatically.
@@ -149,6 +151,10 @@ spec:
   elasticsearchRef:
     name: elasticsearch-sample
 ```
+
+### Upgrade using Helm charts
+
+If you deploy your {{stack}} resources using our Helm chart, refer to [managing deployments using Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md#k8s-upgrade-modify-helm) for details on how to perform upgrades with Helm.
 
 ## Next steps
 
