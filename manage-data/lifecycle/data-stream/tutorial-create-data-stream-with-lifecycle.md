@@ -47,15 +47,15 @@ PUT _index_template/my-index-template
 
 ## Create a data stream [create-data-stream-with-lifecycle]
 
-You can create a data stream in two ways:
+You can create a data stream in these ways:
 
-1. By manually creating the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
+* By manually creating the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
 
     ```console
     PUT _data_stream/my-data-stream-test
     ```
 
-2. By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
+* By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
 
     ```console
     PUT my-data-stream-test/_bulk
@@ -64,6 +64,11 @@ You can create a data stream in two ways:
     { "create":{ } }
     { "@timestamp": "2099-05-06T16:25:42.000Z", "message": "192.0.2.255 - - [06/May/2099:16:25:42 +0000] \"GET /favicon.ico HTTP/1.0\" 200 3638" }
     ```
+
+* {applies_to}`stack: ga 9.3+` You can create a classic data stream directly in the [**Streams**](/solutions/observability/streams/streams.md) UI in {{kib}}.
+    1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    1. From the upper right, select **Create classic stream**.
+    1. Select the index template you want to use, name your stream, and select **Create**.
 
 
 
