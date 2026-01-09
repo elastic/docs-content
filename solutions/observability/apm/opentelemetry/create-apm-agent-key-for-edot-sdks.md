@@ -12,15 +12,22 @@ products:
 
 # Create {{apm-agent}} key for EDOT SDKs [create-apm-agent-key-for-edot-sdks]
 
-{{apm-agent}} keys are least-privilege API keys used for ingesting data. When using [{{edot}} (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md), you should create an {{apm-agent}} key using the Applications UI in {{kib}}.
+{{apm-agent}} keys are least-privilege API keys for ingesting {{product.apm}} data. Create these keys using the Applications UI in {{kib}}.
 
 ::::{important}
 {{apm-agent}} keys are sent as plain text, so they only provide security when used in combination with [TLS](/solutions/observability/apm/apm-agent-tls-communication.md).
 ::::
 
+## Difference from {{stack-manage-app}} API keys
+
+There are two ways to create API keys in {{kib}}:
+
+* **{{stack-manage-app}} > API keys > Create API key**: Creates general-purpose API keys for {{es}} operations. For more information, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
+* **Applications > Settings > Agent keys > Create {{apm-agent}} key** (the method described on this page): Creates API keys specifically for ingesting {{product.apm}} data. All [{{edot}} (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) should use this method.
+
 ## Create an {{apm-agent}} key
 
-The Applications UI provides a built-in workflow to create {{apm-agent}} keys specifically for ingesting telemetry data. These keys have the minimum required privileges for EDOT SDKs to send data to Elastic.
+The Applications UI provides a built-in workflow to create {{apm-agent}} keys. These keys have the minimum required privileges for EDOT SDKs to send data to Elastic.
 
 :::{include} ../_snippets/create-apm-agent-key-applications-ui.md
 :::
@@ -60,12 +67,3 @@ For {{observability}} {{serverless-short}} projects, the Editor role or higher i
 ::::::
 
 :::::::
-
-## Difference from {{stack-manage-app}} API keys
-
-There are two ways to create API keys in {{kib}}:
-
-* **{{stack-manage-app}} > API keys > Create API key**: Creates general-purpose API keys for {{es}} operations. For more information, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
-* **Applications > Settings > Agent keys > Create {{apm-agent}} key** (the method described on this page): Creates least-privilege API keys specifically for ingesting {{product.apm}} data. All EDOT SDKs should use this method.
-
-{{apm-agent}} keys are optimized for EDOT SDK telemetry data ingestion and provide better security by limiting privileges to only what's needed.
