@@ -188,7 +188,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Limits the detection rule execution gaps API for retrieving gap summaries to 100 `rule_id`s per request [#245924]({{kib-pull}}245924).
 * Fixes an issue where the **Threat intelligence** section in the alert details flyout didn't display multiple values [#245449]({{kib-pull}}245449).
 * Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
-* Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a CRLF or `\0`.
+* Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a `\0`.
 * For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
 
 
