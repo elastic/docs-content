@@ -22,15 +22,16 @@ Check out [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchest
 
 ## Perform the upgrade
 
-The upgrade procedure depends on whether you are deploying the {{stack}} components using resource manifests or the [`eck-stack` Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md).
+The upgrade procedure depends on whether you are deploying the {{stack}} components using resource manifests or the [{{stack}} Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md).
 
 ### Upgrade using resource manifests
 
 1. In the resource spec file, modify the `version` field for the desired {{stack}} version.
 2. Save your changes. The orchestrator will start the upgrade process automatically.
 
-In this example, we’re upgrading {{es}} and {{kib}} to {{version.stack}}.
+In this example, we're upgrading {{es}} and {{kib}} to {{version.stack}} by changing the `spec.version` field in each component.
 
+::::{dropdown} Show example manifest
 :::{important}
 For production use, for {{stack}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{stack}} version 8.15 and earlier, set `vm.max_map_count` to `262144`. Refer to [Virtual memory](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md) for more information.
 :::
@@ -151,6 +152,7 @@ spec:
   elasticsearchRef:
     name: elasticsearch-sample
 ```
+::::
 
 ### Upgrade using Helm charts
 
