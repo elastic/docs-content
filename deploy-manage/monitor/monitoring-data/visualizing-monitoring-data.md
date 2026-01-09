@@ -21,6 +21,7 @@ Review the following topics to learn more about the metrics and visualizations a
 
 * [](/deploy-manage/monitor/monitoring-data/elasticsearch-metrics.md)
 * [](/deploy-manage/monitor/monitoring-data/kibana-page.md)
+* [](/deploy-manage/monitor/monitoring-data/integrations-server-page.md) {applies_to}`eck: unavailable`
 * [](/deploy-manage/monitor/monitoring-data/beats-page.md)
 * [](/deploy-manage/monitor/monitoring-data/logstash-page.md)
 
