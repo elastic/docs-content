@@ -46,7 +46,7 @@ You should also generally tag content when:
 * Functionality changes state, like going from beta to GA
 * Availability varies, like being available in Elastic Cloud Enterprise but not in Elastic Cloud Hosted
 
-**For detailed guidance on contributing to cumulative docs, refer to [guidelines.md](guidelines.md).**
+**For detailed guidance on contributing to cumulative docs, refer to [](guidelines.md).**
 
 ### When _not_ to tag content
 
