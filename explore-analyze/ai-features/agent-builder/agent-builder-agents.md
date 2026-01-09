@@ -39,11 +39,13 @@ The **Agents** page provides a centralized view of all your agents. From this pa
 - Start chatting with an agent or perform other actions:
     - **Elastic AI Agent**: you can **chat** or **clone** the default agent using the chat or clone buttons. The default agent cannot be edited directly.
       :::{image} images/chat-and-clone-buttons.png
+      :screenshot:
       :alt: Chat with agent and clone agent buttons
       :width: 120px
       :::
     - **Custom agents**: You can **chat**, **edit**, **clone**, or **delete** an agent from the management overview.
       :::{image} images/chat-edit-clone-delete.png
+      :screenshot:
       :alt: Agent context menu showing Chat, Edit, Clone, and Delete options
       :width: 130px
       :::
@@ -64,6 +66,7 @@ Navigate to the **Agents** page to access the agent management interface.
 Select the **New agent** button to being creating a new agent.
 
 :::{image} images/new-agent-button.png
+:screenshot:
 :alt: Select the New agent button to create a new agent
 :width: 150px
 :::
@@ -108,6 +111,7 @@ Optionally customize the agent's appearance and organization:
 Select **Save** to create your agent, or **Save and chat** to create the agent and immediately begin a conversation with it.
 
 :::{image} images/save-and-chat-buttons.png
+:screenshot:
 :alt: Save and Save and chat buttons
 :width: 270px
 :::

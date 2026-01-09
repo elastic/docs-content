@@ -63,7 +63,8 @@ FROM books
 
 You can ask the LLM to infer the parameters for the query or add them manually.
 
-:::{image} ../images/create-esql-tool-query.png 
+:::{image} ../images/create-esql-tool-query.png
+:screenshot:
 :alt: Creating an ES|QL tool with a parameterized query
 :::
 

@@ -104,6 +104,7 @@ You can create custom tools to help agents interact with your data in specific w
 2. Click **New tool**.
 
   :::{image} images/new-tool-button.png
+  :screenshot:
   :alt: New tool button for creating custom tools
   :width: 150px
   :::
@@ -119,6 +120,7 @@ You can create custom tools to help agents interact with your data in specific w
    - Select **Save and test** to create the tool and immediately open the testing interface
 
     :::{image} images/tool-save-save-and-test-buttons.png
+    :screenshot:
     :alt: Save and Save and test buttons for tool creation
     :width:250px
     :::
@@ -133,6 +135,7 @@ If you didn't select **Save and test** immediately:
 2. Click the test icon (play button) associated with your tool.
 
 :::{image} images/test-icon.png
+:screenshot:
 :alt: Test icon (play button) for running tool tests
 :width: 150px
 :::
@@ -164,6 +167,7 @@ If you didn't select **Save and test** immediately:
 Find the list of available tools on the **Tools** landing page in the UI, or use [Tools API](kibana-api.md#tools).
 
 :::{image} images/tools-overview.png
+:screenshot:
 :alt: Tools landing page showing the list of available tools with their descriptions and actions
 :width:800px
 :::
@@ -208,6 +212,7 @@ Tools can also be accessed through the Model Context Protocol (MCP) server, whic
 The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
 
 :::{image} images/copy-mcp-server-url-button.png
+:screenshot:
 :alt: Copy MCP server URL button for easy configuration of external clients
 :width: 250px
 :::
