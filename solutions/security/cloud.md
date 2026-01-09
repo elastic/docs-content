@@ -61,3 +61,8 @@ Helps you monitor and protect your Linux VMs. It uses {{elastic-defend}} to inst
 
 [Read the CWP for VMs docs](/solutions/security/cloud/cloud-workload-protection-for-vms.md).
 
+## Cloud workload protection for Kubernetes 
+
+Uses Elastic's Defend for Containers (D4C) integration to provide cloud-native runtime protections for containerized environments by identifying and optionally blocking unexpected system behavior in Kubernetes containers.
+
+[Read the D4C docs](/solutions/security/cloud/d4c/d4c-overview.md).

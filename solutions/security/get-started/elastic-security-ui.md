@@ -92,7 +92,7 @@ Expand this section to access the following dashboards, which provide interactiv
 
 - Overview
 - Detection & Response
-- {applies_to}`serverless: unavailable` Kubernetes
+- {applies_to}`stack: beta 9.3+` {applies_to}`serverless: beta` Kubernetes
 - Cloud Security Posture
 - Cloud Native Vulnerability Management
 - Entity Analytics

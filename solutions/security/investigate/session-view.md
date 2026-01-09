@@ -43,12 +43,16 @@ Session View uses process data collected by the {{elastic-defend}} integration, 
 5. If you want to include file and network alerts in Session View, check the boxes for **Network** and **File** events.
 6. If you want to enable terminal output capture, turn on the **Capture terminal output** toggle.
 
-Session View can only display data that was collected by {{elastic-defend}} when **Collect session data** was enabled. When this setting is enabled, {{elastic-defend}} includes additional process context data in captured process, file, and network events. For more information about the additional fields collected when this setting is enabled, refer to the [Linux event model RFC](https://github.com/elastic/ecs/blob/main/rfcs/text/0030-linux-event-model.md).
+Session View can only display data that was collected by {{elastic-defend}} when **Collect session data** was enabled. When this setting is on, {{elastic-defend}} includes additional process context data in captured process, file, and network events. For more information about the additional fields collected when this setting is on, refer to the [Linux event model RFC](https://github.com/elastic/ecs/blob/main/rfcs/text/0030-linux-event-model.md).
 
 
 ## Open Session View [open-session-view]
 
-Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout and the **Kubernetes** dashboard. Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
+Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout.
+
+{applies_to}`stack: beta 9.3+` {applies_to}`serverless: beta` Data also appears on the the **Kubernetes** dashboard. 
+ 
+Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
 
 * On the Alerts page, scroll down to view the Alerts table. Look for alerts that have the **Open Session View** button in the **Actions** column:
 
