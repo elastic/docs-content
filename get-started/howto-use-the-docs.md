@@ -29,7 +29,7 @@ These badges appear at the top of a page or section and tell you which products,
 To learn more about how applicability badges work and how they're used in our cumulative documentation system, refer to [Write cumulative documentation](/contribute-docs/how-to/cumulative-docs/index.md) and [Badge usage and placement](/contribute-docs/how-to/cumulative-docs/badge-placement.md).
 
 :::{tip}
-A **Stack** badge indicates that a page applies to [{{stack}}](/get-started/the-stack.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it has **{{serverless-short}}** and Stack badges.
+A **Stack** badge indicates that a page applies to [{{stack}}](/get-started/the-stack.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it has **{{serverless-short}}** and **Stack** badges.
 :::
 
 ## Page options
