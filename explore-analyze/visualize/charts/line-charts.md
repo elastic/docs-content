@@ -166,6 +166,7 @@ When creating or editing a visualization, open the {icon}`brush` **Style** panel
    * **Value format**: `Bytes`
 3. In the **Breakdwon** panel, set the following settings:
    * **Functions**: `Top values`
+   * **Fields**: `host.keyword`   
    * **Number of values**: `4`
 4. Save your chart.
 
