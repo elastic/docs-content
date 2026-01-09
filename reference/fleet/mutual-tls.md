@@ -11,7 +11,11 @@ products:
 
 # Elastic Agent deployment models with mutual TLS [mutual-tls]
 
-Mutual Transport Layer Security (mTLS) provides a higher level of security and trust compared to one-way TLS, where only the server presents a certificate. It ensures that not only the server is who it claims to be, but the client is also authenticated. This is particularly valuable in scenarios where both parties need to establish trust and validate each other’s identities, such as in secure API communication, web services, or remote authentication.
+Mutual Transport Layer Security (mTLS) provides a higher level of security and trust compared to one-way TLS, where only the server presents a certificate. It ensures that not only the server is who it claims to be, but the client is also authenticated. This is particularly valuable in scenarios where both parties need to establish trust and validate each other's identities, such as in secure API communication, web services, or remote authentication.
+
+For comprehensive deployment information including all mTLS configuration flags, environment variables, and setup instructions organized by connection type, refer to:
+- [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md) - includes mTLS configuration for {{fleet-server}} to {{es}} and {{agent}} to {{fleet-server}} (server-side)
+- [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md) - includes mTLS configuration for {{agent}} to {{fleet-server}} and {{agent}} to {{es}}/{{ls}}
 
 For a summary of flow by which TLS is established between components using either one-way or mutual TLS, refer to [One-way and mutual TLS certifications flow](/reference/fleet/tls-overview.md).
 
@@ -43,8 +47,7 @@ When mTLS is required, the secure setup between {{agent}}, {{fleet}}, and {{flee
 2. The initial mTLS connection between {{agent}} and {{fleet-server}} is configured when {{agent}} is enrolled, using the parameters passed through the `elastic-agent install` or `elastic-agent enroll` command.
 3. Once enrollment has completed, {{agent}} downloads the initial {{agent}} policy from {{fleet-server}}.
 
-    1. If the {{agent}} policy contains mTLS configuration settings, those settings will take precedence over those used during enrollment: This includes both the mTLS settings used for connectivity between {{agent}} and {{fleet-server}} (and the {{fleet}} application in {{kib}}, for {{fleet}}-managed {{agent}}), and the settings used between {{agent}} and it’s specified output.
-    2. If the {{agent}} policy does not contain any TLS, mTLS, or proxy configuration settings, these settings will remain as they were specified when {{agent}} enrolled. The initial TLS, mTLS, or proxy configuration settings can not be removed through the {{agent}} policy; they can only be updated.
+For information about policy and CLI precedence for mTLS configuration, refer to [How to deploy {{agent}}](/reference/fleet/deploy-elastic-agent.md#deploy-elastic-agent-policy-precedence) and [How to deploy {{fleet-server}}](/reference/fleet/deploy-fleet-server.md#deploy-fleet-server-policy-precedence).
 
 
 ::::{important}
@@ -74,7 +77,7 @@ During {{agent}} installation on premise use the following options:
 
 |     |     |
 | --- | --- |
-| `--certificate-authorities` | List of CA certificates that are trusted when {{fleet-server}} connects to {{agent}} |
+| `--certificate-authorities` | List of CA certificates that are trusted when {{agent}} connects to {{fleet-server}} |
 | `--elastic-agent-cert` | {{agent}} certificate to present to {{fleet-server}} during authentication |
 | `--elastic-agent-cert-key` | {{agent}} certificate key to present to {{fleet-server}} |
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
