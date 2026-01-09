@@ -31,7 +31,7 @@ The upgrade procedure depends on whether you are deploying the {{stack}} compone
 
 In this example, we're upgrading {{es}} and {{kib}} to {{version.stack}} by changing the `spec.version` field in each component.
 
-::::{dropdown} Show example manifest
+::::{dropdown} Example manifest
 :::{important}
 For production use, for {{stack}} version 8.16 and later, set the `vm.max_map_count` kernel setting to `1048576`; for {{stack}} version 8.15 and earlier, set `vm.max_map_count` to `262144`. Refer to [Virtual memory](/deploy-manage/deploy/cloud-on-k8s/virtual-memory.md) for more information.
 :::
