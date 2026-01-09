@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Hosted
 ---
 
@@ -46,7 +48,7 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Add the cross-cluster API key to the keystore of the local deployment [ec_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment_2]
+### Add the cross-cluster API key to the keystore of the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
