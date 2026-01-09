@@ -148,9 +148,9 @@ Depending on the function and type of field that you select, you can specify mor
 ### General layout [appearance-options]
 When creating or editing a visualization, open the {icon}`brush` **Style** panel to adjust:
 
-- **Title and subtitle**: Add context like “Last 24 hours”.
+- **Title**: Add context like “Last 24 hours”.
 - **Axes**: Set titles, units, scale (linear/log/percentage), and grid lines.
-- **Legend**: Position and truncation.
+- **Legend**: Adjust the legend settings to control how the data series are labeled and displayed alongside your chart.
 - **Tooltip**: Synchronized tooltips are enabled by default across panels on dashboards.
 
 ## Line chart examples
