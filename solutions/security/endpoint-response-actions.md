@@ -342,7 +342,7 @@ Example: `cancel --action="copy.sh" --comment="Canceled because it is stuck"`
 
 ### `memory-dump` [memory-dump]
 ```yaml {applies_to}
-stack: ga 9.3
+stack: ga 9.3+
 serverless: ga
 ```
 
