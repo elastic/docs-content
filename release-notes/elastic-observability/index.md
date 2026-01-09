@@ -29,7 +29,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes validation error with maintenance windows on lightweight Synthetics monitors [#247880]({{kib-pull}}247880).
 * Fixes related dashboards for ES Query and other stack rules supported in Observability [#247564]({{kib-pull}}247564).
 * Fixes console state from persisting across journey steps [#247376]({{kib-pull}}247376).
-* Fixes Agent from interpreting JS template literals as policy variables  [#247284]({{kib-pull}}247284).
+* Fixes Elastic Agent from interpreting JS template literals as policy variables  [#247284]({{kib-pull}}247284).
 * Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
 * Fixes default alerts flow from breaking when default rules are not defined [#245736]({{kib-pull}}245736).
 * Fixes error handling for tool response [#241425]({{kib-pull}}241425).
