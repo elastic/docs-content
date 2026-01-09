@@ -24,15 +24,18 @@ If you have a cross-cluster search environment and want to generate reports from
 Create the POST URL that triggers a report to generate PDF and CSV reports.
 
 ### PDF and PNG reports [pdf-png-post-url]
+```{applies_to}
+serverless: unavailable
+```
 
 To create the POST URL for PDF reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
 2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
 
-    * {applies_to}`stack: ga 9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF or PNG option, then click **Copy POST URL**.
-    * {applies_to}`stack: ga 9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
-    * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga =9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF or PNG option, then click **Copy POST URL**.
+    * {applies_to}`stack: ga =9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
 
 ### CSV reports [csv-post-url]
 
@@ -42,8 +45,8 @@ To create the POST URL for CSV reports:
 2. Open the saved Discover session you want to share.
 3. In the toolbar, do one of the following:
   
-   * {applies_to}`stack: ga 9.0` Click **Share > Export > Copy POST URL**.
-   * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.
+   * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.  
+   * {applies_to}`stack: ga =9.0` Click **Share > Export > Copy POST URL**.
 
 
 ## Use Watcher [use-watcher]
@@ -184,7 +187,7 @@ Save time by setting up a recurring task that automatically generates reports an
 
 ### Prerequisites [scheduled-reports-reqs]
 
-* To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
+* {applies_to}`serverless: unavailable` To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
@@ -242,7 +245,7 @@ Save time by setting up a recurring task that automatically generates reports an
    If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
    ::::
 
-   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3`: (Optional) Enter additional details for email notifications:
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+`: (Optional) Enter additional details for email notifications:
 
     * **Cc**: Enter one or more email addresses. Recipients will get a copy of the report, be included on all replies, and have view access to all other recipients' addresses.
     * **Bcc**: Enter one or more email addresses. Recipients will get a copy of the report, but won't be included on all replies and won't have view access to the other recipients' addresses.
@@ -261,8 +264,8 @@ A message appears, indicating that the schedule is available on the **Reporting*
 
 To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
 
-- **Disable schedule**: {applies_to}`stack: ga 9.1` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
-- **Delete schedule**: {applies_to}`stack: ga 9.3` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+- **Disable schedule**: {applies_to}`stack: ga 9.1+` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
+- **Delete schedule**: {applies_to}`stack: ga 9.3+` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 

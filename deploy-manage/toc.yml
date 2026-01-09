@@ -784,6 +784,7 @@ toc:
           - file: cloud-organization/billing/billing-models.md
           - file: cloud-organization/billing/add-billing-details.md
           - file: cloud-organization/billing/view-billing-history.md
+          - file: cloud-organization/billing/manage-billing-notifications.md
           - file: cloud-organization/billing/manage-subscription.md
           - file: cloud-organization/billing/monitor-analyze-usage.md
           - file: cloud-organization/billing/ecu.md

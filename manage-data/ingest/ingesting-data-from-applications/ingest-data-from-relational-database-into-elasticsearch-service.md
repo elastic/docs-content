@@ -27,9 +27,9 @@ For this tutorial you need a source MySQL instance for Logstash to read from. A 
 
 ## Create a deployment [ec-db-logstash-trial]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} Elastic Cloud Hosted
+:::{applies-item} ess:
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
 3. Select **Create deployment**.
@@ -40,7 +40,7 @@ For this tutorial you need a source MySQL instance for Logstash to read from. A 
 Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 :::
 
-:::{tab-item} Elastic Cloud Enterprise
+:::{applies-item} ece:
 1. Log into the Elastic Cloud Enterprise admin console.
 2. Select **Create deployment**.
 3. Give your deployment a name. You can leave all other settings at their default values.
@@ -294,7 +294,6 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
         ilm_enabled => false
         cloud_id => "<DeploymentName>:<ID>" <1>
         cloud_auth => "elastic:<Password>" <2>
-        ssl => true
         # api_key => "<myAPIid:myAPIkey>"
       }
     }
@@ -355,7 +354,6 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
           elasticsearch {
             index => "rdbms_idx"
             cloud_id => "<myDeployment>"
-            ssl => true
             ilm_enabled => false
             api_key => "2TBR42gBabmINotmvZjv:tV1dnfF-GHI59ykgv4N0U3"
             # user => "<Username>"

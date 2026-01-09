@@ -15,11 +15,11 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default `General Purpose LLM`. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
+* Your Elastic deployment or project comes with an [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) with a default LLM. This connector is used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to the documentation.
 
-* You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview 9.1, ga 9.2` {applies_to}`serverless: ga`
+* You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
-* You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
+* You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
 ## Region and hosting [eis-regions]
 
@@ -31,7 +31,7 @@ ELSER requests are managed by Elastic's own EIS infrastructure and are also host
 ## ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 ```{applies_to}
-stack: preview 9.1, ga 9.2
+stack: preview =9.1, ga 9.2+
 serverless: ga
 ```
 
@@ -44,13 +44,6 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 #### Get started with semantic search with ELSER on EIS
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
-
-### Limitations
-
-#### Batch size
-
-Batches are limited to a maximum of 16 documents.
-This is particularly relevant when using the [_bulk API]({{es-apis}}operation/operation-bulk) for data ingestion.
 
 ## `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
 
@@ -83,9 +76,10 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 | Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
-| General Purpose LLM   | 50              | -                       | -                       | No rate limit on tokens  |
+| Claude Sonnet 3.7     | 400             | -                       | -                       | No rate limit on tokens  |
+| Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
 | ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
-| `jina-embeddings-v3`  | 500             | 3,000,000               | 500,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
 ## Pricing
 

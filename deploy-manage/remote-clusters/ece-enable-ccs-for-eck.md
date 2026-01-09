@@ -16,7 +16,7 @@ sub:
 
 # Connect {{ece}} deployments to {{eck}} clusters [ece-enable-ccs-for-eck]
 
-These steps describe how to configure remote clusters between an {{es}} cluster in {{ece}} (ECE) and an {{es}} cluster running within [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that's done, you'll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+These steps describe how to configure remote clusters between an {{es}} cluster in {{ece}} (ECE) and an {{es}} cluster running within [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that's done, you'll be able to [run CCS queries from {{es}}](/explore-analyze/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 :::{include} _snippets/terminology.md
 :::
