@@ -14,28 +14,24 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 
 ## Prerequisites [_prerequisites]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} {{stack}}
-:sync: stack
-
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](/solutions/observability/get-started.md).
-* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
-* An {{apm-agent}} key for authenticating your EDOT SDKs. To create one, refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
-* An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
-
-:::
-
-:::{tab-item} {{serverless-short}}
-:sync: serverless
+:::{applies-item} serverless:
 
 * An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-* An {{apm-agent}} key for authenticating your EDOT SDKs. To create one, refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
 * An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
-
+* An {{apm-agent}} key for authenticating your EDOT SDKs. To create one, refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
 :::
+
+:::{applies-item} stack:
+
+* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
+* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+* An {{edot}} (EDOT) Collector or the contrib OpenTelemetry Collector running on the host.
+* An {{apm-agent}} key for authenticating your EDOT SDKs. To create one, refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md).
+:::
+
 ::::
 
 ## Install the EDOT Collector [_install_edot_collector]
@@ -48,11 +44,9 @@ Refer to the [EDOT Quickstarts](/solutions/observability/get-started/opentelemet
 
 Follow these steps to collect application telemetry data using the EDOT SDKs:
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} Elastic Stack
-:sync: stack
+::::{applies-item} stack:
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Application**, and then select **OpenTelemetry**.
@@ -73,8 +67,7 @@ If your application runs on {{k8s}}, the OpenTelemetry operator automatically in
 
 ::::
 
-::::{tab-item} Serverless
-:sync: serverless
+::::{applies-item} serverless:
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. Under **What do you want to monitor?** select **Application**, and then select **OpenTelemetry**.

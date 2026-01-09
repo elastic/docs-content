@@ -218,7 +218,7 @@ Use additional API and analysis tools to interact with your data.
 Use the management or project settings pages to access and manage:
 
 - Additional security features
-- {applies_to}`stack: ga` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
+- {applies_to}`serverless: unavailable` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
 - [{{integrations}}](/reference/fleet/manage-integrations.md)
 - Indices, data streams, and rollups
 - {applies_to}`serverless: ga` [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project

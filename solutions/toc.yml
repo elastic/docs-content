@@ -669,18 +669,19 @@ toc:
               - file: security/cloud/capture-environment-variables.md
       - file: security/integrations/ingest-third-party-security-data.md
         children:
-          - file: security/integrations/cncf-falco.md
-          - file: security/integrations/aws-security-hub.md
-          - file: security/integrations/wiz.md
-          - file: security/integrations/qualys.md
-          - file: security/integrations/tenablevm.md
-          - file: security/integrations/rapid7.md
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
+          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/cncf-falco.md
+          - file: security/integrations/google-security-command-center.md
           - file: security/integrations/microsoft-defender-for-cloud.md
           - file: security/integrations/microsoft-defender-for-endpoint.md
           - file: security/integrations/microsoft-defender-xdr.md
-          - file: security/integrations/google-security-command-center.md
+          - file: security/integrations/prisma-cloud.md
+          - file: security/integrations/qualys.md
+          - file: security/integrations/rapid7.md
+          - file: security/integrations/tenablevm.md
+          - file: security/integrations/wiz.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md

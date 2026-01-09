@@ -92,10 +92,8 @@ The following table lists all the rules included in the [Elastic Vale style pack
 | Rule        | Description |
 |-------------|-------------|
 | [Accessibility](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Accessibility.yml) | Flags ableist language that defines people by their disability. Refer to [Avoid violent, offensive, ableist terminology](./style-guide/accessibility.md#avoid-violent-offensive-ableist-terminology). |
-| [Acronyms](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Acronyms.yml) | Checks that acronyms are defined before being used (unless they're common exceptions). Refer to [Abbreviations and acronyms](./style-guide/grammar-spelling.md#abbreviations-and-acronyms). |
 | [Articles](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Articles.yml) | Ensures correct article usage ("a" vs "an") based on pronunciation, not spelling. Refer to [Using the right article](./style-guide/grammar-spelling.md#using-the-right-article). |
 | [BritishSpellings](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/BritishSpellings.yml) | Suggests American English spellings instead of British English variants. Refer to [American English](./style-guide/grammar-spelling.md#american-english). |
-| [Capitalization](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Capitalization.yml) | Checks that headings use sentence-style capitalization. Refer to [Capitalization](./style-guide/grammar-spelling.md#capitalization). |
 | [ConflictMarkers](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/ConflictMarkers.yml) | Detects Git merge conflict markers in source code. |
 | [DeviceAgnosticism](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/DeviceAgnosticism.yml) | Suggests device-agnostic language (for example, "select" instead of "tap"). Refer to [Use device-agnostic language](./style-guide/accessibility.md#accessibility-guidelines). |
 | [Dimensions](https://github.com/elastic/vale-rules/blob/main/styles/Elastic/Dimensions.yml) | Suggests using "MxN" format instead of "M X N" for dimensions. Refer to [Dimensions](./style-guide/formatting.md#dimensions). |
