@@ -22,17 +22,19 @@ Here is a detailed breakdown of the documentation structure:
 
 ## Applicability badges
 
-Because you can deploy Elastic products in different ways (like on {{ecloud}} or in your own data center) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
+Because you can deploy Elastic products in different ways and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
 
-These badges appear at the top of a page or section and tell you which products, deployment models, and versions the content applies to. They also indicate the maturity level of a feature, such as **beta**, **technical preview**, or **generally available (GA)**. This system ensures that you can identify content specific to your environment and version.
+These badges appear at the top of a page or section and tell you which products, deployment models, and versions the content applies to. They also indicate the maturity level of a feature. This system ensures that you can identify content specific to your environment and version.
+
+To learn more about how applicability badges work and how they're used in our cumulative documentation system, refer to [Write cumulative documentation](/contribute-docs/how-to/cumulative-docs/index.md) and [Badge usage and placement](/contribute-docs/how-to/cumulative-docs/badge-placement.md).
 
 :::{tip}
-A **Stack** badge indicates that a page applies to [{{stack}}](/get-started/the-stack.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it will have **{{serverless-short}}** and Stack badges.
+A **Stack** badge indicates that a page applies to [{{stack}}](/get-started/the-stack.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it has **{{serverless-short}}** and Stack badges.
 :::
 
 ## Page options
 
-On each documentation page, you'll find several links that allow you to interact with the content:
+On each documentation page, you can find several links that allow you to interact with the content:
 
 * **View as Markdown**: This link shows you the raw Markdown source code for the page you're viewing. This can be helpful if you want to reuse the source or feed the document to AI.  
 * **Edit this page**: Selecting this link will take you directly to the page's source file in its GitHub repository. From there, you can propose edits, which our team will review.  
@@ -40,7 +42,7 @@ On each documentation page, you'll find several links that allow you to interact
 
 ## Versioned documentation
 
-Starting with Elastic Stack 9.0, Elastic no longer publishes separate documentation sets for each minor release. Instead, all changes in the 9.x series are included in a single, continuously updated documentation set.
+Starting with {{stack}} 9.0, Elastic no longer publishes separate documentation sets for each minor release. Instead, all changes in the 9.x series are included in a single, continuously updated documentation set.
 
 This approach helps:
 
