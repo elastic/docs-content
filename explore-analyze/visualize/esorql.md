@@ -23,8 +23,8 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 
 1. Add a new panel from your dashboard.
 
-    * {applies_to}`stack: ga 9.2` Select **Add** > **New panel** in the toolbar.
-    * {applies_to}`stack: ga 9.0` Click **Add panel** in the dashboard toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **New panel** in the toolbar.
+    * {applies_to}`stack: ga 9.0-9.1` Click **Add panel** in the dashboard toolbar.
 
    ::::{tip}
    If you haven't created a [data view](/explore-analyze/find-and-organize/data-views.md) and you don't have a dashboard yet, the **Dashboards** page offers you the possibility to **Try ES|QL** right away. By selecting this option, a dashboard is created with an ES|QL visualization that you can interact with and configure using ES|QL.
@@ -41,7 +41,7 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
     ![Previewing an ESQL visualization](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt69dcceb4f1e12bc1/66c752d6aff77d384dc44209/edit-esql-visualization.gif "")
 
     :::{note}
-    {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
+    :applies_to: { "stack": "ga 9.1+", "serverless": "ga" }
 
     When you edit the query and run it again, the visualization configuration persists as long as it is compatible with the query changes. Refer to [](#chart-config-persist) for more details.
     :::
@@ -72,8 +72,8 @@ serverless: ga
 When you edit the {{esql}} query and run it again, the visualization configuration persists as you defined it as long as it is compatible with the query changes.
 
 The chart configuration resets or follows automatic suggestions when:
-- {applies_to}`stack: ga 9.2` You manually select a different chart type incompatible with the one previously selected.
-- {applies_to}`stack: ga 9.2` You create a new chart and haven't edited the visualization's options yet.
+- {applies_to}`stack: ga 9.2+` You manually select a different chart type incompatible with the one previously selected.
+- {applies_to}`stack: ga 9.2+` You create a new chart and haven't edited the visualization's options yet.
 - The query changes significantly and no longer returns compatible columns.
 
 ## Create an alert from your {{esql}} visualization
