@@ -43,7 +43,7 @@ After Attack discovery outlines your threat landscape, use Elastic AI Assistant 
 
 ## Use AI Assistant to analyze a threat [use-case-incident-reporting-use-ai-assistant-to-analyze-a-threat]
 
-From a discovery on the Attack discovery page, click **View in AI Assistant** to start a chat that includes the discovery as context.
+From a discovery on the Attack discovery page, click **View in AI Assistant** or **Add to chat** to start a chat that includes the discovery as context.
 
 :::{image} /solutions/images/security-attck-disc-remediate-threat.gif
 :alt: A dialogue with AI Assistant that has the attack discovery as context
