@@ -3,8 +3,6 @@ applies_to:
   deployment:
     ess: all
     ece: all
-    eck: unavailable
-    self: all
 products:
   - id: kibana
 ---
