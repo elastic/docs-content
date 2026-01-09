@@ -11,7 +11,7 @@
 **Important notes:**
 
 - Versions are always displayed as **Major.Minor** (for example, `9.1`) in badges, regardless of whether you specify patch versions in the source.
-- Each version statement corresponds to the **latest patch** of the specified minor version (for example, `9.1` represents 9.1.0, 9.1.1, 9.1.6, and so on).
+- Each version statement corresponds to the **latest patch** of the specified minor version (for example, `9.1` represents 9.1.6 if 9.1.6 is the latest patch available for the 9.1 series).
 - When critical patch-level differences exist, use plain text descriptions alongside the badge rather than specifying patch versions.
 
 :::{note}
