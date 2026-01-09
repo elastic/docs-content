@@ -13,7 +13,7 @@ applies_to:
 
 You can run Elastic on any infrastructure, allowing you to choose the model that best fits your operational needs.
 
-Use this page for a quick overview of your options for deploying Elastic.
+Use this page for a quick overview of your options for deploying Elastic. This version or higher. Whitelist this doc.
 
 ## Why your deployment choice matters
 
