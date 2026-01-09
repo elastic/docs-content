@@ -33,12 +33,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
 * Adds a server configuration setting that allows you to disable the automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
 * Persists the visual event analyzer's data view selection in local storage [#245002]({{kib-pull}}245002).
-* Improves general system responsiveness while {{elastic-defend}} is installed.
+* Improves responsiveness on systems running {{elastic-defend}}.
 
 ### Fixes [elastic-security-9.2.4-fixes]
 * Fixes an issue where the Security AI Assistant API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
 * Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
-* Fixes an issue in the notes filter where the `createdBy` field didn't use exact matching [#247351]({{kib-pull}}247351).
+* Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
 * Fixes an issue where special characters in {{esql}} queries for risk scoring were not handled correctly [#247060]({{kib-pull}}247060).
 * Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
 * Fixes an issue where the **Integrations** section on the privileged user monitoring **Manage data sources** page always showed a "no data stream" warning [#246180]({{kib-pull}}246180).
