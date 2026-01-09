@@ -181,9 +181,8 @@ Here are some common scenarios you might come across:
 
 * Content is about both Elastic Stack components and the Serverless UI.
   ([example](example-scenarios.md#stateful-serverless))
-* Content is primarily about orchestrating, deploying or configuring an installation.
-  % TO DO: Add example
-  % ([example](example-scenarios.md#))
+* Content is primarily about orchestrating, deploying, or configuring an installation.
+  ([example](example-scenarios.md#workflow-tabs))
 * Content is primarily about a product following its own versioning schema.
   % TO DO: Add example
   % ([example](example-scenarios.md#))
