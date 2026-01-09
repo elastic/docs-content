@@ -76,3 +76,16 @@ When you create a new agentless integration, a new agent policy appears within t
 
 No, agentless integrations can not use a specific range of static IP addresses for configuring ingress and egress allow and deny rules.
 
+## Do agentless integrations work if I'm using traffic filtering?
+
+::::{applies-switch}
+
+:::{applies-item} serverless: ga
+Agentless integrations do not support traffic filtering.
+:::
+
+:::{applies-item} stack: ga 9.1+
+Agentless integrations support traffic filtering. No additional configuration is necessary.
+:::
+
+::::
