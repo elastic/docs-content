@@ -9,7 +9,7 @@ products:
 description: Use Discover to search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards.
 ---
 
-# Discover [discover]
+# Explore and analyze data with Discover [discover]
 
 **Discover** is the primary tool for exploring your {{product.elasticsearch}} data in {{product.kibana}}. Search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards. Whether investigating issues, analyzing trends, or validating data quality, **Discover** offers a flexible interface for understanding your data.
 
@@ -43,15 +43,20 @@ New to Discover? Start with these resources:
 
 Once you're familiar with the basics, explore these guides for specific tasks:
 
-* **[Search and filter data](discover/discover-get-started.md)** - Build queries and apply filters to narrow down your results.
+* **[Search and filter data](discover/search-and-filter.md)** - Build queries and apply filters to narrow down your results.
 * **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
 * **[Save a search for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
 
 ## Advanced features
 
-The following guides cover additional features you can use in Discover:
+For more sophisticated use cases, see **[Advanced Discover features](discover/discover-advanced-guides.md)**:
 
-* [Add runtime fields to your {{data-source}}](discover/discover-get-started.md#add-field-in-discover)
-* [Run queries in the background](discover/background-search.md)
-* [Analyze field statistics and patterns](discover/run-pattern-analysis-discover.md)
-* [Search for relevance](discover/discover-search-for-relevance.md)
+* Compare documents side by side
+* Add runtime fields to your {{data-source}}
+* Work with multiple tabs
+* Understand context-aware experiences
+* Run queries in the background
+* Generate alerts
+* Analyze field statistics and patterns
+* Search for relevance
+

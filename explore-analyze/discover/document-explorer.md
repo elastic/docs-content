@@ -6,15 +6,15 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Customize the Discover view with flexible display options for the document table, chart, and sidebar. Adjust columns, density, row height, and field visibility for optimal exploration.
+description: Customize the Discover interface to optimize your data exploration. Adjust columns, table density, row height, sample size, and sorting options.
 ---
 
 # Customize the Discover view [document-explorer]
 
-**Discover** offers flexible customization options to optimize your data exploration experience. Adjust the document table layout, modify column arrangements, control chart and sidebar visibility, and configure display density to focus on the data that matters most. These customizations persist across sessions and help you work more efficiently with your {{product.elasticsearch}} data.
+Adjust the **Discover** interface to match your workflow and data exploration needs. Customize table columns, density, and row height to display your data effectively. Configure sample sizes, sorting, and layout to focus on the information that matters most.
 
 :::{tip}
-Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
+**Discover** provides default [context-aware experiences](context-aware-discover.md) tailored to your data type. You can further customize these views to suit your specific needs.
 :::
 
 :::{image} /explore-analyze/images/kibana-hello-field.png
@@ -93,7 +93,7 @@ To sort by multiple fields:
 
 Change how {{kib}} displays a field.
 
-1. Click the column header for the field, and then select **Edit data view field.**
+1. Click the column header for the field, and then select **Edit {{data-source}} field.**
 2. In the **Edit field** form, change the field name and format.
    For detailed information on formatting options, refer to [Format data fields](../find-and-organize/data-views.md#managing-fields).
 
@@ -112,7 +112,7 @@ Narrow your results to a subset of documents so you're comparing the data of int
    :::
 
 
-You can also compare individual field values using the [**Compare selected** option](discover-get-started.md#compare-documents-in-discover).
+You can also compare individual field values using the [**Compare selected** option](compare-documents.md).
 
 
 ### Set the number of results per page [document-explorer-configure-table]
