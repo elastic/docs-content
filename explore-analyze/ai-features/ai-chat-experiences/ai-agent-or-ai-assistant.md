@@ -1,4 +1,5 @@
 ---
+description: Learn about the differences between the AI Assistant and Agent Builder chat experiences and how to switch between the two.
 applies_to:
   stack: preview 9.3
   serverless: preview
@@ -17,12 +18,14 @@ products:
 
 [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
 
-Agent Builder powers the AI Agent chat experience. Currently, AI Agent is available by default for Search users, and as an opt-in feature for Security and {{observability}} users. When you opt in, it replaces the AI Assistant chat experience. While Agent Builder offers expanded functionality compared to AI Assistant, it does not yet support a number of AI Assistant features. Users who rely on those AI Assistant features may not want to opt in immediately. For this reason, we've made it easy to try out Agent Builder and switch back to AI Assistant at any time.
+Agent Builder powers the AI Agent chat experience. Currently, AI Agent is available by default for {{es}} solution users, and as an opt-in feature for Security solution and {{observability}} solution users. When you opt in, it replaces the AI Assistant chat experience. You can opt in to Agent Builder and switch back to AI Assistant at any time.
+
+While Agent Builder offers expanded functionality compared to AI Assistant, it does not yet support a number of AI Assistant features. If you rely on AI Assistant capabilities today, consider the differences between each experience before opting in.
 
 Use this page to learn about:
 
 - [How to switch between the AI Assistant and Agent Builder chat experiences](#switch-between-chat-experiences)
-- [Feature differences between AI Assistants and Agent Builder](#feature-differences-between-agent-builder-and-ai-assistant)
+- [Feature differences between AI Assistant and Agent Builder](#feature-differences-between-agent-builder-and-ai-assistant)
 
 ## Switch between chat experiences
 
@@ -58,11 +61,11 @@ Agent Builder doesn't yet support all AI Assistant features. The specific differ
 | **Citations** | ❌ | ✅ |
 | **Audit logging** | ❌ | ✅ |
 | **Quick prompts** | ❌ | ✅ |
+| **In-chat previews of attached data** | ❌ | ✅ |
 | **Use-case specific agents** | ✅ | ❌ |
 | **Custom agent creation** | ✅ | ❌ |
 | **Custom tool selection** | ✅ | ❌ |
 
-Also, Agent Builder chats do not show previews of data you attach to a message, such as Alerts and Attacks.
 :::
 
 :::{tab-item} Elastic {{observability}} and Search
@@ -85,4 +88,10 @@ Also, Agent Builder chats do not show previews of data you attach to a message, 
 
 ::::
 
-In addition, the APIs vary for [Agent Builder](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder), [AI Assistant for Security](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api), and [AI Assistant for Observability](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-observability_ai_assistant).
+## API differences between Agent Builder and AI Assistant
+
+Each AI chat experience has different APIs. To learn which actions each option supports, refer to:
+
+- [Agent Builder](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)
+- [AI Assistant for Security](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api)
+- [AI Assistant for Observability](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-observability_ai_assistant)
