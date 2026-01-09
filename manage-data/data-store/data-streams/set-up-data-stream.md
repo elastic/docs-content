@@ -224,6 +224,11 @@ PUT _index_template/my-index-template
 
 ## Create the data stream [create-data-stream]
 
+:::{tip}
+:applies_to: {"stack": "ga 9.3+", "serverless": "ga"}
+Starting with {{stack}} version 9.3, you can create classic data streams directly in the [**Streams**](/solutions/observability/streams/streams.md) UI in {{kib}}. This provides a simpler alternative to the multi-step API-based approach described below.
+:::
+
 [Indexing requests](../data-streams/use-data-stream.md#add-documents-to-a-data-stream) add documents to a data stream. These requests must use an `op_type` of `create`. Documents must include a `@timestamp` field.
 
 To automatically create your data stream, submit an indexing request that targets the stream’s name. This name must match one of your index template’s index patterns.
@@ -290,7 +295,7 @@ To get information about a data stream in {{kib}}:
 
 :::{tip}
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
-Starting with {{es}} version 9.2, you can use the [**Streams**](/solutions/observability/streams/streams.md) page to view the details of a data stream. The **Streams** page provides a centralized interface for managing your data in {{kib}}.Select a stream to view its details.
+Starting with {{stack}} version 9.2, you can use the [**Streams**](/solutions/observability/streams/streams.md) page to view the details of a data stream. The **Streams** page provides a centralized interface for managing your data in {{kib}}. Select a stream to view its details.
 :::
 
 :::
