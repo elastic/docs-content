@@ -120,13 +120,9 @@ This means that badges always appear to users from newest to oldest, which is th
 
 For example this syntax:
 
-<<<<<<< Updated upstream
-{applies_to}`stack: preview =9.0, beta =9.1, ga 9.2+`
-=======
 ```
 {applies_to}`stack: preview =9.0, beta =9.1, ga 9.2+`
 ```
->>>>>>> Stashed changes
 
 Results in this badge:
 

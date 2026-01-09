@@ -304,11 +304,7 @@ applies_to:
 ### Assign colors to terms [assign-colors-to-terms]
 
 ```{applies_to}
-<<<<<<< Updated upstream
-stack: ga 9.1+, preview =9.0,
-=======
 stack: ga 9.1+, preview =9.0
->>>>>>> Stashed changes
 serverless: ga
 ```
 
