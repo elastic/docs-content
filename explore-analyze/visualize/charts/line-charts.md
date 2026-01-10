@@ -144,7 +144,14 @@ Depending on the function and type of field that you select, you can specify mor
     - **Color mapping**: Determine how colors are assigned to your breakdown series.
 
 ### General layout [appearance-options]
-When creating or editing a visualization, open the {icon}`brush` **Style** panel to adjust:
+
+When creating or editing a visualization, you can adjust the following settings.
+
+   :::{include} ../../_snippets/line-chart-style-settings.md
+   :::
+
+   :::{include} ../../_snippets/line-chart-legend-settings.md
+   :::
 
 - **Title**: Add context like “Last 24 hours”.
 - **Axes**: Set titles, units, scale (linear/log/percentage), and grid lines.
