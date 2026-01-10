@@ -12,7 +12,7 @@ Line charts are ideal for visualizing how metrics evolve over time, spotting sea
 
 You can create line charts in {{kib}} using [**Lens**](../lens.md).
 
-![Example Lens line chart](../../images/kibana-line.png)
+![Example Lens line chart](../../images/kibana-line-new.png)
 
 ## Build a line chart
 
