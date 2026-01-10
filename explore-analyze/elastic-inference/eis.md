@@ -81,7 +81,7 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 | ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
-*Previously named *Elastic Managed LLM* (9.0–9.1) and *General Purpose LLM* (9.2).
+*Previously named *Elastic Managed LLM* (9.0–9.2).
 
 ## Pricing
 
