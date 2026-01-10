@@ -34,9 +34,7 @@ Using the visualization type dropdown, select **Line**.
 
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Drag a time field to the **Horizontal axis** and a numeric field to the **Vertical axis**. {{kib}} automatically selects an appropriate aggregation function compatible with the selected field.
-
-Refer to [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for more information.
+2. Drag a [time field](elasticsearch://reference/elasticsearch/mapping-reference/date.md) to the **Horizontal axis** and a numeric field to the **Vertical axis**. {{kib}} automatically selects an appropriate aggregation function compatible with the selected field.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
