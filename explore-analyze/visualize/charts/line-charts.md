@@ -67,7 +67,7 @@ For more chart configuration options, go to the [Line chart settings](#settings)
 
 In line charts, you can enable time shift to compare the current value with a prior time range and identify deltas.
 
-![Example Lens line chart current previous](../../images/kibana-line-current-previous.png)
+![Example Lens line chart current previous](../../images/kibana-line-current-previous.png "=75%")
 
 1. Create a line chart with a time-based **Horizontal axis** and your main metric on **Vertical axis**, for example: `bytes`.
 2. Duplicate the layer:
