@@ -76,10 +76,12 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 
 | Model                 | Request/minute  | Tokens/minute (ingest)  | Tokens/minute (search)  | Notes                    |
 |-----------------------|-----------------|-------------------------|-------------------------|--------------------------|
-| Claude Sonnet 3.7     | 400             | -                       | -                       | No rate limit on tokens  |
+| Claude Sonnet 3.7 *   | 400             | -                       | -                       | No rate limit on tokens  |
 | Claude Sonnet 4.5     | 400             | -                       | -                       | No rate limit on tokens  |
 | ELSER                 | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | `jina-embeddings-v3`  | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+
+*Previously named *Elastic Managed LLM* (9.0–9.1) and *General Purpose LLM* (9.2).
 
 ## Pricing
 
