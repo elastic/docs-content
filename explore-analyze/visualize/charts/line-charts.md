@@ -86,7 +86,7 @@ You can also compute the relative change by defining the axis data with a [formu
 
 Use reference lines to indicate important thresholds, such as SLOs or alert limits.
 
-![Example Lens line chart reference lines](../../images/kibana-line-reference-lines.png)
+![Example Lens line chart reference lines](../../images/kibana-line-reference-lines.png "=75%")
 
 1. In the chart settings, add a static value reference line to mark your target or threshold visually.
 2. Use the **Text decoration** setting to provide a name, for example, `Target` or `SLO`, choose a color, and optionally a band.
