@@ -34,9 +34,7 @@ Using the visualization type dropdown, select **Line**.
 
 :::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Drag a time field to the **Horizontal axis** and a numeric field to the **Vertical axis**. {{kib}} automatically selects an appropriate aggregation function compatible with the selected field.
-
-Refer to [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) for more information.
+2. Drag a [time field](elasticsearch://reference/elasticsearch/mapping-reference/date.md) to the **Horizontal axis** and a numeric field to the **Vertical axis**. {{kib}} automatically selects an appropriate aggregation function compatible with the selected field.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
@@ -52,7 +50,7 @@ You can tweak the appearance of your chart by adjusting axes, legends, and serie
 **Provide context**
 :   Add a legend and descriptive axis titles, or remove them for obvious axes.
 
-For layout, hierarchy, and color guidance on dashboards, check the EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
+For layout, hierarchy, and color guidance on dashboards, check EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
 For more chart configuration options, go to the [Line chart settings](#settings) section.
 :::::
 
@@ -69,7 +67,7 @@ For more chart configuration options, go to the [Line chart settings](#settings)
 
 In line charts, you can enable time shift to compare the current value with a prior time range and identify deltas.
 
-![Example Lens line chart current previous](../../images/kibana-line-current-previous.png)
+![Example Lens line chart current previous](../../images/kibana-line-current-previous.png "=75%")
 
 1. Create a line chart with a time-based **Horizontal axis** and your main metric on **Vertical axis**, for example: `bytes`.
 2. Duplicate the layer:
@@ -88,7 +86,7 @@ You can also compute the relative change by defining the axis data with a [formu
 
 Use reference lines to indicate important thresholds, such as SLOs or alert limits.
 
-![Example Lens line chart reference lines](../../images/kibana-line-reference-lines.png)
+![Example Lens line chart reference lines](../../images/kibana-line-reference-lines.png "=75%")
 
 1. In the chart settings, add a static value reference line to mark your target or threshold visually.
 2. Use the **Text decoration** setting to provide a name, for example, `Target` or `SLO`, choose a color, and optionally a band.

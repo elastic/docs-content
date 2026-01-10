@@ -1,8 +1,8 @@
 ---
 applies_to:
-  stack: preview 9.1
+  stack: ga 9.3, preview 9.1
   serverless:
-    security: preview
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -16,7 +16,7 @@ The privileged user monitoring feature requires:
   * {applies_to}`stack: ` The appropriate [subscription](https://www.elastic.co/subscriptions)
   * {applies_to}`serverless: ` The appropriate [feature tier](https://www.elastic.co/pricing/serverless-security)
 
-To enable this feature, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+{applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To enable this feature, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
 
 To use this feature, you need:
   * {applies_to}`stack: ` A role with the appropriate [privileges](#privmon_privs)
@@ -41,7 +41,7 @@ serverless:
 
 ## Known limitations
 
-* Currently, none of the privileged user monitoring visualizations support [cross-cluster search](/solutions/search/cross-cluster-search.md) as part of the data that they query from. 
+* Currently, none of the privileged user monitoring visualizations support [cross-cluster search](/explore-analyze/cross-cluster-search.md) as part of the data that they query from. 
 
 * You can define up to 10,000 privileged users per data source.
 

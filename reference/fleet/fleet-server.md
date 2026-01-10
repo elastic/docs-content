@@ -1,16 +1,21 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# {{fleet-server}} [fleet-server]
+# What is {{fleet-server}}? [fleet-server]
 
 {{fleet-server}} is a component that connects {{agent}}s to {{fleet}}. It supports many {{agent}} connections and serves as a control plane for updating agent policies, collecting status information, and coordinating actions across {{agent}}s. It also provides a scalable architecture. As the size of your agent deployment grows, you can deploy additional {{fleet-server}}s to manage the increased workload.
 
 :::{note}
+:applies_to: serverless: unavailable
+
 On-premises {{fleet-server}} is not currently available for use in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {{observability}} and Security projects.
 :::
 
@@ -62,5 +67,9 @@ To learn more about deploying and scaling {{fleet-server}}, refer to:
 
 
 ## {{fleet-server}} secrets configuration [fleet-server-secrets-config]
+
+```{applies_to}
+serverless: unavailable
+```
 
 Secrets used to configure {{fleet-server}} can either be directly specified in configuration or provided through secret files. Refer to [{{fleet-server}} secrets](/reference/fleet/fleet-server-secrets.md) for more information.
