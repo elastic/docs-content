@@ -14,10 +14,11 @@ products:
   - id: apm
 ---
 
-# FIPS 140-2 compliance
+# FIPS compliance
 
-The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 140-2), titled "Security Requirements for Cryptographic Modules" is a U.S. government computer security standard used to approve cryptographic modules.
-- [{{es}}](/deploy-manage/security/fips-es.md) offers a FIPS 140-2 compliant mode and as such can run in a FIPS 140-2 configured JVM.
+The Federal Information Processing Standard (FIPS) Publication 140, titled "Security Requirements for Cryptographic Modules" is a U.S. government computer security standard used to approve cryptographic modules. FIPS 140-2 and its successor FIPS 140-3 define the security requirements that cryptographic modules must meet.
+
+- [{{es}}](/deploy-manage/security/fips-es.md) offers both FIPS 140-2 and FIPS 140-3 compliant modes and can run in a JVM configured with a FIPS-certified security provider.
 - [{{kib}}](/deploy-manage/security/fips-kib.md) offers a FIPS 140-2 compliant mode and as such can run in a Node.js environment configured with a FIPS 140-2 compliant OpenSSL3 provider.
 - Some [Ingest tools](/deploy-manage/security/fips-ingest.md), including {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}}, are available as FIPS compatible binaries and can be configured to use FIPS 140-2 compliant cryptography.
 
