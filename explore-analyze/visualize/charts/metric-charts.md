@@ -123,7 +123,7 @@ The metric visualization now shows the secondary metric as a comparison with a t
 
 ### Show progress by setting a maximum value [metric-progress]
 
-When creating **Metric** visualizations with numeric data, you can specify a maximum value to show progress toward a goal or capacity limit. When combined with the **Bar** supporting visualization option, this displays a progress bar that visually represents how close your current metric is to reaching the maximum value.
+When creating **Metric** visualizations with numeric data, you can specify a maximum value to show progress toward a goal or capacity limit. When combined with the **Bar** background chart option, this displays a progress bar that visually represents how close your current metric is to reaching the maximum value.
 
 | Without progress | With progress |
 |--------|-------|
@@ -140,8 +140,7 @@ To add a progress bar to your metric visualization:
    ![Metric maximum value option](../../images/metric-maximum-value.png "title =70%")
 
 4. Configure the **Primary metric** appearance to show the progress bar. Depending on the configuration of the primary metric, Lens might automatically set this option for you. If not, complete these steps:
-   1. In the primary metric configuration, find the **Supporting visualization** option.
-   2. Set **Type** to **Bar**.
+   1. In the primary metric configuration, set the **Background chart** to **Bar**.
    3. Optionally, change the orientation of the progress bar as needed.
 
 5. Apply your changes.
@@ -168,13 +167,17 @@ Customize your metric chart to display exactly the information you need, formatt
 :   Define the formatting of the primary metric, including:
     - **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
-    - **Color by value**: Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
-      - **Static**: Pick a color and its opacity. That color always remains the same and is independent from the metric's value.
-      - **Dynamic**: Define colors to apply to the chart based on the value of the primary metric.
-    - **Supporting visualization**: Display a visualization as background or on the side of the metric.
-      - **Type**: Select **Panel** for a unified background, **Line** for showing a light line chart in the background, or **Bar** for showing a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
-      - **Apply color to**: This option is available when you have selected **Panel** as supporting visualization type. Choose to apply the color defined to the background, or to the primary metric's value.
     - **Icon decoration**: Add an icon to the top right corner of the chart.
+    - **Background chart**: Options include:
+      - **None**: Show a unified background.    
+      - **Line**: Show a light line chart in the background.
+      - **Bar**: Show a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
+    - **Bar orientation**: Options include **Vertical** and **Horizontal**.
+    - **Color mode**: Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
+      - **Static**: The color always remains the same and is independent from the metric's value.
+        - **Select color**: Pick a color and its opacity.
+      - **Dynamic**: Define colors to apply to the chart based on the value of the primary metric.
+        - **Dynamic color mapping**: Use the color palette to define custom color ranges.
 
 ### Secondary metric settings [secondary-metric-options]
 
@@ -201,7 +204,7 @@ Customize your metric chart to display exactly the information you need, formatt
 :   An optional reference value that defines the upper bound for your metric. Specifying a maximum lets you show a progress bar in your metric chart. The progress is represented by your primary metric's value on a scale of 0 to the defined maximum value. This option is useful for showing progress toward goals or capacity limits.
 
     :::{note}
-    If a progress bar doesn't show after setting a maximum value, manually set the primary metric's **Supporting visualization** option to **Bar**.
+    If a progress bar doesn't show after setting a maximum value, manually set the primary metric's **Background chart** option to **Bar**.
     :::
 
     :::{include} ../../_snippets/lens-value-advanced-settings.md
@@ -260,7 +263,7 @@ The following examples show various configuration options that you can use for b
     * **Primary metric**: `count(kql='response.code >= "200" and response.code < "300"') / count(response.code)`
       * **Value format**: `Percent`
       * **Color by value**: `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
-      * **Supporting visualization:** "Line" to show evolution over time
+      * **Background chart**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Value format**: `Percent`
       * **Label**: Custom, set to `Target:`
@@ -274,7 +277,7 @@ The following examples show various configuration options that you can use for b
     * **Primary metric**: `count(kql='response.code >= 200 and response.code < 300') / count(response.code)`
       * **Value format**: `Percent`
       * **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
-      * **Supporting visualization:** "Line" to show evolution over time
+      * **Background chart:** "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Name**: `Target:`
       * **Value format**: `Percent`
