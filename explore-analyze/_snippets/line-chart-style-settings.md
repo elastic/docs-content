@@ -1,4 +1,4 @@
-:::{dropdown} Style settings
+:::{dropdown} Style
 Adjust the visual appearance of your line chart to control how the data series are labeled and displayed alongside your chart. Click {icon}`brush` to open the **Style** panel.
     
 **Appearance**
@@ -14,33 +14,19 @@ Adjust the visual appearance of your line chart to control how the data series a
     You can only use this option when the **Include empty rows** option of the chart is enabled or when a metric produces a null bucket. For example, if a moving average finds empty buckets.
     ```
     * **Hide**: Don't show gaps in data.
-      
-      ![Hide missing values](../images/charts-gaps-fill-hide.png "Hide missing values =50%")
-
     * **Zero**: Fill gaps by connecting starting and ending data points to zero.
-      
-      ![Fill gaps to zero](../images/charts-gaps-fill-zero.png "Fill gaps to zero =50%")
-
-    * **Linear**: Fill gaps by connecting related starting and ending data points together with a direct line.
-      
-      ![Fill gaps with a direct line](../images/charts-gaps-fill-linear.png "Fill gaps with a direct line =50%")
-    
+    * **Linear**: Fill gaps by connecting related starting and ending data points together with a direct line.   
     * **Last**: Fill gaps between data points with a horizontal or vertical line that uses the last ending point value, when available, to determine its position.
-      
-      ![Fill gaps with a straight line from last known data point](../images/charts-gaps-fill-last.png "Fill gaps with a straight line from last known data point =50%")
-
     * **Next**: Fill gaps between data points with a horizontal or vertical line that uses the next starting point value, when available, to determine its position.
-      
-      ![Fill gaps with a straight line from next known data point](../images/charts-gaps-fill-next.png "Fill gaps with a straight line from next known data point =50%")
 
-    **End values**
+    * **End values**
     :   If you've chosen to show missing values, you can also decide to extend data series to the edge of the chart. By default, end values are hidden.
         
         * **Hide**: Don't extend series to the edge of the chart.
         * **Zero**: Extend series as zero to the edge of the chart.
         * **Nearest**: Extend series with their first or last value to the edge of the chart.
 
-    **Show as dotted line**
+    * **Show as dotted line**
     :   If you've chosen to show missing values, you can turn on this option to show gaps as a dotted line.
 
 **Left axis**

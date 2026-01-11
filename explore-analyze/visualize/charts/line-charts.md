@@ -147,16 +147,11 @@ Depending on the function and type of field that you select, you can specify mor
 
 When creating or editing a visualization, you can adjust the following settings.
 
-   :::{include} ../../_snippets/line-chart-style-settings.md
-   :::
+:::{include} ../../_snippets/line-chart-style-settings.md
+:::
 
-   :::{include} ../../_snippets/line-chart-legend-settings.md
-   :::
-
-- **Title**: Add context like “Last 24 hours”.
-- **Axes**: Set titles, units, scale (linear/log/percentage), and grid lines.
-- **Legend**: Adjust the legend settings to control how the data series are labeled and displayed alongside your chart.
-- **Tooltip**: Synchronized tooltips are enabled by default across panels on dashboards.
+:::{include} ../../_snippets/line-chart-legend-settings.md
+:::
 
 ## Line chart examples
 
