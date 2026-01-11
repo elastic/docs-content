@@ -54,7 +54,7 @@ Modifying to the [nested](elasticsearch://reference/elasticsearch/mapping-refere
 
 To confirm the field totals of an index to check for mapping explosion:
 
-* Check {{es}} cluster logs for errors similar to `Limit of total fields [X] in index [Y] has been exceeded` where `X` is the value of  `index.mapping.total_fields.limit` and `Y` is your index. The correlated ingesting source log ({{beats}}, {{agent}}, or {{ls}} logs) error would be `Limit of total fields [X] has been exceeded while adding new fields [Z]` where `Z` is attempted new fields.
+* Check {{es}} cluster logs for errors similar to `Limit of total fields [X] in index [Y] has been exceeded` where `X` is the value of  `index.mapping.total_fields.limit` and `Y` is the index name. The correlated client-side ingesting source HTTP 400 `mapper_parsing_exception` log error would be `Limit of total fields [X] has been exceeded while adding new fields [Z]` where `Z` is attempted new fields.
 * Review the elected-master node logs for a flood of `[elasticsearch.server][INFO] update_mapping [_doc]` messages. If they time out, a large amount of `org.elasticsearch.cluster.metadata.ProcessClusterEventTimeoutException: failed to process cluster event (put-mapping [<INDEX_NAME>/<INDEX_UUID>]) within 30s` messages display as well.
 * For top-level fields, poll [field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps) for `fields=*`.
 * Search the output of [get mapping](../../manage-data/data-store/mapping.md) for `"type"`.
