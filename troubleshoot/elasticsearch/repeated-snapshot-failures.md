@@ -15,11 +15,11 @@ Repeated snapshot failures are usually an indicator of a problem with your deplo
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-{{es}} keeps track of the number of repeated failures when executing automated snapshots with [{{slm}} ({{slm-init}})](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) policies. If an automated snapshot fails too many times without a successful execution, the health API will report a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-health-failed-snapshot-warn-threshold) setting.
+{{es}} keeps track of the number of repeated failures when executing automated snapshots with [{{slm}} ({{slm-init}})](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) policies. If an automated snapshot fails too many times without a successful execution, the health API reports a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-health-failed-snapshot-warn-threshold) setting.
 
 ## Review snapshot policy failures
 
-In the event that an automated {{slm-init}} policy execution is experiencing repeated failures, follow these steps to get more information about the problem:
+If an automated {{slm-init}} policy execution is experiencing repeated failures, follow these steps to get more information about the problem:
 
 :::::::{tab-set}
 
@@ -106,7 +106,7 @@ In {{kib}}, you can view all configured {{slm-init}} policies and review their s
 GET _slm/policy/<affected-policy-name>
 ```
 
-The response will look like this:
+The response looks like this:
 
 ```console-result
 {
@@ -167,4 +167,4 @@ Snapshots can fail for a variety of reasons. If the failures are due to configur
 
 One common failure scenario is repository corruption. This occurs most often when multiple instances of {{es}} write to the same repository location. There is a [separate troubleshooting guide](diagnosing-corrupted-repositories.md) to fix this problem.
 
-In the event that snapshots are failing for other reasons check the logs on the elected master node during the snapshot execution period for more information.
+If snapshots are failing for other reasons check the logs on the elected master node during the snapshot execution period for more information.
