@@ -34,6 +34,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a server configuration setting that allows you to disable the automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
 * Persists the visual event analyzer's data view selection in local storage [#245002]({{kib-pull}}245002).
 * Improves responsiveness on systems running {{elastic-defend}}.
+* Optimizes the {{elastic-defend}} kernel driver to collect file and registry access events more efficiently, improving overall system responsiveness and reducing CPU usage.
 
 ### Fixes [elastic-security-9.2.4-fixes]
 * Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
