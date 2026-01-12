@@ -11,11 +11,17 @@ products:
 
 # Open and manage cases in {{kib}} [manage-cases]
 
-To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case features in {{kib}}.
+Open a new case to keep track of issues and share their details with colleagues. You can create and manage cases using the cases UI.
+
+:::{note} 
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription or feature tier](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](../../../explore-analyze/alerts-cases/cases/setup-cases.md) for more information.
+:::
 
 ## Open a new case [open-case]
 
-Open a new case to keep track of issues and share their details with colleagues.
+To open a case:
 
 1. Go to **Management > {{stack-manage-app}} > Cases**, then click **Create case**.
    :::{image} /explore-analyze/images/kibana-cases-create.png
@@ -82,26 +88,6 @@ For self-managed {{kib}}:
 
 When you subsequently add assignees to cases, they receive an email.
 
-## Add files [add-case-files]
-
-After you create a case, you can upload and manage files on the **Files** tab:
-
-:::{image} /explore-analyze/images/kibana-cases-files.png
-:alt: A list of files attached to a case
-:screenshot:
-:::
-
-The acceptable file types and sizes are affected by your [case settings](kibana://reference/configuration-reference/general-settings.md).
-
-To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.
-
-When you upload a file, a comment is added to the case activity log. To view images, click their name in the activity or file list.
-
-::::{note}
-Uploaded files are also accessible in **{{stack-manage-app}} > Files**. When you export cases as [saved objects](../../find-and-organize/saved-objects.md), the case files are not exported.
-
-::::
-
 ## Add visualizations [add-case-visualization]
 
 You can also optionally add visualizations. For example, you can portray event and alert data through charts and graphs.
@@ -135,14 +121,51 @@ In **Management > {{stack-manage-app}} > Cases**, you can search cases and filte
 
 To view a case, click on its name. You can then:
 
-* Add a new comment.
-* Edit existing comments and the description.
-* Add or remove assignees.
-* Add a connector.
+* Add and edit the case's description, comments, assignees, tags, status, severity, and category.
+* Add a connector (if you did not select one while creating the case).
 * Send updates to external systems (if external connections are configured).
-* Edit the category and tags.
 * Refresh the case to retrieve the latest updates.
-* Change the status.
-* Change the severity.
-* Close or delete the case.
-* Reopen a closed case.
+
+## Add context and supporting materials [add-case-context]
+
+Provide additional context and resources by adding the following to the case:
+* [Alerts](#add-case-alerts) 
+* [Files](#add-case-files)
+* [Observables](#add-case-observables)
+
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific observable values, alert IDs, and file names.
+::::
+
+### Add alerts [add-case-alerts]
+
+:::{include} /solutions/_snippets/add-case-alerts.md
+:::
+
+::::{note}
+Refer to [](../../../solutions/observability/incident-management/view-alerts.md#observability-view-alerts-add-alerts-to-cases) to learn how to add alerts to cases.
+::::
+
+### Add files [add-case-files]
+
+:::{include} ../../../solutions/_snippets/add-case-files.md
+:::
+
+::::{important}
+When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported.
+::::
+
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
+
+### Add observables [add-case-observables]
+
+:::{include} ../../../solutions/_snippets/add-case-observables.md
+:::
+
+## Search cases [search-stack-management-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::

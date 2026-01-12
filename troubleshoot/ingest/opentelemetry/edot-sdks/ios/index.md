@@ -19,7 +19,7 @@ products:
 
 This page provides guidance for resolving common problems when instrumenting iOS applications with the {{edot}} (EDOT) SDK.
 
-When troubleshooting the EDOT iOS agent, ensure your app is compatible with the agent’s [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
+When troubleshooting the EDOT iOS agent, ensure your app is compatible with the agent's [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
 
 
 ## SDK fails to export data

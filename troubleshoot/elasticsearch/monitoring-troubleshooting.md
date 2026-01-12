@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-troubleshooting.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -28,7 +23,7 @@ If you can't find your issue here, explore the other [troubleshooting topics](/t
 
 **Symptoms**: There is no information about your cluster on the **Stack Monitoring** page in {{kib}}.
 
-**Resolution**: Check whether the appropriate indices exist on the monitoring cluster. For example, use the [cat indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) command to verify that there is a `.monitoring-kibana*` index for your {{kib}} monitoring data and a `.monitoring-es*` index for your {{es}} monitoring data. If you are collecting monitoring data by using {{metricbeat}} the indices have `-mb` in their names. If the indices do not exist, review your configuration. For example, see [*Monitoring in a production environment*](../../deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
+**Resolution**: Check whether the appropriate indices exist on the monitoring cluster. For example, use the [cat indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) command to verify that there is a `.monitoring-kibana*` index for your {{kib}} monitoring data and a `.monitoring-es*` index for your {{es}} monitoring data. If you are collecting monitoring data by using {{metricbeat}} the indices have `-mb` in their names. If the indices do not exist, review your configuration. For example, see [](../../deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
 
 
 ## Monitoring data for some {{stack}} nodes or instances is missing from {{kib}} [monitoring-troubleshooting-uuid]
