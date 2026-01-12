@@ -105,6 +105,7 @@ To get started writing your overview page, use the [template](https://github.com
 Here are some examples of well-structured overview pages in the Elastic documentation:
 
 - [Data streams](/manage-data/data-store/data-streams.md)
-- [Application performance monitoring ({{product.apm}})](/solutions/observability/apm/index.md)
+- [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md)
 - [Synthetic monitoring](/solutions/observability/synthetics/index.md)
+- [Streams](/solutions/observability/streams/streams.md)
 
