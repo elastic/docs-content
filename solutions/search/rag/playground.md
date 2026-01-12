@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
   - https://www.elastic.co/guide/en/kibana/current/playground.html
 applies_to:
-  stack: preview 9.0, beta 9.1
+  stack: preview =9.0, beta 9.1+
   serverless: beta
 products:
   - id: cloud-serverless
@@ -169,6 +169,10 @@ We’ve also provided some Jupyter notebooks to easily ingest sample data into {
 
 
 ### Select {{es}} indices [playground-getting-started-index]
+
+::::{note}
+Playground does not support [data stream](/manage-data/data-store/data-streams.md) indices.
+::::
 
 Once you’ve connected to your LLM provider, it’s time to choose the data you want to search.
 

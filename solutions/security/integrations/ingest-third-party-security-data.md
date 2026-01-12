@@ -48,6 +48,7 @@ Data from the following integrations can feed into your {{elastic-sec}} workflow
 * [Microsoft Defender for Cloud](/solutions/security/integrations/microsoft-defender-for-cloud.md)
 * [Microsoft Defender for Endpoint](/solutions/security/integrations/microsoft-defender-for-endpoint.md)
 * [Microsoft Defender XDR](/solutions/security/integrations/microsoft-defender-xdr.md)
+* [Palo Alto Prisma Cloud](/solutions/security/integrations/prisma-cloud.md)
 * [Qualys VMDR](/solutions/security/integrations/qualys.md)
 * [Rapid7 InsightVM](/solutions/security/integrations/rapid7.md)
 * [Tenable VM](/solutions/security/integrations/tenablevm.md)

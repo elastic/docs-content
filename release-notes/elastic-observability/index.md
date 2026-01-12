@@ -21,6 +21,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.2.3 [elastic-observability-9.2.3-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.3-features-enhancements]
+* Adds a message to tell users when a stream is missing [#244366]({{kib-pull}}244366).
+* Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
+* Shows supported schemas in the Infrastructure inventory [#244481]({{kib-pull}}244481).
+
+
+### Fixes [elastic-observability-9.2.3-fixes]
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+* Adds managed field to `dataViewSpecSchema` [#244134]({{kib-pull}}244134).
+* Removes mentions of template snippets from descriptions [#243656]({{kib-pull}}243656).
+
 ## 9.2.2 [elastic-observability-9.2.2-release-notes]
 
 ### Features and enhancements [elastic-observability-9.2.2-features-enhancements]
@@ -119,6 +132,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
 
+## 9.1.9 [elastic-observability-9.1.9-release-notes]
+
+### Features and enhancements [elastic-observability-9.1.9-features-enhancements]
+*  Adds a warning when deleting API keys that are currently in use by alerting rules [#243353]({{kib-pull}}243353).
+
+### Fixes [elastic-observability-9.1.9-fixes]
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+
 ## 9.1.8 [elastic-observability-9.1.8-release-notes]
 
 ### Features and enhancements [elastic-observability-9.1.8-features-enhancements]
@@ -137,6 +158,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
 * Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
 * Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
+* Hides non-trace services from APM service inventory [#241080]({{kib-pull}}241080).
 
 ## 9.1.6 [elastic-observability-9.1.6-release-notes]
 
