@@ -36,7 +36,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves responsiveness on systems running {{elastic-defend}}.
 
 ### Fixes [elastic-security-9.2.4-fixes]
-* Fixes an issue where the Security AI Assistant API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
 * Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
 * Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
 * Fixes an issue where special characters in {{esql}} queries for risk scoring were not handled correctly [#247060]({{kib-pull}}247060).
