@@ -105,6 +105,8 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 stack: ga 9.3+
 ```
 
+% TODO mention that the built-in Observability agent is assigned these tools
+
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
 
 `observability.get_alerts`
@@ -147,6 +149,8 @@ Observability tools provide specialized capabilities for monitoring applications
 ```{applies_to}
 stack: ga 9.3+
 ```
+
+% TODO mention that the built-in Security agent is assigned these tools
 
 Security tools provide specialized capabilities for security monitoring, threat detection, and incident response.
 
