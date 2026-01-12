@@ -12,38 +12,43 @@ products:
 
 Repeated snapshot failures are usually an indicator of a problem with your deployment. Continuous failures of automated snapshots can leave a deployment without recovery options in cases of data loss or outages.
 
-Elasticsearch keeps track of the number of repeated failures when executing automated snapshots. If an automated snapshot fails too many times without a successful execution, the health API will report a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-health-failed-snapshot-warn-threshold) setting.
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
-In the event that an automated {{slm}} policy execution is experiencing repeated failures, follow these steps to get more information about the problem:
+{{es}} keeps track of the number of repeated failures when executing automated snapshots with [{{slm}} ({{slm-init}})](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) policies. If an automated snapshot fails too many times without a successful execution, the health API will report a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-health-failed-snapshot-warn-threshold) setting.
+
+## Review snapshot policy failures
+
+In the event that an automated {{slm-init}} policy execution is experiencing repeated failures, follow these steps to get more information about the problem:
 
 :::::::{tab-set}
 
-::::::{tab-item} {{ech}}
-In order to check the status of failing {{slm}} policies we need to go to Kibana and retrieve the [Snapshot Lifecycle Policy information](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle).
+::::::{tab-item} Using {{kib}}
+In {{kib}}, you can view all configured {{slm-init}} policies and review their status and execution history. If the UI does not provide sufficient details about the failure, use the Console to retrieve the [snapshot policy information](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) with the {{es}} API.
 
-**Use {{kib}}**
+1. Go to **Snapshot and Restore > Policies** to see the list of configured policies. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the name of your deployment.
+    :::{image} /troubleshoot/images/elasticsearch-reference-slm-policies.png
+    :alt: {{kib}} Console
+    :screenshot:
+    :::
 
-    ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-    ::::
+2. The policies table should be visible. Click on any of the policies to review the details and execution history.
 
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
+3. To get more detailed information about the failure, open {{kib}} **Dev Tools > Console**. You can find the **Console** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
     :screenshot:
     :::
 
-4. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) the {{slm}} policy:
+4. [Retrieve the affected {{slm-init}} policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle):
 
     ```console
     GET _slm/policy/<affected-policy-name>
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     {
@@ -88,23 +93,14 @@ In order to check the status of failing {{slm}} policies we need to go to Kibana
       }
     }
     ```
-
     1. The affected snapshot lifecycle policy.
     2. The information about the last failure for the policy.
     3. The time when the failure occurred in millis. Use the `human=true` request parameter to see a formatted timestamp.
     4. Error details containing the reason for the snapshot failure.
-
-
-    Snapshots can fail for a variety reasons. If the failures are due to configuration errors, consult the documentation for the repository that the automated snapshots are using. Refer to the [guide on managing repositories in ECE](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) if you are using such a deployment.
-
-
-One common failure scenario is repository corruption. This occurs most often when multiple instances of {{es}} write to the same repository location. There is a [separate troubleshooting guide](diagnosing-corrupted-repositories.md) to fix this problem.
-
-In the event that snapshots are failing for other reasons check the logs on the elected master node during the snapshot execution period for more information.
 ::::::
 
-::::::{tab-item} Self-managed
-[Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) the {{slm}} policy:
+::::::{tab-item} Using the {{es}} API
+[Retrieve the affected {{slm-init}} policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle):
 
 ```console
 GET _slm/policy/<affected-policy-name>
@@ -161,15 +157,14 @@ The response will look like this:
 3. The time when the failure occurred in millis. Use the `human=true` request parameter to see a formatted timestamp.
 4. Error details containing the reason for the snapshot failure.
 
-
-Snapshots can fail for a variety reasons. If the failures are due to configuration errors, consult the documentation for the repository that the automated snapshots are using.
-
-One common failure scenario is repository corruption. This occurs most often when multiple instances of {{es}} write to the same repository location. There is a [separate troubleshooting guide](diagnosing-corrupted-repositories.md) to fix this problem.
-
-In the event that snapshots are failing for other reasons check the logs on the elected master node during the snapshot execution period for more information.
 ::::::
 
 :::::::
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
-:::
+## Possible causes
+
+Snapshots can fail for a variety of reasons. If the failures are due to configuration errors, consult the documentation for the repository type that the snapshot policy is using. Refer to the [guide on managing repositories in ECE](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) if you are using an Elastic Cloud Enterprise deployment.
+
+One common failure scenario is repository corruption. This occurs most often when multiple instances of {{es}} write to the same repository location. There is a [separate troubleshooting guide](diagnosing-corrupted-repositories.md) to fix this problem.
+
+In the event that snapshots are failing for other reasons check the logs on the elected master node during the snapshot execution period for more information.
