@@ -65,6 +65,7 @@ Agent Builder doesn't yet support all AI Assistant features. The specific differ
 | **Use-case specific agents** | ✅ | ❌ |
 | **Custom agent creation** | ✅ | ❌ |
 | **Custom tool selection** | ✅ | ❌ |
+| **Integration with Elastic workflows** | ✅ | ❌ |
 
 :::
 
