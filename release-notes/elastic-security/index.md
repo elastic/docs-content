@@ -180,7 +180,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
 
 ### Fixes [elastic-security-9.1.10-fixes]
-* Fixes an issue where the Security AI Assistant API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
 * Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
 * Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
 * Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
@@ -190,6 +190,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
 * Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a `\0`.
 * For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
+* Fixes a bug in {elastic-defend} on Windows that can sometimes result in `KERNEL_AUTO_BOOST_LOCK_ACQUISITION_WITH_RAISED_IRQL` or `PAGE_FAULT_IN_NONPAGED_AREA` bugchecks when [Offloaded Data Transfer (ODX)](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/offloaded-data-transfer) is used to copy files.  This regression was introduced in {elastic-defend} versions 8.19.8, 9.1.8, and 9.2.2.
 
 
 ## 9.1.9 [elastic-security-9.1.9-release-notes]
