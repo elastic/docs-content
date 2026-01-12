@@ -14,7 +14,7 @@ products:
 
 # Restore from snapshot [restore-from-snapshot]
 
-Elasticsearch is using snapshots to store a copy of your data outside a cluster. You can restore a snapshot to recover indices and data streams for which there are no copies of the shards in the cluster. This can happen if the data (indices or data streams) was deleted or if the cluster membership changed and the current nodes in the system do not contain a copy of the data anymore.
+{{es}} is using snapshots to store a copy of your data outside a cluster. You can restore a snapshot to recover indices and data streams for which there are no copies of the shards in the cluster. This can happen if the data (indices or data streams) was deleted or if the cluster membership changed and the current nodes in the system do not contain a copy of the data anymore.
 
 ::::{important}
 Restoring the missing data requires you to have a backup of the affected indices and data streams that is up-to-date enough for your use case. Don't proceed without confirming this.
@@ -23,26 +23,17 @@ Restoring the missing data requires you to have a backup of the affected indices
 
 :::::::{tab-set}
 
-::::::{tab-item} {{ech}}
-In order to restore the indices and data streams that are missing data:
+::::::{tab-item} Using {{kib}}
+To restore the indices and data streams with missing data:
 
-**Use {{kib}}**
-
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the name of your deployment.
-
-    ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-    ::::
-
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
+1. Go to **Dev Tools > Console**. You can find the **Console** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
     :screenshot:
     :::
 
-4. To view the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
+2. Review the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
@@ -58,7 +49,7 @@ In order to restore the indices and data streams that are missing data:
 
     The `red` health of the indices above indicates that these indices are missing primary shards, meaning they are missing data.
 
-5. In order to restore the data we need to find a snapshot that contains these two indices. To find such a snapshot use the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get).
+5. To restore the data we need to find a snapshot that contains these two indices. To find such a snapshot use the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get).
 
     ```console
     GET _snapshot/my_repository/*?verbose=false
@@ -227,10 +218,10 @@ In order to restore the indices and data streams that are missing data:
 For more guidance on creating and restoring snapshots see [this guide](../../deploy-manage/tools/snapshot-and-restore.md).
 ::::::
 
-::::::{tab-item} Self-managed
-In order to restore the indices that are missing shards:
+::::::{tab-item} Using the {{es}} API
+To restore the indices and data streams with missing data:
 
-1. View the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
+1. Review the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
