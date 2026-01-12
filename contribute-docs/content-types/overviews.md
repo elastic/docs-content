@@ -104,7 +104,7 @@ To get started writing your overview page, use the [template](https://github.com
 
 Here are some examples of well-structured overview pages in the Elastic documentation:
 
-- [Text embedding](/solutions/generative-ai/text-embedding.md)
-- [Data streams](/solutions/data-streams/index.md)
-- [Inference processing](/solutions/generative-ai/inference-processing.md)
+- [Data streams](/manage-data/data-store/data-streams.md)
+- [Application performance monitoring ({{product.apm}})](/solutions/observability/apm/index.md)
+- [Synthetic monitoring](/solutions/observability/synthetics/index.md)
 
