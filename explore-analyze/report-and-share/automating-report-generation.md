@@ -179,7 +179,7 @@ In earlier {{kib}} versions, you could use the `&sync` parameter to append to re
 ## Schedule and share reports [schedule-report-generation]
 
 ```{applies_to}
-stack: preview 9.1, ga 9.3
+stack: ga 9.3+, preview 9.1-9.2
 serverless: ga
 ```
 
@@ -264,8 +264,14 @@ A message appears, indicating that the schedule is available on the **Reporting*
 
 ### Manage scheduled reports [manage-scheduled-reports]
 
-- **Disable schedule**: {applies_to}`stack: ga 9.1+` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
-- **Delete schedule**: {applies_to}`stack: ga 9.3+` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+To manage a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page:
+
+- **Disable schedule**: The functionality differs per version:
+   - {applies_to}`stack: ga 9.3+` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart a disabled schedule, select **Enable schedule**.
+   - {applies_to}`stack: ga 9.1-9.2` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
+- {applies_to}`stack: ga 9.3+` **Enable schedule**: Turn a disabled schedule back on.
+- {applies_to}`stack: ga 9.3+` **Edit schedule config**: Modify an existing schedule.
+- {applies_to}`stack: ga 9.3+` **Delete schedule**: Permanently stop a schedule and remove the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 
