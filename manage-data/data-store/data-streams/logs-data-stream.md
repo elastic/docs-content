@@ -10,15 +10,11 @@ products:
 
 # Logs data stream [logs-data-stream]
 
-::::{important}
-The {{es}} `logsdb` index mode is generally available in Elastic Cloud Hosted and self-managed Elasticsearch as of version 8.17, and is enabled by default for logs in [{{serverless-full}}](https://www.elastic.co/elasticsearch/serverless).
-::::
-
-
 A logs data stream is a data stream type that stores log data more efficiently.
 
 In benchmarks, log data stored in a logs data stream used ~2.5 times less disk space than a regular data stream, at a small (10-20%) penalty in indexing performance. The exact impact varies by data set and Elasticsearch version.
 
+The {{es}} `logsdb` index mode is enabled by default for logs in [{{serverless-full}}](https://www.elastic.co/elasticsearch/serverless).
 
 ## Create a logs data stream [how-to-use-logsds]
 
