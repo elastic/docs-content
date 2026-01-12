@@ -7,9 +7,9 @@ applies_to:
 
 # Elastic Agent Builder built-in tools reference
 
-This page lists all built-in tools available in {{agent-builder}} and their availability per Elastic version. Unless otherwise specified, all built-in tools are available on {{serverless-full}}. These tools are available to all [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui).
+This page lists all built-in tools available in {{agent-builder}} and their availability. Unless otherwise specified, all built-in tools are available on {{serverless-full}}. These tools are available to all [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui).
 
-Built-in tools provide core capabilities for working with {{es}} data. You can't modify or delete these tools. In the tools overview, the UI organizes built-in tools using labels (called `tags` in the API) such as `observability`, `security`, `apm`, and `alerts` to help you filter and find related tools. Refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
+Built-in tools provide core capabilities for working with {{es}} data. You can't modify or delete these tools. In the tools overview, the UI organizes built-in tools using labels (called `tags` in the API) such as `observability`, `security`, `apm`, and `alerts` to help you filter and find related tools. To learn more, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
@@ -46,19 +46,19 @@ Platform Core tools provide fundamental capabilities for interacting with {{es}}
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
 `platform.core.search` {applies_to}`stack: ga 9.2+`
-:   Search and analyze data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
+:   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
 
 `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
-:   Search and retrieve documentation about Elastic products ({{kib}}, Elasticsearch, Elastic Security, Elastic Observability).
+:   Searches and retrieves documentation about Elastic products ({{kib}}, Elasticsearch, Elastic Security, Elastic Observability).
 
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
-:   Search and retrieve knowledge from [Fleet](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
+:   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
 
 `platform.core.create_visualization` {applies_to}`stack: ga 9.3+`
 :   Creates a [Lens](/explore-analyze/visualize/lens.md) visualization based on specifications.
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
-:   Search and retrieve [cases](/explore-analyze/alerts-cases/cases.md) for tracking and managing issues.
+:   Searches and retrieves [cases](/explore-analyze/alerts-cases/cases.md) for tracking and managing issues.
 
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
 :   Retrieves the execution status of a workflow.
@@ -151,7 +151,7 @@ stack: ga 9.3+
 Security tools provide specialized capabilities for security monitoring, threat detection, and incident response.
 
 `security.alerts`
-:   Search and analyze security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
+:   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
 `security.entity_risk_score`
 :   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users and hosts) to identify high-risk entities in the environment.
