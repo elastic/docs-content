@@ -106,6 +106,4 @@ Here are some examples of well-structured overview pages in the Elastic document
 
 - [Data streams](/manage-data/data-store/data-streams.md)
 - [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md)
-- [Synthetic monitoring](/solutions/observability/synthetics/index.md)
-- [Streams](/solutions/observability/streams/streams.md)
 
