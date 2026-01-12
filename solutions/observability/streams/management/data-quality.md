@@ -10,7 +10,7 @@ From the **Streams** page, use the **Data quality** menu to filter your streams 
 
 Use the following components to monitor the health of your data and identify and fix issues:
 
-* **Degraded documents:** Documents from the last backing index of the stream with the `ignored` property, usually because of malformed fields or exceeding the limit of total fields when `ignore_above` is set to `false`. This component shows:
+* **Degraded documents:** Documents from the last backing index of the stream with the `ignored` property, usually because of malformed fields or fields with values that exceed the configured `ignore_above` limit. This component shows:
   * Total number of degraded documents.
   * Percentage of degraded documents relative to the total document count from the stream's last backing index.
   * The data quality status (**Good**, **Degraded**, **Poor**).
