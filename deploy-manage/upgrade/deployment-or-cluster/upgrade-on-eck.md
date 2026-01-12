@@ -22,7 +22,7 @@ Check out [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchest
 
 ## Perform the upgrade
 
-The upgrade procedure depends on whether you are deploying the {{stack}} components using resource manifests or the [{{stack}} Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md).
+The upgrade procedure depends on whether you are deploying the {{stack}} components [using resource manifests](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) or the [{{stack}} Helm chart](/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md).
 
 ### Upgrade using resource manifests
 
