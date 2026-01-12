@@ -50,39 +50,28 @@ Provide clear, actionable steps to resolve the issue.
 
 - Numbered instructions that begin with imperative verb phrases
 - Keep each step focused on a single action
--->
+- Use the stepper component
 
-<!--
-Option 1 - RECOMMENDED: Stepper component. Required for longer fixes with complex steps
-
-See: https://elastic.github.io/docs-builder/syntax/stepper/
+For more information about the stepper component, refer to [the syntax guide](https://elastic.github.io/docs-builder/syntax/stepper/).
 -->
 
 ```markdown
 :::::{stepper}
 
 ::::{step} [Step title]
-[Step description or instruction]
+[Step description or instruction - begin with an imperative verb]
 ::::
 
 ::::{step} [Step title]
-[Step description or instruction]
+[Step description or instruction - begin with an imperative verb]
 ::::
 
 ::::{step} [Step title]
-[Step description or instruction]
+[Step description or instruction - begin with an imperative verb]
 ::::
 
 :::::
 ```
-
-<!-- Option 2: Simple numbered list for shorter troubleshooting with straightforward steps -->
-
-1. [First step - begin with an imperative verb]
-
-2. [Second step - begin with an imperative verb]
-
-3. [Third step - begin with an imperative verb]
 
 ## Best practices
 
@@ -99,4 +88,4 @@ Link to related documentation for deeper context. These links are supplementary 
 -->
 
 - [Related documentation link]
-- [Upstream reference]
+- [Contrib/upstream reference]
