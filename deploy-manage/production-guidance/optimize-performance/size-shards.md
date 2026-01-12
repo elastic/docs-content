@@ -31,7 +31,7 @@ To avoid either of these states, implement the following guidelines:
 
 ### Shard distribution guidelines
 
-To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability.
+To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. It can lead to an [unbalanced cluster](/troubleshoot/elasticsearch/troubleshooting-unbalanced-cluster.md) and potentially trigger [watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).
 
 While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
 
