@@ -9,7 +9,7 @@ products:
 
 # Upgrading the {{es}} version running on Docker
 
-You update {{es}} running in a Docker container by pulling the new Docker image and restarting the container with the new image.
+You update {{es}} running in a Docker container by pulling the new Docker image and recreating the container using the new image and the same data volumes as the original container.
 
 Docker images for {{es}} are available from the Elastic Docker registry. A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/elasticsearch/blob/master/distribution/docker).
 
@@ -73,7 +73,11 @@ Replace `<x.y.z>` with the version of the Docker image you downloaded.
     docker stop <container_name>
     ```
 
-1. After the container has stopped, remove it. Correctly mapping your data directory to a volume outside of the container ensures that your data is not deleted. Replace `<container_name>` with the name or ID of your {{es}} container.
+1. After the container has stopped, you can remove it. Correctly mapping your data directory to a volume outside of the container ensures that your data is not deleted. Replace `<container_name>` with the name or ID of your {{es}} container.
+
+    :::{important}
+    This example assumes that you've started the original container with the configuration and data directories stored in separate volumes.
+    :::
 
     ```shell
     docker rm <container_name>
