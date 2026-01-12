@@ -125,8 +125,8 @@ Loading data into the filesystem cache eagerly on too many indices or too many f
 
 The following file extensions are used for the approximate kNN search: Each extension is broken down by the quantization types.
 
-* {applies_to}`stack: ga 9.3` `cenivf` for DiskBBQ to store centroids
-* {applies_to}`stack: ga 9.3` `clivf` for DiskBBQ to store clusters of quantized vectors
+* {applies_to}`stack: ga 9.3+` `cenivf` for DiskBBQ to store centroids
+* {applies_to}`stack: ga 9.3+` `clivf` for DiskBBQ to store clusters of quantized vectors
 * `vex` for the HNSW graph
 * `vec` for all non-quantized vector values. This includes all element types: `float`, `byte`, and `bit`.
 * `veq` for quantized vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `int4` or `int8`
