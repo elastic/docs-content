@@ -1,5 +1,5 @@
 ---
-navigation_title: "Limitations & known issues"
+navigation_title: "Limitations"
 applies_to:
   stack: preview 9.2
   serverless:

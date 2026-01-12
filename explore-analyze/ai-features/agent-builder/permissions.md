@@ -5,7 +5,7 @@ applies_to:
     elasticsearch: preview
     observability: unavailable
     security: unavailable
-navigation_title: "Permissions & access control"
+navigation_title: "Permissions"
 ---
 
 # Permissions and access control in {{agent-builder}}
