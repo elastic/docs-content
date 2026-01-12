@@ -178,6 +178,7 @@ toc:
           - file: ai-features/agent-builder/agent-builder-agents.md
           - file: ai-features/agent-builder/tools.md
             children:
+              - file: ai-features/agent-builder/tools/builtin-tools-reference.md
               - file: ai-features/agent-builder/tools/esql-tools.md
               - file: ai-features/agent-builder/tools/index-search-tools.md
           - file: ai-features/agent-builder/programmatic-access.md

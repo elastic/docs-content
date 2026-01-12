@@ -42,27 +42,9 @@ Tool execution and result processing consume tokens. To understand how usage is 
 
 {{agent-builder}} ships with a comprehensive set of built-in tools that provide core capabilities for working with your {{es}} data. These tools are ready to use. They cannot be modified or deleted.
 
-Key built-in tools include:
+Built-in tools serve as building blocks for more complex interactions and provide the foundation for agent capabilities. They include tools for executing {{esql}} queries, retrieving documents, exploring indices, and searching data.
 
-- `.execute_esql`: Executes an {{esql}} query and returns the results in a tabular format
-- `.generate_esql`: Generates an {{esql}} query from a natural language query
-- `.get_document_by_id`: Retrieves the full content of an {{es}} document based on its ID and index name
-- `.get_index_mapping`: Retrieves mappings for the specified index or indices
-- `.index_explorer`: Lists relevant indices and corresponding mappings based on a natural language query
-- `.list_indices`: Lists the indices in the {{es}} cluster the current user has access to
-- `.search`: Searches and analyzes data within a specific {{es}} index
-
-Built-in tools serve as building blocks for more complex interactions and provide the foundation for agent capabilities.
-
-:::{note}
-
-Tool namespacing helps organize and identify tools by their source. Built-in tools use a consistent prefix (`platform.core`) to indicate they are built-in capabilities. This convention:
-
-- Prevents naming conflicts between system and custom tools
-- Makes it easy to identify tool sources
-- Provides a consistent pattern for tool identification
-
-:::
+For the complete list, refer to [Built-in tools reference](tools/builtin-tools-reference.md).
 
 ## Custom tools
 
