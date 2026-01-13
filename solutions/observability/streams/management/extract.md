@@ -3,9 +3,9 @@ applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
 ---
-# Extract fields [streams-extract-fields]
+# Process documents [streams-extract-fields]
 
-After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) that extract meaningful fields from your log messages. These fields let you filter and analyze your data more effectively.
+After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
 
 For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
@@ -24,10 +24,15 @@ Applied changes aren't retroactive and only affect *future ingested data*.
 
 Streams supports the following processors:
 
+- [**Drop**](./extract/drop.md): Drops the document without raising any errors. This is useful to prevent the document from getting indexed based on a condition.
+- [**Remove**](./extract/remove.md): Removes existing fields.
 - [**Date**](./extract/date.md): Converts date strings into timestamps, with options for timezone, locale, and output formatting.
+- [**Convert**](./extract/convert.md): Converts a field in the currently ingested document to a different type, such as converting a string to an integer.
+- [**Replace**](./extract/replace.md): Replaces parts of a string field according to a regular expression pattern with a replacement string.
 - [**Dissect**](./extract/dissect.md): Extracts fields from structured log messages using defined delimiters instead of patterns, making it faster than Grok and ideal for consistently formatted logs.
 - [**Grok**](./extract/grok.md): Extracts fields from unstructured log messages using predefined or custom patterns, supports multiple match attempts in sequence, and can automatically generate patterns with an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 - [**Set**](./extract/set.md): Assigns a specific value to a field, creating the field if it doesn’t exist or overwriting its value if it does.
+- [**Math**](./extract/math.md): Evaluates arithmetic or logical expressions.
 - [**Rename**](./extract/rename.md): Changes the name of a field, moving its value to a new field name and removing the original.
 - [**Append**](./extract/append.md): Adds a value to an existing array field, or creates the field as an array if it doesn’t exist.
 
