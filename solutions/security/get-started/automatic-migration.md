@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: preview 9.0, ga 9.1
+  stack: preview =9.0, ga 9.1+
   serverless:
     security: ga
 ---
@@ -9,26 +9,14 @@ applies_to:
 
 Automatic Migration helps you quickly migrate Splunk assets to {{elastic-sec}}. The following asset types are supported:
 
-* {applies_to}`stack: preview 9.0, ga 9.1` {applies_to}`serverless: ga` Splunk rules
-* {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Classic Splunk dashboards (v1.1)
+* {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Classic Splunk dashboards (v1.1)
+* {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
 
 For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
 You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
 ::::{applies-switch}
-
-:::{applies-item} { "stack": "ga 9.0" }
-**Requirements**
-
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
-* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
-* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
-* {{Stack}} users: {{ml}} must be enabled.
-* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
-* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
-
-:::
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
@@ -39,6 +27,18 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+**Requirements**
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+
 :::
 
 ::::
