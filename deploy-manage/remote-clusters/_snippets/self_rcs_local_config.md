@@ -20,7 +20,7 @@ This snippet is in use in the following locations:
     3. Add the cross-cluster API key, created on the remote cluster earlier, to the keystore:
 
         ```sh
-        ./bin/elasticsearch-keystore add cluster.remote.ALIAS.credentials
+        ./bin/elasticsearch-keystore add cluster.remote.<remote-cluster-name>.credentials
         ```
 
         Replace `ALIAS` with the same name that you intend to use to create the remote cluster entry later. When prompted, enter the encoded cross-cluster API key created on the remote cluster earlier.
