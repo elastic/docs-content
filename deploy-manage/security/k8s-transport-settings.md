@@ -32,10 +32,11 @@ spec:
 
 Check the [Kubernetes Publishing Services (ServiceTypes)](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) that are currently available.
 
-::::{note}
-When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This will cause a short network disruption, but in most cases it should not affect existing connections as the transport module uses long-lived TCP connections.
-::::
+Consider the following when customizing the Kubernetes services handled by ECK:
 
+* When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This causes a short network disruption, but it should not affect existing connections as the transport module uses long-lived TCP connections.
+
+* If you change the service’s `port` to expose a different port externally, set `targetPort` to `9300`, which is the default {{es}} transport interface port. Otherwise, Kubernetes uses the same value for both, resulting in failed connections.
 
 ## Configure a custom Certificate Authority [k8s-transport-ca]
 
@@ -81,7 +82,7 @@ spec:
 When following the instructions in [Configure a custom Certificate Authority](#k8s-transport-ca) the issuance of certificates is orchestrated by the ECK operator and the operator needs access to the CAs private key. If this is undesirable it is also possible to configure node transport certificates without involving the ECK operator. The following two pre-requisites apply:
 
 1. The tooling used must be able to issue individual certificates for each {{es}} node and dynamically add or remove certificates as the cluster scales up and down.
-2. The ECK operator must be configured to be aware of the CA in use for the [remote cluster](../remote-clusters/eck-remote-clusters.md#k8s-remote-clusters-connect-external) support to work.
+2. The ECK operator must be configured to be aware of the CA in use for the [remote cluster](../remote-clusters/eck-remote-clusters.md) support to work.
 
 The following example configuration using [cert-manager csi-driver](https://cert-manager.io/docs/projects/csi-driver/) and [trust-manager](https://cert-manager.io/docs/projects/trust-manager/) meets these two requirements:
 

@@ -7,10 +7,10 @@ navigation_title: Guidelines
 :::{note}
 This content is still in development.
 If you have questions about how to write cumulative documentation while contributing,
-reach out to **@elastic/docs** in the related GitHub issue or PR. 
+reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
-Start by asking yourself:
+To get started with cumulative docs, ask yourself:
 
 * Does this content vary between products, versions, or deployment types?
 * Is this a feature lifecycle change or just content improvement?
@@ -44,9 +44,10 @@ For each type of applicability information, you can add `applies_to` metadata at
   This defines the overall applicability of the page across products and deployment models.
 * **Section-level** annotations allow you to specify different applicability for individual sections
   when only part of a page varies between products or versions.
-% TO DO: Add when https://github.com/elastic/docs-builder/issues/1436 is complete
-% * **Element-level** annotations allow tagging block-level elements like tabs, dropdowns, and admonitions.
-%  This is useful for ...
+* **Element-level** annotations allow tagging block-level elements like tabs, dropdowns, and admonitions.
+  Choosing the right element can help communicate how to interpret applicability information. For example
+  tabs might indicate alternatives (only one tab is relevant to each user) and admonitions might indicate
+  that there is a notable exception to applicability in some context.
 * **Inline** annotations allow fine-grained annotations within paragraphs or lists.
   This is useful for highlighting the applicability of specific phrases, sentences,
   or properties without disrupting the surrounding content.
@@ -58,7 +59,7 @@ refer to [the applies_to syntax guide](https://elastic.github.io/docs-builder/sy
 
 ### When to tag content
 
-Every page should include page-level `applies_to` tags  to indicate which product or deployment type
+Every page should include page-level `applies_to` tags to indicate which product or deployment type
 the content applies to. This is mandatory for every page.
 
 You should also generally tag content when:
@@ -90,12 +91,10 @@ You generally do not need to tag:
 
 ### Tips
 
-% Source: Slack conversation
 * **Consider how badges take up space on the page**:
   Avoid badge placement patterns that take up unnecessary Markdown real estate.
   For example, adding a dedicated column for applicability in a table when only
   a few rows require an `applies_to` badge.
-% Source: George's checklist
 * **Use `unavailable` sparingly**:
   For example, if a page is only about Elastic Cloud Hosted, don't add a `serverless: unavailable` tag.
   Refer to [When to indicate something is NOT applicable](#when-to-indicate-something-is-not-applicable) for specific guidance.
@@ -106,26 +105,30 @@ You generally do not need to tag:
   Sometimes features GA for one deployment but remain preview for another.
 * **Think across time**:
   Product lifecycle changes with each release.
-  Even if a feature might be deprecated or legacy in one deployment it may still be supported elsewhere.
-* **For updates, remember they may be older than you think**:
-  Some updates that may be required to the documentation could precede v9.0.
+  Even if a feature might be deprecated or legacy in one deployment it might still be supported elsewhere.
+* **For updates, remember they might be older than you think**:
+  Some updates that might be required to the documentation could precede v9.0.
   For these changes need to be made to the old AsciiDoc versions of the content.
 
-% TO DO: Update when the PRs that auto-sort order are merged
-% Maybe move to the "how dynamic tagging works"?
-## Order of items
+## Order of items [order-of-items]
 
-### Versions
+### Versions [order-versions]
 
 When listing multiple versions, author the newest version first whenever possible. This keeps files consistent and easier to maintain.
-Regardless of the source file, the build system automatically builds badge lifecycles in reverse chronological order.
-This means that badges will always appear to users from newest to oldest, which is the reverse of the product development timeline.
+Regardless of the source file, the build system automatically renders badge lifecycles in reverse chronological order.
+This means that badges always appear to users from newest to oldest, which is the reverse of the product development timeline.
 
-For example:
+For example this syntax:
 
-{applies_to}`stack: preview 9.0.5, beta 9.1, ga 9.2`
+```
+{applies_to}`stack: preview =9.0, beta =9.1, ga 9.2+`
+```
 
-### Keys
+Results in this badge:
+
+{applies_to}`stack: preview =9.0, beta =9.1, ga 9.2+`
+
+### Keys [order-keys]
 
 The build system automatically orders multiple [keys](reference.md#key) in a consistent pattern. This reduces authoring overhead and makes content easier for users to scan.
 
@@ -139,8 +142,9 @@ Keys are ordered as follows:
 2. **Deployment types**: ECH (Elastic Cloud Hosted), ECK (Elastic Cloud on Kubernetes), ECE (Elastic Cloud Enterprise), Self-Managed
 3. **ProductApplicability**: ECCTL, Curator, EDOT items (alphabetically), APM Agent items (alphabetically)
 
-For example:
+For example this syntax:
 
+````
 ```{applies_to}
 deployment:
   ece: ga
@@ -148,6 +152,11 @@ deployment:
 stack: ga
 serverless: ga
 ```
+````
+
+Results in the badges in this order:
+
+{applies_to}`{ deployment: { ece: ga, self: ga }, stack: ga, serverless: ga }`
 
 ## Product and deployment model applicability [products-and-deployment-models]
 
@@ -172,9 +181,8 @@ Here are some common scenarios you might come across:
 
 * Content is about both Elastic Stack components and the Serverless UI.
   ([example](example-scenarios.md#stateful-serverless))
-* Content is primarily about orchestrating, deploying or configuring an installation.
-  % TO DO: Add example
-  % ([example](example-scenarios.md#))
+* Content is primarily about orchestrating, deploying, or configuring an installation.
+  ([example](example-scenarios.md#workflow-tabs))
 * Content is primarily about a product following its own versioning schema.
   % TO DO: Add example
   % ([example](example-scenarios.md#))
@@ -253,8 +261,7 @@ For versioned products like the Elastic Stack:
 
 #### Mixed versioned and unversioned products [mixed]
 
-* When documenting features shared between serverless and Elastic Stack,
-  ...
+* When documenting features shared between serverless and Elastic Stack
   ([example](example-scenarios.md#stateful-serverless)).
 * When a feature in an unversioned product is removed, but the content also applies to
   another context (for example a feature is removed in both Kibana 9.x and Serverless),
@@ -269,7 +276,7 @@ For example, a page describing how to create an {{ech}} deployment just requires
 
 This is true for most situations. However, it can still be useful to call it out in a few specific scenarios:
 
-* When there is a high risk of confusion for users. This may be subjective, but let’s imagine a scenario where a feature is available in 2 out of 3 serverless project types. It may make sense to clarify and be explicit about the feature being “unavailable” for the 3rd type. For example:
+* **When there is a high risk of confusion for users**. For example, if a feature is available in two out of three serverless project types, it might make sense to clarify and be explicit about the feature being “unavailable” for the third type.
 
   ```yml
   ---
@@ -283,7 +290,8 @@ This is true for most situations. However, it can still be useful to call it out
   ```
 
 
-* When a specific section, paragraph or list item has specific applicability that differs from the context set at the page or section level, and the action is not possible at all for that context (meaning that there is no alternative). For example:
+* **When only one section, paragraph, or element describes functionality that is unavailable in the context set at a higher level**.
+  For example, if a page is largely applicable to both `serverless` and `stack`, but one section describes functionality that is not possible in serverless (and there is no alternative).
 
   ````md
   ---

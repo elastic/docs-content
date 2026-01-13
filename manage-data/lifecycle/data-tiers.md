@@ -1,4 +1,5 @@
 ---
+navigation_title: Data tiers
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-disable-data-tier.html
@@ -11,9 +12,11 @@ products:
   - id: cloud-hosted
 ---
 
-# Data tiers
+# {{es}} data tiers: hot, warm, cold, and frozen storage explained
 
-A *data tier* is a collection of [nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) within a cluster that share the same [data node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles), and a hardware profile that’s appropriately sized for the role. Elastic recommends that nodes in the same tier share the same hardware profile to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
+{{es}} organizes data into storage tiers to balance performance, cost, and accessibility. Each tier—from hot for frequently accessed data to frozen for rarely queried datasets—has specific hardware and storage characteristics. This guide explains how to configure, manage, and automate data placement across tiers for both time series and general content data.
+
+Each *data tier* is a collection of [nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) in an {{es}} cluster that share the same [data node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles), and a hardware profile that’s appropriately sized for the role. Elastic recommends that nodes in the same tier share the same hardware profile to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
 
 :::{admonition} Serverless manages data storage for you
 By abstracting cluster management tasks, {{serverless-full}} adjusts data storage and scaling based on your workload. Certain [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md) allow you to customize how your data is stored and calibrate the performance of your data.
@@ -157,9 +160,9 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
 1. Determine which nodes will be removed from the cluster.
 
-    :::::{tab-set}
+    :::::{applies-switch}
 
-    ::::{tab-item} {{ech}}
+    ::::{applies-item} ess:
 
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. From the **Hosted deployments** page, select your deployment.
@@ -176,7 +179,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     ::::
 
-    ::::{tab-item} Elastic Cloud Enterprise
+    ::::{applies-item} ece:
     1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
     2. From the **Deployments** page, select your deployment.
 
@@ -468,7 +471,7 @@ When {{es}} creates an index as part of a [data stream](/manage-data/data-store/
 
 At the time of index creation, you can override the default setting by explicitly setting the preferred value in one of two ways:
 
-* Using an [index template](/manage-data/data-store/templates.md). Refer to [Automate rollover with ILM](/manage-data/lifecycle/index-lifecycle-management.md) for details.
+* Using an [index template](/manage-data/data-store/templates.md). Refer to [](/manage-data/lifecycle/index-lifecycle-management.md) for details.
 * Within the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request body.
 
 You can override this setting after index creation by [updating the index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to the preferred value.

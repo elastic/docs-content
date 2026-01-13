@@ -2,6 +2,9 @@
 navigation_title: Anomaly detection
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-generate-anomaly-alerts.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
 ---
@@ -34,14 +37,8 @@ To create an anomaly detection rule:
 2. In the list of anomaly detection jobs, find the job you want to check for anomalies. Haven’t created a job yet? [Create one now](/explore-analyze/machine-learning/anomaly-detection.md).
 3. From the **Actions** menu next to the job, select **Create alert rule**.
 4. Specify a name and optional tags for the rule. You can use these tags later to filter alerts.
-5. Verify that the correct job is selected and configure the alert details:
-
-    :::{image} /solutions/images/serverless-anomaly-detection-alert.png
-    :alt: Anomaly detection alert settings
-    :screenshot:
-    :::
-
-6. For the result type:
+5. Verify that the correct job is selected or select a new one.
+6. Select a type of machine learning result:
 
     | Choose… | To generate an alert based on… |
     | --- | --- |
@@ -50,18 +47,32 @@ To create an anomaly detection rule:
     | **Influencer** | The most unusual entities in a time range |
 
 7. Adjust the **Severity** to match the anomaly score that will trigger the action. The anomaly score indicates the significance of a given anomaly compared to previous anomalies. The default severity threshold is 75, which means every anomaly with an anomaly score of 75 or higher will trigger the associated action.
-8. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results if you want to be notified earlier about a potential anomaly even if it might be a false positive.
-9. (Optional) Expand and change **Advanced settings**:
+8. {applies_to}`stack: ga 9.3`{applies_to}`serverless: ga` (Optional) To narrow down the list of anomalies that the rule looks for, add an **Anomaly filter**. This feature uses KQL and is only available for the Record and Influencer result types.
+
+    In the **Anomaly filter** field, enter a KQL query that specifies fields or conditions to alert on. You can set up the following conditions:
+
+    * One or more partitioning or influencers fields in the anomaly results match the specified conditions
+    * The actual or typical scores in the anomalies match specified conditions
+
+    For example, say you've set up alerting for an anomaly detection job that has `partition_field = "response.keyword"` as the detector. If you were only interested in being alerted on `response.keyword = 404`, enter `partition_field_value: "404"` into the **Anomaly filter** field. When the rule runs, it will only alert on anomalies with `partition_field_value: "404"`.
+
+    ::::{note}
+    When you edit the KQL query, suggested filter-by fields appear. To compare actual and typical values for any fields, use operators such as `>` (greater than), `<` (less than), or `=` (equal to).
+    ::::
+
+9. (Optional) Turn on **Include interim results** to include results that are created by the anomaly detection job *before* a bucket is finalized. These results might disappear after the bucket is fully processed. Include interim results to get notified earlier about potential anomalies, even if they might be false positives. Don't include interim results if you want to get notified only about anomalies of fully processed buckets.
+
+10. (Optional) Expand and change **Advanced settings**:
 
     | Setting | Description |
     | --- | --- |
     | **Lookback interval** | The interval used to query previous anomalies during each condition check. Setting the lookback interval lower than the default value might result in missed anomalies. |
     | **Number of latest buckets** | The number of buckets to check to obtain the highest anomaly from all the anomalies that are found during the Lookback interval. An alert is created based on the anomaly with the highest anomaly score from the most anomalous bucket. |
 
-10. (Optional) Under **Check the rule condition with an interval**, specify an interval, then click **Test** to check the rule condition with the interval specified. The button is grayed out if the datafeed is not started. To test the rule, start the data feed.
-11. (Optional) If you want to change how often the condition is evaluated, adjust the **Check every** setting.
-12. (Optional) Set up **Actions**.
-13. **Save** your rule.
+11. (Optional) Under **Check the rule condition with an interval**, specify an interval, then click **Test** to check the rule condition with the interval specified. The button is grayed out if the datafeed is not started. To test the rule, start the data feed.
+12. (Optional) If you want to change how often the condition is evaluated, adjust the **Check every** setting.
+13. (Optional) Set up **Actions**.
+14. **Save** your rule.
 
 ::::{note}
 Anomaly detection rules are defined as part of a job. Alerts generated by these rules do not appear on the **Alerts** page.

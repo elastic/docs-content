@@ -3,8 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html
 applies_to:
   stack:
-  deployment:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -14,6 +12,17 @@ products:
 Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
 
 Each node performs one or more roles. Roles control the behavior of the node in the cluster.
+
+:::{admonition} Managing node roles for your deployment type
+ECH, ECE, ECK, and self-managed clusters all use node roles. However, the way that you set or change them depends on your deployment type.
+
+* **Self-managed clusters**: Use the instructions on this page.
+* **ECK**: Following the instructions on this page, [add node role information to your spec](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md) instead of `elasticsearch.yml`.
+* **ECH and ECE**: Add capacity to the matching instance type or tier in your deployment configuration:
+  * [ECE](/deploy-manage/deploy/cloud-enterprise/customize-deployment.md)
+  * [ECH](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md)
+:::
+
 
 ## Set node roles [set-node-roles]
 
@@ -279,7 +288,7 @@ node.roles: [ ]
 
 ### Remote-eligible node [remote-node]
 
-A remote-eligible node acts as a cross-cluster client and connects to [remote clusters](../../remote-clusters.md). Once connected, you can search remote clusters using [{{ccs}}](../../../solutions/search/cross-cluster-search.md). You can also sync data between clusters using [{{ccr}}](../../tools/cross-cluster-replication.md).
+A remote-eligible node acts as a cross-cluster client and connects to [remote clusters](../../remote-clusters.md). Once connected, you can search remote clusters using [{{ccs}}](../../../explore-analyze/cross-cluster-search.md). You can also sync data between clusters using [{{ccr}}](../../tools/cross-cluster-replication.md).
 
 ```yaml
 node.roles: [ remote_cluster_client ]
