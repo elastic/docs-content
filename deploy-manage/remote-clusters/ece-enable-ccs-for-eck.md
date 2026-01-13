@@ -9,6 +9,8 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
+  local_type_generic: deployment
+  remote_type_generic: cluster
   remote_type: Self-managed
 ---
 
@@ -59,7 +61,7 @@ These steps describe how to configure remote clusters between an {{es}} cluster 
 :::
 
 
-### Configure the local deployment [ece_configure_the_local_deployment_2]
+### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
