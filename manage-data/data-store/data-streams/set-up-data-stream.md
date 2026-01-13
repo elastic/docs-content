@@ -226,7 +226,7 @@ PUT _index_template/my-index-template
 
 :::{tip}
 :applies_to: {"stack": "ga 9.3+", "serverless": "ga"}
-You can also create classic data streams directly in the [**Streams**](/solutions/observability/streams/streams.md) UI in {{kib}}. This provides a simpler alternative to the multi-step API-based approach described below.
+You can also create classic streams directly in the [**Streams**](/solutions/observability/streams/streams.md) UI in {{kib}}. This provides a simpler alternative to the multi-step API-based approach described below.
 :::
 
 [Indexing requests](../data-streams/use-data-stream.md#add-documents-to-a-data-stream) add documents to a data stream. These requests must use an `op_type` of `create`. Documents must include a `@timestamp` field.

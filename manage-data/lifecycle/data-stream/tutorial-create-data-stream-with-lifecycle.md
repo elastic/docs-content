@@ -65,7 +65,7 @@ You can create a data stream in these ways:
     { "@timestamp": "2099-05-06T16:25:42.000Z", "message": "192.0.2.255 - - [06/May/2099:16:25:42 +0000] \"GET /favicon.ico HTTP/1.0\" 200 3638" }
     ```
 
-* {applies_to}`stack: ga 9.3+` You can create a classic data stream directly in the [**Streams**](/solutions/observability/streams/streams.md) UI in {{kib}}.
+* {applies_to}`stack: ga 9.3+` You can create a classic stream directly in the [**Streams**](/solutions/observability/streams/streams.md) UI in {{kib}}.
     1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     1. From the upper right, select **Create classic stream**.
     1. Select the index template you want to use, name your stream, and select **Create**.
