@@ -43,7 +43,7 @@ Connect from ECK-managed clusters:
   - [Connect to a different ECK environment](./eck-remote-clusters-to-other-eck.md)
   - [Connect to external clusters or deployments](./eck-remote-clusters-to-external.md)
 
-Connect to ECK-managed clusters from external clusters:
+Connect to ECK-managed clusters from other deployment types:
 
   - [](./ec-enable-ccs-for-eck.md)
   - [](./ece-enable-ccs-for-eck.md)
