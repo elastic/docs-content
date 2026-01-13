@@ -63,7 +63,7 @@ To edit a visualization directly on the dashboard, click the ![Edit visualizatio
 ::::{step} Add layers
 
 You can add multiple layers to a visualization, such as **Visualization**, **Annotations**, or **Reference lines**. Click {icon}`plus_in_square` **Add layer**, then choose the layer type and select the {{data-source}}. 
-To duplicate or delete a layer, click the ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
+To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
 
 ::::
 
