@@ -201,6 +201,26 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} that could result in a crash if a specified {{ls}} output configuration contained a certificate that couldn't be parsed.
 * Fixes CVE-2025-37735 ([ESA-2025-23](https://discuss.elastic.co/t/elastic-defend-8-19-6-9-1-6-and-9-2-0-security-update-esa-2025-23/383272)) in {{elastic-defend}} on Windows which could allow a low-privilege attacker to delete arbitrary files on the system and potentially escalate privileges to SYSTEM. Windows 11 24H2 includes changes which make this issue harder to exploit.
 
+
+## 9.1.10 [elastic-security-9.1.10-release-notes]
+
+### Features and enhancements [elastic-security-9.1.10-features-enhancements]
+* Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
+
+### Fixes [elastic-security-9.1.10-fixes]
+* Fixes an issue where the Security AI Assistant chat completion API didn't use an associated conversation's system prompt [#248020]({{kib-pull}}248020).
+* Fixes an issue where entity user and host names were not escaped in URLs, which resulted in invalid URLs [#247707]({{kib-pull}}247707).
+* Fixes an issue where the `createdBy` field in the notes filter didn't use exact matching [#247351]({{kib-pull}}247351).
+* Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
+* Fixes an issue where Timeline actions appeared in the Alerts table bulk actions menu without proper privileges [#246150]({{kib-pull}}246150).
+* Limits the detection rule execution gaps API for retrieving gap summaries to 100 `rule_id`s per request [#245924]({{kib-pull}}245924).
+* Fixes an issue where the **Threat intelligence** section in the alert details flyout didn't display multiple values [#245449]({{kib-pull}}245449).
+* Fixes an issue where {{elastic-defend}} upgrades and uninstallations could fail on busy systems.
+* Fixes an issue in {{elastic-defend}} on Windows where Mark of the Web parsing incorrectly handled file origin information ending with a `\0`.
+* For {{elastic-defend}} on Linux, reduces the occurrence of policy failures related to malware protection system deadlock avoidance.
+* Fixes a bug in {{elastic-defend}} on Windows that could sometimes result in `KERNEL_AUTO_BOOST_LOCK_ACQUISITION_WITH_RAISED_IRQL` or `PAGE_FAULT_IN_NONPAGED_AREA` bugchecks when [Offloaded Data Transfer (ODX)](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/offloaded-data-transfer) was used to copy files.  This regression was introduced in {{elastic-defend}} versions 8.19.8, 9.1.8, and 9.2.2.
+
+
 ## 9.1.9 [elastic-security-9.1.9-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.9-features-enhancements]
