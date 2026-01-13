@@ -41,4 +41,4 @@ products:
 
 1. Adjust the time period for the visualizations as needed.
 
-1. As with the **APM server overview** page, you can also [create alerts](/explore-analyze/alerts/create-manage-rules.md) to be triggered when the instance metrics meet a defined set of conditions. 
+1. As with the **APM server overview** page, you can also [create alerts](/explore-analyze/alerts-cases/alerts/create-manage-rules.md) to be triggered when the instance metrics meet a defined set of conditions. 
