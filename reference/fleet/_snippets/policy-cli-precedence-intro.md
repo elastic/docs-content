@@ -1,1 +1,1 @@
-Understanding what can be configured using policy and what must be provided using CLI or environment variables is crucial for managing {{component_ref}} deployments.
+Understanding what can be configured using policy and what must be provided using CLI or environment variables is crucial for managing deployments.
