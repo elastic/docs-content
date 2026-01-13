@@ -87,7 +87,7 @@ stack: preview 9.3+
 
 You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} and are familiar with [KQL](kql.md). 
 
-1. Select **Quick search** in the editor's footer, or press `Cmd + K` (Mac) or `Ctrl + K` (Windows/Linux) to open the **Quick search** bar.
+1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
 2. Select the data sources to search.
 3. Type the text you want to search for.
 4. Submit your search by pressing **Enter**. A new {{esql}} query is generated and overwrites the current query. It includes a `FROM` command based on the data sources you selected, and a `WHERE KQL()` command that contains the text you typed in the search bar. Any queries that you have previously run are saved in the query history if you need to restore them. 
