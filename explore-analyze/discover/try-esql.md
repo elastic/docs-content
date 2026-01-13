@@ -206,7 +206,7 @@ Data coming from the files is appended to the index, and the index is automatica
    If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
    :::
 
-3. Preview the data for each file you're importing. Field data types are automatically detected and set. If issues are detected, a **File issues** tab with more details appears before you validate the import. Typical issues include differences between the fields of the index and those of the imported files.
+3. Preview the data for each file you're importing. Field data types are automatically detected and set. If issues are detected, a **File issues** tab with more details appears before you validate the import. Common issues include differences between the fields in the index and in the imported files.
    - New fields coming from imported files will be added to the index.
    - Fields that exist in the index but are missing from the imported file will be kept but not filled with any data.
 
