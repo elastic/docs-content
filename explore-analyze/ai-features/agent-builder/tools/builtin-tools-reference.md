@@ -158,10 +158,10 @@ Security tools provide specialized capabilities for security monitoring, threat 
 :   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
 
 `security.entity_risk_score`
-:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users and hosts) to identify high-risk entities in the environment.
+:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment.
 
 `security.attack_discovery_search`
-:   Searches [attack discovery](/solutions/security/ai/attack-discovery.md) data to find related attack patterns and techniques.
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs.
 
 `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content.
