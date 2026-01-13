@@ -67,7 +67,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the `thumbprint_sha256` field to `code_signature` for process and library events in {{elastic-defend}}.
 * Adds the `desktop_name` field to {{elastic-defend}} process events to assist with the detection of malicious hidden desktop activity.
 * Improves {{elastic-defend}} by integrating two new Event Tracing for Windows (ETW) providers (`Microsoft-Windows-WebIO` and `Microsoft-Windows-WinINet`) to detect malicious HTTP activity.
-* Moves the {{elastic-defend}} response actions internal state location. If an unsuccessful {{elastic-defend}} upgrade is rolled back to the previous version, existing pending actions will be aborted early.
+* Moves the {{elastic-defend}} response actions internal state location. If an unsuccessful {{elastic-defend}} upgrade is rolled back to the previous version, existing pending actions are aborted early.
 * Adds service-less (no systemd) install mode for {{elastic-defend}} on Linux. Enable by setting the `ELASTIC_ENDPOINT_NO_SYSTEM_SERVICES=1` environment variable during install.
 * Adds the `memory-dump` response action to {{elastic-defend}} on Windows.
 * Hardens {{elastic-defend}} against cloud filter rebinding.
@@ -88,8 +88,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the {{elastic-defend}} startup log to explain unsigned policy details.
 * Reduces the performance impact of file copy and move operations involving Windows Offloaded Data Transfer while {{elastic-defend}} is installed.
 * Adds an {{elastic-defend}} policy advanced setting to maintain a minimum free disk space.
-* Reduces {{elastic-defend}} CPU usage when suppressing activity from trusted applications on Windows. This may be especially noticeable in applications that are JIT-heavy like PowerShell and .NET.
-* Improves {{elastic-defend}} visibility into image load events in mixed-architecture scenarios, such as during .NET library loading when the library and main executable may use different architectures. This only applies to Windows 10, version 1709 and later.
+* Reduces {{elastic-defend}} CPU usage when suppressing activity from trusted applications on Windows. This might be especially noticeable in applications that are JIT-heavy like PowerShell and .NET.
+* Improves {{elastic-defend}} visibility into image load events in mixed-architecture scenarios, such as during .NET library loading when the library and main executable might use different architectures. This only applies to Windows 10, version 1709 and later.
 * Refactors {{elastic-defend}} Windows file scanning behavior to reduce the risk of file sharing conflicts with other applications and improve the reliability of malware-on-write and event enrichments that rely on file contents such as code signatures and imphashes.
 * Improves the accuracy of thread CPU usage reported in {{elastic-defend}} metrics documents.
 
