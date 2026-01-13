@@ -67,6 +67,10 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+To delete unused data API commands can be ran using Kibana [DevTools](https://www.elastic.co/docs/explore-analyze/query-filter/tools/console) only if it's available, but otherwise API commands can run using the Deployment's [Elasticsearch API Console](https://www.elastic.co/docs/reference/cloud/cloud-hosted/ec-api-console) which is available as long as Elasticsearch has elected quorum.
+::::
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
@@ -114,6 +118,10 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+To delete unused data API commands can be ran using Kibana [DevTools](https://www.elastic.co/docs/explore-analyze/query-filter/tools/console) only if it's available, but otherwise API commands can run using the Deployment's [Elasticsearch API Console](https://www.elastic.co/docs/reference/cloud/cloud-hosted/ec-api-console) which is available as long as Elasticsearch has elected quorum.
+::::
 * Increase the disk size (scale up).
 
 ::::{note}
@@ -316,6 +324,10 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 * Disk/memory/CPU saturated:
 
     * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+      
+      ::::{note}
+      To delete unused data API commands can be ran using Kibana [DevTools](https://www.elastic.co/docs/explore-analyze/query-filter/tools/console) only if it's available, but otherwise API commands can run using the Deployment's [Elasticsearch API Console](https://www.elastic.co/docs/reference/cloud/cloud-hosted/ec-api-console) which is available as long as Elasticsearch has elected quorum.
+      ::::
     * Increase disk size.
     * [Enable autoscaling](/deploy-manage/autoscaling.md).
     * Configuration of [ILM](/manage-data/lifecycle/index-lifecycle-management.md) policies.
