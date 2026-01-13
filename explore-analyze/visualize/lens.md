@@ -56,7 +56,7 @@ As you drag fields to the layer pane, Lens automatically selects an aggregation 
 
 ::::{step} Edit your visualization
 
-To edit a visualization directly on the dashboard, click the ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") icon on the panel. To edit a visualization in the Lens application, click **Edit in Lens** in the layer pane.
+To edit a visualization directly on the dashboard, click the ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") icon on the panel. To edit a visualization, click **Edit in Lens** in the layer pane.
 
 ::::
 
