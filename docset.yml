@@ -288,5 +288,9 @@ subs:
   ece-docker-images-8: 8.18.8
   ece-docker-images-9: 9.0.8
   search-platform: "Search AI Platform"
+  fedramp-mod: "FedRAMP Moderate"
+  fedramp-high: "FedRAMP High"
+  fedramp-il5: "FedRAMP IL5"
+
 
 

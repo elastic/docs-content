@@ -63,6 +63,7 @@ toc:
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
               - file: deploy/elastic-cloud/restrictions-known-problems.md
+          - file: deploy/elastic-cloud/fedramp.md    
           - file: deploy/elastic-cloud/tools-apis.md
       - file: deploy/cloud-enterprise.md
         children:
