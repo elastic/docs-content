@@ -119,3 +119,11 @@ When creating or editing a rule, add the following resources to help you get sta
     ::::
 
 * **Related and suggested dashboards**: Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards (available for custom threshold rules only).
+
+### Configure alert flapping [observability-create-manage-rules-defining-flapping-details]
+
+You can modify the criteria for changing an alert's status to the [flapping state](/explore-analyze/alerts-cases/alerts/view-alerts.md) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, specify that the alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. 
+
+{applies_to}`stack: ga 9.3+` Modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or find the **Rules** page from the main management menu), click **Settings**, then go to the **Alert flapping detection** settings.
+
+{applies_to}`stack: ga 9.0-9.2` You can only modify the global flapping settings for rules your {{kib}} space or {{serverless-short}} project.
