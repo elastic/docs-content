@@ -11,7 +11,7 @@ products:
 
 This guide applies when one or more indices or data streams in your {{es}} cluster are missing or contain incomplete data, and you want to recover that data from an existing snapshot. [Snapshots](/deploy-manage/tools/snapshot-and-restore.md) store copies of your data outside the cluster.
 
-Missing data can occur for several reasons, such as accidental deletion of indices or data streams, or node or disk failures when no replicas are configured. Depending on the cause, there may be multiple ways to recover the data. Restoring from a snapshot is appropriate when a recent snapshot contains the affected indices or data streams.
+Missing data can occur for several reasons, such as accidental deletion of indices or data streams, or node or disk failures when no replicas are configured. Depending on the cause, there are multiple ways to recover the data. Restoring from a snapshot is appropriate when a recent snapshot contains the affected indices or data streams.
 
 
 ::::{important}
@@ -201,4 +201,4 @@ To restore the indices and data streams with missing data, run the following ste
 
     As we can see above the indices are `green` and open. The issue is resolved.
 
-For more guidance on creating and restoring snapshots see [this guide](../../deploy-manage/tools/snapshot-and-restore.md).
+For additional information about creating and restoring snapshots, refer to the [Snapshot and restore](../../deploy-manage/tools/snapshot-and-restore.md) documentation.
