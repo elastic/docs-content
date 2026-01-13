@@ -239,7 +239,7 @@ To view or edit an index:
 
 #### Reset the lookup index configuration
 
-At any time, you can delete all of the index's data and fields.
+At any time, you can delete all the index data and fields.
 
 :::::{applies-switch}
 
