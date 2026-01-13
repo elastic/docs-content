@@ -177,9 +177,9 @@ Your new index is automatically added to your query. You can then specify the fi
 
 When you are editing a lookup index from the {{esql}} editor, you can add data to it by uploading CSV files up to 500 MB.
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} { serverless:, stack: ga 9.3+ } 
+::::{applies-item} { serverless:, stack: ga 9.3+ } 
 1. Drag the files you want to upload from your computer. You can add several files at a time and can repeat the operation multiple times.
 
    :::{note}
@@ -195,9 +195,9 @@ When you are editing a lookup index from the {{esql}} editor, you can add data t
 4. Select **Import** to validate the configuration and proceed with the import, then **Finish** to finalize the operation and return to the lookup index.
 
 Data coming from the files is appended to the index, and the index is automatically saved.
-:::
+::::
 
-:::{applies-item} stack: ga =9.2
+::::{applies-item} stack: ga =9.2
 1. Select {icon}`download` **Upload file**.
 
 2. Select the CSV file to import on your machine. You can select several files to import at once.
@@ -213,9 +213,9 @@ Data coming from the files is appended to the index, and the index is automatica
 4. Select **Import** to finalize the operation.
 
 Data coming from the files is appended to the index, and the index is automatically saved.
-:::
-
 ::::
+
+:::::
 
 #### View or edit a lookup index from the editor [view-edit-lookup-esql]
 
@@ -241,9 +241,9 @@ To view or edit an index:
 
 At any time, you can delete all of the index's data and fields.
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} { serverless:, stack: ga 9.3+ } 
+::::{applies-item} { serverless:, stack: ga 9.3+ } 
 1. Select all the index data using the checkbox in the header of the table.
 
 2. Select **Delete selected** from the contextual menu that appears upon selecting entries.
@@ -253,13 +253,13 @@ At any time, you can delete all of the index's data and fields.
 4. Save the index.
 
 The lookup index is fully reset.
-:::
-
-:::{applies-item} stack: ga =9.2
-In this version, you cannot fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu that appears.
-:::
-
 ::::
+
+::::{applies-item} stack: ga =9.2
+In this version, you cannot fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu that appears.
+::::
+
+:::::
 
 ### Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
