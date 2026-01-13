@@ -13,26 +13,33 @@ applies_to:
 
 The {{agent-builder}} [chat UI](chat.md#agent-chat-gui) is available in two modes: 
 
-1. [Standalone experience](#standalone-experience)
-2. [Flyout experience](#flyout-experience)
+1. [Standalone mode](#standalone-mode)
+2. [Flyout mode](#flyout-mode)
 
 :::{note}
 The standalone and flyout mode have the same functionalities and can be used interchangeably. Conversation history is preserved across both modes.
 :::
 
-## Standalone experience
+## Standalone mode
 
 {applies_to}`stack: preview =9.2, ga 9.3` {applies_to}`observability: ga 9.3+` {applies_to}`security: ga 9.3+`
 
-Access Agent Builder using the **Agents** tab in the main navigation. For {{observability}} and {{elastic-sec}}, the standalone experience is available when you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md).
+Access Agent Builder by selecting **Agents** in the main navigation. In {{observability}} and Security, the standalone experience is available when you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md).
 
 :::{image} images/agents-nav.png
-:alt: Agents tab in main navigation
-:width: 150px
+:alt: Agents logo in main navigation
+:width: 100px
 :screenshot:
 :::
 
-## Flyout experience
+The following GIF shows how to access the standalone chat experience in an Elastic Security project:
+
+:::{image} images/standalone-chat-mode.gif
+:alt: Standalone agent builder chat mode in main navigation
+:screenshot:
+:::
+
+## Flyout mode
 
 {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview 9.3`
 
@@ -49,6 +56,11 @@ Once enabled by [switching from AI Assistant to Agent Builder](/explore-analyze/
 2. Use the keyboard shortcut {kbd}`cmd+;`
 
 You can resize the flyout by dragging its side edge. The flyout persists when you change pages in the main navigation.
+
+:::{image} images/flyout-chat-mode.gif
+:alt: Flyout chat mode demonstration
+:screenshot:
+:::
 
 ## Default chat experiences
 
