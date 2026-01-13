@@ -1,8 +1,9 @@
 <!--
 This snippet is in use in the following locations:
 - self-remote-cluster-eck.md
-- ec-enable-ccs-for-eck.md
+- eck-remote-clusters-to-other-eck.md
 - ece-enable-ccs-for-eck.md
+- ec-enable-ccs-for-eck.md
 
 It requires local_type_generic substitution to be defined
 -->

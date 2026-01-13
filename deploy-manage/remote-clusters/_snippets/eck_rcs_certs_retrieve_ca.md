@@ -1,3 +1,8 @@
+<!--
+This snippet is in use in the following locations:
+- self-remote-cluster-eck.md
+- eck-remote-clusters-to-other-eck.md
+-->
 ECK stores the CA used to issue certificates for the {{es}} transport layer in a secret named `<cluster_name>-es-transport-certs-public`.
 
 For example, to save the transport CA certificate of a cluster named `quickstart` into a local file, run the following command:

@@ -1,3 +1,8 @@
+<!--
+This snippet is in use in the following locations:
+- remote-clusters-api-key.md
+- eck-remote-clusters-to-external.md
+-->
 1. Enable the remote cluster server on every node of the remote cluster. In [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
     1. Set [`remote_cluster_server.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.

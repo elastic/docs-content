@@ -5,7 +5,7 @@ This snippet is in use in the following locations:
 - ec-remote-cluster-ece.md
 - ece-remote-cluster-same-ece.md
 - ece-remote-cluster-other-ece.md
-- ece-remote-cluster-ess.md
+- ece-remote-cluster-ece-ess.md
 
 It requires remote_type substitution to be defined
 -->

@@ -1,3 +1,8 @@
+<!--
+This snippet is in use in the following locations:
+- eck-remote-clusters-to-other-eck.md
+- eck-remote-clusters-to-external.md
+-->
 The following command creates a secret containing the encoded API key obtained earlier:
 
 ```sh

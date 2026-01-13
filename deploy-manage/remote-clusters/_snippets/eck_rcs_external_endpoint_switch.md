@@ -1,3 +1,7 @@
+<!--
+This snippet is in use in the following locations:
+- eck-remote-clusters-to-external.md
+-->
 % Endpoint identification for multiple deployment types
 :::::::{applies-switch}
 
