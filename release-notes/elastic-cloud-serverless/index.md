@@ -629,7 +629,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-10202025-features-enhancements]
 
-* [Agent Builder](/solutions/search/elastic-agent-builder.md) is now available in technical preview and is enabled by default on {{serverless-full}}
+* [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is now available in technical preview and is enabled by default on {{serverless-full}}
 * Lets you remove root privileges from {{fleet}} managed agents [#237790]({{kib-pull}}237790)
 * Adds the `xpack.fleet.experimentalFeatures` setting [#238840]({{kib-pull}}238840)
 * Supports expression suggestions within function parameters [#236343]({{kib-pull}}236343)
@@ -692,6 +692,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-10132025-features-enhancements]
 
+* Adds a new `MIGRATE` action type for migrating agents to a different cluster [#237342]({{kib-pull}}237342).
 * Adds a **Show agentless resources** toggle on the Fleet > Settings page for debugging and diagnostics [#237528]({{kib-pull}}237528)
 * Allows you to carry over the controls when navigating to a dashboard, preserving the histogram [#237070]({{kib-pull}}237070)
 * Enables the risk score reset feature [#237829]({{kib-pull}}237829)
