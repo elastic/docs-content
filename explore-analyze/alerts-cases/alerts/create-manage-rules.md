@@ -61,7 +61,7 @@ You can modify the criteria for changing an alert's status to [flapping](view-al
 
 {applies_to}`stack: ga 9.3+` Modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or find the **Rules** page from the main management menu), click **Settings**, then go to the **Alert flapping detection** settings.
 
-{applies_to}`stack: ga 9.0-9.2` You can only modify the global flapping settings for rules your {{kib}} space or {{serverless-short}} project.
+{applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.
 
 ### Actions [defining-rules-actions-details]
 
