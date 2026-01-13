@@ -183,7 +183,7 @@ When you are editing a lookup index from the {{esql}} editor, you can add data t
 1. Drag the files you want to upload from your computer. You can add several files at a time and can repeat the operation multiple times.
 
    :::{note}
-   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
+   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then start a new upload.
    :::
 
 2. Preview the data for each file you're importing, then select **Continue**. If issues are detected, a message appears with more details. Typical issues include differences between the fields of the index and those of the imported files.
