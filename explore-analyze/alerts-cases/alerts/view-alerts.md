@@ -62,7 +62,7 @@ There are four common alert statuses:
 
 `flapping`
 
-:   The alert is switching repeatedly between active and recovered states. If the rule has actions that run when the alert status changes states, those actions are suppressed while the alert is flapping. Refer to [Alert flapping](/explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
+:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](/explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
 
 `recovered`
 :   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
