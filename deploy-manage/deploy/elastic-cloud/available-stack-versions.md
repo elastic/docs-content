@@ -30,7 +30,7 @@ In {{ech}}, not all [{{stack}} versions](https://www.elastic.co/support/eol) are
 * The latest minor version of the previous major version
 
 For example, if the latest {{stack}} version is {{version.stack}}, {{ech}} makes the following versions available:
-* {{version.stack | M.M }} and {{version.stack | M.M-1 | M.M }}
+* {{version.stack | M.M }} and {{version.stack | M.M+1 | M.M }}
 * 8.19
 
 Additional versions can appear in the UI, such as [release candidate builds](#ec-release-builds) or older versions. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
