@@ -50,7 +50,7 @@ As you drag fields into the workspace or to the layer pane, Lens automatically g
 
 ::::{step} Choose the data you want to visualize
 
-As you drag fields to the layer pane, Lens automatically selects the aggregation function, for example **Date histogram**, **Intervals**, or **Top values**. Click the field to learn more about the data a field contains, or to tweak its appearance.
+As you drag fields to the layer pane, Lens automatically selects an aggregation function, for example **Date histogram**, **Intervals**, or **Top values**. Click a field to learn more about its data or to edit its appearance.
 
 ::::
 
