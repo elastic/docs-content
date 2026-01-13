@@ -227,3 +227,18 @@ When you save your edits, the control is updated for your query.
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
+
+
+### Refine an {{esql}} query by interacting with the results table
+
+Certain interactions with the results table of your {{esql}} query in Discover apply additional filters that translate into additional `MATCH` or `NOT MATCH` clauses added to your query. When hovering over a value cell, contextual options appear: 
+
+- Selecting {icon}`plus_in_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE `host.keyword` == "www.elastic.co"`.
+- Selecting {icon}`minus_in_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE `host.keyword` != "www.elastic.co"`.
+
+:::{note}
+applies_to: { serverless:, stack: ga 9.3+ }
+Until version 9.2 included, filtering for multi-value fields isn't supported. On later versions, filtering multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example `WHERE MATCH(`tags.keyword`, "error") AND MATCH(`tags.keyword`, "security")`.
+:::
+
+Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
