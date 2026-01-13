@@ -52,7 +52,6 @@ Conversations with agents consume tokens. To understand how usage is calculated,
 :::
 
 #### Select a different agent
-
 ```{applies_to}
 stack: ga 9.3+
 ```
@@ -66,6 +65,9 @@ Use the agent selector to switch agents, to navigate to the agent management sec
 :::
 
 #### Select a different model
+```{applies_to}
+stack: ga 9.3+
+```
 
 Use the model selector to switch the underlying [model](models.md) the agent uses to generate responses. Switch models to prioritize faster responses, lower costs, or more complex reasoning, depending on your use case.
 
@@ -76,6 +78,9 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :::
 
 ### Access key actions
+```{applies_to}
+stack: ga 9.3+
+```
 
 This menu is your hub for key management actions. You can quickly access important pages from here.
 
