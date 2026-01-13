@@ -136,9 +136,13 @@ serverless: preview
 
 In **Discover**, LOOKUP JOIN commands include interactive options that let you create or edit lookup indices directly from the editor.
 
-#### Create a lookup index from the editor
+:::{note}
+This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) and [Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create).
+:::
 
-You can create a lookup index directly from the ES|QL editor. To populate this index, you can type in data manually or upload a CSV file up to 500 MB.
+#### Create a lookup index from the editor [create-lookup-esql]
+
+You can create a lookup index directly from the {{esql}} editor. To populate this index, you can type in data manually or upload a CSV file up to 500 MB.
 
 To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege on the corresponding pattern.
 
@@ -156,17 +160,62 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
    - It must not start with `-`, `_`, or `+`.
 
 4. Provide the data of the lookup index. You can choose between:
-   - **Uploading a CSV file up to 500 MB**. When uploading a file, you can preview the data and inspect the file's content before it is imported. If issues are detected, a **File issues** tab with more details also appears before you validate the import.
-   - **Adding data manually**. To do that, you can add rows and columns, and edit cells directly.
+   - **Uploading a CSV file up to 500 MB**. When uploading a file, you can preview the data, inspect the file's content, and review any detected issues before it is imported. Refer to [](#esql-lookup-index-from-file) for more details.
+   - **Adding data manually**. To do that, you can add fields and populate data directly. When adding a field, you must set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
+     :::{note}
+     Some {{es}} data types aren't supported in {{kib}}.
+     :::
    - **Using a combination of both methods**. You can upload a file after adding data manually, and edit or expand data imported from a file.
 
-   :::{tip}
-   You can explore your index using the search field, or in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
-   :::
+5. Check your index and its data: Explore your index using the search field, or in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
 
-5. **Save** any unsaved changes, then **Close** the index editor to return to your query.
+6. **Save** any unsaved changes, then **Close** the index editor to return to your query.
 
 Your new index is automatically added to your query. You can then specify the field to join using `ON <field_to_join>`.
+
+##### Load data into a lookup index from a CSV file [esql-lookup-index-from-file]
+
+When you are editing a lookup index from the {{esql}} editor, you can add data to it by uploading CSV files up to 500 MB.
+
+::::{applies-switch}
+
+:::{applies-item} { serverless:, stack: ga 9.3+ } 
+1. Drag the files you want to upload from your computer. You can add several files at a time and can repeat the operation multiple times.
+
+   :::{note}
+   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
+   :::
+
+2. Preview the data for each file you're importing, then select **Continue**. If issues are detected, a message appears with more details. Typical issues include differences between the fields of the index and those of the imported files.
+   - New fields coming from imported files will be added to the index.
+   - Fields that exist in the index but are missing from the imported file will be kept but not filled with any data.
+
+3. Review and adjust the field names and data types to match the needs of your lookup index. After the import, you can no longer edit those.
+
+4. Select **Import** to validate the configuration and proceed with the import, then **Finish** to finalize the operation. and return to the lookup index.
+
+Data coming from the files is appended to the index, and the index is automatically saved.
+:::
+
+:::{applies-item} stack: ga =9.2
+1. Select {icon}`download` **Upload file**.
+
+2. Select the CSV file to import on your machine. You can select several files to import at once.
+
+   :::{note}
+   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
+   :::
+
+3. Preview the data for each file you're importing. Field data types are automatically detected and set. If issues are detected, a **File issues** tab with more details appears before you validate the import. Typical issues include differences between the fields of the index and those of the imported files.
+   - New fields coming from imported files will be added to the index.
+   - Fields that exist in the index but are missing from the imported file will be kept but not filled with any data.
+
+4. Select **Import** to finalize the operation.
+
+Data coming from the files is appended to the index, and the index is automatically saved.
+:::
+
+::::
 
 #### View or edit a lookup index from the editor
 
@@ -180,13 +229,37 @@ To view or edit an index:
 
 2. Select the **Edit lookup index** or **View lookup index** option that appears. A flyout showing the index appears.
 
-3. Depending on your permissions and needs, explore or edit the index.
+3. Depending on your permissions and needs, explore or edit the index. When editing the index, you have the same options described in [](#create-lookup-esql).
 
    :::{note}
    Editing a lookup index affects all {{esql}} queries that reference it. Make sure that your changes are compatible with existing queries that use this index.
    :::
 
 4. If you made changes, select **Save** before closing the flyout.
+
+#### Reset the index configuration
+
+At any time, you can delete all of the index's data and fields.
+
+::::{applies-switch}
+
+:::{applies-item} { serverless:, stack: ga 9.3+ } 
+1. Select all of the index data.
+
+2. Select **Delete selected** from the contextual menu that appears upon selecting entries.
+
+3. Once all entries are deleted, a **Reset index** button appears. Select it to remove all fields configured in the index.
+
+4. Save the index.
+
+the lookup index is fully reset.
+:::
+
+:::{applies-item} stack: ga =9.2
+In this version, you cannot fully reset the index configuration. For example, you can't remove columns. However, you can delete index data by selecting the entries to delete and by selecting **Delete selected** from the contextual menu that appears.
+:::
+
+::::
 
 ### Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
