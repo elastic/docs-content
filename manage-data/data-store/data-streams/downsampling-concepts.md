@@ -57,7 +57,7 @@ Downsampling is applied to the individual backing indices of the TSDS. The downs
         * `min`, `max`, `sum`, and `value_count` are stored as type `aggregate_metric_double`.
     * `counter` field type:
         * the last value is stored and the type is preserved.
-    * `histogram` field type: {applies_to}`stack: preview 9.3`
+    * `histogram` field type: {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
         * individual histograms are merged into a single histogram which is stored and the type is preserved. In the case of the `histogram` field type, the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm is used.
 
 4. For all other fields, copies the most recent value to the target index.
