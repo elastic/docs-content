@@ -111,7 +111,7 @@ Tables are highly customizable, and provide you with text alignment, value forma
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
-stack: preview 9.0, ga 9.1
+stack: preview =9.0, ga 9.1+
 serverless: ga
 ```
 

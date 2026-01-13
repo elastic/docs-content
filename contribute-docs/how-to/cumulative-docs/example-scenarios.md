@@ -7,7 +7,7 @@ navigation_title: Example scenarios
 :::{note}
 This content is still in development.
 If you have questions about how to write cumulative documentation while contributing,
-reach out to **@elastic/docs** in the related GitHub issue or PR. 
+reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
 Browse common scenarios you might run into as a docs contributor that require different approaches to labeling cumulative docs.
@@ -226,7 +226,7 @@ applies_to:
 
 #### Tables
 
-**Density** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
+**Density** {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga`
 :   Make the table more or less compact. Choose between **Compact**, **Normal** (default), and **Expanded**.
 ```
 ::::
@@ -278,9 +278,11 @@ Serverless at the time Elastic Stack 9.0.0 was released.
 Then, the functionality became generally available in Elastic Stack in 9.1.0 and shortly before the
 Elastic Stack 9.1.0 release in Serverless.
 
-* For Elastic Stack, a versioned product, label the section with both lifecycles: `ga 9.1` and `preview 9.0`.
 * For Serverless, an unversioned product, update the section label from `serverless: preview` to `serverless: ga`.
   Do _not_ list both lifecycles.
+* For Elastic Stack, a versioned product, label the section with both lifecycles: `ga 9.1+` and `preview =9.0`.
+  The latest released version is rendered in the badge and other lifecycle/versions is included in the popover attached to the badge.
+  Hover over the badge to see the popover.
 
 :::::{tab-set}
 ::::{tab-item} Image
@@ -304,7 +306,7 @@ applies_to:
 ### Assign colors to terms [assign-colors-to-terms]
 
 ```{applies_to}
-stack: ga 9.1, preview 9.0,
+stack: ga 9.1+, preview =9.0
 serverless: ga
 ```
 
@@ -346,7 +348,7 @@ applies_to:
     security: all
 ---
 
-# Configure advanced settings [security-advanced-settings]
+# Configure advanced settings for Elastic Security
 
 [...]
 
@@ -400,25 +402,52 @@ Using a code callout is the lightest-touch solution, but might not be sufficient
 :screenshot:
 ::::
 
-### Solution B: Use tabs [code-block-tabs]
+### Solution B: Use applies switch tabs [code-block-tabs]
 
-:::{include} _snippets/applies-switch-and-tabs.md
-:::
-
-**When to use tabs**: If using a [code callout](#code-block-callout) isn't appropriate.
+**When to use applies switch tabs**: If using a [code callout](#code-block-callout) isn't appropriate.
 
 **Best practices**:
 
 * Try to minimize the number of tabs where possible,
-  but do not mix tabs and `applies_to`-related code callouts.
+  but do not mix applies switch and `applies_to`-related code callouts.
 * Try not to include information surrounding a code block in the tabs.
   Make the tab content as small as possible apart from the procedure itself.
 
 **Example**: On the [Upstream OpenTelemetry Collectors and language SDKs](https://www.elastic.co/docs/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks#apm-connect-open-telemetry-collector) page, we use tabs to show two different code blocks: one for Serverless and one for Elastic Stack (stateful).
 
+::::::{tab-set}
+:::::{tab-item} Image
 ::::{image} ./images/example-code-block-tabs.png
 :screenshot:
 ::::
+:::::
+
+:::::{tab-item} Code
+
+````
+Connect your OpenTelemetry Collector instances to Elastic {{observability}}
+or {{obs-serverless}} using the OTLP exporter:
+
+::::{applies-switch}
+:::{applies-item} stack: ga
+
+```
+[...]
+```
+
+:::
+:::{applies-item} serverless: ga
+
+```
+[...]
+```
+
+:::
+::::
+````
+
+:::::
+::::::
 
 ## Workflows vary [workflow]
 
@@ -442,18 +471,30 @@ but might not be sufficient in all cases.
 
 **Example**: Only one item in an ordered list varies between Serverless and stateful.
 
-::::{image} ./images/workflow-inline.png
+:::::{tab-set}
+
+::::{tab-item} Image
+:::{image} ./images/workflow-inline.png
 :screenshot:
+:::
 ::::
 
-### Solution B: Use tabs [workflow-tabs]
+::::{tab-item} Code
+```md
+1. Get started:
+    * {applies_to}`serverless: ga` In your {{obs-serverless}} project, go to **Add Data**.
+    * {applies_to}`stack: ga` In {{kib}}, go to the **Observability** UI and click **Add Data**.
+1. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
+1. Copy the install command.
+```
+::::
+:::::
 
-:::{include} _snippets/applies-switch-and-tabs.md
-:::
+### Solution B: Use applies switch tabs [workflow-tabs]
 
-Tabs are minimally disruptive in many situations.
+Applies switch tabs are minimally disruptive in many situations.
 
-**When to use tabs**:
+**When to use applies switch tabs**:
 
 * Using [inline `applies_to` badges](#workflow-inline) isn't appropriate.
 * All the tabs fit horizontally on a single row on a typical laptop screen.
@@ -469,11 +510,43 @@ Tabs are minimally disruptive in many situations.
   Make the tab content as small as possible apart from the procedure itself.
 * Consider breaking up procedures into sets of procedures if only one section differs between contexts.
 
-**Example**: On the [Enable audit logging](https://www.elastic.co/docs/deploy-manage/security/logging-configuration/enabling-audit-logs#enable-audit-logging-procedure) page, we use tabs to show separate ordered lists outlining the workflow for each deployment type.
+**Example**: On the [Enable audit logging](https://www.elastic.co/docs/deploy-manage/security/logging-configuration/enabling-audit-logs#enable-audit-logging-procedure) page, we use applies switch tabs to show separate ordered lists outlining the workflow for each deployment type.
 
+::::::{tab-set}
+
+:::::{tab-item} Image
 ::::{image} ./images/example-workflow-tabs.png
 :screenshot:
 ::::
+:::::
+
+:::::{tab-item} Code
+
+```
+::::{applies-switch}
+
+:::{applies-item} ess: ga
+[...]
+:::
+
+:::{applies-item} eck: ga
+[...]
+:::
+
+:::{applies-item} ece: ga
+[...]
+:::
+
+:::{applies-item} self: ga
+[...]
+:::
+
+::::
+```
+
+:::::
+
+::::::
 
 ### Solution C: Use sibling pages [workflow-sibling-pages]
 
@@ -481,7 +554,7 @@ Sibling pages are a last resort when no other solutions are appropriate.
 
 **When to use sibling pages**:
 
-* Neither [inline `applies_to` badges](#workflow-inline) or [tabs](#workflow-tabs) are appropriate.
+* Neither [inline `applies_to` badges](#workflow-inline) or [applies switch tabs](#workflow-tabs) are appropriate.
 * The workflow has significant differences across multiple procedures.
 * There are chained procedures where not all of the procedures are needed for all contexts
   or where the flow across procedures is muddied when versioning context is added.
@@ -503,12 +576,9 @@ Sibling pages are a last resort when no other solutions are appropriate.
 
 Sometimes the UI differs between versions, deployment types or other conditions.
 
-### Solution A: Use tabs [screenshot-tabs]
+### Solution A: Use applies switch tabs [screenshot-tabs]
 
-:::{include} _snippets/applies-switch-and-tabs.md
-:::
-
-**When to use tabs**:
+**When to use applies switch tabs**:
 * When the screenshot shows significantly different interfaces or workflows for each product, deployment type, or version.
 * When the screenshot represents a specific, interactive action, like clicking a button or navigating a UI that changes meaningfully between contexts.
 
@@ -542,12 +612,9 @@ For example, versioning the screenshot on the [Dashboards](https://www.elastic.c
 
 ## Multiple adjacent block elements vary [multiple-block]
 
-### Solution A: Use tabs [multiple-block-tabs]
+### Solution A: Use applies switch tabs [multiple-block-tabs]
 
-:::{include} _snippets/applies-switch-and-tabs.md
-:::
-
-**When to use tabs**:
+**When to use applies switch tabs**:
 * When the content is structurally similar but differs in detail — for example, slightly different instructions, outputs, or paths.
 * When you want to avoid repeating most of the surrounding content and isolate just the difference.
 
@@ -571,9 +638,12 @@ _Work in progress._
 
 ## Functionality is added to multiple patch versions [multiple-patch]
 
-Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time. In that case, use two `applies_to` badges so that users can see clearly the versions in which the functionality is introduced. Order the `applies_to` badges starting with the latest version, and ending with the earliest version. (Automatic ordering for multiple badges is not currently supported.)
+Sometimes, features and enhancements slip through into patch versions, and the same functionality might be added for the first time to multiple patch versions at the same time.
 
-For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time.
+- **Standard case**: Our docs are aligned with the latest patch of any given minor version. That means that in most cases, we don't need to call out the exact patch version that introduced a change (that's for the release notes).
+- **Exceptions**: In rare cases, it can happen that the change is important enough to be explicitly called out in the docs with a precise patch-level information. In that case, you can add a callout and indicate patch-level versions using plain text to explain the change.
+
+For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-httpjson) page, the `terminate` helper function was added to a 9.0.x and 9.1.x patch version at the same time. Since the new functionality is available in the latest patch of both 9.0.x and 9.1.x, use the earlier version: 9.0.x.
 
 :::::{tab-set}
 ::::{tab-item} Image
@@ -586,7 +656,7 @@ For example, on the [HTTP JSON input](https://www.elastic.co/docs/reference/beat
 ```markdown
 * `terminate`: exits the template without falling back to the default value
   and without causing an error. It takes a single string argument that is
-  logged in debug logging. {applies_to}`stack: ga 9.1.2` {applies_to}`stack: ga 9.0.6`
+  logged in debug logging. {applies_to}`stack: ga 9.1.2+!` {applies_to}`stack: ga 9.0.6+!`
 ```
 ::::
 :::::
