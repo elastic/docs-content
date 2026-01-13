@@ -14,9 +14,13 @@ products:
 # Prevent {{agent}} uninstallation
 
 
-For hosts enrolled in {{elastic-defend}}, you can prevent unauthorized attempts to uninstall {{agent}} and {{elastic-endpoint}} by enabling **Agent tamper protection** on the Agent policy. This offers an additional layer of security by preventing users from bypassing or disabling {{elastic-defend}}'s endpoint protections.
+For hosts enrolled in {{elastic-defend}}, you can add a layer of security by enabling **Agent tamper protection** on the {{agent}} policy. This helps prevent casual users from bypassing or disabling {{elastic-defend}}'s endpoint protections.
 
-When enabled, {{agent}} and {{elastic-endpoint}} can only be uninstalled on the host by including an uninstall token in the uninstall CLI command. One unique uninstall token is generated per Agent policy, and you can retrieve uninstall tokens in an Agent policy’s settings or in the {{fleet}} UI.
+When this setting is enabled, the `uninstall` CLI command for {{agent}} and {{elastic-endpoint}} requires a unique uninstall token. One unique uninstall token is generated per {{agent}} policy, and you can retrieve uninstall tokens in an {{agent}} policy’s settings or in the {{fleet}} UI.
+
+::::{note}
+Tamper protection is a defense-in-depth capability that does not provide comprehensive protection against all administrative attacks. Administrators are in control of the security of a device and can change core OS settings, alter key system files, uninstall security patches, or even replace the OS entirely. To prevent users from uninstalling or sabotaging {{elastic-defend}}, avoid granting them administrative privileges.
+::::
 
 ::::{admonition} Requirements
 * In {{stack}}, agent tamper protection requires a [Platinum or higher subscription](https://www.elastic.co/pricing).
