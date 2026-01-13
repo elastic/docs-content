@@ -250,9 +250,7 @@ At any time, you can delete all the index data and fields.
 
 3. Once all entries are deleted, a **Reset index** button appears. Select it to remove all fields configured in the index.
 
-4. Save the index.
-
-The lookup index is fully reset.
+The lookup index is fully reset and saved automatically.
 ::::
 
 ::::{applies-item} stack: ga =9.2
