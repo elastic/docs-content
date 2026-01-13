@@ -42,14 +42,7 @@ When you configure classic or wired streams through the Streams UI or [Streams A
 
 You can still edit non-managed ingest pipelines, templates, and other components, but avoid those marked as managed or any per-data-stream mappings and settings. This behavior is similar to how Elasticsearch handles components managed by integrations. Refer to the [**Advanced** tab](./management/advanced.md) to review managed components.
 
-## Requirements [streams-requirements]
-
-Streams requires the following:
-
-* [Required permissions](#streams-required-permissions)
-* [Required space privileges](#streams-space-privileges)
-
-### Required permissions [streams-required-permissions]
+## Required permissions [streams-required-permissions]
 
 Streams requires the following permissions:
 
@@ -78,25 +71,17 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ::::
 
-### Space privileges [streams-space-privileges]
+## Manage Streams visibility [streams-space-privileges]
+```{applies_to}
+stack: ga 9.3+
+serverless: ga
+```
 
-Necessary space privileges to view Streams vary depending on your deployment or serverless project. Select the tab that corresponds to your deployment or project for more information.
+You can set Streams visibility on a space-by-space basis by defining users' access to specific spaces. Refer to [Define access to a space](../../../deploy-manage/manage-spaces.md#spaces-control-user-access) for more information.
 
-::::{applies-switch}
-
-:::{applies-item} { serverless: ga, stack: ga 9.3+}
-
-You can set visibility of Streams based on access to specific spaces. Refer to [Define access to a space](../../../deploy-manage/manage-spaces.md#spaces-control-user-access) for more information.
-
+:::{note}
+Creating [significant events](./management/significant-events.md) requires access to the `default` space.
 :::
-
-:::{applies-item} stack: ga 9.1-9.2
-
-Streams requires **All Spaces** access.
-
-:::
-
-::::
 
 ## Access Streams [streams-access]
 
