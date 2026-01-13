@@ -1,3 +1,10 @@
+<!--
+This snippet is in use in the following locations:
+- self-remote-cluster-eck.md
+- eck-remote-clusters-to-other-eck.md
+- ece-enable-ccs-for-eck.md
+- ec-enable-ccs-for-eck.md
+-->
 When the remote cluster server is enabled, ECK automatically creates a Kubernetes service named `<cluster-name>-es-remote-cluster` that exposes the server internally on port `9443`.
 
 To allow clusters running outside your Kubernetes environment to connect to this {{es}} cluster, you must expose this service externally. The way to expose this service depends on your ECK version.
@@ -47,6 +54,6 @@ kubectl expose service quickstart-es-remote-cluster \
 :::::
 
 :::{warning}
-If you change the service’s `port`, set `targetPort` explicitly to `9443`, which is the default remote cluster server listening port. Otherwise, Kubernetes uses the same value for both fields, resulting in failed connections.
+If you change the service’s `port` to expose a different port externally, set `targetPort` explicitly to `9443`, which is the default remote cluster server listening port. Otherwise, Kubernetes uses the same value for both fields, resulting in failed connections.
 :::
 
