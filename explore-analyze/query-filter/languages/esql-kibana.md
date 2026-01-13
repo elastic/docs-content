@@ -90,7 +90,7 @@ You can use the **Quick search** functionality of the {{esql}} editor to transla
 1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
 2. Select the data sources to search.
 3. Type the text you want to search for.
-4. Submit your search by pressing **Enter**. A new {{esql}} query is generated and overwrites the current query. It includes a `FROM` command based on the data sources you selected, and a `WHERE KQL()` command that contains the text you typed in the search bar. Any queries that you have previously run are saved in the query history if you need to restore them. 
+4. Submit your search by pressing **Enter**. A new {{esql}} query is generated and overwrites the current query. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. Any queries that you have previously run are saved in the query history if you need to restore them. 
 5. Refine your query with any other {{esql}} command or function that you need. The **Quick search** bar closes automatically when you start typing in the editor or click outside of it.
 
 ![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6966744e818dc30008b336f8/esql-quick-search.gif "=60%")
