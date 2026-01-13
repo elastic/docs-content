@@ -33,7 +33,7 @@ In {{kib}}, you can view all configured {{slm-init}} policies and review their s
     :screenshot:
     :::
 
-2. The policies table should be visible. Click on any of the policies to review the details and execution history.
+2. The policies table lists all configured policies. Click on any of the policies to review the details and execution history.
 
 3. To get more detailed information about the failure, open {{kib}} **Dev Tools > Console**. You can find the **Console** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
