@@ -145,6 +145,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility for Streams badges [#235625]({{kib-pull}}235625).
 * Fixes code area responsiveness in Stream management [#232630]({{kib-pull}}232630).
 
+## 9.1.10 [elastic-observability-9.1.10-release-notes]
+
+
+### Features and enhancements [elastic-observability-9.1.10-features-enhancements]
+* Adds API to enable auto-syncing of global parameters to private locations [#239284]({{kib-pull}}239284).
+
+
+### Fixes [elastic-observability-9.1.10-fixes]
+* Fixes validation error with maintenance windows on lightweight Synthetics monitors [#247880]({{kib-pull}}247880).
+* Fixes related dashboards for ES Query and other stack rules supported in Observability [#247564]({{kib-pull}}247564).
+* Fixes console state from persisting across journey steps [#247376]({{kib-pull}}247376).
+* Fixes Elastic Agent from interpreting JS template literals as policy variables [#247284]({{kib-pull}}247284).
+* Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
+* Fixes trace links to correctly calculate date range [#247531]({{kib-pull}}247531).
+
 ## 9.1.9 [elastic-observability-9.1.9-release-notes]
 
 ### Features and enhancements [elastic-observability-9.1.9-features-enhancements]
