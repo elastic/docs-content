@@ -99,7 +99,7 @@ The matrix of officially supported operating systems and JVMs is available in th
 The bundled JVM is treated the same as any other dependency of {{es}} in terms of support and maintenance. This means that Elastic takes responsibility for keeping it up to date, and reacts to security issues and bug reports as needed to address vulnerabilities and other bugs in {{es}}. Elastic’s support of the bundled JVM is subject to Elastic’s [support policy](https://www.elastic.co/support_policy) and [end-of-life schedule](https://www.elastic.co/support/eol) and is independent of the support policy and end-of-life schedule offered by the original supplier of the JVM. Elastic does not support using the bundled JVM for purposes other than running {{es}}.
 
 ::::{tip}
-{{es}} uses only a subset of the features offered by the JVM. Bugs and security issues in the bundled JVM often relate to features that {{es}} does not use. Such issues do not apply to {{es}}. Elastic analyzes reports of security vulnerabilities in all its dependencies, including in the bundled JVM, and will issue an [Elastic Security Advisory](https://www.elastic.co/community/security) if such an advisory is needed.
+{{es}} uses only a subset of the features offered by the JVM. Bugs and security issues in the bundled JVM often relate to features that {{es}} does not use. Such issues do not apply to {{es}}. Elastic analyzes reports of security vulnerabilities in all its dependencies, including in the bundled JVM, and will issue an [Elastic Security Advisory](https://www.elastic.co/product-security) if such an advisory is needed.
 ::::
 
 
