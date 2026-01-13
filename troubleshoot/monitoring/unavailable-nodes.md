@@ -69,7 +69,9 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
   
 ::::{note}
-To delete unused data API commands can be ran using Kibana [DevTools](https://www.elastic.co/docs/explore-analyze/query-filter/tools/console) only if it's available, but otherwise API commands can run using the Deployment's [Elasticsearch API Console](https://www.elastic.co/docs/reference/cloud/cloud-hosted/ec-api-console) which is available as long as Elasticsearch has elected quorum.
+You can delete unused data by running either:
+* API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+* or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, which you can run when {{es}} has an elected quorum.
 ::::
 * Increase the disk size on your Hot data and Content tier (scale up).
 
