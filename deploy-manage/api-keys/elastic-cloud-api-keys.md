@@ -11,7 +11,7 @@ products:
 
 # {{ecloud}} API keys [ec-api-authentication]
 
-{{ecloud}} API keys allow you to use the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud/) and [{{ecloud}} serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/) APIs.
+{{ecloud}} API keys allow you to use the [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} serverless]({{cloud-serverless-apis}}) APIs.
 
 With a valid {{ecloud}} API key, you can access the API from its base URL at `api.elastic-cloud.com`.
 

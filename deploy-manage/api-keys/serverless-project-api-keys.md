@@ -9,18 +9,21 @@ products:
 
 # Serverless project API keys [api-keys]
 
-In serverless projects, the following types of API keys exist:
+In Serverless projects, the following types of API keys exist:
 
-- **Personal** API keys, that you can create to allow external services to access your serverless project on behalf of a user.
+- **Personal** API keys, that you can create to allow external services to access your serverless project, including the [{{es}}]({{es-apis}}) and [{{kib}}]({{kib-apis}}) APIs, on behalf of a user.
 - **Managed** API keys, created and managed by {{kib}} to correctly run background tasks.
 
-You can manage your keys in **{{project-settings}} → {{manage-app}} → API keys**:
+:::{admonition} Manage serverless project API access using {{ecloud}} API keys
+As an alternative to using Serverless project API keys, which are tied to a single project, you can create [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that include access to projects' {{es}} and {{kib}} APIs. This allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
+:::
+
+To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /deploy-manage/images/serverless-api-key-management.png
 :alt: API keys UI
 :screenshot:
 :::
-
 
 ## Create an API key [api-keys-create-an-api-key]
 
@@ -43,8 +46,6 @@ curl "${ES_URL}" \
 API keys are intended for programmatic access. Don’t use API keys to authenticate access using a web browser.
 
 ::::
-
-
 
 ### Control security privileges [api-keys-restrict-privileges]
 
@@ -74,11 +75,9 @@ For example, the following `role_descriptors` object defines a `books-read-only`
 
 For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
-
 ## Update an API key [api-keys-update-an-api-key]
 
 In **API keys**, click on the name of the key. You can update only **Restrict privileges** and **Include metadata**.
-
 
 ## View and delete API keys [api-keys-view-and-delete-api-keys]
 

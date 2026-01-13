@@ -11,9 +11,14 @@ products:
 
 Several types of {{es}} API keys exist:
 
-* **Personal/User** API key: allows external services to access the {{stack}} on behalf of a user.
+* **Personal/User** API key: allows external services to access the {{stack}}, including the [{{es}}]({{es-apis}}) and [{{kib}}]({{kib-apis}}) APIs, on behalf of a user.
 * **Cross-cluster** API key: allows other clusters to connect to this cluster.
 * **Managed** API key: created and managed by {{kib}} to run background tasks.
+
+:::{tip}
+:applies_to: serverless:
+To create equivalent keys for {{serverless-full}} projects, refer to [](serverless-project-api-keys.md). For Serverless projects, you can also create [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that include access to {{es}} and {{kib}} APIs. 
+:::
 
 To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
