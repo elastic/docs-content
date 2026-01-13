@@ -1,7 +1,7 @@
 ---
 description: Learn about the differences between the AI Assistant and Agent Builder chat experiences and how to switch between the two.
 applies_to:
-  stack: preview 9.3
+  stack: preview 9.3+
   serverless: preview
 products:
   - id: kibana
@@ -13,7 +13,9 @@ products:
 # Compare Agent Builder and AI Assistant
 
 ::::{admonition} Requirements
-{{agent-builder}} requires an **Enterprise [license](/deploy-manage/license.md)**.
+- {{stack}} users: an **Enterprise [subscription](/deploy-manage/license.md)**.
+- {{sec-serverless}} users: the **Security Analytics Complete** or **Elastic AI Soc Engine (EASE)** feature tier.
+- {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier. 
 ::::
 
 [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
@@ -62,6 +64,7 @@ Agent Builder doesn't yet support all AI Assistant features. The specific differ
 | **Audit logging** | ❌ | ✅ |
 | **Quick prompts** | ❌ | ✅ |
 | **In-chat previews of attached data** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
 | **Use-case specific agents** | ✅ | ❌ |
 | **Custom agent creation** | ✅ | ❌ |
 | **Custom tool selection** | ✅ | ❌ |
