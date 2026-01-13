@@ -37,11 +37,8 @@ A [failure store](../../../../manage-data/data-store/data-streams/failure-store.
 For example, for a stream called `my-stream`, Streams fetches all documents from the `my-stream::failures` index from within the specified time range in the date picker.
 
 ### Required permissions
-To view and modify failure store in {{stack}}, you need the following data stream level privileges:
-* `read_failure_store`
-* `manage_failure_store`
-
-For more information, refer to [Granting privileges for data streams and aliases](../../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
+:::{include} ../../../_snippets/failure-store-permissions.md
+:::
 
 ### Turn on failure stores
 In Streams, you need to turn on failure stores to get failed documents. To do this, select **Enable failure store** in the **Failed documents** component. From here you can set your failure store retention period.
