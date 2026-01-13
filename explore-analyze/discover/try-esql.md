@@ -159,9 +159,9 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
    - It must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
    - It must not start with `-`, `_`, or `+`.
 
-4. Provide data for the lookup index. You can choose between:
-   - **Uploading a CSV file up to 500 MB**. When uploading a file, you can preview the data, inspect the file's content, and review any detected issues before it is imported. Refer to [](#esql-lookup-index-from-file) for more details.
-   - **Adding data manually**. To do that, you can add fields and populate data directly. When adding a field, you must set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
+4. Provide data for the lookup index. You can either:
+   - **Upload a CSV file up to 500 MB**. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
+   - **Add data manually**. You can add fields and populate data directly. When adding a field, you must set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
      :::{note}
      Some {{es}} data types aren't supported in {{kib}}.
      :::
