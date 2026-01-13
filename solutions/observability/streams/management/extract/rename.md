@@ -4,7 +4,6 @@ applies_to:
   stack: preview =9.1, ga 9.2+
 ---
 # Rename processor [streams-rename-processor]
-% need use cases
 
 Use the rename processor to change the name of a field, moving its value to a new field name and removing the original.
 

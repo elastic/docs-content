@@ -13,7 +13,7 @@ To parse a log message with a dissect processor:
 
 1. Select **Create** → **Create processor**.
 1. Select **Dissect** from the **Processor** menu.
-1. Set the **Source Field** to the field you want to dissect
+1. Set the **Source Field** to the field you want to dissect.
 1. Set the delimiters you want to use in the **Pattern** field. Refer to the [example pattern](#streams-dissect-example) for more information on setting delimiters.
 
 This functionality uses the {{es}} dissect pipeline processor. Refer to the [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) {{es}} documentation for more information.
