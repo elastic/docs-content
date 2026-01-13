@@ -14,11 +14,9 @@ In this guide you can learn how to onboard system log data from a machine or ser
 
 ## Prerequisites [logs-prereqs]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 To follow the steps in this guide, you need an {{stack}} deployment that includes:
 
@@ -30,8 +28,7 @@ To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 The **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
