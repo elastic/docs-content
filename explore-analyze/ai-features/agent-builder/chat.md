@@ -14,8 +14,8 @@ applies_to:
 
 The chat GUI and programmatic interfaces enable real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
-% TODO: Uncomment once page is live.
 <!-- :::{note}
+% TODO: Uncomment once page is live.
 The chat UI is available in both standalone and flyout modes. For more information, refer to [Chat UI modes](standalone-and-flyout-modes.md).
 ::: -->
 
