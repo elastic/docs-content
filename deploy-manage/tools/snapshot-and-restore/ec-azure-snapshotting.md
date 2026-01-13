@@ -5,6 +5,7 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+    ece:
 products:
   - id: cloud-hosted
 navigation_title: Azure Blob Storage
@@ -14,6 +15,8 @@ navigation_title: Azure Blob Storage
 
 Configure a custom snapshot repository using your Azure Blob Storage account.
 
+::::{include} _snippets/ece_ech_custom_repo.md
+::::
 
 ## Prepare a container [ec-prepare-azure-container]
 

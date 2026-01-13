@@ -15,6 +15,18 @@ Snapshots enable you to back up and restore {{es}} indices, protecting data from
 
 When a repository is assigned to a deployment, a snapshot is taken every 30 minutes by default. The snapshot interval can be adjusted per deployment.
 
+::::{note}
+This section focuses on configuring snapshot repositories at the ECE platform level. These repositories are assigned to deployments and are used by the ECE platform to automatically manage snapshots through the `found-snapshots` repository.
+
+In addition to platform-managed repositories, you can also configure snapshot repositories directly at the deployment level for custom requirements or deployment-specific use cases. This approach is useful when you need snapshots that are independent of the ECE-managed automation.
+
+To register snapshot repositories in ECE directly at the deployment level, follow the guides written for {{ech}}, which are also applicable to ECE deployments:
+
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
+* [Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
+::::
+
 ## Supported repository types
 
 {{ece}} installations support the following {{es}} snapshot repository types:
