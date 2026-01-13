@@ -666,20 +666,26 @@ toc:
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
+          - file: security/cloud/d4c/d4c-overview.md
+            children:
+              - file: security/cloud/d4c/get-started-with-d4c.md
+              - file: security/cloud/d4c/d4c-policies.md
+              - file: security/cloud/d4c/kubernetes-dashboard.md
       - file: security/integrations/ingest-third-party-security-data.md
         children:
-          - file: security/integrations/cncf-falco.md
-          - file: security/integrations/aws-security-hub.md
-          - file: security/integrations/wiz.md
-          - file: security/integrations/qualys.md
-          - file: security/integrations/tenablevm.md
-          - file: security/integrations/rapid7.md
           - file: security/integrations/aws-config.md
           - file: security/integrations/aws-inspector.md
+          - file: security/integrations/aws-security-hub.md
+          - file: security/integrations/cncf-falco.md
+          - file: security/integrations/google-security-command-center.md
           - file: security/integrations/microsoft-defender-for-cloud.md
           - file: security/integrations/microsoft-defender-for-endpoint.md
           - file: security/integrations/microsoft-defender-xdr.md
-          - file: security/integrations/google-security-command-center.md
+          - file: security/integrations/prisma-cloud.md
+          - file: security/integrations/qualys.md
+          - file: security/integrations/rapid7.md
+          - file: security/integrations/tenablevm.md
+          - file: security/integrations/wiz.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
@@ -708,6 +714,7 @@ toc:
           - file: security/dashboards/overview-dashboard.md
           - file: security/dashboards/detection-response-dashboard.md
           - file: security/dashboards/cloud-security-posture-dashboard.md
+          - file: security/dashboards/kubernetes-dashboard.md
           - file: security/dashboards/entity-analytics-dashboard.md
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
