@@ -37,69 +37,12 @@ In {{kib}}, you can view all configured {{slm-init}} policies and review their s
 
 3. To get more detailed information about the failure, open {{kib}} **Dev Tools > Console**. You can find the **Console** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
-    :alt: {{kib}} Console
-    :screenshot:
-    :::
-
-4. [Retrieve the affected {{slm-init}} policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle):
-
-    ```console
-    GET _slm/policy/<affected-policy-name>
-    ```
-
-    The response looks like this:
-
-    ```console-result
-    {
-      "affected-policy-name": { <1>
-        "version": 1,
-        "modified_date": "2099-05-06T01:30:00.000Z",
-        "modified_date_millis": 4081757400000,
-        "policy" : {
-          "schedule": "0 30 1 * * ?",
-          "name": "<daily-snap-{now/d}>",
-          "repository": "my_repository",
-          "config": {
-            "indices": ["data-*", "important"],
-            "ignore_unavailable": false,
-            "include_global_state": false
-          },
-          "retention": {
-            "expire_after": "30d",
-            "min_count": 5,
-            "max_count": 50
-          }
-        },
-        "last_success" : {
-          "snapshot_name" : "daily-snap-2099.05.30-tme_ivjqswgkpryvnao2lg",
-          "start_time" : 4083782400000,
-          "time" : 4083782400000
-        },
-        "last_failure" : { <2>
-          "snapshot_name" : "daily-snap-2099.06.16-ywe-kgh5rfqfrpnchvsujq",
-          "time" : 4085251200000, <3>
-          "details" : """{"type":"snapshot_exception","reason":"[daily-snap-2099.06.16-ywe-kgh5rfqfrpnchvsujq] failed to create snapshot successfully, 5 out of 149 total shards failed"}""" <4>
-        },
-        "stats": {
-          "policy": "daily-snapshots",
-          "snapshots_taken": 0,
-          "snapshots_failed": 0,
-          "snapshots_deleted": 0,
-          "snapshot_deletion_failures": 0
-        },
-        "next_execution": "2099-06-17T01:30:00.000Z",
-        "next_execution_millis": 4085343000000
-      }
-    }
-    ```
-    1. The affected snapshot lifecycle policy.
-    2. The information about the last failure for the policy.
-    3. The time when the failure occurred in millis. Use the `human=true` request parameter to see a formatted timestamp.
-    4. Error details containing the reason for the snapshot failure.
+    Once the Console is open, execute the steps described in the **Using the {{es}} API** tab to retrieve the affected {{slm-init}} policy information.
 ::::::
 
 ::::::{tab-item} Using the {{es}} API
+The following step can be run using either [{{kib}} console](/explore-analyze/query-filter/tools/console.md) or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
+
 [Retrieve the affected {{slm-init}} policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle):
 
 ```console
