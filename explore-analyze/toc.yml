@@ -204,7 +204,7 @@ toc:
               - file: ai-features/llm-guides/connect-to-lmstudio-observability.md
               - file: ai-features/llm-guides/connect-to-lmstudio-security.md
               - file: ai-features/llm-guides/connect-to-vLLM.md
-      - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
+      - hidden: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
