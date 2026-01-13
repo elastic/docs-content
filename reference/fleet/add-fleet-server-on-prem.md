@@ -123,8 +123,6 @@ To add a {{fleet-server}}:
 
             * Before running the `install` command, make sure you replace the values in angle brackets.
             * The URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
-            * For comprehensive configuration details, including all available flags and environment variables, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md).
-
             ::::
 
 
@@ -138,7 +136,7 @@ To add a {{fleet-server}}:
     ::::{note}
     * The fields to configure {{fleet-server}} hosts are not available if the hosts are already configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
     * When using the **Advanced** option, it's recommended to generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, refer to [`elasticsearch-service-tokens`](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
-    * If you've configured a non-default port for {{fleet-server}} in the {{fleet-server}} integration, you need to include the `--fleet-server-host` and `--fleet-server-port` options in the `elastic-agent install` command. For detailed information about all available configuration flags and environment variables, refer to [How to deploy Fleet Server](/reference/fleet/deploy-fleet-server.md).
+    * If you've configured a non-default port for {{fleet-server}} in the {{fleet-server}} integration, you need to include the `--fleet-server-host` and `--fleet-server-port` options in the `elastic-agent install` command. Refer to the [install command documentation](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) for details.
 
     ::::
 

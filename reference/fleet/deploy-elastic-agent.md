@@ -1,15 +1,11 @@
 ---
 navigation_title: How to deploy Elastic Agent
-mapped_pages:
-  - https://www.elastic.co/guide/en/fleet/current/deploy-elastic-agent.html
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
-sub:
-  component_name: "Elastic Agent"
-  component_ref: "{{agent}}"
 ---
 
 # How to deploy {{agent}} [deploy-elastic-agent]

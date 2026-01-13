@@ -1,7 +1,5 @@
 ---
 navigation_title: Deploy on Kubernetes
-applies_to:
-  stack: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-kubernetes.html
 applies_to:
