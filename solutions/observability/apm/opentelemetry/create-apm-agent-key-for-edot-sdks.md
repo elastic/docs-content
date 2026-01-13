@@ -54,7 +54,7 @@ To create an {{apm-agent}} key, you must have the required privileges:
 
 ::::::{tab-item} {{fleet}}-managed or {{apm-server}} binary
 
-You must have the `manage_own_api_key` cluster privilege and the {{product.apm}} application privileges they intend to assign. Additionally, appropriate {{kib}} Space and Feature privileges are needed to access the Applications UI.
+You must have the `manage_own_api_key` cluster privilege and the {{product.apm}} application privileges you plan to assign to the key. Additionally, appropriate {{kib}} Space and Feature privileges are needed to access the Applications UI.
 
 For details on configuring the minimum required privileges, refer to [API keys for Elastic {{product.apm}}](/solutions/observability/apm/api-keys.md#apm-create-api-key-user).
 
