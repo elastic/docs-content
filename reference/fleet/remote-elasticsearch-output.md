@@ -21,6 +21,7 @@ A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-
 
 These limitations apply to remote {{es}} output:
 
+* {{fleet-server}} must be able to reach the remote {{es}} cluster with a service token to create API keys for any {{agents}} that use the remote {{es}} output.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
 * Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
 
@@ -118,7 +119,5 @@ If you choose not to synchronize integrations automatically, you need to make su
 ::::{note}
 When you use a remote {{es}} output, {{fleet-server}} performs a test to ensure connectivity to the remote cluster. The result of that connectivity test is used to report whether the remote output is healthy or unhealthy, and is displayed on the **{{fleet}}** → **Settings** → **Outputs** page, in the **Status** column.
 
-In some cases, the remote {{es}} output used for {{agent}} data can be reached by the {{agent}}s but not by {{fleet-server}}. In those cases, you can ignore the resulting unhealthy state of the output and the associated `Unable to connect` error on the UI.
-
-In addition the fleetserver will also reach out to the remote cluster user the service token to generate APIKeys. This means for agents calling into the this fleetserver that should connect to the remote elasticsearch, have a hard requirement to allow the fleetserver to reach the remote elasticsearch cluster.
+In some cases, the remote {{es}} output used for {{agent}} data can be reached by the {{agents}} but not by {{fleet-server}}. This will result in the unhealthy status of the output and an `Unable to connect` error on the UI. To generate API keys for {{agents}}, {{fleet-server}} requires connectivity to the remote cluster.
 ::::
