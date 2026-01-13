@@ -91,6 +91,10 @@ If you don’t have an existing {{ecloud}} account:
 
 ### Select installation method
 
+:::{tip}
+If you don't want {{agent}} to gather certain types of data from your cluster, you can disable the collection of related metrics before installing the agent. Learn more in [](../autoops/autoops-disable-metrics-collection.md).
+:::
+
 This is the first step of the installation wizard. Your cluster ships metrics to AutoOps with the help of {{agent}}. 
 
 Select one of the following methods to install {{agent}}:
