@@ -36,8 +36,8 @@ Open the visualization editor, then make sure the correct fields appear.
 
 1. Create a visualization.
    
-   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
-   * {applies_to}`stack: ga 9.0` Click **Create visualization**.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization**.
 
 2. Make sure the **{{kib}} Sample Data Logs** {{data-source}} appears.
 
@@ -99,8 +99,8 @@ To visualize the **bytes** field over time:
 
 1. Create a visualization.
    
-   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
-   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **bytes** to the workspace.
 
@@ -163,8 +163,8 @@ The **Top values** function ranks the unique values of a field by another functi
 
 1. Create a visualization.
    
-   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
-   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **clientip** to the **Vertical axis** field in the layer pane.
 
@@ -213,8 +213,8 @@ Create a proportional visualization that helps you determine if your users trans
 
 1. Create a visualization.
    
-   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
-   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **bytes** to the **Vertical axis** field in the layer pane.
 3. In the layer pane, click **Median of bytes**.
@@ -266,8 +266,8 @@ The distribution of a number can help you find patterns. For example, you can an
 
 1. Create a visualization.
    
-   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
-   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **bytes** to **Vertical axis** field in the layer pane.
 3. In the layer pane, click **Median of bytes**.
@@ -298,8 +298,8 @@ Add a panel title:
 
 1. Create a visualization.
    
-   * {applies_to}`stack: ga 9.2` Select **Add** > **Visualization** in the toolbar.
-   * {applies_to}`stack: ga 9.0` Click **Create visualization** in the dashboard toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. Open the **Visualization type** dropdown, then select **Treemap**.
 3. From the **Available fields** list, drag **Records** to the **Metric** field in the layer pane.

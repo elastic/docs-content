@@ -11,7 +11,7 @@ products:
 
 # Remote clusters on self-managed installations [remote-clusters]
 
-The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ech}} deployment](/deploy-manage/remote-clusters/ec-enable-ccs.md) or from an [{{ece}} deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md).
+The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ech}} deployment](/deploy-manage/remote-clusters/ec-enable-ccs.md), from an [{{ece}} deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md), or from an [{{eck}} cluster](/deploy-manage/remote-clusters/eck-remote-clusters-landing.md).
 
 
 ## Add remote clusters [add-remote-clusters]
