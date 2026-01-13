@@ -666,6 +666,11 @@ toc:
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
+          - file: security/cloud/d4c/d4c-overview.md
+            children:
+              - file: security/cloud/d4c/get-started-with-d4c.md
+              - file: security/cloud/d4c/d4c-policies.md
+              - file: security/cloud/d4c/kubernetes-dashboard.md
       - file: security/integrations/ingest-third-party-security-data.md
         children:
           - file: security/integrations/aws-config.md
@@ -709,6 +714,7 @@ toc:
           - file: security/dashboards/overview-dashboard.md
           - file: security/dashboards/detection-response-dashboard.md
           - file: security/dashboards/cloud-security-posture-dashboard.md
+          - file: security/dashboards/kubernetes-dashboard.md
           - file: security/dashboards/entity-analytics-dashboard.md
           - file: security/dashboards/data-quality-dashboard.md
           - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
