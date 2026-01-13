@@ -1,6 +1,6 @@
 ---
 applies_to:
-  serverless: ga
+  serverless: preview
   stack: preview
 ---
 
