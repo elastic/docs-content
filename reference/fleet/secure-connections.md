@@ -177,6 +177,10 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
         2. From the directory where you extracted {{fleet-server}}, run the `install` command and specify the certificates to use.
 
+            ::::{note}
+            If you're using DEB or RPM, or already have the {{agent}} installed, use the `enroll` command along with the following options, then start the service as described in [Start {{agent}}](/reference/fleet/start-stop-elastic-agent.md#start-elastic-agent-service).
+            ::::
+
             The following command installs {{agent}} as a service, enrolls it in the {{fleet-server}} policy, and starts the service.
 
             ```shell
