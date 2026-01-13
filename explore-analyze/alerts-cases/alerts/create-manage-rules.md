@@ -57,7 +57,7 @@ For details on what types of rules are available and how to configure them, refe
 
 ### Alert flapping [defining-rules-flapping-details]
 
-You can modify the criteria for changing an alert's status to [flapping](view-alerts.md#alert-status) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, you can specify that alerts with at least 6 status changes in the last 10 runs are `flapping`.   
+You can modify the criteria for changing an alert's status to [`flapping`](view-alerts.md#alert-status) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, you can specify that alerts with at least 6 status changes in the last 10 runs are `flapping`.   
 
 {applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
 
