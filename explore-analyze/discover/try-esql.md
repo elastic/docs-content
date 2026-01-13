@@ -237,7 +237,7 @@ To view or edit an index:
 
 4. If you made changes, select **Save** before closing the flyout.
 
-#### Reset the index configuration
+#### Reset the lookup index configuration
 
 At any time, you can delete all of the index's data and fields.
 
