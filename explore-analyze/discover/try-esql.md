@@ -155,9 +155,9 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
 
 2. Select the **Create lookup index** suggestion that appears in the autocomplete menu.
 
-3. Define a name for the lookup index. The name must meet the following requirements. 
-   - It must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
-   - It must not start with `-`, `_`, or `+`.
+3. Define a name for the lookup index. The name must: 
+   - Not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
+   - Not start with `-`, `_`, or `+`.
 
 4. Provide data for the lookup index. You can either:
    - **Upload a CSV file up to 500 MB**. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
