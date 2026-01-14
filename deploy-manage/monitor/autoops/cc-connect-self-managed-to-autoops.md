@@ -256,6 +256,10 @@ To ensure optimum resource usage, we recommend installing the agent on a differe
 
 #### For ECK installation method
 
+```{applies_to}
+  eck: ga 3.3
+```
+
 If you selected **ECK** as your installation method:
 
 1. Run the generated commands, which includes an `AutoOpsAgentPolicy` and `Secret` creation.
@@ -322,7 +326,11 @@ By default, each cluster has a name made up of a string of characters, but you c
 
 To connect more clusters, the process depends on your installation method:
 
-**For ECK installations:**
+#### ECK installations
+
+```{applies_to}
+  eck: ga 3.3
+```
 
 You can connect additional ECK-managed {{es}} clusters in one of two ways:
 
@@ -352,7 +360,7 @@ You can connect additional ECK-managed {{es}} clusters in one of two ways:
 
 For more information, refer to [Selecting {{es}} clusters](/deploy-manage/deploy/cloud-on-k8s/configuration-autoops.md#k8s-autoops-selecting-clusters).
 
-**For other installation methods:**
+#### Other installation methods
 
 To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 

@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autoops-configuration.html
 applies_to:
   deployment:
-    eck: all
+    eck: ga 3.3
 products:
   - id: cloud-kubernetes
 navigation_title: Configuration

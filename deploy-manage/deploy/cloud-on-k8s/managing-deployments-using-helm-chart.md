@@ -84,6 +84,10 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
 
 ## AutoOps along with {{es}} [k8s-install-autoops-elasticsearch-helm]
 
+```{applies_to}
+  eck: ga 3.3
+```
+
 The following section allows installing AutoOps to connect your {{es}} clusters to AutoOps.
 
 ```sh subs=true
