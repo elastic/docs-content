@@ -90,9 +90,10 @@ When you create how-to guides, follow these best practices:
 
 To get started writing a new how-to guide, use the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/how-to-template.md).
 
-% ## Examples
+## Examples
 
-% Here are some examples of well-structured how-to guides in the Elastic documentation:
+Here are some examples of well-structured how-to guides in the Elastic documentation:
 
-% TODO: Add links to 2-3 exemplary how-to guides in the docs
+- [](/solutions/search/get-started/keyword-search-python.md)
+- [](/manage-data/data-store/data-streams/set-up-tsds.md)
 
