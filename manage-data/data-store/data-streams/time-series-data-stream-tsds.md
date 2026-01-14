@@ -69,18 +69,16 @@ You can also simplify dimension definitions by using [pass-through](elasticsearc
 
 Metrics are numeric measurements that change over time. Documents in a TSDS typically contain one or more metric fields. 
 
-To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The following field types support the `time_series_metric` parameter:
-
-* All [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
-* [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md), for internal use during downsampling (rarely user-populated)
-
-The valid values for `time_series_metric` are `counter` and `gauge`:
+To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The valid values for `time_series_metric` are `counter`, `gauge` and `histogram`:
 
 `counter`
-:   A cumulative metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. 
+:   A cumulative metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. A counter is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
 
 `gauge`
-:   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. 
+:   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. A gauge is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md) and [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md) (for internal use during downsampling, rarely user-populated).
+
+`histogram` {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
+:   A metric that tracks the distribution of numerical values, like latency or size distributions. A histogram is supported by [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) and `exponential_histogram`. 
 
 #### `_tsid` metadata field [tsid]
 
