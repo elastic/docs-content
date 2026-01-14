@@ -135,7 +135,7 @@ Determine whether traffic uses:
 
 :::::
 
-:::::{step} Use internal telemetry to distinguish sender vs receiver problems
+:::::{step} Use internal telemetry to distinguish sender versus receiver problems
 
 **On the sending Collector (exporter-side)**
 
@@ -183,7 +183,7 @@ Apply one or more of the following mitigations, starting with the most likely ba
 
 ### Increase gRPC receiver limits on the receiving Collector
 
-If you see `received message after decompression larger than max (… vs 4194304)`, increase the receiver's `max_recv_msg_size_mib` on the receiving Collector (commonly the gateway):
+If you observe `received message after decompression larger than max (… versus 4194304)` in your logs, increase the receiver's `max_recv_msg_size_mib` on the receiving Collector (commonly the gateway):
 
 ```yaml
 receivers:
@@ -204,7 +204,7 @@ If the sending Collector is exporting payloads that exceed receiver limits, redu
 
 #### Add batching to high-volume pipelines
 
-If a sender exports very large metric payloads per cycle, add a batch processor to split exports into smaller requests. Because batching limits are count-based (data points, log records, or spans), you might need to tune iteratively.
+If a sender exports large metric payloads per cycle, add a batch processor to split exports into smaller requests. Because batching limits are count-based (data points, log records, or spans), you might need to tune iteratively.
 
 Example (adding batching to a cluster-stats metrics pipeline):
 
@@ -257,7 +257,7 @@ exporters:
 
 ### Address backpressure by scaling and properly sizing the receiving Collector
 
-If the gateway is restarting, `OOMKilled`, or unable to export fast enough:
+If the gateway is restarting, `OOMKilled`, or cannot export fast enough:
 
 - Increase gateway CPU/memory limits
 - Increase gateway replicas
@@ -286,8 +286,8 @@ To prevent `ResourceExhausted` errors in Collector-to-Collector architectures:
 
 ## Resources
 
-- [Contrib OpenTelemetry Collector troubleshooting (official)](https://opentelemetry.io/docs/collector/troubleshooting/) — guidance on debugging Collector health, pipelines, exporters, and more.
-- [Contrib OpenTelemetry Collector internal telemetry docs](https://opentelemetry.io/docs/collector/internal-telemetry/) — learn how to configure and interpret internal Collector logs & metrics.
-- [Contrib OpenTelemetry Collector configuration reference](https://opentelemetry.io/docs/collector/configuration/) — includes OTLP receiver configuration and general component docs.
-- [OTel-Arrow receiver in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/otelarrowreceiver/README.md) — canonical upstream reference for Apache Arrow receiver configuration and resource limits.
-- [OTel-Arrow exporter in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md) — canonical upstream reference for Apache Arrow exporter configuration.
+- [Contrib OpenTelemetry Collector troubleshooting (official)](https://opentelemetry.io/docs/collector/troubleshooting/)—guidance on debugging Collector health, pipelines, exporters, and more.
+- [Contrib OpenTelemetry Collector internal telemetry docs](https://opentelemetry.io/docs/collector/internal-telemetry/)—learn how to configure and interpret internal Collector logs & metrics.
+- [Contrib OpenTelemetry Collector configuration reference](https://opentelemetry.io/docs/collector/configuration/)—includes OTLP receiver configuration and general component docs.
+- [OTel-Arrow receiver in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/otelarrowreceiver/README.md)—canonical upstream reference for Apache Arrow receiver configuration and resource limits.
+- [OTel-Arrow exporter in OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md)—canonical upstream reference for Apache Arrow exporter configuration.
