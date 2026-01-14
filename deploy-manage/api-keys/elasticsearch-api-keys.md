@@ -5,6 +5,7 @@ applies_to:
   stack: ga
 products:
   - id: kibana
+  - id: elasticsearch
 ---
 
 # {{es}} API keys [api-keys]

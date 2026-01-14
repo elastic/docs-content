@@ -143,6 +143,6 @@ When **Cloud, {{es}} and {{kib}} API** access is not granted, roles that are des
 * If you select the **Admin** role, the user won't be able to log into the relevant projects as superuser.
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, will only have **Viewer** access to the relevant projects.
 
-To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each role, refer to the **Project access** column in the [predefined roles table](#general-assign-user-roles-table).
+To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each predefined role, refer to the **Project access** column in the [predefined roles table](#general-assign-user-roles-table).
 
-If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud, {{es}} and {{kib}} API** for API access for the role to take full effect. If you don't grant this access, the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project.
+If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud, {{es}} and {{kib}} API** access for the role to take full effect. If you don't grant this access, then the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project.
