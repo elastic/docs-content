@@ -30,9 +30,24 @@ GET /_cat/thread_pool?v=true&h=id,name,queue,active,rejected,completed
 
 `write` thread pool rejections frequently appear in the erring API and correlating log as `EsRejectedExecutionException` with either `QueueResizingEsThreadPoolExecutor` or `queue capacity`.
 
-These errors are often related to [backlogged tasks](task-queue-backlog.md).
+The `queue` and `active` pools are point-in-time values. `rejected` and `completed` are cumulative counters on each node that reset when the node process restarts. Therefore, avoid interpreting a single snapshot “rejected/completed ratio” in isolation — compare deltas over a time window (e.g., sample every 1–5 minutes and calculate the increase in `rejected` vs the increase in `completed`). Sustained non-zero `rejected` deltas indicate ongoing request drops (typically surfaced to clients as HTTP 429).
 
-See [this video](https://www.youtube.com/watch?v=auZJRXoAVpI) for a walkthrough of troubleshooting threadpool rejections.
+These errors are often related to [backlogged tasks](task-queue-backlog.md). See [this video](https://www.youtube.com/watch?v=auZJRXoAVpI) for a walkthrough of troubleshooting threadpool rejections.
+
+Example 1 - Queue building (backlog), but still no rejections
+```
+node_name  name   active queue rejected completed
+es-02      search 13     240   0        90112
+es-02      write  2      35    0        51003
+```
+Requests are arriving faster than workers can drain them (queue > 0). If it’s transient, it may be fine; if it persists/grows, it commonly precedes rejects.
+
+Example 2 — Rejections happening (queue at/near limit)
+```
+node_name  name   active queue rejected completed
+es-02      search 13     1000  842      90510
+```
+The queue is saturated, and new work is being rejected (`rejected` increasing). Clients typically see HTTP 429 for those rejected requests.
 
 
 ## Check circuit breakers [check-circuit-breakers]
@@ -75,6 +90,10 @@ See [this video](https://www.youtube.com/watch?v=QuV8QqSfc0c) for a walkthrough 
 ### Fix high CPU and memory usage [fix-high-cpu-memory-usage]
 
 If {{es}} regularly rejects requests and other tasks, your cluster likely has high CPU usage or high JVM memory pressure. For tips, see [High CPU usage](high-cpu-usage.md) and [High JVM memory pressure](high-jvm-memory-pressure.md).
+
+### Fix indexing/search request bursts and concurrency (HTTP 429)
+
+Rejections (HTTP 429) typically indicate the cluster is receiving work faster than it can execute (for example, during traffic bursts or when indexing/search requests are not optimized). Prevent them by shaping workload—use client-side backoff/throttling for bursts and tune request patterns (bulk sizing, concurrency, query cost) to match the cluster’s sustained throughput.
 
 ### Fix for `semantic_text` ingestion issues [fix-semantic-text-ingestion-issues]
 ```{applies_to}
