@@ -62,13 +62,7 @@ There are four common alert statuses:
 
 `flapping`
 
-:   The alert is switching repeatedly between active and recovered states. If the rule has actions that run when the alert status changes states, those actions are suppressed while the alert is flapping.
-
-::::{note}  
-
-Alert flapping is turned on by default. You can modify the criteria for changing an alert's status to the flapping state by configuring the **Alert flapping detection** settings. To do this, navigate to the **Alerts** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, click **Manage Rules**, then **Settings** to open the global rule settings for the space. In the **Alert flapping detection** section, modify the rules' look back window and threshold for alert status changes. For example, you can specify that the alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. 
-
-::::
+:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](/explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
 
 `recovered`
 :   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
