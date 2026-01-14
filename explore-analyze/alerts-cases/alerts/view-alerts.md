@@ -94,6 +94,7 @@ To apply or remove alert tags on individual alerts:
    
     * **Apply a new tag**: Enter a new tag into the search bar, then select the **Add _tag name_ as a tag** or click enter on your keyboard to apply your changes.
     * **Remove existing tags**: Click the tag that you want to remove. To remove all tags from the alert, click **Select none**.
+
         ::::{important}
         Removing tags from an alert permanently deletes them. 
         ::::
@@ -129,6 +130,10 @@ The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Ma
 * Alerts in your space must be older than a day. The minimum threshold for the alert cleanup task is one day.  
 
 ### Run the alert cleanup task [run-alert-clean-up-task]
+
+```{applies_to}
+stack: ga 9.3+
+```
 
 Remove old or rarely-accessed alerts in your space by running an alert cleanup task, which deletes alerts according to the criteria that you define. Alerts that are attached to cases are not deleted. 
 

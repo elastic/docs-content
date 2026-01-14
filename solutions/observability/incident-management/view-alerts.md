@@ -109,6 +109,10 @@ There are four common alert statuses:
 
 ## Apply and filter alert tags [observability-view-alerts-tag-alerts]
 
+```{applies_to}
+stack: ga 9.3+
+```
+
 Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `Production` alert tag to label a group of alerts as notifications from your production environment. Search for tags by entering the `kibana.alert.workflow_tags : "Production"` query into the KQL bar. Alternatively, use the Alert table’s drop-down filters to filter for tagged alerts.
 
 ::::{tip}
@@ -122,6 +126,7 @@ To apply or remove alert tags on individual alerts:
    
     * **Apply a new tag**: Enter a new tag into the search bar, then select the **Add _tag name_ as a tag** or click enter on your keyboard to apply your changes.
     * **Remove existing tags**: Click the tag that you want to remove. To remove all tags from the alert, click **Select none**.
+
         ::::{important}
         Removing tags from an alert permanently deletes them. 
         ::::
