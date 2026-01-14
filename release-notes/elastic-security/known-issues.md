@@ -17,7 +17,7 @@ Known issues are significant defects or limitations that may impact your impleme
 % :::
 
 :::{dropdown} Intermittent blue screen due to conflict with Windows ODX in {{elastic-defend}}
-Applies to: 9.1.8, 9.1.9, 9.2.2, and 9.2.3
+Applies to: 8.19.8, 8.19.9, 9.1.8, 9.1.9, 9.2.2, and 9.2.3
 
 **Impact**<br>
 An issue in {{elastic-defend}} on Windows can result in `KERNEL_AUTO_BOOST_LOCK_ACQUISITION_WITH_RAISED_IRQL` or `PAGE_FAULT_IN_NONPAGED_AREA` bug checks (blue screens) when [Offloaded Data Transfer (ODX)](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/offloaded-data-transfer) is used to copy files.
@@ -28,7 +28,7 @@ If you're unable to upgrade to a fixed version, you can disable the affected cod
 
 **Resolved**<br>
 
-Resolved in {{agent}} 9.1.10 and 9.2.4
+Resolved in {{agent}} 8.19.10, 9.1.10 and 9.2.4
 
 :::{tip}
 As long as the major and minor versions match, you can run a newer patch version of {{agent}} than the {{stack}}. For example, you can use 9.1.10 {{agent}} with 9.1.8 {{stack}}.
