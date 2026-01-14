@@ -71,7 +71,7 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 ::::{note}
 You can delete unused data by running either:
 * API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
-* or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, which you can run when {{es}} has an elected quorum.
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
 ::::
 * Increase the disk size on your Hot data and Content tier (scale up).
 
@@ -124,7 +124,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 ::::{note}
 You can delete unused data by running either:
 * API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
-* or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, which you can run when {{es}} has an elected quorum.
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
 ::::
 * Increase the disk size (scale up).
 
@@ -332,7 +332,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
       ::::{note}
       You can delete unused data by running either:
         * API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
-        * or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, which you can run when {{es}} has an elected quorum. 
+        * direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum. 
       ::::
     * Increase disk size.
     * [Enable autoscaling](/deploy-manage/autoscaling.md).
