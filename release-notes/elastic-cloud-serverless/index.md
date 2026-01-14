@@ -363,8 +363,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## October 15, 2025 [serverless-changelog-10152025]
 * {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `ap-northeast-1` (Tokyo) and `eu-west-2` (London)
-* Adds PR-based benchmarks
-* Adds tags to PR-based benchmarks [#136185](https://github.com/elastic/elasticsearch/pull/136185)
 
 
 ## October 13, 2025 [serverless-changelog-10132025]
