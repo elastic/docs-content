@@ -4,7 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
 applies_to:
-  stack: ga
   deployment:
     ece: ga
     ess: ga
@@ -13,7 +12,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Migrate to {{ilm-init}} on {{ech}} or {{ece}} deployments
+# Migrate to {{ilm}} ({{ilm-init}}) on {{ech}} or {{ece}} deployments
 
 ::::{important}
 Index curation is deprecated. Any deployments using index curation are prompted to migrate to ILM.
@@ -28,9 +27,9 @@ For existing {{ecloud}} hot-warm deployments that are currently using index cura
 
 To configure ILM Migration in the console:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} ess:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the **Hosted deployments** page, select your deployment.
 
@@ -41,7 +40,7 @@ To configure ILM Migration in the console:
 5. Set the ILM policy name for each data view (formerly *index pattern*).
 :::
 
-:::{tab-item} Elastic Cloud Enterprise
+:::{applies-item} ece:
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Deployments** page, select your deployment.
 

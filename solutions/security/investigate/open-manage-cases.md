@@ -16,6 +16,11 @@ products:
 
 You can create and manage cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 
+:::{note} 
+**Requirements**
+
+To access and send cases to external systems, you need the appropriate [subscription or feature tier](https://www.elastic.co/pricing), and your role must have the required {{kib}} feature privileges. Refer to [](/solutions/security/investigate/cases-requirements.md) for more information.
+:::
 
 ## Open a new case [cases-ui-open]
 
@@ -37,8 +42,14 @@ Open a new case to keep track of security issues and share their details with co
 4. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/solutions/security/investigate/cases-requirements.md).
 5. {applies_to}`stack: preview` {applies_to}`serverless: preview` If you defined [custom fields](/solutions/security/investigate/configure-case-settings.md#cases-ui-custom-fields), they appear in the **Additional fields** section.
 6. Choose if you want alert statuses to sync with the case’s status after they are added to the case. This option is turned on by default, but you can turn it off after creating the case.
-7. {applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case. This option is turned on by default. You can turn it off after creating the case by toggling **Auto-extract observables** on the case's **Observables** tab.
-8. From **External incident management**, select a [connector](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations). If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
+7. {applies_to}`stack: ga 9.2+` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can choose to automatically extract observables from alerts that you're adding to the case. This option is turned on by default. You can turn it off after creating the case by toggling **Auto-extract observables** on the case's **Observables** tab.
+8. (Optional) Under **External Connector Fields**, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can create one. For more information, refer to [External incident management systems](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations)
+
+    ::::{note}
+    :applies_to: stack: ga 9.3+
+    When specifying **Additional fields** for an {{ibm-r}} connector, fields that are set when an incident is created or changed (for example, an incident is closed) won't display as an option.
+    ::::
+
 9. Click **Create case**.
 
     ::::{note}
@@ -76,21 +87,25 @@ When you subsequently add assignees to cases, they receive an email.
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
 
+{applies_to}`stack: ga 9.3+` To find cases that were created during a specific time range, use the date time picker above the Cases table. The default time selection is the last 30 days. Clicking **Show all cases** displays every {{elastic-sec}} case in your space. The action also adjusts the starting time range to the date of when the first case was created.
+
 To explore a case, click on its name. You can then:
 
 * [Review the case summary](/solutions/security/investigate/open-manage-cases.md#cases-summary)
-* [Add and manage comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments)
+* Modify the case’s description, assignees, category, severity, status, and tags.
+* Add and manage [comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments) and [lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
 
     ::::{tip}
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
-* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts), [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), and {applies_to}`stack: ga 9.2.0` [events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) attached to the case
-* [Add files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
-* [Add a Lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
-* Modify the case’s description, assignees, category, severity, status, and tags.
+* Add and manage the following items:
+    * [Alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts)
+    * [Indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case)
+    * {applies_to}`stack: ga 9.2+` [Events](/solutions/security/investigate/open-manage-cases.md#cases-examine-events) 
+    * [Files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
+    * [Observables](/solutions/security/investigate/open-manage-cases.md#cases-add-observables)
 * [Manage connectors](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations) and send updates to external systems (if you’ve added a connector to the case)
-* [Add observables](/solutions/security/investigate/open-manage-cases.md#cases-add-observables)
 * [Copy the case UUID](/solutions/security/investigate/open-manage-cases.md#cases-copy-case-uuid)
 * Refresh the case to retrieve the latest updates
 
@@ -117,44 +132,74 @@ To edit, delete, or quote a comment, select the appropriate option from the **Mo
 :screenshot:
 :::
 
+## Add context and supporting materials [cases-add-context]
 
-### Examine alerts attached to a case [cases-examine-alerts]
+Provide additional context and resources by adding the following to the case:
+* [Alerts](#cases-examine-alerts)
+* [Indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case)
+* {applies_to}`stack: ga 9.2.0` [Events](#cases-examine-events) 
+* [Files](#cases-add-files)
+* [Observables](#cases-add-observables)
 
-To explore the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
+::::{tip}
+:applies_to: {stack: ga 9.3}
+From the **Attachments** tab, you can search for specific observable values, alert and event IDs, and file names.
+::::
 
-:::{image} /solutions/images/security-cases-alert-tab.png
-:alt: Shows you the Alerts tab
-:screenshot:
+### Add alerts [cases-examine-alerts]
+
+:::{include} /solutions/_snippets/add-case-alerts.md
 :::
 
 ::::{note}
-Each case can have a maximum of 1,000 alerts.
+Add alerts to new and existing cases from [Timeline](/solutions/security/investigate/timeline.md) or the [**Alerts** page](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md).
 ::::
 
-### Examine events attached to a case [cases-examine-events]
+### Add events [cases-examine-events]
 ```{applies_to}
 stack: ga 9.2
 ```
 
-After adding events to cases from the Events table (which you can access from the **Events** tab on the **Hosts**, **Network**, or **Users** pages) or from Timeline, you can examine them in the case's **Events** tab. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
+Escalate events and track them in a single place by attaching them to cases. You can add events from an investigation that you've opened in Timeline, or from the **Events** tab on the **Hosts**, **Network**, or **Users** pages.
+
+After adding events to a case, go to the **Events** tab to examine them. Within the tab, events are organized from newest to oldest. Click the **View details** button to find out more about the event.
+
+You can find the **Events** tab in the following places:
+
+- {applies_to}`serverless:` {applies_to}`stack: ga 9.3+`: Go to the case's details page, then select the **Attachments** tab.
+- {applies_to}`stack: ga =9.2`: Go to the case's details page.  
 
 ### Add files [cases-add-files]
 
-To upload files to a case, select the **Files** tab, then click **Add files**. You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
+:::{include} /solutions/_snippets/add-case-files.md
+:::
 
-% Check with Lisa whether following note is only applicable to Serverless or if it's for ESS too.
-
-::::{note}
-There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
-
+::::{important}
+When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the attached case files are not exported. 
 ::::
 
-To download or delete the file, or copy the file hash to your clipboard, open the **Actions** menu (**…**). The available hash functions are MD5, SHA-1, and SHA-256.
+::::{note}
+Uploaded files are also accessible from the **Files** management page, which you can find using the navigation menu or entering `Files` into the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+::::
 
-When you add a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
+### Add observables [cases-add-observables]
 
+:::{include} /solutions/_snippets/add-case-observables.md
+:::
 
-### Add a Lens visualization [cases-lens-visualization]
+{applies_to}`stack: ga 9.2` With the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can use **Auto-extract observables** to instantly extract observables from alerts that you're adding to the case. After creating a new case, you have the option to turn it off by toggling **Auto-extract observables** on the case's **Observables** tab.
+
+## Copy the case UUID [cases-copy-case-uuid]
+
+Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the **Cases** page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
+
+:::{image} /solutions/images/security-cases-copy-case-id.png
+:alt: Copy Case ID option in More actions menu
+:width: 250px
+:screenshot:
+:::
+
+## Add a Lens visualization [cases-lens-visualization]
 
 ::::{warning}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
@@ -194,50 +239,6 @@ After a visualization has been added to a case, you can modify or interact with 
 :alt: Shows where the Open Visualization option is
 :screenshot:
 :::
-
-
-### Add observables [cases-add-observables]
-
-::::{admonition} Requirements
-Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-
-::::
-
-
-An observable is a piece of information about an investigation, for example, a suspicious URL or a file hash. Use observables to identify correlated events and better understand the severity and scope of a case.
-
-To create an observable:
-
-1. Click the **Observables** tab, then click **Add observable**.
-
-    ::::{note}
-    Each case can have a maximum of 50 observables.
-    ::::
-
-2. Provide the necessary details:
-
-    * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/solutions/security/investigate/configure-case-settings.md#cases-observable-types).
-    * **Value**: Enter a value for the observable. The value must align with the type you select.
-    * **Description** (Optional): Provide additional information about the observable.
-
-3. Click **Add observable**.
-
-After adding an observable to a case, you can remove or edit it by using the **Actions** menu (**…**).
-
-::::{tip}
-Go to the **Similar cases** tab to access other cases with the same observables.
-::::
-
-### Copy the case UUID [cases-copy-case-uuid]
-
-Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the Cases page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
-
-:::{image} /solutions/images/security-cases-copy-case-id.png
-:alt: Copy Case ID option in More actions menu
-:width: 250px
-:screenshot:
-:::
-
 
 ## Export and import cases [cases-export-import]
 
@@ -303,3 +304,8 @@ To import a case:
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
+
+## Search cases [search-security-cases]
+
+:::{include} /solutions/_snippets/search-cases.md
+:::

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-container.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -10,7 +13,7 @@ products:
 
 You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
-Running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don't currently provide {{agent}} container images for Windows.
+Running {{agent}} in a container is supported only in Linux environments. For this reason we don't currently provide {{agent}} container images for Windows.
 
 In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have been changed to Red Hat UBI (Universal Base Image) minimal based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. Refer to [#6427]({{agent-pull}}6427) for details.
 
@@ -25,13 +28,13 @@ Considerations:
 * [Docker installed](https://docs.docker.com/get-docker/).
 * {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it.
 
-   ::::{tab-set}
+   ::::{applies-switch}
 
-   :::{tab-item} {{ech}}
-   To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+   :::{applies-item} { serverless:, ess: }
+   To get started quickly, use [{{ecloud}}](https://cloud.elastic.co/).
    :::
 
-   :::{tab-item} Self-managed
+   :::{applies-item} self:
    To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
    :::
 
@@ -69,7 +72,12 @@ docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{{version.stack}
 
 ### Complete flavor
 
-If you want to run Synthetics tests, run the docker pull command to fetch the elastic-agent-complete image:
+The Docker image you should use to run {{agent}} as a Synthetic Private Location depends on the types of monitors that will run in that location:
+
+* If running _only_ lightweight monitors, use the `elastic-agent` image (and the `wolfi` variant).
+* If running _any_ browser monitors, use the `elastic-agent-complete` image.
+
+Run the following docker pull command to fetch the `elastic-agent-complete` image:
 
 ```terminal subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
@@ -122,9 +130,9 @@ docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} 
 ## Step 4: Run the Elastic Agent image [_step_4_run_the_elastic_agent_image]
 
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} Elastic Cloud
+:::{applies-item} { serverless:, ess: }
 
 ```terminal subs=true
 docker run \
@@ -137,12 +145,11 @@ docker run \
 1. Set to 1 to enroll the {{agent}} into {{fleet-server}}.
 2. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management → {{fleet}} → Fleet Settings**, and copy the {{fleet-server}} host URL.
 3. The token to use for enrollment. Close the flyout panel and select **Enrollment tokens**. Find the Agent policy you want to enroll {{agent}} into, and display and copy the secret token. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
-4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
-
+4. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run synthetic browser monitors. Synthetic browser monitors cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
 
-:::{tab-item} Self-managed
+:::{applies-item} self:
 
 If you’re running a self-managed cluster and want to run your own {{fleet-server}}, run the following command, which will spin up both {{agent}} and {{fleet-server}} in a container:
 
@@ -161,8 +168,7 @@ docker run \
 3. The {{fleet}} service token. [Generate one in the {{fleet}} UI](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) if you don’t have one already.
 4. ID of the {{fleet-server}} policy. We recommend only having one fleet-server policy. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
 5. publish container port 8220 to host.
-6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
-
+6. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run synthetic browser monitors. Synthetic browser monitors cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
 
@@ -203,14 +209,14 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 
 1. Launch {{kib}}:
 
-   ::::{tab-set}
+   ::::{applies-switch}
 
-   :::{tab-item} {{ech}}
+   :::{applies-item} { serverless:, ess: }
    1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
    2. Navigate to the {{kib}} endpoint in your deployment.
    :::
 
-   :::{tab-item} Self-managed
+   :::{applies-item} self:
    Point your browser to [http://localhost:5601](http://localhost:5601), replacing `localhost` with the name of the {{kib}} host.
    :::
 
@@ -244,7 +250,6 @@ services:
       - FLEET_ENROLL=1
       - FLEET_URL=<fleet-server-url>
 ```
-
 1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 2. Synthetic browser monitors require this set to `elastic-agent`.
 

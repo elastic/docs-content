@@ -1,12 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Fleet Server scalability [fleet-server-scalability]
+# {{fleet-server}} scalability [fleet-server-scalability]
 
 This page summarizes the resource and {{fleet-server}} configuration requirements needed to scale your deployment of {{agent}}s. To scale {{fleet-server}}, you need to modify settings in your deployment and the {{fleet-server}} agent policy.
 
@@ -14,6 +17,12 @@ This page summarizes the resource and {{fleet-server}} configuration requirement
 Refer to the [Scaling recommendations](#agent-policy-scaling-recommendations) section for specific recommendations about using {{fleet-server}} at scale.
 ::::
 
+## Scaling {{fleet-server}} on {{ech}}
+
+```{applies_to}
+deployment:
+  ess: ga
+```
 
 First modify your {{fleet}} deployment settings in {{ecloud}}:
 
@@ -30,7 +39,6 @@ First modify your {{fleet}} deployment settings in {{ecloud}}:
     :alt: {{fleet-server}} hosted agent
     :screenshot:
     :::
-
 
 Next modify the {{fleet-server}} configuration by editing the agent policy:
 
@@ -50,8 +58,11 @@ Next modify the {{fleet-server}} configuration by editing the agent policy:
     :::
 
 
-
 ## Advanced {{fleet-server}} options [fleet-server-configuration]
+
+```{applies_to}
+stack: ga
+```
 
 The following advanced settings are available to fine tune your {{fleet-server}} deployment.
 
@@ -62,7 +73,6 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 `max_cost`
 :   Total size of the cache.
 
-
 `server.timeouts`
 :   `checkin_timestamp`
 :   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting may improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
@@ -70,13 +80,10 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 `checkin_long_poll`
 :   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting may improve performance.
 
-
 `server.limits`
 :   `policy_throttle`
 :   How often a new policy is rolled out to the agents.
-
-
-Deprecated: Use the `action_limit` settings instead.
+:   Deprecated: Use the `action_limit` settings instead.
 
 `action_limit.interval`
 :   How quickly {{fleet-server}} dispatches pending actions to the agents.
@@ -133,10 +140,10 @@ Deprecated: Use the `action_limit` settings instead.
 :   Maximum size in bytes of the enroll API request body.
 
 `status_limit.max`
-:   Maximum number of agents that can call the status API concurrently. This setting allows the user to avoid overloading the Fleet Server from status API calls.
+:   Maximum number of agents that can call the status API concurrently. This setting allows the user to avoid overloading the {{fleet-server}} from status API calls.
 
 `status_limit.interval`
-:   How frequently agents can submit status requests to the Fleet Server.
+:   How frequently agents can submit status requests to the {{fleet-server}}.
 
 `status_limit.burst`
 :   Burst of status requests to accommodate before falling back to the rate defined by interval.
@@ -145,10 +152,10 @@ Deprecated: Use the `action_limit` settings instead.
 :   Maximum size in bytes of the status API request body.
 
 `upload_start_limit.max`
-:   Maximum number of agents that can call the uploadStart API concurrently. This setting allows the user to avoid overloading the Fleet Server from uploadStart API calls.
+:   Maximum number of agents that can call the uploadStart API concurrently. This setting allows the user to avoid overloading the {{fleet-server}} from uploadStart API calls.
 
 `upload_start_limit.interval`
-:   How frequently agents can submit file start upload requests to the Fleet Server.
+:   How frequently agents can submit file start upload requests to the {{fleet-server}}.
 
 `upload_start_limit.burst`
 :   Burst of file start upload requests to accommodate before falling back to the rate defined by interval.
@@ -157,10 +164,10 @@ Deprecated: Use the `action_limit` settings instead.
 :   Maximum size in bytes of the uploadStart API request body.
 
 `upload_end_limit.max`
-:   Maximum number of agents that can call the uploadEnd API concurrently. This setting allows the user to avoid overloading the Fleet Server from uploadEnd API calls.
+:   Maximum number of agents that can call the uploadEnd API concurrently. This setting allows the user to avoid overloading the {{fleet-server}} from uploadEnd API calls.
 
 `upload_end_limit.interval`
-:   How frequently agents can submit file end upload requests to the Fleet Server.
+:   How frequently agents can submit file end upload requests to the {{fleet-server}}.
 
 `upload_end_limit.burst`
 :   Burst of file end upload requests to accommodate before falling back to the rate defined by interval.
@@ -169,10 +176,10 @@ Deprecated: Use the `action_limit` settings instead.
 :   Maximum size in bytes of the uploadEnd API request body.
 
 `upload_chunk_limit.max`
-:   Maximum number of agents that can call the uploadChunk API concurrently. This setting allows the user to avoid overloading the Fleet Server from uploadChunk API calls.
+:   Maximum number of agents that can call the uploadChunk API concurrently. This setting allows the user to avoid overloading the {{fleet-server}} from uploadChunk API calls.
 
 `upload_chunk_limit.interval`
-:   How frequently agents can submit file chunk upload requests to the Fleet Server.
+:   How frequently agents can submit file chunk upload requests to the {{fleet-server}}.
 
 `upload_chunk_limit.burst`
 :   Burst of file chunk upload requests to accommodate before falling back to the rate defined by interval.
@@ -183,14 +190,17 @@ Deprecated: Use the `action_limit` settings instead.
 
 ## Scaling recommendations ({{ecloud}}) [scaling-recommendations]
 
-The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example: a 32GB RAM requirement can be satisfied with 16GB of RAM in 2 different zones).
+```{applies_to}
+deployment:
+  ess: ga
+```
 
-* [Resource requirements by number of agents](#resource-requirements-by-number-agents)
+The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example, a 32GB RAM requirement can be satisfied with 16GB of RAM in 2 different zones).
 
 
 ### Resource requirements by number of agents [resource-requirements-by-number-agents]
 
-| Number of Agents | {{fleet-server}} Memory | {{fleet-server}} vCPU | {{es}} Hot Tier |
+| Number of agents | {{fleet-server}} memory | {{fleet-server}} vCPU | {{es}} hot tier |
 | --- | --- | --- | --- |
 | 2,000 | 2GB | up to 8 vCPU | 32GB  RAM  &#124; 8 vCPU |
 | 5,000 | 4GB | up to 8 vCPU | 32GB  RAM  &#124; 8 vCPU |
@@ -206,11 +216,14 @@ A series of scale performance tests are regularly executed in order to verify th
 
 ## Scaling recommendations [agent-policy-scaling-recommendations]
 
+```{applies_to}
+deployment:
+  self: ga
+```
+
 **{{agent}} policies**
 
 A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If more policies are configured, UI performance might be impacted. The maximum number of policies is not affected by the number of spaces in which the policies are used.
-
-If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
 **{{agents}}**
 

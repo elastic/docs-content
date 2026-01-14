@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: preview 9.0, ga 9.1
+  stack: preview =9.0, ga 9.1+
   serverless:
     security: ga
 ---
@@ -9,26 +9,49 @@ applies_to:
 
 Automatic Migration helps you quickly migrate Splunk assets to {{elastic-sec}}. The following asset types are supported:
 
-* {applies_to}`stack: preview 9.0, ga 9.1` {applies_to}`serverless: ga` Splunk rules
-* {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Splunk dashboards
+* {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Classic Splunk dashboards (v1.1)
+* {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
 
 For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
-You can ingest your data before migrating your assets, or migrate your assets first in which case the tool will recommend which data sources you need to power your migrated rules.
+You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
-::::{admonition} Requirements
-* The `SIEM migrations: All` Security sub-feature privilege.
-* A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
+**Requirements**
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+**Requirements**
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+
+:::
+
+::::
+
+::::{admonition} Dashboard migration limitations
+* Only classic Splunk dashboards (v1.1) are supported. Attempting to translate unsupported dashboards will result in an `Unsupported Splunk XML` error and a `Not translated` status.
+* Elastic only supports `vizualization`, `chart`, `table`, `single value (Metric)` Splunk dashboard panels, and does not support `map`, `event`, `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels will not appear in the migrated dashboard.
 ::::
 
 ## Get started with Automatic Migration
 
 1. Find **Get started** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Under **Configure AI provider**, select a configured model or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+2. Under **Configure AI provider**, select a configured model or [add a new one](/explore-analyze/ai-features/llm-guides/llm-connectors.md). For information on how different models perform, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 3. Next, under **Migrate rules & dashboards**, select either **Translate your existing SIEM rules to Elastic** or **Migrate your existing SIEM dashboards to Elastic**, then click **Upload**. The upload flyout appears. 
 4. Follow the instructions on the upload flyout to export your Splunk assets as JSON.
 
@@ -173,13 +196,13 @@ The table's fields are as follows:
 * **Tags:** The dashboard's tags, which identify its source application, and can be used to identify it on the **Dashboards** page.
 * **Actions:** To view an `Installed` dashboard, click **View**. To install a `Translated` dashboard, click **Install**. To reprocess a `Failed` dashboard, click **Reprocess**.
 
-::::{note}
-To view an explanation of the logic behind how each dashboard was translated, click a dashboard's name to open the dashboard details flyout. 
-::::
+### View dashboard migration details
+For an explanation of a dashboard's translation, click its name to open the dashboard details flyout and view an AI chat that explains the reasoning behind each panel's translation. 
+
 
 ### Finalize translated dashboards
 
-Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you will need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
+Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
 
 ## Frequently asked questions (FAQ)
 
