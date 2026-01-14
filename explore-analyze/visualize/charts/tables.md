@@ -202,11 +202,6 @@ Customize your table to display exactly the information you need, formatted the 
 
 ### General table settings [appearance-options]
 
-```{applies_to}
-stack: ga 9.1
-serverless: ga
-```
-
 When creating or editing a table visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
 
 **Density** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
