@@ -9,8 +9,10 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+:::{include} _snippets/2025-01-13.2/index.md
+:::
 
-## January 13, 2026 [serverless-changelog-01132026]
+## Old January 13, 2026 [serverless-changelog-01132026]
 
 ### Features and enhancements [serverless-changelog-01132026-features-enhancements]
 
