@@ -111,8 +111,20 @@ There are four common alert statuses:
 
 If an alert is active or flapping, you can mute it to temporarily suppress future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
 
-- {applies_to}`stack: ga 9.0-9.2` Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**. 
-- {applies_to}`stack: ga 9.3+` Follow the steps above to mute individual alerts. To bulk-mute alerts, select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display a {icon}`bellSlash` icon in the **Alerts** table. 
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.3+
+You can mute individual alerts or multiple ones:
+
+- **Mute individual alerts**: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
+- **Bulk-mute alerts**: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display a {icon}`bellSlash` icon in the **Alerts** table. 
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**. 
+:::
+
+::::
 
 ::::{note}
 
