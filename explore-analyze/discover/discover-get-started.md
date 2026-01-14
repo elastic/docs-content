@@ -202,7 +202,7 @@ You can use **Discover** to compare and diff the field values of multiple result
 
 You can quickly copy the content currently displayed in the table for one or several results to your clipboard.
 
-1. Select the results you want to copy.
+1. Select the rows you want to copy.
 2. Open the **Selected** menu in the table toolbar, and select one of the available formats:
    - **Copy selection as text**.
    - **Copy documents as JSON**, or **Copy results as JSON** if you're in {{esql}} mode.
