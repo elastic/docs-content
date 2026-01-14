@@ -87,7 +87,9 @@ To create a pivot table:
 3. Add one or more metrics.
 4. Drag a categorical field to **Split metrics by** to create separate columns for each unique value.
 
-For example, you could show visits per date in rows, split by continent in columns, with visit count as the metric. This creates a pivot table showing visit counts for each continent over time.
+For example, you could show visits per date in rows, split by the top 3 hours of the day with most traffic, and add various metrics such as the number of visits or the percentage of successful requests. This creates a pivot table showing the various metrics for each hour of the day with the most traffic.
+
+![Example of a table in Lens using the break down by functionality](lens-table-breakdown-by-example.png)
 
 Refer to [Analyze the data in a table](../../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#view-customers-over-time-by-continents) for a detailed example.
 
