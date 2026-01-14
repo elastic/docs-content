@@ -262,7 +262,7 @@ A message appears, indicating that the schedule is available on the **Reporting*
 
 {applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
-### Manage scheduled reports [manage-scheduled-reports]
+### Manage report schedules [manage-report-schedules]
 
 To manage a schedule, you can take the following actions from the **Schedules** tab on the **Reporting** page:
 
