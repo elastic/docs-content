@@ -37,7 +37,7 @@ To downsample a time series using a [data stream lifecycle](/manage-data/lifecyc
 
 * Set `fixed_interval` to your preferred level of granularity. The original time series data will be aggregated at this interval.
 * Set `after` to the minimum time to wait after an index rollover, before running downsampling.
-* (Optional) Set `downsampling_method` to your preferred [downsampling method](/manage-data/data-store/data-streams/downsampling-concepts.md#downsampling-methods), or leave it unspecified to use the default method (`aggregate`). {applies_to}`stack: preview 9.3` {applies_to}`serverless: ga`
+* {applies_to}`stack: preview 9.3` {applies_to}`serverless: ga` (Optional) Set `downsampling_method` to your preferred [downsampling method](/manage-data/data-store/data-streams/downsampling-concepts.md#downsampling-methods), or leave it unspecified to use the default method (`aggregate`). 
 
 ```console
 PUT _data_stream/my-data-stream/_lifecycle
@@ -102,7 +102,7 @@ PUT _ilm/policy/datastream_policy
 ```
 
 * Set `fixed_interval` to your preferred level of granularity. The original time series data will be aggregated at this interval. The downsample action runs after the index is rolled over and the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
-* (Optional) Set `sampling_method` to your preferred [downsampling method](/manage-data/data-store/data-streams/downsampling-concepts.md#downsampling-methods), or leave it unspecified to use the default method (`aggregate`). {applies_to}`stack: preview 9.3` {applies_to}`serverless: ga`
+* {applies_to}`stack: preview 9.3` (Optional) Set `sampling_method` to your preferred [downsampling method](/manage-data/data-store/data-streams/downsampling-concepts.md#downsampling-methods), or leave it unspecified to use the default method (`aggregate`).
 
 :::
 ::::
