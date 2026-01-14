@@ -63,9 +63,9 @@ The way that you configure your {{stack}} settings is determined by your deploym
 * If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart in self managed clusters and ECH and ECE deployments. If the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
 :::
 
-:::::{tab-set}
+:::::{applies-switch}
 
-::::{tab-item} ECH and ECE
+::::{applies-item} { ess:, ece: }
 
 For {{ech}} and {{ece}} deployments, you edit {{stack}} settings through the {{ecloud}} Console or ECE Cloud UI. These settings are internally mapped to the appropriate YAML configuration files, such as `elasticsearch.yml` and `kibana.yml`, and they affect all users of that cluster.
 
@@ -85,7 +85,7 @@ For further details and examples, refer to the resource for your deployment type
 
 ::::
 
-::::{tab-item} ECK
+::::{applies-item} eck:
 
 Stack settings are defined as part of your resource specification.
 
@@ -101,7 +101,7 @@ Stack settings are defined as part of your resource specification.
 
 ::::
 
-::::{tab-item} Self managed
+::::{applies-item} self:
 
 The method and location where you can update your {{stack}} settings depends on the component and installation method.
 
