@@ -95,7 +95,7 @@ Refer to [Analyze the data in a table](../../dashboards/create-dashboard-of-pane
 
 ### Use formulas in tables
 
-Tables support Lens formulas, which lets you create calculated columns with custom logic. You can use formulas to:
+Tables support Lens formulas, which let you create calculated columns with custom logic. You can use formulas to:
 
 * Calculate percentages or ratios between metrics
 * Compare current values to time-shifted values
@@ -153,7 +153,7 @@ Customize your table to display exactly the information you need, formatted the 
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the intervals granularity or specify custom ranges.
+      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
         :::{dropdown} How does interval granularity work?
         Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
         
@@ -188,7 +188,7 @@ Customize your table to display exactly the information you need, formatted the 
       - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the intervals granularity or specify custom ranges.
+      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
         :::{dropdown} How does interval granularity work?
         Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
         
@@ -246,7 +246,7 @@ The following examples show various configuration options you can use for buildi
 
     * **Rows**: `order_date` field using **Date histogram** function
       * **Minimum interval**: `1d`
-      * **Name**: `Sale per day`
+      * **Name**: `Sales per day`
     * **Metrics**: `customer_id` field using **Unique count** function
     * **Split metrics by**: `geoip.continent_name` field using **Top values** set to `3`
 
