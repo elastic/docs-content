@@ -82,6 +82,20 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
+## AutoOps along with {{es}} [k8s-install-autoops-elasticsearch-helm]
+
+The following section allows installing AutoOps to connect your {{es}} clusters to AutoOps.
+
+```sh subs=true
+# Install an eck-managed {{es}} and connect to AutoOps using custom values.
+helm install eck-stack-with-autoops elastic/eck-stack \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/autoops/basic.yaml -n elastic-stack
+```
+
+The `eck-autoops-agent-policy` chart creates an `AutoOpsAgentPolicy` resource that connects your {{es}} clusters to AutoOps. ECK automatically handles the creation of API keys, agent configuration, and deployment of the AutoOps Agent required to send metrics to AutoOps.
+
+For more information about configuring AutoOps, refer to [AutoOps configuration](/deploy-manage/deploy/cloud-on-k8s/configuration-autoops.md).
+
 ## Enterprise Search server along with {{es}} and {{kib}} [k8s-install-enterprise-search-elasticsearch-kibana-helm]
 
 Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example deployment of {{es}} version 8.x, {{kib}} 8.x, and an 8.x Enterprise Search server using the Helm chart, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-stack-helm-chart.html).
@@ -192,4 +206,5 @@ helm show values elastic/eck-beats
 helm show values elastic/eck-apm-server
 helm show values elastic/eck-fleet-server
 helm show values elastic/eck-logstash
+helm show values elastic/eck-autoops-agent-policy
 ```

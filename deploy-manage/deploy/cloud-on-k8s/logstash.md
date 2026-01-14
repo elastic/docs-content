@@ -40,12 +40,3 @@ This section describes how to configure and deploy {{ls}} with ECK.
 ::::{note}
 Running {{ls}} on ECK is compatible only with {{ls}} 8.7+.
 ::::
-
-
-
-
-
-
-
-
-

@@ -95,7 +95,8 @@ This is the first step of the installation wizard. Your cluster ships metrics to
 
 Select one of the following methods to install {{agent}}:
 
-* **Kubernetes**
+* **ECK**
+* **{{k8s}}**
 * **Docker**
 * **Linux**
 <!-- Not applicable for private preview
@@ -106,15 +107,19 @@ Select one of the following methods to install {{agent}}:
 macOS is not a supported platform for installing {{agent}} to connect to AutoOps in a self-managed production environment. However, you can use macOS to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 :::
 
-:::{important} 
+:::{important}
 Each cluster that you want to connect requires a new, dedicated {{agent}}. You must install the agent even if you already have an existing one for other purposes.
 
-You only need to install the agent once per cluster. 
+You only need to install the agent once per cluster.
 :::
 
 To learn more about how AutoOps securely gathers data from your cluster, refer to our [FAQ](/deploy-manage/monitor/autoops/ec-autoops-faq.md#data-gathering).
 
 ### Configure agent
+
+:::{note}
+If you selected **ECK** as your installation method, you can skip this section. ECK automatically handles API key creation, agent configuration, and all necessary setup. Proceed directly to [Install agent](#install-agent).
+:::
 
 Depending on your selected installation method, you may have to provide the following information to create the installation command:
 
@@ -229,9 +234,11 @@ $$$firewall-allowlist$$$
 
 ### Install agent
 
-The wizard generates an installation command based on your configuration. Depending on your installation method, the following command formats are available:
+The wizard generates an installation command or YAML manifest based on your configuration. Depending on your installation method, the following formats are available:
 
-* Kubernetes
+* ECK
+    * YAML (AutoOpsAgentPolicy resource)
+* {{k8s}}
     * YAML
     <!-- Not applicable for private preview 
     * Helm Chart -->
@@ -247,9 +254,21 @@ The wizard generates an installation command based on your configuration. Depend
 To ensure optimum resource usage, we recommend installing the agent on a different machine from the one where your cluster is running.
 :::
 
+#### For ECK installation method
+
+If you selected **ECK** as your installation method:
+
+1. Run the generated commands, which includes an `AutoOpsAgentPolicy` and `Secret` creation.
+2. ECK automatically:
+   * Creates an API key in {{es}} clusters that match the `resourceSelector` with the minimum privileges required.
+   * Configures and deploys the AutoOps Agent to begin sending data to AutoOps.
+3. Return to the wizard and select **Next** to verify your {{es}} clusters have the correct label(s), then select **View connected clusters**.
+
+#### For other installation methods
+
 Complete the following steps to run the command:
 
-1. Copy the command. 
+1. Copy the command.
 2. Paste it into a text editor and update the placeholder values in the following environment variables:
 
     | Environment variable | Description |
@@ -262,7 +281,7 @@ Complete the following steps to run the command:
     | `ELASTIC_CLOUD_CONNECTED_MODE_API_KEY` | The {{ecloud}} API Key used to register the cluster. <br> This key shouldn't be edited. |
     | `AUTOOPS_TEMP_RESOURCE_ID` | The temporary ID for the current installation wizard. |
 
-3. Run the command from the machine where you want to install the agent. 
+3. Run the command from the machine where you want to install the agent.
 4. Return to the wizard and select **I have run the command**.
 
 It might take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
@@ -300,6 +319,40 @@ By default, each cluster has a name made up of a string of characters, but you c
 3. Enter the alias in the field that is displayed and then select the checkmark icon.
 
 ### Connect additional clusters
+
+To connect more clusters, the process depends on your installation method:
+
+**For ECK installations:**
+
+You can connect additional ECK-managed {{es}} clusters in one of two ways:
+
+1. **Using resourceSelector**: Update any additional {{es}} clusters to match the existing `resourceSelector` of an `AutoOpsAgentPolicy`:
+
+   ```yaml
+   apiVersion: autoops.k8s.elastic.co/v1alpha1
+   kind: AutoOpsAgentPolicy
+   metadata:
+     name: autoops-policy
+   spec:
+     version: 9.2.1
+     autoOpsRef:
+       secretName: autoops-config
+     resourceSelector:
+       matchLabels:
+         autoops: enabled
+   ```
+
+   ```shell
+   kubectl label elasticsearch quickstart autoops=enabled
+   ```
+
+   All {{es}} clusters in the {{k8s}} cluster that match the label selector will be automatically connected to AutoOps.
+
+2. **Create additional AutoOpsAgentPolicy resources**: Create a new `AutoOpsAgentPolicy` for each set of additional clusters, either by repeating the installation wizard or by creating the resource manually.
+
+For more information, refer to [Selecting {{es}} clusters](/deploy-manage/deploy/cloud-on-k8s/configuration-autoops.md#k8s-autoops-selecting-clusters).
+
+**For other installation methods:**
 
 To connect more clusters, repeat the steps to [connect to AutoOps](#connect-to-autoops).
 
