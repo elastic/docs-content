@@ -1,6 +1,7 @@
 ---
 navigation_title: "[Short title that works in the context of existing navigation folders]"
 description: "[Describe the user-visible problem this page helps resolve, suitable for search results and tooltips]."
+type: troubleshooting
 applies_to:
   stack:
   serverless:
