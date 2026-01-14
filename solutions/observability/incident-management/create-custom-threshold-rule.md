@@ -140,6 +140,18 @@ If a host (for example, `host-1`) is decommissioned, you probably no longer want
 ::::
 
 
+## Select role visibility [observability-create-custom-threshold-alert-rule-custom-threshold-role-visibility]
+
+Select a scope value, which determines the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule. Depending on your role's access, you can select one of the following:
+
+- {applies_to}`stack: ga 9.3+` **All**: When selected, roles must have the appropriate feature privileges to infrastructure metrics (**Observability > Infrastructure**), logs (**Observability > Logs**), or Stack rules (**Management > {{stack-rules-feature}}**) to view or edit the rule. By default, `All` is selected as the rule's scope. 
+- **Logs**: When selected, roles must have the appropriate **Observability > Logs** feature privileges to view or edit the rule.
+- **Metrics**: When selected, roles must have the appropriate **Observability > Infrastructure** feature privileges to view or edit the rule.
+- **Stack Management**: When selected, roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges to view or edit the rule.
+
+
+The All means: The rule will be shown in the stack and in o11y for users who have access to the rule type at least for one of the "Role visibilities". So, for example, if I have access to "Logs" and "Stack", I can see it in both pages with the "All". Also, even if I do not have access to "Stack", if I set it to "All" users with access to "Stack" will see it. I understand it maybe complex so ping me if you have any questions.
+
 
 ## Add actions [observability-create-custom-threshold-alert-rule-add-actions]
 
