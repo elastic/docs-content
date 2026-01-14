@@ -17,7 +17,7 @@ The {{agent-builder}} [chat UI](chat.md#agent-chat-gui) is available in two mode
 2. [Flyout mode](#flyout-mode)
 
 :::{note}
-The standalone and flyout mode have the same functionalities and can be used interchangeably. Conversation history is preserved across both modes.
+The standalone and flyout modes have the same functionalities and can be used interchangeably. Conversation history is preserved across both modes.
 :::
 
 ## Standalone mode
@@ -69,7 +69,7 @@ The default chat experience varies by solution:
 - **{{product.observability}} and {{product.security}}:** Each solution's classic AI Assistant is the default chat experience. You must [switch between chat experiences](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md) to enable Agent Builder.
   - Once enabled:
     - The flyout experience replaces the AI Assistant chat experience
-    - The standalone experience is available through the **Agents** tab in the main navigation.
+    - The standalone experience is available through the **Agents** button in the main navigation.
 - **{{es}}:** Agent Builder appears in the navigation automatically.
 
 <!--  TODO 
@@ -85,3 +85,4 @@ when that page is live
 ## Related pages
 
 - [Agent Builder chat UI](chat.md#agent-chat-gui)
+- [Switch between AI assistant and Agent Builder chat](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md)
