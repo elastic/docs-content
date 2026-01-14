@@ -15,7 +15,7 @@ applies_to:
 You can use the built-in agent for natural language conversations with any {{es}} data or instance, or work programmatically with tools, agents, and conversations using Elastic APIs, MCP, and A2A.
 
 :::{important}
-{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for non-serverless deployments.
 :::
 
 ## Key capabilities

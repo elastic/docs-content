@@ -13,7 +13,7 @@ applies_to:
 ## Limitations
 
 :::{important}
-{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for non-serverless deployments.
 :::
 
 ### Feature availability
@@ -36,7 +36,7 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 ### API key authentication returns 403 Forbidden
 
-{{agent-builder}} requires an **Enterprise** [license](/deploy-manage/license.md).
+{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for non-serverless deployments.
 
 ### Incompatible LLMs
 
