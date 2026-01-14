@@ -10,6 +10,67 @@ products:
 Review the changes, fixes, and more to {{serverless-full}}.
 
 
+## January 13, 2026 [serverless-changelog-01132026]
+
+### Features and enhancements [serverless-changelog-01132026-features-enhancements]
+
+* Adds controls as a panel type, allowing you to place them anywhere in dashboards with section-scoped output filters or pin them globally [#245588]({{kib-pull}}245588)
+* Adds the ability to roll back a recent upgrade of a {{fleet}}-managed {{agent}} using the {{fleet}} UI or API [#247398]({{kib-pull}}247398)
+* Marks the `MATCH_PHRASE` second argument as constant-only [#247003]({{kib-pull}}247003)
+* Enhances the SLO details page to properly handle grouped SLOs when no specific instance is selected, allowing you to search SLO instances [#247638]({{kib-pull}}247638)
+* Enhances the Monitoring Entity Source CRUD APIs [#246978]({{kib-pull}}246978)
+* Improves Attack Discovery hallucination detection [#247965]({{kib-pull}}247965)
+* Improves error handling for 429 errors related to the Inference and AI connectors [#246640]({{kib-pull}}246640)
+* Adds a **Synchronize saved objects** button to the Trained models page [#247691]({{kib-pull}}247691)
+* Adds full end-to-end support for the range operator in the condition editor for Streams [#243011]({{kib-pull}}243011)
+* Adds `uppercase`, `lowercase`, and `trim` processors to Streamlang [#246540]({{kib-pull}}246540)
+* Sets the default Node.js heap limit for containers to 75% of available memory, up to a maximum of 4096 MB [#246073]({{kib-pull}}246073)
+* Improves the inference endpoint selector layout to keep long endpoint names readable and stable while clarifying ML-node startup behavior [#247417]({{kib-pull}}247417)
+* Improves the Connection Details flyout by hiding the **API Keys** tab for users without API key management permissions [#246979]({{kib-pull}}246979)
+* Improves default Synthetics rule creation [#245441]({{kib-pull}}245441)
+* Changes the placement of **Migrations** and **Inventory** in the Security solution's navigation menu [#247002]({{kib-pull}}247002)
+* Changes the alert suppression icon [#247964]({{kib-pull}}247964)
+* Hides tabs for generic attack groups [#248444]({{kib-pull}}248444)
+* Updates the total event count in {{es}} documents when you attach an event to a case [#247996]({{kib-pull}}247996)
+* Converts `PackedValuesBlockHash.bytes` to `BreakingBytesRefBuilder` for better memory tracking in {{esql}} [#140171]({{es-pull}}140171)
+* Logs connection failures at `WARN` level for sniffed nodes [#140149]({{es-pull}}140149)
+* Adds base64 format for dense vector doc values [#140094]({{es-pull}}140094)
+* Ensures DiskBBQ tail centroids are always block-encoded [#139835]({{es-pull}}139835)
+* Adds syntax support and parsing for `SET approximate` in {{esql}} [#139908]({{es-pull}}139908)
+* Adds timezone support to `add` and `sub` operators and planning support for `ConfigurationAware` in {{esql}} [#140101]({{es-pull}}140101)
+* Improves Lookup Join performance with `CachedDirectoryReader` in {{esql}} [#139314]({{es-pull}}139314)
+* Improves locality by placing parent-child centroids next to each other [#140293]({{es-pull}}140293)
+* Retrieves routing hash from synthetic ID for translog operations [#140221]({{es-pull}}140221)
+* Includes rerank in supported tasks for the IBM Watsonx integration in the Inference API [#140331]({{es-pull}}140331)
+
+### Fixes [serverless-changelog-01132026-fixes]
+
+* Ensures {{esql}} control options get updated when the time range changes [#248068]({{kib-pull}}248068)
+* Increases the default top values for new Lens visualizations to nine categories [#247015]({{kib-pull}}247015)
+* Fixes the icon in the **Elastic documentation not available** callout in AI Assistant settings [#247885]({{kib-pull}}247885)
+* Prevents extra Synthetics package policies from being updated when maintenance windows are updated or deleted, even if the monitor itself does not use maintenance windows [#246088]({{kib-pull}}246088)
+* Fixes a validation error with maintenance windows on lightweight Synthetics monitors [#247880]({{kib-pull}}247880)
+* Fixes a bug that prevented user and host names from being escaped when they appeared in URLs [#247707]({{kib-pull}}247707)
+* Fixes an issue where the rule settings pop-up remained open after clicking **Save** when enabling or disabling auto gap fill [#247678]({{kib-pull}}247678)
+* Fixes an issue where the Security AI Assistant API did not apply the system prompt associated with a conversation [#248020]({{kib-pull}}248020)
+* Fixes Attack Discovery misclassifying the system error "Security AI Anonymization settings configured to not allow any fields" [#248439]({{kib-pull}}248439)
+* Fixes the display of map view for small screen sizes in Data Visualizer [#247615]({{kib-pull}}247615)
+* Removes {{esql}} field stats for the `TS` command [#247641]({{kib-pull}}247641)
+* Fixes an accessibility issue where the **Show API key** button did not update to **Hide API key** when toggled [#247982]({{kib-pull}}247982)
+* Deactivates the **API keys** button on the {{es}} homepage when you have insufficient permissions [#248072]({{kib-pull}}248072)
+* Fixes the OpenAI connector's add header flow so the newly added header key input receives focus instead of leaving focus on the **Add header** button [#248204]({{kib-pull}}248204)
+* Fixes an issue that could cause errors when updating index mappings [#248462]({{kib-pull}}248462)
+* Fixes a bug where Agent Builder Index Search tools would fail on aliases that contained `semantic_text` fields [#247877]({{kib-pull}}247877)
+* Fixes link color contrast [#247721]({{kib-pull}}247721)
+* Fixes `ToolbarSelector` when clicking on tabs in Discover [#247836]({{kib-pull}}247836)
+* Fixes trace links calculating date ranges incorrectly in Discover [#247531]({{kib-pull}}247531)
+* Fixes decoding errors for terms with symbols in Cases [#247992]({{kib-pull}}247992)
+* Fixes an issue where API requests returned deleted async searches [#140385]({{es-pull}}140385)
+* Fixes double scroll in fullscreen flyouts [#247744]({{kib-pull}}247744)
+* Fixes the React DOM nesting warning `validateDOMNesting(...): <button> cannot appear as a descendant of <button>` that appears in the Trace Waterfall component [#247808]({{kib-pull}}247808)
+
+
+
 ## January 6, 2026 [serverless-changelog-01062026]
 
 ### Features and enhancements [serverless-changelog-01052026-features-enhancements]
@@ -642,7 +703,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-10202025-features-enhancements]
 
-* [Agent Builder](/solutions/search/elastic-agent-builder.md) is now available in technical preview and is enabled by default on {{serverless-full}}
+* [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is now available in technical preview and is enabled by default on {{serverless-full}}
 * Lets you remove root privileges from {{fleet}} managed agents [#237790]({{kib-pull}}237790)
 * Adds the `xpack.fleet.experimentalFeatures` setting [#238840]({{kib-pull}}238840)
 * Supports expression suggestions within function parameters [#236343]({{kib-pull}}236343)
@@ -705,6 +766,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-10132025-features-enhancements]
 
+* Adds a new `MIGRATE` action type for migrating agents to a different cluster [#237342]({{kib-pull}}237342).
 * Adds a **Show agentless resources** toggle on the Fleet > Settings page for debugging and diagnostics [#237528]({{kib-pull}}237528)
 * Allows you to carry over the controls when navigating to a dashboard, preserving the histogram [#237070]({{kib-pull}}237070)
 * Enables the risk score reset feature [#237829]({{kib-pull}}237829)

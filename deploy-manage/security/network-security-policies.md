@@ -57,8 +57,8 @@ To identify which network security policies are automatically applied to new dep
 
 To identify the network security policies that are applied to your deployment or project:
 
-::::{tab-set}
-:::{tab-item} Serverless
+::::{applies-switch}
+:::{applies-item} serverless:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Serverless projects** page, select your project.
 3. Select the **Network security** tab on the left-hand side menu bar.
@@ -66,7 +66,7 @@ To identify the network security policies that are applied to your deployment or
 Network security policies are listed on the page. From this page, you can view and remove existing policies and attach new policies.
 
 :::
-:::{tab-item} Hosted
+:::{applies-item} ess:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** page, select your deployment.
 3. Select the **Security** tab on the left-hand side menu bar.

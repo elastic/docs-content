@@ -101,13 +101,13 @@ You can edit files and secrets that contain `users` and `users_roles` manually, 
 
 **Manually**
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} Self-managed
+:::{applies-item} self:
 In a self-managed cluster, you can edit the contents of `ES_PATH_CONF/users` and `ES_PATH_CONF/users_roles` directly.
 :::
 
-:::{tab-item} {{eck}}
+:::{applies-item} eck:
 You can pass `users` and `user_roles` files to {{eck}} using a file realm secret:
 
 ```yaml subs=true
@@ -155,16 +155,16 @@ stringData:
 
 To avoid editing these files manually, you can use the [elasticsearch-users](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) tool:
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} Self-managed
+:::{applies-item} self:
 
 ```
 bin/elasticsearch-users useradd myuser -p mypassword -r monitoring_user
 ```
 :::
 
-:::{tab-item} {{eck}}
+:::{applies-item} eck:
 The following is an example of invoking the `elasticsearch-users` tool in a Docker container:
 
 ```sh
