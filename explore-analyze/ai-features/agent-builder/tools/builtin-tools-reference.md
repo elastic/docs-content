@@ -7,9 +7,9 @@ applies_to:
 
 # Elastic Agent Builder built-in tools reference
 
-This page lists all built-in tools available in {{agent-builder}} and their availability. Unless otherwise specified, all built-in tools are available on {{serverless-full}}. These tools are available to all [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui).
+This page lists all built-in tools available in {{agent-builder}} and their availability. Unless otherwise specified, all built-in tools are available within all types of deployments. These tools are available to all [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui).
 
-Built-in tools provide core capabilities for working with {{es}} data. You can't modify or delete these tools. In the tools overview, the UI organizes built-in tools using labels (called `tags` in the API) such as `observability`, `security`, `apm`, and `alerts` to help you filter and find related tools. To learn more, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
+Built-in tools provide core capabilities for working with {{es}} data. You can't modify or delete them. In the tools overview, the UI organizes built-in tools using labels (called `tags` in the API) such as `observability`, `security`, `apm`, and `alerts` to help you filter and find related tools. To learn more, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
@@ -25,7 +25,7 @@ Tool naming conventions help organize and identify tools by their source. Built-
 
 ## Platform core tools
 
-Platform Core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. These are useful for any use case.
+Platform Core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. They are relevant to many use cases.
 
 `platform.core.execute_esql` {applies_to}`stack: ga 9.2+`
 :   Executes an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query and returns the results in a tabular format.
