@@ -7,12 +7,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
+description: Save Discover sessions to reuse searches, share with your team, add to dashboards, or use as a foundation for building visualizations in Kibana.
 ---
 
-# Save a search for reuse [save-open-search]
+# Save and reuse Discover sessions [save-open-search]
 
-Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, and manage Discover sessions.
+Save your **Discover** sessions to preserve your queries, filters, and view configurations for later use. Saved sessions let you quickly return to important searches, share explorations with your team, add search results to dashboards, or use them as a starting point for creating visualizations.
 
 ## Requirements [save-search-requirements]
 
@@ -21,10 +21,10 @@ To save searches, you need **Create** and **Edit** permissions for the {{saved-o
 
 ### Read-only access [discover-read-only-access]
 
-If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
+If you don't have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
-:alt: Example of Discover's read only access indicator in the {{product.kibana}} header
+:alt: Example of Discover's read only access indicator in {{kib}}'s header
 :screenshot:
 :::
 

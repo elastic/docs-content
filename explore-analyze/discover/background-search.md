@@ -22,6 +22,9 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 
 ![Send search to background](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltee31dcf0d3917c75/68ecf412e5bae49d65a286ff/background-search.gif " =75%")
 
+**Technical summary**: Enable by setting `data.search.sessions.enabled: true` in `kibana.yml`. From **Discover** or **Dashboards**, click **Send to background** to run long queries asynchronously. Monitor status and restore results using the background searches toolbar button.
+
+You can send your long-running searches to the background from **Discover** or **Dashboards** and let them run while you continue your work. 
 
 ## Enable background searches
 

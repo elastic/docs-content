@@ -537,6 +537,13 @@ redirects:
       
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+  # Sections extracted from discover-get-started.md into separate pages
+  'explore-analyze/discover/discover-get-started.md#context-aware-discover': 'explore-analyze/discover/context-aware-discover.md'
+  'explore-analyze/discover/discover-get-started.md#add-field-in-discover': 'explore-analyze/discover/add-fields-to-data-views.md'
+  'explore-analyze/discover/discover-get-started.md#compare-documents-in-discover': 'explore-analyze/discover/compare-documents.md'
+  'explore-analyze/discover/discover-get-started.md#copy-row-content': 'explore-analyze/discover/compare-documents.md'
+  'explore-analyze/discover/discover-get-started.md#search-in-discover': 'explore-analyze/discover/search-and-filter.md'
+  'explore-analyze/discover/discover-get-started.md#alert-from-Discover': 'explore-analyze/discover/generate-alerts-from-discover.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3493
   'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'

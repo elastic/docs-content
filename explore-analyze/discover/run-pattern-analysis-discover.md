@@ -6,17 +6,17 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Detect patterns in unstructured data with pattern analysis in Discover. Categorize log messages, identify common structures, and filter noise during troubleshooting.
+description: Run pattern analysis on log data in Discover to find patterns in unstructured messages. Categorize logs, view distribution charts, and filter by pattern.
 ---
 
-# Run a pattern analysis on your log data [run-pattern-analysis-discover]
+# Run pattern analysis on log data in Discover [run-pattern-analysis-discover]
 
-Pattern analysis in **Discover** helps you find patterns in unstructured log messages by performing categorization analysis on text fields. It creates categories based on message structures, displays their distribution in a chart, and provides example documents for each pattern. This makes it easier to identify common log patterns, filter out noise, and focus on anomalous messages during troubleshooting.
+Use log pattern analysis in **Discover** to find patterns in unstructured log messages automatically. Pattern analysis categorizes your log data, shows the distribution of each category, and provides example documents for each pattern, making it easier to identify trends and troubleshoot issues.
 
 Pattern analysis works on any text field. This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own log data.
 
 1. Go to **Discover**.
-2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
+2. Expand the {{data-source}} dropdown, and select **{{kib}} Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
 4. Click the **Patterns** tab next to **Documents** and **Field statistics**. The pattern analysis starts. The results are displayed under the chart. You can change the analyzed field by using the field selector. In the **Pattern analysis menu**, you can change the **Minimum time range**. This option enables you to widen the time range for calculating patterns which improves accuracy. The patterns, however, are still displayed by the time range you selected in step 3.
 
