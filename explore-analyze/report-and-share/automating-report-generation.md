@@ -266,12 +266,20 @@ A message appears, indicating that the schedule is available on the **Reporting*
 
 To manage a schedule, you can take the following actions from the **Schedules** tab on the **Reporting** page:
 
-- **Disable schedule**: The functionality differs per version:
-   - {applies_to}`stack: ga 9.3+` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart a disabled schedule, select **Enable schedule**.
-   - {applies_to}`stack: ga 9.1-9.2` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
-- {applies_to}`stack: ga 9.3+` **Enable schedule**: Turn a disabled schedule back on.
-- {applies_to}`stack: ga 9.3+` **Edit schedule config**: Modify an existing schedule.
-- {applies_to}`stack: ga 9.3+` **Delete schedule**: Permanently stop a schedule and remove the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.3+
+- **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page.
+- **Enable schedule**: Restart a disabled schedule.
+- **Edit schedule config**: Modify an existing schedule.
+- **Delete schedule**: Permanently stop a schedule and remove its record from the **Reporting** page. You can't recover a deleted schedule.
+:::
+
+:::{applies-item} stack: ga 9.1-9.2
+- **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page. To restart the schedule, you must create a new one.
+:::
+
+::::
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 
