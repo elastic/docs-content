@@ -37,7 +37,7 @@ Using the dropdown indicating **Bar**, select **Table**.
 
 ::::{step} Define the data to show
 1. Select the {{data-source}} that contains your data.
-2. Define your table structure by dragging fields defining functions for one or more of these dimensions:
+2. Define your table structure by dragging fields and defining functions for one or more of these dimensions:
     - **Metrics**: The values to display in columns. You can use aggregation functions like `Sum`, `Average`, and `Count`, or create custom calculations with formulas.
     - **Rows** (optional): Fields that create the rows of your table. Each unique value becomes a row. You can use functions like **Top values**, **Date histogram**, **Intervals**, or **Filters** to organize your rows. You can add multiple fields as rows to create hierarchical groupings and break down the data more granularly.
     - **Split metrics by** (optional): Break metrics into separate columns based on a categorical field, creating a pivot table view.
@@ -89,7 +89,7 @@ To create a pivot table:
 
 For example, you could show visits per date in rows, split by the top 3 hours of the day with most traffic, and add various metrics such as the number of visits or the percentage of successful requests. This creates a pivot table showing the various metrics for each hour of the day with the most traffic.
 
-![Example of a table in Lens using the break down by functionality](../../images/lens-table-breakdown-by-example.png)
+![Example of a table in Lens using the Split metrics by functionality](../../images/lens-table-breakdown-by-example.png)
 
 Refer to [Analyze the data in a table](../../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#view-customers-over-time-by-continents) for a detailed example.
 
@@ -196,7 +196,7 @@ Customize your table to display exactly the information you need, formatted the 
         
         Intervals are incremented by 10, 5 or 2. For example, an interval can be `100` or `0.2`.
         :::
-      - **Filters**: Define custom KQL filters to create specific row groups. Each filter creates one row in the table. 
+      - **Filters**: Define custom KQL filters to create specific column groups. Each filter creates one column in the table. 
 
 **Appearance**
 :   - **Name**: Customize the split dimension. This name is not used on the table.
