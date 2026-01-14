@@ -11,7 +11,7 @@ navigation_title: Configuration
 
 # Configuration for AutoOps on {{eck}} [k8s-autoops-configuration]
 
-AutoOps on ECK uses the `AutoOpsAgentPolicy` custom resource to connect your ECK-managed {{es}} clusters to AutoOps. ECK automatically handles the creation of API keys, agent configuration, and deployment of the AutoOps Agent required to send metrics to AutoOps.
+AutoOps on ECK uses the `AutoOpsAgentPolicy` custom resource to connect your ECK-managed {{es}} clusters to AutoOps. ECK automatically handles the creation of API keys, Agent configuration, and deployment of the AutoOps Agent required to send metrics to AutoOps.
 
 ## AutoOps configuration [k8s-autoops-configuring-autoops]
 
@@ -23,13 +23,14 @@ kind: AutoOpsAgentPolicy
 metadata:
   name: autoops-policy
 spec:
-  version: 9.2.1
+  version: 9.2.1 <1>
   autoOpsRef:
     secretName: autoops-config
   resourceSelector:
     matchLabels:
       autoops: enabled
 ```
+1. 9.2.1 is the minimum version allowed for the AutoOps Agent
 
 The `AutoOpsAgentPolicy` resource requires:
 

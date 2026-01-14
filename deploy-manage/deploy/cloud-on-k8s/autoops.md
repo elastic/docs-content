@@ -10,7 +10,7 @@ products:
 
 # AutoOps [k8s-autoops]
 
-This section describes how to configure and deploy AutoOps with ECK.
+This section describes how to connect ECK-managed {{es}} clusters to AutoOps.
 
 * [Configuration](configuration-autoops.md)
 

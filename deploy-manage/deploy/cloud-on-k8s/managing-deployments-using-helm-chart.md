@@ -88,7 +88,7 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
   eck: ga 3.3
 ```
 
-The following section allows installing AutoOps to connect your {{es}} clusters to AutoOps.
+The following section allows installing an AutoOpsAgentPolicy to connect your {{es}} clusters to AutoOps.
 
 ```sh subs=true
 # Install an eck-managed {{es}} and connect to AutoOps using custom values.
