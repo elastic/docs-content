@@ -100,10 +100,7 @@ None
 Some features have finer access control and you can optionally enable sub-feature privileges.
 
 ::::{admonition} New features
-:class: note
-
 As new features are added to {{serverless-full}}, roles that use the custom option do not automatically get access to the new features. You must manually update the roles.
-
 ::::
 
 ## Assign custom roles
@@ -111,5 +108,5 @@ As new features are added to {{serverless-full}}, roles that use the custom opti
 After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 :::{warning}
-When you assign custom roles, you must always select **Cloud, {{es}} and {{kib}} API** for API access for the role to take full effect. If you don't grant this access, the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project.
+When you assign custom roles, you must always select **Cloud, {{es}} and {{kib}} API** access for the role to take full effect. If you don't grant this access, the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project. [Learn more](/deploy-manage/users-roles/cloud-organization/user-roles.md#api-access).
 :::
