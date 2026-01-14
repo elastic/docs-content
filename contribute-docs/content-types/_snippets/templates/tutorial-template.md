@@ -24,7 +24,6 @@ Examples:
 - Tutorial: Threat hunting with ES|QL
 -->
 
-## Overview
 <!-- REQUIRED
 
 Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
@@ -34,7 +33,7 @@ Explain what the tutorial teaches, who it's for, and what users will be able to 
 - Learning objectives as a bulleted list
 -->
 
-In this tutorial, you learn how to [brief description of the main task]. This tutorial is intended for [target audience]. It assumes you have basic knowledge of:
+Learn how to [brief description of the main task]. It assumes you have basic knowledge of:
 
 - [Prerequisite concept 1]
 - [Prerequisite concept 2]
@@ -55,7 +54,7 @@ List all prerequisites including:
 - Estimated time to complete (optional but helpful)
 -->
 
-To follow this tutorial, you need the following:
+To <perform action in title>, you need the following:
 
 - [Software or access requirement 1]
 - [Software or access requirement 2]

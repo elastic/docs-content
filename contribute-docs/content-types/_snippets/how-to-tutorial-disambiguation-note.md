@@ -1,4 +1,4 @@
-:::{note}
+:::{important}
 Tutorials differ from how-to guides in scope and purpose:
 
 - **[How-to guides](/contribute-docs/content-types/how-tos.md)** are focused recipes for a single, discrete task with minimal explanation.
