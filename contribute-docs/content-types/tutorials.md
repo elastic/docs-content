@@ -4,7 +4,7 @@ description: "Guidelines for writing effective tutorials in the Elastic document
 
 # Tutorials
 
-To create tutorials or improve existing tutorials, use the standards and best practices in the guidelines and template.  The guidelines apply to content authored by human contributors and automated systems. 
+To create tutorials or improve existing tutorials, use the standards and best practices in the guidelines and template.
 
 Use the tutorial guidelines and template to complete the following:
 
