@@ -81,12 +81,19 @@ When you create an {{es}} query rule, your choice of query type affects the info
 5. If you use query DSL, KQL, or Lucene, choose whether to avoid alert duplication by excluding matches from the previous run. This option is not available when you use a grouping field.
 6. Set the check interval, which defines how often to evaluate the rule conditions. Generally this value should be set to a value that is smaller than the time window, to avoid gaps in detection.
 7. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
-8. Select a scope value, which determines the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule. Depending on your role's access, you can select one of the following:
+8. Specify the rule's scope, which determines the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule and its alerts. Depending on your role's access, you can select one of the following:
 
-   - {applies_to}`stack: ga 9.3+` **All**: (Default) When selected, roles must have the appropriate feature privileges to either infrastructure metrics (**Observability > Infrastructure**), logs (**Observability > Logs**), or Stack rules (**Management > {{stack-rules-feature}}**) to view or edit the rule. For example, a role with feature access to logs (**Observability > Logs**) can view or edit the rule from the Observability or the {{stack-rules-feature}} **Rules** page.
-   - **Metrics**: When selected, roles must have the appropriate **Observability > Logs** feature privileges to view or edit the rule.
-   - **Logs**: When selected, roles must have the appropriate **Observability > Infrastructure** feature privileges to view or edit the rule.
-   - **Stack Management**: When selected, roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges to view or edit the rule.
+   - {applies_to}`stack: ga 9.3+` **All**: **All**: (Default) When selected, roles must have the appropriate privileges for one of the following features:
+      - Infrastructure metrics (**Observability > Infrastructure**)
+      - Logs (**Observability > Logs**)
+      - APM (**Observability > APM and User Experience**)
+      - Synthetics (**Observability > Synthetics and Uptime**)
+      - Stack rules (**Management > {{stack-rules-feature}}**) 
+   - **Logs**: When selected, roles must have the appropriate **Observability > Logs** feature privileges.
+   - **Metrics**: When selected, roles must have the appropriate **Observability > Infrastructure** feature privileges.
+   - **Stack Management**: When selected, roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
+
+   For example, if you select `All`, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} **Rules** page.
 
 ## Test your query [_test_your_query]
 
