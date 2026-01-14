@@ -291,10 +291,35 @@ If you've entered a KQL or Lucene query in the default mode of Discover, it auto
 In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
-{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+applies_to: stack: ga 9.1+
+Partial results that are available are shown when an {{esql}} query:
+- times out. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+- {applies_to}`stack: ga 9.3+` is canceled.
 :::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+
+### Cancel a running query [cancel-query-in-discover]
+
+When you cancel a running in **Discover**, you can still get some results to show depending on the version that you're using.
+
+:::::{applies-switch}
+
+::::{applies-item} { serverless:, stack: ga 9.3+ }
+Select the **Cancel** button that appears while the query executes. **Discover** stops the search and displays the partial results collected up to that point.
+::::
+
+::::{applies-item} stack: ga 9.0-9.2
+Select the **Cancel** button that appears while the query executes. **Discover** stops the search and shows an empty results table.
+::::
+
+:::::
+
+This behavior applies to all query types (KQL, Lucene, and {{esql}}).
+
+:::{tip}
+For long-running queries, you can also [send the query to the background](background-search.md) instead of canceling it, allowing it to complete while you continue working.
+:::
 
 ### Run multiple explorations with tabs
 ```{applies_to}
