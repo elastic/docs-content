@@ -80,7 +80,7 @@ The downsampling method is the technique used to reduce multiple values within t
         * individual histograms are merged into a single histogram that is stored, preserving the type. The `histogram` field type uses the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm.
 
 :::{tip}
-When downsampling a downsampled index, you need to use the same downsampling method as the source index.
+When downsampling a downsampled index, use the same downsampling method as the source index.
 :::
 
 ### Source and target index field mappings [downsample-api-mappings]
