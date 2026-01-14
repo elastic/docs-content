@@ -210,7 +210,7 @@ When you select a closing reason, the alert document is populated with a new fie
 
 ### Apply and filter alert tags [apply-alert-tags]
 
-Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `False Positive` alert tag to label a group of alerts as false positives. Then, search for them by entering the `kibana.alert.workflow_tags : "False Positive"` query into the KQL bar. Alternatively, use the Alert table’s [drop-down filters](/solutions/security/detect-and-alert/manage-detection-alerts.md#drop-down-filter-controls) to filter for tagged alerts.
+Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `False Positive` alert tag to label a group of alerts as false positives. Then, search for them by entering the `kibana.alert.workflow_tags : "False Positive"` query into the KQL bar.
 
 ::::{note}
 You can manage alert tag options by updating the `securitySolution:alertTags` advanced setting. Refer to [Manage alert tag options](/solutions/security/get-started/configure-advanced-settings.md#manage-alert-tags) for more information.
