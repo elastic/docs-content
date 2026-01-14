@@ -264,7 +264,7 @@ A message appears, indicating that the schedule is available on the **Reporting*
 
 ### Manage scheduled reports [manage-scheduled-reports]
 
-To manage a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page:
+To manage a schedule, you can take the following actions from the **Schedules** tab on the **Reporting** page:
 
 - **Disable schedule**: The functionality differs per version:
    - {applies_to}`stack: ga 9.3+` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart a disabled schedule, select **Enable schedule**.
