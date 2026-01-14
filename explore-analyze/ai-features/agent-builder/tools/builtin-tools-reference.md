@@ -119,7 +119,7 @@ Observability tools provide specialized capabilities for monitoring applications
 :   Retrieves information about hosts being monitored in infrastructure monitoring.
 
 `observability.get_index_info`
-:   Retrieves information about Observability indices, including available data sources, fields with actual data, and field values. Supports operations for getting an overview of data sources, listing fields in indices, and retrieving distinct values or ranges for specific fields.
+:   Retrieves information about Observability indices and their fields. Supports operations for getting an overview of available data sources, listing fields that contain actual data, and retrieving distinct values or ranges for specific fields.
 
 `observability.get_trace_metrics`
 :   Retrieves metrics and statistics for distributed traces.
