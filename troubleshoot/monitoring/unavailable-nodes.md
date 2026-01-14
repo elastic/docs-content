@@ -67,6 +67,12 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+You can delete unused data by running either:
+* API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
+::::
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
@@ -114,6 +120,12 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 **Resolution**
 
 * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+  
+::::{note}
+You can delete unused data by running either:
+* API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+* direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum.
+::::
 * Increase the disk size (scale up).
 
 ::::{note}
@@ -316,6 +328,12 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 * Disk/memory/CPU saturated:
 
     * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+      
+      ::::{note}
+      You can delete unused data by running either:
+        * API calls using the [{{kib}} console](/explore-analyze/query-filter/tools/console.md), if available
+        * direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls, when {{es}} has an elected quorum. 
+      ::::
     * Increase disk size.
     * [Enable autoscaling](/deploy-manage/autoscaling.md).
     * Configuration of [ILM](/manage-data/lifecycle/index-lifecycle-management.md) policies.
