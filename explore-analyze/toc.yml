@@ -170,6 +170,24 @@ toc:
       - file: cross-cluster-search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
   - file: ai-features.md
     children:
+      - file: ai-features/elastic-agent-builder.md
+        children:
+          - file: ai-features/agent-builder/get-started.md
+          - file: ai-features/agent-builder/models.md
+          - file: ai-features/agent-builder/chat.md
+          - file: ai-features/agent-builder/agent-builder-agents.md
+          - file: ai-features/agent-builder/tools.md
+            children:
+              - file: ai-features/agent-builder/tools/esql-tools.md
+              - file: ai-features/agent-builder/tools/index-search-tools.md
+          - file: ai-features/agent-builder/programmatic-access.md
+            children:
+               - file: ai-features/agent-builder/kibana-api.md
+               - file: ai-features/agent-builder/a2a-server.md
+               - file: ai-features/agent-builder/mcp-server.md
+          - file: ai-features/agent-builder/monitor-usage.md
+          - file: ai-features/agent-builder/permissions.md
+          - file: ai-features/agent-builder/limitations-known-issues.md
       - file: ai-features/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/llm-guides/llm-connectors.md
@@ -219,6 +237,7 @@ toc:
       - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
+          - hidden: visualize/charts/line-charts.md
           - hidden: visualize/charts/metric-charts.md
           - hidden: visualize/charts/tables.md
       - file: visualize/esorql.md
