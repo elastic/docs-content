@@ -18,7 +18,7 @@ Several types of {{es}} API keys exist:
 
 :::{tip}
 :applies_to: serverless:
-To create equivalent keys for {{serverless-full}} projects, refer to [](serverless-project-api-keys.md). For Serverless projects, you can also create [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that include access to {{es}} and {{kib}} APIs. 
+To create equivalent keys for {{serverless-full}} projects, refer to [](serverless-project-api-keys.md). For {{serverless-full}} projects, you can also create [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that include access to {{es}} and {{kib}} APIs. 
 :::
 
 To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -64,6 +64,7 @@ From the **Create API key** pane, you can configure your new key:
 
 :::{tip}
 You can also create an API key [using the {{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
+:::
 
 ## Update an API key [update-api-key]
 

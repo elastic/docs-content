@@ -15,7 +15,7 @@ products:
 {{ecloud}} API keys allow you to programmatically access the following resources:
 
 * [{{ecloud}}]({{cloud-apis}}) APIs
-* [{{ecloud}} {{serverless-full}}]({{cloud-serverless-apis}}) APIs
+* [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs
 * {applies_to}`serverless: ga` Optionally, [{{es}} {{serverless-full}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}})  APIs
 
 Only **Organization owners** can create and manage API keys. An API key is not tied to the user who created it. When creating a key, you assign it specific roles to control its access to organizational resources, including hosted deployments and serverless projects. If a user leaves the organization, the API keys they have created will still function until they expire.
@@ -79,8 +79,8 @@ serverless: ga
 
 When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can select your level of API access:
 
-* **Cloud API**: Grants access to only [{{ecloud}} {{serverless-full}}]({{cloud-serverless-apis}}) APIs
-* **Cloud, {{es}} and {{kib}} API**: Grants access to [{{ecloud}} {{serverless-full}}]({{cloud-serverless-apis}}), [{{es}} {{serverless-full}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}}) APIs. 
+* **Cloud API**: Grants access to only [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs
+* **Cloud, {{es}} and {{kib}} API**: Grants access to [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}), [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) APIs. 
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
 
@@ -95,6 +95,6 @@ When **Cloud, {{es}} and {{kib}} API** access is not granted, roles that are des
 * If you select the **Admin** role, the API key won't be able to interact with the project as a superuser.
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, will only have **Viewer** access to the relevant projects through the {{ecloud}} Serverless API.
 
-To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each role, refer to the **Project access** column in the [predefined roles table](#general-assign-user-roles-table).
+To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each role, refer to the **Project access** column in the [predefined roles table](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table).
 
 If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud, {{es}} and {{kib}} API** for API access for the role to take full effect. This is because custom roles are intended to work within the project itself, which can only be accessed through {{es}} and {{kib}} serverless APIs. If you don't grant this access, then the key only has the equivalent of **Viewer** access to the project in the {{ecloud}} serverless API.

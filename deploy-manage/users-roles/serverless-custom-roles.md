@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Serverless project custom roles [custom-roles]
+# {{serverless-short}} project custom roles [custom-roles]
 
 Built-in [organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) are great for getting started with {{serverless-full}}, and for system administrators who do not need more restrictive access.
 
