@@ -103,7 +103,6 @@ To upgrade to a different version, replace {{version.stack}} with the version yo
 
     ```sh subs=true
     curl http://localhost:9200
-    docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
 
     In the response, check that the reported `version number` matches the {{es}} version number you upgraded to.
