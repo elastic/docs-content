@@ -71,7 +71,7 @@ spec:
 ```
 
 :::{note}
-The `autoops-token`, `autoops-otel-url` and `cloud-connected-mode-api-key` are required. You can obtain these from the ECK AutoOps installation wizard in {{ecloud}}.
+The `autoops-token`, `autoops-otel-url` and `cloud-connected-mode-api-key` are required. You can obtain these from the ECK AutoOps installation wizard in {{ecloud}}. `cloud-connected-mode-api-url` is optional.
 :::
 
 ## Selecting {{es}} clusters [k8s-autoops-selecting-clusters]
@@ -127,4 +127,4 @@ To disconnect a set of clusters from AutoOps, delete the `AutoOpsAgentPolicy` re
 kubectl delete autoopsagentpolicy eck-autoops-config-policy
 ```
 
-ECK automatically removes the AutoOps Agents, and removes the previous-created {{es}} API keys.
+ECK automatically removes the AutoOps Agents, and removes the previously created {{es}} API keys.
