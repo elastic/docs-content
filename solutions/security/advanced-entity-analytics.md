@@ -19,5 +19,5 @@ Advanced Entity Analytics provides the following key capabilities:
 
 * [](advanced-entity-analytics/entity-risk-scoring.md)
 * [](advanced-entity-analytics/advanced-behavioral-detections.md)
-* {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`	
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` {applies_to}`stack: preview 9.1-9.2` 	
  [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md)
