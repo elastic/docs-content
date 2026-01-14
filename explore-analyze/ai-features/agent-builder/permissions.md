@@ -13,7 +13,7 @@ navigation_title: "Permissions"
 Use this page to learn how to configure security roles and API keys for {{agent-builder}}. Understanding these privileges helps you control who can use agents, which tools they can access, and what data they can query.
 
 :::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for non-serverless deployments.
+{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
 :::
 
 ## Required privileges

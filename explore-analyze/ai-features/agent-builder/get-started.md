@@ -13,7 +13,7 @@ applies_to:
 Learn how to get started by enabling the {{agent-builder}} features and begin chatting with your data.
 
 :::{important}
-{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for non-serverless deployments.
+{{agent-builder}} requires an **Enterprise [subscription](/deploy-manage/license.md)** for {{ech}} or self-managed deployments.
 :::
 
 ::::::{stepper}
