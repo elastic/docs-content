@@ -81,6 +81,10 @@ There are four common alert statuses:
 
 ## Apply and filter alert tags [tag-alerts]
 
+```{applies_to}
+stack: ga 9.3+
+```
+
 Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `Production` alert tag to label a group of alerts as notifications from your production environment. Search for tags by entering the `kibana.alert.workflow_tags : "Production"` query into the KQL bar. Alternatively, use the Alert table’s drop-down filters to filter for tagged alerts.
 
 ::::{tip}
@@ -130,10 +134,6 @@ The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Ma
 * Alerts in your space must be older than a day. The minimum threshold for the alert cleanup task is one day.  
 
 ### Run the alert cleanup task [run-alert-clean-up-task]
-
-```{applies_to}
-stack: ga 9.3+
-```
 
 Remove old or rarely-accessed alerts in your space by running an alert cleanup task, which deletes alerts according to the criteria that you define. Alerts that are attached to cases are not deleted. 
 
