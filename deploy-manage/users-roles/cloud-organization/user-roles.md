@@ -131,10 +131,10 @@ Members with the **Admin** role assigned are able to see role assignments for de
 ```{applies_to}
 serverless: ga
 ```
-When you grant **Organization owner** access, or **Cloud resource** access for one or more Serverless projects, you can also select the user's level of API access:
+When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can also select the user's level of API access:
 
-* **Cloud API**: Grants access to only the {{ecloud}} console for the relevant Serverless projects.
-* **Cloud, {{es}} and {{kib}} API**: Grants access to the {{ecloud}} console and the relevant Serverless projects ("Project access"). 
+* **Cloud API**: Grants access to only the {{ecloud}} console for the relevant {{serverless-short}} projects.
+* **Cloud, {{es}} and {{kib}} API**: Grants access to the {{ecloud}} console and the relevant {{serverless-short}} projects ("Project access"). 
 
 The **API access** selection impacts the behavior of the selected role. To take full effect, most roles need **Cloud, {{es}} and {{kib}} API** access to be granted. However, you might choose to only grant **Cloud API** access if the user does not need to interact with the project directly.
 
