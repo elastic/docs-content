@@ -145,6 +145,74 @@ serverless: preview
 :::{include} ../_snippets/multi-value-esql-controls.md
 :::
 
+### Make variable control values depend on another variable control [chain-variable-controls]
+```{applies_to}
+serverless: ga
+stack: ga 9.3+
+```
+
+You can set up variable controls in such a way that the selection of one control determines the options available for another control.
+
+This allows you to narrow down control selections dynamically without affecting the entire dashboard, which is especially useful when working with data from multiple indices or when you need hierarchical filtering.
+
+To chain variable controls, you reference one control's variable in another control's {{esql}} query using the `?variable_name` syntax.
+
+**Example**: Create a dashboard that analyzes web traffic by region and IP address. You want to see only the IP addresses that are active in a selected region, and then analyze traffic patterns for a specific IP, all without filtering the entire dashboard by region.
+
+![Chaining controls filtering an {{esql}} visualization in a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltf697c4ba34f1baf8/6967d6ca03b22700081fadb3/dashboard-chaining-variable-controls.gif "=75%")
+
+1. Create the first control that will be referenced in other controls.
+
+   :::{tip}
+   Create controls in the order they'll be referenced. Create parent controls first, then child controls that reference them. This allows the {{esql}} editor to provide proper autocomplete suggestions.
+   :::
+   
+   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
+   
+   * **Type**: Values from a query
+   * **Query**: 
+     ```esql
+     FROM kibana_sample_data_logs | STATS BY geo.dest
+     ```
+   * **Variable name**: `?region`
+   * **Label**: Region
+   
+   This control extracts all unique destination regions from your logs.
+
+2. Create the second control that depends on the first control.
+   
+   Add another variable control:
+   
+   * **Type**: Values from a query
+   * **Query**: 
+     ```esql
+     FROM kibana_sample_data_logs 
+     | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND geo.dest == ?region 
+     | STATS BY ip
+     ```
+   * **Variable name**: `?ip`
+   * **Label**: IP address
+   
+   This control references the `?region` variable and the built-in time range variables (`?_tstart` and `?_tend`). The available IP addresses will update to show only those associated with the selected region.
+
+3. Test the chained controls. Both controls are now visible on your dashboard. Select different values in the **Region** control and observe how the available IP addresses in the **IP address** control change to show only IPs from that region.
+
+4. Create an {{esql}} visualization that uses the `?ip` control to filter data. For example:
+   
+   ```esql
+   FROM kibana_sample_data_logs
+   | WHERE ip == ?ip
+   | STATS count = COUNT(*) BY day = DATE_TRUNC(1 day, @timestamp)
+   | SORT day
+   ```
+   
+   This visualization filters data based on the selected IP address, while the IP address options themselves are filtered by the selected region.
+
+:::{note}
+When you select a value in a parent control, the child control's query automatically reruns. If the currently selected value in the child control is no longer available in the new result set, it is marked as invalid or incompatible.
+:::
+
+
 ### Import a Discover query along with its controls into a dashboard
 ```{applies_to}
 stack: preview 9.2
