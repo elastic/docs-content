@@ -83,7 +83,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 7. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 8. Specify the rule's scope, which determines the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule and its alerts. Depending on your role's access, you can select one of the following:
 
-   - {applies_to}`stack: ga 9.3+` **All**: **All**: (Default) When selected, roles must have the appropriate privileges for one of the following features:
+   - {applies_to}`stack: ga 9.3+` **All**: (Default) When selected, roles must have the appropriate privileges for one of the following features:
       - Infrastructure metrics (**Observability > Infrastructure**)
       - Logs (**Observability > Logs**)
       - APM (**Observability > APM and User Experience**)
