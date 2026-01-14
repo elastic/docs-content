@@ -260,7 +260,7 @@ Save time by setting up a recurring task that automatically generates reports an
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-{applies_to}`stack: ga 9.3` From the **Schedules** tab, use the search bar to quickly find schedules.
+{applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
 ### Manage scheduled reports [manage-scheduled-reports]
 
