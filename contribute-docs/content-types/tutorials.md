@@ -4,15 +4,15 @@ description: "Guidelines for writing effective tutorials in the Elastic document
 
 # Tutorials
 
-This page provides guidelines for writing effective tutorials in the Elastic docs. This page and its associated template can be used by humans and LLMs to draft new tutorials, or to evaluate existing pages.
+To create tutorials or improve existing tutorials, use the standards and best practices in the guidelines and template.  The guidelines apply to content authored by human contributors and automated systems. 
 
-Use this page to:
+Use the tutorial guidelines and template to complete the following:
 
-- Draft a new tutorial by copying and pasting the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/tutorial-template.md)
-- Understand the structure and best practices for tutorials before you write one
-- Evaluate existing tutorials or drafts against the standards outlined here
+- Create a tutorial by copying and pasting the [template](https://github.com/elastic/docs-content/blob/main/contribute-docs/content-types/_snippets/templates/tutorial-template.md)
+- Understand the required structure, scope, and best practices for tutorials
+- Evaluate existing tutorials or drafts against the standards
 
-Whether you're a regular contributor or reviewing someone else's work, these guidelines help ensure consistency, completeness, and quality across the Elastic documentation.
+Following the tutorial guidelines and template helps ensure consistency, completeness, and usability across all Elastic Docs.
 
 ## What is a tutorial
 
@@ -22,20 +22,20 @@ Ideally, users can complete a tutorial without needing to jump to other guides. 
 
 Tutorials include three essential components:
 
-- Clear **learning objectives** that describe what users will be able to do by the end
-- **Prerequisites and setup** needed before starting
-- A sequence of **instructional steps** that build on each other to accomplish a larger goal
+- Clear **learning objectives** that describe what users will be able to accomplish when they have finished the tutorial
+- **Prerequisites and setup** needed before starting the tutorial
+- A sequence of **instructional steps** that build on each other to accomplish the larger goal
 
 ::::{include} /contribute-docs/content-types/_snippets/how-to-tutorial-disambiguation-note.md
 ::::
 
 ## Structure of a tutorial
 
-To help users successfully complete the learning experience, tutorials use a consistent structure. A predictable format helps users understand what they'll learn, what's required, and what they'll achieve.
+To help users successfully complete tutorials, all Elastic Docs tutorials follow a consistent structure. A predictable format sets expectations by clearly stating what users will learn, what's required, and what they'll achieve.
 
 ### Required elements
 
-Every tutorial must include the following elements:
+Review the required elements that every tutorial must include.
 
 1. A consistent **filename:** Use descriptive patterns like `*-tutorial.md`.
    - For example: `ingest-pipeline-tutorial.md`
@@ -58,7 +58,6 @@ Every tutorial must include the following elements:
    - Required prior knowledge or skills
    - Software, hardware, or access requirements
    - Data sets or environments to set up
-   - Estimated time to complete (optional but helpful)
 
 6. **Instructional steps:** Organize the tutorial into logical sections, each with a descriptive heading. Use numbered steps that begin with imperative verbs.
    :::{tip}
@@ -71,7 +70,7 @@ Every tutorial must include the following elements:
 
 9. **Next steps:** Suggest follow-up tutorials, related features to explore, or ways to expand on what they built.
 
-10. **Related pages:** Links to related documentation such as conceptual topics, reference material, how-to guides, or troubleshooting resources.
+10. **Related pages:** Links to related documentation pages, blogs, or other resources.
 
 ### Optional elements
 
