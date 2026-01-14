@@ -54,9 +54,11 @@ Downsampling is applied to the individual backing indices of the TSDS. The downs
 3. For each [time series metric](time-series-data-stream-tsds.md#time-series-metric) field, computes aggregations for all documents in the bucket.
 
     * `gauge` field type:
-        * `min`, `max`, `sum`, and `value_count` are stored as type `aggregate_metric_double`
+        * `min`, `max`, `sum`, and `value_count` are stored as type `aggregate_metric_double`.
     * `counter` field type:
-        * `last_value` is stored.
+        * the last value is stored and the type is preserved.
+    * `histogram` field type: {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
+        * individual histograms are merged into a single histogram that is stored, preserving the type. The `histogram` field type uses the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm.
 
 4. For all other fields, copies the most recent value to the target index.
 5. Replaces the original index with the downsampled index, then deletes the original index.
