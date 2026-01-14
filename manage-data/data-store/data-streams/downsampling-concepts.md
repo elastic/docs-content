@@ -27,7 +27,7 @@ In a time series data stream, a single document is created for each timestamp. T
 :alt: time series metric anatomy
 :::
 
-For the most current data, the metrics series typically has a low sampling time interval, to optimize for queries that require a high data resolution.
+For the most current data, the metrics series typically has a low sampling time interval to optimize for queries that require a high data resolution.
 
 :::{image} /manage-data/images/elasticsearch-reference-time-series-original.png
 :alt: time series original
@@ -51,15 +51,7 @@ Downsampling is applied to the individual backing indices of the TSDS. The downs
     For example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index. All documents within a given hour interval are summarized and stored as a single document in the downsampled index.
 
 2. For each new document, copies all [time series dimensions](time-series-data-stream-tsds.md#time-series-dimension) from the source index to the target index. Dimensions in a TSDS are constant, so this step happens only once per bucket.
-3. For each [time series metric](time-series-data-stream-tsds.md#time-series-metric) field, computes aggregations for all documents in the bucket.
-
-    * `gauge` field type:
-        * `min`, `max`, `sum`, and `value_count` are stored as type `aggregate_metric_double`.
-    * `counter` field type:
-        * the last value is stored and the type is preserved.
-    * `histogram` field type: {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
-        * individual histograms are merged into a single histogram that is stored, preserving the type. The `histogram` field type uses the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm.
-
+3. For each [time series metric](time-series-data-stream-tsds.md#time-series-metric) field, it computes the downsampled values based on the [downsampling method](#downsampling-methods).
 4. For all other fields, copies the most recent value to the target index.
 5. Replaces the original index with the downsampled index, then deletes the original index.
 
@@ -70,6 +62,26 @@ You can downsample a downsampled index. The subsequent downsampling interval mus
 :::
 
 % TODO ^^ consider mini table in step 3; refactor generally
+
+### Downsampling methods [downsampling-methods]
+
+The downsampling method is the technique used to reduce multiple values within the same bucket into a single representative value. Two distinct methods exist:
+
+* `last_value`: {applies_to}`stack: preview 9.3` {applies_to}`serverless: ga`
+  This method increases the sampling interval by storing only the most recent value for each metric in the same bucket. While this reduces data accuracy, it offers the benefit of conserving storage space. It applies to all metric types.
+  
+* `aggregate`: 
+  This method preserves data accuracy by computing and storing statistical aggregations for all documents within the bucket, though it requires more storage space. It applies to each metric type in the following way:
+    * `gauge` field type:
+        * `min`, `max`, `sum`, and `value_count` are stored as type `aggregate_metric_double`.
+    * `counter` field type:
+        * the last value is stored and the type is preserved.
+    * `histogram` field type: {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
+        * individual histograms are merged into a single histogram that is stored, preserving the type. The `histogram` field type uses the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm.
+
+:::{tip}
+When downsampling a downsampled index, you need to use the same downsampling method as the source index.
+:::
 
 ### Source and target index field mappings [downsample-api-mappings]
 
