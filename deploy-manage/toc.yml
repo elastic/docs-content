@@ -238,6 +238,9 @@ toc:
                   - file: deploy/cloud-on-k8s/use-an-elasticsearch-cluster-managed-by-eck.md
                   - file: deploy/cloud-on-k8s/advanced-configuration.md
                   - file: deploy/cloud-on-k8s/connect-to-apm-server.md
+              - file: deploy/cloud-on-k8s/autoops.md
+                children:
+                  - file: deploy/cloud-on-k8s/configuration-autoops.md
               - file: deploy/cloud-on-k8s/standalone-elastic-agent.md
                 children:
                   - file: deploy/cloud-on-k8s/quickstart-standalone.md
