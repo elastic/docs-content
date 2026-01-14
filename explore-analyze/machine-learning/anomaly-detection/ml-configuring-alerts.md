@@ -87,7 +87,7 @@ You can preview how the rule would perform on existing data:
 9. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
 10. Select a scope value, which determines the [{{kib}} feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule. Depending on your role's access, you can select one of the following:
 
-   - {applies_to}`stack: ga 9.3+` **All**: When selected, roles must have the appropriate feature privileges to infrastructure metrics (**Observability > Infrastructure**), logs (**Observability > Logs**), or Stack rules (**Management > {{stack-rules-feature}}**) to view or edit the rule. By default, `All` is selected as the rule's scope. 
+   - {applies_to}`stack: ga 9.3+` **All**: When selected, roles must have the appropriate feature privileges to access infrastructure metrics (**Observability > Infrastructure**), logs (**Observability > Logs**), or Stack rules (**Management > {{stack-rules-feature}}**) to view or edit the rule. By default, `All` is selected as the rule's scope. 
    - **Metrics**: When selected, roles must have the appropriate **Observability > Logs** feature privileges to view or edit the rule.
    - **Logs**: When selected, roles must have the appropriate **Observability > Infrastructure** feature privileges to view or edit the rule.
    - **Stack Management**: When selected, roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges to view or edit the rule.
