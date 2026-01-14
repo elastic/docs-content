@@ -92,7 +92,7 @@ spec:
       autoops: enabled
 ```
 
-The `resourceSelector` uses standard {{k8s}} [label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) to match {{es}} clusters. All {{es}} clusters within the cluster that match the selector will be connected to AutoOps.
+The `resourceSelector` uses standard {{k8s}} [label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) to match {{es}} clusters. All {{es}} clusters within the cluster that match the selector are connected to AutoOps.
 
 ## Viewing AutoOps status
 

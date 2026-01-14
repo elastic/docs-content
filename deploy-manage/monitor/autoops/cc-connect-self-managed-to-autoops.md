@@ -121,7 +121,7 @@ To learn more about how AutoOps securely gathers data from your cluster, refer t
 If you selected **ECK** as your installation method, you can skip this section. ECK automatically handles API key creation, agent configuration, and all necessary setup. Proceed directly to [Install agent](#install-agent).
 :::
 
-Depending on your selected installation method, you may have to provide the following information to create the installation command:
+Depending on your selected installation method, you might have to provide the following information to create the installation command:
 
 * **{{es}} endpoint URL**: Enter the URL for the {{es}} cluster you want to monitor by connecting to AutoOps.
 * **Preferred authentication method**: Choose one of the following:
@@ -354,7 +354,7 @@ You can connect additional ECK-managed {{es}} clusters in one of two ways:
    kubectl label elasticsearch quickstart autoops=enabled
    ```
 
-   All {{es}} clusters in the {{k8s}} cluster that match the label selector will be automatically connected to AutoOps.
+   All {{es}} clusters in the {{k8s}} cluster that match the label selector are automatically connected to AutoOps.
 
 2. **Create additional AutoOpsAgentPolicy resources**: Create a new `AutoOpsAgentPolicy` for each set of additional clusters, either by repeating the installation wizard or by creating the resource manually.
 
