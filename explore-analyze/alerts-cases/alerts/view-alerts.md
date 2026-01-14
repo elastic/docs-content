@@ -85,7 +85,7 @@ There are four common alert statuses:
 stack: ga 9.3+
 ```
 
-Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `Production` alert tag to label a group of alerts as notifications from your production environment. Search for tags by entering the `kibana.alert.workflow_tags : "Production"` query into the KQL bar.
+Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `Production` alert tag to label a group of alerts as notifications from your production environment. Then, to find alerts with the `Production` tag, enter the `kibana.alert.workflow_tags : "Production"` query into the Alert's table KQL bar.
 
 ::::{tip}
 To display alert tags in the Alerts table, click **Fields**, then add the `kibana.alert.workflow_tags` field. 
