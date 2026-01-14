@@ -79,6 +79,29 @@ There are four common alert statuses:
 `untracked`
 :   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
+## Apply and filter alert tags [tag-alerts]
+
+Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `Production` alert tag to label a group of alerts as notifications from your production environment. Search for tags by entering the `kibana.alert.workflow_tags : "Production"` query into the KQL bar. Alternatively, use the Alert table’s drop-down filters to filter for tagged alerts.
+
+::::{tip}
+To display alert tags in the Alerts table, click **Fields**, then add the `kibana.alert.workflow_tags` field. 
+::::
+
+To apply or remove alert tags on individual alerts:
+
+1. Go to the Alerts table, click the **More actions** menu ({icon}`boxes_vertical`) in an alert’s row, then click **Edit tags**. 
+2. In the flyout, do one of the following:
+   
+    * **Apply a new tag**: Enter a new tag into the search bar, then select the **Add _tag name_ as a tag** or click enter on your keyboard to apply your changes.
+    * **Remove existing tags**: Click the tag that you want to remove. To remove all tags from the alert, click **Select none**.
+        ::::{important}
+        Removing tags from an alert permanently deletes them. 
+        ::::
+
+3. Click **Save selection** to apply your changes to the alert. 
+
+To apply or remove alert tags on multiple alerts, select the alerts you want to change, then click **Selected *x* alerts** at the upper-left above the table. Click **Edit alert tags**, select or unselect tags, then click **Save selection**.
+
 ## Mute alerts [mute-alerts]
 
 If an alert is active or flapping, you can mute it to temporarily suppress future actions. In **{{stack-manage-app}} > Alerts**, open the action menu (…) for the appropriate alert, then select **Mute**. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted.
