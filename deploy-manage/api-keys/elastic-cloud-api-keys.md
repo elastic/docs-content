@@ -74,7 +74,7 @@ Once an API key expires, it is automatically removed from the **API keys** tab.
 
 Roles grant an API key specific privileges to your {{ecloud}} organization and resources.
 
-You can grant a cloud API key [the same types of roles that you assign to users](deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster roles.
+You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster roles.
 
 ### Granting {{es}} and {{kib}} API access
 ```{applies_to}
@@ -92,16 +92,13 @@ When granting cloud resource access, you can apply a [predefined role](/deploy-m
 
 #### Considerations
 
-Your **API access** selection impacts the behavior of your selected role. To take full effect, most roles need **Cloud, {{es}} and {{kib}} API**  access to be granted.
+Your **API access** selection impacts the behavior of your selected role. To take full effect, most roles need **Cloud, {{es}} and {{kib}} API**  access to be granted. However, you might choose to only grant **Cloud API** access if your use case does not require {{es}} or {{kib}} APIs.
 
 When **Cloud, {{es}} and {{kib}} API** access is not granted, roles that are designed to interact with the project directly have limited access. For example: 
 
-* If you select the **Admin** role:
+* If you select the **Admin** role, the API key won't be able to interact with the project as a superuser.
+* Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, will only have **Viewer** access to the relevant projects through the {{ecloud}} Serverless API.
 
-  *Has full access to project management, properties, and security privileges. Admins log into projects with superuser role privileges.*
+To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each role, refer to the **Project access** column in the [predefined roles table](#general-assign-user-roles-table).
 
-  The API key won't be able to interact with the project as a superuser unless you select **Cloud, {{es}} and {{kib}} API** access.
-
-* Several predefined roles that are intended for project users, such as Security project analyst roles, will only have **Viewer** access to the project through the {{ecloud}} Serverless API.
-
-If you apply a custom role, then you must always select **Cloud, {{es}} and {{kib}} API** for API access for the role to take full effect. This is because custom roles are intended to work within the project itself, which is represented programmatically by the {{es}} and {{kib}} APIs. If you don't grant full access, the key only has the equivalent of **Viewer** access to the project in the {{ecloud}} serverless API.
+If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud, {{es}} and {{kib}} API** for API access for the role to take full effect. This is because custom roles are intended to work within the project itself, which can only be accessed through {{es}} and {{kib}} serverless APIs. If you don't grant full access, the key only has the equivalent of **Viewer** access to the project in the {{ecloud}} serverless API.
