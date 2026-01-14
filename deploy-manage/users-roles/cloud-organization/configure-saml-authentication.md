@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
-    ess: ga
-  serverless: ga
+    ess: all
+  serverless: all
 products:
   - id: cloud-hosted
 ---
