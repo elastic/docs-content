@@ -15,8 +15,8 @@ products:
 {{ecloud}} API keys allow you to programmatically access the following resources:
 
 * [{{ecloud}}]({{cloud-apis}}) APIs
-* [{{ecloud}} serverless]({{cloud-serverless-apis}}) APIs
-* {applies_to}`serverless: ga` Optionally, [{{es}} serverless]({{es-serverless-apis}}) and [{{kib}} serverless]({{kib-serverless-apis}})  APIs
+* [{{ecloud}} {{serverless-full}}]({{cloud-serverless-apis}}) APIs
+* {applies_to}`serverless: ga` Optionally, [{{es}} {{serverless-full}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}})  APIs
 
 Only **Organization owners** can create and manage API keys. An API key is not tied to the user who created it. When creating a key, you assign it specific roles to control its access to organizational resources, including hosted deployments and serverless projects. If a user leaves the organization, the API keys they have created will still function until they expire.
 
@@ -79,8 +79,8 @@ serverless: ga
 
 When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can select your level of API access:
 
-* **Cloud API**: Grants access to only [{{ecloud}} serverless]({{cloud-serverless-apis}}) APIs
-* **Cloud, {{es}} and {{kib}} API**: Grants access to [{{ecloud}} serverless]({{cloud-serverless-apis}}), [{{es}} serverless]({{es-serverless-apis}}), and [{{kib}} serverless]({{kib-serverless-apis}}) APIs. 
+* **Cloud API**: Grants access to only [{{ecloud}} {{serverless-full}}]({{cloud-serverless-apis}}) APIs
+* **Cloud, {{es}} and {{kib}} API**: Grants access to [{{ecloud}} {{serverless-full}}]({{cloud-serverless-apis}}), [{{es}} {{serverless-full}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-full}}]({{kib-serverless-apis}}) APIs. 
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
 
