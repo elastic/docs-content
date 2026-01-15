@@ -179,7 +179,28 @@ This is usually a temporary solution and may cause instability if disk space is 
 
 ### Re-enable shard allocation [fix-cluster-status-reenable-allocation]
 
-You typically disable allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance. If you forgot to re-enable allocation afterward, {{es}} will be unable to assign shards. To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting.
+You typically disable allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance to prevent the recovery cascade from the elected master node while node is temporarily out of cluster. If you forgot to re-enable allocation afterward, {{es}} will be unable to assign shards. If the allocations have been disabled, it can be verified using [Read Cluster Settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings)
+
+```console
+GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.enable
+```
+will report an `override` from default either on `persistent` or `transient` levels like
+
+```
+{
+  "persistent": {
+    "cluster": {"routing": {"allocation": {"enable": "none" } } }
+  }
+  "defaults": {
+    "cluster": {"routing": {"allocation": {"enable": "all" } } } }
+}
+```
+
+::::{note}
+When cluster.routing.allocation.enable setting is set to none, this does not block ingestion but will prevent new indices from creating(including the indices getting created using ILM Rollover) as it prevents all primaries and their replicas from allocating to nodes within the cluster.
+::::
+
+To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting.
 
 ```console
 PUT _cluster/settings
@@ -188,6 +209,12 @@ PUT _cluster/settings
     "cluster.routing.allocation.enable" : null
   }
 }
+```
+
+After re-enabling, the cluster allocation should begin assigning/recovering/rebalancing shards automatically. This can be validated with the [Cluster Allocation Health Status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)
+
+```console
+GET _cluster/health
 ```
 
 See [this video](https://www.youtube.com/watch?v=MiKKUdZvwnI) for walkthrough of troubleshooting "no allocations are allowed".
