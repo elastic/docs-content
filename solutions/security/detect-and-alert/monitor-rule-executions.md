@@ -85,12 +85,21 @@ Within the Rules table, several columns provide additional gap data:
 
 To manually fill gaps for multiple rules, use the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) from the Rule's table. For a more detailed view of a rule's gaps, click the rule name to open its details, then go to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table) on the rule's **Execution results** tab. 
 
-{applies_to}`stack: ga 9.3+` Alternatively, automate gap resolution by turning on the auto gap fill settings. To do this, click **Settings** (above the Rules table), then turn on the **Enable auto gap fill** toggle. When the setting is turned on, the **Auto gap fill status:** field in the panel above the Rules table shows `On`.
+{applies_to}`stack: ga 9.3+` You can also automate gap remediation by turning on the **Auto gap fill settings** (click **Settings** above the Rules table, then toggle on the **Auto gap fill settings**). When turned on, gap fill tasks are run every five minutes for enabled rules in your space. Above the Rules table, the **Auto gap fill status:** field value is also `On`.
+
+You can monitor the progress of tasks from the Gap fill scheduler logs flyout. To open the flyout, go to the description under the **Auto gap fill settings**, and click **logs**. You can then do the following:
+
+- Examine the details of gap fill tasks, including...
+- Check the state of gap fill tasks. 
+- Filter the logs by status:
+   - Success:
+   - Error:
+   - Task skipped:
+   - No gaps:
 
 ::::{tip}
-Click the **Auto gap fill status:** field value to quickly access the auto gap fill settings.
+To quickly access the **Auto gap fill settings** or Gap fill scheduler logs flyout, go to the panel above the Rules table, then click the **Auto gap fill status:** field value.
 ::::
-
 
 ## Execution results tab [rule-execution-logs]
 
