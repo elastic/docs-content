@@ -7,10 +7,11 @@ applies_to:
 
 # Automatic migration
 
-Automatic Migration helps you quickly migrate Splunk assets to {{elastic-sec}}. The following asset types are supported:
+Automatic Migration helps you quickly migrate Splunk and QRadar assets to {{elastic-sec}}. The following asset types are supported:
 
 * {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Classic Splunk dashboards (v1.1)
 * {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
+* {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview` QRadar rules
 
 For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
@@ -43,9 +44,9 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ::::
 
-::::{admonition} Dashboard migration limitations
-* Only classic Splunk dashboards (v1.1) are supported. Attempting to translate unsupported dashboards will result in an `Unsupported Splunk XML` error and a `Not translated` status.
-* Elastic only supports `vizualization`, `chart`, `table`, `single value (Metric)` Splunk dashboard panels, and does not support `map`, `event`, `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels will not appear in the migrated dashboard.
+::::{admonition} Splunk dashboard migration limitations
+* Only supports classic Splunk dashboards (v1.1). Attempting to translate unsupported dashboards results in an `Unsupported Splunk XML` error and a `Not translated` status.
+* Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels do not appear in migrated dashboards.
 ::::
 
 ## Get started with Automatic Migration
@@ -53,7 +54,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 1. Find **Get started** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under **Configure AI provider**, select a configured model or [add a new one](/explore-analyze/ai-features/llm-guides/llm-connectors.md). For information on how different models perform, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 3. Next, under **Migrate rules & dashboards**, select either **Translate your existing SIEM rules to Elastic** or **Migrate your existing SIEM dashboards to Elastic**, then click **Upload**. The upload flyout appears. 
-4. Follow the instructions on the upload flyout to export your Splunk assets as JSON.
+4. Select the migration source and follow the instructions on the flyout to export your assets.
 
    :::{image} /solutions/images/security-siem-migration-1.png
    :alt: the Upload Splunk SIEM rules flyout
@@ -63,7 +64,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 
    ::::{note}
-   The provided queries download a default selection of Splunk assets. Alternatively, as long as you export your results as JSON, you can use a different query. For example, the following custom query would download rules related to just the `splunksysmonsecurity` app:
+   The provided queries download a default selection of assets. We do not recommend changing the query for QRadar exports. For Splunk, as long as you export your results as JSON, you can use a different query. For example, the following custom query would download rules related to just the `splunksysmonsecurity` app:
 
    ```
    | rest /servicesNS/-/-/saved/searches
@@ -72,14 +73,15 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    | table id, title, search, description, action.escu.eli5,
    ```
 
-   For rule migration, we recommend against downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since much of the data would be irrelevant to asset migration.
+   For rule migration, we recommend against downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) because much of the data would be irrelevant to asset migration.
    ::::
 
-5. Select your JSON file and click **Upload**. If the file is large, you may need to separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
+5. Select your JSON file and click **Upload**. If the file is large, you can separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
 
-6. After you upload your Splunk assets, Automatic Migration will detect whether they use any macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to wait on this page for them to be processed — a notification will appear when processing is complete.
+6. After you upload your Splunk assets, Automatic Migration detects whether they use any macros, lookups, reference sets, or MITRE mappings. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later—however, some of your migrated assets will have a `partially translated` status. If you upload them now, you don't have to stay on this page until processing is complete—a notification appears when processing is complete.
 
-7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option, which is enabled by default; when it's enabled, any migrated rules that are similar to an Elastic prebuilt rule are converted to those prebuilt rules (this uses fewer tokens). When it's disabled, each of your rules will be converted into a new custom rule. 
+7. Click **Translate** to start the rule translation process. The **Start rules migration** popup appears. Use the dropdown menu to select which AI connector to use. For rule migrations there is a **Match to Elastic prebuilt rules** option (on by default); when it's on, any migrated rules that are similar to an Elastic prebuilt rule are converted to those prebuilt rules (this uses fewer tokens). When it's off, each rules is converted into a new custom rule. 
+
 8. Click **Translate**. A name for the migration is automatically created, and you can track its progress on this page. The **More actions** ({icon}`boxes_vertical`) button lets you rename or delete the migration. 
 
    ::::{image} /solutions/images/security-siem-migration-rule-status-more-actions.png
@@ -88,7 +90,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    :screenshot:
    ::::
 
-   You don't need to stay on this page. A notification will appear when the migration is complete.
+   You don't need to stay on this page. A notification appears when the migration is complete.
 
 
 9. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
