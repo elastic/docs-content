@@ -19,4 +19,4 @@ To convert a field to a different data type:
 If you add a **Convert** processor inside a condition group (a **WHERE** block), you must set a **Target field**.
 ::::
 
-This functionality uses the {{es}} convert pipeline processor. Refer to the [convert processor](elasticsearch://reference/enrich-processor/convert-processor.md) {{es}} documentation for more information.
+This functionality uses the {{es}} [convert processor](elasticsearch://reference/enrich-processor/convert-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).

@@ -16,7 +16,7 @@ To parse a log message with a dissect processor:
 1. Set the **Source Field** to the field you want to dissect.
 1. Set the delimiters you want to use in the **Pattern** field. Refer to the [example pattern](#streams-dissect-example) for more information on setting delimiters.
 
-This functionality uses the {{es}} dissect pipeline processor. Refer to the [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) {{es}} documentation for more information.
+This functionality uses the {{es}} [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
 
 ## Example dissect pattern [streams-dissect-example]
 

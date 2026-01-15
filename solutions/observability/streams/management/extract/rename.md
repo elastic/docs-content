@@ -14,4 +14,4 @@ To use a rename processor:
 1. Set **Source Field** to the field you want to rename.
 1. Set **Target field** to the new name you want to use for the **Source Field**.
 
-This functionality uses the {{es}} rename pipeline processor. Refer to the [rename processor](elasticsearch://reference/enrich-processor/rename-processor.md) {{es}} documentation for more information.
+This functionality uses the {{es}} [rename processor](elasticsearch://reference/enrich-processor/rename-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).

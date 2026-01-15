@@ -20,7 +20,7 @@ To parse a log message with a grok processor:
 1. Set the **Source Field** to the field you want to search for grok matches.
 1. Set the patterns you want to use in the **Grok patterns** field. Refer to the [example pattern](#streams-grok-example) for more information on patterns.
 
-This functionality uses the {{es}} Grok pipeline processor. Refer to the [Grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) {{es}} documentation for more information.
+This functionality uses the {{es}} [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) under the hood, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
 
 ## Example grok pattern [streams-grok-example]
 

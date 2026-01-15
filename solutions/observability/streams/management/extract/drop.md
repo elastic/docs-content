@@ -12,6 +12,10 @@ To configure a condition for dropping documents:
 
 1. Select **Create** → **Create processor**.
 1. Select **Drop document** from the **Processor** menu.
-1. Set the **Condition** for when you want to drop a document.
+1. Set the **Condition** for when you want to drop a document. The
 
-This functionality uses the {{es}} drop pipeline processor. Refer to the [drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) {{es}} documentation for more information.
+  :::{warning}
+  The default is the `always` condition. Not setting a specific condition results in every document getting dropped from indexing.
+  :::
+
+This functionality uses the {{es}} [drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).

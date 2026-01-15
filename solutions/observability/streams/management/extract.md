@@ -14,7 +14,7 @@ The **Processing** tab also:
 - Simulates your processors and provides an immediate [preview](#streams-preview-changes) that's tested end to end
 - Flags indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes
 
-After creating your processor, all future data ingested into the stream is parsed into structured fields accordingly.
+After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
 
 :::{note}
 Applied changes aren't retroactive and only affect *future ingested data*.
@@ -35,6 +35,16 @@ Streams supports the following processors:
 - [**Math**](./extract/math.md): Evaluates arithmetic or logical expressions.
 - [**Rename**](./extract/rename.md): Changes the name of a field, moving its value to a new field name and removing the original.
 - [**Append**](./extract/append.md): Adds a value to an existing array field, or creates the field as an array if it doesn’t exist.
+
+### Processor limitations and inconsistencies [streams-processor-inconsistencies]
+
+While Streams relies on Elasticsearch ingest pipeline processors under the hood, what you configure is Streamlang. Streamlang doesn't always have complete parity with ingest pipeline processors, because it needs to support options that work in both ingest pipelines and ES|QL. The following are some limitations and inconsistencies when using Streamlang processors:
+
+- **Consistently typed fields**: ES|QL requires one consistent type per column, so workflows that produce mixed types across documents won’t transpile.
+- **Conversion of types**: ES|QL and ingest pipelines accept different conversion combinations and strictness (especially for strings), so `convert` can behave differently across targets.
+- **Multi-value commands/functions**: Fields can be single- or multi-valued, and ES|QL vs ingest processors don’t always handle arrays the same way.
+- **Conditional execution**: ES|QL's fixed, typed table shape limits conditional casting/parsing/wildcard field operations that ingest pipelines can do per-document.
+- **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON/arrays, while ES|QL flattens to columns, so operations like rename and delete on parent objects can differ or fail.
 
 ## Add a processor [streams-add-processors]
 
