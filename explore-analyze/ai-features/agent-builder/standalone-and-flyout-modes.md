@@ -24,7 +24,7 @@ The standalone and flyout modes have the same functionalities and can be used in
 
 {applies_to}`stack: preview =9.2, ga 9.3` {applies_to}`observability: ga 9.3+` {applies_to}`security: ga 9.3+`
 
-Access Agent Builder by selecting **Agents** in the main navigation. In {{product.observability}} and {{product.security}}, the standalone experience is available when you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md).
+Access Agent Builder by selecting **Agents** in the main navigation. In {{product.observability}} and {{product.security}}, the standalone experience is available when you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 
 :::{image} images/agents-nav.png
 :alt: Agents logo in main navigation
@@ -43,7 +43,7 @@ The following GIF shows how to access the standalone chat experience in an {{pro
 
 {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview 9.3`
 
-Once you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md), you can access the flyout in two ways:
+Once you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences), you can access the flyout in two ways:
 
 1. Select the **AI Agent** button from the header bar in any page:
 
@@ -66,7 +66,7 @@ You can resize the flyout by dragging its side edge. The flyout persists when yo
 
 The default chat experience varies by solution:
 
-- **{{product.observability}} and {{product.security}}:** Each solution's classic AI Assistant is the default chat experience. You must [switch between chat experiences](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md) to enable Agent Builder.
+- **{{product.observability}} and {{product.security}}:** Each solution's classic AI Assistant is the default chat experience. You must [switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable Agent Builder.
   - Once enabled:
     - The flyout experience replaces the AI Assistant chat experience
     - The standalone experience is available through the **Agents** button in the main navigation.
