@@ -131,7 +131,7 @@ You can restore system indices by including their corresponding [feature states]
 
 This method is especially useful when:
 
-* You want to fully replicate the old cluster or when remote reindexing is not possible, for example if the old cluster is in a degraded or unreachable state.
+* You want to fully replicate the old cluster or when remote reindexing is not feasible, for example if the old cluster is in a degraded or unreachable state.
 * Your old cluster contains mostly static data, allowing you to snapshot the old cluster, restore in the new cluster, and continue operations.
 
 When your source cluster is actively ingesting data, such as logs, metrics, or traces, and you need a seamless migration with minimal downtime, consider using the [minimal downtime migration](migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md) guide.
