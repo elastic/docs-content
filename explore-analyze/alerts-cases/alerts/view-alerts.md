@@ -93,7 +93,7 @@ To display alert tags in the Alerts table, click **Fields**, then add the `kiban
 
 To apply or remove alert tags on individual alerts:
 
-1. Go to the Alerts table, click the **More actions** menu ({icon}`boxes_vertical`) in an alert’s row, then click **Edit tags**. 
+1. Go to the Alerts table, click the **More actions** menu {icon}`boxes_vertical` in an alert’s row, then select **Edit tags**. 
 2. In the flyout, do one of the following:
    
     * **Apply a new tag**: Enter a new tag into the search bar, then select the **Add _tag name_ as a tag** or click enter on your keyboard to apply your changes.
