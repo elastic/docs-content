@@ -172,7 +172,7 @@ To chain variable controls, you reference one control's variable in another cont
    * **Type**: Values from a query
    * **Query**: 
      ```esql
-     FROM kibana_sample_data_logs | STATS BY geo.dest
+     FROM kibana_sample_data_logs | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart | STATS BY geo.dest
      ```
    * **Variable name**: `?region`
    * **Label**: Region
