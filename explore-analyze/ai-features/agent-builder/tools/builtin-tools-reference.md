@@ -87,7 +87,8 @@ The following tools manage file attachments in conversations:
 `platform.core.attachment_diff`
 :   Shows the differences between versions of a file attachment.
 
-<!-- ## Dashboard tools
+<!-- 
+## Dashboard tools
 ```{applies_to}
 stack: ga 9.3+
 ```
@@ -98,7 +99,8 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 :   Creates a dashboard with specified title, description, panels, and markdown summary.
 
 `dashboard.update_dashboard`
-:   Updates an existing dashboard with new panels or modifications. -->
+:   Updates an existing dashboard with new panels or modifications. 
+-->
 
 ## Observability tools
 ```{applies_to}
