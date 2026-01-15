@@ -133,8 +133,10 @@ serverless: ga
 ```
 When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can also select the surfaces the user can access:
 
-* **Cloud Console, {{es}}, and {{kib}}**: Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects.
+* **Cloud Console, {{es}}, and {{kib}}** (default): Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects.
 * **Cloud Console**: Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects.
+
+### Considerations
 
 The **Access** selection impacts the behavior of the selected role. To take full effect, most roles need **Cloud Console, {{es}}, and {{kib}}** access to be granted. However, you might choose to only grant **Cloud Console** access if the user does not need to interact with the project directly.
 

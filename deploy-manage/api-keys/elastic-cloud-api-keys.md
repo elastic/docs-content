@@ -115,7 +115,7 @@ serverless: ga
 
 When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can select your level of API access:
 
-* **Cloud API**: Grants access to only [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs
+* **Cloud API** (default): Grants access to only [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs.
 * **Cloud, {{es}} and {{kib}} API**: Grants access to the relevant projects and configuration options through the [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}), and [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects. 
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
