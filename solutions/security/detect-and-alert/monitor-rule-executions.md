@@ -39,9 +39,11 @@ To sort the rules list, click any column header. To sort in descending order, cl
 
 For detailed information on a rule, the alerts it generated, and associated errors, click on its name in the table. This also allows you to perform the same actions that are available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
 
-### Find rule execution gaps [rule-monitoring-tab-gaps]
+### Find and resolve rule execution gaps [rule-monitoring-tab-gaps]
 
 The **Rule Monitoring** tab provides a starting point for understanding and remediating gaps in rule executions, which are periods of time where a rule didn’t run. Gaps can be caused by various disruptions, including system updates or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
+
+#### Find gaps [rule-monitoring-tab-find-gaps]
 
 From the **Rule Monitoring** tab, you can get an overview of existing gaps and their status. The total number of rules with gaps is tracked in the panel above the Rules table. The information and functionality in the panel depends on the version of {{elastic-sec}} that you're using.
 
@@ -79,7 +81,16 @@ Within the Rules table, several columns provide additional gap data:
     Use the **Gap fill status** filter in the Rules table to find rules with the specified gap status. 
     ::::
 
-To fill gaps for multiple rules, use the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) from the Rule's table. For a more detailed view of a rule's gaps, click the rule name to open its details, then go to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table) on the rule's **Execution results** tab. 
+#### Fill gaps [rule-monitoring-tab-fill-gaps]
+
+To manually fill gaps for multiple rules, use the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules) from the Rule's table. For a more detailed view of a rule's gaps, click the rule name to open its details, then go to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table) on the rule's **Execution results** tab. 
+
+{applies_to}`stack: ga 9.3+` Alternatively, automate gap resolution by turning on the auto gap fill settings. To do this, click **Settings** (above the Rules table), then turn on the **Enable auto gap fill** toggle. When the setting is turned on, the **Auto gap fill status:** field in the panel above the Rules table shows `On`.
+
+::::{tip}
+Click the **Auto gap fill status:** field value to quickly access the auto gap fill settings.
+::::
+
 
 ## Execution results tab [rule-execution-logs]
 
