@@ -184,7 +184,7 @@ You typically disable shard allocation during a [restart](../../deploy-manage/ma
 Verify whether allocation is disabled using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
 
 ```console
-GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.enable
+GET _cluster/settings?include_defaults=true&filter_path=*.cluster.routing.allocation.enable
 ```
 
 If allocation is not enabled, the response shows an override from the default value at either the `persistent` or `transient` level, for example:
