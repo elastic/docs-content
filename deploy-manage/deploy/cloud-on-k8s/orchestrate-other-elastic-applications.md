@@ -13,7 +13,7 @@ The following guides provide specific instructions for deploying and configuring
 * [Elastic Maps Server](elastic-maps-server.md)
 * [Beats](beats.md)
 * [{{ls}}](logstash.md)
-* ```{applies_to} deployment: eck: ga 3.3``` [{{package-registry}}](package-registry.md)
+* [{{package-registry}}](package-registry.md)
 
 ::::{note}
 Enterprise Search is not available in {{stack}} versions 9.0 and later. To deploy or manage Enterprise Search in earlier versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-enterprise-search.html).

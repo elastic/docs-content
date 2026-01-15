@@ -38,6 +38,7 @@ spec:
 ```
 
 The operator automatically creates the necessary {{k8s}} resources, including:
+
 * A Deployment for the {{package-registry}} pods
 * A Service to expose the {{package-registry}} within your cluster
 * TLS certificates for secure communication
@@ -59,84 +60,9 @@ spec:
   count: 1
 ```
 
-### Customize the service
+## Connect {{kib}} to the Package Registry
 
-You can customize how the {{package-registry}} service is exposed by configuring the service specification:
-
-```yaml
-apiVersion: package-registry.k8s.elastic.co/v1
-kind: PackageRegistry
-metadata:
-  name: package-registry-sample
-  namespace: default
-spec:
-  version: {{version.stack}}
-  count: 1
-  http:
-    service:
-      spec:
-        type: LoadBalancer
-        ports:
-        - port: 8080
-          targetPort: 8080
-    tls:
-      selfSignedCertificate:
-        disabled: false
-```
-
-### Configure resource limits
-
-You can set resource requests and limits for the {{package-registry}} pods:
-
-```yaml
-apiVersion: package-registry.k8s.elastic.co/v1
-kind: PackageRegistry
-metadata:
-  name: package-registry-sample
-  namespace: default
-spec:
-  version: {{version.stack}}
-  count: 1
-  podTemplate:
-    spec:
-      containers:
-      - name: package-registry
-        resources:
-          requests:
-            memory: 512Mi
-            cpu: 200m
-          limits:
-            memory: 1Gi
-            cpu: 500m
-  http:
-    tls:
-      selfSignedCertificate:
-        disabled: false
-```
-
-### Use a custom container image
-
-If you're running in an air-gapped environment or need to use a custom image, you can specify the container image:
-
-```yaml
-apiVersion: package-registry.k8s.elastic.co/v1
-kind: PackageRegistry
-metadata:
-  name: package-registry-sample
-  namespace: default
-spec:
-  version: {{version.stack}}
-  image: my.registry/package-registry/distribution:{{version.stack}}
-  count: 1
-  http:
-    tls:
-      selfSignedCertificate:
-        disabled: false
-```
-
-## Connect Kibana to the Package Registry
-
-After deploying the {{package-registry}}, configure your {{kib}} instance to use it by setting the `xpack.fleet.registryUrl` configuration:
+After deploying the {{package-registry}}, configure your {{kib}} instance to use it by setting the `spec.packageRegistryRef` field configuration:
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -147,91 +73,17 @@ metadata:
 spec:
   version: {{version.stack}}
   count: 1
-  elasticsearchRef:
-    name: elasticsearch-sample
-  config:
-    xpack.fleet.registryUrl: "https://package-registry-sample-http.default.svc:8080"
+  packageRegistryRef:
+    name: package-registry-sample
 ```
 
-The service URL follows the pattern: `<package-registry-name>-http.<namespace>.svc:<port>`
-
-For example, if your {{package-registry}} is named `package-registry-sample` in the `default` namespace and uses port `8080`, the URL would be:
-
-```
-https://package-registry-sample-http.default.svc:8080
-```
-
-:::{note}
-If you're using self-signed certificates (which is the default), you may need to configure {{kib}} to trust the certificate authority. Refer to [Configure TLS settings](/deploy-manage/security/k8s-https-settings.md) for more information.
-:::
-
-## Use the Package Registry in air-gapped environments
-
-The {{package-registry}} is particularly useful in air-gapped environments where {{kib}} cannot access the public Elastic Package Registry at `https://epr.elastic.co`.
-
-1. Deploy the {{package-registry}} using ECK as shown in the examples above.
-
-2. Configure {{kib}} to use your local {{package-registry}} instance:
-
-```yaml
-apiVersion: kibana.k8s.elastic.co/v1
-kind: Kibana
-metadata:
-  name: kibana-sample
-  namespace: default
-spec:
-  version: {{version.stack}}
-  count: 1
-  elasticsearchRef:
-    name: elasticsearch-sample
-  config:
-    xpack.fleet.registryUrl: "https://package-registry-sample-http.default.svc:8080"
-```
-
-3. Ensure the {{package-registry}} container image is available in your private registry. The image is available at `docker.elastic.co/package-registry/distribution:{{version.stack}}`.
-
-For more information about running ECK in air-gapped environments, refer to [Running ECK in air-gapped environments](air-gapped-install.md).
-
-## Monitor the Package Registry
-
-You can check the status of your {{package-registry}} deployment using `kubectl`:
-
-```sh
-kubectl get packageregistry -n default
-```
-
-To view detailed information:
-
-```sh
-kubectl describe packageregistry package-registry-sample -n default
-```
-
-To check the {{package-registry}} pods:
-
-```sh
-kubectl get pods -l package-registry.k8s.elastic.co/name=package-registry-sample
-```
+Check the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/packageregistry) for Package Registry in the ECK source repository for additional configuration examples.
 
 ## Troubleshooting
 
-### Package Registry is not accessible
-
-If {{kib}} cannot connect to the {{package-registry}}, verify:
-
-1. The {{package-registry}} service is running:
-   ```sh
-   kubectl get svc -l package-registry.k8s.elastic.co/name=package-registry-sample
-   ```
-
-2. The service URL in {{kib}} configuration is correct and uses the correct namespace.
-
-3. Network policies allow traffic between {{kib}} and the {{package-registry}} pods.
-
-4. TLS certificates are properly configured if using HTTPS.
-
 ### Packages are not available
 
-The {{package-registry}} distribution images contain a snapshot of packages. Ensure you're using the correct image version that matches your {{stack}} version. For the latest packages, use the `production` or `lite` distribution tags:
+The {{package-registry}} distribution images contain a snapshot of packages. Ensure you're using the correct image version that is equal or greater than your {{stack}} version. For the latest packages, use the `production` or `lite` distribution tags:
 
 * `docker.elastic.co/package-registry/distribution:production` - All packages from the production registry
 * `docker.elastic.co/package-registry/distribution:lite` - Subset of commonly used packages
