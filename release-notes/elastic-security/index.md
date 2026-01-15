@@ -33,7 +33,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a new **Rules, Alerts, and Exceptions** feature privilege that controls access to detection rules, alerts, and rule exceptions [#239634]({{kib-pull}}239634).
 * Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
 * Adds the gap auto-fill scheduler UI and API for detection rules [#244719]({{kib-pull}}244719).
-* Adds a **Gap fill status** column and filter to detection rules [#242595]({{kib-pull}}242595).
+* Adds a **Gap fill status** column and filter to the Rules table on the **Rule Monitoring** tab [#242595]({{kib-pull}}242595).
 * Enables the **Value report** page in {{stack}} [#243511]({{kib-pull}}243511).
 * Makes the Attack Discovery and Attack Discovery Schedules APIs generally available [#246788]({{kib-pull}}246788).
 * Improves Attack Discovery prompts [#241346]({{kib-pull}}241346).
@@ -95,7 +95,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.3.0-fixes]
 * Fixes an issue where the rule settings pop-up remained open after clicking **Save** when enabling or disabling auto gap fill [#247678]({{kib-pull}}247678).
-* Fixes the **Get started** page visibility for users with read-only Rules privileges [#247355]({{kib-pull}}247355).
+* Fixes the **Get started** page visibility for users with read-only privileges for rules [#247355]({{kib-pull}}247355).
 * Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
 * Limits the retrieval of gap summaries to 100 `rule_id`s [#245924]({{kib-pull}}245924).
 * Fixes threshold rule logic when no "group by" fields are defined [#241022]({{kib-pull}}241022).
