@@ -89,11 +89,11 @@ When you create an {{es}} query rule, your choice of query type affects the info
       - APM (**Observability > APM and User Experience**)
       - Synthetics (**Observability > Synthetics and Uptime**)
       - Stack rules (**Management > {{stack-rules-feature}}**) 
-   - **Logs**: When selected, roles must have the appropriate **Observability > Logs** feature privileges.
-   - **Metrics**: When selected, roles must have the appropriate **Observability > Infrastructure** feature privileges.
-   - **Stack Management**: When selected, roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
+   - **Logs**: Roles must have the appropriate **Observability > Logs** feature privileges.
+   - **Metrics**: Roles must have the appropriate **Observability > Infrastructure** feature privileges.
+   - **Stack Management**: Roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
 
-   For example, if you select `All`, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} page.
+   For example, if you select **All**, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} page.
 
 ## Test your query [_test_your_query]
 
