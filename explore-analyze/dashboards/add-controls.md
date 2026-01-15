@@ -164,7 +164,7 @@ To chain variable controls, you reference one control's variable in another cont
 1. Create the first control that will be referenced in other controls.
 
    :::{tip}
-   Create controls in the order they'll be referenced. Create parent controls first, then child controls that reference them. This allows the {{esql}} editor to provide proper autocomplete suggestions.
+   Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
    :::
    
    In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
