@@ -188,9 +188,9 @@ toc:
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/limitations-known-issues.md
-      - hidden: ai-features/ai-chat-experiences.md
+      - file: ai-features/ai-chat-experiences.md
         children:
-          - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
+          - hidden: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/llm-guides/llm-connectors.md
