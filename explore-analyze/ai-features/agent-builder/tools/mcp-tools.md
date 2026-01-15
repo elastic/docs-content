@@ -14,7 +14,7 @@ applies_to:
 
 [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro) (MCP) tools provide an interface by which Agent Builder can leverage a remote [MCP server's](https://modelcontextprotocol.io/docs/learn/server-concepts) tools during chat sessions. A single Agent Builder MCP tool maps directly to a single MCP server tool. Calling an Agent Builder MCP tool will call the associated tool on the MCP server and return its result.
 
-## Prerequisites 
+## Prerequisites
 
 To create and use MCP tools, an [MCP Kibana Stack Connector](kibana://reference/connectors-kibana/mcp-action-type.md) must first be created. This is the interface by which an Agent Builder MCP tool can communicate with a remote MCP server.
 
@@ -47,7 +47,7 @@ Conditions which may cause an MCP tool to be considered "unhealthy":
 * The MCP tool's associated tool on the MCP server no longer exists
 * The MCP tool's execution failed
 
-# Bulk import MCP tools 
+## Bulk import MCP tools
 
 Agent Builder provides an efficient way to import multiple tools from an MCP server using the `Bulk import MCP tools` feature, which can be found in the Agent Builder [Tools](/explore-analyze/ai-features/agent-builder/tools.md) landing page under the "Manage MCP" dropdown.
 
