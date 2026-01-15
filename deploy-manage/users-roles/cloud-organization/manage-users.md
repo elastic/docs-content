@@ -88,7 +88,7 @@ curl -XPOST \
 
 1. One or more email addresses to invite to the organization
 
-When creating an invitation, you can define the user's roles and specify the resources they will have access to in the API request body:
+When creating an invitation, you can define the user's roles and specify the resources you want to grant the user access to in the API request body:
 
 ```sh
 curl -XPOST \
