@@ -90,7 +90,7 @@ The following table shows the default mapping:
 
 You can apply the following predefined roles to {{serverless-full}} projects. Some roles are only available to certain project types.
 
-In the following table, the privileges outlined in **Project access** require [**Cloud, {{es}} and {{kib}} API** access](#api-access) to be granted for the relevant projects.
+In the following table, the privileges outlined in **Project access** require [**Cloud Console, {{es}}, and {{kib}}** access](#access) to be granted for the relevant projects.
 
 :::{tip}
 You can optionally [create custom roles in a project](/deploy-manage/users-roles/cloud-organization/user-roles.md) and apply them to your organization users.
@@ -99,7 +99,7 @@ You can optionally [create custom roles in a project](/deploy-manage/users-roles
 | Name | {{ecloud}} access | Project access | Availability |
 | --- | --- | --- | --- |
 | Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
-| Developer | Viewer | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
+| Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
 | Viewer | Has read-only access to project details, data, and features. | None | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Editor | Configures all {{observability}} or Security projects. | Has read-only access to data indices. Has full access to all project features. | [![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Tier 1 analyst | Viewer | Ideal for initial alert triage. General read access, can create dashboards and visualizations. | [![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
@@ -127,22 +127,26 @@ Members are only able to see the role assignments of other members under the org
 
 Members with the **Admin** role assigned are able to see role assignments for deployments or projects within their scope. For example, admins of all deployments and projects are able to see role assignments scoped to all and specific deployments and projects in the organization, while admins of specific deployments or projects only see role assignments scoped to those specific deployments or projects. This ensures that members assigned to specific deployments or projects do not try to remove role assignments from other members, and that the existence of other deployments or projects are not revealed to these members.
 
-## API access
+## Access options [access]
 ```{applies_to}
 serverless: ga
 ```
-When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can also select the user's level of API access:
+When you grant **Organization owner** access, or **Cloud resource** access for one or more {{serverless-short}} projects, you can also select the surfaces the user can access:
 
-* **Cloud API**: Grants access to only the {{ecloud}} console for the relevant {{serverless-short}} projects.
-* **Cloud, {{es}} and {{kib}} API**: Grants access to the {{ecloud}} console and the relevant {{serverless-short}} projects ("Project access"). 
+* **Cloud Console, {{es}}, and {{kib}}**: Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects.
+* **Cloud Console**: Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects.
 
-The **API access** selection impacts the behavior of the selected role. To take full effect, most roles need **Cloud, {{es}} and {{kib}} API** access to be granted. However, you might choose to only grant **Cloud API** access if the user does not need to interact with the project directly.
+The **Access** selection impacts the behavior of the selected role. To take full effect, most roles need **Cloud Console, {{es}}, and {{kib}}** access to be granted. However, you might choose to only grant **Cloud Console** access if the user does not need to interact with the project directly.
 
-When **Cloud, {{es}} and {{kib}} API** access is not granted, roles that are designed to work inside of the project have limited access, and can't open the project in {{kib}}. For example: 
+When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that are designed to work inside of the project have limited access, and can't open the project in {{kib}}. For example: 
 
-* If you select the **Admin** role, the user won't be able to log into the relevant projects as superuser.
-* Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, will only have **Viewer** access to the relevant projects.
+* If you select the **Admin** role, the user will still be able configure project settings and network security in {{ecloud}}, but can't to log into the relevant projects as superuser.
+* Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, are able to view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
 
-To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each predefined role, refer to the **Project access** column in the [predefined roles table](#general-assign-user-roles-table).
+To learn about which permissions are granted depending on the level of access that you select, refer to the [predefined roles table](#general-assign-user-roles-table).
 
-If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud, {{es}} and {{kib}} API** access for the role to take full effect. If you don't grant this access, then the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} console, and can't log in to the project.
+If you apply a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md), then you must always select **Cloud Console, {{es}}, and {{kib}}** access for the role to take full effect. If you don't grant this access, then the user only has the equivalent of **Viewer** access to the project in the {{ecloud}} Console, and can't log in to the project.
+
+:::{tip}
+When inviting a user to your organization with the {{ecloud}} API, you can set their access surfaces in the invitation request. To grant {{ecloud}} Console-only access, pass an empty `application_id` array in the role assignment. You can view an example in [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).
+::: 
