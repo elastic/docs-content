@@ -8,7 +8,7 @@
       * For controls with **Static values**, enter available controls manually or select them from the dropdown list. 
       * For controls with **Values from a query**, write an {{esql}} query to populate the list of options. This option is useful for dynamically retrieving control values or perform advanced actions such as [defining chaining controls](/explore-analyze/dashboards/add-controls.md#chain-variable-controls).
         :::{tip} - Only display values available for the selected time range
-        By explicitly binding the control's definition to the dashboard's time range, then the values available for that control are only the ones that exist for the time range selected in the dashboard or Discover session. You can do that by specifying `WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart` in the query, or [custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters) if your indices don't have a `@timestamp` field.
+        By explicitly binding the control's definition to the global time range, then the values available for that control are only the ones that exist for the time range selected in the dashboard or Discover session. You can do that by specifying `WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart` in the query, or [custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters) if your indices don't have a `@timestamp` field.
         :::
     * The name of the control. You use this name to reference the control in {{esql}} queries. 
       * Start the name with `?` if you want the options to be simple static values.
