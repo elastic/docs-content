@@ -214,7 +214,7 @@ PUT _cluster/settings
 }
 ```
 
-After re-enabling, the cluster allocation should begin assigning/recovering/rebalancing shards automatically. This can be validated with the [Cluster Allocation Health Status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)
+After re-enabling allocation, the cluster automatically resumes shard assignment, recovery, and rebalancing. You can verify this using the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
 
 ```console
 GET _cluster/health
