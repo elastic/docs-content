@@ -42,9 +42,9 @@ While Streams relies on Elasticsearch ingest pipeline processors under the hood,
 
 - **Consistently typed fields**: ES|QL requires one consistent type per column, so workflows that produce mixed types across documents won’t transpile.
 - **Conversion of types**: ES|QL and ingest pipelines accept different conversion combinations and strictness (especially for strings), so `convert` can behave differently across targets.
-- **Multi-value commands/functions**: Fields can be single- or multi-valued, and ES|QL vs ingest processors don’t always handle arrays the same way.
-- **Conditional execution**: ES|QL's fixed, typed table shape limits conditional casting/parsing/wildcard field operations that ingest pipelines can do per-document.
-- **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON/arrays, while ES|QL flattens to columns, so operations like rename and delete on parent objects can differ or fail.
+- **Multi-value commands/functions**: Fields can contain one or multiple values. ES|QL and ingest processors don’t always handle these cases the same way. For example, grok in ES|QL handles multiple values automatically, while the grok processor does not
+- **Conditional execution**: ES|QL's enforced table shape limits conditional casting, parsing, and wildcard field operations that ingest pipelines can do per-document.
+- **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON arrays, while ES|QL flattens to columns, so operations like rename and delete on parent objects can differ or fail.
 
 ## Add a processor [streams-add-processors]
 
@@ -110,9 +110,9 @@ After making sure everything in the **Data preview** tab is correct, select **Sa
 
 If you edit the stream after saving your changes, keep the following in mind:
 
-- Adding processors to the end of the list will work as expected.
-- Editing or reordering existing processors can cause inaccurate results. Because the pipeline may have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
-- Adding a new processor and moving it before an existing processor may cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
+- Adding processors to the end of the list works as expected.
+- Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
+- Adding a new processor and moving it before an existing processor can cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
 ### Ignore failures [streams-ignore-failures]
 
@@ -139,7 +139,7 @@ Selecting **Failed** shows the documents that weren't parsed correctly:
 :screenshot:
 :::
 
-Failures are displayed at the bottom of the process editor. Some failures may require fixes, while others simply serve as a warning:
+Streams displays failures at the bottom of the process editor. Some failures might require fixes, while others serve as a warning:
 
 :::{image} ../../../images/logs-streams-processor-failures.png
 :screenshot:
@@ -196,10 +196,10 @@ Streams then creates and manages the `<data_stream_name>@stream.processing` pipe
 ### User interaction with pipelines
 
 Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by Streams.
-You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor created by Streams may cause unexpected behavior.
+You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor created by Streams might cause unexpected behavior.
 
 ## Known limitations [streams-known-limitations]
 
 - Streams does not support all processors. More processors will be added in future versions.
-- The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them. Streams will allow proper simulations using original documents in a future version.
+- The data preview simulation might not accurately reflect the changes to the existing data when editing existing processors or re-ordering them. Streams will allow proper simulations using original documents in a future version.
 - Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./extract/manual-pipeline-configuration.md) that supports Painless scripting and all ingest processors.
