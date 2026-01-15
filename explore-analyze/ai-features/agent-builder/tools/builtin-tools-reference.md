@@ -90,7 +90,7 @@ The following tools manage file attachments in conversations:
 <!-- 
 ## Dashboard tools
 ```{applies_to}
-stack: ga 9.3+
+stack: ga 9.4+
 ```
 
 Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze/dashboards.md).
