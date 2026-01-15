@@ -93,7 +93,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
    - **Metrics**: When selected, roles must have the appropriate **Observability > Infrastructure** feature privileges.
    - **Stack Management**: When selected, roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
 
-   For example, if you select `All`, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} **Rules** page.
+   For example, if you select `All`, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} page.
 
 ## Test your query [_test_your_query]
 
