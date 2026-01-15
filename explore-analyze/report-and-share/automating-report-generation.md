@@ -179,8 +179,8 @@ In earlier {{kib}} versions, you could use the `&sync` parameter to append to re
 ## Schedule and share reports [schedule-report-generation]
 
 ```{applies_to}
-stack: preview 9.1
-serverless: preview
+stack: ga 9.3+, preview 9.1-9.2
+serverless: ga
 ```
 
 Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
@@ -260,12 +260,26 @@ Save time by setting up a recurring task that automatically generates reports an
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-### Stop scheduled reports [stop-scheduled-reports]
+{applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
-To stop a scheduled report, you can take the following actions from the **Schedules** tab on the **Reporting** page: 
+### Manage schedules [manage-report-schedules]
 
-- **Disable schedule**: {applies_to}`stack: ga 9.1+` Disabling a schedule allows you to keep a record of it on the **Reporting** page, but permanently turns the schedule off. To restart the schedule, you must create a new one.
-- **Delete schedule**: {applies_to}`stack: ga 9.3+` Deleting a schedule permanently stops it and removes the schedule's record from the **Reporting** page. You can't recover a deleted schedule.
+To manage a schedule, you can take the following actions from the **Schedules** tab on the **Reporting** page:
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.3+
+- **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page.
+- **Enable schedule**: Restart a disabled schedule.
+- **Edit schedule config**: Modify an existing schedule.
+- **Delete schedule**: Permanently stop a schedule and remove its record from the **Reporting** page. You can't recover a deleted schedule.
+:::
+
+:::{applies-item} stack: ga 9.1-9.2
+- **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page. To restart the schedule, you must create a new one.
+:::
+
+::::
 
 ### Scheduled reports limitations [scheduled-reports-limitations]
 
