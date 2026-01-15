@@ -179,7 +179,9 @@ This is usually a temporary solution and may cause instability if disk space is 
 
 ### Re-enable shard allocation [fix-cluster-status-reenable-allocation]
 
-You typically disable allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance to prevent the recovery cascade from the elected master node while node is temporarily out of cluster. If you forgot to re-enable allocation afterward, {{es}} will be unable to assign shards. If the allocations have been disabled, it can be verified using [Read Cluster Settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings)
+You typically disable shard allocation during a [restart](../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) or other cluster maintenance to prevent a recovery cascade while a node is temporarily out of the cluster. If allocation is not re-enabled afterward, {{es}} cannot assign shards.
+
+Verify whether allocation is disabled using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
 
 ```console
 GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.enable
