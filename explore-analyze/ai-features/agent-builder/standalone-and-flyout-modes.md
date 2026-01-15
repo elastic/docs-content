@@ -72,17 +72,7 @@ The default chat experience varies by solution:
     - The standalone experience is available through the **Agents** button in the main navigation.
 - **{{es}}:** Agent Builder appears in the navigation automatically.
 
-<!--  TODO 
- Replace
-/explore-analyze/ai-features/ai-agent-or-ai-assistant.md
-
-with 
-/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences
-
-when that page is live 
--->
-
 ## Related pages
 
 - [Agent Builder chat UI](chat.md#agent-chat-gui)
-- [Switch between AI assistant and Agent Builder chat](/explore-analyze/ai-features/ai-agent-or-ai-assistant.md)
+- [Switch between AI assistant and Agent Builder chat](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences)
