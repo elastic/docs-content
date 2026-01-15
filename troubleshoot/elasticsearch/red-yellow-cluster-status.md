@@ -200,7 +200,7 @@ If allocation is not enabled, the response shows an override from the default va
 ```
 
 ::::{note}
-When `cluster.routing.allocation.enable` is set to `none`, ingestion is not blocked. However, new indices cannot be created (including indices created by ILM rollover) because neither primary shards nor replicas can be allocated to nodes in the cluster.
+Setting [`cluster.routing.allocation.enable`](/troubleshoot/elasticsearch/allow-all-cluster-allocation.md) only affects shard allocations going forward but does not affect current allocations. So overriding this to `none` does not block existing ingestion. However, new indices cannot be created when overrode, including indices induced from [ILM Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md).
 ::::
 
 To re-enable allocation, reset the `cluster.routing.allocation.enable` cluster setting:
