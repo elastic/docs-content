@@ -34,7 +34,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
 * Adds the gap auto-fill scheduler UI and API for detection rules [#244719]({{kib-pull}}244719).
 * Adds a **Gap fill status** column and filter to detection rules [#242595]({{kib-pull}}242595).
-* Adds the `customized_fields` and `has_base_version` fields to the `rule_source` object schema [#234793]({{kib-pull}}234793).
 * Enables the **Value report** page in {{stack}} [#243511]({{kib-pull}}243511).
 * Makes the Attack Discovery and Attack Discovery Schedules APIs generally available [#246788]({{kib-pull}}246788).
 * Improves Attack Discovery prompts [#241346]({{kib-pull}}241346).
@@ -43,7 +42,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds Security attachments to Agent Builder [#243574]({{kib-pull}}243574).
 * Adds an integration knowledge tool to Agent Builder [#245259]({{kib-pull}}245259).
 * Adds a product documentation tool to Agent Builder [#242598]({{kib-pull}}242598).
-* Adds two Security agents (Alerts Agent and Entity Agent) to Agent Builder [#245205]({{kib-pull}}245205).
+* Adds the Threat Hunting Agent to Agent Builder [#245205]({{kib-pull}}245205), [#246193]({{kib-pull}}246193), [#246403]({{kib-pull}}246403).
 * Improves the alert details flyout by saving the selected threat intelligence time to local storage [#243571]({{kib-pull}}243571).
 * Improves the alert details flyout by saving the selected prevalence time to local storage [#243543]({{kib-pull}}243543).
 * Displays Session View in full height [#245888]({{kib-pull}}245888).
