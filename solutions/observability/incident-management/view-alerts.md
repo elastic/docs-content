@@ -48,7 +48,7 @@ You can also filter by alert status using the buttons below the KQL bar. By defa
 
 There are a few ways to inspect the details for a specific alert.
 
-From the **Alerts** table, you can click on a specific alert to open the alert detail flyout to view a summary of the alert without leaving the page. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, you can view the expected and actual threshold values, and the rule that produced the alert.
+From the Alerts table, you can click on a specific alert to open the alert detail flyout to view a summary of the alert without leaving the page. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, you can view the expected and actual threshold values, and the rule that produced the alert.
 
 :::{image} /solutions/images/serverless-alert-details-flyout.png
 :alt: Alerts detail (APM anomaly)
@@ -58,12 +58,12 @@ From the **Alerts** table, you can click on a specific alert to open the alert d
 To further inspect the rule:
 
 * From the alert detail flyout, click **View rule details**.
-* From the **Alerts** table, click the {icon}`boxes_horizontal` icon and select **View rule details**.
+* From the Alerts table, click the {icon}`boxes_horizontal` icon and select **View rule details**.
 
 To view the alert in the app that triggered it:
 
 * From the alert detail flyout, click **View in app**.
-* From the **Alerts** table, click the {icon}`eye` icon.
+* From the Alerts table, click the {icon}`eye` icon.
 
 ## Review related alerts [observability-view-alerts-find-related-alerts]
 ```{applies_to}
@@ -105,7 +105,7 @@ There are four common alert statuses:
     Once a flapping alert is recovered, it cannot be changed to flapping again. Only new alerts with repeated status changes are candidates for the flapping status. 
 
 `untracked`
-:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the action menu ({icon}`boxes_vertical`) to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the Alerts table, click the action menu ({icon}`boxes_vertical`) to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
 ## Mute alerts [observability-view-alerts-mute-alerts]
 
@@ -117,11 +117,11 @@ If an alert is active or flapping, you can mute it to temporarily suppress futur
 You can mute individual alerts or multiple ones:
 
 - Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
-- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display a {icon}`bellSlash` icon in the **Alerts** table. 
+- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bellSlash` in the Alerts table.
 :::
 
 :::{applies-item} stack: ga 9.0-9.2
-You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**. 
+You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Mute**.
 :::
 
 ::::
@@ -176,7 +176,7 @@ You can also use the toolbar buttons in the upper-right to customize the display
 
 ## Add alerts to cases [observability-view-alerts-add-alerts-to-cases]
 
-From the **Alerts** table, you can add one or more alerts to a case. Click the {icon}`boxes_horizontal` icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
+From the Alerts table, you can add one or more alerts to a case. Click the {icon}`boxes_horizontal` icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
 
 ::::{note}
 Each case can have a maximum of 1,000 alerts.
