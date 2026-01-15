@@ -237,7 +237,7 @@ Certain interactions with the results table of your {{esql}} query in Discover a
 - Selecting {icon}`minus_in_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
 
 :::{note}
-applies_to: { serverless:, stack: ga 9.3+ }
+:applies_to: { serverless:, stack: ga 9.3+ }
 Up to and including version 9.2, filtering for multi-value fields isn't supported. On later versions, filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
 :::
 
