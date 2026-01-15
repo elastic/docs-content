@@ -55,8 +55,11 @@ Authorization: ApiKey $EC_API_KEY
 
 You can create an API key using the [Create API key]({{cloud-apis}}/operation/operation-create-api-key) API.
 
-```console
-POST /users/auth/keys
+```sh
+curl -XPOST \
+-H 'Content-Type: application/json' \
+-H "Authorization: ApiKey $EC_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/users/auth/keys
 
 {
   "description": "api-created-key",

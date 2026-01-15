@@ -5,8 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-organizations.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
@@ -56,7 +56,7 @@ In the **Actions** column, click the three dots to edit a member’s role, or re
 
 ## Manage users through the {{ecloud}} API [ec-api-organizations]
 
-You can also manage members of your organization using the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/).
+You can also manage members of your organization using the [{{ecloud}} API]({{cloud-apis}}).
 
 :::{dropdown} Get information about your organization
 
@@ -153,6 +153,7 @@ curl -XGET \
 -H "Authorization: ApiKey $EC_API_KEY" \
 "https://api.elastic-cloud.com/api/v1/organizations/$ORGANIZATION_ID/invitations"
 ```
+:::
 
 :::{dropdown} View members in your organization
 

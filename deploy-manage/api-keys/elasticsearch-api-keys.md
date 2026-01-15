@@ -63,7 +63,7 @@ From the **Create API key** pane, you can configure your new key:
   4. Add any additional metadata about the API as one or more key-value pairs. Refer to the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation for examples.
 
 :::{tip}
-You can also create an API key [using the {{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
+You can also create an API key [using the {{es}} API]({{es-apis}}/operation/operation-security-create-api-key).
 :::
 
 ## Update an API key [update-api-key]
