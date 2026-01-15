@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate with minimal downtime
+navigation_title: Minimal-downtime migration using snapshots
 applies_to:
   stack: ga
 products:
@@ -9,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Migrate {{es}} data with minimal downtime [migrate-elasticsearch-data-with-minimal-downtime]
+# Migrate {{es}} data with minimal downtime using snapshots [migrate-elasticsearch-data-with-minimal-downtime]
 When moving your data and services from one {{es}} cluster to another, such as to {{ech}}, {{ece}}, new on-premises hardware, or any other {{es}} environment, you can migrate with minimal downtime using incremental snapshots. 
 
 Migrating with incremental snapshots is useful when you want to:

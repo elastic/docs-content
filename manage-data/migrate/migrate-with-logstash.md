@@ -1,7 +1,7 @@
 ---
 navigation_title: Migrate Elastic Cloud Hosted data to Serverless with Logstash
 applies_to:
-  stack: ga
+  serverless:
   deployment:
     ess: ga
 products:

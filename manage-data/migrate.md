@@ -36,7 +36,7 @@ Indexing from the source
 Reindex from a remote cluster
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. Depending on your security settings for your old cluster, you might need to temporarily allow TCP traffic on port 9243 for this procedure.
 
-    For {{ech}}, if your cluster is self-managed with a self-signed certificate, you can follow this [step-by-step migration guide](migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
+    For {{ech}}, if your cluster is self-managed and uses [TLS certificates](/deploy-manage/security/set-up-basic-security-plus-https.md) signed by a private (non–publicly trusted) certificate authority, follow [this guide](migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md) to establish trust and configure remote reindex to {{ech}}.
 
 Restore from a snapshot
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an {{es}} version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that the new cluster can access.
@@ -61,6 +61,10 @@ Through the {{es}} [reindex API](https://www.elastic.co/docs/api/doc/elasticsear
 Reindex operations do not migrate index mappings, settings, or associated index templates from the source cluster.
 
 Before migrating your {{es}} data, define the necessary [mappings](/manage-data/data-store/mapping.md) and [templates](/manage-data/data-store/templates.md) on the new cluster. The easiest way to do this is to copy the relevant index templates from the old cluster to the new one before starting reindex operations.
+::::
+
+::::{note}
+For {{ech}}, if your source cluster uses [TLS certificates](/deploy-manage/security/set-up-basic-security-plus-https.md) signed by a private (non–publicly trusted) certificate authority, follow [this guide](migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md) to establish trust.
 ::::
 
 Follow these steps to reindex data remotely:

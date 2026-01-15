@@ -1,5 +1,5 @@
 ---
-navigation_title: Reindex from a self-managed cluster
+navigation_title: Reindex using a private CA
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-reindex.html
 applies_to:
@@ -10,16 +10,15 @@ products:
   - id: cloud-hosted
 ---
 
-# Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]
+# Reindex from a self-managed cluster using a private CA [ec-remote-reindex]
 
-The following instructions show you how to configure remote reindex on {{ech}} from a cluster that uses a self-signed CA.
+The following instructions explain how to configure remote reindex to {{ech}} from a self-managed cluster that uses non–publicly trusted TLS certificates, including self-signed certificates and certificates signed by a private certificate authority (CA).
 
-Let’s assume that the self-managed cluster that uses a self-signed certificate is called `Source`, and you want to migrate data from `Source` to `Destination` on {{ech}}.
+Assume you have a self-managed source cluster named `Source` that uses TLS certificates which are not publicly trusted, and you want to migrate data from `Source` to a destination cluster on {{ech}}.
 
+## Step 1: Prepare the `Source` CA to be used in an extension bundle [ec-remote-reindex-step1]
 
-## Step 1: Create the `Source` certificate in a bundle [ec-remote-reindex-step1]
-
-1. Get the self-signed CA on the `Source` cluster, or extract the certificate from the cluster by running the following command:
+1. Obtain the CA of the `Source` cluster, or extract the certificate from the cluster by running the following command:
 
     ```text
     echo quit | openssl s_client -showcerts -servername "$SOURCE_SERVER_NAME" -connect "$SOURCE_SERVER:$PORT" > cacert.pem
@@ -37,8 +36,6 @@ Let’s assume that the self-managed cluster that uses a self-signed certificate
 Both the folder and file names must correspond to the settings configured in [Step 4](#ec-remote-reindex-step4).
 ::::
 
-
-
 ## Step 2: Upload the zip bundle to your {{ecloud}} account [ec-remote-reindex-step2]
 
 To upload your file, follow the steps in the section [Add your extension](../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin). Enter wildcard `*` for **Version** in order to be compatible for all future upgrades, and select `A bundle containing dictionary or script` as **Type**.
@@ -53,7 +50,7 @@ The `Destination` cluster should be the same or newer version as the `Source` cl
 ::::
 
 
-## Step 4: Enable bundle and add `reindex` settings on the `Destination` cluster. [ec-remote-reindex-step4]
+## Step 4: Enable the extension and add `reindex` settings on the `Destination` cluster [ec-remote-reindex-step4]
 
 1. From your deployment page, go to the **Edit** page, click **Manage user settings and extensions**, select tab **Extensions** then enable `my_source_ca`.
 2. Switch tab to **User settings**, append the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md).  This step adds `source_server` to the `reindex.remote.whitelist`, points source CA bundle to be trusted by the `Destination` cluster using the setting `reindex.ssl.certificate_authorities`.
@@ -71,9 +68,9 @@ The `Destination` cluster should be the same or newer version as the `Source` cl
 3. Click **Back** to the **Edit** page and scroll to the button of the page to **Save** changes.  This step will restart all Elasticsearch instances.
 
 
-## Step 5: Reindex from remote `Source` cluster. [ec-remote-reindex-step5]
+## Step 5: Reindex from remote `Source` cluster [ec-remote-reindex-step5]
 
-You can now run `reindex` on the {{ech}} `Destination` cluster from `Source` cluster:
+You can now run a remote reindex operation on the {{ech}} `Destination` cluster from the `Source` cluster, as described in the [migration guide](/manage-data/migrate.md#ech-reindex-remote):
 
 ```text
 POST _reindex
