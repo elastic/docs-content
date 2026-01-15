@@ -208,7 +208,7 @@ You can specify a reason for closing an alert by selecting one of the following 
 
 When you select a closing reason, the alert document is populated with a new field called `kibana.alert.workflow_reason`. You can use this field to filter and sort alerts on the **Alerts** page. If you later reopen the alert, the field is removed from the document.
 
-### Apply and filter tags for {{elastic-sec}} alerts [apply-alert-tags]
+### Apply and filter alert tags [apply-alert-tags]
 
 Use alert tags to organize related alerts into categories that you can filter and group. For example, use the `False Positive` alert tag to label a group of alerts as false positives. Then, search for them by entering the `kibana.alert.workflow_tags : "False Positive"` query into the KQL bar. Alternatively, use the Alert table’s [drop-down filters](/solutions/security/detect-and-alert/manage-detection-alerts.md#drop-down-filter-controls) to filter for tagged alerts.
 

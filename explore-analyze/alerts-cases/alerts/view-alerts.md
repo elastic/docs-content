@@ -105,7 +105,7 @@ To permanently suppress an alert's actions, open the actions menu for the approp
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
 ::::
 
-## Apply and filter tags for Stack alerts [tag-alerts]
+## Apply and filter alert tags [tag-alerts]
 
 ```{applies_to}
 stack: ga 9.3+

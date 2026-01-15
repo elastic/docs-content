@@ -133,7 +133,7 @@ To permanently suppress an alert's actions, open the actions menu for the approp
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#observability-create-manage-rules-snooze-and-disable-rules).
 ::::
 
-## Apply and filter tags for {{observability}} alerts [observability-view-alerts-tag-alerts]
+## Apply and filter alert tags [observability-view-alerts-tag-alerts]
 
 ```{applies_to}
 stack: ga 9.3+
