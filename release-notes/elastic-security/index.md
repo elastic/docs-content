@@ -64,13 +64,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a server configuration setting that allows you to disable the automatic installation of the Endpoint Security ({{elastic-defend}}) rule when creating an {{elastic-defend}} integration policy [#246418]({{kib-pull}}246418).
 * Adds UI and API support for process descendants in trusted applications [#236318]({{kib-pull}}236318).
 * Adds an `actions` command to {{elastic-defend}} to list all queued response actions or cancel an action by ID.
-* Adds the `thumbprint_sha256` field to `code_signature` for process and library events in {{elastic-defend}}.
-* Adds the `desktop_name` field to {{elastic-defend}} process events to assist with the detection of malicious hidden desktop activity.
+* Adds the `thumbprint_sha256` field to `code_signature` for process and library events in {{elastic-defend}} on Windows.
+* Adds the `desktop_name` field to {{elastic-defend}} on Windows process events to assist with the detection of malicious hidden desktop activity.
 * Improves {{elastic-defend}} by integrating two new Event Tracing for Windows (ETW) providers (`Microsoft-Windows-WebIO` and `Microsoft-Windows-WinINet`) to detect malicious HTTP activity.
 * Moves the {{elastic-defend}} response actions internal state location. If an unsuccessful {{elastic-defend}} upgrade is rolled back to the previous version, existing pending actions are aborted early.
 * Adds service-less (no systemd) install mode for {{elastic-defend}} on Linux. Enable by setting the `ELASTIC_ENDPOINT_NO_SYSTEM_SERVICES=1` environment variable during install.
 * Adds the `memory-dump` response action to {{elastic-defend}} on Windows.
-* Hardens {{elastic-defend}} against cloud filter rebinding.
+* Hardens {{elastic-defend}} on Windows against Bind Filter rebinding attacks.
 * Adds a new event capture mode, Quark, to {{elastic-defend}} on Linux.
 * Adds DNS events for {{elastic-defend}} on Linux (only supported by eBPF-based event collection).
 * Removes the 100 MB file size limit for the {{elastic-defend}} `get-file` response action.
@@ -157,7 +157,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Prevents unnecessary policy reloads in {{elastic-defend}} when only the overall config version changes.
 * Fixes a bug where {{elastic-defend}} for Linux could fail to bootstrap with {{agent}}.
 * Fixes an issue that could prevent {{elastic-defend}} from properly handling upgrades when Tamper Protection is enabled.
-* Fixes a missing `code_signature.thumbprint_sha256` field under process and DLL events for some event types in {{elastic-defend}} on Windows.
 * Fixes an issue in {{elastic-defend}} that could cause `get-file` and `execute` response actions to start failing after many are issued with a single running instance of {{elastic-defend}}.
 * Improves {{elastic-defend}} detection of file rename operations that occur on Windows over SMB.
 * Fixes a bug in {{elastic-defend}} on Linux where the legacy network event source (debugfs/kprobes) would miss network events for non-blocking connect calls.
