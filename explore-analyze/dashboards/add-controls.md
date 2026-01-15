@@ -193,7 +193,7 @@ To chain variable controls, you reference one control's variable in another cont
    * **Variable name**: `?ip`
    * **Label**: IP address
    
-   This control references the `?region` variable and the built-in time range variables (`?_tstart` and `?_tend`). The available IP addresses will update to show only those associated with the selected region.
+   This control references the `?region` variable and the built-in time range variables (`?_tstart` and `?_tend`). The available IP addresses will be only those associated with the selected region.
 
 3. Test the chained controls. Both controls are now visible on your dashboard. Select different values in the **Region** control and observe how the available IP addresses in the **IP address** control change to show only IPs from that region.
 
