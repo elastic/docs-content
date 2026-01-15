@@ -253,8 +253,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313)
 * Updates action response codes [#240420]({{kib-pull}}240420)
 * Fixes an infinite loop bug in the **Investigation guide** editor [#240472]({{kib-pull}}240472)
-* Enables reindex from remote in {{serverless-full}} to allow serverless migration from {{ech}} with reindex. This change alone does not yet allow reindex from remote to be run in serverless, the `reindex.remote.whitelist` setting still needs to be supplied by the controller with {{ech}} host names.
-* Reindex-from-remote: Fail on manual slicing parameter [#137275](https://github.com/elastic/elasticsearch/pull/137275)
 * Adds support for choosing the downsampling method in data stream lifecycle [#137023](https://github.com/elastic/elasticsearch/pull/137023)
 * Fixes `illegal_access_exception: class com.maxmind.db.Decoder` from `ip_location` processor [#137479](https://github.com/elastic/elasticsearch/pull/137479)
 
