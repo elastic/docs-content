@@ -16,6 +16,7 @@ Learn about the Elastic FedRAMP offerings:
  - [Comparison of available features](#ec-fedramp-comparison)
  - [Get started with FedRAMP](#ec-fedramp-get-started)
  - [FedRAMP FAQ](#ec-fedramp-faq)
+ - [Limitations](#ec-fedramp-limitations)
 
 ## Comparison of available features [ec-fedramp-comparison]
 
@@ -34,7 +35,6 @@ This table provides a comparison of features and capabilities included in {{ech}
 | IPv6 support at the edge | No | Yes | Yes | Yes |
 | [Bring Your Own Key (BYOK)](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) | Yes | No | No | No |
 | Status page | Dedicated; publicly available | Dedicated; publicly available | Dedicated; private | Dedicated; not publicly available |
-| Uptime SLA | 99.95% | 99.95% | Minimum 99.95% | Minimum 99.95% |
 | [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage | U.S. persons on U.S. soil | U.S. persons on U.S. soil |
 | [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | TBD | TBD | TBD |
 | [Cross-cluster search](/explore-analyze/cross-cluster-search.md) and [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Yes | Yes | Yes | TBD |
@@ -73,4 +73,32 @@ $$$who-can-use-fedramp$$$**Who can use FedRAMP?**
 $$$where-is-fedramp-hosted$$$**Where is FedRAMP hosted?**
 
     {{fedramp-mod}}, {{fedramp-high}}, and {{fedramp-il5}} {{ecloud}} deployments are hosted on [AWS GovCloud (US)](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html) in the `us-gov-east-1` region.
+
+
+## Limitations [ec-fedramp-limitations]
+
+There are some limitations to note for using the FedRAMP authorized Cloud offerings.
+
+### TLS
+
+% Copied from https://www.elastic.co/docs/deploy-manage/security/fips-ingest#ingest-limitations-tls
+% I'll single-source this if the finalized content is identical to what we have in the security section.
+
+Only FIPS 140-2 compliant TLS protocols, ciphers, and curve types are allowed to be used as listed below.
+* The supported TLS versions are `TLS v1.2` and `TLS v1.3`.
+* The supported cipher suites are:
+  * `TLS v1.2`: `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, `ECDHE-ECDSA-AES-256-GCM-SHA384`
+  * `TLS v1.3`: `TLS-AES-128-GCM-SHA256`, `TLS-AES-256-GCM-SHA384`
+* The supported curve types are `P-256`, `P-384` and `P-521`.
+
+Support for encrypted private keys is not available, as the cryptographic modules used for decrypting password protected keys are not FIPS validated. If an output or any other component with an SSL key that is password protected is configured, the components will fail to load the key. When running in FIPS mode, you must provide non-encrypted keys.
+Be sure to enforce security in your FIPS environments through other means, such as strict file permissions and access controls on the key file itself, for example.
+
+### Custom plugins
+
+Custom plugins are currently not supported in {{fedramp-high}} and {{fedramp-il5}} deployments. 
+
+### {{elastic-defend}}
+
+In {{fedramp-mod}}, {{fedramp-high}}, and {{fedramp-il5}} environments, certain {{elastic-defend}} cloud-enabled features might require some manual configuration to work as expected.
 
