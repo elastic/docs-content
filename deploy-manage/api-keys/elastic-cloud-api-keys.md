@@ -71,9 +71,9 @@ POST /users/auth/keys
           "project_ids": [
             "PROJECT_ID_PLACEHOLDER"
           ],
-          "application_roles": [ <1>
+          "application_roles": [ 
             "admin"
-          ]
+          ] <1>
         }
       ]
     }
@@ -100,7 +100,7 @@ By default, API keys expire after three months. You can set the expiration to a 
 
 When an API key is nearing expiration, Elastic sends an email to the creator of the API key and each of the operational contacts. When you use an API key to authenticate, the API response header `X-Elastic-Api-Key-Expiration` indicates the key’s expiration date. You can log this value to detect API keys that are nearing expiration.
 
-Once an API key expires, it is automatically removed from the **API keys** tab.
+When an API key expires, it is automatically removed from the **API keys** tab.
 
 ## Applying roles to API keys [roles]
 
@@ -128,7 +128,7 @@ Your **API access** selection impacts the behavior of your selected role. To tak
 
 When **Cloud, {{es}} and {{kib}} API** access is not granted, roles that are designed to interact with the project directly have limited access. For example: 
 
-* If you select the **Admin** role, the API key will still be able configure project settings in {{ecloud}}, to won't be able to interact with the project as a superuser.
+* If you select the **Admin** role, the API key will still be able configure project settings in {{ecloud}}, but won't be able to interact with the project as a superuser.
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, will only have **Viewer** access to the relevant projects through the {{ecloud}} {{serverless-short}} API.
 
 To learn about the permissions that require **Cloud, {{es}} and {{kib}} API** access for each role, refer to the **Project access** column in the [predefined roles table](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table).
