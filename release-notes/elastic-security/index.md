@@ -30,7 +30,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.3.0 [elastic-security-9.3.0-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.0-features-enhancements]
-* Adds a new **Rules** feature privilege that controls access to detection rules, alerts, and rule exceptions [#239634]({{kib-pull}}239634).
+* Adds a new **Rules, Alerts, and Exceptions** feature privilege that controls access to detection rules, alerts, and rule exceptions [#239634]({{kib-pull}}239634).
 * Updates MITRE ATT&CK mappings to `v18.1` [#246770]({{kib-pull}}246770).
 * Adds the gap auto-fill scheduler UI and API for detection rules [#244719]({{kib-pull}}244719).
 * Adds a **Gap fill status** column and filter to detection rules [#242595]({{kib-pull}}242595).
