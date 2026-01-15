@@ -64,7 +64,7 @@ Refer to individual [supported processors](#streams-extract-processors) for more
 Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
 :::
 
-### Add conditions to processors [streams-add-processor-conditions]
+### Add conditions [streams-add-processor-conditions]
 
 You can add conditions to processors so they only run on data that meets those conditions. Each condition is a boolean expression that's evaluated for every document.
 
@@ -90,6 +90,8 @@ Streams processors support the following comparators:
 - exists
 - not exists
 :::
+
+After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
 
 ### Preview changes [streams-preview-changes]
 
