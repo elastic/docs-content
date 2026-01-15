@@ -193,7 +193,7 @@ If allocation is not enabled, the response shows an override from the default va
 {
   "persistent": {
     "cluster": {"routing": {"allocation": {"enable": "none" } } }
-  }
+  },
   "defaults": {
     "cluster": {"routing": {"allocation": {"enable": "all" } } } }
 }
