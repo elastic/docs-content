@@ -203,6 +203,9 @@ This example restricts {{es}} nodes so they are only scheduled on Kubernetes hos
 Starting with ECK 2.0 the operator can make Kubernetes Node labels available as Pod annotations. It can be used to make information, such as logical failure domains, available in a running Pod. Combined with [{{es}} shard allocation awareness](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) and [Kubernetes topology spread constraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/), you can create an availability zone-aware {{es}} cluster.
 
 ### Exposing Kubernetes node topology labels in Pods [k8s-availability-zone-awareness-downward-api]
+:::{note}
+Starting with Kubernetes 1.35, the `PodTopologyLabelsAdmission` feature is enabled by default. This means that the labels `topology.kubernetes.io/region` and `topology.kubernetes.io/zone` from the node are automatically propagated as labels on Pods. As a result, you may not need to use the `eck.k8s.elastic.co/downward-node-labels` annotation or additional configuration to make these topology labels available in your Pods.
+:::
 
 1. First, ensure that the operator’s flag `exposed-node-labels` contains the list of the Kubernetes node labels that should be exposed in the {{es}} Pods. If you are using the provided installation manifest, or the Helm chart, then this flag is already preset with two wildcard patterns for well-known node labels that describe Kubernetes cluster topology, like `topology.kubernetes.io/.*` and `failure-domain.beta.kubernetes.io/.*`.
 2. On the {{es}} resources set the `eck.k8s.elastic.co/downward-node-labels` annotations with the list of the Kubernetes node labels that should be copied as Pod annotations.
