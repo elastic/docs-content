@@ -187,7 +187,7 @@ Verify whether allocation is disabled using the [cluster settings API](https://w
 GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.enable
 ```
 
-If allocation not enabled, the response shows an override from the default value at either the `persistent` or `transient` level, for example:
+If allocation is not enabled, the response shows an override from the default value at either the `persistent` or `transient` level, for example:
 
 ```
 {
