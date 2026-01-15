@@ -212,7 +212,7 @@ Example (adding batching to a cluster-stats metrics pipeline):
 processors:
   batch/metrics:
     timeout: 1s
-    send_batch_size: 2048 # `send_batch_size` is both the target and the maximum batch size.
+    send_batch_size: 2048 # The processor sends a batch when it reaches this many items or when the timeout expires, whichever comes first. Batches never exceed this size.
 
 service:
   pipelines:
