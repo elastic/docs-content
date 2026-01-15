@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
 applies_to:
   stack: preview 9.2
-  serverless: unavailable
+  serverless: preview
 products:
   - id: kibana
 description: Send long-running queries to run in the background with background searches from Discover and Dashboards. Continue working while queries complete and access results later.
@@ -25,27 +25,51 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 
 ## Enable background searches
 
-This feature is disabled by default. You can enable background searches in versions 9.2 and later, or search sessions in versions 9.1 and earlier, by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
+:::::{applies-switch}
+
+::::{applies-item} serverless: ga
+This feature is enabled by default.
+::::
+
+::::{applies-item} stack: ga 9.3
+This feature is enabled by default.
+::::
+
+::::{applies-item} stack: ga =9.2
+This feature is disabled by default. You can enable background searches by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 
 :::{note} - Exception for search sessions users
 If you upgrade to version 9.2 or later with search sessions enabled in the version you upgrade from, background searches are automatically enabled.
 :::
+::::
+
+::::{applies-item} stack: ga 9.0-9.1
+This feature is named **Search sessions** and is disabled by default unless you upgraded from a previous version where you were already using the feature. You can enable search sessions by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
+::::
+
+
+:::::
+
 
 ## Usage requirements [_requirements]
 
 The background searches that you run are personal and only visible by you. To use this feature, you must have the following minimum permissions:
 
-:::::{tab-set}
-:group: background search
+:::::{applies-switch}
 
-::::{tab-item} 9.2 and later
-:sync: 92
+::::{applies-item} serverless: ga
+
+To send searches to the background, and to view and interact with the list of background searches from the **Discover** and **Dashboards** apps, you need permissions for **Discover** and **Dashboard**, and for the [Background search subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+::::
+
+::::{applies-item} stack: ga 9.2
+
 To send searches to the background, and to view and interact with the list of background searches from **Discover** and **Dashboards** apps, you must have permissions for **Discover** and **Dashboard**, and for the [Background search subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 ::::
 
-::::{tab-item} 9.1 and earlier
-:sync: 91
-In versions 9.1 and earlier, this feature is named **Search sessions**.
+::::{applies-item} stack: ga 9.0-9.1
+
+In these versions, this feature is named **Search sessions**.
 * To save a session, you must have permissions for **Discover** and **Dashboard**, and the [Search sessions subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 * To view and restore a saved session, you must have access to {{stack-manage-app}}.
 ::::
