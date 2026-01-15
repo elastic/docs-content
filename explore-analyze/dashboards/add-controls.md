@@ -157,7 +157,7 @@ This allows you to narrow down control selections dynamically without affecting 
 
 To chain variable controls, you reference one control's variable in another control's {{esql}} query using the `?variable_name` syntax.
 
-**Example**: Create a dashboard that analyzes web traffic by region and IP address. You want to see only the IP addresses that are active in a selected region, and then analyze traffic patterns for a specific IP, all without filtering the entire dashboard by region.
+**Example**: You create a dashboard that analyzes web traffic by region and IP address. Next, you want to see only the IP addresses that are active in a selected region, and then analyze traffic patterns for a specific IP, all without filtering the entire dashboard by region.
 
 ![Chaining controls filtering an {{esql}} visualization in a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltf697c4ba34f1baf8/6967d6ca03b22700081fadb3/dashboard-chaining-variable-controls.gif "=75%")
 
