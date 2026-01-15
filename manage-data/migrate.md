@@ -125,7 +125,7 @@ Follow these steps to reindex data remotely:
 
 ## Restore from a snapshot [ec-restore-snapshots]
 
-Restoring from a snapshot is often the fastest and most reliable way to migrate data between {{es}} clusters. It preserves mappings, settings, and optionally parts of the cluster state such as index templates, component templates, and system indices.
+[Restoring from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) is often the fastest and most reliable way to migrate data between {{es}} clusters. It preserves mappings, settings, and optionally parts of the cluster state such as index templates, component templates, and system indices.
 
 You can restore system indices by including their corresponding [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the restore operation, allowing you to retain internal configurations related to security, {{kib}}, or other stack features.
 
@@ -137,7 +137,8 @@ This method is especially useful when:
 When your source cluster is actively ingesting data, such as logs, metrics, or traces, and you need a seamless migration with minimal downtime, consider using the [minimal downtime migration](migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md) guide.
 
 ### Requirements [ec-restore-snapshots-requirements]
-* The new cluster must have access to the snapshot repository that contains the data from the old cluster. If snapshots are not already configured on the old cluster, refer to [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) to enable and configure snapshots, or use a different data migration method.
+
+* The new cluster must have access to the snapshot repository that contains the data from the old cluster. If snapshots are not already configured on the old cluster, refer to [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore/self-managed.md) to enable and configure snapshots, or use a different data migration method.
 * Both clusters must use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
 
 For more information, refer to [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
