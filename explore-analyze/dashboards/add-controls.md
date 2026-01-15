@@ -209,7 +209,7 @@ To chain variable controls, you reference one control's variable in another cont
    This visualization filters data based on the selected IP address, while the IP address options themselves are filtered by the selected region.
 
 :::{note}
-When you select a value in a parent control, the child control's query automatically reruns. If the currently selected value in the child control is no longer available in the new result set, it is marked as invalid or incompatible.
+When you select a value in a parent control, the child control's query reruns automatically. If the currently selected value in the child control is no longer available in the new result set, it is marked as invalid or incompatible.
 :::
 
 
