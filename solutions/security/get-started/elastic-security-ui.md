@@ -92,7 +92,7 @@ Expand this section to access the following dashboards, which provide interactiv
 
 - Overview
 - Detection & Response
-- {applies_to}`serverless: unavailable` Kubernetes
+- {applies_to}`stack: beta 9.3+` {applies_to}`serverless: beta` Kubernetes
 - Cloud Security Posture
 - Cloud Native Vulnerability Management
 - Entity Analytics
@@ -154,6 +154,7 @@ serverless: ga
 ```
 
 :::{admonition} Requirements
+:applies_to: {stack: removed 9.3, serverless: removed}
 To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
 :::
 
@@ -217,7 +218,7 @@ Use additional API and analysis tools to interact with your data.
 Use the management or project settings pages to access and manage:
 
 - Additional security features
-- {applies_to}`stack: ga` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
+- {applies_to}`serverless: unavailable` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
 - [{{integrations}}](/reference/fleet/manage-integrations.md)
 - Indices, data streams, and rollups
 - {applies_to}`serverless: ga` [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project

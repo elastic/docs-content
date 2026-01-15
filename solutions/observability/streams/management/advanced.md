@@ -1,7 +1,7 @@
 ---
 applies_to:
   serverless: ga
-  stack: preview 9.1, ga 9.2
+  stack: preview =9.1, ga 9.2+
 navigation_title: Configure advanced settings
 ---
 # Configure advanced settings for streams [streams-advanced-settings]

@@ -5,10 +5,7 @@ mapped_pages:
 description: Remote ES output allows you to send agent data to a remote cluster, keeping data separate and independent from the deployment where you use Fleet.
 applies_to:
   stack: ga
-  deployment:
-    ess: ga
-    ece: ga
-    self: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -24,6 +21,7 @@ A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-
 
 These limitations apply to remote {{es}} output:
 
+* {{fleet-server}} must be able to reach the remote {{es}} cluster with a service token to create API keys for any {{agents}} that use the remote {{es}} output.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
 * Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
 
@@ -90,6 +88,11 @@ Select the [performance tuning settings](/reference/fleet/es-output-settings.md#
 ::::
 
 ::::{step}
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
+Choose whether {{agents}} using this output should send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). Using this feature requires additional steps. For more details, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+::::
+
+::::{step}
 Add any [advanced YAML configuration settings](/reference/fleet/es-output-settings.md#es-output-settings-yaml-config) that you’d like for the remote output.
 ::::
 
@@ -116,5 +119,5 @@ If you choose not to synchronize integrations automatically, you need to make su
 ::::{note}
 When you use a remote {{es}} output, {{fleet-server}} performs a test to ensure connectivity to the remote cluster. The result of that connectivity test is used to report whether the remote output is healthy or unhealthy, and is displayed on the **{{fleet}}** → **Settings** → **Outputs** page, in the **Status** column.
 
-In some cases, the remote {{es}} output used for {{agent}} data can be reached by the {{agent}}s but not by {{fleet-server}}. In those cases, you can ignore the resulting unhealthy state of the output and the associated `Unable to connect` error on the UI.
+In some cases, the remote {{es}} output used for {{agent}} data can be reached by the {{agents}} but not by {{fleet-server}}. This will result in the unhealthy status of the output and an `Unable to connect` error on the UI. To generate API keys for {{agents}}, {{fleet-server}} requires connectivity to the remote cluster.
 ::::
