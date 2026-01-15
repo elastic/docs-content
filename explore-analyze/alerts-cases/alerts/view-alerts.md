@@ -49,9 +49,9 @@ Alternatively, view those alerts in the [{{security-app}}](../../../solutions/se
 
 ## View alert details [view-alert-details]
 
-To get more information about a specific alert, open its action menu (…) and select **View alert details** in either **{{stack-manage-app}} > Alerts** or **{{rules-ui}}**. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, there is information such as the expected and actual threshold values and a summarized reason for the alert.
+To get more information about a specific alert, click the action menu icon {icon}`boxes_vertical` and select **View alert details** in either **{{stack-manage-app}} > Alerts** or **{{rules-ui}}**. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, there is information such as the expected and actual threshold values and a summarized reason for the alert.
 
-If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [*Maintenance windows*](maintenance-windows.md).
+If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [Maintenance windows](maintenance-windows.md).
 
 ## Alert statuses [alert-status]
 
@@ -62,13 +62,7 @@ There are four common alert statuses:
 
 `flapping`
 
-:   The alert is switching repeatedly between active and recovered states. If the rule has actions that run when the alert status changes states, those actions are suppressed while the alert is flapping.
-
-::::{note}  
-
-Alert flapping is turned on by default. You can modify the criteria for changing an alert's status to the flapping state by configuring the **Alert flapping detection** settings. To do this, navigate to the **Alerts** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, click **Manage Rules**, then **Settings** to open the global rule settings for the space. In the **Alert flapping detection** section, modify the rules' look back window and threshold for alert status changes. For example, you can specify that the alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. 
-
-::::
+:   The alert switched repeatedly between active and recovered states. If actions are configured to run when its status changes, they are suppressed. Refer to [Alert flapping](/explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-flapping-details) to learn more about configuring alert flapping for rules.
 
 `recovered`
 :   The conditions for the rule are no longer met. If the rule has [recovery actions](create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
@@ -83,15 +77,33 @@ Alert flapping is turned on by default. You can modify the criteria for changing
     Once a flapping alert is recovered, it cannot be changed to flapping again. Only new alerts with repeated status changes are candidates for the flapping status. 
 
 `untracked`
-:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the action menu icon {icon}`boxes_vertical` and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
 ## Mute alerts [mute-alerts]
 
-If an alert is active or flapping, you can mute it to temporarily suppress future actions. In **{{stack-manage-app}} > Alerts**, open the action menu (…) for the appropriate alert, then select **Mute**. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted.
+If an alert is active or flapping, you can mute it to temporarily suppress future actions. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted. You can mute alerts in the following ways:
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.3+
+You can mute individual alerts or multiple ones:
+
+- Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
+- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bellSlash` in the **Alerts** table. 
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+You can only mute individual alerts. To mute an alert, find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Mute**. 
+:::
+
+::::
+
+::::{note}
 
 To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
+::::
 
 ## Clean up alerts [clean-up-alerts]
 
