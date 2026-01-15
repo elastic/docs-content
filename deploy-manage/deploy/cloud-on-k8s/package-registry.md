@@ -50,7 +50,7 @@ The operator automatically creates the necessary {{k8s}} resources, including:
 The following example shows a basic {{package-registry}} deployment:
 
 ```yaml
-apiVersion: package-registry.k8s.elastic.co/v1
+apiVersion: package-registry.k8s.elastic.co/v1alpha1
 kind: PackageRegistry
 metadata:
   name: package-registry-sample
@@ -62,7 +62,7 @@ spec:
 
 ## Connect {{kib}} to the Package Registry
 
-After deploying the {{package-registry}}, configure your {{kib}} instance to use it by setting the `spec.packageRegistryRef` field configuration:
+After deploying the {{package-registry}}, configure your {{kib}} instance to use it by setting the `spec.packageRegistryRef` field:
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -83,7 +83,7 @@ Check the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{ver
 
 ### Packages are not available
 
-The {{package-registry}} distribution images contain a snapshot of packages. Ensure you're using the correct image version that is equal or greater than your {{stack}} version. For the latest packages, use the `production` or `lite` distribution tags:
+The {{package-registry}} distribution images contain a snapshot of packages. Ensure you're using the correct image version that is equal to or greater than your {{stack}} version. For the latest packages, use the `production` or `lite` distribution tags:
 
 * `docker.elastic.co/package-registry/distribution:production` - All packages from the production registry
 * `docker.elastic.co/package-registry/distribution:lite` - Subset of commonly used packages
