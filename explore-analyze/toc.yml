@@ -188,7 +188,10 @@ toc:
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/limitations-known-issues.md
-      - file: ai-features/ai-assistant.md
+      - file: ai-features/ai-chat-experiences.md
+        children:
+          - hidden: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
+          - file: ai-features/ai-chat-experiences/ai-assistant.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
@@ -201,7 +204,6 @@ toc:
               - file: ai-features/llm-guides/connect-to-lmstudio-observability.md
               - file: ai-features/llm-guides/connect-to-lmstudio-security.md
               - file: ai-features/llm-guides/connect-to-vLLM.md
-      - hidden: ai-features/ai-agent-or-ai-assistant.md
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
@@ -238,6 +240,7 @@ toc:
       - file: visualize/lens.md
         children:
           - hidden: visualize/charts/metric-charts.md
+          - hidden: visualize/charts/line-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
       - file: visualize/text-panels.md
